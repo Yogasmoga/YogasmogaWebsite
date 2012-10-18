@@ -28,10 +28,10 @@
 <config>
     <global>
         <install>
-            <date><![CDATA[Thu, 18 Oct 2012 04:59:11 +0000]]></date>
+            <date><![CDATA[Thu, 27 Sep 2012 12:27:30 +0000]]></date>
         </install>
         <crypt>
-            <key><![CDATA[8ae655412ebaa238a7d65df6e1a914c3]]></key>
+            <key><![CDATA[7be04a7fbd5fa71c337848004c6063e5]]></key>
         </crypt>
         <disable_local_modules>false</disable_local_modules>
         <resources>
@@ -42,7 +42,7 @@
                 <connection>
                     <host><![CDATA[localhost]]></host>
                     <username><![CDATA[root]]></username>
-                    <password><![CDATA[]]></password>
+                    <password><![CDATA[yogasmoga]]></password>
                     <dbname><![CDATA[yogasmoga]]></dbname>
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
                     <model><![CDATA[mysql4]]></model>
