@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <mycustommodules_mynewsletter>
+            <version>0.0.1</version>
+        </mycustommodules_mynewsletter>
+    </modules>
+	<frontend>
+        <routers>
+            <mynewsletter>
+                <use>standard</use>
+                <args>
+                    <module>Mycustommodules_Mynewsletter</module>
+                    <frontName>mynewsletter</frontName>
+                </args>
+            </mynewsletter>
+        </routers>   
+    </frontend>
+</config>
