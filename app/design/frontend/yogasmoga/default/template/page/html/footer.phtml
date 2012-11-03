@@ -1,0 +1,126 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<!-- <div class="footer-container"> -->
+    <div id="footer" desc="Footer" class="footer fullscreen pgsection">
+        <?php /*
+        <?php echo $this->getChildHtml() ?>
+        <p class="bugs"><?php echo $this->__('Help Us to Keep Magento Healthy') ?> - <a href="http://www.magentocommerce.com/bug-tracking" onclick="this.target='_blank'"><strong><?php echo $this->__('Report All Bugs') ?></strong></a> <?php echo $this->__('(ver. %s)', Mage::getVersion()) ?></p>
+        <address><?php echo $this->getCopyright() ?></address>
+        */ ?>
+        <table>
+            <tr>
+                <td>
+                    <div class="footheader">SHOP</div>
+                    <div class="footdesc">
+                        <?php
+                            $html = "";
+                            $currentcategoryid = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
+                            foreach (Mage::helper('catalog/category')->getStoreCategories() as $child) {
+                                if ($child->getIsActive()) {
+                                    if($child->getId() == $currentcategoryid)
+                                        $html .= "<a class='current' href='".Mage::getModel("catalog/category")->load($child->getId())->getUrl()."'>".$child->getName()."</a> / ";
+                                    else
+                                        $html .= "<a href='".Mage::getModel("catalog/category")->load($child->getId())->getUrl()."'>".$child->getName()."</a> / ";
+                                }
+                            }
+                            echo substr($html, 0, strlen($html) - 3);
+                        ?>
+                    </div>
+                    <div class="footheader">OUR STORY</div>
+                    <div class="footdesc">
+                    <a href="javascript:void(0);">OUR STORY</a> / 
+                    <a href="javascript:void(0);">OUR ETHICS</a> /
+                    <a href="javascript:void(0);">CORE VALUES</a> /
+                    <a href="javascript:void(0);">COMMUNITY</a> /
+                    <a href="javascript:void(0);">PRINCIPLES OF YOGA</a> /
+                    <a href="javascript:void(0);">PRESS</a>
+                    </div>
+                    
+                    <div class="footheader">OUR EDGE</div>
+                    <div class="footdesc">
+                    <a href="javascript:void(0);">FABRIC TECHNOLOGY</a> / 
+                    <a href="javascript:void(0);">DESIGN ELEMENTS</a> /
+                    <a href="javascript:void(0);">PRODUCT CARE</a> /
+                    <a href="javascript:void(0);">SIZE CHART</a>
+                    </div>
+                    
+                    <div class="footheader">SMOGI BUCKS</div>
+                    <div class="footdesc">
+                    <a href="javascript:void(0);">WHAT THEY ARE</a> / 
+                    <a href="javascript:void(0);">HOW TO GET THEM</a> /
+                    <a href="javascript:void(0);">WHAT TO DO WITH THEM</a>
+                    </div>
+                    
+                    <div class="footheader">HELP</div>
+                    <div class="footdesc">
+                    <a href="javascript:void(0);">FAQ</a> / 
+                    <a href="javascript:void(0);">DELIVERY &amp; RETURNS</a> /
+                    <a href="javascript:void(0);">JOIN THE TEAM</a> <br />
+                    <a href="javascript:void(0);">TERMS &amp; CONDITIONS</a> /
+                    <a href="javascript:void(0);">PRIVACY POLICY</a>
+                    </div>
+                    
+                    <div class="footheader">MY ACCOUNT</div>
+                    <div class="footdesc">
+                    <a href="javascript:void(0);">TRACK MY ORDER</a> / 
+                    <a href="<?php echo Mage::helper('core/url')->getHomeUrl()."wishlist" ?>">WISHLIST</a> /
+                    <a href="<?php echo Mage::helper('core/url')->getHomeUrl()."checkout/cart" ?>">SHOPPING BAG</a> /
+                    <a href="<?php echo Mage::helper('core/url')->getHomeUrl()."customer/account" ?>">DASHBOARD</a>
+                    </div>
+                    
+                    <div class="footheader">CONTACT US</div>
+                    <div class="footdesc">
+                    1-800-555-YOGA / INFO@YOGASMOGA.COM <br />
+                    - <br />
+                    123 21ST STREET <br />
+                    NEW YORK, NY <br />
+                    10011
+                    </div>
+                    
+                    <div class="footheader">STAY CONNECTED</div>
+                    <div class="footdesc">
+                    <a target="_blank" href="http://www.facebook.com/YOGASMOGA">FACEBOOK</a> /
+                    <a target="_blank" href="http://www.twitter.com/YOGASMOGA">TWITTER</a> / 
+                    <a target="_blank" href="http://www.Pinterest.com/YOGASMOGA">PINTREST</a>
+                    </div>
+                    
+                    <div class="footheader">EMAIL SIGN UP</div>
+                    <div class="footdesc">
+                        <div class="inputcontainer" style="width:150px;">
+                            <input id="txtNewsletterEmail" type="text" watermark="Email" style="width: 133px;" />
+                            <input id="btnNewsletter" type="submit" value=">" />
+                        </div>
+                        <div id="footernotification" class="success notification">Thank You</div>
+                    </div>
+                    
+                    <div class="copyright"><?php echo $this->getCopyright() ?></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!--
+</div> -->
