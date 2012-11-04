@@ -85,9 +85,9 @@
 <?php echo $this->getAbsoluteFooter() ?>
 <div id="pageScrollerNav">
     <div id="pgNavUp">
-        <img onclick="pageScroller.prev();" src="http://192.168.2.110/yogasmoga/skin/frontend/yogasmoga/yogasmoga-theme/images/navigation/up.png" />
+        <img onclick="pageScroller.prev();" src="<?php echo $this->getSkinUrl('images/navigation/up.png') ?>" />
     </div>
-    <div id="pgNavDown"><img  onclick="pageScroller.next();" src="http://192.168.2.110/yogasmoga/skin/frontend/yogasmoga/yogasmoga-theme/images/navigation/down.png" /></div>
+    <div id="pgNavDown"><img  onclick="pageScroller.next();" src="<?php echo $this->getSkinUrl('images/navigation/down.png') ?>" /></div>
 </div>
 </body>
 </html>
