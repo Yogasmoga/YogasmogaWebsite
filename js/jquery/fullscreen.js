@@ -1,0 +1,57 @@
+jQuery(document).ready(function($){
+    setTimeout(function(){setfullscreenheight();},50);
+    //setfullscreenheight(true);
+    $(window).resize(function($) {
+        setfullscreenheight();
+    });
+    
+});
+
+function setfullscreenheight()
+{
+    //console.log('called');
+    if (document.body && document.body.offsetWidth) {
+     _winW = document.body.offsetWidth;
+     _winH = document.body.offsetHeight;
+    }
+    if (document.compatMode=='CSS1Compat' &&
+        document.documentElement &&
+        document.documentElement.offsetWidth ) {
+     _winW = document.documentElement.offsetWidth;
+     _winH = document.documentElement.offsetHeight;
+    }
+    if (window.innerWidth && window.innerHeight) {
+     _winW = window.innerWidth;
+     _winH = window.innerHeight;
+    }
+    _winH = _winH - _headerHeight;
+    jQuery("div.fullscreen").css('min-height', (_winH) + 'px');
+    jQuery("div.fullscreenovfhidden").css('height', (_winH) + 'px');
+    jQuery.each(jQuery(".fullscreen"), function(){
+        jQuery(this).find("table:first").css('min-height',(_winH) + 'px');
+        jQuery(this).find("table:first").css('height',(_winH) + 'px');
+    });
+    jQuery(".fullscreenovfhidden img.fullscreen").each(function(){
+        var height = jQuery(this).height();
+        if(height > _winH)
+        {
+            jQuery(this).css('top',((_winH - height) / 2) + 'px');        
+        }
+    });
+    //jQuery(".fullscreen table:first").css('min-height',_winH + 'px');
+//    jQuery(".fullscreen table:first").css('height',_winH + 'px');
+    
+    //jQuery("img.fullscreen").css('height',_winH + 'px');
+    
+    /* Comment out the below line to keep the parallax image fullscreen */
+    //jQuery(".bgimage").css('background-size', _winW + 'px ' + _winH + 'px');
+    
+    //if(firsttime)
+//        jQuery("#pageScrollerNav").css('top', (((_winH - jQuery("#pageScrollerNav").height()) / 2) - 40) + 'px');
+//    else
+    if(_isglobalsharingopen)
+        jQuery("#pageScrollerNav").css('top', ((_winH + (_headerHeight * 2) - jQuery("#pageScrollerNav").height() - jQuery("#pageScrollerNav #shareicons").css('height')) / 2) + 'px');
+    else
+        jQuery("#pageScrollerNav").css('top', ((_winH + (_headerHeight * 2) - jQuery("#pageScrollerNav").height()) / 2) + 'px');
+    //console.log('w = ' + _winW + ' h = ' + _winH + ' s = ' + jQuery("#pageScrollerNav").height());
+}
