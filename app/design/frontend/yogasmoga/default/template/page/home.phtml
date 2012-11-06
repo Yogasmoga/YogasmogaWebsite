@@ -43,17 +43,12 @@
         <div id="pagecontainer">
             <div id="mainimage" class="fullscreenovfhidden colorbg flexslider pgsection" desc="Main Image" style="border: none;border-radius : none;box-shadow:none;margin:0px;">
                 <ul class="slides">
-                    <!--
                     <li>
-                      <img imgheight="960" class="fullscreen" src="<?php echo $this->getSkinUrl('images/homepage/slide1.jpg') ?>" usemap="#videomap" />
-                      <map name="videomap">
-                        <area id="imagevideoarea" shape="rect" coords="10%, 10%, 10%, 10%" />
-                      </map>
-                      <div onclick="alert('Youtube Video here. .');" style="position: absolute; width: 17%; left: 74.8%; top: 72.2%; height: 9.7%;">&nbsp;</div>
+                      <img class="fullscreen" src="<?php echo $this->getSkinUrl('images/homepage/slide1.png') ?>" usemap="#videomap" />
+                      <div onclick="alert('Youtube Video here. .');" style="position: absolute; width: 17%; left: 74.8%; top: 72.2%; height: 9.7%;"><img style="width : 100%" src="<?php echo $this->getSkinUrl('images/homepage/play_button.png') ?>" /></div>
                     </li>
-                    -->
                     <li>
-                      <img imgheight="900" class="fullscreen" src="<?php echo $this->getSkinUrl('images/homepage/slide2.png') ?>" />
+                      <img class="fullscreen" src="<?php echo $this->getSkinUrl('images/homepage/slide2.png') ?>" />
                     </li>
                 </ul>
             </div>
@@ -64,12 +59,6 @@
                 <tr>
                     <td>
                         <h1>Explore Image Slideshow Here</h1>
-                        <a title="Share this article/post/whatever on Facebook" 
-    href="http://www.facebook.com/sharer.php?s=100&p[url]=http://www.staging.yogasmoga.com#mainimage&p[images][0]=http://staging.yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/yoga_logo_side.jpg&p[title]=Yogasmoga Demo Store&p[summary]=Description of store" target="_blank">
-     share
-</a>
-<a href="https://twitter.com/share" data-url="http://google.com" data-text="Page Title">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                     </td>
                 </tr>
             </table>
@@ -94,7 +83,9 @@
 <div id="pageScrollerNav">
     <div id="shareicons">
         <div id="pinterest"></div>
-        <div id="twitter"></div>
+        <div id="twitter">
+            <!-- <a id="atwitter" href="https://twitter.com/share"><div>&nbsp;</div></a> -->
+        </div>
         <div id="facebook"></div>
         <div id="mail"></div>
     </div>

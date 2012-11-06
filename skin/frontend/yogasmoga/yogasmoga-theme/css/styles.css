@@ -2101,3 +2101,8 @@ div#pageScrollerNav div#shareicons div#pinterest
 {
     background-image : url('../images/navigation/pinterest.png');
 }
+
+ul.slides li
+{
+    position : static !important;
+}

@@ -6,6 +6,7 @@ var isglobalsharingopen = false;
 var isglobalsharinganimating = false;
 var winW = 630, winH = 460;
 var _headerHeight = 80;
+var _currentshareurl = '';
 
 jQuery(document).ready(function($){
     //console.clear();
@@ -30,7 +31,6 @@ jQuery(document).ready(function($){
     setTimeout(function(){setfullscreenheight();},50);
     //setfullscreenheight(true);
     $(window).resize(function($) {
-        console.log('resize');
         setfullscreenheight();
     });
     
@@ -80,10 +80,6 @@ jQuery(document).ready(function($){
         fixFlexisliderImage();
         }
     }); 
-    
-    $("#imagevideoarea").click(function(){
-        console.log('from image map');
-    });
     selectcurrentanchors();
     
     $("#txtNewsletterEmail").keypress(function (event) {
@@ -137,6 +133,14 @@ jQuery(document).ready(function($){
     $("#pageScrollerNav #shareicons #facebook").click(function(){
         shareonfb();
     });
+    
+    $("#pageScrollerNav #shareicons #twitter").click(function(){
+        shareontw();
+    });
+    
+    $("#pageScrollerNav #shareicons #pinterest").click(function(){
+        shareonpt();
+    });
 });
 
 function closeSharingOptions()
@@ -164,9 +168,39 @@ function shareonfb()
             url = url.substr(0, url.indexOf("#"));
         url = url + '#' + currentfullscreenid;
     }
+    _currentshareurl = url;
     var currentpage = jQuery("#" + currentfullscreenid);
-    window.open('http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(url) + '&p[images][0]=http://staging.yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/yoga_logo_side.jpg&p[title]=' + currentpage.attr("desc") + '&p[summary]=Summary Here','Share_on_Faceook','toolbar=0,status=0,menubar=0,width=600,height=300,left=' + (winW - 600) / 2 + ',top=' + (winH - 300) / 2);
-    //window.open('http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(url) + '&p[images][0]=http://staging.yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/yoga_logo_side.jpg&p[title]=' + currentpage.attr("desc") + '&p[summary]=Summary Here','Share_on_Faceook','toolbar=0,status=0,menubar=0,width=600,height=300');
+    window.open('http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(_currentshareurl) + '&p[images][0]=http://staging.yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/yoga_logo_side.jpg&p[title]=' + currentpage.attr("desc") + '&p[summary]=Summary Here','Share_on_Faceook','toolbar=0,status=0,menubar=0,width=600,height=300,left=' + (winW - 600) / 2 + ',top=' + (winH - 300) / 2);
+}
+
+function shareontw()
+{
+    var url = currenturl;
+    if(!endsWith(url, currentfullscreenid))
+    {
+        if(url.indexOf("#") >= 0)
+            url = url.substr(0, url.indexOf("#"));
+        url = url + '#' + currentfullscreenid;
+    }
+    _currentshareurl = url;
+    var currentpage = jQuery("#" + currentfullscreenid);
+    //console.log('http://www.twitter.com/share?url=' + encodeURIComponent(url));
+    window.open('http://www.twitter.com/share?url=' + encodeURIComponent(url),'Share_on_Twitter','toolbar=0,status=0,menubar=0,width=600,height=450,left=' + (winW - 600) / 2 + ',top=' + (winH - 450) / 2);
+}
+
+function shareonpt()
+{
+    var url = currenturl;
+    if(!endsWith(url, currentfullscreenid))
+    {
+        if(url.indexOf("#") >= 0)
+            url = url.substr(0, url.indexOf("#"));
+        url = url + '#' + currentfullscreenid;
+    }
+    _currentshareurl = url;
+    var currentpage = jQuery("#" + currentfullscreenid);
+    //console.log('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(url) + '&media=http://staging.yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/yoga_logo_side.jpg&description=hello');
+    window.open('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(url) + '&media=http://staging.yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/yoga_logo_side.jpg&description=' + currentpage.attr("desc"),'Share_on_Pinterest','toolbar=0,status=0,menubar=0,width=600,height=520,left=' + (winW - 600) / 2 + ',top=' + (winH - 520) / 2);
 }
 
 function endsWith(str, suffix) {
@@ -181,7 +215,6 @@ function navAssignTitles()
         jQuery("#pgNavDown img").attr("title", jQuery("div.pgsection:nth-child(" + (jQuery("#pgnavigator li.active").index() + 2) + ")").attr("desc"));
     if(jQuery("div.pgsection:nth-child(" + (jQuery("#pgnavigator li.active").index()) + ")").length > 0)
         jQuery("#pgNavUp img").attr("title", jQuery("div.pgsection:nth-child(" + (jQuery("#pgnavigator li.active").index()) + ")").attr("desc"));
-    
     currentfullscreenid = jQuery("div.pgsection:nth-child(" + (jQuery("#pgnavigator li.active").index() + 1) + ")").attr("id");
     //console.log(currentfullscreenid);
 }
@@ -280,6 +313,13 @@ function fixFlexisliderImage()
 //            jQuery(this).css('top',(((winH - height) / 2)) + 'px');
 //        }
 //    });
+    jQuery(".fullscreenovfhidden img.fullscreen").each(function(){
+        var height = jQuery(this).height();
+        if(height > winH)
+        {
+            jQuery(this).css('top',((winH - height) / 2) + 'px');        
+        }
+    });
 }
 
 function setfullscreenheight(firsttime)
@@ -300,8 +340,8 @@ function setfullscreenheight(firsttime)
      winH = window.innerHeight;
     }
     winH = winH - _headerHeight;
-    jQuery(".fullscreen").css('min-height', (winH) + 'px');
-    jQuery(".fullscreenovfhidden").css('height', (winH) + 'px');
+    jQuery("div.fullscreen").css('min-height', (winH) + 'px');
+    jQuery("div.fullscreenovfhidden").css('height', (winH) + 'px');
     jQuery.each(jQuery(".fullscreen"), function(){
         jQuery(this).find("table:first").css('min-height',(winH) + 'px');
         jQuery(this).find("table:first").css('height',(winH) + 'px');
