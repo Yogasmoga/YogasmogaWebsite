@@ -62,7 +62,7 @@ jQuery(document).ready(function($){
     });
     
     $("#pageScrollerNav #shareicons #mail").click(function(){
-        alert("Mail section here. .");
+        shareonmail();
     });
 });
 
@@ -124,6 +124,23 @@ function shareonpt()
     var currentpage = jQuery("#" + _currentfullscreenid);
     //console.log('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(url) + '&media=http://staging.yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/yoga_logo_side.jpg&description=hello');
     window.open('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(url) + '&media=http://staging.yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/yoga_logo_side.jpg&description=' + currentpage.attr("desc"),'Share_on_Pinterest','toolbar=0,status=0,menubar=0,width=600,height=520,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 520) / 2);
+}
+
+function shareonmail()
+{
+    var url = _currenturl;
+    if(!endsWith(url, _currentfullscreenid))
+    {
+        if(url.indexOf("#") >= 0)
+            url = url.substr(0, url.indexOf("#"));
+        url = url + '#' + _currentfullscreenid;
+    }
+    _currentshareurl = url;
+    var currentpage = jQuery("#" + _currentfullscreenid);
+    //console.log('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(url) + '&media=http://staging.yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/yoga_logo_side.jpg&description=hello');
+    //window.open('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(url) + '&media=http://staging.yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/yoga_logo_side.jpg&description=' + currentpage.attr("desc"),'Share_on_Pinterest','toolbar=0,status=0,menubar=0,width=600,height=520,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 520) / 2);
+    //window.open('mailto:someone@example.com?Subject=Hello%20again','Share_on_Pinterest','toolbar=0,status=0,menubar=0,width=600,height=520,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 520) / 2);
+    window.location = "mailto:?Subject=" + encodeURIComponent("Check it out!!") + "&body=" + encodeURIComponent("Check Out " + currentpage.attr("desc") + " at " + _currentshareurl);
 }
 
 function endsWith(str, suffix) {
