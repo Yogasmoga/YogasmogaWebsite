@@ -158,4 +158,3 @@ function navAssignTitles()
     _currentfullscreenid = jQuery("div.pgsection:nth-child(" + (jQuery("#pgnavigator li.active").index() + 1) + ")").attr("id");
     //console.log(_currentfullscreenid);
 }
-
