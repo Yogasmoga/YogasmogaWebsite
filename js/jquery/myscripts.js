@@ -1,10 +1,6 @@
 jQuery(document).ready(function($){
-    //console.clear();
-    
+        //console.clear();
 });
-
-
-
 
 function removenotifications()
 {
@@ -34,8 +30,3 @@ function isScrolledIntoView(elem)
     var elemBottom = elemTop + jQuery(elem).height();
     return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
 }
-
-
-
-
-

@@ -32,6 +32,24 @@
  */
 ?>
 <?php if($this->canShowBlock()): ?>
+
+<div class="search-result"><span>26 ITEMS</span> filter by:</div>
+
+<?php if($this->canShowOptions()): ?>
+    <?php $_filters = $this->getFilters();
+        foreach($_filters as $_filter)
+        {
+            ?>
+                <div class="searchhead"><?php echo $_filter->getName(); ?></div>
+                <div class="searchitems">
+                    <?php echo $_filter->getHtml() ?>
+                </div>
+            <?php   
+        }
+    ?>
+<?php endif; ?>
+
+<?php /*
 <div class="block block-layered-nav">
     <div class="block-title">
         <strong><span><?php echo $this->__('Shop By') ?></span></strong>
@@ -56,4 +74,5 @@
         <?php endif; ?>
     </div>
 </div>
+*/ ?>
 <?php endif; ?>

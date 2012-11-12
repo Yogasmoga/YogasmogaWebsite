@@ -13,6 +13,11 @@
           <template>page/home.phtml</template>
           <layout_handle>home</layout_handle>
         </INTERNAL_NAME_FOR_YOUR_NEW_LAYOUT>
+		<category translate="label">
+          <label>Category</label>
+          <template>page/category.phtml</template>
+          <layout_handle>category</layout_handle>
+        </category>
         <!-- add more layouts here -->
       </layouts>
     </page>

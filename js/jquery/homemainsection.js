@@ -1,17 +1,19 @@
 jQuery(document).ready(function($){
-    $('.flexslider').flexslider({
-        controlNav: false,
-        slideshowSpeed: 6000,
-        directionNav: false,
-        start: function(slider) {
-            fixFlexisliderImage();
-          },
-        after: function(slider) {
-        //$('.current-slide').text(slider.currentSlide);
-        fixFlexisliderImage();
-        }
-    });
     
+    $(window).load(function(){
+        $('.flexslider').flexslider({
+            controlNav: false,
+            slideshowSpeed: 6000,
+            directionNav: false,
+            start: function(slider) {
+                fixFlexisliderImage();
+              },
+            after: function(slider) {
+            //$('.current-slide').text(slider.currentSlide);
+            fixFlexisliderImage();
+            }
+        });    
+    });
 });
 
 function fixFlexisliderImage()

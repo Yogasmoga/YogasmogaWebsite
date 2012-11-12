@@ -38,7 +38,7 @@
 <?php if(!$_productCollection->count()): ?>
 <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
 <?php else: ?>
-<div class="category-products">
+<div id="mycategory_products" class="mycategory-products isotoped">
     <?php //echo $this->getToolbarHtml() ?>
     <?php // List mode ?>
     <?php if($this->getMode()!='grid'): ?>
@@ -84,12 +84,12 @@
     <?php else: ?>
 
     <?php // Grid Mode ?>
-
+    
+    <?php /*
     <?php $_collectionSize = $_productCollection->count() ?>
     <?php $_columnCount = $this->getColumnCount(); ?>
     <?php $i=0; foreach ($_productCollection as $_product): ?>
         <?php if ($i++%$_columnCount==0): ?>
-        <div>hdfaf</div>
         <ul class="products-grid">
         <?php endif ?>
             <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
@@ -120,10 +120,101 @@
         <?php endif ?>
         <?php endforeach ?>
         <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+        */ ?>
+        <?php
+            for($isfs = 0; $isfs < 1; $isfs++) {
+            foreach($_productCollection as $_product)
+            {
+                $colors = ","; 
+                $temp = "";
+                $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
+                foreach($_childproducts as $_childproduct)
+                {
+                    $temp = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId());
+                    if(strpos($colors,",".$temp.",") == false)
+                        $colors .= $temp.",";  
+                }
+                ?>
+                    <div bestfor="<?php echo ",".Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'bestfor', Mage::app()->getStore()->getStoreId()).","; ?>" cat="<?php echo ",".implode(",", $_product->getCategoryIds()).","; ?>" id="<?php echo $_product->getId(); ?>" class="item" color="<?php echo $colors; ?>">
+                        <a href="<?php echo $_product->getProductUrl(); ?>">
+                        <table>
+                            <tr>
+                                <td class="productimage">
+                                    <?php
+                                        $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+                                        $index = 1;
+                                        foreach($_gallery as $_image)
+                                        {
+                                            if($index > 3)
+                                                continue;
+                                            ?>
+                                            <img
+                                            <?php
+                                                if($index == 1)
+                                                {
+                                                    ?>
+                                                    class="active"
+                                                    <?php
+                                                }
+                                            ?>
+                                             src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(300, 400); ?>" />
+                                            <?php
+                                            $index++;
+                                        } 
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="animateimage">
+                                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/line_01.png') ?>" class="active" />
+                                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/line_02.png') ?>" />
+                                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/line_03.png') ?>" />
+                                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/line_off.png') ?>" class="inactive" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="productname">
+                                    <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="productprice">
+                                    <span class="price">
+                                    <?php 
+                                        $model = Mage::getModel('catalog/product');
+                                        $_product = $model->load($_product->getId());
+                                        $price = $_product->getSpecialPrice();
+                                        if($price == "")
+                                            $price = $_product->getPrice();
+                                        $price = round($price,2);
+                                          if (floor($price)==$price)
+                                            echo "$".(string)floor($price);
+                                            else
+                                                echo "$".$price;
+                                            //echo $_product->getSpecialPrice();
+                                    //echo $this->getPriceHtml($_product, true);
+                                        //echo preg_replace('~\.0+$~','',$this->getPriceHtml($_product, true));
+                                        //$decimal = $this->getPriceHtml($_product, true)
+                                        //$decimal = round($decimal,$places);
+                                     ?>
+                                     </span>
+                                    <?php // print_r($_product); ?>
+                                </td>
+                            </tr>
+                        </table>
+                        </a>
+                    </div>
+                <?php
+            } 
+            }
+        ?>
+            
     <?php endif; ?>
-
+    
+    <?php /*
     <div class="toolbar-bottom">
-        <?php //echo $this->getToolbarHtml() ?>
+        <?php echo $this->getToolbarHtml() ?>
     </div>
+    */ ?>
 </div>
 <?php endif; ?>

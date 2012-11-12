@@ -32,6 +32,37 @@
  */
 ?>
 
+
+<?php foreach ($this->getItems() as $_item){ 
+        $qry = parse_url($_item->getUrl(), PHP_URL_QUERY);
+        parse_str($qry, $params);
+        //print_r($params);
+        $searchtype = "";
+        $searchvalue = "";
+        foreach($params as $key=>$value)
+        {
+            $searchtype = $key;
+            $searchvalue = $value;
+        }
+    ?>
+    <div title="<?php echo $searchvalue ?>" id="<?php echo $searchtype; ?>|<?php echo $searchvalue ?>" searchattr="<?php echo $searchtype; ?>" searchval="<?php echo $searchvalue ?>">
+        <table class="inactive">
+            <tr>
+                <td>
+                    <?php echo $_item->getLabel() ?>
+                </td>
+                <td class="add">
+                    <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/ic_plus.png'); ?>" />
+                </td>
+                <td class="remove">
+                    <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/ic_close.png'); ?>" />
+                </td>
+            </tr>
+        </table>
+    </div>
+<?php } ?>
+
+<?php /*
 <ol>
 <?php foreach ($this->getItems() as $_item): ?>
     <li>
@@ -45,3 +76,4 @@
     </li>
 <?php endforeach ?>
 </ol>
+*/ ?>

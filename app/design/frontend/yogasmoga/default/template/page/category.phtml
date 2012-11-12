@@ -40,25 +40,109 @@
     <?php echo $this->getChildHtml('global_notices') ?>
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
-        <div class="main-container col3-layout">
-            <div class="main">
-                <?php //echo $this->getChildHtml('breadcrumbs') ?>
-                <div class="col-wrapper">
-                    <div class="col-main">
-                        <?php echo $this->getChildHtml('global_messages') ?>
-                        <?php echo $this->getChildHtml('content') ?>
-                    </div>
-                    <div class="col-left sidebar"><?php echo $this->getChildHtml('left') ?></div>
-                </div>
-                <?php /*
-                    <div class="col-right sidebar"><?php echo $this->getChildHtml('right') ?></div>
-                */ ?>
-            </div>
+            <?php $htmlcontent = $this->getChildHtml('content');
+                if(strpos($htmlcontent,"|*)%|") > 0)
+                {
+                    ?>
+                        <div id="featuredproducts" desc="Featured Products" class="fullscreen colorbg pgsection">
+                        <table class="fullscreentable">
+                            <tr>
+                                <td>
+                                    <?php echo substr($htmlcontent,0, strpos($htmlcontent, "|*)%|")); ?>
+                                </td>
+                            </tr>
+                        </table>
+                        </div>
+                        <div id="featuredproducts" desc="Featured Products" class="fullscreen colorbg pgsection productgrid-holder">
+                        <div class="mycategory-header topvisible colorbg">
+                                        ALL PRODUCTS
+                        </div>
+                        <div class="mylayerednavigation alwaysvisible" style="width : 200px;">
+                            <?php echo $this->getChildHtml('left') ?>
+                        </div>
+                        <table width="100%" class="fullscreentable">
+                            <tr>
+                                <td style="vertical-align: top;">
+                                    <table class="myproduct-grid absoluteposition">
+                                        <tr>
+                                            <td style="vertical-align: top;width: 220px;min-width:220px;">
+                                                &nbsp;                                                
+                                            </td>
+                                            <td style="vertical-align: top;">
+                                                <?php echo substr($htmlcontent,strpos($htmlcontent, "|*)%|") + 5); ?>        
+                                            </td>
+                                            <td class="sidenavigationadjuster">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        </div>        
+                    <?php
+                }
+                else if(substr(trim($htmlcontent), 0, 3) == "|||")
+                {
+                    ?>
+                        <div id="featuredproducts112" desc="Featured Products" class="fullscreen colorbg pgsection">
+                        <table class="fullscreentable">
+                            <tr>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td colspan="2">ALL PRODUCTS</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="vertical-align: top;">
+                                                <?php echo $this->getChildHtml('left') ?>        
+                                            </td>
+                                            <td style="vertical-align: top;">
+                                                <?php echo substr(trim($htmlcontent), 3); ?>        
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        </div>
+                    <?php
+                } 
+                else
+                {
+                    ?>
+                        <div id="featuredproducts" desc="Featured Products" class="fullscreen colorbg pgsection">
+                        <table class="fullscreentable">
+                            <tr>
+                                <td>
+                                    <?php echo substr(trim($htmlcontent), 3); ?>
+                                </td>
+                            </tr>
+                        </table>
+                        </div>
+                    <?php
+                }
+            ?>
+            <?php echo $this->getChildHtml('footer') ?>
         </div>
-        <?php echo $this->getChildHtml('footer') ?>
         <?php echo $this->getChildHtml('before_body_end') ?>
     </div>
 </div>
 <?php echo $this->getAbsoluteFooter() ?>
+<div id="pageScrollerNav">
+    <div id="shareicons">
+        <div id="pinterest"></div>
+        <div id="twitter">
+            <!-- <a id="atwitter" href="https://twitter.com/share"><div>&nbsp;</div></a> -->
+        </div>
+        <div id="facebook"></div>
+        <div id="mail"></div>
+    </div>
+    <div id="glbshare"></div>
+    <div id="pgNavUp">
+        <img onclick="pageScroller.prev();" src="<?php echo $this->getSkinUrl('images/navigation/up.png') ?>" />
+    </div>
+    <div id="pgNavDown"><img  onclick="pageScroller.next();" src="<?php echo $this->getSkinUrl('images/navigation/down.png') ?>" /></div>
+</div>
 </body>
 </html>

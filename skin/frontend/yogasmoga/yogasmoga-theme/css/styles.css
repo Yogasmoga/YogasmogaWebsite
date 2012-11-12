@@ -22,7 +22,6 @@
  * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
-
 /* Reset ================================================================================= */
 * { margin:0; padding:0; }
 
@@ -515,6 +514,8 @@ tr.summary-details-excluded { font-style:italic; }
     position: fixed;
     top: 0px;
     z-index: 10000;
+    height : 80px;
+    width : 100%;
 }
 .header {background-color: #FFFFFF;
     height: 80px;
@@ -1857,12 +1858,12 @@ img.fullscreen
 {
     height : auto;
 }
-.fullscreen table:first-child
+.fullscreen > table.fullscreentable
 {
     width : 100%;
     margin:0px;
 }
-.fullscreen table:first-child td
+.fullscreen > table.fullscreentable td
 {
     vertical-align : middle;
     text-align: center;
@@ -2024,6 +2025,7 @@ div.errormsg
     right: 10px;
     top: 200px;
     cursor : pointer;
+    z-index: 12;
 }
 
 #pgnavigator
@@ -2105,4 +2107,292 @@ div#pageScrollerNav div#shareicons div#pinterest
 ul.slides li
 {
     position : static !important;
+}
+
+div.mycategory-products
+{
+    
+}
+
+div.mycategory-products div.item
+{
+    float : left;
+    cursor : pointer;
+    margin-left : 30px;
+    margin-bottom : 30px;
+}
+div.mycategory-products div.item a > table
+{
+    width : 100%;
+}
+div.mycategory-products div.item > table td
+{
+    text-align : center;
+}
+div.mycategory-products div.item img
+{
+    display : none;
+}
+div.mycategory-products div.item td.productname
+{
+    color : gray;
+}
+div.mycategory-products div.item:hover td.productname
+{
+    color : black;
+}
+div.mycategory-products div.item td.productimage img.active
+{
+    width: 100%;
+    max-height : 400px;
+}
+div.mycategory-products div.item td.productprice
+{
+    height : 23px;
+}
+div.mycategory-products div.item td.productprice div.price-box
+{
+    margin:0px;
+    color : #E22E44;
+}
+div.mycategory-products div.item td.productprice span.price
+{
+    color: #E22E44;
+    display: none;
+    font-size: 11pt;
+    font-weight: bold;
+}
+div.mycategory-products div.item:hover td.productprice span.price
+{
+    display : inline;
+}
+div.mycategory-products div.item img.active
+{
+    display : inline;
+}
+
+.mycategory-header
+{
+    color: #D8A45C;
+    font-size: 14pt;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-image : url('../images/catalog/product/listing/line_all_product.png');
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    z-index : 10;
+}
+
+table.myproduct-grid
+{
+    width : 100%;    
+}
+
+.fixedposition
+{
+    position : fixed !important;
+    top : 80px;
+}
+
+.productgrid-holder
+{
+    padding-top : 35px;
+}
+
+.sidenavigationadjuster
+{
+    width : 50px;
+    min-width: 50px;
+}
+
+div.mycategory-products div.item td.productimage
+{
+    height : 400px;
+    vertical-align : bottom;
+}
+
+div.mycategory-products div.item td.animateimage
+{
+    height: 19px;
+    padding-top: 3px;
+}
+div.mycategory-products div.item td.animateimage img.inactive
+{
+    display : inline;
+}
+div.mycategory-products div.item:hover td.animateimage img.inactive
+{
+    display : none;
+}
+div.mycategory-products div.item td.animateimage img.active
+{
+    display : none;
+    margin-top : 3px;
+}
+div.mycategory-products div.item:hover td.animateimage img.active
+{
+    display : inline;
+}
+
+.mylayerednavigation
+{
+    left: 0;
+    margin-left: 20px;
+    position: absolute;
+    text-align: left;
+    text-transform: uppercase;
+    z-index: 15;
+}
+.bottomposition
+{
+    bottom : 0;
+}
+.mylayerednavigation.fixedposition
+{
+    padding-top : 35px;
+}
+
+div.mylayerednavigation div.search-result
+{
+    color: #A5A5A3;    
+}
+
+div.mylayerednavigation div.search-result span
+{
+    color : black;
+}
+
+div.mylayerednavigation div.searchhead
+{
+    font-weight: bold;
+    margin-top : 20px;
+    margin-bottom : 10px;
+}
+
+div.mylayerednavigation div.searchitems
+{
+    
+}
+
+div.mylayerednavigation div.searchitems div
+{
+    margin : 2px 0px;
+    cursor : pointer;
+}
+
+div.mylayerednavigation div.searchitems div table
+{
+    width : 100%;
+}
+
+div.mylayerednavigation div.searchitems div table td.add, div.mylayerednavigation div.searchitems div table td.remove
+{
+    text-align : right;
+    font-size : 11pt;
+}
+div.mylayerednavigation div.searchitems div table td img
+{
+    margin-top : 7px;
+}
+
+div.mylayerednavigation div.searchitems div table td.add
+{
+    color : #CA3D57;
+}
+div.mylayerednavigation div.searchitems div table td.remove
+{
+    color : #B0B0B0;
+}
+div.mylayerednavigation div.searchitems div table.inactive td.remove
+{
+    display : none;
+}
+
+div.mylayerednavigation div.searchitems div table.active td.add
+{
+    display : none;
+}
+
+div.mylayerednavigation div.searchitems div:hover
+{
+    background-color : #EFEEED;
+}
+
+
+/**** Isotope Filtering ****/
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
+table.staticproductgrid
+{
+    width : 100%;
+}
+table.staticproductgrid td
+{
+    text-align: center;
+}
+table.staticproductgrid div.item
+{
+    margin: 0;
+    float : none;
+    width : 300px;
+    margin-left : auto;
+    margin-right : auto;
+}
+
+.absoluteposition
+{
+    position : absolute;
+}
+
+.verticaltopalign
+{
+    vertical-align: top;
 }

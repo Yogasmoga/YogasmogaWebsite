@@ -28,8 +28,10 @@ function setfullscreenheight()
     jQuery("div.fullscreen").css('min-height', (_winH) + 'px');
     jQuery("div.fullscreenovfhidden").css('height', (_winH) + 'px');
     jQuery.each(jQuery(".fullscreen"), function(){
-        jQuery(this).find("table:first").css('min-height',(_winH) + 'px');
-        jQuery(this).find("table:first").css('height',(_winH) + 'px');
+        //jQuery(this).find("table:first").css('min-height',(_winH) + 'px');
+//        jQuery(this).find("table:first").css('height',(_winH) + 'px');
+        jQuery(this).find("table.fullscreentable").css('min-height',(_winH) + 'px');
+        jQuery(this).find("table.fullscreentable").css('height',(_winH) + 'px');
     });
     jQuery(".fullscreenovfhidden img.fullscreen").each(function(){
         var height = jQuery(this).height();
