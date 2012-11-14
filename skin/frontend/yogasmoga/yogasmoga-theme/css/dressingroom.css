@@ -101,3 +101,11 @@
     margin-top : 20px;
     margin-bottom : 50px;
 }
+#dressingroomholder #dressingroomtop table td.imageholder
+{
+    height : 220px;
+}
+#dressingroomholder #dressingroombottom table td.imageholder
+{
+    height : 430px;
+}
