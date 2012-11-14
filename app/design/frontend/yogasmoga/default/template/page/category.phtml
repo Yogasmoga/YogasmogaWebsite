@@ -40,21 +40,150 @@
     <?php echo $this->getChildHtml('global_notices') ?>
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
-            <?php $htmlcontent = $this->getChildHtml('content');
+            <div id="pagecontainer">
+            <?php $htmlcontent = trim($this->getChildHtml('content'));
                 if(strpos($htmlcontent,"|*)%|") > 0)
                 {
                     ?>
-                        <div id="featuredproducts" desc="Featured Products" class="fullscreen colorbg pgsection">
-                        <table class="fullscreentable">
+                    <?php
+                    $dressingroomitems = explode("\n", strip_tags(substr($htmlcontent,0, strpos($htmlcontent, "|*)%|"))));
+                    if(trim($dressingroomitems[0]) == "-|*DressingRoomDetails*|-")
+                    {
+                    ?>
+                        <div id="dressingroom" desc="<?php echo Mage::registry('current_category')->getName(); ?> Dressing Room" class="fullscreen colorbg pgsection">
+                        <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/dressingroom.js"></script>
+                        <table class="fullscreentable dressingroombg">
                             <tr>
-                                <td>
-                                    <?php echo substr($htmlcontent,0, strpos($htmlcontent, "|*)%|")); ?>
+                                <td class="verticaltopalign">
+                                    <?php //echo substr($htmlcontent,0, strpos($htmlcontent, "|*)%|"));
+                                        
+                                        $model = Mage::getModel('catalog/product');
+                                        ?>
+                                            <script type="text/javascript">
+                                            _dressingroomcollection = new Array();
+                                        <?php
+                                        for($i = 1; $i < count($dressingroomitems); $i++)
+                                        //foreach($dressingroomitems as $item)
+                                        {
+                                            $detail = explode("|", $dressingroomitems[$i]);
+                                            $product = $model->load(trim($detail[3]));
+                                            ?>
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>] = new Object();
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].bodytype = '<?php echo trim($detail[1]); ?>';
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].half = '<?php echo trim($detail[0]); ?>';
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].image = '<?php echo trim($detail[2]); ?>';
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].name = '<?php echo trim($product->getName()); ?>';
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].id = '<?php echo trim($detail[3]); ?>';
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].description = '<?php echo trim($product->getShortDescription()); ?>';
+                                            <?php
+                                        }
+                                        ?>
+                                            </script>
+                                        <?php
+                                     ?>
+                                    <div class="myheader" style="padding-bottom: 10px;">DRESSING ROOM</div>
+                                    <div class="dressingroomsubheader">Please select your body type and browse through<br />our YOGASMOGA collection.</div>
+                                    <div class="dressingroomoptions">
+                                        Body Type&nbsp;&nbsp;
+                                        <select id="dressingroomoptions">
+                                            <!-- <option selected="selected">Slender</option>
+                                            <option>Other Types</option> -->
+                                        </select>
+                                    </div>
+                                    <div id="dressingroomholder">
+                                        <div id="dressingroomtop">
+                                            <table>
+                                                <tr>
+                                                    <td class="goleft">
+                                                        <img class="invisible" src="<?php echo $this->getSkinUrl('/images/catalog/product/dressingroom/arrow_left.png'); ?>" /> 
+                                                    </td>
+                                                    <td class="detailholder">
+                                                        
+                                                    </td>
+                                                    <td class="imageholder">
+                                                        <img src="<?php echo $this->getSkinUrl('/images/catalog/product/dressingroom/models/top_01.png'); ?>" />
+                                                    </td>
+                                                    <td class="detailholder">
+                                                        <div class="productdetail">
+                                                            <div class="productcount">
+                                                                <div class="current">3</div>
+                                                                <div>
+                                                                    <div class="countdivider">/</div>
+                                                                    <div class="totalcount">4</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="productname">U &amp; ME SPORTS BRA</div>
+                                                            <div class="productdescription">Made with Aurum+ - This sports bra is great for gym and yoga activities.</div>
+                                                            <div class="viewdetails">                    
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="goright">
+                                                        <img class="invisible" src="<?php echo $this->getSkinUrl('/images/catalog/product/dressingroom/arrow_right.png'); ?>" />                           
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div id="dressingroomdivider">
+                                            <img src="<?php echo $this->getSkinUrl('/images/catalog/product/dressingroom/dressing_divider.png'); ?>" />
+                                        </div>
+                                        <div id="dressingroombottom">
+                                            <table>
+                                                <tr>
+                                                    <td class="goleft">
+                                                        <img class="invisible" src="<?php echo $this->getSkinUrl('/images/catalog/product/dressingroom/arrow_left.png'); ?>" /> 
+                                                    </td>
+                                                    <td class="detailholder">
+                                                        
+                                                    </td>
+                                                    <td class="imageholder">
+                                                        <img src="<?php echo $this->getSkinUrl('/images/catalog/product/dressingroom/models/bottom_01.png'); ?>" />
+                                                    </td>
+                                                    <td class="detailholder">
+                                                        <div class="productdetail">
+                                                            <div class="productcount">
+                                                                <div class="current">3</div>
+                                                                <div>
+                                                                    <div class="countdivider">/</div>
+                                                                    <div class="totalcount">4</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="productname">U &amp; ME SPORTS BRA</div>
+                                                            <div class="productdescription">Made with Aurum+ - This sports bra is great for gym and yoga activities.</div>
+                                                            <div class="viewdetails">                    
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="goright">
+                                                        <img class="invisible" src="<?php echo $this->getSkinUrl('/images/catalog/product/dressingroom/arrow_right.png'); ?>" />                           
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
                         </div>
-                        <div id="featuredproducts" desc="Featured Products" class="fullscreen colorbg pgsection productgrid-holder">
-                        <div class="mycategory-header topvisible colorbg">
+                        <?php
+                            }
+                            else
+                            {
+                                ?>
+                                <div id="categorydescription" desc="<?php echo Mage::registry('current_category')->getName(); ?>" class="fullscreen colorbg pgsection">
+                                <table class="fullscreentable">
+                                    <tr>
+                                        <td>
+                                            <?php echo substr(trim($htmlcontent), 3); ?>
+                                        </td>
+                                    </tr>
+                                </table>
+                                </div>
+                                <?php
+                            }
+                         ?>
+                        <div id="allproducts" desc="<?php echo Mage::registry('current_category')->getName(); ?> Products" class="fullscreen colorbg pgsection productgrid-holder">
+                        <div class="myheader zindex10 topvisible colorbg absoluteposition">
                                         ALL PRODUCTS
                         </div>
                         <div class="mylayerednavigation alwaysvisible" style="width : 200px;">
@@ -63,7 +192,7 @@
                         <table width="100%" class="fullscreentable">
                             <tr>
                                 <td style="vertical-align: top;">
-                                    <table class="myproduct-grid absoluteposition">
+                                    <table class="myproduct-grid">
                                         <tr>
                                             <td style="vertical-align: top;width: 220px;min-width:220px;">
                                                 &nbsp;                                                
@@ -85,20 +214,27 @@
                 else if(substr(trim($htmlcontent), 0, 3) == "|||")
                 {
                     ?>
-                        <div id="featuredproducts112" desc="Featured Products" class="fullscreen colorbg pgsection">
-                        <table class="fullscreentable">
+                        <div id="allproducts" desc="<?php echo Mage::registry('current_category')->getName(); ?> Products" class="fullscreen colorbg pgsection productgrid-holder">
+                        <div class="myheader zindex10 topvisible colorbg absoluteposition">
+                                        ALL PRODUCTS
+                        </div>
+                        <div class="mylayerednavigation alwaysvisible" style="width : 200px;">
+                            <?php echo $this->getChildHtml('left') ?>
+                        </div>
+                        <table width="100%" class="fullscreentable">
                             <tr>
-                                <td>
-                                    <table>
+                                <td style="vertical-align: top;">
+                                    <table class="myproduct-grid">
                                         <tr>
-                                            <td colspan="2">ALL PRODUCTS</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="vertical-align: top;">
-                                                <?php echo $this->getChildHtml('left') ?>        
+                                            <td style="vertical-align: top;width: 220px;min-width:220px;">
+                                                &nbsp;                                                
                                             </td>
                                             <td style="vertical-align: top;">
-                                                <?php echo substr(trim($htmlcontent), 3); ?>        
+                                                <?php //echo substr($htmlcontent,strpos($htmlcontent, "|*)%|") + 5); ?>
+                                                <?php echo substr($htmlcontent, 3); ?>        
+                                            </td>
+                                            <td class="sidenavigationadjuster">
+                                                &nbsp;
                                             </td>
                                         </tr>
                                     </table>
@@ -111,15 +247,144 @@
                 else
                 {
                     ?>
-                        <div id="featuredproducts" desc="Featured Products" class="fullscreen colorbg pgsection">
+                        <?php
+                    //$dressingroomitems = explode("\n", strip_tags(substr($htmlcontent,0, strpos($htmlcontent, "|*)%|"))));
+                    $dressingroomitems = explode("\n", strip_tags(substr($htmlcontent,3)));
+                    if(trim($dressingroomitems[0]) == "-|*DressingRoomDetails*|-")
+                    {
+                    ?>
+                        <div id="dressingroom" desc="<?php echo Mage::registry('current_category')->getName(); ?> Dressing Room" class="fullscreen colorbg pgsection">
+                        <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/dressingroom.js"></script>
                         <table class="fullscreentable">
                             <tr>
-                                <td>
-                                    <?php echo substr(trim($htmlcontent), 3); ?>
+                                <td class="verticaltopalign">
+                                    <?php //echo substr($htmlcontent,0, strpos($htmlcontent, "|*)%|"));
+                                        
+                                        $model = Mage::getModel('catalog/product');
+                                        ?>
+                                            <script type="text/javascript">
+                                            _dressingroomcollection = new Array();
+                                        <?php
+                                        for($i = 1; $i < count($dressingroomitems); $i++)
+                                        //foreach($dressingroomitems as $item)
+                                        {
+                                            $detail = explode("|", $dressingroomitems[$i]);
+                                            $product = $model->load(trim($detail[3]));
+                                            ?>
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>] = new Object();
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].bodytype = '<?php echo trim($detail[1]); ?>';
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].half = '<?php echo trim($detail[0]); ?>';
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].image = '<?php echo trim($detail[2]); ?>';
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].name = '<?php echo trim($product->getName()); ?>';
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].id = '<?php echo trim($detail[3]); ?>';
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].description = '<?php echo trim($product->getShortDescription()); ?>';
+                                            <?php
+                                        }
+                                        ?>
+                                            </script>
+                                        <?php
+                                     ?>
+                                    <div class="myheader">DRESSING ROOM</div>
+                                    <div class="dressingroomsubheader">Please select your body type and browse through<br />our YOGASMOGA collection.</div>
+                                    <div class="dressingroomoptions">
+                                        Body Type&nbsp;&nbsp;
+                                        <select id="dressingroomoptions">
+                                            <!-- <option selected="selected">Slender</option>
+                                            <option>Other Types</option> -->
+                                        </select>
+                                    </div>
+                                    <div id="dressingroomholder">
+                                        <div id="dressingroomtop">
+                                            <table>
+                                                <tr>
+                                                    <td class="goleft">
+                                                        <img class="invisible" src="<?php echo $this->getSkinUrl('/images/catalog/product/dressingroom/arrow_left.png'); ?>" /> 
+                                                    </td>
+                                                    <td class="detailholder">
+                                                        
+                                                    </td>
+                                                    <td class="imageholder">
+                                                        <img src="<?php echo $this->getSkinUrl('/images/catalog/product/dressingroom/models/top_01.png'); ?>" />
+                                                    </td>
+                                                    <td class="detailholder">
+                                                        <div class="productdetail">
+                                                            <div class="productcount">
+                                                                <div class="current">3</div>
+                                                                <div>
+                                                                    <div class="countdivider">/</div>
+                                                                    <div class="totalcount">4</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="productname">U &amp; ME SPORTS BRA</div>
+                                                            <div class="productdescription">Made with Aurum+ - This sports bra is great for gym and yoga activities.</div>
+                                                            <div class="viewdetails">                    
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="goright">
+                                                        <img class="invisible" src="<?php echo $this->getSkinUrl('/images/catalog/product/dressingroom/arrow_right.png'); ?>" />                           
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div id="dressingroomdivider">
+                                            <img src="<?php echo $this->getSkinUrl('/images/catalog/product/dressingroom/dressing_divider.png'); ?>" />
+                                        </div>
+                                        <div id="dressingroombottom">
+                                            <table>
+                                                <tr>
+                                                    <td class="goleft">
+                                                        <img class="invisible" src="<?php echo $this->getSkinUrl('/images/catalog/product/dressingroom/arrow_left.png'); ?>" /> 
+                                                    </td>
+                                                    <td class="detailholder">
+                                                        
+                                                    </td>
+                                                    <td class="imageholder">
+                                                        <img src="<?php echo $this->getSkinUrl('/images/catalog/product/dressingroom/models/bottom_01.png'); ?>" />
+                                                    </td>
+                                                    <td class="detailholder">
+                                                        <div class="productdetail">
+                                                            <div class="productcount">
+                                                                <div class="current">3</div>
+                                                                <div>
+                                                                    <div class="countdivider">/</div>
+                                                                    <div class="totalcount">4</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="productname">U &amp; ME SPORTS BRA</div>
+                                                            <div class="productdescription">Made with Aurum+ - This sports bra is great for gym and yoga activities.</div>
+                                                            <div class="viewdetails">                    
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="goright">
+                                                        <img class="invisible" src="<?php echo $this->getSkinUrl('/images/catalog/product/dressingroom/arrow_right.png'); ?>" />                           
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
                         </div>
+                        <?php
+                            }
+                            else
+                            {
+                                ?>
+                                <div id="categorydescription" desc="<?php echo Mage::registry('current_category')->getName(); ?>" class="fullscreen colorbg pgsection">
+                                <table class="fullscreentable">
+                                    <tr>
+                                        <td>
+                                            <?php echo substr(trim($htmlcontent), 3); ?>
+                                        </td>
+                                    </tr>
+                                </table>
+                                </div>
+                                <?php
+                            }
+                         ?>
                     <?php
                 }
             ?>

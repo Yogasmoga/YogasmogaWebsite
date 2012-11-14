@@ -2171,7 +2171,7 @@ div.mycategory-products div.item img.active
     display : inline;
 }
 
-.mycategory-header
+.myheader
 {
     color: #D8A45C;
     font-size: 14pt;
@@ -2181,7 +2181,11 @@ div.mycategory-products div.item img.active
     background-image : url('../images/catalog/product/listing/line_all_product.png');
     background-position: center bottom;
     background-repeat: no-repeat;
-    z-index : 10;
+}
+
+.zindex10
+{
+    z-index: 10;
 }
 
 table.myproduct-grid
@@ -2377,6 +2381,11 @@ table.staticproductgrid
 table.staticproductgrid td
 {
     text-align: center;
+    padding-left : 20px;
+}
+table.staticproductgrid td:first-child
+{
+    padding-left : 0;
 }
 table.staticproductgrid div.item
 {
@@ -2392,7 +2401,7 @@ table.staticproductgrid div.item
     position : absolute;
 }
 
-.verticaltopalign
+.fullscreen > table.fullscreentable td.verticaltopalign
 {
     vertical-align: top;
 }
