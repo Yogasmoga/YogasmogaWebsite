@@ -2143,8 +2143,10 @@ div.mycategory-products div.item:hover td.productname
 }
 div.mycategory-products div.item td.productimage img.active
 {
+    /*
     width: 100%;
     max-height : 400px;
+    */
 }
 div.mycategory-products div.item td.productprice
 {
