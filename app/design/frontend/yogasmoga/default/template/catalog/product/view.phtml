@@ -182,43 +182,58 @@
     $productid = $_product->getId();
     $currentstoreid = Mage::app()->getStore()->getStoreId();
 ?>
-
-<div id="designfeatures" class="fullscreen colorbg pgsection" desc="Design Features">
-<table class="fullscreentable">
-    <tr>
-        <td>
-            <div class="designfeaturesheadimage"></div>
-            <table class="productdesignfeatures">
+<?php
+     if($productmodel->getAttributeRawValue($productid, 'design_feature_left_image', $currentstoreid) != "" && $productmodel->getAttributeRawValue($productid, 'design_feature_top_image', $currentstoreid) != "" && $productmodel->getAttributeRawValue($productid, 'design_feature_right_image', $currentstoreid) != "" && $productmodel->getAttributeRawValue($productid, 'design_feature_bottom_image', $currentstoreid) != "")
+     {
+        ?>
+            <div id="designfeatures" class="fullscreen colorbg pgsection" desc="Design Features">
+            <table class="fullscreentable">
                 <tr>
-                    <td rowspan="2">
-                        <div size="full">
-                            <img src="<?php echo $this->getSkinUrl('images/catalog/product/designfeatures/'.$productmodel->getAttributeRawValue($productid, 'design_feature_left_image', $currentstoreid)); ?>" alt="<?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?>" />
-                            <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
-                        </div>
-                    </td>
                     <td>
-                        <div size="half">
-                        <img src="<?php echo $this->getSkinUrl('images/catalog/product/designfeatures/'.$productmodel->getAttributeRawValue($productid, 'design_feature_top_image', $currentstoreid)); ?>" alt="<?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_top_imagetext', $currentstoreid); ?>" />
-                        </div>
-                    </td>
-                    <td rowspan="2">
-                        <div size="full">
-                            <img src="<?php echo $this->getSkinUrl('images/catalog/product/designfeatures/'.$productmodel->getAttributeRawValue($productid, 'design_feature_right_image', $currentstoreid)); ?>" alt="<?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_right_imagetext', $currentstoreid); ?>" />
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="vertical-align: bottom;">
-                        <div size="half">
-                            <img src="<?php echo $this->getSkinUrl('images/catalog/product/designfeatures/'.$productmodel->getAttributeRawValue($productid, 'design_feature_bottom_image', $currentstoreid)); ?>" alt="<?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_bottom_imagetxt', $currentstoreid); ?>" />
-                        </div>
+                        <div class="designfeaturesheadimage"></div>
+                        <table class="productdesignfeatures">
+                            <tr>
+                                <td rowspan="2">
+                                    <div size="full">
+                                        <img src="<?php echo $this->getSkinUrl('images/catalog/product/designfeatures/'.$productmodel->getAttributeRawValue($productid, 'design_feature_left_image', $currentstoreid)); ?>" alt="<?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?>" />
+                                        <?php /*
+                                        <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
+                                        */ ?>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div size="half">
+                                    <img src="<?php echo $this->getSkinUrl('images/catalog/product/designfeatures/'.$productmodel->getAttributeRawValue($productid, 'design_feature_top_image', $currentstoreid)); ?>" alt="<?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_top_imagetext', $currentstoreid); ?>" />
+                                    </div>
+                                </td>
+                                <td rowspan="2">
+                                    <div size="full">
+                                        <img src="<?php echo $this->getSkinUrl('images/catalog/product/designfeatures/'.$productmodel->getAttributeRawValue($productid, 'design_feature_right_image', $currentstoreid)); ?>" alt="<?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_right_imagetext', $currentstoreid); ?>" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="vertical-align: bottom;">
+                                    <div size="half">
+                                        <img src="<?php echo $this->getSkinUrl('images/catalog/product/designfeatures/'.$productmodel->getAttributeRawValue($productid, 'design_feature_bottom_image', $currentstoreid)); ?>" alt="<?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_bottom_imagetxt', $currentstoreid); ?>" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
             </table>
-        </td>
-    </tr>
-</table>
-</div>
-<div id="fabrictechnology" desc="Fabric Technology" style="background-image : url('<?php echo $this->getSkinUrl('images/catalog/product/fabrictechnology/'.$productmodel->getAttributeRawValue($productid, 'fabric_technology_image', $currentstoreid)); ?>');" class="bgimage pgsection">
-</div>
+            </div>      
+        <?php
+     }
+?>
+<?php
+     if($productmodel->getAttributeRawValue($productid, 'fabric_technology_image', $currentstoreid) != "")
+     {
+        ?>
+            <div id="fabrictechnology" desc="Fabric Technology" style="background-image : url('<?php echo $this->getSkinUrl('images/catalog/product/fabrictechnology/'.$productmodel->getAttributeRawValue($productid, 'fabric_technology_image', $currentstoreid)); ?>');" class="bgimage pgsection">
+            </div>        
+        <?php
+     }
+?>
 <?php echo $this->getChildHtml('upsell_products') ?>
