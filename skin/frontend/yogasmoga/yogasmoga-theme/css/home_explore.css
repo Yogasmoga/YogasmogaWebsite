@@ -1,0 +1,26 @@
+.explore_nav {
+	width:80%; 
+	margin:auto; 
+	position:absolute; 
+	bottom:7%; 
+	left:10%;
+	}
+.explore_nav td {
+	text-align:center;
+	border-right:1px solid #666666;
+	height:5px;
+	cursor:pointer;
+}
+
+.explore_nav td:first-child {
+	border-left:1px solid #666666;
+	width:25%;
+}
+
+.explore_nav {
+	background:url('../images/homepage/explore_nav_state.png') repeat-x center;
+}
+
+.explore_nav_current{
+	background:url('../images/homepage/explore_nav_hover.png') repeat-x center;
+}

@@ -59,8 +59,8 @@ Default layout, loads most of the pages
                 -->
                 
                 <block type="page/js_cookie" name="js_cookies" template="page/js/cookie.phtml"/>
+                <action method="addCss"><stylesheet>css/home_explore.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/dressingroom.css</stylesheet></action>
-                <action method="addCss"><stylesheet>css/rcarousel.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/fancy.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/flexslider.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/styles.css</stylesheet></action>
