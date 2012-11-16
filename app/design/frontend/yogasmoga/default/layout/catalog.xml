@@ -142,11 +142,9 @@ Category layered navigation layout
             </block>
         </reference>
     </catalog_category_layered>
-
 <!--
 Compare products page
 -->
-
     <catalog_product_compare_index translate="label">
         <label>Catalog Product Compare List</label>
         <!-- Mage_Catalog -->
@@ -167,7 +165,6 @@ Compare products page
             <action method="unsetChild"><name>catalog.compare.sidebar</name></action>
         </reference>
     </customer_account_index>
-
 <!--
 Product view
 -->
@@ -176,7 +173,7 @@ Product view
         <label>Catalog Product View (Any)</label>
         <!-- Mage_Catalog -->
         <reference name="root">
-            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+            <action method="setTemplate"><template>page/product.phtml</template></action>
         </reference>
         <reference name="head">
             <action method="addJs"><script>varien/product.js</script></action>

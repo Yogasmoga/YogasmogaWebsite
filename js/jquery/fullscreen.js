@@ -26,6 +26,9 @@ function setfullscreenheight()
     }
     _winH = _winH - _headerHeight;
     jQuery("div.fullscreen").css('min-height', (_winH) + 'px');
+    //jQuery("div.fullscreen, div.fullscreenovfhidden, div.bgimage").css('width', (_winW) + 'px');
+    //jQuery("div.fullscreen, div.fullscreenovfhidden, div.bgimage").css('min-width', '1500px');
+    
     jQuery("div.fullscreenovfhidden").css('height', (_winH) + 'px');
     jQuery.each(jQuery(".fullscreen"), function(){
         //jQuery(this).find("table:first").css('min-height',(_winH) + 'px');

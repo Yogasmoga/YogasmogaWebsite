@@ -18,6 +18,11 @@
           <template>page/category.phtml</template>
           <layout_handle>category</layout_handle>
         </category>
+		<product translate="label">
+          <label>Product</label>
+          <template>page/product.phtml</template>
+          <layout_handle>product</layout_handle>
+        </product>
         <!-- add more layouts here -->
       </layouts>
     </page>
