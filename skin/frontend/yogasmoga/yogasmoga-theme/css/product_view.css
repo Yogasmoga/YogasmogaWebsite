@@ -7,6 +7,7 @@
 .productdesignfeatures td img
 {
     width : 100%;
+    height : 100%;
 }
 .fullscreentable td .productdesignfeatures td
 {
@@ -27,4 +28,25 @@
     position : absolute;
     top : 0;
     left : 40%;   
+    z-index: 2;
+}
+table.productdesignfeatures div[size]
+{
+    display : block;
+    position : relative;
+}
+table.productdesignfeatures div.caption
+{
+    background-color : black;
+    position : absolute;
+    opacity : 0.6;
+    filter : alpha(opacity=60);
+    cursor : pointer;
+}
+table.productdesignfeatures div.caption div
+{
+    padding : 20px;
+    color : #fff;
+    font-weight : bold;
+    width : auto;
 }

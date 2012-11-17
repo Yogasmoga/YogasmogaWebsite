@@ -2150,7 +2150,7 @@ div.mycategory-products div.item td.productimage img.active
     */
     max-height: 400px;
     max-width: 300px;
-    width: 100%;
+    /*width: 100%;*/
 }
 div.mycategory-products div.item td.productprice
 {
@@ -2401,6 +2401,12 @@ table.staticproductgrid div.item
     width : 100%;
     margin-left : auto;
     margin-right : auto;
+}
+
+table.staticproductgrid div.item td.productimage img.active
+{
+    width : 100%;
+    height : auto;
 }
 
 .absoluteposition

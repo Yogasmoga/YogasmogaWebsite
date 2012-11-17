@@ -195,7 +195,8 @@
                             <tr>
                                 <td rowspan="2">
                                     <div size="full">
-                                        <img src="<?php echo $this->getSkinUrl('images/catalog/product/designfeatures/'.$productmodel->getAttributeRawValue($productid, 'design_feature_left_image', $currentstoreid)); ?>" alt="<?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?>" />
+                                            <img src="<?php echo $this->getSkinUrl('images/catalog/product/designfeatures/'.$productmodel->getAttributeRawValue($productid, 'design_feature_left_image', $currentstoreid)); ?>" alt="<?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?>" />
+                                            <div class="caption"><div><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div></div>
                                         <?php /*
                                         <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
                                         */ ?>
@@ -204,11 +205,13 @@
                                 <td>
                                     <div size="half">
                                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/designfeatures/'.$productmodel->getAttributeRawValue($productid, 'design_feature_top_image', $currentstoreid)); ?>" alt="<?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_top_imagetext', $currentstoreid); ?>" />
+                                    <div class="caption"><div><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_top_imagetext', $currentstoreid); ?></div></div>
                                     </div>
                                 </td>
                                 <td rowspan="2">
                                     <div size="full">
                                         <img src="<?php echo $this->getSkinUrl('images/catalog/product/designfeatures/'.$productmodel->getAttributeRawValue($productid, 'design_feature_right_image', $currentstoreid)); ?>" alt="<?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_right_imagetext', $currentstoreid); ?>" />
+                                        <div class="caption"><div><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_right_imagetext', $currentstoreid); ?></div></div>
                                     </div>
                                 </td>
                             </tr>
@@ -216,6 +219,7 @@
                                 <td style="vertical-align: bottom;">
                                     <div size="half">
                                         <img src="<?php echo $this->getSkinUrl('images/catalog/product/designfeatures/'.$productmodel->getAttributeRawValue($productid, 'design_feature_bottom_image', $currentstoreid)); ?>" alt="<?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_bottom_imagetxt', $currentstoreid); ?>" />
+                                        <div class="caption"><div><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_bottom_imagetxt', $currentstoreid); ?></div></div>
                                     </div>
                                 </td>
                             </tr>
