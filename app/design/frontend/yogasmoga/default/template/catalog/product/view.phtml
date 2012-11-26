@@ -295,6 +295,65 @@
             </td>
         </tr>
     </table>
+    <div class="productoptions absoluteproductoptions">
+        <table class="productdetailtable">
+            <tr>
+                <td>
+                    <div class="breadcrumb"><?php echo $breadcrumb; ?></div>
+                    <div class="productname"><?php echo $productname; ?></div>
+                    <div class="productcost"><?php echo $productprice; ?></div>
+                    <div class="shortdesc"><?php echo $_product->getShortDescription(); ?></div>
+                    <table class="selectedcolor">
+                        <tr>
+                            <td>COLOR</td>
+                            <td class="selectedcolortext"></td>
+                        </tr>
+                    </table>
+                    <div class="qty">QTY</div>
+                    <div class="sizeselector">
+                        <select class="qtyselector">
+                            <?php
+                                for($i = 0; $i < 21; $i++)
+                                {
+                                    ?>
+                                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                    <?php
+                                } 
+                            ?>
+                        </select>
+                    </div>
+                    <div class="divider"></div>
+                    <table class="smogibucks">
+                        <tr>
+                            <td>
+                                <div class="smogibuckcount">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <?php echo $productrewardpoints; ?>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="earnsmogibuckstext">
+                                EARN SMOGI BUCKS<br/>WITH THIS PURCHASE
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="orderitem" class="addtobag spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_on.png'); ?>"></div>
+                    <div id="preorderitem" class="preorderitem spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_this_item.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_this_item.png'); ?>"></div>
+                    <div class="producterrorcontainer">
+                        <div class="errormsg">
+                        </div>
+                    </div>
+                    <div class="addtowishlist">
+                        <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productid; ?>/">ADD TO WISHLIST +</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 <?php
