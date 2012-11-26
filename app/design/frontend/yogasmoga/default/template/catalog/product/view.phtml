@@ -317,20 +317,9 @@
                             {
                                 ?>
                                     <div>
-                                        <table color="<?php //echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
+                                        <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
                                             <tr>
-                                                <?php
-                                                    foreach($colorinfo['hex'] as $hex)
-                                                    {
-                                                        ?>
-                                                            <td style="background-color: <?php echo $hex; ?>;">
-                                                            <div>
-                                                                &nbsp;
-                                                            </div>                                                
-                                                            </td>   
-                                                        <?php
-                                                    } 
-                                                ?>
+                                                
                                             </tr>
                                             <tr>
                                                 <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
