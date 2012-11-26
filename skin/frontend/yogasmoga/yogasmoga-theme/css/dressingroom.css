@@ -43,10 +43,6 @@
     background-position: center center;
     margin-top : 15px;
 }
-#dressingroomholder div.productdetail div.viewdetails:hover
-{
-    background-image : url('../images/catalog/product/dressingroom/view_details_on.png');
-}
 #dressingroomholder div.productdetail
 {
     width : 225px;
@@ -75,7 +71,7 @@
 }
 #dressingroomholder div.productdetail div.productcount div.totalcount
 {
-    
+       
 }
 #dressingroomholder div.productdetail div.productname
 {

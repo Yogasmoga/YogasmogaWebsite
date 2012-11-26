@@ -45,11 +45,16 @@
             $searchvalue = $value;
         }
     ?>
-    <div title="<?php echo $searchvalue ?>" id="<?php echo $searchtype; ?>|<?php echo $searchvalue ?>" searchattr="<?php echo $searchtype; ?>" searchval="<?php echo $searchvalue ?>">
+    <div <?php /* title="<?php echo $searchvalue ?>" */ ?> id="<?php echo $searchtype; ?>|<?php echo $searchvalue ?>" searchattr="<?php echo $searchtype; ?>" searchval="<?php echo $searchvalue ?>">
         <table class="inactive">
             <tr>
                 <td>
-                    <?php echo $_item->getLabel() ?>
+                    <?php
+                        if(strpos($_item->getLabel(), "|") != false || strpos($_item->getLabel(), "|") !== false)
+                            echo substr($_item->getLabel(), 0, strpos($_item->getLabel(), "|")); 
+                        else
+                            echo $_item->getLabel();
+                    ?>
                 </td>
                 <td class="add">
                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/ic_plus.png'); ?>" />

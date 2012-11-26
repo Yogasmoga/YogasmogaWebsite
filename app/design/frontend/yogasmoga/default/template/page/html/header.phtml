@@ -45,6 +45,7 @@
                     <ul class="topmenulinks">
                         <?php
                             $base_url = Mage::helper('core/url')->getHomeUrl();
+                            //if($this->getRequest()->getControllerName() == "product")
                             $currentcategoryid = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
                             $itemcount = Mage::helper('checkout/cart')->getSummaryCount();
                             if($itemcount == "")

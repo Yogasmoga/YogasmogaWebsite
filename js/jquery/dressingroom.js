@@ -6,7 +6,7 @@ jQuery(document).ready(function($){
         $(this).find("img.invisible, div.productdetail").fadeOut('fast');
         //$(this).find("img.invisible").fadeOut('fast');
     });
-    
+        
     fillDressingroomOptions();
     InitializeDressingRoomCounts();
     changedress('top', 0);
@@ -84,13 +84,49 @@ jQuery(document).ready(function($){
     });
     
     $("#dressingroomtop div.viewdetails").click(function(){
+         //$( "#productdetailpopup" ).dialog( "open" );
+         showproductlightbox(_dressingroomcollection[getdressingroomrealindex(_dressingroomcurrentbodytype, 'top', _dressingroomtopindex)].id);
         //console.log(_dressingroomcollection[getdressingroomrealindex(_dressingroomcurrentbodytype, 'top', _dressingroomtopindex)].id);
     });
     
+    $("#productdetailpopup").dialog({
+        autoOpen: false,
+        show: "scale",
+        hide: "scale",
+        width : 920,
+        height : 570,
+        modal : true,
+        draggable : false,
+        position: { my: "center top",at: "center top+80" },
+        resizable : false,
+        dialogClass : 'yogidialog'
+    });
+        
     $("#dressingroombottom div.viewdetails").click(function(){
+        showproductlightbox(_dressingroomcollection[getdressingroomrealindex(_dressingroomcurrentbodytype, 'bottom', _dressingroombottomindex)].id);
         //console.log(_dressingroomcollection[getdressingroomrealindex(_dressingroomcurrentbodytype, 'bottom', _dressingroombottomindex)].id);
     });
+    
+    $("img#closelightbox").live("click", function(){
+        jQuery( "#productdetailpopup" ).dialog( "close" );
+    });
 });
+
+function showproductlightbox(productid)
+{
+    jQuery("#productdetailpopup").html("<table style='width:100%;height : 100%;'><tr><td style='text-align:center;vertical-align:middle;'>Loading. .</td></tr></table>");
+    jQuery( "#productdetailpopup" ).dialog( "open" );
+    jQuery.ajax({
+        type : 'POST',
+        url : homeUrl + 'mycatalog/myproduct/details',
+        data : {'id': productid},
+        success : function(data){
+            jQuery("#productdetailpopup").html(data);
+            if(jQuery("div#colorcontainer table:first").length > 0)
+                changeColor(jQuery("div#colorcontainer table:first").attr("color"));
+        }
+    });
+}
 
 function fillDressingroomOptions()
 {

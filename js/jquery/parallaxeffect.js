@@ -9,5 +9,4 @@ jQuery(document).ready(function($){
         $(this).animate({ height: 300 }, 'slow', function() {
         });
     });
-    
 });

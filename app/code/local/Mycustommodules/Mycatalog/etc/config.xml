@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <mycustommodules_mycatalog>
+            <version>0.0.1</version>
+        </mycustommodules_mycatalog>
+    </modules>
+	<frontend>
+        <routers>
+            <mycatalog>
+                <use>standard</use>
+                <args>
+                    <module>Mycustommodules_Mycatalog</module>
+                    <frontName>mycatalog</frontName>
+                </args>
+            </mycatalog>
+        </routers>   
+    </frontend>
+</config>

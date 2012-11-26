@@ -1848,7 +1848,8 @@ div#smallmenu
 }
 .fullscreen
 {
-    width:100%;    
+    width:100%;
+    min-width : 960px;    
 }
 .fullscreenovfhidden img.fullscreen
 {
@@ -2121,6 +2122,7 @@ div.mycategory-products div.item
     cursor : pointer;
     margin-left : 30px;
     margin-bottom : 30px;
+    width : 300px;    
 }
 div.mycategory-products div.item a > table
 {
@@ -2149,8 +2151,8 @@ div.mycategory-products div.item td.productimage img.active
     max-height : 400px;
     */
     max-height: 400px;
-    max-width: 300px;
-    /*width: 100%;*/
+    /*max-width: 300px;
+    width: 100%;*/
 }
 div.mycategory-products div.item td.productprice
 {
@@ -2220,6 +2222,14 @@ div.mycategory-products div.item td.productimage
 {
     height : 400px;
     vertical-align : bottom;
+}
+
+div.mycategory-products div.item td.productimage div
+{
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;   
 }
 
 div.mycategory-products div.item td.animateimage
@@ -2329,57 +2339,6 @@ div.mylayerednavigation div.searchitems div:hover
     background-color : #EFEEED;
 }
 
-
-/**** Isotope Filtering ****/
-
-.isotope-item {
-  z-index: 2;
-}
-
-.isotope-hidden.isotope-item {
-  pointer-events: none;
-  z-index: 1;
-}
-
-/**** Isotope CSS3 transitions ****/
-
-.isotope,
-.isotope .isotope-item {
-  -webkit-transition-duration: 0.8s;
-     -moz-transition-duration: 0.8s;
-      -ms-transition-duration: 0.8s;
-       -o-transition-duration: 0.8s;
-          transition-duration: 0.8s;
-}
-
-.isotope {
-  -webkit-transition-property: height, width;
-     -moz-transition-property: height, width;
-      -ms-transition-property: height, width;
-       -o-transition-property: height, width;
-          transition-property: height, width;
-}
-
-.isotope .isotope-item {
-  -webkit-transition-property: -webkit-transform, opacity;
-     -moz-transition-property:    -moz-transform, opacity;
-      -ms-transition-property:     -ms-transform, opacity;
-       -o-transition-property:      -o-transform, opacity;
-          transition-property:         transform, opacity;
-}
-
-/**** disabling Isotope CSS3 transitions ****/
-
-.isotope.no-transition,
-.isotope.no-transition .isotope-item,
-.isotope .isotope-item.no-transition {
-  -webkit-transition-duration: 0s;
-     -moz-transition-duration: 0s;
-      -ms-transition-duration: 0s;
-       -o-transition-duration: 0s;
-          transition-duration: 0s;
-}
-
 table.staticproductgrid
 {
     width : 100%;
@@ -2417,4 +2376,36 @@ table.staticproductgrid div.item td.productimage img.active
 .fullscreen > table.fullscreentable td.verticaltopalign
 {
     vertical-align: top;
+}
+
+.yogidialog .ui-dialog-titlebar
+{
+    display : none;
+}
+
+.yogidialog .ui-dialog-content
+{
+    padding : 0;
+}
+
+.yogidialog.ui-dialog
+{
+    z-index : 10002 !important;
+}
+
+.ui-widget-overlay
+{
+    z-index: 10001 !important;
+    background-image: none;
+    background-color : black;
+}
+.yogidialog.ui-widget-content
+{
+    background-image : none;
+    background-color : #FFF;
+}
+
+.yogidialog.ui-widget
+{
+    font-family : Arial;
 }

@@ -1,0 +1,198 @@
+jQuery(document).ready(function($){
+    $("div#colorcontainer table").live("click", function(){
+        changeColor($(this).attr("color"));
+    });
+    
+    $("table.smallimagecontiner td:not(.selectedimage)").live("click", function(){
+        $("table.smallimagecontiner td").removeClass("selectedimage");
+        $(this).addClass("selectedimage");
+        $("table.tdbigimagecontainer img").hide();
+        $("table.tdbigimagecontainer img").attr("src", $(this).attr("bigimageurl"));
+        $("table.tdbigimagecontainer img").fadeIn('fast');
+    });
+    
+    $("td#tdpopupproductsmallimages td:not(.selectedimage)").live("click", function(){
+        $("td#tdpopupproductsmallimages td").removeClass("selectedimage");
+        $(this).addClass("selectedimage");
+        $("td#tdpopupproductbigimage img").hide();
+        $("td#tdpopupproductbigimage img").attr("src", $(this).attr("bigimageurl"));
+        $("td#tdpopupproductbigimage img").fadeIn('fast');
+    });
+    
+    $("div#orderitem, div#preorderitem").live("click", function(){
+        if(_addingtocart)
+            return;
+        addtocart();
+    });
+    
+    $("div#sizecontainer td:not(.disabled) div:not(.dvselectedsize)").live("click", function(){
+        changeproductsize($(this));
+    });
+    
+    $("div.sizeselector select.qtyselector").live("click", function(){
+        changeOrderqty($(this).val());
+    });
+    
+    if($("div#colorcontainer table:first").length > 0)
+        changeColor($("div#colorcontainer table:first").attr("color"));
+});
+
+function changeproductsize(sz)
+{
+    jQuery("div#sizecontainer div").removeClass("dvselectedsize");
+    sz.addClass("dvselectedsize");
+    var qty = sz.attr("qty") * 1;
+    var orderqty =_productorderqty;
+    if((qty - orderqty) > 0)
+    {
+        jQuery("div#orderitem").show();
+        jQuery("div#preorderitem").hide();            
+    }
+    else
+    {
+        jQuery("div#orderitem").hide();
+        jQuery("div#preorderitem").show();
+    }
+    var price = sz.attr("price");
+    jQuery("div.productcost").html("$" + price);
+    var rewardpoints = Math.floor((price * 1) * _rewardpointsearned);
+    jQuery("div.smogibuckcount td").html(rewardpoints);   
+}
+
+function changeOrderqty(qty)
+{
+    qty = qty * 1;
+    _productorderqty = qty;
+    
+    if(jQuery("div#sizecontainer div.dvselectedsize").length == 0)
+        return;
+        
+    var stockqty = jQuery("div#sizecontainer div.dvselectedsize").attr("qty") * 1;
+    if((stockqty - qty) >= 0)
+    {
+        jQuery("div#orderitem").show();
+        jQuery("div#preorderitem").hide();            
+    }
+    else
+    {
+        jQuery("div#orderitem").hide();
+        jQuery("div#preorderitem").show();
+    }
+}
+
+function searchproductcolorinfoarrray(clr)
+{
+    for(i = 0; i < _productcolorinfo.length; i++)
+    {
+        if(_productcolorinfo[i].color == clr)
+            return i;
+    }
+    return -1;
+}
+
+
+function changeColor(clr)
+{
+    var colorindex = searchproductcolorinfoarrray(clr);
+    if(colorindex == -1)
+        return;
+    jQuery("table.selectedcolor td:last").html(clr);
+    jQuery("div#colorcontainer table td").removeClass("tdselectedcolor");
+    jQuery("div#colorcontainer table[color='" + clr + "'] tr:nth-child(2) td").addClass("tdselectedcolor");
+    jQuery("div#sizecontainer div").removeClass("dvselectedsize");
+    //jQuery("div#sizecontainer div").addClass("disabled");
+    jQuery("div#sizecontainer div").parent().addClass("disabled");
+    for(i = 0; i < _productcolorinfo[colorindex].sizes.length; i++)
+    {
+        var size = _productcolorinfo[colorindex].sizes[i].substr(0, _productcolorinfo[colorindex].sizes[i].indexOf('|'));
+        var qty = _productcolorinfo[colorindex].sizes[i].substr(_productcolorinfo[colorindex].sizes[i].indexOf('|') + 1, _productcolorinfo[colorindex].sizes[i].indexOf('|') + 1);
+        var price = _productcolorinfo[colorindex].sizes[i].substr(_productcolorinfo[colorindex].sizes[i].indexOf('|', _productcolorinfo[colorindex].sizes[i].indexOf('|') + 1) + 1);
+        //console.log(qty);
+        jQuery("div#sizecontainer div[size='" +  size + "']").parent().removeClass("disabled");
+        jQuery("div#sizecontainer div[size='" +  size + "']").attr("qty", qty);
+        jQuery("div#sizecontainer div[size='" +  size + "']").attr("price", price);
+    }
+    jQuery("div#orderitem").show();
+    jQuery("div#preorderitem").hide();
+    var smallimagehtml = '';
+    if(_productdisplaymode == 'popup')
+    {
+        for(i = 0; i < _productcolorinfo[colorindex].smallimages.length; i++)
+        {
+            smallimagehtml = smallimagehtml + "<tr><td bigimageurl='" + _productcolorinfo[colorindex].bigimages[i] + "'><img src='" + _productcolorinfo[colorindex].smallimages[i] + "'></td></tr>";
+        }
+        jQuery("td#tdpopupproductbigimage, td#tdpopupproductsmallimages").hide();
+        jQuery("td#tdpopupproductsmallimages table tbody").html(smallimagehtml);
+        if(jQuery("td#tdpopupproductsmallimages td").length > 0)
+        {
+            if(jQuery("td#tdpopupproductbigimage img").length > 0)
+                jQuery("td#tdpopupproductbigimage img").attr("src", jQuery("td#tdpopupproductsmallimages table tbody td:first").attr("bigimageurl"));
+            else
+                jQuery("td#tdpopupproductbigimage").html("<img src='" + jQuery("td#tdpopupproductsmallimages table tbody td:first").attr("bigimageurl") + "'>");
+            jQuery("td#tdpopupproductsmallimages table tbody td:first").addClass('selectedimage');   
+        }
+        jQuery("td#tdpopupproductbigimage, td#tdpopupproductsmallimages").fadeIn('fast');
+    }
+    else
+    {
+        smallimagehtml = '<tr>';
+        for(i = 0; i < _productcolorinfo[colorindex].smallimages.length; i++)
+        {
+            smallimagehtml = smallimagehtml + "<td bigimageurl='" + _productcolorinfo[colorindex].bigimages[i] + "'><img src='" + _productcolorinfo[colorindex].smallimages[i] + "'></td>";
+        }
+        smallimagehtml = smallimagehtml + "</tr>";
+        jQuery("table.productimagecontainer").hide();
+        jQuery("table.smallimagecontiner tbody").html(smallimagehtml);
+        if(jQuery("table.smallimagecontiner td").length > 0)
+        {
+            if(jQuery("table.tdbigimagecontainer img").length > 0)
+                jQuery("table.tdbigimagecontainer img").attr("src", jQuery("table.smallimagecontiner td:first").attr("bigimageurl"));
+            else
+                jQuery("table.tdbigimagecontainer td").html("<img src='" + jQuery("table.smallimagecontiner td:first").attr("bigimageurl") + "'>");   
+        }
+        jQuery("table.smallimagecontiner td:first").addClass("selectedimage");
+        jQuery("table.productimagecontainer").fadeIn('fast');   
+    }
+}
+
+function addtocart()
+{
+    var errormsg = '';
+    if(jQuery("div#sizecontainer div.dvselectedsize").length == 0 && _productorderqty == 0)
+        errormsg = "Please select quantity and size to continue.";
+    else
+    {
+        if(_productorderqty == 0)
+            errormsg = "Please select quantity to continue.";
+        if(jQuery("div#sizecontainer div.dvselectedsize").length == 0)
+            errormsg = "Please select size to continue.";
+    }
+    if(errormsg != '')
+    {
+        jQuery("div.producterrorcontainer div.errormsg").hide();
+        jQuery("div.producterrorcontainer div.errormsg").html(errormsg);
+        jQuery("div.producterrorcontainer div.errormsg").fadeIn('fast');
+        return;
+    }
+    jQuery("div.producterrorcontainer div.errormsg").hide();
+    var size = jQuery("div#sizecontainer div.dvselectedsize").attr("value");
+    var color = jQuery("div#colorcontainer table").has("td.tdselectedcolor").attr("value");
+    _addingtocart = true;
+    jQuery.ajax({
+        type : 'POST',
+        url : homeUrl + 'mycheckout/mycart/add?product=' + _productid + '&qty=' + _productorderqty + '&super_attribute[' + _colorattributeid + ']=' + color + '&super_attribute[' + _sizeattributeid + ']=' + size,
+        data : {},
+        success : function(result){
+            _addingtocart = false;
+            if(_productdisplaymode = "popup")
+                jQuery( "#productdetailpopup" ).dialog( "close" );
+            //
+//            result = eval('(' + result + ')');
+//            if(result.status == "0")
+//                jQuery("#footernotification").html(result.message).removeClass("success").addClass("error").fadeIn();
+//            else
+//                jQuery("#footernotification").html(result.message).removeClass("error").addClass("success").fadeIn();
+            //setTimeout(function(){ rremovenotifications(); }, 5000);
+        }
+    }); 
+}

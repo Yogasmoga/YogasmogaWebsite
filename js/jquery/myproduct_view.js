@@ -1,7 +1,9 @@
 jQuery(document).ready(function($){
     setTimeout(function(){ resizeDesignFeatures(); }, 100);
+    setTimeout(function(){ resizeProductBigImage(); }, 100);
     $(window).resize(function(){
-        setTimeout(function(){ resizeDesignFeatures(); }, 100);    
+        setTimeout(function(){ resizeDesignFeatures(); }, 100);
+        setTimeout(function(){ resizeProductBigImage(); }, 100);
     });
     
     $("table.productdesignfeatures div[size]").hover(function(){
@@ -17,20 +19,6 @@ jQuery(document).ready(function($){
             'margin-top': 0
         }, 300);
     });
-    //$("table.productdesignfeatures td div img").capty();
-    //$("table.productdesignfeatures td div img").hover(function(){
-//       var div = $(this).parent().find("div.caption:first");
-//       console.log(($(this).css('top')));
-//       if(($(this).css('top')) == 'auto')
-//       {
-//            
-//       }
-//       //($(this).css('top').substr(0, jQuery(this).parent().css('top').length - 2) * -1) + $(this).height();
-//       //div.css('margin-top', );    
-//    },
-//    function(){
-//         
-//    });
 });
 
 function resizeDesignFeatures()
@@ -63,4 +51,14 @@ function resizeDesignFeatures()
 //            jQuery(this).css('margin-left',((parentheight - height) / 2) + 'px');        
 //        }
     });
+}
+
+function resizeProductBigImage()
+{
+    var correction = 100;
+    var maxHeight = _winH - correction;
+    if(maxHeight > 600)
+        jQuery("table.tdbigimagecontainer img").css('max-height', maxHeight + 'px');
+    else
+        jQuery("table.tdbigimagecontainer img").css('max-height', '600px');
 }

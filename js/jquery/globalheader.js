@@ -45,6 +45,16 @@ function selectcurrentanchors()
     });
 }
 
+function selectmenulink(link)
+{
+    jQuery.each(jQuery("ul.topmenulinks a"), function(){
+        if(jQuery(this).attr("href") == link)
+        {
+            jQuery(this).parent("li").addClass("selected");
+        }
+    });   
+}
+
 function closeHeader()
 {
     var ishover = _ismenuhovered;

@@ -33,6 +33,7 @@
 ?>
 <?php $_helper = $this->helper('catalog/output'); ?>
 <?php $_product = $this->getProduct(); ?>
+<?php $_product = Mage::getModel('catalog/product')->load($_product->getId()); ?>
 <script type="text/javascript">
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
@@ -41,140 +42,379 @@
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
 */ 
 ?>
-<div id="productdetails" class="fullscreen colorbg pgsection" desc="Product Details">
-        <div class="product-view">
-        <div class="product-essential">
-        <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
-            <div class="no-display">
-                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
-                <input type="hidden" name="related_product" id="related-products-field" value="" />
-            </div>
+<?php
+    $cats = $_product->getCategoryIds();
+    $categoryid = Mage::getModel('catalog/category')->load($cats[0])->getId();
+    $categoryurl = Mage::getModel("catalog/category")->load($categoryid)->getUrl();
+    //echo $categoryid;
+    $breadcrumb = '&lt;&nbsp;<a href="'.Mage::helper('core/url')->getHomeUrl().'">Home</a>';
+    $breadcrumb .= '&nbsp;&lt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load($categoryid)->getUrl().'">'.Mage::getModel("catalog/category")->load($categoryid)->getName().'</a>';
+    //$breadcrumb .= '&nbsp;&lt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'">'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getName().'</a>';
+    if($this->getRequest()->getParam('from') == 'dressingroom')
+        $breadcrumb .= '&nbsp;&lt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'#dressingroom">DRESSING ROOM</a>';
+    else
+        $breadcrumb .= '&nbsp;&lt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'#productgrid">PRODUCT GRID</a>';
     
-            <div class="product-shop">
-                <div class="product-name">
-                    <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+        
+    $productname = $_helper->productAttribute($_product, $_product->getName(), 'name');
+    $productid = $_product->getId();
+    $_rewardpointsearned = 0.1;
+    $price = $_product->getSpecialPrice();
+    if($price == "")
+        $price = $_product->getPrice();
+    $price = round($price,2);
+      if (floor($price)==$price)
+        $price = floor($price);
+    $productrewardpoints = floor($price * $_rewardpointsearned);
+    $productprice = "$".$price;
+    
+    $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
+    $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+    $productcolorinfo = array();
+    foreach($_childproducts as $_childproduct)
+    {
+        //echo Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+        $temp = $_childproduct->getAttributeText('color');
+        if(strpos($temp,"|") !== FALSE)
+        {
+            $hexcodes = substr($temp, strpos($temp,"|") + 1);
+            $hexcodes = explode(",", $hexcodes);
+            $temp = substr($temp, 0, strpos($temp,"|"));
+            if(!isset($productcolorinfo[$temp]))
+                $productcolorinfo[$temp] = array();
+            $productcolorinfo[$temp]['hex'] = $hexcodes;
+            $productcolorinfo[$temp]['value'] = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId());
+            //if(!array_key_exists('hex', $productcolorinfo[$temp]))
+//            {
+//                $hexcodes = explode(",", $hexcodes);
+//                $productcolorinfo[$temp]['hex'] = $hexcodes;
+//            }
+            //if(count($productcolorinfo[$temp]["images"]) == 0)
+//            {
+//                $hexcodes = explode(",", $hexcodes);
+//                $productcolorinfo[$temp]["hex"] = $hexcodes;
+//            }
+            //if(!isset($productcolorinfo[$temp]['hex']))
+//            {
+//                echo $temp;
+//                $hexcodes = explode(",", $hexcodes);
+//                //$productcolorinfo[$temp]['hex'] = $hexcodes;
+//                array_push($productcolorinfo[$temp]['hex'], $hexcodes);   
+//            }
+        }
+        $price = $_childproduct->getSpecialPrice();
+        if($price == "")
+            $price = $_childproduct->getPrice();
+        $price = round($price,2);
+          if (floor($price)==$price)
+            $price = floor($price);
+        
+        $temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price;
+        //if(array_key_exists("sizes", $productcolorinfo[$temp]))
+        if(isset($productcolorinfo[$temp]["sizes"]))
+        {
+            //echo "pushing";
+            array_push($productcolorinfo[$temp]["sizes"], $temp1);
+        }
+        else
+        {
+            $productcolorinfo[$temp]["sizes"] = array($temp1);
+            if(!isset($productcolorinfo[$temp]["sizes"]))
+                echo "not set";    
+            foreach($_gallery as $_image)
+            {
+                if(str_replace("*", "", $_image->getLabel()) == $temp)
+                {
+                    
+                    //echo $imageurl;
+                    $smallimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75);
+                    $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(700, 700);
+                    $zoomimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(750, 750);
+                    
+                    //if(count($productcolorinfo[$temp]["images"]) == 0)
+                    if(!isset($productcolorinfo[$temp]["images"]))
+                    {
+                        $productcolorinfo[$temp]["images"] = array();
+                        $productcolorinfo[$temp]["images"]["small"] = array($smallimageurl);
+                        $productcolorinfo[$temp]["images"]["zoom"] = array($zoomimageurl);
+                        $productcolorinfo[$temp]["images"]["big"] = array($imageurl);
+                        //echo "creating"."<br/>";
+                    }
+                    else
+                        if(count($productcolorinfo[$temp]["images"]["small"]) < 3)
+                        {
+                            array_push($productcolorinfo[$temp]["images"]["big"], $imageurl);
+                            array_push($productcolorinfo[$temp]["images"]["small"], $smallimageurl);
+                            //echo "pushing"."<br/>";
+                            array_push($productcolorinfo[$temp]["images"]["zoom"], $zoomimageurl);
+                        }
+                }
+            }
+        }
+    }
+    
+    $tempproductcolorinfo = array();
+    $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
+    $allOptions = $attribute->getSource()->getAllOptions(true, true);
+    foreach ($allOptions as $instance) {
+        if(array_key_exists($instance['label'], $productcolorinfo))
+        {
+            $tempproductcolorinfo[$instance['label']] = $productcolorinfo[$instance['label']];
+        }
+    }
+    $productcolorinfo = $tempproductcolorinfo;
+    
+    
+    $productallsizes = array();
+    
+    
+    $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
+    $allOptions = $attribute->getSource()->getAllOptions(true, true);
+    foreach ($allOptions as $instance) {
+        if($instance['label'] != "")
+            array_push($productallsizes, array("label" => $instance['label'], "value" => $instance['value']) );
+    }
+    
+    
+    //echo "<pre>";
+//    print_r($productcolorinfo);
+//    echo "</pre>";
+    
+    ?>
+    <script type="text/javascript">
+        jQuery(document).ready(function($){
+            selectmenulink('<?php echo $categoryurl; ?>');
+        });
+        _productcolorinfo = new Array();
+    <?php
+    $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
+    foreach($configurableAttributeCollection as $attribute){
+        //echo "Attr-Code:".$attribute->getProductAttribute()->getAttributeCode()."<br/>";
+//        echo "Attr-Label:".$attribute->getProductAttribute()->getFrontend()->getLabel()."<br/>";
+//        echo "Attr-Id:".$attribute->getProductAttribute()->getId()."<br/>";
+        ?>
+        _productid = '<?php echo $productid; ?>';
+        <?php
+        if($attribute->getProductAttribute()->getAttributeCode() == "color")
+        {
+            ?>
+                _colorattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
+            <?php       
+        }
+        if($attribute->getProductAttribute()->getAttributeCode() == "size")
+        {
+            ?>
+                _sizeattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
+            <?php       
+        }
+    }
+    
+    $currentcolorcount = 0;
+    foreach($productcolorinfo as $key=>$val)
+    {
+        ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>] = new Object();
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].color = '<?php echo $key; ?>'; 
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].hex = new Array();
+            <?php
+                for($i = 0; $i < count($val['hex']); $i++)
+                {
+                    ?>
+                        _productcolorinfo[<?php echo $currentcolorcount; ?>].hex[<?php echo $i; ?>] = '<?php echo $val['hex'][$i]; ?>';
+                    <?php
+                } 
+            ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes = new Array();
+            <?php
+                for($i = 0; $i < count($val['sizes']); $i++)
+                {
+                    ?>
+                        _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes[<?php echo $i; ?>] = '<?php echo $val['sizes'][$i]; ?>';
+                    <?php
+                } 
+            ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages = new Array();
+            <?php
+                for($i = 0; $i < count($val['images']['zoom']); $i++)
+                {
+                    ?>
+                        _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>] = '<?php echo substr($val['images']['zoom'][$i], 1); ?>';
+                    <?php
+                } 
+            ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages = new Array();
+            <?php
+                for($i = 0; $i < count($val['images']['small']); $i++)
+                {
+                    ?>
+                        _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>] = '<?php echo substr($val['images']['small'][$i], 1); ?>';
+                    <?php
+                } 
+            ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages = new Array();
+            <?php
+                for($i = 0; $i < count($val['images']['big']); $i++)
+                {
+                    ?>
+                        _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>] = '<?php echo substr($val['images']['big'][$i], 1); ?>';
+                    <?php
+                } 
+            ?>
+        <?php
+        $currentcolorcount++;
+    }  
+?>
+    </script>
+ 
+<div id="imagetest" desc="dsf" class="fullscreen colorbg pgsection">
+    <table class="productimagecontainer">
+        <tr>
+            <td>
+                <table class="tdbigimagecontainer">
+                    <tr>
+                        <td>    
+                        </td>
+                    </tr>
+                </table>    
+            </td>
+        </tr>
+        <tr>
+            <td class="tddivider">
+                <div>
+                    <img src="<?php echo $this->getSkinUrl('images/catalog/product/big_line.png'); ?>" />
                 </div>
-    
-                <?php if ($this->canEmailToFriend()): ?>
-                    <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
-                <?php endif; ?>
-    
-                <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
-                <?php echo $this->getChildHtml('alert_urls') ?>
-                <?php echo $this->getChildHtml('product_type_data') ?>
-                <?php echo $this->getTierPriceHtml() ?>
-                <?php echo $this->getChildHtml('extrahint') ?>
-    
-                <?php if (!$this->hasOptions()):?>
-                    <div class="add-to-box">
-                        <?php if($_product->isSaleable()): ?>
-                            <?php echo $this->getChildHtml('addtocart') ?>
-                            <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
-                                <span class="or"><?php echo $this->__('OR') ?></span>
-                            <?php endif; ?>
-                        <?php endif; ?>
-                        <?php echo $this->getChildHtml('addto') ?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="smallimagecontiner">
+                    <tr>
+                        
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <div class="productoptions absoluteproductoptions">
+        <table class="productdetailtable">
+            <tr>
+                <td>
+                    <div class="breadcrumb"><?php echo $breadcrumb; ?></div>
+                    <div class="productname"><?php echo $productname; ?></div>
+                    <div class="productcost"><?php echo $productprice; ?></div>
+                    <div class="shortdesc"><?php echo $_product->getShortDescription(); ?></div>
+                    <table class="selectedcolor">
+                        <tr>
+                            <td>COLOR</td>
+                            <td class="selectedcolortext"></td>
+                        </tr>
+                    </table>
+                    <div id="colorcontainer">
+                        <?php
+                            $first = true;
+                            foreach($productcolorinfo as $key=>$colorinfo)
+                            {
+                                ?>
+                                    <div>
+                                        <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
+                                            <tr>
+                                                <?php
+                                                    foreach($colorinfo['hex'] as $hex)
+                                                    {
+                                                        ?>
+                                                            <td style="background-color: <?php echo $hex ?>;">
+                                                            <div>
+                                                                &nbsp;
+                                                            </div>                                                
+                                                            </td>   
+                                                        <?php
+                                                    } 
+                                                ?>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
+                                                      
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>  
+                                <?
+                            } 
+                        ?>
                     </div>
-                    <?php echo $this->getChildHtml('extra_buttons') ?>
-                <?php elseif (!$_product->isSaleable()): ?>
-                    <div class="add-to-box">
-                        <?php echo $this->getChildHtml('addto') ?>
+                    <div style="clear: both;"></div>
+                    <table class="selectedsize">
+                        <tr>
+                            <td>SIZE</td>
+                            <td class="sizechartlink"><div><a href="#">Size chart</a></div></td>
+                        </tr>
+                    </table>
+                    <div id="sizecontainer">
+                        <table>
+                            <tr>
+                                <?php
+                                    foreach($productallsizes as $size)
+                                    {
+                                        ?>
+                                            <td><div value="<?php echo $size['value']; ?>" size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?></div></td>        
+                                        <?php
+                                    } 
+                                ?>
+                            </tr>
+                        </table>
                     </div>
-                <?php endif; ?>
-    
-                <?php if ($_product->getShortDescription()):?>
-                    <div class="short-description">
-                        <h2><?php echo $this->__('Quick Overview') ?></h2>
-                        <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                    <table class="fittable">
+                        <tr>
+                            <td>
+                                <div class="hanger"></div>
+                            </td>
+                            <td class="howdoesitfitlink"><div><a href="#">How does it fit?</a></div></td>
+                        </tr>
+                    </table>
+                    <div class="qty">QTY</div>
+                    <div class="sizeselector">
+                        <select class="qtyselector">
+                            <?php
+                                for($i = 0; $i < 21; $i++)
+                                {
+                                    ?>
+                                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                    <?php
+                                } 
+                            ?>
+                        </select>
                     </div>
-                <?php endif;?>
-    
-                <?php echo $this->getChildHtml('other');?>
-    
-                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-                    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
-                <?php endif;?>
-    
-            </div>
-    
-            <div class="product-img-box">
-                <?php echo $this->getChildHtml('media') ?>
-            </div>
-    
-            <div class="clearer"></div>
-            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-                <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
-            <?php endif;?>
-        </form>
-        <script type="text/javascript">
-        //<![CDATA[
-            var productAddToCartForm = new VarienForm('product_addtocart_form');
-            productAddToCartForm.submit = function(button, url) {
-                if (this.validator.validate()) {
-                    var form = this.form;
-                    var oldUrl = form.action;
-    
-                    if (url) {
-                       form.action = url;
-                    }
-                    var e = null;
-                    try {
-                        this.form.submit();
-                    } catch (e) {
-                    }
-                    this.form.action = oldUrl;
-                    if (e) {
-                        throw e;
-                    }
-    
-                    if (button && button != 'undefined') {
-                        button.disabled = true;
-                    }
-                }
-            }.bind(productAddToCartForm);
-    
-            productAddToCartForm.submitLight = function(button, url){
-                if(this.validator) {
-                    var nv = Validation.methods;
-                    delete Validation.methods['required-entry'];
-                    delete Validation.methods['validate-one-required'];
-                    delete Validation.methods['validate-one-required-by-name'];
-                    // Remove custom datetime validators
-                    for (var methodName in Validation.methods) {
-                        if (methodName.match(/^validate-datetime-.*/i)) {
-                            delete Validation.methods[methodName];
-                        }
-                    }
-    
-                    if (this.validator.validate()) {
-                        if (url) {
-                            this.form.action = url;
-                        }
-                        this.form.submit();
-                    }
-                    Object.extend(Validation.methods, nv);
-                }
-            }.bind(productAddToCartForm);
-        //]]>
-        </script>
-        </div>
-        
-        
-        
-        <?php /*
-        <div class="product-collateral">
-    <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
-            <div class="box-collateral <?php echo "box-{$alias}"?>">
-                <?php if ($title = $this->getChildData($alias, 'title')):?>
-                <h2><?php echo $this->escapeHtml($title); ?></h2>
-                <?php endif;?>
-                <?php echo $html; ?>
-            </div>
-    <?php endforeach;?>
-            <?php echo $this->getChildHtml('upsell_products') ?>
-            <?php echo $this->getChildHtml('product_additional_data') ?>
-        </div>
-        */ ?>
+                    <div class="divider"></div>
+                    <table class="smogibucks">
+                        <tr>
+                            <td>
+                                <div class="smogibuckcount">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <?php echo $productrewardpoints; ?>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="earnsmogibuckstext">
+                                EARN SMOGI BUCKS<br/>WITH THIS PURCHASE
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="orderitem" class="addtobag spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_on.png'); ?>"></div>
+                    <div id="preorderitem" class="preorderitem spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_this_item.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_this_item.png'); ?>"></div>
+                    <div class="producterrorcontainer">
+                        <div class="errormsg">
+                        </div>
+                    </div>
+                    <div class="addtowishlist">
+                        <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productid; ?>/">ADD TO WISHLIST +</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
 <?php

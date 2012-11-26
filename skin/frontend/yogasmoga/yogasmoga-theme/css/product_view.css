@@ -27,7 +27,7 @@
     height: 143px;
     position : absolute;
     top : 0;
-    left : 40%;   
+    left : 40%;
     z-index: 2;
 }
 table.productdesignfeatures div[size]
@@ -49,4 +49,535 @@ table.productdesignfeatures div.caption div
     color : #fff;
     font-weight : bold;
     width : auto;
+}
+
+table.productdetailtable
+{
+    width : 100%;
+}
+
+table.productdetailtable>tbody>tr>td:first-child
+{
+    padding-left : 10px;
+    width : 249px;
+    max-width: 249px;
+}
+
+table.productdetailtable div.breadcrumb
+{
+    color: #666666;
+    font-size: 10px;
+    letter-spacing: 0.4pt;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+table.productdetailtable div.productname
+{
+    color: #000000;
+    font-size: 22px;
+    letter-spacing: 0.4pt;
+    line-height: 1.2em;
+}
+
+table.productdetailtable div.productcost
+{
+    color: #D90D3D;
+    font-size: 22px;
+    letter-spacing: 0.4pt;
+}
+
+table.productdetailtable div.shortdesc
+{
+    color: #676767;
+    font-size: 11px;
+    margin-top : 13px;
+}
+
+table.productdetailtable table.selectedcolor
+{
+    margin-top : 20px;   
+}
+
+table.productdetailtable table.selectedcolor td:first-child
+{
+    padding-right : 4px;
+    color : #000;
+    font-size : 11px;
+    letter-spacing : 0.6pt;
+}
+
+table.productdetailtable table.selectedcolor td.selectedcolortext
+{
+    color : #999;
+    font-size : 11px;
+    letter-spacing : 0.4pt;
+}
+
+table.productdetailtable div#colorcontainer
+{
+    margin-top : 8px;   
+}
+
+table.productdetailtable div#colorcontainer div
+{
+    float : left;
+    margin-right : 6px;
+}
+
+table.productdetailtable div#colorcontainer div table
+{
+    width : 40px;
+    cursor : pointer;
+}
+
+table.productdetailtable div#colorcontainer div table tr:first-child td
+{
+    height : 10px;
+}
+
+table.productdetailtable div#colorcontainer div table td div
+{
+    height : 10px;
+    overflow : hidden;
+}
+
+table.productdetailtable div#colorcontainer div table td.tdselectedcolor
+{
+    height : 4px;
+    border-bottom : 1px solid black;
+}
+
+table.productdetailtable table.selectedsize
+{
+    margin-top : 20px;   
+}
+
+table.productdetailtable table.selectedsize td:first-child
+{
+    padding-right : 12px;
+    color : #000;
+    font-size : 11px;
+    letter-spacing : 0.6pt;
+}
+
+table.productdetailtable table.selectedsize td.sizechartlink div 
+{
+    margin-top : -2px;
+}
+
+table.productdetailtable table.selectedsize td.sizechartlink a
+{
+    color: #D90D3D;
+    font-size: 10px;
+    letter-spacing: 0.2pt;
+    text-decoration: underline;
+}
+
+table.productdetailtable div#sizecontainer
+{
+    margin-top : 8px;   
+}
+
+table.productdetailtable div#sizecontainer table td
+{
+    padding-right : 20px;
+}
+
+table.productdetailtable div#sizecontainer table td:last-child
+{
+    padding-right : 0px;
+}
+
+table.productdetailtable div#sizecontainer table td div
+{
+    padding-bottom : 4px;
+    cursor : pointer;
+    border-bottom : 1px solid transparent;
+}
+
+table.productdetailtable div#sizecontainer table td div.dvselectedsize
+{
+    border-bottom-color: black;
+}
+
+/*
+table.productdetailtable div#sizecontainer table td.disabled
+{
+    display : none;
+}
+
+*/
+
+table.productdetailtable div#sizecontainer table td.disabled div
+{
+    opacity:0.3;
+    filter:alpha(opacity=30);
+    cursor : default;
+}
+    
+table.productdetailtable table.fittable
+{
+    margin-top : 20px;
+}
+
+table.productdetailtable table.fittable td:first-child div.hanger
+{
+    background-image : url('../images/catalog/product/fit.png');
+    background-repeat: no-repeat;
+    width : 19px;
+    height : 14px;
+}
+
+table.productdetailtable table.fittable td:first-child
+{
+    padding-right : 7px;
+}
+
+table.productdetailtable table.fittable td.howdoesitfitlink a
+{
+    color: #D90D3D;
+    font-size: 10px;
+    letter-spacing: 0.2pt;
+    text-decoration: underline;
+}
+
+table.productdetailtable table.fittable td.howdoesitfitlink div
+{
+    margin-top : -4px;
+}
+
+table.productdetailtable div.qty
+{
+    color: #000000;
+    font-size: 11px;
+    letter-spacing: 0.6pt;
+    margin-top : 20px;
+}
+
+table.productdetailtable div.sizeselector
+{
+    margin-top : 10px;
+}
+
+table.productdetailtable div.divider
+{
+    margin-top : 17px;
+    height: 1px;
+    width : 100%;
+}
+
+table.productdetailtable table.smogibucks
+{
+    margin-top : 17px;
+}
+
+table.productdetailtable table.smogibucks td div.smogibuckcount
+{
+    background-image : url('../images/catalog/product/smogibuckcount_bg.png');
+    background-repeat: no-repeat;
+    width : 32px;
+    height : 32px;   
+    margin-right : 8px;
+}
+
+table.productdetailtable table.smogibucks td div.smogibuckcount table td
+{
+    vertical-align : middle;
+    text-align : center;
+    width : 32px;
+    height : 32px;
+    color : #FFF;
+    font-size : 16px;
+    letter-spacing: 0.2pt;
+}
+
+table.productdetailtable table.smogibucks td.earnsmogibuckstext
+{
+    font-size : 11px;
+    letter-spacing : 0.4pt;
+    color : #333;
+}
+
+table.productdetailtable div.addtobag
+{
+    width : 239px;
+    height : 43px;
+    background-image : url('../images/catalog/product/add_to_bag_off.png');
+    background-repeat : no-repeat;
+    margin-top : 20px;
+    cursor : pointer;
+}
+
+table.productdetailtable div.preorderitem
+{
+    width : 239px;
+    height : 43px;
+    background-image : url('../images/catalog/product/pre_order_this_item.png');
+    background-repeat : no-repeat;
+    margin-top : 20px;
+    cursor : pointer;
+    display : none;
+}
+
+table.productdetailtable div.addtowishlist, table.productdetailtable div.addtowishlist a, table.productdetailtable div.addtowishlist a:hover, table.productdetailtable div.addtowishlist a:visited, #productdetailpopup div.addtowishlist, #productdetailpopup div.addtowishlist a, #productdetailpopup div.addtowishlist a:hover, #productdetailpopup div.addtowishlist a:visited 
+{
+    color : black;
+    font-size : 10px;
+    letter-spacing: 0.6pt;
+    margin-top : 25px;
+    cursor : pointer;
+}
+
+table.productdetailtable div.addtowishlist , #productdetailpopup div.addtowishlist 
+{
+    color : black;
+    padding-bottom : 4px;
+    border-bottom : 1px solid #D90D3D;
+    width : 114px;
+    font-size : 10px;
+    letter-spacing: 0.6pt;
+    margin-top : 10px;
+    cursor : pointer;
+}
+
+#productdetailpopup div.addtowishlist
+{
+    margin-top : 5px;
+}
+
+#productdetailpopup div.viewfulldetails, #productdetailpopup div.viewfulldetails a, #productdetailpopup div.viewfulldetails a:hover, #productdetailpopup div.viewfulldetails a:visited 
+{
+    color : black;
+    font-size : 10px;
+    letter-spacing: 0.6pt;
+    margin-top : 25px;
+    cursor : pointer;
+}
+
+#productdetailpopup div.viewfulldetails 
+{
+    color : black;
+    padding-bottom : 4px;
+    border-bottom : 1px solid #D90D3D;
+    width : 150px;
+    font-size : 10px;
+    letter-spacing: 0.6pt;
+    margin-top : 5px;
+    cursor : pointer;
+    float : right;
+}
+
+table.productdetailtable table.productimages
+{
+    margin-left : auto;
+    margin-right : auto;
+}
+
+table.productdetailtable table.smallimages
+{
+    margin-left : auto;
+    margin-right : auto;
+}
+
+table.productdetailtable table.productimages table.smallimages td
+{
+    padding-right : 10px;
+    width : 75px;
+    height : 75px;
+    vertical-align : bottom;
+    width : auto;
+}
+
+table.productdetailtable table.productimages div.bigimage
+{
+    padding-bottom: 20px;
+}
+
+table.productdetailtable table.productimages div.bigimage img
+{
+    max-width : 100%;
+    max-height : 100%;
+}
+
+table.productdetailtable table.productimages td
+{
+    text-align : center;
+    width : 700px;
+    max-width : 700px;
+}
+
+table.productdetailtable table.productimages td.tdbigimagecontainer
+{
+    background-image: url('../images/catalog/product/big_line.png');
+    background-repeat : no-repeat;
+    background-position: bottom;
+    padding-bottom : 20px;
+}
+
+table.productimagecontainer
+{
+    width : 100%;
+}
+
+table.productimagecontainer table.tdbigimagecontainer
+{
+    margin-left : auto;
+    margin-right : auto;
+}
+
+table.productimagecontainer table.tdbigimagecontainer td
+{
+    vertical-align: bottom;
+    text-align: center;
+    width : 700px;
+    min-width : 700px;
+    max-width : 700px;
+    height : 600px;
+}
+
+table.productimagecontainer table.tdbigimagecontainer td img
+{
+    max-width : 700px;
+}
+
+table.productimagecontainer td.tddivider
+{
+    padding-top : 15px;
+    text-align : center;
+}
+
+table.productimagecontainer td.tddivider div
+{
+    height : 1px;
+}
+
+table.productimagecontainer table.smallimagecontiner
+{
+    margin-top : 5px;
+    margin-left : auto;
+    margin-right : auto;
+}
+
+table.productimagecontainer table.smallimagecontiner td
+{
+    width : 75px;
+    height : 75px;
+    text-align: center;
+    vertical-align: bottom;
+    padding-right : 10px;
+    cursor : pointer;
+}
+
+table.productimagecontainer table.smallimagecontiner td.selectedimage, td#tdpopupproductsmallimages td.selectedimage
+{
+    opacity:0.3;
+    filter:alpha(opacity=30);
+    cursor : default;
+}
+
+table.productimagecontainer table.smallimagecontiner td:last-child
+{
+    padding-right : 0px;
+}
+
+div.absoluteproductoptions
+{
+    position : absolute;
+    left : 10px;
+    top : 10px;
+}
+
+div.producterrorcontainer
+{
+    height : 15px;
+}
+
+div.producterrorcontainer div.errormsg
+{
+    color : #d90d3d;
+    letter-spacing : 0.4pt;
+    font-size : 10px;
+    text-align : right;
+    display : none;
+}
+
+#productdetailpopup div.producterrorcontainer div.errormsg
+{
+    padding-right : 0;
+}
+
+#productdetailpopup .absoluteproductoptions
+{
+    left : 23px;
+    top : 14px;
+}
+
+table.productdetailpopupbottomlinks
+{
+    width : 100%;
+}
+
+table.productdetailpopupbottomlinks td:first-child
+{
+    text-align: left;
+    padding-left : 30px;
+}
+
+table.productdetailpopupbottomlinks td.tdviewfulldetails
+{
+    padding-right : 55px;
+}
+
+table.productdetailspopup
+{
+    width : 100%;
+    margin-top : 15px;
+}
+
+table.productdetailspopup td.popupproductdetail
+{
+    padding-left : 19px;
+    width : 250px;
+    max-width : 250px;
+    min-width : 250px;
+}
+
+div.productoptions
+{
+    width : 250px;
+}
+
+td#tdpopupproductsmallimages td
+{
+    width : 75px;
+    min-width : 75px;
+    height : 75px;
+    min-height : 75px;
+    vertical-align: bottom;
+    text-align: center;
+    padding-top : 20px;
+    cursor : pointer;
+}
+
+td#tdpopupproductsmallimages
+{
+    padding-right : 35px;
+    width : 75px;
+    max-width : 75px;
+    min-width : 75px;
+}
+
+td#tdpopupproductbigimage
+{
+    padding-top : 3px;
+    text-align : center;
+}
+
+img#closelightbox
+{
+    position : absolute;
+    top : 6px;
+    right : 9px;
+    cursor : pointer;
 }

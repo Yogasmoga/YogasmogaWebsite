@@ -1,5 +1,30 @@
+var _productcolorinfo = new Array();
+
 jQuery(document).ready(function($){
         //console.clear();
+    $(".spbutton").live("mousedown", function(){
+        $(this).css('background-image', "url('" + $(this).attr('downimageurl') + "')");
+    });
+    $(".spbutton").live("mouseup", function(){
+        $(this).css('background-image', "url('" + $(this).attr('imageurl') + "')");
+    });
+    $(".spbutton").live("mouseleave", function(){
+        $(this).css('background-image', "url('" + $(this).attr('imageurl') + "')");
+    });
+    
+    //setTimeout(function(){ fixiebug();}, 100);
+    //$(".spbutton").mousedown(function(){
+//        $(this).css('background-image', "url('" + $(this).attr('downimageurl') + "')");
+//    });
+//    
+//    $(".spbutton").mouseup(function(){
+//        $(this).css('background-image', "url('" + $(this).attr('imageurl') + "')");
+//    });
+//    
+//    $(".spbutton").mouseleave(function(){
+//        $(this).css('background-image', "url('" + $(this).attr('imageurl') + "')");
+//    });
+    //console.log(_productcolorinfo);
 });
 
 function removenotifications()
@@ -29,4 +54,14 @@ function isScrolledIntoView(elem)
     var elemTop = jQuery(elem).offset().top;
     var elemBottom = elemTop + jQuery(elem).height();
     return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+}
+
+function fixiebug()
+{
+    jQuery("table.staticproductgrid td.productimage img").each(function(){
+        if(jQuery(this).height() > jQuery(this).parent().height())
+            jQuery(this).css('max-height','400px');
+        else
+            jQuery(this).css('max-height','auto');
+    });
 }

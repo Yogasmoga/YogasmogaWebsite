@@ -32,7 +32,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
 <head>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/jqueryui/jquery-ui-1.9.1.custom.css'); ?>" media="all" />
 <?php echo $this->getChildHtml('head') ?>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/isotope.css'); ?>" media="all" />
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/dressingroom.css'); ?>" media="all" />
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myalwaysvisiblecontrols.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myproductimageswitcher.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery-ui-1.9.1.custom.min.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/dressingroom.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myproductdetails.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/mycategory.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/product_view.css'); ?>" media="all" />
 </head>
 <body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
 <?php echo $this->getChildHtml('after_body_start') ?>
@@ -50,8 +61,7 @@
                     if(trim($dressingroomitems[0]) == "-|*DressingRoomDetails*|-")
                     {
                     ?>
-                        <div id="dressingroom" desc="<?php echo Mage::registry('current_category')->getName(); ?> Dressing Room" class="fullscreen colorbg pgsection">
-                        <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/dressingroom.js"></script>
+                        <div id="dressingroom" desc="<?php echo Mage::registry('current_category')->getName(); ?> Dressing Room" class="fullscreen colorbg pgsection"> 
                         <table class="fullscreentable dressingroombg">
                             <tr>
                                 <td class="verticaltopalign">
@@ -114,7 +124,7 @@
                                                             </div>
                                                             <div class="productname">U &amp; ME SPORTS BRA</div>
                                                             <div class="productdescription">Made with Aurum+ - This sports bra is great for gym and yoga activities.</div>
-                                                            <div class="viewdetails">                    
+                                                            <div class="viewdetails spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/dressingroom/view_details_off.png') ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/dressingroom/view_details_on.png') ?>">                    
                                                             </div>
                                                         </div>
                                                     </td>
@@ -150,8 +160,7 @@
                                                             </div>
                                                             <div class="productname">U &amp; ME SPORTS BRA</div>
                                                             <div class="productdescription">Made with Aurum+ - This sports bra is great for gym and yoga activities.</div>
-                                                            <div class="viewdetails">                    
-                                                            </div>
+                                                            <div class="viewdetails spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/dressingroom/view_details_off.png') ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/dressingroom/view_details_on.png') ?>">
                                                         </div>
                                                     </td>
                                                     <td class="goright">
@@ -182,7 +191,7 @@
                                 <?php
                             }
                          ?>
-                        <div id="allproducts" desc="<?php echo Mage::registry('current_category')->getName(); ?> Products" class="fullscreen colorbg pgsection productgrid-holder">
+                        <div id="productgrid" desc="<?php echo Mage::registry('current_category')->getName(); ?> Products" class="fullscreen colorbg pgsection productgrid-holder">
                         <div class="myheader zindex10 topvisible colorbg absoluteposition">
                                         ALL PRODUCTS
                         </div>
@@ -254,7 +263,6 @@
                     {
                     ?>
                         <div id="dressingroom" desc="<?php echo Mage::registry('current_category')->getName(); ?> Dressing Room" class="fullscreen colorbg pgsection">
-                        <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/dressingroom.js"></script>
                         <table class="fullscreentable">
                             <tr>
                                 <td class="verticaltopalign">
@@ -317,8 +325,7 @@
                                                             </div>
                                                             <div class="productname">U &amp; ME SPORTS BRA</div>
                                                             <div class="productdescription">Made with Aurum+ - This sports bra is great for gym and yoga activities.</div>
-                                                            <div class="viewdetails">                    
-                                                            </div>
+                                                            <div class="viewdetails spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/dressingroom/view_details_off.png') ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/dressingroom/view_details_on.png') ?>">
                                                         </div>
                                                     </td>
                                                     <td class="goright">
@@ -353,8 +360,7 @@
                                                             </div>
                                                             <div class="productname">U &amp; ME SPORTS BRA</div>
                                                             <div class="productdescription">Made with Aurum+ - This sports bra is great for gym and yoga activities.</div>
-                                                            <div class="viewdetails">                    
-                                                            </div>
+                                                            <div class="viewdetails spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/dressingroom/view_details_off.png') ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/dressingroom/view_details_on.png') ?>">
                                                         </div>
                                                     </td>
                                                     <td class="goright">
@@ -409,5 +415,11 @@
     </div>
     <div id="pgNavDown"><img  onclick="pageScroller.next();" src="<?php echo $this->getSkinUrl('images/navigation/down.png') ?>" /></div>
 </div>
+
+<div style="display:none;">
+    <div id="productdetailpopup">
+    </div>
+</div>
+
 </body>
 </html>

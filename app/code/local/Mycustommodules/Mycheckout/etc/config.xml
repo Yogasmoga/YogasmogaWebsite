@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <mycustommodules_mycheckout>
+            <version>0.0.1</version>
+        </mycustommodules_mycheckout>
+    </modules>
+	<frontend>
+        <routers>
+            <mycheckout>
+                <use>standard</use>
+                <args>
+                    <module>Mycustommodules_Mycheckout</module>
+                    <frontName>mycheckout</frontName>
+                </args>
+            </mycheckout>
+        </routers>   
+    </frontend>
+</config>

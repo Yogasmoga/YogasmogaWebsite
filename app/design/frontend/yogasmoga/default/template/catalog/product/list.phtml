@@ -131,8 +131,18 @@
                 foreach($_childproducts as $_childproduct)
                 {
                     $temp = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId());
+                    //$temp = $_product->getAttributeText('color');
+//                    $cproductModel = Mage::getModel('catalog/product');
+//                    $cattr = $cproductModel->getResource()->getAttribute("color");
+//                    
+//                    if ($cattr->usesSource()) {
+//                    	$temp = $cattr->getSource()->getOptionText($temp);
+//                    }
+                    //echo $_childproduct->getResource()->getAttribute('color')->getFrontend()->getValue($_childproduct)."<br/>";
+                    
+                    //$temp = $_childproduct->getAttributeText('color');
                     if(strpos($colors,",".$temp.",") == false)
-                        $colors .= $temp.",";  
+                        $colors .= $temp.",";
                 }
                 ?>
                     <div bestfor="<?php echo ",".Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'bestfor', Mage::app()->getStore()->getStoreId()).","; ?>" cat="<?php echo ",".implode(",", $_product->getCategoryIds()).","; ?>" id="<?php echo $_product->getId(); ?>" class="item" color="<?php echo $colors; ?>">
@@ -145,8 +155,10 @@
                                         $index = 1;
                                         foreach($_gallery as $_image)
                                         {
-                                            if($index > 3)
+                                            if(strpos($_image->getLabel(),"*") === false)
                                                 continue;
+                                            if($index > 3)
+                                                break;
                                             ?>
                                             <img
                                             <?php

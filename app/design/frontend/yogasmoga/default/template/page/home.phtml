@@ -37,6 +37,14 @@
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/product_view.css'); ?>" media="all" />
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.bxSlider.min.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/bxsliderscript.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myproductimageswitcher.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/homemainsection.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/swfobject.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.pngFix.pack.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.fancybox-1.0.0.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/youtubevideo.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/parallaxeffect.js"></script>
 </head>
 <body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
 <?php echo $this->getChildHtml('after_body_start') ?>
@@ -177,13 +185,16 @@
                                         <table>
                                             <tr>
                                                 <td class="productimage">
+                                                    <div>
                                                     <?php
                                                         $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
                                                         $index = 1;
                                                         foreach($_gallery as $_image)
                                                         {
-                                                            if($index > 3)
+                                                            if(strpos($_image->getLabel(),"*") === false)
                                                                 continue;
+                                                            if($index > 3)
+                                                                break;
                                                             ?>
                                                             <img
                                                             <?php
@@ -199,6 +210,7 @@
                                                             $index++;
                                                         } 
                                                     ?>
+                                                    </div>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -215,7 +227,8 @@
                                                     $model = Mage::getModel('catalog/product');
                                                     $_product = $model->load($_product->getId());
                                                     //echo $_product->getPrice();
-                                                    echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+                                                    echo $_helper->productAttribute($_product, $_product->getName(), 'name');
+                                                    //echo $_product->getName(); ?>
                                                 </td>
                                             </tr>
                                             <tr>
