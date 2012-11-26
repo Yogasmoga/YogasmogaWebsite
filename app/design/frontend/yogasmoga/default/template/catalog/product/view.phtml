@@ -313,7 +313,34 @@
                         <?php
                             $first = true;
                             //print_r($productcolorinfo);
-                             
+                            foreach($productcolorinfo as $colorinfo)
+                            {
+                                ?>
+                                    <div>
+                                        <table color="<?php //echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
+                                            <tr>
+                                                <?php
+                                                    foreach($colorinfo['hex'] as $hex)
+                                                    {
+                                                        ?>
+                                                            <td style="background-color: <?php echo $hex; ?>;">
+                                                            <div>
+                                                                &nbsp;
+                                                            </div>                                                
+                                                            </td>   
+                                                        <?php
+                                                    } 
+                                                ?>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
+                                                      
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>  
+                                <?
+                            } 
                         ?>
                     </div>
                     <div style="clear: both;"></div>
