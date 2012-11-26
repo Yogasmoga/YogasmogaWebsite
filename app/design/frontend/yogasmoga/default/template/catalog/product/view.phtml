@@ -309,6 +309,35 @@
                             <td class="selectedcolortext"></td>
                         </tr>
                     </table>
+                    <div style="clear: both;"></div>
+                    <table class="selectedsize">
+                        <tr>
+                            <td>SIZE</td>
+                            <td class="sizechartlink"><div><a href="#">Size chart</a></div></td>
+                        </tr>
+                    </table>
+                    <div id="sizecontainer">
+                        <table>
+                            <tr>
+                                <?php
+                                    foreach($productallsizes as $size)
+                                    {
+                                        ?>
+                                            <td><div value="<?php echo $size['value']; ?>" size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?></div></td>        
+                                        <?php
+                                    } 
+                                ?>
+                            </tr>
+                        </table>
+                    </div>
+                    <table class="fittable">
+                        <tr>
+                            <td>
+                                <div class="hanger"></div>
+                            </td>
+                            <td class="howdoesitfitlink"><div><a href="#">How does it fit?</a></div></td>
+                        </tr>
+                    </table>
                     <div class="qty">QTY</div>
                     <div class="sizeselector">
                         <select class="qtyselector">
