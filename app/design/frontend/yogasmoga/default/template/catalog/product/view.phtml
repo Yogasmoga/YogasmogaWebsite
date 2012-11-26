@@ -42,6 +42,229 @@
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
 */ 
 ?>
+<?php
+    $cats = $_product->getCategoryIds();
+    $categoryid = Mage::getModel('catalog/category')->load($cats[0])->getId();
+    $categoryurl = Mage::getModel("catalog/category")->load($categoryid)->getUrl();
+    //echo $categoryid;
+    $breadcrumb = '&lt;&nbsp;<a href="'.Mage::helper('core/url')->getHomeUrl().'">Home</a>';
+    $breadcrumb .= '&nbsp;&lt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load($categoryid)->getUrl().'">'.Mage::getModel("catalog/category")->load($categoryid)->getName().'</a>';
+    //$breadcrumb .= '&nbsp;&lt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'">'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getName().'</a>';
+    if($this->getRequest()->getParam('from') == 'dressingroom')
+        $breadcrumb .= '&nbsp;&lt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'#dressingroom">DRESSING ROOM</a>';
+    else
+        $breadcrumb .= '&nbsp;&lt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'#productgrid">PRODUCT GRID</a>';
+    
+        
+    $productname = $_helper->productAttribute($_product, $_product->getName(), 'name');
+    $productid = $_product->getId();
+    $_rewardpointsearned = 0.1;
+    $price = $_product->getSpecialPrice();
+    if($price == "")
+        $price = $_product->getPrice();
+    $price = round($price,2);
+      if (floor($price)==$price)
+        $price = floor($price);
+    $productrewardpoints = floor($price * $_rewardpointsearned);
+    $productprice = "$".$price;
+    
+    $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
+    $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+    $productcolorinfo = array();
+    foreach($_childproducts as $_childproduct)
+    {
+        //echo Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+        $temp = $_childproduct->getAttributeText('color');
+        if(strpos($temp,"|") !== FALSE)
+        {
+            $hexcodes = substr($temp, strpos($temp,"|") + 1);
+            $hexcodes = explode(",", $hexcodes);
+            $temp = substr($temp, 0, strpos($temp,"|"));
+            if(!isset($productcolorinfo[$temp]))
+                $productcolorinfo[$temp] = array();
+            $productcolorinfo[$temp]['hex'] = $hexcodes;
+            $productcolorinfo[$temp]['value'] = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId());
+            //if(!array_key_exists('hex', $productcolorinfo[$temp]))
+//            {
+//                $hexcodes = explode(",", $hexcodes);
+//                $productcolorinfo[$temp]['hex'] = $hexcodes;
+//            }
+            //if(count($productcolorinfo[$temp]["images"]) == 0)
+//            {
+//                $hexcodes = explode(",", $hexcodes);
+//                $productcolorinfo[$temp]["hex"] = $hexcodes;
+//            }
+            //if(!isset($productcolorinfo[$temp]['hex']))
+//            {
+//                echo $temp;
+//                $hexcodes = explode(",", $hexcodes);
+//                //$productcolorinfo[$temp]['hex'] = $hexcodes;
+//                array_push($productcolorinfo[$temp]['hex'], $hexcodes);   
+//            }
+        }
+        $price = $_childproduct->getSpecialPrice();
+        if($price == "")
+            $price = $_childproduct->getPrice();
+        $price = round($price,2);
+          if (floor($price)==$price)
+            $price = floor($price);
+        
+        $temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price;
+        //if(array_key_exists("sizes", $productcolorinfo[$temp]))
+        if(isset($productcolorinfo[$temp]["sizes"]))
+        {
+            //echo "pushing";
+            array_push($productcolorinfo[$temp]["sizes"], $temp1);
+        }
+        else
+        {
+            $productcolorinfo[$temp]["sizes"] = array($temp1);
+            if(!isset($productcolorinfo[$temp]["sizes"]))
+                echo "not set";    
+            foreach($_gallery as $_image)
+            {
+                if(str_replace("*", "", $_image->getLabel()) == $temp)
+                {
+                    
+                    //echo $imageurl;
+                    $smallimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75);
+                    $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(700, 700);
+                    $zoomimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(750, 750);
+                    
+                    //if(count($productcolorinfo[$temp]["images"]) == 0)
+                    if(!isset($productcolorinfo[$temp]["images"]))
+                    {
+                        $productcolorinfo[$temp]["images"] = array();
+                        $productcolorinfo[$temp]["images"]["small"] = array($smallimageurl);
+                        $productcolorinfo[$temp]["images"]["zoom"] = array($zoomimageurl);
+                        $productcolorinfo[$temp]["images"]["big"] = array($imageurl);
+                        //echo "creating"."<br/>";
+                    }
+                    else
+                        if(count($productcolorinfo[$temp]["images"]["small"]) < 3)
+                        {
+                            array_push($productcolorinfo[$temp]["images"]["big"], $imageurl);
+                            array_push($productcolorinfo[$temp]["images"]["small"], $smallimageurl);
+                            //echo "pushing"."<br/>";
+                            array_push($productcolorinfo[$temp]["images"]["zoom"], $zoomimageurl);
+                        }
+                }
+            }
+        }
+    }
+    
+    $tempproductcolorinfo = array();
+    $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
+    $allOptions = $attribute->getSource()->getAllOptions(true, true);
+    foreach ($allOptions as $instance) {
+        if(array_key_exists($instance['label'], $productcolorinfo))
+        {
+            $tempproductcolorinfo[$instance['label']] = $productcolorinfo[$instance['label']];
+        }
+    }
+    $productcolorinfo = $tempproductcolorinfo;
+    
+    
+    $productallsizes = array();
+    
+    
+    $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
+    $allOptions = $attribute->getSource()->getAllOptions(true, true);
+    foreach ($allOptions as $instance) {
+        if($instance['label'] != "")
+            array_push($productallsizes, array("label" => $instance['label'], "value" => $instance['value']) );
+    }
+    
+    
+    //echo "<pre>";
+//    print_r($productcolorinfo);
+//    echo "</pre>";
+    
+    ?>
+    <script type="text/javascript">
+        jQuery(document).ready(function($){
+            selectmenulink('<?php echo $categoryurl; ?>');
+        });
+        _productcolorinfo = new Array();
+    <?php
+    $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
+    foreach($configurableAttributeCollection as $attribute){
+        //echo "Attr-Code:".$attribute->getProductAttribute()->getAttributeCode()."<br/>";
+//        echo "Attr-Label:".$attribute->getProductAttribute()->getFrontend()->getLabel()."<br/>";
+//        echo "Attr-Id:".$attribute->getProductAttribute()->getId()."<br/>";
+        ?>
+        _productid = '<?php echo $productid; ?>';
+        <?php
+        if($attribute->getProductAttribute()->getAttributeCode() == "color")
+        {
+            ?>
+                _colorattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
+            <?php       
+        }
+        if($attribute->getProductAttribute()->getAttributeCode() == "size")
+        {
+            ?>
+                _sizeattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
+            <?php       
+        }
+    }
+    
+    $currentcolorcount = 0;
+    foreach($productcolorinfo as $key=>$val)
+    {
+        ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>] = new Object();
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].color = '<?php echo $key; ?>'; 
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].hex = new Array();
+            <?php
+                for($i = 0; $i < count($val['hex']); $i++)
+                {
+                    ?>
+                        _productcolorinfo[<?php echo $currentcolorcount; ?>].hex[<?php echo $i; ?>] = '<?php echo $val['hex'][$i]; ?>';
+                    <?php
+                } 
+            ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes = new Array();
+            <?php
+                for($i = 0; $i < count($val['sizes']); $i++)
+                {
+                    ?>
+                        _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes[<?php echo $i; ?>] = '<?php echo $val['sizes'][$i]; ?>';
+                    <?php
+                } 
+            ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages = new Array();
+            <?php
+                for($i = 0; $i < count($val['images']['zoom']); $i++)
+                {
+                    ?>
+                        _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>] = '<?php echo substr($val['images']['zoom'][$i], 1); ?>';
+                    <?php
+                } 
+            ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages = new Array();
+            <?php
+                for($i = 0; $i < count($val['images']['small']); $i++)
+                {
+                    ?>
+                        _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>] = '<?php echo substr($val['images']['small'][$i], 1); ?>';
+                    <?php
+                } 
+            ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages = new Array();
+            <?php
+                for($i = 0; $i < count($val['images']['big']); $i++)
+                {
+                    ?>
+                        _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>] = '<?php echo substr($val['images']['big'][$i], 1); ?>';
+                    <?php
+                } 
+            ?>
+        <?php
+        $currentcolorcount++;
+    }  
+?>
+    </script>
 
 
 <?php
