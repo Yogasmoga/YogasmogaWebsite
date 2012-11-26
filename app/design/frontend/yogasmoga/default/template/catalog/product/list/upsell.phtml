@@ -25,11 +25,6 @@
  */
 ?>
 
-<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/product_view.css'); ?>" media="all" />
-<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myproduct_view.js"></script>
-<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myproductdetails.js"></script>
-<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myproductimageswitcher.js"></script>
-<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/parallaxeffect.js"></script>
 <?php if(count($this->getItemCollection()->getItems())): ?>
 <div id="upsells" class="fullscreen colorbg pgsection" desc="You May Also Like">
     <table class="fullscreentable">
