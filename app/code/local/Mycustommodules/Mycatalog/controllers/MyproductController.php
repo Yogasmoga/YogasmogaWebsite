@@ -295,7 +295,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                                                             </tr>
                                                         </table>
                                                     </div>  
-                                                <?
+                                                <?php
                                             } 
                                         ?>
                                     </div>
