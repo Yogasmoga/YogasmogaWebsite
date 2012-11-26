@@ -266,6 +266,157 @@
 ?>
     </script>
 
+<div id="imagetest" desc="dsf" class="fullscreen colorbg pgsection">
+    <table class="productimagecontainer">
+        <tr>
+            <td>
+                <table class="tdbigimagecontainer">
+                    <tr>
+                        <td>    
+                        </td>
+                    </tr>
+                </table>    
+            </td>
+        </tr>
+        <tr>
+            <td class="tddivider">
+                <div>
+                    <img src="<?php echo $this->getSkinUrl('images/catalog/product/big_line.png'); ?>" />
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="smallimagecontiner">
+                    <tr>
+                        
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <div class="productoptions absoluteproductoptions">
+        <table class="productdetailtable">
+            <tr>
+                <td>
+                    <div class="breadcrumb"><?php echo $breadcrumb; ?></div>
+                    <div class="productname"><?php echo $productname; ?></div>
+                    <div class="productcost"><?php echo $productprice; ?></div>
+                    <div class="shortdesc"><?php echo $_product->getShortDescription(); ?></div>
+                    <table class="selectedcolor">
+                        <tr>
+                            <td>COLOR</td>
+                            <td class="selectedcolortext"></td>
+                        </tr>
+                    </table>
+                    <div id="colorcontainer">
+                        <?php
+                            $first = true;
+                            foreach($productcolorinfo as $key=>$colorinfo)
+                            {
+                                ?>
+                                    <div>
+                                        <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
+                                            <tr>
+                                                <?php
+                                                    foreach($colorinfo['hex'] as $hex)
+                                                    {
+                                                        ?>
+                                                            <td style="background-color: <?php echo $hex ?>;">
+                                                            <div>
+                                                                &nbsp;
+                                                            </div>                                                
+                                                            </td>   
+                                                        <?php
+                                                    } 
+                                                ?>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
+                                                      
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>  
+                                <?
+                            } 
+                        ?>
+                    </div>
+                    <div style="clear: both;"></div>
+                    <table class="selectedsize">
+                        <tr>
+                            <td>SIZE</td>
+                            <td class="sizechartlink"><div><a href="#">Size chart</a></div></td>
+                        </tr>
+                    </table>
+                    <div id="sizecontainer">
+                        <table>
+                            <tr>
+                                <?php
+                                    foreach($productallsizes as $size)
+                                    {
+                                        ?>
+                                            <td><div value="<?php echo $size['value']; ?>" size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?></div></td>        
+                                        <?php
+                                    } 
+                                ?>
+                            </tr>
+                        </table>
+                    </div>
+                    <table class="fittable">
+                        <tr>
+                            <td>
+                                <div class="hanger"></div>
+                            </td>
+                            <td class="howdoesitfitlink"><div><a href="#">How does it fit?</a></div></td>
+                        </tr>
+                    </table>
+                    <div class="qty">QTY</div>
+                    <div class="sizeselector">
+                        <select class="qtyselector">
+                            <?php
+                                for($i = 0; $i < 21; $i++)
+                                {
+                                    ?>
+                                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                    <?php
+                                } 
+                            ?>
+                        </select>
+                    </div>
+                    <div class="divider"></div>
+                    <table class="smogibucks">
+                        <tr>
+                            <td>
+                                <div class="smogibuckcount">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <?php echo $productrewardpoints; ?>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="earnsmogibuckstext">
+                                EARN SMOGI BUCKS<br/>WITH THIS PURCHASE
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="orderitem" class="addtobag spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_on.png'); ?>"></div>
+                    <div id="preorderitem" class="preorderitem spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_this_item.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_this_item.png'); ?>"></div>
+                    <div class="producterrorcontainer">
+                        <div class="errormsg">
+                        </div>
+                    </div>
+                    <div class="addtowishlist">
+                        <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productid; ?>/">ADD TO WISHLIST +</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
 
 <?php
     $productmodel = Mage::getResourceModel('catalog/product');
