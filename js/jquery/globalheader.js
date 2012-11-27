@@ -33,7 +33,71 @@ jQuery(document).ready(function($){
     });
     
     selectcurrentanchors();    
+    
+    $("li#minicartlink").click(function(){
+        $("div#myminicart").slideDown(500, function(){
+            _minicartopen = true;
+        });   
+    });
+    
+    $("body").click(function(){
+        if(_minicartopen && !_dontclosecart)
+        {
+            $("div#myminicart").slideUp(500,function(){
+                _minicartopen = false; 
+            });
+        }
+        _dontclosecart = false;
+    });
+    
+    $("div#myminicart").click(function(){
+        _dontclosecart = true;
+    });
+    
+    loadminicart();
+    
+    $("div#myminicart img.delete").live("click", function(){
+        if(_isdeletingcartitem)
+            return;
+        _minicartdeleteid = $(this).parents("div.minicartitems:first").attr("id");
+        _isdeletingcartitem = true;
+        $.ajax({
+            type : 'POST',
+            url : homeUrl + 'mycheckout/mycart/delete',
+            data : {'id':_minicartdeleteid},
+            success : function(result){
+                result = eval('(' + result + ')');
+                if(result.status == "success")
+                {
+                    jQuery("span.cartitemcount").html(result.count);
+                    $("div#myminicart div#" + _minicartdeleteid).fadeOut('slow', function(){
+                        $("div#myminicart div#" + _minicartdeleteid).remove();
+                        if($("div#myminicart div.minicartitems").length == 0)
+                        {
+                            $("div#myminicart").html("<div class='totalitemcount'>You have no items in your cart.</div>");
+                        }
+                    });
+                }
+                _isdeletingcartitem = false;
+            }
+        })
+    });
+    
 });
+
+function loadminicart()
+{
+    jQuery.ajax({
+        type : 'POST',
+        url : homeUrl + 'mycheckout/mycart/minidetails',
+        data : {},
+        success : function(result){
+            result = eval('(' + result + ')');
+            jQuery("div#myminicart").html(result.html);
+            jQuery("span#cartitemcount").html(result.count);
+        }
+    });
+}
 
 function selectcurrentanchors()
 {

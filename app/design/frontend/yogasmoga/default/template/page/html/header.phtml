@@ -47,7 +47,7 @@
                             $base_url = Mage::helper('core/url')->getHomeUrl();
                             //if($this->getRequest()->getControllerName() == "product")
                             $currentcategoryid = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
-                            $itemcount = Mage::helper('checkout/cart')->getSummaryCount();
+                            $itemcount = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
                             if($itemcount == "")
                                 $itemcount = "0";
                             foreach (Mage::helper('catalog/category')->getStoreCategories() as $child) {
@@ -76,7 +76,7 @@
                                 <?php
                             }
                         ?>
-                        <li><a class="top-link-cart" href="<?php echo $base_url; ?>checkout/cart/">Bag : <?php echo $itemcount; ?></a></li>
+                        <li id="minicartlink"><a class="top-link-cart" href="javascript:void(0);<?php /*<?php echo $base_url; ?>checkout/cart/ */ ?>">SHOPPING BAG : <span class="cartitemcount"><?php echo $itemcount; ?></span></a></li>
                         <?php /*
                         <li><?php echo $this->helper('core/url')->getCurrentUrl(); ?></li>
                         */ ?>
@@ -98,5 +98,71 @@
     <div id="smallmenu">
         <?php //echo $this->getSkinUrl('images/YS_logo.png') ?>
     </div>
+</div>
+<div id="myminicart">
+<?php /*
+<div class="totalitemcount">
+    <table>
+        <tr>
+            <td>
+                You have 10 items in your bag.
+            </td>
+        </tr>
+    </table>
+</div>
+<?php for($i = 0; $i <2; $i++)
+    {
+        ?>
+            <a href="#">
+            <div class="minicartitems">
+                <table>
+                    <tr>
+                        <td class="tdproductimage">
+                            <img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/50x50/040ec09b1e35df139433887a97daa66f/a/b/abstract_0017.jpg" />
+                        </td>
+                        <td class="tdproductdetail">
+                            <div class="productname">SLIMMIE PANTS</div>
+                            <div class="productdetail"><span class="productattribute">COLOR:</span>&nbsp;BLACK</div>
+                            <div class="productdetail"><span class="productattribute">SIZE:</span>&nbsp;M</div>
+                            <div class="productdetail"><span class="productattribute">QTY:</span>&nbsp;3</div>
+                        </td>
+                        <td class="tdproductprice">
+                            $120.00
+                        </td>
+                    </tr>
+                </table>
+                <img class="delete" src="<?php echo $this->getSkinUrl('images/cross_mini_cart.png'); ?>" />
+            </div>
+            </a>
+        <?php
+    }
+ ?>
+ <div class="bottomlinks">
+    <div class="shoppingcartlink">
+        <a href="#">See All</a>
+     </div>
+    <div class="subtotal">
+        <table>
+            <tr>
+                <td class="anchor">
+                    SUBTOTAL
+                </td>
+                <td class="totalprice">
+                    $138.00
+                </td>
+            </tr>
+        </table>
+    </div>
+    <a href="#">
+        <div class="minicheckout spbutton" imageurl="<?php echo $this->getSkinUrl('images/checkout_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/checkout_on.png'); ?>">
+            
+        </div>
+    </a>
+ </div>
+ 
+ <div class="totalitemcount">
+    You have no items in your cart
+ </div>
+ */ ?>
 </div>
 <?php //echo $this->getChildHtml('topMenu') ?>

@@ -16,3 +16,7 @@ var _sizeattributeid = '';//Size Attribute Id of the Product
 var _productid = ''; //Id of the product currently being displayed
 var _productdisplaymode = 'page';//Product Display Mode ('popup' and 'page')
 var _addingtocart = false; //Is Product being added to cart
+var _minicartopen = false;
+var _minicartdeleteid = '';
+var _isdeletingcartitem = false;
+var _dontclosecart = false;

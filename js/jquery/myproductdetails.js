@@ -183,9 +183,26 @@ function addtocart()
         url : homeUrl + 'mycheckout/mycart/add?product=' + _productid + '&qty=' + _productorderqty + '&super_attribute[' + _colorattributeid + ']=' + color + '&super_attribute[' + _sizeattributeid + ']=' + size,
         data : {},
         success : function(result){
+            result = eval('(' + result + ')');
             _addingtocart = false;
-            if(_productdisplaymode = "popup")
-                jQuery( "#productdetailpopup" ).dialog( "close" );
+            if(result.status == 'success')
+            {
+                if(_productdisplaymode == "popup")
+                    jQuery( "#productdetailpopup" ).dialog( "close" );
+                jQuery("div#myminicart").html(result.html);
+                jQuery("a.top-link-cart").animate({
+                    opacity: 0,
+                }, 500, function(){
+                    jQuery("span.cartitemcount").html(result.count);
+                    jQuery("a.top-link-cart").animate({
+                        opacity: 1
+                    },500);
+                });
+            }
+            else
+            {
+                alert('Oops! An unexpected error occured.');
+            }
             //
 //            result = eval('(' + result + ')');
 //            if(result.status == "0")

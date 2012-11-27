@@ -2409,3 +2409,175 @@ table.staticproductgrid div.item td.productimage img.active
 {
     font-family : Arial;
 }
+
+#myminicart
+{
+    width : 257px;
+    background-color : white;
+    position : fixed;
+    right : 0px;
+    top : 80px;
+    z-index : 13;
+    border : 1px solid gray;
+    display : none;
+    border-top-width: 0;
+}
+
+#myminicart div.totalitemcount table
+{
+    width : 100%;
+}
+
+#myminicart div.totalitemcount table td
+{
+    height : 20px;
+    font-size : 11px;
+    letter-spacing : 0.4pt;
+    vertical-align : middle;
+    text-align: center;
+}
+
+#myminicart div.minicartitems td.tdproductdetail
+{
+    
+}
+
+#myminicart div.minicartitems td.tdproductdetail div.productname
+{
+    font-size : 11px;
+    letter-spacing : 0.4pt;
+    font-weight: bold;
+}
+
+#myminicart div.minicartitems td.tdproductdetail div.productdetail
+{
+    font-size : 11px;
+    letter-spacing : 0.4pt;
+    color : #999999;
+}
+
+#myminicart div.minicartitems td.tdproductdetail div.productdetail span.productattribute
+{
+    color : black;
+}
+
+#myminicart div.minicartitems td.tdproductimage
+{
+    vertical-align: top;
+    width : 75px;
+    min-width : 75px;
+    text-align : center;
+}
+
+#myminicart div.minicartitems td
+{
+    height : 85px;
+    min-height: 85px;
+    padding-top : 12px;
+}
+
+#myminicart div.minicartitems td.tdproductprice
+{
+    padding-right : 20px;
+    text-align : right;
+}
+
+#myminicart div.minicartitems table
+{
+    width : 100%;
+}
+
+#myminicart div.minicartitems:hover table
+{
+    background-color : #F5F5F5;
+}
+
+#myminicart a:hover, #myminicart a:visited
+{
+    color : inherit;
+}
+
+#myminicart div.shoppingcartlink
+{
+    text-align : left;
+    margin-bottom : 9px;
+}
+
+#myminicart div.shoppingcartlink a, #myminicart div.shoppingcartlink a:hover, #myminicart div.shoppingcartlink a:visited
+{
+    color: #D90D3D;
+    font-size: 10px;
+    letter-spacing: 0.2pt;
+    text-decoration: underline;
+}
+
+#myminicart div.subtotal table
+{
+    width : 100%;
+}
+
+#myminicart div.subtotal table td.anchor
+{
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.4pt;
+    text-align: left;
+}
+
+#myminicart div.subtotal table td.totalprice
+{
+    text-align: right;
+}
+
+#myminicart div.bottomlinks
+{
+    width : 217px;
+    margin-left : 20px;
+}
+
+#myminicart div.subtotal
+{
+    background-image : url('../images/divider.png');
+    background-position: center top;
+    background-repeat: no-repeat;
+    height : 50px;
+}
+
+#myminicart div.subtotal table
+{
+    width : 100%;
+}
+
+#myminicart div.subtotal table td
+{
+    vertical-align: middle;
+    height : 50px;
+} 
+div.minicheckout
+{
+    width : 219px;
+    height : 43px;
+    background-image : url('../images/checkout_off.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom : 20px;
+}
+
+#myminicart div.minicartitems
+{
+    position : relative;
+    cursor : pointer;
+}
+
+#myminicart div.minicartitems img.delete
+{
+    position : absolute;
+    left : 5px;
+    top : 8px;
+    display : none;
+}
+
+#myminicart div.minicartitems:hover img.delete
+{
+    display : block;
+}
