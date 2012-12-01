@@ -1,17 +1,23 @@
 jQuery(document).ready(function($){
     var temp = $("div.pgsection").length;
-    var strHtml = "<div id='pgnavigator'><ul>"; 
-    for(i = 1; i <= temp; i++)
-    {
-        strHtml = strHtml + "<li><a href='#'>&nbsp;&nbsp;&nbsp;</a></li>";
-    }
-    var strHtml = strHtml + "</ul></div>";
-    $("#pgNavUp").after(strHtml);
     if(temp <= 0)
         $("#pageScrollerNav").hide();
     else
-        $('body').pageScroller({ navigation: '#pgnavigator', sectionClass : 'pgsection',scrollOffset : '-' + _headerHeight + 'px' });
-    
+    {
+        if(!_disablesidenavigation)
+        {
+            var strHtml = "<div id='pgnavigator'><ul>"; 
+            for(i = 1; i <= temp; i++)
+            {
+                strHtml = strHtml + "<li><a href='#'>&nbsp;&nbsp;&nbsp;</a></li>";
+            }
+            var strHtml = strHtml + "</ul></div>";
+            $("#pgNavUp").after(strHtml);
+            $('body').pageScroller({ navigation: '#pgnavigator', sectionClass : 'pgsection',scrollOffset : '-' + _headerHeight + 'px' });   
+        }
+        else
+            $("#pageScrollerNav").hide();
+    }
     $(window).scroll(function(){
         navAssignTitles();
     });

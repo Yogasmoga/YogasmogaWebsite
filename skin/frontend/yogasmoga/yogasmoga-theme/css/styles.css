@@ -31,7 +31,7 @@ img           { border:0; vertical-align:top; }
 
 a { color : black;text-decoration: none; }
 a.visited { color : black;text-decoration: none; }
-a:hover       { text-decoration:none; color : red; }
+a:hover       { text-decoration:none; color : #D90D3D; }
 :focus        { outline:0; }
 
 /* Headings */
@@ -1864,7 +1864,7 @@ img.fullscreen
     width : 100%;
     margin:0px;
 }
-.fullscreen > table.fullscreentable td
+.fullscreen > table.fullscreentable>tbody>tr>td
 {
     vertical-align : middle;
     text-align: center;
@@ -2055,7 +2055,7 @@ div.errormsg
 
 img.namaskarimage
 {
-    position : absolute;
+    position : fixed;
     bottom : 0;
     right : 0;
 }
@@ -2181,14 +2181,16 @@ div.mycategory-products div.item img.active
 
 .myheader
 {
-    color: #D8A45C;
-    font-size: 14pt;
-    left: 0;
-    top: 0;
-    width: 100%;
-    background-image : url('../images/catalog/product/listing/line_all_product.png');
+    background-image: url("../images/catalog/product/listing/line_all_product.png");
     background-position: center bottom;
     background-repeat: no-repeat;
+    color: #D8A45C;
+    font-size: 20px;
+    left: 0;
+    padding-bottom: 8px;
+    padding-top: 14px;
+    top: 0;
+    width: 100%;
 }
 
 .zindex10
@@ -2216,6 +2218,11 @@ table.myproduct-grid
 {
     width : 50px;
     min-width: 50px;
+}
+
+div.mycategory-products div.item td
+{
+    text-align : center;
 }
 
 div.mycategory-products div.item td.productimage
@@ -2580,4 +2587,9 @@ div.minicheckout
 #myminicart div.minicartitems:hover img.delete
 {
     display : block;
+}
+
+li#minicartlink
+{
+    width : 106px;
 }

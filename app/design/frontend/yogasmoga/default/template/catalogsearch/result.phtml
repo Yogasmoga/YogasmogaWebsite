@@ -24,6 +24,71 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/searchresults.css'); ?>" media="all" />
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/mycatalogsearch.js"></script>
+<div class="myheader">SEARCH RESULTS</div>
+<div class="searchresultcount">WE&rsquo;VE FOUND <span id="spresultcount">5 PRODUCT MATCHES</span> FOR &ldquo;<?php echo $this->helper('catalogsearch')->getEscapedQueryText(); ?>&rdquo;</div>
+<table style="margin-left: auto;margin-right:auto;">
+    <tr>
+        <td>
+           <table class="inputtable nolabel" style="width: 190px;">
+                <tr>
+                    <td class="label"><label for="txtSearch">Search text</label></td>
+                    <td class="inputholder"><input type="text" id="txtSearch" /></td>
+                </tr>
+                <tr>
+                    <td class="errortext" colspan="2">
+                        <div>Enter Search Term</div>
+                    </td>
+                </tr>
+           </table> 
+        </td>
+        <td style="padding-left : 15px;">
+            <div id="btnSearch" class="searchbutton spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/search_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/search_on.png'); ?>"></div>
+        </td>
+    </tr>
+</table>
+<table style="width: 100%;">
+    <tr>
+        <td class="searchsidenavigation">
+            <div class="alwaysvisible">
+                <?php
+                    $collection = Mage::getModel('catalogsearch/query')->getCollection()
+                                     ->setPopularQueryFilter()
+                                     ->setPageSize(4)->getItems();
+                    if(count($collection) > 0)
+                    {
+                        ?>
+                            <div class="subheader">TOP SEARCHES</div>
+                            <?php
+                                foreach($collection as $item)
+                                 {
+                                    ?>
+                                        <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>catalogsearch/result/?q=<?php echo $item->getName(); ?>">
+                                        <div><?php echo $item->getName(); ?></div>
+                                        </a>
+                                    <?php
+                                 } 
+                            ?>        
+                        <?php
+                    } 
+                ?>
+                <div class="subheader">HELPFUL LINKS</div>
+                <a href="#">
+                    <div>SIZE CHART</div>
+                </a>
+                <a href="#">
+                    <div>RETURN POLICY</div>
+                </a>   
+            </div>
+        </td>
+        <td>
+            <?php echo $this->getProductListHtml(); ?>
+        </td>
+    </tr>
+</table>
+
+<?php /*
 <?php if($this->getResultCount()): ?>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <div class="page-title">
@@ -53,3 +118,4 @@
     <?php endif; ?>
 </p>
 <?php endif; ?>
+*/ ?>

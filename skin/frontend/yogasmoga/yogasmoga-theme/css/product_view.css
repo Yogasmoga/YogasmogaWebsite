@@ -1,8 +1,8 @@
 .productdesignfeatures
 {
     width : 95%;
-    margin-top : 30px;
-    margin-bottom : 50px;
+    margin-top : 70px;
+    margin-bottom : 100px;
 }
 .productdesignfeatures td img
 {
@@ -29,6 +29,14 @@
     top : 0;
     left : 40%;
     z-index: 2;
+}
+.designfeaturesheadimage.landscapefeature
+{
+    left : 46.65%;
+}
+.designfeaturesheadimage.potraitfeature
+{
+    left : 31%;
 }
 table.productdesignfeatures div[size]
 {
@@ -426,6 +434,12 @@ table.productimagecontainer table.tdbigimagecontainer
     margin-right : auto;
 }
 
+table.productimagecontainer table.tdbigimagecontainer:hover
+{
+    color : red;
+    cursor : url('../images/catalog/product/cursor_zoom.png');
+}
+
 table.productimagecontainer table.tdbigimagecontainer td
 {
     vertical-align: bottom;
@@ -581,3 +595,31 @@ img#closelightbox
     right : 9px;
     cursor : pointer;
 }
+table.productdesignfeatures
+{
+    width : 100%;
+    margin-left : auto;
+    margin-right : auto;
+}
+table.productdesignfeatures tr td:first-child
+{
+    padding-left : 0;
+}
+table.productdesignfeatures tr td
+{
+    padding-left : 20px;
+}
+/*---------Remove these for design features to work------------*/
+table.productdesignfeatures tr td div[size] img
+{
+    display : none;
+}
+table.productdesignfeatures tr td div[size] div.caption
+{
+    display : none;
+}
+table.productdesignfeatures tr td div[size]
+{
+    background-color : #666666;
+}
+/*---------Upto Here------------*/

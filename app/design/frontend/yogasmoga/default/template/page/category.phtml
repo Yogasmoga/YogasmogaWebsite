@@ -34,15 +34,10 @@
 <head>
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/jqueryui/jquery-ui-1.9.1.custom.css'); ?>" media="all" />
 <?php echo $this->getChildHtml('head') ?>
-<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/isotope.css'); ?>" media="all" />
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/dressingroom.css'); ?>" media="all" />
-<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myalwaysvisiblecontrols.js"></script>
-<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myproductimageswitcher.js"></script>
-<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.isotope.min.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery-ui-1.9.1.custom.min.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/dressingroom.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myproductdetails.js"></script>
-<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/mycategory.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/product_view.css'); ?>" media="all" />
 </head>
 <body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
@@ -400,21 +395,6 @@
     </div>
 </div>
 <?php echo $this->getAbsoluteFooter() ?>
-<div id="pageScrollerNav">
-    <div id="shareicons">
-        <div id="pinterest"></div>
-        <div id="twitter">
-            <!-- <a id="atwitter" href="https://twitter.com/share"><div>&nbsp;</div></a> -->
-        </div>
-        <div id="facebook"></div>
-        <div id="mail"></div>
-    </div>
-    <div id="glbshare"></div>
-    <div id="pgNavUp">
-        <img onclick="pageScroller.prev();" src="<?php echo $this->getSkinUrl('images/navigation/up.png') ?>" />
-    </div>
-    <div id="pgNavDown"><img  onclick="pageScroller.next();" src="<?php echo $this->getSkinUrl('images/navigation/down.png') ?>" /></div>
-</div>
 
 <div style="display:none;">
     <div id="productdetailpopup">

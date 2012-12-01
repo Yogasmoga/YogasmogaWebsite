@@ -19,11 +19,12 @@ jQuery(document).ready(function($){
             'margin-top': 0
         }, 300);
     });
+    clearEmptycaptions();
 });
 
 function resizeDesignFeatures()
 {
-    var globalcorrection = 80;
+    var globalcorrection = 170;
     var halfcorrection = 10;
     jQuery("table.productdesignfeatures div[size]").each(function(){
          if(jQuery(this).attr("size") == "full")
@@ -61,4 +62,12 @@ function resizeProductBigImage()
         jQuery("table.tdbigimagecontainer img").css('max-height', maxHeight + 'px');
     else
         jQuery("table.tdbigimagecontainer img").css('max-height', '600px');
+}
+
+function clearEmptycaptions()
+{
+    jQuery("table.productdesignfeatures div[size] div.caption div").each(function(){
+        if(jQuery(this).html() == "")
+            jQuery(this).parent().css('display', 'none'); 
+    });
 }

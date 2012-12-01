@@ -1,6 +1,5 @@
 <?php
 /**
- * 
  * Magento
  *
  * NOTICE OF LICENSE
@@ -34,13 +33,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
 <head>
 <?php echo $this->getChildHtml('head') ?>
-<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/product_view.css'); ?>" media="all" />
-<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myproduct_view.js"></script>
-<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myproductdetails.js"></script>
-<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myproductimageswitcher.js"></script>
-<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/parallaxeffect.js"></script>
 <script type="text/javascript">
-    var sample=1;var smPos=153;var spPos=153;var sW;var sH;
+    _disablesidenavigation = true;
 </script>
 </head>
 <body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
@@ -50,9 +44,9 @@
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
         <div id="pagecontainer">
-            <?php //echo $this->getChildHtml('breadcrumbs') ?>
-            <?php echo $this->getChildHtml('global_messages') ?>
-            <?php echo $this->getChildHtml('content') ?>
+            <div id="mainimage" class="fullscreen colorbg pgsection" desc="Accounts Page">
+                <?php echo $this->getChildHtml('content'); ?>  
+            </div>
             <?php echo $this->getChildHtml('footer'); ?>
         </div>
         <?php echo $this->getChildHtml('before_body_end'); ?>

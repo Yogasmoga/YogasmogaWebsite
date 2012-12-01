@@ -1,0 +1,92 @@
+td.searchsidenavigation
+{
+    width : 180px;
+    padding-left : 20px;
+    vertical-align: top;
+    color : black;
+}
+td.searchsidenavigation div
+{
+    text-align : left;
+    text-transform: uppercase;
+}
+div.searchresultcount
+{
+    font-size : 15px;
+    letter-spacing : 0.6pt;
+    text-transform: uppercase;
+    margin-top : 24px;
+    margin-bottom : 25px;
+}
+td.searchsidenavigation div.subheader
+{
+    font-size : 9px;
+    letter-spacing : 0.6pt;
+    font-weight: bold;
+    margin-bottom : 19px;
+    margin-top : 40px;
+}
+td.searchsidenavigation div.subheader:first-child
+{
+    margin-top : 0px;
+}
+td.searchsidenavigation div
+{
+    font-size : 9px;
+    letter-spacing : 0.6pt;
+    margin-bottom : 3px;
+}
+div.searchbutton
+{
+    background-image : url('../images/catalog/product/search_off.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    width : 93px;
+    height: 29px;
+}
+table.inputtable
+{
+    
+}
+table.inputtable tr:first-child td
+{
+    border-bottom: 1px solid black;
+}
+table.inputtable td.inputholder input[type='text']
+{
+    width : 100%;
+    border : none;
+    font-size : 13px;
+    letter-spacing : 0.4pt;
+    padding-bottom : 1px;
+}
+table.inputtable td.label
+{
+    padding-right : 20px;
+    color : gray;
+    font-style: italic;
+    letter-spacing: 0.4pt;
+    white-space: nowrap;
+}
+table.inputtable.nolabel td.label
+{
+    display : none;
+}
+table.inputtable td.errortext
+{
+    color : #D90D3D;
+    height : 20px;
+    min-height : 20px;
+}
+table.inputtable.error tr:first-child td
+{
+    border-bottom : 1px solid #D90D3D; 
+}
+table.inputtable.error td.inputholder input
+{
+    color : #D90D3D;
+}
+table.inputtable td.errortext div
+{
+    display : none;
+}

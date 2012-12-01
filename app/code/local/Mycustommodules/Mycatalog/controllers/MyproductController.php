@@ -72,7 +72,10 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
               if (floor($price)==$price)
                 $price = floor($price);
             
-            $temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price;
+            $rewardpoints = Mage::helper('rewardpoints/data')->getProductPointsText($_childproduct, false, false);
+            $rewardpoints = strip_tags($rewardpoints);
+            $rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "loyalty") - 1 - strlen("loyalty") - strpos($rewardpoints, "earn") + strlen("earn")));
+            $temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
             //if(array_key_exists("sizes", $productcolorinfo[$temp]))
             if(isset($productcolorinfo[$temp]["sizes"]))
             {

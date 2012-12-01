@@ -31,6 +31,12 @@
 <meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
 <link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
 <link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/iefonts.css'); ?>" media="all" />
+<![endif]-->
+<!--[if !IE]><!-->
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/fonts.css'); ?>" media="all" />
+ <!--<![endif]-->
 <!--[if lt IE 7]>
 <script type="text/javascript">
 //<![CDATA[
@@ -53,6 +59,7 @@
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/mynewsletter.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.quovolver.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.pagescroller.lite.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myvalidations.js"></script>
 
 <script type="text/javascript" language="javascript">
     jQuery.noConflict();

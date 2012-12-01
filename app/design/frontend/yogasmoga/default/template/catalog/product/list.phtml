@@ -31,12 +31,19 @@
  * @see Mage_Catalog_Block_Product_List
  */
 ?>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/isotope.css'); ?>" media="all" />
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myalwaysvisiblecontrols.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myproductimageswitcher.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/mycategory.js"></script>
 <?php
     $_productCollection=$this->getLoadedProductCollection();
     $_helper = $this->helper('catalog/output');
 ?>
 <?php if(!$_productCollection->count()): ?>
+<?php /*
 <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+*/ ?>
 <?php else: ?>
 <div id="mycategory_products" class="mycategory-products isotoped">
     <?php //echo $this->getToolbarHtml() ?>
@@ -125,25 +132,31 @@
             for($isfs = 0; $isfs < 1; $isfs++) {
             foreach($_productCollection as $_product)
             {
-                $colors = ","; 
+                $colors = ",";
                 $temp = "";
-                $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
-                foreach($_childproducts as $_childproduct)
+                
+                if(Mage::getModel('catalog/product')->load($_product->getId())->getTypeID() == "configurable")
                 {
-                    $temp = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId());
-                    //$temp = $_product->getAttributeText('color');
-//                    $cproductModel = Mage::getModel('catalog/product');
-//                    $cattr = $cproductModel->getResource()->getAttribute("color");
-//                    
-//                    if ($cattr->usesSource()) {
-//                    	$temp = $cattr->getSource()->getOptionText($temp);
-//                    }
-                    //echo $_childproduct->getResource()->getAttribute('color')->getFrontend()->getValue($_childproduct)."<br/>";
-                    
-                    //$temp = $_childproduct->getAttributeText('color');
-                    if(strpos($colors,",".$temp.",") == false)
-                        $colors .= $temp.",";
+                    $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
+                    foreach($_childproducts as $_childproduct)
+                    {
+                        $temp = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId());
+                        //$temp = $_product->getAttributeText('color');
+    //                    $cproductModel = Mage::getModel('catalog/product');
+    //                    $cattr = $cproductModel->getResource()->getAttribute("color");
+    //                    
+    //                    if ($cattr->usesSource()) {
+    //                    	$temp = $cattr->getSource()->getOptionText($temp);
+    //                    }
+                        //echo $_childproduct->getResource()->getAttribute('color')->getFrontend()->getValue($_childproduct)."<br/>";
+                        
+                        //$temp = $_childproduct->getAttributeText('color');
+                        if(strpos($colors,",".$temp.",") == false)
+                            $colors .= $temp.",";
+                    }    
                 }
+                else
+                    continue;
                 ?>
                     <div bestfor="<?php echo ",".Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'bestfor', Mage::app()->getStore()->getStoreId()).","; ?>" cat="<?php echo ",".implode(",", $_product->getCategoryIds()).","; ?>" id="<?php echo $_product->getId(); ?>" class="item" color="<?php echo $colors; ?>">
                         <a href="<?php echo $_product->getProductUrl(); ?>">

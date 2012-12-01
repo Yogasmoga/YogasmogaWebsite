@@ -39,6 +39,7 @@ jQuery(document).ready(function($){
 
 function changeproductsize(sz)
 {
+    //console.log('changing size');
     jQuery("div#sizecontainer div").removeClass("dvselectedsize");
     sz.addClass("dvselectedsize");
     var qty = sz.attr("qty") * 1;
@@ -55,8 +56,9 @@ function changeproductsize(sz)
     }
     var price = sz.attr("price");
     jQuery("div.productcost").html("$" + price);
-    var rewardpoints = Math.floor((price * 1) * _rewardpointsearned);
-    jQuery("div.smogibuckcount td").html(rewardpoints);   
+    //var rewardpoints = Math.floor((price * 1) * _rewardpointsearned);
+//    jQuery("div.smogibuckcount td").html(rewardpoints);
+    jQuery("div.smogibuckcount td").html(sz.attr("rewardpoints"));
 }
 
 function changeOrderqty(qty)
@@ -104,13 +106,19 @@ function changeColor(clr)
     jQuery("div#sizecontainer div").parent().addClass("disabled");
     for(i = 0; i < _productcolorinfo[colorindex].sizes.length; i++)
     {
-        var size = _productcolorinfo[colorindex].sizes[i].substr(0, _productcolorinfo[colorindex].sizes[i].indexOf('|'));
-        var qty = _productcolorinfo[colorindex].sizes[i].substr(_productcolorinfo[colorindex].sizes[i].indexOf('|') + 1, _productcolorinfo[colorindex].sizes[i].indexOf('|') + 1);
-        var price = _productcolorinfo[colorindex].sizes[i].substr(_productcolorinfo[colorindex].sizes[i].indexOf('|', _productcolorinfo[colorindex].sizes[i].indexOf('|') + 1) + 1);
+        var sizetemp = _productcolorinfo[colorindex].sizes[i].split("|");
+        var size = sizetemp[0];
+        var qty = sizetemp[1];
+        var price = sizetemp[2];
+        var rewardpoints = sizetemp[3];
+        //var size = _productcolorinfo[colorindex].sizes[i].substr(0, _productcolorinfo[colorindex].sizes[i].indexOf('|'));
+//        var qty = _productcolorinfo[colorindex].sizes[i].substr(_productcolorinfo[colorindex].sizes[i].indexOf('|') + 1, _productcolorinfo[colorindex].sizes[i].indexOf('|') + 1);
+//        var price = _productcolorinfo[colorindex].sizes[i].substr(_productcolorinfo[colorindex].sizes[i].indexOf('|', _productcolorinfo[colorindex].sizes[i].indexOf('|') + 1) + 1);
         //console.log(qty);
         jQuery("div#sizecontainer div[size='" +  size + "']").parent().removeClass("disabled");
         jQuery("div#sizecontainer div[size='" +  size + "']").attr("qty", qty);
         jQuery("div#sizecontainer div[size='" +  size + "']").attr("price", price);
+        jQuery("div#sizecontainer div[size='" +  size + "']").attr("rewardpoints", rewardpoints);
     }
     jQuery("div#orderitem").show();
     jQuery("div#preorderitem").hide();
@@ -190,14 +198,20 @@ function addtocart()
                 if(_productdisplaymode == "popup")
                     jQuery( "#productdetailpopup" ).dialog( "close" );
                 jQuery("div#myminicart").html(result.html);
-                jQuery("a.top-link-cart").animate({
-                    opacity: 0,
-                }, 500, function(){
+                jQuery("a.top-link-cart").fadeOut(500, function(){
                     jQuery("span.cartitemcount").html(result.count);
-                    jQuery("a.top-link-cart").animate({
-                        opacity: 1
-                    },500);
+                    jQuery("a.top-link-cart").fadeIn(500);
                 });
+                //jQuery("a.top-link-cart").animate({
+//                    opacity: 0,
+//                    filter : 0
+//                }, 500, function(){
+//                    jQuery("span.cartitemcount").html(result.count);
+//                    jQuery("a.top-link-cart").animate({
+//                        opacity: 1,
+//                        filter : 100
+//                    },500);
+//                });
             }
             else
             {

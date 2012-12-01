@@ -20,7 +20,11 @@ jQuery(document).ready(function($){
          $('div#mycategory_products.isotoped').isotope({
           itemSelector : '.item',
           onLayout : function(){
-            handlealwaysvisiblecontrols();
+            if(typeof(handlealwaysvisiblecontrols) == typeof(Function))
+            {
+                handlealwaysvisiblecontrols();
+                //console.log('called');
+            }
             //centerproductgrid();
           }
         });
