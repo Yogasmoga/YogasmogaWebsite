@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<checkout_onepage_index>
+		<reference name="head">
+			<block type="core/text" name="Stripe.js" as="stripejs" before="-">
+				<action method="setText">
+					<text><![CDATA[<script type="text/javascript" src="https://js.stripe.com/v1/"></script>]]></text>
+				</action>
+			</block>
+		</reference>
+	</checkout_onepage_index>
+	<onestepcheckout_index>
+		<reference name="head">
+			<block type="core/text" name="Stripe.js" as="stripejs" before="-">
+				<action method="setText">
+					<text><![CDATA[<script type="text/javascript" src="https://js.stripe.com/v1/"></script>]]></text>
+				</action>
+			</block>
+		</reference>
+	</onestepcheckout_index>
+	<customer_account>
+        <reference name="customer_account_navigation" >
+            <action method="addLink" translate="label"><name>stripe_stripe</name><path>stripe/</path><label>My Payment Method</label></action>
+        </reference>
+    </customer_account>
+	<stripe_index_index>
+ 	    <update handle="customer_account"/>
+        <!-- Mage_Customer -->
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="stripe/stripe" name="stripe_payment" template="stripe/stripe.phtml"/>
+        </reference>
+	</stripe_index_index>
+</layout>

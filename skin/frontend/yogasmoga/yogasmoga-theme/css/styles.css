@@ -1805,6 +1805,7 @@ ul.topmenulinks li
 {
     float : left;
     margin: 0 10px;
+    white-space: nowrap;
 }
 ul.topmenulinks li.selected
 {
@@ -1985,6 +1986,65 @@ div.footer div.copyright
     margin-top: 50px;   
 }
 
+table.footersocialshare
+{
+    margin-left : auto;
+    margin-right : auto;
+    margin-bottom : 20px;
+}
+
+table.footersocialshare td div
+{
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+table.footersocialshare td
+{
+    padding-left : 5px;
+}
+
+table.footersocialshare td:first-child
+{
+    padding-left : 0;
+}
+
+div.footer div.footerfacebook
+{
+    background-image : url('../images/footer/facebook_footer_off.png');
+    
+    width : 7px;
+    height : 12px;
+}
+
+div.footer div.footerfacebook:hover
+{
+    background-image : url('../images/footer/facebook_footer_on.png');
+}
+
+div.footer div.footertwitter
+{
+    background-image : url('../images/footer/twitter_footer_off.png');
+    width : 13px;
+    height : 10px;
+}
+
+div.footer div.footertwitter:hover
+{
+    background-image : url('../images/footer/twitter_footer_on.png');
+}
+
+div.footer div.footerpinterest
+{
+    background-image : url('../images/footer/pin_footer_off.png');
+    width : 13px;
+    height : 10px;
+}
+
+div.footer div.footerpinterest:hover
+{
+    background-image : url('../images/footer/pin_footer_on.png');
+}
 
 /*-----------------------------------------------------------------*/
 
@@ -2018,7 +2078,7 @@ div.successmsg
 
 div.errormsg
 {
-    color : red;
+    color : #D90D3D;
 }
 
 #pageScrollerNav
@@ -2091,9 +2151,19 @@ div#pageScrollerNav div#shareicons div#mail
     background-image : url('../images/navigation/mail.png');
 }
 
+div#pageScrollerNav div#shareicons div#mail:hover
+{
+    background-image : url('../images/navigation/mail_hover.png');
+}
+
 div#pageScrollerNav div#shareicons div#facebook
 {
     background-image : url('../images/navigation/facebook.png');
+}
+
+div#pageScrollerNav div#shareicons div#facebook:hover
+{
+    background-image : url('../images/navigation/facebook_hover.png');
 }
 
 div#pageScrollerNav div#shareicons div#twitter
@@ -2101,9 +2171,19 @@ div#pageScrollerNav div#shareicons div#twitter
     background-image : url('../images/navigation/twitter.png');
 }
 
+div#pageScrollerNav div#shareicons div#twitter:hover
+{
+    background-image : url('../images/navigation/twitter_hover.png');
+}
+
 div#pageScrollerNav div#shareicons div#pinterest
 {
     background-image : url('../images/navigation/pinterest.png');
+}
+
+div#pageScrollerNav div#shareicons div#pinterest:hover
+{
+    background-image : url('../images/navigation/pinterest_hover.png');
 }
 
 ul.slides li
@@ -2191,6 +2271,7 @@ div.mycategory-products div.item img.active
     padding-top: 14px;
     top: 0;
     width: 100%;
+    text-align : center;
 }
 
 .zindex10
@@ -2592,4 +2673,59 @@ div.minicheckout
 li#minicartlink
 {
     width : 106px;
+}
+
+.fixwidth
+{
+    max-width : 960px;
+    margin-left : auto;
+    margin-right : auto;
+}
+
+table.inputtable
+{
+    
+}
+table.inputtable tr:first-child td
+{
+    border-bottom: 1px solid black;
+}
+table.inputtable td.inputholder input[type='text'],table.inputtable td.inputholder input[type='password']
+{
+    width : 100%;
+    border : none;
+    font-size : 13px;
+    letter-spacing : 0.4pt;
+    padding-bottom : 1px;
+}
+table.inputtable td.label
+{
+    padding-right : 20px;
+    color : gray;
+    font-style: italic;
+    letter-spacing: 0.4pt;
+    white-space: nowrap;
+    width : 10px;
+}
+table.inputtable.nolabel td.label
+{
+    display : none;
+}
+table.inputtable td.errortext
+{
+    color : #D90D3D;
+    height : 20px;
+    min-height : 20px;
+}
+table.inputtable.error tr:first-child td
+{
+    border-bottom : 1px solid #D90D3D; 
+}
+table.inputtable.error td.inputholder input
+{
+    color : #D90D3D;
+}
+table.inputtable td.errortext div
+{
+    display : none;
 }

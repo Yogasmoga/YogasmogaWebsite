@@ -1,6 +1,6 @@
 jQuery(document).ready(function($){
     var temp = $("div.pgsection").length;
-    if(temp <= 0)
+    if(temp <= 2)
         $("#pageScrollerNav").hide();
     else
     {

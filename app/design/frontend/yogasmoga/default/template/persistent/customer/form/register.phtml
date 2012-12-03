@@ -32,6 +32,75 @@
  */
 /** @var $this Mage_Customer_Block_Form_Register */
 ?>
+<div class="myheader">REGISTER</div>
+<form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="register-form">
+    <div class="sectionheader">PERSONAL INFORMATION</div>
+    <?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
+    <table class="inputtable">
+        <tr>
+            <td class="label"><label for="email_address"><?php echo $this->__('Email Address') ?></label></td>
+            <td class="inputholder">
+                <input type="text" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" class="requiredfield" />
+            </td>
+        </tr>
+        <tr>
+            <td class="errortext" colspan="2">
+                <div>Email Address is required.</div>
+            </td>
+        </tr>
+    </table>
+    <?php
+        if($this->isNewsletterEnabled())
+        {
+            ?>
+                <table>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="is_subscribed" value="1" id="is_subscribed"<?php if($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />            
+                        </td>
+                        <td style="padding-top : 2px;">
+                            <label for="is_subscribed"><?php //echo $this->__('Sign Up for Newsletter') ?>Subscribe to stay in touch when new collections arrive.</label>    
+                        </td>
+                    </tr>
+                </table>
+            <?php
+        }
+     ?>
+     <div class="sectionheader" style="margin-top : 50px;">LOGIN INFORMATION</div>
+     <table class="inputtable">
+        <tr>
+            <td class="label"><label for="password"><?php echo $this->__('Password') ?></label></td>
+            <td class="inputholder">
+                <input type="password" class="requiredfield" name="password" id="password" />
+            </td>
+        </tr>
+        <tr>
+            <td class="errortext" colspan="2">
+                <div>Password is required.</div>
+            </td>
+        </tr>
+     </table>
+     <table class="inputtable">
+        <tr>
+            <td class="label"><label for="confirmation"><?php echo $this->__('Confirm Password') ?></label></td>
+            <td class="inputholder">
+                <input type="password" class="requiredfield" name="confirmation" id="confirmation" />
+            </td>
+        </tr>
+        <tr>
+            <td class="errortext" colspan="2">
+                <div>Please Confirm Password.</div>
+            </td>
+        </tr>
+     </table>
+     <div class="loginerrormsg errormsg"><?php echo strip_tags($this->getMessagesBlock()->getGroupedHtml()); ?></div>
+        <input type="submit" value="" class="submitbtn spbutton custombtn" name="send" imageurl="<?php echo $this->getSkinUrl('images/customer/submit.png'); ?>" downimageurl="<?php echo $this->getSkinUrl("images/customer/submit.png"); ?>" />
+</form>
+<div class="backlink">
+    <a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>" class="back-link">&lt;&nbsp;<?php echo $this->__('Back') ?></a>
+</div>
+
+<?php /*
 <div class="account-create">
     <div class="page-title">
         <h1><?php echo $this->__('Create an Account') ?></h1>
@@ -190,3 +259,4 @@
     //]]>
     </script>
 </div>
+*/ ?>

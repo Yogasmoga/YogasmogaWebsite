@@ -1,0 +1,149 @@
+.custombtn
+{
+    border : none;
+    outline : none;
+}
+
+.loginbtn
+{
+    background-image : url('../images/customer/log_in_button_off.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width : 127px;
+    height : 29px;
+    margin-right : 25px;
+}
+
+.createaccountbtn
+{
+    background-image : url('../images/customer/create_account_button_off.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width : 185px;
+    height : 29px;
+}
+
+.sectionheader
+{
+    font-size : 18px;
+    margin-bottom : 13px;
+    text-transform: uppercase;
+}
+
+.fbloginbtn
+{
+    background-image : url('../images/customer/facebook_button_off.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width : 202px;
+    height : 29px;
+    margin-top : 40px;
+}
+
+.twloginbtn
+{
+    background-image : url('../images/customer/twitter_off.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width : 203px;
+    height : 29px;
+    margin-top : 33px;
+}
+
+.logintable
+{
+    margin-left : auto;
+    margin-right : auto;
+}
+
+.logintable p
+{
+    margin : 0;
+}
+
+a.forgot-link
+{
+    text-decoration: underline;
+    color : #9B9B9B;
+}
+
+a.forgot-link:hover
+{
+    color : #D90D3D;
+}
+
+#sociallogin_button
+{
+    display : none;
+}
+
+.loginerrormsg
+{
+    height : 20px;
+}
+
+.submitbtn
+{
+    background-image : url('../images/customer/submit.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width : 127px;
+    height : 29px;
+}
+
+.myheader
+{
+    margin-bottom : 55px;
+}
+
+.backlink
+{
+    position : absolute;
+    top : 70px;
+    left : 20px;
+}
+#register-form table.inputtable
+{
+    width : 533px;
+}
+#login-form table.inputtable
+{
+    width : 236px;
+}
+#forgot-password-form table.inputtable
+{
+    width : 533px;
+}
+.accountbg
+{
+    background-image : url('../images/customer/myaccount_bg.png');
+    background-size : cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+.subsectionheader
+{
+    font-size : 14px;
+    margin-bottom : 20px;
+    
+}
+.myaccountdashboard
+{
+    width : 625px;
+    margin-left : auto;
+    margin-right : auto;
+}
+
+.myaccountdashboard a
+{
+    color : gray;
+    text-decoration: underline;
+    font-size : 10px;
+    letter-spacing : 0.4pt;
+    padding-left : 15px;
+}
+
+.myaccountdashboard a:hover
+{
+    color : #D90D3D;
+}

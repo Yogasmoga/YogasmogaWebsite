@@ -33,6 +33,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
 <head>
 <?php echo $this->getChildHtml('head') ?>
+<script type="text/javascript">
+    _disablesidenavigation = true;
+</script>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/myaccount.css'); ?>" media="all" />
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myaccount.js"></script>
 </head>
 <body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
 <?php echo $this->getChildHtml('after_body_start') ?>
@@ -41,8 +46,14 @@
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
         <div id="pagecontainer">
-            <div id="mainimage" class="fullscreen colorbg" desc="Accounts Page">
-                <?php echo $this->getChildHtml('content'); ?>  
+            <div id="mainimage" class="fullscreen colorbg pgsection accountbg" desc="Accounts Page" style="position : relative;">
+                <table class="fixwidth">
+                    <tr>
+                        <td>
+                            <?php echo $this->getChildHtml('content'); ?>    
+                        </td>
+                    </tr>
+                </table>  
             </div>
             <?php echo $this->getChildHtml('footer'); ?>
         </div>
