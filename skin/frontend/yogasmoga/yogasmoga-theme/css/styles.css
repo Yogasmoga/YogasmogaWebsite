@@ -2729,3 +2729,7 @@ table.inputtable td.errortext div
 {
     display : none;
 }
+.spbutton
+{
+    cursor : pointer;
+}
