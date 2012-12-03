@@ -2037,8 +2037,8 @@ div.footer div.footertwitter:hover
 div.footer div.footerpinterest
 {
     background-image : url('../images/footer/pin_footer_off.png');
-    width : 13px;
-    height : 10px;
+    height : 13px;
+    width : 10px;
 }
 
 div.footer div.footerpinterest:hover
