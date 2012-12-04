@@ -147,3 +147,13 @@ a.forgot-link:hover
 {
     color : #D90D3D;
 }
+.savebtn
+{
+    background-image : url('../images/customer/save_button_off.png');
+    width : 89px;
+    height : 34px;
+}
+#edit-accountinfo table.inputtable
+{
+    width : 533px;
+}
