@@ -78,7 +78,7 @@
                                             _dressingroomcollection[<?php echo ($i - 1); ?>].half = '<?php echo trim($detail[0]); ?>';
                                             _dressingroomcollection[<?php echo ($i - 1); ?>].image = '<?php echo trim($detail[2]); ?>';
                                             _dressingroomcollection[<?php echo ($i - 1); ?>].name = '<?php echo trim($product->getName()); ?>';
-                                            _dressingroomcollection[<?php echo ($i - 1); ?>].id = '<?php echo trim($detail[3]); ?>';
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].id = '<?php echo trim(strip_tags($detail[3])); ?>';
                                             _dressingroomcollection[<?php echo ($i - 1); ?>].description = '<?php echo trim($product->getShortDescription()); ?>';
                                             <?php
                                         }
@@ -279,7 +279,7 @@
                                             _dressingroomcollection[<?php echo ($i - 1); ?>].half = '<?php echo trim($detail[0]); ?>';
                                             _dressingroomcollection[<?php echo ($i - 1); ?>].image = '<?php echo trim($detail[2]); ?>';
                                             _dressingroomcollection[<?php echo ($i - 1); ?>].name = '<?php echo trim($product->getName()); ?>';
-                                            _dressingroomcollection[<?php echo ($i - 1); ?>].id = '<?php echo trim($detail[3]); ?>';
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].id = '<?php echo trim(strip_tags($detail[3])); ?>';
                                             _dressingroomcollection[<?php echo ($i - 1); ?>].description = '<?php echo trim($product->getShortDescription()); ?>';
                                             <?php
                                         }

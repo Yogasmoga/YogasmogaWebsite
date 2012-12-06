@@ -24,29 +24,32 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<div style="margin-top : 55px;" class="sectionheader"><?php echo $this->__('Address Book') ?></div>
-<table style="width: 100%;">
     <tr>
+        <td colspan="2">
+            <div class="sectionheader addressbookheader"><?php echo $this->__('Address Book') ?></div>
+        </td>
+    </tr>
+    <tr class="customeraddress">
         <td>
             <table>
                 <tr>
                     <td>
                         <div class="subsectionheader">BILLING ADDRESS</div>            
                     </td>
-                    <td style="padding-top: 2px;">
+                    <td class="tdsubsectionheaderlink">
                         <a href="<?php echo $this->getPrimaryBillingAddressEditUrl() ?>">Edit</a>            
                     </td>
                 </tr>
             </table>
             <?php echo $this->getPrimaryBillingAddressHtml(); ?>
         </td>
-        <td>
+        <td class="column2cell">
             <table>
                 <tr>
                     <td>
                         <div class="subsectionheader">SHIPPING ADDRESS</div>            
                     </td>
-                    <td style="padding-top: 2px;">
+                    <td class="tdsubsectionheaderlink">
                         <a href="<?php echo $this->getPrimaryShippingAddressEditUrl() ?>">Edit</a>            
                     </td>
                 </tr>
@@ -54,7 +57,6 @@
             <?php echo $this->getPrimaryShippingAddressHtml() ?>
         </td>
     </tr>
-</table>
 <?php /*
 <div class="col2-set">
     <div class="box">

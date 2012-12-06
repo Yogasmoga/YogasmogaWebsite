@@ -25,15 +25,14 @@
  */
 ?>
 
-<table style="width: 100%;margin-top : 35px;">
-    <tr>
+    <tr class="customerinfo">
         <td>
             <table>
                 <tr>
                     <td>
                         <div class="sectionheader">ACCOUNT INFORMATION</div>            
                     </td>
-                    <td style="padding-top: 7px;">
+                    <td class="tdsectionheaderlink">
                         <a href="<?php echo $this->getUrl('customer/account/edit') ?>"><?php echo $this->__('Edit') ?></a>    
                     </td>
                 </tr>
@@ -45,13 +44,13 @@
             </p>
         </td>
         <?php if( $this->isNewsletterEnabled() ): ?>
-            <td>
+            <td class="column2cell">
                 <table>
                     <tr>
                         <td>
                             <div class="sectionheader">NEWSLETTER</div>            
                         </td>
-                        <td style="padding-top: 7px;">
+                        <td class="tdsectionheaderlink">
                             <a href="<?php echo $this->getUrl('newsletter/manage') ?>"><?php echo $this->__('Edit') ?></a>            
                         </td>
                     </tr>
@@ -65,8 +64,10 @@
                 </p>
             </td>
         <?php endif; ?>
+        <?php if( !$this->isNewsletterEnabled() ): ?>
+            <td class="column2cell">&nbsp;</td>
+        <?php endif; ?>
     </tr>
-</table>
 
 <?php /*
 <div class="col2-set">

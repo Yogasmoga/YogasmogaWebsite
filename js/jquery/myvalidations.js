@@ -6,9 +6,15 @@ function setOnError(element, errormsg)
 {
     errormsg = (typeof errormsg === "undefined") ? "" : errormsg;
     jQuery(element.parents("table.inputtable:first")).addClass("error");
+    jQuery(element.parents("table.inputtable:first")).find("td.errortext div").hide();
     jQuery(element.parents("table.inputtable:first")).find("td.errortext div").fadeIn('fast');
     if(errormsg != "")
         jQuery(element.parents("table.inputtable:first")).find("td.errortext div").html(errormsg);
+    else
+    {
+        if(jQuery(element).attr('defaulterrormsg'))
+            jQuery(element.parents("table.inputtable:first")).find("td.errortext div").html(jQuery(element).attr('defaulterrormsg'));
+    }
 }
 
 function setAllOnError(element)
@@ -22,7 +28,7 @@ function setAllOnError(element)
 function validatefields(element)
 {
     var flag = true;
-    element.find("input.requiredfield").each(function(){
+    element.find("input.requiredfield, select.requiredfield").each(function(){
         if(jQuery(this).val() == "")
         {
             setOnError(jQuery(this));

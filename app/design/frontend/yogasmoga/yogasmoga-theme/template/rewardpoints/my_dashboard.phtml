@@ -20,8 +20,10 @@
  <div class="myheader">MY ACCOUNT</div>
  <div class="myaccountdashboard">
     <?php echo $this->getChildHtml('hello'); ?>
-    <?php echo $this->getChildHtml('info') ?> 
-    <?php echo $this->getChildHtml('address') ?> 
+    <table style="width: 100%;">
+        <?php echo $this->getChildHtml('info') ?> 
+        <?php echo $this->getChildHtml('address') ?>
+    </table> 
  </div>
  
 <?php /* 

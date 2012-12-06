@@ -6,10 +6,10 @@
 
 .loginbtn
 {
-    background-image : url('../images/customer/log_in_button_off.png');
+    background-image : url('../images/customer/login_new_off.png');
     background-repeat: no-repeat;
     background-position: center;
-    width : 127px;
+    width : 119px;
     height : 29px;
     margin-right : 25px;
 }
@@ -79,16 +79,16 @@ a.forgot-link:hover
 
 .loginerrormsg
 {
-    height : 20px;
+    min-height : 20px;
 }
 
 .submitbtn
 {
-    background-image : url('../images/customer/submit.png');
+    background-image : url('../images/customer/submit_off.png');
     background-repeat: no-repeat;
     background-position: center;
-    width : 127px;
-    height : 29px;
+    width : 125px;
+    height : 25px;
 }
 
 .myheader
@@ -102,17 +102,42 @@ a.forgot-link:hover
     top : 70px;
     left : 20px;
 }
-#register-form table.inputtable
+#register-form table.inputtable,#register-form div.errormsg 
 {
     width : 533px;
 }
+#register-form input[type='submit']
+{
+    margin-top : 25px;
+}
+
 #login-form table.inputtable
 {
     width : 236px;
 }
+
+#login-form table.buttonholder
+{
+    
+}
+
 #forgot-password-form table.inputtable
 {
     width : 533px;
+}
+
+#forgot-password-form .submitbtn
+{
+    margin-top : 20px;
+}
+
+#forgot-password-form .sectionheader
+{
+    margin-bottom : 0px;
+}
+#forgot-password-form p
+{
+    margin-bottom : 25px;
 }
 .accountbg
 {
@@ -124,7 +149,7 @@ a.forgot-link:hover
 .subsectionheader
 {
     font-size : 14px;
-    margin-bottom : 20px;
+    margin-bottom : 15px;
     
 }
 .myaccountdashboard
@@ -132,6 +157,30 @@ a.forgot-link:hover
     width : 625px;
     margin-left : auto;
     margin-right : auto;
+}
+.myaccountdashboard td.tdsectionheaderlink
+{
+    padding-top : 6px;
+}
+
+.myaccountdashboard td.tdsubsectionheaderlink
+{
+    padding-top : 2px;
+}
+
+.myaccountdashboard td.column2cell
+{
+    padding-left : 96px;
+}
+
+.myaccountdashboard tr.customerinfo>td
+{
+    padding-top : 20px;
+}
+
+.myaccountdashboard div.addressbookheader
+{
+    margin-top : 45px;
 }
 
 .myaccountdashboard a
@@ -156,4 +205,28 @@ a.forgot-link:hover
 #edit-accountinfo table.inputtable
 {
     width : 533px;
+}
+#passwordchangeoptions
+{
+    display : none;
+}
+#changepasswordoptionholder
+{
+    margin-bottom : 15px;
+}
+input.checkbox
+{
+    margin-right : 5px;
+}
+#address-form table.inputtable
+{
+    width : 533px;
+}
+#address-form table.twocolumn533 table.inputtable
+{
+    width : 237px;
+}
+#region_id
+{
+    width : 115px;
 }
