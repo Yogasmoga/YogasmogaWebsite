@@ -1,0 +1,75 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<?php
+$_product    = $this->getProduct();
+$_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
+?>
+<?php if ($_product->isSaleable() && count($_attributes)):?>
+    <dl>
+    <?php foreach($_attributes as $_attribute): ?>
+        <dt><label class="required"><em>*</em><?php echo $_attribute->getLabel() ?></label></dt>
+        <dd<?php if ($_attribute->decoratedIsLast){?> class="last"<?php }?>>
+            <div class="input-box">
+                <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
+                    <option><?php echo $this->__('Choose an Option...') ?></option>
+                  </select>
+              </div>
+        </dd>
+    <?php endforeach; ?>
+    </dl>
+    <script type="text/javascript">
+        var spConfig = new Product.Config(<?php echo $this->getJsonConfig() ?>);
+        //console.log(spConfig);
+        //console.log(spConfig.config.attributes['92'].options);
+        //for(var label in spConfig.config.attributes['92'].options)
+//        {
+//            console.log(label['label']);
+//        }
+        for(i = 0; i < spConfig.config.attributes['92'].options.length; i++)
+        {
+            //console.log(spConfig.config.attributes['92'].options[i].label);
+            if(spConfig.config.attributes['92'].options[i].label.indexOf('|') > 0)
+            {
+                spConfig.config.attributes['92'].options[i].label = spConfig.config.attributes['92'].options[i].label.substr(0, spConfig.config.attributes['92'].options[i].label.indexOf('|'));
+                //console.log(spConfig.config.attributes['92'].options[i].label);
+            }
+        }
+        var selectobject=document.getElementById("attribute92")
+            for (var i=0; i<selectobject.length; i++){
+            //console.log(selectobject.options[i].text+" "+selectobject.options[i].value)
+            if(selectobject.options[i].text.indexOf('|') > 0)
+                selectobject.options[i].text = selectobject.options[i].text.substr(0, selectobject.options[i].text.indexOf('|'));
+        }
+        //var html = "<option value=''>Choose an Option...</option>";
+//        for(i = 0; i < spConfig.config.attributes['92'].options.length; i++)
+//        {
+//            html += "<option value='" + spConfig.config.attributes['92'].options[i].id + "' price='" + spConfig.config.attributes['92'].options[i].price + "'>" + spConfig.config.attributes['92'].options[i].label + "</option>";
+//        }
+//        document.getElementById('attribute92').innerHTML = html;
+    </script>
+<?php endif;?>
