@@ -1,4 +1,6 @@
 jQuery(document).ready(function($){
+    if($("div#dressingroom").length == 0)
+        return;
     $("#dressingroomtop, #dressingroombottom").hover(function(){
         $(this).find("img.invisible, div.productdetail").fadeIn('fast');
         //$(this).find("img.invisible").fadeIn('fast');
