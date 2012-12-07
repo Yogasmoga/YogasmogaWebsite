@@ -96,9 +96,7 @@
         <ul class="products-grid">    
 		<?php $i=0; foreach ($_productCollection as $_product): ?>
             <?php if(Mage::getModel('catalog/product')->load($_product->getId())->getTypeID() != "configurable")
-                {
-                    continue;
-                }
+                {continue;}
             ?>
             <li class="item">
                 <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(252); ?>" width="252" height="252" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
