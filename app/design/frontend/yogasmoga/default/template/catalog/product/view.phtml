@@ -132,13 +132,17 @@
                 echo "not set";    
             foreach($_gallery as $_image)
             {
+                //echo "<pre>";
+//                print_r($_image);
+//                echo "</pre>";
+//                break;
                 if(str_replace("*", "", $_image->getLabel()) == $temp)
                 {
                     
                     //echo $imageurl;
                     $smallimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75);
                     $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(700, 700);
-                    $zoomimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(750, 750);
+                    $zoomimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
                     
                     //if(count($productcolorinfo[$temp]["images"]) == 0)
                     if(!isset($productcolorinfo[$temp]["images"]))
@@ -189,7 +193,7 @@
 //    print_r($productcolorinfo);
 //    echo "</pre>";
     
-    ?>
+?>
     
     <div id="productdetails" desc="<?php echo $productname; ?>" class="fullscreen colorbg pgsection">
     <script type="text/javascript">
@@ -276,12 +280,10 @@
             ?>
         <?php
         $currentcolorcount++;
-    }  
+    }
 ?>
     console.log(_productcolorinfo);
     </script>
-
-
     <table class="productimagecontainer">
         <tr>
             <td>
@@ -311,7 +313,7 @@
         </tr>
     </table>
     <div class="productoptions absoluteproductoptions">
-        <table class="productdetailtable">
+        <table class="productdetailtable normalproductdetail">
             <tr>
                 <td>
                     <div class="breadcrumb"><?php echo $breadcrumb; ?></div>
@@ -433,13 +435,185 @@
         </table>
     </div>
 </div>
-
 <?php
     $productmodel = Mage::getResourceModel('catalog/product');
     $productid = $_product->getId();
     $currentstoreid = Mage::app()->getStore()->getStoreId();
+    $dfimages = array();
+    $ftimage = "";
+    foreach($_gallery as $_image)
+    {
+        if($_image->getLabel() == "Fabric_Technology_Image")
+        {
+            $ftimage = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
+            continue;
+        }
+        if(strpos($_image->getLabel(), "|DF") !== 0)
+            continue;
+        $temp = str_replace("|DF", "", $_image->getLabel());
+        $temp = explode("|", $temp);
+        $dfimages[$temp[0]]["url"] = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
+        if(isset($temp[1]))
+            $dfimages[$temp[0]]["caption"] = $temp[1];
+        else
+            $dfimages[$temp[0]]["caption"] = "";
+    }
+    //echo "<pre>";
+//    print_r($dfimages);
+//    echo "</pre>";
 ?>
 
+<?php
+    $flag = true;
+    for($i = 1; $i <= 5; $i++)
+    {
+        if(!isset($dfimages[$i]))
+            $flag = false;
+    }
+    if($flag)
+    {
+        if($_product->getAttributeText('design_feature_view') == "Landscape")
+        {
+            ?>
+            <div class="fullscreen colorbg pgsection">
+                <table class="fullscreentable">
+                    <tr>
+                        <td style="padding: 0 50px;">
+                            <table class="productdesignfeatures">
+                                <tr>
+                                    <td style="width: 50%;">
+                                       <table style="width: 100%;">
+                                            <tr>
+                                                <td style="width: 60%;">
+                                                    <div size="half">
+                                                            <img src="<?php echo substr($dfimages[1]["url"], 1); ?>" alt="<?php echo $dfimages[1]["caption"]; ?>" />
+                                                            <div class="caption"><div><?php echo $dfimages[1]["caption"]; ?></div></div>
+                                                        <?php /*
+                                                        <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
+                                                        */ ?>
+                                                    </div>      
+                                                </td>
+                                                <td style="width: 40%;">
+                                                    <div size="half">
+                                                            <img src="<?php echo substr($dfimages[2]["url"], 1); ?>" alt="<?php echo $dfimages[2]["caption"]; ?>" />
+                                                            <div class="caption"><div><?php echo $dfimages[2]["caption"]; ?></div></div>
+                                                        <?php /*
+                                                        <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
+                                                        */ ?>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                       </table> 
+                                    </td>
+                                    <td rowspan="2" style="width: 50%;">
+                                        <div size="full">
+                                            <img src="<?php echo substr($dfimages[3]["url"], 1); ?>" alt="<?php echo $dfimages[3]["caption"]; ?>" />
+                                            <div class="caption"><div><?php echo $dfimages[3]["caption"]; ?></div></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 50%; vertical-align: bottom;">
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <td style="width: 40%;">
+                                                    <div size="half">
+                                                            <img src="<?php echo substr($dfimages[4]["url"], 1); ?>" alt="<?php echo $dfimages[4]["caption"]; ?>" />
+                                                            <div class="caption"><div><?php echo $dfimages[4]["caption"]; ?></div></div>
+                                                        <?php /*
+                                                        <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
+                                                        */ ?>
+                                                    </div>      
+                                                </td>
+                                                <td style="width: 60%;">
+                                                    <div size="half">
+                                                            <img src="<?php echo substr($dfimages[5]["url"], 1); ?>" alt="<?php echo $dfimages[5]["caption"]; ?>" />
+                                                            <div class="caption"><div><?php echo $dfimages[5]["caption"]; ?></div></div>
+                                                        <?php /*
+                                                        <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
+                                                        */ ?>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                       </table> 
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="designfeaturesheadimage landscapefeature"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <?php
+        }
+        if($_product->getAttributeText('design_feature_view') == "Potrait")
+        {
+            ?>
+            <div class="fullscreen colorbg pgsection">
+                <table class="fullscreentable">
+                    <tr>
+                        <td style="padding: 0 50px;">
+                            <table class="productdesignfeatures">
+                                <tr>
+                                    <td style="width: 33.33%;">
+                                       <div size="half">
+                                                <img src="<?php echo substr($dfimages[1]["url"], 1); ?>" alt="<?php echo $dfimages[1]["caption"]; ?>" />
+                                                <div class="caption"><div><?php echo $dfimages[1]["caption"]; ?></div></div>
+                                            <?php /*
+                                            <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
+                                            */ ?>
+                                        </div> 
+                                    </td>
+                                    <td rowspan="2" style="width: 33.33%;">
+                                        <div size="full">
+                                            <img src="<?php echo substr($dfimages[2]["url"], 1); ?>" alt="<?php echo $dfimages[2]["caption"]; ?>" />
+                                            <div class="caption"><div><?php echo $dfimages[2]["caption"]; ?></div></div>
+                                        </div>
+                                    </td>
+                                    <td rowspan="2" style="width: 33.33%;">
+                                        <div size="full">
+                                            <img src="<?php echo substr($dfimages[3]["url"], 1); ?>" alt="<?php echo $dfimages[3]["caption"]; ?>" />
+                                            <div class="caption"><div><?php echo $dfimages[3]["caption"]; ?></div></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 33.33%; vertical-align: bottom;">
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <td style="width: 50%;">
+                                                    <div size="half">
+                                                            <img src="<?php echo substr($dfimages[4]["url"], 1); ?>" alt="<?php echo $dfimages[4]["caption"]; ?>" />
+                                                            <div class="caption"><div><?php echo $dfimages[4]["caption"]; ?></div></div>
+                                                        <?php /*
+                                                        <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
+                                                        */ ?>
+                                                    </div>      
+                                                </td>
+                                                <td style="width: 50%;">
+                                                    <div size="half">
+                                                            <img src="<?php echo substr($dfimages[5]["url"], 1); ?>" alt="<?php echo $dfimages[5]["caption"]; ?>" />
+                                                            <div class="caption"><div><?php echo $dfimages[5]["caption"]; ?></div></div>
+                                                        <?php /*
+                                                        <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
+                                                        */ ?>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                       </table> 
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="designfeaturesheadimage potraitfeature"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <?php    
+        }        
+    }
+?>
+<?php /*
 <?php
      if($_product->getAttributeText('design_feature_view') == "Landscape"  && $productmodel->getAttributeRawValue($productid, 'design_feature_image1', $currentstoreid) != "" && $productmodel->getAttributeRawValue($productid, 'design_feature_image2', $currentstoreid) != "" && $productmodel->getAttributeRawValue($productid, 'design_feature_image3', $currentstoreid) != "" && $productmodel->getAttributeRawValue($productid, 'design_feature_image4', $currentstoreid) != "" && $productmodel->getAttributeRawValue($productid, 'design_feature_image5', $currentstoreid) != "")
      {
@@ -457,18 +631,12 @@
                                                     <div size="half">
                                                             <img src="<?php echo $this->getSkinUrl('images/catalog/product/designfeatures/'.$productmodel->getAttributeRawValue($productid, 'design_feature_image1', $currentstoreid)); ?>" alt="<?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_description1', $currentstoreid); ?>" />
                                                             <div class="caption"><div><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_description1', $currentstoreid); ?></div></div>
-                                                        <?php /*
-                                                        <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
-                                                        */ ?>
                                                     </div>      
                                                 </td>
                                                 <td style="width: 40%;">
                                                     <div size="half">
                                                             <img src="<?php echo $this->getSkinUrl('images/catalog/product/designfeatures/'.$productmodel->getAttributeRawValue($productid, 'design_feature_image2', $currentstoreid)); ?>" alt="<?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_description2', $currentstoreid); ?>" />
                                                             <div class="caption"><div><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_description2', $currentstoreid); ?></div></div>
-                                                        <?php /*
-                                                        <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
-                                                        */ ?>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -489,18 +657,12 @@
                                                     <div size="half">
                                                             <img src="<?php echo $this->getSkinUrl('images/catalog/product/designfeatures/'.$productmodel->getAttributeRawValue($productid, 'design_feature_image4', $currentstoreid)); ?>" alt="<?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_description4', $currentstoreid); ?>" />
                                                             <div class="caption"><div><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_description4', $currentstoreid); ?></div></div>
-                                                        <?php /*
-                                                        <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
-                                                        */ ?>
                                                     </div>      
                                                 </td>
                                                 <td style="width: 60%;">
                                                     <div size="half">
                                                             <img src="<?php echo $this->getSkinUrl('images/catalog/product/designfeatures/'.$productmodel->getAttributeRawValue($productid, 'design_feature_image5', $currentstoreid)); ?>" alt="<?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_description5', $currentstoreid); ?>" />
                                                             <div class="caption"><div><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_description5', $currentstoreid); ?></div></div>
-                                                        <?php /*
-                                                        <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
-                                                        */ ?>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -530,9 +692,6 @@
                                        <div size="half">
                                                 <img src="<?php echo $this->getSkinUrl('images/catalog/product/designfeatures/'.$productmodel->getAttributeRawValue($productid, 'design_feature_image1', $currentstoreid)); ?>" alt="<?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_description1', $currentstoreid); ?>" />
                                                 <div class="caption"><div><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_description1', $currentstoreid); ?></div></div>
-                                            <?php /*
-                                            <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
-                                            */ ?>
                                         </div> 
                                     </td>
                                     <td rowspan="2" style="width: 33.33%;">
@@ -556,18 +715,12 @@
                                                     <div size="half">
                                                             <img src="<?php echo $this->getSkinUrl('images/catalog/product/designfeatures/'.$productmodel->getAttributeRawValue($productid, 'design_feature_image4', $currentstoreid)); ?>" alt="<?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_description4', $currentstoreid); ?>" />
                                                             <div class="caption"><div><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_description4', $currentstoreid); ?></div></div>
-                                                        <?php /*
-                                                        <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
-                                                        */ ?>
                                                     </div>      
                                                 </td>
                                                 <td style="width: 50%;">
                                                     <div size="half">
                                                             <img src="<?php echo $this->getSkinUrl('images/catalog/product/designfeatures/'.$productmodel->getAttributeRawValue($productid, 'design_feature_image5', $currentstoreid)); ?>" alt="<?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_description5', $currentstoreid); ?>" />
                                                             <div class="caption"><div><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_description5', $currentstoreid); ?></div></div>
-                                                        <?php /*
-                                                        <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
-                                                        */ ?>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -583,6 +736,17 @@
         <?php
      }
 ?>
+*/ ?>
+<?php
+     if($ftimage != "")
+     {
+        ?>
+            <div id="fabrictechnology" desc="Fabric Technology" style="background-image : url('<?php echo $ftimage; ?>');" class="bgimage pgsection">
+            </div>
+        <?php
+     }
+?>
+<?php /*
 <?php
      if($productmodel->getAttributeRawValue($productid, 'fabric_technology_image', $currentstoreid) != "")
      {
@@ -592,4 +756,73 @@
         <?php
      }
 ?>
+*/ ?>
+<div style="display:none;">
+    <div id="zoompopup">
+        <table class="productzoomtable">
+            <tr>
+                <td class="zoomproductoptions">
+                    <table class="productdetailtable zoomproductdetail">
+                        <tr>
+                            <td>
+                                <div class="productname"><?php echo $productname; ?></div>
+                                <div class="productcost"><?php echo $productprice; ?></div>
+                                <table class="selectedcolor">
+                                    <tr>
+                                        <td>COLOR</td>
+                                        <td class="selectedcolortext"></td>
+                                    </tr>
+                                </table>
+                                <div id="colorcontainer">
+                                    <?php
+                                        $first = true;
+                                        //print_r($productcolorinfo);
+                                         foreach($productcolorinfo as $key=>$colorinfo)
+                                        {
+                                            ?>
+                                                <div>
+                                                    <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
+                                                        <tr>
+                                                            <?php
+                                                                foreach($colorinfo['hex'] as $hex)
+                                                                {
+                                                                    ?>
+                                                                        <td style="background-color: <?php echo $hex ?>;">
+                                                                        <div>
+                                                                            &nbsp;
+                                                                        </div>                                                
+                                                                        </td>   
+                                                                    <?php
+                                                                } 
+                                                            ?>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
+                                                                  
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>  
+                                            <?php
+                                        }
+                                    ?>
+                                </div>
+                                <div style="clear: both;"></div>
+                                <table class="zoomsmallimagecontainer">
+                                    <tr><td><img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/75x75/040ec09b1e35df139433887a97daa66f/a/b/abstract_0073.jpg" /></td></tr>
+                                    <tr><td><img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/75x75/040ec09b1e35df139433887a97daa66f/a/b/abstract_0073.jpg" /></td></tr>
+                                    <tr><td><img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/75x75/040ec09b1e35df139433887a97daa66f/a/b/abstract_0073.jpg" /></td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td id="zoomedproductimage">
+                    
+                </td>
+            </tr>
+        </table>
+        <img id="closelightbox" src="<?php echo $this->getSkinUrl('images/catalog/product/close.png'); ?>" />
+    </div>
+</div>
 <?php echo $this->getChildHtml('upsell_products') ?>

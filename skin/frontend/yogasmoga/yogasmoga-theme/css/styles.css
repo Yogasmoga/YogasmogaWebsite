@@ -2739,3 +2739,13 @@ table.inputtable td.errortext div
 {
     cursor : pointer;
 }
+.overflowhidden
+{
+    overflow: hidden;
+}
+.zoomdialog
+{
+    padding : 0;
+    border : 0;
+    border-radius : 0;
+}

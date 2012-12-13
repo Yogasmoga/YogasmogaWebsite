@@ -109,7 +109,7 @@ jQuery(document).ready(function($){
         //console.log(_dressingroomcollection[getdressingroomrealindex(_dressingroomcurrentbodytype, 'bottom', _dressingroombottomindex)].id);
     });
     
-    $("img#closelightbox").live("click", function(){
+    $("div#productdetailpopup img#closelightbox").live("click", function(){
         jQuery( "#productdetailpopup" ).dialog( "close" );
     });
 });

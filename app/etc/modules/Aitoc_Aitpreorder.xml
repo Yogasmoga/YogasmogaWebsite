@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Aitoc_Aitpreorder>
+            <active>true</active>
+            <codePool>local</codePool>
+            <self_name>Pre-Order</self_name>
+            <priority>1000</priority>
+        </Aitoc_Aitpreorder>
+	</modules>
+</config>
+<!--
+/**
+ * Product:     Pre-Order
+ * Package:     Aitoc_Aitpreorder_1.1.25_398049
+ * Purchase ID: GFmKN376RqwlXbrxLFev6fwkrQkQ4sDnXgpK7XouBr
+ * Generated:   2012-10-12 17:01:01
+ * File path:   app/etc/modules/Aitoc_Aitpreorder.xml
+ * Copyright:   (c) 2012 AITOC, Inc.
+ */
+-->

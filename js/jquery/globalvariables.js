@@ -22,3 +22,4 @@ var _isdeletingcartitem = false;
 var _dontclosecart = false;
 var _minimumwindowwidth = 960;
 var _disablesidenavigation = false;
+var _isproductzoomed = false;

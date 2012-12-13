@@ -1,5 +1,5 @@
 jQuery(document).ready(function($){
-    $("div#colorcontainer table").live("click", function(){
+    $("table.normalproductdetail div#colorcontainer table").live("click", function(){
         changeColor($(this).attr("color"));
     });
     
@@ -98,9 +98,9 @@ function changeColor(clr)
     var colorindex = searchproductcolorinfoarrray(clr);
     if(colorindex == -1)
         return;
-    jQuery("table.selectedcolor td:last").html(clr);
-    jQuery("div#colorcontainer table td").removeClass("tdselectedcolor");
-    jQuery("div#colorcontainer table[color='" + clr + "'] tr:nth-child(2) td").addClass("tdselectedcolor");
+    jQuery("table.normalproductdetail table.selectedcolor td:last").html(clr);
+    jQuery("table.normalproductdetail div#colorcontainer table td").removeClass("tdselectedcolor");
+    jQuery("table.normalproductdetail div#colorcontainer table[color='" + clr + "'] tr:nth-child(2) td").addClass("tdselectedcolor");
     jQuery("div#sizecontainer div").removeClass("dvselectedsize");
     //jQuery("div#sizecontainer div").addClass("disabled");
     jQuery("div#sizecontainer div").parent().addClass("disabled");
@@ -146,7 +146,7 @@ function changeColor(clr)
         smallimagehtml = '<tr>';
         for(i = 0; i < _productcolorinfo[colorindex].smallimages.length; i++)
         {
-            smallimagehtml = smallimagehtml + "<td bigimageurl='" + _productcolorinfo[colorindex].bigimages[i] + "'><img src='" + _productcolorinfo[colorindex].smallimages[i] + "'></td>";
+            smallimagehtml = smallimagehtml + "<td bigimageurl='" + _productcolorinfo[colorindex].bigimages[i] + "' zoomimageurl='" + _productcolorinfo[colorindex].zoomimages[i] + "'><img src='" + _productcolorinfo[colorindex].smallimages[i] + "'></td>";
         }
         smallimagehtml = smallimagehtml + "</tr>";
         jQuery("table.productimagecontainer").hide();
@@ -184,7 +184,7 @@ function addtocart()
     }
     jQuery("div.producterrorcontainer div.errormsg").hide();
     var size = jQuery("div#sizecontainer div.dvselectedsize").attr("value");
-    var color = jQuery("div#colorcontainer table").has("td.tdselectedcolor").attr("value");
+    var color = jQuery("table.normalproductdetail div#colorcontainer table").has("td.tdselectedcolor").attr("value");
     _addingtocart = true;
     jQuery.ajax({
         type : 'POST',

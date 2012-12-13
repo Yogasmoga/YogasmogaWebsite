@@ -20,7 +20,74 @@ jQuery(document).ready(function($){
         }, 300);
     });
     clearEmptycaptions();
+    
+    //$("table.tdbigimagecontainer img").live("click", function(){
+//        //jQuery("#productdetailpopup").html("<table style='width:100%;height : 100%;'><tr><td style='text-align:center;vertical-align:middle;'>Loading. .</td></tr></table>");
+//        //jQuery("body").addClass('overflowhidden');
+//        jQuery( "#zoompopup" ).dialog( "open" );
+//        //var color = jQuery("table.normalproductdetail div#colorcontainer table").has("td.tdselectedcolor").attr("color");
+//        changezoomColor(jQuery("table.normalproductdetail div#colorcontainer table").has("td.tdselectedcolor").attr("color"), true);
+//        setTimeout(function(){ 
+//            jQuery("body").addClass('overflowhidden');
+//        }, 300);
+//    });
+//    setTimeout(function(){ InitializeZoomPopup(); }, 100);
+    
+    $(window).resize(function(){
+        setTimeout(function(){ InitializeZoomPopup(); }, 100);    
+    });
+    
+    $("div#zoompopup img#closelightbox").live("click", function(){
+        jQuery("#zoompopup").dialog( "close" );
+    });
+    
+    $("table.zoomproductdetail div#colorcontainer table").live("click", function(){
+        changezoomColor($(this).attr("color"), false, 0);
+    });
+    
+    $("table.zoomproductdetail table.zoomsmallimagecontainer td:not(.selectedimage)").live("click", function(){
+        jQuery("table.zoomproductdetail table.zoomsmallimagecontainer td").removeClass('selectedimage');
+        $(this).addClass('selectedimage');
+        jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage' src='" + $(this).attr("zoomimageurl") + "' />");
+        StartZooming();
+    });
 });
+
+function StartZooming()
+{
+    jQuery('img#zoomedimage').show();
+    jQuery('img#zoomedimage').smoothZoom({
+        initial_ZOOM : 100,
+        zoom_MIN : 100,
+        responsive : true,
+        pan_BUTTONS_SHOW : false,
+        pan_REVERSE : true
+	});
+}
+
+function InitializeZoomPopup()
+{
+    var tempwidth = jQuery("div.fullscreen:first").width();
+    var tempwidth = _winW;
+    if(tempwidth < 960)
+        tempwidth = 960;
+    jQuery("#zoompopup").dialog({
+        autoOpen: false,
+        show: "scale",
+        hide: "scale",
+        width : tempwidth,
+        height : _winH + _headerHeight,
+        modal : true,
+        draggable : false,
+        //position: { my: "center top",at: "center top+80" },
+        resizable : false,
+        dialogClass : 'yogidialog zoomdialog',
+        beforeClose : function(){
+            jQuery("body").removeClass('overflowhidden');    
+        }
+    });
+    jQuery("div#zoompopup table.productzoomtable tr td:first").height(_winH + _headerHeight);
+}
 
 function resizeDesignFeatures()
 {
@@ -70,4 +137,34 @@ function clearEmptycaptions()
         if(jQuery(this).html() == "")
             jQuery(this).parent().css('display', 'none'); 
     });
+}
+
+function changezoomColor(clr, delay, imgindex)
+{
+    imgindex = (typeof imgindex === "undefined") ? jQuery("table.productimagecontainer table.smallimagecontiner td.selectedimage:first").index() : imgindex;
+    imgindex++;
+    var colorindex = searchproductcolorinfoarrray(clr);
+    if(colorindex == -1)
+        return;
+    jQuery("table.zoomproductdetail table.selectedcolor td:last").html(clr);
+    jQuery("table.zoomproductdetail div#colorcontainer table td").removeClass("tdselectedcolor");
+    jQuery("table.zoomproductdetail div#colorcontainer table[color='" + clr + "'] tr:nth-child(2) td").addClass("tdselectedcolor");
+    var smallimagehtml = '';
+    for(i = 0; i < _productcolorinfo[colorindex].smallimages.length; i++)
+    {
+        smallimagehtml = smallimagehtml + "<tr><td zoomimageurl='" + _productcolorinfo[colorindex].bigimages[i] + "'><img src='" + _productcolorinfo[colorindex].smallimages[i] + "'></td></tr>";
+    }
+    jQuery("div#zoompopup table.zoomsmallimagecontainer").html(smallimagehtml);
+    jQuery("div#zoompopup table.zoomsmallimagecontainer tr:nth-child(" + imgindex + ") td").addClass('selectedimage');
+    jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage' src='" + jQuery("div#zoompopup table.zoomsmallimagecontainer tr:nth-child(" + imgindex + ") td").attr("zoomimageurl") + "' />");
+    if(delay)
+    {
+        setTimeout(function(){
+            StartZooming();
+        }, 500);
+    }
+    else
+    {
+        StartZooming();
+    }
 }

@@ -57,6 +57,7 @@ table.productdesignfeatures div.caption div
     color : #fff;
     font-weight : bold;
     width : auto;
+    text-align: center;
 }
 
 table.productdetailtable
@@ -483,7 +484,7 @@ table.productimagecontainer table.smallimagecontiner td
     cursor : pointer;
 }
 
-table.productimagecontainer table.smallimagecontiner td.selectedimage, td#tdpopupproductsmallimages td.selectedimage
+table.productimagecontainer table.smallimagecontiner td.selectedimage, td#tdpopupproductsmallimages td.selectedimage, table.zoomsmallimagecontainer td.selectedimage
 {
     opacity:0.3;
     filter:alpha(opacity=30);
@@ -610,6 +611,7 @@ table.productdesignfeatures tr td
     padding-left : 20px;
 }
 /*---------Remove these for design features to work------------*/
+/*
 table.productdesignfeatures tr td div[size] img
 {
     display : none;
@@ -622,4 +624,51 @@ table.productdesignfeatures tr td div[size]
 {
     background-color : #666666;
 }
+*/
 /*---------Upto Here------------*/
+.smooth_zoom_preloader {
+	background-image: url('../images/zoom_assets/preloader.gif');
+}	
+.smooth_zoom_icons {
+	background-image: url('../images/zoom_assets/icons.png');
+}
+table.productzoomtable
+{
+    width : 100%;
+}
+table.productzoomtable td.zoomproductoptions
+{
+    width : 250px;
+    min-width : 250px;
+    max-width : 250px;
+    padding-top : 10px;
+}
+table.zoomsmallimagecontainer
+{
+    margin-top : 40px;
+}
+table.zoomsmallimagecontainer td
+{
+    width : 75px;
+    height : 75px;
+    vertical-align: bottom;
+    padding-top : 20px;
+    cursor : pointer;
+}
+table.zoomsmallimagecontainer td:first-child
+{
+    padding-top : 0px;
+}
+img#zoomedimage
+{
+    display : none;
+}
+td#zoomedproductimage div.noSel.smooth_zoom_preloader>div
+{
+    background-color : transparent !important;
+}
+div#zoompopup div.absoluteproductoptions
+{
+    z-index: 3;
+    background-color : #FFF;
+}
