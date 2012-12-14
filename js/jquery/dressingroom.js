@@ -116,6 +116,7 @@ jQuery(document).ready(function($){
 
 function showproductlightbox(productid)
 {
+    productid = productid.replace('&nbsp;','');
     jQuery("#productdetailpopup").html("<table style='width:100%;height : 100%;'><tr><td style='text-align:center;vertical-align:middle;'>Loading. .</td></tr></table>");
     jQuery( "#productdetailpopup" ).dialog( "open" );
     jQuery.ajax({
