@@ -106,7 +106,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                             //echo "creating"."<br/>";
                         }
                         else
-                            if(count($productcolorinfo[$temp]["images"]["small"]) < 3)
+                            if(count($productcolorinfo[$temp]["images"]["small"]) < 4)
                             {
                                 array_push($productcolorinfo[$temp]["images"]["big"], $imageurl);
                                 array_push($productcolorinfo[$temp]["images"]["small"], $smallimageurl);
@@ -253,7 +253,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
             </tr>
         </table>
         */ ?>
-        <table class="productdetailspopup">
+        <table class="productdetailspopup normalproductdetail">
             <tr>
                 <td class="popupproductdetail">
                     <div class="productoptions">

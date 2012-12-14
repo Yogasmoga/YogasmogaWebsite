@@ -136,13 +136,27 @@
 //                print_r($_image);
 //                echo "</pre>";
 //                break;
+                //echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->getOriginalWidth()."<br/>";
+                
                 if(str_replace("*", "", $_image->getLabel()) == $temp)
                 {
-                    
                     //echo $imageurl;
                     $smallimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75);
                     $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(700, 700);
                     $zoomimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
+                    
+                    $imagePath = substr($zoomimageurl, 1);
+                    $dirImg = Mage::getBaseDir().str_replace("/",DS,strstr($imagePath,'/media'));
+                    if (file_exists($dirImg)) {
+                        $imageObj = new Varien_Image($dirImg);
+                        $width = $imageObj->getOriginalWidth();
+                        $height = $imageObj->getOriginalHeight();
+                        //echo $dirImg." - ".$width." x ".$height."<br/>";
+                        $zoomimageurl .= "|".$width."|".$height;
+                    }
+                    //else {
+//                        echo "File doesn't exist.";
+//                    }
                     
                     //if(count($productcolorinfo[$temp]["images"]) == 0)
                     if(!isset($productcolorinfo[$temp]["images"]))
@@ -154,7 +168,7 @@
                         //echo "creating"."<br/>";
                     }
                     else
-                        if(count($productcolorinfo[$temp]["images"]["small"]) < 3)
+                        if(count($productcolorinfo[$temp]["images"]["small"]) < 4)
                         {
                             array_push($productcolorinfo[$temp]["images"]["big"], $imageurl);
                             array_push($productcolorinfo[$temp]["images"]["small"], $smallimageurl);
@@ -282,7 +296,7 @@
         $currentcolorcount++;
     }
 ?>
-    console.log(_productcolorinfo);
+    //console.log(_productcolorinfo);
     </script>
     <table class="productimagecontainer">
         <tr>
@@ -740,8 +754,20 @@
 <?php
      if($ftimage != "")
      {
+        $imagePath = $ftimage;
+        $dirImg = Mage::getBaseDir().str_replace("/",DS,strstr($imagePath,'/media'));
+        if (file_exists($dirImg)) {
+            $imageObj = new Varien_Image($dirImg);
+            $width = $imageObj->getOriginalWidth();
+            $height = $imageObj->getOriginalHeight();
+            //echo $dirImg." - ".$width." x ".$height."<br/>";
+            $ftimage .= "|".$width."|".$height;
+        }
         ?>
-            <div id="fabrictechnology" desc="Fabric Technology" style="background-image : url('<?php echo $ftimage; ?>');" class="bgimage pgsection">
+            <script type="text/javascript">
+                _fabrictechnologyimage = '<?php echo $ftimage ?>';
+            </script>
+            <div id="fabrictechnology" desc="Fabric Technology" style="background-image : url('<?php echo substr($ftimage, 0, strpos($ftimage,"|")); ?>');" class="bgimage pgsection">
             </div>
         <?php
      }
@@ -823,6 +849,10 @@
             </tr>
         </table>
         <img id="closelightbox" src="<?php echo $this->getSkinUrl('images/catalog/product/close.png'); ?>" />
+        <div id="zoomoptions">
+            <img id="zoomout" src="<?php echo $this->getSkinUrl('images/catalog/product/zoom_out.png'); ?>" />
+            <img id="zoomin" src="<?php echo $this->getSkinUrl('images/catalog/product/zoom_in.png'); ?>" />
+        </div>
     </div>
 </div>
 <?php echo $this->getChildHtml('upsell_products') ?>

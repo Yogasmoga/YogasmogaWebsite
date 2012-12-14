@@ -89,6 +89,11 @@ table.productdetailtable div.productname
     line-height: 1.2em;
 }
 
+table.productdetailtable.zoomproductdetail div.productname
+{
+    margin-top : 10px;
+}
+
 table.productdetailtable div.productcost
 {
     color: #D90D3D;
@@ -454,8 +459,16 @@ table.productimagecontainer table.tdbigimagecontainer td
 table.productimagecontainer table.tdbigimagecontainer td img
 {
     max-width : 700px;
+    cursor : url("http://192.168.2.110/yogasmoga/skin/frontend/yogasmoga/yogasmoga-theme/images/catalog/product/cursor_zoom_in.cur"), default;
 }
-
+td.canzoomin, td.canzoomin div, td.canzoomin img
+{
+    cursor : url("http://192.168.2.110/yogasmoga/skin/frontend/yogasmoga/yogasmoga-theme/images/catalog/product/cursor_zoom_in.cur"), default !important;
+}
+td.canzoomout, td.canzoomout div, td.canzoomout img
+{
+    cursor : url("http://192.168.2.110/yogasmoga/skin/frontend/yogasmoga/yogasmoga-theme/images/catalog/product/cursor_zoom_out.cur"), default !important;
+}
 table.productimagecontainer td.tddivider
 {
     padding-top : 15px;
@@ -484,7 +497,7 @@ table.productimagecontainer table.smallimagecontiner td
     cursor : pointer;
 }
 
-table.productimagecontainer table.smallimagecontiner td.selectedimage, td#tdpopupproductsmallimages td.selectedimage, table.zoomsmallimagecontainer td.selectedimage
+table.productimagecontainer table.smallimagecontiner td.selectedimage, td#tdpopupproductsmallimages td.selectedimage, table.zoomsmallimagecontainer td.selectedimage, div#zoompopup div#zoomoptions img.disabled
 {
     opacity:0.3;
     filter:alpha(opacity=30);
@@ -595,6 +608,7 @@ img#closelightbox
     top : 6px;
     right : 9px;
     cursor : pointer;
+    z-index : 3;
 }
 table.productdesignfeatures
 {
@@ -641,7 +655,6 @@ table.productzoomtable td.zoomproductoptions
     width : 250px;
     min-width : 250px;
     max-width : 250px;
-    padding-top : 10px;
 }
 table.zoomsmallimagecontainer
 {
@@ -671,4 +684,28 @@ div#zoompopup div.absoluteproductoptions
 {
     z-index: 3;
     background-color : #FFF;
+}
+div#zoompopup div#zoomoptions
+{
+    position : absolute;
+    right : 9px;
+    z-index : 3;
+    top : 0;
+    width : 29px;
+}
+div#zoompopup div#zoomoptions img#zoomin
+{
+    margin-top : 12px;
+}
+div#zoompopup div#zoomoptions img
+{
+    cursor : pointer;
+}
+td#zoomedproductimage div.noSel.smooth_zoom_preloader div.noSel
+{
+    display : none !important;
+}
+div#zoompopup
+{
+    overflow : hidden;
 }

@@ -23,3 +23,7 @@ var _dontclosecart = false;
 var _minimumwindowwidth = 960;
 var _disablesidenavigation = false;
 var _isproductzoomed = false;
+var _oldmousex = 0;
+var _oldmousey = 0;
+var _fabrictechnologyimage = '';
+var _minzoomscale = 0;
