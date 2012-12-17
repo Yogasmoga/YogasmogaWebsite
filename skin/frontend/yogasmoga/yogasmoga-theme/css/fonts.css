@@ -1,5 +1,22 @@
 @font-face
 {
     font-family: ITCAvantGardeProBk;
-    src: url('../fonts/ITCAvantGardePro-Bk.ttf');
+	src:			url('../fonts/ITCAvantGardePro-Bk.ttf') format('truetype');
+	src:			url('../fonts/ITCAvantGardePro-Bk.eot?#iefix') format('embedded-opentype'),
+	 				url('../fonts/ITCAvantGardePro-Bk.woff') format('woff'),
+					url('../fonts/ITCAvantGardePro-Bk.ttf') format('truetype'),
+					url('../fonts/ITCAvantGardePro-Bk.svg#ITCAvantGardeProBk') format('svg');
+	font-weight:	normal;
+	font-style:		normal;
+}
+@font-face
+{
+    font-family: ITCAvantGardeProMd;
+	src:			url('../fonts/ITCAvantGardePro-Md.ttf') format('truetype');
+	src:			url('../fonts/ITCAvantGardePro-Md.eot?#iefix') format('embedded-opentype'),
+	 				url('../fonts/ITCAvantGardePro-Md.woff') format('woff'),
+					url('../fonts/ITCAvantGardePro-Md.ttf') format('truetype'),
+					url('../fonts/ITCAvantGardePro-Md.svg#ITCAvantGardeProBk') format('svg');
+	font-weight:	normal;
+	font-style:		normal;
 }
