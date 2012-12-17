@@ -149,12 +149,12 @@ input.qty { width:2.5em !important; border-width:0 0 1px; border-color:#ccc;}
 button.button::-moz-focus-inner { padding:0; border:0; } /* FF Fix */
 button.button { -webkit-border-fit:lines; } /* <- Safari & Google Chrome Fix */
 button.button { overflow:visible; width:auto; border:0; padding:0; margin:0; background:transparent; cursor:pointer; }
-button.button span { display:block; height:19px; border:1px solid #de5400; background:#f18200; padding:0 8px; font:bold 12px/19px Arial, Helvetica, sans-serif; text-align:center; white-space:nowrap; color:#fff; }
-button.button span span { border:0; padding:0; }
+button.button span { display:block; height:26px; border:0; background:url(../images/btn-bg.png) 50% 0 no-repeat; padding:0 25px 2px;  font:normal 11px/26px ITCAvantGardeProMd, arial; text-align:center; white-space:nowrap; color:#000; text-transform:uppercase; box-shadow:-1px 0 2px rgba(0,0,0,0.2); letter-spacing:2px;}
+button.button span span { border:0; padding:0; box-shadow:none; background:none;}
 button.disabled span { border-color:#bbb !important; background:#bbb !important; }
 
-button.btn-checkout span { height:40px; border:0; background:url(../images/btn_checkout.gif) 0 0 no-repeat; padding:0 0 0 9px; font:bold 15px/40px Arial, Helvetica, sans-serif; color:#fff; }
-button.btn-checkout span span { background-position:100% 0; padding:0 25px 0 16px; }
+button.btn-checkout span { height:43px; border:0; background:url(../images/btn-bg-gr.png) 50% 0 no-repeat; padding:0 50px 2px; font:bold 13px/43px Arial, Helvetica, sans-serif; color:#fff; letter-spacing:1px;}
+button.red span{ background:url(../images/btn-bg-red.png) 50% 0 no-repeat;}
 button.btn-checkout.no-checkout span { background-position:0 100%; color:#b8baba; }
 button.btn-checkout.no-checkout span span { background-position:100% 100%; }
 
@@ -1221,9 +1221,6 @@ tr.summary-details-excluded { font-style:italic; }
 .cart-table a.edit{color:#e80e40; text-decoration:underline; text-transform:capitalize;}
 .cart-table .btn-empty span,
 .cart-table .btn-continue span{background:none; text-transform:capitalize; color:#999; border-bottom:1px solid #999;}
-.cart-table button.btn-update{height:27px; background:#f0f0f0; box-shadow:-1px 2px 2px rgba(0,0,0,0.3);}
-.cart-table .btn-update span { border-color:#f0f0f0; background:#f0f0f0; padding:3px 35px; color:#000; font-size:11px;}
-.cart-table .btn-update span  span{padding:0;}
 .cart-table .btn-update,
 .cart-table .btn-empty { float:right; }
 .cart-table .btn-update { margin-left:10px; }
@@ -1246,8 +1243,6 @@ tr.summary-details-excluded { font-style:italic; }
 .cart .shipping { border:1px solid #d0cbc1; background:#fff url(../images/bkg_block-title.gif) 0 0 repeat-x; padding:12px 15px; margin:0 0 18px; }
 .cart .discount h2,
 .cart .shipping h2 { background-position:0 0; background-repeat:no-repeat; font:bold 13px/16px Arial, Helvetica, sans-serif; padding:0 0 0 21px; color:#e26703; text-transform:uppercase; }
-.cart .discount button span,
-.cart .shipping button span { border-color:#406a83; background:#618499; }
 .cart .discount .buttons-set,
 .cart .shipping .buttons-set { margin:10px 0 0; border:0; padding:0; text-align:left; }
 .cart .discount .buttons-set button.button,
@@ -1261,7 +1256,7 @@ tr.summary-details-excluded { font-style:italic; }
 .cart .shipping .sp-methods { margin:10px 0 0; padding:5px 0 0; background:url(../images/bkg_divider1.gif) 0 0 repeat-x; }
 
 /* Shopping Cart Totals */
-.cart .totals { float:right; width:268px;}
+.cart .totals { float:right;}
 .cart .totals table { width:100%; margin:7px 0; }
 .cart .totals td { padding:1px 10px 1px 7px; }
 .cart .totals tr.last td {}
@@ -1269,7 +1264,7 @@ tr.summary-details-excluded { font-style:italic; }
 .cart .totals tfoot td { padding-top:5px; padding-bottom:5px; }
 .cart .totals tfoot th strong,
 .cart .totals tfoot td strong { font-size:15px; }
-.cart .totals .checkout-types { font-size:13px; padding:8px 15px 15px; text-align:right; }
+.cart .totals .checkout-types { font-size:13px; text-align:right; }
 .cart .totals .checkout-types li { clear:both; margin:10px 0; }
 
 /* Options Tool Tip */
