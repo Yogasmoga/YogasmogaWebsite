@@ -56,7 +56,6 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
 								
 								<div style="font-size:12px; color:#666; padding:7px 9px 9px 9px;">
 									{{var order.getShippingAddress().format('html')}}
-									<br/>{{var payment_html}}
 								</div>
 							</td>
 							{{/depend}}
@@ -67,13 +66,9 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
 			</tr>
 			<tr>
 				<td valign="top">
-					<h2 style="color:#000; line-height:1.5; margin:15px 0; display:block; font-size:13px; text-transform:uppercase;">Order Grand total: {{var total}}</h2>
-				</td>
-			</tr>
-			<tr>
-				<td valign="top">
                     <h2 style="color:#000; line-height:1.5; margin:15px 0; display:block; border-bottom:1px solid #000; font-size:13px; text-transform:uppercase;">Order Summary</h2>
 					<div style="color:#666; font-size:12px;">
+						<p style="margin:0 0 10px;"><span style="text-transform:uppercase;">Payment Method:</span> {{var payment_html}}</p>
 						<p style="margin:0 0 10px;"><span style="text-transform:uppercase;">Order Number:</span> #{{var order.increment_id}}</p>
 						{{depend order.getIsNotVirtual()}}
 						<p style="margin:0 0 10px;"><span style="text-transform:uppercase;">shipping Method:</span> {{var order.getShippingDescription()}}</p>

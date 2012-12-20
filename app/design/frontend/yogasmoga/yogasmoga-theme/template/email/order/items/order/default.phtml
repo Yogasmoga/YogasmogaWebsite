@@ -27,17 +27,15 @@
 <?php $_item = $this->getItem() ?>
 <?php $_order = $this->getItem()->getOrder() ?>
 <tr>
-    <td align="left" valign="top" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;">
-        <strong style="font-size:11px;"><?php echo $this->htmlEscape($_item->getName()) ?></strong>
+    <td align="left" valign="top" style="font-size:12px; padding:5px 0px; ">
+        <strong style="font-size:12px;"><?php echo $this->htmlEscape($_item->getName()) ?></strong>
         <?php if ($this->getItemOptions()): ?>
-        <dl style="margin:0; padding:0;">
+        <p style="margin:0 0 5px">
             <?php foreach ($this->getItemOptions() as $option): ?>
-            <dt><strong><em><?php echo $option['label'] ?></em></strong></dt>
-            <dd style="margin:0; padding:0 0 0 9px;">
-                <?php echo (isset($option['print_value']) ? $option['print_value'] : nl2br($this->escapeHtml($option['value']))) ?>
-            </dd>
+            <span style="text-transform:uppercase;"><?php echo $option['label'] ?> </span>
+            <?php echo (isset($option['print_value']) ? $option['print_value'] : nl2br($this->escapeHtml($option['value']))) ?>
             <?php endforeach; ?>
-        </dl>
+        </p>
         <?php endif; ?>
         <?php $addInfoBlock = $this->getProductAdditionalInformationBlock(); ?>
         <?php if ($addInfoBlock) :?>
@@ -45,7 +43,6 @@
         <?php endif; ?>
         <?php echo $this->escapeHtml($_item->getDescription()) ?>
     </td>
-    <td align="left" valign="top" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;"><?php echo $this->htmlEscape($this->getSku($_item)) ?></td>
     <td align="center" valign="top" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;"><?php echo $_item->getQtyOrdered()*1 ?></td>
     <td align="right" valign="top" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;">
         <?php if ($this->helper('tax')->displaySalesPriceExclTax($_order->getStore()) || $this->helper('tax')->displaySalesBothPrices($_order->getStore())): ?>
