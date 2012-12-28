@@ -24,7 +24,7 @@
 
 <?php if (!$this->getAutoUse()): ?>
     <?php if (!$this->getCustomerId()):?>
-    <div class="discount-codes box discount">
+    <div class="discount-codes">
         <h2><?php echo $this->__('Reward points'); ?></h2>
         <?php echo $this->getIllustrationImage()?>
         <div class="rewards_point_cart"><?php echo $this->__("This shopping cart is worth %s loyalty point(s).", $pts);?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($pts);?></div>
@@ -34,15 +34,15 @@
     <?php $point_details = $this->getPointsInfo();?>
 
 <?php if ($this->canUseCouponCode() && ($couponCode == "" || $couponCode == null) || !$this->canUseCouponCode()):?>
-<div class="discount-codes box discount">
+<div class="discount-codes">
     <?php if (!$points_currently_used): ?>
     <form action="<?php echo $this->getUrl('rewardpoints/index/quotation/') ?>" method="post" name="discountFormPoints2" id="discountFormPoints2">
         <fieldset>
-            <h2><?php echo $this->__('Reward points'); ?></h2>
+            <h2><?php echo $this->__('Smogi bucks'); ?></h2>
             
             <?php echo $this->getIllustrationImage()?>
             
-            <div class="rewards_point_cart"><?php echo $this->__("This shopping cart is worth %s loyalty point(s).", $pts);?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($pts);?></div>
+            <!-- div class="rewards_point_cart"><?php // echo $this->__("This shopping cart is worth %s loyalty point(s).", $pts);?><?php // echo Mage::helper('rewardpoints/data')->getEquivalence($pts);?></div -->
             <?php //if ($point_details['points_money'] > $point_details['customer_points']):?>
             <?php if ($point_details['min_use'] > $point_details['customer_points']):?>
                 <p><?php echo $this->__('You have %d loyalty point(s) available.', $point_details['customer_points']); ?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($point_details['customer_points']);?></p>
@@ -93,11 +93,9 @@
                     <input <?php if($point_details['full_use']):?>type="hidden"<?php else:?>type="text"<?php endif;?> value="<?php if($point_details['full_use']):?><?php echo $point_details['max_use'];?><?php endif;?>"  name="points_to_be_used" class="input-text" />
                 <?php endif;?>
                 <?php if($this->getCustomerPoints() > 0) : ?>
-                <div class="buttons-set">
-                    <button class="form-button-alt button" value="<?php echo $this->__('Apply Points') ?>" onclick="discountFormPoints2.submit(false)" type="button">
+                    <button class="btn-apply button" value="<?php echo $this->__('Apply Points') ?>" onclick="discountFormPoints2.submit(false)" type="button">
                         <span><span><?php echo $this->__('Apply Points') ?></span></span>
                     </button>
-                </div>
                 <?php endif;?>
                 <?php elseif($this->getCustomerPoints() > 0): ?>
                     <p><?php echo $this->__('You must have at least %s point(s) to apply points.', $this->getMinimumBalance()); ?></p>
@@ -117,9 +115,9 @@
             <?php if ($points_currently_used > 0):?>
             <p><?php echo $this->__('You are currently using %d point(s) of your %d loyalty point(s) available.', $points_currently_used, $this->getCustomerPoints()); ?></p>
             <?php endif;?>
-            <div class="buttons-set">
+            <!-- div class="buttons-set">
                 <button class="form-button-alt button" type="button" onclick="discountFormPoints2.submit(false)" value="<?php echo $this->__('Remove Points') ?>"><span><span><?php echo $this->__('Remove Points') ?></span></span></button>
-            </div>
+            </div -->
         </fieldset>
     </form>
     <?php endif;?>
@@ -165,7 +163,7 @@
         
         <?php if ($this->canShowRemoveLink() && $points_currently_used > 0):?>
                 var points_text = "<?php echo str_replace('"', '\"', $this->__('%s points used', $points_currently_used));?>";
-                var reward_link_cart = '<span id="link_j2t_rewards"> <a href="javascript:$(\'discountFormPoints2\').submit();" title="<?php echo Mage::helper('rewardpoints')->__('Remove Points').'"><img src="'.Mage::getDesign()->getSkinUrl('images/j2t_delete.gif').'" alt="'.Mage::helper('rewardpoints')->__('Remove Points').'" /></a></span>'; ?>';
+                var reward_link_cart = '<span id="link_j2t_rewards"> <a href="javascript:$(\'discountFormPoints2\').submit();" title="<?php echo Mage::helper('rewardpoints')->__('Remove Points').'"><img src="'.Mage::getDesign()->getSkinUrl('images/btn_window_close.gif').'" alt="'.Mage::helper('rewardpoints')->__('Remove Points').'" /></a></span>'; ?>';
                 $$(".totals-rewards").each(function (el){
                     el.innerHTML = el.innerHTML.replace(points_text, points_text+reward_link_cart);
                 });
