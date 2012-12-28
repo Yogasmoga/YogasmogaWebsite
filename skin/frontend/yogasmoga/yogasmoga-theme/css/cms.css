@@ -52,9 +52,10 @@
 .main-container {position:relative; display:block; background:none;}
 .main-container .main{margin:0 auto; width:100%; background:none; padding:0;}
 .main-container .main .main-col{width:100%;}
-.main-container .main .title-div{height:528px; width:100%; display:block; text-indent:-999em;}
+.main-container .main .title-div{height:528px; width:100%; display:block; text-indent:-999em; }
 
-.story-page{padding: 50px 0; background:url(../images/cms_bg.png) 0 0 no-repeat;}
+.story-page{padding: 1px 0 50px; background:url(../images/cms_bg.png) 0 0 no-repeat;}
 .story-page .our-story{width:775px; margin:0 auto; color:#666; font-family:gotham-l; font-size:12px;}
-h2.heading{font-family:ITCAvantGardeProMd; text-transform:uppercase; font-size:14px;}
+.story-page p{margin:0 0 5px; line-height:1.3}
+h2.heading{font-family:ITCAvantGardeProMd; margin:40px 0 5px; text-transform:uppercase; font-size:14px;}
 h2.heading span{font-family:ITCAvantGardeProBk;}
