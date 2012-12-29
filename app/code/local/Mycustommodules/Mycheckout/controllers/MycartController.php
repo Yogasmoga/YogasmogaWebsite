@@ -263,7 +263,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                     $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), $temparray['color']);
                     $temparray['itemid'] = $item->getItemId();
                     $temparray['producturl'] = Mage::getModel('catalog/product')->load($item->getProductId())->getProductUrl();
-                    array_push($miniitems, $temparray);   
+                    array_push($miniitems, $temparray);
                 }
             }
             else
@@ -331,6 +331,103 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
     {
         $output = $this->getminicarthtml();
         echo json_encode(array("html" => $output, "count" => $this->getcartcount()));
+    }
+    
+    function getShippingCost($code)
+    {
+        //$rates = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->collectShippingRates()->getGroupedAllShippingRates();
+//         foreach ($rates as $carrier) {
+//            foreach ($carrier as $rate) {
+//                print_r($rate->getData());
+//            }
+//        }
+        $rates = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->collectShippingRates()->getGroupedAllShippingRates();
+         foreach ($rates as $carrier) {
+            foreach ($carrier as $rate) {
+                $temp = $rate->getData();
+                if($temp['code'] == $code)
+                    return $temp['price'];
+            }
+        }
+        return "";
+    }
+    
+    public function getCartSummaryAction()
+    {
+        $quote = Mage::helper('checkout')->getQuote()->getData();
+        $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+        $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
+        $grandtotal = $totals["grand_total"]->getValue(); //Grandtotal value
+        if(isset($totals['discount']) && $totals['discount']->getValue()) {
+            $discount = $totals['discount']->getValue(); //Discount value if applied
+        } else {
+            $discount = 0;
+        }
+        if(isset($totals['tax']) && $totals['tax']->getValue()) {
+            $tax = $totals['tax']->getValue(); //Tax value if present
+        } else {
+            $tax = 0;
+        }
+        ?>
+        <span class="anchor">ORDER SUMMARY</span>
+        <table>
+            <tr>
+                <td>Order Subtotal</td>
+                <td id="ordersubtotal" class="total">
+                    $<?php echo number_format((float)($subtotal), 2, '.', ''); ?>
+                </td>
+            </tr>            
+            <tr>
+                <td>Shipping</td>
+                <td id="shippingtotal" class="total">
+                    <?php $shippingcode = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingMethod();
+                        if($shippingcode == "")
+                            echo "-";
+                        else
+                            if($this->getShippingCost($shippingcode) == 0)
+                                echo "FREE";
+                            else
+                                echo "$".number_format((float)($this->getShippingCost($shippingcode)), 2, '.', '');
+                    ?>
+                </td>
+            </tr>
+            <?php
+                if($tax > 0)
+                {
+                    ?>
+                        <tr>
+                            <td>Taxes</td>
+                            <td id="taxtotal" class="total">
+                                <?php echo "$".number_format((float)($tax), 2, '.', ''); ?>
+                            </td>
+                        </tr>
+                    <?php
+                }
+            ?>
+            <?php
+                if($discount > 0)
+                {
+                    ?>
+                        <tr>
+                            <td>Discount</td>
+                            <td id="discounttotal" class="total">
+                                <?php echo "$".number_format((float)($discount), 2, '.', ''); ?>
+                            </td>
+                        </tr>
+                    <?php
+                }
+            ?>
+            <tr>
+                <td colspan="2" class="divider"></td>
+            </tr>
+            <tr class="ordertotal">
+                <td><span class="anchor">ORDER TOTAL</span></td>
+                <td id="ordertotal" class="total">
+                    <?php echo "$".number_format((float)($grandtotal), 2, '.', ''); ?>
+                </td>
+            </tr>
+        </table>
+        <?php
     }
 }
 ?>

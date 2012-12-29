@@ -6,6 +6,7 @@ jQuery(document).ready(function($){
         setTimeout(function(){ resizeProductBigImage(); }, 100);
     });
     
+    
     $("table.productdesignfeatures div[size]").hover(function(){
         $(this).find("div.caption").height();
         //$(this).find("div.caption").css('margin-top', ($(this).find("div.caption").height() * -1) + 'px');

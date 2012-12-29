@@ -34,6 +34,8 @@
 <?php $_helper = $this->helper('catalog/output'); ?>
 <?php $_product = $this->getProduct(); ?>
 <?php $_product = Mage::getModel('catalog/product')->load($_product->getId()); ?>
+<?php //echo Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId()); ?>
+<?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId(Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId()))->toHtml(); ?>
 <?php
     /*
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
@@ -43,6 +45,8 @@
     //$pts = Mage::helper('rewardpoints/data')->getPointsOnOrder();
     //echo Mage::helper('rewardpoints/data')->getEquivalence($pts);
     //echo $pts;
+    $howdoesitfitblockid = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId());
+    $sizechartblockid = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'size_chart', Mage::app()->getStore()->getStoreId());
     $cats = $_product->getCategoryIds();
     $categoryid = Mage::getModel('catalog/category')->load($cats[0])->getId();
     $categoryurl = Mage::getModel("catalog/category")->load($categoryid)->getUrl();
@@ -209,7 +213,7 @@
     
 ?>
     
-    <div id="productdetails" desc="<?php echo $productname; ?>" class="fullscreen colorbg pgsection">
+    <div id="productdetails" desc="<?php echo $productname; ?>" class="fullscreen colorbg pgsection" style="position: relative;">
     <script type="text/javascript">
         var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
     </script>
@@ -326,7 +330,32 @@
             </td>
         </tr>
     </table>
+    <?php
+        if($sizechartblockid != "")
+        {
+            ?>
+            <div id="sizechart">
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
+            </div>
+            <?php      
+        }
+    ?>
     <div class="productoptions absoluteproductoptions">
+        <?php //echo Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId()); ?>
+        <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId(Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId()))->toHtml(); ?>
+        <?php
+            if($howdoesitfitblockid != "")
+            {
+                ?>
+                <div id="howdoesitfitbox">
+                    <div id="howdoesitfitboxinner">
+                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
+                    </div>
+                    <img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closehowdoesitfit" />
+                </div>
+                <?php      
+            }
+        ?>
         <table class="productdetailtable normalproductdetail">
             <tr>
                 <td>
@@ -400,7 +429,7 @@
                             <td>
                                 <div class="hanger"></div>
                             </td>
-                            <td class="howdoesitfitlink"><div><a href="#">How does it fit?</a></div></td>
+                            <td class="howdoesitfitlink"><div><a href="javascript:void(0);">How does it fit?</a></div></td>
                         </tr>
                     </table>
                     <div class="qty">QTY</div>

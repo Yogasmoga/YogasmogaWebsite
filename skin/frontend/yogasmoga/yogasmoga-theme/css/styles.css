@@ -34,6 +34,11 @@ a.visited { color : black;text-decoration: none; }
 a:hover       { text-decoration:none; color : #D90D3D; }
 :focus        { outline:0; }
 
+.topmenulinks li a {
+	font-family:gothamlight;
+	font-size:11px;
+	}
+
 /* Headings */
 h1,h2,h3,
 h4,h5,h6      { margin:0 0 5px; line-height:1.35; color:#0a263c; }
@@ -307,8 +312,8 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 .v-fix .validation-advice { display:block; width:12em; margin-right:-12em; position:relative; }
 
 /* Global Messages  */
-.success { color:#3d6611; font-weight:bold; }
-.error { color:#df280a; font-weight:bold; }
+.success { color:#3d6611;  }
+.error { color:#df280a; }
 .notice { color:#e26703; }
 
 .messages,
@@ -1809,7 +1814,7 @@ ul.topmenulinks li
 }
 ul.topmenulinks li.selected
 {
-    border-bottom : 3px solid red;
+    border-bottom : 2px solid red;
 }
 ul.topmenulinks li a,ul.topmenulinks li a:visited 
 {
@@ -1958,14 +1963,20 @@ input.watermark
 
 div.footer div.footheader
 {
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-family:gothambold;
+    font-size:10px;
+    letter-spacing:0.2pt;
+    margin-bottom:3px;
+    color:#000000;
 }
 
 div.footer div.footdesc
 {
-    color: #B5B5B5;
-    margin-bottom: 20px;
+    font-family:gothambook;
+    font-size:10px;
+    color: #999999;
+    margin-bottom: 32px;
+    
 }
 
 div.footer div.footdesc a, div.footer div.footdesc a:visited
@@ -1990,7 +2001,7 @@ table.footersocialshare
 {
     margin-left : auto;
     margin-right : auto;
-    margin-bottom : 20px;
+    margin-bottom : 46px;
 }
 
 table.footersocialshare td div
@@ -2078,6 +2089,8 @@ div.successmsg
 
 div.errormsg
 {
+    font-family:helveticaoblique;
+    font-size:11px;
     color : #D90D3D;
 }
 
@@ -2218,6 +2231,8 @@ div.mycategory-products div.item img
 }
 div.mycategory-products div.item td.productname
 {
+    font-family:gothambook;
+    font-size:10px;
     color : gray;
 }
 div.mycategory-products div.item:hover td.productname
@@ -2240,6 +2255,10 @@ div.mycategory-products div.item td.productprice
 }
 div.mycategory-products div.item td.productprice div.price-box
 {
+    
+    font-family:gothambold;
+    font-size:10px;
+    letter-spacing:0.6px;
     margin:0px;
     color : #E22E44;
 }
@@ -2247,8 +2266,8 @@ div.mycategory-products div.item td.productprice span.price
 {
     color: #E22E44;
     display: none;
+    font-family:gothambold;
     font-size: 11pt;
-    font-weight: bold;
 }
 div.mycategory-products div.item:hover td.productprice span.price
 {
@@ -2268,7 +2287,7 @@ div.mycategory-products div.item img.active
     color: #D8A45C;
     font-size: 20px;
     left: 0;
-    padding-bottom: 8px;
+    padding-bottom: 11px;
     padding-top: 14px;
     top: 0;
     width: 100%;
@@ -2364,18 +2383,24 @@ div.mycategory-products div.item:hover td.animateimage img.active
 
 div.mylayerednavigation div.search-result
 {
+    font-family:HelvLightRegular;
+    font-size:10px;
     color: #A5A5A3;    
 }
 
 div.mylayerednavigation div.search-result span
 {
+    font-family:gothamlight;
+    font-size:11px;
     color : black;
+    padding-right:3px;
 }
 
 div.mylayerednavigation div.searchhead
 {
-    font-weight: bold;
-    margin-top : 20px;
+    font-family:gothambold;
+    font-size:11px;
+    margin-top : 28px;
     margin-bottom : 10px;
 }
 
@@ -2398,11 +2423,10 @@ div.mylayerednavigation div.searchitems div table
 div.mylayerednavigation div.searchitems div table td.add, div.mylayerednavigation div.searchitems div table td.remove
 {
     text-align : right;
-    font-size : 11pt;
 }
 div.mylayerednavigation div.searchitems div table td img
 {
-    margin-top : 7px;
+    margin-top : 4px;
 }
 
 div.mylayerednavigation div.searchitems div table td.add
@@ -2427,6 +2451,12 @@ div.mylayerednavigation div.searchitems div:hover
 {
     background-color : #EFEEED;
 }
+
+div.searchitems td {
+	font-family:gothamlight;
+	font-size:9px;
+	letter-spacing:0.6px;
+	}
 
 table.staticproductgrid
 {
@@ -2520,6 +2550,7 @@ table.staticproductgrid div.item td.productimage img.active
 #myminicart div.totalitemcount table td
 {
     height : 20px;
+    font-family:gothambook;
     font-size : 11px;
     letter-spacing : 0.4pt;
     vertical-align : middle;
@@ -2533,6 +2564,7 @@ table.staticproductgrid div.item td.productimage img.active
 
 #myminicart div.minicartitems td.tdproductdetail div.productname
 {
+    font-family:gothamMedium;
     font-size : 11px;
     letter-spacing : 0.4pt;
     font-weight: bold;
@@ -2540,6 +2572,7 @@ table.staticproductgrid div.item td.productimage img.active
 
 #myminicart div.minicartitems td.tdproductdetail div.productdetail
 {
+    font-family:gothambook;
     font-size : 11px;
     letter-spacing : 0.4pt;
     color : #999999;
@@ -2567,6 +2600,8 @@ table.staticproductgrid div.item td.productimage img.active
 
 #myminicart div.minicartitems td.tdproductprice
 {
+    font-family:gothamlight;
+    font-size:11px;
     padding-right : 20px;
     text-align : right;
 }
@@ -2589,7 +2624,7 @@ table.staticproductgrid div.item td.productimage img.active
 #myminicart div.shoppingcartlink
 {
     text-align : left;
-    margin-bottom : 9px;
+    margin-bottom : 6px;
 }
 
 #myminicart div.shoppingcartlink a, #myminicart div.shoppingcartlink a:hover, #myminicart div.shoppingcartlink a:visited
@@ -2693,14 +2728,17 @@ table.inputtable tr:first-child td
 }
 table.inputtable td.inputholder input[type='text'],table.inputtable td.inputholder input[type='password']
 {
+    font-family:gothamlight;
     width : 100%;
     border : none;
-    font-size : 13px;
+    font-size : 11px;
     letter-spacing : 0.4pt;
     padding-bottom : 1px;
 }
 table.inputtable td.label
 {
+    font-family:helveticaoblique;
+    font-size:11px;
     padding-right : 20px;
     color : gray;
     font-style: italic;
@@ -2719,6 +2757,8 @@ table.inputtable.nolabel td.label
 }
 table.inputtable td.errortext
 {
+    font-family:helveticaoblique;
+    font-size:11px;
     color : #D90D3D;
     height : 20px;
     min-height : 20px;
@@ -2749,3 +2789,28 @@ table.inputtable td.errortext div
     border : 0;
     border-radius : 0;
 }
+
+.revolvingmessage-container p, .revolvingmessage-container a {
+	font-family:helveticaoblique;
+	font-size:11px;
+	font-style:italic;
+	color:#999999;
+	cursor:pointer;
+	}
+
+.revolvingmessage-container a:hover {
+	color : #D90D3D;
+	}
+	
+.revolvingmessage-container {
+	position:absolute;
+	text-align:right;
+	top:52px;
+	right:2px;
+	}
+	
+#txtNewsletterEmail {
+	font-family:gothamlight;
+	font-size:11px;
+	letter-spacing:0.4px;
+	}

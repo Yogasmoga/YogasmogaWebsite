@@ -37,9 +37,6 @@
         <table class="topmenutable">
             <tr>
                 <td>
-                    <div class="revolvingmessage-container">
-                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('revolvingmessage')->toHtml() ?>
-                    </div>
                 </td>
                 <td>
                     <ul class="topmenulinks">
@@ -81,12 +78,18 @@
                         <li><?php echo $this->helper('core/url')->getCurrentUrl(); ?></li>
                         */ ?>
                     </ul>
+                    
                 </td>
                 <td>
                     <?php echo $this->getChildHtml('topSearch') ?>    
                 </td>
             </tr>
         </table>
+        
+        <div class="revolvingmessage-container">
+        	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('revolvingmessage')->toHtml() ?>
+        </div>
+        
         <div class="quick-access">
             <?php //echo $this->getChildHtml('topSearch') ?>
             <!-- <p class="welcome-msg"><?php echo $this->getWelcome() ?> <?php echo $this->getAdditionalHtml() ?></p> -->

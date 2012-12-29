@@ -35,6 +35,47 @@ jQuery(document).ready(function($){
     
     if($("div#colorcontainer table:first").length > 0)
         changeColor($("div#colorcontainer table:first").attr("color"));
+        
+    $("table.productdetailtable td.howdoesitfitlink a").live("click", function(){
+        $("div#howdoesitfitbox").fadeIn('slow');
+    });
+    
+    $("div#howdoesitfitbox").live('mouseover', function(){
+        _howdoesitfithovered = true;
+    });
+    $("div#howdoesitfitbox").live('mouseout', function(){
+        _howdoesitfithovered = false;
+    });
+    $("div#sizechart").live('mouseover', function(){
+        _sizecharthovered = true;
+    });
+    $("div#sizechart").live('mouseout', function(){
+        _sizecharthovered = false;
+    });
+    $("body").click(function(){
+        if(!_howdoesitfithovered)
+            $("div#howdoesitfitbox").fadeOut('slow');
+        if(!_sizecharthovered)
+            $("div#sizechart").fadeOut('slow');
+    });
+    
+    $("img#closehowdoesitfit").live('click', function(){
+        $("div#howdoesitfitbox").fadeOut('slow');
+    });
+    
+    $("table.productdetailtable td.sizechartlink a").live('click', function(){
+        if(_productdisplaymode == 'popup')
+        {
+            var ppdialog = $("div.yogidialog.ui-dialog:first");
+            $("div#sizechart").css('left', ((ppdialog.width() - $("div#sizechart").width())/2) + 'px');
+            $("div#sizechart").css('top', ((ppdialog.height() - $("div#sizechart").height())/2) + 'px');
+        }
+        else
+        {
+            $("div#sizechart").css('top', (($("table.tdbigimagecontainer:first").height() - $("div#sizechart").height())/2) + 'px');
+        }
+        $("div#sizechart").fadeIn('slow');
+    });
 });
 
 function changeproductsize(sz)

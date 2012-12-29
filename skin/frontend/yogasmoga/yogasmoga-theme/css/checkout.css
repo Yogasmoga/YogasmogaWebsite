@@ -1,0 +1,336 @@
+#co-billing-form table.inputtable {
+    width: 533px;
+}
+#co-billing-form table.twocolumn533 table.inputtable
+{
+    width : 237px;
+}
+#billing\:region_id {
+    width: 116px;
+}
+#billing-password
+{
+    display : none;
+}
+#checkout-billing-continue
+{
+    background-image: url("../images/checkout/continue_off.png");
+    height: 29px;
+    margin-top: 40px;
+    width: 147px;
+}
+.checkoutcontinuebtn
+{
+    background-image: url("../images/checkout/continue_off.png");
+    height: 29px;
+    margin-top: 40px;
+    width: 147px;
+}
+td.checkoutstepsholder
+{
+    padding : 0 76px;
+    width : 533px;
+    max-width : 533px;
+}
+#tblcheckoutsteps
+{
+    margin-left : auto;
+    margin-right : auto;
+    width : 755px;
+    max-width : 755px;
+    text-align : left;
+}
+#tblcheckoutsteps select
+{
+    max-width: 533px;   
+}
+#tblcheckoutsteps input[type='submit']
+{
+    float : right;
+    margin-right : 0;
+    margin-top : 30px;
+}
+div.checkoutstepheader
+{
+    font-size: 18px;
+    height: 42px;
+    letter-spacing: 0.6pt;
+    margin-bottom: 50px;
+    padding-top: 13px;
+    cursor : default;
+} 
+div.checkoutstepsubheader
+{
+    font-size : 14px;
+    letter-spacing : 0.4pt;
+    padding-top : 10px;
+    height : 30px;
+    cursor : default;
+    margin-bottom : 20px;
+}
+div.checkoutstepsubheader.firstsubstep
+{
+    margin-top : 0px;
+}
+div.cleaner
+{
+    clear : both;
+}
+div.checkoutsteps
+{
+    background-image : url('../images/checkout/step_divider.png');
+    background-repeat : no-repeat;
+    background-position: center bottom;
+}
+div.checkoutsteps.inactive
+{
+    height : 55px;
+    overflow : hidden;
+}
+/*
+div.checkoutsubstep.codivider
+{
+    border-bottom : 1px solid black;
+}
+*/
+div.checkoutsubstep.codivider
+{
+    border-bottom : 1px dashed #B3B3B3;
+}
+div.checkoutsubstep.inactive
+{
+    height : 40px;
+    overflow : hidden;
+    cursor : default;
+}
+#tblcheckoutsteps div.errormsg
+{
+    text-align : right;
+}
+div.shippingfootnote
+{
+    margin-top : 30px;
+    text-align : left;
+}
+table.co-ov-table
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 573px;
+}
+table.co-ov-table thead th
+{
+    font-size : 12px;
+    letter-spacing: 0.6pt;
+    font-weight: bold;
+    padding-bottom : 30px;
+}
+table.co-ov-table thead th a
+{
+    color : #D90D3D;
+    text-decoration: underline;
+    font-size : 10px;
+}
+table.co-ov-table td.price,table.co-ov-table td.total 
+{
+    text-align : right;
+}
+table.co-ov-table td.co-ov-summaryanchor
+{
+    text-align : right;
+    padding-right : 10px;
+}
+table.co-ov-table th.total
+{
+    text-align : right;
+    /*padding-right : 20px;*/
+}
+table.co-ov-table th.total, table.co-ov-table td.total 
+{
+    width : 75px;
+    min-width : 75px;
+    max-width : 75px;
+}
+table.co-ov-table td.total,table.co-ov-table th.total
+{
+    padding-right : 20px;
+}
+table.co-ov-table td.total span
+{
+    float : left;
+    margin-left : 15px;
+}
+table.co-ov-table th.prdtl,table.co-ov-table td.prdtl
+{
+    padding-left : 20px;
+    padding-right : 5px;
+}
+table.co-ov-table tr.co-ov-total td
+{
+    font-size : 12px;
+    padding-top : 30px;
+}
+table.co-ov-table div.divider
+{
+    margin : 0;
+}
+table.co-ov-table tr.co-ov-subtotal td, table.co-ov-table tr.co-ov-finaltotal td
+{
+    padding-top : 17px;
+}
+table.co-ov-table tr.co-ov-tax td, table.co-ov-table tr.co-ov-shipping td
+{
+    padding-top : 30px;
+}
+table.co-ov-table tr.co-ov-shipping td
+{
+    padding-bottom : 17px;
+}
+table.co-ov-table tr.co-ov-finaltotal td
+{
+    font-weight: bold;
+}
+table.co-ov-table th.qty,table.co-ov-table td.qty, table.co-ov-table td.co-ov-summaryanchor
+{
+    padding-right : 30px;
+} 
+table.co-ov-table th.qty,table.co-ov-table td.qty
+{
+    text-align : center;
+}
+table.co-ov-table th.price,table.co-ov-table td.price
+{
+    text-align : right;
+    padding-right : 55px;
+}
+table.co-ov-table td.co-ov-primg
+{
+    width : 140px;
+    min-height : 75px;
+}
+table.co-ov-table tr.pritem td
+{
+    padding-bottom: 20px;
+}
+table.co-ov-prdetail td.co-over-prdtl div.productname
+{
+    font-weight : bold;
+    font-size : 11px;
+    margin-bottom : 10px;
+}
+table.co-ov-prdetail td.co-over-prdtl div.productdetail
+{
+    font-size : 11px;
+    margin-bottom : 10px;
+}
+table.co-ov-prdetail td.co-over-prdtl div.productdetail span.productattribute
+{
+    text-transform : uppercase;
+}
+table.co-ov-table tfoot tr td
+{
+    padding-bottom : 17px;
+    text-transform: uppercase;
+    padding-right : 10px;
+}
+table.co-ov-table tfoot tr.first td,table.co-ov-table tfoot tr.last td
+{
+    padding-top : 17px;
+}
+table.co-ov-table tfoot tr td.total
+{
+    /*padding-right : 0;*/
+}
+table.co-ov-table tfoot tr.last td
+{
+    border-top : 1px dotted black;
+}
+#checkout-submit
+{
+    margin-top : 70px;
+    float : right;
+    width : 136px;
+    height : 43px;
+    background-image : url('../images/checkout/submit_off.png');
+    background-repeat : no-repeat;
+    margin-right : 20px;
+}
+div#coshipping, div#cobilling
+{
+    padding : 0 111px;
+}
+div#coreview
+{
+    padding : 0 91px;
+}
+div#coreview div.checkoutstepheader
+{
+    padding-left: 20px;
+}
+div#ordersummary, div#shippingsummary
+{
+    position: absolute;
+    top: 150px;
+    background-color : #FAFAFA;
+    padding : 15px 20px 0 20px;
+}
+div#shippingsummary
+{
+    right : 0;
+    max-width : 340px;
+}
+div#ordersummary
+{
+    left : 0;
+}
+div#ordersummary span.anchor
+{
+    font-size : 11px;
+    letter-spacing: 0.6pt;
+    font-weight : bold;
+    text-transform: uppercase;
+}
+div#ordersummary table
+{
+    margin-top : 10px;
+    width : 220px;
+}
+div#ordersummary table td.total
+{
+    text-align : right;
+}
+div#ordersummary table td
+{
+    padding-bottom : 10px;
+}
+div#ordersummary table tr.ordertotal td
+{
+    padding-top : 15px;
+    padding-bottom : 15px;
+}
+div#ordersummary table td.divider
+{
+    display : table-cell;
+}
+div.addressselector
+{
+    margin-bottom : 30px;
+}
+#stripe-update-payment
+{
+    cursor: pointer;
+    display: block;
+    margin-bottom: 20px;
+}
+#stripe-update-payment:hover
+{
+    text-decoration: underline;
+}
+table.useshippingasbilling
+{
+    margin-top : 10px;
+}
+div#submiterrormsg
+{
+    margin-right : 20px;
+}

@@ -21,6 +21,8 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         $producturl = $_product->getProductUrl();;
         $productname = $_helper->productAttribute($_product, $_product->getName(), 'name');
         $productid = $_product->getId();
+        $howdoesitfitblockid = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId());
+        $sizechartblockid = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'size_chart', Mage::app()->getStore()->getStoreId());
         $_rewardpointsearned = 0.1;
         $price = $_product->getSpecialPrice();
         if($price == "")
@@ -253,6 +255,29 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
             </tr>
         </table>
         */ ?>
+        <?php
+            if($howdoesitfitblockid != "")
+            {
+                ?>
+                <div id="howdoesitfitbox">
+                    <div id="howdoesitfitboxinner">
+                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
+                    </div>
+                    <img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closehowdoesitfit" />
+                </div>
+                <?php      
+            }
+        ?>
+        <?php
+            if($sizechartblockid != "")
+            {
+                ?>
+                <div id="sizechart">
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
+                </div>
+                <?php      
+            }
+        ?>
         <table class="productdetailspopup normalproductdetail">
             <tr>
                 <td class="popupproductdetail">
@@ -328,7 +353,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                                             <td>
                                                 <div class="hanger"></div>
                                             </td>
-                                            <td class="howdoesitfitlink"><div><a href="#">How does it fit?</a></div></td>
+                                            <td class="howdoesitfitlink"><div><a href="javascript:void(0);">How does it fit?</a></div></td>
                                         </tr>
                                     </table>
                                     <div class="qty">QTY</div>

@@ -33,14 +33,14 @@
             <td>
                 <input type="checkbox" name="is_subscribed" id="subscription" value="1" <?php if($this->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />            
             </td>
-            <td style="padding-top : 2px;">
+            <td style="padding-top : 2px; font-family:helveticaoblique; font-size:11px;">
                 <label for="subscription"><?php echo $this->__('General Subscription') ?></label>    
             </td>
         </tr>
     </table>
     <?php /* Extensions placeholder */ ?>
     <?php echo $this->getChildHtml('customer.form.newsletter.extra')?>
-    <button style="margin-top : 40px;" type="submit" class="savebtn spbutton custombtn" imageurl="<?php echo $this->getSkinUrl('images/customer/save_button_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl("images/customer/save_button_on.png"); ?>"></button>
+    <button style="margin-top : 55px;" type="submit" class="savebtn spbutton custombtn" imageurl="<?php echo $this->getSkinUrl('images/customer/save_button_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl("images/customer/save_button_on.png"); ?>"></button>
     <div class="loginerrormsg errormsg"><?php echo strip_tags($this->getMessagesBlock()->getGroupedHtml()); ?></div>
 </form>
 <div class="backlink">
