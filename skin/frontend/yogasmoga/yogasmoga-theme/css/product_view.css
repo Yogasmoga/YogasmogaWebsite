@@ -84,6 +84,7 @@ table.productdetailtable div.breadcrumb
 table.productdetailtable div.productname
 {
     color: #000000;
+    font-family:ITCAvantGardeProBk;
     font-size: 22px;
     letter-spacing: 0.4pt;
     line-height: 1.2em;
@@ -97,6 +98,7 @@ table.productdetailtable.zoomproductdetail div.productname
 table.productdetailtable div.productcost
 {
     color: #D90D3D;
+    font-family:ITCAvantGardeProBk;
     font-size: 22px;
     letter-spacing: 0.4pt;
 }
@@ -104,18 +106,20 @@ table.productdetailtable div.productcost
 table.productdetailtable div.shortdesc
 {
     color: #676767;
+    font-family:gothambook;
     font-size: 11px;
-    margin-top : 13px;
+    margin-top : 2px;
 }
 
 table.productdetailtable table.selectedcolor
 {
-    margin-top : 20px;   
+    margin-top : 14px;   
 }
 
 table.productdetailtable table.selectedcolor td:first-child
 {
     padding-right : 4px;
+    font-family:gothambook;
     color : #000;
     font-size : 11px;
     letter-spacing : 0.6pt;
@@ -124,13 +128,14 @@ table.productdetailtable table.selectedcolor td:first-child
 table.productdetailtable table.selectedcolor td.selectedcolortext
 {
     color : #999;
+    font-family:gothambook;
     font-size : 11px;
     letter-spacing : 0.4pt;
 }
 
 table.productdetailtable div#colorcontainer
 {
-    margin-top : 8px;   
+    margin-top : 5px;   
 }
 
 table.productdetailtable div#colorcontainer div
@@ -164,13 +169,14 @@ table.productdetailtable div#colorcontainer div table td.tdselectedcolor
 
 table.productdetailtable table.selectedsize
 {
-    margin-top : 20px;   
+    margin-top : 16px;   
 }
 
 table.productdetailtable table.selectedsize td:first-child
 {
     padding-right : 12px;
     color : #000;
+    font-family:gothambook;
     font-size : 11px;
     letter-spacing : 0.6pt;
 }
@@ -183,6 +189,7 @@ table.productdetailtable table.selectedsize td.sizechartlink div
 table.productdetailtable table.selectedsize td.sizechartlink a
 {
     color: #D90D3D;
+    font-family:HelvLightRegular;
     font-size: 10px;
     letter-spacing: 0.2pt;
     text-decoration: underline;
@@ -190,7 +197,6 @@ table.productdetailtable table.selectedsize td.sizechartlink a
 
 table.productdetailtable div#sizecontainer
 {
-    margin-top : 8px;   
 }
 
 table.productdetailtable div#sizecontainer table td
@@ -232,7 +238,7 @@ table.productdetailtable div#sizecontainer table td.disabled div
     
 table.productdetailtable table.fittable
 {
-    margin-top : 20px;
+    margin-top : 8px;
 }
 
 table.productdetailtable table.fittable td:first-child div.hanger
@@ -264,9 +270,10 @@ table.productdetailtable table.fittable td.howdoesitfitlink div
 table.productdetailtable div.qty
 {
     color: #000000;
+    font-family:gothambook;
     font-size: 11px;
     letter-spacing: 0.6pt;
-    margin-top : 20px;
+    margin-top : 13px;
 }
 
 table.productdetailtable div.sizeselector
@@ -308,6 +315,7 @@ table.productdetailtable table.smogibucks td div.smogibuckcount table td
 
 table.productdetailtable table.smogibucks td.earnsmogibuckstext
 {
+    font-family:gothamlight;
     font-size : 11px;
     letter-spacing : 0.4pt;
     color : #333;
@@ -319,7 +327,7 @@ table.productdetailtable div.addtobag
     height : 43px;
     background-image : url('../images/catalog/product/add_to_bag_off.png');
     background-repeat : no-repeat;
-    margin-top : 20px;
+    margin-top : 15px;
     cursor : pointer;
 }
 
@@ -337,6 +345,7 @@ table.productdetailtable div.preorderitem
 table.productdetailtable div.addtowishlist, table.productdetailtable div.addtowishlist a, table.productdetailtable div.addtowishlist a:hover, table.productdetailtable div.addtowishlist a:visited, #productdetailpopup div.addtowishlist, #productdetailpopup div.addtowishlist a, #productdetailpopup div.addtowishlist a:hover, #productdetailpopup div.addtowishlist a:visited 
 {
     color : black;
+    font-family:gothamlight;    
     font-size : 10px;
     letter-spacing: 0.6pt;
     margin-top : 25px;
@@ -348,7 +357,7 @@ table.productdetailtable div.addtowishlist , #productdetailpopup div.addtowishli
     color : black;
     padding-bottom : 4px;
     border-bottom : 1px solid #D90D3D;
-    width : 114px;
+    width : 119px;
     font-size : 10px;
     letter-spacing: 0.6pt;
     margin-top : 10px;
@@ -363,6 +372,7 @@ table.productdetailtable div.addtowishlist , #productdetailpopup div.addtowishli
 #productdetailpopup div.viewfulldetails, #productdetailpopup div.viewfulldetails a, #productdetailpopup div.viewfulldetails a:hover, #productdetailpopup div.viewfulldetails a:visited 
 {
     color : black;
+    font-family:gothamlight;    
     font-size : 10px;
     letter-spacing: 0.6pt;
     margin-top : 25px;
@@ -374,7 +384,7 @@ table.productdetailtable div.addtowishlist , #productdetailpopup div.addtowishli
     color : black;
     padding-bottom : 4px;
     border-bottom : 1px solid #D90D3D;
-    width : 150px;
+    width : 156px;
     font-size : 10px;
     letter-spacing: 0.6pt;
     margin-top : 5px;
@@ -554,13 +564,13 @@ table.productdetailpopupbottomlinks td:first-child
 
 table.productdetailpopupbottomlinks td.tdviewfulldetails
 {
-    padding-right : 55px;
+    padding-right : 49px;
 }
 
 table.productdetailspopup
 {
     width : 100%;
-    margin-top : 15px;
+    margin-top : 21px;
 }
 
 table.productdetailspopup td.popupproductdetail
@@ -605,8 +615,8 @@ td#tdpopupproductbigimage
 img#closelightbox
 {
     position : absolute;
-    top : 6px;
-    right : 9px;
+    top : 3px;
+    right : 5px;
     cursor : pointer;
     z-index : 3;
 }
@@ -708,4 +718,51 @@ td#zoomedproductimage div.noSel.smooth_zoom_preloader div.noSel
 div#zoompopup
 {
     overflow : hidden;
+}
+div#howdoesitfitbox
+{
+    background-color: #D2D2D4;
+    height: 380px;
+    left: 10px;
+    position: absolute;
+    top: 12px;
+    width: 375px;
+    z-index: 1;
+    display : none;
+}
+div#howdoesitfitbox div#howdoesitfitboxinner
+{
+    background-color: #F2F2F2;
+    border-bottom: 1px solid #939393;
+    height: 320px;
+    margin: 4px;
+    padding: 26px;
+    width: 315px;
+    overflow : auto;
+}
+div#howdoesitfitbox div#howdoesitfitboxinner p
+{
+    margin-top : 2px;
+}
+div#howdoesitfitbox div#howdoesitfitboxinner p span.anchor
+{
+    font-weight : bold;
+}
+div#howdoesitfitbox div#howdoesitfitboxinner p:first-child
+{
+    margin-top : 0;
+}
+img#closehowdoesitfit
+{
+    position : absolute;
+    top : -10px;
+    right : -10px;
+    cursor : pointer;
+}
+div#sizechart
+{
+    background-color : white;
+    right : 350px;
+    position : absolute;
+    display : none;
 }

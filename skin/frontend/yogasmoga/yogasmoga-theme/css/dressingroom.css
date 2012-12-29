@@ -1,10 +1,12 @@
 .dressingroomsubheader
 {
-    font-weight: bold;
+    font-family:gothambook;
     margin-top: 10px;
 }
 .dressingroomoptions
 {
+    font-family:gothambook;
+    letter-spacing:0.8px;
     margin-top : 10px;
 }
 #dressingroomdivider img
@@ -80,11 +82,13 @@
 }
 #dressingroomholder div.productdetail div.productname
 {
-    font-weight: bold;
+    font-family:gothamMedium;
+    font-size:10px;
 }
 #dressingroomholder div.productdetail div.productdescription
 {
-    
+    font-family:gothambook;
+    font-size:10px;
 }
 #dressingroomdivider
 {

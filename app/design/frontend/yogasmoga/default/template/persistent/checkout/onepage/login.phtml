@@ -32,6 +32,67 @@
  */
 /** @var $this Mage_Checkout_Block_Onepage_Login */
 ?>
+<table class="fixwidth" id="tblcheckoutlogin">
+    <tr>
+        <td>
+            <table class="logintable">
+                <tr>
+                    <td style="padding-right: 150px;">
+                        <div class="sectionheader">RETURNING CUSTOMER</div>
+                        <p>I have an account</p>
+                        <form id="checkout-login-form" action="<?php echo $this->getPostAction() ?>" method="post">
+                            <table class="inputtable" style="margin-top : 33px;">
+                                <tr>
+                                    <td class="label"><label for="email">Email Address</label></td>
+                                    <td class="inputholder">
+                                        <input type="text" class="requiredfield" name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="email" defaulterrormsg="Email Address is required" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="errortext" colspan="2">
+                                        <div>Email Address is required</div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="inputtable">
+                                <tr>
+                                    <td class="label"><label for="pass">Password</label></td>
+                                    <td class="inputholder">
+                                        <input type="password" class="requiredfield" name="login[password]" id="pass" defaulterrormsg="Password is required" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="errortext" colspan="2">
+                                        <div>Password is required</div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <input name="context" type="hidden" value="checkout" />
+                            <table class="buttonholder">
+                                <tr>
+                                    <td style="padding-top : 3px;">
+                                        <a class="forgot-link" href="<?php echo Mage::helper('core/url')->getHomeUrl()."customer/account/forgotpassword"; ?>" class="f-left"><?php echo $this->__('Forgot Your Password?') ?></a>
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="submit" value="" class="loginbtn spbutton custombtn" name="send" imageurl="<?php echo $this->getSkinUrl('images/checkout/login_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl("images/checkout/login_on.png"); ?>" />    
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="loginerrormsg errormsg"><?php echo strip_tags($this->getMessagesBlock()->getGroupedHtml()); ?></div>
+                        </form>
+                    </td>
+                    <td>
+                        <div class="sectionheader">CHECKOUT AS GUEST</div>
+                        <p>You can always have an account later</p>
+                        <div id="checkout-guest-continue" class="spbutton" imageurl="<?php echo $this->getSkinUrl('images/checkout/continue_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/checkout/continue_on.png'); ?>"></div>
+                    </td>
+                </tr>
+            </table>            
+        </td>
+    </tr>
+</table>
+
+<?php /*
 <div class="col2-set">
     <?php echo $this->getChildHtml('login_before')?>
     <div class="col-1">
@@ -152,3 +213,5 @@
     //]]>
     </script>
 <?php endif; ?>
+
+*/ ?>

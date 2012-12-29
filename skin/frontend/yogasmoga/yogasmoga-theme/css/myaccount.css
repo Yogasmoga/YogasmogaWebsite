@@ -25,9 +25,24 @@
 
 .sectionheader
 {
+    font-family: gothambook;
     font-size : 18px;
-    margin-bottom : 13px;
+    margin-bottom : 26px;
     text-transform: uppercase;
+}
+
+.myaccountdashboard .sectionheader
+{
+    margin-bottom : 14px;
+}
+
+.my-account .sectionheader
+{
+    margin-bottom : 14px;
+}
+
+.logintable .sectionheader {
+    margin-bottom: 0px;
 }
 
 .fbloginbtn
@@ -37,7 +52,7 @@
     background-position: center;
     width : 202px;
     height : 29px;
-    margin-top : 40px;
+    margin-top : 35px;
 }
 
 .twloginbtn
@@ -59,10 +74,14 @@
 .logintable p
 {
     margin : 0;
+    font-size:11px;
+    font-family:gothamlight;
 }
 
 a.forgot-link
 {
+    font-family:HelvLightRegular;
+    font-size:11px;
     text-decoration: underline;
     color : #9B9B9B;
 }
@@ -93,7 +112,7 @@ a.forgot-link:hover
 
 .myheader
 {
-    margin-bottom : 55px;
+    margin-bottom : 49px;
 }
 
 .backlink
@@ -102,6 +121,11 @@ a.forgot-link:hover
     top : 70px;
     left : 20px;
 }
+
+.backlink a {
+	font-family:gothamlight;
+	font-size:11px;
+	}
 #register-form table.inputtable,#register-form div.errormsg 
 {
     width : 533px;
@@ -128,7 +152,7 @@ a.forgot-link:hover
 
 #forgot-password-form .submitbtn
 {
-    margin-top : 20px;
+    margin-top : 18px;
 }
 
 #forgot-password-form .sectionheader
@@ -138,6 +162,8 @@ a.forgot-link:hover
 #forgot-password-form p
 {
     margin-bottom : 25px;
+    font-family:gothamlight;
+    font-size:11px;
 }
 .accountbg
 {
@@ -170,7 +196,7 @@ a.forgot-link:hover
 
 .myaccountdashboard td.column2cell
 {
-    padding-left : 96px;
+    padding-left : 80px;
 }
 
 .myaccountdashboard tr.customerinfo>td
@@ -212,6 +238,9 @@ a.forgot-link:hover
 }
 #changepasswordoptionholder
 {
+    font-family:helveticaoblique;
+    font-size:11px;
+    color:#343434;
     margin-bottom : 15px;
 }
 input.checkbox
@@ -222,11 +251,49 @@ input.checkbox
 {
     width : 533px;
 }
-#address-form table.twocolumn533 table.inputtable
+#address-form table.twocolumn533 table.inputtable, #checkout-shipping-form table.twocolumn533 table.inputtable
 {
     width : 237px;
 }
 #region_id
 {
     width : 115px;
+}
+#checkout-login-form table.inputtable, #checkout-login-form table.buttonholder
+{
+    width : 236px;
+}
+#checkout-login-form .loginbtn
+{
+    background-image : url('../images/checkout/login_off.png');
+    width : 105px;
+    height : 29px;
+    margin : 0;
+}
+#checkout-login-form a.forgot-link
+{
+    font-size : 10px;
+}
+#checkout-guest-continue, #checkout-shipping-continue, #checkout-shippingmethod-continue, #checkout-payment-continue
+{
+    background-image : url('../images/checkout/continue_off.png');
+    width : 147px;
+    height : 29px;
+    margin-top : 40px;
+}
+#checkout-shipping-form table.inputtable
+{
+    width : 533px;
+}
+#shipping\:country_id
+{
+    width : 155px;
+}
+#shipping\:region_id
+{
+    width : 116px;
+}
+div.shippingfootnote span.shippingnote
+{
+    font-weight : bold;
 }
