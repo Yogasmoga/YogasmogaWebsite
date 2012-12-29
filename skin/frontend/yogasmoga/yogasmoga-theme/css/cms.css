@@ -54,8 +54,34 @@
 .main-container .main .main-col{width:100%;}
 .main-container .main .title-div{height:528px; width:100%; display:block; text-indent:-999em; }
 
-.story-page{padding: 1px 0 50px; background:url(../images/cms_bg.png) 0 0 no-repeat;}
-.story-page .our-story{width:775px; margin:0 auto; color:#666; font-family:gotham-l; font-size:12px;}
+.story-page{padding: 1px 0 50px; background:url(../images/cms_bg.png) 0 0 no-repeat; color:#666; font-family:gotham-l; font-size:12px; line-height:1.3;}
+.story-page .section{ margin:0 auto 70px; padding:1px 0;}
+.story-page .our-story,
+.story-page .core-value,
+.story-page .our-ethics,
+.story-page .guiding{width:775px;}
+.story-page .principles{width:973px;}
+.story-page .press-section{width:900px;}
 .story-page p{margin:0 0 5px; line-height:1.3}
-h2.heading{font-family:ITCAvantGardeProMd; margin:40px 0 5px; text-transform:uppercase; font-size:14px;}
+h2.heading{font-family:ITCAvantGardeProMd; margin:40px 0 5px; text-transform:uppercase; font-size:14px; font-weight:normal;}
 h2.heading span{font-family:ITCAvantGardeProBk;}
+h1.main-heading{background:url(../images/heading_border.png) 50% 100% no-repeat; display:block; font-family:ITCAvantGardeProBk; text-transform:uppercase; font-weight:normal; font-size:17px; margin:0px 0 40px; text-align:center; padding-bottom:25px; letter-spacing:0.05em; line-height:1;}
+ul.arw-list {display:block; margin:0 0 25px 25px; padding:0;}
+ul.arw-list li {
+  background: url("../images/list-arw.png") no-repeat scroll 0 4px transparent;
+  display: block;
+  line-height: 1.3;
+  padding: 0 0 5px 15px;
+}
+h2.guide-name{font-size:20px; font-family:gotham-m; margin:10px 0 0px; color:#666;}
+h2.guide-name span{font-family:gotham-l; margin-bottom:30px;}
+.story-page .principles table td{padding:5px 10px; vertical-align:top; text-align:center;}
+.story-page .principles table td.left{padding-right:40px;}
+.story-page .principles table td h2.heading{margin:0 0 5px; text-align:left;}
+.story-page .principles table td p{text-align:left;}
+
+.story-page .img-section {display:block; width:100%;}
+.story-page .img-section .big-image{width:100%; overflow-x:hidden;}
+.press-section .press-item{display:block; min-height:165px; text-transform:uppercase;}
+.press-item .item-image{float:left; margin-right:20px;}
+.press-section .press-item .contact{text-transform:none;}
