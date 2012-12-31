@@ -174,7 +174,9 @@ a.forgot-link:hover
 }
 .subsectionheader
 {
-    font-size : 14px;
+    
+    font-family:gothamlight;
+    font-size : 13px;
     margin-bottom : 15px;
     
 }
@@ -202,6 +204,7 @@ a.forgot-link:hover
 .myaccountdashboard tr.customerinfo>td
 {
     padding-top : 20px;
+    width: 300px;
 }
 
 .myaccountdashboard div.addressbookheader
@@ -213,7 +216,8 @@ a.forgot-link:hover
 {
     color : gray;
     text-decoration: underline;
-    font-size : 10px;
+    font-family: HelvLightRegular;
+    font-size: 11px;
     letter-spacing : 0.4pt;
     padding-left : 15px;
 }
@@ -241,7 +245,7 @@ a.forgot-link:hover
     font-family:helveticaoblique;
     font-size:11px;
     color:#343434;
-    margin-bottom : 15px;
+    margin-bottom : 23px;
 }
 input.checkbox
 {
@@ -296,4 +300,10 @@ input.checkbox
 div.shippingfootnote span.shippingnote
 {
     font-weight : bold;
+}
+
+
+.customeraddress td  {
+	font-family:gothamlight;
+	font-size:13px;
 }

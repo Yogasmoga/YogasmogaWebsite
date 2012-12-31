@@ -238,11 +238,15 @@ function addtocart()
             {
                 if(_productdisplaymode == "popup")
                     jQuery( "#productdetailpopup" ).dialog( "close" );
+                jQuery("span.cartitemcount").html(result.count);
                 jQuery("div#myminicart").html(result.html);
-                jQuery("a.top-link-cart").fadeOut(500, function(){
-                    jQuery("span.cartitemcount").html(result.count);
-                    jQuery("a.top-link-cart").fadeIn(500);
+                jQuery("div#myminicart").slideDown('slow', function(){
+                    setTimeout(function(){ jQuery("div#myminicart").slideUp('slow'); }, 1000);
                 });
+                //jQuery("a.top-link-cart").fadeOut(500, function(){
+//                    jQuery("span.cartitemcount").html(result.count);
+//                    jQuery("a.top-link-cart").fadeIn(500);
+//                });
                 //jQuery("a.top-link-cart").animate({
 //                    opacity: 0,
 //                    filter : 0

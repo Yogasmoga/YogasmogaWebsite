@@ -395,10 +395,11 @@ function replicateShippingAddress()
     jQuery("#billing\\:street1").val(jQuery("#shipping\\:street1").val());
     jQuery("#billing\\:street2").val(jQuery("#shipping\\:street2").val());
     jQuery("#billing\\:city").val(jQuery("#shipping\\:city").val());
-    jQuery("#billing\\:region_id").val(jQuery("#shipping\\:region_id").val());
-    jQuery("#billing\\:region").val(jQuery("#shipping\\:region").val());
     jQuery("#billing\\:postcode").val(jQuery("#shipping\\:postcode").val());
     jQuery("#billing\\:country_id").val(jQuery("#shipping\\:country_id").val());
+    fillBillingState();
+    jQuery("#billing\\:region_id").val(jQuery("#shipping\\:region_id").val());
+    jQuery("#billing\\:region").val(jQuery("#shipping\\:region").val());
     jQuery("#billing\\:telephone").val(jQuery("#shipping\\:telephone").val());
     jQuery("#billing-address-select").val(jQuery("#shipping-address-select").val());
     checkbillingnewaddress();

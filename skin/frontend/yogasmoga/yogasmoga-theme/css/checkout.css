@@ -52,6 +52,7 @@ td.checkoutstepsholder
 }
 div.checkoutstepheader
 {
+    font-family:gothambook;
     font-size: 18px;
     height: 42px;
     letter-spacing: 0.6pt;
@@ -61,6 +62,7 @@ div.checkoutstepheader
 } 
 div.checkoutstepsubheader
 {
+    font-family: gothambook;
     font-size : 14px;
     letter-spacing : 0.4pt;
     padding-top : 10px;
@@ -120,7 +122,8 @@ table.co-ov-table
 }
 table.co-ov-table thead th
 {
-    font-size : 12px;
+    font-family:gothambook;
+    font-size : 11px;
     letter-spacing: 0.6pt;
     font-weight: bold;
     padding-bottom : 30px;
@@ -130,6 +133,7 @@ table.co-ov-table thead th a
     color : #D90D3D;
     text-decoration: underline;
     font-size : 10px;
+    font-family:HelvLightRegular;
 }
 table.co-ov-table td.price,table.co-ov-table td.total 
 {
@@ -214,8 +218,9 @@ table.co-ov-table tr.pritem td
 }
 table.co-ov-prdetail td.co-over-prdtl div.productname
 {
-    font-weight : bold;
+    font-family:gothamMedium;
     font-size : 11px;
+    letter-spacing:0.4px;
     margin-bottom : 10px;
 }
 table.co-ov-prdetail td.co-over-prdtl div.productdetail
@@ -225,6 +230,9 @@ table.co-ov-prdetail td.co-over-prdtl div.productdetail
 }
 table.co-ov-prdetail td.co-over-prdtl div.productdetail span.productattribute
 {
+    font-family:gothambook;
+    font-size:11px;
+    letter-spacing:0.4px;
     text-transform : uppercase;
 }
 table.co-ov-table tfoot tr td
@@ -285,6 +293,7 @@ div#ordersummary
 }
 div#ordersummary span.anchor
 {
+    font-family:gothamMedium;
     font-size : 11px;
     letter-spacing: 0.6pt;
     font-weight : bold;
@@ -301,7 +310,7 @@ div#ordersummary table td.total
 }
 div#ordersummary table td
 {
-    padding-bottom : 10px;
+    padding-bottom : 2px;
 }
 div#ordersummary table tr.ordertotal td
 {
@@ -333,4 +342,19 @@ table.useshippingasbilling
 div#submiterrormsg
 {
     margin-right : 20px;
+}
+
+#ordersummary table td {
+	font-family:gothambook;
+	font-size:11px;
+	letter-spacing:0.4px;
+}
+
+table.co-ov-table td {
+	font-family:gothambook;
+}
+
+table.co-ov-table tr.last td {
+	font-family:gothambook;
+	font-weight:bold;
 }

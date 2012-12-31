@@ -57,7 +57,7 @@
                     {
                     ?>
                         <div id="dressingroom" desc="<?php echo Mage::registry('current_category')->getName(); ?> Dressing Room" class="fullscreen colorbg pgsection"> 
-                        <table class="fullscreentable dressingroombg">
+                        <table class="fullscreentable">
                             <tr>
                                 <td class="verticaltopalign">
                                     <?php //echo substr($htmlcontent,0, strpos($htmlcontent, "|*)%|"));
@@ -80,9 +80,14 @@
                                             _dressingroomcollection[<?php echo ($i - 1); ?>].name = '<?php echo trim($product->getName()); ?>';
                                             _dressingroomcollection[<?php echo ($i - 1); ?>].id = '<?php echo trim(strip_tags($detail[3])); ?>';
                                             _dressingroomcollection[<?php echo ($i - 1); ?>].description = '<?php echo trim($product->getShortDescription()); ?>';
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].overlay = '<?php echo trim(strip_tags($detail[6])); ?>';
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].height = '<?php echo trim(strip_tags($detail[5])); ?>';
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].width = '<?php echo trim(strip_tags($detail[4])); ?>';
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].color = '<?php echo trim(strip_tags($detail[7])); ?>';
                                             <?php
                                         }
                                         ?>
+                                            //console.log(_dressingroomcollection);
                                             </script>
                                         <?php
                                      ?>
@@ -112,8 +117,8 @@
                                                         <div class="productdetail">
                                                             <div class="productcount">
                                                                 <div class="current">3</div>
-                                                                <div>
-                                                                    <div class="countdivider">/</div>
+                                                                <div class="totalcountregion">
+                                                                    <!-- <div class="countdivider">/</div> -->
                                                                     <div class="totalcount">4</div>
                                                                 </div>
                                                             </div>
@@ -130,7 +135,7 @@
                                             </table>
                                         </div>
                                         <div id="dressingroomdivider">
-                                            <img src="<?php echo $this->getSkinUrl('/images/catalog/product/dressingroom/dressing_divider.png'); ?>" />
+                                            <img id="imgdressingroomdivider" src="<?php echo $this->getSkinUrl('/images/catalog/product/dressingroom/dressing_divider.png'); ?>" />
                                         </div>
                                         <div id="dressingroombottom">
                                             <table>
@@ -148,8 +153,7 @@
                                                         <div class="productdetail">
                                                             <div class="productcount">
                                                                 <div class="current">3</div>
-                                                                <div>
-                                                                    <div class="countdivider">/</div>
+                                                                <div class="totalcountregion">
                                                                     <div class="totalcount">4</div>
                                                                 </div>
                                                             </div>
@@ -281,6 +285,10 @@
                                             _dressingroomcollection[<?php echo ($i - 1); ?>].name = '<?php echo trim($product->getName()); ?>';
                                             _dressingroomcollection[<?php echo ($i - 1); ?>].id = '<?php echo trim(strip_tags($detail[3])); ?>';
                                             _dressingroomcollection[<?php echo ($i - 1); ?>].description = '<?php echo trim($product->getShortDescription()); ?>';
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].overlay = '<?php echo trim(strip_tags($detail[6])); ?>';
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].height = '<?php echo trim(strip_tags($detail[5])); ?>';
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].width = '<?php echo trim(strip_tags($detail[4])); ?>';
+                                            _dressingroomcollection[<?php echo ($i - 1); ?>].color = '<?php echo trim(strip_tags($detail[7])); ?>';
                                             <?php
                                         }
                                         ?>
@@ -313,8 +321,7 @@
                                                         <div class="productdetail">
                                                             <div class="productcount">
                                                                 <div class="current">3</div>
-                                                                <div>
-                                                                    <div class="countdivider">/</div>
+                                                                <div class="totalcountregion">
                                                                     <div class="totalcount">4</div>
                                                                 </div>
                                                             </div>
@@ -348,8 +355,7 @@
                                                         <div class="productdetail">
                                                             <div class="productcount">
                                                                 <div class="current">3</div>
-                                                                <div>
-                                                                    <div class="countdivider">/</div>
+                                                                <div class="totalcountregion">
                                                                     <div class="totalcount">4</div>
                                                                 </div>
                                                             </div>

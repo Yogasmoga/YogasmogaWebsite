@@ -8,7 +8,11 @@ jQuery(document).ready(function($){
         $(this).find("img.invisible, div.productdetail").fadeOut('fast');
         //$(this).find("img.invisible").fadeOut('fast');
     });
-        
+    
+    $("img#imgdressingroomdivider").load(function(){
+        $("#dressingroomdivider").css('left', (($("div#dressingroomholder").width() - $("div#dressingroomdivider").width()) / 2) + 'px');    
+    }); 
+           
     fillDressingroomOptions();
     InitializeDressingRoomCounts();
     changedress('top', 0);
@@ -87,7 +91,9 @@ jQuery(document).ready(function($){
     
     $("#dressingroomtop div.viewdetails").click(function(){
          //$( "#productdetailpopup" ).dialog( "open" );
+         _dressingroomselectedcolor = _dressingroomcollection[getdressingroomrealindex(_dressingroomcurrentbodytype, 'top', _dressingroomtopindex)].color;
          showproductlightbox(_dressingroomcollection[getdressingroomrealindex(_dressingroomcurrentbodytype, 'top', _dressingroomtopindex)].id);
+         
         //console.log(_dressingroomcollection[getdressingroomrealindex(_dressingroomcurrentbodytype, 'top', _dressingroomtopindex)].id);
     });
     
@@ -105,6 +111,7 @@ jQuery(document).ready(function($){
     });
         
     $("#dressingroombottom div.viewdetails").click(function(){
+        _dressingroomselectedcolor = _dressingroomcollection[getdressingroomrealindex(_dressingroomcurrentbodytype, 'bottom', _dressingroomtopindex)].color; 
         showproductlightbox(_dressingroomcollection[getdressingroomrealindex(_dressingroomcurrentbodytype, 'bottom', _dressingroombottomindex)].id);
         //console.log(_dressingroomcollection[getdressingroomrealindex(_dressingroomcurrentbodytype, 'bottom', _dressingroombottomindex)].id);
     });
@@ -126,7 +133,7 @@ function showproductlightbox(productid)
         success : function(data){
             jQuery("#productdetailpopup").html(data);
             if(jQuery("div#colorcontainer table:first").length > 0)
-                changeColor(jQuery("div#colorcontainer table:first").attr("color"));
+                changeColor(_dressingroomselectedcolor);
         }
     });
 }
@@ -174,7 +181,8 @@ function changedress(half, index)
     var realindex = getdressingroomrealindex(_dressingroomcurrentbodytype, half, index);
     if(half == 'top')
     {
-        jQuery("#dressingroomtop td.imageholder img").attr("src", skinUrl + 'images/catalog/product/dressingroom/models/' + _dressingroomcollection[realindex].image);
+        var left = (jQuery("div#dressingroomtop").width() - (_dressingroomcollection[realindex].width * 1)) / 2;
+        jQuery("#dressingroomtop td.imageholder img").attr("src", skinUrl + 'images/catalog/product/dressingroom/models/' + _dressingroomcollection[realindex].image).css('left', left + 'px').css('bottom', '-' + _dressingroomcollection[realindex].overlay + 'px');
         jQuery("#dressingroomtop div.productdetail div.current").html((index + 1));
         jQuery("#dressingroomtop div.productdetail div.totalcount").html(_dressingroomtopcount);
         jQuery("#dressingroomtop div.productdetail div.productname").html(_dressingroomcollection[realindex].name);
@@ -197,4 +205,4 @@ var _dressingroomtopindex = 0;
 var _dressingroombottomindex = 0;
 var _dressingroomcurrentbodytype = '';
 var _isdressingroomanimating = false;
-
+var _dressingroomselectedcolor = '';

@@ -531,7 +531,7 @@ tr.summary-details-excluded { font-style:italic; }
     width: 100%;
     z-index: 1000; }
 
-.header .logo { float:left; text-decoration:none !important; margin-top:8px;}
+.header .logo { float:left; text-decoration:none !important; margin:16px 0 0 12px;}
 .header .logo strong { position:absolute; top:-999em; left:-999em; width:0; height:0; font-size:0; line-height:0; text-indent:-999em; overflow:hidden; }
 .header h1.logo { margin:0; }
 .header .quick-access { float:right; padding:28px 10px 0 0; }
@@ -2602,6 +2602,7 @@ table.staticproductgrid div.item td.productimage img.active
 {
     font-family:gothamlight;
     font-size:11px;
+    letter-spacing:0.4px;
     padding-right : 20px;
     text-align : right;
 }
@@ -2630,8 +2631,9 @@ table.staticproductgrid div.item td.productimage img.active
 #myminicart div.shoppingcartlink a, #myminicart div.shoppingcartlink a:hover, #myminicart div.shoppingcartlink a:visited
 {
     color: #D90D3D;
+    font-family: gothamlight;
     font-size: 10px;
-    letter-spacing: 0.2pt;
+    letter-spacing: 0.4px;
     text-decoration: underline;
 }
 
@@ -2650,6 +2652,9 @@ table.staticproductgrid div.item td.productimage img.active
 
 #myminicart div.subtotal table td.totalprice
 {
+    font-family: gothamlight;
+    font-size: 11px;
+    letter-spacing: 0.4px;
     text-align: right;
 }
 
@@ -2731,7 +2736,7 @@ table.inputtable td.inputholder input[type='text'],table.inputtable td.inputhold
     font-family:gothamlight;
     width : 100%;
     border : none;
-    font-size : 11px;
+    font-size : 13px;
     letter-spacing : 0.4pt;
     padding-bottom : 1px;
 }
@@ -2812,5 +2817,11 @@ table.inputtable td.errortext div
 #txtNewsletterEmail {
 	font-family:gothamlight;
 	font-size:11px;
+	letter-spacing:0.4px;
+	}
+	
+.myaccountdashboard p {
+	font-family:gothamlight;
+	font-size:13px;
 	letter-spacing:0.4px;
 	}
