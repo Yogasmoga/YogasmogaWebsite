@@ -23,6 +23,11 @@
           <template>page/product.phtml</template>
           <layout_handle>product</layout_handle>
         </product>
+		<staticpage translate="label">
+          <label>StaticPage</label>
+          <template>page/staticpage.phtml</template>
+          <layout_handle>StaticPage</layout_handle>
+        </staticpage>
         <!-- add more layouts here -->
       </layouts>
     </page>
