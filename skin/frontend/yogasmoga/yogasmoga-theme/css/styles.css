@@ -2216,7 +2216,7 @@ div.mycategory-products div.item
     cursor : pointer;
     margin-left : 30px;
     margin-bottom : 30px;
-    width : 300px;    
+    width : 295px;    
 }
 div.mycategory-products div.item a > table
 {
@@ -2246,7 +2246,7 @@ div.mycategory-products div.item td.productimage img.active
     width: 100%;
     max-height : 400px;
     */
-    max-height: 400px;
+    max-height: 355px;
     /*max-width: 300px;
     width: 100%;*/
 }
@@ -2329,7 +2329,7 @@ div.mycategory-products div.item td
 
 div.mycategory-products div.item td.productimage
 {
-    height : 400px;
+    height : 355px;
     vertical-align : bottom;
 }
 
@@ -2842,3 +2842,10 @@ table.inputtable td.errortext div
     background-repeat: repeat-y;
     background-size: cover;
 }
+
+.explore_btn {
+	background-image:url(../images/homepage/explore_off.png);
+	margin: 22px 0 0 88px;
+	width:137px;
+	height:29px;
+	}
