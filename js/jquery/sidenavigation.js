@@ -4,7 +4,6 @@ jQuery(document).ready(function($){
         $("#pageScrollerNav").hide();
     else
     {
-        console.log(_disablesidenavigation);
         if(!_disablesidenavigation)
         {
             var strHtml = "<div id='pgnavigator'><ul>"; 
