@@ -44,74 +44,12 @@ $catalogSearchHelper =  $this->helper('catalogsearch');
     </div>
 </form>
 */ ?>
-
-<script type="text/javascript">
-var issearchanimating = false;
-jQuery(document).ready(function($){
-    var srch_speed=500;
-    var srch_btn=true;
-	$("#search_btn").click(function () {
-		if(issearchanimating)
-			return;
-      if ($("#search_form").is(":hidden")) {
-		//$("#search_form input[type=submit]").css("display", "none");
-        $("#search_form").show().slideDown(srch_speed);
-        issearchanimating = true;
-		$("#search_form").animate({"top": "80px"}, srch_speed, function() {
-			$("#search_text").focus();
-			issearchanimating = false;
-			});
-      } else {
-		//$("#search_form").fadeOut("fast");
-		//$("#search_form").css({top: ""});
-		//$("#search_form").slideUp(srch_speed);
-		issearchanimating = true;
-		$("#search_form").hide().animate({"top": "65px"}, 0, function() {
-			issearchanimating = false;
-		});
-		//$("#search_form").animate({"bottom": "+=50px"}, srch_speed);
-		//$("#search_form").animate({"right": "-=30px"}, "medium");
-		srch_btn=true;
-		btn=true;
-      }
-	});
-	
-	$('#search_text').keyup(function() {
-	  if((($('#search_text').val().length>0)) && ($("#search_form input[type=submit]").is(":hidden")) )
-	  {
-		//$("#search_text").animate({"right": "+=100px"}, "medium");
-		$("#search_form input[type=submit]").fadeIn();
-		//$("#search_form").animate({"right": "+=64px"}, srch_speed);	
-		//srch_btn=false;
-	  }
-	  if(($('#search_text').val().length==0) && (!$("#search_form input[type=submit]").is(":hidden")) )
-	  {
-		  //$("#search_form").animate({"right": "-=64px"}, srch_speed);
-		  $("#search_form input[type=submit]").fadeOut();
-	  }
-	});
-});
-
-function close_search_box()
-{
-	if (!jQuery("#search_form").is(":hidden")) 
-	{
-    	issearchanimating = true;
-    	jQuery("#search_form").hide().animate({"top": "65px"}, 0, function() {
-    		issearchanimating = false;
-    	});
-    	//$("#search_form").animate({"bottom": "+=50px"}, srch_speed);
-    	//$("#search_form").animate({"right": "-=30px"}, "medium");
-    	srch_btn=true;
-    	btn=true;
-	}
-}
-</script>
-<div id="search_btn"></div>
-<div style="clear : both;"></div>
 <div id="search_form" class="colorbg">
 	<form id="search_frm"  action="<?php echo $catalogSearchHelper->getResultUrl() ?>" method="get" autocomplete="off" >
+		<div style="border-bottom: 1px solid black;">
 		<input id="search_text" type="text" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>" value="<?php echo $catalogSearchHelper->getEscapedQueryText() ?>" watermark="Search"  maxlength="<?php echo $catalogSearchHelper->getMaxQueryLength();?>"/>
+		</div>
 		<input type="submit" value="Search" style="display:none;"  />
 	</form>
 </div>
+<div id="search_btn" ></div>

@@ -170,7 +170,7 @@ a.forgot-link:hover
     background-image : url('../images/customer/myaccount_bg.png');
     background-size : cover;
     background-position: center top;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
 }
 .subsectionheader
 {
