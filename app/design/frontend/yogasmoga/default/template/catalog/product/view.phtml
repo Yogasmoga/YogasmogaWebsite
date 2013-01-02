@@ -213,7 +213,7 @@
     
 ?>
     
-    <div id="productdetails" desc="<?php echo $productname; ?>" class="fullscreen colorbg pgsection" style="position: relative;">
+    <div id="productdetails" desc="<?php echo $productname; ?>" class="fullscreen pgsection" style="position: relative;">
     <script type="text/javascript">
         var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
     </script>
@@ -518,7 +518,7 @@
         if($_product->getAttributeText('design_feature_view') == "Landscape")
         {
             ?>
-            <div class="fullscreen colorbg pgsection">
+            <div id="designfeatures" class="fullscreen pgsection">
                 <table class="fullscreentable">
                     <tr>
                         <td style="padding: 0 50px;">
@@ -592,7 +592,7 @@
         if($_product->getAttributeText('design_feature_view') == "Potrait")
         {
             ?>
-            <div class="fullscreen colorbg pgsection">
+            <div id="designfeatures" class="fullscreen pgsection">
                 <table class="fullscreentable">
                     <tr>
                         <td style="padding: 0 50px;">
@@ -793,10 +793,10 @@
             $ftimage .= "|".$width."|".$height;
         }
         ?>
-            <script type="text/javascript">
-                _fabrictechnologyimage = '<?php echo $ftimage ?>';
-            </script>
             <div id="fabrictechnology" desc="Fabric Technology" style="background-image : url('<?php echo substr($ftimage, 0, strpos($ftimage,"|")); ?>');" class="bgimage pgsection">
+                <script type="text/javascript">
+                    _fabrictechnologyimage = '<?php echo $ftimage ?>';
+                </script>
             </div>
         <?php
      }
@@ -812,6 +812,7 @@
      }
 ?>
 */ ?>
+<?php echo $this->getChildHtml('upsell_products') ?>
 <div style="display:none;">
     <div id="zoompopup">
         <table class="productzoomtable">
@@ -884,4 +885,3 @@
         </div>
     </div>
 </div>
-<?php echo $this->getChildHtml('upsell_products') ?>

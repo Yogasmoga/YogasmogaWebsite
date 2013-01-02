@@ -56,15 +56,3 @@
 	  
 	  
   });
-  
-	function change_button(val) {
-		//alert("here");
-		if (val==1)
-			{
-			document.getElementById("explore_button_1").src= skinUrl + "images/homepage/explore_on.png";
-			}
-		else 
-			{
-			document.getElementById("explore_button_1").src= skinUrl + "images/homepage/explore_off.png";
-			}
-	}
