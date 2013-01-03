@@ -38,19 +38,18 @@
         if ($this->getIsHomePage())
         {
             $isfirsttime = Mage::getSingleton('core/session')->getisfirsttime();
-            echo $isfirsttime."  sdfsd"; 
+            //echo $isfirsttime."  sdfsd"; 
             if(strlen($isfirsttime) > 0)
             {
                 echo " top0";
             }
             else
             {
-                //Mage::getSingleton('core/session')->setisfirsttime('No');
+                Mage::getSingleton('core/session')->setisfirsttime('No');
             }   
         }
         else
             echo " top0";
-        
     ?>">
         <?php //if ($this->getIsHomePage()):?>
         <?php if (true):?>
@@ -127,6 +126,16 @@
         <?php //echo $this->getSkinUrl('images/YS_logo.png') ?>
     </div>
 </div>
+<div id="bodycompensator"
+    <?php if ($this->getIsHomePage() && strlen($isfirsttime) == 0)
+        {
+            ?>
+                style="display:none;"
+            <?php    
+        }
+    ?>
+></div>
+
 <div id="myminicart">
 <?php /*
 <div class="totalitemcount">

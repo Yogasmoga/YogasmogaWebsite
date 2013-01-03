@@ -26,7 +26,8 @@ jQuery(document).ready(function($){
             $("div.header-container div.header").animate({
                 top : '0px'
             },500, function(){
-                $("body").css('padding-top', '80px');
+                //$("body").css('padding-top', '80px');
+                $("div#bodycompensator").show();
                 $("div#globalheader").addClass('top0');
                 setfullscreenheight();
             });

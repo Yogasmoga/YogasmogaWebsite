@@ -2853,3 +2853,7 @@ table.inputtable td.errortext div
 .top0{
     top : 0px;
 }
+div#bodycompensator
+{
+    height : 80px;
+}
