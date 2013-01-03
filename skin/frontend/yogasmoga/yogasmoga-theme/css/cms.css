@@ -170,9 +170,9 @@ div.news-letter input[type=text]{width:350px; padding:5px; border-bottom:1px sol
 div.news-letter input.btn-submit{
   background: url(../images/btn-submit1.png) 0 0 no-repeat;
   border: medium none; cursor:pointer;
-  width:92px; height:29px; text-indent:-999em;
+  width:92px; height:28px; text-indent:-999em;
 }
-div.news-letter input.btn-submit:focus{
+div.news-letter input.btn-submit:active{
 background-position:0 100%;
 }
 div.news-letter div.inputcontainer{border:0;}
@@ -226,7 +226,7 @@ width: 410px;}
 button.btn-brecelet{ float:none; margin:0 auto;}
 button.btn-brecelet span{padding:0; width:237px; text-indent:-999em; height:42px; margin:0; background:url(../images/btn-crecelet.png) 0 0 no-repeat; border:0; float:none; margin:0 auto;}
 button.btn-brecelet span span{background:none;}
-button.btn-brecelet:focus span{background-position:0 100%;}
+button.btn-brecelet:active span{background-position:0 100%;}
 .namaskar-page .making-change {
   height: 700px;
   background-position:0 0; background-repeat:no-repeat;

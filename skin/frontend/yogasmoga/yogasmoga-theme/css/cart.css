@@ -114,10 +114,10 @@ button.btn-login span span,
 button.btn-apply span span,
 button.btn-update span span,
 button.btn-checkout span span{background:none;}
-button.btn-login:focus span,
-button.btn-apply:focus span,
-button.btn-update:focus span,
-button.btn-checkout:focus span{background-position:0 100%;}
+button.btn-login:active span,
+button.btn-apply:active span,
+button.btn-update:active span,
+button.btn-checkout:active span{background-position:0 100%;}
 .cart .totals {
   background: none;
   border: 0;
