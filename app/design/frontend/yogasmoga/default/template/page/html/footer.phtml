@@ -163,7 +163,20 @@
                 </td>
             </tr>
         </table>
-        <img src="<?php echo $this->getSkinUrl('images/namaskar.png'); ?>" class="namaskarimage" />
+        <a href="<?php echo $this->getUrl('namaskar'); ?>" class="namaskarimage"><img src="<?php echo $this->getSkinUrl('images/namaskar.png'); ?>" class="namaskarimage" /></a>
+		<script>
+			jQuery('a.namaskarimage').click(function(e){
+				e.preventDefault();
+				var ref = jQuery(this).attr('href');
+				jQuery(this).find('img').animate({
+					bottom:-86+'px', right:-86+'px'
+				}, 250, function(){
+					jQuery('body').append('<div id="namFade" style="background:url(<?php echo $this->getSkinUrl('images/namaskaar.fade.jpg'); ?>) 50% 0 repeat-x #87671c; top:0; left:0; left:0; height:100%; width:100%; z-index:99999; position:fixed; display:none;"/>')
+					jQuery('#namFade').fadeIn('normal');
+					window.location.href = ref;
+				})
+			})
+		</script>
     </div>
     <!--
 </div> -->
