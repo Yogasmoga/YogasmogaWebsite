@@ -27,12 +27,36 @@
  * @var Mage_Page_Block_Html_Header $this
  */
 ?>
-<div class="header-container colorbg">
-    <div class="header">
-        <?php if ($this->getIsHomePage()):?>
+<?php
+    //echo "ehllo = ".Mage::getSingleton('core/session')->getisfirsttime();
+    //Mage::getSingleton('core/session')->setmyVariable('myValue');
+    //echo Mage::getSingleton('core/session')->getmyVariable();
+?>
+<div class="header-container">
+    <div id="globalheader" class="header
+    <?php
+        if ($this->getIsHomePage())
+        {
+            $isfirsttime = Mage::getSingleton('core/session')->getisfirsttime();
+            echo $isfirsttime."  sdfsd"; 
+            if(strlen($isfirsttime) > 0)
+            {
+                echo " top0";
+            }
+            else
+            {
+                //Mage::getSingleton('core/session')->setisfirsttime('No');
+            }   
+        }
+        else
+            echo " top0";
+        
+    ?>">
+        <?php //if ($this->getIsHomePage()):?>
+        <?php if (true):?>
         <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img class="logo" src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
         <?php else:?>
-        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+        <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a class="logo" href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
         <?php endif?>
         <table class="topmenutable">
             <tr>

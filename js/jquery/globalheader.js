@@ -19,13 +19,20 @@ jQuery(document).ready(function($){
 //    });
 
 
-    setTimeout(function(){
-    $("div.header-container div#smallmenu").fadeOut(500, function(){
-        $("div.header-container div.header").animate({
-            top : '0px'
-        },500);
-    })
-    },4000);
+    if(!($("div#globalheader").hasClass('top0')))
+    {
+        setTimeout(function(){
+        $("div.header-container div#smallmenu").fadeOut(500, function(){
+            $("div.header-container div.header").animate({
+                top : '0px'
+            },500, function(){
+                $("body").css('padding-top', '80px');
+                $("div#globalheader").addClass('top0');
+                setfullscreenheight();
+            });
+        })
+        },4000);   
+    }
     
     $("#search_text").blur(function(){
         //closeHeader();

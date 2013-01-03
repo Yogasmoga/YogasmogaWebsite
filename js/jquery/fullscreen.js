@@ -29,12 +29,45 @@ function setfullscreenheight()
     //jQuery("div.fullscreen, div.fullscreenovfhidden, div.bgimage").css('width', (_winW) + 'px');
     //jQuery("div.fullscreen, div.fullscreenovfhidden, div.bgimage").css('min-width', '1500px');
     
-    jQuery("div.fullscreenovfhidden").css('height', (_winH) + 'px');
+    //jQuery("div.fullscreenovfhidden").css('height', (_winH) + 'px');
+    jQuery("div.fullscreenovfhidden").each(function(){
+        if(jQuery(this).hasClass('neglectheaderwidth'))
+        {
+            if(!(jQuery("div#globalheader").hasClass('top0')))
+            {
+                jQuery(this).css('height', (_winH + _headerHeight) + 'px');
+                console.log('setting special height');
+            }
+            else
+                jQuery(this).css('height', (_winH) + 'px');        
+        }
+        else
+            jQuery(this).css('height', (_winH) + 'px');
+        
+    });
+    var specialheight = false;
     jQuery.each(jQuery(".fullscreen"), function(){
         //jQuery(this).find("table:first").css('min-height',(_winH) + 'px');
 //        jQuery(this).find("table:first").css('height',(_winH) + 'px');
-        jQuery(this).find("table.fullscreentable").css('min-height',(_winH) + 'px');
-        jQuery(this).find("table.fullscreentable").css('height',(_winH) + 'px');
+        specialheight = false;
+        //if(jQuery(this).hasClass('neglectheaderwidth'))
+//        {
+//            if(!(jQuery("div#globalheader").hasClass('top0')))
+//            {
+//                specialheight = true;
+//            }
+//        }
+        if(specialheight)
+        {
+            jQuery(this).find("table.fullscreentable").css('min-height',(_winH + _headerHeight) + 'px');
+            jQuery(this).find("table.fullscreentable").css('height',(_winH + _headerHeight) + 'px');
+        }
+        else
+        {
+            
+            jQuery(this).find("table.fullscreentable").css('min-height',(_winH) + 'px');
+            jQuery(this).find("table.fullscreentable").css('height',(_winH) + 'px');   
+        }
     });
     jQuery(".fullscreenovfhidden img.fullscreen").each(function(){
         var height = jQuery(this).height();
