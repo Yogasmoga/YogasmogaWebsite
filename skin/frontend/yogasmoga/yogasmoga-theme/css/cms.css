@@ -178,7 +178,8 @@ background-position:0 100%;
 div.news-letter div.inputcontainer{border:0;}
 
 /*============= NAMASKAR PAGE ==================*/
-.namaskar-page{padding: 0; color:#333; font-family:ITCAvantGardeProBk, Arial; font-size:12px; line-height:1.3; position:relative; max-width:1600px; margin:0 auto;}
+.namaskar-page{padding: 0; color:#333; font-family:ITCAvantGardeProBk, Arial; font-size:12px;
+ line-height:1.3; position:relative;}
 .namaskar-page *{ color:#333; font-family:ITCAvantGardeProBk, Arial;}
 .namaskar-page .section{position:relative;}
 .namaskar-page .namaskar-title{display:block; width:100%; height:332px; background-position:50% 0; background-repeat:no-repeat; text-indent:-999em;}.namaskar-page .values {
@@ -195,14 +196,14 @@ width: 410px;}
 .values-box h1.value-title{font-family:ITCAvantGardeProBd, Arial; font-size:34px; margin:0 0 15px; line-height:1.1; text-align:center; text-transform:uppercase; letter-spacing:-1px;}
 .values-box p{font-size:14px; text-align:center;}
 .namaskar-page .make-change {
-  height: 668px;
+  height: 650px;
   background-position:50% 0; background-repeat:no-repeat;
   margin-top: -313px;
 }
 .make-change .values-box {
   color: #FFFFFF;
   float: left;
-  margin: 135px 0 0 25px;
+  margin: 135px 0 0 160px;
   width: 655px;
 }
 .make-change .values-box span.count{font-size:108px; display:block; font-family:gotham-b, Arial; color:#fff; text-indent:30px;}
@@ -211,75 +212,27 @@ width: 410px;}
 .namaskar-page .foundation {
   height: 700px;
   background-position:100% 0; background-repeat:no-repeat;
-  margin-top: -124px;
+  margin-top: -113px;
 }
-.foundation .values-box {
-  float: right;
-  font-family: ITCAvantGardeProBk,Arial;
-  margin-right: 125px;
-  padding-top: 215px;
-  width: 410px; text-align:center;
-}
-.foundation .heading-foundation{font-size:35px; font-family:ITCAvantGardeProBd, Arial; text-align:center; text-transform:uppercase; line-height:1.1; margin:0 0 15px;}
-.foundation .heading-foundation span{font-size:35px; font-family:ITCAvantGardeProBk, Arial; display:block;}
-.foundation .values-box p{margin:0 10px 40px;}
-button.btn-brecelet{ float:none; margin:0 auto;}
-button.btn-brecelet span{padding:0; width:237px; text-indent:-999em; height:42px; margin:0; background:url(../images/btn-crecelet.png) 0 0 no-repeat; border:0; float:none; margin:0 auto;}
-button.btn-brecelet span span{background:none;}
-button.btn-brecelet:focus span{background-position:0 100%;}
 .namaskar-page .making-change {
   height: 700px;
   background-position:0 0; background-repeat:no-repeat;
   margin-top: -80px;
 }
-.namaskar-page .making-change .values-box{float:left; width:570px; margin:0 0 0 100px; padding-top:170px; text-align:left;}
-.namaskar-page .making-change .heading-mc{font-size:65px; line-height:1.1; font-family:ITCAvantGardeProBd, Arial; text-transform:uppercase; margin-bottom:20px;}
-.namaskar-page .making-change .heading-mc span{font-family:ITCAvantGardeProBk, Arial; display:block;}
-.namaskar-page .making-change p{font-size:35px; text-align:left; line-height:1.1;}
+
 .namaskar-page .works {
-  background-position: 50% 100%;
-  background-repeat: no-repeat;
-  padding: 110px 0 680px;
+  height: 700px;
+  background-position:0 100%; background-repeat:no-repeat;
 }
-.works-cols{margin:0 10%;}
-.works-cols div {
-  font-size: 14px;
-  line-height: 1.3;
-  margin: 0 auto;
-  text-align: justify;
-  width: 26%;
-}
-.works-cols div h1.title{text-align:center; font-size:31px;line-height:1.1; font-family:ITCAvantGardeProBd, Arial; margin:0 0 25px; text-transform:uppercase;}
-.works-cols div.health{float:left;}
-.works-cols div.education{}
-.works-cols div.microlending{float:right;}
 .namaskar-page .meaning {
-  background-position: 100% 0;
-  background-repeat: no-repeat;
-  height: 452px;
-  margin-top: -70px;
+  height: 700px;
+  background-position:0 100%; background-repeat:no-repeat;
 }
-.namaskar-page .meaning  .values-box {
-  float: left;
-  margin: 0 0 0 160px;
-  padding-top: 10%;
-  width: 53%;
-}
-.namaskar-page .meaning  .heading-mc{text-align:center; font-size:35px;line-height:1.1; font-family:ITCAvantGardeProBd, Arial; margin:0 0 25px; text-transform:uppercase;}
-.namaskar-page .meaning  p{
-  font-family: gotham,Arial;}
 .namaskar-page .support {
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  height: 616px;
-  margin: -95px 0 80px;
+  height: 700px;
+  background-position:0 100%; background-repeat:no-repeat;
 }
-.namaskar-page .support  .heading-mc{text-align:center; font-size:35px;line-height:1.2; font-family:ITCAvantGardeProBd, Arial; margin:0 0 20px; text-transform:uppercase;}
-.namaskar-page .support  .heading-mc span{ font-family:ITCAvantGardeProBk, Arial; display:block;}
-.support .values-box p{margin-bottom:40px;}
-.support .values-box {
-  padding-top: 175px; margin-right:10%; width:395px; text-align:center;
-}
+
 
 
 
