@@ -36,7 +36,7 @@ function setfullscreenheight()
             if(!(jQuery("div#globalheader").hasClass('top0')))
             {
                 jQuery(this).css('height', (_winH + _headerHeight) + 'px');
-                console.log('setting special height');
+                //console.log('setting special height');
             }
             else
                 jQuery(this).css('height', (_winH) + 'px');        
