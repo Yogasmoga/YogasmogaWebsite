@@ -119,6 +119,11 @@ jQuery(document).ready(function($){
     $("div#productdetailpopup img#closelightbox").live("click", function(){
         jQuery( "#productdetailpopup" ).dialog( "close" );
     });
+    
+    $(window).resize(function(){
+        //setTimeout(function(){ positiondressingroomtopimage(); }, 10);
+        positiondressingroomtopimage();
+    });
 });
 
 function showproductlightbox(productid)
@@ -196,6 +201,13 @@ function changedress(half, index)
         jQuery("#dressingroombottom div.productdetail div.productname").html(_dressingroomcollection[realindex].name);
         jQuery("#dressingroombottom div.productdetail div.productdescription").html(_dressingroomcollection[realindex].description);
     }
+}
+
+function positiondressingroomtopimage()
+{
+    var realindex = getdressingroomrealindex(_dressingroomcurrentbodytype, 'top', _dressingroomtopindex);
+    var left = (jQuery("div#dressingroomtop").width() - (_dressingroomcollection[realindex].width * 1)) / 2;
+    jQuery("#dressingroomtop td.imageholder img").css('left', left + 'px');
 }
 
 var _dressingroomcollection = new Array();
