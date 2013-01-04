@@ -106,6 +106,8 @@ jQuery(document).ready(function($){
 	jQuery("#fabricImg.setout").live('mousedown',function(){
 		jQuery(this).fadeOut(500, function(){
 			jQuery("#fabricImg").remove();
+			jQuery("div#zoompopup div#zoomoptions img#zoomout").removeClass('disabled');
+            jQuery("div#zoompopup div#zoomoptions img#zoomin").addClass('disabled');
 		})
 		FIstart = 0;
 	})
@@ -231,7 +233,8 @@ function StartZooming(scale)
                     jQuery("div#zoompopup div#zoomoptions img#zoomout").removeClass('disabled');}
                 if(ratio >= 1)
                     {
-                        jQuery("div#zoompopup div#zoomoptions img#zoomin").addClass('disabled');
+                        jQuery("div#zoompopup div#zoomoptions img#zoomout").addClass('disabled');
+                        //jQuery("div#zoompopup div#zoomoptions img#zoomin").addClass('disabled');
 						showFabricImg();
                         //jQuery("td#zoomedproductimage").removeClass('canzoomin');
                         //jQuery("td#zoomedproductimage").addClass('canzoomout');
