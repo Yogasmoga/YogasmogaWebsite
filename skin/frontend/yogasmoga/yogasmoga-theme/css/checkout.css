@@ -22,9 +22,10 @@
 .checkoutcontinuebtn
 {
     background-image: url("../images/checkout/continue_off.png");
-    height: 29px;
+    height: 27px;
     margin-top: 40px;
     width: 147px;
+    background-position : center 0;
 }
 td.checkoutstepsholder
 {

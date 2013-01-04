@@ -127,6 +127,10 @@ jQuery(document).ready(function($){
             $('#stripe_create_stripe_customer').val('0');
         }
     });
+    
+    $(window).resize(function(){
+       positionordersummary(); 
+    });
 });
 
 function checkbillingnewaddress()
@@ -295,6 +299,7 @@ function positionordersummary()
     jQuery("div#ordersummary").css('left', (z - 75 - jQuery("div#ordersummary").width()) + 'px');
     x = jQuery("div#tblcheckoutsteps").position().left + jQuery("div#tblcheckoutsteps").width() + 75;
     jQuery("div#shippingsummary").css('left', (z + jQuery("div#tblcheckoutsteps").width() + 75) + 'px');
+
     //var x = jQuery("div#tblcheckoutsteps").position().left;
 //    x = x - 75 - jQuery("div#ordersummary").width();
 //    jQuery("div#ordersummary").css('left', x + 'px');

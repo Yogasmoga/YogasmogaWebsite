@@ -484,11 +484,17 @@
     $currentstoreid = Mage::app()->getStore()->getStoreId();
     $dfimages = array();
     $ftimage = "";
+    $ftimagesmall = "";
     foreach($_gallery as $_image)
     {
         if($_image->getLabel() == "Fabric_Technology_Image")
         {
             $ftimage = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
+            continue;
+        }
+        if($_image->getLabel() == "Fabric_Technology_Image_Small")
+        {
+            $ftimagesmall = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
             continue;
         }
         if(strpos($_image->getLabel(), "|DF") !== 0)
@@ -781,8 +787,12 @@
 ?>
 */ ?>
 <?php
-     if($ftimage != "")
+     if($ftimage != "" && $ftimagesmall != "")
      {
+        $widthsmall = "";
+        $widthbig = "";
+        $heightbig = "";
+        $heightsmall = "";
         $imagePath = $ftimage;
         $dirImg = Mage::getBaseDir().str_replace("/",DS,strstr($imagePath,'/media'));
         if (file_exists($dirImg)) {
@@ -791,13 +801,36 @@
             $height = $imageObj->getOriginalHeight();
             //echo $dirImg." - ".$width." x ".$height."<br/>";
             $ftimage .= "|".$width."|".$height;
+            $widthbig = $width;
+            $heightbig = $height;
+        }
+        $imagePath = $ftimagesmall;
+        $dirImg = Mage::getBaseDir().str_replace("/",DS,strstr($imagePath,'/media'));
+        if (file_exists($dirImg)) {
+            $imageObj = new Varien_Image($dirImg);
+            $width = $imageObj->getOriginalWidth();
+            $height = $imageObj->getOriginalHeight();
+            //echo $dirImg." - ".$width." x ".$height."<br/>";
+            //$ftimage .= "|".$width."|".$height;
+            $widthsmall = $width;
+            $heightsmall = $height;
         }
         ?>
+            <div smorigwidth="1600" smorigheight="300" id="fabrictechnology" origwidth="<?php echo $widthbig; ?>" origheight="<?php echo $heightbig; ?>" origwidthsm="<?php echo $widthsmall; ?>" origheightsm="<?php echo $heightsmall; ?>" desc="Fabric Technology" class="opimage closed pgsection">
+                <img class="small" src="<?php echo $this->getSkinUrl('images/homepage/fabric_technology-minimized.png'); ?>" />
+                <img class="big_small" src="<?php echo $ftimagesmall; ?>" />
+                <img class="big_big" src="<?php echo substr($ftimage, 0, strpos($ftimage, "|")); ?>" />
+            </div>
+            <script type="text/javascript">
+                _fabrictechnologyimage = '<?php echo $ftimage ?>';
+            </script>
+            <?php /*
             <div id="fabrictechnology" desc="Fabric Technology" style="background-image : url('<?php echo substr($ftimage, 0, strpos($ftimage,"|")); ?>');" class="bgimage pgsection">
                 <script type="text/javascript">
                     _fabrictechnologyimage = '<?php echo $ftimage ?>';
                 </script>
             </div>
+            */ ?>
         <?php
      }
 ?>

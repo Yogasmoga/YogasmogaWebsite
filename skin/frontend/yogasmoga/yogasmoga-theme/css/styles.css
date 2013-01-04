@@ -2215,7 +2215,7 @@ div.mycategory-products div.item
 {
     float : left;
     cursor : pointer;
-    margin-left : 30px;
+    margin-left : 20px;
     margin-bottom : 30px;
     width : 295px;    
 }
@@ -2286,7 +2286,7 @@ div.mycategory-products div.item img.active
     background-image: url("../images/catalog/product/listing/line_all_product.png");
     background-position: center bottom;
     background-repeat: no-repeat;
-    color: #D8A45C;
+    color: #dd8820;
     font-size: 20px;
     left: 0;
     padding-bottom: 11px;
@@ -2857,4 +2857,19 @@ table.inputtable td.errortext div
 div#bodycompensator
 {
     height : 80px;
+}
+div.opimage img
+{
+    width : 100%;
+    top : 0;
+    left : 0;
+    position : absolute;
+}
+div.opimage
+{
+    position : relative;
+}
+div.opimage img.small
+{
+    z-index: 2;
 }

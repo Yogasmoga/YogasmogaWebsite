@@ -31,6 +31,13 @@ function fixFlexisliderImage()
         var height = jQuery(this).height();
         if(height > _winH)
         {
+            //jQuery(this).animate({
+//                top : (_winH - height) / 2
+//            }, 500);
+            //jQuery(this).fadeOut(500, function(){
+//                jQuery(this).css('top',((_winH - height) / 2) + 'px');
+//                jQuery(this).fadeIn(500);
+//            });
             jQuery(this).css('top',((_winH - height) / 2) + 'px');        
         }
     });
