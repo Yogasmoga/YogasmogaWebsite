@@ -46,14 +46,14 @@ jQuery(document).ready(function($){
         changezoomColor($(this).attr("color"), false, 0);
     });
     
-    $("table.zoomproductdetail table.zoomsmallimagecontainer td:not(.selectedimage)").live("click", function(){
+    /*$("table.zoomproductdetail table.zoomsmallimagecontainer td:not(.selectedimage)").live("click", function(){
         jQuery("table.zoomproductdetail table.zoomsmallimagecontainer td").removeClass('selectedimage');
         $(this).addClass('selectedimage');
         jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage' src='" + $(this).attr("zoomimageurl") + "' />");
         StartZooming();
-    });
+    });*/
     
-    $("div#zoompopup div#zoomoptions img#zoomin:not(.disabled)").mousedown(function(){
+     $("div#zoompopup div#zoomoptions img#zoomin:not(.disabled)").mousedown(function(){
         $('#zoomedimage').smoothZoom('zoomIn');
         //console.log($('#zoomedimage').smoothZoom('getZoomData').ratio);
     });
@@ -62,13 +62,13 @@ jQuery(document).ready(function($){
         $('#zoomedimage').smoothZoom('zoomOut');
         
     });
-    $("div#zoompopup div.noSel.smooth_zoom_preloader").live('mousedown', function(e){
+    /*$("div#zoompopup div.noSel.smooth_zoom_preloader").live('mousedown', function(e){
         _oldmousex = e.pageX;
         _oldmousey = e.pageY;
         //console.log(e.pageX +', '+ e.pageY);
     });
     $("div#zoompopup div.noSel.smooth_zoom_preloader").live('mouseup', function(e){
-        if(e.pageX == _oldmousex && e.pageY == _oldmousey)
+       if(e.pageX == _oldmousex && e.pageY == _oldmousey)
         {
             //console.log('clicked');
             if($("img#zoomedimage").hasClass('fabricimage'))
@@ -96,7 +96,19 @@ jQuery(document).ready(function($){
                 }
             }
         }
-    });
+    });*/
+	
+	jQuery("#fabricImg").live('mousedown',function(){
+		jQuery(this).addClass('setout').find('img').fadeIn(500);
+		jQuery("td#zoomedproductimage").removeClass('canzoomin');
+		jQuery("td#zoomedproductimage").addClass('canzoomout');
+	})
+	jQuery("#fabricImg.setout").live('mousedown',function(){
+		jQuery(this).fadeOut(500, function(){
+			jQuery("#fabricImg").remove();
+		})
+		FIstart = 0;
+	})
 });
 
 function getZoomPercent(realwidth, realheight, orgwidth, orgheight)
@@ -175,6 +187,7 @@ function StartZooming(scale)
         initial_ZOOM : initialzoom,
         zoom_MIN : _minzoomscale,
         responsive : true,
+		zoom_MAX: 100,
         pan_BUTTONS_SHOW : false,
         pan_REVERSE : true,
         on_IMAGE_LOAD : function(){
@@ -212,11 +225,16 @@ function StartZooming(scale)
                 //console.log('current ratio = ' + jQuery('#zoomedimage').smoothZoom('getZoomData').ratio);
                 var ratio = jQuery('#zoomedimage').smoothZoom('getZoomData').ratio;
                 //console.log('curratio = ' + ratio + '<= minzoomscale' + _minzoomscale);
-                if(ratio >= 8)
+				if((ratio * 100) <= _minzoomscale){
+                    jQuery("div#zoompopup div#zoomoptions img#zoomin").addClass('disabled');
+                }else{
+                    jQuery("div#zoompopup div#zoomoptions img#zoomout").removeClass('disabled');}
+                if(ratio >= 1)
                     {
                         jQuery("div#zoompopup div#zoomoptions img#zoomin").addClass('disabled');
-                        jQuery("td#zoomedproductimage").removeClass('canzoomin');
-                        jQuery("td#zoomedproductimage").addClass('canzoomout');
+						showFabricImg();
+                        //jQuery("td#zoomedproductimage").removeClass('canzoomin');
+                        //jQuery("td#zoomedproductimage").addClass('canzoomout');
                     }
                 else
                     {
@@ -224,10 +242,7 @@ function StartZooming(scale)
                         jQuery("td#zoomedproductimage").addClass('canzoomin');
                         jQuery("td#zoomedproductimage").removeClass('canzoomout');
                     }
-                if((ratio * 100) <= _minzoomscale)
-                    jQuery("div#zoompopup div#zoomoptions img#zoomout").addClass('disabled');
-                else
-                    jQuery("div#zoompopup div#zoomoptions img#zoomout").removeClass('disabled');
+                
                 //console.log('pan complete');
                 //console.log($('#zoomedimage').smoothZoom('getZoomData').ratio);    
             }
@@ -237,7 +252,17 @@ function StartZooming(scale)
         }
 	});
 }
-
+var FIstart = 0;
+function showFabricImg(){
+	if(FIstart==0){
+		FIstart = 1;
+		if(_fabrictechnologyimage != ""){
+			var temp = _fabrictechnologyimage.split('|');
+			var scale = jQuery('#zoomedimage').smoothZoom('getZoomData').ratio;
+			jQuery("div#zoompopup td#zoomedproductimage").append("<div style='position:absolute; top:0; bottom:0; left:250px; right:0; z-index:4; overflow:hidden;' id='fabricImg'><img style='height:auto;width:100%;display:none;' src='" + temp[0] + "' /></div>");
+		}
+	}
+}
 function InitializeZoomPopup()
 {
     var tempwidth = jQuery("div.fullscreen:first").width();
