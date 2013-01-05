@@ -1,8 +1,8 @@
   jQuery(document).ready(function(){
 	  var slider=jQuery('#slider').bxSlider({
 		  auto:true,
-	      pause:3000,
-	      speed:500,
+	      pause:4000,
+	      speed:800,
 		  controls:false,
 		  onNextSlide: function(currentSlideNumber, totalSlideQty, currentSlideHtmlObject){
 		  jQuery("table.explore_nav td").removeClass('explore_nav_current');
