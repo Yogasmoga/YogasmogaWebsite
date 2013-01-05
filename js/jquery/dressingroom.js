@@ -17,6 +17,9 @@ jQuery(document).ready(function($){
     InitializeDressingRoomCounts();
     changedress('top', 0);
     changedress('bottom', 0);
+        
+    jQuery("#dressingroombottom td.imageholder img").fadeIn('fast');
+    jQuery("#dressingroomtop td.imageholder img").fadeIn('fast');
     
     $("#dressingroomoptions").change(function(){
         _dressingroomcurrentbodytype = jQuery(this).val();
@@ -187,7 +190,9 @@ function changedress(half, index)
     if(half == 'top')
     {
         var left = (jQuery("div#dressingroomtop").width() - (_dressingroomcollection[realindex].width * 1)) / 2;
-        jQuery("#dressingroomtop td.imageholder img").attr("src", skinUrl + 'images/catalog/product/dressingroom/models/' + _dressingroomcollection[realindex].image).css('left', left + 'px').css('bottom', '-' + _dressingroomcollection[realindex].overlay + 'px');
+        jQuery("#dressingroomtop td.imageholder img").remove();
+        jQuery("#dressingroomtop td.imageholder").html("<img src='" + skinUrl + "images/catalog/product/dressingroom/models/" + _dressingroomcollection[realindex].image + "' style='left : " + left + "px; bottom : -" + _dressingroomcollection[realindex].overlay + "px; display : none;' />");
+        //jQuery("#dressingroomtop td.imageholder img").attr("src", skinUrl + 'images/catalog/product/dressingroom/models/' + _dressingroomcollection[realindex].image).css('left', left + 'px').css('bottom', '-' + _dressingroomcollection[realindex].overlay + 'px');
         jQuery("#dressingroomtop div.productdetail div.current").html((index + 1));
         jQuery("#dressingroomtop div.productdetail div.totalcount").html(_dressingroomtopcount);
         jQuery("#dressingroomtop div.productdetail div.productname").html(_dressingroomcollection[realindex].name);
@@ -195,7 +200,9 @@ function changedress(half, index)
     }
     else
     {
-        jQuery("#dressingroombottom td.imageholder img").attr("src", skinUrl + 'images/catalog/product/dressingroom/models/' + _dressingroomcollection[realindex].image);
+        jQuery("#dressingroombottom td.imageholder img").remove();
+        jQuery("#dressingroombottom td.imageholder").html("<img src='" + skinUrl + "images/catalog/product/dressingroom/models/" + _dressingroomcollection[realindex].image + "' style='display:none;' />");
+        //jQuery("#dressingroombottom td.imageholder img").attr("src", skinUrl + 'images/catalog/product/dressingroom/models/' + _dressingroomcollection[realindex].image);
         jQuery("#dressingroombottom div.productdetail div.current").html((index + 1));
         jQuery("#dressingroombottom div.productdetail div.totalcount").html(_dressingroombottomcount);
         jQuery("#dressingroombottom div.productdetail div.productname").html(_dressingroomcollection[realindex].name);
