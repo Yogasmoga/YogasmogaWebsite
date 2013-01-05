@@ -35,3 +35,4 @@ var _checkoutmethod = 'guest';
 var _stripesendaddressinfo = false;
 var _stripevalidateccv = false;
 var _ischeckoutprocessing = false;
+var _isshippable = true;

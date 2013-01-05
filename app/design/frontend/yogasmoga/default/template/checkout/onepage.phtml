@@ -47,7 +47,20 @@
     if($isshippable)
         {
             //echo $this->getChildHtml('shipping');
+            ?>
+                <script type="text/javascript">
+                    _isshippable = true;
+                </script>
+            <?php
         }
+    else
+    {
+        ?>
+            <script type="text/javascript">
+                _isshippable = false;
+            </script>
+        <?php
+    }
 ?>
 <div id="tblcheckoutsteps" <?php if(!$this->helper('customer')->isLoggedIn()) { ?> style="display: none;" <?php } ?>>
     <?php if($isshippable) 

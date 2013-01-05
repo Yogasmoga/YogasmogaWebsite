@@ -28,6 +28,11 @@
           <template>page/staticpage.phtml</template>
           <layout_handle>StaticPage</layout_handle>
         </staticpage>
+		<giftofys translate="label">
+          <label>GiftOfYS</label>
+          <template>page/giftofys.phtml</template>
+          <layout_handle>GiftOfYS</layout_handle>
+        </giftofys>
         <!-- add more layouts here -->
       </layouts>
     </page>

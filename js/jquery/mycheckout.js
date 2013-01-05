@@ -342,7 +342,10 @@ function saveBillingAddress()
         url : homeUrl + 'checkout/onepage/saveBilling',
         data : billingdata,
         success : function(result){
+            result = eval('(' + result + ')');
             reordersubsteps(jQuery("#copaymentmethods"));
+            if(!_isshippable)
+                jQuery("div#paymentmethods").html(result['update_section']['html']);
             _ischeckoutprocessing = false;
             //result = eval('(' + result + ')');
 //            //console.log(result['update_section']['html']);

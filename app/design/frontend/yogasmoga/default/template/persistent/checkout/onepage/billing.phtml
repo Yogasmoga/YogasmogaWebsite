@@ -25,6 +25,10 @@
  */
 /** @var Mage_Checkout_Block_Onepage_Billing $this */
 ?>
+<script type="text/javascript">
+    var StateCollection = <?php echo $this->helper('directory')->getRegionJson() ?>;
+    //console.log(StateCollection);
+</script>
 <form action="" id="co-billing-form">
     <?php if ($this->customerHasAddresses()): ?>
         <div id="billingaddressselectionblock">
