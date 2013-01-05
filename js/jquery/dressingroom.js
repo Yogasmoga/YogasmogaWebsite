@@ -33,9 +33,9 @@ jQuery(document).ready(function($){
         else
             _dressingroomtopindex = _dressingroomtopcount - 1;
         _isdressingroomanimating = true;
-        $("#dressingroomtop").find("div.productdetail,td.imageholder img").fadeOut('slow',function(){
+        $("#dressingroomtop").find("div.productdetail,td.imageholder img").fadeOut('fast',function(){
             changedress('top', _dressingroomtopindex);
-            $("#dressingroomtop").find("div.productdetail,td.imageholder img").fadeIn('slow', function(){
+            $("#dressingroomtop").find("div.productdetail,td.imageholder img").fadeIn('fast', function(){
                 _isdressingroomanimating = false;
             });
         });
@@ -49,9 +49,9 @@ jQuery(document).ready(function($){
         else
             _dressingroomtopindex = 0;
         _isdressingroomanimating = true;
-        $("#dressingroomtop").find("div.productdetail,td.imageholder img").fadeOut('slow',function(){
+        $("#dressingroomtop").find("div.productdetail,td.imageholder img").fadeOut('fast',function(){
             changedress('top', _dressingroomtopindex);
-            $("#dressingroomtop").find("div.productdetail,td.imageholder img").fadeIn('slow', function(){
+            $("#dressingroomtop").find("div.productdetail,td.imageholder img").fadeIn('fast', function(){
                 _isdressingroomanimating = false;
             });
         });
@@ -65,9 +65,9 @@ jQuery(document).ready(function($){
         else
             _dressingroombottomindex = _dressingroombottomcount - 1;
         _isdressingroomanimating = true;
-        $("#dressingroombottom").find("div.productdetail,td.imageholder img").fadeOut('slow',function(){
+        $("#dressingroombottom").find("div.productdetail,td.imageholder img").fadeOut('fast',function(){
             changedress('bottom', _dressingroombottomindex);
-            $("#dressingroombottom").find("div.productdetail,td.imageholder img").fadeIn('slow', function(){
+            $("#dressingroombottom").find("div.productdetail,td.imageholder img").fadeIn('fast', function(){
                 _isdressingroomanimating = false;
             });
         }); 
@@ -81,9 +81,9 @@ jQuery(document).ready(function($){
         else
             _dressingroombottomindex = 0;
         _isdressingroomanimating = true;
-        $("#dressingroombottom").find("div.productdetail,td.imageholder img").fadeOut('slow',function(){
+        $("#dressingroombottom").find("div.productdetail,td.imageholder img").fadeOut('fast',function(){
             changedress('bottom', _dressingroombottomindex);
-            $("#dressingroombottom").find("div.productdetail,td.imageholder img").fadeIn('slow', function(){
+            $("#dressingroombottom").find("div.productdetail,td.imageholder img").fadeIn('fast', function(){
                 _isdressingroomanimating = false;
             });
         });
