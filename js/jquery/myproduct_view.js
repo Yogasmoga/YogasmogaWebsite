@@ -189,7 +189,7 @@ function StartZooming(scale)
         initial_ZOOM : initialzoom,
         zoom_MIN : _minzoomscale,
         responsive : true,
-		zoom_MAX: 100,
+		zoom_MAX: 300,
         pan_BUTTONS_SHOW : false,
         pan_REVERSE : true,
         on_IMAGE_LOAD : function(){
@@ -231,7 +231,7 @@ function StartZooming(scale)
                     jQuery("div#zoompopup div#zoomoptions img#zoomin").addClass('disabled');
                 }else{
                     jQuery("div#zoompopup div#zoomoptions img#zoomout").removeClass('disabled');}
-                if(ratio >= 1)
+                if(ratio >= 3)
                     {
                         jQuery("div#zoompopup div#zoomoptions img#zoomout").addClass('disabled');
                         //jQuery("div#zoompopup div#zoomoptions img#zoomin").addClass('disabled');
