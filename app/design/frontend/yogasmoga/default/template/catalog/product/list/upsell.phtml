@@ -37,6 +37,14 @@
             <?php
                 $category = Mage::getModel('catalog/category')->load(9);
                 $_helper = $this->helper('catalog/output');
+                $productcount = 0;
+                foreach($category->getProductCollection() as $_product)
+                {
+                    if($productcount >= 4)
+                        continue;
+                    $productcount++;
+                }
+                $tdwidth = 100 / $productcount;
                 $productcount = 1;
                 foreach($this->getItemCollection()->getItems() as $_product)
                 {
@@ -53,7 +61,7 @@
                             $colors .= $temp.",";  
                     }
                     ?>
-                        <td>
+                        <td style="width : <?php echo $tdwidth."%"; ?>;">
                         <div bestfor="<?php echo ",".Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'bestfor', Mage::app()->getStore()->getStoreId()).","; ?>" cat="<?php echo ",".implode(",", $_product->getCategoryIds()).","; ?>" id="<?php echo $_product->getId(); ?>" class="item" color="<?php echo $colors; ?>">
                             <a href="<?php echo $_product->getProductUrl(); ?>">
                             <table>
