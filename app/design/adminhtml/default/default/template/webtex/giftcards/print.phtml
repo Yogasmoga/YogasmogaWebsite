@@ -17,8 +17,16 @@
           if($order->getId()) {
               foreach($order->getAllItems() as $item){
                  if($item->getProductType() == 'giftcards') {
-                     $product = Mage::getModel('catalog/product')->load($item->getProductId());
-                     $picture = Mage::helper('catalog/image')->init($product, 'image');
+                     if(Mage::helper('giftcards')->isUseDefaultPicture() || !$item->getProductId()) {
+                         $picture = Mage::getDesign()->getSkinUrl('images/giftcard.png',array('_area'=>'frontend'));
+                     } else {
+                         $product = Mage::getModel('catalog/product')->load($item->getProductId());
+                         if (!$product->getId() || $product->getImage() != 'no_selection') {
+                             $picture = Mage::helper('catalog/image')->init($product, 'image');
+                         } else {
+                             $picture = Mage::getDesign()->getSkinUrl('images/giftcard.png',array('_area'=>'frontend'));
+                         }
+                     }
                  }
               }
           } else {

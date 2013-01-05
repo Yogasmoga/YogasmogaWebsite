@@ -289,6 +289,16 @@
             </table>
             </div>
             <?php echo $this->getChildHtml('footer'); ?>
+            <?php /*
+            <div>
+                <?php
+                    $cards = Mage::getModel('giftcards/giftcards')->getCollection()->addFieldToFilter('card_code', 'BGGZ5-5THWI-CU8PD');
+                    foreach ($cards as $card) {
+                        echo $card->getCardBalance();
+                    }
+                ?>
+            </div>
+            */ ?>
         </div>
         <?php echo $this->getChildHtml('before_body_end'); ?>
     </div>

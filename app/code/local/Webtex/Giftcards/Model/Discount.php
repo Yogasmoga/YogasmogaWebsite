@@ -18,16 +18,37 @@ class Webtex_Giftcards_Model_Discount extends Mage_SalesRule_Model_Quote_Discoun
             $giftcardBalance = Mage::app()->getStore($address->getQuote()->getStoreId())->convertPrice($this->getAvailableGiftCardBalance());
             $baseGiftcardBalance = $this->getAvailableGiftCardBalance();
 
+            /*Check if need to add shipping to giftcard*/
+            if(Mage::getStoreConfig('giftcards/default/card_apply_to_shipping'))
+            {
+                $shippingAmount     = $address->getShippingAmountForDiscount();
+                if ($shippingAmount!==null) {
+                    $baseShippingAmount = $address->getBaseShippingAmountForDiscount();
+                } else {
+                    $shippingAmount     = $address->getShippingAmount() ? $address->getShippingAmount() : 0;
+                    $baseShippingAmount = $address->getBaseShippingAmount() ? $address->getShippingAmount() : 0;
+                }
+
+                //post process shipping amount
+                $baseShippingAmount = ($baseGiftcardBalance - $baseShippingAmount) > 0 ? $baseShippingAmount : 0;
+                $shippingAmount = ($giftcardBalance - $shippingAmount > 0) ? $shippingAmount : 0;
+            }
+            else
+            {
+                $shippingAmount = 0;
+                $baseShippingAmount = 0;
+            }
+
             /* Calculate discount */
             $this->_collectSubtotals($address);
-            $subtotal = $this->_getSubtotal($address);
-            $baseSubtotal = $this->_getBaseSubtotal($address);
-            $giftcardsDiscount = min($subtotal, $giftcardBalance);
-            $baseGiftcardsDiscount = min($baseSubtotal, $baseGiftcardBalance);
 
             /* Apply discount to items */
             $items = $this->_getAddressItems($address);
-            $discount = $baseGiftcardsDiscount;
+
+            $giftDiscountBalance = $baseGiftcardBalance - $baseShippingAmount;
+            $wholeDiscount = 0;
+            $wholeBaseDiscount = 0;
+
             foreach ($items as $item) {
                 //Skipping child items to avoid double calculations
                 if ($item->getParentItemId()) {
@@ -36,34 +57,31 @@ class Webtex_Giftcards_Model_Discount extends Mage_SalesRule_Model_Quote_Discoun
                 $quote = $item->getQuote();
                 $basePrice = ($item->getDiscountCalculationPrice() !== null) ? $item->getBaseDiscountCalculationPrice() : $item->getBaseCalculationPrice();
                 $price = ($item->getDiscountCalculationPrice() !== null) ? $item->getDiscountCalculationPrice() : $item->getCalculationPrice();
-                if ($this->_subtotals['items_count'] <= 1) {
-                    $discountAmount = $quote->getStore()->convertPrice($discount);
-                    $baseDiscountAmount = min($basePrice * $item->getTotalQty(), $discount);
-                } else {
-                    $discountRate = $basePrice * $item->getTotalQty() / $baseSubtotal;
-                    $baseDiscountAmount = $baseGiftcardsDiscount * $discountRate;
-                    $discountAmount = $quote->getStore()->convertPrice($baseDiscountAmount);
-                    $this->_subtotals['items_count']--;
-                }
-                $baseDiscountAmount = min($basePrice * $item->getTotalQty(), $baseDiscountAmount);
-                $baseDiscountAmount = $quote->getStore()->roundPrice($baseDiscountAmount);
-                $discountAmount = min($price * $item->getTotalQty(), $discountAmount);
+
+                $itemDiscountAmount = $item->getDiscountAmount() >0 ? $item->getDiscountAmount() : 0;
+                $itemBaseDiscountAmount = $item->getBaseDiscountAmount() > 0 ? $item->getBaseDiscountAmount() : 0;
+
+                $discountAmount = min($giftDiscountBalance, ($price * $item->getTotalQty() - $itemDiscountAmount ));
                 $discountAmount = $quote->getStore()->roundPrice($discountAmount);
+                $baseDiscountAmount = min(($basePrice * $item->getTotalQty() - $itemBaseDiscountAmount), $giftDiscountBalance);
+                $baseDiscountAmount = $quote->getStore()->roundPrice($baseDiscountAmount);
 
-                $itemDiscountAmount = $item->getDiscountAmount();
-                $itemBaseDiscountAmount = $item->getBaseDiscountAmount();
+                $item->setDiscountAmount($itemDiscountAmount + $discountAmount);
+                $item->setBaseDiscountAmount($itemBaseDiscountAmount + $baseDiscountAmount);
 
-                $itemDiscountAmount     = min($itemDiscountAmount + $discountAmount, $price * $item->getTotalQty());
-                $itemBaseDiscountAmount = min($itemBaseDiscountAmount + $baseDiscountAmount, $basePrice * $item->getTotalQty());
-                
-                $item->setDiscountAmount($itemDiscountAmount);
-                $item->setBaseDiscountAmount($itemBaseDiscountAmount);
-                $discount -= $baseDiscountAmount;
+                $giftDiscountBalance -= $baseDiscountAmount;
+                $wholeDiscount += $discountAmount;
+                $wholeBaseDiscount += $baseDiscountAmount;
             }
 
             /* Apply discount */
-            $this->_addAmount(-$giftcardsDiscount);
+            $baseGiftcardsDiscount = $wholeBaseDiscount + $baseShippingAmount;
+            $giftCardsDiscount = $wholeDiscount + $shippingAmount;
+            $this->_addAmount(-$giftCardsDiscount);
             $this->_addBaseAmount(-$baseGiftcardsDiscount);
+
+            $address->setBaseShippingDiscountAmount($baseShippingAmount);
+            $address->setShippingDiscountAmount($shippingAmount);
 
             /* Append giftcard description */
             $descriptions = $address->getDiscountDescriptionArray();
@@ -72,8 +90,10 @@ class Webtex_Giftcards_Model_Discount extends Mage_SalesRule_Model_Quote_Discoun
             $this->_calculator->prepareDescription($address);
 
             /* Save gift discount params */
-            $address->getQuote()->setUseGiftcards(true);
-            $address->getQuote()->setGiftcardsDiscount($address->getQuote()->getGiftcardsDiscount() + $baseGiftcardsDiscount);
+            if($baseGiftcardsDiscount > 0) {
+                $address->getQuote()->setUseGiftcards(true);
+                $address->getQuote()->setGiftcardsDiscount($baseGiftcardsDiscount);
+            }
         }
 
         return $this;

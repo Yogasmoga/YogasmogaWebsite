@@ -23,8 +23,11 @@ class Webtex_Giftcards_Model_Observer extends Mage_Core_Model_Abstract
      */
     public function checkoutTypeOnepageSaveOrderAfter($observer)
     {
-        $order = $observer->getEvent()->getOrder();
-        $quote = $order->getQuote();
+        $invoice = $observer->getEvent()->getInvoice();
+        $order = $invoice->getOrder();
+        $quoteId = $order->getQuoteId();
+        $quote = Mage::getModel('sales/quote')->setStoreId($order->getStoreId())->load($quoteId);
+        if($quote){
         try {
             /* Create cards if its present in order */
             foreach ($quote->getAllVisibleItems() as $item) {
@@ -50,6 +53,7 @@ class Webtex_Giftcards_Model_Observer extends Mage_Core_Model_Abstract
                         }
                     }
                     $data['card_amount'] = $item->getBasePrice();
+                    $data['product_id']  = $item->getProductId();
                     $data['card_status'] = 0;
                     $data['order_id'] = $order->getId();
 
@@ -87,6 +91,7 @@ class Webtex_Giftcards_Model_Observer extends Mage_Core_Model_Abstract
             $result['error']    = true;
             $result['error_messages'] = $this->__('There was an error processing your order. Please contact us or try again later.');
         }
+      }
     }
 
     /**
@@ -138,6 +143,25 @@ class Webtex_Giftcards_Model_Observer extends Mage_Core_Model_Abstract
                 $card->setCardStatus(2)->save();
                 $card->send();
             }
+        }
+    }
+
+    public function checkPriceIsZero($observer)
+    {
+        $block = $observer->getBlock();
+
+
+        if(get_class($block) === 'Mage_Catalog_Block_Product_Price')
+        {
+            $product = $block->getProduct();
+            if($product->getTypeId() === 'giftcards')
+            {
+                if($product->getPrice() == 0)
+                {
+                    $observer->getTransport()->setHtml('&nbsp');
+                }
+            }
+
         }
     }
 }

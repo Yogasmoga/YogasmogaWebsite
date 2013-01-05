@@ -33,7 +33,7 @@ class Webtex_Giftcards_Block_Adminhtml_Cardscreate_Edit_Form extends Mage_Adminh
         );
 
 	$createConfig = new Varien_Object();
-	$createConfig->setFilePath('/cards.csv');
+	$createConfig->setFilePath('/var/backups/cardslist'.date('d-m-Y-His').'.csv');
 	$createConfig->setCount(1);
 	$createConfig->setAmount(100);
                 

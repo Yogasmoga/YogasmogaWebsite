@@ -14,6 +14,10 @@
                              <title>Gift Cards Generate</title>
                              <action>giftcards/adminhtml_cardscreate</action>
                          </generate>
+                         <getlist translate="title" module="giftcards">
+                             <title>Download Generated Lists</title>
+                             <action>giftcards/adminhtml_cardslist</action>
+                         </getlist>
                     </children>
                 </giftcards>
             </children>
@@ -34,12 +38,16 @@
                     <children>
                          <grid>
                              <title>Gift Cards List</title>
-                                <sort_order>31</sort_order>
+                             <sort_order>31</sort_order>
                          </grid>
                          <generate>
                              <title>Gift Cards Generate</title>
-                                <sort_order>32</sort_order>
+                             <sort_order>32</sort_order>
                          </generate>
+                         <getlist>
+                             <title>Download Generated Lists</title>
+                             <sort_order>33</sort_order>
+                         </getlist>
                     </children>
                             </giftcards>
                         </children>

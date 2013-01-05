@@ -4,9 +4,33 @@ jQuery(document).ready(function($){
         createcard();
         return false;
     });
-    
-    
+    $("#cardbalanceform").submit(function(){
+        _addingtocart = true;
+        getcardbalance();
+        return false;
+    });
 });
+
+function getcardbalance()
+{
+    jQuery.ajax({
+        type : 'POST',
+        url : homeUrl + 'mycatalog/myproduct/getgiftcardbalance',
+        data : jQuery("#cardbalanceform").serialize(),
+        success : function(result){
+            result = eval('(' + result + ')');
+            _addingtocart = false;
+            if(result.status == 'success')
+            {
+                alert("Your balance is :" + result.balance);
+            }
+            else
+            {
+                alert(result.message);
+            }
+        }
+    });
+}
 
 function createcard()
 {

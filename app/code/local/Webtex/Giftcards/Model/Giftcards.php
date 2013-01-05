@@ -55,51 +55,52 @@ class Webtex_Giftcards_Model_Giftcards extends Mage_Core_Model_Abstract
 
     protected function _sendEmailCard($storeId = 0)
     {
-        if($storeId == 0) {
+        $amount = Mage::app()->getStore($storeId)->convertPrice($this->getCardAmount(), true, false);
+        if($order = Mage::getModel('sales/order')->load($this->getOrderId())){
+            $storeId = $order->getStoreId();
+        } else {
             $storeId = 1;
         }
-        $amount = Mage::app()->getStore($storeId)->convertPrice($this->getCardAmount(), true, false);
-        $order = Mage::getModel('sales/order')->load($this->getOrderId());
-        foreach($order->getAllItems() as $item){
-           if($item->getProductType() == 'giftcards') {
-               if(Mage::helper('giftcards')->isUseDefaultPicture()) {
-                   $picture = Mage::getDesign()->getSkinUrl('images/giftcard.png',array('_area'=>'frontend'));
-               } else {
-                   $product = Mage::getModel('catalog/product')->load($item->getProductId());
-                   if ($product->getImage() != 'no_selection') {
-                       $picture = Mage::helper('catalog/image')->init($product, 'image');
-                    } else {
-                        $picture = Mage::getDesign()->getSkinUrl('images/giftcard.png',array('_area'=>'frontend'));
-                    }
-                }
-                 $post = array(
-                     'amount'        => $amount,
-                     'code'          => $this->getCardCode(),
-                     'email-to'      => $this->getMailTo(),
-                     'email-from'    => $this->getMailFrom(),
-                     'recipient'     => $this->getMailToEmail(),
-                     'email-message' => $this->getMailMessage(),
-                     'store-phone'   => Mage::getStoreConfig('general/store_information/phone'),
-                     'picture'       => $picture,
-                 );
-                 $this->_send($post, 'giftcards/email/email_template', $this->getMailToEmail(), $storeId);
-             }
-          }
+        if(Mage::helper('giftcards')->isUseDefaultPicture() || !$this->getProductId()) {
+           $picture = Mage::getDesign()->getSkinUrl('images/giftcard.png',array('_area'=>'frontend'));
+        } else {
+           $product = Mage::getModel('catalog/product')->load($this->getProductId());
+           if (!$product->getId() || $product->getImage() != 'no_selection') {
+               $picture = Mage::helper('catalog/image')->init($product, 'image');
+           } else {
+                $picture = Mage::getDesign()->getSkinUrl('images/giftcard.png',array('_area'=>'frontend'));
+           }
+        }
+         $post = array(
+             'amount'        => $amount,
+             'code'          => $this->getCardCode(),
+             'email-to'      => $this->getMailTo(),
+             'email-from'    => $this->getMailFrom(),
+             'recipient'     => $this->getMailToEmail(),
+             'email-message' => $this->getMailMessage(),
+             'store-phone'   => Mage::getStoreConfig('general/store_information/phone'),
+             'picture'       => $picture,
+             );
+         $this->_send($post, 'giftcards/email/email_template', $this->getMailToEmail(), $storeId);
     }
 
     protected function _sendPrintCard($storeId)
     {
-        $order = Mage::getModel('sales/order')->load($this->getOrderId());
-        foreach($order->getAllItems() as $item){
-           if($item->getProductType() == 'giftcards') {
-               if(Mage::helper('giftcards')->isUseDefaultPicture()) {
-                   $picture = Mage::getDesign()->getSkinUrl('images/giftcard.png',array('_area'=>'frontend'));
-               } else {
-                 $product = Mage::getModel('catalog/product')->load($item->getProductId());
-                 if ($product->getImage() != 'no_selection') $picture = Mage::helper('catalog/image')->init($product, 'image');
-                 else $picture = Mage::getDesign()->getSkinUrl('images/giftcard.png',array('_area'=>'frontend'));
-
-                }
+        if($order = Mage::getModel('sales/order')->load($this->getOrderId())){
+            $storeId = $order->getStoreId();
+        } else {
+            $storeId = 1;
+        }
+        if(Mage::helper('giftcards')->isUseDefaultPicture() || !$this->getProductId()) {
+           $picture = Mage::getDesign()->getSkinUrl('images/giftcard.png',array('_area'=>'frontend'));
+        } else {
+            $product = Mage::getModel('catalog/product')->load($this->getProductId());
+            if (!$product->getId() || $product->getImage() != 'no_selection') {
+                $picture = Mage::helper('catalog/image')->init($product, 'image');
+            } else {
+                $picture = Mage::getDesign()->getSkinUrl('images/giftcard.png',array('_area'=>'frontend'));
+            }
+        }
         $post = array(
             'amount'        => Mage::app()->getStore($storeId)->convertPrice($this->getCardAmount(), true, false),
             'code'          => $this->getCardCode(),
@@ -111,23 +112,25 @@ class Webtex_Giftcards_Model_Giftcards extends Mage_Core_Model_Abstract
             'picture'       => $picture,
         );
         $this->_send($post, 'giftcards/email/print_template', $order->getCustomerEmail(), $storeId);
-           }
-        }
     }
 
     protected function _sendOfflineCard($storeId)
     {
-        $order = Mage::getModel('sales/order')->load($this->getOrderId());
-        foreach($order->getAllItems() as $item){
-            if($item->getProductType() == 'giftcards') {
-                if(Mage::helper('giftcards')->isUseDefaultPicture()) {
-                     $picture = Mage::getDesign()->getSkinUrl('images/giftcard.png',array('_area'=>'frontend'));
-                } else {
-                     $product = Mage::getModel('catalog/product')->load($item->getProductId());
-                     if ($product->getImage() != 'no_selection') $picture = Mage::helper('catalog/image')->init($product, 'image');
-                     else $picture = Mage::getDesign()->getSkinUrl('images/giftcard.png',array('_area'=>'frontend'));
-
-                }
+        if($order = Mage::getModel('sales/order')->load($this->getOrderId())){
+            $storeId = $order->getStoreId();
+        } else {
+            $storeId = 1;
+        }
+        if(Mage::helper('giftcards')->isUseDefaultPicture() || !$this->getProductId()) {
+             $picture = Mage::getDesign()->getSkinUrl('images/giftcard.png',array('_area'=>'frontend'));
+        } else {
+             $product = Mage::getModel('catalog/product')->load($this->getProductId());
+             if (!$product->getId() || $product->getImage() != 'no_selection') {
+                 $picture = Mage::helper('catalog/image')->init($product, 'image');
+             } else {
+                 $picture = Mage::getDesign()->getSkinUrl('images/giftcard.png',array('_area'=>'frontend'));
+             }
+        }
         $post = array(
             'amount'        => Mage::app()->getStore($storeId)->convertPrice($this->getCardAmount(), true, false),
             'code'          => $this->getCardCode(),
@@ -139,9 +142,8 @@ class Webtex_Giftcards_Model_Giftcards extends Mage_Core_Model_Abstract
             'picture'       => $picture,
         );
         $this->_send($post, 'giftcards/email/offline_template', $order->getCustomerEmail(), $storeId);
-            }
-        }
     }
+
 
     protected function _send($post, $template, $email, $storeId)
     {
@@ -153,7 +155,7 @@ class Webtex_Giftcards_Model_Giftcards extends Mage_Core_Model_Abstract
             $postObject->setStoreId($storeId);
             $mailTemplate = Mage::getModel('core/email_template');
             $pdfGenerator = new Webtex_Giftcards_Model_Email_Pdf();
-            $this->_addAttachment($mailTemplate, $pdfGenerator->getPdf($postObject), 'giftcard.pdf');
+            //$this->_addAttachment($mailTemplate, $pdfGenerator->getPdf($postObject), 'giftcard.pdf');
             $mailTemplate->setDesignConfig(array('area' => 'frontend', 'store' => $storeId))
                 ->sendTransactional(
                     Mage::getStoreConfig($template),
@@ -193,6 +195,7 @@ class Webtex_Giftcards_Model_Giftcards extends Mage_Core_Model_Abstract
         } else if ($this->getCardType() == 'offline') {
             $this->_sendOfflineCard($storeId);
         }
+        return true;
     }
 
     public function isValidCode($card)

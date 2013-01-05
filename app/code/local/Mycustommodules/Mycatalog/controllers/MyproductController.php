@@ -6,6 +6,31 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         echo "Output from Product Module";
     }
     
+    public function getgiftcardbalanceAction()
+    {
+        if ($this->getRequest()->isPost() && $this->getRequest()->getPost('cardno')) 
+        {
+            $cardno              = (string) $this->getRequest()->getPost('cardno');
+            $cards = Mage::getModel('giftcards/giftcards')->getCollection()->addFieldToFilter('card_code', $cardno);
+            $arr['balance'] = "error";
+            $arr['status'] = "error";
+            foreach ($cards as $card) {
+                $arr['balance'] = $card->getCardBalance();
+                $arr['status'] = "success";    
+                break;
+            }
+            $arr['message'] = "Invalid Card Number.";
+            echo json_encode($arr);    
+        }
+        else
+        {
+            $arr['balance'] = "error";
+            $arr['status'] = "error";
+            $arr['message'] = "Invalid Card Number.";
+            echo json_encode($arr);
+        }
+    }
+    
     protected function getSkinUrl($path)
     {
         return Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)."frontend/yogasmoga/yogasmoga-theme/".$path;

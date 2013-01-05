@@ -106,7 +106,11 @@ class Webtex_Giftcards_Adminhtml_GiftcardsController extends Mage_Adminhtml_Cont
         try {
             if (($cardId = $this->getRequest()->getParam('id')) > 0) {
                 $card = Mage::getModel('giftcards/giftcards')->load($cardId);
-                $card->send();
+                if($card->getCardType() == 'email'){
+                    $card->send();
+                } else {
+                    $this->_getSession()->addError($this->__('Unable to send this Gift Card type.'));
+                }
             }
         } catch (Exception $e) {
             $this->_getSession()->addError($e->getMessage());

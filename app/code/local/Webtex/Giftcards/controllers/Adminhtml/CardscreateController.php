@@ -20,7 +20,7 @@ class Webtex_Giftcards_Adminhtml_CardscreateController extends Mage_Adminhtml_Co
                     $model = Mage::getModel('giftcards/giftcards');
                     $model->setCardAmount($data['amount']);
                     // set card ready for activate
-                    // $model->setCardStatus(2);
+                    $model->setCardStatus(2);
                     $model->save();
                     $cards[$i]['code'] = $model->getCardCode();
                     $cards[$i]['amount'] = $model->getCardAmount();
@@ -72,12 +72,14 @@ class Webtex_Giftcards_Adminhtml_CardscreateController extends Mage_Adminhtml_Co
 		}
 	        $io->streamUnlock();
                 $io->streamClose();
+                $list = Mage::getModel('giftcards/cardslist')->load($fullPath,'file_path');
+                $list->setFilePath($fullPath)->save();
             }
             catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
             }
             catch (Exception $e) {
-                Mage::getSingleton('adminhtml/session')->addError(Mage::helper('giftcards')->__('An error occurred while create cards.'));
+                Mage::getSingleton('adminhtml/session')->addError(Mage::helper('giftcards')->__('An error occurred while save cards list.'));
             }
 		
 	}

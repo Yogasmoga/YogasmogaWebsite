@@ -20,28 +20,36 @@ $_to = Mage::getStoreConfig('giftcards/default/max_card_value') ? Mage::getStore
     });
 </script>
 <div class="giftcard-info">
-	<fieldset style="height: 100%;">
-	    <div class="field-label"><?php echo $this->__('Choose the type of Gift Card') ?>:</div>
+    <fieldset style="height: 100%;">
+        <div class="field-label"><?php echo $this->__('Choose the type of Gift Card') ?>:</div>
         <div>
             <?php if($this->helper('giftcards')->isShowEmailType()): ?>
-                <input type="radio" id="email-radio" name="card_type" value="email" checked="checked" onclick="changeFieldset('email')" />&nbsp;<label for="email-radio"><?php echo $this->__('E-mail Gift Card (to someone or yourself)') ?></label><br>
+            <input type="radio" id="email-radio" name="card_type" value="email" checked="checked" onclick="changeFieldset('email')" />&nbsp;<label for="email-radio"><?php echo $this->__('E-mail Gift Card (to someone or yourself)') ?></label><br>
             <?php endif; ?>
             <?php if($this->helper('giftcards')->isShowPrintType()): ?>
-                <input type="radio" id="print-radio" name="card_type" value="print" onclick="changeFieldset('print')" />&nbsp;<label for="print-radio"><?php echo $this->__('Print-Out Gift Card') ?></label><br>
+            <input type="radio" id="print-radio" name="card_type" value="print" onclick="changeFieldset('print')" />&nbsp;<label for="print-radio"><?php echo $this->__('Print-Out Gift Card') ?></label><br>
             <?php endif; ?>
             <?php if($this->helper('giftcards')->isShowOfflineType()): ?>
-                <input type="radio" id="offline-radio" name="card_type" value="offline" onclick="changeFieldset('offline')" />&nbsp;<label for="offline-radio"><?php echo $this->__('Send by post office') ?></label>
+            <input type="radio" id="offline-radio" name="card_type" value="offline" onclick="changeFieldset('offline')" />&nbsp;<label for="offline-radio"><?php echo $this->__('Send by post office') ?></label>
             <?php endif; ?>
         </div>
-	</fieldset>
+    </fieldset>
     <fieldset id="giftcard-fieldset" class="giftcard-fieldset">
-        <?php if ($this->getProduct()->getPrice() == 0) : ?>
-		<div class="field ">
+        <?php if ($this->getPriceStatus() == 1) : ?>
+        <div class="field ">
             <label for="card-amount" class="required"><?php echo $this->__('Amount') ?><em>*</em>:</label><br/>
             <input style="width:100px;" type="text" id="card-amount" name="card_amount" class="input-text required-entry validate-float-range float-range-<?php echo $_from;?>-<?php echo $_to;?>"/>&nbsp;(<?php echo $_currency->format($_from) ?> - <?php echo $_currency->format($_to) ?>)
         </div>
+        <?php elseif($this->getPriceStatus() == 2) : ?>
+        <br/>
+        <label for="card-amount" class="required"><?php echo $this->__('Select amount') ?><em>*</em>:</label><br/>
+        <select id="cart-amount" name="card_amount" class="validate-select" style="width:207px;">
+            <?php foreach($this->aAdditionalPrices as $additionalPrice) : ?>
+            <option value="<?php echo $additionalPrice;?>"><?php echo $_currency->format($additionalPrice);?></option>
+            <?php endforeach; ?>
+        </select>
         <?php else: ?>
-            <?php echo $this->getPriceHtml($_product) ?>
+        <?php echo $this->getPriceHtml($_product) ?>
         <?php endif; ?>
         <div class="field">
             <label for="mail-from"><?php echo $this->__('From Name') ?>:</label><br/>
@@ -51,13 +59,13 @@ $_to = Mage::getStoreConfig('giftcards/default/max_card_value') ? Mage::getStore
             <label for="mail-to"><?php echo $this->__('To Name') ?>:</label><br/>
             <input style="width:200px;" type="text" id="mail-to" name="mail_to" class="input-text"/>
         </div>
-		<div class="field">
+        <div class="field">
             <label for="mail-to-email" class="required"><?php echo $this->__('To E-mail') ?><em>*</em>:</label><br/>
-		    <input style="width:200px;" type="text" id="mail-to-email" name="mail_to_email" class="input-text required-entry validate-email"/>
+            <input style="width:200px;" type="text" id="mail-to-email" name="mail_to_email" class="input-text required-entry validate-email"/>
         </div>
-		<div class="field">
+        <div class="field">
             <label for="mail-message"><?php echo $this->__('Message') ?>:</label><br/>
-		    <textarea id="mail-message" name="mail_message"></textarea>
+            <textarea id="mail-message" name="mail_message"></textarea>
         </div>
         <div class="field">
             <label for="offline-country"><?php echo $this->__('Country') ?><em>*</em>:</label><br/>
