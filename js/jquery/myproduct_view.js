@@ -189,6 +189,7 @@ function StartZooming(scale)
         initial_ZOOM : initialzoom,
         zoom_MIN : _minzoomscale,
         responsive : true,
+		animation_SMOOTHNESS:4,animation_SPEED_ZOOM:4,animation_SPEED_PAN:4,
 		zoom_MAX: 400,
         pan_BUTTONS_SHOW : false,
         pan_REVERSE : true,
