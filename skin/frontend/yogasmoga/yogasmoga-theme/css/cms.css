@@ -68,6 +68,7 @@
 .main-container .main .main-col{width:100%;}
 .main-container .main .title-div{height:528px; width:100%; display:block; text-indent:-999em; }
 .fullscreen{min-width:700px;}
+.colorbg { background:none !important; 	}
 body.cms-ourstory{background:#fff url(../images/cms_bg.jpg) 0 0 no-repeat;}
 .story-page{padding: 1px 0 50px; color:#666; font-family:gotham-l; font-size:12px; line-height:1.3;}
 .story-page .section{ margin:0 auto; padding:80px 0 1px;}
@@ -104,13 +105,14 @@ h2.guide-name span{font-family:gotham-l; margin-bottom:30px;}
 .press-section .press-item .contact{text-transform:none;}
 
 .bg-wrapper{width:100%; text-align:center;  background:url(../images/edge-bg1.jpg) 50% 0 no-repeat;}
-.edge-page{padding: 1px 0 50px; color:#666; font-family:gotham-l; background:url(../images/edge-bg.jpg) 50% 1500px no-repeat; font-size:12px; line-height:1.3;}
-.edge-page .section{ margin:0 auto; padding:80px 0 1px; text-align:left;}
+.edge-page{padding: 1px 0 50px; color:#666; font-family:gotham-l; background:url(../images/edge-bg.jpg) 50% 460px no-repeat; font-size:12px; line-height:1.3;}
+.edge-page .section{ margin:0 auto; padding:49px 0 1px; text-align:left;}
 .edge-page .febrics{width:770px; padding-top:50px;}
 .edge-page .technology{width:770px; margin-bottom:0; background:url(../images/title-bg.png) 50% 100% no-repeat;}
 .edge-page .product-care,
 .edge-page .sizechart,
 .edge-page .design{width:770px;}
+.edge-page .sizechart{padding-top:39px;}
 .edge-page  h1.main-heading{font-size:22px; font-family:ITCAvantGardeProBd, Arial; text-align:left; background:none; padding-bottom:0; line-height:1.1; color:#666; text-transform:uppercase; font-weight:normal; margin-bottom:15px;}
 .edge-page  h1.main-heading span.subtitle{display:block; font-size:16px; font-family:gotham-l, Arial; color:#666;}
 .edge-page  h1.main-heading span{font-family:ITCAvantGardeProBk, Arial; color:#666;}

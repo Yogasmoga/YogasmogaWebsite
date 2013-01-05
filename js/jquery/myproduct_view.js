@@ -46,12 +46,12 @@ jQuery(document).ready(function($){
         changezoomColor($(this).attr("color"), false, 0);
     });
     
-    /*$("table.zoomproductdetail table.zoomsmallimagecontainer td:not(.selectedimage)").live("click", function(){
+    $("table.zoomproductdetail table.zoomsmallimagecontainer td:not(.selectedimage)").live("click", function(){
         jQuery("table.zoomproductdetail table.zoomsmallimagecontainer td").removeClass('selectedimage');
         $(this).addClass('selectedimage');
         jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage' src='" + $(this).attr("zoomimageurl") + "' />");
         StartZooming();
-    });*/
+    });
     
      $("div#zoompopup div#zoomoptions img#zoomin:not(.disabled)").mousedown(function(){
         $('#zoomedimage').smoothZoom('zoomIn');
