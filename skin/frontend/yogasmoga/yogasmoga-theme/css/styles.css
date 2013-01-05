@@ -2868,6 +2868,7 @@ div.opimage img
 div.opimage
 {
     position : relative;
+    overflow : hidden;
 }
 div.opimage img.small
 {

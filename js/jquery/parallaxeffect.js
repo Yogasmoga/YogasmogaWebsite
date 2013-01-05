@@ -37,6 +37,8 @@ jQuery(document).ready(function($){
     });
     
     $("div.opimage").click(function(){
+        if($(this).is(':animated'))
+            return;
         if($(this).hasClass('closed'))
         {
             if(_winW >= 1600)
@@ -60,7 +62,7 @@ jQuery(document).ready(function($){
         {
             $(this).addClass('closed');
             var newheight = getScaledheight($(this).attr("smorigheight"), $(this).attr("smorigwidth"));
-            console.log(newheight);
+            //console.log(newheight);
             $(this).animate({
                 height : newheight
             }, 500, function(){
