@@ -34,11 +34,12 @@
 <head>
 <?php echo $this->getChildHtml('head') ?>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/giftofys.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" media="all" />
 <script type="text/javascript">
     _disablesidenavigation = true;
 </script>
 </head>
-<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<body class="<?php echo $this->getBodyClass()? $this->getBodyClass().' ' : ''; ?>gift_of_ys">
 <?php echo $this->getChildHtml('after_body_start') ?>
 <div class="wrapper">
     <?php echo $this->getChildHtml('global_notices') ?>
@@ -46,31 +47,79 @@
         <?php echo $this->getChildHtml('header') ?>
         <div id="pagecontainer">
             <div id="giftofys" class="fullscreen">
-                <form id="createcardform" action="" method="post">
-                    <input type="hidden" id="email-radio" name="card_type" value="email" />
-                    <input type="hidden" id="productid" name="product" value="4" />
-                    <input type="hidden" id="productqty" name="qty" value="1" />
-                    Amount : <input type="text" id="card-amount" name="card_amount" />  
-                    <br />
-                    From : <input type="text" id="mail-from" name="mail_from"/>
-                    <br />
-                    To : <input type="text" id="mail-to" name="mail_to"/>
-                    <br />
-                    To Email : <input type="text" id="mail-to-email" name="mail_to_email"/>
-                    <br />
-                    Message : <textarea id="mail-message" name="mail_message" ></textarea>
-                    <br />
-                    <input type="submit" value="Create Card" />
-                </form>
-                
-                <br /><br /><br /><br /><br />
-                <form action="" method="post" id="cardbalanceform">
-                    Card No : <input type="text" id="cardno" name="cardno" />
-                    <br />
-                    <input type="submit" value="Get Balance" />
-                    <br />
-                    Valid card no format : <strong>8VE6C-ST11X-RX1LA</strong>
-                </form>
+				<div class="gift-of-ys" id="Whatis">
+					<ul class="sub-nav">
+						<li><a href="#Whatis">What is?</a></li>
+						<li><a href="#chkbal">Check Balance</a></li>
+					</ul>
+					<h1 class="big-title">The Gift<br>Of Ys</h1>
+					<img src="<?php echo $this->getSkinUrl('images/goy-title.png'); ?>" />
+					<DIV CLASS="goy-banner">
+						<img src="<?php echo $this->getSkinUrl('images/goy-img.png'); ?>" />
+					</div>
+					<form id="createcardform" name="createcardform" action="" method="post">
+						<input type="hidden" id="email-radio" name="card_type" value="email" />
+						<input type="hidden" id="productid" name="product" value="4" />
+						<input type="hidden" id="productqty" name="qty" value="1" />
+						<div class="goy-form">
+							<div class="row">
+								<div class="col">
+									<label for="mail_to">To</label>
+									<input type="text" class="requiredfield" id="mail-to" name="mail_to" style="width:330px"/>
+								</div>
+								<div class="col">
+									<label for="mail_from">From</label>
+									<input type="text" class="requiredfield" id="mail-from" name="mail_from" style="width:320px"/>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+									<label for="mail_to_email">Recipient's Email address</label>
+									<input class="requiredfield" type="text" id="mail-to-email" name="mail_to_email" style="width:215px"/>
+								</div>
+								<div class="col">
+									<label for="mail_to_email_conf">Confirm Recipient's Email address</label>
+									<input class="requiredfield" type="text" id="mail-to-email-conf" name="mail_to_email_conf" style="width:175px"/>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+									<label for="card_amount">Amount</label>
+									<select class="requiredfield" id="card-amount" name="card_amount"  style="float:right;">
+										<option value="50">$50.00</option>
+										<option value="100">$100.00</option>
+										<option value="200">$200.00</option>
+										<option value="500">$500.00</option>
+										<option value="1000">$1000.00</option>
+										<option value="5000">$5000.00</option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col full">
+									<label for="mail_message">Message</label>
+									<textarea placeholder="Type your personalized mantra here." id="mail-message" name="mail_message" ></textarea>
+								</div>
+							</div>
+							<div class="button-set">
+								<button type="submit" name="Add to bag" class="button btn-addtobag"><span><span>Add to Bag</span></span></button>
+								<button type="reset" class="button btn-reset" name="reset"><span><span>Reset</span></span></button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="goy-balance" id="chkbal	">
+					<h4 class="sub-title">check balance</h4>
+					<p>Enter your Gift of YS card number in the field below. Need help finding your Card#? See the card below. Please note, if your Gift of YS card does not have an access code, simply enter the Claim Code from the email.</p>
+					<form action="" method="post" id="cardbalanceform">
+						<div class="balance-form">
+							<div class="input_box">
+								<label for="cardno">Gift of YS Number or claim code </label><input type="text" id="cardno" name="cardno" placeholder="8VE6C-ST11X-RX1LA" />
+							</div>
+							<button type="submit" class="button btn-apply" name="apply"><span><span>Apply</span></span></button>
+						</div>
+					</form>
+				</div>
                 <?php //echo $this->getChildHtml('content'); ?>  
             </div>
             <?php echo $this->getChildHtml('footer'); ?>
