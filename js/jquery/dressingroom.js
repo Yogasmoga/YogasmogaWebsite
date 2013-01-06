@@ -105,7 +105,7 @@ jQuery(document).ready(function($){
         show: "scale",
         hide: "scale",
         width : 920,
-        height : 570,
+        height : 530,
         modal : true,
         draggable : false,
         position: { my: "center top",at: "center top+80" },

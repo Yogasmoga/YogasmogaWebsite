@@ -71,10 +71,23 @@ function setfullscreenheight()
     });
     jQuery(".fullscreenovfhidden img.fullscreen").each(function(){
         var height = jQuery(this).height();
+        height = getScaledheight(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth")) * 1;
         if(height > _winH)
         {
-            jQuery(this).css('top',((_winH - height) / 2) + 'px');        
+            jQuery(this).css('top',((_winH - height) / 2) + 'px');
+            jQuery(this).css('left', 0);
+            jQuery(this).css('width', '100%');
+            jQuery(this).css('height', 'auto');
         }
+        else
+    	{
+        	height = getScaledwidth(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth")) * 1;
+        	//jQuery(this).css('left',((_winW - height) / 2) + 'px');
+        	jQuery(this).css('top', 0);
+        	jQuery(this).css('left',((_winW - height) / 2) + 'px');
+            jQuery(this).css('width', 'auto');
+            jQuery(this).css('height', '100%');
+    	}
     });
     //jQuery(".fullscreen table:first").css('min-height',_winH + 'px');
 //    jQuery(".fullscreen table:first").css('height',_winH + 'px');

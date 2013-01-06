@@ -23,13 +23,26 @@ jQuery(document).ready(function($){
     {
         setTimeout(function(){
         $("div.header-container div#smallmenu").fadeOut(500, function(){
+        	$("div#bodycompensator").show().height(0);
+            $("div#bodycompensator").animate({
+            	height : 80
+            }, 500);
+            $("div#mainimage img.fullscreen").each(function(){
+            	var ttop = ($(this).css('top') * 1) - 120;
+            	//console.log(ttop);
+            	$(this).animate({
+            		top : ttop
+            	}, 500);
+            });
+            $("div#mainimage").animate({
+            	height : (($("div#mainimage").height() * 1) - 80)
+            },500);
             $("div.header-container div.header").animate({
                 top : '0px'
             },500, function(){
                 //$("body").css('padding-top', '80px');
-                $("div#bodycompensator").show();
                 $("div#globalheader").addClass('top0');
-                setfullscreenheight();
+                //setfullscreenheight();
             });
         })
         },4000);   

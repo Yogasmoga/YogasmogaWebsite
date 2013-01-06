@@ -81,6 +81,8 @@ jQuery(document).ready(function($){
             if(_ischeckoutprocessing)
                 return false;
             _ischeckoutprocessing = true;
+            jQuery("#payment_form input[type=submit]").hide();
+            jQuery("#payment_form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/checkout/checkout-loader.gif' />");
             CreateStripeToken();
         }
         return false;
@@ -167,6 +169,8 @@ function submitcheckout()
     if(_ischeckoutprocessing)
         return;
     _ischeckoutprocessing = true;
+    jQuery("#checkout-submit").hide();
+    jQuery("#checkout-submit").after("<img id='procImg' src='" + skinUrl + "images/checkout/checkout-loader.gif' />");
     jQuery.ajax({
         type : 'POST',
         url : homeUrl + 'checkout/onepage/saveOrder',
@@ -181,6 +185,8 @@ function submitcheckout()
                 window.location = homeUrl + 'checkout/onepage/success';
             }
             _ischeckoutprocessing = false;
+            jQuery("#checkout-submit").show();
+            jQuery("#orderreview #procImg").remove();
         }
     });
 }
@@ -327,6 +333,8 @@ function savePayment()
                 designCartTotal();
             }
             _ischeckoutprocessing = false;
+            jQuery("#payment_form input[type=submit]").show();
+            jQuery("#payment_form #procImg").remove();
         }
     });
 }
@@ -336,6 +344,8 @@ function saveBillingAddress()
     if(_ischeckoutprocessing)
         return;
     _ischeckoutprocessing = true;
+    jQuery("#co-billing-form input[type=submit]").hide();
+    jQuery("#co-billing-form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/checkout/checkout-loader.gif' />");
     var billingdata = jQuery("#co-billing-form").serialize();
     jQuery.ajax({
         type : 'POST',
@@ -347,6 +357,8 @@ function saveBillingAddress()
             if(!_isshippable)
                 jQuery("div#paymentmethods").html(result['update_section']['html']);
             _ischeckoutprocessing = false;
+            jQuery("#co-billing-form input[type=submit]").show();
+            jQuery("#co-billing-form #procImg").remove();
             //result = eval('(' + result + ')');
 //            //console.log(result['update_section']['html']);
 //            jQuery("div#shippingmethods").html(result['update_section']['html']);
@@ -359,6 +371,8 @@ function saveShippingMethod()
     if(_ischeckoutprocessing)
         return;
     _ischeckoutprocessing = true;
+    jQuery("#co-shippingmethod-form input[type=submit]").hide();
+    jQuery("#co-shippingmethod-form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/checkout/checkout-loader.gif' />");
     jQuery.ajax({
         type : 'POST',
         url : homeUrl + 'checkout/onepage/saveShippingMethod',
@@ -369,6 +383,8 @@ function saveShippingMethod()
             jQuery("div#paymentmethods").html(result['update_section']['html']);
             reordersteps(jQuery("#cobilling"));
             _ischeckoutprocessing = false;
+            jQuery("#co-shippingmethod-form input[type=submit]").show();
+            jQuery("#co-shippingmethod-form #procImg").remove();
             getCartSummary();
         }
     });
@@ -379,6 +395,8 @@ function saveShippingAddress()
     if(_ischeckoutprocessing)
         return;
     _ischeckoutprocessing = true;
+    jQuery("#checkout-shipping-form input[type=submit]").hide();
+    jQuery("#checkout-shipping-form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/checkout/checkout-loader.gif' />");
     var shippingdata = jQuery("#checkout-shipping-form").serialize();
     jQuery.ajax({
         type : 'POST',
@@ -392,6 +410,8 @@ function saveShippingAddress()
             if(jQuery("#shipping\\:use_for_billing").is(':checked'))
                 replicateShippingAddress();
             _ischeckoutprocessing = false;
+            jQuery("#checkout-shipping-form input[type=submit]").show();
+            jQuery("#checkout-shipping-form #procImg").remove();
         }
     });
 }

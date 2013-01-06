@@ -24,6 +24,7 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<?php Mage::getSingleton('core/session')->setrewardpointscount(Mage::helper('rewardpoints')->getPointsOnOrder()); ?>
 <?php
     $isshippable = true;
     if (!$this->getChild("shipping") || !$this->getChild("shipping")->isShow())

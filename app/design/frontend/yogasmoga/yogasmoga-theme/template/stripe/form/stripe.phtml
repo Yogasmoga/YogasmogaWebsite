@@ -218,6 +218,8 @@ function stripeResponseHandler(status, response) {
     if (response.error) {
         //alert(response.error.message);
         jQuery("#paymentmethoderrormsg").html(response.error.message);
+        jQuery("#payment_form input[type=submit]").show();
+        jQuery("#payment_form #procImg").remove();
         _ischeckoutprocessing = false;
     } else {
         var token = response['id'];

@@ -359,3 +359,7 @@ table.co-ov-table tr.last td {
 	font-family:gothambook;
 	font-weight:bold;
 }
+
+#procImg {
+	float:right ;
+}

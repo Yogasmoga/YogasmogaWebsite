@@ -6,15 +6,45 @@ jQuery(document).ready(function($){
             slideshowSpeed: 6000,
             directionNav: false,
             start: function(slider) {
-                fixFlexisliderImage();
+                //fixFlexisliderImage();
               },
             after: function(slider) {
             //$('.current-slide').text(slider.currentSlide);
-            fixFlexisliderImage();
+            //fixFlexisliderImage();
             }
         });    
     });
+    
+    //fixmainimage();
+    setTimeout(function(){ fixmainimage();}, 100);
 });
+
+function fixmainimage()
+{
+	jQuery("div#mainimage img.fullscreen").each(function(){
+		if(jQuery("div#globalheader").hasClass('top0'))
+			jQuery(this).css('top',((_winH - getScaledheight(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth"))) / 2) + 'px');
+		else
+			jQuery(this).css('top',((_winH + 80 - getScaledheight(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth"))) / 2) + 'px');
+    });
+}
+
+function getScaledheight(originalheight, originalwidth)
+{
+    //console.log('calculating');
+    originalheight = originalheight * 1;
+    originalwidth = originalwidth * 1;
+    return ((originalheight / originalwidth) * (jQuery("div#pagecontainer").width() * 1));
+}
+
+function getScaledwidth(originalheight, originalwidth)
+{
+    //console.log('calculating');
+    originalheight = originalheight * 1;
+    originalwidth = originalwidth * 1;
+    w = ((originalwidth / originalheight) * _winH);
+	return w;
+}
 
 function fixFlexisliderImage()
 {

@@ -31,6 +31,108 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         }
     }
     
+    public function referfriendAction()
+    {
+        if ($this->getRequest()->isPost() && $this->getRequest()->getPost('email')) {
+            $session         = Mage::getSingleton('core/session');
+            $emails           = $this->getRequest()->getPost('email'); //trim((string) $this->getRequest()->getPost('email'));
+            $names            = $this->getRequest()->getPost('name'); //trim((string) $this->getRequest()->getPost('name'));
+            
+            $arr['message'] = "";
+            $arr['status'] = "error";
+            
+            $customerSession = Mage::getSingleton('customer/session');
+            //$errors = array();
+            try {
+                foreach ($emails as $key_email => $email){
+                    $name = trim((string) $names[$key_email]);
+                    $email = trim((string) $email);
+                    
+                    ///////////////////////////////////////////
+                    $no_errors = true;
+                    if (!Zend_Validate::is($email, 'EmailAddress')) {
+                        //Mage::throwException($this->__('Please enter a valid email address.'));
+                        //$errors[] = $this->__('Wrong email address (%s).', $email);
+                        //$session->addError($this->__('Wrong email address (%s).', $email));
+                        $arr['message'] = "Invalid Email Address (".$email.")";
+                        $arr['status'] = "error";            
+                        $no_errors = false;
+                    }
+                    if ($name == ''){
+                        //Mage::throwException($this->__('Please enter your friend name.'));
+                        //$errors[] = $this->__('Friend name is required for (%s) on line %s.', $email, ($key_email+1));
+                        $session->addError($this->__('Friend name is required for email: %s on line %s.', $email, ($key_email+1)));
+                        $arr['message'] = "Freind name is required for email (".$email.")";
+                        $arr['status'] = "error";
+                        $no_errors = false;
+                    }
+                    
+                    if ($no_errors){
+                        $referralModel = Mage::getModel('rewardpoints/referral');
+
+                        $customer = Mage::getModel('customer/customer')
+                                        ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
+                                        ->loadByEmail($email);
+
+                        if ($referralModel->isSubscribed($email) || $customer->getEmail() == $email) {
+                            //Mage::throwException($this->__('Email %s has been already submitted.', $email));
+                            //$session->addError($this->__('Email %s has been already submitted.', $email));
+                            $arr['status'] = "error";
+                            $arr['message'] = "Email (".$email.") is already submitted.";
+                            echo json_encode($arr);
+                            return;
+                        } else {
+                            if ($referralModel->subscribe($customerSession->getCustomer(), $email, $name)) {
+                                //$session->addSuccess($this->__('Email %s was successfully invited.', $email));
+                                $arr['status'] = "success";
+                                $arr['message'] = "Freind is successfully invited";
+                                echo json_encode($arr);
+                                return;
+                            } else {
+                                //$session->addError($this->__('There was a problem with the invitation email %s.', $email));
+                                $arr['status'] = "success";
+                                $arr['message'] = "Freind is successfully invited";
+                                echo json_encode($arr);
+                                return;
+                                $arr['status'] = "error";
+                                $arr['message'] = "There was a problem with the invitation email (".$email.").";
+                                echo json_encode($arr);
+                                return;    
+                            }
+                        }
+                    }
+                    else
+                    {
+                        $arr['status'] = "error";
+                        echo json_encode($arr);
+                        return;
+                    }
+                    ///////////////////////////////////////////
+                }
+            }
+            catch (Mage_Core_Exception $e) {
+                //$session->addException($e, $this->__('%s', $e->getMessage()));
+                
+            }
+            catch (Exception $e) {
+                //print_r($e);
+//                die;
+//                $session->addException($e, $this->__('There was a problem with the invitation.'));
+                $arr['status'] = "error";
+                $arr['message'] = "An unexpected error occured.";
+                echo json_encode($arr);
+                return;
+            }
+        }
+        else
+        {
+            $arr['status'] = "error";
+            $arr['message'] = "An unexpected error occured.";
+            echo json_encode($arr);
+            return;
+        }
+    }
+    
     protected function getSkinUrl($path)
     {
         return Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)."frontend/yogasmoga/yogasmoga-theme/".$path;

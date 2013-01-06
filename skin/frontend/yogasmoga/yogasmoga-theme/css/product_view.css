@@ -738,7 +738,7 @@ div#howdoesitfitbox div#howdoesitfitboxinner
     margin: 4px;
     padding: 26px;
     width: 315px;
-    overflow : auto;
+    overflow : none;
 }
 div#howdoesitfitbox div#howdoesitfitboxinner p
 {
