@@ -11,7 +11,7 @@
 }
 .fullscreentable td .productdesignfeatures td
 {
-    padding-left : 20px;
+    padding : 0.7%;
     vertical-align: top;
 }
 .productdesignfeatures td div
@@ -625,10 +625,6 @@ table.productdesignfeatures
     width : 100%;
     margin-left : auto;
     margin-right : auto;
-}
-table.productdesignfeatures tr td:first-child
-{
-    padding-left : 0;
 }
 table.productdesignfeatures tr td
 {

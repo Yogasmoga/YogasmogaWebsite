@@ -320,11 +320,11 @@ function resizeDesignFeatures()
     jQuery("table.productdesignfeatures div[size]").each(function(){
          if(jQuery(this).attr("size") == "full")
          {
-            jQuery(this).css('height', (_winH - globalcorrection) + 'px');
+            //jQuery(this).css('height', (_winH - globalcorrection) + 'px');
          }
          else
          {
-            jQuery(this).css('height', (((_winH - globalcorrection) / 2) - halfcorrection) + 'px');
+            //jQuery(this).css('height', (((_winH - globalcorrection) / 2) - halfcorrection) + 'px');
          }
     });
     jQuery("table.productdesignfeatures div[size] img").each(function(){

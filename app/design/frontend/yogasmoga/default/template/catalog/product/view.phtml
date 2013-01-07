@@ -599,12 +599,12 @@
         {
             ?>
             <div id="designfeatures" class="fullscreen pgsection">
-                <table class="fullscreentable">
+				<table class="fullscreentable">
                     <tr>
-                        <td style="padding: 0 50px;">
+                        <td style="padding: 0 40px;">
                             <table class="productdesignfeatures">
                                 <tr>
-                                    <td style="width: 33.33%;">
+                                    <td colspan="2">
                                        <div size="half">
                                                 <img src="<?php echo substr($dfimages[1]["url"], 1); ?>" alt="<?php echo $dfimages[1]["caption"]; ?>" />
                                                 <div class="caption"><div><?php echo $dfimages[1]["caption"]; ?></div></div>
@@ -613,13 +613,13 @@
                                             */ ?>
                                         </div> 
                                     </td>
-                                    <td rowspan="2" style="width: 33.33%;">
+                                    <td rowspan="2" style="width: 29.25%;">
                                         <div size="full">
                                             <img src="<?php echo substr($dfimages[2]["url"], 1); ?>" alt="<?php echo $dfimages[2]["caption"]; ?>" />
                                             <div class="caption"><div><?php echo $dfimages[2]["caption"]; ?></div></div>
                                         </div>
                                     </td>
-                                    <td rowspan="2" style="width: 33.33%;">
+                                    <td rowspan="2" style="width: 29.25%;">
                                         <div size="full">
                                             <img src="<?php echo substr($dfimages[3]["url"], 1); ?>" alt="<?php echo $dfimages[3]["caption"]; ?>" />
                                             <div class="caption"><div><?php echo $dfimages[3]["caption"]; ?></div></div>
@@ -627,30 +627,24 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 33.33%; vertical-align: bottom;">
-                                        <table style="width: 100%;">
-                                            <tr>
-                                                <td style="width: 50%;">
-                                                    <div size="half">
-                                                            <img src="<?php echo substr($dfimages[4]["url"], 1); ?>" alt="<?php echo $dfimages[4]["caption"]; ?>" />
-                                                            <div class="caption"><div><?php echo $dfimages[4]["caption"]; ?></div></div>
-                                                        <?php /*
-                                                        <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
-                                                        */ ?>
-                                                    </div>      
-                                                </td>
-                                                <td style="width: 50%;">
-                                                    <div size="half">
-                                                            <img src="<?php echo substr($dfimages[5]["url"], 1); ?>" alt="<?php echo $dfimages[5]["caption"]; ?>" />
-                                                            <div class="caption"><div><?php echo $dfimages[5]["caption"]; ?></div></div>
-                                                        <?php /*
-                                                        <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
-                                                        */ ?>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                       </table> 
-                                    </td>
+                                    <td style="width: 20.7%;">
+										<div size="half">
+												<img src="<?php echo substr($dfimages[4]["url"], 1); ?>" alt="<?php echo $dfimages[4]["caption"]; ?>" />
+												<div class="caption"><div><?php echo $dfimages[4]["caption"]; ?></div></div>
+											<?php /*
+											<div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
+											*/ ?>
+										</div>      
+									</td>
+									<td style="width: 20.7%;">
+										<div size="half">
+												<img src="<?php echo substr($dfimages[5]["url"], 1); ?>" alt="<?php echo $dfimages[5]["caption"]; ?>" />
+												<div class="caption"><div><?php echo $dfimages[5]["caption"]; ?></div></div>
+											<?php /*
+											<div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
+											*/ ?>
+										</div>
+									</td>
                                 </tr>
                             </table>
                             <div class="designfeaturesheadimage potraitfeature"></div>
