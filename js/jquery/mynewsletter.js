@@ -1,7 +1,7 @@
 jQuery(document).ready(function($){
     $("#txtNewsletterEmail").keypress(function (event) {
         if (event.which == 13) {
-            SubscribeNewsletter();
+            SubscribeNewsletter('#txtNewsletterEmail','#footernotification');
             return false;
         }
     });
@@ -12,7 +12,7 @@ jQuery(document).ready(function($){
     
     $("#txtNewsletterEmail1").keypress(function (event) {
         if (event.which == 13) {
-            SubscribeNewsletter();
+            SubscribeNewsletter('#txtNewsletterEmail1','#notification1');
             return false;
         }
     });
