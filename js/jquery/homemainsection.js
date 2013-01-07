@@ -12,7 +12,8 @@ jQuery(document).ready(function($){
             //$('.current-slide').text(slider.currentSlide);
             //fixFlexisliderImage();
             }
-        });    
+        });
+		$('#playBtn').fadeIn(500);    
     });
     
     //fixmainimage();

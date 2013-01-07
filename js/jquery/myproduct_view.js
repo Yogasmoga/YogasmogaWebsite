@@ -192,7 +192,7 @@ function StartZooming(scale)
         zoom_MIN : _minzoomscale,
         responsive : true,
 		animation_SMOOTHNESS:4,animation_SPEED_ZOOM:4,animation_SPEED_PAN:4,
-		zoom_MAX: 400,
+		zoom_MAX: 100,
         pan_BUTTONS_SHOW : false,
         pan_REVERSE : true,
         on_IMAGE_LOAD : function(){
@@ -234,7 +234,7 @@ function StartZooming(scale)
                     jQuery("div#zoompopup div#zoomoptions img#zoomin").addClass('disabled');
                 }else{
                     jQuery("div#zoompopup div#zoomoptions img#zoomout").removeClass('disabled');}
-                if(ratio >= 4)
+                if(ratio >= 1)
                     {
 						if(_fabrictechnologyimage != ""){
 							jQuery("div#zoompopup div#zoomoptions img#zoomout").addClass('disabled');
