@@ -57,6 +57,7 @@ jQuery(document).ready(function($){
             $(this).animate({
                 height : newheight
             }, 500);
+            $(this).find('img.small').fadeOut('500');
         }
         else
         {
