@@ -57,7 +57,7 @@
     if($this->getRequest()->getParam('from') == 'dressingroom')
         $breadcrumb .= '&nbsp;&lt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'#dressingroom">DRESSING ROOM</a>';
     else
-        $breadcrumb .= '&nbsp;&lt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'#productgrid">PRODUCT GRID</a>';
+        $breadcrumb .= '&nbsp;&lt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'#productgrid">ALL PRODUCTS</a>';
     
         
     $productname = $_helper->productAttribute($_product, $_product->getName(), 'name');
