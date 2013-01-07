@@ -4,10 +4,14 @@ jQuery(document).ready(function($){
     $(window).resize(function(){
         setTimeout(function(){ resizeDesignFeatures(); }, 100);
         setTimeout(function(){ resizeProductBigImage(); }, 100);
+        //setTimeout(function(){ positiondesignfeatureheadimage(); }, 10);
+        //positiondesignfeatureheadimage();
     });
     
     
     $("table.productdesignfeatures div[size]").hover(function(){
+        if($(this).find("div.caption").is(':animated'))
+            return;
         $(this).find("div.caption").height();
         //$(this).find("div.caption").css('margin-top', ($(this).find("div.caption").height() * -1) + 'px');
         $(this).find("div.caption").animate({
@@ -37,7 +41,7 @@ jQuery(document).ready(function($){
     $(window).resize(function(){
         setTimeout(function(){ InitializeZoomPopup(); }, 100);    
     });
-    
+    positiondesignfeatureheadimage();    
     $("div#zoompopup img#closelightbox").live("click", function(){
         jQuery("#zoompopup").dialog( "close" );
     });
@@ -388,4 +392,16 @@ function changezoomColor(clr, delay, imgindex)
     {
         StartZooming();
     }
+}
+
+function positiondesignfeatureheadimage()
+{
+    if(jQuery("div#pagecontainer").width() > 1478)
+        jQuery("div.designfeaturesheadimage.potraitfeature").css('left', (((jQuery("div#pagecontainer").width() - 1478) / 2) + 540) + 'px');
+    else
+        jQuery("div.designfeaturesheadimage.potraitfeature").css('left', '540px');
+     if(jQuery("div#pagecontainer").width() > 1500)
+        jQuery("div.designfeaturesheadimage.landscapefeature").css('left', (((jQuery("div#pagecontainer").width() - 1500) / 2) + 675) + 'px');
+    else
+        jQuery("div.designfeaturesheadimage.landscapefeature").css('left', '675px');
 }
