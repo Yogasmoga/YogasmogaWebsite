@@ -1,6 +1,5 @@
 .productdesignfeatures
 {
-    width : 95%;
     margin-top : 70px;
     margin-bottom : 100px;
 }
@@ -36,7 +35,7 @@
 }
 .designfeaturesheadimage.potraitfeature
 {
-    left : 31%;
+    /*left : 31%;*/
 }
 table.productdesignfeatures div[size]
 {
@@ -622,7 +621,6 @@ img#closelightbox
 }
 table.productdesignfeatures
 {
-    width : 100%;
     margin-left : auto;
     margin-right : auto;
 }
