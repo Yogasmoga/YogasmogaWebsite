@@ -1,11 +1,11 @@
 jQuery(document).ready(function($){
-    //setTimeout(function(){ resizeDesignFeatures(); }, 100);
+    setTimeout(function(){ resizeDesignFeatures(); }, 100);
     setTimeout(function(){ resizeProductBigImage(); }, 100);
     $(window).resize(function(){
-        //setTimeout(function(){ resizeDesignFeatures(); }, 100);
+        setTimeout(function(){ resizeDesignFeatures(); }, 100);
         setTimeout(function(){ resizeProductBigImage(); }, 100);
         //setTimeout(function(){ positiondesignfeatureheadimage(); }, 10);
-        positiondesignfeatureheadimage();
+        //positiondesignfeatureheadimage();
     });
     
     

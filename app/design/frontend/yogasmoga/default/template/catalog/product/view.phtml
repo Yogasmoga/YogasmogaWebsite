@@ -524,17 +524,17 @@
         if($_product->getAttributeText('design_feature_view') == "Landscape")
         {
             ?>
-            <div id="designfeatures" class="pgsection">
-                <table style="width:100%;">
+            <div id="designfeatures" class="fullscreen pgsection">
+                <table class="fullscreentable">
                     <tr>
-                        <td>
+                        <td style="padding: 0 50px;">
                             <table class="productdesignfeatures">
                                 <tr>
-                                    <td>
-                                       <table>
+                                    <td style="width: 50%;">
+                                       <table style="width: 100%;">
                                             <tr>
-                                                <td>
-                                                    <div size="half" style="width : 424px;height : 296px;">
+                                                <td style="width: 60%;">
+                                                    <div size="half">
                                                             <img src="<?php echo substr($dfimages[1]["url"], 1); ?>" alt="<?php echo $dfimages[1]["caption"]; ?>" />
                                                             <div class="caption"><div><?php echo $dfimages[1]["caption"]; ?></div></div>
                                                         <?php /*
@@ -542,8 +542,8 @@
                                                         */ ?>
                                                     </div>      
                                                 </td>
-                                                <td>
-                                                    <div size="half" style="width : 296px;height : 296px;">
+                                                <td style="width: 40%;">
+                                                    <div size="half">
                                                             <img src="<?php echo substr($dfimages[2]["url"], 1); ?>" alt="<?php echo $dfimages[2]["caption"]; ?>" />
                                                             <div class="caption"><div><?php echo $dfimages[2]["caption"]; ?></div></div>
                                                         <?php /*
@@ -554,19 +554,19 @@
                                             </tr>
                                        </table> 
                                     </td>
-                                    <td rowspan="2">
-                                        <div size="full" style="width : 740px;height : 610px;">
+                                    <td rowspan="2" style="width: 50%;">
+                                        <div size="full">
                                             <img src="<?php echo substr($dfimages[3]["url"], 1); ?>" alt="<?php echo $dfimages[3]["caption"]; ?>" />
                                             <div class="caption"><div><?php echo $dfimages[3]["caption"]; ?></div></div>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="vertical-align: bottom;">
+                                    <td style="width: 50%; vertical-align: bottom;">
                                         <table style="width: 100%;">
                                             <tr>
-                                                <td>
-                                                    <div size="half" style="width : 296px;height : 296px;">
+                                                <td style="width: 40%;">
+                                                    <div size="half">
                                                             <img src="<?php echo substr($dfimages[4]["url"], 1); ?>" alt="<?php echo $dfimages[4]["caption"]; ?>" />
                                                             <div class="caption"><div><?php echo $dfimages[4]["caption"]; ?></div></div>
                                                         <?php /*
@@ -574,8 +574,8 @@
                                                         */ ?>
                                                     </div>      
                                                 </td>
-                                                <td>
-                                                    <div size="half" style="width : 424px;height : 296px;">
+                                                <td style="width: 60%;">
+                                                    <div size="half">
                                                             <img src="<?php echo substr($dfimages[5]["url"], 1); ?>" alt="<?php echo $dfimages[5]["caption"]; ?>" />
                                                             <div class="caption"><div><?php echo $dfimages[5]["caption"]; ?></div></div>
                                                         <?php /*
@@ -598,15 +598,14 @@
         if($_product->getAttributeText('design_feature_view') == "Potrait")
         {
             ?>
-            <div id="designfeatures" class="pgsection">
-                <div class="designfeaturesheadimage potraitfeature"></div>
-                <table style="width: 100%;">
+            <div id="designfeatures" class="fullscreen pgsection">
+                <table class="fullscreentable">
                     <tr>
-                        <td>
+                        <td style="padding: 0 50px;">
                             <table class="productdesignfeatures">
                                 <tr>
-                                    <td>
-                                       <div size="half" style="width: 610px; height : 296px;">
+                                    <td style="width: 33.33%;">
+                                       <div size="half">
                                                 <img src="<?php echo substr($dfimages[1]["url"], 1); ?>" alt="<?php echo $dfimages[1]["caption"]; ?>" />
                                                 <div class="caption"><div><?php echo $dfimages[1]["caption"]; ?></div></div>
                                             <?php /*
@@ -614,25 +613,25 @@
                                             */ ?>
                                         </div> 
                                     </td>
-                                    <td rowspan="2">
-                                        <div size="full" style="width: 424px; height : 610px;">
+                                    <td rowspan="2" style="width: 33.33%;">
+                                        <div size="full">
                                             <img src="<?php echo substr($dfimages[2]["url"], 1); ?>" alt="<?php echo $dfimages[2]["caption"]; ?>" />
                                             <div class="caption"><div><?php echo $dfimages[2]["caption"]; ?></div></div>
                                         </div>
                                     </td>
-                                    <td rowspan="2">
-                                        <div size="full"  style="width: 424px; height : 610px;">
+                                    <td rowspan="2" style="width: 33.33%;">
+                                        <div size="full">
                                             <img src="<?php echo substr($dfimages[3]["url"], 1); ?>" alt="<?php echo $dfimages[3]["caption"]; ?>" />
                                             <div class="caption"><div><?php echo $dfimages[3]["caption"]; ?></div></div>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="vertical-align: bottom;">
+                                    <td style="width: 33.33%; vertical-align: bottom;">
                                         <table style="width: 100%;">
                                             <tr>
-                                                <td>
-                                                    <div size="half" style="width: 296px; height : 296px;">
+                                                <td style="width: 50%;">
+                                                    <div size="half">
                                                             <img src="<?php echo substr($dfimages[4]["url"], 1); ?>" alt="<?php echo $dfimages[4]["caption"]; ?>" />
                                                             <div class="caption"><div><?php echo $dfimages[4]["caption"]; ?></div></div>
                                                         <?php /*
@@ -640,8 +639,8 @@
                                                         */ ?>
                                                     </div>      
                                                 </td>
-                                                <td>
-                                                    <div size="half" style="width: 296px; height : 296px;">
+                                                <td style="width: 50%;">
+                                                    <div size="half">
                                                             <img src="<?php echo substr($dfimages[5]["url"], 1); ?>" alt="<?php echo $dfimages[5]["caption"]; ?>" />
                                                             <div class="caption"><div><?php echo $dfimages[5]["caption"]; ?></div></div>
                                                         <?php /*
@@ -654,6 +653,7 @@
                                     </td>
                                 </tr>
                             </table>
+                            <div class="designfeaturesheadimage potraitfeature"></div>
                         </td>
                     </tr>
                 </table>
