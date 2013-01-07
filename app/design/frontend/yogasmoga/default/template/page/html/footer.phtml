@@ -183,51 +183,6 @@
 //                                echo $row['revenue']."<br/>";
 //                            }
                         ?>
-                        <script type="text/javascript">
-                jQuery(document).ready(function($){
-                    $("form#referfriend").submit(function(){
-                        jQuery.ajax({
-                            type : 'POST',
-                            url : homeUrl + 'mycatalog/myproduct/referfriend',
-                            data : jQuery("#referfriend").serialize(),
-                            success : function(result){
-                                result = eval('(' + result + ')');
-                                if(result.status == 'success')
-                                {
-                                    alert(result.message);
-                                }
-                                else
-                                {
-                                    alert(result.message);
-                                }
-                            }
-                        });
-                        return false;
-                    });
-                });
-            </script>
-            <div class="invite-action">
-            	<div class="invite-form">
-            		<form id="referfriend" action="" method="post">
-            			<div class="input_box">
-            			<label>Friend's Name</label>
-            			<input type="text" class="input-box" name="name[]" />
-            			</div>
-                        <div class="input_box">
-            			<label>Friend's Email</label>
-            			<input type="text" class="input-box" name="email[]" />
-            			</div>
-            			<button class="button btn-invite"><span><span>Invite</span></span></button>
-            		</form>
-            	</div>
-            	
-            	<div class="social-btns">
-            		<a href="http://www.pinterest.com/YOGASMOGA" class="pinterest">Pinterest</a>
-            		<a href="http://www.twitter.com/YOGASMOGA" class="twitter">Twitter</a>
-            		<a href="http://www.facebook.com/YOGASMOGA" class="facebook">Facebook</a>
-            		<a href="#" class="email">Email</a>
-            	</div>
-            </div>      
                     </div>
                     
                     <div class="copyright"><?php echo $this->getCopyright() ?></div>
