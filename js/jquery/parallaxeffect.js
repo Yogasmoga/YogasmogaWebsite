@@ -67,10 +67,11 @@ jQuery(document).ready(function($){
             $(this).animate({
                 height : newheight
             }, 500, function(){
-                $(this).find('img.small').fadeIn('fast');
+                //$(this).find('img.small').fadeIn('fast');
                 $(this).find('img.big_big').show();
                 $(this).find('img.big_small').show();
             });
+            $(this).find('img.small').fadeIn('500');
         }
         $("html, body").animate({
             scrollTop: ($(this).offset().top - _headerHeight)
