@@ -78,7 +78,8 @@
 }
 #dressingroomholder div.productdetail div.productcount div.totalcount
 {
-       
+    font-family : ChaletParisNineteenSeventy;
+    padding-left : 3px;       
 }
 #dressingroomholder div.productdetail div.productname
 {

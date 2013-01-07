@@ -287,6 +287,7 @@ div#shippingsummary
 {
     right : 0;
     max-width : 340px;
+    display : none;
 }
 div#ordersummary
 {

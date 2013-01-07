@@ -1715,7 +1715,7 @@ tr.summary-details-excluded { font-style:italic; }
 .footer .store-switcher { display:inline; margin:0 5px 0 0; color:#fff; }
 .footer .store-switcher label { font-weight:bold; vertical-align:middle; }
 .footer .store-switcher select { padding:0; vertical-align:middle; }
-.footer a { color:#fff; text-decoration:none; }
+.footer a { color:#fff; text-decoration:none; text-transform: uppercase; }
 .footer a:hover { text-decoration:underline; }
 .footer .bugs { margin:13px 0 0; color:#ecf3f6; }
 .footer .bugs a { color:#ecf3f6; text-decoration:underline; }
@@ -2236,6 +2236,7 @@ div.mycategory-products div.item td.productname
     font-family:gothambook;
     font-size:10px;
     color : gray;
+    text-transform: uppercase;
 }
 div.mycategory-products div.item:hover td.productname
 {
@@ -2373,6 +2374,7 @@ div.mycategory-products div.item:hover td.animateimage img.active
     text-align: left;
     text-transform: uppercase;
     z-index: 15;
+    background-color : white;
 }
 .bottomposition
 {
