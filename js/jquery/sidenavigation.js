@@ -155,12 +155,18 @@ function endsWith(str, suffix) {
 
 function navAssignTitles()
 {
-    jQuery("#pageScrollerNav img").attr("title", '');
     
-    if(jQuery("div.pgsection:nth-child(" + (jQuery("#pgnavigator li.active").index() + 2) + ")").length > 0)
-        jQuery("#pgNavDown img").attr("title", jQuery("div.pgsection:nth-child(" + (jQuery("#pgnavigator li.active").index() + 2) + ")").attr("desc"));
-    if(jQuery("div.pgsection:nth-child(" + (jQuery("#pgnavigator li.active").index()) + ")").length > 0)
-        jQuery("#pgNavUp img").attr("title", jQuery("div.pgsection:nth-child(" + (jQuery("#pgnavigator li.active").index()) + ")").attr("desc"));
-    _currentfullscreenid = jQuery("div.pgsection:nth-child(" + (jQuery("#pgnavigator li.active").index() + 1) + ")").attr("id");
+    jQuery("#pageScrollerNav img").attr("title", '');
+    if(jQuery("div.pgsection").eq(jQuery("#pgnavigator li.active").index() + 1).length > 0)
+        jQuery("#pgNavDown img").attr("title", jQuery("div.pgsection").eq(jQuery("#pgnavigator li.active").index() + 1).attr("desc"));
+    if(jQuery("div.pgsection").eq(jQuery("#pgnavigator li.active").index()).length > 0)
+        jQuery("#pgNavUp img").attr("title", jQuery("div.pgsection").eq(jQuery("#pgnavigator li.active").index()).attr("desc"));
+    _currentfullscreenid = jQuery("div.pgsection").eq(jQuery("#pgnavigator li.active").index()).attr("id");
+    //jQuery("#pageScrollerNav img").attr("title", '');
+//    if(jQuery("div.pgsection:nth-child(" + (jQuery("#pgnavigator li.active").index() + 2) + ")").length > 0)
+//        jQuery("#pgNavDown img").attr("title", jQuery("div.pgsection:nth-child(" + (jQuery("#pgnavigator li.active").index() + 2) + ")").attr("desc"));
+//    if(jQuery("div.pgsection:nth-child(" + (jQuery("#pgnavigator li.active").index()) + ")").length > 0)
+//        jQuery("#pgNavUp img").attr("title", jQuery("div.pgsection:nth-child(" + (jQuery("#pgnavigator li.active").index()) + ")").attr("desc"));
+//    _currentfullscreenid = jQuery("div.pgsection:nth-child(" + (jQuery("#pgnavigator li.active").index() + 1) + ")").attr("id");
     //console.log(_currentfullscreenid);
 }

@@ -164,6 +164,25 @@
                             echo "sdfasdfsadfsad";
                         ?>
                         */ ?>
+                        <?php
+                            //$orderTotals = Mage::getModel('sales/order')->getCollection()
+//                                ->addAttributeToFilter('status', Mage_Sales_Model_Order::STATE_COMPLETE)
+//                                //->addAttributeToFilter('id', '11')
+//                                ->addAttributeToSelect('grand_total')
+//                                ->getColumnValues('grand_total');
+//                            $totalSum = array_sum($orderTotals);
+//                            echo "Total sum = ".
+//                            // If you need the value formatted as a price...
+//                            $totalSum = Mage::helper('core')->currency($totalSum, true, false);
+//                            
+                            
+                            //$write = Mage::getSingleton('core/resource')->getConnection('core_read');
+//                            $result = $write->query("SELECT IF(SUM(row_total) > 0, SUM(row_total), 0) as revenue FROM sales_flat_order sfo, sales_flat_order_item sfoi WHERE sfo.status='complete' AND sfo.entity_id=sfoi.order_id
+//AND sfoi.product_id = 11");
+//                            while ($row = $result->fetch() ) {
+//                                echo $row['revenue']."<br/>";
+//                            }
+                        ?>
                     </div>
                     
                     <div class="copyright"><?php echo $this->getCopyright() ?></div>
