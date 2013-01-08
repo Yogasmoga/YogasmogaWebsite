@@ -2876,3 +2876,25 @@ div.opimage img.small
 {
     z-index: 2;
 }
+div.sidenavpopup
+{
+    height : 19px;
+    overflow : visible;
+    display : inline-block;
+    position : fixed;
+    right : 47px;
+    z-index : 5;
+}
+div.sidenavpopup div
+{
+    background-color : #D6D6D6;
+    white-space: nowrap;
+    padding : 0 6px;
+    display : inline-block;
+    border-bottom: 1px solid #CCCCCC;
+}
+div.sidenavpopup img
+{
+    float : right;
+    margin-right: -3px;
+}
