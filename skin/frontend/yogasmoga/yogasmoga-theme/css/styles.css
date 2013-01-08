@@ -2892,6 +2892,7 @@ div.sidenavpopup div
     padding : 0 6px;
     display : inline-block;
     border-bottom: 1px solid #CCCCCC;
+    float : left;
 }
 div.sidenavpopup img
 {
