@@ -104,5 +104,7 @@ function setfullscreenheight()
         jQuery("#pageScrollerNav").css('top', ((_winH + (_headerHeight * 2) - jQuery("#pageScrollerNav").height() - jQuery("#pageScrollerNav #shareicons").css('height')) / 2) + 'px');
     else
         jQuery("#pageScrollerNav").css('top', ((_winH + (_headerHeight * 2) - jQuery("#pageScrollerNav").height()) / 2) + 'px');
+        
+    
     //console.log('w = ' + _winW + ' h = ' + _winH + ' s = ' + jQuery("#pageScrollerNav").height());
 }
