@@ -131,6 +131,8 @@ function getZoomPercent(realwidth, realheight, orgwidth, orgheight)
         nPercent = nPercentH;
     else
         nPercent = nPercentW;
+	
+	nPercent = (nPercent < 0.135) ? 0.135 : nPercent;
     return nPercent * 100;
 }
 
@@ -186,6 +188,7 @@ function StartZooming(scale)
         _minzoomscale = getZoomPercent(700, 700, temp[1] * 1, temp[2] * 1);
     else
         _minzoomscale = getZoomPercent(700, 700, td.attr("orgwidth") * 1, td.attr("orgheight") * 1); 
+	
     jQuery('img#zoomedimage').show();
     jQuery('img#zoomedimage').smoothZoom({
         width : _winW - 250,
@@ -193,10 +196,10 @@ function StartZooming(scale)
         max_WIDTH : _winW - 250,
         max_HEIGHT : _winH + _headerHeight,
         initial_ZOOM : initialzoom,
+		zoom_MAX: 100,
         zoom_MIN : _minzoomscale,
         responsive : true,
 		animation_SMOOTHNESS:4,animation_SPEED_ZOOM:4,animation_SPEED_PAN:4,
-		zoom_MAX: 100,
         pan_BUTTONS_SHOW : false,
         pan_REVERSE : true,
         on_IMAGE_LOAD : function(){

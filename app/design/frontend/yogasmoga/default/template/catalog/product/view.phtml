@@ -330,19 +330,17 @@
             </td>
         </tr>
     </table>
-    <?php
-        if($sizechartblockid != "")
-        {
-            ?>
-            <div id="sizechart">
-                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
-            </div>
-            <?php      
-        }
-    ?>
     <div class="productoptions absoluteproductoptions">
         <?php //echo Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId()); ?>
         <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId(Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId()))->toHtml(); ?>
+		<?php if($sizechartblockid != ""){?>
+			<div id="sizechart">
+				<div class="light-conent-box">
+					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
+				</div>
+				<img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
+			</div>
+		<?php } ?>
         <?php
             if($howdoesitfitblockid != "")
             {
@@ -351,7 +349,7 @@
                     <div id="howdoesitfitboxinner">
                         <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
                     </div>
-                    <img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closehowdoesitfit" />
+                    <img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
                 </div>
                 <?php      
             }

@@ -720,6 +720,20 @@ div#zoompopup
 {
     overflow : hidden;
 }
+div#sizechart
+{
+    background-color: #D2D2D4;
+    left: 10px;
+    position: absolute;
+    top: 12px;
+    z-index: 1;
+    display : none;
+}
+div#sizechart .light-conent-box{
+    background-color: #F2F2F2;
+    border-bottom: 1px solid #939393;
+    padding: 26px;
+}
 div#howdoesitfitbox
 {
     background-color: #D2D2D4;
@@ -735,9 +749,9 @@ div#howdoesitfitbox div#howdoesitfitboxinner
 {
     background-color: #F2F2F2;
     border-bottom: 1px solid #939393;
+    padding: 26px;
     height: 320px;
     margin: 4px;
-    padding: 26px;
     width: 315px;
     overflow : none;
 }
@@ -753,17 +767,10 @@ div#howdoesitfitbox div#howdoesitfitboxinner p:first-child
 {
     margin-top : 0;
 }
-img#closehowdoesitfit
+img#closesmlight
 {
     position : absolute;
     top : -10px;
     right : -10px;
     cursor : pointer;
-}
-div#sizechart
-{
-    background-color : white;
-    right : 350px;
-    position : absolute;
-    display : none;
 }

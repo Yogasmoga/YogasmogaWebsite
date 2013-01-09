@@ -37,7 +37,7 @@ jQuery(document).ready(function($){
         changeColor($("div#colorcontainer table:first").attr("color"));
         
     $("table.productdetailtable td.howdoesitfitlink a").live("click", function(){
-        $("div#howdoesitfitbox").fadeIn('slow');
+        $("div#howdoesitfitbox").fadeIn('normal');
     });
     
     $("div#howdoesitfitbox").live('mouseover', function(){
@@ -54,13 +54,13 @@ jQuery(document).ready(function($){
     });
     $("body").click(function(){
         if(!_howdoesitfithovered)
-            $("div#howdoesitfitbox").fadeOut('slow');
+            $("div#howdoesitfitbox").fadeOut('normal');
         if(!_sizecharthovered)
-            $("div#sizechart").fadeOut('slow');
+            $("div#sizechart").fadeOut('normal');
     });
     
-    $("img#closehowdoesitfit").live('click', function(){
-        $("div#howdoesitfitbox").fadeOut('slow');
+    $("img#closesmlight").live('click', function(){
+        $(this).parent().fadeOut('normal');
     });
     
     $("table.productdetailtable td.sizechartlink a").live('click', function(){
@@ -74,7 +74,7 @@ jQuery(document).ready(function($){
         {
             $("div#sizechart").css('top', (($("table.tdbigimagecontainer:first").height() - $("div#sizechart").height())/2) + 'px');
         }
-        $("div#sizechart").fadeIn('slow');
+        $("div#sizechart").fadeIn('normal');
     });
 });
 
