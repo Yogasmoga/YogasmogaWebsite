@@ -518,7 +518,7 @@ tr.summary-details-excluded { font-style:italic; }
 .header-container {
     position: fixed;
     top: 0px;
-    z-index: 10000;
+    z-index: 100;
     height : 80px;
     width : 100%;
 }

@@ -160,10 +160,9 @@ ul.sub-nav a{display:inline;}
 
 .mens-header {
   margin: 0 auto;
-  max-width: 1600px;
   position: relative;
 }
-.mens-header img{display:block; max-width:100%; height:auto;}
+.mens-header img{display:block; width:100%; height:auto;}
 .mens-header .news-letter{position:absolute; left:11%; top:50%; margin-top:-125px;font-family:gotham, Arial; font-size:16px; width:460px;}
 .mens-header .news-letter p {
   color: #FFFFFF;

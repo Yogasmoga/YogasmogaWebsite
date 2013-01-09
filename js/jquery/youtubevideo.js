@@ -1,9 +1,14 @@
 jQuery(document).ready(function($){
-	jQuery("a[rel*=fancyvideo]").fancybox({
-        overlayShow: true,
-        frameWidth:678,
-        frameHeight:495
-    });
-
+	jQuery("a[rel=fancyvideo]").fancybox({
+		width		: '100%',
+		height		: '100%',
+		fitToView	:true,
+		autoSize	: true,
+		openEffect	: 'none',
+		closeEffect	: 'none',
+		helpers : {
+			media : {}
+		}
+	});
 });
 
