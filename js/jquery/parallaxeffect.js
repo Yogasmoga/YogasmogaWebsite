@@ -32,7 +32,7 @@ jQuery(document).ready(function($){
                 }
             }
             else
-                $(this).height(getScaledheight($(this).attr("smorigheight"), $(this).attr("smorigwidth")));     
+                $(this).height(getScaledheight($(this).attr("smorigheight"), $(this).attr("smorigwidth")));
         });
     });
     

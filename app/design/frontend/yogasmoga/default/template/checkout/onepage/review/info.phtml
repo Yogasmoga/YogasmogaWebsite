@@ -174,7 +174,8 @@
                     $temparray['quantity'] = $item->getQty();
                     $temparray['individualprice'] = $item->getBaseCalculationPrice();
                     $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 0, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
-                    $temparray['imageurl'] = getMiniImage($item->getProductId());
+                    //$temparray['imageurl'] = getMiniImage($item->getProductId());
+                    $temparray['imageurl'] = "_".$this->helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(50, 50);
                     $temparray['producturl'] = $_product->getProductUrl();
                     $temparray['itemid'] = $item->getItemId();
                     array_push($miniitems, $temparray);
