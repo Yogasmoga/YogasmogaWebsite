@@ -129,7 +129,7 @@
         <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
         */ ?>
         <?php
-            echo count($_productCollection);
+            echo $_productCollection->count()."<br/>";
             for($isfs = 0; $isfs < 1; $isfs++) {
             foreach($_productCollection as $_product)
             {
