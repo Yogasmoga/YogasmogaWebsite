@@ -129,6 +129,7 @@
         <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
         */ ?>
         <?php
+            echo count($_productCollection);
             for($isfs = 0; $isfs < 1; $isfs++) {
             foreach($_productCollection as $_product)
             {
@@ -156,7 +157,10 @@
                     }    
                 }
                 else
+                {
+                    echo $_product->getId()."<br/>";
                     continue;
+                }
                 ?>
                     <div bestfor="<?php echo ",".Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'bestfor', Mage::app()->getStore()->getStoreId()).","; ?>" cat="<?php echo ",".implode(",", $_product->getCategoryIds()).","; ?>" id="<?php echo $_product->getId(); ?>" class="item" color="<?php echo $colors; ?>">
                         <a href="<?php echo $_product->getProductUrl(); ?>">
