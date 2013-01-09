@@ -471,19 +471,6 @@ table.productimagecontainer table.tdbigimagecontainer td
     height : 600px;
 }
 
-table.productimagecontainer table.tdbigimagecontainer td img
-{
-    max-width : 700px;
-    cursor : url("http://staging.yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/catalog/product/cursor_zoom_in.cur"), default;
-}
-td.canzoomin, td.canzoomin div, td.canzoomin img
-{
-    cursor : url("http://staging.yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/catalog/product/cursor_zoom_in.cur"), default !important;
-}
-td.canzoomout, td.canzoomout div, td.canzoomout img
-{
-    cursor : url("http://staging.yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/catalog/product/cursor_zoom_out.cur"), default !important;
-}
 table.productimagecontainer td.tddivider
 {
     padding-top : 15px;
