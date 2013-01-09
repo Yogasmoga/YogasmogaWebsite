@@ -33,6 +33,11 @@
           <template>page/giftofys.phtml</template>
           <layout_handle>GiftOfYS</layout_handle>
         </giftofys>
+        <namaskar translate="label">
+          <label>Namaskar</label>
+          <template>page/namaskar.phtml</template>
+          <layout_handle>Namaskar</layout_handle>
+        </namaskar>
         <!-- add more layouts here -->
       </layouts>
     </page>
