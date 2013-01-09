@@ -204,6 +204,11 @@ table.productdetailtable div#sizecontainer table td
     padding-right : 20px;
 }
 
+table.productdetailtable div#sizecontainer table td.disabled
+{
+    display : none;
+}
+
 table.productdetailtable div#sizecontainer table td:last-child
 {
     padding-right : 0px;
