@@ -127,8 +127,8 @@
 }
 #dressingroomtop td.imageholder img
 {
-    position : absolute;
     z-index: 2;
+    position : absolute;
 }
 #dressingroomholder #dressingroomtop table td.imageholder
 {
