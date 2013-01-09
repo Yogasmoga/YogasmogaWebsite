@@ -43,7 +43,7 @@ jQuery(document).ready(function($){
 				//setfullscreenheight();
 			});
 			//})
-			},10000);   
+			},500);
 		}
 		var temp = $("div.pgsection").length;
 		if(temp > 2 && !_disablesidenavigation){

@@ -1,3 +1,9 @@
+button.btn-bag span{padding:0; width:240px; text-indent:-999em; height:44px; margin:0; background:url(../images/btn-bag.png) 0 0 no-repeat; border:0;}
+button.btn-pre span{padding:0; width:240px; text-indent:-999em; height:44px; margin:0; background:url(../images/btn-pre.png) 0 0 no-repeat; border:0;}
+
+button.cbtn span span{background:none;}
+button.cbtn:active span{background-position:0 -44px;}
+
 .productdesignfeatures
 {
     width : 95%;
@@ -330,6 +336,7 @@ table.productdetailtable div.addtobag
     margin-top : 15px;
     cursor : pointer;
 }
+table.productdetailtable button.cbtn{margin-top:20px;}
 
 table.productdetailtable div.preorderitem
 {

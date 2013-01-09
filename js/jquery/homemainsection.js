@@ -13,7 +13,7 @@ jQuery(document).ready(function($){
             //fixFlexisliderImage();
             }
         });
-		$('#playBtn').fadeIn(500);    
+		$('#playBtn').fadeIn(500, function(){$('.flexslider').css('background','#000')});    
     });
     
     //fixmainimage();

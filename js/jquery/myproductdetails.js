@@ -19,7 +19,7 @@ jQuery(document).ready(function($){
         $("td#tdpopupproductbigimage img").fadeIn('fast');
     });
     
-    $("div#orderitem, div#preorderitem").live("click", function(){
+    $("#orderitem, #preorderitem").live("click", function(){
         if(_addingtocart)
             return;
         addtocart();
@@ -87,13 +87,13 @@ function changeproductsize(sz)
     var orderqty =_productorderqty;
     if((qty - orderqty) > 0)
     {
-        jQuery("div#orderitem").show();
-        jQuery("div#preorderitem").hide();            
+        jQuery("#orderitem").show();
+        jQuery("#preorderitem").hide();            
     }
     else
     {
-        jQuery("div#orderitem").hide();
-        jQuery("div#preorderitem").show();
+        jQuery("#orderitem").hide();
+        jQuery("#preorderitem").show();
     }
     var price = sz.attr("price");
     jQuery("div.productcost").html("$" + price);
@@ -113,13 +113,13 @@ function changeOrderqty(qty)
     var stockqty = jQuery("div#sizecontainer div.dvselectedsize").attr("qty") * 1;
     if((stockqty - qty) >= 0)
     {
-        jQuery("div#orderitem").show();
-        jQuery("div#preorderitem").hide();            
+        jQuery("#orderitem").show();
+        jQuery("#preorderitem").hide();            
     }
     else
     {
-        jQuery("div#orderitem").hide();
-        jQuery("div#preorderitem").show();
+        jQuery("#orderitem").hide();
+        jQuery("#preorderitem").show();
     }
 }
 
@@ -161,8 +161,8 @@ function changeColor(clr)
         jQuery("div#sizecontainer div[size='" +  size + "']").attr("price", price);
         jQuery("div#sizecontainer div[size='" +  size + "']").attr("rewardpoints", rewardpoints);
     }
-    jQuery("div#orderitem").show();
-    jQuery("div#preorderitem").hide();
+    jQuery("#orderitem").show();
+    jQuery("#preorderitem").hide();
     var smallimagehtml = '';
     if(_productdisplaymode == 'popup')
     {
