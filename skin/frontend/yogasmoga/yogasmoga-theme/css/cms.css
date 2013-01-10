@@ -66,7 +66,7 @@
 .main-container {position:relative; display:block; background:none;}
 .main-container .main{margin:0 auto; width:100%; background:none; padding:0;}
 .main-container .main .main-col{width:100%;}
-.main-container .main .title-div{height:528px; width:100%; display:block; text-indent:-999em; background-position:50% 50% !important; background-size:contain !important;}
+.main-container .main .title-div{height:528px; width:100%; display:block; text-indent:-999em; background-position:50% 50% !important; background-size:cover !important;}
 .fullscreen{min-width:700px;}
 .colorbg { background:none !important; 	}
 body.cms-ourstory{background:#fff url(../images/cms_bg.jpg) 0 0 no-repeat; background-size:contain;}
@@ -211,7 +211,7 @@ width: 410px;}
   margin: 135px 0 0 25px;
   width: 655px;
 }
-.make-change .values-box span.count{font-size:108px; display:block; font-family:gotham-b, Arial; color:#fff; text-indent:30px;}
+.make-change .values-box span.count{font-size:108px; display:block; font-family:gotham-b, Arial; color:#fff; text-indent:0; text-align:center;}
 .make-change .values-box p{font-size:35px; text-transform:uppercase; color:#fff;}
 .make-change .values-box p strong{font-weight:normal; color:#fff; font-family:ITCAvantGardeProBd, Arial;}
 .namaskar-page .foundation {
@@ -248,12 +248,16 @@ button.btn-brecelet:active span{background-position:0 100%;}
   padding: 110px 0 680px;
 }
 .works-cols{margin:0 10%;}
+@media screen and (max-width: 1200px) {
+.works-cols{margin:0 15px;}	
+}
 .works-cols div {
   font-size: 14px;
   line-height: 1.3;
   margin: 0 auto;
   text-align: justify;
   width: 26%;
+  min-width:300px;
 }
 .works-cols div h1.title{text-align:center; font-size:31px;line-height:1.1; font-family:ITCAvantGardeProBd, Arial; margin:0 0 25px; text-transform:uppercase;}
 .works-cols div.health{float:left;}
