@@ -186,8 +186,7 @@ function StartZooming(scale)
     if(jQuery("img#zoomedimage").hasClass('fabricimage'))
         _minzoomscale = getZoomPercent(700, 700, temp[1] * 1, temp[2] * 1);
     else
-        _minzoomscale = getZoomPercent(700, 700, td.attr("orgwidth") * 1, td.attr("orgheight") * 1); 
-	
+        _minzoomscale = getZoomPercent(700, 700, td.attr("orgwidth") * 1, td.attr("orgheight") * 1); 	
     jQuery('img#zoomedimage').show();
     jQuery('img#zoomedimage').smoothZoom({
         width : _winW - 250,
