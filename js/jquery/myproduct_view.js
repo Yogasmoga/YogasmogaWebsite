@@ -132,7 +132,6 @@ function getZoomPercent(realwidth, realheight, orgwidth, orgheight)
     }else{
         nPercent = nPercentW;
 	}
-	if(nPercent < 0.135){nPercent = 0.135;}
     return nPercent * 100;
 }
 
