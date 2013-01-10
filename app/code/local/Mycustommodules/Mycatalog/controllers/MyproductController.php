@@ -145,7 +145,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         $_helper = Mage::helper('catalog/output');
         $_product = Mage::getModel('catalog/product')->load($this->getRequest()->getParam('id'));
         //$_product = Mage::getModel('catalog/product')->load($this->getRequest()->getPost('id'));
-        $producturl = $_product->getProductUrl();;
+        $producturl = $_product->getProductUrl();
         $productname = $_helper->productAttribute($_product, $_product->getName(), 'name');
         $productid = $_product->getId();
         $howdoesitfitblockid = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId());

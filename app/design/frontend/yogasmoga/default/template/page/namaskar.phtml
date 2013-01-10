@@ -61,7 +61,7 @@
 <div class="values-box">
 <span class="count">$<?php 
 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
-$result = $write->query("SELECT IF(SUM(row_total) > 0, SUM(row_total), 0) as revenue FROM sales_flat_order sfo, sales_flat_order_item sfoi WHERE sfo.status='complete' AND sfo.entity_id=sfoi.order_id AND sfoi.product_id = 237");
+$result = $write->query("SELECT IF(SUM(row_total) > 0, SUM(row_total), 0) as revenue FROM sales_flat_order sfo, sales_flat_order_item sfoi WHERE sfo.status='complete' AND sfo.entity_id=sfoi.order_id AND sfoi.product_id = ".Mage::getModel('core/variable')->loadByCode('namaskar_bracelet_id')->getValue('plain'));
 $row = $result->fetch();
 echo number_format($row['revenue']);
 ?></span>
