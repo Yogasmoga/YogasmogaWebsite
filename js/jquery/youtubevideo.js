@@ -1,9 +1,9 @@
 jQuery(document).ready(function($){
 	jQuery("a[rel=fancyvideo]").fancybox({
-		width		: '100%',
-		height		: '100%',
+		width		: '85%',
 		fitToView	:true,
 		autoSize	: true,
+		padding		:0,
 		openEffect	: 'none',
 		closeEffect	: 'none',
 		helpers : {
