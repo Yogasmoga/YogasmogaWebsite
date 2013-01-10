@@ -11,7 +11,6 @@
     src: url('../fonts/Gotham-Light.eot');
     src: local('gothamlight'), 
          url('../fonts/Gotham-Light.ttf') format('truetype');
-    src: local(gothamlight), url("../fonts/Gotham-Light.ttf");
 }
 
 
