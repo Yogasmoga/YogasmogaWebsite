@@ -8,9 +8,9 @@
 
 @font-face {
     font-family: 'gothamlight';
-    src: url('../fonts/Gotham-Light.eot');
+    src: url('http://media.yogasmoga.com/staging/skin/frontend/yogasmoga/yogasmoga-theme/fonts/Gotham-Light.eot');
     src: local('gothamlight'), 
-         url('../fonts/Gotham-Light.ttf') format('truetype'); 
+         url('http://media.yogasmoga.com/staging/skin/frontend/yogasmoga/yogasmoga-theme/fonts/Gotham-Light.ttf') format('truetype'); 
 }
 
 
