@@ -67,12 +67,9 @@ jQuery(document).ready(function($){
         if(_productdisplaymode == 'popup')
         {
             var ppdialog = $("div.yogidialog.ui-dialog:first");
-            $("div#sizechart").css('left', ((ppdialog.width() - $("div#sizechart").width())/2) + 'px');
-            $("div#sizechart").css('top', ((ppdialog.height() - $("div#sizechart").height())/2) + 'px');
         }
         else
         {
-            $("div#sizechart").css('top', (($("table.tdbigimagecontainer:first").height() - $("div#sizechart").height())/2) + 'px');
         }
         $("div#sizechart").fadeIn('normal');
     });
