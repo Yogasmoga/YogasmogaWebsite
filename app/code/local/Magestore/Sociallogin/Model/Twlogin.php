@@ -12,7 +12,7 @@ class Magestore_Sociallogin_Model_Twlogin extends Zend_Oauth_Consumer {
 			'version'           => '1.0',
 			'requestTokenUrl'   => 'https://api.twitter.com/oauth/request_token',
 			'accessTokenUrl'    => 'https://api.twitter.com/oauth/access_token',
-			'authorizeUrl'      => 'https://twitter.com/oauth/authenticate'
+			'authorizeUrl'      => 'https://api.twitter.com/oauth/authorize'
 		);
 	
 		$this->_config->setOptions($this->_options);

@@ -1,25 +1,15 @@
 <?php
 
 class Magestore_Sociallogin_Model_Observer {
-
-	public function customer_login($observer){
-		try{
-			$twitterId = Mage::getSingleton('core/session')->getTwitterId();
-			if($twitterId){ //if login by twiiter
-				$customerId = $observer->getCustomer()->getId();
-				
-				$twitterCustomer = Mage::getModel('sociallogin/customer')
-								->setCustomerId($customerId)
-								->setTwitterId($twitterId);
-				try{
-					$twitterCustomer->save();
-				}catch(Exception $e){
-				}
-			}
-			//unset session
-			$twitterId = Mage::getSingleton('core/session')->setTwitterId();
-		} catch(Exception $e){
 		
+	public function customer_edit($observer){
+		try{
+			$customerId = Mage::getSingleton('core/session')->getCustomerIdSocialLogin();
+			if ($customerId){
+				Mage::getSingleton('customer/session')->getCustomer()->setEmail(' ');			
+			}
+			Mage::getSingleton('core/session')->setCustomerIdSocialLogin();
+		} catch(Exception $e){		
 		}
 	}
 	

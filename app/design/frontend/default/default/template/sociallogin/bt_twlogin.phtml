@@ -1,9 +1,9 @@
 <?php $isLogin = $this->helper('customer')->isLoggedIn()?>
 <?php if(!$isLogin){?>
 <?php $this->setBackUrl()?>
-<a id="bt-logintw" class="bt-login-social" alt="<?php echo $this->__('Login by Twitter') ?>" href="javascript://" title="<?php echo $this->__('Login by Twitter') ?>" onclick="twLogin()" href="javascript:void(0);">
-
-</a>
+<button id="bt-logintw" class="bt-login-social" alt="<?php echo $this->__('Login by Twitter') ?>" title="<?php echo $this->__('Login by Twitter') ?>" onclick="twLogin()" href="javascript:void(0);">
+	<span><span><?php echo $this->__('Twitter Sign in') ?></span></span>
+</button>
 <script type="text/javascript">
 var newwindow;
 var intId;

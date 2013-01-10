@@ -26,6 +26,9 @@ class Magestore_Sociallogin_YaloginController extends Mage_Core_Controller_Front
 			$customer = Mage::helper('sociallogin')->getCustomerByEmail($user['email']);
 			if(!$customer || !$customer->getId()){
 				$customer = Mage::helper('sociallogin')->createCustomer($user);
+				if (Mage::getStoreConfig('sociallogin/yalogin/is_send_password_to_customer')){
+					$customer->sendPasswordReminderEmail();
+				}
 			}
 			
 			Mage::getSingleton('customer/session')->setCustomerAsLoggedIn($customer);

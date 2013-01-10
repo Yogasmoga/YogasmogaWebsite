@@ -1,7 +1,7 @@
 <?php
 class Magestore_Sociallogin_FbloginController extends Mage_Core_Controller_Front_Action{
 
-    public function loginAction() {
+    public function loginAction() {            
 		if(!Mage::helper('magenotification')->checkLicenseKeyFrontController($this)){return;}
 		$isAuth = $this->getRequest()->getParam('auth');
 		$facebook = Mage::getModel('sociallogin/fblogin')->newFacebook();
@@ -21,6 +21,9 @@ class Magestore_Sociallogin_FbloginController extends Mage_Core_Controller_Front
 			$customer = Mage::helper('sociallogin')->getCustomerByEmail($data['email']);
 			if(!$customer || !$customer->getId()){
 				$customer = Mage::helper('sociallogin')->createCustomer($data);
+				if(Mage::getStoreConfig('sociallogin/fblogin/is_send_password_to_customer')){
+					$customer->sendPasswordReminderEmail();
+				}
 				
 			}
 			Mage::getSingleton('customer/session')->setCustomerAsLoggedIn($customer);

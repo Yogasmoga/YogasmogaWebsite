@@ -1,9 +1,10 @@
-<?php $isLogin = $this->helper('customer')->isLoggedIn()?>
+<?php $isLogin = $this->helper('customer')->isLoggedIn();?>
+
 <?php if(!$isLogin){?>
     <?php $user = $this->getFbUser()?>
-	<a id="bt-loginfb" class="bt-login-social" onclick="fbLogin();" alt="<?php echo $this->__('Login by Facebook') ?>" href="javascript:void(0);">
-		
-	</a>
+	<button id="bt-loginfb" class="bt-login-social" alt="<?php echo $this->__('Login by Facebook') ?>" title="<?php echo $this->__('Login by Facebook') ?>" onclick="fbLogin()" href="javascript:void(0);">
+	<span><span><?php echo $this->__('Facebook Sign in') ?></span></span>
+</button>
     <script type="text/javascript">
     var newwindow;
     var intId;

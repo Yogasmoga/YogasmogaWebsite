@@ -32,5 +32,34 @@
 			</block>			
 		</reference>		
 	</customer_account_create>		
-	
+	<sociallogin_openlogin_setblock>
+		<update handle="page_empty" />
+		<reference name="content">
+			<block type="sociallogin/openlogin" after="-" name="after.customer.login.sociallogin" template="sociallogin/au_op.phtml"/>
+		</reference>
+	</sociallogin_openlogin_setblock>
+	<sociallogin_ljlogin_setblock>
+		<update handle="page_empty"/>
+		<reference name="content">
+			<block type="sociallogin/ljlogin" after="-" name="after.customer.login.sociallogin" template="sociallogin/au_lj.phtml"/>
+		</reference>
+	</sociallogin_ljlogin_setblock>
+	<sociallogin_allogin_setblock>
+		<update handle="page_empty"/>
+		<reference name="content">
+			<block type="sociallogin/aollogin" after="-" name="after.customer.login.sociallogin" template="sociallogin/au_al.phtml"/>
+		</reference>
+	</sociallogin_allogin_setblock>
+	<sociallogin_callogin_setblock>
+		<update handle="page_empty"/>
+		<reference name="content">
+			<block type="sociallogin/callogin" after="-" name="after.customer.login.sociallogin" template="sociallogin/au_cal.phtml"/>
+		</reference>
+	</sociallogin_callogin_setblock>
+	<sociallogin_wplogin_setblock>
+		<update handle="page_empty"/>
+		<reference name="content">
+			<block type="sociallogin/wplogin" after="-" name="after.customer.login.sociallogin" template="sociallogin/au_wp.phtml"/>
+		</reference>
+	</sociallogin_wplogin_setblock>
 </layout>

@@ -5,22 +5,19 @@ class Magestore_Sociallogin_Helper_Data extends Mage_Core_Helper_Abstract{
 					->addFieldToFilter('email', $email)
 					->getFirstItem();
 	}
-	
+		
 	public function createCustomer($data){
 		$customer = Mage::getModel('customer/customer')
 					->setFirstname($data['firstname'])
 					->setLastname($data['lastname'])
 					->setEmail($data['email']);
-					
-		$isSendPassToCustomer = Mage::getStoreConfig('sociallogin/yalogin/is_send_password_to_customer');
+						
 		$newPassword = $customer->generatePassword();
 		$customer->setPassword($newPassword);
 		try{
 			$customer->save();
 		}catch(Exception $e){}
-		
-		if($isSendPassToCustomer)
-			$customer->sendPasswordReminderEmail();
+        		
 		return $customer;
 	}
 	
@@ -78,4 +75,87 @@ class Magestore_Sociallogin_Helper_Data extends Mage_Core_Helper_Abstract{
 		$isSecure = Mage::getStoreConfig('web/secure/use_in_frontend');
 		return $this->_getUrl('customer/account/login', array('_secure'=>$isSecure));
 	}
+	
+	public function getEditUrl(){
+		$isSecure = Mage::getStoreConfig('web/secure/use_in_frontend');
+		return $this->_getUrl('customer/account/edit', array('_secure'=>$isSecure));
+	}
+	
+	// by Hai.Ta
+	public function getFqAppkey()
+	{
+		return Mage::getStoreConfig('sociallogin/fqlogin/consumer_key');
+	}
+	
+	public function getFqAppSecret()
+	{
+		return Mage::getStoreConfig ('sociallogin/fqlogin/consumer_secret');
+	}	
+	
+	public function getLiveAppkey()
+	{	
+		return Mage::getStoreConfig('sociallogin/livelogin/consumer_key');
+	}
+	
+	public function getLiveAppSecret()
+	{
+		return Mage::getStoreConfig('sociallogin/livelogin/consumer_secret');
+	}
+	
+	public function getMpConsumerKey(){
+		return Mage::getStoreConfig('sociallogin/mplogin/consumer_key');
+	}
+	
+	public function getMpConsumerSecret(){
+		return Mage::getStoreConfig('sociallogin/mplogin/consumer_secret');
+	}
+	
+	public function getAuthUrlFq(){
+		$isSecure = Mage::getStoreConfig('web/secure/use_in_frontend');
+		return $this->_getUrl('sociallogin/fqlogin/login', array('_secure'=>$isSecure, 'auth'=>1));
+	}
+    
+    public function getAuthUrlLive(){
+		$isSecure = Mage::getStoreConfig('web/secure/use_in_frontend');
+		return $this->_getUrl('sociallogin/livelogin/login', array('_secure'=>$isSecure, 'auth'=>1));
+	}    
+    
+	public function getAuthUrlMp(){
+		$isSecure = Mage::getStoreConfig('web/secure/use_in_frontend');
+		return $this->_getUrl('sociallogin/mplogin/login', array('_secure'=>$isSecure, 'auth'=>1));
+	}
+	
+	public function getLinkedConsumerKey(){
+		return Mage::getStoreConfig('sociallogin/linklogin/app_id');
+	}
+	
+	public function getLinkedConsumerSecret(){
+		return Mage::getStoreConfig('sociallogin/linklogin/secret_key');
+	}
+	
+    public function getResponseBody($url)
+	{
+		if(ini_get('allow_url_fopen') != 1) 
+		{
+			@ini_set('allow_url_fopen', '1');
+		}
+		if(ini_get('allow_url_fopen') == 1) 
+		{
+			$ch = curl_init();
+            
+			curl_setopt($ch, CURLOPT_URL,$url);
+			curl_setopt($ch, CURLOPT_FAILONERROR, 1);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+			curl_setopt($ch, CURLOPT_TIMEOUT, 3);           
+			$contents = curl_exec($ch);            
+			curl_close($ch);
+		} else {
+		   	$contents=file_get_contents($url);
+		}
+
+		return $contents;
+	}
+	    
+	// end Hai.Ta
+	
 }

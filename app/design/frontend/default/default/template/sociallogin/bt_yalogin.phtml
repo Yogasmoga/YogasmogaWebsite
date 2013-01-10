@@ -1,9 +1,8 @@
 <?php $isLogin = $this->helper('customer')->isLoggedIn()?>
-
 <?php if(!$isLogin){?>
-<a id="bt-loginya" class="bt-login-social" alt="<?php echo $this->__('Login by Yahoo') ?>" title="<?php echo $this->__('Login by Yahoo') ?>" onclick="yaLogin()" href="javascript:void(0);">
-	
-</a>
+<button id="bt-loginya" class="bt-login-social" alt="<?php echo $this->__('Login by Yahoo') ?>" title="<?php echo $this->__('Login by Yahoo') ?>" onclick="yaLogin()" href="javascript:void(0);">
+	<span><span><?php echo $this->__('Yahoo Sign in') ?></span></span>
+</button>
 
 <script type="text/javascript">
     var newwindow;

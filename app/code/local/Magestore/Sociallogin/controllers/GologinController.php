@@ -21,8 +21,14 @@ class Magestore_Sociallogin_GologinController extends Mage_Core_Controller_Front
          );
 		
 		$requestToken = Mage::getSingleton('core/session')->getRequestToken();
-        $accessToken = $gologin->getAccessToken($oauth_data, unserialize($requestToken));
-		
+		// Fixed by Hai Ta
+		try{
+			$accessToken = $gologin->getAccessToken($oauth_data, unserialize($requestToken));
+		}catch(Exception $e){
+			Mage::getSingleton('core/session')->addError('Login failed as you have not granted access.');			
+			die("<script type=\"text/javascript\">try{window.opener.location.reload(true);}catch(e){window.opener.location.href=\"".Mage::getBaseUrl()."\"} window.close();</script>");
+		}
+        // end fixed		
 		$oauthOptions = $gologin->getOptions();
 		
 		$httpClient = $accessToken->getHttpClient($oauthOptions);
@@ -45,6 +51,9 @@ class Magestore_Sociallogin_GologinController extends Mage_Core_Controller_Front
 		$customer = Mage::helper('sociallogin')->getCustomerByEmail($user['email']);
 		if(!$customer || !$customer->getId()){
 			$customer = Mage::helper('sociallogin')->createCustomer($user);
+			if (Mage::getStoreConfig('sociallogin/gologin/is_send_password_to_customer')){
+				$customer->sendPasswordReminderEmail();
+			}
 		}
 		
 		Mage::getSingleton('customer/session')->setCustomerAsLoggedIn($customer);

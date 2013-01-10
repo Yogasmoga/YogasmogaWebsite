@@ -1,11 +1,8 @@
 <?php $isLogin = $this->helper('customer')->isLoggedIn()?>
-
 <?php if(!$isLogin){?>
-<a id="bt-logingo" class="bt-login-social" alt="<?php echo $this->__('Login by Google') ?>" title="<?php echo $this->__('Login by Google') ?>" onclick="goLogin()" href="javascript:void(0);">
-
-</a>
-
-
+<button id="bt-logingo" class="bt-login-social" alt="<?php echo $this->__('Login by Google') ?>" title="<?php echo $this->__('Login by Google') ?>" onclick="goLogin()" href="javascript:void(0);">
+	<span><span><?php echo $this->__('Google Sign in') ?></span></span>
+</button>
 <script type="text/javascript">
 var newwindow;
 var intId;

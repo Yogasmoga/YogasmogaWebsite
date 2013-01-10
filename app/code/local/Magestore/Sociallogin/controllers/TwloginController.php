@@ -23,8 +23,14 @@ class Magestore_Sociallogin_TwloginController extends Mage_Core_Controller_Front
                 'oauth_token' => $this->getRequest()->getParam('oauth_token'),
                 'oauth_verifier' => $this->getRequest()->getParam('oauth_verifier')
          );
-        $token = $otwitter->getAccessToken($oauth_data, unserialize($requestToken));
-		
+		// fixed by Hai Ta 
+		try{
+			 $token = $otwitter->getAccessToken($oauth_data, unserialize($requestToken));
+		}catch(Exception $e){
+			Mage::getSingleton('core/session')->addError('Login failed as you have not granted access.');			
+			die("<script type=\"text/javascript\">try{window.opener.location.reload(true);}catch(e){window.opener.location.href=\"".Mage::getBaseUrl()."\"} window.close();</script>");
+		}
+       	//end fixed	
 		$params = array(
 			'consumerKey'=> Mage::helper('sociallogin')->getTwConsumerKey(), 
 			'consumerSecret'=>Mage::helper('sociallogin')->getTwConsumerSecret(), 
@@ -33,8 +39,7 @@ class Magestore_Sociallogin_TwloginController extends Mage_Core_Controller_Front
 		
 		$twitter = new Zend_Service_Twitter($params);
 		$response = $twitter->userShow($token->user_id);
-		$twitterId = (string)$response->id;// get twitter account ID
-
+		$twitterId = (string)$response->id;// get twitter account ID		
 		$customerId = $this->getCustomerId($twitterId);
 		
 		if($customerId){ //login
@@ -43,14 +48,20 @@ class Magestore_Sociallogin_TwloginController extends Mage_Core_Controller_Front
 			die("<script type=\"text/javascript\">try{window.opener.location.reload(true);}catch(e){window.opener.location.href=\"".Mage::getBaseUrl()."\"} window.close();</script>");
 			
 		}else{	// redirect to login page
-			Mage::getSingleton('core/session')->setTwitterId($twitterId);
-			$connectingNotice = Mage::helper('sociallogin')->getTwConnectingNotice();
-			$storeName = Mage::app()->getStore()->getName();
-			
-			Mage::getSingleton('core/session')->addNotice(str_replace ('{{store}}', $storeName, $connectingNotice));
-			$nextUrl = Mage::helper('sociallogin')->getLoginUrl();
-			$backUrl = Mage::getSingleton('core/session')->getBackUrl();
-			Mage::getSingleton('customer/session')->setBeforeAuthUrl($backUrl);// after login redirect to current url
+			$name = (string)$response->screen_name;		
+			$email = $name . '@twitter.com';
+			$user['firstname'] = $name;
+			$user['lastname'] = (string)$response->name;			
+			$user['email'] = $email;
+			$customer = Mage::helper('sociallogin')->createCustomer($user);			
+			Mage::getSingleton('customer/session')->setCustomerAsLoggedIn($customer);							
+			$this->setAuthorCustomer($twitterId, $customer->getId());	
+			Mage::getSingleton('core/session')->setCustomerIdSocialLogin($twitterId);						
+			if (Mage::getStoreConfig('sociallogin/mplogin/is_send_password_to_customer')){
+				$customer->sendPasswordReminderEmail();
+			}			
+			$nextUrl = Mage::helper('sociallogin')->getEditUrl();	
+			Mage::getSingleton('core/session')->addNotice('Please enter your contact detail.');			
 			die("<script>window.close();window.opener.location = '$nextUrl';</script>");
 		}
 			
@@ -78,7 +89,7 @@ class Magestore_Sociallogin_TwloginController extends Mage_Core_Controller_Front
      
 	// if not exit access token
     public function getAuthorization() {
-        $otwitter = Mage::getModel('sociallogin/twlogin');
+        $otwitter = Mage::getModel('sociallogin/twlogin');		
         /* @var $otwitter Twitter_Model_Consumer */
         $otwitter->setCallbackUrl(Mage::getUrl('sociallogin/twlogin/user'));        
         if (!is_null($this->getRequest()->getParam('oauth_token')) && !is_null($this->getRequest()->getParam('oauth_verifier'))) {
@@ -95,9 +106,26 @@ class Magestore_Sociallogin_TwloginController extends Mage_Core_Controller_Front
             $otwitter->redirect();
         }
         return $token;
-    }
+    }	
 	
-	public function testAction(){
-		
+	/**
+	* input: 
+	*	@mpId
+	*	@customerid	
+	**/
+	public function setAuthorCustomer($twId, $customerId){
+		$mod = Mage::getModel('sociallogin/customer');
+		$mod->setData('twitter_id', $twId);		
+		$mod->setData('customer_id', $customerId);		
+		$mod->save();		
+		return ;
+	}
+	
+	/**
+	* return @collectin in model customer
+	**/
+	public function getCustomer ($id){
+		$collection = Mage::getModel('customer/customer')->load($id);
+		return $collection;
 	}
 }
