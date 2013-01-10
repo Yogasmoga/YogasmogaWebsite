@@ -16,8 +16,8 @@ jQuery(document).ready(function($){
 		$('#playBtn').fadeIn(500, function(){$('.flexslider').css('background','#000')});    
     });
     
-    //fixmainimage();
-    setTimeout(function(){ fixmainimage();}, 100);
+    fixmainimage();
+    //setTimeout(function(){ fixmainimage();}, 100);
 });
 
 function fixmainimage()

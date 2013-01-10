@@ -19,7 +19,7 @@ jQuery(document).ready(function($){
 	//        closeHeader();
 	//    });
 	    if(!($("div#globalheader").hasClass('top0'))){
-			setTimeout(function(){
+			//setTimeout(function(){
 			//$("div.header-container div#smallmenu").fadeOut(500, function(){
 			$("div#bodycompensator").show().height(0);
 			$("div#bodycompensator").animate({
@@ -43,7 +43,7 @@ jQuery(document).ready(function($){
 				//setfullscreenheight();
 			});
 			//})
-			},500);
+			//},500);
 		}
 		var temp = $("div.pgsection").length;
 		if(temp > 2 && !_disablesidenavigation){
