@@ -46,10 +46,10 @@
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.flexslider-min.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/parallaxeffect.js"></script>
 </head>
-<body  class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?> fullscreenovfhidden">
+<body  class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>">
 <?php echo $this->getChildHtml('after_body_start') ?>
 <div class="wrapper">
-<div class="page-overlay" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">&nbsp;</div>
+<div class="page-overlay" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999; overflow-y:scroll;">&nbsp;</div>
     <?php echo $this->getChildHtml('global_notices') ?>
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>

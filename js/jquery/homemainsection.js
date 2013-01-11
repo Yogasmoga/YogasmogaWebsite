@@ -14,7 +14,6 @@ jQuery(document).ready(function($){
         });
 		$('#playBtn').fadeIn(500, function(){$('.flexslider').css('background','#000')});  
 		$('.page-overlay').fadeOut(500);
-		$('body').removaClass('fullscreenovfhidden');
     });
 	fixmainimage();
     
