@@ -1,3 +1,4 @@
+_usesecureurl = true;
 jQuery(document).ready(function($){
     $("#login-form").submit(function(){
         return validateLoginForm();
