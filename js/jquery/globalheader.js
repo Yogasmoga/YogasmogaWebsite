@@ -115,7 +115,7 @@ function loadminicart()
         url = securehomeUrl + 'mycheckout/mycart/minidetails';
     jQuery.ajax({
         type : 'POST',
-        url : homeUrl + url,
+        url : url,
         data : {},
         success : function(result){
             result = eval('(' + result + ')');
