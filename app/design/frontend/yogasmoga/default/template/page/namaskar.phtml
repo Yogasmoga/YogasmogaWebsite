@@ -45,7 +45,9 @@
                 <?php echo $this->getChildHtml('breadcrumbs') ?>
                 <div class="col-main">
                     <?php echo $this->getChildHtml('global_messages') ?>
-                    <div class="namaskar-overlay" style="background:#b77b0b; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">&nbsp;</div>
+                    <div class="namaskar-overlay" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">
+						<div style="background:#B77B0B; position:fixed; top:0; left:0; right:0; bottom:0; display:none;">&nbsp;</div>
+					</div>
 <div class="namaskar-page">
 <div class="pgsection" id="namaskartitle" desc="NAMASKAR: GIVING is a Core Value of YOGASMOGA">
 <div class="namaskar-title section" style="background-image:url('<?php echo $this->getSkinUrl('images/namaskar/namaskar.jpg'); ?>')">Namaskar</div>
@@ -60,10 +62,10 @@
 <div class="section make-change pgsection" id="joininghands" desc="NAMASKAR: JOINING HANDS TO MAKE A CHANGE" style="background-image:url('<?php echo $this->getSkinUrl('images/namaskar/namaskaar2.png'); ?>')">
 <div class="values-box">
 <span class="count">$<?php 
-$write = Mage::getSingleton('core/resource')->getConnection('core_read');
-$result = $write->query("SELECT IF(SUM(row_total) > 0, SUM(row_total), 0) as revenue FROM sales_flat_order sfo, sales_flat_order_item sfoi WHERE sfo.status='complete' AND sfo.entity_id=sfoi.order_id AND sfoi.product_id = ".Mage::getModel('core/variable')->loadByCode('namaskar_bracelet_id')->getValue('plain'));
-$row = $result->fetch();
-echo number_format($row['revenue']);
+// $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+// $result = $write->query("SELECT IF(SUM(row_total) > 0, SUM(row_total), 0) as revenue FROM sales_flat_order sfo, sales_flat_order_item sfoi WHERE sfo.status='complete' AND sfo.entity_id=sfoi.order_id AND sfoi.product_id = ".Mage::getModel('core/variable')->loadByCode('namaskar_bracelet_id')->getValue('plain'));
+//$row = $result->fetch();
+// echo number_format($row['revenue']);
 ?></span>
 <p>JOINING HANDS TO MAKE A CHANGE.<br/>
 <strong>namask&Agrave;r.</strong></p>
@@ -120,9 +122,13 @@ The weavers (mostly women) have lost much of their business to machine manufactu
 </div>
 </div>
 <script>
-jQuery(window).load(function(){
-	jQuery('body').css('overflow','auto');
-	jQuery('.namaskar-overlay').fadeOut('normal');
+jQuery(document).ready(function(){
+	jQuery('.namaskar-overlay div').fadeIn('normal', function(){
+		setTimeout(function(){
+			jQuery('body').css('overflow','auto');
+			jQuery('.namaskar-overlay').fadeOut('normal');
+		},1000)
+	});
 })
 </script>
                 </div>

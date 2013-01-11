@@ -1,5 +1,4 @@
 jQuery(document).ready(function($){
-    
     $(window).load(function(){
         $('.flexslider').flexslider({
             controlNav: false,
@@ -13,10 +12,13 @@ jQuery(document).ready(function($){
             //fixFlexisliderImage();
             }
         });
-		$('#playBtn').fadeIn(500, function(){$('.flexslider').css('background','#000')});    
+		$('#playBtn').fadeIn(500, function(){$('.flexslider').css('background','#000')});  
+		$('.page-overlay').fadeOut(500);
+		$('body').removaClass('fullscreenovfhidden');
     });
+	fixmainimage();
     
-    fixmainimage();
+    
     //setTimeout(function(){ fixmainimage();}, 100);
 });
 
