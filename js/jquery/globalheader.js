@@ -110,9 +110,12 @@ jQuery(document).ready(function($){
 
 function loadminicart()
 {
+    var url = homeUrl + 'mycheckout/mycart/minidetails';
+    if(_usesecureurl)
+        url = securehomeUrl + 'mycheckout/mycart/minidetails';
     jQuery.ajax({
         type : 'POST',
-        url : homeUrl + 'mycheckout/mycart/minidetails',
+        url : homeUrl + url,
         data : {},
         success : function(result){
             result = eval('(' + result + ')');
