@@ -157,7 +157,11 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         $price = round($price,2);
           if (floor($price)==$price)
             $price = floor($price);
-        $productrewardpoints = floor($price * $_rewardpointsearned);
+        $rewardpoints = Mage::helper('rewardpoints/data')->getProductPointsText($_product, false, false);
+        $rewardpoints = strip_tags($rewardpoints);
+        $rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "loyalty") - 1 - strlen("loyalty") - strpos($rewardpoints, "earn") + strlen("earn")));
+        $productrewardpoints = $rewardpoints;
+        //$productrewardpoints = floor($price * $_rewardpointsearned);
         $productprice = "$".$price;
         
         $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
