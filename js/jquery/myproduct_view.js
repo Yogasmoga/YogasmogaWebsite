@@ -188,6 +188,7 @@ function StartZooming(scale)
     else
         _minzoomscale = getZoomPercent(700, 700, td.attr("orgwidth") * 1, td.attr("orgheight") * 1); 	
     jQuery('img#zoomedimage').show();
+	_minzoomscale = 18;
     jQuery('img#zoomedimage').smoothZoom({
         width : _winW - 250,
         height : _winH + _headerHeight,
@@ -195,7 +196,7 @@ function StartZooming(scale)
         max_HEIGHT : _winH + _headerHeight,
         //initial_ZOOM : initialzoom,
 		zoom_MAX: 100,
-        zoom_MIN : 18,
+        zoom_MIN : _minzoomscale,
         responsive : true,
 		animation_SMOOTHNESS:4,animation_SPEED_ZOOM:4,animation_SPEED_PAN:4,
         pan_BUTTONS_SHOW : false,
