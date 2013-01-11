@@ -14,7 +14,7 @@ jQuery(document).ready(function($){
             }
             var strHtml = strHtml + "</ul></div>";
             $("#pgNavUp").after(strHtml);
-            $('body').pageScroller({animationSpeed:1000, navigation: '#pgnavigator', sectionClass : 'pgsection',scrollOffset : '-' + _headerHeight + 'px' });   
+            $('body').pageScroller({animationSpeed:1000, deepLink:true, navigation: '#pgnavigator', sectionClass : 'pgsection',scrollOffset : '-' + _headerHeight + 'px' });   
         }
         else
             $("#pageScrollerNav").hide();

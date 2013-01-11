@@ -1,7 +1,11 @@
-  jQuery(document).ready(function(){
+jQuery(document).ready(function($){
+	_winH = $(window).height();
+	jQuery('#slider').find('img.bximg').each(function(){
+		$(this).height(_winH - 80)
+	})
 	  var slider=jQuery('#slider').bxSlider({
 		  auto:true,
-	      pause:4000,
+	      pause:40000,
 	      speed:800,
 		  controls:false,
 		  onNextSlide: function(currentSlideNumber, totalSlideQty, currentSlideHtmlObject){
@@ -10,8 +14,15 @@
 		  		//nav();
 		}
 	  });
-	  
 	  jQuery(window).resize(function(){
+		_winH = $(window).height();
+		if(window.location.hash == '#section-explore' || window.location.hash == '#section-fbimage'){
+			var _expOfs = $('#explore').offset().top;
+			$('body,html').scrollTop(_expOfs-_headerHeight);
+		}
+		jQuery('#slider').find('img.bximg').each(function(){
+			$(this).height(_winH - _headerHeight)
+		})
 		  //var temp = slider.getCurrentSlide();
 		  //slider.stopShow();
 		  slider.reloadShow();
