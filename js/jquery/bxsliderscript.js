@@ -5,7 +5,7 @@ jQuery(document).ready(function($){
 	})
 	  var slider=jQuery('#slider').bxSlider({
 		  auto:true,
-	      pause:40000,
+	      pause:4000,
 	      speed:800,
 		  controls:false,
 		  onNextSlide: function(currentSlideNumber, totalSlideQty, currentSlideHtmlObject){
