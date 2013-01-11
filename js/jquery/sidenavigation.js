@@ -1,5 +1,10 @@
 var _sidenavtimer = '';
 jQuery(document).ready(function($){
+	// <![CDATA[
+	if ((navigator.userAgent.indexOf('iPad') != -1)) {
+		_headerHeight = 75;
+	} // ]]>
+	
     var temp = $("div.pgsection").length;
     if(temp <= 2)
         $("#pageScrollerNav").hide();
