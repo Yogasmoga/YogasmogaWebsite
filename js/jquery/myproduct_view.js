@@ -1,4 +1,9 @@
 jQuery(document).ready(function($){
+	$('.productdesignfeatures img').loupe({
+	  width: 175, // width of magnifier
+	  height: 175
+	});
+
     setTimeout(function(){ resizeDesignFeatures(); }, 100);
     setTimeout(function(){ resizeProductBigImage(); }, 100);
     $(window).resize(function(){
