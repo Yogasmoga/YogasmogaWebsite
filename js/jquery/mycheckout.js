@@ -1,3 +1,4 @@
+_usesecureurl = true;
 jQuery(document).ready(function($){
     //if($("div#checkout div:nth-child(2)").html().indexOf("support@intellectlabs.com") > 0)
 //        $("div#checkout div:nth-child(2)").hide();
@@ -153,9 +154,12 @@ function checkbillingnewaddress()
 
 function getCartSummary()
 {
+    var url = homeUrl + 'mycheckout/mycart/getCartSummary';
+    if(_usesecureurl)
+        url = securehomeUrl + 'mycheckout/mycart/getCartSummary';
     jQuery.ajax({
         type : 'POST',
-        url : homeUrl + 'mycheckout/mycart/getCartSummary',
+        url : url,
         data : {},
         success : function(result){
             jQuery("div#ordersummary").html(result);
@@ -171,9 +175,12 @@ function submitcheckout()
     _ischeckoutprocessing = true;
     jQuery("#checkout-submit").hide();
     jQuery("#checkout-submit").after("<img id='procImg' src='" + skinUrl + "images/checkout/checkout-loader.gif' />");
+    var url = homeUrl + 'checkout/onepage/saveOrder';
+    if(_usesecureurl)
+        url = securehomeUrl + 'checkout/onepage/saveOrder';
     jQuery.ajax({
         type : 'POST',
-        url : homeUrl + 'checkout/onepage/saveOrder',
+        url : url,
         data : jQuery("#payment_form").serialize(),
         success : function(result){
             result = eval('(' + result + ')');
@@ -315,9 +322,12 @@ function positionordersummary()
 
 function savePayment()
 {
+    var url = homeUrl + 'checkout/onepage/savePayment';
+    if(_usesecureurl)
+        url = securehomeUrl + 'checkout/onepage/savePayment';
     jQuery.ajax({
         type : 'POST',
-        url : homeUrl + 'checkout/onepage/savePayment',
+        url : url,
         //data : jQuery("#paymentmethods").serialize(),
         //data : 'payment%5Bmethod%5D=stripe&payment%5Bcreate_stripe_customer%5D=0&payment%5Bstripe_token%5D=' + jQuery("#stripe_token").val() + '&payment%5Bcc_number%5D=4024007186804943&payment%5Bcc_exp_month%5D=2&payment%5Bcc_exp_year%5D=2013&payment%5Bcc_cid%5D=123&payment%5Bstripe_customer_id%5D=',
         data : jQuery("#payment_form").serialize(),
@@ -347,9 +357,12 @@ function saveBillingAddress()
     jQuery("#co-billing-form input[type=submit]").hide();
     jQuery("#co-billing-form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/checkout/checkout-loader.gif' />");
     var billingdata = jQuery("#co-billing-form").serialize();
+    var url = homeUrl + 'checkout/onepage/saveBilling';
+    if(_usesecureurl)
+        url = securehomeUrl + 'checkout/onepage/saveBilling';
     jQuery.ajax({
         type : 'POST',
-        url : homeUrl + 'checkout/onepage/saveBilling',
+        url : url,
         data : billingdata,
         success : function(result){
             result = eval('(' + result + ')');
@@ -373,9 +386,12 @@ function saveShippingMethod()
     _ischeckoutprocessing = true;
     jQuery("#co-shippingmethod-form input[type=submit]").hide();
     jQuery("#co-shippingmethod-form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/checkout/checkout-loader.gif' />");
+    var url = homeUrl + 'checkout/onepage/saveShippingMethod';
+    if(_usesecureurl)
+        url = securehomeUrl + 'checkout/onepage/saveShippingMethod';
     jQuery.ajax({
         type : 'POST',
-        url : homeUrl + 'checkout/onepage/saveShippingMethod',
+        url : url,
         data : {'shipping_method':jQuery('input:radio[name="shipping_method"]:checked').val()},
         success : function(result){
             result = eval('(' + result + ')');
@@ -398,9 +414,12 @@ function saveShippingAddress()
     jQuery("#checkout-shipping-form input[type=submit]").hide();
     jQuery("#checkout-shipping-form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/checkout/checkout-loader.gif' />");
     var shippingdata = jQuery("#checkout-shipping-form").serialize();
+    var url = homeUrl + 'checkout/onepage/saveShipping';
+    if(_usesecureurl)
+        url = securehomeUrl + 'checkout/onepage/saveShipping';
     jQuery.ajax({
         type : 'POST',
-        url : homeUrl + 'checkout/onepage/saveShipping',
+        url : url,
         data : shippingdata,
         success : function(result){
             result = eval('(' + result + ')');
@@ -453,9 +472,12 @@ function saveCheckoutMethod()
     if(_ischeckoutprocessing)
         return;
     _ischeckoutprocessing = true;
+    var url = homeUrl + 'checkout/onepage/saveMethod';
+    if(_usesecureurl)
+        url = securehomeUrl + 'checkout/onepage/saveMethod';
     jQuery.ajax({
         type : 'POST',
-        url : homeUrl + 'checkout/onepage/saveMethod',
+        url : url,
         data : {'method': _checkoutmethod},
         success : function(result){
             jQuery("#tblcheckoutlogin").hide();

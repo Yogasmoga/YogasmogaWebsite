@@ -66,6 +66,7 @@
 <script type="text/javascript" language="javascript">
     jQuery.noConflict();
     var homeUrl = '<?php echo Mage::helper('core/url')->getHomeUrl() ?>';
+    var securehomeUrl = '<?php echo Mage::getUrl('',array('_secure'=>true)); ?>';
     var skinUrl = '<?php echo $this->getSkinUrl('') ?>';
     //console.log(skinUrl);
 </script>
