@@ -389,8 +389,10 @@
                         <?php
                             $first = true;
                             //print_r($productcolorinfo);
+                            $colorcount = 0;
                              foreach($productcolorinfo as $key=>$colorinfo)
                             {
+                                $colorcount++;
                                 ?>
                                     <div>
                                         <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
@@ -414,8 +416,10 @@
                                                 </td>
                                             </tr>
                                         </table>
-                                    </div>  
+                                    </div>
                                 <?php
+                                if(($colorcount % 5) == 0)
+                                    echo "<br/>";
                             }
                         ?>
                     </div>

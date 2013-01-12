@@ -428,8 +428,10 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                                     <div id="colorcontainer">
                                         <?php
                                             $first = true;
+                                            $colorcount = 0;
                                             foreach($productcolorinfo as $key=>$colorinfo)
                                             {
+                                                $colorcount++;
                                                 ?>
                                                     <div>
                                                         <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
@@ -455,6 +457,8 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                                                         </table>
                                                     </div>  
                                                 <?php
+                                                if(($colorcount % 5) == 0)
+                                                echo "<br/>";
                                             } 
                                         ?>
                                     </div>

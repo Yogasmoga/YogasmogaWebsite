@@ -84,9 +84,12 @@ jQuery(document).ready(function($){
             return;
         _minicartdeleteid = $(this).parents("div.minicartitems:first").attr("id");
         _isdeletingcartitem = true;
+        var url = homeUrl + 'mycheckout/mycart/delete';
+        if(_usesecureurl)
+            url = securehomeUrl + 'mycheckout/mycart/delete';
         $.ajax({
             type : 'POST',
-            url : homeUrl + 'mycheckout/mycart/delete',
+            url : url,
             data : {'id':_minicartdeleteid},
             success : function(result){
                 result = eval('(' + result + ')');
