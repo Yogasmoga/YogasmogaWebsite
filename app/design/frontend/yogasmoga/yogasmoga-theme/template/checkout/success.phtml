@@ -56,7 +56,7 @@ has shipped. Enter your friend's email or find them on Gmail or Facebook.</p>
                     $("form#referfriend").submit(function(){
                         jQuery.ajax({
                             type : 'POST',
-                            url : homeUrl + 'mycatalog/myproduct/referfriend',
+                            url : securehomeUrl + 'mycatalog/myproduct/referfriend',
                             data : jQuery("#referfriend").serialize(),
                             success : function(result){
                                 result = eval('(' + result + ')');
