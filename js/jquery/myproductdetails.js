@@ -99,7 +99,10 @@ function changeproductsize(sz)
 //    jQuery("div.smogibuckcount td").html(rewardpoints);
     _rewardpoints = sz.attr("rewardpoints") * 1;
     //console.log(jQuery("select.qtyselector").val());
-    jQuery("div.smogibuckcount td").html(_rewardpoints * (jQuery("select.qtyselector").val() * 1));
+    if((jQuery("select.qtyselector").val() * 1) > 0)
+        jQuery("div.smogibuckcount td").html(_rewardpoints * (jQuery("select.qtyselector").val() * 1));
+    else
+        jQuery("div.smogibuckcount td").html(_rewardpoints);
 }
 
 function changeOrderqty(qty)
@@ -109,7 +112,11 @@ function changeOrderqty(qty)
     
     if(jQuery("div#sizecontainer div.dvselectedsize").length == 0)
         return;
-    jQuery("div.smogibuckcount td").html(_rewardpoints * qty);
+    if(qty > 0)
+        jQuery("div.smogibuckcount td").html(_rewardpoints * qty);
+    else
+        jQuery("div.smogibuckcount td").html(_rewardpoints);
+    //jQuery("div.smogibuckcount td").html(_rewardpoints * qty);
     var stockqty = jQuery("div#sizecontainer div.dvselectedsize").attr("qty") * 1;
     if((stockqty - qty) >= 0)
     {
@@ -139,9 +146,9 @@ function changeColor(clr)
     var colorindex = searchproductcolorinfoarrray(clr);
     if(colorindex == -1)
         return;
-        
+
     _rewardpoints = 0;
-    jQuery("div.smogibuckcount td").html('0');
+    jQuery("div.smogibuckcount td").html(_cnfrewardpoint);
     jQuery("table.normalproductdetail table.selectedcolor td:last").html(clr);
     jQuery("table.normalproductdetail div#colorcontainer table td").removeClass("tdselectedcolor");
     jQuery("table.normalproductdetail div#colorcontainer table[color='" + clr + "'] tr:nth-child(2) td").addClass("tdselectedcolor");

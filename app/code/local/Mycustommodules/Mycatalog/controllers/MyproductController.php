@@ -275,6 +275,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         ?>
         <script type="text/javascript">
             _productcolorinfo = new Array();
+            _cnfrewardpoint = '<?php echo $productrewardpoints; ?>';
         <?php
         $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
         foreach($configurableAttributeCollection as $attribute){

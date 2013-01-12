@@ -37,3 +37,4 @@ var _stripevalidateccv = false;
 var _ischeckoutprocessing = false;
 var _isshippable = true;
 var _usesecureurl = false;
+var _cnfrewardpoint = 0;

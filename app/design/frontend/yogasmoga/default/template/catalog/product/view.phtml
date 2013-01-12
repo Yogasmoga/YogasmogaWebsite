@@ -240,6 +240,7 @@
             selectmenulink('<?php echo $categoryurl; ?>');
         });
         _productcolorinfo = new Array();
+        _cnfrewardpoint = '<?php echo $productrewardpoints; ?>';
     <?php
     $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
     foreach($configurableAttributeCollection as $attribute){
@@ -879,9 +880,11 @@
                                 <div id="colorcontainer">
                                     <?php
                                         $first = true;
+                                        $colorcount = 0;
                                         //print_r($productcolorinfo);
                                          foreach($productcolorinfo as $key=>$colorinfo)
                                         {
+                                            $colorcount++;
                                             ?>
                                                 <div>
                                                     <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
@@ -907,6 +910,8 @@
                                                     </table>
                                                 </div>  
                                             <?php
+                                            if(($colorcount % 5) == 0)
+                                                echo "<br/>";
                                         }
                                     ?>
                                 </div>
