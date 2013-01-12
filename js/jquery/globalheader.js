@@ -98,6 +98,7 @@ jQuery(document).ready(function($){
                     jQuery("span.cartitemcount").html(result.count);
                     $("div#myminicart div#" + _minicartdeleteid).fadeOut('slow', function(){
                         $("div#myminicart div#" + _minicartdeleteid).remove();
+                        $("div#myminicart div.subtotal td.totalprice").html(result.grandtotal);
                         if($("div#myminicart div.minicartitems").length == 0)
                         {
                             $("div#myminicart").html("<div class='totalitemcount'>You have no items in your cart.</div>");

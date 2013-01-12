@@ -183,7 +183,9 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 return;
             }
         }
-        echo json_encode(array("status" => "success", "count" => $this->getcartcount()));
+        $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+        $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
+        echo json_encode(array("status" => "success", "count" => $this->getcartcount(), "grandtotal" => "$".number_format((float)$subtotal, 2, '.','')));
     }
     
     
@@ -295,10 +297,13 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         
         $miniitems = array_reverse($miniitems);
         
+        $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+        $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
+        
         $minidetails['items'] = $miniitems;
         $minidetails['totalitems'] = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
         $minidetails['cartlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/cart";
-        $minidetails['subtotal'] = "$".number_format((float)(Mage::getModel('checkout/cart')->getQuote()->getGrandTotal()), 2, '.','');// round(Mage::getModel('checkout/cart')->getQuote()->getGrandTotal(), 2);
+        $minidetails['subtotal'] = "$".number_format((float)$subtotal, 2, '.','');// round(Mage::getModel('checkout/cart')->getQuote()->getGrandTotal(), 2);
         $minidetails['checkoutlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/onepage";
         
         //echo "<pre>";

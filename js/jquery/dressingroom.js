@@ -105,7 +105,7 @@ jQuery(document).ready(function($){
         show: "scale",
         hide: "scale",
         width : 920,
-        height : 530,
+        minHeight : 530,
         modal : true,
         draggable : false,
         position: { my: "center top",at: "center top+80" },
@@ -132,7 +132,7 @@ jQuery(document).ready(function($){
 function showproductlightbox(productid)
 {
     productid = productid.replace('&nbsp;','');
-    jQuery("#productdetailpopup").html("<table style='width:100%;height : 100%;'><tr><td style='text-align:center;vertical-align:middle;'>Loading. .</td></tr></table>");
+    jQuery("#productdetailpopup").html("<table style='width:100%;height : 530px;'><tr><td style='text-align:center;vertical-align:middle;'>Loading. .</td></tr></table>");
     jQuery( "#productdetailpopup" ).dialog( "open" );
     jQuery.ajax({
         type : 'POST',
