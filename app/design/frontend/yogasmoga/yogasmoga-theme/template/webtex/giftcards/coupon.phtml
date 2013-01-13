@@ -1,6 +1,6 @@
 <div class="gift-card">
         <h2><?php echo $this->__('Do you have a Gift of YS Card?'); ?></h2>
-        <?php if (!Mage::helper('customer')->isLoggedIn()) : ?>
+        <?php if (Mage::helper('customer')->isLoggedIn()) : ?>
         <div class="discount-form">
             <form method="post" action="<?php echo $this->getUrl('*/*/giftcardActive'); ?>" name="giftcardActive">
             <div class="input-box">
