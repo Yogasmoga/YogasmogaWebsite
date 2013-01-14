@@ -44,7 +44,8 @@
         <?php echo $this->escapeHtml($_item->getDescription()) ?>
         custom message here. <?php echo $_item->getId() ?>
         <?php
-            if(Mage::getModel('cataloginventory/stock_item')->loadByProduct($_item)->getQty() < 0)
+            $_product = Mage::getModel('catalog/product')->load($_item->getId());
+            if(Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty() < 0)
                 echo "pre ordered.";
         ?>
     </td>
