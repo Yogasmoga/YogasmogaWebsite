@@ -774,7 +774,7 @@ img#closesmlight
     right : -10px;
     cursor : pointer;
 }
-.loupe,
+/*.loupe,
 .magnifier{
 	width: 175px; height: 175px;
 	position: absolute;
@@ -806,7 +806,7 @@ img#closesmlight
     display: none;
     border: 1px solid #000;
     background-color: transparent;
-    z-index: 1000;
+    z-index: 2;
     cursor: url("../images/blank.gif"), none;
     margin: 0px;
     padding: 0px;
@@ -816,7 +816,7 @@ img#closesmlight
 .overlay {
     position: absolute;
     display: none;
-    z-index: 999;
+    z-index: 1;
     background-color: #000;
 }
 .overlay_img {

@@ -1,5 +1,33 @@
 jQuery(document).ready(function($){
-	$('.productdesignfeatures img').ClassyLoupe();
+	$('.productdesignfeatures img').ClassyLoupe({
+	trigger: "mouseenter",
+	shape: "circle",
+	rounded_corners: 10,
+	loupe_toggle_time: 0,
+	loupe_toggle_easing: "linear",
+	default_size: 150,
+	min_size: 150,
+	max_size: 250,
+	glossy: 0,
+	drop_shadow: !0,
+	allow_resize: 0,
+	size_snap: 10,
+	resize_animation_time: 0,
+	resize_animation_easing: "linear",
+	allow_zoom: 0,
+	zoom_key: 90,
+	default_zoom: 100,
+	min_zoom: 50,
+	max_zoom: 200,
+	zoom_snap: 5,
+	zoom_animation_time: 0,
+	zoom_animation_easing: "linear",
+	apply_overlay: 0,
+	overlay_opacity: 0.5,
+	overlay_effect_time: "slow",
+	overlay_effect_easing: "linear",
+	overlay_class_name: ""
+	});
 
     setTimeout(function(){ resizeDesignFeatures(); }, 100);
     setTimeout(function(){ resizeProductBigImage(); }, 100);
