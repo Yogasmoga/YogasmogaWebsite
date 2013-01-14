@@ -33,7 +33,17 @@
         <dl style="margin:0; padding:0;">
             <?php foreach ($this->getItemOptions() as $option): ?>
             <dt><strong><em><?php echo $option['label'] ?></em></strong></dt>
-            <dd style="margin:0; padding:0 0 0 9px;"><?php echo nl2br($option['value']) ?></dd>
+            <dd style="margin:0; padding:0 0 0 9px;"><?php //echo nl2br($option['value']) ?>
+            <?php 
+                $word = nl2br($option['value']);
+                if(strpos($word, "|"))
+                {
+                    echo " ".substr($word,0, strpos($word, "|"));
+                }
+                else
+                    echo " ".$word;
+            ?>
+            </dd>
             <?php endforeach; ?>
         </dl>
         <?php endif; ?>
@@ -42,6 +52,11 @@
             <?php echo $addInfoBlock->setItem($_item->getOrderItem())->toHtml(); ?>
         <?php endif; ?>
         <?php echo $this->htmlEscape($_item->getDescription()) ?>
+        <?php
+            $_product = Mage::getModel('catalog/product')->load($_item->getId());
+            if(Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty() < 0)
+                echo "This item has been preordered.";
+        ?>
     </td>
     <td align="left" valign="top" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;"><?php echo $this->htmlEscape($this->getSku($_item)) ?></td>
     <td align="center" valign="top" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;"><?php echo $_item->getQty()*1 ?></td>

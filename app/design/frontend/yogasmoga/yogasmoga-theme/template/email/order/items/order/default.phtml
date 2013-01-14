@@ -31,9 +31,25 @@
         <strong style="font-size:12px;"><?php echo $this->htmlEscape($_item->getName()) ?></strong>
         <?php if ($this->getItemOptions()): ?>
         <p style="margin:0 0 5px">
+            <?php $firstoption = true; ?>
             <?php foreach ($this->getItemOptions() as $option): ?>
+            <?php
+                if($firstoption)
+                    $firstoption = false;
+                else
+                    echo "<br/>";
+            ?>
             <span style="text-transform:uppercase;"><?php echo $option['label'] ?> </span>
-            <?php echo (isset($option['print_value']) ? $option['print_value'] : nl2br($this->escapeHtml($option['value']))) ?>
+            <?php //echo (isset($option['print_value']) ? $option['print_value'] : nl2br($this->escapeHtml($option['value']))) ?>
+            <?php 
+                $word = (isset($option['print_value']) ? $option['print_value'] : nl2br($this->escapeHtml($option['value'])));
+                if(strpos($word, "|"))
+                {
+                    echo " ".substr($word,0, strpos($word, "|"));
+                }
+                else
+                    echo " ".$word;
+            ?>
             <?php endforeach; ?>
         </p>
         <?php endif; ?>
@@ -42,6 +58,11 @@
             <?php echo $addInfoBlock->setItem($_item)->toHtml(); ?>
         <?php endif; ?>
         <?php echo $this->escapeHtml($_item->getDescription()) ?>
+        <?php
+            $_product = Mage::getModel('catalog/product')->load($_item->getId());
+            if(Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty() < 0)
+                echo "This item has been preordered.";
+        ?>
     </td>
     <td align="center" valign="top" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;"><?php echo $_item->getQtyOrdered()*1 ?></td>
     <td align="right" valign="top" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;">

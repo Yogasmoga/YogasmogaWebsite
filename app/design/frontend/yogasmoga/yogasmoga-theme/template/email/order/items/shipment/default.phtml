@@ -32,13 +32,37 @@
         <dl style="margin:0; padding:0;">
             <?php foreach ($this->getItemOptions() as $option): ?>
             <dt><strong><em><?php echo $option['label'] ?></em></strong></dt>
-            <dd style="margin:0; padding:0 0 0 9px;"><?php echo nl2br($option['value']) ?></dd>
+            <dd style="margin:0; padding:0 0 0 9px;"><?php //echo nl2br($option['value']) ?>
+                <?php 
+                    $word = nl2br($option['value']);
+                    if(strpos($word, "|"))
+                    {
+                        echo " ".substr($word,0, strpos($word, "|"));
+                    }
+                    else
+                        echo " ".$word;
+                ?>
+            </dd>
+            
             <?php endforeach; ?>
         </dl>
         <?php endif; ?>
         <?php $addInfoBlock = $this->getProductAdditionalInformationBlock(); ?>
         <?php if ($addInfoBlock) :?>
-            <?php echo $addInfoBlock->setItem($_item->getOrderItem())->toHtml(); ?>
+            <?php //echo $addInfoBlock->setItem($_item->getOrderItem())->toHtml(); ?>
+            <?php
+                $str = $addInfoBlock->setItem($_item->getOrderItem())->toHtml();
+                $arr = explode(" ", $str);
+                foreach($arr as $word)
+                {
+                    if(strpos($word, "|"))
+                    {
+                        echo " ".substr($word, strpos($word, "|"));
+                    }
+                    else
+                        echo " ".$word;
+                }
+            ?>
         <?php endif; ?>
         <?php echo $this->htmlEscape($_item->getDescription()) ?>
     </td>
