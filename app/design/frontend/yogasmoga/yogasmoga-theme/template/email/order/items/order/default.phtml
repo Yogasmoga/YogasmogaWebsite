@@ -31,7 +31,14 @@
         <strong style="font-size:12px;"><?php echo $this->htmlEscape($_item->getName()) ?></strong>
         <?php if ($this->getItemOptions()): ?>
         <p style="margin:0 0 5px">
+            <?php $firstoption = true; ?>
             <?php foreach ($this->getItemOptions() as $option): ?>
+            <?php
+                if($firstoption)
+                    $firstoption = false;
+                else
+                    echo "<br/>";
+            ?>
             <span style="text-transform:uppercase;"><?php echo $option['label'] ?> </span>
             <?php //echo (isset($option['print_value']) ? $option['print_value'] : nl2br($this->escapeHtml($option['value']))) ?>
             <?php 
