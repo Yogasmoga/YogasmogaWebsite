@@ -41,7 +41,7 @@
         <?php if ($addInfoBlock) :?>
             <?php //echo $addInfoBlock->setItem($_item)->toHtml(); ?>
             <?php
-                $str = $addInfoBlock->setItem($_item->getOrderItem())->toHtml();
+                $str = $addInfoBlock->setItem($_item)->toHtml();
                 $arr = explode(" ", $str);
                 var_dump($arr);
                 foreach($arr as $word)
