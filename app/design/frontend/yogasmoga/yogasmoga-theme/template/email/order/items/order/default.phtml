@@ -38,7 +38,7 @@
                 $word = (isset($option['print_value']) ? $option['print_value'] : nl2br($this->escapeHtml($option['value'])));
                 if(strpos($word, "|"))
                 {
-                    echo " ".substr($word, strpos($word, "|"));
+                    echo " ".substr($word,0, strpos($word, "|"));
                 }
                 else
                     echo " ".$word;
