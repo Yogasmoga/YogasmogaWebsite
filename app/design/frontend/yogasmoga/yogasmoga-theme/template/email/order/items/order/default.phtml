@@ -33,7 +33,16 @@
         <p style="margin:0 0 5px">
             <?php foreach ($this->getItemOptions() as $option): ?>
             <span style="text-transform:uppercase;"><?php echo $option['label'] ?> </span>
-            <?php echo (isset($option['print_value']) ? $option['print_value'] : nl2br($this->escapeHtml($option['value']))) ?>
+            <?php //echo (isset($option['print_value']) ? $option['print_value'] : nl2br($this->escapeHtml($option['value']))) ?>
+            <?php 
+                $word = (isset($option['print_value']) ? $option['print_value'] : nl2br($this->escapeHtml($option['value'])));
+                if(strpos($word, "|"))
+                {
+                    echo " ".substr($word, strpos($word, "|"));
+                }
+                else
+                    echo " ".$word;
+             ?>
             <?php endforeach; ?>
         </p>
         <?php endif; ?>
@@ -42,18 +51,18 @@
             <?php //echo $addInfoBlock->setItem($_item)->toHtml(); ?>
             <?php
                 $str = $addInfoBlock->setItem($_item)->toHtml();
-                $arr = explode(" ", $str);
-                var_dump($arr);
-                foreach($arr as $word)
-                {
-                    echo "<br/>";
-                    if(strpos($word, "|"))
-                    {
-                        echo " ".substr($word, strpos($word, "|"));
-                    }
-                    else
-                        echo " ".$word;
-                }
+                
+                //$arr = explode(" ", $str);
+//                foreach($arr as $word)
+//                {
+//                    echo "<br/>";
+//                    if(strpos($word, "|"))
+//                    {
+//                        echo " ".substr($word, strpos($word, "|"));
+//                    }
+//                    else
+//                        echo " ".$word;
+//                }
             ?>
         <?php endif; ?>
         <?php echo $this->escapeHtml($_item->getDescription()) ?>
