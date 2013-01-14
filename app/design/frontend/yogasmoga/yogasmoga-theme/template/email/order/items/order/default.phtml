@@ -45,6 +45,7 @@
                 $arr = explode(" ", $str);
                 foreach($arr as $word)
                 {
+                    echo "<br/>";
                     if(strpos($word, "|"))
                     {
                         echo " ".substr($word, strpos($word, "|"));
