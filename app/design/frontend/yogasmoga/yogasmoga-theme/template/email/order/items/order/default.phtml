@@ -49,28 +49,13 @@
                 }
                 else
                     echo " ".$word;
-             ?>
+            ?>
             <?php endforeach; ?>
         </p>
         <?php endif; ?>
         <?php $addInfoBlock = $this->getProductAdditionalInformationBlock(); ?>
         <?php if ($addInfoBlock) :?>
-            <?php //echo $addInfoBlock->setItem($_item)->toHtml(); ?>
-            <?php
-                $str = $addInfoBlock->setItem($_item)->toHtml();
-                
-                //$arr = explode(" ", $str);
-//                foreach($arr as $word)
-//                {
-//                    echo "<br/>";
-//                    if(strpos($word, "|"))
-//                    {
-//                        echo " ".substr($word, strpos($word, "|"));
-//                    }
-//                    else
-//                        echo " ".$word;
-//                }
-            ?>
+            <?php echo $addInfoBlock->setItem($_item)->toHtml(); ?>
         <?php endif; ?>
         <?php echo $this->escapeHtml($_item->getDescription()) ?>
         <?php
