@@ -42,11 +42,10 @@
             <?php echo $addInfoBlock->setItem($_item)->toHtml(); ?>
         <?php endif; ?>
         <?php echo $this->escapeHtml($_item->getDescription()) ?>
-        custom message here. <?php echo $_item->getId() ?>
         <?php
             $_product = Mage::getModel('catalog/product')->load($_item->getId());
             if(Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty() < 0)
-                echo "pre ordered.";
+                echo "This item has been preordered.";
         ?>
     </td>
     <td align="center" valign="top" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;"><?php echo $_item->getQtyOrdered()*1 ?></td>

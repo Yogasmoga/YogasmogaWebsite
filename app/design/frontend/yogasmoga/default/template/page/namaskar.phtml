@@ -62,10 +62,10 @@
 <div class="section make-change pgsection" id="joininghands" desc="NAMASKAR: JOINING HANDS TO MAKE A CHANGE" style="background-image:url('<?php echo $this->getSkinUrl('images/namaskar/namaskaar2.png'); ?>')">
 <div class="values-box">
 <span class="count">$<?php 
-// $write = Mage::getSingleton('core/resource')->getConnection('core_read');
-// $result = $write->query("SELECT IF(SUM(row_total) > 0, SUM(row_total), 0) as revenue FROM sales_flat_order sfo, sales_flat_order_item sfoi WHERE sfo.status='complete' AND sfo.entity_id=sfoi.order_id AND sfoi.product_id = ".Mage::getModel('core/variable')->loadByCode('namaskar_bracelet_id')->getValue('plain'));
-//$row = $result->fetch();
-// echo number_format($row['revenue']);
+ $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+ $result = $write->query("SELECT IF(SUM(row_total) > 0, SUM(row_total), 0) as revenue FROM sales_flat_order sfo, sales_flat_order_item sfoi WHERE sfo.status='complete' AND sfo.entity_id=sfoi.order_id AND sfoi.product_id = ".Mage::getModel('core/variable')->loadByCode('namaskar_bracelet_id')->getValue('plain'));
+$row = $result->fetch();
+ echo number_format($row['revenue']);
 ?></span>
 <p>JOINING HANDS TO MAKE A CHANGE.<br/>
 <strong>namask&Agrave;r.</strong></p>
