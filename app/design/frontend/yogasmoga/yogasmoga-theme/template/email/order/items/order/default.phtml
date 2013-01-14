@@ -43,6 +43,7 @@
             <?php
                 $str = $addInfoBlock->setItem($_item->getOrderItem())->toHtml();
                 $arr = explode(" ", $str);
+                var_dump($arr);
                 foreach($arr as $word)
                 {
                     echo "<br/>";
