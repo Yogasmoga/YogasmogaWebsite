@@ -1,8 +1,5 @@
 jQuery(document).ready(function($){
-	$('.productdesignfeatures img').loupe({
-	  width: 175, // width of magnifier
-	  height: 175
-	});
+	$('.productdesignfeatures img').ClassyLoupe();
 
     setTimeout(function(){ resizeDesignFeatures(); }, 100);
     setTimeout(function(){ resizeProductBigImage(); }, 100);
