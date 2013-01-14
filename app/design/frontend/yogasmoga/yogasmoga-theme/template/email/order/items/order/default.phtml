@@ -43,6 +43,10 @@
         <?php endif; ?>
         <?php echo $this->escapeHtml($_item->getDescription()) ?>
         custom message here. <?php echo $_item->getId() ?>
+        <?php
+            if(Mage::getModel('cataloginventory/stock_item')->loadByProduct($_item)->getQty() < 0)
+                echo "pre ordered.";
+        ?>
     </td>
     <td align="center" valign="top" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;"><?php echo $_item->getQtyOrdered()*1 ?></td>
     <td align="right" valign="top" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;">
