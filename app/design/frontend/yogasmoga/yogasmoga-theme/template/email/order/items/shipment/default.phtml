@@ -30,9 +30,27 @@
         <strong><?php echo $this->htmlEscape($_item->getName()) ?></strong>
         <?php if ($this->getItemOptions()): ?>
         <dl style="margin:0; padding:0;">
+            <?php $firstoption = true; ?>
             <?php foreach ($this->getItemOptions() as $option): ?>
+            <?php
+                if($firstoption)
+                    $firstoption = false;
+                else
+                    echo "<br/>";
+            ?>
             <dt><strong><em><?php echo $option['label'] ?></em></strong></dt>
-            <dd style="margin:0; padding:0 0 0 9px;"><?php echo nl2br($option['value']) ?></dd>
+            <dd style="margin:0; padding:0 0 0 9px;"><?php //echo nl2br($option['value']) ?>
+                <?php 
+                    $word = nl2br($option['value']);
+                    if(strpos($word, "|"))
+                    {
+                        echo " ".substr($word,0, strpos($word, "|"));
+                    }
+                    else
+                        echo " ".$word;
+                ?>
+            </dd>
+            
             <?php endforeach; ?>
         </dl>
         <?php endif; ?>

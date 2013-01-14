@@ -40,7 +40,7 @@
                     echo "<br/>";
             ?>
             <dt><strong><em><?php echo $option['label'] ?></em></strong></dt>
-            <dd style="margin:0; padding:0 0 0 9px;"><?php //echo nl2br($option['value']) ?></dd>
+            <dd style="margin:0; padding:0 0 0 9px;"><?php //echo nl2br($option['value']) ?>
             <?php 
                 $word = nl2br($option['value']);
                 if(strpos($word, "|"))
@@ -50,6 +50,7 @@
                 else
                     echo " ".$word;
             ?>
+            </dd>
             <?php endforeach; ?>
         </dl>
         <?php endif; ?>
