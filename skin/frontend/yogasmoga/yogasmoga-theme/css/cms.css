@@ -138,6 +138,23 @@ body.cms-smogiprogram{background:url(../images/smogi-bg.jpg) 50% 100% no-repeat;
 .section ol.odr-list{margin:20px 0 40px 30px;}
 
 
+body.cms-help{background:url(../images/help-bg.png) 50% 80px no-repeat;background-size:contain;}
+.help-page{width:770px; margin:0 auto;}
+.help-page p{ font-family:gotham-l, Arial; font-size:12px;}
+.help-page sub-nav{padding-bottom:0;}
+.help-page .section {padding-top:60px;}
+.help-page .section h1.big-title{background: none repeat scroll 0 0 transparent;
+font-family: gotham-t,Arial;
+font-size: 100px;
+font-weight: normal;
+line-height: 110px;
+margin-bottom: 0;
+padding: 0;
+text-align: center;
+text-transform: uppercase;}
+.help-page h1.main-heading{padding-bottom:30px;}
+.help-page h2.heading{margin-top:30px;}
+
 .mens-page{padding: 1px 0 50px; color:#666; font-family:gotham-l, Arial; font-size:12px;
  line-height:1.3;}
  .mens-page .section{width:770px; margin:0 auto;}

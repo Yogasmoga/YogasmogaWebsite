@@ -63,7 +63,9 @@
 }
 #mainimage{position:relative;}
 #mainimage .cart{width:970px; margin:0 auto; font-family:ITCAvantGardeProBk, arial; color:#666;}
+.refer-friend .page-title,
 .cart .page-title { border-bottom:0; margin:0 0 25px; }
+.refer-friend .page-title h1,
 .cart .page-title h1 { margin:10px 0 0; }
 
 .page-title { width:100%; overflow:hidden; margin:0 0 25px; }
@@ -120,6 +122,7 @@ button.btn-apply span{padding:0; width:88px; text-indent:-999em; height:28px; ma
 button.btn-invite span{padding:0; width:92px; text-indent:-999em; height:29px; margin:0; background:url(../images/btn-invite.png) 0 0 no-repeat; border:0;}
 button.btn-reset span{padding:0; width:89px; text-indent:-999em; height:29px; margin:0; background:url(../images/btn-reset.png) 0 0 no-repeat; border:0;}
 button.btn-addtobag span{padding:0; width:147px; text-indent:-999em; height:29px; margin:0; background:url(../images/btn-addtobag.png) 0 0 no-repeat; border:0;}
+button.btn-copy span{padding:0; width:92px; text-indent:-999em; height:29px; margin:0; background:url(../images/btn-copy.png) 0 0 no-repeat; border:0;}
 
 button.btn-login span span,
 button.btn-apply span span,
@@ -127,6 +130,7 @@ button.btn-invite span span,
 button.btn-addtobag span span,
 button.btn-reset span span,
 button.btn-update span span,
+button span span,
 button.btn-checkout span span{background:none;}
 button.btn-login:active span,
 button.btn-invite:active span,
@@ -134,6 +138,7 @@ button.btn-apply:active span,
 button.btn-reset:active span,
 button.btn-addtobag:active span,
 button.btn-update:active span,
+button:active span,
 button.btn-checkout:active span{background-position:0 100%;}
 .cart .totals {
   background: none;
@@ -210,3 +215,22 @@ h1.big-title{font-size:100px; font-family:gotham-t, Arial; line-height:104px; te
     padding-bottom: 10px;
 }
 .nodisplay{ display: none;}
+
+body.rewardpoints-index-referral{background:url(../images/refer-bg.png) 50% 80px no-repeat;background-size:contain;}
+.refer-friend{max-width:1200px; padding:0 15px; width:auto; margin:0 auto; text-align:left;}
+.refer-friend h2.sub-title{text-transform:uppercase; font-size:18px; font-weight:normal; font-family:gotham, Arial; text-align:center; line-height:1.2; color:#000; letter-spacing:0.03em; padding:0 0 35px; margin:0 0 45px; background:url(../images/title-bg.png) 50% 100% no-repeat;}
+.refer-friend h2.sub-title span{font-size:12px; font-family:gotham-l, Arial; text-transform:none; display:block;}
+.box-invite h3,
+h3.heading-track,
+.refer-box h3{font-family:gotham, arial; font-size:14px; text-transform:uppercase; font-weight:normal;}
+.box-invite h3 span{display:block; font-size:12px; text-transform:none;}
+.refer-box .share-link{border-width:0 0 1px; border-color:#000; border-style:solid; font-family:gotham-l, Arial; height:20px; width:70%; font-size:11px; margin-right:20px; background:none;}
+.refer-box  {width:45%;}
+
+.box-invite{width:50%;}
+.box-invite ul.form-list{margin:30px 0 0;}
+.box-invite ul.form-list .field{width:47%; margin-right:3%; border-bottom: 1px solid #000;}
+.box-invite ul.form-list .field label{ float:left; margin-right:15px;}
+.box-invite ul.form-list li{position:relative;}
+.box-invite ul.form-list .field input{border:0; background:none;}
+.form-list .field.j2t-rewardpoints-email img{position:absolute; right:0;}

@@ -75,3 +75,4 @@ html[xmlns] .slides {display: block;}
   .flex-direction-nav .flex-next {opacity: 1; right: 0;}
 }
 .flex-active-slide *{ margin: 0 !important; padding : 0 !important;}
+#mainimage img.fullscreen{left:0 !important;}

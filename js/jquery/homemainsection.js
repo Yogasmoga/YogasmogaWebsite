@@ -2,7 +2,7 @@ jQuery(document).ready(function($){
     $(window).load(function(){
         $('.flexslider').flexslider({
             controlNav: false,
-            slideshowSpeed: 6000,
+            slideshowSpeed: 60000,
             directionNav: false,
             start: function(slider) {
                 //fixFlexisliderImage();
