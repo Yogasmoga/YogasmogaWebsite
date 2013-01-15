@@ -29,7 +29,8 @@
     {
         //echo "$html";
         $str=$html;
-        $str1=str_replace('Subtotal', 'SHOPPING BAG SUBTOTAL', $html);
+        $str1 = $html;
+        //$str1=str_replace('Subtotal', 'SHOPPING BAG SUBTOTAL', $html);
         $str1=str_replace('Grand Total', 'BAG TOTAL', $str1);
         $str1=str_replace('Shipping &amp; Handling', 'Shipping', $str1);
         //echo '<hr>'.$str1;
