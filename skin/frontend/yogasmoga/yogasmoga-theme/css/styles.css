@@ -2335,6 +2335,7 @@ div.mycategory-products div.item td
 div.mycategory-products div.item td.productimage
 {
     height : 355px;
+	border:1px solid #cacaca;
     vertical-align : bottom;
 }
 
@@ -2807,7 +2808,6 @@ table.inputtable td.errortext div
 	font-size:11px;
 	font-style:italic;
 	color:#999999;
-	cursor:pointer;
 	}
 
 .revolvingmessage-container a:hover {

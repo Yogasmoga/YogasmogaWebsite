@@ -66,13 +66,13 @@
     $categoryid = Mage::getModel('catalog/category')->load($cats[0])->getId();
     $categoryurl = Mage::getModel("catalog/category")->load($categoryid)->getUrl();
     //echo $categoryid;
-    $breadcrumb = '&lt;&nbsp;<a href="'.Mage::helper('core/url')->getHomeUrl().'">Home</a>';
-    $breadcrumb .= '&nbsp;&lt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load($categoryid)->getUrl().'">'.Mage::getModel("catalog/category")->load($categoryid)->getName().'</a>';
+    $breadcrumb = '<a href="'.Mage::helper('core/url')->getHomeUrl().'">Home</a>';
+    $breadcrumb .= '&nbsp;&gt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load($categoryid)->getUrl().'">'.Mage::getModel("catalog/category")->load($categoryid)->getName().'</a>';
     //$breadcrumb .= '&nbsp;&lt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'">'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getName().'</a>';
     if($this->getRequest()->getParam('from') == 'dressingroom')
-        $breadcrumb .= '&nbsp;&lt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'#dressingroom">DRESSING ROOM</a>';
+        $breadcrumb .= '&nbsp;&gt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'#dressingroom">DRESSING ROOM</a>&nbsp;&gt;';
     else
-        $breadcrumb .= '&nbsp;&lt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'#productgrid">ALL PRODUCTS</a>';
+        $breadcrumb .= '&nbsp;&gt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'#productgrid">ALL PRODUCTS</a>&nbsp;&gt;';
     
         
     $productname = $_helper->productAttribute($_product, $_product->getName(), 'name');
