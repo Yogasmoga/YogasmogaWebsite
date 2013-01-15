@@ -98,6 +98,9 @@
         //echo Mage::helper('rewardpoints/data')->getProductPointsText($_childproduct, false, false);
         //echo Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
         $temp = $_childproduct->getAttributeText('color');
+        
+        echo $temp."<br/>";
+        
         if(strpos($temp,"|") !== FALSE)
         {
             $hexcodes = substr($temp, strpos($temp,"|") + 1);
