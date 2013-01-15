@@ -27,9 +27,32 @@ jQuery(document).ready(function($){
         changedress('top', 0);
         changedress('bottom', 0);
     });
-    
+	$("#dressingroombottom").swipe({
+		swipeLeft	:function(){moveDressingBotLeft()},
+		swipeRight	:function(){moveDressingBotRight()},
+		threshold	:100
+	});
+    $("#dressingroomtop").swipe({
+		swipeLeft	:function(){moveDressingroomLeft()},
+		swipeRight	:function(){moveDressingroomRight()},
+		threshold	:100
+	});
     $("#dressingroomtop td.goleft img").click(function(){
-        if(_isdressingroomanimating)
+        moveDressingroomLeft()
+    });	
+    $("#dressingroomtop td.goright img").click(function(){
+        moveDressingroomRight()
+    });
+	$("#dressingroombottom td.goleft img").click(function(){
+        moveDressingBotLeft()
+    });
+    
+    $("#dressingroombottom td.goright img").click(function(){
+        moveDressingBotRight()
+    });
+	
+    function moveDressingroomLeft(){
+		if(_isdressingroomanimating)
             return;
         if(_dressingroomtopindex > 0)
             _dressingroomtopindex--;
@@ -42,10 +65,10 @@ jQuery(document).ready(function($){
                 _isdressingroomanimating = false;
             });
         });
-    });
-    
-    $("#dressingroomtop td.goright img").click(function(){
-        if(_isdressingroomanimating)
+	}
+	
+    function moveDressingroomRight(){
+		if(_isdressingroomanimating)
             return;
         if(_dressingroomtopindex < _dressingroomtopcount - 1)
             _dressingroomtopindex++;
@@ -58,10 +81,9 @@ jQuery(document).ready(function($){
                 _isdressingroomanimating = false;
             });
         });
-    });
-    
-    $("#dressingroombottom td.goleft img").click(function(){
-        if(_isdressingroomanimating)
+	}
+    function moveDressingBotLeft(){
+		if(_isdressingroomanimating)
             return;
         if(_dressingroombottomindex > 0)
             _dressingroombottomindex--;
@@ -74,10 +96,9 @@ jQuery(document).ready(function($){
                 _isdressingroomanimating = false;
             });
         }); 
-    });
-    
-    $("#dressingroombottom td.goright img").click(function(){
-        if(_isdressingroomanimating)
+	}
+	function moveDressingBotRight(){
+		if(_isdressingroomanimating)
             return;
         if(_dressingroombottomindex < _dressingroombottomcount - 1)
             _dressingroombottomindex++;
@@ -90,7 +111,8 @@ jQuery(document).ready(function($){
                 _isdressingroomanimating = false;
             });
         });
-    });
+	}
+    
     
     $("#dressingroomtop div.viewdetails").click(function(){
          //$( "#productdetailpopup" ).dialog( "open" );
