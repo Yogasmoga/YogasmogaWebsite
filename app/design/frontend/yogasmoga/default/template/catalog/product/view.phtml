@@ -352,27 +352,8 @@
     <div class="productoptions absoluteproductoptions">
         <?php //echo Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId()); ?>
         <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId(Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId()))->toHtml(); ?>
-		<?php if($sizechartblockid != ""){?>
-			<div id="sizechart">
-				<div class="light-conent-box">
-					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
-				</div>
-				<img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
-			</div>
-		<?php } ?>
-        <?php
-            if($howdoesitfitblockid != "")
-            {
-                ?>
-                <div id="howdoesitfitbox">
-                    <div id="howdoesitfitboxinner">
-                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
-                    </div>
-                    <img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
-                </div>
-                <?php      
-            }
-        ?>
+		
+        
         <table class="productdetailtable normalproductdetail">
             <tr>
                 <td>
@@ -428,7 +409,16 @@
                     <table class="selectedsize">
                         <tr>
                             <td>SIZE</td>
-                            <td class="sizechartlink"><div><a href="#">Size chart</a></div></td>
+                            <td class="sizechartlink"><div style="position:relative;"><a href="#">Size chart</a>
+		<?php if($sizechartblockid != ""){?>
+			<div id="sizechart">
+				<div class="light-conent-box">
+					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
+				</div>
+				<img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
+			</div>
+		<?php } ?>
+		</div></td>
                         </tr>
                     </table>
                     <div id="sizecontainer">
@@ -450,7 +440,17 @@
                             <td>
                                 <div class="hanger"></div>
                             </td>
-                            <td class="howdoesitfitlink"><div><a href="javascript:void(0);">How does it fit?</a></div></td>
+                            <td class="howdoesitfitlink"><div style="position:relative;"><a href="javascript:void(0);">How does it fit?</a>
+		<?php if($howdoesitfitblockid != ""){ ?>
+			<div id="howdoesitfitbox">
+				<div id="howdoesitfitboxinner">
+					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
+				</div>
+				<img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
+			</div>
+		<?php } ?>
+							
+							</div></td>
                         </tr>
                     </table>
                     <div class="qty">QTY</div>

@@ -1,12 +1,6 @@
 var _productcolorinfo = new Array();
 
 jQuery(document).ready(function($){
-	jQuery(".fancy-image").fancybox({
-		padding:0,
-		helpers:  {
-			overlay : null
-		}
-	});
         //console.clear();
     $(".spbutton").live("mousedown", function(){
         $(this).css('background-image', "url('" + $(this).attr('downimageurl') + "')");

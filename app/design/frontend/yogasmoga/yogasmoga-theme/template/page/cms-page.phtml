@@ -53,6 +53,16 @@
         <?php echo $this->getChildHtml('before_body_end') ?>
     </div>
 </div>
+<script>
+jQuery(document).ready(function(){
+	jQuery(".fancy-image").fancybox({
+		padding:0,
+		helpers:  {
+			overlay : null
+		}
+	});
+})
+</script>
 <?php echo $this->getAbsoluteFooter() ?>
 </body>
 </html>
