@@ -18,8 +18,6 @@ jQuery(document).ready(function($){
         $("div.opimage").each(function(){
             if(!($(this).hasClass('closed')))
             {
-                $(this).find('img.big_big').show();
-                $(this).find('img.big_small').show();
                 if(_winW >= 1600)
                 {
                     $(this).find('img.big_small').hide();
@@ -43,35 +41,32 @@ jQuery(document).ready(function($){
         {
             if(_winW >= 1600)
             {
-                $(this).find('img.big_small').hide();
+                $(this).find('.big_big').fadeIn(0);
                 var newheight = getScaledheight($(this).attr("origheight"), $(this).attr("origwidth"));
             }
             else
             {
                 var newheight = getScaledheight($(this).attr("origheightsm"), $(this).attr("origwidthsm"));
-                $(this).find('img.big_big').hide();
+                $(this).find('.big_small').fadeIn(0);
             }
-            $(this).find('img.small').fadeOut('fast');
+            $(this).find('.small').fadeOut('fast');
             $(this).removeClass('closed');
             //$(this).slideDown('slow');
             $(this).animate({
                 height : newheight
             }, 500);
-            $(this).find('img.small').fadeOut('500');
         }
         else
         {
             $(this).addClass('closed');
             var newheight = getScaledheight($(this).attr("smorigheight"), $(this).attr("smorigwidth"));
             //console.log(newheight);
+			$(this).find('.big_big').fadeOut('fast');
+			$(this).find('.big_small').fadeOut('fast');
+            $(this).find('.small').fadeIn('500');
             $(this).animate({
                 height : newheight
-            }, 500, function(){
-                //$(this).find('img.small').fadeIn('fast');
-                $(this).find('img.big_big').show();
-                $(this).find('img.big_small').show();
-            });
-            $(this).find('img.small').fadeIn('500');
+            }, 500);
         }
         $("html, body").animate({
             scrollTop: ($(this).offset().top - _headerHeight)

@@ -52,6 +52,13 @@
          url('../fonts/ITCAvantGardePro-Bk.ttf') format('truetype'); 
 }
 
+@font-face {
+	font-family: ITCAvantGardeProBd;
+	src: url('../fonts/ITCAvantGardePro-Bold.eot');
+	src: local('☺'), url('../fonts/ITCAvantGardePro-Bold.ttf') format('truetype'), url('../fonts/ITCAvantGardePro-Bold.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
 
 @font-face {
     font-family: 'ChaletParisNineteenSeventy';

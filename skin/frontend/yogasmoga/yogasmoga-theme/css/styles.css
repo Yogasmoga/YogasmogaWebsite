@@ -2863,20 +2863,98 @@ div#bodycompensator
 {
     height : 80px;
 }
-div.opimage img
+div.opimage div.big_big,
+div.opimage div.big_small{display:none;}
+div.opimage img.small,
+div.opimage img.big_small,
+div.opimage img.big_big
 {
     width : 100%;
     top : 0;
     left : 0;
     position : absolute;
 }
+div.opimage div
+{
+	text-align:center;
+    width : 100%;
+	height:100%;
+    top : 0;
+    left : 0;
+    position : absolute;
+}
+#ftechimage{
+	color:#dd8820;
+}
 div.opimage
 {
     position : relative;
+	background-position:50% 50%;
+	background-repeat:no-repeat;
+	background-size:cover;
     overflow : hidden;
 }
-div.opimage img.small
+div.opimage .small h3.heading{color:#dd8820; font-style:italic;font-family:gothambook; font-size:19px; font-weight:normal; line-height:1.2; margin:0 0 0; padding:0;}
+#ftechimage .opbox{position:absolute; font-family:gothambook; font-size:11px ;line-height:16px; color:#cccccc; height:auto; left:auto; top:auto;}
+#ftechimage .opbox h3.heading{font-family:ITCAvantGardeProBk; font-weight:normal; font-size:19px;color:#dd8820; font-style:normal; text-transform:uppercase; line-height:1.1; margin:10px 0;}
+#ftechimage .opbox sup{font-size:8px;}
+
+#ftechimage .opbox.usa{width:260px; left:10%; top:60px;}
+#ftechimage .opbox.amm{width:215px; right:20%; top:60px;}
+#ftechimage .opbox.hqs{width:225px; right:10%; top:42%;}
+#ftechimage .opbox.rtp{width:215px; left:15%; bottom:10%;}
+#ftechimage .opbox.nano{width:255px; right:25%; bottom:5%;}
+
+#ftechimage .opbox.centered{top:50%; left:50%; margin:-125px 0 0 -155px; width:310px; font-size:13px; line-height:18px;}
+#ftechimage .centered h3.heading{font-family:ITCAvantGardeProBd; font-weight:normal; font-size:30px;color:#dd8820; text-transform:uppercase; font-style:normal; background:url(../images/homepage/heading-bg.png) 50% 100% no-repeat; margin:0 0 20px; padding:0 0 20px; line-height:1;}
+#ftechimage .centered h3.heading span{display:block;font-family:ITCAvantGardeProBk;}
+#ftechimage .centered h3.heading sup{font-size:12px;}
+
+@media screen and (max-width: 1250px) {
+#ftechimage .opbox.usa{width:335px; left:3%; top:30px;}
+#ftechimage .opbox.amm{width:300px; right:8%; top:30px;}
+#ftechimage .opbox.hqs{width:225px; right:4%; top:42%;}
+#ftechimage .opbox.rtp{width:275px; left:5%; bottom:10%;}
+#ftechimage .opbox.nano{width:405px; right:17%; bottom:3%;}
+#ftechimage .centered.rtp{margin:-125px 0 0 -200px; width:400px;}
+}
+
+/*====================*/
+#clrimage h3.heading,
+#clrimage{
+	color:#333;
+}
+#clrimage .opbox{position:absolute; font-family:gothambook; font-size:11px ;line-height:16px; color:#333; height:auto; left:auto; top:auto;}
+#clrimage .opbox h3.heading{font-family:ITCAvantGardeProBk; font-weight:normal; font-size:19px;color:#333; font-style:normal; text-transform:uppercase; line-height:1.1; margin:10px 0;}
+#clrimage .opbox sup{font-size:8px;}
+
+#clrimage .opbox.efd{width:305px; left:10%; top:90px;}
+#clrimage .opbox.c6{width:240px; right:20%; top:60px;}
+#clrimage .opbox.cotton{width:225px; right:10%; top:42%;}
+#clrimage .opbox.cac{width:300px; left:15%; bottom:10%;}
+#clrimage .opbox.cdb{width:330px; right:20%; bottom:5%;}
+
+#clrimage .opbox.centered{top:50%; left:50%; margin:-125px 0 0 -155px; width:325px; font-size:13px; line-height:18px;}
+#clrimage .opbox.centered p{padding:0 15px;}
+#clrimage .centered h3.heading{font-family:ITCAvantGardeProBd; font-weight:normal; font-size:30px;color:#333; text-transform:uppercase; font-style:normal; background:url(../images/homepage/bg-h.png) 50% 100% no-repeat; margin:0 0 20px; padding:0 0 20px; line-height:1;}
+#clrimage .centered h3.heading span{display:block;font-family:ITCAvantGardeProBk;}
+#clrimage .centered h3.heading sup{font-size:12px;}
+
+@media screen and (max-width: 1250px) {
+#clrimage .opbox.efd{width:335px; left:3%; top:30px;}
+#clrimage .opbox.c6{width:300px; right:8%; top:30px;}
+#clrimage .opbox.cotton{width:225px; right:4%; top:42%;}
+#clrimage .opbox.cac{width:275px; left:5%; bottom:10%;}
+#clrimage .opbox.cdb{width:405px; right:11%; bottom:3%;}
+#clrimage .opbox br{display:none;}
+#clrimage .centered.rtp{margin:-125px 0 0 -200px; width:400px;}
+}
+
+
+div.opimage .small
 {
+	font-family:gothamMedium;
+	font-size:12px;
     z-index: 2;
 }
 div.sidenavpopup

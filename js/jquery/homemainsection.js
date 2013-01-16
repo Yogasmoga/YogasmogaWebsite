@@ -3,7 +3,7 @@ jQuery(document).ready(function($){
         $('.flexslider').flexslider({
             controlNav: false,
             slideshowSpeed: 4000,
-			animationSpeed:1000,
+			animationSpeed:1250,
 			easing:"linear",
             directionNav: false,
             start: function(slider) {
@@ -14,7 +14,7 @@ jQuery(document).ready(function($){
             //fixFlexisliderImage();
             }
         });
-		$('#playBtn').fadeIn(500, function(){$('.flexslider').css('background','#999')});  
+		$('#playBtn').fadeIn(500, function(){$('.flexslider').css('background','#c17872')});  
 		$('.page-overlay').fadeOut(500);
 		$('body').css({overflow:'auto', marginRight:0});
     });
