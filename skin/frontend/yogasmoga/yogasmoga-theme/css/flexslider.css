@@ -76,3 +76,9 @@ html[xmlns] .slides {display: block;}
 }
 .flex-active-slide *{ margin: 0 !important; padding : 0 !important;}
 #mainimage img.fullscreen{left:0 !important;}
+
+/*============ carousel ============*/
+
+td.carousel-item{width:100%; text-align:center; vertical-align:middle;}
+td.carousel-item .carousel-img{position:relative; width:100%; text-align:center; display:block;}
+td.carousel-item .carousel-desc{position:absolute; right:8%; top:50%; margin-top:-160px;}

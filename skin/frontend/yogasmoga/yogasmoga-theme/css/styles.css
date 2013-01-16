@@ -163,6 +163,11 @@ button.btn-checkout span span { background-position:100% 0; padding:0 25px 0 16p
 button.btn-checkout.no-checkout span { background-position:0 100%; color:#b8baba; }
 button.btn-checkout.no-checkout span span { background-position:100% 100%; }
 
+
+button.btn-explore span{padding:0; width:138px; text-indent:-999em; height:29px; margin:0; background:url(../images/btn-explore.png) 0 0 no-repeat; border:0;}
+button span span{background:none;}
+button:active span{background-position:0 100%;}
+
 p.control input.checkbox,
 p.control input.radio { margin-right:6px; }
 /* Form Highlight */
@@ -2334,12 +2339,15 @@ div.mycategory-products div.item td
 
 div.mycategory-products div.item td.productimage
 {
-    height : 345px;
-	width:230px;
+    height : 355px;
+	width:295px;
 	border:1px solid #cacaca;
     vertical-align : bottom;
 }
-
+.cms-home div.mycategory-products div.item td.productimage{
+	height : 345px;
+	width:230px;
+}
 div.mycategory-products div.item td.productimage div
 {
     width: 100%;

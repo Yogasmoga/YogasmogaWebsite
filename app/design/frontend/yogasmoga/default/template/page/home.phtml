@@ -135,29 +135,14 @@
 				  <div>
 				  	<table class="fullscreentable" style="width:100%">
 		            	<tr>
-		            		<td style="width:50%; text-align:right; vertical-align : middle;">
-		            		<img class="bximg" src="<?php echo $this->getSkinUrl('images/homepage/yoga_05.png') ?>" />
-		            		</td>
-		            		<td style="text-align:left; vertical-align : middle; ">
-		            		<img src="<?php echo $this->getSkinUrl('images/homepage/explore_01_text.png') ?>" /><br>
-		            		<a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>women/classic-slimmie-pant" >
-		            		<div class="explore_btn spbutton" imageurl="<?php echo $this->getSkinUrl('images/homepage/explore_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/homepage/explore_on.png'); ?>" ></div>
-							</a>
-		            		</td>
-		            	</tr>
-            		</table>
-				  </div>
-				  <div>
-				  	<table class="fullscreentable" style="width:100%">
-		            	<tr>
-		            		<td style="width:50%; text-align:right; vertical-align : middle;">
-		            		<img class="bximg" src="<?php echo $this->getSkinUrl('images/homepage/yoga_02.png') ?>" />
-		            		</td>
-		            		<td style="text-align:left; vertical-align : middle; ">
-		            		<img src="<?php echo $this->getSkinUrl('images/homepage/explore_02_text.png') ?>" /><br>
-		            		<a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>women/run-jump-n-play-crop-198" >
-		            		<div class="explore_btn spbutton" imageurl="<?php echo $this->getSkinUrl('images/homepage/explore_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/homepage/explore_on.png'); ?>" ></div>
-							</a>
+		            		<td class="carousel-item">
+								<div class="carousel-img">
+									<img class="bximg" src="<?php echo $this->getSkinUrl('images/homepage/yoga_05.png') ?>" />
+									<div class="carousel-desc">
+										<img src="<?php echo $this->getSkinUrl('images/homepage/explore_01_text.png') ?>" /><br/>
+										<button onClick="window.location='<?php echo $this->getUrl('women/classic-slimmie-pant');?>'" class="btn-explore button"><span><span>Explore</span></span></button>
+									</div>
+								</div>
 		            		</td>
 		            	</tr>
             		</table>
@@ -165,14 +150,14 @@
 				  <div>
 				  	<table class="fullscreentable" style="width:100%">
 		            	<tr>
-		            		<td style="width:50%; text-align:right; vertical-align : middle;">
-		            		<img class="bximg" src="<?php echo $this->getSkinUrl('images/homepage/yoga_03.png') ?>" />
-		            		</td>
-		            		<td style="text-align:left; vertical-align : middle; ">
-		            		<img src="<?php echo $this->getSkinUrl('images/homepage/explore_03_text.png') ?>" /><br>
-		            		<a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>women/tippy-toe-legging" >
-		            		<div class="explore_btn spbutton" imageurl="<?php echo $this->getSkinUrl('images/homepage/explore_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/homepage/explore_on.png'); ?>" ></div>
-							</a>
+							<td class="carousel-item">
+								<div class="carousel-img">
+									<img class="bximg" src="<?php echo $this->getSkinUrl('images/homepage/yoga_02.png') ?>" />
+									<div class="carousel-desc">
+										<img src="<?php echo $this->getSkinUrl('images/homepage/explore_02_text.png') ?>" /><br/>
+										<button onClick="window.location='<?php echo $this->getUrl('women/run-jump-n-play-crop-198');?>'" class="btn-explore button"><span><span>Explore</span></span></button>
+									</div>
+								</div>
 		            		</td>
 		            	</tr>
             		</table>
@@ -180,14 +165,29 @@
 				  <div>
 				  	<table class="fullscreentable" style="width:100%">
 		            	<tr>
-		            		<td style="width:50%; text-align:right; vertical-align : middle;">
-		            		<img class="bximg" src="<?php echo $this->getSkinUrl('images/homepage/yoga_04.png') ?>" />
+							<td class="carousel-item">
+								<div class="carousel-img">
+									<img class="bximg" src="<?php echo $this->getSkinUrl('images/homepage/yoga_03.png') ?>" />
+									<div class="carousel-desc">
+										<img src="<?php echo $this->getSkinUrl('images/homepage/explore_03_text.png') ?>" /><br/>
+										<button onClick="window.location='<?php echo $this->getUrl('women/tippy-toe-legging');?>'" class="btn-explore button"><span><span>Explore</span></span></button>
+									</div>
+								</div>
 		            		</td>
-		            		<td style="text-align:left; vertical-align : middle; ">
-		            		<img src="<?php echo $this->getSkinUrl('images/homepage/explore_04_text.png') ?>" /><br>
-		            		<a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>women/u-me-bra" >
-		            		<div class="explore_btn spbutton" imageurl="<?php echo $this->getSkinUrl('images/homepage/explore_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/homepage/explore_on.png'); ?>" ></div>
-							</a>
+		            	</tr>
+            		</table>
+				  </div>
+				  <div>
+				  	<table class="fullscreentable" style="width:100%">
+		            	<tr>
+							<td class="carousel-item">
+								<div class="carousel-img">
+									<img class="bximg" src="<?php echo $this->getSkinUrl('images/homepage/yoga_04.png') ?>" />
+									<div class="carousel-desc">
+										<img src="<?php echo $this->getSkinUrl('images/homepage/explore_04_text.png') ?>" /><br/>
+										<button onClick="window.location='<?php echo $this->getUrl('u-me-bra');?>'" class="btn-explore button"><span><span>Explore</span></span></button>
+									</div>
+								</div>
 		            		</td>
 		            	</tr>
             		</table>
