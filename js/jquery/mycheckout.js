@@ -10,7 +10,8 @@ jQuery(document).ready(function($){
     });
     
     $("div#checkout-guest-continue").click(function(){
-        _checkoutmethod = 'guest';
+        _checkoutmethod = 'register';
+        $("div#billing-password").show();
         saveCheckoutMethod();
     });
     
@@ -366,9 +367,14 @@ function saveBillingAddress()
         data : billingdata,
         success : function(result){
             result = eval('(' + result + ')');
-            reordersubsteps(jQuery("#copaymentmethods"));
-            if(!_isshippable)
-                jQuery("div#paymentmethods").html(result['update_section']['html']);
+            if(typeof result['error'] !== "undefined")
+                jQuery("#billingaddresserrormsg").html(result['message']);
+            else
+            {
+                reordersubsteps(jQuery("#copaymentmethods"));
+                if(!_isshippable)
+                    jQuery("div#paymentmethods").html(result['update_section']['html']);   
+            }
             _ischeckoutprocessing = false;
             jQuery("#co-billing-form input[type=submit]").show();
             jQuery("#co-billing-form #procImg").remove();
@@ -555,6 +561,22 @@ function validateBillingAddressForm()
                 setOnError(jQuery("#billing\\:email"), "Please enter a valid Email Address.");
                 flag = false;
             }
+        }
+    }
+    if(jQuery("#billing\\:customer_password").val() != "")
+    {
+        if(jQuery.trim(jQuery("#billing\\:customer_password").val()).length < 6)
+        {
+            setOnError(jQuery("#billing\\:customer_password"),"Please enter 6 or more characters.");
+            flag = false;
+        }
+    }
+    if(jQuery("#billing\\:customer_password").val() != "" && jQuery("#billing\\:confirm_password").val() != "")
+    {
+        if(jQuery("#billing\\:customer_password").val() != jQuery("#billing\\:confirm_password").val())
+        {
+            setOnError(jQuery("#billing\\:confirm_password"),"Please make sure your passwords match.");
+            flag = false;
         }
     }
     if(!flag)
