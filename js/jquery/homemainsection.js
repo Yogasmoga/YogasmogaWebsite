@@ -2,9 +2,9 @@ jQuery(document).ready(function($){
     $(window).load(function(){
         $('.flexslider').flexslider({
             controlNav: false,
-            slideshowSpeed: 3500,
-			animationSpeed:500,
-			easing:"easeInOutSine",
+            slideshowSpeed: 4000,
+			animationSpeed:1000,
+			easing:"linear",
             directionNav: false,
             start: function(slider) {
                 //fixFlexisliderImage();
@@ -14,7 +14,7 @@ jQuery(document).ready(function($){
             //fixFlexisliderImage();
             }
         });
-		$('#playBtn').fadeIn(500, function(){$('.flexslider').css('background','#000')});  
+		$('#playBtn').fadeIn(500, function(){$('.flexslider').css('background','#999')});  
 		$('.page-overlay').fadeOut(500);
 		$('body').css({overflow:'auto', marginRight:0});
     });

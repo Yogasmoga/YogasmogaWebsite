@@ -2334,7 +2334,8 @@ div.mycategory-products div.item td
 
 div.mycategory-products div.item td.productimage
 {
-    height : 355px;
+    height : 345px;
+	width:230px;
 	border:1px solid #cacaca;
     vertical-align : bottom;
 }
@@ -2468,7 +2469,6 @@ div.searchitems td {
 
 table.staticproductgrid
 {
-    width : 100%;
 }
 table.staticproductgrid td
 {
