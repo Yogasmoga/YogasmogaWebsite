@@ -1841,9 +1841,15 @@ ul.topmenulinks li a,ul.topmenulinks li a:visited
 {
     text-transform: uppercase;
 }
+div#toprevolvingmessage blockquote{
+	display:block; padding:0 10px; position:relative; line-height:19px;
+}
+div#toprevolvingmessage blockquote a{line-height:18px;}
+div#toprevolvingmessage blockquote a.next{position:absolute; right:0; top:0;}
+div#toprevolvingmessage blockquote a.prev{position:absolute; left:0; top:0;}
 div#toprevolvingmessage p
 {
-    margin : 0px;
+    margin : 0px; line-height:18px;
 }
 div#toprevolvingmessage
 {

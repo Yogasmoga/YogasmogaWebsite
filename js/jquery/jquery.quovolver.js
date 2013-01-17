@@ -18,56 +18,48 @@
 		if (quaSpd > (delay)) delay = quaSpd;
 		
 		// Create the variables needed
+		var slideit;
 		var	quote = $(this),
 			firstQuo = $(this).filter(':first'),
 			lastQuo = $(this).filter(':last'),
 			nxtBtn = $('.next', this),
 			preBtn = $('.prev', this),
 			wrapElem = '<div id="quote_wrap"></div>';
-		
-		// Wrap the quotes
 		$(this).wrapAll(wrapElem);
-		
-		// Hide all the quotes, then show the first
 		$(this).hide();
 		$(firstQuo).show();
-		
-		// Set the hight of the wrapper
-		$(this).parent().css({height: $(firstQuo).height()});		
-		
-		// Where the magic happens
-		setInterval(function(){
-			doSlideQuo("next")
-		}, delay);
+		$(this).parent().css({height: $(firstQuo).height()});
+		slideit = setTimeout(slideTime, delay)
+		function slideTime() {
+			doSlideQuo("next");
+		}
 		
 		function doSlideQuo(dir){
+			window.clearInterval(slideit);
 			// Set required hight and element in variables for animation
-			if($(lastQuo).is(':visible')) {
-				var nextElem = $(firstQuo);
-				var wrapHeight = $(nextElem).height();
-			} else {
-				var nextElem = $(quote).filter(':visible').next();
-				var wrapHeight = $(nextElem).height();
+			if(dir == "prev"){
+				if($(firstQuo).is(':visible')) {
+					var nextElem = $(lastQuo);
+					var wrapHeight = $(nextElem).height();
+				} else {
+					var nextElem = $(quote).filter(':visible').prev();
+					var wrapHeight = $(nextElem).height();
+				}
+			}else{
+				if($(lastQuo).is(':visible')) {
+					var nextElem = $(firstQuo);
+					var wrapHeight = $(nextElem).height();
+				} else {
+					var nextElem = $(quote).filter(':visible').next();
+					var wrapHeight = $(nextElem).height();
+				}
 			}
-			
-			// Fadeout the quote that is currently visible
 			$(quote).filter(':visible').fadeOut(speed);
-			
-			// Set the wrapper to the hight of the next element, then fade that element in
 			setTimeout(function() {
 				$(quote).parent().animate({height: wrapHeight}, speed);
 			}, speed);
-			
-			if($(lastQuo).is(':visible')) {
-				setTimeout(function() {
-					$(firstQuo).fadeIn(speed);
-				}, speed*2);
-				
-			} else {
-				setTimeout(function() {
-					$(nextElem).fadeIn(speed);
-				}, speed*2);
-			}
+			setTimeout(function() {nextElem.stop(true,true).fadeIn(speed)}, speed);
+			slideit = setTimeout(slideTime, delay)
 		}
 		nxtBtn.click(function(e){
 			doSlideQuo("next");
