@@ -2,6 +2,7 @@ var _productcolorinfo = new Array();
 
 jQuery(document).ready(function($){
         //console.clear();
+		$('select').customSelect();
     $(".spbutton").live("mousedown", function(){
         $(this).css('background-image', "url('" + $(this).attr('downimageurl') + "')");
     });
