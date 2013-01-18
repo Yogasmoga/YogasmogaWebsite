@@ -474,10 +474,11 @@ tr.summary-details-excluded { font-style:italic; }
 .std strong { font-weight:bold; }
 .std i,
 .std em { font-style:italic; }
-select{font-family:gothamlight; font-size:12px; padding:3px 1px; border:0;}
+select{font-family:gothamlight; font-size:12px; padding:1px; border:0; height:20px;}
 select option{padding:3px; background:#fff; border:0;}
 .customSelect {
 	background:url(../images/dd-arw.png) 100% 50% no-repeat; border-bottom:1px solid #666; font-family:gothamMedium; font-size:12px;
+	height:20px; overflow:hidden;
 }
 .customSelect.customSelectOpen {
 	
