@@ -222,7 +222,11 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                     echo "not set";    
                 foreach($_gallery as $_image)
                 {
-                    if(str_replace("*", "", $_image->getLabel()) == $temp)
+                    $imgdata = json_decode(trim($_image->getLabel()), true);
+                    if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0)
+                        continue;
+                    if($imgdata['color'] == Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId()))                
+                    //if(str_replace("*", "", $_image->getLabel()) == $temp)
                     {
                         //echo $imageurl;
                         $smallimageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75);

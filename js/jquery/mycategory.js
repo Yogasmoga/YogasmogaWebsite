@@ -217,7 +217,10 @@ function filterimages()
     {
         jQuery("div#mycategory_products div.item td.productimage img").removeClass('rotable').removeClass('active');
         jQuery("div#mycategory_products div.item td.productimage img.default").addClass('rotable');
-        jQuery("div#mycategory_products div.item td.productimage img.default.rotable:first-child").addClass('active');
+        jQuery("div#mycategory_products div.item td.productimage").each(function(){
+            jQuery(this).find("img.default.rotable:first").addClass('active');
+        });
+        //jQuery("div#mycategory_products div.item td.productimage img.default.rotable:first-child").addClass('active');
     }
     
 }

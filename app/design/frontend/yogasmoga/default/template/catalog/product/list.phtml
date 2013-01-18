@@ -170,22 +170,47 @@
                                     <?php
                                         $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
                                         $index = 1;
+                                        $firstimg = true;
                                         foreach($_gallery as $_image)
                                         {
-                                            if(strpos($_image->getLabel(),"*") === false)
+                                            $imgdata = json_decode(trim($_image->getLabel()), true);
+                                            //var_dump(json_decode(trim($_image->getLabel()), true));
+                                            //echo $_image->getLabel()."<br/>";
+                                            if($imgdata == NULL || strcasecmp($imgdata['type'],"product image") != 0)
                                                 continue;
-                                            if($index > 3)
-                                                break;
+                                            
+                                            
+                                            
+                                            //if(!($imgdata['type'] == "product image" && $imgdata['default'] == "yes"))
+//                                                continue;
+                                            
+                                            //if(strpos($_image->getLabel(),"*") === false)
+//                                                continue;
+                                            //if($index > 3)
+//                                                break;
                                             ?>
-                                            <img
+                                            <img class="
                                             <?php
-                                                if($index == 1)
+                                                if($imgdata['default'] == "yes")
                                                 {
-                                                    ?>
-                                                    class="active"
-                                                    <?php
+                                                    if($firstimg)
+                                                    {
+                                                        $firstimg = false;
+                                                        echo " default active rotable";
+                                                    }
+                                                    else
+                                                        echo " default rotable";
+                                                }
+                                                if(isset($imgdata['color']))
+                                                {
+                                                    echo " color_".strtolower(str_replace(" ","_",$imgdata['color']));
+                                                }
+                                                if(isset($imgdata['bestfor']))
+                                                {
+                                                    echo " bestfor_".strtolower(str_replace(" ","_",$imgdata['bestfor']));
                                                 }
                                             ?>
+                                            "
                                              src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345); ?>" />
                                             <?php
                                             $index++;
@@ -195,10 +220,14 @@
                             </tr>
                             <tr>
                                 <td class="animateimage">
-                                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/line_01.png') ?>" class="active" />
-                                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/line_02.png') ?>" />
-                                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/line_03.png') ?>" />
-                                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/line_off.png') ?>" class="inactive" />
+                                     <a href="javascript:void(0);">
+                                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/line_01.png') ?>" class="active" usemap="#primagemap" />
+                                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/line_02.png') ?>" usemap="#primagemap" />
+                                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/line_03.png') ?>" usemap="#primagemap" />
+                                     <?php /*
+                                        <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/line_off.png') ?>" class="inactive" />
+                                     */ ?>
+                                     </a>
                                 </td>
                             </tr>
                             <tr>
@@ -239,7 +268,11 @@
         ?>
             
     <?php endif; ?>
-    
+    <map name="primagemap">
+      <area shape="rect" coords="0,0,2,13" class="line1" href="javascript:void(0);" />
+      <area shape="poly" coords="12,0,16,0,10,13,4,13" class="line2" href="javascript:void(0);"/>
+      <area shape="poly" coords="27,4,28,7,19,13,14,13" class="line3" href="javascript:void(0);"/>
+    </map>
     <?php /*
     <div class="toolbar-bottom">
         <?php echo $this->getToolbarHtml() ?>

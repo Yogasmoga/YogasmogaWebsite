@@ -162,8 +162,11 @@
 //                echo "</pre>";
 //                break;
                 //echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->getOriginalWidth()."<br/>";
-                
-                if(str_replace("*", "", $_image->getLabel()) == $temp)
+                $imgdata = json_decode(trim($_image->getLabel()), true);
+                if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0)
+                    continue;
+                if($imgdata['color'] == Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId()))                
+                //if(str_replace("*", "", $_image->getLabel()) == $temp)
                 {
                     //echo $imageurl;
                     $smallimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75);
@@ -511,25 +514,37 @@
     $ftimagesmall = "";
     foreach($_gallery as $_image)
     {
-        if($_image->getLabel() == "Fabric_Technology_Image")
+        $imgdata = json_decode(trim($_image->getLabel()), true);
+        if($imgdata == NULL)
+            continue;
+        
+        
+        if(strcasecmp($imgdata['type'],"fabric image big") == 0)
+        //if($_image->getLabel() == "Fabric_Technology_Image")
         {
             $ftimage = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
             continue;
         }
-        if($_image->getLabel() == "Fabric_Technology_Image_Small")
+        if(strcasecmp($imgdata['type'],"fabric image small") == 0)
+        //if($_image->getLabel() == "Fabric_Technology_Image_Small")
         {
             $ftimagesmall = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
             continue;
         }
-        if(strpos($_image->getLabel(), "|DF") !== 0)
+        
+        if(strcasecmp($imgdata['type'], "design feature image") != 0 || !isset($imgdata['position']))
+        //if(strpos($_image->getLabel(), "|DF") !== 0)
             continue;
-        $temp = str_replace("|DF", "", $_image->getLabel());
-        $temp = explode("|", $temp);
-        $dfimages[$temp[0]]["url"] = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
-        if(isset($temp[1]))
-            $dfimages[$temp[0]]["caption"] = $temp[1];
+        
+        
+        //$temp = str_replace("|DF", "", $_image->getLabel());
+//        $temp = explode("|", $temp);
+        
+        $dfimages[$imgdata['position']]["url"] = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
+        if(isset($imgdata['caption']))
+            $dfimages[$imgdata['position']]["caption"] = $imgdata['caption'];
         else
-            $dfimages[$temp[0]]["caption"] = "";
+            $dfimages[$imgdata['position']]["caption"] = "";
     }
     //echo "<pre>";
 //    print_r($dfimages);
