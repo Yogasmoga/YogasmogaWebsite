@@ -126,11 +126,13 @@ function changeColor(clr)
     //if(_productcolorinfo[colorindex].sizes.length > 1)
     {
         jQuery("#cmbsize").hide();
+		jQuery("#cmbsize").next('.customSelect').hide();
         jQuery("#spnsize").show();
     }
     else
     {
         jQuery("#cmbsize").show();
+		jQuery("#cmbsize").next('.customSelect').show();
         jQuery("#spnsize").hide();  
     }
     
