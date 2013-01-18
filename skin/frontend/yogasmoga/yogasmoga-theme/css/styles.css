@@ -487,7 +487,8 @@ select option{padding:3px; background:#fff; border:0;}
 /* Styles for when the select box is in focus */
 }
 .customSelectInner {
-/* You can style the inner box too */
+	white-space:nowrap;
+	overflow:hidden;
 }
 
 /* Misc */

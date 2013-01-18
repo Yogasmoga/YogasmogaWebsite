@@ -98,7 +98,7 @@
 			
 			$this.bind('updateit',function(){
 				$this.change();
-				var selectBoxWidth = parseInt($this.outerWidth()) - (parseInt(customSelectSpan.outerWidth()) - parseInt(customSelectSpan.width()) );			
+				var selectBoxWidth = parseInt($this.outerWidth() + 5) - (parseInt(customSelectSpan.outerWidth()) - parseInt(customSelectSpan.width()) );			
 				customSelectSpan.css({display:'inline-block'});
 				customSelectInnerSpan.css({width:selectBoxWidth, display:'inline-block'});
 				var selectBoxHeight = customSelectSpan.outerHeight();
