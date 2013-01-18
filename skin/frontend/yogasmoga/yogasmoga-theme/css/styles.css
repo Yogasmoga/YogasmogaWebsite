@@ -474,11 +474,15 @@ tr.summary-details-excluded { font-style:italic; }
 .std strong { font-weight:bold; }
 .std i,
 .std em { font-style:italic; }
-select{font-family:gothamlight; font-size:12px; padding:1px; border:0; height:20px;}
+select{font-family:gothamlight; font-size:12px; padding:1px; border:0; height:16px;}
 select option{padding:3px; background:#fff; border:0;}
 .customSelect {
-	background:url(../images/dd-arw.png) 100% 50% no-repeat; border-bottom:1px solid #666; font-family:gothamMedium; font-size:12px;
-	height:20px; overflow:hidden; padding-right:12px;
+	background:url(../images/dd-arw.png) 100% 50% no-repeat; border-bottom:1px solid #666; font-family:gothamlight; font-size:12px; color:#2f2f2f;
+	height:16px; overflow:hidden; padding-right:12px; line-height:15px;
+}
+#tblcheckoutsteps .customSelect {
+	border-bottom:0; font-family:gothamlight; font-size:12px; color:#2f2f2f;
+	height:16px; overflow:hidden; padding-right:12px; line-height:normal;
 }
 .customSelect.customSelectOpen {
 	
