@@ -2,15 +2,75 @@ var _hovercollection = new Array();
 
 jQuery(document).ready(function($){
     InitializeHoverCollection();
+    //jQuery("div.item td.animateimage").each(function(){
+//        //if($(this).parents("div.item:first").find("td.productimage img").length > 0)
+//            $(this).find("img:first").show();
+//    });
     
-    jQuery(".mycategory-products div.item").hover(function(){
-        var idd = jQuery(this).attr("id");
+    jQuery("div.item td.animateimage img:first-child").show();
+    jQuery("area").click(function(){
+        var temp = '';
+        if($(this).hasClass('line1'))
+        {
+            console.log('line 1');
+            temp = 0;    
+        }
+        if($(this).hasClass('line2'))
+        {
+            console.log('line 2');
+            temp = 1;    
+        }
+        if($(this).hasClass('line3'))
+        {
+            console.log('line 3');
+            temp = 2;
+        }
+        if($("div#" + _currentproductid + " td.productimage img.rotable").eq(temp).length > 0)
+        {
+            $("div#" + _currentproductid + " td.productimage img").removeClass('active');
+            $("div#" + _currentproductid + " td.productimage img.rotable").eq(temp).addClass('active');
+            
+            $("div#" + _currentproductid + " td.animateimage img").hide().removeClass('active');
+            $("div#" + _currentproductid + " td.animateimage img").eq(temp).show().addClass('active');
+        }
+    });
+    
+    jQuery("area").hover(function(){
+        $("div#" + _currentproductid).find("span.price").css('display','inline');
+        $("div#" + _currentproductid).find("td.productname").css('color','black');
+    },
+    function(){
+        $("div#" + _currentproductid).find("span.price").removeAttr('style');
+        $("div#" + _currentproductid).find("td.productname").removeAttr('style');
+    });
+    
+    $(".mycategory-products div.item").hover(function(){
+        _currentproductid = $(this).attr("id");
+    });
+    
+    jQuery(".mycategory-products div.item td.productimage").hover(function(){
+        //var idd = jQuery(this).attr("id");
+        if(!_rotateprimages)
+            return;
+        var idd = jQuery(this).parents("div.item:first").attr("id");
+        var pelement = $(this).parents("div.item:first"); 
         togglehover(idd, true);
+        
+        pelement.find("td.animateimage img.inactive").hide();
+        pelement.find("td.animateimage img.active").show();
          //setTimeout(function(){ shownextimage(idd); }, 1000);
         //console.log(_hovercollection);
     },
     function(){
-        togglehover(jQuery(this).attr("id"), false);
+        if(!_rotateprimages)
+            return;
+        //togglehover(jQuery(this).attr("id"), false);
+        togglehover(jQuery(this).parents("div.item:first").attr("id"), false);
+        var pelement = $(this).parents("div.item:first");
+        //$(this).parents("div.item:first").find("td.animateimage img.inactive").show();
+        pelement.find("td.animateimage img").hide();
+        //if(pelement.find("td.productimage img").length > 0)
+            pelement.find("td.animateimage img:first").show();
         //console.log(_hovercollection);
     });
 });
@@ -48,6 +108,7 @@ function togglehover(id, state)
                 clearInterval(_hovercollection[i].timeobject);
                 _hovercollection[i].timeobject = '';
                 _hovercollection[i].hovered = false;
+                showfirstimage(id);
             }
             break;
         }
@@ -77,8 +138,45 @@ function resettimeobject(id)
     }
 }
 
+function showfirstimage(id)
+{
+    jQuery("#mycategory_products div#" + id + " td.productimage img.rotable.active").removeClass('active');
+    jQuery("#mycategory_products div#" + id + " td.productimage img.rotable:first").addClass('active');
+    
+    //jQuery("#mycategory_products div#" + id + " td.animateimage img.active").removeClass('active');
+//    jQuery("#mycategory_products div#" + id + " td.animateimage img:not(.inactive):first").addClass('active');
+    jQuery("#mycategory_products div#" + id + " td.animateimage img.active").removeClass('active').hide();
+    //if(pelement.find("td.productimage img").length > 0)
+        jQuery("#mycategory_products div#" + id + " td.animateimage img:first-child").addClass('active').show();
+}
+
 function shownextimage(id)
 {
+    if(isitemhovered(id))
+    {
+        console.log(jQuery("#mycategory_products div#" + id + " td.productimage img.active").nextAll('.rotable').length);
+        if(jQuery("#mycategory_products div#" + id + " td.productimage img.rotable").index(jQuery("#mycategory_products div#" + id + " td.productimage img.active")) < 2 && jQuery("#mycategory_products div#" + id + " td.productimage img.active").nextAll('.rotable').length > 0)
+        {
+            var nextimage = jQuery("#mycategory_products div#" + id + " td.productimage img.active").nextAll('.rotable:first');
+            jQuery("#mycategory_products div#" + id + " td.productimage img.active").removeClass('active');
+            nextimage.addClass('active');
+            
+            nextimage = jQuery("#mycategory_products div#" + id + " td.animateimage img.active").next();
+            jQuery("#mycategory_products div#" + id + " td.animateimage img.active").removeClass('active').hide();
+            nextimage.addClass('active').show();
+        }
+        else
+        {
+            console.log('sdf');
+            jQuery("#mycategory_products div#" + id + " td.productimage img.active").removeClass('active');
+            jQuery("#mycategory_products div#" + id + " td.productimage img.rotable:first").addClass('active');
+            
+            jQuery("#mycategory_products div#" + id + " td.animateimage img.active").removeClass('active').hide();
+            jQuery("#mycategory_products div#" + id + " td.animateimage img:first").addClass('active').show();
+        }
+        resettimeobject(id);
+    }
+    return;
     if(isitemhovered(id))
     {
         if(jQuery("#mycategory_products div#" + id + " td.productimage img.active").next().length > 0)

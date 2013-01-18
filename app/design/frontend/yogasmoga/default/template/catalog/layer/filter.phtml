@@ -44,8 +44,18 @@
             $searchtype = $key;
             $searchvalue = $value;
         }
+        $hassubcategory = false;
+        if($searchtype=="cat")
+        {
+            $children = Mage::getModel('catalog/category')->getCategories($searchvalue);
+            foreach ($children as $category) {
+                $hassubcategory = true;
+                break;
+                //echo $category->getName();
+            }
+        }
     ?>
-    <div <?php /* title="<?php echo $searchvalue ?>" */ ?> id="<?php echo $searchtype; ?>|<?php echo $searchvalue ?>" searchattr="<?php echo $searchtype; ?>" searchval="<?php echo $searchvalue ?>">
+    <div <?php /* title="<?php echo $searchvalue ?>" */ ?> id="<?php echo $searchtype; ?>|<?php echo $searchvalue ?>" searchattr="<?php echo $searchtype; ?>" searchval="<?php echo $searchvalue ?>" class="<?php if($hassubcategory) { echo "pcategory closed";} ?>">
         <table class="inactive">
             <tr>
                 <td>
@@ -65,7 +75,39 @@
             </tr>
         </table>
     </div>
-<?php } ?>
+<?php
+    if($hassubcategory)
+    {
+        $parentcategoryid = $searchvalue;
+        foreach ($children as $category) {
+            $searchvalue = $category->getId();
+            $catname = $category->getName();
+            ?>
+                <div <?php /* title="<?php echo $searchvalue ?>" */ ?> id="<?php echo $searchtype; ?>|<?php echo $searchvalue ?>" searchattr="<?php echo $searchtype; ?>" searchval="<?php echo $searchvalue ?>" class="subcategory <?php echo $parentcategoryid; ?>">
+                    <table class="inactive">
+                        <tr>
+                            <td>
+                                <?php
+                                    if(strpos($catname, "|") != false || strpos($catname, "|") !== false)
+                                        echo substr($catname, 0, strpos($catname, "|")); 
+                                    else
+                                        echo $catname;
+                                ?>
+                            </td>
+                            <td class="add">
+                                <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/ic_plus.png'); ?>" />
+                            </td>
+                            <td class="remove">
+                                <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/ic_close.png'); ?>" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            <?php  
+            //echo $category->getId();
+        }
+    }
+ } ?>
 
 <?php /*
 <ol>

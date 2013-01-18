@@ -2312,7 +2312,7 @@ div.mycategory-products div.item:hover td.productprice span.price
 {
     display : inline;
 }
-div.mycategory-products div.item img.active
+div.mycategory-products div.item img.active.rotable
 {
     display : inline;
 }
@@ -2393,20 +2393,27 @@ div.mycategory-products div.item td.animateimage img.inactive
 {
     display : inline;
 }
+/*
 div.mycategory-products div.item:hover td.animateimage img.inactive
 {
     display : none;
 }
+*/
 div.mycategory-products div.item td.animateimage img.active
 {
     display : none;
     margin-top : 3px;
 }
+div.mycategory-products div.item td.animateimage img
+{
+    margin : 0 5px;
+}
+/*
 div.mycategory-products div.item:hover td.animateimage img.active
 {
     display : inline;
 }
-
+*/
 .mylayerednavigation
 {
     left: 0;
@@ -3015,4 +3022,25 @@ div.sidenavpopup img
 {
     float : right;
     margin-right: -3px;
+}
+div.searchitems div.subcategory
+{
+    display : none;
+}
+div.searchitems div.subcategory table td:first-child
+{
+    padding-left : 10px;
+}
+div.searchitems table.grayed
+{
+    opacity:0.6;
+    filter:alpha(opacity=60); /* For IE8 and earlier */
+}
+div.searchitems div.pcategory img
+{
+    display : none;
+}
+div.colorfilters
+{
+    display : none;
 }
