@@ -480,7 +480,9 @@ select option{padding:3px; background:#fff; border:0;}
 	background:url(../images/dd-arw.png) 100% 50% no-repeat; border-bottom:1px solid #666; font-family:gothamlight; font-size:12px; color:#2f2f2f;
 	height:16px; overflow:hidden; padding-right:12px; line-height:15px;
 }
-#tblcheckoutsteps .customSelect {
+#tblcheckoutsteps td {vertical-align:bottom;}
+#tblcheckoutsteps td select{margin-top:5px;}
+#tblcheckoutsteps td .customSelect {
 	border-bottom:0; font-family:gothamlight; font-size:12px; color:#2f2f2f;
 	height:16px; overflow:hidden; padding-right:12px; line-height:normal;
 }
@@ -2365,8 +2367,8 @@ div.mycategory-products div.item td
 
 div.mycategory-products div.item td.productimage
 {
-    height : 355px;
-	width:295px;
+    height : 345px;
+	width:230px;
 	border:1px solid #cacaca;
     vertical-align : bottom;
 }

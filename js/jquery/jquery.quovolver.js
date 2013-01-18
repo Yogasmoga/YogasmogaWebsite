@@ -98,11 +98,13 @@
 			
 			$this.bind('updateit',function(){
 				$this.change();
-				var selectBoxWidth = parseInt($this.outerWidth() + 5) - (parseInt(customSelectSpan.outerWidth()) - parseInt(customSelectSpan.width()) );			
-				customSelectSpan.css({display:'inline-block'});
+				var sboxW = $this.outerWidth();
+				var cssMrg = $this.css('margin-top');
+				var selectBoxWidth = parseInt(sboxW) - (parseInt(customSelectSpan.outerWidth()) - parseInt(customSelectSpan.width()) );			
+				customSelectSpan.css({width:sboxW-12, display:'block', marginTop:cssMrg});
 				customSelectInnerSpan.css({width:selectBoxWidth, display:'inline-block'});
 				var selectBoxHeight = customSelectSpan.outerHeight();
-				$this.css({'-webkit-appearance':'menulist-button',width:customSelectSpan.outerWidth(),position:'absolute', opacity:0,height:selectBoxHeight,fontSize:customSelectSpan.css('font-size')});
+				$this.css({'-webkit-appearance':'menulist-button',width:sboxW+12,position:'absolute', opacity:0,height:selectBoxHeight,fontSize:customSelectSpan.css('font-size')});
 			}).change(function(){
 				var currentSelected = $this.find(':selected');
 				var html = currentSelected.html() || '&nbsp;';

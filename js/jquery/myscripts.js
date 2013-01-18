@@ -2,9 +2,11 @@ var _productcolorinfo = new Array();
 
 jQuery(document).ready(function($){
         //console.clear();
-	$('select').each(function(){
-		$(this).customSelect();
-	})
+	$(window).load(function(){
+		jQuery('.cart select, .catalog-product-view select, .checkout-onepage-index select').each(function(){
+			jQuery(this).customSelect();
+		})
+	});
     $(".spbutton").live("mousedown", function(){
         $(this).css('background-image', "url('" + $(this).attr('downimageurl') + "')");
     });

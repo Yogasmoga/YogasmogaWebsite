@@ -1,64 +1,4 @@
-jQuery(document).ready(function($){
-	$('#dressingroombottom .dritem:first, #dressingroomtop .dritem:first').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 200).addClass('active');
-	
-	$('#dressingroombottom, #dressingroomtop').mouseenter(function(){
-		$(this).find('a.prevBtn').stop(true,true).fadeIn(100);
-		$(this).find('a.nextBtn').stop(true,true).fadeIn(100);
-		$(this).find('.productdetail').stop(true,true).fadeIn(100);
-	})
-	$('#dressingroombottom, #dressingroomtop').mouseleave(function(){
-		$(this).find('a.prevBtn').stop(true,true).fadeOut(100);
-		$(this).find('a.nextBtn').stop(true,true).fadeOut(100);
-		$(this).find('.productdetail').stop(true,true).fadeOut(100);
-	})
-	$("#dressingroombottom").swipe({
-		swipeLeft	:function(){$('a.prevBtn', this).trigger('click')},
-		swipeRight	:function(){$('a.nextBtn', this).trigger('click')},
-		threshold	:100
-	});
-    $("#dressingroomtop").swipe({
-		swipeLeft	:function(){$('a.prevBtn', this).trigger('click')},
-		swipeRight	:function(){$('a.nextBtn', this).trigger('click')},
-		threshold	:100
-	});
-	$('a.prevBtn').click(function(){
-		var $ctr = $(this).parent();
-		var cur = $ctr.find('.dritem.active');
-		var last = $ctr.find('.dritem:last');
-		var first = $ctr.find('.dritem:first');
-		if($(first).hasClass('active')){
-			var next = last;
-		}else{
-			var next = cur.prev();
-		}
-		cur.removeClass('active').animate({opacity: 0}, 100 ,function(){
-			cur.css({visibility: "hidden"})
-		});
-		next.addClass('active').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 50);
-	})
-	$('a.nextBtn').click(function(){
-		var $ctr = $(this).parent();
-		var cur = $ctr.find('.dritem.active');
-		var last = $ctr.find('.dritem:last');
-		var first = $ctr.find('.dritem:first');
-		if($(last).hasClass('active')){
-			var next = first;
-		}else{
-			var next = cur.next();
-		}
-		cur.removeClass('active').animate({opacity: 0}, 100 ,function(){
-			cur.css({visibility: "hidden"})
-		});
-		next.addClass('active').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 50);
-	})
-	
-    $(".viewdetails").click(function(){
-         _dressingroomselectedcolor = $(this).attr('color');
-         showproductlightbox($(this).attr('pid'));
-		 alert("sdfdsf")
-    });
-	
-	
+﻿jQuery(document).ready(function($){
     if($("div#dressingroom").length == 0)
         return;
     $("#dressingroomtop, #dressingroombottom").hover(function(){
@@ -87,7 +27,7 @@ jQuery(document).ready(function($){
         changedress('top', 0);
         changedress('bottom', 0);
     });
-	/*$("#dressingroombottom").swipe({
+	$("#dressingroombottom").swipe({
 		swipeLeft	:function(){moveDressingBotLeft()},
 		swipeRight	:function(){moveDressingBotRight()},
 		threshold	:100
@@ -96,7 +36,7 @@ jQuery(document).ready(function($){
 		swipeLeft	:function(){moveDressingroomLeft()},
 		swipeRight	:function(){moveDressingroomRight()},
 		threshold	:100
-	});*/
+	});
     $("#dressingroomtop td.goleft img").click(function(){
         moveDressingroomLeft()
     });	
@@ -174,6 +114,14 @@ jQuery(document).ready(function($){
 	}
     
     
+    $("#dressingroomtop div.viewdetails").click(function(){
+         //$( "#productdetailpopup" ).dialog( "open" );
+         _dressingroomselectedcolor = _dressingroomcollection[getdressingroomrealindex(_dressingroomcurrentbodytype, 'top', _dressingroomtopindex)].color;
+         showproductlightbox(_dressingroomcollection[getdressingroomrealindex(_dressingroomcurrentbodytype, 'top', _dressingroomtopindex)].id);
+         
+        //console.log(_dressingroomcollection[getdressingroomrealindex(_dressingroomcurrentbodytype, 'top', _dressingroomtopindex)].id);
+    });
+    
     $("#productdetailpopup").dialog({
         autoOpen: false,
         show: "scale",
@@ -187,6 +135,11 @@ jQuery(document).ready(function($){
         dialogClass : 'yogidialog'
     });
         
+    $("#dressingroombottom div.viewdetails").click(function(){
+        _dressingroomselectedcolor = _dressingroomcollection[getdressingroomrealindex(_dressingroomcurrentbodytype, 'bottom', _dressingroomtopindex)].color; 
+        showproductlightbox(_dressingroomcollection[getdressingroomrealindex(_dressingroomcurrentbodytype, 'bottom', _dressingroombottomindex)].id);
+        //console.log(_dressingroomcollection[getdressingroomrealindex(_dressingroomcurrentbodytype, 'bottom', _dressingroombottomindex)].id);
+    });
     
     $("div#productdetailpopup img#closelightbox").live("click", function(){
         jQuery( "#productdetailpopup" ).dialog( "close" );
@@ -294,53 +247,3 @@ var _dressingroombottomindex = 0;
 var _dressingroomcurrentbodytype = '';
 var _isdressingroomanimating = false;
 var _dressingroomselectedcolor = '';
-
-function chkfixposition(){
-	var $topDress 	= $j('#dressingroomtop'),
-		$botDress	= $j('#dressingroombottom'),
-		$container	= $j('#dressingroomholder'),
-		contWidth	= $container.attr('actWidth'),
-		$topDH 		= parseInt($topDress.attr('actHeight')),
-		$botDH		= parseInt($botDress.attr('actHeight'))
-		$topSH 		= getScaledheight($topDH, contWidth),
-		$botSH		= getScaledheight($botDH, contWidth);
-	$j('.doverlay').fadeOut(250);
-	$j('#dressingroomtop .dritem').each(function(){
-		var dressimgpos = $j(this).attr('botpos');
-		var newbpos = getScaledheight(dressimgpos, contWidth)
-		$j(this).css({bottom: '-'+newbpos+'px'})
-	})
-	$topDress.height($topSH);
-	$botDress.height($botSH);
-	$j('#dressingroomholder img').each(function(){
-		var NewLeft = $j(this).width()/2;
-		$j(this).css({marginLeft: '-'+NewLeft+'px'})
-	})
-}
-function getScaledheight(originalheight, originalwidth)
-{
-    //console.log('calculating');
-    originalheight = originalheight * 1;
-    originalwidth = originalwidth * 1;
-	var h =((originalheight / originalwidth) * (jQuery("div#pagecontainer").width() * 1));
-    return Math.ceil(h);
-}
-
-function getScaledwidth(originalheight, originalwidth)
-{
-    //console.log('calculating');
-    originalheight = originalheight * 1;
-    originalwidth = originalwidth * 1;
-    w = ((originalwidth / originalheight) * _winH);
-	return Math.ceil(w);
-}
-$j(window).load(function(){
-	chkfixposition()
-})
-var id;
-$j(window).resize(function() {
-	$j('.doverlay').fadeIn(0);
-    clearTimeout(id);
-    id = setTimeout(chkfixposition, 500);
-    
-});
