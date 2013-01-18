@@ -55,9 +55,24 @@ jQuery(document).ready(function($){
     $(".viewdetails").click(function(){
          _dressingroomselectedcolor = $(this).attr('color');
          showproductlightbox($(this).attr('pid'));
-		 alert("sdfdsf")
     });
-	
+	$("#productdetailpopup").dialog({
+        autoOpen: false,
+        show: "scale",
+        hide: "scale",
+        width : 920,
+        minHeight : 530,
+        modal : true,
+        draggable : false,
+        position: { my: "center top",at: "center top+80" },
+        resizable : false,
+        dialogClass : 'yogidialog'
+    });
+        
+    
+    $(".ui-widget-overlay, div#productdetailpopup img#closelightbox").live("click", function(){
+        jQuery( "#productdetailpopup" ).dialog( "close" );
+    });
 	
     if($("div#dressingroom").length == 0)
         return;
@@ -174,23 +189,7 @@ jQuery(document).ready(function($){
 	}
     
     
-    $("#productdetailpopup").dialog({
-        autoOpen: false,
-        show: "scale",
-        hide: "scale",
-        width : 920,
-        minHeight : 530,
-        modal : true,
-        draggable : false,
-        position: { my: "center top",at: "center top+80" },
-        resizable : false,
-        dialogClass : 'yogidialog'
-    });
-        
     
-    $("div#productdetailpopup img#closelightbox").live("click", function(){
-        jQuery( "#productdetailpopup" ).dialog( "close" );
-    });
     
     $(window).resize(function(){
         //setTimeout(function(){ positiondressingroomtopimage(); }, 10);
