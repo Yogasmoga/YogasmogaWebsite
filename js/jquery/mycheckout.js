@@ -2,8 +2,8 @@ _usesecureurl = true;
 jQuery(document).ready(function($){
     //if($("div#checkout div:nth-child(2)").html().indexOf("support@intellectlabs.com") > 0)
 //        $("div#checkout div:nth-child(2)").hide();
-    if($("div.myheader:first").next().html().indexOf("support@intellectlabs.com") > 0)
-        $("div.myheader:first").next().hide();
+    //if($("div.myheader:first").next().html().indexOf("support@intellectlabs.com") > 0)
+//        $("div.myheader:first").next().hide();
     
     $("#checkout-login-form").submit(function(){
         return validateCheckoutLoginForm();
