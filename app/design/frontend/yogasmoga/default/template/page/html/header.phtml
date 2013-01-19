@@ -67,9 +67,15 @@
                             $base_url = Mage::helper('core/url')->getHomeUrl();
                             //if($this->getRequest()->getControllerName() == "product")
                             $currentcategoryid = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
-                            $itemcount = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
-                            if($itemcount == "")
-                                $itemcount = "0";
+                            //$itemcount = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
+//                            if($itemcount == "")
+//                                $itemcount = "0";
+                            $cart = Mage::getModel('checkout/cart')->getQuote()->getData();
+                            if(isset($cart['items_qty'])){
+                                $itemcount = (int)$cart['items_qty'];
+                            } else {
+                                $itemcount = 0;
+                            }
                             foreach (Mage::helper('catalog/category')->getStoreCategories() as $child) {
                                 if ($child->getIsActive()) {
                                     if($child->getId() == $currentcategoryid)

@@ -214,7 +214,13 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
     
     public function getcartcount()
     {
-        return Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
+        //return Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
+        $cart = Mage::getModel('checkout/cart')->getQuote()->getData();
+        if(isset($cart['items_qty'])){
+            return (int)$cart['items_qty'];
+        } else {
+            return 0;
+        }
     }
     
     public function getminicarthtml()
@@ -301,7 +307,8 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
         
         $minidetails['items'] = $miniitems;
-        $minidetails['totalitems'] = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
+        //$minidetails['totalitems'] = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
+        $minidetails['totalitems'] = $this->getcartcount();
         $minidetails['cartlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/cart";
         $minidetails['subtotal'] = "$".number_format((float)$subtotal, 2, '.','');// round(Mage::getModel('checkout/cart')->getQuote()->getGrandTotal(), 2);
         $minidetails['checkoutlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/onepage";
