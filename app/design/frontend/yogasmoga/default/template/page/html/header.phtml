@@ -117,7 +117,13 @@
         </table>
         
         <div class="revolvingmessage-container">
-        	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('revolvingmessage')->toHtml() ?>
+        	<?php 
+                if($this->helper('customer')->isLoggedIn())
+                    echo $this->getLayout()->createBlock('cms/block')->setBlockId('revolvingmessage_loggedin')->toHtml();
+                else
+                    echo $this->getLayout()->createBlock('cms/block')->setBlockId('revolvingmessage')->toHtml();
+            ?>
+                    
         </div>
         
         <div class="quick-access">
