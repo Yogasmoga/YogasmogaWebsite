@@ -2,7 +2,7 @@ var _sidenavtimer = '';
 jQuery(document).ready(function($){
 	// <![CDATA[
 	if ((navigator.userAgent.indexOf('iPad') != -1)) {
-		_headerHeight = 75;
+		$('#pgNavUp, #pgnavigator, #pgNavDown').css({display:'none'})
 	} // ]]>
 	
     var temp = $("div.pgsection").length;

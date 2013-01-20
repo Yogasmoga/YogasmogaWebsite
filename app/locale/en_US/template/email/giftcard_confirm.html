@@ -8,30 +8,49 @@
 body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
 @-->
 
-<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
-<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0; color:#2f2f2f;">
+<body style="background:#fff; font-family: Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<div style="background:#fff; font-family: Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0; line-height:1;">
 <table cellspacing="0" cellpadding="0" border="0" width="100%">
 <tr>
     <td align="center" valign="top" style="padding:20px 0 20px 0">
-        <table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0" width="650" style="border:1px solid #E0E0E0;">
+        <table bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" border="0" width="600" style="border:0;">
             <!-- [ header starts here] -->
             <tr>
-                <td valign="top"><a href="{{store url=""}}"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="{{var store.getFrontendName()}}"  style="margin-bottom:10px;" border="0"/></a></td>
+                <td valign="top" align="center"><a href="{{store url=""}}"><img src="{{var logo_url}}" alt="{{var logo_alt}}" style="margin:0 0 55px;" border="0"/></a></td>
             </tr>
             <!-- [ middle starts here] -->
             <tr>
                 <td valign="top">
-                    <p style="font-size:12px; line-height:16px; margin:0;">Your order at {{var store.getFrontendName()}} has been successfully processed, and the Gift Card has been sent to its addressee.</p>
+					<p style="color:#666; font-size:12px; line-height:18px; margin:0 0 20px; text-transform:uppercase;">Hello {{depend data.email-to}}, {{var data.email-to}}{{/depend}}!,</p>
+					<p style="color:#666; font-size:12px; line-height:18px; margin:0 0 20px;">Your order at {{var store.getFrontendName()}} has been successfully processed, and the Gift Card has been sent to its addressee.</p>
 				</td>
             </tr>
-			<tr>
-				<td bgcolor="#EAEAEA" align="left" style="background:#EAEAEA; text-align:left;">
-					<p style="font-size:12px; margin:0;">If you have any questions please contact us at <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#1E7EC8;">{{config path='trans_email/ident_support/email'}}</a>{{depend data.store-phone}} or call us at <span class="nobr">{{var data.store-phone}}</span> Monday - Friday, 8am - 5pm PST.{{/depend}}</p>
-				</td>
-			</tr>
-        </table>
-    </td>
-</tr>
+			
+			
+			
+					
+				   <tr>
+					<td style="border-bottom:1px solid #ccc; padding:40px 0;">
+						<p style="color:#666; font-size:12px; margin:15px 0;">If you have any comments or questions regarding your order, please email us any time at <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#f30f44; text-decoration:none;">{{config path='trans_email/ident_support/email'}}</a>.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" style="font-size:12px; padding-top:45px;">
+						<table cellpadding="0" cellspacing="0" border="0" width="100%">
+							<tr>
+								<td align="left">
+									<p  style="font-size:12px; margin:0;">Check your <a href="{{store url="customer/account/"}}" style="color:#f30f44; text-decoration:none;">Account status</a></p>
+								</td>
+								<td align="right">
+									<p  style="font-size:12px; margin:0;">Is this email not displaying correctly?<br/><a href="#" style="color:#f30f44; text-decoration:none;">View it in your browser.</a></p>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+            </table>
+        </td>
+    </tr>
 </table>
 </div>
 </body>

@@ -2,7 +2,7 @@
 	width:80%; 
 	margin:auto; 
 	position:absolute; 
-	bottom:7%; 
+	bottom:70px; 
 	left:10%;
 	}
 .explore_nav td {
@@ -24,3 +24,8 @@
 .explore_nav_current{
 	background:url('../images/homepage/explore_nav_hover.png') repeat-x center;
 }
+#explore .bx-wrapper{padding:100px 0; background:url(../images/homepage/car_bg.png) 52% 50% no-repeat; background-size:contain;}
+#explore #slider .carousel-img{position:relative;}
+#explore #slider .carousel-img img.bximg{height:100%; width:auto;}
+#explore #slider .carousel-desc{position:absolute; bottom:50px; left:65%;}
+#explore #slider .carousel-desc img{margin-bottom:40px;}

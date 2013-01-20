@@ -8,20 +8,21 @@
 body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
 @-->
 
-<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
-<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0; color:#2f2f2f;">
+<body style="background:#fff; font-family: Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<div style="background:#fff; font-family: Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0; line-height:1;">
 <table cellspacing="0" cellpadding="0" border="0" width="100%">
 <tr>
     <td align="center" valign="top" style="padding:20px 0 20px 0">
-        <table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0" width="650" style="border:1px solid #E0E0E0;">
+        <table bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" border="0" width="600" style="border:0;">
             <!-- [ header starts here] -->
             <tr>
-                <td valign="top"><a href="{{store url=""}}"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="{{var store.getFrontendName()}}"  style="margin-bottom:10px;" border="0"/></a></td>
+                <td valign="top" align="center"><a href="{{store url=""}}"><img src="{{var logo_url}}" alt="{{var logo_alt}}" style="margin:0 0 55px;" border="0"/></a></td>
             </tr>
             <!-- [ middle starts here] -->
             <tr>
-                <td valign="top">
-                    <p style="font-size:12px; line-height:16px; margin:0;">Your {{var store.getFrontendName()}} Gift Card is available to print. To print the Gift Card go to this page: <a href="{{var data.link}}">{{var data.link}}</a></p>
+                <td valign="top" style="padding:0 0 15px;">
+					<p style="color:#666; font-size:12px; line-height:18px; margin:0 0 20px; text-transform:uppercase;">Hello {{depend data.email-to}}, {{var data.email-to}}{{/depend}}!,</p>
+					<p style="color:#666; font-size:12px; line-height:18px; margin:0 0 20px;">Your {{var store.getFrontendName()}} Gift Card is available to print. To print the Gift Card go to this page: <a href="{{var data.link}}" style="text-decoration:none; color:#f30f44;">{{var data.link}}</a></p>
 				</td>
             </tr>
 			<tr>
@@ -30,34 +31,52 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
 				</td>
 			</tr>
 			<tr>
-				<td style="font-size:12px; line-height:16px; margin:0;">
-					Gift Card details:<br />
-					{{depend data.email-to}}to: {{var data.email-to}}<br />{{/depend}}
-					{{depend data.email-from}}from: {{var data.email-from}}<br />{{/depend}}
-					{{depend data.email-message}}message: {{var data.email-message}}<br />{{/depend}}
-					gift card value: {{var data.amount}}<br />
-					gift card claim code: {{var data.code}}<br />
+				<td style="font-size:20px; line-height:30px; padding:0 0 60px;">
+					{{depend data.email-message}}<p style="color:#666; font-size:12px; line-height:18px; margin:0 0 10px; padding:0 0 60px;" >{{var data.email-message}} <strong>-{{var data.email-from}}</strong></p>{{/depend}}
+				<p style="border-top:1px solid #000; color:#666; font-size:12px; line-height:22px; text-transform:uppercase;">
+				{{depend data.email-to}}<strong>to:</strong> {{var data.email-to}}<br />{{/depend}}
+                                        {{depend data.email-from}}<strong>from:</strong> {{var data.email-from}}<br />{{/depend}}					gift card value: <strong>{{var data.amount}}</strong><br />
+					gift card claim code: <strong>{{var data.code}}</strong><br />
+					</p>
 				</td>
 			</tr>
             <tr>
-                <td bgcolor="#EAEAEA" align="left" style="background:#EAEAEA; text-align:left;">
-					<p style="font-size:12px; margin:0;line-height:20px;">To redeem and use you gift card:
-						<ol style="font-size:12px; margin:0;line-height:20px;">
-							<li>Create an account and login into <a href="{{store url=""}}">{{store url=""}}</a>.</li>
+                <td style="padding: 0 0 30px">
+					<p style="font-size:12px; margin:0;line-height:20px; font-weight:bold; text-transform:uppercase;">To redeem and use you gift card:</p>
+						<ol style="font-size:12px; margin:0; font-weight:bold; line-height:20px;">
+							<li>Create an account and login into <a href="{{store url=""}}" style="text-decoration:none; color:#f30f44;">{{store url=""}}</a>.</li>
 							<li>Redeem the card in My Gift Cards page of My Account section.</li>
 							<li>Alternatively, you can redeem the card on My Cart page before proceeding to checkout.</li>
 						</ol>
-					</p>
 				</td>
             </tr>
-			<tr>
-				<td bgcolor="#EAEAEA" align="left" style="background:#EAEAEA; text-align:left;">
-					<p style="font-size:12px; margin:0;">If you have any questions please contact us at <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#1E7EC8;">{{config path='trans_email/ident_support/email'}}</a>{{depend data.store-phone}} or call us at <span class="nobr">{{var data.store-phone}}</span> Monday - Friday, 8am - 5pm PST.{{/depend}}</p>
-				</td>
-			</tr>
-        </table>
-    </td>
-</tr>
+			
+			
+			
+			
+					
+				   <tr>
+					<td style="border-bottom:1px solid #ccc; padding:40px 0;">
+						<p style="color:#666; font-size:12px; margin:15px 0;">If you have any comments or questions regarding your order, please email us any time at <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#f30f44; text-decoration:none;">{{config path='trans_email/ident_support/email'}}</a>.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" style="font-size:12px; padding-top:45px;">
+						<table cellpadding="0" cellspacing="0" border="0" width="100%">
+							<tr>
+								<td align="left">
+									<p  style="font-size:12px; margin:0;">Check your <a href="{{store url="customer/account/"}}" style="color:#f30f44; text-decoration:none;">order status</a></p>
+								</td>
+								<td align="right">
+									<p  style="font-size:12px; margin:0;">Is this email not displaying correctly?<br/><a href="#" style="color:#f30f44; text-decoration:none;">View it in your browser.</a></p>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+            </table>
+        </td>
+    </tr>
 </table>
 </div>
 </body>

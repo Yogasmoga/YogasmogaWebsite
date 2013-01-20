@@ -30,6 +30,7 @@
 	<a id="stripe-update-payment" class="use"><?php echo $this->__("Change payment information") ?></a>
 <?php endif; ?>
 <div id="payment_form_<?php echo $_code ?>">
+	<img src="<?php echo $this->getSkinUrl('images/cardtype.jpg'); ?>" style="margin: 0 0 40px;" />
     <div id="change-stripe-detail" <?php if (/*$this->getIsStripeCustomer()*/false): ?> style="display: none;"<?php endif; ?>>
         <?php //if ($this->getIsCustomerLoggedIn()||$this->getIsCustomerRegistering()) : ?>
         <?php if (false) : ?>

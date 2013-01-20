@@ -1,7 +1,7 @@
 jQuery(document).ready(function($){
 	_winH = $(window).height();
-	jQuery('#slider').find('img.bximg').each(function(){
-		$(this).height(_winH - 80)
+	jQuery('#slider').find('div.carousel-img').each(function(){
+		$(this).height(_winH - _headerHeight - 200);
 	})
 	  var slider=jQuery('#slider').bxSlider({
 		  auto:true,
@@ -16,13 +16,13 @@ jQuery(document).ready(function($){
 	  });
 	  jQuery(window).resize(function(){
 		_winH = $(window).height();
+		jQuery('#slider').find('img.bximg').each(function(){
+			$(this).height(_winH - _headerHeight - 200);
+		})
 		if(window.location.hash == '#section-explore' || window.location.hash == '#section-fbimage'){
 			var _expOfs = $('#explore').offset().top;
 			$('body,html').scrollTop(_expOfs-_headerHeight);
 		}
-		jQuery('#slider').find('img.bximg').each(function(){
-			$(this).height(_winH - _headerHeight)
-		})
 		  //var temp = slider.getCurrentSlide();
 		  //slider.stopShow();
 		  slider.reloadShow();
