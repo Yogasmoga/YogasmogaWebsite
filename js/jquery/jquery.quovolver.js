@@ -97,7 +97,12 @@
 			if(options.mapStyle)	{ customSelectSpan.attr('style', $this.attr('style')); }
 			
 			$this.bind('updateit',function(){
-				$this.change();
+				var currentSelected = $this.find(':selected');
+				var html = currentSelected.html() || '&nbsp;';
+				customSelectInnerSpan.html(html).parent().addClass('customSelectChanged');
+				setTimeout(function(){customSelectSpan.removeClass('customSelectOpen');},60);
+			
+			
 				var sboxW = $this.outerWidth();
 				var cssMrg = $this.css('margin-top');
 				var selectBoxWidth = parseInt(sboxW) - (parseInt(customSelectSpan.outerWidth()) - parseInt(customSelectSpan.width()) );			
