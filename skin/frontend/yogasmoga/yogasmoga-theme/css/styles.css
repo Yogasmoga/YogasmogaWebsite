@@ -2510,8 +2510,8 @@ div.searchitems td {
 	letter-spacing:0.6px;
 	}
 
-table.staticproductgrid
-{
+table.staticproductgrid{
+margin:0 auto;
 }
 table.staticproductgrid td
 {
@@ -2977,7 +2977,7 @@ div.opimage .small h3.heading{color:#dd8820; font-style:italic;font-family:gotha
 #clrimage .opbox.cac{width:300px; left:15%; bottom:10%;}
 #clrimage .opbox.cdb{width:330px; right:20%; bottom:5%;}
 
-#clrimage .opbox.centered{top:50%; left:50%; margin:-125px 0 0 -155px; width:325px; font-size:13px; line-height:18px;}
+#clrimage .opbox.centered{top:50%; left:50%; margin:-125px 0 0 -164px; width:325px; font-size:13px; line-height:18px;}
 #clrimage .opbox.centered p{padding:0 15px;}
 #clrimage .centered h3.heading{font-family:ITCAvantGardeProBd; font-weight:normal; font-size:30px;color:#333; text-transform:uppercase; font-style:normal; background:url(../images/homepage/bg-h.png) 50% 100% no-repeat; margin:0 0 20px; padding:0 0 20px; line-height:1;}
 #clrimage .centered h3.heading span{display:block;font-family:ITCAvantGardeProBk;}
@@ -2999,6 +2999,7 @@ div.opimage .small
 	font-family:gothamMedium;
 	font-size:12px;
     z-index: 2;
+	background-attachment:fixed; background-position:50% 80px; background-repeat:no-repeat; background-size:100%;
 }
 div.sidenavpopup
 {
