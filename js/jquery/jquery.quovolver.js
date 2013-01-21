@@ -89,39 +89,37 @@
 	  return this.each(function() {
 	  		var $this = $(this);
 			var customSelectInnerSpan = $('<span class="customSelectInner" />');
-			var customSelectSpan = $('<span class="customSelect" />').append(customSelectInnerSpan);
-			$this.after(customSelectSpan);
+			var customSelectSpan = $('<div class="customSelect" />')
+			if(!$this.attr('csel')){
+				$this.attr('csel', 'true').wrap(customSelectSpan).after(customSelectInnerSpan);
+			}
 			
-			if(options.customClass)	{ customSelectSpan.addClass(options.customClass); }
-			if(options.mapClass)	{ customSelectSpan.addClass($this.attr('class')); }
-			if(options.mapStyle)	{ customSelectSpan.attr('style', $this.attr('style')); }
+			if(options.customClass)	{ $this.parent().addClass(options.customClass); }
+			if(options.mapClass)	{ $this.parent().addClass($this.attr('class')); }
+			//if(options.mapStyle)	{ $this.parent().attr('style', $this.attr('style')); }
 			
 			$this.bind('updateit',function(){
-				
-				var currentSelected = $this.find(':selected');
-				var html = currentSelected.html() || '&nbsp;';
+				var html = ($('option:selected', $this).text()) || '&nbsp;';
 				customSelectInnerSpan.html(html).parent().addClass('customSelectChanged');
-				setTimeout(function(){customSelectSpan.removeClass('customSelectOpen');},60);
+				setTimeout(function(){$this.parent().removeClass('customSelectOpen');},60);
 			
 			
 				var sboxW = $this.outerWidth();
 				var cssMrg = $this.css('margin-top');
-				var selectBoxWidth = parseInt(sboxW) - (parseInt(customSelectSpan.outerWidth()) - parseInt(customSelectSpan.width()) );			
-				customSelectSpan.css({width:sboxW-12, display:'block', marginTop:cssMrg});
+				var selectBoxWidth = parseInt(sboxW) - (parseInt($this.parent().outerWidth()) - parseInt($this.parent().width()) );			
 				customSelectInnerSpan.css({width:selectBoxWidth, display:'inline-block'});
-				var selectBoxHeight = customSelectSpan.outerHeight();
-				$this.css({'-webkit-appearance':'menulist-button',width:sboxW+12,position:'absolute', opacity:0,height:selectBoxHeight,fontSize:customSelectSpan.css('font-size')});
+				$this.css({'-webkit-appearance':'menulist-button',width:sboxW,position:'absolute', opacity:0,fontSize:$this.parent().css('font-size')});
+				$this.parent().css({width:sboxW-12, display:'block', marginTop:cssMrg});
 			}).change(function(){
-				var currentSelected = $this.find(':selected');
-				var html = currentSelected.html() || '&nbsp;';
+				var html = ($('option:selected', $this).text()) || '&nbsp;';
 				customSelectInnerSpan.html(html).parent().addClass('customSelectChanged');
-				setTimeout(function(){customSelectSpan.removeClass('customSelectOpen');},60);
+				setTimeout(function(){$this.parent().removeClass('customSelectOpen');},60);
 			}).bind('mousedown',function(){
-				customSelectSpan.toggleClass('customSelectOpen');
+				$this.parent().toggleClass('customSelectOpen');
 			}).focus(function(){
-				customSelectSpan.addClass('customSelectFocus');
+				$this.parent().addClass('customSelectFocus');
 			}).blur(function(){
-				customSelectSpan.removeClass('customSelectFocus customSelectOpen');
+				$this.parent().removeClass('customSelectFocus customSelectOpen');
 			}).trigger('updateit');
 			
 	  });

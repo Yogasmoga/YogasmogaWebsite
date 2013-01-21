@@ -489,6 +489,7 @@ select option{padding:3px; background:#fff; border:0;}
 .customSelect.customSelectOpen {
 	
 }
+.cmbsize{display:none !important;}
 .customSelect.customSelectFocus {
 /* Styles for when the select box is in focus */
 }
@@ -1850,7 +1851,7 @@ ul.topmenulinks li a,ul.topmenulinks li a:visited
     text-transform: uppercase;
 }
 div#toprevolvingmessage blockquote{
-	display:block; padding:0 10px; position:relative; line-height:19px;
+	display:block; padding:0 10px; position:relative; line-height:19px; color:#999;
 }
 div#toprevolvingmessage blockquote a{line-height:18px;}
 div#toprevolvingmessage blockquote a.next{position:absolute; right:0; top:0;}

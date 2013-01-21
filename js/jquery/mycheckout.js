@@ -101,6 +101,8 @@ jQuery(document).ready(function($){
         {
             $("#checkout-shipping-address-new").show();
             $("#shippingaddressselectionblock").addClass('addressselector');    
+			
+			jQuery('select').customSelect();
         }
         else
         {
@@ -146,6 +148,7 @@ function checkbillingnewaddress()
     {
         jQuery("#billing-new-address-form").show();
         jQuery("#billingaddressselectionblock").addClass('addressselector');    
+			jQuery('select').customSelect();
     }
     else
     {
