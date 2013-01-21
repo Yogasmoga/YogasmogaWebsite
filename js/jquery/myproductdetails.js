@@ -19,7 +19,7 @@ jQuery(document).ready(function($){
         $("td#tdpopupproductbigimage img").attr("src", $(this).attr("bigimageurl"));
         $("td#tdpopupproductbigimage img").fadeIn('fast');
     });
-    
+        
     $("#orderitem, #preorderitem").live("click", function(){
         if(_addingtocart)
             return;
@@ -30,6 +30,7 @@ jQuery(document).ready(function($){
         changeproductsize($(this));
     });
     
+    _productorderqty = $("div.sizeselector select.qtyselector").val();
     $("div.sizeselector select.qtyselector").live("click", function(){
         changeOrderqty($(this).val());
     });

@@ -500,7 +500,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                                     <div class="sizeselector">
                                         <select class="qtyselector">
                                             <?php
-                                                for($i = 0; $i < 21; $i++)
+                                                for($i = 1; $i < 21; $i++)
                                                 {
                                                     ?>
                                                         <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
