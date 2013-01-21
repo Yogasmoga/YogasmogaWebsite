@@ -237,7 +237,7 @@
     
 ?>
     
-    <div id="productdetails" desc="<?php echo $productname; ?>" class="fullscreen pgsection" style="position: relative;">
+    <div id="productdetails" desc="<?php echo $productname; ?>" class="fullscreen pgsection" style="position: relative;" hdependson="absproductoptions">
     <script type="text/javascript">
         var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
     </script>
@@ -355,7 +355,7 @@
             </td>
         </tr>
     </table>
-    <div class="productoptions absoluteproductoptions">
+    <div id="absproductoptions" class="productoptions absoluteproductoptions">
         <?php //echo Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId()); ?>
         <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId(Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId()))->toHtml(); ?>
 		

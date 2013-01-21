@@ -64,9 +64,15 @@ function setfullscreenheight()
         }
         else
         {
-            
-            jQuery(this).find("table.fullscreentable").css('min-height',(_winH) + 'px');
-            jQuery(this).find("table.fullscreentable").css('height',(_winH) + 'px');   
+            var tempheight = _winH;
+            if(jQuery(this).hasAttribute("hdependson"))
+            {
+                tempheight = jQuery("#" + jQuery(this).attr("hdependson")).height();
+                if(tempheight < _winH)
+                    tempheight = _winH; 
+            }
+            jQuery(this).find("table.fullscreentable").css('min-height',(tempheight) + 'px');
+            jQuery(this).find("table.fullscreentable").css('height',(tempheight) + 'px');   
         }
     });
     jQuery(".fullscreenovfhidden img.fullscreen").each(function(){
