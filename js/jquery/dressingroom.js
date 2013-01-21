@@ -1,6 +1,10 @@
 jQuery(document).ready(function($){
 	$('#dressingroombottom .dritem:first, #dressingroomtop .dritem:first').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 200).addClass('active');
-	
+	$('a.grid-link').click(function(e){
+		e.preventDefault();
+		var ref=$(this).attr('href');
+		$('html,body').animate({scrollTop: $(ref).offset().top},500)
+	})
 	$('#dressingroombottom, #dressingroomtop').mouseenter(function(){
 		$(this).find('a.prevBtn').stop(true,true).fadeIn(100);
 		$(this).find('a.nextBtn').stop(true,true).fadeIn(100);

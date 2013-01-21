@@ -2351,7 +2351,7 @@ table.myproduct-grid
 
 .productgrid-holder
 {
-    padding-top : 35px;
+    padding-top : 35px; position:relative;
 }
 
 .sidenavigationadjuster
@@ -2392,6 +2392,13 @@ div.mycategory-products div.item td.animateimage
 div.mycategory-products div.item td.animateimage img.inactive
 {
     display : inline;
+}
+a.grid-link{
+  clear: both;
+  float: left;
+  font-family: gotham;
+  font-size: 11px;
+  text-transform: uppercase;
 }
 /*
 div.mycategory-products div.item:hover td.animateimage img.inactive
@@ -2510,8 +2517,11 @@ div.searchitems td {
 	letter-spacing:0.6px;
 	}
 
-table.staticproductgrid{
-margin:0 auto;
+table.staticproductgrid {
+  width: 100%;
+}
+div.mycategory-products table.staticproductgrid  div.item table{
+	width:auto; margin:0 auto;
 }
 table.staticproductgrid td
 {
