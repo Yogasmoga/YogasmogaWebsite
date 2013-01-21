@@ -97,6 +97,7 @@
 			if(options.mapStyle)	{ customSelectSpan.attr('style', $this.attr('style')); }
 			
 			$this.bind('updateit',function(){
+				
 				var currentSelected = $this.find(':selected');
 				var html = currentSelected.html() || '&nbsp;';
 				customSelectInnerSpan.html(html).parent().addClass('customSelectChanged');
