@@ -4,7 +4,6 @@ jQuery(document).ready(function($){
 //        $("div#checkout div:nth-child(2)").hide();
     //if($("div.myheader:first").next().html().indexOf("support@intellectlabs.com") > 0)
 //        $("div.myheader:first").next().hide();
-    
     $("#checkout-login-form").submit(function(){
         return validateCheckoutLoginForm();
     });
@@ -12,6 +11,8 @@ jQuery(document).ready(function($){
     $("div#checkout-guest-continue").click(function(){
         _checkoutmethod = 'register';
         $("div#billing-password").show();
+        $("billing\\:customer_password").addClass('requiredfield');
+        $("billing\\:confirm_password").addClass('requiredfield');
         saveCheckoutMethod();
     });
     
