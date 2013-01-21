@@ -2,6 +2,9 @@ _usesecureurl = true;
 jQuery(document).ready(function($){
     $("#login-form").submit(function(){
         return validateLoginForm();
+        //alert($("#login-form").serialize());
+        //console.log($("#login-form").serialize());
+        //return false;
     });
     
     $("#forgot-password-form").submit(function(){
