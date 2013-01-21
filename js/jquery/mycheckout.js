@@ -148,7 +148,6 @@ function checkbillingnewaddress()
     {
         jQuery("#billing-new-address-form").show();
         jQuery("#billingaddressselectionblock").addClass('addressselector');    
-			jQuery('select').customSelect();
     }
     else
     {
@@ -171,6 +170,7 @@ function getCartSummary()
             positionordersummary();
         }
     });
+	jQuery('select').customSelect();
 }
 
 function submitcheckout()
