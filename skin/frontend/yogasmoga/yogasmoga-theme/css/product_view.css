@@ -846,3 +846,8 @@ img#closesmlight
     background: -moz-linear-gradient(top, rgba(255,255,255,.6) 0%, rgba(255,255,255,0) 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.6)), color-stop(100%,rgba(255,255,255,0)));
 }
+button.btn-bag.bagdisabled span
+{
+    background-image : url('../images/catalog/product/add_to_bag_disabled.png');
+    height : 42px;
+}
