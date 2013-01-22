@@ -28,14 +28,14 @@
 #explore #slider .carousel-img{position:relative;}
 #explore #slider .carousel-img img.bximg{height:100%; width:auto;}
 #explore #slider .carousel-desc {
-  bottom: 50px;
+  bottom: 0px;
+  padding-bottom:50px;
   left: 65%;
   position: absolute;
   right: 50px;
-  text-align: left;
-  top: 0;
+  text-align: center;
 }
-#explore #slider .carousel-desc img{margin-bottom:40px; max-height:100%; max-width:100%;}
+#explore #slider .carousel-desc img{max-height:200px;}
 
 .bx-controls {
   background: none repeat scroll 0 0 #666666;
@@ -63,4 +63,7 @@
 }
 .bx-pager-item a.active{
   background: none repeat scroll 0 0 #666666;
+}
+#explore #slider .carousel-desc button.button{
+ width:138px; position:absolute; left:50%; margin-left:-69px; bottom:0;
 }
