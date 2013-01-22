@@ -230,6 +230,7 @@ table.productdetailtable div#sizecontainer table td div
 table.productdetailtable div#sizecontainer table td div.dvselectedsize
 {
     border-bottom-color: black;
+	color:#f30f44;
 }
 
 /*
