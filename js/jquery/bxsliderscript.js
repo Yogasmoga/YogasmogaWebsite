@@ -7,16 +7,12 @@ jQuery(document).ready(function($){
 		  auto:true,
 	      pause:4000,
 	      speed:800,
-		  controls:false,
-		  onNextSlide: function(currentSlideNumber, totalSlideQty, currentSlideHtmlObject){
-		  jQuery("table.explore_nav td").removeClass('explore_nav_current');
-		  		jQuery("table.explore_nav td:nth-child(" + (currentSlideNumber + 1) + ")").addClass('explore_nav_current');
-		  		//nav();
-		}
+		  controls:false
 	  });
 	  jQuery(window).resize(function(){
 		_winH = $(window).height();
-		jQuery('#slider').find('img.bximg').each(function(){
+		jQuery('.bx-viewport').height(_winH - _headerHeight - 200);
+		jQuery('#slider').find('.carousel-img').each(function(){
 			$(this).height(_winH - _headerHeight - 200);
 		})
 		if(window.location.hash == '#section-explore' || window.location.hash == '#section-fbimage'){
@@ -25,7 +21,7 @@ jQuery(document).ready(function($){
 		}
 		  //var temp = slider.getCurrentSlide();
 		  //slider.stopShow();
-		  slider.reloadShow();
+		  //slider.reloadShow();
   		//slider.goToSlide(temp);
   		//slider.startShow();
 	  });

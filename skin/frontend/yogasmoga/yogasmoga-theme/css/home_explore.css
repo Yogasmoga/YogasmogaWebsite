@@ -27,5 +27,40 @@
 #explore .bx-wrapper{padding:100px 0; background:url(../images/homepage/car_bg.png) 52% 50% no-repeat; background-size:contain;}
 #explore #slider .carousel-img{position:relative;}
 #explore #slider .carousel-img img.bximg{height:100%; width:auto;}
-#explore #slider .carousel-desc{position:absolute; bottom:50px; left:65%;}
-#explore #slider .carousel-desc img{margin-bottom:40px;}
+#explore #slider .carousel-desc {
+  bottom: 50px;
+  left: 65%;
+  position: absolute;
+  right: 50px;
+  text-align: left;
+  top: 0;
+}
+#explore #slider .carousel-desc img{margin-bottom:40px; max-height:100%; max-width:100%;}
+
+.bx-controls {
+  background: none repeat scroll 0 0 #666666;
+  bottom: 65px;
+  height: 1px;
+  left: 10%;
+  position: absolute;
+  right: 10%;
+}
+.bx-pager{border-left:1px solid #666; height:5px; display:block;  margin-top:-2px;}
+.bx-pager-item {
+  display: block;
+  float: left;
+  height: 5px;
+  width: 25%;
+}
+
+.bx-pager-item a{
+  background: none;
+  display: block;
+  border-right:1px solid #666;
+  overflow:hidden;
+  padding:2px;
+  height: 1px;
+}
+.bx-pager-item a.active{
+  background: none repeat scroll 0 0 #666666;
+}

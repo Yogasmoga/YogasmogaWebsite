@@ -1,10 +1,5 @@
 var _sidenavtimer = '';
-jQuery(document).ready(function($){
-	// <![CDATA[
-	if ((navigator.userAgent.indexOf('iPad') != -1)) {
-		$('#pgNavUp, #pgnavigator, #pgNavDown').css({display:'none'})
-	} // ]]>
-	
+jQuery(document).ready(function($){	
     var temp = $("div.pgsection").length;
     if(temp <= 2)
         $("#pageScrollerNav").hide();
@@ -118,6 +113,10 @@ jQuery(document).ready(function($){
             $("div.sidenavpopup").removeClass('pgup').removeClass('pgdown');
         }, 200);
     });
+	// <![CDATA[
+	if ((navigator.userAgent.indexOf('iPad') != -1)) {
+		$('#pgNavUp, #pgnavigator, #pgNavDown').css({display:'none !important'})
+	} // ]]>
 });
 
 function changesidenavpopupdesc()
