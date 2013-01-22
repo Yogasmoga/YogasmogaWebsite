@@ -189,11 +189,12 @@ function filterimages()
     var temp = '';
     if(sbestfor != '')
         temp += "bestfor_" + sbestfor + ".";
+    if(scolor != '')
+        temp += "color_" + scolor + ".";
     
     if(scolor != '' && sbestfor != '' && scat != '')
     //if(scolor != '')// && sbestfor != '')
     {
-        temp += "color_" + scolor + ".";
         _rotateprimages = false;
         jQuery("div#mycategory_products div.item td.animateimage a").hide();
     }
