@@ -183,7 +183,7 @@ function StartZooming(scale)
         realheight = 700;
     }
 	var initialzoom;
-	var ImgScrRatio = jQuery("#zoomedproductimage").width() / jQuery("img#zoomedimage").width();
+	var ImgScrRatio = (_winW-250) / jQuery("img#zoomedimage").width();
 	if(ImgScrRatio < 1){
 		initialzoom = ImgScrRatio*100;
 	}else{
