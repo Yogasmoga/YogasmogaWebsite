@@ -178,8 +178,8 @@ function filterimages()
 //    if(jQuery("div.mylayerednavigation div[searchattr='color']").has("table.active").length > 0)
 //        scolor = jQuery.trim(jQuery("div.mylayerednavigation div[searchattr='color'] table.active td:first").html()).replace(" ","_").toLowerCase();
 
-    //if(jQuery("div.mylayerednavigation div[searchattr='cat']").has("table.active").length > 0)
-//        scat = jQuery("div.mylayerednavigation div[searchattr='cat']").has("table.active").attr("searchval");
+    if(jQuery("div.mylayerednavigation div[searchattr='cat']").has("table.active").length > 0)
+        scat = jQuery("div.mylayerednavigation div[searchattr='cat']").has("table.active").attr("searchval");
     if(jQuery("div.mylayerednavigation div[searchattr='bestfor']").has("table.active").length > 0)
         sbestfor = jQuery("div.mylayerednavigation div[searchattr='bestfor']").has("table.active").attr("searchval");
     if(jQuery("div.mylayerednavigation div[searchattr='color']").has("table.active").length > 0)
@@ -189,7 +189,10 @@ function filterimages()
     var temp = '';
     if(sbestfor != '')
         temp += "bestfor_" + sbestfor + ".";
-    if(scolor != '')// && sbestfor != '')
+    if(scolor != '')
+        temp += "color_" + scolor + ".";
+    
+    if(scolor != '' && scat != '' && sbestfor != '')// && sbestfor != '')
     {
         _rotateprimages = false;
         jQuery("div#mycategory_products div.item td.animateimage a").hide();
@@ -220,8 +223,7 @@ function filterimages()
             jQuery(this).find("img.default.rotable:first").addClass('active');
         });
         //jQuery("div#mycategory_products div.item td.productimage img.default.rotable:first-child").addClass('active');
-    }
-    
+    }    
 }
 
 function filternavigation1(searchattr)
