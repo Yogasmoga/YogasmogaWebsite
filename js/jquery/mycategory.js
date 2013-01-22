@@ -189,8 +189,6 @@ function filterimages()
     var temp = '';
     if(sbestfor != '')
         temp += "bestfor_" + sbestfor + ".";
-    if(scolor != '')
-        temp += "color_" + scolor + ".";
     
     if(scolor != '' && sbestfor != '' && scat != '')
     //if(scolor != '')// && sbestfor != '')
