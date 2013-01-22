@@ -115,7 +115,7 @@ jQuery(document).ready(function($){
     });
 	// <![CDATA[
 	if ((navigator.userAgent.indexOf('iPad') != -1)) {
-		$('#pgNavUp, #pgnavigator, #pgNavDown').css({display:'none !important'})
+		$('#pgNavUp, #pgnavigator, #pgNavDown').fadeOut(0).addClass('nodisplay');
 	} // ]]>
 });
 

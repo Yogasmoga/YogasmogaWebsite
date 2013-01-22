@@ -326,7 +326,7 @@ function getScaledheight(originalheight, originalwidth)
     originalheight = originalheight * 1;
     originalwidth = originalwidth * 1;
 	var h =((originalheight / originalwidth) * (jQuery("div#pagecontainer").width() * 1));
-    return Math.ceil(h);
+    return Math.round(h);
 }
 
 function getScaledwidth(originalheight, originalwidth)
