@@ -516,7 +516,10 @@
     {
         $imgdata = json_decode(trim($_image->getLabel()), true);
         if($imgdata == NULL)
+        {
+            //echo $_image->getLabel();
             continue;
+        }
         
         
         if(strcasecmp($imgdata['type'],"fabric image big") == 0)
@@ -819,6 +822,20 @@
      }
 ?>
 */ ?>
+<?php
+    $fabric_block = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'fabric_technology', Mage::app()->getStore()->getStoreId());// $_product->getAttributeText('fabric_technology');
+    if($fabric_block != "")
+        $fabric_block_html = $this->getLayout()->createBlock('cms/block')->setBlockId($fabric_block)->toHtml();
+    if($fabric_block_html != "")
+    {
+        ?>
+            <div smorigwidth="1600" smorigheight="300" id="ftechimage" origwidth="1600" origheight="900" desc="abcd" origwidthsm="1600" origheightsm="900" class="opimage closed" style="background-image:url(<?php echo $this->getSkinUrl('images/homepage/fabric_technology-bg.jpg'); ?>); margin:0 0 80px;">
+            	<?php echo $fabric_block_html; ?>
+            </div>
+        <?php
+    }
+?>
+<?php /*
 <div smorigwidth="1600" smorigheight="300" id="ftechimage" origwidth="1600" origheight="900" desc="abcd" origwidthsm="1600" origheightsm="900" class="opimage closed" style="background-image:url(<?php echo $this->getSkinUrl('images/homepage/fabric_technology-bg.jpg'); ?>); margin:0 0 80px;">
 	<div class="small" style="background-image:url(<?php echo $this->getSkinUrl('images/homepage/fabric_technology-bg.jpg'); ?>);">
 		<div style="top:50%; margin-top:-40px;">
@@ -868,6 +885,7 @@
 		</div>
 	</div>
 </div>
+*/ ?>
 <?php
      if($ftimage != "" && $ftimagesmall != "")
      {
