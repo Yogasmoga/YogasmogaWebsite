@@ -178,8 +178,8 @@ function filterimages()
 //    if(jQuery("div.mylayerednavigation div[searchattr='color']").has("table.active").length > 0)
 //        scolor = jQuery.trim(jQuery("div.mylayerednavigation div[searchattr='color'] table.active td:first").html()).replace(" ","_").toLowerCase();
 
-    if(jQuery("div.mylayerednavigation div[searchattr='cat']").has("table.active").length > 0)
-        scat = jQuery("div.mylayerednavigation div[searchattr='cat']").has("table.active").attr("searchval");
+    //if(jQuery("div.mylayerednavigation div[searchattr='cat']").has("table.active").length > 0)
+//        scat = jQuery("div.mylayerednavigation div[searchattr='cat']").has("table.active").attr("searchval");
     if(jQuery("div.mylayerednavigation div[searchattr='bestfor']").has("table.active").length > 0)
         sbestfor = jQuery("div.mylayerednavigation div[searchattr='bestfor']").has("table.active").attr("searchval");
     if(jQuery("div.mylayerednavigation div[searchattr='color']").has("table.active").length > 0)
@@ -189,9 +189,7 @@ function filterimages()
     var temp = '';
     if(sbestfor != '')
         temp += "bestfor_" + sbestfor + ".";
-    
-    if(scolor != '' && sbestfor != '' && scat != '')
-    //if(scolor != '')// && sbestfor != '')
+    if(scolor != '')// && sbestfor != '')
     {
         temp += "color_" + scolor + ".";
         _rotateprimages = false;
@@ -305,8 +303,6 @@ function filternavigation(searchattr)
             jQuery("div.mylayerednavigation div.subcategory." + jQuery(this).attr("searchval")).show();    
     });
     jQuery("div.colorfilters").hide();
-    
-    
     
     var scat = '';
     var sbestfor = '';
