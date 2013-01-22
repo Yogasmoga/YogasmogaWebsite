@@ -54,7 +54,9 @@ jQuery(document).ready(function($){
         jQuery("table.zoomproductdetail table.zoomsmallimagecontainer td").removeClass('selectedimage');
         $(this).addClass('selectedimage');
         jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage' src='" + $(this).attr("zoomimageurl") + "' />");
-        StartZooming();
+		$("img#zoomedimage").one('load', function(){
+			StartZooming();	
+		});
     });
     
      $("div#zoompopup div#zoomoptions img#zoomin:not(.disabled)").mousedown(function(){
@@ -179,10 +181,17 @@ function StartZooming(scale)
         
         realwidth = 700;
         realheight = 700;
-    }   
+    }
+	var initialzoom;
+	var ImgScrRatio = jQuery("#zoomedproductimage").width() / jQuery("img#zoomedimage").width();
+	if(ImgScrRatio < 1){
+		initialzoom = ImgScrRatio*100;
+	}else{
+		initialzoom = 1*100;
+	}
     //var initialzoom = Math.floor(Math.random() * (100 - 50 + 1)) + 50;
 //    initialzoom = 150;
-    var initialzoom = getZoomPercent(realwidth, realheight, orgwidth, orgheight);
+    //var initialzoom = getZoomPercent(realwidth, realheight, orgwidth, orgheight);
     if(jQuery("img#zoomedimage").hasClass('fabricimage'))
         _minzoomscale = getZoomPercent(700, 700, temp[1] * 1, temp[2] * 1);
     else
@@ -194,7 +203,7 @@ function StartZooming(scale)
         height : _winH + _headerHeight,
         max_WIDTH : _winW - 250,
         max_HEIGHT : _winH + _headerHeight,
-        //initial_ZOOM : initialzoom,
+        initial_ZOOM : initialzoom,
 		zoom_MAX: 100,
         zoom_MIN : _minzoomscale,
         responsive : true,
