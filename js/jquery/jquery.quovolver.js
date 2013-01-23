@@ -88,6 +88,7 @@
 	  
 	  return this.each(function() {
 	  		var $this = $(this);
+			if($this.is(':visible')){
 			var customSelectInnerSpan = $('<span class="customSelectInner" />');
 			var customSelectSpan = $('<div class="customSelect" />')
 			if(!$this.attr('csel')){
@@ -121,7 +122,7 @@
 			}).blur(function(){
 				$this.parent().removeClass('customSelectFocus customSelectOpen');
 			}).trigger('updateit');
-			
+			}
 	  });
 	  }
 	}
