@@ -189,14 +189,19 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
     }
     
     
-    public function getMiniImage($productid, $color)
+    function getMiniImage($productid, $color)
     {
         $_gallery = Mage::getModel('catalog/product')->load($productid)->getMediaGalleryImages();
         foreach($_gallery as $_image)
         {
-            if(strpos($_image->getLabel(), $color) === false)
-            //if(strpos($_image->getLabel(),"*") === false)
+            $imgdata = json_decode(trim($_image->getLabel()), true);
+            if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0)
                 continue;
+            if($imgdata['color'] != $color)
+                continue;
+            //if(strpos($_image->getLabel(), $color) === false)
+//            //if(strpos($_image->getLabel(),"*") === false)
+//                continue;
             return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(50, 50);
         }
         return "";
@@ -268,7 +273,8 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                     $temparray['size'] = $_product->getAttributeText('size');
                     $temparray['quantity'] = $item->getQty();
                     $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
-                    $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), $temparray['color']);
+                    //$temparray['imageurl'] = $this->getMiniImage($item->getProductId(), $temparray['color']);
+                    $temparray['imageurl'] = getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
                     $temparray['itemid'] = $item->getItemId();
                     $temparray['producturl'] = Mage::getModel('catalog/product')->load($item->getProductId())->getProductUrl();
                     array_push($miniitems, $temparray);
