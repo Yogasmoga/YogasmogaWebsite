@@ -238,6 +238,7 @@ function reordersubsteps(stp)
             break;
     }
     stp.removeClass('inactive');
+	jQuery('select').customSelect();
 }
 
 function reordersteps(stp)
