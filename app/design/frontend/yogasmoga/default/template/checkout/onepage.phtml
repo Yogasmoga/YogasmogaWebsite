@@ -35,11 +35,6 @@
         $tax = round($totals['tax']->getValue()); //Tax value if present
     }
 ?>
-<script type="text/javascript">
-    window.onbeforeunload = function() {
-        return "If you leave the cart all information will be lost.";
-    }
-</script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/mycheckout.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/myaccount.css'); ?>" media="all" />
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/checkout.css'); ?>" media="all" />
