@@ -3048,10 +3048,12 @@ div.searchitems table.grayed
     opacity:0.6;
     filter:alpha(opacity=60); /* For IE8 and earlier */
 }
+/*
 div.searchitems div.pcategory img
 {
     display : none;
 }
+*/
 div.colorfilters
 {
     display : none;

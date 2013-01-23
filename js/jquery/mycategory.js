@@ -51,12 +51,13 @@ jQuery(document).ready(function($){
                 else
                 {
                     $(this).addClass('closed');
+                    $(this).find("table:first").removeClass('inactive').addClass('active'); //Added to remove accessories always while closing
                     jQuery("div.mylayerednavigation div.subcategory." + searchval + " table").removeClass('active').addClass('inactive');
                     jQuery("div.mylayerednavigation div.subcategory." + searchval).fadeOut('fast');
-                    filterproducts(searchattr);
-                    $('div#mycategory_products').isotope({ filter: "div.filtered"}, function($items){ showvisibleproductcount($items.length);});
+                    //filterproducts(searchattr);
+//                    $('div#mycategory_products').isotope({ filter: "div.filtered"}, function($items){ showvisibleproductcount($items.length);});
                 }    
-                return;
+                //return;
             }
         }
         
