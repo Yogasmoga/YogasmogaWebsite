@@ -118,7 +118,8 @@
 
 button.btn-checkout span{padding:0; width:284px; text-indent:-999em; height:43px; margin:0; background:url(../images/checkout-btn.png) 0 0 no-repeat; border:0;}
 button.btn-login span{padding:0; width:88px; text-indent:-999em; height:28px; margin:0; background:url(../images/btn-login.png) 0 0 no-repeat; border:0;}
-button.btn-apply span{padding:0; width:88px; text-indent:-999em; height:28px; margin:0; background:url(../images/btn-apply.png) 0 0 no-repeat; border:0;}
+button.button.btn-apply span{padding:0; width:88px; text-indent:-999em; height:28px; margin:0; background:url(../images/btn-apply.png) 0 0 no-repeat; border:0;}
+button.button.btn-removebucks span{padding:0; width:88px; text-indent:-999em; height:28px; margin:0; background:url(../images/btn-apply.png) 0 0 no-repeat; border:0;}
 button.btn-invite span{padding:0; width:92px; text-indent:-999em; height:29px; margin:0; background:url(../images/btn-invite.png) 0 0 no-repeat; border:0;}
 button.btn-reset span{padding:0; width:89px; text-indent:-999em; height:29px; margin:0; background:url(../images/btn-reset.png) 0 0 no-repeat; border:0;}
 button.btn-addtobag span{padding:0; width:147px; text-indent:-999em; height:29px; margin:0; background:url(../images/btn-addtobag.png) 0 0 no-repeat; border:0;}
@@ -126,6 +127,7 @@ button.btn-copy span{padding:0; width:92px; text-indent:-999em; height:29px; mar
 
 button.btn-login span span,
 button.btn-apply span span,
+button.btn-removebucks span span,
 button.btn-invite span span,
 button.btn-addtobag span span,
 button.btn-reset span span,
@@ -135,6 +137,7 @@ button.btn-checkout span span{background:none;}
 button.btn-login:active span,
 button.btn-invite:active span,
 button.btn-apply:active span,
+button.btn-removebucks:active span,
 button.btn-reset:active span,
 button.btn-addtobag:active span,
 button.btn-update:active span,
@@ -234,3 +237,28 @@ h3.heading-track,
 .box-invite ul.form-list li{position:relative;}
 .box-invite ul.form-list .field input{border:0; background:none;}
 .form-list .field.j2t-rewardpoints-email img{position:absolute; right:0;}
+
+table.tblsmogilogin button
+{
+    margin-left : 20px;
+}
+table.tblsmogilogin
+{
+    font-size : 11px;
+    font-style : normal;
+}
+.cart div.smogibox
+{
+    background : none;
+    border : 0;
+}
+.cart div.smogibox h2
+{
+    background : none;
+    padding : 0;
+    color : #666666;
+}
+div.rewards_point_cart
+{
+    display : none;
+}

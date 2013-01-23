@@ -3072,3 +3072,12 @@ div.colorfilters
 {
     display : none;
 }
+div.giftcard-login-msg, div.giftcard-login-msg button 
+{
+    margin-top : 10px;
+}
+div.giftcard-login-msg a
+{
+    color : #D90D3D;
+    text-decoration: underline;
+}
