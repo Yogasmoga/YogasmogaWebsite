@@ -45,7 +45,7 @@ jQuery(document).ready(function($){
             {
                 if($(this).hasClass('closed'))
                 {
-                    $(this).removeClass('closed');    
+                    $(this).removeClass('closed');
                     jQuery("div.mylayerednavigation div.subcategory." + searchval).fadeIn('fast');    
                 }
                 else
