@@ -199,6 +199,7 @@ function submitcheckout()
             else
             {
                 jQuery("#submiterrormsg").html('');
+                _allowcheckoutexit = true;
                 window.location = homeUrl + 'checkout/onepage/success';
             }
             _ischeckoutprocessing = false;
