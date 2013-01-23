@@ -222,6 +222,7 @@ function reordersubsteps(stp)
         {
             temp = temp.prev();
             temp.addClass('inactive');
+            temp.find("form").hide();
         }
         else
             break;
@@ -233,12 +234,15 @@ function reordersubsteps(stp)
         {
             temp = temp.next();
             temp.addClass('inactive').addClass('disabled');
+            temp.find("form").hide();
         }
         else
             break;
     }
     stp.removeClass('inactive');
-	jQuery('select').customSelect();
+    stp.find("form").show(0, function(){
+		jQuery('select').customSelect();
+	});
 }
 
 function reordersteps(stp)
@@ -251,6 +255,7 @@ function reordersteps(stp)
             temp = temp.prev();
             temp.addClass('inactive').removeClass('disabled');
             temp.find("div.checkoutsubstep").addClass('inactive');
+            temp.find("form").hide();
         }
         else
             break;
@@ -263,6 +268,7 @@ function reordersteps(stp)
             temp = temp.next();
             temp.addClass('inactive').addClass('disabled');
             temp.find("div.checkoutsubstep").addClass('inactive');
+            temp.find("form").hide();
         }
         else
             break;
