@@ -113,7 +113,7 @@
 .cart .smogi-bucks p{margin-bottom:5px;}
 .cart .smogi-bucks select.input-text{padding:4px 5px; height:26px;}
 .cart .smogi-bucks select.input-text option {padding:3px 5px}
-.cart .totals table tr.reward-point td{font-family:gotham; padding-top:10px;}
+.cart .totals table tr.reward-point td{font-family:gotham-m; padding-top:10px;}
 .cart .totals-rewards img{margin:4px}
 
 button.btn-checkout span{padding:0; width:284px; text-indent:-999em; height:43px; margin:0; background:url(../images/checkout-btn.png) 0 0 no-repeat; border:0;}
