@@ -222,6 +222,7 @@ function reordersubsteps(stp)
         {
             temp = temp.prev();
             temp.addClass('inactive');
+            temp.find("form").hide();
         }
         else
             break;
@@ -233,11 +234,13 @@ function reordersubsteps(stp)
         {
             temp = temp.next();
             temp.addClass('inactive').addClass('disabled');
+            temp.find("form").hide();
         }
         else
             break;
     }
     stp.removeClass('inactive');
+    stp.find("form").show();
 }
 
 function reordersteps(stp)
@@ -250,6 +253,7 @@ function reordersteps(stp)
             temp = temp.prev();
             temp.addClass('inactive').removeClass('disabled');
             temp.find("div.checkoutsubstep").addClass('inactive');
+            temp.find("form").hide();
         }
         else
             break;
@@ -262,6 +266,7 @@ function reordersteps(stp)
             temp = temp.next();
             temp.addClass('inactive').addClass('disabled');
             temp.find("div.checkoutsubstep").addClass('inactive');
+            temp.find("form").hide();
         }
         else
             break;
