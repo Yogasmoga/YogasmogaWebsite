@@ -5,6 +5,14 @@ jQuery(document).ready(function($){
         //centerproductgrid();
         centermodalpopup();
     });
+    
+    $("#clearsearch").click(function(){
+        if($("div.mylayerednavigation div.searchitems table.active").length == 0)
+            return;
+        $("div.mylayerednavigation div.searchitems table.active").removeClass("active").addClass("inactive");
+        filterproducts("abc");
+        $('div#mycategory_products').isotope({ filter: "div.filtered"}, function($items){ showvisibleproductcount($items.length);});
+    });
     //$("div.searchhead").click(function(){
 //        h = jQuery(this).parent().height();
 //        t = jQuery(this).parent().offset().top;
@@ -214,7 +222,7 @@ function filterimages()
         jQuery("div#mycategory_products div.item td.productimage").each(function(){
             jQuery(this).find("img.rotable:first").addClass('active');
         });
-        console.log(jQuery("div#mycategory_products div.item td.productimage img.rotable:first-child"));
+        //console.log(jQuery("div#mycategory_products div.item td.productimage img.rotable:first-child"));
     }
     else
     {

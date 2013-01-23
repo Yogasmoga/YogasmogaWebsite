@@ -2456,6 +2456,20 @@ div.mylayerednavigation div.search-result span
     padding-right:3px;
 }
 
+#clearsearch
+{
+    font-family: gothamlight;
+    font-size: 9px;
+    letter-spacing: 0.6px;
+    text-decoration: underline;
+    color : #D90D3D;
+    margin-top : 15px;
+    display : block;
+}
+div.mylayerednavigation div.searchhead.first
+{
+    margin-top : 10px;
+}
 div.mylayerednavigation div.searchhead
 {
     font-family:gothambold;

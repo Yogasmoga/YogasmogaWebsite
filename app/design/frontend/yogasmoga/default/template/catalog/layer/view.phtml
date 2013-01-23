@@ -34,13 +34,22 @@
 <?php if($this->canShowBlock()): ?>
 
 <div class="search-result"><span>26 ITEMS</span> filter by:</div>
-
+<div><a href="javascript:void(0);" id="clearsearch">Clear all</a></div>
 <?php if($this->canShowOptions()): ?>
     <?php $_filters = $this->getFilters();
+        $first = true;
         foreach($_filters as $_filter)
         {
             ?>
-                <div class="searchhead"><?php echo $_filter->getName(); ?></div>
+                <div class="searchhead
+                <?php
+                    if($first)
+                    {
+                        echo "first";
+                        $first = false;
+                    }
+                ?>
+                "><?php echo $_filter->getName(); ?></div>
                 <div class="searchitems">
                     <?php echo $_filter->getHtml() ?>
                 </div>
