@@ -1,8 +1,11 @@
 jQuery(document).ready(function($){
-	_winH = $(window).height();
-	jQuery('#slider').find('div.carousel-img').each(function(){
-		$(this).height(_winH - _headerHeight - 200);
-	})
+_winW = $(window).width()
+	 if(_winW <= 1600){
+		 _winH = $(window).height();
+		jQuery('#slider').find('div.carousel-img').each(function(){
+			$(this).height(_winH - _headerHeight - 200);
+		})
+	}
 	  var slider=jQuery('#slider').bxSlider({
 		  auto:true,
 	      pause:9000,
@@ -10,6 +13,8 @@ jQuery(document).ready(function($){
 		  controls:false
 	  });
 	  jQuery(window).resize(function(){
+_winW = $(window).width()
+	  if(_winW <= 1600){
 		_winH = $(window).height();
 		jQuery('.bx-viewport').height(_winH - _headerHeight - 200);
 		jQuery('#slider').find('.carousel-img').each(function(){
@@ -24,6 +29,7 @@ jQuery(document).ready(function($){
 		  //slider.reloadShow();
   		//slider.goToSlide(temp);
   		//slider.startShow();
+		}
 	  });
 	  
 	// assign a click event to the external thumbnails

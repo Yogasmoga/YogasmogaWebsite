@@ -3032,6 +3032,7 @@ div.opimage .small
 	font-family:gothamMedium;
 	font-size:12px;
     z-index: 2;
+	cursor:pointer;
 	background-attachment:fixed; background-position:50% 80px; background-repeat:no-repeat; background-size:100%;
 }
 div.sidenavpopup

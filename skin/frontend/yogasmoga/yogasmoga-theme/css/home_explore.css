@@ -24,7 +24,7 @@
 .explore_nav_current{
 	background:url('../images/homepage/explore_nav_hover.png') repeat-x center;
 }
-#explore .bx-wrapper{padding:100px 0; background:url(../images/homepage/car_bg.png) 52% 50% no-repeat; background-size:contain;}
+#explore .bx-wrapper{padding:100px 0; background:url(../images/homepage/car_bg.png) 52% 50% no-repeat; background-size:contain; max-width:1600px; margin:0 auto; position:relative;}
 #explore #slider .carousel-img{position:relative;}
 #explore #slider .carousel-img img.bximg{height:100%; width:auto;}
 #explore #slider .carousel-desc {
