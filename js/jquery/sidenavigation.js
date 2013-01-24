@@ -1,7 +1,7 @@
 var _sidenavtimer = '';
 jQuery(document).ready(function($){	
     var temp = $("div.pgsection").length;
-    if(temp <= 2)
+    if(temp < 2)
         $("#pageScrollerNav").hide();
     else
     {
@@ -15,6 +15,7 @@ jQuery(document).ready(function($){
             var strHtml = strHtml + "</ul></div>";
             $("#pgNavUp").after(strHtml);
             $('body').pageScroller({animationSpeed:1000, deepLink:true, navigation: '#pgnavigator', sectionClass : 'pgsection',scrollOffset : '-' + _headerHeight + 'px' });   
+			$("#pageScrollerNav").show(0);
         }
         else
             $("#pageScrollerNav").hide();
