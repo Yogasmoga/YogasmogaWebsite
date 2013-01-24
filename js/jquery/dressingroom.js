@@ -78,6 +78,87 @@ jQuery(document).ready(function($){
         jQuery( "#productdetailpopup" ).dialog( "close" );
     });
 	
+})
+/*jQuery(document).ready(function($){
+	$('#dressingroombottom .dritem:first, #dressingroomtop .dritem:first').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 200).addClass('active');
+	$('a.grid-link').click(function(e){
+		e.preventDefault();
+		var ref=$(this).attr('href');
+		$('html,body').animate({scrollTop: $(ref).offset().top},500)
+	})
+	$('#dressingroombottom, #dressingroomtop').mouseenter(function(){
+		$(this).find('a.prevBtn').stop(true,true).fadeIn(100);
+		$(this).find('a.nextBtn').stop(true,true).fadeIn(100);
+		$(this).find('.productdetail').stop(true,true).fadeIn(100);
+	})
+	$('#dressingroombottom, #dressingroomtop').mouseleave(function(){
+		$(this).find('a.prevBtn').stop(true,true).fadeOut(100);
+		$(this).find('a.nextBtn').stop(true,true).fadeOut(100);
+		$(this).find('.productdetail').stop(true,true).fadeOut(100);
+	})
+	$("#dressingroombottom").swipe({
+		swipeLeft	:function(){$('a.prevBtn', this).trigger('click')},
+		swipeRight	:function(){$('a.nextBtn', this).trigger('click')},
+		threshold	:100
+	});
+    $("#dressingroomtop").swipe({
+		swipeLeft	:function(){$('a.prevBtn', this).trigger('click')},
+		swipeRight	:function(){$('a.nextBtn', this).trigger('click')},
+		threshold	:100
+	});
+	$('a.prevBtn').click(function(){
+		var $ctr = $(this).parent();
+		var cur = $ctr.find('.dritem.active');
+		var last = $ctr.find('.dritem:last');
+		var first = $ctr.find('.dritem:first');
+		if($(first).hasClass('active')){
+			var next = last;
+		}else{
+			var next = cur.prev();
+		}
+		cur.removeClass('active').animate({opacity: 0}, 100 ,function(){
+			cur.css({visibility: "hidden"})
+		});
+		next.addClass('active').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 50);
+	})
+	$('a.nextBtn').click(function(){
+		var $ctr = $(this).parent();
+		var cur = $ctr.find('.dritem.active');
+		var last = $ctr.find('.dritem:last');
+		var first = $ctr.find('.dritem:first');
+		if($(last).hasClass('active')){
+			var next = first;
+		}else{
+			var next = cur.next();
+		}
+		cur.removeClass('active').animate({opacity: 0}, 100 ,function(){
+			cur.css({visibility: "hidden"})
+		});
+		next.addClass('active').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 50);
+	})
+	
+    $(".viewdetails").click(function(){
+         _dressingroomselectedcolor = $(this).attr('color');
+         showproductlightbox($(this).attr('pid'));
+    });
+	$("#productdetailpopup").dialog({
+        autoOpen: false,
+        show: "scale",
+        hide: "scale",
+        width : 920,
+        minHeight : 530,
+        modal : true,
+        draggable : false,
+        position: { my: "center top",at: "center top+80" },
+        resizable : false,
+        dialogClass : 'yogidialog'
+    });
+        
+    
+    $(".ui-widget-overlay, div#productdetailpopup img#closelightbox").live("click", function(){
+        jQuery( "#productdetailpopup" ).dialog( "close" );
+    });
+	
     if($("div#dressingroom").length == 0)
         return;
     $("#dressingroomtop, #dressingroombottom").hover(function(){
@@ -115,7 +196,7 @@ jQuery(document).ready(function($){
 		swipeLeft	:function(){moveDressingroomLeft()},
 		swipeRight	:function(){moveDressingroomRight()},
 		threshold	:100
-	});*/
+	});//
     $("#dressingroomtop td.goleft img").click(function(){
         moveDressingroomLeft()
     });	
@@ -194,29 +275,14 @@ jQuery(document).ready(function($){
     
     
     
-    
+
     $(window).resize(function(){
         //setTimeout(function(){ positiondressingroomtopimage(); }, 10);
         positiondressingroomtopimage();
     });
 });
 
-function showproductlightbox(productid)
-{
-    productid = productid.replace('&nbsp;','');
-    jQuery("#productdetailpopup").html("<table style='width:100%;height : 530px;'><tr><td style='text-align:center;vertical-align:middle;'>Loading. .</td></tr></table>");
-    jQuery( "#productdetailpopup" ).dialog( "open" );
-    jQuery.ajax({
-        type : 'POST',
-        url : homeUrl + 'mycatalog/myproduct/details',
-        data : {'id': productid},
-        success : function(data){
-            jQuery("#productdetailpopup").html(data);
-            if(jQuery("div#colorcontainer table:first").length > 0)
-                changeColor(_dressingroomselectedcolor);
-        }
-    });
-}
+
 
 function fillDressingroomOptions()
 {
@@ -296,8 +362,23 @@ var _dressingroomtopindex = 0;
 var _dressingroombottomindex = 0;
 var _dressingroomcurrentbodytype = '';
 var _isdressingroomanimating = false;
-var _dressingroomselectedcolor = '';
-
+ */
+ function showproductlightbox(productid)
+{
+    productid = parseInt(productid);
+    jQuery("#productdetailpopup").html("<table style='width:100%;height : 530px;'><tr><td style='text-align:center;vertical-align:middle;'>Loading. .</td></tr></table>");
+    jQuery( "#productdetailpopup" ).dialog( "open" );
+    jQuery.ajax({
+        type : 'POST',
+        url : homeUrl + 'mycatalog/myproduct/details',
+        data : {'id': productid},
+        success : function(data){
+            jQuery("#productdetailpopup").html(data);
+            if(jQuery("div#colorcontainer table:first").length > 0)
+                changeColor(_dressingroomselectedcolor);
+        }
+    });
+}
 function chkfixposition(){
 	var $topDress 	= $j('#dressingroomtop'),
 		$botDress	= $j('#dressingroombottom'),
@@ -337,6 +418,7 @@ function getScaledwidth(originalheight, originalwidth)
     w = ((originalwidth / originalheight) * _winH);
 	return Math.ceil(w);
 }
+
 $j(window).load(function(){
 	chkfixposition()
 })
@@ -347,3 +429,4 @@ $j(window).resize(function() {
     id = setTimeout(chkfixposition, 500);
     
 });
+var _dressingroomselectedcolor = '';
