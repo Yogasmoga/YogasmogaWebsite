@@ -26,6 +26,11 @@ jQuery(document).ready(function($){
         //centerproductgrid();
         //setTimeout(function(){centerproductgrid();}, 500); 
          $('div#mycategory_products.isotoped').isotope({
+            getSortData : {
+                sortorder : function ( $elem ) {
+                  return $elem.attr('sortorder');
+                }
+              },
           itemSelector : '.item',
           onLayout : function(){
             if(typeof(handlealwaysvisiblecontrols) == typeof(Function))
@@ -36,6 +41,12 @@ jQuery(document).ready(function($){
             //centerproductgrid();
           }
         });
+        setTimeout(function(){
+            $('div#mycategory_products.isotoped').isotope({ 
+              sortBy : 'sortorder',
+              sortAscending : true
+            });
+        }, 100);
     });
     
     $("div.mylayerednavigation div.searchitems:last").addClass('colorfilters');

@@ -154,7 +154,8 @@
                         //$temp = $_childproduct->getAttributeText('color');
                         if(strpos($colors,",".$temp.",") == false)
                             $colors .= $temp.",";
-                    }    
+                    }
+                    $sortOrder = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'sortorder', Mage::app()->getStore()->getStoreId());
                 }
                 else
                 {
@@ -162,7 +163,7 @@
                     continue;
                 }
                 ?>
-                    <div bestfor="<?php echo ",".Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'bestfor', Mage::app()->getStore()->getStoreId()).","; ?>" cat="<?php echo ",".implode(",", $_product->getCategoryIds()).","; ?>" id="<?php echo $_product->getId(); ?>" class="item" color="<?php echo $colors; ?>">
+                    <div sortorder="<?php echo $sortOrder; ?>" bestfor="<?php echo ",".Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'bestfor', Mage::app()->getStore()->getStoreId()).","; ?>" cat="<?php echo ",".implode(",", $_product->getCategoryIds()).","; ?>" id="<?php echo $_product->getId(); ?>" class="item" color="<?php echo $colors; ?>">
                         <a href="<?php echo $_product->getProductUrl(); ?>">
                         <table>
                             <tr>
