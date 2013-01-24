@@ -24,8 +24,14 @@ jQuery(document).ready(function($){
     $(window).load(function(){
         //resizeproductgrid();
         //centerproductgrid();
-        //setTimeout(function(){centerproductgrid();}, 500); 
+        //setTimeout(function(){centerproductgrid();}, 500);
+        return; 
          $('div#mycategory_products.isotoped').isotope({
+            getSortData : {
+                sortorder : function ( $elem ) {
+                  return $elem.attr('sortorder');
+                }
+              },
           itemSelector : '.item',
           onLayout : function(){
             if(typeof(handlealwaysvisiblecontrols) == typeof(Function))
@@ -36,7 +42,37 @@ jQuery(document).ready(function($){
             //centerproductgrid();
           }
         });
+        setTimeout(function(){
+            $('div#mycategory_products.isotoped').isotope({ 
+              sortBy : 'sortorder',
+              sortAscending : true
+            });
+        }, 100);
     });
+    
+    $('div#mycategory_products.isotoped').isotope({
+            getSortData : {
+                sortorder : function ( $elem ) {
+                  return parseInt($elem.attr('sortorder'));
+                }
+              },
+          itemSelector : '.item',
+          onLayout : function(){
+            if(typeof(handlealwaysvisiblecontrols) == typeof(Function))
+            {
+                handlealwaysvisiblecontrols();
+                //console.log('called');
+            }
+            //centerproductgrid();
+          }
+        });
+        setTimeout(function(){
+            $('div#mycategory_products.isotoped').isotope({ 
+              sortBy : 'sortorder',
+              sortAscending : true
+            });
+        }, 300);
+        
     
     $("div.mylayerednavigation div.searchitems:last").addClass('colorfilters');
     $("div.mylayerednavigation div.searchhead:last").addClass('colorfilters');
@@ -216,7 +252,7 @@ function filterimages()
     {
         temp = temp.substr(0, temp.length - 1);
         jQuery("div#mycategory_products div.item td.productimage img").removeClass('rotable').removeClass('active');
-        console.log(temp);
+        //console.log(temp);
         jQuery("div#mycategory_products div.item td.productimage img." + temp).addClass('rotable');
         //jQuery("div#mycategory_products div.item td.productimage img.rotable:first-child").addClass('active');
         jQuery("div#mycategory_products div.item td.productimage").each(function(){
@@ -428,7 +464,7 @@ function getsearchattributes()
     });
     if(sattr.length > 0)
         sattr = sattr.substr(0, sattr.length - 1);
-    console.log(sattr);
+    //console.log(sattr);
     return sattr;
 }
 
@@ -477,5 +513,5 @@ function removenotifications()
 
 function searchitems()
 {
-    console.log(jQuery(this).html());
+    //console.log(jQuery(this).html());
 }

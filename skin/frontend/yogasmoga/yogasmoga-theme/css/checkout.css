@@ -287,13 +287,12 @@ div#shippingsummary
 {
     right : 0;
     max-width : 340px;
-    display : none;
 }
 div#ordersummary
 {
     left : 0;
 }
-div#ordersummary span.anchor
+div#ordersummary span.anchor, div#shippingsummary span.anchor
 {
     font-family:gothamMedium;
     font-size : 11px;
@@ -301,25 +300,29 @@ div#ordersummary span.anchor
     font-weight : bold;
     text-transform: uppercase;
 }
-div#ordersummary table
+div#ordersummary table, div#shippingsummary table
 {
     margin-top : 10px;
     width : 220px;
 }
-div#ordersummary table td.total
+div#shippingsummary table
+{
+    width : 320px;
+}
+div#ordersummary table td.total, div#shippingsummary table td.total
 {
     text-align : right;
 }
-div#ordersummary table td
+div#ordersummary table td, div#shippingsummary table td
 {
     padding-bottom : 2px;
 }
-div#ordersummary table tr.ordertotal td
+div#ordersummary table tr.ordertotal td, div#shippingsummary table tr.ordertotal td
 {
     padding-top : 15px;
     padding-bottom : 15px;
 }
-div#ordersummary table td.divider
+div#ordersummary table td.divider, div#shippingsummary table td.divider
 {
     display : table-cell;
 }
@@ -346,7 +349,7 @@ div#submiterrormsg
     margin-right : 20px;
 }
 
-#ordersummary table td {
+#ordersummary table td, #shippingsummary table td {
 	font-family:gothambook;
 	font-size:11px;
 	letter-spacing:0.4px;
