@@ -252,7 +252,7 @@ function filterimages()
     {
         temp = temp.substr(0, temp.length - 1);
         jQuery("div#mycategory_products div.item td.productimage img").removeClass('rotable').removeClass('active');
-        console.log(temp);
+        //console.log(temp);
         jQuery("div#mycategory_products div.item td.productimage img." + temp).addClass('rotable');
         //jQuery("div#mycategory_products div.item td.productimage img.rotable:first-child").addClass('active');
         jQuery("div#mycategory_products div.item td.productimage").each(function(){
@@ -464,7 +464,7 @@ function getsearchattributes()
     });
     if(sattr.length > 0)
         sattr = sattr.substr(0, sattr.length - 1);
-    console.log(sattr);
+    //console.log(sattr);
     return sattr;
 }
 
@@ -513,5 +513,5 @@ function removenotifications()
 
 function searchitems()
 {
-    console.log(jQuery(this).html());
+    //console.log(jQuery(this).html());
 }
