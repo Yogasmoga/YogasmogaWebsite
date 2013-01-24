@@ -61,9 +61,9 @@
                 <td>
                     <?php
                         if(strpos($_item->getLabel(), "|") != false || strpos($_item->getLabel(), "|") !== false)
-                            echo substr($_item->getLabel(), 0, strpos($_item->getLabel(), "|")); 
+                            echo html_entity_decode(substr($_item->getLabel(), 0, strpos($_item->getLabel(), "|"))); 
                         else
-                            echo $_item->getLabel();
+                            echo html_entity_decode($_item->getLabel());
                     ?>
                 </td>
                 <td class="add">
@@ -89,9 +89,9 @@
                             <td>
                                 <?php
                                     if(strpos($catname, "|") != false || strpos($catname, "|") !== false)
-                                        echo substr($catname, 0, strpos($catname, "|")); 
+                                        echo html_entity_decode(substr($catname, 0, strpos($catname, "|"))); 
                                     else
-                                        echo $catname;
+                                        echo html_entity_decode($catname);
                                 ?>
                             </td>
                             <td class="add">
