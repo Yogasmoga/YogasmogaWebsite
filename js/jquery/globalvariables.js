@@ -40,3 +40,4 @@ var _usesecureurl = false;
 var _cnfrewardpoint = 0;
 var _rotateprimages = true;
 var _currentproductid = '';
+var _allowcheckoutexit = false;

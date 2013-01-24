@@ -2280,6 +2280,8 @@ div.mycategory-products div.item td.productname
     font-size:10px;
     color : gray;
     text-transform: uppercase;
+    height : 20px;
+    vertical-align: bottom;
 }
 div.mycategory-products div.item:hover td.productname
 {
@@ -2462,6 +2464,20 @@ div.mylayerednavigation div.search-result span
     padding-right:3px;
 }
 
+#clearsearch
+{
+    font-family: gothamlight;
+    font-size: 9px;
+    letter-spacing: 0.6px;
+    text-decoration: underline;
+    color : #D90D3D;
+    margin-top : 15px;
+    display : block;
+}
+div.mylayerednavigation div.searchhead.first
+{
+    margin-top : 10px;
+}
 div.mylayerednavigation div.searchhead
 {
     font-family:gothambold;
@@ -3054,11 +3070,22 @@ div.searchitems table.grayed
     opacity:0.6;
     filter:alpha(opacity=60); /* For IE8 and earlier */
 }
+/*
 div.searchitems div.pcategory img
 {
     display : none;
 }
+*/
 div.colorfilters
 {
     display : none;
+}
+div.giftcard-login-msg, div.giftcard-login-msg button 
+{
+    margin-top : 10px;
+}
+div.giftcard-login-msg a
+{
+    color : #D90D3D;
+    text-decoration: underline;
 }

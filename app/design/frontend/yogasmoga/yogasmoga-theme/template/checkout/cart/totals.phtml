@@ -38,11 +38,17 @@
     <table id="shopping-cart-totals-table">
         <col />
         <col width="1" />
-        <!-- tfoot>
+        <!--
+        <tfoot>
             <?php // echo $this->renderTotals('footer'); ?>
-        </tfoot -->
+        </tfoot> -->
         <tbody>
             <?php echo $this->renderTotals(); ?>
+            <tr>
+                <td colspan="1" class="a-right" style="text-transform: none;">
+                                SMOGI Bucks earned            </td>
+                <td class="a-right" style="text-transform: none;"><span class="price"><?php echo Mage::helper('rewardpoints')->getPointsOnOrder(); ?> Bucks</span></td>
+            </tr>
         </tbody>
     </table>
 <?php endif; ?>

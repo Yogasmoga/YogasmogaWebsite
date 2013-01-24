@@ -8,6 +8,11 @@ jQuery(document).ready(function($){
         return validateCheckoutLoginForm();
     });
     
+    window.onbeforeunload = function() {
+        if(!_allowcheckoutexit)
+            return "If you leave the cart all information will be lost.";
+    }
+    
     $("div#checkout-guest-continue").click(function(){
         _checkoutmethod = 'register';
         $("div#billing-password").show();
@@ -194,6 +199,7 @@ function submitcheckout()
             else
             {
                 jQuery("#submiterrormsg").html('');
+                _allowcheckoutexit = true;
                 window.location = homeUrl + 'checkout/onepage/success';
             }
             _ischeckoutprocessing = false;
@@ -481,6 +487,8 @@ function validateCheckoutLoginForm()
             flag = false;
         }
     }
+    if(flag)
+        _allowcheckoutexit = true;
     return flag;
 }
 

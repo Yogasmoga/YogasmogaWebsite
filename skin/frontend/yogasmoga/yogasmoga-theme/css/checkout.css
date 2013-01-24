@@ -364,3 +364,11 @@ table.co-ov-table tr.last td {
 #procImg {
 	float:right ;
 }
+div#tblcheckoutsteps form
+{
+    display : block;
+}
+#orderreview td
+{
+    vertical-align : top;
+}
