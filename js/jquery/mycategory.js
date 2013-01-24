@@ -21,7 +21,7 @@ jQuery(document).ready(function($){
 //         console.log('t = ' + t);
 //         console.log('s = ' + s);
 //    });
-    $(window).load(function(){
+    $("#productgrid").load(function(){
         //resizeproductgrid();
         //centerproductgrid();
         //setTimeout(function(){centerproductgrid();}, 500); 
