@@ -21,10 +21,11 @@ jQuery(document).ready(function($){
 //         console.log('t = ' + t);
 //         console.log('s = ' + s);
 //    });
-    $("#productgrid").load(function(){
+    $(window).load(function(){
         //resizeproductgrid();
         //centerproductgrid();
-        //setTimeout(function(){centerproductgrid();}, 500); 
+        //setTimeout(function(){centerproductgrid();}, 500);
+        return; 
          $('div#mycategory_products.isotoped').isotope({
             getSortData : {
                 sortorder : function ( $elem ) {
@@ -48,6 +49,30 @@ jQuery(document).ready(function($){
             });
         }, 100);
     });
+    
+    $('div#mycategory_products.isotoped').isotope({
+            getSortData : {
+                sortorder : function ( $elem ) {
+                  return $elem.attr('sortorder');
+                }
+              },
+          itemSelector : '.item',
+          onLayout : function(){
+            if(typeof(handlealwaysvisiblecontrols) == typeof(Function))
+            {
+                handlealwaysvisiblecontrols();
+                //console.log('called');
+            }
+            //centerproductgrid();
+          }
+        });
+        setTimeout(function(){
+            $('div#mycategory_products.isotoped').isotope({ 
+              sortBy : 'sortorder',
+              sortAscending : true
+            });
+        }, 100);
+        
     
     $("div.mylayerednavigation div.searchitems:last").addClass('colorfilters');
     $("div.mylayerednavigation div.searchhead:last").addClass('colorfilters');
