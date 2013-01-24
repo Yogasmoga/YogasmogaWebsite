@@ -71,7 +71,7 @@ jQuery(document).ready(function($){
               sortBy : 'sortorder',
               sortAscending : true
             });
-        }, 100);
+        }, 300);
         
     
     $("div.mylayerednavigation div.searchitems:last").addClass('colorfilters');
