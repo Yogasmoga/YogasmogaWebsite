@@ -53,7 +53,7 @@ jQuery(document).ready(function($){
     $('div#mycategory_products.isotoped').isotope({
             getSortData : {
                 sortorder : function ( $elem ) {
-                  return $elem.attr('sortorder');
+                  return parseInt($elem.attr('sortorder'));
                 }
               },
           itemSelector : '.item',
