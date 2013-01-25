@@ -33,6 +33,8 @@
             <?php foreach ($columns as $column): ?>
                 <th><?php echo $column->getTitle();?></th>
             <?php endforeach; ?>
+            <th>ITEM</th>
+            <th colspan="2">PRICE</th>
         </tr>
     </thead>
     <tbody>
@@ -40,7 +42,11 @@
             <?php foreach ($this->getItems() as $item): ?>
                 <tr id="item_<?php echo $item->getId();?>">
                     <?php foreach ($columns as $column): ?>
-                        <td><?php $column->setItem($item); echo $column->toHtml($item);?></td>
+                        <td><?php $column->setItem($item); echo $column->toHtml($item);?>
+                            <?php
+                                $product = $item->getProduct(); 
+                                echo $product->getId(); ?>
+                        </td>
                     <?php endforeach; ?>
                 </tr>
             <?php endforeach ?>

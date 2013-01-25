@@ -25,6 +25,58 @@
  */
 /* @var $this Mage_Wishlist_Block_Customer_Wishlist */
 ?>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/wishlist.css'); ?>" media="all" />
+<?php if ($this->helper('wishlist')->isAllow()) : ?>
+    <div class="myheader">MY WISHLIST</div>
+    <div class="my-wishlist">
+        <div class="globalmsg"><?php //echo strip_tags($this->getMessagesBlock()->getGroupedHtml()); ?></div>
+        <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+        <form id="wishlist-view-form" action="<?php echo $this->getUrl('*/*/update', array('wishlist_id' => $this->getWishlistInstance()->getId())) ?>" method="post">
+            <?php echo $this->getChildHtml('top'); ?>
+            <fieldset>
+                <?php if ($this->hasWishlistItems()): ?>
+                        <?php echo $this->getBlockHtml('formkey');?>
+                        <?php $this->getChild('items')->setItems($this->getWishlistItems()); ?>
+                        <?php echo $this->getChildHtml('items');?>
+                        <script type="text/javascript">decorateTable('wishlist-table')</script>
+                        <div class="buttons-set buttons-set2">
+                            <?php echo $this->getChild('control_buttons')->toHtml();?>
+                        </div>
+                <?php else: ?>
+                    <div class="globalmsg">THANK YOU FOR CREATING AN ACCOUNT WITH YOGASMOGA.</div>
+                    <p class="wishlist-empty"><?php echo $this->__('You have no items in your wishlist.') ?></p>
+                    <a href="<?php $this->getUrl(); ?>">
+                    <button downimageurl="<?php echo $this->getSkinUrl('images/continue_shopping_on.png'); ?>" imageurl="<?php echo $this->getSkinUrl('images/continue_shopping_off.png'); ?>" class="continueshopppingbtn spbutton custombtn" type="submit"></button>    
+                    </a>
+                <?php endif ?>
+            </fieldset>
+        </form>
+
+        <script type="text/javascript">
+        //<![CDATA[
+        var wishlistForm = new Validation($('wishlist-view-form'));
+        function addAllWItemsToCart() {
+            var url = '<?php echo $this->getUrl('*/*/allcart', array('wishlist_id' => $this->getWishlistInstance()->getId())) ?>';
+            var separator = (url.indexOf('?') >= 0) ? '&' : '?';
+            $$('#wishlist-view-form .qty').each(
+                function (input, index) {
+                    url += separator + input.name + '=' + encodeURIComponent(input.value);
+                    separator = '&';
+                }
+            );
+            setLocation(url);
+        }
+        //]]>
+        </script>
+    </div>
+    <?php echo $this->getChildHtml('bottom'); ?>
+    <div class="backlink">
+        <a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>" class="back-link">&lt;&nbsp;<?php echo $this->__('Continue Shopping') ?></a>
+    </div>
+<?php endif ?>
+
+
+<?php return; ?>
 <?php if ($this->helper('wishlist')->isAllow()) : ?>
     <div class="my-wishlist">
         <div class="page-title title-buttons">
