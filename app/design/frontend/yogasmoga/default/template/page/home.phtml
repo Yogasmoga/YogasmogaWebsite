@@ -298,7 +298,7 @@
                                                                 }
                                                             ?>
                                                             "
-                                                             src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345); ?>" />
+                                                             src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(100); ?>" />
                                                             <?php
                                                             $index++;
                                                         } 
@@ -324,7 +324,7 @@
                                                     $model = Mage::getModel('catalog/product');
                                                     $_product = $model->load($_product->getId());
                                                     //echo $_product->getPrice();
-                                                    echo $_helper->productAttribute($_product, $_product->getName(), 'name');
+                                                    echo html_entity_decode($_helper->productAttribute($_product, $_product->getName(), 'name'));
                                                     //echo $_product->getName(); ?>
                                                 </td>
                                             </tr>
