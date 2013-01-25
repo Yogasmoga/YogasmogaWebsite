@@ -35,7 +35,7 @@
   right: 50px;
   text-align: center;
 }
-#explore #slider .carousel-desc img{max-height:200px;}
+#explore #slider .carousel-desc img{max-height:200px; max-width:100%;}
 
 .bx-controls {
   background: none repeat scroll 0 0 #666666;
@@ -52,6 +52,7 @@
   height: 5px;
   width: 25%;
 }
+.bx-pager-item:last-child{float:right;}
 
 .bx-pager-item a{
   background: none;
