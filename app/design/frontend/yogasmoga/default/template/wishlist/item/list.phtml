@@ -37,7 +37,8 @@
             */ ?>
             <th>&nbsp;</th>
             <th colspan="3">ITEM</th>
-            <th colspan="2">PRICE</th>
+            <th style="text-align: right;">PRICE</th>
+            <th>&nbsp;</th>
         </tr>
     </thead>
     <tbody>
@@ -72,7 +73,7 @@
                         ?>
                     </td>
                     <td class="praddtocart">
-                        <button onclick="addWItemToCart(<?php echo $item->getWishlistItemId(); ?>);" downimageurl="<?php echo $this->getSkinUrl('images/add_to_cart_on.png'); ?>" imageurl="<?php echo $this->getSkinUrl('images/add_to_cart_off.png'); ?>" class="addtocartbtn spbutton custombtn" type="submit"></button>
+                        <button onclick="addWItemToCart(<?php echo $item->getWishlistItemId(); ?>);" downimageurl="<?php echo $this->getSkinUrl('images/add_to_cart_on.png'); ?>" imageurl="<?php echo $this->getSkinUrl('images/add_to_cart_off.png'); ?>" class="addtocartbtn spbutton custombtn" type="button"></button>
                     </td>
                     <?php /*
                     <?php foreach ($columns as $column): ?>

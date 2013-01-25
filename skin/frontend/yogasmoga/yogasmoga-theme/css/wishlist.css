@@ -51,6 +51,7 @@ table.tblwishlist td.prname
 table.tblwishlist td.prname, table.tblwishlist td.primage, table.tblwishlist td.prnote
 {
     padding-right : 40px;
+    text-transform: uppercase;
 }
 table.tblwishlist td.prnote textarea
 {
@@ -70,6 +71,10 @@ table.tblwishlist td.prnote textarea:focus
 table.tblwishlist tr.last td
 {
     border-bottom : 1px dotted #000000
+}
+table.tblwishlist td.prprice
+{
+    text-align: right;
 }
 table.tblwishlist td.removeitem
 {
@@ -95,7 +100,7 @@ table.tblwishlist td.removeitem
     height : 43px;
     margin-left : 20px;
 }
-.sharewishlistbtn
+.sharewishlistbtn1
 {
     background-image : url('../images/share_your_wishlist_off.png');
     width : 286px;
