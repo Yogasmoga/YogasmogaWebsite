@@ -1,4 +1,20 @@
 jQuery(document).ready(function($){
+	$("div#sizechart").live('mouseover', function(){
+        _sizecharthovered = true;
+    });
+    $("div#sizechart").live('mouseout', function(){
+        _sizecharthovered = false;
+    });
+    $("body").click(function(){
+        if(!_sizecharthovered)
+            $("div#sizechart").fadeOut('normal');
+    });
+	$("a.size-link").live('click', function(){
+        $("div#sizechart").fadeIn('normal');
+    });
+	
+	
+	
 	$('#dressingroombottom .dritem:first, #dressingroomtop .dritem:first').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 200).addClass('active');
 	$('a.grid-link').click(function(e){
 		e.preventDefault();

@@ -1,6 +1,7 @@
 var _productcolorinfo = new Array();
 
 jQuery(document).ready(function($){
+	
         //console.clear();
 	jQuery('#productdetails select, .cart select, .checkout-onepage-index select').customSelect();
 	/*$(window).load(function(){

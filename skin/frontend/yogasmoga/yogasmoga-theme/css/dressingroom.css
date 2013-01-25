@@ -212,6 +212,7 @@ div.totalcountregion
   position: absolute;
   left: 65%;
   top: 50%;
+  z-index:5;
 }
 #dressingroomholder a.nextBtn,
 #dressingroomholder a.prevBtn{position:absolute; top:0; bottom:0; text-indent:-999em; width:150px; display:none; z-index:9;}
@@ -227,3 +228,6 @@ div.totalcountregion
 
 
 
+.sizeChart{bottom: 40px;
+left: 25px; z-index:9;
+position: absolute;}
