@@ -61,14 +61,15 @@ function validateWishlistForm()
 {
     unsetAllError(jQuery("#form-share-wishlist"));
     var flag = validatefields(jQuery("#form-share-wishlist"));
-    if(jQuery("email_address").val() != "")
+    if(jQuery("#email_address").val() != "")
     {
         var valid_regexp = /^[a-z0-9\._-]{1,30}@([a-z0-9_-]{1,30}\.){1,5}[a-z]{2,4}$/i;
-        var emails = jQuery("email_address").val().split(',');
+        var emails = jQuery("#email_address").val().split(',');
         for (var i=0; i<emails.length; i++) {
             if(!valid_regexp.test(emails[i].strip())) {
                 flag = false;
-                setOnError(jQuery("zip"), "Invalid Zip Code.");    
+                setOnError(jQuery("#email_address"), "Please enter valid email addresses, separated by commas");
+                break;    
             }
         }
     }
