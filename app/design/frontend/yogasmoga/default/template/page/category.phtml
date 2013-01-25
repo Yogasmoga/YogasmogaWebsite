@@ -64,8 +64,9 @@
 									<option>Other Types</option> -->
 								</select>
 							</div>
-							<div id="dressingroomholder" actwidth="1600">
-								<div id="dressingroomtop" actheight="280">
+							<div id="dressingroomholder" actheight="756">
+								<div id="dressingroomtop" actheight="305">
+								<div class="ovl-box"></div>
 								<?php 
 								$topCount = 0;
 								$botCount = 0;
@@ -83,11 +84,12 @@
 									$product = $model->load(trim($detail[3]));
 									if(trim($detail[0]) == "top"){
 									?>
-									<div class="dritem" style="bottom:-<?php echo trim(strip_tags($detail[6])); ?>px;" botpos="<?php echo intval(strip_tags($detail[6]))+8; ?>">
+									<div class="dritem" botpos="<?php echo intval(strip_tags($detail[6]))+8; ?>">
 										<div class="dressing-img">
 											<img width="<?php echo trim(strip_tags($detail[4])); ?>" height="<?php echo trim(strip_tags($detail[5])); ?>" style="margin-left:-<?php echo intval(strip_tags($detail[4]))/2; ?>px;" src="<?php echo $dressImgPath.trim($detail[2]); ?>" />
 										</div>
 										<div class="productdetail">
+											<div class="detail-box">
 											<div class="productcount">
 												<div class="current"><?php echo $i; ?></div>
 												<div class="totalcountregion">
@@ -99,6 +101,7 @@
 											<div class="viewdetails spbutton" color="<?php echo trim(strip_tags($detail[7])); ?>" pid="<?php echo trim(strip_tags($detail[6])); ?>" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/dressingroom/view_details_off.png') ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/dressingroom/view_details_on.png') ?>">                    
 											</div>
 											<a href="#productgrid" class="grid-link">View All Products ></a>
+											</div>
 										</div>
 									</div>
 									<?php } 
@@ -107,7 +110,8 @@
 								<a class="nextBtn" href="javascript:void(0);">Next</a>
 							</div>
 							<div id="dressingroomdivider">&nbsp;</div>
-							<div id="dressingroombottom" actheight="430">
+							<div id="dressingroombottom" actheight="450">
+								<div class="ovl-box"></div>
 								<?php 
 								for($i = 1; $i < count($dressingroomitems); $i++){
 									$detail = explode("|", $dressingroomitems[$i]);

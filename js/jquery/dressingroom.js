@@ -5,15 +5,15 @@ jQuery(document).ready(function($){
 		var ref=$(this).attr('href');
 		$('html,body').animate({scrollTop: $(ref).offset().top},500)
 	})
-	$('#dressingroombottom, #dressingroomtop').mouseenter(function(){
-		$(this).find('a.prevBtn').stop(true,true).fadeIn(100);
-		$(this).find('a.nextBtn').stop(true,true).fadeIn(100);
-		$(this).find('.productdetail').stop(true,true).fadeIn(100);
+	$('.ovl-box').mouseenter(function(){
+		$(this).parent().find('a.prevBtn').stop(true,true).fadeIn(100);
+		$(this).parent().find('a.nextBtn').stop(true,true).fadeIn(100);
+		$(this).parent().find('.active').find('.productdetail').stop(true,true).fadeIn(100);
 	})
 	$('#dressingroombottom, #dressingroomtop').mouseleave(function(){
 		$(this).find('a.prevBtn').stop(true,true).fadeOut(100);
 		$(this).find('a.nextBtn').stop(true,true).fadeOut(100);
-		$(this).find('.productdetail').stop(true,true).fadeOut(100);
+		$(this).find('.active').find('.productdetail').stop(true,true).fadeOut(100);
 	})
 	$("#dressingroombottom").swipe({
 		swipeLeft	:function(){$('a.prevBtn', this).trigger('click')},
@@ -79,6 +79,96 @@ jQuery(document).ready(function($){
     });
 	
 })
+function showproductlightbox(productid){
+    productid = parseInt(productid);
+    jQuery("#productdetailpopup").html("<table style='width:100%;height : 530px;'><tr><td style='text-align:center;vertical-align:middle;'>Loading. .</td></tr></table>");
+    jQuery( "#productdetailpopup" ).dialog( "open" );
+    jQuery.ajax({
+        type : 'POST',
+        url : homeUrl + 'mycatalog/myproduct/details',
+        data : {'id': productid},
+        success : function(data){
+            jQuery("#productdetailpopup").html(data);
+            if(jQuery("div#colorcontainer table:first").length > 0)
+                changeColor(_dressingroomselectedcolor);
+        }
+    });
+}
+function chkfixposition(){
+	/*var $topDress 	= $j('#dressingroomtop'),
+		$botDress	= $j('#dressingroombottom'),
+		$container	= $j('#dressingroomholder'),
+		contWidth	= $container.attr('actWidth'),
+		$topDH 		= parseInt($topDress.attr('actHeight')),
+		$botDH		= parseInt($botDress.attr('actHeight'))
+		$topSH 		= getScaledheight($topDH, contWidth),
+		$botSH		= getScaledheight($botDH, contWidth);
+	$j('#dressingroomtop .dritem').each(function(){
+		var dressimgpos = $j(this).attr('botpos');
+		var newbpos = getScaledheight(dressimgpos, contWidth)
+		$j(this).css({bottom: '-'+newbpos+'px'})
+	})
+	$topDress.height($topSH);
+	$botDress.height($botSH);*/
+	$j('.doverlay').fadeOut(250);
+	$j('#dressingroomholder img').each(function(){
+		var desHeight = (_winH - _headerHeight - 100);
+		var cHeight = $j(this).height();
+		var nhPercent = (desHeight/cHeight);
+		var newHeight = Math.round(cHeight*nhPercent);
+		
+		//alert(newHeight +'+'+ nhPercent);
+		$j(this).height(newHeight);
+		var NewLeft = $j(this).width()/2;
+		$j(this).css({marginLeft: '-'+NewLeft+'px'})
+	})
+	$j('#dressingroomtop, #dressingroombottom').each(function(){
+		var desHeight = (_winH - _headerHeight - 100);
+		var actHT = parseInt($j('#dressingroomholder').attr('actheight'));
+		var cHeight;
+		if(desHeight < 450){
+			cHeight = actHT+4;
+		}else if(desHeight < 400){
+			cHeight = actHT+6;
+		}else if(desHeight < 350){
+			cHeight = actHT+8;
+		}else{
+			cHeight = actHT+2;
+		}
+		var nhPercent = (desHeight/cHeight);
+		var newHeight = Math.round($j(this).attr('actheight')*nhPercent);
+		$j(this).height(newHeight);
+	})
+}
+function getScaledheight(originalheight, originalwidth)
+{
+    //console.log('calculating');
+    originalheight = originalheight * 1;
+    originalwidth = originalwidth * 1;
+	var h =((originalheight / originalwidth) * (jQuery("div#pagecontainer").width() * 1));
+    return Math.round(h);
+}
+
+function getScaledwidth(originalheight, originalwidth)
+{
+    //console.log('calculating');
+    originalheight = originalheight * 1;
+    originalwidth = originalwidth * 1;
+    w = ((originalwidth / originalheight) * _winH);
+	return Math.ceil(w);
+}
+
+$j(window).load(function(){
+	//$j('.doverlay').fadeOut(250);
+	chkfixposition()
+})
+var id;
+$j(window).resize(function() {
+	$j('.doverlay').fadeIn(0);
+    clearTimeout(id);
+    id = setTimeout(chkfixposition, 500);
+});
+var _dressingroomselectedcolor = '';
 /*jQuery(document).ready(function($){
 	$('#dressingroombottom .dritem:first, #dressingroomtop .dritem:first').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 200).addClass('active');
 	$('a.grid-link').click(function(e){
@@ -363,70 +453,3 @@ var _dressingroombottomindex = 0;
 var _dressingroomcurrentbodytype = '';
 var _isdressingroomanimating = false;
  */
- function showproductlightbox(productid)
-{
-    productid = parseInt(productid);
-    jQuery("#productdetailpopup").html("<table style='width:100%;height : 530px;'><tr><td style='text-align:center;vertical-align:middle;'>Loading. .</td></tr></table>");
-    jQuery( "#productdetailpopup" ).dialog( "open" );
-    jQuery.ajax({
-        type : 'POST',
-        url : homeUrl + 'mycatalog/myproduct/details',
-        data : {'id': productid},
-        success : function(data){
-            jQuery("#productdetailpopup").html(data);
-            if(jQuery("div#colorcontainer table:first").length > 0)
-                changeColor(_dressingroomselectedcolor);
-        }
-    });
-}
-function chkfixposition(){
-	var $topDress 	= $j('#dressingroomtop'),
-		$botDress	= $j('#dressingroombottom'),
-		$container	= $j('#dressingroomholder'),
-		contWidth	= $container.attr('actWidth'),
-		$topDH 		= parseInt($topDress.attr('actHeight')),
-		$botDH		= parseInt($botDress.attr('actHeight'))
-		$topSH 		= getScaledheight($topDH, contWidth),
-		$botSH		= getScaledheight($botDH, contWidth);
-	$j('.doverlay').fadeOut(250);
-	$j('#dressingroomtop .dritem').each(function(){
-		var dressimgpos = $j(this).attr('botpos');
-		var newbpos = getScaledheight(dressimgpos, contWidth)
-		$j(this).css({bottom: '-'+newbpos+'px'})
-	})
-	$topDress.height($topSH);
-	$botDress.height($botSH);
-	$j('#dressingroomholder img').each(function(){
-		var NewLeft = $j(this).width()/2;
-		$j(this).css({marginLeft: '-'+NewLeft+'px'})
-	})
-}
-function getScaledheight(originalheight, originalwidth)
-{
-    //console.log('calculating');
-    originalheight = originalheight * 1;
-    originalwidth = originalwidth * 1;
-	var h =((originalheight / originalwidth) * (jQuery("div#pagecontainer").width() * 1));
-    return Math.round(h);
-}
-
-function getScaledwidth(originalheight, originalwidth)
-{
-    //console.log('calculating');
-    originalheight = originalheight * 1;
-    originalwidth = originalwidth * 1;
-    w = ((originalwidth / originalheight) * _winH);
-	return Math.ceil(w);
-}
-
-$j(window).load(function(){
-	chkfixposition()
-})
-var id;
-$j(window).resize(function() {
-	$j('.doverlay').fadeIn(0);
-    clearTimeout(id);
-    id = setTimeout(chkfixposition, 500);
-    
-});
-var _dressingroomselectedcolor = '';

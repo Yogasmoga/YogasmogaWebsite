@@ -90,11 +90,14 @@
     font-family:gothamMedium;
     font-size:10px;
 }
-#dressingroomholder div.productdetail div.productdescription
-{
-   font-family:gothambook;
-    font-size:10px;
+#dressingroomholder div.productdetail div.productdescription {
+  font-family: gothambook;
+  font-size: 10px;
+  height: 28px;
+  line-height: 1.3;
+  overflow: hidden;
 }
+
 #dressingroomdivider
 {
     height : 2px;
@@ -109,7 +112,15 @@
 #dressingroomholder
 {
     margin-top : 20px;
-    margin-bottom : 50px;
+}
+#dressingroomholder .ovl-box{
+  content: ".";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
 }
 #dressingroomholder #dressingroomtop table td.imageholder
 {
@@ -165,7 +176,7 @@ dressingroomholder #dressingroombottom table td.imageholder
 {
     position : relative;
 	margin-top:0px;
-	height:388px;
+	height:450px;
 	padding-bottom:45px;
     background-image : url('../images/catalog/product/dressingroom/dressing_room_bg_830pix_grass.png');
     background-repeat: no-repeat;
@@ -181,17 +192,18 @@ div.totalcountregion
 }
 
 #dressingroomholder .doverlay {position:absolute; z-index:9; background:#fff url(../images/loading.gif) 50% 30% no-repeat; top:0; bottom:0; left:0; right:0;}
-#dressingroomtop{position:relative; height:280px;}
+#dressingroomtop{position:relative; height:305px; z-index:2;}
 .dritem{position:absolute; left:0; right:0; top:0; display:block; bottom:0; visibility:hidden;}
-.dritem .dressing-img img{position:absolute; left:50%; height:100%; width:auto;}
+.dritem .dressing-img img{position:absolute; left:50%; height:756px; width:auto;}
 #dressingroombottom .dritem { bottom:45px;}
-#dressingroombottom .dritem .dressing-img img{top:0;}
+#dressingroombottom .dritem .dressing-img img{top:auto; bottom:0;}
 
 #dressingroomtop div.productdetail{
   margin-right: 10%;
-  margin-top: -150px;
+  margin-top: -85px;
   position: absolute;
   left: 65%;
+  z-index:5;
   top: 50%;
 }
 #dressingroombottom div.productdetail{
@@ -202,7 +214,7 @@ div.totalcountregion
   top: 50%;
 }
 #dressingroomholder a.nextBtn,
-#dressingroomholder a.prevBtn{position:absolute; top:0; bottom:0; text-indent:-999em; width:150px; display:none;}
+#dressingroomholder a.prevBtn{position:absolute; top:0; bottom:0; text-indent:-999em; width:150px; display:none; z-index:9;}
 
 #dressingroomholder a.nextBtn{background:url(../images/catalog/product/dressingroom/arrow_right.png) 50% 50% no-repeat; right:0;}
 #dressingroomholder a.prevBtn{background:url(../images/catalog/product/dressingroom/arrow_left.png) 50% 50% no-repeat; left:0;}
