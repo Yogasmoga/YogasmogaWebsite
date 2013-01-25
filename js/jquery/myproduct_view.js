@@ -68,6 +68,19 @@ jQuery(document).ready(function($){
         $('#zoomedimage').smoothZoom('zoomOut');
         
     });
+	/*$('td#zoomedproductimage').mouseup(function(){
+		if($(this).hasClass('canzoomin')){
+			if($(this).hasClass('lev0')){
+				$('#zoomedimage').smoothZoom('focusTo', {zoom: initialzoom});
+				$(this).removeClass('lev0').addClass('lev1');
+			}else{
+				$('#zoomedimage').smoothZoom('zoomIn');
+				$(this).removeClass('med').addClass('max');
+			}
+		}
+	})
+	
+	
     /*$("div#zoompopup div.noSel.smooth_zoom_preloader").live('mousedown', function(e){
         _oldmousex = e.pageX;
         _oldmousey = e.pageY;
@@ -136,7 +149,8 @@ function getZoomPercent(realwidth, realheight, orgwidth, orgheight)
 	}
     return nPercent * 100;
 }
-
+var initialzoom;
+var minzoom;
 function StartZooming(scale)
 {
     scale = (typeof scale === "undefined") ? false : scale;
@@ -182,33 +196,41 @@ function StartZooming(scale)
         realwidth = 700;
         realheight = 700;
     }
-	var initialzoom;
-	var ImgScrRatio = (_winW-250) / jQuery("img#zoomedimage").width();
+	
+	var ImgScrRatio = ((_winH) / jQuery("img#zoomedimage").height())*1.2;
 	if(ImgScrRatio < 1){
-		initialzoom = ImgScrRatio*100;
+		minzoom = ImgScrRatio*100;
+	}else{
+		minzoom = 1*100;
+	}
+	var ImgScrRatioW = ((_winW) / jQuery("img#zoomedimage").width());
+	if(ImgScrRatioW < 1){
+		initialzoom = ImgScrRatioW*100;
 	}else{
 		initialzoom = 1*100;
 	}
     //var initialzoom = Math.floor(Math.random() * (100 - 50 + 1)) + 50;
 //    initialzoom = 150;
     //var initialzoom = getZoomPercent(realwidth, realheight, orgwidth, orgheight);
-    if(jQuery("img#zoomedimage").hasClass('fabricimage'))
+    /*if(jQuery("img#zoomedimage").hasClass('fabricimage'))
         _minzoomscale = getZoomPercent(700, 700, temp[1] * 1, temp[2] * 1);
     else
-        _minzoomscale = getZoomPercent(700, 700, td.attr("orgwidth") * 1, td.attr("orgheight") * 1); 	
+        _minzoomscale = getZoomPercent(700, 700, td.attr("orgwidth") * 1, td.attr("orgheight") * 1); 	*/
     jQuery('img#zoomedimage').show();
+	jQuery('td#zoomedproductimage').addClass('lev0');
 	_minzoomscale = 18;
     jQuery('img#zoomedimage').smoothZoom({
         width : _winW - 250,
         height : _winH + _headerHeight,
         max_WIDTH : _winW - 250,
         max_HEIGHT : _winH + _headerHeight,
-        initial_ZOOM : initialzoom,
+        initial_ZOOM : minzoom,
 		zoom_MAX: 100,
-        zoom_MIN : _minzoomscale,
+        zoom_MIN : minzoom,
         responsive : true,
 		animation_SMOOTHNESS:4,animation_SPEED_ZOOM:4,animation_SPEED_PAN:4,
         pan_BUTTONS_SHOW : false,
+		//mouse_DOUBLE_CLICK:false,
         pan_REVERSE : true,
         on_IMAGE_LOAD : function(){
             //setTimeout(function(){
