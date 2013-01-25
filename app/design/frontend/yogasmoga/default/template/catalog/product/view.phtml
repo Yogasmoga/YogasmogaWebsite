@@ -75,7 +75,7 @@
         $breadcrumb .= '&nbsp;&gt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'#productgrid">ALL PRODUCTS</a>&nbsp;&gt;';
     
         
-    $productname = $_helper->productAttribute($_product, $_product->getName(), 'name');
+    $productname = html_entity_decode($_helper->productAttribute($_product, $_product->getName(), 'name'));
     $productid = $_product->getId();
     $_rewardpointsearned = 0.1;
     $price = $_product->getSpecialPrice();

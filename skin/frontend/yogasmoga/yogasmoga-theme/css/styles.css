@@ -322,7 +322,7 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 .notice { color:#e26703; }
 
 .messages,
-.messages ul { list-style:none !important; margin:0 !important; padding:0 !important; }
+.messages ul { list-style:none !important; margin:0 !important; padding:0 !important; margin-bottom: 20px !important;}
 .messages { width:100%; overflow:hidden; }
 .messages li { margin:0 0 10px !important; }
 .messages li li { margin:0 0 3px !important; }
@@ -330,8 +330,29 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 .success-msg,
 .note-msg,
 .notice-msg { border-style:solid !important; border-width:1px !important; background-position:10px 9px !important; background-repeat:no-repeat !important; min-height:24px !important; padding:8px 8px 8px 32px !important; font-size:11px !important; font-weight:bold !important; }
-.error-msg { border-color:#f16048; background-color:#faebe7; background-image:url(../images/i_msg-error.gif); color:#df280a; }
-.success-msg { border-color:#446423; background-color:#eff5ea; background-image:url(../images/i_msg-success.gif); color:#3d6611; }
+.error-msg { border : none !important;
+    border: medium none !important;
+    padding: 0 !important;
+    text-align: left;
+    text-transform: uppercase;
+    font-size : 18px !important;
+    font-family : gothambook;
+    font-weight: normal !important;
+    color : #D90D3D; }
+.success-msg { 
+    border : none !important;
+    border: medium none !important;
+    padding: 0 !important;
+    text-align: left;
+    text-transform: uppercase;
+    font-size : 18px !important;
+    font-family : gothambook;
+    font-weight: normal !important;
+}
+.success-msg  a{ 
+    color : #D90D3D;
+    text-decoration: underline;
+}
 .note-msg,
 .notice-msg { border-color:#fcd344; background-color:#fafaec; background-image:url(../images/i_msg-note.gif); color:#3d6611; }
 
@@ -341,9 +362,15 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 .breadcrumbs li strong { font-weight:bold; }
 
 /* Page Heading */
-.page-title { width:100%; overflow:hidden; border-bottom:1px solid #ccc; margin:0 0 25px; }
+.page-title { width:100%; overflow:hidden; margin:0 0 25px; text-align: center;}
 .page-title h1,
-.page-title h2 { margin:0; font-size:20px; color:#0a263c; }
+.page-title h2 { margin:0;
+font-family : gothambook;
+font-size : 18px;
+color : black;
+letter-spacing: 0.6pt;
+font-weight: bold;
+ }
 .page-title .separator { margin:0 3px; }
 .page-title .link-rss { float:right; margin:7px 0 0; }
 .title-buttons { text-align:right; }

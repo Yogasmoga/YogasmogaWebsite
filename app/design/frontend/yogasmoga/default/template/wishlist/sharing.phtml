@@ -24,6 +24,47 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/wishlist.css'); ?>" media="all" />
+<div class="myheader">MY WISHLIST</div>
+<div class="page-title" style="margin-bottom: 110px;">
+    <h1><?php echo $this->__('SHARE YOUR WISHLIST') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<form action="<?php echo $this->getSendUrl() ?>" id="form-share-wishlist" method="post">
+    <table class="inputtable">
+        <tr>
+            <td class="label"><label for="email_address"><?php echo $this->__('Email Addresses, separated by commas') ?></label></td>
+            <td class="inputholder">
+                <input type="text" name="emails" id="email_address" value="<?php echo $this->getEnteredData('emails'); ?>" class="requiredfield" defaulterrormsg="Email Addresses are required" />
+            </td>
+        </tr>
+        <tr>
+            <td class="errortext" colspan="2">
+                <div>Email Address is required.</div>
+            </td>
+        </tr>
+    </table>
+    <table class="inputtable">
+        <tr>
+            <td class="label"><label for="email_address"><?php echo $this->__('Message...') ?></label></td>
+            <td class="inputholder">
+                <input type="text" name="message" id="message" value="<?php echo $this->getEnteredData('message'); ?>" />
+            </td>
+        </tr>
+        <tr>
+            <td class="errortext" colspan="2">
+                <div>Email Address is required.</div>
+            </td>
+        </tr>
+    </table>
+    <center>
+    <button downimageurl="<?php echo $this->getSkinUrl('images/share_your_wishlist_on.png'); ?>" imageurl="<?php echo $this->getSkinUrl('images/share_your_wishlist_off.png'); ?>" class="sharewishlistbtn spbutton custombtn" type="submit"></button>
+    </center>
+</form>
+<div class="backlink">
+    <a href="<?php echo $this->getBackUrl(); ?>" class="back-link">&lt;&nbsp;<?php echo $this->__('Back') ?></a>
+</div>
+<?php return; ?>
 <div class="page-title">
     <h1><?php echo $this->__('Share Your Wishlist') ?></h1>
 </div>

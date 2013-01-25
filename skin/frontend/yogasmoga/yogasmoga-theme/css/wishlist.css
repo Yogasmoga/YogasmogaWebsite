@@ -9,6 +9,7 @@
 .my-wishlist
 {
     text-align: center;
+    width : 960px;
 }
 p.wishlist-empty
 {
@@ -22,4 +23,98 @@ p.wishlist-empty
     width : 239px;
     height : 35px;
     margin-top : 30px; 
+}
+table.tblwishlist
+{
+    color : #2F2F2F;
+    font-family : gothambook;
+    margin-left : auto;
+    margin-right: auto;
+    width : 100%;
+}
+
+table.tblwishlist thead th
+{
+    font-family: gothambook;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.6pt;
+    padding-bottom: 25px;
+}
+table.tblwishlist td.prname
+{
+    font-family: gothamMedium;
+    font-size: 11px;
+    letter-spacing: 0.4px;
+    margin-bottom: 10px;
+}
+table.tblwishlist td.prname, table.tblwishlist td.primage, table.tblwishlist td.prnote
+{
+    padding-right : 40px;
+}
+table.tblwishlist td.prnote textarea
+{
+    height : 75px;
+    width : 200px;
+    color : #2F2F2F;
+    font-family : gothambook;
+}
+table.tblwishlist td
+{
+    padding-bottom: 30px;
+}
+table.tblwishlist td.prnote textarea:focus
+{
+    background-color: white;
+}
+table.tblwishlist tr.last td
+{
+    border-bottom : 1px dotted #000000
+}
+table.tblwishlist td.removeitem
+{
+    width : 20px;
+}
+.addtocartbtn
+{
+    background-image : url('../images/add_to_cart_off.png');
+    width : 137px;
+    height : 29px;
+    margin-left : 30px;
+}
+.sharewishlistbtn
+{
+    background-image : url('../images/share_wishlist_off.png');
+    width : 137px;
+    height : 29px;
+}
+.updatewishlistbtn
+{
+    background-image : url('../images/update_wishlist_off.png');
+    width : 286px;
+    height : 43px;
+    margin-left : 20px;
+}
+.sharewishlistbtn
+{
+    background-image : url('../images/share_your_wishlist_off.png');
+    width : 286px;
+    height : 43px;
+    margin-top : 80px;
+}
+#wishlist-view-form .buttons-set
+{
+    border : none;
+}
+table.tblwishlist tbody tr td.removeitem a
+{
+    display : none;
+}
+table.tblwishlist tbody tr:hover td.removeitem a
+{
+    display : block;
+}
+#form-share-wishlist table.inputtable
+{
+    width : 575px;
 }

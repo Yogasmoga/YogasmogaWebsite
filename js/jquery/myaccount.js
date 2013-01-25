@@ -15,6 +15,17 @@ jQuery(document).ready(function($){
         return validateRegistrationForm();
     });
     
+    $("#wishlist-view-form").submit(function(){
+        $(this).find("textarea").each(function(){
+            if($(this).val() == "")
+                $(this).val(' ');
+        });
+    });
+    
+    $("#form-share-wishlist").submit(function(){
+        return validateWishlistForm();
+    });
+    
     $("#edit-accountinfo").submit(function(){
         return validateAccountEditForm();
     });
@@ -45,6 +56,24 @@ jQuery(document).ready(function($){
         return validateAddressForm();
     });
 });
+
+function validateWishlistForm()
+{
+    unsetAllError(jQuery("#form-share-wishlist"));
+    var flag = validatefields(jQuery("#form-share-wishlist"));
+    if(jQuery("email_address").val() != "")
+    {
+        var valid_regexp = /^[a-z0-9\._-]{1,30}@([a-z0-9_-]{1,30}\.){1,5}[a-z]{2,4}$/i;
+        var emails = jQuery("email_address").val().split(',');
+        for (var i=0; i<emails.length; i++) {
+            if(!valid_regexp.test(emails[i].strip())) {
+                flag = false;
+                setOnError(jQuery("zip"), "Invalid Zip Code.");    
+            }
+        }
+    }
+    return flag;
+}
 
 function validateAddressForm()
 {
