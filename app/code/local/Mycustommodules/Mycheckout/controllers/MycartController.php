@@ -202,7 +202,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
             //if(strpos($_image->getLabel(), $color) === false)
 //            //if(strpos($_image->getLabel(),"*") === false)
 //                continue;
-            return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(50, 50);
+            return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(50, 50)->setQuality(100);
         }
         return "";
     }
@@ -293,7 +293,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                     $temparray['quantity'] = $item->getQty();
                     $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
                     $temparray['imageurl'] = $this->getMiniImage($item->getProductId());
-                    $temparray['imageurl'] = "_".Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(50, 50);
+                    $temparray['imageurl'] = "_".Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(50, 50)->setQuality(100);
                     $temparray['producturl'] = $_product->getProductUrl();
                     $temparray['itemid'] = $item->getItemId();
                     array_push($miniitems, $temparray);
@@ -332,7 +332,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
             if($productcount > 5)
                 break;
             //$output .= "<a href='".$item['producturl']."'>";
-            $output .= "<div id='".$item['itemid']."' class='minicartitems'> <table> <tr> <td class='tdproductimage'> <img src='".substr($item['imageurl'], 1)."' /> </td> <td class='tdproductdetail'> <div class='productname'>".$item['name']."</div>";
+            $output .= "<div id='".$item['itemid']."' class='minicartitems'> <table> <tr> <td class='tdproductimage'> <img src='".substr($item['imageurl'], 1)."' /> </td> <td class='tdproductdetail'> <div class='productname'>".html_entity_decode($item['name'])."</div>";
             if(isset($item['color']))
                 $output .= "<div class='productdetail'><span class='productattribute'>COLOR:</span>&nbsp;".$item['color']."</div>";
             if(isset($item['size']))

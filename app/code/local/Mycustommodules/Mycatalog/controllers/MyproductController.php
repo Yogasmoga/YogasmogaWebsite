@@ -229,9 +229,9 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                     //if(str_replace("*", "", $_image->getLabel()) == $temp)
                     {
                         //echo $imageurl;
-                        $smallimageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75);
-                        $imageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(450, 450);
-                        $zoomimageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(750, 750);
+                        $smallimageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75)->setQuality(100);
+                        $imageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(450, 450)->setQuality(100);
+                        $zoomimageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(750, 750)->setQuality(100);
                         
                         //if(count($productcolorinfo[$temp]["images"]) == 0)
                         if(!isset($productcolorinfo[$temp]["images"]))
@@ -421,7 +421,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                         <table class="productdetailtable">
                             <tr>
                                 <td>
-                                    <div class="productname"><?php echo $productname; ?></div>
+                                    <div class="productname"><?php echo html_entity_decode($productname); ?></div>
                                     <div class="productcost"><?php echo $productprice; ?></div>
                                     <div class="shortdesc"><?php echo $_product->getShortDescription(); ?></div>
                                     <table class="selectedcolor">

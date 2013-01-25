@@ -75,7 +75,7 @@
         $breadcrumb .= '&nbsp;&gt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'#productgrid">ALL PRODUCTS</a>&nbsp;&gt;';
     
         
-    $productname = html_entity_decode($_helper->productAttribute($_product, $_product->getName(), 'name'));
+    $productname = $_helper->productAttribute($_product, $_product->getName(), 'name');
     $productid = $_product->getId();
     $_rewardpointsearned = 0.1;
     $price = $_product->getSpecialPrice();
@@ -169,9 +169,9 @@
                 //if(str_replace("*", "", $_image->getLabel()) == $temp)
                 {
                     //echo $imageurl;
-                    $smallimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75);
-                    $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(700, 700);
-                    $zoomimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
+                    $smallimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75)->setQuality(100);
+                    $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(700, 700)->setQuality(100);
+                    $zoomimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->setQuality(100);
                     
                     $imagePath = substr($zoomimageurl, 1);
                     $dirImg = Mage::getBaseDir().str_replace("/",DS,strstr($imagePath,'/media'));
@@ -237,7 +237,7 @@
     
 ?>
     
-    <div id="productdetails" desc="<?php echo $productname; ?>" class="fullscreen pgsection" style="position: relative;" hdependson="absproductoptions">
+    <div id="productdetails" desc="<?php echo html_entity_decode($productname); ?>" class="fullscreen pgsection" style="position: relative;" hdependson="absproductoptions">
     <script type="text/javascript">
         var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
     </script>
@@ -363,7 +363,7 @@
             <tr>
                 <td>
                     <div class="breadcrumb"><?php echo $breadcrumb; ?></div>
-                    <div class="productname"><?php echo $productname; ?></div>
+                    <div class="productname"><?php echo html_entity_decode($productname); ?></div>
                     <div class="productcost"><?php echo $productprice; ?></div>
                     <div class="shortdesc"><?php echo $_product->getShortDescription(); ?></div>
                     <table class="selectedcolor">
@@ -949,7 +949,7 @@
                     <table class="productdetailtable zoomproductdetail">
                         <tr>
                             <td>
-                                <div class="productname"><?php echo $productname; ?></div>
+                                <div class="productname"><?php echo html_entity_decode($productname); ?></div>
                                 <div class="productcost"><?php echo $productprice; ?></div>
                                 <table class="selectedcolor">
                                     <tr>

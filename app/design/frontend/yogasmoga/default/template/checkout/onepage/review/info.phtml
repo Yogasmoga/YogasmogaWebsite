@@ -90,7 +90,7 @@
             //if(strpos($_image->getLabel(), $color) === false)
 //            //if(strpos($_image->getLabel(),"*") === false)
 //                continue;
-            return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(50, 50);
+            return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(50, 50)->setQuality(100);
         }
         return "";
     }
@@ -182,7 +182,7 @@
                     $temparray['individualprice'] = $item->getBaseCalculationPrice();
                     $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 0, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
                     //$temparray['imageurl'] = getMiniImage($item->getProductId());
-                    $temparray['imageurl'] = "_".Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(50, 50);
+                    $temparray['imageurl'] = "_".Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(50, 50)->setQuality(100);
                     $temparray['producturl'] = $_product->getProductUrl();
                     $temparray['itemid'] = $item->getItemId();
                     array_push($miniitems, $temparray);
@@ -230,7 +230,7 @@
                                     <img src="<?php echo substr($item['imageurl'], 1); ?>" />
                                 </td>
                                 <td class="co-over-prdtl">
-                                     <div class="productname"><?php echo $item['name']; ?></div>
+                                     <div class="productname"><?php echo html_entity_decode($item['name']); ?></div>
                                      <div class="productdetail"><span class="productattribute">COLOR:</span>&nbsp;&nbsp;<?php echo $item['color']; ?></div>
                                      <div class="productdetail"><span class="productattribute">SIZE:</span>&nbsp;&nbsp;<?php echo $item['size']; ?></div>
                                 </td>

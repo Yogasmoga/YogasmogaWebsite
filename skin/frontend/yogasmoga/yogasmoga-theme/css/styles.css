@@ -2307,8 +2307,8 @@ div.mycategory-products div.item td.productname
     font-size:10px;
     color : gray;
     text-transform: uppercase;
-    height : 20px;
-    vertical-align: bottom;
+    height : 35px;
+    vertical-align: top;
 }
 div.mycategory-products div.item:hover td.productname
 {
