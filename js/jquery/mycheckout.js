@@ -6,7 +6,7 @@ jQuery(document).ready(function($){
 //        $("div.myheader:first").next().hide();
     $("#checkout-login-form").submit(function(){
         return validateCheckoutLoginForm();
-    });    
+    });
     window.onbeforeunload = function() {
         if(!_allowcheckoutexit)
             return "If you leave the cart all information will be lost.";
@@ -509,6 +509,7 @@ function saveCheckoutMethod()
             jQuery("#tblcheckoutsteps").show();
             positionordersummary();
             _ischeckoutprocessing = false;
+            jQuery('select').customSelect();
         }
     });
 }
