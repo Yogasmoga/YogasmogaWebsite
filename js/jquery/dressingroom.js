@@ -27,9 +27,11 @@ jQuery(document).ready(function($){
 		$(this).parent().find('.active').find('.productdetail').stop(true,true).fadeIn(100);
 	})
 	$('#dressingroombottom, #dressingroomtop').mouseleave(function(){
+	   if(_onipad)
+        return;
 		$(this).find('a.prevBtn').stop(true,true).fadeOut(100);
 		$(this).find('a.nextBtn').stop(true,true).fadeOut(100);
-		$(this).find('.active').find('.productdetail').stop(true,true).fadeOut(100);
+		$(this).find('.active').find('.productdetail').stop(true,true).fadeOut(100);  
 	})
 	$("#dressingroombottom").swipe({
 		swipeLeft	:function(){$('a.prevBtn', this).trigger('click')},
@@ -89,11 +91,9 @@ jQuery(document).ready(function($){
         dialogClass : 'yogidialog'
     });
         
-    
     $(".ui-widget-overlay, div#productdetailpopup img#closelightbox").live("click", function(){
         jQuery( "#productdetailpopup" ).dialog( "close" );
     });
-	
 })
 function showproductlightbox(productid){
     productid = parseInt(productid);

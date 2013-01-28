@@ -1,0 +1,8 @@
+#dressingroomholder div.productdetail
+{
+    display : block !important;
+}
+#dressingroomholder a.nextBtn, #dressingroomholder a.prevBtn
+{
+    display : inline !important;
+}
