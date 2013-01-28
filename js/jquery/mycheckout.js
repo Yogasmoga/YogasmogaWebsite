@@ -6,8 +6,7 @@ jQuery(document).ready(function($){
 //        $("div.myheader:first").next().hide();
     $("#checkout-login-form").submit(function(){
         return validateCheckoutLoginForm();
-    });
-    
+    });    
     window.onbeforeunload = function() {
         if(!_allowcheckoutexit)
             return "If you leave the cart all information will be lost.";
@@ -119,6 +118,7 @@ jQuery(document).ready(function($){
     $("select#billing-address-select").removeAttr('onchange');
     $("select#billing-address-select").change(function(){
         checkbillingnewaddress();
+        jQuery('select').customSelect();
     });
     //$("#stripe-update-payment").live
     $("#stripe-update-payment").live('click', function(){
