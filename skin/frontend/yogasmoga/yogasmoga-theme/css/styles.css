@@ -172,7 +172,7 @@ button.btn-checkout.no-checkout span { background-position:0 100%; color:#b8baba
 button.btn-checkout.no-checkout span span { background-position:100% 100%; }
 
 
-button.btn-explore span{padding:0; width:138px; text-indent:-999em; height:28px; margin:0; background:url(../images/btn-explore.png) 0 0 no-repeat; border:0;}
+button.btn-explore span{padding:0; width:127px; text-indent:-999em; height:28px; margin:0; background:url(../images/btn-explore.png) 0 0 no-repeat; border:0;}
 button span span{background:none;}
 button:active span{background-position:0 100%;}
 
