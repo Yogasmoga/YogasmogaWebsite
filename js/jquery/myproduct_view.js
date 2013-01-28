@@ -27,6 +27,8 @@ jQuery(document).ready(function($){
     clearEmptycaptions();
     
     $("table.tdbigimagecontainer img").live("click", function(){
+        if(!_canzoomimages)
+            return;
         jQuery("#productdetailpopup").html("<table style='width:100%;height : 100%;'><tr><td style='text-align:center;vertical-align:middle;'>Loading. .</td></tr></table>");
         jQuery("body").addClass('overflowhidden');
         jQuery( "#zoompopup" ).dialog( "open" );
@@ -53,6 +55,8 @@ jQuery(document).ready(function($){
     $("table.zoomproductdetail table.zoomsmallimagecontainer td:not(.selectedimage)").live("click", function(){
         jQuery("table.zoomproductdetail table.zoomsmallimagecontainer td").removeClass('selectedimage');
         $(this).addClass('selectedimage');
+        jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage' zoomurl='" + $(this).attr("zoomimageurl") + "' src='" + $(this).attr("bigimageurl") + "' />");
+        return;
         jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage' src='" + $(this).attr("zoomimageurl") + "' />");
 		$("img#zoomedimage").one('load', function(){
 			StartZooming();	
@@ -131,7 +135,14 @@ jQuery(document).ready(function($){
             jQuery("div#zoompopup div#zoomoptions img#zoomin").addClass('disabled');
 		})
 		FIstart = 0;
-	})
+	});
+    
+    $("td#zoomedproductimage img[zoomurl]").live('click', function(){
+        jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage' src='" + $(this).attr("zoomurl") + "' />");
+        $("img#zoomedimage").one('load', function(){
+			StartZooming();	
+		});
+    });
 });
 
 function getZoomPercent(realwidth, realheight, orgwidth, orgheight)
@@ -411,10 +422,17 @@ function changezoomColor(clr, delay, imgindex)
     for(i = 0; i < _productcolorinfo[colorindex].smallimages.length; i++)
     {
         var temp = _productcolorinfo[colorindex].zoomimages[i].split("|");
-        smallimagehtml = smallimagehtml + "<tr><td zoomimageurl='" + temp[0] + "' orgwidth='" + temp[1] + "' orgheight='" + temp[2] + "'><img src='" + _productcolorinfo[colorindex].smallimages[i] + "'></td></tr>";
+        smallimagehtml = smallimagehtml + "<tr><td bigimageurl='" + _productcolorinfo[colorindex].bigimages[i] + "' zoomimageurl='" + temp[0] + "' orgwidth='" + temp[1] + "' orgheight='" + temp[2] + "'><img src='" + _productcolorinfo[colorindex].smallimages[i] + "'></td></tr>";
+    }
+    if(_fabrictechnologyimage != '')
+    {
+        var temp = _fabrictechnologyimage.split('|');
+        smallimagehtml = smallimagehtml + "<tr><td style='vertical-align:middle;text-align:center;' bigimageurl='" + _fabrictechnologyimagespcl + "' zoomimageurl='" + temp[0] + "' orgwidth='" + temp[1] + "' orgheight='" + temp[2] + "'>Fabric Image</td></tr>";
     }
     jQuery("div#zoompopup table.zoomsmallimagecontainer").html(smallimagehtml);
     jQuery("div#zoompopup table.zoomsmallimagecontainer tr:nth-child(" + imgindex + ") td").addClass('selectedimage');
+    jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage' src='" + jQuery("div#zoompopup table.zoomsmallimagecontainer tr:nth-child(" + imgindex + ") td").attr("bigimageurl") + "' zoomurl='" + jQuery("div#zoompopup table.zoomsmallimagecontainer tr:nth-child(" + imgindex + ") td").attr("zoomimageurl") + "' />");
+    return;
     jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage' src='" + jQuery("div#zoompopup table.zoomsmallimagecontainer tr:nth-child(" + imgindex + ") td").attr("zoomimageurl") + "' />");
     if(delay)
     {

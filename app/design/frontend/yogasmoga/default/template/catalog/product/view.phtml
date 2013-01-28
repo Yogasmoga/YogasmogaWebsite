@@ -31,21 +31,6 @@
  * @see Mage_Review_Block_Product_View
  */
 ?>
-<style type="text/css">
-    table.productimagecontainer table.tdbigimagecontainer td img
-    {
-        max-width : 700px;
-        cursor : url("<?php echo $this->getSkinUrl('images/catalog/product/cursor_zoom_in.cur') ?>"), default;
-    }
-    td.canzoomin, td.canzoomin div, td.canzoomin img
-    {
-        cursor : url("<?php echo $this->getSkinUrl('images/catalog/product/cursor_zoom_in.cur') ?>"), default !important;
-    }
-    td.canzoomout, td.canzoomout div, td.canzoomout img
-    {
-        cursor : url("<?php echo $this->getSkinUrl('images/catalog/product/cursor_zoom_out.cur') ?>"), default !important;
-    }
-</style>
 <?php $_helper = $this->helper('catalog/output'); ?>
 <?php $_product = $this->getProduct(); ?>
 <?php $_product = Mage::getModel('catalog/product')->load($_product->getId()); ?>
@@ -170,7 +155,7 @@
                 {
                     //echo $imageurl;
                     $smallimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75)->setQuality(100);
-                    $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(700, 700)->setQuality(100);
+                    $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(100);
                     $zoomimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->setQuality(100);
                     
                     $imagePath = substr($zoomimageurl, 1);
@@ -327,6 +312,30 @@
 ?>
     //console.log(_productcolorinfo);
     </script>
+<?php
+    if($_product->getAttributeText('canzoomimage') == "yes")
+    {
+        ?>
+            <style type="text/css">
+                table.productimagecontainer table.tdbigimagecontainer td img
+                {
+                    cursor : url("<?php echo $this->getSkinUrl('images/catalog/product/cursor_zoom_in.cur') ?>"), default;
+                }
+                td.canzoomin, td.canzoomin div, td.canzoomin img
+                {
+                    cursor : url("<?php echo $this->getSkinUrl('images/catalog/product/cursor_zoom_in.cur') ?>"), default !important;
+                }
+                td.canzoomout, td.canzoomout div, td.canzoomout img
+                {
+                    cursor : url("<?php echo $this->getSkinUrl('images/catalog/product/cursor_zoom_out.cur') ?>"), default !important;
+                }
+            </style>
+            <script type="text/javascript">
+                _canzoomimages = true;
+            </script>
+        <?php
+    }
+?>
     <table class="productimagecontainer">
         <tr>
             <td>
@@ -510,6 +519,7 @@
     $currentstoreid = Mage::app()->getStore()->getStoreId();
     $dfimages = array();
     $ftimage = "";
+    $ftimagespcl = "";
     $ftimagesmall = "";
     foreach($_gallery as $_image)
     {
@@ -525,6 +535,12 @@
         //if($_image->getLabel() == "Fabric_Technology_Image")
         {
             $ftimage = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
+            $ftimagespcl = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(100);
+            ?>
+                <script type="text/javascript">
+                    _fabrictechnologyimagespcl = '<?php echo $ftimagespcl; ?>';
+                </script>
+            <?php 
             continue;
         }
         if(strcasecmp($imgdata['type'],"fabric image small") == 0)
@@ -915,7 +931,6 @@
             $heightsmall = $height;
         }
         ?>
-            
             <script type="text/javascript">
                 _fabrictechnologyimage = '<?php echo $ftimage ?>';
             </script>

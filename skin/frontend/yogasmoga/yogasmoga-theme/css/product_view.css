@@ -678,15 +678,19 @@ table.zoomsmallimagecontainer td
     vertical-align: bottom;
     padding-top : 20px;
     cursor : pointer;
+    font-size : 11px;
+    color : #D90D3D;
 }
 table.zoomsmallimagecontainer td:first-child
 {
     padding-top : 0px;
 }
+/*
 img#zoomedimage
 {
     display : none;
 }
+*/
 td#zoomedproductimage div.noSel.smooth_zoom_preloader>div
 {
     background-color : transparent !important;
@@ -851,4 +855,13 @@ button.btn-bag.bagdisabled span
 {
     background-image : url('../images/catalog/product/add_to_bag_disabled.png');
     height : 42px;
+}
+table.productimagecontainer table.tdbigimagecontainer td img
+{
+    max-width : 700px;
+}
+td#zoomedproductimage
+{
+    text-align: center;
+    vertical-align: middle;
 }
