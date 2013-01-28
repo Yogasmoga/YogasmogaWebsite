@@ -427,7 +427,7 @@ function changezoomColor(clr, delay, imgindex)
     if(_fabrictechnologyimage != '')
     {
         var temp = _fabrictechnologyimage.split('|');
-        smallimagehtml = smallimagehtml + "<tr><td style='vertical-align:middle;text-align:center;' bigimageurl='" + _fabrictechnologyimagespcl + "' zoomimageurl='" + temp[0] + "' orgwidth='" + temp[1] + "' orgheight='" + temp[2] + "'>Fabric Image</td></tr>";
+        smallimagehtml = smallimagehtml + "<tr><td style='vertical-align:middle;text-align:left;' bigimageurl='" + _fabrictechnologyimagespcl + "' zoomimageurl='" + temp[0] + "' orgwidth='" + temp[1] + "' orgheight='" + temp[2] + "'>Fabric Image</td></tr>";
     }
     jQuery("div#zoompopup table.zoomsmallimagecontainer").html(smallimagehtml);
     jQuery("div#zoompopup table.zoomsmallimagecontainer tr:nth-child(" + imgindex + ") td").addClass('selectedimage');

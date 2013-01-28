@@ -9,6 +9,7 @@ jQuery(document).ready(function($){
         $(this).addClass("selectedimage");
         $("table.tdbigimagecontainer img").hide();
         $("table.tdbigimagecontainer img").attr("src", $(this).attr("bigimageurl"));
+        _curshareimgurl = $(this).attr("bigimageurl");
         $("table.tdbigimagecontainer img").fadeIn('fast');
     });
     
@@ -209,12 +210,13 @@ function changeColor(clr)
             if(jQuery("table.tdbigimagecontainer img").length > 0)
                 jQuery("table.tdbigimagecontainer img").attr("src", jQuery("table.smallimagecontiner td:first").attr("bigimageurl"));
             else
-                jQuery("table.tdbigimagecontainer td").html("<img src='" + jQuery("table.smallimagecontiner td:first").attr("bigimageurl") + "'>");   
+                jQuery("table.tdbigimagecontainer td").html("<img src='" + jQuery("table.smallimagecontiner td:first").attr("bigimageurl") + "'>");
+            _curshareimgurl = jQuery("table.smallimagecontiner td:first").attr("bigimageurl");
         }
         jQuery("table.smallimagecontiner td:first").addClass("selectedimage");
         jQuery("table.productimagecontainer").fadeIn('fast');   
     }
-    jQuery("#orderitem").addClass("bagdisabled");
+    //jQuery("#orderitem").addClass("bagdisabled");
 }
 
 function addtocart()
@@ -234,6 +236,7 @@ function addtocart()
         jQuery("div.producterrorcontainer div.errormsg").hide();
         jQuery("div.producterrorcontainer div.errormsg").html(errormsg);
         jQuery("div.producterrorcontainer div.errormsg").fadeIn('fast');
+        jQuery("#orderitem").addClass('bagdisabled');
         return;
     }
     jQuery("div.producterrorcontainer div.errormsg").hide();

@@ -179,7 +179,9 @@ function shareonfb()
     _currentshareurl = url;
     var currentpage = jQuery("#" + cfscreenid);
     //window.open('http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(_currentshareurl) + '&p[images][0]=http://staging.yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/yoga_logo_side.jpg&p[title]=' + currentpage.attr("desc") + '&p[summary]=Summary Here','Share_on_Faceook','toolbar=0,status=0,menubar=0,width=600,height=300,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 300) / 2);
-    window.open('http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(_currentshareurl) + '&p[images][0]=https://yogasmoga.com/yogasmoga_gold.jpg&p[title]=' + currentpage.attr("desc") + '&p[summary]=Summary Here','Share_on_Faceook','toolbar=0,status=0,menubar=0,width=600,height=300,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 300) / 2);
+    if(_curshareimgurl == '')
+        _curshareimgurl = 'https://yogasmoga.com/yogasmoga_gold.jpg';
+    window.open('http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(_currentshareurl) + '&p[images][0]=' + _curshareimgurl + '&p[title]=' + currentpage.attr("desc") + '&p[summary]=Summary Here','Share_on_Faceook','toolbar=0,status=0,menubar=0,width=600,height=300,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 300) / 2);
 }
 
 function shareontw()
@@ -212,7 +214,9 @@ function shareonpt()
     var currentpage = jQuery("#" + cfscreenid);
     //console.log('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(url) + '&media=http://staging.yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/yoga_logo_side.jpg&description=hello');
     //window.open('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(url) + '&media=https://yogasmoga.com/yogasmoga_gold.jpg&description=' + currentpage.attr("desc"),'Share_on_Pinterest','toolbar=0,status=0,menubar=0,width=600,height=520,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 520) / 2);
-    window.open('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(url) + '&media=https://yogasmoga.com/yogasmoga_gold.jpg&description=' + currentpage.attr("desc"),'Share_on_Pinterest','toolbar=0,status=0,menubar=0,width=600,height=520,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 520) / 2);
+    if(_curshareimgurl == '')
+        _curshareimgurl = 'https://yogasmoga.com/yogasmoga_gold.jpg';
+    window.open('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(url) + '&media=' + _curshareimgurl + '&description=' + currentpage.attr("desc"),'Share_on_Pinterest','toolbar=0,status=0,menubar=0,width=600,height=520,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 520) / 2);
 }
 
 function shareonmail()
