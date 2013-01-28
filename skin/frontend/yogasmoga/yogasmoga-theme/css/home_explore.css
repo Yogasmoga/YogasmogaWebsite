@@ -68,3 +68,6 @@
 #explore #slider .carousel-desc button.button{
  width:138px; position:absolute; left:50%; margin-left:-69px; bottom:0;
 }
+.banner-txt{position:absolute; top:10%; left:15%; text-align:center; white-space:nowrap; font-family:ITCAvantGardeProBk; color:#fff; font-size:17px; line-height:1.1; text-transform:uppercase;}
+.banner-txt span{display:block; font-size:34px;}
+.banner-txt span strong{font-weight:normal; font-family:ITCAvantGardeProBd;}
