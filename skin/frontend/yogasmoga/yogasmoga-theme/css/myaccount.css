@@ -8,11 +8,11 @@
 
 .loginbtn
 {
-    background-image : url('../images/customer/login_new_off.png');
+    background-image : url('../images/customer/log_in_off.png');
     background-repeat: no-repeat;
     background-position: center;
     width : 119px;
-    height : 29px;
+    height : 26px;
     margin-right : 25px;
 }
 
