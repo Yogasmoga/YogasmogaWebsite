@@ -55,7 +55,7 @@ jQuery(document).ready(function($){
     $("table.zoomproductdetail table.zoomsmallimagecontainer td:not(.selectedimage)").live("click", function(){
         jQuery("table.zoomproductdetail table.zoomsmallimagecontainer td").removeClass('selectedimage');
         $(this).addClass('selectedimage');
-        jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage' zoomurl='" + $(this).attr("zoomimageurl") + "' src='" + $(this).attr("bigimageurl") + "' />");
+        jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage1' zoomurl='" + $(this).attr("zoomimageurl") + "' src='" + $(this).attr("bigimageurl") + "' />");
         return;
         jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage' src='" + $(this).attr("zoomimageurl") + "' />");
 		$("img#zoomedimage").one('load', function(){
@@ -431,7 +431,7 @@ function changezoomColor(clr, delay, imgindex)
     }
     jQuery("div#zoompopup table.zoomsmallimagecontainer").html(smallimagehtml);
     jQuery("div#zoompopup table.zoomsmallimagecontainer tr:nth-child(" + imgindex + ") td").addClass('selectedimage');
-    jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage' src='" + jQuery("div#zoompopup table.zoomsmallimagecontainer tr:nth-child(" + imgindex + ") td").attr("bigimageurl") + "' zoomurl='" + jQuery("div#zoompopup table.zoomsmallimagecontainer tr:nth-child(" + imgindex + ") td").attr("zoomimageurl") + "' />");
+    jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage1' src='" + jQuery("div#zoompopup table.zoomsmallimagecontainer tr:nth-child(" + imgindex + ") td").attr("bigimageurl") + "' zoomurl='" + jQuery("div#zoompopup table.zoomsmallimagecontainer tr:nth-child(" + imgindex + ") td").attr("zoomimageurl") + "' />");
     return;
     jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage' src='" + jQuery("div#zoompopup table.zoomsmallimagecontainer tr:nth-child(" + imgindex + ") td").attr("zoomimageurl") + "' />");
     if(delay)

@@ -685,12 +685,10 @@ table.zoomsmallimagecontainer td:first-child
 {
     padding-top : 0px;
 }
-/*
 img#zoomedimage
 {
     display : none;
 }
-*/
 td#zoomedproductimage div.noSel.smooth_zoom_preloader>div
 {
     background-color : transparent !important;
