@@ -139,10 +139,9 @@ jQuery(document).ready(function($){
     
     $("td#zoomedproductimage img[zoomurl]").live('click', function(){
         jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage' src='" + $(this).attr("zoomurl") + "' />");
-        //$("img#zoomedimage").one('load', function(){
-//			StartZooming();	
-//		});
-        StartZooming();
+        $("img#zoomedimage").one('load', function(){
+			StartZooming();	
+		});
     });
 });
 
