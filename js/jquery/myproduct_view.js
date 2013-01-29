@@ -208,13 +208,13 @@ function StartZooming(scale)
         realheight = 700;
     }
 	
-	var ImgScrRatio = ((_winH) / jQuery("img#zoomedimage").height())*1.4;
+	var ImgScrRatio = ((_winH) / jQuery("img#zoomedimage").height())*1.2;
 	if(ImgScrRatio < 1){
 		minzoom = ImgScrRatio*100;
 	}else{
 		minzoom = 1*100;
 	}
-	var ImgScrRatioW = ((_winW) / jQuery("img#zoomedimage").width());
+	var ImgScrRatioW = ((_winW) / jQuery("img#zoomedimage").width())*1.6;
 	if(ImgScrRatioW < 1){
 		initialzoom = ImgScrRatioW*100;
 	}else{
@@ -235,7 +235,7 @@ function StartZooming(scale)
         height : _winH + _headerHeight,
         max_WIDTH : _winW - 250,
         max_HEIGHT : _winH + _headerHeight,
-        initial_ZOOM : minzoom,
+        initial_ZOOM : initialzoom,
 		zoom_MAX: 100,
         zoom_MIN : minzoom,
         responsive : true,
