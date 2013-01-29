@@ -121,7 +121,7 @@ h3{font-family:gotnam-l; text-transform:uppercase; font-size:16px; font-weight:n
 table td[align=center]{text-align:center;}
 .design-elements{display:block; margin-top:40px;}
 .design-elements .element {min-height:220px; padding-bottom:20px; overflow: hidden;}
-.design-elements .element img{float:left;}
+.design-elements .element img{float:left; border : 1px solid #DD8820;}
 .design-elements .element .desc {margin-left:240px;}
 .size-chart{border:1px solid #666; margin-bottom:50px;}
 .size-chart th{background:#666; color:#fff; font-style:normal; text-transform:uppercase; font-family:gotham-m, Arial; font-weight:normal; text-align:center; padding:8px 20px;}

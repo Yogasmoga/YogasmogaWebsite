@@ -9,8 +9,13 @@ jQuery(document).ready(function($){
     });
     window.onbeforeunload = function() {
         if(!_allowcheckoutexit)
-            return "If you leave the cart all information will be lost.";
+            if(_checkoutdatachanged)
+                return "If you leave the cart all information will be lost.";
     }
+    
+    $('#tblcheckoutsteps input,#tblcheckoutsteps select').live('change', function(){
+        _checkoutdatachanged = true;
+    });
     
     $("div#checkout-guest-continue").click(function(){
         _checkoutmethod = 'register';

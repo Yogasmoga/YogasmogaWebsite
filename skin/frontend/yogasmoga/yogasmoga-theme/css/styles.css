@@ -2434,6 +2434,7 @@ a.grid-link{
   float: left;
   font-family: gothambook;
   font-size: 11px;
+  display : none;
   text-transform: uppercase;
 }
 /*
@@ -2535,7 +2536,7 @@ div.mylayerednavigation div.searchitems div table td.add, div.mylayerednavigatio
 }
 div.mylayerednavigation div.searchitems div table td img
 {
-    margin-top : 4px;
+    margin-top : 3px;
 }
 
 div.mylayerednavigation div.searchitems div table td.add
@@ -2560,7 +2561,10 @@ div.mylayerednavigation div.searchitems div:hover
 {
     background-color : #EFEEED;
 }
-
+div.mylayerednavigation table.active td
+{
+    background-color : #EFEEED;   
+}
 div.searchitems td {
 	font-family:gothamlight;
 	font-size:9px;
@@ -2976,6 +2980,10 @@ div.opimage img.big_big
     top : 0;
     left : 0;
     position : absolute;
+}
+div.big_big
+{
+    cursor : pointer;
 }
 div.opimage div
 {
