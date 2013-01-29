@@ -325,7 +325,7 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 .messages ul { list-style:none !important; margin:0 !important; padding:0 !important; margin-bottom: 20px !important;}
 .messages { width:100%; overflow:hidden; }
 .messages li { margin:0 0 10px !important; }
-.messages li li { margin:0 0 3px !important; }
+.messages li li { margin:0 0 3px !important; text-align: center;}
 .error-msg,
 .success-msg,
 .note-msg,
