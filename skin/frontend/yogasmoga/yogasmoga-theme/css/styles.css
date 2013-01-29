@@ -23,15 +23,7 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 /* Reset ================================================================================= */
-* { margin:0; padding:0; 
--webkit-touch-callout: none;
--webkit-user-select: none;
--khtml-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;
-
-}
+* { margin:0; padding:0;}
 
 body          {font:12px/1.55 Arial, Helvetica, sans-serif; color:#2f2f2f; text-align:center;}
 
@@ -3004,6 +2996,15 @@ div.opimage
 	background-repeat:no-repeat;
 	background-size:cover;
     overflow : hidden;
+}
+div.opimage, div.opimage *
+{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 div.opimage .small h3.heading{color:#dd8820; font-style:italic;font-family:gothambook; font-size:19px; font-weight:normal; line-height:1.2; margin:0 0 0; padding:0;}
 #ftechimage .opbox{position:absolute; font-family:gothambook; font-size:11px ;line-height:16px; color:#cccccc; height:auto; left:auto; top:auto;}
