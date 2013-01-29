@@ -2405,7 +2405,7 @@ div.mycategory-products div.item td.productimage
 {
     height : 345px;
 	width:230px;
-	border:1px solid #cacaca;
+	border:1px solid #DD8820;
     vertical-align : bottom;
 }
 .cms-home div.mycategory-products div.item td.productimage{
@@ -3125,4 +3125,58 @@ div.giftcard-login-msg a
 {
     color : #D90D3D;
     text-decoration: underline;
+}
+a.videosharelink div
+{
+    width : 20px;
+    height : 21px;
+}
+a#fbvideoshare div
+{
+    background-image : url("../images/navigation/facebook.png");
+}
+a#fbvideoshare:hover div
+{
+    background-image : url("../images/navigation/facebook_hover.png");
+}
+a#mlvideoshare div
+{
+    background-image : url("../images/navigation/mail.png");
+}
+a#mlvideoshare:hover div
+{
+    background-image : url("../images/navigation/mail_hover.png");
+}
+a#twvideoshare div
+{
+    background-image : url("../images/navigation/twitter.png");
+}
+a#twvideoshare:hover div
+{
+    background-image : url("../images/navigation/twitter_hover.png");
+}
+a#ptvideoshare div
+{
+    background-image : url("../images/navigation/pinterest.png");
+}
+a#ptvideoshare:hover div
+{
+    background-image : url("../images/navigation/pinterest_hover.png");
+}
+.fancybox-title table
+{
+    margin-left : auto;
+    margin-right : auto;
+}
+.fancybox-title table td
+{
+    padding : 5px;
+}
+.fancybox-title-inside-wrap
+{
+    padding : 0;
+}
+.fancybox-opened .fancybox-title
+{
+    background-color : black;
 }

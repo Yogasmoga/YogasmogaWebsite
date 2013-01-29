@@ -45,6 +45,18 @@
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/youtubevideo.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.flexslider-min.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/parallaxeffect.js"></script>
+<?php
+    if($this->getRequest()->getParam('video') == 'true')
+    {
+        ?>
+        <script type="text/javascript">
+            jQuery(document).ready(function($){
+                $("#hmpagevideo").trigger('click');
+            });
+        </script>
+        <?php
+    }
+?>
 </head>
 <body  class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>" style="overflow:hidden; margin-right:17px;">
 <?php echo $this->getChildHtml('after_body_start') ?>
@@ -76,7 +88,7 @@
                 </ul>
                 <div style="position: absolute; width: 15.25%; right: 4.625%; bottom: 8.25%; display:none;" id="playBtn" ><img style="width : 100%" src="<?php echo $this->getSkinUrl('images/homepage/play_button.png') ?>" />
 					<div style="position: absolute; width: 26%; left: 7%; top: 18%;">
-                      	<a href="http://www.youtube.com/watch?v=FU0JJNzMg88" rel="fancyvideo">
+                      	<a id="hmpagevideo" href="http://www.youtube.com/watch?v=xtpyjPrpyX8" rel="fancyvideo">
                       		<img style="width:100%;"  src="<?php echo $this->getSkinUrl('images/homepage/play.png') ?>" />
                       	</a>
                     </div>
