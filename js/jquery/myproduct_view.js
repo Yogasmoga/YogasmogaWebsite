@@ -208,7 +208,7 @@ function StartZooming(scale)
         realheight = 700;
     }
 	
-	var ImgScrRatio = ((_winH) / jQuery("img#zoomedimage").height())*1.2;
+	var ImgScrRatio = ((_winH) / jQuery("img#zoomedimage").height())*1.4;
 	if(ImgScrRatio < 1){
 		minzoom = ImgScrRatio*100;
 	}else{
@@ -241,7 +241,7 @@ function StartZooming(scale)
         responsive : true,
 		animation_SMOOTHNESS:4,animation_SPEED_ZOOM:4,animation_SPEED_PAN:4,
         pan_BUTTONS_SHOW : false,
-		zoom_SINGLE_STEP: true,
+		//zoom_SINGLE_STEP: true,
 		//mouse_DOUBLE_CLICK:false,
         pan_REVERSE : true,
         on_IMAGE_LOAD : function(){
