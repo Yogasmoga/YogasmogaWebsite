@@ -164,9 +164,11 @@ dressingroomholder #dressingroombottom table td.imageholder
 #dressingroomholder
 {
     position : relative;
-    background-image : url('../images/catalog/product/dressingroom/dressing_room_bg_830pix_city.png');
+    /*background-image : url('../images/catalog/product/dressingroom/dressing_room_bg_830pix_city.png');*/
+    background-image : url('../images/catalog/product/dressingroom/a.png');
     background-repeat: no-repeat;
-    background-position: center 20%;
+    background-position: center top;
+    background-size: 50% 51%;
 }
 .dressingroombg
 {
@@ -178,9 +180,11 @@ dressingroomholder #dressingroombottom table td.imageholder
 	margin-top:0px;
 	height:450px;
 	padding-bottom:45px;
-    background-image : url('../images/catalog/product/dressingroom/dressing_room_bg_830pix_grass.png');
+    /*background-image : url('../images/catalog/product/dressingroom/dressing_room_bg_830pix_grass.png');*/
+    background-image : url('../images/catalog/product/dressingroom/b.png');
     background-repeat: no-repeat;
-    background-position: center 100%;
+    background-position: center bottom;
+    background-size : auto 60%;
 }
 div.totalcountregion
 {

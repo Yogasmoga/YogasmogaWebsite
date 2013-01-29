@@ -62,7 +62,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                         //Mage::throwException($this->__('Please enter your friend name.'));
                         //$errors[] = $this->__('Friend name is required for (%s) on line %s.', $email, ($key_email+1));
                         $session->addError($this->__('Friend name is required for email: %s on line %s.', $email, ($key_email+1)));
-                        $arr['message'] = "Freind name is required for email (".$email.")";
+                        $arr['message'] = "Friend name is required for email (".$email.")";
                         $arr['status'] = "error";
                         $no_errors = false;
                     }
@@ -85,13 +85,13 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                             if ($referralModel->subscribe($customerSession->getCustomer(), $email, $name)) {
                                 //$session->addSuccess($this->__('Email %s was successfully invited.', $email));
                                 $arr['status'] = "success";
-                                $arr['message'] = "Freind is successfully invited";
+                                $arr['message'] = "Friend is successfully invited";
                                 echo json_encode($arr);
                                 return;
                             } else {
                                 //$session->addError($this->__('There was a problem with the invitation email %s.', $email));
                                 $arr['status'] = "success";
-                                $arr['message'] = "Freind is successfully invited";
+                                $arr['message'] = "Friend is successfully invited";
                                 echo json_encode($arr);
                                 return;
                                 $arr['status'] = "error";
