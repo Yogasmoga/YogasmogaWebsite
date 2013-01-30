@@ -2310,6 +2310,10 @@ div.mycategory-products div.item td.productname
     height : 35px;
     vertical-align: top;
 }
+td.productname a
+{
+    font-size: 7px;    
+}
 div.mycategory-products div.item:hover td.productname
 {
     color : black;
@@ -3192,4 +3196,12 @@ a#ptvideoshare:hover div
 .fancybox-opened .fancybox-title
 {
     background-color : black;
+}
+div.searchitems td sup
+{
+    font-size : 6px;
+}
+div.productname sup
+{
+    font-size : 12px;
 }
