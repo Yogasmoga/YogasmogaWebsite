@@ -128,7 +128,7 @@ table td[align=center]{text-align:center;}
 .size-chart td{border-top:1px solid #666; color:#666; text-transform:uppercase; font-family:gotham, Arial; text-align:center; padding:8px 20px;}
 .size-chart td[align="left"]{text-align:left;}
 
-body.cms-smogiprogram{background:url(../images/smogi-bg.jpg) 50% 100% no-repeat;background-size:contain;}
+body.cms-smogiprogram{background:url("../images/smogi_bg.png") no-repeat scroll 0 0 / contain  transparent;}
 .bucks-page{padding: 1px 0 50px; color:#666; font-family:gotham-l, Arial; font-size:12px;
  line-height:1.3;}
 .bucks-page .smogi-bucks{width:770px; margin:0 auto;}
@@ -307,6 +307,31 @@ button.btn-brecelet:active span{background-position:0 100%;}
 .support .values-box {
   padding-top: 175px; margin-right:10%; width:395px; text-align:center;
 }
-
-
-
+.smogi-title
+{
+    font-family: gotham-t,Arial;
+    font-size: 100px;
+    font-weight: normal;
+    line-height: 1;
+    padding: 20px 0 0px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom : 15px;
+}
+.headseparator
+{
+    background: url("../images/title-bg.png") no-repeat scroll 50% 100% transparent;
+    margin-bottom: 35px;
+    padding-bottom : 60px;
+}
+.smogi-subheading
+{
+    font-family : gothambook;
+    font-size : 14px;
+    text-align: center;
+    color : #666;
+}
+.section a
+{
+    color : #D90D3D;
+}
