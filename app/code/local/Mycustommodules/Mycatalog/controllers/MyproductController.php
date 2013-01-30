@@ -528,7 +528,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                                             </td>
                                         </tr>
                                     </table>
-                                    <button id="orderitem" title="Add to Cart" class="button cbtn btn-bag bagdisabled"><span><span>Add to Cart</span></span></button>
+                                    <button id="orderitem" title="Add to Cart" class="button cbtn btn-bag"><span><span>Add to Cart</span></span></button>
 					                <button style="display: none;" id="preorderitem" title="Preorder" class="button cbtn btn-pre"><span>Preorder<span></span></span> </button>
                                     <?php /*
                                     <div id="orderitem" class="addtobag spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_on.png'); ?>"></div>

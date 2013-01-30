@@ -12,17 +12,17 @@ jQuery(document).ready(function($){
         var temp = '';
         if($(this).hasClass('line1'))
         {
-            console.log('line 1');
+            //console.log('line 1');
             temp = 0;    
         }
         if($(this).hasClass('line2'))
         {
-            console.log('line 2');
+            //console.log('line 2');
             temp = 1;    
         }
         if($(this).hasClass('line3'))
         {
-            console.log('line 3');
+            //console.log('line 3');
             temp = 2;
         }
         if($("div#" + _currentproductid + " td.productimage img.rotable").eq(temp).length > 0)
@@ -154,7 +154,7 @@ function shownextimage(id)
 {
     if(isitemhovered(id))
     {
-        console.log(jQuery("#mycategory_products div#" + id + " td.productimage img.active").nextAll('.rotable').length);
+        //console.log(jQuery("#mycategory_products div#" + id + " td.productimage img.active").nextAll('.rotable').length);
         if(jQuery("#mycategory_products div#" + id + " td.productimage img.rotable").index(jQuery("#mycategory_products div#" + id + " td.productimage img.active")) < 2 && jQuery("#mycategory_products div#" + id + " td.productimage img.active").nextAll('.rotable').length > 0)
         {
             var nextimage = jQuery("#mycategory_products div#" + id + " td.productimage img.active").nextAll('.rotable:first');
@@ -167,7 +167,7 @@ function shownextimage(id)
         }
         else
         {
-            console.log('sdf');
+            //console.log('sdf');
             jQuery("#mycategory_products div#" + id + " td.productimage img.active").removeClass('active');
             jQuery("#mycategory_products div#" + id + " td.productimage img.rotable:first").addClass('active');
             
