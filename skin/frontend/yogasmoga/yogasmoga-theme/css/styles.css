@@ -2588,7 +2588,7 @@ table.staticproductgrid td:first-child
 }
 table.staticproductgrid td.tdmain
 {
-    padding : 0 10px;
+    padding : 0;
 }
 
 table.staticproductgrid div.item
