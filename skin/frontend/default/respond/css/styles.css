@@ -835,7 +835,7 @@ tr.summary-details-excluded { font-style:italic; }
 .quick-access .links li.last a { padding:0; background:none; }
 
 .top-bar { }
-.top-bar .breadcrumbs { float:left; overflow:hidden; }
+.top-bar .breadcrumbs { float:left; overflow:hidden; padding:0 10px;}
 .form-search { position: absolute; right: 20px; top: 36px; border-bottom: 3px solid #000; margin-top: 18px; }
 .form-search label { position: absolute; overflow: hidden; clip: rect(0 0 0 0); height: 1px; width: 1px; margin: -1px; padding: 0; border: 0;  }
 .form-search input.input-text { background: none; border: medium none; color: #999999; float: left; font-size: 16px; font-style: oblique; font-weight: normal; height: 26px; margin: 0; width: 100%;}
@@ -1259,7 +1259,7 @@ f/********** Product Prices > */
 .add-to-box .add-to-links li .separator { display:none !important; }
 
 
-.product-view {}
+.product-view {padding:0 10px;}
 
 .product-essential { padding:0 0 25px; }
 .product-essential h2 { }
