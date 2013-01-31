@@ -1,4 +1,4 @@
-<!--@subject {{var store.getFrontendName()}} Gift Card for You!@-->
+<!--@subject {{var store.getFrontendName()}}@-->
 <!--@vars
 {"store url=\"\"":"Store Url",
 "skin url=\"images/logo_email.gif\" _area='frontend'":"Email Logo Image",
@@ -25,12 +25,7 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
                     <p style="color:#666; font-size:12px; line-height:18px; margin:0 0 20px;">You have received a {{var data.amount}} Gift Card{{depend data.email-from}} from {{var data.email-from}}{{/depend}}! This card may be redeemed on <a href="{{store url=""}}" style="text-decoration:none; color:#f30f44;">{{var store.getFrontendName()}}</a> website. Happy shopping!</p>
 				</td>
             </tr>
-			<tr>
-				<td align="center" style="text-align: center;">
-					<center><img src="{{var data.picture}}" style="margin:0 0 50px;" /></center>
-				</td>
-			</tr>
-			<tr>
+            <tr>
 				<td style="font-size:20px; line-height:30px; padding:0 0 60px;">
 					{{depend data.email-message}}<p style="color:#666; font-size:12px; line-height:18px; margin:0 0 10px; padding:0 0 60px;" >{{var data.email-message}} <strong>-{{var data.email-from}}</strong></p>{{/depend}}
 				<p style="border-top:1px solid #000; color:#666; font-size:12px; line-height:22px; text-transform:uppercase;">
@@ -50,10 +45,6 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
 						</ol>
 				</td>
             </tr>
-			
-			
-			
-					
 				   <tr>
 					<td style="border-bottom:1px solid #ccc; padding:40px 0;">
 						<p style="color:#666; font-size:12px; margin:15px 0;">If you have any comments or questions regarding your order, please email us any time at <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#f30f44; text-decoration:none;">{{config path='trans_email/ident_support/email'}}</a>.</p>
