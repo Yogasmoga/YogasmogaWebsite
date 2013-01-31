@@ -232,9 +232,13 @@ div.totalcountregion
 
 
 
-.sizeChart{bottom: 40px;
-left: 25px; z-index:9;
-position: absolute;}
+.sizeChart{
+    bottom: 25%;
+    left: 35%;
+    z-index:9;
+    position: absolute;
+
+}
 .dressingroomsubheader1
 {
     font-family : gothambook;

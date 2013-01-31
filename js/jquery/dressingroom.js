@@ -154,7 +154,9 @@ function chkfixposition(){
 		var nhPercent = (desHeight/cHeight);
 		var newHeight = Math.round($j(this).attr('actheight')*nhPercent);
 		$j(this).height(newHeight);
-	})
+	});
+    //console.log(((jQuery(".fullscreen:first").width() / 2) - (jQuery("div#dressingroombottom div.dritem.active img").width() / 2) - 30) - jQuery("div."));
+    jQuery("div#drsizechart").css('left', ((jQuery(".fullscreen:first").width() / 2) - (jQuery("div#dressingroombottom div.dritem.active img").width() / 2) - 25) - (jQuery("div#drsizechart").width()) + 'px'); 
 }
 function getScaledheight(originalheight, originalwidth)
 {
