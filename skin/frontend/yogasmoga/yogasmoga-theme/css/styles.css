@@ -3010,7 +3010,7 @@ div.opimage
 {
     position : relative;
 	background-position:50% 50%;
-	background-repeat:no-repeat;
+	background-repeat:repeat;
 	background-size:cover;
     overflow : hidden;
 }
