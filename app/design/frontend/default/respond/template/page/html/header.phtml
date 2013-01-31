@@ -37,10 +37,12 @@
 		<div class="quick-access">
 			<?php // echo $this->getChildHtml('store_language') ?>
 			<?php // echo $this->getChildHtml('top_currency') ?>
-			<?php echo $this->getChildHtml('topLinksCustom') ?>
+				<?php echo $this->getChildHtml('topLinksCustom') ?>
 		</div>
 		<?php echo $this->getChildHtml('topSearch') ?>
-        <?php echo $this->getChildHtml('topMenu') ?>	
+		<?php if(!Mage::registry('current_category')):?>
+			<?php echo $this->getChildHtml('topMenu') ?>	
+		<?php endif; ?>
     </div>
 
     <?php echo $this->getChildHtml('topBar') ?>
