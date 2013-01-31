@@ -617,7 +617,7 @@ td#tdpopupproductbigimage
     text-align : center;
 }
 
-img#closelightbox
+img#closelightbox, img#zoomcloselightbox
 {
     position : absolute;
     top : 3px;
@@ -670,6 +670,7 @@ table.productzoomtable td.zoomproductoptions
 table.zoomsmallimagecontainer
 {
     margin-top : 40px;
+    margin-bottom : 10px;
 }
 table.zoomsmallimagecontainer td
 {
@@ -862,4 +863,24 @@ td#zoomedproductimage
 {
     text-align: center;
     vertical-align: middle;
+}
+#zoomedfbdtl
+{
+    display: none;
+    background-image: url('../images/catalog/product/fabric_bg.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100% ;
+    position: absolute;
+    top : 0;
+    left : 0;
+    z-index: 5;
+}
+a#fbzoomtrigger
+{
+    color : #D90D3D;
+    font-size: 10px; padding-left : 6px;
+}
+#fbzoomtrigger:hover
+{
+    text-decoration: underline;
 }
