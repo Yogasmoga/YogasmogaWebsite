@@ -3215,3 +3215,7 @@ button span
     background-repeat: no-repeat;
     background-color: transparent;
 }
+#mainimage
+{
+    background-color: transparent;
+}

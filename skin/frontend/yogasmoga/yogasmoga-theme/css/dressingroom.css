@@ -45,7 +45,7 @@
     min-width: 25%;
    max-width: 25%;
 }
-#dressingroomholder div.productdetail div.viewdetails
+#dressingroomholder div.productdetail div.viewdetails, #dressingroomholder div.productdetail button.viewdetails
 {
     width : 169px;
     height : 35px;
