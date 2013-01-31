@@ -175,7 +175,7 @@ button.btn-checkout:active span{background-position:0 100%;}
 .social-btns a.facebook:hover{background-position:-62px 100%;}
 .social-btns a.email:hover{background-position:-93px 100%;}
 
-body.gift_of_ys{background:url(../images/goy-bg.png) 50% 0 no-repeat; color:#666;}
+body.gift_of_ys{background:url(../images/goy-bg.png) 50% 0 no-repeat; color:#666; background-size: cover ;}
 ul.sub-nav{text-indent:0; list-style:none; padding:10px; margin:0; font-family:gotham, Arial; font-size:13px; text-transform:uppercase; text-align:center; line-height:24px;}
 ul.sub-nav li {
   background: url("../images/subsep.png") no-repeat scroll 100% 50% transparent;

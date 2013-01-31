@@ -2995,7 +2995,7 @@ div.big_big
 {
     cursor : pointer;
 }
-div.opimage div
+div.opimage div, #zoomedfbdtl div
 {
 	text-align:center;
     width : 100%;
@@ -3025,28 +3025,28 @@ div.opimage, div.opimage *
     user-select: none;
 }
 div.opimage .small h3.heading{color:#dd8820; font-style:italic;font-family:gothambook; font-size:19px; font-weight:normal; line-height:1.2; margin:0 0 0; padding:0;}
-#ftechimage .opbox{position:absolute; font-family:gothambook; font-size:11px ;line-height:16px; color:#cccccc; height:auto; left:auto; top:auto;}
-#ftechimage .opbox h3.heading{font-family:ITCAvantGardeProBk; font-weight:normal; font-size:19px;color:#dd8820; font-style:normal; text-transform:uppercase; line-height:1.1; margin:10px 0;}
-#ftechimage .opbox sup{font-size:8px;}
+#ftechimage .opbox, #zoomedfbdtl .opbox{position:absolute; font-family:gothambook; font-size:11px ;line-height:16px; color:#cccccc; height:auto; left:auto; top:auto;}
+#ftechimage .opbox h3.heading, #zoomedfbdtl .opbox h3.heading{font-family:ITCAvantGardeProBk; font-weight:normal; font-size:19px;color:#dd8820; font-style:normal; text-transform:uppercase; line-height:1.1; margin:10px 0;}
+#ftechimage .opbox sup, #zoomedfbdtl .opbox sup{font-size:8px;}
 
-#ftechimage .opbox.usa{width:260px; left:10%; top:60px;}
-#ftechimage .opbox.amm{width:215px; right:20%; top:60px;}
-#ftechimage .opbox.hqs{width:225px; right:10%; top:42%;}
-#ftechimage .opbox.rtp{width:215px; left:15%; bottom:10%;}
-#ftechimage .opbox.nano{width:255px; right:25%; bottom:5%;}
+#ftechimage .opbox.usa, #zoomedfbdtl .opbox.usa{width:260px; left:10%; top:60px;}
+#ftechimage .opbox.amm, #zoomedfbdtl .opbox.amm{width:215px; right:20%; top:60px;}
+#ftechimage .opbox.hqs, #zoomedfbdtl .opbox.hqs{width:225px; right:10%; top:42%;}
+#ftechimage .opbox.rtp, #zoomedfbdtl .opbox.rtp{width:215px; left:15%; bottom:10%;}
+#ftechimage .opbox.nano, #zoomedfbdtl .opbox.nano{width:255px; right:25%; bottom:5%;}
 
-#ftechimage .opbox.centered{top:50%; left:50%; margin:-125px 0 0 -155px; width:310px; font-size:13px; line-height:18px;}
-#ftechimage .centered h3.heading{font-family:ITCAvantGardeProBd; font-weight:normal; font-size:30px;color:#dd8820; text-transform:uppercase; font-style:normal; background:url(../images/homepage/heading-bg.png) 50% 100% no-repeat; margin:0 0 20px; padding:0 0 20px; line-height:1;}
-#ftechimage .centered h3.heading span{display:block;font-family:ITCAvantGardeProBk;}
-#ftechimage .centered h3.heading sup{font-size:12px;}
+#ftechimage .opbox.centered, #zoomedfbdtl .opbox.centered{top:50%; left:50%; margin:-125px 0 0 -155px; width:310px; font-size:13px; line-height:18px;}
+#ftechimage .centered h3.heading, #zoomedfbdtl .centered h3.heading{font-family:ITCAvantGardeProBd; font-weight:normal; font-size:30px;color:#dd8820; text-transform:uppercase; font-style:normal; background:url(../images/homepage/heading-bg.png) 50% 100% no-repeat; margin:0 0 20px; padding:0 0 20px; line-height:1;}
+#ftechimage .centered h3.heading span, #zoomedfbdtl .centered h3.heading span{display:block;font-family:ITCAvantGardeProBk;}
+#ftechimage .centered h3.heading sup, #zoomedfbdtl .centered h3.heading sup{font-size:12px;}
 
 @media screen and (max-width: 1250px) {
-#ftechimage .opbox.usa{width:335px; left:3%; top:30px;}
-#ftechimage .opbox.amm{width:300px; right:8%; top:30px;}
-#ftechimage .opbox.hqs{width:225px; right:4%; top:42%;}
-#ftechimage .opbox.rtp{width:275px; left:5%; bottom:10%;}
-#ftechimage .opbox.nano{width:405px; right:17%; bottom:3%;}
-#ftechimage .centered.rtp{margin:-125px 0 0 -200px; width:400px;}
+#ftechimage .opbox.usa, #zoomedfbdtl .opbox.usa{width:335px; left:3%; top:30px;}
+#ftechimage .opbox.amm, #zoomedfbdtl .opbox.amm{width:300px; right:8%; top:30px;}
+#ftechimage .opbox.hqs, #zoomedfbdtl .opbox.hqs{width:225px; right:4%; top:42%;}
+#ftechimage .opbox.rtp, #zoomedfbdtl .opbox.rtp{width:275px; left:5%; bottom:10%;}
+#ftechimage .opbox.nano, #zoomedfbdtl .opbox.nano{width:405px; right:17%; bottom:3%;}
+#ftechimage .centered.rtp, #zoomedfbdtl .centered.rtp{margin:-125px 0 0 -200px; width:400px;}
 }
 
 /*====================*/
