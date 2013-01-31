@@ -335,12 +335,16 @@ table.productdetailtable table.smogibucks td.earnsmogibuckstext
 
 table.productdetailtable div.addtobag
 {
-    width : 245px;
-    height : 48px;
+    width : 239px;
+    height : 43px;
     background-image : url('../images/catalog/product/add_to_bag_off.png');
     background-repeat : no-repeat;
     margin-top : 15px;
     cursor : pointer;
+}
+table.productdetailtable div.addtobag.bagdisabled
+{
+    background-image : url('../images/catalog/product/add_to_bag_disabled.png') !important;
 }
 table.productdetailtable button.cbtn{margin-top:20px;}
 

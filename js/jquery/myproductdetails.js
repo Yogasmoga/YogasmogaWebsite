@@ -105,7 +105,9 @@ function changeproductsize(sz)
         jQuery("div.smogibuckcount td").html(_rewardpoints * (jQuery("select.qtyselector").val() * 1));
     else
         jQuery("div.smogibuckcount td").html(_rewardpoints);
+    
     jQuery("#orderitem").removeClass("bagdisabled");
+    jQuery("#orderitem").addClass("spbutton");
 }
 
 function changeOrderqty(qty)
@@ -237,6 +239,7 @@ function addtocart()
         jQuery("div.producterrorcontainer div.errormsg").html(errormsg);
         jQuery("div.producterrorcontainer div.errormsg").fadeIn('fast');
         jQuery("#orderitem").addClass('bagdisabled');
+        jQuery("#orderitem").removeClass('spbutton');
         return;
     }
     jQuery("div.producterrorcontainer div.errormsg").hide();
