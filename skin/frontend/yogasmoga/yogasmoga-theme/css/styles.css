@@ -3205,3 +3205,12 @@ div.productname sup
 {
     font-size : 12px;
 }
+input[type='submit'], button 
+{
+    background-color: transparent;
+}
+button span
+{
+    background-repeat: no-repeat;
+    background-color: transparent;
+}

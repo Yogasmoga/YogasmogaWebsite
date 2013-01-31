@@ -14,7 +14,7 @@ jQuery(document).ready(function($){
             //fixFlexisliderImage();
             }
         });
-		$('#playBtn').fadeIn(500, function(){$('.flexslider').css('background','#c17872')});  
+		$('#playBtn').fadeIn(500, function(){$('.flexslider').css('background','#c17872')});
 		$('.page-overlay').fadeOut(500);
 		$('body').css({overflow:'auto', marginRight:0});
     });
