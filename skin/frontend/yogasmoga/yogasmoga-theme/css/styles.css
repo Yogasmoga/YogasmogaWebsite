@@ -2371,6 +2371,7 @@ div.mycategory-products div.item img.active.rotable
     top: 0;
     width: 100%;
     text-align : center;
+    letter-spacing: 0.8pt;
 }
 
 .zindex10

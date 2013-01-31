@@ -235,3 +235,11 @@ div.totalcountregion
 .sizeChart{bottom: 40px;
 left: 25px; z-index:9;
 position: absolute;}
+.dressingroomsubheader1
+{
+    font-family : gothambook;
+    font-size : 11px;
+    letter-spacing: 0.4pt;
+    margin-top : 10px;
+    margin-bottom: 15px;
+}

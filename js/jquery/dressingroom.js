@@ -128,7 +128,7 @@ function chkfixposition(){
 	$botDress.height($botSH);*/
 	$j('.doverlay').fadeOut(250);
 	$j('#dressingroomholder img').each(function(){
-		var desHeight = (_winH - _headerHeight - 100);
+		var desHeight = (_winH - _headerHeight - 150);
 		var cHeight = $j(this).height();
 		var nhPercent = (desHeight/cHeight);
 		var newHeight = Math.round(cHeight*nhPercent);
@@ -139,7 +139,7 @@ function chkfixposition(){
 		$j(this).css({marginLeft: '-'+NewLeft+'px'})
 	})
 	$j('#dressingroomtop, #dressingroombottom').each(function(){
-		var desHeight = (_winH - _headerHeight - 100);
+		var desHeight = (_winH - _headerHeight - 150);
 		var actHT = parseInt($j('#dressingroomholder').attr('actheight'));
 		var cHeight;
 		if(desHeight < 450){
