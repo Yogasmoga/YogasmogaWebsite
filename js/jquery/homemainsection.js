@@ -18,10 +18,10 @@ jQuery(document).ready(function($){
 		$('.page-overlay').fadeOut(500);
 		$('body').css({overflow:'auto', marginRight:0});
     });
-	fixmainimage();
+	//fixmainimage();
     
     
-    //setTimeout(function(){ fixmainimage();}, 100);
+    setTimeout(function(){ fixmainimage();}, 100);
 });
 
 function fixmainimage()
