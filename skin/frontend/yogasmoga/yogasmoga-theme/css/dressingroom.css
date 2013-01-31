@@ -88,11 +88,11 @@
 #dressingroomholder div.productdetail div.productname
 {
     font-family:gothamMedium;
-    font-size:10px;
+    font-size:11px;
 }
 #dressingroomholder div.productdetail div.productdescription {
   font-family: gothambook;
-  font-size: 10px;
+  font-size: 11px;
   height: 28px;
   line-height: 1.3;
   overflow: hidden;
