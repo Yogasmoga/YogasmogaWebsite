@@ -376,6 +376,9 @@ table.productdetailtable div.addtowishlist , #productdetailpopup div.addtowishli
 
 #productdetailpopup div.addtowishlist
 {
+    border-bottom: 1px solid #D90D3D;
+    padding-left: 2px;
+    padding-bottom : 2px;
 }
 a.addtowishlist{
     color : black;
@@ -400,7 +403,7 @@ letter-spacing: 0.6pt;
 #productdetailpopup div.viewfulldetails 
 {
     color : black;
-    padding-bottom : 4px;
+    padding-bottom : 2px;
     border-bottom : 1px solid #D90D3D;
     width : 156px;
     font-size : 10px;
@@ -559,6 +562,7 @@ div.producterrorcontainer div.errormsg
 table.productdetailpopupbottomlinks
 {
     width : 100%;
+    margin-bottom : 10px;
 }
 
 table.productdetailpopupbottomlinks td:first-child
