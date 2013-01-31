@@ -81,6 +81,10 @@ function setfullscreenheight()
             jQuery(this).find("table.fullscreentable").css('height',(tempheight) + 'px');   
         }
     });
+    jQuery(".fullwidth").each(function(){
+        //jQuery(this).width(_winW);
+        jQuery(this).width(jQuery(".fullscreen:first").width());
+    });
     jQuery(".fullscreenovfhidden img.fullscreen").each(function(){
         var height = jQuery(this).height();
         height = getScaledheight(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth")) * 1;
