@@ -150,7 +150,7 @@ class Mage_Core_Model_Email_Template extends Mage_Core_Model_Template
         $transport = new Zend_Mail_Transport_Smtp($my_smtp_host, $config);
         Zend_Mail::setDefaultTransport($transport);
         $this->_mail = new Zend_Mail('utf-8');
-        return $transport;
+        return $this->_mail;
         if (is_null($this->_mail)) {
             $this->_mail = new Zend_Mail('utf-8');
         }
