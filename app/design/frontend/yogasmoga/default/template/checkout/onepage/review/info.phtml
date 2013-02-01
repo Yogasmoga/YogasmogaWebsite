@@ -170,8 +170,8 @@
             }
             else
             {
-                //if(searchcart($miniitems, $item->getSku()) == false)
-//                {
+                if(searchcart($miniitems, $item->getSku()) == false)
+                {
                     $_product = Mage::getModel('catalog/product')->load($item->getProductId());
                     $temparray['sku'] = $item->getSku();
                     //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
@@ -186,7 +186,7 @@
                     $temparray['producturl'] = $_product->getProductUrl();
                     $temparray['itemid'] = $item->getItemId();
                     array_push($miniitems, $temparray);
-                //}
+                }
             }
         }
         

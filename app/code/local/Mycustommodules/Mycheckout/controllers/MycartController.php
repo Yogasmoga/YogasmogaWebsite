@@ -282,8 +282,8 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
             }
             else
             {
-                //if($this->searchcart($miniitems, $item->getSku()) == false)
-//                {
+                if($this->searchcart($miniitems, $item->getSku()) == false)
+                {
                     $_product = Mage::getModel('catalog/product')->load($item->getProductId());
                     $temparray['sku'] = $item->getSku();
                     //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
@@ -297,7 +297,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                     $temparray['producturl'] = $_product->getProductUrl();
                     $temparray['itemid'] = $item->getItemId();
                     array_push($miniitems, $temparray);
-                //}
+                }
             }
         }
         //$totalItems = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
