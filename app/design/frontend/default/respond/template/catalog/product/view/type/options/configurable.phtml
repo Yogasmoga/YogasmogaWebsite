@@ -32,7 +32,7 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 <?php if ($_product->isSaleable() && count($_attributes)):?>
     <dl>
     <?php foreach($_attributes as $_attribute): ?>
-        <dt><label class="required"><em>*</em><?php echo $_attribute->getLabel() ?></label></dt>
+        <dt class="attribute<?php echo $_attribute->getAttributeId() ?>"><label class="required"><?php echo $_attribute->getLabel() ?></label><span></dt>
         <dd<?php if ($_attribute->decoratedIsLast){?> class="last"<?php }?>>
             <div class="input-box">
                 <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
@@ -44,27 +44,62 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
     </dl>
     <script type="text/javascript">
         var spConfig = new Product.Config(<?php echo $this->getJsonConfig() ?>);
+        for(i = 0; i < spConfig.config.attributes['92'].options.length; i++){
+            if(spConfig.config.attributes['92'].options[i].label.indexOf('|') > 0){
+                spConfig.config.attributes['92'].options[i].label = spConfig.config.attributes['92'].options[i].label.substr(0,spConfig.config.attributes['92'].options[i].label.indexOf('|'));
+            }
+        }
+        var selectobject=document.getElementById("attribute92")
+            for (var i=0; i<selectobject.length; i++){
+            if(selectobject.options[i].text.indexOf('|') > 0){
+				var selIndex = selectobject.options[i].text.indexOf('|');
+				selectobject.options[i].title= selectobject.options[i].text.substr(selIndex+1);
+                selectobject.options[i].text = selectobject.options[i].text.substr(0, selIndex);
+			}
+        }
+		
+		function fireEvent(element,event){
+			if (document.createEventObject)
+			{
+				// dispatch for IE
+				var evt = document.createEventObject();
+				return element.fireEvent('on'+event,evt);
+			}
+			else
+			{
+				// dispatch for firefox + others
+				var evt = document.createEvent("HTMLEvents");
+				evt.initEvent(event, true, true );
+				return !element.dispatchEvent(evt);
+			}
+		}
+		$j(window).load(function(){
+			$j('#attribute92').hide(0).parent().append('<div id="color-attr" rel="attribute92"></div>');
+			$j('#attribute92 option:gt(0)').each(function(){
+				var carray = $j(this).attr('title');
+				var clr = carray.split(",");
+				var mycolor = "";
+				$j.each(clr,function(i){
+					mycolor += '<td style="background:'+clr[i]+'">';
+				})
+				$j('#color-attr').append('<div class="colorbox" rel="'+$j(this).attr('value')+'"><table><tr>'+mycolor+'</tr></table></div>')
+			})
+			$j('#color-attr .colorbox').click(function(){
+				$j('#color-attr .colorbox').removeClass('active');
+				$j(this).addClass('active');
+				$j('#attribute92').val($j(this).attr('rel'));
+				$j('.attribute92 span').html($j('#attribute92 option:selected').text());
+				var obj = $j('#attribute92').get();
+				Event.observe(obj[0],'change',function(){});
+				fireEvent(obj[0],'change');
+			})
+		})
         //console.log(spConfig);
         //console.log(spConfig.config.attributes['92'].options);
         //for(var label in spConfig.config.attributes['92'].options)
 //        {
 //            console.log(label['label']);
 //        }
-        for(i = 0; i < spConfig.config.attributes['92'].options.length; i++)
-        {
-            //console.log(spConfig.config.attributes['92'].options[i].label);
-            if(spConfig.config.attributes['92'].options[i].label.indexOf('|') > 0)
-            {
-                spConfig.config.attributes['92'].options[i].label = spConfig.config.attributes['92'].options[i].label.substr(0, spConfig.config.attributes['92'].options[i].label.indexOf('|'));
-                //console.log(spConfig.config.attributes['92'].options[i].label);
-            }
-        }
-        var selectobject=document.getElementById("attribute92")
-            for (var i=0; i<selectobject.length; i++){
-            //console.log(selectobject.options[i].text+" "+selectobject.options[i].value)
-            if(selectobject.options[i].text.indexOf('|') > 0)
-                selectobject.options[i].text = selectobject.options[i].text.substr(0, selectobject.options[i].text.indexOf('|'));
-        }
         //var html = "<option value=''>Choose an Option...</option>";
 //        for(i = 0; i < spConfig.config.attributes['92'].options.length; i++)
 //        {

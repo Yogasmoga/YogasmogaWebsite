@@ -35,7 +35,7 @@
 <div class="toolbar">
     <?php if( $this->isExpanded() ): ?>
     <div class="sorter">
-        <?php if( $this->isEnabledViewSwitcher() ): ?>
+        <?php /* if( $this->isEnabledViewSwitcher() ): ?>
         <p class="view-mode">
             <?php $_modes = $this->getModes(); ?>
             <?php if($_modes && count($_modes)>1): ?>
@@ -49,23 +49,23 @@
             <?php endforeach; ?>
             <?php endif; ?>
         </p>
-        <?php endif; ?>
+        <?php endif; */?>
 		
 		
-		 <div class="limiter">
-            <label><?php echo $this->__('Show') ?></label>
+		 <!-- div class="limiter">
+            <label><?php /* echo $this->__('Show') ?></label>
             <select onchange="setLocation(this.value)">
             <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
                 <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
                     <?php echo $_limit ?>
                 </option>
             <?php endforeach; ?>
-            </select> <?php echo $this->__('per page') ?>
-        </div>
+            </select> <?php echo $this->__('per page') */?>
+        </div -->
     
         <div class="sort-by">
-            <label><?php echo $this->__('Sort By') ?></label>
             <select onchange="setLocation(this.value)">
+				<option value="#"><?php echo $this->__('Sort By') ?></option>
             <?php foreach($this->getAvailableOrders() as $_key=>$_order): ?>
                 <option value="<?php echo $this->getOrderUrl($_key, 'asc') ?>"<?php if($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
                     <?php echo $this->__($_order) ?>

@@ -48,6 +48,12 @@
 		<div class="product-name">
                 <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
         </div>
+		<?php echo $this->getChildHtml('product_type_data') ?>
+		<?php echo $this->getTierPriceHtml() ?>
+		
+		<?php if ($_product->getShortDescription()):?>
+			<div class="sdesc"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+		<?php endif;?>
 		
 		<div class="product-img-box">
 			<div id="galleria">
@@ -57,15 +63,12 @@
 
         <div class="product-shop">           
 
-            <?php if ($this->canEmailToFriend()): ?>
+            <?php /* if ($this->canEmailToFriend()): ?>
                 <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
             <?php endif; ?>
 
             <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
-            <?php echo $this->getChildHtml('alert_urls') ?>
-            <?php echo $this->getChildHtml('product_type_data') ?>
-            <?php echo $this->getTierPriceHtml() ?>
-            <?php echo $this->getChildHtml('extrahint') ?>
+            <?php echo $this->getChildHtml('alert_urls') */ ?>
 
             <?php if (!$this->hasOptions()):?>
                 <div class="add-to-box">
@@ -79,14 +82,14 @@
                 </div>
             <?php endif; ?>
 
-            <?php if ($_product->getShortDescription()):?>
+            <?php /* if ($_product->getShortDescription()):?>
                 <div class="short-description">
                     <h2><?php echo $this->__('Quick Overview') ?></h2>
                     <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
                 </div>
-            <?php endif;?>
+            <?php endif; */?>
 
-            <?php echo $this->getChildHtml('other');?>
+            <?php // echo $this->getChildHtml('other');?>
             <?php if ($_product->isSaleable() && $this->hasOptions()):?>
                 <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
             <?php endif;?>
@@ -145,7 +148,11 @@
     </div>
 
     <div class="product-collateral">
-        <?php echo $this->getChildHtml('info_tabs') ?>
-        <?php echo $this->getChildHtml('product_additional_data') ?>
+		<?php if ($_product->getDescription()):?>
+			<h1 class="title">Detail</h1>
+			<div class="desc"><?php echo $_helper->productAttribute($_product, nl2br($_product->getDescription()), 'description') ?></div>
+		<?php endif;?>
+        <?php // echo $this->getChildHtml('info_tabs') ?>
+        <?php // echo $this->getChildHtml('product_additional_data') ?>
     </div>
 </div>
