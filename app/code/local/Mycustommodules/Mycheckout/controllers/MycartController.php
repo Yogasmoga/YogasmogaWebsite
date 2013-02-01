@@ -280,7 +280,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                     array_push($miniitems, $temparray);
                 }
             }
-            else
+            elseif(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
             {
                 if($this->searchcart($miniitems, $item->getSku()) == false)
                 {
@@ -298,6 +298,25 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                     $temparray['itemid'] = $item->getItemId();
                     array_push($miniitems, $temparray);
                 }
+            }
+            else
+            {
+                //if($this->searchcart($miniitems, $item->getSku()) == false)
+//                {
+                    $_product = Mage::getModel('catalog/product')->load($item->getProductId());
+                    $temparray['sku'] = $item->getSku();
+                    //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
+                    $temparray['name'] = $item->getName();
+                    if(strlen($temparray['name']) > 12)
+                        $temparray['name'] = substr($temparray['name'], 0, 11)."...";
+                    $temparray['quantity'] = $item->getQty();
+                    $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
+                    $temparray['imageurl'] = $this->getMiniImage($item->getProductId());
+                    $temparray['imageurl'] = "_".Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(50, 50)->setQuality(100);
+                    $temparray['producturl'] = $_product->getProductUrl();
+                    $temparray['itemid'] = $item->getItemId();
+                    array_push($miniitems, $temparray);
+                //}
             }
         }
         //$totalItems = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();

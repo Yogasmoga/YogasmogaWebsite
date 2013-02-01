@@ -168,7 +168,7 @@
                     array_push($miniitems, $temparray);
                 }
             }
-            else
+            elseif(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
             {
                 if(searchcart($miniitems, $item->getSku()) == false)
                 {
@@ -187,6 +187,26 @@
                     $temparray['itemid'] = $item->getItemId();
                     array_push($miniitems, $temparray);
                 }
+            }
+            else
+            {
+                //if(searchcart($miniitems, $item->getSku()) == false)
+//                {
+                    $_product = Mage::getModel('catalog/product')->load($item->getProductId());
+                    $temparray['sku'] = $item->getSku();
+                    //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
+                    $temparray['name'] = $item->getName();
+                    if(strlen($temparray['name']) > 14)
+                        $temparray['name'] = substr($temparray['name'], 0, 13)."...";
+                    $temparray['quantity'] = $item->getQty();
+                    $temparray['individualprice'] = $item->getBaseCalculationPrice();
+                    $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 0, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
+                    //$temparray['imageurl'] = getMiniImage($item->getProductId());
+                    $temparray['imageurl'] = "_".Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(50, 50)->setQuality(100);
+                    $temparray['producturl'] = $_product->getProductUrl();
+                    $temparray['itemid'] = $item->getItemId();
+                    array_push($miniitems, $temparray);
+                //}
             }
         }
         
