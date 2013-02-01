@@ -90,6 +90,19 @@
 .cart-table .btn-continue span {background:#fff url(../images/conitnue-arw.png) 0 50% no-repeat;text-transform:capitalize; border:0; color:#999; padding:0 0 0 12px; font-family:Arial, helvatica; letter-spacing:0;}
 .cart-table .btn-continue span span{background:none; border-bottom:1px solid #999; padding:0;}
 .cart-table .btn-update span{padding:0; width:113px; text-indent:-999em; height:28px; margin:0; background:url(../images/update-btn.png) 0 0 no-repeat; border:0;}
+.cart-table .btn-update span{
+    padding:0; 
+    width:113px; 
+    text-indent:-999em; 
+    height:29px; 
+    margin:0; 
+    background:url(../images/update_off.png) 0 0 no-repeat; 
+    border:0;
+}
+.cart-table .btn-update:active span{
+    background:url(../images/update_on.png) 0 0 no-repeat;
+}
+
 {background:none;}
 .cart-table .btn-empty { float:right; }
 .cart-table .btn-update { margin-left:10px; }
@@ -117,8 +130,37 @@
 .cart .totals-rewards img{margin:4px}
 
 button.btn-checkout span{padding:0; width:284px; text-indent:-999em; height:43px; margin:0; background:url(../images/checkout-btn.png) 0 0 no-repeat; border:0;}
+
+button.btn-checkout span{
+    padding:0; 
+    width:286px; 
+    text-indent:-999em; 
+    height:43px; 
+    margin:0; 
+    background:url(../images/continue_check_out_off.png) 0 0 no-repeat; 
+    border:0;
+}
+button.btn-checkout:active span{
+    background:url(../images/continue_check_out_on.png) 0 0 no-repeat;    
+}
+
 button.btn-login span{padding:0; width:88px; text-indent:-999em; height:28px; margin:0; background:url(../images/btn-login.png) 0 0 no-repeat; border:0;}
+
 button.button.btn-apply span{padding:0; width:88px; text-indent:-999em; height:28px; margin:0; background:url(../images/btn-apply.png) 0 0 no-repeat; border:0;}
+
+button.button.btn-apply span{
+    padding:0; 
+    width:89px; 
+    text-indent:-999em; 
+    height:29px; 
+    margin:0; 
+    background:url(../images/apply_off.png) 0 0 no-repeat; 
+    border:0;
+}
+button.button.btn-apply:active span{
+    background:url(../images/apply_on.png) 0 0 no-repeat;
+}
+
 button.button.btn-removebucks span{padding:0; width:88px; text-indent:-999em; height:28px; margin:0; background:url(../images/btn-apply.png) 0 0 no-repeat; border:0;}
 button.btn-invite span{padding:0; width:92px; text-indent:-999em; height:29px; margin:0; background:url(../images/btn-invite.png) 0 0 no-repeat; border:0;}
 button.btn-reset span{padding:0; width:89px; text-indent:-999em; height:29px; margin:0; background:url(../images/btn-reset.png) 0 0 no-repeat; border:0;}

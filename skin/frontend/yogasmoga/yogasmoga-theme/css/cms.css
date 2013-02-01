@@ -262,6 +262,8 @@ button.btn-brecelet:active span{background-position:0 100%;}
   background-position:0 0; background-repeat:no-repeat;
   margin-top: -80px;
 }
+
+
 .namaskar-page .making-change .values-box{float:left; width:570px; margin:0 0 0 100px; padding-top:170px; text-align:left;}
 .namaskar-page .making-change .heading-mc{font-size:65px; line-height:1.1; font-family:ITCAvantGardeProBd, Arial; text-transform:uppercase; margin-bottom:20px;}
 .namaskar-page .making-change .heading-mc span{font-family:ITCAvantGardeProBk, Arial; display:block;}
@@ -341,4 +343,13 @@ button.btn-brecelet:active span{background-position:0 100%;}
 .section a
 {
     color : #D90D3D;
+}
+.btnbracelet
+{
+    background-image : url('../images/add_bracelet_off.png');
+    background-repeat: no-repeat;
+    width : 239px;
+    height : 43px;
+    margin-left : auto;
+    margin-right : auto;
 }
