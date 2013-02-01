@@ -137,26 +137,6 @@ class Mage_Core_Model_Email_Template extends Mage_Core_Model_Template
      */
     public function getMail()
     {
-        //$my_smtp_host = 'email-smtp.us-east-1.amazonaws.com';
-//        $my_smtp_port = 465;
-        if (is_null($this->_mail)) {
-            $my_smtp_host = Mage::getStoreConfig('system/smtp/host');  // Take it from Magento backoffice or you can specify it here
-            $my_smtp_port = Mage::getStoreConfig('system/smtp/port');
-            $config = array(
-            'port' => $my_smtp_port, //optional - default 25
-            'auth' => 'login',
-            'username' => 'AKIAIQWMV5ZZ6Q6II64A',
-            'password' => 'An5GlU3IJiQ9YZx8B4pdIptQxmyWcI+D4rl+K9DKqKtm'
-            );
-            $transport = new Zend_Mail_Transport_Smtp($my_smtp_host, $config);
-            Zend_Mail::setDefaultTransport($transport);
-            $this->_mail = new Zend_Mail('utf-8');
-            //return $this->_mail;
-        }
-        return $this->_mail;
-        
-        
-        
         if (is_null($this->_mail)) {
             $this->_mail = new Zend_Mail('utf-8');
         }
@@ -431,8 +411,8 @@ class Mage_Core_Model_Email_Template extends Mage_Core_Model_Template
         $variables['email'] = reset($emails);
         $variables['name'] = reset($names);
 
-        //ini_set('SMTP', Mage::getStoreConfig('system/smtp/host'));
-//        ini_set('smtp_port', Mage::getStoreConfig('system/smtp/port'));
+        ini_set('SMTP', Mage::getStoreConfig('system/smtp/host'));
+        ini_set('smtp_port', Mage::getStoreConfig('system/smtp/port'));
 
         $mail = $this->getMail();
 
