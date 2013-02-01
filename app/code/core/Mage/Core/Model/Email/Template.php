@@ -137,8 +137,10 @@ class Mage_Core_Model_Email_Template extends Mage_Core_Model_Template
      */
     public function getMail()
     {
-        $my_smtp_host = 'email-smtp.us-east-1.amazonaws.com';
-        $my_smtp_port = 465;
+        //$my_smtp_host = 'email-smtp.us-east-1.amazonaws.com';
+//        $my_smtp_port = 465;
+        $my_smtp_host = Mage::getStoreConfig('system/smtp/host');  // Take it from Magento backoffice or you can specify it here
+        $my_smtp_port = Mage::getStoreConfig('system/smtp/port');
         $config = array(
         'port' => $my_smtp_port, //optional - default 25
         'auth' => 'login',
@@ -423,8 +425,8 @@ class Mage_Core_Model_Email_Template extends Mage_Core_Model_Template
         $variables['email'] = reset($emails);
         $variables['name'] = reset($names);
 
-        ini_set('SMTP', Mage::getStoreConfig('system/smtp/host'));
-        ini_set('smtp_port', Mage::getStoreConfig('system/smtp/port'));
+        //ini_set('SMTP', Mage::getStoreConfig('system/smtp/host'));
+//        ini_set('smtp_port', Mage::getStoreConfig('system/smtp/port'));
 
         $mail = $this->getMail();
 
