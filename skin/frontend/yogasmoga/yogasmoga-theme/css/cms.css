@@ -62,6 +62,8 @@
 	font-style: normal;
 }
 .main-container *{font-family: gotham, Arial; color:#666;}
+.main-container .error{color:#DF280A;}
+.main-container .success{color:#3D6611;}
 .main-container strong{font-weight:normal; font-family:gotham-m;}
 .main-container {position:relative; display:block; background:none;}
 .main-container .main{margin:0 auto; width:100%; background:none; padding:0;}
