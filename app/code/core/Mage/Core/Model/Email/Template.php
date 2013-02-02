@@ -435,8 +435,8 @@ class Mage_Core_Model_Email_Template extends Mage_Core_Model_Template
 //        }
         
         
-        $my_smtp_host = 'email-smtp.us-east-1.amazonaws.com';  // Take it from Magento backoffice or you can specify it here
-        $my_smtp_port = 587;
+        $my_smtp_host = Mage::getStoreConfig('system/smtp/host');  // Take it from Magento backoffice or you can specify it here
+        $my_smtp_port = Mage::getStoreConfig('system/smtp/port');
         $config = array(
         'ssl' => 'tls',
         'port' => $my_smtp_port, //optional - default 25
