@@ -37,6 +37,7 @@
     <?php
         if ($this->getIsHomePage())
         {
+            Mage::getSingleton('core/session')->setisfirsttime('No');
             $isfirsttime = Mage::getSingleton('core/session')->getisfirsttime();
             //echo $isfirsttime."  sdfsd"; 
             if(strlen($isfirsttime) > 0)

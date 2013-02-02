@@ -99,8 +99,25 @@ class Mage_Core_Model_Email extends Varien_Object
         if (Mage::getStoreConfigFlag('system/smtp/disable')) {
             return $this;
         }
-
-        $mail = new Zend_Mail();
+        
+        $my_smtp_host = 'email-smtp.us-east-1.amazonaws.com';  // Take it from Magento backoffice or you can specify it here
+        $my_smtp_port = 587;
+        $config = array(
+        'ssl' => 'tls',
+        'port' => $my_smtp_port, //optional - default 25
+        'auth' => 'login',
+        'username' => 'AKIAIQWMV5ZZ6Q6II64A',
+        'password' => 'An5GlU3IJiQ9YZx8B4pdIptQxmyWcI+D4rl+K9DKqKtm'
+        );
+        
+        $transport = new Zend_Mail_Transport_Smtp($my_smtp_host, $config);
+        Zend_Mail::setDefaultTransport($transport);
+        //$this->_mail = new Zend_Mail('utf-8');
+        
+        $mail = new Zend_Mail('utf-8');
+        
+        
+        //$mail = new Zend_Mail();
 
         if (strtolower($this->getType()) == 'html') {
             $mail->setBodyHtml($this->getBody());

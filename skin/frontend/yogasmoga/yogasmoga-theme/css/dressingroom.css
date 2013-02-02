@@ -247,3 +247,7 @@ div.totalcountregion
     margin-top : 10px;
     margin-bottom: 15px;
 }
+#allproducts span
+{
+    cursor: pointer;
+}

@@ -30,7 +30,28 @@ function fixmainimage()
 		if(jQuery("div#globalheader").hasClass('top0'))
 			jQuery(this).css('top',((_winH - getScaledheight(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth"))) / 2) + 'px');
 		else
-			jQuery(this).css('top',((_winH + 80 - getScaledheight(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth"))) / 2) + 'px');
+			jQuery(this).css('top',((_winH + _headerHeight - getScaledheight(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth"))) / 2) + 'px');
+    });
+    
+    jQuery(".fullscreenovfhidden img.fullscreen").each(function(){
+        var height = jQuery(this).height();
+        height = getScaledheight(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth")) * 1;
+        if(height > _winH)
+        {
+            jQuery(this).css('top',((_winH - height) / 2) + 'px');
+            jQuery(this).css('left', 0);
+            jQuery(this).css('width', '100%');
+            jQuery(this).css('height', 'auto');
+        }
+        else
+    	{
+        	height = getScaledwidth(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth")) * 1;
+        	//jQuery(this).css('left',((_winW - height) / 2) + 'px');
+        	jQuery(this).css('top', 0);
+        	jQuery(this).css('left',((_winW - height) / 2) + 'px');
+            jQuery(this).css('width', 'auto');
+            jQuery(this).css('height', '100%');
+    	}
     });
 }
 
