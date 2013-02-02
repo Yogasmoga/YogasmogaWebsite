@@ -7,11 +7,11 @@ jQuery(document).ready(function($){
     $("#checkout-login-form").submit(function(){
         return validateCheckoutLoginForm();
     });
-    window.onbeforeunload = function() {
-        if(!_allowcheckoutexit)
-            if(_checkoutdatachanged)
-                return "If you leave the cart all information will be lost.";
-    }
+    //window.onbeforeunload = function() {
+//        if(!_allowcheckoutexit)
+//            if(_checkoutdatachanged)
+//                return "If you leave the cart all information will be lost.";
+//    }
     
     $('#tblcheckoutsteps input,#tblcheckoutsteps select').live('change', function(){
         _checkoutdatachanged = true;
