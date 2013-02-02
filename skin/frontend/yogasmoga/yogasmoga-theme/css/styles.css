@@ -3219,3 +3219,7 @@ button span
 {
     background-color: transparent !important;
 }
+.sociallogin_button
+{
+    display: none;
+}
