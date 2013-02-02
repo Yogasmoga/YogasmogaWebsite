@@ -1,0 +1,50 @@
+<div class="gift-card">
+    
+    <?php if (Mage::helper('customer')->isLoggedIn()) : ?>
+    <div class="discount-form">
+        <form></form>
+        <form method="post" action="<?php echo $this->getUrl('*/*/giftcardActive'); ?>" name="giftcardActive">
+        <div class="input-box">
+            <input type="checkbox" value="1" name="giftcard_use" id="giftcard_use" class="checkbox" onclick="document.forms['giftcardActive'].submit()" <?php echo Mage::getSingleton('giftcards/session')->getActive() ? 'checked="checked"' : '' ?> />
+            <label for="giftcard_use"><?php echo $this->__('Use my Gift Card balance'); ?>&nbsp;(<?php echo Mage::helper('core')->currency(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId())); ?>) </label>
+        </div>
+        </form>
+        <form method="post" action="<?php echo $this->getUrl('*/*/giftcardPost'); ?>" id="giftcard-form">
+        <div class="gift-box">
+			<label for="giftcard_code"><?php echo $this->__('Or'); ?></label>
+            <input value="" placeholder="Gift of YS code" name="giftcard_code" id="giftcard_code" class="input-text" />
+            <button value="<?php echo $this->__('Apply') ?>" onclick="giftcardForm.submit(true)" class="button btn-apply" title="Apply" type="button"><span><span><?php echo $this->__('Apply') ?></span></span></button>
+        </div>
+        </form>
+    </div>
+    <?php else : ?>
+    <h2><?php echo $this->__('Do you have a Gift of YS Card?'); ?></h2>
+    <div class="giftcard-login-msg">
+        <?php echo $this->__('Please login to use your gift cards.'); ?>
+        <br />
+        <a href="<?php echo Mage::helper('customer')->getLoginUrl(); ?>">
+		<button value="<?php echo $this->__('Login') ?>" onclick="window.location.href=<?php  echo Mage::helper('customer')->getLoginUrl(); ?>" class="button btn-login" title="Login" type="button"><span><span><?php echo $this->__('Login') ?></span></span></button>
+        </a>
+    </div>
+    <?php endif; ?>
+</div>
+<script type="text/javascript">
+//&lt;![CDATA[
+    jQuery(document).ready(function($){
+        
+    });
+
+var giftcardForm = new VarienForm('giftcard-form');
+giftcardForm.submit = function (isRemove) {
+    if (isRemove) {
+        $('giftcard_code').addClassName('required-entry');
+        $('giftcard_use').checked = "checkbox";
+        $('giftcard_use').value = "1";
+    } else {
+        $('giftcard_code').removeClassName('required-entry');
+        $('giftcard_use').value = "0";
+    }
+    return VarienForm.prototype.submit.bind(giftcardForm)();
+}
+//]]&gt;
+</script>

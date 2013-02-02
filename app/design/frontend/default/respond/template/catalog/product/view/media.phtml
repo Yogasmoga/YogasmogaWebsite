@@ -40,14 +40,17 @@
         echo $_helper->productAttribute($_product, $_img, 'image');
     ?>
 	<?php elseif (count($this->getGalleryImages()) > 0): ?>
-    <?php foreach ($this->getGalleryImages() as $_image): ?>
+    <?php foreach ($this->getGalleryImages() as $_image):
+    	$imgdata = json_decode(trim($_image->getLabel()), true);
+		if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0) continue;
+	?>
            <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
     <?php endforeach; ?>
 	<?php endif ?>
 <script type="text/javascript">
 	//<![CDATA[
 $j(document).ready(function(){
-		   // Initialize Galleria
+	//Initialize Galleria
 	$j('#galleria').galleria({
 		showInfo:false,
 		height:1.5,

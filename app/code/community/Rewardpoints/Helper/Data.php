@@ -59,10 +59,10 @@ class Rewardpoints_Helper_Data extends Mage_Core_Helper_Abstract {
                 $img = '<img src="'.$this->getResizedUrl('j2t_image_small.png', 16, 16) .'" alt="" width="16" height="16" /> ';
             }
             
-            $return = '<p class="j2t-loyalty-points inline-points">'.$img. Mage::helper('rewardpoints')->__("With this product, you earn <span id='j2t-pts'>%d</span> loyalty point(s).", $points) . $this->getEquivalence($points) . '</p>';
+            $return = '<p class="j2t-loyalty-points inline-points">'.$img. Mage::helper('rewardpoints')->__("earn <span id='j2t-pts'>%d</span> smogi bucks with this purchase.", $points) . $this->getEquivalence($points) . '</p>';
             return $return;
         }
-        return '<p class="j2t-loyalty-points inline-points" style="display:none;">'.$img. Mage::helper('rewardpoints')->__("With this product, you earn <span id='j2t-pts'>%d</span> loyalty point(s).", $points) . $this->getEquivalence($points) . '</p>';
+        return '<p class="j2t-loyalty-points inline-points" style="display:none;">'.$img. Mage::helper('rewardpoints')->__("earn <span id='j2t-pts'>%d</span> smogi bucks with this purchase.", $points) . $this->getEquivalence($points) . '</p>';
     }
     
     public function getEquivalence($points){
