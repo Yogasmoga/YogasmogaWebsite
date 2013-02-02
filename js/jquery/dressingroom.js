@@ -57,6 +57,7 @@ jQuery(document).ready(function($){
 			cur.css({visibility: "hidden"})
 		});
 		next.addClass('active').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 50);
+        next.find('.productdetail').stop(true,true).fadeIn(100);
 	})
 	$('a.nextBtn').click(function(){
 		var $ctr = $(this).parent();
@@ -72,6 +73,7 @@ jQuery(document).ready(function($){
 			cur.css({visibility: "hidden"})
 		});
 		next.addClass('active').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 50);
+        next.find('.productdetail').stop(true,true).fadeIn(100);
 	})
 	
     $(".viewdetails").click(function(){
