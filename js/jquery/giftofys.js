@@ -48,7 +48,7 @@ function createcard()
                 jQuery("span.cartitemcount").html(result.count);
                 jQuery("div#myminicart").html(result.html);
                 jQuery("div#myminicart").slideDown('slow', function(){
-                    setTimeout(function(){ jQuery("div#myminicart").slideUp('slow'); }, 1000);
+                    setTimeout(function(){ jQuery("div#myminicart").slideUp('slow'); }, 4000);
                 });
             }
             else
