@@ -137,6 +137,7 @@ class Mage_Core_Model_Email_Template extends Mage_Core_Model_Template
      */
     public function getMail()
     {
+        
         if (is_null($this->_mail)) {
             $this->_mail = new Zend_Mail('utf-8');
         }
