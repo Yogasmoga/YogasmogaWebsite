@@ -2,7 +2,7 @@ jQuery(document).ready(function($){
     
     if(_currenturl.indexOf('#') > 0)
     {
-        $(window).scrollTop($(window).scrollTop() - 80);
+        $(window).scrollTop($(window).scrollTop() - _headerHeight);
     }
     
 	$(window).load(function(){

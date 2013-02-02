@@ -3217,5 +3217,5 @@ button span
 }
 #mainimage
 {
-    background-color: transparent;
+    background-color: transparent !important;
 }

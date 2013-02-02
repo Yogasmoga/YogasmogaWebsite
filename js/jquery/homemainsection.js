@@ -30,7 +30,7 @@ function fixmainimage()
 		if(jQuery("div#globalheader").hasClass('top0'))
 			jQuery(this).css('top',((_winH - getScaledheight(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth"))) / 2) + 'px');
 		else
-			jQuery(this).css('top',((_winH + 80 - getScaledheight(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth"))) / 2) + 'px');
+			jQuery(this).css('top',((_winH + _headerHeight - getScaledheight(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth"))) / 2) + 'px');
     });
 }
 
