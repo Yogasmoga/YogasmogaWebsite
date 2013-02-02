@@ -329,10 +329,14 @@ function validatePaymentForm()
 
 function positionordersummary()
 {
+    return;
     var z = (_winW - jQuery("#tblcheckoutsteps").width()) / 2;
     var x = jQuery("div#tblcheckoutsteps").position().left;
     x = x - 75 - jQuery("div#ordersummary").width();
-    jQuery("div#ordersummary").css('left', (z - 75 - jQuery("div#ordersummary").width()) + 'px');
+    if((z - 75 - jQuery("div#ordersummary").width()) < 0)
+        jQuery("div#ordersummary").css('left', '0px');
+    else
+        jQuery("div#ordersummary").css('left', (z - 75 - jQuery("div#ordersummary").width()) + 'px');
     x = jQuery("div#tblcheckoutsteps").position().left + jQuery("div#tblcheckoutsteps").width() + 75;
     jQuery("div#shippingsummary").css('left', (z + jQuery("div#tblcheckoutsteps").width() + 75) + 'px');
 
