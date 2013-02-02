@@ -159,7 +159,8 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
             $price = floor($price);
         $rewardpoints = Mage::helper('rewardpoints/data')->getProductPointsText($_product, false, false);
         $rewardpoints = strip_tags($rewardpoints);
-        $rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "loyalty") - 1 - strlen("loyalty") - strpos($rewardpoints, "earn") + strlen("earn")));
+        //$rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "loyalty") - 1 - strlen("loyalty") - strpos($rewardpoints, "earn") + strlen("earn")));
+        $rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "smogi") - 3 - strlen("smogi") - strpos($rewardpoints, "earn") + strlen("earn")));
         $productrewardpoints = $rewardpoints;
         //$productrewardpoints = floor($price * $_rewardpointsearned);
         $productprice = "$".$price;
