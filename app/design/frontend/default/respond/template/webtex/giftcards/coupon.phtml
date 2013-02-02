@@ -12,19 +12,16 @@
         <form method="post" action="<?php echo $this->getUrl('*/*/giftcardPost'); ?>" id="giftcard-form">
         <div class="gift-box">
 			<label for="giftcard_code"><?php echo $this->__('Or'); ?></label>
-            <input value="" placeholder="Gift of YS code" name="giftcard_code" id="giftcard_code" class="input-text" />
-            <button value="<?php echo $this->__('Apply') ?>" onclick="giftcardForm.submit(true)" class="button btn-apply" title="Apply" type="button"><span><span><?php echo $this->__('Apply') ?></span></span></button>
+            <input value="" placeholder="Gift of YS code" name="giftcard_code" id="giftcard_code" class="input-text" type="text" />
+            <button value="<?php echo $this->__('Apply') ?>" onclick="giftcardForm.submit(true)" class="button btn-sec" title="Apply" type="button"><span><span><?php echo $this->__('Apply') ?></span></span></button>
         </div>
         </form>
     </div>
     <?php else : ?>
-    <h2><?php echo $this->__('Do you have a Gift of YS Card?'); ?></h2>
+    <h6><?php echo $this->__('Do you have a Gift of YS Card?'); ?></h6>
     <div class="giftcard-login-msg">
-        <?php echo $this->__('Please login to use your gift cards.'); ?>
-        <br />
-        <a href="<?php echo Mage::helper('customer')->getLoginUrl(); ?>">
-		<button value="<?php echo $this->__('Login') ?>" onclick="window.location.href=<?php  echo Mage::helper('customer')->getLoginUrl(); ?>" class="button btn-login" title="Login" type="button"><span><span><?php echo $this->__('Login') ?></span></span></button>
-        </a>
+        <p><?php echo $this->__('Please login to use your gift cards.'); ?></p>
+		<button value="<?php echo $this->__('Login') ?>" onclick="setLocation('<?php  echo Mage::helper('customer')->getLoginUrl(); ?>')" class="button btn-sec" title="Login" type="button"><span><span><?php echo $this->__('Login') ?></span></span></button>
     </div>
     <?php endif; ?>
 </div>

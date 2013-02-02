@@ -25,13 +25,9 @@
     <?php if (!$this->getCustomerId()):?>
         <table class="tblsmogilogin">
             <tr>
-                <td>
-                    Returning customer? Use your<br />SMOGI Bucks from past purchases.
-                </td>
-                <td>
-                    <a href="<?php echo Mage::helper('customer')->getLoginUrl(); ?>">
-            		<button value="<?php echo $this->__('Login') ?>" onclick="window.location.href=<?php  echo Mage::helper('customer')->getLoginUrl(); ?>" class="button btn-login" title="Login" type="button"><span><span><?php echo $this->__('Login') ?></span></span></button>
-                    </a>
+                <td align="center">
+                    <p>Returning customer? Use your SMOGI Bucks from past purchases.</p>
+            		<button value="<?php echo $this->__('Login') ?>" onclick="setLocation('<?php  echo Mage::helper('customer')->getLoginUrl(); ?>')" class="button btn-sec" title="Login" type="button"><span><span><?php echo $this->__('Login') ?></span></span></button>
                 </td>
             </tr>
         </table>
@@ -47,11 +43,11 @@
     <?php $point_details = $this->getPointsInfo();?>
 
 <?php if ($this->canUseCouponCode() && ($couponCode == "" || $couponCode == null) || !$this->canUseCouponCode()):?>
-<div class="discount-codes box discount smogibox">
+<div class="smogibox">
     <?php if (!$points_currently_used): ?>
     <form action="<?php echo $this->getUrl('rewardpoints/index/quotation/') ?>" method="post" name="discountFormPoints2" id="discountFormPoints2">
         <fieldset>
-            <h2><?php echo $this->__('SMOGI BUCKS'); ?></h2>
+            <h6><?php echo $this->__('SMOGI BUCKS'); ?></h6>
             
             <?php echo $this->getIllustrationImage()?>
             
@@ -107,8 +103,7 @@
                 <?php endif;?>
                 <?php if($this->getCustomerPoints() > 0) : ?>
                 <div class="buttons-set">
-                    <button class="button btn-apply" value="<?php echo $this->__('Apply Bucks') ?>" onclick="discountFormPoints2.submit(false)" type="button">
-                        <span><span><?php echo $this->__('Apply Bucks') ?></span></span>
+                    <button class="button btn-sec" value="<?php echo $this->__('Apply') ?>" onclick="discountFormPoints2.submit(false)" type="button"><span><span><?php echo $this->__('Apply') ?></span></span>
                     </button>
                 </div>
                 <?php endif;?>
@@ -131,7 +126,7 @@
             <p><?php echo $this->__('You are currently using %d Buck(s) of your %d SMOGI Buck(s) available.', $points_currently_used, $this->getCustomerPoints()); ?></p>
             <?php endif;?>
             <div class="buttons-set">
-                <button class="button btn-removebucks" type="button" onclick="discountFormPoints2.submit(false)" value="<?php echo $this->__('Remove Points') ?>"><span><span><?php echo $this->__('Remove') ?></span></span></button>
+                <button class="button btn-sec" type="button" onclick="discountFormPoints2.submit(false)" value="<?php echo $this->__('Remove Points') ?>"><span><span><?php echo $this->__('Remove') ?></span></span></button>
             </div>
         </fieldset>
     </form>
@@ -291,8 +286,7 @@
                     <input <?php if($point_details['full_use']):?>type="hidden"<?php else:?>type="text"<?php endif;?> value="<?php if($point_details['full_use']):?><?php echo $point_details['max_use'];?><?php endif;?>"  name="points_to_be_used" class="input-text" />
                 <?php endif;?>
                 <?php if($this->getCustomerPoints() > 0) : ?>
-                    <button class="btn-apply button" value="<?php echo $this->__('Apply Points') ?>" onclick="discountFormPoints2.submit(false)" type="button">
-                        <span><span><?php echo $this->__('Apply Points') ?></span></span>
+                    <button class="btn-sec button" value="<?php echo $this->__('Apply') ?>" onclick="discountFormPoints2.submit(false)" type="button"><span><span><?php echo $this->__('Apply') ?></span></span>
                     </button>
                 <?php endif;?>
                 <?php elseif($this->getCustomerPoints() > 0): ?>

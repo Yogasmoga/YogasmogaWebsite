@@ -42,15 +42,15 @@ $_options = $this->getOptionList();
 </tr>
 <?php endif; ?>
 <tr>
-    <td>
+    <td width="110">
 
         <?php if ($this->hasProductUrl()):?>
-            <a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo $this->getProductThumbnail()->resize(114); ?>" width="57" height="57" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /><?php if ($this->hasProductUrl()):?></a>
+            <a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo $this->getProductThumbnail()->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(100,150); ?>" width="100" height="150" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /><?php if ($this->hasProductUrl()):?></a>
         <?php endif;?>
 
-        <?php if ($isVisibleProduct && $this->getOptionList()): ?>
+        <?php /* if ($isVisibleProduct && $this->getOptionList()): ?>
             <p><a class="link-edit" href="<?php echo $this->getConfigureUrl() ?>" title="<?php echo $this->__('Edit item parameters') ?>"><?php echo $this->__('Edit') ?></a></p>
-        <?php endif ?>
+        <?php endif */ ?>
 
     </td>
 
@@ -179,7 +179,7 @@ $_options = $this->getOptionList();
 
             </div>
 
-            <div class="cart-price-box">
+            <div class="cart-price-box subtotal">
 
                 <?php if ($this->helper('tax')->displayCartPriceExclTax() && !$_item->getNoSubtotal()): ?>
 
@@ -279,26 +279,34 @@ $_options = $this->getOptionList();
             </div>
 
         </div>
-
-    </td>
-</tr>
-<?php if ($_options):?>
-<tr class="product-options">
-    <td colspan="2">
-        <span class="toggle" onclick="$(this).next('.product-options').toggle(); return false;">Show Options</span>
-        <div class="product-options" style="display:none;">
-            <dl class="item-options">
-                <?php foreach ($_options as $_option) : ?>
+		
+		<?php if ($_options):?>
+        <div class="product-options">
+            <span class="toggle" onclick="$(this).next('.product-options').toggle(); return false;">Show Options</span>
+            <div class="product-options" style="display:none;">
+                <dl class="item-options">
+					<?php foreach ($_options as $_option) : ?>
                     <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
-                    <dt><?php echo $this->escapeHtml($_option['label']) ?></dt>
-                    <?php if (isset($_formatedOptionValue['full_view'])): ?>
-                        <dd><?php echo $_formatedOptionValue['full_view'] ?></dd>
-                    <?php else: ?>
-                        <dd><?php echo $_formatedOptionValue['value'] ?></dd>
-                    <?php endif; ?>
-                <?php endforeach; ?>
-            </dl>
+                    <dt><?php echo $this->htmlEscape($_option['label']) ?>:</dt>
+                    <?php if(strtolower($_option['label']) == "color"){
+                        $optval = substr($_formatedOptionValue['value'], 0, -8);
+                    }else{
+                        $optval = $_formatedOptionValue['value'];
+                    } ?>
+                    <dd <?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?>><?php echo $optval; ?>
+                        <?php if (isset($_formatedOptionValue['full_view'])): ?>
+                        <div class="truncated_full_value">
+                            <dl class="item-options">
+                                <dt><?php echo $this->htmlEscape($_option['label']) ?>:</dt>
+                                <dd><?php echo $_formatedOptionValue['full_view'] ?></dd>
+                            </dl>
+                        </div>
+                        <?php endif; ?>
+                    </dd>
+                    <?php endforeach; ?>
+                </dl>
+            </div>
         </div>
+        <?php endif;?>
     </td>
 </tr>
-<?php endif;?>

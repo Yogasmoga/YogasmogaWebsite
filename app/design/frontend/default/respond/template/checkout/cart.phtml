@@ -32,9 +32,12 @@
  */
 ?>
 <div class="cart">
+	<div class="page-title">
+    	<h1>Shopping Bag</h1>
+    </div>
     <?php echo $this->getChildHtml('form_before') ?>
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-        <?php if(!$this->hasError()): ?>
+    <?php /* if(!$this->hasError()): ?>
         <ul class="checkout-types">
         <?php foreach ($this->getMethods('methods') as $method): ?>
             <?php $methodHtml = $this->getMethodHtml($method); ?>
@@ -43,14 +46,14 @@
             <?php endif; ?>
         <?php endforeach; ?>
         </ul>
-    <?php endif; ?>
+    <?php endif; */ ?>
     <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
         <fieldset>
             <table id="shopping-cart-table" class="data-table cart-table">
                 <tfoot>
                     <tr>
-                        <td colspan="2" class="a-right">
-                            <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="button btn-update"><?php echo $this->__('Update Shopping Cart'); ?></button>
+                        <td colspan="2" class="">
+                            <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update'); ?>" class="button btn-update"><?php echo $this->__('Update'); ?></button>
                             <!--<button type="submit" name="update_cart_action" value="empty_cart" title="<?php echo $this->__('Clear Shopping Cart'); ?>" class="button btn-update" id="empty_cart_button"><?php echo $this->__('Clear Shopping Cart'); ?></button>-->
                         </td>
                     </tr>
@@ -65,8 +68,9 @@
     </form>
     <div class="cart-collaterals">
             <div class="collat-wrap">
+            	<?php echo $this->getChildHtml('giftcards') ?>
                 <?php echo $this->getChildHtml('coupon') ?>
-                <?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
+                <?php // if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
                 <div class="totals">
                     <?php echo $this->getChildHtml('totals'); ?>
                     <?php if(!$this->hasError()): ?>
