@@ -31,6 +31,9 @@
  * @see Mage_Review_Block_Product_View
  */
 ?>
+<style type="text/css">
+    body{min-width : 1300px;}
+</style>
 <?php $_helper = $this->helper('catalog/output'); ?>
 <?php $_product = $this->getProduct(); ?>
 <?php $_product = Mage::getModel('catalog/product')->load($_product->getId()); ?>
@@ -71,7 +74,8 @@
         $price = floor($price);
     $rewardpoints = Mage::helper('rewardpoints/data')->getProductPointsText($_product, false, false);
     $rewardpoints = strip_tags($rewardpoints);
-    $rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "loyalty") - 1 - strlen("loyalty") - strpos($rewardpoints, "earn") + strlen("earn")));
+    //echo $rewardpoints;
+    $rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "smogi") - 3 - strlen("smogi") - strpos($rewardpoints, "earn") + strlen("earn")));
     $productrewardpoints = $rewardpoints;
     $productprice = "$".$price;
     
@@ -127,7 +131,8 @@
         
         $rewardpoints = Mage::helper('rewardpoints/data')->getProductPointsText($_childproduct, false, false);
         $rewardpoints = strip_tags($rewardpoints);
-        $rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "loyalty") - 1 - strlen("loyalty") - strpos($rewardpoints, "earn") + strlen("earn")));
+        //$rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "loyalty") - 1 - strlen("loyalty") - strpos($rewardpoints, "earn") + strlen("earn")));
+        $rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "smogi") - 3 - strlen("smogi") - strpos($rewardpoints, "earn") + strlen("earn")));
         $temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
         //if(array_key_exists("sizes", $productcolorinfo[$temp]))
         if(isset($productcolorinfo[$temp]["sizes"]))

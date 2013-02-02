@@ -30,13 +30,15 @@ jQuery(document).ready(function($){
         if(!_canzoomimages)
             return;
         jQuery("#productdetailpopup").html("<table style='width:100%;height : 100%;'><tr><td style='text-align:center;vertical-align:middle;'>Loading. .</td></tr></table>");
-        jQuery("body").addClass('overflowhidden');
+        jQuery("div.wrapper").addClass('overflowhidden');
+        jQuery("div.wrapper, div.ui-widget-overlay").height(_winH + _headerHeight);
         $("#zoomedfbdtl").hide();
         jQuery( "#zoompopup" ).dialog( "open" );
         var color = jQuery("table.normalproductdetail div#colorcontainer table").has("td.tdselectedcolor").attr("color");
         changezoomColor(jQuery("table.normalproductdetail div#colorcontainer table").has("td.tdselectedcolor").attr("color"), true);
         setTimeout(function(){ 
-            jQuery("body").addClass('overflowhidden');
+            jQuery("div.wrapper").addClass('overflowhidden');
+            jQuery("div.wrapper, div.ui-widget-overlay").height(_winH + _headerHeight);
         }, 300);
     });
     setTimeout(function(){ InitializeZoomPopup(); }, 500);
@@ -357,7 +359,8 @@ function InitializeZoomPopup()
         resizable : false,
         dialogClass : 'yogidialog zoomdialog',
         beforeClose : function(){
-            jQuery("body").removeClass('overflowhidden');    
+            jQuery("div.wrapper").removeClass('overflowhidden');
+            jQuery("div.wrapper, div.ui-widget-overlay").css('height', 'auto');
         }
     });
     jQuery("div#zoompopup table.productzoomtable>tbody>tr>td").height(_winH + _headerHeight);

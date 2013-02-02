@@ -40,6 +40,7 @@ td.checkoutstepsholder
     width : 755px;
     max-width : 755px;
     text-align : left;
+    position: relative;
 }
 #tblcheckoutsteps select
 {
@@ -279,18 +280,18 @@ div#coreview div.checkoutstepheader
 div#ordersummary, div#shippingsummary
 {
     position: absolute;
-    top: 150px;
+    top: 0;
     background-color : #FAFAFA;
     padding : 15px 20px 0 20px;
 }
 div#shippingsummary
 {
-    right : 0;
+    right : -290px;
     max-width : 340px;
 }
 div#ordersummary
 {
-    left : 0;
+    left : -290px;
 }
 div#ordersummary span.anchor, div#shippingsummary span.anchor
 {
@@ -299,6 +300,7 @@ div#ordersummary span.anchor, div#shippingsummary span.anchor
     letter-spacing: 0.6pt;
     font-weight : bold;
     text-transform: uppercase;
+    white-space: nowrap;
 }
 div#ordersummary table, div#shippingsummary table
 {
@@ -374,4 +376,8 @@ div#tblcheckoutsteps form
 #orderreview td
 {
     vertical-align : top;
+}
+body
+{
+    min-width: 1350px;
 }
