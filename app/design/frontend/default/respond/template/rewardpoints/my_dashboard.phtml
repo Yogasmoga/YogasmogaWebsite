@@ -17,23 +17,26 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
  ?>
- <div class="myheader">MY ACCOUNT</div>
- <div class="myaccountdashboard">
-    <?php echo $this->getChildHtml('hello'); ?>
-    <table style="width: 100%;">
-        <?php echo $this->getChildHtml('info') ?> 
-        <?php echo $this->getChildHtml('address') ?>
-    </table> 
- </div>
  
- <ul style="margin-top: 50px;">
+<div class="dashboard">
+	<div class="page-title"><h1>MY ACCOUNT</h1></div>
+    <?php echo $this->getChildHtml('hello'); ?>
+    <?php echo $this->getChildHtml('info') ?>
+    <div class="box-account box-info">
+        <h3 class="subtitle"><?php echo $this->__('Account Information') ?></h3>
+        <?php echo $this->getChildHtml('address') ?>
+    </div>
+    <?php echo $this->getChildHtml('info1') ?>
+    <?php echo $this->getChildHtml('info2') ?>
+</div>
+ 
+ <ul class="account-link">
     <li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>customer/address">Address Book</a></li>
     <li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>sales/order/history">My Orders</a></li>
     <li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist">My Wishlist</a></li>
-    <li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>rewardpoints/index/referral/">Referred Friends (Extension)</a></li>
-    <li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>rewardpoints/index/points">Reward Points (Extension)</a></li>
-    <li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>customer/giftcards/balance">Gift Cards (Extension)</a></li>
-    <li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>customer/account/logoutSuccess/">Logout Page</a></li>
+    <li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>rewardpoints/index/referral/">Referred Friends</a></li>
+    <li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>rewardpoints/index/points">Reward Points</a></li>
+    <li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>customer/giftcards/balance">Gift Cards</a></li>
  </ul>
  
 <?php /* 

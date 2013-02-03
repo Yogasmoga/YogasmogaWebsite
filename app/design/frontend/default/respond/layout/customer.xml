@@ -211,7 +211,7 @@ Customer account pages, rendered for all tabs in dashboard
         <label>Customer My Account (All Pages)</label>
         <!-- Mage_Customer -->
         <reference name="root">
-            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
 
         <reference name="content">
@@ -220,8 +220,10 @@ Customer account pages, rendered for all tabs in dashboard
                 <action method="setElementClass"><value>my-account</value></action>
             </block>
         </reference>
+        <remove name="left"/>
+        <remove name="right"/>
 
-        <reference name="left">
+        <!-- reference name="left">
             <block type="customer/account_navigation" name="customer_account_navigation" before="-" template="customer/account/navigation.phtml">
                 <action method="addLink" translate="label" module="customer"><name>account</name><path>customer/account/</path><label>Account Dashboard</label></action>
                 <action method="addLink" translate="label" module="customer"><name>account_edit</name><path>customer/account/edit/</path><label>Account Information</label></action>
@@ -229,7 +231,7 @@ Customer account pages, rendered for all tabs in dashboard
             </block>
             <remove name="tags_popular"/>
 
-        </reference>
+        </reference -->
     </customer_account>
 
 <!--
@@ -241,7 +243,7 @@ Customer account home dashboard layout
         <update handle="customer_account"/>
         <!-- Mage_Customer -->
         <reference name="root">
-            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="my.account.wrapper">
             <block type="customer/account_dashboard" name="customer_account_dashboard" template="customer/account/dashboard.phtml">
