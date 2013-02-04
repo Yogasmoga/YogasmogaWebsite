@@ -158,7 +158,11 @@ function chkfixposition(){
 		$j(this).height(newHeight);
 	});
     //console.log(((jQuery(".fullscreen:first").width() / 2) - (jQuery("div#dressingroombottom div.dritem.active img").width() / 2) - 30) - jQuery("div."));
-    jQuery("div#drsizechart").css('left', ((jQuery(".fullscreen:first").width() / 2) - (jQuery("div#dressingroombottom div.dritem.active img").width() / 2) - 25) - (jQuery("div#drsizechart").width()) + 'px'); 
+    jQuery("div#drsizechart").css('left', ((jQuery(".fullscreen:first").width() / 2) - (jQuery("div#dressingroombottom div.dritem.active img").width() / 2) - 25) - (jQuery("div#drsizechart").width()) + 'px');
+    if(_onipad)
+    {
+        jQuery("#pageScrollerNav").css('top', jQuery("#dressingroomdivider").offset().top - (jQuery("#pageScrollerNav").height() / 2));
+    } 
 }
 function getScaledheight(originalheight, originalwidth)
 {
