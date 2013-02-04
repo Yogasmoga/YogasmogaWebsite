@@ -892,3 +892,7 @@ a#fbzoomtrigger
 {
     text-decoration: underline;
 }
+#zoomedfbdtl
+{
+    cursor : pointer;
+}
