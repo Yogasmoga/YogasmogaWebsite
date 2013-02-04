@@ -119,7 +119,7 @@ function fillState(currentstate)
 //        }
 //    }
 //    return;
-    console.log(currentstate);
+    //console.log(currentstate);
     if(StateCollection.hasOwnProperty(jQuery("select#country").val()))
     {
         //console.log(StateCollection[currentstate]);
@@ -140,6 +140,7 @@ function fillState(currentstate)
         jQuery("select#region_id").hide().removeClass('requiredfield');
         jQuery("input#region").show().addClass('requiredfield');
     }
+    jQuery("select#region_id option[value='']").html("Select State");
 }
 
 function validateAccountEditForm()
