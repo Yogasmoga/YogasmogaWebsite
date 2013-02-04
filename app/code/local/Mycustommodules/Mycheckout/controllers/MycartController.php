@@ -397,7 +397,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
         $grandtotal = $totals["grand_total"]->getValue(); //Grandtotal value
         if(isset($totals['discount']) && $totals['discount']->getValue()) {
-            $discount = $totals['discount']->getValue(); //Discount value if applied
+            $discount = $totals['discount']->getValue() * -1; //Discount value if applied
         } else {
             $discount = 0;
         }
@@ -443,13 +443,13 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 }
             ?>
             <?php
-                if($discount != 0)
+                if($discount > 0)
                 {
                     ?>
                         <tr>
                             <td>Discount</td>
                             <td id="discounttotal" class="total">
-                                <?php echo "$".number_format((float)($discount), 2, '.', ''); ?>
+                                <?php echo "-$".number_format((float)($discount), 2, '.', ''); ?>
                             </td>
                         </tr>
                     <?php
