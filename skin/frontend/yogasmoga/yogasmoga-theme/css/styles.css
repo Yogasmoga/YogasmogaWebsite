@@ -3224,3 +3224,8 @@ button span
 {
     display: none;
 }
+#drsizechart a
+{
+    font-size : 11px;
+    font-family: gothambook;
+}
