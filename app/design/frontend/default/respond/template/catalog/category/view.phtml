@@ -40,6 +40,9 @@
         $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
     }*/
 ?>
+<div style="margin:-10px 0 30px;">
+	<?php echo $this->getChildHtml('breadcrumbs') ?>
+</div>
 <?php if($this->isContentMode() && strpos(strip_tags($this->getCmsBlockHtml()),"|*DressingRoomDetails*|") == 0): ?>
     <?php echo $this->getCmsBlockHtml(); ?>
 

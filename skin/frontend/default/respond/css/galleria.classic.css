@@ -28,8 +28,8 @@
     overflow:hidden;
 }
 .galleria-thumbnails-container {
-    height: 152px;
-    bottom: -150px;
+    height: 150px;
+    bottom: -152px;
 	border-bottom:1px solid #cecece;
 	border-top:1px solid #cecece;
     position: absolute;
@@ -43,7 +43,7 @@
     margin-right: 0;
 }
 .galleria-thumbnails .galleria-image {
-    height: 152px;
+    height: 150px;
     width: 100px;
     margin: 0;
     float: left;

@@ -74,7 +74,7 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 			}
 		}
 		$j(window).load(function(){
-			$j('#attribute92').hide(0).parent().append('<div id="color-attr" rel="attribute92"></div>');
+			$j('#attribute92').addClass('notsow').parent().prepend('<div id="color-attr" rel="attribute92"></div>');
 			$j('#attribute92 option:gt(0)').each(function(){
 				var carray = $j(this).attr('title');
 				var clr = carray.split(",");
@@ -93,6 +93,7 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 				Event.observe(obj[0],'change',function(){});
 				fireEvent(obj[0],'change');
 			})
+			$j('#color-attr .colorbox:first').trigger('click')
 		})
         //console.log(spConfig);
         //console.log(spConfig.config.attributes['92'].options);

@@ -39,7 +39,7 @@
 <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
 <?php else: ?>
 <div class="category-products">
-    <?php echo $this->getToolbarBlock()->setTemplate('catalog/product/list/toolbar_top.phtml')->toHtml(); ?> 
+    <?php // echo $this->getToolbarBlock()->setTemplate('catalog/product/list/toolbar_top.phtml')->toHtml(); ?> 
     <?php // List mode ?>
     <?php if($this->getMode()!='grid'): ?>
     <?php $_iterator = 0; ?>

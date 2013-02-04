@@ -50,7 +50,7 @@
         <label>Quick Search Form</label>
         <update handle="page_two_columns_left" />
         <reference name="root">
-            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="left">
             <block type="catalogsearch/layer" name="catalogsearch.leftnav" after="currency" template="catalog/layer/view.phtml"/>
@@ -73,13 +73,14 @@
                 <action method="setListCollection"/>
             </block>
         </reference>
+		<remove name="breadcrumbs"/>
     </catalogsearch_result_index>
 
     <catalogsearch_advanced_index translate="label">
         <label>Advanced Search Form</label>
         <!-- Mage_Catalogsearch -->
         <reference name="root">
-            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="head">
             <action method="setTitle" translate="title" module="catalogsearch"><title>Advanced Search</title></action>
@@ -91,6 +92,7 @@
             <block type="catalogsearch/advanced_form" name="catalogsearch_advanced_form" template="catalogsearch/advanced/form.phtml"/>
             <block type="core/html_calendar" name="html_calendar" as="html_calendar" template="page/js/calendar.phtml"/>
         </reference>
+		<remove name="breadcrumbs"/>
     </catalogsearch_advanced_index>
 
 <!--
@@ -102,7 +104,7 @@ Advanced search results
         <update handle="page_two_columns_left" />
         <!-- Mage_Catalogsearch -->
         <reference name="root">
-            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="content">
             <block type="catalogsearch/advanced_result" name="catalogsearch_advanced_result" template="catalogsearch/advanced/result.phtml">
@@ -122,6 +124,7 @@ Advanced search results
                 <action method="setListCollection"/>
             </block>
         </reference>
+		<remove name="breadcrumbs"/>
     </catalogsearch_advanced_result>
 
     <catalogsearch_term_popular translate="label">
@@ -138,6 +141,7 @@ Advanced search results
         <reference name="content">
             <block type="catalogsearch/term" name="seo.searchterm" template="catalogsearch/term.phtml"/>
         </reference>
+		<remove name="breadcrumbs"/>
     </catalogsearch_term_popular>
 
 </layout>

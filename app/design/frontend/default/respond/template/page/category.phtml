@@ -27,10 +27,29 @@
     <?php echo $this->getChildHtml('global_notices') ?>
     <div class="page layout-grid">
         <?php echo $this->getChildHtml('header') ?>
-        <div class="main-container col2-left-layout">
+        <div class="main-container col1-layout">
             <div class="main">
-                <?php // echo $this->getChildHtml('breadcrumbs') ?>
-				<div class="page-title"><strong><?php echo Mage::registry('current_category')->getName(); ?></strong></div>
+				<?php $_helper = Mage::helper('catalog/category') ?>
+				<?php $currentCategory = Mage::registry('current_category') ?>
+				<?php $_category = Mage::getModel('catalog/category')->load($currentCategory->getId()); ?>
+				<div class="page-title"><strong><?php echo $currentCategory->getName(); ?></strong></div>
+				<?php $_subcategories = $_category->getChildrenCategories(); ?>
+				<?php if (count($_subcategories) > 0): ?>
+					<div class="subnav-container">
+						<select>
+							<option>Filter By</option>
+							<?php foreach($_subcategories as $_subcategory): ?>
+								<option value="<?php echo $_helper->getCategoryUrl($_subcategory) ?>"><?php echo $_subcategory->getName() ?></option>
+							<?php endforeach; ?>
+						</select>
+					</div>
+					<script>
+						$j('.subnav-container select').change(function(){
+							$url = $j(this).val();
+							window.location.href = $url;
+						})
+					</script>
+				<?php endif; ?>
                 <?php /*<div class="col-wrapper">*/ ?>
                     <div class="col-main">
                         <?php echo $this->getChildHtml('global_messages') ?>
