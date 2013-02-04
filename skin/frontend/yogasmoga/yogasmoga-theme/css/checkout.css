@@ -381,3 +381,12 @@ body
 {
     min-width: 1400px;
 }
+button:active
+{
+    outline : none;
+}
+div.shippingdescription
+{
+    text-align: justify;
+    margin : 10px 0 10px 20px;
+}

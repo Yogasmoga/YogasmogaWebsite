@@ -47,7 +47,7 @@
                                     <?php endif; ?> 
                                 </td>
                                 <td style="padding-top : 2px;">
-                                    <label for="s_method_<?php echo $_rate->getCode() ?>"><strong><?php echo $this->escapeHtml($_rate->getMethodTitle()) ?>*</strong>
+                                    <label for="s_method_<?php echo $_rate->getCode() ?>"><strong><?php echo $this->escapeHtml($_rate->getMethodTitle()) ?></strong>
                                     <?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
                                     <?php $_incl = $this->getShippingPrice($_rate->getPrice(), true); ?>
                                     (<?php echo $_excl; ?>)
@@ -58,12 +58,30 @@
                                 </td>
                             </tr>
                         </table>
+                        <?php
+                            $temp = Mage::app()->getLayout()->createBlock('cms/block')->setBlockId($_rate->getCode())->toHtml();
+                            //$temp = Mage::getModel('cms/block')->load('revolvingmessage_loggedin')->getContent();
+//                            $block  = Mage::getModel('cms/block')
+//                                        ->setStoreId(Mage::app()->getStore()->getId())
+//                                        ->load('revolvingmessage_loggedin');
+//                            echo    Mage::app()->getLayout()->createBlock('cms/block')->setBlockId('revolvingmessage_loggedin')->toHtml();
+//                            echo $block->getContent();
+//                            echo $temp; 
+                            if($temp != "")
+                            {
+                                ?>
+                                <div class="shippingdescription">
+                                    <?php echo $temp; ?>
+                                </div>
+                                <?php
+                            }
+                        ?>
                    <?php endif ?>
             <?php endforeach; ?>
     <?php endforeach; ?>
 <?php endif; ?>
 <?php if ($_shippingRateGroups): ?>
-<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('shipping_note')->toHtml() ?>
+<?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('shipping_note')->toHtml(); ?>
 <input type="submit" imageurl="<?php echo $this->getSkinUrl('images/checkout/continue_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/checkout/continue_on.png'); ?>" name="send" class="loginbtn spbutton custombtn checkoutcontinuebtn" value="" />
 <div class="cleaner"></div>
 <div id="shippingmethoderrormsg" class="loginerrormsg errormsg"></div>
