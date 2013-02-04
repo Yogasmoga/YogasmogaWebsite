@@ -397,7 +397,6 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
         $grandtotal = $totals["grand_total"]->getValue(); //Grandtotal value
         if(isset($totals['discount']) && $totals['discount']->getValue()) {
-            echo $totals['discount']->getValue();
             $discount = $totals['discount']->getValue(); //Discount value if applied
         } else {
             $discount = 0;
@@ -444,7 +443,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 }
             ?>
             <?php
-                if($discount > 0)
+                if($discount != 0)
                 {
                     ?>
                         <tr>
