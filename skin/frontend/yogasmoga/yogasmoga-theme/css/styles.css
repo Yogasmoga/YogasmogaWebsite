@@ -2315,10 +2315,7 @@ td.productname a
 {
     font-size: 7px;    
 }
-div.mycategory-products div.item:hover td.productname
-{
-    color : black;
-}
+
 div.mycategory-products div.item td.productimage img.active
 {
     /*
@@ -2349,10 +2346,7 @@ div.mycategory-products div.item td.productprice span.price
     font-family:gothambold;
     font-size: 10pt;
 }
-div.mycategory-products div.item:hover td.productprice span.price
-{
-    display : inline;
-}
+
 div.mycategory-products div.item img.active.rotable
 {
     display : inline;

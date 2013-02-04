@@ -1,0 +1,8 @@
+div.mycategory-products div.item:hover td.productname
+{
+    color : black;
+}
+div.mycategory-products div.item:hover td.productprice span.price
+{
+    display : inline;
+}
