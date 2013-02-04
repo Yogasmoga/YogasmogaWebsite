@@ -7,6 +7,8 @@ jQuery(document).ready(function($){
     $("#checkout-login-form").submit(function(){
         return validateCheckoutLoginForm();
     });
+    
+    //.html('Select State');
     //window.onbeforeunload = function() {
 //        if(!_allowcheckoutexit)
 //            if(_checkoutdatachanged)
@@ -544,6 +546,7 @@ function fillBillingState(currentstate)
         jQuery("select#billing\\:region_id").hide().removeClass('requiredfield');
         jQuery("input#billing\\:region").show().addClass('requiredfield');
     }
+    jQuery("select#billing\\:region_id option[value='']").html("Select State");
 }
 
 function fillShippingState(currentstate)
@@ -567,6 +570,7 @@ function fillShippingState(currentstate)
         jQuery("select#shipping\\:region_id").hide().removeClass('requiredfield');
         jQuery("input#shipping\\:region").show().addClass('requiredfield');
     }
+    jQuery("select#shipping\\:region_id option[value='']").html("Select State");
 }
 
 function validateBillingAddressForm()

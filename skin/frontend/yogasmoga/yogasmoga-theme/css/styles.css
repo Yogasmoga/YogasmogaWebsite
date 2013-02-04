@@ -3223,3 +3223,7 @@ button span
     font-size : 11px;
     font-family: gothambook;
 }
+.italic
+{
+    font-style: italic;
+}
