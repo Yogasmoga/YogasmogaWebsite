@@ -38,11 +38,13 @@ button.cbtn:active span{background-position:0 -44px;}
 }
 .designfeaturesheadimage.landscapefeature
 {
-    left : 46.65%;
+    left : 46%;
+    top : 20px;
 }
 .designfeaturesheadimage.potraitfeature
 {
-    left : 31%;
+    left : 38%;
+    top : 20px;
 }
 table.productdesignfeatures div[size]
 {

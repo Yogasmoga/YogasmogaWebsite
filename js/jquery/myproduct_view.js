@@ -46,7 +46,7 @@ jQuery(document).ready(function($){
     $(window).resize(function(){
         setTimeout(function(){ InitializeZoomPopup(); }, 100);    
     });
-    positiondesignfeatureheadimage();    
+    //positiondesignfeatureheadimage();    
     $("div#zoompopup img#closelightbox").live("click", function(){
         jQuery("#zoompopup").dialog( "close" );
     });
