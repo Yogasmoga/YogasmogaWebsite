@@ -393,29 +393,6 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
             </tr>
         </table>
         */ ?>
-        <?php
-            if($howdoesitfitblockid != "")
-            {
-                ?>
-                <div id="howdoesitfitbox">
-                    <div id="howdoesitfitboxinner">
-                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
-                    </div>
-                    <img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closehowdoesitfit" />
-                </div>
-                <?php      
-            }
-        ?>
-        <?php
-            if($sizechartblockid != "")
-            {
-                ?>
-                <div id="sizechart">
-                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
-                </div>
-                <?php      
-            }
-        ?>
         <table class="productdetailspopup normalproductdetail">
             <tr>
                 <td class="popupproductdetail">
@@ -473,7 +450,17 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                                     <table class="selectedsize">
                                         <tr>
                                             <td>SIZE</td>
-                                            <td class="sizechartlink"><div><a href="#">Size chart</a></div></td>
+                                            <?php if($sizechartblockid != "") {?>
+                                                <td class="sizechartlink">
+                                                    <div style="position: relative;">
+                                                        <a href="#">Size chart</a>
+                                                        
+                                                                <div id="sizechart">
+                                                                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
+                                                                </div>
+                                                    </div>
+                                                </td>
+                                            <?php } ?>
                                         </tr>
                                     </table>
                                     <div id="sizecontainer">
@@ -490,14 +477,26 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                                             </tr>
                                         </table>
                                     </div>
-                                    <table class="fittable">
-                                        <tr>
-                                            <td>
-                                                <div class="hanger"></div>
-                                            </td>
-                                            <td class="howdoesitfitlink"><div><a href="javascript:void(0);">How does it fit?</a></div></td>
-                                        </tr>
-                                    </table>
+                                    <?php if($howdoesitfitblockid != "") { ?>
+                                        <table class="fittable">
+                                            <tr>
+                                                <td>
+                                                    <div class="hanger"></div>
+                                                </td>
+                                                <td class="howdoesitfitlink">
+                                                    <div style="position: relative;">
+                                                        <a href="javascript:void(0);">How does it fit?</a>
+                                                            <div id="howdoesitfitbox">
+                                                                <div id="howdoesitfitboxinner">
+                                                                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
+                                                                </div>
+                                                                <img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closehowdoesitfit" />
+                                                            </div>                                                    
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    <?php } ?>
                                     <div class="qty">QTY</div>
                                     <div class="sizeselector">
                                         <select class="qtyselector">

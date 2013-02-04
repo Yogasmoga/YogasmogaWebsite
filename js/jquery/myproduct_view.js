@@ -153,7 +153,7 @@ jQuery(document).ready(function($){
         
     });
     
-    $("#zoomedfbdtl img#zoomcloselightbox").live('click', function(){
+    $("#zoomedfbdtl").live('click', function(){
         $("#zoomedfbdtl").fadeOut('fast');
     });
     

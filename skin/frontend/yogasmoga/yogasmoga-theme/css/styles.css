@@ -2287,7 +2287,8 @@ div.mycategory-products div.item
     cursor : pointer;
     margin-left : 20px;
     margin-bottom : 30px;
-    width : 230px;    
+    width : 230px;
+    height : 425px;    
 }
 div.mycategory-products div.item a > table
 {
@@ -2307,17 +2308,14 @@ div.mycategory-products div.item td.productname
     font-size:10px;
     color : gray;
     text-transform: uppercase;
-    height : 35px;
+    /*height : 35px;*/
     vertical-align: top;
 }
 td.productname a
 {
     font-size: 7px;    
 }
-div.mycategory-products div.item:hover td.productname
-{
-    color : black;
-}
+
 div.mycategory-products div.item td.productimage img.active
 {
     /*
@@ -2346,12 +2344,9 @@ div.mycategory-products div.item td.productprice span.price
     color: #E22E44;
     display: none;
     font-family:gothambold;
-    font-size: 11pt;
+    font-size: 10pt;
 }
-div.mycategory-products div.item:hover td.productprice span.price
-{
-    display : inline;
-}
+
 div.mycategory-products div.item img.active.rotable
 {
     display : inline;
@@ -3222,4 +3217,13 @@ button span
 #sociallogin_button
 {
     display: none;
+}
+#drsizechart a
+{
+    font-size : 11px;
+    font-family: gothambook;
+}
+.italic
+{
+    font-style: italic;
 }

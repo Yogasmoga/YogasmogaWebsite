@@ -94,13 +94,13 @@
                             if($this->helper('customer')->isLoggedIn())
                             {
                                 ?>
-                                <li><a href="<?php echo $base_url; ?>customer/account/logout">Log Out</a></li>
+                                <li><a href="<?php echo $base_url; ?>customer/account">My Account</a></li>
                                 <?php
                             } 
                             else
                             {
                                 ?>
-                                <li><a href="<?php echo $base_url; ?>customer/account/">My Account</a></li>        
+                                <li><a href="<?php echo $base_url; ?>customer/account/login">Log In</a></li>        
                                 <?php
                             }
                         ?>

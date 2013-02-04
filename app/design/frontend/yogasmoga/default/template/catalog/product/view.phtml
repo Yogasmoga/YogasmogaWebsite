@@ -334,7 +334,7 @@
                 {
                     cursor : url("<?php echo $this->getSkinUrl('images/catalog/product/cursor_zoom_out.cur') ?>"), default !important;
                 }
-                img#zoomedimage1, #zoomedfbdtl
+                img#zoomedimage1
                 {
                     cursor : url("<?php echo $this->getSkinUrl('images/catalog/product/cursor_zoom_in.cur') ?>"), default !important;
                 }
@@ -432,16 +432,20 @@
                     <table class="selectedsize">
                         <tr>
                             <td>SIZE</td>
-                            <td class="sizechartlink"><div style="position:relative;"><a href="#">Size chart</a>
-		<?php if($sizechartblockid != ""){?>
-			<div id="sizechart">
-				<div class="light-conent-box">
-					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
-				</div>
-				<img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
-			</div>
-		<?php } ?>
-		</div></td>
+                            <?php if($sizechartblockid != ""){?>
+                            <td class="sizechartlink">
+                                <div style="position:relative;"><a href="#">Size chart</a>
+                                		
+                                			<div id="sizechart">
+                                				<div class="light-conent-box">
+                                					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
+                                				</div>
+                                				<img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
+                                			</div>
+                                		
+		                          </div>
+                            </td>
+                            <?php } ?>
                         </tr>
                     </table>
                     <div id="sizecontainer">
@@ -458,24 +462,26 @@
                             </tr>
                         </table>
                     </div>
-                    <table class="fittable">
-                        <tr>
-                            <td>
-                                <div class="hanger"></div>
-                            </td>
-                            <td class="howdoesitfitlink"><div style="position:relative;"><a href="javascript:void(0);">How does it fit?</a>
-		<?php if($howdoesitfitblockid != ""){ ?>
-			<div id="howdoesitfitbox">
-				<div id="howdoesitfitboxinner">
-					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
-				</div>
-				<img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
-			</div>
-		<?php } ?>
-							
-							</div></td>
-                        </tr>
-                    </table>
+                    <?php if($howdoesitfitblockid != ""){ ?>
+                        <table class="fittable">
+                            <tr>
+                                <td>
+                                    <div class="hanger"></div>
+                                </td>
+                                <td class="howdoesitfitlink">
+                                    <div style="position:relative;">
+                                        <a href="javascript:void(0);">How does it fit?</a>
+                        			     <div id="howdoesitfitbox">
+                        				    <div id="howdoesitfitboxinner">
+                        					   <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
+                        				    </div>
+                        				    <img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
+                        			     </div>
+    							     </div>
+                                </td>
+                            </tr>
+                        </table>
+                    <?php } ?>
                     <div class="qty">QTY</div>
                     <div class="sizeselector">
                         <select class="qtyselector">

@@ -48,31 +48,34 @@ jQuery(document).ready(function($){
         _currentproductid = $(this).attr("id");
     });
     
-    jQuery(".mycategory-products div.item td.productimage").hover(function(){
-        //var idd = jQuery(this).attr("id");
-        if(!_rotateprimages)
-            return;
-        var idd = jQuery(this).parents("div.item:first").attr("id");
-        var pelement = $(this).parents("div.item:first"); 
-        togglehover(idd, true);
-        
-        pelement.find("td.animateimage img.inactive").hide();
-        pelement.find("td.animateimage img.active").show();
-         //setTimeout(function(){ shownextimage(idd); }, 1000);
-        //console.log(_hovercollection);
-    },
-    function(){
-        if(!_rotateprimages)
-            return;
-        //togglehover(jQuery(this).attr("id"), false);
-        togglehover(jQuery(this).parents("div.item:first").attr("id"), false);
-        var pelement = $(this).parents("div.item:first");
-        //$(this).parents("div.item:first").find("td.animateimage img.inactive").show();
-        pelement.find("td.animateimage img").hide();
-        //if(pelement.find("td.productimage img").length > 0)
-            pelement.find("td.animateimage img:first").show();
-        //console.log(_hovercollection);
-    });
+    if(!_onipad)
+    {
+        jQuery(".mycategory-products div.item td.productimage").hover(function(){
+            //var idd = jQuery(this).attr("id");
+            if(!_rotateprimages)
+                return;
+            var idd = jQuery(this).parents("div.item:first").attr("id");
+            var pelement = $(this).parents("div.item:first"); 
+            togglehover(idd, true);
+            
+            pelement.find("td.animateimage img.inactive").hide();
+            pelement.find("td.animateimage img.active").show();
+             //setTimeout(function(){ shownextimage(idd); }, 1000);
+            //console.log(_hovercollection);
+        },
+        function(){
+            if(!_rotateprimages)
+                return;
+            //togglehover(jQuery(this).attr("id"), false);
+            togglehover(jQuery(this).parents("div.item:first").attr("id"), false);
+            var pelement = $(this).parents("div.item:first");
+            //$(this).parents("div.item:first").find("td.animateimage img.inactive").show();
+            pelement.find("td.animateimage img").hide();
+            //if(pelement.find("td.productimage img").length > 0)
+                pelement.find("td.animateimage img:first").show();
+            //console.log(_hovercollection);
+        });   
+    }
 });
 
 function searchsrcarray(obj, val)

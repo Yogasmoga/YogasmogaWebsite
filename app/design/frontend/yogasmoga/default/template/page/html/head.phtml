@@ -72,6 +72,12 @@
             <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/ipad.css'); ?>" media="all" />
         <?php      
     }
+    else
+    {
+        ?>
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/nonipad.css'); ?>" media="all" />
+        <?php
+    }
 ?>
 <script type="text/javascript" language="javascript">
     jQuery.noConflict();

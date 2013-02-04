@@ -116,9 +116,14 @@ function setfullscreenheight()
     //if(firsttime)
 //        jQuery("#pageScrollerNav").css('top', (((_winH - jQuery("#pageScrollerNav").height()) / 2) - 40) + 'px');
 //    else
+    //if(_isglobalsharingopen)
+//        jQuery("#pageScrollerNav").css('top', ((_winH + (_headerHeight * 2) - jQuery("#pageScrollerNav").height() - jQuery("#pageScrollerNav #shareicons").css('height')) / 2) + 'px');
+//    else
+//        jQuery("#pageScrollerNav").css('top', ((_winH + (_headerHeight * 2) - jQuery("#pageScrollerNav").height()) / 2) + 'px');
+    
     if(_isglobalsharingopen)
-        jQuery("#pageScrollerNav").css('top', ((_winH + (_headerHeight * 2) - jQuery("#pageScrollerNav").height() - jQuery("#pageScrollerNav #shareicons").css('height')) / 2) + 'px');
+        jQuery("#pageScrollerNav").css('top', ((_winH + (_headerHeight) - jQuery("#pageScrollerNav").height() - jQuery("#pageScrollerNav #shareicons").css('height')) / 2) + 'px');
     else
-        jQuery("#pageScrollerNav").css('top', ((_winH + (_headerHeight * 2) - jQuery("#pageScrollerNav").height()) / 2) + 'px');
+        jQuery("#pageScrollerNav").css('top', ((_winH + (_headerHeight) - jQuery("#pageScrollerNav").height()) / 2) + 'px');
     //console.log('w = ' + _winW + ' h = ' + _winH + ' s = ' + jQuery("#pageScrollerNav").height());
 }

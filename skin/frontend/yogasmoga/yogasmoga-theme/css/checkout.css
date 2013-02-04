@@ -286,7 +286,7 @@ div#ordersummary, div#shippingsummary
 }
 div#shippingsummary
 {
-    right : -290px;
+    right : -370px;
     max-width : 340px;
 }
 div#ordersummary
@@ -379,5 +379,5 @@ div#tblcheckoutsteps form
 }
 body
 {
-    min-width: 1350px;
+    min-width: 1400px;
 }
