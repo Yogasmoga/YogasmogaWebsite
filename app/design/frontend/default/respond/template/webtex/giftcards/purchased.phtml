@@ -25,9 +25,7 @@
  */
 ?>
 <?php $_cards = $this->getCards(); ?>
-<div style="margin-top: 30px;">
-    <h1><?php echo $this->__('Purchased Gift Cards') ?></h1>
-</div>
+<h3 class="sub-title"><?php echo $this->__('Purchased Gift Cards') ?></h3>
 <?php echo $this->getPagerHtml(); ?>
 <?php if($_cards->getSize()): ?>
 <table class="data-table" id="my-orders-table">
@@ -39,10 +37,10 @@
     <thead>
     <tr>
         <th><?php echo $this->__('Card #') ?></th>
-        <th><?php echo $this->__('Card Code') ?></th>
-        <th><?php echo $this->__('Card Balance') ?></th>
+        <th><?php echo $this->__('Code') ?></th>
+        <th><?php echo $this->__('Balance') ?></th>
         <th><?php echo $this->__('Order #') ?></th>
-        <th><?php echo $this->__('Card Status') ?></th>
+        <th><?php echo $this->__('Status') ?></th>
     </tr>
     </thead>
     <tbody>

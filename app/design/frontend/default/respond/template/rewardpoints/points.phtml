@@ -20,8 +20,8 @@
 
 
 
-<div class="page-head">
-    <h3><?php echo $this->__('Reward points') ?></h3>
+<div class="page-title">
+    <h1><?php echo $this->__('SMOGI BUCKS') ?></h1>
 </div>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 
@@ -33,11 +33,10 @@
 <table cellspacing="0" class="data-table" id="reward-points-table">
     <thead>
         <tr>
-            <?php ?><th><?php echo $this->__('Type of point') ?></th><?php ?>
-            <th><?php echo $this->__('Points added') ?></th>
-            <th><?php echo $this->__('Points used') ?></th>
-            <th><?php echo $this->__('Obtention date') ?></th>
-            <th><?php echo $this->__('Valid until') ?></th>
+            <?php ?><th><?php echo $this->__('Order#') ?></th><?php ?>
+            <th><?php echo $this->__('EARNED') ?></th>
+            <th><?php echo $this->__('SPENT') ?></th>
+            <th><?php echo $this->__('Validity') ?></th>
         </tr>
     </thead>
     <tbody>
@@ -47,10 +46,9 @@
                 <td>
                     <?php echo $this->getTypeOfPoint($_point);?>
                 </td>
-                <td><?php echo $_point->getPoints_current() ?></td>
+                <td class="a-center"><?php echo $_point->getPoints_current() ?></td>
                 <?php /*?><?php echo $_point->getPoints_spent() ? $this->__('yes') : $this->__('no') ?><?php */?>
-                <td><?php echo $_point->getPoints_spent() ?></td>
-                <td><?php if ($_point->getDate_start() != ""): echo $this->formatDate($_point->getDate_start(), 'short'); endif; ?></td>
+                <td class="a-center"><?php echo $_point->getPoints_spent() ?></td>
                 <td><?php if ($_point->getDate_end() != ""): echo $this->formatDate($_point->getDate_end(), 'short'); endif; ?></td>
             </tr>
         <?php endforeach; ?>

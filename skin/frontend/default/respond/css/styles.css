@@ -436,7 +436,7 @@ a:focus        { outline:0; color: #d90d3d; }
 
 /* Headings */
 
-h1, h2, h3, h4, h5, h6 { padding: 0; margin: 0 0 18px; clear: both; text-transform:uppercase; letter-spacing:1px;}
+h1, h2, h3, h4, h5, h6 { padding: 0; margin: 0 0 15px; clear: both; text-transform:uppercase; letter-spacing:1px;}
 
 h1									{ font-size: 36px;  font-weight:normal; line-height: 1; font-family: ITCAvantGardeBk, arial; } /* 36/36 */
 h2									{ font-size: 28px; font-weight:normal; line-height: 1.2; font-family: ITCAvantGardeBk, arial; }/* 36/28 */
@@ -2087,7 +2087,9 @@ ul.account-link li a{font-size:14px; text-transform:uppercase; font-family:gotha
 .map-popup-text { clear:right; margin:0 10px; padding:10px 0; text-align:left; word-wrap:break-word; }
 .map-popup-only-text { border-top:1px solid #ddd; }
 /* ======================================================================================= */
-
+.refer-box,
+.box-invite{padding:40px 0; border-bottom:1px solid #cecece;}
+.gift-form{padding-bottom:30px; border-bottom:1px solid #cecece; margin-bottom:30px;}
 
 /* Footer ================================================================================ */
 .footer-container {padding:0;}
@@ -2101,8 +2103,10 @@ ul.account-link li a{font-size:14px; text-transform:uppercase; font-family:gotha
 .footer .contact span{display:block;}
 
 .footer .newsletter-footer {}
-.footer .social {}
-.footer .social li { display: inline; margin-right: 20px; }
+div.social {padding-top:20px; text-align:center;}
+div.social ul{margin-bottom:0;}
+div.social ul li { display: inline; margin-right: 25px; }
+div.social ul li:last-child{margin-right:0;}
 
 .footer .help, .footer .search, .footer .store-options { float: left; width: 160px; margin-right: 20px; }
 .footer .store-options { }
@@ -2119,7 +2123,7 @@ ul.account-link li a{font-size:14px; text-transform:uppercase; font-family:gotha
 .footer address a { color:#999; }
 
 .footer .form-subscribe-header {font-size:22px; color:#333; line-height:27px; font-family:gotham-l; margin-bottom:40px;}
-.footer .form-subscribe { margin-bottom: 18px; max-width:510px; margin:0 auto 50px;}
+.footer .form-subscribe { margin-bottom: 18px; max-width:510px; margin:0 auto 20px;}
 .footer .form-subscribe label{}
 .footer .form-subscribe .input-box{ position:relative; max-width:410px; margin:0 auto; border-bottom:3px solid #000;}
 .footer .form-subscribe button.button {

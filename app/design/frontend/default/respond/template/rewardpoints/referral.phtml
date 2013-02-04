@@ -22,39 +22,27 @@
 <div class="page-title">
     <h1><?php echo $this->__('Refer A Friend') ?></h1>
 </div>
-<h2 class="sub-title">
-Share The Joy Of YOGASMOGA, Get <?php echo $this->getReferrerPoints(); ?> SMOGI Bucks (worth $<?php echo $this->getReferrerPoints(); ?>)
-<span>For each friend you invite that goes shopping with us for their first time, you receive $<?php echo $this->getReferrerPoints(); ?> SMOGI Bucks.</span>
-</h2>
-<?php /* if($this->getReferrerPoints()):?>
-    <?php echo $this->__('For any first valid order placed by referred friend, you earn: <strong>%s points</strong>', $this->getReferrerPoints());?>
-    <br />
-<?php endif;?>
-<?php if($this->getFriendPoints()):?>
-    <?php echo $this->__('For any first valid order placed by referred friend, your friend gets: <strong>%s extra points</strong>', $this->getFriendPoints());?>
-<?php endif; */?>
-
+<h5>Share The Joy Of YOGASMOGA</h5>
+<p>Get <?php echo $this->getReferrerPoints(); ?> SMOGI Bucks (worth $<?php echo $this->getReferrerPoints(); ?>), For each friend you invite that goes shopping with us for their first time, you receive $<?php echo $this->getReferrerPoints(); ?> SMOGI Bucks.<br/>&nbsp;</p>
 <?php if($this->isAddthis() || $this->isPermanentLink()):?>
-<div class="refer-box right">
+<div class="refer-box">
     <?php if($this->isPermanentLink()):?>
-        <h3><?php echo $this->__('your invite link') ?></h3>
+        <h5><?php echo $this->__('your invite link') ?></h5>
         <input type="text" disabled="disabled" value="<?php echo $this->getReferringUrl() ?>" class="share-link" onClick="this.select();" />
-		<button class="btn-copy button"><span><span>Copy</span></span></button>
-		<div class="social-btns" style="margin:10px 0 0;">
-			<a href="http://www.pinterest.com/YOGASMOGA" class="pinterest">Pinterest</a>
-			<a href="http://www.twitter.com/YOGASMOGA" class="twitter">Twitter</a>
-			<a href="http://www.facebook.com/YOGASMOGA" class="facebook">Facebook</a>
-		</div>
+		<div class="social">
+			<ul>
+			  <li><a href="https://twitter.com/intent/session?url=<?php echo $this->getReferringUrl() ?>" target="_blank"><img alt="twitter" src="<?php echo $this->getSkinUrl('images/twitter.png'); ?>"></a></li>
+			  <li><a href="http://pinterest.com/pin/create/button/?url=<?php echo $this->getReferringUrl() ?>&media=https://yogasmoga.com/yogasmoga_gold.jpg&description=YOGASMOGA" target="_blank"><img alt="Pinterest" src="<?php echo $this->getSkinUrl('images/pinterent.png'); ?>"></a></li>
+			  <li><a href="http://www.facebook.com/sharer/sharer.php?u=<?php echo $this->getReferringUrl() ?>" target="_blank"><img alt="Facebook" src="<?php echo $this->getSkinUrl('images/facebook.png'); ?>"></a></li>
+			</ul>
+		  </div>
     <?php endif;?>
 
 
     <?php if($this->isAddthis()):?>
     <div class="box-account box-recent">
         <fieldset class="group-select">
-            
-            <div class="head box-title">
-                <h3><?php echo $this->__('Share referring link') ?></h3>
-            </div>
+            <h5><?php echo $this->__('Share referring link') ?></h5>
             <ul>
                 <li>
                     <div class="input-box">
@@ -108,22 +96,20 @@ Share The Joy Of YOGASMOGA, Get <?php echo $this->getReferrerPoints(); ?> SMOGI 
 
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <form action="<?php echo $this->getUrl('rewardpoints/index/referral/') ?>" method="post" id="form-validate">
-    <div class="box-invite left">
+    <div class="box-invite">
         <fieldset class="group-select" id="j2t-referral-lines">
             <?php /*?><input type="hidden" value="Il1NwrpfsCuSmp03" name="form_key"/><?php */?>
             <?php echo $this->getBlockHtml('formkey')?>
-            <h3><?php echo $this->__('Invite Your Friends to YOGASMOGA<span>Let Them In On The SMOGI Secret.</span>') ?></h3>
+            <h5><?php echo $this->__('Invite Your Friends to YOGASMOGA<span>Let Them In On The SMOGI Secret.</span>') ?></h5>
             
             <ul class="form-list">
                 <li class="fields">
                     <div class="j2t-rewardpoints-referral">
                         <div class="field j2t-rewardpoints-name">
-                            <label for="name" class="required" id="label-name"><em>*</em><?php echo $this->__('Friend\'s name') ?></label>
-                            <input type="text" name="name[]" value="" title="<?php echo $this->__('Friend\' name') ?>" class="required-entry input-text" style="width:160px;" id="name" />
+                            <input type="text" name="name[]" value="" placeholder="<?php echo $this->__('Friend\'s name') ?>" title="<?php echo $this->__('Friend\' name') ?>" class="required-entry input-text" id="name" />
                         </div>
-                        <div class="field j2t-rewardpoints-email">
-                            <label for="email" class="required validate-email" id="label-email"><em>*</em><?php echo $this->__('Friend\'s email address') ?></label>
-                            <input type="text" name="email[]" value="" title="<?php echo $this->__('Friend\'s email address') ?>" class="required-entry input-text" style="width:130px;" id="email" />
+                        <div class="field j2t-rewardpoints-email" style="width:100%;">
+                            <input type="text" name="email[]" placeholder="<?php echo $this->__('Friend\'s email address') ?>" value="" title="<?php echo $this->__('Friend\'s email address') ?>" class="required-entry input-text" id="email" />
                         </div>
                     </div>
                 </li>
@@ -168,9 +154,8 @@ Share The Joy Of YOGASMOGA, Get <?php echo $this->getReferrerPoints(); ?> SMOGI 
 <script type="text/javascript">
     var dataForm = new VarienForm('form-validate', true);
 </script>
-<br /><br />
 <?php $_referred = $this->getReferred();?>
-<h3 class="heading-track">Keep track of your invites</h3>
+<h3 class="subtitle">Keep track of your invites</h3>
 <?php if($_referred->getSize()): ?>
 <?php echo $this->getPagerHtml() ?>
 <table cellspacing="0" class="data-table" id="referred-friends-table">
@@ -198,5 +183,4 @@ Share The Joy Of YOGASMOGA, Get <?php echo $this->getReferrerPoints(); ?> SMOGI 
 <?php else: ?>
     <p><?php echo $this->__('After you invite some of your friends you will be able to keep track of their invitations here..'); ?></p>
 <?php endif ?>
-<div class="clearer" style="clear:both; margin:0 0 80px;">&nbsp;</div>
 </div>
