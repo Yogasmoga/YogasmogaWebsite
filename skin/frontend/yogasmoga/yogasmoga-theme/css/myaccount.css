@@ -309,3 +309,39 @@ div.shippingfootnote span.shippingnote
 	font-family:gothamlight;
 	font-size:13px;
 }
+
+.giftcard-balance
+{
+    color: #000000;
+    font-family: gotham,Arial;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+    margin: 0 0 45px;
+    padding: 0 0 35px;
+    text-align: center;
+    text-transform: uppercase;
+    width : 960px;
+}
+#giftcardformmyaccount table.inputtable
+{
+    width : 350px;
+}
+button.button.btn-redeem span{
+    padding:0; 
+    width:93px; 
+    text-indent:-999em; 
+    height:29px; 
+    margin:0; 
+    background:url(../images/redeem_off.png) 0 0 no-repeat; 
+    border:0;
+}
+button.button.btn-redeem:active span{
+    background:url(../images/redeem_on.png) 0 0 no-repeat;
+}
+button.button.btn-redeem
+{
+    margin-left : 15px;
+    margin-top : -7px;
+}

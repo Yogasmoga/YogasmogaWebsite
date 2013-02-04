@@ -55,7 +55,18 @@ jQuery(document).ready(function($){
     $("#address-form").submit(function(){
         return validateAddressForm();
     });
+    
+    $("#giftcardformmyaccount").submit(function(){
+        return validateGiftCardForm();
+    });
 });
+
+function validateGiftCardForm()
+{
+    unsetAllError(jQuery("#giftcardformmyaccount"));
+    var flag = validatefields(jQuery("#giftcardformmyaccount"));
+    return flag;
+}
 
 function validateWishlistForm()
 {

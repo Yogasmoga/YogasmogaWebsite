@@ -1,6 +1,33 @@
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" media="all" />
 <div class="page-title">
-    <h1><?php echo $this->__('My Gift Cards') ?></h1>
+    <h1><?php echo $this->__('Gift Cards') ?></h1>
 </div>
+<h2 class="giftcard-balance">Your Gift Card Balance : <?php echo Mage::helper('core')->currency($this->getCurrentBalance()); ?></h2>
+<form name="giftcardForm" id="giftcardformmyaccount" action="<?php echo $this->getUrl('customer/giftcards/apply') ?>" method="post">
+<table class="myaccount-redeem-giftcard">
+    <tr>
+        <td>
+            <table class="inputtable">
+                <tr>
+                    <td class="label"><label for="giftcard_code"><?php echo $this->__('Gift Card Code') ?></label></td>
+                    <td class="inputholder">
+                        <input id="giftcard_code" name="giftcard_code" value="" class="requiredfield" defaulterrormsg="Gift Card Code is required" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="errortext" colspan="2">
+                        <div>Gift Card Code is required.</div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <button type="submit" title="<?php echo $this->__('Redeem') ?>" class="button btn-redeem" value="<?php echo $this->__('Redeem') ?>"><span><span><?php echo $this->__('Redeem') ?></span></span></button>
+        </td>
+    </tr>
+</table>
+</form>
+<?php return; ?>
 <form name="giftcardForm" action="<?php echo $this->getUrl('customer/giftcards/apply') ?>" method="post">
 <table border="0" cellpadding="1" cellspacing="1">
   <tr>
