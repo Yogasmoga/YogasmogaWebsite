@@ -25,6 +25,9 @@
  */
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" media="all" />
+<div id="global-msg" style="display: none;margin-bottom: 80px;">
+    <ul class="messages"><li id="msqli" class="error-msg"><ul><li><span id="msgspn"></span></li></ul></li></ul>
+</div>
 <div class="confirmation-page">
 <h2 class="sub-title"><?php echo $this->__('thank you for shopping at yogasmoga. ') ?></h2>
 <div class="conf-box">
@@ -62,12 +65,19 @@ has been shipped. Enter your friend's email or find them on Gmail or Facebook.</
                                 result = eval('(' + result + ')');
                                 if(result.status == 'success')
                                 {
-                                    alert(result.message);
+                                    //alert(result.message);
+                                    $("#global-msg").show();
+                                    $("li#msqli").removeClass("error-msg").addClass("success-msg");
+                                    $("span#msgspn").html(result.message);
                                 }
                                 else
                                 {
-                                    alert(result.message);
+                                    //alert(result.message);
+                                    $("#global-msg").show();
+                                    $("li#msqli").addClass("error-msg").removeClass("success-msg");
+                                    $("span#msgspn").html(result.message);
                                 }
+                                $("div.confirmation-page").css('padding-top','0px');
                             }
                         });
                         return false;
