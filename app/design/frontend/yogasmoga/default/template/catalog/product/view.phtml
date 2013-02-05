@@ -160,7 +160,7 @@
                 {
                     //echo $imageurl;
                     $smallimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75)->setQuality(100);
-                    $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(100);
+                    $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(900, 900)->setQuality(100);
                     $zoomimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->setQuality(100);
                     
                     $imagePath = substr($zoomimageurl, 1);

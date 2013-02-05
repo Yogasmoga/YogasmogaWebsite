@@ -233,9 +233,9 @@ function StartZooming(scale)
 	//var ImgScrRatioW = ((_winW) / jQuery("img#zoomedimage").width());
 	var ImgScrRatioW = ((_winH) / jQuery("img#zoomedimage").height())*1.6;
 	if(ImgScrRatioW < 1){
-		initialzoom = ImgScrRatioW*120;
+		initialzoom = ImgScrRatioW*100;
 	}else{
-		initialzoom = 1*120;
+		initialzoom = 1*100;
 	}
     //var initialzoom = Math.floor(Math.random() * (100 - 50 + 1)) + 50;
 //    initialzoom = 150;

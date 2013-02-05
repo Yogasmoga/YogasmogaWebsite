@@ -7,7 +7,7 @@ button.cbtn:active span{background-position:0 -44px;}
 .productdesignfeatures
 {
     width : 95%;
-    margin-top : 70px;
+    margin-top : 160px;
     margin-bottom : 100px;
 }
 .productdesignfeatures td img
@@ -39,12 +39,12 @@ button.cbtn:active span{background-position:0 -44px;}
 .designfeaturesheadimage.landscapefeature
 {
     left : 46%;
-    top : 20px;
+    top : 90px;
 }
 .designfeaturesheadimage.potraitfeature
 {
     left : 38%;
-    top : 20px;
+    top : 90px;
 }
 table.productdesignfeatures div[size]
 {
