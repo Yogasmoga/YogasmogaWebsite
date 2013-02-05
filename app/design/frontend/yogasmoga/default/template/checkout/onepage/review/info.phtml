@@ -149,6 +149,10 @@
                 if(searchcart($miniitems, $item->getSku()) == false)
                 {
                     $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$item->getSku());
+                    if((Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty()) < 0)
+                        $temparray['preorder'] = true;
+                    else
+                        $temparray['preorder'] = false;
                     $temparray['sku'] = $item->getSku();
                     //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
                     $temparray['name'] = $item->getName();
@@ -173,6 +177,10 @@
                 if(searchcart($miniitems, $item->getSku()) == false)
                 {
                     $_product = Mage::getModel('catalog/product')->load($item->getProductId());
+                    if((Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty()) < 0)
+                        $temparray['preorder'] = true;
+                    else
+                        $temparray['preorder'] = false;
                     $temparray['sku'] = $item->getSku();
                     //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
                     $temparray['name'] = $item->getName();
@@ -193,6 +201,10 @@
                 //if(searchcart($miniitems, $item->getSku()) == false)
 //                {
                     $_product = Mage::getModel('catalog/product')->load($item->getProductId());
+                    if((Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty()) < 0)
+                        $temparray['preorder'] = true;
+                    else
+                        $temparray['preorder'] = false;
                     $temparray['sku'] = $item->getSku();
                     //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
                     $temparray['name'] = $item->getName();
@@ -253,6 +265,16 @@
                                      <div class="productname"><?php echo html_entity_decode($item['name']); ?></div>
                                      <div class="productdetail"><span class="productattribute">COLOR:</span>&nbsp;&nbsp;<?php echo $item['color']; ?></div>
                                      <div class="productdetail"><span class="productattribute">SIZE:</span>&nbsp;&nbsp;<?php echo $item['size']; ?></div>
+                                     <?php
+                                        if($item['preorder'])
+                                        {
+                                            ?>
+                                            <div class="preorderinfo">
+                                                <?php echo Mage::getModel('core/variable')->loadByCode('preorder_message')->getValue('html'); ?>
+                                            </div>
+                                            <?php
+                                        }
+                                    ?>
                                 </td>
                             </tr>
                         </table>

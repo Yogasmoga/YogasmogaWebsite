@@ -4,6 +4,11 @@ jQuery(document).ready(function($){
 //        $("div#checkout div:nth-child(2)").hide();
     //if($("div.myheader:first").next().html().indexOf("support@intellectlabs.com") > 0)
 //        $("div.myheader:first").next().hide();
+    if($("#checkout-shipping-form").length == 0)
+    {
+        $("#co-billing-form").show();
+        jQuery('select').customSelect();
+    }
     $("#checkout-login-form").submit(function(){
         return validateCheckoutLoginForm();
     });
