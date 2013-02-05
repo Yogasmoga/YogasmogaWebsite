@@ -390,3 +390,8 @@ div.shippingdescription
     text-align: justify;
     margin : 10px 0 10px 20px;
 }
+table.co-ov-table div.preorderinfo
+{
+    color : #D90D3D;
+    font-style: italic;
+}

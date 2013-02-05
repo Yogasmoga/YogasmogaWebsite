@@ -28,7 +28,7 @@
 <?php $_order = $this->getItem()->getOrder() ?>
 <tr>
     <td align="left" valign="top" style="font-size:12px; padding:5px 0px; ">
-        <strong style="font-size:12px;"><?php echo $this->htmlEscape($_item->getName()) ?></strong>
+        <strong style="font-size:12px;"><?php echo html_entity_decode($this->htmlEscape($_item->getName())) ?></strong>
         <?php if ($this->getItemOptions()): ?>
         <p style="margin:0 0 5px">
             <?php $firstoption = true; ?>
@@ -57,11 +57,14 @@
         <?php if ($addInfoBlock) :?>
             <?php echo $addInfoBlock->setItem($_item)->toHtml(); ?>
         <?php endif; ?>
-        <?php echo $this->escapeHtml($_item->getDescription()) ?>
+        <?php echo $this->escapeHtml($_item->getDescription()); ?>
         <?php
-            $_product = Mage::getModel('catalog/product')->load($_item->getId());
-            if(Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty() < 0)
-                echo "This item has been preordered.";
+            //$_product = Mage::getModel('catalog/product')->load($_item->getId());
+            $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$_item->getSku());
+            if((Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty() - $_item->getQtyOrdered()) < 0 &&  $_product->getTypeID() != "giftcards")
+            {
+                echo Mage::getModel('core/variable')->loadByCode('preorder_message_email')->getValue('html');
+            }
         ?>
     </td>
     <td align="center" valign="top" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;"><?php echo $_item->getQtyOrdered()*1 ?></td>
