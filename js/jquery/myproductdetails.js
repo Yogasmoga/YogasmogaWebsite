@@ -31,7 +31,7 @@ jQuery(document).ready(function($){
         changeproductsize($(this));
     });
     
-    _productorderqty = $("div.sizeselector select.qtyselector").val();
+    InitializeProductQty();
     $("div.sizeselector select.qtyselector").live("click", function(){
         changeOrderqty($(this).val());
     });
@@ -77,6 +77,11 @@ jQuery(document).ready(function($){
         $("div#sizechart").fadeIn('normal');
     });
 });
+
+function InitializeProductQty()
+{
+    _productorderqty = $("div.sizeselector select.qtyselector").val();
+}
 
 function changeproductsize(sz)
 {

@@ -103,6 +103,7 @@ function showproductlightbox(productid){
         data : {'id': productid},
         success : function(data){
             jQuery("#productdetailpopup").html(data);
+            InitializeProductQty();
             if(jQuery("div#colorcontainer table:first").length > 0)
                 changeColor(_dressingroomselectedcolor);
         }
