@@ -80,7 +80,7 @@ jQuery(document).ready(function($){
 
 function InitializeProductQty()
 {
-    _productorderqty = $("div.sizeselector select.qtyselector").val();
+    _productorderqty = jQuery("div.sizeselector select.qtyselector").val();
 }
 
 function changeproductsize(sz)
