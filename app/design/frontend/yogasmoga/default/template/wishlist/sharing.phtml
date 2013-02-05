@@ -31,6 +31,7 @@
 </div>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <form action="<?php echo $this->getSendUrl() ?>" id="form-share-wishlist" method="post">
+    <?php echo $this->getBlockHtml('formkey')?>
     <table class="inputtable">
         <tr>
             <td class="label"><label for="email_address"><?php echo $this->__('Email Addresses, separated by commas') ?></label></td>
