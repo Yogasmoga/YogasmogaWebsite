@@ -73,7 +73,10 @@
                         ?>
                     </td>
                     <td class="praddtocart">
+                        <?php /*
                         <button onclick="addWItemToCart(<?php echo $item->getWishlistItemId(); ?>);" downimageurl="<?php echo $this->getSkinUrl('images/add_to_cart_on.png'); ?>" imageurl="<?php echo $this->getSkinUrl('images/add_to_cart_off.png'); ?>" class="addtocartbtn spbutton custombtn" type="button"></button>
+                        */ ?>
+                        <button onclick="window.location = '<?php echo $_product->getProductUrl(); ?>';" downimageurl="<?php echo $this->getSkinUrl('images/add_to_cart_on.png'); ?>" imageurl="<?php echo $this->getSkinUrl('images/add_to_cart_off.png'); ?>" class="addtocartbtn spbutton custombtn" type="button"></button>
                     </td>
                     <?php /*
                     <?php foreach ($columns as $column): ?>
