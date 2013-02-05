@@ -1,7 +1,11 @@
 jQuery(document).ready(function($){
+	var Wh = $(window).height();
+	var mh = Wh*0.9;
+	var mv = mh*1.777778;
 	jQuery("a[rel=fancyvideo]").fancybox({
-		width		: '85%',
 		fitToView	:true,
+		width		:mv,
+		height		:mh,
 		autoSize	: true,
 		padding		:0,
 		openEffect	: 'none',
