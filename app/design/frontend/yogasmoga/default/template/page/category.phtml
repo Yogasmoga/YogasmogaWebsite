@@ -61,10 +61,7 @@
 							<div id="drsizechart" class="sizeChart">
 								<div id="sizechart" style="left:0">
 									<div class="light-conent-box">
-										<?php $medUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); 
-										$sizchartImg = $medUrl.'wysiwyg/sizechart1_1.PNG';
-										?>
-										<img alt="" src="<?php echo $sizchartImg; ?>" />
+										<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('size_chart')->toHtml(); ?>
 									</div>
 									<img id="closesmlight" src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png') ?>" />
 								</div>

@@ -738,7 +738,7 @@ div#sizechart
     background-color: #D2D2D3;
     left: -46px;
     position: absolute;
-    bottom: 35px;
+    bottom: 100%;
     z-index: 1;
 	padding:6px;
     display : none;

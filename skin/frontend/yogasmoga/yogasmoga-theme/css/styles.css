@@ -1547,6 +1547,10 @@ select option{padding:3px; background:#fff; border:0;}
 .checkout-multishipping-billing .multiple-checkout { position:relative; }
 /* ======================================================================================= */
 
+.size-chart{border:1px solid #666;}
+.size-chart th{background:#666; color:#fff; font-style:normal; text-transform:uppercase; font-family:gotham-m, Arial; font-weight:normal; text-align:center; padding:6px 20px;}
+.size-chart td{border-top:1px solid #666; color:#666; text-transform:uppercase; font-family:gotham, Arial; text-align:center; padding:6px 20px;}
+.size-chart td[align="left"]{text-align:left;}
 
 /* Account Login/Create Pages ============================================================ */
 .account-login .content { min-height:345px; padding:14px 21px; background:#faf7ee url(../images/bkg_login-box.gif) 0 0 repeat-x; border:1px solid #bbb6a5; border-bottom:0; }

@@ -21,28 +21,24 @@ jQuery(document).ready(function($){
 		var ref=$(this).attr('href');
 		$('html,body').animate({scrollTop: $(ref).offset().top},500)
 	})
-	$('.ovl-box').mouseenter(function(){
-		$(this).parent().find('a.prevBtn').stop(true,true).fadeIn(100);
-		$(this).parent().find('a.nextBtn').stop(true,true).fadeIn(100);
-		$(this).parent().find('.active').find('.productdetail').stop(true,true).fadeIn(100);
-	})
-	$('#dressingroombottom, #dressingroomtop').mouseleave(function(){
-	   if(_onipad)
-        return;
-		$(this).find('a.prevBtn').stop(true,true).fadeOut(100);
-		$(this).find('a.nextBtn').stop(true,true).fadeOut(100);
-		$(this).find('.active').find('.productdetail').stop(true,true).fadeOut(100);  
-	})
-	$("#dressingroombottom").swipe({
-		swipeLeft	:function(){$('a.prevBtn', this).trigger('click')},
-		swipeRight	:function(){$('a.nextBtn', this).trigger('click')},
-		threshold	:100
-	});
-    $("#dressingroomtop").swipe({
-		swipeLeft	:function(){$('a.prevBtn', this).trigger('click')},
-		swipeRight	:function(){$('a.nextBtn', this).trigger('click')},
-		threshold	:100
-	});
+	if(!_onipad){
+		$('.ovl-box').mouseenter(function(){
+			$(this).parent().find('a.prevBtn').stop(true,true).fadeIn(100);
+			$(this).parent().find('a.nextBtn').stop(true,true).fadeIn(100);
+			$(this).parent().find('.active').find('.productdetail').stop(true,true).fadeIn(100);
+		})
+		$('#dressingroombottom, #dressingroomtop').mouseleave(function(){
+			$(this).find('a.prevBtn').stop(true,true).fadeOut(100);
+			$(this).find('a.nextBtn').stop(true,true).fadeOut(100);
+			$(this).find('.active').find('.productdetail').stop(true,true).fadeOut(100);  
+		})
+	}{
+		$('.ovl-box').swipe({
+			swipeLeft	:function(){$(this).parent().find('a.prevBtn').trigger('click')},
+			swipeRight	:function(){$(this).parent().find('a.nextBtn').trigger('click')},
+			threshold	:100
+		});
+	}
 	$('a.prevBtn').click(function(){
 		var $ctr = $(this).parent();
 		var cur = $ctr.find('.dritem.active');
