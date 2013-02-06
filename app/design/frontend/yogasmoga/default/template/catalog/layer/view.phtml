@@ -32,9 +32,16 @@
  */
 ?>
 <?php if($this->canShowBlock()): ?>
-
-<div class="search-result"><span>26 ITEMS</span> filter by:</div>
-<div><a href="javascript:void(0);" id="clearsearch">Clear all</a></div>
+<table style="width: 100%;">
+    <tr>
+        <td style="text-align: left;"><div class="search-result"><span>26 ITEMS</span></div></td>
+        <td style="text-align: right;"><a href="javascript:void(0);" id="clearsearch">Clear all</a></td>
+    </tr>
+</table>
+<div id="filterbyblock">
+    <hr />
+    <div>Filter By:</div>
+</div>
 <?php if($this->canShowOptions()): ?>
     <?php $_filters = $this->getFilters();
         $first = true;

@@ -2491,21 +2491,55 @@ div.mylayerednavigation div.search-result
 
 div.mylayerednavigation div.search-result span
 {
-    font-family:gothamlight;
-    font-size:11px;
-    color : black;
-    padding-right:3px;
+    color: #666666;
+    font-family: gothamlight;
+    font-size: 9px;
+    letter-spacing: 0.6pt;
+    padding-right: 3px;
 }
 
 #clearsearch
 {
-    font-family: gothamlight;
-    font-size: 9px;
-    letter-spacing: 0.6px;
+    color: #666666;
+    display: none;
+    font-family: helveticaoblique;
+    font-size: 10px;
+    letter-spacing: 0.6pt;
     text-decoration: underline;
+    text-transform: none;
+}
+
+#clearsearch:hover
+{
     color : #D90D3D;
-    margin-top : 15px;
-    display : block;
+}
+
+#filterbyblock
+{
+    margin-top:20px;    
+}
+
+#filterbyblock div
+{
+    background-color: white;
+    color: #666666;
+    font-family: helveticaoblique;
+    font-size: 10px;
+    letter-spacing: 0.6pt;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 3px;
+    position: relative;
+    text-transform: none;
+    top: -9px;
+    width: 48px;
+}
+
+#filterbyblock hr
+{
+    background-color: #CCCCCC;
+    border-width: 0;
+    height: 1px;
 }
 div.mylayerednavigation div.searchhead.first
 {
@@ -2513,10 +2547,12 @@ div.mylayerednavigation div.searchhead.first
 }
 div.mylayerednavigation div.searchhead
 {
-    font-family:gothambold;
-    font-size:11px;
-    margin-top : 28px;
-    margin-bottom : 10px;
+    color: #666666;
+    font-family: gothambold;
+    font-size: 9px;
+    letter-spacing: 0.6pt;
+    margin-bottom: 4px;
+    margin-top: 28px;
 }
 
 div.mylayerednavigation div.searchitems
@@ -2547,10 +2583,22 @@ div.mylayerednavigation div.searchitems div table td img
 div.mylayerednavigation div.searchitems div table td.add
 {
     color : #CA3D57;
+    padding-right : 5px;
+    width : 8px;
+}
+div.mylayerednavigation div.searchitems div table td.add img
+{
+    display : none;
+}
+div.mylayerednavigation div.searchitems div table tr:hover td.add img
+{
+    display : inline;
 }
 div.mylayerednavigation div.searchitems div table td.remove
 {
     color : #B0B0B0;
+    padding-right : 5px;
+    width : 8px;
 }
 div.mylayerednavigation div.searchitems div table.inactive td.remove
 {
@@ -2573,8 +2621,9 @@ div.mylayerednavigation table.active td
 div.searchitems td {
 	font-family:gothamlight;
 	font-size:9px;
-	letter-spacing:0.6px;
-	}
+	letter-spacing:0.6pt;
+    color : #4C4C4C;
+}
 
 table.staticproductgrid {
   width: 100%;
