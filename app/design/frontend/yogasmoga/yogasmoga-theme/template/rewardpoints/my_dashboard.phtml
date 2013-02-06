@@ -18,6 +18,13 @@
  */
  ?>
  <div class="myheader">MY ACCOUNT</div>
+ <div class="account-nav">
+	 <ul class="sub-nav">
+	<li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>sales/order/history">View Past Orders</a></li>
+	<li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>wishlist">Wishlist</a></li>
+	<li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>rewardpoints/index/referral/">Refered Friend</a></li>
+	</ul>
+</div>
  <div class="myaccountdashboard">
     <?php echo $this->getChildHtml('hello'); ?>
     <table style="width: 100%;">
@@ -25,16 +32,6 @@
         <?php echo $this->getChildHtml('address') ?>
     </table> 
  </div>
- 
- <ul style="margin-top: 50px;">
-    <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/address">Address Book</a></li>
-    <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>sales/order/history">My Orders</a></li>
-    <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>wishlist">My Wishlist</a></li>
-    <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>rewardpoints/index/referral/">Referred Friends (Extension)</a></li>
-    <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>rewardpoints/index/points">Reward Points (Extension)</a></li>
-    <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/giftcards/balance">Gift Cards (Extension)</a></li>
-    <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/logout/">Log Out</a></li>
- </ul>
  
 <?php /* 
 <div class="page-head">

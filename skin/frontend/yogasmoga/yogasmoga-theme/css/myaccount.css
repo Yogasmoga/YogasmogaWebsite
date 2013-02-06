@@ -1,3 +1,4 @@
+.my-account{margin-bottom:70px;}
 .custombtn
 {
     border : none;
@@ -29,6 +30,7 @@
 {
     font-family: gothambook;
     font-size : 18px;
+	color:#000;
     margin-bottom : 26px;
     text-transform: uppercase;
 }
@@ -37,11 +39,11 @@
 {
     margin-bottom : 14px;
 }
-
 .my-account .sectionheader
 {
     margin-bottom : 14px;
 }
+.my-account .sectionheader a.link{font-size:14px; color:#d90d3d; text-decoration:underline;}
 
 .logintable .sectionheader {
     margin-bottom: 0px;
@@ -114,7 +116,7 @@ a.forgot-link:hover
 
 .myheader
 {
-    margin-bottom : 49px;
+    margin-bottom : 45px;
 }
 
 .backlink
@@ -176,9 +178,9 @@ a.forgot-link:hover
 }
 .subsectionheader
 {
-    
-    font-family:gothamlight;
-    font-size : 13px;
+    text-transform:uppercase;
+    font-family:gothambook;
+    font-size : 14px;
     margin-bottom : 15px;
     
 }
@@ -195,7 +197,6 @@ a.forgot-link:hover
 
 .myaccountdashboard td.tdsubsectionheaderlink
 {
-    padding-top : 2px;
 }
 
 .myaccountdashboard td.column2cell
@@ -216,12 +217,13 @@ a.forgot-link:hover
 
 .myaccountdashboard a
 {
-    color : gray;
+    color : #d90d3d;
     text-decoration: underline;
     font-family: HelvLightRegular;
     font-size: 11px;
     letter-spacing : 0.4pt;
-    padding-left : 15px;
+	text-transform:none;
+    padding-left : 8px;
 }
 
 .myaccountdashboard a:hover
@@ -345,3 +347,15 @@ button.button.btn-redeem
     margin-left : 15px;
     margin-top : -7px;
 }
+.account-nav{margin-bottom:45px;}
+ul.sub-nav{text-indent:0; list-style:none; padding:10px; margin:0; font-family:gotham, Arial; font-size:13px; text-transform:uppercase; text-align:center; line-height:24px;}
+ul.sub-nav li {
+  background: url("../images/subsep.png") no-repeat scroll 100% 50% transparent;
+  display: inline;
+  height: 24px;
+  margin: 0;
+  padding: 0 28px 0 10px;
+}
+ul.sub-nav li:last-child,
+ul.sub-nav li.last {background:none; padding-right:10px;}
+ul.sub-nav a{display:inline;}

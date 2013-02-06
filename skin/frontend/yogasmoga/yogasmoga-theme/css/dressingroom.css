@@ -168,7 +168,7 @@ dressingroomholder #dressingroombottom table td.imageholder
     background-image : url('../images/catalog/product/dressingroom/a.png');
     background-repeat: no-repeat;
     background-position: center top;
-    background-size: 50% 51%;
+    background-size: 50% 55%;
 }
 .dressingroombg
 {
@@ -212,7 +212,7 @@ div.totalcountregion
 }
 #dressingroombottom div.productdetail{
   margin-right: 10%;
-  margin-top: -85px;
+  margin-top: -75px;
   position: absolute;
   left: 65%;
   top: 50%;
