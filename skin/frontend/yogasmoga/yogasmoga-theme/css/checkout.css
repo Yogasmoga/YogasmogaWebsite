@@ -286,9 +286,9 @@ div#ordersummary, div#shippingsummary
 }
 div#shippingsummary
 {
-    right : -370px;
-    max-width : 340px;
+    left : 100%;
 }
+
 div#ordersummary
 {
     left : -290px;
@@ -309,11 +309,11 @@ div#ordersummary table, div#shippingsummary table
 }
 div#shippingsummary table
 {
-    width : 320px;
+    width : 435px;
 }
 div#ordersummary table td.total, div#shippingsummary table td.total
 {
-    text-align : right;
+    text-align : left;
 }
 div#ordersummary table td, div#shippingsummary table td
 {
@@ -362,8 +362,8 @@ table.co-ov-table td {
 }
 
 table.co-ov-table tr.last td {
-	font-family:gothambook;
-	font-weight:bold;
+	font-family:gothamMedium;
+	font-weight:normal;
 }
 
 #procImg {
@@ -377,21 +377,52 @@ div#tblcheckoutsteps form
 {
     vertical-align : top;
 }
-body
-{
-    min-width: 1400px;
-}
 button:active
 {
     outline : none;
 }
-div.shippingdescription
-{
-    text-align: justify;
-    margin : 10px 0 10px 20px;
+div.shippingdescription {
+  font-family: gothamlight;
+  font-weight: normal;
+  margin: 5px 0 30px;
+  text-align: justify;
 }
+div.shippingdescription  strong{font-weight:normal; font-family:gothamMedium;}
+.red-txt{color:#B72C47;}
 table.co-ov-table div.preorderinfo
 {
     color : #D90D3D;
     font-style: italic;
+}
+#shippingmethods td label{color:#B72C47; text-transform:uppercase;}
+
+
+@media screen and (max-width: 1366px) {
+	div#shippingsummary{
+		left : 690px;
+		right:auto;
+	}
+	div#shippingsummary table td{vertical-align:top; padding:0 10px 10px 0;}
+	div#ordersummary{
+		left:auto;
+		right:690px;
+	}
+	body{min-width:1280px;}
+	div#shippingsummary table{width:320px;}
+	div#ordersummary table{width:220px;}
+}
+
+@media screen and (max-width: 1280px) {
+	div#shippingsummary{
+		left : 670px;
+		right:auto;
+	}
+	div#shippingsummary table td{vertical-align:top; padding:0 10px 10px 0;}
+	div#ordersummary{
+		left:auto;
+		right:670px;
+	}
+	body{min-width:1280px;}
+	div#shippingsummary table{width:300px;}
+	div#ordersummary table{width:220px;}
 }

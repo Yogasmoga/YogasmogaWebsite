@@ -60,7 +60,7 @@ caption,th,td { vertical-align:top; text-align:left; font-weight:normal; }
 
 /* Content */
 p             { margin:0 0 10px; }
-strong        { font-weight:bold; }
+strong        { font-weight:normal; font-family:gothamMedium; }
 address       { font-style:normal; line-height:1.35; }
 cite          { font-style:normal; }
 q,
@@ -2200,6 +2200,7 @@ div.errormsg
     overflow: hidden;
     width : 100%;
 }
+body.cms-namaskar a.namaskarimage{display:none;}
 
 img.namaskarimage
 {
