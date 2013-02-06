@@ -2584,6 +2584,7 @@ div.mylayerednavigation div.searchitems div table td.add
 {
     color : #CA3D57;
     padding-right : 5px;
+    width : 8px;
 }
 div.mylayerednavigation div.searchitems div table td.add img
 {
@@ -2597,6 +2598,7 @@ div.mylayerednavigation div.searchitems div table td.remove
 {
     color : #B0B0B0;
     padding-right : 5px;
+    width : 8px;
 }
 div.mylayerednavigation div.searchitems div table.inactive td.remove
 {
