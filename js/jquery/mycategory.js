@@ -12,6 +12,7 @@ jQuery(document).ready(function($){
         $("div.mylayerednavigation div.searchitems table.active").removeClass("active").addClass("inactive");
         filterproducts("abc");
         $('div#mycategory_products').isotope({ filter: "div.filtered"}, function($items){ showvisibleproductcount($items.length);});
+        $("div.mylayerednavigation table.inactive").removeClass('grayed');
     });
     $("#allproducts span").click(function(){
         if($("div.mylayerednavigation div.searchitems table.active").length == 0)
@@ -19,6 +20,7 @@ jQuery(document).ready(function($){
         $("div.mylayerednavigation div.searchitems table.active").removeClass("active").addClass("inactive");
         filterproducts("abc");
         $('div#mycategory_products').isotope({ filter: "div.filtered"}, function($items){ showvisibleproductcount($items.length);});
+        $("div.mylayerednavigation table.inactive").removeClass('grayed');
     });
     //$("div.searchhead").click(function(){
 //        h = jQuery(this).parent().height();
@@ -216,6 +218,10 @@ function filterproducts(searchattr)
     itemcollection.addClass('filtered');
     filternavigation(searchattr);
     filterimages();
+    if(jQuery("div.mylayerednavigation table.active").length > 0)
+        jQuery("a#clearsearch").show();
+    else
+        jQuery("a#clearsearch").hide();
 }
 
 function filterimages()
