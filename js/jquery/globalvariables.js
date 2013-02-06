@@ -45,3 +45,4 @@ var _canzoomimages = false;
 var _curshareimgurl = '';
 var _onipad = false;
 var _checkoutdatachanged = false;
+var _sizesuperattribute = true;

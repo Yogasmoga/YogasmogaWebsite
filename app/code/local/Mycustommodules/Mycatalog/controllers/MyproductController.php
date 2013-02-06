@@ -168,6 +168,20 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
         $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
         $productcolorinfo = array();
+        
+        $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
+        $sizeavaliable = false;
+        foreach($configurableAttributeCollection as $attribute){
+            if($attribute->getProductAttribute()->getAttributeCode() == "size")
+            {
+                $sizeavaliable = true;
+                break;
+            }
+            //echo "Attr-Code:".$attribute->getProductAttribute()->getAttributeCode()."<br/>";
+    //        echo "Attr-Label:".$attribute->getProductAttribute()->getFrontend()->getLabel()."<br/>";
+    //        echo "Attr-Id:".$attribute->getProductAttribute()->getId()."<br/>";
+        }
+        
         foreach($_childproducts as $_childproduct)
         {
             //echo Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
@@ -210,7 +224,11 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
             $rewardpoints = strip_tags($rewardpoints);
             //$rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "loyalty") - 1 - strlen("loyalty") - strpos($rewardpoints, "earn") + strlen("earn")));
             $rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "smogi") - 3 - strlen("smogi") - strpos($rewardpoints, "earn") + strlen("earn")));
-            $temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
+            if($sizeavaliable)
+                $temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
+            else
+                $temp1 = "2|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
+            //$temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
             //if(array_key_exists("sizes", $productcolorinfo[$temp]))
             if(isset($productcolorinfo[$temp]["sizes"]))
             {
@@ -363,6 +381,24 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
             _productdisplaymode = 'popup';
             //console.log(_productcolorinfo);
         </script>
+        <?php
+            if(!$sizeavaliable)
+            {
+                ?>
+                    <script type="text/javascript">
+                        _sizesuperattribute = false;
+                    </script>
+                <?php
+            }
+            else
+            {
+                ?>
+                    <script type="text/javascript">
+                        _sizesuperattribute = true;
+                    </script>
+                <?php
+            }
+        ?>
         <?php /*
         <table class="productimagecontainer">
             <tr>
@@ -447,7 +483,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                                         ?>
                                     </div>
                                     <div style="clear: both;"></div>
-                                    <table class="selectedsize">
+                                    <table class="selectedsize" <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
                                         <tr>
                                             <td>SIZE</td>
                                             <?php if($sizechartblockid != "") {?>
@@ -463,7 +499,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                                             <?php } ?>
                                         </tr>
                                     </table>
-                                    <div id="sizecontainer">
+                                    <div id="sizecontainer" <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
                                         <table>
                                             <tr>
                                                 <?php

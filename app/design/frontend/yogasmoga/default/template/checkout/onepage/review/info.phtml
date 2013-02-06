@@ -130,6 +130,22 @@
         }
         return "";
     }
+    
+    
+    function issuperattribute($_product, $superattribute)
+    {
+        $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
+        $sizeavaliable = false;
+        foreach($configurableAttributeCollection as $attribute){
+            if($attribute->getProductAttribute()->getAttributeCode() == $superattribute)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
         $output = "";
         $_helper = Mage::helper('catalog/output');
         $minidetails = array();
@@ -149,6 +165,7 @@
                 if(searchcart($miniitems, $item->getSku()) == false)
                 {
                     $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$item->getSku());
+                    $product = Mage::getModel('catalog/product')->load($item->getProductId());
                     if((Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty()) < 0)
                         $temparray['preorder'] = true;
                     else
@@ -158,10 +175,15 @@
                     $temparray['name'] = $item->getName();
                     if(strlen($temparray['name']) > 14)
                         $temparray['name'] = substr($temparray['name'], 0, 13)."...";
-                    $temparray['color'] = $_product->getAttributeText('color');
-                    if(strpos($temparray['color'], "|") !== false)
-                        $temparray['color'] = substr($temparray['color'], 0, strpos($temparray['color'], "|"));    
-                    $temparray['size'] = $_product->getAttributeText('size');
+                        
+                    if(issuperattribute($product, "color"))
+                    {
+                        $temparray['color'] = $_product->getAttributeText('color');
+                        if(strpos($temparray['color'], "|") !== false)
+                            $temparray['color'] = substr($temparray['color'], 0, strpos($temparray['color'], "|"));   
+                    }
+                    if(issuperattribute($product, "size"))
+                        $temparray['size'] = $_product->getAttributeText('size');
                     $temparray['quantity'] = $item->getQty();
                     $temparray['individualprice'] = $item->getBaseCalculationPrice();
                     $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 0, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
@@ -263,8 +285,22 @@
                                 </td>
                                 <td class="co-over-prdtl">
                                      <div class="productname"><?php echo html_entity_decode($item['name']); ?></div>
-                                     <div class="productdetail"><span class="productattribute">COLOR:</span>&nbsp;&nbsp;<?php echo $item['color']; ?></div>
-                                     <div class="productdetail"><span class="productattribute">SIZE:</span>&nbsp;&nbsp;<?php echo $item['size']; ?></div>
+                                     <?php
+                                        if(isset($item['color']))
+                                        {
+                                            ?>
+                                                <div class="productdetail"><span class="productattribute">COLOR:</span>&nbsp;&nbsp;<?php echo $item['color']; ?></div>       
+                                            <?php
+                                        }   
+                                     ?>
+                                     <?php
+                                        if(isset($item['size']))
+                                        {
+                                            ?>
+                                                <div class="productdetail"><span class="productattribute">SIZE:</span>&nbsp;&nbsp;<?php echo $item['size']; ?></div>       
+                                            <?php
+                                        }   
+                                     ?>
                                      <?php
                                         if($item['preorder'])
                                         {

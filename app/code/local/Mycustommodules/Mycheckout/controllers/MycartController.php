@@ -228,6 +228,19 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         }
     }
     
+    public function issuperattribute($_product, $superattribute)
+    {
+        $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
+        $sizeavaliable = false;
+        foreach($configurableAttributeCollection as $attribute){
+            if($attribute->getProductAttribute()->getAttributeCode() == $superattribute)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public function getminicarthtml()
     {
         //$output .= "SKU = ".Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() . "<br>";
@@ -262,15 +275,21 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 if($this->searchcart($miniitems, $item->getSku()) == false)
                 {
                     $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$item->getSku());
+                    $product = Mage::getModel('catalog/product')->load($item->getProductId());
                     $temparray['sku'] = $item->getSku();
                     //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
                     $temparray['name'] = $item->getName();
                     if(strlen($temparray['name']) > 12)
                         $temparray['name'] = substr($temparray['name'], 0, 11)."...";
-                    $temparray['color'] = $_product->getAttributeText('color');
-                    if(strpos($temparray['color'], "|") !== false)
-                        $temparray['color'] = substr($temparray['color'], 0, strpos($temparray['color'], "|"));    
-                    $temparray['size'] = $_product->getAttributeText('size');
+                    
+                    if($this->issuperattribute($product, "color"))
+                    {
+                        $temparray['color'] = $_product->getAttributeText('color');
+                        if(strpos($temparray['color'], "|") !== false)
+                            $temparray['color'] = substr($temparray['color'], 0, strpos($temparray['color'], "|"));   
+                    }
+                    if($this->issuperattribute($product, "size"))
+                        $temparray['size'] = $_product->getAttributeText('size');
                     $temparray['quantity'] = $item->getQty();
                     $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
                     //$temparray['imageurl'] = $this->getMiniImage($item->getProductId(), $temparray['color']);

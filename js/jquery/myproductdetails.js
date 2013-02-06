@@ -33,6 +33,8 @@ jQuery(document).ready(function($){
     
     InitializeProductQty();
     $("div.sizeselector select.qtyselector").live("click", function(){
+        //alert("triggered");
+        //console.log('triggered');
         changeOrderqty($(this).val());
     });
     
@@ -223,6 +225,12 @@ function changeColor(clr)
         jQuery("table.smallimagecontiner td:first").addClass("selectedimage");
         jQuery("table.productimagecontainer").fadeIn('fast');   
     }
+    //if(jQuery("div#sizecontainer td:not(.disabled) div:not(.dvselectedsize)").length == 1)
+//    {
+//        changeproductsize(jQuery("div#sizecontainer td:not(.disabled) div:not(.dvselectedsize):first"));
+//    }
+    if(!_sizesuperattribute)
+        changeproductsize(jQuery("div#sizecontainer td:not(.disabled) div:not(.dvselectedsize):first"));
     //jQuery("#orderitem").addClass("bagdisabled");
 }
 
@@ -251,9 +259,12 @@ function addtocart()
     var size = jQuery("div#sizecontainer div.dvselectedsize").attr("value");
     var color = jQuery("table.normalproductdetail div#colorcontainer table").has("td.tdselectedcolor").attr("value");
     _addingtocart = true;
+    var addurl = homeUrl + 'mycheckout/mycart/add?product=' + _productid + '&qty=' + _productorderqty + '&super_attribute[' + _colorattributeid + ']=' + color;
+    if(_sizesuperattribute)
+        addurl = addurl + '&super_attribute[' + _sizeattributeid + ']=' + size;
     jQuery.ajax({
         type : 'POST',
-        url : homeUrl + 'mycheckout/mycart/add?product=' + _productid + '&qty=' + _productorderqty + '&super_attribute[' + _colorattributeid + ']=' + color + '&super_attribute[' + _sizeattributeid + ']=' + size,
+        url : addurl,
         data : {},
         success : function(result){
             result = eval('(' + result + ')');
