@@ -426,3 +426,7 @@ table.co-ov-table div.preorderinfo
 	div#shippingsummary table{width:300px;}
 	div#ordersummary table{width:220px;}
 }
+div.input-box select
+{
+    border-bottom: 1px solid black;
+}

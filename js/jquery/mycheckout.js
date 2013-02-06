@@ -7,7 +7,7 @@ jQuery(document).ready(function($){
     if($("#checkout-shipping-form").length == 0)
     {
         $("#co-billing-form").show();
-        jQuery('select').customSelect();
+        //jQuery('select').customSelect();
     }
     $("#checkout-login-form").submit(function(){
         return validateCheckoutLoginForm();
@@ -118,7 +118,7 @@ jQuery(document).ready(function($){
             $("#checkout-shipping-address-new").show();
             $("#shippingaddressselectionblock").addClass('addressselector');    
 			
-			jQuery('select').customSelect();
+			//jQuery('select').customSelect();
         }
         else
         {
@@ -130,7 +130,7 @@ jQuery(document).ready(function($){
     $("select#billing-address-select").removeAttr('onchange');
     $("select#billing-address-select").change(function(){
         checkbillingnewaddress();
-        jQuery('select').customSelect();
+        //jQuery('select').customSelect();
     });
     //$("#stripe-update-payment").live
     $("#stripe-update-payment").live('click', function(){
@@ -187,7 +187,7 @@ function getCartSummary()
             positionordersummary();
         }
     });
-	jQuery('select').customSelect();
+	//jQuery('select').customSelect();
 }
 
 function submitcheckout()
@@ -259,7 +259,7 @@ function reordersubsteps(stp)
     }
     stp.removeClass('inactive');
     stp.find("form").show(0, function(){
-		jQuery('select').customSelect();
+		//jQuery('select').customSelect();
 	});
 }
 
@@ -525,7 +525,7 @@ function saveCheckoutMethod()
             jQuery("#tblcheckoutsteps").show();
             positionordersummary();
             _ischeckoutprocessing = false;
-            jQuery('select').customSelect();
+            //jQuery('select').customSelect();
         }
     });
 }
