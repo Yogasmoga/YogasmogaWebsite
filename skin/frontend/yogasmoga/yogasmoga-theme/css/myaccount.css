@@ -360,3 +360,212 @@ ul.sub-nav li {
 ul.sub-nav li:last-child,
 ul.sub-nav li.last {background:none; padding-right:10px;}
 ul.sub-nav a{display:inline;}
+.referfriend-subheading
+{
+    margin-bottom : 45px;
+}
+.referfriend-subheading h2
+{
+    font-family : gothambook;
+    font-size : 19px;
+}
+.referfriend-subheading h2 span
+{
+    color : #D90D3D;
+}
+.referfriend-subheading p
+{
+    text-align: center;
+    font-family : gothamlight;
+    font-size : 13px;
+    letter-spacing: 0.2pt;
+}
+.referfriend-subheader
+{
+    font-family : gothambook;
+    font-size : 16px;
+    color : black;   
+    text-align: left;
+}
+#referafriend-container
+{
+    width : 775px;
+    margin-right : auto;
+    margin-left : auto;
+}
+table#referrallink
+{
+    margin-top : 15px;
+    margin-bottom : 70px;
+}
+table#referrallink td.share a
+{
+    width : 20px;
+    height : 20px;
+    margin-right : 11px;
+    display : block;
+    float : left;
+}
+table#referrallink td
+{
+    vertical-align: bottom;
+}
+table#referrallink td.share a#twrefer
+{
+    background-image: url('../images/navigation/twitter.png');
+}
+table#referrallink td.share a#twrefer:hover
+{
+    background-image: url('../images/navigation/twitter_hover.png');
+}
+table#referrallink td.share a#fbrefer
+{
+    background-image: url('../images/navigation/facebook.png');
+}
+table#referrallink td.share a#fbrefer:hover
+{
+    background-image: url('../images/navigation/facebook_hover.png');
+}
+table#referrallink td.share a#mlrefer
+{
+    background-image: url('../images/navigation/mail.png');
+}
+table#referrallink td.share a#mlrefer:hover
+{
+    background-image: url('../images/navigation/mail_hover.png');
+}
+table#referrallink td.share
+{
+    padding-right : 7px;
+}
+table#referrallink td.link
+{
+    width : 517px;
+    min-width : 517px;
+    max-width : 517px;
+    border-bottom : 1px solid black;
+    text-transform : uppercase;
+}
+table#referrallink td.link input
+{
+    width : 100%;
+    border : none;
+    background: none;
+    text-transform: uppercase;
+}
+div.copy
+{
+    background-image : url('../images/copy_off.png');
+    width : 93px;
+    height : 29px;
+    margin-left : 18px;
+}
+table.referfriend-invitehead
+{
+    width: 100%;
+}
+table.referfriend-invitehead td
+{
+    vertical-align: middle;
+}
+table.referfriend-invitehead td.potential
+{
+    font-family : helvetica;
+    color : #666;
+    font-size : 11px;
+    letter-spacing: 0.4pt;
+    text-align: right;
+    padding-right: 45px;
+}
+table.referfriend-invitehead td.potential span
+{
+    font-family : gothamlight;
+    font-size : 13px;
+    background-image : url('../images/bkg_divider1.gif');
+    background-repeat: repeat-x;
+    background-position: bottom;
+    padding : 0 5px;
+    color : black;
+    margin-bottom : -5px;
+    display : inline-block;
+}
+div#referafriend-container p
+{
+    font-family : gothamlight;
+    font-size : 13px;
+    letter-spacing: 0.2pt;
+    color : black;
+    text-align: left;
+}
+table.referfriendforms
+{
+    margin-top : 10px;    
+}
+table.referfriendforms th
+{
+    font-family : gothamlight;
+    font-size : 13px;
+    letter-spacing : 0.4pt;
+    color : #666;
+}
+table.referfriendforms td.name table.inputtable
+{
+    width : 217px;
+}
+table.referfriendforms td.email table.inputtable
+{
+    width : 383px;
+}
+table.referfriendforms td.remove img, table.referfriendforms td.success img
+{
+    margin-top : 9px;
+    margin-left : 20px;
+}
+table.referfriendforms td.processing img
+{
+    margin : 5px 0 0;
+}
+table.referfriendforms td.btninvited, table.referfriendforms td.success,table.referfriendforms td.processing 
+{
+    display : none;
+}
+table.referfriendforms td.remove img, table.referfriendforms td.success img 
+{
+    cursor: pointer;
+}
+table.referfriendforms td table.inputtable
+{
+    margin-right : 20px;
+}
+table.referfriendforms td table.inputtable input[type='text']
+{
+    margin-top : 10px;
+}
+div.invite
+{
+    background-image : url('../images/invite_off.png');
+    width : 93px;
+    height : 29px;
+}
+div.invited
+{
+    background-image : url('../images/invited_disabled.png');
+    width : 91px;
+    height : 26px;
+    margin-top : 2px;
+}
+div#addanotherreferral
+{
+    width : 120px;
+    border-bottom : 1px solid #D90D3D;
+    white-space: nowrap;
+    cursor : pointer;
+}
+div#addanotherreferral p
+{
+    margin : 0;
+}
+tr#template
+{
+    display : none;
+}
