@@ -102,7 +102,10 @@ jQuery(document).ready(function($){
             _ischeckoutprocessing = true;
             jQuery("#payment_form input[type=submit]").hide();
             jQuery("#payment_form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/checkout/checkout-loader.gif' />");
-            CreateStripeToken();
+            if(jQuery("#payment_form input[type='text']").length == 0)
+                savePayment();
+            else            
+                CreateStripeToken();
         }
         return false;
     });
@@ -300,6 +303,8 @@ function validatePaymentForm()
 {
     //if(!(jQuery("#stripe-update-payment").length > 0 && jQuery("#stripe-update-payment").hasClass('unuse')))
 //        return true;
+    if(jQuery("#payment_form input[type='text']").length == 0)
+        return true;
     unsetAllError(jQuery("#payment_form"));
     var flag = validatefields(jQuery("#payment_form"));
     if(jQuery("#stripe_cc_number").val() != "")
