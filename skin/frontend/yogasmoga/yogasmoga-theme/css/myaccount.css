@@ -375,7 +375,7 @@ ul.sub-nav a{display:inline;}
 }
 .referfriend-subheading p
 {
-    text-align: center;
+    text-align: center !important;
     font-family : gothamlight;
     font-size : 13px;
     letter-spacing: 0.2pt;
@@ -560,6 +560,7 @@ div#addanotherreferral
     border-bottom : 1px solid #D90D3D;
     white-space: nowrap;
     cursor : pointer;
+    margin-bottom : 70px;
 }
 div#addanotherreferral p
 {
@@ -568,4 +569,62 @@ div#addanotherreferral p
 tr#template
 {
     display : none;
+}
+table.referredfriendslist
+{
+    margin-top : 20px;    
+}
+table.referredfriendslist th
+{
+    color: #666666;
+    font-family: gothamlight;
+    font-size: 13px;
+    letter-spacing: 0.4pt;
+    padding-bottom : 15px;
+}
+table.referredfriendslist th.email
+{
+    padding-left : 20px;
+}
+table.referredfriendslist th sup
+{
+    font-size: 8px;
+}
+table.referredfriendslist td
+{
+    font-family: gothamlight;
+    font-size: 13px;
+    letter-spacing: 0.4pt;
+    color : #2F2F2F;
+}
+table.referredfriendslist td.name,table.referredfriendslist td.email 
+{
+    
+}
+table.referredfriendslist td.name div
+{
+    width : 217px;
+    min-width : 217px;
+    max-width : 217px;
+    overflow: hidden;
+    border-bottom: 1px solid black;
+    white-space: nowrap;
+    text-transform: capitalize;
+}
+table.referredfriendslist td.email div
+{
+    width : 383px;
+    min-width : 383px;
+    max-width : 383px;
+    overflow: hidden;
+    border-bottom: 1px solid black;
+    margin-left : 20px;
+    text-transform: uppercase;
+    margin-bottom : 20px;
+}
+table.referredfriendslist td.status
+{
+    text-align: center;
+    padding-bottom : 10px;
+    vertical-align: bottom;
 }

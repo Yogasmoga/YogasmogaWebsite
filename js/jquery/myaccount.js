@@ -1,3 +1,4 @@
+var _refercount = 1;
 _usesecureurl = true;
 jQuery(document).ready(function($){
     $("#login-form").submit(function(){
@@ -60,7 +61,7 @@ jQuery(document).ready(function($){
         return validateGiftCardForm();
     });
     $("div#addanotherreferral").click(function(){
-        $("table.referfriendforms tbody#main").append("<tr>" + $("table.referfriendforms tr#template").html() + "</tr>");
+        $("table.referfriendforms tbody#main").append("<tr id='" + ++_refercount + "'>" + $("table.referfriendforms tr#template").html() + "</tr>");
         $("table.referfriendforms tbody#main td.remove").show();
         //console.log('adf');
     });
@@ -69,11 +70,82 @@ jQuery(document).ready(function($){
         if($(this).parents("table:first").find("tbody#main>tr").length > 2)
         {
             $(this).parents("tr:first").remove();
-            if($(this).parents("table:first").find("tbody#main>tr").length <= 2)
-                console.log($(this).parents("table:first").attr("id"));
+            if($("table.referfriendforms tbody#main>tr").length <= 2)
+                $("table.referfriendforms tbody#main td.remove").hide();
         }   
     });
+    
+    $("table.referfriendforms td.btninvite div").live('click', function(){
+        var tr = $(this).parents('tr:first');
+        if(validatereferform(tr))
+            referafriend(tr.find('td.name input').val(), tr.find('td.email input').val(), tr.attr('id'));
+    });
+    
+    $("table.referfriendforms input").live('keypress', function(event){
+        if (event.which == 13) {
+            var tr = $(this).parents('tr[id]:first');
+            if(validatereferform(tr))
+                referafriend(tr.find('td.name input').val(), tr.find('td.email input').val(), tr.attr('id'));
+        }
+    });
 });
+
+function validatereferform(elem)
+{
+    unsetAllError(elem);
+    var flag = validatefields(elem);
+    if(elem.find('td.email input').val() != "")
+    {
+        if(!validateEmail(elem.find('td.email input').val()))
+        {
+            setOnError(elem.find('td.email input'), "Please enter a valid Email Address.");
+            flag = false;
+        }
+    }
+    return flag;
+}
+
+function referafriend(name, email, id)
+{
+    jQuery.ajax({
+        type : 'POST',
+        url : securehomeUrl + 'mycatalog/myproduct/referfriend',
+        data : {'name[]':name,'email[]':email,'id':id},
+        beforeSend : function(){
+            var tr = jQuery("table.referfriendforms tr#" + id);
+            tr.find('td.btninvite').hide();
+            tr.find('td.remove').hide();
+            tr.find('td.processing').show();
+        },
+        success : function(result){
+            console.log('success');
+            result = eval('(' + result + ')');
+            if(result.status == 'success')
+            {
+                var tr = jQuery("table.referfriendforms tr#" + result.id);
+                tr.find('input').attr('readonly','true');
+                tr.find('td.processing').hide();
+                tr.find('td.btninvite').hide();
+                tr.find('td.btninvited').show();
+                tr.find('td.success').show();
+                var html = "<tr><td class='name'><div>" + tr.find('td.name input').val() + "</div></td><td class='email'><div>" + tr.find('td.email input').val() + "</div></td><td class='status'><img src='" + skinUrl + "images/invite_cross.png'></td></tr>";
+                jQuery("table.referredfriendslist tbody#main").append(html);
+                jQuery("table.referredfriendslist").show();
+                jQuery("p#noreferralmsg").hide();
+            }
+            else
+            {
+                var tr = jQuery("table.referfriendforms tr#" + result.id);
+                tr.find('td.email td.errortext div').html(result.message).show();
+                tr.find('td.email table.inputtable').addClass('error');
+                tr.find('td.btninvite').show();
+                if(jQuery("table.referfriendforms tbody#main>tr").length > 2)
+                    tr.find('td.remove').show();
+                tr.find('td.processing').hide();
+            }
+        }
+    });
+}
 
 function validateGiftCardForm()
 {

@@ -101,11 +101,14 @@
                 <td class="remove">
                     <img src="<?php echo $this->getSkinUrl('images/invite_cross.png'); ?>" />
                 </td>
+                <td class="processing">
+                    <img src="<?php echo $this->getSkinUrl('images/processing.gif'); ?>" />
+                </td>
                 <td class="success">
                     <img src="<?php echo $this->getSkinUrl('images/invite_success.png'); ?>" />
                 </td>
             </tr>
-            <tr>
+            <tr id="1">
                 <td class="name">
                     <table class="inputtable nolabel">
                         <tr>
@@ -163,9 +166,68 @@
             </tr>
         </tfoot>
     </table>
+    <div class="referfriend-subheader">KEEP TRACK OF YOUR INVITES</div>
+    <p>After you invite some of your friends you will be able to keep track of their invitations here.</p>
+    <?php
+        $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+        $customerData = Mage::getModel('customer/customer')->load(Mage::getSingleton('customer/session')->getId())->getData();
+        $result = $write->query("Select * from rewardpoints_referral where rewardpoints_referral_parent_id = ".$customerData['entity_id']);
+        $results = $write->fetchAll("Select * from rewardpoints_referral where rewardpoints_referral_parent_id = ".$customerData['entity_id']);
+        //echo count($results);
+        //echo "<pre>";
+//        print_r($results);
+//        echo "</pre>";
+    ?>
+        <table class="referredfriendslist" <?php if(count($results) == 0) { echo "style='display:none;'"; } ?> >
+            <thead>
+                <th>
+                    NAME
+                </th>
+                <th class="email">
+                    EMAIL ADDRESS
+                </th>
+                <th>
+                    1<sup>ST</sup> PURCHASE DONE
+                </th>
+            </thead>
+            <tbody id="main">
+                <?php
+                    foreach($results as $result)
+                    {
+                        ?>
+                            <tr>
+                                <td class="name">
+                                    <div><?php echo $result['rewardpoints_referral_name']; ?></div>
+                                </td>
+                                <td class="email">
+                                    <div><?php echo $result['rewardpoints_referral_email']; ?></div>
+                                </td>
+                                <td class="status">
+                                    <?php
+                                        if($result['rewardpoints_referral_status'] == 0)
+                                        {
+                                            ?>
+                                                <img src="<?php echo $this->getSkinUrl('images/invite_cross.png'); ?>" />                                
+                                            <?php
+                                        }
+                                        else
+                                        {
+                                            ?>
+                                                <img src="<?php echo $this->getSkinUrl('images/invite_success.png'); ?>" />      
+                                            <?php
+                                        }
+                                    ?>
+                                </td>
+                            </tr>                    
+                        <?php
+                    }              
+                ?>
+            </tbody>
+        </table>
+        <p id="noreferralmsg" <?php if(count($results) > 0) { echo "style='display:none;'"; } ?> >After you invite some of your friends you will be able to keep track of their invitations here..</p>
 </div>
 
-
+<?php return; ?>
  <div class="refer-friend">
 <div class="page-title">
     <h1><?php echo $this->__('Refer A Friend') ?></h1>

@@ -37,6 +37,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
             $session         = Mage::getSingleton('core/session');
             $emails           = $this->getRequest()->getPost('email'); //trim((string) $this->getRequest()->getPost('email'));
             $names            = $this->getRequest()->getPost('name'); //trim((string) $this->getRequest()->getPost('name'));
+            $id = $this->getRequest()->getPost('id');
             
             $arr['message'] = "";
             $arr['status'] = "error";
@@ -68,6 +69,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                     }
                     
                     if ($no_errors){
+                        $arr['id'] = $id;
                         $referralModel = Mage::getModel('rewardpoints/referral');
 
                         $customer = Mage::getModel('customer/customer')
