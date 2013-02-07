@@ -431,3 +431,7 @@ div.input-box select
 {
     border-bottom: 1px solid black;
 }
+#myminicart div.minicartitems:hover img.delete
+{
+    display:none !important;
+}
