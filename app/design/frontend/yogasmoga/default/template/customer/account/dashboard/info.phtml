@@ -82,7 +82,7 @@
                 </tr>
             </table>
             <p>
-				<?php echo $this->__('CURRENT BALANCE: $50.00') ?></a>
+				<?php echo $this->__('CURRENT BALANCE: ') ?><?php echo Mage::helper('core')->currency(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomerId())); ?></a>
             </p>
         </td>
 		<td class="column2cell">
@@ -96,7 +96,22 @@
 					</td>
 				</tr>
 			</table>
-			<p><?php echo $this->__('CURRENT BALANCE: 50 Bucks') ?>
+			<p><?php echo $this->__('CURRENT BALANCE: ') ?>
+            <?php
+                $store_id = Mage::app()->getStore()->getId();
+                $customerId = Mage::getModel('customer/session')->getCustomerId();
+                if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+                    $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+                    echo $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
+                    //Mage::helper('core')->currency($reward_flat_model->collectPointsCurrent($customerId, $store_id)+0);
+                }        
+                
+                $reward_model = Mage::getModel('rewardpoints/stats');
+                //echo "$".number_format((float)($reward_model->getPointsCurrent($customerId, $store_id)+0), 2, '.','');
+                echo $reward_model->getPointsCurrent($customerId, $store_id)+0;
+                echo " Bucks";
+                //Mage::helper('core')->currency($reward_model->getPointsCurrent($customerId, $store_id)+0);
+             ?>
 			</p>
 		</td>
     </tr>
