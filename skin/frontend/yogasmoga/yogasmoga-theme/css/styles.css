@@ -858,7 +858,16 @@ select.qtyselector{border-bottom:1px solid #333;}
 .sidebar .paypal-logo { display:block; margin:10px 0; text-align:center; }
 .sidebar .paypal-logo a { float:none; }
 /* ======================================================================================= */
-
+span.caddress {}
+span.caddress span.ccon {display:block;}
+.address-table{width:100%;}
+.customeraddress span.caddress span.cname{display:none;}
+.customeraddress span.caddress span.ccomp{text-transform:uppercase; display:inline;}
+.customeraddress td{font-size:12px; padding:5px 50px 5px 0;;}
+.customeraddress th{font-style:normal; font-size:13px; text-transform:uppercase; text-align:left; padding: 5px 50px 5px 0; color:#666;}
+.customeraddress  a.addressLink{float:right; margin-right:-50px;}
+.customeraddress  td .subsectionheader{margin-bottom:0;}
+.customeraddress .right{margin-right:-50px;}
 
 /* Category Page ========================================================================= */
 .category-title { border:0; margin:0 0 7px; }

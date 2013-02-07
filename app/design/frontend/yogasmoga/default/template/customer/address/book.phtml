@@ -30,9 +30,7 @@
  * @var $test Mage_Customer_Block_Address_Book
  */
 ?>
-<div class="page-title title-buttons">
 	<div class="myheader">MY ACCOUNT</div>
-</div>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
  <div class="myaccountdashboard">
     <table style="width: 100%;">
@@ -42,74 +40,95 @@
 				<a href="<?php echo $this->getAddAddressUrl() ?>">ADD NEW ADDRESS</a></div>
 			</td>
 		</tr>
+		
 		<tr class="customeraddress">
-			<td>
-				<table>
-					<tr>
+        <td colspan="2">
+            <div class="subsectionheader">Default Billing Address</div>
+			<table class="address-table">
+				<colgroup>
+					<col width="150"/>
+					<col width=""/>
+				</colgroup>
+				<tr>
+					<th>Name</th>
+					<th>Address</th>
+				</tr>
+				<tr>
+				<?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling()): 
+						$adrs = Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses);
+						echo '<td>'.$adrs->getData('firstname').' '.$adrs->getData('lastname').'</td>'; ?>
 						<td>
-							<div class="subsectionheader">Default BILLING ADDRESS</div>  
+							<a href="<?php echo $this->getAddressEditUrl($adrs) ?>" class="addressLink"><?php echo $this->__('edit') ?></a>
+							<?php echo $this->getAddressHtml($adrs); ?>
 						</td>
-						<td class="tdsubsectionheaderlink">
-							<a href="<?php echo $this->getPrimaryBillingAddressEditUrl() ?>"><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>"><?php echo $this->__('edit') ?></a></a>            
-						</td>
-					</tr>
-				</table>
-				<?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling()): ?>
-					<p><?php echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?></p>
 				<?php else: ?>
-					<p><?php echo $this->__('You have no default billing address in your address book.') ?></p>
+					<td><?php echo $this->__('You have no default billing address in your address book.') ?></td>
 				<?php endif ?>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<table>
-					<tr>
+				</tr>
+			</table>
+        </td>
+	</tr>
+    <tr class="customeraddress">
+        <td colspan="2">
+            <div class="subsectionheader">Default Shipping Address</div>
+			<table class="address-table">
+				<colgroup>
+					<col width="150"/>
+					<col width=""/>
+				</colgroup>
+				<tr>
+					<th>Name</th>
+					<th>Address</th>
+				</tr>
+				<tr>
+				<?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultShipping()): 
+						$adrs = Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses);
+						echo '<td>'.$adrs->getData('firstname').' '.$adrs->getData('lastname').'</td>'; ?>
 						<td>
-							<div class="subsectionheader">Default SHIPPING ADDRESS</div>  
+							<a href="<?php echo $this->getAddressEditUrl($adrs) ?>" class="addressLink"><?php echo $this->__('edit') ?></a>
+							<?php echo $this->getAddressHtml($adrs); ?>
 						</td>
-						<td class="tdsubsectionheaderlink">
-							<a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>"><?php echo $this->__('Edit') ?></a></a></a>            
-						</td>
-					</tr>
-				</table>
-				<?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling()): ?>
-					<p><?php echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?></p>
 				<?php else: ?>
-					<p><?php echo $this->__('You have no default shipping address in your address book.') ?></p>
+					<td><?php echo $this->__('You have no default Shipping address in your address book.') ?></td>
 				<?php endif ?>
-			</td>
-		</tr>
+				</tr>
+			</table>
+        </td>
+	</tr>
+    <tr class="customeraddress">
+		<td>
+            <div class="subsectionheader">Default Shipping Address</div>
+			<table class="address-table">
+				<colgroup>
+					<col width="150"/>
+					<col width=""/>
+				</colgroup>
 		
-		<tr>
-			<td>
-				<table>
-					<tr>
-						<td>
-							<div class="subsectionheader">additional address ADDRESSES</div>  
-						</td>
-					</tr>
-				</table>
-			</td>
-		</tr>
-		
-		<?php if($_pAddsses = $this->getAdditionalAddresses()): ?>
-            <?php foreach($_pAddsses as $_address): ?>
-            <tr>
-				<td>
-					<div class="right"><a href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>"><?php echo $this->__('Edit') ?></a> <span class="separator">|</span> <a href="#" onclick="return deleteAddress('<?php echo $_address->getId() ?>');"><?php echo $this->__('Remove') ?></a></div>
-                    <p><?php echo $this->getAddressHtml($_address) ?></p>
-				</td>
-			</tr>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <tr>
-				<td>
-					<p><?php echo $this->__('You have no additional address entries in your address book.') ?></p>
-				</td>
-            </tr>
-        <?php endif ?>
-	</table>
+				<?php if($_pAddsses = $this->getAdditionalAddresses()): ?>
+				<tr>
+					<th>Name</th>
+					<th>Address</th>
+				</tr>
+				<?php foreach($_pAddsses as $_address): ?>
+				<tr>
+					<?php echo '<td>'.$adrs->getData('firstname').' '.$_address->getData('lastname').'</td>'; ?>
+					<td>
+						<div class="right"><a href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>"><?php echo $this->__('Edit') ?></a> <span class="separator">|</span> <a href="#" onclick="return deleteAddress('<?php echo $_address->getId() ?>');"><?php echo $this->__('Remove') ?></a></div>
+						<p><?php echo $this->getAddressHtml($_address) ?></p>
+					</td>
+				</tr>
+				<?php endforeach; ?>
+			<?php else: ?>
+				<tr>
+					<td colspan="2">
+						<p><?php echo $this->__('You have no additional address entries in your address book.') ?></p>
+					</td>
+				</tr>
+			<?php endif ?>
+			</table>
+		</td>
+	</tr>
+	<tr><td height="50">&nbsp;</td></tr>
 </div>
 <div class="buttons-set">
     <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>

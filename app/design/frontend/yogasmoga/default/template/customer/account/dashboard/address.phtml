@@ -30,20 +30,54 @@
         </td>
     </tr>
     <tr class="customeraddress">
-        <td>
-            <table>
-                <tr>
-                    <td>
-                        <div class="subsectionheader">BILLING ADDRESS</div>            
-                    </td>
-                    <td class="tdsubsectionheaderlink">
-                        <a href="<?php echo $this->getPrimaryBillingAddressEditUrl() ?>">Edit</a>            
-                    </td>
-                </tr>
-            </table>
-            <?php echo $this->getPrimaryBillingAddressHtml(); ?>
+        <td colspan="2">
+            <div class="subsectionheader">BILLING ADDRESS</div>
+			<table class="address-table">
+				<colgroup>
+					<col width="150"/>
+					<col width=""/>
+				</colgroup>
+				<tr>
+					<th>Name</th>
+					<th>Address</th>
+				</tr>
+				<tr>
+				<?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling()): 
+						$adrs = Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses);
+						echo '<td>'.$adrs->getData('firstname').' '.$adrs->getData('lastname').'</td>';
+						echo '<td><a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a>'.$this->getPrimaryBillingAddressHtml().'</td>'; ?>
+				<?php else: ?>
+					<td><?php echo $this->__('You have no default billing address in your address book.') ?></td>
+				<?php endif ?>
+				</tr>
+			</table>
         </td>
-        <td class="column2cell">
+	</tr>
+    <tr class="customeraddress">
+        <td colspan="2">
+            <div class="subsectionheader">Shipping ADDRESS</div>
+			<table class="address-table">
+				<colgroup>
+					<col width="150"/>
+					<col width=""/>
+				</colgroup>
+				<tr>
+					<th>Name</th>
+					<th>Address</th>
+				</tr>
+				<tr>
+				<?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultShipping()): 
+						$adrs = Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses);
+						echo '<td>'.$adrs->getData('firstname').' '.$adrs->getData('lastname').'</td>';
+						echo '<td><a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a>'.$this->getPrimaryShippingAddressHtml().'</td>'; ?>
+				<?php else: ?>
+					<td><?php echo $this->__('You have no default Shipping address in your address book.') ?></td>
+				<?php endif ?>
+				</tr>
+			</table>
+        </td>
+	</tr>
+        <!-- td class="column2cell">
             <table>
                 <tr>
                     <td>
@@ -55,7 +89,7 @@
                 </tr>
             </table>
             <?php echo $this->getPrimaryShippingAddressHtml() ?>
-        </td>
+        </td -->
     </tr>
 <?php /*
 <div class="col2-set">
