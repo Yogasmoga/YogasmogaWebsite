@@ -27,7 +27,7 @@
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/wishlist.css'); ?>" media="all" />
 <?php if ($this->helper('wishlist')->isAllow()) : ?>
-    <div class="myheader">MY WISHLIST</div>
+    <div class="myheader">MY WISH LIST</div>
     <div class="my-wishlist">
         <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
         <form id="wishlist-view-form" action="<?php echo $this->getUrl('*/*/update', array('wishlist_id' => $this->getWishlistInstance()->getId())) ?>" method="post">
