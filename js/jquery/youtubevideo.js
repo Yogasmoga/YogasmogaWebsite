@@ -26,7 +26,7 @@ jQuery(document).ready(function($){
 
 function sharevideourl(sharetype)
 {
-    var shareurl = 'http://192.168.2.110/yogasmoga/index.php?video=true';
+    var shareurl = homeUrl + '?video=true';
     if(_curshareimgurl == '')
         _curshareimgurl = 'https://yogasmoga.com/yogasmoga_gold.jpg';
     switch(sharetype)
