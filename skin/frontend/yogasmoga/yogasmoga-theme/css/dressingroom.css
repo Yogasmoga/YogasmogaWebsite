@@ -219,12 +219,12 @@ div.totalcountregion
   z-index:5;
 }
 #dressingroomholder a.nextBtn,
-#dressingroomholder a.prevBtn{position:absolute; top:0; bottom:0; text-indent:-999em; width:5%; display:none; z-index:9;}
+#dressingroomholder a.prevBtn{position:absolute; top:0; bottom:0; text-indent:-999em; width:80px; display:none; z-index:9;}
 
-#dressingroomholder a.nextBtn{background:url(../images/catalog/product/dressingroom/arrow_right.png) 50% 50% no-repeat; right:0;}
-#dressingroomholder a.prevBtn{background:url(../images/catalog/product/dressingroom/arrow_left.png) 50% 50% no-repeat; left:0;}
-#dressingroombottom a.prevBtn,
-#dressingroombottom a.nextBtn{background-position:50% 40%;}
+#dressingroomholder a.nextBtn{background:url(../images/catalog/product/dressingroom/arrow_right.png) 0% 50% no-repeat; right:0px;}
+#dressingroomholder a.prevBtn{background:url(../images/catalog/product/dressingroom/arrow_left.png) 100% 50% no-repeat; left:0px;}
+#dressingroombottom a.prevBtn{background-position:100% 40%;}
+#dressingroombottom a.nextBtn{background-position:0% 40%;}
 
 
 
