@@ -93,9 +93,9 @@
                         <?php echo $this->getBlockHtml('formkey');?>
                         <?php $this->getChild('items')->setItems($this->getWishlistItems()); ?>
                         <?php echo $this->getChildHtml('items');?>
-                        <script type="text/javascript">decorateTable('wishlist-table')</script>
+                        <script type="text/javascript">decorateTable('wish list-table')</script>
                 <?php else: ?>
-                    <p class="wishlist-empty"><?php echo $this->__('You have no items in your wishlist.') ?></p>
+                    <p class="wishlist-empty"><?php echo $this->__('You have no items in your wish list.') ?></p>
                 <?php endif ?>
                 <div class="buttons-set buttons-set2">
                     <?php echo $this->getChild('control_buttons')->toHtml();?>

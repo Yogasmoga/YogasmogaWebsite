@@ -25,9 +25,9 @@
  */
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/wishlist.css'); ?>" media="all" />
-<div class="myheader">MY WISHLIST</div>
+<div class="myheader">MY WISH LIST</div>
 <div class="page-title" style="margin-bottom: 110px;">
-    <h1><?php echo $this->__('SHARE YOUR WISHLIST') ?></h1>
+    <h1><?php echo $this->__('SHARE YOUR WISH LIST') ?></h1>
 </div>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <form action="<?php echo $this->getSendUrl() ?>" id="form-share-wishlist" method="post">
@@ -67,7 +67,7 @@
 </div>
 <?php return; ?>
 <div class="page-title">
-    <h1><?php echo $this->__('Share Your Wishlist') ?></h1>
+    <h1><?php echo $this->__('Share Your Wish list') ?></h1>
 </div>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <form action="<?php echo $this->getSendUrl() ?>" id="form-validate" method="post">
@@ -90,9 +90,9 @@
             <?php if($this->helper('wishlist')->isRssAllow()): ?>
             <li class="control">
                 <div class="input-box">
-                    <input type="checkbox" name="rss_url" id="rss_url" value="1" title="<?php echo $this->__('Check this checkbox if you want to add a link to an rss feed to your wishlist.') ?>" class="checkbox" />
+                    <input type="checkbox" name="rss_url" id="rss_url" value="1" title="<?php echo $this->__('Check this checkbox if you want to add a link to an rss feed to your wish list.') ?>" class="checkbox" />
                 </div>
-                <label for="rss_url"><?php echo $this->__('Check this checkbox if you want to add a link to an rss feed to your wishlist.') ?></label>
+                <label for="rss_url"><?php echo $this->__('Check this checkbox if you want to add a link to an rss feed to your wish list.') ?></label>
             </li>
             <?php endif; ?>
         </ul>
@@ -100,7 +100,7 @@
     <div class="buttons-set form-buttons">
         <p class="required"><?php echo $this->__('* Required Fields') ?></p>
         <p class="back-link"><a href="<?php echo $this->getBackUrl(); ?>"><small>&laquo; </small><?php echo $this->__('Back')?></a></p>
-        <button type="submit" title="<?php echo $this->__('Share Wishlist') ?>" class="button"><span><span><?php echo $this->__('Share Wishlist') ?></span></span></button>
+        <button type="submit" title="<?php echo $this->__('Share Wish list') ?>" class="button"><span><span><?php echo $this->__('Share Wish list') ?></span></span></button>
     </div>
 </form>
 <script type="text/javascript">

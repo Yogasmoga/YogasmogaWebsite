@@ -34,7 +34,7 @@ $cardType = array('email' => 'Email', 'print' => 'Print', 'offline' => 'Offline'
     <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
     <td class="a-center">
         <?php if ($isVisibleProduct): ?>
-	        <input type="checkbox" value="1" name="cart[<?php echo $_item->getId() ?>][wishlist]" title="<?php echo $this->__('Move to Wishlist') ?>" class="checkbox" />
+	        <input type="checkbox" value="1" name="cart[<?php echo $_item->getId() ?>][wishlist]" title="<?php echo $this->__('Move to Wish list') ?>" class="checkbox" />
         <?php endif ?>
     </td>
     <?php endif ?>

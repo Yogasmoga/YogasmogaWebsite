@@ -41,7 +41,7 @@
             <div class="product-details">
                 <a href="<?php echo $this->getItemRemoveUrl($_item) ?>" title="<?php echo $this->__('Remove This Item') ?>" onclick="return confirm('<?php echo $this->__('Are you sure you would like to remove this item from the wishlist?') ?>');" class="btn-remove"><?php echo $this->__('Remove This Item') ?></a>
                 <p class="product-name"><a href="<?php echo $this->getProductUrl($_item) ?>"><?php echo $this->escapeHtml($product->getName()) ?></a></p>
-                <?php echo $this->getPriceHtml($product, false, '-wishlist') ?>
+                <?php echo $this->getPriceHtml($product, false, '-wish list') ?>
                 <?php if ($product->isSaleable() && $product->isVisibleInSiteVisibility()): ?>
                     <a href="<?php echo $this->getItemAddToCartUrl($_item) ?>" class="link-cart"><?php echo $this->__('Add to Cart') ?></a>
                 <?php endif; ?>
@@ -51,10 +51,10 @@
     </ol>
     <script type="text/javascript">decorateList('wishlist-sidebar');</script>
     <div class="actions">
-        <a href="<?php echo $this->helper('wishlist')->getListUrl() ?>"><?php echo $this->__('Go to Wishlist') ?></a>
+        <a href="<?php echo $this->helper('wishlist')->getListUrl() ?>"><?php echo $this->__('Go to Wish list') ?></a>
     </div>
     <?php else: ?>
-        <p class="empty"><?php echo $this->__('You have no items in your wishlist.') ?></p>
+        <p class="empty"><?php echo $this->__('You have no items in your wish list.') ?></p>
     <?php endif ?>
     </div>
 </div>
