@@ -175,6 +175,7 @@ a.forgot-link:hover
     background-size : cover;
     background-position: center top;
     background-repeat: repeat-y;
+	overflow-x:hidden;
 }
 .subsectionheader
 {

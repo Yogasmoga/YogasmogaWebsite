@@ -3,7 +3,7 @@ var _productcolorinfo = new Array();
 jQuery(document).ready(function($){
 	
         //console.clear();
-	jQuery('#productdetails select, .cart select').customSelect();
+	//jQuery('#productdetails select, .cart select').customSelect();
 	/*$(window).load(function(){
 		jQuery('.cart select, .checkout-onepage-index select').each(function(){
 			jQuery(this).customSelect();

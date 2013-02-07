@@ -286,12 +286,12 @@ div#ordersummary, div#shippingsummary
 }
 div#shippingsummary
 {
-    left : 100%;
+    left : 710px;
 }
 
 div#ordersummary
 {
-    left : -290px;
+    right : 710px;
 }
 div#ordersummary span.anchor, div#shippingsummary span.anchor
 {
@@ -309,7 +309,7 @@ div#ordersummary table, div#shippingsummary table
 }
 div#shippingsummary table
 {
-    width : 435px;
+    width : 410px;
 }
 div#ordersummary table td.total, div#shippingsummary table td.total
 {
@@ -396,13 +396,12 @@ table.co-ov-table div.preorderinfo
 }
 #shippingmethods td label{color:#d90d3d; text-transform:uppercase;}
 
-
-@media screen and (max-width: 1366px) {
+@media screen and (max-width: 1480px) {
 	div#shippingsummary{
 		left : 690px;
 		right:auto;
 	}
-	div#shippingsummary table td{vertical-align:top; padding:0 10px 10px 0;}
+	div#shippingsummary table td{vertical-align:top; padding:0 10px 5px 0;}
 	div#ordersummary{
 		left:auto;
 		right:690px;
@@ -412,18 +411,20 @@ table.co-ov-table div.preorderinfo
 	div#ordersummary table{width:220px;}
 }
 
+
 @media screen and (max-width: 1280px) {
 	div#shippingsummary{
-		left : 670px;
+		left : 650px;
 		right:auto;
 	}
-	div#shippingsummary table td{vertical-align:top; padding:0 10px 10px 0;}
-	div#ordersummary{
-		left:auto;
-		right:670px;
+	div#shippingsummary table td{vertical-align:top; padding:0 10px 5px 0;}
+	div#ordersummary {
+	  background: none repeat scroll 0 0 transparent;
+	  left: auto;
+	  right: 630px;
 	}
-	body{min-width:1280px;}
-	div#shippingsummary table{width:300px;}
+	body{min-width:1024px;}
+	div#shippingsummary table{width:200px;}
 	div#ordersummary table{width:220px;}
 }
 div.input-box select
