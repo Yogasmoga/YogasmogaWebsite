@@ -59,6 +59,20 @@ jQuery(document).ready(function($){
     $("#giftcardformmyaccount").submit(function(){
         return validateGiftCardForm();
     });
+    $("div#addanotherreferral").click(function(){
+        $("table.referfriendforms tbody#main").append("<tr>" + $("table.referfriendforms tr#template").html() + "</tr>");
+        $("table.referfriendforms tbody#main td.remove").show();
+        //console.log('adf');
+    });
+    
+    $("table.referfriendforms td.remove img").live('click', function(){
+        if($(this).parents("table:first").find("tbody#main>tr").length > 2)
+        {
+            $(this).parents("tr:first").remove();
+            if($(this).parents("table:first").find("tbody#main>tr").length <= 2)
+                console.log($(this).parents("table:first").attr("id"));
+        }   
+    });
 });
 
 function validateGiftCardForm()
