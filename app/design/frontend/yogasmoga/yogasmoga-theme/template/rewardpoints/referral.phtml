@@ -30,15 +30,15 @@
     <table id="referrallink">
         <tr>
             <td class="share">
-                <a href="javascript : void(0);" id="twrefer"></a>
-                <a href="javascript : void(0);" id="fbrefer"></a>
-                <a href="javascript : void(0);" id="mlrefer"></a>
+                <a href="javascript : void(0);" onclick="sharereferlink('twitter');" id="twrefer"></a>
+                <a href="javascript : void(0);" id="fbrefer" onclick="sharereferlink('facebook');"></a>
+                <a href="javascript : void(0);" id="mlrefer" onclick="sharereferlink('mail');"></a>
             </td>
             <td class="link">
-                <input type="text" value="<?php echo $this->getReferringUrl() ?>" readonly="true" />
+                <input id="uniquelink" type="text" value="<?php echo $this->getReferringUrl() ?>" readonly="true" />
             </td>
             <td class="copy">
-                <div class="spbutton copy" imageurl="<?php echo $this->getSkinUrl('images/copy_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/copy_on.png'); ?>"></div>
+                <div id="copyurl" class="spbutton copy" imageurl="<?php echo $this->getSkinUrl('images/copy_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/copy_on.png'); ?>"></div>
             </td>
         </tr>
     </table>
@@ -167,7 +167,6 @@
         </tfoot>
     </table>
     <div class="referfriend-subheader">KEEP TRACK OF YOUR INVITES</div>
-    <p>After you invite some of your friends you will be able to keep track of their invitations here.</p>
     <?php
         $write = Mage::getSingleton('core/resource')->getConnection('core_read');
         $customerData = Mage::getModel('customer/customer')->load(Mage::getSingleton('customer/session')->getId())->getData();

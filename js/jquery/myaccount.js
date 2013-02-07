@@ -88,7 +88,34 @@ jQuery(document).ready(function($){
                 referafriend(tr.find('td.name input').val(), tr.find('td.email input').val(), tr.attr('id'));
         }
     });
+    
+    $("div#copyurl").click(function(){
+        $("input#uniquelink").select();
+    }); 
 });
+
+function sharereferlink(sharetype)
+{
+    var shareurl = jQuery("input#uniquelink").val();
+    if(_curshareimgurl == '')
+        _curshareimgurl = 'https://yogasmoga.com/yogasmoga_gold.jpg';
+    switch(sharetype)
+    {
+    case 'mail':
+        window.location = "mailto:?Subject=" + encodeURIComponent("My Referral link!!") + "&body=" + encodeURIComponent("My referral link on YOGASMOGA : " + shareurl);
+        break;
+    case 'facebook':
+        window.open('http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(shareurl) + '&p[images][0]=' + _curshareimgurl + '&p[title]=My Referral Link' + '&p[summary]=My Referral Link on YOGASMOGA','Share_on_Faceook','toolbar=0,status=0,menubar=0,width=600,height=300,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 300) / 2);
+        break;
+    case 'twitter':
+        window.open('http://www.twitter.com/share?url=' + encodeURIComponent(shareurl),'Share_on_Twitter','toolbar=0,status=0,menubar=0,width=600,height=450,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 450) / 2);
+        break;
+    case 'pinterest':
+        window.open('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(shareurl) + '&media=' + _curshareimgurl + '&description=Yogasmoga Video','Share_on_Pinterest','toolbar=0,status=0,menubar=0,width=600,height=520,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 520) / 2);
+        break;
+    default:
+    }
+}
 
 function validatereferform(elem)
 {
