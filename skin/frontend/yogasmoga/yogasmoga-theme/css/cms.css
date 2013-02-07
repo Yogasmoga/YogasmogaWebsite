@@ -409,6 +409,7 @@ button.btn-brecelet:active span{background-position:0 100%;}
 }
 @media screen and (max-width: 1360px) {
 	.namsec.first .values-box {top: 19%;}
+	.namsec.first .change-box { bottom: 10%;}
 	.values-box h1.value-title { font-size: 30px;  margin: 0 0 15px;}
 	.namsec.second .fchange-box {width: 500px;}
 	.namsec.second .fchange-box .heading-mc{font-size:50px;}
