@@ -888,7 +888,7 @@ td#zoomedproductimage
 a#fbzoomtrigger
 {
     color : #D90D3D;
-    font-size: 10px; padding-left : 6px;
+    font-size: 11px; text-transform:uppercase;
 }
 #fbzoomtrigger:hover
 {
