@@ -62,8 +62,8 @@
 	font-style: normal;
 }
 .main-container *{font-family: gotham, Arial; color:#666;}
-.main-container .error{color:#d90d3d;}
-.main-container .success{color:#d90d3d;}
+.main-container .error{color:#d90d3d; font-size:11px;}
+.main-container .success{color:#fff; font-size:11px;}
 .main-container strong{font-weight:normal; font-family:gotham-m;}
 .main-container {position:relative; display:block; background:none;}
 .main-container .main{margin:0 auto; width:100%; background:none; padding:0;}
@@ -195,7 +195,7 @@ ul.sub-nav a{display:inline;}
   font-family: gotham-l;
   margin: 30px 0 20px;
 }
-div.news-letter input[type=text]{width:350px; padding:5px; border-bottom:1px solid #fff; font-size:12px; color:#fff; font-style:normal; background:none;}
+div.news-letter input[type=text]{width:350px; padding:3px 0; border-bottom:1px solid #fff; font-size:14px; color:#fff; font-style:normal; background:none;}
 div.news-letter input.btn-submit{
   background: url(../images/btn-submit1.png) 0 0 no-repeat;
   border: medium none; cursor:pointer;

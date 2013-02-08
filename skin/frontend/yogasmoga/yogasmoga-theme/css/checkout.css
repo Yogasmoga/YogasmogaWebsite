@@ -394,7 +394,7 @@ table.co-ov-table div.preorderinfo
     color : #D90D3D;
     font-style: italic;
 }
-#shippingmethods td label{color:#d90d3d; text-transform:uppercase;}
+#shippingmethods td label{color:#dd8820; text-transform:uppercase;}
 
 @media screen and (max-width: 1480px) {
 	div#shippingsummary{
