@@ -155,7 +155,7 @@ function referafriend(name, email, id)
                 tr.find('td.btninvite').hide();
                 tr.find('td.btninvited').show();
                 tr.find('td.success').show();
-                var html = "<tr><td class='name'><div>" + tr.find('td.name input').val() + "</div></td><td class='email'><div>" + tr.find('td.email input').val() + "</div></td><td class='status'><img src='" + skinUrl + "images/invite_cross.png'></td></tr>";
+                var html = "<tr><td class='name'><div>" + tr.find('td.name input').val() + "</div></td><td class='email'><div>" + tr.find('td.email input').val() + "</div></td><td class='status'></td></tr>";
                 jQuery("table.referredfriendslist tbody#main").append(html);
                 jQuery("table.referredfriendslist").show();
                 jQuery("p#noreferralmsg").hide();
