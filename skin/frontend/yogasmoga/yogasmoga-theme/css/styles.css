@@ -2733,13 +2733,13 @@ table.staticproductgrid div.item td.productimage img.active
     background-color : #fafafa;
     position : fixed;
     right : 0px;
-    top : 80px;
-    z-index : 13;
+    top : 55px;
+    z-index : 999;
     border : 0;
     display : none;
     border-top-width: 0;
 }
-
+#myminicart div.totalitemcount{height:25px; background:#fff;}
 #myminicart div.totalitemcount table
 {
     width : 100%;

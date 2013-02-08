@@ -38,32 +38,32 @@
 #explore #slider .carousel-desc img{max-height:200px; max-width:100%;}
 
 .bx-controls {
-  background: none repeat scroll 0 0 #666666;
   bottom: 65px;
-  height: 1px;
+  height: 15px;
   left: 10%;
   position: absolute;
   right: 10%;
 }
-.bx-pager{border-left:1px solid #666; height:5px; display:block;  margin-top:-2px;}
+.bx-pager{background:url(../images/expsep.gif) 100% 50% no-repeat; height:15px; display:block;}
 .bx-pager-item {
   display: block;
   float: left;
-  height: 5px;
+  height: 15px;
+  background:url(../images/expsep.gif) 0 50% no-repeat;
   width: 25%;
 }
 .bx-pager-item:last-child{float:right;}
 
 .bx-pager-item a{
-  background: none;
+  background: url(../images/dot1px.gif) 50% 50% repeat-x;
   display: block;
-  border-right:1px solid #666;
   overflow:hidden;
-  padding:2px;
+  text-indent:-999em;
+  padding:7px;
   height: 1px;
 }
 .bx-pager-item a.active{
-  background: none repeat scroll 0 0 #666666;
+  background: url(../images/dot5px.gif) 50% 50% repeat-x;
 }
 #explore #slider .carousel-desc button.button{
  width:138px; position:absolute; left:50%; margin-left:-69px; bottom:0;

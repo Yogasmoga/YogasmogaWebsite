@@ -95,7 +95,7 @@ jQuery(document).ready(function($){
 })
 function showproductlightbox(productid){
     productid = parseInt(productid);
-    jQuery("#productdetailpopup").html("<table style='width:100%;height : 530px;'><tr><td style='text-align:center;vertical-align:middle;'>Loading. .</td></tr></table>");
+    jQuery("#productdetailpopup").html("<table style='width:100%;height : 530px;'><tr><td style='text-align:center;vertical-align:middle;'><img src='/staging/skin/frontend/yogasmoga/yogasmoga-theme/images/loading.gif' /></td></tr></table>");
     jQuery( "#productdetailpopup" ).dialog( "open" );
     jQuery.ajax({
         type : 'POST',
@@ -159,7 +159,9 @@ function chkfixposition(){
     if(_onipad)
     {
         jQuery("#pageScrollerNav").css('top', jQuery("#dressingroomdivider").offset().top - (jQuery("#pageScrollerNav").height() / 2));
-    } 
+    }else{
+		jQuery("#pageScrollerNav").css('top', jQuery("#dressingroomdivider").offset().top - (jQuery("#pageScrollerNav").height() / 2) - 22);
+	}
 }
 function getScaledheight(originalheight, originalwidth)
 {
