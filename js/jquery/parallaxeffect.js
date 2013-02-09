@@ -16,6 +16,7 @@ jQuery(document).ready(function($){
     
     $(window).resize(function(){
         $("div.opimage").each(function(){
+		    if(!($(this).hasClass('fxheight'))){
             if(!($(this).hasClass('closed')))
             {
                 if(_winW >= 1600)
@@ -29,45 +30,71 @@ jQuery(document).ready(function($){
                     $(this).height(getScaledheight($(this).attr("origheightsm"), $(this).attr("origwidthsm")));
                 }
             }
-            else
+            else{
                 $(this).height(getScaledheight($(this).attr("smorigheight"), $(this).attr("smorigwidth")));
+			}
+			}
         });
     });
     
     $("div.opimage").click(function(){
         if($(this).is(':animated'))
             return;
-        if($(this).hasClass('closed'))
-        {
-            if(_winW >= 1600)
-            {
-                $(this).find('.big_big').fadeIn(0);
-                var newheight = getScaledheight($(this).attr("origheight"), $(this).attr("origwidth"));
-            }
-            else
-            {
-                var newheight = getScaledheight($(this).attr("origheightsm"), $(this).attr("origwidthsm"));
-                $(this).find('.big_small').fadeIn(0);
-            }
-            $(this).find('.small').fadeOut('fast');
-            $(this).removeClass('closed');
-            //$(this).slideDown('slow');
-            $(this).animate({
-                height : newheight
-            }, 500);
-        }
-        else
-        {
-            $(this).addClass('closed');
-            var newheight = getScaledheight($(this).attr("smorigheight"), $(this).attr("smorigwidth"));
-            //console.log(newheight);
-			$(this).find('.big_big').fadeOut('fast');
-			$(this).find('.big_small').fadeOut('fast');
-            $(this).find('.small').fadeIn('500');
-            $(this).animate({
-                height : newheight
-            }, 500);
-        }
+		if(!($(this).hasClass('fxheight'))){
+			if($(this).hasClass('closed'))
+			{
+				if(_winW >= 1600)
+				{
+					$(this).find('.big_big').fadeIn(0);
+					var newheight = getScaledheight($(this).attr("origheight"), $(this).attr("origwidth"));
+				}
+				else
+				{
+					var newheight = getScaledheight($(this).attr("origheightsm"), $(this).attr("origwidthsm"));
+					$(this).find('.big_small').fadeIn(0);
+				}
+				$(this).find('.small').fadeOut('fast');
+				$(this).removeClass('closed');
+				//$(this).slideDown('slow');
+				$(this).animate({
+					height : newheight
+				}, 500);
+			}
+			else
+			{
+				$(this).addClass('closed');
+				var newheight = getScaledheight($(this).attr("smorigheight"), $(this).attr("smorigwidth"));
+				//console.log(newheight);
+				$(this).find('.big_big').fadeOut('fast');
+				$(this).find('.big_small').fadeOut('fast');
+				$(this).find('.small').fadeIn('500');
+				$(this).animate({
+					height : newheight
+				}, 500);
+			}
+		}else{
+			if($(this).hasClass('closed'))
+			{
+				var newheight = $(this).attr("origheightsm");
+				$(this).find('.big_small').fadeIn(0);
+				$(this).find('.small').fadeOut('fast');
+				$(this).removeClass('closed');
+				//$(this).slideDown('slow');
+				$(this).animate({
+					height : newheight
+				}, 500);
+			}
+			else
+			{
+				$(this).addClass('closed');
+				var newheight = $(this).attr("smorigheight");
+				$(this).find('.big_small').fadeOut('fast');
+				$(this).find('.small').fadeIn('500');
+				$(this).animate({
+					height : newheight
+				}, 500);
+			}
+		}
         $("html, body").animate({
             scrollTop: ($(this).offset().top - _headerHeight)
         }, 500);
