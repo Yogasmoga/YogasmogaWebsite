@@ -24,6 +24,17 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<?php  $_order = $this->getOrder() ?>
+<?php if($this->helper('rss/order')->isStatusNotificationAllow()): ?>
+    <li><a href="<?php echo $this->helper('rss/order')->getStatusHistoryRssUrl($_order) ?>" class="link-rss f-none"><?php echo $this->__('Subscribe to Order Status') ?></a></li>
+<?php endif; ?>
+<?php if ($this->helper('sales/reorder')->canReorder($_order)) : ?>
+    <li><a href="<?php echo $this->getReorderUrl($_order) ?>" class="link-reorder"><?php echo $this->__('Reorder') ?></a></li>
+<?php endif ?>
+<li><a href="<?php echo $this->getPrintUrl($_order) ?>" class="link-print" onclick="this.target='_blank';"><?php echo $this->__('Print Order') ?></a></li>
+<?php echo $this->getChildHtml(); ?>
+
+<?php return; ?>
 
 <?php  $_order = $this->getOrder() ?>
 <?php if($this->helper('rss/order')->isStatusNotificationAllow()): ?>

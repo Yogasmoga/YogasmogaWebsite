@@ -316,8 +316,8 @@ div.shippingfootnote span.shippingnote
 .giftcard-balance
 {
     color: #000000;
-    font-family: gotham,Arial;
-    font-size: 18px;
+    font-family: gothambook;
+    font-size: 19px;
     font-weight: normal;
     letter-spacing: 0.03em;
     line-height: 1.2;
@@ -627,4 +627,9 @@ table.referredfriendslist td.status
     text-align: center;
     padding-bottom : 10px;
     vertical-align: bottom;
+}
+table.myaccount-redeem-giftcard
+{
+    margin-left : auto;
+    margin-right : auto;
 }

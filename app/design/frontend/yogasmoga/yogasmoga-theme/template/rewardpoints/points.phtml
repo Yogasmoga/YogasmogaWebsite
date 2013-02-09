@@ -19,18 +19,20 @@
  ?>
 
 
-
+<?php /*
 <div class="page-head">
     <h3><?php echo $this->__('Reward points') ?></h3>
 </div>
+*/ ?>
+<div class="myheader">REWARD POINTS</div>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 
 
 <?php $_points = $this->getPoints();?>
 <?php if($_points->getSize()): ?>
-<?php echo $this->getPagerHtml() ?>
+<?php //echo $this->getPagerHtml() ?>
 
-<table cellspacing="0" class="data-table" id="reward-points-table">
+<table cellspacing="0" class="data-table ys" id="reward-points-table">
     <thead>
         <tr>
             <?php ?><th><?php echo $this->__('Type of point') ?></th><?php ?>
@@ -47,9 +49,9 @@
                 <td>
                     <?php echo $this->getTypeOfPoint($_point);?>
                 </td>
-                <td><?php echo $_point->getPoints_current() ?></td>
+                <td class="numeric"><?php echo $_point->getPoints_current() ?></td>
                 <?php /*?><?php echo $_point->getPoints_spent() ? $this->__('yes') : $this->__('no') ?><?php */?>
-                <td><?php echo $_point->getPoints_spent() ?></td>
+                <td class="numeric"><?php echo $_point->getPoints_spent() ?></td>
                 <td><?php if ($_point->getDate_start() != ""): echo $this->formatDate($_point->getDate_start(), 'short'); endif; ?></td>
                 <td><?php if ($_point->getDate_end() != ""): echo $this->formatDate($_point->getDate_end(), 'short'); endif; ?></td>
             </tr>

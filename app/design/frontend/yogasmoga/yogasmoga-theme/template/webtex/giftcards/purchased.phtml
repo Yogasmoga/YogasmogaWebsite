@@ -28,9 +28,9 @@
 <div style="margin-top: 30px;">
     <h3 class="heading-track">Purchased Gift Cards</h3>    
 </div>
-<?php echo $this->getPagerHtml(); ?>
+<?php //echo $this->getPagerHtml(); ?>
 <?php if($_cards->getSize()): ?>
-<table class="data-table" id="my-orders-table">
+<table class="data-table ys" id="my-orders-table">
     <col width="1" />
     <col width="1" />
     <col width="1" />
@@ -50,7 +50,7 @@
     <tr>
         <td><?php echo $_card->getCardId() ?></td>
         <td><?php echo $_card->getCardCode() ?></td>
-        <td><?php echo $_card->getCardBalance() ?></td>
+        <td class="numeric"><?php echo "$".number_format((float)($_card->getCardBalance()), 2, '.','') ?></td>
         <td><a target="_blank" href="<?php echo Mage::getUrl('sales/order/view', array('order_id' => $_card->getOrderId())) ?>"><?php echo $_card->getOrderIncrementId()?></a></td>
         <td>
             <?php
@@ -75,9 +75,11 @@
 <script type="text/javascript">decorateTable('my-orders-table');</script>
 <?php echo $this->getPagerHtml(); ?>
 <?php else: ?>
-<p><?php echo $this->__('You have placed no orders.'); ?></p>
+<p><?php echo $this->__('<div class="emptyrecord">You have placed no orders.</div>'); ?></p>
 <?php endif ?>
-
+<div class="backlink">
+    <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account">&lt; Back</a>
+</div>
 <?php return; ?>
 <?php $_cards = $this->getCards(); ?>
 <div style="margin-top: 30px;">
