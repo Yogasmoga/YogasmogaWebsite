@@ -156,7 +156,7 @@ jQuery(document).ready(function($){
     });
     
     $("#fbzoomtrigger").click(function(){
-        $("#zoomedfbdtl").html($("#ftechimage div.big_small.big_big").html() + '<img id="zoomcloselightbox" src="' + skinUrl  + 'images/catalog/product/close.png" />');
+        $("#zoomedfbdtl").html($("#ftechimage div.ftboxzoom").html() + '<img id="zoomcloselightbox" src="' + skinUrl  + 'images/catalog/product/close.png" />');
         $("#zoomedfbdtl").width(_winW).height(_winH + _headerHeight).fadeIn('fast');
         
     });
