@@ -27,7 +27,7 @@
 <?php $_item = $this->getItem() ?>
 <?php $_order = $this->getItem()->getOrderItem()->getOrder() ?>
 <tr class="border" id="order-item-row-<?php echo $_item->getId() ?>">
-    <td><h4 class="product-name"><?php echo $this->htmlEscape($_item->getName()) ?></h4>
+    <td><h4 class="product-name"><?php echo html_entity_decode($this->htmlEscape($_item->getName())); ?></h4>
         <?php if($_options = $this->getItemOptions()): ?>
         <dl class="item-options">
         <?php foreach ($_options as $_option) : ?>
@@ -35,18 +35,48 @@
             <?php if (!$this->getPrintStatus()): ?>
                 <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
                 <dd<?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?>>
-                    <?php echo $_formatedOptionValue['value'] ?>
+                    <?php //echo $_formatedOptionValue['value'] ?>
+                    <?php 
+                        $word = $_formatedOptionValue['value'];
+                        if(strpos($word, "|"))
+                        {
+                            echo " ".substr($word,0, strpos($word, "|"));
+                        }
+                        else
+                            echo " ".$word;
+                    ?>
                     <?php if (isset($_formatedOptionValue['full_view'])): ?>
                     <div class="truncated_full_value">
                         <dl class="item-options">
                             <dt><?php echo $this->htmlEscape($_option['label']) ?></dt>
-                            <dd><?php echo $_formatedOptionValue['full_view'] ?></dd>
+                            <dd><?php //echo $_formatedOptionValue['full_view'] ?>
+                            <?php 
+                                $word = $_formatedOptionValue['full_view'];
+                                if(strpos($word, "|"))
+                                {
+                                    echo " ".substr($word,0, strpos($word, "|"));
+                                }
+                                else
+                                    echo " ".$word;
+                            ?>
+                            </dd>
                         </dl>
                     </div>
                     <?php endif; ?>
                 </dd>
             <?php else: ?>
-                <dd><?php echo $this->htmlEscape( (isset($_option['print_value']) ? $_option['print_value'] : $_option['value']) ) ?></dd>
+                <dd>
+                    <?php //echo $this->htmlEscape( (isset($_option['print_value']) ? $_option['print_value'] : $_option['value']) ) ?>
+                    <?php 
+                        $word = (isset($option['print_value']) ? $option['print_value'] : nl2br($this->escapeHtml($option['value'])));
+                        if(strpos($word, "|"))
+                        {
+                            echo " ".substr($word,0, strpos($word, "|"));
+                        }
+                        else
+                            echo " ".$word;
+                    ?>
+                </dd>
             <?php endif; ?>
         <?php endforeach; ?>
         </dl>
