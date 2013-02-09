@@ -132,6 +132,11 @@ jQuery(document).ready(function($){
 		//jQuery("td#zoomedproductimage").removeClass('canzoomin');
 		//jQuery("td#zoomedproductimage").addClass('canzoomout');
 	})
+	jQuery("#fabricImg1").live('mousewheel.sz', function(){
+		var $this =jQuery(this);
+		$this.remove();
+		FIstart = 0;
+	})
 	/*jQuery("#fabricImg1.setout").live('mousedown',function(){
 		jQuery(this).fadeOut(500, function(){
 			jQuery("div#zoompopup div#zoomoptions img#zoomout").removeClass('disabled');
