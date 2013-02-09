@@ -126,16 +126,20 @@ jQuery(document).ready(function($){
 	
 	jQuery("#fabricImg1").live('mousedown',function(){
 		var $this =jQuery(this);
-		$this.remove();//addClass('setout').find('img').fadeIn(500);
-		//$this.animate({backgroundColor:'rgba(255,255,255,1)'},500)
-		$("#fbzoomtrigger").trigger('click');
-		//jQuery("td#zoomedproductimage").removeClass('canzoomin');
-		//jQuery("td#zoomedproductimage").addClass('canzoomout');
+		$this.fadeOut(500, function(){
+			$this.remove();//addClass('setout').find('img').fadeIn(500);
+			//$this.animate({backgroundColor:'rgba(255,255,255,1)'},500)
+			$("#fbzoomtrigger").trigger('click');
+			//jQuery("td#zoomedproductimage").removeClass('canzoomin');
+			//jQuery("td#zoomedproductimage").addClass('canzoomout');
+		});
 	})
 	jQuery("#fabricImg1").live('mousewheel.sz', function(){
 		var $this =jQuery(this);
-		$this.remove();
-		FIstart = 0;
+		$this.fadeOut(500, function(){
+			$this.remove();
+			FIstart = 0;
+		})
 	})
 	/*jQuery("#fabricImg1.setout").live('mousedown',function(){
 		jQuery(this).fadeOut(500, function(){
@@ -344,7 +348,7 @@ function showFabricImg(){
 			//var temp = _fabrictechnologyimage.split('|');<img style='height:auto;width:100%;display:none;' src='" + temp[0] + "' />
 			var scale = jQuery('#zoomedimage').smoothZoom('getZoomData').ratio;
 			jQuery("div#zoompopup td#zoomedproductimage").append("<div style='position:absolute; top:0; display:none; bottom:0; left:250px; right:0; z-index:4;' id='fabricImg1'><span class='zoom-tx'>click again to learn more<br/>about our fabric technology</span></div>");
-			jQuery('#fabricImg1').fadeIn(500)
+			jQuery('#fabricImg1').fadeIn(50)
 	}
 }
 function InitializeZoomPopup()
