@@ -343,7 +343,8 @@ function showFabricImg(){
 		FIstart = 1;
 			//var temp = _fabrictechnologyimage.split('|');<img style='height:auto;width:100%;display:none;' src='" + temp[0] + "' />
 			var scale = jQuery('#zoomedimage').smoothZoom('getZoomData').ratio;
-			jQuery("div#zoompopup td#zoomedproductimage").append("<div style='position:absolute; top:0; background-color:rgba(255,255,255,0); bottom:0; left:250px; right:0; z-index:4; overflow:hidden;' id='fabricImg1'>&nbsp;</div>");
+			jQuery("div#zoompopup td#zoomedproductimage").append("<div style='position:absolute; top:0; display:none; bottom:0; left:250px; right:0; z-index:4;' id='fabricImg1'><span class='zoom-tx'>click again to learn more<br/>about our fabric technology</span></div>");
+			jQuery('#fabricImg1').fadeIn(500)
 	}
 }
 function InitializeZoomPopup()

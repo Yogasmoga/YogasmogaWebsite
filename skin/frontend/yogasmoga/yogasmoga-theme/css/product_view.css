@@ -888,6 +888,7 @@ td#zoomedproductimage
 a#fbzoomtrigger
 {
     color : #D90D3D;
+	display:none;
     font-size: 11px; text-transform:uppercase;
 }
 #fbzoomtrigger:hover
@@ -897,4 +898,15 @@ a#fbzoomtrigger
 #zoomedfbdtl
 {
     cursor : pointer;
+}
+span.zoom-tx{
+  bottom: 10px;
+  display: block;
+  font-family: gothamMedium;
+  font-size: 11px;
+  position: absolute;
+  right: 100%;
+  text-align: left;
+  text-transform: uppercase;
+  width: 240px;
 }
