@@ -3173,6 +3173,16 @@ div.opimage .small
 	cursor:pointer;
 	background-attachment:fixed; background-position:50% 50%; background-repeat:no-repeat; background-size:100%;
 }
+div.opimage.fxheight .small {
+  background-attachment: fixed;
+  background-position: 50% 80px;
+  background-repeat: no-repeat;
+  background-size: auto auto;
+  cursor: pointer;
+  font-family: gothamMedium;
+  font-size: 12px;
+  z-index: 2;
+}
 div.sidenavpopup
 {
     height : 19px;
