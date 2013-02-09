@@ -29,8 +29,9 @@
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <div class="page-title title-buttons">
     <h1><?php echo $this->__('Order #%s - %s', $_order->getRealOrderId(), $_order->getStatusLabel()) ?></h1>
-    <?php echo $this->getChildHtml('buttons') ?>
+    <?php //echo $this->getChildHtml('buttons') ?>
 </div>
+<?php /*
 <?php echo $this->getStatusHistoryRssUrl($_order) ?>
 <dl class="order-info">
     <dt><?php echo $this->__('About This Order:') ?></dt>
@@ -49,10 +50,12 @@
     </dd>
 </dl>
 <p class="order-date"><?php echo $this->__('Order Date: %s', $this->formatDate($_order->getCreatedAtStoreDate(), 'long')) ?></p>
+*/ ?>
+<?php $_links = $this->getLinks(); ?>
 <table id="order-links">
     <tr>
         <td>
-            <?php echo $this->__('Order Date: %s', $this->formatDate($_order->getCreatedAtStoreDate(), 'long')) ?>
+            <?php echo $this->__('<strong>Order Date</strong>: %s', $this->formatDate($_order->getCreatedAtStoreDate(), 'long')) ?>
         </td>
         <td>
             <table>

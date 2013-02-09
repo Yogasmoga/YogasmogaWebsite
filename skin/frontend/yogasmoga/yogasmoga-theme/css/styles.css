@@ -1703,7 +1703,7 @@ span.caddress span.ccon {display:block;}
 .order-items h2,
 .order-items h3 { clear:none; font-weight:bold; font-size:13px; padding:0; margin:0 0 5px; color:#0a263c; }
 .order-items .product-name { font-size:1em !important; font-weight:bold !important; }
-.order-items .link-print { color:#1e7ec8; font-weight:normal; }
+.order-items .link-print { color:#d90d3d; font-weight:normal; }
 .order-items .order-links { text-align:right; }
 
 .order-additional { margin:15px 0; }
@@ -3383,17 +3383,6 @@ div.emptyrecord
     letter-spacing: 0.2pt;
     margin-top : 30px;
 }
-.buttons-set
-{
-    left: 20px;
-    position: absolute;
-    top: 70px;
-}
-.buttons-set a
-{
-    font-family: gothamlight;
-    font-size: 11px;
-}
 .data-table.ys.top tbody td, .data-table.ys.top tr.last td
 {
     vertical-align: top;
@@ -3447,7 +3436,7 @@ div.emptyrecord
 {
     font-size : 13px;
 }
-h2.table-caption
+h2.table-caption, h3.table-caption, h2.sub-title, p.order-links
 {
     color: black;
     font-family: gothambook;
@@ -3466,4 +3455,32 @@ table#order-links ul li
 table#order-links
 {
     width : 100%;
+    color: black;
+    font-family: gothambook;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+table#order-links a
+{
+    color : #d90d3d;
+}
+table#order-links a.link-print
+{
+    font-weight: normal;
+}
+div.col2-set.order-info-box
+{
+    background: none;
+    border : none;
+    font-family: gothamlight;
+    font-size: 13px;
+    letter-spacing: 0.2pt;
+}
+div.col2-set.order-info-box h2
+{
+    color: black;
+    font-family: gothambook;
+    font-size: 16px;
+    text-align: left;
+    font-weight: normal;
 }
