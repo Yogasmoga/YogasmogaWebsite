@@ -54,7 +54,8 @@
                 <col width="1" />
                 <col width="1" />
                 <col />
-            <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
+            <?php //if ($this->helper('wishlist')->isAllowInCart()) : ?>
+            <?php if (false) : ?>
                 <col width="1" />
             <?php endif ?>
             <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
@@ -79,7 +80,8 @@
                         <th rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Item') ?></span></th>
                         <th rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
                         <th rowspan="<?php echo $mergedCells; ?>"></th>
-                        <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
+                        <?php //if ($this->helper('wishlist')->isAllowInCart()) : ?>
+                        <?php if (false) : ?>
                         <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><span class="nobr"><?php echo $this->__('Move to Wish list') ?></span></th>
                         <?php endif ?>
                         <th class="a-center" colspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Price') ?></span></th>

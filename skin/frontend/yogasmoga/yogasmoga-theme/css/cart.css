@@ -304,3 +304,9 @@ div.rewards_point_cart
 {
     display : none;
 }
+table#shopping-cart-table div.preorderinfo
+{
+    color: #D90D3D;
+    font-style: italic;
+    text-transform: none;
+}

@@ -312,9 +312,13 @@ div#shippingsummary table
 {
     width : 410px;
 }
-div#ordersummary table td.total, div#shippingsummary table td.total
+div#shippingsummary table td.total
 {
     text-align : left;
+}
+div#ordersummary table td.total 
+{
+    text-align: right;
 }
 div#ordersummary table td, div#shippingsummary table td
 {
