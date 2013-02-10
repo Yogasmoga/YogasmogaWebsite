@@ -19,6 +19,10 @@ jQuery(document).ready(function($){
         $(this).css('background-image', "url('" + $(this).attr('imageurl') + "')");
     });
     
+    $(".spbutton").each(function(){
+        $("body").append("<img src='" + $(this).attr('downimageurl') + "' class='nodisplay' />");
+    });
+    
     //setTimeout(function(){ fixiebug();}, 100);
     //$(".spbutton").mousedown(function(){
 //        $(this).css('background-image', "url('" + $(this).attr('downimageurl') + "')");
