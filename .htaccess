@@ -224,6 +224,4 @@ RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
-RewriteRule ^admin/(.*)$ /index2.php/admin/$1 [L]
-RewriteRule ^index2.php/admin/(.*)$ /admin/$1 [L,R]
 </IfModule>
