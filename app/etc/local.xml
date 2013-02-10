@@ -41,7 +41,7 @@
             <default_setup>
                 <connection>
                     <host><![CDATA[yogasmoga.ctfwon1h9dxc.us-east-1.rds.amazonaws.com]]></host>
-                    <username><![CDATA[root]]></username>
+                    <username><![CDATA[yogasmoga]]></username>
                     <password><![CDATA[Yoga$moga]]></password>
                     <dbname><![CDATA[yogasmoga]]></dbname>
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
