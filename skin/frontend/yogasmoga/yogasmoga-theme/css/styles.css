@@ -3468,7 +3468,7 @@ table#order-links a.link-print
 {
     font-weight: normal;
 }
-div.col2-set.order-info-box
+div.col2-set.order-info-box,div.col2-set 
 {
     background: none;
     border : none;
@@ -3476,11 +3476,25 @@ div.col2-set.order-info-box
     font-size: 13px;
     letter-spacing: 0.2pt;
 }
-div.col2-set.order-info-box h2
+div.col2-set.order-info-box h2, div.col2-set h2
 {
     color: black;
     font-family: gothambook;
     font-size: 16px;
     text-align: left;
     font-weight: normal;
+}
+p.order-date.ys
+{
+    color: black;
+    font-family: gothambook;
+    font-size: 16px;
+    background: none;
+}
+h1.orderno.ys, h2.h2.ys
+{
+    color: black;
+    font-family: gothambook;
+    font-size: 16px;
+    background: none;
 }

@@ -24,6 +24,23 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<style type="text/css">   
+.buttons-set {
+    left: 20px;
+    position: absolute;
+    top: 70px;
+}
+.buttons-set a
+{
+    font-family: gothamlight;
+    font-size: 11px;
+}
+</style>
+<script type="text/javascript">
+    jQuery("document").ready(function($){
+        $("div.buttons-set").html("<a href='" + homeUrl + "customer/account' class='back-link'>&lt;&nbsp;Back</a>");
+    });
+</script>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <?php $_orders = $this->getOrders(); ?>
 <div class="page-title">
