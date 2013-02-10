@@ -1,0 +1,270 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="shortcut icon" href="/favicon.ico">
+<title>YOGASMOGA</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="description" content="Yoga Smoga Inc. is a designer and retailer of Yoga inspired athletic apparel and accessories. " />
+<meta name="keywords" content="Yoga Smoga, yogasmoga, Rishi Bali, yoga apparel and accessories" />
+
+<style type="text/css">
+<!--
+body {
+	background-color: #FFF;
+	background-image: url();
+	background-position: center;
+	background-position: top;
+}
+#logoimg {
+	background-image: url(yogasmoga_gold.jpg);
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	z-index: auto;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	border: 0px none #FFF;
+}
+#AboutContent {
+	height: 20px;
+	width: 240px;
+	top: 10%;
+	position: absolute;
+	visibility: visible;
+	right: 60px;
+	border: 0px none #FFF;
+	background-color: #FFF;
+}
+#ContactContent {
+	height: 20px;
+	width: 120px;
+	top: 10%;
+	position: absolute;
+	visibility: visible;
+	right: 120px;
+	border: 0px none #FFF;
+	background-color: #FFF;
+}
+#SocMediaLinks {
+	height: 20px;
+	width: 300px;
+	bottom: 13%;
+	position: absolute;
+	visibility: visible;
+	right: 0px;
+	border: 0px none #FFF;
+	vertical-align: text-top;
+	text-align: left;
+	line-height: 120pt;
+}
+-->
+</style>
+<script src="SpryAssets/SpryCollapsiblePanel.js" type="text/javascript"></script>
+<link href="SpryAssets/SpryCollapsiblePanel.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+a:link {
+	text-decoration: none;
+	color: #0066ff;
+}
+a:visited {
+	text-decoration: none;
+	color: #0066ff;
+}
+a:hover {
+	text-decoration: underline;
+	color: #0066ff;
+}
+a:active {
+	text-decoration: none;
+	color: #0066ff;
+}
+-->
+</style>
+<style>
+#conash3D0
+{
+display:none;
+}
+</style>
+
+<style type="text/css">
+
+.menutitle{
+	margin: 0px;
+	padding: 0px;
+	border: 0px none #FFF;
+	font: normal 14px/normal Arial, Helvetica, sans-serif;
+	background-color: #FFF;
+	border-bottom: solid 1px #CCC;
+	margin: 0px;
+	padding: 2px 0px 2px 3px;
+	cursor: default;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	text-transform: none;
+	color: #333;
+	width: 72px;
+	letter-spacing: .5px;
+	outline:none;
+}
+
+.submenu{
+	margin: 0px;
+	padding: 16px 0px 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: 16px;
+	font-weight: lighter;
+	font-variant: normal;
+	text-transform: none;
+	color: #666;
+	letter-spacing: .5px;
+	width: 230px;
+	background-color: #FFF;
+	border-bottom-width: 6px;
+	border-left-width: 3px;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-bottom-color: #FFF;
+	border-left-color: #FFF;
+}
+</style>
+
+<script type="text/javascript">
+
+/***********************************************
+* Switch Menu script- by Martial B of http://getElementById.com/
+* Modified by Dynamic Drive for format & NS4/IE4 compatibility
+* Visit http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+var persistmenu="yes" //"yes" or "no". Make sure each SPAN content contains an incrementing ID starting at 1 (id="sub1", id="sub2", etc)
+var persisttype="sitewide" //enter "sitewide" for menu to persist across site, "local" for this page only
+
+if (document.getElementById){ //DynamicDrive.com change
+document.write('<style type="text/css">\n')
+document.write('.submenu{display: none;}\n')
+document.write('</style>\n')
+}
+
+function SwitchMenu(obj){
+	if(document.getElementById){
+	var el = document.getElementById(obj);
+	var ar = document.getElementById("masterdiv").getElementsByTagName("span"); //DynamicDrive.com change
+		if(el.style.display != "block"){ //DynamicDrive.com change
+			for (var i=0; i<ar.length; i++){
+				if (ar[i].className=="submenu") //DynamicDrive.com change
+				ar[i].style.display = "none";
+			}
+			el.style.display = "block";
+		}else{
+			el.style.display = "none";
+		}
+	}
+}
+
+function get_cookie(Name) { 
+var search = Name + "="
+var returnvalue = "";
+if (document.cookie.length > 0) {
+offset = document.cookie.indexOf(search)
+if (offset != -1) { 
+offset += search.length
+end = document.cookie.indexOf(";", offset);
+if (end == -1) end = document.cookie.length;
+returnvalue=unescape(document.cookie.substring(offset, end))
+}
+}
+return returnvalue;
+}
+
+function onloadfunction(){
+if (persistmenu=="yes"){
+var cookiename=(persisttype=="sitewide")? "switchmenu" : window.location.pathname
+var cookievalue=get_cookie(cookiename)
+if (cookievalue!="")
+document.getElementById(cookievalue).style.display="block"
+}
+}
+
+function savemenustate(){
+var inc=1, blockid=""
+while (document.getElementById("sub"+inc)){
+if (document.getElementById("sub"+inc).style.display=="block"){
+blockid="sub"+inc
+break
+}
+inc++
+}
+var cookiename=(persisttype=="sitewide")? "switchmenu" : window.location.pathname
+var cookievalue=(persisttype=="sitewide")? blockid+";path=/" : blockid
+document.cookie=cookiename+"="+cookievalue
+}
+
+if (window.addEventListener)
+window.addEventListener("load", onloadfunction, false)
+else if (window.attachEvent)
+window.attachEvent("onload", onloadfunction)
+else if (document.getElementById)
+window.onload=onloadfunction
+
+if (persistmenu=="yes" && document.getElementById)
+window.onunload=savemenustate
+
+</script>
+
+</head>
+
+<body>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="logoimg">
+
+ <!-- Keep all menus within masterdiv-->
+<div id="masterdiv">
+
+  <div id="AboutContent">
+	<div class="menutitle" onclick="SwitchMenu('sub1')">ABOUT</div>
+	<span class="submenu" id="sub1">
+Yoga Smoga Inc., is a designer and retailer of Yoga inspired athletic apparel and accessories. The company was founded by Mr. Rishi Bali and headquartered in New York City. 
+<br /><br /> 
+The company is currently operating in a pre-launch stage. The company's performance apparel will be marketed under the Yoga Smoga brand name.
+	</span>
+</div>
+
+  <div id="ContactContent">
+	<div class="menutitle" onclick="SwitchMenu('sub2')">CONTACT</div>
+	<span class="submenu" id="sub2">
+Mr. Rishi Bali<BR /> 15 Broad Street<BR /> New York, NY 10005<BR /><BR /><a href="mailto:info@yogasmoga.com">info@yogasmoga.com</a>
+	</span>
+</div>
+
+</div>
+
+<div id="SocMediaLinks">
+<div class="fb-like" data-href="http://www.facebook.com/yogasmoga" data-send="false" data-width="120px" data-show-faces="false" data-font="arial"></div>
+<p><a href="https://twitter.com/yogasmoga" class="twitter-follow-button">Follow @yogasmoga</a>
+<script src="//platform.twitter.com/widgets.js" type="text/javascript"></script></p>
+</div>
+
+</body>
+</html>
+
+</iframe></noscript></object></layer></span></div></table></body></html><!-- adsok -->
+<script language='javascript' src='https://a12.alphagodaddy.com/hosting_ads/gd01.js'></script></iframe></noscript></object></layer></span></div></table></body></html><!-- adsok -->
+<script language='javascript' src='https://a12.alphagodaddy.com/hosting_ads/gd01.js'></script></iframe></noscript></object></layer></span></div></table></body></html><!-- adsok -->
+<script language='javascript' src='https://a12.alphagodaddy.com/hosting_ads/gd01.js'></script></iframe></noscript></object></layer></span></div></table></body></html><!-- adsok -->
+<script language='javascript' src='https://a12.alphagodaddy.com/hosting_ads/gd01.js'></script>
