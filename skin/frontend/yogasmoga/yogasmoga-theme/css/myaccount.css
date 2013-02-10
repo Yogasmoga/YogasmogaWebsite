@@ -633,3 +633,7 @@ table.myaccount-redeem-giftcard
     margin-left : auto;
     margin-right : auto;
 }
+form#createcardform table.twocolumn533 table.inputtable
+{
+    width : 373px;
+}

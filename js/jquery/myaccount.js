@@ -91,6 +91,21 @@ jQuery(document).ready(function($){
     
     $("div#copyurl").click(function(){
         $("input#uniquelink").select();
+    });
+    
+    $("#createcardform").submit(function(){
+        if(validateCreateGiftCardForm())
+        {
+            _addingtocart = true;
+            createcard();   
+        }
+        return false;
+    });
+    
+    $("#cardbalanceform").submit(function(){
+        _addingtocart = true;
+        getcardbalance();
+        return false;
     }); 
 });
 
@@ -256,6 +271,37 @@ function fillState(currentstate)
     jQuery("select#region_id option[value='']").html("Select State");
 }
 
+function validateCreateGiftCardForm()
+{
+    unsetAllError(jQuery("#createcardform"));
+    var flag = validatefields(jQuery("#createcardform"));
+    if(jQuery("#mail-to-email").val() != "")
+    {
+        if(!validateEmail(jQuery("#mail-to-email").val()))
+        {
+            setOnError(jQuery("#mail-to-email"), "Please enter a valid Email Address.");
+            flag = false;    
+        }
+    }
+    if(jQuery("#mail-to-email-conf").val() != "")
+    {
+        if(!validateEmail(jQuery("#mail-to-email-conf").val()))
+        {
+            setOnError(jQuery("#mail-to-email-conf"), "Please enter a valid Email Address.");
+            flag = false;    
+        }
+    }
+    if(jQuery("#mail-to-email").val() != "" && jQuery("#mail-to-email-conf").val() != "")
+    {
+        if(jQuery("#mail-to-email").val() != jQuery("#mail-to-email-conf").val())
+        {
+            setOnError(jQuery("#mail-to-email-conf"),"Please make sure the Email Addresses match.");
+            flag = false;
+        }
+    }
+    return flag;
+}
+
 function validateAccountEditForm()
 {
     unsetAllError(jQuery("#edit-accountinfo"));
@@ -368,4 +414,59 @@ function validateForgotPasswordForm()
         }
     }
     return flag;
+}
+
+function getcardbalance()
+{
+    jQuery.ajax({
+        type : 'POST',
+        url : homeUrl + 'mycatalog/myproduct/getgiftcardbalance',
+        data : jQuery("#cardbalanceform").serialize(),
+        success : function(result){
+            result = eval('(' + result + ')');
+            _addingtocart = false;
+            if(result.status == 'success')
+            {
+                alert("Your balance is :" + result.balance);
+            }
+            else
+            {
+                alert(result.message);
+            }
+        }
+    });
+}
+
+function createcard()
+{
+    jQuery.ajax({
+        type : 'POST',
+        url : homeUrl + 'mycheckout/mycart/add',
+        data : jQuery("#createcardform").serialize(),
+        success : function(result){
+            result = eval('(' + result + ')');
+            _addingtocart = false;
+            if(result.status == 'success')
+            {
+                if(_productdisplaymode == "popup")
+                    jQuery( "#productdetailpopup" ).dialog( "close" );
+                jQuery("span.cartitemcount").html(result.count);
+                jQuery("div#myminicart").html(result.html);
+                jQuery("div#myminicart").slideDown('slow', function(){
+                    setTimeout(function(){ jQuery("div#myminicart").slideUp('slow'); }, 4000);
+                });
+            }
+            else
+            {
+                alert('Oops! An unexpected error occured.');
+            }
+            //
+//            result = eval('(' + result + ')');
+//            if(result.status == "0")
+//                jQuery("#footernotification").html(result.message).removeClass("success").addClass("error").fadeIn();
+//            else
+//                jQuery("#footernotification").html(result.message).removeClass("error").addClass("success").fadeIn();
+            //setTimeout(function(){ rremovenotifications(); }, 5000);
+        }
+    });
 }
