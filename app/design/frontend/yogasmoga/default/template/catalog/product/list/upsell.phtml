@@ -80,15 +80,16 @@
                                                 if($imgdata == NULL || strcasecmp($imgdata['type'],"product image") != 0)
                                                     continue;
                                                 
-                                                
+                                                if($imgdata['default'] != "yes")
+                                                    continue;
                                                 
                                                 //if(!($imgdata['type'] == "product image" && $imgdata['default'] == "yes"))
     //                                                continue;
                                                 
                                                 //if(strpos($_image->getLabel(),"*") === false)
     //                                                continue;
-                                                //if($index > 3)
-    //                                                break;
+                                                if($index > 3)
+                                                    break;
                                                 ?>
                                                 <img class="
                                                 <?php
@@ -114,7 +115,7 @@
                                                 "
                                                  src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(295, 355)->setQuality(100); ?>" />
                                                 <?php
-                                                //$index++;
+                                                $index++;
                                             } 
                                         ?>
                                         </div>
