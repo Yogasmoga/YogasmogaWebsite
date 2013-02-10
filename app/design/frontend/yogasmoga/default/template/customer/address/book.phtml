@@ -131,7 +131,9 @@
 	<tr><td height="50">&nbsp;</td></tr>
 </table>
 </div>
-<div class="backlink"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>">&lt;&nbsp;<?php echo $this->__('Back') ?></a>
+<div class="backlink">
+    <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/" class="back-link">&lt;&nbsp;<?php echo $this->__('Back') ?></a>
+</div>
 </div>
 <script type="text/javascript">
 //<![CDATA[
