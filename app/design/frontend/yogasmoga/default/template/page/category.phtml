@@ -53,7 +53,9 @@
 					$dressingroomitems = explode("\n", strip_tags(substr($htmlcontent,0, strpos($htmlcontent, "|*)%|"))));
                     if(trim($dressingroomitems[0]) == "-|*DressingRoomDetails*|-"){
 						$model = Mage::getModel('catalog/product');
-						$dressImgPath =$this->getskinUrl('images/catalog/product/dressingroom/models/');?>
+						//$dressImgPath =$this->getskinUrl('images/catalog/product/dressingroom/models/');
+                        $dressImgPath = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/dressingroom/';
+                    ?>
 					<div id="dressingroom" desc="<?php echo Mage::registry('current_category')->getName(); ?> Dressing rom" class="pgsection">
 						<div class="myheader" style="padding-bottom: 10px;">WOMEN&acute;S PRODUCTS</div>
                             <div class="dressingroomsubheader1">Here is our dressing room; navigate through our tops and bottoms using the arrows on the side.<br />To view our whole list of products, scroll to the bottom of the page.</div>
