@@ -506,9 +506,7 @@ table.productimagecontainer td.tddivider div
 
 table.productimagecontainer table.smallimagecontiner
 {
-    margin-top : 5px;
-    margin-left : auto;
-    margin-right : auto;
+    margin-top : 5px auto;
 }
 
 table.productimagecontainer table.smallimagecontiner td
