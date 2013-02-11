@@ -29,8 +29,8 @@ body          {font:12px/1.55 gothambook, Arial, Helvetica, sans-serif; color:#2
 
 img           { border:0; vertical-align:top; }
 
-a { color : #000;text-decoration: none; }
-a.visited { color : #000;text-decoration: none; }
+a { color : #D90D3D;text-decoration: none; }
+a.visited { color : #D90D3D;text-decoration: none; }
 a:hover       { text-decoration:none; color : #D90D3D; }
 :focus        { outline:0; }
 
@@ -1808,7 +1808,7 @@ span.caddress span.ccon {display:block;}
 .footer .store-switcher { display:inline; margin:0 5px 0 0; color:#fff; }
 .footer .store-switcher label { font-weight:bold; vertical-align:middle; }
 .footer .store-switcher select { padding:0; vertical-align:middle; }
-.footer a { color:#fff; text-decoration:none; text-transform: uppercase; }
+.footer a { text-decoration:none; text-transform: uppercase; }
 .footer a:hover { text-decoration:underline; }
 .footer .bugs { margin:13px 0 0; color:#ecf3f6; }
 .footer .bugs a { color:#ecf3f6; text-decoration:underline; }
@@ -1912,6 +1912,7 @@ ul.topmenulinks li.selected
 ul.topmenulinks li a,ul.topmenulinks li a:visited 
 {
     text-transform: uppercase;
+	color:#000;
 }
 div#toprevolvingmessage blockquote {
   color: #999999;
@@ -2087,7 +2088,6 @@ div.footer div.footdesc
 
 div.footer div.footdesc a, div.footer div.footdesc a:visited
 {
-    color: #B5B5B5;
     margin: 0 5px;
 }
 
@@ -2461,7 +2461,7 @@ div.mycategory-products div.item td.productimage div
 div.mycategory-products div.item td.animateimage
 {
     height: 19px;
-    padding-top: 3px;
+    padding-top: 8px;
 }
 div.mycategory-products div.item td.animateimage img.inactive
 {
@@ -2499,6 +2499,7 @@ div.mycategory-products div.item:hover td.animateimage img.active
 .mylayerednavigation
 {
     left: 0;
+	top:110px;
     margin-left: 20px;
     position: absolute;
     text-align: left;
@@ -2512,7 +2513,7 @@ div.mycategory-products div.item:hover td.animateimage img.active
 }
 .mylayerednavigation.fixedposition
 {
-    padding-top : 35px;
+    padding-top : 20px;
 }
 
 div.mylayerednavigation div.search-result
@@ -3328,7 +3329,7 @@ button span
 }
 #drsizechart a
 {
-    font-size : 11px;
+    font-size : 14px;
     font-family: gothambook;
 }
 .italic

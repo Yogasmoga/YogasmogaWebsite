@@ -27,14 +27,14 @@
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/searchresults.css'); ?>" media="all" />
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/mycatalogsearch.js"></script>
 <div class="myheader">SEARCH RESULTS</div>
-<div class="searchresultcount">WE&rsquo;VE FOUND <span id="spresultcount">5 PRODUCT MATCHES</span> FOR &ldquo;<?php echo $this->helper('catalogsearch')->getEscapedQueryText(); ?>&rdquo;</div>
-<table style="margin-left: auto;margin-right:auto;">
+<!-- div class="searchresultcount">WE&rsquo;VE FOUND <span id="spresultcount">5 PRODUCT MATCHES</span> FOR &ldquo;<?php echo $this->helper('catalogsearch')->getEscapedQueryText(); ?>&rdquo;</div -->
+<table style="margin:45px auto 0;">
     <tr>
         <td>
-           <table class="inputtable nolabel" style="width: 190px;">
+           <table class="inputtable nolabel" style="width: 245px;">
                 <tr>
                     <td class="label"><label for="txtSearch">Search text</label></td>
-                    <td class="inputholder"><input type="text" id="txtSearch" /></td>
+                    <td class="inputholder"><input style="height:24px;" type="text" id="txtSearch" value="<?php echo $this->helper('catalogsearch')->getEscapedQueryText(); ?>" /></td>
                 </tr>
                 <tr>
                     <td class="errortext" colspan="2">
@@ -43,7 +43,7 @@
                 </tr>
            </table> 
         </td>
-        <td style="padding-left : 15px;">
+        <td style="padding-left : 10px;">
             <div id="btnSearch" class="searchbutton spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/search_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/search_on.png'); ?>"></div>
         </td>
     </tr>

@@ -364,7 +364,7 @@ table.productdetailtable div.preorderitem
 table.productdetailtable div.addtowishlist, table.productdetailtable div.addtowishlist a, table.productdetailtable div.addtowishlist a:hover, table.productdetailtable div.addtowishlist a:visited, #productdetailpopup div.addtowishlist, #productdetailpopup div.addtowishlist a, #productdetailpopup div.addtowishlist a:hover, #productdetailpopup div.addtowishlist a:visited 
 {
     color : black;
-    font-family:gothamlight;    
+    font-family:gothambook;
     font-size : 10px;
     letter-spacing: 0.6pt;
     margin-top : 25px;
@@ -414,7 +414,7 @@ letter-spacing: 0.6pt;
     border-bottom : 1px solid #D90D3D;
     font-size : 10px;
     letter-spacing: 0.6pt;
-    margin-top : 5px;
+    margin-top : 10px;
     cursor : pointer;
     float : right;
 }
