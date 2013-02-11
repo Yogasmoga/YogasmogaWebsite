@@ -3519,3 +3519,7 @@ h1.orderno.ys, h2.h2.ys
     margin-left : auto;
     margin-right : auto;
 }
+ul.messages
+{
+    display: none;
+}
