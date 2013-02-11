@@ -32,8 +32,8 @@
 <div class="cart-empty">
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <?php echo $this->getChildHtml('checkout_cart_empty_widget'); ?>
-    <p><?php echo $this->__('You have no items in your shopping Bag.') ?><br/>&nbsp;<br>&nbsp;</p>
-    <p><?php echo $this->__('<a href="%s" class="big-btn button">Continue Shopping</a>', $this->getContinueShoppingUrl()) ?></p>
+    <p style="margin-bottom: 60px;"><?php echo $this->__('You have no items in your shopping bag.') ?></p>
+    <div onclick="window.location='<?php echo $this->getContinueShoppingUrl(); ?>';" class="spbutton btncontinue" imageurl="<?php echo $this->getSkinUrl('images/continue_shopping_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/continue_shopping_on.png'); ?>"></div>
     <?php echo $this->getChildHtml('shopping.cart.table.after'); ?>
 </div>
 </div>

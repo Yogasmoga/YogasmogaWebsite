@@ -3502,3 +3502,11 @@ h1.orderno.ys, h2.h2.ys
 {
     display : none;
 }
+.btncontinue
+{
+    background-image: url('../images/continue_shopping_off.png');
+    width : 239px;
+    height: 35px;
+    margin-left : auto;
+    margin-right : auto;
+}
