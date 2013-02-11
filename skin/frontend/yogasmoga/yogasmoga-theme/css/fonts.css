@@ -67,7 +67,13 @@
          url('../fonts/ChaletParisNineteenSeventy.ttf') format('truetype'); 
 }
 
-
+@font-face {
+	font-family: 'arial';
+	src: url('../fonts/Gotham-Book.eot');
+	src: local('?'), url('../fonts/Gotham-Book.woff') format('woff'), url('../fonts/Gotham-Book.ttf') format('truetype'), url('../fonts/Gotham-Book.otf') format('opentype'), url('../fonts/Gotham-Book.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
 
 
 
