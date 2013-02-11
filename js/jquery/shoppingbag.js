@@ -35,9 +35,12 @@ function addbracelettocart()
         _productorderqty = jQuery("#braceletcount").val();
         var color = jQuery("#cmbcolor").val();
         var size = jQuery("#cmbsize").val();
+        var addurl = homeUrl + 'mycheckout/mycart/add?product=' + _productid + '&qty=' + _productorderqty + '&super_attribute[' + _colorattributeid + ']=' + color;
+        if(_sizesuperattribute)
+            addurl = addurl + '&super_attribute[' + _sizeattributeid + ']=' + size;
         jQuery.ajax({
             type : 'POST',
-            url : homeUrl + 'mycheckout/mycart/add?product=' + _productid + '&qty=' + _productorderqty + '&super_attribute[' + _colorattributeid + ']=' + color + '&super_attribute[' + _sizeattributeid + ']=' + size,
+            url : addurl,
             data : {},
             success : function(result){
                 result = eval('(' + result + ')');

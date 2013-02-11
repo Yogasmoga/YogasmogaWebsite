@@ -150,6 +150,18 @@
                             $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
                             $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
                             $productcolorinfo = array();
+                            $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
+                            $sizeavaliable = false;
+                            foreach($configurableAttributeCollection as $attribute){
+                                if($attribute->getProductAttribute()->getAttributeCode() == "size")
+                                {
+                                    $sizeavaliable = true;
+                                    break;
+                                }
+                                //echo "Attr-Code:".$attribute->getProductAttribute()->getAttributeCode()."<br/>";
+                        //        echo "Attr-Label:".$attribute->getProductAttribute()->getFrontend()->getLabel()."<br/>";
+                        //        echo "Attr-Id:".$attribute->getProductAttribute()->getId()."<br/>";
+                            }
                             foreach($_childproducts as $_childproduct)
                             {
                                 //echo Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
@@ -174,7 +186,11 @@
                                 $rewardpoints = Mage::helper('rewardpoints/data')->getProductPointsText($_childproduct, false, false);
                                 $rewardpoints = strip_tags($rewardpoints);
                                 $rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "loyalty") - 1 - strlen("loyalty") - strpos($rewardpoints, "earn") + strlen("earn")));
-                                $temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
+                                if($sizeavaliable)
+                                    $temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
+                                else
+                                    $temp1 = "2|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
+                                //$temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
                                 //if(array_key_exists("sizes", $productcolorinfo[$temp]))
                                 if(isset($productcolorinfo[$temp]["sizes"]))
                                 {
@@ -323,6 +339,16 @@
                                         //_productdisplaymode = 'popup';
                                         //console.log(_productcolorinfo);
                                     </script>
+                                    <?php
+                                        if(!$sizeavaliable)
+                                        {
+                                            ?>
+                                                <script type="text/javascript">
+                                                    _sizesuperattribute = false;
+                                                </script>
+                                            <?php
+                                        }
+                                    ?>
                                     <div class="page-title" style="margin-bottom: 7px;">
                                         <h1 class="checkout-namaskar-header">HELP THE NAMASKAR FOUNDATION: ADD THIS BRACELET TO YOUR ORDER</h1>
                                     </div>
@@ -338,8 +364,8 @@
                                             <a href="<?php echo $producturl; ?>"><?php echo $productname; ?></a>
                                         </h2>
                                         <dl class="item-options">
-                                            <dt>SIZE</dt>
-                                			<dd>
+                                            <dt  <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>SIZE</dt>
+                                			<dd <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
                                                 <span id="spnsize"></span>
                                                 <select id="cmbsize" class="cmbsize">
                                                     <?php
