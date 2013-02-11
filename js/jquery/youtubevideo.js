@@ -26,7 +26,7 @@ jQuery(document).ready(function($){
 
 function sharevideourl(sharetype)
 {
-    var shareurl = homeUrl + '?video=true';
+    var shareurl = homeUrl + 'breathe';
     if(_curshareimgurl == '')
         _curshareimgurl = 'https://yogasmoga.com/yogasmoga_gold.jpg';
     switch(sharetype)

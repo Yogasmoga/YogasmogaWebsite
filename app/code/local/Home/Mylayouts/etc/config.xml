@@ -38,6 +38,11 @@
           <template>page/namaskar.phtml</template>
           <layout_handle>Namaskar</layout_handle>
         </namaskar>
+		<breathe translate="label">
+          <label>Breathe</label>
+          <template>page/breathe.phtml</template>
+          <layout_handle>Breathe</layout_handle>
+        </breathe>
         <!-- add more layouts here -->
       </layouts>
     </page>

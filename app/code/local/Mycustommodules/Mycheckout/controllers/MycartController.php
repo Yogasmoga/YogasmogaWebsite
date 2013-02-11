@@ -254,7 +254,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         $output = "";
         if(Mage::getModel('checkout/cart')->getQuote()->getItemsCount() == 0)
         {
-            $output = "<div class='totalitemcount'>You have no items in your cart.</div>";
+            $output = "<div class='totalitemcount'>You have no items in your shopping bag.</div>";
             return $output;
         }
         $_helper = Mage::helper('catalog/output');
