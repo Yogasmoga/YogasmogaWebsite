@@ -2312,7 +2312,6 @@ div#pageScrollerNav div#shareicons div#pinterest:hover
 
 ul.slides li
 {
-    position : static !important;
 }
 
 div.mycategory-products
@@ -3065,7 +3064,11 @@ div#bodycompensator
     height : 80px;
 }
 div.opimage div.big_big,
-div.opimage div.big_small{display:none;}
+div.opimage div.big_small{display:none;
+  margin: 0 auto;
+  max-width: 1600px;
+  position: relative;
+}
 div.opimage img.small,
 div.opimage img.big_small,
 div.opimage img.big_big
@@ -3082,8 +3085,9 @@ div.big_big
 div.opimage div, #zoomedfbdtl div
 {
 	text-align:center;
-    width : 100%;
 	height:100%;
+	width:100%;
+	z-index:1;
     top : 0;
     left : 0;
     position : absolute;
@@ -3094,6 +3098,7 @@ div.opimage div, #zoomedfbdtl div
 div.opimage
 {
     position : relative;
+	z-index:0;
 	background-position:50% 50%;
 	background-repeat:repeat;
 	background-size:cover;
@@ -3165,24 +3170,28 @@ div.opimage .small h3.heading{color:#dd8820; font-style:italic;font-family:gotha
 }
 
 
-div.opimage .small
+/*div.opimage .small
 {
 	font-family:gothamMedium;
 	font-size:12px;
     z-index: 2;
 	cursor:pointer;
 	background-attachment:fixed; background-position:50% 50%; background-repeat:no-repeat; background-size:100%;
-}
-div.opimage.fxheight .small {
-  background-attachment: fixed;
-  background-position: 50% 80px;
-  background-repeat: no-repeat;
-  background-size: auto auto;
+}*/
+div.opimage .small {
+  background-attachment: fixed !important;
+  background-position: 50% 80px !important;
+  background-size: cover;
   cursor: pointer;
   font-family: gothamMedium;
   font-size: 12px;
   z-index: 2;
 }
+div.opimage .small .unviel{top:50%; margin-top:-50px;}
+div.opimage .small .unviel h3.heading {font-family:ITCAvantGardeProBd; font-weight:normal; font-size:30px;color:#dd8820; text-transform:uppercase; font-style:normal; padding:0 0 10px; line-height:1;}
+#clrimage div.opimage .small .unviel h3.heading {color:#dd8820;}
+div.opimage .small .unviel h3.heading sup{font-size:12px;}
+div.opimage .small .unviel h3.heading span{display:block;font-family:ITCAvantGardeProBk;}
 div.sidenavpopup
 {
     height : 19px;
