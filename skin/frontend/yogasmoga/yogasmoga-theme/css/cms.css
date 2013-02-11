@@ -354,6 +354,7 @@ button.btn-brecelet:active span{background-position:0 100%;}
 }
 /*============= TERMS & PRIVACY POLICY =========*/
 .cmspg *{color:#666; font-family:gotham-l; line-height:1.3;}
+.cmspg a{color:#d90d3d}
 .page-title.grey{}
 .page-title.grey h1{color:#666;background-image:url(../images/title-bg.png);}
 .cmspg .subtitle{font-family:ITCAvantGardePro-Bold, Arial; font-size:14px;color:#666;}
