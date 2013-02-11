@@ -357,7 +357,7 @@ button.btn-brecelet:active span{background-position:0 100%;}
 .page-title.grey{}
 .page-title.grey h1{color:#666;background-image:url(../images/title-bg.png);}
 .cmspg .subtitle{font-family:ITCAvantGardePro-Bold, Arial; font-size:14px;color:#666;}
-.cmspg{width:770px; margin:0 auto;}
+.cmspg{width:770px; margin:0 auto 70px;}
 
 
 /*=================== NEW NAMASKAR ========== */
