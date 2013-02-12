@@ -2089,6 +2089,7 @@ div.footer div.footdesc
 div.footer div.footdesc a, div.footer div.footdesc a:visited
 {
     margin: 0 5px;
+	color:#999;
 }
 
 div.footer div.footdesc a:hover
@@ -2169,6 +2170,7 @@ div.inputcontainer input[type='submit']
 {
     background: none repeat scroll 0% 0% transparent; 
     border: none;
+	cursor:pointer;
 }
 
 div.inputcontainer
