@@ -637,3 +637,15 @@ form#createcardform table.twocolumn533 table.inputtable
 {
     width : 373px;
 }
+form#form-validate-resetpassword table.inputtable
+{
+    width : 533px;
+}
+form#form-validate-resetpassword input[type='submit']
+{
+    float : right;
+}
+form#form-validate-resetpassword div.errormsg
+{
+    text-align: right;
+}
