@@ -2347,6 +2347,7 @@ div.mycategory-products div.item td.productname
     font-family:gothambook;
     font-size:10px;
     color : gray;
+	line-height:14px;
     text-transform: uppercase;
     /*height : 35px;*/
     vertical-align: top;
