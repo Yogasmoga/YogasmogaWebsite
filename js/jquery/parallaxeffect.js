@@ -26,8 +26,10 @@ jQuery(document).ready(function($){
                 }
                 else
                 {
+					var newheight = getScaledheight($(this).attr("origheightsm"), $(this).attr("origwidthsm"));
+					if(newheight < 770) newheight = 770;
                     $(this).find('img.big_big').hide();
-                    $(this).height(getScaledheight($(this).attr("origheightsm"), $(this).attr("origwidthsm")));
+                    $(this).height(newheight);
                 }
             }
             else{
@@ -40,7 +42,6 @@ jQuery(document).ready(function($){
     $("div.opimage").click(function(){
         if($(this).is(':animated'))
             return;
-		if(!($(this).hasClass('fxheight'))){
 			if($(this).hasClass('closed'))
 			{
 				if(_winW >= 1600)
@@ -53,6 +54,7 @@ jQuery(document).ready(function($){
 					var newheight = getScaledheight($(this).attr("origheightsm"), $(this).attr("origwidthsm"));
 					$(this).find('.big_small').fadeIn(0);
 				}
+				if(newheight < 770) newheight = 770;
 				$(this).find('.small').fadeOut('fast');
 				$(this).removeClass('closed');
 				//$(this).slideDown('slow');
@@ -72,29 +74,6 @@ jQuery(document).ready(function($){
 					height : newheight
 				}, 500);
 			}
-		}else{
-			if($(this).hasClass('closed'))
-			{
-				var newheight = $(this).attr("origheightsm");
-				$(this).find('.big_small').fadeIn(0);
-				$(this).find('.small').fadeOut('fast');
-				$(this).removeClass('closed');
-				//$(this).slideDown('slow');
-				$(this).animate({
-					height : newheight
-				}, 500);
-			}
-			else
-			{
-				$(this).addClass('closed');
-				var newheight = $(this).attr("smorigheight");
-				$(this).find('.big_small').fadeOut('fast');
-				$(this).find('.small').fadeIn('500');
-				$(this).animate({
-					height : newheight
-				}, 500);
-			}
-		}
         $("html, body").animate({
             scrollTop: ($(this).offset().top - _headerHeight)
         }, 500);

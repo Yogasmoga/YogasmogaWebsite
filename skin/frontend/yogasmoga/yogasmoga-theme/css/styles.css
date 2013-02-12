@@ -3182,11 +3182,16 @@ div.opimage .small h3.heading{color:#dd8820; font-style:italic;font-family:gotha
 div.opimage .small {
   background-attachment: fixed !important;
   background-position: 50% 50% !important;
-  background-size: cover;
+  background-size: 100%;
   cursor: pointer;
   font-family: gothamMedium;
   font-size: 12px;
   z-index: 2;
+}
+@media only screen and (device-width: 768px) {
+  div.opimage .small {
+	  background-attachment: scroll !important;
+	}
 }
 div.opimage .small .unviel{top:50%; margin-top:-50px; height:auto;}
 div.opimage .small .unviel h3.heading {font-family:ITCAvantGardeProBd; font-weight:normal; font-size:30px;color:#dd8820; text-transform:uppercase; font-style:normal; padding:0 0 10px; line-height:1;}
