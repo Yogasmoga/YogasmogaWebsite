@@ -32,7 +32,7 @@ jQuery(document).ready(function($){
     });
     
     InitializeProductQty();
-    $("div.sizeselector select.qtyselector").live("click", function(){
+    $("div.sizeselector select.qtyselector").live("change", function(){
         //alert("triggered");
         //console.log('triggered');
         changeOrderqty($(this).val());
