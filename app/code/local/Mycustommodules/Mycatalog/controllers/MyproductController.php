@@ -528,7 +528,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                                                                 <div id="howdoesitfitboxinner">
                                                                     <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
                                                                 </div>
-                                                                <img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closehowdoesitfit" />
+                                                                <img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
                                                             </div>                                                    
                                                     </div>
                                                 </td>
@@ -608,7 +608,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                 </td>
             </tr>
         </table>
-        <img id="closelightbox" src="<?php echo $this->getSkinUrl('images/catalog/product/close.png'); ?>" />
+        <img id="closelightbox" src="<?php echo $this->getSkinUrl('images/catalog/product/close1.png'); ?>" />
         <?php
     }
 }

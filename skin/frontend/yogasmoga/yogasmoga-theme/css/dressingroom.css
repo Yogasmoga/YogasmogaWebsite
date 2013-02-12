@@ -52,7 +52,7 @@
     background-image : url('../images/catalog/product/dressingroom/view_details_off.png');
     background-repeat: no-repeat;
     background-position: center center;
-    margin-top : 15px;
+    margin-top : 10px;
 }
 #dressingroomholder div.productdetail
 {
@@ -89,13 +89,13 @@
 #dressingroomholder div.productdetail div.productname
 {
     font-family:gothamMedium;
-    font-size:14px;
+    font-size:11px;
 }
 #dressingroomholder div.productdetail div.productdescription {
   font-family: gothambook;
-  font-size: 14px;
-  height: 35px;
-  line-height: 1.2;
+  font-size: 11px;
+  height: 30px;
+  line-height: 14px;
   overflow: hidden;
 }
 
@@ -242,9 +242,9 @@ div.totalcountregion
 }
 .dressingroomsubheader1 {
   font-family: gothambook;
-  font-size: 18px;
+  font-size: 11px;
   letter-spacing: 0.4pt;
-  line-height: 1.3;
+  line-height: 18px;
   margin-bottom: 15px;
   margin-top: 10px;
 }

@@ -107,6 +107,13 @@
   width: 25px;
   z-index: 8040;
 }
+.cms-home .fancybox-close {
+	background:url(../images/fancy_close.png) 50% 50% no-repeat;
+	width:30px;
+	height:30px;
+	right:-15px;
+	top:-15px;
+}
 
 .fancybox-nav {
 	position: absolute;

@@ -733,12 +733,13 @@ div#zoompopup
 }
 div#sizechart
 {
-    background-color: #999;
+    background-color: #fff;
     left: -46px;
     position: absolute;
     bottom: 100%;
     z-index: 1;
-	padding:1px;
+	padding:0;
+	border:1px solid #999;
     display : none;
 }
 div#sizechart .light-conent-box{
@@ -750,11 +751,12 @@ div#sizechart .light-conent-box{
 	        box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);*/
 }
 div#howdoesitfitbox {
-  background-color: #999;
+  background-color: #fff;
   bottom: 20px;
   display: none;
   left: -32px;
-  padding: 1px;
+	padding:0;
+	border:1px solid #999;
   position: absolute;
   z-index: 1;
 }

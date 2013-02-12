@@ -3329,7 +3329,9 @@ button span
 }
 #drsizechart a
 {
-    font-size : 14px;
+    font-size : 11px;
+	line-height:14px;
+	display:block;
     font-family: gothambook;
 }
 .italic
