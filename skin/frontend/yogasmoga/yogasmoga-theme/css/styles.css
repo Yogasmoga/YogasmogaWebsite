@@ -3188,7 +3188,7 @@ div.opimage .small {
   font-size: 12px;
   z-index: 2;
 }
-div.opimage .small .unviel{top:50%; margin-top:-50px;}
+div.opimage .small .unviel{top:50%; margin-top:-50px; height:auto;}
 div.opimage .small .unviel h3.heading {font-family:ITCAvantGardeProBd; font-weight:normal; font-size:30px;color:#dd8820; text-transform:uppercase; font-style:normal; padding:0 0 10px; line-height:1;}
 #clrimage div.opimage .small .unviel h3.heading {color:#dd8820;}
 div.opimage .small .unviel h3.heading sup{font-size:12px;}
