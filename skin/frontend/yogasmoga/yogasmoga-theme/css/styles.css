@@ -3181,7 +3181,7 @@ div.opimage .small h3.heading{color:#dd8820; font-style:italic;font-family:gotha
 }*/
 div.opimage .small {
   background-attachment: fixed !important;
-  background-position: 50% 80px !important;
+  background-position: 50% 50% !important;
   background-size: cover;
   cursor: pointer;
   font-family: gothamMedium;
