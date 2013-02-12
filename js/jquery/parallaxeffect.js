@@ -86,5 +86,19 @@ jQuery(document).ready(function($){
         originalwidth = originalwidth * 1;
         return ((originalheight / originalwidth) * (jQuery("div#pagecontainer").width() * 1));
     }
-    
+   navigator.sayswho= (function(){
+		var N= navigator.appName, ua= navigator.userAgent, tem;
+		var M= ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+		if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
+		M= M? [M[1], M[2]]: [N, navigator.appVersion, '-?'];
+
+		return M;
+	})();
+	var brwsr = navigator.sayswho[0].toLowerCase();
+	var versn = navigator.sayswho[1].substring(0,3);
+	if(brwsr == "safari"){
+		if(versn == "5.1"){
+			jQuery('div.opimage div.small').addClass('scrollbg');
+		}
+	}
 });
