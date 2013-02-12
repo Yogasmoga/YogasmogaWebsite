@@ -58,10 +58,13 @@ jQuery(document).ready(function($){
     $("table.zoomproductdetail table.zoomsmallimagecontainer td:not(.selectedimage)").live("click", function(){
         jQuery("table.zoomproductdetail table.zoomsmallimagecontainer td").removeClass('selectedimage');
         $(this).addClass('selectedimage');
-        jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage1' zoomurl='" + $(this).attr("zoomimageurl") + "' src='" + $(this).attr("bigimageurl") + "' />");
+        jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage1' zoomurl='" + $(this).attr("zoomimageurl") + "' src='" + $(this).attr("bigimageurl") + "' style='display:none;' />");
+		$j('#zoomedimage1').on('load',function(){
+			$j(this).fadeIn(250);
+		})
         return;
         jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage' src='" + $(this).attr("zoomimageurl") + "' />");
-		$("img#zoomedimage").one('load', function(){
+		$("img#zoomedimage").on('load', function(){
 			StartZooming();	
 		});
     });
@@ -150,7 +153,7 @@ jQuery(document).ready(function($){
     
     $("td#zoomedproductimage img[zoomurl]").live('click', function(){
         jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage' src='" + $(this).attr("zoomurl") + "' />");
-        $("img#zoomedimage").one('load', function(){
+        $("img#zoomedimage").on('load', function(){
 			StartZooming();	
 		});
     });

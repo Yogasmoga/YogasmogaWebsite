@@ -659,8 +659,8 @@ table.productdesignfeatures tr td div[size]
 }
 */
 /*---------Upto Here------------*/
-.smooth_zoom_preloader {
-	background-image: url('../images/zoom_assets/preloader.gif');
+#zoomedproductimage {
+	background: url('../images/zoom_assets/preloader.gif') 50% 50% no-repeat;
 }	
 .smooth_zoom_icons {
 	background-image: url('../images/zoom_assets/icons.png');
