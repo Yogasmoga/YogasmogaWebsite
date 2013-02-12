@@ -1,7 +1,8 @@
 jQuery(document).ready(function($){
 	rescarousel();
 	  var slider=jQuery('#slider').bxSlider({
-		  auto:false,
+		  auto:true,
+		  autoHover:true,
 	      pause:7000,
 		  touchEnabled:true,
 		  swipeThreshold:50,
