@@ -464,6 +464,10 @@ button.btn-brecelet:active span{background-position:0 100%;}
 }
 
 
+/*========== 404 page ======*/
+.error-page{width:770px; margin:auto; min-height:500px; text-align:left; padding:70px 0 70px;}
+.error-page p{font-size:22px; font-family:gotham-l, arial;}
+.error-page a{color:#d90d3d;}
 
 
 
