@@ -96,7 +96,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <?php
             //$_product = Mage::getModel('catalog/product')->load($_item->getId());
             $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$_item->getSku());
-            if((Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty() - $_item->getQtyOrdered()) < 0 &&  $_product->getTypeID() != "giftcards")
+            if((Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty() - $this->getQty()) < 0 &&  $_product->getTypeID() != "giftcards")
             {
                 echo "<div class='preorderinfo'>".Mage::getModel('core/variable')->loadByCode('preorder_message_email')->getValue('html')."</div>";
             }
