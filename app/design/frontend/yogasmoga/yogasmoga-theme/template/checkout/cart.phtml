@@ -255,7 +255,7 @@
                             }
                             ?>
                                 <tr>
-                                   <td style="border-top : 1px dotted #000000;" colspan="8">
+                                   <td style="border-top : 1px dotted #000000;" colspan="7">
                                    <script type="text/javascript">
                                         _productcolorinfo = new Array();
                                     <?php
@@ -359,7 +359,7 @@
                                     <td>
                                         <img src="<?php echo Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75); ?>" width="75" height="75" alt="<?php echo $productname; ?>" />
                                     </td>
-                                    <td colspan="<?php if ($this->helper('wishlist')->isAllowInCart()) { echo "3"; } else { echo "2"; } ?>">
+                                    <td colspan="<?php if ($this->helper('wishlist')->isAllowInCart()) { echo "2"; } else { echo "2"; } ?>">
                                         <h2 class="product-name">
                                             <a href="<?php echo $producturl; ?>"><?php echo $productname; ?></a>
                                         </h2>
