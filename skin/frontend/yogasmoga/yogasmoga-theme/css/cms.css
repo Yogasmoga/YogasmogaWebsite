@@ -400,6 +400,15 @@ button.btn-brecelet:active span{background-position:0 100%;}
 .namsec.forth .support-box p{margin-bottom:40px;}
 .namsec.forth .support-box {width:395px; text-align:center;}
 .namsec.forth {margin-bottom:70px;}
+
+@media screen and (min-width: 1920px) {
+.namsec.first .values-box {left: 66%; top: 23%;}
+.namsec.first .change-box { bottom: 14%;}
+.namsec.second .fchange-box { bottom: 10%;}
+	.namsec.second .fchange-box {width: 500px;}
+	.namsec.second .fchange-box .heading-mc{font-size:50px;}
+	.namsec.second .fchange-box p{font-size:30px;}
+}
 @media screen and (max-width: 1920px) {
 .namsec.first .values-box {left: 66%; top: 23%;}
 .namsec.first .change-box { bottom: 14%;}
@@ -442,6 +451,16 @@ button.btn-brecelet:active span{background-position:0 100%;}
 	.namsec.forth .support-box .heading-mc,
 	.namsec.third .meaning-box .heading-mc{font-size:24px; margin-bottom:20px;}
 	.namsec.forth .support-box p{margin-bottom:20px;}
+}
+
+@media screen and (max-device-width: 1024px) {
+	.namsec.first .values-box {top: 13%; left:55%;}
+	.values-box h1.value-title { font-size: 20px;  margin: 0 0 15px;}
+	.namsec.second .foundation-box {right: 4%; top:3%;}
+	.namsec.second .foundation-box .heading-foundation {font-size: 26px;}
+	.namsec.second .foundation-box .heading-foundation span {font-size: 22px;}
+	.namsec.second .fchange-box {width: 400px;bottom:5%;}
+	.namsec.second .fchange-box .heading-mc{font-size:36px;}
 }
 
 
