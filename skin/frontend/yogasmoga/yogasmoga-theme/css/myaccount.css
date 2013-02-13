@@ -321,7 +321,6 @@ div.shippingfootnote span.shippingnote
     font-weight: normal;
     letter-spacing: 0.03em;
     line-height: 1.2;
-    margin: 0 0 45px;
     padding: 0 0 35px;
     text-align: center;
     text-transform: uppercase;
@@ -348,7 +347,7 @@ button.button.btn-redeem
     margin-left : 15px;
     margin-top : -7px;
 }
-.account-nav{margin-bottom:45px;}
+.account-nav{margin-bottom:28px;}
 ul.sub-nav{text-indent:0; list-style:none; padding:10px; margin:0; font-family:gotham, Arial; font-size:13px; text-transform:uppercase; text-align:center; line-height:24px;}
 ul.sub-nav li {
   background: url("../images/subsep.png") no-repeat scroll 100% 50% transparent;

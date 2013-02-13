@@ -37,7 +37,7 @@
 		<tr>
 			<td colspan="2">
 				<div class="sectionheader">Address Book
-				<a href="<?php echo $this->getAddAddressUrl() ?>">ADD NEW ADDRESS</a></div>
+				<a href="<?php echo $this->getAddAddressUrl() ?>">Add</a></div>
 			</td>
 		</tr>
 		
@@ -113,7 +113,7 @@
 				<tr>
 					<?php echo '<td>'.$adrs->getData('firstname').' '.$_address->getData('lastname').'</td>'; ?>
 					<td>
-						<div class="right"><a href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>"><?php echo $this->__('Edit') ?></a> <span class="separator">|</span> <a href="#" onclick="return deleteAddress('<?php echo $_address->getId() ?>');"><?php echo $this->__('Remove') ?></a></div>
+						<div class="right"><a href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>"><?php echo $this->__('Edit') ?></a> <span class="separator">|</span> <a style="padding-left: 0;" href="#" onclick="return deleteAddress('<?php echo $_address->getId() ?>');"><?php echo $this->__('Remove') ?></a></div>
 						<p><?php echo $this->getAddressHtml($_address) ?></p>
 					</td>
 				</tr>

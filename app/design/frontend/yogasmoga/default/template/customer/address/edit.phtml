@@ -188,7 +188,7 @@
         </tr>
     </table>
     <input style="display: none;" type="text" name="fax" id="fax" title="<?php echo $this->__('Fax') ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getFax()) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('fax') ?>" />
-        
+    <div style="display: none;"> 
     <?php if($this->isDefaultBilling() && $this->isDefaultShipping())
         {
             ?>
@@ -233,6 +233,7 @@
             <?php
         }
      ?>
+     </div>
      <button style="margin-top : 70px;" type="submit" class="savebtn spbutton custombtn" imageurl="<?php echo $this->getSkinUrl('images/customer/save_button_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl("images/customer/save_button_on.png"); ?>"></button>
     <div class="loginerrormsg errormsg"><?php echo strip_tags($this->getMessagesBlock()->getGroupedHtml()); ?></div>
 </form>

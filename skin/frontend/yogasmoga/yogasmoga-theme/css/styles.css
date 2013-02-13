@@ -887,7 +887,7 @@ span.caddress span.ccon {display:block;}
 .customeraddress span.caddress span.ccomp{text-transform:uppercase; display:inline;}
 .customeraddress td{font-size:12px; padding:5px 50px 5px 0;;}
 .customeraddress th{font-style:normal; font-size:13px; text-transform:uppercase; text-align:left; padding: 5px 50px 5px 0; color:#666;}
-.customeraddress  a.addressLink{float:right; margin-right:-50px;}
+.customeraddress  a.addressLink{float:right; margin-right:-50px; text-transform: capitalize;}
 .customeraddress  td .subsectionheader{margin-bottom:0;}
 .customeraddress .right{margin-right:-50px;}
 
@@ -3449,6 +3449,7 @@ div.emptyrecord
 .data-table.ys.prdetail tfoot tr.subtotal.first td
 {
     border-top : 1px solid black;
+    padding-top: 20px;
 }
 .data-table.ys.prdetail tfoot tr.grand_total.last td
 {
@@ -3483,9 +3484,16 @@ table#order-links
     font-size: 16px;
     margin-bottom: 10px;
 }
+table#order-links td.links
+{
+    font-family: gothamlight;
+    font-size: 11px;
+    vertical-align: bottom;
+}
 table#order-links a
 {
     color : #d90d3d;
+    text-decoration: underline;
 }
 table#order-links a.link-print
 {
