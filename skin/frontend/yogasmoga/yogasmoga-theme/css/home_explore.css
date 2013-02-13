@@ -24,9 +24,20 @@
 .explore_nav_current{
 	background:url('../images/homepage/explore_nav_hover.png') repeat-x center;
 }
-#explore .bx-wrapper{padding:100px 0; background:url(../images/homepage/car_bg.png) 52% 50% no-repeat; background-size:contain; max-width:1600px; margin:0 auto; position:relative;}
+/*#explore .bx-wrapper{padding:100px 0; background:url(../images/homepage/car_bg.png) 52% 50% no-repeat; background-size:contain; max-width:1600px; margin:0 auto; position:relative;}*/
+#explore .bx-wrapper{padding:100px 0; background:url("../images/homepage/car_bg.png") no-repeat scroll 42.5% center transparent; max-width:1600px; margin:0 auto; position:relative;}
+
 #explore #slider .carousel-img{position:relative;}
 #explore #slider .carousel-img img.bximg{height:100%; width:auto;}
+#explore #slider .carousel-desc {
+  bottom: 7%;
+  padding-bottom:50px;
+  left: 50%;
+  position: absolute;
+  right: 50px;
+  text-align: center;
+}
+/*
 #explore #slider .carousel-desc {
   bottom: 0px;
   padding-bottom:50px;
@@ -35,6 +46,7 @@
   right: 50px;
   text-align: center;
 }
+*/
 #explore #slider .carousel-desc img{max-height:200px; max-width:100%;}
 
 .bx-controls {
