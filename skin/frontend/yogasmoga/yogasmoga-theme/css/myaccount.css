@@ -647,3 +647,12 @@ form#form-validate-resetpassword div.errormsg
 {
     text-align: right;
 }
+form#referfriend table.inputtable
+{
+    width : 275px;
+    padding-top : 5px;
+}
+form#referfriend td.result
+{
+    display : none;
+}
