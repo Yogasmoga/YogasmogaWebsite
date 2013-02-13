@@ -106,8 +106,35 @@ jQuery(document).ready(function($){
         _addingtocart = true;
         getcardbalance();
         return false;
+    });
+    
+    $("#form-validate-resetpassword").submit(function(){
+        return validateResetPasswordForm();
     }); 
 });
+
+function validateResetPasswordForm()
+{
+    unsetAllError(jQuery("#form-validate-resetpassword"));
+    var flag = validatefields(jQuery("#form-validate-resetpassword"));
+    if(jQuery("#password").val() != "")
+    {
+        if(jQuery.trim(jQuery("#password").val()).length < 6)
+        {
+            setOnError(jQuery("#password"),"Please enter 6 or more characters.");
+            flag = false;
+        }
+    }
+    if(jQuery("#password").val() != "" && jQuery("#confirmation").val() != "")
+    {
+        if(jQuery("#password").val() != jQuery("#confirmation").val())
+        {
+            setOnError(jQuery("#confirmation"),"Please make sure your passwords match.");
+            flag = false;
+        }
+    }
+    return flag;
+}
 
 function sharereferlink(sharetype)
 {
