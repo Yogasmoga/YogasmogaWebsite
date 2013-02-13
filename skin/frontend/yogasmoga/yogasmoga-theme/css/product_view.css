@@ -789,8 +789,8 @@ div#howdoesitfitbox div#howdoesitfitboxinner p:first-child
 img#closesmlight
 {
     position : absolute;
-    top : 0px;
-    right : 0px;
+    top : -14px;
+    right : -14px;
     cursor : pointer;
 }
 /*.loupe,

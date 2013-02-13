@@ -8,6 +8,7 @@ td.searchsidenavigation
 td.searchsidenavigation div
 {
     text-align : left;
+	position:relative; top:38px;
     text-transform: uppercase;
 }
 div.searchresultcount
@@ -31,6 +32,9 @@ td.searchsidenavigation div.subheader:first-child
 {
     margin-top : 0px;
 }
+td.searchsidenavigation a{color:#4c4c4c; display:block;}
+td.searchsidenavigation a:hover{background:#EFEEED;}
+
 td.searchsidenavigation div
 {
     font-family:gothamlight;

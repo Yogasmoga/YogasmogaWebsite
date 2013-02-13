@@ -3344,6 +3344,7 @@ button span
 	display:block;
     font-family: gothambook;
 }
+#drsizechart a.size-link{color:#333;}
 .italic
 {
     font-style: italic;
