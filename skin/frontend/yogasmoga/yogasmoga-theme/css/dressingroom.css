@@ -59,8 +59,12 @@
   #dressingroomholder div.productdetail div.viewdetails {
 	  background: none !important;
 	  text-indent:0;
+	  float:left;
 	  margin-top:1px;
 	  color:#D90d3d;
+	  line-height:14px;
+	  box-shadow:none;
+	  border-bottom:1px solid #D90d3d;
 	  width:auto;
 	  height:auto;
 	}
@@ -167,6 +171,7 @@ dressingroomholder #dressingroombottom table td.imageholder
 }
 #dressingroomdivider
 {
+    display : none;
 	position:relative;
 	width:100%;
 	background:url(../images/catalog/product/dressingroom/dressing_divider.png) 50% 50% no-repeat;
