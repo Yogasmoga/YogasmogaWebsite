@@ -87,8 +87,8 @@
 .cart-table .btn-continue { float:left; position:absolute; top:80px; left:15px;}
 .cart-table a.edit{color:#e80e40; text-decoration:underline; text-transform:capitalize;}
 .cart-table .btn-empty span{}
-.cart-table .btn-continue span {background:#fff url(../images/conitnue-arw.png) 0 50% no-repeat;text-transform:capitalize; border:0; color:#999; padding:0 0 0 12px; font-family:Arial, helvatica; letter-spacing:0;}
-.cart-table .btn-continue span span{background:none; border-bottom:1px solid #999; padding:0;}
+.cart-table .btn-continue span {background:#fff url(../images/conitnue-arw.png) 0 50% no-repeat;text-transform:capitalize; border:0; color:#d90d3d; padding:0 0 0 12px; font-family:gothamlight; letter-spacing:0; font-size : 11px; font-weight: normal;}
+.cart-table .btn-continue span span{background:none; border-bottom:1px solid #d90d3d; padding:0;}
 .cart-table .btn-update span{padding:0; width:113px; text-indent:-999em; height:28px; margin:0; background:url(../images/update-btn.png) 0 0 no-repeat; border:0;}
 .cart-table .btn-update span{
     padding:0; 
@@ -309,4 +309,8 @@ table#shopping-cart-table div.preorderinfo
     color: #D90D3D;
     font-style: italic;
     text-transform: none;
+}
+div.cart p.cart-item
+{
+    margin-top : 10px;
 }
