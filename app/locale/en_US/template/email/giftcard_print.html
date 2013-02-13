@@ -31,12 +31,13 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
             </tr>
 			<tr>
 				<td align="center" style="text-align: center;">
-					<center><img src="{{var data.picture}}" /></center>
+					<center><img src="{{var data.picture}}" style="margin:0 0 0px;" /><br>
+					{{depend data.email-message}}<p style="color:#dd8820; font-size:12px; line-height:21px; font-style:italic; font-size:16px; font-weight:bold; margin:0; padding:0 0 40px;" >{{var data.email-message}} <span style="font-style:normal">-{{var data.email-from}}</span></p>
+					{{/depend}}</center>
 				</td>
 			</tr>
 			<tr>
 				<td style="font-size:20px; line-height:30px; padding:0 0 60px;">
-					{{depend data.email-message}}<p style="color:#666; font-size:12px; line-height:18px; margin:0 0 10px; padding:0 0 60px;" >{{var data.email-message}} <strong>-{{var data.email-from}}</strong></p>{{/depend}}
 				<p style="border-top:1px solid #000; color:#666; font-size:12px; line-height:22px; text-transform:uppercase;">
 				{{depend data.email-to}}<strong>to:</strong> {{var data.email-to}}<br />{{/depend}}
                                         {{depend data.email-from}}<strong>from:</strong> {{var data.email-from}}<br />{{/depend}}					gift card value: <strong>{{var data.amount}}</strong><br />
@@ -48,9 +49,9 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
                 <td style="padding: 0 0 30px">
 					<p style="font-size:12px; margin:0;line-height:20px; font-weight:bold; text-transform:uppercase;">To redeem and use you gift card:</p>
 						<ol style="font-size:12px; margin:0 0 50px; font-weight:bold; line-height:20px;">
-							<li>Create an account and login into <a href="{{store url=""}}" style="text-decoration:none; color:#f30f44;">{{store url=""}}</a>.</li>
-							<li>Redeem the card in My Gift Cards page of My Account section.</li>
-							<li>Alternatively, you can redeem the card on My Cart page before proceeding to checkout.</li>
+							<li style="color:#666;">Create an account and login into <a href="{{store url=""}}" style="text-decoration:none; color:#d90d3d;">{{store url=""}}</a>.</li>
+							<li style="color:#666;">Redeem the card in My Gift Cards page of My Account section.</li>
+							<li style="color:#666;">Alternatively, you can redeem the card on My Cart page before proceeding to checkout.</li>
 						</ol>
 						<p style="color:#666; font-size:12px; line-height:18px; margin:0 0 20px;">-Your friends at YOGASMOGA</p>
                 </tr>
