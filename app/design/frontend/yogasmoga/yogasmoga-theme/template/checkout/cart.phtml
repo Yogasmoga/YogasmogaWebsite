@@ -46,7 +46,8 @@
 			?>
 		</p>
     </div>
-    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <?php //echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <?php Mage::getSingleton('core/session')->setGlobalMessage($this->getMessagesBlock()->getGroupedHtml()); ?>
     <?php echo $this->getChildHtml('form_before') ?>
     <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" id="bagform" method="post">
         <fieldset>
@@ -254,7 +255,7 @@
                                     array_push($productallsizes, array("label" => $instance['label'], "value" => $instance['value']) );
                             }
                             ?>
-                                <tr>
+                                <tr class="nohover">
                                    <td style="border-top : 1px dotted #000000;" colspan="7">
                                    <script type="text/javascript">
                                         _productcolorinfo = new Array();

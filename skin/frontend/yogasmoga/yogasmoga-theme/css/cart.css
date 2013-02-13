@@ -118,7 +118,7 @@
 .cart .gift-card .gift-box label{float:left; display:block; line-height:15px; padding:9px 0 1px;}
 .cart .gift-card .gift-box input.input-text{float:left; border:0; background:#fff; border-bottom:1px solid #000; padding:9px 0 1px; height:15px; font-size:11px; color:#666; margin:0 15px 0 10px;}
 
-.cart .totals table td{font-family:gotham-m; text-transform:uppercase;}
+.cart .totals table td{font-family:gothamlight; text-transform:uppercase;}
 
 .cart .smogi-bucks{width:500px; float:left; text-align:left; font-size:11px; font-family
 :Arial, Helvatica;}
@@ -126,7 +126,7 @@
 .cart .smogi-bucks p{margin-bottom:5px;}
 .cart .smogi-bucks select.input-text{padding:4px 5px; height:26px;}
 .cart .smogi-bucks select.input-text option {padding:3px 5px}
-.cart .totals table tr.reward-point td{font-family:gotham-m;}
+.cart .totals table tr.reward-point td{font-family:gothamlight;}
 .cart .totals-rewards img{margin:4px}
 
 button.btn-checkout span{padding:0; width:284px; text-indent:-999em; height:43px; margin:0; background:url(../images/checkout-btn.png) 0 0 no-repeat; border:0;}
@@ -313,4 +313,12 @@ table#shopping-cart-table div.preorderinfo
 div.cart p.cart-item
 {
     margin-top : 10px;
+}
+#giftcard-form div.gift-box
+{
+    margin-top : 10px;
+}
+.cart-table tr.nohover:hover
+{
+    background: transparent;
 }

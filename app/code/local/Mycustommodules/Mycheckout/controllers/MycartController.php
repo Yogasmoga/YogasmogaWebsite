@@ -380,7 +380,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
             //$output .= "</a>";
             $productcount++;
         }
-        $output .= "<div class='bottomlinks'> <div class='shoppingcartlink'> <a href='".$minidetails['cartlink']."'>See All</a> </div> <div class='subtotal'> <table> <tr> <td class='anchor'> SUBTOTAL </td> <td class='totalprice'> ".$minidetails['subtotal']." </td> </tr> </table> </div> <a href='".$minidetails['checkoutlink']."'> <div class='minicheckout spbutton' imageurl='".$this->getSkinUrl('images/checkout_off.png')."' downimageurl='".$this->getSkinUrl('images/checkout_on.png')."'></div></a></div>";
+        $output .= "<div class='bottomlinks'> <div class='shoppingcartlink'> <a href='".$minidetails['cartlink']."'>See all items</a> </div> <div class='subtotal'> <table> <tr> <td class='anchor'> SUBTOTAL </td> <td class='totalprice'> ".$minidetails['subtotal']." </td> </tr> </table> </div> <a href='".$minidetails['checkoutlink']."'> <div class='minicheckout spbutton' imageurl='".$this->getSkinUrl('images/checkout_off.png')."' downimageurl='".$this->getSkinUrl('images/checkout_on.png')."'></div></a></div>";
         return $output;
     }
     

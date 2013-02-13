@@ -59,7 +59,7 @@
                         <?php echo html_entity_decode(Mage::helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name')); ?>
                     </td>
                     <td class="prnote">
-                        <textarea placeholder="Notes. ." title="Comment" name="description[<?php echo $item->getWishlistItemId(); ?>]"><?php echo trim(($this->escapeHtml($item->getDescription()))); ?></textarea>
+                        <textarea style="display: none;" placeholder="Notes. ." title="Comment" name="description[<?php echo $item->getWishlistItemId(); ?>]"><?php echo trim(($this->escapeHtml($item->getDescription()))); ?></textarea>
                     </td>
                     <td class="prprice">
                         <?php
@@ -75,8 +75,10 @@
                     <td class="praddtocart">
                         <?php /*
                         <button onclick="addWItemToCart(<?php echo $item->getWishlistItemId(); ?>);" downimageurl="<?php echo $this->getSkinUrl('images/add_to_cart_on.png'); ?>" imageurl="<?php echo $this->getSkinUrl('images/add_to_cart_off.png'); ?>" class="addtocartbtn spbutton custombtn" type="button"></button>
-                        */ ?>
+                        
                         <button onclick="window.location = '<?php echo $_product->getProductUrl(); ?>';" downimageurl="<?php echo $this->getSkinUrl('images/add_to_cart_on.png'); ?>" imageurl="<?php echo $this->getSkinUrl('images/add_to_cart_off.png'); ?>" class="addtocartbtn spbutton custombtn" type="button"></button>
+                        */ ?>
+                        <a href="<?php echo $_product->getProductUrl(); ?>">View Details</a>
                     </td>
                     <?php /*
                     <?php foreach ($columns as $column): ?>
