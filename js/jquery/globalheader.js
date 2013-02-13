@@ -107,7 +107,7 @@ jQuery(document).ready(function($){
                         $("div#myminicart div.subtotal td.totalprice").html(result.grandtotal);
                         if($("div#myminicart div.minicartitems").length == 0)
                         {
-                            $("div#myminicart").html("<div class='totalitemcount'>You have no items in your Bag.</div>");
+                            $("div#myminicart").html("<div class='minctitle'>Shopping bag</div><div class='totalitemcount noitem'>You have no items in your Bag.</div>");
                         }
                     });
                 }
