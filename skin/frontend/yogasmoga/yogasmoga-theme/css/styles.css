@@ -2909,12 +2909,12 @@ div.minicheckout
     cursor : pointer;
 }
 
-#myminicart div.minicartitems img.delete
-{
-    position : absolute;
-    left : 5px;
-    top : 8px;
-    display : none;
+#myminicart div.minicartitems img.delete {
+  display: block;
+  left: 0;
+  padding: 8px 5px;
+  position: absolute;
+  top: 3px;
 }
 
 #myminicart div.minicartitems:hover img.delete
