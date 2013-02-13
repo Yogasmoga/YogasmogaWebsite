@@ -2747,12 +2747,14 @@ table.staticproductgrid div.item td.productimage img.active
     position : fixed;
     right : 0px;
     top : 55px;
+	box-shadow:0px 0px 1px #cecece;
     z-index : 999;
-    border : 0;
+	padding:8px;
     display : none;
     border-top-width: 0;
 }
-#myminicart div.totalitemcount{height:25px; background:#fff;}
+#myminicart div.minctitle{text-transform:uppercase; font-size:14px; text-align:center; font-family:gothambook, Arial; line-height:30px; border-bottom:1px solid #cecece;}
+#myminicart div.totalitemcount{line-height:35px; text-transform:uppercase;}
 #myminicart div.totalitemcount table
 {
     width : 100%;
@@ -2797,16 +2799,15 @@ table.staticproductgrid div.item td.productimage img.active
 #myminicart div.minicartitems td.tdproductimage
 {
     vertical-align: top;
-    width : 75px;
-    min-width : 75px;
+    width : 50px;
+	padding:8px 12px;
     text-align : center;
 }
 
 #myminicart div.minicartitems td
 {
-    height : 85px;
-    min-height: 85px;
-    padding-top : 12px;
+    padding : 8px 0;
+	border-bottom:1px solid #ECECEC;
 }
 
 #myminicart div.minicartitems td.tdproductprice
@@ -2911,10 +2912,10 @@ div.minicheckout
 
 #myminicart div.minicartitems img.delete {
   display: block;
-  left: 0;
+  left: -8px;
   padding: 8px 5px;
   position: absolute;
-  top: 3px;
+  top: 0;
 }
 
 #myminicart div.minicartitems:hover img.delete

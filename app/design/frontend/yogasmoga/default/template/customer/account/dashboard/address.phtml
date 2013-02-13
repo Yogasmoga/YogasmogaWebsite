@@ -47,7 +47,7 @@
 						echo '<td>'.$adrs->getData('firstname').' '.$adrs->getData('lastname').'</td>';
 						echo '<td><a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a>'.$this->getPrimaryBillingAddressHtml().'</td>'; ?>
 				<?php else: ?>
-					<td><?php echo $this->__('You have no default billing address in your address book.') ?></td>
+					<td colspan+"2"><?php echo $this->__('You have no default billing address in your address book.') ?></td>
 				<?php endif ?>
 				</tr>
 			</table>
@@ -71,7 +71,7 @@
 						echo '<td>'.$adrs->getData('firstname').' '.$adrs->getData('lastname').'</td>';
 						echo '<td><a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a>'.$this->getPrimaryShippingAddressHtml().'</td>'; ?>
 				<?php else: ?>
-					<td><?php echo $this->__('You have no default Shipping address in your address book.') ?></td>
+					<td colspan+"2"><?php echo $this->__('You have no default Shipping address in your address book.') ?></td>
 				<?php endif ?>
 				</tr>
 			</table>

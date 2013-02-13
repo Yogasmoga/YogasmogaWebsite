@@ -202,7 +202,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
             //if(strpos($_image->getLabel(), $color) === false)
 //            //if(strpos($_image->getLabel(),"*") === false)
 //                continue;
-            return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(50, 50)->setQuality(100);
+            return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(43, 65)->setQuality(100);
         }
         return "";
     }
@@ -254,7 +254,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         $output = "";
         if(Mage::getModel('checkout/cart')->getQuote()->getItemsCount() == 0)
         {
-            $output = "<div class='totalitemcount'>You have no items in your shopping bag.</div>";
+            $output = "<div class='minctitle'>Shopping bag</div><div class='totalitemcount noitem'>You have no items in your bag.</div>";
             return $output;
         }
         $_helper = Mage::helper('catalog/output');
@@ -312,7 +312,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                     $temparray['quantity'] = $item->getQty();
                     $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
                     $temparray['imageurl'] = $this->getMiniImage($item->getProductId());
-                    $temparray['imageurl'] = "_".Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(50, 50)->setQuality(100);
+                    $temparray['imageurl'] = "_".Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(43, 65)->setQuality(100);
                     $temparray['producturl'] = $_product->getProductUrl();
                     $temparray['itemid'] = $item->getItemId();
                     array_push($miniitems, $temparray);
@@ -331,7 +331,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                     $temparray['quantity'] = $item->getQty();
                     $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
                     $temparray['imageurl'] = $this->getMiniImage($item->getProductId());
-                    $temparray['imageurl'] = "_".Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(50, 50)->setQuality(100);
+                    $temparray['imageurl'] = "_".Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(43, 65)->setQuality(100);
                     $temparray['producturl'] = $_product->getProductUrl();
                     $temparray['itemid'] = $item->getItemId();
                     array_push($miniitems, $temparray);
@@ -361,9 +361,9 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
 //        print_r($minidetails);
 //        echo "</pre>";
         if($minidetails['totalitems'] > 1)
-            $output = "<div class='totalitemcount'><table><tr><td>You have <span class='cartitemcount'>".$minidetails['totalitems']."</span> items in your bag.</td></tr></table></div>";
+            $output = "<div class='minctitle'>Shopping bag</div><div class='totalitemcount'><table><tr><td>You have <span class='cartitemcount'>".$minidetails['totalitems']."</span> items in your bag.</td></tr></table></div>";
         else
-            $output = "<div class='totalitemcount'><table><tr><td>You have ".$minidetails['totalitems']." item in your bag.</td></tr></table></div>";
+            $output = "<div class='minctitle'>Shopping bag</div><div class='totalitemcount'><table><tr><td>You have ".$minidetails['totalitems']." item in your bag.</td></tr></table></div>";
         $productcount = 1;
         foreach($minidetails['items'] as $item)
         {
