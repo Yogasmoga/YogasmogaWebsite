@@ -218,6 +218,7 @@ function referafriend(name, email, id)
 
 function validateGiftCardForm()
 {
+    jQuery("#giftcardformmyaccount").find('table.inputtable td.errortext').html('<div></div>');
     unsetAllError(jQuery("#giftcardformmyaccount"));
     var flag = validatefields(jQuery("#giftcardformmyaccount"));
     return flag;

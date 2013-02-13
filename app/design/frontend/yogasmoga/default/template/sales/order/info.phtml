@@ -28,7 +28,10 @@
 <?php $_order = $this->getOrder() ?>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <div class="page-title title-buttons">
+    <?php /*
     <h1><?php echo $this->__('Order #%s - %s', $_order->getRealOrderId(), $_order->getStatusLabel()) ?></h1>
+    */ ?>
+    <h1>ORDER SUMMARY</h1>
     <?php //echo $this->getChildHtml('buttons') ?>
 </div>
 <?php /*
@@ -57,11 +60,15 @@
         <td>
             <?php echo $this->__('<strong>Order Date</strong>: %s', $this->formatDate($_order->getCreatedAtStoreDate(), 'long')) ?>
         </td>
-        <td>
+        <td class="links">
             <table>
                 <tr>
                     <ul>
                         <?php foreach ($_links as $_link): ?>
+                                <?php
+                                    if(strcasecmp($_link->getLabel(), "invoices") == 0 || strcasecmp($_link->getLabel(), "reorder") == 0)
+                                        continue;
+                                ?>
                                 <?php if($_link->getUrl()): ?>
                                     <li><a href="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></a></li>
                                 <?php else: ?>

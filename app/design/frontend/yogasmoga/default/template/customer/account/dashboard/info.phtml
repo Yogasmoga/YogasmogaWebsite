@@ -40,7 +40,9 @@
             <p>
                 <?php echo $this->htmlEscape($this->getCustomer()->getName()) ?><br />
                 <?php echo $this->htmlEscape($this->getCustomer()->getEmail()) ?><br />
+                <?php /*
                 <a href="<?php echo $this->getChangePasswordUrl() ?>"><?php echo $this->__('Change Password') ?></a>
+                */ ?>
             </p>
         </td>
         <?php if( $this->isNewsletterEnabled() ): ?>

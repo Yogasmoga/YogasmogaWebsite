@@ -35,6 +35,8 @@
 <?php echo $this->getChildHtml('head') ?>
 <script type="text/javascript">
     _disablesidenavigation = true;
+    setTimeout(function(){selectmenulink('<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account');}, 500);
+    //console.log('<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account');
 </script>
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/myaccount.css'); ?>" media="all" />
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myaccount.js"></script>
@@ -51,6 +53,7 @@
                     <tr>
                         <td>
                             <?php echo $this->getChildHtml('global_messages'); ?>
+                            <?php Mage::getSingleton('core/session')->setGlobalMessage($this->getChildHtml('global_messages')); ?>
                             <?php echo $this->getChildHtml('content'); ?>    
                         </td>
                     </tr>
