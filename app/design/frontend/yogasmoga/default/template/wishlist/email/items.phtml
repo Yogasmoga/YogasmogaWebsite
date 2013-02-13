@@ -26,31 +26,25 @@
 /* @var $this Mage_Wishlist_Block_Share_Email_Items */
 ?>
 <?php $l = $this->getWishlistItemsCount() ?>
-<div style="border:1px solid #E0E0E0; padding:15px; background:#F9F9F9;">
-<table cellspacing="0" cellpadding="0" border="0" width="650">
+<div style="display:block; text-align:center;">
+<table cellspacing="0" cellpadding="0" border="0" width="80%" style="margin:0 auto; text-align:left;">
     <tr>
+		<td colspan="2" style="border-bottom:1px solid #000;"><p style="color:#000; font-size:12px; line-height:1; margin:0 0 5px; text-transform:uppercase;">Item #/ Description</p></td>
+	</tr>
     <?php $i = 0; foreach ($this->getWishlistItems() as $item): $i++ ?>
         <?php /* @var $item Mage_Wishlist_Model_Item */ ?>
         <?php /* @var $_product Mage_Catalog_Model_Product */ ?>
         <?php $_product = $item->getProduct(); ?>
-        <td width="32%">
-            <p align="center" style="font-size:12px;"><a href="<?php echo $this->getProductUrl($_product) ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" style="border:1px solid #ccc;" width="135" height="135" alt="" /></a></p>
-            <p align="center" style="font-size:12px;"><a href="<?php echo $this->getProductUrl($_product) ?>" style="color:#203548;"><strong><?php echo $this->escapeHtml($_product->getName()) ?></strong></a></p>
-            <?php if($this->hasDescription($item)): ?><p align="center" style="font-size:12px;"><?php echo $this->__('Comment') ?>:<br /><?php echo $this->getEscapedDescription($item) ?></p><?php endif; ?>
-            <p align="center" style="font-size:12px;"><a href="<?php echo $this->getProductUrl($_product) ?>" style="color:#1E7EC8;"><?php echo $this->__('View Product') ?></a> <small>
-            <?php if ($_product->getIsSalable()): ?>|</small> <a href="<?php echo $this->getAddToCartUrl($_product) ?>" style="color:#1E7EC8;"><strong><?php echo $this->__('Add to Cart') ?></strong></a><?php endif;?>
+        <tr style="border-bottom:1px solid #f2f2f2;"><td  style="padding:5px 0px; width:100px;">
+            <a href="<?php echo $this->getProductUrl($_product) ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(100,150); ?>" style="border:1px solid #ccc;" width="150" height="150" alt="" /></a>
+		</td>
+		<td style="padding:5px 15px;">
+            <p style="color:#666; font-size:12px; line-height:1; margin:0 0 5px; text-transform:uppercase;"><a href="<?php echo $this->getProductUrl($_product) ?>" style="color:#666; text-decoration:none;"><strong><?php echo $this->escapeHtml($_product->getName()) ?></strong></a></p>
+            <?php if($this->hasDescription($item)): ?> <p style="color:#666; font-size:12px; line-height:1; margin:0 0 5px;"><?php echo $this->__('Comment') ?>:<br /><?php echo $this->getEscapedDescription($item) ?></p><?php endif; ?>
+             <p style="color:#666; font-size:12px; line-height:1; margin:0px; text-transform:uppercase;"><a href="<?php echo $this->getProductUrl($_product) ?>" style="color:#d90d3d;"><?php echo $this->__('View Product') ?></a> <small>
+            <?php if ($_product->getIsSalable()): ?>/</small> <a href="<?php echo $this->getAddToCartUrl($_product) ?>" style="color:#d90d3d;"><strong><?php echo $this->__('Add to Cart') ?></strong></a><?php endif;?>
             </p></td>
-        <?php if ($i%3!=0): ?>
-            <td width="2%"></td>
-        <?php else: ?>
            </tr>
-            <tr>
-                <td colspan="5">&nbsp;</td>
-            </tr>
-            <?php if ($i<$l): ?>
-               <tr>
-            <?php endif ?>
-        <?php endif ?>
     <?php endforeach ?>
 </table>
 </div>

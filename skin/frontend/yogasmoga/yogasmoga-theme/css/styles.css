@@ -880,7 +880,7 @@ select.qtyselector{border-bottom:0px solid #333;}
 .sidebar .paypal-logo { display:block; margin:10px 0; text-align:center; }
 .sidebar .paypal-logo a { float:none; }
 /* ======================================================================================= */
-span.caddress {}
+span.caddress br{display:none;}
 span.caddress span.ccon {display:block;}
 .address-table{width:100%;}
 .customeraddress span.caddress span.cname{display:none;}
