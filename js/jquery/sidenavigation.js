@@ -174,7 +174,7 @@ function initiateshareurl(sharetype)
     });
     //console.log(cfscreen.find('img.shareit').length);
     if(_curshareimg.length == 0)
-        _curshareimg[_curshareimg.length] = 'https://yogasmoga.com/yogasmoga_gold.jpg';
+        _curshareimg[_curshareimg.length] = 'http://yogasmoga.com/yogasmoga_gold.jpg';
     
     //console.log(_curshareimg[0]);
     
