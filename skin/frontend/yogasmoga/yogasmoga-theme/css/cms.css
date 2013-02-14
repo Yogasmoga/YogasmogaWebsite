@@ -72,9 +72,9 @@
 .main-container .main .title-div img.bg-img{display:block; width:100%;}
 .main-container .main .title-div img.overlay-img{
   left: 50%;
-  margin: -138px 0 0 -166px;
+  margin: 0 0 0 -133px;
   position: absolute;
-  top: 50%;
+  top: 0;
   z-index: 1;
 }
 .fullscreen{min-width:700px;}
