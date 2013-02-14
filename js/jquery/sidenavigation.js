@@ -183,7 +183,7 @@ function initiateshareurl(sharetype)
     else
         _cursharesummary = "YOGASMOGA is a Yoga and wellness company that makes things for life.";
     
-    //console.log(_curshareimg[0]);
+    console.log(_curshareimg[0]);
 //    if(_curshareimgurl == '')
 //        _curshareimgurl = 'https://yogasmoga.com/yogasmoga_gold.jpg';
     
