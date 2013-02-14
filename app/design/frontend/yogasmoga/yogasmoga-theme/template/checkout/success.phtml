@@ -50,7 +50,7 @@
 <div class="conf-box">
 <?php if ($this->getOrderId()):?>
 <p class="conf-msg">
-You have earned <a href="#"><?php echo Mage::getSingleton('core/session')->getrewardpointscount(); ?> SMOGI Bucks</a> with your purchase!<br/>
+You have earned <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks"><?php echo Mage::getSingleton('core/session')->getrewardpointscount(); ?> SMOGI Bucks</a> with your purchase!<br/>
 Your order <?php if ($this->getCanViewOrder()){?><a href="<?php echo $this->escapeHtml($this->getViewOrderUrl()); ?>">#<?php echo $this->escapeHtml($this->getOrderId()); ?></a><?php }else{ echo '#'.$this->escapeHtml($this->getOrderId()); } ?> has been received and you will be<br/>
 receiving an email soon with your shipment tracking number.</p>
 <p>If you have any questions, please call us at 888-990-YOGA (9642)</p>
