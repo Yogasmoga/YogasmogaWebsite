@@ -29,7 +29,7 @@ body          {font:12px/1.55 gothambook, Arial, Helvetica, sans-serif; color:#2
 
 img           { border:0; vertical-align:top; }
 
-a { color : #D90D3D;text-decoration: none; }
+a { color : #000;text-decoration: none; }
 a.visited { color : #D90D3D;text-decoration: none; }
 a:hover       { text-decoration:none; color : #D90D3D; }
 :focus        { outline:0; }

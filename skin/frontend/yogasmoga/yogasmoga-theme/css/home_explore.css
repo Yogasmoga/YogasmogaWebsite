@@ -36,14 +36,14 @@
   width: auto;
 }
 #explore #slider .carousel-desc {
-	top:250px;
+	top:150px;
   padding-bottom:50px;
   left: 48%;
   position: absolute;
   right: 50px;
   text-align: center;
 }
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 1500px) {
 	
 #explore #slider .carousel-desc {bottom:10%;top:auto;}
 }
