@@ -176,7 +176,7 @@ function initiateshareurl(sharetype)
     if(_curshareimg.length == 0)
         _curshareimg[_curshareimg.length] = 'http://yogasmoga.com/yogasmoga_gold.jpg';
     
-    //console.log(_curshareimg[0]);
+    console.log(_curshareimg[0]);
     
     if(cfscreen.attr('share-summary'))
         _cursharesummary = cfscreen.attr('share-summary');
@@ -239,7 +239,7 @@ function shareurlmain()
             url = url + '#' + cfscreenid;
         }
         _currentshareurl = url;
-        console.log(_currentshareurl);
+        //console.log(_currentshareurl);
         window.open('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(_currentshareurl) + '&media=' + _curshareimg[0] + '&description=Check out the ' + _cursharedesc + ' via @yogasmoga at ' + _currentshareurl,'Share_on_Pinterest','toolbar=0,status=0,menubar=0,width=600,height=520,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 520) / 2);
         //window.open('http://pinterest.com/pin/create/button/?media=' + _curshareimg[0] + '&description=Check out the ' + _cursharedesc + ' via @yogasmoga at ','Share_on_Pinterest','toolbar=0,status=0,menubar=0,width=600,height=520,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 520) / 2);
         break;
