@@ -8,6 +8,27 @@ class Mycustommodules_Myessentials_MylinkController extends Mage_Core_Controller
     
     public function getshorturlAction()
     {
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+        
+        $long_url = urlencode($this->getRequest()->getPost('longurl'));
+        $readresult=$write->query("SELECT shorturl from bitly where longurl='".$long_url."'");
+        $short_url = "";
+        
+        while ($row = $readresult->fetch() ) {
+            $short_url = $row['shorturl'];
+        }
+        
+        if($short_url == "")
+        {
+            $short_url = trim(file_get_contents("https://api-ssl.bitly.com/v3/shorten?longUrl=".$long_url."&APIKEY=R_487d67928c881cbd14a7d13f6acaafde&LOGIN=yogasmoga&format=txt"));
+            $write->query("Insert into bitly values(\"".$long_url."\",'".$short_url."')");
+        }
+        $arr['shorturl'] = $short_url;
+        $arr['id'] = $this->getRequest()->getPost('id');
+        echo json_encode($arr);
+        return;
+        
+        
         //$arr['longurl'] = urlencode($this->getRequest()->getPost('longurl'));
         $arr['id'] = $this->getRequest()->getPost('id');
         $long_url = urlencode($this->getRequest()->getPost('longurl'));
