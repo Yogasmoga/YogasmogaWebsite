@@ -475,7 +475,7 @@ input[type=email],
 input[type=number],
 input[type=date],
 input.input-text,
-input[type=password]{line-height: normal;display:block; width:100%; border:0; background:#fff; border-bottom:3px solid #333; color:#666; padding:3px 0; font-size:14px;}
+input[type=password]{line-height: normal;display:block; width:100%; border:0; background:#fff; border-bottom:1px solid #333; color:#666; padding:3px 0; font-size:14px;}
 select{line-height: normal;display:block; width:100%; border:0; background:#fff; border:1px solid #cecece; color:#333; padding:3px 0; font-size:14px; text-transform:uppercase; height:26px;	}
 select option{padding:5px;}
 .input-box { clear: both; }
