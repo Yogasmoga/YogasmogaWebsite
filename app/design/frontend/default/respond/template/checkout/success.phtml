@@ -19,48 +19,185 @@
  * needs please refer to http://www.magentocommerce.com for more information.
  *
  * @category    design
- * @package     default_iphone
+ * @package     base_default
  * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<div class="page-title">
-    <h1><?php echo $this->__('Your order has been received') ?></h1>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" media="all" />
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/myaccount.css'); ?>" media="all" />
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myaccount.js"></script>
+<style type="text/css">
+    .confirmation-page table.inputtable td.errortext *{
+        color: #D90D3D !important;
+        font-family: helveticaoblique !important;
+        font-size: 11px !important;
+    }
+    .confirmation-page table.inputtable td.label *{
+        color: gray !important;
+        font-family: helveticaoblique !important;
+        font-size: 11px !important;
+        font-style: italic !important;
+        letter-spacing: 0.4pt !important;
+        white-space: nowrap !important;
+    }
+</style>
+<div id="global-msg" style="display: none;margin-bottom: 80px;">
+    <ul class="messages"><li id="msqli" class="error-msg"><ul><li><span id="msgspn"></span></li></ul></li></ul>
 </div>
-<div class="checkout-success">
-    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-    <h2 class="sub-title"><?php echo $this->__('Thank you for your purchase!') ?></h2>
+<div class="confirmation-page">
+<h2 class="sub-title"><?php echo $this->__('thank you for shopping at yogasmoga. ') ?></h2>
+<div class="conf-box">
+<?php if ($this->getOrderId()):?>
+<p class="conf-msg">
+You have earned <a href="#"><?php echo Mage::getSingleton('core/session')->getrewardpointscount(); ?> SMOGI Bucks</a> with your purchase!<br/>
+Your order <?php if ($this->getCanViewOrder()){?><a href="<?php echo $this->escapeHtml($this->getViewOrderUrl()); ?>">#<?php echo $this->escapeHtml($this->getOrderId()); ?></a><?php }else{ echo '#'.$this->escapeHtml($this->getOrderId()); } ?> has been received and you will be<br/>
+receiving an email soon with your shipment tracking number.</p>
+<p>If you have any questions, please call us at 888-990-YOGA (9642)</p>
+<?php /* if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
+    <p>
+        <?php echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.', $this->getPrintUrl()) ?>
+        <?php echo $this->getChildHtml() ?>
+    </p>
+<?php endif; */ ?>
+<?php endif;?>
+</div>
+<div class="invite-box">
+<h2 class="sub-title">Invite your friends and earn 25 SMOGI Bucks</h2>
+<p>For each friend you invite we will credit your account with $25 after your friend's first purchase<br/>
+has been shipped. Enter your friend's email or find them on Gmail or Facebook.</p>
+<?php
+    if($this->helper('customer')->isLoggedIn())
+    {
+        ?>
+            <script type="text/javascript">
+                _usesecureurl = true;
+                jQuery(document).ready(function($){
+                    $("form#referfriend").submit(function(){
+                        unsetAllError($("#referfriend"));
+                        var flag = validatefields($("#referfriend"));
+                        if($('#email').val() != "")
+                        {
+                            if(!validateEmail($('#email').val()))
+                            {
+                                setOnError($('#email'), "Please enter a valid Email Address.");
+                                flag = false;
+                            }
+                        }
+                        if(!flag)
+                            return false;
+                        jQuery.ajax({
+                            type : 'POST',
+                            url : securehomeUrl + 'mycatalog/myproduct/referfriend',
+                            data : jQuery("#referfriend").serialize(),
+                            success : function(result){
+                                result = eval('(' + result + ')');
+                                if(result.status == 'success')
+                                {
+                                    //alert(result.message);
+                                    $("td.result").show();
+                                    //$("#global-msg").show();
+//                                    $("li#msqli").removeClass("error-msg").addClass("success-msg");
+//                                    $("span#msgspn").html(result.message);
+                                }
+                                else
+                                {
+                                    //alert(result.message);
+                                    setOnError($('#email'), result.message);
+                                    //$("#global-msg").show();
+//                                    $("li#msqli").addClass("error-msg").removeClass("success-msg");
+//                                    $("span#msgspn").html(result.message);
+                                }
+                                //$("div.confirmation-page").css('padding-top','0px');
+                            }
+                        });
+                        return false;
+                    });
+                });
+            </script>
+            <div class="invite-action">
+            	<div class="invite-form">
+            		<form id="referfriend" action="" method="post">
+                        <table>
+                            <tr>
+                                <td>
+                                    <table class="inputtable">
+                                        <tr>
+                                            <td class="label"><label for="name">Friend's Name</label></td>
+                                            <td class="inputholder">
+                                                <input type="text" name="name[]" class="requiredfield" id="name" defaulterrormsg="Friend's Name is required" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="errortext" colspan="2">
+                                                <div>Friend's Name is required</div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td style="padding-left: 15px;">
+                                    <table class="inputtable">
+                                        <tr>
+                                            <td class="label"><label for="email">Friend's Email</label></td>
+                                            <td class="inputholder">
+                                                <input type="text" class="requiredfield" name="email[]" defaulterrormsg="Friend's Email is required" id="email" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="errortext" colspan="2">
+                                                <div>Friend's Name is required</div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td style="padding-left: 15px;">
+                                    <button class="button btn-invite"><span><span>Invite</span></span></button>            
+                                </td>
+                                <td class="result" style="padding-left: 15px;padding-top : 7px;">
+                                    <img src="<?php echo $this->getSkinUrl('images/invite_success.png') ?>" />
+                                </td>
+                            </tr>
+                        </table>
+                        <?php /*
+            			<div class="input_box">
+            			<label>Friend's Name</label>
+            			<input type="text" class="input-box" name="name[]" />
+            			</div>
+                        <div class="input_box">
+            			<label>Friend's Email</label>
+            			<input type="text" class="input-box" name="email[]" />
+            			</div>
+            			<button class="button btn-invite"><span><span>Invite</span></span></button>
+                        */ ?>
+            		</form>
+            	</div>
+            	<?php
+                    $userId = Mage::getSingleton('customer/session')->getCustomer()->getId();
+                    $refurl = $this->getUrl('rewardpoints/index/goReferral', array("referrer" => $userId));
+                ?>
+            	<div class="social-btns">
+            		<a style="display: none;" href="#" class="pinterest" onclick="sharereferlink('pinterest','<?php echo $refurl; ?>')">Pinterest</a>
+            		<a href="#" class="twitter" onclick="sharereferlink('twitter','<?php echo $refurl; ?>')">Twitter</a>
+            		<a href="#" class="facebook" onclick="sharereferlink('facebook','<?php echo $refurl; ?>')">Facebook</a>
+            		<a href="#" class="email" onclick="sharereferlink('mail','<?php echo $refurl; ?>')">Email</a>
+            	</div>
+            </div>      
+        <?php
+    }
+?>
+</div>
 
-    <?php if ($this->getOrderId()):?>
-        <?php if ($this->getCanViewOrder()) :?>
-            <p><?php echo $this->__('Your order # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
-        <?php  else :?>
-            <p><?php echo $this->__('Your order # is: %s.', $this->escapeHtml($this->getOrderId())) ?></p>
-        <?php endif;?>
-            <p><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?></p>
-        <?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
-            <p>
-                <?php echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.', $this->getPrintUrl()) ?>
-                <?php echo $this->getChildHtml() ?>
-            </p>
-        <?php endif;?>
-    <?php endif;?>
+<?php if ($this->getAgreementRefId()): ?>
+    <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+<?php endif;?>
 
-    <?php if ($this->getAgreementRefId()): ?>
-        <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
-    <?php endif;?>
-
-    <?php if ($profiles = $this->getRecurringProfiles()):?>
-    <p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
-    <ul class="disc">
-    <?php foreach($profiles as $profile):?>
-    <?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
-        <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
-    <?php endforeach;?>
-    </ul>
-    <?php endif;?>
-
-    <div class="buttons-set">
-        <button type="button" class="button" title="<?php echo $this->__('Continue Shopping') ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
-    </div>
+<?php if ($profiles = $this->getRecurringProfiles()):?>
+<p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+<ul class="disc">
+<?php foreach($profiles as $profile):?>
+<?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+    <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+<?php endforeach;?>
+</ul>
+<?php endif;?>	
 </div>
