@@ -62,20 +62,30 @@ jQuery(document).ready(function($){
     });
     
     $("#pageScrollerNav #shareicons #facebook").click(function(){
-        shareonfb();
+        initiateshareurl('facebook');
+        //shareonfb();
     });
     
     $("#pageScrollerNav #shareicons #twitter").click(function(){
-        shareontw();
+        initiateshareurl('twitter');
+        //shareontw();
     });
     
     $("#pageScrollerNav #shareicons #pinterest").click(function(){
-        shareonpt();
+        initiateshareurl('pinterest');
+        //shareonpt();
     });
     
     $("#pageScrollerNav #shareicons #mail").click(function(){
-        shareonmail();
+        //_cursharetype = 'mail';
+//        getsharedesc();
+//        getshorturl();
+        initiateshareurl('mail');
+        //shareonmail();
     });
+    
+    //initializeurl();
+    
     if(!_onipad){
 		$("div#pgNavDown").hover(function(){
 			window.clearInterval(_sidenavtimer);
@@ -119,6 +129,109 @@ jQuery(document).ready(function($){
 		});
 	}
 });
+
+function initializeurl()
+{
+    var url = _currenturl;
+    if(url.indexOf("#") >= 0)
+        url = url.substr(0, url.indexOf("#"));
+    jQuery(".pgsection").each(function(){
+        jQuery.ajax({
+            type : 'POST',
+            url : homeUrl + 'myessentials/mylink/getshorturl',
+            data : {'longurl': url + '#' + jQuery(this).attr('id'),'id':jQuery(this).attr('id')},
+            success : function(result){
+                //result = eval('(' + result + ')');
+//                _currentshareurl = result.shorturl;
+//                shareurl();
+            }
+        });
+    });
+}
+
+function initiateshareurl(sharetype)
+{
+    _cursharetype = sharetype;
+    var cfscreen = jQuery("#" + getcurrentfullscreenid());
+    _cursharedesc = cfscreen.attr("desc");
+    if(cfscreen.attr('share-url'))
+        _currentshareurl = cfscreen.attr('share-url');
+    else
+    {
+        var url = _currenturl;
+        var cfscreenid = getcurrentfullscreenid();
+        if(!endsWith(url, cfscreenid))
+        {
+            if(url.indexOf("#") >= 0)
+                url = url.substr(0, url.indexOf("#"));
+            url = url + '#' + cfscreenid;
+        }
+        _currentshareurl = url;
+    }
+    
+    _curshareimg = new Array();
+    cfscreen.find('img.shareit').each(function(){
+        _curshareimg[_curshareimg.length] = jQuery(this).attr('src');
+    });
+    if(_curshareimg.length == 0)
+        _curshareimg[_curshareimg.length] = 'https://yogasmoga.com/yogasmoga_gold.jpg';
+    
+    if(cfscreen.attr('share-summary'))
+        _cursharesummary = cfscreen.attr('share-summary');
+    else
+        _cursharesummary = "YOGASMOGA is a Yoga and wellness company that makes things for life.";
+    
+    //console.log(_curshareimg[0]);
+//    if(_curshareimgurl == '')
+//        _curshareimgurl = 'https://yogasmoga.com/yogasmoga_gold.jpg';
+    
+    shareurl();
+    return;
+    
+    var url = _currenturl;
+    var cfscreenid = getcurrentfullscreenid();
+    if(!endsWith(url, cfscreenid))
+    {
+        if(url.indexOf("#") >= 0)
+            url = url.substr(0, url.indexOf("#"));
+        url = url + '#' + cfscreenid;
+    }
+    _currentshareurl = url;
+    
+    jQuery.ajax({
+        type : 'POST',
+        url : homeUrl + 'myessentials/mylink/getshorturl',
+        data : {'longurl': _currentshareurl},
+        success : function(result){
+            result = eval('(' + result + ')');
+            _currentshareurl = result.shorturl;
+            shareurl();
+        }
+    });
+}
+
+function shareurl()
+{
+    switch(_cursharetype)
+    {
+    case 'mail':
+        window.location = "mailto:?Subject=" + encodeURIComponent("YOGASMOGA | " + _cursharedesc) + "&body=" + encodeURIComponent("Check out the " + _cursharedesc + " at " + _currentshareurl);
+        break;
+    case 'facebook':
+        //console.log('here');
+        window.open('http://www.facebook.com/sharer.php?s=100&p[url]= Check out the ' + _cursharedesc + ' via @yogasmoga at ' + encodeURIComponent(_currentshareurl) + '&p[images][0]=' + _curshareimg[0] + '&p[title]=YOGASMOGA | ' + _cursharedesc + '&p[summary]=' + _cursharesummary,'Share_on_Faceook','toolbar=0,status=0,menubar=0,width=600,height=300,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 300) / 2);
+        break;
+    case 'twitter':
+        //window.open('http://www.twitter.com/share?url=' + encodeURIComponent(_currentshareurl),'Share_on_Twitter','toolbar=0,status=0,menubar=0,width=600,height=450,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 450) / 2);
+        window.open('http://www.twitter.com/home?status=Check out the ' + _cursharedesc + ' via @yogasmoga at ' + encodeURIComponent(_currentshareurl),'Share_on_Twitter','toolbar=0,status=0,menubar=0,width=600,height=450,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 450) / 2);
+        break;
+    case 'pinterest':
+        //window.open('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(shareurl) + '&media=' + _curshareimgurl + '&description=Yogasmoga Video','Share_on_Pinterest','toolbar=0,status=0,menubar=0,width=600,height=520,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 520) / 2);
+        window.open('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(_currentshareurl) + '&media=' + _curshareimg[0] + '&description=Check out the ' + _cursharedesc + ' via @yogasmoga at ' + _currentshareurl,'Share_on_Pinterest','toolbar=0,status=0,menubar=0,width=600,height=520,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 520) / 2);
+        break;
+    default:
+    }
+}
 
 function changesidenavpopupdesc()
 {
@@ -166,7 +279,7 @@ function closeSharingOptions()
     }, 500);
 }
 
-function shareonfb()
+function getshareurl()
 {
     var url = _currenturl;
     var cfscreenid = getcurrentfullscreenid();
@@ -177,6 +290,21 @@ function shareonfb()
         url = url + '#' + cfscreenid;
     }
     _currentshareurl = url;
+}
+
+function shareonfb()
+{
+    getshareurl();
+    //var url = _currenturl;
+//    var cfscreenid = getcurrentfullscreenid();
+//    if(!endsWith(url, cfscreenid))
+//    {
+//        if(url.indexOf("#") >= 0)
+//            url = url.substr(0, url.indexOf("#"));
+//        url = url + '#' + cfscreenid;
+//    }
+    //_currentshareurl = url;
+    var cfscreenid = getcurrentfullscreenid();
     var currentpage = jQuery("#" + cfscreenid);
     //window.open('http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(_currentshareurl) + '&p[images][0]=http://staging.yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/yoga_logo_side.jpg&p[title]=' + currentpage.attr("desc") + '&p[summary]=Summary Here','Share_on_Faceook','toolbar=0,status=0,menubar=0,width=600,height=300,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 300) / 2);
     if(_curshareimgurl == '')

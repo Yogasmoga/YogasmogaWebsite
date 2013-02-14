@@ -9,6 +9,7 @@ class Mycustommodules_Myessentials_MylinkController extends Mage_Core_Controller
     public function getshorturlAction()
     {
         //$arr['longurl'] = urlencode($this->getRequest()->getPost('longurl'));
+        $arr['id'] = $this->getRequest()->getPost('id');
         $long_url = urlencode($this->getRequest()->getPost('longurl'));
         $arr['shorturl'] = trim(file_get_contents("https://api-ssl.bitly.com/v3/shorten?longUrl=".$long_url."&APIKEY=R_487d67928c881cbd14a7d13f6acaafde&LOGIN=yogasmoga&format=txt"));
         echo json_encode($arr);

@@ -46,3 +46,7 @@ var _curshareimgurl = '';
 var _onipad = false;
 var _checkoutdatachanged = false;
 var _sizesuperattribute = true;
+var _cursharetype = '';
+var _cursharedesc = '';
+var _curshareimg = new Array();
+var _cursharesummary = '';
