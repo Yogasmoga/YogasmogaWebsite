@@ -136,9 +136,10 @@ function validateResetPasswordForm()
     return flag;
 }
 
-function sharereferlink(sharetype)
+function sharereferlink(sharetype, url)
 {
-    var shareurl = jQuery("input#uniquelink").val();
+    //var shareurl = jQuery("input#uniquelink").val();
+    var shareurl = (typeof url === "undefined") ? jQuery("input#uniquelink").val() : url;
     if(_curshareimgurl == '')
         _curshareimgurl = 'https://yogasmoga.com/yogasmoga_gold.jpg';
     switch(sharetype)

@@ -166,7 +166,7 @@
                 {
                     $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$item->getSku());
                     $product = Mage::getModel('catalog/product')->load($item->getProductId());
-                    if((Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty()) < 0)
+                    if((Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty() - $item->getQty()) < 0)
                         $temparray['preorder'] = true;
                     else
                         $temparray['preorder'] = false;
@@ -175,7 +175,6 @@
                     $temparray['name'] = $item->getName();
                     if(strlen($temparray['name']) > 14)
                         $temparray['name'] = substr($temparray['name'], 0, 13)."...";
-                        
                     if(issuperattribute($product, "color"))
                     {
                         $temparray['color'] = $_product->getAttributeText('color');
@@ -199,7 +198,7 @@
                 if(searchcart($miniitems, $item->getSku()) == false)
                 {
                     $_product = Mage::getModel('catalog/product')->load($item->getProductId());
-                    if((Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty()) < 0)
+                    if((Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty() - $item->getQty()) < 0)
                         $temparray['preorder'] = true;
                     else
                         $temparray['preorder'] = false;
@@ -227,6 +226,7 @@
 //                        $temparray['preorder'] = true;
 //                    else
 //                        $temparray['preorder'] = false;
+                    $temparray['preorder'] = false;
                     $temparray['sku'] = $item->getSku();
                     //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
                     $temparray['name'] = $item->getName();

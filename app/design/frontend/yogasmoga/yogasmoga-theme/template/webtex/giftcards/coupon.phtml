@@ -16,6 +16,14 @@
             <button value="<?php echo $this->__('Apply') ?>" onclick="giftcardForm.submit(true)" class="button btn-apply" title="Apply" type="button"><span><span><?php echo $this->__('Apply') ?></span></span></button>
         </div>
         </form>
+        <?php
+            if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false)
+            {
+                ?>
+                    <div class="errormsg"><?php echo strip_tags(Mage::getSingleton('core/session')->getGlobalMessage()); ?></div>            
+                <?php
+            }
+        ?>
     </div>
     <?php else : ?>
     <h2><?php echo $this->__('Do you have a Gift of YS Card?'); ?></h2>
@@ -31,13 +39,13 @@
 <script type="text/javascript">
 //&lt;![CDATA[
     jQuery(document).ready(function($){
-        
     });
 
 var giftcardForm = new VarienForm('giftcard-form');
 giftcardForm.submit = function (isRemove) {
+    console.log('after');
     if (isRemove) {
-        $('giftcard_code').addClassName('required-entry');
+        //$('giftcard_code').addClassName('required-entry');
         $('giftcard_use').checked = "checkbox";
         $('giftcard_use').value = "1";
     } else {

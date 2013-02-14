@@ -78,7 +78,7 @@
 .logintable p
 {
     margin : 0;
-    font-size:11px;
+    font-size:13px;
     font-family:gothamlight;
 }
 
@@ -646,4 +646,13 @@ form#form-validate-resetpassword input[type='submit']
 form#form-validate-resetpassword div.errormsg
 {
     text-align: right;
+}
+form#referfriend table.inputtable
+{
+    width : 275px;
+    padding-top : 5px;
+}
+form#referfriend td.result
+{
+    display : none;
 }

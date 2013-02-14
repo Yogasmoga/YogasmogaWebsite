@@ -48,6 +48,20 @@ table.tblwishlist td.prname
     letter-spacing: 0.4px;
     margin-bottom: 10px;
 }
+table.tblwishlist td.prnote
+{
+    width : 200px;
+    min-width : 200px;
+    max-width: 200px;    
+}
+table.tblwishlist td.praddtocart
+{
+    padding-left : 20px;
+}
+table.tblwishlist td.praddtocart a
+{
+    text-decoration: underline;
+}
 table.tblwishlist td.prname, table.tblwishlist td.primage, table.tblwishlist td.prnote
 {
     padding-right : 40px;
