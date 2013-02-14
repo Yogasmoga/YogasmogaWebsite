@@ -68,6 +68,7 @@
 	  width:auto;
 	  height:auto;
 	}
+	#dressingroomholder div.productdetail div.productdescription{display:none;}
 }
 #dressingroomholder div.productdetail
 {

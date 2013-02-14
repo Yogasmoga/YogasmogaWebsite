@@ -36,7 +36,7 @@ jQuery(document).ready(function($){
 		$('.ovl-box').swipe({
 			swipeLeft	:function(){$(this).parent().find('a.prevBtn').trigger('click')},
 			swipeRight	:function(){$(this).parent().find('a.nextBtn').trigger('click')},
-			threshold	:100
+			threshold	:10
 		});
 	}
 	$('a.prevBtn').click(function(){
