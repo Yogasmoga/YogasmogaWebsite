@@ -3342,6 +3342,7 @@ button span
     font-family: gothambook;
 }
 #drsizechart a.size-link{color:#333;}
+#drsizechart a.size-link:hover{color:#d90d3d;}
 .italic
 {
     font-style: italic;
