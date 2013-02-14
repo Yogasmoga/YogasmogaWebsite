@@ -1,5 +1,4 @@
 var _productcolorinfo = new Array();
-
 jQuery(document).ready(function($){
 	
         //console.clear();

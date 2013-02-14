@@ -120,6 +120,10 @@ jQuery(document).ready(function($){
 
 function loadminicart()
 {
+    if(window.location.href.indexOf('https://') >= 0)
+        _usesecureurl = true;
+    else
+        _usesecureurl = false;
     var url = homeUrl + 'mycheckout/mycart/minidetails';
     if(_usesecureurl)
         url = securehomeUrl + 'mycheckout/mycart/minidetails';
