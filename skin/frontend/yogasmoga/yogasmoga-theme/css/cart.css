@@ -243,7 +243,7 @@ h1.big-title{font-size:100px; font-family:gotham-t, Arial; line-height:104px; te
 .goy-form .col select option{background:none; border:0; padding:3px 5px;}
 .goy-form .full{float:none; width:770px; border:0; margin-top:50px;}
 .goy-form .full label{display:block;}
-.goy-form .full textarea{display:block; padding:5px; width:760px; height:90px; border:1px solid #000; font-family:gotham-l; font-size:12px; font-style:oblique; background:none; color:#999;}
+.goy-form .full textarea{display:block; padding:5px; width:760px; height:90px; border:1px solid #000; font-family:gotham-l; font-size:12px; background:none; color:#999;}
 .goy-form .button-set{display:block; min-height:30px;}
 .goy-form .button-set button.button{float:right; margin-left:30px;}
 .goy-balance .sub-title{font-size:14px; text-transform:uppercase; font-weight:normal; font-family:ITCAvantGardeProBd, Arial; margin:0 0 10px; color:#666;}

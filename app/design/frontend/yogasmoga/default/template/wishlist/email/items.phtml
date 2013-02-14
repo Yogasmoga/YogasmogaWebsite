@@ -27,16 +27,16 @@
 ?>
 <?php $l = $this->getWishlistItemsCount() ?>
 <div style="display:block; text-align:center;">
-<table cellspacing="0" cellpadding="0" border="0" width="80%" style="margin:0 auto; text-align:left;">
+<table cellspacing="0" cellpadding="0" border="0" width="100%" style="margin:0 auto; text-align:left;">
     <tr>
-		<td colspan="2" style="border-bottom:1px solid #000;"><p style="color:#000; font-size:12px; line-height:1; margin:0 0 5px; text-transform:uppercase;">Item #/ Description</p></td>
+		<td colspan="2" style="border-bottom:1px solid #666;"><p style="color:#000; font-size:12px; line-height:1; margin:0 0 5px; text-transform:uppercase;">Item #/ Description</p></td>
 	</tr>
     <?php $i = 0; foreach ($this->getWishlistItems() as $item): $i++ ?>
         <?php /* @var $item Mage_Wishlist_Model_Item */ ?>
         <?php /* @var $_product Mage_Catalog_Model_Product */ ?>
         <?php $_product = $item->getProduct(); ?>
         <tr style="border-bottom:1px solid #f2f2f2;"><td  style="padding:5px 0px; width:100px;">
-            <a href="<?php echo $this->getProductUrl($_product) ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(100,150); ?>" style="border:1px solid #ccc;" width="150" height="150" alt="" /></a>
+            <a href="<?php echo $this->getProductUrl($_product) ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(100,150); ?>" style="border:1px solid #ccc;" width="150"  alt="" /></a>
 		</td>
 		<td style="padding:5px 15px;">
             <p style="color:#666; font-size:12px; line-height:1; margin:0 0 5px; text-transform:uppercase;"><a href="<?php echo $this->getProductUrl($_product) ?>" style="color:#666; text-decoration:none;"><strong><?php echo $this->escapeHtml($_product->getName()) ?></strong></a></p>

@@ -88,7 +88,8 @@ table.productdetailtable div.breadcrumb
     margin-bottom: 10px;
     text-transform: uppercase;
 }
-
+table.productdetailtable div.breadcrumb a{color:#000;}
+table.productdetailtable div.breadcrumb a:hover{color:#d30d3d;}
 table.productdetailtable div.productname
 {
     color: #000000;
