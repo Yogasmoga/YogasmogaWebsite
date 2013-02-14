@@ -25,7 +25,7 @@
 /* Reset ================================================================================= */
 * { margin:0; padding:0;}
 
-body          {font:12px/1.55 gothambook, Arial, Helvetica, sans-serif; color:#2f2f2f; text-align:center;}
+body          {font:12px/1.55 gothambook, Arial, Helvetica; color:#2f2f2f; text-align:center;}
 
 img           { border:0; vertical-align:top; }
 
@@ -35,7 +35,7 @@ a:hover       { text-decoration:none; color : #D90D3D; }
 :focus        { outline:0; }
 
 .topmenulinks li a {
-	font-family:gothamlight;
+	font-family:gothamlight,gothambook;
 	font-size:11px;
 	}
 
@@ -140,7 +140,7 @@ ul,ol         { list-style:none; }
 
 /* Global Styles ========================================================================= */
 /* Form Elements */
-input,select,textarea,button { font:12px/15px Arial, Helvetica, sans-serif; vertical-align:middle; color:#2f2f2f; }
+input,select,textarea,button { font:12px/15px Arial, Helvetica; vertical-align:middle; color:#2f2f2f; }
 input.input-text,select,textarea { background:#fff; border:1px solid #b6b6b6; }
 input.input-text,textarea { padding:2px; }
 select { padding:1px; }
@@ -154,11 +154,11 @@ input.qty { width:2.5em !important; }
 button.button::-moz-focus-inner { padding:0; border:0; } /* FF Fix */
 button.button { -webkit-border-fit:lines; } /* <- Safari & Google Chrome Fix */
 button.button { overflow:visible; width:auto; border:0; padding:0; margin:0; background:transparent; cursor:pointer; }
-button.button span { display:block; height:19px; border:1px solid #de5400; background:#dd8820; padding:0 8px; font:bold 12px/19px Arial, Helvetica, sans-serif; text-align:center; white-space:nowrap; color:#fff; }
+button.button span { display:block; height:19px; border:1px solid #de5400; background:#dd8820; padding:0 8px; font:bold 12px/19px Arial, Helvetica; text-align:center; white-space:nowrap; color:#fff; }
 button.button span span { border:0; padding:0; }
 button.disabled span { border-color:#bbb !important; background:#bbb !important; }
 
-button.btn-checkout span { height:40px; border:0; background:url(../images/btn_checkout.gif) 0 0 no-repeat; padding:0 0 0 9px; font:bold 15px/40px Arial, Helvetica, sans-serif; color:#fff; }
+button.btn-checkout span { height:40px; border:0; background:url(../images/btn_checkout.gif) 0 0 no-repeat; padding:0 0 0 9px; font:bold 15px/40px Arial, Helvetica; color:#fff; }
 button.btn-checkout span span { background-position:100% 0; padding:0 25px 0 16px; }
 button.btn-checkout.no-checkout span { background-position:0 100%; color:#b8baba; }
 button.btn-checkout.no-checkout span span { background-position:100% 100%; }
@@ -621,7 +621,7 @@ select.qtyselector{border-bottom:0px solid #333;}
 .header .form-search label { float:left; width:24px; height:21px; text-align:left; text-indent:-999em; overflow:hidden; }
 .header .form-search input.input-text { float:left; border-color:#5c7989; width:209px; margin-right:4px; }
 .header .form-search button.button { float:left; }
-.header .form-search button.button span { border:0; height:21px; background:url(../images/btn_search.gif) 0 0 no-repeat; padding:0 0 0 3px; font:bold 11px/21px Tahoma, Verdana, Arial, sans-serif; }
+.header .form-search button.button span { border:0; height:21px; background:url(../images/btn_search.gif) 0 0 no-repeat; padding:0 0 0 3px; font:bold 11px/21px Tahoma, Verdana, Arial; }
 .header .form-search button.button span span { background-position:100% 0; padding:0 6px 0 3px; }
 .header .form-search .search-autocomplete { z-index:999; left:40px !important; top:22px !important; }
 .header .form-search .search-autocomplete ul { border:1px solid #5c7989; background-color:#f9f5f0; }
@@ -697,7 +697,7 @@ select.qtyselector{border-bottom:0px solid #333;}
 /* Sidebar =============================================================================== */
 .block { border:1px solid #c4c1bc; margin:0 0 15px; }
 .block .block-title { background:url(../images/bkg_block-title.gif) 0 0 repeat-x; border-bottom:1px solid #ddd; padding:2px 9px; }
-.block .block-title strong { display:block; font:bold 12px/16px Arial, Helvetica, sans-serif; min-height:16px; padding:1px 0 1px; text-transform:uppercase; color:#dd8820; }
+.block .block-title strong { display:block; font:bold 12px/16px Arial, Helvetica; min-height:16px; padding:1px 0 1px; text-transform:uppercase; color:#dd8820; }
 .block .block-title strong span {}
 .block .block-title a { text-decoration:none !important; }
 .block .block-subtitle { margin:0; padding:5px 9px; font-size:1em; font-weight:bold; color:#0a263c; }
@@ -759,7 +759,7 @@ select.qtyselector{border-bottom:0px solid #333;}
 /* Block: Currency Switcher */
 .block-currency { border:0; background:url(../images/bkg_block-currency.gif) 0 0 no-repeat; padding:7px 12px 10px; height:51px; }
 .block-currency .block-title { background:none; border:0; padding:0; margin:0 0 5px; }
-.block-currency .block-title strong { font:bold 13px/21px Arial, Helvetica, sans-serif; background:url(../images/i_block-currency.gif) 0 50% no-repeat; padding:0 0 0 21px; text-transform:none; color:#fff; }
+.block-currency .block-title strong { font:bold 13px/21px Arial, Helvetica; background:url(../images/i_block-currency.gif) 0 50% no-repeat; padding:0 0 0 21px; text-transform:none; color:#fff; }
 .block-currency .block-content { background:none; padding:0; }
 .block-currency .block-content select { width:100%; padding:0; }
 
@@ -1089,7 +1089,7 @@ span.caddress span.ccon {display:block;}
 .product-view { border:1px solid #c4c6c8; }
 
 .product-essential { padding:25px; background:#fff url(../images/bkg_product-view.gif) 100% 0 no-repeat; }
-.product-essential h2 { font:bold 13px/1.35 Arial, Helvetica, sans-serif; }
+.product-essential h2 { font:bold 13px/1.35 Arial, Helvetica; }
 
 .product-collateral { background:#faf7ee url(../images/bkg_product_collateral.gif) 0 0 repeat-x; padding:25px; }
 .product-collateral h2 { font-weight:bold; font-size:15px; color:#dd8820; border-bottom:1px solid #e5dcc3; padding:0 0 1px; margin:0 0 15px; }
@@ -1124,7 +1124,7 @@ span.caddress span.ccon {display:block;}
 .col1-layout .product-view .product-shop { float:right; width:545px; }
 .col3-layout .product-view .product-shop { float:none; width:auto; }
 .product-view .product-shop .product-name { margin:0 0 5px; }
-.product-view .product-shop .product-name h1 { margin:0; font:bold 15px/1.35 Arial, Helvetica, sans-serif; }
+.product-view .product-shop .product-name h1 { margin:0; font:bold 15px/1.35 Arial, Helvetica; }
 .product-view .product-shop .availability { margin:10px 0; }
 .product-view .product-shop .short-description { margin:10px 0; background:url(../images/bkg_divider1.gif) 0 0 repeat-x; padding:10px 0 0; }
 .product-view .product-shop .price-box { margin:10px 0; }
@@ -1324,7 +1324,7 @@ span.caddress span.ccon {display:block;}
 .cart .discount,
 .cart .shipping { border:1px solid #d0cbc1; background:#fff url(../images/bkg_block-title.gif) 0 0 repeat-x; padding:12px 15px; margin:0 0 18px; }
 .cart .discount h2,
-.cart .shipping h2 { background-position:0 0; background-repeat:no-repeat; font:bold 13px/16px Arial, Helvetica, sans-serif; padding:0 0 0 21px; color:#dd8820; text-transform:uppercase; }
+.cart .shipping h2 { background-position:0 0; background-repeat:no-repeat; font:bold 13px/16px Arial, Helvetica; padding:0 0 0 21px; color:#dd8820; text-transform:uppercase; }
 .cart .discount button span,
 .cart .shipping button span { border-color:#406a83; background:#618499; }
 .cart .discount .buttons-set,
@@ -1488,8 +1488,8 @@ span.caddress span.ccon {display:block;}
 .opc li.section {}
 
 .opc .step-title { border-width:0 1px; border-style:solid; border-color:#fff #d9dde3 #d9dde3; background:#eee url(../images/bkg_opc-title-off.gif) 0 100% repeat-x; padding:4px 8px 6px; text-align:right; }
-.opc .step-title .number { float:left; background:#fff; border:1px solid #fff; padding:0 4px; margin:0 5px 0 0; font:bold 11px/14px arial, helvetica, sans-serif; color:#999; }
-.opc .step-title h2 { float:left; margin:0; font:bold 13px/16px Arial, Helvetica, sans-serif; color:#999; }
+.opc .step-title .number { float:left; background:#fff; border:1px solid #fff; padding:0 4px; margin:0 5px 0 0; font:bold 11px/14px arial, helvetica; color:#999; }
+.opc .step-title h2 { float:left; margin:0; font:bold 13px/16px Arial, Helvetica; color:#999; }
 .opc .step-title a { display:none; float:right; font-size:11px; line-height:16px; }
 
 .opc .allow .step-title { background:#d0dce1; border:1px solid #a3aeb3; border-bottom:0; color:#a4b3b9; cursor:pointer; }
@@ -1623,7 +1623,7 @@ span.caddress span.ccon {display:block;}
 .remember-me-popup .remember-me-popup-head { position:relative; }
 .remember-me-popup .remember-me-popup-head .remember-me-popup-close { background:url(../images/btn_window_close.gif) no-repeat; display:block; position:absolute; top:7px; right:7px; height:15px; width:15px; text-indent:-9999em; }
 .remember-me-popup .remember-me-popup-body { padding:10px; }
-.remember-me-popup .remember-me-popup-body a { display:inline-block; height:19px; border:1px solid #de5400; background:#dd8820; padding:0 8px; font:bold 12px/19px Arial, Helvetica, sans-serif; text-align:center; text-decoration:none; white-space:nowrap; color:#fff; }
+.remember-me-popup .remember-me-popup-body a { display:inline-block; height:19px; border:1px solid #de5400; background:#dd8820; padding:0 8px; font:bold 12px/19px Arial, Helvetica; text-align:center; text-decoration:none; white-space:nowrap; color:#fff; }
 /* Remember Me Popup ===================================================================== */
 
 
@@ -3203,15 +3203,15 @@ div.opimage .small .unviel{top:50%; margin-top:-50px; height:auto;}
 div.opimage .small .unviel h3.heading {font-family:ITCAvantGardeProBd, gotham-b  , Arial; font-weight:normal; font-size:30px;color:#dd8820; text-transform:uppercase; font-style:normal; padding:0 0 10px; line-height:1;}
 #clrimage div.opimage .small .unviel h3.heading {color:#dd8820;}
 div.opimage .small .unviel h3.heading sup{font-size:12px;}
-div.opimage .small .unviel h3.heading span{display:block;font-family:ITCAvantGardeProBk, gotham  , Arial;}
+div.opimage .small .unviel h3.heading span{display:block;font-family:ITCAvantGardeProBk, gotham, Arial;}
 div.sidenavpopup
 {
-    height : 19px;
     overflow : visible;
     display : inline-block;
     position : fixed;
     right : 47px;
     z-index : 5;
+    height: 1px;
 }
 div.sidenavpopup div
 {
@@ -3221,6 +3221,7 @@ div.sidenavpopup div
     display : inline-block;
     border-bottom: 1px solid #CCCCCC;
     float : left;
+    font-size : 11px;
 }
 div.sidenavpopup img
 {
