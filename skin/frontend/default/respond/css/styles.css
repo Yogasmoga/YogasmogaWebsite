@@ -671,7 +671,7 @@ div.pages>strong { position: absolute; overflow: hidden; clip: rect(0 0 0 0); he
 .data-table tfoot tr {border-bottom:1px solid #cecece; border-top:1px solid #cecece; }
 .data-table tbody th { padding:3px 8px; font-size:11px; font-weight:bold; text-transform:none; white-space:normal; }
 .data-table tbody th,
-.data-table tbody td { border-bottom:1px solid #d9dde3; padding: 10px 0; }
+.data-table tbody td { border-bottom:1px solid #f5f5f5; padding: 10px 0; }
 .data-table tfoot strong { font-size:14px; line-height: 1.285714286; }
 /* Bundle products tables */
 .data-table tbody.odd tr { background:#fff; }
@@ -799,7 +799,7 @@ tr.summary-details-excluded { font-style:italic; }
 
 .top-bar { }
 .top-bar .breadcrumbs { float:left; overflow:hidden;}
-.form-search { display: block; margin: 40px auto 0; max-width: 365px; position: relative; right: 0; top: 0; width: 100%; border-bottom: 3px solid #000;}
+.form-search { display: block; margin: 40px auto 0; max-width: 365px; position: relative; right: 0; top: 0; width: 100%; border-bottom: 1px solid #000;}
 .form-search label { position: absolute; overflow: hidden; clip: rect(0 0 0 0); height: 1px; width: 1px; margin: -1px; padding: 0; border: 0;  }
 .form-search input.input-text { background: none; border: medium none; color: #999999; float: left; font-size: 16px; font-style: oblique; font-weight: normal; height: 26px; margin: 0; width: 100%;}
 .form-search button.button { background: url("../images/search-icon.png") no-repeat scroll 50% 0 transparent; border: medium none; border-radius: 0 0 0 0; 
@@ -1559,7 +1559,7 @@ div.rewards_point_cart { display: none;}
 
 .cart .totals { padding:12px 0; float: right; width: 340px;}
 .cart .totals table { float:right; margin:9px 0; width: 100%; }
-.cart .totals td { border-bottom: 1px solid #cecece; margin: 9px 0 8px 15px; padding: 9px 10px 8px 0; }
+.cart .totals td { border-bottom: 1px solid #f5f5f5; margin: 9px 0 8px 15px; padding: 9px 10px 8px 0; }
 .cart .totals tr.last td {}
 .cart .totals tfoot td {}
 .cart .totals tfoot th strong,
@@ -2038,7 +2038,7 @@ ul.account-link li a{font-size:14px; text-transform:uppercase; font-family:gotha
 /* Footer ================================================================================ */
 .footer-container {padding:0;}
 .footer { padding: 10px 0; text-align:center;}
-.footer .footer-block{ border-top: 1px solid #ccc; padding: 50px 10px;}
+.footer .footer-block{ border-top: 1px solid #f5f5f5; padding: 50px 10px;}
 .red-txt { color:#d90d3d; }
 .footer strong { color:#d90d3d; text-transform: uppercase; letter-spacing: 0.1em; }
 
