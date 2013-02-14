@@ -141,9 +141,8 @@ function initializeurl()
             url : homeUrl + 'myessentials/mylink/getshorturl',
             data : {'longurl': url + '#' + jQuery(this).attr('id'),'id':jQuery(this).attr('id')},
             success : function(result){
-                //result = eval('(' + result + ')');
-//                _currentshareurl = result.shorturl;
-//                shareurl();
+                result = eval('(' + result + ')');
+                jQuery("#" + result.id + ".pgsection").attr('share-url', result.shorturl);
             }
         });
     });

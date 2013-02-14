@@ -219,7 +219,7 @@ function changeColor(clr)
             if(jQuery("table.tdbigimagecontainer img").length > 0)
                 jQuery("table.tdbigimagecontainer img").attr("src", jQuery("table.smallimagecontiner td:first").attr("bigimageurl"));
             else
-                jQuery("table.tdbigimagecontainer td").html("<img src='" + jQuery("table.smallimagecontiner td:first").attr("bigimageurl") + "'>");
+                jQuery("table.tdbigimagecontainer td").html("<img class='shareit' src='" + jQuery("table.smallimagecontiner td:first").attr("bigimageurl") + "'>");
             _curshareimgurl = jQuery("table.smallimagecontiner td:first").attr("bigimageurl");
         }
         jQuery("table.smallimagecontiner td:first").addClass("selectedimage");
