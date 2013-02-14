@@ -183,7 +183,7 @@ function initiateshareurl(sharetype)
     else
         _cursharesummary = "YOGASMOGA is a Yoga and wellness company that makes things for life.";
     
-    //console.log(_curshareimg[0]);
+    console.log(_curshareimg[0]);
 //    if(_curshareimgurl == '')
 //        _curshareimgurl = 'https://yogasmoga.com/yogasmoga_gold.jpg';
     
@@ -221,6 +221,7 @@ function shareurlmain()
         break;
     case 'facebook':
         //console.log('here');
+        console.log(_curshareimg[0]);
         window.open('http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(_currentshareurl) + '&p[images][0]=' + _curshareimg[0] + '&p[title]=YOGASMOGA | ' + _cursharedesc + '&p[summary]=' + _cursharesummary,'Share_on_Faceook','toolbar=0,status=0,menubar=0,width=600,height=300,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 300) / 2);
         break;
     case 'twitter':
