@@ -3,6 +3,7 @@ var _productcolorinfo = new Array();
             _usesecureurl = true;
         else
             _usesecureurl = false;
+        console.log(_usesecureurl);
 jQuery(document).ready(function($){
 	
         //console.clear();
