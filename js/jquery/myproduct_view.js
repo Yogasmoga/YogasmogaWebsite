@@ -7,7 +7,7 @@ jQuery(document).ready(function($){
         //setTimeout(function(){ positiondesignfeatureheadimage(); }, 10);
         //positiondesignfeatureheadimage();
     });
-    
+    initializeurl();
     
     $("table.productdesignfeatures div[size]").hover(function(){
         if($(this).find("div.caption").is(':animated'))
