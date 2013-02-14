@@ -25,9 +25,8 @@
  */
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/wishlist.css'); ?>" media="all" />
-<div class="myheader">MY WISH LIST</div>
-<div class="page-title" style="margin-bottom: 110px;">
-    <h1><?php echo $this->__('SHARE YOUR WISH LIST') ?></h1>
+<div class="page-title">
+    <h1><?php echo $this->__('SHARE WISH LIST') ?></h1>
 </div>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <form action="<?php echo $this->getSendUrl() ?>" id="form-share-wishlist" method="post">
