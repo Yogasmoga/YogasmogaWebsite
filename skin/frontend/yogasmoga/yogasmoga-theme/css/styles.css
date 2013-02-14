@@ -369,7 +369,7 @@ p.required { font-size:11px; text-align:right; color:#D90d3d; }
   background-position: center bottom;
   background-repeat: no-repeat;
   color: #DD8820;
-  font-family: ITCAvantGardeProBk;
+  font-family: ITCAvantGardeProBk, gotham  , Arial;
   font-size: 20px;
   left: 0;
   display:block;
@@ -2395,7 +2395,7 @@ div.mycategory-products div.item img.active.rotable
 
 .myheader
 {
-    font-family : ITCAvantGardeProBk;
+    font-family : ITCAvantGardeProBk, gotham  , Arial;
     background-image: url("../images/catalog/product/listing/line_all_product.png");
     background-position: center bottom;
     background-repeat: no-repeat;
@@ -3120,7 +3120,7 @@ div.opimage, div.opimage *
 }
 div.opimage .small h3.heading{color:#dd8820; font-style:italic;font-family:gothambook; font-size:19px; font-weight:normal; line-height:1.2; margin:0 0 0; padding:0;}
 #ftechimage .opbox, #zoomedfbdtl .opbox{position:absolute; font-family:gothambook; font-size:11px ;line-height:16px; color:#cccccc; height:auto; left:auto; top:auto;}
-#ftechimage .opbox h3.heading, #zoomedfbdtl .opbox h3.heading{font-family:ITCAvantGardeProBk; font-weight:normal; font-size:19px;color:#dd8820; font-style:normal; text-transform:uppercase; line-height:1.1; margin:10px 0;}
+#ftechimage .opbox h3.heading, #zoomedfbdtl .opbox h3.heading{font-family:ITCAvantGardeProBk, gotham  , Arial; font-weight:normal; font-size:19px;color:#dd8820; font-style:normal; text-transform:uppercase; line-height:1.1; margin:10px 0;}
 #ftechimage .opbox sup, #zoomedfbdtl .opbox sup{font-size:8px;}
 
 #ftechimage .opbox.usa, #zoomedfbdtl .opbox.usa{width:260px; left:10%; top:60px;}
@@ -3130,8 +3130,8 @@ div.opimage .small h3.heading{color:#dd8820; font-style:italic;font-family:gotha
 #ftechimage .opbox.nano, #zoomedfbdtl .opbox.nano{width:255px; right:25%; bottom:5%;}
 
 #ftechimage .opbox.centered, #zoomedfbdtl .opbox.centered{top:50%; left:50%; margin:-125px 0 0 -155px; width:310px; font-size:13px; line-height:18px;}
-#ftechimage .centered h3.heading, #zoomedfbdtl .centered h3.heading{font-family:ITCAvantGardeProBd; font-weight:normal; font-size:30px;color:#dd8820; text-transform:uppercase; font-style:normal; background:url(../images/homepage/heading-bg.png) 50% 100% no-repeat; margin:0 0 20px; padding:0 0 20px; line-height:1;}
-#ftechimage .centered h3.heading span, #zoomedfbdtl .centered h3.heading span{display:block;font-family:ITCAvantGardeProBk;}
+#ftechimage .centered h3.heading, #zoomedfbdtl .centered h3.heading{font-family:ITCAvantGardeProBd, gotham-b  , Arial; font-weight:normal; font-size:30px;color:#dd8820; text-transform:uppercase; font-style:normal; background:url(../images/homepage/heading-bg.png) 50% 100% no-repeat; margin:0 0 20px; padding:0 0 20px; line-height:1;}
+#ftechimage .centered h3.heading span, #zoomedfbdtl .centered h3.heading span{display:block;font-family:ITCAvantGardeProBk, gotham  , Arial;}
 #ftechimage .centered h3.heading sup, #zoomedfbdtl .centered h3.heading sup{font-size:12px;}
 
 @media screen and (max-width: 1250px) {
@@ -3149,7 +3149,7 @@ div.opimage .small h3.heading{color:#dd8820; font-style:italic;font-family:gotha
 	color:#333;
 }
 #clrimage .opbox{position:absolute; font-family:gothambook; font-size:11px ;line-height:16px; color:#333; height:auto; left:auto; top:auto;}
-#clrimage .opbox h3.heading{font-family:ITCAvantGardeProBk; font-weight:normal; font-size:19px;color:#333; font-style:normal; text-transform:uppercase; line-height:1.1; margin:10px 0;}
+#clrimage .opbox h3.heading{font-family:ITCAvantGardeProBk, gotham  , Arial; font-weight:normal; font-size:19px;color:#333; font-style:normal; text-transform:uppercase; line-height:1.1; margin:10px 0;}
 #clrimage .opbox sup{font-size:8px;}
 
 #clrimage .opbox.efd{width:305px; left:10%; top:90px;}
@@ -3160,8 +3160,8 @@ div.opimage .small h3.heading{color:#dd8820; font-style:italic;font-family:gotha
 
 #clrimage .opbox.centered{top:50%; left:50%; margin:-125px 0 0 -164px; width:325px; font-size:13px; line-height:18px;}
 #clrimage .opbox.centered p{padding:0 15px;}
-#clrimage .centered h3.heading{font-family:ITCAvantGardeProBd; font-weight:normal; font-size:30px;color:#333; text-transform:uppercase; font-style:normal; background:url(../images/homepage/bg-h.png) 50% 100% no-repeat; margin:0 0 20px; padding:0 0 20px; line-height:1;}
-#clrimage .centered h3.heading span{display:block;font-family:ITCAvantGardeProBk;}
+#clrimage .centered h3.heading{font-family:ITCAvantGardeProBd, gotham-b  , Arial; font-weight:normal; font-size:30px;color:#333; text-transform:uppercase; font-style:normal; background:url(../images/homepage/bg-h.png) 50% 100% no-repeat; margin:0 0 20px; padding:0 0 20px; line-height:1;}
+#clrimage .centered h3.heading span{display:block;font-family:ITCAvantGardeProBk, gotham  , Arial;}
 #clrimage .centered h3.heading sup{font-size:12px;}
 
 @media screen and (max-width: 1250px) {
@@ -3196,10 +3196,10 @@ div.opimage .small {
 div.opimage div.scrollbg{background-attachment:scroll;}
 
 div.opimage .small .unviel{top:50%; margin-top:-50px; height:auto;}
-div.opimage .small .unviel h3.heading {font-family:ITCAvantGardeProBd; font-weight:normal; font-size:30px;color:#dd8820; text-transform:uppercase; font-style:normal; padding:0 0 10px; line-height:1;}
+div.opimage .small .unviel h3.heading {font-family:ITCAvantGardeProBd, gotham-b  , Arial; font-weight:normal; font-size:30px;color:#dd8820; text-transform:uppercase; font-style:normal; padding:0 0 10px; line-height:1;}
 #clrimage div.opimage .small .unviel h3.heading {color:#dd8820;}
 div.opimage .small .unviel h3.heading sup{font-size:12px;}
-div.opimage .small .unviel h3.heading span{display:block;font-family:ITCAvantGardeProBk;}
+div.opimage .small .unviel h3.heading span{display:block;font-family:ITCAvantGardeProBk, gotham  , Arial;}
 div.sidenavpopup
 {
     height : 19px;

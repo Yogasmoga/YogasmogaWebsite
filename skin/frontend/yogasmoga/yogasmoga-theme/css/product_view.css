@@ -93,7 +93,7 @@ table.productdetailtable div.breadcrumb a:hover{color:#d30d3d;}
 table.productdetailtable div.productname
 {
     color: #000000;
-    font-family:ITCAvantGardeProBk;
+    font-family:ITCAvantGardeProBk, gotham  , Arial;
     font-size: 22px;
     letter-spacing: 0.4pt;
     line-height: 1.2em;
@@ -107,7 +107,7 @@ table.productdetailtable.zoomproductdetail div.productname
 table.productdetailtable div.productcost
 {
     color: #D90D3D;
-    font-family:ITCAvantGardeProBk;
+    font-family:ITCAvantGardeProBk, gotham  , Arial;
     font-size: 22px;
     letter-spacing: 0.4pt;
 }

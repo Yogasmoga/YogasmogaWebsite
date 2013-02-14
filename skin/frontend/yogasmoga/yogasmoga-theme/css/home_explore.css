@@ -90,7 +90,7 @@
 #explore #slider .carousel-desc button.button{
  width:138px; position:absolute; left:50%; margin-left:-69px; bottom:0;
 }
-.banner-txt{position:absolute; top:13.5%; left:15%; text-align:center; white-space:nowrap; font-family:ITCAvantGardeProBk; color:#fff; font-size:17px; line-height:1.1; text-transform:uppercase;}
+.banner-txt{position:absolute; top:13.5%; left:15%; text-align:center; white-space:nowrap; font-family:ITCAvantGardeProBk, gotham  , Arial; color:#fff; font-size:17px; line-height:1.1; text-transform:uppercase;}
 .banner-txt span{display:block; font-size:34px;}
-.banner-txt span strong{font-weight:normal; font-family:ITCAvantGardeProBd;}
+.banner-txt span strong{font-weight:normal; font-family:ITCAvantGardeProBd, gotham-b  , Arial;}
 #featuredproducts{margin-bottom:50px;}
