@@ -2749,12 +2749,16 @@ table.staticproductgrid div.item td.productimage img.active
     top : 55px;
 	box-shadow:0px 0px 1px #cecece;
     z-index : 999;
-	padding:8px;
+	padding:8px; min-height:260px;
     display : none;
     border-top-width: 0;
 }
-#myminicart div.minctitle{text-transform:uppercase; font-size:14px; text-align:center; font-family:gothambook, Arial; line-height:30px; border-bottom:1px solid #cecece;}
-#myminicart div.totalitemcount{line-height:35px; text-transform:uppercase;}
+#myminicart div.minctitle{text-transform:uppercase; font-size:14px; text-align:center; font-family:gothambook, Arial; line-height:30px; border-bottom:1px solid #cecece;display:none;}
+#myminicart div.totalitemcount {
+  border-bottom: 1px solid #CECECE;
+  padding-bottom: 8px;
+  text-transform: uppercase;
+}
 #myminicart div.totalitemcount table
 {
     width : 100%;
