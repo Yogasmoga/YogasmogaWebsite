@@ -37,7 +37,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" media="all" />
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/myaccount.css'); ?>" media="all" />
 <script type="text/javascript">
-    _disablesidenavigation = true;
+    _disablesidenavigation = false;
 </script>
 </head>
 <body class="<?php echo $this->getBodyClass()? $this->getBodyClass().' ' : ''; ?>gift_of_ys">
@@ -48,7 +48,7 @@
         <?php echo $this->getChildHtml('header') ?>
         <div id="pagecontainer">
             <div id="giftofys" class="fullscreen">
-				<div class="gift-of-ys" id="Whatis">
+				<div class="gift-of-ys pgsection" id="Whatis"  desc="Gift of YS">
 					<ul class="sub-nav">
 						<li><a href="#Whatis">What is?</a></li>
 						<li><a href="#chkbal">Check Balance</a></li>
@@ -56,7 +56,7 @@
 					<h1 class="big-title">The Gift<br>Of Ys</h1>
 					<img src="<?php echo $this->getSkinUrl('images/goy-title.png'); ?>" />
 					<DIV CLASS="goy-banner">
-						<img src="<?php echo $this->getSkinUrl('images/gift_of_ys.png'); ?>" />
+						<img class="shareit" src="<?php echo $this->getSkinUrl('images/gift_of_ys.png'); ?>" />
 					</div>
                     <?php /*
 					<form id="createcardform" name="createcardform" action="" method="post">
@@ -188,13 +188,10 @@
                                             <td class="inputholder">
                                                 <select class="requiredfield" id="card-amount" name="card_amount" defaulterrormsg="Amount is required." style="width:100%;">
                                                     <option value="">Select Amount</option>
-                                                    <option value="1">$1.00</option>
             										<option value="50">$50.00</option>
             										<option value="100">$100.00</option>
-            										<option value="200">$200.00</option>
             										<option value="500">$500.00</option>
             										<option value="1000">$1000.00</option>
-            										<option value="5000">$5000.00</option>
             									</select>
                                             </td>
                                         </tr>
@@ -222,7 +219,7 @@
                     </form>
                     
 				</div>
-				<div class="goy-balance" id="chkbal">
+				<div class="goy-balance pgsection" id="chkbal" desc="Check Balance">
 					<h4 class="sub-title">check balance</h4>
 					<p>Enter your Gift of YS card number in the field below. Need help finding your Card#? See the card below. Please note, if your Gift of YS card does not have an access code, simply enter the Claim Code from the email.</p>
 					<form action="" method="post" id="cardbalanceform">
