@@ -172,6 +172,7 @@ function initiateshareurl(sharetype)
     cfscreen.find('img.shareit').each(function(){
         _curshareimg[_curshareimg.length] = jQuery(this).attr('src');
     });
+    console.log(cfscreen.find('img.shareit').length);
     if(_curshareimg.length == 0)
         _curshareimg[_curshareimg.length] = 'https://yogasmoga.com/yogasmoga_gold.jpg';
     
