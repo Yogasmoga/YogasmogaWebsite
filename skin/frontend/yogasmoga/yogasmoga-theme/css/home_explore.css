@@ -25,17 +25,27 @@
 	background:url('../images/homepage/explore_nav_hover.png') repeat-x center;
 }
 /*#explore .bx-wrapper{padding:100px 0; background:url(../images/homepage/car_bg.png) 52% 50% no-repeat; background-size:contain; max-width:1600px; margin:0 auto; position:relative;}*/
-#explore .bx-wrapper{padding:100px 0; background:url("../images/homepage/car_bg.png") no-repeat scroll 40% center transparent; max-width:1600px; margin:0 auto; position:relative;}
+#explore .bx-wrapper{padding:100px 0; background:url("../images/homepage/car_bg.png") no-repeat scroll 30% center transparent; max-width:1600px; margin:0 auto; position:relative; background-size:contain;}
 
 #explore #slider .carousel-img{position:relative;}
-#explore #slider .carousel-img img.bximg{height:100%; width:auto; margin-left : -100px;}
+#explore #slider .carousel-img img.bximg {
+  height: 100%;
+  left: 17%;
+  position: absolute;
+  top: 0;
+  width: auto;
+}
 #explore #slider .carousel-desc {
-  bottom: 9%;
+	top:250px;
   padding-bottom:50px;
   left: 48%;
   position: absolute;
   right: 50px;
   text-align: center;
+}
+@media screen and (max-width: 1600px) {
+	
+#explore #slider .carousel-desc {bottom:10%;top:auto;}
 }
 /*
 #explore #slider .carousel-desc {

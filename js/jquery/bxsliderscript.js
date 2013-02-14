@@ -3,7 +3,7 @@ jQuery(document).ready(function($){
 	  var slider=jQuery('#slider').bxSlider({
 		  auto:true,
 		  autoHover:true,
-	      pause:7000,
+	      pause:70000,
 		  touchEnabled:true,
 		  swipeThreshold:50,
 	      speed:800,
