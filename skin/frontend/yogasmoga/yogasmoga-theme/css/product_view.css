@@ -225,7 +225,7 @@ table.productdetailtable div#sizecontainer table td:last-child
 
 table.productdetailtable div#sizecontainer table td div
 {
-    padding-bottom : 1px;
+    padding-bottom : 0px;
     cursor : pointer;
     border-bottom : 1px solid transparent;
 }
