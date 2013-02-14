@@ -3194,11 +3194,7 @@ div.opimage .small {
 }
 
 div.opimage div.scrollbg{background-attachment:scroll;}
-@media only screen and (device-width: 768px) {
-  div.opimage .small {
-	  background-attachment: scroll !important;
-	}
-}
+
 div.opimage .small .unviel{top:50%; margin-top:-50px; height:auto;}
 div.opimage .small .unviel h3.heading {font-family:ITCAvantGardeProBd; font-weight:normal; font-size:30px;color:#dd8820; text-transform:uppercase; font-style:normal; padding:0 0 10px; line-height:1;}
 #clrimage div.opimage .small .unviel h3.heading {color:#dd8820;}
@@ -3545,4 +3541,11 @@ h1.orderno.ys, h2.h2.ys
 ul.messages
 {
     display: none;
+}
+@media only screen and (device-width: 768px) {
+  div.opimage .small {
+	  background-attachment: scroll !important;
+	}
+	#pgNavUp, #pgnavigator, #pgNavDown{display:none !important;}
+	body.cms-home #pgNavUp, body.cms-home #pgnavigator, body.cms-home #pgNavDown{display:block !important;}
 }
