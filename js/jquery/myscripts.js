@@ -1,14 +1,10 @@
 var _productcolorinfo = new Array();
-
-jQuery(document).ready(function($){
-	
-    setTimeout(function(){
-        if(_currenturl.indexOf('https://') >= 0)
+    if(window.location.href.indexOf('https://') >= 0)
             _usesecureurl = true;
         else
             _usesecureurl = false;
-    },200);
-    
+jQuery(document).ready(function($){
+	
         //console.clear();
 	//jQuery('#productdetails select, .cart select').customSelect();
 	/*$(window).load(function(){
