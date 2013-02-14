@@ -33,6 +33,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
 <head>
 <?php echo $this->getChildHtml('head') ?>
+<script type="text/javascript">
+    _disablesidenavigation = false;
+</script>
 </head>
 <body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
 <?php echo $this->getChildHtml('after_body_start') ?>
@@ -46,8 +49,8 @@
                 <div class="col-main">
                     <?php echo $this->getChildHtml('global_messages') ?>
 <div class="nam-page">
-	<div class="namsec first">
-		<img class="bg-img" src="<?php echo $this->getSkinUrl('images/namaskar/nam1.jpg'); ?>" />
+	<div class="namsec first pgsection" id="giving" desc="Giving">
+		<img class="bg-img" src="<?php echo $this->getSkinUrl('images/namaskar/nam1.jpg'); ?>" class="shareit" />
 		<div class="values-box cbox">
 			<h1 class="value-title">GIVING is a Core Value of YOGASMOGA.</h1>
 			<p style="letter-spacing:-1px;">We have created the Namask&aacute;r Foundation because we care. </p>
@@ -64,8 +67,8 @@
 			<strong>namask&Aacute;r.</strong></p>
 		</div>
 	</div>
-	<div class="namsec second">
-		<img class="bg-img" src="<?php echo $this->getSkinUrl('images/namaskar/nam2.jpg'); ?>" />
+	<div class="namsec second pgsection" id="raisingfund" desc="Raising the Funds">
+		<img class="bg-img" src="<?php echo $this->getSkinUrl('images/namaskar/nam2.jpg'); ?>" class="shareit" />
 		<div class="foundation-box cbox">
 			<h1 class="heading-foundation">THE NAMASK&Aacute;R FOUNDATION.<span>raising the funds.</span></h1>
 			<p>YOGASMOGA has coordinated the manufacture and sales of hand woven bracelets that are being made on handlooms in remote villages of the Himalayas. These hand woven bracelets are sold by YOGASMOGA for $10 and Net Proceeds of all sales will be donated to the NAMASK&Aacute;R Foundation.</p>
@@ -78,8 +81,8 @@
 			<p>The Namask&aacute;r<br/>Foundation focuses its<br/>energies on three equally<br/>important causes.</p>
 		</div>
 	</div>
-	<div class="namsec third">
-		<img class="bg-img" src="<?php echo $this->getSkinUrl('images/namaskar/nam3.jpg'); ?>" />
+	<div class="namsec third pgsection" id="ourmission" desc="Our Mission">
+		<img class="bg-img" src="<?php echo $this->getSkinUrl('images/namaskar/nam3.jpg'); ?>"  class="shareit" />
 		<div class="works-cols">
 			<div class="health left">
 			<h1 class="title">1. Health</h1>
@@ -100,8 +103,8 @@
 			<p>While many are familiar with the greeting &ndash; Namast&eacute; -fewer in the west are familiar with the traditional Indian greeting &ndash; Namask&aacute;r. More respectful than Namast&eacute;, it is not simply a greeting but a profound philosophy of shunning arrogance and negating one&rsquo;s ego. The gesture, Namask&aacute;r, represents the belief that there is a divine spark within each of us that is located in the heart chakra. This gesture is an acknowledgement of the soul in one &ndash; by the soul in another. We join our hands together to recognize each other&rsquo;s soul, aiming to connect and honor each other.</p>
 		</div>
 	</div>
-	<div class="namsec forth">
-		<img class="bg-img" src="<?php echo $this->getSkinUrl('images/namaskar/nam4.jpg'); ?>" />
+	<div class="namsec forth pgsection" id="support" desc="Support Namaskár">
+		<img class="bg-img" src="<?php echo $this->getSkinUrl('images/namaskar/nam4.jpg'); ?>" class="shareit" />
 		<div class="support-box cbox">
 			<h1 class="heading-mc"><span>SUPPORT</span>NAMASK&Aacute;R</h1>
 			<p>We bring the Namask&aacute;r bracelet to you as a traditional symbol of the deep Yoga culture that connects two people &ndash; our SMOGIs and the weavers of the Himalayas.
