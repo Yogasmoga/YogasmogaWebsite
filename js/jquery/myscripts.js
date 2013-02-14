@@ -1,9 +1,4 @@
 var _productcolorinfo = new Array();
-    if(window.location.href.indexOf('https://') >= 0)
-            _usesecureurl = true;
-        else
-            _usesecureurl = false;
-        console.log(_usesecureurl);
 jQuery(document).ready(function($){
 	
         //console.clear();
