@@ -183,7 +183,7 @@ function initiateshareurl(sharetype)
     else
         _cursharesummary = "YOGASMOGA is a Yoga and wellness company that makes things for life.";
     
-    console.log(_curshareimg[0]);
+    //console.log(_curshareimg[0]);
 //    if(_curshareimgurl == '')
 //        _curshareimgurl = 'https://yogasmoga.com/yogasmoga_gold.jpg';
     
@@ -230,7 +230,18 @@ function shareurlmain()
         break;
     case 'pinterest':
         //window.open('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(shareurl) + '&media=' + _curshareimgurl + '&description=Yogasmoga Video','Share_on_Pinterest','toolbar=0,status=0,menubar=0,width=600,height=520,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 520) / 2);
+        var url = _currenturl;
+        var cfscreenid = getcurrentfullscreenid();
+        if(!endsWith(url, cfscreenid))
+        {
+            if(url.indexOf("#") >= 0)
+                url = url.substr(0, url.indexOf("#"));
+            url = url + '#' + cfscreenid;
+        }
+        _currentshareurl = url;
+        console.log(_currentshareurl);
         window.open('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(_currentshareurl) + '&media=' + _curshareimg[0] + '&description=Check out the ' + _cursharedesc + ' via @yogasmoga at ' + _currentshareurl,'Share_on_Pinterest','toolbar=0,status=0,menubar=0,width=600,height=520,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 520) / 2);
+        //window.open('http://pinterest.com/pin/create/button/?media=' + _curshareimg[0] + '&description=Check out the ' + _cursharedesc + ' via @yogasmoga at ','Share_on_Pinterest','toolbar=0,status=0,menubar=0,width=600,height=520,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 520) / 2);
         break;
     default:
     }
