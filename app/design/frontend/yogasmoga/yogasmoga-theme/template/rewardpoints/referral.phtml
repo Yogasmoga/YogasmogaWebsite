@@ -26,7 +26,10 @@
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myaccount.js"></script>
 <link media="all" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" type="text/css" rel="stylesheet" />
 <link media="all" href="<?php echo $this->getSkinUrl('css/myaccount.css'); ?>" type="text/css" rel="stylesheet" />
-<div id="referafriend-container">
+<script type="text/javascript">
+    _disablesidenavigation = false;
+</script>
+<div id="referafriend-container" desc="Refer-A-Friend" class="pgsection">
     <div class="myheader">REFER A FRIEND</div>
     <div class="referfriend-subheading">
         <h2>SHARE THE JOY OF YOGASMOGA, GET <span>25 SMOGI BUCKS (WORTH $25)</span></h2>
@@ -230,9 +233,9 @@
             </tbody>
         </table>
         <p id="noreferralmsg" <?php if(count($results) > 0) { echo "style='display:none;'"; } ?> >After you invite some of your friends you will be able to keep track of their invitations here..</p>
-        <div class="backlink">
-            <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/" class="back-link">&lt;&nbsp;<?php echo $this->__('Back') ?></a>
-        </div>
+</div>
+<div class="backlink">
+    <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/" class="back-link">&lt;&nbsp;<?php echo $this->__('Back') ?></a>
 </div>
 <?php return; ?>
  <div class="refer-friend">
