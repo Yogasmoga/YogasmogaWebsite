@@ -175,7 +175,7 @@ function initiateshareurl(sharetype)
     if(_curshareimg.length == 0)
         _curshareimg[_curshareimg.length] = 'https://yogasmoga.com/yogasmoga_gold.jpg';
     
-    //console.log(_curshareimg[0]);
+    console.log(_curshareimg[0]);
     
     if(cfscreen.attr('share-summary'))
         _cursharesummary = cfscreen.attr('share-summary');
@@ -186,7 +186,7 @@ function initiateshareurl(sharetype)
 //    if(_curshareimgurl == '')
 //        _curshareimgurl = 'https://yogasmoga.com/yogasmoga_gold.jpg';
     
-    shareurl();
+    shareurlmain();
     return;
     
     var url = _currenturl;
@@ -211,7 +211,7 @@ function initiateshareurl(sharetype)
     });
 }
 
-function shareurl()
+function shareurlmain()
 {
     switch(_cursharetype)
     {
