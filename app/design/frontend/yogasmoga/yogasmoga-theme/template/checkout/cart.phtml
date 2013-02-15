@@ -98,22 +98,10 @@
                     </tr>
                     <?php endif; ?>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <td colspan="50" class="a-right">
-                            <?php if($this->getContinueShoppingUrl()): ?>
-                                <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
-                            <?php endif; ?>
-                            <button type="submit" title="<?php echo $this->__('Update Shopping Cart') ?>" class="button btn-update"><span><span><?php echo $this->__('Update Shopping Cart') ?></span></span></button>
-							<?php echo $this->getChildHtml('giftcards') ?>
-                        </td>
-                    </tr>
-                </tfoot>
                 <tbody>
                 <?php foreach($this->getItems() as $_item): ?>
                     <?php echo $this->getItemHtml($_item) ?>
                 <?php endforeach ?>
-                
                 
                 <?php
                         $productId = Mage::getModel('core/variable')->loadByCode('namaskar_bracelet_id')->getValue('plain');
@@ -415,10 +403,22 @@
                         } 
                     ?>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="50" class="a-right">
+                            <?php if($this->getContinueShoppingUrl()): ?>
+                                <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+                            <?php endif; ?>
+                                    <?php echo $this->getChildHtml('giftcards') ?>            
+                                <button type="submit" title="<?php echo $this->__('Update Shopping Cart') ?>" class="button btn-update"><span><span><?php echo $this->__('Update Shopping Cart') ?></span></span></button>            
+							
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
-            <script type="text/javascript">decorateTable('shopping-cart-table')</script>
         </fieldset>
     </form>
+    <script type="text/javascript">decorateTable('shopping-cart-table')</script>
     <div class="cart-collaterals">
 		<div class="smogi-bucks"><?php echo $this->getChildHtml('coupon') ?></div>
         <!-- div class="col2-set">

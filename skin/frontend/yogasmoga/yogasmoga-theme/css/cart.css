@@ -42,7 +42,7 @@
 
 {background:none;}
 .cart-table .btn-empty { float:right; }
-.cart-table .btn-update { margin-left:10px; }
+.cart-table .btn-update { margin-left:10px;}
 
 .cart-table tbody td {font-family:gotham-l; font-size:11px;}
 .cart-table .product-name { font-weight:normal; font-family:gotham-m; margin:0 0 3px; color:#000;}
