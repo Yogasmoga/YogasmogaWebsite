@@ -33,7 +33,7 @@ td.searchsidenavigation div.subheader:first-child
     margin-top : 0px;
 }
 td.searchsidenavigation a{color:#4c4c4c; display:block;}
-td.searchsidenavigation a:hover{background:#EFEEED;}
+td.searchsidenavigation a div:hover{background:#EFEEED;}
 
 td.searchsidenavigation div
 {
