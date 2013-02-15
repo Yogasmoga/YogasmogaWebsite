@@ -2757,6 +2757,7 @@ table.staticproductgrid div.item td.productimage img.active
 #myminicart div.totalitemcount {
   border-bottom: 1px solid #CECECE;
   padding-bottom: 8px;
+  font-size:11px;
   text-transform: uppercase;
 }
 #myminicart div.totalitemcount table
