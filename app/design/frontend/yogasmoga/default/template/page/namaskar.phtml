@@ -37,7 +37,7 @@
     _disablesidenavigation = false;
 </script>
 </head>
-<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?> style="overflow:hidden;">
 <?php echo $this->getChildHtml('after_body_start') ?>
 <div class="wrapper">
     <?php echo $this->getChildHtml('global_notices') ?>
@@ -48,6 +48,7 @@
                 <?php echo $this->getChildHtml('breadcrumbs') ?>
                 <div class="col-main">
                     <?php echo $this->getChildHtml('global_messages') ?>
+<div class="namaskar-overlay" style="background:#fff url(<?php echo $this->getSkinUrl('images/loading.gif') ?>) 50% 100px no-repeat; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">&nbsp;</div>
 <div class="nam-page">
 	<div class="namsec first pgsection" id="giving" desc="Giving">
 		<img class="bg-img" src="<?php echo $this->getSkinUrl('images/namaskar/nam1.jpg'); ?>" class="shareit" />
@@ -117,16 +118,12 @@
 	</div>
 </div>
 
-<!-- script>
-jQuery(document).ready(function(){
-	jQuery('.namaskar-overlay div').fadeIn('slow', function(){
-		setTimeout(function(){
-			jQuery('body').css('overflow','auto');
-			jQuery('.namaskar-overlay').fadeOut('slow');
-		},500)
-	});
+<script>
+jQuery(window).load(function(){
+	jQuery('body').css('overflow','auto');
+	jQuery('.namaskar-overlay').fadeOut('slow');
 })
-</script -->
+</script>
                 </div>
             </div>
         </div>
