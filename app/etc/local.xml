@@ -41,7 +41,7 @@
             <default_setup>
                 <connection>
                     <host><![CDATA[localhost]]></host>
-                    <username><![CDATA[yogasmoga]]></username>
+                    <username><![CDATA[root]]></username>
                     <password><![CDATA[yogasmoga]]></password>
                     <dbname><![CDATA[yogasmoga]]></dbname>
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
