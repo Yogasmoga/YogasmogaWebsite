@@ -46,7 +46,7 @@ jQuery(document).ready(function($){
             $(window).scrollTop(1);
             //$(window).scrollTop(0);
         }
-    },100);    
+    },1000);    
         
         
     $("div#pageScrollerNav div#glbshare").hover(function(){
