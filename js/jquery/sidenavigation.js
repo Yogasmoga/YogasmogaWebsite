@@ -44,7 +44,7 @@ jQuery(document).ready(function($){
         if($("div#pgnavigator li.active").length == 0)
         {
             $(window).scrollTop(1);
-            $(window).scrollTop(0);
+            //$(window).scrollTop(0);
         }
     },100);    
         
