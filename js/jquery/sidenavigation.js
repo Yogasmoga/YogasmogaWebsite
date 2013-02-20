@@ -190,7 +190,7 @@ function initializeurl()
     if(window.location.href.indexOf('https://') >= 0)
         callurl = securehomeUrl + 'myessentials/mylink/getshorturl'
     else
-         callurl = _homeUrl + 'myessentials/mylink/getshorturl'
+         callurl = homeUrl + 'myessentials/mylink/getshorturl'
     jQuery(".pgsection").each(function(){
         jQuery.ajax({
             type : 'POST',
