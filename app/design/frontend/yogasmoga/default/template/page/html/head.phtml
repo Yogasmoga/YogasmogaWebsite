@@ -84,5 +84,6 @@
     var homeUrl = '<?php echo Mage::helper('core/url')->getHomeUrl() ?>';
     var securehomeUrl = '<?php echo Mage::getUrl('',array('_secure'=>true)); ?>';
     var skinUrl = '<?php echo $this->getSkinUrl('') ?>';
+    var mediaUrl = '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>';
     //console.log(skinUrl);
 </script>

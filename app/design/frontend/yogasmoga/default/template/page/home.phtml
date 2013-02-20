@@ -48,10 +48,10 @@
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.flexslider-min.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/parallaxeffect.js"></script>
 <?php
-    if(Mage::getSingleton('core/session')->getShowVideo())
-    //if($this->getRequest()->getParam('video') == 'true')
+    //if(Mage::getSingleton('core/session')->getShowVideo())
+    if($this->getRequest()->getParam('video') == 'true')
     {
-        Mage::getSingleton('core/session')->setShowVideo(false);
+        //Mage::getSingleton('core/session')->setShowVideo(false);
         ?>
         <script type="text/javascript">
             jQuery(window).load(function(){

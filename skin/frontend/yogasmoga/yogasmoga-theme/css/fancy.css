@@ -25,7 +25,7 @@
 	padding:1px;
 	z-index: 8020;
 }
-.cms-home .fancybox-wrap{padding:0;}
+.cms-home .fancybox-wrap, .cms-breathe .fancybox-wrap{padding:0;}
 .fancybox-skin {
 	position: relative;
 	background: #fff;
@@ -107,7 +107,7 @@
   width: 25px;
   z-index: 8040;
 }
-.cms-home .fancybox-close {
+.cms-home .fancybox-close, .cms-breathe .fancybox-close {
 	background:url(../images/fancy_close.png) 50% 50% no-repeat;
 	width:30px;
 	height:30px;
