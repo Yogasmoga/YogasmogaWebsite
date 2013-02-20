@@ -29,7 +29,7 @@ function sharevideourl(sharetype)
     var shareurl = homeUrl + 'breathe';
     if(_curshareimgurl == '')
         _curshareimgurl = 'https://yogasmoga.com/yogasmoga_gold.jpg';
-    _cursharedesc = "Did You Take a Breathe Today?";
+    _cursharedesc = "Did You Take a Breath Today?";
     _currentshareurl = shareurl;
     _cursharesummary = "We are YOGASMOGA, We make things for life - One breathe at a time.";
     _curshareimg[0] = mediaUrl + 'wysiwyg/homepage/video/youtube_fbthumb02.jpg';
