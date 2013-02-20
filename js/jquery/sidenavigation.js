@@ -186,10 +186,15 @@ function initializeurl()
     var url = _currenturl;
     if(url.indexOf("#") >= 0)
         url = url.substr(0, url.indexOf("#"));
+    var callurl = '';
+    if(window.location.href.indexOf('https://') >= 0)
+        callurl = securehomeUrl + 'myessentials/mylink/getshorturl'
+    else
+         callurl = _homeUrl + 'myessentials/mylink/getshorturl'
     jQuery(".pgsection").each(function(){
         jQuery.ajax({
             type : 'POST',
-            url : homeUrl + 'myessentials/mylink/getshorturl',
+            url : callurl,
             data : {'longurl': url + '#' + jQuery(this).attr('id'),'id':jQuery(this).attr('id')},
             success : function(result){
                 result = eval('(' + result + ')');
