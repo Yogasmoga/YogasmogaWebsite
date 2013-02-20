@@ -280,7 +280,7 @@ function shareurlmain()
             var width = cfscreen.find('img.shareit:first').width();
             var height =  cfscreen.find('img.shareit:first').height();
             console.log((width / height));
-            if((width / height) > 3)
+            if((width / height) > 2)
                 _curshareimg[0] = 'http://yogasmoga.com/yogasmoga_gold.jpg';
             else
                 _curshareimg[0] = cfscreen.find('img.shareit:first').attr('src');
