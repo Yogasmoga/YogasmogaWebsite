@@ -57,8 +57,11 @@
 jQuery(document).ready(function(){
 	jQuery(".fancy-image").fancybox({
 		padding:0,
-		helpers:  {
-			overlay : null
+		margin:20,
+		helpers : { 
+			overlay: {opacity: 1,
+				css: {'background' : 'rgba(255,255,255,0)'}
+			}
 		}
 	});
 })

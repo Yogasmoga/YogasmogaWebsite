@@ -98,13 +98,13 @@
 }
 
 .fancybox-close {
-  background-position: -6px -6px;
+  background-position: -4px -2px;
   cursor: pointer;
-  height: 25px;
   position: absolute;
-  right: 0;
-  top: 0;
-  width: 25px;
+	width:30px;
+	height:30px;
+	right:-15px;
+	top:-15px;
   z-index: 8040;
 }
 .cms-home .fancybox-close {
