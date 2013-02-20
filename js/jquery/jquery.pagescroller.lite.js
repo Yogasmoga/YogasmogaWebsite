@@ -137,7 +137,12 @@ var pageScroller = {};
 				pageScroller.pageLinks.eq(c).parent("li").addClass("active");
 				pageScroller.options.currentSection = c;
 				var curSection = pageScroller.sections.eq(c).attr('id');
-				window.location.hash = 'section-'+curSection;
+				if(c > 0){
+					window.location.hash = 'ys-'+curSection;
+				}else{
+					var loc = window.location;
+					history.pushState("", document.title, loc.pathname + loc.search);
+				}
 			};
 			if (!pageScroller.options) return pageScroll(this, h)
 		}

@@ -1909,11 +1909,12 @@ ul.topmenulinks li.selected
 {
     border-bottom : 2px solid #D90d3d;
 }
-ul.topmenulinks li a,ul.topmenulinks li a:visited 
+ul.topmenulinks li a
 {
     text-transform: uppercase;
 	color:#000;
 }
+ul.topmenulinks li a:hover,ul.topmenulinks li a:active{color:#d90d3d;}
 div#toprevolvingmessage blockquote {
   color: #999999;
   display: block;
