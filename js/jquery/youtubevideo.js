@@ -32,7 +32,7 @@ function sharevideourl(sharetype)
     _cursharedesc = "Did You Take a Breath Today?";
     _currentshareurl = shareurl;
     _cursharesummary = "We are YOGASMOGA, We make things for life - One breath at a time.";
-    _curshareimg[0] = mediaUrl + 'wysiwyg/homepage/video/youtube_fbthumb02.jpg';
+    _curshareimg[0] = mediaUrl + 'wysiwyg/homepage/video/youtube_fbthumb02.png';
     switch(sharetype)
     {
     case 'mail':
