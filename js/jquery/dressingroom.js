@@ -92,6 +92,10 @@ jQuery(document).ready(function($){
     $(".ui-widget-overlay, div#productdetailpopup img#closelightbox").live("click", function(){
         jQuery( "#productdetailpopup" ).dialog( "close" );
     });
+	$j('#dressingroomtop img:first, #dressingroombottom img:first').load(function(){
+		//alert($j(this).height()+'---'+$j(this).width())
+		chkfixposition()
+	})
 })
 function showproductlightbox(productid){
     productid = parseInt(productid);
@@ -126,15 +130,26 @@ function chkfixposition(){
 	$topDress.height($topSH);
 	$botDress.height($botSH);*/
 	$j('.doverlay').fadeOut(50);
-	$j('#dressingroomholder img').each(function(){
+	$j('#dressingroomtop img').each(function(){
 		var desHeight = (_winH - _headerHeight - 150);
 		if(desHeight < 385) desHeight = 385;
-		var cHeight = $j(this).height();
+		var cHeight = $j('#dressingroomtop img:first').height();
 		var nhPercent = (desHeight/cHeight);
 		var newHeight = Math.round(cHeight*nhPercent);
 		//alert(newHeight +'+'+ nhPercent);
 		$j(this).height(newHeight);
-		var NewLeft = $j(this).width()/2;
+		var NewLeft = $j('#dressingroomtop img:first').width()/2;
+		$j(this).css({marginLeft: '-'+NewLeft+'px'})
+	})
+	$j('#dressingroombottom img').each(function(){
+		var desHeight = (_winH - _headerHeight - 150);
+		if(desHeight < 385) desHeight = 385;
+		var cHeight = $j('#dressingroombottom img:first').height();
+		var nhPercent = (desHeight/cHeight);
+		var newHeight = Math.round(cHeight*nhPercent);
+		//alert(newHeight +'+'+ nhPercent);
+		$j(this).height(newHeight);
+		var NewLeft = $j('#dressingroombottom img:first').width()/2;
 		$j(this).css({marginLeft: '-'+NewLeft+'px'})
 	})
 	$j('#dressingroomtop, #dressingroombottom').each(function(){
@@ -184,7 +199,7 @@ function getScaledwidth(originalheight, originalwidth)
 
 $j(window).load(function(){
 	//$j('.doverlay').fadeOut(250);
-	chkfixposition()
+	
 })
 var id;
 $j(window).resize(function() {
