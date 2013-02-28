@@ -66,6 +66,7 @@ table.productdesignfeatures div.caption div
     font-weight : bold;
     width : auto;
     text-align: center;
+    font-family : gotham-m;
 }
 
 table.productdetailtable
@@ -361,6 +362,25 @@ table.productdetailtable div.preorderitem
     margin-top : 20px;
     cursor : pointer;
     display : none;
+}
+
+table.productdetailtable div.preorderitem
+{
+    width : 239px;
+    height : 43px;
+    background-image : url('../images/catalog/product/pre_order_now_off.png');
+    background-repeat : no-repeat;
+    margin-top : 20px;
+    cursor : pointer;
+    display : none;
+    position: relative;
+}
+
+table.productdetailtable div.preorderitem img
+{
+    position : absolute;
+    right : -36px;
+    top : 8px;
 }
 
 table.productdetailtable div.addtowishlist, table.productdetailtable div.addtowishlist a, table.productdetailtable div.addtowishlist a:hover, table.productdetailtable div.addtowishlist a:visited, #productdetailpopup div.addtowishlist, #productdetailpopup div.addtowishlist a, #productdetailpopup div.addtowishlist a:hover, #productdetailpopup div.addtowishlist a:visited 
@@ -912,4 +932,25 @@ span.zoom-tx{
   text-align: left;
   text-transform: uppercase;
   width: 240px;
+}
+
+div#absproductoptions div#preorderinfo
+{
+    width : 353px;
+    padding: 50px 45px;
+    border : 2px solid #999999;
+    position : absolute;
+    right : -470px;
+    top : 40px;
+    background-color: white;
+    display : none;
+    text-align: left;
+}
+
+div#absproductoptions div#preorderinfo img.closeinfo
+{
+    position : absolute;
+    top : 8px;
+    right : 8px;
+    cursor : pointer;
 }

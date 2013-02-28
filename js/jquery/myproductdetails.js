@@ -78,6 +78,15 @@ jQuery(document).ready(function($){
         }
         $("div#sizechart").fadeIn('normal');
     });
+    
+    $("div#preorderitem img").hover(function(){
+        //$("div#preorderinfo").show();
+        $("div#preorderinfo").fadeIn('fast');
+    },
+    function(){
+        //$("div#preorderinfo").hide();
+        $("div#preorderinfo").fadeOut('fast');
+    });
 });
 
 function InitializeProductQty()
