@@ -67,6 +67,7 @@ table.productdesignfeatures div.caption div
     width : auto;
     text-align: center;
     font-family : gotham-m;
+    cursor : default;
 }
 
 table.productdetailtable
@@ -948,6 +949,7 @@ div#absproductoptions div#preorderinfo
     font-family : gothamlight;
     font-size : 11px;
     letter-spacing: 0.4pt;
+    color : #333333;
 }
 
 div#absproductoptions div#preorderinfo img.closeinfo
