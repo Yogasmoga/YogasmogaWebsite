@@ -68,6 +68,8 @@
                 <div class="loginerrormsg errormsg"><?php
                     if(strpos(strip_tags($this->getMessagesBlock()->getGroupedHtml()), "reset your password"))
                         echo "An email has been sent.</br>Please check your inbox to reset your password.";
+                    else if(strpos(strip_tags($this->getMessagesBlock()->getGroupedHtml()), "login or password"))
+                        echo "Invalid login or password. Please try again.";
                     else
                         echo strip_tags($this->getMessagesBlock()->getGroupedHtml());
                 ?></div>
