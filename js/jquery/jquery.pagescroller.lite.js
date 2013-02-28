@@ -138,7 +138,7 @@ var pageScroller = {};
 				pageScroller.options.currentSection = c;
 				var curSection = pageScroller.sections.eq(c).attr('id');
 				if(c > 0){
-					window.location.hash = 'ys-'+curSection;
+					window.location.hash = curSection.charAt(0).toUpperCase() + curSection.slice(1);
 				}else{
 					var loc = window.location;
 					history.pushState("", document.title, loc.pathname + loc.search);
