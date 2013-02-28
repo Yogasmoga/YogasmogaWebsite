@@ -46,8 +46,8 @@
             <?php echo $this->renderTotals(); ?>
             <tr>
                 <td colspan="1" class="a-right" style="text-transform: none;">
-                                SMOGI Bucks earned            </td>
-                <td class="a-right" style="text-transform: none;"><span class="price"><?php echo Mage::helper('rewardpoints')->getPointsOnOrder(); ?> Bucks</span></td>
+                                <a href="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> earned            </td>
+                <td class="a-left" style="text-transform: none;"><span class="price"><?php echo Mage::helper('rewardpoints')->getPointsOnOrder(); ?> Bucks</span></td>
             </tr>
         </tbody>
     </table>

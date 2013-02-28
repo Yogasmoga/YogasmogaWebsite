@@ -365,21 +365,7 @@
                                             <a href="<?php echo $producturl; ?>"><?php echo $productname; ?></a>
                                         </h2>
                                         <dl class="item-options">
-                                            <dt  <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>SIZE</dt>
-                                			<dd <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
-                                                <span id="spnsize"></span>
-                                                <select id="cmbsize" class="cmbsize">
-                                                    <?php
-                                                        foreach($productallsizes as $size)
-                                                        {
-                                                            ?>
-                                                                <option value="<?php echo $size['value']; ?>" size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?></option>        
-                                                            <?php
-                                                        } 
-                                                    ?>   
-                                                </select>
-                                            </dd>
-                                            <dt>COLOR</dt>
+                                            <dt>COLOR:</dt>
                                 			<dd>
                                                 <span id="spncolor">
                                                     
@@ -393,6 +379,20 @@
                                                             <?php
                                                         }
                                                     ?>
+                                                </select>
+                                            </dd>
+                                            <dt  <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>SIZE:</dt>
+                                			<dd <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
+                                                <span id="spnsize"></span>
+                                                <select id="cmbsize" class="cmbsize">
+                                                    <?php
+                                                        foreach($productallsizes as $size)
+                                                        {
+                                                            ?>
+                                                                <option value="<?php echo $size['value']; ?>" size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?></option>        
+                                                            <?php
+                                                        } 
+                                                    ?>   
                                                 </select>
                                             </dd>
                                         </dl>

@@ -30,7 +30,7 @@
 	<a id="stripe-update-payment" class="use"><?php echo $this->__("Change payment information") ?></a>
 <?php endif; ?>
 <div id="payment_form_<?php echo $_code ?>">
-	<img src="<?php echo $this->getSkinUrl('images/cardtype.jpg'); ?>" style="margin: 0 0 40px;" />
+	<!-- img src="<?php // echo $this->getSkinUrl('images/cardtype.jpg'); ?>" style="margin: 0 0 40px;" / -->
     <div id="change-stripe-detail" <?php if (/*$this->getIsStripeCustomer()*/false): ?> style="display: none;"<?php endif; ?>>
         <?php //if ($this->getIsCustomerLoggedIn()||$this->getIsCustomerRegistering()) : ?>
         <?php if (false) : ?>
@@ -73,14 +73,21 @@
                     <?php if($this->hasVerification()): ?>
                         <table class="inputtable">
                             <tr>
-                                <td class="label"><label for="<?php echo $_code ?>_cc_cid"><?php echo Mage::helper('payment')->__('CVC') ?></label></td>
+                                <td class="label"><label href="#cvc-div" class="poplink" for="<?php echo $_code ?>_cc_cid"><?php echo Mage::helper('payment')->__('CVC') ?></label></td>
                                 <td class="inputholder">
-                                    <input type="text" class="requiredfield" id="<?php echo $_code ?>_cc_cid" name="payment[cc_cid]" value="<?php echo $this->getInfoData('cc_cid')?>"/>
+									<div class="cvc-outer pop-outer">
+										<input type="text" class="requiredfield" id="<?php echo $_code ?>_cc_cid" name="payment[cc_cid]" value="<?php echo $this->getInfoData('cc_cid')?>"/>
+										<div id="cvc-div" class="popbox">
+											<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('cvc-block')->toHtml(); ?>
+										</div>
+									</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="errortext" colspan="2">
-                                    <div><a href="#" class="cvv-what-is-this"><?php echo $this->__('What is CVC?') ?></a></div>
+                                    <div class="cvc-outer pop-outer">
+										<a href="#cvc-div" class="cvv-what-is-this poplink"><?php echo $this->__('What is CVC?') ?></a>
+									</div>
                                 </td>
                             </tr>
                         </table>

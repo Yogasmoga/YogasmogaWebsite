@@ -63,6 +63,7 @@ div.checkoutstepheader
     padding-top: 13px;
     cursor : default;
 } 
+div.checkoutstepsubheader span{font-style:italic; color:#999; font-size:13px;}
 div.checkoutstepsubheader
 {
     font-family: gothambook;
@@ -373,7 +374,9 @@ table.co-ov-table tr.last td {
 
 #procImg {
 	float:right ;
+	margin-top:40px;
 }
+#co-billing-form #procImg {margin-top:40px;}
 div#tblcheckoutsteps form
 {
     display : block;
@@ -440,3 +443,4 @@ div.input-box select
 {
     display:none !important;
 }
+#co-shippingmethod-form p{ margin:-20px 0 0px; padding-bottom:20px;}
