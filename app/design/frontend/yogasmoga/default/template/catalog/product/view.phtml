@@ -556,7 +556,7 @@
             </tr>
         </table>
         <div id="preorderinfo">
-            <?php echo Mage::getModel('core/variable')->loadByCode('preorder_message_detail')->getValue('plain'); ?>
+            <?php echo Mage::getModel('core/variable')->loadByCode('preorder_message_detail')->getValue('html'); ?>
             <img class="closeinfo" src="<?php echo $this->getSkinUrl('images/cross_red.png'); ?>" />
         </div>
         <img src="<?php echo $this->getSkinUrl('images/catalog/product/fabric_bg.png'); ?>" class="nodisplay" />

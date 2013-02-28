@@ -936,15 +936,18 @@ span.zoom-tx{
 
 div#absproductoptions div#preorderinfo
 {
-    width : 353px;
+    width : 260px;
     padding: 50px 45px;
     border : 2px solid #999999;
     position : absolute;
-    right : -470px;
+    right : -380px;
     top : 40px;
     background-color: white;
     display : none;
     text-align: left;
+    font-family : gothamlight;
+    font-size : 11px;
+    letter-spacing: 0.4pt;
 }
 
 div#absproductoptions div#preorderinfo img.closeinfo
