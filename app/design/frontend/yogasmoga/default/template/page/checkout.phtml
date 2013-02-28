@@ -36,6 +36,11 @@
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.fancybox-1.0.0.js"></script>
 <script type="text/javascript">
     _disablesidenavigation = true;
+	$('.poplink').fancybox({
+		helpers : {
+			overlay: {css: {'background': 'none'}}
+		}
+	});
 </script>
 </head>
 <body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>

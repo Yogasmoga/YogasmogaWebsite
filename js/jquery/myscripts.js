@@ -35,11 +35,6 @@ jQuery(document).ready(function($){
 //        $(this).css('background-image', "url('" + $(this).attr('imageurl') + "')");
 //    });
     //console.log(_productcolorinfo);
-	$('.poplink').fancybox({
-		helpers : {
-			overlay: {css: {'background': 'none'}}
-		}
-	});
 });
 function closePop(){
 	popOpen = false;
