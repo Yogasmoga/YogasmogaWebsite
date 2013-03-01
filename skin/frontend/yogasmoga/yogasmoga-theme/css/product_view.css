@@ -623,7 +623,11 @@ table.productdetailspopup td.popupproductdetail
 div.productoptions
 {
     width : 250px;
-    position : relative;
+}
+
+td.popupproductdetail div.productoptions
+{
+    position: relative;
 }
 
 td#tdpopupproductsmallimages td
