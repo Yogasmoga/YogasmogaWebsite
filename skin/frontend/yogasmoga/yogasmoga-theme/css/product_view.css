@@ -623,6 +623,7 @@ table.productdetailspopup td.popupproductdetail
 div.productoptions
 {
     width : 250px;
+    position : relative;
 }
 
 td#tdpopupproductsmallimages td
@@ -940,7 +941,7 @@ span.zoom-tx{
   width: 240px;
 }
 
-div#absproductoptions div#preorderinfo
+div#absproductoptions div#preorderinfo, td.popupproductdetail div#preorderinfo
 {
     width : 260px;
     padding: 50px 45px;
@@ -956,8 +957,11 @@ div#absproductoptions div#preorderinfo
     letter-spacing: 0.4pt;
     color : #333333;
 }
-
-div#absproductoptions div#preorderinfo img.closeinfo
+td.popupproductdetail div#preorderinfo
+{
+    top : 0;
+}
+div#absproductoptions div#preorderinfo img.closeinfo, td.popupproductdetail div#preorderinfo img.closeinfo
 {
     position : absolute;
     top : 8px;

@@ -93,6 +93,10 @@ jQuery(document).ready(function($){
         _preorderinfohovered = true;
         setTimeout(function(){_preorderinfohovered = false;}, 10);
     });
+    
+    $("div#preorderinfo img.closeinfo").live('click', function(){
+        $("div#preorderinfo").fadeOut('normal');
+    });
     //$("div#preorderitem img").hover(function(){
 //        //$("div#preorderinfo").show();
 //        $("div#preorderinfo").fadeIn('fast');
