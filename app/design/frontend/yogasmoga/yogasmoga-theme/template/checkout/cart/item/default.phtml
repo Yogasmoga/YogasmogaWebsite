@@ -71,7 +71,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         echo $this->getProductThumbnail()->resize(75);
     }
     
-     ?>" width="75" height="75" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" />
+     ?>" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" />
     <?php if ($this->hasProductUrl()):?></a><?php endif;?></td>
     <td>
         <h2 class="product-name">
