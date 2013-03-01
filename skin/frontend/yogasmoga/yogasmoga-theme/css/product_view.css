@@ -374,14 +374,18 @@ table.productdetailtable div.preorderitem
     margin-top : 20px;
     cursor : pointer;
     display : none;
-    position: relative;
 }
 
-table.productdetailtable div.preorderitem img
+table.productdetailtable div.producterrorcontainer
+{
+    position: relative;
+}
+table.productdetailtable div.producterrorcontainer img
 {
     position : absolute;
     right : -36px;
-    top : 8px;
+    top : -33px;
+    display: none;
 }
 
 table.productdetailtable div.addtowishlist, table.productdetailtable div.addtowishlist a, table.productdetailtable div.addtowishlist a:hover, table.productdetailtable div.addtowishlist a:visited, #productdetailpopup div.addtowishlist, #productdetailpopup div.addtowishlist a, #productdetailpopup div.addtowishlist a:hover, #productdetailpopup div.addtowishlist a:visited 
@@ -619,6 +623,11 @@ table.productdetailspopup td.popupproductdetail
 div.productoptions
 {
     width : 250px;
+}
+
+td.popupproductdetail div.productoptions
+{
+    position: relative;
 }
 
 td#tdpopupproductsmallimages td
@@ -936,7 +945,7 @@ span.zoom-tx{
   width: 240px;
 }
 
-div#absproductoptions div#preorderinfo
+div#absproductoptions div#preorderinfo, td.popupproductdetail div#preorderinfo
 {
     width : 260px;
     padding: 50px 45px;
@@ -952,8 +961,11 @@ div#absproductoptions div#preorderinfo
     letter-spacing: 0.4pt;
     color : #333333;
 }
-
-div#absproductoptions div#preorderinfo img.closeinfo
+td.popupproductdetail div#preorderinfo
+{
+    top : 0;
+}
+div#absproductoptions div#preorderinfo img.closeinfo, td.popupproductdetail div#preorderinfo img.closeinfo
 {
     position : absolute;
     top : 8px;

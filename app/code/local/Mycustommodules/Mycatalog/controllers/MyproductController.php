@@ -563,7 +563,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                                                 </div>
                                             </td>
                                             <td class="earnsmogibuckstext">
-                                                EARN SMOGI BUCKS<br/>WITH THIS PURCHASE
+                                                EARN <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks" target="_blank">SMOGI BUCKS</a><br/>WITH THIS PURCHASE
                                             </td>
                                         </tr>
                                     </table>
@@ -576,10 +576,15 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                                     <div class="producterrorcontainer">
                                         <div class="errormsg">
                                         </div>
+                                        <img id="preorderhelp" src="<?php echo $this->getSkinUrl('images/help.png'); ?>" />
                                     </div>
                                 </td>
                             </tr>
                         </table>
+                        <div id="preorderinfo">
+                            <?php echo Mage::getModel('core/variable')->loadByCode('preorder_message_detail')->getValue('html'); ?>
+                            <img class="closeinfo" src="<?php echo $this->getSkinUrl('images/cross_red.png'); ?>" />
+                        </div>
                     </div>        
                 </td>
                 <td id="tdpopupproductbigimage">

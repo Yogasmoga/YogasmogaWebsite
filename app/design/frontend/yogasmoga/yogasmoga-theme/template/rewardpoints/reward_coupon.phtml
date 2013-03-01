@@ -29,8 +29,8 @@
                     Returning customer? Use your<br />SMOGI Bucks from past purchases.
                 </td>
                 <td>
-                    <a href="<?php echo Mage::helper('customer')->getLoginUrl(); ?>">
-            		<button value="<?php echo $this->__('Login') ?>" onclick="window.location.href=<?php  echo Mage::helper('customer')->getLoginUrl(); ?>" class="button btn-login" title="Login" type="button"><span><span><?php echo $this->__('Login') ?></span></span></button>
+                    <a href="<?php  echo Mage::helper('core/url')->getHomeUrl(); ?>customer/account/login?goto=cart">
+            		<button value="<?php echo $this->__('Login') ?>" class="button btn-login" title="Login" type="button"><span><span><?php echo $this->__('Login') ?></span></span></button>
                     </a>
                 </td>
             </tr>
