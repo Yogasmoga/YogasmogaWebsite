@@ -25,13 +25,48 @@
  */
 ?>
 <?php
+    function getMiniImage($productid, $color)
+    {
+        $_gallery = Mage::getModel('catalog/product')->load($productid)->getMediaGalleryImages();
+        foreach($_gallery as $_image)
+        {
+            $imgdata = json_decode(trim($_image->getLabel()), true);
+            if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0)
+                continue;
+            if($imgdata['color'] != $color)
+                continue;
+            //if(strpos($_image->getLabel(), $color) === false)
+//            //if(strpos($_image->getLabel(),"*") === false)
+//                continue;
+            return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(50, 50)->setQuality(100);
+        }
+        return "";
+    }
+?>
+<?php
 $_item = $this->getItem();
 $isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
 $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage_Catalog_Model_Product_Attribute_Source_Msrp_Type::TYPE_BEFORE_ORDER_CONFIRM);
 ?>
 <tr>
     <td class="a-center"><a href="<?php echo $this->getDeleteUrl()?>" title="<?php echo $this->__('Remove item')?>" class="btn-remove btn-remove2"><?php echo $this->__('Remove item')?></a></td>
-    <td><?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo $this->getProductThumbnail()->resize(75); ?>" width="75" height="75" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" /><?php if ($this->hasProductUrl()):?></a><?php endif;?></td>
+    <td><?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getProductName()) ?>" class="product-image"><?php endif;?>
+    <?php /*
+    <img src="<?php echo $this->getProductThumbnail()->resize(75); ?>" width="75" height="75" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" />
+    */ ?>
+    <img src="<?php 
+    if(Mage::getModel('catalog/product')->load($_item->getProductId())->getTypeID() == "configurable")
+    {
+        $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$_item->getSku());
+        echo substr(getMiniImage($_item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId())),1);    
+    }
+    else
+    {
+        echo $this->getProductThumbnail()->resize(75);
+    }
+    
+     ?>" width="75" height="75" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" />
+    <?php if ($this->hasProductUrl()):?></a><?php endif;?></td>
     <td>
         <h2 class="product-name">
         <?php if ($this->hasProductUrl()):?>
