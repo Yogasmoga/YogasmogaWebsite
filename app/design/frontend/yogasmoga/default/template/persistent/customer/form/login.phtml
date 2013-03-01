@@ -32,6 +32,12 @@
  */
 /** @var $this Mage_Customer_Block_Form_Login */
 ?>
+<?php
+    if($this->getRequest()->getParam('goto') == 'cart')
+    {
+        Mage::getSingleton('core/session')->setRedirect('cart');   
+    }
+?>
 <div class="myheader">LOGIN</div>
 <table class="logintable">
     <tr>
