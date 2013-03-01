@@ -653,6 +653,7 @@ img#closelightbox, img#zoomcloselightbox
     right : 5px;
     cursor : pointer;
     z-index : 3;
+	padding-left:22px;
 }
 table.productdesignfeatures
 {

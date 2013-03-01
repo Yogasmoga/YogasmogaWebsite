@@ -6,7 +6,7 @@
         <form method="post" action="<?php echo $this->getUrl('*/*/giftcardActive'); ?>" name="giftcardActive">
         <div class="input-box">
             <input type="checkbox" value="1" name="giftcard_use" id="giftcard_use" class="checkbox" onclick="document.forms['giftcardActive'].submit()" <?php echo Mage::getSingleton('giftcards/session')->getActive() ? 'checked="checked"' : '' ?> />
-            <label for="giftcard_use"><?php echo $this->__('Use my <a href="'.$this->getUrl('gift_of_ys').'">Gift of YS</a> balance'); ?>&nbsp;(<?php echo Mage::helper('core')->currency(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId())); ?>) </label>
+            <label for="giftcard_use"><?php echo $this->__('Use my <a target="_blank" href="'.$this->getUrl('gift_of_ys').'">Gift of YS</a> balance'); ?>&nbsp;(<?php echo Mage::helper('core')->currency(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId())); ?>) </label>
         </div>
         </form>
         <form method="post" action="<?php echo $this->getUrl('*/*/giftcardPost'); ?>" id="giftcard-form">
@@ -26,9 +26,9 @@
         ?>
     </div>
     <?php else : ?>
-    <h2>Do you have a <a href="<?php echo $this->getUrl('gift_of_ys'); ?>">Gift of YS</a> Card?</h2>
+    <h2>Do you have a <a target="_blank" href="<?php echo $this->getUrl('gift_of_ys'); ?>">Gift of YS</a> Card?</h2>
     <div class="giftcard-login-msg">
-        Please login to use your <a href="<?php echo $this->getUrl('gift_of_ys'); ?>">Gift of YS</a> cards.
+        Please login to use your <a target="_blank" href="<?php echo $this->getUrl('gift_of_ys'); ?>">Gift of YS</a> cards.
         <br />
         <a href="<?php echo Mage::helper('customer')->getLoginUrl(); ?>">
 		<button value="<?php echo $this->__('Login') ?>" onclick="window.location.href='<?php  echo Mage::helper('customer')->getLoginUrl(); ?>'" class="button btn-login" title="Login" type="button"><span><span><?php echo $this->__('Login') ?></span></span></button>

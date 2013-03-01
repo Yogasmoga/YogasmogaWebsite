@@ -313,18 +313,16 @@ div.shippingfootnote span.shippingnote
 	font-size:13px;
 }
 
-.giftcard-balance
-{
-    color: #000000;
-    font-family: gothambook;
-    font-size: 19px;
-    font-weight: normal;
-    letter-spacing: 0.03em;
-    line-height: 1.2;
-    padding: 0 0 35px;
-    text-align: center;
-    text-transform: uppercase;
-    width : 960px;
+.giftcard-balance {
+  font-family: gotham-l;
+  font-size: 13px;
+  font-weight: normal;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  padding: 0 0 35px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 960px;
 }
 #giftcardformmyaccount table.inputtable
 {
