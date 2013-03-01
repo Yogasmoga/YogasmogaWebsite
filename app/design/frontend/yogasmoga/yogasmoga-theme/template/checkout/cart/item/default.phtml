@@ -38,7 +38,7 @@
             //if(strpos($_image->getLabel(), $color) === false)
 //            //if(strpos($_image->getLabel(),"*") === false)
 //                continue;
-            return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(50, 50)->setQuality(100);
+            return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75)->setQuality(100);
         }
         return "";
     }
