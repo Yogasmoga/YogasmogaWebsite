@@ -25,22 +25,25 @@
  */
 ?>
 <?php
-    function getMiniImage($productid, $color)
+    if (!function_exists('getMiniImage'))
     {
-        $_gallery = Mage::getModel('catalog/product')->load($productid)->getMediaGalleryImages();
-        foreach($_gallery as $_image)
+        function getMiniImage($productid, $color)
         {
-            $imgdata = json_decode(trim($_image->getLabel()), true);
-            if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0)
-                continue;
-            if($imgdata['color'] != $color)
-                continue;
-            //if(strpos($_image->getLabel(), $color) === false)
-//            //if(strpos($_image->getLabel(),"*") === false)
-//                continue;
-            return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75)->setQuality(100);
-        }
-        return "";
+            $_gallery = Mage::getModel('catalog/product')->load($productid)->getMediaGalleryImages();
+            foreach($_gallery as $_image)
+            {
+                $imgdata = json_decode(trim($_image->getLabel()), true);
+                if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0)
+                    continue;
+                if($imgdata['color'] != $color)
+                    continue;
+                //if(strpos($_image->getLabel(), $color) === false)
+    //            //if(strpos($_image->getLabel(),"*") === false)
+    //                continue;
+                return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75)->setQuality(100);
+            }
+            return "";
+        }   
     }
 ?>
 <?php
@@ -54,6 +57,9 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
     <?php /*
     <img src="<?php echo $this->getProductThumbnail()->resize(75); ?>" width="75" height="75" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" />
     */ ?>
+    <?php
+        Mage::getModel('catalog/product')->load($_item->getProductId())->getTypeID();
+    ?>
     <img src="<?php 
     if(Mage::getModel('catalog/product')->load($_item->getProductId())->getTypeID() == "configurable")
     {
