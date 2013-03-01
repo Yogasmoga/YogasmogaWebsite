@@ -545,11 +545,12 @@
 					<button style="display: none;" id="preorderitem" title="Preorder" class="button cbtn btn-pre"><span>Preorder<span></span></span> </button> -->
                     <div id="orderitem" class="addtobag spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_on.png'); ?>"></div>
                     <div id="preorderitem" class="preorderitem spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_now_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_now_on.png'); ?>">
-                    <img src="<?php echo $this->getSkinUrl('images/help.png'); ?>" />                    
+                                        
                     </div>
                     <div class="producterrorcontainer">
                         <div class="errormsg">
                         </div>
+                        <img id="preorderhelp" src="<?php echo $this->getSkinUrl('images/help.png'); ?>" />
                     </div>
                     <a class="addtowishlist" href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productid; ?>/">ADD TO WISH LIST +</a>
                 </td>
