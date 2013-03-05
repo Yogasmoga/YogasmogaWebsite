@@ -171,6 +171,39 @@
                 <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
                 <handling_type>F</handling_type>
             </tablerate>
+            <ysprimeservice>
+                    <active>0</active>
+                    <sallowspecific>0</sallowspecific>
+                    <model>shipping/carrier_ysprimeservice</model>
+                    <name>YS Prime Service Shipping Method</name>
+                    <price>5.00</price>
+                    <title>YS Prime Service Shipping Method</title>
+                    <type>I</type>
+                    <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                    <handling_type>F</handling_type>
+            </ysprimeservice>
+            <ysfirstclassservice>
+                    <active>0</active>
+                    <sallowspecific>0</sallowspecific>
+                    <model>shipping/carrier_ysfirstclassservice</model>
+                    <name>YS First Class Shipping Service</name>
+                    <price>5.00</price>
+                    <title>Inchoo Custom Shipping Method</title>
+                    <type>I</type>
+                    <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                    <handling_type>F</handling_type>
+            </ysfirstclassservice>
+            <ysprimeservice>
+                    <active>0</active>
+                    <sallowspecific>0</sallowspecific>
+                    <model>shipping/carrier_ysprimeservice</model>
+                    <name>YS Prime Service</name>
+                    <price>5.00</price>
+                    <title>YS Prime Service</title>
+                    <type>I</type>
+                    <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                    <handling_type>F</handling_type>
+            </ysprimeservice>
         </carriers>
     </default>
 </config>
