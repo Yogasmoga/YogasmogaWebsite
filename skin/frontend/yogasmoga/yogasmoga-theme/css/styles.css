@@ -2694,10 +2694,9 @@ table.staticproductgrid td.tdmain
 
 table.staticproductgrid div.item
 {
-    margin: 0;
+    margin: 0 auto;
     float : none;
     /* width : 300px; */
-    width : 100%;
     margin-left : auto;
     margin-right : auto;
 }
