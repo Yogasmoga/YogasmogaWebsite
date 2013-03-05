@@ -255,3 +255,7 @@
 	background: #000;
 	background: rgba(0, 0, 0, .8);
 }
+
+body.fancybox-lock img.namaskarimage{right:17px;}
+body.fancybox-lock .header{right:17px; width:auto; left:0;}
+body.fancybox-lock #pageScrollerNav{right:27px;}

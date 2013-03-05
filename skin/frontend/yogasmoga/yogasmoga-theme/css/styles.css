@@ -1914,6 +1914,10 @@ ul.topmenulinks li.selected
 {
     border-bottom : 2px solid #D90d3d;
 }
+
+ul.topmenulinks li.selected a{
+	color:#d90d3d;
+}
 ul.topmenulinks li a
 {
     text-transform: uppercase;
