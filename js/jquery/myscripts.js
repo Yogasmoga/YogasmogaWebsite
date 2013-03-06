@@ -21,7 +21,11 @@ jQuery(document).ready(function($){
     $(".spbutton").each(function(){
         $("body").append("<img src='" + $(this).attr('downimageurl') + "' class='nodisplay' />");
     });
-    
+    $j('.cart-table tr').hover(function(){
+		$j(this).find('.btn-remove2').css('visibility','visible');
+	}, function(){
+		$j(this).find('.btn-remove2').css('visibility','hidden');
+	})
     //setTimeout(function(){ fixiebug();}, 100);
     //$(".spbutton").mousedown(function(){
 //        $(this).css('background-image', "url('" + $(this).attr('downimageurl') + "')");
