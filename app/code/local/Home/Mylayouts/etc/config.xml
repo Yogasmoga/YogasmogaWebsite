@@ -43,6 +43,11 @@
           <template>page/breathe.phtml</template>
           <layout_handle>Breathe</layout_handle>
         </breathe>
+		<love translate="label">
+          <label>Love</label>
+          <template>page/love.phtml</template>
+          <layout_handle>Love</layout_handle>
+        </love>
         <!-- add more layouts here -->
       </layouts>
     </page>
