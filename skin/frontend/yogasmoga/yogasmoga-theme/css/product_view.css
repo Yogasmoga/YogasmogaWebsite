@@ -950,10 +950,10 @@ div#absproductoptions div#preorderinfo, td.popupproductdetail div#preorderinfo
     width : 260px;
     padding: 50px 45px;
     border : 2px solid #999999;
-    position : fixed;
+    position : absolute;
     /*right : -380px;*/
-    left : 275px;
-    top : 40px;
+    left : 262px;
+    top : 13px;
     background-color: white;
     display : none;
     text-align: left;
