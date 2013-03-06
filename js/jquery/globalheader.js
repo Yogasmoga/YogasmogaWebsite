@@ -9,16 +9,6 @@ jQuery(document).ready(function($){
             //scrollTop: $("#"+ 'allproducts').offset().top},
         'fast');
     }
-    else
-    {
-        setTimeout(function(){
-            if($("div#pgnavigator li.active").length == 0)
-            {
-                $(window).scrollTop(1);
-                //$(window).scrollTop(0);
-            }
-        },1000);
-    }
     
 	$(window).load(function(){
 			//$('.header-container').hover(
