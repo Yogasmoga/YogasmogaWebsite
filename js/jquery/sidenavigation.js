@@ -40,15 +40,6 @@ jQuery(document).ready(function($){
         }
     );
         
-    setTimeout(function(){
-        if($("div#pgnavigator li.active").length == 0)
-        {
-            $(window).scrollTop(1);
-            //$(window).scrollTop(0);
-        }
-    },1000);    
-        
-        
     $("div#pageScrollerNav div#glbshare").hover(function(){
         _isglobalsharinghovered = true;
         if(_isglobalsharingopen || _isglobalsharinganimating)

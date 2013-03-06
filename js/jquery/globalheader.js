@@ -3,11 +3,21 @@ jQuery(document).ready(function($){
     if(_currenturl.indexOf('#') > 0)
     {
         //$(window).scrollTop($(window).scrollTop() - _headerHeight);
-        console.log($("#"+ _currenturl.substr(_currenturl.indexOf('#') + 1)));
+        //console.log($("#"+ _currenturl.substr(_currenturl.indexOf('#') + 1)));
          $('html,body').animate({
             scrollTop: $("#"+ _currenturl.substr(_currenturl.indexOf('#') + 1).toLowerCase()).offset().top - _headerHeight},
             //scrollTop: $("#"+ 'allproducts').offset().top},
         'fast');
+    }
+    else
+    {
+        setTimeout(function(){
+            if($("div#pgnavigator li.active").length == 0)
+            {
+                $(window).scrollTop(1);
+                //$(window).scrollTop(0);
+            }
+        },1000);
     }
     
 	$(window).load(function(){
