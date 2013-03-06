@@ -950,8 +950,9 @@ div#absproductoptions div#preorderinfo, td.popupproductdetail div#preorderinfo
     width : 260px;
     padding: 50px 45px;
     border : 2px solid #999999;
-    position : absolute;
-    right : -380px;
+    position : fixed;
+    /*right : -380px;*/
+    left : 275px;
     top : 40px;
     background-color: white;
     display : none;
@@ -960,6 +961,12 @@ div#absproductoptions div#preorderinfo, td.popupproductdetail div#preorderinfo
     font-size : 11px;
     letter-spacing: 0.4pt;
     color : #333333;
+}
+td.popupproductdetail div#preorderinfo
+{
+    position : absolute;
+    right : -368px;
+    left : auto;
 }
 td.popupproductdetail div#preorderinfo
 {
