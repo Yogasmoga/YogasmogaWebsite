@@ -970,10 +970,6 @@ td.popupproductdetail div#preorderinfo
     left : 263px;
         
 }
-td.popupproductdetail div#preorderinfo
-{
-    top : 0;
-}
 div#absproductoptions div#preorderinfo img.closeinfo, td.popupproductdetail div#preorderinfo img.closeinfo
 {
     position : absolute;
