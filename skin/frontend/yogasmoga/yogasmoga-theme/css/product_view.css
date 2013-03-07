@@ -374,6 +374,7 @@ table.productdetailtable div.preorderitem
     margin-top : 20px;
     cursor : pointer;
     display : none;
+    position: relative;
 }
 
 table.productdetailtable div.producterrorcontainer
@@ -950,10 +951,11 @@ div#absproductoptions div#preorderinfo, td.popupproductdetail div#preorderinfo
     width : 260px;
     padding: 50px 45px;
     border : 2px solid #999999;
-    position : fixed;
+    position : absolute;
     /*right : -380px;*/
-    left : 275px;
-    top : 40px;
+    left : 254px;
+    top : auto;
+    bottom : 60px;
     background-color: white;
     display : none;
     text-align: left;
@@ -964,9 +966,9 @@ div#absproductoptions div#preorderinfo, td.popupproductdetail div#preorderinfo
 }
 td.popupproductdetail div#preorderinfo
 {
-    position : absolute;
-    right : -368px;
-    left : auto;
+    bottom : 70px;
+    left : 263px;
+        
 }
 td.popupproductdetail div#preorderinfo
 {

@@ -89,16 +89,16 @@ jQuery(document).ready(function($){
     });
     
     $("#preorderhelp").live('click', function(){
-        if(_productdisplaymode == 'page')
-        {
-            //console.log($("#preorderitem").position().top);
-//            console.log($("div#preorderinfo").height());
-            var tp = $("#preorderitem").position().top - $("div#preorderinfo").height() - 10;
-            if(tp <80)
-                tp = 80;
-            //console.log(tp);
-            $("div#preorderinfo").css('top', tp + 'px');   
-        } 
+        //if(_productdisplaymode == 'page')
+//        {
+//            //console.log($("#preorderitem").position().top);
+////            console.log($("div#preorderinfo").height());
+//            var tp = $("#preorderitem").position().top - $("div#preorderinfo").height() - 10;
+//            if(tp <80)
+//                tp = 80;
+//            //console.log(tp);
+//            $("div#preorderinfo").css('top', tp + 'px');   
+//        } 
         $("div#preorderinfo").fadeIn('normal');
         _preorderinfohovered = true;
         setTimeout(function(){_preorderinfohovered = false;}, 10);
