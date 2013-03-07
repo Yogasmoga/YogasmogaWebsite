@@ -24,18 +24,18 @@
 .explore_nav_current{
 	background:url('../images/homepage/explore_nav_hover.png') repeat-x center;
 }
-/*#explore .bx-wrapper{padding:100px 0; background:url(../images/homepage/car_bg.png) 52% 50% no-repeat; background-size:contain; max-width:1600px; margin:0 auto; position:relative;}*/
-#explore .bx-wrapper{padding:100px 0; background:url("../images/homepage/car_bg.png") no-repeat scroll 30% center transparent; max-width:1600px; margin:0 auto; position:relative; background-size:contain;}
+/*#Explore .bx-wrapper{padding:100px 0; background:url(../images/homepage/car_bg.png) 52% 50% no-repeat; background-size:contain; max-width:1600px; margin:0 auto; position:relative;}*/
+#Explore .bx-wrapper{padding:100px 0; background:url("../images/homepage/car_bg.png") no-repeat scroll 30% center transparent; max-width:1600px; margin:0 auto; position:relative; background-size:contain;}
 
-#explore #slider .carousel-img{position:relative;}
-#explore #slider .carousel-img img.bximg {
+#Explore #slider .carousel-img{position:relative;}
+#Explore #slider .carousel-img img.bximg {
   height: 100%;
   left: 17%;
   position: absolute;
   top: 0;
   width: auto;
 }
-#explore #slider .carousel-desc {
+#Explore #slider .carousel-desc {
 	top:150px;
   padding-bottom:50px;
   left: 48%;
@@ -45,10 +45,10 @@
 }
 @media screen and (max-width: 1500px) {
 	
-#explore #slider .carousel-desc {bottom:10%;top:auto;}
+#Explore #slider .carousel-desc {bottom:10%;top:auto;}
 }
 /*
-#explore #slider .carousel-desc {
+#Explore #slider .carousel-desc {
   bottom: 0px;
   padding-bottom:50px;
   left: 65%;
@@ -57,7 +57,7 @@
   text-align: center;
 }
 */
-#explore #slider .carousel-desc img{max-height:200px; max-width:100%;}
+#Explore #slider .carousel-desc img{max-height:200px; max-width:100%;}
 
 .bx-controls {
   bottom: 65px;
@@ -87,7 +87,7 @@
 .bx-pager-item a.active{
   background: url(../images/dot5px.gif) 50% 50% repeat-x;
 }
-#explore #slider .carousel-desc button.button{
+#Explore #slider .carousel-desc button.button{
  width:138px; position:absolute; left:50%; margin-left:-69px; bottom:0;
 }
 .banner-txt{position:absolute; top:13.5%; left:15%; text-align:center; white-space:nowrap; font-family:ITCAvantGardeProBk, gotham  , Arial; color:#fff; font-size:17px; line-height:1.1; text-transform:uppercase;}

@@ -444,3 +444,5 @@ div.input-box select
     display:none !important;
 }
 #co-shippingmethod-form p{ margin:-20px 0 0px; padding-bottom:20px;}
+label.poplink{cursor:help;}
+label.poplink:hover{color:#d90d3d;}

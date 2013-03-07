@@ -39,11 +39,26 @@ jQuery(document).ready(function($){
 //        $(this).css('background-image', "url('" + $(this).attr('imageurl') + "')");
 //    });
     //console.log(_productcolorinfo);
+	var popOpen = false;
+	jQuery('.poplink').live('click',function(e){
+		e.preventDefault();
+		var target = $j(this).attr('href');
+		$j(target).fadeIn(400);
+	});
+	$j('.popbox').live('mouseover', function(){
+        popOpen = true;
+    });
+    $(".popbox").live('mouseout', function(){
+        popOpen = false;
+    });
+	$("body").click(function(){
+        if(!popOpen) $j('.popbox').fadeOut(400);
+    });
+    
+    $("img#closesmlight").live('click', function(){
+        $(this).parent().fadeOut('normal');
+    });
 });
-function closePop(){
-	popOpen = false;
-	$j('.popbox').fadeOut(250);
-}
 function removenotifications()
 {
     jQuery(".notification").fadeOut();

@@ -137,8 +137,12 @@ var pageScroller = {};
 				pageScroller.pageLinks.eq(c).parent("li").addClass("active");
 				pageScroller.options.currentSection = c;
 				var curSection = pageScroller.sections.eq(c).attr('id');
+				if(curSection.toLowerCase() == "explore"){
+					slider.goToNextSlide();
+					slider.startAuto();
+				}
 				if(c > 0){
-					window.location.hash = curSection.charAt(0).toUpperCase() + curSection.slice(1);
+					window.location.hash = curSection.toLowerCase()//.charAt(0).toUpperCase() + curSection.slice(1);
 				}else{
 					var loc = window.location;
 					history.pushState("", document.title, loc.pathname + loc.search);

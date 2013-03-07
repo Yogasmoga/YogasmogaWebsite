@@ -79,6 +79,7 @@
 										<input type="text" class="requiredfield" id="<?php echo $_code ?>_cc_cid" name="payment[cc_cid]" value="<?php echo $this->getInfoData('cc_cid')?>"/>
 										<div id="cvc-div" class="popbox">
 											<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('cvc-block')->toHtml(); ?>
+											<img id="closesmlight" src="<?php echo $this->getSkinUrl('images/cross_red.png'); ?>" />
 										</div>
 									</div>
                                 </td>
