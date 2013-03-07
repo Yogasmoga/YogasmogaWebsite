@@ -98,13 +98,14 @@
 }
 
 .fancybox-close {
-  background-position: -4px -2px;
+  /*background-position: -4px -2px;*/
+  background:url(../images/cross_red.png) 50% 50% no-repeat;
   cursor: pointer;
   position: absolute;
 	width:30px;
 	height:30px;
-	right:-15px;
-	top:-15px;
+	right:0;
+	top:0px;
   z-index: 8040;
 }
 .cms-home .fancybox-close, .cms-breathe .fancybox-close {
