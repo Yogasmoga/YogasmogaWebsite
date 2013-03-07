@@ -4,9 +4,11 @@ jQuery(document).ready(function($){
 			//console.log($("#"+ _currenturl.substr(_currenturl.indexOf('#') + 1)));
 			var curhash = _currenturl.substr(_currenturl.indexOf('#') + 1)
 			var curtarget = curhash.charAt(0).toUpperCase() + curhash.slice(1)
+			if($("#"+ curtarget).length){
 			 $('html,body').animate({
 				scrollTop: $("#"+ curtarget).offset().top - _headerHeight},
 			'fast');
+			}
 		}
     
 
