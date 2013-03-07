@@ -101,7 +101,7 @@
 									?>
 									<div class="dritem" botpos="<?php echo intval(strip_tags($detail[6]))+8; ?>">
 										<div class="dressing-img">
-											<img width="<?php echo trim(strip_tags($detail[4])); ?>" height="<?php echo trim(strip_tags($detail[5])); ?>" style="margin-left:-<?php echo intval(strip_tags($detail[4]))/2; ?>px;" src="<?php echo $dressImgPath.trim($detail[2]); ?>" />
+											<img alt="<?php echo html_entity_decode($product->getName()." - ".$detail[7]); ?>" width="<?php echo trim(strip_tags($detail[4])); ?>" height="<?php echo trim(strip_tags($detail[5])); ?>" style="margin-left:-<?php echo intval(strip_tags($detail[4]))/2; ?>px;" src="<?php echo $dressImgPath.trim($detail[2]); ?>" />
 										</div>
 										<div class="productdetail">
 											<div class="detail-box">
@@ -137,7 +137,7 @@
 									?>
 									<div class="dritem">
 										<div class="dressing-img">
-											<img width="<?php echo trim(strip_tags($detail[4])); ?>" height="<?php echo trim(strip_tags($detail[5])); ?>"  style="margin-left:-<?php echo intval(strip_tags($detail[4]))/2; ?>px;" src="<?php echo $dressImgPath.trim($detail[2]); ?>" />
+											<img alt="<?php echo html_entity_decode($product->getName()." - ".$detail[7]); ?>" width="<?php echo trim(strip_tags($detail[4])); ?>" height="<?php echo trim(strip_tags($detail[5])); ?>"  style="margin-left:-<?php echo intval(strip_tags($detail[4]))/2; ?>px;" src="<?php echo $dressImgPath.trim($detail[2]); ?>" />
 										</div>
 										<div class="productdetail">
 											<div class="productcount">
