@@ -92,8 +92,7 @@ jQuery(document).ready(function($){
     $(".ui-widget-overlay, div#productdetailpopup img#closelightbox").live("click", function(){
         jQuery( "#productdetailpopup" ).dialog( "close" );
     });
-	$j('#dressingroomtop img:first, #dressingroombottom img:first').load(function(){
-		//alert($j(this).height()+'---'+$j(this).width())
+	$j('#dressingroomholder').waitForImages(function(){
 		chkfixposition()
 	})
 })
