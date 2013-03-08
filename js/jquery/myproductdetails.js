@@ -10,6 +10,7 @@ jQuery(document).ready(function($){
         $(this).addClass("selectedimage");
         $("table.tdbigimagecontainer img").hide();
         $("table.tdbigimagecontainer img").attr("src", $(this).attr("bigimageurl"));
+        $("table.tdbigimagecontainer img").attr("alt", $(this).find("img:first").attr('alt'));
         _curshareimgurl = $(this).attr("bigimageurl");
         $("table.tdbigimagecontainer img").fadeIn('fast');
     });
@@ -19,6 +20,7 @@ jQuery(document).ready(function($){
         $(this).addClass("selectedimage");
         $("td#tdpopupproductbigimage img").hide();
         $("td#tdpopupproductbigimage img").attr("src", $(this).attr("bigimageurl"));
+        $("td#tdpopupproductbigimage img").attr("alt", $(this).find("img:first").attr('alt'));
         $("td#tdpopupproductbigimage img").fadeIn('fast');
     });
         
@@ -232,16 +234,19 @@ function changeColor(clr)
     {
         for(i = 0; i < _productcolorinfo[colorindex].smallimages.length; i++)
         {
-            smallimagehtml = smallimagehtml + "<tr><td bigimageurl='" + _productcolorinfo[colorindex].bigimages[i] + "'><img src='" + _productcolorinfo[colorindex].smallimages[i] + "'></td></tr>";
+            smallimagehtml = smallimagehtml + "<tr><td bigimageurl='" + _productcolorinfo[colorindex].bigimages[i][0] + "'><img src='" + _productcolorinfo[colorindex].smallimages[i][0] + "' alt='" + _productcolorinfo[colorindex].smallimages[i][1] + "'></td></tr>";
         }
         jQuery("td#tdpopupproductbigimage, td#tdpopupproductsmallimages").hide();
         jQuery("td#tdpopupproductsmallimages table tbody").html(smallimagehtml);
         if(jQuery("td#tdpopupproductsmallimages td").length > 0)
         {
             if(jQuery("td#tdpopupproductbigimage img").length > 0)
+            {
                 jQuery("td#tdpopupproductbigimage img").attr("src", jQuery("td#tdpopupproductsmallimages table tbody td:first").attr("bigimageurl"));
+                jQuery("td#tdpopupproductbigimage img").attr("alt", jQuery("td#tdpopupproductsmallimages table tbody td:first").find('img:first').attr("alt"));
+            }
             else
-                jQuery("td#tdpopupproductbigimage").html("<img src='" + jQuery("td#tdpopupproductsmallimages table tbody td:first").attr("bigimageurl") + "'>");
+                jQuery("td#tdpopupproductbigimage").html("<img src='" + jQuery("td#tdpopupproductsmallimages table tbody td:first").attr("bigimageurl") + "' alt='" + jQuery("td#tdpopupproductsmallimages table tbody td:first").find('img:first').attr("alt") + "'>");
             jQuery("td#tdpopupproductsmallimages table tbody td:first").addClass('selectedimage');   
         }
         jQuery("td#tdpopupproductbigimage, td#tdpopupproductsmallimages").fadeIn('fast');
@@ -251,7 +256,7 @@ function changeColor(clr)
         smallimagehtml = '<tr>';
         for(i = 0; i < _productcolorinfo[colorindex].smallimages.length; i++)
         {
-            smallimagehtml = smallimagehtml + "<td bigimageurl='" + _productcolorinfo[colorindex].bigimages[i] + "' zoomimageurl='" + _productcolorinfo[colorindex].zoomimages[i] + "'><img src='" + _productcolorinfo[colorindex].smallimages[i] + "'></td>";
+            smallimagehtml = smallimagehtml + "<td bigimageurl='" + _productcolorinfo[colorindex].bigimages[i][0] + "' zoomimageurl='" + _productcolorinfo[colorindex].zoomimages[i][0] + "'><img src='" + _productcolorinfo[colorindex].smallimages[i][0] + "' alt='" + _productcolorinfo[colorindex].smallimages[i][1] + "'></td>";
         }
         smallimagehtml = smallimagehtml + "</tr>";
         jQuery("table.productimagecontainer").hide();
@@ -259,9 +264,12 @@ function changeColor(clr)
         if(jQuery("table.smallimagecontiner td").length > 0)
         {
             if(jQuery("table.tdbigimagecontainer img").length > 0)
+            {
                 jQuery("table.tdbigimagecontainer img").attr("src", jQuery("table.smallimagecontiner td:first").attr("bigimageurl"));
+                jQuery("table.tdbigimagecontainer img").attr("alt", jQuery("table.smallimagecontiner td:first").find('img:first').attr("alt"));
+            }
             else
-                jQuery("table.tdbigimagecontainer td").html("<img class='shareit' src='" + jQuery("table.smallimagecontiner td:first").attr("bigimageurl") + "'>");
+                jQuery("table.tdbigimagecontainer td").html("<img class='shareit' src='" + jQuery("table.smallimagecontiner td:first").attr("bigimageurl") + "' alt='" + jQuery("table.smallimagecontiner td:first").find('img:first').attr("alt") + "'>");
             _curshareimgurl = jQuery("table.smallimagecontiner td:first").attr("bigimageurl");
         }
         jQuery("table.smallimagecontiner td:first").addClass("selectedimage");

@@ -250,10 +250,13 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                     if($imgdata['color'] == Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId()))                
                     //if(str_replace("*", "", $_image->getLabel()) == $temp)
                     {
+                        $alt = "";
+                        if(isset($imgdata['alt']))
+                            $alt = $imgdata['alt'];
                         //echo $imageurl;
-                        $smallimageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75)->setQuality(100);
-                        $imageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(450, 450)->setQuality(100);
-                        $zoomimageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(750, 750)->setQuality(100);
+                        $smallimageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75)->setQuality(100)."|".$alt;
+                        $imageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(450, 450)->setQuality(100)."|".$alt;
+                        $zoomimageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(750, 750)->setQuality(100)."|".$alt;
                         
                         //if(count($productcolorinfo[$temp]["images"]) == 0)
                         if(!isset($productcolorinfo[$temp]["images"]))
@@ -353,8 +356,11 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                 <?php
                     for($i = 0; $i < count($val['images']['zoom']); $i++)
                     {
+                        $abc = explode("|", $val['images']['zoom'][$i]);
                         ?>
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>] = '<?php echo substr($val['images']['zoom'][$i], 1); ?>';
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>] = new Array();
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>][0] = '<?php echo substr($abc[0], 1); ?>';
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>][1] = '<?php echo $abc[1]; ?>';
                         <?php
                     } 
                 ?>
@@ -362,8 +368,11 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                 <?php
                     for($i = 0; $i < count($val['images']['small']); $i++)
                     {
+                        $abc = explode("|", $val['images']['small'][$i]);
                         ?>
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>] = '<?php echo substr($val['images']['small'][$i], 1); ?>';
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>] = new Array();
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>][0] = '<?php echo substr($abc[0], 1); ?>';
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>][1] = '<?php echo $abc[1]; ?>';
                         <?php
                     } 
                 ?>
@@ -371,8 +380,11 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                 <?php
                     for($i = 0; $i < count($val['images']['big']); $i++)
                     {
+                        $abc = explode("|", $val['images']['big'][$i]);
                         ?>
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>] = '<?php echo substr($val['images']['big'][$i], 1); ?>';
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>] = new Array();
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>][0] = '<?php echo substr($abc[0], 1); ?>';
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>][1] = '<?php echo $abc[1]; ?>';
                         <?php
                     } 
                 ?>
