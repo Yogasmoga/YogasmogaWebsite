@@ -142,10 +142,13 @@ var pageScroller = {};
 					slider.startAuto();
 				}
 				if(c > 0){
-					window.location.hash = curSection.toLowerCase()//.charAt(0).toUpperCase() + curSection.slice(1);
+					var hash = curSection.toLowerCase();
+					var loc = window.location;
+					history.replaceState("", document.title, loc.pathname + loc.search+hash);
+					//.charAt(0).toUpperCase() + curSection.slice(1);
 				}else{
 					var loc = window.location;
-					history.pushState("", document.title, loc.pathname + loc.search);
+					history.replaceState("", document.title, loc.pathname + loc.search);
 				}
 			};
 			if (!pageScroller.options) return pageScroll(this, h)
