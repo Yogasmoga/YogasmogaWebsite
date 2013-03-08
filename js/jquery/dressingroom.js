@@ -128,6 +128,7 @@ function chkfixposition(){
 	})
 	$topDress.height($topSH);
 	$botDress.height($botSH);*/
+	_winH = $j(window).height() - _headerHeight;
 	$j('.doverlay').fadeOut(50);
 	$j('#dressingroomtop img').each(function(){
 		var desHeight = (_winH - _headerHeight - 150);
