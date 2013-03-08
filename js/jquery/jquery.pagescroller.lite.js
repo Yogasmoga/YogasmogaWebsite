@@ -142,7 +142,7 @@ var pageScroller = {};
 					slider.startAuto();
 				}
 				if(c > 0){
-					var hash = "#"+curSection.toLowerCase();
+					var hash = "#"+curSection.charAt(0).toLowerCase() + curSection.slice(1);
 					var loc = window.location;
 					history.replaceState("", document.title, loc.pathname + loc.search+hash);
 					//.charAt(0).toUpperCase() + curSection.slice(1);
