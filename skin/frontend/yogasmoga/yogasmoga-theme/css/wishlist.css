@@ -37,7 +37,7 @@ table.tblwishlist thead th
 {
     font-family: gothambook;
     font-size: 11px;
-    font-weight: bold;
+    font-weight: normal; 
     letter-spacing: 0.6pt;
     padding-bottom: 25px;
 }
