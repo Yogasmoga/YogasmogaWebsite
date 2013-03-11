@@ -76,8 +76,10 @@
         //Mage::getSingleton('core/session')->setShowVideo(false);
         ?>
         <script type="text/javascript">
+			var loc = window.location;
+			history.replaceState("", document.title, loc.pathname + "breathe");
             jQuery(window).load(function(){
-               setTimeout(function(){$j("#hmpagevideo").trigger('click')},1000);
+				setTimeout(function(){$j("#hmpagevideo").trigger('click')},1000);
             });
         </script>
         <?php
