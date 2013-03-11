@@ -81,6 +81,17 @@ table td[align=center]{text-align:center;}
 .size-chart th{background:#666; color:#fff; font-style:normal; text-transform:uppercase; font-family:gotham-m, Arial; font-weight:normal; text-align:center; padding:8px 20px;}
 .size-chart td{border-top:1px solid #666; color:#666; text-transform:uppercase; font-family:gotham, Arial; text-align:center; padding:8px 20px;}
 .size-chart td[align="left"]{text-align:left;}
+.product-care .care-list {
+  display: block;
+  list-style: none outside none;
+  margin: 30px 0 30px 200px;
+}
+.product-care .care-list li{display:block; padding-left:40px; line-height:40px; font-size:16px; font-family:gotham-l, arial; text-transform:uppercase; background:url(../images/careico.png) 0 0 no-repeat;}
+.product-care .care-list li.care1{background-position:0 9px;}
+.product-care .care-list li.care2{background-position:0 -31px;}
+.product-care .care-list li.care3{background-position:0 -72px;}
+.product-care .care-list li.care4{background-position:0 -112px;}
+.product-care .care-list li.care5{background-position:0 -150px;}
 
 body.cms-smogi-bucks
 {
@@ -433,3 +444,4 @@ button.btn-brecelet:active span{background-position:0 100%;}
 .error-page p{font-size:22px; font-family:gotham-l, arial;}
 .error-page a{color:#d90d3d;}
 body.cms-no-route{background:url(../images/error-bg.jpg) 50% 0 no-repeat;background-size:100%;}
+.disclaimer{font-family: gotham, arial; color: #B5B5B5; font-size:10px; width:700px; margin:0 auto; margin-bottom:70px; margin-top:-30px;}
