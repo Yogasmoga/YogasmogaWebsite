@@ -93,7 +93,7 @@ jQuery(document).ready(function($){
         //shareonmail();
     });
     
-    initializeurl();
+    //initializeurl();
     
     if(!_onipad){
 		$("div#pgNavDown").hover(function(){
