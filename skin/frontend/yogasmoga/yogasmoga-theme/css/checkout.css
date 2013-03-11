@@ -446,3 +446,8 @@ div.input-box select
 #co-shippingmethod-form p{ margin:-20px 0 0px; padding-bottom:20px;}
 label.poplink{cursor:help;}
 label.poplink:hover{color:#d90d3d;}
+
+div#shippingsummary td#ordersubtotal
+{
+    padding-left : 5px;
+}
