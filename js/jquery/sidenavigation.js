@@ -214,6 +214,7 @@ function initiateshareurl(sharetype)
     else
     {
         var url = _currenturl;
+        url = url.split("?")[0].split("#")[0];
         var cfscreenid = getcurrentfullscreenid();
         if(!endsWith(url, cfscreenid))
         {
