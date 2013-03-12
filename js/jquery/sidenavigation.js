@@ -279,7 +279,7 @@ function initiateshareurl(sharetype)
 
 function shareurlmain()
 {
-    console.log(_curshareimg[0]);
+    //console.log(_curshareimg[0]);
     switch(_cursharetype)
     {
     case 'mail':
