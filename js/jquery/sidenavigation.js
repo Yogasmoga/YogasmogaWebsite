@@ -216,11 +216,14 @@ function initiateshareurl(sharetype)
         var url = _currenturl;
         url = url.split("?")[0].split("#")[0];
         var cfscreenid = getcurrentfullscreenid();
-        if(!endsWith(url, cfscreenid))
+        if(jQuery(".pgsection").index(cfscreen) > 0)
         {
-            if(url.indexOf("#") >= 0)
-                url = url.substr(0, url.indexOf("#"));
-            url = url + '#' + cfscreenid;
+            if(!endsWith(url, cfscreenid))
+            {
+                if(url.indexOf("#") >= 0)
+                    url = url.substr(0, url.indexOf("#"));
+                url = url + '#' + cfscreenid;
+            }   
         }
         _currentshareurl = url;
     }
