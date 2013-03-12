@@ -1,3 +1,4 @@
+var _twdesc = '';
 var _curhoverindex = '';
 var _sidenavtimer = '';
 jQuery(document).ready(function($){	
@@ -238,6 +239,11 @@ function initiateshareurl(sharetype)
     else
         _cursharesummary = "YOGASMOGA is a Yoga and wellness company that makes things for life.";
     
+    if(cfscreen.attr('tw-summary'))
+        _twdesc = cfscreen.attr('tw-summary');
+    else
+        _twdesc = "YOGASMOGA is a Yoga and wellness company that makes things for life.";
+        
     //console.log(_curshareimg[0]);
 //    if(_curshareimgurl == '')
 //        _curshareimgurl = 'https://yogasmoga.com/yogasmoga_gold.jpg';
@@ -269,6 +275,7 @@ function initiateshareurl(sharetype)
 
 function shareurlmain()
 {
+    console.log(_curshareimg[0]);
     switch(_cursharetype)
     {
     case 'mail':
@@ -294,7 +301,8 @@ function shareurlmain()
         break;
     case 'twitter':
         //window.open('http://www.twitter.com/share?url=' + encodeURIComponent(_currentshareurl),'Share_on_Twitter','toolbar=0,status=0,menubar=0,width=600,height=450,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 450) / 2);
-        window.open('http://www.twitter.com/home?status=Check out the ' + _cursharedesc + ' via @yogasmoga at ' + encodeURIComponent(_currentshareurl),'Share_on_Twitter','toolbar=0,status=0,menubar=0,width=600,height=450,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 450) / 2);
+        //window.open('http://www.twitter.com/home?status=Check out the ' + _cursharedesc + ' via @yogasmoga at ' + encodeURIComponent(_currentshareurl),'Share_on_Twitter','toolbar=0,status=0,menubar=0,width=600,height=450,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 450) / 2);
+        window.open('http://www.twitter.com/home?status=' + _twdesc + ' via @yogasmoga at ' + encodeURIComponent(_currentshareurl),'Share_on_Twitter','toolbar=0,status=0,menubar=0,width=600,height=450,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 450) / 2);
         break;
     case 'pinterest':
         //window.open('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(shareurl) + '&media=' + _curshareimgurl + '&description=Yogasmoga Video','Share_on_Pinterest','toolbar=0,status=0,menubar=0,width=600,height=520,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 520) / 2);
