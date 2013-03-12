@@ -1,6 +1,6 @@
 div.mycategory-products div.item:hover td.productname
 {
-    color : black;
+    color : #666;
 }
 div.mycategory-products div.item:hover td.productprice span.price
 {

@@ -92,7 +92,7 @@ table.tblwishlist td.prprice
 }
 table.tblwishlist td.removeitem
 {
-    width : 20px;
+    width : 0px;
 }
 .addtocartbtn
 {

@@ -21,7 +21,7 @@ jQuery(document).ready(function($){
     $(".spbutton").each(function(){
         $("body").append("<img src='" + $(this).attr('downimageurl') + "' class='nodisplay' />");
     });
-    $j('.cart-table tr').hover(function(){
+    $j('.cart-table tr, #wishlist-table tr').hover(function(){
 		$j(this).find('.btn-remove2').css('visibility','visible');
 	}, function(){
 		$j(this).find('.btn-remove2').css('visibility','hidden');
