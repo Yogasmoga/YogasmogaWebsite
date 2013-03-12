@@ -26,7 +26,7 @@
 ?>
 
 <?php if(count($this->getItemCollection()->getItems())): ?>
-<div id="Related-products" class="fullscreen colorbg pgsection" desc="Other Products You May Like">
+<div id="Related-products" class="fullscreen colorbg pgsection" desc="Other Products You May Like" tw-summary="Check out the great Yoga clothes from YOGASMOGA">
     <table class="fullscreentable">
     <tr>
         <td style="padding-right: 50px;padding-left : 50px;" class="verticaltopalign">
@@ -46,6 +46,7 @@
                 }
                 $tdwidth = 100 / $productcount;
                 $productcount = 1;
+                $shareimg = false;
                 foreach($this->getItemCollection()->getItems() as $_product)
                 {
                     if($productcount > 4)
@@ -99,6 +100,11 @@
                                                         {
                                                             $firstimg = false;
                                                             echo " default active rotable";
+                                                            if(!$shareimg)
+                                                            {
+                                                                $shareimg = true;
+                                                                echo " shareit";
+                                                            }
                                                         }
                                                         else
                                                             echo " default rotable";

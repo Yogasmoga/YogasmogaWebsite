@@ -246,7 +246,7 @@
     
 ?>
     
-    <div id="productdetails" desc="<?php echo html_entity_decode($productname); ?>" class="fullscreen pgsection" style="position: relative;" hdependson="absproductoptions">
+    <div id="productdetails" desc="<?php echo html_entity_decode($productname); ?>" class="fullscreen pgsection" style="position: relative;" hdependson="absproductoptions" tw-summary="Check out the <?php echo html_entity_decode($productname); ?>">
     <script type="text/javascript">
         var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
     </script>
@@ -646,7 +646,7 @@
         if($_product->getAttributeText('design_feature_view') == "Landscape")
         {
             ?>
-            <div id="Designdetails" class="pgsection" desc="Design Details">
+            <div id="Designdetails" class="pgsection" desc="Design Details" tw-summary="Check out the flattering design features from YOGASMOGA">
                 <table class="fullscreentable fullwidth">
                     <tr>
                         <td style="padding: 0 50px;">
@@ -657,7 +657,7 @@
                                             <tr>
                                                 <td style="padding:0 3% 3% 0px;">
                                                     <div size="half">
-                                                            <img src="<?php echo substr($dfimages[1]["url"], 1); ?>" alt="<?php echo $dfimages[1]["caption"]; ?>" />
+                                                            <img class="shareit" src="<?php echo substr($dfimages[1]["url"], 1); ?>" alt="<?php echo $dfimages[1]["caption"]; ?>" />
                                                             <div class="caption"><div><?php echo $dfimages[1]["caption"]; ?></div></div>
                                                         <?php /*
                                                         <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
@@ -720,7 +720,7 @@
         if($_product->getAttributeText('design_feature_view') == "Potrait")
         {
             ?>
-            <div id="Designfeatures" class="pgsection" desc="Design Details">
+            <div id="Designfeatures" class="pgsection" desc="Design Details" tw-summary="Check out the flattering design features from YOGASMOGA">
 				<table class="fullscreentable fullwidth">
                     <tr>
                         <td style="padding: 0 40px;">
@@ -728,7 +728,7 @@
                                 <tr>
                                     <td colspan="2">
                                        <div size="half">
-                                                <img class="magnifier" src="<?php echo substr($dfimages[1]["url"], 1); ?>" alt="<?php echo $dfimages[1]["caption"]; ?>" />
+                                                <img class="shareit" class="magnifier" src="<?php echo substr($dfimages[1]["url"], 1); ?>" alt="<?php echo $dfimages[1]["caption"]; ?>" />
                                                 <div class="caption"><div><?php echo $dfimages[1]["caption"]; ?></div></div>
                                             <?php /*
                                             <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
