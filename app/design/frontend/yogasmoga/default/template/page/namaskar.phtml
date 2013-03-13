@@ -50,16 +50,17 @@
                     <?php echo $this->getChildHtml('global_messages') ?>
 <div class="namaskar-overlay" style="background:#fff url(<?php echo $this->getSkinUrl('images/loading.gif') ?>) 50% 100px no-repeat; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">&nbsp;</div>
 <div class="nam-page">
-	<div class="namsec first pgsection" id="Giving" desc="Giving">
-		<img class="bg-img" src="<?php echo $this->getSkinUrl('images/namaskar/nam1.jpg'); ?>" alt="Namaskar Foundation &ndash; Giving is a Core Value of YOGASMOGA" />
-		<img class="shareit hidden" src="<?php echo $this->getSkinUrl('images/namaskar/snm1.jpg'); ?>" />
+	<div class="namsec first pgsection" id="Giving" desc="Giving" tw-summary="Check out the #NAMASKAR Foundation">
+		<img class="bg-img shareit" src="<?php echo $this->getSkinUrl('images/namaskar/nam1.jpg'); ?>" alt="Namaskar Foundation &ndash; Giving is a Core Value of YOGASMOGA" />
+		<img class="hidden" src="<?php echo $this->getSkinUrl('images/namaskar/snm1.jpg'); ?>" />
 		<div class="values-box cbox">
 			<h1 class="value-title">GIVING is a Core Value of YOGASMOGA.</h1>
 			<p style="letter-spacing:-1px;">We have created the Namask&aacute;r Foundation because we care. </p>
 			<p>We recognize that textile production is typically done in the most economically challenged locations of the world. It is our absolute obligation and duty to give back. We welcome you to join us on this journey.</p>
 		</div>
-		<div class="change-box cbox pgsection" id="Join" desc="JOINING HANDS TO MAKE A CHANGE">
-			<img class="shareit hidden" src="<?php echo $this->getSkinUrl('images/namaskar/snm2.jpg'); ?>" />
+		<div class="change-box cbox pgsection" id="Join" desc="Pledge Counter" tw-summary="Check out how YOGASMOGA is joing hands to make a change. #NAMASKAR Foundation">
+		    <img class="bg-img shareit hidden" src="<?php echo $this->getSkinUrl('images/namaskar/nam1.jpg'); ?>" alt="Namaskar Foundation &ndash; Giving is a Core Value of YOGASMOGA" />	
+            <img class="hidden" src="<?php echo $this->getSkinUrl('images/namaskar/snm2.jpg'); ?>" />
 			<span class="count">$<?php 
 			 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
 			 $result = $write->query("SELECT IF(SUM(row_total) > 0, SUM(row_total), 0) as revenue FROM sales_flat_order sfo, sales_flat_order_item sfoi WHERE sfo.status='complete' AND sfo.entity_id=sfoi.order_id AND sfoi.product_id = ".Mage::getModel('core/variable')->loadByCode('namaskar_bracelet_id')->getValue('plain'));
@@ -71,7 +72,7 @@
 			<strong>namask&Aacute;r.</strong></p>
 		</div>
 	</div>
-	<div class="namsec second pgsection" id="Raisingfund" desc="Raising the Funds">
+	<div class="namsec second pgsection" id="Raisingfund" desc="Raising the Funds" tw-summary="Check out the #NAMASKAR Bracelets">
 		<img class="bg-img" src="<?php echo $this->getSkinUrl('images/namaskar/nam2.jpg'); ?>" alt="Namaskar Foundation &ndash; Raising the Funds and Making Change in the World." />
 		<img class="shareit hidden" src="<?php echo $this->getSkinUrl('images/namaskar/snm3.jpg'); ?>" />
 		<div class="foundation-box cbox">
@@ -83,7 +84,7 @@
 		</div>
 	</div>
 	
-	<div class="namsec second-a pgsection" id="Make-change" desc="THE NAMASK&Aacute;R FOUNDATION Making Change in The World.">
+	<div class="namsec second-a pgsection" id="Make-change" desc="Making a Change" tw-summary="Check out the #NAMASKAR Foundation">
 		<img class="bg-img" src="<?php echo $this->getSkinUrl('images/namaskar/nam2a.jpg'); ?>" alt="Namaskar Foundation &ndash; Raising the Funds and Making Change in the World." />
 		<img class="shareit hidden" src="<?php echo $this->getSkinUrl('images/namaskar/snm4.jpg'); ?>" />
 		<div class="fchange-box cbox">
@@ -91,7 +92,7 @@
 			<p>The Namask&aacute;r<br/>Foundation focuses its<br/>energies on three equally<br/>important causes.</p>
 		</div>
 	</div>
-	<div class="namsec third pgsection" id="Ourmission" desc="Our Mission">
+	<div class="namsec third pgsection" id="Ourmission" desc="Our Mission" tw-summary="Check out the #NAMASKAR Foundation">
 		<img class="bg-img" src="<?php echo $this->getSkinUrl('images/namaskar/nam3.jpg'); ?>" alt="Namaskar Foundation &ndash; The Meaning" />
 		<img class="shareit hidden" src="<?php echo $this->getSkinUrl('images/namaskar/snm5.jpg'); ?>" />
 		<div class="works-cols">
@@ -112,15 +113,15 @@
 	</div>
 	<div class="namsec third-a">
 		<img class="bg-img" src="<?php echo $this->getSkinUrl('images/namaskar/namaskaarm.png'); ?>" alt="Namaskar Foundation &ndash; The Meaning" />" />
-		<div class="meaning-box cbox pgsection" id="Meaning" desc="namask&aacute;r: the meaning">
-			<img class="shareit hidden" src="<?php echo $this->getSkinUrl('images/namaskar/snm6.jpg'); ?>
+		<div class="meaning-box cbox pgsection" id="Meaning" desc="Namask&aacute;r: The Meaning" tw-summary="Check out the #NAMASKAR Foundation">
+			<img class="shareit hidden" src="<?php echo $this->getSkinUrl('images/namaskar/snm5.jpg'); ?>" />
 			<h1 class="heading-mc">namask&Aacute;r: the meaning</h1>
 			<p>While many are familiar with the greeting &ndash; Namast&eacute; -fewer in the west are familiar with the traditional Indian greeting &ndash; Namask&aacute;r. More respectful than Namast&eacute;, it is not simply a greeting but a profound philosophy of shunning arrogance and negating one&rsquo;s ego. The gesture, Namask&aacute;r, represents the belief that there is a divine spark within each of us that is located in the heart chakra. This gesture is an acknowledgement of the soul in one &ndash; by the soul in another. We join our hands together to recognize each other&rsquo;s soul, aiming to connect and honor each other.</p>
 		</div>
 	</div>
-	<div class="namsec forth pgsection" id="Support" desc="Support Namask&aacute;r">
+	<div class="namsec forth pgsection" id="Support" desc="Support Namask&aacute;r" tw-summary="Check out the #NAMASKAR Foundation">
 		<img class="bg-img" src="<?php echo $this->getSkinUrl('images/namaskar/nam4.jpg'); ?>" alt="Namaskar Foundation &ndash; Please Support by Purchasing a Namaskar Bracelet."/>
-		<img class="shareit hidden" src="<?php echo $this->getSkinUrl('images/namaskar/snm7.jpg'); ?>" />
+		<img class="shareit hidden" src="<?php echo $this->getSkinUrl('images/namaskar/snm6.jpg'); ?>" />
 		<div class="support-box cbox">
 			<h1 class="heading-mc"><span>SUPPORT</span>NAMASK&Aacute;R</h1>
 			<p>We bring the Namask&aacute;r bracelet to you as a traditional symbol of the deep Yoga culture that connects two people &ndash; our SMOGIs and the weavers of the Himalayas.
