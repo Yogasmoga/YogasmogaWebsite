@@ -2407,7 +2407,7 @@ div.mycategory-products div.item td.productprice div.price-box
 }
 div.mycategory-products div.item td.productprice span.price
 {
-    color: #E22E44;
+    color: #666;
     display: none;
     font-family:gothambold;
     font-size: 10pt;

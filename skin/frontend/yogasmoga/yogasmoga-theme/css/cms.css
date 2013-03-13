@@ -357,17 +357,18 @@ button.btn-brecelet:active span{background-position:0 100%;}
 .namsec.second .foundation-box .heading-foundation{font-size:35px; font-family:ITCAvantGardeProBd, gotham-b  , Arial; text-align:center; text-transform:uppercase; line-height:1.2; margin:0 0 15px;}
 .namsec.second .foundation-box .heading-foundation span{font-size:35px; font-family:ITCAvantGardeProBk, gotham  , Arial; display:block;}
 .namsec.second .foundation-box p{margin:0 10px 40px;}
-.namsec.second .fchange-box{bottom:5%; left:5%; padding-top:100px;}
-.namsec.second .fchange-box{float:left; width:570px; text-align:left;}
-.namsec.second .fchange-box .heading-mc{font-size:65px; line-height:1.2; font-family:ITCAvantGardeProBd, gotham-b  , Arial; text-transform:uppercase; margin-bottom:20px;}
-.namsec.second .fchange-box .heading-mc span{font-family:ITCAvantGardeProBk, gotham  , Arial; display:block;}
-.namsec.second .fchange-box  p{font-size:35px; text-align:left; line-height:1.2;}
+.namsec.second-a .fchange-box{top:0; left:5%; padding-top:100px;}
+.namsec.second-a .fchange-box{float:left; width:570px; text-align:left;}
+.namsec.second-a .fchange-box .heading-mc{font-size:65px; line-height:1.2; font-family:ITCAvantGardeProBd, gotham-b  , Arial; text-transform:uppercase; margin-bottom:20px;}
+.namsec.second-a .fchange-box .heading-mc span{font-family:ITCAvantGardeProBk, gotham  , Arial; display:block;}
+.namsec.second-a .fchange-box  p{font-size:35px; text-align:left; line-height:1.2;}
 
 .namsec.third {padding-top:350px;}
 .namsec.third .works-cols{position:absolute; top:0; left:0; right:0; padding-top:70px;}
-.namsec.third .meaning-box {bottom:5%; left:5%; width:600px; text-align:center; padding-top:130px;}
-.namsec.third .meaning-box .heading-mc{text-align:center; font-size:35px;line-height:1.2; font-family:ITCAvantGardeProBd, gotham-b  , Arial; margin:0 0 25px; text-transform:uppercase;}
-.namsec.third .meaning-box  p{ font-family: gotham,Arial;}
+.namsec.third-a .bg-img{margin-top:-60px;}
+.namsec.third-a .meaning-box {top:60px; left:5%; width:600px; text-align:center; padding-top:80px;}
+.namsec.third-a .meaning-box .heading-mc{text-align:center; font-size:35px;line-height:1.2; font-family:ITCAvantGardeProBd, gotham-b  , Arial; margin:0 0 25px; text-transform:uppercase;}
+.namsec.third-a .meaning-box  p{ font-family: gotham,Arial;}
 
 .namsec.forth .support-box{top:5%; right:8%;}
 .namsec.forth .support-box .heading-mc{text-align:center; font-size:35px;line-height:1.2; font-family:ITCAvantGardeProBd, gotham-b  , Arial; margin:0 0 20px; text-transform:uppercase;}
@@ -387,33 +388,33 @@ button.btn-brecelet:active span{background-position:0 100%;}
 @media screen and (max-width: 1920px) {
 .namsec.first .values-box {left: 66%; top: 23%;}
 .namsec.first .change-box { bottom: 14%;}
-.namsec.second .fchange-box { bottom: 10%;}
-	.namsec.second .fchange-box {width: 500px; padding-top:225px;}
-	.namsec.third .meaning-box{padding-top:175px;}
-	.namsec.second .fchange-box .heading-mc{font-size:50px;}
-	.namsec.second .fchange-box p{font-size:30px;}
+.namsec.second-a .fchange-box { top: 0;}
+	.namsec.second-a .fchange-box {width: 800px; padding-top:100px;}
+	.namsec.third-a .meaning-box{padding-top:175px;}
+	.namsec.second-a .fchange-box .heading-mc{font-size:70px;}
+	.namsec.second-a .fchange-box p{font-size:40px;}
 }
 @media screen and (max-width: 1600px) {
 .namsec.first .values-box {left: 62%; top: 20%;}
 .namsec.first .change-box { bottom: 12%;}
-.namsec.second .fchange-box { bottom: 10%;}
-	.namsec.second .fchange-box {width: 500px;}
-	.namsec.third .meaning-box{padding-top:105px;}
-	.namsec.second .fchange-box .heading-mc{font-size:50px;}
-	.namsec.second .fchange-box p{font-size:30px;}
+.namsec.second-a .fchange-box { top: 0%;}
+	.namsec.second-a .fchange-box {width: 500px;}
+	.namsec.third-a .meaning-box{padding-top:105px;}
+	.namsec.second-a .fchange-box .heading-mc{font-size:50px;}
+	.namsec.second-a .fchange-box p{font-size:30px;}
 }
 @media screen and (max-width: 1360px) {
 	.namsec.first .values-box {top: 19%;}
 	.namsec.first .change-box { bottom: 10%;}
 	.values-box h1.value-title { font-size: 30px;  margin: 0 0 15px;}
-	.namsec.second .fchange-box {width: 500px;}
-	.namsec.second .fchange-box .heading-mc{font-size:48px;}
-	.namsec.second .fchange-box p{font-size:30px;}
+	.namsec.second-a .fchange-box {width: 500px;}
+	.namsec.second-a .fchange-box .heading-mc{font-size:48px;}
+	.namsec.second-a .fchange-box p{font-size:30px;}
 }
 
 @media screen and (max-width: 1300px) {
-	.namsec.second .fchange-box .heading-mc{font-size:44px;}
-	.namsec.third .meaning-box{padding-top:110px;}
+	.namsec.second-a .fchange-box .heading-mc{font-size:44px;}
+	.namsec.third-a .meaning-box{padding-top:80px;}
 }
 @media screen and (max-width: 1200px) {
 	.works-cols{margin:0 15px;}	
@@ -429,9 +430,9 @@ button.btn-brecelet:active span{background-position:0 100%;}
 	.namsec.second .fchange-box {width: 400px;}
 	.namsec.second .fchange-box .heading-mc{font-size:40px;}
 	.namsec.second .fchange-box p{font-size:24px;}
-	.namsec.third .meaning-box {bottom: 3%;}
+	.namsec.third-a .meaning-box {top: 0%;}
 	.namsec.forth .support-box .heading-mc,
-	.namsec.third .meaning-box .heading-mc{font-size:24px; margin-bottom:20px;}
+	.namsec.third-a .meaning-box .heading-mc{font-size:24px; margin-bottom:20px;}
 	.namsec.forth .support-box p{margin-bottom:20px;}
 }
 
