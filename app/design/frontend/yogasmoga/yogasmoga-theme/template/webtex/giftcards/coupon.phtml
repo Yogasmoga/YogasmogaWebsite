@@ -7,24 +7,12 @@
         <form method="post" action="<?php echo $this->getUrl('*/*/giftcardActive'); ?>" name="giftcardActive">
         <div class="input-box">
             <input type="checkbox" value="1" name="giftcard_use" id="giftcard_use" class="checkbox" onclick="document.forms['giftcardActive'].submit()" <?php echo Mage::getSingleton('giftcards/session')->getActive() ? 'checked="checked"' : '' ?> />
-            <label for="giftcard_use"><?php echo $this->__('Use my <a target="_blank" href="'.$this->getUrl('gift_of_ys').'">Gift of YS</a> balance'); ?>&nbsp;(<?php echo Mage::helper('core')->currency(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId())); ?>) </label>
+            <label for="giftcard_use"><?php echo $this->__('Use my <a target="_blank" href="'.$this->getUrl('gift_of_ys').'">Gift of YS</a> balance : '); ?>&nbsp;<?php echo Mage::helper('core')->currency(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId())); ?></label>
         </div>
         </form>
-        <form method="post" action="<?php echo $this->getUrl('*/*/giftcardPost'); ?>" id="giftcard-form">
-        <div class="gift-box">
-			<label for="giftcard_code"><?php echo $this->__('Or'); ?></label>
-            <input value="" placeholder="Gift of YS code" name="giftcard_code" id="giftcard_code" class="input-text" />
-            <button value="<?php echo $this->__('Apply') ?>" onclick="giftcardForm.submit(true)" class="button btn-apply" title="Apply" type="button"><span><span><?php echo $this->__('Apply') ?></span></span></button>
-        </div>
-        </form>
-        <?php
-            if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false)
-            {
-                ?>
-                    <div class="errormsg"><?php echo strip_tags(Mage::getSingleton('core/session')->getGlobalMessage()); ?></div>            
-                <?php
-            }
-        ?>
+        <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>customer/giftcards/balance" class="rdm">
+            Redeem your Gift of YS
+        </a>
     </div>
     <?php else : ?>
     <h2>Do you have a <a target="_blank" href="<?php echo $this->getUrl('gift_of_ys'); ?>">Gift of YS</a> Card?</h2>

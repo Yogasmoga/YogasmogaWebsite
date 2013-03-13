@@ -64,7 +64,18 @@
                 <?php //endif;?>
             <?php else:?>
                 <p class="no-display"><?php echo $this->__('Enter quantity of loyalty point(s) you want to use.') ?></p>
-                <p><?php echo $this->__('You have %d <a target="_blank" href ="'.$this->getUrl('smogi-bucks').'">SMOGI Bucks</a> available.', $point_details['customer_points']); ?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($point_details['customer_points']);?></p>
+                <p><?php echo $this->__('You have %d <a target="_blank" href ="'.$this->getUrl('smogi-bucks').'">SMOGI Buck(s)</a> available.', $point_details['customer_points']); ?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($point_details['customer_points']);?>
+                <?php
+                    if($this->isUsable() && $this->getCustomerPoints() > 0)
+                    {
+                        ?>
+                        Enter the amount <br /> you want to use with this purchase.
+                        <?php
+                    }
+                 ?>
+                <br />
+                You will earn <?php echo $pts; ?> <a target="_blank" href ="'.$this->getUrl('smogi-bucks').'">SMOGI Bucks</a> after this purchase.
+                </p>
 
                 <?php if($this->isUsable() && $this->getCustomerPoints() > 0) : ?>
                 <?php if ($point_details['step_apply']):?>
@@ -103,7 +114,10 @@
 
 
                 <?php else:?>
-                    <input <?php if($point_details['full_use']):?>type="hidden"<?php else:?>type="text"<?php endif;?> value="<?php if($point_details['full_use']):?><?php echo $point_details['max_use'];?><?php endif;?>"  name="points_to_be_used" class="input-text" />
+                    <input placeholder="Enter Amount Here" <?php if($point_details['full_use']):?>type="hidden"<?php else:?>type="text"<?php endif;?> value="<?php if($point_details['full_use']):?><?php echo $point_details['max_use'];?><?php endif;?>"  name="points_to_be_used" class="input-text" />
+                    <div class="errortext">
+                        <?php echo strip_tags($this->getMessagesBlock()->getGroupedHtml()); ?>
+                    </div>
                 <?php endif;?>
                 <?php if($this->getCustomerPoints() > 0) : ?>
                 <div class="buttons-set">

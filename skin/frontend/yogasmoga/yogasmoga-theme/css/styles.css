@@ -3605,3 +3605,29 @@ table.gfredeem td.dash, table#redeem td.dash
     font-weight: bold;
     margin-bottom : 10px;
 }
+div.discount-form a.rdm
+{
+    color : #d90d3d;
+    margin-top : 5px;
+    font-style: normal;
+    display: block;
+}
+form#discountFormPoints2 a
+{
+    color : #d90d3d;
+}
+form#discountFormPoints2 div.errortext
+{
+    color: #D90D3D;
+    font-family: helveticaoblique;
+    font-size: 11px;    
+}
+form#discountFormPoints2 input.input-text
+{
+    border: none;
+    border-bottom : 1px solid black;
+    font-family: gothamlight;
+    font-size: 11px;
+    letter-spacing: 0.4pt;
+    padding-bottom: 1px;
+}
