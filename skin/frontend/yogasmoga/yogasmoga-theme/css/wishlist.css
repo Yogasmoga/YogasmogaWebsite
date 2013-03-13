@@ -127,7 +127,7 @@ table.tblwishlist td.removeitem
 }
 table.tblwishlist tbody tr td.removeitem a
 {
-    display : none;
+    visibility:hidden;
 }
 table.tblwishlist tbody tr:hover td.removeitem a
 {
