@@ -44,5 +44,19 @@ class Mycustommodules_Myessentials_MylinkController extends Mage_Core_Controller
         $this->getRequest()->getPost('longurl');
         echo "Output from link Module";
     }
+    
+    public function applycardAction()
+    {
+        $customerId = Mage::getSingleton('customer/session')->getCustomerId();
+        $giftcardCode = trim((string) $this->getRequest()->getParam('giftcard_code'));
+        $card = Mage::getModel('giftcards/giftcards')->load($giftcardCode, 'card_code');
+
+    	if ($card->getId() && $card->getCardStatus() == 2) {
+            $card->activateCardForCustomer($customerId);
+            echo "success";
+    	} else {
+    	   echo "Invalid GIFT of YS Card Code";
+    	}
+    }
 }
 ?>

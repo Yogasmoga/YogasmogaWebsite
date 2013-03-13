@@ -58,7 +58,9 @@ jQuery(document).ready(function($){
     });
     
     $("#giftcardformmyaccount").submit(function(){
+        
         return validateGiftCardForm();
+        //return false;
     });
     $("div#addanotherreferral").click(function(){
         $("table.referfriendforms tbody#main").append("<tr id='" + ++_refercount + "'>" + $("table.referfriendforms tr#template").html() + "</tr>");
@@ -103,8 +105,20 @@ jQuery(document).ready(function($){
     });
     
     $("#cardbalanceform").submit(function(){
-        _addingtocart = true;
-        getcardbalance();
+        if(validateGiftCardForm())
+        {
+            _addingtocart = true;
+            getcardbalance();   
+        }
+        return false;
+    });
+    
+    $("#cardredeemform").submit(function(){
+        if(validateGiftCardRedeemForm())
+        {
+            _addingtocart = true;
+            redeemcard();   
+        }
         return false;
     });
     
@@ -219,9 +233,69 @@ function referafriend(name, email, id)
 
 function validateGiftCardForm()
 {
+    var tbl = jQuery("table.gfredeem");
+    tbl.find('td.errortext div').fadeOut('fast');
+    var flag = 0;
+    tbl.find('input[type="text"]').each(function(){
+        if(jQuery(this).val() == '')
+        {
+            //console.log(jQuery(this).val());
+            flag = flag + 1;
+        }
+    });
+    if(flag == 3)
+    {
+        tbl.find('td.errortext div').html('GIFT of YS Code is required.').fadeIn('fast');
+    }
+    else if(flag > 0)
+    {
+        tbl.find('td.errortext div').html('Invalid GIFT of YS Code.').fadeIn('fast');
+    }
+    if(flag == 0)
+        flag = true;
+    else
+        flag = false;
+    if(flag)
+    {
+        jQuery("input#giftcard_code").val(jQuery("input#gf1").val() + "-" + jQuery("input#gf2").val() + "-" + jQuery("input#gf3").val());
+        jQuery("input#cardno").val(jQuery("input#gf1").val() + "-" + jQuery("input#gf2").val() + "-" + jQuery("input#gf3").val());
+    }
+    return flag;
+    
     jQuery("#giftcardformmyaccount").find('table.inputtable td.errortext').html('<div></div>');
     unsetAllError(jQuery("#giftcardformmyaccount"));
     var flag = validatefields(jQuery("#giftcardformmyaccount"));
+    return flag;
+}
+
+function validateGiftCardRedeemForm()
+{
+    var tbl = jQuery("table#redeem");
+    tbl.find('td.errortext div').fadeOut('fast');
+    var flag = 0;
+    tbl.find('input[type="text"]').each(function(){
+        if(jQuery(this).val() == '')
+        {
+            //console.log(jQuery(this).val());
+            flag = flag + 1;
+        }
+    });
+    if(flag == 3)
+    {
+        tbl.find('td.errortext div').html('GIFT of YS Code is required.').fadeIn('fast');
+    }
+    else if(flag > 0)
+    {
+        tbl.find('td.errortext div').html('Invalid GIFT of YS Code.').fadeIn('fast');
+    }
+    if(flag == 0)
+        flag = true;
+    else
+        flag = false;
+    if(flag)
+    {
+        jQuery("input#giftcard_code").val(jQuery("input#gfr1").val() + "-" + jQuery("input#gfr2").val() + "-" + jQuery("input#gfr3").val());
+    }
     return flag;
 }
 
@@ -327,6 +401,27 @@ function validateCreateGiftCardForm()
             setOnError(jQuery("#mail-to-email-conf"),"Please make sure the Email Addresses match.");
             flag = false;
         }
+    }
+    if(jQuery("#card-amount").val().length > 0)
+    {
+        if(!isNormalInteger(jQuery("#card-amount").val()))
+        {
+            setOnError(jQuery("#card-amount"),"Invalid Amount. Must be an integer.");
+            flag = false;
+        }
+        else
+        {
+            if((jQuery("#card-amount").val() * 1) > 1000)
+            {
+                setOnError(jQuery("#card-amount"),"Maximum value of a Card is 1000");
+                flag = false;    
+            }
+        }
+        //else if((jQuery("#card-amount").val() * 1) <= 0)
+//        {
+//            setOnError(jQuery("#card-amount"),"Invalid Amount. Must be an integer.");
+//            flag = false;
+//        }   
     }
     return flag;
 }
@@ -460,7 +555,32 @@ function getcardbalance()
             }
             else
             {
-                alert(result.message);
+                //alert(result.message);
+                jQuery("table.gfredeem").find('td.errortext div').html('Invalid GIFT of YS Code.').fadeIn('fast');
+            }
+        }
+    });
+}
+
+function redeemcard()
+{
+    var callurl = '';
+    if(window.location.href.indexOf('https://') >= 0)
+        callurl = securehomeUrl + 'myessentials/mylink/applycard'
+    else
+         callurl = homeUrl + 'myessentials/mylink/applycard'
+    jQuery.ajax({
+        type : 'POST',
+        url : callurl,
+        data : jQuery("#cardredeemform").serialize(),
+        success : function(result){
+            if(result == 'success')
+            {
+                alert('GIFT of YS Card successfully redeemed.');
+            }
+            else
+            {
+                jQuery("table#redeem").find('td.errortext div').html(result).fadeIn('fast');
             }
         }
     });

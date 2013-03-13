@@ -37,6 +37,10 @@
     {
         Mage::getSingleton('core/session')->setRedirect('cart');   
     }
+    if($this->getRequest()->getParam('goto') == 'giftofys')
+    {
+        Mage::getSingleton('core/session')->setRedirect('giftofys');   
+    }
 ?>
 <div class="myheader">LOGIN</div>
 <table class="logintable">

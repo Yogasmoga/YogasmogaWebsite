@@ -13,6 +13,50 @@ ul.messages
 <table class="myaccount-redeem-giftcard">
     <tr>
         <td>
+            <table class="gfredeem">
+                <tr>
+                    <td class="label">
+                        <label for="gf1">GIFT of YS Code</label>
+                    </td>
+                    <td class="inputholder">
+                        <input type="text" id="gf1" />
+                    </td>
+                    <td class="dash">
+                        -
+                    </td>
+                    <td class="inputholder">
+                        <input type="text" id="gf2" />
+                    </td>
+                    <td class="dash">
+                        -
+                    </td>
+                    <td class="inputholder">
+                        <input type="text" id="gf3" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="errortext" colspan="6">
+                        <div>Gift Card Code is required.</div>
+                        <?php
+                            if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false)
+                            {
+                                ?>
+                                    <div style="display: block;"><?php echo strip_tags(Mage::getSingleton('core/session')->getGlobalMessage()); ?></div>            
+                                <?php
+                            }
+                        ?>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td style="padding-left: 5px;">
+            <button type="submit" title="<?php echo $this->__('Redeem') ?>" class="button btn-redeem" value="<?php echo $this->__('Redeem') ?>"><span><span><?php echo $this->__('Redeem') ?></span></span></button>
+            <input style="display: none;" id="giftcard_code" name="giftcard_code" value="" class="requiredfield" defaulterrormsg="Gift Card Code is required" type="text" />
+        </td>
+    </tr>
+    <?php /*
+    <tr>
+        <td>
             <table class="inputtable">
                 <tr>
                     <td class="label"><label for="giftcard_code"><?php echo $this->__('Gift Card Code') ?></label></td>
@@ -39,6 +83,7 @@ ul.messages
             <button type="submit" title="<?php echo $this->__('Redeem') ?>" class="button btn-redeem" value="<?php echo $this->__('Redeem') ?>"><span><span><?php echo $this->__('Redeem') ?></span></span></button>
         </td>
     </tr>
+    */ ?>
 </table>
 </form>
 <?php return; ?>

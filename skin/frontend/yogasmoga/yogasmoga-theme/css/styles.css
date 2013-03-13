@@ -2973,7 +2973,7 @@ table.inputtable tr:first-child td
 {
     border-bottom: 1px solid black;
 }
-table.inputtable td.inputholder input[type='text'],table.inputtable td.inputholder input[type='password']
+table.inputtable td.inputholder input[type='text'],table.inputtable td.inputholder input[type='password'],table.gfredeem td input[type='text'], table#redeem td input[type='text']
 {
     font-family:gothamlight;
     width : 100%;
@@ -2982,7 +2982,7 @@ table.inputtable td.inputholder input[type='text'],table.inputtable td.inputhold
     letter-spacing : 0.4pt;
     padding-bottom : 1px;
 }
-table.inputtable td.label
+table.inputtable td.label, table.gfredeem td.label, table#redeem td.label
 {
     font-family:helveticaoblique;
     font-size:11px;
@@ -3002,7 +3002,7 @@ table.inputtable.nolabel td.label
 {
     display : none;
 }
-table.inputtable td.errortext
+table.inputtable td.errortext, table.gfredeem td.errortext, table#redeem td.errortext
 {
     font-family:helveticaoblique;
     font-size:11px;
@@ -3019,7 +3019,7 @@ table.inputtable.error td.inputholder input
 {
     color : #D90D3D;
 }
-table.inputtable td.errortext div
+table.inputtable td.errortext div,table.gfredeem td.errortext div,table#redeem td.errortext div
 {
     display : none;
 }
@@ -3581,4 +3581,27 @@ ul.messages
 	}
 	#pgNavUp, #pgnavigator, #pgNavDown{display:none !important;}
 	body.cms-home #pgNavUp, body.cms-home #pgnavigator, body.cms-home #pgNavDown{display:block !important;}
+}
+
+table.gfredeem td.inputholder, table#redeem td.inputholder
+{
+    width : 50px;
+    border-bottom: 1px solid black;
+}
+table.gfredeem td.dash, table#redeem td.dash
+{
+    padding : 0 5px;
+}
+.redeem-giftcard
+{
+    margin-top : 70px;
+}
+.cart .gift-card h2.giftofyshead
+{
+    color : #666666;
+    font-family: gotham-m;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom : 10px;
 }

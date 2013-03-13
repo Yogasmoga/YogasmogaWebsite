@@ -337,10 +337,27 @@ button.button.btn-redeem span{
     background:url(../images/redeem_off.png) 0 0 no-repeat; 
     border:0;
 }
+button.button.btn-check span{
+    padding:0; 
+    width:93px; 
+    text-indent:-999em; 
+    height:29px; 
+    margin:0; 
+    background:url(../images/check_off.png) 0 0 no-repeat; 
+    border:0;
+}
 button.button.btn-redeem:active span{
     background:url(../images/redeem_on.png) 0 0 no-repeat;
 }
+button.button.btn-check:active span{
+    background:url(../images/check_on.png) 0 0 no-repeat;
+}
 button.button.btn-redeem
+{
+    margin-left : 15px;
+    margin-top : -7px;
+}
+button.button.btn-check
 {
     margin-left : 15px;
     margin-top : -7px;

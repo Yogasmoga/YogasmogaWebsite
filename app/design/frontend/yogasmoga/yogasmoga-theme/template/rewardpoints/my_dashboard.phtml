@@ -23,6 +23,11 @@
         Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
         Mage::getSingleton('core/session')->setRedirect('');
     }
+    if(Mage::getSingleton('core/session')->getRedirect() == "giftofys")
+    {
+        Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."gift_of_ys#redeemcard");
+        Mage::getSingleton('core/session')->setRedirect('');
+    }
 ?>
  <div class="myheader" style="margin-bottom: 7px;">MY ACCOUNT</div>
  <div class="account-nav">

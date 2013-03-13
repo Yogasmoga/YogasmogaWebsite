@@ -58,6 +58,28 @@ jQuery(document).ready(function($){
     $("img#closesmlight").live('click', function(){
         $(this).parent().fadeOut('normal');
     });
+    
+    //$("table.gfredeem input").keypress(function(){
+//        console.log($(this).val().length);
+//    });
+    
+    $("table.gfredeem input, table#redeem input").keyup(function(e){
+        //console.log(e.keyCode);
+        if(e.keyCode == 9 || e.keyCode == 13 || e.keyCode == 16 || e.keyCode == 17 || (e.keyCode >= 37 && e.keyCode <= 40))
+            return;
+        //console.log($(this).val().length);
+        if($(this).val().length > 5)
+        {
+            $(this).val($(this).val().substr(0,5));
+            $(this).parent().next().next().find('input').focus().select();
+        }
+        if($(this).val().length == 5)
+        {
+            $(this).parent().next().next().find('input').focus().select();
+        }
+    });
+    
+    
 });
 function removenotifications()
 {
