@@ -10,6 +10,10 @@ ul.messages
 </div>
 <h2 class="giftcard-balance">Your Balance : <?php echo Mage::helper('core')->currency($this->getCurrentBalance()); ?></h2>
 <form name="giftcardForm" id="giftcardformmyaccount" action="<?php echo $this->getUrl('customer/giftcards/apply') ?>" method="post">
+
+<div class="backlink">
+    <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account">&lt; Back</a>
+</div>
 <table class="myaccount-redeem-giftcard">
     <tr>
         <td>
