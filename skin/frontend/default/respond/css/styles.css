@@ -799,10 +799,10 @@ tr.summary-details-excluded { font-style:italic; }
 
 .top-bar { }
 .top-bar .breadcrumbs { float:left; overflow:hidden;}
-.form-search { display: block; margin: 135px auto; max-width: 365px; position: relative; right: 0; top: 0; width: 100%; border-bottom: 3px solid #000;}
+.form-search { display: block; margin: 70px auto; max-width: 365px; position: relative; right: 0; top: 0; width: 100%; border-bottom: 3px solid #000;}
 .form-search label { position: absolute; overflow: hidden; clip: rect(0 0 0 0); height: 1px; width: 1px; margin: -1px; padding: 0; border: 0;  }
 .form-search input.input-text { background: none; border: medium none; color: #999999; float: left; font-size: 16px; font-style: oblique; font-weight: normal; height: 26px; margin: 0; width: 100%;}
-.form-search button.button { background: url("../images/search-icon.png") no-repeat scroll 50% 0 transparent; border: medium none; border-radius: 0 0 0 0; 
+.form-search button.button { background: url("../images/search-icon.png") no-repeat scroll 50% 75% transparent; border: medium none; border-radius: 0 0 0 0; 
   box-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none; height: 28px; margin: 0; padding: 0; position: absolute; right: 0; top: 0; width: 34px;}
@@ -2609,3 +2609,7 @@ Inlined to avoid required HTTP connection: h5bp.com/r
  .page-print .data-table .cart-tax-info { display:block !important; }
 }
 .red-txt{color:#d90d3d;}
+.video-link{display:block; margin:10px 10px 30px;}
+.foot-buttons{display:block; text-align:center; padding-top:30px;}
+.foot-buttons a.uparw{padding:2px 0 4px 20px; border-bottom:2px solid #666; color:#666; background:url(../images/arwup.png) 0 -19px no-repeat; text-transform:uppercase; font-size:14px; font-family:gotham; text-decoration:none;}
+.foot-buttons a.uparw:hover{background-position:0 0; border-bottom:2px solid #d90d3d; color:#d90d3d;}
