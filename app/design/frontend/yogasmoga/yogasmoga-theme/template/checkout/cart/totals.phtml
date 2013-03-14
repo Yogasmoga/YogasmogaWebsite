@@ -38,12 +38,18 @@
     <table id="shopping-cart-totals-table">
         <col />
         <col width="1" />
-        <!--
         <tfoot>
-            <?php // echo $this->renderTotals('footer'); ?>
-        </tfoot> -->
+            <?php  echo $this->renderTotals('footer'); ?>
+        </tfoot> 
         <tbody>
-            <?php echo $this->renderTotals(); ?>
+            <?php //echo $this->renderTotals();
+                $temp = $this->renderTotals();
+                $temp = str_replace("Gift Card","GIFT OF YS CARD", $temp);
+                $temp = str_replace("Discount","", $temp);
+                $temp = str_replace(")","", $temp);
+                $temp = str_replace("(","", $temp);
+                echo $temp;
+             ?>
             <tr>
                 <td colspan="1" class="a-right" style="text-transform: none;">
                                 <a target="_blank" href="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> earned            </td>

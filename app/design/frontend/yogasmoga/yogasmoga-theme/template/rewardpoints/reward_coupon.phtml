@@ -64,7 +64,7 @@
                 <?php //endif;?>
             <?php else:?>
                 <p class="no-display"><?php echo $this->__('Enter quantity of loyalty point(s) you want to use.') ?></p>
-                <p><?php echo $this->__('You have %d <a target="_blank" href ="'.$this->getUrl('smogi-bucks').'">SMOGI Buck(s)</a> available.', $point_details['customer_points']); ?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($point_details['customer_points']);?>
+                <p><?php echo $this->__('You have <span id="tpoints">%d</span> <a target="_blank" href ="'.$this->getUrl('smogi-bucks').'">SMOGI Buck(s)</a> available.', $point_details['customer_points']); ?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($point_details['customer_points']);?>
                 <?php
                     if($this->isUsable() && $this->getCustomerPoints() > 0)
                     {
@@ -74,7 +74,7 @@
                     }
                  ?>
                 <br />
-                You will earn <?php echo $pts; ?> <a target="_blank" href ="'.$this->getUrl('smogi-bucks').'">SMOGI Bucks</a> after this purchase.
+                You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.
                 </p>
 
                 <?php if($this->isUsable() && $this->getCustomerPoints() > 0) : ?>
@@ -114,14 +114,19 @@
 
 
                 <?php else:?>
-                    <input placeholder="Enter Amount Here" <?php if($point_details['full_use']):?>type="hidden"<?php else:?>type="text"<?php endif;?> value="<?php if($point_details['full_use']):?><?php echo $point_details['max_use'];?><?php endif;?>"  name="points_to_be_used" class="input-text" />
-                    <div class="errortext">
+                    <input placeholder="Enter Amount Here" <?php if($point_details['full_use']):?>type="hidden"<?php else:?>type="text"<?php endif;?> value="<?php if($point_details['full_use']):?><?php echo $point_details['max_use'];?><?php endif;?>"  name="points_to_be_used" id="points_to_be_used" class="input-text" />
+                    <div class="errortext" id="points_error">
                         <?php echo strip_tags($this->getMessagesBlock()->getGroupedHtml()); ?>
                     </div>
                 <?php endif;?>
                 <?php if($this->getCustomerPoints() > 0) : ?>
                 <div class="buttons-set">
-                    <button class="button btn-apply" value="<?php echo $this->__('Apply Bucks') ?>" onclick="discountFormPoints2.submit(false)" type="button">
+                    <?php
+                        /*
+                            <button class="button btn-apply" value="<?php echo $this->__('Apply Bucks') ?>" onclick="discountFormPoints2.submit(false)" type="button">
+                        */
+                    ?>
+                    <button class="button btn-apply" value="<?php echo $this->__('Apply Bucks') ?>" type="submit">
                         <span><span><?php echo $this->__('Apply Bucks') ?></span></span>
                     </button>
                 </div>
@@ -142,7 +147,7 @@
             <?php echo $this->getIllustrationImage()?>
             <div class="rewards_point_cart"><?php echo $this->__("This shopping cart is worth %s loyalty point(s).", $pts);?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($pts);?></div>
             <?php if ($points_currently_used > 0):?>
-            <p><?php echo $this->__('You are currently using %d Bucks of your %d SMOGI Bucks available.', $points_currently_used, $this->getCustomerPoints()); ?></p>
+            <p><?php echo $this->__('You are currently using %d Bucks of your %d <a target="_blank" href ="'.$this->getUrl('smogi-bucks').'">SMOGI Buck(s)</a> available.', $points_currently_used, $this->getCustomerPoints()); ?></p>
             <?php endif;?>
             <div class="buttons-set">
                 <button class="button btn-removebucks" type="button" onclick="discountFormPoints2.submit(false)" value="<?php echo $this->__('Remove Points') ?>"><span><span><?php echo $this->__('Remove') ?></span></span></button>

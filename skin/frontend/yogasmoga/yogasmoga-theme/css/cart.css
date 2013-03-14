@@ -100,7 +100,7 @@ button.button.btn-apply:active span{
     background:url(../images/apply_on.png) 0 0 no-repeat;
 }
 
-button.button.btn-removebucks span{padding:0; width:88px; text-indent:-999em; height:28px; margin:0; background:url(../images/btn-apply.png) 0 0 no-repeat; border:0;}
+button.button.btn-removebucks span{padding:0; width:88px; text-indent:-999em; height:28px; margin:0; background:url(../images/btn-remove.png) 0 0 no-repeat; border:0;}
 button.btn-invite span{padding:0; width:92px; text-indent:-999em; height:29px; margin:0; background:url(../images/btn-invite.png) 0 0 no-repeat; border:0;}
 button.btn-reset span{padding:0; width:89px; text-indent:-999em; height:29px; margin:0; background:url(../images/btn-reset.png) 0 0 no-repeat; border:0;}
 button.btn-addtobag span{padding:0; width:147px; text-indent:-999em; height:29px; margin:0; background:url(../images/btn-addtobag.png) 0 0 no-repeat; border:0;}

@@ -3631,3 +3631,11 @@ form#discountFormPoints2 input.input-text
     letter-spacing: 0.4pt;
     padding-bottom: 1px;
 }
+#points_error
+{
+    height : 15px;
+}
+input[type='text'].error
+{
+    border-bottom : 1px solid #d90d3d;
+}
