@@ -124,8 +124,50 @@ jQuery(document).ready(function($){
     
     $("#form-validate-resetpassword").submit(function(){
         return validateResetPasswordForm();
-    }); 
+    });
+    
+    $("#discountFormPoints2").submit(function(){
+        return validateSmogibuckpoints();
+    });
 });
+
+function validateSmogibuckpoints()
+{
+    jQuery("#points_error").html();
+    jQuery("#points_to_be_used").removeClass('error');
+    if(jQuery("#discountFormPoints2 input[type='text']").length > 0)
+    {
+        var flag = true;
+        if(jQuery("#points_to_be_used").val().length == 0)
+        {
+            jQuery("#points_error").html('Amount is required.').fadeIn('fast');
+            jQuery("#points_to_be_used").addClass('error');
+            flag = false;
+        }
+        if(jQuery("#points_to_be_used").val().length > 0)
+        {
+            if(!isNormalInteger(jQuery("#points_to_be_used").val()))
+            {
+                jQuery("#points_error").html('Invalid Amount. Must be an integer.').fadeIn('fast');
+                jQuery("#points_to_be_used").addClass('error');
+                flag = false;
+            }
+            else
+            {
+                if((jQuery("#points_to_be_used").val() * 1) > (jQuery("span#tpoints").html() * 1))
+                {
+                    jQuery("#points_error").html('Insufficient Points. Maximum points is ' + jQuery("span#tpoints").html()).fadeIn('fast');
+                    jQuery("#points_to_be_used").addClass('error');
+                    //setOnError(jQuery("#card-amount"),"Maximum value of a Card is 1000");
+                    flag = false;    
+                }
+            }
+        }
+        return flag;
+    }
+    else
+        return true;
+}
 
 function validateResetPasswordForm()
 {
@@ -233,6 +275,7 @@ function referafriend(name, email, id)
 
 function validateGiftCardForm()
 {
+    //jQuery("table.gfredeem td.inputholder input").removeClass('error');
     var tbl = jQuery("table.gfredeem");
     tbl.find('td.errortext div').fadeOut('fast');
     var flag = 0;
@@ -259,6 +302,10 @@ function validateGiftCardForm()
     {
         jQuery("input#giftcard_code").val(jQuery("input#gf1").val() + "-" + jQuery("input#gf2").val() + "-" + jQuery("input#gf3").val());
         jQuery("input#cardno").val(jQuery("input#gf1").val() + "-" + jQuery("input#gf2").val() + "-" + jQuery("input#gf3").val());
+    }
+    else
+    {
+        //jQuery("table.gfredeem td.inputholder input").addClass('error');
     }
     return flag;
     
