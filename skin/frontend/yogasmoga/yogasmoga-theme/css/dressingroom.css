@@ -236,8 +236,8 @@ div.totalcountregion
 
 #dressingroomholder a.nextBtn{background:url(../images/catalog/product/dressingroom/arrow_right.png) 100px 50% no-repeat; right:0px;}
 #dressingroomholder a.prevBtn{background:url(../images/catalog/product/dressingroom/arrow_left.png) 59px 50% no-repeat; left:0px;}
-#dressingroombottom a.prevBtn{background-position:100% 40%;}
-#dressingroombottom a.nextBtn{background-position:0% 40%;}
+#dressingroombottom a.prevBtn{background-position:59px 40%;}
+#dressingroombottom a.nextBtn{background-position:100px 40%;}
 
 
 
