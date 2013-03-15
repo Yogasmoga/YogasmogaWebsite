@@ -64,7 +64,14 @@ jQuery(document).ready(function($){
     });
     $("div#addanotherreferral").click(function(){
         $("table.referfriendforms tbody#main").append("<tr id='" + ++_refercount + "'>" + $("table.referfriendforms tr#template").html() + "</tr>");
-        $("table.referfriendforms tbody#main td.remove").show();
+        //$("table.referfriendforms tbody#main td.remove").show();
+        $("table.referfriendforms tbody#main tr[id]").each(function(){
+            //console.log($(this).find("td.btninvite").css('display'));
+            if($(this).find("td.btninvite").css('display') != 'none')
+            {
+                $(this).find('td.remove').show();
+            }
+        });
         //console.log('adf');
     });
     
