@@ -146,18 +146,18 @@ var pageScroller = {};
 					var loc = window.location;
 					if (history.pushState){
 						history.replaceState("", document.title, loc.pathname + loc.search+hash);
-					}else{
+					}/*else{
 						loc.hash = hash;
 					}
-					//.charAt(0).toUpperCase() + curSection.slice(1);
+					//.charAt(0).toUpperCase() + curSection.slice(1);*/
 				}else{
 					var hash = "#"+curSection.charAt(0).toLowerCase() + curSection.slice(1);
 					var loc = window.location;
 					if (history.pushState){
 						history.replaceState("", document.title, loc.pathname + loc.search);
-					}else{
+					}/*else{
 						loc.hash = hash;
-					}
+					}*/
 				}
 			};
 			if (!pageScroller.options) return pageScroll(this, h)
