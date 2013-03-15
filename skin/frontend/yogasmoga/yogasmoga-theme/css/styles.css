@@ -3644,3 +3644,8 @@ div.cart-collaterals div.smogi-bucks a
 {
     color : #d90d3d;
 }
+.namaskar-overlay
+{
+    background:#fff url('../images/loading.gif') 50% 50% no-repeat;
+    position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;
+}
