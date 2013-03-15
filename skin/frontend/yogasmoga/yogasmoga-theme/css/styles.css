@@ -3279,7 +3279,7 @@ div.colorfilters
 }
 div.giftcard-login-msg, div.giftcard-login-msg button 
 {
-    margin-top : 10px;
+    margin-top : 5px;
 }
 div.giftcard-login-msg a
 {
@@ -3585,7 +3585,7 @@ ul.messages
 
 table.gfredeem td.inputholder, table#redeem td.inputholder
 {
-    width : 50px;
+    width : 55px;
     border-bottom: 1px solid black;
 }
 table.gfredeem td.dash, table#redeem td.dash
@@ -3630,12 +3630,17 @@ form#discountFormPoints2 input.input-text
     font-size: 11px;
     letter-spacing: 0.4pt;
     padding-bottom: 1px;
-}
+}/*
 #points_error
 {
     height : 15px;
 }
+*/
 input[type='text'].error
 {
     border-bottom : 1px solid #d90d3d;
+}
+div.cart-collaterals div.smogi-bucks a
+{
+    color : #d90d3d;
 }

@@ -35,6 +35,9 @@
                 </td>
             </tr>
         </table>
+        <div style="margin-top : 5px;">
+                You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.
+                </div>
         <?php /*
         <div class="discount-codes box discount">
             <h2><?php echo $this->__('Reward points'); ?></h2>
@@ -64,17 +67,16 @@
                 <?php //endif;?>
             <?php else:?>
                 <p class="no-display"><?php echo $this->__('Enter quantity of loyalty point(s) you want to use.') ?></p>
-                <p><?php echo $this->__('You have <span id="tpoints">%d</span> <a target="_blank" href ="'.$this->getUrl('smogi-bucks').'">SMOGI Buck(s)</a> available.', $point_details['customer_points']); ?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($point_details['customer_points']);?>
+                <p><?php echo $this->__('You have <span id="tpoints">%d</span> <a target="_blank" href ="'.$this->getUrl('smogi-bucks').'">SMOGI Bucks</a> available.', $point_details['customer_points']); ?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($point_details['customer_points']);?>
                 <?php
                     if($this->isUsable() && $this->getCustomerPoints() > 0)
                     {
                         ?>
-                        Enter the amount <br /> you want to use with this purchase.
+                        <br />
+                        Enter the amount you want to use with this purchase.
                         <?php
                     }
                  ?>
-                <br />
-                You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.
                 </p>
 
                 <?php if($this->isUsable() && $this->getCustomerPoints() > 0) : ?>
@@ -130,6 +132,9 @@
                         <span><span><?php echo $this->__('Apply Bucks') ?></span></span>
                     </button>
                 </div>
+                <div style="margin-top : 5px;">
+                You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.
+                </div>
                 <?php endif;?>
                 <?php elseif($this->getCustomerPoints() > 0): ?>
                     <p><?php echo $this->__('You must have at least %s point(s) to apply points.', $this->getMinimumBalance()); ?></p>
@@ -147,10 +152,13 @@
             <?php echo $this->getIllustrationImage()?>
             <div class="rewards_point_cart"><?php echo $this->__("This shopping cart is worth %s loyalty point(s).", $pts);?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($pts);?></div>
             <?php if ($points_currently_used > 0):?>
-            <p><?php echo $this->__('You are currently using %d Bucks of your %d <a target="_blank" href ="'.$this->getUrl('smogi-bucks').'">SMOGI Buck(s)</a> available.', $points_currently_used, $this->getCustomerPoints()); ?></p>
+            <p><?php echo $this->__('You are currently using %d Bucks of your %d <a target="_blank" href ="'.$this->getUrl('smogi-bucks').'">SMOGI Bucks</a> available.', $points_currently_used, $this->getCustomerPoints()); ?></p>
             <?php endif;?>
             <div class="buttons-set">
                 <button class="button btn-removebucks" type="button" onclick="discountFormPoints2.submit(false)" value="<?php echo $this->__('Remove Points') ?>"><span><span><?php echo $this->__('Remove') ?></span></span></button>
+            </div>
+            <div style="margin-top: 5px;">
+                You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.
             </div>
         </fieldset>
     </form>
