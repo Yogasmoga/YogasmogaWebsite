@@ -51,7 +51,7 @@ h2.guide-name span{font-family:gotham-l; margin-bottom:30px;}
 .story-page .principles table td p{text-align:left;}
 
 .img-section {display:block; width:100%;}
-.img-section .big-image{width:100%; text-align:center;}
+.img-section .big-image{width:100%; text-align:center; background-color: white;}
 .img-section .big-image img{width:100%; height:auto;}
 .press-section .press-item{display:block; min-height:165px; text-transform:uppercase;}
 .press-item .item-image{float:left; margin-right:20px;}
@@ -96,7 +96,7 @@ table td[align=center]{text-align:center;}
 body.cms-smogi-bucks
 {
     /*background:url("../images/smogi_bg.png") no-repeat scroll 0 0 / cover  transparent;*/
-    background-image : url("../images/smogi-bg.jpg");
+    background-image : url("../images/smogi_bg.jpg");
     background-repeat: no-repeat;
     background-size : 100%;
     background-color : white;
