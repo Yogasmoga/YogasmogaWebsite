@@ -244,7 +244,7 @@ function referafriend(name, email, id)
             tr.find('td.processing').show();
         },
         success : function(result){
-            console.log('success');
+            //console.log('success');
             result = eval('(' + result + ')');
             if(result.status == 'success')
             {
