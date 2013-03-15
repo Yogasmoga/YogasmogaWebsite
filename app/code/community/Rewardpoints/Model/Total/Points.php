@@ -176,7 +176,7 @@ class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Tot
                 ->_setBaseAmount($totalPBasePrice);*/
             
             if ($pts = Mage::helper('rewardpoints/event')->getCreditPoints($address->getQuote())){
-                $title = Mage::helper('rewardpoints')->__('%s bucks used', $pts);
+                $title = Mage::helper('rewardpoints')->__('%s smogi bucks used', $pts);
                 
                 $address->getQuote()->setRewardpointsDescription($title);
                 //$title_base = $title;
