@@ -35,7 +35,7 @@ body.cms-our-story{background:#fff url(../images/cms_bg.jpg) 0 0 no-repeat; back
 .story-page p{margin:0 0 5px; line-height:1.3}
 h2.heading{font-family:ITCAvantGardeProBd, gotham-b  , Arial; margin:40px 0 5px; text-transform:uppercase; font-size:14px; font-weight:normal;}
 h2.heading span{font-family:ITCAvantGardeProBk, gotham  , Arial;}
-h1.main-heading{background:url(../images/heading_border.png) 50% 100% no-repeat; display:block; font-family:ITCAvantGardeProBk, gotham  , Arial; text-transform:uppercase; font-weight:normal; font-size:17px; margin:0px 0 40px; text-align:center; padding:5px 0 25px; letter-spacing:normal; line-height:1; color:#DD8820;74}
+h1.main-heading{background:url(../images/heading_border.png) 50% 100% no-repeat; display:block; font-family:ITCAvantGardeProBk, gotham  , Arial; text-transform:uppercase; font-weight:normal; font-size:20px; margin:0px 0 40px; text-align:center; padding:5px 0 25px; letter-spacing:normal; line-height:1; color:#DD8820;74}
 ul.arw-list {display:block; margin:0 0 25px 25px; padding:0;}
 ul.arw-list li {
   background: url("../images/list-arw.png") no-repeat scroll 0 4px transparent;
