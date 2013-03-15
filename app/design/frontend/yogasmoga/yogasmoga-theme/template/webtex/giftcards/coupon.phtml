@@ -10,7 +10,7 @@
             <label for="giftcard_use"><?php echo $this->__('Use my <a target="_blank" href="'.$this->getUrl('gift_of_ys').'">Gift of YS</a> balance : '); ?>&nbsp;<?php echo Mage::helper('core')->currency(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId())); ?></label>
         </div>
         </form>
-        <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>customer/giftcards/balance" class="rdm">
+        <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/giftcards/balance" class="rdm">
             Redeem your Gift of YS
         </a>
     </div>
