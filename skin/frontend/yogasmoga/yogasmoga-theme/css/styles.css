@@ -3647,5 +3647,6 @@ div.cart-collaterals div.smogi-bucks a
 .namaskar-overlay
 {
     background:#fff url('../images/loading.gif') 50% 50% no-repeat;
+    background-image: url('../images/loading.gif');
     position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;
 }
