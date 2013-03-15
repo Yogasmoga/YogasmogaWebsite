@@ -99,6 +99,7 @@ body.cms-smogi-bucks
     background-image : url("../images/smogi_bg.png");
     background-repeat: no-repeat;
     background-size : 100%;
+    background-color : white;
 }
 
 .bucks-page{padding: 1px 0 50px; color:#666; font-family:gotham-l, Arial; font-size:12px;
