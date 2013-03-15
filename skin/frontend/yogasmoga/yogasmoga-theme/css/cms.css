@@ -96,7 +96,7 @@ table td[align=center]{text-align:center;}
 body.cms-smogi-bucks
 {
     /*background:url("../images/smogi_bg.png") no-repeat scroll 0 0 / cover  transparent;*/
-    background-image : url("../images/smogi_bg.png");
+    background-image : url("../images/smogi-bg.jpg");
     background-repeat: no-repeat;
     background-size : 100%;
     background-color : white;
