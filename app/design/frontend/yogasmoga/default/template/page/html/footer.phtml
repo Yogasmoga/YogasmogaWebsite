@@ -211,3 +211,10 @@
     </div>
     <div id="pgNavDown"><img  onclick="pageScroller.next();" src="<?php echo $this->getSkinUrl('images/navigation/down.png') ?>" /></div>
 </div>
+<script>
+	$j('.footdesc a').click(function(){
+		var tar = $j(this).attr('href').split('#')[1];
+		var curtarget = "#"+ tar.charAt(0).toUpperCase() + tar.slice(1);
+		$('html,body').animate({scrollTop: $(curtarget).offset().top - _headerHeight},'slow');
+	});
+</script>
