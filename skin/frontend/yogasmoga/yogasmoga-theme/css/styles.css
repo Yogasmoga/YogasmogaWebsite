@@ -3652,3 +3652,7 @@ div.cart-collaterals div.smogi-bucks a
     position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;
     background-position: center center;
 }
+div.discount-form a.red
+{
+    color : #d90d3d;
+} 

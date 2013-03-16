@@ -7,11 +7,11 @@
         <form method="post" action="<?php echo $this->getUrl('*/*/giftcardActive'); ?>" name="giftcardActive">
         <div class="input-box">
             <input type="checkbox" value="1" name="giftcard_use" id="giftcard_use" class="checkbox" onclick="document.forms['giftcardActive'].submit()" <?php echo Mage::getSingleton('giftcards/session')->getActive() ? 'checked="checked"' : '' ?> />
-            <label for="giftcard_use"><?php echo $this->__('Use my <a target="_blank" href="'.$this->getUrl('gift_of_ys').'">Gift of YS</a> balance : '); ?>&nbsp;<?php echo Mage::helper('core')->currency(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId())); ?></label>
+            <label for="giftcard_use"><?php echo $this->__('Redeem my <a class="red" target="_blank" href="'.$this->getUrl('gift_of_ys').'">Gift of YS Card</a>. Balance : '); ?>&nbsp;<?php echo Mage::helper('core')->currency(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId())); ?></label>
         </div>
         </form>
         <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/giftcards/balance" class="rdm">
-            Redeem your Gift of YS
+            Add a Gift of YS card to your account
         </a>
     </div>
     <?php else : ?>

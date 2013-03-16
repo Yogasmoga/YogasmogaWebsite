@@ -225,7 +225,7 @@
 				</div>
 				<div class="goy-balance pgsection" id="Chkbal" desc="Check Balance">
 					<h4 class="sub-title">check balance</h4>
-					<p>Enter your Gift of YS card number in the field below. Need help finding your Card#? Check your email. Please note, if your Gift of YS card does not have an access code, simply enter the Claim Code from the email.</p>
+					<p>Enter your Gift of YS code in the field below.</p>
                     <form action="" method="post" id="cardbalanceform">
                     <table class="redeem-giftcard">
                         <tr>
@@ -233,7 +233,7 @@
                                 <table class="gfredeem">
                                     <tr>
                                         <td class="label">
-                                            <label for="gf1">Gift of YS Number or claim code </label>
+                                            <label for="gf1">Gift of YS Code</label>
                                         </td>
                                         <td class="inputholder">
                                             <input type="text" id="gf1" />
@@ -285,11 +285,11 @@
                     */ ?>
 				</div>
                 <div class="goy-balance pgsection" id="redeemcard" desc="Redeem Card">
-					<h4 class="sub-title">REDEEM GIFT OF YS</h4>
+					<h4 class="sub-title">ADD GIFT OF YS TO YOUR ACCOUNT</h4>
                     <?php if(Mage::helper('customer')->isLoggedIn())
                         {
                             ?>
-                                <p>Enter your Gift of YS card number in the field below to redeem your card.</p>
+                                <p>Enter your Gift of YS Code in the field below to redeem your card.</p>
                                 <form action="" method="post" id="cardredeemform">
                                     <table class="redeem-giftcard">
                                         <tr>
@@ -297,7 +297,7 @@
                                                 <table id="redeem">
                                                     <tr>
                                                         <td class="label">
-                                                            <label for="gfr1">GIFT of YS Code</label>
+                                                            <label for="gfr1">Gift of YS Code</label>
                                                         </td>
                                                         <td class="inputholder">
                                                             <input type="text" id="gfr1" />
