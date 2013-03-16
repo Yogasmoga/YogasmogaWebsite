@@ -3,16 +3,15 @@ jQuery(document).ready(function($){
 			//$(window).scrollTop($(window).scrollTop() - _headerHeight);
 			//console.log($("#"+ _currenturl.substr(_currenturl.indexOf('#') + 1)));
 			var curhash = _currenturl.substr(_currenturl.indexOf('#') + 1)
-			var curtarget = curhash.charAt(0).toUpperCase() + curhash.slice(1);
-			if($("#"+ curtarget).length){
-			 $('html,body').animate({
-				scrollTop: $("#"+ curtarget).offset().top - _headerHeight},
-			'fast');
+			var curtarget = "#"+ curhash.charAt(0).toUpperCase() + curhash.slice(1);
+			if($(curtarget).length){
+				$(window).load(function(){
+				$('html,body').animate({
+					scrollTop: $(curtarget).offset().top - _headerHeight},
+				'slow');
+				})
 			}
 		}
-    
-
-    
 	$(window).load(function(){
 			//$('.header-container').hover(
 	//        function() {
