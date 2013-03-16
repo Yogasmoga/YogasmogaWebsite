@@ -6,9 +6,10 @@ jQuery(document).ready(function($){
 			var curtarget = "#"+ curhash.charAt(0).toUpperCase() + curhash.slice(1);
 			if($(curtarget).length){
 				$(window).load(function(){
-				$('html,body').animate({
-					scrollTop: $(curtarget).offset().top - _headerHeight},
-				'slow');
+					$('html,body').animate({
+						scrollTop: $(curtarget).offset().top - _headerHeight}, 'slow', function(){
+						$j(window).scrollTop($j(window).scrollTop() + 1);
+					})
 				})
 			}
 		}

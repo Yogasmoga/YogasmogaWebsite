@@ -215,6 +215,8 @@
 	$j('.footdesc a').click(function(){
 		var tar = $j(this).attr('href').split('#')[1];
 		var curtarget = "#"+ tar.charAt(0).toUpperCase() + tar.slice(1);
-		$j('html,body').animate({scrollTop: $j(curtarget).offset().top - _headerHeight},'fast');
+		$j('html,body').animate({scrollTop: $j(curtarget).offset().top - _headerHeight},'fast', function(){
+			$j(window).scrollTop($j(window).scrollTop() + 1);
+		});
 	});
 </script>
