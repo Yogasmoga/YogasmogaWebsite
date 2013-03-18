@@ -8,34 +8,35 @@ ul.messages
 <div class="page-title">
     <h1><?php echo $this->__('Gift of ys') ?></h1>
 </div>
-<h2 class="giftcard-balance">Your Balance : <?php echo Mage::helper('core')->currency($this->getCurrentBalance()); ?></h2>
-<form name="giftcardForm" id="giftcardformmyaccount" action="<?php echo $this->getUrl('customer/giftcards/apply') ?>" method="post">
-
+<div style="margin-top : 30px;">
+<h3 class="heading-track">ADD GIFT OF YS TO YOUR ACCOUNT. CURRENT BALANCE: <span id="curbalance"><?php echo Mage::helper('core')->currency($this->getCurrentBalance()); ?></span></h3>
+</div>
+<form name="giftcardForm" id="cardredeemform" action="<?php echo $this->getUrl('customer/giftcards/apply') ?>" method="post">
 <div class="backlink">
     <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account">&lt; Back</a>
 </div>
 <table class="myaccount-redeem-giftcard">
     <tr>
         <td>
-            <table class="gfredeem">
+            <table id="redeem">
                 <tr>
                     <td class="label">
-                        <label for="gf1">GIFT of YS Code</label>
+                        <label for="gfr1">Gift of YS Code</label>
                     </td>
                     <td class="inputholder">
-                        <input type="text" id="gf1" />
+                        <input type="text" id="gfr1" />
                     </td>
                     <td class="dash">
                         -
                     </td>
                     <td class="inputholder">
-                        <input type="text" id="gf2" />
+                        <input type="text" id="gfr2" />
                     </td>
                     <td class="dash">
                         -
                     </td>
                     <td class="inputholder">
-                        <input type="text" id="gf3" />
+                        <input type="text" id="gfr3" />
                     </td>
                 </tr>
                 <tr>
@@ -54,7 +55,7 @@ ul.messages
             </table>
         </td>
         <td style="padding-left: 5px;">
-            <button type="submit" title="<?php echo $this->__('Redeem') ?>" class="button btn-redeem" value="<?php echo $this->__('Redeem') ?>"><span><span><?php echo $this->__('Redeem') ?></span></span></button>
+            <button type="submit" title="<?php echo $this->__('Redeem') ?>" class="button btn-addtoaccount" value="<?php echo $this->__('Redeem') ?>"><span><span><?php echo $this->__('Redeem') ?></span></span></button>
             <input style="display: none;" id="giftcard_code" name="giftcard_code" value="" class="requiredfield" defaulterrormsg="Gift Card Code is required" type="text" />
         </td>
     </tr>
@@ -90,6 +91,63 @@ ul.messages
     */ ?>
 </table>
 </form>
+
+<div style="margin-top : 50px;">
+    <h3 class="heading-track">CHECK BALANCE</h3>
+    <form id="cardbalanceform">
+    <table class="redeem-giftcard">
+        <tbody><tr>
+            <td>
+                <table class="gfredeem">
+                    <tbody><tr>
+                        <td class="label">
+                            <label for="gf1">Gift of YS Code</label>
+                        </td>
+                        <td class="inputholder">
+                            <input type="text" id="gf1" />
+                        </td>
+                        <td class="dash">
+                            -
+                        </td>
+                        <td class="inputholder">
+                            <input type="text" id="gf2" />
+                        </td>
+                        <td class="dash">
+                            -
+                        </td>
+                        <td class="inputholder">
+                            <input type="text" id="gf3" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" class="errortext">
+                            <div>Gift Card Code is required.</div>
+                                                                    </td>
+                    </tr>
+                </tbody></table>
+            </td>
+            <td style="padding-left: 5px;">
+                <button value="Redeem" class="button btn-check" title="Redeem" type="submit"><span><span>Redeem</span></span></button>
+                <input type="text" placeholder="8VE6C-ST11X-RX1LA" name="cardno" id="cardno" style="display: none;">
+            </td>
+        </tr>
+    </tbody></table>  
+    </form>
+</div>
+
+<div style="margin-top : 50px;">
+    <h3 class="heading-track">FROM ONE SMOGI TO ANOTHER</h3>
+    <p class="goy-balance" style="margin: 0;">
+        Help friends to keep calm and get their Mantra on. Give the Gift of YS.
+    </p>
+    <div class="goy-banner">
+		<img alt="The Gift of YS" src="<?php echo $this->getSkinUrl('images/gift_of_ys.png'); ?>" class="shareit" />
+	</div>
+    <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>gift_of_ys">
+    <div class="givegoys spbutton" imageurl="<?php echo $this->getSkinUrl('images/give_a gift_of_YS_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/give_a gift_of_YS_on.png'); ?>"></div>
+    </a>
+</div>
+
 <?php return; ?>
 <form name="giftcardForm" action="<?php echo $this->getUrl('customer/giftcards/apply') ?>" method="post">
 <table border="0" cellpadding="1" cellspacing="1">

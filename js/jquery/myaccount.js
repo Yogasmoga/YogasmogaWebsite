@@ -59,7 +59,7 @@ jQuery(document).ready(function($){
     
     $("#giftcardformmyaccount").submit(function(){
         
-        return validateGiftCardForm();
+        return validateGiftCardForm($("#giftcardformmyaccount table.gfredeem"));
         //return false;
     });
     $("div#addanotherreferral").click(function(){
@@ -112,7 +112,7 @@ jQuery(document).ready(function($){
     });
     
     $("#cardbalanceform").submit(function(){
-        if(validateGiftCardForm())
+        if(validateGiftCardForm($("#cardbalanceform table.gfredeem")))
         {
             _addingtocart = true;
             getcardbalance();   
@@ -280,10 +280,10 @@ function referafriend(name, email, id)
     });
 }
 
-function validateGiftCardForm()
+function validateGiftCardForm(tbl)
 {
     //jQuery("table.gfredeem td.inputholder input").removeClass('error');
-    var tbl = jQuery("table.gfredeem");
+    //var tbl = jQuery("table.gfredeem");
     tbl.find('td.errortext div').fadeOut('fast');
     var flag = 0;
     tbl.find('input[type="text"]').each(function(){
@@ -628,13 +628,15 @@ function redeemcard()
         url : callurl,
         data : jQuery("#cardredeemform").serialize(),
         success : function(result){
-            if(result == 'success')
+            result = eval('(' + result + ')');
+            if(result.result == 'success')
             {
+                jQuery("#curbalance").html('$' + result.balance);
                 alert('GIFT of YS Card successfully redeemed.');
             }
             else
             {
-                jQuery("table#redeem").find('td.errortext div').html(result).fadeIn('fast');
+                jQuery("table#redeem").find('td.errortext div').html(result.result).fadeIn('fast');
             }
         }
     });
