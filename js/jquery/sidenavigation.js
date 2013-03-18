@@ -241,12 +241,12 @@ function initiateshareurl(sharetype)
     if(cfscreen.attr('share-summary'))
         _cursharesummary = cfscreen.attr('share-summary');
     else
-        _cursharesummary = "YOGASMOGA is a Yoga and wellness company that makes things for life.";
+        _cursharesummary = "We are YOGASMOGA. We make things for Life. One breath at a time.";
     
     if(cfscreen.attr('tw-summary'))
         _twdesc = cfscreen.attr('tw-summary');
     else
-        _twdesc = "YOGASMOGA is a Yoga and wellness company that makes things for life.";
+        _twdesc = "We are YOGASMOGA. We make things for Life. One breath at a time.";
         
     //console.log(_curshareimg[0]);
 //    if(_curshareimgurl == '')
