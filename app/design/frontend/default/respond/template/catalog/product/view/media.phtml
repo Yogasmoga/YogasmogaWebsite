@@ -47,16 +47,3 @@
            <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
     <?php endforeach; ?>
 	<?php endif ?>
-<script type="text/javascript">
-	//<![CDATA[
-$j(document).ready(function(){
-	//Initialize Galleria
-	$j('#galleria').galleria({
-		showInfo:false,
-		autoplay: false,
-		height:1.5,
-		swipe: true
-	});
-})
-//]]>
-</script>

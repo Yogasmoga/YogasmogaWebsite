@@ -59,6 +59,20 @@
 			<div id="galleria">
 				<?php echo $this->getChildHtml('media') ?>
 			</div>
+			
+			<script type="text/javascript">
+				//<![CDATA[
+			$j(document).ready(function(){
+				//Initialize Galleria
+				$j('#galleria').galleria({
+					showInfo:false,
+					autoplay: false,
+					height:1.5,
+					swipe: true
+				});
+			})
+			//]]>
+			</script>
         </div>
 
         <div class="product-shop">           
