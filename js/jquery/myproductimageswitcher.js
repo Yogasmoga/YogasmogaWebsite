@@ -95,7 +95,7 @@ function gridSlide(id){
 		}
 		next.stop(true,true).fadeIn(400, function(){next.addClass('active')});
 		cur.stop(true,true).fadeOut(600, function(){cur.removeClass('active')});
-		_rotate = 	setTimeout(function(){gridSlide(id)}, 1500);
+		_rotate = 	setTimeout(function(){gridSlide(id)}, 1200);
 }
 
 function searchsrcarray(obj, val)

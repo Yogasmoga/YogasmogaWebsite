@@ -746,18 +746,21 @@ div#zoompopup div.absoluteproductoptions
 div#zoompopup div#zoomoptions
 {
     position : absolute;
-    right : 9px;
+    right : 25px;
+	margin-top:-50px;
+	display:none;
     z-index : 3;
     top : 0;
     width : 29px;
 }
 div#zoompopup div#zoomoptions img#zoomin
 {
-    margin-top : 12px;
+    margin-top : 0;
 }
 div#zoompopup div#zoomoptions img
 {
     cursor : pointer;
+	padding:15px 0 0 15px;
 }
 td#zoomedproductimage div.noSel.smooth_zoom_preloader div.noSel
 {
