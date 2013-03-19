@@ -88,15 +88,8 @@
 </head>
 <body  class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>" style="overflow:hidden; margin-right:17px;">
 <?php echo $this->getChildHtml('after_body_start') ?>
-<div class="namaskar-overlay1">&nbsp;</div>
-<script type="text/javascript">
-jQuery(window).load(function(){
-	jQuery('body').css('overflow','auto');
-	jQuery('.namaskar-overlay1').fadeOut('slow');
-});
-</script>
 <div class="wrapper">
-<div class="page-overlay" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999; overflow-y:scroll;">&nbsp;</div>
+<div class="page-overlay" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999; overflow-y:scroll; background-image : url('<?php echo $this->getSkinUrl('images/loading.gif'); ?>'); background-position : center 35%;">&nbsp;</div>
     <?php echo $this->getChildHtml('global_notices') ?>
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
