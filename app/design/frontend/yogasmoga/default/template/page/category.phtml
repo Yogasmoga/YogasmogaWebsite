@@ -43,6 +43,13 @@
 </head>
 <body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
 <?php echo $this->getChildHtml('after_body_start') ?>
+<div class="namaskar-overlay1">&nbsp;</div>
+<script type="text/javascript">
+jQuery(window).load(function(){
+	jQuery('body').css('overflow','auto');
+	jQuery('.namaskar-overlay1').fadeOut('slow');
+});
+</script>
 <div class="wrapper">
     <?php echo $this->getChildHtml('global_notices') ?>
     <div class="page">
