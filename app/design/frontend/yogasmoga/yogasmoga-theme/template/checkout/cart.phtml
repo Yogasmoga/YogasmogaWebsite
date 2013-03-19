@@ -39,9 +39,9 @@
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" media="all" />
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myaccount.js"></script>
 <div class="cart">
+    <div class="myheader">SHOPPING BAG</div>
     <div class="page-title">
-        <h1><?php echo $this->__('Shopping Bag') ?></h1>
-		<p class="cart-item">
+        <p class="cart-item">
 			<?php $count = $this->helper('checkout/cart')->getSummaryCount();
 			$total = $this->helper('checkout/cart')->getQuote()->getGrandTotal();if($count==1){
 				echo $this->__('1 ITEM',$count);
