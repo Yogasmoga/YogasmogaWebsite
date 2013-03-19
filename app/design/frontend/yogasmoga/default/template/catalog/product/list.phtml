@@ -169,55 +169,61 @@
                         <table>
                             <tr>
                                 <td class="productimage">
+									<div>
                                     <?php
                                         $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
                                         $index = 1;
                                         $firstimg = true;
                                         foreach($_gallery as $_image)
                                         {
-                                            $imgdata = json_decode(trim($_image->getLabel()), true);
-                                            //var_dump(json_decode(trim($_image->getLabel()), true));
-                                            //echo $_image->getLabel()."<br/>";
-                                            if($imgdata == NULL || strcasecmp($imgdata['type'],"product image") != 0)
-                                                continue;
-                                            
-                                            
-                                            
-                                            //if(!($imgdata['type'] == "product image" && $imgdata['default'] == "yes"))
-//                                                continue;
-                                            
-                                            //if(strpos($_image->getLabel(),"*") === false)
-//                                                continue;
-                                            //if($index > 3)
-//                                                break;
-                                            ?>
-                                            <img class="
-                                            <?php
-                                                if(strcasecmp($imgdata['default'],"yes") == 0)
-                                                {
-                                                    if($firstimg)
-                                                    {
-                                                        $firstimg = false;
-                                                        echo " default active rotable";
-                                                    }
-                                                    else
-                                                        echo " default rotable";
-                                                }
-                                                if(isset($imgdata['color']))
-                                                {
-                                                    echo " color_".strtolower(str_replace(" ","_",$imgdata['color']));
-                                                }
-                                                if(isset($imgdata['bestfor']))
-                                                {
-                                                    echo " bestfor_".strtolower(str_replace(" ","_",$imgdata['bestfor']));
-                                                }
-                                            ?>
-                                            "
-                                             src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(100); ?>" alt="<?php if(isset($imgdata['alt'])) { echo $imgdata['alt']; } ?>" />
-                                            <?php
-                                            $index++;
-                                        } 
+											if($index <= 3){
+												$imgdata = json_decode(trim($_image->getLabel()), true);
+												//var_dump(json_decode(trim($_image->getLabel()), true));
+												//echo $_image->getLabel()."<br/>";
+												if($imgdata == NULL || strcasecmp($imgdata['type'],"product image") != 0)
+													continue;
+												
+												
+												
+												//if(!($imgdata['type'] == "product image" && $imgdata['default'] == "yes"))
+	//                                                continue;
+												
+												//if(strpos($_image->getLabel(),"*") === false)
+	//                                                continue;
+												//if($index > 3)
+	//                                                break;
+												?>
+												<img class="
+												<?php
+													if(strcasecmp($imgdata['default'],"yes") == 0)
+													{
+														if($firstimg)
+														{
+															$firstimg = false;
+															echo " default active rotable";
+														}
+														else
+															echo " default rotable";
+													}
+													if(isset($imgdata['color']))
+													{
+														echo " color_".strtolower(str_replace(" ","_",$imgdata['color']));
+													}
+													if(isset($imgdata['bestfor']))
+													{
+														echo " bestfor_".strtolower(str_replace(" ","_",$imgdata['bestfor']));
+													}
+												?>
+												"
+												 src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(100); ?>" alt="<?php if(isset($imgdata['alt'])) { echo $imgdata['alt']; } ?>" />
+												<?php
+												$index++;
+											}else{
+												break;
+											}
+										}
                                     ?>
+									</div>
                                 </td>
                             </tr>
                             <tr>

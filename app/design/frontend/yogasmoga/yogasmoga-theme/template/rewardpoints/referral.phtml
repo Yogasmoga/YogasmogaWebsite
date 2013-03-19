@@ -194,8 +194,8 @@
                 <th class="email">
                     EMAIL ADDRESS
                 </th>
-                <th>
-                    1<sup>ST</sup> PURCHASE DONE
+                <th style="padding:0 25px 0 0">
+                    STATUS
                 </th>
             </thead>
             <tbody id="main">
@@ -210,7 +210,7 @@
                                 <td class="email">
                                     <div><?php echo $result['rewardpoints_referral_email']; ?></div>
                                 </td>
-                                <td class="status">
+                                <td class="status" style="padding:0 25px 0 0">
                                     <?php
                                         if($result['rewardpoints_referral_status'] == 0)
                                         {

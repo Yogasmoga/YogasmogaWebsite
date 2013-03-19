@@ -1394,7 +1394,7 @@ span.caddress span.ccon {display:block;}
 
 .please-wait { float:right; }
 .please-wait img { vertical-align:middle; }
-.cvv-what-is-this { font-size:11px; cursor:help;}
+.cvv-what-is-this { font-size:11px; cursor:pointer;}
 
 /* Tooltip */
 .tool-tip { border:1px solid #7BA7C9; background:#EAF6FF; padding:15px 20px; position:absolute; z-index:9999; }
@@ -2407,15 +2407,21 @@ div.mycategory-products div.item td.productprice div.price-box
 }
 div.mycategory-products div.item td.productprice span.price
 {
-    color: #666;
+    color: #000;
     display: none;
     font-family:gothambold;
     font-size: 10pt;
 }
 
+div.mycategory-products div.item img.rotable
+{
+	position:absolute;
+	top:0; left:0;
+}
+
 div.mycategory-products div.item img.active.rotable
 {
-    display : inline;
+    display : block;
 }
 
 .myheader
@@ -2469,19 +2475,19 @@ div.mycategory-products div.item td
 
 div.mycategory-products div.item td.productimage
 {
-    height : 345px;
 	width:230px;
 	border:1px solid #DD8820;
     vertical-align : bottom;
 }
 .cms-home div.mycategory-products div.item td.productimage{
-	height : 345px;
 	width:230px;
 }
 div.mycategory-products div.item td.productimage div
 {
     width: 100%;
-    max-width: 300px;
+    width: 230px;
+	position:relative;
+	height:345px;
     margin-left: auto;
     margin-right: auto;   
 }
@@ -3650,7 +3656,7 @@ div.cart-collaterals div.smogi-bucks a
     background-image: url('../images/loading.gif');
     background-repeat: no-repeat;
     position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;
-    background-position: center center;
+    background-position: 50% 50%;
 }
 div.discount-form a.red
 {
