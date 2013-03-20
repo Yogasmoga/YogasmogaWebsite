@@ -50,3 +50,4 @@ var _cursharetype = '';
 var _cursharedesc = '';
 var _curshareimg = new Array();
 var _cursharesummary = '';
+var _oncartpage = false;

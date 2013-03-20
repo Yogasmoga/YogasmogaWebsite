@@ -451,3 +451,7 @@ div#shippingsummary td#ordersubtotal
 {
     padding-left : 5px;
 }
+#myminicart div.minicartitems img.delete
+{
+    display: none !important;
+}

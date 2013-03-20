@@ -109,6 +109,8 @@ jQuery(document).ready(function($){
                 result = eval('(' + result + ')');
                 if(result.status == "success")
                 {
+                    if(_oncartpage)
+                        location.reload();
                     jQuery("span.cartitemcount").html(result.count);
                     $("div#myminicart div#" + _minicartdeleteid).fadeOut('slow', function(){
                         $("div#myminicart div#" + _minicartdeleteid).remove();
