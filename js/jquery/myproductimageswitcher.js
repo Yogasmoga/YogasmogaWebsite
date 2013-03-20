@@ -58,7 +58,7 @@ jQuery(document).ready(function($){
             var idd = jQuery(this).parents("div.item:first").attr("id");
 			_rotate = 	setTimeout(function(){
 							gridSlide(idd)
-						}, 400)
+						}, 100)
 			
             //var pelement = $(this).parents("div.item:first"); 
             //togglehover(idd, true);
@@ -72,8 +72,8 @@ jQuery(document).ready(function($){
             if(!_rotateprimages)
                 return;
 			clearInterval(_rotate);
-			jQuery(this).find('div').find('img:gt(0)').removeClass('active').stop(true,true).fadeOut(600);
-			jQuery(this).find('div').find('img:first').addClass('active').stop(true,true).fadeIn(400);
+			jQuery(this).find('div').find('img:gt(0)').removeClass('active').stop(true,true).fadeOut(300, "easeInOutSine");
+			jQuery(this).find('div').find('img:first').addClass('active').stop(true,true).fadeIn(300, "easeInOutSine");
             //togglehover(jQuery(this).attr("id"), false);
             //togglehover(jQuery(this).parents("div.item:first").attr("id"), false);
             var pelement = $(this).parents("div.item:first");
@@ -93,8 +93,8 @@ function gridSlide(id){
 		if(cur.index() == (ind-1)){
 			next = obj.find('img:first');
 		}
-		next.stop(true,true).fadeIn(400, function(){next.addClass('active')});
-		cur.stop(true,true).fadeOut(600, function(){cur.removeClass('active')});
+		next.stop(true,true).fadeIn(300, "easeInOutSine", function(){next.addClass('active')});
+		cur.stop(true,true).fadeOut(300, "easeInOutSine", function(){cur.removeClass('active')});
 		_rotate = 	setTimeout(function(){gridSlide(id)}, 1200);
 }
 
