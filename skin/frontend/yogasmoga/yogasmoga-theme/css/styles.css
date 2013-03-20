@@ -3615,9 +3615,7 @@ table.gfredeem td.dash, table#redeem td.dash
 div.discount-form a.rdm
 {
     color : #d90d3d;
-    margin-top : 5px;
     font-style: normal;
-    display: block;
 }
 form#discountFormPoints2 a
 {
@@ -3663,3 +3661,11 @@ div.discount-form a.red
 {
     color : #d90d3d;
 } 
+div.gotoshoppingbag
+{
+    background-image: url('images/go_to_shopping_bag_01off.png');
+    background-repeat: no-repeat;
+    width : 217px;
+    height: 28px;
+    margin : 5px 0;
+}

@@ -10,9 +10,9 @@
             <label for="giftcard_use"><?php echo $this->__('Redeem my <a class="red" target="_blank" href="'.$this->getUrl('gift_of_ys').'">Gift of YS Card</a>. Balance : '); ?>&nbsp;<?php echo Mage::helper('core')->currency(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId())); ?></label>
         </div>
         </form>
-        <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/giftcards/balance" class="rdm">
-            Add a Gift of YS card to your account
-        </a>
+        <div style="margin-top : 5px;">
+            Note : Gift of YS card needs to be <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/giftcards/balance" class="rdm">added to your account </a> prior to redemption.
+        </div>
     </div>
     <?php else : ?>
     <h2>Do you have a <a target="_blank" href="<?php echo $this->getUrl('gift_of_ys'); ?>">Gift of YS</a> Card?</h2>

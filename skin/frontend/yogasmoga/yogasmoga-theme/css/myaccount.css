@@ -707,3 +707,30 @@ form#cardbalanceform table.redeem-giftcard
     width : 137px;
     height: 29px;
 }
+table.checkndredeem
+{
+    margin : 50px 0;
+    width : 1000px;
+}
+div.goy-image-div
+{
+    margin : 0 auto;
+    width : 710px;
+}
+div.goy-image-div img.shareit
+{
+    margin : 35px 0;
+}
+div.goy-image-div table
+{
+    margin-left : 10px;
+    margin-top : 50px;
+}
+div.givegift
+{
+    width : 156px;
+    height : 29px;
+    background-image: url('../images/give_gift_off.png');
+    background-repeat: no-repeat;
+    margin-left : 15px;
+}

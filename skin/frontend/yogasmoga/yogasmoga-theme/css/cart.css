@@ -207,6 +207,10 @@ body.rewardpoints-index-referral{background:url(../images/refer-bg.png) 50% 80px
 .box-invite h3,
 h3.heading-track,
 .refer-box h3{font-family:gotham, arial; font-size:16px; text-transform:uppercase; font-weight:normal;color : black;}
+h3.heading-track.center
+{
+    text-align: center;
+}
 .box-invite h3 span{display:block; font-size:12px; text-transform:none;}
 .refer-box .share-link{border-width:0 0 1px; border-color:#000; border-style:solid; font-family:gotham-l, Arial; height:20px; width:70%; font-size:11px; margin-right:20px; background:none;}
 .refer-box  {width:45%;}

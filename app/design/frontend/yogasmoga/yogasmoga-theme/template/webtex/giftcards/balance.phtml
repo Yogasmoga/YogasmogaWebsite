@@ -4,15 +4,130 @@ ul.messages
 {
     display: none;
 }
+.fixwidth
+{
+    max-width: 1000px;
+}
+#my-orders-table
+{
+    max-width: 850px;
+    min-width : 850px;
+    margin : 0 auto;
+}
+div.pager
+{
+    width : 830px;
+    margin : 0 auto;
+}
 </style>
 <div class="myheader">GIFT OF YS</div>
+<h3 class="heading-track center">YOUR CURRENT GIFT OF YS BALANCE:<span id="curbalance"><?php echo Mage::helper('core')->currency($this->getCurrentBalance()); ?></span></h3>
+<table class="checkndredeem">
+    <tr>
+        <td>
+            <h3 class="heading-track">ADD GIFT OF YS TO YOUR ACCOUNT.</h3>
+            <p>Enter your Gift of YS Code in the field below to redeem your card.</p>
+            <form name="giftcardForm" id="cardredeemform" action="<?php echo $this->getUrl('customer/giftcards/apply') ?>" method="post">
+                <table class="myaccount-redeem-giftcard">
+                    <tr>
+                        <td>
+                            <table id="redeem">
+                                <tr>
+                                    <td class="label">
+                                        <label for="gfr1">Gift of YS Code</label>
+                                    </td>
+                                    <td class="inputholder">
+                                        <input type="text" id="gfr1" />
+                                    </td>
+                                    <td class="dash">
+                                        -
+                                    </td>
+                                    <td class="inputholder">
+                                        <input type="text" id="gfr2" />
+                                    </td>
+                                    <td class="dash">
+                                        -
+                                    </td>
+                                    <td class="inputholder">
+                                        <input type="text" id="gfr3" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="errortext" colspan="6">
+                                        <div>Gift Card Code is required.</div>
+                                        <?php
+                                            if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false)
+                                            {
+                                                ?>
+                                                    <div style="display: block;"><?php echo strip_tags(Mage::getSingleton('core/session')->getGlobalMessage()); ?></div>            
+                                                <?php
+                                            }
+                                        ?>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td style="padding-left: 5px;">
+                            <button type="submit" title="<?php echo $this->__('Redeem') ?>" class="button btn-addtoaccount" value="<?php echo $this->__('Redeem') ?>"><span><span><?php echo $this->__('Redeem') ?></span></span></button>
+                            <input style="display: none;" id="giftcard_code" name="giftcard_code" value="" class="requiredfield" defaulterrormsg="Gift Card Code is required" type="text" />
+                        </td>
+                    </tr>
+                </table>
+                </form>
+        </td>
+        <td>
+            <h3 class="heading-track">CHECK BALANCE</h3>
+            <p>Enter your Gift of YS code in the field below to check your balance.</p>
+            <form id="cardbalanceform">
+            <table class="redeem-giftcard">
+                <tbody><tr>
+                    <td>
+                        <table class="gfredeem">
+                            <tbody><tr>
+                                <td class="label">
+                                    <label for="gf1">Gift of YS Code</label>
+                                </td>
+                                <td class="inputholder">
+                                    <input type="text" id="gf1" />
+                                </td>
+                                <td class="dash">
+                                    -
+                                </td>
+                                <td class="inputholder">
+                                    <input type="text" id="gf2" />
+                                </td>
+                                <td class="dash">
+                                    -
+                                </td>
+                                <td class="inputholder">
+                                    <input type="text" id="gf3" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" class="errortext">
+                                    <div>Gift Card Code is required.</div>
+                                                                            </td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+                    <td style="padding-left: 5px;">
+                        <button value="Redeem" class="button btn-check" title="Redeem" type="submit"><span><span>Redeem</span></span></button>
+                        <input type="text" placeholder="8VE6C-ST11X-RX1LA" name="cardno" id="cardno" style="display: none;">
+                    </td>
+                </tr>
+            </tbody></table>  
+            </form>
+        </td>
+    </tr>
+</table>
+<?php /*
 <div style="margin-top : 30px;">
 <h3 class="heading-track">ADD GIFT OF YS TO YOUR ACCOUNT. CURRENT BALANCE: <span id="curbalance"><?php echo Mage::helper('core')->currency($this->getCurrentBalance()); ?></span></h3>
 </div>
-<form name="giftcardForm" id="cardredeemform" action="<?php echo $this->getUrl('customer/giftcards/apply') ?>" method="post">
 <div class="backlink">
     <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account">&lt; Back</a>
 </div>
+<form name="giftcardForm" id="cardredeemform" action="<?php echo $this->getUrl('customer/giftcards/apply') ?>" method="post">
 <table class="myaccount-redeem-giftcard">
     <tr>
         <td>
@@ -57,36 +172,6 @@ ul.messages
             <input style="display: none;" id="giftcard_code" name="giftcard_code" value="" class="requiredfield" defaulterrormsg="Gift Card Code is required" type="text" />
         </td>
     </tr>
-    <?php /*
-    <tr>
-        <td>
-            <table class="inputtable">
-                <tr>
-                    <td class="label"><label for="giftcard_code"><?php echo $this->__('Gift Card Code') ?></label></td>
-                    <td class="inputholder">
-                        <input id="giftcard_code" name="giftcard_code" value="" class="requiredfield" defaulterrormsg="Gift Card Code is required" type="text" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="errortext" colspan="2">
-                        <div>Gift Card Code is required.</div>
-                        <?php
-                            if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false)
-                            {
-                                ?>
-                                    <div style="display: block;"><?php echo strip_tags(Mage::getSingleton('core/session')->getGlobalMessage()); ?></div>            
-                                <?php
-                            }
-                        ?>
-                    </td>
-                </tr>
-            </table>
-        </td>
-        <td>
-            <button type="submit" title="<?php echo $this->__('Redeem') ?>" class="button btn-redeem" value="<?php echo $this->__('Redeem') ?>"><span><span><?php echo $this->__('Redeem') ?></span></span></button>
-        </td>
-    </tr>
-    */ ?>
 </table>
 </form>
 
@@ -132,6 +217,29 @@ ul.messages
     </tbody></table>  
     </form>
 </div>
+*/ ?>
+
+<div class="goy-image-div">
+    <img src="<?php echo $this->getSkinUrl('images/title-bg.png'); ?>" class="dividerline" />
+    <table>
+        <tr>
+            <td>
+                <h3 class="heading-track">GIVE THE GIFT OF YS</h3>
+                <p>Buy the Gift of YS for your friends and family.</p>    
+            </td>
+            <td style="vertical-align: middle;">
+                <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>gift_of_ys">
+                <div class="givegift spbutton" imageurl="<?php echo $this->getSkinUrl('images/give_gift_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/give_gift_on.png'); ?>"></div>
+                </a>
+            </td>
+        </tr>
+    </table>
+    <img alt="The Gift of YS" src="<?php echo $this->getSkinUrl('images/gift_of_ys.png'); ?>" class="shareit" />
+    <img src="<?php echo $this->getSkinUrl('images/title-bg.png'); ?>" class="dividerline" />
+</div>
+
+
+<?php return; ?>
 
 <div style="margin-top : 50px;">
     <h3 class="heading-track">FROM ONE SMOGI TO ANOTHER</h3>
