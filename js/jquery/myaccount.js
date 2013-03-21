@@ -1,6 +1,11 @@
 var _refercount = 1;
 _usesecureurl = true;
 jQuery(document).ready(function($){
+    
+    $("button.gotologin").click(function(){
+        window.location = securehomeUrl + 'customer/account/login?goto=cart';
+    });
+    
     $("#login-form").submit(function(){
         return validateLoginForm();
         //alert($("#login-form").serialize());
