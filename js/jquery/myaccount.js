@@ -313,11 +313,11 @@ function validateGiftCardForm(tbl)
     });
     if(flag == 3)
     {
-        tbl.find('td.errortext div').html('GIFT of YS Code is required.').fadeIn('fast');
+        tbl.find('td.errortext div').html('Gift of YS Code is required.').fadeIn('fast');
     }
     else if(flag > 0)
     {
-        tbl.find('td.errortext div').html('Invalid GIFT of YS Code.').fadeIn('fast');
+        tbl.find('td.errortext div').html('Invalid Gift of YS Code.').fadeIn('fast');
     }
     if(flag == 0)
         flag = true;
@@ -354,11 +354,11 @@ function validateGiftCardRedeemForm()
     });
     if(flag == 3)
     {
-        tbl.find('td.errortext div').html('GIFT of YS Code is required.').fadeIn('fast');
+        tbl.find('td.errortext div').html('Gift of YS Code is required.').fadeIn('fast');
     }
     else if(flag > 0)
     {
-        tbl.find('td.errortext div').html('Invalid GIFT of YS Code.').fadeIn('fast');
+        tbl.find('td.errortext div').html('Invalid Gift of YS Code.').fadeIn('fast');
     }
     if(flag == 0)
         flag = true;
@@ -628,7 +628,7 @@ function getcardbalance()
             else
             {
                 //alert(result.message);
-                jQuery("table.gfredeem").find('td.errortext div').html('Invalid GIFT of YS Code.').fadeIn('fast');
+                jQuery("table.gfredeem").find('td.errortext div').html('Invalid Gift of YS Code.').fadeIn('fast');
             }
         }
     });
@@ -650,7 +650,7 @@ function redeemcard()
             if(result.result == 'success')
             {
                 jQuery("#curbalance").html('$' + result.balance);
-                alert('GIFT of YS Card successfully redeemed.');
+                alert('Gift of YS Card successfully redeemed.');
             }
             else
             {

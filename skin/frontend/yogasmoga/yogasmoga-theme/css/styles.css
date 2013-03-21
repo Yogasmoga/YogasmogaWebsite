@@ -1306,7 +1306,6 @@ span.caddress span.ccon {display:block;}
 .cart-table .btn-update span { border-color:#406a83; background:#618499; }
 .cart-table .btn-update,
 .cart-table .btn-empty { float:right; }
-.cart-table .btn-update { margin-left:10px; }
 
 /* Shopping Cart Collateral boxes */
 .cart .cart-collaterals { padding:25px 0 0; }
@@ -1349,7 +1348,7 @@ span.caddress span.ccon {display:block;}
 .cart .totals tfoot td { padding-top:5px; padding-bottom:5px; }
 .cart .totals tfoot th strong,
 .cart .totals tfoot td strong { font-size:15px; }
-.cart .totals .checkout-types { font-size:13px; padding:8px 15px 15px; text-align:right; }
+.cart .totals .checkout-types { font-size:13px; padding:8px 10px 15px 15px; text-align:right; }
 .cart .totals .checkout-types li { clear:both; margin:10px 0; }
 
 /* Options Tool Tip */
