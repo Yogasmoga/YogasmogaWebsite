@@ -716,6 +716,7 @@ div.goy-image-div
 {
     margin : 0 auto;
     width : 710px;
+    text-align: center;
 }
 div.goy-image-div img.shareit
 {
@@ -723,7 +724,7 @@ div.goy-image-div img.shareit
 }
 div.goy-image-div table
 {
-    margin-left : 10px;
+    margin-left : 66px;
     margin-top : 50px;
 }
 div.givegift

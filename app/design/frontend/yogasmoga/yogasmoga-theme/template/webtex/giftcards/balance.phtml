@@ -12,6 +12,7 @@ ul.messages
 {
     max-width: 850px;
     min-width : 850px;
+    width : 850px;
     margin : 0 auto;
 }
 div.pager
@@ -21,7 +22,7 @@ div.pager
 }
 </style>
 <div class="myheader">GIFT OF YS</div>
-<h3 class="heading-track center">YOUR CURRENT GIFT OF YS BALANCE:<span id="curbalance"><?php echo Mage::helper('core')->currency($this->getCurrentBalance()); ?></span></h3>
+<h3 class="heading-track center">YOUR CURRENT GIFT OF YS BALANCE: <span id="curbalance"><?php echo Mage::helper('core')->currency($this->getCurrentBalance()); ?></span></h3>
 <table class="checkndredeem">
     <tr>
         <td>
