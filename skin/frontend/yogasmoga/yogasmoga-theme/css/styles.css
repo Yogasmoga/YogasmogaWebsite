@@ -2910,6 +2910,7 @@ table.staticproductgrid div.item td.productimage img.active
 {
     width : 217px;
     margin-left : 20px;
+    margin-top : 5px;
 }
 
 #myminicart div.subtotal

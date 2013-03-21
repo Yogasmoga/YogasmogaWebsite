@@ -265,3 +265,46 @@ div.cart p.cart-item
 {
     background: transparent;
 }
+#giftcard-form td
+{
+    padding : 0;
+    border-top : none;
+}
+#giftcard-form table.gfredeem td.label
+{
+    padding-right : 20px;
+}
+#giftcard-form table.gfredeem td.dash
+{
+    padding : 0 5px;
+}
+#giftcard-form table.redeem-giftcard
+{
+    margin-top : 20px;
+}
+#shopping-cart-table.data-table tfoot td
+{
+    border-right : none;
+}
+button.btn-redeem span
+{
+    width : 93px;
+    height : 29px;
+    background-image: url('../images/redeem_off.png');
+    padding : 0;
+    border : none;
+    background-color: transparent;
+}
+button.btn-redeem span span
+{
+    display : none;
+}
+button.btn-redeem:active span
+{
+    background-image: url('../images/redeem_on.png');
+}
+button.button.btn-redeem
+{
+    margin-left : 5px;
+    margin-top : -7px;
+}

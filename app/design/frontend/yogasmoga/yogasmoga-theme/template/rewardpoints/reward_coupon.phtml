@@ -118,7 +118,7 @@
                 <?php else:?>
                     <input placeholder="Enter Amount Here" <?php if($point_details['full_use']):?>type="hidden"<?php else:?>type="text"<?php endif;?> value="<?php if($point_details['full_use']):?><?php echo $point_details['max_use'];?><?php endif;?>"  name="points_to_be_used" id="points_to_be_used" class="input-text" />
                     <div class="errortext" id="points_error">
-                        <?php echo strip_tags($this->getMessagesBlock()->getGroupedHtml()); ?>
+                        <?php //echo strip_tags($this->getMessagesBlock()->getGroupedHtml()); ?>
                     </div>
                 <?php endif;?>
                 <?php if($this->getCustomerPoints() > 0) : ?>

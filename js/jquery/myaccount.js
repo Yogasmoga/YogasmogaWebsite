@@ -136,6 +136,22 @@ jQuery(document).ready(function($){
     $("#discountFormPoints2").submit(function(){
         return validateSmogibuckpoints();
     });
+    
+    $("#giftcard-form").submit(function(){
+        if(validateGiftCardForm($("#giftcard-form table.gfredeem")))
+        {
+            $('#giftcard_use').attr("checked","checked");// .checked = "checkbox";
+            $('#giftcard_use').val('1');//ue = "1";
+            return true;
+        }
+        return false;
+    });
+    
+    //if($("#giftcardActive #giftcard_use:checked").length == 0)
+//    {
+//        $('#giftcard_use').attr("checked","checked");
+//        $("#giftcardActive").submit();
+//    }
 });
 
 function validateSmogibuckpoints()
