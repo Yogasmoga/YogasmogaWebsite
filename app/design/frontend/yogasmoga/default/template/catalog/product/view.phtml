@@ -31,6 +31,13 @@
  * @see Mage_Review_Block_Product_View
  */
 ?>
+<div class="namaskar-overlay1">&nbsp;</div>
+<script type="text/javascript">
+jQuery(window).load(function(){
+	jQuery('body').css('overflow','auto');
+	jQuery('.namaskar-overlay1').fadeOut('slow');
+})
+</script>
 <img style="display:none;" src="<?php echo $this->getSkinUrl('images/zoom_assets/preloader.gif'); ?>" />
 <style type="text/css">
     body{min-width : 1300px;}
@@ -178,9 +185,9 @@
                     if(isset($imgdata['alt']))
                         $alt = $imgdata['alt'];
                     //echo $imageurl;
-                    $smallimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75)->setQuality(100)."|".$alt;
-                    $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(900, 900)->setQuality(100)."|".$alt;
-                    $zoomimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->setQuality(100)."|".$alt;
+                    $smallimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75)->setQuality(90)."|".$alt;
+                    $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(900, 900)->setQuality(90)."|".$alt;
+                    $zoomimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->setQuality(90)."|".$alt;
                     
                     $imagePath = substr($zoomimageurl, 1);
                     $dirImg = Mage::getBaseDir().str_replace("/",DS,strstr($imagePath,'/media'));
@@ -558,14 +565,14 @@
 					<button style="display: none;" id="preorderitem" title="Preorder" class="button cbtn btn-pre"><span>Preorder<span></span></span> </button> -->
                     <div id="orderitem" class="addtobag spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_on.png'); ?>"></div>
                     <div id="preorderitem" class="preorderitem spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_now_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_now_on.png'); ?>">
-                    <div id="preorderinfo">
-                        <?php echo Mage::getModel('core/variable')->loadByCode('preorder_message_detail')->getValue('html'); ?>
-                        <img class="closeinfo" src="<?php echo $this->getSkinUrl('images/cross_red.png'); ?>" />
-                    </div>
                     </div>
                     <div class="producterrorcontainer">
                         <div class="errormsg">
                         </div>
+						<div id="preorderinfo">
+							<?php echo Mage::getModel('core/variable')->loadByCode('preorder_message_detail')->getValue('html'); ?>
+							<img class="closeinfo" src="<?php echo $this->getSkinUrl('images/cross_red.png'); ?>" />
+						</div>
                         <img id="preorderhelp" src="<?php echo $this->getSkinUrl('images/help.png'); ?>" />
                     </div>
                     <a class="addtowishlist" href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productid; ?>/">ADD TO WISH LIST +</a>
@@ -597,7 +604,7 @@
         //if($_image->getLabel() == "Fabric_Technology_Image")
         {
             $ftimage = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
-            $ftimagespcl = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(100);
+            $ftimagespcl = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(90);
             ?>
                 <script type="text/javascript">
                     _fabrictechnologyimagespcl = '<?php echo $ftimagespcl; ?>';

@@ -1,4 +1,5 @@
 var _hovercollection = new Array();
+var _rotate;
 
 jQuery(document).ready(function($){
     InitializeHoverCollection();
@@ -27,11 +28,11 @@ jQuery(document).ready(function($){
         }
         if($("div#" + _currentproductid + " td.productimage img.rotable").eq(temp).length > 0)
         {
-            $("div#" + _currentproductid + " td.productimage img").removeClass('active');
-            $("div#" + _currentproductid + " td.productimage img.rotable").eq(temp).addClass('active');
+            $("div#" + _currentproductid + " td.productimage img").removeClass('active').stop(true,true).fadeOut(300, "easeInOutSine");
+            $("div#" + _currentproductid + " td.productimage img.rotable:eq("+temp+")").addClass('active').stop(true,true).fadeIn(300, "easeInOutSine");
             
-            $("div#" + _currentproductid + " td.animateimage img").hide().removeClass('active');
-            $("div#" + _currentproductid + " td.animateimage img").eq(temp).show().addClass('active');
+            $("div#" + _currentproductid + " td.animateimage img").hide(0).removeClass('active');
+            $("div#" + _currentproductid + " td.animateimage img:eq("+temp+")").show(0).addClass('active');
         }
     });
     
@@ -55,28 +56,55 @@ jQuery(document).ready(function($){
             if(!_rotateprimages)
                 return;
             var idd = jQuery(this).parents("div.item:first").attr("id");
-            var pelement = $(this).parents("div.item:first"); 
-            togglehover(idd, true);
+			_rotate = 	setTimeout(function(){
+							gridSlide(idd)
+						}, 100)
+			
+            //var pelement = $(this).parents("div.item:first"); 
+            //togglehover(idd, true);
             
-            pelement.find("td.animateimage img.inactive").hide();
-            pelement.find("td.animateimage img.active").show();
+            //pelement.find("td.animateimage img.inactive").hide();
+            //pelement.find("td.animateimage img.active").show();
              //setTimeout(function(){ shownextimage(idd); }, 1000);
             //console.log(_hovercollection);
         },
         function(){
             if(!_rotateprimages)
                 return;
+			var animlines = jQuery(this).parents("div.item:first").find('td.animateimage');
+			clearInterval(_rotate);
+			jQuery(this).find('div').find('img:gt(0)').removeClass('active').stop(true,true).fadeOut(300, "easeInOutSine");
+			jQuery(this).find('div').find('img:first').addClass('active').stop(true,true).fadeIn(300, "easeInOutSine");
+			$j('img', animlines).hide(0).removeClass('active');
+			$j('img:first', animlines).show(0).addClass('active');
             //togglehover(jQuery(this).attr("id"), false);
-            togglehover(jQuery(this).parents("div.item:first").attr("id"), false);
-            var pelement = $(this).parents("div.item:first");
+            //togglehover(jQuery(this).parents("div.item:first").attr("id"), false);
+            //var pelement = $(this).parents("div.item:first");
             //$(this).parents("div.item:first").find("td.animateimage img.inactive").show();
-            pelement.find("td.animateimage img").hide();
+            //pelement.find("td.animateimage img").hide();
             //if(pelement.find("td.productimage img").length > 0)
-                pelement.find("td.animateimage img:first").show();
+            //pelement.find("td.animateimage img:first").show();
             //console.log(_hovercollection);
         });   
     }
 });
+function gridSlide(id){
+	var obj = $j("div#"+ id +" td.productimage"),
+		animlines = $j("div#"+ id +" td.animateimage"),
+		cur = obj.find('img.active'),
+		next = cur.next('img'),
+		cindex = cur.index() + 1,
+		ind = obj.find('div').children().length;
+		if(cindex == ind){
+			next = obj.find('img:first');
+			cindex = 0;
+		}
+		next.stop(true,true).fadeIn(300, "easeInOutSine", function(){next.addClass('active')});
+		cur.stop(true,true).fadeOut(300, "easeInOutSine", function(){cur.removeClass('active')});
+		$j('img', animlines).hide(0).removeClass('active');
+		$j('img:eq('+cindex+')', animlines).show(0).addClass('active');
+		_rotate = 	setTimeout(function(){gridSlide(id)}, 1000);
+}
 
 function searchsrcarray(obj, val)
 {

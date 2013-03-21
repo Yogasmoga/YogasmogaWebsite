@@ -27,6 +27,7 @@
 <?php
     function format_bill($html)
     {
+        //return $html;
         //echo "$html";
         $str=$html;
         $str1 = $html;
@@ -44,7 +45,10 @@
         	//$val = substr($str1, $p1+21, $p2);
         	$val = substr($str1, $p1, $p2 + strlen("</span>") - $p1);
         	$val = substr(strip_tags($val), 1);
-        	$val="<span>$</span>".$val;
+            //if(strpos($val,"$") !== false)
+//                $val="<span>$</span>".str_replace("$","-",$val);
+//            else
+        	   $val="<span>$</span>".str_replace("$","-",$val);
         	$str1 = substr($str1, 0, $p1).$val.substr($str1, $p2 + strlen("</span>"));
         	}
         //echo '<hr>'.$str1;
@@ -63,6 +67,12 @@
         }
         
         //echo $str1;
+        $str1 = str_replace("Card,","Card AND", $str1);
+        $str1 = str_replace("Gift Card","GIFT OF YS CARD", $str1);
+        $str1 = str_replace("Discount","", $str1);
+        $str1 = str_replace(")","", $str1);
+        $str1 = str_replace("(","", $str1);
+        
         return $str1;
         //echo substr($str1, $p1, $p2);
     

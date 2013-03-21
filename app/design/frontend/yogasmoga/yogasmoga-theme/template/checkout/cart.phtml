@@ -35,13 +35,37 @@
 //    jQuery(document).ready(function($){
 //        $("li#minicartlink").addClass('selected');
 //    });
+    _oncartpage = true;
 </script>
+<?php
+    //echo Mage::getSingleton('core/session')->getGiftCardActivated().'sdfdsfas';
+    //echo "Gift card active= ".Mage::getSingleton('giftcards/session')->getActive()."<br/>";
+//    echo "Gift Card balance = ".Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId())."<br/>";
+//    echo "Smogi buck used = ".Mage::helper('rewardpoints/event')->getCreditPoints()."<br/>";
+    
+    if(Mage::helper('customer')->isLoggedIn())
+    {
+        if(!Mage::getSingleton('core/session')->getGiftCardActivated())
+        {
+            if(Mage::getSingleton('giftcards/session')->getActive() == "0" || Mage::getSingleton('giftcards/session')->getActive() == "")
+            {
+                Mage::getSingleton('core/session')->setGiftCardActivated('true');
+                Mage::getSingleton('giftcards/session')->setActive('1');
+                Mage::getSingleton('checkout/cart')->getQuote()->getShippingAddress()->setCollectShippingRates(true);
+                Mage::getSingleton('checkout/cart')->getQuote()->collectTotals()->save();
+                Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");   
+            }
+        }   
+    }
+?>
+
+
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" media="all" />
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myaccount.js"></script>
 <div class="cart">
+    <div class="myheader">SHOPPING BAG</div>
     <div class="page-title">
-        <h1><?php echo $this->__('Shopping Bag') ?></h1>
-		<p class="cart-item">
+        <p class="cart-item">
 			<?php $count = $this->helper('checkout/cart')->getSummaryCount();
 			$total = $this->helper('checkout/cart')->getQuote()->getGrandTotal();if($count==1){
 				echo $this->__('1 ITEM',$count);

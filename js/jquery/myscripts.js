@@ -40,7 +40,7 @@ jQuery(document).ready(function($){
 //    });
     //console.log(_productcolorinfo);
 	var popOpen = false;
-	jQuery('.poplink').live('click',function(e){
+	jQuery('.poplink').live('hover click',function(e){
 		e.preventDefault();
 		var target = $j(this).attr('href');
 		$j(target).fadeIn(400);

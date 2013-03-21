@@ -50,12 +50,15 @@ class Mycustommodules_Myessentials_MylinkController extends Mage_Core_Controller
         $customerId = Mage::getSingleton('customer/session')->getCustomerId();
         $giftcardCode = trim((string) $this->getRequest()->getParam('giftcard_code'));
         $card = Mage::getModel('giftcards/giftcards')->load($giftcardCode, 'card_code');
-
-    	if ($card->getId() && $card->getCardStatus() == 2) {
+        if ($card->getId() && $card->getCardStatus() == 2) {
             $card->activateCardForCustomer($customerId);
-            echo "success";
+            $arr['result'] = 'success';
+            $arr['balance'] = Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomerId());
+            echo json_encode($arr);
     	} else {
-    	   echo "Invalid GIFT of YS Card Code";
+           $arr['result'] = 'Invalid Gift of YS Card Code';
+           //$arr['balance'] = Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomerId());
+           echo json_encode($arr);
     	}
     }
 }

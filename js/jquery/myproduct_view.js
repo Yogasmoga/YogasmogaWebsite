@@ -55,6 +55,7 @@ jQuery(document).ready(function($){
     });
     
     $("table.zoomproductdetail table.zoomsmallimagecontainer td:not(.selectedimage)").live("click", function(){
+		$('div#zoomoptions').fadeOut(50);
         jQuery("table.zoomproductdetail table.zoomsmallimagecontainer td").removeClass('selectedimage');
         $(this).addClass('selectedimage');
         jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage1' zoomurl='" + $(this).attr("zoomimageurl") + "' src='" + $(this).attr("bigimageurl") + "' alt='" + $(this).find("img:first").attr("alt") + "' style='display:none;' />");
@@ -153,7 +154,8 @@ jQuery(document).ready(function($){
     $("td#zoomedproductimage img[zoomurl]").live('click', function(){
         jQuery("div#zoompopup td#zoomedproductimage").html("<img id='zoomedimage' src='" + $(this).attr("zoomurl") + "' alt='" + $(this).attr("alt") + "' />");
         $("img#zoomedimage").on('load', function(){
-			StartZooming();	
+			StartZooming();
+			$('div#zoomoptions').fadeIn(400);
 		});
     });
     

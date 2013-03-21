@@ -380,7 +380,8 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
             //$output .= "</a>";
             $productcount++;
         }
-        $output .= "<div class='bottomlinks'> <div class='shoppingcartlink'> <a href='".$minidetails['cartlink']."'>See all items</a> </div> <div class='subtotal'> <table> <tr> <td class='anchor'> SUBTOTAL </td> <td class='totalprice'> ".$minidetails['subtotal']." </td> </tr> </table> </div> <a href='".$minidetails['checkoutlink']."'> <div class='minicheckout spbutton' imageurl='".$this->getSkinUrl('images/checkout_off.png')."' downimageurl='".$this->getSkinUrl('images/checkout_on.png')."'></div></a></div>";
+        //$output .= "<div class='bottomlinks'><a href='".$minidetails['cartlink']."'><div class='gotoshoppingbag spbutton' imageurl='".$this->getSkinUrl('images/go_to_shopping_bag_01off.png')."' downimageurl='".$this->getSkinUrl('images/go_to_shopping_bag_01on.png')."'></div></a> <div class='subtotal'> <table> <tr> <td class='anchor'> SUBTOTAL </td> <td class='totalprice'> ".$minidetails['subtotal']." </td> </tr> </table> </div> <a href='".$minidetails['checkoutlink']."'> <div class='minicheckout spbutton' imageurl='".$this->getSkinUrl('images/checkout_off.png')."' downimageurl='".$this->getSkinUrl('images/checkout_on.png')."'></div></a></div>";
+        $output .= "<div class='bottomlinks'><div class='subtotal'> <table> <tr> <td class='anchor'> SUBTOTAL </td> <td class='totalprice'> ".$minidetails['subtotal']." </td> </tr> </table> </div> <a href='".$minidetails['cartlink']."'> <div class='minicheckout spbutton' imageurl='".$this->getSkinUrl('images/checkout_off.png')."' downimageurl='".$this->getSkinUrl('images/checkout_on.png')."'></div></a></div>";
         return $output;
     }
     
@@ -407,6 +408,28 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
             }
         }
         return "";
+    }
+    
+    function getDiscountsummary()
+    {
+        //$rates = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->collectShippingRates()->getGroupedAllShippingRates();
+//         foreach ($rates as $carrier) {
+//            foreach ($carrier as $rate) {
+//                print_r($rate->getData());
+//            }
+//        }
+        $summary = "";
+        if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()) > 0)
+            $summary .= "Gift of YS Card";
+        if(Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
+        {
+            if(strlen($summary) > 0)
+                $summary .= " and <br/>";
+            $summary .= Mage::helper('rewardpoints/event')->getCreditPoints()." SMOGI Bucks used";
+        }
+        if(strlen($summary) == 0)
+            $summary = "Discount";
+        return $summary;
     }
     
     public function getCartSummaryAction()
@@ -466,7 +489,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 {
                     ?>
                         <tr>
-                            <td>Discount</td>
+                            <td><?php echo $this->getDiscountsummary(); ?></td>
                             <td id="discounttotal" class="total">
                                 <?php echo "-$".number_format((float)($discount), 2, '.', ''); ?>
                             </td>

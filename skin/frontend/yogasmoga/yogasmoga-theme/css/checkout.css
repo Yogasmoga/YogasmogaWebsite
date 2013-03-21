@@ -124,6 +124,15 @@ table.co-ov-table
     margin-right: auto;
     width: 573px;
 }
+table.co-ov-table tr.last td.a-right.total
+{
+    white-space : nowrap;
+}
+table.co-ov-table tr.first td.a-left.total
+{
+    white-space : nowrap;
+    text-align: right !important;
+}
 table.co-ov-table thead th
 {
     font-family:gothambook;
@@ -213,7 +222,7 @@ table.co-ov-table th.price,table.co-ov-table td.price
 }
 table.co-ov-table td.co-ov-primg
 {
-    width : 140px;
+    width : 80px;
     min-height : 75px;
 }
 table.co-ov-table tr.pritem td
@@ -444,10 +453,14 @@ div.input-box select
     display:none !important;
 }
 #co-shippingmethod-form p{ margin:-20px 0 0px; padding-bottom:20px;}
-label.poplink{cursor:help;}
+label.poplink{cursor:pointer;}
 label.poplink:hover{color:#d90d3d;}
 
 div#shippingsummary td#ordersubtotal
 {
     padding-left : 5px;
+}
+#myminicart div.minicartitems img.delete
+{
+    display: none !important;
 }

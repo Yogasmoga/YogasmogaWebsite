@@ -207,6 +207,10 @@ body.rewardpoints-index-referral{background:url(../images/refer-bg.png) 50% 80px
 .box-invite h3,
 h3.heading-track,
 .refer-box h3{font-family:gotham, arial; font-size:16px; text-transform:uppercase; font-weight:normal;color : black;}
+h3.heading-track.center
+{
+    text-align: center;
+}
 .box-invite h3 span{display:block; font-size:12px; text-transform:none;}
 .refer-box .share-link{border-width:0 0 1px; border-color:#000; border-style:solid; font-family:gotham-l, Arial; height:20px; width:70%; font-size:11px; margin-right:20px; background:none;}
 .refer-box  {width:45%;}
@@ -260,4 +264,55 @@ div.cart p.cart-item
 .cart-table tr.nohover:hover
 {
     background: transparent;
+}
+#giftcard-form td
+{
+    padding : 0;
+    border-top : none;
+}
+#giftcard-form table.gfredeem td.label
+{
+    padding-right : 20px;
+}
+#giftcard-form table.gfredeem td.dash
+{
+    padding : 0 5px;
+}
+#giftcard-form table.redeem-giftcard
+{
+    margin-top : 20px;
+}
+#shopping-cart-table.data-table tfoot td
+{
+    border-right : none;
+}
+button.btn-redeem span
+{
+    width : 93px;
+    height : 29px;
+    background-image: url('../images/redeem_off.png');
+    padding : 0;
+    border : none;
+    background-color: transparent;
+}
+button.btn-redeem span span
+{
+    display : none;
+}
+button.btn-redeem:active span
+{
+    background-image: url('../images/redeem_on.png');
+}
+button.button.btn-redeem
+{
+    margin-left : 5px;
+    margin-top : -7px;
+}
+div.gift-card p
+{
+    font-style: normal;
+}
+#shopping-cart-totals-table td.a-left
+{
+    text-align: right !important;
 }

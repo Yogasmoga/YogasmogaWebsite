@@ -171,7 +171,7 @@ a.forgot-link:hover
 }
 .accountbg
 {
-    background-image : url('../images/customer/myaccount_bg.png');
+    background-image : url('../images/customer/myaccount_bg.jpg');
     background-size : cover;
     background-position: center top;
     background-repeat: repeat-y;
@@ -337,6 +337,15 @@ button.button.btn-redeem span{
     background:url(../images/redeem_off.png) 0 0 no-repeat; 
     border:0;
 }
+button.button.btn-addtoaccount span{
+    padding:0; 
+    width:137px; 
+    text-indent:-999em; 
+    height:29px; 
+    margin:0; 
+    background:url(../images/add_to_account_off.png) 0 0 no-repeat; 
+    border:0;
+}
 button.button.btn-check span{
     padding:0; 
     width:93px; 
@@ -346,13 +355,16 @@ button.button.btn-check span{
     background:url(../images/check_off.png) 0 0 no-repeat; 
     border:0;
 }
+button.button.btn-addtoaccount:active span{
+    background:url(../images/add_to_account_on.png) 0 0 no-repeat;
+}
 button.button.btn-redeem:active span{
     background:url(../images/redeem_on.png) 0 0 no-repeat;
 }
 button.button.btn-check:active span{
     background:url(../images/check_on.png) 0 0 no-repeat;
 }
-button.button.btn-redeem
+button.button.btn-redeem, button.button.btn-addtoaccount
 {
     margin-left : 15px;
     margin-top : -7px;
@@ -643,8 +655,7 @@ table.referredfriendslist td.status
 }
 table.myaccount-redeem-giftcard
 {
-    margin-left : auto;
-    margin-right : auto;
+    margin-top: 30px;
 }
 form#createcardform table.twocolumn533 table.inputtable
 {
@@ -670,4 +681,57 @@ form#referfriend table.inputtable
 form#referfriend td.result
 {
     display : none;
+}
+form#cardbalanceform table.redeem-giftcard
+{
+    margin-top : 30px;
+}
+.goy-banner {
+    display: block;
+    padding: 30px 0 10px;
+    text-align: center;
+}
+.givegoys
+{
+    background-image : url('../images/give_a gift_of_YS_off.png');
+    background-repeat : no-repeat;
+    width : 185px;
+    height: 29px;
+    float : right;
+    margin-right : 188px;
+}
+.addtoaccount
+{
+    background-image : url('../images/add_to_account_off.png');
+    background-repeat : no-repeat;
+    width : 137px;
+    height: 29px;
+}
+table.checkndredeem
+{
+    margin : 50px 0;
+    width : 1000px;
+}
+div.goy-image-div
+{
+    margin : 0 auto;
+    width : 710px;
+    text-align: center;
+}
+div.goy-image-div img.shareit
+{
+    margin : 35px 0;
+}
+div.goy-image-div table
+{
+    margin-left : 66px;
+    margin-top : 50px;
+}
+div.givegift
+{
+    width : 156px;
+    height : 29px;
+    background-image: url('../images/give_gift_off.png');
+    background-repeat: no-repeat;
+    margin-left : 15px;
 }

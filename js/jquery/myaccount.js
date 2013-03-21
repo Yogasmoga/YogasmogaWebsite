@@ -59,7 +59,7 @@ jQuery(document).ready(function($){
     
     $("#giftcardformmyaccount").submit(function(){
         
-        return validateGiftCardForm();
+        return validateGiftCardForm($("#giftcardformmyaccount table.gfredeem"));
         //return false;
     });
     $("div#addanotherreferral").click(function(){
@@ -112,7 +112,7 @@ jQuery(document).ready(function($){
     });
     
     $("#cardbalanceform").submit(function(){
-        if(validateGiftCardForm())
+        if(validateGiftCardForm($("#cardbalanceform table.gfredeem")))
         {
             _addingtocart = true;
             getcardbalance();   
@@ -136,6 +136,22 @@ jQuery(document).ready(function($){
     $("#discountFormPoints2").submit(function(){
         return validateSmogibuckpoints();
     });
+    
+    $("#giftcard-form").submit(function(){
+        if(validateGiftCardForm($("#giftcard-form table.gfredeem")))
+        {
+            $('#giftcard_use').attr("checked","checked");// .checked = "checkbox";
+            $('#giftcard_use').val('1');//ue = "1";
+            return true;
+        }
+        return false;
+    });
+    
+    //if($("#giftcardActive #giftcard_use:checked").length == 0)
+//    {
+//        $('#giftcard_use').attr("checked","checked");
+//        $("#giftcardActive").submit();
+//    }
 });
 
 function validateSmogibuckpoints()
@@ -208,13 +224,15 @@ function sharereferlink(sharetype, url)
     switch(sharetype)
     {
     case 'mail':
-        window.location = "mailto:?Subject=" + encodeURIComponent("My Referral link!!") + "&body=" + encodeURIComponent("My referral link on YOGASMOGA : " + shareurl);
+        window.location = "mailto:?Subject=" + encodeURIComponent("YOGASMOGA | Refer-A-Friend") + "&body=" + encodeURIComponent("Check out YOGASMOGA. They make things for Life. One breath at a time at " + shareurl);
         break;
     case 'facebook':
-        window.open('http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(shareurl) + '&p[images][0]=' + _curshareimgurl + '&p[title]=My Referral Link' + '&p[summary]=My Referral Link on YOGASMOGA','Share_on_Faceook','toolbar=0,status=0,menubar=0,width=600,height=300,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 300) / 2);
+        window.open('http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(shareurl) + '&p[images][0]=' + _curshareimgurl + '&p[title]=YOGASMOGA | Refer-A-Friend' + '&p[summary]=Check out YOGASMOGA. They make things for Life. One breath at a time.','Share_on_Faceook','toolbar=0,status=0,menubar=0,width=600,height=300,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 300) / 2);
         break;
     case 'twitter':
-        window.open('http://www.twitter.com/share?url=' + encodeURIComponent(shareurl),'Share_on_Twitter','toolbar=0,status=0,menubar=0,width=600,height=450,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 450) / 2);
+        //window.open('http://www.twitter.com/share?url=' + encodeURIComponent(shareurl),'Share_on_Twitter','toolbar=0,status=0,menubar=0,width=600,height=450,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 450) / 2);
+        _twdesc = "Check out YOGASMOGA. They make things for Life. One breath at a time";
+        window.open('http://www.twitter.com/home?status=' + _twdesc + ' via @yogasmoga at ' + encodeURIComponent(shareurl),'Share_on_Twitter','toolbar=0,status=0,menubar=0,width=600,height=450,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 450) / 2);
         break;
     case 'pinterest':
         window.open('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(shareurl) + '&media=' + _curshareimgurl + '&description=Yogasmoga Video','Share_on_Pinterest','toolbar=0,status=0,menubar=0,width=600,height=520,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 520) / 2);
@@ -280,10 +298,10 @@ function referafriend(name, email, id)
     });
 }
 
-function validateGiftCardForm()
+function validateGiftCardForm(tbl)
 {
     //jQuery("table.gfredeem td.inputholder input").removeClass('error');
-    var tbl = jQuery("table.gfredeem");
+    //var tbl = jQuery("table.gfredeem");
     tbl.find('td.errortext div').fadeOut('fast');
     var flag = 0;
     tbl.find('input[type="text"]').each(function(){
@@ -628,13 +646,15 @@ function redeemcard()
         url : callurl,
         data : jQuery("#cardredeemform").serialize(),
         success : function(result){
-            if(result == 'success')
+            result = eval('(' + result + ')');
+            if(result.result == 'success')
             {
+                jQuery("#curbalance").html('$' + result.balance);
                 alert('GIFT of YS Card successfully redeemed.');
             }
             else
             {
-                jQuery("table#redeem").find('td.errortext div').html(result).fadeIn('fast');
+                jQuery("table#redeem").find('td.errortext div').html(result.result).fadeIn('fast');
             }
         }
     });

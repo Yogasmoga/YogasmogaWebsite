@@ -89,7 +89,7 @@
 <body  class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>" style="overflow:hidden; margin-right:17px;">
 <?php echo $this->getChildHtml('after_body_start') ?>
 <div class="wrapper">
-<div class="page-overlay" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999; overflow-y:scroll;">&nbsp;</div>
+<div class="page-overlay" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999; overflow-y:scroll; background-image : url('<?php echo $this->getSkinUrl('images/loading.gif'); ?>'); background-position : center 35%;background-repeat: no-repeat;">&nbsp;</div>
     <?php echo $this->getChildHtml('global_notices') ?>
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
@@ -264,7 +264,7 @@
 					<div class="opbox cdb">
 						<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/parallax/cdb.png" alt="Colors that Won't Bleed" />
 						<h3 class="heading">colors that<br/><em>won't</em><br/>bleed</h3>
-						<p>Color - it highlights your assets, brightens your mood. And we want that to last. But oh-so often, colors fade so quickly - just ask our competitors. That-s about to change. Our colors go through the toughest tests to make sure they last for the long haul - warm or cold water; we test to prevent even minimal color bleed. Because we have a true love for color, and you, that won't fade away. </p>
+						<p>Color - it highlights your assets, brightens your mood. And we want that to last. But oh-so often, colors fade so quickly - just ask our competitors. That's about to change. Our colors go through the toughest tests to make sure they last for the long haul - warm or cold water; we test to prevent even minimal color bleed. Because we have a true love for color, and you, that won't fade away. </p>
 					</div>
 				</div>
             </div>
@@ -365,7 +365,7 @@
                                                                 }
                                                             ?>
                                                             "
-                                                             src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(100); ?>"  alt="<?php if(isset($imgdata['alt'])) { echo $imgdata['alt']; } ?>" />
+                                                             src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>"  alt="<?php if(isset($imgdata['alt'])) { echo $imgdata['alt']; } ?>" />
                                                             <?php
                                                             $index++;
                                                         } 
