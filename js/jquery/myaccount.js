@@ -628,7 +628,7 @@ function getcardbalance()
             _addingtocart = false;
             if(result.status == 'success')
             {
-                alert("Your balance is :" + result.balance);
+                alert("Your balance is: $" + result.balance);
             }
             else
             {
