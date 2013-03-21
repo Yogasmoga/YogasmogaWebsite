@@ -81,7 +81,7 @@
         <form method="post" action="<?php echo $this->getUrl('*/*/giftcardActive'); ?>" name="giftcardActive" id="giftcardActive">
         <div class="input-box">
             <input type="checkbox" value="1" name="giftcard_use" id="giftcard_use" class="checkbox" onclick="document.forms['giftcardActive'].submit()" <?php echo Mage::getSingleton('giftcards/session')->getActive() ? 'checked="checked"' : '' ?> />
-            <label for="giftcard_use"><?php echo $this->__('Redeem my Gift of YS Card. Balance : '); ?>&nbsp;<?php echo Mage::helper('core')->currency(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId())); ?></label>
+            <label for="giftcard_use"><?php echo $this->__('Redeem my Gift of YS Card. Balance :'); ?><?php echo Mage::helper('core')->currency(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId())); ?></label>
         </div>
         </form>
         <?php /*
