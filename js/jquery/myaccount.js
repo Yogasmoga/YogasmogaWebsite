@@ -614,9 +614,14 @@ function validateForgotPasswordForm()
 
 function getcardbalance()
 {
+    var callurl = '';
+    if(window.location.href.indexOf('https://') >= 0)
+        callurl = securehomeUrl + 'mycatalog/myproduct/getgiftcardbalance'
+    else
+         callurl = homeUrl + 'mycatalog/myproduct/getgiftcardbalance'
     jQuery.ajax({
         type : 'POST',
-        url : homeUrl + 'mycatalog/myproduct/getgiftcardbalance',
+        url : callurl,
         data : jQuery("#cardbalanceform").serialize(),
         success : function(result){
             result = eval('(' + result + ')');
