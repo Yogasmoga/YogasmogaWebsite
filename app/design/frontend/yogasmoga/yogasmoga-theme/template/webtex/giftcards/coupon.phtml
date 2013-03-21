@@ -4,17 +4,6 @@
     <h2 class="giftofyshead">GIFT OF YS</h2>
     <div class="discount-form">
         <form></form>
-        <form method="post" action="<?php echo $this->getUrl('*/*/giftcardActive'); ?>" name="giftcardActive" id="giftcardActive">
-        <div class="input-box">
-            <input type="checkbox" value="1" name="giftcard_use" id="giftcard_use" class="checkbox" onclick="document.forms['giftcardActive'].submit()" <?php echo Mage::getSingleton('giftcards/session')->getActive() ? 'checked="checked"' : '' ?> />
-            <label for="giftcard_use"><?php echo $this->__('Redeem my <a class="red" target="_blank" href="'.$this->getUrl('gift_of_ys').'">Gift of YS Card</a>. Balance : '); ?>&nbsp;<?php echo Mage::helper('core')->currency(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId())); ?></label>
-        </div>
-        </form>
-        <?php /*
-        <div style="margin-top : 5px;">
-            Note : Gift of YS card needs to be <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/giftcards/balance" class="rdm">added to your account </a> prior to redemption.
-        </div>
-        */ ?>
         <form method="post" action="<?php echo $this->getUrl('*/*/giftcardPost'); ?>" id="giftcard-form">
         <table class="redeem-giftcard">
             <tbody><tr>
@@ -88,6 +77,17 @@
         </div>
         */ ?>
         </form>
+        <form method="post" action="<?php echo $this->getUrl('*/*/giftcardActive'); ?>" name="giftcardActive" id="giftcardActive">
+        <div class="input-box">
+            <input type="checkbox" value="1" name="giftcard_use" id="giftcard_use" class="checkbox" onclick="document.forms['giftcardActive'].submit()" <?php echo Mage::getSingleton('giftcards/session')->getActive() ? 'checked="checked"' : '' ?> />
+            <label for="giftcard_use"><?php echo $this->__('Redeem my <a class="red" target="_blank" href="'.$this->getUrl('gift_of_ys').'">Gift of YS Card</a>. Balance : '); ?>&nbsp;<?php echo Mage::helper('core')->currency(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId())); ?></label>
+        </div>
+        </form>
+        <?php /*
+        <div style="margin-top : 5px;">
+            Note : Gift of YS card needs to be <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/giftcards/balance" class="rdm">added to your account </a> prior to redemption.
+        </div>
+        */ ?>
     </div>
     <?php else : ?>
     <h2>Do you have a <a target="_blank" href="<?php echo $this->getUrl('gift_of_ys'); ?>">Gift of YS</a> Card?</h2>

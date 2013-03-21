@@ -37,6 +37,19 @@
 //    });
     _oncartpage = true;
 </script>
+<?php
+    //echo Mage::getSingleton('core/session')->getGiftCardActivated().'sdfdsfas';
+//    if(!Mage::getSingleton('core/session')->getGiftCardActivated())
+//    {
+//        echo "went in";
+//        Mage::getSingleton('core/session')->setGiftCardActivated('true');
+//        Mage::getSingleton('giftcards/session')->setActive('1');
+//        Mage::getSingleton('checkout/cart')->getQuote()->getShippingAddress()->setCollectShippingRates(true);
+//        Mage::getSingleton('checkout/cart')->getQuote()->collectTotals()->save();
+//    }
+?>
+
+
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" media="all" />
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myaccount.js"></script>
 <div class="cart">
