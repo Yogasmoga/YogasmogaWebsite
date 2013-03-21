@@ -40,16 +40,19 @@
 <?php
     //echo Mage::getSingleton('core/session')->getGiftCardActivated().'sdfdsfas';
     //echo "Gift card = ".Mage::getSingleton('giftcards/session')->getActive();
-    if(!Mage::getSingleton('core/session')->getGiftCardActivated())
+    if(Mage::helper('customer')->isLoggedIn())
     {
-        if(Mage::getSingleton('giftcards/session')->getActive() == "0" || Mage::getSingleton('giftcards/session')->getActive() == "")
+        if(!Mage::getSingleton('core/session')->getGiftCardActivated())
         {
-            Mage::getSingleton('core/session')->setGiftCardActivated('true');
-            Mage::getSingleton('giftcards/session')->setActive('1');
-            Mage::getSingleton('checkout/cart')->getQuote()->getShippingAddress()->setCollectShippingRates(true);
-            Mage::getSingleton('checkout/cart')->getQuote()->collectTotals()->save();
-            Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");   
-        }
+            if(Mage::getSingleton('giftcards/session')->getActive() == "0" || Mage::getSingleton('giftcards/session')->getActive() == "")
+            {
+                Mage::getSingleton('core/session')->setGiftCardActivated('true');
+                Mage::getSingleton('giftcards/session')->setActive('1');
+                Mage::getSingleton('checkout/cart')->getQuote()->getShippingAddress()->setCollectShippingRates(true);
+                Mage::getSingleton('checkout/cart')->getQuote()->collectTotals()->save();
+                Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");   
+            }
+        }   
     }
 ?>
 
