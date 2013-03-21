@@ -16,7 +16,7 @@
 .cart-table tr.even{background:none;}
 .cart-table tbody td { padding:10px; background:none; border:0;}
 .cart-table tfoot tr{background:none !important;}
-.cart-table tfoot tr.first td{background:none;padding:40px 10px; border-top:1px dotted #000;}
+.cart-table tfoot tr.first td{background:none;padding:20px 10px; border-top:1px dotted #000;}
 .cart-table .item-msg { margin:5px 0; font-size:11px; font-weight:bold; color:#df280a; }
 .cart-table tfoot td { padding:5px 10px; }
 .cart-table tr.odd:hover,
@@ -37,10 +37,22 @@
     background:url(../images/update_off.png) 0 0 no-repeat; 
     border:0;
 }
+
 .cart-table .btn-update:active span{
     background:url(../images/update_on.png) 0 0 no-repeat;
 }
-
+.cart-table .btn-update-bag span{
+    padding:0; 
+    width:289px; 
+    text-indent:-999em; 
+    height:29px; 
+    margin:0; 
+    background:url(../images/update_shopping_bag_off.png) 0 0 no-repeat; 
+    border:0;
+}
+.cart-table .btn-update-bag:active span{
+    background:url(../images/update_shopping_bag_on.png) 0 0 no-repeat;
+}
 {background:none;}
 .cart-table .btn-empty { float:right; }
 .cart-table .btn-update { margin-left:10px; }
@@ -51,7 +63,7 @@
 .item-options dt { font-weight:normal; font-style:normal; float:left; clear:left; margin-right:7px; color:#666; text-transform:uppercase;}
 .item-options dd { padding-left:10px; margin:0 0 1px; color:#666; text-transform:none;}
 
-.cart .gift-card{float:left; text-align:left; font-family:Arial, helvatica; text-transform:none; margin-top:-10px; font-style:oblique; font-size:11px; letter-spacing:0.07em;}
+.cart .gift-card{text-align:left; font-family:Arial, helvatica; text-transform:none; margin-top:20px; font-style:oblique; font-size:11px; letter-spacing:0.07em; border-bottom: 1px dotted black; padding-bottom : 20px;padding-left : 15px;}
 .cart .gift-card h2{font-size:11px; margin:0; font-style:normal;}
 .cart .gift-card .gift-box label{float:left; display:block; line-height:15px; padding:9px 0 1px;}
 .cart .gift-card .gift-box input.input-text{float:left; border:0; background:#fff; border-bottom:1px solid #000; padding:9px 0 1px; height:15px; font-size:11px; color:#666; margin:0 15px 0 10px;}
@@ -145,7 +157,7 @@ button.btn-checkout:active span{background-position:0 100%;}
 .invite-form label{color:#999; font-size:11px; font-family:Helvatica, Arial; font-style:oblique; display:block; float:left; margin-right:15px; line-height:20px;}
 .invite-form input.input-box{border:0; background:none; font-family:gotham-l; font-size:12px; height:20px; line-height:18px; padding:0; float:left; width:200px;}
 
-.social-btns{float:none; margin:35px auto 0; width:120px; clear:both;}
+.social-btns{float:none; margin:35px auto 0; width:130px; clear:both;}
 .social-btns a{float:left; display:block; width:20px; height:20px; text-indent:-999em;background:url(../images/social-icon.png) 0 0 no-repeat; margin:0 5px;}
 .social-btns a.pinterest{background-position:0 0;}
 .social-btns a.twitter{background-position:-31px 0;}

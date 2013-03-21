@@ -134,8 +134,11 @@
                             <?php if($this->getContinueShoppingUrl()): ?>
                                 <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
                             <?php endif; ?>
-                            <button type="submit" title="<?php echo $this->__('Update Shopping Cart') ?>" class="button btn-update"><span><span><?php echo $this->__('Update Shopping Cart') ?></span></span></button>
-							<?php echo $this->getChildHtml('giftcards') ?>
+                            <div>
+                                <button type="submit" class="button btn-update-bag"><span><span><?php echo $this->__('Update Shopping Cart') ?></span></span></button>
+                                <div style="clear: both;"></div>
+                            </div>
+							<?php //echo $this->getChildHtml('giftcards') ?>
                         </td>
                     </tr>
                 </tfoot>
@@ -446,6 +449,7 @@
                     ?>
                 </tbody>
             </table>
+            <?php echo $this->getChildHtml('giftcards') ?>      
             <script type="text/javascript">decorateTable('shopping-cart-table')</script>
         </fieldset>
     </form>
