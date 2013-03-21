@@ -124,6 +124,15 @@ table.co-ov-table
     margin-right: auto;
     width: 573px;
 }
+table.co-ov-table tr.last td.a-right.total
+{
+    white-space : nowrap;
+}
+table.co-ov-table tr.first td.a-left.total
+{
+    white-space : nowrap;
+    text-align: right !important;
+}
 table.co-ov-table thead th
 {
     font-family:gothambook;
@@ -213,7 +222,7 @@ table.co-ov-table th.price,table.co-ov-table td.price
 }
 table.co-ov-table td.co-ov-primg
 {
-    width : 140px;
+    width : 80px;
     min-height : 75px;
 }
 table.co-ov-table tr.pritem td

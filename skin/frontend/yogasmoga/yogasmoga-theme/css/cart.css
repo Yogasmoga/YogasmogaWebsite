@@ -308,3 +308,11 @@ button.button.btn-redeem
     margin-left : 5px;
     margin-top : -7px;
 }
+div.gift-card p
+{
+    font-style: normal;
+}
+#shopping-cart-totals-table td.a-left
+{
+    text-align: right !important;
+}

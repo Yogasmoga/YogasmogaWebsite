@@ -410,6 +410,28 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         return "";
     }
     
+    function getDiscountsummary()
+    {
+        //$rates = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->collectShippingRates()->getGroupedAllShippingRates();
+//         foreach ($rates as $carrier) {
+//            foreach ($carrier as $rate) {
+//                print_r($rate->getData());
+//            }
+//        }
+        $summary = "";
+        if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()) > 0)
+            $summary .= "Gift of YS Card";
+        if(Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
+        {
+            if(strlen($summary) > 0)
+                $summary .= " and <br/>";
+            $summary .= Mage::helper('rewardpoints/event')->getCreditPoints()." SMOGI Bucks used";
+        }
+        if(strlen($summary) == 0)
+            $summary = "Discount";
+        return $summary;
+    }
+    
     public function getCartSummaryAction()
     {
         $quote = Mage::helper('checkout')->getQuote()->getData();
@@ -467,7 +489,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 {
                     ?>
                         <tr>
-                            <td>Discount</td>
+                            <td><?php echo $this->getDiscountsummary(); ?></td>
                             <td id="discounttotal" class="total">
                                 <?php echo "-$".number_format((float)($discount), 2, '.', ''); ?>
                             </td>
