@@ -2915,9 +2915,6 @@ table.staticproductgrid div.item td.productimage img.active
 
 #myminicart div.subtotal
 {
-    background-image : url('../images/divider.png');
-    background-position: center top;
-    background-repeat: no-repeat;
     height : 50px;
 }
 
@@ -2929,7 +2926,7 @@ table.staticproductgrid div.item td.productimage img.active
 #myminicart div.subtotal table td
 {
     vertical-align: middle;
-    height : 50px;
+    height : 40px;
 } 
 div.minicheckout
 {
@@ -2938,7 +2935,7 @@ div.minicheckout
     background-image : url('../images/checkout_off.png');
     background-repeat: no-repeat;
     background-position: center;
-    margin-bottom : 20px;
+    margin-bottom : 10px;
 }
 
 #myminicart div.minicartitems
