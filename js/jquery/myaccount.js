@@ -307,7 +307,7 @@ function validateGiftCardForm(tbl)
 {
     //jQuery("table.gfredeem td.inputholder input").removeClass('error');
     //var tbl = jQuery("table.gfredeem");
-    tbl.find('td.errortext div').fadeOut('fast');
+    tbl.find('td.errortext div').fadeOut('fast').removeAttr('class');
     var flag = 0;
     tbl.find('input[type="text"]').each(function(){
         if(jQuery(this).val() == '')
@@ -348,7 +348,7 @@ function validateGiftCardForm(tbl)
 function validateGiftCardRedeemForm()
 {
     var tbl = jQuery("table#redeem");
-    tbl.find('td.errortext div').fadeOut('fast');
+    tbl.find('td.errortext div').fadeOut('fast').removeAttr('class');
     var flag = 0;
     tbl.find('input[type="text"]').each(function(){
         if(jQuery(this).val() == '')
@@ -633,7 +633,8 @@ function getcardbalance()
             _addingtocart = false;
             if(result.status == 'success')
             {
-                alert("Your balance is: $" + result.balance);
+                jQuery("table.gfredeem").find('td.errortext div').html('Your Gift of YS Card balance is: ' + result.balance + '.').fadeIn('fast').addClass('success');
+                //alert("Your balance is: $" + result.balance);
             }
             else
             {
@@ -660,7 +661,8 @@ function redeemcard()
             if(result.result == 'success')
             {
                 jQuery("#curbalance").html('$' + result.balance);
-                alert('Gift of YS Card successfully redeemed.');
+                jQuery("table#redeem").find('td.errortext div').html('Your Gift of YS Card has been added to your account.').fadeIn('fast').addClass('success');
+                //alert('Gift of YS Card successfully redeemed.');
             }
             else
             {
