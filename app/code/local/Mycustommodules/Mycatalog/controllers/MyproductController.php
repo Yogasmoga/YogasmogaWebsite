@@ -15,7 +15,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
             $arr['balance'] = "error";
             $arr['status'] = "error";
             foreach ($cards as $card) {
-                $arr['balance'] = $card->getCardBalance();
+                $arr['balance'] = Mage::helper('core')->currency($card->getCardBalance());
                 $arr['status'] = "success";    
                 break;
             }

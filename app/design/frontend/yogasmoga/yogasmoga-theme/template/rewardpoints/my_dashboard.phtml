@@ -18,16 +18,30 @@
  */
  ?>
  <?php
-    if(Mage::getSingleton('core/session')->getRedirect() == "cart")
+    //echo Mage::getModel('core/cookie')->get('afterlogindest');
+    if(Mage::getModel('core/cookie')->get('afterlogindest') == "cart")
     {
+        //Mage::getModel('core/cookie')->delete('afterlogindest');
+        
         Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
-        Mage::getSingleton('core/session')->setRedirect('');
+        Mage::getModel('core/cookie')->set('afterlogindest', 'cart123', 0,'/');
     }
     if(Mage::getSingleton('core/session')->getRedirect() == "giftofys")
     {
         Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."gift_of_ys#redeemcard");
-        Mage::getSingleton('core/session')->setRedirect('');
+        Mage::getModel('core/cookie')->set('afterlogindest', 'cart123', 0,'/');
     }
+    
+    //if(Mage::getSingleton('core/session')->getRedirect() == "cart")
+//    {
+//        Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
+//        Mage::getSingleton('core/session')->setRedirect('');
+//    }
+    //if(Mage::getSingleton('core/session')->getRedirect() == "giftofys")
+//    {
+//        Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."gift_of_ys#redeemcard");
+//        Mage::getSingleton('core/session')->setRedirect('');
+//    }
 ?>
  <div class="myheader" style="margin-bottom: 7px;">MY ACCOUNT</div>
  <div class="account-nav">

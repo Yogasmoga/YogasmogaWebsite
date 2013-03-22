@@ -3015,6 +3015,10 @@ table.inputtable td.errortext, table.gfredeem td.errortext, table#redeem td.erro
 	vertical-align:top !important;
     min-height : 25px;
 }
+td.errortext div.success
+{
+    color : black;
+}
 table.inputtable.error tr:first-child td
 {
     border-bottom : 1px solid #D90D3D; 
