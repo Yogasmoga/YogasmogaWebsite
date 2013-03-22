@@ -343,7 +343,7 @@
                         {
                             ?>
                                 <p>Log in to redeem your Gift of YS Card.</p>
-                                <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>customer/account/login?goto=giftofys">
+                                <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/login?goto=giftofys">
                                     <button type="button" title="Login" class="button btn-login" value="Login"><span><span>Login</span></span></button>
                                 </a>
                             <?php
