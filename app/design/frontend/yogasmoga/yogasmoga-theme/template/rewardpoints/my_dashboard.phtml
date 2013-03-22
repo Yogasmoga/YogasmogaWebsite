@@ -26,7 +26,7 @@
         Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
         Mage::getModel('core/cookie')->set('afterlogindest', 'cart123', 0,'/');
     }
-    if(Mage::getSingleton('core/session')->getRedirect() == "giftofys")
+    if(Mage::getModel('core/cookie')->get('afterlogindest') == "giftofys")
     {
         Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."gift_of_ys#redeemcard");
         Mage::getModel('core/cookie')->set('afterlogindest', 'cart123', 0,'/');
