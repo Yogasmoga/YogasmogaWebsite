@@ -2485,6 +2485,7 @@ div.mycategory-products div.item td.productimage div
 {
     width: 100%;
     width: 230px;
+	overflow:hidden;
 	position:relative;
 	height:345px;
     margin-left: auto;
