@@ -176,7 +176,7 @@
                                         $firstimg = true;
                                         foreach($_gallery as $_image)
                                         {
-											if($index <= 3){
+											//if($index <= 3){
 												$imgdata = json_decode(trim($_image->getLabel()), true);
 												//var_dump(json_decode(trim($_image->getLabel()), true));
 												//echo $_image->getLabel()."<br/>";
@@ -218,9 +218,9 @@
 												 src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>" alt="<?php if(isset($imgdata['alt'])) { echo $imgdata['alt']; } ?>" />
 												<?php
 												$index++;
-											}else{
-												break;
-											}
+											//}else{
+//												break;
+//											}
 										}
                                     ?>
 									</div>
