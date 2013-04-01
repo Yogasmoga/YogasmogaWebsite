@@ -264,9 +264,9 @@ function filterimages()
     if(temp.length > 0)
     {
         temp = temp.substr(0, temp.length - 1);
-        //jQuery("div#mycategory_products div.item td.productimage img").removeClass('rotable').removeClass('active');
+        jQuery("div#mycategory_products div.item td.productimage img").removeClass('rotable').removeClass('active');
         //console.log(temp);
-        //jQuery("div#mycategory_products div.item td.productimage img." + temp).addClass('rotable');
+        jQuery("div#mycategory_products div.item td.productimage img." + temp).addClass('rotable');
         //jQuery("div#mycategory_products div.item td.productimage img.rotable:first-child").addClass('active');
         jQuery("div#mycategory_products div.item td.productimage").each(function(){
             jQuery(this).find("img.rotable:first").addClass('active');

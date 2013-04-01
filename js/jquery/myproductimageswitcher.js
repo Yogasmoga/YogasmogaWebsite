@@ -1,5 +1,8 @@
+var _activedivid = '';
+var _nextprimage = '';
+var _nextrotimage = '';
+
 var _hovercollection = new Array();
-var _rotate;
 
 jQuery(document).ready(function($){
     InitializeHoverCollection();
@@ -28,11 +31,11 @@ jQuery(document).ready(function($){
         }
         if($("div#" + _currentproductid + " td.productimage img.rotable").eq(temp).length > 0)
         {
-            $("div#" + _currentproductid + " td.productimage img").removeClass('active').stop(true,true).fadeOut(300, "easeInOutSine");
-            $("div#" + _currentproductid + " td.productimage img.rotable:eq("+temp+")").addClass('active').stop(true,true).fadeIn(300, "easeInOutSine");
+            $("div#" + _currentproductid + " td.productimage img").removeClass('active');
+            $("div#" + _currentproductid + " td.productimage img.rotable").eq(temp).addClass('active');
             
-            $("div#" + _currentproductid + " td.animateimage img").hide(0).removeClass('active');
-            $("div#" + _currentproductid + " td.animateimage img:eq("+temp+")").show(0).addClass('active');
+            $("div#" + _currentproductid + " td.animateimage img").hide().removeClass('active');
+            $("div#" + _currentproductid + " td.animateimage img").eq(temp).show().addClass('active');
         }
     });
     
@@ -56,55 +59,28 @@ jQuery(document).ready(function($){
             if(!_rotateprimages)
                 return;
             var idd = jQuery(this).parents("div.item:first").attr("id");
-			_rotate = 	setTimeout(function(){
-							gridSlide(idd)
-						}, 100)
-			
-            //var pelement = $(this).parents("div.item:first"); 
-            //togglehover(idd, true);
+            var pelement = $(this).parents("div.item:first"); 
+            togglehover(idd, true);
             
-            //pelement.find("td.animateimage img.inactive").hide();
-            //pelement.find("td.animateimage img.active").show();
+            pelement.find("td.animateimage img.inactive").hide();
+            pelement.find("td.animateimage img.active").show();
              //setTimeout(function(){ shownextimage(idd); }, 1000);
             //console.log(_hovercollection);
         },
         function(){
             if(!_rotateprimages)
                 return;
-			var animlines = jQuery(this).parents("div.item:first").find('td.animateimage');
-			clearInterval(_rotate);
-			jQuery(this).find('div').find('img:gt(0)').removeClass('active').stop(true,true).fadeOut(300, "easeInOutSine");
-			jQuery(this).find('div').find('img:first').addClass('active').stop(true,true).fadeIn(300, "easeInOutSine");
-			$j('img', animlines).hide(0).removeClass('active');
-			$j('img:first', animlines).show(0).addClass('active');
             //togglehover(jQuery(this).attr("id"), false);
-            //togglehover(jQuery(this).parents("div.item:first").attr("id"), false);
-            //var pelement = $(this).parents("div.item:first");
+            togglehover(jQuery(this).parents("div.item:first").attr("id"), false);
+            var pelement = $(this).parents("div.item:first");
             //$(this).parents("div.item:first").find("td.animateimage img.inactive").show();
-            //pelement.find("td.animateimage img").hide();
+            pelement.find("td.animateimage img").hide();
             //if(pelement.find("td.productimage img").length > 0)
-            //pelement.find("td.animateimage img:first").show();
+                pelement.find("td.animateimage img:first").show();
             //console.log(_hovercollection);
         });   
     }
 });
-function gridSlide(id){
-	var obj = $j("div#"+ id +" td.productimage"),
-		animlines = $j("div#"+ id +" td.animateimage"),
-		cur = obj.find('img.active'),
-		next = cur.next('img'),
-		cindex = cur.index() + 1,
-		ind = obj.find('div').children().length;
-		if(cindex == ind){
-			next = obj.find('img:first');
-			cindex = 0;
-		}
-		next.stop(true,true).fadeIn(300, "easeInOutSine", function(){next.addClass('active')});
-		cur.stop(true,true).fadeOut(300, "easeInOutSine", function(){cur.removeClass('active')});
-		$j('img', animlines).hide(0).removeClass('active');
-		$j('img:eq('+cindex+')', animlines).show(0).addClass('active');
-		_rotate = 	setTimeout(function(){gridSlide(id)}, 1000);
-}
 
 function searchsrcarray(obj, val)
 {
@@ -188,24 +164,52 @@ function shownextimage(id)
         //console.log(jQuery("#mycategory_products div#" + id + " td.productimage img.active").nextAll('.rotable').length);
         if(jQuery("#mycategory_products div#" + id + " td.productimage img.rotable").index(jQuery("#mycategory_products div#" + id + " td.productimage img.active")) < 2 && jQuery("#mycategory_products div#" + id + " td.productimage img.active").nextAll('.rotable').length > 0)
         {
-            var nextimage = jQuery("#mycategory_products div#" + id + " td.productimage img.active").nextAll('.rotable:first');
-            jQuery("#mycategory_products div#" + id + " td.productimage img.active").removeClass('active');
-            nextimage.addClass('active');
+            _nextprimage = jQuery("#mycategory_products div#" + id + " td.productimage img.active").nextAll('.rotable:first');
+            _nextrotimage = jQuery("#mycategory_products div#" + id + " td.animateimage img.active").next();
+            _activedivid = id;
             
-            nextimage = jQuery("#mycategory_products div#" + id + " td.animateimage img.active").next();
-            jQuery("#mycategory_products div#" + id + " td.animateimage img.active").removeClass('active').hide();
-            nextimage.addClass('active').show();
+            jQuery("#mycategory_products div#" + id + " td.productimage div").fadeOut(300, "easeInOutSine", function(){
+                jQuery("#mycategory_products div#" + _activedivid + " td.productimage img.active").removeClass('active');
+                _nextprimage.addClass('active');
+                jQuery("#mycategory_products div#" + _activedivid + " td.animateimage img.active").removeClass('active').hide();
+                _nextrotimage.addClass('active').show();
+                jQuery("#mycategory_products div#" + _activedivid + " td.productimage div").fadeIn(300, "easeInOutSine");
+                resettimeobject(_activedivid);
+            });
+            
+            
+            //var nextimage = jQuery("#mycategory_products div#" + id + " td.productimage img.active").nextAll('.rotable:first');
+//            jQuery("#mycategory_products div#" + id + " td.productimage img.active").removeClass('active');
+//            nextimage.addClass('active');
+//            
+//            nextimage = jQuery("#mycategory_products div#" + id + " td.animateimage img.active").next();
+//            jQuery("#mycategory_products div#" + id + " td.animateimage img.active").removeClass('active').hide();
+//            nextimage.addClass('active').show();
         }
         else
         {
-            //console.log('sdf');
-            jQuery("#mycategory_products div#" + id + " td.productimage img.active").removeClass('active');
-            jQuery("#mycategory_products div#" + id + " td.productimage img.rotable:first").addClass('active');
+            _activedivid = id;
+            jQuery("#mycategory_products div#" + id + " td.productimage div").fadeOut(300, "easeInOutSine", function(){
+                
+                jQuery("#mycategory_products div#" + _activedivid + " td.productimage img.active").removeClass('active');
+                jQuery("#mycategory_products div#" + _activedivid + " td.productimage img.rotable:first").addClass('active');
+                
+                jQuery("#mycategory_products div#" + _activedivid + " td.animateimage img.active").removeClass('active').hide();
+                jQuery("#mycategory_products div#" + _activedivid + " td.animateimage img:first").addClass('active').show();
+                
+                jQuery("#mycategory_products div#" + _activedivid + " td.productimage div").fadeIn(300, "easeInOutSine");
+                resettimeobject(_activedivid);
+            });
             
-            jQuery("#mycategory_products div#" + id + " td.animateimage img.active").removeClass('active').hide();
-            jQuery("#mycategory_products div#" + id + " td.animateimage img:first").addClass('active').show();
+            
+            //console.log('sdf');
+            //jQuery("#mycategory_products div#" + id + " td.productimage img.active").removeClass('active');
+//            jQuery("#mycategory_products div#" + id + " td.productimage img.rotable:first").addClass('active');
+//            
+//            jQuery("#mycategory_products div#" + id + " td.animateimage img.active").removeClass('active').hide();
+//            jQuery("#mycategory_products div#" + id + " td.animateimage img:first").addClass('active').show();
         }
-        resettimeobject(id);
+        //resettimeobject(id);
     }
     return;
     if(isitemhovered(id))

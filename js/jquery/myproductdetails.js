@@ -131,7 +131,7 @@ function changeproductsize(sz)
     sz.addClass("dvselectedsize");
     var qty = sz.attr("qty") * 1;
     var orderqty =_productorderqty;
-    if((qty - orderqty) > 0)
+    if((qty - orderqty) >= 0)
     {
         jQuery("#orderitem").show();
         jQuery("#preorderitem").hide();
