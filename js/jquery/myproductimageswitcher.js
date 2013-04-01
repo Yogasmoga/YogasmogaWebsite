@@ -174,6 +174,7 @@ function shownextimage(id)
                 jQuery("#mycategory_products div#" + _activedivid + " td.animateimage img.active").removeClass('active').hide();
                 _nextrotimage.addClass('active').show();
                 jQuery("#mycategory_products div#" + _activedivid + " td.productimage div").fadeIn(300, "easeInOutSine");
+                resettimeobject(_activedivid);
             });
             
             
@@ -197,6 +198,7 @@ function shownextimage(id)
                 jQuery("#mycategory_products div#" + _activedivid + " td.animateimage img:first").addClass('active').show();
                 
                 jQuery("#mycategory_products div#" + _activedivid + " td.productimage div").fadeIn(300, "easeInOutSine");
+                resettimeobject(_activedivid);
             });
             
             
@@ -207,7 +209,7 @@ function shownextimage(id)
 //            jQuery("#mycategory_products div#" + id + " td.animateimage img.active").removeClass('active').hide();
 //            jQuery("#mycategory_products div#" + id + " td.animateimage img:first").addClass('active').show();
         }
-        resettimeobject(id);
+        //resettimeobject(id);
     }
     return;
     if(isitemhovered(id))
