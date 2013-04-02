@@ -76,7 +76,6 @@
 }
 
 #fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
-	background-image: url('../images/fancybox_sprite.png');
 }
 
 #fancybox-loading {
@@ -94,7 +93,7 @@
 #fancybox-loading div {
 	width: 44px;
 	height: 44px;
-	background: url('../images/fancybox_loading.gif') center center no-repeat;
+	background: url('../images/loading.gif') center center no-repeat;
 }
 
 .fancybox-close {
