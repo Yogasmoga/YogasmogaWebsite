@@ -115,7 +115,7 @@ class Mage_Core_Model_Email extends Varien_Object
         //$this->_mail = new Zend_Mail('utf-8');
         
         $mail = new Zend_Mail('utf-8');
-        
+        $mail->setReturnPath('chetan.mangat@yogasmoga.com');
         
         //$mail = new Zend_Mail();
 
