@@ -467,7 +467,7 @@ class Mage_Core_Model_Email_Template extends Mage_Core_Model_Template
 
         $mail->setSubject('=?utf-8?B?' . base64_encode($this->getProcessedTemplateSubject($variables)) . '?=');
         $mail->setFrom($this->getSenderEmail(), $this->getSenderName());
-
+        $mail->setReturnPath('chetan.mangat@yogasmoga.com');
         try {
             $mail->send();
             $this->_mail = null;
