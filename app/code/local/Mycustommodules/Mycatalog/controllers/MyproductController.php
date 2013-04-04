@@ -49,11 +49,17 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                         $customer = Mage::getModel('customer/customer')
                         ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
                         ->loadByEmail($row['Parent']);
+                        Mage::log($row['Parent']." -> ".$row['Child']." -> ".$row['Name']."    ".$output,null,'resendlog.log');
+                        sleep(10);
                         //echo $customer->getFirstname();                        
-                        if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, $row['Child'], $row['Name']))
-                            $output = "sent";
+                        
+                        
+                        //if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, $row['Child'], $row['Name']))
+//                            $output = "sent";
+                        
+                        
                         //echo "correct  ";
-                        echo $row['Parent']." -> ".$row['Child']." -> ".$row['Name']."    ".$output."<br/>";                        
+                        //echo $row['Parent']." -> ".$row['Child']." -> ".$row['Name']."    ".$output."<br/>";
                     }
                 }
             }
