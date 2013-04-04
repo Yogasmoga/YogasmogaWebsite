@@ -48,10 +48,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                     {
                         $customer = Mage::getModel('customer/customer')
                         ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
-                        ->loadByEmail($row['Parent']);
-                        
-                        
-                        
+                        ->loadByEmail($row['Parent']);                        
                         //sleep(10);
                         //if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, $row['Child'], $row['Name']))
 //                            $output = "sent";
@@ -59,7 +56,8 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                             $write->query("Insert into myresendlog values(null,'".$row['Parent']."','".$row['Child']."',1,now())");
                         else
                             $write->query("Insert into myresendlog values(null,'".$row['Parent']."','".$row['Child']."',0,now())");
-                        Mage::log($row['Parent']." -> ".$row['Child']." -> ".$row['Name']."    ".$output,null,'resendlog.log');
+                        
+                        Mage::log("|".$row['Parent']."|".$row['Child']."|".$row['Name']."|".$output,null,'resendlog.log');
                         
                         //echo "correct  ";
                         //echo $row['Parent']." -> ".$row['Child']." -> ".$row['Name']."    ".$output."<br/>";
