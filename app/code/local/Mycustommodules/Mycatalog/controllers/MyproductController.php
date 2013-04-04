@@ -39,7 +39,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                 if($this->getRequest()->getParam('pass') == "MageHACKER")
                 {
                     $write = Mage::getSingleton('core/resource')->getConnection('core_write');
-                    $readresult=$write->query("SELECT ce.email AS 'Parent', rr.rewardpoints_referral_email AS 'Child', rr.rewardpoints_referral_name AS 'Name' FROM rewardpoints_referral rr, customer_entity ce WHERE rr.rewardpoints_referral_parent_id = ce.entity_id AND rr.rewardpoints_referral_status=0 AND rr.rewardpoints_referral_email NOT IN (SELECT email FROM myresendlog WHERE NOW() > DATE_SUB(NOW(), INTERVAL 24 HOUR))");
+                    $readresult=$write->query("SELECT ce.email AS 'Parent', rr.rewardpoints_referral_email AS 'Child', rr.rewardpoints_referral_name AS 'Name' FROM rewardpoints_referral rr, customer_entity ce WHERE rr.rewardpoints_referral_parent_id = ce.entity_id AND rr.rewardpoints_referral_status=0 AND rr.rewardpoints_referral_email NOT IN (SELECT email FROM myresendlog WHERE status=0 and NOW() > DATE_SUB(NOW(), INTERVAL 24 HOUR))");
                     while ($row = $readresult->fetch() ) {
                         $customer = Mage::getModel('customer/customer')
                         ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
@@ -49,7 +49,8 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                         {
                             $customer = Mage::getModel('customer/customer')
                             ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
-                            ->loadByEmail($row['Parent']);                        
+                            //->loadByEmail($row['Parent']);                        
+                            ->loadByEmail('vishal@mobikasa.com');
                             //sleep(10);
                             //if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, $row['Child'], $row['Name']))
                             if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, 'ankit@mobikasa.com', $row['Name']))
