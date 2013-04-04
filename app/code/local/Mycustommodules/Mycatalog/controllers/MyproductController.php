@@ -33,43 +33,49 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
     
     public function resendinviteemailsAction()
     {
-        if($this->getRequest()->getParam('pass'))
-        {
-            if($this->getRequest()->getParam('pass') == "MageHACKER")
+        try{
+            if($this->getRequest()->getParam('pass'))
             {
-                $write = Mage::getSingleton('core/resource')->getConnection('core_write');
-                $readresult=$write->query("SELECT ce.email AS 'Parent', rr.rewardpoints_referral_email AS 'Child', rr.rewardpoints_referral_name AS 'Name' FROM rewardpoints_referral rr, customer_entity ce WHERE rr.rewardpoints_referral_parent_id = ce.entity_id AND rr.rewardpoints_referral_status=0 AND rr.rewardpoints_referral_email NOT IN (SELECT email FROM myresendlog WHERE NOW() > DATE_SUB(NOW(), INTERVAL 24 HOUR))");
-                while ($row = $readresult->fetch() ) {
-                    $customer = Mage::getModel('customer/customer')
-                    ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
-                    ->loadByEmail($row['Child']);
-                    $output = "unsent";                    
-                    if (!$customer->getId())
-                    {
+                if($this->getRequest()->getParam('pass') == "MageHACKER")
+                {
+                    $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+                    $readresult=$write->query("SELECT ce.email AS 'Parent', rr.rewardpoints_referral_email AS 'Child', rr.rewardpoints_referral_name AS 'Name' FROM rewardpoints_referral rr, customer_entity ce WHERE rr.rewardpoints_referral_parent_id = ce.entity_id AND rr.rewardpoints_referral_status=0 AND rr.rewardpoints_referral_email NOT IN (SELECT email FROM myresendlog WHERE NOW() > DATE_SUB(NOW(), INTERVAL 24 HOUR))");
+                    while ($row = $readresult->fetch() ) {
                         $customer = Mage::getModel('customer/customer')
                         ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
-                        ->loadByEmail($row['Parent']);                        
-                        //sleep(10);
-                        //if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, $row['Child'], $row['Name']))
-//                            $output = "sent";
-                        if($output == "sent")
-                            $write->query("Insert into myresendlog values(null,'".$row['Parent']."','".$row['Child']."',1,now())");
-                        else
-                            $write->query("Insert into myresendlog values(null,'".$row['Parent']."','".$row['Child']."',0,now())");
-                        
-                        Mage::log("|".$row['Parent']."|".$row['Child']."|".$row['Name']."|".$output,null,'resendlog.log');
-                        
-                        //echo "correct  ";
-                        //echo $row['Parent']." -> ".$row['Child']." -> ".$row['Name']."    ".$output."<br/>";
+                        ->loadByEmail($row['Child']);
+                        $output = "unsent";                    
+                        if (!$customer->getId())
+                        {
+                            $customer = Mage::getModel('customer/customer')
+                            ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
+                            ->loadByEmail($row['Parent']);                        
+                            //sleep(10);
+                            //if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, $row['Child'], $row['Name']))
+    //                            $output = "sent";
+                            if($output == "sent")
+                                $write->query("Insert into myresendlog values(null,'".$row['Parent']."','".$row['Child']."',1,now())");
+                            else
+                                $write->query("Insert into myresendlog values(null,'".$row['Parent']."','".$row['Child']."',0,now())");
+                            
+                            Mage::log("|".$row['Parent']."|".$row['Child']."|".$row['Name']."|".$output,null,'resendlog.log');
+                            
+                            //echo "correct  ";
+                            //echo $row['Parent']." -> ".$row['Child']." -> ".$row['Name']."    ".$output."<br/>";
+                        }
                     }
+                    Mage::log("Yippee completed",null,'resendlog.log');
                 }
-                Mage::log("Yippee completed",null,'resendlog.log');
-            }
-            else
-            {
-                Mage::log("Invalid password",null,'resendlog.log');
-                //echo "Invalid password";
-            }
+                else
+                {
+                    Mage::log("Invalid password",null,'resendlog.log');
+                    //echo "Invalid password";
+                }
+            }   
+        }
+        catch(Exception $e)
+        {
+            Mage::logException($e);
         }
     }
     
