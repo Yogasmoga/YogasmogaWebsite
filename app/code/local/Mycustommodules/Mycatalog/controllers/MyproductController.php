@@ -62,10 +62,12 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                         //echo $row['Parent']." -> ".$row['Child']." -> ".$row['Name']."    ".$output."<br/>";
                     }
                 }
+                Mage::log("Yippee completed",null,'resendlog.log');
             }
             else
             {
-                echo "Invalid password";
+                Mage::log("Invalid password",null,'resendlog.log');
+                //echo "Invalid password";
             }
         }
     }
