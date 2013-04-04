@@ -55,7 +55,17 @@ class Rewardpoints_Model_Referral extends Mage_Core_Model_Abstract
         $this->setRewardpointsReferralParentId($parent->getId())
              ->setRewardpointsReferralEmail($email)
              ->setRewardpointsReferralName($name);
-        return $this->save() && $this->sendSubscription($parent, $email, $name);
+             
+        if($this->sendSubscription($parent, $email, $name))
+        {
+            if($this->save())
+                return true;
+            else
+                return false;
+        }
+        else
+            return false;
+        //return $this->save() && $this->sendSubscription($parent, $email, $name);
     }
 
     public function isSubscribed($email)
