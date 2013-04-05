@@ -93,4 +93,13 @@
 .banner-txt{position:absolute; top:13.5%; left:15%; text-align:center; white-space:nowrap; font-family:ITCAvantGardeProBk, gotham  , Arial; color:#fff; font-size:17px; line-height:1.1; text-transform:uppercase;}
 .banner-txt span{display:block; font-size:34px;}
 .banner-txt span strong{font-weight:normal; font-family:ITCAvantGardeProBd, gotham-b  , Arial;}
+
+.banner-txt3{position:absolute; top:15.5%; left:11%; text-align:center; white-space:nowrap; font-family:ITCAvantGardeProBk, gotham  , Arial; color:#000; font-size:35px; line-height:1.1; text-transform:uppercase;}
+.banner-txt3 span{display:block; font-family:ITCAvantGardeProBk, gotham  , Arial; font-size:25px; font-weight:900; text-align:right; padding-top: 10px !important;}
+.banner-txt3 .banner-txt3-link {font-weight:normal; font-family:ITCAvantGardeProBd, gotham-b  , Arial; font-size: 11px; text-align:center; margin-top: 30px !important; display:block; }
+.banner-txt3 .banner-txt3-link a {border-bottom: #E20E3F 1px solid; font-family: gothamlight;}
+.banner-txt3 .banner-txt3-link a:hover {color: #000;}
+.banner-txt3 .banner-txt3-link strong{font-weight:normal; font-family:gothamlight; color:#E20E3F; }
+
+
 #featuredproducts{margin-bottom:50px;}
