@@ -55,8 +55,8 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                             
                             //if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, 'ankit@mobikasa.com', $row['Name']))
                             
-                            //if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, $row['Child'], $row['Name']))
-//                                $output = "sent";
+                            if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, $row['Child'], $row['Name']))
+                                $output = "sent";
                             if($output == "sent")
                                 $write->query("Insert into myresendlog values(null,'".$row['Parent']."','".$row['Child']."',1,now())");
                             else
