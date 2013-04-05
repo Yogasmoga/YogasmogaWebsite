@@ -242,25 +242,31 @@ function reordersubsteps(stp)
         if(temp.prev().length > 0)
         {
             temp = temp.prev();
-            temp.addClass('inactive');
+            temp.addClass('inactive').addClass('codivider');
             temp.find("form").hide();
         }
         else
             break;
     }
     temp = stp;
+    var isfirst = false;
     while(true)
     {
         if(temp.next().length > 0)
         {
             temp = temp.next();
-            temp.addClass('inactive').addClass('disabled');
+            temp.addClass('inactive').addClass('disabled').removeClass('codivider');
             temp.find("form").hide();
+            temp.hide();
+            isfirst = true;
         }
         else
             break;
     }
+    if(isfirst)
+        stp.removeClass('codivider');
     stp.removeClass('inactive');
+    stp.show();
     stp.find("form").show(0, function(){
 		//jQuery('select').customSelect();
 	});
@@ -475,6 +481,7 @@ function saveShippingAddress()
             _ischeckoutprocessing = false;
             jQuery("#checkout-shipping-form input[type=submit]").show();
             jQuery("#checkout-shipping-form #procImg").remove();
+            jQuery("#shipping\\:use_for_billing").removeAttr("checked");
         }
     });
 }
