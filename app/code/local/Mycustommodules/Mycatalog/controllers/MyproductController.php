@@ -6,6 +6,15 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         echo "Output from Product Module";
     }
     
+    public function capitalizeAction()
+    {
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+        $readresult=$write->query("SELECT * FROM customer_address_entity_varchar WHERE attribute_id IN (20,22)");
+        while ($row = $readresult->fetch() ) {
+            $write->query("Update customer_address_entity_varchar set value='".ucwords($row['value'])."' where value_id=".$row['value_id']);
+        }
+    }
+    
     public function getgiftcardbalanceAction()
     {
         if ($this->getRequest()->isPost() && $this->getRequest()->getPost('cardno')) 

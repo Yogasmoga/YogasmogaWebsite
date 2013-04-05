@@ -63,6 +63,8 @@ jQuery(document).ready(function($){
     $("#checkout-shipping-form").submit(function(){
         if(validateShippingAddressForm())
         {
+            $("#shipping\\:firstname").val(ucFirstAllWords($("#shipping\\:firstname").val()));
+            $("#shipping\\:lastname").val(ucFirstAllWords($("#shipping\\:lastname").val()));
             saveShippingAddress();
         }
         return false;
@@ -89,6 +91,8 @@ jQuery(document).ready(function($){
         if(validateBillingAddressForm())
         {
             //saveShippingAddress();
+            $("#billing\\:firstname").val(ucFirstAllWords($("#billing\\:firstname").val()));
+            $("#billing\\:lastname").val(ucFirstAllWords($("#billing\\:lastname").val()));
             saveBillingAddress();
         }
         return false;
