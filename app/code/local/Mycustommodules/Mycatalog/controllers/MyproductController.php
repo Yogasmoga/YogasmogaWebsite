@@ -11,7 +11,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         $write = Mage::getSingleton('core/resource')->getConnection('core_write');
         $readresult=$write->query("SELECT * FROM customer_address_entity_varchar WHERE attribute_id IN (20,22)");
         while ($row = $readresult->fetch() ) {
-            $write->query("Update customer_address_entity_varchar set value='".ucwords($row['value'])."' where value_id=".$row['value_id']);
+            $write->query("Update customer_address_entity_varchar set value='".str_replace("'","''",ucwords($row['value']))."' where value_id=".$row['value_id']);
         }
     }
     
