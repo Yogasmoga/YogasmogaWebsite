@@ -3674,22 +3674,22 @@ div.gotoshoppingbag
 
 body.cms-mens
 {
-    background: url("../images/background/cat_mens_bg.jpg") no-repeat scroll 0 0 / 100% auto #FFFFFF;
+    background:#fff url(../images/background/cat_mens_bg.jpg) 0 0 no-repeat; background-size:100%;
 }
 
 body.catalogsearch-result-index
 {
-    background: url("../images/background/search_bg.jpg") no-repeat scroll 0 0 / 100% auto #FFFFFF;
+    background:#fff url("../images/background/search_bg.jpg") 0 0 no-repeat; background-size:100%;
 }
 
 body.checkout-cart-index
 {
-    background: url("../images/background/shoppingbag_bg.jpg") no-repeat scroll 0 0 / 100% auto #FFFFFF;
+    background:#fff url("../images/background/shoppingbag_bg.jpg") 0 0 no-repeat; background-size:100%;
 }
 
 body.checkout-continue
 {
-    background: url("../images/background/checkout_bg.jpg") no-repeat scroll 0 0 / 100% auto #FFFFFF;
+    background:#fff url("../images/background/checkout_bg.jpg") 0 0 no-repeat; background-size:100%;
 }
 
 
