@@ -47,6 +47,8 @@
                     $str1 = str_replace(")","", $str1);
                     $str1 = str_replace("(","", $str1);
                     $str1 = str_replace("smogi bucks","SMOGI Bucks", $str1);
+                    if(trim($str1) == "")
+                        $str1 = "Discount";
                     echo $this->escapeHtml($str1);
                 }
                 else
