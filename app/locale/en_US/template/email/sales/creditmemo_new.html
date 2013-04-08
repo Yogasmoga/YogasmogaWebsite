@@ -36,12 +36,14 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
 <!-- [ middle starts here] -->
             <tr>
                 <td valign="top" style="padding:0 0 15px;">
-                    <p style="color:#666; font-size:12px; line-height:1; margin:0 0 20px; text-transform:uppercase;">Thanks for your order, {{htmlescape var=$order.getCustomerName()}}!</p>
-                    <p style="color:#666; font-size:12px; line-height:1; margin:0 0 20px;">If you need to check the status of your order please visit our home page at <a href="{{store url}}" style="text-decoration:none; color:#f30f44;">{{store url}}</a> and click on your account at the top of any page.</p>
-					<p style="color:#666; font-size:12px; line-height:1; margin:0 0 20px;">Your Credit Memo #{{var creditmemo.increment_id}} for Order #{{var order.increment_id}}</h2>
+                    <p style="color:#666; font-size:12px; line-height:1; margin:0 0 20px;">Dear {{htmlescape var=$order.getCustomerName()}},</p>
+                    <p style="color:#666; font-size:12px; line-height:1; margin:0 0 20px;">We wanted to let you know that we have received your return package and are refunding your credit card.</p>
+					<p style="color:#666; font-size:12px; line-height:1; margin:0 0 20px;">The SMOGI Bucks you earned related to the return have also been reversed. Do come back another time to earn them back.</p>
+                    <p style="color:#666; font-size:12px; line-height:1; margin:0 0 20px;">Thanks for choosing YOGASMOGA.</p>
                 </td>
             </tr>
 			
+            <!--
 			<tr>
 				<td valign="top"s style="padding:0 0 30px;">
                     <h2 style="color:#000; line-height:1.5; margin:0 0 15px; display:block; border-bottom:1px solid #000; font-size:12px; text-transform:uppercase;">purchasing information</h2>
@@ -70,6 +72,7 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
                     </table>
 				</td>
 			</tr>
+            -->
 			<tr>
 				<td valign="top">
                     <h2 style="color:#000; line-height:1.5; margin:0 0 15px; display:block; border-bottom:1px solid #000; font-size:13px; text-transform:uppercase;">Order Summary</h2>
@@ -85,7 +88,22 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
 					</div>
                     
                     <p style="font-size:12px; margin:0 10px 10px 0">{{var comment}}</p>
+                    
+                    <p style="color:#666; font-size:12px; margin:15px 0;">If you have any questions or need help with anything in the future, please contact us any time:</p>
+                    <p>YOGASMOGA</p>
+                    <p>                        
+                        Phone: 	 888-990-YOGA (9642)<br />
+                        Email: 	 <a href="mailto:hello@yogasmoga.com">hello@yogasmoga.com</a><br />
+                        Website: <a href="http://www.yogasmoga.com">www.yogasmoga.com</a>
+                    </p>
+                    <p>We are YOGASMOGA. We make things for Life. One breath at a time.</p>
+                    <p>
+                        Let's keep in touch:<br />
+                        <a href="http://www.facebook.com/yogasmoga">www.facebook.com/yogasmoga</a>
+                    </p>
+                    <!--
 					<p style="color:#666; font-size:12px; margin:15px 0;">If you have any comments or questions regarding your order, please email us any time at <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#f30f44; text-decoration:none;">{{config path='trans_email/ident_support/email'}}</a>.</p>
+                    -->
 					<p style="color:#666; font-size:12px; margin:15px 0;">&nbsp;</p>
 				</td>
 			</tr>		
@@ -105,7 +123,10 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
 		<table cellpadding="0" cellspacing="0" border="0" width="100%">
 			<tr>
 				<td width="64%" align="left">
+                    &nbsp;
+                    <!--
 					<p  style="font-size:12px; margin:0;"><span style="color:#666; font-size:12px; margin:15px 0;">Check your <a href="{{store url="customer/account/"}}" style="color:#f30f44; text-decoration:none;">order status</a></span></p>
+                    -->
 				</td>
 				<td style="text-align:right;">
 					<a href="http://www.twitter.com/YOGASMOGA"><img src="{{skin url='images/i-twitter.png' _area='frontend' _package='yogasmoga'}}" height="20" width="20" style="border:0" /></a>
