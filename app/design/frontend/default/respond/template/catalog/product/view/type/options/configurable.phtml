@@ -124,6 +124,7 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 				$j('#color-attr').append('<div class="colorbox" rel="'+$j(this).attr('value')+'"><table><tr>'+mycolor+'</tr></table></div>')
 			})
 			$j('#color-attr .colorbox').click(function(){
+                //alert('color changed');
 				$j('#color-attr .colorbox').removeClass('active');
 				$j(this).addClass('active');
 				$j('#attribute92').val($j(this).attr('rel'));
@@ -137,11 +138,13 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
                 checkpreorder();
 			});
             $j("#attribute" + _szid).change(function(){
+                //alert('size changed');
                 //console.log('hello1');
                 _selsz = $j(this).val();
                 checkpreorder();
             });
             $j("#qtyselbox").change(function(){
+                //alert('qty changed');
                 //console.log('hello1');
                 _selqty = $j(this).val();
                 checkpreorder();
