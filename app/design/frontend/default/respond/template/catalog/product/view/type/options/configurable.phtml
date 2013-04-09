@@ -43,6 +43,10 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
     <?php endforeach; ?>
     </dl>
     <script type="text/javascript">
+        var _selclr = '';
+        var _selsz = '';
+        var _selqty = 1;
+        
         var spConfig = new Product.Config(<?php echo $this->getJsonConfig() ?>);
         for(i = 0; i < spConfig.config.attributes['92'].options.length; i++){
             if(spConfig.config.attributes['92'].options[i].label.indexOf('|') > 0){
@@ -58,6 +62,31 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 			}
         }
 		
+        function getqty(clr, sz)
+        {
+            for(i = 0; i < qtyinfo.length; i++)
+            {
+                if(qtyinfo[i][0] == clr && qtyinfo[i][1] == sz)
+                    return qtyinfo[i][2]; 
+            }
+            return "";
+        }
+        
+        function checkpreorder()
+        {
+            var qty = getqty(_selclr, _selsz);
+            if(qty == "")
+                $j("div.product-options-bottom button.btn-cart span span").html("Add to Cart");
+            else
+            {
+                qty = qty * 1;
+                if((qty - _selqty) < 0)
+                    $j("div.product-options-bottom button.btn-cart span span").html("pre-order now");
+                else
+                    $j("div.product-options-bottom button.btn-cart span span").html("Add to Cart");    
+            }
+        }
+        
 		function fireEvent(element,event){
 			if (document.createEventObject)
 			{
@@ -92,8 +121,23 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 				var obj = $j('#attribute92').get();
 				Event.observe(obj[0],'change',function(){});
 				fireEvent(obj[0],'change');
-			})
+                //console.log($j(this).attr('rel'));
+                _selclr = $j(this).attr('rel');
+                _selsz = '';
+                checkpreorder();
+			});
+            $j("#attribute139").change(function(){
+                //console.log('hello1');
+                _selsz = $j(this).val();
+                checkpreorder();
+            });
+            $j("#qtyselbox").change(function(){
+                //console.log('hello1');
+                _selqty = $j(this).val();
+                checkpreorder();
+            });
 			$j('#color-attr .colorbox:first').trigger('click')
+            
 		})
         //console.log(spConfig);
         //console.log(spConfig.config.attributes['92'].options);

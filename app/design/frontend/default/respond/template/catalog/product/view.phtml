@@ -33,6 +33,84 @@
 ?>
 <?php $_helper = $this->helper('catalog/output'); ?>
 <?php $_product = $this->getProduct(); ?>
+<?php
+    function srcharry($arr, $color, $size)
+    {
+        $found = false;
+        foreach($arr as $row)
+        {
+            if($row['color'] == $color && $row['size'] == $size)
+            {
+                $found = true;
+                break;
+            }
+        }
+        return $found;
+    }
+?>
+<?php
+    $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
+    $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
+    $sizeavaliable = false;
+    foreach($configurableAttributeCollection as $attribute){
+        if($attribute->getProductAttribute()->getAttributeCode() == "size")
+        {
+            $sizeavaliable = true;
+            break;
+        }
+    }
+    $qtyinfo = array();
+    foreach($_childproducts as $_childproduct)
+    {
+        $clr = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId());
+        $sz = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'size', Mage::app()->getStore()->getStoreId());
+        if(!srcharry($qtyinfo, $clr, $sz))
+        {
+            $qtyinfo[] = array("color" => $clr, "size" => $sz, "qty" => Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty());
+        }
+        
+        //$temp = $_childproduct->getAttributeText('color');
+//        if(strpos($temp,"|") !== FALSE)
+//        {
+//            $hexcodes = substr($temp, strpos($temp,"|") + 1);
+//            $hexcodes = explode(",", $hexcodes);
+//            $temp = substr($temp, 0, strpos($temp,"|"));
+//            if(!isset($productcolorinfo[$temp]))
+//                $productcolorinfo[$temp] = array();
+//            $productcolorinfo[$temp]['hex'] = $hexcodes;
+//            $productcolorinfo[$temp]['value'] = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId());
+//            echo "color name = ".$temp." value = ".Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId())."<br/>";
+//            if($sizeavaliable)
+//            {
+//                $temp = $_childproduct->getAttributeText('size');
+//                echo "size = ".$temp." value = ".Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'size', Mage::app()->getStore()->getStoreId())."<br/>";       
+//            }
+//            echo Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+//            
+//        }
+    }
+    
+    
+    
+    //echo "<pre>";
+//    print_r($qtyinfo);
+//    echo "</pre>";
+?>
+
+<script type="text/javascript">
+    var qtyinfo = new Array();
+    <?php
+        foreach($qtyinfo as $row)
+        {
+            ?>
+            qtyinfo[qtyinfo.length] = new Array('<?php echo $row['color']; ?>','<?php echo $row['size']; ?>','<?php echo $row['qty']; ?>');
+            <?php
+        }
+    ?>
+    //console.log(qtyinfo);
+</script>
+
+
 <script type="text/javascript">
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
