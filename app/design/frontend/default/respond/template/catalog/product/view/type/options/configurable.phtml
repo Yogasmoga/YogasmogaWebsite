@@ -32,6 +32,16 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 <?php if ($_product->isSaleable() && count($_attributes)):?>
     <dl>
     <?php foreach($_attributes as $_attribute): ?>
+        <?php
+            if($_attribute->getLabel() == "Size")
+            {
+                ?>
+                    <script type="text/javascript">
+                        _szid = '<?php echo $_attribute->getAttributeId(); ?>';
+                    </script>
+                <?php
+            }
+        ?>
         <dt class="attribute<?php echo $_attribute->getAttributeId() ?>"><label class="required"><?php echo $_attribute->getLabel() ?></label><span></dt>
         <dd<?php if ($_attribute->decoratedIsLast){?> class="last"<?php }?>>
             <div class="input-box">
@@ -126,7 +136,7 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
                 _selsz = '';
                 checkpreorder();
 			});
-            $j("#attribute139").change(function(){
+            $j("#attribute" + _szid).change(function(){
                 //console.log('hello1');
                 _selsz = $j(this).val();
                 checkpreorder();
