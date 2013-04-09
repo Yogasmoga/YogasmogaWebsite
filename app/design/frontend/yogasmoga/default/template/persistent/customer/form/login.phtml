@@ -127,6 +127,9 @@
             duration: 1000
         });
         $('input[disabled]').removeAttr('disabled');
+        setTimeout(function(){
+            $("#password_pass").attr("autocapitalize","off").attr("autocorrect","off");
+        }, 500);
     });
 </script>
 <?php /*

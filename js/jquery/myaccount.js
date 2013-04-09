@@ -2,6 +2,11 @@ var _refercount = 1;
 _usesecureurl = true;
 jQuery(document).ready(function($){
     
+    setTimeout(function(){
+        $("#password_password, #password_confirmation").attr("autocapitalize","off").attr("autocorrect","off");
+        $("#email_address").attr("autocapitalize","off");
+    }, 500);
+        
     $("button.gotologin").click(function(){
         window.location = securehomeUrl + 'customer/account/login?goto=cart';
     });
