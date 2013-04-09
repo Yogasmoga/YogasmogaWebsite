@@ -2780,7 +2780,7 @@ table.staticproductgrid div.item td.productimage img.active
     top : 55px;
 	box-shadow:0px 0px 1px #cecece;
     z-index : 999;
-	padding:8px; min-height:233px;
+	padding:8px; min-height:220px;
     display : none;
     border-top-width: 0;
 }
