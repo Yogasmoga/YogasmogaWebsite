@@ -63,7 +63,10 @@
     foreach($_childproducts as $_childproduct)
     {
         $clr = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId());
-        $sz = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'size', Mage::app()->getStore()->getStoreId());
+        if($sizeavaliable)
+            $sz = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'size', Mage::app()->getStore()->getStoreId());
+        else
+            $sz = '';
         if(!srcharry($qtyinfo, $clr, $sz))
         {
             $qtyinfo[] = array("color" => $clr, "size" => $sz, "qty" => Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty());
@@ -107,7 +110,7 @@
             <?php
         }
     ?>
-    //console.log(qtyinfo);
+    console.log(qtyinfo);
 </script>
 
 
