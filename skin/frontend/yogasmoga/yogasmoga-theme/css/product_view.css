@@ -321,13 +321,15 @@ table.productdetailtable table.smogibucks td div.smogibuckcount
 
 table.productdetailtable table.smogibucks td div.smogibuckcount table td
 {
-    vertical-align : middle;
+    /*vertical-align : middle;*/
+    line-height: 0;
     text-align : center;
     width : 32px;
     height : 32px;
     color : #FFF;
     font-size : 16px;
     letter-spacing: 0.2pt;
+    padding-top : 16px;
 }
 
 table.productdetailtable table.smogibucks td.earnsmogibuckstext
