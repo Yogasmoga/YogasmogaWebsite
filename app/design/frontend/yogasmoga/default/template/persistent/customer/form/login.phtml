@@ -59,7 +59,7 @@
     <tr>
         <td style="padding-right : 150px;">
             <div class="sectionheader">LOGIN OR CREATE AN ACCOUNT</div>
-            <p>If you have an account with us, please login or create an account</p>
+            <p>If you have an account with us, please<br />log in below.</p>
             <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
                 <table class="inputtable" style="margin-top : 26px;">
                     <tr>
@@ -104,7 +104,7 @@
                             <input type="submit" value="" class="loginbtn spbutton custombtn" name="send" imageurl="<?php echo $this->getSkinUrl('images/customer/login_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl("images/customer/login_on.png"); ?>" />
                         </td>
                         <td>
-                            <div class="createaccountbtn spbutton" imageurl="<?php echo $this->getSkinUrl('images/customer/create_account_button_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/customer/create_account_button_on.png'); ?>"  onclick="window.location='<?php echo Mage::helper('persistent')->getCreateAccountUrl($this->getCreateAccountUrl()); ?>'"></div>    
+                            &nbsp;    
                         </td>
                     </tr>
                 </table>
@@ -112,9 +112,11 @@
             </form>
         </td>
         <td>
-             <div class="sectionheader">USE FACEBOOK TO LOGIN</div>
-             <div class="fbloginbtn spbutton" imageurl="<?php echo $this->getSkinUrl('images/customer/facebook_button_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/customer/facebook_button_on.png'); ?>" onclick="fbLogin();"></div>
+             <div class="sectionheader">CREATE AN ACCOUNT</div>
+             <p>I am a new SMOGI.</p>
+             <div style="display: none;" class="fbloginbtn spbutton" imageurl="<?php echo $this->getSkinUrl('images/customer/facebook_button_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/customer/facebook_button_on.png'); ?>" onclick="fbLogin();"></div>
              <div style="display: none;" class="twloginbtn spbutton" imageurl="<?php echo $this->getSkinUrl('images/customer/twitter_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/customer/twitter_on.png'); ?>" onclick="twLogin();"></div>
+             <div class="createaccountbtn spbutton" imageurl="<?php echo $this->getSkinUrl('images/customer/create_account_button_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/customer/create_account_button_on.png'); ?>"  onclick="window.location='<?php echo Mage::helper('persistent')->getCreateAccountUrl($this->getCreateAccountUrl()); ?>'"></div>
         </td>
     </tr>
 </table>
