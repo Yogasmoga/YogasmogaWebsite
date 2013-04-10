@@ -63,6 +63,8 @@ jQuery(document).ready(function($){
     $("#checkout-shipping-form").submit(function(){
         if(validateShippingAddressForm())
         {
+            $("#shipping\\:firstname").val(ucFirstAllWords($("#shipping\\:firstname").val()));
+            $("#shipping\\:lastname").val(ucFirstAllWords($("#shipping\\:lastname").val()));
             saveShippingAddress();
         }
         return false;
@@ -89,6 +91,8 @@ jQuery(document).ready(function($){
         if(validateBillingAddressForm())
         {
             //saveShippingAddress();
+            $("#billing\\:firstname").val(ucFirstAllWords($("#billing\\:firstname").val()));
+            $("#billing\\:lastname").val(ucFirstAllWords($("#billing\\:lastname").val()));
             saveBillingAddress();
         }
         return false;
@@ -242,25 +246,31 @@ function reordersubsteps(stp)
         if(temp.prev().length > 0)
         {
             temp = temp.prev();
-            temp.addClass('inactive');
+            temp.addClass('inactive').addClass('codivider');
             temp.find("form").hide();
         }
         else
             break;
     }
     temp = stp;
+    var isfirst = false;
     while(true)
     {
         if(temp.next().length > 0)
         {
             temp = temp.next();
-            temp.addClass('inactive').addClass('disabled');
+            temp.addClass('inactive').addClass('disabled').removeClass('codivider');
             temp.find("form").hide();
+            temp.hide();
+            isfirst = true;
         }
         else
             break;
     }
+    if(isfirst)
+        stp.removeClass('codivider');
     stp.removeClass('inactive');
+    stp.show();
     stp.find("form").show(0, function(){
 		//jQuery('select').customSelect();
 	});
@@ -475,6 +485,7 @@ function saveShippingAddress()
             _ischeckoutprocessing = false;
             jQuery("#checkout-shipping-form input[type=submit]").show();
             jQuery("#checkout-shipping-form #procImg").remove();
+            jQuery("#shipping\\:use_for_billing").removeAttr("checked");
         }
     });
 }

@@ -37,13 +37,13 @@
 		<tr>
 			<td colspan="2">
 				<div class="sectionheader">Address Book
-				<a href="<?php echo $this->getAddAddressUrl() ?>">Add</a></div>
+				</div>
 			</td>
 		</tr>
 		
 		<tr class="customeraddress">
         <td colspan="2">
-            <div class="subsectionheader">Default Billing Address</div>
+            <div class="subsectionheader">Billing Address</div>
 			<table class="address-table">
 				<colgroup>
 					<col width="150"/>
@@ -70,7 +70,7 @@
 	</tr>
     <tr class="customeraddress">
         <td colspan="2">
-            <div class="subsectionheader">Default Shipping Address</div>
+            <div class="subsectionheader">Shipping Address</div>
 			<table class="address-table">
 				<colgroup>
 					<col width="150"/>
@@ -97,7 +97,8 @@
 	</tr>
     <tr class="customeraddress">
 		<td>
-            <div class="subsectionheader">additional addresses</div>
+            <div class="subsectionheader">additional addresses
+            <a href="<?php echo $this->getAddAddressUrl() ?>">Add</a></div>
 			<table class="address-table">
 				<colgroup>
 					<col width="150"/>

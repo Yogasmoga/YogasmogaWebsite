@@ -71,11 +71,11 @@
             <div class="checkoutstepheader codivider">
                 1. SHIPPING DETAILS
             </div>
-            <div id="coshippingaddress" class="checkoutsubstep codivider">
+            <div id="coshippingaddress" class="checkoutsubstep">
                 <div class="checkoutstepsubheader firstsubstep">SHIPPING ADDRESS</div>
                 <?php echo $this->getChildHtml('shipping'); ?>
             </div>
-            <div id="coshippingmethod" class="checkoutsubstep inactive disabled">
+            <div id="coshippingmethod" class="checkoutsubstep inactive disabled" style="display: none;">
                 <div class="checkoutstepsubheader">SHIPPING METHOD</div>
                 <div id="shippingmethods"></div>
             </div>

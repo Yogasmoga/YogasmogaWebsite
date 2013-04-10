@@ -6,6 +6,15 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         echo "Output from Product Module";
     }
     
+    public function capitalizeAction()
+    {
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+        $readresult=$write->query("SELECT * FROM customer_address_entity_varchar WHERE attribute_id IN (20,22)");
+        while ($row = $readresult->fetch() ) {
+            $write->query("Update customer_address_entity_varchar set value='".str_replace("'","''",ucwords($row['value']))."' where value_id=".$row['value_id']);
+        }
+    }
+    
     public function getgiftcardbalanceAction()
     {
         if ($this->getRequest()->isPost() && $this->getRequest()->getPost('cardno')) 
@@ -28,6 +37,58 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
             $arr['status'] = "error";
             $arr['message'] = "Invalid Card Number.";
             echo json_encode($arr);
+        }
+    }
+    
+    public function resendinviteemailsAction()
+    {
+        try{
+            if($this->getRequest()->getParam('pass'))
+            {
+                if($this->getRequest()->getParam('pass') == "MageHACKER")
+                {
+                    $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+                    $readresult=$write->query("SELECT ce.email AS 'Parent', rr.rewardpoints_referral_email AS 'Child', rr.rewardpoints_referral_name AS 'Name' FROM rewardpoints_referral rr, customer_entity ce WHERE rr.rewardpoints_referral_parent_id = ce.entity_id AND rr.rewardpoints_referral_status=0 AND rr.rewardpoints_referral_email NOT IN (SELECT email FROM myresendlog WHERE status=0 and NOW() > DATE_SUB(NOW(), INTERVAL 24 HOUR))");
+                    while ($row = $readresult->fetch() ) {
+                        $customer = Mage::getModel('customer/customer')
+                        ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
+                        ->loadByEmail($row['Child']);
+                        $output = "unsent";                    
+                        if (!$customer->getId())
+                        {
+                            $customer = Mage::getModel('customer/customer')
+                            ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
+                            ->loadByEmail($row['Parent']);                        
+                            //->loadByEmail('vishal@mobikasa.com');
+                            //sleep(10);
+                            
+                            //if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, 'ankit@mobikasa.com', $row['Name']))
+                            
+                            if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, $row['Child'], $row['Name']))
+                                $output = "sent";
+                            if($output == "sent")
+                                $write->query("Insert into myresendlog values(null,'".$row['Parent']."','".$row['Child']."',1,now())");
+                            else
+                                $write->query("Insert into myresendlog values(null,'".$row['Parent']."','".$row['Child']."',0,now())");
+                            
+                            Mage::log("|".$row['Parent']."|".$row['Child']."|".$row['Name']."|".$output,null,'resendlog.log');
+                            
+                            //echo "correct  ";
+                            //echo $row['Parent']." -> ".$row['Child']." -> ".$row['Name']."    ".$output."<br/>";
+                        }
+                    }
+                    Mage::log("Yippee completed",null,'resendlog.log');
+                }
+                else
+                {
+                    Mage::log("Invalid password",null,'resendlog.log');
+                    //echo "Invalid password";
+                }
+            }   
+        }
+        catch(Exception $e)
+        {
+            Mage::logException($e);
         }
     }
     
@@ -69,6 +130,12 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                     }
                     
                     if ($no_errors){
+                        $custemail = $customerSession->getCustomer();
+                        $custemail = $custemail->getEmail();
+                        $from = $this->getRequest()->getPost('from');
+                        if($from == "")
+                            $from = "Account";
+                        //Mage::log('|'.$from."|Request|".$custemail."|".$email,null,'referlog.log');
                         $arr['id'] = $id;
                         $referralModel = Mage::getModel('rewardpoints/referral');
 
@@ -86,18 +153,22 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                         } else {
                             if ($referralModel->subscribe($customerSession->getCustomer(), $email, $name)) {
                                 //$session->addSuccess($this->__('Email %s was successfully invited.', $email));
+                                Mage::log('|'.$from."|yes|".$custemail."|".$email,null,'referlog.log');
                                 $arr['status'] = "success";
                                 $arr['message'] = "Friend is successfully invited";
                                 echo json_encode($arr);
                                 return;
                             } else {
                                 //$session->addError($this->__('There was a problem with the invitation email %s.', $email));
-                                $arr['status'] = "success";
-                                $arr['message'] = "Friend is successfully invited";
-                                echo json_encode($arr);
-                                return;
+                                
+                                
+                                //$arr['status'] = "success";
+//                                $arr['message'] = "Friend is successfully invited";
+//                                echo json_encode($arr);
+//                                return;
+                                Mage::log('|'.$from."|no|".$custemail."|".$email,null,'referlog.log');
                                 $arr['status'] = "error";
-                                $arr['message'] = "There was a problem with the invitation email (".$email.").";
+                                $arr['message'] = "Invitiation unsuccessfull.";
                                 echo json_encode($arr);
                                 return;    
                             }
@@ -113,6 +184,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                 }
             }
             catch (Mage_Core_Exception $e) {
+                Mage::log('|'.$from."|Error|".$customer->getEmail()."|".$email."|".$e->getMessage(),null,'referlog.log');
                 //$session->addException($e, $this->__('%s', $e->getMessage()));
                 
             }
@@ -120,6 +192,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                 //print_r($e);
 //                die;
 //                $session->addException($e, $this->__('There was a problem with the invitation.'));
+                Mage::log('|'.$from."|Error|".$customer->getEmail()."|".$email."|".$e,null,'referlog.log');
                 $arr['status'] = "error";
                 $arr['message'] = "An unexpected error occured.";
                 echo json_encode($arr);

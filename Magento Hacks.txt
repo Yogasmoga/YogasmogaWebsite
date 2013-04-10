@@ -1,0 +1,1 @@
+Modified Function forgotPasswordPostAction() at app\code\core\Mage\Customer\controllers to show custom message when email id is not registered.

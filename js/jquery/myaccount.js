@@ -2,6 +2,11 @@ var _refercount = 1;
 _usesecureurl = true;
 jQuery(document).ready(function($){
     
+    setTimeout(function(){
+        $("#password_password, #password_confirmation").attr("autocapitalize","off").attr("autocorrect","off");
+        $("#email_address").attr("autocapitalize","off");
+    }, 500);
+        
     $("button.gotologin").click(function(){
         window.location = securehomeUrl + 'customer/account/login?goto=cart';
     });
@@ -18,7 +23,14 @@ jQuery(document).ready(function($){
     });
     
     $("#register-form").submit(function(){
-        return validateRegistrationForm();
+        if(validateRegistrationForm())
+        {
+            $("#register-form #firstname").val(ucFirstAllWords($("#register-form #firstname").val()));
+            $("#register-form #lastname").val(ucFirstAllWords($("#register-form #lastname").val()));
+            return true;
+        }
+        else
+            return false;
     });
     
     $("#wishlist-view-form").submit(function(){
@@ -33,7 +45,14 @@ jQuery(document).ready(function($){
     });
     
     $("#edit-accountinfo").submit(function(){
-        return validateAccountEditForm();
+        if(validateAccountEditForm())
+        {
+            $("#edit-accountinfo #firstname").val(ucFirstAllWords($("#edit-accountinfo #firstname").val()));
+            $("#edit-accountinfo #lastname").val(ucFirstAllWords($("#edit-accountinfo #lastname").val()));
+            return true;
+        }
+        else
+            return false;
     });
     $("#change_password").click(function(){
         togglePasswordChangeOption();

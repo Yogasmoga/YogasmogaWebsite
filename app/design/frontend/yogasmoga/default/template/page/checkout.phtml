@@ -37,13 +37,13 @@
     _disablesidenavigation = true;
 </script>
 </head>
-<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().' checkout-continue"':'class="checkout-continue"' ?>>
 <?php echo $this->getChildHtml('after_body_start') ?>
 <div class="wrapper">
     <?php echo $this->getChildHtml('global_notices') ?>
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
-        <div id="pagecontainer" class="accountbg">
+        <div id="pagecontainer">
             <div id="checkout" class="fullscreen pgsection" desc="Accounts Page" style="position: relative;">
                 <div class="myheader">CHECK OUT</div>
                 <?php echo $this->getChildHtml('content'); ?>

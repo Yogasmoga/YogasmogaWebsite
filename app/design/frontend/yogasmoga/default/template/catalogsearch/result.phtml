@@ -52,6 +52,7 @@
     <tr>
         <td class="searchsidenavigation">
             <div class="alwaysvisible">
+                <?php /*
                 <?php
                     $collection = Mage::getModel('catalogsearch/query')->getCollection()
                                      ->setPopularQueryFilter()
@@ -73,14 +74,21 @@
                         <?php
                     } 
                 ?>
+                */ ?>
                 <div class="subheader">HELPFUL LINKS</div>
+                <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>our-edge#sizechart">
+                    <div>SIZE CHART</div>
+                </a>
+                <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>gift_of_ys">
+                    <div>GIFT OF YS</div>
+                </a>
                 <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks">
                     <div>SMOGI BUCKS</div>
                 </a>
-                <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>our-edge#size">
-                    <div>SIZE CHART</div>
+                <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>our-story#guidingSMOGI">
+                    <div>NADIA ZAKI</div>
                 </a>
-                <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>help/#deliverypg">
+                <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>help/#delivery">
                     <div>DELIVERY &amp; RETURNS</div>
                 </a>   
             </div>

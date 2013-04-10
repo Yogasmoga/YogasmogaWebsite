@@ -1322,7 +1322,7 @@ span.caddress span.ccon {display:block;}
 
 /* Discount Codes & Estimate Shipping and Tax Boxes */
 .cart .discount,
-.cart .shipping { border:1px solid #d0cbc1; background:#fff url(../images/bkg_block-title.gif) 0 0 repeat-x; padding:12px 15px; margin:0 0 18px; }
+.cart .shipping { border:1px solid #d0cbc1; background:#fff url(../images/bkg_block-title.gif) 0 0 repeat-x; padding:12px 15px 12px 0; margin:0 0 18px; }
 .cart .discount h2,
 .cart .shipping h2 { background-position:0 0; background-repeat:no-repeat; font:bold 13px/16px Arial, Helvetica, sans-serif; padding:0 0 0 21px; color:#dd8820; text-transform:uppercase; }
 .cart .discount button span,
@@ -2780,7 +2780,7 @@ table.staticproductgrid div.item td.productimage img.active
     top : 55px;
 	box-shadow:0px 0px 1px #cecece;
     z-index : 999;
-	padding:8px; min-height:260px;
+	padding:8px; min-height:220px;
     display : none;
     border-top-width: 0;
 }
@@ -3079,7 +3079,7 @@ table.inputtable td.errortext div,table.gfredeem td.errortext div,table#redeem t
 
 .productdtlbg
 {
-    background-image: url("../images/productdtlbg.png");
+    background-image: url("../images/background/productdtlbg.jpg");
     background-position: center top;
     background-repeat: repeat-y;
     background-size: cover;
@@ -3087,7 +3087,7 @@ table.inputtable td.errortext div,table.gfredeem td.errortext div,table#redeem t
 
 .mainshoppingbg
 {
-    background-image: url("../images/main_shopping_bg.png");
+    background-image: url("../images/background/main_shopping_bg.jpg");
     background-position: center top;
     background-repeat: repeat-y;
     background-size: cover;
@@ -3293,7 +3293,7 @@ div.giftcard-login-msg, div.giftcard-login-msg button
 div.giftcard-login-msg a
 {
     color : #D90D3D;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 a.videosharelink div
 {
@@ -3671,3 +3671,27 @@ div.gotoshoppingbag
     height: 28px;
     margin : 5px 0;
 }
+
+body.cms-mens
+{
+    background:#fff url(../images/background/cat_mens_bg.jpg) 0 0 no-repeat; background-size:100%;
+}
+
+body.catalogsearch-result-index
+{
+    background:#fff url("../images/background/search_bg.jpg") 0 0 no-repeat; background-size:100%;
+}
+
+body.checkout-cart-index
+{
+    background:#fff url("../images/background/shoppingbag_bg.jpg") 0 0 no-repeat; background-size:100%;
+}
+
+body.checkout-continue
+{
+    background:#fff url("../images/background/checkout_bg.jpg") 0 0 no-repeat; background-size:100%;
+}
+
+
+
+ 

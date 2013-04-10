@@ -24,6 +24,7 @@
     background-position: center;
     width : 185px;
     height : 29px;
+    margin-top : 47px;
 }
 
 .sectionheader
@@ -171,7 +172,7 @@ a.forgot-link:hover
 }
 .accountbg
 {
-    background-image : url('../images/customer/myaccount_bg.jpg');
+    background-image : url('../images/background/myaccount_bg.jpg');
     background-size : cover;
     background-position: center top;
     background-repeat: repeat-y;
@@ -484,6 +485,7 @@ div.copy
     width : 93px;
     height : 29px;
     margin-left : 18px;
+    display:none; 
 }
 table.referfriend-invitehead
 {
@@ -651,7 +653,7 @@ table.referredfriendslist td.status
 {
     text-align: center;
     padding-bottom : 10px;
-    vertical-align: bottom;
+    vertical-align: middle;
 }
 table.myaccount-redeem-giftcard
 {

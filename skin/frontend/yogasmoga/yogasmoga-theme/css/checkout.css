@@ -59,7 +59,7 @@ div.checkoutstepheader
     font-size: 18px;
     height: 42px;
     letter-spacing: 0.6pt;
-    margin-bottom: 50px;
+    /*margin-bottom: 10px;*/
     padding-top: 13px;
     cursor : default;
 } 
@@ -309,7 +309,6 @@ div#ordersummary span.anchor, div#shippingsummary span.anchor
     font-family:gothamMedium;
     font-size : 11px;
     letter-spacing: 0.6pt;
-    font-weight : bold;
     text-transform: uppercase;
     white-space: nowrap;
 }
@@ -463,4 +462,24 @@ div#shippingsummary td#ordersubtotal
 #myminicart div.minicartitems img.delete
 {
     display: none !important;
+}
+#tblcheckoutsteps div.checkoutsteps.inactive div.checkoutstepheader, #tblcheckoutsteps div.checkoutsubstep.inactive div.checkoutstepsubheader
+{
+    cursor : pointer;
+}
+#tblcheckoutsteps div.checkoutsteps.disabled div.checkoutstepheader, #tblcheckoutsteps div.checkoutsubstep.disabled div.checkoutstepsubheader:hover
+{
+    cursor : default;
+}
+#tblcheckoutsteps div.checkoutsteps.inactive div.checkoutstepheader:hover, #tblcheckoutsteps div.checkoutsubstep.inactive div.checkoutstepsubheader:hover
+{
+    color : #d90d3d;
+}
+#tblcheckoutsteps div.checkoutsteps.disabled div.checkoutstepheader:hover, #tblcheckoutsteps div.checkoutsubstep.disabled div.checkoutstepsubheader:hover
+{
+    color : #2F2F2F;
+}
+#tblcheckoutsteps div.checkoutsubstep.inactive
+{
+    
 }
