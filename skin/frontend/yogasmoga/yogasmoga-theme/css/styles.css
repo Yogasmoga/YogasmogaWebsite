@@ -3293,7 +3293,7 @@ div.giftcard-login-msg, div.giftcard-login-msg button
 div.giftcard-login-msg a
 {
     color : #D90D3D;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 a.videosharelink div
 {
