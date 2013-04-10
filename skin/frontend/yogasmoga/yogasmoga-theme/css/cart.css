@@ -212,7 +212,7 @@ h1.big-title{font-size:100px; font-family:gotham-t, Arial; line-height:104px; te
 }
 .nodisplay{ display: none;}
 
-body.rewardpoints-index-referral{background:url(../images/refer-bg.png) 50% 80px no-repeat;background-size:cover;}
+/* body.rewardpoints-index-referral{background:url(../images/refer-bg.png) 50% 80px no-repeat;background-size:cover;} */
 .refer-friend{max-width:1200px; padding:0 15px; width:auto; margin:0 auto; text-align:left;}
 .refer-friend h2.sub-title{text-transform:uppercase; font-size:18px; font-weight:normal; font-family:gotham, Arial; text-align:center; line-height:1.2; color:#000; letter-spacing:0.03em; padding:0 0 35px; margin:0 0 45px; background:url(../images/title-bg.png) 50% 100% no-repeat;}
 .refer-friend h2.sub-title span{font-size:12px; font-family:gotham-l, Arial; text-transform:none; display:block;}

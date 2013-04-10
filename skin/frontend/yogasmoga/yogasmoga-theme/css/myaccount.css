@@ -485,6 +485,7 @@ div.copy
     width : 93px;
     height : 29px;
     margin-left : 18px;
+    display:none; 
 }
 table.referfriend-invitehead
 {
