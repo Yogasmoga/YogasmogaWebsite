@@ -3692,6 +3692,10 @@ body.checkout-continue
     background:#fff url("../images/background/checkout_bg.jpg") 0 0 no-repeat; background-size:100%;
 }
 
+#Sitemap.pgsection {
+    padding-top:20px;
+}
+
 
 
  

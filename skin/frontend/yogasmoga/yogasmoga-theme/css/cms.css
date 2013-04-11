@@ -32,7 +32,7 @@ body.cms-our-story{background:#fff url(../images/cms_bg.jpg) 0 0 no-repeat; back
 .story-page .guiding{width:770px;}
 .story-page .principles{width:973px;}
 
-#press table td h2.heading {
+#Press table td h2.heading {
     margin: 0 0 5px;
     text-align: left;
     font-family : AvantGardeGothicBold;
@@ -41,23 +41,23 @@ body.cms-our-story{background:#fff url(../images/cms_bg.jpg) 0 0 no-repeat; back
     line-height: 18px;   
 }
 
-#press table td p {
+#Press table td p {
     font-family : gotham;
     font-size : 12px ;
     line-height: 17px;
 }
 
-#press table td {
+#Press table td {
     text-align:left;
     padding-bottom: 36px;   
 }
 
-#press table td a {
+#Press table td a {
     border-bottom: #D90D3D 1px solid;
       
 }
 
-#press table td div {
+#Press table td div {
     min-height:90px; 
 }
 
@@ -361,7 +361,7 @@ button.btn-brecelet:active span{background-position:0 100%;}
     margin-right : auto;
 }
 /*============= TERMS & PRIVACY POLICY =========*/
-.cmspg *{color:#666; font-family:gotham-l; line-height:1.3;}
+.cmspg *{color:#666; font-family:gotham; line-height:1.3;}
 .cmspg a{color:#d90d3d}
 .page-title.grey{}
 .page-title.grey h1{color:#dd8820;background-image:url(../images/title-bg.png);}
