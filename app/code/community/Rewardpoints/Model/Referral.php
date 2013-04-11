@@ -102,7 +102,8 @@ class Rewardpoints_Model_Referral extends Mage_Core_Model_Abstract
         );
 
         $sender  = array(
-            'name' => strip_tags($parent->getFirstname().' '.$parent->getLastname()),
+            //'name' => strip_tags($parent->getFirstname().' '.$parent->getLastname()),
+            'name' => 'YOGASMOGA',
             //'email' => strip_tags($parent->getEmail())
             'email' => 'hello@yogasmoga.com'
         );
