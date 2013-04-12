@@ -217,6 +217,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
     {
         //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN);
 //        return;
+        $isrewardable = false;
         $_helper = Mage::helper('catalog/output');
         $_product = Mage::getModel('catalog/product')->load($this->getRequest()->getParam('id'));
         //$_product = Mage::getModel('catalog/product')->load($this->getRequest()->getPost('id'));
@@ -299,6 +300,8 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
             $rewardpoints = strip_tags($rewardpoints);
             //$rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "loyalty") - 1 - strlen("loyalty") - strpos($rewardpoints, "earn") + strlen("earn")));
             $rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "smogi") - 3 - strlen("smogi") - strpos($rewardpoints, "earn") + strlen("earn")));
+            if($rewardpoints > 0)
+                $isrewardable = true;
             if($sizeavaliable)
                 $temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
             else
@@ -634,7 +637,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                                         </select>
                                     </div>
                                     <div class="divider"></div>
-                                    <table class="smogibucks">
+                                    <table class="smogibucks" <?php if(!$isrewardable) { echo "style='display:none;'"; } ?>>
                                         <tr>
                                             <td>
                                                 <div class="smogibuckcount">
