@@ -56,6 +56,7 @@ jQuery(window).load(function(){
     //$pts = Mage::helper('rewardpoints/data')->getPointsOnOrder();
     //echo Mage::helper('rewardpoints/data')->getEquivalence($pts);
     //echo $pts;
+    $isrewardable = false;
     $howdoesitfitblockid = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId());
     $sizechartblockid = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'size_chart', Mage::app()->getStore()->getStoreId());
     $cats = $_product->getCategoryIds();
@@ -153,6 +154,8 @@ jQuery(window).load(function(){
         $rewardpoints = strip_tags($rewardpoints);
         //$rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "loyalty") - 1 - strlen("loyalty") - strpos($rewardpoints, "earn") + strlen("earn")));
         $rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "smogi") - 3 - strlen("smogi") - strpos($rewardpoints, "earn") + strlen("earn")));
+        if($rewardpoints > 0)
+            $isrewardable = true;
         if($sizeavaliable)
             $temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
         else
@@ -543,7 +546,7 @@ jQuery(window).load(function(){
                         </select>
                     </div>
                     <div class="divider"></div>
-                    <table class="smogibucks">
+                    <table class="smogibucks" <?php if(!$isrewardable) { echo "style='display:none;'"; } ?>>
                         <tr>
                             <td>
                                 <div class="smogibuckcount">
