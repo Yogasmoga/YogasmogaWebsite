@@ -111,6 +111,7 @@
         <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('checkout_shipping_info')->toHtml(); ?>
     </div>
 </div>
+<?php /*
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jQuery.dPassword.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function($){
@@ -123,6 +124,7 @@
         $('input[disabled]').removeAttr('disabled');
     });
 </script>
+*/ ?>
 <?php /*
 <table id="tblcheckoutsteps" <?php if(!$this->helper('customer')->isLoggedIn()) { ?> style="display: none;" <?php } ?>>
     <tr>

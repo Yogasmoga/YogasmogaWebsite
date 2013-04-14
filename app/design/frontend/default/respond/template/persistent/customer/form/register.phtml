@@ -43,11 +43,13 @@
                 <input type="text" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" class="requiredfield" defaulterrormsg="Email Address is required" />
             </td>
         </tr>
+        <!--
         <tr>
             <td class="errortext" colspan="2">
                 <div>Email Address is required.</div>
             </td>
         </tr>
+        -->
     </table>
     <?php
         if($this->isNewsletterEnabled())
@@ -74,11 +76,13 @@
                 <input type="password" class="requiredfield" name="password" id="password" defaulterrormsg="Password is required" />
             </td>
         </tr>
+        <!--
         <tr>
             <td class="errortext" colspan="2">
                 <div>Password is required.</div>
             </td>
         </tr>
+        -->
      </table>
      <table class="inputtable">
         <tr>
@@ -87,18 +91,21 @@
                 <input type="password" class="requiredfield" name="confirmation" id="confirmation" defaulterrormsg="Confirmation Password is required" />
             </td>
         </tr>
+        <!--
         <tr>
             <td class="errortext" colspan="2">
                 <div>Please Confirm Password.</div>
             </td>
         </tr>
+        -->
      </table>     
-        <input type="submit" value="" class="submitbtn spbutton custombtn" name="send" imageurl="<?php echo $this->getSkinUrl('images/customer/submit_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl("images/customer/submit_on.png"); ?>" />
+        <input type="submit" value="submit" class="submitbtn spbutton custombtn button" name="send" imageurl="<?php echo $this->getSkinUrl('images/customer/submit_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl("images/customer/submit_on.png"); ?>" />
         <div class="loginerrormsg errormsg"><?php echo strip_tags($this->getMessagesBlock()->getGroupedHtml()); ?></div>
 </form>
 <div class="backlink">
     <a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>" class="back-link">&lt;&nbsp;<?php echo $this->__('Back') ?></a>
 </div>
+<?php /*
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jQuery.dPassword.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function($){
@@ -108,6 +115,7 @@
         $('input[disabled]').removeAttr('disabled');
     });
 </script>
+*/ ?>
 <?php /*
 <div class="account-create">
     <div class="page-title">
