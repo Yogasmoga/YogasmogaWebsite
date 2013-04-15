@@ -308,6 +308,11 @@
                         <table class="staticproductgrid">
                             <tr>
                         <?php
+                            $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                            $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
+                            while ($row = $readresult->fetch() ) {
+                                $clrinfo[$row['Value']] = $row['Attribute'];    
+                            }
                             $category = Mage::getModel('catalog/category')->load(9);
                             $_helper = $this->helper('catalog/output');
                             $productcount = 0;
@@ -333,6 +338,8 @@
                                     if(strpos($colors,",".$temp.",") == false)
                                         $colors .= $temp.",";  
                                 }
+                                $model = Mage::getModel('catalog/product');
+                                $_product = $model->load($_product->getId());
                                 ?>
                                     <td class="tdmain" style="width : <?php echo $tdwidth."%"; ?>;">
                                     <div bestfor="<?php echo ",".Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'bestfor', Mage::app()->getStore()->getStoreId()).","; ?>" cat="<?php echo ",".implode(",", $_product->getCategoryIds()).","; ?>" id="<?php echo $_product->getId(); ?>" class="item" color="<?php echo $colors; ?>">
@@ -364,6 +371,17 @@
                 //                                                continue;
                                                             if($index > 3)
                                                                 break;
+                                                                
+                                                            $alt = "";
+            												if(isset($imgdata['alt']))
+                                                                $alt = $imgdata['alt'];
+                                                            
+                                                            if($alt == "")
+                                                            {
+                                                                $alt = html_entity_decode($_helper->productAttribute($_product, $_product->getName(), 'name'));
+                                                                if(isset($imgdata['color']))
+                                                                    $alt .= " - ".$clrinfo[$imgdata['color']];
+                                                            }
                                                             ?>
                                                             <img class="shareit
                                                             <?php
@@ -392,7 +410,7 @@
                                                                 }
                                                             ?>
                                                             "
-                                                             src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>"  alt="<?php if(isset($imgdata['alt'])) { echo $imgdata['alt']; } ?>" />
+                                                             src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>"  alt="<?php echo $alt; ?>" />
                                                             <?php
                                                             $index++;
                                                         } 
@@ -415,8 +433,8 @@
                                             <tr>
                                                 <td class="productname">
                                                     <?php 
-                                                    $model = Mage::getModel('catalog/product');
-                                                    $_product = $model->load($_product->getId());
+                                                    //$model = Mage::getModel('catalog/product');
+//                                                    $_product = $model->load($_product->getId());
                                                     //echo $_product->getPrice();
                                                     echo html_entity_decode($_helper->productAttribute($_product, $_product->getName(), 'name'));
                                                     //echo $_product->getName(); ?>
