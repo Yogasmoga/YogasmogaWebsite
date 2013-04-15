@@ -188,13 +188,14 @@ jQuery(window).load(function(){
                     if(isset($imgdata['alt']))
                         $alt = $imgdata['alt'];
                         
-                    if($alt == "")
-                    {
-                        $abcclr = $_childproduct->getAttributeText('color');
-                        if(strpos($abcclr, "|") !== false)
-                            $abcclr = substr($abcclr, 0, strpos($abcclr, "|"));
-                        $alt = $productname." - ".$abcclr;
-                    }
+                    //if($alt == "")
+//                    {
+//                        $abcclr = $_childproduct->getAttributeText('color');
+//                        if(strpos($abcclr, "|") !== false)
+//                            $abcclr = substr($abcclr, 0, strpos($abcclr, "|"));
+//                        $alt = $productname." - ".$abcclr;
+//                    }
+                    
                     //echo $imageurl;
                     $smallimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75)->setQuality(90)."|".$alt;
                     $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(900, 900)->setQuality(90)."|".$alt;
