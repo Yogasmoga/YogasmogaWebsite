@@ -399,6 +399,14 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                         if(isset($imgdata['alt']))
                             $alt = $imgdata['alt'];
                         //echo $imageurl;
+                        if($alt == "")
+                        {
+                            $abcclr = $_childproduct->getAttributeText('color');
+                            if(strpos($abcclr, "|") !== false)
+                                $abcclr = substr($abcclr, 0, strpos($abcclr, "|"));
+                            $alt = $productname." - ".$abcclr;
+                        }
+                        
                         $smallimageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75)->setQuality(100)."|".$alt;
                         $imageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(450, 450)->setQuality(100)."|".$alt;
                         $zoomimageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(750, 750)->setQuality(100)."|".$alt;
