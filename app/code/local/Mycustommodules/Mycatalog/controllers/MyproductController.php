@@ -512,8 +512,8 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                         $abc = explode("|", $val['images']['zoom'][$i]);
                         ?>
                             _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>] = new Array();
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>][0] = '<?php echo substr($abc[0], 1); ?>';
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>][1] = '<?php echo $abc[1]; ?>';
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
                         <?php
                     } 
                 ?>
@@ -524,8 +524,8 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                         $abc = explode("|", $val['images']['small'][$i]);
                         ?>
                             _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>] = new Array();
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>][0] = '<?php echo substr($abc[0], 1); ?>';
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>][1] = '<?php echo $abc[1]; ?>';
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
                         <?php
                     } 
                 ?>
@@ -536,8 +536,8 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                         $abc = explode("|", $val['images']['big'][$i]);
                         ?>
                             _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>] = new Array();
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>][0] = '<?php echo substr($abc[0], 1); ?>';
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>][1] = '<?php echo $abc[1]; ?>';
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
                         <?php
                     } 
                 ?>
