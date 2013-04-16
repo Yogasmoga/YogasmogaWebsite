@@ -187,13 +187,20 @@ jQuery(window).load(function(){
                     $alt = "";
                     if(isset($imgdata['alt']))
                         $alt = $imgdata['alt'];
-                        
-                    if($alt == "")
+                    
+                    try{
+                        if($alt == "")
+                        {
+                            $abcclr = $_childproduct->getAttributeText('color');
+                            if(strpos($abcclr, "|") !== false)
+                                $abcclr = substr($abcclr, 0, strpos($abcclr, "|"));
+                            $alt = $productname." - ".$abcclr;
+                        }    
+                    }
+                    catch(Exception $e)
                     {
-                        $abcclr = $_childproduct->getAttributeText('color');
-                        if(strpos($abcclr, "|") !== false)
-                            $abcclr = substr($abcclr, 0, strpos($abcclr, "|"));
-                        $alt = $productname." - ".$abcclr;
+                        echo $e->getMessage();
+                        Mage::logException($e);
                     }
                     
                     //echo $imageurl;
