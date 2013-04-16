@@ -97,6 +97,9 @@ button.btn-checkout:active span{
 
 button.btn-login span{padding:0; width:88px; text-indent:-999em; height:28px; margin:0; background:url(../images/btn-login.png) 0 0 no-repeat; border:0;}
 
+button.btn-login-big span{padding:0; width:289px; text-indent:-999em; height:29px; margin:0; background:url(../images/log_in_off_big.png) 0 0 no-repeat; border:0;}
+
+button.btn-login-big:active span{background-image: url('../images/log_in_on_big.png');}
 button.button.btn-apply span{padding:0; width:88px; text-indent:-999em; height:28px; margin:0; background:url(../images/btn-apply.png) 0 0 no-repeat; border:0;}
 
 button.button.btn-apply span{
@@ -237,8 +240,10 @@ h3.heading-track.center
 
 table.tblsmogilogin button
 {
-    margin-left : 20px;
+    /*margin-left : 20px;*/
+    margin-top : 5px;
 }
+
 table.tblsmogilogin
 {
     font-size : 11px;
