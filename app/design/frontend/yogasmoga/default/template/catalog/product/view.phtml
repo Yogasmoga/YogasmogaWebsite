@@ -202,7 +202,7 @@ jQuery(window).load(function(){
                         echo $e->getMessage();
                         Mage::logException($e);
                     }
-                    
+                    echo $alt;
                     //echo $imageurl;
                     $smallimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75)->setQuality(90)."|".$alt;
                     $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(900, 900)->setQuality(90)."|".$alt;
