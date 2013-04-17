@@ -970,8 +970,8 @@ div#absproductoptions div#preorderinfo, td.popupproductdetail div#preorderinfo
 }
 td.popupproductdetail div#preorderinfo
 {
-    bottom : 70px;
-    left : 263px;
+    bottom : 0;
+    left : 295px;
         
 }
 div#absproductoptions div#preorderinfo img.closeinfo, td.popupproductdetail div#preorderinfo img.closeinfo
