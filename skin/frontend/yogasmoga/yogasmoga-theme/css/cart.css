@@ -98,8 +98,14 @@ button.btn-checkout:active span{
 button.btn-login span{padding:0; width:88px; text-indent:-999em; height:28px; margin:0; background:url(../images/btn-login.png) 0 0 no-repeat; border:0;}
 
 button.btn-login-big span{padding:0; width:289px; text-indent:-999em; height:29px; margin:0; background:url(../images/log_in_off_big.png) 0 0 no-repeat; border:0;}
-
 button.btn-login-big:active span{background-image: url('../images/log_in_on_big.png');}
+
+button.btn-loginsmogi span{padding:0; width:289px; text-indent:-999em; height:29px; margin:0; background:url(../images/login_smogi_off.png) 0 0 no-repeat; border:0;}
+button.btn-loginsmogi:active span{background-image: url('../images/login_smogi_on.png');}
+
+button.btn-logingoys span{padding:0; width:289px; text-indent:-999em; height:29px; margin:0; background:url(../images/login_goys_off.png) 0 0 no-repeat; border:0;}
+button.btn-logingoys:active span{background-image: url('../images/login_goys_on.png');}
+
 button.button.btn-apply span{padding:0; width:88px; text-indent:-999em; height:28px; margin:0; background:url(../images/btn-apply.png) 0 0 no-repeat; border:0;}
 
 button.button.btn-apply span{
