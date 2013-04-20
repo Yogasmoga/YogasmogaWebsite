@@ -61,7 +61,9 @@
             <th><?php echo $this->__('Date') ?></th>
             <th><?php echo $this->__('Ship To') ?></th>
             <th><span class="nobr"><?php echo $this->__('Order Total') ?></span></th>
+            <?php /*
             <th><span class="nobr"><?php echo $this->__('Order Status') ?></span></th>
+            */ ?>
             <th>&nbsp;</th>
         </tr>
     </thead>
@@ -73,7 +75,7 @@
             <td><span class="nobr"><?php echo $this->formatDate($_order->getCreatedAtStoreDate()) ?></span></td>
             <td><?php echo $_order->getShippingAddress() ? $this->htmlEscape($_order->getShippingAddress()->getName()) : '&nbsp;' ?></td>
             <td class="numeric"><?php echo $_order->formatPrice($_order->getGrandTotal()) ?></td>
-            <td><em><?php echo $_order->getStatusLabel() ?></em></td>
+            <?php /* <td><em><?php echo $_order->getStatusLabel() ?></em></td> */ ?>
             <td class="a-center">
                 <span class="nobr"><a href="<?php echo $this->getViewUrl($_order) ?>"><?php echo $this->__('View Order') ?></a>
                     <?php /*<span class="separator">|</span><a href="<?php echo $this->getTrackUrl($_order) ?>"><?php echo $this->__('Track Order') ?></a>&nbsp;*/ ?>
