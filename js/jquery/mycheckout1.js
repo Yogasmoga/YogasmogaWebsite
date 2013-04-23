@@ -274,6 +274,14 @@ function reordersubsteps(stp)
     stp.find("form").show(0, function(){
 		//jQuery('select').customSelect();
 	});
+    //console.log(stp.offset());
+//    console.log(jQuery("html").scrollTop());
+//    console.log(stp.offset().top - jQuery("html").scrollTop() - _headerHeight);
+    if((stp.offset().top - jQuery("html").scrollTop() - _headerHeight) < 0)
+    {
+        //console.log('entered');
+        jQuery("html").scrollTop(jQuery("html").scrollTop() + (stp.offset().top - jQuery("html").scrollTop() - _headerHeight));
+    }
 }
 
 function reordersteps(stp)
