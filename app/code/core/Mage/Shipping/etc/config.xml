@@ -204,6 +204,17 @@
                     <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
                     <handling_type>F</handling_type>
             </ysprimeservice>
+            <ysinternationalpriority>
+                    <active>0</active>
+                    <sallowspecific>0</sallowspecific>
+                    <model>shipping/carrier_ysinternationalpriority</model>
+                    <name>YS International Priority Service</name>
+                    <price>5.00</price>
+                    <title>YS International Priority Service</title>
+                    <type>I</type>
+                    <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                    <handling_type>F</handling_type>
+            </ysinternationalpriority>
         </carriers>
     </default>
 </config>

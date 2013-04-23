@@ -1131,7 +1131,7 @@ ul.products-grid { margin: 0; }
 
 /* Regular price */
 .regular-price {}
-.regular-price .price { font-size:18px; font-family:gotham-b, arial; color:#d90d3d; line-height:1.1;}
+.regular-price .price { font-size:18px; font-family:gotham-b, arial; color:#666; line-height:1.1;}
 
 /* Old price */
 .old-price { margin:0; }
