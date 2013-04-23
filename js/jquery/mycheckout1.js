@@ -277,10 +277,19 @@ function reordersubsteps(stp)
     //console.log(stp.offset());
 //    console.log(jQuery("html").scrollTop());
 //    console.log(stp.offset().top - jQuery("html").scrollTop() - _headerHeight);
-    if((stp.offset().top - jQuery("html").scrollTop() - _headerHeight) < 0)
+    //
+    
+    
+    try{
+        if((stp.offset().top - jQuery("html").scrollTop() - _headerHeight) < 0)
+        {
+            console.log('entered');
+            jQuery("html").scrollTop(jQuery("html").scrollTop() + (stp.offset().top - jQuery("html").scrollTop() - _headerHeight));
+        }   
+    }
+    catch(err)
     {
-        //console.log('entered');
-        jQuery("html").scrollTop(jQuery("html").scrollTop() + (stp.offset().top - jQuery("html").scrollTop() - _headerHeight));
+        
     }
 }
 
