@@ -66,8 +66,16 @@
                     <ul>
                         <?php foreach ($_links as $_link): ?>
                                 <?php
-                                    if(strcasecmp($_link->getLabel(), "invoices") == 0 || strcasecmp($_link->getLabel(), "reorder") == 0 || strcasecmp($_link->getLabel(), "Shipments") == 0)
-                                        continue;
+                                    if($this->getRequest()->getParam('shippinginfo') == "true")
+                                    {
+                                        if(strcasecmp($_link->getLabel(), "invoices") == 0 || strcasecmp($_link->getLabel(), "reorder") == 0)
+                                            continue;
+                                    }
+                                    else
+                                    {
+                                         if(strcasecmp($_link->getLabel(), "invoices") == 0 || strcasecmp($_link->getLabel(), "reorder") == 0 || strcasecmp($_link->getLabel(), "Shipments") == 0)
+                                            continue;   
+                                    }
                                 ?>
                                 <?php if($_link->getUrl()): ?>
                                     <li><a href="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></a></li>
