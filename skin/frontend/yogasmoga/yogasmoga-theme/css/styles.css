@@ -2757,8 +2757,8 @@ table.staticproductgrid div.item td.productimage img.active
 .ui-widget-overlay
 {
     z-index: 10001 !important;
-    background-image: none;
-    background-color : black;
+    background-image: none !important;
+    background-color : black !important;
 }
 .yogidialog.ui-widget-content
 {

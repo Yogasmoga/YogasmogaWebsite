@@ -31,11 +31,15 @@
  * @see Mage_Catalog_Block_Product_List
  */
 ?>
+
+<?php /* speed fix
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/isotope.css'); ?>" media="all" />
+
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myalwaysvisiblecontrols.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myproductimageswitcher.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.isotope.min.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/mycategory.js"></script>
+*/ ?>
 <?php
     $_productCollection=$this->getLoadedProductCollection();
     $_helper = $this->helper('catalog/output');
