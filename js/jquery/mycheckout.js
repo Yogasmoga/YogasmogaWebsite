@@ -283,7 +283,7 @@ function reordersubsteps(stp)
     try{
         if((stp.offset().top - jQuery("html").scrollTop() - _headerHeight) < 0)
         {
-            console.log('entered');
+            //console.log('entered');
             jQuery("html").scrollTop(jQuery("html").scrollTop() + (stp.offset().top - jQuery("html").scrollTop() - _headerHeight));
         }   
     }
