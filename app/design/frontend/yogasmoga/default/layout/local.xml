@@ -121,6 +121,13 @@
     </reference>
 </customer_account_login>
 
+<customer_account_resetpassword>
+    <reference name="head">
+        <action method="addCss"><stylesheet>css/myaccount.css</stylesheet></action>
+        <action method="addJs"><script>jquery/myaccount.js</script></action>
+    </reference>
+</customer_account_resetpassword>
+
 <checkout_onepage_index>
     <reference name="head">
         <action method="addJs"><script>jquery/mycheckout.js</script></action>
