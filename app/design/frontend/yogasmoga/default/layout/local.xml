@@ -100,6 +100,20 @@
     </reference>
 </customer_account>
 
+<customer_account_create>
+    <reference name="head">
+        <action method="addCss"><stylesheet>css/myaccount.css</stylesheet></action>
+        <action method="addJs"><script>jquery/myaccount.js</script></action>
+    </reference>
+</customer_account_create>
+
+<customer_account_forgotpassword>
+    <reference name="head">
+        <action method="addCss"><stylesheet>css/myaccount.css</stylesheet></action>
+        <action method="addJs"><script>jquery/myaccount.js</script></action>
+    </reference>
+</customer_account_forgotpassword>
+
 <customer_account_login>
     <reference name="head">
         <action method="addCss"><stylesheet>css/myaccount.css</stylesheet></action>
