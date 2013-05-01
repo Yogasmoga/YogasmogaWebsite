@@ -38,8 +38,10 @@
     setTimeout(function(){selectmenulink('<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account');}, 500);
     //console.log('<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account');
 </script>
+<?php /* speed fix
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/myaccount.css'); ?>" media="all" />
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myaccount.js"></script>
+*/ ?>
 </head>
 <body<?php echo $this->getBodyClass()?' class="accountbg '.$this->getBodyClass().'"':'' ?>>
 <?php echo $this->getChildHtml('after_body_start') ?>

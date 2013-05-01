@@ -55,9 +55,14 @@
         <?php
     }
 ?>
-<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/jqueryui/jquery-ui-1.9.1.custom.css'); ?>" media="all" />
+
 <?php echo $this->getChildHtml('head') ?>
+
+
+<?php /*
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/jqueryui/jquery-ui-1.9.1.custom.css'); ?>" media="all" />
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/product_view.css'); ?>" media="all" />
+
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery-ui-1.9.1.custom.min.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.bxSlider.min.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/bxsliderscript.js"></script>
@@ -69,6 +74,7 @@
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/youtubevideo.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.flexslider-min.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/parallaxeffect.js"></script>
+*/ ?>
 <?php
     //if(Mage::getSingleton('core/session')->getShowVideo())
     if($this->getRequest()->getParam('video') == 'true')
@@ -86,7 +92,7 @@
     }
 ?>
 </head>
-<body class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>" style="overflow:hidden; margin-right:17px; background-image:url('<?php echo $this->getSkinUrl('images/background/ga_Background_1.0_Homepage_v10_Marianna.jpg'); ?>')">
+<body class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>" style="overflow:hidden; margin-right:17px;">
 <?php echo $this->getChildHtml('after_body_start') ?>
 <div class="wrapper">
 <div class="page-overlay" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999; overflow-y:scroll; background-image : url('<?php echo $this->getSkinUrl('images/loading.gif'); ?>'); background-position : center 35%;background-repeat: no-repeat;">&nbsp;</div>
