@@ -1,4 +1,4 @@
-<!--@subject {{var store.getFrontendName()}}: Credit Memo # {{var creditmemo.increment_id}} for Order # {{var order.increment_id}} @-->
+<!--@subject {{var store.getFrontendName()}}: A credit has been posted for your Order No. {{var order.increment_id}} @-->
 <!--@vars
 {"store url=\"\"":"Store Url",
 "var logo_url":"Email Logo Image Url",
@@ -38,7 +38,8 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
                 <td valign="top" style="padding:0 0 15px;">
                     <p style="color:#666; font-size:12px; line-height:1; margin:0 0 20px;">Dear {{htmlescape var=$order.getCustomerName()}},</p>
                     <p style="color:#666; font-size:12px; line-height:1; margin:0 0 20px;">We wanted to let you know that we have received your return package and are refunding your credit card.</p>
-					<p style="color:#666; font-size:12px; line-height:1; margin:0 0 20px;">The SMOGI Bucks you earned related to the return have also been reversed. Do come back another time to earn them back.</p>
+                    <p style="color:#666; font-size:12px; line-height:1; margin:0 0 20px;">In the event that your order is a Pre-Order, the order has been cancelled from our queue and we are refunding your credit card.</p>
+					<p style="color:#666; font-size:12px; line-height:1; margin:0 0 20px;">The SMOGI Bucks you earned related to your order have also been reversed. Do come back another time and you can get them right back.</p>
                     <p style="color:#666; font-size:12px; line-height:1; margin:0 0 20px;">Thanks for choosing YOGASMOGA.</p>
                 </td>
             </tr>
