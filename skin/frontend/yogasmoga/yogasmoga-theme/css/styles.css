@@ -3696,3 +3696,80 @@ body.checkout-continue
     padding-top:20px;
 }
 /*test fooman*/
+.nosheerinfo
+{
+    font-family: gotham;
+    font-size: 16px;
+    position: absolute;
+    text-align: left;
+    top: 174px;
+    color : #666;
+    left : 70px;
+}
+
+.nosheerinfo a
+{
+    color : #f02727;
+}
+.nosheerinfo table.sharenosheer
+{
+    margin-top : 40px;
+}
+.nosheerinfo table.sharenosheer td
+{
+    padding-left : 25px;
+}
+.nosheerinfo table.sharenosheer td:first-child
+{
+    padding-left : 0;
+}
+.nosheerinfo table.sharenosheer div
+{
+    width : 25px;
+    height : 25px;
+}
+.nosheerinfo table.sharenosheer div.twshare
+{
+    background-image : url('../images/nosheer/twitter.png');
+}
+.nosheerinfo table.sharenosheer div.twshare:hover
+{
+    background-image : url('../images/nosheer/twitter_on.png');
+}
+.nosheerinfo table.sharenosheer div.fbshare
+{
+    background-image : url('../images/nosheer/facebook.png');
+}
+.nosheerinfo table.sharenosheer div.fbshare:hover
+{
+    background-image : url('../images/nosheer/facebook_on.png');
+}
+.nosheerinfo table.sharenosheer div.pinshare
+{
+    background-image : url('../images/nosheer/camera.png');
+}
+.nosheerinfo table.sharenosheer div.pinshare:hover
+{
+    background-image : url('../images/nosheer/camera_on.png');
+}
+.nosheerinfo table.sharenosheer div.mlshare
+{
+    background-image : url('../images/nosheer/mail.png');
+}
+.nosheerinfo table.sharenosheer div.mlshare:hover
+{
+    background-image : url('../images/nosheer/mail_on.png');
+}
+.nosheerinfo .nosheerlinks div
+{
+    margin-bottom : 13px;
+}
+.nosheerinfo .nosheerlinks
+{
+    margin-top : 40px;
+}
+.nosheerinfo .nosheerlinks a
+{
+    font-size : 12px;
+    color : #666;
+}

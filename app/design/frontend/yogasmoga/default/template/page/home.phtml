@@ -100,14 +100,15 @@
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
         <div id="pagecontainer">
-            <div id="Welcome" class="fullscreenovfhidden flexslider pgsection neglectheaderwidth" desc="Welcome to YOGASMOGA" style="border: none;border-radius : none;box-shadow:none;margin:0px;" tw-summary="<?php
+            <div id="Welcome" share-summary="Experience #NoSheerHere and receive $25 SMOGI Bucks when you open a new account and shop." class="fullscreenovfhidden flexslider pgsection neglectheaderwidth" desc="<?php /* Welcome to YOGASMOGA*/ ?> No Sheer Here" style="border: none;border-radius : none;box-shadow:none;margin:0px;" tw-summary="<?php
                 if($this->getRequest()->getParam('video') == 'true')
                 {
                     echo "Check out the DID YOU TAKE A BREATH TODAY? Video";
                 }
                 else
                 {
-                    echo "Check out YOGASMOGA. They make things for Life. One breath at a time";
+                    //echo "Check out YOGASMOGA. They make things for Life. One breath at a time";
+                    echo "Experience #NoSheerHere and receive $25 SMOGI Bucks when you open a new account and shop.";
                 }
             ?>">
                 <?php
@@ -119,13 +120,46 @@
                     }
                 ?>
                 <ul class="slides">
+                    
+                    <li>
+                      <img class="fullscreen <?php if($this->getRequest()->getParam('video') != 'true') { echo "shareit"; } ?>" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/nosheer.jpg" alt="Experience NoSheerHere and receive $25 SMOGI Bucks when you open a new account and shop" iwidth="1600" iheight="1000" />
+                      <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/nosheerhere.png" style="position: absolute; width: auto; top: 60px; left: 70px;" />
+                      <div class="nosheerinfo">
+                        Experience <a href="<?php echo Mage::helper('core/url')->getHomeUrl()."customer/account/create"; ?>">#NoSheerHere</a> and receive @25 SMOGI<br />Bucks when <a href="<?php echo Mage::helper('core/url')->getHomeUrl()."customer/account/create"; ?>">you open a new account</a> and shop.<br /><br />
+                        Share the SMOGI Love with your friends and recieve<br /><a href="<?php echo Mage::helper('core/url')->getHomeUrl()."smogi-bucks"; ?>">$25 more SMOGI Bucks.</a>
+                        <table class="sharenosheer">
+                            <tr>
+                                <td>
+                                    <div class="twshare"></div>
+                                </td>
+                                <td>
+                                    <div class="fbshare"></div>
+                                </td>
+                                <td>
+                                    <div class="pinshare"></div>
+                                </td>
+                                <td>
+                                    <div class="mlshare"></div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="nosheerlinks">
+                            <div><a href="<?php echo Mage::helper('core/url')->getHomeUrl()."our-edge"; ?>">DISCOVER AURUM+ FABRIC TECHNOLOGY</a></div>
+                            <div><a href="<?php echo Mage::helper('core/url')->getHomeUrl()."our-edge"; ?>">DISCOVER CARBON 6 COLOR TECHNOLOGY</a></div>
+                            <div><a href="<?php echo Mage::helper('core/url')->getHomeUrl()."/women"; ?>">CHECK OUT OUR DRESSING ROOM</a></div>
+                        </div>
+                      </div>
+                    </li>
+                    
+                    <?php /*
                     <li>
                       <img class="fullscreen <?php if($this->getRequest()->getParam('video') != 'true') { echo "shareit"; } ?>" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/Untitled_Panorama2_c_1.jpg" alt="Landscapes of Jodhpur and New York City" usemap="#videomap" iwidth="1600" iheight="900" />
                       <div style="position: absolute;  left : 5%; bottom: 4.3%; color:white; font-weight:normal; font-family:gotham-m, arial; font-size:14px;">FROM: NEW YORK CITY</div>
 					  <div style="position: absolute;  right: 5%; bottom: 4.3%; color:white; font-weight:normal; font-family:gotham-m, arial; font-size:14px;">TO: JODHPUR, INDIA'S BLUE CITY</div>
 					  <img alt="Namask&aacute;r. Welcome to YOGASMOGA." src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/oink.png" style="position:absolute; top:50%; left:50%; margin:-115px 0 0 -115px !important; z-index:1; width:230px; width:230px;" />                   
                     </li>
-
+                    
+                    
                     <li>
                       <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga_mood_2395.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
 						<div class="banner-txt">
@@ -152,18 +186,11 @@
                             </a>
                         </span>
                         </div>
-
-<?php /*						<div class="banner-txt">
-							WE MAKE things
-							<span>FOR <strong>LIFE.</strong></span>
-							<span>ONE <strong>BREATH</strong></span>
-							AT A TIME.
-						</div>
-*/ ?>
                     </li>
-
+                    */ ?>
 
                 </ul>
+                <?php /*
                 <div style="position: absolute; width: 244px; right: 4.625%; z-index:1; bottom: 8.25%; display:none;" id="playBtn" ><img style="width : 100%" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/play_button.png" />
 					<div style="position: absolute; width: 64px; left: 15px; top: 15px;">
                       	<a id="hmpagevideo" href="http://www.youtube.com/watch?v=gPLyklRtlN8" rel="fancyvideo">
@@ -171,6 +198,7 @@
                       	</a>
                     </div>
 				</div>
+                */ ?>
             </div>
             <div smorigwidth="1600" smorigheight="300" id="ftechimage" origwidth="1600" origheight="900" desc="abcd" origwidthsm="1600" origheightsm="900" class="opimage closed" style="background-image:url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/parallax/fabric_technology-bg.jpg');">
 				<div class="small" style="background-image:url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/parallax/fabric_technology-bg.jpg');">

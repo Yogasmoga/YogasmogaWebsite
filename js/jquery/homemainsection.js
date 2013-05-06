@@ -22,6 +22,18 @@ jQuery(document).ready(function($){
     
     
     setTimeout(function(){ fixmainimage();}, 100);
+    
+    $("div.nosheerinfo table.sharenosheer div").click(function(){
+        if($(this).hasClass("twshare"))
+            $("div#pageScrollerNav div#shareicons div#twitter").trigger('click');
+        if($(this).hasClass("fbshare"))
+            $("div#pageScrollerNav div#shareicons div#facebook").trigger('click');
+        if($(this).hasClass("pinshare"))
+            $("div#pageScrollerNav div#shareicons div#pinterest").trigger('click');
+        if($(this).hasClass("mlshare"))
+            $("div#pageScrollerNav div#shareicons div#mail").trigger('click');
+    });
+    
 });
 
 function fixmainimage()
