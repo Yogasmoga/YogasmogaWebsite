@@ -3709,7 +3709,7 @@ body.checkout-continue
 
 .nosheerinfo a
 {
-    color : #f02727;
+    color : #d90d3d;
 }
 .nosheerinfo table.sharenosheer
 {
@@ -3746,11 +3746,11 @@ body.checkout-continue
 }
 .nosheerinfo table.sharenosheer div.pinshare
 {
-    background-image : url('../images/nosheer/camera.png');
+    background-image : url('../images/nosheer/pinterest.png');
 }
 .nosheerinfo table.sharenosheer div.pinshare:hover
 {
-    background-image : url('../images/nosheer/camera_on.png');
+    background-image : url('../images/nosheer/pinterest_on.png');
 }
 .nosheerinfo table.sharenosheer div.mlshare
 {
@@ -3772,4 +3772,8 @@ body.checkout-continue
 {
     font-size : 12px;
     color : #666;
+}
+.nosheerinfo .nosheerlinks a:hover
+{
+    color : #d90d3d;
 }

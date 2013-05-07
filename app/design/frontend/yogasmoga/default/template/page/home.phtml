@@ -100,7 +100,7 @@
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
         <div id="pagecontainer">
-            <div id="Welcome" share-summary="Experience #NoSheerHere and receive $25 SMOGI Bucks when you open a new account and shop." class="fullscreenovfhidden flexslider pgsection neglectheaderwidth" desc="<?php /* Welcome to YOGASMOGA*/ ?> No Sheer Here" style="border: none;border-radius : none;box-shadow:none;margin:0px;" tw-summary="<?php
+            <div id="Welcome" share-summary="Experience #NoSheerHere and receive $25 SMOGI Bucks when you open a new account and shop" class="fullscreenovfhidden flexslider pgsection neglectheaderwidth" desc="<?php /* Welcome to YOGASMOGA*/ ?> No Sheer Here" style="border: none;border-radius : none;box-shadow:none;margin:0px;" tw-summary="<?php
                 if($this->getRequest()->getParam('video') == 'true')
                 {
                     echo "Check out the DID YOU TAKE A BREATH TODAY? Video";
@@ -108,7 +108,7 @@
                 else
                 {
                     //echo "Check out YOGASMOGA. They make things for Life. One breath at a time";
-                    echo "Experience #NoSheerHere and receive $25 SMOGI Bucks when you open a new account and shop.";
+                    echo "Experience #NoSheerHere and receive $25 SMOGI Bucks when you open a new account and shop";
                 }
             ?>">
                 <?php
@@ -123,10 +123,10 @@
                     
                     <li>
                       <img class="fullscreen <?php if($this->getRequest()->getParam('video') != 'true') { echo "shareit"; } ?>" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/nosheer.jpg" alt="Experience NoSheerHere and receive $25 SMOGI Bucks when you open a new account and shop" iwidth="1600" iheight="1000" />
-                      <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/nosheerhere.png" style="position: absolute; width: auto; top: 60px; left: 70px;" />
+                      <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/nosheerhere.png" onclick="window.location='<?php echo Mage::helper('core/url')->getHomeUrl()."customer/account/login"; ?>'" style="position: absolute; width: auto; top: 60px; left: 70px;cursor: pointer;" />
                       <div class="nosheerinfo">
-                        Experience <a href="<?php echo Mage::helper('core/url')->getHomeUrl()."customer/account/create"; ?>">#NoSheerHere</a> and receive @25 SMOGI<br />Bucks when <a href="<?php echo Mage::helper('core/url')->getHomeUrl()."customer/account/create"; ?>">you open a new account</a> and shop.<br /><br />
-                        Share the SMOGI Love with your friends and recieve<br /><a href="<?php echo Mage::helper('core/url')->getHomeUrl()."smogi-bucks"; ?>">$25 more SMOGI Bucks.</a>
+                        Experience #NoSheerHere and receive $25 SMOGI<br />Bucks when <a href="<?php echo Mage::helper('core/url')->getHomeUrl()."customer/account/create"; ?>">you open a new account</a> and shop.<br /><br />
+                        <a href="<?php echo Mage::helper('core/url')->getHomeUrl()."smogi-bucks"; ?>">Share the SMOGI Love</a> with your friends and recieve<br />$25 more SMOGI Bucks.
                         <table class="sharenosheer">
                             <tr>
                                 <td>
@@ -144,8 +144,8 @@
                             </tr>
                         </table>
                         <div class="nosheerlinks">
-                            <div><a href="<?php echo Mage::helper('core/url')->getHomeUrl()."our-edge"; ?>">DISCOVER AURUM+ FABRIC TECHNOLOGY</a></div>
-                            <div><a href="<?php echo Mage::helper('core/url')->getHomeUrl()."our-edge"; ?>">DISCOVER CARBON 6 COLOR TECHNOLOGY</a></div>
+                            <div><a href="<?php echo Mage::helper('core/url')->getHomeUrl()."our-edge#technology"; ?>">DISCOVER AURUM+ FABRIC TECHNOLOGY</a></div>
+                            <div><a href="<?php echo Mage::helper('core/url')->getHomeUrl()."our-edge#colortechnology"; ?>">DISCOVER CARBON 6 COLOR TECHNOLOGY</a></div>
                             <div><a href="<?php echo Mage::helper('core/url')->getHomeUrl()."/women"; ?>">CHECK OUT OUR DRESSING ROOM</a></div>
                         </div>
                       </div>
