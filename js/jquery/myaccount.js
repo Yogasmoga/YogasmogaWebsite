@@ -18,13 +18,13 @@ jQuery(document).ready(function($){
     
     $("#rdbtngifty").live('change', function(){
         $("#rdbtnsmogi").removeAttr("checked");
-        $("body").append('<div class="namaskar-overlay1" style="">&nbsp;</div>');
+        //$("body").append('<div class="namaskar-overlay1" style="">&nbsp;</div>');
         window.location = homeUrl + 'checkout/cart?active=giftcard';
     });
     
     $("#rdbtnsmogi").live('change', function(){
         $("#rdbtngifty").removeAttr("checked");
-        $("body").append('<div class="namaskar-overlay1" style="">&nbsp;</div>');
+        //$("body").append('<div class="namaskar-overlay1" style="">&nbsp;</div>');
         window.location = homeUrl + 'checkout/cart?active=smogibucks';
     });
     
