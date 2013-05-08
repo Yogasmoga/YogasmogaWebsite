@@ -7,7 +7,7 @@ jQuery(document).ready(function($){
 			if($(curtarget).length){
 				$(window).load(function(){
 					$('html,body').animate({
-						scrollTop: $(curtarget).offset().top - _headerHeight}, 'slow', function(){
+						scrollTop: $(curtarget).offset().top - _headerHeight}, 1000, function(){
 						$j(window).scrollTop($j(window).scrollTop() + 1);
 					})
 				})
