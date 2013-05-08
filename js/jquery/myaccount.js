@@ -13,15 +13,18 @@ jQuery(document).ready(function($){
         $("div.gift-card").append("<div class='disableme'></div>");
         $("div.gift-card").append("<input class='discounttoggler' type='radio' name='discounttoggle' id='rdbtngifty' />");
         $("div.smogi-bucks").append("<input class='discounttoggler' type='radio' name='discounttoggle' id='rdbtnsmogi' checked='checked' />");
+        
     }
     
     $("#rdbtngifty").live('change', function(){
         $("#rdbtnsmogi").removeAttr("checked");
+        $("body").append('<div class="namaskar-overlay1" style="">&nbsp;</div>');
         window.location = homeUrl + 'checkout/cart?active=giftcard';
     });
     
     $("#rdbtnsmogi").live('change', function(){
         $("#rdbtngifty").removeAttr("checked");
+        $("body").append('<div class="namaskar-overlay1" style="">&nbsp;</div>');
         window.location = homeUrl + 'checkout/cart?active=smogibucks';
     });
     
