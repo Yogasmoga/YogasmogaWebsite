@@ -24,6 +24,12 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<?php
+    if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()) && Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
+    {
+        Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
+    }
+?>
 <?php Mage::getSingleton('core/session')->setrewardpointscount(Mage::helper('rewardpoints')->getPointsOnOrder()); ?>
 <?php
     $isshippable = true;

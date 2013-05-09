@@ -81,6 +81,11 @@
 .cart .totals-rewards img{margin:4px}
 
 button.btn-checkout span{padding:0; width:284px; text-indent:-999em; height:43px; margin:0; background:url(../images/checkout-btn.png) 0 0 no-repeat; border:0;}
+button.btn-checkout-disable span{padding:0; width:284px; text-indent:-999em; height:43px; margin:0; background:url(../images/continue_check_out_disabled.png) 0 0 no-repeat; border:0;}
+button.btn-checkout-disable:active span{
+    background:url(../images/continue_check_out_disabled.png) 0 0 no-repeat;    
+}
+
 
 button.btn-checkout span{
     padding:0; 
