@@ -234,7 +234,7 @@ function initiateshareurl(sharetype)
     });
     //console.log(cfscreen.find('img.shareit').length);
     if(_curshareimg.length == 0)
-        _curshareimg[_curshareimg.length] = 'http://yogasmoga.com/yogasmoga_gold.jpg';
+        _curshareimg[_curshareimg.length] = 'http://d1n2j9dg7jm74x.cloudfront.net/media/wysiwyg/homepage/main_section/Untitled_Panorama2_c_1.jpg';
     
     //console.log(_curshareimg[0]);
     
