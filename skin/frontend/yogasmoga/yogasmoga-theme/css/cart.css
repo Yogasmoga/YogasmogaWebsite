@@ -366,3 +366,19 @@ div.smogi-bucks input.discounttoggler
     left : -17px;
     top : 13px;
 } 
+table.applybucks
+{
+    
+}
+table.applybucks div.buttons-set, table.removebucks div.buttons-set
+{
+    margin : 0 !important;
+}
+table.removebucks p
+{
+    margin : 0 !important;
+}
+table.applybucks input#points_to_be_used
+{
+    margin-right : 53px;
+}
