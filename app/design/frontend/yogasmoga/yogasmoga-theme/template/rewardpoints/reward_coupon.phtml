@@ -118,12 +118,18 @@
 
 
                 <?php else:?>
-                    <input placeholder="Enter Amount Here" <?php if($point_details['full_use']):?>type="hidden"<?php else:?>type="text"<?php endif;?> value="<?php if($point_details['full_use']):?><?php echo $point_details['max_use'];?><?php endif;?>"  name="points_to_be_used" id="points_to_be_used" class="input-text" />
-                    <div class="errortext" id="points_error">
-                        <?php //echo strip_tags($this->getMessagesBlock()->getGroupedHtml()); ?>
-                    </div>
+                    <table class="applybucks">
+                        <tr>
+                            <td style="padding-top: 10px;width : 307px;">
+                                <input placeholder="Enter Amount Here" <?php if($point_details['full_use']):?>type="hidden"<?php else:?>type="text"<?php endif;?> value="<?php if($point_details['full_use']):?><?php echo $point_details['max_use'];?><?php endif;?>"  name="points_to_be_used" id="points_to_be_used" class="input-text" />
+                                <div class="errortext" id="points_error">
+                                    <?php //echo strip_tags($this->getMessagesBlock()->getGroupedHtml()); ?>
+                                </div>    
+                            </td>
+                        
                 <?php endif;?>
                 <?php if($this->getCustomerPoints() > 0) : ?>
+                    <td>
                 <div class="buttons-set">
                     <?php
                         /*
@@ -134,6 +140,9 @@
                         <span><span><?php echo $this->__('Apply Bucks') ?></span></span>
                     </button>
                 </div>
+                </td>
+                </tr>
+                    </table>
                 <div style="margin-top : 5px;">
                 You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.
                 </div>
@@ -154,11 +163,20 @@
             <?php echo $this->getIllustrationImage()?>
             <div class="rewards_point_cart"><?php echo $this->__("This shopping cart is worth %s loyalty point(s).", $pts);?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($pts);?></div>
             <?php if ($points_currently_used > 0):?>
-            <p><?php echo $this->__('You are currently using %d Bucks of your %d <a target="_blank" href ="'.$this->getUrl('smogi-bucks').'">SMOGI Bucks</a> available.', $points_currently_used, $this->getCustomerPoints()); ?></p>
+            <table class="removebucks">
+                <tr>
+                    <td style="width: 307px;">
+                        <p><?php echo $this->__('You are currently using %d Bucks of your %d <a target="_blank" href ="'.$this->getUrl('smogi-bucks').'">SMOGI Bucks</a> available.', $points_currently_used, $this->getCustomerPoints()); ?></p>            
+                    </td>
+                
             <?php endif;?>
+                <td>
             <div class="buttons-set">
                 <button class="button btn-removebucks" type="button" onclick="discountFormPoints2.submit(false)" value="<?php echo $this->__('Remove Points') ?>"><span><span><?php echo $this->__('Remove') ?></span></span></button>
             </div>
+            </td>
+            </tr>
+            </table>
             <div style="margin-top: 5px;">
                 You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.
             </div>

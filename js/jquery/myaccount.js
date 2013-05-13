@@ -1,6 +1,32 @@
 var _refercount = 1;
 _usesecureurl = true;
 jQuery(document).ready(function($){
+
+    if(_enablediscounttype == 'giftcard')
+    {
+        $("div.smogi-bucks").append("<div class='disableme'></div>");
+        $("div.smogi-bucks").append("<input class='discounttoggler' type='radio' name='discounttoggle' id='rdbtnsmogi' />");
+        $("div.gift-card").append("<input class='discounttoggler' type='radio' name='discounttoggle' id='rdbtngifty' checked='checked' />");
+    }    
+    if(_enablediscounttype == 'smogibucks')
+    {
+        $("div.gift-card").append("<div class='disableme'></div>");
+        $("div.gift-card").append("<input class='discounttoggler' type='radio' name='discounttoggle' id='rdbtngifty' />");
+        $("div.smogi-bucks").append("<input class='discounttoggler' type='radio' name='discounttoggle' id='rdbtnsmogi' checked='checked' />");
+        
+    }
+    
+    $("#rdbtngifty").live('change', function(){
+        $("#rdbtnsmogi").removeAttr("checked");
+        $("body").append('<div class="namaskar-overlay1" style="">&nbsp;</div>');
+        window.location = homeUrl + 'checkout/cart?active=giftcard';
+    });
+    
+    $("#rdbtnsmogi").live('change', function(){
+        $("#rdbtngifty").removeAttr("checked");
+        $("body").append('<div class="namaskar-overlay1" style="">&nbsp;</div>');
+        window.location = homeUrl + 'checkout/cart?active=smogibucks';
+    });
     
     setTimeout(function(){
         $("#password_password, #password_confirmation").attr("autocapitalize","off").attr("autocorrect","off");
