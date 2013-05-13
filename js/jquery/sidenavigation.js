@@ -300,7 +300,7 @@ function shareurlmain()
 //            else
 //                _curshareimg[0] = cfscreen.find('img.shareit:first').attr('src');
 //        }
-        //console.log(_curshareimg[0]);
+        console.log(_curshareimg[0]);
         
         window.open('http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(_currentshareurl) + '&p[images][0]=' + _curshareimg[0] + '&p[title]=YOGASMOGA | ' + _cursharedesc + '&p[summary]=' + encodeURIComponent(_cursharesummary),'Share_on_Faceook','toolbar=0,status=0,menubar=0,width=600,height=300,left=' + (_winW - 600) / 2 + ',top=' + (_winH - 300) / 2);
         break;
