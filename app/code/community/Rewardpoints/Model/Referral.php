@@ -83,6 +83,10 @@ class Rewardpoints_Model_Referral extends Mage_Core_Model_Abstract
 
     public function sendSubscription(Mage_Customer_Model_Customer $parent, $destination, $destination_name)
     {
+        $this->setRewardpointsReferralParentId($parent->getId())
+             ->setRewardpointsReferralEmail($destination)
+             ->setRewardpointsReferralName($destination_name);
+        
         $translate = Mage::getSingleton('core/translate');
         /* @var $translate Mage_Core_Model_Translate */
         $translate->setTranslateInline(false);
