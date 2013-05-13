@@ -119,6 +119,9 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                     $write = Mage::getSingleton('core/resource')->getConnection('core_write');
                     $readresult=$write->query("SELECT ce.email AS 'Parent', rr.rewardpoints_referral_email AS 'Child', rr.rewardpoints_referral_name AS 'Name' FROM rewardpoints_referral rr, customer_entity ce WHERE rr.rewardpoints_referral_parent_id = ce.entity_id AND rr.rewardpoints_referral_status=0 AND rr.rewardpoints_referral_email NOT IN (SELECT email FROM myresendlog WHERE status=0 and NOW() > DATE_SUB(NOW(), INTERVAL 24 HOUR))");
                     while ($row = $readresult->fetch() ) {
+                        //if($row['Child'] != "peeyush@mobikasa.com")
+//                            continue;
+                        
                         $customer = Mage::getModel('customer/customer')
                         ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
                         ->loadByEmail($row['Child']);
@@ -134,6 +137,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                             //if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, 'ankit@mobikasa.com', $row['Name']))
                             
                             if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, $row['Child'], $row['Name']))
+                            //if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, "ankit@mobikasa.com", $row['Name']))
                                 $output = "sent";
                             if($output == "sent")
                                 $write->query("Insert into myresendlog values(null,'".$row['Parent']."','".$row['Child']."',1,now())");
