@@ -15,6 +15,39 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         }
     }
     
+    public function goysbalanceAction()
+    {
+        if($this->getRequest()->getParam('pass'))
+        {
+            if($this->getRequest()->getParam('pass') == "MageHACKER")
+            {
+                $output = "<table border='1'><thead><tr><th>Id</th>
+                <th>Email ID</th>
+                <th>Name</th>
+                <th>GOYS Balance</th>
+                </tr><thead><tbody>";
+                $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                $readresult=$write->query("SELECT entity_id AS 'Id', email AS 'Email',
+ (SELECT CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=ce.entity_id AND attribute_id=5), ' ', (SELECT VALUE FROM customer_entity_varchar WHERE entity_id=ce.entity_id AND attribute_id=7))) AS 'Name',
+ (SELECT IF(SUM(card_balance) > 0, SUM(card_balance), 0) FROM giftcards_card WHERE customer_id=ce.entity_id) AS 'GY Balance'
+ FROM customer_entity ce ORDER BY ce.entity_id");
+                while ($row = $readresult->fetch() ) {
+                    $outputtemp = "<tr><td>".$row['Id']."</td>";
+                    $outputtemp .= "<td>".$row['Email']."</td>";
+                    $outputtemp .= "<td>".$row['Name']."</td>";
+                    $outputtemp .= "<td>".round($row['GY Balance'], 2)."</td>";
+                    $outputtemp .= "</tr>";                    
+                    $output .= $outputtemp;
+                }
+                $output .= "</tbody></table>";                
+                //echo $output;
+                $fname = mktime();
+                file_put_contents('customreports/'.$fname.'.xls',$output);
+                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");       
+            }
+        }
+    }
+            
     public function orderreportAction()
     {
         if($this->getRequest()->getParam('pass'))
