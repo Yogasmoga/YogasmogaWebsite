@@ -45,6 +45,21 @@ jQuery(window).load(function(){
 <?php $_helper = $this->helper('catalog/output'); ?>
 <?php $_product = $this->getProduct(); ?>
 <?php $_product = Mage::getModel('catalog/product')->load($_product->getId()); ?>
+
+<?php
+    //$stockItem = $_product->getStockItem();
+//    if($stockItem->getIsInStock())
+//    {
+//        echo "In Stock";
+//    }
+//    else
+//    {
+//        echo "Out Of Stock";
+//    }
+?>
+
+
+
 <?php //echo Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId()); ?>
 <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId(Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId()))->toHtml(); ?>
 <?php
