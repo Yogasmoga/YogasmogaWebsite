@@ -32,11 +32,21 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
  (SELECT IF(SUM(card_balance) > 0, SUM(card_balance), 0) FROM giftcards_card WHERE customer_id=ce.entity_id) AS 'GY Balance'
  FROM customer_entity ce ORDER BY ce.entity_id");
                 while ($row = $readresult->fetch() ) {
+                    $write1 = Mage::getSingleton('core/resource')->getConnection('core_read');
+                    $readresult1=$write->query("Select card_code from giftcards_card where customer_id=".$row['Id']);
+                    $cardslist = "";
+                    while ($row1 = $readresult1->fetch() ) {
+                        $cardslist .= $row1['card_code'].",";
+                    }
+                    if(strlen($cardslist) > 0)
+                        $cardslist = substr($cardslist, 0, strlen($cardslist) - 1);
+                    
                     $outputtemp = "<tr><td>".$row['Id']."</td>";
                     $outputtemp .= "<td>".$row['Email']."</td>";
                     $outputtemp .= "<td>".$row['Name']."</td>";
                     $outputtemp .= "<td>".round($row['GY Balance'], 2)."</td>";
-                    $outputtemp .= "</tr>";                    
+                    $outputtemp .= "<td>".$cardslist."</td>";
+                    $outputtemp .= "</tr>";
                     $output .= $outputtemp;
                 }
                 $output .= "</tbody></table>";                
