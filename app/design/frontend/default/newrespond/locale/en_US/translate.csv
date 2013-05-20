@@ -1,0 +1,4 @@
+"""MY Cart""","""Shopping Bag"""
+My Cart,Shopping Bag
+My Cart (%s items),Shopping Bag (%s)
+"""My Cart (%s items)""","""Shopping Bag (%s)"""

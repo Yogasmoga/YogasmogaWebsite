@@ -345,7 +345,7 @@ function addtocart()
             }
             else
             {
-                alert('Oops! An unexpected error occured.');
+                alert('This item is out of stock.');
             }
             //
 //            result = eval('(' + result + ')');

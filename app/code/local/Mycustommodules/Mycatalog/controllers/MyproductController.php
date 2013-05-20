@@ -25,6 +25,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                 <th>Email ID</th>
                 <th>Name</th>
                 <th>GOYS Balance</th>
+                <th>Cards</th>
                 </tr><thead><tbody>";
                 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
                 $readresult=$write->query("SELECT entity_id AS 'Id', email AS 'Email',

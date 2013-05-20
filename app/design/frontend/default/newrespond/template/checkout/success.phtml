@@ -1,0 +1,78 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" media="all" />
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/myaccount.css'); ?>" media="all" />
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myaccount.js"></script>
+<style type="text/css">
+    .confirmation-page table.inputtable td.errortext *{
+        color: #D90D3D !important;
+        font-family: helveticaoblique !important;
+        font-size: 11px !important;
+    }
+    .confirmation-page table.inputtable td.label *{
+        color: gray !important;
+        font-family: helveticaoblique !important;
+        font-size: 11px !important;
+        font-style: italic !important;
+        letter-spacing: 0.4pt !important;
+        white-space: nowrap !important;
+    }
+</style>
+<div id="global-msg" style="display: none;margin-bottom: 80px;">
+    <ul class="messages"><li id="msqli" class="error-msg"><ul><li><span id="msgspn"></span></li></ul></li></ul>
+</div>
+<div class="confirmation-page">
+<h2 class="sub-title"><?php echo $this->__('thank you for shopping at yogasmoga. ') ?></h2>
+<div class="conf-box">
+<?php if ($this->getOrderId()):?>
+<p class="conf-msg">
+You have earned <a href="#"><?php echo Mage::getSingleton('core/session')->getrewardpointscount(); ?> SMOGI Bucks</a> with your purchase!<br/>
+Your order <?php if ($this->getCanViewOrder()){?><span class="red-txt">#<?php echo $this->escapeHtml($this->getOrderId()); ?></span><?php }else{ echo '#'.$this->escapeHtml($this->getOrderId()); } ?> has been received and you will be<br/>
+receiving an email soon with your shipment tracking number.</p>
+<p>If you have any questions, please call us at 888-990-YOGA (9642)</p>
+<?php /* if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
+    <p>
+        <?php echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.', $this->getPrintUrl()) ?>
+        <?php echo $this->getChildHtml() ?>
+    </p>
+<?php endif; */ ?>
+<?php endif;?>
+</div>
+<?php if ($this->getAgreementRefId()): ?>
+    <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+<?php endif;?>
+
+<?php if ($profiles = $this->getRecurringProfiles()):?>
+<p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+<ul class="disc">
+<?php foreach($profiles as $profile):?>
+<?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+    <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+<?php endforeach;?>
+</ul>
+<?php endif;?>	
+</div>
