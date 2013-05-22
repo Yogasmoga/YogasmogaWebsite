@@ -32,6 +32,7 @@
  */
 /** @var $this Mage_Customer_Block_Form_Register */
 ?>
+<?php Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."customer/account/login"); ?>
 <div class="myheader">REGISTER</div>
 <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="register-form">
     <div class="sectionheader">PERSONAL INFORMATION</div>

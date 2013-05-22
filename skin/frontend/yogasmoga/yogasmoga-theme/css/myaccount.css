@@ -115,6 +115,15 @@ a.forgot-link:hover
     height : 25px;
 }
 
+.createaccbtn
+{
+    background-image : url('/skin/frontend/yogasmoga/yogasmoga-theme/images/customer/create_account_button_off.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width : 185px;
+    height : 29px;
+}
+
 .myheader
 {
     margin-bottom : 45px;
@@ -133,14 +142,14 @@ a.forgot-link:hover
 	}
 #register-form table.inputtable,#register-form div.errormsg 
 {
-    width : 533px;
+    width : 236px;
 }
 #register-form input[type='submit']
 {
     margin-top : 25px;
 }
 
-#login-form table.inputtable
+#login-form table.inputtable, #login-form div.errormsg
 {
     width : 236px;
 }

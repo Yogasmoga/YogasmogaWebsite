@@ -180,7 +180,7 @@ dressingroomholder #dressingroombottom table td.imageholder
     z-index: 3;
 }
 #dressingroomholder {
-  background-image: url("../images/catalog/product/dressingroom/a.jpg");
+  background-image: url("../images/catalog/product/dressingroom/a.png");
   background-position: center 47%;
   background-repeat: no-repeat;
   background-size: 100% auto;
@@ -191,7 +191,7 @@ dressingroomholder #dressingroombottom table td.imageholder
    background-position : center -110px;
 }
 #dressingroombottom {
-  background-image: url("../images/catalog/product/dressingroom/b.jpg");
+  background-image: url("../images/catalog/product/dressingroom/b.png");
   background-position: 50% 100%;
   background-repeat: no-repeat;
   height: 450px;
