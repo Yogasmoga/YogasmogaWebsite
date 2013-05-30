@@ -3777,3 +3777,8 @@ body.checkout-continue
 {
     color : #d90d3d;
 }
+div.loginerrormsg.errormsg a
+{
+    color : #d90d3d;
+    text-decoration: underline;
+}
