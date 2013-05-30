@@ -98,7 +98,8 @@
         
         if(strpos(strip_tags($this->getMessagesBlock()->getGroupedHtml()), "xyxyxyx") !== false)
         {
-            $string = strip_tags($this->getMessagesBlock()->getGroupedHtml());
+            $string = strip_tags($this->getMessagesBlock()->getGroupedHtml(), "<a>");
+            //$string = $this->getMessagesBlock()->getGroupedHtml();
             echo str_replace("xyxyxyx","",$string);
                
         }
