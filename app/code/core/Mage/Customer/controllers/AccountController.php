@@ -258,6 +258,15 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
      */
     public function createPostAction()
     {
+        $moptions = "iPhone--iPod--BlackBerry--Palm--Googlebot-Mobile--mobi--Windows Mobile--Safari Mobile--Android--Opera Mini"; 
+        $moptions = split("--", $moptions);
+        $ismobile = false;
+        foreach($moptions as $opt)
+        {
+            //$session->addError($opt."x,");
+            if(strpos(Mage::helper('core/http')->getHttpUserAgent(), $opt))
+                $ismobile = true;
+        }
         $session = $this->_getSession();
         if ($session->isLoggedIn()) {
             $this->_redirect('*/*/');
@@ -365,7 +374,11 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
                 $session->setCustomerFormData($this->getRequest()->getPost());
                 if ($e->getCode() === Mage_Customer_Model_Customer::EXCEPTION_EMAIL_EXISTS) {
                     $url = Mage::getUrl('customer/account/forgotpassword');
-                    $message = $this->__('There is already an account with this email address. If you are sure that it is your email address, <a href="%s">click here</a> to get your password and access your account.', $url);
+                    //$message = $this->__('xyxyxyxThere is already an account with this email address. If you are sure that it is your email address, <a href="%s">click here</a> to get your password and access your account.', $url);
+                    if($ismobile)
+                        $message = $this->__('There is already an account with this email address. If you are sure that it is your email address, please reset your password.', $url);
+                    else
+                        $message = $this->__('xyxyxyxThere is already an account with this email address. If you are sure that it is your email address, please reset your password.', $url);
                     $session->setEscapeMessages(false);
                 } else {
                     $message = $e->getMessage();
@@ -376,8 +389,12 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
                     ->addException($e, $this->__('Cannot save the customer.'));
             }
         }
-
-        $this->_redirectError(Mage::getUrl('*/*/create', array('_secure' => true)));
+        
+        if($ismobile)
+            $this->_redirectError(Mage::getUrl('*/*/create', array('_secure' => true)));
+        else
+            $this->_redirectError(Mage::getUrl('*/*/login', array('_secure' => true)));
+            //$this->_redirectError(Mage::getUrl('*/*/create', array('_secure' => true)));
     }
 
     /**
