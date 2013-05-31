@@ -26,6 +26,9 @@
 ?>
 <?php if( sizeof($this->getTotals()) > 0 ): ?>
             <?php foreach( $this->getTotals() as $_total ): ?>
+            <?php if($_total['label'] == "Lifetime Sales")
+                continue;
+            ?>
             <div class="entry-edit">
                 <div class="entry-edit-head"><h4><?php echo $_total['label'] ?></h4></div>
                 <fieldset class="a-center bold">
