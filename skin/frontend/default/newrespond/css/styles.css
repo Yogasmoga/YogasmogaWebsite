@@ -2645,3 +2645,8 @@ Inlined to avoid required HTTP connection: h5bp.com/r
  .redeem-giftcard {margin:auto;}
  .redeem-giftcard td:first {text-align:right}
  .redeem-giftcard td {text-align:left;}
+
+div.confirmation-page
+{
+    text-align: center;
+}
