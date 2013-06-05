@@ -9,8 +9,8 @@
 				<?php if ($this->getAlwaysCreateStripeCustomer()) : ?>
 					<input type="hidden" name="payment[create_stripe_customer]" value="<?php if ($this->getIsStripeCustomer()) : ?>0<?php else: ?>1<?php endif; ?>" />
 				<?php else : ?>
-						<label for="<?php echo $_code ?>_create_stripe_customer"><?php echo Mage::helper('payment')->__("Save card for later use?")?></label>
-						<input type="checkbox" value="1" name="payment[create_stripe_customer]" id="<?php echo $_code ?>_create_stripe_customer" />
+					<label for="<?php echo $_code ?>_create_stripe_customer"><?php echo Mage::helper('payment')->__("Save card for later use?")?></label>
+					<input type="checkbox" value="1" name="payment[create_stripe_customer]" id="<?php echo $_code ?>_create_stripe_customer" />
 				<?php endif; ?>
 				</div>
 			</li>
