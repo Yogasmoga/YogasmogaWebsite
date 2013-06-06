@@ -13,13 +13,12 @@ abstract class Stripe_ApiResource extends Stripe_Object
   {
     $requestor = new Stripe_ApiRequestor($this->_apiKey);
     $url = $this->instanceUrl();
-
-    list($response, $apiKey) = $requestor->request('get', $url, $this->_retrieveOptions);
+    list($response, $apiKey) = $requestor->request('get', $url);
     $this->refreshFrom($response, $apiKey);
     return $this;
    }
 
-  public static function className($class)
+  public static function classUrl($class)
   {
     // Useful for namespaces: Foo\Stripe_Charge
     if ($postfix = strrchr($class, '\\'))
@@ -29,13 +28,7 @@ abstract class Stripe_ApiResource extends Stripe_Object
     $class = str_replace('_', '', $class);
     $name = urlencode($class);
     $name = strtolower($name);
-    return $name;
-  }
-
-  public static function classUrl($class)
-  {
-    $base = self::className($class);
-    return "/v1/${base}s";
+    return "/${name}s";
   }
 
   public function instanceUrl()
@@ -84,7 +77,7 @@ abstract class Stripe_ApiResource extends Stripe_Object
       $requestor = new Stripe_ApiRequestor($this->_apiKey);
       $params = array();
       foreach ($this->_unsavedValues->toArray() as $k)
-        $params[$k] = $this->$k;
+	$params[$k] = $this->$k;
       $url = $this->instanceUrl();
       list($response, $apiKey) = $requestor->request('post', $url, $params);
       $this->refreshFrom($response, $apiKey);

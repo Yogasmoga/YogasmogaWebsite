@@ -63,6 +63,7 @@ class IntellectLabs_Stripe_IndexController extends Mage_Core_Controller_Front_Ac
 	public function indexAction()
 	{
 		$this->loadLayout();
+		Mage::getSingleton('customer/session')->addError('showing an error');
 		$this->_initLayoutMessages('customer/session');
 		$this->_initLayoutMessages('catalog/session');
 		$this->renderLayout();

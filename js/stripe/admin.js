@@ -72,7 +72,12 @@ Object.extend(AdminOrder.prototype, {
 		var elem = Event.element(event);
         if(elem && elem.method){
             var data = this.getPaymentData(elem.method);
-    		createStripeToken((typeof data['send_address_data'])!='undefined',(typeof data['payment[cc_cid]']) != 'undefined');
+            if (data['payment[create_stripe_customer]']=="1") 
+            {
+        		createStripeToken((typeof data['send_address_data'])!='undefined',(typeof data['payment[cc_cid]']) != 'undefined');
+            } else {
+                return;
+            }
         }
     }
 });
@@ -145,7 +150,7 @@ function toggleValidation(state) {
 function checkStripeValidation() {
 	if ($('stripe_stripe_customer_id')) {
 		if ($F("stripe_stripe_customer_id")!='') {
-			toggleValidation(false);
+			toggleValidation(false);l
 		}
 	}
 	

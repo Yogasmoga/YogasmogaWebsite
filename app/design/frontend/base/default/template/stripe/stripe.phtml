@@ -82,7 +82,7 @@
 					        </ul>
 							<ul class="form-list">
 							<?php if ($this->getAlwaysCreateStripeCustomer()) : ?>
-									<input type="hidden" name="create_stripe_customer" id="stripe_create_stripe_customer" value="<?php if ($this->getIsStripeCustomer()) : ?>0<?php else : ?>1 <?php endif; ?>" />
+									<input type="hidden" name="create_stripe_customer" value="<?php if ($this->getIsStripeCustomer()) : ?>0<?php else : ?>1 <?php endif; ?>" />
 							<?php else : ?>
 									<label for="stripe_create_stripe_customer"><?php echo Mage::helper('payment')->__("Save card for later use?")?></label>
 									<input type="checkbox" value="1" name="create_stripe_customer" id="stripe_create_stripe_customer" <?php if ($this->getAlwaysChecked()) : ?>checked="checked"<?php endif; ?> />
@@ -164,7 +164,6 @@
 	var form = new VarienForm('stripe-payment');
 	
 	<?php if ($this->getIsStripeCustomer()) : ?>
-	
 		$('stripe-update-payment').observe('click',function(event){
 			Event.stop(event);
 			if ($('stripe-change-payment-form').visible()) {
