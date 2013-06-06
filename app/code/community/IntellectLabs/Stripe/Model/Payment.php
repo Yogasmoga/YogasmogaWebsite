@@ -208,6 +208,9 @@ class IntellectLabs_Stripe_Model_Payment extends Mage_Payment_Model_Method_Cc
 						'card' 			=> $token,
 						'description'	=>	sprintf('#%s, %s', $order->getIncrementId(), $order->getCustomerEmail())
 				));
+			} catch(Stripe_CardError $e) {
+				$this->debugData($e->getMessage());
+				Mage::throwException($e->getMessage());
 			} catch (Exception $e) {
 				$this->debugData($e->getMessage());
 				Mage::throwException(Mage::helper('stripe')->__('Error capturing payment.'));
@@ -226,6 +229,9 @@ class IntellectLabs_Stripe_Model_Payment extends Mage_Payment_Model_Method_Cc
 				"description" => sprintf('#%s, %s', $order->getIncrementId(), $order->getCustomerEmail())
 				)
 			);
+			} catch(Stripe_CardError $e) {
+				$this->debugData($e->getMessage());
+				Mage::throwException($e->getMessage());
 			} catch (Exception $e) {
 				$this->debugData($e->getMessage());
 				Mage::throwException($this->_getHelper()->__('Error capturing payment.'));
