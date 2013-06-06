@@ -32,6 +32,28 @@
  */
 /** @var $this Mage_Customer_Block_Form_Login */
 ?>
+<?php
+    if($this->getRequest()->getParam('goto') == 'cart')
+    {
+        Mage::getSingleton('core/cookie')->set('afterlogindest', 'cart' ,time()+86400,'/');
+        //echo "here";   
+    }
+    if($this->getRequest()->getParam('goto') == 'giftofys')
+    {
+        Mage::getSingleton('core/cookie')->set('afterlogindest', 'giftofys' ,time()+86400,'/');
+        //Mage::getSingleton('core/session')->setRedirect('giftofys');   
+    }
+    //echo Mage::getModel('core/cookie')->get('afterlogindest');
+    //Mage::getSingleton('core/cookie')->set('cookiename', 'cookievalue' ,time()+86400,'/');
+    //if($this->getRequest()->getParam('goto') == 'cart')
+//    {
+//        Mage::getSingleton('core/session')->setRedirect('cart');   
+//    }
+    //if($this->getRequest()->getParam('goto') == 'giftofys')
+//    {
+//        Mage::getSingleton('core/session')->setRedirect('giftofys');   
+//    }
+?>
 <div class="page-title"><h1>Login</h1></div>
 <p>If you have an account with us, please login or create an account</p>
 <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">

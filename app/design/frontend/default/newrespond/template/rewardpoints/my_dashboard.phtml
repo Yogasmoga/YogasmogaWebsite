@@ -17,7 +17,32 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
  ?>
- 
+  <?php
+    //echo Mage::getModel('core/cookie')->get('afterlogindest');
+    if(Mage::getModel('core/cookie')->get('afterlogindest') == "cart")
+    {
+        //Mage::getModel('core/cookie')->delete('afterlogindest');
+        
+        Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
+        Mage::getModel('core/cookie')->set('afterlogindest', 'cart123', 0,'/');
+    }
+    if(Mage::getModel('core/cookie')->get('afterlogindest') == "giftofys")
+    {
+        Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."gift_of_ys#redeemcard");
+        Mage::getModel('core/cookie')->set('afterlogindest', 'cart123', 0,'/');
+    }
+    
+    //if(Mage::getSingleton('core/session')->getRedirect() == "cart")
+//    {
+//        Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
+//        Mage::getSingleton('core/session')->setRedirect('');
+//    }
+    //if(Mage::getSingleton('core/session')->getRedirect() == "giftofys")
+//    {
+//        Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."gift_of_ys#redeemcard");
+//        Mage::getSingleton('core/session')->setRedirect('');
+//    }
+?>
 <div class="dashboard">
 	<div class="page-title"><h1>MY ACCOUNT</h1></div>
     <?php echo $this->getChildHtml('hello'); ?>
