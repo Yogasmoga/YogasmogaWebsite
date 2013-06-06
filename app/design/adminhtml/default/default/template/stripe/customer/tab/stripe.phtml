@@ -9,25 +9,13 @@
 				<form action="<?php echo $this->getUrl("adminhtml/stripe/save") ?>" method="post" name="stripe-payment" id="stripe-payment">
 					<input type="hidden" name="stripe[customer_id]" value="<?php echo $this->getCustomer()->getEntityId() ?>" id="customer_id" />
 					<input type="hidden" name="stripe[stripe_token]" value="" id="stripe_token" />
-					<table class="form-list" cellspacing="0" id="stripe-payment-details">
-						<?php if (!$this->getIsStripeCustomer()) : ?>
-							<tr>
-								<td class="label">
-									<?php echo $this->__("Create Stripe Customer?") ?>
-								</td>
-								<td class="value">
-									<input type="checkbox" name="stripe-show-stripe-form" id="stripe-show-stripe-form" />
-								</td>
-							</tr> 
-						<?php endif; ?>
-					</table>
-					<table cellspacing="0" class="form-list" id="stripe-change-payment-form" style="display: none;">
+					<table cellspacing="0" class="form-list" id="stripe-change-payment-form" <?php if ($this->getIsStripeCustomer()): ?>style="display: none;"<?php endif; ?>>
 						<tr>
 							<td class="label">
 								<label for="firstname">Cardholder Name<span class="required">*</span></label>
 							</td>
 				        	<td class="value">
-				            	<input type="text" id="fullname" name="fullname" value="<?php echo $this->getCustomer()->getName() ?>" title="Full Name" maxlength="255" class="input-text stripe-toggle-valid">
+				            	<input type="text" id="fullname" name="fullname" value="<?php echo $this->getCustomer()->getName() ?>" title="Full Name" maxlength="255" class="input-text required-entry stripe-toggle-valid">
 				        	</td>
 				        </tr>
 			        	<?php if ($this->sendAddressData()) : ?>
@@ -47,7 +35,7 @@
 				        	 		<label for="telephone">Telephone <span class="required">*</span></label>
 				        	 	</td>
 				        	 	<td class="value">
-			        	 			<input type="text" id="telephone" name="telephone" value="" title="Telephone" class="input-text stripe-toggle-valid" />
+			        	 			<input type="text" id="telephone" name="telephone" value="" title="Telephone" class="input-text required-entry stripe-toggle-valid" />
 			        	 		</td>
 		        	 		</tr>
 		        	 		<?php endif; ?>
@@ -57,7 +45,7 @@
 						 	</td>
 						 	<td class="value">
 						 		<div class="multi-value">
-						 			<input type="text" name="street[]" value="<?php echo $this->getBillingAddress()->getStreet1(); ?>" title="Street Address" id="street_1" class="input-text  stripe-toggle-valid">	
+						 			<input type="text" name="street[]" value="<?php echo $this->getBillingAddress()->getStreet1(); ?>" title="Street Address" id="street_1" class="input-text  required-entry stripe-toggle-valid">	
 						 		</div>
 						 		<br />
 						 		<div class="multi-value">
@@ -70,7 +58,7 @@
 								<label for="city">City</label>
 							</td>
 							<td class="value">
-					    		<input type="text" name="city" value="<?php echo $this->getBillingAddress()->getCity() ?>" title="City" class="input-text stripe-toggle-valid" id="city">
+					    		<input type="text" name="city" value="<?php echo $this->getBillingAddress()->getCity() ?>" title="City" class="input-text  required-entry stripe-toggle-valid" id="city">
 					    	</td>
 					   </tr>
 					   <tr>
@@ -78,7 +66,7 @@
 								<label for="region_id">State/Province<span class="required">*</span></label>
 							</td>
 							<td class="value">
-					    		<select id="region_id" name="region_id" title="State/Province" class="stripe-toggle-valid-select" style="" defaultvalue="0">
+					    		<select id="region_id" name="region_id" title="State/Province" class="validate-select required-entry stripe-toggle-valid" style="" defaultvalue="0">
 						  		<option value="">Please select region, state or province</option>
 						  		</select>
 							    <script type="text/javascript">
@@ -86,7 +74,7 @@
 								   $('region_id').setAttribute('defaultValue',  "<?php echo $this->getBillingAddress()->getRegionId() ?>");
 							    //]]>
 							    </script>
-					    		<input type="text" id="region" name="region" value="<?php echo $this->getBillingAddress()->getRegion() ?>" title="State/Province" class="input-text stripe-toggle-valid" style="display: none; ">
+					    		<input type="text" id="region" name="region" value="<?php echo $this->getBillingAddress()->getRegion() ?>" title="State/Province" class="input-text required-entry stripe-toggle-valid" style="display: none; ">
 					    	</td>
 				 		</tr>
 						<tr>
@@ -94,7 +82,7 @@
 								<label for="zip">Zip/Postal Code<span class="required">*</span></label>
 							</td>
 							<td class="value">
-							    <input type="text" name="postcode" value="<?php echo $this->getBillingAddress()->getPostcode() ?>" title="Zip/Postal Code" id="zip" class="input-text validate-zip-international stripe-toggle-valid">
+							    <input type="text" name="postcode" value="<?php echo $this->getBillingAddress()->getPostcode() ?>" title="Zip/Postal Code" id="zip" class="input-text validate-zip-international  required-entry stripe-toggle-valid">
 							</td>
 						</tr>
 						<tr>
@@ -137,14 +125,14 @@
 					        </td>
 					        <td class="value">
 					        	<div class="multi-value">
-							            <select id="stripe_expiration" style="width:140px;" name="stripe[cc_exp_month]" class="validate-cc-exp stripe-toggle-valid">
+							            <select id="stripe_expiration" style="width:140px;" name="stripe[cc_exp_month]" class="validate-cc-exp required-entry stripe-toggle-valid">
 							            <?php $_ccExpMonth = $this->getInfoData('cc_exp_month') ?>
 							            <?php foreach ($this->getCcMonths() as $k=>$v): ?>
 							                <option value="<?php echo $k ?>" <?php if($k==$_ccExpMonth): ?>selected="selected"<?php endif ?>><?php echo $v ?></option>
 							            <?php endforeach ?>
 							            </select>
 							            <?php $_ccExpYear = $this->getInfoData('cc_exp_year') ?>
-							            <select id="stripe_expiration_yr" style="width:103px;" name="stripe[cc_exp_year]" class="stripe-toggle-valid">
+							            <select id="stripe_expiration_yr" style="width:103px;" name="stripe[cc_exp_year]" class="required-entry stripe-toggle-valid">
 							            <?php foreach ($this->getCcYears() as $k=>$v): ?>
 							                <option value="<?php echo $k ? $k : '' ?>" <?php if($k==$_ccExpYear): ?>selected="selected"<?php endif ?>><?php echo $v ?></option>
 							            <?php endforeach ?>
@@ -158,7 +146,7 @@
 					            	<label for="stripe_cc_cid"><?php echo Mage::helper('payment')->__('Card Verification Number') ?> <span class="required">*</span></label>
 					            </td>
 					            <td class="value">
-					            	<input type="text" title="<?php echo Mage::helper('payment')->__('Card Verification Number') ?>" class="stripe-toggle-valid input-text validate-cc-cvn" id="stripe_cc_cid" name="stripe[cc_cid]" style="width:3em;" value="<?php echo $this->getInfoData('cc_cid')?>"/>
+					            	<input type="text" title="<?php echo Mage::helper('payment')->__('Card Verification Number') ?>" class="required-entry stripe-toggle-valid input-text validate-cc-cvn" id="stripe_cc_cid" name="stripe[cc_cid]" style="width:3em;" value="<?php echo $this->getInfoData('cc_cid')?>"/>
 					            </td>
 					        </tr>
 					    <?php endif; ?>
@@ -179,7 +167,7 @@
 							</tr> 
 						<?php endif; ?>
 					</table>
-					<ul id="stripe-buttons-container" <?php if (!$this->getIsStripeCustomer()):?>style="display: none;"<?php endif; ?>>
+					<ul id="stripe-buttons-container">
 						<li>
 							<button id="stripe_save_payment" title="Save Payment" type="button" class="scalable save" name="save_payment" onclick="javascript:saveStripePayment(); return false;"><span><span><span>Save Payment</span></span></span></button>
 						</li>
@@ -233,6 +221,7 @@
 	saveStripePayment = function() {
 	         var validator = new Validation($('stripe-payment'));
 	         if (validator.validate()) {
+//		         setLoading(true);
 	             if ($F('stripe_stripe_customer_id') == ""||$F("stripe_create_stripe_customer")=="1") {
 	            	 Stripe.createToken({
 	            		 name: $F("fullname"),
@@ -341,28 +330,6 @@
 	<?php if ($this->sendAddressData()) : ?>
 		var regionUpdater = new RegionUpdater('country_id', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
 	<?php endif; ?>
-	<?php if(!$this->getIsStripeCustomer()): ?>
-		Event.observe('stripe-show-stripe-form',"change",function(el){
-			if (!this.checked) {
-				$('stripe-change-payment-form').hide();
-				$('stripe-buttons-container').hide();
-				$$(".stripe-toggle-valid").each(function(el){
-					$(el).removeClassName('required-entry');
-				});
-				$$(".stripe-toggle-valid-select").each(function(el){
-					$(el).removeClassName('validate-select');
-				});
-			} else {
-				$('stripe-change-payment-form').show();
-				$('stripe-buttons-container').show();
-				$$(".stripe-toggle-valid").each(function(el){
-					$(el).addClassName('required-entry');
-				});
-				$$(".stripe-toggle-valid-select").each(function(el){
-					$(el).addClassName('validate-select');
-				});
-			}
-		});
-	<?php endif; ?>	
+		
 //]]>
 </script>
