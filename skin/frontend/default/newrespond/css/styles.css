@@ -2650,3 +2650,7 @@ div.confirmation-page
 {
     text-align: center;
 }
+ol#checkoutSteps li.fields div.field:first-child
+{
+    margin-bottom : 9px;
+}
