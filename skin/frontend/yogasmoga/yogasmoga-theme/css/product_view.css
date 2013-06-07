@@ -916,9 +916,9 @@ td#zoomedproductimage
 #zoomedfbdtl
 {
     display: none;
-    background-image: url('../images/catalog/product/fabric_bg.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100% ;
+    background-image: url('../images/catalog/product/fabric_bg1.png');
+    background-repeat: repeat;
+    background-size: auto 100% ;
     position: absolute;
     top : 0;
     left : 0;
