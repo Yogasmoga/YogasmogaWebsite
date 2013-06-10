@@ -410,17 +410,20 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
     {
         Mage::log("Save Payment Started",null,'resendlog.log');
         if ($this->_expireAjax()) {
+            Mage::log("Expire Ajax",null,'resendlog.log');
             return;
         }
         try {
             if (!$this->getRequest()->isPost()) {
                 $this->_ajaxRedirectResponse();
+                Mage::log("Request is not post",null,'resendlog.log');
                 return;
             }
 
             // set payment to quote
             $result = array();
             $data = $this->getRequest()->getPost('payment', array());
+            Mage::log($data,null,'resendlog.log');
             $result = $this->getOnepage()->savePayment($data);
 
             // get section and redirect data
