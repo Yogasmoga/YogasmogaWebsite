@@ -408,6 +408,7 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
      */
     public function savePaymentAction()
     {
+        Mage::log("Save Payment Started",null,'resendlog.log');
         if ($this->_expireAjax()) {
             return;
         }
@@ -440,13 +441,17 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
                 $result['fields'] = $e->getFields();
             }
             $result['error'] = $e->getMessage();
+            Mage::log($e->getMessage(),null,'resendlog.log');    
         } catch (Mage_Core_Exception $e) {
             $result['error'] = $e->getMessage();
+            Mage::log($e->getMessage(),null,'resendlog.log');
         } catch (Exception $e) {
             Mage::logException($e);
             $result['error'] = $this->__('Unable to set Payment Method.');
+            Mage::log($e->getMessage(),null,'resendlog.log');
         }
         $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
+        Mage::log("Save Payment End",null,'resendlog.log');
     }
 
     /**
