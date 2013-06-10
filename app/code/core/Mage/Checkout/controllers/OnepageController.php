@@ -408,24 +408,19 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
      */
     public function savePaymentAction()
     {
-        Mage::log("Save Payment Started",null,'resendlog.log');
         if ($this->_expireAjax()) {
-            Mage::log("Expire Ajax",null,'resendlog.log');
             return;
         }
         try {
             if (!$this->getRequest()->isPost()) {
                 $this->_ajaxRedirectResponse();
-                Mage::log("Request is not post",null,'resendlog.log');
                 return;
             }
 
             // set payment to quote
             $result = array();
             $data = $this->getRequest()->getPost('payment', array());
-            Mage::log($data,null,'resendlog.log');
             $result = $this->getOnepage()->savePayment($data);
-            Mage::log($result,null,'resendlog.log');
             
             // get section and redirect data
             $redirectUrl = $this->getOnepage()->getQuote()->getPayment()->getCheckoutRedirectUrl();
@@ -440,22 +435,18 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
             if ($redirectUrl) {
                 $result['redirect'] = $redirectUrl;
             }
-        //} catch (Mage_Payment_Exception $e) {
-//            if ($e->getFields()) {
-//                $result['fields'] = $e->getFields();
-//            }
-//            $result['error'] = $e->getMessage();
-//            Mage::log($e->getMessage(),null,'resendlog.log');    
-//        } catch (Mage_Core_Exception $e) {
-//            $result['error'] = $e->getMessage();
-//            Mage::log($e->getMessage(),null,'resendlog.log');
+        } catch (Mage_Payment_Exception $e) {
+            if ($e->getFields()) {
+                $result['fields'] = $e->getFields();
+            }
+            $result['error'] = $e->getMessage();    
+        } catch (Mage_Core_Exception $e) {
+            $result['error'] = $e->getMessage();
         } catch (Exception $e) {
             Mage::logException($e);
             $result['error'] = $this->__('Unable to set Payment Method.');
-            Mage::log($e->getMessage(),null,'resendlog.log');
         }
         $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
-        Mage::log("Save Payment End",null,'resendlog.log');
     }
 
     /**

@@ -27,7 +27,7 @@
 -->
 
 		<reference name="head">
-
+<action method="addJs"><script>mobile/jquery-1.7.2.min.js</script></action>
 			<!-- Link to external JavaScript file (e.g Jquery CDN)
 			
 			<block type="core/text" name="google.cdn.jquery">
@@ -39,20 +39,22 @@
         	</block> 
 			
 			-->
-			
+			<!-- <action method="addItem"><type>skin_js</type><name>js/jquery.mobile-1.1.0.min.js</name></action> -->
+			<action method="addItem"><type>skin_js</type><name>js/respond.min.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/select-menu.js</name></action>
 			
 			<!-- Remove print.css and styles-ie.css, styles are now all in styles.css to reduce http request -->
 			<action method="removeItem"><type>skin_css</type><name>css/print.css</name></action>
 			<action method="removeItem"><type>skin_css</type><name>css/styles-ie.css</name><params/></action>
 			
-
-			<!-- <action method="addItem"><type>skin_js</type><name>js/jquery.mobile-1.1.0.min.js</name></action> -->
-			<action method="addItem"><type>skin_js</type><name>js/jquery-1.7.2.min.js</name></action>
-			<action method="addItem"><type>skin_js</type><name>js/respond.min.js</name></action>
-			<action method="addItem"><type>skin_js</type><name>js/select-menu.js</name></action>
+			<action method="addJs"><script>jquery/mymobile.js</script></action>
 
 			
+	
 		</reference>
+
+
+
 
 <!-- 
 	Default Header 
@@ -82,6 +84,9 @@
 			</reference>
 
 		</reference>
+		
+		
+
 
 <!-- 
 	Default Left Column 
@@ -117,6 +122,13 @@
 
 	</default>
 	
+
+<default>
+<reference name="head">
+<action method="addJs"><script>jquery/mymobile.js</script></action>
+</reference>
+</default>
+
 	
 <!--
 Category default layout
@@ -130,10 +142,10 @@ Category default layout
             <action method="unsetChild"><alias>currency</alias></action>        
 		</reference>
     </catalog_category_default>
-
-<!--
-Category layered navigation layout
--->
+    
+    
+    
+    
 
     <catalog_category_layered translate="label">
         <reference name="root">
