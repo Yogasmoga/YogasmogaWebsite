@@ -440,15 +440,15 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
             if ($redirectUrl) {
                 $result['redirect'] = $redirectUrl;
             }
-        } catch (Mage_Payment_Exception $e) {
-            if ($e->getFields()) {
-                $result['fields'] = $e->getFields();
-            }
-            $result['error'] = $e->getMessage();
-            Mage::log($e->getMessage(),null,'resendlog.log');    
-        } catch (Mage_Core_Exception $e) {
-            $result['error'] = $e->getMessage();
-            Mage::log($e->getMessage(),null,'resendlog.log');
+        //} catch (Mage_Payment_Exception $e) {
+//            if ($e->getFields()) {
+//                $result['fields'] = $e->getFields();
+//            }
+//            $result['error'] = $e->getMessage();
+//            Mage::log($e->getMessage(),null,'resendlog.log');    
+//        } catch (Mage_Core_Exception $e) {
+//            $result['error'] = $e->getMessage();
+//            Mage::log($e->getMessage(),null,'resendlog.log');
         } catch (Exception $e) {
             Mage::logException($e);
             $result['error'] = $this->__('Unable to set Payment Method.');
