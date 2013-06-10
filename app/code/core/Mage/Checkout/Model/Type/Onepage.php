@@ -601,6 +601,8 @@ class Mage_Checkout_Model_Type_Onepage
      */
     public function savePayment($data)
     {
+        Mage::log("save payment model functions",null, 'resendlog.log');
+        Mage::log($data,null, 'resendlog.log');
         if (empty($data)) {
             return array('error' => -1, 'message' => Mage::helper('checkout')->__('Invalid data.'));
         }
