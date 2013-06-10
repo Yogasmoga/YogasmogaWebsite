@@ -60,9 +60,9 @@ $_options = $this->getOptionList();
 
         <h2 class="product-name">
         <?php if ($this->hasProductUrl()):?>
-            <a href="<?php echo $this->getProductUrl() ?>"><?php echo $this->escapeHtml($this->getProductName()) ?></a>
+            <a href="<?php echo $this->getProductUrl() ?>"><?php echo html_entity_decode($this->escapeHtml($this->getProductName())) ?></a>
         <?php else: ?>
-            <?php echo $this->escapeHtml($this->getProductName()) ?>
+            <?php echo html_entity_decode($this->escapeHtml($this->getProductName())) ?>
         <?php endif; ?>
         </h2>
 

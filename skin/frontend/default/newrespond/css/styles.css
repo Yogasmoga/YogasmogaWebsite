@@ -554,8 +554,8 @@ button.btn-cart{background:url(../images/small/cart-btn.png) 50% 0 no-repeat; wi
 button.btn-cart{background:#97d207 url(../images/btnc.jpg) 50% 50% no-repeat; padding:13px 45px;}
 button.btn-sec{background:#f0f0f0 url(../images/btnw.jpg) 50% 50% no-repeat; color:#000;}
 
-button.btn-cart1{background:#f0f0f0 url(../images/login_goys_off.png) 0 0 no-repeat; padding:13px 45px; color:#000; width:289px; height:29px;}
-button.btn-sec1{background:#f0f0f0 url(../images/login_smogi_off.png) 0 0 no-repeat; color:#000; width:289px; height:29px;}
+button.btn-cart1{background:#f0f0f0 url(../images/login_smogi_off.png) 0 0 no-repeat; padding:13px 45px; color:#000; width:289px; height:29px;}
+button.btn-sec1{background:#f0f0f0 url(../images/login_goys_off.png) 0 0 no-repeat; color:#000; width:289px; height:29px;}
 
 .button1 {
     background: url("/skin/frontend/default/newrespond/images/btn.jpg") no-repeat scroll 50% 50% #D70D3C;
@@ -690,8 +690,8 @@ div.pages>strong { position: absolute; overflow: hidden; clip: rect(0 0 0 0); he
 .data-table thead,
 .data-table thead tr { background:#e9e9e9; }
 
-.data-table tfoot { border-bottom:1px solid #cecece; }
-.data-table tfoot tr {border-bottom:1px solid #cecece; border-top:1px solid #cecece; }
+.data-table tfoot { border-bottom:0px solid #cecece; }
+.data-table tfoot tr {border-bottom:0px solid #cecece; border-top:1px solid #cecece; }
 .data-table tbody th { padding:3px 8px; font-size:11px; font-weight:bold; text-transform:none; white-space:normal; }
 .data-table tbody th,
 .data-table tbody td { border-bottom:1px solid #f5f5f5; padding: 10px 0; }
@@ -1538,17 +1538,18 @@ ul.crosssell-products-list { margin: 10px auto; }
 .cart-empty{text-align:center;}
 /* Discount Codes & Estimate Shipping and Tax Boxes */
 .collat-wrap { float: left; width: 100%; }
-.collat-wrap .gift-card{text-align:center; display:block; border-bottom:1px solid #cecece; padding-bottom:30px; margin-bottom:30px; font-size:14px;}
-.collat-wrap .gift-card label{text-transform:uppercase; line-height:1.5;}
+.collat-wrap .gift-card{text-align:center; display:block; border-bottom:0px solid #cecece; padding-bottom:30px; margin-bottom:30px; font-size:14px;}
+.collat-wrap .gift-card label{ line-height:1.5;}
 .collat-wrap .gift-card .gift-box label{display:block; text-transform:uppercase;}
 .collat-wrap .gift-card .gift-box .input-text{margin-bottom:15px;}
-.collat-wrap .gift-card h6{margin:0;}
+.collat-wrap .gift-card h6{}
 .collat-wrap .gift-card p{margin:0 0 10px;}
 .collat-wrap .tblsmogilogin td{text-align:center; display:block; border-bottom:1px solid #cecece; padding-bottom:30px; font-size:14px;}
 .collat-wrap .tblsmogilogin td p {margin:0 0 10px;}
 div.rewards_point_cart { display: none;}
 .smogibox{text-align:center;}
-.smogibox h6{margin:0;}
+.smogibox h6{font-size:17px;}
+.gift-card h6{font-size:17px;}
 .smogibox p{margin:0;}
 
 .cart div.discount,
@@ -1582,7 +1583,7 @@ div.rewards_point_cart { display: none;}
 
 .cart .totals { padding:12px 0; float: right; width: 340px;}
 .cart .totals table { float:right; margin:9px 0; width: 100%; }
-.cart .totals td { border-bottom: 1px solid #f5f5f5; margin: 9px 0 8px 15px; padding: 9px 10px 8px 0; }
+.cart .totals td { border-bottom: 1px solid #f5f5f5; margin: 9px 0 8px 15px; padding: 9px 10px 8px 0;text-transform:uppercase; }
 .cart .totals tr.last td {}
 .cart .totals tfoot td {}
 .cart .totals tfoot th strong,
@@ -2653,4 +2654,17 @@ div.confirmation-page
 ol#checkoutSteps li.fields div.field:first-child
 {
     margin-bottom : 9px;
+}
+
+form#discountFormPoints2 div.errortext, div.errortext
+{
+    color: #D90D3D;
+    font-family: helvetica;
+	margin-top:5px;
+    font-size: 11px;    
+}
+.btn-checkout-disable
+{
+	opacity:0.5;
+	filter:alpha(opacity=50);
 }
