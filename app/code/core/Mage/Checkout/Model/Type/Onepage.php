@@ -608,7 +608,7 @@ class Mage_Checkout_Model_Type_Onepage
         }
         $quote = $this->getQuote();
         Mage::log("quote below",null, 'resendlog.log');
-        Mage::log($quote,null, 'resendlog.log');
+        //Mage::log($quote,null, 'resendlog.log');
         if ($quote->isVirtual()) {
             Mage::log("is virtual",null, 'resendlog.log');
             $quote->getBillingAddress()->setPaymentMethod(isset($data['method']) ? $data['method'] : null);
@@ -622,16 +622,19 @@ class Mage_Checkout_Model_Type_Onepage
             $quote->getShippingAddress()->setCollectShippingRates(true);
         }
 
+        Mage::log("payment started",null, 'resendlog.log');
         $payment = $quote->getPayment();
+        Mage::log("payment started 1",null, 'resendlog.log');
         $payment->importData($data);
-
+        Mage::log("payment started 2",null, 'resendlog.log');
+        
         $quote->save();
-
+        Mage::log("payment started 3",null, 'resendlog.log');
         $this->getCheckout()
             ->setStepData('payment', 'complete', true)
             ->setStepData('review', 'allow', true);
 
-        
+        Mage::log("payment started 4",null, 'resendlog.log');
         return array();
     }
 
