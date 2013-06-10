@@ -607,9 +607,13 @@ class Mage_Checkout_Model_Type_Onepage
             return array('error' => -1, 'message' => Mage::helper('checkout')->__('Invalid data.'));
         }
         $quote = $this->getQuote();
+        Mage::log("quote below",null, 'resendlog.log');
+        Mage::log($quote,null, 'resendlog.log');
         if ($quote->isVirtual()) {
+            Mage::log("is virtual",null, 'resendlog.log');
             $quote->getBillingAddress()->setPaymentMethod(isset($data['method']) ? $data['method'] : null);
         } else {
+            Mage::log("not virtual",null, 'resendlog.log');
             $quote->getShippingAddress()->setPaymentMethod(isset($data['method']) ? $data['method'] : null);
         }
 
@@ -627,6 +631,7 @@ class Mage_Checkout_Model_Type_Onepage
             ->setStepData('payment', 'complete', true)
             ->setStepData('review', 'allow', true);
 
+        
         return array();
     }
 
