@@ -425,7 +425,8 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
             $data = $this->getRequest()->getPost('payment', array());
             Mage::log($data,null,'resendlog.log');
             $result = $this->getOnepage()->savePayment($data);
-
+            Mage::log($result,null,'resendlog.log');
+            
             // get section and redirect data
             $redirectUrl = $this->getOnepage()->getQuote()->getPayment()->getCheckoutRedirectUrl();
             if (empty($result['error']) && !$redirectUrl) {
