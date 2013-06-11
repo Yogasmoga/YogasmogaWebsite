@@ -26,8 +26,16 @@
 ?>
 <div class="footer-container">
     <div class="footer">
-			<?php echo $this->getChildHtml('topSearch') ?>
-            <?php echo $this->getChildHtml('footer_block') ?>
+            <?php
+                $currentUrl = $this->helper('core/url')->getCurrentUrl();
+                //echo $currentUrl;
+                if(!(strpos($currentUrl, "customer/account") !== false || strpos($currentUrl, "customer/account/login") !== false || strpos($currentUrl, "checkout/") !== false))
+                {
+                    echo $this->getChildHtml('topSearch');
+                    echo $this->getChildHtml('footer_block_newsletter');
+                }
+            ?>
+            <?php echo $this->getChildHtml('footer_block_address') ?>
 		<address><?php echo $this->getCopyright() ?></address>
     </div>
 </div>
