@@ -28,23 +28,42 @@
 <tbody>
     <tr>
         <td colspan="2">
-            <h3 class="product-name"><?php echo $this->escapeHtml($this->getProductName()) ?></h3>
+            <h3 class="product-name"><?php echo html_entity_decode($this->escapeHtml($this->getProductName())) ?></h3>
 
             <?php if ($_options = $this->getOptionList()):?>
                 <dl class="item-options">
                     <?php foreach ($_options as $_option) : ?>
                     <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
                     <dt><?php echo $this->escapeHtml($_option['label']) ?></dt>
-                    <dd<?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?>><?php echo $_formatedOptionValue['value'] ?>
-                        <?php if (isset($_formatedOptionValue['full_view'])): ?>
-                        <div class="truncated_full_value">
-                            <dl class="item-options">
-                                <dt><?php echo $this->escapeHtml($_option['label']) ?></dt>
-                                <dd><?php echo $_formatedOptionValue['full_view'] ?></dd>
-                            </dl>
-                        </div>
-                        <?php endif; ?>
-                    </dd>
+                    <dd <?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?>><?php //echo $_formatedOptionValue['value']; ?>
+                <?php 
+                    $word = $_formatedOptionValue['value'];
+                    if(strpos($word, "|"))
+                    {
+                        echo " ".substr($word,0, strpos($word, "|"));
+                    }
+                    else
+                        echo $word;
+                ?>
+                <?php if (isset($_formatedOptionValue['full_view'])): ?>
+                <div class="truncated_full_value">
+                    <dl class="item-options">
+                        <dt><?php echo $this->htmlEscape($_option['label']) ?>:</dt>
+                        <dd><?php //echo $_formatedOptionValue['full_view'] ?>
+                            <?php 
+                                $word = $_formatedOptionValue['full_view'];
+                                if(strpos($word, "|"))
+                                {
+                                    echo " ".substr($word,0, strpos($word, "|"));
+                                }
+                                else
+                                    echo $word;
+                            ?>
+                        </dd>
+                    </dl>
+                </div>
+                <?php endif; ?>
+            </dd>
                     <?php endforeach; ?>
                 </dl>
             <?php endif;?>

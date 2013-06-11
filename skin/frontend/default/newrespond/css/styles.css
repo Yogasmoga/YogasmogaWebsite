@@ -2060,7 +2060,8 @@ ul.account-link li a{font-size:14px; text-transform:uppercase; font-family:gotha
 .gift-form{padding-bottom:30px; border-bottom:1px solid #cecece; margin-bottom:30px;}
 
 /* Footer ================================================================================ */
-.footer-container {padding:0; border-top:1px solid #e6e6e6;}
+.footer-container {padding:0;}
+
 .footer { padding: 10px 0; text-align:center;}
 .footer .footer-block{ border-top: 1px solid #e6e6e6; padding: 50px 10px;}
 .red-txt { color:#d90d3d; }
@@ -2645,7 +2646,7 @@ Inlined to avoid required HTTP connection: h5bp.com/r
  
  .redeem-giftcard {margin:auto;}
  .redeem-giftcard td:first {text-align:right}
- .redeem-giftcard td {text-align:left;}
+ .redeem-giftcard td {text-align:center;}
 
 div.confirmation-page
 {
@@ -2669,4 +2670,13 @@ form#discountFormPoints2 div.errortext, div.errortext
 	filter:alpha(opacity=50);
 }
 
+div.footer-container form#search_mini_form
+{
+    display : block;
+    border-top : 1px solid #E6E6E6;
+}
 
+#checkout-review-table td.a-left
+{
+	text-align: right !important;
+}
