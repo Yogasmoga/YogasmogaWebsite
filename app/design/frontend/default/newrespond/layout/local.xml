@@ -115,6 +115,12 @@
 			<block type="cms/block" name="footer_block">
 					<action method="setBlockId"><block_id>footer_block</block_id></action>
 			</block>
+            <block type="cms/block" name="footer_block_newsletter">
+					<action method="setBlockId"><block_id>footer_block_newsletter</block_id></action>
+			</block>
+            <block type="cms/block" name="footer_block_address">
+					<action method="setBlockId"><block_id>footer_block_address</block_id></action>
+			</block>
 			<block type="directory/currency" name="currency_footer" as="currency_footer" template="directory/currency.phtml"/>
 			<block type="page/switch" name="store_language_footer" as="store_language_footer" template="page/switch/languages.phtml"/>
 		</reference>
