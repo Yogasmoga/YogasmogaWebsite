@@ -2680,3 +2680,41 @@ div.footer-container form#search_mini_form
 {
 	text-align: right !important;
 }
+
+.myheader
+{
+    background: url("/skin/frontend/default/newrespond/images/title-bg.png") no-repeat scroll 50% 100% transparent;
+    display: block;
+    margin-bottom: 30px;
+    padding: 0 0 15px;
+    text-align: center;
+    color: #DE8A23;
+    font-family: ITCAvantGardeMd;
+    font-size: 24px;
+    font-weight: normal;
+    letter-spacing: 2px;
+    line-height: 1;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+
+.sectionheader {
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+#register-form .input-box
+{
+margin:9px 0 9px 0;
+}
+
+.backlink
+{
+margin-top:10px;
+}
+
+.box-title h3
+{
+	margin:9px 0 !important;
+}

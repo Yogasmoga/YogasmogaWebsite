@@ -38,7 +38,7 @@
     <?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
     
     
-        <label for="email_address" ><?php echo $this->__('Email Address') ?></label>
+        <label for="email_address" class="required" ><em>*</em><?php echo $this->__('Email Address') ?></label>
         <div class="input-box">
             <input id="email_address" name="email" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="Email Address" maxlength="255" class="input-text required-entry" type="text">
         </div>
@@ -53,8 +53,8 @@
                         <td>
                             <input type="checkbox" name="is_subscribed" value="1" id="is_subscribed"<?php if($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />            
                         </td>
-                        <td style="padding-top : 2px; font-family:helveticaoblique; font-size:11px;">
-                            <label for="is_subscribed"><?php //echo $this->__('Sign Up for Newsletter') ?>Subscribe to stay in touch when new collections arrive.</label>    
+                        <td style="font-family: gotham-l,Helvetica,Arial,sans-serif; padding: 2px 0px 0px 5px; font-size: 13px;">
+                            <label for="is_subscribed"><?php //echo $this->__('Sign Up for Newsletter') ?>Let's stay in touch!</label>    
                         </td>
                     </tr>
                 </table>
@@ -63,12 +63,12 @@
      ?>
      <div class="sectionheader" style="margin-top : 40px;">LOGIN INFORMATION</div>
 
-            <label for="password" ><?php echo $this->__('Password') ?></label>
+            <label for="password" class="required" ><em>*</em><?php echo $this->__('Password') ?></label>
 	        <div class="input-box">
 	            <input type="password" class="requiredfield" name="password" id="password" defaulterrormsg="Password is required" />
 	        </div>
 
-            <label for="confirmation" ><?php echo $this->__('Confirm Password') ?></label>
+            <label for="confirmation" class="required" ><em>*</em><?php echo $this->__('Confirm Password') ?></label>
 	        <div class="input-box">
 	            <input type="password" class="requiredfield" name="confirmation" id="confirmation" defaulterrormsg="Confirmation Password is required" />
 	        </div>
