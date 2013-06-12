@@ -535,9 +535,9 @@ label.required em { color: red; }
 	text-decoration:none;
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
-	box-shadow:0 3px 3px rgba(0, 0, 0, 0.1);
-	-moz-box-shadow:0 3px 3px rgba(0, 0, 0, 0.1);
-	-webkit-box-shadow:0 3px 3px rgba(0, 0, 0, 0.1);
+	box-shadow:0 3px 3px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow:0 3px 3px rgba(0, 0, 0, 0.4);
+	-webkit-box-shadow:0 3px 3px rgba(0, 0, 0, 0.4);
 }.button:hover {
 }.button:active {
 }
