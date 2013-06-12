@@ -2724,3 +2724,8 @@ body.customer-account-index .main
 {
 	padding-bottom:0;
 }
+
+body.customer-account-index .col-2
+{
+border-bottom:0px !important;
+}
