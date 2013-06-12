@@ -441,7 +441,8 @@ px      40    100    160    220    280    340    400    460    520    580   640 
 
 .page {  background: url("../images/baseline18px.png") repeat scroll 0 0 #FFF;  }*/
 
-.main { padding: 30px 0; }
+.main { padding: 30px 0; 
+}
 
 .col2-left-layout .col-left { float: left; width: 220px; }
 .col2-left-layout .col-main  { float: right; width: 700px; }
@@ -1779,7 +1780,7 @@ top: 20px; }
 #opc-review .step { padding:0; }
 #opc-review .product-name { font-weight:bold; }
 #opc-review .item-options { margin:5px 0 0; }
-#opc-review .buttons-set { border:1px solid ##F2F2F2; padding:9px; }
+#opc-review .buttons-set { border:1px solid ##F2F2F2; padding:20px; }
 #opc-review .buttons-set p { margin:9px 5px 0 0; line-height:28px; }
 #opc-review .buttons-set .please-wait { height:28px; line-height:28px; }
 #opc-review .authentication { margin:0 auto; width:570px; }
@@ -1866,11 +1867,11 @@ top: 20px; }
 
 /********** < Dashboard */
 .dashboard {font-size:14px;}
-.dashboard .welcome-msg { margin:0; padding-bottom:30px; border-bottom:1px solid #cecece;}
+.dashboard .welcome-msg { margin:0; padding-bottom:30px; border-bottom:1px solid #e6e6e6;}
 .dashboard .welcome-msg p.hello { margin:9px 0; text-transform:uppercase; font-size:16px;}
 .dashboard .col2-set { margin:0 0 15px; }
 .dashboard .col-1,
-.dashboard .col-2{padding:30px 0; border-bottom:1px solid #cecece;}
+.dashboard .col-2{padding:30px 0; border-bottom:1px solid #e6e6e6;}
 
 /* General Box */
 .box-account { margin:0 0 15px; }
@@ -2676,7 +2677,7 @@ div.footer-container form#search_mini_form
     border-top : 1px solid #E6E6E6;
 }
 
-#checkout-review-table td.a-left
+#checkout-review-table tfoot td.a-left
 {
 	text-align: right !important;
 }
@@ -2717,4 +2718,9 @@ margin-top:10px;
 .box-title h3
 {
 	margin:9px 0 !important;
+}
+
+body.customer-account-index .main
+{
+	padding-bottom:0;
 }
