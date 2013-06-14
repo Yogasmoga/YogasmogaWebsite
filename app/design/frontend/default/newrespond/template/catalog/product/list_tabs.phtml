@@ -84,7 +84,7 @@
                 <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo html_entity_decode($_helper->productAttribute($_product, $_product->getName(), 'name')); ?></a></h2>
                 <?php echo $this->getPriceHtml($_product, true) ?>
 				<div class="actions">
-				<button type="button" title="<?php echo $this->__('View Detail') ?>" class="button btn-detail" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('View Detail') ?></span></span></button>
+				<button type="button" title="<?php echo $this->__('View Detail') ?>" class="button btn-detail" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('View Details') ?></span></span></button>
 				</div>
              </li>  
 		<?php endforeach ?>

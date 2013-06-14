@@ -36,7 +36,7 @@
                     <p>Returning customer? Use your SMOGI Bucks from past purchases.</p>
             		
             		<a href="<?php  echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/login?goto=cart">
-            		<button value="<?php echo $this->__('Login') ?>" class="button1 btn-cart1" title="Login" type="button"><span></span></button>
+            		<button value="<?php echo $this->__('Login') ?>" class="button1 btn-cart1" title="Login" type="button"><span>LOGIN TO USE SMOGI BUCKS</span></button>
                     </a>
             		
             		<!-- <button value="<?php echo $this->__('Login') ?>" onclick="setLocation('<?php  echo Mage::helper('customer')->getLoginUrl(); ?>')" class="button btn-sec" title="Login" type="button"><span><span><?php echo $this->__('Login') ?></span></span></button>
@@ -150,7 +150,7 @@
     <?php else: ?>
     <form action="<?php echo $this->getUrl('rewardpoints/index/removequotation/') ?>" method="post" name="discountFormPoints2" id="discountFormPoints2">
         <fieldset>
-            <h2><?php echo $this->__('SMOGI BUCKS'); ?></h2>
+            <h6><?php echo $this->__('SMOGI BUCKS'); ?></h6>
             <?php echo $this->getIllustrationImage()?>
             <div class="rewards_point_cart"><?php echo $this->__("This shopping cart is worth %s loyalty point(s).", $pts);?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($pts);?></div>
             <?php if ($points_currently_used > 0):?>

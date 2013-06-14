@@ -112,11 +112,13 @@
     <?php else : ?>
     <h6><?php echo $this->__('Do you have a Gift of YS Card?'); ?></h6>
     <div class="giftcard-login-msg">
-        <p>Please login to use your <a target="_blank" href="<?php echo $this->getUrl('gift_of_ys'); ?>">Gift of YS</a> Code.</p>
+        <p>Please login to use your Gift of YS Code.</p>
+        <!-- <p>Please login to use your <a target="_blank" href="<?php echo $this->getUrl('gift_of_ys'); ?>">Gift of YS</a> Code.</p> -->
+        
 		
 		<br />
         <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/login?goto=cart">
-            <button value="<?php echo $this->__('Login') ?>" class="button1 btn-sec1" title="Login" type="button"><span></span></button>
+            <button value="<?php echo $this->__('Login') ?>" class="button1 btn-sec1" title="Login" type="button"><span>LOGIN TO USE GIFT OF YS CODE</span></button>
         </a>
 		
 		<!-- <button value="<?php echo $this->__('Login') ?>" onclick="setLocation('<?php  echo Mage::helper('customer')->getLoginUrl(); ?>')" class="button btn-sec" title="Login" type="button"><span><span><?php echo $this->__('Login') ?></span></span></button>
