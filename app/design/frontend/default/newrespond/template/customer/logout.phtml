@@ -24,6 +24,11 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+
+<?php
+   Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl());
+?>
+<?php /*
 <div class="page-title">
     <h1><?php echo Mage::helper('customer')->__('You are now logged out') ?></h1>
 </div>
@@ -33,3 +38,6 @@
     setTimeout(function(){ location.href = '<?php echo $this->getUrl() ?>'},5000);
 //]]>
 </script>
+
+*/
+?>

@@ -53,10 +53,12 @@ function format_bill($html)
         
         //echo $str1;
         $str1 = str_replace("Card,","Card AND", $str1);
-        $str1 = str_replace("Gift Card","GIFT OF YS CARD", $str1);
+        $str1 = str_replace("Gift Card","Gift of YS Card", $str1);
         $str1 = str_replace("Discount","", $str1);
         $str1 = str_replace(")","", $str1);
         $str1 = str_replace("(","", $str1);
+        $str1 = str_replace("smogi bucks","SMOGI Bucks", $str1);
+
         
         return $str1;
         //echo substr($str1, $p1, $p2);

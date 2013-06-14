@@ -50,7 +50,7 @@
             <div class="box-content">
                 <p>
                     <?php if( $this->getIsSubscribed() ): ?>
-                        <?php echo $this->__("You are currently subscribed to Our SMOGI Newsletter.") ?>
+                        <?php echo $this->__("You are currently subscribed to our SMOGI Newsletter.") ?>
                     <?php else: ?>
                         <?php echo $this->__('You are currently not subscribed to any newsletter.') ?>
                     <?php endif; ?>
@@ -59,6 +59,58 @@
         </div>
         <?php /* Extensions placeholder */ ?>
         <?php // echo $this->getChildHtml('customer.account.dashboard.info.extra')?> <!--chetan commented -->
+    
     </div>
     <?php endif; ?>
+
+
+<!-- Gift of YS -->
+
+  <div class="col-3">
+        <div class="box">
+            <div class="box-title">
+                <h3><?php echo $this->__('GIFTS OF YS') ?></h3>
+              </div>
+            <div class="box-content">
+                <p>
+                    				<?php echo $this->__('CURRENT BALANCE: ') ?><?php echo Mage::helper('core')->currency(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomerId())); ?></a>
+      </p>
+            </div>
+        
+</div>
+</div>
+<!-- SMOGI BUCKS -->
+
+  <div class="col-4">
+        <div class="box">
+            <div class="box-title">
+                <h3><?php echo $this->__('SMOGI BUCKS') ?></h3>
+              </div>
+            <div class="box-content">
+                <p>
+                    				<?php echo $this->__('CURRENT BALANCE: ') ?>
+                    				<?php
+                $store_id = Mage::app()->getStore()->getId();
+                $customerId = Mage::getModel('customer/session')->getCustomerId();
+                if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+                    $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+                    echo $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
+                    //Mage::helper('core')->currency($reward_flat_model->collectPointsCurrent($customerId, $store_id)+0);
+                }        
+                
+                $reward_model = Mage::getModel('rewardpoints/stats');
+                //echo "$".number_format((float)($reward_model->getPointsCurrent($customerId, $store_id)+0), 2, '.','');
+                echo $reward_model->getPointsCurrent($customerId, $store_id)+0;
+                echo " Bucks";
+                //Mage::helper('core')->currency($reward_model->getPointsCurrent($customerId, $store_id)+0);
+             ?>
+      </p>
+            </div>
+
+
+</div>
+</div>
+
+
+
 </div>
