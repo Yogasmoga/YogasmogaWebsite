@@ -221,7 +221,8 @@ class IntellectLabs_Stripe_Model_Payment extends Mage_Payment_Model_Method_Cc
 				Mage::throwException($e->getMessage());
 			} catch (Exception $e) {
 				$this->debugData($e->getMessage());
-				Mage::throwException(Mage::helper('stripe')->__('Error capturing payment.'));
+				//Mage::throwException(Mage::helper('stripe')->__('Error capturing payment.'));
+                Mage::throwException(Mage::helper('stripe')->__($e->getMessage()));
 			}
 			
 			$payment->setTransactionId($charge->id)->setIsTransactionClosed(0);
@@ -242,7 +243,8 @@ class IntellectLabs_Stripe_Model_Payment extends Mage_Payment_Model_Method_Cc
 				Mage::throwException($e->getMessage());
 			} catch (Exception $e) {
 				$this->debugData($e->getMessage());
-				Mage::throwException($this->_getHelper()->__('Error capturing payment.'));
+				//Mage::throwException($this->_getHelper()->__('Error capturing payment.'));
+                Mage::throwException(Mage::helper('stripe')->__($e->getMessage()));
 			}
 				
 			$payment->setTransactionId($charge->id)->setIsTransactionClosed(0);
