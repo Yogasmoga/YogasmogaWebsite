@@ -1,4 +1,5 @@
 <div class="gift-card">
+  
     
     <?php if (Mage::helper('customer')->isLoggedIn()) : ?>
         <h6 class="giftofyshead">GIFT OF YS</h6>
@@ -66,14 +67,14 @@
                             <?php
                         }
                     ?>
-                                >
+                                class="ershow" >
                                     <?php
                                         if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false)
                                         {
                                             ?>
                                                 <?php echo strip_tags(Mage::getSingleton('core/session')->getGlobalMessage()); ?>            
                                             <?php
-                                        }
+                                         }
                                     ?>
                                 </div>
                             </td>
