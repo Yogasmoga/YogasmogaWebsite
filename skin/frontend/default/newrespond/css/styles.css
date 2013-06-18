@@ -2863,3 +2863,15 @@ body.checkout-onepage-index .opc .active .step-title
 #payment_form_stripe {
     margin-top: -30px;
 }
+
+.ershow {
+    color: #D90D3D;
+    font-size: 11px;
+    line-height: 1.3;
+    text-align: center;
+}
+
+.checkout-cart-index ul.messages
+{
+	display:none;
+}

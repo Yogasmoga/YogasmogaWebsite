@@ -104,4 +104,65 @@ function validateGiftCardRedeemForm()
     
     });
     
+	
+function isNormalInteger(str) {
+    var n = ~~Number(str);
+    return String(n) === str && n > 0;
+}			
+    
+$j(document).ready(function(){
+
+
+$j("#giftcard-form table.gfredeem div.ershow").html($j("ul.messages li.error-msg span").html());
+
+
+    
+   
+  
+	    $j("#discountFormPoints2").submit(function(){
+        return validateSmogibuckpoints();
+    });
+});
+	
+	
+	
+function validateSmogibuckpoints()
+{
+    $j("#points_error").html();
+    $j("#points_to_be_used").removeClass('error');
+    if($j("#discountFormPoints2 input[type='text']").length > 0)
+    {
+        var flag = true;
+        if($j("#points_to_be_used").val().length == 0)
+        {
+            $j("#points_error").html('Amount is required.').fadeIn('fast');
+            $j("#points_to_be_used").addClass('error');
+            flag = false;
+        }
+        if($j("#points_to_be_used").val().length > 0)
+        {
+            if(!isNormalInteger($j("#points_to_be_used").val()))
+            {
+                $j("#points_error").html('Invalid Amount. Must be an integer.').fadeIn('fast');
+                $j("#points_to_be_used").addClass('error');
+                flag = false;
+            }
+            else
+            {
+                if(($j("#points_to_be_used").val() * 1) > ($j("span#tpoints").html() * 1))
+                {
+                    $j("#points_error").html('Insufficient Points. Maximum points is ' + $j("span#tpoints").html()).fadeIn('fast');
+                    $j("#points_to_be_used").addClass('error');
+                    //setOnError(jQuery("#card-amount"),"Maximum value of a Card is 1000");
+                    flag = false;    
+                }
+            }
+        }
+        return flag;
+    }
+    else
+        return true;
+}
+
+
     
