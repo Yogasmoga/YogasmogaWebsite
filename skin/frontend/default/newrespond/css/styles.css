@@ -2869,6 +2869,8 @@ body.checkout-onepage-index .opc .active .step-title
     font-size: 11px;
     line-height: 1.3;
     text-align: center;
+	font-family:helvetica;
+	margin-top:5px;
 }
 
 .checkout-cart-index ul.messages

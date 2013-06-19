@@ -53,10 +53,12 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
     <?php endforeach; ?>
     </dl>
     <script type="text/javascript">
+	
         var _selclr = '';
         var _selsz = '';
         var _selqty = 1;
-        
+        var _ldclr = "";
+	
         var spConfig = new Product.Config(<?php echo $this->getJsonConfig() ?>);
         for(i = 0; i < spConfig.config.attributes['92'].options.length; i++){
             if(spConfig.config.attributes['92'].options[i].label.indexOf('|') > 0){
@@ -136,6 +138,21 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
                 _selclr = $j(this).attr('rel');
                 _selsz = '';
                 checkpreorder();
+		console.log("div.galleria-thumbnails img[src='" + imgdata[$j(this).attr('rel')] + "']");
+		console.log($j("div.galleria-thumbnails img[src='" + imgdata[$j(this).attr('rel')] + "']").length);
+		
+		
+		if (_ldclr == "")
+		{
+		setTimeout(function(){
+		    $j("div.galleria-thumbnails img[src='" + imgdata[$j("#color-attr div.colorbox.active").attr('rel')] + "']").trigger('click');
+		    }, 500);
+		_ldclr="1";
+		}
+		else
+		{
+		$j("div.galleria-thumbnails img[src='" + imgdata[$j(this).attr('rel')] + "']").trigger('click');
+		}
 			});
             $j("#attribute" + _szid).change(function(){
                 //alert('size changed');

@@ -1,4 +1,5 @@
 $j(document).ready(function(){
+	
 
 $j("table.gfredeem input, table#redeem input").keyup(function(e){
         //console.log(e.keyCode);
@@ -115,16 +116,14 @@ $j(document).ready(function(){
 
 $j("#giftcard-form table.gfredeem div.ershow").html($j("ul.messages li.error-msg span").html());
 
+   $j("#discountFormPoints2").submit(function(){
+	return validateSmogibuckpoints();
 
-    
-   
-  
-	    $j("#discountFormPoints2").submit(function(){
-        return validateSmogibuckpoints();
-    });
+ 
+   });
 });
-	
-	
+
+
 	
 function validateSmogibuckpoints()
 {
