@@ -40,10 +40,37 @@
         echo $_helper->productAttribute($_product, $_img, 'image');
     ?>
 	<?php elseif (count($this->getGalleryImages()) > 0): ?>
+    
+    <?php
+    
+    $srcharr = array();
+    
+?>
+<script type="text/javascript">
+    var imgdata = new Object();
+
+</script>
     <?php foreach ($this->getGalleryImages() as $_image):
     	$imgdata = json_decode(trim($_image->getLabel()), true);
 		if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0) continue;
+		
+		$imgdata = json_decode(trim($_image->getLabel()), true);
+		//var_dump($imgdata);
+		
+		if(array_search($imgdata['color'], $srcharr) !== false)
+		    continue;
+		array_push($srcharr, $imgdata['color']);
+		//array_push($srcharr, "3");
+		//echo $imgdata['color'];
 	?>
+	    <script type="text/javascript">
+		imgdata[<?php echo $imgdata['color'] ?>] = '<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930); ?>';
+	    </script>
+		    
            <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+	    
     <?php endforeach; ?>
+    <script type="text/javascript">
+	console.log(imgdata);
+    </script>
 	<?php endif ?>
