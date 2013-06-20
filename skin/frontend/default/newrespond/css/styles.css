@@ -557,8 +557,8 @@ button.btn-cart{background:url(../images/small/cart-btn.png) 50% 0 no-repeat; wi
 button.btn-cart{background:url(../images/btnc.jpg) 50% 50% no-repeat; padding:13px 45px;}
 button.btn-sec{background:url(../images/btnw.jpg) 50% 50% no-repeat; color:#000;}
 
-button.btn-cart1{background:#f0f0f0 url(../images/login_goys_off.png) 0 0 no-repeat; padding:10px 45px; color:#000; width:289px; height:29px;font-size:12px;}
-button.btn-sec1{background:#f0f0f0 url(../images/login_goys_off.png) 0 0 no-repeat; color:#000; width:289px; height:29px;font-size:12px;}
+button.btn-cart1{background: url(../images/btn-update.png) 0 0 no-repeat;/*padding:9px 45px;*/color:#000;font-size:12px;}
+button.btn-sec1{background: url(../images/btn-update.png) 0 0 no-repeat; color:#000;font-size:12px;}
 
 .button1 {
     background: url("/skin/frontend/default/newrespond/images/btn.jpg") no-repeat scroll 50% 50% #D70D3C;
@@ -2851,9 +2851,10 @@ body.checkout-onepage-index .opc .active .step-title
 	border-bottom:1px solid #CCCCCC;
 }
 
-.fields.addspace div.field:first-child {
+.fields.addspace div.field:first-child{
     margin-bottom: 17px;
 }
+
 
 .mobspace
 {
@@ -2876,4 +2877,30 @@ body.checkout-onepage-index .opc .active .step-title
 .checkout-cart-index ul.messages
 {
 	display:none;
+}
+
+.account-button1
+{
+padding: 30px 0;
+}
+
+.account-button2
+{
+padding: 30px 0;
+border-top:1px solid #ececec;
+}
+.customer-account-login .main
+{
+padding:0;
+}
+
+.customer-account-login .buttons-set
+{
+padding:0;
+margin:0 !important;
+}
+
+.customer-account-login .page-title
+{
+    margin-top:30px;
 }
