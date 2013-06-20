@@ -138,8 +138,8 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
                 _selclr = $j(this).attr('rel');
                 _selsz = '';
                 checkpreorder();
-		console.log("div.galleria-thumbnails img[src='" + imgdata[$j(this).attr('rel')] + "']");
-		console.log($j("div.galleria-thumbnails img[src='" + imgdata[$j(this).attr('rel')] + "']").length);
+		//console.log("div.galleria-thumbnails img[src='" + imgdata[$j(this).attr('rel')] + "']");
+		//console.log($j("div.galleria-thumbnails img[src='" + imgdata[$j(this).attr('rel')] + "']").length);
 		
 		
 		if (_ldclr == "")
@@ -153,6 +153,7 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 		{
 		$j("div.galleria-thumbnails img[src='" + imgdata[$j(this).attr('rel')] + "']").trigger('click');
 		}
+		
 			});
             $j("#attribute" + _szid).change(function(){
                 //alert('size changed');
