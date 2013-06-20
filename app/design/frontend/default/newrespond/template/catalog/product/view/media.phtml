@@ -34,6 +34,88 @@
     $_product = $this->getProduct();
     $_helper = $this->helper('catalog/output');
 ?>
+<?php
+    if (count($this->getGalleryImages()) == 0)
+    {
+        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    }
+    elseif (count($this->getGalleryImages()) > 0)
+    {
+        $srcharr = array();
+        ?>
+        <script type="text/javascript">
+            var imgdata = new Object();
+        </script>
+        <?php
+            $colors = array();
+            foreach ($this->getGalleryImages() as $_image)
+            {
+               $imgdata = json_decode(trim($_image->getLabel()), true);
+        		if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0) continue;
+        		
+        		$imgdata = json_decode(trim($_image->getLabel()), true);
+        		//var_dump($imgdata);
+        		if(array_search($imgdata['color'], $colors) !== false)
+        		    continue;
+        		array_push($colors, $imgdata['color']);
+            }
+        
+        //print_r($colors);
+            $activities = array();
+            for($i = 0; $i < count($colors); $i++)
+            {
+                $found = false;
+                foreach ($this->getGalleryImages() as $_image)
+                {
+                    $imgdata = json_decode(trim($_image->getLabel()), true);
+    		        if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0) continue;
+                    if($imgdata['color'] != $colors[$i])
+                        continue;
+                    if(array_search($imgdata['bestfor'], $activities) !== false)
+            		    continue;
+            		array_push($activities, $imgdata['bestfor']);
+                    ?>
+                    <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+                    <script type="text/javascript">
+                		imgdata[<?php echo $imgdata['color'] ?>] = '<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930); ?>';
+                	</script>
+                    <?php
+                    $found = true;
+                    break;
+                }
+                if(!$found)
+                {
+                    foreach ($this->getGalleryImages() as $_image)
+                    {
+                        $imgdata = json_decode(trim($_image->getLabel()), true);
+        		        if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0) continue;
+                        if($imgdata['color'] != $colors[$i])
+                            continue;
+                        array_push($activities, $imgdata['bestfor']);
+                        ?>
+                        <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+                        <script type="text/javascript">
+                    		imgdata[<?php echo $imgdata['color'] ?>] = '<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930); ?>';
+                    	</script>
+                        <?php
+                        break;
+                    }
+                }
+            }    
+    
+    	?>
+        <script type="text/javascript">
+    	//console.log(imgdata);
+        </script>
+        <?php
+    }
+?>
+
+<?php return; ?>
+
+
+
   <?php if (count($this->getGalleryImages()) == 0): ?>
     <?php
         $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
