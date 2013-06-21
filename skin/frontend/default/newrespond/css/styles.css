@@ -2913,3 +2913,26 @@ margin-top:5px;
 {
 margin-top:40px;
 }
+
+.sales-order-view .page-title title-buttons
+{
+text-align:center;
+}
+button.btn-checkout-disable
+{
+background:url(../images/continue_check_out_disabled.png) 50% 50% no-repeat;
+	border:0;
+	overflow:hidden;
+	margin:0 auto;
+	border-radius:0;
+	display:inline-block;
+	color:#DDDDD;
+	font-family:gotham-b, arial;
+	font-size:13px;
+	line-height:1;
+	font-weight:normal;
+	padding:10px 30px;
+	text-decoration:none;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}

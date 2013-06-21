@@ -31,7 +31,6 @@
 <div class="recent-orders">
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <?php echo $this->getChildHtml('info');?>
-    <?php echo $this->getPagerHtml(); ?>
     <?php if($_orders->getSize()): ?>
     <table class="data-table" id="my-orders-table">
         <thead>
@@ -54,7 +53,10 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+    <?php echo $this->getPagerHtml(); ?>
     <?php else: ?>
         <p><?php echo $this->__('You have placed no orders.'); ?></p>
+          
+
     <?php endif ?>
 </div>
