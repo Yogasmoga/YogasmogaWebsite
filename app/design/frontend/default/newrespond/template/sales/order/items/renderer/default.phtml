@@ -31,7 +31,10 @@
 <tbody>
     <tr class="border" id="order-item-row-<?php echo $_item->getId() ?>">
         <th><?php echo $this->__('Product Name') ?></th>
-        <td><h3 class="product-name"><?php echo $this->escapeHtml($_item->getName()) ?></h3>
+        
+        <td class="item-left">
+            <div class="item-right">    
+            <h3 class="product-name"><?php echo html_entity_decode($this->escapeHtml($_item->getName())) ?></h3>
             <?php if($_options): ?>
             <dl class="item-options">
             <?php foreach ($_options as $_option) : ?>
@@ -39,12 +42,32 @@
                 <?php if (!$this->getPrintStatus()): ?>
                     <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
                     <dd<?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?>>
-                        <?php echo $_formatedOptionValue['value'] ?>
+                        <?php // echo $_formatedOptionValue['value'] ?>
+                        <?php 
+                    $word = $_formatedOptionValue['value'];
+                    if(strpos($word, "|"))
+                    {
+                        echo " ".substr($word,0, strpos($word, "|"));
+                    }
+                    else
+                        echo $word;
+                ?>
                         <?php if (isset($_formatedOptionValue['full_view'])): ?>
                         <div class="truncated_full_value">
                             <dl class="item-options">
                                 <dt><?php echo $this->escapeHtml($_option['label']) ?></dt>
-                                <dd><?php echo $_formatedOptionValue['full_view'] ?></dd>
+                                <dd><?php // echo $_formatedOptionValue['full_view'] ?>
+                            <?php 
+                                $word = $_formatedOptionValue['full_view'];
+                                if(strpos($word, "|"))
+                                {
+                                    echo " ".substr($word,0, strpos($word, "|"));
+                                }
+                                else
+                                    echo $word;
+                            ?>
+
+                                </dd>
                             </dl>
                         </div>
                         <?php endif; ?>
@@ -65,11 +88,12 @@
             <?php if($this->helper('giftmessage/message')->getIsMessagesAvailable('order_item', $_item) && $_item->getGiftMessageId()): ?>
                 <a href="#" id="order-item-gift-message-link-<?php echo $_item->getId() ?>" class="gift-message-link" onclick="return giftMessageToogle('<?php echo $_item->getId() ?>')"><?php echo $this->__('Gift Message') ?></a>
             <?php endif; ?>
-        </td>
+            </div>
+        </td> 
     </tr>
     <tr>
         <th><?php echo $this->__('SKU') ?></th>
-        <td><?php echo $this->escapeHtml(Mage::helper('core/string')->splitInjection($this->getSku())) ?></td>
+        <td class="item-left"><div class="item-right"><?php echo $this->escapeHtml(Mage::helper('core/string')->splitInjection($this->getSku())) ?></div></td>
     </tr>
         <th class="a-left"><?php echo $this->__('Price') ?></th>
         <td class="a-right">
@@ -128,7 +152,7 @@
                         <?php endif; ?>
                     <?php endif; ?>
                 </span>
-                <br />
+               <!--  <br /> -->
             <?php endif; ?>
             <?php if ($this->helper('tax')->displaySalesBothPrices() || $this->helper('tax')->displaySalesPriceInclTax()): ?>
                 <span class="price-incl-tax">
@@ -265,7 +289,7 @@
                         <?php endif; ?>
                     <?php endif; ?>
                 </span>
-                <br />
+                <!-- <br /> -->
             <?php endif; ?>
             <?php if ($this->helper('tax')->displaySalesBothPrices() || $this->helper('tax')->displaySalesPriceInclTax()): ?>
                 <span class="price-incl-tax">
