@@ -3022,3 +3022,7 @@ float:right;
 {
    margin-top:9px;
 }
+#sku-width
+{
+max-width:200px;
+}

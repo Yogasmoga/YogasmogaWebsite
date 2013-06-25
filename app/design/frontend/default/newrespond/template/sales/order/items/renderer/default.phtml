@@ -93,7 +93,7 @@
     </tr>
     <tr>
         <th><?php echo $this->__('SKU') ?></th>
-        <td class="item-left"><div class="item-right"><?php echo $this->escapeHtml(Mage::helper('core/string')->splitInjection($this->getSku())) ?></div></td>
+        <td class="item-left"><div class="item-right" id="sku-width" ><?php echo $this->escapeHtml(Mage::helper('core/string')->splitInjection($this->getSku())) ?></div></td>
     </tr>
         <th class="a-left"><?php echo $this->__('Price') ?></th>
         <td class="a-right">
