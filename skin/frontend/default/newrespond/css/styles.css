@@ -2936,3 +2936,89 @@ background:url(../images/continue_check_out_disabled.png) 50% 50% no-repeat;
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
 }
+
+.item-left
+{
+   text-align: left;
+}
+
+.item-right
+{
+float:right;
+}
+.sales-order-view #my-orders-table td
+{
+   padding:9px 0;
+}
+
+.sales-order-view .price
+{
+float:right;
+}
+
+.sales-order-view .order-items
+{
+   margin:0 auto;
+   overflow:inherit !important;
+}
+
+.sales-order-view .title-buttons h1
+{
+   float:none;
+   text-align: center;
+}
+.sales-order-view .col-1
+{
+   padding:9px 0;
+}
+
+.sales-order-view .col-2
+{
+   padding:9px 0;
+}
+
+.sales-order-view .order-info
+{
+   font-weight:bold;
+    border-bottom: 1px solid #DDDDDD;
+   font-size: 13px;
+   font-weight: bold;
+   margin: 0 0 8px;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+   font-family:ITCAvantGardeBk,arial;
+}
+
+.sales-order-view .item-options
+{
+   font-size:12px;
+}
+
+.sales-order-view .item-options dt {
+  float: left;
+  font-family: gotham-l;
+  font-weight: bold;
+  font-style: italic;
+  margin-right: 8px;
+  text-transform: none;
+}
+
+.sales-order-view .data-table tbody th
+{
+
+   font-size: 12px;
+   padding: 3px 8px;
+   font-weight: normal;
+   text-transform: none;
+   white-space: normal;
+}
+
+.sales-order-view .border
+{
+   border-top:2px solid #000;
+}
+
+.sales-order-history .pager 
+{
+   margin-top:9px;
+}

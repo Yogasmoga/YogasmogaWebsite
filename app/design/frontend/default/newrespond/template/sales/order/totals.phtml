@@ -37,7 +37,27 @@
             <?php if ($_total->getStrong()):?>
             <strong><?php echo $this->escapeHtml($_total->getLabel());?></strong>
             <?php else:?>
-            <?php echo $this->escapeHtml($_total->getLabel());?>
+             <?php
+                if(strpos($_total->getLabel(),"Discount") !== false)
+                {
+                    $str1 = $_total->getLabel();
+                    $str1 = str_replace("Card,","Card AND", $str1);
+                    $str1 = str_replace("Gift Card","Gift of YS Card", $str1);
+                    $str1 = str_replace("Discount","", $str1);
+                    $str1 = str_replace(")","", $str1);
+                    $str1 = str_replace("(","", $str1);
+                    $str1 = str_replace("smogi bucks","SMOGI Bucks", $str1);
+                    if(trim($str1) == "")
+                        $str1 = "Discount";
+                    echo $this->escapeHtml($str1);
+                }
+                else
+                {
+                    echo $this->escapeHtml($_total->getLabel());
+                }
+            ?>
+           
+            <?php //echo $this->escapeHtml($_total->getLabel());?>
             <?php endif?>
         </td>
         <td>
@@ -46,7 +66,10 @@
             <?php else:?>
             <?php echo $this->formatValue($_total) ?>
             <?php endif?>
+            
         </td>
     </tr>
+
+
     <?php endif?>
 <?php endforeach?>

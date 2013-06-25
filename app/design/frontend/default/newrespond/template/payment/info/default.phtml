@@ -35,6 +35,10 @@
 <table>
     <tbody>
     <?php foreach ($_specificInfo as $_label => $_value):?>
+    <?php
+            if(strcasecmp($this->escapeHtml($_label),'saved card') == 0)
+                continue;
+        ?>
         <tr>
             <th><strong><?php echo $this->escapeHtml($_label)?>:</strong></th>
         </tr>
