@@ -155,7 +155,7 @@
 }
 .galleria-image-nav-right {
     left: auto;
-    right: 10px;
+    right: 10px !important;
     background-position: -254px 46px;
     z-index: 2;
 }
