@@ -58,10 +58,19 @@
         		//var_dump($imgdata);
         		if(array_search($imgdata['color'], $colors) !== false)
         		    continue;
-        		array_push($colors, $imgdata['color']);
+        		array_push($colors, $imgdata['color']); 
             }
-        
-        //print_r($colors);
+            $tempcolor = array();
+    $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
+    $allOptions = $attribute->getSource()->getAllOptions(true, true);
+    foreach ($allOptions as $instance) {
+        if(array_search($instance['value'], $colors) !== false)
+        {
+            array_push($tempcolor, $instance['value']);
+        }
+    }
+    $colors = $tempcolor;
+        print_r($colors);
             $activities = array();
             for($i = 0; $i < count($colors); $i++)
             {
