@@ -24,6 +24,22 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<?php 
+$ord_num = $this->getOrderId();
+$moptions = "iPhone--iPod--BlackBerry--Palm--Googlebot-Mobile--mobi--Windows Mobile--Safari Mobile--Android--Opera Mini"; 
+        $moptions = split("--", $moptions);
+        $ismobile = false;
+        $usr_agent = Mage::helper('core/http')->getHttpUserAgent();
+        foreach($moptions as $opt)
+        {
+            //$session->addError($opt."x,");
+            if(strpos(Mage::helper('core/http')->getHttpUserAgent(), $opt))
+                $ismobile = true;
+        }
+$write = Mage::getSingleton('core/resource')->getConnection('core_write');
+$write->query("insert into order_by_device (order_num,is_mobile,user_agent) values 
+('$ord_num','$ismobile','$usr_agent')");
+?>
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" media="all" />
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/myaccount.css'); ?>" media="all" />
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myaccount.js"></script>
