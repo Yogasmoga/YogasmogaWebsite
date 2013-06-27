@@ -186,10 +186,8 @@
                                         $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
                                         $index = 1;
                                         $firstimg = true;
-                                        $defaultcount = 1;
                                         foreach($_gallery as $_image)
                                         {
-                                                $isdefault = false;
 											//if($index <= 3){
 												$imgdata = json_decode(trim($_image->getLabel()), true);
 												//var_dump(json_decode(trim($_image->getLabel()), true));
@@ -218,21 +216,16 @@
 												?>
 												<img class="
 												<?php
-                                                    if(isset($imgdata['default']))
-                                                    {
-                                                        if(strcasecmp($imgdata['default'],"yes") == 0 && $defaultcount < 5)
-    													{
-    														if($firstimg)
-    														{
-    															$firstimg = false;
-    															echo " default active rotable";
-    														}
-    														else
-    															echo " default rotable";
-                                                            $defaultcount++;
-                                                            $isdefault = true;
-    													}
-                                                    }
+													if(strcasecmp($imgdata['default'],"yes") == 0)
+													{
+														if($firstimg)
+														{
+															$firstimg = false;
+															echo " default active rotable";
+														}
+														else
+															echo " default rotable";
+													}
 													if(isset($imgdata['color']))
 													{
 														echo " color_".strtolower(str_replace(" ","_",$imgdata['color']));
@@ -243,20 +236,7 @@
 													}
 												?>
 												"
-                                                <?php
-                                                    if($isdefault)
-                                                    {
-                                                        ?>
-                                                        src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>" alt="<?php echo $alt; ?>" realsrc="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>" alt="<?php echo $alt; ?>" />       
-                                                        <?php
-                                                    }
-                                                    else
-                                                    {
-                                                        ?>
-                                                        src="#" realsrc="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>" alt="<?php echo $alt; ?>" />      
-                                                        <?php
-                                                    }
-                                                ?>
+												 src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>" alt="<?php echo $alt; ?>" />
 												<?php
 												$index++;
 											//}else{
@@ -277,110 +257,6 @@
                                         <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/line_off.png') ?>" class="inactive" />
                                      */ ?>
                                      </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="colorpicker">
-                                    <a href="javascript:void(0);">
-                                    <?php
-                                        $productcolorinfo = array();
-                                        $colors = array();
-                                        $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
-                                        foreach($_childproducts as $_childproduct)
-                                        {
-                                            $temp = $_childproduct->getAttributeText('color');
-                                            if(strpos($temp,"|") !== FALSE)
-                                            {
-                                                $hexcodes = substr($temp, strpos($temp,"|") + 1);
-                                                $hexcodes = explode(",", $hexcodes);
-                                                $colorval = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId());
-                                                //if(array_search($colorval, $colors) !== false)
-//                                                    continue;
-                                                array_push($colors, $colorval);
-                                                $temp = substr($temp, 0, strpos($temp,"|"));
-                                                if(!isset($productcolorinfo[$temp]))
-                                                    $productcolorinfo[$temp] = array();
-                                                $productcolorinfo[$temp]['hex'] = $hexcodes;
-                                                $productcolorinfo[$temp]['value'] = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId());
-                                                /*
-                                                ?>
-                                                <div>
-                                                    <table color="<?php echo $temp; ?>" value="<?php echo $colorval; ?>">
-                                                        <tr>
-                                                            <?php
-                                                                foreach($hexcodes as $hex)
-                                                                {
-                                                                    ?>
-                                                                        <td style="background-color: <?php echo $hex ?>;">
-                                                                        <div>
-                                                                            &nbsp;
-                                                                        </div>
-                                                                        </td>   
-                                                                    <?php
-                                                                } 
-                                                            ?>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="<?php echo count($hexcodes); ?>" <?php //if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
-                                                                     
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                                <?php
-                                                */
-                                            }
-                                        }
-                                        
-                                        $tempproductcolorinfo = array();
-                                        $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
-                                        $allOptions = $attribute->getSource()->getAllOptions(true, true);
-                                        foreach ($allOptions as $instance) {
-                                            if(array_key_exists($instance['label'], $productcolorinfo))
-                                            {
-                                                $tempproductcolorinfo[$instance['label']] = $productcolorinfo[$instance['label']];
-                                            }
-                                        }
-                                        $productcolorinfo = $tempproductcolorinfo;
-                                        //print_r($productcolorinfo);
-                                        //for($i = 0; $i < 2; $i++)
-//                                        {
-                                         foreach($productcolorinfo as $key=>$colorinfo)
-                                        {
-                                            //$colorcount++;
-                                            ?>
-                                                <div>
-                                                    <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
-                                                        <tr>
-                                                            <?php
-                                                                foreach($colorinfo['hex'] as $hex)
-                                                                {
-                                                                    ?>
-                                                                        <td style="background-color: <?php echo $hex ?>;">
-                                                                        <div>
-                                                                            &nbsp;
-                                                                        </div>
-                                                                        </td>   
-                                                                    <?php
-                                                                } 
-                                                            ?>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php //if($first) { echo "class='tdselectedcolor'"; $first = false; } ?> class="colorselector">
-                                                                     
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                            <?php
-                                            //if(($colorcount % 5) == 0)
-//                                                echo "<br/>";
-                                        }
-                                        //}
-                                        //print_r($productcolorinfo);
-                                    ?>
-                                    </a>
-                                    <div style="clear : both;"></div>
                                 </td>
                             </tr>
                             <tr>

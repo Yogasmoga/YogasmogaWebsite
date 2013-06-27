@@ -6,21 +6,6 @@ jQuery(document).ready(function($){
         centermodalpopup();
     });
     
-    $("div#mycategory_products div.item table[color]").click(function(){
-        console.log($(this).attr("value"));
-        if($(this).find("td.tdselectedcolor").length > 0)
-        {
-            $(this).find("td.tdselectedcolor").removeClass('tdselectedcolor');
-        }
-        else
-        {
-            //console.log($(this).parents("div.item:first").find("td.tdselectedcolor").length);
-            $(this).parents("div.item:first").find("td.tdselectedcolor").removeClass('tdselectedcolor');
-            $(this).find("td.colorselector").addClass('tdselectedcolor');
-        }
-        filterimages($(this).parents("div.item:first"));
-    });
-    
     $("#clearsearch").click(function(){
         if($("div.mylayerednavigation div.searchitems table.active").length == 0)
             return;
@@ -239,9 +224,8 @@ function filterproducts(searchattr)
         jQuery("a#clearsearch").hide();
 }
 
-function filterimages(elem)
+function filterimages()
 {
-    elem = (typeof elem === 'undefined') ? '' : elem;
     var scat = '';
     var sbestfor = '';
     var scolor = '';
@@ -265,87 +249,6 @@ function filterimages(elem)
         temp += "bestfor_" + sbestfor + ".";
     if(scolor != '')
         temp += "color_" + scolor + ".";
-    
-    if(elem == "")
-    {
-        jQuery("div#mycategory_products div.item").each(function(){
-            var clrval = '';
-            if(jQuery(this).find("td.colorpicker td.tdselectedcolor").length > 0)
-            {
-                clrval = jQuery(this).find("td.colorpicker td.tdselectedcolor").parents("table:first").attr("value");
-            }
-            if(sbestfor != '' && clrval != '')
-            {
-               jQuery(this).find("td.animateimage a").hide();        
-            }
-            else
-            {
-                jQuery(this).find("td.animateimage a").show();
-            }
-            var temp = '';
-            if(sbestfor != '')
-                temp += "bestfor_" + sbestfor + ".";
-            if(clrval != '')
-                temp += "color_" + clrval + ".";
-            if(temp.length > 0)
-            {
-                temp = temp.substr(0, temp.length - 1);
-                jQuery(this).find("td.productimage img").removeClass('rotable').removeClass('active');
-                jQuery(this).find("td.productimage img." + temp).each(function(){
-                    jQuery(this).addClass('rotable');
-                    console.log(jQuery(this).attr("realsrc"));
-                    jQuery(this).attr("src", jQuery(this).attr("realsrc"));
-                });         
-                jQuery(this).find("img.rotable:first").addClass('active');
-            }
-            else
-            {
-                jQuery(this).find("td.productimage img").removeClass('rotable').removeClass('active');
-                jQuery(this).find("td.productimage img.default").addClass('rotable');
-                jQuery(this).find("img.rotable:first").addClass('active');
-            }
-        });   
-    }
-    else
-    {
-        var clrval = '';
-        if(elem.find("td.colorpicker td.tdselectedcolor").length > 0)
-        {
-            clrval = elem.find("td.colorpicker td.tdselectedcolor").parents("table:first").attr("value");
-        }
-        if(sbestfor != '' && clrval != '')
-        {
-           elem.find("td.animateimage a").hide();        
-        }
-        else
-        {
-            elem.find("td.animateimage a").show();
-        }
-        var temp = '';
-        if(sbestfor != '')
-            temp += "bestfor_" + sbestfor + ".";
-        if(clrval != '')
-            temp += "color_" + clrval + ".";
-        if(temp.length > 0)
-        {
-            temp = temp.substr(0, temp.length - 1);
-            elem.find("td.productimage img").removeClass('rotable').removeClass('active');
-            elem.find("td.productimage img." + temp).each(function(){
-                jQuery(this).addClass('rotable');
-                console.log(jQuery(this).attr("realsrc"));
-                jQuery(this).attr("src", jQuery(this).attr("realsrc"));
-            });         
-            elem.find("img.rotable:first").addClass('active');
-        }
-        else
-        {
-            elem.find("td.productimage img").removeClass('rotable').removeClass('active');
-            elem.find("td.productimage img.default").addClass('rotable');
-            elem.find("img.rotable:first").addClass('active');
-        }
-    }
-    return;
-    
     
     if(scolor != '' && scat != '' && sbestfor != '')// && sbestfor != '')
     {
@@ -577,9 +480,8 @@ function filternavigation(searchattr)
                 jQuery(this).hide();
         }
     });
-    //commenting below to not show colors filter anytime
-    //if(jQuery("div.mylayerednavigation div[searchattr='cat']").has("table.active").length > 0)
-//        jQuery("div.colorfilters").show();
+    if(jQuery("div.mylayerednavigation div[searchattr='cat']").has("table.active").length > 0)
+        jQuery("div.colorfilters").show();
     return;
     //console.log(jQuery("div.mylayerednavigation div[searchattr][searchattr!='" + searchattr + "']"));
     //jQuery("div.mylayerednavigation div[searchattr='" + searchattr + "']").show();
