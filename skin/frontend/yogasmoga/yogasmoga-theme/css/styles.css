@@ -3793,7 +3793,7 @@ td.colorpicker table
     cursor: pointer;
     width: 40px;
 }
-td.colorpicker table td.tdselectedcolor
+td.colorpicker table td.tdselectedcolor.colorselector
 {
     border-bottom: 1px solid black;
     height: 4px;
@@ -3816,4 +3816,5 @@ td.colorpicker
 }
 td.colorpicker table td.colorselector {
     height: 5px;
+    border-bottom : 1px solid transparent;
 }
