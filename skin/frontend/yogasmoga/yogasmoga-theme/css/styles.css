@@ -2352,7 +2352,7 @@ div.mycategory-products div.item
     margin-left : 20px;
     margin-bottom : 30px;
     width : 230px;
-    height : 425px;    
+    height : 460px;    
 }
 div.mycategory-products div.item a > table
 {
@@ -2477,6 +2477,12 @@ div.mycategory-products div.item td.productimage
 	width:230px;
 	border:1px solid #DD8820;
     vertical-align : bottom;
+}
+div.mycategory-products div.item td.productimage div
+{
+	background-image: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/loading.gif");
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 .cms-home div.mycategory-products div.item td.productimage{
 	width:230px;
@@ -3781,4 +3787,32 @@ div.loginerrormsg.errormsg a
 {
     color : #d90d3d;
     text-decoration: underline;
+}
+td.colorpicker table
+{
+    cursor: pointer;
+    width: 40px;
+}
+td.colorpicker table td.tdselectedcolor
+{
+    border-bottom: 1px solid black;
+    height: 4px;
+}
+td.colorpicker table div
+{
+    height: 10px;
+    overflow: hidden;
+}
+td.colorpicker>a>div
+{
+    float: left;
+    margin-right: 6px;
+    margin-bottom : 5px;
+}
+td.colorpicker
+{
+    padding : 10px 0;
+}
+td.colorpicker table td.colorselector {
+    height: 5px;
 }
