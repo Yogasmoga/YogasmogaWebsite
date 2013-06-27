@@ -2352,7 +2352,7 @@ div.mycategory-products div.item
     margin-left : 20px;
     margin-bottom : 30px;
     width : 230px;
-    height : 460px;    
+    height : 470px;    
 }
 div.mycategory-products div.item a > table
 {
@@ -3812,6 +3812,7 @@ td.colorpicker>a>div
 td.colorpicker
 {
     padding : 10px 0;
+    height : 40px;
 }
 td.colorpicker table td.colorselector {
     height: 5px;
