@@ -276,11 +276,11 @@ function filterimages(elem)
             }
             if(sbestfor != '' && clrval != '')
             {
-               jQuery(this).find("td.animateimage a").hide();        
+               jQuery(this).find("td.animateimage a").hide().addClass('hideme');
             }
             else
             {
-                jQuery(this).find("td.animateimage a").show();
+                jQuery(this).find("td.animateimage a").show().removeClass('hideme');
             }
             var temp = '';
             if(sbestfor != '')
@@ -315,11 +315,11 @@ function filterimages(elem)
         }
         if(sbestfor != '' && clrval != '')
         {
-           elem.find("td.animateimage a").hide();        
+           elem.find("td.animateimage a").hide().addClass('hideme');;        
         }
         else
         {
-            elem.find("td.animateimage a").show();
+            elem.find("td.animateimage a").show().removeClass('hideme');;
         }
         var temp = '';
         if(sbestfor != '')

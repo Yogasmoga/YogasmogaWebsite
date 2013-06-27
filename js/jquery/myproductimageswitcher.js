@@ -56,8 +56,16 @@ jQuery(document).ready(function($){
     {
         jQuery(".mycategory-products div.item td.productimage").hover(function(){
             //var idd = jQuery(this).attr("id");
-            if(!_rotateprimages)
-                return;
+            if(jQuery(this).parents("div.item:first").find("table[color]").length > 0)
+            {
+                if(jQuery(this).parents("div.item:first").find("td.animateimage a.hideme").length > 0)
+                    return;
+            }
+            else
+            {
+                if(!_rotateprimages)
+                    return;   
+            }
             var idd = jQuery(this).parents("div.item:first").attr("id");
             var pelement = $(this).parents("div.item:first"); 
             togglehover(idd, true);
