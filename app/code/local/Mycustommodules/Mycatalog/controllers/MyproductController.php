@@ -128,6 +128,36 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         }
     }
     
+    public function orderdevicereportAction()
+    {
+        if($this->getRequest()->getParam('pass'))
+        {
+            if($this->getRequest()->getParam('pass') == "MageHACKER")
+            {
+                $output = "<table border='1'><thead><tr>
+                <th>Order No.</th>
+                <th>Device Type</th>
+                </tr><thead><tbody>";
+                $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                $readresult=$write->query("SELECT order_num AS 'orderno', is_mobile AS 'ismobile' FROM order_by_device");
+                while ($row = $readresult->fetch() ) {
+                    $outputtemp = "<tr><td>".$row['orderno']."</td>"; 
+                    if($row['ismobile'] == "0")
+                        $outputtemp .= "<td>Desktop/Laptop/Ipad</td>";
+                    else
+                        $outputtemp .= "<td>Mobile Devices</td>";
+                    $outputtemp1 .= "</tr>";
+                    $outputtemp1 = $outputtemp;
+                    $output .= $outputtemp1;
+                }
+                //echo $output;
+                $fname = mktime();
+                file_put_contents('customreports/'.$fname.'.xls',$output);
+                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");       
+            }
+        }
+    }
+
     public function getgiftcardbalanceAction()
     {
         if ($this->getRequest()->isPost() && $this->getRequest()->getPost('cardno')) 
