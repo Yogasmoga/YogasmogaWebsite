@@ -98,7 +98,7 @@
                                                 
                                                 //if(strpos($_image->getLabel(),"*") === false)
     //                                                continue;
-                                                if($index > 3)
+                                                if($index > 4)
                                                     break;
                                                     
                                                 $alt = "";
@@ -150,9 +150,10 @@
                                 <tr>
                                     <td class="animateimage">
                                         <a href="javascript:void(0);">
-                                         <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/line_01.png') ?>" class="active" usemap="#primagemap" />
-                                         <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/line_02.png') ?>" usemap="#primagemap" />
-                                         <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/line_03.png') ?>" usemap="#primagemap" />
+                                         <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/nline_01.png') ?>" class="active" usemap="#primagemap" />
+                                         <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/nline_02.png') ?>" usemap="#primagemap" />
+                                         <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/nline_03.png') ?>" usemap="#primagemap" />
+                                         <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/nline_04.png') ?>" usemap="#primagemap" />
                                          <?php /*
                                          <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/line_off.png') ?>" class="inactive" />
                                          */ ?>
@@ -199,9 +200,10 @@
     </tr>
     </table>
     <map name="primagemap">
-      <area shape="rect" coords="0,0,2,13" class="line1" href="javascript:void(0);" />
-      <area shape="poly" coords="12,0,16,0,10,13,4,13" class="line2" href="javascript:void(0);"/>
-      <area shape="poly" coords="27,4,28,7,19,13,14,13" class="line3" href="javascript:void(0);"/>
+      <area shape="rect" coords="0,5,14,15,9,15,0,9" class="line1" href="javascript:void(0);" />
+      <area shape="poly" coords="6,0,14,14,15,14,15,11,11,0" class="line2" href="javascript:void(0);" />
+      <area shape="poly" coords="17,0,21,0,21,7,19,11,17,13,16,13,16,7" class="line3" href="javascript:void(0);" />
+      <area shape="rect" coords="18,14,24,7,29,2,29,9,22,15" class="line4" href="javascript:void(0);" />
     </map>
 </div>
 <?php /*

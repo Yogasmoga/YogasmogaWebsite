@@ -29,6 +29,11 @@ jQuery(document).ready(function($){
             //console.log('line 3');
             temp = 2;
         }
+        if($(this).hasClass('line4'))
+        {
+            //console.log('line 3');
+            temp = 3;
+        }
         if($("div#" + _currentproductid + " td.productimage img.rotable").eq(temp).length > 0)
         {
             $("div#" + _currentproductid + " td.productimage img").removeClass('active');
@@ -76,8 +81,16 @@ jQuery(document).ready(function($){
             //console.log(_hovercollection);
         },
         function(){
-            if(!_rotateprimages)
-                return;
+            if(jQuery(this).parents("div.item:first").find("table[color]").length > 0)
+            {
+                if(jQuery(this).parents("div.item:first").find("td.animateimage a.hideme").length > 0)
+                    return;
+            }
+            else
+            {
+                if(!_rotateprimages)
+                    return;   
+            }
             //togglehover(jQuery(this).attr("id"), false);
             togglehover(jQuery(this).parents("div.item:first").attr("id"), false);
             var pelement = $(this).parents("div.item:first");
@@ -170,7 +183,7 @@ function shownextimage(id)
     if(isitemhovered(id))
     {
         //console.log(jQuery("#mycategory_products div#" + id + " td.productimage img.active").nextAll('.rotable').length);
-        if(jQuery("#mycategory_products div#" + id + " td.productimage img.rotable").index(jQuery("#mycategory_products div#" + id + " td.productimage img.active")) < 2 && jQuery("#mycategory_products div#" + id + " td.productimage img.active").nextAll('.rotable').length > 0)
+        if(jQuery("#mycategory_products div#" + id + " td.productimage img.rotable").index(jQuery("#mycategory_products div#" + id + " td.productimage img.active")) < 3 && jQuery("#mycategory_products div#" + id + " td.productimage img.active").nextAll('.rotable').length > 0)
         {
             _nextprimage = jQuery("#mycategory_products div#" + id + " td.productimage img.active").nextAll('.rotable:first');
             _nextrotimage = jQuery("#mycategory_products div#" + id + " td.animateimage img.active").next();
