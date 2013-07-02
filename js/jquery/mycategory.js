@@ -698,6 +698,6 @@ function showme(elem)
     //console.log(jQuery(elem).hasClass('active'));
     if(jQuery(elem).hasClass('active'))
     {
-        jQuery(elem).fadeIn(2000);
+        jQuery(elem).fadeIn();
     }
 }
