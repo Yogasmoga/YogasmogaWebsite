@@ -36,8 +36,8 @@ jQuery(document).ready(function($){
         }
         if($("div#" + _currentproductid + " td.productimage img.rotable").eq(temp).length > 0)
         {
-            $("div#" + _currentproductid + " td.productimage img").removeClass('active');
-            $("div#" + _currentproductid + " td.productimage img.rotable").eq(temp).addClass('active');
+            $("div#" + _currentproductid + " td.productimage img").removeClass('active').hide();
+            $("div#" + _currentproductid + " td.productimage img.rotable").eq(temp).addClass('active').fadeIn('slow');
             
             $("div#" + _currentproductid + " td.animateimage img").hide().removeClass('active');
             $("div#" + _currentproductid + " td.animateimage img").eq(temp).show().addClass('active');
@@ -168,8 +168,8 @@ function resettimeobject(id)
 
 function showfirstimage(id)
 {
-    jQuery("#mycategory_products div#" + id + " td.productimage img.rotable.active").removeClass('active');
-    jQuery("#mycategory_products div#" + id + " td.productimage img.rotable:first").addClass('active');
+    jQuery("#mycategory_products div#" + id + " td.productimage img.rotable.active").removeClass('active').hide();
+    jQuery("#mycategory_products div#" + id + " td.productimage img.rotable:first").addClass('active').fadeIn();
     
     //jQuery("#mycategory_products div#" + id + " td.animateimage img.active").removeClass('active');
 //    jQuery("#mycategory_products div#" + id + " td.animateimage img:not(.inactive):first").addClass('active');
@@ -190,8 +190,8 @@ function shownextimage(id)
             _activedivid = id;
             
             jQuery("#mycategory_products div#" + id + " td.productimage div").fadeOut(300, "easeInOutSine", function(){
-                jQuery("#mycategory_products div#" + _activedivid + " td.productimage img.active").removeClass('active');
-                _nextprimage.addClass('active');
+                jQuery("#mycategory_products div#" + _activedivid + " td.productimage img.active").removeClass('active').hide();
+                _nextprimage.addClass('active').fadeIn();
                 jQuery("#mycategory_products div#" + _activedivid + " td.animateimage img.active").removeClass('active').hide();
                 _nextrotimage.addClass('active').show();
                 jQuery("#mycategory_products div#" + _activedivid + " td.productimage div").fadeIn(300, "easeInOutSine");
@@ -212,8 +212,8 @@ function shownextimage(id)
             _activedivid = id;
             jQuery("#mycategory_products div#" + id + " td.productimage div").fadeOut(300, "easeInOutSine", function(){
                 
-                jQuery("#mycategory_products div#" + _activedivid + " td.productimage img.active").removeClass('active');
-                jQuery("#mycategory_products div#" + _activedivid + " td.productimage img.rotable:first").addClass('active');
+                jQuery("#mycategory_products div#" + _activedivid + " td.productimage img.active").removeClass('active').hide();
+                jQuery("#mycategory_products div#" + _activedivid + " td.productimage img.rotable:first").addClass('active').fadeIn();
                 
                 jQuery("#mycategory_products div#" + _activedivid + " td.animateimage img.active").removeClass('active').hide();
                 jQuery("#mycategory_products div#" + _activedivid + " td.animateimage img:first").addClass('active').show();
