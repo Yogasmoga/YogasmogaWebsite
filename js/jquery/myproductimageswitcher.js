@@ -168,6 +168,8 @@ function resettimeobject(id)
 
 function showfirstimage(id)
 {
+    if(jQuery("#mycategory_products div#" + id + " td.productimage img.rotable:first").hasClass('active'))
+        return;
     jQuery("#mycategory_products div#" + id + " td.productimage img.rotable.active").removeClass('active').hide();
     jQuery("#mycategory_products div#" + id + " td.productimage img.rotable:first").addClass('active').fadeIn();
     
