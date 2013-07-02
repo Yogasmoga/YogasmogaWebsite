@@ -339,6 +339,7 @@
             <div id="colortechnology" desc="Color Technology" style="width: 100%; height : 300px;background-image : url('<?php echo $this->getSkinUrl('images/bg_2.jpg') ?>');" class="bgimage pgsection">
             </div>
             */ ?>
+            <?php if(false) { ?>
             <div id="Featured-products" desc="Featured Products" class="colorbg pgsection" style="background:url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/featuredbg.jpg') no-repeat center top; background-size: cover;" tw-summary="Check out great Yoga clothes from YOGASMOGA">
             <table class="fullscreentable" width="100%">
                 <tr>
@@ -518,6 +519,122 @@
                 </tr>
             </table>
             </div>
+            <?php } ?>
+            <?php
+                $dressingroomitems = explode("\n", strip_tags($this->getLayout()->createBlock('cms/block')->setBlockId("Women_Dressing_Room1")->toHtml()));
+                $model = Mage::getModel('catalog/product');
+				$dressImgPath = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."wysiwyg/dressingroom/new/";
+            ?>
+            
+            
+            <div id="Dressingroom" desc="Dressing Room" class="pgsection" tw-summary="Check out YOGASMOGA's cool Dressing Room">
+				<div class="myheader" style="padding-bottom: 10px;">WOMEN&acute;S SHOPPING</div>
+                    <div class="dressingroomsubheader1">Here is our dressing room; navigate through our tops and bottoms using the arrows on the side.<br />To view our whole list of products, scroll to the bottom of the page.</div>
+					<div class="dressingroomsubheader">Please select your body type and browse through<br />our YOGASMOGA collection.</div>
+					<div id="drsizechart" class="sizeChart">
+						<div id="sizechart" style="left:0">
+							<div class="light-conent-box">
+								<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('size_chart')->toHtml(); ?>
+							</div>
+							<img id="closesmlight" src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png') ?>" />
+						</div>
+						<a class="size-link" href="javascript:viod(0);">Alexi is 5'10". She is wearing<br />size 4 in tops and bottoms.</a>
+					</div>
+					<div class="dressingroomoptions">
+						Body Type&nbsp;&nbsp;
+						<select id="dressingroomoptions">
+							<!-- <option selected="selected">Slender</option>
+							<option>Other Types</option> -->
+						</select>
+					</div>
+					<div id="dressingroomholder" actheight="756">
+						<div id="dressingroomtop" actheight="305">
+						<div class="ovl-box"></div>
+						<?php 
+						$topCount = 0;
+						$botCount = 0;
+						for($i = 1; $i < count($dressingroomitems); $i++){
+							$detail = explode("|", $dressingroomitems[$i]);
+							$product = $model->load(trim($detail[3]));
+							if(trim($detail[0]) == "top"){
+								$topCount++;
+							}else{
+								$botCount++;
+							}
+						}
+						$k = 0;
+						for($i = 1; $i < count($dressingroomitems); $i++){
+							$detail = explode("|", $dressingroomitems[$i]);
+							$product = $model->load(trim($detail[3]));
+							if(trim($detail[0]) == "top"){
+							$k++;
+							?>
+							<div class="dritem" botpos="<?php echo intval(strip_tags($detail[6]))+8; ?>">
+								<div class="dressing-img">
+									<img alt="<?php echo html_entity_decode($product->getName()." - ".$detail[7]); ?>" width="<?php echo trim(strip_tags($detail[4])); ?>" height="<?php echo trim(strip_tags($detail[5])); ?>" style="margin-left:-<?php echo intval(strip_tags($detail[4]))/2; ?>px;" src="<?php echo $dressImgPath.trim($detail[2]); ?>" />
+								</div>
+								<div class="productdetail">
+									<div class="detail-box">
+									<div class="productcount">
+										<div class="current"><?php echo $k; ?></div>
+										<div class="totalcountregion">
+											<div class="totalcount"><?php echo $topCount; ?></div>
+										</div>
+									</div>
+									<div class="productname"><?php echo trim($product->getName()); ?></div>
+									<div class="productdescription"><?php echo trim($product->getShortDescription()); ?></div>
+                                    <div class="viewdetails spbutton" color="<?php echo trim(strip_tags($detail[7])); ?>" pid="<?php echo trim(strip_tags($detail[6])); ?>" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/dressingroom/view_details_off.png') ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/dressingroom/view_details_on.png') ?>">View Details
+									</div>
+									<a href="#productgrid" class="grid-link">View All Products ></a>
+									</div>
+								</div>
+							</div>
+							<?php } 
+						} ?>
+						<a class="prevBtn" href="javascript:void(0);">Prev</a>
+						<a class="nextBtn" href="javascript:void(0);">Next</a>
+					</div>
+					<div id="dressingroomdivider">&nbsp;</div>
+					<div id="dressingroombottom" actheight="450">
+						<div class="ovl-box"></div>
+						<?php 
+						$j = 0;
+						for($i = 1; $i < count($dressingroomitems); $i++){
+							$detail = explode("|", $dressingroomitems[$i]);
+							$product = $model->load(trim($detail[3]));
+							if(trim($detail[0]) == "bottom"){
+							$j++;
+							?>
+							<div class="dritem">
+								<div class="dressing-img">
+									<img alt="<?php echo html_entity_decode($product->getName()." - ".$detail[7]); ?>" width="<?php echo trim(strip_tags($detail[4])); ?>" height="<?php echo trim(strip_tags($detail[5])); ?>"  style="margin-left:-<?php echo intval(strip_tags($detail[4]))/2; ?>px;" src="<?php echo $dressImgPath.trim($detail[2]); ?>" />
+								</div>
+								<div class="productdetail">
+									<div class="productcount">
+										<div class="current"><?php echo $j; ?></div>
+										<div class="totalcountregion">
+											<div class="totalcount"><?php echo $botCount; ?></div>
+										</div>
+									</div>
+									<div class="productname"><?php echo trim($product->getName()); ?></div>
+									<div class="productdescription"><?php echo trim($product->getShortDescription()); ?></div>
+									<div class="viewdetails spbutton" color="<?php echo trim(strip_tags($detail[7])); ?>" pid="<?php echo trim(strip_tags($detail[6])); ?>" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/dressingroom/view_details_off.png') ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/dressingroom/view_details_on.png') ?>">View Details
+									</div>
+									<a href="#productgrid" class="grid-link">View All Products ></a>
+								</div>
+							</div>
+							<?php } 
+						} ?>
+						<a class="prevBtn" href="javascript:void(0);">Prev</a>
+						<a class="nextBtn" href="javascript:void(0);">Next</a>
+					</div>
+					<div class="doverlay">&nbsp;</div>
+				</div>
+			</div>
+            
+            
+            
+            
             <?php echo $this->getChildHtml('footer'); ?>
             <?php /*
             <div>
