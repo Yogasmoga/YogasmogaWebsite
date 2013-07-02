@@ -3796,7 +3796,7 @@ td.colorpicker table
 td.colorpicker table td.tdselectedcolor.colorselector
 {
     border-bottom: 1px solid black;
-    height: 4px;
+    height: 5px;
 }
 td.colorpicker table div
 {
