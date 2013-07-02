@@ -276,6 +276,7 @@ function InitializeHoverCollection()
 function showme(elem)
 {
     //console.log(jQuery(elem).hasClass('active'));
+    jQuery(elem).attr("alt",jQuery(elem).attr("palt"));
     if(jQuery(elem).hasClass('active'))
     {
         jQuery(elem).fadeIn();
