@@ -692,12 +692,3 @@ function searchitems()
 {
     //console.log(jQuery(this).html());
 }
-
-function showme(elem)
-{
-    //console.log(jQuery(elem).hasClass('active'));
-    if(jQuery(elem).hasClass('active'))
-    {
-        jQuery(elem).fadeIn();
-    }
-}

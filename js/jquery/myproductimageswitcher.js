@@ -272,3 +272,12 @@ function InitializeHoverCollection()
     });
     //console.log(_hovercollection);
 }
+
+function showme(elem)
+{
+    //console.log(jQuery(elem).hasClass('active'));
+    if(jQuery(elem).hasClass('active'))
+    {
+        jQuery(elem).fadeIn();
+    }
+}
