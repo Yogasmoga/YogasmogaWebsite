@@ -290,19 +290,19 @@ function filterimages(elem)
             if(temp.length > 0)
             {
                 temp = temp.substr(0, temp.length - 1);
-                jQuery(this).find("td.productimage img").removeClass('rotable').removeClass('active');
+                jQuery(this).find("td.productimage img").removeClass('rotable').removeClass('active').hide();
                 jQuery(this).find("td.productimage img." + temp).each(function(){
                     jQuery(this).addClass('rotable');
                     console.log(jQuery(this).attr("realsrc"));
                     jQuery(this).attr("src", jQuery(this).attr("realsrc"));
                 });         
-                jQuery(this).find("img.rotable:first").addClass('active');
+                jQuery(this).find("img.rotable:first").addClass('active').fadeIn();
             }
             else
             {
-                jQuery(this).find("td.productimage img").removeClass('rotable').removeClass('active');
+                jQuery(this).find("td.productimage img").removeClass('rotable').removeClass('active').hide();
                 jQuery(this).find("td.productimage img.default").addClass('rotable');
-                jQuery(this).find("img.rotable:first").addClass('active');
+                jQuery(this).find("img.rotable:first").addClass('active').fadeIn();
             }
         });   
     }
@@ -329,19 +329,19 @@ function filterimages(elem)
         if(temp.length > 0)
         {
             temp = temp.substr(0, temp.length - 1);
-            elem.find("td.productimage img").removeClass('rotable').removeClass('active');
+            elem.find("td.productimage img").removeClass('rotable').removeClass('active').hide();
             elem.find("td.productimage img." + temp).each(function(){
                 jQuery(this).addClass('rotable');
                 console.log(jQuery(this).attr("realsrc"));
                 jQuery(this).attr("src", jQuery(this).attr("realsrc"));
             });         
-            elem.find("img.rotable:first").addClass('active');
+            elem.find("img.rotable:first").addClass('active').fadeIn();
         }
         else
         {
-            elem.find("td.productimage img").removeClass('rotable').removeClass('active');
+            elem.find("td.productimage img").removeClass('rotable').removeClass('active').hide();
             elem.find("td.productimage img.default").addClass('rotable');
-            elem.find("img.rotable:first").addClass('active');
+            elem.find("img.rotable:first").addClass('active').fadeIn();
         }
     }
     return;
@@ -679,7 +679,7 @@ function centerproductgrid()
             numitems = jQuery(".mycategory-products div.item").length;
         var netmargin = Math.floor((parentwidth - (itemwidth * numitems) - itemmargin) / 2);
         jQuery("#mycategory_products").css('margin-right', netmargin + 'px');
-        jQuery("#mycategory_products").css('margin-left', (netmargin - itemmargin) + 'px');   
+        jQuery("#mycategory_products").css('margin-left', (netmargin - itemmargin) + 'px');
     }
 }
 
@@ -691,4 +691,13 @@ function removenotifications()
 function searchitems()
 {
     //console.log(jQuery(this).html());
+}
+
+function showme(elem)
+{
+    //console.log(jQuery(elem).hasClass('active'));
+    if(jQuery(elem).hasClass('active'))
+    {
+        jQuery(elem).fadeIn(2000);
+    }
 }
