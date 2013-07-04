@@ -53,8 +53,10 @@ jQuery(document).ready(function($){
 			cur.css({visibility: "hidden"})
 		});
 		next.addClass('active').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 50);
+        if(next.find("img[loaded='0']").length > 0)
+            jQuery("#dressingroomholder div.doverlay").fadeIn('fast');
         next.find('.productdetail').stop(true,true).fadeIn(100);
-	})
+	});
 	$('a.nextBtn').click(function(){
 		var $ctr = $(this).parent();
 		var cur = $ctr.find('.dritem.active');
@@ -69,6 +71,8 @@ jQuery(document).ready(function($){
 			cur.css({visibility: "hidden"})
 		});
 		next.addClass('active').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 50);
+        if(next.find("img[loaded='0']").length > 0)
+            jQuery("#dressingroomholder div.doverlay").fadeIn('fast');
         next.find('.productdetail').stop(true,true).fadeIn(100);
 	})
 	
@@ -94,8 +98,22 @@ jQuery(document).ready(function($){
     });
 	$j('#dressingroomholder').waitForImages(function(){
 		chkfixposition()
-	})
-})
+	});
+    
+    $(window).load(function(){
+        $("#dressingroomholder img[loaded='0']").each(function(){
+            $(this).attr("src", $(this).attr("realsrc"));            
+        });
+    });
+});
+
+function drimgloaded(elem)
+{
+    jQuery(elem).attr("loaded","1");
+    if(jQuery(elem).parents("div.dritem:first").hasClass('active'))
+        jQuery("#dressingroomholder div.doverlay").fadeOut('fast');
+}
+
 function showproductlightbox(productid){
     productid = parseInt(productid);
     jQuery("#productdetailpopup").html("<table style='width:100%;height : 530px;'><tr><td style='text-align:center;vertical-align:middle;'><img src='/skin/frontend/yogasmoga/yogasmoga-theme/images/loading.gif' /></td></tr></table>");
