@@ -131,7 +131,7 @@ function chkfixposition(){
 	_winH = $j(window).height() - _headerHeight;
 	$j('.doverlay').fadeOut(50);
 	$j('#dressingroomtop img').each(function(){
-		var desHeight = (_winH - _headerHeight - 150);
+		var desHeight = (_winH - _headerHeight - 100);
 		if(desHeight < 385) desHeight = 385;
 		var cHeight = $j('#dressingroomtop img:first').height();
 		var nhPercent = (desHeight/cHeight);
@@ -142,7 +142,7 @@ function chkfixposition(){
 		$j(this).css({marginLeft: '-'+NewLeft+'px'})
 	})
 	$j('#dressingroombottom img').each(function(){
-		var desHeight = (_winH - _headerHeight - 150);
+		var desHeight = (_winH - _headerHeight - 100);
 		if(desHeight < 385) desHeight = 385;
 		var cHeight = $j('#dressingroombottom img:first').height();
 		var nhPercent = (desHeight/cHeight);
@@ -153,7 +153,7 @@ function chkfixposition(){
 		$j(this).css({marginLeft: '-'+NewLeft+'px'})
 	})
 	$j('#dressingroomtop, #dressingroombottom').each(function(){
-		var desHeight = (_winH - _headerHeight - 150);
+		var desHeight = (_winH - _headerHeight - 100);
 		if(desHeight < 385) desHeight = 385;
 		var actHT = parseInt($j('#dressingroomholder').attr('actheight'));
 		var cHeight;
