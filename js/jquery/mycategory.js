@@ -194,6 +194,13 @@ jQuery(document).ready(function($){
         $('div#mycategory_products').isotope({ filter: "div.filtered"}, function($items){ showvisibleproductcount($items.length);});
     });    
     showvisibleproductcount($("div#mycategory_products div.item").length);
+    
+    $(window).load(function(){
+        $("#mycategory_products div.item img.loadmefast[src='']").each(function(){
+            $(this).attr("src", $(this).attr("realsrc"));
+        });
+    });
+    
 });
 
 function centermodalpopup()
