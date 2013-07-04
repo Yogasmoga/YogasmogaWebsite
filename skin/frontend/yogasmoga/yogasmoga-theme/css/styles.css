@@ -3818,3 +3818,7 @@ td.colorpicker table td.colorselector {
     height: 5px;
     border-bottom : 1px solid transparent;
 }
+body.cms-home div#Dressingroom
+{
+    margin-top : 30px;
+}
