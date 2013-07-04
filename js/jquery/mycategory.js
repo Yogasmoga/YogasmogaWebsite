@@ -98,8 +98,8 @@ jQuery(document).ready(function($){
         }, 300);
         
     
-    $("div.mylayerednavigation div.searchitems:last").addClass('colorfilters');
-    $("div.mylayerednavigation div.searchhead:last").addClass('colorfilters');
+    //$("div.mylayerednavigation div.searchitems:last").addClass('colorfilters');
+//    $("div.mylayerednavigation div.searchhead:last").addClass('colorfilters');
     
     
     $("div.mylayerednavigation div.searchitems div").click(function(){
