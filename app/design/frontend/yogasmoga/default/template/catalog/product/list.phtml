@@ -31,7 +31,24 @@
  * @see Mage_Catalog_Block_Product_List
  */
 ?>
-
+<?php
+    if (!function_exists('aasort')) {
+        function aasort (&$array, $key) {
+            $sorter=array();
+            $ret=array();
+            reset($array);
+            foreach ($array as $ii => $va) {
+                $sorter[$ii]=$va[$key];
+            }
+            asort($sorter);
+            foreach ($sorter as $ii => $va) {
+                $ret[$ii]=$array[$ii];
+            }
+            $array=$ret;
+        }    
+        }
+    
+?>
 <?php /* speed fix
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/isotope.css'); ?>" media="all" />
 
@@ -143,9 +160,20 @@
 //            print_r($clrinfo);
 //            echo "</pre>";
             //echo $_productCollection->count()."<br/>";
-            for($isfs = 0; $isfs < 1; $isfs++) {
-            foreach($_productCollection as $_product)
+            foreach ($_productCollection as $_product)
             {
+                $arr[] = array("pr" => $_product, "sort" => Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'sortorder', Mage::app()->getStore()->getStoreId()));
+            }
+            aasort($arr, "sort");
+            //echo "<pre>";
+//            print_r($arr);
+//            echo "</pre>";
+            
+            for($isfs = 0; $isfs < 1; $isfs++) {
+            foreach ($arr as $a)
+            //foreach($_productCollection as $_product)
+            {
+                $_product = $a['pr'];
                 $colors = ",";
                 $temp = "";
                 
@@ -253,7 +281,7 @@
                                                     else
                                                     {
                                                         ?>
-                                                        src="#" realsrc="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>" palt="<?php echo $alt; ?>"  onload="showme(this);" />      
+                                                        src="" realsrc="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>" palt="<?php echo $alt; ?>"  onload="showme(this);" />      
                                                         <?php
                                                     }
                                                 ?>
