@@ -105,7 +105,7 @@ jQuery(document).ready(function($){
             jQuery("#dressingroomholder img[loaded='0']").each(function(){
                 jQuery(this).attr("src", jQuery(this).attr("realsrc"));            
             });
-        }, 2000);
+        }, 1000);
     });
 });
 
