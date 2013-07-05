@@ -100,15 +100,15 @@
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
         <div id="pagecontainer">
-            <div id="Welcome" share-summary="We want everyone to join in the SMOGI Love. Share #NoSheerHere and shop to receive $25 SMOGI Bucks good on your first purchase of YOGASMOGA." class="fullscreenovfhidden flexslider pgsection neglectheaderwidth" desc="<?php /* Welcome to YOGASMOGA*/ ?> No Sheer Here" style="border: none;border-radius : none;box-shadow:none;margin:0px;" tw-summary="<?php
+            <div id="Welcome"<?php /*share-summary="We want everyone to join in the SMOGI Love. Share #NoSheerHere and shop to receive $25 SMOGI Bucks good on your first purchase of YOGASMOGA."*/ ?> class="fullscreenovfhidden flexslider pgsection neglectheaderwidth" desc="Welcome to YOGASMOGA<?php /*No Sheer Here*/ ?>" style="border: none;border-radius : none;box-shadow:none;margin:0px;" tw-summary="<?php
                 if($this->getRequest()->getParam('video') == 'true')
                 {
                     echo "Check out the DID YOU TAKE A BREATH TODAY? Video";
                 }
                 else
                 {
-                    //echo "Check out YOGASMOGA. They make things for Life. One breath at a time";
-                    echo "Join the SMOGI Love. Share #NoSheerHere & shop for $25 in SMOGI Bucks good on your first purchase";
+                    echo "Check out YOGASMOGA. They make things for Life. One breath at a time";
+                    //echo "Join the SMOGI Love. Share #NoSheerHere & shop for $25 in SMOGI Bucks good on your first purchase";
                 }
             ?>">
                 <?php
@@ -120,7 +120,7 @@
                     }
                 ?>
                 <ul class="slides">
-                    
+                    <?php /*
                     <li>
                       <img style="display: none;" class="shareit" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/nosheershr.jpg" />
                       <img class="fullscreen <?php //if($this->getRequest()->getParam('video') != 'true') { echo "shareit"; } ?>" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/nosheer_1920.jpg" alt="Experience NoSheerHere and receive $25 SMOGI Bucks when you open a new account and shop" iwidth="1900" iheight="1201" />
@@ -153,8 +153,7 @@
                         *Offer valid on new account registrations. Cannot be combined with other offers or promotions.<br />Only applicable on clothing purchases. Excludes all accessories.
                       </div>
                     </li>
-                    
-                    <?php /*
+                    */ ?>
                     <li>
                       <img class="fullscreen <?php if($this->getRequest()->getParam('video') != 'true') { echo "shareit"; } ?>" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/Untitled_Panorama2_c_1.jpg" alt="Landscapes of Jodhpur and New York City" usemap="#videomap" iwidth="1600" iheight="900" />
                       <div style="position: absolute;  left : 5%; bottom: 4.3%; color:white; font-weight:normal; font-family:gotham-m, arial; font-size:14px;">FROM: NEW YORK CITY</div>
@@ -190,7 +189,6 @@
                         </span>
                         </div>
                     </li>
-                    */ ?>
 
                 </ul>
                 <?php /*
