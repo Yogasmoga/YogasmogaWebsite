@@ -100,11 +100,13 @@ jQuery(document).ready(function($){
 		chkfixposition()
 	});
     
-    $(window).load(function(){
-        $("#dressingroomholder img[loaded='0']").each(function(){
-            $(this).attr("src", $(this).attr("realsrc"));            
-        });
-    });
+    //$(window).load(function(){
+//        setTimeout(function(){
+//            jQuery("#dressingroomholder img[loaded='0']").each(function(){
+//                jQuery(this).attr("src", jQuery(this).attr("realsrc"));            
+//            });
+//        }, 500);
+//    });
 });
 
 function drimgloaded(elem)
