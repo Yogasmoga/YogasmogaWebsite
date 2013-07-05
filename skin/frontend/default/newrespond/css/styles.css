@@ -1154,7 +1154,7 @@ ul.products-grid { margin: 0; }
 .price { white-space:nowrap !important; }
 
 .price-box { margin:9px 0; }
-.price-box .price { font-size:11px; font-family:gotham-m, arial;color:#d90d3d; font-size:16px; font-weight:normal; line-height:25px;}
+.price-box .price { font-size:11px; font-family:gotham-m, arial;color:#666; font-size:16px; font-weight:normal; line-height:25px;}
 
 .product-view .price-box{margin:0 0 10px;}
 .product-view .price-box .regular-price .price{font-size:36px; font-family:ITCAvantGardeBk, Arial; font-weight:normal;}
@@ -2744,8 +2744,8 @@ padding-bottom:15px;
 .btncontinue
 {
 background: url("/skin/frontend/default/newrespond/images/btn-checkout.png") no-repeat scroll 50% 50% transparent;
-    width:243px;
-    height:34px;
+    width:239px;
+    height:43px;
 }
 
 .btncontinue span
@@ -3037,4 +3037,54 @@ float:right;
 .sales-order-history .pager 
 {
    margin-top:9px;
+}
+
+a:link#click-here
+{
+color:#D90D3D;
+}
+
+a:hover#click-here
+{
+color:#D90D3D;
+}
+
+a:visited#click-here
+{
+color:#D90D3D;
+}
+.err-cx
+{
+   /*background: url("/skin/frontend/default/newrespond/images/validation_advice_bg.gif") no-repeat scroll 2px 3px transparent;*/
+    clear: both;
+    color: #EB340A;
+    font-size: 11px;
+    line-height: 13px;
+    margin: 3px 0 0;
+    min-height: 13px;
+    padding-left: 13px;
+}
+
+button.btn-detail
+{
+
+background:url(../images/btn-details.png) 50% 50% no-repeat;
+   /*max-width:300px; max-height:59px;*/
+   border:0;
+   height: 48px;
+   width:199px;
+   overflow:hidden;
+   margin:0 auto;
+   border-radius:0;
+   display:inline-block;
+   color:#fff;
+   font-family:gotham-b, arial;
+   font-size:13px;
+   line-height:1;
+   font-weight:normal;
+   padding:10px 30px;
+   text-decoration:none;
+   text-transform: uppercase;
+   letter-spacing: 0.05em;
+
 }
