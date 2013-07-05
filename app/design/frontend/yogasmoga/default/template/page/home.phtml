@@ -522,6 +522,9 @@
             </table>
             </div>
             <?php } ?>
+            <?php if($this->getRequest()->getParam('dressing') != 'false')
+                {
+                    ?>
             <?php
                 $dressingroomitems = explode("\n", strip_tags($this->getLayout()->createBlock('cms/block')->setBlockId("Women_Dressing_Room1")->toHtml()));
                 $model = Mage::getModel('catalog/product');
@@ -664,7 +667,9 @@
                 <div id="productdetailpopup">
                 </div>
             </div>
-            
+            <?php
+                }
+            ?>
             
             
             <?php echo $this->getChildHtml('footer'); ?>
