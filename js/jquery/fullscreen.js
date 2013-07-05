@@ -126,4 +126,6 @@ function setfullscreenheight()
     else
         jQuery("#pageScrollerNav").css('top', ((_winH + (_headerHeight) - jQuery("#pageScrollerNav").height()) / 2) + 'px');
     //console.log('w = ' + _winW + ' h = ' + _winH + ' s = ' + jQuery("#pageScrollerNav").height());
+    
+    alert("hd");
 }
