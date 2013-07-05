@@ -1,4 +1,5 @@
 jQuery(document).ready(function($){
+    console.log('doc ready');
     setTimeout(function(){setfullscreenheight();},50);
     //setfullscreenheight(true);
     $(window).resize(function($) {
@@ -127,5 +128,4 @@ function setfullscreenheight()
         jQuery("#pageScrollerNav").css('top', ((_winH + (_headerHeight) - jQuery("#pageScrollerNav").height()) / 2) + 'px');
     //console.log('w = ' + _winW + ' h = ' + _winH + ' s = ' + jQuery("#pageScrollerNav").height());
     
-    alert("hd");
 }
