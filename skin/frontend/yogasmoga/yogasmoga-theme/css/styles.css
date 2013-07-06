@@ -3822,7 +3822,7 @@ body.cms-home div#Dressingroom
 {
     margin-top : 30px;
 }
-body.cms-home div#Welcome
+body.cms-home div.showloading
 {
     background-image: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/loading.gif");
     background-position: center center;
