@@ -141,6 +141,7 @@ jQuery(document).ready(function($){
     });
     //$("#stripe-update-payment").live
     $("#stripe-update-payment").live('click', function(){
+        console.log("gere");
         if($(this).hasClass('use'))
         {
             $("#change-stripe-detail").show();
@@ -328,6 +329,7 @@ function reordersteps(stp)
 
 function validatePaymentForm()
 {
+    return true;
     //if(!(jQuery("#stripe-update-payment").length > 0 && jQuery("#stripe-update-payment").hasClass('unuse')))
 //        return true;
     if(jQuery("#payment_form input[type='text']").length == 0)
