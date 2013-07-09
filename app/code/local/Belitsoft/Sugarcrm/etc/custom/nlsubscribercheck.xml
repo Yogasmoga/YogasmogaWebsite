@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<custom>
+	<nlsubscribercheck translate="label">
+		<label>Check newsletter subscription</label>
+		<model>sugarcrm/custom_newslettersubscription::get</model>
+		<params></params>
+		<sort>10</sort>
+	</nlsubscribercheck>
+</custom>
