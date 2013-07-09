@@ -3803,7 +3803,7 @@ td.colorpicker table div
     height: 10px;
     overflow: hidden;
 }
-td.colorpicker>a>div
+td.colorpicker a>div
 {
     float: left;
     margin-right: 6px;
