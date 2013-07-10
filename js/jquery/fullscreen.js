@@ -1,10 +1,10 @@
 jQuery(document).ready(function($){
+    setfullscreenheight();
     setTimeout(function(){setfullscreenheight();},50);
     //setfullscreenheight(true);
     $(window).resize(function($) {
         setfullscreenheight();
     });
-    
 });
 
 function setfullscreenheight()
