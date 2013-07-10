@@ -91,11 +91,13 @@
         <?php
     }
 ?>
+<?php /*
 <script type="text/javascript">
     jQuery(window).load(function(){
         jQuery("div.showloading").removeClass('showloading');
     });
 </script>
+*/ ?>
 </head>
 <body class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>" style="margin-right:17px;">
 <?php echo $this->getChildHtml('after_body_start') ?>
@@ -107,7 +109,7 @@
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
         <div id="pagecontainer">
-            <div id="Welcome"<?php /*share-summary="We want everyone to join in the SMOGI Love. Share #NoSheerHere and shop to receive $25 SMOGI Bucks good on your first purchase of YOGASMOGA."*/ ?> class="fullscreenovfhidden flexslider pgsection neglectheaderwidth showloading" desc="Welcome to YOGASMOGA<?php /*No Sheer Here*/ ?>" style="border: none;border-radius : none;box-shadow:none;margin:0px;" tw-summary="<?php
+            <div id="Welcome"<?php /*share-summary="We want everyone to join in the SMOGI Love. Share #NoSheerHere and shop to receive $25 SMOGI Bucks good on your first purchase of YOGASMOGA."*/ ?> class="fullscreenovfhidden flexslider pgsection neglectheaderwidth" desc="Welcome to YOGASMOGA<?php /*No Sheer Here*/ ?>" style="border: none;border-radius : none;box-shadow:none;margin:0px;" tw-summary="<?php
                 if($this->getRequest()->getParam('video') == 'true')
                 {
                     echo "Check out the DID YOU TAKE A BREATH TODAY? Video";
