@@ -3794,6 +3794,7 @@ td.colorpicker table
 {
     cursor: pointer;
     width: 40px;
+    padding-left : 4px;
 }
 td.colorpicker table td.tdselectedcolor.colorselector
 {
