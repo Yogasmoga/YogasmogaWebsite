@@ -1,5 +1,5 @@
 jQuery(document).ready(function($){
-    setfullscreenheight();
+    //setfullscreenheight();
     setTimeout(function(){setfullscreenheight();},50);
     //setfullscreenheight(true);
     $(window).resize(function($) {

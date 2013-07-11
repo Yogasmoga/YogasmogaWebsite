@@ -207,7 +207,7 @@ jQuery(document).ready(function($){
         cnt = $(this).find("td.colorpicker a>div").length;
         if(cnt < 5)
         {
-            pad = ((230 - (cnt * 46) - 6) / 2) + 8;
+            pad = ((230 - (cnt * 46) - 6) / 2) + 9;
             $(this).find("td.colorpicker").css("padding-left", pad + "px");
         }
     });
