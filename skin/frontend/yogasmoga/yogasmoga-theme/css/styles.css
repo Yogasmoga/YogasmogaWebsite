@@ -2478,14 +2478,12 @@ div.mycategory-products div.item td.productimage
 	border:1px solid #DD8820;
     vertical-align : bottom;
 }
-/*
-div.mycategory-products div.item td.productimage div
+div.mycategory-products div.item td.productimage div.showloader
 {
 	background-image: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/loading_light.gif");
     background-position: center center;
     background-repeat: no-repeat;
 }
-*/
 .cms-home div.mycategory-products div.item td.productimage{
 	width:230px;
 }
