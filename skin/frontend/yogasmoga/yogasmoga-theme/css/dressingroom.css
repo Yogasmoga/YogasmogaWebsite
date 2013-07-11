@@ -185,6 +185,8 @@ dressingroomholder #dressingroombottom table td.imageholder
   background-repeat: no-repeat;
   background-size: 100% auto;
   position: relative;
+  width : 100%;
+  overflow: hidden;
 }
 .dressingroombg
 {
