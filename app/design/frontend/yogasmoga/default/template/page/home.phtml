@@ -94,11 +94,11 @@
 <script type="text/javascript">
     jQuery(window).load(function(){
         jQuery("div.showloading").removeClass('showloading');
-        jQuery("html").css('overflow','auto');
     });
     jQuery(document).ready(function(){
        setTimeout(function(){
-            //jQuery("div.page-overlayy").remove();
+            jQuery("div.page-overlayy").remove();
+            jQuery("html").css('overflow','auto');
        }, 500); 
     });
 </script>
