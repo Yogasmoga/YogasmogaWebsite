@@ -2527,6 +2527,7 @@ div.mycategory-products div.item td.animateimage img.active
 {
     display : none;
     margin-top : 3px;
+    margin-left : -1px;
 }
 div.mycategory-products div.item td.animateimage img
 {
