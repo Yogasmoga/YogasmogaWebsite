@@ -8,7 +8,7 @@ jQuery(document).ready(function($){
     
     $("div#mycategory_products div.item table[color]").click(function(){
         //console.log($(this).attr("value"));
-        $(this).parents("div.item:first").removeClass("showloader");
+        $(this).parents("div.item:first").find("td.productimage div.showloader").removeClass("showloader");
         if($(this).find("td.tdselectedcolor").length > 0)
         {
             $(this).find("td.tdselectedcolor").removeClass('tdselectedcolor');
