@@ -8,6 +8,7 @@ jQuery(document).ready(function($){
     
     $("div#mycategory_products div.item table[color]").click(function(){
         //console.log($(this).attr("value"));
+        $(this).parents("div.item:first").removeClass("showloader");
         if($(this).find("td.tdselectedcolor").length > 0)
         {
             $(this).find("td.tdselectedcolor").removeClass('tdselectedcolor');
@@ -21,6 +22,7 @@ jQuery(document).ready(function($){
         filterimages($(this).parents("div.item:first"));
         $(this).parents("div.item:first").find("td.animateimage img").removeClass('active').hide();
         $(this).parents("div.item:first").find("td.animateimage img:first").addClass('active').show();
+        
     });
     
     $("#clearsearch").click(function(){
