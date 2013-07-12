@@ -305,5 +305,27 @@ Category default layout
 
     </customer_logged_out>
 
+    <checkout_cart_index>
+        <reference name="root">
+            <block type="page/html_footer" name="footer" as="footer" template="page/html/footer1.phtml" />
+        </reference>  
+    </checkout_cart_index>
 	
+    <checkout_onepage_index>
+        <reference name="root">
+            <block type="page/html_footer" name="footer" as="footer" template="page/html/footer1.phtml" />
+        </reference>
+    </checkout_onepage_index>
+    
+    <customer_account>
+        <reference name="root">
+            <block type="page/html_footer" name="footer" as="footer" template="page/html/footer1.phtml" />
+        </reference>
+    </customer_account>    
+    
+    <customer_account_login>
+        <reference name="root">
+            <block type="page/html_footer" name="footer" as="footer" template="page/html/footer1.phtml" />
+        </reference>
+    </customer_account_login>
 </layout>
