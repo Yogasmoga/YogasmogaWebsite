@@ -29,7 +29,7 @@
             <?php
                 echo "test";
                 $currentUrl = $this->helper('core/url')->getCurrentUrl();
-                //echo $currentUrl;
+                echo $currentUrl;
                 if(!(strpos($currentUrl, "customer/account") !== false || strpos($currentUrl, "customer/account/login") !== false || strpos($currentUrl, "checkout/") !== false))
                 {
                     echo "show here";
