@@ -37,6 +37,7 @@ $ur1 = Mage::getBaseUrl()."our-edge"; //This is to get baseUrl + identifier  - O
 $ur2=Mage::getUrl() . Mage::getSingleton('cms/page')->getIdentifier(); //this is to get  current url of cms page
 $ur2 = Mage::helper('core/url')->getCurrentUrl();
 
+echo $ur1."<br/>";
 echo $ur2;
 
 if ($ur1==$ur2)
