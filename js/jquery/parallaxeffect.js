@@ -60,7 +60,7 @@ jQuery(document).ready(function($){
 				//$(this).slideDown('slow');
 				$(this).animate({
 					height : newheight
-				}, 500);
+				}, 300);
 			}
 			else
 			{
@@ -72,11 +72,11 @@ jQuery(document).ready(function($){
 				$(this).find('.small').fadeIn('500');
 				$(this).animate({
 					height : newheight
-				}, 500);
+				}, 300);
 			}
         $("html, body").animate({
             scrollTop: ($(this).offset().top - _headerHeight)
-        }, 500);
+        }, 300);
     });
     
     function getScaledheight(originalheight, originalwidth)
