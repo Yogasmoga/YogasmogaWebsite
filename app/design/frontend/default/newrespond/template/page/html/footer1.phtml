@@ -26,7 +26,11 @@
 ?>
 <div class="footer-container">
     <div class="footer">
-            <?php echo $this->getChildHtml('footer_block_address') ?>
+            <?php
+            echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_block_address')->toHtml(); 
+            //echo Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'footer_block_address', Mage::app()->getStore()->getStoreId());
+            
+             ?>
 		<address><?php echo $this->getCopyright() ?></address>
     </div>
 </div>
