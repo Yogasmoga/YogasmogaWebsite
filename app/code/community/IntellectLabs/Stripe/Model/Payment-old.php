@@ -45,29 +45,21 @@ class IntellectLabs_Stripe_Model_Payment extends Mage_Payment_Model_Method_Cc
 	
 	public function createStripeCustomer($token,$customer,$payment=false) 
 	{
-		try {
-			// create a Customer
-			$stripeCustomer = Stripe_Customer::create(array(
-					'card' 		  => $token, 
-					"email"		  => $customer->getEmail(),
-					"description" => sprintf("Magento Customer %s <%s>", $customer->getName(), $customer->getEmail())
-			));
-			if ($customer->getId()) {
-				$customer->setStripeCustomerId($stripeCustomer->id)->save();
-			}
-
-			if ($payment) {
-				$payment->setStripeCustomerId($stripeCustomer->id);
-			}
-
-			return $this;
-		} catch(Stripe_CardError $e) {
-			$this->debugData($e->getMessage());
-			Mage::throwException($e->getMessage());
-		} catch (Exception $e) {
-			$this->debugData($e->getMessage());
-            Mage::throwException(Mage::helper('stripe')->__($e->getMessage()));
+		// create a Customer
+		$stripeCustomer = Stripe_Customer::create(array(
+				'card' 		  => $token, 
+				"email"		  => $customer->getEmail(),
+				"description" => sprintf("Magento Customer %s <%s>", $customer->getName(), $customer->getEmail())
+		));
+		if ($customer->getId()) {
+			$customer->setStripeCustomerId($stripeCustomer->id)->save();
 		}
+		
+		if ($payment) {
+			$payment->setStripeCustomerId($stripeCustomer->id);
+		}
+		
+		return $this;
 	}
 	
 	public function updateStripeCustomer($token,$customer) 
