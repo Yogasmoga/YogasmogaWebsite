@@ -100,7 +100,7 @@ Default layout, loads most of the pages
                 <label>Right Column</label>
             </block>
 
-            <block type="page/html_footer" name="footer" as="footer" template="page/html/footer1.phtml">
+            <block type="page/html_footer" name="footer" as="footer" template="page/html/footer.phtml">
                 <block type="page/html_wrapper" name="bottom.container" as="bottomContainer" translate="label">
                     <label>Page Footer</label>
                     <action method="setElementClass"><value>bottom-container</value></action>
