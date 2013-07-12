@@ -31,6 +31,7 @@
                 //echo $currentUrl;
                 if(!(strpos($currentUrl, "customer/account") !== false || strpos($currentUrl, "customer/account/login") !== false || strpos($currentUrl, "checkout/") !== false))
                 {
+                    echo "show here";
                     echo $this->getChildHtml('topSearch');
                     echo $this->getChildHtml('footer_block_newsletter');
                 }
