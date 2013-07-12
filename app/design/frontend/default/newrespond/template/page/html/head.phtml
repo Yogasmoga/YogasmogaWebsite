@@ -35,6 +35,9 @@
 $ur1 = Mage::getBaseUrl()."our-edge"; //This is to get baseUrl + identifier  - Our Edge Page
 
 $ur2=Mage::getUrl() . Mage::getSingleton('cms/page')->getIdentifier(); //this is to get  current url of cms page
+$ur2 = Mage::helper('core/url')->getCurrentUrl();
+
+echo $ur2;
 
 if ($ur1==$ur2)
   {
@@ -46,6 +49,7 @@ if ($ur1==$ur2)
 $ur3 = Mage::getBaseUrl()."mens"; //This is to get baseUrl + identifier  - Mens Page
 
 $ur4=Mage::getUrl() . Mage::getSingleton('cms/page')->getIdentifier(); //this is to get  current url of cms page
+$ur4 = Mage::helper('core/url')->getCurrentUrl();
 
 if ($ur3==$ur4)
   {
@@ -58,7 +62,7 @@ if ($ur3==$ur4)
 $ur5 = Mage::getBaseUrl()."ourstory"; //This is to get baseUrl + identifier  - Our Story Page
 
 $ur6=Mage::getUrl() . Mage::getSingleton('cms/page')->getIdentifier(); //this is to get  current url of cms page
-
+$ur6 = Mage::helper('core/url')->getCurrentUrl();
 if ($ur5==$ur6)
   {
  Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl());
@@ -69,7 +73,7 @@ if ($ur5==$ur6)
 $ur7 = Mage::getBaseUrl()."smogi-bucks"; //This is to get baseUrl + identifier  - Smogi Bucks Page
 
 $ur8=Mage::getUrl() . Mage::getSingleton('cms/page')->getIdentifier(); //this is to get  current url of cms page
-
+$ur8 = Mage::helper('core/url')->getCurrentUrl();
 if ($ur7==$ur8)
   {
  Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl());
@@ -81,7 +85,7 @@ if ($ur7==$ur8)
 $ur9 = Mage::getBaseUrl()."help"; //This is to get baseUrl + identifier  - Help Page
 
 $ur10=Mage::getUrl() . Mage::getSingleton('cms/page')->getIdentifier(); //this is to get  current url of cms page
-
+$ur10 = Mage::helper('core/url')->getCurrentUrl();
 if ($ur9==$ur10)
   {
  Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl());
@@ -93,7 +97,7 @@ if ($ur9==$ur10)
 $ur11 = Mage::getBaseUrl()."gift_of_ys"; //This is to get baseUrl + identifier  - Gift of YS Page
 
 $ur12=Mage::getUrl() . Mage::getSingleton('cms/page')->getIdentifier(); //this is to get  current url of cms page
-
+$ur12 = Mage::helper('core/url')->getCurrentUrl();
 if ($ur11==$ur12)
   {
  Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl());
