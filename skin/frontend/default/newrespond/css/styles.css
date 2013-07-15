@@ -2877,10 +2877,11 @@ body.checkout-onepage-index .opc .active .step-title
 	padding:9px 0;
 }
 
+/*
 #payment_form_stripe {
     margin-top: -30px;
 }
-
+*/
 .ershow {
     color: #D90D3D;
     font-size: 11px;
