@@ -288,7 +288,7 @@ legend { border: 0; /* 1 */ padding: 0; white-space: normal; /* 2 */ *margin-lef
  * 3. Improves appearance and consistency in all browsers
  */
 
-button, input, select, textarea { font-size: 100%; /* 1 */ margin: 0; /* 2 */ vertical-align: baseline; /* 3 */ *vertical-align: middle; /* 3 */ }
+button, input, select, textarea { font-size: 100%; /* 1 */ margin: 0; /* 2 */ vertical-align: baseline; /* 3 */ *vertical-align: middle; /* 3 */border-radius : 0 !important; }
 
 /*
  * Addresses FF3/4 setting line-height on 'input' using !important in the UA stylesheet
@@ -559,10 +559,10 @@ p.back-link { float: left;  position:absolute;}
 button.btn-detail:hover{background-position: 50% 100%;}
 button.btn-cart{background:url(../images/small/cart-btn.png) 50% 0 no-repeat; width:205px; border:0; overflow:hidden; height:43px; text-indent:-999em; float:none; margin:0 auto; max-width:100%; padding:0;}*/
 button.btn-cart{background:url(../images/btnc.jpg) 50% 50% no-repeat; padding:13px 45px;width:194px;height:43px;}
-button.btn-sec{background:url(../images/btnw.jpg) 50% 50% no-repeat; color:#000;width:226px;height:43px;}
+button.btn-sec{background:url(../images/btnw.jpg) 50% 50% no-repeat; color:#666;width:226px;height:43px;}
 
-button.btn-cart1{background: url(../images/btn-update.png) 50% 50% no-repeat;/*padding:9px 45px;*/color:#000;font-size:13px;width:120px;height:33px;text-align:center;}
-button.btn-sec1{background: url(../images/btn-update.png) 50% 50% no-repeat; color:#000;font-size:13px;width:120px;height:33px;font-family: gotham-b,arial;text-align:center;}
+button.btn-cart1{background: url(../images/btn-update.png) 50% 50% no-repeat;/*padding:9px 45px;*/color:#666;font-size:13px;width:120px;height:33px;text-align:center;}
+button.btn-sec1{background: url(../images/btn-update.png) 50% 50% no-repeat; color:#666;font-size:13px;width:120px;height:33px;font-family: gotham-b,arial;text-align:center;}
 
 .button1 {
     background: url("/skin/frontend/default/newrespond/images/btn.jpg") no-repeat scroll 50% 50% #D70D3C;
@@ -2775,7 +2775,7 @@ button.btn-update
 	margin:0 auto;
 	border-radius:0;
 	display:inline-block;
-	color:#000;
+	color:#666;
 	font-family:gotham-b, arial;
 	font-size:13px;
 	line-height:1;
