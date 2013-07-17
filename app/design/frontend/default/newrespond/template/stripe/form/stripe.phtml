@@ -1,6 +1,6 @@
 <?php $_code=$this->getMethodCode() ?>
 <?php if ($this->getIsStripeCustomer()) : ?>
-	<a id="stripe-update-payment" class="use"><?php echo $this->__("Change payment information") ?></a>
+	<a id="stripe-update-payment" class="use"><?php echo $this->__("Change payment") ?></a>
 <?php endif; ?>
 <ul id="payment_form_<?php echo $_code ?>" class="form-list" style="display:none">
 		<li id="stripe-change-payment-form" <?php if ($this->getIsStripeCustomer()): ?> style="display: none;"<?php endif; ?>>
@@ -95,7 +95,7 @@
 				$('stripe-change-payment-form').hide();
 				$('stripe-payment-details').show();
 				$('stripe_create_stripe_customer').value = '0';
-				$(this).update("Change payment information");
+				$(this).update("Change payment");
 			} else {
 				$(this).update("Use existing payment information");
 				$('stripe-change-payment-form').show();

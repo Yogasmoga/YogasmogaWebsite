@@ -155,7 +155,7 @@ jQuery(document).ready(function($){
             $("#change-stripe-detail").hide();
             $("#stripe-payment-details").show();
             $(this).removeClass('unuse').addClass('use');
-            $(this).html('Change Payment Information');
+            $(this).html('Change Payment');
             $('#stripe_create_stripe_customer').val('0');
         }
     });
