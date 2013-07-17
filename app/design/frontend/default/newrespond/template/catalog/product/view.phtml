@@ -38,6 +38,12 @@
         alert("You swiped " + direction);
       }
     });
+    $j("div.galleria-thumbnails>div").swipe({
+      swipe:function(event, direction, distance, duration, fingerCount) {
+        //$(this).text("You swiped " + direction );
+        alert("You swiped " + direction);
+      }
+    });
 </script>
 <?php $_helper = $this->helper('catalog/output'); ?>
 <?php $_product = $this->getProduct(); ?>
