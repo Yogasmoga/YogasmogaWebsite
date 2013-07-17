@@ -181,7 +181,7 @@ Category default layout
 			<action method="addItem"><type>skin_js</type><name>js/galleria-1.2.7.min.js</name></action>
 			<action method="addItem"><type>skin_js</type><name>js/galleria.classic.min.js</name></action>
 			<action method="addItem"><type>skin_css</type><name>css/galleria.classic.css</name></action>
-            <!-- <action method="addJs"><script>mobile/jquery.touchSwipe.min.js</script></action> -->
+            <action method="addJs"><script>mobile/jquery.touchSwipe.min.js</script></action>
 		</reference>
 		<reference name="product.info">
 			<action method="unsetChild">

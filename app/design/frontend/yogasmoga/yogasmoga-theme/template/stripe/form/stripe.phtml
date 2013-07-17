@@ -26,9 +26,11 @@
 ?>
 
 <?php $_code=$this->getMethodCode() ?>
+<?php /*
 <?php if ($this->getIsStripeCustomer()) : ?>
 	<a id="stripe-update-payment" class="use"><?php echo $this->__("Change payment information") ?></a>
 <?php endif; ?>
+*/ ?>
 <div id="payment_form_<?php echo $_code ?>">
 	<!-- img src="<?php // echo $this->getSkinUrl('images/cardtype.jpg'); ?>" style="margin: 0 0 40px;" / -->
     <div id="change-stripe-detail" <?php if ($this->getIsStripeCustomer()): ?> style="display: none;"<?php endif; ?>>
@@ -154,10 +156,14 @@
 	<?php else: ?>
 		<input type="hidden" name="payment[stripe_customer_id]" value="" id="<?php echo $_code?>_stripe_customer_id" /> 
 	<?php endif; ?>
+    <?php if ($this->getIsStripeCustomer()) : ?>
+    	<a id="stripe-update-payment" class="use"><?php echo $this->__("Change payment information") ?></a>
+    <?php endif; ?>
     <input type="submit" imageurl="<?php echo $this->getSkinUrl('images/checkout/continue_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/checkout/continue_on.png'); ?>" name="send" class="loginbtn spbutton custombtn checkoutcontinuebtn" value="" />
     <div class="cleaner"></div>
     <div id="paymentmethoderrormsg" class="loginerrormsg errormsg"></div>
 </div>
+
 <script type="text/javascript">
 //<![CDATA[
 	Stripe.setPublishableKey('<?php echo $this->getPublishableKey() ?>');

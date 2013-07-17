@@ -2819,7 +2819,7 @@ button.btn-proceed-checkout
 	border-radius:0;
 	display:inline-block;
    width:243px;
-   height:34px;
+   /*height:34px;*/
 	color:#fff;
 	font-family:gotham-b, arial;
 	font-size:13px;
@@ -2954,6 +2954,7 @@ background:url(../images/continue_check_out_disabled.png) 50% 50% no-repeat;
 	text-decoration:none;
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
+    color : #666;
 }
 
 .item-left
@@ -3090,4 +3091,14 @@ background:url(../images/btn-details.png) 50% 50% no-repeat;
    text-transform: uppercase;
    letter-spacing: 0.05em;
 
+}
+#stripe-update-payment
+{
+    cursor: pointer;
+    color : #d90d3d;
+}
+#stripe-update-payment:hover
+{
+    text-decoration: underline;
+    color : #d90d3d;
 }

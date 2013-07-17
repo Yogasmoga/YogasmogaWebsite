@@ -351,10 +351,12 @@ div.addressselector
     cursor: pointer;
     display: block;
     margin-bottom: 20px;
+    color : #d90d3d;
 }
 #stripe-update-payment:hover
 {
     text-decoration: underline;
+    color : #d90d3d;
 }
 table.useshippingasbilling
 {
