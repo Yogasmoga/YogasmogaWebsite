@@ -32,18 +32,26 @@
  */
 ?>
 <script type="text/javascript">
-    $j("div.galleria-thumbnails").swipe({
-      swipe:function(event, direction, distance, duration, fingerCount) {
-        //$(this).text("You swiped " + direction );
-        alert("You swiped " + direction);
-      }
-    });
-    $j("div.galleria-thumbnails>div").swipe({
-      swipe:function(event, direction, distance, duration, fingerCount) {
-        //$(this).text("You swiped " + direction );
-        alert("You swiped " + direction);
-      }
-    });
+    setTimeout(function(){
+        //$j("div.galleria-thumbnails img").click(function(){
+//            alert("mouse down");
+//        });
+        $j("div.galleria-thumbnails").swipe({
+          swipe:function(event, direction, distance, duration, fingerCount) {
+            //$(this).text("You swiped " + direction );
+            //alert("You swiped " + direction);
+            
+            if(direction == "left")
+            {
+                $j("div.galleria-thumb-nav-left").trigger('click');
+            }
+            if(direction == "right")
+            {
+                $j("div.galleria-thumb-nav-right").trigger('click');
+            }
+          }
+        });    
+    },2000);
 </script>
 <?php $_helper = $this->helper('catalog/output'); ?>
 <?php $_product = $this->getProduct(); ?>
