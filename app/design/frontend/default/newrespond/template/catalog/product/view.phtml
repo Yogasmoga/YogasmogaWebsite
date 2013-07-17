@@ -44,12 +44,12 @@
             if(direction == "left")
             {
                 //$j("div.galleria-thumb-nav-left").trigger('click');
-                $j("div.galleria-thumbnails>div.active").prev().trigger('click');
+                $j("div.galleria-thumbnails>div.active").prev().find("img").trigger('click');
             }
             if(direction == "right")
             {
                 //$j("div.galleria-thumb-nav-right").trigger('click');
-                $j("div.galleria-thumbnails>div.active").next().trigger('click');
+                $j("div.galleria-thumbnails>div.active").next().find("img").trigger('click');
             }
           },
             threshold:10
