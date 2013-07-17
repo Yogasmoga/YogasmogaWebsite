@@ -31,6 +31,7 @@
  * @see Mage_Review_Block_Product_View
  */
 ?>
+<?php /*
 <script type="text/javascript">
     setTimeout(function(){
         //$j("div.galleria-thumbnails img").click(function(){
@@ -39,23 +40,24 @@
         $j("div.galleria-thumbnails").swipe({
           swipe:function(event, direction, distance, duration, fingerCount) {
             //$(this).text("You swiped " + direction );
-            alert("You swiped " + direction);
+            //alert("You swiped " + direction);
             
             if(direction == "left")
             {
                 //$j("div.galleria-thumb-nav-left").trigger('click');
-                $j("div.galleria-thumbnails>div.active").prev().find("img").trigger('click');
+                $j("div.galleria-thumbnails>div.active").prev() .trigger('click');
             }
             if(direction == "right")
             {
                 //$j("div.galleria-thumb-nav-right").trigger('click');
-                $j("div.galleria-thumbnails>div.active").next().find("img").trigger('click');
+                $j("div.galleria-thumbnails>div.active").next().trigger('click');
             }
           },
             threshold:10
         });    
     },2000);
 </script>
+*/ ?>
 <?php $_helper = $this->helper('catalog/output'); ?>
 <?php $_product = $this->getProduct(); ?>
 <?php
