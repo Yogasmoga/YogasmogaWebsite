@@ -2747,6 +2747,7 @@ padding-bottom:15px;
 background: url("/skin/frontend/default/newrespond/images/btn-checkout.png") no-repeat scroll 50% 50% transparent;
     width:239px;
     height:43px;
+    cursor : pointer;
 }
 
 .btncontinue span
