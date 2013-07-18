@@ -350,12 +350,17 @@ div.addressselector
 {
     cursor: pointer;
     display: block;
-    margin-bottom: 20px;
+    margin-top: 10px;
     color : #d90d3d;
+    text-decoration: underline;
+}
+#stripe-update-payment.unuse
+{
+    margin-top : 0;
 }
 #stripe-update-payment:hover
 {
-    text-decoration: underline;
+    /*text-decoration: underline;*/
     color : #d90d3d;
 }
 table.useshippingasbilling
