@@ -9,7 +9,7 @@ jQuery(document).ready(function($){
         {
             if($("div#pgnavigator li.active").length == 0)
             {
-                //alert("setting");
+                alert("setting");
                 $("div#pgnavigator li:first").addClass("active");
             }    
         }
