@@ -12,6 +12,7 @@ jQuery(document).ready(function($){
 //    });
     
     jQuery("div.item td.animateimage img:first-child").show();
+    /*
     jQuery("area").click(function(){
         var temp = '';
         if($(this).hasClass('line1'))
@@ -43,10 +44,45 @@ jQuery(document).ready(function($){
             $("div#" + _currentproductid + " td.animateimage img").eq(temp).show().addClass('active');
         }
     });
-    
+    */
     jQuery("area").hover(function(){
         $("div#" + _currentproductid).find("span.price").css('display','inline');
         $("div#" + _currentproductid).find("td.productname").css('color','black');
+        
+        var temp = '';
+        if($(this).hasClass('line1'))
+        {
+            //console.log('line 1');
+            temp = 0;    
+        }
+        if($(this).hasClass('line2'))
+        {
+            //console.log('line 2');
+            temp = 1;    
+        }
+        if($(this).hasClass('line3'))
+        {
+            //console.log('line 3');
+            temp = 2;
+        }
+        if($(this).hasClass('line4'))
+        {
+            //console.log('line 3');
+            temp = 3;
+        }
+        //console.log($("div#" + _currentproductid + " td.animateimage img.active").index());
+        if(temp == $("div#" + _currentproductid + " td.animateimage img.active").index())
+            return;
+        
+        if($("div#" + _currentproductid + " td.productimage img.rotable").eq(temp).length > 0)
+        {
+            $("div#" + _currentproductid + " td.productimage img").removeClass('active').hide();
+            $("div#" + _currentproductid + " td.productimage img.rotable").eq(temp).addClass('active').fadeIn('slow');
+            
+            $("div#" + _currentproductid + " td.animateimage img").hide().removeClass('active');
+            $("div#" + _currentproductid + " td.animateimage img").eq(temp).show().addClass('active');
+        }
+        
     },
     function(){
         $("div#" + _currentproductid).find("span.price").removeAttr('style');
