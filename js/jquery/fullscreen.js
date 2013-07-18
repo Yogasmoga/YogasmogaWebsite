@@ -1,8 +1,11 @@
 jQuery(document).ready(function($){
     //setfullscreenheight();
     setTimeout(function(){setfullscreenheight();},50);
+    setTimeout(function(){$(window).trigger("resize");},1500);
+    
     //setfullscreenheight(true);
     $(window).resize(function($) {
+        //alert("resized");
         setfullscreenheight();
     });
 });
