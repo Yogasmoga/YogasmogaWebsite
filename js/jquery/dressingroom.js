@@ -227,7 +227,7 @@ setTimeout(function(){
 if(!_onipad)
 {
     $j(window).resize(function() {
-        alert("resized");
+        //alert("resized");
     	$j('.doverlay').fadeIn(0);
         clearTimeout(id);
         id = setTimeout(chkfixposition, 500);
