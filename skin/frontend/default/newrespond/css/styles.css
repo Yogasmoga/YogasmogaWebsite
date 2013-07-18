@@ -3096,6 +3096,7 @@ background:url(../images/btn-details.png) 50% 50% no-repeat;
 {
     cursor: pointer;
     color : #d90d3d;
+    text-decoration: underline;
 }
 #stripe-update-payment:hover
 {

@@ -1,7 +1,9 @@
 <?php $_code=$this->getMethodCode() ?>
+<?php /*
 <?php if ($this->getIsStripeCustomer()) : ?>
 	<a id="stripe-update-payment" class="use"><?php echo $this->__("Change payment information") ?></a>
 <?php endif; ?>
+*/ ?>
 <ul id="payment_form_<?php echo $_code ?>" class="form-list" style="display:none">
 		<li id="stripe-change-payment-form" <?php if ($this->getIsStripeCustomer()): ?> style="display: none;"<?php endif; ?>>
 			<fieldset>
@@ -83,7 +85,12 @@
 			</li>
 		<?php else: ?>
 			<input type="hidden" name="payment[stripe_customer_id]" value="" id="<?php echo $_code?>_stripe_customer_id" /> 
-		<?php endif; ?> 
+		<?php endif; ?>
+        <?php if ($this->getIsStripeCustomer()) : ?>
+            <div style="margin-top: -12px; margin-left: 3px;">
+        	<a id="stripe-update-payment" class="use"><?php echo $this->__("Change payment information") ?></a>
+            </div>
+        <?php endif; ?> 
 </ul>
 <script type="text/javascript">
 //<![CDATA[

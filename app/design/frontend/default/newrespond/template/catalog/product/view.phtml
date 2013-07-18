@@ -38,6 +38,7 @@
 //            alert("mouse down");
 //        });
         $j("div.galleria-thumbnails").swipe({
+            
           swipe:function(event, direction, distance, duration, fingerCount) {
             //$(this).text("You swiped " + direction );
             //alert("You swiped " + direction);
@@ -54,6 +55,22 @@
             }
           },
             threshold:10
+            
+            swipeStatus:function(event, phase, direction, distance, duration, fingerCount)
+            {
+              //Here we can check the:
+              //phase : 'start', 'move', 'end', 'cancel'
+              //direction : 'left', 'right', 'up', 'down'
+              //distance : Distance finger is from initial touch point in px
+              //duration : Length of swipe in MS 
+              //fingerCount : the number of fingers used
+                if(direction == "left")
+                {
+                    curleft = $j("div.galleria-thumbnails").css('left').replace("px","");
+                    //alert(curleft);
+                    $j("div.galleria-thumbnails").css('left', (curleft + distance) + 'px');
+                }
+              }
         });    
     },2000);
 </script>
