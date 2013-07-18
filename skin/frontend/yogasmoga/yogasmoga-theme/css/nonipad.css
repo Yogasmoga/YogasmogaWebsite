@@ -6,3 +6,15 @@ div.mycategory-products div.item:hover td.productprice span.price
 {
     display : inline;
 }
+div.mylayerednavigation div.searchitems div table tr:hover td.add img
+{
+    display : inline;
+}
+div.mylayerednavigation div.searchitems div:hover
+{
+    background-color : #EFEEED;
+}
+div.mycategory-products div.item td.productprice span.price
+{
+    display : none;
+}

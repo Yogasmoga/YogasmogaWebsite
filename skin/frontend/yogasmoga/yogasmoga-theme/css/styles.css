@@ -2407,7 +2407,6 @@ div.mycategory-products div.item td.productprice div.price-box
 div.mycategory-products div.item td.productprice span.price
 {
     color: #666;
-    display: none;
     font-family:gothambold;
     font-size: 10pt;
 }
@@ -2639,6 +2638,7 @@ div.mylayerednavigation div.searchitems div
 {
     margin : 2px 0px;
     cursor : pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 div.mylayerednavigation div.searchitems div table
@@ -2665,10 +2665,12 @@ div.mylayerednavigation div.searchitems div table td.add img
 {
     display : none;
 }
+/* ipad latest
 div.mylayerednavigation div.searchitems div table tr:hover td.add img
 {
     display : inline;
 }
+*/
 div.mylayerednavigation div.searchitems div table td.remove
 {
     color : #B0B0B0;
@@ -2684,11 +2686,12 @@ div.mylayerednavigation div.searchitems div table.active td.add
 {
     display : none;
 }
-
+/* ipad latest
 div.mylayerednavigation div.searchitems div:hover
 {
     background-color : #EFEEED;
 }
+*/
 div.mylayerednavigation table.active td
 {
     background-color : #EFEEED;   

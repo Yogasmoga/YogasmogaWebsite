@@ -222,11 +222,29 @@ $j(window).load(function(){
 	
 })
 var id;
-$j(window).resize(function() {
-	$j('.doverlay').fadeIn(0);
-    clearTimeout(id);
-    id = setTimeout(chkfixposition, 500);
-});
+//alert(_onipad);
+setTimeout(function(){
+if(!_onipad)
+{
+    $j(window).resize(function() {
+        alert("resized");
+    	$j('.doverlay').fadeIn(0);
+        clearTimeout(id);
+        id = setTimeout(chkfixposition, 500);
+    });    
+}
+else
+{
+    $j(window).bind('orientationchange', function(event) {
+      //alert('new orientation:' + event.orientation);
+      $j('.doverlay').fadeIn(0);
+        clearTimeout(id);
+        id = setTimeout(chkfixposition, 500);
+    });
+}
+//alert(_onipad);    
+},200);
+
 var _dressingroomselectedcolor = '';
 /*jQuery(document).ready(function($){
 	$('#dressingroombottom .dritem:first, #dressingroomtop .dritem:first').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 200).addClass('active');
