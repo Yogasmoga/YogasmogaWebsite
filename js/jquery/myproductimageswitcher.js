@@ -12,7 +12,7 @@ jQuery(document).ready(function($){
 //    });
     
     jQuery("div.item td.animateimage img:first-child").show();
-    /*
+    
     jQuery("area").click(function(){
         var temp = '';
         if($(this).hasClass('line1'))
@@ -44,11 +44,11 @@ jQuery(document).ready(function($){
             $("div#" + _currentproductid + " td.animateimage img").eq(temp).show().addClass('active');
         }
     });
-    */
+    
     jQuery("area").hover(function(){
         $("div#" + _currentproductid).find("span.price").css('display','inline');
         $("div#" + _currentproductid).find("td.productname").css('color','black');
-        
+        /*
         var temp = '';
         if($(this).hasClass('line1'))
         {
@@ -82,7 +82,7 @@ jQuery(document).ready(function($){
             $("div#" + _currentproductid + " td.animateimage img").hide().removeClass('active');
             $("div#" + _currentproductid + " td.animateimage img").eq(temp).show().addClass('active');
         }
-        
+        */
     },
     function(){
         $("div#" + _currentproductid).find("span.price").removeAttr('style');
