@@ -2,6 +2,30 @@ var _twdesc = '';
 var _curhoverindex = '';
 var _sidenavtimer = '';
 jQuery(document).ready(function($){	
+    
+    
+    setTimeout(function(){
+        if(window.location.hash == "")
+        {
+            if($("div#pgnavigator li.active").length == 0)
+            {
+                alert("setting");
+                $("div#pgnavigator li:first").addClass("active");
+            }    
+        }
+    },1000);
+    
+    
+    //if($("div#pgnavigator li.active").length == 0)
+//    {
+//        alert(window.location.hash);
+//        hashid = "#" + window.location.hash.charAt(1).toUpperCase() + window.location.hash.slice(2);
+//        console.log(hashid);
+//        console.log($("div" + hashid).length);
+//        alert($("div" + hashid + ".pgsection").index($("div.pgsection")));
+//        alert($("div.pgsection").index($("div" + hashid)));    
+//    }
+    
     var temp = $("div.pgsection").length;
     if(temp < 2)
         $("#pageScrollerNav").hide();
