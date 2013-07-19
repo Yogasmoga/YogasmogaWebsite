@@ -87,7 +87,7 @@ jQuery(document).ready(function($){
         else
         {
         }
-        $("div#sizechart").fadeIn('normal');
+        $("td.sizechartlink div#sizechart").fadeIn('normal');
     });
     
     $("#preorderhelp").live('click', function(){
