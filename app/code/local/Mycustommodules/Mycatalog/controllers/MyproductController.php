@@ -734,7 +734,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                                             <?php if($sizechartblockid != "") {?>
                                                 <td class="sizechartlink">
                                                     <div style="position: relative;">
-                                                        <a href="#">Size chart</a>
+                                                        <a href="javascript:void(0);">Size chart</a>
                                                         
                                                                 <div id="sizechart">
                                                                     <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
