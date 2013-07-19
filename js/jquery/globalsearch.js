@@ -71,7 +71,7 @@ jQuery(document).ready(function($){
 	  {
 		$("#search_form").css('display','block');
 	    $("#search_text").animate({
-			width : 130
+			width : 90
         }, function() {
 			$(this).focus();
 			$(this).select();
