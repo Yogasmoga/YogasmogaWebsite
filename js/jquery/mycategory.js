@@ -21,12 +21,7 @@ jQuery(document).ready(function($){
         }
         filterimages($(this).parents("div.item:first"));
         $(this).parents("div.item:first").find("td.animateimage img").removeClass('active').hide();
-        if($(this).parents("div.item:first").find("td.animateimage img:first").attr("isloaded") == "1")
-        {
-            //console.log("showing");
-            $(this).parents("div.item:first").find("td.animateimage img:first").addClass('active').fadeIn('fast');
-        }
-        
+        $(this).parents("div.item:first").find("td.animateimage img:first").addClass('active').fadeIn('fast');
     });
     
     $("#clearsearch").click(function(){
@@ -317,16 +312,18 @@ function filterimages(elem)
                 jQuery(this).find("td.productimage img").removeClass('rotable').removeClass('active').hide();
                 jQuery(this).find("td.productimage img." + temp).each(function(){
                     jQuery(this).addClass('rotable');
-                    console.log(jQuery(this).attr("realsrc"));
+                    //console.log(jQuery(this).attr("realsrc"));
                     jQuery(this).attr("src", jQuery(this).attr("realsrc"));
                 });         
-                jQuery(this).find("img.rotable:first").addClass('active').fadeIn();
+                if(jQuery(this).find("img.rotable:first").addClass('active').attr("isloaded") == "1")
+                    jQuery(this).find("img.rotable:first").addClass('active').fadeIn();
             }
             else
             {
                 jQuery(this).find("td.productimage img").removeClass('rotable').removeClass('active').hide();
                 jQuery(this).find("td.productimage img.default").addClass('rotable');
-                jQuery(this).find("img.rotable:first").addClass('active').fadeIn();
+                if(jQuery(this).find("img.rotable:first").addClass('active').attr("isloaded") == "1")
+                    jQuery(this).find("img.rotable:first").addClass('active').fadeIn();
             }
         });   
     }
@@ -356,16 +353,18 @@ function filterimages(elem)
             elem.find("td.productimage img").removeClass('rotable').removeClass('active').hide();
             elem.find("td.productimage img." + temp).each(function(){
                 jQuery(this).addClass('rotable');
-                console.log(jQuery(this).attr("realsrc"));
+                //console.log(jQuery(this).attr("realsrc"));
                 jQuery(this).attr("src", jQuery(this).attr("realsrc"));
-            });         
-            elem.find("img.rotable:first").addClass('active').fadeIn();
+            });     
+            if(elem.find("img.rotable:first").addClass('active').attr("isloaded") == "1")    
+                elem.find("img.rotable:first").addClass('active').fadeIn();
         }
         else
         {
             elem.find("td.productimage img").removeClass('rotable').removeClass('active').hide();
             elem.find("td.productimage img.default").addClass('rotable');
-            elem.find("img.rotable:first").addClass('active').fadeIn();
+            if(elem.find("img.rotable:first").addClass('active').attr("isloaded") == "1")
+                elem.find("img.rotable:first").addClass('active').fadeIn();
         }
     }
     return;
@@ -390,7 +389,7 @@ function filterimages(elem)
         //jQuery("div#mycategory_products div.item td.productimage img." + temp).addClass('rotable');
         jQuery("div#mycategory_products div.item td.productimage img." + temp).each(function(){
             jQuery(this).addClass('rotable');
-            console.log(jQuery(this).attr("realsrc"));
+            //console.log(jQuery(this).attr("realsrc"));
             jQuery(this).attr("src", jQuery(this).attr("realsrc"));
         });
         
@@ -408,7 +407,7 @@ function filterimages(elem)
             jQuery(this).find("img.default.rotable:first").addClass('active');
         });
         //jQuery("div#mycategory_products div.item td.productimage img.default.rotable:first-child").addClass('active');
-    }    
+    }
 }
 
 function filterimagesold()
