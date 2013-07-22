@@ -21,7 +21,11 @@ jQuery(document).ready(function($){
         }
         filterimages($(this).parents("div.item:first"));
         $(this).parents("div.item:first").find("td.animateimage img").removeClass('active').hide();
-        $(this).parents("div.item:first").find("td.animateimage img:first").addClass('active').show();
+        if($(this).parents("div.item:first").find("td.animateimage img:first").attr("isloaded") == "1")
+        {
+            //console.log("showing");
+            $(this).parents("div.item:first").find("td.animateimage img:first").addClass('active').fadeIn('fast');
+        }
         
     });
     
