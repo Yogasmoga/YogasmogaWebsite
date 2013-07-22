@@ -32,6 +32,12 @@
  */
 ?>
 <?php
+   $mic_time = microtime();
+   $mic_time = explode(" ",$mic_time);
+   $mic_time = $mic_time[1] + $mic_time[0];
+   $start_time = $mic_time;
+?>
+<?php
     if (!function_exists('aasort')) {
         function aasort (&$array, $key) {
             $sorter=array();
@@ -487,3 +493,11 @@
     <div style="clear: both;"></div>
 </div>
 <?php endif; ?>
+<?php
+   $mic_time = microtime();
+   $mic_time = explode(" ",$mic_time);
+   $mic_time = $mic_time[1] + $mic_time[0];
+   $endtime = $mic_time;
+   $total_execution_time = ($endtime - $start_time);
+   echo "Total Executaion Time ".$total_execution_time." seconds";
+?>
