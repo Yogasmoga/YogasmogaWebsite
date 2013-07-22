@@ -31,6 +31,13 @@
  * @see Mage_Catalog_Block_Product_List
  */
 ?>
+<?php /*
+   $mic_time = microtime();
+   $mic_time = explode(" ",$mic_time);
+   $mic_time = $mic_time[1] + $mic_time[0];
+   $start_time = $mic_time;
+   */
+?>
 <?php
     if (!function_exists('aasort')) {
         function aasort (&$array, $key) {
@@ -289,7 +296,7 @@
                                                     else
                                                     {
                                                         ?>
-                                                        src="" realsrc="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>" palt="<?php echo $alt; ?>"  onload="showme(this);" />
+                                                        src="" realsrc="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>" palt="<?php echo $alt; ?>"  onload="showme(this);" isloaded="0" />
                                                         <?php
                                                     }
                                                 ?>
@@ -487,3 +494,13 @@
     <div style="clear: both;"></div>
 </div>
 <?php endif; ?>
+<?php
+    /*
+   $mic_time = microtime();
+   $mic_time = explode(" ",$mic_time);
+   $mic_time = $mic_time[1] + $mic_time[0];
+   $endtime = $mic_time;
+   $total_execution_time = ($endtime - $start_time);
+   echo "Total Executaion Time ".$total_execution_time." secondswe";
+   */
+?>

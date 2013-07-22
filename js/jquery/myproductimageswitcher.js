@@ -326,6 +326,7 @@ function showme(elem)
 {
     //console.log(jQuery(elem).hasClass('active'));
     jQuery(elem).attr("alt",jQuery(elem).attr("palt"));
+    jQuery(elem).attr("isloaded","1");
     if(jQuery(elem).hasClass('active'))
     {
         jQuery(elem).fadeIn();
