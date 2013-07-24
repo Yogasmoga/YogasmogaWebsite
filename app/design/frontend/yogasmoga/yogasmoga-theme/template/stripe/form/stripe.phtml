@@ -194,7 +194,7 @@
 
 function CreateStripeToken()
 {
-    console.log('here');
+    //console.log('here');
     var createtoken = false;
     if(jQuery("#stripe-update-payment").hasClass('unuse'))
     {
@@ -255,7 +255,7 @@ function stripeResponseHandler(status, response) {
 	
 	
 	function createStripeToken() {
-	   console.log('create stripe token');
+	   //console.log('create stripe token');
 		var form = payment.form;
 		var validator = new Validation(form);
 		if (validator.validate()) {
@@ -568,7 +568,7 @@ function stripeResponseHandler(status, response) {
 	
 	
 	function createStripeToken() {
-	   console.log('create stripe token');
+	   //console.log('create stripe token');
 		var form = payment.form;
 		var validator = new Validation(form);
 		if (validator.validate()) {

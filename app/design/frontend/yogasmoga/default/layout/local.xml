@@ -136,6 +136,15 @@
     </reference>
 </customer_account_resetpassword>
 
+<catalogsearch_result_index>
+    <reference name="head">
+        <action method="addJs"><script>jquery/myproductimageswitcher.js</script></action>
+        <action method="addJs"><script>jquery/mycategory.js</script></action>
+        <action method="addJs"><script>jquery/jquery.isotope.min.js</script></action>
+        <action method="addCss"><stylesheet>css/isotope.css</stylesheet></action>
+    </reference>
+</catalogsearch_result_index>
+
 <checkout_onepage_index>
     <reference name="head">
         <action method="addJs"><script>jquery/mycheckout.js</script></action>

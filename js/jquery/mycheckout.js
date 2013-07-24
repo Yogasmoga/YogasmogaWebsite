@@ -141,7 +141,7 @@ jQuery(document).ready(function($){
     });
     //$("#stripe-update-payment").live
     $("#stripe-update-payment").live('click', function(){
-        console.log("gere");
+        //console.log("gere");
         if($(this).hasClass('use'))
         {
             $("#change-stripe-detail").show();
