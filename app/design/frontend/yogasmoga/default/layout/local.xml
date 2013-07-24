@@ -136,6 +136,12 @@
     </reference>
 </customer_account_resetpassword>
 
+<catalogsearch_result_index>
+    <reference name="head">
+        <action method="addJs"><script>jquery/myproductimageswitcher.js</script></action>
+    </reference>
+</catalogsearch_result_index>
+
 <checkout_onepage_index>
     <reference name="head">
         <action method="addJs"><script>jquery/mycheckout.js</script></action>
