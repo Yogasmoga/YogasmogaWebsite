@@ -7,7 +7,7 @@ class Webtex_Giftcards_CartController extends Mage_Checkout_CartController
     {
         if (!Mage::helper('customer')->isLoggedIn()) {
             Mage::getSingleton('customer/session')->addError(
-                $this->__('To redeem your gift card or to use your gift card balance you need to be logged in.')
+                $this->__('gferror--msgTo redeem your gift card or to use your gift card balance you need to be logged in.')
             );
             Mage::getSingleton('customer/session')->authenticate($this);
             return;
@@ -25,14 +25,14 @@ class Webtex_Giftcards_CartController extends Mage_Checkout_CartController
             Mage::getSingleton('giftcards/session')->setActive('1');
         } else {
             $this->_getSession()->addError(
-                $this->__('Gift Card "%s" is not valid.', Mage::helper('core')->escapeHtml($giftcardCode))
+                $this->__('gferror--msgGift Card "%s" is not valid.', Mage::helper('core')->escapeHtml($giftcardCode))
             );
         }
         try {
             $this->_getQuote()->getShippingAddress()->setCollectShippingRates(true);
             $this->_getQuote()->collectTotals()->save();
         } catch (Exception $e) {
-            $this->_getSession()->addError($e->getMessage());
+            $this->_getSession()->addError("gferror--msg".$e->getMessage());
         }
         $this->_goBack();
     }

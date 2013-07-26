@@ -63,8 +63,30 @@
 .item-options dt { font-weight:normal; font-style:normal; float:left; clear:left; margin-right:7px; color:#666; text-transform:uppercase;}
 .item-options dd { padding-left:10px; margin:0 0 1px; color:#666; text-transform:none;}
 
-.cart .gift-card{text-align:left; font-family:Arial, helvatica; text-transform:none; margin-top:20px;font-size:11px; letter-spacing:0.07em; border-bottom: 1px dotted black; padding-bottom : 20px;padding-left : 15px;position: relative;}
+.cart .gift-card {text-align:left; font-family:Arial, helvatica; text-transform:none; margin-top:20px;font-size:11px; letter-spacing:0.07em; border-bottom: 1px dotted black; padding-bottom : 20px;padding-left : 15px;position: relative;}
 .cart .gift-card h2{font-size:11px; margin:0; font-style:normal;}
+.cart .smogi-bucks .discount-coupon-login h2
+{
+    font-size:11px;
+    margin:0;
+    font-style:normal;
+    text-transform: none;
+    font-family: Arial,helvatica;
+    letter-spacing: 0.07em;
+    margin-bottom : 25px;
+}
+.discount-coupon-login
+{
+    margin-top : 20px;
+}
+.discount-coupon-login .login-msg
+{
+    margin-top : 5px;
+}
+.discount-coupon-login button
+{
+    margin-top : 5px;
+}
 .cart .gift-card .gift-box label{float:left; display:block; line-height:15px; padding:9px 0 1px;}
 .cart .gift-card .gift-box input.input-text{float:left; border:0; background:#fff; border-bottom:1px solid #000; padding:9px 0 1px; height:15px; font-size:11px; color:#666; margin:0 15px 0 10px;}
 
@@ -377,4 +399,42 @@ table.applybucks div.buttons-set, table.removebucks div.buttons-set
 table.removebucks p
 {
     margin : 0 !important;
+}
+.cart .smogi-bucks .discount
+{
+    background : none;
+    border : none;
+    padding : 0;
+    margin : 10 0 0 0; 
+}
+.cart .smogi-bucks .discount h2
+{
+    background: none;
+    color: #666666;
+    padding: 0;
+    font-family: gotham-m;
+    font-size: 11px;
+    text-transform: uppercase; 
+}
+.cart .smogi-bucks .discount label
+{
+    font-family: Arial,helvatica;
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-align: left;
+    text-transform: none;
+}
+.cart .smogi-bucks .discount input#coupon_code
+{
+    border : none;
+    border-bottom : 1px solid black;
+    font-family: gothamlight;
+    font-size: 11px;
+    letter-spacing: 0.4pt;
+    padding-bottom: 1px;
+    width : 254px;   
+}
+.discount-codes.box.discount.smogibox
+{
+    margin-bottom : 25px;
 }

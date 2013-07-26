@@ -43,7 +43,7 @@
                             <td colspan="6" class="errortext">
                                 <div
                                      <?php
-                        if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false)
+                        if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false && strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"gferror--msg") !== false)
                         {
                             ?>
                                 style="display: block;"
@@ -52,10 +52,10 @@
                     ?>
                                 >
                                     <?php
-                                        if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false)
+                                        if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false && strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"gferror--msg") !== false)
                                         {
                                             ?>
-                                                <?php echo strip_tags(Mage::getSingleton('core/session')->getGlobalMessage()); ?>            
+                                                <?php echo str_replace("gferror--msg","", strip_tags(Mage::getSingleton('core/session')->getGlobalMessage())); ?>            
                                             <?php
                                         }
                                     ?>

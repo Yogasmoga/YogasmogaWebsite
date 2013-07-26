@@ -24,6 +24,147 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<?php
+    if(Mage::helper('customer')->isLoggedIn())
+    {
+        ?>
+            <form id="discount-coupon-form" action="<?php echo $this->getUrl('checkout/cart/couponPost') ?>" method="post">
+                <div class="discount">
+                    <h2><?php echo $this->__('Discount Coupon') ?></h2>
+                    <div class="discount-form">
+                        <input type="hidden" name="remove" id="remove-coupone" value="0" />
+                        <?php if(strlen($this->getCouponCode()))
+                        {
+                            ?>
+                                <table>
+                                    <tr>
+                                        <td style="width: 307px; padding-top: 13px;">
+                                            Coupon Code "<?php echo $this->getCouponCode(); ?>" successfully applied.
+                                            <input style="display: none;" class="input-text hidden" id="coupon_code" name="coupon_code" value="<?php echo $this->htmlEscape($this->getCouponCode()) ?>" placeholder="Enter Code Here" />
+                                        </td>
+                                        <td>
+                                            <button type="button" onclick="submitform();" title="<?php echo $this->__('Cancel Coupon') ?>" class="button btn-removebucks" value="<?php echo $this->__('Cancel Coupon') ?>"><span><span><?php echo $this->__('Cancel Coupon') ?></span></span></button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            <?php  
+                        }
+                        else
+                        {
+                            ?>
+                                <label for="coupon_code"><?php echo $this->__('Enter your Discount Coupon in the field below to get discount.') ?></label>
+                                <table>
+                                    <tr>
+                                        <td style="padding-top: 20px;width : 307px;">
+                                            <input class="input-text" id="coupon_code" name="coupon_code" value="<?php echo $this->htmlEscape($this->getCouponCode()) ?>" placeholder="Enter Code Here" />        
+                                        </td>
+                                        <td style="padding-top: 10px;">
+                                            <?php if(strlen($this->getCouponCode()))
+                                            {
+                                                ?>
+                                                <button type="button" title="<?php echo $this->__('Cancel Coupon') ?>" class="button" value="<?php echo $this->__('Cancel Coupon') ?>"><span><span><?php echo $this->__('Cancel Coupon') ?></span></span></button>
+                                                <?php
+                                            }
+                                            else
+                                            {
+                                                ?>
+                                                <button type="button" onclick="submitform();" title="<?php echo $this->__('Apply Coupon') ?>" class="button btn-apply" value="<?php echo $this->__('Apply Coupon') ?>"><span><span><?php echo $this->__('Apply Coupon') ?></span></span></button>    
+                                                <?php
+                                            }
+                                            ?>        
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" class="errortext">
+                                            <div
+                                                 <?php
+                                                    if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false && strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"gferror--msg") == false)
+                                                    {
+                                                        ?>
+                                                            style="display: block;"
+                                                        <?php
+                                                    }
+                                                ?>
+                                            >
+                                                <?php
+                                                    if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false && strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"gferror--msg") == false)
+                                                    {
+                                                        ?>
+                                                            <?php echo strip_tags(Mage::getSingleton('core/session')->getGlobalMessage()); ?>            
+                                                        <?php
+                                                    }
+                                                ?>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>    
+                            <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+            </form>
+            <script type="text/javascript">
+            //<![CDATA[
+            
+            function submitform()
+            {
+                jQuery("#discount-coupon-form").submit();
+            }
+            
+            jQuery(document).ready(function($){
+                $("#discount-coupon-form").submit(function(){
+                    if(!$("#coupon_code").hasClass('hidden'))
+                    {
+                        $("#remove-coupone").val('0');
+                        if($("#coupon_code").val() == "")
+                        {
+                            $(this).find("td.errortext div").html("Coupon Code is required.").fadeIn('fast');
+                            return false;
+                        }
+                        else
+                        {
+                            $(this).find("td.errortext div").fadeOut('fast');
+                        }
+                    }
+                    else
+                    {
+                        $("#remove-coupone").val('1');
+                    }
+                });
+            });
+            /*
+            var discountForm = new VarienForm('discount-coupon-form');
+            discountForm.submit = function (isRemove) {
+                if (isRemove) {
+                    $('coupon_code').removeClassName('required-entry');
+                    $('remove-coupone').value = "1";
+                } else {
+                    $('coupon_code').addClassName('required-entry');
+                    $('remove-coupone').value = "0";
+                }
+                return VarienForm.prototype.submit.bind(discountForm)();
+            }
+            */
+            //]]>
+            </script>        
+        <?php
+    }
+    else
+    {
+        ?>
+            <div class="discount-coupon-login">
+                <h2>Do you have a Discount Coupon?</h2>
+                <div class="login-msg">Please login to use your Discount Code.</div>
+                <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/login?goto=cart">
+                    <button value="<?php echo $this->__('Login') ?>" class="button btn-logingoys gotologin" title="Login" type="button"><span><span>Login</span></span></button>
+                </a>
+            </div>
+        <?php
+    }
+?>
+
+<?php return; ?>
 <form id="discount-coupon-form" action="<?php echo $this->getUrl('checkout/cart/couponPost') ?>" method="post">
     <div class="discount">
         <h2><?php echo $this->__('Discount Codes') ?></h2>

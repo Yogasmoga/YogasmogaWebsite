@@ -3017,7 +3017,7 @@ table.inputtable.nolabel td.label
 {
     display : none;
 }
-table.inputtable td.errortext, table.gfredeem td.errortext, table#redeem td.errortext
+table.inputtable td.errortext, table.gfredeem td.errortext, table#redeem td.errortext, #discount-coupon-form td.errortext
 {
     font-family:helveticaoblique;
     font-size:11px;
