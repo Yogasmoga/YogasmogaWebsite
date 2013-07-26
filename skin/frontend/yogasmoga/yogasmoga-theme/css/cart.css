@@ -132,6 +132,9 @@ button.btn-loginsmogi:active span{background-image: url('../images/login_smogi_o
 button.btn-logingoys span{padding:0; width:289px; text-indent:-999em; height:29px; margin:0; background:url(../images/login_goys_off.png) 0 0 no-repeat; border:0;}
 button.btn-logingoys:active span{background-image: url('../images/login_goys_on.png');}
 
+button.btn-logincoupon span{padding:0; width:289px; text-indent:-999em; height:29px; margin:0; background:url(../images/login_discount_coupon_off.png) 0 0 no-repeat; border:0;}
+button.btn-logincoupon:active span{background-image: url('../images/login_discount_coupon_on.png');}
+
 button.button.btn-apply span{padding:0; width:88px; text-indent:-999em; height:28px; margin:0; background:url(../images/btn-apply.png) 0 0 no-repeat; border:0;}
 
 button.button.btn-apply span{
