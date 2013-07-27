@@ -152,8 +152,11 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 		}
 		else
 		{
-		$j("div.galleria-thumbnails img[src='" + imgdata[$j(this).attr('rel')] + "']").trigger('click');
-        alert("click time");
+		  setTimeout(function(){
+		      $j("div.galleria-thumbnails img[src='" + imgdata[$j(this).attr('rel')] + "']").trigger('click');      
+		  },200);
+		
+        //alert("click time");
 		}
 		
 			});
