@@ -11,7 +11,7 @@
                 <td>
                     <table class="gfredeem
                     <?php
-                        if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false)
+                        if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false && strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"gferror--msg") !== false)
                         {
                             ?>
                                 error

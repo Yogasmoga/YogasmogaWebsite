@@ -36,8 +36,8 @@
                     <template>rewardpoints/coupons.phtml</template>
             </action>
             <block type="rewardpoints/coupon" name="checkout_cart_coupon_normal" as="coupon_points" template="rewardpoints/reward_coupon.phtml">
-                <!--<block type="checkout/cart_coupon" name="checkout_cart_coupon_reward" as="coupon_original" template="checkout/cart/coupon.phtml"/>
-                <block type="j2tmulticoupon/coupon" name="checkout_cart_coupon_reward" as="coupon_original" template="j2tmulticoupon/coupon.phtml"/>-->
+                <block type="checkout/cart_coupon" name="checkout_cart_coupon_reward" as="coupon_original" template="checkout/cart/coupon.phtml"/>
+                <!--<block type="j2tmulticoupon/coupon" name="checkout_cart_coupon_reward" as="coupon_original" template="j2tmulticoupon/coupon.phtml"/>-->
             </block>
         </reference>
     </checkout_cart_index>
