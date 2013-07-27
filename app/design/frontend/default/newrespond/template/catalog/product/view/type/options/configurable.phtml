@@ -146,12 +146,14 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 		{
 		setTimeout(function(){
 		    $j("div.galleria-thumbnails img[src='" + imgdata[$j("#color-attr div.colorbox.active").attr('rel')] + "']").trigger('click');
+            alert("first time");
 		    }, 500);
 		_ldclr="1";
 		}
 		else
 		{
 		$j("div.galleria-thumbnails img[src='" + imgdata[$j(this).attr('rel')] + "']").trigger('click');
+        alert("click time");
 		}
 		
 			});
