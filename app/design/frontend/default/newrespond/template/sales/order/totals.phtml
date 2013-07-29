@@ -48,7 +48,7 @@
                     $str1 = str_replace("(","", $str1);
                     $str1 = str_replace("smogi bucks","SMOGI Bucks", $str1);
                     
-                    echo "abc";
+                    //echo "abc";
                     //echo $this->getOrder()->getRealOrderId();
                     $write = Mage::getSingleton('core/resource')->getConnection('core_read');
                     $readresult=$write->query("SELECT coupon_code FROM sales_flat_order WHERE increment_id='".$this->getOrder()->getRealOrderId()."'");

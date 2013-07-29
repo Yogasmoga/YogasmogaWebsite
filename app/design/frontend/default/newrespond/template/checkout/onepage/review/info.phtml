@@ -61,7 +61,7 @@ function format_bill($html)
         
         $coupon_code = Mage::getSingleton('checkout/session')->getQuote()->getCouponCode();
         if($coupon_code){
-            $str1 = str_replace($coupon_code,$coupon_code." PROMOTION", $str1);
+            $str1 = str_replace($coupon_code,$coupon_code." Promotion", $str1);
         }
         
         return $str1;
