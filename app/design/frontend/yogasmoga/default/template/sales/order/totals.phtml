@@ -47,6 +47,28 @@
                     $str1 = str_replace(")","", $str1);
                     $str1 = str_replace("(","", $str1);
                     $str1 = str_replace("smogi bucks","SMOGI Bucks", $str1);
+                    
+                    //echo "abc";
+                    //echo $this->getOrder()->getRealOrderId();
+                    $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                    $readresult=$write->query("SELECT coupon_code FROM sales_flat_order WHERE increment_id='".$this->getOrder()->getRealOrderId()."'");
+                    $coupon_code = "";
+                    while ($row = $readresult->fetch() ) {
+                        $coupon_code = $row['coupon_code'];
+                    }
+                    if($coupon_code != ""){
+                        $str1 = str_replace($coupon_code,$coupon_code." PROMOTION", $str1);                        
+                    }
+                    //$coupon_code = $readresult->fetch();
+//                    $coupon_code = $coupon_code[0]['coupon_code'];
+//                    echo $coupon_code."HHH";
+//                    $coupon_code = Mage::getSingleton('checkout/session')->getQuote()->getCouponCode();
+//                    if($coupon_code){
+//                        //echo "coupon used".$coupon_code;
+//                        $str1 = str_replace($coupon_code,$coupon_code." PROMOTION", $str1);
+//                        
+//                    }
+                    
                     if(trim($str1) == "")
                         $str1 = "Discount";
                     echo $this->escapeHtml($str1);
