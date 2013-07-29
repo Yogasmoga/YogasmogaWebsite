@@ -465,3 +465,14 @@ div.smogi-block
 {
     margin-bottom : 25px;
 }
+h2.discount-title
+{
+    background: none repeat scroll 0 0 transparent;
+    color: #666666;
+    font-family: gotham-m;
+    font-size: 11px;
+    padding: 0;
+    text-transform: uppercase;
+    text-align: left;
+    font-weight: bold;
+}

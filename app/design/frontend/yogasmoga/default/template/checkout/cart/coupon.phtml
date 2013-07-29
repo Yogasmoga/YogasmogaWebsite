@@ -154,8 +154,9 @@
     else
     {
         ?>
+            <h2 class="discount-title"><?php echo $this->__('Promotion Code') ?></h2>
             <div class="discount-coupon-login">
-                <h2>Do you have a Prmotion Code?</h2>
+                <h2>Do you have a Promotion Code?</h2>
                 <div class="login-msg">Please login to use your Promotion Code.</div>
                 <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/login?goto=cart">
                     <button value="<?php echo $this->__('Login') ?>" class="button btn-logincoupon gotologin" title="Login" type="button"><span><span>Login</span></span></button>
