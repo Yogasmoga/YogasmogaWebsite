@@ -24,13 +24,14 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+|*|*|
 <?php
     if(Mage::helper('customer')->isLoggedIn())
     {
         ?>
             <form id="discount-coupon-form" action="<?php echo $this->getUrl('checkout/cart/couponPost') ?>" method="post">
                 <div class="discount">
-                    <h2><?php echo $this->__('Discount Coupon') ?></h2>
+                    <h2><?php echo $this->__('Promotion Code') ?></h2>
                     <div class="discount-form">
                         <input type="hidden" name="remove" id="remove-coupone" value="0" />
                         <?php if(strlen($this->getCouponCode()))
@@ -52,7 +53,7 @@
                         else
                         {
                             ?>
-                                <label for="coupon_code"><?php echo $this->__('Enter your Discount Coupon in the field below to get discount.') ?></label>
+                                <label for="coupon_code"><?php echo $this->__('Enter your Promotion Code in the field below to get a promotion.') ?></label>
                                 <table>
                                     <tr>
                                         <td style="padding-top: 20px;width : 307px;">
@@ -119,7 +120,7 @@
                         $("#remove-coupone").val('0');
                         if($("#coupon_code").val() == "")
                         {
-                            $(this).find("td.errortext div").html("Coupon Code is required.").fadeIn('fast');
+                            $(this).find("td.errortext div").html("Promotion Code is required.").fadeIn('fast');
                             return false;
                         }
                         else
@@ -154,8 +155,8 @@
     {
         ?>
             <div class="discount-coupon-login">
-                <h2>Do you have a Discount Coupon?</h2>
-                <div class="login-msg">Please login to use your Discount Code.</div>
+                <h2>Do you have a Prmotion Code?</h2>
+                <div class="login-msg">Please login to use your Promotion Code.</div>
                 <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/login?goto=cart">
                     <button value="<?php echo $this->__('Login') ?>" class="button btn-logincoupon gotologin" title="Login" type="button"><span><span>Login</span></span></button>
                 </a>

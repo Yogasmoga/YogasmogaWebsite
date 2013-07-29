@@ -26,11 +26,19 @@
 ?>
 <?php if ($this->isPossibleOnepageCheckout()):?>
 <?php
-    if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()) && Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
+    $allow = 0;
+    if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+        $allow++;
+    if(Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
+        $allow++;
+    if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
+        $allow++;
+    if($allow > 1)
+    //if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()) && Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
     {
         ?>
         <button type="button" title="<?php echo $this->__('Proceed to Checkout') ?>" class="button btn-proceed-checkout btn-checkout-disable<?php if ($this->isDisabled()):?> no-checkout<?php endif; ?>"<?php if ($this->isDisabled()):?> disabled="disabled"<?php endif; ?>><span><span><?php echo $this->__('Proceed to Checkout') ?></span></span></button>
-        <div class="errortext">Gift of YS code and SMOGI Bucks cannot be combined.<br />Please remove one and continue checkout.
+        <div class="errortext">Gift of YS code, SMOGI Bucks and Promotion Code cannot be combined.<br />Please remove one and continue checkout.
 </div>
         <?php
     }

@@ -74,10 +74,12 @@
     font-family: Arial,helvatica;
     letter-spacing: 0.07em;
 }
+/*
 .discount-coupon-login
 {
     margin-top : 20px;
 }
+*/
 .discount-coupon-login .login-msg
 {
     margin-top : 5px;
@@ -91,7 +93,7 @@
 
 .cart .totals table td{font-family:gothamlight; text-transform:uppercase;}
 
-.cart .smogi-bucks{width:450px; float:left; text-align:left; font-size:11px; font-family:Arial, Helvatica;margin-left : 16px;position: relative;}
+.cart .smogi-bucks{width:450px; float:left; text-align:left; font-size:11px; font-family:Arial, Helvatica;margin-left : 16px;position: relative;margin-top : 20px;}
 .cart a{color:#333;}
 .cart a:hover{color:#d90d3d;}
 .cart .smogi-bucks h2{font-family:gotham-m; text-transform:uppercase; font-size:11px;}
@@ -179,6 +181,7 @@ button.btn-checkout:active span{background-position:0 100%;}
   border: 0;
   float: right;
   width: 500px;
+  margin-top : 8px;
 }
 
 .confirmation-page{display:block; font-size:13px; padding:110px 0; text-align:center;}
@@ -409,7 +412,29 @@ table.removebucks p
     padding : 0;
     margin : 10 0 0 0; 
 }
-.cart .smogi-bucks .discount h2
+div.smogi-block
+{
+    text-align: left;
+    padding-left : 16px;
+    border-bottom : 1px dotted black;
+}
+.cart .smogi-block .discount
+{
+    padding : 0;
+}
+.smogi-block .discount-codes.box.discount.smogibox
+{
+    margin-bottom : 0px;
+}
+.cart .smogi-block 
+{
+    font-family: Arial,Helvatica;
+    font-size: 11px;
+    text-align: left;
+    margin-bottom : 5px;
+    padding-bottom : 22px;   
+}
+.cart .smogi-bucks .discount h2, .cart .smogi-block .discount h2
 {
     background: none;
     color: #666666;
