@@ -64,7 +64,7 @@
 .item-options dd { padding-left:10px; margin:0 0 1px; color:#666; text-transform:none;}
 
 .cart .gift-card {text-align:left; font-family:Arial, helvatica; text-transform:none; margin-top:20px;font-size:11px; letter-spacing:0.07em; border-bottom: 1px dotted black; padding-bottom : 20px;padding-left : 15px;position: relative;}
-.cart .gift-card h2{font-size:11px; margin:0; font-style:normal;}
+.cart .gift-card h2{font-size:11px; margin:0; font-style:normal; color : #666;}
 .cart .smogi-bucks .discount-coupon-login h2
 {
     font-size:11px;
@@ -73,6 +73,7 @@
     text-transform: none;
     font-family: Arial,helvatica;
     letter-spacing: 0.07em;
+    color : #666;
 }
 /*
 .discount-coupon-login
@@ -134,8 +135,8 @@ button.btn-loginsmogi:active span{background-image: url('../images/login_smogi_o
 button.btn-logingoys span{padding:0; width:289px; text-indent:-999em; height:29px; margin:0; background:url(../images/login_goys_off.png) 0 0 no-repeat; border:0;}
 button.btn-logingoys:active span{background-image: url('../images/login_goys_on.png');}
 
-button.btn-logincoupon span{padding:0; width:289px; text-indent:-999em; height:29px; margin:0; background:url(../images/login_discount_coupon_off.png) 0 0 no-repeat; border:0;}
-button.btn-logincoupon:active span{background-image: url('../images/login_discount_coupon_on.png');}
+button.btn-logincoupon span{padding:0; width:289px; text-indent:-999em; height:29px; margin:0; background:url(../images/login_promotion_off.png) 0 0 no-repeat; border:0;}
+button.btn-logincoupon:active span{background-image: url('../images/login_promotion_on.png');}
 
 button.button.btn-apply span{padding:0; width:88px; text-indent:-999em; height:28px; margin:0; background:url(../images/btn-apply.png) 0 0 no-repeat; border:0;}
 
@@ -475,4 +476,8 @@ h2.discount-title
     text-transform: uppercase;
     text-align: left;
     font-weight: bold;
+}
+div.gift-card h2 a
+{
+    color : #d90d3d;
 }
