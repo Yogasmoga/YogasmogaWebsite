@@ -329,6 +329,10 @@ div#ordersummary table td.total
 {
     text-align: right;
 }
+div#ordersummary table td
+{
+    text-transform: capitalize;
+}
 div#ordersummary table td, div#shippingsummary table td
 {
     padding-bottom : 2px;
