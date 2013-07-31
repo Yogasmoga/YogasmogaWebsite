@@ -11,7 +11,7 @@
                 <td>
                     <table class="gfredeem
                     <?php
-                        if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false)
+                        if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false && strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"gferror--msg") !== false)
                         {
                             ?>
                                 error
@@ -43,7 +43,7 @@
                             <td colspan="6" class="errortext">
                                 <div
                                      <?php
-                        if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false)
+                        if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false && strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"gferror--msg") !== false)
                         {
                             ?>
                                 style="display: block;"
@@ -52,10 +52,10 @@
                     ?>
                                 >
                                     <?php
-                                        if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false)
+                                        if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false && strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"gferror--msg") !== false)
                                         {
                                             ?>
-                                                <?php echo strip_tags(Mage::getSingleton('core/session')->getGlobalMessage()); ?>            
+                                                <?php echo str_replace("gferror--msg","", strip_tags(Mage::getSingleton('core/session')->getGlobalMessage())); ?>            
                                             <?php
                                         }
                                     ?>
@@ -91,10 +91,11 @@
         */ ?>
     </div>
     <?php else : ?>
+    <h2 class="giftofyshead">GIFT OF YS</h2>
     <h2>Do you have a <a target="_blank" href="<?php echo $this->getUrl('gift_of_ys'); ?>">Gift of YS</a> Code?</h2>
     <div class="giftcard-login-msg">
-        Please login to use your <a target="_blank" href="<?php echo $this->getUrl('gift_of_ys'); ?>">Gift of YS</a> Code.
-        <br />
+        <!--Please login to use your <a target="_blank" href="<?php echo $this->getUrl('gift_of_ys'); ?>">Gift of YS</a> Code.
+        <br /> -->
         <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/login?goto=cart">
             <button value="<?php echo $this->__('Login') ?>" class="button btn-logingoys gotologin" title="Login" type="button"><span><span>Login</span></span></button>
         </a>

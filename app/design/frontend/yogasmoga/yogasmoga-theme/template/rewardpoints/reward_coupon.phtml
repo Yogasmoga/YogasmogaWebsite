@@ -23,6 +23,7 @@
 
 <?php if (!$this->getAutoUse()): ?>
     <?php if (!$this->getCustomerId()):?>
+        <h2 class="discount-title"><?php echo $this->__('SMOGI BUCKS'); ?></h2>
         <table class="tblsmogilogin">
             <tr>
                 <td>
@@ -38,7 +39,7 @@
             </tr>
         </table>
         <div style="margin-top : 5px;">
-                You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.
+                You will earn <?php echo $pts; ?> <a style="color: #d90d3d;" target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.
                 </div>
         <?php /*
         <div class="discount-codes box discount">

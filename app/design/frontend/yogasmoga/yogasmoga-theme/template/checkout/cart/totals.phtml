@@ -49,6 +49,13 @@
                 $temp = str_replace(")","", $temp);
                 $temp = str_replace("(","", $temp);
                 $temp = str_replace("CARD,","CARD AND", $temp);
+                
+                $coupon_code = Mage::getSingleton('checkout/session')->getQuote()->getCouponCode();
+                if($coupon_code){
+                    //echo "coupon used".$coupon_code;
+                    $temp = str_replace($coupon_code,$coupon_code." PROMOTION", $temp);    
+                    
+                }
                 echo $temp;
              ?>
         </tbody>

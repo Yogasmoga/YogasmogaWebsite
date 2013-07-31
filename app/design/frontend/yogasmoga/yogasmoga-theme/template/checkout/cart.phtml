@@ -603,7 +603,31 @@
         </fieldset>
     </form>
     <div class="cart-collaterals">
-		<div class="smogi-bucks"><?php echo $this->getChildHtml('coupon') ?></div>
+        <?php
+            $coupon_html = $this->getChildHtml('coupon');
+            //echo $coupon_html;
+            //$coupon_html = "abc|*|*|def";
+            if(strpos($coupon_html,"|*|*|") === fasle)
+            {
+                $smogi_html = $coupon_html;
+            }
+            else
+            {
+                $smogi_html = substr($coupon_html,0,strpos($coupon_html,"|*|*|"));
+                $promo_html = substr($coupon_html, strpos($coupon_html,"|*|*|") + 5);
+            }
+            //echo $smogi_html."<br/>".$promo_html;
+            //$coupon_html = split("|*|*|",$coupon_html);
+            //print_r($coupon_html);
+        ?>
+        <div class="smogi-block">
+            <?php echo $smogi_html; ?>
+        </div>
+		<div class="smogi-bucks">
+        
+        <?php //echo $smogi_html; //$this->getChildHtml('coupon'); ?>
+        <?php echo $promo_html; ?></div>
+        
         <!-- div class="col2-set">
             <div class="col-1">
                 <?php echo $this->getChildHtml('crosssell') ?>

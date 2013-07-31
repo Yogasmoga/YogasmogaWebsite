@@ -113,8 +113,22 @@ function isNormalInteger(str) {
     
 $j(document).ready(function(){
 
+if($j("ul.messages li.error-msg span").length > 0)
+{
+    var msg = $j("ul.messages li.error-msg span").html();
+    if(msg.indexOf("gferror--msg") >= 0)
+    {
+        msg = msg.replace("gferror--msg","");
+        $j("#giftcard-form table.gfredeem div.ershow").html(msg);
+    }
+    else
+    {
+        msg = msg.replace("Coupon","Promotion");
+        $j("#discount-coupon-form div.errortext").html(msg);
+    }    
+}
 
-$j("#giftcard-form table.gfredeem div.ershow").html($j("ul.messages li.error-msg span").html());
+//$j("#giftcard-form table.gfredeem div.ershow").html($j("ul.messages li.error-msg span").html());
 
    $j("#discountFormPoints2").submit(function(){
 	return validateSmogibuckpoints();

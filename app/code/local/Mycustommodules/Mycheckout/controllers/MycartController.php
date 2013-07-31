@@ -427,6 +427,12 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 $summary .= " and <br/>";
             $summary .= Mage::helper('rewardpoints/event')->getCreditPoints()." SMOGI Bucks used";
         }
+        $coupon_code = Mage::getSingleton('checkout/session')->getQuote()->getCouponCode();
+        if($coupon_code){
+            if(strlen($summary) > 0)
+                $summary .= " and <br/>";
+            $summary .= $coupon_code." Promotion";
+        }
         if(strlen($summary) == 0)
             $summary = "Discount";
         return $summary;

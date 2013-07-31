@@ -49,7 +49,7 @@ function format_bill($html)
         if($str_arr[0]==$str_arr[1])
         {
         $str1 = substr($str1, 0, $p1+1).$str_arr[0].substr($str1, $p2);
-        }
+        }   
         
         //echo $str1;
         $str1 = str_replace("Card,","Card AND", $str1);
@@ -58,7 +58,11 @@ function format_bill($html)
         $str1 = str_replace(")","", $str1);
         $str1 = str_replace("(","", $str1);
         $str1 = str_replace("smogi bucks","SMOGI Bucks", $str1);
-
+        
+        $coupon_code = Mage::getSingleton('checkout/session')->getQuote()->getCouponCode();
+        if($coupon_code){
+            $str1 = str_replace($coupon_code,ucwords($coupon_code)." Promotion", $str1);
+        }
         
         return $str1;
         //echo substr($str1, $p1, $p2);
