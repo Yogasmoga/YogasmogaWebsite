@@ -982,3 +982,12 @@ div#absproductoptions div#preorderinfo img.closeinfo, td.popupproductdetail div#
     right : 8px;
     cursor : pointer;
 }
+div.disableproptions
+{
+    position : absolute;
+    top : 0;
+    left : 0;
+    bottom : 0;
+    right : 0;
+    z-index: 1;
+}

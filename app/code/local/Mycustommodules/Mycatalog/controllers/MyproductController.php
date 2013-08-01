@@ -15,6 +15,34 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         }
     }
     
+    public function inventoryAction()
+    {
+        $_product = Mage::getModel('catalog/product')->load($this->getRequest()->getParam('id'));
+        $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
+        $inv = Array();
+        $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
+        $sizeavaliable = false;
+        foreach($configurableAttributeCollection as $attribute){
+            if($attribute->getProductAttribute()->getAttributeCode() == "size")
+            {
+                $sizeavaliable = true;
+                break;
+            }
+        }
+        foreach($_childproducts as $_childproduct)
+        {
+            $temp = Array();
+            $temp[0] = substr($_childproduct->getAttributeText('color'), 0, strpos($_childproduct->getAttributeText('color'),"|"));
+            if($sizeavaliable)
+                $temp[1] = $_childproduct->getAttributeText('size');
+            else
+                $temp[1] = "2";
+            $temp[2] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+            array_push($inv, $temp);
+        }
+        echo json_encode($inv);
+    }
+    
     public function goysbalanceAction()
     {
         if($this->getRequest()->getParam('pass'))

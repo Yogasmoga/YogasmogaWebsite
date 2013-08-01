@@ -172,7 +172,62 @@ jQuery(document).ready(function($){
     
     if($("#ftechimage div.big_small.big_big").length == 0)
         $("a#fbzoomtrigger").hide();
+        
+    getfreshInventory();
+    
+    $("div.smogibuckcount").click(function(){
+        console.log(_productcolorinfo);
+    });
+    
 });
+
+function getfreshInventory()
+{
+    if(window.location.href.indexOf('https://') >= 0)
+        _usesecureurl = true;
+    else
+        _usesecureurl = false;
+    var url = homeUrl + 'mycatalog/myproduct/inventory';
+    if(_usesecureurl)
+        url = securehomeUrl + 'mycatalog/myproduct/inventory';
+    jQuery.ajax({
+        type : 'POST',
+        url : url,
+        data : {'id' : _productid},
+        success : function(result){
+            result = eval('(' + result + ')');
+            console.log(result);
+            for(var i = 0; i < result.length; i++)
+            {
+                modifyinfo(result[i][0], result[i][1], result[i][2]);   
+            }
+            jQuery("div#colorcontainer table[color]:first").trigger('click');
+            jQuery("div#absproductoptions div.disableproptions").remove();
+        }
+    });
+}
+
+function modifyinfo(color, size, value)
+{
+    //console.log(color + size + value);
+    for(var i = 0; i < _productcolorinfo.length; i++)
+    {
+        if(_productcolorinfo[i].color == color)
+        {
+            for(var j = 0; j < _productcolorinfo[i].sizes.length; j++)
+            {
+                arrsize = _productcolorinfo[i].sizes[j].split('|');
+                if(arrsize[0] == size)
+                {
+                    arrsize[1] = value;
+                    _productcolorinfo[i].sizes[j] = arrsize.join('|');
+                    //console.log('found');
+                    return;
+                }    
+            }
+        }
+    }
+}
 
 function getZoomPercent(realwidth, realheight, orgwidth, orgheight)
 {
