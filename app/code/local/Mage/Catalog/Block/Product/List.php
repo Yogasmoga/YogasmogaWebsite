@@ -36,14 +36,47 @@ class Mage_Catalog_Block_Product_List extends Mage_Catalog_Block_Product_Abstrac
 {
     protected function _construct()
     {   
-        $this->addData(array('cache_lifetime'    =>  9999999999,));
+        $moptions = "iPhone--iPod--BlackBerry--Palm--Googlebot-Mobile--mobi--Windows Mobile--Safari Mobile--Android--Opera Mini"; 
+        $moptions = split("--", $moptions);
+        $ismobile = false;
+        $usr_agent = Mage::helper('core/http')->getHttpUserAgent();
+        foreach($moptions as $opt)
+        {
+            //$session->addError($opt."x,");
+            if(strpos(Mage::helper('core/http')->getHttpUserAgent(), $opt))
+                $ismobile = true;
+        }
+        if(!$ismobile)
+            $this->addData(array('cache_lifetime'    =>  9999999999,));
     }
     public function getCacheTags()
     {   
+        $moptions = "iPhone--iPod--BlackBerry--Palm--Googlebot-Mobile--mobi--Windows Mobile--Safari Mobile--Android--Opera Mini"; 
+        $moptions = split("--", $moptions);
+        $ismobile = false;
+        $usr_agent = Mage::helper('core/http')->getHttpUserAgent();
+        foreach($moptions as $opt)
+        {
+            //$session->addError($opt."x,");
+            if(strpos(Mage::helper('core/http')->getHttpUserAgent(), $opt))
+                $ismobile = true;
+        }
+        if(!$ismobile)
         return array(Mage_Catalog_Model_Product::CACHE_TAG);
     }
     public function getCacheKey()
     {   
+        $moptions = "iPhone--iPod--BlackBerry--Palm--Googlebot-Mobile--mobi--Windows Mobile--Safari Mobile--Android--Opera Mini"; 
+        $moptions = split("--", $moptions);
+        $ismobile = false;
+        $usr_agent = Mage::helper('core/http')->getHttpUserAgent();
+        foreach($moptions as $opt)
+        {
+            //$session->addError($opt."x,");
+            if(strpos(Mage::helper('core/http')->getHttpUserAgent(), $opt))
+                $ismobile = true;
+        }
+        if(!$ismobile)
         return $this->getRequest()->getRequestUri();
     }
     /**

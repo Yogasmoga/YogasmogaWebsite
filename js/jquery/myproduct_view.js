@@ -176,7 +176,7 @@ jQuery(document).ready(function($){
     getfreshInventory();
     
     $("div.smogibuckcount").click(function(){
-        console.log(_productcolorinfo);
+        //console.log(_productcolorinfo);
     });
     
 });
@@ -196,7 +196,7 @@ function getfreshInventory()
         data : {'id' : _productid},
         success : function(result){
             result = eval('(' + result + ')');
-            console.log(result);
+            //console.log(result);
             for(var i = 0; i < result.length; i++)
             {
                 modifyinfo(result[i][0], result[i][1], result[i][2]);   
