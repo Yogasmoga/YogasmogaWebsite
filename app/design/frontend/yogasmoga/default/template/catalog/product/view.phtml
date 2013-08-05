@@ -71,6 +71,7 @@ jQuery(window).load(function(){
     //$pts = Mage::helper('rewardpoints/data')->getPointsOnOrder();
     //echo Mage::helper('rewardpoints/data')->getEquivalence($pts);
     //echo $pts;
+    //echo date("G:i:s");
     $isrewardable = false;
     $howdoesitfitblockid = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId());
     $sizechartblockid = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'size_chart', Mage::app()->getStore()->getStoreId());
@@ -387,6 +388,12 @@ jQuery(window).load(function(){
     }
 ?>
     //console.log(_productcolorinfo);
+    
+    //for(var i = 0; i < _productcolorinfo.length; i++)
+//    {
+//        console.log(_productcolorinfo[i].color);
+//    }
+    
     </script>
     
 <?php
@@ -455,6 +462,7 @@ jQuery(window).load(function(){
         </tr>
     </table>
     <div id="absproductoptions" class="productoptions absoluteproductoptions">
+        <div class="disableproptions"></div>
         <?php //echo Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId()); ?>
         <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId(Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId()))->toHtml(); ?>
 		

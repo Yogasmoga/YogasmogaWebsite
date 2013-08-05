@@ -15,6 +15,34 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         }
     }
     
+    public function inventoryAction()
+    {
+        $_product = Mage::getModel('catalog/product')->load($this->getRequest()->getParam('id'));
+        $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
+        $inv = Array();
+        $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
+        $sizeavaliable = false;
+        foreach($configurableAttributeCollection as $attribute){
+            if($attribute->getProductAttribute()->getAttributeCode() == "size")
+            {
+                $sizeavaliable = true;
+                break;
+            }
+        }
+        foreach($_childproducts as $_childproduct)
+        {
+            $temp = Array();
+            $temp[0] = substr($_childproduct->getAttributeText('color'), 0, strpos($_childproduct->getAttributeText('color'),"|"));
+            if($sizeavaliable)
+                $temp[1] = $_childproduct->getAttributeText('size');
+            else
+                $temp[1] = "2";
+            $temp[2] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+            array_push($inv, $temp);
+        }
+        echo json_encode($inv);
+    }
+    
     public function goysbalanceAction()
     {
         if($this->getRequest()->getParam('pass'))
@@ -63,8 +91,20 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
     {
         if($this->getRequest()->getParam('pass'))
         {
+            //echo $this->getRequest()->getParam('date');
             if($this->getRequest()->getParam('pass') == "MageHACKER")
             {
+                $date = $this->getRequest()->getParam('date');
+                $datearr = split("-", $date);
+                //print_r($datearr);
+                if(!checkdate($datearr[0], $datearr[1], $datearr[2]))
+                {
+                    echo "Invalid Date";
+                    return;
+                }
+                $date = $datearr[2]."-".$datearr[0]."-".$datearr[1];
+                //echo $date;
+//                return;
                 $output = "<table border='1'><thead><tr><th>Order#</th>
                 <th>Date</th>
                 <th>Status</th>
@@ -80,7 +120,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                 <th>Size</th>
                 </tr><thead><tbody>";
                 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
-                $readresult=$write->query("SELECT increment_id AS 'orderno', STATUS AS 'status', total_paid AS 'paid', shipping_description AS 'shipping', DATE_FORMAT(created_at, '%m-%d-%Y') AS 'orderdate',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'billto',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='shipping' AND parent_id=sfo.entity_id) AS 'shipto', entity_id FROM sales_flat_order sfo ORDER BY created_at desc");
+                $readresult=$write->query("SELECT increment_id AS 'orderno', STATUS AS 'status', total_paid AS 'paid', shipping_description AS 'shipping', DATE_FORMAT(created_at, '%m-%d-%Y') AS 'orderdate',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'billto',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='shipping' AND parent_id=sfo.entity_id) AS 'shipto', entity_id FROM sales_flat_order sfo where created_at >= '".$date."' ORDER BY created_at desc");
                 while ($row = $readresult->fetch() ) {
                     $outputtemp = "<tr><td>".$row['orderno']."</td>";
                     $outputtemp .= "<td>".$row['orderdate']."</td>";
@@ -125,6 +165,8 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                 file_put_contents('customreports/'.$fname.'.xls',$output);
                 Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");       
             }
+            else
+                echo "Invalid Password";
         }
     }
     
