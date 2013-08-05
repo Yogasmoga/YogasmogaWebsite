@@ -560,6 +560,7 @@ p.back-link { float: left;  position:absolute;}
 button.btn-detail:hover{background-position: 50% 100%;}
 button.btn-cart{background:url(../images/small/cart-btn.png) 50% 0 no-repeat; width:205px; border:0; overflow:hidden; height:43px; text-indent:-999em; float:none; margin:0 auto; max-width:100%; padding:0;}*/
 button.btn-cart{background:url(../images/btnc.jpg) 50% 50% no-repeat; padding:13px 45px;width:194px;height:43px;}
+body.catalog-product-view button.btn-cart { padding : 0;}
 button.btn-sec{background:url(../images/btnw.jpg) 50% 50% no-repeat; color:#666;width:226px;height:43px;}
 
 button.btn-cart1{background: url(../images/btn-update.png) 50% 50% no-repeat;/*padding:9px 45px;*/color:#666;font-size:13px;width:120px;height:33px;text-align:center;}

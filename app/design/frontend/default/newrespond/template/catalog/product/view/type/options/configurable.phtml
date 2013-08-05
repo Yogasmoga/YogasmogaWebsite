@@ -87,15 +87,16 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
         function checkpreorder()
         {
             var qty = getqty(_selclr, _selsz);
+            //alert(qty + " - " + _selqty);
             if(qty == "")
-                $j("div.product-options-bottom button.btn-cart span span").html("Add to Cart");
+                $j("div.product-options-bottom button.btn-cart span").html("Add to Cart");
             else
             {
                 qty = qty * 1;
                 if((qty - _selqty) < 0)
-                    $j("div.product-options-bottom button.btn-cart span span").html("pre-order now");
+                    $j("div.product-options-bottom button.btn-cart span").html("pre-order now");
                 else
-                    $j("div.product-options-bottom button.btn-cart span span").html("Add to Cart");    
+                    $j("div.product-options-bottom button.btn-cart span").html("Add to Cart");    
             }
         }
         
