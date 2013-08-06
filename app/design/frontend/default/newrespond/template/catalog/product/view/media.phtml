@@ -30,6 +30,257 @@
  * @see Mage_Catalog_Block_Product_View_Media
  */
 ?>
+
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+?>
+<?php
+    if (count($this->getGalleryImages()) == 0)
+    {
+        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    }
+    elseif (count($this->getGalleryImages()) > 0)
+    {
+        $srcharr = array();
+        ?>
+        <div id="slider" class="flexslider">
+        <ul class="slides">
+        <script type="text/javascript">
+            var imgdata = new Object();
+        </script>
+        <?php
+            $colors = array();
+            foreach ($this->getGalleryImages() as $_image)
+            {
+               $imgdata = json_decode(trim($_image->getLabel()), true);
+        		if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0) continue;
+        		
+        		$imgdata = json_decode(trim($_image->getLabel()), true);
+        		//var_dump($imgdata);
+        		if(array_search($imgdata['color'], $colors) !== false)
+        		    continue;
+        		array_push($colors, $imgdata['color']); 
+            }
+            $tempcolor = array();
+    $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
+    $allOptions = $attribute->getSource()->getAllOptions(true, true);
+    foreach ($allOptions as $instance) {
+        if(array_search($instance['value'], $colors) !== false)
+        {
+            array_push($tempcolor, $instance['value']);
+        }
+    }
+    $colors = $tempcolor;
+        //print_r($colors);
+            $activities = array();
+            for($i = 0; $i < count($colors); $i++)
+            {
+                $found = false;
+                foreach ($this->getGalleryImages() as $_image)
+                {
+                    $imgdata = json_decode(trim($_image->getLabel()), true);
+    		        if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0) continue;
+                    if($imgdata['color'] != $colors[$i])
+                        continue;
+                    if(array_search($imgdata['bestfor'], $activities) !== false)
+            		    continue;
+            		array_push($activities, $imgdata['bestfor']);
+                    ?>
+                    <li>
+                    <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+                    </li>
+                    <?php $carouselhtml .= "<li><img src='".$this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930)."' /></li>"; ?>
+                    <script type="text/javascript">
+                		imgdata[<?php echo $imgdata['color'] ?>] = '<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930); ?>';
+                	</script>
+                    <?php
+                    $found = true;
+                    break;
+                }
+                if(!$found)
+                {
+                    foreach ($this->getGalleryImages() as $_image)
+                    {
+                        $imgdata = json_decode(trim($_image->getLabel()), true);
+        		        if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0) continue;
+                        if($imgdata['color'] != $colors[$i])
+                            continue;
+                        array_push($activities, $imgdata['bestfor']);
+                        ?>
+                        <li>
+                        <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+                        </li>
+                        <?php $carouselhtml .= "<li><img src='".$this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930)."' /></li>"; ?>
+                        <script type="text/javascript">
+                    		imgdata[<?php echo $imgdata['color'] ?>] = '<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930); ?>';
+                    	</script>
+                        <?php
+                        break;
+                    }
+                }
+            }    
+    
+    	?>
+        <script type="text/javascript">
+    	//console.log(imgdata);
+        </script>
+        </ul>
+        <div class="counter">1 / 4</div>
+        </div>
+        <div id="carousel" class="flexslider">
+          <ul class="slides">
+            <?php echo $carouselhtml; ?>
+          </ul>
+        </div>
+        <?php
+    }
+?>
+
+<?php return; ?>
+
+<div id="slider" class="flexslider">
+  <ul class="slides">
+    <li>
+      <img src="http://dcctdtmszev6o.cloudfront.net/media/catalog/product/cache/1/thumbnail/620x930/040ec09b1e35df139433887a97daa66f/c/l/classic-slimmie-pant-reg_carbon-6_carbon-6_yoga.jpg" />
+    </li>
+    <li>
+      <img src="http://dcctdtmszev6o.cloudfront.net/media/catalog/product/cache/1/thumbnail/620x930/040ec09b1e35df139433887a97daa66f/c/l/classic-slimmie-pant-reg_carbon-6_tickled-pink_run_1.jpg" />
+    </li>
+    <li>
+      <img src="http://dcctdtmszev6o.cloudfront.net/media/catalog/product/cache/1/thumbnail/620x930/040ec09b1e35df139433887a97daa66f/c/l/classic-slimmie-pant-reg_carbon-6_india-blue_spin_1.jpg" />
+    </li>
+    <li>
+      <img src="http://dcctdtmszev6o.cloudfront.net/media/catalog/product/cache/1/thumbnail/620x930/040ec09b1e35df139433887a97daa66f/c/l/classic-slimmie-pant-reg_carbon-6_boy-blue_town_1.jpg" />
+    </li>
+    <!-- items mirrored twice, total of 12 -->
+  </ul>
+  <div class="counter">1 / 4</div>
+</div>
+<div id="carousel" class="flexslider">
+  <ul class="slides">
+    <li>
+      <img src="http://dcctdtmszev6o.cloudfront.net/media/catalog/product/cache/1/thumbnail/620x930/040ec09b1e35df139433887a97daa66f/c/l/classic-slimmie-pant-reg_carbon-6_carbon-6_yoga.jpg" />
+    </li>
+    <li>
+      <img src="http://dcctdtmszev6o.cloudfront.net/media/catalog/product/cache/1/thumbnail/620x930/040ec09b1e35df139433887a97daa66f/c/l/classic-slimmie-pant-reg_carbon-6_tickled-pink_run_1.jpg" />
+    </li>
+    <li>
+      <img src="http://dcctdtmszev6o.cloudfront.net/media/catalog/product/cache/1/thumbnail/620x930/040ec09b1e35df139433887a97daa66f/c/l/classic-slimmie-pant-reg_carbon-6_india-blue_spin_1.jpg" />
+    </li>
+    <li>
+      <img src="http://dcctdtmszev6o.cloudfront.net/media/catalog/product/cache/1/thumbnail/620x930/040ec09b1e35df139433887a97daa66f/c/l/classic-slimmie-pant-reg_carbon-6_boy-blue_town_1.jpg" />
+    </li>
+    <!-- items mirrored twice, total of 12 -->
+  </ul>
+</div>
+
+<?php return; ?>
+
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+?>
+<?php
+    if (count($this->getGalleryImages()) == 0)
+    {
+        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    }
+    elseif (count($this->getGalleryImages()) > 0)
+    {
+        $srcharr = array();
+        ?>
+        <div id="slider" class="flexslider">
+        <ul class="slides">
+        <script type="text/javascript">
+            var imgdata = new Object();
+        </script>
+        <?php
+            $colors = array();
+            foreach ($this->getGalleryImages() as $_image)
+            {
+               $imgdata = json_decode(trim($_image->getLabel()), true);
+        		if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0) continue;
+        		
+        		$imgdata = json_decode(trim($_image->getLabel()), true);
+        		//var_dump($imgdata);
+        		if(array_search($imgdata['color'], $colors) !== false)
+        		    continue;
+        		array_push($colors, $imgdata['color']); 
+            }
+            $tempcolor = array();
+    $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
+    $allOptions = $attribute->getSource()->getAllOptions(true, true);
+    foreach ($allOptions as $instance) {
+        if(array_search($instance['value'], $colors) !== false)
+        {
+            array_push($tempcolor, $instance['value']);
+        }
+    }
+    $colors = $tempcolor;
+        //print_r($colors);
+            $activities = array();
+            for($i = 0; $i < count($colors); $i++)
+            {
+                $found = false;
+                foreach ($this->getGalleryImages() as $_image)
+                {
+                    $imgdata = json_decode(trim($_image->getLabel()), true);
+    		        if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0) continue;
+                    if($imgdata['color'] != $colors[$i])
+                        continue;
+                    if(array_search($imgdata['bestfor'], $activities) !== false)
+            		    continue;
+            		array_push($activities, $imgdata['bestfor']);
+                    ?>
+                    <li>
+                    <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+                    </li>
+                    <?php $carouselhtml .= "<img src='".$this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930)."' />"; ?>
+                    <script type="text/javascript">
+                		imgdata[<?php echo $imgdata['color'] ?>] = '<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930); ?>';
+                	</script>
+                    <?php
+                    $found = true;
+                    break;
+                }
+                if(!$found)
+                {
+                    foreach ($this->getGalleryImages() as $_image)
+                    {
+                        $imgdata = json_decode(trim($_image->getLabel()), true);
+        		        if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0) continue;
+                        if($imgdata['color'] != $colors[$i])
+                            continue;
+                        array_push($activities, $imgdata['bestfor']);
+                        ?>
+                        <li>
+                        <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+                        </li>
+                        <?php $carouselhtml .= "<img src='".$this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930)."' />"; ?>
+                        <script type="text/javascript">
+                    		imgdata[<?php echo $imgdata['color'] ?>] = '<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(620,930); ?>';
+                    	</script>
+                        <?php
+                        break;
+                    }
+                }
+            }    
+    
+    	?>
+        <script type="text/javascript">
+    	//console.log(imgdata);
+        </script>
+        </ul>
+        </div>
+        <?php
+    }
+?>
+
+<?php return; ?>
+
 <?php
     $_product = $this->getProduct();
     $_helper = $this->helper('catalog/output');

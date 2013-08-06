@@ -182,22 +182,47 @@
 		<?php endif;?>
 		
 		<div class="product-img-box">
-			<div id="galleria">
+			<div id="galleria1" class="loading">
 				<?php echo $this->getChildHtml('media') ?>
 			</div>
 			
 			<script type="text/javascript">
 				//<![CDATA[
+            $j(window).load(function(){
+                 $j('#carousel').flexslider({
+                    animation: "slide",
+                    controlNav: false,
+                    animationLoop: false,
+                    slideshow: false,
+                    itemWidth: 100,
+                    itemMargin: 5,
+                    asNavFor: '#slider'
+                  });
+                   
+                  $j('#slider').flexslider({
+                    animation: "slide",
+                    controlNav: false,
+                    animationLoop: false,
+                    slideshow: false,
+                    after: function(){
+                        $j("div#slider div.counter").html(($j("div#slider ul.slides li.flex-active-slide").index() + 1) + " / " + $j("div#slider ul.slides li").length);
+                    }
+                  });
+                  $j("div#slider div.counter").html("1 / " + $j("div#slider ul.slides li").length);
+                  $j("div#galleria1").removeClass("loading");
+            });
+                
 			$j(document).ready(function(){
 				//Initialize Galleria
-				$j('#galleria').galleria({
-					showInfo:false,
-					autoplay: false,
-					height:1.5,
-					swipe: true,
-                                        touchTransition:false,
-                                        transition:false       
-				 });
+                 
+				//$j('#galleria').galleria({
+//					showInfo:false,
+//					autoplay: false,
+//					height:1.5,
+//					swipe: true,
+//                    touchTransition:false,
+//                    transition:false       
+//				 });
 			})
 			//]]>
 			</script>

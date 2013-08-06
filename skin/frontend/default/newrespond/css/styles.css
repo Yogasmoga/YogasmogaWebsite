@@ -3128,3 +3128,43 @@ div.discount-coupon-login h6, div.discount-coupon-login div.login-msg
 {
     text-align: center;
 }
+div#slider.flexslider, div#carousel.flexslider
+{
+    border : none;
+    border-radius : 0;
+    box-shadow : none;
+    margin : 0;
+    border-bottom : 1px solid #CECECE;
+}
+div#carousel.flexslider ul.slides li img
+{
+    opacity:0.6;
+    filter:alpha(opacity=60); 
+}
+div#carousel.flexslider ul.slides li.flex-active-slide img
+{
+    opacity:1;
+    filter:alpha(opacity=100); 
+}
+div#slider.flexslider div.counter
+{
+    bottom: 10px;
+    left: 10px;
+    position: absolute;
+    z-index: 10;
+    color : #444444;
+    opacity : 0.8;
+    filter : alpha(opacity=80);
+    font : 14px/1 arial,sans-serif;
+}
+div#galleria1.loading
+{
+    min-height : 500px;
+    background-image : url('../images/loading.gif');
+    background-repeat : no-repeat;
+    background-position: center center; 
+}
+div#galleria1.loading>div
+{
+    display : none !important; 
+}
