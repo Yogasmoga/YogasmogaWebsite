@@ -146,17 +146,25 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 		if (_ldclr == "")
 		{
 		setTimeout(function(){
-		    $j("div.galleria-thumbnails img[src='" + imgdata[$j("#color-attr div.colorbox.active").attr('rel')] + "']").trigger('click');
+		    //$j("div.galleria-thumbnails img[src='" + imgdata[$j("#color-attr div.colorbox.active").attr('rel')] + "']").trigger('click');
+            $j("div#carousel ul.slides li img[src='" + imgdata[$j("#color-attr div.colorbox.active").attr('rel')] + "']").trigger('click');
             //alert("first time");
 		    }, 500);
+            
+            
+            
+                
 		_ldclr="1";
 		}
 		else
 		{
 		  setTimeout(function(){
-		      $j("div.galleria-thumbnails img[src='" + imgdata[$j("#color-attr div.colorbox.active").attr('rel')] + "']").trigger('click');      
+		      //$j("div.galleria-thumbnails img[src='" + imgdata[$j("#color-attr div.colorbox.active").attr('rel')] + "']").trigger('click');
+              $j("div#carousel ul.slides li img[src='" + imgdata[$j("#color-attr div.colorbox.active").attr('rel')] + "']").trigger('click');      
 		  },200);
 		
+        //$j("div#carousel ul.slides li").eq(2).find("img").trigger("click");
+        
         //alert("click time");
 		}
 		
