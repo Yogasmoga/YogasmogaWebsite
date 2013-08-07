@@ -142,6 +142,10 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 		//console.log("div.galleria-thumbnails img[src='" + imgdata[$j(this).attr('rel')] + "']");
 		//console.log($j("div.galleria-thumbnails img[src='" + imgdata[$j(this).attr('rel')] + "']").length);
 		
+        if($j(this).index() == 0)
+        {
+            $j("div#carousel ul.slides").css("transform","none");
+        }
 		
 		if (_ldclr == "")
 		{
