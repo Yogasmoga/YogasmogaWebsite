@@ -2,6 +2,7 @@ var slider;
 jQuery(document).ready(function($){
 	rescarousel();
 	  slider=jQuery('#slider').bxSlider({
+	       /*
 		  auto:false,
 		  //autoHover:true,
 	      pause:7000,
@@ -9,8 +10,29 @@ jQuery(document).ready(function($){
 		  swipeThreshold:50,
 	      speed:800,
 		  controls:false
+          */
+          auto:false,
+	      pause:7000,
+		  touchEnabled:false,
+	      speed:800,
+		  controls:false
 	  });
 	
+    $("#slider").swipe({
+            swipeLeft:function(event, direction, distance, duration, fingerCount) 
+        {
+            slider.stopAuto();
+            slider.startAuto();                        
+            slider.goToNextSlide();
+        },
+    swipeRight:function(event, direction, distance, duration, fingerCount) 
+        {
+            slider.stopAuto();
+            slider.startAuto(); 
+            slider.goToPrevSlide();
+        }
+        });
+        
 	  jQuery(window).resize(function(){
 		rescarousel();
 	  });

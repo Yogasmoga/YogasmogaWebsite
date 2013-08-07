@@ -35,6 +35,7 @@
         <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
         <action method="addCss"><stylesheet>css/jqueryui/jquery-ui-1.9.1.custom.css</stylesheet></action>
         
+        <action method="addJs"><script>jquery/jquery.touchSwipe.min.js</script></action>
         <action method="addJs"><script>jquery/jquery.bxSlider.min.js</script></action>
         <action method="addJs"><script>jquery/bxsliderscript.js</script></action>
         <action method="addJs"><script>jquery/myproductimageswitcher.js</script></action>
