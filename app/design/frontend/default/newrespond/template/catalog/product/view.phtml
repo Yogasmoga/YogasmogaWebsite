@@ -206,8 +206,8 @@
                     slideshow: false,
                     after: function(){
                         $j("div#slider div.counter").html(($j("div#slider ul.slides li.flex-active-slide").index() + 1) + " / " + $j("div#slider ul.slides li").length);
-                    },
-                    sync: "#carousel"
+                    }/*,
+                    sync: "#carousel"*/
                   });
                   $j("div#slider div.counter").html("1 / " + $j("div#slider ul.slides li").length);
                   $j("div#galleria1").removeClass("loading");
