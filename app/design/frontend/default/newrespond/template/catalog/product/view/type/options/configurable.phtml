@@ -168,7 +168,11 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 		{
 		  setTimeout(function(){
 		      //$j("div.galleria-thumbnails img[src='" + imgdata[$j("#color-attr div.colorbox.active").attr('rel')] + "']").trigger('click');
-              $j("div#carousel ul.slides li img[src='" + imgdata[$j("#color-attr div.colorbox.active").attr('rel')] + "']").trigger('click');      
+              
+              if($j("div#carousel ul.slides li img[src='" + imgdata[$j("#color-attr div.colorbox.active").attr('rel')] + "']").index() == 0)
+                $j("div#carousel ul.slides li img:eq(1)").trigger("click");
+            
+                $j("div#carousel ul.slides li img[src='" + imgdata[$j("#color-attr div.colorbox.active").attr('rel')] + "']").trigger('click');      
 		  },200);
 		
         //$j("div#carousel ul.slides li").eq(2).find("img").trigger("click");
