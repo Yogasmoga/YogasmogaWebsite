@@ -3168,3 +3168,9 @@ div#galleria1.loading>div
 {
     display : none !important; 
 }
+div#carousel.flexslider .slides > li
+{
+    width: 100px;
+    float: left;
+    display: block;    
+}
