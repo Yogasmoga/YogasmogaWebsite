@@ -33,6 +33,22 @@ jQuery(document).ready(function($){
         }
         });
         
+    if(_onipad)
+    {
+        $("button.btn-explore.button").swipe({
+            swipeStatus:function(event, phase, direction, distance, duration, fingerCount) {
+                if(phase=="start")
+                {
+                    window.location.href = $(this).attr('redirecturl');
+                    
+                }
+               
+              },
+            threshold:1
+        });    
+    }
+        
+        
 	  jQuery(window).resize(function(){
 		rescarousel();
 	  });
