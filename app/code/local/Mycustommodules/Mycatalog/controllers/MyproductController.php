@@ -94,15 +94,25 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
             //echo $this->getRequest()->getParam('date');
             if($this->getRequest()->getParam('pass') == "MageHACKER")
             {
-                $date = $this->getRequest()->getParam('date');
-                $datearr = split("-", $date);
+                $startdate = $this->getRequest()->getParam('startdate');
+                $datearr = split("-", $startdate);
                 //print_r($datearr);
                 if(!checkdate($datearr[0], $datearr[1], $datearr[2]))
                 {
                     echo "Invalid Date";
                     return;
                 }
-                $date = $datearr[2]."-".$datearr[0]."-".$datearr[1];
+                $startdate = $datearr[2]."-".$datearr[0]."-".$datearr[1];
+                
+                $enddate = $this->getRequest()->getParam('enddate');
+                $datearr = split("-", $enddate);
+                //print_r($datearr);
+                if(!checkdate($datearr[0], $datearr[1], $datearr[2]))
+                {
+                    echo "Invalid Date";
+                    return;
+                }
+                $enddate = $datearr[2]."-".$datearr[0]."-".$datearr[1];
                 //echo $date;
 //                return;
                 $output = "<table border='1'><thead><tr><th>Order#</th>
@@ -120,7 +130,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                 <th>Size</th>
                 </tr><thead><tbody>";
                 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
-                $readresult=$write->query("SELECT increment_id AS 'orderno', STATUS AS 'status', total_paid AS 'paid', shipping_description AS 'shipping', DATE_FORMAT(created_at, '%m-%d-%Y') AS 'orderdate',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'billto',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='shipping' AND parent_id=sfo.entity_id) AS 'shipto', entity_id FROM sales_flat_order sfo where created_at >= '".$date."' ORDER BY created_at desc");
+                $readresult=$write->query("SELECT increment_id AS 'orderno', STATUS AS 'status', total_paid AS 'paid', shipping_description AS 'shipping', DATE_FORMAT(created_at, '%m-%d-%Y') AS 'orderdate',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'billto',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='shipping' AND parent_id=sfo.entity_id) AS 'shipto', entity_id FROM sales_flat_order sfo where created_at >= '".$startdate."' and created_at <= '".$enddate."' ORDER BY created_at desc");
                 while ($row = $readresult->fetch() ) {
                     $outputtemp = "<tr><td>".$row['orderno']."</td>";
                     $outputtemp .= "<td>".$row['orderdate']."</td>";
