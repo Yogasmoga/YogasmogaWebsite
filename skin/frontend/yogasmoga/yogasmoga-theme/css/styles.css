@@ -3837,3 +3837,166 @@ div.ui-dialog.yogidialog
 {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
+/*New*/
+div.info-set table
+{
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+body.paypal-express-review #order_review_form table.inputtable
+{
+    width:420px;
+}
+
+body.paypal-express-review #order_review_form table.inputtable label
+{   
+    font-size: 11px;
+    font-weight: normal;
+}
+
+body.paypal-express-review #order_review_form .form-list li.control label
+{
+    font-family: gothamMedium;
+    font-weight: normal;
+    color:#2F2F2F;
+    font-size: 11px;
+    font-family: helveticaoblique;
+}
+
+
+body.paypal-express-review #order_review_form table.inputtable td.inputholder select 
+{
+    width: 315px;
+}
+
+body.paypal-express-review #order_review_form .info-set h2.addresses
+{
+    margin:-20px 0 15px; padding:5px 0; position:relative; font-family: gothambook; text-transform: uppercase; font-size: 18px;  
+}
+
+body.paypal-express-review div.col-1,body.paypal-express-review div.col-2
+{
+    width:auto;
+}
+
+
+
+body.paypal-express-review div.page-title
+{
+    margin-bottom: 45px;
+}
+body.paypal-express-review #details-table 
+{
+    text-transform: uppercase;
+}
+
+body.paypal-express-review #details-table tr th
+{
+    font-weight: normal;
+    font-family: gothamlight;
+    font-size: 13px;
+    
+}
+
+
+
+body.paypal-express-review #details-table tbody tr td h3.product-name
+{
+    color: black !important;
+}
+
+.info-set1 h2.legend1
+{
+    font-family: gothambook;
+    text-align: left;    
+}
+
+.info-set1 h2.legend1 a
+{
+    color: #D90D3D;
+    font-family: HelvLightRegular;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-left: 5px;    
+}
+
+.info-set1 {   padding:0; }
+
+#checkout-buttons
+{   max-width: 960px; margin-left: auto; margin-right: auto;}
+
+.paypal-shipping-method h3
+{
+    color:#2F2F2F;
+    font-family: gothambook;
+    font-size: 18px;
+    letter-spacing: 0.4pt;
+    text-transform: uppercase;
+    font-weight: normal;
+    height:30px;
+}
+
+#shipping-method-container table
+{
+    margin: 0 ;     
+}
+
+#shipping-method-container table td
+{
+    vertical-align: bottom;
+    color:#DD8820;
+    text-transform: uppercase;
+    font-size:12px;
+}
+
+
+/*#shipping-method-container table td label
+{
+    color:#DD8820;
+    text-transform: uppercase;
+    font-size:12px;
+}*/
+
+#shipping-method-container div.shippingdescription
+{
+    margin:5px 0 0 0;
+    font-size: 12px;
+}
+
+.col2-set .col-3 { width:100%; text-align: left; }
+
+#chooseshippingmethod
+{
+    color:#D90D3D;
+    font-size: 11px;
+    font-family: helveticaoblique;
+    display: none;
+}
+
+.formerrormsg
+{
+    color: #D90D3D;
+    font-family: helveticaoblique;
+    float: right;
+    padding: 12px 7px 0 0;        
+}
+
+.order-form
+{
+    padding:20px 0 0 0 !important;
+}
+
+body.paypal-express-review #shipping-method-container > table:first-child {
+    margin-top: 0;
+}
+body.paypal-express-review #shipping-method-container > table {
+    margin-top: 30px;
+}
+
+.no-padding-bottom
+{
+    padding-bottom: 0 !important;
+}

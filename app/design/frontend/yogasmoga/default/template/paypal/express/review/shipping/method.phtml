@@ -25,6 +25,73 @@
  */
 /** @var $this Mage_Paypal_Block_Express_Review */
 ?>
+
+<?php
+    
+    function formatshipmethod($title)
+    {
+        if(strrpos($title, "-") !== false)
+        {
+            $index = strrpos($title, "-");
+            $output = "<strong>".substr($title, 0, $index)."</strong>";
+            $price = trim(substr($title, $index + 1));
+            $output .= "(".$price.")";
+            return $output;
+        }
+        else
+            return $title;
+    }
+
+ ?>
+
+<fieldset id="shipping-method-container">
+<?php if ($this->getCanEditShippingMethod() || !$this->getCurrentShippingRate()):?>
+        <?php if ($groups = $this->getShippingRateGroups()):?>
+            <?php $currentRate = $this->getCurrentShippingRate(); ?>
+            <?php foreach ($groups as $code => $rates):?>
+                <?php foreach ($rates as $rate):?>
+                    <table>
+                            <tbody><tr>
+                                <td>
+                                <input type="radio" class="radio" id="s_method_<?php echo $this->renderShippingRateValue($rate)?>" value="<?php echo $this->renderShippingRateValue($rate)?>" name="shipping_method" <?php echo ($currentRate === $rate) ? ' checked="checked"' : '' ;?> />     
+                                </td>
+                                <td style="padding-top : 2px;">
+                                    <label for="s_method_<?php echo $this->renderShippingRateValue($rate)?>"><?php echo formatshipmethod($this->renderShippingRateOption($rate))?>
+                                                                        </label>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    <?php
+                            $temp = Mage::app()->getLayout()->createBlock('cms/block')->setBlockId($this->renderShippingRateValue($rate))->toHtml();
+                            //$temp = Mage::getModel('cms/block')->load('revolvingmessage_loggedin')->getContent();
+//                            $block  = Mage::getModel('cms/block')
+//                                        ->setStoreId(Mage::app()->getStore()->getId())
+//                                        ->load('revolvingmessage_loggedin');
+//                            echo    Mage::app()->getLayout()->createBlock('cms/block')->setBlockId('revolvingmessage_loggedin')->toHtml();
+//                            echo $block->getContent();
+//                            echo $temp; 
+                            if($temp != "")
+                            {
+                                ?>
+                                <div class="shippingdescription">
+                                    <?php echo $temp; ?>
+                                </div>
+                                <?php
+                            }
+                        ?>
+                <?php endforeach;?>
+            <?php endforeach;?>
+        <?php else: ?>
+            <p><strong><?php echo $this->__('Sorry, no quotes are available for this order at this time.') ?></strong></p>
+        <?php endif;?>
+<?php else: ?>
+    <p><strong><?php echo $this->renderShippingRateOption($this->getCurrentShippingRate())?></strong></p>
+<?php endif; ?>
+</fieldset>
+<div style="display:none" id="shipping_method_update"><p><?php echo $this->__('Please update order data to get shipping methods and rates') ?></p></div>
+
+
+<?php return; ?>
 <fieldset id="shipping-method-container">
 <?php if ($this->getCanEditShippingMethod() || !$this->getCurrentShippingRate()):?>
         <?php if ($groups = $this->getShippingRateGroups()):?>

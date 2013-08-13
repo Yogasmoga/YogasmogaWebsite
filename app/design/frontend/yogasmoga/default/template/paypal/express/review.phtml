@@ -28,7 +28,7 @@
 $billingBlock = $this->getChild('billing')->setFieldNamePrefix('billing')->setHideEmailAddress(true);
 $shippingAddress = $this->getShippingAddress();
 ?>
-<div class="page-title">
+<div class="page-title page-title1">
     <h1><?php echo $this->__('Review Order') ?></h1>
 </div>
 <?php echo $this->getMessagesBlock()->toHtml() ?>
@@ -37,9 +37,9 @@ $shippingAddress = $this->getShippingAddress();
     var countryRegions = <?php echo $this->helper('directory')->getRegionJson() ?>
 //]]>
 </script>
-<h2 class="sub-title">
+<!--<h2 class="sub-title">
     Please confirm your addresses
-</h2>
+</h2>-->
 <div class="paypal-review-order">
     <form method="post" id="order_review_form" action="<?php echo $this->getPlaceOrderUrl() ?>">
     <?php if(!$billingBlock->isCustomerLoggedIn()): ?>
@@ -57,9 +57,9 @@ $shippingAddress = $this->getShippingAddress();
             </ul>
         </div>
     <?php endif ?>
-    <div class="info-set col2-set">
+    <div class="info-set col2-set fixwidth order-form">
         <div class="col-1" id="billing-address">
-            <h2 class="legend"><?php echo $this->__('Billing Address') ?></h2>
+            <h2 class="addresses"><?php echo $this->__('Billing Address') ?></h2>
             <?php if ($shippingAddress): ?>
                 <?php echo $billingBlock->setShowAsShippingCheckbox(true)->toHtml(); ?>
             <?php else: ?>
@@ -68,13 +68,13 @@ $shippingAddress = $this->getShippingAddress();
         </div>
     <?php if ($shippingAddress): ?>
         <div class="col-2" id="shipping-address">
-            <h2 class="legend"><?php echo $this->__('Shipping Address') ?></h2>
+            <h2 class="addresses"><?php echo $this->__('Shipping Address') ?></h2>
             <?php echo $this->getChild('shipping')->setFieldNamePrefix('shipping')->setHideEmailAddress(true)->toHtml(); ?>
         </div>
     </div>
 
-    <div class="info-set col2-set">
-        <div class="col-2">
+    <div class="info-set col2-set fixwidth no-padding-bottom">
+        <div class="col-3">
             <div class="box paypal-shipping-method">
                 <div class="box-title">
                     <h3><?php echo $this->__('Shipping Method') ?></h3>
@@ -82,26 +82,31 @@ $shippingAddress = $this->getShippingAddress();
                 <div class="box-content">
                     <?php echo $this->getChild('shipping_method')->toHtml(); ?>
                 </div>
+                <div id="chooseshippingmethod">Please Choose one method.</div>
             </div>
         </div>
     <?php endif; ?>
     </div>
 
-    <div class="info-set">
-        <h2 class="legend"><?php echo $this->__('Items in Your Shopping Cart') ?><span class="separator"> | </span><a href="<?php echo $this->getUrl('checkout/cart') ?>"><?php echo $this->__('Edit Shopping Cart') ?></a></h2>
+    <div class="info-set1 fixwidth">
+        <h2 class="legend1"><?php echo $this->__('Items in Your Shopping Cart') ?><a href="<?php echo $this->getUrl('checkout/cart') ?>"><?php echo $this->__('Edit') ?></a></h2>
         <div id="details-reload">
             <?php echo $this->getChildHtml('details') ?>
         </div>
     </div>
         <?php echo $this->getChildHtml('agreements'); ?>
-        <div class="buttons-set buttons-set-order" id="review-buttons-container">
-            <button type="button" id="review_button" value="<?php echo $this->__('Place Order') ?>" class="button btn-checkout"><span><span><?php echo $this->__('Place Order') ?></span></span></button>
-            <button type="button" id="review_submit" value="<?php echo $this->__('Place Order') ?>" class="button btn-checkout"><span><span><?php echo $this->__('Place Order') ?></span></span></button>
-            <button type="button" id="update_order" class="button btn-checkout"><span><span><?php echo $this->__('Update Order Data') ?></span></span></button>
-            <span class="please-wait" id="review-please-wait" style="display:none;">
-                <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Submitting order information...') ?>" title="<?php echo $this->__('Submitting order information...') ?>" class="v-middle" /> <?php echo $this->__('Submitting order information...') ?>
-            </span>
+        <div id="checkout-buttons">
+            <div class="buttons-set buttons-set-order" id="review-buttons-container">
+                <button type="button" id="review_button" value="<?php echo $this->__('Place Order') ?>" class="button btn-checkout"><span><span><?php echo $this->__('Place Order') ?></span></span></button>
+                <button type="button" id="review_submit" value="<?php echo $this->__('Place Order') ?>" class="button btn-checkout"><span><span><?php echo $this->__('Place Order') ?></span></span></button>
+                <button type="button" id="update_order" class="button btn-checkout"><span><span><?php echo $this->__('Update Order Data') ?></span></span></button>                         
+                <span class="please-wait" id="review-please-wait" style="display:none;">
+                    <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Submitting order information...') ?>" title="<?php echo $this->__('Submitting order information...') ?>" class="v-middle" /> <?php echo $this->__('Submitting order information...') ?>
+                </span>
+                <div id="#addresserrormsg" class="formerrormsg"></div>
+            </div>
         </div>
+        
     </form>
 </div>
 <script type="text/javascript">
@@ -111,6 +116,7 @@ $('review_submit').hide();
 if ($('update_shipping_method_submit')) {
     $('update_shipping_method_submit').hide();
 }
+
 
 <?php if ($this->getUseAjax()):?>
     OrderReviewController.prototype._submitOrder = function() {
