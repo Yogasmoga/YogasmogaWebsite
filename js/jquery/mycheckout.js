@@ -329,7 +329,66 @@ function reordersteps(stp)
 
 function validatePaymentForm()
 {
-    return true;
+    var stripecheck = false;
+    if(jQuery("#payment_form input.paymethod").length == 0)
+    {
+        stripecheck = true;
+    }
+    else
+    {
+        if(jQuery("#payment_form input.paymethod:checked").length == 0)
+        {
+            jQuery("#paymentmethoderrormsg").html('Please choose a payment method.');
+            return false;    
+        }
+        if(jQuery("#payment_form input.paymethod:checked").val() == "stripe")
+        {
+            stripecheck = true;
+        }
+    }
+    if(stripecheck)
+    {
+        unsetAllError(jQuery("#payment_form"));
+        if(jQuery("#stripe-update-payment").length > 0 && jQuery("#stripe-update-payment").hasClass('use'))
+            return true;
+        var flag = validatefields(jQuery("#payment_form"));
+        if(jQuery("#stripe_cc_number").val() != "")
+        {
+            if(!Stripe.validateCardNumber(jQuery("#stripe_cc_number").val()))
+            {
+                flag = false;
+                setOnError(jQuery("#stripe_cc_number"), "Invalid Credit Card Number");
+            }
+        }
+        if(jQuery("#stripe_cc_cid").val() != "")
+        {
+            if(!Stripe.validateCVC(jQuery("#stripe_cc_cid").val()))
+            {
+                flag = false;
+                setOnError(jQuery("#stripe_cc_cid"));
+            }
+        }
+        if(jQuery("#stripe_expiration").val() != "" && jQuery("#stripe_expiration_yr").val() != "")
+        {
+            if(!Stripe.validateExpiry(jQuery("#stripe_expiration").val(), jQuery("#stripe_expiration_yr").val()))
+            {
+                flag = false;
+                setOnError(jQuery("#stripe_expiration"), "Invalid Expiration Date.");
+                setOnError(jQuery("#stripe_expiration_yr"));
+            }
+        }
+        if(!flag)
+            jQuery("#paymentmethoderrormsg").html('Please fill in the required fields in red to continue.');
+        else
+            jQuery("#paymentmethoderrormsg").html('');
+        return flag;
+    }
+    else
+        return true;
+    
+    
+    
+    
     //if(!(jQuery("#stripe-update-payment").length > 0 && jQuery("#stripe-update-payment").hasClass('unuse')))
 //        return true;
     if(jQuery("#payment_form input[type='text']").length == 0)
@@ -401,6 +460,9 @@ function savePayment()
         data : jQuery("#payment_form").serialize(),
         success : function(result){
             result = eval('(' + result + ')');
+            if(typeof result['redirect'] !== "undefined")
+                window.location.href = result['redirect'];
+                
             if(typeof result['error'] !== "undefined")
                 jQuery("#paymentmethoderrormsg").html(result['error']);
             else

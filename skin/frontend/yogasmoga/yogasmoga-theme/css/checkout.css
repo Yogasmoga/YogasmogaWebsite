@@ -494,3 +494,7 @@ div#shippingsummary td#ordersubtotal
 {
     
 }
+div.paymentmethoddiv
+{
+    margin-bottom : 10px;
+}
