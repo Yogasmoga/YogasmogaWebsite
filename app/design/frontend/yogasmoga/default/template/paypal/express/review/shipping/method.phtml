@@ -87,6 +87,7 @@
 <?php else: ?>
     <p><strong><?php echo $this->renderShippingRateOption($this->getCurrentShippingRate())?></strong></p>
 <?php endif; ?>
+<div id="chooseshippingmethod">Please Choose one method.</div>
 </fieldset>
 <div style="display:none" id="shipping_method_update"><p><?php echo $this->__('Please update order data to get shipping methods and rates') ?></p></div>
 
@@ -109,7 +110,7 @@
                 <?php endforeach;?>
                 </optgroup>
             <?php endforeach;?>
-            </select>
+            </select>            
         <?php else: ?>
             <p><strong><?php echo $this->__('Sorry, no quotes are available for this order at this time.') ?></strong></p>
         <?php endif;?>

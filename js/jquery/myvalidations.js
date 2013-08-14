@@ -2,7 +2,7 @@ jQuery(document).ready(function($){
     
     jQuery("input[type='radio'][name='shipping_method']").click(function(){        
             jQuery("#update_order").trigger('click');
-            jQuery("#chooseshippingmethod").hide();            
+            jQuery("#chooseshippingmethod").hide();                        
     });
 
 });
@@ -17,7 +17,7 @@ function setOnError(element, errormsg)
         jQuery(element.parents("table.inputtable:first")).find("td.errortext div").html(errormsg);
     else
     {
-        if(jQuery(element).attr('defaulterrormsg'))
+            if(jQuery(element).attr('defaulterrormsg'))
             jQuery(element.parents("table.inputtable:first")).find("td.errortext div").html(jQuery(element).attr('defaulterrormsg'));
     }
 }
@@ -37,6 +37,7 @@ function validatefields(element)
         if(jQuery(this).val() == "" || jQuery(this).val() == "0")
         {
             setOnError(jQuery(this));
+            jQuery("#addresserrormsg").show();
             flag = false; 
         }
     });
@@ -47,6 +48,7 @@ function unsetAllError(element)
 {
     element.find("table.inputtable").removeClass("error");
     element.find("td.errortext div").fadeOut('fast');
+    jQuery("#addresserrormsg").hide();
 }
 
 function unsetError(element)
