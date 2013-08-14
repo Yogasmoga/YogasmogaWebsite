@@ -342,27 +342,33 @@
 		var regionUpdater = new RegionUpdater('country_id', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
 	<?php endif; ?>
 	<?php if(!$this->getIsStripeCustomer()): ?>
-		Event.observe('stripe-show-stripe-form',"change",function(el){
-			if (!this.checked) {
-				$('stripe-change-payment-form').hide();
-				$('stripe-buttons-container').hide();
-				$$(".stripe-toggle-valid").each(function(el){
-					$(el).removeClassName('required-entry');
-				});
-				$$(".stripe-toggle-valid-select").each(function(el){
-					$(el).removeClassName('validate-select');
-				});
-			} else {
-				$('stripe-change-payment-form').show();
-				$('stripe-buttons-container').show();
-				$$(".stripe-toggle-valid").each(function(el){
-					$(el).addClassName('required-entry');
-				});
-				$$(".stripe-toggle-valid-select").each(function(el){
-					$(el).addClassName('validate-select');
-				});
-			}
-		});
-	<?php endif; ?>	
+		Event.observe('stripe-show-stripe-form',"change",checkShowStripeForm);
+        function checkShowStripeForm()
+        {
+            if (!$('stripe-show-stripe-form').checked) {
+                $('stripe-change-payment-form').hide();
+                $('stripe-buttons-container').hide();
+                $$(".stripe-toggle-valid").each(function(el){
+                    $(el).removeClassName('required-entry');
+                });
+                $$(".stripe-toggle-valid-select").each(function(el){
+                    $(el).removeClassName('required-entry');
+                    $(el).removeClassName('validate-select');
+                });
+            } else {
+                $('stripe-change-payment-form').show();
+                $('stripe-buttons-container').show();
+                $$(".stripe-toggle-valid").each(function(el){
+                    $(el).addClassName('required-entry');
+                });
+                $$(".stripe-toggle-valid-select").each(function(el){
+                    $(el).addClassName('required-entry');
+                    $(el).addClassName('validate-select');
+                });
+            }
+        }
+
+        checkShowStripeForm();
+	<?php endif; ?>
 //]]>
 </script>
