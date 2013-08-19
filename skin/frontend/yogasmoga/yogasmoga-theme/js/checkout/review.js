@@ -315,6 +315,58 @@ OrderReviewController.prototype = {
      */
     _validateForm : function()
     {
+        /*alert("abc");
+        alert($j("#shipping-method-container").css("display"));  */  
+        //alert("validation");          
+        if (!this.formValidator) {
+            this.formValidator = new Validation(this.form);
+        }
+        unsetAllError(jQuery("#order_review_form"));
+        var flag = validatefields(jQuery("#order_review_form"));
+        if(jQuery("#shipping\\:postcode").val() != "")
+        {
+            if(!validateZip(jQuery("#shipping\\:postcode").val()))
+            {
+                flag = false;
+                setOnError(jQuery("#shipping\\:postcode"), "Invalid Zip Code.");
+            }
+        }
+        if(jQuery("#billing\\:postcode").val() != "")
+        {
+            if(!validateZip(jQuery("#billing\\:postcode").val()))
+            {
+                flag = false;
+                setOnError(jQuery("#billing\\:postcode"), "Invalid Zip Code.");
+            }
+        }
+        
+        if(jQuery('input:radio[name="shipping_method"]:checked').length > 0)
+                {                    
+                    jQuery("#chooseshippingmethod").hide();                    
+                }else
+                {
+                    jQuery("#chooseshippingmethod").show();
+                    }
+        /*if ($j("#shipping-method-container").css("display")== "block")
+        {
+            if(jQuery('input:radio[name="shipping_method"]:checked').length > 0)
+                {
+                    jQuery("#shippingmethoderrormsg").html("");
+                    jQuery("#chooseshippingmethod").html("");
+                    //saveShippingMethod(); 
+                }
+                else
+                {
+                    //jQuery("#addresserrormsg").html("Please Choose a Shipping Method.");
+                    alert("select one");                                       
+                }
+        return false;
+        
+        }*/
+          
+               
+        return flag;
+    
         if (!this.form) {
             return false;
         }
