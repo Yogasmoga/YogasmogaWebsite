@@ -1626,7 +1626,7 @@ div.rewards_point_cart { display: none;}
 /********** < Common Checkout Styles */
 /* Shipping and Payment methods */
 .sp-methods { margin:0 0 8px; }
-.sp-methods dt { margin:13px 0 5px; font-weight:bold; display:none !important;}
+.sp-methods dt { margin:13px 0 5px; font-weight:bold; }
 .sp-methods dd {}
 .sp-methods dd li { margin:9px 0; }
 .sp-methods label { font-weight:bold; color:#555; }
@@ -3174,3 +3174,50 @@ div#carousel.flexslider .slides > li
     float: left;
     display: block;    
 }
+
+/****New****/
+.no-padding
+{
+    padding: 0;
+} 
+body.paypal-express-review .info-set
+{
+    border:none !important;
+}
+body.paypal-express-review div#billing-address ul, body.paypal-express-review div#shipping-address ul
+{
+    width:100% !important;
+}
+body.paypal-express-review table.data-table tbody tr td h3.product-name
+{
+   color:#333333 !important;
+}
+  
+body.paypal-express-review table.data-table td
+{
+   padding:10px 0 !important;
+}
+
+body.paypal-express-review table.data-table tr td:last-of-type
+{
+    width: 130px;
+}
+
+.h2-head
+{    
+    color:#333333 !important;
+    font-family: gotham-m,arial;
+    font-size: 16px !important;
+    font-weight: normal !important;
+    letter-spacing: 0.05em;
+    line-height: 1.45;
+    margin: 0 0 0 10px !important;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.sp-methods dd
+{
+    margin-left:6px !important;
+}
+
