@@ -3221,3 +3221,7 @@ body.paypal-express-review table.data-table tr td:last-of-type
     margin-left:6px !important;
 }
 
+body.checkout-onepage-index table.data-table td {
+    padding: 10px 0 !important;
+}
+
