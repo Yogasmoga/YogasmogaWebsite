@@ -43,18 +43,27 @@
     }
 
  ?>
-
+<?php $first = true; ?>
 <fieldset id="shipping-method-container">
 <?php if ($this->getCanEditShippingMethod() || !$this->getCurrentShippingRate()):?>
         <?php if ($groups = $this->getShippingRateGroups()):?>
             <?php $currentRate = $this->getCurrentShippingRate(); ?>
             <?php if (!$currentRate):?>
-                <option value=""><?php echo $this->__('Please select a shipping method...') ?></option>
+                
             <?php endif;?>
             <?php foreach ($groups as $code => $rates):?>
                 <?php foreach ($rates as $rate):?>
                     <div>
-                        <input type="radio" class="radio" id="s_method_<?php echo $this->renderShippingRateValue($rate)?>" value="<?php echo $this->renderShippingRateValue($rate)?>" name="shipping_method" <?php echo ($currentRate === $rate) ? ' checked="checked"' : '' ;?> />
+                        <input type="radio" class="radio" id="s_method_<?php echo $this->renderShippingRateValue($rate)?>" value="<?php echo $this->renderShippingRateValue($rate)?>" name="shipping_method" 
+                        <?php 
+                            if($first)
+                            {
+                                echo " checked='checked'";
+                                $first = false;
+                            }
+                        ?>
+
+                        <?php //echo ($currentRate === $rate) ? ' checked="checked"' : '' ;?> />
                         
                         <label for="s_method_<?php echo $this->renderShippingRateValue($rate)?>"><?php echo formatshipmethod($this->renderShippingRateOption($rate))?>
                                                                         </label>
