@@ -3269,6 +3269,10 @@ body.paypal-express-review #order_review_form fieldset#shipping-method-container
 {
     margin:0 0 !important;
 }
+.no-padding1
+{
+    padding:0 0 !important; 
+}
 
 #paypalcontainerdiv
 {
@@ -3285,3 +3289,9 @@ body.paypal-express-review #order_review_form fieldset#shipping-method-container
     right: 0;
     top: 0;
 }
+
+body.checkout-cart-index div.promo-section div.discount
+{
+    border-bottom: none !important;
+}
+
