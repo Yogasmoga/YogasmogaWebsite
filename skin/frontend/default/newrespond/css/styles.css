@@ -3234,9 +3234,38 @@ a.edit
 {
     color: #D90D3D;
     font-family: HelvLightRegular;
-    font-size:12px;
+    font-size:12px !important;
     text-transform: none !important;
-    font-weight: bolder !important;
+    font-weight: bold !important;
     text-decoration: underline;
+    letter-spacing: 0em !important;
+    margin-left:5px;
 }
 
+body.paypal-express-review #order_review_form fieldset#shipping-method-container div label strong
+{    
+    font: 14px gotham-l;
+    font-weight: normal !important;
+    color: #555555;
+    font-weight: bold;
+}
+
+body.paypal-express-review #order_review_form fieldset#shipping-method-container
+{
+    margin-left: 20px !important;
+}
+
+body.paypal-express-review #order_review_form fieldset#shipping-method-container div
+{
+    margin: 9px 0;
+}
+
+.no-top-padding
+{
+    padding: 0 20px !important;
+}
+
+.no-bottom-margin
+{
+    margin:0 0 !important;
+}
