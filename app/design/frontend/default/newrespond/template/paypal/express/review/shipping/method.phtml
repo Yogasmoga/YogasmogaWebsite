@@ -25,6 +25,51 @@
  */
 /** @var $this Mage_Paypal_Block_Express_Review */
 ?>
+
+<?php
+    
+    function formatshipmethod($title)
+    {
+        if(strrpos($title, "-") !== false)
+        {
+            $index = strrpos($title, "-");
+            $output = "<strong>".substr($title, 0, $index)."</strong>";
+            $price = trim(substr($title, $index + 1));
+            $output .= "(".$price.")";
+            return $output;
+        }
+        else
+            return $title;
+    }
+
+ ?>
+
+<fieldset id="shipping-method-container">
+<?php if ($this->getCanEditShippingMethod() || !$this->getCurrentShippingRate()):?>
+        <?php if ($groups = $this->getShippingRateGroups()):?>
+            <?php $currentRate = $this->getCurrentShippingRate(); ?>
+            <?php if (!$currentRate):?>
+                <option value=""><?php echo $this->__('Please select a shipping method...') ?></option>
+            <?php endif;?>
+            <?php foreach ($groups as $code => $rates):?>
+                <?php foreach ($rates as $rate):?>
+                    <div>
+                        <input type="radio" class="radio" id="s_method_<?php echo $this->renderShippingRateValue($rate)?>" value="<?php echo $this->renderShippingRateValue($rate)?>" name="shipping_method" <?php echo ($currentRate === $rate) ? ' checked="checked"' : '' ;?> />
+                    </div>
+                <?php endforeach;?>
+            <?php endforeach;?>
+        <?php else: ?>
+            <p><strong><?php echo $this->__('Sorry, no quotes are available for this order at this time.') ?></strong></p>
+        <?php endif;?>
+<?php else: ?>
+    <p><strong><?php echo $this->renderShippingRateOption($this->getCurrentShippingRate())?></strong></p>
+<?php endif; ?>
+</fieldset>
+<div style="display:none" id="shipping_method_update"><p><?php echo $this->__('Please update order data to get shipping methods and rates') ?></p></div>
+
+
+<?php return; ?>
+
 <fieldset id="shipping-method-container">
 <?php if ($this->getCanEditShippingMethod() || !$this->getCurrentShippingRate()):?>
         <?php if ($groups = $this->getShippingRateGroups()):?>
