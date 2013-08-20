@@ -1626,7 +1626,7 @@ div.rewards_point_cart { display: none;}
 /********** < Common Checkout Styles */
 /* Shipping and Payment methods */
 .sp-methods { margin:0 0 8px; }
-.sp-methods dt { margin:13px 0 5px; font-weight:bold; }
+.sp-methods dt { margin:13px 0 5px; font-weight:bold; display: none !important; }
 .sp-methods dd {}
 .sp-methods dd li { margin:9px 0; }
 .sp-methods label { font-weight:bold; color:#555; }
@@ -3216,12 +3216,27 @@ body.paypal-express-review table.data-table tr td:last-of-type
     text-align: left;
 }
 
+body.checkout-onepage-index dl#checkout-payment-method-load dt
+{
+    display:block !important;
+}
+
 .sp-methods dd
 {
-    margin-left:6px !important;
+    margin-left:20px !important;
 }
 
 body.checkout-onepage-index table.data-table td {
     padding: 10px 0 !important;
+}
+
+a.edit
+{
+    color: #D90D3D;
+    font-family: HelvLightRegular;
+    font-size:12px;
+    text-transform: none !important;
+    font-weight: bolder !important;
+    text-decoration: underline;
 }
 
