@@ -55,6 +55,9 @@
                 <?php foreach ($rates as $rate):?>
                     <div>
                         <input type="radio" class="radio" id="s_method_<?php echo $this->renderShippingRateValue($rate)?>" value="<?php echo $this->renderShippingRateValue($rate)?>" name="shipping_method" <?php echo ($currentRate === $rate) ? ' checked="checked"' : '' ;?> />
+                        
+                        <label for="s_method_<?php echo $this->renderShippingRateValue($rate)?>"><?php echo formatshipmethod($this->renderShippingRateOption($rate))?>
+                                                                        </label>
                     </div>
                 <?php endforeach;?>
             <?php endforeach;?>
