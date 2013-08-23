@@ -4075,3 +4075,22 @@ body.checkout-onepage-index #change-stripe-detail,body.checkout-onepage-index #s
 {
     margin-left: 20px;
 }
+
+body.paypal-express-review #customer-info-form table.cust-info
+{
+    margin-left: 177px;    
+}
+body.paypal-express-review #customer-info-form table.cust-info input
+{
+    padding-bottom: 3px;
+}
+
+body.paypal-express-review h2.cust-info-head
+{
+    font-family: gothambook;
+    font-size: 18px;
+    margin: -20px 0 15px 177px;
+    padding: 5px 0;
+    position: relative;
+    text-transform: uppercase;
+}
