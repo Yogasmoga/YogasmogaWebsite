@@ -26,6 +26,9 @@
 /**
  * Controller of order review form that may select shipping method
  */
+ 
+ var _paypalfirsttime = true;
+ 
 OrderReviewController = Class.create();
 OrderReviewController.prototype = {
     _canSubmitOrder : false,
@@ -317,7 +320,12 @@ OrderReviewController.prototype = {
     {
         /*alert("abc");
         alert($j("#shipping-method-container").css("display"));  */  
-        //alert("validation");         
+        //alert("validation");        
+        
+        if (!this.formValidator) {
+            this.formValidator = new Validation(this.form);
+        }
+         
         if(jQuery("#shipping\\:region_id").css("display") == "none")
         {
             jQuery("#shipping\\:region_id").removeClass("requiredfield");
@@ -340,9 +348,6 @@ OrderReviewController.prototype = {
             jQuery("#billing\\:region").removeClass("requiredfield");
         }
         
-        if (!this.formValidator) {
-            this.formValidator = new Validation(this.form);
-        }
         unsetAllError(jQuery("#order_review_form"));
         var flag = validatefields(jQuery("#order_review_form"));
         if(jQuery("#shipping\\:postcode").val() != "")
@@ -369,6 +374,64 @@ OrderReviewController.prototype = {
                 {
                     jQuery("#chooseshippingmethod").show();
                 }                
+        
+        
+        if(_paypalfirsttime)
+        {
+            _paypalfirsttime = false;
+            
+            setTimeout(function(){
+                if(jQuery("#shipping\\:region_id").css("display") == "none")
+            {
+                jQuery("#shipping\\:region_id").removeClass("requiredfield");
+                jQuery("#shipping\\:region").addClass("requiredfield");
+            }
+            else
+            {
+                jQuery("#shipping\\:region_id").addClass("requiredfield");
+                jQuery("#shipping\\:region").removeClass("requiredfield");
+            }
+            
+            if(jQuery("#billing\\:region_id").css("display") == "none")
+            {
+                jQuery("#billing\\:region_id").removeClass("requiredfield");
+                jQuery("#billing\\:region").addClass("requiredfield");
+            }
+            else
+            {
+                jQuery("#billing\\:region_id").addClass("requiredfield");
+                jQuery("#billing\\:region").removeClass("requiredfield");
+            }
+            
+            unsetAllError(jQuery("#order_review_form"));
+            var flag = validatefields(jQuery("#order_review_form"));
+            if(jQuery("#shipping\\:postcode").val() != "")
+            {
+                if(!validateZip(jQuery("#shipping\\:postcode").val()))
+                {
+                    flag = false;
+                    setOnError(jQuery("#shipping\\:postcode"), "Invalid Zip Code.");
+                }
+            }
+            if(jQuery("#billing\\:postcode").val() != "")
+            {
+                if(!validateZip(jQuery("#billing\\:postcode").val()))
+                {
+                    flag = false;
+                    setOnError(jQuery("#billing\\:postcode"), "Invalid Zip Code.");
+                }
+            }
+            
+            if(jQuery('input:radio[name="shipping_method"]:checked').length > 0)
+                    {                    
+                        jQuery("#chooseshippingmethod").hide();                    
+                    }else
+                    {
+                        jQuery("#chooseshippingmethod").show();
+                    }    
+                
+            }, 500);
+        }
         
                
         return flag;
