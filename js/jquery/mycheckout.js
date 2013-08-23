@@ -114,6 +114,8 @@ jQuery(document).ready(function($){
                 else            
                     CreateStripeToken();   
             }
+            else
+                savePayment();
         }
         return false;
     });
