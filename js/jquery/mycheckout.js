@@ -1,3 +1,4 @@
+_stripecheck = false;
 _usesecureurl = true;
 jQuery(document).ready(function($){
     //if($("div#checkout div:nth-child(2)").html().indexOf("support@intellectlabs.com") > 0)
@@ -106,10 +107,15 @@ jQuery(document).ready(function($){
             _ischeckoutprocessing = true;
             jQuery("#payment_form input[type=submit]").hide();
             jQuery("#payment_form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/checkout/checkout-loader.gif' />");
-            if(jQuery("#payment_form input[type='text']").length == 0)
+            if(_stripecheck)
+            {
+                if(jQuery("#payment_form input[type='text']").length == 0)
+                    savePayment();
+                else            
+                    CreateStripeToken();   
+            }
+            else
                 savePayment();
-            else            
-                CreateStripeToken();
         }
         return false;
     });
@@ -329,10 +335,10 @@ function reordersteps(stp)
 
 function validatePaymentForm()
 {
-    var stripecheck = false;
+    _stripecheck = false;
     if(jQuery("#payment_form input.paymethod").length == 0)
     {
-        stripecheck = true;
+        _stripecheck = true;
     }
     else
     {
@@ -343,10 +349,10 @@ function validatePaymentForm()
         }
         if(jQuery("#payment_form input.paymethod:checked").val() == "stripe")
         {
-            stripecheck = true;
+            _stripecheck = true;
         }
     }
-    if(stripecheck)
+    if(_stripecheck)
     {
         unsetAllError(jQuery("#payment_form"));
         if(jQuery("#stripe-update-payment").length > 0 && jQuery("#stripe-update-payment").hasClass('use'))
