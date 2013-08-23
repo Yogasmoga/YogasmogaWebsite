@@ -4065,3 +4065,13 @@ body.paypal-express-review #order_review_form .buttons-set-order .please-wait {
     right: 0;
     top: 0;
 }
+
+body.checkout-cart-index #paypalcontainerdiv p.paypal-logo
+{
+    margin-right: 70px;
+}
+
+body.checkout-onepage-index #change-stripe-detail,body.checkout-onepage-index #stripe-payment-details,body.checkout-onepage-index a#stripe-update-payment
+{
+    margin-left: 20px;
+}
