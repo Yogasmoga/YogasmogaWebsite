@@ -3233,13 +3233,13 @@ body.checkout-onepage-index table.data-table td {
 a.edit
 {
     color: #D90D3D;
-    font-family: HelvLightRegular;
-    font-size:12px !important;
-    text-transform: none !important;
-    font-weight: bold !important;
+    font-family: gotham-m,arial;
+    font-size: 12px;
+    margin-left: 5px;
+    font-weight: inherit  ;
     text-decoration: underline;
-    letter-spacing: 0em !important;
-    margin-left:5px;
+    text-transform: none;
+    letter-spacing: 0em;
 }
 
 body.paypal-express-review #order_review_form fieldset#shipping-method-container div label strong
@@ -3295,3 +3295,12 @@ body.checkout-cart-index div.promo-section div.discount
     border-bottom: none !important;
 }
 
+body.paypal-express-review #order_review_form button#review_button
+{
+    margin-bottom:5px;
+}
+
+body.paypal-express-review table.data-table tfoot tr td:first-of-type
+{
+    text-transform: uppercase !important;
+}

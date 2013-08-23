@@ -317,7 +317,29 @@ OrderReviewController.prototype = {
     {
         /*alert("abc");
         alert($j("#shipping-method-container").css("display"));  */  
-        //alert("validation");          
+        //alert("validation");         
+        if(jQuery("#shipping\\:region_id").css("display") == "none")
+        {
+            jQuery("#shipping\\:region_id").removeClass("requiredfield");
+            jQuery("#shipping\\:region").addClass("requiredfield");
+        }
+        else
+        {
+            jQuery("#shipping\\:region_id").addClass("requiredfield");
+            jQuery("#shipping\\:region").removeClass("requiredfield");
+        }
+        
+        if(jQuery("#billing\\:region_id").css("display") == "none")
+        {
+            jQuery("#billing\\:region_id").removeClass("requiredfield");
+            jQuery("#billing\\:region").addClass("requiredfield");
+        }
+        else
+        {
+            jQuery("#billing\\:region_id").addClass("requiredfield");
+            jQuery("#billing\\:region").removeClass("requiredfield");
+        }
+        
         if (!this.formValidator) {
             this.formValidator = new Validation(this.form);
         }
@@ -346,24 +368,8 @@ OrderReviewController.prototype = {
                 }else
                 {
                     jQuery("#chooseshippingmethod").show();
-                    }
-        /*if ($j("#shipping-method-container").css("display")== "block")
-        {
-            if(jQuery('input:radio[name="shipping_method"]:checked').length > 0)
-                {
-                    jQuery("#shippingmethoderrormsg").html("");
-                    jQuery("#chooseshippingmethod").html("");
-                    //saveShippingMethod(); 
-                }
-                else
-                {
-                    //jQuery("#addresserrormsg").html("Please Choose a Shipping Method.");
-                    alert("select one");                                       
-                }
-        return false;
+                }                
         
-        }*/
-          
                
         return flag;
     
