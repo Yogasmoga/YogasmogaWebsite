@@ -499,6 +499,10 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
     /**
      * Initialize coupon
      */
+     
+     /**
+        Magehack : adding a constant string to the error messages so that it can be determined if the error message is for the discount coupon code.
+     */
     public function couponPostAction()
     {
         /**
@@ -534,7 +538,7 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
                 }
                 else {
                     $this->_getSession()->addError(
-                        $this->__('Coupon code "%s" is not valid.', Mage::helper('core')->htmlEscape($couponCode))
+                        $this->__('cpnerror-msgCoupon code "%s" is not valid.', Mage::helper('core')->htmlEscape($couponCode))
                     );
                 }
             } else {
@@ -542,9 +546,9 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
             }
 
         } catch (Mage_Core_Exception $e) {
-            $this->_getSession()->addError($e->getMessage());
+            $this->_getSession()->addError("cpnerror-msg".$e->getMessage());
         } catch (Exception $e) {
-            $this->_getSession()->addError($this->__('Cannot apply the coupon code.'));
+            $this->_getSession()->addError($this->__('cpnerror-msgCannot apply the coupon code.'));
             Mage::logException($e);
         }
 

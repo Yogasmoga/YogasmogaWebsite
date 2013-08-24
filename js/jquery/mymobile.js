@@ -121,11 +121,16 @@ if($j("ul.messages li.error-msg span").length > 0)
         msg = msg.replace("gferror--msg","");
         $j("#giftcard-form table.gfredeem div.ershow").html(msg);
     }
-    else
+    else if(msg.indexOf("cpnerror-msg") >= 0)
     {
+        msg = msg.replace("cpnerror-msg","");
         msg = msg.replace("Coupon","Promotion");
         $j("#discount-coupon-form div.errortext").html(msg);
-    }    
+    }
+    else
+    {
+        $j("#paypalerrormsg.errortext").html(msg);
+    }
 }
 
 //$j("#giftcard-form table.gfredeem div.ershow").html($j("ul.messages li.error-msg span").html());

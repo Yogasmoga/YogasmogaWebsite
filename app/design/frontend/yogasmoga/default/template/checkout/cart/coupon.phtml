@@ -79,7 +79,7 @@
                                         <td colspan="2" class="errortext">
                                             <div
                                                  <?php
-                                                    if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false && strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"gferror--msg") == false)
+                                                    if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false && strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"cpnerror-msg") !== false)
                                                     {
                                                         ?>
                                                             style="display: block;"
@@ -88,10 +88,12 @@
                                                 ?>
                                             >
                                                 <?php
-                                                    if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false && strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"gferror--msg") == false)
+                                                    if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false && strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"cpnerror-msg") !== false)
                                                     {
                                                         ?>
-                                                            <?php echo strip_tags(Mage::getSingleton('core/session')->getGlobalMessage()); ?>            
+                                                            <?php //echo strip_tags(Mage::getSingleton('core/session')->getGlobalMessage());
+                                                                echo str_replace("cpnerror-msg","", strip_tags(Mage::getSingleton('core/session')->getGlobalMessage()));
+                                                             ?>            
                                                         <?php
                                                     }
                                                 ?>
