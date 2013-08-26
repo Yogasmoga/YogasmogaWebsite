@@ -65,7 +65,7 @@ For checkout/onepage/shipping.phtml:
         <tr>
             <td class="label"><label for="<?php echo $this->getFieldId('firstname')?>"><?php echo $this->getStoreLabel('firstname') ?></label></td>
             <td class="inputholder">
-                <input type="text" id="<?php echo $this->getFieldId('firstname')?>" name="<?php echo $this->getFieldName('firstname')?>" value="<?php echo $this->escapeHtml($this->getObject()->getFirstname()) ?>" maxlength="255" class="requiredfield" <?php echo $this->getFieldParams() ?> />
+                <input type="text" id="<?php echo $this->getFieldId('firstname')?>" name="<?php echo $this->getFieldName('firstname')?>" value="<?php echo $this->escapeHtml($this->getObject()->getFirstname()) ?>" maxlength="255" class="requiredfield no-bg" <?php echo $this->getFieldParams() ?> />
             </td>
         </tr>
         <tr>
@@ -95,7 +95,7 @@ For checkout/onepage/shipping.phtml:
         <tr>
             <td class="label"><label for="<?php echo $this->getFieldId('lastname')?>"><?php echo $this->getStoreLabel('lastname'); ?></label></td>
             <td class="inputholder">
-                <input type="text" id="<?php echo $this->getFieldId('lastname')?>" name="<?php echo $this->getFieldName('lastname')?>" value="<?php echo $this->escapeHtml($this->getObject()->getLastname()) ?>" maxlength="255" class="requiredfield" <?php echo $this->getFieldParams() ?> />
+                <input type="text" id="<?php echo $this->getFieldId('lastname')?>" name="<?php echo $this->getFieldName('lastname')?>" value="<?php echo $this->escapeHtml($this->getObject()->getLastname()) ?>" maxlength="255" class="requiredfield no-bg" <?php echo $this->getFieldParams() ?> />
             </td>
         </tr>
         <tr>

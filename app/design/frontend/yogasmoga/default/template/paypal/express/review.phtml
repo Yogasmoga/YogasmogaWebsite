@@ -43,7 +43,7 @@ $shippingAddress = $this->getShippingAddress();
 <div class="paypal-review-order">
     <form method="post" id="order_review_form" action="<?php echo $this->getPlaceOrderUrl() ?>">
     <?php if(!$billingBlock->isCustomerLoggedIn()): ?>
-        <div class="info-set col2-set">
+        <div class="info-set col2-set fixwidth no-padding">
             <h2 class="cust-info-head"><?php echo $this->__('Customer Information') ?></h2>
             <ul class="form-list form-list-narrow">
                 <li id="customer-info-form" class="address-form">

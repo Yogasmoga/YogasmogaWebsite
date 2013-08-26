@@ -4086,7 +4086,7 @@ body.checkout-onepage-index #change-stripe-detail,body.checkout-onepage-index #s
 
 body.paypal-express-review #customer-info-form table.cust-info
 {
-    margin-left: 177px;    
+    margin-left: 0 !important;        
 }
 body.paypal-express-review #customer-info-form table.cust-info input
 {
@@ -4097,7 +4097,7 @@ body.paypal-express-review h2.cust-info-head
 {
     font-family: gothambook;
     font-size: 18px;
-    margin: -20px 0 15px 177px;
+    /*margin: -20px 0 15px 177px;*/
     padding: 5px 0;
     position: relative;
     text-transform: uppercase;
