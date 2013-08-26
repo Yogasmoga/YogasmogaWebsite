@@ -31,6 +31,11 @@
  * @see Mage_Checkout_Block_Onepage_Payment_Methods
  */
 ?>
+<?php
+    $quote = Mage::helper('checkout')->getQuote()->getData();
+    $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+    $grandtotal = $totals["grand_total"]->getValue(); //Grandtotal value
+?>
 <dl class="sp-methods" id="checkout-payment-method-load">
 <?php
     $methods = $this->getMethods();
@@ -42,6 +47,7 @@
 ?>
     <dt>
     <?php if(!$oneMethod): ?>
+        <?php if($grandtotal <= 0) continue; ?>
         <input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" title="<?php echo $this->htmlEscape($_method->getTitle()) ?>" onclick="payment.switchMethod('<?php echo $_code ?>')"<?php if($this->getSelectedMethodCode()==$_code): ?> checked="checked"<?php endif; ?> class="radio" />
     <?php else: ?>
         <span class="no-display"><input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" checked="checked" class="radio" /></span>
@@ -55,6 +61,17 @@
     </dd>
     <?php endif; ?>
 <?php endforeach; ?>
+<?php
+    if($grandtotal <= 0 && !$oneMethod)
+    {
+       $_code = "free"; 
+        ?>
+        <span class="no-display"><input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" checked="checked" class="radio" /></span>
+        <label>No Payment Information Required.</label>
+        <?php
+    }
+ ?>
+
 </dl>
 <?php echo $this->getChildChildHtml('additional'); ?>
 <script type="text/javascript">
