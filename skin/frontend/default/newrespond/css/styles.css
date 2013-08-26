@@ -3310,3 +3310,9 @@ body.paypal-express-review ul.cust-email
     width:99%;
     margin-left: 3px;
 }
+
+body.checkout-onepage-index #co-payment-form dt a
+{
+    color:#D90D3D !important;
+    text-decoration: underline !important;
+}
