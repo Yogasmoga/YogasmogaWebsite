@@ -100,6 +100,11 @@ jQuery(document).ready(function($){
     });
     
     $("#payment_form").live('submit', function(){
+        if(jQuery("#payment_form input[value='free']").length > 0)
+        {
+            savePayment();
+            return false;
+        }
         if(validatePaymentForm())
         {
             if(_ischeckoutprocessing)

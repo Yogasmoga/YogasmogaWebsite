@@ -31,8 +31,77 @@
  * @see Mage_Checkout_Block_Onepage_Payment_Methods
  */
 ?>
+<?php /*
 
 <form id="payment_form" action="">
+<?php
+    $quote = Mage::helper('checkout')->getQuote()->getData();
+    $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+    $grandtotal = $totals["grand_total"]->getValue(); //Grandtotal value
+    if($grandtotal <= 0)
+    {
+        ?>
+        <div>No Payment Information required.</div>
+        <input style="margin-bottom: 20px;" type="submit" value="" class="loginbtn spbutton custombtn checkoutcontinuebtn" name="send" downimageurl="<?php echo $this->getSkinUrl('images/checkout/continue_on.png'); ?>" imageurl="<?php echo $this->getSkinUrl('images/checkout/continue_off.png'); ?>" />
+        <div style="clear: both;"></div>
+        <?php
+    }
+    else
+    {
+        ?>
+        
+        <?php
+            $methods = $this->getMethods();
+            $oneMethod = count($methods) <= 1;
+        ?>
+        <?php
+            foreach ($methods as $_method):
+                $_code = $_method->getCode();
+        ?>
+            <?php if(!$oneMethod): ?>
+                <div class="paymentmethoddiv">
+                <input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" title="<?php echo $this->htmlEscape($_method->getTitle()) ?>" onclick="payment.switchMethod('<?php echo $_code ?>')"<?php if($this->getSelectedMethodCode()==$_code): ?> checked="checked"<?php endif; ?> class="radio paymethod" />
+                <label for="p_method_<?php echo $_code ?>"><?php echo $this->escapeHtml($this->getMethodTitle($_method)) ?> <?php echo $this->getMethodLabelAfterHtml($_method) ?></label>
+                </div>
+            <?php else: ?>
+                <span class="no-display"><input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" checked="checked" class="radio" /></span>
+                <?php $oneMethod = $_code; ?>
+            <?php endif; ?>
+            <?php
+                $quote = Mage::helper('checkout')->getQuote()->getData();
+                $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+                $grandtotal = $totals["grand_total"]->getValue(); //Grandtotal value
+                if($grandtotal <= 0)
+                {
+                    ?>
+                    <div>No Payment Information required.</div>
+                    <input style="margin-bottom: 20px;" type="submit" value="" class="loginbtn spbutton custombtn checkoutcontinuebtn" name="send" downimageurl="<?php echo $this->getSkinUrl('images/checkout/continue_on.png'); ?>" imageurl="<?php echo $this->getSkinUrl('images/checkout/continue_off.png'); ?>" />
+                    <div style="clear: both;"></div>
+                    <?php
+                }
+            ?>
+            <?php if ($html = $this->getPaymentMethodFormHtml($_method)): ?>
+            <div>
+                <?php echo $html; ?>
+            </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        
+        <?php
+    }
+?>
+</form>
+
+<?php return; ?>
+
+*/ ?>
+
+<form id="payment_form" action="">
+<?php
+    $quote = Mage::helper('checkout')->getQuote()->getData();
+    $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+    $grandtotal = $totals["grand_total"]->getValue(); //Grandtotal value
+?>
 <?php
     $methods = $this->getMethods();
     $oneMethod = count($methods) <= 1;
@@ -42,6 +111,7 @@
         $_code = $_method->getCode();
 ?>
     <?php if(!$oneMethod): ?>
+        <?php if($grandtotal <= 0) continue; ?>
         <div class="paymentmethoddiv">
         <input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" title="<?php echo $this->htmlEscape($_method->getTitle()) ?>" onclick="payment.switchMethod('<?php echo $_code ?>')"<?php if($this->getSelectedMethodCode()==$_code): ?> checked="checked"<?php endif; ?> class="radio paymethod" />
         <label for="p_method_<?php echo $_code ?>"><?php echo $this->escapeHtml($this->getMethodTitle($_method)) ?> <?php echo $this->getMethodLabelAfterHtml($_method) ?></label>
@@ -50,10 +120,7 @@
         <span class="no-display"><input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" checked="checked" class="radio" /></span>
         <?php $oneMethod = $_code; ?>
     <?php endif; ?>
-    <?php
-        $quote = Mage::helper('checkout')->getQuote()->getData();
-        $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
-        $grandtotal = $totals["grand_total"]->getValue(); //Grandtotal value
+    <?php        
         if($grandtotal <= 0)
         {
             ?>
@@ -69,6 +136,18 @@
     </div>
     <?php endif; ?>
 <?php endforeach; ?>
+<?php
+    if($grandtotal <= 0 && !$oneMethod)
+    {
+        $_code = "free";
+        ?>
+        <span class="no-display"><input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" checked="checked" class="radio" /></span>
+        <div>No Payment Information required.</div>
+        <input style="margin-bottom: 20px;" type="submit" value="" class="loginbtn spbutton custombtn checkoutcontinuebtn" name="send" downimageurl="<?php echo $this->getSkinUrl('images/checkout/continue_on.png'); ?>" imageurl="<?php echo $this->getSkinUrl('images/checkout/continue_off.png'); ?>" />
+        <div style="clear: both;"></div>
+        <?php
+    }
+?>
 </form>
 <?php echo $this->getChildChildHtml('additional'); ?>
 <script type="text/javascript">
