@@ -3912,6 +3912,7 @@ body.paypal-express-review #details-table tbody tr td h3.product-name
 {
     color: black !important;
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .info-set1 h2.legend1
@@ -4100,4 +4101,10 @@ body.paypal-express-review h2.cust-info-head
     padding: 5px 0;
     position: relative;
     text-transform: uppercase;
+}
+
+body.checkout-onepage-index div.paymentmethoddiv a
+{
+    color:#D90D3D;
+    text-decoration: underline;
 }
