@@ -3887,17 +3887,23 @@ body.paypal-express-review div.page-title
 {
     margin-bottom: 45px;
 }
-body.paypal-express-review #details-table 
-{
-    text-transform: uppercase;
-}
+
 
 body.paypal-express-review #details-table tr th
 {
     font-weight: normal;
     font-family: gothamlight;
-    font-size: 13px;
-    
+    font-size: 13px;    
+}
+
+body.paypal-express-review table#details-table tfoot tr.first td.p-top
+{  
+    padding-top: 20px;
+}
+
+body.paypal-express-review div#checkout-buttons .buttons-set-order
+{
+    margin-top: 20px;
 }
 
 
@@ -3905,6 +3911,7 @@ body.paypal-express-review #details-table tr th
 body.paypal-express-review #details-table tbody tr td h3.product-name
 {
     color: black !important;
+    font-weight: bold;
 }
 
 .info-set1 h2.legend1
