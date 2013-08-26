@@ -3304,3 +3304,9 @@ body.paypal-express-review table.data-table tfoot tr td:first-of-type
 {
     text-transform: uppercase !important;
 }
+
+body.paypal-express-review ul.cust-email
+{
+    width:99%;
+    margin-left: 3px;
+}
