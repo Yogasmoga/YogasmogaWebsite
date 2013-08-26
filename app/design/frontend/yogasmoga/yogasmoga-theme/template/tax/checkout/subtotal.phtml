@@ -47,10 +47,10 @@
 </tr>
 <?php else : ?>
 <tr>
-    <td style="<?php echo $this->getStyle() ?>" class="a-right" colspan="<?php echo $this->getColspan(); ?>">
+    <td style="<?php echo $this->getStyle() ?>" class="a-right p-top" colspan="<?php echo $this->getColspan(); ?>">
         <?php echo $this->helper('tax')->__('Shopping Bag Subtotal') ?>
     </td>
-    <td style="<?php echo $this->getStyle() ?>" class="a-right">
+    <td style="<?php echo $this->getStyle() ?>" class="a-right p-top">
         <?php echo $this->helper('checkout')->formatPrice($this->getTotal()->getValue()) ?>
     </td>
 </tr>
