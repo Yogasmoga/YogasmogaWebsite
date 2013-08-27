@@ -4034,6 +4034,12 @@ body.paypal-express-review #order_review_form button#update_order:active span
 {
     background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/update_order_on.png") no-repeat scroll 0 0 ;  
 }
+
+body.paypal-express-review #order_review_form button.no-checkout#update_order:active span
+{
+    background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/update_order_off.png") no-repeat scroll 0 0 ;
+}
+
 body.paypal-express-review #order_review_form button#review_button span
 {
     background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/place_order_off.png") no-repeat scroll 0 0 ;
@@ -4044,9 +4050,15 @@ body.paypal-express-review #order_review_form button#review_button span
     padding: 0;
     text-indent: -999em;    
 }
+
 body.paypal-express-review #order_review_form button#review_button:active span
 {
     background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/place_order_on.png") no-repeat scroll 0 0 ;    
+}
+
+body.paypal-express-review #order_review_form button.no-checkout#review_button:active span
+{
+    background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/place_order_off.png") no-repeat scroll 0 0 ; 
 }
 
 .no-bg
@@ -4107,4 +4119,9 @@ body.checkout-onepage-index div.paymentmethoddiv a
 {
     color:#D90D3D;
     text-decoration: underline;
+}
+
+body.checkout-onepage-index li.form-alt
+{
+    margin-left:20px;
 }
