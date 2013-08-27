@@ -1,12 +1,13 @@
-jQuery(document).ready(function($){
-    
+jQuery(document).ready(function($){  
+        
     setTimeout(function(){
         jQuery("input[type='radio'][name='shipping_method']").click(function(){ 
             jQuery("#update_order").trigger('click');                        
             jQuery("#chooseshippingmethod").hide();                        
             }); 
-    }, 500);            
+    }, 500);    
 });
+ 
 
 function setOnError(element, errormsg)
 {
