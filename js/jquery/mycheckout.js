@@ -177,14 +177,39 @@ jQuery(document).ready(function($){
            
     jQuery("input[type='radio'][value='paypal_express']").live('click', function(){            
             jQuery("ul#payment_form_paypal_express").show();
-            jQuery("div#stripe-payment-details,a#stripe-update-payment,div#change-stripe-detail").hide();            
-                    
+            jQuery("div#stripe-payment-details,a#stripe-update-payment,div#change-stripe-detail").hide(); 
     });
     jQuery("input[type='radio'][value='stripe']").live('click', function(){ 
-            jQuery("div#stripe-payment-details,a#stripe-update-payment").show();
+            //jQuery("div#stripe-payment-details,a#stripe-update-payment").show();
             jQuery("ul#payment_form_paypal_express").hide(); 
-            jQuery("#stripe-update-payment").addClass('use').html('Change Payment Information');   
+            //jQuery("#stripe-update-payment").addClass('use').html('Change Payment Information');  
+            jQuery("a#stripe-update-payment").show();
+            if(jQuery("a#stripe-update-payment").length == 0)
+            {
+                jQuery("div#change-stripe-detail").show();
+            }
+            else
+            {
+                if(jQuery("a#stripe-update-payment").hasClass("unuse"))
+                    jQuery("div#change-stripe-detail").show();
+                else
+                    jQuery("div#stripe-payment-details").show();            
+            }        
+            
+            
+             
     }); 
+    
+    
+    
+    //if(jQuery("a#stripe-update-payment").length > 0 && jQuery("a#stripe-update-payment").hasClass("unuse"))
+//    {
+//        jQuery("div#change-stripe-detail").show();        
+//    }else
+//    {        
+//        jQuery("div#stripe-payment-details").show(); 
+//    }
+    
 });
 
 function checkbillingnewaddress()
