@@ -24,11 +24,31 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<?php
+ 
+    /**
+     * Get the resource model
+     */
+    $resource = Mage::getSingleton('core/resource');
+     
+    /**
+     * Retrieve the read connection
+     */
+    $readConnection = $resource->getConnection('core_read');
+ 
+    /**
+     * Retrieve our table name
+     */
+    $table = $resource->getTableName('sales_flat_order_item');
+     
+    
+?>
 <?php if ($_item = $this->getItem()): ?>
 <table cellspacing="0" class="qty-table">
     <tr>
         <td><?php echo Mage::helper('sales')->__('Ordered') ?></td>
         <td><strong><?php echo $_item->getQtyOrdered()*1 ?></strong></td>
+        
     </tr>
     <?php if ((float) $_item->getQtyInvoiced()): ?>
     <tr>
@@ -54,5 +74,27 @@
         <td><strong><?php echo $_item->getQtyCanceled()*1 ?></strong></td>
     </tr>
     <?php endif; ?>
+	<?php 
+	
+	
+   
+    $query = 'SELECT qty_backordered FROM ' . $table . ' WHERE order_id = ' . (int)$_item->getOrderId() . ' AND parent_item_id = '.(int)$_item->getItemId()  . ' AND qty_backordered is not NULL ' ;
+     
+    /**
+     * Execute the query and store the result in $sku
+     */
+    $backordered = $readConnection->fetchOne($query);
+     
+      
+	?>
+	<?php if ((int)$backordered): ?>
+    <tr>
+        <td><?php echo Mage::helper('sales')->__('PreOrdered') ?></td>
+        <td><strong><?php echo (int)$backordered  ?></strong></td>
+    </tr>
+    <?php endif; ?>
+	
+	
+	
 </table>
 <?php endif; ?>
