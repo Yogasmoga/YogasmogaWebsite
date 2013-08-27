@@ -4094,6 +4094,7 @@ body.checkout-cart-index #paypalcontainerdiv p.paypal-logo
 body.checkout-onepage-index #change-stripe-detail,body.checkout-onepage-index #stripe-payment-details,body.checkout-onepage-index a#stripe-update-payment
 {
     margin-left: 20px;
+    display: none;    
 }
 
 body.paypal-express-review #customer-info-form table.cust-info
