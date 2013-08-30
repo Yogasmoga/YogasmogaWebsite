@@ -4192,6 +4192,11 @@ body.sales-order-printshipment tbody.odd, body.sales-order-printshipment .data-t
     background: none !important;
 }
 
+body.sales-order-printshipment tbody.even, body.sales-order-printshipment .data-table tbody.even tr
+{
+    background: none !important;
+}
+
 .no-wrap
 {
     white-space: nowrap;
