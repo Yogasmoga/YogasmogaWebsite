@@ -4191,3 +4191,8 @@ body.sales-order-printshipment tbody.odd, body.sales-order-printshipment .data-t
 {
     background: none !important;
 }
+
+.no-wrap
+{
+    white-space: nowrap;
+}
