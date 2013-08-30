@@ -58,6 +58,11 @@
 <table id="order-links">
     <tr>
         <td>
+            <strong>Order No.</strong><?php echo $_order->getRealOrderId(); ?> (<?php echo $_order->getStatusLabel(); ?>)
+        </td>
+    </tr>
+    <tr>
+        <td>
             <?php echo $this->__('<strong>Order Date</strong>: %s', $this->formatDate($_order->getCreatedAtStoreDate(), 'long')) ?>
         </td>
         <td class="links">
@@ -66,7 +71,8 @@
                     <ul>
                         <?php foreach ($_links as $_link): ?>
                                 <?php
-                                    if($this->getRequest()->getParam('shippinginfo') == "true")
+                                    //if($this->getRequest()->getParam('shippinginfo') == "true")
+                                    if(true)
                                     {
                                         if(strcasecmp($_link->getLabel(), "invoices") == 0 || strcasecmp($_link->getLabel(), "reorder") == 0)
                                             continue;
