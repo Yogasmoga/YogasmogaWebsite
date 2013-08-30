@@ -556,7 +556,7 @@ select.qtyselector{border-bottom:0px solid #333;}
 .link-wishlist { color:#dc6809 !important; font-weight:bold; }
 /*.link-reorder { font-weight:bold; color:#d90d3d !important; }*/
 .link-compare { font-weight:bold; }
-.link-print { /*background:url(../images/i_print.gif) 0 2px no-repeat; padding:2px 0 2px 25px;*/ font-weight:bold; color:#dc6809; }
+.link-print{ /*background:url(../images/i_print.gif) 0 2px no-repeat; padding:2px 0 2px 25px;*/ font-weight:bold; color:#dc6809; }
 .link-rss { background:url(../images/i_rss.gif) 0 2px no-repeat; padding-left:18px; line-height:14px; white-space:nowrap; }
 .btn-remove  { display:block; width:11px; height:11px; font-size:0; line-height:0; background:url(../images/btn_remove.gif) 0 0 no-repeat; text-indent:-999em; overflow:hidden; }
 .btn-previous  { display:block; width:11px; height:11px; font-size:0; line-height:0; background:url(../images/btn_previous.gif) 0 0 no-repeat; text-indent:-999em; overflow:hidden; }
@@ -4063,7 +4063,7 @@ body.paypal-express-review #order_review_form button.no-checkout#review_button:a
 
 .no-bg
 {
-    background:none;
+    background:none !important;
 }
 
 body.paypal-express-review #order_review_form .buttons-set-order .please-wait {
@@ -4125,4 +4125,69 @@ body.checkout-onepage-index div.paymentmethoddiv a
 body.checkout-onepage-index li.form-alt
 {
     margin-left:20px;
+}
+
+body.sales-order-shipment .data-table.ys
+{
+    border-spacing: 0 !important;
+}
+
+body.sales-order-shipment .data-table.ys tbody.odd td
+{
+     vertical-align: top;
+     background-color: none !important;
+     border-bottom: 1px solid black; 
+     padding: 15px 10px 0;        
+}
+body.sales-order-shipment .data-table.ys thead tr.last th, body.sales-order-shipment table.tracking-table tr th.label
+{
+    padding: 15px 10px 0;
+}
+body.sales-order-shipment .data-table.ys tbody.odd td h4.product-name
+{
+    color: black !important;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+body.sales-order-shipment table.tracking-table tr td
+{
+    border-bottom: none !important;
+    padding: 15px 10px 0;
+}
+
+body.sales-order-shipment table.tracking-table tr td a
+{
+    font-family:gothambook; 
+}
+
+.link-track
+{
+    color: #D90D3D;
+    font-weight: normal;
+}
+
+body.sales-order-shipment .data-table.odd, body.sales-order-shipment .data-table tbody.odd tr
+{
+    background: none !important;
+}
+
+body.sales-order-printshipment .data-table.ys1
+{     
+    min-width: 500px; 
+}
+body.sales-order-printshipment .data-table.ys
+{
+ border-spacing: 0 !important;
+}
+
+body.sales-order-printshipment .data-table.ys1 tr.odd td
+{
+    border:none !important;
+    padding-top: 3px !important;    
+}
+
+body.sales-order-printshipment tbody.odd, body.sales-order-printshipment .data-table tbody.odd tr
+{
+    background: none !important;
 }
