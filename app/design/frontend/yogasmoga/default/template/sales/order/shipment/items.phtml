@@ -35,7 +35,7 @@
 <h2 class="sub-title"><?php echo $this->__('Shipment #') ?><?php echo $_shipment->getIncrementId(); ?> <span class="separator">|</span> <a href="<?php echo $this->getPrintShipmentUrl($_shipment) ?>" onclick="this.target='_blank'" class="link-print"><?php echo $this->__('Print Shipment') ?></a></h2>
 <?php $tracks = $_shipment->getTracksCollection(); ?>
 <?php  if ($tracks->count()): ?>
-    <table class="data-table tracking-table" id="my-tracking-table-<?php echo $_shipment->getId(); ?>">
+    <table class="data-table tracking-table ys" id="my-tracking-table-<?php echo $_shipment->getId(); ?>">
         <tbody>
             <tr>
                 <td colspan="2">
@@ -64,7 +64,7 @@
     <script type="text/javascript">decorateTable('my-tracking-table-<?php echo $_shipment->getId(); ?>')</script>
 <?php  endif; ?>
 <h3 class="table-caption"><?php echo $this->__('Items Shipped') ?></h3>
-<table class="data-table" id="my-shipment-table-<?php echo $_shipment->getId(); ?>">
+<table class="data-table ys" id="my-shipment-table-<?php echo $_shipment->getId(); ?>">
     <col />
     <col width="1" />
     <col width="1" />
@@ -79,7 +79,7 @@
     <?php $_count = count($_items) ?>
     <?php foreach ($_items as $_item): ?>
     <?php if ($_item->getOrderItem()->getParentItem()) continue; ?>
-    <tbody>
+    <tbody class="no-bg">
         <?php echo $this->getItemHtml($_item) ?>
     </tbody>
     <?php endforeach; ?>
