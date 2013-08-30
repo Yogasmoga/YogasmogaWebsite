@@ -4139,6 +4139,11 @@ body.sales-order-shipment .data-table.ys tbody.odd td
      border-bottom: 1px solid black; 
      padding: 15px 10px 0;        
 }
+
+body.sales-order-shipment .data-table.ys tbody.even td
+{
+    vertical-align: top;
+}
 body.sales-order-shipment .data-table.ys thead tr.last th, body.sales-order-shipment table.tracking-table tr th.label
 {
     padding: 15px 10px 0;
@@ -4168,6 +4173,11 @@ body.sales-order-shipment table.tracking-table tr td a
 }
 
 body.sales-order-shipment .data-table.odd, body.sales-order-shipment .data-table tbody.odd tr
+{
+    background: none !important;
+}
+
+body.sales-order-shipment .data-table.even, body.sales-order-shipment .data-table tbody.even tr
 {
     background: none !important;
 }
