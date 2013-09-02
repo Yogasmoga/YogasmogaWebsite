@@ -63,6 +63,7 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
 				'`sales/order_item`.order_id=`main_table`.entity_id',
 				array(
 					'qty_backordered'  => new Zend_Db_Expr('group_concat(`sales/order_item`.qty_backordered SEPARATOR ",")'), 
+					'parent_item_id'  => new Zend_Db_Expr('group_concat(`sales/order_item`.parent_item_id SEPARATOR ",")'), 
 					
 					)
         );
@@ -242,19 +243,11 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
 	{
 		if ($column->getId() == 'qty_backordered' && ( strtolower($column->getFilter()->getValue())=='yes'))
 		{
-			$val        = strtolower($column->getFilter()->getValue());
-			$comparison = ($val === "yes") ? 'lteq' : 'gt'; // lteg: <=; gt: >
+			//$val        = strtolower($column->getFilter()->getValue());
+			//$comparison = ($val === "yes") ? 'gteq' : 'gt'; // lteg: <=; gt: >
 
-			$this->getCollection()->addFieldToFilter('qty_backordered', array($comparison => 1));
+			$this->getCollection()->addFieldToFilter('qty_backordered', array('neq' => 'null' ));
 		} 
-		elseif ($column->getId() == 'qty_backordered' && ( strtolower($column->getFilter()->getValue())=='no'))
-		{
-			$val        = strtolower($column->getFilter()->getValue());
-			$comparison = ($val === "no") ? 'eq' : 'lt'; // lteg: <=; gt: >
-
-			$this->getCollection()->addFieldToFilter('qty_backordered', array('null' => true));
-		}	
-			
 		else
 		{
 			parent::_addColumnFilterToCollection($column);
