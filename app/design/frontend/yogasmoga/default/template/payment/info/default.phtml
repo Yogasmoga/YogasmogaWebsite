@@ -31,18 +31,17 @@
 ?>
 
 <?php if ($_specificInfo = $this->getSpecificInformation()):?>
-<table>
+<table cellspacing="0">
     <tbody>
     <?php foreach ($_specificInfo as $_label => $_value):?>
         <?php
             if(strcasecmp($this->escapeHtml($_label),'saved card') == 0)
                 continue;
         ?>
-        <tr>
-            <td>
-                <strong><?php echo $this->escapeHtml($_label)?>:</strong>&nbsp;<?php echo nl2br(implode($this->getValueAsArray($_value, true), "\n"))?>
-            </td>
-        </tr>
+        <p style="margin:0 0 10px;"><span style="text-transform:uppercase;">
+            <?php echo strtoupper($this->escapeHtml($_label)) ?>:&nbsp;<?php echo nl2br(implode($this->getValueAsArray($_value, true), "\n"))?>        
+        </span></p>
+        
     <?php endforeach; ?>
     </tbody>
 </table>

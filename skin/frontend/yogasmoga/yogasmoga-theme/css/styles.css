@@ -464,7 +464,7 @@ p.required { font-size:11px; text-align:right; color:#D90d3d; }
 .data-table tbody.odd tr td,
 .data-table tbody.even tr td { border-bottom:0; }
 .data-table tbody.odd tr.border td,
-.data-table tbody.even tr.border td { border-bottom:1px solid #d9dde3; }
+.data-table tbody.even tr.border td { border-bottom:1px solid black; }
 
 .data-table tbody td .option-label { font-weight:bold; font-style:italic; }
 .data-table tbody td .option-value { padding-left:10px; }
@@ -3497,7 +3497,7 @@ div.emptyrecord
 }
 .data-table.ys.prdetail tfoot tr.subtotal.first td
 {
-    border-top : 1px solid black;
+    /*border-top : 1px solid black;*/
     padding-top: 20px;
 }
 .data-table.ys.prdetail tfoot tr.grand_total.last td
@@ -3536,7 +3536,7 @@ table#order-links
 table#order-links td.links
 {
     font-family: gothamlight;
-    font-size: 11px;
+    font-size: 13px;
     vertical-align: bottom;
 }
 table#order-links a
@@ -4136,7 +4136,7 @@ body.sales-order-shipment .data-table.ys tbody.odd td,body.sales-order-shipment 
 {
      vertical-align: top;
      background-color: none !important;
-     border-bottom: 1px solid black; 
+     border-bottom: 1px solid black !important; 
      padding: 15px 10px 0;        
 }
 
@@ -4207,3 +4207,41 @@ body.sales-order-printshipment tbody.even, body.sales-order-printshipment .data-
 {
     white-space: nowrap;
 }
+
+body.page-print .product-name
+{
+    font-weight:bold;
+    margin-bottom: 5px;
+}
+
+div.order-info-box 
+{  
+    padding:12px 0 ;
+}
+
+div.order-info-box div.col-1, div.order-info-box div.col-2
+{
+    width:50%;
+}
+
+body.page-print button.print-button span
+{
+    background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/close_window_off.png") no-repeat scroll 0 0 ;
+    border: 0 none;
+    width:137px;
+    height: 29px;    
+    margin: 0;
+    padding: 0;
+    text-indent: -999em;
+}
+
+body.page-print button.print-button:active span
+{
+    background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/close_window_on.png");
+}
+
+body.page-print button.print-button
+{
+    margin-top:10px;
+}
+
