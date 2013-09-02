@@ -22,39 +22,40 @@ class Rewardpoints_Block_Adminhtml_Stats_Grid extends Mage_Adminhtml_Block_Widge
   {
       parent::__construct();
       $this->setId('statsGrid');
-      $this->setDefaultSort('customer_id ');
+      $this->setDefaultSort('user_id');
       $this->setDefaultDir('DESC');
       $this->setSaveParametersInSession(true);
   }
 
   protected function _prepareCollection()
   {
-      //$collection = Mage::getResourceModel('rewardpoints/customer_collection')->restrictRewardPoints()->addNameToSelect();
-      $collection = Mage::getModel('rewardpoints/stats')->getCollection()
+      /*$collection = Mage::getModel('rewardpoints/stats')->getCollection()
               ->addValidPoints(Mage::app()->getStore()->getId())
               ->addClientEntries()
-              ->showCustomerInfo();
-              /*->joinEavTablesIntoCollection('customer_id', 'customer')*/
-              //->setCountAttribute('main_table.customer_id');//->addNameToSelect();
-              //->addNameToSelect();
+              ->showCustomerInfo();*/
       
-      /*echo $collection->getSelect()->__toString();
-      die;*/
+      //$collection = Mage::getModel('rewardpoints/flatstats')->getCollection()->addClientEntries()->showCustomerInfo();
+      $collection = Mage::getResourceModel('rewardpoints/flatstats_collection');
       
+      //$collection->addFilterToMap('store_id', 'main_table.store_id');
+      $collection->addClientEntries();
+      $collection->showCustomerInfo();
       
       $this->setCollection($collection);
-      
+      /*echo $collection->getSelect()->__toString();
+      die;*/
       parent::_prepareCollection();
       return $this;      
   }
 
   protected function _prepareColumns()
   {
+      
       $this->addColumn('id', array(
             'header'    => Mage::helper('rewardpoints')->__('ID'),
             'width'     => '50px',
-            'index'     => 'customer_id',          
-            'filter_index' =>'main_table.customer_id',
+            'index'     => 'flat_account_id',          
+            'filter_index' =>'main_table.flat_account_id',
             'type'  => 'number',
         ));
 
@@ -70,11 +71,19 @@ class Rewardpoints_Block_Adminhtml_Stats_Grid extends Mage_Adminhtml_Block_Widge
           'header'    => Mage::helper('rewardpoints')->__('Customer Last Name'),
           'align'     => 'right',
           'index'     => 'customer_lastname',          
-          'filter_index' =>'customer_lastname_table.value',          
+          'filter_index' =>'customer_lastname_table.value',
       ));
       
-      
-           
+      //if (!Mage::app()->isSingleStoreMode()){
+          $this->addColumn('store_id', array(
+            'header'    => Mage::helper('rewardpoints')->__('Stores'),
+            'index'     => 'current_store_id',
+            'type'      => 'store',
+            'store_view' => true,
+            'sortable'   => false,
+            'filter_index' =>'main_table.store_id',
+        ));
+      //}
       
       $this->addColumn('email', array(
           'header'    => Mage::helper('rewardpoints')->__('Customer email'),
@@ -84,30 +93,60 @@ class Rewardpoints_Block_Adminhtml_Stats_Grid extends Mage_Adminhtml_Block_Widge
       ));
       
       
-      $this->addColumn('nb_credit', array(
+      $this->addColumn('points_collected', array(
           'header'    => Mage::helper('rewardpoints')->__('Accumulated points'),
           'align'     => 'right',
-          'index'     => 'nb_credit',
+          'index'     => 'points_collected',
           'filter'    => false,
           'width'     => '50px',
       ));
-      $this->addColumn('nb_credit_spent', array(
+      $this->addColumn('points_used', array(
           'header'    => Mage::helper('rewardpoints')->__('Spent points'),
           'align'     => 'right',
-          'index'     => 'nb_credit_spent',
+          'index'     => 'points_used',
           'filter'    => false,
           'width'     => '50px',
           //'sortable'    => false,
       ));
       
-      $this->addColumn('nb_credit_available', array(
+      $this->addColumn('points_current', array(
           'header'    => Mage::helper('rewardpoints')->__('Available points'),
           'align'     => 'right',
-          'index'     => 'nb_credit_available',
+          'index'     => 'points_current',
+          //'filter'    => false,
+          'width'     => '50px',
+          'type'      => 'number',
+          'filter_index' =>'main_table.points_current',
+          //'sortable'    => false,
+      ));
+      
+      $this->addColumn('points_lost', array(
+          'header'    => Mage::helper('rewardpoints')->__('Lost'),
+          'align'     => 'right',
+          'index'     => 'points_lost',
           'filter'    => false,
           'width'     => '50px',
           //'sortable'    => false,
       ));
+      
+      /*$this->addColumn('points_waiting', array(
+          'header'    => Mage::helper('rewardpoints')->__('Waiting for validation'),
+          'align'     => 'right',
+          'index'     => 'points_waiting',
+          'filter'    => false,
+          'width'     => '50px',
+          //'sortable'    => false,
+      ));*/
+      
+      $this->addColumn('last_check', array(
+            'header'            => Mage::helper('sales')->__('Calculation date'),
+            'index'             => 'last_check',
+            'width'     => '50px',
+            'type'              => 'date',
+            'align'             => 'center',
+            'default'           => $this->__('N/A'),
+            'html_decorators'   => array('nobr')
+        ));
       
       
 
@@ -116,5 +155,21 @@ class Rewardpoints_Block_Adminhtml_Stats_Grid extends Mage_Adminhtml_Block_Widge
       
       return parent::_prepareColumns();
   }
+  
+  
+    protected function _prepareMassaction()
+    {
+        $this->setMassactionIdField('current_customer_id');
+        $this->getMassactionBlock()->setFormFieldName('user_ids');
+
+        $this->getMassactionBlock()->addItem('delete', array(
+             'label'    => Mage::helper('rewardpoints')->__('Recalculate points&nbsp;&nbsp;'),
+             'url'      => $this->getUrl('*/*/recalculatePoints'),
+             'confirm'  => Mage::helper('rewardpoints')->__('Are you sure? This action may take some time!')
+        ));
+
+        return $this;
+    }
+  
 }
 

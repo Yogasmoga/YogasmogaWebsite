@@ -24,11 +24,22 @@ $attributeInfo = Mage::getResourceModel('eav/entity_attribute_collection')
                         ->setCodeFilter('reward_points')
                         ->getFirstItem();
 
+$entityTypeId = Mage::getModel('eav/entity')->setType('catalog_product')->getTypeId();
 $attributeGroup = Mage::getResourceModel('eav/entity_attribute_set_collection')
                         ->addFieldToFilter('attribute_set_name', array('eq' => 'Default'))
+                        ->addFieldToFilter('entity_type_id', array('eq' => $entityTypeId))
                         ->getFirstItem();
 
+if (!$attributeGroup->getAttributeSetId()){
+    $installer->addAttributeSet(Mage_Catalog_Model_Product::ENTITY, 'Default');
+    $attributeGroup = Mage::getResourceModel('eav/entity_attribute_set_collection')
+                        ->addFieldToFilter('attribute_set_name', array('eq' => 'Default'))
+                        ->addFieldToFilter('entity_type_id', array('eq' => $entityTypeId))
+                        ->getFirstItem();
+}
+
 if(!$attributeInfo->getAttributeId() && $attributeGroup->getAttributeSetId()){
+    
     $setup = new Mage_Eav_Model_Entity_Setup('core_setup');
     $installer->startSetup();
     /**
@@ -37,9 +48,10 @@ if(!$attributeInfo->getAttributeId() && $attributeGroup->getAttributeSetId()){
 
     // adding attribute group
     $setup->addAttributeGroup('catalog_product', 'Default', 'J2T Reward Points', 1000);
-    
     $entityTypeId     = $installer->getEntityTypeId('catalog_product');
+    
     $attributeSetId   = $installer->getDefaultAttributeSetId($entityTypeId);
+    
     $attributeGroupId = $installer->getDefaultAttributeGroupId($entityTypeId, $attributeSetId);
 
     // the attribute added will be displayed under the group/tab Special Attributes in product edit page

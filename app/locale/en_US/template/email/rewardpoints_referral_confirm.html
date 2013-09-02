@@ -1,53 +1,33 @@
-<!--@subject YOGASMOGA Invitation Confirmation @-->
+<!--@subject Referral program confirmation @-->
 <!--@styles
 body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
 @-->
 
-<body style="background:#fff; font-family: Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
-<div style="background:#fff; font-family: Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:20px; line-height:1; text-align:center;">
-<!-- [ header starts here] -->
-<table cellspacing="0" cellpadding="0" border="0" width="600" style="margin:0px auto;">
-<tr>
-    <td align="center" valign="top">
-        <table bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" border="0" width="600" style="background:#fff; border:20px solid #fff;">
-            <tr>
-                <td valign="top" align="center" style="padding-bottom:50px;"><a href="{{store url=""}}"><img src="{{var logo_url}}" alt="{{var logo_alt}}" style="margin:0px;" border="0"/></a></td>
-            </tr>
-			
-			
-			
-			
-<!-- [ middle starts here] -->
+
+<style type="text/css">
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+</style>
+
+<div style="font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;">
+    <table cellspacing="0" cellpadding="0" border="0" width="98%" style="margin-top:10px; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; margin-bottom:10px;">
+        <tr>
+            <td align="center" valign="top">
+                <table cellspacing="0" cellpadding="0" border="0" width="650">
+                    <tr>
+                        <td valign="top"><a href="{{store url=""}}"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt=""  style="margin-bottom:10px;" border="0"/></a></td>
+                    </tr>
+                </table>
+
+                
+                <table cellspacing="0" cellpadding="0" border="0" width="650">
                     <tr>
                         <td valign="top">
-                            <p style="color:#666; font-size:12px; line-height:18px; margin:0 0 20px;">Your friend {{var child.name}} ({{var child.email}}) has ordered on {{var store_name}}!</p>
-					<p style="color:#666; font-size:12px; line-height:18px; margin:0 0 20px;">-Your friends at YOGASMOGA</p>
+                            <p>Your friend {{var child.name}} ({{var child.email}}) has ordered on {{var store_name}}!</p>
                         </td>
                     </tr>
-<!-- [ middle ends here] -->
+                </table>
 
-		</table>
-	</td>
-</tr>
-					
-					
-<tr>
-	<td valign="top" style="font-size:12px; padding:20px 0 20px; border-top:1px solid #f2f2f2;">
-		<table cellpadding="0" cellspacing="0" border="0" width="100%">
-			<tr>
-				<td width="64%" align="left">
-					<p  style="font-size:12px; margin:0;"><span style="color:#666; font-size:12px; margin:15px 0;">If you have any comments or questions, please email us any time at <br>
-						<a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#d90d3d; text-decoration:none;">{{config path='trans_email/ident_support/email'}}</a>.</span></p>
-				</td>
-				<td style="text-align:right;">
-					<a href="http://www.twitter.com/YOGASMOGA"><img src="{{skin url='images/i-twitter.png' _area='frontend' _package='yogasmoga'}}" height="20" width="20" style="border:0" /></a>
-					<a href="http://www.pinterest.com/YOGASMOGA" style="margin-left:20px;"><img src="{{skin url='images/i-pin.png' _area='frontend' _package='yogasmoga'}}" height="20" width="20" style="border:0" /></a>
-					<a href="http://www.facebook.com/YOGASMOGA" style="margin-left:20px;"><img src="{{skin url='images/i-facebook.png' _area='frontend' _package='yogasmoga'}}" height="20" width="20" style="border:0" /></a>
-				</td>
-			</tr>
-		</table>
-	</td>
-</tr>
-</table>
+            </td>
+        </tr>
+    </table>
 </div>
-</body>

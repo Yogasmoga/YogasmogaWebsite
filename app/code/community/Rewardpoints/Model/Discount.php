@@ -24,14 +24,17 @@ class Rewardpoints_Model_Discount extends Mage_Core_Model_Abstract
     protected $_couponCode;
 
 
-    public function getCartAmount(){
+    public function getCartAmount($quote = null){
         
-        
+        if ($quote != null){
+            $this->_quote = $quote;
+        }
         if ($this->_quote){
             $totalPrices = $this->_quote->getTotals();
         } else {
             $totalPrices = Mage::helper('checkout/cart')->getCart()->getQuote()->getTotals();
         }
+        
         $tax = 0;
         $subtotalPrice = 0;
         
@@ -63,8 +66,13 @@ class Rewardpoints_Model_Discount extends Mage_Core_Model_Abstract
     }
 
 
-    public function checkMaxPointsToApply($points){
-        $order_details = $this->getCartAmount();
+    public function checkMaxPointsToApply($points, $quote = null){
+        //J2T MOD. getCartAmount
+        if ($quote != null){
+            $order_details = $this->getCartAmount($quote);
+        } else {
+            $order_details = $this->getCartAmount();
+        }
         $cart_amount = Mage::helper('rewardpoints/data')->processMathValue($order_details);
         $maxpoints = min(Mage::helper('rewardpoints/data')->convertMoneyToPoints($cart_amount), $points);
         return $maxpoints;
@@ -183,7 +191,7 @@ class Rewardpoints_Model_Discount extends Mage_Core_Model_Abstract
         $customerId = $customer->getId();
 
         if ($points_apply > 0 && $customerId != null){
-            $test_points = $this->checkMaxPointsToApply($points_apply);
+            $test_points = $this->checkMaxPointsToApply($points_apply, $quote);
 
             if ($points_apply > $test_points){
                 $points_apply = $test_points;

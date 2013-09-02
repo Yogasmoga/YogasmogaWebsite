@@ -35,7 +35,7 @@ class Rewardpoints_Block_Adminhtml_Customerstats extends Mage_Adminhtml_Block_Wi
 
     protected function _prepareCollection()
     {
-        if (version_compare(Mage::getVersion(), '1.4.0', '>=')){
+        if (version_compare(Mage::getVersion(), '1.4.0.1', '>')){
             $collection = Mage::getResourceModel('rewardpoints/grid_collection')
                 ->addFieldToSelect('rewardpoints_account_id')
                     ->addFieldToSelect('store_id')
@@ -46,6 +46,7 @@ class Rewardpoints_Block_Adminhtml_Customerstats extends Mage_Adminhtml_Block_Wi
                 ->addFieldToSelect('date_end')
                 ->addFieldToSelect('rewardpoints_referral_id')
                 ->addFieldToSelect('rewardpoints_description')
+                ->addFieldToSelect('rewardpoints_linker')
                 ->addFieldToFilter('customer_id', Mage::registry('current_customer')->getId());
         } else {
             //$collection = Mage::getResourceModel('rewardpoints/stats_collection')
@@ -91,6 +92,18 @@ class Rewardpoints_Block_Adminhtml_Customerstats extends Mage_Adminhtml_Block_Wi
             'type'    => 'action',
             'renderer' => new Rewardpoints_Block_Adminhtml_Renderer_Pointstype(),
         ));
+        
+        if (Mage::getConfig()->getModuleConfig('J2t_Rewardsocial')->is('active', 'true')){
+            $this->addColumn('rewardpoints_linker', array(
+              'header'    => Mage::helper('rewardpoints')->__('Relation'),
+              'align'     => 'right',
+              'index'     => 'rewardpoints_linker',
+              'width'     => '150px',
+              'renderer' => new Rewardpoints_Block_Adminhtml_Renderer_Pointslink(),
+              'filter'    => false,
+              'sortable'  => false,
+          ));
+        }
 
         $this->addColumn('points_current', array(
           'header'    => Mage::helper('rewardpoints')->__('Accumulated points'),
