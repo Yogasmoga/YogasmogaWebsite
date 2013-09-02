@@ -37,12 +37,11 @@
         <?php
             if(strcasecmp($this->escapeHtml($_label),'saved card') == 0)
                 continue;
-        ?>       
-        <tr>
-            <td style="padding: 0 0 !important;">
-                <span style="font-size: 9.0pt; font-weight:normal; font-family: "Verdana","sans-serif"; color: #666666; text-transform: uppercase;"><?php echo strtoupper($this->escapeHtml($_label)) ?>:&nbsp;<?php echo nl2br(implode($this->getValueAsArray($_value, true), "\n"))?></span>                
-            </td>
-        </tr>
+        ?>
+        <p style="margin:0 0 10px;"><span style="text-transform:uppercase;">
+            <?php echo strtoupper($this->escapeHtml($_label)) ?>:&nbsp;<?php echo nl2br(implode($this->getValueAsArray($_value, true), "\n"))?>        
+        </span></p>
+        
     <?php endforeach; ?>
     </tbody>
 </table>
