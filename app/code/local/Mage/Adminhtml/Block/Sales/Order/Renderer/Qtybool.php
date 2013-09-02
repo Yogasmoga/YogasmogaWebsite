@@ -12,7 +12,7 @@ return '<span style="color:green;">'.'Yes'.'</span>';
 
 }else
 {
-return '<span style="color:red;">'.'No'.'</span>';
+//return '<span style="color:red;">'.'No'.'</span>';
 
 }
 }
