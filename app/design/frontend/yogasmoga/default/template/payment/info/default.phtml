@@ -31,8 +31,7 @@
 ?>
 
 <?php if ($_specificInfo = $this->getSpecificInformation()):?>
-<table cellspacing="0">
-    <tbody>
+
     <?php foreach ($_specificInfo as $_label => $_value):?>
         <?php
             if(strcasecmp($this->escapeHtml($_label),'saved card') == 0)
@@ -43,8 +42,7 @@
         </span></p>
         
     <?php endforeach; ?>
-    </tbody>
-</table>
+
 <?php endif;?>
 
 <?php echo $this->getChildHtml()?>
