@@ -17,7 +17,9 @@ class Rewardpoints_Block_Adminhtml_Createorder_Reward extends Mage_Adminhtml_Blo
     
     public function getPointsOnOrder() {
         //Mage::getModel('sales/quote')
-        return Mage::helper('rewardpoints/data')->getPointsOnOrder($this->getQuote(), $this->getQuote(), null, false, $this->getQuote()->getStoreId());
+        $to_validate = $this->getQuote();
+        $to_validate->setQuote($this->getQuote());
+        return Mage::helper('rewardpoints/data')->getPointsOnOrder($to_validate, $this->getQuote(), null, false, $this->getQuote()->getStoreId());
     }
     
     public function getClientPoints()

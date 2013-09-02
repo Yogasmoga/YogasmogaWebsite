@@ -63,6 +63,57 @@ class Rewardpoints_Adminhtml_StatsController extends Mage_Adminhtml_Controller_A
     public function newAction() {
             $this->_forward('edit');
     }
+    
+    public function allcustomerpointsAction(){
+        $collection = Mage::getResourceModel('customer/customer_collection');
+        $collection->load();
+        if ($collection->getSize()){
+            foreach($collection as $customer){
+                $allStores = Mage::app()->getStores();
+                foreach ($allStores as $_eachStoreId => $val) {
+                    //Mage::helper('rewardpoints')->processRecordFlatAction($customer->getId(), Mage::app()->getStore($_eachStoreId)->getId());
+                    $model = Mage::getModel('rewardpoints/flatstats');
+                    $model->processRecordFlat($customer->getId(), Mage::app()->getStore($_eachStoreId)->getId());
+                }
+            }
+            Mage::getSingleton('adminhtml/session')->addSuccess(
+                Mage::helper('rewardpoints')->__(
+                    'Total of %d customers were successfully processed.', $collection->getSize()
+                )
+            );
+        }
+        $this->_redirect('*/*/index');
+    }
+    
+    public function recalculatePointsAction(){
+        $customerIds = $this->getRequest()->getParam('user_ids');
+        $customerIds = array_unique($customerIds);
+        if(!is_array($customerIds)) {
+            Mage::getSingleton('adminhtml/session')->addError(Mage::helper('adminhtml')->__('Please select customer'));
+        } else {
+            try {
+                foreach ($customerIds as $customerId) {
+                    if ( $flat_stat = Mage::getModel('rewardpoints/flatstats')->load($customerId) ){
+                        $allStores = Mage::app()->getStores();
+                        foreach ($allStores as $_eachStoreId => $val) {
+                            //Mage::helper('rewardpoints')->processRecordFlatAction($flat_stat->getUserId(), Mage::app()->getStore($_eachStoreId)->getId());
+                            $model = Mage::getModel('rewardpoints/flatstats');
+                            $model->processRecordFlat($flat_stat->getUserId(), Mage::app()->getStore($_eachStoreId)->getId());
+                        }
+                    }
+                    
+                }
+                Mage::getSingleton('adminhtml/session')->addSuccess(
+                    Mage::helper('rewardpoints')->__(
+                        'Total of %d lines were successfully processed.', count($customerIds)
+                    )
+                );
+            } catch (Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+            }
+        }
+        $this->_redirect('*/*/index');
+    }
 
     public function checkpointsAction() {
         $id     = $this->getRequest()->getParam('id');
@@ -188,6 +239,26 @@ class Rewardpoints_Adminhtml_StatsController extends Mage_Adminhtml_Controller_A
 
             try {
                 $model->save();
+                
+                $points = 0;
+                if (trim($data['points_current'])){
+                    $points = $data['points_current'];
+                }
+                if (trim($data['points_spent'])){
+                    $points = - $data['points_spent'];
+                }
+                
+                $customer_id = $data['customer_id'];
+                $customer = Mage::getModel('customer/customer')->load($customer_id);
+                $description = $data['rewardpoints_description'];
+                if ($description == ""){
+                    $description = Mage::helper('rewardpoints')->__('Store input');
+                }
+
+                if (!empty($data['rewardpoints_notification']) && $customer->getId()){
+                    $model->sendAdminNotification($customer, $customer->getStoreId(), $points, $description);
+                }
+                
                 
                 $arr_store_id = explode(",",$data['store_id']);
                 foreach ($arr_store_id as $curr_store_id){

@@ -73,24 +73,48 @@ class Rewardpoints_Block_Adminhtml_Clientpoints_Grid extends Mage_Adminhtml_Bloc
           'header'    => Mage::helper('rewardpoints')->__('Order ID'),
           'align'     =>'right',
           'index'     => 'order_id',
+          'renderer'  => new Rewardpoints_Block_Adminhtml_Renderer_Order(),
       ));
 
 
-      $this->addColumn('order_id_corres', array(
+      /*$this->addColumn('order_id_corres', array(
             'header'    => Mage::helper('rewardpoints')->__('Type of points'),
             'index'     => 'order_id',
             'width'     => '150px',
             'type'      => 'options',
-            'options'   => array(Rewardpoints_Model_Stats::TYPE_POINTS_BIRTHDAY => Mage::helper('adminhtml')->__('Birthday points'), Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW => Mage::helper('adminhtml')->__('Review points'), Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN => Mage::helper('adminhtml')->__('Admin gift'), Rewardpoints_Model_Stats::TYPE_POINTS_REQUIRED => Mage::helper('adminhtml')->__('Points used on products'), Rewardpoints_Model_Stats::TYPE_POINTS_REGISTRATION => Mage::helper('adminhtml')->__('Registration points')),
+            'options'   => Mage::getModel("rewardpoints/stats")->getPointsTypeToArray(),
+        ));*/
+      
+      $this->addColumn('order_id_corres', array(
+            'header'    => Mage::helper('rewardpoints')->__('Points type'),
+            'align'     => 'left',
+            'index'     => 'order_id',
+            'type'    => 'action',
+            'renderer' => new Rewardpoints_Block_Adminhtml_Renderer_Pointstype(),
+            'filter'    => false,
+            'sortable'  => false,
         ));
       
-      $this->addColumn('rewardpoints_description', array(
+      
+      /*$this->addColumn('rewardpoints_description', array(
           'header'    => Mage::helper('rewardpoints')->__('Description'),
           'align'     => 'right',
           'index'     => 'rewardpoints_description',
           'width'     => '50px',
           'filter'    => false,
-      ));
+      ));*/
+      
+      if (Mage::getConfig()->getModuleConfig('J2t_Rewardsocial')->is('active', 'true')){
+          $this->addColumn('rewardpoints_linker', array(
+            'header'    => Mage::helper('rewardpoints')->__('Relation'),
+            'align'     => 'right',
+            'index'     => 'rewardpoints_linker',
+            'width'     => '150px',
+            'renderer' => new Rewardpoints_Block_Adminhtml_Renderer_Pointslink(),
+            'filter'    => false,
+            'sortable'  => false,
+        ));
+      }
         
       $this->addColumn('points_current', array(
           'header'    => Mage::helper('rewardpoints')->__('Accumulated points'),
@@ -148,7 +172,7 @@ class Rewardpoints_Block_Adminhtml_Clientpoints_Grid extends Mage_Adminhtml_Bloc
 
   
 
-  protected function _prepareMassaction()
+    protected function _prepareMassaction()
     {
         $this->setMassactionIdField('rewardpoints_account_id');
         $this->getMassactionBlock()->setFormFieldName('rewardpoints_account_ids');

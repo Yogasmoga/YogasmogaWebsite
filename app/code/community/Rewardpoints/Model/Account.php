@@ -159,13 +159,16 @@ class Rewardpoints_Model_Account extends Mage_Core_Model_Abstract {
                     
                     $select = $connection->select()->from(Mage::getSingleton('core/resource')->getTableName('rewardpoints_account'),array(new Zend_Db_Expr('SUM('.Mage::getSingleton('core/resource')->getTableName('rewardpoints_account').'.points_current) AS nb_credit'),new Zend_Db_Expr('SUM('.Mage::getSingleton('core/resource')->getTableName('rewardpoints_account').'.points_spent)')));
                     if (version_compare(Mage::getVersion(), '1.4.0', '>=')){
-                        $select->where(" (".Mage::getSingleton('core/resource')->getTableName('rewardpoints_account').".order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_BIRTHDAY."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN."' or ".Mage::getSingleton('core/resource')->getTableName('rewardpoints_account').".order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REGISTRATION."'
+                        //$select->where(" (".Mage::getSingleton('core/resource')->getTableName('rewardpoints_account').".order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_FB."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_BIRTHDAY."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN."' or ".Mage::getSingleton('core/resource')->getTableName('rewardpoints_account').".order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REGISTRATION."'
+                        $select->where(" (".Mage::getModel("rewardpoints/stats")->constructSqlPointsType(Mage::getSingleton('core/resource')->getTableName('rewardpoints_account'))."
                                     or ".Mage::getSingleton('core/resource')->getTableName('rewardpoints_account').".order_id in (SELECT increment_id
                                        FROM ".Mage::getSingleton('core/resource')->getTableName('sales_order')." AS orders
                                        WHERE orders.".$status_field." IN (?))
                                          ) ", $order_states);
                     } else {
-                        $select->where(" (".Mage::getSingleton('core/resource')->getTableName('rewardpoints_account').".order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_BIRTHDAY."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN."' or ".Mage::getSingleton('core/resource')->getTableName('rewardpoints_account').".order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REGISTRATION."'
+                        //$select->where(" (".Mage::getSingleton('core/resource')->getTableName('rewardpoints_account').".order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_FB."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_BIRTHDAY."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN."' or ".Mage::getSingleton('core/resource')->getTableName('rewardpoints_account').".order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REGISTRATION."'
+                        $select->where(" (".Mage::getModel("rewardpoints/stats")->constructSqlPointsType(Mage::getSingleton('core/resource')->getTableName('rewardpoints_account'))."
+
                                     or ".Mage::getSingleton('core/resource')->getTableName('rewardpoints_account').".order_id in (SELECT increment_id
                                        FROM ".Mage::getSingleton('core/resource')->getTableName('sales_order')." AS orders
                                        WHERE orders.entity_id IN (

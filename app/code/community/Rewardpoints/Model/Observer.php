@@ -21,7 +21,78 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
     const XML_PATH_NOTIFICATION_NOTIFICATION_DAYS       = 'rewardpoints/notifications/notification_days'; 
     const XML_PATH_POINTS_DURATION                      = 'rewardpoints/default/points_duration';
     
-    
+    //newsletter_points
+    public function setPointsOnProductPages(Varien_Event_Observer $observer) {
+        /* @var $block Mage_Core_Block_Abstract */
+        $block              = $observer->getBlock();
+        
+        $show_info = Mage::getStoreConfig('rewardpoints/product_page/show_information', Mage::app()->getStore()->getId());
+        $show_list_info = Mage::getStoreConfig('rewardpoints/product_page/show_list_points', Mage::app()->getStore()->getId());
+        
+        $show_duplicate = Mage::getStoreConfig('rewardpoints/product_page/duplicate_text_product_page', Mage::app()->getStore()->getId());
+        $block_default = Mage::getStoreConfig('rewardpoints/product_page/block_default', Mage::app()->getStore()->getId());
+        $block_default = (trim($block_default) != "") ? trim($block_default) : 'product.info.addtocart';
+        $block_extra = Mage::getStoreConfig('rewardpoints/product_page/block_extra', Mage::app()->getStore()->getId());
+        $block_extra = (trim($block_extra) != "") ? trim($block_extra) : 'product.info.configurable';
+        
+        $arr_product_types = array("Mage_Catalog", "Mage_Bundle");
+        
+        if ($show_info){
+            if (version_compare(Mage::getVersion(), '1.5.0', '>=')){
+                $transport          = $observer->getTransport();
+                $fileName           = $block->getTemplateFile();
+                $thisClass          = get_class($block);
+                //echo $block->getType();
+                
+                if ($block->getType() == 'catalog/product_price' || strpos($block->getType(), 'product_price') !== false){
+                    
+                    if (in_array($block->getModuleName(), $arr_product_types) && Mage::app()->getFrontController()->getRequest()->getRouteName() == 'catalog'
+                            && Mage::app()->getFrontController()->getRequest()->getControllerName() == 'category' && $show_list_info){
+                        //echo $block->getTemplate();
+                        //print_r($block->getProduct()->getEntityId());
+                        if ($_product = $block->getProduct()){
+                            $extraHtml = Mage::helper('rewardpoints/data')->getProductPointsText($_product, false, true);
+                            $html = $transport->getHtml();
+                            $transport->setHtml($html.$extraHtml);
+                        }
+                    }
+                }
+                if($block->getNameInLayout() == $block_default){
+                    $html = $transport->getHtml();
+                    $magento_block = Mage::getSingleton('core/layout');
+                    $productsHtml = $magento_block->createBlock('rewardpoints/productpoints');
+                    $productsHtml->setTemplate('rewardpoints/addtocart.phtml');
+                    $extraHtml    = $productsHtml->toHtml();
+                    $transport->setHtml($extraHtml.$html);
+                } else if($block->getNameInLayout() == $block_extra && $show_duplicate){
+                    $html = $transport->getHtml();
+                    $extraHtml = '<div class="j2t-points-clone" id="j2t-points-clone" style="display:none;"></div>';
+                    $transport->setHtml($html.$extraHtml);
+                }
+            } else {
+                
+                if ($block->getType() == 'catalog/product_price' || strpos($block->getType(), 'product_price') !== false){
+                    if (in_array($block->getModuleName(), $arr_product_types) && Mage::app()->getFrontController()->getRequest()->getRouteName() == 'catalog'
+                            && Mage::app()->getFrontController()->getRequest()->getControllerName() == 'category' && $show_list_info){
+                        if ($_product = $block->getProduct()){
+                            $extraHtml = Mage::helper('rewardpoints/data')->getProductPointsText($_product, false, true);
+                            echo $extraHtml;
+                        }
+                    }
+                }
+                
+                if($block->getNameInLayout() == $block_default){
+                    $magento_block = Mage::getSingleton('core/layout');
+                    $productsHtml = $magento_block->createBlock('rewardpoints/productpoints');
+                    $productsHtml->setTemplate('rewardpoints/addtocart.phtml');
+                    $extraHtml    = $productsHtml->toHtml();
+                    echo $extraHtml;
+                } else if($block->getNameInLayout() == $block_extra && $show_duplicate){
+                    echo '<div class="j2t-points-clone" id="j2t-points-clone" style="display:none;"></div>';
+                }
+            }
+        } 
+    }
     
     public function processRuleSave($observer){
         //if (version_compare(Mage::getVersion(), '1.7.0', '>=')){
@@ -37,45 +108,115 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
         //}    
     }
     
-    
     //J2T Check referral
     public function checkReferral($observer){
         $event = $observer->getEvent();
         $invoice = $event->getInvoice();
         $order = $invoice->getOrder();
-        //$order = $observer->getEvent()->getInvoice()->getOrder();
         
         //load referral by referral customer id
         $referralModel = Mage::getModel('rewardpoints/referral');
         $referralModel->loadByChildId($order->getCustomerId());
+        
         if ($referral_id = $referralModel->getRewardpointsReferralId()){
             //load points by referral_id
             $pointsModel = Mage::getModel('rewardpoints/stats');
             $pointsModel->loadByReferralId($referral_id, $order->getCustomerId());
+            
             if ($order_id = $pointsModel->getOrderId()){
-                if ($order_id != $order->getIncrementId()){
+                $rewardPointsReferralMinOrder = Mage::getStoreConfig('rewardpoints/registration/referral_min_order', $order->getStoreId());
+                
+                $base_subtotal = $order->getBaseSubtotalInclTax();
+                if (Mage::getStoreConfig('rewardpoints/default/exclude_tax', $order->getStoreId())){
+                    $base_subtotal = $base_subtotal - $order->getBaseTaxAmount();
+                }
+                if ($order_id != $order->getIncrementId() && ($rewardPointsReferralMinOrder == 0 || $rewardPointsReferralMinOrder <= $base_subtotal) ){
                     //check if order has correct status
                     if($loadedOrder = Mage::getModel('sales/order')->loadByIncrementId($order_id)){
                         $statuses = Mage::getStoreConfig('rewardpoints/default/valid_statuses', $loadedOrder->getStoreId());
                         $order_states = explode(",", $statuses);                        
                         $status_state = Mage::getStoreConfig('rewardpoints/default/status_used', $loadedOrder->getStoreId());
                         
-                        if (!in_array($loadedOrder->getStatus(),$order_states) && $status_state == 'status'){
+                        //1. Parent points        
+                        $rewardPoints = Mage::getStoreConfig('rewardpoints/registration/referral_points', $loadedOrder->getStoreId());
+                        $referralPointMethod = Mage::getStoreConfig('rewardpoints/registration/referral_points_method', $loadedOrder->getStoreId());
+                        if ($referralPointMethod != Rewardpoints_Model_Calculationtype::STATIC_VALUE){
+                            $rewardPoints = $this->referralPointsEntry($order, $rewardPoints);
+                            //$pointsModel->setPointsCurrent($rewardPoints);
+                            $pointsModel->setData("points_current",$rewardPoints);
+                        }
+                        
+                        if (!in_array($loadedOrder->getStatus(), $order_states) && $status_state == 'status'){
                             //modify order_id to current order id (from invoice)
                             //if (in_array($order->getStatus(),$order_states)){
                                 $pointsModel->setOrderId($order->getIncrementId());
                                 $pointsModel->save();
                             //}
-                        } else if(!in_array($loadedOrder->getState(),$order_states) && $status_state == 'state'){
+                        } else if(!in_array($loadedOrder->getState(), $order_states) && $status_state == 'state'){
                             //modify order_id to current order id (from invoice)
                             //if (in_array($order->getState(),$order_states)){
                                 $pointsModel->setOrderId($order->getIncrementId());
                                 $pointsModel->save();
                             //}
                         }
+                        
+                        
+                        //2. Child points
+                        $childPointsModel = Mage::getModel('rewardpoints/stats');
+                        $childPointsModel->loadByChildReferralId($referral_id, $order->getCustomerId());
+                        
+                        $rewardChildPoints = Mage::getStoreConfig('rewardpoints/registration/referral_child_points', $loadedOrder->getStoreId());
+                        $referralChildPointMethod = Mage::getStoreConfig('rewardpoints/registration/referral_child_points_method', $loadedOrder->getStoreId());
+                        if ($referralChildPointMethod != Rewardpoints_Model_Calculationtype::STATIC_VALUE){
+                            $rewardChildPoints = $this->referralChildPointsEntry($order, $rewardChildPoints);
+                            //$childPointsModel->setPointsCurrent($rewardChildPoints);
+                            $childPointsModel->setData("points_current",$rewardChildPoints);
+                        }
+                        if (!in_array($loadedOrder->getStatus(), $order_states) && $status_state == 'status'){
+                            $childPointsModel->setOrderId($order->getIncrementId());
+                            $childPointsModel->save();
+                        } else if(!in_array($loadedOrder->getState(), $order_states) && $status_state == 'state'){
+                            $childPointsModel->setOrderId($order->getIncrementId());
+                            $childPointsModel->save();
+                        }
                     }
                 }
             }
+        }
+    }
+    
+    
+    protected function recalculateEndingPoints(){
+        $allStores = Mage::app()->getStores();
+        $already_checked = array();
+        foreach ($allStores as $_eachStoreId => $val) 
+        {
+            //$duration = Mage::getStoreConfig(self::XML_PATH_POINTS_DURATION, $_eachStoreId);
+            //if ($duration){
+                $store_id = Mage::app()->getStore($_eachStoreId)->getId();
+                $points = Mage::getModel('rewardpoints/stats')
+                        ->getResourceCollection()
+                        ->addFinishFilter(0)
+                        ->addValidPoints($store_id, true, true);
+                
+                //echo $points->getSelect()->__toString();
+                //die;
+                
+                if ($points->getSize()){
+                    foreach ($points as $current_point){
+                        $customer_id = $current_point->getCustomerId();
+                        
+                        if (!in_array($customer_id, $already_checked)){
+                            $already_checked[] = $customer_id;
+                            //refresh points for this customer
+                            foreach ($allStores as $_eachStoreId_in => $val_in) {
+                                $model = Mage::getModel('rewardpoints/flatstats');
+                                $model->processRecordFlat($customer_id, Mage::app()->getStore($_eachStoreId_in)->getId(), false, true);
+                            }
+                        }
+                    }
+                }
+            //}            
         }
     }
     
@@ -86,7 +227,7 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
         $allStores = Mage::app()->getStores();
         foreach ($allStores as $_eachStoreId => $val) 
         {
-            /*$duration = Mage::getStoreConfig(self::XML_PATH_POINTS_DURATION, $store_id);
+            /*$duration = Mage::getStoreConfig(self::XML_PATH_POINTS_DURATION, $_eachStoreId);
             if ($duration){*/
                 $store_id = Mage::app()->getStore($_eachStoreId)->getId();
                 $days = Mage::getStoreConfig(self::XML_PATH_NOTIFICATION_NOTIFICATION_DAYS, $store_id);
@@ -113,7 +254,8 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
                     }
                 }
             //}            
-        }        
+        }
+        $this->recalculateEndingPoints();
     }
 
     public function pointsRefresh($observer){
@@ -123,18 +265,13 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
     }
 
     public function recordPointsUponRegistration($observer){
-        //Mage::log('got in'.$observer->getEvent()->getCustomer()->getEntityId(),null,'testlog.log');
-        $customerId = $observer->getEvent()->getCustomer()->getEntityId();
-        $customerData = Mage::getModel('customer/customer')->load($customerId)->getData();
-        //Mage::log('got in'.$observer->getEvent()->getCustomer()->getEntityId().'   '.strtotime($customerData['created_at']).'     '.strtotime('2013-05-13 00:00:00'),null,'testlog.log');
-        if(strtotime($customerData['created_at']) < strtotime('2013-05-13 00:00:00'))
-            return;
         if (Mage::getStoreConfig('rewardpoints/registration/registration_points', Mage::app()->getStore()->getId()) > 0){
             //check if points already earned
             $customerId = $observer->getEvent()->getCustomer()->getEntityId();
             $points = Mage::getStoreConfig('rewardpoints/registration/registration_points', Mage::app()->getStore()->getId());
             //$orderId = -2;
             $this->recordPoints($points, $customerId, Rewardpoints_Model_Stats::TYPE_POINTS_REGISTRATION, false);
+            
         }
     }
     
@@ -146,6 +283,7 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
        
         if ($data = $request->getPost()){        
             if (isset($data['points_current']) || isset($data['points_spent'])){
+                
                 if ($data['points_current'] > 0 || $data['points_spent'] > 0){
                     $model = Mage::getModel('rewardpoints/stats');
                     if (trim($data['date_start'])){                    
@@ -162,11 +300,14 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
                             $model->setDateEnd(Mage::getModel('core/date')->gmtDate(null, $time));
                         }
                     }
+                    $points = 0;
                     if (trim($data['points_current'])){
                         $model->setPointsCurrent($data['points_current']);
+                        $points = $data['points_current'];
                     }
                     if (trim($data['points_spent'])){
                         $model->setPointsSpent($data['points_spent']);
+                        $points = - $data['points_spent'];
                     }
                     if (trim($data['rewardpoints_description'])){
                         $model->setRewardpointsDescription($data['rewardpoints_description']);
@@ -187,16 +328,26 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
                     
                     $model->setOrderId(Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN);                
                     $model->save();
+                    
+                    $description = $data['rewardpoints_description'];
+                    if ($description == ""){
+                        $description = Mage::helper('rewardpoints')->__('Store input');
+                    }
+                    
+                    if (!empty($data['rewardpoints_notification'])){
+                        $model->sendAdminNotification($customer, $customer->getStoreId(), $points, $description);
+                    }
 
                     //flatstats record
-                    if ($store_id = $customer->getStore()->getId()){
+                    //NEW VERSION 1.6.21 - this has been deactivated because flatstats has been automated
+                    /*if ($store_id = $customer->getStore()->getId()){
                         Mage::getModel('rewardpoints/flatstats')->processRecordFlat($customer->getId(), $store_id);
                     } else {
                         $allStores = Mage::app()->getStores();
                         foreach ($allStores as $_eachStoreId => $val) {
                             $this->processRecordFlatAction($customer->getId(), Mage::app()->getStore($_eachStoreId)->getId());
                         }
-                    }
+                    }*/
                 }
                 
             }
@@ -328,9 +479,10 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
 
             $this->sales_order_success_referral($order, $quote);
         }
-        if ($customerId && $store_id){
+        //NEW VERSION 1.6.21 - this has been deactivated because flatstats has been automated
+        /*if ($customerId && $store_id){
             $this->processRecordFlat($customerId, $store_id);
-        }        
+        } */       
     }
 
 
@@ -375,24 +527,51 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
             if ($object->getStatusId() == Mage_Review_Model_Review::STATUS_APPROVED){
                 if ($pointsInt = Mage::getStoreConfig('rewardpoints/registration/review_points', $object->getStoreId())){
                     if ($object->getCustomerId()){
-                        $reward_model = Mage::getModel('rewardpoints/stats');
+                        $this->recordPoints($pointsInt, $object->getCustomerId(), Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW, true, false, $object->getStoreId());
+                        /*$reward_model = Mage::getModel('rewardpoints/stats');
                         $data = array('customer_id' => $object->getCustomerId(), 'store_id' => $object->getStoreId(), 'points_current' => $pointsInt, 'order_id' => Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW);
                         $reward_model->setData($data);
-                        $reward_model->save();
+                        $reward_model->save();*/
                     }
                 }
             }
         }
         
+        
+        if ($object instanceof Mage_Customer_Model_Customer) {
+            //register points if newsletter optin
+            if ($object->getIsSubscribed()){
+                if ($pointsInt = Mage::getStoreConfig('rewardpoints/registration/newsletter_points', $object->getStoreId())){
+                    if ($customer_id = $object->getId()){
+                        
+                        $this->recordPoints($pointsInt, $object->getId(), Rewardpoints_Model_Stats::TYPE_POINTS_NEWSLETTER, false, false, $object->getStoreId());
+                        /*if (!Mage::helper('rewardpoints/data')->checkPointsInsertionCustomer($customer_id, $object->getStoreId(), Rewardpoints_Model_Stats::TYPE_POINTS_NEWSLETTER)){
+                            $reward_model = Mage::getModel('rewardpoints/stats');
+                            $data = array('customer_id' => $object->getId(), 'store_id' => $object->getStoreId(), 'points_current' => $pointsInt, 'order_id' => Rewardpoints_Model_Stats::TYPE_POINTS_NEWSLETTER);
+                            $reward_model->setData($data);
+                            $reward_model->save();
+                        }*/
+                    }
+                }
+            } else {
+                //if unsubscribe, don't remove line, only substract given points (only if line exists)
+            }
+        }
+        
         if ($object instanceof Mage_Sales_Model_Order) {
             if (($customer_id = $object->getCustomerId()) && ($store_id = $object->getStoreId())){
+                //NEW VERSION 1.6.21 - this has been deactivated because flatstats has been automated
+                /*
                 $this->processRecordFlat($customer_id, $store_id);
+                 */
                 //check referred friend in order to refresh referrer flat points
                 $reward_model = Mage::getModel('rewardpoints/stats');
                 $reward_object = $reward_model->loadReferrer($customer_id, $object->getIncrementId());
-                if ($reward_object->getCustomerId()){
+                
+                //NEW VERSION 1.6.21 - this has been deactivated because flatstats has been automated
+                /*if ($reward_object->getCustomerId()){
                     $this->processRecordFlat($reward_object->getCustomerId(), $store_id);
-                }
+                }*/
             }            
         }
         
@@ -470,7 +649,9 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
             //refresh points
             $customerId = $object->getCustomerId();
             $store_id = $object->getStoreId();
-            $this->processRecordFlat($customerId, $store_id);
+            
+            //NEW VERSION 1.6.21 - this has been deactivated because flatstats has been automated
+            /*$this->processRecordFlat($customerId, $store_id);*/
         }
     }
     
@@ -508,23 +689,26 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
             $order->setQuote($quote);
         }
         
+        //$store_id = $order->getStoreId();
+        $store_id = $order->getStoreId();
+        if (!$store_id){
+            $store_id = Mage::app()->getStore()->getId();
+        }
         
         if (!$quote->getId() && ($order_quote = $order->getQuote())){
             $quote = $order_quote;
         } else {
             $order->setQuote($quote);
-        }        
-        $rewardPoints = Mage::helper('rewardpoints/data')->getPointsOnOrder($order, null, $rate);
+        }
+        $rewardPoints = Mage::helper('rewardpoints/data')->getPointsOnOrder($order, null, $rate, false, $store_id);
 
-        if (Mage::getStoreConfig('rewardpoints/default/max_point_collect_order', Mage::app()->getStore()->getId())){
-            if ((int)Mage::getStoreConfig('rewardpoints/default/max_point_collect_order', Mage::app()->getStore()->getId()) < $rewardPoints){
-                $rewardPoints = Mage::getStoreConfig('rewardpoints/default/max_point_collect_order', Mage::app()->getStore()->getId());
+        if (Mage::getStoreConfig('rewardpoints/default/max_point_collect_order', $store_id)){
+            if ((int)Mage::getStoreConfig('rewardpoints/default/max_point_collect_order', $store_id) < $rewardPoints){
+                $rewardPoints = Mage::getStoreConfig('rewardpoints/default/max_point_collect_order', $store_id);
             }
         }
         $customerId = $order->getCustomerId();
-        //$store_id = Mage::app()->getStore()->getId();
-        $store_id = $order->getStoreId();
-        //record points for item into db
+        
         if ($rewardPoints > 0){
             $this->recordPoints($rewardPoints, $customerId, $order->getIncrementId());
         }
@@ -540,27 +724,37 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
         //$this->sales_order_success_referral($order->getIncrementId());
         $this->sales_order_success_referral($order, $quote);
         
-        $this->processRecordFlat($customerId, $store_id);
+        //NEW VERSION 1.6.21 - this has been deactivated because flatstats has been automated
+        /*$this->processRecordFlat($customerId, $store_id);*/
     }
     
     
 
-    public function recordPoints($pointsInt, $customerId, $orderId, $no_check = true) {
+    public function recordPoints($pointsInt, $customerId, $orderId, $no_check = false, $link_id = false, $force_date_start = false, $store_id = null) {
         $reward_model = Mage::getModel('rewardpoints/stats');
         //check if points are already processed
-        $test_points = $reward_model->checkProcessedOrder($customerId, $orderId, true);
-        if (!$test_points->getId()){
-            $post = array('order_id' => $orderId, 'customer_id' => $customerId, 'store_id' => Mage::app()->getStore()->getId(), 'points_current' => $pointsInt, 'convertion_rate' => Mage::getStoreConfig('rewardpoints/default/points_money', Mage::app()->getStore()->getId()));
+        if ($store_id == null){
+            $store_id = Mage::app()->getStore()->getId();
+        }
+        if (!$no_check) 
+            $test_points = $reward_model->checkProcessedOrder($customerId, $orderId, true, $link_id);
+        if ($no_check || !$test_points->getId()){
+            $post = array('order_id' => $orderId, 'customer_id' => $customerId, 'store_id' => $store_id, 'points_current' => $pointsInt, 'convertion_rate' => Mage::getStoreConfig('rewardpoints/default/points_money', $store_id));
             //v.2.0.0
+            
+            if ($link_id){
+                $post['rewardpoints_linker'] = $link_id;
+            }
+            
             $add_delay = 0;
-            if ($delay = Mage::getStoreConfig('rewardpoints/default/points_delay', Mage::app()->getStore()->getId())){
+            if ($delay = Mage::getStoreConfig('rewardpoints/default/points_delay', $store_id)){
                 if (is_numeric($delay)){
                     $post['date_start'] = $reward_model->getResource()->formatDate(mktime(0, 0, 0, date("m"), date("d")+$delay, date("Y")));
                     $add_delay = $delay;
                 }
             }
             
-            if ($duration = Mage::getStoreConfig('rewardpoints/default/points_duration', Mage::app()->getStore()->getId())){
+            if ($duration = Mage::getStoreConfig('rewardpoints/default/points_duration', $store_id)){
                 if (is_numeric($duration)){
                     if (!isset($post['date_start'])){
                         $post['date_start'] = $reward_model->getResource()->formatDate(time());
@@ -568,13 +762,112 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
                     $post['date_end'] = $reward_model->getResource()->formatDate(mktime(0, 0, 0, date("m"), date("d")+$duration+$add_delay, date("Y")));
                 }
             }
+            
+            if ($force_date_start && !isset($post['date_start'])){
+                $post['date_start'] = Mage::getModel('core/date')->date('Y-m-d');
+            }
+            
             $reward_model->setData($post);
+            
+            if ($link_id){
+                $reward_model->setRewardpointsLinker($link_id);
+            }
+            
             $reward_model->save();
-        } elseif (Mage::getStoreConfig('rewardpoints/default/allow_recalculate', Mage::app()->getStore()->getId())) {            
+        } elseif (Mage::getStoreConfig('rewardpoints/default/allow_recalculate', $store_id) && $test_points->getId()) {            
             $reward_model->load($test_points->getId());
             $reward_model->setPointsCurrent($pointsInt);
             $reward_model->save();
+            //refresh referral
+            if (Mage::getStoreConfig('rewardpoints/default/allow_recalculate_referral', $store_id)){
+                $this->refreshReferralPoints($reward_model);
+            }
         }
+    }
+    
+    
+    protected function refreshReferralPoints($reward_model){
+        $order_increment = $reward_model->getOrderId();
+        $customer_id = $reward_model->getCustomerId();
+        $order = Mage::getModel('sales/order')->loadByIncrementId($order_increment);
+        //same order id + same customer id = child
+        //same order id + different customer id = parent
+        
+        //check if for order id, there is a referral id
+        $parentPointsModel = Mage::getModel('rewardpoints/stats');
+        $parentPointsModel->loadByOrderIncrementId($order_increment, $customer_id, true, true);
+        
+        $childPointsModel = Mage::getModel('rewardpoints/stats');
+        $childPointsModel->loadByOrderIncrementId($order_increment, $customer_id, true, false);
+        
+        if ( ($parent_credit_id = $parentPointsModel->getRewardpointsReferralId()) && ($child_credit_id = $childPointsModel->getRewardpointsReferralId()) ) {
+            //1. Parent points        
+            $rewardPoints = Mage::getStoreConfig('rewardpoints/registration/referral_points', $order->getStoreId());
+            $referralPointMethod = Mage::getStoreConfig('rewardpoints/registration/referral_points_method', $order->getStoreId());
+            if ($referralPointMethod != Rewardpoints_Model_Calculationtype::STATIC_VALUE){
+                $rewardPoints = $this->referralPointsEntry($order, $rewardPoints);
+                $parentPointsModel->setData("points_current", $rewardPoints);
+                $parentPointsModel->setOrderId($order->getIncrementId());
+                $parentPointsModel->save();
+            }
+            //2. Child points
+            $rewardChildPoints = Mage::getStoreConfig('rewardpoints/registration/referral_child_points', $order->getStoreId());
+            $referralChildPointMethod = Mage::getStoreConfig('rewardpoints/registration/referral_child_points_method', $order->getStoreId());
+            if ($referralChildPointMethod != Rewardpoints_Model_Calculationtype::STATIC_VALUE){
+                $rewardChildPoints = $this->referralChildPointsEntry($order, $rewardChildPoints);
+                $childPointsModel->setData("points_current", $rewardChildPoints);
+                $childPointsModel->setOrderId($order->getIncrementId());
+                $childPointsModel->save();
+            }
+        }
+    }
+    
+    protected function referralPointsEntry($order, $rewardPoints)
+    {
+        //Rewardpoints_Model_Calculationtype::STATIC_VALUE
+        //Rewardpoints_Model_Calculationtype::RATIO_POINTS
+        //Rewardpoints_Model_Calculationtype::CART_SUMMARY
+        $referralPointMethod = Mage::getStoreConfig('rewardpoints/registration/referral_points_method', $order->getStoreId());
+        if ($referralPointMethod == Rewardpoints_Model_Calculationtype::RATIO_POINTS){
+            $rate = $order->getBaseToOrderRate();
+            if ($rewardPoints > 0){
+                $rewardPoints = Mage::helper('rewardpoints/data')->getPointsOnOrder($order, null, $rate, false, $order->getStoreId(), $rewardPoints);
+            }
+        } else if ($referralPointMethod == Rewardpoints_Model_Calculationtype::CART_SUMMARY) {
+            if ( ($base_subtotal = $order->getBaseSubtotalInclTax()) && $rewardPoints > 0 ){
+                $summary_points = $base_subtotal * $rewardPoints;
+                //$summary_points = $base_subtotal * $rewardPointsChild;
+                if (Mage::getStoreConfig('rewardpoints/default/exclude_tax', $order->getStoreId())){
+                    $summary_points = $summary_points - $order->getBaseTaxAmount();
+                }
+                $rewardPoints = Mage::helper('rewardpoints/data')->processMathValue($summary_points);
+            }
+        }
+        return $rewardPoints;
+    }
+    
+    protected function referralChildPointsEntry($order, $rewardPointsChild)
+    {
+        //Rewardpoints_Model_Calculationtype::STATIC_VALUE
+        //Rewardpoints_Model_Calculationtype::RATIO_POINTS
+        //Rewardpoints_Model_Calculationtype::CART_SUMMARY
+        $referralChildPointMethod = Mage::getStoreConfig('rewardpoints/registration/referral_child_points_method', $order->getStoreId());
+        if ($referralChildPointMethod == Rewardpoints_Model_Calculationtype::RATIO_POINTS){
+            $rate = $order->getBaseToOrderRate();
+            if ($rewardPointsChild > 0){
+                $rewardPointsChild = Mage::helper('rewardpoints/data')->getPointsOnOrder($order, null, $rate, false, $order->getStoreId(), $rewardPointsChild);
+            }
+        } else if ($referralChildPointMethod == Rewardpoints_Model_Calculationtype::CART_SUMMARY) {
+            //if ( ($base_subtotal = $order->getBaseSubtotal()) && $rewardPointsChild > 0 ){
+            if ( ($base_subtotal = $order->getBaseSubtotalInclTax()) && $rewardPointsChild > 0 ){
+                $summary_points = $base_subtotal * $rewardPointsChild;
+                if (Mage::getStoreConfig('rewardpoints/default/exclude_tax', $order->getStoreId())){
+                    $summary_points = $summary_points - $order->getBaseTaxAmount();
+                }
+                $rewardPointsChild = Mage::helper('rewardpoints/data')->processMathValue($summary_points);
+            }
+        }
+        return $rewardPointsChild;
     }
 
 
@@ -613,10 +906,21 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
             Mage::getSingleton('rewardpoints/session')->unsetAll();
         }
 
-        $rewardPoints = Mage::getStoreConfig('rewardpoints/registration/referral_points', Mage::app()->getStore()->getId());
-        $rewardPointsChild = Mage::getStoreConfig('rewardpoints/registration/referral_child_points', Mage::app()->getStore()->getId());
-
-        if ($rewardPoints > 0 || $rewardPointsChild > 0 && $order->getCustomerEmail()){
+        //Mage::app()->getStore()->getId()
+        $rewardPoints = Mage::getStoreConfig('rewardpoints/registration/referral_points', $order->getStoreId());
+        $rewardPointsChild = Mage::getStoreConfig('rewardpoints/registration/referral_child_points', $order->getStoreId());        
+        $rewardPointsReferralMinOrder = Mage::getStoreConfig('rewardpoints/registration/referral_min_order', $order->getStoreId());
+        
+        
+        $rewardPoints = $this->referralPointsEntry($order, $rewardPoints);
+        $rewardPointsChild = $this->referralChildPointsEntry($order, $rewardPointsChild);
+        
+        $base_subtotal = $order->getBaseSubtotalInclTax();
+        if (Mage::getStoreConfig('rewardpoints/default/exclude_tax', $order->getStoreId())){
+            $base_subtotal = $base_subtotal - $order->getBaseTaxAmount();
+        }
+        
+        if ( ($rewardPoints > 0 || $rewardPointsChild > 0 && $order->getCustomerEmail()) && ($rewardPointsReferralMinOrder == 0 || $rewardPointsReferralMinOrder <= $base_subtotal)){
             //$order = $observer->getEvent()->getInvoice()->getOrder();
             $referralModel = Mage::getModel('rewardpoints/referral');
             if ($referralModel->isSubscribed($order->getCustomerEmail())) {
@@ -631,8 +935,7 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
                     $child    = Mage::getModel('customer/customer')->load($referralModel->getData('rewardpoints_referral_child_id'));
 
                     try {
-                        if ($rewardPoints > 0){
-                            
+                        if ($rewardPoints > 0){                            
                             $reward_model = Mage::getModel('rewardpoints/stats');
                             $post = array('order_id' => $order->getIncrementId(), 'customer_id' => $referralModel->getData('rewardpoints_referral_parent_id'),
                                 'store_id' => $order->getStoreId(), 'points_current' => $rewardPoints, 'rewardpoints_referral_id' => $referralModel->getData('rewardpoints_referral_id'));
@@ -640,15 +943,12 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
                             $reward_model->save();
                         }
 
-                        if ($rewardPointsChild > 0){
-                            
+                        if ($rewardPointsChild > 0){                            
                             $reward_model = Mage::getModel('rewardpoints/stats');
                             $post = array('order_id' => $order->getIncrementId(), 'customer_id' => $referralModel->getData('rewardpoints_referral_child_id'),
                                 'store_id' => $order->getStoreId(), 'points_current' => $rewardPointsChild, 'rewardpoints_referral_id' => $referralModel->getData('rewardpoints_referral_id'));
                             $reward_model->setData($post);
                             $reward_model->save();
-
-
                         }
 
                     } catch (Exception $e) {
@@ -658,14 +958,25 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
                 }
             }
         }
+        
     }
 
     public function sales_order_invoice_pay($observer)
     {
-        $rewardPoints = Mage::getStoreConfig('rewardpoints/registration/referral_points', Mage::app()->getStore()->getId());
-        $rewardPointsChild = Mage::getStoreConfig('rewardpoints/registration/referral_child_points', Mage::app()->getStore()->getId());
-        if ($rewardPoints > 0 || $rewardPointsChild > 0){
-            $order = $observer->getEvent()->getInvoice()->getOrder();
+        $order = $observer->getEvent()->getInvoice()->getOrder();
+        //Mage::app()->getStore()->getId()
+        $rewardPoints = Mage::getStoreConfig('rewardpoints/registration/referral_points', $order->getStoreId());
+        $rewardPointsChild = Mage::getStoreConfig('rewardpoints/registration/referral_child_points', $order->getStoreId());
+        
+        $rewardPointsReferralMinOrder = Mage::getStoreConfig('rewardpoints/registration/referral_min_order', $order->getStoreId());
+        
+        $base_subtotal = $order->getBaseSubtotalInclTax();
+        if (Mage::getStoreConfig('rewardpoints/default/exclude_tax', $order->getStoreId())){
+            $base_subtotal = $base_subtotal - $order->getBaseTaxAmount();
+        }
+        
+        if (($rewardPoints > 0 || $rewardPointsChild > 0) && ($rewardPointsReferralMinOrder == 0 || $rewardPointsReferralMinOrder <= $base_subtotal)){
+            
             $referralModel = Mage::getModel('rewardpoints/referral');
             if ($referralModel->isSubscribed($order->getCustomerEmail())) {
                 if (!$referralModel->isConfirmed($order->getCustomerEmail())) {
@@ -680,25 +991,13 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
 
                     try {
                         if ($rewardPoints > 0){
-                            //$reward_points = Mage::getModel('rewardpoints/account');
-                            //$reward_points->saveCheckedOrder($order->getIncrementId(), $referralModel->getData('rewardpoints_referral_parent_id'), $order->getStoreId(), $rewardPoints, $referralModel->getData('rewardpoints_referral_id'), true);
-
-
-
                             $reward_model = Mage::getModel('rewardpoints/stats');
                             $post = array('order_id' => $order->getIncrementId(), 'customer_id' => $referralModel->getData('rewardpoints_referral_parent_id'),
                                 'store_id' => $order->getStoreId(), 'points_current' => $rewardPoints, 'rewardpoints_referral_id' => $referralModel->getData('rewardpoints_referral_id'));
                             $reward_model->setData($post);
                             $reward_model->save();
-
                         }
-
-
                         if ($rewardPointsChild > 0){
-                            //$reward_points2 = Mage::getModel('rewardpoints/account');
-                            //$reward_points2->saveCheckedOrder($order->getIncrementId(), $referralModel->getData('rewardpoints_referral_child_id'), $order->getStoreId(), $rewardPointsChild, $referralModel->getData('rewardpoints_referral_id'), true);
-
-
                             $reward_model = Mage::getModel('rewardpoints/stats');
                             $post = array('order_id' => $order->getIncrementId(), 'customer_id' => $referralModel->getData('rewardpoints_referral_child_id'),
                                 'store_id' => $order->getStoreId(), 'points_current' => $rewardPointsChild, 'rewardpoints_referral_id' => $referralModel->getData('rewardpoints_referral_id'));
@@ -706,7 +1005,6 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
                             $reward_model->save();
 
                         }
-
                     } catch (Exception $e) {
                         //Mage::getSingleton('session')->addError($e->getMessage());
                     }

@@ -71,14 +71,16 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
 
 
         if (version_compare(Mage::getVersion(), '1.4.0', '>=')){
-            $select->where(" (".$this->getTable('rewardpoints/rewardpoints_account').".order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_BIRTHDAY."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN."' or ".$this->getTable('rewardpoints/rewardpoints_account').".order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REGISTRATION."'
+            //$select->where(" (".$this->getTable('rewardpoints/rewardpoints_account').".order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_BIRTHDAY."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_FB."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN."' or ".$this->getTable('rewardpoints/rewardpoints_account').".order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REGISTRATION."'
+            $select->where(" (".Mage::getModel("rewardpoints/stats")->constructSqlPointsType($this->getTable('rewardpoints/rewardpoints_account'))."
                    or ".$this->getTable('rewardpoints/rewardpoints_account').".order_id in  (SELECT increment_id
                        FROM ".$this->getTable('sales/order')." AS orders
                        WHERE orders.$status_field IN (?))
                  ) ", $order_states);
         } else {
             $table_sales_order = $this->getTable('sales/order').'_varchar';
-            $select->where(" (".$this->getTable('rewardpoints/rewardpoints_account').".order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_BIRTHDAY."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN."' or ".$this->getTable('rewardpoints/rewardpoints_account').".order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REGISTRATION."'
+            //$select->where(" (".$this->getTable('rewardpoints/rewardpoints_account').".order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_BIRTHDAY."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_FB."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN."' or ".$this->getTable('rewardpoints/rewardpoints_account').".order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REGISTRATION."'
+            $select->where(" (".Mage::getModel("rewardpoints/stats")->constructSqlPointsType($this->getTable('rewardpoints/rewardpoints_account'))."
                    or ".$this->getTable('rewardpoints/rewardpoints_account').".order_id in (SELECT increment_id
                                        FROM ".$this->getTable('sales/order')." AS orders
                                        WHERE orders.entity_id IN (
@@ -275,8 +277,9 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
             
             
             $this->getSelect()->where("orders.customer_id = main_table.customer_id");
-            $this->getSelect()->where("orders.$status_field IN (?) OR (orders.$status_field = 'new' AND orders.customer_id = main_table.customer_id)",$order_states);
-            
+            //$this->getSelect()->where("orders.$status_field IN (?) OR (orders.$status_field = 'new' AND orders.customer_id = main_table.customer_id)",$order_states);
+            $this->getSelect()->where("orders.$status_field IN (?,'new')",$order_states);
+            $this->getSelect()->where("orders.customer_id = main_table.customer_id");
         } else {
             
             //J2T magento 1.3.x fix
@@ -325,7 +328,7 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
         
     }
     
-    public function addValidPoints($store_id, $unset_date_limits = false)
+    public function addValidPoints($store_id, $unset_date_limits = false, $no_sum = false)
     {
         $statuses = Mage::getStoreConfig('rewardpoints/default/valid_statuses', $store_id);
         $status_field = Mage::getStoreConfig('rewardpoints/default/status_used', $store_id);
@@ -333,14 +336,13 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
         $order_states = explode(",", $statuses);
         $order_states_str = "'".implode("',",$order_states)."'";
         
+        if (!$no_sum){
+            $cols['points_current'] = 'SUM(main_table.points_current) as nb_credit';
+            $cols['points_spent'] = 'SUM(main_table.points_spent) as nb_credit_spent';
+            $cols['points_available'] = '(SUM(main_table.points_current) - SUM(main_table.points_spent)) as nb_credit_available';
+            $this->getSelect()->from($this->getResource()->getMainTable().' as child_table', $cols);
+        }
 
-        $cols['points_current'] = 'SUM(main_table.points_current) as nb_credit';
-        $cols['points_spent'] = 'SUM(main_table.points_spent) as nb_credit_spent';
-        
-        $cols['points_available'] = '(SUM(main_table.points_current) - SUM(main_table.points_spent)) as nb_credit_available';
-        
-
-        $this->getSelect()->from($this->getResource()->getMainTable().' as child_table', $cols);
 
         // checking if module rewardshare is available
         $sql_share = "";
@@ -369,10 +371,12 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
         
         if (version_compare(Mage::getVersion(), '1.4.0', '>=')){
             //main_table.order_id = '".J2t_Rewardshare_Model_Stats::TYPE_POINTS_SHARE."' or
-            $this->getSelect()->where("($sql_required $sql_share main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW."' 
+            /*$this->getSelect()->where("($sql_required $sql_share main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW."' 
                     OR main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_BIRTHDAY."'
                     OR main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN."'
-                    OR main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REGISTRATION."' 
+                    OR main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REGISTRATION."'
+                    OR main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_FB."'*/
+            $this->getSelect()->where(" (".Mage::getModel("rewardpoints/stats")->constructSqlPointsType("main_table")."
                         
                         OR (main_table.order_id in (
                                     SELECT increment_id FROM ".$this->getTable('sales/order')." AS orders_new 
@@ -397,11 +401,13 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
             //J2T magento 1.3.x fix
             
             $table_sales_order = $this->getTable('sales/order').'_varchar';
-            $this->getSelect()->where(" ($sql_required $sql_share main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW."' 
+            /*$this->getSelect()->where(" ($sql_required $sql_share main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW."' 
                             OR main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_BIRTHDAY."'
                             OR main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN."'
                             OR main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REGISTRATION."' 
-
+                            OR main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_FB."'*/
+            $this->getSelect()->where(" (".Mage::getModel("rewardpoints/stats")->constructSqlPointsType("main_table")."
+                
                             OR (
                                 main_table.order_id in (
                                        SELECT increment_id
@@ -438,7 +444,9 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
         
            
         //$this->getSelect()->where('main_table.customer_id IS NOT NULL');
-        $this->getSelect()->where('main_table.rewardpoints_account_id = child_table.rewardpoints_account_id');
+        if (!$no_sum){
+            $this->getSelect()->where('main_table.rewardpoints_account_id = child_table.rewardpoints_account_id');
+        }
 
         if (Mage::getStoreConfig('rewardpoints/default/store_scope', $store_id)){
             $this->getSelect()->where('find_in_set(?, main_table.store_id)', $store_id);
@@ -452,7 +460,10 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
         if (Mage::getStoreConfig('rewardpoints/default/points_duration', $store_id) && !$unset_date_limits){
             $this->getSelect()->where('( main_table.date_end >= NOW() or main_table.date_end IS NULL)');
         }
-        $this->getSelect()->group('main_table.customer_id');
+        
+        if (!$no_sum){
+            $this->getSelect()->group('main_table.customer_id');
+        }
         
         /*echo $this->getSelect()->__toString();
         die;*/
@@ -527,6 +538,10 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
                                  ) or";
             }
         }
+        
+        if (Mage::getConfig()->getModuleConfig('J2t_Rewardshare')->is('active', 'true')){
+            $sql_required .= " main_table.order_id = '".J2t_Rewardshare_Model_Stats::TYPE_POINTS_SHARE."' or";
+        }
 
 
         if ($spent){
@@ -544,14 +559,19 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
                     or main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REGISTRATION."' or main_table.order_id in (
                         SELECT increment_id FROM ".$this->getTable('sales/order')." AS orders WHERE orders.customer_id = '".$customer_id."' AND orders.state IN (".implode(',',$order_states)."))
                         )");*/
-            $this->getSelect()->where("( $sql_required main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW."' or main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_BIRTHDAY."' or main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN."'
-                    or main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REGISTRATION."' or main_table.order_id in (
+            /*$this->getSelect()->where("( $sql_required main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_FB."' or main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_BIRTHDAY."' or main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN."'
+                    or main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REGISTRATION."' */
+            $this->getSelect()->where(" ( $sql_required ".Mage::getModel("rewardpoints/stats")->constructSqlPointsType("main_table")."
+        
+                        or main_table.order_id in (
                         SELECT increment_id FROM ".$this->getTable('sales/order')." AS orders WHERE (orders.customer_id = main_table.customer_id OR orders.customer_id IN (SELECT referral_table.rewardpoints_referral_child_id FROM ".$this->getTable('rewardpoints/referral')." AS referral_table WHERE main_table.rewardpoints_referral_id = referral_table.rewardpoints_referral_id)) AND orders.$status_field IN (?))
                         )", $order_states);
         } else {
             $table_sales_order = $this->getTable('sales/order').'_varchar';
-            $this->getSelect()->where(" ( $sql_required main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW."' or main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_BIRTHDAY."' or main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN."'
-                            or main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REGISTRATION."' or main_table.order_id in (SELECT increment_id
+            /*$this->getSelect()->where(" ( $sql_required main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW."' or '".Rewardpoints_Model_Stats::TYPE_POINTS_FB."' or main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_BIRTHDAY."' or main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN."'
+                            or main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REGISTRATION."' */
+            $this->getSelect()->where(" ( $sql_required ".Mage::getModel("rewardpoints/stats")->constructSqlPointsType("main_table")."
+                                or main_table.order_id in (SELECT increment_id
                                        FROM ".$this->getTable('sales/order')." AS orders
                                        WHERE orders.entity_id IN (
                                            SELECT order_state.entity_id

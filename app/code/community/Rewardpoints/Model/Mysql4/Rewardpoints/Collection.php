@@ -26,7 +26,8 @@ class Rewardpoints_Model_Mysql4_Rewardpoints_Collection extends Mage_Core_Model_
         'points_current'            => 'points_current',
         'points_spent'              => 'points_spent',
         'rewardpoints_description'  => 'rewardpoints_description',
-        'store_ids'       => 'main_table.store_id'
+        'rewardpoints_linker'       => 'rewardpoints_linker',
+        'store_ids'                 => 'main_table.store_id'
     );
 
     public function _construct()

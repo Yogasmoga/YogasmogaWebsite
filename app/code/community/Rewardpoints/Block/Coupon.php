@@ -122,7 +122,9 @@ class Rewardpoints_Block_Coupon extends Mage_Checkout_Block_Cart_Abstract
         /*if (Mage::getStoreConfig('rewardpoints/default/process_tax', Mage::app()->getStore()->getId()) == 1){
             $order_details = $this->getQuote()->getSubtotalInclTax();
         }*/
-        $order_details = Mage::getModel('rewardpoints/discount')->getCartAmount();
+        //$order_details = Mage::getModel('rewardpoints/discount')->getCartAmount();
+        //J2T MOD. getCartAmount
+        $order_details = Mage::getModel('rewardpoints/discount')->getCartAmount($this->getQuote());
         
 
         $cart_amount = Mage::helper('rewardpoints/data')->processMathValue($order_details);

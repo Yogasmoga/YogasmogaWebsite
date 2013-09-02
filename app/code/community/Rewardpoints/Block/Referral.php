@@ -24,6 +24,7 @@ class Rewardpoints_Block_Referral extends Mage_Core_Block_Template
         $this->setTemplate('rewardpoints/referral.phtml');
         $referred = Mage::getResourceModel('rewardpoints/referral_collection')
             ->addClientFilter(Mage::getSingleton('customer/session')->getCustomer()->getId());
+        $referred->getSelect()->order('rewardpoints_referral_id DESC');
         $this->setReferred($referred);
     }
 
@@ -74,5 +75,20 @@ class Rewardpoints_Block_Referral extends Mage_Core_Block_Template
     public function getFriendPoints()
     {
         return Mage::getStoreConfig('rewardpoints/registration/referral_child_points', Mage::app()->getStore()->getId());
+    }
+    
+    public function getReferrerCalculationType()
+    {
+        return Mage::getStoreConfig('rewardpoints/registration/referral_points_method', Mage::app()->getStore()->getId());
+    }
+    
+    public function getFriendCalculationType()
+    {
+        return Mage::getStoreConfig('rewardpoints/registration/referral_child_points_method', Mage::app()->getStore()->getId());
+    }
+    
+    public function getMinOrderAmount()
+    {
+        return Mage::getStoreConfig('rewardpoints/registration/referral_min_order', Mage::app()->getStore()->getId());
     }
 }
