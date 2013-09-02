@@ -22,10 +22,7 @@ class Rewardpoints_Model_Validator extends Mage_SalesRule_Model_Validator
         try {
             $customer = Mage::getSingleton('customer/session');
             if ($customer->isLoggedIn()){
-
                 $customerId = Mage::getModel('customer/session')->getCustomerId();
-                
-
                 $auto_use = Mage::getStoreConfig('rewardpoints/default/auto_use', Mage::app()->getStore()->getId());
                 if ($auto_use){
                     if (Mage::getStoreConfig('rewardpoints/default/flatstats', Mage::app()->getStore()->getId())){
@@ -37,7 +34,8 @@ class Rewardpoints_Model_Validator extends Mage_SalesRule_Model_Validator
                     }
                     
                     if ($customer_points && $customer_points > Mage::helper('rewardpoints/event')->getCreditPoints()){
-                        $cart_amount = Mage::getModel('rewardpoints/discount')->getCartAmount();
+                        //J2T MOD. getCartAmount
+                        $cart_amount = Mage::getModel('rewardpoints/discount')->getCartAmount($item->getQuote());
                         $cart_amount = Mage::helper('rewardpoints/data')->processMathValue($cart_amount);
                         
 
