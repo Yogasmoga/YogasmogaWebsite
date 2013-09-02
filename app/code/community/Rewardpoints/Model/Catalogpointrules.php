@@ -98,11 +98,7 @@ class Rewardpoints_Model_Catalogpointrules extends Mage_Rule_Model_Rule
 
         $storeId = Mage::app()->getStore($request->getStore())->getId();
         $websiteId = Mage::app()->getStore($storeId)->getWebsiteId();
-        if ($to_validate->getCustomerGroupId()){
-            $customerGroupId = $to_validate->getCustomerGroupId();
-        } else {
-            $customerGroupId = Mage::getSingleton('customer/session')->getCustomerGroupId();
-        }
+        $customerGroupId = Mage::getSingleton('customer/session')->getCustomerGroupId();
 
         $rules = Mage::getModel('rewardpoints/catalogpointrules')->getCollection()->setValidationFilter($websiteId, $customerGroupId, $couponCode);
 
@@ -178,59 +174,38 @@ class Rewardpoints_Model_Catalogpointrules extends Mage_Rule_Model_Rule
     }
 
 
-    public function getAllCatalogRulePointsGathered($product = null, $item_default_points = null, $storeId = false, $default_qty = 1, $customerGroupId = null)
+    public function getAllCatalogRulePointsGathered($product = null, $item_default_points = null)
     {
-        $points = $this->getCatalogRulePointsGathered($product, $item_default_points, $storeId, $default_qty, $customerGroupId);   
+        $points = $this->getCatalogRulePointsGathered($product, $item_default_points);   
         return $points;
     }
 
-    //BUNDLE FIX PRICE FIX - $onlyMultiplyDivide
-    public function getCatalogRulePointsGathered($to_validate, $item_default_points = null, $storeId = false, $default_qty = 1, $customerGroupId = null, $onlyMultiplyDivide = false)
-    //public function getCatalogRulePointsGathered($to_validate, $item_default_points = null, $storeId = false, $default_qty = 1, $customerGroupId = null)
+    
+    public function getCatalogRulePointsGathered($to_validate, $item_default_points = null)
     {
         $points = 0;
         
-        if (!$storeId){
-            $storeId = Mage::app()->getStore()->getId();
-        }
-        
+        $storeId = Mage::app()->getStore()->getId();
         $websiteId = Mage::app()->getStore($storeId)->getWebsiteId();
-        
-        if ($to_validate->getCustomerGroupId() && $customerGroupId == null){
-            $customerGroupId = $to_validate->getCustomerGroupId();
-        } else if ($customerGroupId == null){
-            $customerGroupId = Mage::getSingleton('customer/session')->getCustomerGroupId();
-        }
+        $customerGroupId = Mage::getSingleton('customer/session')->getCustomerGroupId();
 
         $rules = Mage::getModel('rewardpoints/catalogpointrules')->getCollection()->setValidationFilter($websiteId, $customerGroupId);
-        $points_temp = 0;
         foreach($rules as $rule)
         {
             if (!$rule->getStatus()) continue;
             $rule_validate = Mage::getModel('rewardpoints/catalogpointrules')->load($rule->getRuleId());
             if ($rule_validate->validate($to_validate)){
+                
                 if ($rule_validate->getActionType() == self::RULE_ACTION_TYPE_DONTPROCESS){
-                    return false;
+                   return false;
                 } else if ($rule_validate->getActionType() == self::RULE_ACTION_TYPE_MULTIPLY){
                     $multiply = ($rule_validate->getPoints() <= 0) ? 1 : $rule_validate->getPoints();
-                    
-                    $item_default_points = $item_default_points / $default_qty;
-                    
-                    $points_temp += ($item_default_points * $multiply);
-                    $points += $points_temp - $item_default_points;
-                    //$points += Mage::helper('rewardpoints')->processMathBaseValue($points_temp - $item_default_points);
-                    //$points += ceil($points_temp - $item_default_points);
-                    //$points += ceil($points_temp - ($item_default_points * $default_qty));
-                    //$points += ceil($points_temp - ($item_default_points));
-                    
+                    $points_temp += $item_default_points * $multiply;
+                    $points += ceil($points_temp - $item_default_points);
                 } else if ($rule_validate->getActionType() == self::RULE_ACTION_TYPE_DIVIDE){
                     $divide = ($rule_validate->getPoints() <= 0) ? 1 : $rule_validate->getPoints();
-                    $item_default_points = $item_default_points / $default_qty;
                     $points_temp += $item_default_points / $divide;
-                    //$points += ceil($points_temp - ($item_default_points * $default_qty));
-                    //$points += ceil($points_temp - ($item_default_points));
-                    //$points += Mage::helper('rewardpoints')->processMathBaseValue($points_temp - ($item_default_points));
-                    $points += $points_temp - $item_default_points;
+                    $points += ceil($points_temp - $item_default_points);
                 } else {
                     $points += $rule_validate->getPoints();
                 }

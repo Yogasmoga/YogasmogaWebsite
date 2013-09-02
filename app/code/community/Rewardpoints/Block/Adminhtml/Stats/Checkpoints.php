@@ -36,7 +36,7 @@ class Rewardpoints_Block_Adminhtml_Stats_Checkpoints extends Mage_Adminhtml_Bloc
 
     public function getHeaderText()
     {
-        return Mage::helper('rewardpoints')->__('Reprocess point collection (points are calculated according to module configuration applied on orders)');
+        return Mage::helper('rewardpoints')->__('Refresh customer points');
     }
 
     public function getFormHtml()

@@ -18,9 +18,9 @@
  */
 // >>in case of tax calculation issue, uncomment the appropriate line
 //class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Total_Discount //magento 1.3.x
-class Rewardpoints_Model_Total_Points extends Mage_SalesRule_Model_Quote_Discount //magento 1.4.x and greater
+//class Rewardpoints_Model_Total_Points extends Mage_SalesRule_Model_Quote_Discount //magento 1.4.x and greater
 // ... and comment the following line
-//class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Total_Abstract
+class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Total_Abstract
 {
     /*public function __construct()
     {
@@ -54,14 +54,9 @@ class Rewardpoints_Model_Total_Points extends Mage_SalesRule_Model_Quote_Discoun
         $totalDiscountAmount = 0;
         $baseTotalDiscountAmount = 0;
         
-        // verify max percent usage
-        $creditPoints = $this->percentPointMax($address->getQuote(), $creditPoints);
-        
         if ($userId = Mage::getSingleton('rewardpoints/session')->getReferralUser()){
             $address->getQuote()->setRewardpointsReferrer($userId);
         }
-        
-        //Mage::getModel('rewardpoints/discount')->getCartAmount($address->getQuote()) >= 50;
         
         if ($creditPoints > 0 && $this->checkMinUse($address->getQuote())){
             //$pointsAmount = Mage::helper('rewardpoints/data')->convertPointsToMoney($creditPoints, $address->getCustomerId());
@@ -80,24 +75,7 @@ class Rewardpoints_Model_Total_Points extends Mage_SalesRule_Model_Quote_Discoun
                 //echo $item->getProduct()->getData('reward_no_discount');
                 //die;
                 
-                //get price to be removed from discount
-                $remove_price = 0;
-                if ($item->getHasChildren() && $item->isChildrenCalculated()) {
-                    foreach ($item->getChildren() as $child) {
-                        //$i = $i + $child->getQty();
-                        if ($product = $child->getProduct()) {
-                            if ($product->getData('reward_no_discount')) {
-                                if (Mage::getStoreConfig('rewardpoints/default/process_tax', $address->getQuote()->getStoreId()) == 1 && Mage::getStoreConfig('tax/calculation/apply_after_discount', $address->getQuote()->getStoreId()) == 0){
-                                    $tax = ($child->getTaxBeforeDiscount() ? $child->getTaxBeforeDiscount() : $child->getTaxAmount());
-                                    $row_base_total = $child->getBaseRowTotal() + $tax;
-                                } else {
-                                    $row_base_total = $child->getBaseRowTotal();
-                                }
-                                $remove_price += $row_base_total;
-                            }
-                        }
-                    }
-                }
+                
                 if ($product = $item->getProduct()) {
                     if ($product->getData('reward_no_discount')) {
                         continue;
@@ -108,9 +86,7 @@ class Rewardpoints_Model_Total_Points extends Mage_SalesRule_Model_Quote_Discoun
                     $row_base_total = $item->getBaseRowTotal() + $tax;
                 } else {
                     $row_base_total = $item->getBaseRowTotal();
-                }
-                
-                $row_base_total -= $remove_price;
+                }            
                 $baseDiscountAmount = min($row_base_total - $item->getBaseDiscountAmount(), $pointsAmount);
                 
                 if ($baseDiscountAmount > 0){
@@ -154,15 +130,11 @@ class Rewardpoints_Model_Total_Points extends Mage_SalesRule_Model_Quote_Discoun
                     $shipping_tax = $address->getBaseShippingTaxAmount();
                 }
                 
-                $baseShippingDiscountAmount = min(( ($address->getBaseShippingAmount() + $shipping_tax - $address->getBaseShippingDiscountAmount())), $pointsAmount);
+                $baseShippingDiscountAmount = min(($address->getBaseShippingAmount()+$shipping_tax), $pointsAmount);
                 $points = -$baseShippingDiscountAmount;
                 $totalPBasePrice += $points;
                 $totalPPrice += $address->getQuote()->getStore()->convertPrice($points, false);
                 $pointsAmount -= $baseShippingDiscountAmount;
-                
-                $address->setShippingDiscountAmount($address->getQuote()->getStore()->convertPrice($baseShippingDiscountAmount, false) + $address->getShippingDiscountAmount());
-                $address->setBaseShippingDiscountAmount($baseShippingDiscountAmount + $address->getBaseShippingDiscountAmount());
-                
             }
             //J2T end process shipping address
             
@@ -204,7 +176,7 @@ class Rewardpoints_Model_Total_Points extends Mage_SalesRule_Model_Quote_Discoun
                 ->_setBaseAmount($totalPBasePrice);*/
             
             if ($pts = Mage::helper('rewardpoints/event')->getCreditPoints($address->getQuote())){
-                $title = Mage::helper('rewardpoints')->__('%s points used', $pts);
+                $title = Mage::helper('rewardpoints')->__('%s smogi bucks used', $pts);
                 
                 $address->getQuote()->setRewardpointsDescription($title);
                 //$title_base = $title;
@@ -301,52 +273,6 @@ class Rewardpoints_Model_Total_Points extends Mage_SalesRule_Model_Quote_Discoun
         return Mage::helper('rewardpoints/event')->getCreditPoints($quote);
     }
     
-    protected function getCurrentCurrencyRate($quote = null)
-    {
-        if ($quote == null) {
-            $currentCode = Mage::app()->getStore()->getCurrentCurrencyCode();
-        } else {
-            $currentCode = $quote->getStore()->getCurrentCurrency()->getCurrencyCode();
-        }
-        if ($currentCode == ""){
-            $currentCode = Mage::app()->getStore()->getCurrentCurrencyCode();
-        }
-        
-        $baseCode = Mage::app()->getBaseCurrencyCode();      
-        $allowedCurrencies = Mage::getModel('directory/currency')->getConfigAllowCurrencies(); 
-        $rates = Mage::getModel('directory/currency')->getCurrencyRates($baseCode, array_values($allowedCurrencies));
-        
-        $current_rate = (isset($rates[$currentCode])) ? $rates[$currentCode] : 1;
-        return $current_rate;
-    }
-    
-    
-    protected function percentPointMax($quote, $current_points_usage)
-    {
-        $return_value = $current_points_usage;
-        //max_point_percent_order
-        $store_id = $quote->getStoreId();
-        $percent_use = (int)Mage::getStoreConfig('rewardpoints/default/max_point_percent_order', $store_id);
-        $percent_use = ($percent_use > 100 || $percent_use <= 0) ? 100 : $percent_use;
-        
-        //todo use base total
-        $cart_amount = Mage::getModel('rewardpoints/discount')->getCartAmount($quote);        
-        $cart_amount = $cart_amount / $this->getCurrentCurrencyRate($quote);
-        //TODO - check if we need to use multiply for higher rate (CHF for example)
-        //echo $cart_amount;
-        //die;
-        
-        $cart_amount = ( $cart_amount * $percent_use ) / 100;
-        $cart_amount = Mage::helper('rewardpoints/data')->processMathValue($cart_amount);
-        $points_value = Mage::helper('rewardpoints/data')->convertMoneyToPoints($cart_amount);
-        
-        if ($points_value < $current_points_usage){
-            $return_value = $points_value;
-            //$quote->setRewardpointsQuantity($return_value);
-        }
-        return $return_value;
-    }
-    
     protected function checkMinUse($quote)
     {
         $store_id = $quote->getStoreId();
@@ -383,7 +309,6 @@ class Rewardpoints_Model_Total_Points extends Mage_SalesRule_Model_Quote_Discoun
             //$auto_use = Mage::getStoreConfig('rewardpoints/default/auto_use', Mage::app()->getStore()->getId());
             $auto_use = Mage::getStoreConfig('rewardpoints/default/auto_use', $store_id);
             if ($auto_use){
-                
                 if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
                     $reward_model = Mage::getModel('rewardpoints/flatstats');
                     $customer_points = $reward_model->collectPointsCurrent($customerId, $store_id);
@@ -393,12 +318,12 @@ class Rewardpoints_Model_Total_Points extends Mage_SalesRule_Model_Quote_Discoun
                 }
 
                 if ($customer_points && $customer_points > Mage::helper('rewardpoints/event')->getCreditPoints($quote)){
-                    $cart_amount = Mage::getModel('rewardpoints/discount')->getCartAmount($quote);
-                    //todo use base total
-                    $cart_amount = $cart_amount / $this->getCurrentCurrencyRate($quote);
+                    $cart_amount = Mage::getModel('rewardpoints/discount')->getCartAmount();
                     $cart_amount = Mage::helper('rewardpoints/data')->processMathValue($cart_amount);
                     $points_value = min(Mage::helper('rewardpoints/data')->convertMoneyToPoints($cart_amount), (int)$customer_points);
-                    
+
+                    //echo $points_value;
+                    //die;
                     Mage::getSingleton('customer/session')->setProductChecked(0);
                     Mage::helper('rewardpoints/event')->setCreditPoints($points_value);
                     
