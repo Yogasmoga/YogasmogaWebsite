@@ -39,8 +39,8 @@
                 continue;
         ?>
         <tr>
-            <td>
-                <strong><?php echo $this->escapeHtml($_label)?>:</strong>&nbsp;<?php echo nl2br(implode($this->getValueAsArray($_value, true), "\n"))?>
+            <td style="padding: 0 0 !important;">
+                <?php echo strtoupper($this->escapeHtml($_label)) ?>:&nbsp;<?php echo nl2br(implode($this->getValueAsArray($_value, true), "\n"))?>
             </td>
         </tr>
     <?php endforeach; ?>
