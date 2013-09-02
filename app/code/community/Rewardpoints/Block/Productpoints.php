@@ -22,48 +22,6 @@ class Rewardpoints_Block_Productpoints extends Mage_Catalog_Block_Product_Abstra
         $childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null,$product);
     }
 
-    
-    public function getTierPricesJson($product, $return_array = false)
-    {
-        //TODO : configurable product tierprice
-        //$prices  = $product->getFormatedTierPrice();
-        $prices  = $product->getTierPrice();
-        $res = array();
-        if (is_array($prices)) {
-            foreach ($prices as $price) {
-                $price['price_qty'] = $price['price_qty']*1;
-                $price['savePercent'] = ceil(100 - $price['price']);
-                $price['saveAmount'] = $product->getPrice() - $price['website_price'];
-                $price['saveAmountCurrency'] = Mage::helper('core')->currency($price['saveAmount'], false, false);
-                $price['savePoints'] = Mage::helper('rewardpoints/data')->convertProductMoneyToPoints($price['saveAmount']);
-                
-                
-                //Mage::helper('rewardpoints/data')->getProductPoints($_product, true)
-                $tierprice_incl_tax = Mage::helper('tax')->getPrice($product, $price['website_price'], true);
-                $tierprice_excl_tax = Mage::helper('tax')->getPrice($product, $price['website_price']);
-                //getProductPoints($product, $noCeil = false, $from_list = false, $money_points = false, $tierprice_incl_tax = null, $tierprice_excl_tax = null)
-                $price['productTierPoints'] = Mage::helper('rewardpoints/data')->getProductPoints($product, true, false, false, $tierprice_incl_tax, $tierprice_excl_tax);
-                
-                /*if (Mage::getStoreConfig('rewardpoints/default/exclude_tax', Mage::app()->getStore()->getId())){
-                    $price['productTierPoints'] = Mage::helper('rewardpoints/data')->convertProductMoneyToPoints(Mage::helper('tax')->getPrice($product, $price['website_price']));
-                } else {
-                    $price['productTierPoints'] = Mage::helper('rewardpoints/data')->convertProductMoneyToPoints(Mage::helper('tax')->getPrice($product, $price['website_price'], true));
-                }*/
-                //$price['formated_price'] = Mage::app()->getStore()->formatPrice(Mage::app()->getStore()->convertPrice(Mage::helper('tax')->getPrice($product, $price['website_price'])));
-                //$price['formated_price_incl_tax'] = Mage::app()->getStore()->formatPrice(Mage::app()->getStore()->convertPrice(Mage::helper('tax')->getPrice($product, $price['website_price'], true)));
-                $res[] = $price;
-            }
-        }
-        
-        if ($return_array){
-            return $res;
-        } else if (version_compare(Mage::getVersion(), '1.4.0', '>=')){
-            return Mage::helper('core')->jsonEncode($res);
-        } else {
-            return Zend_Json::encode($res);
-        }
-    }
-    
 
     public function getOptions($product)
     {
@@ -181,11 +139,9 @@ class Rewardpoints_Block_Productpoints extends Mage_Catalog_Block_Product_Abstra
                 } else {
                     $pts = Mage::helper('rewardpoints/data')->getProductPoints($_selection);
                 }
-                //BUNDLE FIX PRICE FIX
-                $extra_points = Mage::getModel('rewardpoints/catalogpointrules')->getCatalogRulePointsGathered($product, $pts, Mage::app()->getStore()->getId(), 1, null, true);
 
                 $selection = array (
-                    'points' => $pts + $extra_points,
+                    'points' => $pts,
                     'subprice' => $subprice,
                     'optionId' => $_option->getId(),
                 );
@@ -227,7 +183,7 @@ class Rewardpoints_Block_Productpoints extends Mage_Catalog_Block_Product_Abstra
             $allowAttributes = $_product->getTypeInstance(true)
                         ->getConfigurableAttributes($_product);
             
-            $tierPrices = $this->getTierPricesJson($_product, true);
+            
             foreach ($allProducts as $product) {
                 if ($product->isSaleable()) {
                     $attr_values = array();
@@ -237,20 +193,7 @@ class Rewardpoints_Block_Productpoints extends Mage_Catalog_Block_Product_Abstra
                         $attributeValue = $product->getData($productAttribute->getAttributeCode());
                         $attr_values[] = $attributeValue;
                     }
-                    $return_val[implode("|",$attr_values)] = Mage::helper('rewardpoints/data')->getProductPoints($product, true, false);
-                    //TIER PRICE MODIFICATION
-                    if ($tierPrices != array()){
-                        $tmpTierPrice = array();
-                        foreach ($tierPrices as $tierPrice){
-                            $_finalPriceInclTax = Mage::helper('tax')->getPrice($product, $product->getFinalPrice(), true);
-                            $_weeeTaxAmount = Mage::helper('weee')->getAmount($product);
-                            $price_exc_tax = Mage::helper('tax')->getPrice($product, $product->getFinalPrice(), false) - $tierPrice['saveAmount'];
-                            $price_inc_tax = $_finalPriceInclTax+$_weeeTaxAmount - $tierPrice['saveAmount'];
-                            $tmpTierPrice[] = array ("price_qty" => $tierPrice['price_qty'], "productTierPoints" => Mage::helper('rewardpoints/data')->getProductPoints($product, true, false, false, $price_inc_tax, $price_exc_tax));
-                            //[$tierPrice['price_qty']] = Mage::helper('rewardpoints/data')->getProductPoints($product, true, false, false, $price_inc_tax, $price_exc_tax);
-                        }
-                        $return_val[implode("|",$attr_values).'|tierPrice'] = $tmpTierPrice;
-                    }
+                    $return_val[implode("|",$attr_values)] = Mage::helper('rewardpoints/data')->getProductPoints($product, false, false);
                 }
             }
             
@@ -288,7 +231,6 @@ class Rewardpoints_Block_Productpoints extends Mage_Catalog_Block_Product_Abstra
                                 if(!isset($options[$attributeId][$value['value_index']])) {
                                     continue;
                                 }
-                                
                                 $price = $value['pricing_value'];
                                 $isPercent = $value['is_percent'];
                                 if ($isPercent && !empty($price)) {
@@ -299,8 +241,6 @@ class Rewardpoints_Block_Productpoints extends Mage_Catalog_Block_Product_Abstra
                                     $attribute_credit[$attributeValue] = array();
                                 }
                                 $attr_list[] = $value['value_index'];
-                                
-                                //$tierprice_json = $this->getTierPricesJson($_product);
                                 
                                 //$attribute_credit[$attributeValue][$value['value_index']] = Mage::helper('rewardpoints/data')->getProductPoints($product, false, false);
                                 

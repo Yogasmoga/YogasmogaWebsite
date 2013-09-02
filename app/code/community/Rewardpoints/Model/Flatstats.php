@@ -34,8 +34,8 @@ class Rewardpoints_Model_Flatstats extends Mage_Core_Model_Abstract
     }
     
     
-    public function processRecordFlat($customerId, $store_id, $check_date = false, $force_process = false){
-        if ($customerId){
+    public function processRecordFlat($customerId, $store_id, $check_date = false){
+        if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
             $reward_model = Mage::getModel('rewardpoints/stats');
             $points_current = $reward_model->getPointsCurrent($customerId, $store_id);
             $points_received = $reward_model->getRealPointsReceivedNoExpiry($customerId, $store_id);
@@ -43,8 +43,6 @@ class Rewardpoints_Model_Flatstats extends Mage_Core_Model_Abstract
             $points_awaiting_validation = $reward_model->getPointsWaitingValidation($customerId, $store_id);
             $points_lost = $reward_model->getRealPointsLost($customerId, $store_id);
 
-            
-            
             $this->loadByCustomerStore($customerId, $store_id);
             $this->setPointsCollected($points_received);
             $this->setPointsUsed($points_spent);
@@ -62,21 +60,6 @@ class Rewardpoints_Model_Flatstats extends Mage_Core_Model_Abstract
             }            
             $this->setLastCheck(date("Y-m-d"));            
             $this->save();
-            
-            if ($website_id = Mage::getModel('core/store')->load($store_id)->getWebsiteId()){
-                $customer = Mage::getModel('customer/customer')
-                   ->setWebsiteId($website_id)
-                   ->load($customerId);
-
-                if ($customer->getId()){
-                    $customer->setRewardpointsAccumulated($points_received);
-                    $customer->setRewardpointsAvailable($points_current);
-                    $customer->setRewardpointsSpent($points_spent);
-                    $customer->setRewardpointsLost($points_lost);
-                    $customer->setRewardpointsWaiting($points_awaiting_validation);
-                    $customer->save();
-                }
-            }
         }
     }
     

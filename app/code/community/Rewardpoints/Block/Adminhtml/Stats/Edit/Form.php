@@ -115,13 +115,6 @@ class Rewardpoints_Block_Adminhtml_Stats_Edit_Form extends Mage_Adminhtml_Block_
             'format' => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
             'required'  => false,
         ));
-        
-        $fieldset->addField('rewardpoints_notification', 'checkbox', array(
-            'label'     => Mage::helper('rewardpoints')->__('Send notification email'),
-            'required'  => false,
-            'name'      => 'rewardpoints_notification',
-            'onclick'   => 'this.value = this.checked ? 1 : 0;',
-        ));
 
 
 

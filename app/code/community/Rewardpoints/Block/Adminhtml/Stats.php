@@ -34,8 +34,9 @@ class Rewardpoints_Block_Adminhtml_Stats extends Mage_Adminhtml_Block_Widget_Gri
         $this->_headerText = Mage::helper('rewardpoints')->__('Statistics');
         parent::__construct();
         $this->_addButtonLabel = Mage::helper('rewardpoints')->__('Add Points');
-        $this->_addButton ('check_all_points', array('label'=> Mage::helper('rewardpoints')->__('Reprocess point collection'), 'class' => 'save', 'onclick'   => 'setLocation(\''.$this->getCheckPointsUrl().'\')'));
-        $this->_addButton ('check_user_points', array('label'=> Mage::helper('rewardpoints')->__('Refresh all customer points'), 'class' => 'save', 'onclick'   => 'if (confirm(\''.Mage::helper('rewardpoints')->__('This operation will gather all collected customer points in order to be managed in a faster way. This process may take a long time, do you want to proceed?').'\')) {setLocation(\''.$this->getCheckAllPointsUrl().'\')}'));
+        $this->_addButton ('check_all_points', array('label'=> Mage::helper('rewardpoints')->__('Refresh customer points'), 'class' => 'save', 'onclick'   => 'setLocation(\''.$this->getCheckPointsUrl().'\')'));
+
+
     }
 
     public function getCustomer()
@@ -54,11 +55,6 @@ class Rewardpoints_Block_Adminhtml_Stats extends Mage_Adminhtml_Block_Widget_Gri
     public function getCheckPointsUrl()
     {
         return $this->getUrl('*/*/checkpoints');
-    }
-    
-    public function getCheckAllPointsUrl()
-    {
-        return $this->getUrl('*/*/allcustomerpoints');
     }
 
 }

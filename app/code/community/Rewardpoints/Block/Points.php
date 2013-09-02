@@ -22,10 +22,8 @@ class Rewardpoints_Block_Points extends Mage_Core_Block_Template
     {
         parent::__construct();
         $this->setTemplate('referafriend/points.phtml');
-        //->addAttributeToSort('rewardpoints_account_id', 'ASC')
         $points = Mage::getModel('rewardpoints/stats')->getCollection()
             ->addClientFilter(Mage::getSingleton('customer/session')->getCustomer()->getId());
-        $points->getSelect()->order('rewardpoints_account_id DESC');
         $this->setPoints($points);
     }
 
@@ -46,7 +44,7 @@ class Rewardpoints_Block_Points extends Mage_Core_Block_Template
     }
 
 
-    public function getTypeOfPoint($_point, $referral_id = null)
+    public function getTypeOfPoint($_point)
     {
         $order_id = $_point->getOrderId();
         $referral_id = $_point->getRewardpointsReferralId();
@@ -63,45 +61,6 @@ class Rewardpoints_Block_Points extends Mage_Core_Block_Template
             $toHtml .=  '<div class="j2t-in-txt">'.$this->__('Referral order state: %s',$this->__($order->getData($status_field))).'</div>';
         } elseif ($order_id == Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW){
             $toHtml .= '<div class="j2t-in-title">'.$this->__('Review points').'</div>';
-        } elseif ($order_id == Rewardpoints_Model_Stats::TYPE_POINTS_NEWSLETTER){
-            $toHtml .= '<div class="j2t-in-title">'.$this->__('Newsletter points').'</div>';
-        } elseif ($order_id == Rewardpoints_Model_Stats::TYPE_POINTS_GP){
-            if ($_point->getRewardpointsLinker()){
-                $extra_relation = "";
-                $product = Mage::getModel('catalog/product')->load($_point->getRewardpointsLinker());
-                if ($product_name = Mage::helper('catalog/output')->productAttribute($product, $product->getName(), 'name')){
-                    $extra_relation = "<div>".$this->__('Related to product: %s', $product_name)."</div>";
-                }
-            }
-            $toHtml .= '<div class="j2t-in-title">'.$this->__('Google Plus points').'</div>'.$extra_relation;
-        } elseif ($order_id == Rewardpoints_Model_Stats::TYPE_POINTS_FB){
-            if ($_point->getRewardpointsLinker()){
-                $extra_relation = "";
-                $product = Mage::getModel('catalog/product')->load($_point->getRewardpointsLinker());
-                if ($product_name = Mage::helper('catalog/output')->productAttribute($product, $product->getName(), 'name')){
-                    $extra_relation = "<div>".$this->__('Related to product: %s', $product_name)."</div>";
-                }
-            }
-            $toHtml .= '<div class="j2t-in-title">'.$this->__('Facebook Like points').'</div>'.$extra_relation;
-        } elseif ($order_id == Rewardpoints_Model_Stats::TYPE_POINTS_PIN){
-            if ($_point->getRewardpointsLinker()){
-                $extra_relation = "";
-                $product = Mage::getModel('catalog/product')->load($_point->getRewardpointsLinker());
-                if ($product_name = Mage::helper('catalog/output')->productAttribute($product, $product->getName(), 'name')){
-                    $extra_relation = "<div>".$this->__('Related to product: %s', $product_name)."</div>";
-                }
-            }
-            $toHtml .= '<div class="j2t-in-title">'.$this->__('Pinterest points').'</div>'.$extra_relation;
-        } elseif ($order_id == Rewardpoints_Model_Stats::TYPE_POINTS_TT){
-            if ($_point->getRewardpointsLinker()){
-                $extra_relation = "";
-                $product = Mage::getModel('catalog/product')->load($_point->getRewardpointsLinker());
-                
-                if ($product_name = Mage::helper('catalog/output')->productAttribute($product, $product->getName(), 'name')){
-                    $extra_relation = "<div>".$this->__('Related to product: %s', $product_name)."</div>";
-                }
-            }
-            $toHtml .= '<div class="j2t-in-title">'.$this->__('Twitter points').'</div>'.$extra_relation;
         } elseif ($order_id == Rewardpoints_Model_Stats::TYPE_POINTS_REQUIRED){
             $current_order = Mage::getModel('sales/order')->loadByAttribute('quote_id', $quote_id);
             $points_txt = $this->__('Points used on products for order %s', $current_order->getIncrementId());
@@ -126,14 +85,8 @@ class Rewardpoints_Block_Points extends Mage_Core_Block_Template
             $order = Mage::getModel('sales/order')->loadByIncrementId($order_id);
             $toHtml .= '<div class="j2t-in-txt">'.$this->__('Order state: %s',$this->__($order->getData($status_field))).'</div>';
         }
-        
-        if (Mage::getConfig()->getModuleConfig('J2t_Rewardshare')->is('active', 'true')){
-            if ($order_id == J2t_Rewardshare_Model_Stats::TYPE_POINTS_SHARE){
-                $toHtml = '<div class="j2t-in-title">'.Mage::helper('j2trewardshare')->__('Gift (shared points)').'</div>';
-            }
-        } 
 
         return $toHtml;
     }
-    
+
 }

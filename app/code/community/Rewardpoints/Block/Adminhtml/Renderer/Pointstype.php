@@ -25,21 +25,12 @@ class Rewardpoints_Block_Adminhtml_Renderer_Pointstype extends Mage_Adminhtml_Bl
         
         $order_id = $row->getData($this->getColumn()->getIndex());
         $points_type = array(Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW => Mage::helper('rewardpoints')->__('Review points'), 
-            Rewardpoints_Model_Stats::TYPE_POINTS_NEWSLETTER => Mage::helper('rewardpoints')->__('Newsletter points'), //OK
-            Rewardpoints_Model_Stats::TYPE_POINTS_GP => Mage::helper('rewardpoints')->__('Google Plus points'),
-            Rewardpoints_Model_Stats::TYPE_POINTS_FB => Mage::helper('rewardpoints')->__('Facebook Like points'),
-            Rewardpoints_Model_Stats::TYPE_POINTS_PIN => Mage::helper('rewardpoints')->__('Pinterest points'),
-            Rewardpoints_Model_Stats::TYPE_POINTS_TT => Mage::helper('rewardpoints')->__('Twitter points'),
             Rewardpoints_Model_Stats::TYPE_POINTS_ADMIN => Mage::helper('rewardpoints')->__('Store input %s', ($row->getRewardpointsDescription()) ? ' - '.$row->getRewardpointsDescription() : ''),
             Rewardpoints_Model_Stats::TYPE_POINTS_REGISTRATION => Mage::helper('rewardpoints')->__('Registration points'),
             Rewardpoints_Model_Stats::TYPE_POINTS_REQUIRED => Mage::helper('rewardpoints')->__('Points used on products')
                 );
-        if (Mage::getConfig()->getModuleConfig('J2t_Rewardshare')->is('active', 'true')){
-            $points_type[J2t_Rewardshare_Model_Stats::TYPE_POINTS_SHARE] = Mage::helper('j2trewardshare')->__('Gift (shared points)');
-            //J2t_Rewardshare_Model_Stats::TYPE_POINTS_SHARE => Mage::helper('j2trewardshare')->__('Gift (shared points)')
-        }
         //$model->getRewardpointsDescription()
-        if ( ($order_id > 0) || ($order_id != "" && !is_numeric($order_id)) ){
+        if ($order_id > 0){
             $order = Mage::getModel('sales/order')->loadByIncrementId($order_id);
             return Mage::helper('rewardpoints')->__('Points related to order #%s (%s)', $order_id, Mage::helper('rewardpoints')->__($order->getData($status_field)));
         } elseif (isset($points_type[$order_id])) {

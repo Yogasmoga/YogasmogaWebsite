@@ -184,7 +184,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <validate>validate-greater-than-zero validate-number required-entry</validate>
+                            <validate>validate-zero-or-greater</validate>
                             <comment><![CDATA[Amount of points required to obtain a discount.]]></comment>
                         </points_money>
 
@@ -242,24 +242,13 @@
                             <validate>validate-zero-or-greater</validate>
                             <comment><![CDATA[Maximum points to be used per order (use 0 for unlimited).]]></comment>
                         </max_point_used_order>
-                        
-                        <max_point_percent_order translate="label comment">
-                            <label>Percent usage per order</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>39</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                            <validate>validate-greater-than-zero validate-number required-entry</validate>
-                            <comment><![CDATA[Order total amount percent value of maximum point usage (e.g. for a total cart amount of $400, if this value is set to 50, maximum point discount will not be higher than $200).]]></comment>
-                        </max_point_percent_order>
 
 
                         <auto_use translate="label">
                             <label>Automatic use of points</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>40</sort_order>
+                            <sort_order>39</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -269,7 +258,7 @@
                             <label>Apply points by step</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>41</sort_order>
+                            <sort_order>40</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -317,6 +306,7 @@
                             <show_in_store>1</show_in_store>
                             <comment><![CDATA[Apply the maximum amount of point to the order]]></comment>
                         </full_use>
+
                         <math_method translate="label">
                             <label>Math method</label>
                             <frontend_type>select</frontend_type>
@@ -427,17 +417,7 @@
                             <show_in_store>1</show_in_store>
                             <comment><![CDATA[Always recalculate points when order is modified. Note that points allocated to an order may vary according to rules and points configuration.]]></comment>
                         </allow_recalculate>
-                        
-                        <allow_recalculate_referral>
-                            <label>Always recalculate referral</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>130</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                            <comment><![CDATA[Always recalculate referral points when order is modified. Note that points allocated to an order may vary according to rules, points configuration and referral program configuration.]]></comment>
-                        </allow_recalculate_referral>
+
                     </fields>
                 </default>
 
@@ -471,19 +451,6 @@
                             <validate>validate-zero-or-greater</validate>
                             <comment><![CDATA[Points the customer get while sending a valid review.]]></comment>
                         </review_points>
-                        
-                        
-                        <newsletter_points translate="label">
-                            <label>Newsletter points</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>76</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                            <validate>validate-zero-or-greater</validate>
-                            <comment><![CDATA[Newsletter points. Give points when user registers to newsletter (unsubscribing doesn't remove points).]]></comment>
-                        </newsletter_points>
-                        
                         <referral_show translate="label">
                             <label>Show referral link</label>
                             <frontend_type>select</frontend_type>
@@ -495,65 +462,29 @@
                             <comment><![CDATA[Show refer a friend link in user account.]]></comment>
                         </referral_show>
                         <referral_points translate="label">
-                            <label>Referral points or ratio</label>
+                            <label>Referral points</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>78</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <validate>validate-zero-or-greater</validate>
                             <comment><![CDATA[Points earned when referred friend orders.]]></comment>
                         </referral_points>
-                                              
-                        <referral_points_method translate="label">
-                            <label>Calculation type (referral points)</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>rewardpoints/calculationtype</source_model>
+                        <referral_child_points>
+                            <label>Referral child points</label>
+                            <frontend_type>text</frontend_type>
                             <sort_order>79</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <comment><![CDATA[Calculation type used. "Cart summary Ratio points" multiplies cart subtotal by inserted value, "Ratio points" uses inserted value to calculate points and "static value" uses configuration value without any calculation. Note that any configured rules or points on product page will override Ratio points calculation.]]></comment>
-                        </referral_points_method>
-                        
-                        <referral_child_points>
-                            <label>Referral child points or ratio</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>80</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                            <validate>validate-zero-or-greater</validate>
                             <comment><![CDATA[Points earned by referred friend for first order.]]></comment>
                         </referral_child_points>
-                        
-                        <referral_child_points_method translate="label">
-                            <label>Calculation type (child points)</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>rewardpoints/calculationtype</source_model>
-                            <sort_order>81</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                            <comment><![CDATA[Calculation type used. "Cart summary Ratio points" multiplies cart subtotal by inserted value, "Ratio points" uses inserted value to calculate points and "static value" uses configuration value without any calculation. Note that any configured rules or points on product page will override Ratio points calculation.]]></comment>
-                        </referral_child_points_method>
-                        
-                        <referral_min_order translate="label">
-                            <label>Referral min. order</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>82</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                            <validate>validate-zero-or-greater</validate>
-                            <comment><![CDATA[Referral minimum order amount (base subtotal amount without shipping fees) in order to process referral actions (0 for no minimum amount).]]></comment>
-                        </referral_min_order>
-                        
+
                         <referral_permanent>
                             <label>Show referral permanent link</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>83</sort_order>
+                            <sort_order>80</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -562,7 +493,7 @@
                         <referral_redirection translate="label">
                             <label>Referral Redirection</label>
                             <frontend_type>text</frontend_type>
-                            <sort_order>84</sort_order>
+                            <sort_order>81</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -573,7 +504,7 @@
                             <label>Share with addthis</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>85</sort_order>
+                            <sort_order>82</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -583,7 +514,7 @@
                         <referral_addthis_account>
                             <label>addthis account name</label>
                             <frontend_type>text</frontend_type>
-                            <sort_order>86</sort_order>
+                            <sort_order>82</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -592,7 +523,7 @@
                         <referral_addthis_code>
                             <label>addthis code</label>
                             <frontend_type>textarea</frontend_type>
-                            <sort_order>87</sort_order>
+                            <sort_order>83</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -603,7 +534,7 @@
                             <label>Select email template (Referral subscribe)</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_email_template</source_model>
-                            <sort_order>88</sort_order>
+                            <sort_order>85</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -749,28 +680,6 @@
                             <comment><![CDATA[In days.]]></comment>
                         </notification_days>
                         
-                        
-                        <notification_admin_email_identity translate="label">
-                            <label>Admin Email Sender notification</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_email_identity</source_model>
-                            <sort_order>40</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </notification_admin_email_identity>
-                        
-                        <notification_admin_email_template translate="label">
-                            <label>Email sent through admin points adding</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_email_template</source_model>
-                            <sort_order>50</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </notification_admin_email_template>
-                        
-                        
                     </fields>
                 </notifications>
                 
@@ -826,65 +735,6 @@
                         </big_inline_image>
                     </fields>
                 </design>
-                <product_page>
-                    <label>Product point information</label>
-                    <comment><![CDATA[Details on product page regarding points customer collects.]]></comment>
-                    <frontend_type>text</frontend_type>
-                    <sort_order>40</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    <fields>
-                        <show_information translate="label comment">
-                            <label>Show information</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>10</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                            <comment><![CDATA[Show point details on product page.]]></comment>
-                        </show_information>
-                        <duplicate_text_product_page translate="label comment">
-                            <label>Duplicate text on top</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>20</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                            <comment><![CDATA[Duplicate text on top of product page (only when product have options with price on top and price on bottom of the page).]]></comment>
-                        </duplicate_text_product_page>
-                        <block_default translate="label comment">
-                            <label>Default block name</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>30</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                            <comment><![CDATA[Default layout block name where the point details will be injected (default is: product.info.addtocart).]]></comment>
-                        </block_default>
-                        <block_extra translate="label comment">
-                            <label>Extra block name</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>40</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                            <comment><![CDATA[Layout block name where duplicated point details will be injected (default is: product.info.configurable).]]></comment>
-                        </block_extra>
-                        <show_list_points>
-                            <label>Show list points</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>50</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                            <comment><![CDATA[Show point details on product list page. Depending on your theme, you may need to set this value to no and modify your theme according to explanations available on installation procedures.]]></comment>
-                        </show_list_points>
-                    </fields>
-                </product_page>
 
             </groups>
 

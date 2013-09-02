@@ -97,11 +97,7 @@ class Rewardpoints_Model_Pointrules extends Mage_Rule_Model_Rule
     {
         $storeId = Mage::app()->getStore($request->getStore())->getId();
         $websiteId = Mage::app()->getStore($storeId)->getWebsiteId();
-        if ($to_validate->getCustomerGroupId()){
-            $customerGroupId = $to_validate->getCustomerGroupId();
-        } else {
-            $customerGroupId = Mage::getSingleton('customer/session')->getCustomerGroupId();
-        }
+        $customerGroupId = Mage::getSingleton('customer/session')->getCustomerGroupId();
         $rules = Mage::getModel('rewardpoints/pointrules')->getCollection()->setValidationFilter($websiteId, $customerGroupId, $couponCode);
         foreach($rules as $rule)
         {
@@ -149,29 +145,21 @@ class Rewardpoints_Model_Pointrules extends Mage_Rule_Model_Rule
         return $segments;
     }
 
-    public function getAllRulePointsGathered($cart = null, $customerGroupId = null)
+    public function getAllRulePointsGathered($cart = null)
     {
         if ($cart == null){
             $cart = Mage::getSingleton('checkout/cart');
         }
-        $points = $this->getRulePointsGathered($cart, $customerGroupId);
+        $points = $this->getRulePointsGathered($cart);
         return $points;
     }
 
-    public function getRulePointsGathered($to_validate, $customerGroupId = null)
+    public function getRulePointsGathered($to_validate)
     {
         $points = 0;
-        $storeId = $to_validate->getStoreId();
-        if (!$storeId){
-            $storeId = Mage::app()->getStore()->getId();
-        }
+        $storeId = Mage::app()->getStore()->getId();
         $websiteId = Mage::app()->getStore($storeId)->getWebsiteId();
-        
-        if ($to_validate->getCustomerGroupId() && $customerGroupId == null){
-            $customerGroupId = $to_validate->getCustomerGroupId();
-        } else if ($customerGroupId == null){
-            $customerGroupId = Mage::getSingleton('customer/session')->getCustomerGroupId();
-        }
+        $customerGroupId = Mage::getSingleton('customer/session')->getCustomerGroupId();
 
         $rules = Mage::getModel('rewardpoints/pointrules')->getCollection()->setValidationFilter($websiteId, $customerGroupId);
         foreach($rules as $rule)

@@ -41,48 +41,6 @@ class Rewardpoints_Model_Mysql4_Stats extends Mage_Core_Model_Mysql4_Abstract
         return $result;
     }
     
-    public function loadByChildReferralId($referral_id, $referral_customer_id = null)
-    {
-        $select = $this->_getReadAdapter()->select()
-            ->from($this->getTable('rewardpoints/rewardpoints_account'))
-            ->where('rewardpoints_referral_id = ?',$referral_id);
-        
-        if ($referral_customer_id != null){
-            $select->where('customer_id = ?', $referral_customer_id);
-        }        
-        $result = $this->_getReadAdapter()->fetchRow($select);        
-        if(!$result) {
-            return array();
-        }
-
-        return $result;
-    }
-    
-    public function loadByOrderIncrementId($order_id, $customer_id = null, $referral = false,  $parent = false)
-    {
-        $select = $this->_getReadAdapter()->select()
-            ->from($this->getTable('rewardpoints/rewardpoints_account'))
-            ->where('order_id = ?',$order_id);
-        
-        if ($parent){
-            $select->where('customer_id <> ?', $customer_id);
-        } else {
-            $select->where('customer_id = ?', $customer_id);
-        } 
-        if ($referral){
-            $select->where('rewardpoints_referral_id IS NOT NULL');
-        }
-        
-        $result = $this->_getReadAdapter()->fetchRow($select);        
-        if(!$result) {
-            return array();
-        }
-
-        return $result;
-    }
-    
-    
-    
     public function getExtension($file_name)
     {
         return substr($file_name, strrpos($file_name, '.')+1);
@@ -161,10 +119,6 @@ class Rewardpoints_Model_Mysql4_Stats extends Mage_Core_Model_Mysql4_Abstract
 
     public function uploadAndImport(Varien_Object $object)
     {
-        if (empty($_FILES['groups']['tmp_name']['dataflow_profile']['fields']['import']['value'])) {
-            return $this;
-        }
-        
 	$field_email_id = Mage::getStoreConfig('rewardpoints/dataflow_profile/field_email');
         $field_points_id = Mage::getStoreConfig('rewardpoints/dataflow_profile/field_points');
         $field_order_id = Mage::getStoreConfig('rewardpoints/dataflow_profile/field_order');
@@ -179,33 +133,26 @@ class Rewardpoints_Model_Mysql4_Stats extends Mage_Core_Model_Mysql4_Abstract
             $csv = trim(file_get_contents($csvFile));
             $table = Mage::getSingleton('core/resource')->getTableName('rewardpoints/rewardpoints_account');
 
-            //$websiteId = $object->getScopeId();
-            
-            $storeCode = $object->getData('store_code');
-            $websiteId = $object->getData('scope_id');
-            
+            $websiteId = $object->getScopeId();
+            $websiteModel = Mage::app()->getWebsite($websiteId);
+
+            $websiteStores = $websiteModel->getStores();
+
             $storeIds = array();
-            if ($storeCode){
-                $storeIds[] = Mage::app()->getStore($storeCode)->getId();
-                $websiteId = Mage::app()->getStore($storeCode)->getWebsiteId();
-            } else {
-                $websiteModel = Mage::app()->getWebsite($websiteId);
-                $websiteStores = $websiteModel->getStores();
-                
-                foreach ($websiteStores as $store) {
-                    /*if (!$store->getIsActive()) {
-                        continue;
-                    }*/
-                    $storeIds[] = $store->getId();
-                }
+            foreach ($websiteStores as $store) {
+                /*if (!$store->getIsActive()) {
+                    continue;
+                }*/
+                $storeIds[] = $store->getId();
             }
+            
 
             if (!empty($csv)) {
                 $exceptions = array();
                 $csvLines = explode("\n", $csv);
                 $csvLine = array_shift($csvLines);
                 $csvLine = $this->_getCsvValues($csvLine);
-                
+
                 if (count($csvLine) < 3) {
                     $exceptions[0] = Mage::helper('rewardpoints')->__('Invalid File Format');
                 }
@@ -264,34 +211,30 @@ class Rewardpoints_Model_Mysql4_Stats extends Mage_Core_Model_Mysql4_Abstract
                                 $points = $csvLine[$field_points_id];
                             }
                         }
-                        
-                        
-                        if ($field_order_id != -1){
+
+                        if ($field_order_id < 0){
+                            $order_id = $field_order_id;
+                        } else {
                             if (!isset($csvLine[$field_order_id])) {
                                 $exceptions[] = Mage::helper('rewardpoints')->__('Order id missing in the Row #%s', ($k+1));
                                 $error_found = true;
+                                
                             } else{
                                 $order_id = $csvLine[$field_order_id];
-                                if ($order_id > 0){
-                                    $order_check = Mage::getModel('sales/order')->loadByIncrementId($order_id);
-                                    if (!$order_check->getId()){
-                                        $exceptions[] = Mage::helper('rewardpoints')->__('Invalid order Id "%s" in the Row #%s', $order_id, ($k+1));
-                                        $error_found = true;
-                                    }
+                                $order_check = Mage::getModel('sales/order')->loadByIncrementId($order_id);
+                                if (!$order_check->getId()){
+                                    $exceptions[] = Mage::helper('rewardpoints')->__('Invalid order Id "%s" in the Row #%s', $order_id, ($k+1));
+                                    $error_found = true;
                                 }
                             }
-                        } else {
-                            $order_id = -1;
                         }
-                        
+
                         if ($field_store_id == -1){
                             $store_id = implode(',',$storeIds);
                         } else {
                             if (!isset($csvLine[$field_store_id])) {
                                 $exceptions[] = Mage::helper('rewardpoints')->__('Store id(s) missing in the Row #%s', ($k+1));
                                 $error_found = true;
-                                echo "error";
-                                
                             } else {
                                 $store_id = $csvLine[$field_store_id];
                             }

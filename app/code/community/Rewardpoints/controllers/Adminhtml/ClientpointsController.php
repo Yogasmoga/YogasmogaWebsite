@@ -96,61 +96,33 @@ class Rewardpoints_Adminhtml_ClientpointsController extends Mage_Adminhtml_Contr
             $this->_redirect('*/*/');
 	}
 
-        
-        
-    protected function refreshFlat($customer_id, $store_id)
-    {
-        //NEW VERSION 1.6.21 - this has been deactivated because flatstats has been automated
-        /*if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
-            Mage::getModel('rewardpoints/flatstats')->processRecordFlat($customer_id, $store_id);
-        }*/
-    }
-    public function deleteAction() {
-        if( $this->getRequest()->getParam('id') > 0 ) {
-            try {
-                $model = Mage::getModel('rewardpoints/stats');
-                $model->load($this->getRequest()->getParam('id'));
-                $store_ids = $model->getStoreId();
-                $customer_id = $model->getCustomerId();
+	public function deleteAction() {
+		if( $this->getRequest()->getParam('id') > 0 ) {
+                    try {
+                            $model = Mage::getModel('rewardpoints/stats');
+                            $model->setId($this->getRequest()->getParam('id'))
+                                    ->delete();
 
-                $model->delete();
-
-                if ($store_ids){
-                    $store_arr = explode(',', $store_ids);
-                    foreach($store_arr as $store_id){
-                        $this->refreshFlat($customer_id, $store_id);
+                            Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('rewardpoints')->__('Points were successfully deleted'));
+                            $this->_redirect('*/*/');
+                    } catch (Exception $e) {
+                            Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+                            $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
                     }
-                }
-
-                Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('rewardpoints')->__('Points were successfully deleted'));
-                $this->_redirect('*/*/');
-            } catch (Exception $e) {
-                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
-            }
-        }
-        $this->_redirect('*/*/');
-    }
+		}
+		$this->_redirect('*/*/');
+	}
 
     public function massDeleteAction() {
         $ruleIds = $this->getRequest()->getParam('rewardpoints_account_ids');
 
         if(!is_array($ruleIds)) {
-            Mage::getSingleton('adminhtml/session')->addError(Mage::helper('adminhtml')->__('Please select points'));
+			Mage::getSingleton('adminhtml/session')->addError(Mage::helper('adminhtml')->__('Please select points'));
         } else {
             try {
                 foreach ($ruleIds as $ruleId) {
                     $rule = Mage::getModel('rewardpoints/stats')->load($ruleId);
-                    $store_ids = $rule->getStoreId();
-                    $customer_id = $rule->getCustomerId();
                     $rule->delete();
-                    
-                    if ($store_ids){
-                        $store_arr = explode(',', $store_ids);
-                        foreach($store_arr as $store_id){
-                            $this->refreshFlat($customer_id, $store_id);
-                        }
-                    }
                 }
                 Mage::getSingleton('adminhtml/session')->addSuccess(
                     Mage::helper('rewardpoints')->__(

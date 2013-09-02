@@ -20,30 +20,13 @@
 <div class="page-head">
     <h3><?php echo $this->__('Referral') ?></h3>
 </div>
-<?php if($this->getReferrerPoints() && $this->getReferrerCalculationType() == Rewardpoints_Model_Calculationtype::STATIC_VALUE):?>
+<?php if($this->getReferrerPoints()):?>
     <?php echo $this->__('For any first valid order placed by referred friend, you earn: <strong>%s points</strong>', $this->getReferrerPoints());?>
     <br />
-    <?php elseif ($this->getReferrerPoints() && $this->getReferrerCalculationType() == Rewardpoints_Model_Calculationtype::RATIO_POINTS):?>
-    <?php echo $this->__('For any first valid order placed by referred friend, you earn: <strong>%s points x product price values</strong>', $this->getReferrerPoints());?>
-    <br />
-    <?php elseif ($this->getReferrerPoints() && $this->getReferrerCalculationType() == Rewardpoints_Model_Calculationtype::CART_SUMMARY):?>
-    <?php echo $this->__('For any first valid order placed by referred friend, you earn: <strong>%s points x cart summary</strong>', $this->getReferrerPoints());?>
-    <br />
 <?php endif;?>
-<?php if($this->getFriendPoints() && $this->getFriendCalculationType() == Rewardpoints_Model_Calculationtype::STATIC_VALUE):?>
+<?php if($this->getFriendPoints()):?>
     <?php echo $this->__('For any first valid order placed by referred friend, your friend gets: <strong>%s extra points</strong>', $this->getFriendPoints());?>
-    <?php elseif ($this->getFriendPoints() && $this->getFriendCalculationType() == Rewardpoints_Model_Calculationtype::RATIO_POINTS):?>
-    <?php echo $this->__('For any first valid order placed by referred friend, you friend gets: <strong>%s points x product price values</strong>', $this->getFriendPoints());?>
-    <br />
-    <?php elseif ($this->getFriendPoints() && $this->getFriendCalculationType() == Rewardpoints_Model_Calculationtype::CART_SUMMARY):?>
-    <?php echo $this->__('For any first valid order placed by referred friend, you friend gets: <strong>%s points x cart summary</strong>', $this->getFriendPoints());?>
-    <br />
 <?php endif;?>
-    <?php if ($this->getMinOrderAmount()):?>
-    <div class="min-order-referral-j2t">
-    <?php echo $this->__("Minimum order for referral program to be processed is: <strong>%s</strong>", Mage::helper('core')->currency($this->getMinOrderAmount(),true,false));?>
-    </div>
-    <?php endif;?>
 
 <?php if($this->isAddthis() || $this->isPermanentLink()):?>
 <div class="account-box ad-account-info box">
