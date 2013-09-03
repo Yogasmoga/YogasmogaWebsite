@@ -89,6 +89,7 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
                             <td>&nbsp;</td>
                             <td valign="top" style="font-size:12px; padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;">
                                 {{var order.shipping_description}}
+                                {{block type='core/template' area='frontend' template='email/order/shipment/track.phtml' shipment=$shipment order=$order}}
                                 &nbsp;
                             </td>
                         </tr>
@@ -96,7 +97,7 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
                     </table>
                     <br/>
                     {{layout handle="sales_email_order_shipment_items" shipment=$shipment order=$order}}
-                    {{block type='core/template' area='frontend' template='email/order/shipment/track.phtml' shipment=$shipment order=$order}}
+                    
                     <p style="font-size:12px; margin:0 10px 10px 0">{{var comment}}</p>
                 </td>
             </tr>
