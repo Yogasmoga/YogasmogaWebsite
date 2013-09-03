@@ -58,11 +58,6 @@
 <table id="order-links">
     <tr>
         <td>
-            <strong>Order No.</strong><?php echo $_order->getRealOrderId(); ?> (<?php echo $_order->getStatusLabel(); ?>)
-        </td>
-    </tr>
-    <tr>
-        <td>
             <?php echo $this->__('<strong>Order Date</strong>: %s', $this->formatDate($_order->getCreatedAtStoreDate(), 'long')) ?>
         </td>
         <td class="links">
@@ -93,6 +88,11 @@
                     </ul>
                 </tr>
             </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Status: (<?php echo $_order->getStatusLabel(); ?>)
         </td>
     </tr>
 </table>

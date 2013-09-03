@@ -69,7 +69,7 @@
             <?php else: ?>
                 <dd><?php //echo $this->htmlEscape( (isset($_option['print_value']) ? $_option['print_value'] : $_option['value']) ) ?>
                 <?php 
-                    $word = (isset($option['print_value']) ? $option['print_value'] : nl2br($this->escapeHtml($option['value'])));
+                    $word = $this->htmlEscape( (isset($_option['print_value']) ? $_option['print_value'] : $_option['value']) );
                     if(strpos($word, "|"))
                     {
                         echo " ".substr($word,0, strpos($word, "|"));
