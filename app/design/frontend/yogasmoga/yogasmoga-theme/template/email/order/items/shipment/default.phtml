@@ -29,6 +29,7 @@
     <td align="left" valign="top" style="font-size:11px; padding:3px 9px;">
         <strong><?php echo html_entity_decode($this->htmlEscape($_item->getName())) ?></strong>
         <?php if ($this->getItemOptions()): ?>
+        <?php /*
         <dl style="margin:0; padding:0;">
             <?php foreach ($this->getItemOptions() as $option): ?>
             <dt><strong><em><?php echo $option['label'] ?></em></strong></dt>
@@ -46,6 +47,30 @@
             
             <?php endforeach; ?>
         </dl>
+        */ ?>
+        <p style="margin:0 0 5px">
+            <?php $firstoption = true; ?>
+            <?php foreach ($this->getItemOptions() as $option): ?>
+            <?php
+                if($firstoption)
+                    $firstoption = false;
+                else
+                    echo "<br/>";
+            ?>
+            <span style="text-transform:uppercase;"><?php echo $option['label'] ?> </span>
+            <?php //echo (isset($option['print_value']) ? $option['print_value'] : nl2br($this->escapeHtml($option['value']))) ?>
+            <?php 
+                $word = nl2br($option['value']);
+                if(strpos($word, "|"))
+                {
+                    echo " ".substr($word,0, strpos($word, "|"));
+                }
+                else
+                    echo " ".$word;
+            ?>
+            <?php endforeach; ?>
+        </p>
+        
         <?php endif; ?>
         <?php $addInfoBlock = $this->getProductAdditionalInformationBlock(); ?>
         <?php if ($addInfoBlock) :?>
