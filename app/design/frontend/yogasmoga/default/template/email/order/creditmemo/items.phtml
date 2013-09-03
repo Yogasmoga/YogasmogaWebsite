@@ -39,7 +39,7 @@
 
     <?php $i=0; foreach ($_creditmemo->getAllItems() as $_item): ?>
     <?php if($_item->getOrderItem()->getParentItem()) continue; else $i++; ?>
-    <tbody<?php echo $i%2 ? '' : '' ?>>
+    <tbody>
         <?php echo $this->getItemHtml($_item) ?>
     </tbody>
     <?php endforeach; ?>
