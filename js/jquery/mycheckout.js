@@ -194,10 +194,7 @@ jQuery(document).ready(function($){
                     jQuery("div#change-stripe-detail").show();
                 else
                     jQuery("div#stripe-payment-details").show();            
-            }        
-            
-            
-             
+            } 
     }); 
     
     
