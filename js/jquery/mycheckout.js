@@ -76,6 +76,7 @@ jQuery(document).ready(function($){
         {
             $("#shippingmethoderrormsg").html("");
             saveShippingMethod();
+            //checkpaymentmethod();
         }
         else
         {
@@ -176,25 +177,11 @@ jQuery(document).ready(function($){
     });    
            
     jQuery("input[type='radio'][value='paypal_express']").live('click', function(){            
-            jQuery("ul#payment_form_paypal_express").show();
-            jQuery("div#stripe-payment-details,a#stripe-update-payment,div#change-stripe-detail").hide(); 
+            checkpaymentmethod();
     });
     jQuery("input[type='radio'][value='stripe']").live('click', function(){ 
-            //jQuery("div#stripe-payment-details,a#stripe-update-payment").show();
-            jQuery("ul#payment_form_paypal_express").hide(); 
-            //jQuery("#stripe-update-payment").addClass('use').html('Change Payment Information');  
-            jQuery("a#stripe-update-payment").show();
-            if(jQuery("a#stripe-update-payment").length == 0)
-            {
-                jQuery("div#change-stripe-detail").show();
-            }
-            else
-            {
-                if(jQuery("a#stripe-update-payment").hasClass("unuse"))
-                    jQuery("div#change-stripe-detail").show();
-                else
-                    jQuery("div#stripe-payment-details").show();            
-            } 
+            
+            checkpaymentmethod();
     }); 
     
     
@@ -208,6 +195,32 @@ jQuery(document).ready(function($){
 //    }
     
 });
+
+function checkpaymentmethod()
+{
+    if(jQuery("input[type='radio'][value='paypal_express']").is(':checked'))
+    {
+        jQuery("ul#payment_form_paypal_express").show();
+        jQuery("div#stripe-payment-details,a#stripe-update-payment,div#change-stripe-detail").hide(); 
+    }
+    
+    if(jQuery("input[type='radio'][value='stripe']").is(':checked'))
+    {
+            jQuery("ul#payment_form_paypal_express").hide();             
+            jQuery("a#stripe-update-payment").show();
+            if(jQuery("a#stripe-update-payment").length == 0)
+            {
+                jQuery("div#change-stripe-detail").show();
+            }
+            else
+            {
+                if(jQuery("a#stripe-update-payment").hasClass("unuse"))
+                    jQuery("div#change-stripe-detail").show();
+                else
+                    jQuery("div#stripe-payment-details").show();            
+            }
+    }
+}
 
 function checkbillingnewaddress()
 {
@@ -581,6 +594,7 @@ function saveShippingMethod()
             jQuery("#co-shippingmethod-form input[type=submit]").show();
             jQuery("#co-shippingmethod-form #procImg").remove();
             getCartSummary();
+            checkpaymentmethod();
         }
     });
 }
