@@ -159,8 +159,10 @@ class Mage_Sales_Model_Order_Creditmemo_Total_Tax extends Mage_Sales_Model_Order
         $creditmemo->setShippingTaxAmount($shippingTaxAmount);
         $creditmemo->setBaseShippingTaxAmount($baseShippingTaxAmount);
 
-        $creditmemo->setGrandTotal($creditmemo->getGrandTotal() + $totalTax + $totalHiddenTax);
-        $creditmemo->setBaseGrandTotal($creditmemo->getBaseGrandTotal() + $baseTotalTax + $baseTotalHiddenTax);
+        //$creditmemo->setGrandTotal($creditmemo->getGrandTotal() + $totalTax + $totalHiddenTax);
+        //$creditmemo->setBaseGrandTotal($creditmemo->getBaseGrandTotal() + $baseTotalTax + $baseTotalHiddenTax);
+        $creditmemo->setGrandTotal(bcadd(bcadd($creditmemo->getGrandTotal(),$totalTax, 2),$totalHiddenTax, 2));
+        $creditmemo->setBaseGrandTotal(bcadd(bcadd($creditmemo->getBaseGrandTotal(), $baseTotalTax, 2), $baseTotalHiddenTax, 2));
         return $this;
     }
 }
