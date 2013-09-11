@@ -133,6 +133,63 @@ class Rewardpoints_Model_Referral extends Mage_Core_Model_Abstract
 
     public function sendConfirmation(Mage_Customer_Model_Customer $parent, Mage_Customer_Model_Customer $child, $destination)
     {
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+        $readresult=$write->query("SELECT COUNT(rewardpoints_referral_email) as cnt, rewardpoints_referral_parent_id as Id FROM rewardpoints_referral WHERE rewardpoints_referral_status=1 AND rewardpoints_referral_parent_id=(SELECT entity_id FROM customer_entity ce WHERE ce.email='".$parent->getEmail()."')");
+        $successreferalcount = 0;
+        $customerId = 0;
+        while ($row = $readresult->fetch() ) {
+            $successreferalcount = $row['cnt'];
+            $customerId = $row['Id'];
+        }
+        if($successreferalcount >= 2)
+        {
+            try {
+                $storeObj = Mage::getModel('core/store')->load(Mage::app()->getStore()->getId());
+                $customerEmailId = $parent->getEmail();
+                $customerFName = $parent->getFirstName();
+                $customerLName = $parent->getLastName();
+                
+    
+                //load the custom template to the email  
+                $emailTemplate = Mage::getModel('core/email_template')
+                        ->loadDefault('custom_notification_template1');
+               
+                // it depends on the template variables
+                $emailTemplateVariables = array();
+                
+                
+                
+                $emailTemplateVariables['customername'] = $customerFName." ".$customerLName;
+                $emailTemplateVariables['customeremail'] = $customerEmailId;
+                $emailTemplateVariables['referralcount'] = $successreferalcount;
+                
+                $readresult=$write->query("SELECT CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.rewardpoints_referral_child_id AND attribute_id=5),' ',(SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.rewardpoints_referral_child_id AND attribute_id=7)) AS 'Name',rewardpoints_referral_email AS 'Email' FROM rewardpoints_referral rr WHERE rr.rewardpoints_referral_parent_id=".$customerId." AND rr.rewardpoints_referral_status=1");
+                $tableoutput = "<table border='1'><thead><tr><th>Name</th><th>Email</th></tr></thead><tbody>";
+                while ($row = $readresult->fetch() ) {
+                    $tableoutput .= "<tr><td>".$row['Name']."</td><td>".$row['Email']."</td></tr>";
+                }
+                $tableoutput .= "</tbody></table>";
+                
+                $emailTemplateVariables['referraldetails'] = $tableoutput;
+                //$emailTemplateVariables['store'] = $storeObj;
+                //$emailTemplateVariables['payment_html'] = $method;
+           
+    
+                $emailTemplate->setSenderName('Referral Notification');
+                $emailTemplate->setSenderEmail('report@yogasmoga.com');
+                $emailTemplate->setType('html');
+                $emailTemplate->setTemplateSubject($customerFName." ".$customerLName." (".$customerEmailId.") got ".$successreferalcount." successfull referrals");
+                $emailTemplate->send("shweta@mobikasa.com", "Shweta Upadhyay", $emailTemplateVariables);
+            } catch (Exception $e) {
+                $errorMessage = $e->getMessage();
+                //return $errorMessage;
+                Mage::log($errorMessage,null,'notification.log');
+            }      
+        }
+        
+        
+        
+        
         $translate = Mage::getSingleton('core/translate');
         /* @var $translate Mage_Core_Model_Translate */
         $translate->setTranslateInline(false);

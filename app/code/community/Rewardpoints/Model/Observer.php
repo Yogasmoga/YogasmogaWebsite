@@ -594,7 +594,6 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
         } else if ($quote->getRewardpointsReferrer()){
             $userId = (int)$quote->getRewardpointsReferrer();
         }
-
         //check if referral from link...
         //if ($userId = Mage::getSingleton('rewardpoints/session')->getReferralUser()){
         if ($userId){
