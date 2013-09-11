@@ -39,7 +39,7 @@
 <dl class="order-info">
     <dt><?php echo $this->__('About This Order:') ?></dt>
     <dd>
-        <?php $_links = $this->getLinks(); ?>
+        <?php $_links = $this->getLinks();  ?>
         <ul id="order-info-tabs">
         <?php foreach ($_links as $_link): ?>
             <?php if($_link->getUrl()): ?>
@@ -54,16 +54,16 @@
 </dl>
 <p class="order-date"><?php echo $this->__('Order Date: %s', $this->formatDate($_order->getCreatedAtStoreDate(), 'long')) ?></p>
 */ ?>
-<?php $_links = $this->getLinks(); ?>
+<?php $_links = $this->getLinks();  ?>
 <table id="order-links">
     <tr>
         <td>
-            <?php echo $this->__('<strong>Order Date</strong>: %s', $this->formatDate($_order->getCreatedAtStoreDate(), 'long')) ?>
+            <?php  echo $this->__('<strong>Order Date</strong>: %s', $this->formatDate($_order->getCreatedAtStoreDate(), 'long')) ?>
         </td>
         <td class="links">
             <table>
                 <tr>
-                    <ul>
+                    <ul> <?php //foreach ($_links as $_link){ echo $_link->getLabel();}die; ?>
                         <?php foreach ($_links as $_link): ?>
                                 <?php
                                     //if($this->getRequest()->getParam('shippinginfo') == "true")
@@ -79,9 +79,11 @@
                                     }
                                 ?>
                                 <?php if($_link->getUrl()): ?>
-                                    <li><a href="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></a></li>
+				<?php if(strcasecmp($_link->getLabel(), "Shipments") == 0){  }else{?>
+                                    <li><a href="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></a></li> <?php }?>
                                 <?php else: ?>
-                                    <li class="current"><?php echo $_link->getLabel() ?></li>
+				<?php if(strcasecmp($_link->getLabel(), "Shipments") == 0){  }else{?>
+                                    <li class="current"><?php echo $_link->getLabel() ?></li> <?php }?>
                                 <?php endif; ?>
                         <?php endforeach; ?>
                         <?php echo $this->getChildHtml('buttons') ?>
@@ -91,8 +93,32 @@
         </td>
     </tr>
     <tr>
-        <td style="font-size: 13px; font-family: gothamlight;">
-            Status: <?php echo $_order->getStatusLabel(); ?>
+	 
+	<?php
+$shipmentCollection = Mage::getResourceModel('sales/order_shipment_collection')->setOrderFilter($_order)->load();
+
+foreach ($shipmentCollection as $shipment){
+
+foreach($shipment->getAllTracks() as $tracknum)
+            {  
+                $tracknums[]=$tracknum->getNumber(); 
+		$tracktitle[]=$tracknum->getTitle();  
+            }
+}
+
+?><?php 
+if(sizeof($tracknums)){
+?>
+<td width="30%" style="font-size: 13px; font-family: gothamlight;">
+<?php
+for($i=0;$i<sizeof($tracknums);$i++)
+{	
+	echo $tracktitle[$i].':('.$tracknums[$i].')<br>';
+} ?></td>
+     <td width="70%" style="font-size: 13px; font-family: gothamlight;"> Status: <?php echo $_order->getStatusLabel(); ?>  </td>
+     <?php }else{?>
+
+     <td  style="font-size: 13px; font-family: gothamlight;"> Status: <?php echo $_order->getStatusLabel(); ?>  <?php }?>
         </td>
     </tr>
 </table>
