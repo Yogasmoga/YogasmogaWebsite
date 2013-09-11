@@ -146,8 +146,8 @@ class Rewardpoints_Model_Referral extends Mage_Core_Model_Abstract
             try {
                 $storeObj = Mage::getModel('core/store')->load(Mage::app()->getStore()->getId());
                 $customerEmailId = $parent->getEmail();
-                $customerFName = $parent->getFirstName();
-                $customerLName = $parent->getLastName();
+                $customerFName = $parent->getFirstname();
+                $customerLName = $parent->getLastname();
                 
     
                 //load the custom template to the email  
