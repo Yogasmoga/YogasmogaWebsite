@@ -113,7 +113,20 @@ if(sizeof($tracknums)){
 <?php
 for($i=0;$i<sizeof($tracknums);$i++)
 {	
-	echo $tracktitle[$i].':('.$tracknums[$i].')<br>';
+	$trackcarrier=$tracktitle[$i];
+	if(strcasecmp($trackcarrier, "United States Postal Service") == 0){
+	echo '<a target=_blank href=https://tools.usps.com/go/TrackConfirmAction.action?tLabels='.$tracknums[$i].'>'.$tracktitle[$i].':('.$tracknums[$i].')</a><br>';
+	}
+	elseif(strcasecmp($trackcarrier, "Federal Express") == 0){
+	echo '<a target=_blank href=http://www.fedex.com/Tracking?language=english&tracknumbers='.$tracknums[$i].'>'.$tracktitle[$i].':('.$tracknums[$i].')</a><br>';
+	}
+	elseif(strcasecmp($trackcarrier, "United Parcel Service") == 0){
+	echo '<a target=_blank href=http://forwarding.ups-scs.com/tracking/trackformaction.asp?optTYPE=SHIPNUM&PRO1='.$tracknums[$i].'>'.$tracktitle[$i].':('.$tracknums[$i].')</a><br>';
+	}
+	else{         // For DHL
+	echo '<a target=_blank href=http://www.dhl-usa.com/content/us/en/express/tracking.shtml?brand=DHL&AWB='.$tracknums[$i].'%0D%0A>'.$tracktitle[$i].':('.$tracknums[$i].')</a><br>';
+	}
+	
 } ?></td>
      <td width="70%" style="font-size: 13px; font-family: gothamlight;"> Status: <?php echo $_order->getStatusLabel(); ?>  </td>
      <?php }else{?>
