@@ -108,8 +108,8 @@ foreach($shipment->getAllTracks() as $tracknum)
 
 ?><?php 
 if(sizeof($tracknums)){
-?>
-<td width="30%" style="font-size: 13px; font-family: gothamlight;">
+?> <td>
+<div  style="font-size: 13px; font-family: gothamlight;float:left">
 <?php
 for($i=0;$i<sizeof($tracknums);$i++)
 {	
@@ -127,10 +127,10 @@ for($i=0;$i<sizeof($tracknums);$i++)
 	echo '<a target=_blank href=http://www.dhl-usa.com/content/us/en/express/tracking.shtml?brand=DHL&AWB='.$tracknums[$i].'%0D%0A>'.$tracktitle[$i].':('.$tracknums[$i].')</a><br>';
 	}
 	
-} ?></td>
-     <td width="70%" style="font-size: 13px; font-family: gothamlight;"> Status: <?php echo $_order->getStatusLabel(); ?>  </td>
+} ?></div>
+     <div  style="font-size: 13px; font-family: gothamlight;margin-left:10px;float:left"> Status: <?php echo $_order->getStatusLabel(); ?>  </div> </td>
      <?php }else{?>
-
+	
      <td  style="font-size: 13px; font-family: gothamlight;"> Status: <?php echo $_order->getStatusLabel(); ?>  <?php }?>
         </td>
     </tr>
