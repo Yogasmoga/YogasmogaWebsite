@@ -16,4 +16,15 @@
             </mycatalog>
         </routers>   
     </frontend>
+	<global>
+		<template>
+            <email>
+                <custom_notification_template1>
+					<label>Yogasmoga Notification</label>
+					<file>custom_rewardpoint_notification.html</file>
+					<type>html</type>
+				</custom_notification_template1>
+            </email>
+        </template>
+	</global>
 </config>
