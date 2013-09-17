@@ -4017,6 +4017,10 @@ body.paypal-express-review #shipping-method-container > table {
     padding-bottom: 0 !important;
 }
 
+body.paypal-express-review #order_review_form button#update_order
+{
+    margin-top:7px;
+}
 
 body.paypal-express-review #order_review_form button#update_order span
 {
@@ -4043,7 +4047,7 @@ body.paypal-express-review #order_review_form button#review_button span
     background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/place_order_off.png") no-repeat scroll 0 0 ;
     border: 0 none;
     width:221px;
-    height: 28px;    
+    height: 46px;    
     margin: 0;
     padding: 0;
     text-indent: -999em;    
