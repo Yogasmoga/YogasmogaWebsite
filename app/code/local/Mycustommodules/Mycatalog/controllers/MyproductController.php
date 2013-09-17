@@ -86,6 +86,46 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
             }
         }
     }
+    
+    public function referralreportAction()
+    {
+        if($this->getRequest()->getParam('pass'))
+        {
+            if($this->getRequest()->getParam('pass') == "MageHACKER")
+            {
+                $output = "<table border='1'><thead><tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Referral Count</th>
+                <th>Referral Name</th>
+                <th>Referral Email</th>
+                </tr><thead><tbody>";
+                $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                $readresult=$write->query("SELECT 
+CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.rewardpoints_referral_parent_id AND attribute_id=5),' ',(SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.rewardpoints_referral_parent_id AND attribute_id=7)) AS 'Name',
+rr.rewardpoints_referral_parent_id AS 'Id',
+(SELECT email FROM customer_entity ce WHERE entity_id=rr.rewardpoints_referral_parent_id) AS 'Email',
+(SELECT COUNT(rr1.rewardpoints_referral_email) FROM rewardpoints_referral rr1 WHERE rr1.rewardpoints_referral_status=1) AS 'Count',
+CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.rewardpoints_referral_child_id AND attribute_id=5),' ',(SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.rewardpoints_referral_child_id AND attribute_id=7)) AS 'Referral_Name',
+(SELECT email FROM customer_entity ce WHERE entity_id=rr.rewardpoints_referral_child_id) AS 'Referral_Email'
+FROM rewardpoints_referral rr WHERE rewardpoints_referral_status=1 AND (SELECT COUNT(rr1.rewardpoints_referral_email) FROM rewardpoints_referral rr1 WHERE rr1.rewardpoints_referral_status=1) > 1");
+                while ($row = $readresult->fetch() ) {
+                    $outputtemp = "<tr><td>".$row['Name']."</td>";
+                    $outputtemp .= "<td>".$row['Email']."</td>";
+                    $outputtemp .= "<td>".$row['Count']."</td>";
+                    $outputtemp .= "<td>".$row['Referral_Name']."</td>";
+                    $outputtemp .= "<td>".$row['Referral_Email']."</td>";
+                    $outputtemp .= "</tr>";
+                    $output .= $outputtemp;
+                }
+                $output .= "</tbody></table>";                
+                //echo $output;
+                $fname = "referral_".mktime();
+                file_put_contents('customreports/'.$fname.'.xls',$output);
+                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");       
+            }
+        }
+    }
             
     public function orderreportAction()
     {

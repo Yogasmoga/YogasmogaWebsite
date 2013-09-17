@@ -93,6 +93,11 @@
         </td>
     </tr>
     <tr>
+<<<<<<< HEAD
+        <td></td>
+        <td class="order-status" style="font-size: 13px; font-family: gothamlight;">
+            Status: <?php echo $_order->getStatusLabel(); ?>
+=======
 	 
 	<?php
 $shipmentCollection = Mage::getResourceModel('sales/order_shipment_collection')->setOrderFilter($_order)->load();
@@ -128,12 +133,12 @@ for($i=0;$i<sizeof($tracknums);$i++)
 	}
 	
 } ?></div>
-    <?php /*
-     <div  style="font-size: 13px; font-family: gothamlight;margin-left:10px;float:left"> Status: <?php echo $_order->getStatusLabel(); ?>  </div>*/ ?> </td>
-     <td class="order-status" style="font-size: 13px; font-family: gothamlight;"> Status: <?php echo $_order->getStatusLabel(); ?> </td>
-     <?php }else{ ?>
-	<td>&nbsp;</td>
-     <td class="order-status" style="font-size: 13px; font-family: gothamlight;"> Status: <?php echo $_order->getStatusLabel(); ?> </td> <?php } ?>
+     <div  style="font-size: 13px; font-family: gothamlight;margin-left:10px;float:left"> Status: <?php echo $_order->getStatusLabel(); ?>  </div> </td>
+     <?php }else{?>
+	
+     <td  style="font-size: 13px; font-family: gothamlight;"> Status: <?php echo $_order->getStatusLabel(); ?>  <?php }?>
+>>>>>>> a3f0ffe1c569f0e4c03a46e2655eba619d17dccf
+        </td>
     </tr>
 </table>
 
