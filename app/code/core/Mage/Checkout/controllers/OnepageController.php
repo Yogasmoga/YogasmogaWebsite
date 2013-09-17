@@ -231,6 +231,7 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
 
         $lastQuoteId = $session->getLastQuoteId();
         $lastOrderId = $session->getLastOrderId();
+        
         Mage::log($lastOrderId,null,'distribution.log');
         
         $write = Mage::getSingleton('core/resource')->getConnection('core_write');
@@ -268,6 +269,10 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
             }
         }
         
+        $order = Mage::getModel('sales/order')->load($lastOrderId);
+        $comment = 'blah blah';
+        $order->addStatusHistoryComment($comment);
+        $order->save();
         
         $lastRecurringProfiles = $session->getLastRecurringProfileIds();
         if (!$lastQuoteId || (!$lastOrderId && empty($lastRecurringProfiles))) {
