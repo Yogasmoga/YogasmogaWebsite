@@ -55,55 +55,7 @@
     </dd>
 </dl>
 <p class="order-date"><?php echo $this->__('Order Date: %s', $this->formatDate($_order->getCreatedAtStoreDate(), 'long')) ?></p>
-<!---------------------     Shipping information for carrier companies               -->
-<?php
-$shipmentCollection = Mage::getResourceModel('sales/order_shipment_collection')->setOrderFilter($_order)->load();
 
-foreach ($shipmentCollection as $shipment){
-
-foreach($shipment->getAllTracks() as $tracknum)
-            {  
-                $tracknums[]=$tracknum->getNumber(); 
-				//echo $tracknum->getCarrier_code(); die('test');
-				//echo '<pre>';print_r($tracknum);die('test');
-		$tracktitle[]=$tracknum->getTitle();  
-		$trackcarrier[]=$tracknum->getCarrier_code();  
-            }
-}
-
-?>
-<?php 
-if(sizeof($tracknums)){
-?>     <p>Order Status: <?php echo $_order->getStatusLabel(); ?> </p>
-<div  style="font-size: 13px; float:left">
-<?php
-for($i=0;$i<sizeof($tracknums);$i++)
-{	
-	$carrier=$trackcarrier[$i];
-	$title = $tracktitle[$i];
-	if(strcasecmp($carrier, "usps") == 0){
-	echo '<a style="color:red" target=_blank href=https://tools.usps.com/go/TrackConfirmAction.action?tLabels='.$tracknums[$i].'>'.$tracktitle[$i].':('.$tracknums[$i].')</a><br>';
-	}
-	elseif(strcasecmp($carrier, "fedex") == 0){
-	echo '<a style="color:red" target=_blank href=http://www.fedex.com/Tracking?language=english&tracknumbers='.$tracknums[$i].'>'.$tracktitle[$i].':('.$tracknums[$i].')</a><br>';
-	}
-	elseif(strcasecmp($carrier, "ups") == 0){
-	echo '<a style="color:red" target=_blank href=http://forwarding.ups-scs.com/tracking/trackformaction.asp?optTYPE=SHIPNUM&PRO1='.$tracknums[$i].'>'.$tracktitle[$i].':('.$tracknums[$i].')</a><br>';
-	}
-	elseif((strcasecmp($carrier, "dhl") == 0)||(strcasecmp($carrier, "dhlint") == 0)){         // For DHL
-	echo '<a style="color:red" target=_blank href=http://www.dhl-usa.com/content/us/en/express/tracking.shtml?brand=DHL&AWB='.$tracknums[$i].'%0D%0A>'.$tracktitle[$i].':('.$tracknums[$i].')</a><br>';
-	
-	}
-	else{         // For DHL
-	echo '<a style="color:red" href=#>'.$tracktitle[$i].':('.$tracknums[$i].')</a><br>';
-	}
-	
-} ?></div>
-<?php /*
-     <div  style="font-size: 13px; font-family: gothamlight;margin-left:10px;float:left"> Status: <?php echo $_order->getStatusLabel(); ?>  </div>*/ ?> 
-
-     <?php }else{ ?>
-	 <p>Order Status: <?php echo $_order->getStatusLabel(); ?> </p>  <?php } ?>
 
 
 <?php if (!$_order->getIsVirtual()): ?>
