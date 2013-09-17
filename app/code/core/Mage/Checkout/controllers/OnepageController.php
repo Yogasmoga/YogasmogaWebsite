@@ -269,10 +269,14 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
             }
         }
         
-        $order = Mage::getModel('sales/order')->load($lastOrderId);
-        $comment = 'blah blah';
-        $order->addStatusHistoryComment($comment);
-        $order->save();
+        $readresult=$write->query("SELECT COUNT(item_id) AS cnt FROM sales_flat_order_item WHERE order_id=".$lastOrderId." AND qty_backordered>0");
+        $row = $readresult->fetch();
+        if($row['cnt'] > 0)
+        {
+            $order = Mage::getModel('sales/order')->load($lastOrderId);
+            $order->addStatusHistoryComment("This order contains Pre-Ordered items.");
+            $order->save();   
+        }
         
         $lastRecurringProfiles = $session->getLastRecurringProfileIds();
         if (!$lastQuoteId || (!$lastOrderId && empty($lastRecurringProfiles))) {
