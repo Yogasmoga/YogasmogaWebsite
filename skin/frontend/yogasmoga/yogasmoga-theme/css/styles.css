@@ -4246,4 +4246,5 @@ body.page-print button.print-button
 td.order-status
 {
     float: right;
+    padding-right: 5px;
 }
