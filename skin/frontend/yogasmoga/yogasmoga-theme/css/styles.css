@@ -4245,3 +4245,7 @@ body.page-print button.print-button
     margin-top:10px;
 }
 
+td.order-status
+{
+    float: right;
+}
