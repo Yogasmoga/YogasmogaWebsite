@@ -4020,16 +4020,16 @@ body.paypal-express-review #shipping-method-container > table {
 body.paypal-express-review #order_review_form button#update_order
 {
     margin-top:7px;
+    margin-right:10px;
 }
 
 body.paypal-express-review #order_review_form button#update_order span
 {
     background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/update_order_off.png") no-repeat scroll 0 0 ;
     border: 0 none;
-    width:188px;
+    width:186px;
     height: 28px;    
-    margin: 0;
-    margin-right:10px;
+    margin: 0;    
     padding: 0;
     text-indent: -999em;    
 }
