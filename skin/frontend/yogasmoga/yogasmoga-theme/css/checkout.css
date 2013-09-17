@@ -508,6 +508,12 @@ div.paymentmethoddiv
 body.paypal-express-review .legend1{
     padding-bottom:10px;
 }
+
+body.paypal-express-review .paypal-details tfoot th{
+    padding-bottom: 17px;
+    padding-right: 10px;
+    text-transform: uppercase;
+}
 .p-top
 {
     padding-top:20px;
