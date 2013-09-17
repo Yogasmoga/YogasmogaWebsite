@@ -102,7 +102,10 @@ foreach ($shipmentCollection as $shipment){
 foreach($shipment->getAllTracks() as $tracknum)
             {  
                 $tracknums[]=$tracknum->getNumber(); 
+				//echo $tracknum->getCarrier_code(); die('test');
+				//echo '<pre>';print_r($tracknum);die('test');
 		$tracktitle[]=$tracknum->getTitle();  
+		$trackcarrier[]=$tracknum->getCarrier_code();  
             }
 }
 
@@ -113,27 +116,32 @@ if(sizeof($tracknums)){
 <?php
 for($i=0;$i<sizeof($tracknums);$i++)
 {	
-	$trackcarrier=$tracktitle[$i];
-	if(strcasecmp($trackcarrier, "United States Postal Service") == 0){
+	$carrier=$trackcarrier[$i];
+	$title = $tracktitle[$i];
+	if(strcasecmp($carrier, "usps") == 0){
 	echo '<a target=_blank href=https://tools.usps.com/go/TrackConfirmAction.action?tLabels='.$tracknums[$i].'>'.$tracktitle[$i].':('.$tracknums[$i].')</a><br>';
 	}
-	elseif(strcasecmp($trackcarrier, "Federal Express") == 0){
+	elseif(strcasecmp($carrier, "fedex") == 0){
 	echo '<a target=_blank href=http://www.fedex.com/Tracking?language=english&tracknumbers='.$tracknums[$i].'>'.$tracktitle[$i].':('.$tracknums[$i].')</a><br>';
 	}
-	elseif(strcasecmp($trackcarrier, "United Parcel Service") == 0){
+	elseif(strcasecmp($carrier, "ups") == 0){
 	echo '<a target=_blank href=http://forwarding.ups-scs.com/tracking/trackformaction.asp?optTYPE=SHIPNUM&PRO1='.$tracknums[$i].'>'.$tracktitle[$i].':('.$tracknums[$i].')</a><br>';
 	}
-	else{         // For DHL
+	elseif((strcasecmp($carrier, "dhl") == 0)||(strcasecmp($carrier, "dhlint") == 0)){         // For DHL
 	echo '<a target=_blank href=http://www.dhl-usa.com/content/us/en/express/tracking.shtml?brand=DHL&AWB='.$tracknums[$i].'%0D%0A>'.$tracktitle[$i].':('.$tracknums[$i].')</a><br>';
+	
+	}
+	else{         // For DHL
+	echo '<a  href=#>'.$tracktitle[$i].':('.$tracknums[$i].')</a><br>';
 	}
 	
 } ?></div>
     <?php /*
      <div  style="font-size: 13px; font-family: gothamlight;margin-left:10px;float:left"> Status: <?php echo $_order->getStatusLabel(); ?>  </div>*/ ?> </td>
-     <td class="order-status" style="font-size: 13px; font-family: gothamlight;"> Status: <?php echo $_order->getStatusLabel(); ?> </td>
+     <td class="order-status" style="font-size: 13px; font-family: gothamlight;">Order Status: <?php echo $_order->getStatusLabel(); ?> </td>
      <?php }else{ ?>
 	<td>&nbsp;</td>
-     <td class="order-status" style="font-size: 13px; font-family: gothamlight;"> Status: <?php echo $_order->getStatusLabel(); ?> </td> <?php } ?>
+     <td class="order-status" style="font-size: 13px; font-family: gothamlight;">Order Status: <?php echo $_order->getStatusLabel(); ?> </td> <?php } ?>
     </tr>
 </table>
 
