@@ -37,7 +37,7 @@
             if(strcasecmp($this->escapeHtml($_label),'saved card') == 0)
                 continue;
         ?>
-        <p style="margin:0 0 10px;"><span style="text-transform:uppercase;">
+        <p style="margin:0 0 10px;"><span>
             <?php echo strtoupper($this->escapeHtml($_label)) ?>:&nbsp;<?php echo nl2br(implode($this->getValueAsArray($_value, true), "\n"))?>        
         </span></p> 
         
