@@ -498,3 +498,43 @@ div.paymentmethoddiv
 {
     margin-bottom : 10px;
 }
+
+/*****************Paypal Checkout Form Starts****************/
+
+.paypal-details{
+    width:960px !important;
+}
+
+body.paypal-express-review .legend1{
+    padding-bottom:10px;
+}
+.p-top
+{
+    padding-top:20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*****************Paypal Checkout Form Ends****************/
