@@ -4254,3 +4254,8 @@ td.order-status
     float: right;
     padding-right: 5px;
 }
+
+.data-table.ys.prdetail tbody.odd td:first-of-type,.data-table.ys.prdetail tbody.even td:first-of-type, .data-table.ys.prdetail thead th:first-of-type
+{
+    padding-left: 0 !important;
+}
