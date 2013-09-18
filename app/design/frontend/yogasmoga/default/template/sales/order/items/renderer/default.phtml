@@ -28,12 +28,18 @@
 <tr class="border" id="order-item-row-<?php echo $_item->getId() ?>">
     <td><h3 class="product-name"><?php echo html_entity_decode($this->htmlEscape($_item->getName())) ?></h3>
         <?php if($_options = $this->getItemOptions()): ?>
-        <dl class="item-options">
+        <p style="margin:0 0 5px">
+        <?php $firstoption = true; ?>
         <?php foreach ($_options as $_option) : ?>
-            <dt><?php echo $this->htmlEscape($_option['label']) ?></dt>
+            <?php
+                if($firstoption)
+                    $firstoption = false;
+                else
+                    echo "<br/>";
+            ?>
+            <span style="text-transform:uppercase;"><?php echo $this->htmlEscape($_option['label']) ?> :  </span>
             <?php if (!$this->getPrintStatus()): ?>
                 <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
-                <dd<?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?>>
                     <?php //echo $_formatedOptionValue['value'] ?>
                     <?php 
                         $word = $_formatedOptionValue['value'];
@@ -47,8 +53,6 @@
                     <?php if (isset($_formatedOptionValue['full_view'])): ?>
                     <div class="truncated_full_value">
                         <dl class="item-options">
-                            <dt><?php echo $this->escapeHtml($_option['label']) ?></dt>
-                            <dd><?php //echo $_formatedOptionValue['full_view'] ?>
                             <?php 
                                 $word = $_formatedOptionValue['full_view'];
                                 if(strpos($word, "|"))
@@ -57,14 +61,11 @@
                                 }
                                 else
                                     echo " ".$word;
-                            ?>      
-                            </dd>
+                            ?>   
                         </dl>
                     </div>
                     <?php endif; ?>
-                </dd>
             <?php else: ?>
-                <dd>
                     <?php //echo nl2br($this->htmlEscape( (isset($_option['print_value']) ? $_option['print_value'] : $_option['value']) )) ?>
                     <?php 
                         $word = nl2br($this->htmlEscape( (isset($_option['print_value']) ? $_option['print_value'] : $_option['value']) ));
@@ -75,10 +76,13 @@
                         else
                             echo " ".$word;
                     ?>
-                </dd>
             <?php endif; ?>
         <?php endforeach; ?>
-        </dl>
+        </p>
+        
+        
+        
+        
         <?php endif; ?>
         <?php $addtInfoBlock = $this->getProductAdditionalInformationBlock(); ?>
         <?php if ($addtInfoBlock) :?>
