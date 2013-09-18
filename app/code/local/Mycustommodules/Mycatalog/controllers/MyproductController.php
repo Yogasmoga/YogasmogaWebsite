@@ -108,7 +108,8 @@ rr.rewardpoints_referral_parent_id AS 'Id',
 (SELECT COUNT(rr1.rewardpoints_referral_email) FROM rewardpoints_referral rr1 WHERE rr1.rewardpoints_referral_status=1 AND rr1.rewardpoints_referral_parent_id=rr.rewardpoints_referral_parent_id) AS 'Count',
 CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.rewardpoints_referral_child_id AND attribute_id=5),' ',(SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.rewardpoints_referral_child_id AND attribute_id=7)) AS 'Referral_Name',
 (SELECT email FROM customer_entity ce WHERE entity_id=rr.rewardpoints_referral_child_id) AS 'Referral_Email'
-FROM rewardpoints_referral rr WHERE rewardpoints_referral_status=1 AND (SELECT COUNT(rr1.rewardpoints_referral_email) FROM rewardpoints_referral rr1 WHERE rr1.rewardpoints_referral_status=1 AND rr1.rewardpoints_referral_parent_id=rr.rewardpoints_referral_parent_id) > 1");
+FROM rewardpoints_referral rr WHERE rewardpoints_referral_status=1 AND (SELECT COUNT(rr1.rewardpoints_referral_email) FROM rewardpoints_referral rr1 WHERE rr1.rewardpoints_referral_status=1 AND rr1.rewardpoints_referral_parent_id=rr.rewardpoints_referral_parent_id) > 1
+ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.rewardpoints_referral_parent_id AND attribute_id=5),' ',(SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.rewardpoints_referral_parent_id AND attribute_id=7))");
                 while ($row = $readresult->fetch() ) {
                     $outputtemp = "<tr><td>".$row['Name']."</td>";
                     $outputtemp .= "<td>".$row['Email']."</td>";
