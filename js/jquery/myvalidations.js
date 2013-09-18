@@ -1,10 +1,10 @@
 jQuery(document).ready(function($){  
         
     setTimeout(function(){
-        jQuery("input[type='radio'][name='shipping_method']").click(function(){ 
+        jQuery("input[type='radio'][name='shipping_method']").live('click', function(){
             jQuery("#update_order").trigger('click');                        
-            jQuery("#chooseshippingmethod").hide();                        
-            }); 
+            jQuery("#chooseshippingmethod").hide();
+        });
     }, 500);    
 });
  

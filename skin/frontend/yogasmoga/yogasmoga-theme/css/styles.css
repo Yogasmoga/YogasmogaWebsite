@@ -4071,7 +4071,7 @@ body.paypal-express-review #order_review_form button.no-checkout#review_button:a
 }
 
 body.paypal-express-review #order_review_form .buttons-set-order .please-wait {
-    padding: 9px 7px 0 0;
+    padding: 13px 7px 0 0;
 }
 
 #paypalcontainerdiv
