@@ -27,7 +27,7 @@
 
 <?php $prefix = $this->getFieldNamePrefix();?>
 <fieldset>
-    <ul class="form-list form-list-narrow">
+    <ul class="form-list form-list-narrow" style="position: relative;">
     <li id="<?php echo $prefix ?>-address-form" class="address-form">
         <fieldset>
             <input type="hidden" name="<?php echo $prefix ?>[address_id]" value="<?php echo $this->getAddress()->getId() ?>" id="<?php echo $prefix ?>:address_id" />
@@ -175,12 +175,12 @@
                                 
                 <?php echo $this->getChildHtml('form.additional.info'); ?>
                 <?php if ($this->getShowAsShippingCheckbox()): ?>
-                    <li class="control">
+                    <li class="control" style="position : absolute; right : -395px;">
                         <div class="field" style="text-align: left;">
                             <div class="input-box">
-                                <input type="checkbox" name="<?php echo $prefix ?>[as_shipping]" class="checkbox" value="1" title="<?php echo $this->__('USE AS SHIPPING ADDRESS') ?>" id="<?php echo $prefix ?>:as_shipping" <?php if ($this->getAddress()->getSameAsBilling()):?>checked="checked"<?php endif;?>/>
+                                <input type="checkbox" name="<?php echo $prefix ?>[as_shipping]" class="checkbox" value="1" title="<?php echo $this->__('USE AS BILLING ADDRESS') ?>" id="<?php echo $prefix ?>:as_shipping" <?php if ($this->getAddress()->getSameAsBilling()):?>checked="checked"<?php endif;?>/>
                             </div>
-                            <label for="<?php echo $prefix ?>:as_shipping"><?php echo $this->__('USE AS SHIPPING ADDRESS') ?></label>
+                            <label for="<?php echo $prefix ?>:as_shipping"><?php echo $this->__('USE AS BILLING ADDRESS') ?></label>
                         </div>
                     </li>
                 <?php endif; ?>
