@@ -4021,6 +4021,7 @@ body.paypal-express-review #order_review_form button#update_order
 {
     margin-top:7px;
     margin-right:10px;
+    float:left;
 }
 
 body.paypal-express-review #order_review_form button#update_order span
