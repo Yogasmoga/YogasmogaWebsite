@@ -3328,3 +3328,8 @@ body.paypal-express-review .please-wait
 {
     float:none;
 }
+
+body.paypal-express-review #review-buttons-container
+{
+    height:120px;
+}
