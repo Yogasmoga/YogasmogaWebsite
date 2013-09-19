@@ -181,7 +181,7 @@ class Rewardpoints_Model_Referral extends Mage_Core_Model_Abstract
                 $emailTemplate->setSenderEmail('report@yogasmoga.com');
                 $emailTemplate->setType('html');
                 $emailTemplate->setTemplateSubject($customername." (".$customerEmailId.") got ".$successreferalcount." successfull referrals");
-                $emailTemplate->send("chetan.mangat@yogasmoga.com", "Chetan Mangat", $emailTemplateVariables);
+                $emailTemplate->send("oksana.gervas@yogasmoga.com", "Oksana Gervas", $emailTemplateVariables);
             } catch (Exception $e) {
                 $errorMessage = $e->getMessage();
                 //return $errorMessage;
