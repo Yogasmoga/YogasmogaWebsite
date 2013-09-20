@@ -119,20 +119,20 @@ for($i=0;$i<sizeof($tracknums);$i++)
 	$carrier=$trackcarrier[$i];
 	$title = $tracktitle[$i];
 	if(strcasecmp($carrier, "usps") == 0){
-	echo '<a target=_blank href=https://tools.usps.com/go/TrackConfirmAction.action?tLabels='.$tracknums[$i].'>'.$tracktitle[$i].':('.$tracknums[$i].')</a><br>';
+	echo '<a target=_blank href=https://tools.usps.com/go/TrackConfirmAction.action?tLabels='.$tracknums[$i].'>'.$tracktitle[$i].': '.$tracknums[$i].'</a><br>';
 	}
 	elseif(strcasecmp($carrier, "fedex") == 0){
-	echo '<a target=_blank href=http://www.fedex.com/Tracking?language=english&tracknumbers='.$tracknums[$i].'>'.$tracktitle[$i].':('.$tracknums[$i].')</a><br>';
+	echo '<a target=_blank href=http://www.fedex.com/Tracking?language=english&tracknumbers='.$tracknums[$i].'>'.$tracktitle[$i].': '.$tracknums[$i].'</a><br>';
 	}
 	elseif(strcasecmp($carrier, "ups") == 0){
-	echo '<a target=_blank href=http://forwarding.ups-scs.com/tracking/trackformaction.asp?optTYPE=SHIPNUM&PRO1='.$tracknums[$i].'>'.$tracktitle[$i].':('.$tracknums[$i].')</a><br>';
+	echo '<a target=_blank href=http://forwarding.ups-scs.com/tracking/trackformaction.asp?optTYPE=SHIPNUM&PRO1='.$tracknums[$i].'>'.$tracktitle[$i].': '.$tracknums[$i].'</a><br>';
 	}
 	elseif((strcasecmp($carrier, "dhl") == 0)||(strcasecmp($carrier, "dhlint") == 0)){         // For DHL
-	echo '<a target=_blank href=http://www.dhl-usa.com/content/us/en/express/tracking.shtml?brand=DHL&AWB='.$tracknums[$i].'%0D%0A>'.$tracktitle[$i].':('.$tracknums[$i].')</a><br>';
+	echo '<a target=_blank href=http://www.dhl-usa.com/content/us/en/express/tracking.shtml?brand=DHL&AWB='.$tracknums[$i].'%0D%0A>'.$tracktitle[$i].': '.$tracknums[$i].'</a><br>';
 	
 	}
 	else{         // For DHL
-	echo '<a  href=#>'.$tracktitle[$i].':('.$tracknums[$i].')</a><br>';
+	echo '<a  href=#>'.$tracktitle[$i].': '.$tracknums[$i].'</a><br>';
 	}
 	
 } ?></div>
