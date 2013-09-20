@@ -4032,7 +4032,8 @@ body.paypal-express-review #order_review_form button#update_order span
     height: 28px;    
     margin: 0;    
     padding: 0;
-    text-indent: -999em;    
+    text-indent: -999em;
+    display:none;    
 }
 body.paypal-express-review #order_review_form button#update_order:active span
 {
@@ -4046,10 +4047,10 @@ body.paypal-express-review #order_review_form button.no-checkout#update_order:ac
 
 body.paypal-express-review #order_review_form button#review_button span
 {
-    background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/place_order_off.png") no-repeat scroll 0 0 ;
+    background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/checkout/submit_off.png") no-repeat scroll 0 0 ;
     border: 0 none;
-    width:221px;
-    height: 46px;    
+    width:286px;
+    height: 43px;    
     margin: 0;
     padding: 0;
     text-indent: -999em;    
@@ -4057,7 +4058,7 @@ body.paypal-express-review #order_review_form button#review_button span
 
 body.paypal-express-review #order_review_form button#review_button:active span
 {
-    background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/place_order_on.png") no-repeat scroll 0 0 ;    
+    background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/checkout/submit_on.png") no-repeat scroll 0 0 ;    
 }
 
 body.paypal-express-review #order_review_form button.no-checkout#review_button:active span
@@ -4258,4 +4259,26 @@ td.order-status
 .data-table.ys.prdetail tbody.odd td:first-of-type,.data-table.ys.prdetail tbody.even td:first-of-type, .data-table.ys.prdetail thead th:first-of-type
 {
     padding-left: 0 !important;
+}
+
+body.paypal-express-review button#update_order_dummy
+{
+    float: right;    
+    margin-top: 7px;
+    margin-bottom: 10px;
+}
+
+body.paypal-express-review button#update_order_dummy span
+{
+    background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/update_order_off.png") no-repeat scroll 0 0 ;
+    border: 0 none;
+    width:286px;
+    height: 38px;    
+    margin: 0;    
+    padding: 0;
+    text-indent: -999em;    
+}
+body.paypal-express-review button#update_order_dummy:active span
+{
+    background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/update_order_on.png") no-repeat scroll 0 0 ;  
 }
