@@ -37,7 +37,7 @@
                 else
                     echo "<br/>";
             ?>
-            <span style="text-transform:uppercase;"><?php echo $this->htmlEscape($_option['label']) ?> :  </span>
+            <span style="text-transform:uppercase;"><?php echo $this->htmlEscape($_option['label']) ?>:  </span>
             <?php if (!$this->getPrintStatus()): ?>
                 <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
                     <?php //echo $_formatedOptionValue['value'] ?>
