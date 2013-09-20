@@ -4264,7 +4264,7 @@ td.order-status
 body.paypal-express-review button#update_order_dummy
 {
     float: right;    
-    margin-top: 7px;
+    margin-top: -35px;
     margin-bottom: 10px;
 }
 
