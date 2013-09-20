@@ -147,6 +147,14 @@
         <div style="clear: both;"></div>
         <?php
     }
+    else
+    {
+        ?>
+            <input type="submit" value="" class="loginbtn spbutton custombtn checkoutcontinuebtn" name="send" downimageurl="<?php echo $this->getSkinUrl('images/checkout/continue_on.png'); ?>" imageurl="<?php echo $this->getSkinUrl('images/checkout/continue_off.png'); ?>" style="background-image: url('<?php echo $this->getSkinUrl('images/checkout/continue_off.png'); ?>');" />
+            <div class="cleaner"></div>
+            <div class="loginerrormsg errormsg" id="paymentmethoderrormsg"></div>      
+        <?php
+    }
 ?>
 </form>
 <?php echo $this->getChildChildHtml('additional'); ?>

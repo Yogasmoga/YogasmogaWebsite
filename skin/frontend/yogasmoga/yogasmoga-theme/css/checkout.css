@@ -268,9 +268,9 @@ table.co-ov-table tfoot tr.last td
 }
 #checkout-submit
 {
-    margin-top : 70px;
+    margin-top : 40px;
     float : right;
-    width : 136px;
+    width : 286px;
     height : 43px;
     background-image : url('../images/checkout/submit_off.png');
     background-repeat : no-repeat;

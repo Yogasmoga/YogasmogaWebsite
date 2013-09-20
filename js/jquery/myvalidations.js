@@ -5,6 +5,11 @@ jQuery(document).ready(function($){
             jQuery("#update_order").trigger('click');                        
             jQuery("#chooseshippingmethod").hide();
         });
+        
+        jQuery("#update_order_dummy").live('click', function(){
+            jQuery("#update_order").trigger('click');
+            //alert("hi");
+        });
     }, 500);    
 });
  

@@ -3318,8 +3318,8 @@ body.paypal-express-review #update_order
 {
     background: url("/skin/frontend/default/newrespond/images/btn-update.png") no-repeat scroll 50% 50% transparent;
     color:#666666;
-    font-size:13px;
-    padding: 10px 15px;
+    font-size:11px !important;
+    padding: 10px 0;
     margin-bottom: 30px;
     width:120px !important;
 }
