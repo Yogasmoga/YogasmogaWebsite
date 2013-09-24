@@ -314,19 +314,7 @@ class Rewardpoints_Helper_Data extends Mage_Core_Helper_Abstract {
     }
 
     public function getPointsOnOrder($cartLoaded = null, $cartQuote = null, $specific_rate = null, $exclude_rules = false, $storeId = false){
-		/*$items = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
-		foreach($items as $item) {  
-		$catid = $item->getProduct()->getCategoryIds(); 
-		$_category = Mage::getSingleton('catalog/category')->load($value);
-		$cartProductCatId = $_category->getChildrenCategory();
-		}*/
-		$coupon_code = Mage::getSingleton('checkout/session')->getQuote()->getCouponCode();
-		$bucksused = Mage::helper('rewardpoints/event')->getCreditPoints();
-		$gcard = Mage::getSingleton('giftcards/session')->getActive();
-		if(!($coupon_code  || $bucksused || $gcard))
-		//if (! in_array(11, $catid)) 
-		{		
-		$rewardPoints = 0;
+        $rewardPoints = 0;
         $rewardPointsAtt = 0;
 
         if (!$storeId){
@@ -436,11 +424,6 @@ class Rewardpoints_Helper_Data extends Mage_Core_Helper_Abstract {
             }
         }
         return ceil($rewardPoints);
-		}
-		else
-		{
-		return $rewardPoints = 0;
-		}
     }
     
     protected function getDefaultProductPoints($product, $storeId){
