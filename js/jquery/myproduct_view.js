@@ -199,7 +199,7 @@ function getfreshInventory()
             //console.log(result);
             for(var i = 0; i < result.length; i++)
             {
-                modifyinfo(result[i][0], result[i][1], result[i][2]);   
+                modifyinfo(result[i][0], result[i][1], result[i][2], result[i][3]);   
             }
             jQuery("div#colorcontainer table[color]:first").trigger('click');
             jQuery("div#absproductoptions div.disableproptions").remove();
@@ -207,7 +207,7 @@ function getfreshInventory()
     });
 }
 
-function modifyinfo(color, size, value)
+function modifyinfo(color, size, value, instock)
 {
     //console.log(color + size + value);
     for(var i = 0; i < _productcolorinfo.length; i++)
@@ -220,6 +220,7 @@ function modifyinfo(color, size, value)
                 if(arrsize[0] == size)
                 {
                     arrsize[1] = value;
+                    arrsize[4] = instock;
                     _productcolorinfo[i].sizes[j] = arrsize.join('|');
                     //console.log('found');
                     return;

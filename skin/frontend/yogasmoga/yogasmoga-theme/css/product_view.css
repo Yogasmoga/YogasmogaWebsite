@@ -340,6 +340,16 @@ table.productdetailtable table.smogibucks td.earnsmogibuckstext
     color : #333;
 }
 
+table.productdetailtable div.outofstockitem
+{
+    width : 239px;
+    height : 43px;
+    background-image : url('../images/catalog/product/out_of_stock.png');
+    background-repeat : no-repeat;
+    margin-top : 15px;
+    display : none;
+}
+
 table.productdetailtable div.addtobag
 {
     width : 239px;
