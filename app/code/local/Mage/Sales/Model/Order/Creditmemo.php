@@ -489,7 +489,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 			$refpoints = Mage::helper('rewardpoints/data')->convertmoneytopoints($this->getDiscountAmount());
 			/* Reward Points Api for Partial Refund */
 			$proxy = new SoapClient(Mage::getBaseUrl().'api/soap/?wsdl');
-			$sessionId = $proxy->login('anil.fresh', 'freshstart12');
+			$sessionId = $proxy->login('mobikasadeveloper', 'developerkey');
 			$customer_id = $order->getCustomerId();
 			//$storeIds = Mage::app()->getStore()->getId(); 
 			$storeIds = 1; 
