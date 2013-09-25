@@ -241,7 +241,9 @@ function changeColor(clr)
         jQuery("div#sizecontainer div[size='" +  size + "']").attr("price", price);
         jQuery("div#sizecontainer div[size='" +  size + "']").attr("rewardpoints", rewardpoints);
         if(instock == 0)
-            jQuery("div#sizecontainer div[size='" +  size + "']").addClass('outofstock');    
+            jQuery("div#sizecontainer div[size='" +  size + "']").addClass('outofstock'); 
+        else
+            jQuery("div#sizecontainer div[size='" +  size + "']").removeClass('outofstock');
     }
     jQuery("#orderitem").show();
     jQuery("#preorderitem").hide();
