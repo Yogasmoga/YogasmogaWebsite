@@ -489,7 +489,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 			$refpoints = Mage::helper('rewardpoints/data')->convertmoneytopoints($this->getDiscountAmount());
 			/* Reward Points Api for Partial Refund */
 			$proxy = new SoapClient(Mage::getBaseUrl().'api/soap/?wsdl');
-			$sessionId = $proxy->login('anil.fresh', 'freshstart12');
+			$sessionId = $proxy->login('mobikasadeveloper', 'developerkey');
 			$customer_id = $order->getCustomerId();
 			//$storeIds = Mage::app()->getStore()->getId(); 
 			$storeIds = 1; 
@@ -502,24 +502,19 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 			$query = "SELECT product_id FROM ".$table1." WHERE order_id = ".$order->getEntityId()." AND product_type = 'simple'";
 			$points_gained = $readConnection->fetchAll($query);
 			//print_r($points_gained);
-			$basediscountamt = $order->getBaseDiscountAmount();	
 			
 			foreach ($points_gained as $id => $values) {
 						foreach ($values as $value) {
 							//echo "id {$id} and value {$value}<br />";
-									
 								 $points_awarded[$id] = Mage::helper('rewardpoints/data')->getProductPoints(Mage::getModel('catalog/product')->load($value),false,false);
 								 $checkrew[$id]."<br />";
 								 $rewardpoints[$id] = $points_awarded[$id] * $checkrew[$id];
 								
-								if ($basediscountamt > 0 )
-								{
 								if($rewardpoints[$id] > 0 )
 									{
 									$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $rewardpoints[$id], $storeIds));
 										
 									}
-								}
 							//Mage:throwException( Mage::helper('sales')->__('test')  ); for debugging
 								}
 							}
@@ -585,10 +580,8 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 					$refpointstotal = Mage::helper('rewardpoints/data')->convertmoneytopoints($order->getRewardpoints());
 					
 					$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $refpointstotal, $storeIds));
-					if ($basediscountamt > 0 )
-					{
 					$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $totalrewardpoints1, $storeIds));
-					}
+					
 					
 				}
 			
