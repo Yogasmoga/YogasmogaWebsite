@@ -33,6 +33,7 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
     <dl>
     <?php foreach($_attributes as $_attribute): ?>
         <?php
+            //echo $_attribute->getLabel();
             if($_attribute->getLabel() == "Size")
             {
                 ?>
@@ -47,7 +48,7 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
             <div class="input-box">
                 <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
                     <option><?php echo $this->__('Choose an Option...') ?></option>
-                  </select>
+                </select>
               </div>
         </dd>
     <?php endforeach; ?>
@@ -79,7 +80,12 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
             for(i = 0; i < qtyinfo.length; i++)
             {
                 if(qtyinfo[i][0] == clr && qtyinfo[i][1] == sz)
-                    return qtyinfo[i][2]; 
+                {
+                    if(qtyinfo[i][3] == 0)
+                        return "out";
+                    else
+                        return qtyinfo[i][2];
+                } 
             }
             return "";
         }
@@ -88,6 +94,17 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
         {
             var qty = getqty(_selclr, _selsz);
             //alert(qty + " - " + _selqty);
+            if(qty == "out")
+            {
+                $j("div.product-options-bottom button.btn-cart span").html("Out of stock");
+                $j("div.product-options-bottom button.btn-cart").attr("disabled","disabled");
+                return;
+            }
+            else
+            {
+                $j("div.product-options-bottom button.btn-cart").removeAttr("disabled");
+            }
+                
             if(qty == "")
                 $j("div.product-options-bottom button.btn-cart span").html("Add to Cart");
             else
@@ -166,7 +183,7 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 		}
 		else
 		{
-		  setTimeout(function(){
+		  setTimeout(function(){  
 		      //$j("div.galleria-thumbnails img[src='" + imgdata[$j("#color-attr div.colorbox.active").attr('rel')] + "']").trigger('click');
               
               if($j("div#carousel ul.slides li img[src='" + imgdata[$j("#color-attr div.colorbox.active").attr('rel')] + "']").index() == 0)

@@ -113,7 +113,8 @@
             $sz = '';
         if(!srcharry($qtyinfo, $clr, $sz))
         {
-            $qtyinfo[] = array("color" => $clr, "size" => $sz, "qty" => Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty());
+            $qtyinfo[] = array("color" => $clr, "size" => $sz, "qty" => Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty(),
+            "instock" => Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getIsInStock());
         }
         
         //$temp = $_childproduct->getAttributeText('color');
@@ -150,7 +151,7 @@
         foreach($qtyinfo as $row)
         {
             ?>
-            qtyinfo[qtyinfo.length] = new Array('<?php echo $row['color']; ?>','<?php echo $row['size']; ?>','<?php echo $row['qty']; ?>');
+            qtyinfo[qtyinfo.length] = new Array('<?php echo $row['color']; ?>','<?php echo $row['size']; ?>','<?php echo $row['qty']; ?>','<?php echo $row['instock']; ?>');
             <?php
         }
     ?>

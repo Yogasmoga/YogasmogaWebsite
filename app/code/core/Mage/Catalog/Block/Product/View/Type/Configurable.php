@@ -91,7 +91,9 @@ class Mage_Catalog_Block_Product_View_Type_Configurable extends Mage_Catalog_Blo
             $allProducts = $this->getProduct()->getTypeInstance(true)
                 ->getUsedProducts(null, $this->getProduct());
             foreach ($allProducts as $product) {
-                if ($product->isSaleable() || $skipSaleableCheck) {
+                /*MageHacker. . modifying the below line to allow display of out of stock simple products in configurable page display*/
+                //if ($product->isSaleable() || $skipSaleableCheck) {
+                if (true) {
                     $products[] = $product;
                 }
             }

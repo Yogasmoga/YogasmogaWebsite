@@ -3333,3 +3333,9 @@ body.paypal-express-review #review-buttons-container
 {
     height:120px;
 }
+
+button.btn-cart[disabled]
+{
+    color : #666;
+    background : url("/skin/frontend/default/newrespond/images/btnw.png") no-repeat scroll 50% 50% rgba(0, 0, 0, 0);
+}
