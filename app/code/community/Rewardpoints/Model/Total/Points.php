@@ -65,11 +65,21 @@ class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Tot
 							 
 							$query1 = "Select category_id, name from catalog_category_product, catalog_category_flat_store_1 where catalog_category_product.product_id = ".$itemId." and catalog_category_flat_store_1.entity_id = catalog_category_product.category_id";
 							$categoryid = $readConnection->fetchAll($query1);
-							
+							$excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories ')->getValue('plain');
+							$excludecats = explode(",", $excludecats);
 							for($id=0;$id<count($categoryid);$id++)
 							{
-								
-								if($categoryid[$id]['category_id'] == 8)
+								$flag = false;
+								for($i = 0; $i < count($excludecats); $i++)
+								{
+									if($categoryid[$id]['category_id'] == $excludecats[$i])
+									{
+										$flag = true;
+										break;
+									}
+								}
+								if($flag)
+								//if($categoryid[$id]['category_id'] == 8)
 								//if($categoryid[$id]['name'] == 'Accessories')
 								{
 								  $cattotal = $cattotal + $itemstotal;
