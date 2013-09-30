@@ -292,6 +292,7 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
                         $temp += $discount;
                         $arrOrderItem[$i]['price'] = $discount;   
                     }
+                    Mage::log($arrOrderItem[$i]['price']."  ".$arrOrderItem[$i]['product_id'] ,null,'distribution.log');
                 }
                 Mage::log($temp."   ".$discount_amount,null,'distribution.log');    
                 if($temp < $discount_amount)
@@ -307,6 +308,7 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
                     $readresult=$write->query("Update sales_flat_order_item set discount_amount=".$arrOrderItem[$i]['price'].", base_discount_amount=".$arrOrderItem[$i]['price'].", discount_invoiced=".$arrOrderItem[$i]['price'].", base_discount_invoiced=".$arrOrderItem[$i]['price']." where order_id=".$lastOrderId." and product_id=".$arrOrderItem[$i]['product_id']);
                     $readresult=$write->query("Update sales_flat_invoice_item set discount_amount=".$arrOrderItem[$i]['price'].", base_discount_amount=".$arrOrderItem[$i]['price']." where parent_id=".$invoiceid." and product_id=".$arrOrderItem[$i]['product_id']);
                 }
+                Mage::log($temp."   ".$discount_amount,null,'distribution.log');
             }
             
             $readresult=$write->query("SELECT COUNT(item_id) AS cnt FROM sales_flat_order_item WHERE order_id=".$lastOrderId." AND qty_backordered>0");
