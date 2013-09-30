@@ -251,11 +251,12 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
                 $row = $readresult->fetch();
                 $invoiceid = $row['entity_id'];    
                 $arrOrderItem = array();
-                $readresult=$write->query("Select product_id, row_total_incl_tax from sales_flat_order_item where order_id=".$lastOrderId." and price > 0");
+                $readresult=$write->query("Select product_id, row_total_incl_tax, item_id from sales_flat_order_item where order_id=".$lastOrderId." and price > 0");
                 while ($row = $readresult->fetch() ) {
                     $temp = array();
                     $temp['product_id'] = $row['product_id'];
                     $temp['price'] = $row['row_total_incl_tax'];
+                    $temp['item_id'] = $row['item_id'];
                     $temp['exclude'] = 0;
                     if($smogiused)
                     {
@@ -305,8 +306,9 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
                 }
                 for($i = 0; $i < count($arrOrderItem); $i++)
                 {
-                    $readresult=$write->query("Update sales_flat_order_item set discount_amount=".$arrOrderItem[$i]['price'].", base_discount_amount=".$arrOrderItem[$i]['price'].", discount_invoiced=".$arrOrderItem[$i]['price'].", base_discount_invoiced=".$arrOrderItem[$i]['price']." where order_id=".$lastOrderId." and product_id=".$arrOrderItem[$i]['product_id']);
-                    $readresult=$write->query("Update sales_flat_invoice_item set discount_amount=".$arrOrderItem[$i]['price'].", base_discount_amount=".$arrOrderItem[$i]['price']." where parent_id=".$invoiceid." and product_id=".$arrOrderItem[$i]['product_id']);
+                    //$readresult=$write->query("Update sales_flat_order_item set discount_amount=".$arrOrderItem[$i]['price'].", base_discount_amount=".$arrOrderItem[$i]['price'].", discount_invoiced=".$arrOrderItem[$i]['price'].", base_discount_invoiced=".$arrOrderItem[$i]['price']." where order_id=".$lastOrderId." and product_id=".$arrOrderItem[$i]['product_id']);
+                    $readresult=$write->query("Update sales_flat_order_item set discount_amount=".$arrOrderItem[$i]['price'].", base_discount_amount=".$arrOrderItem[$i]['price'].", discount_invoiced=".$arrOrderItem[$i]['price'].", base_discount_invoiced=".$arrOrderItem[$i]['price']." where order_id=".$lastOrderId." and item_id=".$arrOrderItem[$i]['item_id']);
+                    $readresult=$write->query("Update sales_flat_invoice_item set discount_amount=".$arrOrderItem[$i]['price'].", base_discount_amount=".$arrOrderItem[$i]['price']." where parent_id=".$invoiceid." and order_item_id=".$arrOrderItem[$i]['item_id']);
                 }
                 Mage::log($temp."   ".$discount_amount,null,'distribution.log');
             }
