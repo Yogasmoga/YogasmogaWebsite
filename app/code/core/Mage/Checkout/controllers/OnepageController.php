@@ -232,19 +232,21 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
         $lastQuoteId = $session->getLastQuoteId();
         $lastOrderId = $session->getLastOrderId();
         
-        Mage::log($lastOrderId,null,'distribution.log');
+        Mage::log("Order #".$lastOrderId,null,'distribution.log');
         
         try{
             $write = Mage::getSingleton('core/resource')->getConnection('core_write');
             $readresult=$write->query("Select base_discount_amount, rewardpoints_quantity from sales_flat_order where entity_id=".$lastOrderId);
             $row = $readresult->fetch();
             $smogiused = false;
+			Mage::log("Base Discount = ".$row['base_discount_amount'],null,'distribution.log');
             if($row['base_discount_amount'] < 0)
             {
                 $discount_amount = $row['base_discount_amount'] * -1;
+				Mage::log("Rewardpoints = ".$row['rewardpoints_quantity'],null,'distribution.log');
                 if($row['rewardpoints_quantity'] > 0)
                     $smogiused = true;
-                Mage::log("Smogi used = $smogiused",null,'distribution.log');        
+                //Mage::log("Smogi used = $smogiused",null,'distribution.log');        
                 $readresult=$write->query("Select entity_id from sales_flat_invoice where order_id=".$lastOrderId);
                 $row = $readresult->fetch();
                 $invoiceid = $row['entity_id'];    
@@ -264,7 +266,7 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
                         if($row1['cnt'] > 0)
                         {
                             $temp['exclude'] = 1;
-                            Mage::log("Excluded = ".$row['product_id'],null,'distribution.log');    
+                            Mage::log("Excluded = ".$row['product_id'],null,'distribution.log');
                         }
                     }
                     array_push($arrOrderItem, $temp);
@@ -275,6 +277,7 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
                     if($arrOrderItem[$i]['exclude'] == 0)
                         $total += $arrOrderItem[$i]['price'];
                 }
+				Mage::log("Total Calculatable = ".$row['product_id'],null,'distribution.log');
                 $temp = 0;
                 for($i = 0; $i < count($arrOrderItem); $i++)
                 {
