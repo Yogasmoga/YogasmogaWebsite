@@ -70,7 +70,7 @@ class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Tot
 							{
 								
 								//if($categoryid[$id]['category_id'] == 11)
-								if($categoryid[$id]['name'] == 'NoSmogiFinal')
+								if($categoryid[$id]['name'] == 'Accessories')
 								{
 								  $cattotal = $cattotal + $itemstotal;
 								}
