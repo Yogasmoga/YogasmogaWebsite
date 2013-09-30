@@ -513,10 +513,12 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 
 			
 			echo "Total reward points".$totalrewardpoints1 = array_sum($totalrewardpoints);
-			
+			//Mage::throwException( Mage::helper('sales')->__($order->getGiftMessageId()." ".$order->getCouponRuleName())  );
 			/* For Total Reward Points */
 			
-			if ($order->getRewardpoints() != NULL || $totalrewardpoints1 > 0 && $order->getGiftMessageId() == NULL && $order->getCouponRuleName()) 
+			if ($order->getRewardpoints() != NULL || $totalrewardpoints1 > 0)  
+			{
+			if ($order->getGiftMessageId() != '' && $order->getCouponRuleName() != '')
 			{
 			$qty_refunded = Mage::getSingleton('core/session')->getQtyToRef();
 			
@@ -565,15 +567,17 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 								 $points_awarded[$id] = Mage::helper('rewardpoints/data')->getProductPoints(Mage::getModel('catalog/product')->load($value),false,false);
 								 $checkrew[$id]."<br />";
 								 $rewardpoints[$id] = $points_awarded[$id] * $checkrew[$id];
-								
+										
 								if ($basediscountamt > 0  )
 								{
+								$rewardpoints[$id] = 0;
+								}
 									if($rewardpoints[$id] > 0)
 									{							
 									$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $rewardpoints[$id], $storeIds));
-									//Mage:throwException( Mage::helper('sales')->__($rewardpoints[$id])  );	
+										
 									}
-								}
+								
 							//Mage:throwException( Mage::helper('sales')->__('test')  ); for debugging
 								}
 							}
@@ -611,7 +615,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 			
 			}
 			
-			
+			}
 			
 			
 		}
