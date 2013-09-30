@@ -277,7 +277,7 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
                     if($arrOrderItem[$i]['exclude'] == 0)
                         $total += $arrOrderItem[$i]['price'];
                 }
-				Mage::log("Total Calculatable = ".$row['product_id'],null,'distribution.log');
+				Mage::log("Total Calculatable = ".$total,null,'distribution.log');
                 $temp = 0;
                 for($i = 0; $i < count($arrOrderItem); $i++)
                 {
