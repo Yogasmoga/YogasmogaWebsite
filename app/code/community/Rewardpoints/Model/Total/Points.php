@@ -69,8 +69,8 @@ class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Tot
 							for($id=0;$id<count($categoryid);$id++)
 							{
 								
-								//if($categoryid[$id]['category_id'] == 11)
-								if($categoryid[$id]['name'] == 'Accessories')
+								if($categoryid[$id]['category_id'] == 8)
+								//if($categoryid[$id]['name'] == 'Accessories')
 								{
 								  $cattotal = $cattotal + $itemstotal;
 								}

@@ -90,8 +90,8 @@ class Rewardpoints_Block_Coupon extends Mage_Checkout_Block_Cart_Abstract
 							for($id=0;$id<count($categoryid);$id++)
 							{
 								
-								//if($categoryid[$id]['category_id'] == 11)
-								if($categoryid[$id]['name'] == 'Accessories')
+								if($categoryid[$id]['category_id'] == 8)
+								//if($categoryid[$id]['name'] == 'Accessories')
 								{
 								  $cattotal = $cattotal + $itemstotal;
 								}
