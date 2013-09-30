@@ -516,11 +516,31 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 			
 			/* For Total Reward Points */
 			
-			if ($order->getRewardpoints() != NULL || $totalrewardpoints1 > 0) 
+			if ($order->getRewardpoints() != NULL || $totalrewardpoints1 > 0 && $order->getGiftMessageId() == NULL && $order->getCouponRuleName()) 
 			{
 			$qty_refunded = Mage::getSingleton('core/session')->getQtyToRef();
 			
+			/* For Full refund after partial Refund and Rounding off purpose    */
+			
+			$table = $resource->getTableName('sales_flat_order');
+			$table3 = $resource->getTableName('sales_flat_order_item');
+			$table1 = $resource->getTableName('sales_flat_creditmemo');
+			$table2 = $resource->getTableName('sales_flat_creditmemo_item');
+			
+			//$query = 'SELECT '.$table2.'.qty FROM ' . $table2.','. $table1.','. $table.' WHERE '.$table2.'.base_price > 1 AND '.$table2.'.parent_id = '.$table1.'.entity_id AND '.$table1.'.order_id ='.$order->getEntityId().' GROUP BY '.$table2.'.parent_id';
+			$query = "SELECT SUM(qty_refunded) FROM ".$table3." where product_type = 'configurable' AND order_id =".$order->getEntityId();
+			$qty = $readConnection->fetchOne($query);
+			$qty_left = $qty_ordered - $qty ;
+			/* For Full refund after partial Refund and Rounding off purpose    */
+			
+			if($qty_left == $qtytorefund)
+			{
+			$refpoints = Mage::helper('rewardpoints/data')->convertmoneytopoints(floor($this->getDiscountAmount()));
+			}
+			else
+			{
 			$refpoints = Mage::helper('rewardpoints/data')->convertmoneytopoints($this->getDiscountAmount());
+			}
 			/* Reward Points Api for Partial Refund */
 			$proxy = new SoapClient(Mage::getBaseUrl().'api/soap/?wsdl');
 			$sessionId = $proxy->login('mobikasadeveloper', 'developerkey');
@@ -546,21 +566,16 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 								 $checkrew[$id]."<br />";
 								 $rewardpoints[$id] = $points_awarded[$id] * $checkrew[$id];
 								
-								if ($basediscountamt > 0 ){
-								
-								if ($rewardpoints[$id] > 0 )
-									{
-									
-										
-										$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $rewardpoints[$id], $storeIds));
-										//Mage:throwException( Mage::helper('sales')->__($rewardpoints[$id])  );	
-										
+								if ($basediscountamt > 0  )
+								{
+									if($rewardpoints[$id] > 0)
+									{							
+									$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $rewardpoints[$id], $storeIds));
+									//Mage:throwException( Mage::helper('sales')->__($rewardpoints[$id])  );	
 									}
 								}
 							//Mage:throwException( Mage::helper('sales')->__('test')  ); for debugging
-								
 								}
-								
 							}
 			
 
@@ -572,15 +587,6 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 			
 			/* Reward Points Api for Partial Refund Ends */
 			
-			$table = $resource->getTableName('sales_flat_order');
-			$table3 = $resource->getTableName('sales_flat_order_item');
-			$table1 = $resource->getTableName('sales_flat_creditmemo');
-			$table2 = $resource->getTableName('sales_flat_creditmemo_item');
-			
-			//$query = 'SELECT '.$table2.'.qty FROM ' . $table2.','. $table1.','. $table.' WHERE '.$table2.'.base_price > 1 AND '.$table2.'.parent_id = '.$table1.'.entity_id AND '.$table1.'.order_id ='.$order->getEntityId().' GROUP BY '.$table2.'.parent_id';
-			$query = "SELECT SUM(qty_refunded) FROM ".$table3." where product_type = 'configurable' AND order_id =".$order->getEntityId();
-			$qty = $readConnection->fetchOne($query);
-			$qty_left = $qty_ordered - $qty ;
 			
 			//Mage::throwException( $qty_left."//".$qtytorefund );			
 			if($qty_left == $qtytorefund)
