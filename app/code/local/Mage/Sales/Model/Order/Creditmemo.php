@@ -518,7 +518,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 			
 			if ($order->getRewardpoints() != NULL || $totalrewardpoints1 > 0)  
 			{
-			if ($order->getGiftMessageId() != '' && $order->getCouponRuleName() != '')
+			if ($order->getGiftMessageId() == '' && $order->getCouponRuleName() == '')
 			{
 			$qty_refunded = Mage::getSingleton('core/session')->getQtyToRef();
 			
