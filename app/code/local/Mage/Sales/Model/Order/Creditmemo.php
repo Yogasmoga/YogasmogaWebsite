@@ -568,15 +568,22 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 								 $checkrew[$id]."<br />";
 								 $rewardpoints[$id] = $points_awarded[$id] * $checkrew[$id];
 										
-								if ($basediscountamt > 0  )
+								if ($basediscountamt > 0)
 								{
-								$rewardpoints[$id] = 0;
+									if($rewardpoints[$id] > 0)
+									{							
+									//$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $rewardpoints[$id], $storeIds));
+										
+									}
 								}
+								else if ($basediscountamt == 0  )
+								{
 									if($rewardpoints[$id] > 0)
 									{							
 									$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $rewardpoints[$id], $storeIds));
 										
 									}
+								}
 								
 							//Mage:throwException( Mage::helper('sales')->__('test')  ); for debugging
 								}
