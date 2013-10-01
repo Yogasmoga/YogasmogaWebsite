@@ -49,48 +49,54 @@ class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Tot
 		//   $creditPoints = $this->getCreditPoints($address->getQuote());
 		
 		/*************** for accessories ***********/
-		$creditPoints1 = Mage::helper('rewardpoints/event')->getCreditPoints($address->getQuote());
-		
-		$resource = Mage::getSingleton('core/resource');
- 		$readConnection = $resource->getConnection('core_read');
-		$cartHelper = Mage::helper('checkout/cart');
-		$items = $cartHelper->getCart()->getItems();
-		
-		foreach ($items as $item) {
-							
-								
-				
-							 $itemId = $item->getProductId();
-							 $itemstotal = $item->getRowTotal();
-							 
-							$query1 = "Select category_id, name from catalog_category_product, catalog_category_flat_store_1 where catalog_category_product.product_id = ".$itemId." and catalog_category_flat_store_1.entity_id = catalog_category_product.category_id";
-							$categoryid = $readConnection->fetchAll($query1);
-							
-							for($id=0;$id<count($categoryid);$id++)
-							{
-								
-								//if($categoryid[$id]['category_id'] == 11)
-								if($categoryid[$id]['name'] == 'Accessories')
-								{
-								  $cattotal = $cattotal + $itemstotal;
-								}
-							}
-				
-				$tot = $tot + $itemstotal;
-							
-							
-			}
-		
-		$grandTotalapplicable = $tot - $cattotal;	
-		if($creditPoints1 < $grandTotalapplicable)
+		 
+		if(! Mage::app()->getStore()->isAdmin() || ! Mage::getDesign()->getArea() == 'adminhtml')
 		{
-		$creditPoints = $creditPoints1;
+			$creditPoints1 = Mage::helper('rewardpoints/event')->getCreditPoints($address->getQuote());
+			$resource = Mage::getSingleton('core/resource');
+			$readConnection = $resource->getConnection('core_read');
+			$cartHelper = Mage::helper('checkout/cart');
+			$items = $cartHelper->getCart()->getItems();
+			
+			foreach ($items as $item) {
+								
+									
+					
+								 $itemId = $item->getProductId();
+								 $itemstotal = $item->getRowTotal();
+								 
+								$query1 = "Select category_id, name from catalog_category_product, catalog_category_flat_store_1 where catalog_category_product.product_id = ".$itemId." and catalog_category_flat_store_1.entity_id = catalog_category_product.category_id";
+								$categoryid = $readConnection->fetchAll($query1);
+								
+								for($id=0;$id<count($categoryid);$id++)
+								{
+									
+									//if($categoryid[$id]['name'] == 'Accessories')
+									if($categoryid[$id]['category_id'] == 11)
+									{
+									  $cattotal = $cattotal + $itemstotal;
+									}
+								}
+					
+					$tot = $tot + $itemstotal;
+								
+								
+				}
+			
+			$grandTotalapplicable = $tot - $cattotal;	
+			if($creditPoints1 < $grandTotalapplicable)
+			{
+			$creditPoints = $creditPoints1;
+			}
+			else
+			{
+			$creditPoints = $grandTotalapplicable;
+			}
 		}
 		else
 		{
-		$creditPoints = $grandTotalapplicable;
+			$creditPoints = Mage::helper('rewardpoints/event')->getCreditPoints($address->getQuote());
 		}
-		
         $subtotalWithDiscount = 0;
         $baseSubtotalWithDiscount = 0;
         
