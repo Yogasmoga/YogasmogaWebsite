@@ -50,7 +50,7 @@ class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Tot
 		
 		/*************** for accessories ***********/
 		
-		if(Mage::app()->getStore()->isAdmin())
+		if(Mage::app()->getStore()->isAdmin() || Mage::getDesign()->getArea() == 'adminhtml')
 		{
 		$creditPoints = Mage::helper('rewardpoints/event')->getCreditPoints($address->getQuote());
 		}
