@@ -49,11 +49,8 @@ class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Tot
 		//   $creditPoints = $this->getCreditPoints($address->getQuote());
 		
 		/*************** for accessories ***********/
-		
-		if(!(Mage::app()->getStore()->isAdmin() || Mage::getDesign()->getArea() == 'adminhtml'))
-		{
-		
 		$creditPoints1 = Mage::helper('rewardpoints/event')->getCreditPoints($address->getQuote());
+		
 		$resource = Mage::getSingleton('core/resource');
  		$readConnection = $resource->getConnection('core_read');
 		$cartHelper = Mage::helper('checkout/cart');
@@ -93,11 +90,7 @@ class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Tot
 		{
 		$creditPoints = $grandTotalapplicable;
 		}
-		}
-		else
-		{
-		$creditPoints = Mage::helper('rewardpoints/event')->getCreditPoints($address->getQuote());
-		}
+		
         $subtotalWithDiscount = 0;
         $baseSubtotalWithDiscount = 0;
         
