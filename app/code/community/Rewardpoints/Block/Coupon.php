@@ -86,7 +86,7 @@ class Rewardpoints_Block_Coupon extends Mage_Checkout_Block_Cart_Abstract
 							
 							$query1 = "Select category_id, name from catalog_category_product, catalog_category_flat_store_1 where catalog_category_product.product_id = ".$itemId." and catalog_category_flat_store_1.entity_id = catalog_category_product.category_id";
 							$categoryid = $readConnection->fetchAll($query1);
-							$excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories ')->getValue('plain');
+							$excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories')->getValue('plain');
 							$excludecats = explode(",", $excludecats);
 							for($id=0;$id<count($categoryid);$id++)
 							{
