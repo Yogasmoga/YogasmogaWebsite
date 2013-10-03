@@ -157,7 +157,9 @@
 		<input type="hidden" name="payment[stripe_customer_id]" value="" id="<?php echo $_code?>_stripe_customer_id" /> 
 	<?php endif; ?>
     <?php if ($this->getIsStripeCustomer()) : ?>
+        <div id="stripe-update-payment-holder">
     	<a id="stripe-update-payment" class="use"><?php echo $this->__("Change payment information") ?></a>
+        </div>
     <?php endif; ?>
     <?php /*
     <input type="submit" imageurl="<?php echo $this->getSkinUrl('images/checkout/continue_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/checkout/continue_on.png'); ?>" name="send" class="loginbtn spbutton custombtn checkoutcontinuebtn" value="" />
