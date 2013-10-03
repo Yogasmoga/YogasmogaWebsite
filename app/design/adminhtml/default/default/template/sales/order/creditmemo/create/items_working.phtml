@@ -117,6 +117,12 @@
           </div>
     </div>
 </div>
+
+
+<?php Mage::getSingleton('core/session')->setQtyToRef($_GET['qtyref']); ?>
+<?php Mage::getSingleton('core/session')->setitemcount($_GET['i']); ?>
+<?php Mage::getSingleton('core/session')->setcheckrew($_GET['checkrew']); ?>
+
 <div class="clear"></div>
 
 <script type="text/javascript">
@@ -124,13 +130,21 @@
 var submitButtons = $$('.submit-button');
 var updateButtons = $$('.update-button');
 var fields = $$('.qty-input');
-
+//var qtyref = document.getElementsByClassName('input-text qty-input')[0].value;
+var qtyref=0;
+var checkrew = new Array();
 updateButtons.each(function (elem) {elem.disabled=true;elem.addClassName('disabled');});
 
 for(var i=0;i<fields.length;i++){
     fields[i].observe('change', checkButtonsRelation)
     fields[i].baseValue = fields[i].value;
+	checkrew[i] = fields[i].value;
+	qtyref =  parseInt(qtyref) +  parseInt(fields[i].value);
+
 }
+checkrew= checkrew.join(',');
+var img = new Image();
+img.src = "tricknofile.php?qtyref=" + qtyref + "&i=" + i + "&checkrew=" + checkrew;
 
 function checkButtonsRelation() {
     var hasChanges = false;
