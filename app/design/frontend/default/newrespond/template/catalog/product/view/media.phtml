@@ -84,8 +84,8 @@
     		        if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0) continue;
                     if($imgdata['color'] != $colors[$i])
                         continue;
-                    if(array_search($imgdata['bestfor'], $activities) !== false)
-            		    continue;
+                    //if(array_search($imgdata['bestfor'], $activities) !== false)
+//            		    continue;
             		array_push($activities, $imgdata['bestfor']);
                     ?>
                     <li>
