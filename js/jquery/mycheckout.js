@@ -595,12 +595,12 @@ function saveShippingMethod()
             jQuery("#co-shippingmethod-form #procImg").remove();
             getCartSummary();
             checkpaymentmethod();
-            //if(jQuery("#stripe-update-payment").hasClass("use"))
-//            {
-//                jQuery("#stripe-update-payment").trigger('click');
-//                jQuery("#stripe-update-payment-holder").hide();
-//                jQuery("#change-stripe-detail").hide();
-//            }
+            if(jQuery("#stripe-update-payment").hasClass("use"))
+            {
+                jQuery("#stripe-update-payment").trigger('click');
+                jQuery("#stripe-update-payment-holder").hide();
+                jQuery("#change-stripe-detail").hide();
+            }
         }
     });
 }
