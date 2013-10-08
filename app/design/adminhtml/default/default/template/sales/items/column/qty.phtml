@@ -76,23 +76,43 @@
     <?php endif; ?>
 	<?php 
 	
+	/******Check for the product is_virtual and then display Qty Preorderd ************/
 	
    
-    $query = 'SELECT qty_backordered FROM ' . $table . ' WHERE order_id = ' . (int)$_item->getOrderId() . ' AND parent_item_id = '.(int)$_item->getItemId()  . ' AND qty_backordered is not NULL ' ;
-     
+    $query = 'SELECT qty_backordered FROM ' . $table . ' WHERE order_id = ' . (int)$_item->getOrderId() . ' AND parent_item_id = '.(int)$_item->getItemId(). ' AND qty_backordered is not NULL ' ;
+    
+    $queryvirtual = 'SELECT qty_backordered, is_virtual FROM ' . $table . ' WHERE order_id = ' . (int)$_item->getOrderId() .' AND is_virtual = 1 AND item_id = '.(int)$_item->getItemId();
+    //$queryforvirtual = 'SELECT qty_backordered FROM ' . $table . ' WHERE order_id = ' . (int)$_item->getOrderId() . ' AND parent_item_id = '.(int)$_item->getItemId(). ' AND qty_backordered is not NULL ' ; 
     /**
      * Execute the query and store the result in $sku
      */
     $backordered = $readConnection->fetchOne($query);
+    $virtual = $readConnection->fetchAll($queryvirtual);
      
-      
+	//print_r($virtual);
 	?>
-	<?php if ((int)$backordered): ?>
+	<?php 
+	if ($virtual[0]['is_virtual'] == 0)
+	{
+	 
+	if ((int)$backordered): ?>
     <tr>
         <td><?php echo Mage::helper('sales')->__('PreOrdered') ?></td>
         <td><strong><?php echo (int)$backordered  ?></strong></td>
     </tr>
-    <?php endif; ?>
+    <?php endif;
+	}
+	else
+	{
+	if((int)$virtual[0]['qty_backordered'] ):?>
+	<tr>
+        <td><?php echo Mage::helper('sales')->__('PreOrdered') ?></td>
+        <td><strong><?php echo (int)$virtual[0]['qty_backordered']  ?></strong></td>
+    </tr>
+	<?php endif;
+	/******Check for the product is_virtual and then display Qty Preorderd ************/
+	}
+	?>
 	
 	
 	
