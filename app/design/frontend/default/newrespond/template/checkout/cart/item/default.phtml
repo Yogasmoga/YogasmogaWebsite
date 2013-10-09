@@ -36,45 +36,54 @@ $_options = $this->getOptionList();
 ?>
 
 <?php
-    function getMiniImage($productid, $color)
+    if (!function_exists('getMiniImage'))
     {
-        $_gallery = Mage::getModel('catalog/product')->load($productid)->getMediaGalleryImages();
-        foreach($_gallery as $_image)
+        function getMiniImage($productid, $color)
         {
-            $imgdata = json_decode(trim($_image->getLabel()), true);
-            if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0)
-                continue;
-            if($imgdata['color'] != $color)
-                continue;
-            //if(strpos($_image->getLabel(), $color) === false)
-//            //if(strpos($_image->getLabel(),"*") === false)
-//                continue;
-            return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 150)->setQuality(100);
-        }
-        return "";
+            $_gallery = Mage::getModel('catalog/product')->load($productid)->getMediaGalleryImages();
+            foreach($_gallery as $_image)
+            {
+                $imgdata = json_decode(trim($_image->getLabel()), true);
+                if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0)
+                    continue;
+                if($imgdata['color'] != $color)
+                    continue;
+                //if(strpos($_image->getLabel(), $color) === false)
+    //            //if(strpos($_image->getLabel(),"*") === false)
+    //                continue;
+                return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 150)->setQuality(100);
+            }
+            return "";
+        }   
     }
     
-    function getColorId($label)
+    if (!function_exists('getColorId'))
     {
-        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
-        $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov 
-WHERE ea.attribute_id = eao.attribute_id 
-AND eao.option_id = eaov.option_id 
-AND eaov.store_id = 0 
-AND ea.attribute_code='color' AND eaov.value='".$label."'");
-        $row = $readresult->fetch();
-        return $row['Value'];
+        function getColorId($label)
+        {
+            $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+            $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov 
+    WHERE ea.attribute_id = eao.attribute_id 
+    AND eao.option_id = eaov.option_id 
+    AND eaov.store_id = 0 
+    AND ea.attribute_code='color' AND eaov.value='".$label."'");
+            $row = $readresult->fetch();
+            return $row['Value'];
+        }    
     }
     
-    function getImage($productid, $label)
+    if (!function_exists('getImage'))
     {
-        //$_item = $this->getItem();
-        $url = getMiniImage($productid, getColorId($label));
-        if(strlen($url) > 0)
+        function getImage($productid, $label)
         {
-            $url = substr($url, 1);
-        }
-        return $url;
+            //$_item = $this->getItem();
+            $url = getMiniImage($productid, getColorId($label));
+            if(strlen($url) > 0)
+            {
+                $url = substr($url, 1);
+            }
+            return $url;
+        }   
     }
     
     //echo getImage(51, 'Green');
