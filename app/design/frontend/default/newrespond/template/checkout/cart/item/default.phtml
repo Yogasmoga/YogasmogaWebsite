@@ -97,7 +97,7 @@ AND ea.attribute_code='color' AND eaov.value='".$label."'");
     }
 ?>
 
-<?php echo $_item->getProductId()."hel" ?>
+<?php //echo $_item->getProductId()."hel" ?>
 
 <?php if ($messages): ?>
 <tr class="messages">
@@ -112,7 +112,7 @@ AND ea.attribute_code='color' AND eaov.value='".$label."'");
     <td width="110">
 
         <?php if ($this->hasProductUrl()):?>
-            <?php echo $colorlabel; ?>
+            <?php //echo $colorlabel; ?>
             <a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo getImage($_item->getProductId(),$colorlabel); ?>" width="100" height="150" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /><?php if ($this->hasProductUrl()):?></a>
             <?php /*
             <a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo $this->getProductThumbnail()->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(100,150); ?>" width="100" height="150" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /><?php if ($this->hasProductUrl()):?></a>
