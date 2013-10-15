@@ -610,10 +610,12 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 					$order->setState($state, $status, $comment, $isCustomerNotified,$shouldProtectState);
 					
 					//$rewardpointstotal = $points_awarded * $qty_ordered;
-					$refpointstotal = Mage::helper('rewardpoints/data')->convertmoneytopoints($order->getRewardpoints());
-					
+					$refpointstotal = $order->getRewardpoints();
+					if($refpointstotal > 0)
+					{
 					$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $refpointstotal, $storeIds));
-					if ($basediscountamt > 0 )
+					}
+					if ($basediscountamt == 0 )
 					{
 					$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $totalrewardpoints1, $storeIds));
 					}

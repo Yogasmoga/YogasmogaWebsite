@@ -62,8 +62,9 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
 				'sales/order_item',
 				'`sales/order_item`.order_id=`main_table`.entity_id',
 				array(
-					'qty_backordered'  => new Zend_Db_Expr('group_concat(`sales/order_item`.qty_backordered SEPARATOR ",")'), 
-					'parent_item_id'  => new Zend_Db_Expr('group_concat(`sales/order_item`.parent_item_id SEPARATOR ",")'), 
+					//'qty_backordered'  => new Zend_Db_Expr( 'SUM(`sales/order_item`.qty_backordered)'),
+					'qty_backordered'  => new Zend_Db_Expr('group_concat(`sales/order_item`.qty_backordered SEPARATOR ",")'),
+					//'parent_item_id'  => new Zend_Db_Expr('group_concat(`sales/order_item`.parent_item_id SEPARATOR ",")'), 
 					
 					)
         );
@@ -82,12 +83,15 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
             'width' => '80px',
             'type'  => 'text',
             'index' => 'increment_id',
+            'filter_index' => 'increment_id',
+			
         ));
 
         if (!Mage::app()->isSingleStoreMode()) {
             $this->addColumn('store_id', array(
                 'header'    => Mage::helper('sales')->__('Purchased From (Store)'),
                 'index'     => 'store_id',
+                'filter_index'     => 'store_id',
                 'type'      => 'store',
                 'store_view'=> true,
                 'display_deleted' => true,
@@ -97,6 +101,7 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
         $this->addColumn('created_at', array(
             'header' => Mage::helper('sales')->__('Purchased On'),
             'index' => 'created_at',
+            'filter_index' => 'main_table.created_at',
             'type' => 'datetime',
             'width' => '100px',
         ));
@@ -104,16 +109,19 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
         $this->addColumn('billing_name', array(
             'header' => Mage::helper('sales')->__('Bill to Name'),
             'index' => 'billing_name',
+            'filter_index' => 'billing_name',
         ));
 
         $this->addColumn('shipping_name', array(
             'header' => Mage::helper('sales')->__('Ship to Name'),
             'index' => 'shipping_name',
+            'filter_index' => 'shipping_name',
         ));
 
         $this->addColumn('base_grand_total', array(
             'header' => Mage::helper('sales')->__('G.T. (Base)'),
             'index' => 'base_grand_total',
+            'filter_index' => 'base_grand_total',
             'type'  => 'currency',
             'currency' => 'base_currency_code',
         ));
@@ -121,6 +129,7 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
         $this->addColumn('grand_total', array(
             'header' => Mage::helper('sales')->__('G.T. (Purchased)'),
             'index' => 'grand_total',
+            'filter_index' => 'grand_total',
             'type'  => 'currency',
             'currency' => 'order_currency_code',
         ));
@@ -129,7 +138,9 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
         $this->addColumn('qty_backordered', array(
             'header' => Mage::helper('sales')->__('PreOrdered'),
             'index' => 'qty_backordered',
-            'type'  => 'text',
+            'filter_index' => 'qty_backordered',
+            'type' => 'options',
+			'options' => array('Yes'=>'Yes','No'=>'No'),
 			'width' => '50px',
 			'renderer' => 'Mage_Adminhtml_Block_Sales_Order_Renderer_Qtybool',
 			
@@ -138,6 +149,7 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
         $this->addColumn('status', array(
             'header' => Mage::helper('sales')->__('Status'),
             'index' => 'status',
+            'filter_index' => 'status',
             'type'  => 'options',
             'width' => '70px',
             'options' => Mage::getSingleton('sales/order_config')->getStatuses(),
@@ -243,18 +255,26 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
 	{
 		if ($column->getId() == 'qty_backordered' && ( strtolower($column->getFilter()->getValue())=='yes'))
 		{
-			//$val        = strtolower($column->getFilter()->getValue());
-			//$comparison = ($val === "yes") ? 'gteq' : 'gt'; // lteg: <=; gt: >
-
-			$this->getCollection()->addFieldToFilter('qty_backordered', array('neq' => 'null' ));
+			//$this->getCollection()->addFieldToFilter('qty_backordered', array('gteq' => 1 ));
+			$this->getCollection()->addFieldToFilter("(SELECT SUM(qty_backordered) FROM sales_flat_order_item WHERE order_id=main_table.entity_id)", array('is' => new Zend_Db_Expr('NOT NULL')));
+			//parent::_addColumnFilterToCollection($column);
+		} 
+		elseif ($column->getId() == 'qty_backordered' && ( strtolower($column->getFilter()->getValue())=='no'))
+		{
+			//$qry = "select SUM(`sales/order_item`.qty_backordered) from `sales/order_item`, `main_table` where `sales/order_item`.order_id=".'entity_id';
+			//echo $column->getFilter()->getValue();
+			//$this->getCollection()->addFieldToFilter(count('qty_backordered'), array('=' => '' ));
+			//$this->getCollection()->addAttributeToFilter('qty_backordered', array('is' => new Zend_Db_Expr('')));
+			//$this->getCollection()->getSelect()->where('`sales/order_item`.qty_backordered', 'null');
+			//parent::_addColumnFilterToCollection($column);
+			$this->getCollection()->addFieldToFilter("(SELECT SUM(qty_backordered) FROM sales_flat_order_item WHERE order_id=main_table.entity_id)", array('is' => new Zend_Db_Expr('NULL')));
+			
 		} 
 		else
 		{
 			parent::_addColumnFilterToCollection($column);
-			
-			}
+		}
 		
-
 		return $this;
 	}
 

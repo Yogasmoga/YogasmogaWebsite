@@ -13,11 +13,20 @@ class Rewardpoints_Block_Adminhtml_Createorder_Reward extends Mage_Adminhtml_Blo
         //return $this->getQuote()->getCouponCode();
         //return (int)$this->getQuote()->getRewardpointsQuantity();
         return (int)Mage::helper('rewardpoints/event')->getCreditPoints($this->getQuote());
+	
     }
     
     public function getPointsOnOrder() {
         //Mage::getModel('sales/quote')
+		$coupon_code = Mage::getSingleton('adminhtml/session_quote')->getQuote()->getCouponCode();
+		if($this->getPointsUsed() || $coupon_code)
+		{
+		return;
+		}
+		else
+		{
         return Mage::helper('rewardpoints/data')->getPointsOnOrder($this->getQuote(), $this->getQuote(), null, false, $this->getQuote()->getStoreId());
+		}
     }
     
     public function getClientPoints()

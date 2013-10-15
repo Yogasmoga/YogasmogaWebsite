@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Smogi_Distributionbackend>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Smogi_Distributionbackend>
+    </modules>
+</config>

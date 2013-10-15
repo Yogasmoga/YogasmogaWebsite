@@ -46,8 +46,70 @@ class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Tot
         $totalPBasePrice = 0;
         
         $this->checkAutoUse($address->getQuote());
-        $creditPoints = $this->getCreditPoints($address->getQuote());
-        
+		//   $creditPoints = $this->getCreditPoints($address->getQuote());
+		
+		/*************** for accessories ***********/
+		 
+		if(! Mage::app()->getStore()->isAdmin() || ! Mage::getDesign()->getArea() == 'adminhtml')
+		{
+			$creditPoints1 = Mage::helper('rewardpoints/event')->getCreditPoints($address->getQuote());
+			$resource = Mage::getSingleton('core/resource');
+			$readConnection = $resource->getConnection('core_read');
+			$cartHelper = Mage::helper('checkout/cart');
+			$items = $cartHelper->getCart()->getItems();
+			$excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories')->getValue('plain');
+			$excludecats = explode(",", $excludecats);
+			
+			foreach ($items as $item) {
+								
+									
+					
+								 $itemId = $item->getProductId();
+								 $itemstotal = $item->getRowTotal();
+								 
+								$query1 = "Select category_id, name from catalog_category_product, catalog_category_flat_store_1 where catalog_category_product.product_id = ".$itemId." and catalog_category_flat_store_1.entity_id = catalog_category_product.category_id";
+								$categoryid = $readConnection->fetchAll($query1);
+								
+								$excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories')->getValue('plain');
+								$excludecats = explode(",", $excludecats);
+								for($id=0;$id<count($categoryid);$id++)
+								{
+									$flag = false;
+									for($i = 0; $i < count($excludecats); $i++)
+									{
+										if($categoryid[$id]['category_id'] == $excludecats[$i])
+										{
+											$flag = true;
+											break;
+										}
+									}
+									if($flag)
+									//if($categoryid[$id]['category_id'] == 8)
+									//if($categoryid[$id]['name'] == 'Accessories')
+									{
+									  $cattotal = $cattotal + $itemstotal;
+									}
+								}
+					
+					$tot = $tot + $itemstotal;
+								
+								
+				}
+			
+			$grandTotalapplicable = $tot - $cattotal;	
+			if($creditPoints1 < $grandTotalapplicable)
+			{
+			$creditPoints = $creditPoints1;
+			}
+			else
+			{
+			$creditPoints = $grandTotalapplicable;
+			}
+		}
+		else
+		{
+			$creditPoints = Mage::helper('rewardpoints/event')->getCreditPoints($address->getQuote());
+		}
         $subtotalWithDiscount = 0;
         $baseSubtotalWithDiscount = 0;
         
@@ -269,8 +331,9 @@ class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Tot
     }*/
     
     protected function getCreditPoints($quote)
-    {
-        return Mage::helper('rewardpoints/event')->getCreditPoints($quote);
+    {	
+	    return Mage::helper('rewardpoints/event')->getCreditPoints($quote);
+	   //return Mage::getSingleton('core/session')->getCreditPointsApplied();
     }
     
     protected function checkMinUse($quote)

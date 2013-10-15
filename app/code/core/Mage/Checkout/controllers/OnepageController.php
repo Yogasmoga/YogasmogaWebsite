@@ -231,102 +231,7 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
 
         $lastQuoteId = $session->getLastQuoteId();
         $lastOrderId = $session->getLastOrderId();
-        
-        Mage::log("Order #".$lastOrderId,null,'distribution.log');
-        
-        try{
-            $write = Mage::getSingleton('core/resource')->getConnection('core_write');
-            $readresult=$write->query("Select base_discount_amount, rewardpoints_quantity from sales_flat_order where entity_id=".$lastOrderId);
-            $row = $readresult->fetch();
-            $smogiused = false;
-			Mage::log("Base Discount = ".$row['base_discount_amount'],null,'distribution.log');
-            if($row['base_discount_amount'] < 0)
-            {
-                $discount_amount = $row['base_discount_amount'] * -1;
-				Mage::log("Rewardpoints = ".$row['rewardpoints_quantity'],null,'distribution.log');
-                if($row['rewardpoints_quantity'] > 0)
-                    $smogiused = true;
-                //Mage::log("Smogi used = $smogiused",null,'distribution.log');        
-                $readresult=$write->query("Select entity_id from sales_flat_invoice where order_id=".$lastOrderId);
-                $row = $readresult->fetch();
-                $invoiceid = $row['entity_id'];    
-                $arrOrderItem = array();
-                $readresult=$write->query("Select product_id, row_total_incl_tax, item_id from sales_flat_order_item where order_id=".$lastOrderId." and price > 0");
-                while ($row = $readresult->fetch() ) {
-                    $temp = array();
-                    $temp['product_id'] = $row['product_id'];
-                    $temp['price'] = $row['row_total_incl_tax'];
-                    $temp['item_id'] = $row['item_id'];
-                    $temp['exclude'] = 0;
-                    if($smogiused)
-                    {
-                        $write1 = Mage::getSingleton('core/resource')->getConnection('core_write');
-                        $readresult1=$write1->query("SELECT COUNT(*) AS cnt FROM catalog_category_product ccp, catalog_category_flat_store_1 ccfs WHERE ccp.product_id = ".$row['product_id']." AND ccfs.entity_id = ccp.category_id AND category_id IN (".Mage::getModel('core/variable')->loadByCode('nosmogicategories ')->getValue('plain').")");
-                        Mage::log("SELECT COUNT(*) AS cnt FROM catalog_category_product ccp, catalog_category_flat_store_1 ccfs WHERE ccp.product_id = ".$row['product_id']." AND ccfs.entity_id = ccp.category_id AND category_id IN (".Mage::getModel('core/variable')->loadByCode('nosmogicategories ')->getValue('plain').")",null,'distribution.log');
-                        $row1 = $readresult1->fetch();
-                        if($row1['cnt'] > 0)
-                        {
-                            $temp['exclude'] = 1;
-                            Mage::log("Excluded = ".$row['product_id'],null,'distribution.log');
-                        }
-                    }
-                    array_push($arrOrderItem, $temp);
-                }
-                $total = 0;
-                for($i = 0; $i < count($arrOrderItem); $i++)
-                {
-                    if($arrOrderItem[$i]['exclude'] == 0)
-                        $total += $arrOrderItem[$i]['price'];
-                }
-				Mage::log("Total Calculatable = ".$total,null,'distribution.log');
-                $temp = 0;
-                for($i = 0; $i < count($arrOrderItem); $i++)
-                {
-                    if($arrOrderItem[$i]['exclude'] == 1)
-                    {
-                        $arrOrderItem[$i]['price'] = 0;    
-                    }
-                    else
-                    {
-                        $percent = round((($arrOrderItem[$i]['price'] / $total) * 100), 2);
-                        $discount = round(($discount_amount * $percent) / 100);
-                        $temp += $discount;
-                        $arrOrderItem[$i]['price'] = $discount;   
-                    }
-                    Mage::log($arrOrderItem[$i]['price']."  ".$arrOrderItem[$i]['product_id'] ,null,'distribution.log');
-                }
-                Mage::log($temp."   ".$discount_amount,null,'distribution.log');    
-                if($temp < $discount_amount)
-                {
-                    $arrOrderItem[count($arrOrderItem) - 1]['price'] += ($discount_amount - $temp);
-                }
-                if($temp > $discount_amount)
-                {
-                    $arrOrderItem[count($arrOrderItem) - 1]['price'] -= ($temp - $discount_amount);
-                }
-                for($i = 0; $i < count($arrOrderItem); $i++)
-                {
-                    //$readresult=$write->query("Update sales_flat_order_item set discount_amount=".$arrOrderItem[$i]['price'].", base_discount_amount=".$arrOrderItem[$i]['price'].", discount_invoiced=".$arrOrderItem[$i]['price'].", base_discount_invoiced=".$arrOrderItem[$i]['price']." where order_id=".$lastOrderId." and product_id=".$arrOrderItem[$i]['product_id']);
-                    $readresult=$write->query("Update sales_flat_order_item set discount_amount=".$arrOrderItem[$i]['price'].", base_discount_amount=".$arrOrderItem[$i]['price'].", discount_invoiced=".$arrOrderItem[$i]['price'].", base_discount_invoiced=".$arrOrderItem[$i]['price']." where order_id=".$lastOrderId." and item_id=".$arrOrderItem[$i]['item_id']);
-                    $readresult=$write->query("Update sales_flat_invoice_item set discount_amount=".$arrOrderItem[$i]['price'].", base_discount_amount=".$arrOrderItem[$i]['price']." where parent_id=".$invoiceid." and order_item_id=".$arrOrderItem[$i]['item_id']);
-                }
-                Mage::log($temp."   ".$discount_amount,null,'distribution.log');
-            }
-            
-            $readresult=$write->query("SELECT COUNT(item_id) AS cnt FROM sales_flat_order_item WHERE order_id=".$lastOrderId." AND qty_backordered>0");
-            $row = $readresult->fetch();
-            if($row['cnt'] > 0)
-            {
-                $order = Mage::getModel('sales/order')->load($lastOrderId);
-                $order->addStatusHistoryComment("This order contains Pre-Ordered items.");
-                $order->save();   
-            }   
-        }
-        catch(Exception $e)
-        {
-            Mage::log("Error Occured",null,'distribution.log');
-        }
-        
+               
         $lastRecurringProfiles = $session->getLastRecurringProfileIds();
         if (!$lastQuoteId || (!$lastOrderId && empty($lastRecurringProfiles))) {
             $this->_redirect('checkout/cart');
@@ -685,5 +590,3 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
             || !Mage::helper('checkout')->isCustomerMustBeLogged();
     }
 }
-
-

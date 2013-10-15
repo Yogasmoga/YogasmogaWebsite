@@ -328,4 +328,5 @@ class Rewardpoints_Model_Discount extends Mage_Core_Model_Abstract
     }
 
 }
+
 ?>

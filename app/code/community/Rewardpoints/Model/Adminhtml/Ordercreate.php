@@ -32,6 +32,64 @@ class Rewardpoints_Model_Adminhtml_Ordercreate extends Mage_Adminhtml_Model_Sale
     
     public function applyPoints($points)
     {
+		/****Admin Applicable Smogi Bucks ****/
+		if($points > 0)
+		{
+		$creditpointsentered = $points;
+		}
+		
+		$resource = Mage::getSingleton('core/resource');
+ 		$readConnection = $resource->getConnection('core_read');
+		
+		$items = Mage::getSingleton('adminhtml/session_quote')->getQuote()->getAllItems(); 
+		//$itemstotal = Mage::getSingleton('adminhtml/session_quote')->getQuote()->getTotals(); 
+	
+		foreach ($items as $item) {
+				if($item->getPrice() > 0)
+							{
+							 $itemId = $item->getProductId();
+							 $itemstotal = $item->getRowTotal();
+							
+							$query1 = "Select category_id, name from catalog_category_product, catalog_category_flat_store_1 where catalog_category_product.product_id = ".$itemId." and catalog_category_flat_store_1.entity_id = catalog_category_product.category_id";
+							$categoryid = $readConnection->fetchAll($query1);
+							$excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories')->getValue('plain');
+							$excludecats = explode(",", $excludecats);
+							for($id=0;$id<count($categoryid);$id++)
+							{
+								$flag = false;
+								for($i = 0; $i < count($excludecats); $i++)
+								{
+									if($categoryid[$id]['category_id'] == $excludecats[$i])
+									{
+										$flag = true;
+										break;
+									}
+								}
+								if($flag)
+								//if($categoryid[$id]['category_id'] == 8)
+								//if($categoryid[$id]['name'] == 'Accessories')
+								{
+								  $cattotal = $cattotal + $itemstotal;
+								}
+							}
+						$tot = $tot + $itemstotal;
+				}
+			}
+		
+		$grandTotal = $tot - $cattotal;	
+		
+		if ($creditpointsentered > $grandTotal)
+		{
+		$points = $grandTotal;
+		}
+		else
+		{
+		$points = $creditpointsentered; 
+		}
+		//$points = $creditpointsentered;
+		/****Admin Applicable Smogi Bucks ****/
+		
+	
         //check customer max points
         $user_points = $this->customerPoints();
         $points = ($user_points < $points) ? $user_points : $points;

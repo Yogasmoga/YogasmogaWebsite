@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+<modules>
+  <Smogi_Distributionbackend>
+    <version>0.0.1</version>
+  </Smogi_Distributionbackend>
+</modules>
+<admin>
+  <routers>
+    <adminhtml><!-- Name of core module to be overridden  -->
+      <args>
+        <modules>
+          <Smogi_Distributionbackend before="Mage_Adminhtml">Smogi_Distributionbackend</Smogi_Distributionbackend>
+        </modules>
+      </args>
+    </adminhtml>
+  </routers>
+</admin>
+</config>

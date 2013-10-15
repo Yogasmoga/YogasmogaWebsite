@@ -70,7 +70,57 @@ class Rewardpoints_Block_Coupon extends Mage_Checkout_Block_Cart_Abstract
     }
 
     public function getPointsCurrentlyUsed() {
-        return Mage::helper('rewardpoints/event')->getCreditPoints();
+		$creditpointsentered = Mage::helper('rewardpoints/event')->getCreditPoints();
+		$grandTotal = Mage::helper('checkout/cart')->getQuote()->getSubtotal();
+		//print_r($grandTotal);
+		$resource = Mage::getSingleton('core/resource');
+ 		$readConnection = $resource->getConnection('core_read');
+		$cartHelper = Mage::helper('checkout/cart');
+		$items = $cartHelper->getCart()->getItems();
+		
+		foreach ($items as $item) {
+				if($item->getPrice() > 0)
+							{
+							 $itemId = $item->getProductId();
+							 $itemstotal = $item->getRowTotal();
+							
+							$query1 = "Select category_id, name from catalog_category_product, catalog_category_flat_store_1 where catalog_category_product.product_id = ".$itemId." and catalog_category_flat_store_1.entity_id = catalog_category_product.category_id";
+							$categoryid = $readConnection->fetchAll($query1);
+							$excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories')->getValue('plain');
+							$excludecats = explode(",", $excludecats);
+							for($id=0;$id<count($categoryid);$id++)
+							{
+								$flag = false;
+								for($i = 0; $i < count($excludecats); $i++)
+								{
+									if($categoryid[$id]['category_id'] == $excludecats[$i])
+									{
+										$flag = true;
+										break;
+									}
+								}
+								if($flag)
+								//if($categoryid[$id]['category_id'] == 8)
+								//if($categoryid[$id]['name'] == 'Accessories')
+								{
+								  $cattotal = $cattotal + $itemstotal;
+								}
+							}
+				}
+			}
+		
+		$grandTotal = $grandTotal - $cattotal;	
+		
+		if ($creditpointsentered > $grandTotal)
+		{
+		//Mage::getSingleton('core/session')->setCreditPointsApplied($grandTotal);
+		return $grandTotal;
+		}
+		else
+		{
+		return $creditpointsentered; 
+		}
+		
     }
 
     public function canUseCouponCode(){

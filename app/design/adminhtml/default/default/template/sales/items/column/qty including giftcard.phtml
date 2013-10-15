@@ -76,43 +76,32 @@
     <?php endif; ?>
 	<?php 
 	
-	/******Check for the product is_virtual and then display Qty Preorderd ************/
 	
    
-    $query = 'SELECT qty_backordered FROM ' . $table . ' WHERE order_id = ' . (int)$_item->getOrderId() . ' AND parent_item_id = '.(int)$_item->getItemId(). ' AND qty_backordered is not NULL ' ;
-    
-    $queryvirtual = 'SELECT qty_backordered, is_virtual FROM ' . $table . ' WHERE order_id = ' . (int)$_item->getOrderId() .' AND is_virtual = 1 AND item_id = '.(int)$_item->getItemId();
-    //$queryforvirtual = 'SELECT qty_backordered FROM ' . $table . ' WHERE order_id = ' . (int)$_item->getOrderId() . ' AND parent_item_id = '.(int)$_item->getItemId(). ' AND qty_backordered is not NULL ' ; 
+    $query = 'SELECT product_type, qty_backordered FROM ' . $table . ' WHERE order_id = ' . (int)$_item->getOrderId() . ' AND parent_item_id = '.(int)$_item->getItemId()  . ' AND qty_backordered is not NULL ' ;
+    $queryforgiftcard = "SELECT qty_backordered FROM " . $table . " WHERE order_id = " . (int)$_item->getOrderId() . " AND product_type = 'giftcards' AND qty_backordered is not NULL " ;
+     
     /**
      * Execute the query and store the result in $sku
      */
-    $backordered = $readConnection->fetchOne($query);
-    $virtual = $readConnection->fetchAll($queryvirtual);
+    $backordered = $readConnection->fetchAll($query);
+    $backordered_giftcard = $readConnection->fetchOne($queryforgiftcard);
+    //print_r($backordered_giftcard); 
+     $backorderedint = $backordered[0]['qty_backordered']; 
      
-	//print_r($virtual);
 	?>
-	<?php 
-	if ($virtual[0]['is_virtual'] == 0)
-	{
-	 
-	if ((int)$backordered): ?>
+	<?php if ($backordered[0]['product_type'] == 'simple'): ?>
     <tr>
         <td><?php echo Mage::helper('sales')->__('PreOrdered') ?></td>
-        <td><strong><?php echo (int)$backordered  ?></strong></td>
+        <td><strong><?php echo (int) $backorderedint  ?></strong></td>
     </tr>
-    <?php endif;
-	}
-	else
-	{
-	if((int)$virtual[0]['qty_backordered'] ):?>
-	<tr>
+    <?php elseif ($backordered_giftcard > 0 ): ?>
+	 <tr>
         <td><?php echo Mage::helper('sales')->__('PreOrdered') ?></td>
-        <td><strong><?php echo (int)$virtual[0]['qty_backordered']  ?></strong></td>
+        <td><strong><?php echo (int) $backordered_giftcard  ?></strong></td>
     </tr>
-	<?php endif;
-	/******Check for the product is_virtual and then display Qty Preorderd ************/
-	}
-	?>
+
+	<?php endif; ?>
 	
 	
 	
