@@ -27,6 +27,7 @@
 
 
 <?php
+
     $allow = 0;
     if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
         $allow++;
@@ -39,6 +40,7 @@
     {
         Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
     }
+	Mage::getSingleton('core/session')->setrewardpointscount(Mage::helper('rewardpoints')->getPointsOnOrder()); 
 ?>
 
 <div class="page-title">
