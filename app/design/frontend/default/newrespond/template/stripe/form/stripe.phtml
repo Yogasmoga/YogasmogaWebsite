@@ -5,7 +5,7 @@
 <?php endif; ?>
 */ ?>
 <ul id="payment_form_<?php echo $_code ?>" class="form-list" style="display:none">
-		<li id="stripe-change-payment-form" <?php if ($this->getIsStripeCustomer()/*false*/): ?> style="display: none;"<?php endif; ?>>
+		<li id="stripe-change-payment-form" <?php if (/*$this->getIsStripeCustomer()*/false): ?> style="display: none;"<?php endif; ?>>
 			<fieldset>
 				<ul>
                 <?php if ($this->getIsCustomerLoggedIn()||$this->getIsCustomerRegistering()) : ?>
@@ -71,7 +71,7 @@
 			</fieldset>
 		</li>
 		<?php if ($this->getIsStripeCustomer()) : ?>
-        	<li id="stripe-payment-details"<?php if (!$this->getIsStripeCustomer()/*true*/) : ?> style="display: none;"<?php endif; ?>>
+        	<li id="stripe-payment-details"<?php if (/*!$this->getIsStripeCustomer()*/true) : ?> style="display: none;"<?php endif; ?>>
 				<fieldset>
 					<ul>
 						<li>
@@ -87,7 +87,7 @@
 			<input type="hidden" name="payment[stripe_customer_id]" value="" id="<?php echo $_code?>_stripe_customer_id" /> 
 		<?php endif; ?>
         <?php if ($this->getIsStripeCustomer()) : ?>
-            <div style="margin-top: -12px; margin-left: 3px;<?php /*display:none;*/ ?>">
+            <div style="margin-top: -12px; margin-left: 3px;display:none;">
         	<a id="stripe-update-payment" class="use"><?php echo $this->__("Change payment information") ?></a>
             </div>
         <?php endif; ?> 

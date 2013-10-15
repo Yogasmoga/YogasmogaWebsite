@@ -24,6 +24,9 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+
+
+
 <?php
 $_item = $this->getItem();
 $isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
@@ -31,6 +34,79 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
 $messages = $this->getMessages();
 $_options = $this->getOptionList();
 ?>
+
+<?php
+    if (!function_exists('getMiniImage'))
+    {
+        function getMiniImage($productid, $color)
+        {
+            $_gallery = Mage::getModel('catalog/product')->load($productid)->getMediaGalleryImages();
+            foreach($_gallery as $_image)
+            {
+                $imgdata = json_decode(trim($_image->getLabel()), true);
+                if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0)
+                    continue;
+                if($imgdata['color'] != $color)
+                    continue;
+                //if(strpos($_image->getLabel(), $color) === false)
+    //            //if(strpos($_image->getLabel(),"*") === false)
+    //                continue;
+                return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 150)->setQuality(100);
+            }
+            return "";
+        }   
+    }
+    
+    if (!function_exists('getColorId'))
+    {
+        function getColorId($label)
+        {
+            $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+            $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov 
+    WHERE ea.attribute_id = eao.attribute_id 
+    AND eao.option_id = eaov.option_id 
+    AND eaov.store_id = 0 
+    AND ea.attribute_code='color' AND eaov.value='".$label."'");
+            $row = $readresult->fetch();
+            return $row['Value'];
+        }    
+    }
+    
+    if (!function_exists('getImage'))
+    {
+        function getImage($productid, $label)
+        {
+            //$_item = $this->getItem();
+            $url = getMiniImage($productid, getColorId($label));
+            if(strlen($url) > 0)
+            {
+                $url = substr($url, 1);
+            }
+            return $url;
+        }   
+    }
+    
+    //echo getImage(51, 'Green');
+?>
+
+<?php
+    $colorlabel = "";
+    foreach ($_options as $_option)
+    {
+        if(strcasecmp($_option['label'], "color") == 0)
+        {
+            $_formatedOptionValue = $this->getFormatedOptionValue($_option);
+            $word = $_formatedOptionValue['value'];
+            if(strpos($word, "|"))
+            {
+                $word = substr($word,0, strpos($word, "|"));
+            }
+            $colorlabel = $word;
+        }        
+    }
+?>
+
+<?php //echo $_item->getProductId()."hel" ?>
 
 <?php if ($messages): ?>
 <tr class="messages">
@@ -45,7 +121,11 @@ $_options = $this->getOptionList();
     <td width="110">
 
         <?php if ($this->hasProductUrl()):?>
+            <?php //echo $colorlabel; ?>
+            <a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo getImage($_item->getProductId(),$colorlabel); ?>" width="100" height="150" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /><?php if ($this->hasProductUrl()):?></a>
+            <?php /*
             <a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo $this->getProductThumbnail()->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(100,150); ?>" width="100" height="150" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /><?php if ($this->hasProductUrl()):?></a>
+            */ ?>
         <?php endif;?>
 
         <?php /* if ($isVisibleProduct && $this->getOptionList()): ?>
