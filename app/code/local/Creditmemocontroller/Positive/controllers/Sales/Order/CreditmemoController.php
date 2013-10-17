@@ -31,7 +31,7 @@
  * @package    Mage_Adminhtml
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-class Mage_Adminhtml_Sales_Order_CreditmemoController extends Mage_Adminhtml_Controller_Sales_Creditmemo
+class Creditmemocontroller_Positive_Sales_Order_CreditmemoController extends Mage_Adminhtml_Controller_Sales_Creditmemo
 {
     /**
      * Get requested items qtys and return to stock flags
@@ -278,9 +278,9 @@ class Mage_Adminhtml_Sales_Order_CreditmemoController extends Mage_Adminhtml_Con
             $creditmemo = $this->_initCreditmemo();
             if ($creditmemo) {
                 if (($creditmemo->getGrandTotal() <=0) && (!$creditmemo->getAllowZeroGrandTotal())) {
-                    Mage::throwException(
+                  /*  Mage::throwException(
                         $this->__('Credit memo\'s total must be positive.')
-                    );
+                    );*/
                 }
 
                 $comment = '';

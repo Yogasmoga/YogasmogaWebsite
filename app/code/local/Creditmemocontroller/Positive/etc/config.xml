@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+<modules>
+  <Creditmemocontroller_Positive>
+    <version>0.0.1</version>
+  </Creditmemocontroller_Positive>
+</modules>
+<admin>
+  <routers>
+    <adminhtml><!-- Name of core module to be overridden  -->
+      <args>
+        <modules>
+          <Creditmemocontroller_Positive before="Mage_Adminhtml">Creditmemocontroller_Positive</Creditmemocontroller_Positive>
+        </modules>
+      </args>
+    </adminhtml>
+  </routers>
+</admin>
+</config>
