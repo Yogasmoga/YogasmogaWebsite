@@ -228,18 +228,48 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         {
             if($this->getRequest()->getParam('pass') == "MageHACKER")
             {
-                $output = "<table border='1'><thead><tr>
+			
+			/* Order date code */
+				$startdate = $this->getRequest()->getParam('startdate');
+                $datearr = split("-", $startdate);
+                //print_r($datearr);
+                if(!checkdate($datearr[0], $datearr[1], $datearr[2]))
+                {
+                    echo "Invalid Date";
+                    return;
+                }
+                $startdate = $datearr[2]."-".$datearr[0]."-".$datearr[1];
+                
+                $enddate = $this->getRequest()->getParam('enddate');
+                $datearr = split("-", $enddate);
+                //print_r($datearr);
+                if(!checkdate($datearr[0], $datearr[1], $datearr[2]))
+                {
+                    echo "Invalid Date";
+                    return;
+                }
+                $enddate = $datearr[2]."-".$datearr[0]."-".$datearr[1];
+			
+			/* Order date code */
+                
+				$output = "<table border='1'><thead><tr>
+                <th>Order Date</th>
                 <th>Order No.</th>
                 <th>Device Type</th>
                 </tr><thead><tbody>";
                 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
-                $readresult=$write->query("SELECT order_num AS 'orderno', is_mobile AS 'ismobile' FROM order_by_device");
-                while ($row = $readresult->fetch() ) {
-                    $outputtemp = "<tr><td>".$row['orderno']."</td>"; 
+               // $readresult=$write->query("SELECT order_num AS 'orderno', is_mobile AS 'ismobile' FROM order_by_device");
+                $readresult=$write->query("SELECT order_num AS 'orderno', is_mobile AS 'ismobile', DATE_FORMAT(sales_flat_order.created_at, '%m-%d-%Y') AS 'orderdate' FROM order_by_device, sales_flat_order where order_by_device.order_num = sales_flat_order.increment_id and sales_flat_order.created_at >= '".$startdate."' and sales_flat_order.created_at <= '".$enddate."' ORDER BY sales_flat_order.created_at desc");
+				while ($row = $readresult->fetch() ) {
+					
+                    $outputtemp = "<tr><td>".$row['orderdate']."</td>"; 
+                    $outputtemp .= "<td>".$row['orderno']."</td>"; 
                     if($row['ismobile'] == "0")
                         $outputtemp .= "<td>Desktop/Laptop/Ipad</td>";
                     else
                         $outputtemp .= "<td>Mobile Devices</td>";
+					 
+				
                     $outputtemp1 .= "</tr>";
                     $outputtemp1 = $outputtemp;
                     $output .= $outputtemp1;
