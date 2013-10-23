@@ -320,6 +320,12 @@ Category default layout
             <block type="page/html_footer" name="footer" as="footer" template="page/html/footer1.phtml" />
         </reference>
     </checkout_onepage_index>
+	
+	<checkout_onepage_success translate="label">
+         <reference name="head">
+		 <action method="addJs"><script>pixel_tracking.js</script></action>
+         </reference>
+    </checkout_onepage_success>
     
     <customer_account>
         <reference name="root">
