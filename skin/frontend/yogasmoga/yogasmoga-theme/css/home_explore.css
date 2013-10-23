@@ -101,5 +101,19 @@
 .banner-txt3 .banner-txt3-link a:hover {color: #000;}
 .banner-txt3 .banner-txt3-link strong{font-weight:normal; font-family:gothamlight; color:#E20E3F; }
 
+.banner-txt3.promo2310{
+    text-align:left;
+    font-family:AvantGardeGothicBold, gotham  , Arial;
+}
+.banner-txt3.promo2310slide2{
+    text-align:left;
+}
+.banner-txt3.promo2310 span{
+    color: #000000;
+    font-family: AvantGardeGothicMedium;
+    font-size: 20px;
+    padding-top: 15px !important;
+    text-align: left;
+}
 
 #featuredproducts{margin-bottom:50px;}
