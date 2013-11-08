@@ -602,7 +602,7 @@
             <script type="text/javascript">decorateTable('shopping-cart-table')</script>
         </fieldset>
     </form>
-    <div class="cart-collaterals">
+    <div class="cart-collaterals" style="padding-top:18px;">
         <?php
             $coupon_html = $this->getChildHtml('coupon');
             //echo $coupon_html;
@@ -623,6 +623,7 @@
         <div class="smogi-block">
             <?php echo $smogi_html; ?>
         </div>
+		<div style="border-top:1px dotted #000000;">
 		<div class="smogi-bucks">
         
         <?php //echo $smogi_html; //$this->getChildHtml('coupon'); ?>
@@ -633,7 +634,7 @@
                 <?php echo $this->getChildHtml('crosssell') ?>
             </div>
                     </div -->
-<div class="col-2">
+		<div class="col-2">
                 <?php // echo $this->getChildHtml('coupon') ?>
                 <?php // if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
             </div>
@@ -652,5 +653,6 @@
             <?php endif; ?>
         </div>
 		<div class="clearer"></div>
+		</div>
     </div>
 </div>

@@ -16,7 +16,8 @@
 .cart-table tr.even{background:none;}
 .cart-table tbody td { padding:10px; background:none; border:0;}
 .cart-table tfoot tr{background:none !important;}
-.cart-table tfoot tr.first td{background:none;padding:20px 10px; border-top:1px dotted #000;}
+/*.cart-table tfoot tr.first td{background:none;padding:20px 10px; border-top:1px dotted #000;} */
+.cart-table tfoot tr.first td{background:none;padding:20px 10px; }
 .cart-table .item-msg { margin:5px 0; font-size:11px; font-weight:bold; color:#df280a; }
 .cart-table tfoot td { padding:5px 10px; }
 .cart-table tr.odd:hover,
@@ -432,7 +433,7 @@ div.smogi-block
     font-family: Arial,Helvatica;
     font-size: 11px;
     text-align: left;
-    margin-bottom : 5px;
+    margin-bottom : 2px;
     padding-bottom : 22px;   
 }
 .cart .smogi-bucks .discount h2, .cart .smogi-block .discount h2

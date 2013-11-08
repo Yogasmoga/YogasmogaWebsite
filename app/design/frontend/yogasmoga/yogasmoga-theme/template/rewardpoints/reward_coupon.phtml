@@ -58,7 +58,11 @@
     <form action="<?php echo $this->getUrl('rewardpoints/index/quotation/') ?>" method="post" name="discountFormPoints2" id="discountFormPoints2">
         <fieldset>
             <h2><?php echo $this->__('SMOGI BUCKS'); ?></h2>
-            
+            <!--<span style="color: #666666;font-family: gotham-m;font-size: 11px; padding: 0;text-transform: uppercase;"><?php echo $this->__('SMOGI BUCKS'); ?></h2></span>-->
+			<div style="float: right; color: rgb(169, 169, 169); font-family: gothamlight; margin-right: 15px;" >
+             *You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.
+             </div>
+			
             <?php echo $this->getIllustrationImage()?>
             
             <div class="rewards_point_cart"><?php echo $this->__("This shopping cart is worth %s loyalty point(s).", $pts);?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($pts);?></div>
@@ -144,9 +148,7 @@
                 </td>
                 </tr>
                     </table>
-                <div style="margin-top : 5px;">
-                You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.
-                </div>
+               
                 <?php endif;?>
                 <?php elseif($this->getCustomerPoints() > 0): ?>
                     <p><?php echo $this->__('You must have at least %s point(s) to apply points.', $this->getMinimumBalance()); ?></p>
@@ -160,15 +162,48 @@
     <?php else: ?>
     <form action="<?php echo $this->getUrl('rewardpoints/index/removequotation/') ?>" method="post" name="discountFormPoints2" id="discountFormPoints2">
         <fieldset>
-            <h2><?php echo $this->__('SMOGI BUCKS'); ?></h2>
+            
+			<!--<span style="color: #666666;font-family: gotham-m;font-size: 11px; padding: 0;text-transform: uppercase;"><?php echo $this->__('SMOGI BUCKS'); ?></h2></span>-->
+			<!--<span style="margin-left : 595px;font-color: #FFFFFF;font-family: gothamlight;" >
+             *You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.
+             </span>-->
+			
             <?php echo $this->getIllustrationImage()?>
             <div class="rewards_point_cart"><?php echo $this->__("This shopping cart is worth %s loyalty point(s).", $pts);?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($pts);?></div>
             <?php if ($points_currently_used > 0):?>
-            <table class="removebucks">
+            <table class="removebucks" >
+				<tr>
+					<td>
+						<h2><?php echo $this->__('SMOGI BUCKS'); ?></h2>
+					</td>
+					<td>&nbsp;</td>
+					<?php 
+					//echo Mage::getSingleton('core/session')->getAccessoriesTot();
+					if (Mage::getSingleton('core/session')->getCPmsg() > $points_currently_used && Mage::getSingleton('core/session')->getAccessoriesTot() > 0)
+					{	?>
+			<td width="545px" style="text-align:right;" rowspan="2">
+					<div style="color: rgb(169, 169, 169); font-family: gothamlight;" >
+					*You don't earn smogi bucks on orders where you are using any kind of promotion.
+					 <div style="margin-top : 10px;">
+					 **Only <?php echo $points_currently_used ?> of your requested <?php echo Mage::getSingleton('core/session')->getCPmsg();//$point_details['max_use']; ?> bucks smogi bucks were applied to your order as <br/>you cannot use SMOGI Bucks on Accessories and the Namskar Bracelet.<br/>
+					 Smogi Bucks are not application on Accessories and Namaskar Bracelet.
+					 </div>
+					 </div>
+					</td>
+			<?php }else
+		{			?>
+		
+		<div style="float: right; color: rgb(169, 169, 169); font-family: gothamlight; margin-right: 15px;" >
+             *You don't earn smogi bucks on orders where you are using any kind of promotion.
+             </div>
+			 <?php }
+			 ?>
+				</tr>
                 <tr>
-                    <td style="width: 307px;">
+                    <td style="padding-right: 5px; width: 302px;">
                         <p><?php echo $this->__('You are currently using %d Bucks of your %d <a target="_blank" href ="'.$this->getUrl('smogi-bucks').'">SMOGI Bucks</a> available.', $points_currently_used, $this->getCustomerPoints()); ?></p>            
                     </td>
+					
                 
             <?php endif;?>
                 <td>
@@ -176,11 +211,12 @@
                 <button class="button btn-removebucks" type="button" onclick="discountFormPoints2.submit(false)" value="<?php echo $this->__('Remove Points') ?>"><span><span><?php echo $this->__('Remove') ?></span></span></button>
             </div>
             </td>
+			
             </tr>
             </table>
-            <div style="margin-top: 5px;">
+            <!--<div style="margin-top: 5px;">
                 You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.
-            </div>
+            </div>-->
         </fieldset>
     </form>
     <?php endif;?>

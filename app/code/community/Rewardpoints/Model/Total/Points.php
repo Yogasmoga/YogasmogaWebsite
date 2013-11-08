@@ -80,6 +80,7 @@ class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Tot
 										if($categoryid[$id]['category_id'] == $excludecats[$i])
 										{
 											$flag = true;
+											
 											break;
 										}
 									}
@@ -88,12 +89,13 @@ class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Tot
 									//if($categoryid[$id]['name'] == 'Accessories')
 									{
 									  $cattotal = $cattotal + $itemstotal;
+									  
 									}
 								}
 					
 					$tot = $tot + $itemstotal;
 								
-								
+					Mage::getSingleton('core/session')->setAccessoriesTot($cattotal);			
 				}
 			
 			$grandTotalapplicable = $tot - $cattotal;	
