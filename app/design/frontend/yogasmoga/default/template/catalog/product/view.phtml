@@ -484,40 +484,55 @@ jQuery(window).load(function(){
                     </table>
                     <div id="colorcontainer">
                         <?php
+                            $primarycolorcode = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'primarycolorcode', Mage::app()->getStore()->getStoreId());
                             $first = true;
                             //print_r($productcolorinfo);
                             $colorcount = 0;
-                             foreach($productcolorinfo as $key=>$colorinfo)
+                            for($incr = 0; $incr < 2; $incr++)
                             {
-                                $colorcount++;
-                                ?>
-                                    <div>
-                                        <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
-                                            <tr>
-                                                <?php
-                                                    foreach($colorinfo['hex'] as $hex)
-                                                    {
-                                                        ?>
-                                                            <td style="background-color: <?php echo $hex ?>;">
-                                                            <div>
-                                                                &nbsp;
-                                                            </div>                                                
-                                                            </td>   
-                                                        <?php
-                                                    } 
-                                                ?>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
-                                                
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                <?php
-                                if(($colorcount % 5) == 0)
-                                    echo "<br/>";
+                                foreach($productcolorinfo as $key=>$colorinfo)
+                                {
+                                    if($incr == 0)
+                                    {
+                                        if($colorinfo['value'] != $primarycolorcode)
+                                            continue;
+                                    }
+                                    else
+                                    {
+                                        if($colorinfo['value'] == $primarycolorcode)
+                                            continue;
+                                    }
+                                    $colorcount++;
+                                    ?>
+                                        <div>
+                                            <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
+                                                <tr>
+                                                    <?php
+                                                        foreach($colorinfo['hex'] as $hex)
+                                                        {
+                                                            ?>
+                                                                <td style="background-color: <?php echo $hex ?>;">
+                                                                <div>
+                                                                    &nbsp;
+                                                                </div>                                                
+                                                                </td>   
+                                                            <?php
+                                                        } 
+                                                    ?>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
+                                                    
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    <?php
+                                    if(($colorcount % 5) == 0)
+                                        echo "<br/>";
+                                }
                             }
+                             
                         ?>
                     </div>
                     <div style="clear: both;"></div>
