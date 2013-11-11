@@ -72,8 +72,26 @@
             <h2><?php echo $this->__('SMOGI BUCKS'); ?></h2>
             <!--<span style="color: #666666;font-family: gotham-m;font-size: 11px; padding: 0;text-transform: uppercase;"><?php echo $this->__('SMOGI BUCKS'); ?></h2></span>-->
 			<div style="float: right; color: rgb(169, 169, 169); font-family: gothamlight; margin-right: 15px;" >
+			<?php
+			$coupon_code = Mage::getSingleton('checkout/session')->getQuote()->getCouponCode();
+			$bucksused = Mage::helper('rewardpoints/event')->getCreditPoints();
+			//$gcard = Mage::getSingleton('giftcards/session')->getActive();
+			$gcard = (Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()));
+			
+			if(!($coupon_code  || $bucksused || $gcard))
+			{
+			?>
              *You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.
-             </div>
+			<?php        
+			}
+			else
+			{
+			?>
+			*You don't earn smogi bucks on orders where you are using any kind of promotion.
+			<?php 
+			}
+			?>
+		</div>
 			
             <?php echo $this->getIllustrationImage()?>
             
@@ -197,8 +215,8 @@
 					<div style="color: rgb(169, 169, 169); font-family: gothamlight;" >
 					*You don't earn smogi bucks on orders where you are using any kind of promotion.
 					 <div style="margin-top : 10px;">
-					 **Only <?php echo $points_currently_used ?> of your requested <?php echo Mage::getSingleton('core/session')->getCPmsg();//$point_details['max_use']; ?> bucks smogi bucks were applied to your order as <br/>you cannot use SMOGI Bucks on Accessories and the Namskar Bracelet.<br/>
-					 Smogi Bucks are not application on Accessories and Namaskar Bracelet.
+					 **Only <?php echo $points_currently_used ?> of your requested <?php echo Mage::getSingleton('core/session')->getCPmsg();//$point_details['max_use']; ?> bucks smogi bucks were applied to your order as <br/>you cannot use SMOGI Bucks on Accessories and the Namaskar Bracelet.<br/>
+					 Smogi Bucks are not applicable on Accessories and Namaskar Bracelet.
 					 </div>
 					 </div>
 					</td>

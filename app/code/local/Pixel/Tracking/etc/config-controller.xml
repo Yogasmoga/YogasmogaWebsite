@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+<modules>
+  <Pixel_Tracking>
+    <version>0.0.1</version>
+  </Pixel_Tracking>
+</modules>
+<frontend>
+  <routers>
+			<customer><!-- Name of core module to be overridden  -->
+			  <args>
+				<modules>
+				  <Pixel_Tracking before="Mage_Customer">Pixel_Tracking</Pixel_Tracking>
+				</modules>
+			  </args>
+			</customer>
+		</routers>
+		
+</frontend>
+</config>

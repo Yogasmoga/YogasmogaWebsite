@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <global>
+        <models>
+            <pixel_tracking>
+                <class>Pixel_Tracking_Model</class>
+            </pixel_tracking>
+        </models>
+    </global>
+    <frontend>
+        <events>
+            <customer_save_after>
+                <observers>
+                   <pixel_tracking>
+                        <type>model</type>
+                        <class>pixel_tracking/observer</class>
+                        <method>handle_me</method>
+                    </pixel_tracking>
+                </observers>
+            </customer_save_after>
+        </events>
+		<routers>
+			<customer><!-- Name of core module to be overridden  -->
+			  <args>
+				<modules>
+				  <Pixel_Tracking before="Mage_Customer_AccountController">Pixel_Tracking</Pixel_Tracking>
+				</modules>
+			  </args>
+			</customer>
+		
+			<checkout><!-- Name of core module to be overridden  -->
+			  <args>
+				<modules>
+				  <Pixel_Tracking before="Mage_Checkout_CartController">Pixel_Tracking</Pixel_Tracking>
+				</modules>
+			  </args>
+			</checkout>
+		</routers>
+		
+		
+    </frontend>
+</config> 
