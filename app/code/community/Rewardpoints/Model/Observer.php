@@ -134,10 +134,11 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
                         $from = strtotime('2013-11-13 00:00:00');
                         $to = strtotime('2013-11-27 00:00:00');
                         $valid_reg_date = strtotime($customerData['created_at']);
+						   Mage::log($valid_reg_date.$from.$to  ,null,'anillog.log');    
                         if(!($from <= $valid_reg_date && $to >= $valid_reg_date)) {
                         return;
                         }
-                        
+                  
             //check if points already earned
             $customerId = $observer->getEvent()->getCustomer()->getEntityId();
             $points = Mage::getStoreConfig('rewardpoints/registration/registration_points', Mage::app()->getStore()->getId());
