@@ -131,8 +131,8 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
             return;
 		
         if (Mage::getStoreConfig('rewardpoints/registration/registration_points', Mage::app()->getStore()->getId()) > 0){
-			$from = strtotime('2013-11-18 00:00:00');
-			$to = strtotime('2013-11-26 00:00:00');
+			$from = strtotime('2013-11-13 00:00:00');
+			$to = strtotime('2013-11-27 00:00:00');
 			$valid_reg_date = strtotime($customerData['created_at']);
 			if(!($from <= $valid_reg_date && $to >= $valid_reg_date)) {
 			return;
