@@ -9,17 +9,23 @@ jQuery(document).ready(function($){
             start: function(slider) {
                 //fixFlexisliderImage();
               },
-            after: function(slider) {
+            before: function(slider) {
             //$('.current-slide').text(slider.currentSlide);
             //fixFlexisliderImage();
+             setTimeout(function(){ positionfloatingimages();;}, 50);
             }
         });
 		$('#playBtn').fadeIn(500, function(){$('.flexslider').css('background','#fff')});
 		$('.page-overlay').fadeOut(500, function(){$('.page-overlay').remove();});
 		$('body').css({overflow:'auto', marginRight:0});
+        positionfloatingimages();
     });
 	//fixmainimage();
     
+    $(window).resize(function($) {
+        //alert("resized");
+        positionfloatingimages();
+    });
     
     setTimeout(function(){ fixmainimage();}, 100);
     
@@ -35,6 +41,33 @@ jQuery(document).ready(function($){
     });
     
 });
+
+///this was added for gilt promotion
+function positionfloatingimages()
+{
+    jQuery("div#Welcome ul.slides>li").each(function(){
+        if(jQuery(this).find("img.barimg").length == 0)
+            return;
+        //console.log(jQuery(this).find("img.barimg").length);
+        var leftspace = ((jQuery(this).find("img.barimg").position()).left) + jQuery(this).find("img.barimg").width();
+        var space = ((_winW - leftspace - jQuery(this).find("img.fltimage").width()) / 2) + leftspace;
+        var mmargin = jQuery(this).find("img.fltimage").attr("mymargin") * 1;
+        if(space < (leftspace + mmargin))
+            space = leftspace + mmargin;
+        jQuery(this).find("img.fltimage").css("left", space + "px");    
+    });
+    
+    /*
+    console.log(_winW);
+    console.log((jQuery("img.barimg").position()).left + jQuery("img.barimg").width());
+    var _space = ((_winW - ((jQuery("img.barimg").position()).left + jQuery("img.barimg").width()) - jQuery("img.fltimage").width()) / 2) + (jQuery("img.barimg").position()).left + jQuery("img.barimg").width();
+     console.log("left = " + _space);
+     if(_space < ((jQuery("img.barimg").position()).left + jQuery("img.barimg").width() + 25))
+        _space = (jQuery("img.barimg").position()).left + jQuery("img.barimg").width() + 25;
+    console.log((jQuery("img.fltimage").position()).left);
+    jQuery("img.fltimage").css("left", _space + "px");
+    */
+}
 
 function fixmainimage()
 {
