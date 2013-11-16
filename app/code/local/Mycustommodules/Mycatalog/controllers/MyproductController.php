@@ -786,40 +786,56 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                     </table>
                                     <div id="colorcontainer">
                                         <?php
-                                            $first = true;
-                                            $colorcount = 0;
-                                            foreach($productcolorinfo as $key=>$colorinfo)
-                                            {
-                                                $colorcount++;
-                                                ?>
-                                                    <div>
-                                                        <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
-                                                            <tr>
-                                                                <?php
-                                                                    foreach($colorinfo['hex'] as $hex)
-                                                                    {
-                                                                        ?>
-                                                                            <td style="background-color: <?php echo $hex ?>;">    
-                                                                            <div>
-                                                                                &nbsp;
-                                                                            </div>                                            
-                                                                            </td>   
+                                                $primarycolorcode = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'primarycolorcode', Mage::app()->getStore()->getStoreId());
+                                                $first = true;
+                                                //print_r($productcolorinfo);
+                                                $colorcount = 0;
+                                                for($incr = 0; $incr < 2; $incr++)
+                                                {
+                                                    foreach($productcolorinfo as $key=>$colorinfo)
+                                                    {
+                                                        if($incr == 0)
+                                                        {
+                                                            if($colorinfo['value'] != $primarycolorcode)
+                                                                continue;
+                                                        }
+                                                        else
+                                                        {
+                                                            if($colorinfo['value'] == $primarycolorcode)
+                                                                continue;
+                                                        }
+                                                        $colorcount++;
+                                                        ?>
+                                                            <div>
+                                                                <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
+                                                                    <tr>
                                                                         <?php
-                                                                    } 
-                                                                ?>
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
-                                                                      
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </div>  
-                                                <?php
-                                                if(($colorcount % 5) == 0)
-                                                echo "<br/>";
-                                            } 
-                                        ?>
+                                                                            foreach($colorinfo['hex'] as $hex)
+                                                                            {
+                                                                                ?>
+                                                                                    <td style="background-color: <?php echo $hex ?>;">
+                                                                                    <div>
+                                                                                        &nbsp;
+                                                                                    </div>                                                
+                                                                                    </td>   
+                                                                                <?php
+                                                                            } 
+                                                                        ?>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
+                                                                        
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        <?php
+                                                        if(($colorcount % 5) == 0)
+                                                            echo "<br/>";
+                                                    }
+                                                }
+                                                 
+                                            ?>
                                     </div>
                                     <div style="clear: both;"></div>
                                     <table class="selectedsize" <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>

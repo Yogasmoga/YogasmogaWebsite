@@ -82,6 +82,29 @@ jQuery(window).load(function(){
     $breadcrumb = '<a href="'.Mage::helper('core/url')->getHomeUrl().'">Home</a>';
     $breadcrumb .= '&nbsp;&gt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load($categoryid)->getUrl().'">'.Mage::getModel("catalog/category")->load($categoryid)->getName().'</a>';
     //$breadcrumb .= '&nbsp;&lt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'">'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getName().'</a>';
+    //echo $this->helper('core/url')->getCurrentUrl();
+    
+    if($this->getRequest()->getParam('color'))
+    {
+        $fullurl = $this->helper('core/url')->getCurrentUrl();
+        $shorturl = substr($fullurl,0,strpos($fullurl, "?"));
+        if($this->getRequest()->getParam('from') == 'dressingroom')
+            $shorturl .= "?from=dressingroom";    
+        //echo $shorturl;
+        Mage::getSingleton('core/session')->setProductColor($this->getRequest()->getParam('color'));
+        Mage::app()->getFrontController()->getResponse()->setRedirect($shorturl);
+        return;
+    }
+    if(Mage::getSingleton('core/session')->getProductColor() != "")
+    {
+        ?>
+            <script type="text/javascript">
+                var _defaultprcolor = '<?php echo Mage::getSingleton('core/session')->getProductColor(); ?>';
+            </script>
+        <?php
+        Mage::getSingleton('core/session')->setProductColor('');
+    }
+    
     if($this->getRequest()->getParam('from') == 'dressingroom')
         //$breadcrumb .= '&nbsp;&gt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'#dressingroom">DRESSING ROOM</a>&nbsp;&gt;';
         $breadcrumb .= '&nbsp;&gt;&nbsp;<a href="'.Mage::helper('core/url')->getHomeUrl().'#dressingroom">DRESSING ROOM</a>&nbsp;&gt;';
