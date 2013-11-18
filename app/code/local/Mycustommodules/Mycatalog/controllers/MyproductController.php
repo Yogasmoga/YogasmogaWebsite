@@ -577,6 +577,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
             else
                 $temp1 = "2|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
+            $temp1 .= "|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getIsInStock();
             //$temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
             //if(array_key_exists("sizes", $productcolorinfo[$temp]))
             if(isset($productcolorinfo[$temp]["sizes"]))
@@ -939,6 +940,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 					                <button style="display: none;" id="preorderitem" title="Preorder" class="button cbtn btn-pre"><span>Preorder<span></span></span> </button>
                                     */ ?>
                                     <div id="orderitem" class="addtobag spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_on.png'); ?>"></div>
+                                    <div id="outofstockitem" class="outofstockitem"></div>
                     <div id="preorderitem" class="preorderitem spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_now_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_now_on.png'); ?>"></div>
                                     <div class="producterrorcontainer">
                                         <div class="errormsg">

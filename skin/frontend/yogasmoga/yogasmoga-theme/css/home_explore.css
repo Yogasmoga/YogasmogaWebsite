@@ -116,4 +116,33 @@
     text-align: left;
 }
 
+.banner-txt3.promo1311
+{
+    left : 5%;    
+}
+.banner-txt3.nov13slide2.promo2310
+{
+    right:25%;
+    left : auto;
+}
+.banner-txt3 div.startingnov13
+{
+    font-family : gothambook;
+    font-size : 14px;
+    line-height:1.8em;
+    text-transform: capitalize;
+    color : #666;
+    margin-top:80px !important;
+}
+.banner-txt3 ul.startingnov13
+{
+    font-family : gothambook;
+    font-size : 16px;
+    line-height:1.8em;
+    text-transform: none;
+    list-style-image:url('../images/arrow.png');
+    color : #666;
+    margin-left : 21px !important;
+    margin-top:40px !important;
+}
 #featuredproducts{margin-bottom:50px;}

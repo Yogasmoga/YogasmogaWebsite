@@ -129,21 +129,22 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
         //Mage::log('got in'.$observer->getEvent()->getCustomer()->getEntityId().'   '.strtotime($customerData['created_at']).'     '.strtotime('2013-05-13 00:00:00'),null,'testlog.log');
         if(strtotime($customerData['created_at']) < strtotime('2013-05-13 00:00:00'))
             return;
-		
+       //  Mage::log(date('Y-m-d H:i:s'),null,'anillog.log');       
         if (Mage::getStoreConfig('rewardpoints/registration/registration_points', Mage::app()->getStore()->getId()) > 0){
-			$from = strtotime('2013-11-13 00:00:00');
-			$to = strtotime('2013-11-27 00:00:00');
-			$valid_reg_date = strtotime($customerData['created_at']);
-			if(!($from <= $valid_reg_date && $to >= $valid_reg_date)) {
-			return;
-			}
-			
+                        $from = strtotime('2013-11-13 00:00:00');
+                        $to = strtotime('2013-11-27 00:00:00');
+                        $valid_reg_date = strtotime($customerData['created_at']);
+						     
+                        if(!($from <= $valid_reg_date && $to >= $valid_reg_date)) {
+                        return;
+                        }
+                  
             //check if points already earned
             $customerId = $observer->getEvent()->getCustomer()->getEntityId();
             $points = Mage::getStoreConfig('rewardpoints/registration/registration_points', Mage::app()->getStore()->getId());
             //$orderId = -2;
             $this->recordPoints($points, $customerId, Rewardpoints_Model_Stats::TYPE_POINTS_REGISTRATION, false);
-			
+                        
         }
     }
     
@@ -494,8 +495,7 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
     
     
     
-    protected function pointsOnOrder($order, $quote){
-		
+    protected function pointsOnOrder($order, $quote){        
         if ($order->getCustomerId() == 0){
             return;
         }
@@ -534,38 +534,13 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
         $customerId = $order->getCustomerId();
         //$store_id = Mage::app()->getStore()->getId();
         $store_id = $order->getStoreId();
-			 
-	
-		$discountamt = $order->getBaseDiscountAmount();	
-		Mage::log($discountamt,null,'smogi.log');
-		
-		if($discountamt >= 0)
-		{			
-		
         //record points for item into db
         if ($rewardPoints > 0){
             $this->recordPoints($rewardPoints, $customerId, $order->getIncrementId());
         }
-		}
-		
-		/* for category Accessories
-		
-				$items = $order->getAllItems();
-                        
-                        foreach ($items as $item)
-                        {
-                           $product = Mage::getModel('catalog/product')->load($item->getProductId());
-						   $pid= $item->getProductId();
-                        }
-						
-		$catids = $product->getCategoryIds();
-		if(in_array(11, $catids))
-		{
-		Mage::throwException(
-                    Mage::helper('sales')->__("cat ids".$catids.$pid)
-                );
-        } */
-		//subtract points for this order
+
+        //subtract points for this order
+        
         $points_apply = (int) Mage::helper('rewardpoints/event')->getCreditPoints($quote);
         
         if ($points_apply > 0){
@@ -576,7 +551,6 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
         $this->sales_order_success_referral($order, $quote);
         
         $this->processRecordFlat($customerId, $store_id);
-		
     }
     
     
@@ -630,7 +604,6 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
         } else if ($quote->getRewardpointsReferrer()){
             $userId = (int)$quote->getRewardpointsReferrer();
         }
-
         //check if referral from link...
         //if ($userId = Mage::getSingleton('rewardpoints/session')->getReferralUser()){
         if ($userId){
