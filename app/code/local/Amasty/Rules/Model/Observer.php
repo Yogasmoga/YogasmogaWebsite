@@ -487,9 +487,9 @@ class Amasty_Rules_Model_Observer
             
             $typesArray[$item->getItemId()] = $item->getProductType();
             
-            if ($item->getProductType() == 'configurable'){
+          /*  if ($item->getProductType() == 'configurable'){
                 continue;
-            }
+            }*/
             
               //skip by setting bundle
               if (!(Mage::getStoreConfig('amrules/general/bundle_separate'))){
