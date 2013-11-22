@@ -169,9 +169,52 @@
             <div class="buttons-set">
                 <button class="button btn-update" type="button" onclick="discountFormPoints2.submit(false)" value="<?php echo $this->__('Remove Points') ?>"><span><span><?php echo $this->__('Remove') ?></span></span></button>
             </div>
-            <div style="margin-top : 5px;">
+           <!-- <div style="margin-top : 5px;">
                 You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a><br/> after this purchase.
-                </div>
+                </div>-->
+			 <div class="buttons-set">
+			<?php
+			$coupon_code = Mage::getSingleton('checkout/session')->getQuote()->getCouponCode();
+			$bucksused = Mage::helper('rewardpoints/event')->getCreditPoints();
+			//$gcard = Mage::getSingleton('giftcards/session')->getActive();
+			$gcard = (Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()));
+			
+			if(!($coupon_code  || $bucksused || $gcard))
+			{
+			?>
+             *You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.
+			<?php        
+			}
+			else
+			{
+			?>
+			*You don't earn smogi bucks on orders where you are using any kind of promotion.
+			<?php 
+			}
+			?>
+			
+			<?php 
+					//echo Mage::getSingleton('core/session')->getAccessoriesTot();
+					if (Mage::getSingleton('core/session')->getCPmsg() > $points_currently_used && Mage::getSingleton('core/session')->getAccessoriesTot() > 0)
+					{	?>
+			<td width="545px" style="text-align:right;" rowspan="2">
+					<div>
+					 <div style="margin-top : 10px;">
+					 **Only <?php echo $points_currently_used ?> of your requested <?php echo Mage::getSingleton('core/session')->getCPmsg();//$point_details['max_use']; ?> bucks smogi bucks were applied to your order as <br/>you cannot use SMOGI Bucks on Accessories and the Namaskar Bracelet.<br/>
+					 Smogi Bucks are not applicable on Accessories and Namaskar Bracelet.
+					 </div>
+					 </div>
+					</td>
+			<?php }else
+		{			?>
+		
+		<!--<div style="float: right; color: rgb(169, 169, 169); font-family: gothamlight; margin-right: 15px;" >
+             *You don't earn smogi bucks on orders where you are using any kind of promotion.
+             </div>-->
+			 <?php }
+			 ?>
+			</div>
+			
         </fieldset>
     </form>
     <?php endif;?>
