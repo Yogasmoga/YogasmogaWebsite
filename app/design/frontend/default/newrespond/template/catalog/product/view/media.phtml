@@ -66,6 +66,11 @@
             $tempcolor = array();
     $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
     $allOptions = $attribute->getSource()->getAllOptions(true, true);
+    
+    $primarycolorcode = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'primarycolorcode', Mage::app()->getStore()->getStoreId());
+    
+    array_push($tempcolor, $primarycolorcode);
+    
     foreach ($allOptions as $instance) {
         if(array_search($instance['value'], $colors) !== false)
         {
