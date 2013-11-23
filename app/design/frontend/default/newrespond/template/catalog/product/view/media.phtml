@@ -74,6 +74,7 @@
     foreach ($allOptions as $instance) {
         if(array_search($instance['value'], $colors) !== false)
         {
+            if($instance['value'] != $primarycolorcode)
             array_push($tempcolor, $instance['value']);
         }
     }
