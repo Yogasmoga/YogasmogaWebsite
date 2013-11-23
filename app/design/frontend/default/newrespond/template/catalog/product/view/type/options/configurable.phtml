@@ -28,7 +28,13 @@
 <?php
 $_product    = $this->getProduct();
 $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
+$primarycolorcode = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'primarycolorcode', Mage::app()->getStore()->getStoreId());
+
+//echo $primarycolorcode."<br/>";
 ?>
+<script type="text/javascript">
+    _primarycolorcode = '<?php echo $primarycolorcode; ?>';
+</script>
 <?php if ($_product->isSaleable() && count($_attributes)):?>
     <dl>
     <?php foreach($_attributes as $_attribute): ?>
@@ -134,6 +140,30 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 		}
 		$j(window).load(function(){
 			$j('#attribute92').addClass('notsow').parent().prepend('<div id="color-attr" rel="attribute92"></div>');
+            
+            for(var ii = 0; ii < 2; ii++)
+            {
+                $j('#attribute92 option:gt(0)').each(function(){
+    				if(ii == 0)
+                    {
+                        if($j(this).attr('value') != _primarycolorcode)
+                            return true;
+                    }
+                    else
+                    {
+                        if($j(this).attr('value') == _primarycolorcode)
+                            return true;
+                    }
+                    var carray = $j(this).attr('title');
+    				var clr = carray.split(",");
+    				var mycolor = "";
+    				$j.each(clr,function(i){
+    					mycolor += '<td style="background:'+clr[i]+'">';
+    				})
+    				$j('#color-attr').append('<div class="colorbox" rel="'+$j(this).attr('value')+'"><table><tr>'+mycolor+'</tr></table></div>')
+    			})  
+            }
+            /*
 			$j('#attribute92 option:gt(0)').each(function(){
 				var carray = $j(this).attr('title');
 				var clr = carray.split(",");
@@ -142,7 +172,7 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 					mycolor += '<td style="background:'+clr[i]+'">';
 				})
 				$j('#color-attr').append('<div class="colorbox" rel="'+$j(this).attr('value')+'"><table><tr>'+mycolor+'</tr></table></div>')
-			})
+			})*/
 			$j('#color-attr .colorbox').click(function(){
                 //alert('color changed');
 				$j('#color-attr .colorbox').removeClass('active');
