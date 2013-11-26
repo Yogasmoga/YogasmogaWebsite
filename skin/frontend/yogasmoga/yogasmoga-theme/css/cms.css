@@ -83,8 +83,8 @@ h2.guide-name span{font-family:gotham-l; margin-bottom:30px;}
 .story-page .principles table td p{text-align:left;}
 
 .img-section {display:block; width:100%;}
-.img-section .big-image{width:100%; text-align:center; background-color: white;}
-.img-section .big-image img{width:100%; max-height:755px;}
+.img-section .big-image{width:100%; text-align:center; background-color: white; max-height : 755px; overflow : hidden;}
+.img-section .big-image img{width:100%; height:auto;}
 .press-section .press-item{display:block; min-height:165px; text-transform:uppercase;}
 .press-item .item-image{float:left; margin-right:20px;}
 .press-section .press-item .contact{text-transform:none;}
