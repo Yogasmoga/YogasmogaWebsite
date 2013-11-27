@@ -134,6 +134,37 @@
     color : #666;
     margin-top:80px !important;
 }
+.banner-txt3 div.startingnov13.blackfriday
+{
+    font-family : gothamlight;
+    font-size : 30px;
+    line-height:1.3em;
+    margin-top:93px !important;
+}
+.banner-txt3 div.startingnov13.blackfriday_combination
+{
+    font-family : gothambook;
+    font-size : 14px;
+    line-height:1.5em;
+    margin-top:38px !important;
+    text-transform: none;
+}
+.banner-txt3 div.startingnov13.giftofys_newproducts
+{
+    font-family : gothambook;
+    font-size : 16px;
+    line-height:1.5em;
+    margin-top:35px !important;
+    text-transform: none;
+}
+
+.banner-txt3 div.startingnov13.blackfriday_combination span
+{
+    font-weight: bold;
+    color : #d90d3d;
+    display : inline;
+    font-size: 13px;
+}
 .banner-txt3 ul.startingnov13
 {
     font-family : gothambook;

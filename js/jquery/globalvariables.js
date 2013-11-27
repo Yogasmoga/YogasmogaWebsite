@@ -52,3 +52,4 @@ var _curshareimg = new Array();
 var _cursharesummary = '';
 var _oncartpage = false;
 var _enablediscounttype = '';
+var _defaultprcolor = ''; //used for storing color info to be default selected when product detail page loads

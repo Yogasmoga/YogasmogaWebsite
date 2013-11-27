@@ -41,9 +41,24 @@ jQuery(document).ready(function($){
         changeOrderqty($(this).val());
     });
     
-    if($("div#colorcontainer table:first").length > 0)
-        changeColor($("div#colorcontainer table:first").attr("color"));
-        
+    if(_defaultprcolor != '')
+    {
+        if($("div#colorcontainer table[value='" + _defaultprcolor + "']").length > 0)
+            changeColor($("div#colorcontainer table[value='" + _defaultprcolor + "']").attr("color"));
+        else
+        {
+            if($("div#colorcontainer table:first").length > 0)
+                changeColor($("div#colorcontainer table:first").attr("color"));
+        }
+        //_defaultprcolor = '';
+    }
+    else
+    {
+        if($("div#colorcontainer table:first").length > 0)
+            changeColor($("div#colorcontainer table:first").attr("color"));    
+    }
+    
+            
     $("table.productdetailtable td.howdoesitfitlink a").live("click", function(){
         $("div#howdoesitfitbox").fadeIn('normal');
     });
@@ -270,6 +285,18 @@ function changeColor(clr)
             jQuery("td#tdpopupproductsmallimages table tbody td:first").addClass('selectedimage');   
         }
         jQuery("td#tdpopupproductbigimage, td#tdpopupproductsmallimages").fadeIn('fast');
+        
+        
+        //console.log(clr);
+        var clrvalue = jQuery("table.productdetailtable div#colorcontainer table[color='" + clr + "']").attr("value");
+        //console.log(clrvalue);
+        var href = jQuery("table.productdetailpopupbottomlinks div.viewfulldetails a").attr("href");
+        if(href.indexOf('?') > 0)
+            href = href.substr(0, href.indexOf('?'));
+        href = href + '?from=dressingroom&color=' + clrvalue;
+        jQuery("table.productdetailpopupbottomlinks div.viewfulldetails a").attr("href", href);
+        
+        
     }
     else
     {

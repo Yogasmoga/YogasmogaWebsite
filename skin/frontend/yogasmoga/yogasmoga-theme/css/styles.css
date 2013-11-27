@@ -2474,7 +2474,7 @@ div.mycategory-products div.item td
 div.mycategory-products div.item td.productimage
 {
 	width:230px;
-	border:1px solid #DD8820;
+	/*border:1px solid #DD8820;*/
     vertical-align : bottom;
 }
 div.mycategory-products div.item td.productimage div.showloader
@@ -2499,6 +2499,7 @@ div.mycategory-products div.item td.productimage div
 
 div.mycategory-products div.item td.animateimage
 {
+    display:none;
     height: 19px;
     padding-top: 8px;
 }

@@ -201,7 +201,24 @@ function getfreshInventory()
             {
                 modifyinfo(result[i][0], result[i][1], result[i][2], result[i][3]);   
             }
-            jQuery("div#colorcontainer table[color]:first").trigger('click');
+            
+            if(_defaultprcolor != '')
+            {
+                if(jQuery("div#colorcontainer table[value='" + _defaultprcolor + "']").length > 0)
+                    changeColor(jQuery("div#colorcontainer table[value='" + _defaultprcolor + "']").attr("color"));
+                else
+                {
+                    if(jQuery("div#colorcontainer table:first").length > 0)
+                        changeColor($("div#colorcontainer table:first").attr("color"));
+                }
+                _defaultprcolor = '';
+            }
+            else
+            {
+                if(jQuery("div#colorcontainer table:first").length > 0)
+                    changeColor(jQuery("div#colorcontainer table:first").attr("color"));    
+            }
+            //jQuery("div#colorcontainer table[color]:first").trigger('click');
             jQuery("div#absproductoptions div.disableproptions").remove();
         }
     });
