@@ -859,8 +859,18 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                         <table>
                                             <tr>
                                                 <?php
+                                                    $sizecount = 0;
                                                     foreach($productallsizes as $size)
                                                     {
+                                                        //if($sizecount % 6 == 0 && $sizecount > 0)
+                                                        if(strpos($size['label'],"T") !== false & $sizecount == 0)
+                                                        {
+                                                            $sizecount++;
+                                                            ?>
+                                                            </tr>
+                                                            <tr>
+                                                            <?php
+                                                        }
                                                         ?>
                                                             <td><div value="<?php echo $size['value']; ?>" size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?></div></td>        
                                                         <?php
