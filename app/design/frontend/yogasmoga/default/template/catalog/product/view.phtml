@@ -582,11 +582,20 @@ jQuery(window).load(function(){
                         <table>
                             <tr>
                                 <?php
+                                    $sizecount = 0;
                                     foreach($productallsizes as $size)
                                     {
+                                        if($sizecount % 6 == 0 && $sizecount > 0)
+                                        {
+                                            ?>
+                                            </tr>
+                                            <tr>
+                                            <?php
+                                        }
                                         ?>
                                             <td><div value="<?php echo $size['value']; ?>" size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?></div></td>        
                                         <?php
+                                        $sizecount++;
                                     } 
                                 ?>
                             </tr>
