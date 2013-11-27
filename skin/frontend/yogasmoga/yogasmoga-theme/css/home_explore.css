@@ -149,6 +149,15 @@
     margin-top:38px !important;
     text-transform: none;
 }
+.banner-txt3 div.startingnov13.giftofys_newproducts
+{
+    font-family : gothambook;
+    font-size : 16px;
+    line-height:1.5em;
+    margin-top:35px !important;
+    text-transform: none;
+}
+
 .banner-txt3 div.startingnov13.blackfriday_combination span
 {
     font-weight: bold;
@@ -167,4 +176,5 @@
     margin-left : 21px !important;
     margin-top:40px !important;
 }
+
 #featuredproducts{margin-bottom:50px;}
