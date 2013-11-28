@@ -83,7 +83,8 @@ jQuery(window).load(function(){
     $breadcrumb .= '&nbsp;&gt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load($categoryid)->getUrl().'">'.Mage::getModel("catalog/category")->load($categoryid)->getName().'</a>';
     //$breadcrumb .= '&nbsp;&lt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'">'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getName().'</a>';
     //echo $this->helper('core/url')->getCurrentUrl();
-    
+    ?>
+    <?php /*
     if($this->getRequest()->getParam('color'))
     {
         $fullurl = $this->helper('core/url')->getCurrentUrl();
@@ -103,6 +104,16 @@ jQuery(window).load(function(){
             </script>
         <?php
         Mage::getSingleton('core/session')->setProductColor('');
+    }
+    */ ?>
+    <?php
+    if($this->getRequest()->getParam('color'))
+    {
+        ?>
+            <script type="text/javascript">
+                var _defaultprcolor = '<?php echo $this->getRequest()->getParam('color'); ?>';
+            </script>
+        <?php
     }
     
     if($this->getRequest()->getParam('from') == 'dressingroom')
