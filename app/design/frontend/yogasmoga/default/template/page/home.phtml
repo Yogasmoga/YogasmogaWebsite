@@ -131,6 +131,7 @@
                         <?php
                     }
                 ?>
+                <img class="shareit nodisplay" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/shareme.jpg" />
                 <ul class="slides">
                     <?php /*
                     <li>
@@ -264,7 +265,11 @@
                         <img style="width: auto;" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/we_make_things.png" />
                         </div>
                     </li>
-                    <?php /*
+                    <?php 
+                    
+                    if(Mage::getModel('core/variable')->loadByCode('black_toggle')->getValue('plain') == "yes")
+                    {
+                        ?>
                     <li>
                       <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/blackfriday_bg.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
                         <img class="fltimage" mymargin="-100" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/yoga_1.png" alt="NYC Equinox Yoga teacher Sarra Morton" style="position: absolute; height: 100%; width: auto;min-height:660px;" />
@@ -283,8 +288,12 @@
                         </span>
                         </div>
                         <div style="font-family:gothamlight;font-size:12px;color:#8A8989;position:absolute;bottom:10px;left:5%;">Final Sale. Offer good for any top plus pant purchase through December 2, 2013. One offer per order.</div>
-                    </li>
-                    */ ?>
+                    </li>    
+                        
+                        <?php
+                    }
+                    ?>
+                    
                     
                     <li class="slide21127">
                       <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/giftofys_bg.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
