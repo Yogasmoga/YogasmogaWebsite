@@ -177,3 +177,17 @@
     margin-top:40px !important;
 }
 #featuredproducts{margin-bottom:50px;}
+div#Welcome ol.flex-control-nav
+{
+    bottom : 10px;
+}
+div#Welcome ol.flex-control-paging li a
+{
+    background-color : #CCC;
+    width : 9px;
+    height : 9px;
+}
+div#Welcome ol.flex-control-paging li a.flex-active
+{
+    background-color : #d90d3d;
+}
