@@ -43,13 +43,23 @@ $primarycolorcode = Mage::getResourceModel('catalog/product')->getAttributeRawVa
             if($_attribute->getLabel() == "Size")
             {
                 ?>
+                    
                     <script type="text/javascript">
                         _szid = '<?php echo $_attribute->getAttributeId(); ?>';
                     </script>
                 <?php
             }
         ?>
-        <dt class="attribute<?php echo $_attribute->getAttributeId() ?>"><label class="required"><?php echo $_attribute->getLabel() ?></label><span></dt>
+        <dt class="attribute<?php echo $_attribute->getAttributeId() ?>"><label class="required"><?php echo $_attribute->getLabel() ?></label><span>
+        <?php
+            if($_attribute->getLabel() == "Size")
+            {
+                ?>
+                <div id="sizechart_trigger">Size Chart</div>
+                <?php
+            }
+         ?>
+        </dt>
         <dd<?php if ($_attribute->decoratedIsLast){?> class="last"<?php }?>>
             <div class="input-box">
                 <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
