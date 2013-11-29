@@ -186,6 +186,7 @@ div#Welcome ol.flex-control-paging li a
     background-color : #CCC;
     width : 9px;
     height : 9px;
+    box-shadow : none;
 }
 div#Welcome ol.flex-control-paging li a.flex-active
 {
