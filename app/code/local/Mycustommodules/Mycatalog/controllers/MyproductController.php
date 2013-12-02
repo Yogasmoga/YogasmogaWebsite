@@ -189,13 +189,18 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $name = $row1['name'];
                         $_product = Mage::getModel('catalog/product')->load($row1['productid']);    
                         if($_product->getTypeId() == "simple"){
-                            $parentIds = Mage::getModel('catalog/product_type_grouped')->getParentIdsByChild($_product->getId());
-                            if(!$parentIds)
-                                $parentIds = Mage::getModel('catalog/product_type_configurable')->getParentIdsByChild($_product->getId());
-                            if(isset($parentIds[0])){
-                                $parent = Mage::getModel('catalog/product')->load($parentIds[0]);
-                                $name = Mage::Helper('catalog/output')->productAttribute($parent, $parent->getName(), 'name');
-                            }
+                            $write2 = Mage::getSingleton('core/resource')->getConnection('core_read');        
+                            $result2 = $write1->query("SELECT name FROM sales_flat_order_item sfoi WHERE product_type = 'configurable' AND item_id=".($row1['item_id'] - 1));
+                            $row2 = $result2->fetch();
+                            $name = $row2['name'];
+                            
+                            //$parentIds = Mage::getModel('catalog/product_type_grouped')->getParentIdsByChild($_product->getId());
+//                            if(!$parentIds)
+//                                $parentIds = Mage::getModel('catalog/product_type_configurable')->getParentIdsByChild($_product->getId());
+//                            if(isset($parentIds[0])){
+//                                $parent = Mage::getModel('catalog/product')->load($parentIds[0]);
+//                                $name = Mage::Helper('catalog/output')->productAttribute($parent, $parent->getName(), 'name');
+//                            }
                         }
                         $name = html_entity_decode($name);
                         $color = $_product->getAttributeText('color');
