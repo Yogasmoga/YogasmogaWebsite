@@ -183,14 +183,14 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     $outputtemp .= "<td>".$row['shipto']."</td>";
                     
                     $write1 = Mage::getSingleton('core/resource')->getConnection('core_read');
-                    $result = $write1->query("SELECT product_id AS 'id', sku, qty_ordered AS 'ordered', qty_refunded AS 'refunded', qty_backordered AS 'backordered', qty_shipped AS 'shipped', product_id AS 'productid', sfoi.name AS 'name' FROM sales_flat_order_item sfoi WHERE product_type <> 'configurable' AND order_id=".$row['entity_id']);
+                    $result = $write1->query("SELECT item_id, product_id AS 'id', sku, qty_ordered AS 'ordered', qty_refunded AS 'refunded', qty_backordered AS 'backordered', qty_shipped AS 'shipped', product_id AS 'productid', sfoi.name AS 'name' FROM sales_flat_order_item sfoi WHERE product_type <> 'configurable' AND order_id=".$row['entity_id']);
                     while ($row1 = $result->fetch() ) {
                         $outputtemp1 = $outputtemp;
                         $name = $row1['name'];
                         $_product = Mage::getModel('catalog/product')->load($row1['productid']);    
                         if($_product->getTypeId() == "simple"){
                             $write2 = Mage::getSingleton('core/resource')->getConnection('core_read');        
-                            $result2 = $write1->query("SELECT name FROM sales_flat_order_item sfoi WHERE product_type = 'configurable' AND item_id=".($row1['item_id'] - 1));
+                            $result2 = $write2->query("SELECT name FROM sales_flat_order_item sfoi WHERE product_type = 'configurable' AND item_id=".($row1['item_id'] - 1));
                             $row2 = $result2->fetch();
                             $name = $row2['name'];
                             
