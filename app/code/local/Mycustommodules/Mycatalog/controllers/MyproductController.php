@@ -161,6 +161,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 <th>Date</th>
                 <th>Status</th>
                 <th>Amount</th>
+                <th>Coupon Code</th>
                 <th>Shipping</th>
                 <th>Bill To</th>
                 <th>Ship To</th>
@@ -177,7 +178,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 </tr><thead><tbody>";
                 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
                 //$readresult=$write->query("SELECT increment_id AS 'orderno', STATUS AS 'status', total_paid AS 'paid', shipping_description AS 'shipping', DATE_FORMAT(created_at, '%m-%d-%Y') AS 'orderdate',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'billto',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='shipping' AND parent_id=sfo.entity_id) AS 'shipto', entity_id FROM sales_flat_order sfo where created_at >= '".$startdate."' and created_at <= '".$enddate."' ORDER BY created_at desc");
-                $readresult=$write->query("SELECT sfo.increment_id AS 'orderno', sfo.status AS 'status', sfo.total_paid AS 'paid', sfo.shipping_description AS 'shipping', DATE_FORMAT(sfo.created_at, '%m-%d-%Y') AS 'orderdate', sfo.entity_id, (SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'billto', CONCAT(firstname,' ',lastname) AS 'shipto', sfoa.region AS 'region', sfoa.city AS 'city', sfoa.postcode AS 'postcode' FROM sales_flat_order sfo, sales_flat_order_address sfoa WHERE sfo.created_at >= '".$startdate."' AND sfo.created_at <= '".$enddate."' AND sfoa.parent_id = sfo.entity_id AND sfoa.address_type='shipping' ORDER BY sfo.created_at DESC;");
+                $readresult=$write->query("SELECT sfo.increment_id AS 'orderno', sfo.status AS 'status', sfo.total_paid AS 'paid', sfo.shipping_description AS 'shipping', DATE_FORMAT(sfo.created_at, '%m-%d-%Y') AS 'orderdate', sfo.entity_id, (SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'billto', CONCAT(firstname,' ',lastname) AS 'shipto', sfoa.region AS 'region', sfoa.city AS 'city', sfoa.postcode AS 'postcode', sfo.coupon_code AS 'coupon' FROM sales_flat_order sfo, sales_flat_order_address sfoa WHERE sfo.created_at >= '".$startdate."' AND sfo.created_at <= '".$enddate."' AND sfoa.parent_id = sfo.entity_id AND sfoa.address_type='shipping' ORDER BY sfo.created_at DESC;");
                 
                 
                 while ($row = $readresult->fetch() ) {
@@ -185,6 +186,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     $outputtemp .= "<td>".$row['orderdate']."</td>";
                     $outputtemp .= "<td>".$row['status']."</td>";
                     $outputtemp .= "<td>".round($row['paid'], 2)."</td>";
+                    $outputtemp .= "<td>".$row['coupon']."</td>";
                     $outputtemp .= "<td>".$row['shipping']."</td>";
                     $outputtemp .= "<td>".$row['billto']."</td>";
                     $outputtemp .= "<td>".$row['shipto']."</td>";
