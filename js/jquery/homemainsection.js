@@ -1,7 +1,7 @@
 jQuery(document).ready(function($){
     $(window).load(function(){
         $('.flexslider').flexslider({
-            controlNav: false,
+            controlNav: true,
             slideshowSpeed: 9000,
 			animationSpeed:1250,
 			easing:"linear",
@@ -46,15 +46,40 @@ jQuery(document).ready(function($){
 function positionfloatingimages()
 {
     jQuery("div#Welcome ul.slides>li").each(function(){
-        if(jQuery(this).find("img.barimg").length == 0)
+        
+        if(jQuery(this).hasClass("slide21127"))
+        {
+            if(_winW <= 1400)
+            {
+                jQuery("div#Welcome ul.slides>li.slide21127 img.girl1").hide().removeClass("fltimage");
+                jQuery("div#Welcome ul.slides>li.slide21127 img.girl2").show().addClass("fltimage");
+                
+                //jQuery("div#Welcome ul.slides>li.slide21127 img.girl1").hide();
+                //jQuery("div#Welcome ul.slides>li.slide21127 img.girl2").addClass("fltimage");
+                jQuery("div#Welcome ul.slides>li.slide21127 img.giftysimg").removeClass("barimg");
+                jQuery("div#Welcome ul.slides>li.slide21127 div.startingnov13.blackfriday").addClass("barimg");
+            }
+            else
+            {
+                jQuery("div#Welcome ul.slides>li.slide21127 img.girl1").show().addClass("fltimage");
+                jQuery("div#Welcome ul.slides>li.slide21127 img.girl2").hide().removeClass("fltimage");
+                //jQuery("div#Welcome ul.slides>li.slide21127 img.girl1").show();
+                //jQuery("div#Welcome ul.slides>li.slide21127 img.girl2").removeClass("fltimage").css('left','auto');
+                jQuery("div#Welcome ul.slides>li.slide21127 img.giftysimg").addClass("barimg");
+                jQuery("div#Welcome ul.slides>li.slide21127 div.startingnov13.blackfriday").removeClass("barimg");
+            }
+        }
+        
+        if(jQuery(this).find(".barimg").length == 0)
             return;
         //console.log(jQuery(this).find("img.barimg").length);
-        var leftspace = ((jQuery(this).find("img.barimg").position()).left) + jQuery(this).find("img.barimg").width();
+        var leftspace = ((jQuery(this).find(".barimg").position()).left) + jQuery(this).find(".barimg").width();
         var space = ((_winW - leftspace - jQuery(this).find("img.fltimage").width()) / 2) + leftspace;
         var mmargin = jQuery(this).find("img.fltimage").attr("mymargin") * 1;
         if(space < (leftspace + mmargin))
             space = leftspace + mmargin;
         jQuery(this).find("img.fltimage").css("left", space + "px");    
+        
     });
     
     /*

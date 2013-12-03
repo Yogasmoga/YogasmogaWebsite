@@ -3339,3 +3339,56 @@ button.btn-cart[disabled]
     color : #666;
     background : url("/skin/frontend/default/newrespond/images/btnw.png") no-repeat scroll 50% 50% rgba(0, 0, 0, 0);
 }
+div#sizechart{
+        background-color : #FFF;
+        width : 95%;
+        z-index : 99999;
+        overflow : scroll;
+        position : fixed;
+        top : 20px;
+        left : 2%;
+        max-height : 90%;
+        border : 1px solid black;
+        display : none;
+    }
+    div#sizechart_trigger
+    {
+        text-decoration : underline;
+        color : #d90d3d;
+        float : right;
+    }
+    div#sizechart img{
+        position : fixed;
+        right : 10px;
+        top : 22px;
+        width : 10px;
+    }
+    div#sizechart table{
+        width : 500px;
+    }
+    div#sizechart table th{
+        padding-right : 5px;
+        text-align : center;
+        background-color : #666;
+    }
+    div#sizechart table td{
+        border-top : 1px solid #666;
+        padding-top : 2px;
+        padding-bottom : 2px;
+        text-align : center;
+    }
+    div#sizechart table tr td:first-child{
+        text-align : left;
+    }
+    div#sizechart_overlay{
+        position : fixed;
+        z-index:9999;
+        top : 0;
+        bottom : 0;
+        left : 0;
+        right: 0;
+        background-color : black;
+        opacity : 0.6;
+        filter : alpha(opacity=60);
+        display : none;
+    }

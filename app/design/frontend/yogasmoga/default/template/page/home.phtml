@@ -131,6 +131,7 @@
                         <?php
                     }
                 ?>
+                <img class="shareit nodisplay" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/shareme.jpg" />
                 <ul class="slides">
                     <?php /*
                     <li>
@@ -208,6 +209,10 @@
                     //////upto here for promotion 2310
                     */ ?>
                     
+                    <?php /* 
+                    //this one remains after promotion ends
+                     
+
                     
                     <li>
                       <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga-3.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
@@ -249,6 +254,72 @@
 							AT A TIME.
 						</div>        
                     </li>
+                    */ ?>
+                    
+                    <?php //below changes for promotion on 27-Nov-2013 ?>
+                    
+                    <?php 
+                    
+                    if(Mage::getModel('core/variable')->loadByCode('black_toggle')->getValue('plain') == "yes")
+                    {
+                        ?>
+                    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/blackfriday_bg.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                        <img class="fltimage" mymargin="-100" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/yoga_1.png" alt="NYC Equinox Yoga teacher Sarra Morton" style="position: absolute; height: 100%; width: auto;min-height:660px;" />
+                        <div class="banner-txt3 promo2310 promo1311" style="color : #333;">
+                        <img style="width: auto;" class="barimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/black_friday.png" />
+                        <div class="startingnov13 blackfriday">
+                        SAVE $75 AND EARN $10 SMOGI BUCKS<br />FOR A FUTURE PURCHASE WHEN YOU<br />COMBINE A TOP AND PANT.
+                        </div>
+                        <div class="startingnov13 blackfriday_combination">
+                        Featured here: Classic Reversible Slimmie Pant in Grey<br />Caviar/Violet Twilight and U &amp; Me bra in Violet Twilight.<br />Use code <span>YSHOLIDAY</span> at checkout.
+                        </div>
+                        <span class="banner-txt3-link" style="text-align: left; display: inline; float: left; margin-left: 0px ! important; font-size: 13px; padding-top: 0px ! important;">
+                            <a style="font-family: ITCAvantGardeProMd; color : #333;font-size:13px;" target="_blank" href="<?php echo Mage::helper('core/url')->getHomeUrl() ?>women">
+                            SHOP YOUR COMBINATION NOW <strong style="">&gt;&gt;&gt;</strong>
+                            </a>
+                        </span>
+                        </div>
+                        <div style="font-family:gothamlight;font-size:12px;color:#8A8989;position:absolute;bottom:10px;left:5%;">Final Sale. Offer good for any top plus pant purchase through December 2, 2013. One offer per order.</div>
+                    </li>    
+                        
+                        <?php
+                    }
+                    ?>
+                    
+                    
+                    
+                    
+                    <li class="slide21127">
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/giftofys_bg.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                        <img class="girl2" mymargin="50" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/yoga_girl2.png" alt="NYC Equinox Yoga teacher Sarra Morton" style="position: absolute; height: 100%; width: auto;min-height:660px;" />
+                        <img class="girl1" mymargin="-100" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/models.png" alt="NYC Equinox Yoga teacher Sarra Morton" style="position: absolute; height: 100%; width: auto;min-height:660px;" />
+                        <div class="banner-txt3 promo2310 promo1311" style="color : #333;">
+                        <img class="giftysimg" style="width: auto;" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/give_gift.png" />
+                        <div class="startingnov13 blackfriday barimg" style="margin-top: 110px !important;">
+                        SEND A GIFT OF YS CARD<br />THIS HOLIDAY SEASON
+                        </div>
+                        <div class="startingnov13 giftofys_newproducts">
+                        We've got great new products in all sizes and colors<br />for your friends, family and loved ones.
+                        </div>
+                        <span class="banner-txt3-link" style="text-align: left; display: inline; float: left; margin-left: 0px ! important; font-size: 13px; padding-top: 0px ! important;">
+                            <a style="font-family: ITCAvantGardeProMd; color : #333;font-size:13px;" target="_blank" href="<?php echo Mage::helper('core/url')->getHomeUrl() ?>gift_of_ys">
+                            SHOP GIFT OF YS <strong style="">&gt;&gt;&gt;</strong>
+                            </a>
+                        </span>
+                        </div>
+                    </li>
+                    
+                    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/yoga_11bg.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                        <img class="fltimage" mymargin="-100" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/yoga_11girl.png" alt="NYC Equinox Yoga teacher Sarra Morton" style="position: absolute; height: 100%; width: auto;min-height:660px;right:0;" />
+                        <div class="banner-txt3 promo2310 promo1311" style="color : #333;top:9%;left:20%">
+                        <img style="width: auto;" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/we_make_things.png" />
+                        </div>
+                    </li>
+                    
+                    <?php //below changes for promotion on 27-Nov-2013 ?>
+                    
                     <?php /*
                     /////before changes to gilt on 11_13
                     
@@ -307,7 +378,6 @@
                         <div style="font-family:gothamlight;font-size:13px;color:#333;position:absolute;bottom:10px;left:5%;">*New customers only. Requires sign-up on YOGASMOGA.com</div>
                     </li>
                     
-                    */ ?>
                     
                     <?php /*
                     <li>
@@ -366,6 +436,22 @@
                     </li>
                     */ ?>
                 </ul>
+                
+                <div style="position: absolute; width: 400px; right: 4.625%; z-index:99; bottom: 11%; display:none;" id="playBtn" ><img style="width : 100%" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/new_product.png" />
+					<div style="position: absolute; width: 72px; left: 15px; top: 17px;">
+                      	<a href="<?php echo $this->getUrl('women');?>">
+                      		<img style="width:100%;"  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/shop_now.png" alt="DID YOU TAKE A BREATH TODAY? Video" />
+                      	</a>
+                    </div>
+                    <a href="<?php echo $this->getUrl('gift_of_ys');?>">
+                        <img style="position : absolute; bottom : -40px; left : 0;"  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/send_a_gift.png" alt="DID YOU TAKE A BREATH TODAY? Video" />
+                    </a>
+				</div>
+                
+                <?php /*
+                
+                //below is the did you take a breath
+                
                 <div style="position: absolute; width: 244px; right: 4.625%; z-index:99; bottom: 8.25%; display:none;" id="playBtn" ><img style="width : 100%" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/play_button.png" />
 					<div style="position: absolute; width: 64px; left: 15px; top: 15px;">
                       	<a id="hmpagevideo" href="http://www.youtube.com/watch?v=gPLyklRtlN8" rel="fancyvideo">
@@ -378,6 +464,7 @@
                       		<img style="width:100%;"  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/play.png" alt="DID YOU TAKE A BREATH TODAY? Video" />
                       	</a>
                 </div>
+                */ ?>
             </div>
             <div smorigwidth="1600" smorigheight="300" id="ftechimage" origwidth="1600" origheight="900" desc="abcd" origwidthsm="1600" origheightsm="900" class="opimage closed" style="background-image:url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/parallax/fabric_technology-bg.jpg');">
 				<div class="small" style="background-image:url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/parallax/fabric_technology-bg.jpg');">
@@ -434,31 +521,31 @@
             <div id="Explore" desc="Explore" class="colorbg pgsection" style="background:url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/expbg.jpg') no-repeat center top; background-size: cover;" tw-summary="For Wherever Life takes you. Check out the YOGASMOGA Carousel">
             	<div id="slider">
 					<div class="carousel-img">
-						<img class="bximg shareit" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/car_1.png" alt="The Classic Slimmie Pant (Reversible)" />
+						<img class="bximg shareit" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/1_Ballerina_Legging.png" alt="The Ballerina Legging" />
 						<div class="carousel-desc">
-							<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/cartx_1.png" alt="For wherever life takes you. The Slimmie &ndash; Reversible. Sexy Outside In or Inside Out. It Goes From Yoga to Life." /><br/>
-							<button onclick="window.location='<?php echo $this->getUrl('women/classic-slimmie-pant-tall');?>'" redirecturl="<?php echo $this->getUrl('women/classic-slimmie-pant-tall');?>" class="btn-explore button"><span><span>Explore</span></span></button>
+							<img style="max-height: 195px;" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/carousel_01.png" alt="For wherever life takes you. The Slimmie &ndash; Reversible. Sexy Outside In or Inside Out. It Goes From Yoga to Life." /><br/>
+							<button onclick="window.location='<?php echo $this->getUrl('women/ballerina-legging');?>'" redirecturl="<?php echo $this->getUrl('women/classic-slimmie-pant-tall');?>" class="btn-explore button"><span><span>Explore</span></span></button>
 						</div>
 					</div>
 					<div class="carousel-img">
-						<img class="bximg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/car_2.png" alt="The Yantra Tank Top" />
+						<img class="bximg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/2_Yantra_Tank.png" alt="The Yantra Tank Top" />
 						<div class="carousel-desc">
-							<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/cartx_2.png" alt="Look Closer. Go Deeper. Consider the Clothes You Wear. Find your chakra of creativity with the Yantra Tank." /><br/>
+							<img style="max-height: 195px;" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/carousel_02.png" alt="Look Closer. Go Deeper. Consider the Clothes You Wear. Find your chakra of creativity with the Yantra Tank." /><br/>
 							<button redirecturl="<?php echo $this->getUrl('women/yantra-tank');?>" onclick="window.location='<?php echo $this->getUrl('women/yantra-tank');?>'" class="btn-explore button"><span><span>Explore</span></span></button>
 						</div>
 					</div>
 					<div class="carousel-img">
-						<img class="bximg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/car_3.png" alt="The Tippy Toe Legging" />
+						<img class="bximg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/3_Tippy_Toe_Carousel.png" alt="The Tippy Toe Legging" />
 						<div class="carousel-desc">
-							<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/cartx_3.png" alt="Yoga is an expression. Express yourself beyond your Yoga mat with the Tippy Toe Legging." /><br/>
+							<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/carousel_03.png" alt="Yoga is an expression. Express yourself beyond your Yoga mat with the Tippy Toe Legging." /><br/>
 							<button redirecturl="<?php echo $this->getUrl('women/tippy-toe-legging');?>" onclick="window.location='<?php echo $this->getUrl('women/tippy-toe-legging');?>'" class="btn-explore button"><span><span>Explore</span></span></button>
 						</div>
 					</div>
 					<div class="carousel-img">
-						<img class="bximg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/car_4.png" alt="U & Me Sports Bra" />
+						<img class="bximg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/4_Sneak_Peak_Carousel.png" alt="U & Me Sports Bra" />
 						<div class="carousel-desc">
-							<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/cartx_4.png" alt="Made with SMOGI love. Find a second, a moment, a nook to breath in the U & Me Bra." /><br/>
-							<button onclick="window.location='<?php echo $this->getUrl('u-me-bra');?>'" redirecturl="<?php echo $this->getUrl('u-me-bra');?>" class="btn-explore button"><span><span>Explore</span></span></button>
+							<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/carousel_04.png" alt="Made with SMOGI love. Find a second, a moment, a nook to breath in the U & Me Bra." /><br/>
+							<button onclick="window.location='<?php echo $this->getUrl('women/sneak-n-peek-bra');?>'" redirecturl="<?php echo $this->getUrl('u-me-bra');?>" class="btn-explore button"><span><span>Explore</span></span></button>
 						</div>
 					</div>
 				  </div>  

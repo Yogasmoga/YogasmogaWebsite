@@ -22,6 +22,13 @@ jQuery(document).ready(function($){
         filterimages($(this).parents("div.item:first"));
         $(this).parents("div.item:first").find("td.animateimage img").removeClass('active').hide();
         $(this).parents("div.item:first").find("td.animateimage img:first").addClass('active').fadeIn('fast');
+        //console.log($(this).parents("div.item:first").find(">a").attr("href"));
+        var href = $(this).parents("div.item:first").find(">a").attr("href");
+        if(href.indexOf('?') > 0)
+            href = href.substr(0, href.indexOf('?'));
+        href = href + '?color=' + $(this).attr("value");
+        $(this).parents("div.item:first").find(">a").attr("href", href);
+        //console.log(href); 
     });
     
     $("#clearsearch").click(function(){

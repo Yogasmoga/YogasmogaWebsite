@@ -161,41 +161,58 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 <th>Date</th>
                 <th>Status</th>
                 <th>Amount</th>
+                <th>Coupon Code</th>
                 <th>Shipping</th>
                 <th>Bill To</th>
                 <th>Ship To</th>
+                <th>Region</th>
+                <th>City</th>
+                <th>Zip Code</th>
                 <th>Qty Ordered</th>
                 <th>Qty Refunded</th>
+                <th>Qty PreOrdered</th>
                 <th>SKU</th>
                 <th>Name</th>
                 <th>Color</th>
                 <th>Size</th>
                 </tr><thead><tbody>";
                 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
-                $readresult=$write->query("SELECT increment_id AS 'orderno', STATUS AS 'status', total_paid AS 'paid', shipping_description AS 'shipping', DATE_FORMAT(created_at, '%m-%d-%Y') AS 'orderdate',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'billto',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='shipping' AND parent_id=sfo.entity_id) AS 'shipto', entity_id FROM sales_flat_order sfo where created_at >= '".$startdate."' and created_at <= '".$enddate."' ORDER BY created_at desc");
+                //$readresult=$write->query("SELECT increment_id AS 'orderno', STATUS AS 'status', total_paid AS 'paid', shipping_description AS 'shipping', DATE_FORMAT(created_at, '%m-%d-%Y') AS 'orderdate',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'billto',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='shipping' AND parent_id=sfo.entity_id) AS 'shipto', entity_id FROM sales_flat_order sfo where created_at >= '".$startdate."' and created_at <= '".$enddate."' ORDER BY created_at desc");
+                $readresult=$write->query("SELECT sfo.increment_id AS 'orderno', sfo.status AS 'status', sfo.total_paid AS 'paid', sfo.shipping_description AS 'shipping', DATE_FORMAT(sfo.created_at, '%m-%d-%Y') AS 'orderdate', sfo.entity_id, (SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'billto', CONCAT(firstname,' ',lastname) AS 'shipto', sfoa.region AS 'region', sfoa.city AS 'city', sfoa.postcode AS 'postcode', sfo.coupon_code AS 'coupon' FROM sales_flat_order sfo, sales_flat_order_address sfoa WHERE sfo.created_at >= '".$startdate."' AND sfo.created_at <= '".$enddate."' AND sfoa.parent_id = sfo.entity_id AND sfoa.address_type='shipping' ORDER BY sfo.created_at DESC;");
+                
+                
                 while ($row = $readresult->fetch() ) {
                     $outputtemp = "<tr><td>".$row['orderno']."</td>";
                     $outputtemp .= "<td>".$row['orderdate']."</td>";
                     $outputtemp .= "<td>".$row['status']."</td>";
                     $outputtemp .= "<td>".round($row['paid'], 2)."</td>";
+                    $outputtemp .= "<td>".$row['coupon']."</td>";
                     $outputtemp .= "<td>".$row['shipping']."</td>";
                     $outputtemp .= "<td>".$row['billto']."</td>";
                     $outputtemp .= "<td>".$row['shipto']."</td>";
+                    $outputtemp .= "<td>".$row['region']."</td>";
+                    $outputtemp .= "<td>".$row['city']."</td>";
+                    $outputtemp .= "<td style='text-align:right;'>".$row['postcode']."</td>";
                     
                     $write1 = Mage::getSingleton('core/resource')->getConnection('core_read');
-                    $result = $write1->query("SELECT product_id AS 'id', sku, qty_ordered AS 'ordered', qty_refunded AS 'refunded', qty_backordered AS 'backordered', qty_shipped AS 'shipped', product_id AS 'productid', sfoi.name AS 'name' FROM sales_flat_order_item sfoi WHERE product_type <> 'configurable' AND order_id=".$row['entity_id']);
+                    $result = $write1->query("SELECT item_id, product_id AS 'id', sku, qty_ordered AS 'ordered', qty_refunded AS 'refunded', qty_backordered AS 'backordered', qty_shipped AS 'shipped', product_id AS 'productid', sfoi.name AS 'name' FROM sales_flat_order_item sfoi WHERE product_type <> 'configurable' AND order_id=".$row['entity_id']);
                     while ($row1 = $result->fetch() ) {
                         $outputtemp1 = $outputtemp;
                         $name = $row1['name'];
                         $_product = Mage::getModel('catalog/product')->load($row1['productid']);    
                         if($_product->getTypeId() == "simple"){
-                            $parentIds = Mage::getModel('catalog/product_type_grouped')->getParentIdsByChild($_product->getId());
-                            if(!$parentIds)
-                                $parentIds = Mage::getModel('catalog/product_type_configurable')->getParentIdsByChild($_product->getId());
-                            if(isset($parentIds[0])){
-                                $parent = Mage::getModel('catalog/product')->load($parentIds[0]);
-                                $name = Mage::Helper('catalog/output')->productAttribute($parent, $parent->getName(), 'name');
-                            }
+                            $write2 = Mage::getSingleton('core/resource')->getConnection('core_read');        
+                            $result2 = $write2->query("SELECT name FROM sales_flat_order_item sfoi WHERE product_type = 'configurable' AND item_id=".($row1['item_id'] - 1));
+                            $row2 = $result2->fetch();
+                            $name = $row2['name'];
+                            
+                            //$parentIds = Mage::getModel('catalog/product_type_grouped')->getParentIdsByChild($_product->getId());
+//                            if(!$parentIds)
+//                                $parentIds = Mage::getModel('catalog/product_type_configurable')->getParentIdsByChild($_product->getId());
+//                            if(isset($parentIds[0])){
+//                                $parent = Mage::getModel('catalog/product')->load($parentIds[0]);
+//                                $name = Mage::Helper('catalog/output')->productAttribute($parent, $parent->getName(), 'name');
+//                            }
                         }
                         $name = html_entity_decode($name);
                         $color = $_product->getAttributeText('color');
@@ -203,6 +220,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                             $color = substr($color, 0, strpos($color, "|"));
                         $outputtemp1 .= "<td>".round($row1['ordered'], 2)."</td>";
                         $outputtemp1 .= "<td>".round($row1['refunded'], 2)."</td>";
+                        $outputtemp1 .= "<td>".round($row1['backordered'], 2)."</td>";
                         //$outputtemp1 .= "<td>".round($row1['shipped'], 2)."</td>";
                         $outputtemp1 .= "<td>".$row1['sku']."</td>";
                         $outputtemp1 .= "<td>".$name."</td>";
@@ -817,40 +835,56 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                     </table>
                                     <div id="colorcontainer">
                                         <?php
-                                            $first = true;
-                                            $colorcount = 0;
-                                            foreach($productcolorinfo as $key=>$colorinfo)
-                                            {
-                                                $colorcount++;
-                                                ?>
-                                                    <div>
-                                                        <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
-                                                            <tr>
-                                                                <?php
-                                                                    foreach($colorinfo['hex'] as $hex)
-                                                                    {
-                                                                        ?>
-                                                                            <td style="background-color: <?php echo $hex ?>;">    
-                                                                            <div>
-                                                                                &nbsp;
-                                                                            </div>                                            
-                                                                            </td>   
+                                                $primarycolorcode = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'primarycolorcode', Mage::app()->getStore()->getStoreId());
+                                                $first = true;
+                                                //print_r($productcolorinfo);
+                                                $colorcount = 0;
+                                                for($incr = 0; $incr < 2; $incr++)
+                                                {
+                                                    foreach($productcolorinfo as $key=>$colorinfo)
+                                                    {
+                                                        if($incr == 0)
+                                                        {
+                                                            if($colorinfo['value'] != $primarycolorcode)
+                                                                continue;
+                                                        }
+                                                        else
+                                                        {
+                                                            if($colorinfo['value'] == $primarycolorcode)
+                                                                continue;
+                                                        }
+                                                        $colorcount++;
+                                                        ?>
+                                                            <div>
+                                                                <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
+                                                                    <tr>
                                                                         <?php
-                                                                    } 
-                                                                ?>
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
-                                                                      
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </div>  
-                                                <?php
-                                                if(($colorcount % 5) == 0)
-                                                echo "<br/>";
-                                            } 
-                                        ?>
+                                                                            foreach($colorinfo['hex'] as $hex)
+                                                                            {
+                                                                                ?>
+                                                                                    <td style="background-color: <?php echo $hex ?>;">
+                                                                                    <div>
+                                                                                        &nbsp;
+                                                                                    </div>                                                
+                                                                                    </td>   
+                                                                                <?php
+                                                                            } 
+                                                                        ?>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
+                                                                        
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        <?php
+                                                        if(($colorcount % 5) == 0)
+                                                            echo "<br/>";
+                                                    }
+                                                }
+                                                 
+                                            ?>
                                     </div>
                                     <div style="clear: both;"></div>
                                     <table class="selectedsize" <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
@@ -873,8 +907,18 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                         <table>
                                             <tr>
                                                 <?php
+                                                    $sizecount = 0;
                                                     foreach($productallsizes as $size)
                                                     {
+                                                        //if($sizecount % 6 == 0 && $sizecount > 0)
+                                                        if(strpos($size['label'],"T") !== false & $sizecount == 0)
+                                                        {
+                                                            $sizecount++;
+                                                            ?>
+                                                            </tr>
+                                                            <tr>
+                                                            <?php
+                                                        }
                                                         ?>
                                                             <td><div value="<?php echo $size['value']; ?>" size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?></div></td>        
                                                         <?php
