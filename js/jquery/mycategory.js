@@ -213,7 +213,7 @@ jQuery(document).ready(function($){
    
     $("#mycategory_products div.item").each(function(){
         cnt = $(this).find("td.colorpicker a>div").length;
-        $(this).find("td.colorpicker a>div:nth-child(5n)").css('margin-right', '0');
+        $(this).find("td.colorpicker a>div:nth-child(5n)").css('padding-right', '0');
         if(cnt < 5)
         {
             pad = ((230 - (cnt * 46) - 6) / 2) + 7;
