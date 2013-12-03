@@ -190,7 +190,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     $outputtemp .= "<td>".$row['shipto']."</td>";
                     $outputtemp .= "<td>".$row['region']."</td>";
                     $outputtemp .= "<td>".$row['city']."</td>";
-                    $outputtemp .= "<td>".$row['postcode']."</td>";
+                    $outputtemp .= "<td style='text-align:right;'>".$row['postcode']."</td>";
                     
                     $write1 = Mage::getSingleton('core/resource')->getConnection('core_read');
                     $result = $write1->query("SELECT item_id, product_id AS 'id', sku, qty_ordered AS 'ordered', qty_refunded AS 'refunded', qty_backordered AS 'backordered', qty_shipped AS 'shipped', product_id AS 'productid', sfoi.name AS 'name' FROM sales_flat_order_item sfoi WHERE product_type <> 'configurable' AND order_id=".$row['entity_id']);
