@@ -8,7 +8,7 @@ media
 bin/
 tmp/
 *.tmp
-*.bak
+#*.bak
 *.swp
 *~.nib
 local.properties
@@ -163,3 +163,4 @@ pip-log.txt
 .DS_Store
 
 sendy
+*.pem binary

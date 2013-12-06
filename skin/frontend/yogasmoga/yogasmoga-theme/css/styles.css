@@ -3811,8 +3811,8 @@ td.colorpicker table div
 td.colorpicker a>div
 {
     float: left;
-    margin-right: 6px;
-    margin-bottom : 5px;
+    padding-right: 6px;
+    padding-bottom : 5px;
 }
 td.colorpicker
 {

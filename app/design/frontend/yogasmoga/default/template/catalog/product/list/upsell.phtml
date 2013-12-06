@@ -24,7 +24,6 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-
 <?php if(count($this->getItemCollection()->getItems())): ?>
 <?php
     $write = Mage::getSingleton('core/resource')->getConnection('core_read');
@@ -52,6 +51,9 @@
                     $productcount++;
                 }
                 $tdwidth = 100 / $productcount;
+                $tdwidth = 100 / count($this->getItemCollection()->getItems());
+                if($tdwidth < 25)
+                    $tdwidth = 25; 
                 $productcount = 1;
                 $shareimg = false;
                 foreach($this->getItemCollection()->getItems() as $_product)
