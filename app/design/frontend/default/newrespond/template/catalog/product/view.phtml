@@ -92,6 +92,16 @@
 </script>
 <?php $_helper = $this->helper('catalog/output'); ?>
 <?php $_product = $this->getProduct(); ?>
+
+<?php
+    //if()
+    $productType = $_product->getTypeID();
+    if($productType == "configurable")
+    {
+        ?>
+        
+        
+
 <?php
     $sizechartblockid = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'size_chart', Mage::app()->getStore()->getStoreId());
 ?>
@@ -193,6 +203,9 @@
     _szid = '';
 </script>
 
+<?php
+    } 
+?>
 
 <script type="text/javascript">
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
@@ -209,13 +222,39 @@
 		<div class="product-name">
                 <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
         </div>
-		<?php echo $this->getChildHtml('product_type_data') ?>
-		<?php echo $this->getTierPriceHtml() ?>
+        <?php
+            if($productType == "configurable")
+            {
+                ?>
+                    <?php echo $this->getChildHtml('product_type_data') ?>
+            		<?php echo $this->getTierPriceHtml() ?>
+            		
+            		<?php if ($_product->getShortDescription()):?>
+            			<div class="sdesc"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+            		<?php endif;?>
+                <?php
+            }
+            else
+            {
+                ?>
+                    <?php if ($_product->getShortDescription()):?>
+            			<div class="sdesc" style="margin: 20px 0;"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+            		<?php endif;?>
+                    <img src="<?php echo (string)Mage::helper('catalog/image')->init($_product, 'image')->resize(620,238); ?>" style="width: 100%;" />
+                    <?php echo $this->getChildHtml('product_type_data') ?>
+            		<?php echo $this->getTierPriceHtml() ?>   
+                <?php
+            }
+        ?>
+        
 		
-		<?php if ($_product->getShortDescription()):?>
-			<div class="sdesc"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
-		<?php endif;?>
 		
+        <?php
+            if($productType == "configurable")
+            {
+                ?>
+                
+        
 		<div class="product-img-box">
 			<div id="galleria1" class="loading">
 				<?php echo $this->getChildHtml('media') ?>
@@ -298,7 +337,9 @@
             <?php endif;?>
 
         </div>
-
+<?php
+            }
+        ?>
         <div class="clearer"></div>
         <?php if(true): // ($_product->isSaleable() && $this->hasOptions()):?>
             <?php echo $this->getChildChildHtml('container2', '', true, true) ?>

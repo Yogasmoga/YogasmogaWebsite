@@ -3392,3 +3392,6 @@ div#sizechart{
         filter : alpha(opacity=60);
         display : none;
     }
+    .giftcard-info > fieldset:first-child {
+    display: none;
+}
