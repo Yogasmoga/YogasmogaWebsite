@@ -62,6 +62,7 @@
 		<div class="change-box cbox pgsection" id="Join" desc="Pledge Counter" tw-summary="Check out how YOGASMOGA is joing hands to make a change. #NAMASKAR Foundation">
 		    <img class="bg-img shareit hidden" src="<?php echo $this->getSkinUrl('images/namaskar/nam1.jpg'); ?>" alt="Namaskar Foundation &ndash; Giving is a Core Value of YOGASMOGA" />	
             <img class="hidden" src="<?php echo $this->getSkinUrl('images/namaskar/snm2.jpg'); ?>" />
+            <?php /*
 			<span class="count">$<?php 
 			 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
 			 $result = $write->query("SELECT IF(SUM(row_total) > 0, SUM(row_total), 0) as revenue FROM sales_flat_order sfo, sales_flat_order_item sfoi WHERE sfo.status='complete' AND sfo.entity_id=sfoi.order_id AND sfoi.product_id = ".Mage::getModel('core/variable')->loadByCode('namaskar_bracelet_id')->getValue('plain'));
@@ -69,6 +70,7 @@
             $row['revenue'] += 1000;
 			 echo number_format($row['revenue']);
 			?></span>
+            */ ?>
 			<p>JOINING HANDS TO MAKE A CHANGE.<br/>
 			<strong>namask&Aacute;r.</strong></p>
 		</div>
