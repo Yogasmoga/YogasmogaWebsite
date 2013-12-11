@@ -104,17 +104,6 @@ if ($ur11==$ur12)
  Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl());
   }  
 
-//Gift of YS Page
-
-$ur11 = Mage::getBaseUrl()."namaskar"; //This is to get baseUrl + identifier  - Gift of YS Page
-
-$ur12=Mage::getUrl() . Mage::getSingleton('cms/page')->getIdentifier(); //this is to get  current url of cms page
-$ur12 = Mage::helper('core/url')->getCurrentUrl();
-if ($ur11==$ur12)
-  {
- Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl());
-  }  
-
  ?>
 
 <meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
