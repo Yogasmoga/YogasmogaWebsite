@@ -209,6 +209,7 @@
 					<td>&nbsp;</td>
 					<?php 
 					//echo Mage::getSingleton('core/session')->getAccessoriesTot();
+					Mage::log("cpmsg = ".Mage::getSingleton('core/session')->getCPmsg()." points currently used = ".$points_currently_used." accessories total = ".Mage::getSingleton('core/session')->getAccessoriesTot(),null,'partial.log');
 					if (Mage::getSingleton('core/session')->getCPmsg() > $points_currently_used && Mage::getSingleton('core/session')->getAccessoriesTot() > 0)
 					{	?>
 			<td width="545px" style="text-align:right;" rowspan="2">

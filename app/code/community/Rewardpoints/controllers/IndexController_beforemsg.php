@@ -145,8 +145,6 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
     public function quotationAction(){
         $session = Mage::getSingleton('core/session');
         $points_value = $this->getRequest()->getPost('points_to_be_used');
-		Mage::getSingleton('core/session')->setCPmsg($points_value);
-		Mage::log("adding to session".$points_value,null,'partial.log');
         if (Mage::getStoreConfig('rewardpoints/default/max_point_used_order', Mage::app()->getStore()->getId())){
             if ((int)Mage::getStoreConfig('rewardpoints/default/max_point_used_order', Mage::app()->getStore()->getId()) < $points_value){
                 $points_max = (int)Mage::getStoreConfig('rewardpoints/default/max_point_used_order', Mage::app()->getStore()->getId());
