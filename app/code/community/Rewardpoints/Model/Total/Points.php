@@ -59,7 +59,7 @@ class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Tot
 			$items = $cartHelper->getCart()->getItems();
 			$excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories')->getValue('plain');
 			$excludecats = explode(",", $excludecats);
-			
+			$accessories = 0;
 			foreach ($items as $item) {
 								
 									
@@ -87,6 +87,7 @@ class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Tot
 									//if($categoryid[$id]['category_id'] == 8)
 									//if($categoryid[$id]['name'] == 'Accessories')
 									{
+									 	$accessories++;
 									  $cattotal = $cattotal + $itemstotal;
 									}
 								}
@@ -95,7 +96,7 @@ class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Tot
 								
 								
 				}
-			
+			Mage::getSingleton('core/session')->setAccessoriesTot($cattotal);
 			$grandTotalapplicable = $tot - $cattotal;	
 			if($creditPoints1 < $grandTotalapplicable)
 			{
