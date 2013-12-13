@@ -75,9 +75,22 @@
     },2000);
 </script>
 */ ?>
-<style type="text/css">
-    
+
+<?php
+    if($productType == "giftcard")
+    {
+        ?>
+        <style type="text/css">
+    div.qty-box
+    {
+        display : none;
+    }
 </style>
+        <?php
+    }
+?>
+
+
 <script type="text/javascript">
     $j(document).ready(function(){
         $j("div#sizechart_overlay, div#sizechart img").click(function(){
