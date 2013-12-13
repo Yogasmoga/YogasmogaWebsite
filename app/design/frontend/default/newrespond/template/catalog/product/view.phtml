@@ -76,19 +76,7 @@
 </script>
 */ ?>
 
-<?php
-    if($productType == "giftcards")
-    {
-        ?>
-        <style type="text/css">
-    div.qty-box
-    {
-        display : none;
-    }
-</style>
-        <?php
-    }
-?>
+
 
 
 <script type="text/javascript">
@@ -104,11 +92,27 @@
     
 </script>
 <?php $_helper = $this->helper('catalog/output'); ?>
-<?php $_product = $this->getProduct(); ?>
+<?php $_product = $this->getProduct();
+$productType = $_product->getTypeID();
+ ?>
+
+<?php
+    if($productType == "giftcards")
+    {
+        ?>
+        <style type="text/css">
+    div.qty-box
+    {
+        display : none;
+    }
+</style>
+        <?php
+    }
+?>
 
 <?php
     //if()
-    $productType = $_product->getTypeID();
+    
     if($productType == "configurable")
     {
         ?>
