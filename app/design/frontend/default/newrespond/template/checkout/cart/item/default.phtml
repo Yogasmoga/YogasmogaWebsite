@@ -155,7 +155,7 @@ $_options = $this->getOptionList();
 
             <div class="qty-wrap">
                 <input name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text qty" maxlength="12" />
-                <span<?php if ($this->getQty() == 1) echo ' style="display:none;"' ?>>×</span>
+                <span<?php if ($this->getQty() == 1) echo ' style="display:none;"' ?>>x</span>
             </div>
 
             <div class="cart-price-box"<?php if ($this->getQty() == 1) echo ' style="display:none;"' ?>>
