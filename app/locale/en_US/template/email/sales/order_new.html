@@ -81,7 +81,9 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
 						{{layout handle="sales_email_order_items" order=$order}}
 					</div>
                     <p style="color:#666; font-size:12px; margin:00">{{var order.getEmailCustomerNote()}}</p>
-					<p style="color:#666; font-size:12px; margin:15px 0;">If you have any comments or questions regarding your order, please email us any time at <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#f30f44; text-decoration:none;">{{config path='trans_email/ident_support/email'}}</a>.</p>
+					<p style="color:#666; font-size:12px; margin:15px 0;">If you have any comments or questions regarding your order, please email us any time at <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#f30f44; text-decoration:none;">{{config path='trans_email/ident_support/email'}}</a>.<br/><br/>
+                    {{layout handle="sales_email_order_smogi" order=$order}}
+                    </p>
 					<p style="color:#666; font-size:12px; margin:15px 0;">&nbsp;</p>
 				</td>
 			</tr>		
