@@ -44,12 +44,12 @@ $_to = Mage::getStoreConfig('giftcards/default/max_card_value') ? Mage::getStore
             <?php echo $this->getPriceHtml($_product) ?>
         <?php endif; ?>
         <div class="field">
-            <label for="mail-from"><?php echo $this->__('From Name') ?></label><br/>
-            <input width='100%' type="text" id="mail-from" name="mail_from" class="input-text"/>
+            <label for="mail-from"><em>*</em><?php echo $this->__('From Name') ?></label><br/>
+            <input width='100%' type="text" id="mail-from" name="mail_from" class="required-entry input-text"/>
         </div>
         <div class="field" style="margin-top:15px;">
-            <label for="mail-to"><?php echo $this->__('To Name') ?></label><br/>
-            <input width='100%' type="text" id="mail-to" name="mail_to" class="input-text"/>
+            <label for="mail-to"><em>*</em><?php echo $this->__('To Name') ?></label><br/>
+            <input width='100%' type="text" id="mail-to" name="mail_to" class="required-entry input-text"/>
         </div>
 		<div class="field" style="margin-top:15px;">
             <label for="mail-to-email" class="required"><em>*</em><?php echo $this->__('To E-mail') ?></label><br/>
@@ -57,7 +57,7 @@ $_to = Mage::getStoreConfig('giftcards/default/max_card_value') ? Mage::getStore
         </div>
 		<div class="field" style="margin-top:15px;">
             <label for="mail-message"><?php echo $this->__('Message') ?></label><br/>
-		    <textarea id="mail-message" name="mail_message" style="background-color:#fff;margin-top:15px;width:97%;"></textarea>
+		    <textarea id="mail-message" name="mail_message" style="background-color:#fff;margin-top:15px;width:96%;border-color:#000;"></textarea>
         </div>
         <div class="field">
             <label for="offline-country"><em>*</em><?php echo $this->__('Country') ?></label><br/>
