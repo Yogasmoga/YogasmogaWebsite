@@ -24,6 +24,7 @@
             $reward_model = Mage::getModel('rewardpoints/stats');        
             $available_points = $reward_model->getPointsCurrent($customerId, $store_id);    
         }
-        echo "You have ".$available_points." SMOGI Bucks available.";
+        if($available_points > 0)
+            echo "You have ".$available_points." SMOGI Bucks available.";
     }
 ?>
