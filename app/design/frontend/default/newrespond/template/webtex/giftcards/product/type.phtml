@@ -37,51 +37,51 @@ $_to = Mage::getStoreConfig('giftcards/default/max_card_value') ? Mage::getStore
     <fieldset id="giftcard-fieldset" class="giftcard-fieldset">
         <?php if ($this->getProduct()->getPrice() == 0) : ?>
 		<div class="field ">
-            <label for="card-amount" class="required"><?php echo $this->__('Amount') ?><em>*</em>:</label><br/>
-            <input style="width:100px;" type="text" id="card-amount" name="card_amount" class="input-text required-entry validate-float-range float-range-<?php echo $_from;?>-<?php echo $_to;?>"/>&nbsp;(<?php echo $_currency->format($_from) ?> - <?php echo $_currency->format($_to) ?>)
+            <label for="card-amount" class="required"><em>*</em><?php echo $this->__('Amount') ?></label><br/>
+            <input type="text" id="card-amount" name="card_amount" width='100%' class="input-text required-entry validate-float-range float-range-<?php echo $_from;?>-<?php echo $_to;?>"/>&nbsp;<!--(<?php echo $_currency->format($_from) ?> - <?php echo $_currency->format($_to) ?>)-->
         </div>
         <?php else: ?>
             <?php echo $this->getPriceHtml($_product) ?>
         <?php endif; ?>
         <div class="field">
-            <label for="mail-from"><?php echo $this->__('From Name') ?>:</label><br/>
-            <input style="width:200px;" type="text" id="mail-from" name="mail_from" class="input-text"/>
+            <label for="mail-from"><?php echo $this->__('From Name') ?></label><br/>
+            <input width='100%' type="text" id="mail-from" name="mail_from" class="input-text"/>
+        </div>
+        <div class="field" style="margin-top:15px;">
+            <label for="mail-to"><?php echo $this->__('To Name') ?></label><br/>
+            <input width='100%' type="text" id="mail-to" name="mail_to" class="input-text"/>
+        </div>
+		<div class="field" style="margin-top:15px;">
+            <label for="mail-to-email" class="required"><em>*</em><?php echo $this->__('To E-mail') ?></label><br/>
+		    <input width='100%' type="text" id="mail-to-email" name="mail_to_email" class="input-text required-entry validate-email"/>
+        </div>
+		<div class="field" style="margin-top:15px;">
+            <label for="mail-message"><?php echo $this->__('Message') ?></label><br/>
+		    <textarea id="mail-message" name="mail_message" style="background-color:#fff;margin-top:15px;width:97%;"></textarea>
         </div>
         <div class="field">
-            <label for="mail-to"><?php echo $this->__('To Name') ?>:</label><br/>
-            <input style="width:200px;" type="text" id="mail-to" name="mail_to" class="input-text"/>
-        </div>
-		<div class="field">
-            <label for="mail-to-email" class="required"><?php echo $this->__('To E-mail') ?><em>*</em>:</label><br/>
-		    <input style="width:200px;" type="text" id="mail-to-email" name="mail_to_email" class="input-text required-entry validate-email"/>
-        </div>
-		<div class="field">
-            <label for="mail-message"><?php echo $this->__('Message') ?>:</label><br/>
-		    <textarea id="mail-message" name="mail_message"></textarea>
+            <label for="offline-country"><em>*</em><?php echo $this->__('Country') ?></label><br/>
+            <input width='100%' type="text" id="offline-country" name="offline_country" class="input-text required-entry"/>
         </div>
         <div class="field">
-            <label for="offline-country"><?php echo $this->__('Country') ?><em>*</em>:</label><br/>
-            <input style="width:200px;" type="text" id="offline-country" name="offline_country" class="input-text required-entry"/>
+            <label for="offline-state"><em>*</em><?php echo $this->__('State/Province') ?></label><br/>
+            <input width='100%' type="text" id="offline-state" name="offline_state" class="input-text required-entry"/>
         </div>
         <div class="field">
-            <label for="offline-state"><?php echo $this->__('State/Province') ?><em>*</em>:</label><br/>
-            <input style="width:200px;" type="text" id="offline-state" name="offline_state" class="input-text required-entry"/>
+            <label for="offline-city"><em>*</em><?php echo $this->__('City') ?></label><br/>
+            <input width='100%' type="text" id="offline-city" name="offline_city" class="input-text required-entry"/>
         </div>
         <div class="field">
-            <label for="offline-city"><?php echo $this->__('City') ?><em>*</em>:</label><br/>
-            <input style="width:200px;" type="text" id="offline-city" name="offline_city" class="input-text required-entry"/>
+            <label for="offline-street"><em>*</em><?php echo $this->__('Street Address') ?></label><br/>
+            <input width='100%' type="text" id="offline-street" name="offline_street" class="input-text required-entry"/>
         </div>
         <div class="field">
-            <label for="offline-street"><?php echo $this->__('Street Address') ?><em>*</em>:</label><br/>
-            <input style="width:200px;" type="text" id="offline-street" name="offline_street" class="input-text required-entry"/>
+            <label for="offline-zip"><em>*</em><?php echo $this->__('Zip/Postcode') ?></label><br/>
+            <input width='100%' type="text" id="offline-zip" name="offline_zip" class="input-text required-entry"/>
         </div>
         <div class="field">
-            <label for="offline-zip"><?php echo $this->__('Zip/Postcode') ?><em>*</em>:</label><br/>
-            <input style="width:200px;" type="text" id="offline-zip" name="offline_zip" class="input-text required-entry"/>
-        </div>
-        <div class="field">
-            <label for="offline-phone"><?php echo $this->__('Telephone') ?><em>*</em>:</label><br/>
-            <input style="width:200px;" type="text" id="offline-phone" name="offline_phone" class="input-text required-entry"/>
+            <label for="offline-phone"><em>*</em><?php echo $this->__('Telephone') ?></label><br/>
+            <input width='100%' type="text" id="offline-phone" name="offline_phone" class="input-text required-entry"/>
         </div>
     </fieldset>
 </div>
