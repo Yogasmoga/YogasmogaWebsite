@@ -199,7 +199,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     else
                         $outputtemp = "<tr>";
                     $order = Mage::getModel('sales/order')->load($row['entity_id']);
-                    $outputtemp .= "<td>".$emailtotest."</td>";
+                    //$outputtemp .= "<td>".$emailtotest."</td>";
                     $outputtemp .= "<td>".$row['orderno']."</td>";
                     $outputtemp .= "<td>".$row['orderdate']."</td>";
                     $outputtemp .= "<td>".$row['status']."</td>";
