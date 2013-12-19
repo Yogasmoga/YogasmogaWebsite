@@ -175,14 +175,32 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 <th>Name</th>
                 <th>Color</th>
                 <th>Size</th>
+                <th>Is Accessory?</th>
+                <th>Tax Paid</th>
                 </tr><thead><tbody>";
                 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
                 //$readresult=$write->query("SELECT increment_id AS 'orderno', STATUS AS 'status', total_paid AS 'paid', shipping_description AS 'shipping', DATE_FORMAT(created_at, '%m-%d-%Y') AS 'orderdate',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'billto',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='shipping' AND parent_id=sfo.entity_id) AS 'shipto', entity_id FROM sales_flat_order sfo where created_at >= '".$startdate."' and created_at <= '".$enddate."' ORDER BY created_at desc");
-                $readresult=$write->query("SELECT sfo.increment_id AS 'orderno', sfo.status AS 'status', sfo.total_paid AS 'paid', sfo.shipping_description AS 'shipping', DATE_FORMAT(sfo.created_at, '%m-%d-%Y') AS 'orderdate', sfo.entity_id, (SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'billto', CONCAT(firstname,' ',lastname) AS 'shipto', sfoa.region AS 'region', sfoa.city AS 'city', sfoa.postcode AS 'postcode', sfo.coupon_code AS 'coupon' FROM sales_flat_order sfo, sales_flat_order_address sfoa WHERE sfo.created_at >= '".$startdate."' AND sfo.created_at <= '".$enddate."' AND sfoa.parent_id = sfo.entity_id AND sfoa.address_type='shipping' ORDER BY sfo.created_at DESC;");
-                
-                
+                $readresult=$write->query("SELECT sfo.increment_id AS 'orderno', sfo.status AS 'status', sfo.total_paid AS 'paid', sfo.shipping_description AS 'shipping', DATE_FORMAT(sfo.created_at, '%m-%d-%Y') AS 'orderdate', sfo.entity_id,(SELECT customer_id FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'customer_id',(SELECT email FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'email', (SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'billto', CONCAT(firstname,' ',lastname) AS 'shipto', sfoa.region AS 'region', sfoa.city AS 'city', sfoa.postcode AS 'postcode', sfo.coupon_code AS 'coupon' FROM sales_flat_order sfo, sales_flat_order_address sfoa WHERE sfo.created_at >= '".$startdate."' AND sfo.created_at <= '".$enddate."' AND sfoa.parent_id = sfo.entity_id AND sfoa.address_type='shipping' ORDER BY sfo.created_at DESC;");
                 while ($row = $readresult->fetch() ) {
-                    $outputtemp = "<tr><td>".$row['orderno']."</td>";
+                    $emailtotest = "";
+                    if($row['customer_id'] != "")
+                    {
+                        $write11 = Mage::getSingleton('core/resource')->getConnection('core_read');
+                        $readresult11 = $write->query("Select email from customer_entity where entity_id=".$row['customer_id']);
+                        $row11 = $readresult11->fetch();
+                        $emailtotest = $row11['email'];        
+                    }
+                    else
+                    {
+                        $emailtotest = $row['email']; 
+                    }
+                    if(stripos($emailtotest,"mobikasa.com") !== false || $emailtotest == "mangat.c@gmail.com")
+                        $outputtemp = "<tr style='background-color:#CCCCCC'>";
+                    else
+                        $outputtemp = "<tr>";
+                    $order = Mage::getModel('sales/order')->load($row['entity_id']);
+                    $outputtemp .= "<td>".$emailtotest."</td>";
+                    $outputtemp .= "<td>".$row['orderno']."</td>";
                     $outputtemp .= "<td>".$row['orderdate']."</td>";
                     $outputtemp .= "<td>".$row['status']."</td>";
                     $outputtemp .= "<td>".round($row['paid'], 2)."</td>";
@@ -197,15 +215,20 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     $write1 = Mage::getSingleton('core/resource')->getConnection('core_read');
                     $result = $write1->query("SELECT item_id, product_id AS 'id', sku, qty_ordered AS 'ordered', qty_refunded AS 'refunded', qty_backordered AS 'backordered', qty_shipped AS 'shipped', product_id AS 'productid', sfoi.name AS 'name' FROM sales_flat_order_item sfoi WHERE product_type <> 'configurable' AND order_id=".$row['entity_id']);
                     while ($row1 = $result->fetch() ) {
+                        
+                        $productCats = array();
+                        $taxPaid = 0;
                         $outputtemp1 = $outputtemp;
                         $name = $row1['name'];
-                        $_product = Mage::getModel('catalog/product')->load($row1['productid']);    
+                        $_product = Mage::getModel('catalog/product')->load($row1['productid']);
                         if($_product->getTypeId() == "simple"){
                             $write2 = Mage::getSingleton('core/resource')->getConnection('core_read');        
-                            $result2 = $write2->query("SELECT name FROM sales_flat_order_item sfoi WHERE product_type = 'configurable' AND item_id=".($row1['item_id'] - 1));
+                            $result2 = $write2->query("SELECT name, product_id, base_tax_amount FROM sales_flat_order_item sfoi WHERE product_type = 'configurable' AND item_id=".($row1['item_id'] - 1));
                             $row2 = $result2->fetch();
                             $name = $row2['name'];
-                            
+                            $product = Mage::getModel('catalog/product')->load($row2['product_id']);
+                            $productCats = $product->getCategoryIds();                         
+                            $taxPaid = $row2['base_tax_amount'];  
                             //$parentIds = Mage::getModel('catalog/product_type_grouped')->getParentIdsByChild($_product->getId());
 //                            if(!$parentIds)
 //                                $parentIds = Mage::getModel('catalog/product_type_configurable')->getParentIdsByChild($_product->getId());
@@ -226,6 +249,14 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $outputtemp1 .= "<td>".$name."</td>";
                         $outputtemp1 .= "<td>".$color."</td>";
                         $outputtemp1 .= "<td>".$_product->getAttributeText('size')."</td>";
+                        if(array_search(8, $productCats) !== false){
+                            $outputtemp1 .= "<td>Yes</td>";    
+                        }
+                        else
+                        {
+                            $outputtemp1 .= "<td>No</td>";
+                        }
+                        $outputtemp1 .= "<td>".$taxPaid."</td>";
                         $outputtemp1 .= "</tr>";
                         $output .= $outputtemp1;                                
                     }
@@ -246,18 +277,48 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         {
             if($this->getRequest()->getParam('pass') == "MageHACKER")
             {
-                $output = "<table border='1'><thead><tr>
+			
+			/* Order date code */
+				$startdate = $this->getRequest()->getParam('startdate');
+                $datearr = split("-", $startdate);
+                //print_r($datearr);
+                if(!checkdate($datearr[0], $datearr[1], $datearr[2]))
+                {
+                    echo "Invalid Date";
+                    return;
+                }
+                $startdate = $datearr[2]."-".$datearr[0]."-".$datearr[1];
+                
+                $enddate = $this->getRequest()->getParam('enddate');
+                $datearr = split("-", $enddate);
+                //print_r($datearr);
+                if(!checkdate($datearr[0], $datearr[1], $datearr[2]))
+                {
+                    echo "Invalid Date";
+                    return;
+                }
+                $enddate = $datearr[2]."-".$datearr[0]."-".$datearr[1];
+			
+			/* Order date code */
+                
+				$output = "<table border='1'><thead><tr>
+                <th>Order Date</th>
                 <th>Order No.</th>
                 <th>Device Type</th>
                 </tr><thead><tbody>";
                 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
-                $readresult=$write->query("SELECT order_num AS 'orderno', is_mobile AS 'ismobile' FROM order_by_device");
-                while ($row = $readresult->fetch() ) {
-                    $outputtemp = "<tr><td>".$row['orderno']."</td>"; 
+               // $readresult=$write->query("SELECT order_num AS 'orderno', is_mobile AS 'ismobile' FROM order_by_device");
+                $readresult=$write->query("SELECT order_num AS 'orderno', is_mobile AS 'ismobile', DATE_FORMAT(sales_flat_order.created_at, '%m-%d-%Y') AS 'orderdate' FROM order_by_device, sales_flat_order where order_by_device.order_num = sales_flat_order.increment_id and sales_flat_order.created_at >= '".$startdate."' and sales_flat_order.created_at <= '".$enddate."' ORDER BY sales_flat_order.created_at desc");
+				while ($row = $readresult->fetch() ) {
+					
+                    $outputtemp = "<tr><td>".$row['orderdate']."</td>"; 
+                    $outputtemp .= "<td>".$row['orderno']."</td>"; 
                     if($row['ismobile'] == "0")
                         $outputtemp .= "<td>Desktop/Laptop/Ipad</td>";
                     else
                         $outputtemp .= "<td>Mobile Devices</td>";
+					 
+				
                     $outputtemp1 .= "</tr>";
                     $outputtemp1 = $outputtemp;
                     $output .= $outputtemp1;
