@@ -44,6 +44,110 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         echo json_encode($inv);
     }
     
+    public function inventoryreportAction()
+    {
+        if($this->getRequest()->getParam('pass'))
+        {
+            if($this->getRequest()->getParam('pass') == "MageHACKER")
+            {
+                $output = "<table>";
+                $productCollection = Mage::getModel('catalog/product')->getCollection()->addAttributeToFilter('type_id', array('eq' => 'configurable'))->setPageSize(20000);
+                for ($i = 1; $i <= $productCollection->getLastPageNumber(); $i++) {
+                    if ($productCollection->isLoaded()) {
+                        $productCollection->clear();
+                        $productCollection->setPage($i);
+                        $productCollection->setPageSize(20000);
+                    }
+                    foreach ($productCollection as $product) {
+                        //echo $product->getId() . "\n\n";
+                        $_product = Mage::getModel('catalog/product')->load($product->getId());
+                        $productname = Mage::Helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name');
+                        $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
+                        $productcolorinfo = array();
+                        $sizeArray = array();
+                        $sizeTotal = array();
+                        foreach($_childproducts as $_childproduct)
+                        {
+                            //echo Mage::Helper('catalog/output')->productAttribute($_childproduct, $_childproduct->getName(), 'name')."         ";
+                            $temp = $_childproduct->getAttributeText('color');
+                            if(strpos($temp,"|") !== FALSE)
+                            {
+                                $temp = substr($temp, 0, strpos($temp,"|"));
+                                if(!isset($productcolorinfo[$temp]))
+                                    $productcolorinfo[$temp] = array();
+                            }
+                            $temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+                            $productcolorinfo[$temp][$_childproduct->getAttributeText('size')] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+                            if(array_search($_childproduct->getAttributeText('size'), $sizeArray) === false)
+                            {
+                                array_push($sizeArray, $_childproduct->getAttributeText('size'));
+                                $sizeTotal[$_childproduct->getAttributeText('size')] = 0;
+                            }
+                            //if(isset($productcolorinfo[$temp]["sizes"]))
+//                            {
+//                                
+//                                array_push($productcolorinfo[$temp]["sizes"], $temp1);
+//                            }
+//                            else
+//                            {
+//                                $productcolorinfo[$temp]["sizes"] = array($temp1);
+//                            }
+                            //echo $temp."   ".$temp1."<br/>";
+                            
+                        }
+                        //echo "<pre>";
+//                        print_r($productcolorinfo);
+//                        asort($sizeArray);
+//                        print_r($sizeArray);
+//                        echo "</pre>";
+//                        echo "<br/><br/>";
+                        $output .= "<tr style='color:#FFFFFF;'>";
+                        $output .= "<td style='background-color:#003366;'>Name</td><td style='background-color:#003366;'>Color</td>";
+                        for($j = 0; $j < count($sizeArray); $j++)
+                        {
+                            $output .= "<td style='background-color:#003366;'>Size ".$sizeArray[$j]."</td>";    
+                        }
+                        $output .= "</tr>";
+                        foreach($productcolorinfo as $key=>$val)
+                        {
+                            $output .= "<tr>";
+                            $output .= "<td>$productname</td><td>".$key."</td>";
+                            for($j = 0; $j < count($sizeArray); $j++)
+                            {
+                                if(isset($val[$sizeArray[$j]]))
+                                {
+                                    $output .= "<td>".number_format($val[$sizeArray[$j]])."</td>";
+                                    $sizeTotal[$sizeArray[$j]] += $val[$sizeArray[$j]];
+                                }
+                                else
+                                    $output .= "<td>0</td>";
+                            }    
+                            $output .= "</tr>";    
+                        }
+                        $output .= "<tr style='font-weight:bold;'>";
+                        $output .= "<td>&nbsp;</td><td>&nbsp;</td>";
+                        $g_sum = 0;
+                        for($j = 0; $j < count($sizeArray); $j++)
+                        {
+                            $output .= "<td>".$sizeTotal[$sizeArray[$j]]."</td>";
+                            $g_sum += $sizeTotal[$sizeArray[$j]];
+                        }
+                        $output .= "<td style='color:red;'>".$g_sum."</td>";
+                        $output .= "</tr>";
+                        $output .= "<tr><td colspan='20'></td></tr>";
+//                        $output .= "<tr><td colspan='20'></td></tr>";
+                    }
+                    //echo $i . "\n\n";
+                    $output .= "</table>";
+                    //echo $output;
+                    $fname = mktime();
+                    file_put_contents('customreports/'.$fname.'.xls',$output);
+                    Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");
+                }       
+            }
+        }
+    }
+    
     public function goysbalanceAction()
     {
         if($this->getRequest()->getParam('pass'))
