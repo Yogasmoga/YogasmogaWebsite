@@ -103,15 +103,13 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
 //                        echo "<br/><br/>";
                         $output .= "<tr style='color:#FFFFFF;'>";
                         $output .= "<td style='background-color:#003366;'>Name</td><td style='background-color:#003366;'>Color</td>";
-                        if(count($sizeArray) > 0)
+                        for($j = 0; $j < count($sizeArray); $j++)
                         {
-                            for($j = 0; $j < count($sizeArray); $j++)
-                            {
-                                $output .= "<td style='background-color:#003366;'>Size ".$sizeArray[$j]."</td>";    
-                            }   
-                        }
-                        else
-                            $output .= "<td style='background-color:#003366;'>Qty</td>";
+                            if($sizeArray[$j] != "")
+                                $output .= "<td style='background-color:#003366;'>Size ".$sizeArray[$j]."</td>";
+                            else
+                                $output .= "<td style='background-color:#003366;'>Qty</td>";            
+                        }   
                         $output .= "</tr>";
                         foreach($productcolorinfo as $key=>$val)
                         {
