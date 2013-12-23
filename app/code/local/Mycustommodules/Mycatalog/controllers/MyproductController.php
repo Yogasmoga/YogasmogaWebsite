@@ -51,7 +51,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
             if($this->getRequest()->getParam('pass') == "MageHACKER")
             {
                 $output = "<table>";
-                $productCollection = Mage::getModel('catalog/product')->getCollection()->addAttributeToFilter('type_id', array('eq' => 'configurable'))->setPageSize(20000);
+                $productCollection = Mage::getModel('catalog/product')->getCollection()->addAttributeToFilter(array(array('attribute'=>'type_id', 'eq'=>'configurable'), array('attribute'=>'status', 'eq' => Mage_Catalog_Model_Product_Status::STATUS_DISABLED )))->setPageSize(20000);
                 for ($i = 1; $i <= $productCollection->getLastPageNumber(); $i++) {
                     if ($productCollection->isLoaded()) {
                         $productCollection->clear();
@@ -103,10 +103,15 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
 //                        echo "<br/><br/>";
                         $output .= "<tr style='color:#FFFFFF;'>";
                         $output .= "<td style='background-color:#003366;'>Name</td><td style='background-color:#003366;'>Color</td>";
-                        for($j = 0; $j < count($sizeArray); $j++)
+                        if(count($sizeArray) > 0)
                         {
-                            $output .= "<td style='background-color:#003366;'>Size ".$sizeArray[$j]."</td>";    
+                            for($j = 0; $j < count($sizeArray); $j++)
+                            {
+                                $output .= "<td style='background-color:#003366;'>Size ".$sizeArray[$j]."</td>";    
+                            }   
                         }
+                        else
+                            $output .= "<td style='background-color:#003366;'>Qty</td>";
                         $output .= "</tr>";
                         foreach($productcolorinfo as $key=>$val)
                         {
@@ -116,11 +121,14 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                             {
                                 if(isset($val[$sizeArray[$j]]))
                                 {
-                                    $output .= "<td>".number_format($val[$sizeArray[$j]])."</td>";
+                                    if($val[$sizeArray[$j]] <= 0)
+                                        $output .= "<td style='color:red;'>".number_format($val[$sizeArray[$j]])."</td>";
+                                    else
+                                        $output .= "<td>".number_format($val[$sizeArray[$j]])."</td>";
                                     $sizeTotal[$sizeArray[$j]] += $val[$sizeArray[$j]];
                                 }
                                 else
-                                    $output .= "<td>0</td>";
+                                    $output .= "<td style='background-color:red;color:#fff;'>0</td>";
                             }    
                             $output .= "</tr>";    
                         }
