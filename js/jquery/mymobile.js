@@ -130,6 +130,7 @@ if($j("ul.messages li.error-msg span").length > 0)
     else
     {
         $j("#paypalerrormsg.errortext").html(msg);
+        $j("#outofstock.errortext").html(msg);
     }
 }
 
