@@ -27,8 +27,8 @@
 <?php if ($this->isPossibleOnepageCheckout()):?>
 <?php
     $allow = 0;
-    //if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
-//        $allow++;
+    if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+        $allow++;
     if(Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
         $allow++;
     if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
