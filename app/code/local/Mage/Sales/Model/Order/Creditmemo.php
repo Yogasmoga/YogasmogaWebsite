@@ -430,6 +430,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 		
 		if($qty_ordered == $qtytorefund)
 		{
+		  Mage::log("Going to complete refund at once",null,'partialrefund.log');
 			$order->setBaseTotalRefunded($baseOrderRefund);
 			$order->setTotalRefunded($orderRefund);
 
@@ -511,7 +512,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 
 
 
-			
+			$total_points_earned = 0;
 			echo "Total reward points".$totalrewardpoints1 = array_sum($totalrewardpoints);
 			//Mage::throwException( Mage::helper('sales')->__($order->getGiftMessageId()." ".$order->getCouponRuleName())  );
 			/* For Total Reward Points */
@@ -579,7 +580,8 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 								else if ($basediscountamt == 0  )
 								{
 									if($rewardpoints[$id] > 0)
-									{							
+									{					
+									   $total_points_earned += $rewardpoints[$id];
 									$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $rewardpoints[$id], $storeIds));
 										
 									}
@@ -589,7 +591,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 								}
 							}
 			
-
+            //$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $total_points_earned, $storeIds));
 			
 				
 			
@@ -602,6 +604,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 			//Mage::throwException( $qty_left."//".$qtytorefund );			
 			if($qty_left == $qtytorefund)
 				{	
+				    Mage::log("Complete refund after partial".$total_points_earned,null,'partialrefund.log');
 					$state = 'closed';
 					$status = 'closed';
 					$comment = 'Status Closed';
@@ -610,16 +613,26 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 					$order->setState($state, $status, $comment, $isCustomerNotified,$shouldProtectState);
 					
 					//$rewardpointstotal = $points_awarded * $qty_ordered;
-					$refpointstotal = $order->getRewardpoints();
-					if($refpointstotal > 0)
-					{
-					$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $refpointstotal, $storeIds));
-					}
-					if ($basediscountamt == 0 )
-					{
-					$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $totalrewardpoints1, $storeIds));
-					}
-					
+                    $ordertotal = $order->getBaseGrandTotal();
+                    if($ordertotal == 0)
+                    {
+                        Mage::log("Order total is 0. Adding points",null,'partialrefund.log');    
+    					$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $totalrewardpoints1 - $total_points_earned, $storeIds));       
+                        //$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $total_points_earned, $storeIds));
+                    }
+                    else
+                    {
+                        Mage::log("Order total is more than 0. Adding points and removing",null,'partialrefund.log');
+                        $refpointstotal = $order->getRewardpoints();
+    					if($refpointstotal > 0)
+    					{
+    					$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $refpointstotal, $storeIds));
+    					}
+    					if ($basediscountamt == 0 )
+    					{
+    					$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $totalrewardpoints1, $storeIds));
+    					}    
+                    }
 				}
 			
 			}
