@@ -127,6 +127,7 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
     }
 
     public function removequotationAction(){
+	 Mage::getSingleton('core/session')->setCPmsg(''); 
         Mage::getSingleton('rewardpoints/session')->setProductChecked(0);
         Mage::helper('rewardpoints/event')->setCreditPoints(0);
         Mage::helper('checkout/cart')->getCart()->getQuote()

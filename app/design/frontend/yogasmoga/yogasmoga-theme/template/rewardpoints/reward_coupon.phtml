@@ -80,9 +80,17 @@
 			
 			if(!($coupon_code  || $bucksused || $gcard))
 			{
+			
 			?>
              *You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.
-			<?php        
+			<?php   
+			//if (Mage::getSingleton('core/session')->getAccessoriesTot() == $point_details['max_use'])	
+			if($points_currently_used == 0 && Mage::getSingleton('core/session')->getCPmsg() > 0)
+			{
+			//echo $point_details['step_apply'];
+			//echo Mage::getSingleton('core/session')->getCPmsg();
+			echo "<br/>You cannot use SMOGI Bucks on Accessories and the Namaskar Bracelet.<br/>"; 
+			}
 			}
 			else
 			{
