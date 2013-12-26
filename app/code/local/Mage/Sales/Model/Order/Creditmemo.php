@@ -662,7 +662,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
                         $refpointstotal = $order->getRewardpoints();
     					if($refpointstotal > 0)
     					{
-    					//$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $refpointstotal, $storeIds));
+    					$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $refpointstotal, $storeIds));
 						$this->savetodb($order->getId(), (-1 * $refpointstotal));
     					}
     					if ($basediscountamt == 0 )
