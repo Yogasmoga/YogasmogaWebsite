@@ -144,7 +144,11 @@
                 
                  <div style="margin-top : 5px;">
                 You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a><br/> after this purchase.
-                </div>
+			<?php	if($points_currently_used == 0 && Mage::getSingleton('core/session')->getCPmsg() > 0) 
+			{	
+			echo "<br/>You cannot use SMOGI Bucks on Accessories and the Namaskar Bracelet.<br/>"; 
+			} ?>
+			   </div>
               
                 
                 <?php endif;?>
