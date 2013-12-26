@@ -401,10 +401,15 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
         return $canVoid;
     }
 
-
+	public function savetodb($orderid, $bucks)
+	{
+		$resource = Mage::getSingleton('core/resource');
+ 		$readConnection = $resource->getConnection('core_write');
+		$readConnection->query("Insert into smogi_refund_log values (NULL, '$orderid', $bucks)");
+	}
+	
     public function refund()
     {
-		
 		$this->setState(self::STATE_REFUNDED);
         $orderRefund = Mage::app()->getStore()->roundPrice(
             $this->getOrder()->getTotalRefunded()+$this->getGrandTotal()
@@ -422,7 +427,6 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
             );
         }
         $order = $this->getOrder();
-		
 		$resource = Mage::getSingleton('core/resource');
  		$readConnection = $resource->getConnection('core_read');
 		$qtytorefund = Mage::getSingleton('core/session')->getQtyToRef();
@@ -441,6 +445,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
                     {
                         Mage::log("Order total is 0. Adding points".$totrew,null,'partialrefund.log');    
     					$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $totrew, $storeIds)); 
+						$this->savetodb($order->getId(), $totrew);
 						if($total_points_earned > 0)
 						{
                         //$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $total_points_earned11, $storeIds));
@@ -570,7 +575,16 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 			
 			if($refpoints > 0)
 			{
+			if($qty_left == $qtytorefund)
+			{
+				$resource1 = Mage::getSingleton('core/resource')->getConnection('core_read');
+				$readresult=$resource1->query("Select SUM(smogi_bucks) as sm from smogi_refund_log where order_id='".$order->getId()."'");
+				$row = $readresult->fetch();
+				Mage::log("total reward points = ".$order->getRewardpoints()."  points given =  ".$row['sm'], null, 'partialrefund.log');
+				$refpoints = $order->getRewardpoints() - $row['sm'];
+			}
 			$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $refpoints, $storeIds));
+			$this->savetodb($order->getId(), $refpoints);
 			}			
 			$table1 = $resource->getTableName('sales_flat_order_item');
 			$query = "SELECT product_id FROM ".$table1." WHERE order_id = ".$order->getEntityId()." AND product_type = 'simple'";
@@ -601,7 +615,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 										Mage::log("Adding value reward ".$rewardpoints[$id],null,'partialrefund.log');
 									$total_points_earned11 = $total_points_earned11 + $rewardpoints[$id];
 									$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $rewardpoints[$id], $storeIds));
-										
+									$this->savetodb($order->getId(), (-1 * $rewardpoints[$id]));
 									}
 								}
 								
@@ -639,15 +653,8 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 						if($total_points_earned > 0)
 						{
                         $proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $total_points_earned11, $storeIds));
+						$this->savetodb($order->getId(), (-1 * $total_points_earned11));
 						}
-						
-					$state = Mage_Sales_Model_Order::STATE_CLOSED;
-					$order->setData('state', $state);
-					$order->setStatus($order->getConfig()->getStateDefaultStatus($state));
-					$history = $order->addStatusHistoryComment($comment, false); // no sense to set $status again
-					$history->setIsCustomerNotified(true); // for backwards compatibility
-					$order->sendOrderUpdateEmail(true, $comment);
-					$order->save();
                     }
                     else
                     {
@@ -655,11 +662,13 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
                         $refpointstotal = $order->getRewardpoints();
     					if($refpointstotal > 0)
     					{
-    					$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $refpointstotal, $storeIds));
+    					//$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $refpointstotal, $storeIds));
+						$this->savetodb($order->getId(), (-1 * $refpointstotal));
     					}
     					if ($basediscountamt == 0 )
     					{
     					$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $totalrewardpoints1, $storeIds));
+						$this->savetodb($order->getId(), $totalrewardpoints1);
     					}    
                     }
 				}
