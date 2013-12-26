@@ -428,8 +428,25 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 		$qtytorefund = Mage::getSingleton('core/session')->getQtyToRef();
 		$qty_ordered = $order->getTotalQtyOrdered();
 		
+		/* Reward Points Api for Partial Refund */
+			$proxy = new SoapClient(Mage::getBaseUrl().'api/soap/?wsdl');
+			$sessionId = $proxy->login('mobikasadeveloper', 'developerkey');
+			$customer_id = $order->getCustomerId();
+			$storeIds = 1;
 		if($qty_ordered == $qtytorefund)
 		{
+					$ordertotal = $order->getBaseGrandTotal();
+					$totrew = $order->getRewardpoints();
+                    if($ordertotal == 0)
+                    {
+                        Mage::log("Order total is 0. Adding points".$totrew,null,'partialrefund.log');    
+    					$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $totrew, $storeIds)); 
+						if($total_points_earned > 0)
+						{
+                        //$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $total_points_earned11, $storeIds));
+						}
+					}
+						
 		  Mage::log("Going to complete refund at once",null,'partialrefund.log');
 			$order->setBaseTotalRefunded($baseOrderRefund);
 			$order->setTotalRefunded($orderRefund);
@@ -512,7 +529,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 
 
 
-			$total_points_earned = 0;
+			$total_points_earned11 = 0;
 			echo "Total reward points".$totalrewardpoints1 = array_sum($totalrewardpoints);
 			//Mage::throwException( Mage::helper('sales')->__($order->getGiftMessageId()." ".$order->getCouponRuleName())  );
 			/* For Total Reward Points */
@@ -580,8 +597,9 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 								else if ($basediscountamt == 0  )
 								{
 									if($rewardpoints[$id] > 0)
-									{					
-									   $total_points_earned += $rewardpoints[$id];
+									{		
+										Mage::log("Adding value reward ".$rewardpoints[$id],null,'partialrefund.log');
+									$total_points_earned11 = $total_points_earned11 + $rewardpoints[$id];
 									$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $rewardpoints[$id], $storeIds));
 										
 									}
@@ -604,10 +622,10 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 			//Mage::throwException( $qty_left."//".$qtytorefund );			
 			if($qty_left == $qtytorefund)
 				{	
-				    Mage::log("Complete refund after partial".$total_points_earned,null,'partialrefund.log');
+				    Mage::log("Complete refund after partial".$total_points_earned11,null,'partialrefund.log');
 					$state = 'closed';
 					$status = 'closed';
-					$comment = 'Status Closed';
+					$comment = 'Closed';
 					$isCustomerNotified = false;
 					$shouldProtectState = false;
 					$order->setState($state, $status, $comment, $isCustomerNotified,$shouldProtectState);
@@ -616,9 +634,20 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
                     $ordertotal = $order->getBaseGrandTotal();
                     if($ordertotal == 0)
                     {
-                        Mage::log("Order total is 0. Adding points",null,'partialrefund.log');    
-    					$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $totalrewardpoints1 - $total_points_earned, $storeIds));       
-                        //$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $total_points_earned, $storeIds));
+                        Mage::log("Order total is 0. Adding points".$total_points_earned11,null,'partialrefund.log');    
+    					//$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $totalrewardpoints1 , $storeIds)); 
+						if($total_points_earned > 0)
+						{
+                        $proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $total_points_earned11, $storeIds));
+						}
+						
+					$state = Mage_Sales_Model_Order::STATE_CLOSED;
+					$order->setData('state', $state);
+					$order->setStatus($order->getConfig()->getStateDefaultStatus($state));
+					$history = $order->addStatusHistoryComment($comment, false); // no sense to set $status again
+					$history->setIsCustomerNotified(true); // for backwards compatibility
+					$order->sendOrderUpdateEmail(true, $comment);
+					$order->save();
                     }
                     else
                     {
