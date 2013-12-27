@@ -73,6 +73,12 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                 }
                 for($ii = 0; $ii < count($arrAccessories); $ii++)
                     $this->getinventoryhtml($arrAccessories[$ii], $output);
+                    
+                $output .= "<tr><td colspan='2' style='font-weight:bold;'>NARRATION</td></tr>";
+                $output .= "<tr><td>VALUE</td><td colspan='4'>Product is in stock and the inventory is positive.</td></tr>";
+                $output .= "<tr><td style='color:#fff;background-color:gray;'>VALUE</td><td colspan='4'>Product is out of stock.</td></tr>";
+                $output .= "<tr><td style='color:#fff;background-color:red;'>VALUE</td><td colspan='4'>Product is in stock and is in pre-order state.</td></tr>";
+                $output .= "<tr><td style='color:#fff;background-color:black;'>VALUE</td><td colspan='4'>This combination of color and size is not available and not displayed on the product view page.</td></tr>";
                 $output .= "</table>";
                 //echo $output;
                 $fname = mktime();
@@ -101,8 +107,11 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                 if(!isset($productcolorinfo[$temp]))
                     $productcolorinfo[$temp] = array();
             }
-            $temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
-            $productcolorinfo[$temp][$_childproduct->getAttributeText('size')] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+            //$temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+            if(Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getIsInStock())
+                $productcolorinfo[$temp][$_childproduct->getAttributeText('size')] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+            else
+                $productcolorinfo[$temp][$_childproduct->getAttributeText('size')] = "_".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
             if(array_search($_childproduct->getAttributeText('size'), $sizeArray) === false)
             {
                 array_push($sizeArray, $_childproduct->getAttributeText('size'));
@@ -144,10 +153,23 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
             {
                 if(isset($val[$sizeArray[$j]]))
                 {
-                    if($val[$sizeArray[$j]] <= 0)
-                        $output .= "<td style='color:#fff;background-color:red;'>".number_format($val[$sizeArray[$j]])."</td>";
+                    $outofstock = false;
+                    if(strpos($val[$sizeArray[$j]], "_") !== false)
+                    {
+                        $outofstock = true;
+                    }
+                    $val[$sizeArray[$j]] = str_replace("_","",$val[$sizeArray[$j]]);
+                    if($outofstock)
+                    {
+                        $output .= "<td style='color:#fff;background-color:gray;'>".number_format($val[$sizeArray[$j]])."</td>";
+                    }
                     else
-                        $output .= "<td>".number_format($val[$sizeArray[$j]])."</td>";
+                    {
+                        if($val[$sizeArray[$j]] <= 0)
+                            $output .= "<td style='color:#fff;background-color:red;'>".number_format($val[$sizeArray[$j]])."</td>";
+                        else
+                            $output .= "<td>".number_format($val[$sizeArray[$j]])."</td>";   
+                    }
                     $sizeTotal[$sizeArray[$j]] += $val[$sizeArray[$j]];
                 }
                 else
