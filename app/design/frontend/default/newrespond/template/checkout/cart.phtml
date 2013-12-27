@@ -89,6 +89,11 @@
                             <div id="outofstock" class="errortext"><?php echo html_entity_decode(strip_tags(Mage::getSingleton('core/session')->getGlobalMessage())); ?></div>
                             </li>
                         </ul>
+                        <script type="text/javascript">
+                            $j(document).ready(function(){
+                                $j("p.item-msg.error:contains('* Some of the products are currently out of stock')").hide();
+                            });
+                        </script>
                         <?php
                     } ?>
                 </div>
