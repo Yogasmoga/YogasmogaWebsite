@@ -51,6 +51,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
             if($this->getRequest()->getParam('pass') == "MageHACKER")
             {
                 $output = "<table>";
+                $output .= "<tr><td style='height:80px;'><img src='http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/logo.png' /></td><td style='vertical-align:middle' colspan='5'>INVENTORY STATUS AS OF ".date("dS M,Y")."</td></tr>";
                 $productCollection = Mage::getModel('catalog/product')->getCollection()->addAttributeToFilter(array(array('attribute'=>'type_id', 'eq'=>'configurable'), array('attribute'=>'status', 'eq' => Mage_Catalog_Model_Product_Status::STATUS_DISABLED )))->setPageSize(20000);
                 $arrAccessories = array();
                 for ($i = 1; $i <= $productCollection->getLastPageNumber(); $i++) {
@@ -144,13 +145,13 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                 if(isset($val[$sizeArray[$j]]))
                 {
                     if($val[$sizeArray[$j]] <= 0)
-                        $output .= "<td style='color:red;'>".number_format($val[$sizeArray[$j]])."</td>";
+                        $output .= "<td style='color:#fff;background-color:red;'>".number_format($val[$sizeArray[$j]])."</td>";
                     else
                         $output .= "<td>".number_format($val[$sizeArray[$j]])."</td>";
                     $sizeTotal[$sizeArray[$j]] += $val[$sizeArray[$j]];
                 }
                 else
-                    $output .= "<td style='background-color:red;color:#fff;'>0</td>";
+                    $output .= "<td style='background-color:black;color:#fff;'>0</td>";
             }    
             $output .= "</tr>";    
         }
