@@ -74,7 +74,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                 for($ii = 0; $ii < count($arrAccessories); $ii++)
                     $this->getinventoryhtml($arrAccessories[$ii], $output);
                     
-                $output .= "<tr><td colspan='2' style='font-weight:bold;'>NARRATION</td></tr>";
+                $output .= "<tr><td colspan='2' style='font-weight:bold;'>LEGEND</td></tr>";
                 $output .= "<tr><td>VALUE</td><td colspan='4'>Product is in stock and the inventory is positive.</td></tr>";
                 $output .= "<tr><td style='color:#fff;background-color:gray;'>VALUE</td><td colspan='4'>Product is out of stock.</td></tr>";
                 $output .= "<tr><td style='color:#fff;background-color:red;'>VALUE</td><td colspan='4'>Product is in stock and is in pre-order state.</td></tr>";
