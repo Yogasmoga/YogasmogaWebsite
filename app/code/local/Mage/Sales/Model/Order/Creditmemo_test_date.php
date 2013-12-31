@@ -575,21 +575,22 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 			
 			if($refpoints > 0)
 			{
-			if($qty_left == $qtytorefund)
-			{
-				$resource1 = Mage::getSingleton('core/resource')->getConnection('core_read');
-				$readresult=$resource1->query("Select SUM(smogi_bucks) as sm from smogi_refund_log where order_id='".$order->getId()."'");
-				$row = $readresult->fetch();
-				Mage::log("total reward points = ".$order->getRewardpoints()."  points given =  ".$row['sm'], null, 'partialrefund.log');
-				$refpoints = $order->getRewardpoints() - $row['sm'];
+			
+				if($qty_left == $qtytorefund)
+					{
+					if($order->getId() > 553 )
+					{
+					$resource1 = Mage::getSingleton('core/resource')->getConnection('core_read');
+					$readresult=$resource1->query("Select SUM(smogi_bucks) as sm from smogi_refund_log where order_id='".$order->getId()."'");
+					$row = $readresult->fetch();
+					Mage::log("total reward points = ".$order->getRewardpoints()."  points given =  ".$row['sm'], null, 'partialrefund.log');
+					$refpoints = $order->getRewardpoints() - $row['sm'];
+					}
+					}
+				$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $refpoints, $storeIds));
+				$this->savetodb($order->getId(), $refpoints);
+				
 			}
-			/*** OrderId applicable ******/	
-			if($order->getId() > 4363)
-			{
-			$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $refpoints, $storeIds));
-			}
-			$this->savetodb($order->getId(), $refpoints);
-			}			
 			$table1 = $resource->getTableName('sales_flat_order_item');
 			$query = "SELECT product_id FROM ".$table1." WHERE order_id = ".$order->getEntityId()." AND product_type = 'simple'";
 			$points_gained = $readConnection->fetchAll($query);
@@ -616,7 +617,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 								{
 									if($rewardpoints[$id] > 0)
 									{		
-									Mage::log("Adding value reward ".$rewardpoints[$id],null,'partialrefund.log');
+										Mage::log("Adding value reward ".$rewardpoints[$id],null,'partialrefund.log');
 									$total_points_earned11 = $total_points_earned11 + $rewardpoints[$id];
 									$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $rewardpoints[$id], $storeIds));
 									$this->savetodb($order->getId(), (-1 * $rewardpoints[$id]));
@@ -640,10 +641,8 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 			//Mage::throwException( $qty_left."//".$qtytorefund );			
 			if($qty_left == $qtytorefund)
 				{	
-			/*** OrderId applicable ******/	
-			
-			if($order->getId() > 4363)
-			{
+					if($order->getId() > 552 )
+					{
 				    Mage::log("Complete refund after partial".$total_points_earned11,null,'partialrefund.log');
 					$state = 'closed';
 					$status = 'closed';
@@ -654,21 +653,16 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 					
 					//$rewardpointstotal = $points_awarded * $qty_ordered;
                     $ordertotal = $order->getBaseGrandTotal();
-                   
-					if($ordertotal == 0)
+                    if($ordertotal == 0)
                     {
                         Mage::log("Order total is 0. Adding points".$total_points_earned11,null,'partialrefund.log');    
     					//$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $totalrewardpoints1 , $storeIds)); 
 						if($total_points_earned > 0)
 						{
-						
                         $proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $total_points_earned11, $storeIds));
-						
 						$this->savetodb($order->getId(), (-1 * $total_points_earned11));
-						
 						}
-                    
-					}
+                    }
                     else
                     {
                         Mage::log("Order total is more than 0. Adding points and removing",null,'partialrefund.log');
@@ -684,8 +678,9 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 						$this->savetodb($order->getId(), $totalrewardpoints1);
     					}    
                     }
+					}
 				}
-			}
+			
 			}
 			
 			}
@@ -804,9 +799,6 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
         }
 	
         return $this;
-		
-		
-		
     }
 
     /**
@@ -1141,8 +1133,8 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
                 $comment->save();
             }
         }
-		
-		
+
+
         return parent::_afterSave();
     }
 
