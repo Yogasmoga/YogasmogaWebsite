@@ -411,6 +411,16 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
     public function refund()
     {
 		$this->setState(self::STATE_REFUNDED);
+        
+        
+        
+        /* Reward Points Api for Partial Refund */
+		$proxy = new SoapClient(Mage::getBaseUrl().'api/soap/?wsdl');
+		$sessionId = $proxy->login('mobikasadeveloper', 'developerkey');
+		$customer_id = $order->getCustomerId();
+		$storeIds = 1;
+        
+        
         $orderRefund = Mage::app()->getStore()->roundPrice(
             $this->getOrder()->getTotalRefunded()+$this->getGrandTotal()
         );
@@ -432,11 +442,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 		$qtytorefund = Mage::getSingleton('core/session')->getQtyToRef();
 		$qty_ordered = $order->getTotalQtyOrdered();
 		
-		/* Reward Points Api for Partial Refund */
-			$proxy = new SoapClient(Mage::getBaseUrl().'api/soap/?wsdl');
-			$sessionId = $proxy->login('mobikasadeveloper', 'developerkey');
-			$customer_id = $order->getCustomerId();
-			$storeIds = 1;
+		
 		if($qty_ordered == $qtytorefund)
 		{
 					$ordertotal = $order->getBaseGrandTotal();
@@ -566,12 +572,14 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 			{
 			$refpoints = Mage::helper('rewardpoints/data')->convertmoneytopoints($this->getDiscountAmount());
 			}
+            
 			/* Reward Points Api for Partial Refund */
+            /*
 			$proxy = new SoapClient(Mage::getBaseUrl().'api/soap/?wsdl');
 			$sessionId = $proxy->login('mobikasadeveloper', 'developerkey');
 			$customer_id = $order->getCustomerId();
 			//$storeIds = Mage::app()->getStore()->getId(); 
-			$storeIds = 1; 
+			$storeIds = 1; */
 			
 			if($refpoints > 0)
 			{
