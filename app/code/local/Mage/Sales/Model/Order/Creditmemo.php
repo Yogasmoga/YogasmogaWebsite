@@ -593,7 +593,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 				$refpoints = $order->getRewardpoints() - $row['sm'];
 			}
 			/*** OrderId applicable ******/	
-			if($order->getId() > 4397)
+			if($order->getId() > Mage::getModel('core/variable')->loadByCode('partial_nonapplicable')->getValue('plain'))
 			{
 			$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $refpoints, $storeIds));
 			}
@@ -651,7 +651,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 				{	
 			/*** OrderId applicable ******/	
 			
-			if($order->getId() > 4397)
+			if($order->getId() > Mage::getModel('core/variable')->loadByCode('partial_nonapplicable')->getValue('plain'))
 			{
 				    Mage::log("Complete refund after partial".$total_points_earned11,null,'partialrefund.log');
 					$state = 'closed';
