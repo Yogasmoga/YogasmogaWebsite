@@ -410,6 +410,8 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 	
     public function refund()
     {
+        Mage::throwException( Mage::helper('sales')->__(Mage::getModel('core/variable')->loadByCode('partial_nonapplicable')->getValue('plain'))  );
+        return;
 		$this->setState(self::STATE_REFUNDED);
         
         
