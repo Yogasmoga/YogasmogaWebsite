@@ -499,11 +499,11 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
 			$lastOrderId = $order->getId();
 			try{
             $write = Mage::getSingleton('core/resource')->getConnection('core_write');
-            $readresult=$write->query("Select base_discount_amount, rewardpoints_quantity from sales_flat_order where entity_id=".$lastOrderId);
+            $readresult=$write->query("Select base_discount_amount, rewardpoints_quantity, grand_total from sales_flat_order where entity_id=".$lastOrderId);
             $row = $readresult->fetch();
             $smogiused = false;
 			Mage::log("Base Discount = ".$row['base_discount_amount'],null,'distribution.log');
-            if($row['base_discount_amount'] < 0)
+            if($row['base_discount_amount'] < 0 && $row['grand_total'] > 0)
             {
                 $discount_amount = $row['base_discount_amount'] * -1;
 				Mage::log("Rewardpoints = ".$row['rewardpoints_quantity'],null,'distribution.log');
