@@ -410,15 +410,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 	
     public function refund()
     {
-        //Mage::throwException( Mage::helper('sales')->__(Mage::getModel('core/variable')->loadByCode('partial_nonapplicable')->getValue('plain'))  );
-//        return;
-		$this->setState(self::STATE_REFUNDED);
-        
-        
-        
-      
-        
-        
+        $this->setState(self::STATE_REFUNDED);
         $orderRefund = Mage::app()->getStore()->roundPrice(
             $this->getOrder()->getTotalRefunded()+$this->getGrandTotal()
         );
@@ -435,84 +427,43 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
             );
         }
         $order = $this->getOrder();
-		$resource = Mage::getSingleton('core/resource');
+		
+        ///Begins our custom code for refunding SMOGI Bucks
+        
+        $sum_reward_points = 0;
+        
+           
+        $resource = Mage::getSingleton('core/resource');
  		$readConnection = $resource->getConnection('core_read');
 		$qtytorefund = Mage::getSingleton('core/session')->getQtyToRef();
 		$qty_ordered = $order->getTotalQtyOrdered();
 		
-          /* Reward Points Api for Partial Refund */
+        /* Reward Points Api for Partial Refund */
 		$proxy = new SoapClient(Mage::getBaseUrl().'api/soap/?wsdl');
 		$sessionId = $proxy->login('mobikasadeveloper', 'developerkey');
 		$customer_id = $order->getCustomerId();
 		$storeIds = 1;    
 		
-		if($qty_ordered == $qtytorefund)
+		if($qty_ordered == $qtytorefund) //For Full Refund
 		{
-					$ordertotal = $order->getBaseGrandTotal();
-					$totrew = $order->getRewardpoints();
-                    if($ordertotal == 0)
-                    {
-                        Mage::log("Order total is 0. Adding points".$totrew,null,'partialrefund.log');    
-    					$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $totrew, $storeIds)); 
-						$this->savetodb($order->getId(), $totrew);
-						if($total_points_earned > 0)
-						{
-                        //$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $total_points_earned11, $storeIds));
-						}
-					}
-						
-		  Mage::log("Going to complete refund at once",null,'partialrefund.log');
-			$order->setBaseTotalRefunded($baseOrderRefund);
-			$order->setTotalRefunded($orderRefund);
-
-			$order->setBaseSubtotalRefunded($order->getBaseSubtotalRefunded()+$this->getBaseSubtotal());
-			$order->setSubtotalRefunded($order->getSubtotalRefunded()+$this->getSubtotal());
-
-			$order->setBaseTaxRefunded($order->getBaseTaxRefunded()+$this->getBaseTaxAmount());
-			$order->setTaxRefunded($order->getTaxRefunded()+$this->getTaxAmount());
-			$order->setBaseHiddenTaxRefunded($order->getBaseHiddenTaxRefunded()+$this->getBaseHiddenTaxAmount());
-			$order->setHiddenTaxRefunded($order->getHiddenTaxRefunded()+$this->getHiddenTaxAmount());
-
-			$order->setBaseShippingRefunded($order->getBaseShippingRefunded()+$this->getBaseShippingAmount());
-			$order->setShippingRefunded($order->getShippingRefunded()+$this->getShippingAmount());
-
-			$order->setBaseShippingTaxRefunded($order->getBaseShippingTaxRefunded()+$this->getBaseShippingTaxAmount());
-			$order->setShippingTaxRefunded($order->getShippingTaxRefunded()+$this->getShippingTaxAmount());
-
-			$order->setAdjustmentPositive($order->getAdjustmentPositive()+$this->getAdjustmentPositive());
-			$order->setBaseAdjustmentPositive($order->getBaseAdjustmentPositive()+$this->getBaseAdjustmentPositive());
-
-			$order->setAdjustmentNegative($order->getAdjustmentNegative()+$this->getAdjustmentNegative());
-			$order->setBaseAdjustmentNegative($order->getBaseAdjustmentNegative()+$this->getBaseAdjustmentNegative());
-
-			$order->setDiscountRefunded($order->getDiscountRefunded()+$this->getDiscountAmount());
-			$order->setBaseDiscountRefunded($order->getBaseDiscountRefunded()+$this->getBaseDiscountAmount());
-			
-			
-			 if ($this->getInvoice()) {
-				$this->getInvoice()->setIsUsedForRefund(true);
-				$this->getInvoice()->setBaseTotalRefunded(
-					$this->getInvoice()->getBaseTotalRefunded() + $this->getBaseGrandTotal()
-				);
-				$this->setInvoiceId($this->getInvoice()->getId());
-			}
-
-			if (!$this->getPaymentRefundDisallowed()) {
-				$order->getPayment()->refund($this);
-			}
-			Mage::dispatchEvent('sales_order_creditmemo_refund', array($this->_eventObject=>$this));
-			return $this;
+			$ordertotal = $order->getBaseGrandTotal();
+			$totrew = $order->getRewardpoints();
+            if($ordertotal == 0)
+            {
+                //Mage::log("Order total is 0. Adding points".$totrew,null,'partialrefund.log');
+                    
+				/*$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $totrew, $storeIds)); //In case of full refund at once if order total is zero refunding all bucks to user 
+				$this->savetodb($order->getId(), $totrew);*/
+                
+                $sum_reward_points += $totrew;
+			}			
+		      //Mage::log("Going to complete refund at once",null,'partialrefund.log');
 		}
 		else
 		{
 			$itemcount = Mage::getSingleton('core/session')->getitemcount();		
 			$checkrew = Mage::getSingleton('core/session')->getcheckrew();
 			$checkrew = explode(',' , $checkrew);
-			
-			 /*Mage::throwException(
-                Mage::helper('sales')->__($checkrew[0]."//".$checkrew[1]."//".$checkrew[2]."//".$checkrew[3])
-            ); For Debugging and converting javascript array into php, join in js and explode in php */
-			
 			
 			/* For Total Reward Points */
 			
@@ -521,30 +472,17 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 			$query = "SELECT product_id, qty_ordered FROM ".$table1." WHERE order_id = ".$order->getEntityId()." AND product_type = 'simple'";
 			$total_points_gained = $readConnection->fetchAll($query);
 			//print_r($points_gained);
-			
-			
-					for ($id=0;$id < $itemcount; $id++)
-					{
-								 $product_id[$id]=$total_points_gained[$id]['product_id']."<br />";
-								 $total_qty_ordered = $total_points_gained[$id]['qty_ordered']."<br />";
-								
-								 $total_points_awarded[$id] = Mage::helper('rewardpoints/data')->getProductPoints(Mage::getModel('catalog/product')->load($product_id[$id]),false,false);
-								 
-								  
-								 $totalrewardpoints[$id] = $total_points_awarded[$id] * $total_qty_ordered."<br />";
-																
-					}
-
-						
-						
-					
-
-// for total reward points 
-
-
-
+			for ($id=0;$id < $itemcount; $id++)
+			{
+    			 $product_id[$id]=$total_points_gained[$id]['product_id']."<br />";
+    			 $total_qty_ordered = $total_points_gained[$id]['qty_ordered']."<br />";
+    			 $total_points_awarded[$id] = Mage::helper('rewardpoints/data')->getProductPoints(Mage::getModel('catalog/product')->load($product_id[$id]),false,false);
+    			 $totalrewardpoints[$id] = $total_points_awarded[$id] * $total_qty_ordered."<br />";										
+			}
+            // for total reward points
 			$total_points_earned11 = 0;
-			echo "Total reward points".$totalrewardpoints1 = array_sum($totalrewardpoints);
+            $totalrewardpoints1 = array_sum($totalrewardpoints);
+			//echo "Total reward points".$totalrewardpoints1 = array_sum($totalrewardpoints);
 			//Mage::throwException( Mage::helper('sales')->__($order->getGiftMessageId()." ".$order->getCouponRuleName())  );
 			/* For Total Reward Points */
 			
@@ -586,20 +524,22 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 			
 			if($refpoints > 0)
 			{
-			if($qty_left == $qtytorefund)
-			{
-				$resource1 = Mage::getSingleton('core/resource')->getConnection('core_read');
-				$readresult=$resource1->query("Select SUM(smogi_bucks) as sm from smogi_refund_log where order_id='".$order->getId()."'");
-				$row = $readresult->fetch();
-				Mage::log("total reward points = ".$order->getRewardpoints()."  points given =  ".$row['sm'], null, 'partialrefund.log');
-				$refpoints = $order->getRewardpoints() - $row['sm'];
-			}
-			/*** OrderId applicable ******/	
-			if($order->getId() > Mage::getModel('core/variable')->loadByCode('partial_nonapplicable')->getValue('plain'))
-			{
-			$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $refpoints, $storeIds));
-			}
-			$this->savetodb($order->getId(), $refpoints);
+    			if($qty_left == $qtytorefund)
+    			{
+    				$resource1 = Mage::getSingleton('core/resource')->getConnection('core_read');
+    				$readresult=$resource1->query("Select SUM(smogi_bucks) as sm from smogi_refund_log where order_id='".$order->getId()."'");
+    				$row = $readresult->fetch();
+    				//Mage::log("total reward points = ".$order->getRewardpoints()."  points given =  ".$row['sm'], null, 'partialrefund.log');
+    				$refpoints = $order->getRewardpoints() - $row['sm'];
+    			}
+    			/*** OrderId applicable ******/	
+    			if($order->getId() > Mage::getModel('core/variable')->loadByCode('partial_nonapplicable')->getValue('plain'))
+    			{
+        			/*$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $refpoints, $storeIds));
+                    $this->savetodb($order->getId(), $refpoints);*/
+                    
+                    $sum_reward_points += $refpoints;
+    			}
 			}			
 			$table1 = $resource->getTableName('sales_flat_order_item');
 			$query = "SELECT product_id FROM ".$table1." WHERE order_id = ".$order->getEntityId()." AND product_type = 'simple'";
@@ -629,8 +569,11 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 									{		
 									Mage::log("Adding value reward ".$rewardpoints[$id],null,'partialrefund.log');
 									$total_points_earned11 = $total_points_earned11 + $rewardpoints[$id];
-									$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $rewardpoints[$id], $storeIds));
-									$this->savetodb($order->getId(), (-1 * $rewardpoints[$id]));
+									
+                                    /*$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $rewardpoints[$id], $storeIds));
+									$this->savetodb($order->getId(), (-1 * $rewardpoints[$id]));*/
+                                    
+                                    $sum_reward_points -= $rewardpoints[$id];
 									}
 								}
 								
@@ -638,24 +581,13 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 								}
 							}
 			
-            //$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $total_points_earned, $storeIds));
-			
-				
-			
-			//$points_awarded = Mage::helper('rewardpoints/data')->getProductPoints(Mage::getModel('catalog/product')->load($points_gained),false,false);
-			
-			
-			/* Reward Points Api for Partial Refund Ends */
-			
-			
-			//Mage::throwException( $qty_left."//".$qtytorefund );			
-			if($qty_left == $qtytorefund)
+            if($qty_left == $qtytorefund)
 				{	
 			/*** OrderId applicable ******/	
 			
 			if($order->getId() > Mage::getModel('core/variable')->loadByCode('partial_nonapplicable')->getValue('plain'))
 			{
-				    Mage::log("Complete refund after partial".$total_points_earned11,null,'partialrefund.log');
+				    //Mage::log("Complete refund after partial".$total_points_earned11,null,'partialrefund.log');
 					$state = 'closed';
 					$status = 'closed';
 					$comment = 'Closed';
@@ -668,31 +600,34 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
                    
 					if($ordertotal == 0)
                     {
-                        Mage::log("Order total is 0. Adding points".$total_points_earned11,null,'partialrefund.log');    
+                        //Mage::log("Order total is 0. Adding points".$total_points_earned11,null,'partialrefund.log');    
     					//$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $totalrewardpoints1 , $storeIds)); 
 						if($total_points_earned > 0)
 						{
-						
+						/*
                         $proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $total_points_earned11, $storeIds));
 						
 						$this->savetodb($order->getId(), (-1 * $total_points_earned11));
-						
+						*/
+                        $sum_reward_points -= $total_points_earned11;
 						}
                     
 					}
                     else
                     {
-                        Mage::log("Order total is more than 0. Adding points and removing",null,'partialrefund.log');
+                        //Mage::log("Order total is more than 0. Adding points and removing",null,'partialrefund.log');
                         $refpointstotal = $order->getRewardpoints();
     					if($refpointstotal > 0)
     					{
-    					$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $refpointstotal, $storeIds));
-						$this->savetodb($order->getId(), (-1 * $refpointstotal));
+    					/*$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $refpointstotal, $storeIds));
+						$this->savetodb($order->getId(), (-1 * $refpointstotal));*/
+                        $sum_reward_points -= $refpointstotal;
     					}
     					if ($basediscountamt == 0 )
     					{
-    					$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $totalrewardpoints1, $storeIds));
-						$this->savetodb($order->getId(), $totalrewardpoints1);
+    					/*$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $totalrewardpoints1, $storeIds));
+						$this->savetodb($order->getId(), $totalrewardpoints1);*/
+                        $sum_reward_points += $totalrewardpoints1;
     					}    
                     }
 				}
@@ -703,9 +638,63 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 			
 			
 		}
+        
+        if($sum_reward_points != 0)
+        {
+            if($sum_reward_points < 0)
+            {
+                $sum_reward_points *= -1;
+                $proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $sum_reward_points, $storeIds));
+    			$this->savetodb($order->getId(), (-1 * $sum_reward_points));
+            }
+            else
+            {
+                $proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $sum_reward_points, $storeIds));
+                $this->savetodb($order->getId(), $sum_reward_points);   
+            }    
+        }
+        
+        
+		$order->setBaseTotalRefunded($baseOrderRefund);
+		$order->setTotalRefunded($orderRefund);
+
+		$order->setBaseSubtotalRefunded($order->getBaseSubtotalRefunded()+$this->getBaseSubtotal());
+		$order->setSubtotalRefunded($order->getSubtotalRefunded()+$this->getSubtotal());
+
+		$order->setBaseTaxRefunded($order->getBaseTaxRefunded()+$this->getBaseTaxAmount());
+		$order->setTaxRefunded($order->getTaxRefunded()+$this->getTaxAmount());
+		$order->setBaseHiddenTaxRefunded($order->getBaseHiddenTaxRefunded()+$this->getBaseHiddenTaxAmount());
+		$order->setHiddenTaxRefunded($order->getHiddenTaxRefunded()+$this->getHiddenTaxAmount());
+
+		$order->setBaseShippingRefunded($order->getBaseShippingRefunded()+$this->getBaseShippingAmount());
+		$order->setShippingRefunded($order->getShippingRefunded()+$this->getShippingAmount());
+
+		$order->setBaseShippingTaxRefunded($order->getBaseShippingTaxRefunded()+$this->getBaseShippingTaxAmount());
+		$order->setShippingTaxRefunded($order->getShippingTaxRefunded()+$this->getShippingTaxAmount());
+
+		$order->setAdjustmentPositive($order->getAdjustmentPositive()+$this->getAdjustmentPositive());
+		$order->setBaseAdjustmentPositive($order->getBaseAdjustmentPositive()+$this->getBaseAdjustmentPositive());
+
+		$order->setAdjustmentNegative($order->getAdjustmentNegative()+$this->getAdjustmentNegative());
+		$order->setBaseAdjustmentNegative($order->getBaseAdjustmentNegative()+$this->getBaseAdjustmentNegative());
+
+		$order->setDiscountRefunded($order->getDiscountRefunded()+$this->getDiscountAmount());
+		$order->setBaseDiscountRefunded($order->getBaseDiscountRefunded()+$this->getBaseDiscountAmount());
 		
 		
-		
+		 if ($this->getInvoice()) {
+			$this->getInvoice()->setIsUsedForRefund(true);
+			$this->getInvoice()->setBaseTotalRefunded(
+				$this->getInvoice()->getBaseTotalRefunded() + $this->getBaseGrandTotal()
+			);
+			$this->setInvoiceId($this->getInvoice()->getId());
+		}
+
+		if (!$this->getPaymentRefundDisallowed()) {
+			$order->getPayment()->refund($this);
+		}
+		Mage::dispatchEvent('sales_order_creditmemo_refund', array($this->_eventObject=>$this));
+		return $this;
     }
 	
     /**
