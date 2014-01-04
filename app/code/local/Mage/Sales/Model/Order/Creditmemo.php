@@ -639,6 +639,12 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
 			
 		}
         
+		$totrew_zeroorder = $order->getRewardpoints();
+		if(($qty_left == $qtytorefund) && $ordertotal == 0)
+		{
+		$sum_reward_points -= $totrew_zeroorder;
+		}
+		
         if($sum_reward_points != 0)
         {
             if($sum_reward_points < 0)
@@ -653,7 +659,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
                 $this->savetodb($order->getId(), $sum_reward_points);   
             }    
         }
-        
+		
         
 		$order->setBaseTotalRefunded($baseOrderRefund);
 		$order->setTotalRefunded($orderRefund);

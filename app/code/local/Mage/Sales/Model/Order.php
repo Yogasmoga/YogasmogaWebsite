@@ -638,7 +638,10 @@ class Mage_Sales_Model_Order extends Mage_Sales_Model_Abstract
          * TotalPaid - contains amount, that were not rounded.
          */
         
-        if($this->getTotalPaid() > 0)
+		if($this->getState() !== self::STATE_PROCESSING)
+			return false;
+		
+        if($this->getTotalPaid() > 0) 
         {
             if (abs($this->getStore()->roundPrice($this->getTotalPaid()) - $this->getTotalRefunded()) < .0001) {
                 return false;
@@ -2097,6 +2100,11 @@ class Mage_Sales_Model_Order extends Mage_Sales_Model_Abstract
             if (0 == $this->getBaseGrandTotal() || $this->canCreditmemo()) {
                 if ($this->getState() !== self::STATE_COMPLETE) {
                     $this->_setState(self::STATE_COMPLETE, true, '', $userNotification);
+                }
+            }
+			 if (0 == $this->getBaseGrandTotal() && !$this->canCreditmemo()) {
+                if ($this->getState() !== self::STATE_COMPLETE) {
+                    $this->_setState(self::STATE_CLOSED, true, '', $userNotification);
                 }
             }
             /**
