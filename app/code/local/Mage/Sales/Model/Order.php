@@ -637,8 +637,8 @@ class Mage_Sales_Model_Order extends Mage_Sales_Model_Abstract
          * for this we have additional diapason for 0
          * TotalPaid - contains amount, that were not rounded.
          */
-        
-        if($this->getTotalPaid() > 0)
+        Mage::log($this->getTotalPaid(), null, 'partial.log');
+        if(abs($this->getStore()->roundPrice($this->getTotalPaid()) - $this->getTotalRefunded()) != 0)
         {
             if (abs($this->getStore()->roundPrice($this->getTotalPaid()) - $this->getTotalRefunded()) < .0001) {
                 return false;
