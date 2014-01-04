@@ -641,7 +641,7 @@ class Mage_Sales_Model_Order extends Mage_Sales_Model_Abstract
 		if($this->getState() !== self::STATE_PROCESSING)
 			return false;
 		
-        if($this->getTotalPaid() > 0) 
+        if(abs($this->getStore()->roundPrice($this->getTotalPaid()) - $this->getTotalRefunded()) != 0)
         {
             if (abs($this->getStore()->roundPrice($this->getTotalPaid()) - $this->getTotalRefunded()) < .0001) {
                 return false;
