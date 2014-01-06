@@ -1368,6 +1368,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
                     }       
                 }
             }
+            $sum_smogi_customization = round($sum_smogi_customization);
             if($sum_smogi_customization != 0)
             {
                 $proxy = new SoapClient(Mage::getBaseUrl().'api/soap/?wsdl');
