@@ -1236,7 +1236,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                             $html.= '</div>';
                             $html.= '<img id="closesmlight" src='. $this->getSkinUrl("images/catalog/product/close_opaque.png").' />';
                             $html.= '</div>
-                                        <a class="size-link" href="javascript:viod(0);">Alexi is 5&apos;'.'10". She is wearing<br />size 4 in tops and bottoms.</a>
+                                        <a class="size-link" href="javascript:viod(0);">Ally is 5&apos;'.'8". She is wearing<br />size 6 in tops and bottoms.</a>
                                     </div>
                                     <div class="dressingroomoptions">
                                         Body Type&nbsp;&nbsp;
