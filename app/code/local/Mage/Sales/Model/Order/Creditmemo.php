@@ -426,6 +426,79 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
                 Mage::helper('sales')->__('Maximum amount available to refund is %s', $this->getOrder()->formatBasePrice($baseAvailableRefund))
             );
         }
+        
+        //$order = $this->getOrder();
+//        $qtytorefund = Mage::getSingleton('core/session')->getQtyToRef();
+//		$qty_ordered = $order->getTotalQtyOrdered();
+//        $totrew = $order->getRewardpoints();
+//        $itemids = "";
+//        foreach ($this->getItemsCollection() as $item) {
+//            $itemids .= $item."-";
+//        }
+//        $itemcount = Mage::getSingleton('core/session')->getitemcount();
+        //Mage::throwException( Mage::helper('sales')->__('Qty refunding = '.$qtytorefund."<br/>Total Qty ordered = ".$qty_ordered."<br/>Reward Points Used = ".$totrew."<br/>Item collection = ".$itemids."<br/>Items Refunding = ".$itemcount));
+        
+        $order = $this->getOrder();
+        $order->setBaseTotalRefunded($baseOrderRefund);
+        $order->setTotalRefunded($orderRefund);
+
+        $order->setBaseSubtotalRefunded($order->getBaseSubtotalRefunded()+$this->getBaseSubtotal());
+        $order->setSubtotalRefunded($order->getSubtotalRefunded()+$this->getSubtotal());
+
+        $order->setBaseTaxRefunded($order->getBaseTaxRefunded()+$this->getBaseTaxAmount());
+        $order->setTaxRefunded($order->getTaxRefunded()+$this->getTaxAmount());
+        $order->setBaseHiddenTaxRefunded($order->getBaseHiddenTaxRefunded()+$this->getBaseHiddenTaxAmount());
+        $order->setHiddenTaxRefunded($order->getHiddenTaxRefunded()+$this->getHiddenTaxAmount());
+
+        $order->setBaseShippingRefunded($order->getBaseShippingRefunded()+$this->getBaseShippingAmount());
+        $order->setShippingRefunded($order->getShippingRefunded()+$this->getShippingAmount());
+
+        $order->setBaseShippingTaxRefunded($order->getBaseShippingTaxRefunded()+$this->getBaseShippingTaxAmount());
+        $order->setShippingTaxRefunded($order->getShippingTaxRefunded()+$this->getShippingTaxAmount());
+
+        $order->setAdjustmentPositive($order->getAdjustmentPositive()+$this->getAdjustmentPositive());
+        $order->setBaseAdjustmentPositive($order->getBaseAdjustmentPositive()+$this->getBaseAdjustmentPositive());
+
+        $order->setAdjustmentNegative($order->getAdjustmentNegative()+$this->getAdjustmentNegative());
+        $order->setBaseAdjustmentNegative($order->getBaseAdjustmentNegative()+$this->getBaseAdjustmentNegative());
+
+        $order->setDiscountRefunded($order->getDiscountRefunded()+$this->getDiscountAmount());
+        $order->setBaseDiscountRefunded($order->getBaseDiscountRefunded()+$this->getBaseDiscountAmount());
+
+        if ($this->getInvoice()) {
+            $this->getInvoice()->setIsUsedForRefund(true);
+            $this->getInvoice()->setBaseTotalRefunded(
+                $this->getInvoice()->getBaseTotalRefunded() + $this->getBaseGrandTotal()
+            );
+            $this->setInvoiceId($this->getInvoice()->getId());
+        }
+
+        if (!$this->getPaymentRefundDisallowed()) {
+            $order->getPayment()->refund($this);
+        }
+
+        Mage::dispatchEvent('sales_order_creditmemo_refund', array($this->_eventObject=>$this));
+        return $this;
+    }
+    
+    public function refund1()
+    {
+        $this->setState(self::STATE_REFUNDED);
+        $orderRefund = Mage::app()->getStore()->roundPrice(
+            $this->getOrder()->getTotalRefunded()+$this->getGrandTotal()
+        );
+        $baseOrderRefund = Mage::app()->getStore()->roundPrice(
+            $this->getOrder()->getBaseTotalRefunded()+$this->getBaseGrandTotal()
+        );
+
+        if ($baseOrderRefund > Mage::app()->getStore()->roundPrice($this->getOrder()->getBaseTotalPaid())) {
+
+            $baseAvailableRefund = $this->getOrder()->getBaseTotalPaid()- $this->getOrder()->getBaseTotalRefunded();
+
+            Mage::throwException(
+                Mage::helper('sales')->__('Maximum amount available to refund is %s', $this->getOrder()->formatBasePrice($baseAvailableRefund))
+            );
+        }
         $order = $this->getOrder();
 		
         ///Begins our custom code for refunding SMOGI Bucks
@@ -808,7 +881,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
         if (is_null($state)) {
             $this->setState(self::STATE_OPEN);
         }
-	
+	       
         return $this;
 		
 		
@@ -1134,6 +1207,193 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
      *
      * @return Mage_Sales_Model_Order_Creditmemo
      */
+     
+    function islastcreditmemo($orderId, $creditmemoid, $first)
+    {
+        $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+        
+        $readresult=$read->query("Select entity_id from sales_flat_creditmemo where order_id=".$orderId);
+        $creditmemoids = "";
+        $creditmemocount = 0;
+        while ($row = $readresult->fetch() ) {
+            $creditmemoids .= $row['entity_id'].",";
+            $creditmemocount++;
+        }
+        $creditmemoids = substr($creditmemoids,0,strlen($creditmemoids) - 1);
+        
+        $readresult=$read->query("Select SUM(qty) as cnt from sales_flat_creditmemo_item where parent_id IN (".$creditmemoids.") and row_total IS NOT NULL");
+        $row = $readresult->fetch();
+        $order = Mage::getModel('sales/order')->load($orderId);
+        Mage::log("Credit memo item count =".$row['cnt']."<br/> Order item count = ".$order->getTotalQtyOrdered(), null, 'partial_ankit.log');
+        if($row['cnt'] != $order->getTotalQtyOrdered())
+            return false;
+        if($first && $creditmemocount != 1)
+        {
+            //$readresult=$read->query("Select Count(entity_id) as cnt from sales_flat_creditmemo where order_id=".$orderId);
+//            $row = $readresult->fetch();
+//            if($row['cnt'] != 1)
+                return false;
+        }
+        return true;
+        
+        //$read = Mage::getSingleton('core/resource')->getConnection('core_read');
+//        $readresult=$read->query("Select Count(entity_id) as cnt from sales_flat_creditmemo where order_id=".$orderId);
+//        $row = $readresult->fetch();
+//        if($row['cnt'] == 1)
+//        {
+//            $readresult=$read->query("Select SUM(qty) as cnt from sales_flat_creditmemo_item where parent_id=".$creditmemoid." and row_total IS NOT NULL");
+//            $row = $readresult->fetch();
+//            $order = Mage::getModel('sales/order')->load($orderId);
+//            Mage::log("Credit memo item count =".$row['cnt']."<br/> Order item count = ".$order->getTotalQtyOrdered(), null, 'partial_ankit.log');
+//            if($row['cnt'] != $order->getTotalQtyOrdered())
+//                return false;
+//        }
+//        else
+//            return false;
+//        return true;
+    }
+    
+    function getorderstatus($orderid)
+    {
+        $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+        $readresult=$read->query("Select state from sales_flat_order where entity_id=".$orderid);
+        $row = $readresult->fetch();
+        return $row['state'];
+    }
+    
+    function issmogiused($orderid)
+    {
+        $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+        $readresult=$read->query("Select rewardpoints_quantity from sales_flat_order where entity_id=".$orderid);
+        $row = $readresult->fetch();
+        Mage::log("Reward Points Quantity ".$row['rewardpoints_quantity'], null, 'partial_ankit.log');
+        if($row['rewardpoints_quantity'] > 0)
+            return true;
+        else
+            return false;
+    }
+    
+    function isdiscountused($orderid)
+    {
+        $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+        $readresult=$read->query("Select base_discount_amount from sales_flat_order where entity_id=".$orderid);
+        $row = $readresult->fetch();
+        Mage::log("Base discount amount ".$row['base_discount_amount'], null, 'partial_ankit.log');
+        if($row['base_discount_amount'] < 0)
+            return true;
+        else
+            return false;
+    }
+    
+    function getcustomaddedsmogis($orderid)
+    {
+        $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+        $readresult=$read->query("Select SUM(smogi_bucks) as cnt from smogi_refund_log where order_id=".$orderid);
+        $row = $readresult->fetch();
+        Mage::log("Cutom Point added uptil now = ".$row['cnt'], null, 'partial_ankit.log');
+        return $row['cnt'];
+    }
+    
+    function getmemodiscountamount($creditmemoid)
+    {
+        $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+        $readresult=$read->query("Select base_discount_amount from sales_flat_creditmemo where entity_id=".$creditmemoid);
+        $row = $readresult->fetch();
+        Mage::log("Credit Memo Discount Amount = ".$row['base_discount_amount'], null, 'partial_ankit.log');
+        return $row['base_discount_amount'];
+    }
+    
+    function calculateearnedpoints($creditmemoid)
+    {
+        $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+        $readresult=$read->query("Select qty, product_id from sales_flat_creditmemo_item where parent_id=".$creditmemoid." and row_total IS NOT NULL");
+        $sum = 0;
+        while ($row = $readresult->fetch() ) {
+            Mage::log("Credit Memo Item ::  Product Id = ".$row['product_id']."  Qty = ".$row['qty']."  Points earned per unit = ".Mage::helper('rewardpoints/data')->getProductPoints(Mage::getModel('catalog/product')->load($row['product_id']),false,false), null, 'partial_ankit.log');    
+            $sum += Mage::helper('rewardpoints/data')->getProductPoints(Mage::getModel('catalog/product')->load($row['product_id']),false,false) * $row['qty'];               
+        }
+        return $sum;
+    }
+    
+    /*
+    IF(!FULL_REFUND_AT_ONCE)
+    {
+    	IF(LAST_REFUND && SMOGI_BUCKS_USED_AS_DISCOUNT)
+    	{
+    		REVERT THE SMOGI BUCKS ADDED/REMOVED BEFORE.
+    	}
+    	ELSE
+    	{
+    		IF(SMOGI_BUCKS_USED_AS_DISCOUNT)
+    		{
+    			ADD THE SMOGI_BUCKS_USED_AS_DISCOUNT BACK TO USER.
+    		}
+    		ELSE
+    		{
+    			IF(!DISCOUNT_USED)
+    			{
+    				EXTRACT SMOGI_BUCKS_EARNED FROM USER. //EARNED ON THE ITEMS TO BE REFUNDED
+    			}
+    		}
+    	}
+    }
+    */
+    
+    
+    function refundsmogibucks($creditmemoid, $orderid)
+    {
+        Mage::log("\n\n\n\n\nCredit Memo Id =".$creditmemoid, null, 'partial_ankit.log');
+        Mage::log("Order Id =".$orderid, null, 'partial_ankit.log');
+        if(!$this->islastcreditmemo($orderid, $creditmemoid, true)) //FOR FULL REFUND AT ONCE NO PROCESSING IS REQUIRED
+        {
+            $sum_smogi_customization = 0; //Variable to hold the customizations
+            if($this->islastcreditmemo($orderid, $creditmemoid, false)) //IF LAST REFUND AFTER REFUNDS AND SMOGI BUCKS USED
+            {
+                Mage::log("THIS IS THE LAST REFUND. REVERTING BACK ".$this->getcustomaddedsmogis($orderid)." BUCKS", null, 'partial_ankit.log');
+                $sum_smogi_customization -= $this->getcustomaddedsmogis($orderid);
+            }
+            else
+            {
+                if($this->issmogiused($orderid))
+                {
+                    Mage::log("THIS IS NOT THE LAST REFUND. ADDING ".$this->getmemodiscountamount($creditmemoid)." BUCKS", null, 'partial_ankit.log');    
+                    $sum_smogi_customization += $this->getmemodiscountamount($creditmemoid);
+                }
+                else
+                {
+                    if(!$this->isdiscountused($orderid))
+                    {
+                        Mage::log("NO DISCOUNTS USED ON THIS ORDER. TAKING BACK ".$this->calculateearnedpoints($creditmemoid)." BUCKS", null, 'partial_ankit.log');    
+                        $sum_smogi_customization -= $this->calculateearnedpoints($creditmemoid);
+                    }       
+                }
+            }
+            if($sum_smogi_customization != 0)
+            {
+                $proxy = new SoapClient(Mage::getBaseUrl().'api/soap/?wsdl');
+        		$sessionId = $proxy->login('mobikasadeveloper', 'developerkey');
+                $order = $this->getOrder();
+        		$customer_id = $order->getCustomerId();
+        		$storeIds = 1;
+                if($sum_smogi_customization < 0)
+                {
+                    $sum_smogi_customization *= -1;
+                    $proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $sum_smogi_customization, $storeIds));
+        			$this->savetodb($order->getId(), (-1 * $sum_smogi_customization));
+                }
+                else
+                {
+                    $proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $sum_smogi_customization, $storeIds));
+                    $this->savetodb($order->getId(), $sum_smogi_customization);
+                }
+            }            
+        }
+        else
+        {
+            Mage::log("FULL REFUND AT ONCE. NO PROCESSING REQUIRED.", null, 'partial_ankit.log');
+        }
+    }
+     
     protected function _afterSave()
     {
         if (null != $this->_items) {
@@ -1148,7 +1408,26 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
             }
         }
 		
-		
+        //Mage::log("\n\n\n\n\nCredit Memo Id =".$this->getId(), null, 'partial_ankit.log');
+        $order = $this->getOrder();
+        //Mage::log("Order Id =".$order->getId(), null, 'partial_ankit.log');
+        $this->refundsmogibucks($this->getId(), $order->getId());
+        //$read = Mage::getSingleton('core/resource')->getConnection('core_read');
+//        $readresult=$read->query("Select order_id from sales_flat_creditmemo where entity_id=".$this->getId());
+//        $row = $readresult->fetch();
+        
+        
+        
+        
+        
+        //$order = $this->getOrder();
+//        $qtytorefund = Mage::getSingleton('core/session')->getQtyToRef();
+//		$qty_ordered = $order->getTotalQtyOrdered();
+//        $totrew = $order->getRewardpoints();
+//        Mage::log('Qty refunding = '.$qtytorefund."<br/>Total Qty ordered = ".$qty_ordered."<br/>Reward Points Used = ".$totrew, null, 'partial.log');
+        //Mage::throwException( Mage::helper('sales')->__('Qty refunding = '.$qtytorefund."<br/>Total Qty ordered = ".$qty_ordered."<br/>Reward Points Used = ".$totrew));		
+        
+        
         return parent::_afterSave();
     }
 
