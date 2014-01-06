@@ -1207,5 +1207,166 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         <img id="closelightbox" src="<?php echo $this->getSkinUrl('images/catalog/product/close1.png'); ?>" />
         <?php
     }
+
+    //code for dressing
+
+    public function dressingBlockUpdateAction()
+    {
+     if($this->getRequest()->getParam('dressing') != 'false')
+        {
+
+    $dressingroomitems = explode("\n", strip_tags($this->getLayout()->createBlock('cms/block')->setBlockId("Women_Dressing_Room1")->toHtml()));
+    $model = Mage::getModel('catalog/product');
+    $dressImgPath = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."wysiwyg/dressingroom/new/";
+
+
+    ?>
+
+<?php $html='
+
+    <div id="Dressingroom" desc="Dressing Room" class="pgsection mainshoppingbg" tw-summary="Check out YOGASMOGA&apos; '.'s cool Dressing Room">
+        <div class="myheader" style="padding-bottom: 10px;">DRESSING ROOM</div>
+        <div class="dressingroomsubheader1">Here is our dressing room; navigate through our tops and bottoms using the arrows on the side.</div>
+        <div class="dressingroomsubheader">Please select your body type and browse through<br />our YOGASMOGA collection.</div>
+        <div id="drsizechart" class="sizeChart">
+            <div id="sizechart" style="left:0">
+                <div class="light-conent-box">';?>
+                    <?php
+                            $html.= $this->getLayout()->createBlock('cms/block')->setBlockId('size_chart')->toHtml();
+                            $html.= '</div>';
+                            $html.= '<img id="closesmlight" src='. $this->getSkinUrl("images/catalog/product/close_opaque.png").' />';
+                            $html.= '</div>
+                                        <a class="size-link" href="javascript:viod(0);">Ally is 5&apos;'.'8". She is wearing<br />size 6 in tops and bottoms.</a>
+                                    </div>
+                                    <div class="dressingroomoptions">
+                                        Body Type&nbsp;&nbsp;
+                                        <select id="dressingroomoptions">
+                                            <!-- <option selected="selected">Slender</option>
+                                            <option>Other Types</option> -->
+                                        </select>
+                                    </div>
+                                    <div id="dressingroomholder" actheight="756">
+                                        <div id="dressingroomtop" actheight="305">
+                                            <div class="ovl-box"></div>';
+
+                $topCount = 0;
+                $botCount = 0;
+                for($i = 1; $i < count($dressingroomitems); $i++){
+                    $detail = explode("|", $dressingroomitems[$i]);
+                    $product = $model->load(trim($detail[3]));
+                    if(trim($detail[0]) == "top"){
+                        $topCount++;
+                    }else{
+                        $botCount++;
+                    }
+                }
+                $k = 0;
+                for($i = 1; $i < count($dressingroomitems); $i++){
+                    $detail = explode("|", $dressingroomitems[$i]);
+                    $product = $model->load(trim($detail[3]));
+                    if(trim($detail[0]) == "top"){
+                        $k++;
+
+                $html.=    '<div class="dritem" botpos=" intval(strip_tags($detail[6]))+8; ">
+                            <div class="dressing-img">';
+
+                                if($k == 1)
+                                {
+                                   $html.= '<img alt="'.html_entity_decode($product->getName().'" - "'.$detail[7]).'" width="'.trim(strip_tags($detail[4])).'" height="'.trim(strip_tags($detail[5])).'" style="margin-left:-'. intval(strip_tags($detail[4]))/2 . 'px" src="'. $dressImgPath.trim($detail[2]).'" loaded="1" />';
+
+                                }
+                                else
+                                {
+
+                                    $html.= '<img alt="'. html_entity_decode($product->getName().'" - "'.$detail[7]).'" width="'. trim(strip_tags($detail[4])).'" height="'. trim(strip_tags($detail[5])).'" style="margin-left:-'. intval(strip_tags($detail[4]))/2 .'px;" realsrc="'. $dressImgPath.trim($detail[2]).'" src="" loaded="0" onload="drimgloaded(this);" />';
+
+                                }
+
+                $html.='    </div>
+                            <div class="productdetail">
+                                <div class="detail-box">
+                                    <div class="productcount">
+                                        <div class="current">'. $k .'</div>
+                                        <div class="totalcountregion">
+                                            <div class="totalcount">'. $topCount.'</div>
+                                        </div>
+                                    </div>
+                                    <div class="productname">'. trim($product->getName()) .'</div>
+                                    <div class="productdescription">'. trim($product->getShortDescription()).'</div>
+                                    <div class="viewdetails spbutton" color="'. trim(strip_tags($detail[7])).'" pid="'. trim(strip_tags($detail[6])).'" imageurl="'. $this->getSkinUrl("images/catalog/product/dressingroom/view_details_off.png") .' " downimageurl=" '. $this->getSkinUrl("images/catalog/product/dressingroom/view_details_on.png") .'">View Details
+                                    </div>
+                                    <a href="#productgrid" class="grid-link">View All Products ></a>
+                                </div>
+                            </div>
+                        </div>';
+                     }
+                }
+                $html.='<a class="prevBtn" href="javascript:void(0);">Prev</a>
+                       <a class="nextBtn" href="javascript:void(0);">Next</a>
+                    </div>
+                    <div id="dressingroomdivider">&nbsp;</div>
+                    <div id="dressingroombottom" actheight="450">
+                        <div class="ovl-box"></div>';
+
+                $j = 0;
+                for($i = 1; $i < count($dressingroomitems); $i++){
+                    $detail = explode("|", $dressingroomitems[$i]);
+                    $product = $model->load(trim($detail[3]));
+                    if(trim($detail[0]) == "bottom"){
+                        $j++;
+
+            $html.= '<div class="dritem">
+                     <div class="dressing-img">';
+
+                                if($j == 1)
+                                {
+
+                                    $html.= '<img alt="'. html_entity_decode($product->getName().'" - "'.$detail[7]).'" width="'. trim(strip_tags($detail[4])).'" height="'. trim(strip_tags($detail[5])).'"  style="margin-left:-'. intval(strip_tags($detail[4]))/2 .'px;" src="'. $dressImgPath.trim($detail[2]).'" loaded="1" />';
+
+                                }
+                                else
+                                {
+
+                                    $html.= '<img alt="'. html_entity_decode($product->getName().'" - "'.$detail[7]).'" width="'. trim(strip_tags($detail[4])).'" height="'. trim(strip_tags($detail[5])).'"  style="margin-left:-'. intval(strip_tags($detail[4]))/2 .'px;" realsrc="'. $dressImgPath.trim($detail[2]) .'" src="" loaded="0" onload="drimgloaded(this);" />';
+
+                                }
+
+            $html.= '       </div>
+                            <div class="productdetail">
+                                <div class="productcount">
+                                    <div class="current">'. $j.'</div>
+                                    <div class="totalcountregion">
+                                        <div class="totalcount">'. $botCount.'</div>
+                                    </div>
+                                </div>
+                                <div class="productname">'. trim($product->getName()).'</div>
+                                <div class="productdescription">'. trim($product->getShortDescription()).'</div>
+                                <div class="viewdetails spbutton" color="'. trim(strip_tags($detail[7])).'" pid="'. trim(strip_tags($detail[6])).'" imageurl="'. $this->getSkinUrl("images/catalog/product/dressingroom/view_details_off.png").' " downimageurl="'. $this->getSkinUrl("images/catalog/product/dressingroom/view_details_on.png") .'">View Details
+                                </div>
+                                <a href="#productgrid" class="grid-link">View All Products ></a>
+                            </div>
+                        </div>';
+                     }
+                }
+            $html.= '    <a class="prevBtn" href="javascript:void(0);">Prev</a>
+                <a class="nextBtn" href="javascript:void(0);">Next</a>
+            </div>
+            <div class="doverlay">&nbsp;</div>
+        </div>
+    </div>
+    <div style="display:none;">
+        <div id="productdetailpopup">
+        </div>
+    </div>';
+
+        }
+        $identifier = 'dressingUpdate';
+    Mage::getModel('cms/block')
+    ->load($identifier, 'identifier')
+    ->setData('content', $html)
+    ->save();
+// echo $html;
+// echo 'saved';
+    }
 }
 ?>
