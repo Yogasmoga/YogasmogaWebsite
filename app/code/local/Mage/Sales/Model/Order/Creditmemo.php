@@ -1368,6 +1368,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
                     }       
                 }
             }
+            $sum_smogi_customization = round($sum_smogi_customization);
             if($sum_smogi_customization != 0)
             {
                 $proxy = new SoapClient(Mage::getBaseUrl().'api/soap/?wsdl');
@@ -1411,7 +1412,8 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
         //Mage::log("\n\n\n\n\nCredit Memo Id =".$this->getId(), null, 'partial_ankit.log');
         $order = $this->getOrder();
         //Mage::log("Order Id =".$order->getId(), null, 'partial_ankit.log');
-        $this->refundsmogibucks($this->getId(), $order->getId());
+        if($order->getId() > Mage::getModel('core/variable')->loadByCode('partial_nonapplicable')->getValue('plain'))
+            $this->refundsmogibucks($this->getId(), $order->getId());
         //$read = Mage::getSingleton('core/resource')->getConnection('core_read');
 //        $readresult=$read->query("Select order_id from sales_flat_creditmemo where entity_id=".$this->getId());
 //        $row = $readresult->fetch();
