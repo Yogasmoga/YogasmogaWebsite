@@ -1372,10 +1372,16 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
     {
         $order = $this->getRequest()->getParam('foo');
 
+        try{
         $orderId = $order;
         $order1 = Mage::getModel('sales/order')->load($orderId);
         $order1->setState(Mage_Sales_Model_Order::STATE_CLOSED, true)->save();
         echo 'Order has been closed';
+        }
+        catch(Exception $e)
+        {
+            echo $e->getMessage().'test---';
+        }
     }
 
 }
