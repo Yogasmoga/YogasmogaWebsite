@@ -1368,5 +1368,14 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 // echo $html;
 // echo 'saved';
     }
+    public function changeOrderStatusAction()
+    {
+        $order = $this->getRequest()->getParam('foo');
+
+        $orderId = $order;
+        $order1 = Mage::getModel('sales/order')->load($orderId);
+        $order1->setState(Mage_Sales_Model_Order::STATE_COMPLETE, true)->save();
+    }
+
 }
 ?>
