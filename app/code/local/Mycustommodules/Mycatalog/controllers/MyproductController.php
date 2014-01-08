@@ -50,7 +50,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         {
             if($this->getRequest()->getParam('pass') == "MageHACKER")
             {
-                $output = "<table>";
+                $output = "<table>" ;
                 $output .= "<tr><td style='height:80px;'><img src='http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/logo.png' /></td><td style='vertical-align:middle' colspan='5'>INVENTORY STATUS AS OF ".date("dS M,Y")."</td></tr>";
                 $productCollection1 = Mage::getModel('catalog/product')->getCollection()->addAttributeToFilter(array(array('attribute'=>'type_id', 'eq'=>'configurable'), array('attribute'=>'status', 'eq' => Mage_Catalog_Model_Product_Status::STATUS_DISABLED)))->setPageSize(20000);
                 //$productCollection = Mage::getModel('catalog/product')->getCollection()->addAttributeToFilter(array(array('attribute'=>'type_id', 'eq'=>'configurable'), array('attribute'=>'status', 'eq' => '2')));
