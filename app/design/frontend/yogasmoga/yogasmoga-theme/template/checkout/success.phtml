@@ -39,6 +39,19 @@ $moptions = "iPhone--iPod--BlackBerry--Palm--Googlebot-Mobile--mobi--Windows Mob
 $write = Mage::getSingleton('core/resource')->getConnection('core_write');
 $write->query("insert into order_by_device (order_num,is_mobile,user_agent) values 
 ('$ord_num','$ismobile','$usr_agent')");
+
+$readresult=$write->query("SELECT COUNT(entity_id) AS cnt, customer_email,base_grand_total FROM sales_flat_order WHERE customer_id=(SELECT customer_id FROM sales_flat_order WHERE increment_id='".$ord_num."')");
+$row = $readresult->fetch();
+if($row['cnt'] == 1)
+{
+    ?>
+    <script type="text/javascript">
+    jQuery(document).ready(function(){
+        _gaq.push(['_trackEvent', 'First Time Buyer', 'Purchase', '<?php echo $row['customer_email'] ?>','<?php echo number_format($row['base_grand_total'],2) ?>']);
+    });
+    </script>
+    <?php
+}
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" media="all" />
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/myaccount.css'); ?>" media="all" />
