@@ -44,7 +44,7 @@ class Mage_Catalog_Block_Product_View extends Mage_Catalog_Block_Product_Abstrac
         foreach($moptions as $opt)
         {
             //$session->addError($opt."x,");
-            if(strpos(Mage::helper('core/http')->getHttpUserAgent(), $opt))
+            if(strpos(Mage::helper('core/http')->getHttpUserAgent(), $opt) !== false)
                 $ismobile = true;
         }
         if(!$ismobile)
