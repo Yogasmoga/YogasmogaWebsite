@@ -1318,7 +1318,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
     /*
     IF(!FULL_REFUND_AT_ONCE)
     {
-    	IF(LAST_REFUND && SMOGI_BUCKS_USED_AS_DISCOUNT)
+    	IF(LAST_REFUND)
     	{
     		REVERT THE SMOGI BUCKS ADDED/REMOVED BEFORE.
     	}
@@ -1347,7 +1347,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
         if(!$this->islastcreditmemo($orderid, $creditmemoid, true)) //FOR FULL REFUND AT ONCE NO PROCESSING IS REQUIRED
         {
             $sum_smogi_customization = 0; //Variable to hold the customizations
-            if($this->islastcreditmemo($orderid, $creditmemoid, false)) //IF LAST REFUND AFTER REFUNDS AND SMOGI BUCKS USED
+            if($this->islastcreditmemo($orderid, $creditmemoid, false)) //IF LAST REFUND AFTER REFUND
             {
                 Mage::log("THIS IS THE LAST REFUND. REVERTING BACK ".$this->getcustomaddedsmogis($orderid)." BUCKS", null, 'partial_ankit.log');
                 $sum_smogi_customization -= $this->getcustomaddedsmogis($orderid);
