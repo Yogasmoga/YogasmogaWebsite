@@ -25,6 +25,27 @@
  */
 ?>
 <?php 
+$quoteId = Mage::getModel('sales/order')->loadByIncrementId($this->getOrderId())->getQuoteId();
+$quote = Mage::getModel('sales/quote')->load($quoteId);
+$method = $quote->getCheckoutMethod(true);
+if ($method == 'register'){
+?>
+<script type="text/javascript">
+var fb_param = {};
+		fb_param.pixel_id = "6014024174346";
+		fb_param.value = "0.00";
+		fb_param.currency = "USD";
+		(function(){
+		  var fpw = document.createElement("script");
+		  fpw.async = true;
+		  fpw.src = "//connect.facebook.net/en_US/fp.js";
+		  var ref = document.getElementsByTagName("script")[0];
+		  ref.parentNode.insertBefore(fpw, ref);
+		})();
+</script>
+<?php
+}
+
 $ord_num = $this->getOrderId();
 $moptions = "iPhone--iPod--BlackBerry--Palm--Googlebot-Mobile--mobi--Windows Mobile--Safari Mobile--Android--Opera Mini"; 
         $moptions = split("--", $moptions);
