@@ -638,7 +638,7 @@ class Mage_Sales_Model_Order extends Mage_Sales_Model_Abstract
          * TotalPaid - contains amount, that were not rounded.
          */
         
-		if($this->getState() !== self::STATE_PROCESSING)
+		if($this->getStatus() == 'pending')
 			return false;
 		
         if(abs($this->getStore()->roundPrice($this->getTotalPaid()) - $this->getTotalRefunded()) != 0)
