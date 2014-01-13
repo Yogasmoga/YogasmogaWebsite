@@ -120,9 +120,16 @@ function showproductlightbox(productid){
     productid = parseInt(productid);
     jQuery("#productdetailpopup").html("<table style='width:100%;height : 530px;'><tr><td style='text-align:center;vertical-align:middle;'><img src='/skin/frontend/yogasmoga/yogasmoga-theme/images/loading.gif' /></td></tr></table>");
     jQuery( "#productdetailpopup" ).dialog( "open" );
+    if(window.location.href.indexOf('https://') >= 0)
+        _usesecureurl = true;
+    else
+        _usesecureurl = false;
+    var url = homeUrl + 'mycatalog/myproduct/details';
+    if(_usesecureurl)
+        url = securehomeUrl + 'mycatalog/myproduct/details';
     jQuery.ajax({
         type : 'POST',
-        url : homeUrl + 'mycatalog/myproduct/details',
+        url : url,
         data : {'id': productid},
         success : function(data){
             jQuery("#productdetailpopup").html(data);
