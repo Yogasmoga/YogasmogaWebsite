@@ -318,7 +318,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     echo "Invalid Date";
                     return;
                 }
-                $enddate = $datearr[2]."-".$datearr[0]."-".$datearr[1];
+                $enddate = $datearr[2]."-".$datearr[0]."-".$datearr[1]." 23:59:59";
                 //echo $date;
 //                return;
                 $output = "<table border='1'><thead><tr><th>Order#</th>
@@ -478,7 +478,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     echo "Invalid Date";
                     return;
                 }
-                $enddate = $datearr[2]."-".$datearr[0]."-".$datearr[1];
+                $enddate = $datearr[2]."-".$datearr[0]."-".$datearr[1]." 23:59:59";
 			
 			/* Order date code */
                 
