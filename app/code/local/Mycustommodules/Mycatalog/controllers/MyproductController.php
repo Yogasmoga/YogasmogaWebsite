@@ -440,10 +440,10 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     }
 
                 }
-                echo $output;
-//                $fname = mktime();
-//                file_put_contents('customreports/'.$fname.'.xls',$output);
-//                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");
+//                echo $output;
+                $fname = mktime();
+                file_put_contents('customreports/'.$fname.'.xls',$output);
+                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");
             }
             else
                 echo "Invalid Password";
