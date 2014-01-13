@@ -45,6 +45,7 @@
     foreach ($methods as $_method):
         $_code = $_method->getCode();
 ?>
+    <?php if($_code=='cashondelivery'){ continue; }?>
     <dt>
     <?php if(!$oneMethod): ?>
         <?php if($grandtotal <= 0) continue; ?>
