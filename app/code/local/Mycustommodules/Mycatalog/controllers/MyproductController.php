@@ -363,7 +363,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     {
                         $emailtotest = $row['email']; 
                     }
-                    if(stripos($emailtotest,"mobikasa.com") !== false || $emailtotest == "mangat.c@gmail.com")
+                    if(stripos($emailtotest,"mobikasa.com") !== false || $emailtotest == "mangat.c@gmail.com" || $emailtotest == "oksana.gervas@yogasmoga.com")
                         $outputtemp = "<tr style='background-color:#CCCCCC'>";
                     else
                         $outputtemp = "<tr>";
