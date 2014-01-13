@@ -340,16 +340,17 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 <th>Color</th>
                 <th>Size</th>
                 <th>Is Accessory?</th>
-                <th>Tax Paid</th>
-                <th>Discount</th>
-                <th>Row Total</th>
-                <th>Total Paid</th>
-                <th>Payment Gateway</th>
+                <th>Tax Paid($)</th>
+                <th>Discount($)</th>
+                <th>Gross Amount($)</th>
+                <th>Net Amount($)</th>
+                <th>Payment Method</th>
                 </tr><thead><tbody>";
                 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
                 //$readresult=$write->query("SELECT increment_id AS 'orderno', STATUS AS 'status', total_paid AS 'paid', shipping_description AS 'shipping', DATE_FORMAT(created_at, '%m-%d-%Y') AS 'orderdate',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'billto',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='shipping' AND parent_id=sfo.entity_id) AS 'shipto', entity_id FROM sales_flat_order sfo where created_at >= '".$startdate."' and created_at <= '".$enddate."' ORDER BY created_at desc");
                 //$readresult=$write->query("SELECT sfo.increment_id AS 'orderno', sfo.status AS 'status', sfo.total_paid AS 'paid', sfo.shipping_description AS 'shipping', DATE_FORMAT(sfo.created_at, '%m-%d-%Y') AS 'orderdate', sfo.entity_id,(SELECT customer_id FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'customer_id',(SELECT email FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'email', (SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'billto', CONCAT(firstname,' ',lastname) AS 'shipto', sfoa.region AS 'region', sfoa.city AS 'city', sfoa.postcode AS 'postcode', sfo.coupon_code AS 'coupon' FROM sales_flat_order sfo, sales_flat_order_address sfoa WHERE sfo.created_at >= '".$startdate."' AND sfo.created_at <= '".$enddate."' AND sfoa.parent_id = sfo.entity_id AND sfoa.address_type='shipping' ORDER BY sfo.created_at DESC;");
                 $readresult=$write->query("SELECT sfo.increment_id AS 'orderno', sfo.status AS 'status', sfo.total_paid AS 'paid', sfo.shipping_description AS 'shipping', DATE_FORMAT(sfo.created_at, '%m-%d-%Y') AS 'orderdate', sfo.entity_id,(SELECT customer_id FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'customer_id',(SELECT email FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'email', (SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'billto', CONCAT(firstname,' ',lastname) AS 'shipto', sfoa.region AS 'region', sfoa.city AS 'city', sfoa.postcode AS 'postcode', sfo.coupon_code AS 'coupon',(SELECT method FROM sales_flat_order_payment WHERE  parent_id=sfo.entity_id) AS 'paymentMethod' FROM sales_flat_order sfo, sales_flat_order_address sfoa WHERE sfo.created_at >= '".$startdate."' AND sfo.created_at <= '".$enddate."' AND sfoa.parent_id = sfo.entity_id AND sfoa.address_type='shipping' ORDER BY sfo.created_at DESC;");
+                $paymentMethod = array("stripe"=>"Stripe","cashondelivery"=>"Cash on Delivery","paypal_express"=>"Paypal","free"=>"NA");
                 while ($row = $readresult->fetch() ) {
                     $emailtotest = "";
                     if($row['customer_id'] != "")
@@ -368,7 +369,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     else
                         $outputtemp = "<tr>";
                     $order = Mage::getModel('sales/order')->load($row['entity_id']);
-                    $outputtemp .= "<td>".$emailtotest."</td>";
+                    //$outputtemp .= "<td>".$emailtotest."</td>";
                     $outputtemp .= "<td>".$row['orderno']."</td>";
                     $outputtemp .= "<td>".$row['orderdate']."</td>";
                     $outputtemp .= "<td>".$row['status']."</td>";
@@ -411,6 +412,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 //                            }
                         }
                         $totalPaid = $rowTotal - $rowDiscount;
+                        $payment = $row['paymentMethod'];
                         $name = html_entity_decode($name);
                         $color = $_product->getAttributeText('color');
                         if(strpos($color, "|") !== false)
@@ -434,16 +436,16 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $outputtemp1 .= "<td>".$rowDiscount."</td>";
                         $outputtemp1 .= "<td>".$rowTotal."</td>";
                         $outputtemp1 .= "<td>".$totalPaid."</td>";
-                        $outputtemp1 .= "<td>".$row['paymentMethod']."</td>";
+                        $outputtemp1 .= "<td>".$paymentMethod[$payment]."</td>";
                         $outputtemp1 .= "</tr>";
                         $output .= $outputtemp1;                                
                     }
 
                 }
-//                echo $output;
-                $fname = mktime();
-                file_put_contents('customreports/'.$fname.'.xls',$output);
-                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");
+                echo $output;
+//                $fname = mktime();
+//                file_put_contents('customreports/'.$fname.'.xls',$output);
+//                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");
             }
             else
                 echo "Invalid Password";
