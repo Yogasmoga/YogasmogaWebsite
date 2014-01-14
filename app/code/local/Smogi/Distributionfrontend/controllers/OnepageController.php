@@ -251,7 +251,11 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
                 //Mage::log("Smogi used = $smogiused",null,'distribution.log');        
                 $readresult=$write->query("Select entity_id from sales_flat_invoice where order_id=".$lastOrderId);
                 $row = $readresult->fetch();
-                $invoiceid = $row['entity_id'];    
+                if($row)
+                    $invoiceid = $row['entity_id'];
+                else{
+                    $invoiceid = '';
+                }
                 $arrOrderItem = array();
                 $readresult=$write->query("Select product_id, row_total_incl_tax, item_id from sales_flat_order_item where order_id=".$lastOrderId." and price > 0");
                 while ($row = $readresult->fetch() ) {
@@ -310,6 +314,7 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
                 {
                     //$readresult=$write->query("Update sales_flat_order_item set discount_amount=".$arrOrderItem[$i]['price'].", base_discount_amount=".$arrOrderItem[$i]['price'].", discount_invoiced=".$arrOrderItem[$i]['price'].", base_discount_invoiced=".$arrOrderItem[$i]['price']." where order_id=".$lastOrderId." and product_id=".$arrOrderItem[$i]['product_id']);
                     $readresult=$write->query("Update sales_flat_order_item set discount_amount=".$arrOrderItem[$i]['price'].", base_discount_amount=".$arrOrderItem[$i]['price'].", discount_invoiced=".$arrOrderItem[$i]['price'].", base_discount_invoiced=".$arrOrderItem[$i]['price']." where order_id=".$lastOrderId." and item_id=".$arrOrderItem[$i]['item_id']);
+                    if($invoiceid !='')
                     $readresult=$write->query("Update sales_flat_invoice_item set discount_amount=".$arrOrderItem[$i]['price'].", base_discount_amount=".$arrOrderItem[$i]['price']." where parent_id=".$invoiceid." and order_item_id=".$arrOrderItem[$i]['item_id']);
                 }
                 Mage::log($temp."   ".$discount_amount,null,'distribution.log');
