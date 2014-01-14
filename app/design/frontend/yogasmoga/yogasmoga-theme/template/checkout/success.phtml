@@ -65,11 +65,11 @@ $readresult=$write->query("SELECT COUNT(entity_id) AS cnt, customer_email,base_g
 $row = $readresult->fetch();
 if($row['cnt'] == 1)
 {
-    Mage::log("Desktop --".$row['customer_email']." -- ".number_format($row['base_grand_total'],2), null, 'eventtracking.log');
+    Mage::log("Desktop --".$row['customer_email']." -- ".round($row['base_grand_total']), null, 'eventtracking.log');
     ?>
     <script type="text/javascript">
     jQuery(document).ready(function(){
-        _gaq.push(['_trackEvent', 'First Time Buyer', 'Purchase', '<?php echo $row['customer_email'] ?>',<?php echo number_format($row['base_grand_total'],2) ?>]);
+        _gaq.push(['_trackEvent', 'First Time Buyer', 'Purchase', '<?php echo $row['customer_email'] ?>',<?php echo round($row['base_grand_total']) ?>]);
     });
     </script>
     <?php
