@@ -326,7 +326,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 <th>Status</th>
                 <th>Order Total</th>
                 <th>Coupon Code</th>
-                <th>Shipping</th>
+                <th>Shipping Method</th>
+                <th>Shipping Amount</th>
                 <th>Bill To</th>
                 <th>Ship To</th>
                 <th>Region</th>
@@ -349,7 +350,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
                 //$readresult=$write->query("SELECT increment_id AS 'orderno', STATUS AS 'status', total_paid AS 'paid', shipping_description AS 'shipping', DATE_FORMAT(created_at, '%m-%d-%Y') AS 'orderdate',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'billto',(SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='shipping' AND parent_id=sfo.entity_id) AS 'shipto', entity_id FROM sales_flat_order sfo where created_at >= '".$startdate."' and created_at <= '".$enddate."' ORDER BY created_at desc");
                 //$readresult=$write->query("SELECT sfo.increment_id AS 'orderno', sfo.status AS 'status', sfo.total_paid AS 'paid', sfo.shipping_description AS 'shipping', DATE_FORMAT(sfo.created_at, '%m-%d-%Y') AS 'orderdate', sfo.entity_id,(SELECT customer_id FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'customer_id',(SELECT email FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'email', (SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'billto', CONCAT(firstname,' ',lastname) AS 'shipto', sfoa.region AS 'region', sfoa.city AS 'city', sfoa.postcode AS 'postcode', sfo.coupon_code AS 'coupon' FROM sales_flat_order sfo, sales_flat_order_address sfoa WHERE sfo.created_at >= '".$startdate."' AND sfo.created_at <= '".$enddate."' AND sfoa.parent_id = sfo.entity_id AND sfoa.address_type='shipping' ORDER BY sfo.created_at DESC;");
-                $readresult=$write->query("SELECT sfo.increment_id AS 'orderno', sfo.status AS 'status', sfo.total_paid AS 'paid', sfo.shipping_description AS 'shipping', DATE_FORMAT(sfo.created_at, '%m-%d-%Y') AS 'orderdate', sfo.entity_id,(SELECT customer_id FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'customer_id',(SELECT email FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'email', (SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'billto', CONCAT(firstname,' ',lastname) AS 'shipto', sfoa.region AS 'region', sfoa.city AS 'city', sfoa.postcode AS 'postcode', sfo.coupon_code AS 'coupon',(SELECT method FROM sales_flat_order_payment WHERE  parent_id=sfo.entity_id) AS 'paymentMethod' FROM sales_flat_order sfo, sales_flat_order_address sfoa WHERE sfo.created_at >= '".$startdate."' AND sfo.created_at <= '".$enddate."' AND sfoa.parent_id = sfo.entity_id AND sfoa.address_type='shipping' ORDER BY sfo.created_at DESC;");
+                $readresult=$write->query("SELECT sfo.increment_id AS 'orderno', sfo.status AS 'status', sfo.total_paid AS 'paid', sfo.shipping_description AS 'shipping',sfo.shipping_amount AS 'shipping_amount', DATE_FORMAT(sfo.created_at, '%m-%d-%Y') AS 'orderdate', sfo.entity_id,(SELECT customer_id FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'customer_id',(SELECT email FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'email', (SELECT CONCAT(firstname,' ',lastname) AS 'name' FROM sales_flat_order_address WHERE address_type='billing' AND parent_id=sfo.entity_id) AS 'billto', CONCAT(firstname,' ',lastname) AS 'shipto', sfoa.region AS 'region', sfoa.city AS 'city', sfoa.postcode AS 'postcode', sfo.coupon_code AS 'coupon',(SELECT method FROM sales_flat_order_payment WHERE  parent_id=sfo.entity_id) AS 'paymentMethod' FROM sales_flat_order sfo, sales_flat_order_address sfoa WHERE sfo.created_at >= '".$startdate."' AND sfo.created_at <= '".$enddate."' AND sfoa.parent_id = sfo.entity_id AND sfoa.address_type='shipping' ORDER BY sfo.created_at DESC;");
                 $paymentMethod = array("stripe"=>"Stripe","cashondelivery"=>"Cash on Delivery","paypal_express"=>"Paypal","free"=>"NA");
                 while ($row = $readresult->fetch() ) {
                     $emailtotest = "";
@@ -376,6 +377,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     $outputtemp .= "<td>".round($row['paid'], 2)."</td>";
                     $outputtemp .= "<td>".$row['coupon']."</td>";
                     $outputtemp .= "<td>".$row['shipping']."</td>";
+                    $outputtemp .= "<td>".$row['shipping_amount']."</td>";
                     $outputtemp .= "<td>".$row['billto']."</td>";
                     $outputtemp .= "<td>".$row['shipto']."</td>";
                     $outputtemp .= "<td>".$row['region']."</td>";
@@ -383,19 +385,20 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     $outputtemp .= "<td style='text-align:right;'>".$row['postcode']."</td>";
                     
                     $write1 = Mage::getSingleton('core/resource')->getConnection('core_read');
-                    $result = $write1->query("SELECT item_id, product_id AS 'id', sku, qty_ordered AS 'ordered', qty_refunded AS 'refunded', qty_backordered AS 'backordered', qty_shipped AS 'shipped', product_id AS 'productid', sfoi.name AS 'name', sfoi.row_total, sfoi.discount_amount FROM sales_flat_order_item sfoi WHERE product_type <> 'configurable' AND order_id=".$row['entity_id']);
+                    $result = $write1->query("SELECT item_id, product_id AS 'id', sku, qty_ordered AS 'ordered', qty_refunded AS 'refunded', qty_backordered AS 'backordered', qty_shipped AS 'shipped', product_id AS 'productid', sfoi.name AS 'name', sfoi.base_row_total, sfoi.discount_amount,(sfoi.base_row_total_incl_tax - sfoi.base_discount_amount) AS 'net_amount' FROM sales_flat_order_item sfoi WHERE product_type <> 'configurable' AND order_id=".$row['entity_id']);
                     while ($row1 = $result->fetch() ) {
                         
                         $productCats = array();
                         $taxPaid = 0;
                         $outputtemp1 = $outputtemp;
                         $name = $row1['name'];
-                        $rowTotal = $row1['row_total'];
+                        $rowTotal = $row1['base_row_total'];
                         $rowDiscount = $row1['discount_amount'];
+                        $netAmount = $row1['net_amount'];
                         $_product = Mage::getModel('catalog/product')->load($row1['productid']);
                         if($_product->getTypeId() == "simple"){
                             $write2 = Mage::getSingleton('core/resource')->getConnection('core_read');        
-                            $result2 = $write2->query("SELECT name, product_id, base_tax_amount,row_total,discount_amount FROM sales_flat_order_item sfoi WHERE product_type = 'configurable' AND item_id=".($row1['item_id'] - 1));
+                            $result2 = $write2->query("SELECT name, product_id, base_tax_amount,row_total,discount_amount,(base_row_total_incl_tax-base_discount_amount) AS 'net_amount' FROM sales_flat_order_item sfoi WHERE product_type = 'configurable' AND item_id=".($row1['item_id'] - 1));
                             $row2 = $result2->fetch();
                             $name = $row2['name'];
                             $product = Mage::getModel('catalog/product')->load($row2['product_id']);
@@ -403,6 +406,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                             $taxPaid = $row2['base_tax_amount'];
                             $rowTotal = $row2['row_total'];
                             $rowDiscount = $row2['discount_amount'];
+                            $netAmount = $row2['net_amount'];
                             //$parentIds = Mage::getModel('catalog/product_type_grouped')->getParentIdsByChild($_product->getId());
 //                            if(!$parentIds)
 //                                $parentIds = Mage::getModel('catalog/product_type_configurable')->getParentIdsByChild($_product->getId());
@@ -411,7 +415,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 //                                $name = Mage::Helper('catalog/output')->productAttribute($parent, $parent->getName(), 'name');
 //                            }
                         }
-                        $totalPaid = $rowTotal - $rowDiscount;
+
                         $payment = $row['paymentMethod'];
                         $name = html_entity_decode($name);
                         $color = $_product->getAttributeText('color');
@@ -435,17 +439,17 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $outputtemp1 .= "<td>".$taxPaid."</td>";
                         $outputtemp1 .= "<td>".$rowDiscount."</td>";
                         $outputtemp1 .= "<td>".$rowTotal."</td>";
-                        $outputtemp1 .= "<td>".$totalPaid."</td>";
+                        $outputtemp1 .= "<td>".$netAmount."</td>";
                         $outputtemp1 .= "<td>".$paymentMethod[$payment]."</td>";
                         $outputtemp1 .= "</tr>";
                         $output .= $outputtemp1;                                
                     }
 
                 }
- //               echo $output;
-                $fname = mktime();
-                file_put_contents('customreports/'.$fname.'.xls',$output);
-                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");
+                echo $output;
+//                $fname = mktime();
+//                file_put_contents('customreports/'.$fname.'.xls',$output);
+//                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");
             }
             else
                 echo "Invalid Password";
