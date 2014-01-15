@@ -394,7 +394,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $name = $row1['name'];
                         $rowTotal = $row1['base_row_total'];
                         $rowDiscount = $row1['discount_amount'];
-                        $netAmount = $row1['net_amount'];
+                        $netAmount = round($row1['net_amount'], 2);
                         $_product = Mage::getModel('catalog/product')->load($row1['productid']);
                         if($_product->getTypeId() == "simple"){
                             $write2 = Mage::getSingleton('core/resource')->getConnection('core_read');        
@@ -406,7 +406,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                             $taxPaid = $row2['base_tax_amount'];
                             $rowTotal = $row2['row_total'];
                             $rowDiscount = $row2['discount_amount'];
-                            $netAmount = $row2['net_amount'];
+                            $netAmount = round($row2['net_amount'], 2);
                             //$parentIds = Mage::getModel('catalog/product_type_grouped')->getParentIdsByChild($_product->getId());
 //                            if(!$parentIds)
 //                                $parentIds = Mage::getModel('catalog/product_type_configurable')->getParentIdsByChild($_product->getId());
@@ -1406,20 +1406,158 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 // echo $html;
 // echo 'saved';
     }
-    public function changeOrderStatusAction()
-    {
-        $order = $this->getRequest()->getParam('foo');
 
-        try{
-        $orderId = $order;
-        $order1 = Mage::getModel('sales/order')->load($orderId);
-        $order1->setState(Mage_Sales_Model_Order::STATE_CLOSED, true)->save();
-        echo 'Order has been closed';
-        }
-        catch(Exception $e)
+
+    // report SKU Total sail
+
+    public function inventoryskureportAction()
+    {
+        if($this->getRequest()->getParam('pass'))
         {
-            echo $e->getMessage().'test---';
+            if($this->getRequest()->getParam('pass') == "MageHACKER")
+            {
+                $output = "<table>" ;
+                $output .= "<tr><td style='height:80px;'><img src='http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/logo.png' /></td><td style='vertical-align:middle' colspan='5'>INVENTORY STATUS AS OF ".date("dS M,Y")."</td></tr>";
+                $productCollection = Mage::getModel('catalog/product')->getCollection()->addAttributeToFilter(array(array('attribute'=>'type_id', 'eq'=>'configurable'), array('attribute'=>'status', 'eq' => Mage_Catalog_Model_Product_Status::STATUS_DISABLED)))->setPageSize(20000);
+                //$productCollection = Mage::getModel('catalog/product')->getCollection()->addAttributeToFilter(array(array('attribute'=>'type_id', 'eq'=>'configurable'), array('attribute'=>'status', 'eq' => '2')));
+                //$productCollection = Mage::getResourceModel('catalog/product_collection')->addAttributeToFilter('type_id', array('eq' => 'configurable'));
+
+
+
+
+
+                $arrAccessories = array();
+                for ($i = 1; $i <= $productCollection->getLastPageNumber(); $i++) {
+                    if ($productCollection->isLoaded()) {
+                        $productCollection->clear();
+                        $productCollection->setPage($i);
+                        $productCollection->setPageSize(20000);
+                    }
+                    foreach ($productCollection as $product) { //echo '<pre>'; print_r($product);die('ttt');
+                        $productCats = $product->getCategoryIds();
+                        if(array_search(8, $productCats) !== false){
+                            array_push($arrAccessories, $product->getId());
+                        }
+                        else
+                            $this->getinventoryskuhtml($product->getId(), $output);
+                    }
+                    //echo $i . "\n\n";
+
+                }
+                for($ii = 0; $ii < count($arrAccessories); $ii++)
+                    $this->getinventoryskuhtml($arrAccessories[$ii], $output);
+
+                $output .= "<tr><td colspan='2' style='font-weight:bold;'>LEGEND</td></tr>";
+                $output .= "<tr><td>VALUE</td><td colspan='4'>Product is in stock and the inventory is positive.</td></tr>";
+                $output .= "<tr><td style='color:#fff;background-color:gray;'>VALUE</td><td colspan='4'>Product is out of stock.</td></tr>";
+                $output .= "<tr><td style='color:#fff;background-color:red;'>VALUE</td><td colspan='4'>Product is in stock and is in pre-order state.</td></tr>";
+                $output .= "<tr><td style='color:#fff;background-color:black;'>VALUE</td><td colspan='4'>This combination of color and size is not available and not displayed on the product view page.</td></tr>";
+                $output .= "</table>";
+                echo 'test';
+                echo $output;
+//                $fname = mktime();
+//                file_put_contents('customreports/'.$fname.'.xls',$output);
+//                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");
+            }
         }
+    }
+
+    public function getinventoryskuhtml($product, &$output)
+    {
+        //echo $product->getId() . "\n\n";
+        $_product = Mage::getModel('catalog/product')->load($product);
+        $productname = Mage::Helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name');
+        $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
+        $productcolorinfo = array();
+        $productsku = array();
+        $sizeArray = array();
+        $sizeTotal = array();
+
+        foreach($_childproducts as $_childproduct)
+        {  // echo '<pre>';print_r($_childproduct);die('tttt');
+            //echo Mage::Helper('catalog/output')->productAttribute($_childproduct, $_childproduct->getName(), 'name')."         ";
+            $temp = $_childproduct->getAttributeText('color');
+            if(strpos($temp,"|") !== FALSE)
+            {
+                $temp = substr($temp, 0, strpos($temp,"|"));
+                if(!isset($productcolorinfo[$temp]))
+                    $productcolorinfo[$temp] = array();
+            }
+            //$temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+        /*    if(Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getIsInStock()){
+                $productcolorinfo[$temp][$_childproduct->getAttributeText('size')] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+
+            }
+            else
+                $productcolorinfo[$temp][$_childproduct->getAttributeText('size')] = "_".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+            */
+            if(array_search($_childproduct->getAttributeText('size'), $sizeArray) === false)
+            {
+                array_push($sizeArray, $_childproduct->getAttributeText('size'));
+                $sizeTotal[$_childproduct->getAttributeText('size')] = 0;
+            }
+
+
+        }
+        //echo $i; die('bbb');
+        $output .= "<tr style='color:#FFFFFF;'>";
+        $output .= "<td style='background-color:#003366;'>Name</td><td style='background-color:#003366;'>Color</td></tr>";
+        for($j = 0; $j < count($sizeArray); $j++)
+        {
+            if($sizeArray[$j] != "")
+                $output .= "<tr><td>".$productname."</td><td>$nbsp</td><td>Size ".$sizeArray[$j]."</td></tr>";
+            else
+                $output .= "<td style='background-color:#003366;'>Qty</td>";
+        }
+        $output .= "</tr>";
+        //echo '<pre>';
+        //print_r($_childproducts);
+
+        foreach($productcolorinfo as $key=>$val)
+        {//echo '<pre>';print_r($sizeArray);die('tttt');
+            $output .= "<tr>";
+            $output .= "<td>$productname</td><td>".$key."</td>";
+            for($j = 0; $j < count($sizeArray); $j++)
+            {
+                if(isset($val[$sizeArray[$j]]))
+                {
+                    $outofstock = false;
+                    if(strpos($val[$sizeArray[$j]], "_") !== false)
+                    {
+                        $outofstock = true;
+                    }
+                    $val[$sizeArray[$j]] = str_replace("_","",$val[$sizeArray[$j]]);
+                    if($outofstock)
+                    {
+                        $output .= "<td style='color:#fff;background-color:gray;'>".number_format($val[$sizeArray[$j]])."</td>";
+                    }
+                    else
+                    {
+                        if($val[$sizeArray[$j]] <= 0)
+                            $output .= "<td style='color:#fff;background-color:red;'>".number_format($val[$sizeArray[$j]])."</td>";
+                        else
+                            $output .= "<td>".number_format($val[$sizeArray[$j]])."</td>";
+                    }
+                    $sizeTotal[$sizeArray[$j]] += $val[$sizeArray[$j]];
+                }
+                else
+                    $output .= "<td style='background-color:black;color:#fff;'>0</td>";
+            }
+            $output .= "</tr>";
+        }
+        $output .= "<tr style='font-weight:bold;'>";
+        $output .= "<td>&nbsp;</td><td>&nbsp;</td>";
+        $g_sum = 0;
+        for($j = 0; $j < count($sizeArray); $j++)
+        {
+            $output .= "<td>".$sizeTotal[$sizeArray[$j]]."</td>";
+            $g_sum += $sizeTotal[$sizeArray[$j]];
+        }
+        $output .= "<td style='color:red;'>".$g_sum."</td>";
+        $output .= "</tr>";
+        $output .= "<tr><td colspan='20'></td></tr>";
+//                        $output .= "<tr><td colspan='20'></td></tr>";
+
     }
 
 }
