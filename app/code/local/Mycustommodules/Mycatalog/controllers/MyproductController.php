@@ -385,16 +385,17 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     $outputtemp .= "<td style='text-align:right;'>".$row['postcode']."</td>";
                     
                     $write1 = Mage::getSingleton('core/resource')->getConnection('core_read');
-                    $result = $write1->query("SELECT item_id, product_id AS 'id', sku, qty_ordered AS 'ordered', qty_refunded AS 'refunded', qty_backordered AS 'backordered', qty_shipped AS 'shipped', product_id AS 'productid', sfoi.name AS 'name', sfoi.base_row_total, sfoi.discount_amount,(sfoi.base_row_total_incl_tax - sfoi.base_discount_amount) AS 'net_amount' FROM sales_flat_order_item sfoi WHERE product_type <> 'configurable' AND order_id=".$row['entity_id']);
+                    //$result = $write1->query("SELECT item_id, product_id AS 'id', sku, qty_ordered AS 'ordered', qty_refunded AS 'refunded', qty_backordered AS 'backordered', qty_shipped AS 'shipped', product_id AS 'productid', sfoi.name AS 'name', sfoi.base_row_total, sfoi.discount_amount,(sfoi.base_row_total_incl_tax - sfoi.base_discount_amount) AS 'net_amount' FROM sales_flat_order_item sfoi WHERE product_type <> 'configurable' AND order_id=".$row['entity_id']);
+                    $result = $write1->query("SELECT item_id, product_id AS 'id', sku, qty_ordered AS 'ordered', qty_refunded AS 'refunded', qty_backordered AS 'backordered', qty_shipped AS 'shipped', product_id AS 'productid', sfoi.name AS 'name', sfoi.base_row_total, sfoi.discount_amount, sfoi.base_tax_amount FROM sales_flat_order_item sfoi WHERE product_type <> 'configurable' AND order_id=".$row['entity_id']);
                     while ($row1 = $result->fetch() ) {
                         
                         $productCats = array();
-                        $taxPaid = 0;
+                        $taxPaid = $row1['base_tax_amount'];
                         $outputtemp1 = $outputtemp;
                         $name = $row1['name'];
                         $rowTotal = $row1['base_row_total'];
                         $rowDiscount = $row1['discount_amount'];
-                        $netAmount = round($row1['net_amount'], 2);
+                        $netAmount = round(($rowTotal - $rowDiscount + $taxPaid), 2);
                         $_product = Mage::getModel('catalog/product')->load($row1['productid']);
                         if($_product->getTypeId() == "simple"){
                             $write2 = Mage::getSingleton('core/resource')->getConnection('core_read');        
@@ -406,7 +407,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                             $taxPaid = $row2['base_tax_amount'];
                             $rowTotal = $row2['row_total'];
                             $rowDiscount = $row2['discount_amount'];
-                            $netAmount = round($row2['net_amount'], 2);
+                            //$netAmount = round($row2['net_amount'], 2);
+                            $netAmount = round(($rowTotal - $rowDiscount + $taxPaid), 2);
                             //$parentIds = Mage::getModel('catalog/product_type_grouped')->getParentIdsByChild($_product->getId());
 //                            if(!$parentIds)
 //                                $parentIds = Mage::getModel('catalog/product_type_configurable')->getParentIdsByChild($_product->getId());
