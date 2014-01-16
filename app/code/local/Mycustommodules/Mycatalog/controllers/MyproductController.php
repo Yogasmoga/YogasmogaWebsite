@@ -1453,7 +1453,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $output .= "<tr><td style='color:#fff;background-color:red;'>VALUE</td><td colspan='4'>Product is in stock and is in pre-order state.</td></tr>";
                 $output .= "<tr><td style='color:#fff;background-color:black;'>VALUE</td><td colspan='4'>This combination of color and size is not available and not displayed on the product view page.</td></tr>";
                 $output .= "</table>";
-                echo 'test';
+                //echo 'test';
                 echo $output;
 //                $fname = mktime();
 //                file_put_contents('customreports/'.$fname.'.xls',$output);
@@ -1473,10 +1473,17 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         $sizeArray = array();
         $sizeTotal = array();
 
+        $output .= "<tr style='color:#FFFFFF;'>";
+        $output .= "<td style='background-color:#003366;'>Name</td><td style='background-color:#003366;'>Color</td><td style='background-color:#003366;'>Size</td><td style='background-color:#003366;'>Sku</td><td style='background-color:#003366;'>Net Sail</td></tr>";
+
+
         foreach($_childproducts as $_childproduct)
         {  // echo '<pre>';print_r($_childproduct);die('tttt');
             //echo Mage::Helper('catalog/output')->productAttribute($_childproduct, $_childproduct->getName(), 'name')."         ";
+
+
             $temp = $_childproduct->getAttributeText('color');
+
             if(strpos($temp,"|") !== FALSE)
             {
                 $temp = substr($temp, 0, strpos($temp,"|"));
@@ -1484,7 +1491,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     $productcolorinfo[$temp] = array();
             }
             //$temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
-        /*    if(Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getIsInStock()){
+    /*        if(Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getIsInStock()){
                 $productcolorinfo[$temp][$_childproduct->getAttributeText('size')] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
 
             }
@@ -1496,11 +1503,20 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 array_push($sizeArray, $_childproduct->getAttributeText('size'));
                 $sizeTotal[$_childproduct->getAttributeText('size')] = 0;
             }
-
-
+            $output .= "<tr style='color:#FFFFFF;'><td style='color:#000;'>".$productname."</td>";
+            $output .= "<td style='color:#000;'>".$temp."</td>";
+            $output .= "<td style='color:#000;'>"."Size ".$_childproduct->getAttributeText('size')."</td>";
+            $output .= "<td style='color:#000;'>".$_childproduct->getSku()."</td>";
+            $sku = $_childproduct->getSku();
+            //echo "SELECT sum(base_row_total_incl_tax-base_discount_amount) AS 'net_amount' FROM sales_flat_order_item  WHERE product_type = 'configurable' AND sku='".$sku."'";die;
+            $write2 = Mage::getSingleton('core/resource')->getConnection('core_read');
+            $result2 = $write2->query("SELECT sum(base_row_total_incl_tax-base_discount_amount) AS 'net_amount' FROM sales_flat_order_item  WHERE product_type = 'configurable' AND sku='".$sku."'");
+            $row2 = $result2->fetch();
+            $netAmount = $row2['net_amount'];
+            $output .= "<td style='color:#000;'>".$netAmount."</td></tr>";
         }
         //echo $i; die('bbb');
-        $output .= "<tr style='color:#FFFFFF;'>";
+/*        $output .= "<tr style='color:#FFFFFF;'>";
         $output .= "<td style='background-color:#003366;'>Name</td><td style='background-color:#003366;'>Color</td></tr>";
         for($j = 0; $j < count($sizeArray); $j++)
         {
@@ -1557,7 +1573,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         $output .= "</tr>";
         $output .= "<tr><td colspan='20'></td></tr>";
 //                        $output .= "<tr><td colspan='20'></td></tr>";
-
+*/
     }
 
 }
