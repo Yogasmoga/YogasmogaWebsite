@@ -1510,9 +1510,10 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             $output .= "<td style='color:#000;'>"."Size ".$_childproduct->getAttributeText('size')."</td>";
             $output .= "<td style='color:#000;'>".$_childproduct->getSku()."</td>";
             $sku = $_childproduct->getSku();
-            //echo "SELECT sum(base_row_total_incl_tax-base_discount_amount) AS 'net_amount' FROM sales_flat_order_item  WHERE product_type = 'configurable' AND sku='".$sku."'";die;
+            //echo "SELECT SUM(base_row_total + base_tax_amount - base_discount_amount - COALESCE(base_amount_refunded, 0) - COALESCE(base_tax_refunded,0) + COALESCE(base_discount_refunded,0)) AS 'total collection'  FROM sales_flat_order_item where sku='".$sku."'";die;
             $write2 = Mage::getSingleton('core/resource')->getConnection('core_read');
-            $result2 = $write2->query("SELECT sum(base_row_total_incl_tax-base_discount_amount) AS 'net_amount' FROM sales_flat_order_item  WHERE product_type = 'configurable' AND sku='".$sku."'");
+            //$result2 = $write2->query("SELECT sum(base_row_total_incl_tax-base_discount_amount) AS 'net_amount' FROM sales_flat_order_item  WHERE product_type = 'configurable' AND sku='".$sku."'");
+            $result2 = $write2->query("SELECT SUM(base_row_total + base_tax_amount - base_discount_amount - COALESCE(base_amount_refunded, 0) - COALESCE(base_tax_refunded,0) + COALESCE(base_discount_refunded,0)) AS 'net_amount'  FROM sales_flat_order_item where sku='".$sku."'");
             $row2 = $result2->fetch();
             $netAmount = $row2['net_amount'];
             $output .= "<td style='color:#000;'>".$netAmount."</td></tr>";
