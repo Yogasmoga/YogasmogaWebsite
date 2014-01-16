@@ -1435,7 +1435,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $productCollection->setPage($i);
                         $productCollection->setPageSize(20000);
                     }
-                    foreach ($productCollection as $product) { //echo '<pre>'; print_r($product);die('ttt');
+                    foreach ($productCollection as $product) {  //echo '<pre>'; print_r($product);die('ttt');
                         $productCats = $product->getCategoryIds();
                         if(array_search(8, $productCats) !== false){
                             array_push($arrAccessories, $product->getId());
@@ -1449,17 +1449,17 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 for($ii = 0; $ii < count($arrAccessories); $ii++)
                     $this->getinventoryskuhtml($arrAccessories[$ii], $output);
 
-                $output .= "<tr><td colspan='2' style='font-weight:bold;'>LEGEND</td></tr>";
-                $output .= "<tr><td>VALUE</td><td colspan='4'>Product is in stock and the inventory is positive.</td></tr>";
-                $output .= "<tr><td style='color:#fff;background-color:gray;'>VALUE</td><td colspan='4'>Product is out of stock.</td></tr>";
-                $output .= "<tr><td style='color:#fff;background-color:red;'>VALUE</td><td colspan='4'>Product is in stock and is in pre-order state.</td></tr>";
-                $output .= "<tr><td style='color:#fff;background-color:black;'>VALUE</td><td colspan='4'>This combination of color and size is not available and not displayed on the product view page.</td></tr>";
+//                $output .= "<tr><td colspan='2' style='font-weight:bold;'>LEGEND</td></tr>";
+//                $output .= "<tr><td>VALUE</td><td colspan='4'>Product is in stock and the inventory is positive.</td></tr>";
+//                $output .= "<tr><td style='color:#fff;background-color:gray;'>VALUE</td><td colspan='4'>Product is out of stock.</td></tr>";
+//                $output .= "<tr><td style='color:#fff;background-color:red;'>VALUE</td><td colspan='4'>Product is in stock and is in pre-order state.</td></tr>";
+//                $output .= "<tr><td style='color:#fff;background-color:black;'>VALUE</td><td colspan='4'>This combination of color and size is not available and not displayed on the product view page.</td></tr>";
                 $output .= "</table>";
                 //echo 'test';
-               // echo $output;
-                $fname = mktime();
-                file_put_contents('customreports/'.$fname.'.xls',$output);
-                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");
+                echo $output;
+//                $fname = mktime();
+//                file_put_contents('customreports/'.$fname.'.xls',$output);
+//                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");
             }
         }
     }
@@ -1476,9 +1476,9 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         $sizeTotal = array();
 
         $output .= "<tr style='color:#FFFFFF;'>";
-        $output .= "<td style='background-color:#003366;'>Name</td><td style='background-color:#003366;'>Color</td><td style='background-color:#003366;'>Size</td><td style='background-color:#003366;'>Sku</td><td style='background-color:#003366;'>Net Sail</td></tr>";
+        $output .= "<td style='background-color:#003366;'>Name</td><td style='background-color:#003366;'>Color</td><td style='background-color:#003366;'>Size</td><td style='background-color:#003366;'>Sku</td><td style='background-color:#003366;'>Total Sale</td></tr>";
 
-
+        $totalNetSale=0;
         foreach($_childproducts as $_childproduct)
         {  // echo '<pre>';print_r($_childproduct);die('tttt');
             //echo Mage::Helper('catalog/output')->productAttribute($_childproduct, $_childproduct->getName(), 'name')."         ";
@@ -1498,19 +1498,28 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 array_push($sizeArray, $_childproduct->getAttributeText('size'));
                 $sizeTotal[$_childproduct->getAttributeText('size')] = 0;
             }
-            $output .= "<tr style='color:#FFFFFF;'><td style='color:#000;'>".$productname."</td>";
-            $output .= "<td style='color:#000;'>".$temp."</td>";
-            $output .= "<td style='color:#000;'>"."Size ".$_childproduct->getAttributeText('size')."</td>";
-            $output .= "<td style='color:#000;'>".$_childproduct->getSku()."</td>";
+            $output .= "<tr ><td style='color:#000;'>".$productname."</td>";
+            $output .= "<td >".$temp."</td>";
+            $output .= "<td >"."Size ".$_childproduct->getAttributeText('size')."</td>";
+            $output .= "<td >".$_childproduct->getSku()."</td>";
             $sku = $_childproduct->getSku();
             //echo "SELECT SUM(base_row_total + base_tax_amount - base_discount_amount - COALESCE(base_amount_refunded, 0) - COALESCE(base_tax_refunded,0) + COALESCE(base_discount_refunded,0)) AS 'total collection'  FROM sales_flat_order_item where sku='".$sku."'";die;
             $write2 = Mage::getSingleton('core/resource')->getConnection('core_read');
             //$result2 = $write2->query("SELECT sum(base_row_total_incl_tax-base_discount_amount) AS 'net_amount' FROM sales_flat_order_item  WHERE product_type = 'configurable' AND sku='".$sku."'");
             $result2 = $write2->query("SELECT SUM(base_row_total + base_tax_amount - base_discount_amount - COALESCE(base_amount_refunded, 0) - COALESCE(base_tax_refunded,0) + COALESCE(base_discount_refunded,0)) AS 'net_amount'  FROM sales_flat_order_item where sku='".$sku."'");
             $row2 = $result2->fetch();
+            //$netAmount = round($row2['net_amount'], 2);
             $netAmount = $row2['net_amount'];
-            $output .= "<td style='color:#000;'>".$netAmount."</td></tr>";
+            if($netAmount == '')
+            {
+                $netAmount = 0;
+
+            }
+            $totalNetSale += round($netAmount,2);
+            $output .= "<td style='text-align:right;'>".$netAmount."</td></tr>";
+
         }
+        $output .= "<tr><td colspan='4'></td><td style='font-weight:bold;text-align:right;'>".$totalNetSale."</td></tr><tr><td>&nbsp;</td></tr>";
 
     }
 
