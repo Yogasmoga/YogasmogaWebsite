@@ -169,7 +169,7 @@ function changeproductsize(sz)
     }
     else
     {
-        if(sz.hasClass("canpreorder"))
+        if(sz.hasClass("canbackorder"))
         {
             jQuery("#orderitem").hide();
             jQuery("#preorderitem").show();
@@ -222,7 +222,7 @@ function changeOrderqty(qty)
     }
     else
     {
-        if(jQuery("div#sizecontainer div.dvselectedsize").hasClass('canpreorder'))
+        if(jQuery("div#sizecontainer div.dvselectedsize").hasClass('canbackorder'))
         {
             jQuery("#orderitem").hide();
             jQuery("#preorderitem").show();
