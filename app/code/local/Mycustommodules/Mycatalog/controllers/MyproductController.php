@@ -1456,10 +1456,10 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $output .= "<tr><td style='color:#fff;background-color:black;'>VALUE</td><td colspan='4'>This combination of color and size is not available and not displayed on the product view page.</td></tr>";
                 $output .= "</table>";
                 //echo 'test';
-                echo $output;
-//                $fname = mktime();
-//                file_put_contents('customreports/'.$fname.'.xls',$output);
-//                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");
+               // echo $output;
+                $fname = mktime();
+                file_put_contents('customreports/'.$fname.'.xls',$output);
+                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");
             }
         }
     }
@@ -1492,14 +1492,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 if(!isset($productcolorinfo[$temp]))
                     $productcolorinfo[$temp] = array();
             }
-            //$temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
-    /*        if(Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getIsInStock()){
-                $productcolorinfo[$temp][$_childproduct->getAttributeText('size')] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
 
-            }
-            else
-                $productcolorinfo[$temp][$_childproduct->getAttributeText('size')] = "_".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
-            */
             if(array_search($_childproduct->getAttributeText('size'), $sizeArray) === false)
             {
                 array_push($sizeArray, $_childproduct->getAttributeText('size'));
@@ -1518,65 +1511,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             $netAmount = $row2['net_amount'];
             $output .= "<td style='color:#000;'>".$netAmount."</td></tr>";
         }
-        //echo $i; die('bbb');
-/*        $output .= "<tr style='color:#FFFFFF;'>";
-        $output .= "<td style='background-color:#003366;'>Name</td><td style='background-color:#003366;'>Color</td></tr>";
-        for($j = 0; $j < count($sizeArray); $j++)
-        {
-            if($sizeArray[$j] != "")
-                $output .= "<tr><td>".$productname."</td><td>$nbsp</td><td>Size ".$sizeArray[$j]."</td></tr>";
-            else
-                $output .= "<td style='background-color:#003366;'>Qty</td>";
-        }
-        $output .= "</tr>";
-        //echo '<pre>';
-        //print_r($_childproducts);
 
-        foreach($productcolorinfo as $key=>$val)
-        {//echo '<pre>';print_r($sizeArray);die('tttt');
-            $output .= "<tr>";
-            $output .= "<td>$productname</td><td>".$key."</td>";
-            for($j = 0; $j < count($sizeArray); $j++)
-            {
-                if(isset($val[$sizeArray[$j]]))
-                {
-                    $outofstock = false;
-                    if(strpos($val[$sizeArray[$j]], "_") !== false)
-                    {
-                        $outofstock = true;
-                    }
-                    $val[$sizeArray[$j]] = str_replace("_","",$val[$sizeArray[$j]]);
-                    if($outofstock)
-                    {
-                        $output .= "<td style='color:#fff;background-color:gray;'>".number_format($val[$sizeArray[$j]])."</td>";
-                    }
-                    else
-                    {
-                        if($val[$sizeArray[$j]] <= 0)
-                            $output .= "<td style='color:#fff;background-color:red;'>".number_format($val[$sizeArray[$j]])."</td>";
-                        else
-                            $output .= "<td>".number_format($val[$sizeArray[$j]])."</td>";
-                    }
-                    $sizeTotal[$sizeArray[$j]] += $val[$sizeArray[$j]];
-                }
-                else
-                    $output .= "<td style='background-color:black;color:#fff;'>0</td>";
-            }
-            $output .= "</tr>";
-        }
-        $output .= "<tr style='font-weight:bold;'>";
-        $output .= "<td>&nbsp;</td><td>&nbsp;</td>";
-        $g_sum = 0;
-        for($j = 0; $j < count($sizeArray); $j++)
-        {
-            $output .= "<td>".$sizeTotal[$sizeArray[$j]]."</td>";
-            $g_sum += $sizeTotal[$sizeArray[$j]];
-        }
-        $output .= "<td style='color:red;'>".$g_sum."</td>";
-        $output .= "</tr>";
-        $output .= "<tr><td colspan='20'></td></tr>";
-//                        $output .= "<tr><td colspan='20'></td></tr>";
-*/
     }
 
 }
