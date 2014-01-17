@@ -1551,7 +1551,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     if($isActive)
                     {
                     $id = $customer->getId();
-                    echo $name = $customer->getName().'---';
+                    $name = $customer->getName().'---';
                     $email = $customer->getEmail();
                     if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
                         $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
@@ -1563,7 +1563,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $reward_model = Mage::getModel('rewardpoints/stats');
                         $available_points = $reward_model->getPointsCurrent($id, $store_id);
                     }
-                    echo $available_points;
+
                     $total_available_points += $available_points;
                     $output .= "<tr><td style='text-align:center;'>".$id."</td><td>".$name."</td><td>".$email."</td><td style='text-align:right;'>".$available_points."</tr>";
                     }
