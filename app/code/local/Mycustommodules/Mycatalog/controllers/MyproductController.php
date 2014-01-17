@@ -1551,7 +1551,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     if($isActive)
                     {
                     $id = $customer->getId();
-                    $name = $customer->getName().'---';
+                    $name = $customer->getName();
                     $email = $customer->getEmail();
                     if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
                         $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
@@ -1580,8 +1580,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $baseDir = Mage::getBaseDir();
                 $varDir = $baseDir.DS.'recurringreports'.DS.'smogi'.DS.$fname.'.xls';
 
-                //unlink($varDir);
-                //file_put_contents('recurringreports/smogi/'.$fname.'.xls',$output);
+                unlink($varDir);
+                file_put_contents('recurringreports/smogi/'.$fname.'.xls',$output);
 
             }
         }
