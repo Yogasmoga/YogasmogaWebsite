@@ -1556,9 +1556,10 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     }
 
                     $total_available_points += $available_points;
+                    $output .= "<tr><td>".$id."</td><td>".$name."</td><td>".$email."</td><td style='text-align:right;'>".$available_points."</tr>";
                 }
 
-                $output .= "<tr><td>".$id."</td><td>".$name."</td><td>".$email."</td><td style='text-align:right;'>".$available_points."</tr>";
+
                 $output .= "<tr><td colspan='3'></td><td style='font-weight: bold;text-align:right'>".$total_available_points."</td> </tr>";
                 $output .= "</table>";
 
