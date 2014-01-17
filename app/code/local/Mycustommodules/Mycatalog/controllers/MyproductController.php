@@ -1572,5 +1572,49 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         }
     }
 
+    public function getreportAction()
+    {
+        if($this->getRequest()->getParam('type'))
+        {
+            if($this->getRequest()->getParam('type') == "Inventory")
+            {
+
+                $date = $this->getRequest()->getParam('date');
+                $datearr = split("-", $date);
+                //print_r($datearr);
+                if(!checkdate($datearr[0], $datearr[1], $datearr[2]))
+                {
+                    echo "Invalid Date";
+                    return;
+                }
+                $monthNum = $datearr[0];
+                $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
+                $monthName= substr($monthName,0,3);
+                $fileName = 'inv_'.$monthName.'_'.$datearr[1].'_'.$datearr[2];
+                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."recurringreports/inventory/".$fileName.".xls");
+            }
+        }
+        if($this->getRequest()->getParam('type'))
+        {
+            if($this->getRequest()->getParam('type') == "Smogi")
+            {
+                $date = $this->getRequest()->getParam('date');
+                $datearr = split("-", $date);
+                //print_r($datearr);
+                if(!checkdate($datearr[0], $datearr[1], $datearr[2]))
+                {
+                    echo "Invalid Date";
+                    return;
+                }
+                $monthNum = $datearr[0];
+                $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
+                $monthName= substr($monthName,0,3);
+                $fileName = 'smogi_'.$monthName.'_'.$datearr[1].'_'.$datearr[2];
+                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."recurringreports/smogi/".$fileName.".xls");
+            }
+        }
+
+    }
+
 }
 ?>
