@@ -103,7 +103,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                 $fname = "inv_".$fname;
 
                 $baseDir = Mage::getBaseDir();
-                $varDir = $baseDir.DS.'recurringreports'.DS.'smogi'.DS.$fname.'.xls';
+                $varDir = $baseDir.DS.'recurringreports'.DS.'inventory'.DS.$fname.'.xls';
 
                 unlink($varDir);
                 file_put_contents('recurringreports/inventory/'.$fname.'.xls',$output);
@@ -1551,7 +1551,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     if($isActive)
                     {
                     $id = $customer->getId();
-                    $name = $customer->getName();
+                    echo $name = $customer->getName().'---';
                     $email = $customer->getEmail();
                     if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
                         $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
@@ -1563,7 +1563,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $reward_model = Mage::getModel('rewardpoints/stats');
                         $available_points = $reward_model->getPointsCurrent($id, $store_id);
                     }
-
+                    echo $available_points;
                     $total_available_points += $available_points;
                     $output .= "<tr><td style='text-align:center;'>".$id."</td><td>".$name."</td><td>".$email."</td><td style='text-align:right;'>".$available_points."</tr>";
                     }
@@ -1580,8 +1580,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $baseDir = Mage::getBaseDir();
                 $varDir = $baseDir.DS.'recurringreports'.DS.'smogi'.DS.$fname.'.xls';
 
-                unlink($varDir);
-                file_put_contents('recurringreports/smogi/'.$fname.'.xls',$output);
+                //unlink($varDir);
+                //file_put_contents('recurringreports/smogi/'.$fname.'.xls',$output);
 
             }
         }
