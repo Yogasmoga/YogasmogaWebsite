@@ -46,7 +46,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         echo json_encode($inv);
     }
     
-    public function inventoryreportAction()
+    public function inv_reportAction()
     {
         if($this->getRequest()->getParam('pass'))
         {
@@ -1669,7 +1669,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
     public function createrecurringreportsAction()
     {
-        $inventoryUrl = Mage::helper('core/url')->getHomeUrl()."mycatalog/myproduct/inventoryreport/pass/MageHACKER/";
+        $inventoryUrl = Mage::helper('core/url')->getHomeUrl()."mycatalog/myproduct/inv_report/pass/MageHACKER/";
         $smogiUrl = Mage::helper('core/url')->getHomeUrl()."mycatalog/myproduct/smogiinventory/pass/MageHACKER/";
         $this->curl_post_async($inventoryUrl);
         $this->curl_post_async($smogiUrl);
