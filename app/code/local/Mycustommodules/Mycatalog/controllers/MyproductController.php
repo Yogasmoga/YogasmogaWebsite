@@ -98,9 +98,11 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                 $output .= "</table>";
 //                echo 'test';
 //                echo $output;
-                $fname = mktime();
-                file_put_contents('customreports/'.$fname.'.xls',$output);
-                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");
+                //$fname = mktime();
+                $fname = date("M_j_Y");
+                $fname = "inv_".$fname;
+                file_put_contents('recurringreports/inventory/'.$fname.'.xls',$output);
+                //Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");
             }
         }
     }
@@ -246,8 +248,8 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                 $output .= "</tbody></table>";                
                 //echo $output;
                 $fname = mktime();
-                file_put_contents('customreports/'.$fname.'.xls',$output);
-                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");       
+                file_put_contents('tempreports/'.$fname.'.xls',$output);
+                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");       
             }
         }
     }
@@ -287,8 +289,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $output .= "</tbody></table>";                
                 //echo $output;
                 $fname = "referral_".mktime();
-                file_put_contents('customreports/'.$fname.'.xls',$output);
-                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");       
+                file_put_contents('tempreports/'.$fname.'.xls',$output);
+                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");       
             }
         }
     }
@@ -450,8 +452,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 }
           //      echo $output;
                 $fname = mktime();
-                file_put_contents('customreports/'.$fname.'.xls',$output);
-                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");
+                file_put_contents('tempreports/'.$fname.'.xls',$output);
+                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");
             }
             else
                 echo "Invalid Password";
@@ -512,8 +514,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 }
                 //echo $output;
                 $fname = mktime();
-                file_put_contents('customreports/'.$fname.'.xls',$output);
-                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");       
+                file_put_contents('tempreports/'.$fname.'.xls',$output);
+                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");       
             }
         }
     }
@@ -1458,8 +1460,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 //echo 'test';
                // echo $output;
                 $fname = mktime();
-                file_put_contents('customreports/'.$fname.'.xls',$output);
-                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."customreports/".$fname.".xls");
+                file_put_contents('tempreports/'.$fname.'.xls',$output);
+                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");
             }
         }
     }
@@ -1521,6 +1523,52 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         }
         $output .= "<tr><td colspan='4'></td><td style='font-weight:bold;text-align:right;'>".$totalNetSale."</td></tr><tr><td>&nbsp;</td></tr>";
 
+    }
+
+    // smogi inventory report
+
+    public function smogiinventoryAction()
+    {
+        if($this->getRequest()->getParam('pass'))
+        {
+            if($this->getRequest()->getParam('pass') == "MageHACKER")
+            {
+                $output = "<table>";
+                $output .= "<tr style='color:#FFFFFF;'>";
+                $output .= "<td style='background-color:#003366;'>Id</td><td style='background-color:#003366;'>Name</td><td style='background-color:#003366;'>Email</td><td style='background-color:#003366;'>Smogi Bucks</td></tr>";
+                $collection = Mage::getModel("customer/customer")->getCollection()->addAttributeToSelect("*");
+                $store_id = Mage::app()->getStore()->getId();
+                $total_available_points = 0;
+                foreach($collection as $customer)
+                {
+                    $id = $customer->getId();
+                    $name = $customer->getName();
+                    $email = $customer->getEmail();
+                    if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+                        $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+                        $available_points = $reward_flat_model->collectPointsCurrent($id, $store_id);
+
+                    }
+                    else
+                    {
+                        $reward_model = Mage::getModel('rewardpoints/stats');
+                        $available_points = $reward_model->getPointsCurrent($id, $store_id);
+                    }
+
+                    $total_available_points += $available_points;
+                }
+
+                $output .= "<tr><td>".$id."</td><td>".$name."</td><td>".$email."</td><td style='text-align:right;'>".$available_points."</tr>";
+                $output .= "<tr><td colspan='3'></td><td style='font-weight: bold;text-align:right'>".$total_available_points."</td> </tr>";
+                $output .= "</table>";
+
+
+                $fname = date("M_j_Y");
+                $fname = "smogi_".$fname;
+                file_put_contents('recurringreports/smogi/'.$fname.'.xls',$output);
+
+            }
+        }
     }
 
 }
