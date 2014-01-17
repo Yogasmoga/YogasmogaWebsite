@@ -214,6 +214,8 @@ jQuery(window).load(function(){
             $temp1 = "2|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
         $temp1 .= "|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getIsInStock();
         //if(array_key_exists("sizes", $productcolorinfo[$temp]))
+        $backOrderCheck = (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getBackorders();
+        $temp1 .= "|".$backOrderCheck;
         if(isset($productcolorinfo[$temp]["sizes"]))
         {
             //echo "pushing";

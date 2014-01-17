@@ -39,6 +39,8 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                 $temp[1] = "2";
             $temp[2] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
             $temp[3] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getIsInStock();
+            $backOrderCheck = (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getBackorders();
+            $temp[4] = $backOrderCheck;
             array_push($inv, $temp);
         }
         echo json_encode($inv);
