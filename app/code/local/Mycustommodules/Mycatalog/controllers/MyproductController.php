@@ -1600,9 +1600,9 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $fileName = 'inv_'.$monthName.'_'.$datearr[1].'_'.$datearr[2];
 
                 $baseDir = Mage::getBaseDir();
-                $varDir = $baseDir.DS.'recurringreports\inventory';
+                $varDir = $baseDir.DS.'recurringreports'.DS.'inventory';
                 $timeOfImport = $fileName;
-                echo $importReadyDir = $varDir.DS.$timeOfImport.'.xls'; die;
+                echo $importReadyDir = $varDir.DS.$timeOfImport.'.xls';
                 if(!file_exists($importReadyDir))
                 {
                     echo 'File is not exists for this date';
@@ -1631,7 +1631,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $fileName = 'smogi_'.$monthName.'_'.$datearr[1].'_'.$datearr[2];
 
                 $baseDir = Mage::getBaseDir();
-                $varDir = $baseDir.DS.'recurringreports\smogi';
+                $varDir = $baseDir.DS.'recurringreports'.DS.'smogi';
                 $timeOfImport = $fileName;
                 $importReadyDir = $varDir.DS.$timeOfImport.'.xls';
                 if(!file_exists($importReadyDir))
