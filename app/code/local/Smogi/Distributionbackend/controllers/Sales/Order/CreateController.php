@@ -512,7 +512,7 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
                 $readresult=$write->query("Select entity_id from sales_flat_invoice where order_id=".$lastOrderId);
                 $row = $readresult->fetch();
                 if($row)
-                $invoiceid = $row['entity_id'];
+                    $invoiceid = $row['entity_id'];
                 else{
                     $invoiceid = '';
                 }
