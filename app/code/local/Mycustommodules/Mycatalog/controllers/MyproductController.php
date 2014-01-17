@@ -51,7 +51,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
             if($this->getRequest()->getParam('pass') == "MageHACKER")
             {
                 $output = "<table>" ;
-                $output .= "<tr><td style='height:80px;'><img src='http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/logo.png' /></td><td style='vertical-align:middle' colspan='5'>INVENTORY STATUS AS OF ".date("dS M,Y")."</td></tr>";
+                $output .= "<tr><td style='height:80px;width:200px !important'><img src='http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/logo.png' /></td><td style='vertical-align:middle' colspan='5'>INVENTORY STATUS AS OF ".date("dS M,Y")."</td></tr>";
                 $productCollection1 = Mage::getModel('catalog/product')->getCollection()->addAttributeToFilter(array(array('attribute'=>'type_id', 'eq'=>'configurable'), array('attribute'=>'status', 'eq' => Mage_Catalog_Model_Product_Status::STATUS_DISABLED)))->setPageSize(20000);
                 //$productCollection = Mage::getModel('catalog/product')->getCollection()->addAttributeToFilter(array(array('attribute'=>'type_id', 'eq'=>'configurable'), array('attribute'=>'status', 'eq' => '2')));
                 //$productCollection = Mage::getResourceModel('catalog/product_collection')->addAttributeToFilter('type_id', array('eq' => 'configurable'));
@@ -101,6 +101,11 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                 //$fname = mktime();
                 $fname = date("M_j_Y");
                 $fname = "inv_".$fname;
+
+                $baseDir = Mage::getBaseDir();
+                $varDir = $baseDir.DS.'recurringreports'.DS.'smogi'.DS.$fname.'.xls';
+
+                unlink($varDir);
                 file_put_contents('recurringreports/inventory/'.$fname.'.xls',$output);
                 //Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");
             }
@@ -1534,6 +1539,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             if($this->getRequest()->getParam('pass') == "MageHACKER")
             {
                 $output = "<table>";
+                $output .= "<tr><td>&nbsp;</td><td style='height:80px;width:250px !important;'><img src='http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/logo.png' /></td><td style='vertical-align:middle'>SMOGI INVENTORY REPORT AS OF ".date("dS M,Y")."</td></tr>";
                 $output .= "<tr style='color:#FFFFFF;'>";
                 $output .= "<td style='background-color:#003366;'>Id</td><td style='background-color:#003366;'>Name</td><td style='background-color:#003366;'>Email</td><td style='background-color:#003366;'>Smogi Bucks</td></tr>";
                 $collection = Mage::getModel("customer/customer")->getCollection()->addAttributeToSelect("*");
@@ -1541,6 +1547,9 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $total_available_points = 0;
                 foreach($collection as $customer)
                 {
+                    $isActive = $customer->getIsActive();
+                    if($isActive)
+                    {
                     $id = $customer->getId();
                     $name = $customer->getName();
                     $email = $customer->getEmail();
@@ -1556,7 +1565,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     }
 
                     $total_available_points += $available_points;
-                    $output .= "<tr><td>".$id."</td><td>".$name."</td><td>".$email."</td><td style='text-align:right;'>".$available_points."</tr>";
+                    $output .= "<tr><td style='text-align:center;'>".$id."</td><td>".$name."</td><td>".$email."</td><td style='text-align:right;'>".$available_points."</tr>";
+                    }
                 }
 
 
@@ -1566,6 +1576,11 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
                 $fname = date("M_j_Y");
                 $fname = "smogi_".$fname;
+
+                $baseDir = Mage::getBaseDir();
+                $varDir = $baseDir.DS.'recurringreports'.DS.'smogi'.DS.$fname.'.xls';
+
+                unlink($varDir);
                 file_put_contents('recurringreports/smogi/'.$fname.'.xls',$output);
 
             }
@@ -1648,6 +1663,42 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             }
         }
 
+    }
+
+    public function createrecurringreportsAction()
+    {
+        $inventoryUrl = Mage::helper('core/url')->getHomeUrl()."mycatalog/myproduct/inventoryreport/pass/MageHACKER/";
+        $smogiUrl = Mage::helper('core/url')->getHomeUrl()."mycatalog/myproduct/smogiinventory/pass/MageHACKER/";
+        $this->curl_post_async($inventoryUrl);
+        $this->curl_post_async($smogiUrl);
+    }
+
+    function curl_post_async($url, $params = false)
+    {
+        $post_string = "";
+        if($params)
+        {
+            foreach ($params as $key => &$val) {
+                if (is_array($val)) $val = implode(',', $val);
+                $post_params[] = $key.'='.urlencode($val);
+            }
+            $post_string = implode('&', $post_params);
+        }
+
+        $parts=parse_url($url);
+
+        $fp = fsockopen($parts['host'],
+            isset($parts['port'])?$parts['port']:80,
+            $errno, $errstr, 30);
+
+        $out = "POST ".$parts['path']." HTTP/1.1\r\n";
+        $out.= "Host: ".$parts['host']."\r\n";
+        $out.= "Content-Type: application/x-www-form-urlencoded\r\n";
+        $out.= "Content-Length: ".strlen($post_string)."\r\n";
+        $out.= "Connection: Close\r\n\r\n";
+        if (isset($post_string)) $out.= $post_string;
+        fwrite($fp, $out);
+        fclose($fp);
     }
 
 }
