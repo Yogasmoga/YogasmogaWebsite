@@ -1602,7 +1602,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $baseDir = Mage::getBaseDir();
                 $varDir = $baseDir.DS.'recurringreports\inventory';
                 $timeOfImport = $fileName;
-                $importReadyDir = $varDir.DS.$timeOfImport.'.xls';
+                echo $importReadyDir = $varDir.DS.$timeOfImport.'.xls'; die;
                 if(!file_exists($importReadyDir))
                 {
                     echo 'File is not exists for this date';
