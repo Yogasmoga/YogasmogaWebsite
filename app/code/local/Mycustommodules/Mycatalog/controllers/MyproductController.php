@@ -1576,7 +1576,14 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
     {
         if($this->getRequest()->getParam('type'))
         {
-            if($this->getRequest()->getParam('type') == "Inventory")
+            $type = $this->getRequest()->getParam('type');
+            $type = strtolower($type);
+            if(($type !='inventory')&&($type != 'smogi'))
+            {
+                echo 'Invalid Report type.';
+                return;
+            }
+            if( $type == 'inventory')
             {
 
                 $date = $this->getRequest()->getParam('date');
@@ -1591,12 +1598,24 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
                 $monthName= substr($monthName,0,3);
                 $fileName = 'inv_'.$monthName.'_'.$datearr[1].'_'.$datearr[2];
-                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."recurringreports/inventory/".$fileName.".xls");
+
+                $baseDir = Mage::getBaseDir();
+                $varDir = $baseDir.DS.'recurringreports\inventory';
+                $timeOfImport = $fileName;
+                $importReadyDir = $varDir.DS.$timeOfImport.'.xls';
+                if(!file_exists($importReadyDir))
+                {
+                    echo 'File is not exists for this date';
+                }
+                else
+                {
+                    Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."recurringreports/inventory/".$fileName.".xls");
+                }
+
+
             }
-        }
-        if($this->getRequest()->getParam('type'))
-        {
-            if($this->getRequest()->getParam('type') == "Smogi")
+
+            if($type == 'smogi')
             {
                 $date = $this->getRequest()->getParam('date');
                 $datearr = split("-", $date);
@@ -1610,7 +1629,22 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
                 $monthName= substr($monthName,0,3);
                 $fileName = 'smogi_'.$monthName.'_'.$datearr[1].'_'.$datearr[2];
-                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."recurringreports/smogi/".$fileName.".xls");
+
+                $baseDir = Mage::getBaseDir();
+                $varDir = $baseDir.DS.'recurringreports\smogi';
+                $timeOfImport = $fileName;
+                $importReadyDir = $varDir.DS.$timeOfImport.'.xls';
+                if(!file_exists($importReadyDir))
+                {
+                    echo 'File is not exists for this date';
+                }
+                else
+                {
+                    Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."recurringreports/smogi/".$fileName.".xls");
+                }
+
+
+
             }
         }
 
