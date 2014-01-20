@@ -27,7 +27,7 @@
 		
         <table class="tblsmogilogin">
 		<tr>
-		<td><h2 class="discount-title"><?php echo $this->__('SMOGI BUCKS'); ?></h2>
+		<td><h2 class="discount-title"><?php echo $this->__('SMOGI BUCKS*'); ?></h2>
 		</td>
 		<td>&nbsp;</td>
 		<td width="545px" style="text-align:right;" rowspan="2">
@@ -95,7 +95,7 @@
 			else
 			{
 			?>
-                <div style="float: right; color: #666666; font-family: gothamlight; width: 400px" >
+                <div style="float: right; color: #666666; font-family: gothamlight; width: 450px" >
                     *Orders where SMOGI BUCKS or PROMOTIONS are redeemed are ineligible to earn additional SMOGI BUCKS.
                 </div>
 			<?php 
@@ -223,18 +223,20 @@
 					if (Mage::getSingleton('core/session')->getCPmsg() > $points_currently_used && Mage::getSingleton('core/session')->getAccessoriesTot() > 0)
 					{	?>
 			<td width="545px" style="text-align:right;" rowspan="2">
-					<div style="color: #666666; font-family: gothamlight;width: 400px;float: right;" >
+					<div style="color: #666666; font-family: gothamlight;width: 450px;float: right;" >
 					*Orders where SMOGI BUCKS or PROMOTIONS are redeemed are ineligible to earn additional SMOGI BUCKS.
 					 <div style="margin-top : 10px;color:#666666;">
 					 **Only <?php echo $points_currently_used ?> of your requested <?php echo Mage::getSingleton('core/session')->getCPmsg();//$point_details['max_use']; ?> SMOGI Bucks were applied to your order as <br/>you cannot use SMOGI Bucks on Accessories and the Namaskar Bracelet.<br/>
-					 
+                         <style type="text/css">#double-star{
+                                 display: inline !important;
+                             }</style>
 					 </div>
 					 </div>
 					</td>
 			<?php }else
 		{			?>
 		
-		<div style="float: right; color: #666666; font-family: gothamlight; width: 400px" >
+		<div style="float: right; color: #666666; font-family: gothamlight; width: 450px" >
              *Orders where SMOGI BUCKS or PROMOTIONS are redeemed are ineligible to earn additional SMOGI BUCKS.
              </div>
 			 <?php }
@@ -242,7 +244,7 @@
 				</tr>
                 <tr>
                     <td style="padding-right: 5px; width: 302px;">
-                        <p><?php echo $this->__('You are currently using %d Bucks of your %d <a target="_blank" href ="'.$this->getUrl('smogi-bucks').'">SMOGI Bucks</a> available*.', $points_currently_used, $this->getCustomerPoints()); ?></p>
+                        <p><?php echo $this->__('You are currently using %d Bucks of your %d <a target="_blank" href ="'.$this->getUrl('smogi-bucks').'">SMOGI Bucks</a> available.<span id="double-star" style="display:none;">**</span>', $points_currently_used, $this->getCustomerPoints()); ?></p>
                     </td>
 					
                 
