@@ -31,7 +31,7 @@
 		</td>
 		<td>&nbsp;</td>
 		<td width="545px" style="text-align:right;" rowspan="2">
-		<div style="float: right; color: rgb(169, 169, 169); font-family: gothamlight; margin-right: 15px;" >
+		<div style="float: right; color: #666666; font-family: gothamlight; margin-right: 15px;" >
              *You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.
              </div>
 		</td>
@@ -71,7 +71,7 @@
         <fieldset>
             <h2><?php echo $this->__('SMOGI BUCKS'); ?></h2>
             <!--<span style="color: #666666;font-family: gotham-m;font-size: 11px; padding: 0;text-transform: uppercase;"><?php echo $this->__('SMOGI BUCKS'); ?></h2></span>-->
-			<div style="float: right; color: rgb(169, 169, 169); font-family: gothamlight; margin-right: 15px;" >
+			<div style="float: right; color: #666666; font-family: gothamlight; margin-right: 15px;" >
 			<?php
 			$coupon_code = Mage::getSingleton('checkout/session')->getQuote()->getCouponCode();
 			$bucksused = Mage::helper('rewardpoints/event')->getCreditPoints();
@@ -95,7 +95,9 @@
 			else
 			{
 			?>
-			*You don't earn SMOGI Bucks on orders where you are using any kind of promotion.
+                <div style="float: right; color: #666666; font-family: gothamlight; width: 400px" >
+                    *Orders where SMOGI BUCKS or PROMOTIONS are redeemed are ineligible to earn additional SMOGI BUCKS.
+                </div>
 			<?php 
 			}
 			?>
@@ -212,7 +214,7 @@
             <table class="removebucks" >
 				<tr>
 					<td>
-						<h2><?php echo $this->__('SMOGI BUCKS'); ?></h2>
+						<h2><?php echo $this->__('SMOGI BUCKS*'); ?></h2>
 					</td>
 					<td>&nbsp;</td>
 					<?php 
@@ -221,8 +223,8 @@
 					if (Mage::getSingleton('core/session')->getCPmsg() > $points_currently_used && Mage::getSingleton('core/session')->getAccessoriesTot() > 0)
 					{	?>
 			<td width="545px" style="text-align:right;" rowspan="2">
-					<div style="color: rgb(169, 169, 169); font-family: gothamlight;" >
-					*You don't earn SMOGI Bucks on orders where you are using any kind of promotion.
+					<div style="color: #666666; font-family: gothamlight;width: 400px;float: right;" >
+					*Orders where SMOGI BUCKS or PROMOTIONS are redeemed are ineligible to earn additional SMOGI BUCKS.
 					 <div style="margin-top : 10px;">
 					 **Only <?php echo $points_currently_used ?> of your requested <?php echo Mage::getSingleton('core/session')->getCPmsg();//$point_details['max_use']; ?> SMOGI Bucks were applied to your order as <br/>you cannot use SMOGI Bucks on Accessories and the Namaskar Bracelet.<br/>
 					 
@@ -232,15 +234,15 @@
 			<?php }else
 		{			?>
 		
-		<div style="float: right; color: rgb(169, 169, 169); font-family: gothamlight; margin-right: 15px;" >
-             *You don't earn SMOGI Bucks on orders where you are using any kind of promotion.
+		<div style="float: right; color: #666666; font-family: gothamlight; width: 400px" >
+             *Orders where SMOGI BUCKS or PROMOTIONS are redeemed are ineligible to earn additional SMOGI BUCKS.
              </div>
 			 <?php }
 			 ?>
 				</tr>
                 <tr>
                     <td style="padding-right: 5px; width: 302px;">
-                        <p><?php echo $this->__('You are currently using %d Bucks of your %d <a target="_blank" href ="'.$this->getUrl('smogi-bucks').'">SMOGI Bucks</a> available.', $points_currently_used, $this->getCustomerPoints()); ?></p>            
+                        <p><?php echo $this->__('You are currently using %d Bucks of your %d <a target="_blank" href ="'.$this->getUrl('smogi-bucks').'">SMOGI Bucks</a> available*.', $points_currently_used, $this->getCustomerPoints()); ?></p>
                     </td>
 					
                 

@@ -38,7 +38,34 @@ function addbracelettocart()
         var addurl = homeUrl + 'mycheckout/mycart/add?product=' + _productid + '&qty=' + _productorderqty + '&super_attribute[' + _colorattributeid + ']=' + color;
         if(_sizesuperattribute)
             addurl = addurl + '&super_attribute[' + _sizeattributeid + ']=' + size;
+        var targetUrl = homeUrl + 'mycatalog/myproduct/setNamaskarError/qty/' + _productorderqty;
         jQuery.ajax({
+            type : 'POST',
+            url : addurl,
+            data : {},
+            success : function(result){
+                result = eval('(' + result + ')');
+                _addingtocart = false;
+                if(result.status == 'success')
+                {
+                    _isaddedtobracelet = true;
+                    jQuery("#bagform").submit();
+                }
+                else
+                {
+                    jQuery.ajax({
+                        type : 'POST',
+                        url : targetUrl,
+                        data : {},
+                        success : function(result){
+                            _isaddedtobracelet = true;
+                            jQuery("#bagform").submit();
+                        }
+                    });
+                }
+            }
+        });
+        /*jQuery.ajax({
             type : 'POST',
             url : addurl,
             data : {},
@@ -55,7 +82,7 @@ function addbracelettocart()
                     alert('Oops! An unexpected error occured.');
                 }
             }
-        });
+        }); */
         return false;    
     }
 }

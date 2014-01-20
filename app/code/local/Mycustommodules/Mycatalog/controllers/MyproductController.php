@@ -1703,5 +1703,20 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         fclose($fp);
     }
 
+    public function setNamaskarErrorAction()
+    {
+        Mage::getSingleton('core/session')->setCartNamaskarError($this->getRequest()->getParam('qty'));
+        return;
+//        $result = file_get_contents($this->getRequest()->getParam('url'));
+//        $result = json_encode($result,true);
+//        print_r($result);
+//        if($result['status']=='error')
+//        {
+//            Mage::getSingleton('core/session')->setCartNamaskarError('1');
+//        }
+//        $result = Array();
+//        $result['status']='success';
+//        echo json_encode($result);
+    }
 }
 ?>
