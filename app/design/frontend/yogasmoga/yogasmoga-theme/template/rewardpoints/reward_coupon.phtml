@@ -95,8 +95,8 @@
 			else
 			{
 			?>
-                <div style="float: right; color: #666666; font-family: gothamlight; width: 450px" >
-                    *Orders where SMOGI Bucks or Promotions are redeemed are ineligible to earn additional SMOGI Bucks.
+                <div style="float: right; color: #666666; font-family: gothamlight; " >
+                    *Orders where SMOGI Bucks or Promotions are redeemed<br/>are ineligible to earn additional SMOGI Bucks.
                 </div>
 			<?php 
 			}
@@ -223,8 +223,8 @@
 					if (Mage::getSingleton('core/session')->getCPmsg() > $points_currently_used && Mage::getSingleton('core/session')->getAccessoriesTot() > 0)
 					{	?>
 			<td width="545px" style="text-align:right;" rowspan="2">
-					<div style="color: #666666; font-family: gothamlight;width: 450px;float: right;" >
-					*Orders where SMOGI Bucks or Promotions are redeemed are ineligible to earn additional SMOGI Bucks.
+					<div style="color: #666666; font-family: gothamlight;float: right;" >
+					*Orders where SMOGI Bucks or Promotions are redeemed<br/>are ineligible to earn additional SMOGI Bucks.
 					 <div style="margin-top : 10px;color:#666666;">
 					 **Only <?php echo $points_currently_used ?> of your requested <?php echo Mage::getSingleton('core/session')->getCPmsg();//$point_details['max_use']; ?> SMOGI Bucks were applied to your order as <br/>you cannot use SMOGI Bucks on Accessories and the Namaskar Bracelet.<br/>
                          <style type="text/css">#double-star{
@@ -236,8 +236,8 @@
 			<?php }else
 		{			?>
 		
-		<div style="float: right; color: #666666; font-family: gothamlight; width: 450px" >
-             *Orders where SMOGI Bucks or Promotions are redeemed are ineligible to earn additional SMOGI Bucks.
+		<div style="float: right; color: #666666; font-family: gothamlight;" >
+             *Orders where SMOGI Bucks or Promotions are redeemed<br/>are ineligible to earn additional SMOGI Bucks.
              </div>
 			 <?php }
 			 ?>
