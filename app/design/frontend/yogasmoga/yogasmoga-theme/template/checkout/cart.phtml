@@ -318,7 +318,7 @@
                                 $qty = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
                                 $stock = $_childproduct->getStockItem();
                                 $inStock = $stock->getIsInStock();
-                                $isPreorder = (int) $_childproduct->getBackorders();
+                                 $isPreorder = (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getBackorders();
                                 if(!(($inStock == 0)&&($isPreorder == 0)))
                                 {
                                     $doNotShowBracelet = true;

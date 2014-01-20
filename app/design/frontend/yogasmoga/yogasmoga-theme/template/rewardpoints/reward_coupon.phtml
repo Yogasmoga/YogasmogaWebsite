@@ -69,7 +69,7 @@
     <?php if (!$points_currently_used): ?>
     <form action="<?php echo $this->getUrl('rewardpoints/index/quotation/') ?>" method="post" name="discountFormPoints2" id="discountFormPoints2">
         <fieldset>
-            <h2><?php echo $this->__('SMOGI BUCKS'); ?></h2>
+            <h2><?php echo $this->__('SMOGI BUCKS*'); ?></h2>
             <!--<span style="color: #666666;font-family: gotham-m;font-size: 11px; padding: 0;text-transform: uppercase;"><?php echo $this->__('SMOGI BUCKS'); ?></h2></span>-->
 			<div style="float: right; color: #666666; font-family: gothamlight; margin-right: 15px;" >
 			<?php
@@ -225,7 +225,7 @@
 			<td width="545px" style="text-align:right;" rowspan="2">
 					<div style="color: #666666; font-family: gothamlight;width: 400px;float: right;" >
 					*Orders where SMOGI BUCKS or PROMOTIONS are redeemed are ineligible to earn additional SMOGI BUCKS.
-					 <div style="margin-top : 10px;">
+					 <div style="margin-top : 10px;color:#666666;">
 					 **Only <?php echo $points_currently_used ?> of your requested <?php echo Mage::getSingleton('core/session')->getCPmsg();//$point_details['max_use']; ?> SMOGI Bucks were applied to your order as <br/>you cannot use SMOGI Bucks on Accessories and the Namaskar Bracelet.<br/>
 					 
 					 </div>
