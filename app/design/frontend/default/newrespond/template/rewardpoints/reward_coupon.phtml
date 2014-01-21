@@ -63,7 +63,7 @@
     <?php if (!$points_currently_used): ?>
     <form action="<?php echo $this->getUrl('rewardpoints/index/quotation/') ?>" method="post" name="discountFormPoints2" id="discountFormPoints2">
         <fieldset>
-            <h6><?php echo $this->__('SMOGI BUCKS'); ?></h6>
+            <h6><?php echo $this->__('SMOGI BUCKS*'); ?></h6>
             
             <?php echo $this->getIllustrationImage()?>
             
@@ -164,11 +164,11 @@
     <?php else: ?>
     <form action="<?php echo $this->getUrl('rewardpoints/index/removequotation/') ?>" method="post" name="discountFormPoints2" id="discountFormPoints2">
         <fieldset>
-            <h6><?php echo $this->__('SMOGI BUCKS'); ?></h6>
+            <h6><?php echo $this->__('SMOGI BUCKS*'); ?></h6>
             <?php echo $this->getIllustrationImage()?>
             <div class="rewards_point_cart"><?php echo $this->__("This shopping cart is worth %s loyalty point(s).", $pts);?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($pts);?></div>
             <?php if ($points_currently_used > 0):?>
-            <p><?php echo $this->__('You are currently using %d Buck(s) of your %d SMOGI Buck(s) available.', $points_currently_used, $this->getCustomerPoints()); ?></p>
+            <p><?php echo $this->__('You are currently using %d Buck(s) of your %d SMOGI Buck(s) available.<span id="double-star" style="display:none;">**</span>', $points_currently_used, $this->getCustomerPoints()); ?></p>
             <?php endif;?>
             <div class="buttons-set">
                 <button class="button btn-update" type="button" onclick="discountFormPoints2.submit(false)" value="<?php echo $this->__('Remove Points') ?>"><span><span><?php echo $this->__('Remove') ?></span></span></button>
@@ -205,7 +205,9 @@
 					<div>
 					 <div style="margin-top : 10px;">
 					 **Only <?php echo $points_currently_used ?> of your requested <?php echo Mage::getSingleton('core/session')->getCPmsg();//$point_details['max_use']; ?> SMOGI Bucks were applied to your order as <br/>you cannot use SMOGI Bucks on Accessories and the Namaskar Bracelet.<br/>
-					 
+                         <style type="text/css">#double-star{
+                                 display: inline !important;
+                             }</style>
 					 </div>
 					 </div>
 					</td>
@@ -322,7 +324,7 @@
     <?php if (!$points_currently_used): ?>
     <form action="<?php echo $this->getUrl('rewardpoints/index/quotation/') ?>" method="post" name="discountFormPoints2" id="discountFormPoints2">
         <fieldset>
-            <h6><?php echo $this->__('Smogi bucks'); ?></h6>
+            <h6><?php echo $this->__('Smogi bucks*'); ?></h6>
             
             <?php echo $this->getIllustrationImage()?>
             
