@@ -1427,6 +1427,30 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         {
             if($this->getRequest()->getParam('pass') == "MageHACKER")
             {
+                $startdate = $this->getRequest()->getParam('startdate');
+                $datearr = split("-", $startdate);
+                //print_r($datearr);
+                if(!checkdate($datearr[0], $datearr[1], $datearr[2]))
+                {
+                    echo "Invalid Date";
+                    return;
+                }
+                $startdate = $datearr[2]."-".$datearr[0]."-".$datearr[1];
+
+                $enddate = $this->getRequest()->getParam('enddate');
+                $datearr = split("-", $enddate);
+                //print_r($datearr);
+                if(!checkdate($datearr[0], $datearr[1], $datearr[2]))
+                {
+                    echo "Invalid Date";
+                    return;
+                }
+                $enddate = $datearr[2]."-".$datearr[0]."-".$datearr[1]." 23:59:59";
+
+
+
+
+
                 $output = "<table>" ;
                 $output .= "<tr><td style='height:80px;'><img src='http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/logo.png' /></td><td style='vertical-align:middle' colspan='5'>SKU SALES REPORT AS OF ".date("dS M,Y")."</td></tr>";
                 $productCollection = Mage::getModel('catalog/product')->getCollection()->addAttributeToFilter(array(array('attribute'=>'type_id', 'eq'=>'configurable'), array('attribute'=>'status', 'eq' => Mage_Catalog_Model_Product_Status::STATUS_DISABLED)))->setPageSize(20000);
@@ -1450,13 +1474,13 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                             array_push($arrAccessories, $product->getId());
                         }
                         else
-                            $this->getinventoryskuhtml($product->getId(), $output);
+                            $this->getinventoryskuhtml($product->getId(), $output,$startdate,$enddate);
                     }
                     //echo $i . "\n\n";
 
                 }
                 for($ii = 0; $ii < count($arrAccessories); $ii++)
-                    $this->getinventoryskuhtml($arrAccessories[$ii], $output);
+                    $this->getinventoryskuhtml($arrAccessories[$ii], $output,$startdate,$enddate);
 
 //                $output .= "<tr><td colspan='2' style='font-weight:bold;'>LEGEND</td></tr>";
 //                $output .= "<tr><td>VALUE</td><td colspan='4'>Product is in stock and the inventory is positive.</td></tr>";
@@ -1473,8 +1497,10 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         }
     }
 
-    public function getinventoryskuhtml($product, &$output)
+    public function getinventoryskuhtml($product, &$output,$startdate,$enddate)
     {
+
+
         //echo $product->getId() . "\n\n";
         $_product = Mage::getModel('catalog/product')->load($product);
         $productname = Mage::Helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name');
@@ -1515,7 +1541,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             //echo "SELECT SUM(base_row_total + base_tax_amount - base_discount_amount - COALESCE(base_amount_refunded, 0) - COALESCE(base_tax_refunded,0) + COALESCE(base_discount_refunded,0)) AS 'total collection'  FROM sales_flat_order_item where sku='".$sku."'";die;
             $write2 = Mage::getSingleton('core/resource')->getConnection('core_read');
             //$result2 = $write2->query("SELECT sum(base_row_total_incl_tax-base_discount_amount) AS 'net_amount' FROM sales_flat_order_item  WHERE product_type = 'configurable' AND sku='".$sku."'");
-            $result2 = $write2->query("SELECT SUM(base_row_total + base_tax_amount - base_discount_amount - COALESCE(base_amount_refunded, 0) - COALESCE(base_tax_refunded,0) + COALESCE(base_discount_refunded,0)) AS 'net_amount'  FROM sales_flat_order_item where sku='".$sku."'");
+            $result2 = $write2->query("SELECT SUM(base_row_total + base_tax_amount - base_discount_amount - COALESCE(base_amount_refunded, 0) - COALESCE(base_tax_refunded,0) + COALESCE(base_discount_refunded,0)) AS 'net_amount'  FROM sales_flat_order_item  where created_at >= '".$startdate."' AND created_at <= '".$enddate."'  and sku='".$sku."'");
             $row2 = $result2->fetch();
             //$netAmount = round($row2['net_amount'], 2);
             $netAmount = $row2['net_amount'];
