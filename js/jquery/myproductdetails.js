@@ -151,40 +151,42 @@ function changeproductsize(sz)
         jQuery("#preorderitem").hide();
         jQuery("#preorderhelp").hide();
         jQuery("#outofstockitem").show();
-        //return;
+//        return;
     }
     else
     {
         jQuery("#outofstockitem").hide();
-    }
-    
-    var qty = sz.attr("qty") * 1;
-    var orderqty =_productorderqty;
-    if((qty - orderqty) >= 0)
-    {
-        jQuery("#orderitem").show();
-        jQuery("#preorderitem").hide();
-        jQuery("#preorderhelp").hide();
-        jQuery("#outofstockitem").hide();
-    }
-    else
-    {
-        if(sz.hasClass("canbackorder"))
+        var qty = sz.attr("qty") * 1;
+        var orderqty =_productorderqty;
+        if((qty - orderqty) >= 0)
         {
-            jQuery("#orderitem").hide();
-            jQuery("#preorderitem").show();
-            jQuery("#preorderhelp").show();
-            jQuery("#outofstockitem").hide();   
+            jQuery("#orderitem").show();
+            jQuery("#preorderitem").hide();
+            jQuery("#preorderhelp").hide();
+            jQuery("#outofstockitem").hide();
         }
         else
         {
-            jQuery("#orderitem").hide();
-            jQuery("#preorderitem").hide();
-            jQuery("#preorderhelp").hide();
-            jQuery("#outofstockitem").show();
-            //return;
+            if(sz.hasClass("canbackorder"))
+            {
+                jQuery("#orderitem").hide();
+                jQuery("#preorderitem").show();
+                jQuery("#preorderhelp").show();
+                jQuery("#outofstockitem").hide();
+            }
+            else
+            {
+                jQuery("#orderitem").hide();
+                jQuery("#preorderitem").hide();
+                jQuery("#preorderhelp").hide();
+                jQuery("#outofstockitem").show();
+//                return;
+            }
         }
+
     }
+    
+
     var price = sz.attr("price");
     jQuery("div.productcost").html("$" + price);
     //var rewardpoints = Math.floor((price * 1) * _rewardpointsearned);
@@ -213,28 +215,40 @@ function changeOrderqty(qty)
         jQuery("div.smogibuckcount td").html(_rewardpoints);
     //jQuery("div.smogibuckcount td").html(_rewardpoints * qty);
     var stockqty = jQuery("div#sizecontainer div.dvselectedsize").attr("qty") * 1;
-    if((stockqty - qty) >= 0)
+    if(jQuery("div#sizecontainer div.dvselectedsize").hasClass("outofstock"))
     {
-        jQuery("#orderitem").show();
+        jQuery("#orderitem").hide();
         jQuery("#preorderitem").hide();
-        jQuery("#preorderhelp").hide();   
-        jQuery("#outofstockitem").hide();         
+        jQuery("#preorderhelp").hide();
+        jQuery("#outofstockitem").show();
+//        return;
     }
     else
     {
-        if(jQuery("div#sizecontainer div.dvselectedsize").hasClass('canbackorder'))
+        jQuery("#outofstockitem").hide();
+        if((stockqty - qty) >= 0)
         {
-            jQuery("#orderitem").hide();
-            jQuery("#preorderitem").show();
-            jQuery("#preorderhelp").show();
-            jQuery("#outofstockitem").hide();   
+            jQuery("#orderitem").show();
+            jQuery("#preorderitem").hide();
+            jQuery("#preorderhelp").hide();
+            jQuery("#outofstockitem").hide();
         }
         else
         {
-            jQuery("#orderitem").hide();
-            jQuery("#preorderitem").hide();
-            jQuery("#preorderhelp").hide();
-            jQuery("#outofstockitem").show();
+            if(jQuery("div#sizecontainer div.dvselectedsize").hasClass('canbackorder'))
+            {
+                jQuery("#orderitem").hide();
+                jQuery("#preorderitem").show();
+                jQuery("#preorderhelp").show();
+                jQuery("#outofstockitem").hide();
+            }
+            else
+            {
+                jQuery("#orderitem").hide();
+                jQuery("#preorderitem").hide();
+                jQuery("#preorderhelp").hide();
+                jQuery("#outofstockitem").show();
+            }
         }
     }
 }
