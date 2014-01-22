@@ -564,11 +564,29 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
                 Mage::log($temp."   ".$discount_amount,null,'distribution.log');    
                 if($temp < $discount_amount)
                 {
-                    $arrOrderItem[count($arrOrderItem) - 1]['price'] += ($discount_amount - $temp);
+                    for($i = count($arrOrderItem)-1; $i >=0 ; $i--)
+                    {
+                        if($arrOrderItem[$i]['exclude'] == 0)
+                        {
+                            $arrOrderItem[$i]['price'] += ($discount_amount - $temp);
+                            break;
+                        }
+
+                    }
+                    //$arrOrderItem[count($arrOrderItem) - 1]['price'] += ($discount_amount - $temp);
                 }
                 if($temp > $discount_amount)
                 {
-                    $arrOrderItem[count($arrOrderItem) - 1]['price'] -= ($temp - $discount_amount);
+                    for($i = count($arrOrderItem)-1; $i >=0 ; $i--)
+                    {
+                        if($arrOrderItem[$i]['exclude'] == 0)
+                        {
+                            $arrOrderItem[$i]['price'] -= ($temp - $discount_amount);
+                            break;
+                        }
+
+                    }
+                    //$arrOrderItem[count($arrOrderItem) - 1]['price'] -= ($temp - $discount_amount);
                 }
                 for($i = 0; $i < count($arrOrderItem); $i++)
                 {
