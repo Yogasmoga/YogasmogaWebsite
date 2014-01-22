@@ -670,8 +670,11 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
                         if ($rewardPoints > 0){
                             
                             $reward_model = Mage::getModel('rewardpoints/stats');
+//                            $post = array('order_id' => $order->getIncrementId(), 'customer_id' => $referralModel->getData('rewardpoints_referral_parent_id'),
+//                                'store_id' => $order->getStoreId(), 'points_current' => $rewardPoints, 'rewardpoints_referral_id' => $referralModel->getData('rewardpoints_referral_id'));
                             $post = array('order_id' => $order->getIncrementId(), 'customer_id' => $referralModel->getData('rewardpoints_referral_parent_id'),
-                                'store_id' => $order->getStoreId(), 'points_current' => $rewardPoints, 'rewardpoints_referral_id' => $referralModel->getData('rewardpoints_referral_id'));
+                                'store_id' => $order->getStoreId(), 'points_current' => $rewardPoints, 'rewardpoints_referral_id' => $referralModel->getData('rewardpoints_referral_id'), 'date_start'=>date("Y-m-d"),'date_end'=>date('Y-m-d', strtotime('+1 years')));
+
                             $reward_model->setData($post);
                             $reward_model->save();
                         }
