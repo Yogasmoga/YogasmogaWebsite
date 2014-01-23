@@ -502,7 +502,8 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
             $row = $readresult->fetch();
             $smogiused = false;
 			Mage::log("Base Discount = ".$row['base_discount_amount'],null,'distribution.log');
-            if($row['base_discount_amount'] < 0 && $row['grand_total'] > 0 && $row['coupon_code'] == '')
+            //if($row['base_discount_amount'] < 0 && $row['grand_total'] > 0 && $row['coupon_code'] == '')
+            if($row['base_discount_amount'] < 0 && $row['grand_total'] > 0)
             {
                 $discount_amount = $row['base_discount_amount'] * -1;
 				Mage::log("Rewardpoints = ".$row['rewardpoints_quantity'],null,'distribution.log');
@@ -554,8 +555,16 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
                     }
                     else
                     {
-                        $percent = round((($arrOrderItem[$i]['price'] / $total) * 100), 2);
-                        $discount = round(($discount_amount * $percent) / 100);
+                        if($row['coupon_code'] == '')
+                        {
+                            $percent = round((($arrOrderItem[$i]['price'] / $total) * 100), 2);
+                            $discount = round(($discount_amount * $percent) / 100);    
+                        }
+                        else
+                        {
+                            $percent = round((($arrOrderItem[$i]['price'] / $total) * 100), 2);
+                            $discount = round((($discount_amount * $percent) / 100), 2);
+                        }
                         $temp += $discount;
                         $arrOrderItem[$i]['price'] = $discount;   
                     }
