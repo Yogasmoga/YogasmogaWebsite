@@ -32,7 +32,8 @@
 		<td>&nbsp;</td>
 		<td width="545px" style="text-align:right;" rowspan="2">
 		<div style="float: right; color: #666666; font-family: gothamlight; margin-right: 15px;" >
-             *You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.
+             *You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.<br/>
+             *Orders where SMOGI Bucks or Promotions are redeemed<br/>are ineligible to earn additional SMOGI Bucks.
              </div>
 		</td>
 		</tr>
@@ -82,7 +83,8 @@
 			{
 			
 			?>
-             *You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.
+             *You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.<br/>
+             *Orders where SMOGI Bucks or Promotions are redeemed<br/>are ineligible to earn additional SMOGI Bucks.
 			<?php   
 			//if (Mage::getSingleton('core/session')->getAccessoriesTot() == $point_details['max_use'])	
 			if($points_currently_used == 0 && Mage::getSingleton('core/session')->getCPmsg() > 0)

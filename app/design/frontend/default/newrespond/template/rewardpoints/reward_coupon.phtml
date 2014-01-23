@@ -34,14 +34,15 @@
     font-family: gotham-m,arial;
     font-size: 16px;
     font-weight: normal;
-    line-height: 1.2;">DO YOU HAVE SMOGI BUCKS?</h6>
+    line-height: 1.2;">DO YOU HAVE SMOGI BUCKS?*</h6>
                 </div>
                     <p>Returning customer? Use your SMOGI Bucks from past purchases.</p>
             		
             		<a href="<?php  echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/login?goto=cart">
             		<button value="<?php echo $this->__('Login') ?>" class="button1 btn-cart1" title="Login" type="button"><span>LOGIN</span></button>
                     </a>
-            		
+                    </br></br>*You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.</br>
+                    *Orders where SMOGI Bucks or Promotions are redeemed<br/>are ineligible to earn additional SMOGI Bucks.
             		<!-- <button value="<?php echo $this->__('Login') ?>" onclick="setLocation('<?php  echo Mage::helper('customer')->getLoginUrl(); ?>')" class="button btn-sec" title="Login" type="button"><span><span><?php echo $this->__('Login') ?></span></span></button>
                 	-->
                 </td>
@@ -143,7 +144,8 @@
                 
                 
                  <div style="margin-top : 5px;">
-                You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a><br/> after this purchase.
+                *You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a><br/> after this purchase.</br>
+                     *Orders where SMOGI Bucks or Promotions are redeemed<br/>are ineligible to earn additional SMOGI Bucks.
 			<?php	if($points_currently_used == 0 && Mage::getSingleton('core/session')->getCPmsg() > 0) 
 			{	
 			echo "<br/>You cannot use SMOGI Bucks on Accessories and the Namaskar Bracelet.<br/>"; 
@@ -186,7 +188,8 @@
 			if(!($coupon_code  || $bucksused || $gcard))
 			{
 			?>
-             *You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.
+             *You will earn <?php echo $pts; ?> <a target="_blank" href ="<?php echo $this->getUrl('smogi-bucks'); ?>">SMOGI Bucks</a> after this purchase.</br>
+              *Orders where SMOGI Bucks or Promotions are redeemed<br/>are ineligible to earn additional SMOGI Bucks.
 			<?php        
 			}
 			else
