@@ -242,6 +242,7 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
             $row = $readresult->fetch();
             $smogiused = false;
 			Mage::log("Base Discount = ".$row['base_discount_amount'],null,'distribution.log');
+            $couponcode = $row['coupon_code'];
             //if($row['base_discount_amount'] < 0 && $row['grand_total'] > 0 && $row['coupon_code'] == '')
             if($row['base_discount_amount'] < 0 && $row['grand_total'] > 0)
             {
@@ -295,7 +296,7 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
                     }
                     else
                     {
-                        if($row['coupon_code'] == '')
+                        if($couponcode == '')
                         {
                             $percent = round((($arrOrderItem[$i]['price'] / $total) * 100), 2);
                             $discount = round(($discount_amount * $percent) / 100);    
