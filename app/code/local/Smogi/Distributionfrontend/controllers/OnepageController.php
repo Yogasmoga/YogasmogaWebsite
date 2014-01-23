@@ -302,8 +302,9 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
                         }
                         else
                         {
-                            $percent = round((($arrOrderItem[$i]['price'] / $total) * 100), 2);
+                            $percent = ($arrOrderItem[$i]['price'] / $total) * 100;
                             $discount = round((($discount_amount * $percent) / 100), 2);
+                            Mage::log($arrOrderItem[$i]['product_id']." - ".$percent."% - ".$discount,null,'distribution.log');
                         }
                         $temp += $discount;
                         $arrOrderItem[$i]['price'] = $discount;   

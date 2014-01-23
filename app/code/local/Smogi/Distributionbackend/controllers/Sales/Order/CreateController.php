@@ -562,8 +562,9 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
                         }
                         else
                         {
-                            $percent = round((($arrOrderItem[$i]['price'] / $total) * 100), 2);
+                            $percent = ($arrOrderItem[$i]['price'] / $total) * 100;
                             $discount = round((($discount_amount * $percent) / 100), 2);
+                            Mage::log($arrOrderItem[$i]['product_id']." - ".$percent."% - ".$discount,null,'distribution.log');        
                         }
                         $temp += $discount;
                         $arrOrderItem[$i]['price'] = $discount;   
