@@ -504,8 +504,8 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
             $smogiused = false;
 			Mage::log("Base Discount = ".$row['base_discount_amount'],null,'distribution.log');
             $couponcode = $row['coupon_code'];
-            //if($row['base_discount_amount'] < 0 && $row['grand_total'] > 0 && $row['coupon_code'] == '')
-            if($row['base_discount_amount'] < 0 && $row['grand_total'] > 0)
+            //if($row['base_discount_amount'] < 0 && $row['grand_total'] > 0)
+            if($row['base_discount_amount'] < 0 && $row['grand_total'] > 0 && $row['coupon_code'] == '')
             {
                 $discount_amount = $row['base_discount_amount'] * -1;
 				Mage::log("Rewardpoints = ".$row['rewardpoints_quantity'],null,'distribution.log');

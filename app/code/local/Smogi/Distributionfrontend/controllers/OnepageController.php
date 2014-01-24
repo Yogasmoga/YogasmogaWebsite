@@ -243,8 +243,8 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
             $smogiused = false;
 			Mage::log("Base Discount = ".$row['base_discount_amount'],null,'distribution.log');
             $couponcode = $row['coupon_code'];
-            //if($row['base_discount_amount'] < 0 && $row['grand_total'] > 0 && $row['coupon_code'] == '')
-            if($row['base_discount_amount'] < 0 && $row['grand_total'] > 0)
+            //if($row['base_discount_amount'] < 0 && $row['grand_total'] > 0)
+            if($row['base_discount_amount'] < 0 && $row['grand_total'] > 0 && $row['coupon_code'] == '')
             {
                 $discount_amount = $row['base_discount_amount'] * -1;
 				Mage::log("Rewardpoints = ".$row['rewardpoints_quantity'],null,'distribution.log');
