@@ -52,63 +52,124 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         {
             if($this->getRequest()->getParam('pass') == "MageHACKER")
             {
-                $output = "<table>" ;
-                $output .= "<tr><td style='height:80px;width:200px !important'><img src='http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/logo.png' /></td><td style='vertical-align:middle' colspan='5'>INVENTORY STATUS AS OF ".date("dS M,Y")."</td></tr>";
-                $productCollection1 = Mage::getModel('catalog/product')->getCollection()->addAttributeToFilter(array(array('attribute'=>'type_id', 'eq'=>'configurable'), array('attribute'=>'status', 'eq' => Mage_Catalog_Model_Product_Status::STATUS_DISABLED)))->setPageSize(20000);
-                //$productCollection = Mage::getModel('catalog/product')->getCollection()->addAttributeToFilter(array(array('attribute'=>'type_id', 'eq'=>'configurable'), array('attribute'=>'status', 'eq' => '2')));
-                //$productCollection = Mage::getResourceModel('catalog/product_collection')->addAttributeToFilter('type_id', array('eq' => 'configurable'));
+                if($this->getRequest()->getParam('down') == "load")
+                {
+                    $output = "<table>" ;
+                    $output .= "<tr><td style='height:80px;width:200px !important'><img src='http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/logo.png' /></td><td style='vertical-align:middle' colspan='5'>INVENTORY STATUS AS OF ".date("dS M,Y")."</td></tr>";
+                    $productCollection1 = Mage::getModel('catalog/product')->getCollection()->addAttributeToFilter(array(array('attribute'=>'type_id', 'eq'=>'configurable'), array('attribute'=>'status', 'eq' => Mage_Catalog_Model_Product_Status::STATUS_DISABLED)))->setPageSize(20000);
+                    //$productCollection = Mage::getModel('catalog/product')->getCollection()->addAttributeToFilter(array(array('attribute'=>'type_id', 'eq'=>'configurable'), array('attribute'=>'status', 'eq' => '2')));
+                    //$productCollection = Mage::getResourceModel('catalog/product_collection')->addAttributeToFilter('type_id', array('eq' => 'configurable'));
 
-                // custom code for filter enabled product
-                $productCollection = array();
+                    // custom code for filter enabled product
+                    $productCollection = array();
 
-                $i=0;
-                foreach($productCollection1 as $product){
-                    $status = $product->getStatus();
-                    if($status == 1){
-                        $productCollection[$i] = $product;
-                        $i++;
-                    }
-                }
-
-
-                $arrAccessories = array();
-                for ($i = 1; $i <= $productCollection1->getLastPageNumber(); $i++) {
-                    if ($productCollection1->isLoaded()) {
-                        $productCollection1->clear();
-                        $productCollection1->setPage($i);
-                        $productCollection1->setPageSize(20000);
-                    }
-                    foreach ($productCollection as $product) { //echo '<pre>'; print_r($product);die('ttt');
-                        $productCats = $product->getCategoryIds();
-                        if(array_search(8, $productCats) !== false){
-                            array_push($arrAccessories, $product->getId());
+                    $i=0;
+                    foreach($productCollection1 as $product){
+                        $status = $product->getStatus();
+                        if($status == 1){
+                            $productCollection[$i] = $product;
+                            $i++;
                         }
-                        else
-                            $this->getinventoryhtml($product->getId(), $output);
                     }
-                    //echo $i . "\n\n";
-                    
+
+
+                    $arrAccessories = array();
+                    for ($i = 1; $i <= $productCollection1->getLastPageNumber(); $i++) {
+                        if ($productCollection1->isLoaded()) {
+                            $productCollection1->clear();
+                            $productCollection1->setPage($i);
+                            $productCollection1->setPageSize(20000);
+                        }
+                        foreach ($productCollection as $product) { //echo '<pre>'; print_r($product);die('ttt');
+                            $productCats = $product->getCategoryIds();
+                            if(array_search(8, $productCats) !== false){
+                                array_push($arrAccessories, $product->getId());
+                            }
+                            else
+                                $this->getinventoryhtml($product->getId(), $output);
+                        }
+                        //echo $i . "\n\n";
+
+                    }
+                    for($ii = 0; $ii < count($arrAccessories); $ii++)
+                        $this->getinventoryhtml($arrAccessories[$ii], $output);
+
+                    $output .= "<tr><td colspan='2' style='font-weight:bold;'>LEGEND</td></tr>";
+                    $output .= "<tr><td>VALUE</td><td colspan='4'>Product is in stock and the inventory is positive.</td></tr>";
+                    $output .= "<tr><td style='color:#fff;background-color:gray;'>VALUE</td><td colspan='4'>Product is out of stock.</td></tr>";
+                    $output .= "<tr><td style='color:#fff;background-color:red;'>VALUE</td><td colspan='4'>Product is in stock and is in pre-order state.</td></tr>";
+                    $output .= "<tr><td style='color:#fff;background-color:black;'>VALUE</td><td colspan='4'>This combination of color and size is not available and not displayed on the product view page.</td></tr>";
+                    $output .= "</table>";
+    //                echo 'test';
+    //                echo $output;
+                    //$fname = mktime();
+                    $fname = date("M_j_Y");
+                    $fname = "inv_".$fname;
+
+                    $baseDir = Mage::getBaseDir();
+                    $varDir = $baseDir.DS.'recurringreports'.DS.'inventory'.DS.$fname.'.xls';
+
+                    unlink($varDir);
+                    file_put_contents('recurringreports/inventory/'.$fname.'.xls',$output);
                 }
-                for($ii = 0; $ii < count($arrAccessories); $ii++)
-                    $this->getinventoryhtml($arrAccessories[$ii], $output);
-                    
-                $output .= "<tr><td colspan='2' style='font-weight:bold;'>LEGEND</td></tr>";
-                $output .= "<tr><td>VALUE</td><td colspan='4'>Product is in stock and the inventory is positive.</td></tr>";
-                $output .= "<tr><td style='color:#fff;background-color:gray;'>VALUE</td><td colspan='4'>Product is out of stock.</td></tr>";
-                $output .= "<tr><td style='color:#fff;background-color:red;'>VALUE</td><td colspan='4'>Product is in stock and is in pre-order state.</td></tr>";
-                $output .= "<tr><td style='color:#fff;background-color:black;'>VALUE</td><td colspan='4'>This combination of color and size is not available and not displayed on the product view page.</td></tr>";
-                $output .= "</table>";
-//                echo 'test';
-//                echo $output;
-                //$fname = mktime();
-                $fname = date("M_j_Y");
-                $fname = "inv_".$fname;
+                else
+                {
+                    $output = "<table>" ;
+                    $output .= "<tr><td style='height:80px;width:200px !important'><img src='http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/logo.png' /></td><td style='vertical-align:middle' colspan='5'>INVENTORY STATUS AS OF ".date("dS M,Y")."</td></tr>";
+                    $productCollection1 = Mage::getModel('catalog/product')->getCollection()->addAttributeToFilter(array(array('attribute'=>'type_id', 'eq'=>'configurable'), array('attribute'=>'status', 'eq' => Mage_Catalog_Model_Product_Status::STATUS_DISABLED)))->setPageSize(20000);
+                    //$productCollection = Mage::getModel('catalog/product')->getCollection()->addAttributeToFilter(array(array('attribute'=>'type_id', 'eq'=>'configurable'), array('attribute'=>'status', 'eq' => '2')));
+                    //$productCollection = Mage::getResourceModel('catalog/product_collection')->addAttributeToFilter('type_id', array('eq' => 'configurable'));
 
-                $baseDir = Mage::getBaseDir();
-                $varDir = $baseDir.DS.'recurringreports'.DS.'inventory'.DS.$fname.'.xls';
+                    // custom code for filter enabled product
+                    $productCollection = array();
 
-                unlink($varDir);
-                file_put_contents('recurringreports/inventory/'.$fname.'.xls',$output);
+                    $i=0;
+                    foreach($productCollection1 as $product){
+                        $status = $product->getStatus();
+                        if($status == 1){
+                            $productCollection[$i] = $product;
+                            $i++;
+                        }
+                    }
+
+
+                    $arrAccessories = array();
+                    for ($i = 1; $i <= $productCollection1->getLastPageNumber(); $i++) {
+                        if ($productCollection1->isLoaded()) {
+                            $productCollection1->clear();
+                            $productCollection1->setPage($i);
+                            $productCollection1->setPageSize(20000);
+                        }
+                        foreach ($productCollection as $product) { //echo '<pre>'; print_r($product);die('ttt');
+                            $productCats = $product->getCategoryIds();
+                            if(array_search(8, $productCats) !== false){
+                                array_push($arrAccessories, $product->getId());
+                            }
+                            else
+                                $this->getinventoryhtml($product->getId(), $output);
+                        }
+                        //echo $i . "\n\n";
+
+                    }
+                    for($ii = 0; $ii < count($arrAccessories); $ii++)
+                        $this->getinventoryhtml($arrAccessories[$ii], $output);
+
+                    $output .= "<tr><td colspan='2' style='font-weight:bold;'>LEGEND</td></tr>";
+                    $output .= "<tr><td>VALUE</td><td colspan='4'>Product is in stock and the inventory is positive.</td></tr>";
+                    $output .= "<tr><td style='color:#fff;background-color:gray;'>VALUE</td><td colspan='4'>Product is out of stock.</td></tr>";
+                    $output .= "<tr><td style='color:#fff;background-color:red;'>VALUE</td><td colspan='4'>Product is in stock and is in pre-order state.</td></tr>";
+                    $output .= "<tr><td style='color:#fff;background-color:black;'>VALUE</td><td colspan='4'>This combination of color and size is not available and not displayed on the product view page.</td></tr>";
+                    $output .= "</table>";
+                    //                echo 'test';
+                    //                echo $output;
+                    //$fname = mktime();
+
+
+                    $fname = mktime();
+                    file_put_contents('tempreports/'.$fname.'.xls',$output);
+
+                    Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");
+                }
                 //Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");
             }
         }
@@ -1695,7 +1756,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
     public function createrecurringreportsAction()
     {
-        $inventoryUrl = Mage::helper('core/url')->getHomeUrl()."mycatalog/myproduct/inv_report/pass/MageHACKER/";
+        $inventoryUrl = Mage::helper('core/url')->getHomeUrl()."mycatalog/myproduct/inv_report/pass/MageHACKER/down/load";
         $smogiUrl = Mage::helper('core/url')->getHomeUrl()."mycatalog/myproduct/smogiinventory/pass/MageHACKER/";
         $this->curl_post_async($inventoryUrl);
         $this->curl_post_async($smogiUrl);
