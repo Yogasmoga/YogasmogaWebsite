@@ -41,9 +41,11 @@ Mage::app('admin')->setUseSessionInUrl(false);
 umask(0);
 
 try {
+    Mage::log("Cron run",null,'cron.log');
     Mage::getConfig()->init()->loadEventObservers('crontab');
     Mage::app()->addEventArea('crontab');
     Mage::dispatchEvent('default');
+
 } catch (Exception $e) {
     Mage::printException($e);
 }
