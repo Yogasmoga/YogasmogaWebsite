@@ -359,7 +359,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 <th>Is Accessory?</th>
                 <th>Tax Paid($)</th>
                 <th>Discount($)</th>
-                <th>Shipping Amount</th>
+                <th>Shipping Amount($)</th>
                 <th>Gross Amount($)</th>
                 <th>Net Amount($)</th>
                 <th>Order Total($)</th>
