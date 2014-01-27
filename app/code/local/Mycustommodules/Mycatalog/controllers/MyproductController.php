@@ -46,7 +46,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         echo json_encode($inv);
     }
     
-    public function inv_reportAction()
+    public function inventoryreportAction()
     {
         if($this->getRequest()->getParam('pass'))
         {
@@ -87,11 +87,11 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                             $this->getinventoryhtml($product->getId(), $output);
                     }
                     //echo $i . "\n\n";
-                    
+
                 }
                 for($ii = 0; $ii < count($arrAccessories); $ii++)
                     $this->getinventoryhtml($arrAccessories[$ii], $output);
-                    
+
                 $output .= "<tr><td colspan='2' style='font-weight:bold;'>LEGEND</td></tr>";
                 $output .= "<tr><td>VALUE</td><td colspan='4'>Product is in stock and the inventory is positive.</td></tr>";
                 $output .= "<tr><td style='color:#fff;background-color:gray;'>VALUE</td><td colspan='4'>Product is out of stock.</td></tr>";
@@ -101,15 +101,24 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
 //                echo 'test';
 //                echo $output;
                 //$fname = mktime();
-                $fname = date("M_j_Y");
-                $fname = "inv_".$fname;
+                
+                if($this->getRequest()->getParam('recurring') == "true")
+                {
+                    $fname = date("M_j_Y");
+                    $fname = "inv_".$fname;
+    
+                    $baseDir = Mage::getBaseDir();
+                    $varDir = $baseDir.DS.'recurringreports'.DS.'inventory'.DS.$fname.'.xls';
+    
+                    unlink($varDir);
+                    file_put_contents('recurringreports/inventory/'.$fname.'.xls',$output);
+                    return;    
+                }
+                
+                $fname = mktime();
+                file_put_contents('tempreports/'.$fname.'.xls',$output);
 
-                $baseDir = Mage::getBaseDir();
-                $varDir = $baseDir.DS.'recurringreports'.DS.'inventory'.DS.$fname.'.xls';
-
-                unlink($varDir);
-                file_put_contents('recurringreports/inventory/'.$fname.'.xls',$output);
-                //Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");
+                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");
             }
         }
     }
@@ -333,10 +342,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $output = "<table border='1'><thead><tr><th>Order#</th>
                 <th>Date</th>
                 <th>Status</th>
-                <th>Order Total</th>
                 <th>Coupon Code</th>
                 <th>Shipping Method</th>
-                <th>Shipping Amount</th>
                 <th>Bill To</th>
                 <th>Ship To</th>
                 <th>Region</th>
@@ -352,8 +359,10 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 <th>Is Accessory?</th>
                 <th>Tax Paid($)</th>
                 <th>Discount($)</th>
+                <th>Shipping Amount($)</th>
                 <th>Gross Amount($)</th>
                 <th>Net Amount($)</th>
+                <th>Order Total($)</th>
                 <th>Payment Method</th>
                 </tr><thead><tbody>";
                 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
@@ -383,10 +392,12 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     $outputtemp .= "<td>".$row['orderno']."</td>";
                     $outputtemp .= "<td>".$row['orderdate']."</td>";
                     $outputtemp .= "<td>".$row['status']."</td>";
-                    $outputtemp .= "<td>".round($row['paid'], 2)."</td>";
+                    //$outputtemp .= "<td>".round($row['paid'], 2)."</td>";
+                    $orderTotal =  "<td>".round($row['paid'], 2)."</td>";
                     $outputtemp .= "<td>".$row['coupon']."</td>";
                     $outputtemp .= "<td>".$row['shipping']."</td>";
-                    $outputtemp .= "<td>".$row['shipping_amount']."</td>";
+                    //$outputtemp .= "<td>".$row['shipping_amount']."</td>";
+                    $shippingAmount = "<td>".$row['shipping_amount']."</td>";
                     $outputtemp .= "<td>".$row['billto']."</td>";
                     $outputtemp .= "<td>".$row['shipto']."</td>";
                     $outputtemp .= "<td>".$row['region']."</td>";
@@ -449,8 +460,10 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         }
                         $outputtemp1 .= "<td>".$taxPaid."</td>";
                         $outputtemp1 .= "<td>".$rowDiscount."</td>";
+                        $outputtemp1 .= $shippingAmount;
                         $outputtemp1 .= "<td>".$rowTotal."</td>";
                         $outputtemp1 .= "<td>".$netAmount."</td>";
+                        $outputtemp1 .= $orderTotal;
                         $outputtemp1 .= "<td>".$paymentMethod[$payment]."</td>";
                         $outputtemp1 .= "</tr>";
                         $output .= $outputtemp1;                                
@@ -1695,7 +1708,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
     public function createrecurringreportsAction()
     {
-        $inventoryUrl = Mage::helper('core/url')->getHomeUrl()."mycatalog/myproduct/inv_report/pass/MageHACKER/";
+        $inventoryUrl = Mage::helper('core/url')->getHomeUrl()."mycatalog/myproduct/inventoryreport/pass/MageHACKER/recurring/true";
         $smogiUrl = Mage::helper('core/url')->getHomeUrl()."mycatalog/myproduct/smogiinventory/pass/MageHACKER/";
         $this->curl_post_async($inventoryUrl);
         $this->curl_post_async($smogiUrl);

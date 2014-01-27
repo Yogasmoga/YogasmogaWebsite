@@ -1015,7 +1015,17 @@
             <?php
                 }
             ?>
-            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('dressingUpdate')->toHtml(); ?>
+            <?php
+            $output = $this->getLayout()->createBlock('cms/block')->setBlockId('dressingUpdate')->toHtml();
+            $isSecure = Mage::app()->getStore()->isCurrentlySecure();
+            if($isSecure)
+            {
+
+                $output = str_replace("http://", "https://", $output);
+            }
+            echo $output;
+            //echo $this->getLayout()->createBlock('cms/block')->setBlockId('dressingUpdate')->toHtml();
+            ?>
 
             <?php echo $this->getChildHtml('footer'); ?>
             <?php /*
