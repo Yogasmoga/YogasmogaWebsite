@@ -90,6 +90,10 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
             if ($duration){*/
                 $store_id = Mage::app()->getStore($_eachStoreId)->getId();
                 $days = Mage::getStoreConfig(self::XML_PATH_NOTIFICATION_NOTIFICATION_DAYS, $store_id);
+                if($days == 0)
+                {
+                    continue;
+                }
                 $points = Mage::getModel('rewardpoints/stats')
                         ->getResourceCollection()
                         ->addFinishFilter($days)
@@ -109,6 +113,7 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
                             //3. send notification email
                             $customer = Mage::getModel('customer/customer')->load($customer_id);
                             Mage::getModel('rewardpoints/stats')->sendNotification($customer, $store_id, $points, $days);
+                            Mage::log("Email sent to coustomer id:".$customer_id.",Points:".$points,null,"smogiexpireemail.log");
                         }
                     }
                 }
