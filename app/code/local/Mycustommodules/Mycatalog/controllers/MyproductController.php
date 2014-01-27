@@ -1757,5 +1757,66 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         $result['status']='success';
         echo json_encode($result);
     }
+
+    public function aggregateRewardPointsAction()
+    {
+        $allStores = Mage::app()->getStores();
+        $html = "<table border='1'><thead><tr>
+                <th>Customer Id</th>
+                <th>Customer Email</th>
+                <th>Customer Name</th>
+                <th>Accumulated points</th>
+                <th>Available Points</th>
+                </tr>";
+
+
+        foreach ($allStores as $_eachStoreId => $val)
+        {
+            /*$duration = Mage::getStoreConfig(self::XML_PATH_POINTS_DURATION, $store_id);
+            if ($duration){*/
+            $store_id = Mage::app()->getStore($_eachStoreId)->getId();
+            $days =  $this->getRequest()->getParam('days');
+            if($days == 0)
+            {
+                continue;
+            }
+            $points = Mage::getModel('rewardpoints/stats')
+                ->getResourceCollection()
+               ->addFinishFilter($days)
+                ->addValidPoints($store_id);
+
+            if ($points->getSize()){
+                foreach ($points as $current_point){
+                    $html .= "<tr>";
+                    $customer_id = $current_point->getCustomerId();
+                     $points = $current_point->getNbCredit();
+                    if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+                        $points_received = Mage::getModel('rewardpoints/flatstats')->collectPointsCurrent($customer_id, $store_id);
+                    } else {
+                        $points_received = Mage::getModel('rewardpoints/stats')->getPointsCurrent($customer_id, $store_id);
+                    }
+
+                    //2. check if total points >= points available
+                    $customer = Mage::getModel('customer/customer')->load($customer_id);
+                    $customerName = $customer->getName();
+                    $customerEmail = $customer->getEmail();
+                    $html .= "<td>".$customer_id."</td>"."<td>".$customerName."</td>"."<td>".$customerEmail."</td>"."<td>".$points."</td>"."<td>".$points_received."</td>";
+                    if ($points_received >= $points){
+                        //3. send notification email
+                    /*    $customer = Mage::getModel('customer/customer')->load($customer_id);
+                        $customerName = $customer->getName();
+                        $customerEmail = $customer->getEmail();
+                        $html .= "<td>".$customer_id."</td>"."<td>".$customerName."</td>"."<td>".$customerEmail."</td></tr>";  */
+                        //Mage::getModel('rewardpoints/stats')->sendNotification($customer, $store_id, $points, $days);
+                        //Mage::log("Email sent to coustomer id:".$customer_id.",Points:".$points,null,"smogiexpireemail.log");
+                    }
+                }
+            }
+
+        }
+        $html .= "</table>";
+        echo $html;
+
+    }
 }
 ?>
