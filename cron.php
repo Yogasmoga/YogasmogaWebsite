@@ -47,5 +47,6 @@ try {
     Mage::dispatchEvent('default');
 
 } catch (Exception $e) {
+    Mage::log($e,null,'cronerror.log');
     Mage::printException($e);
 }
