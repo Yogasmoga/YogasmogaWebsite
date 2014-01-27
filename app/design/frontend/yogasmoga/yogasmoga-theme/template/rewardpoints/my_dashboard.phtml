@@ -23,7 +23,7 @@
     {
         //Mage::getModel('core/cookie')->delete('afterlogindest');
         
-        Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
+        Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart#promotions");
         Mage::getModel('core/cookie')->set('afterlogindest', 'cart123', 0,'/');
     }
     if(Mage::getModel('core/cookie')->get('afterlogindest') == "giftofys")
