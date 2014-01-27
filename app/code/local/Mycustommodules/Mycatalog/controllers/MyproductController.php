@@ -342,10 +342,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $output = "<table border='1'><thead><tr><th>Order#</th>
                 <th>Date</th>
                 <th>Status</th>
-                <th>Order Total</th>
                 <th>Coupon Code</th>
                 <th>Shipping Method</th>
-                <th>Shipping Amount</th>
                 <th>Bill To</th>
                 <th>Ship To</th>
                 <th>Region</th>
@@ -361,8 +359,10 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 <th>Is Accessory?</th>
                 <th>Tax Paid($)</th>
                 <th>Discount($)</th>
+                <th>Shipping Amount</th>
                 <th>Gross Amount($)</th>
                 <th>Net Amount($)</th>
+                <th>Order Total($)</th>
                 <th>Payment Method</th>
                 </tr><thead><tbody>";
                 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
@@ -392,10 +392,12 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     $outputtemp .= "<td>".$row['orderno']."</td>";
                     $outputtemp .= "<td>".$row['orderdate']."</td>";
                     $outputtemp .= "<td>".$row['status']."</td>";
-                    $outputtemp .= "<td>".round($row['paid'], 2)."</td>";
+                    //$outputtemp .= "<td>".round($row['paid'], 2)."</td>";
+                    $orderTotal =  "<td>".round($row['paid'], 2)."</td>";
                     $outputtemp .= "<td>".$row['coupon']."</td>";
                     $outputtemp .= "<td>".$row['shipping']."</td>";
-                    $outputtemp .= "<td>".$row['shipping_amount']."</td>";
+                    //$outputtemp .= "<td>".$row['shipping_amount']."</td>";
+                    $shippingAmount = "<td>".$row['shipping_amount']."</td>";
                     $outputtemp .= "<td>".$row['billto']."</td>";
                     $outputtemp .= "<td>".$row['shipto']."</td>";
                     $outputtemp .= "<td>".$row['region']."</td>";
@@ -458,8 +460,10 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         }
                         $outputtemp1 .= "<td>".$taxPaid."</td>";
                         $outputtemp1 .= "<td>".$rowDiscount."</td>";
+                        $outputtemp1 .= $shippingAmount;
                         $outputtemp1 .= "<td>".$rowTotal."</td>";
                         $outputtemp1 .= "<td>".$netAmount."</td>";
+                        $outputtemp1 .= $orderTotal;
                         $outputtemp1 .= "<td>".$paymentMethod[$payment]."</td>";
                         $outputtemp1 .= "</tr>";
                         $output .= $outputtemp1;                                
