@@ -1765,8 +1765,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 <th>Customer Id</th>
                 <th>Customer Email</th>
                 <th>Customer Name</th>
-                <th>Accumulated points</th>
-                <th>Available Points</th>
+                <th>Points Expiring</th>
+                <th>Current Available Points</th>
                 </tr>";
 
 
