@@ -157,12 +157,12 @@
     </reference>
 </checkout_onepage_index>
 
-<checkout_onepage_success translate="label">
+<!--<checkout_onepage_success translate="label">
         <reference name="head">
         <action method="addJs"><script>pixel_tracking.js</script></action>
         </reference>
 </checkout_onepage_success>
-
+-->
 <paypal_express_review>
     <reference name="head">
         <action method="addCss"><stylesheet>css/checkout.css</stylesheet></action>

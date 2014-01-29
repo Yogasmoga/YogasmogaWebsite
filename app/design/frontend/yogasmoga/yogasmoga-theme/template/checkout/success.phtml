@@ -25,26 +25,8 @@
  */
 ?>
 <?php 
-$quoteId = Mage::getModel('sales/order')->loadByIncrementId($this->getOrderId())->getQuoteId();
-$quote = Mage::getModel('sales/quote')->load($quoteId);
-$method = $quote->getCheckoutMethod(true);
-if ($method == 'register'){
-?>
-<script type="text/javascript">
-var fb_param = {};
-		fb_param.pixel_id = "6015914449946";
-		fb_param.value = "0.00";
-		fb_param.currency = "USD";
-		(function(){
-		  var fpw = document.createElement("script");
-		  fpw.async = true;
-		  fpw.src = "//connect.facebook.net/en_US/fp.js";
-		  var ref = document.getElementsByTagName("script")[0];
-		  ref.parentNode.insertBefore(fpw, ref);
-		})();
-</script>
-<?php
-}
+
+
 
 $ord_num = $this->getOrderId();
 $moptions = "iPhone--iPod--BlackBerry--Palm--Googlebot-Mobile--mobi--Windows Mobile--Safari Mobile--Android--Opera Mini"; 
@@ -256,6 +238,47 @@ receiving an email soon with your shipment tracking number.</p>
     $order_details = Mage::getModel('sales/order')->loadByIncrementId(Mage::getSingleton('checkout/session')->getLastRealOrderId());
     $adwords_saleamt = $order_details->subtotal;
 ?>
+<?php
+$serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
+$quoteId = Mage::getModel('sales/order')->loadByIncrementId($this->getOrderId())->getQuoteId();
+$quote = Mage::getModel('sales/quote')->load($quoteId);
+$method = $quote->getCheckoutMethod(true);
+
+
+if($serverType == 'production')
+{
+    if ($method == 'register'){
+   ?>
+        <script type="text/javascript">
+            var fb_param = {};
+            fb_param.pixel_id = "6015914449946";
+            fb_param.value = "0.00";
+            fb_param.currency = "USD";
+            (function(){
+                var fpw = document.createElement("script");
+                fpw.async = true;
+                fpw.src = "//connect.facebook.net/en_US/fp.js";
+                var ref = document.getElementsByTagName("script")[0];
+                ref.parentNode.insertBefore(fpw, ref);
+            })();
+        </script>
+
+   <?php  }
+?>
+<script type="text/javascript">
+    var fb_param = {};
+    fb_param.pixel_id = '6014024174346';
+    fb_param.value = '0.00';
+    fb_param.currency = 'USD';
+    (function(){
+        var fpw = document.createElement('script');
+        fpw.async = true;
+        fpw.src = '//connect.facebook.net/en_US/fp.js';
+        var ref = document.getElementsByTagName('script')[0];
+        ref.parentNode.insertBefore(fpw, ref);
+    })();
+</script>
+
 <!-- Google Code for Checkout Success Conversion Page -->
 <script type="text/javascript">
 /* <![CDATA[ */
@@ -278,3 +301,5 @@ var google_remarketing_only = false;
 <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/990162677/?value=0&amp;label=adt4CIPQygcQ9d2S2AM&amp;guid=ON&amp;script=0"/>
 </div>
 </noscript>
+
+<?php } ?>

@@ -228,12 +228,7 @@
 		});
 	});
 </script>
-<script type="text/javascript">
-setTimeout(function(){var a=document.createElement("script");
-var b=document.getElementsByTagName("script")[0];
-a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0018/1897.js?"+Math.floor(new Date().getTime()/3600000);
-a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
-</script>
+
 <?php
 /*
 try {
@@ -246,16 +241,16 @@ try {
             $customerFName = "ankit";
             $customerLName = "singhania";
 
-            //load the custom template to the email  
+            //load the custom template to the email
             $emailTemplate = Mage::getModel('core/email_template')
                     ->loadDefault('custom_notification_template1');
-           
+
             // it depends on the template variables
             $emailTemplateVariables = array();
             $emailTemplateVariables['customername'] = $customerFName;
             //$emailTemplateVariables['store'] = $storeObj;
             //$emailTemplateVariables['payment_html'] = $method;
-       
+
 
             $emailTemplate->setSenderName('Yogasmoga');
             $emailTemplate->setSenderEmail('report@yogasmoga.com');
@@ -290,37 +285,37 @@ try {
                 //$customerEmailId = $parent->getEmail();
 //                $customerFName = $parent->getFirstName();
 //                $customerLName = $parent->getLastName();
-                
-                
+
+
                 $customerEmailId = "ankit@mobikasa.com";
                 $customerFName = "Ankit";
                 $customerLName = "Singhania";
-    
-                //load the custom template to the email  
+
+                //load the custom template to the email
                 $emailTemplate = Mage::getModel('core/email_template')
                         ->loadDefault('custom_notification_template1');
-               
+
                 // it depends on the template variables
                 $emailTemplateVariables = array();
-                
-                
-                
+
+
+
                 $emailTemplateVariables['customername'] = $customerFName." ".$customerLName;
                 $emailTemplateVariables['customeremail'] = $customerEmailId;
                 $emailTemplateVariables['referralcount'] = $successreferalcount;
-                
+
                 $readresult=$write->query("SELECT CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.rewardpoints_referral_child_id AND attribute_id=5),' ',(SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.rewardpoints_referral_child_id AND attribute_id=7)) AS 'Name',rewardpoints_referral_email AS 'Email' FROM rewardpoints_referral rr WHERE rr.rewardpoints_referral_parent_id=".$customerId." AND rr.rewardpoints_referral_status=1");
                 $tableoutput = "<table border='1'><thead><tr><th>Name</th><th>Email</th></tr></thead><tbody>";
                 while ($row = $readresult->fetch() ) {
                     $tableoutput .= "<tr><td>".$row['Name']."</td><td>".$row['Email']."</td></tr>";
                 }
                 $tableoutput .= "</tbody></table>";
-                
+
                 $emailTemplateVariables['referraldetails'] = $tableoutput;
                 //$emailTemplateVariables['store'] = $storeObj;
                 //$emailTemplateVariables['payment_html'] = $method;
-           
-    
+
+
                 $emailTemplate->setSenderName('Yogasmoga');
                 $emailTemplate->setSenderEmail('report@yogasmoga.com');
                 $emailTemplate->setType('html');
@@ -330,11 +325,11 @@ try {
                 $errorMessage = $e->getMessage();
                 //return $errorMessage;
                 Mage::log($errorMessage,null,'notification.log');
-            }      
+            }
         }
         */
-        
-        //$order = Mage::getModel('sales/order')->load(103);
+
+//$order = Mage::getModel('sales/order')->load(103);
 //        $comment = 'blah blah';
 //        $order->addStatusHistoryComment($comment);
 //        $order->save();
@@ -351,6 +346,18 @@ try {
 //    ->setData('content', 'Your new block content')
 //    ->save();
 ?>
+
+<?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
+    if($serverType == 'production')
+    {
+?>
+<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0018/1897.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+
 
 <!-- Add roll script below -->
 <script type="text/javascript">
@@ -390,3 +397,4 @@ var google_remarketing_only = true;
 <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/990162677/?value=0&amp;guid=ON&amp;script=0"/>
 </div>
 </noscript>
+    <?php } ?>

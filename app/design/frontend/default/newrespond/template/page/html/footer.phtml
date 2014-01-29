@@ -46,6 +46,10 @@
     </div>
 </div>
 
+<?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
+if($serverType == 'production')
+{
+?>
 <script type="text/javascript">
 setTimeout(function(){var a=document.createElement("script");
 var b=document.getElementsByTagName("script")[0];
@@ -91,3 +95,5 @@ var google_remarketing_only = true;
 <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/990162677/?value=0&amp;guid=ON&amp;script=0"/>
 </div>
 </noscript>
+
+<?php } ?>

@@ -28,6 +28,11 @@
  */
 ?>
 <!-- Paste this code right after the <body> tag on every page of your site. -->
+<!-- Qualaroo for yogasmoga.com  -->
+<?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
+if($serverType == 'production')
+{
+?>
 <script type="text/javascript">
   var _kiq = _kiq || [];
   (function(){
@@ -37,6 +42,7 @@
     }, 1);
   })();
 </script>
+<?php } ?>
 <div class="header-container">
     <div class="header">
         <?php if ($this->getIsHomePage()):?>

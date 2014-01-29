@@ -105,8 +105,13 @@
     var mediaUrl = '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>';
     //console.log(skinUrl);
 </script>
-
-<script type="text/javascript"> 
+<?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
+if($serverType == 'production')
+{
+?>
+<script type="text/javascript">
 adroll_conversion_value_in_dollars = 'ADVERTISERS VARIABLE'; 
 adroll_custom_data = {"ORDER_ID": "ADVERTISERS VARIABLE"}
-</script>  
+</script>
+
+<?php } ?>
