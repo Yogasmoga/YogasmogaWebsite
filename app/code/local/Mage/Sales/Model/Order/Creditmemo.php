@@ -1351,6 +1351,8 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
             {
                 Mage::log("THIS IS THE LAST REFUND. REVERTING BACK ".$this->getcustomaddedsmogis($orderid)." BUCKS", null, 'partial_ankit.log');
                 $sum_smogi_customization -= $this->getcustomaddedsmogis($orderid);
+                $order = $this->getOrder();
+                $order->setState(Mage_Sales_Model_Order::STATE_CLOSED, true)->save();
             }
             else
             {
@@ -1392,6 +1394,8 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
         else
         {
             Mage::log("FULL REFUND AT ONCE. NO PROCESSING REQUIRED.", null, 'partial_ankit.log');
+            $order = $this->getOrder();
+                $order->setState(Mage_Sales_Model_Order::STATE_CLOSED, true)->save();
         }
     }
      
