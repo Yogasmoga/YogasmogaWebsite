@@ -88,7 +88,7 @@ function setfullscreenheight()
         //jQuery(this).width(_winW);
         jQuery(this).width(jQuery(".fullscreen:first").width());
     });
-    jQuery(".fullscreenovfhidden img.fullscreen").each(function(){
+    jQuery(".fullscreenovfhidden img.fullscreen, .fullscreenovfhidden video.fullscreen").each(function(){
         var height = jQuery(this).height();
         height = getScaledheight(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth")) * 1;
         if(height > _winH)
