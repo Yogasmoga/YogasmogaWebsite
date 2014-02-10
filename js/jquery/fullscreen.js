@@ -7,8 +7,33 @@ jQuery(document).ready(function($){
     $(window).resize(function($) {
         //alert("resized");
         setfullscreenheight();
+        getvideowidth();
     });
 });
+
+function getvideowidth()
+{
+    winW = _winW;
+    if(winW < 1100)
+        winW = 1100;
+    videowidth = (1920/1080) * _winH;
+    videoheight = (1080/1920) * winW;
+    if((winW - videowidth) > (_winH - videoheight))
+    {
+        newwidth = winW + (winW - videowidth);
+        newheight = (1080/1920) * newwidth;
+    }
+    else
+    {
+        newheight = _winH + (_winH - videoheight);
+        newwidth = (1920/1080) * newheight;
+    }
+    jQuery(".fullscreenovfhidden iframe").width(newwidth);
+    jQuery(".fullscreenovfhidden iframe").height(newheight);
+    jQuery(".fullscreenovfhidden iframe").css('left',((winW - newwidth) / 2) + 'px');
+    jQuery(".fullscreenovfhidden iframe").css('top',((_winH - newheight)/ 2) + 'px');
+    return;
+}
 
 function setfullscreenheight()
 {
