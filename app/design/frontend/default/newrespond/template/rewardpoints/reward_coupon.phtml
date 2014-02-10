@@ -21,7 +21,9 @@
 <?php $points_currently_used = $this->getPointsCurrentlyUsed(); ?>
 <?php $couponCode = Mage::getSingleton('checkout/cart')->getQuote()->getCouponCode(); ?>
 <?php $pts = $this->getPointsOnOrder();?>
-
+<?php $myValue = 'smogi-promotions';
+      Mage::getSingleton('core/session')->setSmogiValue($myValue);
+?>
 <?php if (!$this->getAutoUse()): ?>
     <?php if (!$this->getCustomerId()):?>
     
@@ -60,9 +62,9 @@
     <?php $point_details = $this->getPointsInfo();?>
 
 <?php if ($this->canUseCouponCode() && ($couponCode == "" || $couponCode == null) || !$this->canUseCouponCode()):?>
-<div class="smogibox">
+<div class="smogibox" id="smogi-promotions">
     <?php if (!$points_currently_used): ?>
-    <form action="<?php echo $this->getUrl('rewardpoints/index/quotation/') ?>" method="post" name="discountFormPoints2" id="discountFormPoints2">
+    <form action="<?php echo $this->getUrl('rewardpoints/index/quotation/').'#smogi-promotions' ?>" method="post" name="discountFormPoints2" id="discountFormPoints2">
         <fieldset>
             <h6><?php echo $this->__('SMOGI BUCKS*'); ?></h6>
             
@@ -164,7 +166,7 @@
         </fieldset>
     </form>
     <?php else: ?>
-    <form action="<?php echo $this->getUrl('rewardpoints/index/removequotation/') ?>" method="post" name="discountFormPoints2" id="discountFormPoints2">
+    <form action="<?php echo $this->getUrl('rewardpoints/index/removequotation/').'#smogi-promotions' ?>" method="post" name="discountFormPoints2" id="discountFormPoints2">
         <fieldset>
             <h6><?php echo $this->__('SMOGI BUCKS*'); ?></h6>
             <?php echo $this->getIllustrationImage()?>

@@ -68,7 +68,7 @@
 <?php if ($this->canUseCouponCode() && ($couponCode == "" || $couponCode == null) || !$this->canUseCouponCode()):?>
 <div class="discount-codes box discount smogibox">
     <?php if (!$points_currently_used): ?>
-    <form action="<?php echo $this->getUrl('rewardpoints/index/quotation/') ?>" method="post" name="discountFormPoints2" id="discountFormPoints2">
+    <form action="<?php echo $this->getUrl('rewardpoints/index/quotation/').'#promotions'; ?>" method="post" name="discountFormPoints2" id="discountFormPoints2">
         <fieldset>
             <h2><?php echo $this->__('SMOGI BUCKS*'); ?></h2>
             <!--<span style="color: #666666;font-family: gotham-m;font-size: 11px; padding: 0;text-transform: uppercase;"><?php echo $this->__('SMOGI BUCKS'); ?></h2></span>-->
@@ -202,7 +202,7 @@
         </fieldset>
     </form>
     <?php else: ?>
-    <form action="<?php echo $this->getUrl('rewardpoints/index/removequotation/') ?>" method="post" name="discountFormPoints2" id="discountFormPoints2">
+    <form action="<?php echo $this->getUrl('rewardpoints/index/removequotation/').'#promotions' ?>" method="post" name="discountFormPoints2" id="discountFormPoints2">
         <fieldset>
             
 			<!--<span style="color: #666666;font-family: gotham-m;font-size: 11px; padding: 0;text-transform: uppercase;"><?php echo $this->__('SMOGI BUCKS'); ?></h2></span>-->

@@ -1,5 +1,5 @@
 <div class="gift-card"  id="promotions">
-  
+  <?php Mage::getSingleton('core/session')->setGiftofysValue('promotions'); ?>
     
     <?php if (Mage::helper('customer')->isLoggedIn()) : ?>
         <h6 class="giftofyshead">GIFT OF YS</h6>
@@ -9,7 +9,7 @@
     
             <div class="discount-form">
         <form></form>
-        <form method="post" action="<?php echo $this->getUrl('*/*/giftcardPost'); ?>" id="giftcard-form">
+        <form method="post" action="<?php echo $this->getUrl('*/*/giftcardPost').'#promotions'; ?>" id="giftcard-form">
         <table class="redeem-giftcard">
             <tbody><tr>
                 <td>
@@ -93,7 +93,7 @@
     
     
         <form></form>
-        <form method="post" action="<?php echo $this->getUrl('*/*/giftcardActive'); ?>" name="giftcardActive">
+        <form method="post" action="<?php echo $this->getUrl('*/*/giftcardActive').'#promotions'; ?>" name="giftcardActive">
         <div class="input-box">
             <input type="checkbox" value="1" name="giftcard_use" id="giftcard_use" class="checkbox" onclick="document.forms['giftcardActive'].submit()" <?php echo Mage::getSingleton('giftcards/session')->getActive() ? 'checked="checked"' : '' ?> />
             <label for="giftcard_use"><?php echo $this->__('Redeem my Gift of YS Card. <br/> Balance :'); ?>&nbsp;<?php echo Mage::helper('core')->currency(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId())); ?></label>

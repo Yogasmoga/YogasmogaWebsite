@@ -25,7 +25,8 @@
  */
 ?>
 
-<div class="promo-section">
+<div class="promo-section" id="promotion-code">
+    <?php Mage::getSingleton('core/session')->setPromotioncodeValue('promotion-code'); ?>
 <?php
     //echo Mage::getSingleton('core/session')->getGlobalMessage();
     if(Mage::helper('customer')->isLoggedIn())

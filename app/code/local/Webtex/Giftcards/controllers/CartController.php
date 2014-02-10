@@ -34,7 +34,23 @@ class Webtex_Giftcards_CartController extends Mage_Checkout_CartController
         } catch (Exception $e) {
             $this->_getSession()->addError("gferror--msg".$e->getMessage());
         }
-        $this->_goBack();
+        $refererUrl = $this->_getRefererUrl();
+        if (empty($refererUrl)) {
+            $refererUrl = empty($defaultUrl) ? Mage::getBaseUrl() : $defaultUrl;
+        }
+
+        $myValue=Mage::getSingleton('core/session')->getGiftofysValue();
+        if($myValue == 'promotions')
+        {
+            $refererUrl = $refererUrl.'#promotions';
+        }
+        else{
+            $refererUrl = $refererUrl.'#promotions';
+        }
+
+        $this->getResponse()->setRedirect($refererUrl);
+
+        //$this->_goBack();
     }
 
     public function giftcardActiveAction()
@@ -57,6 +73,20 @@ class Webtex_Giftcards_CartController extends Mage_Checkout_CartController
         } catch (Exception $e) {
             $this->_getSession()->addError($e->getMessage());
         }
-        $this->_goBack();
+        $refererUrl = $this->_getRefererUrl();
+        if (empty($refererUrl)) {
+            $refererUrl = empty($defaultUrl) ? Mage::getBaseUrl() : $defaultUrl;
+        }
+
+        $myValue=Mage::getSingleton('core/session')->getGiftofysValue();
+        if($myValue == 'promotions')
+        {
+            $refererUrl = $refererUrl.'#promotions';
+        }
+        else{
+            $refererUrl = $refererUrl.'#promotions';
+        }
+        $this->getResponse()->setRedirect($refererUrl);
+        //$this->_goBack();
     }
 }

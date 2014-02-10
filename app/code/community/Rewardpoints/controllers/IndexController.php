@@ -140,6 +140,15 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
         if (empty($refererUrl)) {
             $refererUrl = empty($defaultUrl) ? Mage::getBaseUrl() : $defaultUrl;
         }
+
+        $myValue=Mage::getSingleton('core/session')->getSmogiValue();
+        if($myValue == 'smogi-promotions')
+        {
+            $refererUrl = $refererUrl.'#smogi-promotions';
+        }
+        else{
+            $refererUrl = $refererUrl.'#promotions';
+        }
         $this->getResponse()->setRedirect($refererUrl);
     }
 
@@ -170,6 +179,14 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
         $refererUrl = $this->_getRefererUrl();
         if (empty($refererUrl)) {
             $refererUrl = empty($defaultUrl) ? Mage::getBaseUrl() : $defaultUrl;
+        }
+        $myValue=Mage::getSingleton('core/session')->getSmogiValue();
+        if($myValue == 'smogi-promotions')
+        {
+            $refererUrl = $refererUrl.'#smogi-promotions';
+        }
+        else{
+            $refererUrl = $refererUrl.'#promotions';
         }
         $this->getResponse()->setRedirect($refererUrl);
     }
