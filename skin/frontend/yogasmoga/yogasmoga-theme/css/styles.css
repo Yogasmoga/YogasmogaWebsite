@@ -4303,3 +4303,7 @@ body.checkout-onepage-index #payment_form_stripe
 {
     display : none;
 }
+#homemainslider
+{
+    cursor : pointer;
+}
