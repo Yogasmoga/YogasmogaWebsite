@@ -140,9 +140,14 @@
     }
     jQuery(document).ready(function($){
         $("#homemainslider").click(function(){
-            $("div#Welcome").addClass('videomode');
-            player.playVideo();
-            getvideowidth();
+            if(!_onipad)
+            {
+                setTimeout(function(){getvideowidth();},100);
+                $("div#Welcome").addClass('videomode');
+                player.playVideo();   
+            }
+            else
+                $("#hmpagevideo").trigger('click');
         });
     });
 </script>
