@@ -7,11 +7,11 @@ jQuery(document).ready(function($){
     $(window).resize(function($) {
         //alert("resized");
         setfullscreenheight();
-        getvideowidth();
+       // getvideowidth();
     });
 });
 
-function getvideowidth()
+/*function getvideowidth()
 {
     winW = _winW;
     if(winW < 1100)
@@ -34,7 +34,7 @@ function getvideowidth()
     jQuery(".fullscreenovfhidden iframe").css('top',((_winH - newheight)/ 2) + 'px');
     return;
 }
-
+*/
 function setfullscreenheight()
 {
     //console.log('called');
