@@ -4288,3 +4288,22 @@ body.checkout-onepage-index #payment_form_stripe
 {
     margin-bottom: 15px;
 }
+.fullscreenovfhidden iframe
+{
+    position : absolute;
+    /*display : none;*/
+    width : 0%;
+    height : 0%;
+}
+.videomode.fullscreenovfhidden iframe
+{
+    display : inline-block;
+}
+.videomode.fullscreenovfhidden #homemainslider,.videomode.fullscreenovfhidden #playBtn
+{
+    display : none;
+}
+/*#homemainslider
+{
+    cursor : pointer;
+}*/

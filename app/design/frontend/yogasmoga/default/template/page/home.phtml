@@ -103,6 +103,56 @@
        }, 500); 
     });
 </script>
+    <!-- this script is for home video for valentine's day  -->
+<!--<script type="text/javascript">
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    var player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('youtubeplayer', {
+        width: '100%',
+        height : '100%',
+        videoId: 'gPLyklRtlN8',
+        playerVars : {
+            controls : 0,
+            showinfo : 0,
+            'wmode': 'transparent',
+            rel : 0
+        },
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+    }
+        function onPlayerStateChange(event) {
+        if (event.data == 0) {
+            //event.target.playVideo();
+            jQuery("div#Welcome").removeClass('videomode');
+            player.stopVideo();
+        }
+      }
+    function onPlayerReady(event) {
+        //console.log("player ready");
+        //jQuery("#htmlvideo iframe").addAttribute()
+        //        event.target.playVideo();
+    }
+    jQuery(document).ready(function($){
+        $("#homemainslider").click(function(){
+            if(!_onipad)
+            {
+                setTimeout(function(){getvideowidth();},100);
+                $("div#Welcome").addClass('videomode');
+                player.playVideo();   
+            }
+            else
+                $("#hmpagevideo").trigger('click');
+        });
+    });
+</script>
+-->
 </head>
 <body class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>" style="margin-right:17px;overflow:hidden;">
 <?php echo $this->getChildHtml('after_body_start') ?>
@@ -132,7 +182,13 @@
                     }
                 ?>
                 <img class="shareit nodisplay" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/shareme.jpg" />
-                <ul class="slides">
+                <div id="youtubeplayer"></div>
+                <ul class="slides" id="homemainslider">
+                   <!--
+                    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/anniversary.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                    </li>
+                    -->
                     <?php /*
                     <li>
                       <img style="display: none;" class="shareit" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/nosheershr.jpg" />
@@ -319,7 +375,7 @@
                         </div>
                     </li>
                     
-                    */ ?>
+                    */?>
                     <li>
                       <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/slide_new_1_04122014.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
                         
@@ -355,6 +411,7 @@
                         </span>  
                         </div>
                     </li>
+
                     <?php /*
                     <li>
                       <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/new_year/new_year_bg.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
@@ -384,7 +441,7 @@
                         </div>
                         
                     </li>
-                    */ ?>
+                    */?>
                     <li>
                       <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga-3.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
                         
@@ -399,7 +456,7 @@
                         </span>  
                         </div>
                     </li>
-                    
+
                     <?php /*
                     <li>
                       <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_12/gift.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
@@ -426,7 +483,7 @@
                         </div>
                         
                     </li>
-                    
+
                     <?php /*
                     <li style="background-color: #FFF;">
                         <img class="fltimage" mymargin="20" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_12/img2.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" style="position: absolute; height: 100%; width: auto;min-height:660px;" />
@@ -556,20 +613,21 @@
                     </li>
                     */ ?>
                 </ul>
-                
+
                 <div style="position: absolute; width: 400px; right: 4.625%; z-index:99; bottom: 9%; display:none;" id="playBtn" ><img style="width : 100%" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/new_product.png" />
 					<div style="position: absolute; width: 72px; left: 15px; top: 17px;">
                       	<a href="<?php echo $this->getUrl('women');?>">
                       		<img style="width:100%;"  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/shop_now.png" alt="DID YOU TAKE A BREATH TODAY? Video" />
                       	</a>
                     </div>
+
                     <?php /*
                     <a href="<?php echo $this->getUrl('gift_of_ys');?>">
                         <img style="position : absolute; bottom : -40px; left : 0;"  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/send_a_gift.png" alt="DID YOU TAKE A BREATH TODAY? Video" />
                     </a>
                     */ ?>
 				</div>
-                
+
                 <?php /*
                 
                 //below is the did you take a breath
