@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Ankitsinghania_Smogiexpirationnotifier>
+            <version>0.0.1</version>
+        </Ankitsinghania_Smogiexpirationnotifier>
+    </modules>
+    <global>
+        <models>
+            <smogiexpirationnotifier>
+                <class>Ankitsinghania_Smogiexpirationnotifier_Model</class>
+            </smogiexpirationnotifier>
+        </models>
+    </global>
+    <frontend>
+        <routers>
+            <smogiexpirationnotifier>
+                <use>standard</use>
+                <args>
+                    <module>Ankitsinghania_Smogiexpirationnotifier</module>
+                    <frontName>smogiexpirationnotifier</frontName>
+                </args>
+            </smogiexpirationnotifier>
+        </routers>   
+    </frontend>
+    <crontab>
+        <jobs>
+            <Ankitsinghania_Smogiexpirationnotifier>
+                <schedule>
+                    <cron_expr>*/2 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>smogiexpirationnotifier/notify::notify</model>
+                </run>
+            </Ankitsinghania_Smogiexpirationnotifier>
+        </jobs>
+    </crontab>
+</config>
