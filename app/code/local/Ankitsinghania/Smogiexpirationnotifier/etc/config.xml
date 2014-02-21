@@ -9,8 +9,24 @@
         <models>
             <smogiexpirationnotifier>
                 <class>Ankitsinghania_Smogiexpirationnotifier_Model</class>
+                <resourceModel>smogiexpirationnotifier_mysql4</resourceModel>
             </smogiexpirationnotifier>
+            <smogiexpirationnotifier_mysql4>
+                <class>Ankitsinghania_Smogiexpirationnotifier_Model_Mysql4</class>
+                <entities>
+                    <notify>
+                        <table>smogi_notify_log</table>
+                    </notify>
+                </entities>
+            </smogiexpirationnotifier_mysql4>
         </models>
+        <resources>
+            <smogiexpirationnotifier_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </smogiexpirationnotifier_write>
+        </resources>
     </global>
     <frontend>
         <routers>
