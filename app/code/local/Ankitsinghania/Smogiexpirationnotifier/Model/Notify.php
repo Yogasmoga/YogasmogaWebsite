@@ -19,7 +19,7 @@ class Ankitsinghania_Smogiexpirationnotifier_Model_Notify extends Mage_Core_Mode
         {
             $customerlist = $this->getCustomerslist($notification_period);
             $notify_date = date('Y-m-d');
-            $bucks_expiration_date = date('Y-m-d', strtotime(" + 3 days"));
+            $bucks_expiration_date = date('Y-m-d', strtotime(" + ".$notification_period." days"));
             foreach($customerlist as $customer)
             {
                 $notification_log = Mage::getModel('smogiexpirationnotifier/notify');
@@ -35,7 +35,7 @@ class Ankitsinghania_Smogiexpirationnotifier_Model_Notify extends Mage_Core_Mode
                     $notification_log->setEmail_status($this->sendemail($customer['customer_name'], "ankit@mobikasa.com", $customer['bucks_expiring'], $notification_period));
                 $notification_log->setNotification_period($notification_period);
                 $notification_log->save();
-            }   
+            }
         }
     }
     
