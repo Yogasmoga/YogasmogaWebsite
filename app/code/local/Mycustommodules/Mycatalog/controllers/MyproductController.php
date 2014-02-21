@@ -1952,5 +1952,34 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 		//file_put_contents('tempreports/expiringbucks/'.$fname.'.xls',$html);
 
     }
+    
+    public function getCustomerslistAction($expiring_in_days)
+    {
+        $allStores = Mage::app()->getStores();	
+        $customerlist = array();
+        foreach ($allStores as $_eachStoreId => $val)
+        {
+            $store_id = Mage::app()->getStore($_eachStoreId)->getId();
+            $days = $expiring_in_days;
+			$points = Mage::getModel('rewardpoints/stats')
+                        ->getResourceCollection()
+                        ->addFinishFilter($days)
+                        ->addValidPoints($store_id);
+            if ($points->getSize()){
+				foreach ($points as $current_point){
+                    $customer_id = $current_point->getCustomerId();
+                    $points = $current_point->getNbCredit();
+                    $customer = Mage::getModel('customer/customer')->load($customer_id);
+                    $customerName = $customer->getName();
+                    $customerEmail = $customer->getEmail();
+                    array_push($customerlist, array($customer_id, $customerEmail, $customerName, $points));
+                }
+            }
+        }
+        echo "<pre>";
+        print_r($customerlist);
+        echo "</pre>";
+        //return $customerlist;
+    }
 }
 ?>
