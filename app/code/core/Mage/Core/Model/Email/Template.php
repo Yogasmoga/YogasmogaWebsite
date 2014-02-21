@@ -467,7 +467,11 @@ class Mage_Core_Model_Email_Template extends Mage_Core_Model_Template
 
         $mail->setSubject('=?utf-8?B?' . base64_encode($this->getProcessedTemplateSubject($variables)) . '?=');
         $mail->setFrom($this->getSenderEmail(), $this->getSenderName());
-        $mail->setReturnPath('chetan.mangat@yogasmoga.com');
+        //$mail->setReturnPath('chetan.mangat@yogasmoga.com');
+        $emailId = Mage::getModel('core/variable')->loadByCode('email_return_path')->getValue('plain');
+        if($emailId != '')
+            $mail->setReturnPath($emailId);
+
         try {
             $mail->send();
             $this->_mail = null;
