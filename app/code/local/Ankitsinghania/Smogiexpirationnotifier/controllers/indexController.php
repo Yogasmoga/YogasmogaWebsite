@@ -3,6 +3,7 @@ class Ankitsinghania_Smogiexpirationnotifier_IndexController extends Mage_Core_C
 {
     public function indexAction(){
         Mage::getModel('smogiexpirationnotifier/notify')->notify();
+        return;
         echo "Am I working ??";
         $notifications = Mage::getModel('smogiexpirationnotifier/notify');
         $notifications->load(1);
@@ -14,6 +15,11 @@ class Ankitsinghania_Smogiexpirationnotifier_IndexController extends Mage_Core_C
              //$retour .= $data->getData('nom').' '.$data->getData('prenom').' '.$data->getData('telephone').'<br />';
              echo $data->getData('customer_email')."<br/>";
         }
+    }
+    
+    public function notifyusersAction()
+    {
+        Mage::getModel('smogiexpirationnotifier/notify')->notifyusers();
     }
     
     public function createnotificationAction()
@@ -30,7 +36,7 @@ class Ankitsinghania_Smogiexpirationnotifier_IndexController extends Mage_Core_C
     
     public function sendemailAction()
     {
-        echo Mage::getModel('smogiexpirationnotifier/notify')->sendemail("Manish Waliyan","manish@mobikasa.com",100, 45);
+        echo Mage::getModel('smogiexpirationnotifier/notify')->sendemail("Manish Waliyan","ankit@mobikasa.com",100, 45);
     }
 }
 ?>

@@ -46,7 +46,7 @@
                     <cron_expr>*/2 * * * *</cron_expr>
                 </schedule>
                 <run>
-                    <model>smogiexpirationnotifier/notify::notify</model>
+                    <model>smogiexpirationnotifier/notify::notifyusers</model>
                 </run>
             </Ankitsinghania_Smogiexpirationnotifier>
         </jobs>

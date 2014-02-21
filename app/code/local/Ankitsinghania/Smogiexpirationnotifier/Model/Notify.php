@@ -7,6 +7,36 @@ class Ankitsinghania_Smogiexpirationnotifier_Model_Notify extends Mage_Core_Mode
     }
     public function notify(){
         Mage::log("i ran", null, "smoginotifier.log");
+        $this->getCustomerslist(20);
+    }
+    
+    public function notifyusers()
+    {
+        Mage::log("notifying users", null, "smoginotifier.log");
+        $notification_periods = array(3,30);
+        $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
+        foreach($notification_periods as $notification_period)
+        {
+            $customerlist = $this->getCustomerslist($notification_period);
+            $notify_date = date('Y-m-d');
+            $bucks_expiration_date = date('Y-m-d', strtotime(" + 3 days"));
+            foreach($customerlist as $customer)
+            {
+                $notification_log = Mage::getModel('smogiexpirationnotifier/notify');
+                $notification_log->setCustomer_id($customer['customer_id']);
+                $notification_log->setCustomer_email($customer['customer_email']);
+                $notification_log->setCustomer_name($customer['customer_name']);
+                $notification_log->setBucks_expiring($customer['bucks_expiring']);
+                $notification_log->setBucks_expiration_date($bucks_expiration_date);
+                $notification_log->setNotify_date($notify_date);
+                if($serverType == 'production')
+                    $notification_log->setEmail_status($this->sendemail($customer['customer_name'], $customer['customer_email'], $customer['bucks_expiring'], $notification_period));
+                else
+                    $notification_log->setEmail_status($this->sendemail($customer['customer_name'], "ankit@mobikasa.com", $customer['bucks_expiring'], $notification_period));
+                $notification_log->setNotification_period($notification_period);
+                $notification_log->save();
+            }   
+        }
     }
     
     public function getCustomerslist($expiring_in_days)
@@ -28,7 +58,7 @@ class Ankitsinghania_Smogiexpirationnotifier_Model_Notify extends Mage_Core_Mode
                     $customer = Mage::getModel('customer/customer')->load($customer_id);
                     $customerName = $customer->getName();
                     $customerEmail = $customer->getEmail();
-                    array_push($customerlist, array($customer_id, $customerEmail, $customerName, $points));
+                    array_push($customerlist, array("customer_id" => $customer_id, "customer_email" => $customerEmail, "customer_name" => $customerName,"bucks_expiring" => $points));
                 }
             }
         }
@@ -43,7 +73,7 @@ class Ankitsinghania_Smogiexpirationnotifier_Model_Notify extends Mage_Core_Mode
         //$template = Mage::getStoreConfig(self::XML_PATH_SUBSCRIPTION_EMAIL_TEMPLATE, Mage::app()->getStore()->getId());
         //$template = 1;
 //        $template = Mage::getModel('core/email_template')->loadByCode('testemail');
-        $mail_collection = Mage::getModel('core/email_template')->getCollection()->addFieldToFilter('template_code','testemail');
+        $mail_collection = Mage::getModel('core/email_template')->getCollection()->addFieldToFilter('template_code','smogi_expiring_notification_email');
         $template_id = $mail_collection->getFirstItem()->getTemplate_id();
         
         $recipient = array(
