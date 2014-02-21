@@ -1953,14 +1953,14 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
     }
     
-    public function getCustomerslistAction($expiring_in_days)
+    public function getCustomerslistAction()
     {
         $allStores = Mage::app()->getStores();	
         $customerlist = array();
         foreach ($allStores as $_eachStoreId => $val)
         {
             $store_id = Mage::app()->getStore($_eachStoreId)->getId();
-            $days = $expiring_in_days;
+            $days = $this->getRequest()->getParam('day');
 			$points = Mage::getModel('rewardpoints/stats')
                         ->getResourceCollection()
                         ->addFinishFilter($days)
