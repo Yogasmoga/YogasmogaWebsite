@@ -24,6 +24,28 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<script type="text/javascript">
+    function alertforcheckbox(clickedid)
+    {
+        if (document.getElementById(clickedid).checked == true) {
+
+            return false;
+        } else {
+            var box= confirm("This will not return the refunded item quantity back to stock. \n Are you sure?");
+            if (box==true)
+                return true;
+            else
+                document.getElementById(clickedid).checked = true;
+
+        }
+
+        //
+
+
+
+    }
+
+</script>
 <?php $_items = $this->getCreditmemo()->getAllItems() ?>
 <?php if (count($_items)) : ?>
 <div class="grid np">

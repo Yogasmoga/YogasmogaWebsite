@@ -57,6 +57,78 @@ if($row['cnt'] == 1)
     <?php
 }
 ?>
+<!-- google analyst code  --->
+<?php
+$order_details = Mage::getModel('sales/order')->loadByIncrementId(Mage::getSingleton('checkout/session')->getLastRealOrderId());
+$adwords_saleamt = $order_details->subtotal;
+?>
+<?php
+$serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
+$quoteId = Mage::getModel('sales/order')->loadByIncrementId($this->getOrderId())->getQuoteId();
+$quote = Mage::getModel('sales/quote')->load($quoteId);
+$method = $quote->getCheckoutMethod(true);
+
+
+if($serverType == 'production')
+{
+    if ($method == 'register'){
+        ?>
+        <script type="text/javascript">
+            var fb_param = {};
+            fb_param.pixel_id = "6015914449946";
+            fb_param.value = "0.00";
+            fb_param.currency = "USD";
+            (function(){
+                var fpw = document.createElement("script");
+                fpw.async = true;
+                fpw.src = "//connect.facebook.net/en_US/fp.js";
+                var ref = document.getElementsByTagName("script")[0];
+                ref.parentNode.insertBefore(fpw, ref);
+            })();
+        </script>
+
+    <?php  }
+    ?>
+    <script type="text/javascript">
+        var fb_param = {};
+        fb_param.pixel_id = '6014024174346';
+        fb_param.value = '0.00';
+        fb_param.currency = 'USD';
+        (function(){
+            var fpw = document.createElement('script');
+            fpw.async = true;
+            fpw.src = '//connect.facebook.net/en_US/fp.js';
+            var ref = document.getElementsByTagName('script')[0];
+            ref.parentNode.insertBefore(fpw, ref);
+        })();
+    </script>
+
+    <!-- Google Code for Checkout Success Conversion Page -->
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var google_conversion_id = 990162677;
+        var google_conversion_language = "en";
+        var google_conversion_format = "3";
+        var google_conversion_color = "ffffff";
+        var google_conversion_label = "adt4CIPQygcQ9d2S2AM";
+        var google_conversion_value = 0;
+        if (<?php echo $adwords_saleamt; ?>) {
+            google_conversion_value = <?php echo $adwords_saleamt; ?>;
+        }
+        var google_remarketing_only = false;
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+    <noscript>
+        <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/990162677/?value=0&amp;label=adt4CIPQygcQ9d2S2AM&amp;guid=ON&amp;script=0"/>
+        </div>
+    </noscript>
+
+<?php } ?>
+<!-- END google analyst code  --->
+
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" media="all" />
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/myaccount.css'); ?>" media="all" />
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myaccount.js"></script>
@@ -234,72 +306,3 @@ receiving an email soon with your shipment tracking number.</p>
 </ul>
 <?php endif;?>	
 </div>
-<?php
-    $order_details = Mage::getModel('sales/order')->loadByIncrementId(Mage::getSingleton('checkout/session')->getLastRealOrderId());
-    $adwords_saleamt = $order_details->subtotal;
-?>
-<?php
-$serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
-$quoteId = Mage::getModel('sales/order')->loadByIncrementId($this->getOrderId())->getQuoteId();
-$quote = Mage::getModel('sales/quote')->load($quoteId);
-$method = $quote->getCheckoutMethod(true);
-
-
-if($serverType == 'production')
-{
-    if ($method == 'register'){
-   ?>
-        <script type="text/javascript">
-            var fb_param = {};
-            fb_param.pixel_id = "6015914449946";
-            fb_param.value = "0.00";
-            fb_param.currency = "USD";
-            (function(){
-                var fpw = document.createElement("script");
-                fpw.async = true;
-                fpw.src = "//connect.facebook.net/en_US/fp.js";
-                var ref = document.getElementsByTagName("script")[0];
-                ref.parentNode.insertBefore(fpw, ref);
-            })();
-        </script>
-
-   <?php  }
-?>
-<script type="text/javascript">
-    var fb_param = {};
-    fb_param.pixel_id = '6014024174346';
-    fb_param.value = '0.00';
-    fb_param.currency = 'USD';
-    (function(){
-        var fpw = document.createElement('script');
-        fpw.async = true;
-        fpw.src = '//connect.facebook.net/en_US/fp.js';
-        var ref = document.getElementsByTagName('script')[0];
-        ref.parentNode.insertBefore(fpw, ref);
-    })();
-</script>
-
-<!-- Google Code for Checkout Success Conversion Page -->
-<script type="text/javascript">
-/* <![CDATA[ */
-var google_conversion_id = 990162677;
-var google_conversion_language = "en";
-var google_conversion_format = "3";
-var google_conversion_color = "ffffff";
-var google_conversion_label = "adt4CIPQygcQ9d2S2AM";
-var google_conversion_value = 0;
-if (<?php echo $adwords_saleamt; ?>) {
-    google_conversion_value = <?php echo $adwords_saleamt; ?>;
-}
-var google_remarketing_only = false;
-/* ]]> */
-</script>
-<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-</script>
-<noscript>
-<div style="display:inline;">
-<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/990162677/?value=0&amp;label=adt4CIPQygcQ9d2S2AM&amp;guid=ON&amp;script=0"/>
-</div>
-</noscript>
-
-<?php } ?>
