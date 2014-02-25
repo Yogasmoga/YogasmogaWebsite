@@ -25,9 +25,9 @@
  */
 ?>
 <script type="text/javascript">
-    function alertforcheckbox(clickedid)
+    function alertforcheckbox(elem)
     {
-        if (document.getElementById(clickedid).checked == true) {
+        if (elem.checked == true) {
 
             return false;
         } else {
@@ -35,7 +35,7 @@
             if (box==true)
                 return true;
             else
-                document.getElementById(clickedid).checked = true;
+                elem.checked = true;
 
         }
 
