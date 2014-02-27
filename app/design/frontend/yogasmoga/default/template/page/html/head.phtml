@@ -23,7 +23,18 @@
  * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
-?>
+?><?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
+if($serverType == 'production')
+{
+    ?>
+    <script src="//platform.twitter.com/oct.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        twttr.conversion.trackPid('l4bkd');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=l4bkd&p_id=Twitter" />
+    </noscript>
+<?php } ?>
 <meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
 <?php if(strpos(Mage::helper('core/url')->getCurrentUrl(),"customer/account/login") !== FALSE)
     {
@@ -113,5 +124,6 @@ if($serverType == 'production')
 adroll_conversion_value_in_dollars = 'ADVERTISERS VARIABLE'; 
 adroll_custom_data = {"ORDER_ID": "ADVERTISERS VARIABLE"}
 </script>
+
 
 <?php } ?>
