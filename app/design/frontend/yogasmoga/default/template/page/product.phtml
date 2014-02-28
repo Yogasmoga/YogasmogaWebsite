@@ -53,19 +53,27 @@
     var sample=1;var smPos=153;var spPos=153;var sW;var sH;
 </script>
 <?php
-    $_product = Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId());
-    $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
-    foreach($_gallery as $_image)
+    $cache = Mage::app()->getCache();
+    $cachevalue = $cache->load("custom_product_og_".Mage::registry('current_product')->getId());
+    if($cachevalue)
+        echo $cachevalue;
+    else
     {
-        $imgdata = json_decode(trim($_image->getLabel()), true);
-        if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0)
-            continue;
-        ?>
-            <meta property="og:image"content="<?php echo Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(200, 200)->setQuality(100); ?>" />
-        <?php
-        
+        $ogtags = "";
+        $_product = Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId());
+        $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+        foreach($_gallery as $_image)
+        {
+            $imgdata = json_decode(trim($_image->getLabel()), true);
+            if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0)
+                continue;
+            $ogtags .= '<meta property="og:image"content="'.Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(200, 200)->setQuality(100).'" />';
+        }
+        $cache->save($ogtags, "custom_product_og_".Mage::registry('current_product')->getId(), array("custom_product_og"), null);
+        echo $ogtags;
     }
 ?>
+
 
 </head>
 <body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
