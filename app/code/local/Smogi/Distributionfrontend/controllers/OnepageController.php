@@ -238,7 +238,7 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
         
         try{
             $write = Mage::getSingleton('core/resource')->getConnection('core_write');
-            $readresult=$write->query("Select base_discount_amount, rewardpoints_quantity, grand_total, coupon_code from sales_flat_order where entity_id=".$lastOrderId);
+            $readresult=$write->query("Select base_discount_amount, rewardpoints_quantity, grand_total, coupon_code,store_id,entity_id,customer_id from sales_flat_order where entity_id=".$lastOrderId);
             $row = $readresult->fetch();
             $smogiused = false;
 			Mage::log("Base Discount = ".$row['base_discount_amount'],null,'distribution.log');
@@ -250,6 +250,8 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
 				Mage::log("Rewardpoints = ".$row['rewardpoints_quantity'],null,'distribution.log');
                 if($row['rewardpoints_quantity'] > 0)
                     $smogiused = true;
+                //
+                $this->checkForSmogiRefundAction($row);
                 //Mage::log("Smogi used = $smogiused",null,'distribution.log');        
                 $readresult=$write->query("Select entity_id from sales_flat_invoice where order_id=".$lastOrderId);
                 $row = $readresult->fetch();
@@ -376,6 +378,47 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
         $this->renderLayout();
     }
 
+    public function checkForSmogiRefundAction($row)
+    {
+
+        $order_id = $row['entity_id'];
+        $customer_id = $row['customer_id'];
+        $rewardpoints_quantity = $row['rewardpoints_quantity'];
+
+
+        if (Mage::getStoreConfig('rewardpoints/default/flatstats', $row['store_id'])){
+            $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+            $total_points =  $reward_flat_model->collectPointsCurrent($customer_id, $row['store_id'])+0;
+            //Mage::helper('core')->currency($reward_flat_model->collectPointsCurrent($customerId, $store_id)+0);
+        }
+
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+        $readresult=$write->query("select * from rewardpoints_account where customer_id='".$customer_id."' and points_current > 0 ORDER BY date_end DESC  ");
+        $result = $readresult->fetch();
+        $rewardpoints_quantity += $total_points;
+        $point_current = array();$i=0;$compare_smogi=0;
+        foreach($result as $res)
+        {
+            $compare_smogi += $res['points_current'];
+            $point_current[$i] = $res['points_current'];
+            if($compare_smogi >= $rewardpoints_quantity)
+                break;
+
+            $i++;
+        }
+        krsort($point_current);
+        $points = 0;
+        $date_end = 0;
+        for($j=count($point_current);$j>0;$j--)
+        {
+
+            $result = $write->query("insert into check_for_smogi_refund values(".$order_id.",".$customer_id.",".$point_current[$j].",".$date_end.")");
+
+        }
+
+
+
+    }
     public function failureAction()
     {
         $lastQuoteId = $this->getOnepage()->getCheckout()->getLastQuoteId();

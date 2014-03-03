@@ -499,7 +499,7 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
             Mage::log("Order #".$lastOrderId,null,'distribution.log');
 			try{
             $write = Mage::getSingleton('core/resource')->getConnection('core_write');
-            $readresult=$write->query("Select base_discount_amount, rewardpoints_quantity, grand_total, coupon_code from sales_flat_order where entity_id=".$lastOrderId);
+            $readresult=$write->query("Select base_discount_amount, rewardpoints_quantity, grand_total, coupon_code,store_id,entity_id,customer_id from sales_flat_order where entity_id=".$lastOrderId);
             $row = $readresult->fetch();
             $smogiused = false;
 			Mage::log("Base Discount = ".$row['base_discount_amount'],null,'distribution.log');
@@ -511,6 +511,8 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
 				Mage::log("Rewardpoints = ".$row['rewardpoints_quantity'],null,'distribution.log');
                 if($row['rewardpoints_quantity'] > 0)
                     $smogiused = true;
+                $this->checkForSmogiRefundAction($row);
+
                 //Mage::log("Smogi used = $smogiused",null,'distribution.log');        
                 $readresult=$write->query("Select entity_id from sales_flat_invoice where order_id=".$lastOrderId);
                 $row = $readresult->fetch();
@@ -644,6 +646,65 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
             $this->_redirect('*/*/');
         }
     }
+
+    public function checkForSmogiRefundAction($row)
+    {
+
+         $order_id = $row['entity_id'];
+        Mage::log("Order #".$order_id,null,'smogi_refund.log');
+         $customer_id = $row['customer_id'];
+        Mage::log("customer_id #".$customer_id,null,'smogi_refund.log');
+         $rewardpoints_quantity = $row['rewardpoints_quantity'];
+         //$store_id = Mage::app()->getStore()->getId();
+
+        if (Mage::getStoreConfig('rewardpoints/default/flatstats', $row['store_id'])){
+            $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+              $total_points =  $reward_flat_model->collectPointsCurrent($customer_id, $row['store_id'])+0;
+            //Mage::helper('core')->currency($reward_flat_model->collectPointsCurrent($customerId, $store_id)+0);
+        }
+        else
+             $total_points = Mage::getModel('rewardpoints/stats')->getPointsCurrent($customer_id, $row['store_id']);
+        Mage::log("total_points #".$total_points,null,'smogi_refund.log');
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+        $readresult=$write->query("select * from rewardpoints_account where customer_id='".$customer_id."' and points_current > 0 ORDER BY date_end DESC  ");
+        $result = $readresult->fetch();
+        $rewardpoints_quantity += $total_points;
+        $point_current = array();$i=0;$compare_smogi=0;
+       // $date_end = array();
+        foreach($result as $res)
+        {
+            $compare_smogi += $res['points_current'];
+            $point_current[$i]['points'] = $res['points_current'];
+            $point_current[$i]['date'] = date('Y-m-d', strtotime($res['date_end']));
+            if($compare_smogi >= $rewardpoints_quantity)
+                break;
+
+            $i++;
+        }
+        Mage::log("result count #".count($result),null,'smogi_refund.log');
+        //krsort($point_current);
+        Mage::log("point_current count #".count($point_current),null,'smogi_refund.log');
+        //krsort($date_end);
+        Mage::log("result count #".count($result),null,'smogi_refund.log');
+        echo '<pre>';print_r($point_current);die;
+        $compare_smogi =0;
+        for($j=count($point_current)-1;$j>=0;$j--)
+        {
+            $compare_smogi += $point_current[$j]['points'];
+            if($compare_smogi >= $row['rewardpoints_quantity'])
+            {
+                $point_current[$j]['points'] =  $point_current[$j]['points']- $row['rewardpoints_quantity'];
+                break;
+            }
+            $query = "insert into check_for_smogi_refund values(".$order_id.",".$customer_id.",".$point_current[$j]['points'].",         ".$point_current[$j]['date'].")";
+            Mage::log("insert query #".$query,null,'smogi_refund.log');
+            $result = $write->query("insert into check_for_smogi_refund values(".$order_id.",".$customer_id.",".$point_current[$j]['points'].",         ".$point_current[$j]['date'].")");
+        }
+
+
+
+    }
+
 
     /**
      * Acl check for admin
