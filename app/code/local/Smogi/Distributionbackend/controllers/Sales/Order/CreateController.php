@@ -510,8 +510,11 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
                 $discount_amount = $row['base_discount_amount'] * -1;
 				Mage::log("Rewardpoints = ".$row['rewardpoints_quantity'],null,'distribution.log');
                 if($row['rewardpoints_quantity'] > 0)
+                {
                     $smogiused = true;
-                $this->checkForSmogiRefundAction($row);
+                    //$this->checkForSmogiRefundAction($row);
+                    $this->smogi_storeExpiryDate($row);
+                }
 
                 //Mage::log("Smogi used = $smogiused",null,'distribution.log');        
                 $readresult=$write->query("Select entity_id from sales_flat_invoice where order_id=".$lastOrderId);
@@ -646,7 +649,44 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
             $this->_redirect('*/*/');
         }
     }
-
+    
+    public function smogi_storeExpiryDate($orderinfo)
+    {
+        if (Mage::getStoreConfig('rewardpoints/default/flatstats', $orderinfo['store_id']))
+            $smogi_balance =  Mage::getModel('rewardpoints/flatstats')->collectPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id']);
+        else
+            $smogi_balance = Mage::getModel('rewardpoints/stats')->getPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id']);
+        Mage::log("smogi_balance #".$smogi_balance,null,'smogi_store_expiry.log');    
+        $smogi_balance += $orderinfo['rewardpoints_quantity'];
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+        $readresult=$write->query("select * from rewardpoints_account where customer_id='".$orderinfo['customer_id']."' and points_current > 0 ORDER BY date_end DESC");
+        $temp = 0;
+        $customer_pointinfo = array();
+        while ($row = $readresult->fetch() ) {
+            $temp += $row['points_current'];
+            array_push($customer_pointinfo, array("points" => $row['points_current'], "date" => $row['date_end']));
+            if($temp >= $smogi_balance)
+                break;
+        }
+        $temp = 0;
+        Mage::log("customer_pointinfo #".count($customer_pointinfo),null,'smogi_store_expiry.log');
+        for($i = count($customer_pointinfo) -1; $i >= 0; $i--)
+        {
+            $temp1 = 0;
+            
+            if(($temp + $customer_pointinfo[$i]['points']) <=  $orderinfo['rewardpoints_quantity'])
+                $temp1 = $customer_pointinfo[$i]['points'];
+            else
+                $temp1 = $orderinfo['rewardpoints_quantity'] - $temp;
+            $query = "Insert into check_for_smogi_refund values(".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".$temp1.",'".$customer_pointinfo[$i]['date']."')";
+             Mage::log("Query #".$query,null,'smogi_store_expiry.log');    
+            $write->query("Insert into check_for_smogi_refund values(null,".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".$temp1.",'".$customer_pointinfo[$i]['date']."')");
+            $temp += $temp1;
+            if($temp >= $orderinfo['rewardpoints_quantity'])
+                break;
+        }
+    }
+    
     public function checkForSmogiRefundAction($row)
     {
 
