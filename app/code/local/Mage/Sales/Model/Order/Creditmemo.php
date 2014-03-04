@@ -1390,7 +1390,27 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
                    // $proxy->call($sessionId, 'j2trewardapi.create', array(array('customer_id' => '1', 'order_id' => '12345', 'date_start' => '2012-23-03', 'points_current' => '20', 'store_id' => '1,2')));
                    // $proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $sum_smogi_customization, $storeIds));
                    // $this->savetodb($order->getId(), $sum_smogi_customization);
-
+                    $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+                    $readresult=$write->query("SELECT * FROM smogi_store_expiry_date WHERE order_id=".$orderid." and (used_points - refunded_points)>0 ORDER BY expiry_date DESC");
+                    $temp = 0;
+                    while ($row = $readresult->fetch() )
+                    {
+                        $temp1 = 0;
+                        if(($temp + ($row['used_points'] - $row['refunded_points'])) > $sum_smogi_customization)
+                        {
+                            $temp1 = $sum_smogi_customization - $temp;
+                        }
+                        else
+                        {
+                            $temp1 = $row['used_points'] - $row['refunded_points'];
+                        }
+                        $temp += $temp1;
+                        $write->query("UPDATE smogi_store_expiry_date SET refunded_points= refunded_points + ".$temp1." WHERE id=".$row['id']);
+                        $proxy->call($sessionId, 'j2trewardapi.create', array(array('customer_id' => $customer_id, 'order_id' => $ordernumber, 'date_start' => date('Y-m-d'),'date_end' => date('Y-m-d', strtotime($expiry_date)) ,'points_current' => $temp1, 'rewardpoints_description' => 'Refunding Points on partial refund.', 'store_id' => $storeIds)));
+                        if($temp >= $sum_smogi_customization)
+                            break;
+                    }
+                    /*
                     Mage::log("order id #".$orderid,null,'partial_ankit.log');
                     Mage::log("order number #".$order->getId(),null,'partial_ankit.log');
                     $write = Mage::getSingleton('core/resource')->getConnection('core_write');
@@ -1417,6 +1437,7 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
                         }
                         Mage::log("used points #".$row['used_points']."expiry date- ".$row['expiry_date'],null,'partial_ankit.log');
                     }
+                    */
                 }
             }            
         }
