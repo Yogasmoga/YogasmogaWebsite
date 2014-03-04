@@ -1386,8 +1386,37 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
                 }
                 else
                 {
-                    $proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $sum_smogi_customization, $storeIds));
-                    $this->savetodb($order->getId(), $sum_smogi_customization);
+                    //to add points
+                   // $proxy->call($sessionId, 'j2trewardapi.create', array(array('customer_id' => '1', 'order_id' => '12345', 'date_start' => '2012-23-03', 'points_current' => '20', 'store_id' => '1,2')));
+                   // $proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $sum_smogi_customization, $storeIds));
+                   // $this->savetodb($order->getId(), $sum_smogi_customization);
+
+                    Mage::log("order id #".$orderid,null,'partial_ankit.log');
+                    Mage::log("order number #".$order->getId(),null,'partial_ankit.log');
+                    $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+                    $readresult=$write->query("SELECT * FROM smogi_store_expiry_date WHERE order_id=".$orderid." and (used_points - refunded_points)>0 ORDER BY expiry_date DESC");
+                    $temp = 0;$temp1=0;
+                    $order = Mage::getModel('sales/order')->load($orderid);
+                    $ordernumber = $order['increment_id'];
+                    $write1 = Mage::getSingleton('core/resource')->getConnection('core_write');
+                    while ($row = $readresult->fetch() )
+                    {
+                        $temp += $row['used_points'];
+                        if($temp >= $sum_smogi_customization)
+                        {
+                            $expiry_date = $row['expiry_date'];
+                            $proxy->call($sessionId, 'j2trewardapi.create', array(array('customer_id' => $customer_id, 'order_id' => $ordernumber, 'date_start' => date('Y-m-d'),'date_end' => date('Y-m-d', strtotime($expiry_date)) ,'points_current' => $sum_smogi_customization, 'rewardpoints_description' => 'Update expiry date after refund ', 'store_id' => $storeIds)));
+                            $write1->query("UPDATE smogi_store_expiry_date SET refunded_points=".$sum_smogi_customization.",used_points =".$row['used_points']-$sum_smogi_customization."  WHERE id=".$row['id']);
+                            break;
+                        }
+                        else{
+
+                            $temp1= $sum_smogi_customization-$row['used_points'];
+                            $write->query("UPDATE smogi_store_expiry_date SET refunded_points=".$row['used_points']."  WHERE id=".$row['id']);
+
+                        }
+                        Mage::log("used points #".$row['used_points']."expiry date- ".$row['expiry_date'],null,'partial_ankit.log');
+                    }
                 }
             }            
         }
