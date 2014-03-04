@@ -1405,6 +1405,8 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
                             $temp1 = $row['used_points'] - $row['refunded_points'];
                         }
                         $temp += $temp1;
+                        $expiry_date = $row['expiry_date'];
+                        $ordernumber = $order['increment_id'];
                         $write->query("UPDATE smogi_store_expiry_date SET refunded_points= refunded_points + ".$temp1." WHERE id=".$row['id']);
                         $proxy->call($sessionId, 'j2trewardapi.create', array(array('customer_id' => $customer_id, 'order_id' => $ordernumber, 'date_start' => date('Y-m-d'),'date_end' => date('Y-m-d', strtotime($expiry_date)) ,'points_current' => $temp1, 'rewardpoints_description' => 'Refunding Points on partial refund.', 'store_id' => $storeIds)));
                         if($temp >= $sum_smogi_customization)

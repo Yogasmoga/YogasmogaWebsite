@@ -249,9 +249,12 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
                 $discount_amount = $row['base_discount_amount'] * -1;
 				Mage::log("Rewardpoints = ".$row['rewardpoints_quantity'],null,'distribution.log');
                 if($row['rewardpoints_quantity'] > 0)
+                {
                     $smogiused = true;
+                    $this->smogi_storeExpiryDate($row);
+                }
                 //
-                $this->checkForSmogiRefundAction($row);
+
                 //Mage::log("Smogi used = $smogiused",null,'distribution.log');        
                 $readresult=$write->query("Select entity_id from sales_flat_invoice where order_id=".$lastOrderId);
                 $row = $readresult->fetch();
@@ -392,9 +395,14 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
         $customer_pointinfo = array();
         $i=0;
         while ($row = $readresult->fetch() ) {
-            $temp += $row['points_current'];
+			$temp1 = 0;
+			if(($temp + $row['points_current']) > $smogi_balance)
+				$temp1 = $smogi_balance - $temp;
+			else
+				$temp1 = $row['points_current'];
+            $temp += $temp1;
             //array_push($customer_pointinfo, array("points" => $row['points_current'], "date" => $row['date_end']));
-            $customer_pointinfo[$i]['points'] = $row['points_current'];
+            $customer_pointinfo[$i]['points'] = $temp1;
             $customer_pointinfo[$i]['date'] = $row['date_end'];
             $i++;
             if($temp >= $smogi_balance)
