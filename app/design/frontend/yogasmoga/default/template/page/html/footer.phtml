@@ -348,9 +348,8 @@ try {
 ?>
 
 <?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
-    //if($serverType == 'production')
-	if(1)
-    {
+    if($serverType == 'production')
+	{
 ?>
 <script type="text/javascript">
 setTimeout(function(){var a=document.createElement("script");
