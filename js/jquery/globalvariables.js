@@ -56,3 +56,4 @@ var _defaultprcolor = ''; //used for storing color info to be default selected w
 var _isCheckoutSuccessPage = false;
 var _orderNumberCheckout =  '';
 var _orderRevenueCheckout = '';
+var _isOnProductDetailPage = false; // check for product on product detail page

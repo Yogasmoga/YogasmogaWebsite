@@ -348,7 +348,8 @@ try {
 ?>
 
 <?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
-    if($serverType == 'production')
+    //if($serverType == 'production')
+	if(1)
     {
 ?>
 <script type="text/javascript">
@@ -406,7 +407,11 @@ var google_remarketing_only = true;
      _pa.revenue = _orderRevenueCheckout; // OPTIONAL: attach dynamic purchase values to conversions
 	 
 	 }
-    // _pa.productId = "myProductId"; // OPTIONAL: Include product ID for use with dynamic ads
+	 if((_productid != '')&&(_isOnProductDetailPage))
+	 {
+		_pa.productId = _productid; // OPTIONAL: Include product ID for use with dynamic ads
+		
+	 }
     var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
     pa.src = ('https:' == document.location.protocol ? 'https:' : 'http:') + "//tag.perfectaudience.com/serve/5310b5f2fcdb878ad0000085.js";
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(pa, s);
