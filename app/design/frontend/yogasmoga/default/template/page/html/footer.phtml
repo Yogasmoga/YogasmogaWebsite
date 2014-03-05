@@ -398,10 +398,32 @@ var google_remarketing_only = true;
 </div>
 </noscript>
 <script type="text/javascript">
+<?php
+$currentUrl = Mage::helper('core/url')->getCurrentUrl();
+
+     if (false !== strpos($currentUrl,'checkout/onepage/success')) {
+        $lastOrderId = Mage::getSingleton('checkout/session')->getLastOrderId();
+        $order = Mage::getSingleton('sales/order');
+        $order->load($lastOrderId);
+        $transactionTotal = $order->getData('base_grand_total');
+        $lastordernum = $order['increment_id'];
+		?>
+		var lastOrderId = '<?php echo  $lastordernum ;?>';
+		var orderTotal = '<?php echo number_format((float)$transactionTotal, 2, '.', '');?>';
+		var issuccess = true;
+	<?php	}else{
+		?> 
+		var issuccess = false;
+		<?php
+	}
+	
+?>		
   (function() {
     window._pa = window._pa || {};
-    // _pa.orderId = "myOrderId"; // OPTIONAL: attach unique conversion identifier to conversions
-    // _pa.revenue = "19.99"; // OPTIONAL: attach dynamic purchase values to conversions
+	if(issuccess){
+     _pa.orderId = lastOrderId; // OPTIONAL: attach unique conversion identifier to conversions
+     _pa.revenue = orderTotal; // OPTIONAL: attach dynamic purchase values to conversions
+	 }
     // _pa.productId = "myProductId"; // OPTIONAL: Include product ID for use with dynamic ads
     var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
     pa.src = ('https:' == document.location.protocol ? 'https:' : 'http:') + "//tag.perfectaudience.com/serve/5310b5f2fcdb878ad0000085.js";
