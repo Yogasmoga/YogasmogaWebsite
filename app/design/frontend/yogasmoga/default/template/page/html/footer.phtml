@@ -398,31 +398,13 @@ var google_remarketing_only = true;
 </div>
 </noscript>
 <script type="text/javascript">
-<?php
-$currentUrl_tracking = Mage::helper('core/url')->getCurrentUrl();
 
-     if (false !== strpos($currentUrl_tracking,'checkout/onepage/success')) {
-        $lastOrderId_tracking = Mage::getSingleton('checkout/session')->getLastOrderId();
-        $order_tracking = Mage::getSingleton('sales/order');
-        $order_tracking->load($lastOrderId_tracking);
-        $transactionTotal_tracking = $order_tracking->getData('base_grand_total');
-        $lastordernum_tracking = $order_tracking['increment_id'];
-		?>
-		var lastOrderId_tracking = '<?php echo  $lastordernum_tracking ;?>';
-		var orderTotal_tracking = '<?php echo number_format((float)$transactionTotal_tracking, 2, '.', '');?>';
-		var issuccess = true;
-	<?php	}else{
-		?> 
-		var issuccess = false;
-		<?php
-	}
-	
-?>		
   (function() {
     window._pa = window._pa || {};
-	if(issuccess){
-     _pa.orderId = lastOrderId_tracking; // OPTIONAL: attach unique conversion identifier to conversions
-     _pa.revenue = orderTotal_tracking; // OPTIONAL: attach dynamic purchase values to conversions
+	if(_isCheckoutSuccessPage){
+     _pa.orderId = _orderNumberCheckout; // OPTIONAL: attach unique conversion identifier to conversions
+     _pa.revenue = _orderRevenueCheckout; // OPTIONAL: attach dynamic purchase values to conversions
+	 
 	 }
     // _pa.productId = "myProductId"; // OPTIONAL: Include product ID for use with dynamic ads
     var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;

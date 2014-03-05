@@ -53,3 +53,6 @@ var _cursharesummary = '';
 var _oncartpage = false;
 var _enablediscounttype = '';
 var _defaultprcolor = ''; //used for storing color info to be default selected when product detail page loads
+var _isCheckoutSuccessPage = false;
+var _orderNumberCheckout =  '';
+var _orderRevenueCheckout = '';

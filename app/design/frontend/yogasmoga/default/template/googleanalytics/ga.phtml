@@ -44,7 +44,13 @@ if($serverType == 'production')
         $transactionTotal = $order->getData('base_grand_total');
         $lastordernum = $order['increment_id'];
  ?>
-        <script>
+       <script type="text/javascript">
+			 _isCheckoutSuccessPage = true;
+			 _orderNumberCheckout =  '<?php echo $lastordernum;?>';
+			 _orderRevenueCheckout = '<?php echo number_format((float)$transactionTotal, 2, '.', '');?>';;
+			
+		</script>
+		<script>
             dataLayer = [{
                 'transactionId': <?php echo $lastordernum; ?>,  // unique transaction identifier goes here
                 'transactionTotal': <?php echo $transactionTotal; ?>  // the total amount of the transaction goes here
