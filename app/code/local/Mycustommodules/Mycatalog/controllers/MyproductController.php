@@ -1814,19 +1814,20 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     }
 
                     //2. check if total points >= points available
-                    $customer = Mage::getModel('customer/customer')->load($customer_id);
-                    $customerName = $customer->getName();
-                    $customerEmail = $customer->getEmail();
+                    //$customer = Mage::getModel('customer/customer')->load($customer_id);
+                    //$customerName = $customer->getName();
+                    //$customerEmail = $customer->getEmail();
                     
-					$csv[$i] = array($customerName, $customerEmail, $points, $new_date);
+					//$csv[$i] = array($customerName, $customerEmail, $points, $new_date);
                     if ($points_received >= $points){
                         //3. send notification email
-                    /*    $customer = Mage::getModel('customer/customer')->load($customer_id);
+                        $customer = Mage::getModel('customer/customer')->load($customer_id);
                         $customerName = $customer->getName();
                         $customerEmail = $customer->getEmail();
-                        $html .= "<td>".$customer_id."</td>"."<td>".$customerName."</td>"."<td>".$customerEmail."</td></tr>";  */
-                        //Mage::getModel('rewardpoints/stats')->sendNotification($customer, $store_id, $points, $days);
-                        //Mage::log("Email sent to coustomer id:".$customer_id.",Points:".$points,null,"smogiexpireemail.log");
+						$csv[$i] = array($customerName, $customerEmail, $points, $new_date);
+                       // $html .= "<td>".$customer_id."</td>"."<td>".$customerName."</td>"."<td>".$customerEmail."</td></tr>";  
+                       // Mage::getModel('rewardpoints/stats')->sendNotification($customer, $store_id, $points, $days);
+                       // Mage::log("Email sent to coustomer id:".$customer_id.",Points:".$points,null,"smogiexpireemail.log");
                     }
 					$i++;
                 }
