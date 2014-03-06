@@ -1,0 +1,102 @@
+<?php
+class Ankitsinghania_Smogiexpirationnotifier_Model_Notify extends Mage_Core_Model_Abstract {
+    protected function _construct()
+    {
+        $this->_init('smogiexpirationnotifier/notify');
+        parent::_construct();
+    }
+    public function notify(){
+        Mage::log("i ran", null, "smoginotifier.log");
+        $this->getCustomerslist(20);
+    }
+    
+    public function notifyusers()
+    {
+        Mage::log("notifying users", null, "smoginotifier.log");
+        $notification_periods = array(3,30);
+        $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
+        foreach($notification_periods as $notification_period)
+        {
+            $customerlist = $this->getCustomerslist($notification_period);
+            $notify_date = date('Y-m-d');
+            $bucks_expiration_date = date('Y-m-d', strtotime(" + ".$notification_period." days"));
+            foreach($customerlist as $customer)
+            {
+                $notification_log = Mage::getModel('smogiexpirationnotifier/notify');
+                $notification_log->setCustomer_id($customer['customer_id']);
+                $notification_log->setCustomer_email($customer['customer_email']);
+                $notification_log->setCustomer_name($customer['customer_name']);
+                $notification_log->setBucks_expiring($customer['bucks_expiring']);
+                $notification_log->setBucks_expiration_date($bucks_expiration_date);
+                $notification_log->setNotify_date($notify_date);
+                if($serverType == 'production')
+                    $notification_log->setEmail_status($this->sendemail($customer['customer_name'], $customer['customer_email'], $customer['bucks_expiring'], $notification_period));
+                else
+                    $notification_log->setEmail_status($this->sendemail($customer['customer_name'], "ankit@mobikasa.com", $customer['bucks_expiring'], $notification_period));
+                $notification_log->setNotification_period($notification_period);
+                $notification_log->save();
+            }
+        }
+    }
+    
+    public function getCustomerslist($expiring_in_days)
+    {
+        $allStores = Mage::app()->getStores();	
+        $customerlist = array();
+        foreach ($allStores as $_eachStoreId => $val)
+        {
+            $store_id = Mage::app()->getStore($_eachStoreId)->getId();
+            $days = $expiring_in_days;
+			$points = Mage::getModel('rewardpoints/stats')
+                        ->getResourceCollection()
+                        ->addFinishFilter($days)
+                        ->addValidPoints($store_id);
+            if ($points->getSize()){
+				foreach ($points as $current_point){
+                    $customer_id = $current_point->getCustomerId();
+                    $points = $current_point->getNbCredit();
+                    $customer = Mage::getModel('customer/customer')->load($customer_id);
+                    $customerName = $customer->getName();
+                    $customerEmail = $customer->getEmail();
+                    array_push($customerlist, array("customer_id" => $customer_id, "customer_email" => $customerEmail, "customer_name" => $customerName,"bucks_expiring" => $points));
+                }
+            }
+        }
+        return $customerlist;
+    }
+    
+    public function sendemail($recipient_name, $recipient_email, $bucks, $expiry_days)
+    {
+        $translate = Mage::getSingleton('core/translate');
+        $translate->setTranslateInline(false);
+        $email = Mage::getModel('core/email_template');
+        //$template = Mage::getStoreConfig(self::XML_PATH_SUBSCRIPTION_EMAIL_TEMPLATE, Mage::app()->getStore()->getId());
+        //$template = 1;
+//        $template = Mage::getModel('core/email_template')->loadByCode('testemail');
+        $mail_collection = Mage::getModel('core/email_template')->getCollection()->addFieldToFilter('template_code','smogi_expiring_notification_email');
+        $template_id = $mail_collection->getFirstItem()->getTemplate_id();
+        
+        $recipient = array(
+            'email' => $recipient_email,
+            'name'  => $recipient_name
+        );
+        $sender  = array(
+            'name' => 'YOGASMOGA',
+            'email' => 'hello@yogasmoga.com'
+        );
+        $email->setDesignConfig(array('area'=>'frontend', 'store'=> Mage::app()->getStore()->getId()))
+                ->sendTransactional(
+                    $template_id,
+                    $sender,
+                    $recipient['email'],
+                    $recipient['name'],
+                    array(
+                        'bucks'        => $bucks,
+                        'days_to_expire' => $expiry_days
+                    )
+                );
+        $translate->setTranslateInline(true);
+        return $email->getSentSuccess();
+    }
+}
+?>

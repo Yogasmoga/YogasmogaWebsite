@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Ankitsinghania_Smogiexpirationnotifier>
+            <version>0.0.1</version>
+        </Ankitsinghania_Smogiexpirationnotifier>
+    </modules>
+    <global>
+        <models>
+            <smogiexpirationnotifier>
+                <class>Ankitsinghania_Smogiexpirationnotifier_Model</class>
+                <resourceModel>smogiexpirationnotifier_mysql4</resourceModel>
+            </smogiexpirationnotifier>
+            <smogiexpirationnotifier_mysql4>
+                <class>Ankitsinghania_Smogiexpirationnotifier_Model_Mysql4</class>
+                <entities>
+                    <notify>
+                        <table>smogi_notify_log</table>
+                    </notify>
+                </entities>
+            </smogiexpirationnotifier_mysql4>
+        </models>
+        <resources>
+            <smogiexpirationnotifier_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </smogiexpirationnotifier_write>
+        </resources>
+    </global>
+    <frontend>
+        <routers>
+            <smogiexpirationnotifier>
+                <use>standard</use>
+                <args>
+                    <module>Ankitsinghania_Smogiexpirationnotifier</module>
+                    <frontName>smogiexpirationnotifier</frontName>
+                </args>
+            </smogiexpirationnotifier>
+        </routers>   
+    </frontend>
+    <crontab>
+        <jobs>
+            <Ankitsinghania_Smogiexpirationnotifier>
+                <schedule>
+                    <cron_expr>0 8 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>smogiexpirationnotifier/notify::notifyusers</model>
+                </run>
+            </Ankitsinghania_Smogiexpirationnotifier>
+        </jobs>
+    </crontab>
+</config>
