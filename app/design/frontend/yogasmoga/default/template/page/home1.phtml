@@ -1,0 +1,1198 @@
+<?php
+/**
+ * 
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+<?php
+    if($this->getRequest()->getParam('video') == 'true')
+    {
+        ?>
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb01.png" />
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb02.png" />
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb03.png" />
+            <meta property="og:title"content="YOGASMOGA | Did You Take a Breath Today?" />
+            <meta property="og:description"content="We are YOGASMOGA, We make things for life - One breath at a time." />
+        <?php
+    }
+    else
+    {
+        ?>
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/Untitled_Panorama2_c_1.jpg" />
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga_mood_2395.jpg" />
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/Yogasmoga_op.jpeg" />
+            <meta property="og:title"content="YOGASMOGA" />
+            <meta property="og:description"content="We are YOGASMOGA. We make things for LIFE. One breath at a time." />
+        <?php
+    }
+?>
+
+<?php echo $this->getChildHtml('head') ?>
+
+
+<?php /*
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/jqueryui/jquery-ui-1.9.1.custom.css'); ?>" media="all" />
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/product_view.css'); ?>" media="all" />
+
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery-ui-1.9.1.custom.min.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.bxSlider.min.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/bxsliderscript.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myproductimageswitcher.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/homemainsection.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/swfobject.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.pngFix.pack.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.fancybox-1.0.0.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/youtubevideo.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/parallaxeffect.js"></script>
+*/ ?>
+<?php
+    //if(Mage::getSingleton('core/session')->getShowVideo())
+    if($this->getRequest()->getParam('video') == 'true')
+    {
+        //Mage::getSingleton('core/session')->setShowVideo(false);
+        ?>
+        <script type="text/javascript">
+			var loc = window.location;
+			history.replaceState("", document.title, loc.pathname + "breathe");
+            jQuery(window).load(function(){
+				setTimeout(function(){$j("#hmpagevideo").trigger('click')},1000);
+            });
+        </script>
+        <?php
+    }
+?>
+<script type="text/javascript">
+    jQuery(window).load(function(){
+        jQuery("div.showloading").removeClass('showloading');
+        setTimeout(function(){setfullscreenheight();},50);
+    });
+    jQuery(document).ready(function(){
+       setTimeout(function(){
+            jQuery("div.page-overlayy").remove();
+            jQuery("body").css('overflow','auto');
+       }, 500); 
+    });
+</script>
+    <!-- this script is for home video for valentine's day  -->
+<!--<script type="text/javascript">
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    var player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('youtubeplayer', {
+        width: '100%',
+        height : '100%',
+        videoId: 'gPLyklRtlN8',
+        playerVars : {
+            controls : 0,
+            showinfo : 0,
+            'wmode': 'transparent',
+            rel : 0
+        },
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+    }
+        function onPlayerStateChange(event) {
+        if (event.data == 0) {
+            //event.target.playVideo();
+            jQuery("div#Welcome").removeClass('videomode');
+            player.stopVideo();
+        }
+      }
+    function onPlayerReady(event) {
+        //console.log("player ready");
+        //jQuery("#htmlvideo iframe").addAttribute()
+        //        event.target.playVideo();
+    }
+    jQuery(document).ready(function($){
+        $("#homemainslider").click(function(){
+            if(!_onipad)
+            {
+                setTimeout(function(){getvideowidth();},100);
+                $("div#Welcome").addClass('videomode');
+                player.playVideo();   
+            }
+            else
+                $("#hmpagevideo").trigger('click');
+        });
+    });
+</script>
+-->
+</head>
+<body class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>" style="margin-right:17px;overflow:hidden;">
+<?php echo $this->getChildHtml('after_body_start') ?>
+<div class="wrapper">
+<div class="page-overlayy" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">&nbsp;</div>
+    <?php echo $this->getChildHtml('global_notices') ?>
+    <div class="page">
+        <?php echo $this->getChildHtml('header') ?>
+        <div id="pagecontainer">
+            <div id="Welcome"<?php /*share-summary="We want everyone to join in the SMOGI Love. Share #NoSheerHere and shop to receive $25 SMOGI Bucks good on your first purchase of YOGASMOGA."*/ ?> class="fullscreenovfhidden flexslider pgsection neglectheaderwidth showloading" desc="Welcome to YOGASMOGA<?php /*No Sheer Here*/ ?>" style="border: none;border-radius : none;box-shadow:none;margin:0px;" tw-summary="<?php
+                if($this->getRequest()->getParam('video') == 'true')
+                {
+                    echo "Check out the DID YOU TAKE A BREATH TODAY? Video";
+                }
+                else
+                {
+                    echo "Check out YOGASMOGA. They make things for Life. One breath at a time";
+                    //echo "Join the SMOGI Love. Share #NoSheerHere & shop for $25 in SMOGI Bucks good on your first purchase";
+                }
+            ?>">
+                <?php
+                    if($this->getRequest()->getParam('video') == 'true')
+                    {
+                        ?>
+                            <img class="shareit nodisplay" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb01.png" />
+                        <?php
+                    }
+                ?>
+                <img class="shareit nodisplay" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/shareme.jpg" />
+                <div id="youtubeplayer"></div>
+                <ul class="slides" id="homemainslider">
+                   <!--
+                    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/anniversary.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                    </li>
+                    -->
+                    <?php /*
+                    <li>
+                      <img style="display: none;" class="shareit" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/nosheershr.jpg" />
+                      <img class="fullscreen <?php //if($this->getRequest()->getParam('video') != 'true') { echo "shareit"; } ?>" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/nosheer_1920.jpg" alt="Experience NoSheerHere and receive $25 SMOGI Bucks when you open a new account and shop" iwidth="1900" iheight="1201" />
+                      <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/nosheerhere.png" style="position: absolute; width: auto; top: 60px; left: 70px;" />
+                      <div class="nosheerinfo">
+                        We want everyone to join in the SMOGI Love.<br />Share #NoSheerHere and shop to receive $25 SMOGI Bucks*<br />good on your first purchase of YOGASMOGA.
+                        <table class="sharenosheer">
+                            <tr>
+                                <td>
+                                    <div class="twshare"></div>
+                                </td>
+                                <td>
+                                    <div class="fbshare"></div>
+                                </td>
+                                <td>
+                                    <div class="pinshare"></div>
+                                </td>
+                                <td>
+                                    <div class="mlshare"></div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="nosheerlinks">
+                            <div><a href="<?php echo Mage::helper('core/url')->getHomeUrl()."our-edge#technology"; ?>">DISCOVER AURUM FABRIC TECHNOLOGY</a></div>
+                            <div><a href="<?php echo Mage::helper('core/url')->getHomeUrl()."our-edge#colortechnology"; ?>">DISCOVER CARBON 6 COLOR TECHNOLOGY</a></div>
+                            <div><a href="<?php echo Mage::helper('core/url')->getHomeUrl()."women"; ?>">CHECK OUT OUR DRESSING ROOM</a></div>
+                        </div>
+                      </div>
+                      <div style="position: absolute; bottom: 7px; left: 15px; font-size: 10px; color: #666;text-align : left;">
+                        *Offer valid on new account registrations. Cannot be combined with other offers or promotions.<br />Only applicable on clothing purchases. Excludes all accessories.
+                      </div>
+                    </li>
+                    
+                    
+                    //////before 2310 below was uncommented
+                    
+                    <li>
+                      <img class="fullscreen <?php if($this->getRequest()->getParam('video') != 'true') { echo "shareit"; } ?>" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/Untitled_Panorama2_c_1.jpg" alt="Landscapes of Jodhpur and New York City" usemap="#videomap" iwidth="1600" iheight="900" />
+                      <div style="position: absolute;  left : 5%; bottom: 4.3%; color:white; font-weight:normal; font-family:gotham-m, arial; font-size:14px;">FROM: NEW YORK CITY</div>
+					  <div style="position: absolute;  right: 5%; bottom: 4.3%; color:white; font-weight:normal; font-family:gotham-m, arial; font-size:14px;">TO: JODHPUR, INDIA'S BLUE CITY</div>
+					  <img alt="Namask&aacute;r. Welcome to YOGASMOGA." src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/oink.png" style="position:absolute; top:50%; left:50%; margin:-115px 0 0 -115px !important; z-index:1; width:230px; width:230px;" />                   
+                    </li>
+                    
+                    
+                    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga_mood_2395.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+						<div class="banner-txt">
+							WE MAKE things
+							<span>FOR <strong>LIFE.</strong></span>
+							<span>ONE <strong>BREATH</strong></span>
+							AT A TIME.
+						</div>
+                    </li>
+
+                    
+                    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga-3.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                        
+                        <div class="banner-txt3">
+                        "Yogasmoga is not your <br/> average gym wear"
+                        <span style="font-family:AvantGardeGothicBold">
+                        - Q By Equinox
+                        </span>
+                        
+                        <span class="banner-txt3-link">
+                            <a href="<?php echo Mage::helper('core/url')->getHomeUrl() ?>our-story#press">
+                            See what the world is saying about us <strong>&gt;&gt;&gt;</strong>
+                            </a>
+                        </span>
+                        </div>
+                    </li>
+                    
+                    //////upto here for promotion 2310
+                    */ ?>
+                    
+                    <?php /* 
+                    //this one remains after promotion ends
+                     
+
+                    
+                    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga-3.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                        
+                        <div class="banner-txt3 promo2310" style="color : #333;">
+                        ULTIMATE YOGA PANT: <br/> THE TIPPY TOE LEGGING
+                        <span style="color : #333;">"Seriously technical fabrics are an eco-engineered <br /> shade of black that's uber dark and incredibly flattering."</span>
+                        <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/well_good_new.png" alt="NYC Equinox Yoga teacher Sarra Morton" style="width: auto; margin-top: 45px ! important; float: left;" />
+                        <span class="banner-txt3-link" style="text-align: left; display: inline; float: left; margin-left: 213px ! important; font-size: 13px; padding-top: 27px ! important;">
+                            <a style="font-family: gotham; color : #333;" target="_blank" href="http://www.wellandgoodnyc.com/2013/10/21/the-ultimate-guide-to-yoga-pants/#the-ultimate-guide-to-yoga-pants-4">
+                            Read More <strong style="">&gt;&gt;&gt;</strong>
+                            </a>
+                        </span>  
+                        </div>
+                    </li>
+                    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/slide2_new1.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                        
+                        <div class="banner-txt3" style="color: #333;">
+                        <span style="font-family: AvantGardeGothicBold; text-align: left; font-size: 34px; color : #333;">Yogasmoga is not</span>
+                        <span style="font-family: AvantGardeGothicITCW01B; padding-top: 0px ! important; font-size: 33px;">your average gym wear</span>
+                        <span style="font-family: AvantGardeGothicBold; text-align: left; padding-top: 20px ! important; font-size: 20px; color : #333;">
+                        - Q By Equinox
+                        </span>
+                        
+                        <span style="text-align: left;" class="banner-txt3-link">
+                            <a href="<?php echo Mage::helper('core/url')->getHomeUrl() ?>our-story#press" style="font-family: gotham; color : #333;">
+                            See what the world is saying about us <strong>&gt;&gt;&gt;</strong>
+                            </a>
+                        </span>
+                        </div>
+                    </li>
+                    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga_mood_2395.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+						<div class="banner-txt">
+							WE MAKE things
+							<span>FOR <strong>LIFE.</strong></span>
+							<span>ONE <strong>BREATH</strong></span>
+							AT A TIME.
+						</div>        
+                    </li>
+                    */ ?>
+                    
+                    <?php //below changes for promotion on 27-Nov-2013 ?>
+                    
+                    <?php 
+                    /*
+                    //if(Mage::getModel('core/variable')->loadByCode('black_toggle')->getValue('plain') == "yes")
+//                    {
+                        ?>
+                    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/blackfriday_bg.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                        <img class="fltimage" mymargin="-100" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/yoga_1.png" alt="NYC Equinox Yoga teacher Sarra Morton" style="position: absolute; height: 100%; width: auto;min-height:660px;" />
+                        <div class="banner-txt3 promo2310 promo1311" style="color : #333;">
+                        <img style="width: auto;" class="barimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/black_friday.png" />
+                        <div class="startingnov13 blackfriday">
+                        SAVE $75 AND EARN $10 SMOGI BUCKS<br />FOR A FUTURE PURCHASE WHEN YOU<br />COMBINE A TOP AND PANT.
+                        </div>
+                        <div class="startingnov13 blackfriday_combination">
+                        Featured here: Classic Reversible Slimmie Pant in Grey<br />Caviar/Violet Twilight and U &amp; Me bra in Violet Twilight.<br />Use code <span>YSHOLIDAY</span> at checkout.
+                        </div>
+                        <span class="banner-txt3-link" style="text-align: left; display: inline; float: left; margin-left: 0px ! important; font-size: 13px; padding-top: 0px ! important;">
+                            <a style="font-family: ITCAvantGardeProMd; color : #333;font-size:13px;" target="_blank" href="<?php echo Mage::helper('core/url')->getHomeUrl() ?>women">
+                            SHOP YOUR COMBINATION NOW <strong style="">&gt;&gt;&gt;</strong>
+                            </a>
+                        </span>
+                        </div>
+                        <div style="font-family:gothamlight;font-size:12px;color:#8A8989;position:absolute;bottom:10px;left:5%;">Final Sale. Offer good for any top plus pant purchase through December 2, 2013. One offer per order.</div>
+                    </li>    
+                        
+                        <?php
+                        */
+                    //}
+                    ?>
+                    
+                    <?php /*
+                    
+                    
+                    <li class="slide21127">
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/giftofys_bg.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                        <img class="girl2" mymargin="50" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/yoga_girl2.png" alt="NYC Equinox Yoga teacher Sarra Morton" style="position: absolute; height: 100%; width: auto;min-height:660px;" />
+                        <img class="girl1" mymargin="-100" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/models.png" alt="NYC Equinox Yoga teacher Sarra Morton" style="position: absolute; height: 100%; width: auto;min-height:660px;" />
+                        <div class="banner-txt3 promo2310 promo1311" style="color : #333;">
+                        <img class="giftysimg" style="width: auto;" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/give_gift.png" />
+                        <div class="startingnov13 blackfriday barimg" style="margin-top: 110px !important;">
+                        SEND A GIFT OF YS CARD<br />THIS HOLIDAY SEASON
+                        </div>
+                        <div class="startingnov13 giftofys_newproducts">
+                        We've got great new products in all sizes and colors<br />for your friends, family and loved ones.
+                        </div>
+                        <span class="banner-txt3-link" style="text-align: left; display: inline; float: left; margin-left: 0px ! important; font-size: 13px; padding-top: 0px ! important;">
+                            <a style="font-family: ITCAvantGardeProMd; color : #333;font-size:13px;" target="_blank" href="<?php echo Mage::helper('core/url')->getHomeUrl() ?>gift_of_ys">
+                            SHOP GIFT OF YS <strong style="">&gt;&gt;&gt;</strong>
+                            </a>
+                        </span>
+                        </div>
+                    </li>
+                    
+                    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/yoga_11bg.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                        <img class="fltimage" mymargin="-100" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/yoga_11girl.png" alt="NYC Equinox Yoga teacher Sarra Morton" style="position: absolute; height: 100%; width: auto;min-height:660px;right:0;" />
+                        <div class="banner-txt3 promo2310 promo1311" style="color : #333;top:9%;left:20%">
+                        <img style="width: auto;" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_27/we_make_things.png" />
+                        </div>
+                    </li>
+                    
+                    */?>
+					<li>
+					  <div style="width: 100%; position: absolute; top: 0px; left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 15px;font-family: gothamlight;padding:3px 0 !important;">New to YOGASMOGA? Get $25 SMOGI Bucks toward your first order + Free Shipping to US &amp; Canada.</div> 
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/homepage_RJP1.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                        
+                        <div class="banner-txt3 promo2310" style="color : #333; left : 5%;">
+                        <table>
+                        <tr>
+                            <td>THE ULITMATE YOGA PANT:</td>
+                        </tr>
+						<tr>
+                            <td>RUN JUMP &#39;N PLAY CROP.</td>
+                        </tr>
+						<!--<tr>
+						<img style="width: 455px; margin-top: 5px ! important;" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/big.png" alt="THE ULITMATE YOGA PANT" iwidth="455" iheight="73" />
+						</tr>
+						-->
+                        </table>
+                        <span style="color: rgb(51, 51, 51); padding-top: 28px ! important; font-size:20px;">RUN FASTER. JUMP HIGHER. PLAY HARDER.</span>
+                        <span style="text-transform: none; font-family: gothamlight; font-size: 13px; color: rgb(51, 51, 51); padding-top: 27px ! important;">Whatever your game is, this cropped pant instantly transforms <br/> you  into a stunning vision of curves and strength.	</span>
+                        <span style="text-align: left; display: inline; float: left; margin-left: 0px ! important; font-size: 13px; padding-top: 42px ! important;" class="banner-txt3-link">
+                            <a href="/women" style="font-family: ITCAvantGardeProMd; color : #333;font-size:15px;">
+                            SHOP THE COLLECTION <strong style="">&gt;&gt;&gt;</strong>
+                            </a>
+                        </span>  
+                        </div>
+                    </li>
+					<li>
+					  <div style="width: 100%; position: absolute; top: 0px; left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 15px;font-family: gothamlight;padding:3px 0 !important;">New to YOGASMOGA? Get $25 SMOGI Bucks toward your first order + Free Shipping to US & Canada.</div> 
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/homepage_made_in_USA1.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                        
+                        <div class="banner-txt3 promo2310" style="color : #333; left : 5%;">
+                        <table>
+                        <tr>
+                            <td>DESIGNED IN NYC.</td>
+                        </tr>
+						<tr>
+                            <td>MADE IN USA.</td>
+                        </tr>
+						<!--<tr><td style="font-size:22px !important">&nbsp;</td></tr>
+						<tr>
+							<td>
+								<img style = "width:540px;" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/small.png" alt="THE ULITMATE YOGA PANT" iwidth="540" iheight="47" />
+							</td>
+						</tr> -->
+                        </table>
+                        <span style="color: rgb(51, 51, 51); padding-top: 25px ! important;">ELEVATE YOUR GAME. EXPERIENCE THE SNUGNESS OF <br/> THE SNEAK 'N PEEK BRA - AT WORK, PLAY OR SIMPLY BEING.	</span>
+                        
+                        <span style="text-align: left; display: inline; float: left; margin-left: 0px ! important; font-size: 13px; padding-top: 41px ! important;" class="banner-txt3-link">
+                            <a href="/women" style="font-family: ITCAvantGardeProMd; color : #333;font-size:15px;">
+                            SHOP THE COLLECTION <strong style="">&gt;&gt;&gt;</strong>
+                            </a>
+                        </span>  
+                        </div>
+                    </li>
+					<?php /* 
+                 <!--   <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/slide_new_1_04122014.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                        
+                        <div class="banner-txt3 promo2310" style="color : #333; left : 5%;">
+                        <table>
+                        <tr>
+                            <td>WE MAKE AURUM</td>
+                            <td style="padding-top: 3px ! important; font-size: 21px; padding-left: 2px ! important;">&trade;</td>
+                        </tr>
+                        </table>
+                        <span style="color: rgb(51, 51, 51); padding-top: 0px ! important;">THE MOST ADVANCED PERFORMANCE FABRIC.</span>
+                        <span style="text-transform: none; font-family: gothamlight; font-size: 13px; color: rgb(51, 51, 51); padding-top: 15px ! important;">Discover <a style="color: #d90d3d;" href="/our-edge#fabrictechnology">AURUM&trade;</a> - our proprietary blend of technical fibers.<br/>Feel the softness and breathability of cotton with the advanced<br/>moisture management of superior fiber technology.</span>
+                        <span style="text-align: left; display: inline; float: left; margin-left: 0px ! important; font-size: 13px; padding-top: 10px ! important;" class="banner-txt3-link">
+                            <a href="/women" style="font-family: ITCAvantGardeProMd; color : #333;font-size:15px;">
+                            SHOP THE COLLECTION <strong style="">&gt;&gt;&gt;</strong>
+                            </a>
+                        </span>  
+                        </div>
+                    </li>
+					-->
+					*/ ?>
+                <!--    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/slide_new_2_04122014.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                        
+                        <div class="banner-txt3 promo2310" style="color : #FFF; left : 5%;">
+                        YOGASMOGA IS NOT
+                        <span style="font-family: ITCAvantGardeProBk; padding-top: 0px ! important; font-size: 33px; color : #FFF;">YOUR AVERAGE GYM WEAR</span>
+                        <span style="font-family:AvantGardeGothicBold; color : #FFF;">
+                        - Q By Equinox
+                        </span>
+                        <span style="text-align: left; display: inline; float: left; margin-left: 0px ! important; font-size: 13px; padding-top: 10px ! important;" class="banner-txt3-link">
+                            <a href="/women" style="font-family: ITCAvantGardeProMd; color : #FFF;font-size:15px;">
+                            SHOP THE COLLECTION <strong style="">&gt;&gt;&gt;</strong>
+                            </a>
+                        </span>  
+                        </div>
+                    </li>
+				-->
+                    <?php /*
+                    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/new_year/new_year_bg.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                        
+                        <div class="banner-txt3 promo2310 promo1311 barimg" style="color : #FFF;">
+                        <img style="width: auto;max-height:150px;" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/new_year/new_year_text.png" alt="NYC Equinox Yoga teacher Sarra Morton" />
+                        <span style="text-transform: none; font-family: gothamlight; font-size: 13px; color: rgb(255, 255, 255); padding-top: 35px ! important;">Great Fabric Technology is the true foundation of our apparel.</span>
+                        <span style="text-transform: none; font-family: gothamlight; font-size: 13px; color: rgb(255, 255, 255); padding-top: 20px ! important;">Discover <a href="/our-edge#fabrictechnology" style="color: #d90d3d;">AURUM&trade;</a> - our proprietary blend of technical fibers. Feel<br />the softness and breathability of cotton with the advanced moisture<br />management of superior fiber technology.</span>
+                        <span class="banner-txt3-link" style="text-align: left; display: inline; float: left; margin-left: 0px ! important; font-size: 13px; padding-top: 30px ! important;">
+                            <a style="font-family: ITCAvantGardeProMd; color : #FFF;font-size:15px;" href="/women">
+                            SHOP THE COLLECTION <strong style="">&gt;&gt;&gt;</strong>
+                            </a>
+                        </span>
+                        </div>
+                    </li>
+                    
+                    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_12/gift.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+						<div class="banner-txt3 promo2310 promo1311 barimg" style="color : #FFF;">
+                        <img style="width: auto;" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/we_make.png" alt="NYC Equinox Yoga teacher Sarra Morton" />
+                        <span style="text-transform: none; font-family: gothamlight; font-size: 13px; color: rgb(255, 255, 255); padding-top: 35px ! important;">We&#39;ve got great new products in all sizes and colors for<br />your friends, family and loved ones.</span>
+                        <span class="banner-txt3-link" style="text-align: left; display: inline; float: left; margin-left: 0px ! important; font-size: 13px; padding-top: 20px ! important;">
+                            <a style="font-family: ITCAvantGardeProMd; color : #FFF;font-size:15px;" href="/women">
+                            SHOP THE COLLECTION <strong style="">&gt;&gt;&gt;</strong>
+                            </a>
+                        </span>
+                        </div>
+                        
+                    </li>
+                    */?>
+                <!--    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga-3.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                        
+                        <div class="banner-txt3 promo2310" style="color : #333;">
+                        ULTIMATE YOGA PANT: <br/> THE TIPPY TOE LEGGING
+                        <span style="color : #333;">"Seriously technical fabrics are an eco-engineered <br /> shade of black that's uber dark and incredibly flattering."</span>
+                        <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/well_good_new.png" alt="NYC Equinox Yoga teacher Sarra Morton" style="width: auto; margin-top: 45px ! important; float: left;" />
+                        <span class="banner-txt3-link" style="text-align: left; display: inline; float: left; margin-left: 213px ! important; font-size: 13px; padding-top: 27px ! important;">
+                            <a style="font-family: gotham; color : #333;" target="_blank" href="http://www.wellandgoodnyc.com/2013/10/21/the-ultimate-guide-to-yoga-pants/#the-ultimate-guide-to-yoga-pants-4">
+                            Read More <strong style="">&gt;&gt;&gt;</strong>
+                            </a>
+                        </span>  
+                        </div>
+                    </li>
+				-->
+                    <?php /*
+                    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_12/gift.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+						<div class="banner-txt3 promo2310 promo1311 barimg" style="color : #FFF;">
+                        <img style="width: auto;" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_12/text_gift.png" alt="NYC Equinox Yoga teacher Sarra Morton" />
+                        <span style="text-transform: none; color: rgb(255, 255, 255); font-family: AvantGardeGothicMedium; font-size: 22px; padding-top: 25px ! important;">SEND A GIFT OF YS CARD<br />THIS HOLIDAY SEASON.</span>
+                        <span style="text-transform: none; font-family: gothamlight; font-size: 13px; color: rgb(255, 255, 255); padding-top: 20px ! important;">We&#39;ve got great new products in all sizes and colors for<br />your friends, family and loved ones.</span>
+                        <span class="banner-txt3-link" style="text-align: left; display: inline; float: left; margin-left: 0px ! important; font-size: 13px; padding-top: 20px ! important;">
+                            <a style="font-family: ITCAvantGardeProMd; color : #FFF;font-size:15px;" href="/gift_of_ys">
+                            SHOP GIFT OF YS <strong style="">&gt;&gt;&gt;</strong>
+                            </a>
+                        </span>
+                        </div>
+                        
+                    </li>
+                    */ ?>
+                    <?php /*
+                    <!--<li style="background-color: #FFF;">
+                        <img mymargin="70" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_12/img1.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" style="position: absolute; height: 100%; right: 0 !important; width: auto;min-height:660px;" />
+                        
+                        <div class="banner-txt3 promo2310 promo1311" style="color : #666;left : 9%; top : 30%">
+                        OUR CORE VALUE IS<br />GIVING, OUR GIFT IS<br />NAMASK&Aacute;R.<br />
+                        <span style="color: #666;">WE CREATED THE <a href="/namaskar" style="color: #d90d3d !important;">NAMASK&Aacute;R FOUNDATION</a><br />BECAUSE WE CARE.</span>
+                        </div>
+                        
+                    </li>
+					-->
+					*/ ?>
+                    <?php /*
+                    <li style="background-color: #FFF;">
+                        <img class="fltimage" mymargin="20" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_12/img2.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" style="position: absolute; height: 100%; width: auto;min-height:660px;" />
+                        <div class="banner-txt3 promo2310 promo1311 barimg" style="color : #666;left : 15%;top:20%;">
+                        LET&#39;S JOIN HANDS TO<br />MAKE A CHANGE.
+                        <span style="text-transform: none; font-family: gothamlight; font-size: 12px; color: rgb(102, 102, 102);">With every order this holiday season, YOGASMOGA will include a<br />Namaskar Bracelet and donate $10 to the <a href="/namaskar" style="color: #d90d3d !important;">Namask&aacute;r Foundation</a>*.</span>
+                        <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_12/bracelet.png" style="width: auto; margin-top: 70px ! important; margin-left: 20px ! important;"/>
+                        </div>
+                        <div style="position: absolute; bottom: 10%; left: 15%; font-size: 10px; color: rgb(102, 102, 102); font-family: gothamlight;">*YOGASMOGA will make donations while bracelet stock is available.</div>
+                    </li>
+                    */ ?>
+                    <?php //below changes for promotion on 27-Nov-2013 ?>
+                    
+                    <?php /*
+                    /////before changes to gilt on 11_13
+                    
+                    
+                    
+                    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_13/yoga_1_new.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                        
+                        <div class="banner-txt3 promo2310 promo1311" style="color : #333;">
+                        <a target="_blank" href="http://www.gilt.com/sale/women/yogasmoga"><img style="width: auto;" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_13/private_sale_new.png" /> </a>
+                        <div style="font-family:gothamlight;font-size:33px;color:#666;margin-top:60px !important;">STARTING NOVEMBER 13</div>
+                        <ul class="startingnov13">
+                            <li>Last chance for some of your<br/>favourite tops and bottoms</li>
+                            <li>Purchase YOGASMOGA on Gilt and<br />recieve $25 in additional SMOGI Bucks*</li>
+                        </ul>
+                        <span class="banner-txt3-link" style="text-align: left; display: inline; float: left;font-size: 13px; padding-top: 25px ! important; padding-left: 25px ! important;">
+                            <a style="font-family: ITCAvantGardeProMd; color : #333;font-size:15px;" target="_blank" href="http://www.gilt.com/sale/women/yogasmoga">
+                            VISIT GILT <strong style="">&gt;&gt;&gt;</strong>
+                            </a>
+                        </span>
+                        </div>
+                        <div style="font-family:gothamlight;font-size:13px;color:#333;position:absolute;bottom:10px;left:5%;padding-left:25px !important;">*New customers only. Requires sign-up on YOGASMOGA.com</div>
+                    </li>
+                    
+                    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_13/yoga_2_new.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                        
+                        <div class="banner-txt3 promo2310 promo1311" style="color : #333;">
+                        <a target="_blank" href="http://www.gilt.com/sale/women/yogasmoga"><img style="width: auto;" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_13/gilt_love_new.png" /> </a>
+                        <div class="startingnov13">
+                        PRIVATE SALE ON GILT - NOVEMBER 13<br />PURCHASE YOGASMOGA ON GILT AND RECIEVE $25 IN ADDITIONAL SMOGI BUCKS*
+                        </div>
+                        <span class="banner-txt3-link" style="text-align: left; display: inline; float: left; margin-left: 0px ! important; font-size: 13px; padding-top: 0px ! important;">
+                            <a style="font-family: ITCAvantGardeProMd; color : #333;font-size:15px;" target="_blank" href="http://www.gilt.com/sale/women/yogasmoga">
+                            VISIT GILT <strong style="">&gt;&gt;&gt;</strong>
+                            </a>
+                        </span>
+                        </div>
+                        <div style="font-family:gothamlight;font-size:13px;color:#333;position:absolute;bottom:10px;left:5%;">*New customers only. Requires sign-up on YOGASMOGA.com</div>
+                    </li>
+                    
+                    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_13/yoga_3.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                        
+                        <div class="banner-txt3 promo2310 promo1311" style="color : #333;">
+                        <a target="_blank" href="http://www.gilt.com/sale/women/yogasmoga"><img style="width: auto;" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_13/gilt_love_new.png" /> </a>
+                        <div class="startingnov13">
+                        PRIVATE SALE ON GILT - NOVEMBER 13<br />PURCHASE YOGASMOGA ON GILT AND RECIEVE $25 IN ADDITIONAL SMOGI BUCKS*
+                        </div>
+                        <span class="banner-txt3-link" style="text-align: left; display: inline; float: left; margin-left: 0px ! important; font-size: 13px; padding-top: 0px ! important;">
+                            <a style="font-family: ITCAvantGardeProMd; color : #333;font-size:15px;" target="_blank" href="http://www.gilt.com/sale/women/yogasmoga">
+                            VISIT GILT <strong style="">&gt;&gt;&gt;</strong>
+                            </a>
+                        </span>
+                        </div>
+                        <div style="font-family:gothamlight;font-size:13px;color:#333;position:absolute;bottom:10px;left:5%;">*New customers only. Requires sign-up on YOGASMOGA.com</div>
+                    </li>
+                    
+                    
+                    <?php /*
+                    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_13/yoga_1_texture.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                        <img class="fltimage" mymargin="45" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_13/yoga_1_img.png" alt="NYC Equinox Yoga teacher Sarra Morton" style="position: absolute; height: 100%; width: auto;min-height:660px;" />
+                        <div class="banner-txt3 promo2310 promo1311" style="color : #333;">
+                        <a target="_blank" href="http://www.gilt.com/sale/women/yogasmoga"><img style="width: auto;" class="barimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_13/private_sale_new.png" /> </a>
+                        <div style="font-family:gothamlight;font-size:33px;color:#666;margin-top:60px !important;">STARTING NOVEMBER 13</div>
+                        <ul class="startingnov13">
+                            <li>Last chance for some of your<br/>favorite tops and bottoms</li>
+                            <li>Purchase YOGASMOGA on Gilt and<br />recieve $25 in additional SMOGI Bucks*</li>
+                        </ul>
+                        <span class="banner-txt3-link" style="text-align: left; display: inline; float: left;font-size: 13px; padding-top: 0px ! important; padding-left: 25px ! important;">
+                            <a style="font-family: ITCAvantGardeProMd; color : #333;font-size:15px;" target="_blank" href="http://www.gilt.com/sale/women/yogasmoga">
+                            VISIT GILT <strong style="">&gt;&gt;&gt;</strong>
+                            </a>
+                        </span>
+                        </div>
+                        <div style="font-family:gothamlight;font-size:13px;color:#333;position:absolute;bottom:10px;left:5%;padding-left:25px !important;">*New customers only. Requires sign-up on YOGASMOGA.com</div>
+                    </li>
+                    
+                    
+                    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_13/yoga_2_texture.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                        <img class="fltimage" mymargin="70" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_13/yoga_2_img.png" alt="NYC Equinox Yoga teacher Sarra Morton" style="position: absolute; height: 100%; width: auto;min-height:660px;" />
+                        <div class="banner-txt3 promo2310 promo1311" style="color : #333;">
+                        <a target="_blank" href="http://www.gilt.com/sale/women/yogasmoga"><img style="width: auto;" class="barimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_13/gilt_love_new.png" /> </a>
+                        <div class="startingnov13">
+                        PRIVATE SALE ON GILT - NOVEMBER 13<br />PURCHASE YOGASMOGA ON GILT AND RECIEVE $25 IN ADDITIONAL SMOGI BUCKS*
+                        </div>
+                        <span class="banner-txt3-link" style="text-align: left; display: inline; float: left; margin-left: 0px ! important; font-size: 13px; padding-top: 0px ! important;">
+                            <a style="font-family: ITCAvantGardeProMd; color : #333;font-size:15px;" target="_blank" href="http://www.gilt.com/sale/women/yogasmoga">
+                            VISIT GILT <strong style="">&gt;&gt;&gt;</strong>
+                            </a>
+                        </span>
+                        </div>
+                        <div style="font-family:gothamlight;font-size:13px;color:#333;position:absolute;bottom:10px;left:5%;">*New customers only. Requires sign-up on YOGASMOGA.com</div>
+                    </li>
+                    
+                    
+                    <li>
+                      <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_13/yoga_3_texture.jpg" alt="NYC Equinox Yoga teacher Sarra Morton" iwidth="1600" iheight="900" />
+                        <img mymargin="70" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_13/yoga_3_img.png" alt="NYC Equinox Yoga teacher Sarra Morton" style="position: absolute; height: 100%; right: 0 !important; width: auto;min-height:660px;" />
+                        <div class="banner-txt3 promo2310 promo1311" style="color : #333;">
+                        <a target="_blank" href="http://www.gilt.com/sale/women/yogasmoga"><img style="width: auto;" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_13/gilt_love_new.png" /> </a>
+                        <div class="startingnov13">
+                        PRIVATE SALE ON GILT - NOVEMBER 13<br />PURCHASE YOGASMOGA ON GILT AND RECIEVE $25 IN ADDITIONAL SMOGI BUCKS*
+                        </div>
+                        <span class="banner-txt3-link" style="text-align: left; display: inline; float: left; margin-left: 0px ! important; font-size: 13px; padding-top: 0px ! important;">
+                            <a style="font-family: ITCAvantGardeProMd; color : #333;font-size:15px;" target="_blank" href="http://www.gilt.com/sale/women/yogasmoga">
+                            VISIT GILT <strong style="">&gt;&gt;&gt;</strong>
+                            </a>
+                        </span>
+                        </div>
+                        <div style="font-family:gothamlight;font-size:13px;color:#333;position:absolute;bottom:10px;left:5%;">*New customers only. Requires sign-up on YOGASMOGA.com</div>
+                    </li>
+                    */ ?>
+                </ul>
+
+                <div style="position: absolute; width: 400px; right: 4.625%; z-index:99; bottom: 9%; display:none;" id="playBtn" ><img style="width : 100%" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/text_lines.png" />
+					<div style="position: absolute; width: 72px; left: 15px; top: 17px;">
+                      	<a href="<?php echo $this->getUrl('women');?>">
+                      		<img style="width:100%;"  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/shop_now.png" alt="DID YOU TAKE A BREATH TODAY? Video" />
+                      	</a>
+                    </div>
+
+                    <?php /*
+                    <a href="<?php echo $this->getUrl('gift_of_ys');?>">
+                        <img style="position : absolute; bottom : -40px; left : 0;"  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/send_a_gift.png" alt="DID YOU TAKE A BREATH TODAY? Video" />
+                    </a>
+                    */ ?>
+				</div>
+
+                <?php /*
+                
+                //below is the did you take a breath
+                
+                <div style="position: absolute; width: 244px; right: 4.625%; z-index:99; bottom: 8.25%; display:none;" id="playBtn" ><img style="width : 100%" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/play_button.png" />
+					<div style="position: absolute; width: 64px; left: 15px; top: 15px;">
+                      	<a id="hmpagevideo" href="http://www.youtube.com/watch?v=gPLyklRtlN8" rel="fancyvideo">
+                      		<img style="width:100%;"  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/play.png" alt="DID YOU TAKE A BREATH TODAY? Video" />
+                      	</a>
+                    </div>
+				</div>
+                */ ?>
+                <div style="display: none;">
+                <a id="hmpagevideo" href="http://www.youtube.com/watch?v=gPLyklRtlN8" rel="fancyvideo">
+                      		<img style="width:100%;"  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/play.png" alt="DID YOU TAKE A BREATH TODAY? Video" />
+                      	</a>
+                </div>
+            </div>
+            <div smorigwidth="1600" smorigheight="300" id="ftechimage" origwidth="1600" origheight="900" desc="abcd" origwidthsm="1600" origheightsm="900" class="opimage closed" style="background-image:url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/parallax/fabric_technology-bg.jpg');">
+				<div class="small" style="background-image:url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/parallax/fabric_technology-bg.jpg');">
+					<div class="unviel">
+						<h3 class="heading">discover<span>aurum<sup>TM</sup></span></h3>
+						<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/parallax/febric_uv.png" />
+					</div>
+				</div>
+				<div class="big_small big_big">
+					<div class="opbox centered">
+						<h3 class="heading">discover<span>aurum<sup>TM</sup></span></h3>
+						<p>This is IT. AURUM<sup>TM</sup>, Exclusively Ours.<br/>
+						AURUM<sup>TM</sup> is a technical blend of Supplex<sup>&reg;</sup> and Lycra<sup>&reg;</sup>. Our competitors use a form of Nylon that is inferior and falls apart quickly. Supplex<sup>&reg;</sup> fibers are technically far superior, giving you the soft feel and breathability of cotton with the performance benefits of advanced fiber technology.</p>
+					</div>
+					<div class="opbox usa">
+						<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/parallax/usa.png" alt="Made in the USA" />
+						<h3 class="heading">
+						Fabric proudly<br/><em>made</em><br/>in the USA</h3>
+						<p>Science teaches, the fabric of our society can be more than the spirituality that binds us. We know that yoga pants can be hip and trendy. But, they can also create jobs for people in need when they're manufactured in a town that's desperate for opportunity. Not only are our fabrics made by our fellow Americans, but they are also eco-friendly as they haven't accumulated frequent flyer miles. <br/>
+						We are a proud American company with a deep Indian soul.</p>
+					</div>
+					
+					<div class="opbox amm">
+						<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/parallax/amm.png" alt="Advanced Moisture Management" />
+						<h3 class="heading">
+						advanced<br/><em>moisture</em><br/>management</h3>
+						<p>Take on the world and still look calm, cool and alluring. Our exclusive nanotechnology embeds<br/> moisture-wicking & antimicrobial treatments into the tiniest pores of our fabric. And that means moisture & bacteria make a quick exit so you'll always make a serene entrance.</p>
+					</div>
+					
+					<div class="opbox hqs">
+						<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/parallax/hqs.png" alt="High Quality Stretch" />
+						<h3 class="heading">
+						High<br/><em>Quality</em><br/>Stretch</h3>
+						<p>We use a superior form of Lycra<sup>&reg;</sup> with very high memory retention. Our fabrics always bounces back for that snug feeling. You can reach, bend, and move through life anyway you wish and our clothes will gracefully follow.</p>
+					</div>
+					
+					<div class="opbox rtp">
+						<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/parallax/rtp.png" alt="Resistance to Pilling" />
+						<h3 class="heading">RESISTANCE<br/>TO PILLING</h3>
+						<p>Leave the Pilling to Grandma's Sweater. Your favorite things should stay your favorite things, for life. Aurum<sup>TM</sup> contains pilling resistant Supplex<sup>&reg;</sup> technology which generic nylons just can't compare to. Wear it & wash it till your heart's content, and always look razor sharp. You will stay feeling good, and looking good longer.</p>
+					</div>
+					
+					<div class="opbox nano">
+						<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/parallax/nano.png" alt="Nanotechnology" />
+						<h3 class="heading">NANOTECHNOLOGY</h3>
+						<p>We use advanced nanotechnology to reach deep within the micro spaces between each weave as opposed to applying it topically on the fibers. This means far advanced moisture management. Go ahead and compare, you will see the stark difference. It's our challenge.</p>
+					</div>
+				</div>
+            </div>
+            <?php /*
+            <div id="fabrictechnology" desc="Fabric Technology" style="width: 100%; height : 300px; background-image : url('<?php echo $this->getSkinUrl('images/bg_1.jpg') ?>');" class="bgimage pgsection"> 
+            </div>
+            */ ?>
+            <div id="Explore" desc="Explore" class="colorbg pgsection" style="background:url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/expbg.jpg') no-repeat center top; background-size: cover;" tw-summary="For Wherever Life takes you. Check out the YOGASMOGA Carousel">
+            	<div id="slider">
+					<div class="carousel-img">
+						<img class="bximg shareit" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/1_Ballerina_Legging.png" alt="The Ballerina Legging" />
+						<div class="carousel-desc">
+							<img style="max-height: 195px;" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/carousel_01.png" alt="For wherever life takes you. The Slimmie &ndash; Reversible. Sexy Outside In or Inside Out. It Goes From Yoga to Life." /><br/>
+							<button onclick="window.location='<?php echo $this->getUrl('women/ballerina-legging');?>'" redirecturl="<?php echo $this->getUrl('women/classic-slimmie-pant-tall');?>" class="btn-explore button"><span><span>Explore</span></span></button>
+						</div>
+					</div>
+					<div class="carousel-img">
+						<img class="bximg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/2_Yantra_Tank.png" alt="The Yantra Tank Top" />
+						<div class="carousel-desc">
+							<img style="max-height: 195px;" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/carousel_02.png" alt="Look Closer. Go Deeper. Consider the Clothes You Wear. Find your chakra of creativity with the Yantra Tank." /><br/>
+							<button redirecturl="<?php echo $this->getUrl('women/yantra-tank');?>" onclick="window.location='<?php echo $this->getUrl('women/yantra-tank');?>'" class="btn-explore button"><span><span>Explore</span></span></button>
+						</div>
+					</div>
+					<div class="carousel-img">
+						<img class="bximg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/3_Tippy_Toe_Carousel.png" alt="The Tippy Toe Legging" />
+						<div class="carousel-desc">
+							<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/carousel_03.png" alt="Yoga is an expression. Express yourself beyond your Yoga mat with the Tippy Toe Legging." /><br/>
+							<button redirecturl="<?php echo $this->getUrl('women/tippy-toe-legging');?>" onclick="window.location='<?php echo $this->getUrl('women/tippy-toe-legging');?>'" class="btn-explore button"><span><span>Explore</span></span></button>
+						</div>
+					</div>
+					<div class="carousel-img">
+						<img class="bximg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/4_Sneak_Peak_Carousel.png" alt="U & Me Sports Bra" />
+						<div class="carousel-desc">
+							<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/carousel/carousel_04.png" alt="Made with SMOGI love. Find a second, a moment, a nook to breath in the U & Me Bra." /><br/>
+							<button onclick="window.location='<?php echo $this->getUrl('women/sneak-n-peek-bra');?>'" redirecturl="<?php echo $this->getUrl('u-me-bra');?>" class="btn-explore button"><span><span>Explore</span></span></button>
+						</div>
+					</div>
+				  </div>  
+			</div>
+            <div smorigwidth="1600" smorigheight="300" id="clrimage" origwidth="1600" origheight="900" origwidthsm="1600" origheightsm="900" desc="abcd" class="opimage closed" style="background-image:url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/parallax/Color_Technology-bg.jpg');">
+                <div class="small" style="background-image:url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/parallax/Color_Technology-bg.jpg');">
+					<div class="unviel">
+						<h3 class="heading">DISCOVER our<span>color technology</span></h3>
+						<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/parallax/color_uv.png" />
+					</div>
+				</div>
+				<div class="big_small big_big">
+					<div class="opbox centered">
+						<h3 class="heading">DISCOVER our<span>color technology</span></h3>
+						<p>A black so deep we trademarked it. Introducing - Carbon 6<sup>TM</sup>.<p>
+						<p>Black - super slimming & always flattering. And the darker it is, the hotter you look. But when we looked around with clear focus, it was obvious, black had been sold short - there was no true deep black to be found.</p>
+					</div>
+					<div class="opbox efd">
+						<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/parallax/efd.png" alt="Eco-friendly Dyeing" />
+						<h3 class="heading">eco-friendly<br/><em>dyeing</em></h3>
+						<p>While the best black is the YOGASMOGA Carbon 6<sup>TM</sup> -- a color that never fades, a true Yogi knows the new black must also come from a dye that does not pollute our waterways. We do not use any harmful formaldehyde based dyes that can seep into our groundwater.</p>
+					</div>
+					
+					<div class="opbox c6">
+						<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/parallax/c6.png" alt="Carbon 6" />
+						<h3 class="heading">CARBON 6<sup>TM</sup></h3>
+						<p>We spent two years creating our own black - Carbon 6<sup>TM</sup> - using the highest quality pigments, Carbon 6<sup>TM</sup> absorbs the highest amount of light, so it's an intense, pure black. Simply put, when you wear it, you'll look ravishing. </p>
+					</div>
+					
+					<div class="opbox cotton">
+						<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/parallax/cotton.png" alt="Cotton Dye" />
+						<h3 class="heading">COTTON DYE</h3>
+						<p>Unlike many companies who have their dyeing facilities located in China, our dye-lab is located in the USA, in a geographical area with the toughest environmental and pollution standards.</p>
+					</div>
+					
+					<div class="opbox cac">
+						<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/parallax/cac.png" alt="Color Accuracy" />
+						<h3 class="heading">color<br/>accuracy</h3>
+						<p>True Colors - For Today & Tomorrow.</p>
+						<p>We use the most advanced computerized color matching and dyeing apparatus and high performance dye-jets. The dye-jets are custom programmed to use exact amount of pigmentation so that residual water after the dyeing is clear and run off can be released without adding harmful chemicals.</p>
+					</div>
+					
+					<div class="opbox cdb">
+						<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/parallax/cdb.png" alt="Colors that Won't Bleed" />
+						<h3 class="heading">colors that<br/><em>won't</em><br/>bleed</h3>
+						<p>Color - it highlights your assets, brightens your mood. And we want that to last. But oh-so often, colors fade so quickly - just ask our competitors. That's about to change. Our colors go through the toughest tests to make sure they last for the long haul - warm or cold water; we test to prevent even minimal color bleed. Because we have a true love for color, and you, that won't fade away. </p>
+					</div>
+				</div>
+            </div>
+            <?php /*
+            <div id="colortechnology" desc="Color Technology" style="width: 100%; height : 300px;background-image : url('<?php echo $this->getSkinUrl('images/bg_2.jpg') ?>');" class="bgimage pgsection">
+            </div>
+            */ ?>
+            <?php if(false) { ?>
+            <div id="Featured-products" desc="Featured Products" class="colorbg pgsection" style="background:url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/featuredbg.jpg') no-repeat center top; background-size: cover;" tw-summary="Check out great Yoga clothes from YOGASMOGA">
+            <table class="fullscreentable" width="100%">
+                <tr>
+                    <td class="verticaltopalign">
+                        <div class="myheader absoluteposition" style="margin-top: 50px;">OUR FEATURED PRODUCTS</div>
+                        <div id="mycategory_products" class="mycategory-products" style="margin-top: 150px;">
+                        <table class="staticproductgrid">
+                            <tr>
+                        <?php
+                            $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                            $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
+                            while ($row = $readresult->fetch() ) {
+                                $clrinfo[$row['Value']] = $row['Attribute'];    
+                            }
+                            $category = Mage::getModel('catalog/category')->load(9);
+                            $_helper = $this->helper('catalog/output');
+                            $productcount = 0;
+                            foreach($category->getProductCollection() as $_product)
+                            {
+                                if($productcount >= 4)
+                                    continue;
+                                $productcount++;
+                            }
+                            $tdwidth = 100 / $productcount;
+                            $productcount = 1;
+                            foreach($category->getProductCollection() as $_product)
+                            {
+                                if($productcount > 4)
+                                    continue;
+                                $productcount++;
+                                $colors = ","; 
+                                $temp = "";
+                                $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
+                                foreach($_childproducts as $_childproduct)
+                                {
+                                    $temp = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId());
+                                    if(strpos($colors,",".$temp.",") == false)
+                                        $colors .= $temp.",";  
+                                }
+                                $model = Mage::getModel('catalog/product');
+                                $_product = $model->load($_product->getId());
+                                ?>
+                                    <td class="tdmain" style="width : <?php echo $tdwidth."%"; ?>;">
+                                    <div bestfor="<?php echo ",".Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'bestfor', Mage::app()->getStore()->getStoreId()).","; ?>" cat="<?php echo ",".implode(",", $_product->getCategoryIds()).","; ?>" id="<?php echo $_product->getId(); ?>" class="item" color="<?php echo $colors; ?>">
+                                        <a href="<?php echo $_product->getProductUrl(); ?>">
+                                        <table>
+                                            <tr>
+                                                <td class="productimage">
+                                                    <div>
+                                                    <?php
+                                                        $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+                                                        $index = 1;
+                                                        $shareimg = false;
+                                                        $firstimg = true;
+                                                        foreach($_gallery as $_image)
+                                                        {
+                                                            $imgdata = json_decode(trim($_image->getLabel()), true);
+                                                            //var_dump(json_decode(trim($_image->getLabel()), true));
+                                                            //echo $_image->getLabel()."<br/>";
+                                                            if($imgdata == NULL || strcasecmp($imgdata['type'],"product image") != 0)
+                                                                continue;
+                                                            
+                                                            if($imgdata['default'] != "yes")
+                                                                continue;
+                                                            
+                                                            //if(!($imgdata['type'] == "product image" && $imgdata['default'] == "yes"))
+                //                                                continue;
+                                                            
+                                                            //if(strpos($_image->getLabel(),"*") === false)
+                //                                                continue;
+                                                            if($index > 4)
+                                                                break;
+                                                                
+                                                            $alt = "";
+            												if(isset($imgdata['alt']))
+                                                                $alt = $imgdata['alt'];
+                                                            
+                                                            if($alt == "")
+                                                            {
+                                                                $alt = html_entity_decode($_helper->productAttribute($_product, $_product->getName(), 'name'));
+                                                                if(isset($imgdata['color']))
+                                                                    $alt .= " - ".$clrinfo[$imgdata['color']];
+                                                            }
+                                                            ?>
+                                                            <img class="shareit
+                                                            <?php
+                                                                if($imgdata['default'] == "yes")
+                                                                {
+                                                                    if($firstimg)
+                                                                    {
+                                                                        $firstimg = false;
+                                                                        echo " default active rotable";
+                                                                        if(!$shareimg)
+                                                                        {
+                                                                            $shareimg = true;
+                                                                            echo " shareit";
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                        echo " default rotable";
+                                                                }
+                                                                if(isset($imgdata['color']))
+                                                                {
+                                                                    echo " color_".strtolower(str_replace(" ","_",$imgdata['color']));
+                                                                }
+                                                                if(isset($imgdata['bestfor']))
+                                                                {
+                                                                    echo " bestfor_".strtolower(str_replace(" ","_",$imgdata['bestfor']));
+                                                                }
+                                                            ?>
+                                                            "
+                                                             src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>"  alt="<?php echo $alt; ?>"  onload="showme(this);"/>
+                                                            <?php
+                                                            $index++;
+                                                        } 
+                                                    ?>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="animateimage">
+                                                     <a href="javascript:void(0);">
+                                                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/nline_01.png') ?>" class="active" usemap="#primagemap" />
+                                                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/nline_02.png') ?>" usemap="#primagemap" />
+                                                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/nline_03.png') ?>" usemap="#primagemap" />
+                                                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/nline_04.png') ?>" usemap="#primagemap" />
+                                                     <?php /*
+                                                     <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/line_off.png') ?>" class="inactive" />
+                                                     */ ?>
+                                                     </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="productname">
+                                                    <?php 
+                                                    //$model = Mage::getModel('catalog/product');
+//                                                    $_product = $model->load($_product->getId());
+                                                    //echo $_product->getPrice();
+                                                    echo html_entity_decode($_helper->productAttribute($_product, $_product->getName(), 'name'));
+                                                    //echo $_product->getName(); ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="productprice">
+                                                    <span class="price">
+                                                    <?php 
+                                                        $price = $_product->getSpecialPrice();
+                                                        if($price == "")
+                                                            $price = $_product->getPrice();
+                                                        $price = round($price,2);
+                                                          if (floor($price)==$price)
+                                                            echo "$".(string)floor($price);
+                                                            else
+                                                                echo "$".$price;
+                                                     ?>
+                                                     </span>
+                                                    <?php // print_r($_product); ?>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        </a>
+                                    </div>
+                                    </td>
+                                <?php
+                            } 
+                        ?>
+                            </tr>
+                            </table>
+                        </div>
+                        <map name="primagemap">
+                          <area shape="rect" coords="0,5,14,15,9,15,0,9" class="line1" href="javascript:void(0);" />
+                          <area shape="poly" coords="6,0,14,14,15,14,15,11,11,0" class="line2" href="javascript:void(0);" />
+                          <area shape="poly" coords="17,0,21,0,21,7,19,11,17,13,16,13,16,7" class="line3" href="javascript:void(0);" />
+                          <area shape="rect" coords="18,14,24,7,29,2,29,9,22,15" class="line4" href="javascript:void(0);" />
+                        </map>
+                    </td>
+                </tr>
+            </table>
+            </div>
+            <?php } ?>
+            <?php if($this->getRequest()->getParam('dressing') == 'true')
+                {
+                    ?>
+            <?php
+                $dressingroomitems = explode("\n", strip_tags($this->getLayout()->createBlock('cms/block')->setBlockId("Women_Dressing_Room1")->toHtml()));
+                $model = Mage::getModel('catalog/product');
+				$dressImgPath = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."wysiwyg/dressingroom/new/";
+            ?>
+            
+            
+            <div id="Dressingroom" desc="Dressing Room" class="pgsection mainshoppingbg" tw-summary="Check out YOGASMOGA's cool Dressing Room">
+				<div class="myheader" style="padding-bottom: 10px;">DRESSING ROOM</div>
+                    <div class="dressingroomsubheader1">Here is our dressing room; navigate through our tops and bottoms using the arrows on the side.</div>
+					<div class="dressingroomsubheader">Please select your body type and browse through<br />our YOGASMOGA collection.</div>
+					<div id="drsizechart" class="sizeChart">
+						<div id="sizechart" style="left:0">
+							<div class="light-conent-box">
+								<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('size_chart')->toHtml(); ?>
+							</div>
+							<img id="closesmlight" src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png') ?>" />
+						</div>
+						<a class="size-link" href="javascript:viod(0);">Alexi is 5'10". She is wearing<br />size 4 in tops and bottoms.</a>
+					</div>
+					<div class="dressingroomoptions">
+						Body Type&nbsp;&nbsp;
+						<select id="dressingroomoptions">
+							<!-- <option selected="selected">Slender</option>
+							<option>Other Types</option> -->
+						</select>
+					</div>
+					<div id="dressingroomholder" actheight="756">
+						<div id="dressingroomtop" actheight="305">
+						<div class="ovl-box"></div>
+						<?php 
+						$topCount = 0;
+						$botCount = 0;
+						for($i = 1; $i < count($dressingroomitems); $i++){
+							$detail = explode("|", $dressingroomitems[$i]);
+							$product = $model->load(trim($detail[3]));
+							if(trim($detail[0]) == "top"){
+								$topCount++;
+							}else{
+								$botCount++;
+							}
+						}
+						$k = 0;
+						for($i = 1; $i < count($dressingroomitems); $i++){
+							$detail = explode("|", $dressingroomitems[$i]);
+							$product = $model->load(trim($detail[3]));
+							if(trim($detail[0]) == "top"){
+							$k++;
+							?>
+							<div class="dritem" botpos="<?php echo intval(strip_tags($detail[6]))+8; ?>">
+								<div class="dressing-img">
+                                <?php
+                                    if($k == 1)
+                                    {
+                                        ?>
+                                            <img alt="<?php echo html_entity_decode($product->getName()." - ".$detail[7]); ?>" width="<?php echo trim(strip_tags($detail[4])); ?>" height="<?php echo trim(strip_tags($detail[5])); ?>" style="margin-left:-<?php echo intval(strip_tags($detail[4]))/2; ?>px;" src="<?php echo $dressImgPath.trim($detail[2]); ?>" loaded="1" />    
+                                        <?php
+                                    }
+                                    else
+                                    {
+                                        ?>
+                                            <img alt="<?php echo html_entity_decode($product->getName()." - ".$detail[7]); ?>" width="<?php echo trim(strip_tags($detail[4])); ?>" height="<?php echo trim(strip_tags($detail[5])); ?>" style="margin-left:-<?php echo intval(strip_tags($detail[4]))/2; ?>px;" realsrc="<?php echo $dressImgPath.trim($detail[2]); ?>" src="" loaded="0" onload="drimgloaded(this);" />
+                                        <?php
+                                    }
+                                ?>
+								
+								</div>
+								<div class="productdetail">
+									<div class="detail-box">
+									<div class="productcount">
+										<div class="current"><?php echo $k; ?></div>
+										<div class="totalcountregion">
+											<div class="totalcount"><?php echo $topCount; ?></div>
+										</div>
+									</div>
+									<div class="productname"><?php echo trim($product->getName()); ?></div>
+									<div class="productdescription"><?php echo trim($product->getShortDescription()); ?></div>
+                                    <div class="viewdetails spbutton" color="<?php echo trim(strip_tags($detail[7])); ?>" pid="<?php echo trim(strip_tags($detail[6])); ?>" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/dressingroom/view_details_off.png') ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/dressingroom/view_details_on.png') ?>">View Details
+									</div>
+									<a href="#productgrid" class="grid-link">View All Products ></a>
+									</div>
+								</div>
+							</div>
+							<?php } 
+						} ?>
+						<a class="prevBtn" href="javascript:void(0);">Prev</a>
+						<a class="nextBtn" href="javascript:void(0);">Next</a>
+					</div>
+					<div id="dressingroomdivider">&nbsp;</div>
+					<div id="dressingroombottom" actheight="450">
+						<div class="ovl-box"></div>
+						<?php 
+						$j = 0;
+						for($i = 1; $i < count($dressingroomitems); $i++){
+							$detail = explode("|", $dressingroomitems[$i]);
+							$product = $model->load(trim($detail[3]));
+							if(trim($detail[0]) == "bottom"){
+							$j++;
+							?>
+							<div class="dritem">
+								<div class="dressing-img">
+                                    <?php
+                                        if($j == 1)
+                                        {
+                                            ?>
+                                            <img alt="<?php echo html_entity_decode($product->getName()." - ".$detail[7]); ?>" width="<?php echo trim(strip_tags($detail[4])); ?>" height="<?php echo trim(strip_tags($detail[5])); ?>"  style="margin-left:-<?php echo intval(strip_tags($detail[4]))/2; ?>px;" src="<?php echo $dressImgPath.trim($detail[2]); ?>" loaded="1" />
+                                            <?php
+                                        }
+                                        else
+                                        {
+                                            ?>
+                                            <img alt="<?php echo html_entity_decode($product->getName()." - ".$detail[7]); ?>" width="<?php echo trim(strip_tags($detail[4])); ?>" height="<?php echo trim(strip_tags($detail[5])); ?>"  style="margin-left:-<?php echo intval(strip_tags($detail[4]))/2; ?>px;" realsrc="<?php echo $dressImgPath.trim($detail[2]); ?>" src="" loaded="0" onload="drimgloaded(this);" />
+                                            <?php
+                                        }
+                                    ?>
+								</div>
+								<div class="productdetail">
+									<div class="productcount">
+										<div class="current"><?php echo $j; ?></div>
+										<div class="totalcountregion">
+											<div class="totalcount"><?php echo $botCount; ?></div>
+										</div>
+									</div>
+									<div class="productname"><?php echo trim($product->getName()); ?></div>
+									<div class="productdescription"><?php echo trim($product->getShortDescription()); ?></div>
+									<div class="viewdetails spbutton" color="<?php echo trim(strip_tags($detail[7])); ?>" pid="<?php echo trim(strip_tags($detail[6])); ?>" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/dressingroom/view_details_off.png') ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/dressingroom/view_details_on.png') ?>">View Details
+									</div>
+									<a href="#productgrid" class="grid-link">View All Products ></a>
+								</div>
+							</div>
+							<?php } 
+						} ?>
+						<a class="prevBtn" href="javascript:void(0);">Prev</a>
+						<a class="nextBtn" href="javascript:void(0);">Next</a>
+					</div>
+					<div class="doverlay">&nbsp;</div>
+				</div>
+			</div>
+            <div style="display:none;">
+                <div id="productdetailpopup">
+                </div>
+            </div>
+            <?php
+                }
+            ?>
+            <?php
+            $output = $this->getLayout()->createBlock('cms/block')->setBlockId('dressingUpdate')->toHtml();
+            $isSecure = Mage::app()->getStore()->isCurrentlySecure();
+            if($isSecure)
+            {
+
+                $output = str_replace("http://", "https://", $output);
+            }
+            echo $output;
+            //echo $this->getLayout()->createBlock('cms/block')->setBlockId('dressingUpdate')->toHtml();
+            ?>
+
+            <?php echo $this->getChildHtml('footer'); ?>
+            <?php /*
+            <div>
+                <?php
+                    $cards = Mage::getModel('giftcards/giftcards')->getCollection()->addFieldToFilter('card_code', 'BGGZ5-5THWI-CU8PD');
+                    foreach ($cards as $card) {
+                        echo $card->getCardBalance();
+                    }
+                ?>
+            </div>
+            */ ?>
+        </div>
+        <?php echo $this->getChildHtml('before_body_end'); ?>
+    </div>
+</div>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>
