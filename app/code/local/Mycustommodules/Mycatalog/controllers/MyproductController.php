@@ -1814,13 +1814,19 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     }
 
                     //2. check if total points >= points available
-                    $customer = Mage::getModel('customer/customer')->load($customer_id);
+                /*    $customer = Mage::getModel('customer/customer')->load($customer_id);
                     $customerName = $customer->getName();
                     $customerEmail = $customer->getEmail();
                     
 					$csv[$i] = array($customerName, $customerEmail, $points, $new_date);
+                */
                     if ($points_received >= $points){
                         //3. send notification email
+                        $customer = Mage::getModel('customer/customer')->load($customer_id);
+                        $customerName = $customer->getName();
+                        $customerEmail = $customer->getEmail();
+
+                        $csv[$i] = array($customerName, $customerEmail, $points, $new_date);
                     /*    $customer = Mage::getModel('customer/customer')->load($customer_id);
                         $customerName = $customer->getName();
                         $customerEmail = $customer->getEmail();
