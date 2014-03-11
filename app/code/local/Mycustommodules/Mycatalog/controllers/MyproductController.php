@@ -1761,21 +1761,37 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
     public function aggregateRewardPointsAction()
     {
         $allStores = Mage::app()->getStores();
-        $html = "<table border='1'><thead><tr>
-                <th>Customer Id</th>
-                <th>Customer Email</th>
-                <th>Customer Name</th>
-                <th>Points Expiring</th>
-                <th>Current Available Points</th>
-                </tr>";
-
+        
+		$csv[0] = array('Name', 'Email', 'Bucks', 'Valid_Upto');	
 
         foreach ($allStores as $_eachStoreId => $val)
         {
             /*$duration = Mage::getStoreConfig(self::XML_PATH_POINTS_DURATION, $store_id);
             if ($duration){*/
             $store_id = Mage::app()->getStore($_eachStoreId)->getId();
-            $days =  $this->getRequest()->getParam('days');
+         //   $days =  $this->getRequest()->getParam('days');
+
+            $date = $this->getRequest()->getParam('date');
+            $datearr = split("-", $date);
+            //print_r($datearr);
+            if(!checkdate($datearr[0], $datearr[1], $datearr[2]))
+            {
+                echo "Invalid Date";
+                return;
+            }
+			$requireddate = date('Y-m-d',strtotime($datearr[2].'-'.$datearr[0].'-'.$datearr[1]));
+            $currentdate =  date('Y-m-d');
+			$diff = abs(strtotime($requireddate) - strtotime($currentdate));
+
+			//$years = floor($diff / (365*60*60*24));
+			//$months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+			$days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+			$onedayless = date('Y-m-d', strtotime('-1 day', strtotime($requireddate)));
+			$middle = strtotime($onedayless);
+			$new_date = date('M j Y', $middle);
+			
+
+			
             if($days == 0)
             {
                 continue;
@@ -1786,6 +1802,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 ->addValidPoints($store_id);
 
             if ($points->getSize()){
+				$i=1;
                 foreach ($points as $current_point){
                     $html .= "<tr>";
                     $customer_id = $current_point->getCustomerId();
@@ -1800,7 +1817,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     $customer = Mage::getModel('customer/customer')->load($customer_id);
                     $customerName = $customer->getName();
                     $customerEmail = $customer->getEmail();
-                    $html .= "<td>".$customer_id."</td>"."<td>".$customerName."</td>"."<td>".$customerEmail."</td>"."<td>".$points."</td>"."<td>".$points_received."</td>";
+                    
+					$csv[$i] = array($customerName, $customerEmail, $points, $new_date);
                     if ($points_received >= $points){
                         //3. send notification email
                     /*    $customer = Mage::getModel('customer/customer')->load($customer_id);
@@ -1810,12 +1828,39 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         //Mage::getModel('rewardpoints/stats')->sendNotification($customer, $store_id, $points, $days);
                         //Mage::log("Email sent to coustomer id:".$customer_id.",Points:".$points,null,"smogiexpireemail.log");
                     }
+					$i++;
                 }
             }
 
         }
-        $html .= "</table>";
-        echo $html;
+         if($customerEmail == '')
+			{
+				echo 'No Record found for this date';
+				return;
+			}
+		$fname = 'smogi_bucks_expiring_on'.$new_date;
+		
+
+		$baseDir = Mage::getBaseDir();
+		$varDir = $baseDir.DS.'tempreports'.DS.$fname.'.csv';
+		
+		unlink($varDir);
+		$fp = fopen($varDir, 'w');
+		foreach ($csv as $fields) {
+		fputcsv($fp, $fields);
+		}
+
+		fclose($fp);
+		if(!file_exists($varDir))
+		{
+			echo 'Records are not found for this date';
+		}
+		else
+		{
+			
+			Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".csv");
+		}
+		//file_put_contents('tempreports/expiringbucks/'.$fname.'.xls',$html);
 
     }
 }
