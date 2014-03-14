@@ -665,7 +665,31 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
 //        if (Mage::getStoreConfig('rewardpoints/default/flatstats', $orderinfo['store_id']))
 //            $smogi_balance =  Mage::getModel('rewardpoints/flatstats')->collectPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id']);
 //        else
-            $smogi_balance = Mage::getModel('rewardpoints/stats')->getPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id']);
+        $smogi_balance = Mage::getModel('rewardpoints/stats')->getPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id'], null, true);
+        Mage::log("smogi_balance #".$smogi_balance['balance'],null,'smogi_store_expiry.log');
+        $smogi_balance += $orderinfo['rewardpoints_quantity'];
+        $arrEarnedPoints = $smogi_balance['history'];
+        $temp = $smogi_balance['balance'];
+        foreach($arrEarnedPoints as $key => $value)
+        {
+            if((strtotime($arrEarnedPoints[$key]['expiry']) > strtotime(date('Y-m-d'))) && (($arrEarnedPoints[$key]['points'] - $arrEarnedPoints[$key]['balance']) > 0))
+            {
+                if(($arrEarnedPoints[$key]['points'] - $arrEarnedPoints[$key]['balance']) >= $temp)
+                {
+                    $temp = 0;
+                    $write->query("Insert into smogi_store_expiry_date values(null,".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".$temp.",'".$arrEarnedPoints[$key]['expiry']."',0)");
+                }
+                else
+                {
+                    $temp -= $arrEarnedPoints[$key]['points'] - $arrEarnedPoints[$key]['balance'];
+                    $write->query("Insert into smogi_store_expiry_date values(null,".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".($arrEarnedPoints[$key]['points'] - $arrEarnedPoints[$key]['balance']).",'".$arrEarnedPoints[$key]['expiry']."',0)");
+                }
+                if($temp <= 0)
+                    break;
+            }
+        }
+        /*
+        $smogi_balance = Mage::getModel('rewardpoints/stats')->getPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id']);
         Mage::log("smogi_balance #".$smogi_balance,null,'smogi_store_expiry.log');
         $smogi_balance += $orderinfo['rewardpoints_quantity'];
         $write = Mage::getSingleton('core/resource')->getConnection('core_write');
@@ -700,6 +724,7 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
             if($temp >= $orderinfo['rewardpoints_quantity'])
                 break;
         }
+        */
     }
 
     /**

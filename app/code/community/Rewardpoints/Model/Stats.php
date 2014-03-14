@@ -322,7 +322,7 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
         return $row->getNbCredit();
     }
 
-    public function getPointsCurrent($customerid, $store_id, $date = null){
+    public function getPointsCurrent($customerid, $store_id, $date = null, $arraymode = false){
 
         if($date == null)
             $date = date('Y-m-d');
@@ -382,7 +382,10 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
             }
         }
         //echo "balance = ".$balance;
-        return $balance;
+        if(!$arraymode)
+            return $balance;
+        else
+            return array("history" => $arrEarnedPoints,"balance" => $balance);
         $total = $this->getPointsReceived($customer_id, $store_id) - $this->getPointsSpent($customer_id, $store_id);
         if ($total > 0){
             return $total;
