@@ -50,6 +50,7 @@ if($serverType == 'production')
 			 _orderRevenueCheckout = '<?php echo number_format((float)$transactionTotal, 2, '.', '');?>';
 			
 		</script>
+        <?php /*
 		<script>
             dataLayer = [{
                 'transactionId': <?php echo $lastordernum; ?>,  // unique transaction identifier goes here
@@ -65,9 +66,9 @@ if($serverType == 'production')
                 '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-MG2242');</script>
         <!-- End Google Tag Manager ++++ -->
-
-    <?php   } ?>
-
+*/
+     } ?>
+<?php /*
 <!-- Google Tag Manager ****** -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MG2242"
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -77,7 +78,8 @@ if($serverType == 'production')
         '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-MG2242');</script>
 <!-- End Google Tag Manager **** -->
-
+*/
+?>
 <script type="text/javascript">
 //<![CDATA[
     var _gaq = _gaq || [];
