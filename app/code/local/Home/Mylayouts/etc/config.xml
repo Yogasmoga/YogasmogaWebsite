@@ -48,6 +48,11 @@
           <template>page/love.phtml</template>
           <layout_handle>Love</layout_handle>
         </love>
+		<home1 translate="label">
+          <label>Home1</label>
+          <template>page/home1.phtml</template>
+          <layout_handle>home1</layout_handle>
+        </home1>
         <!-- add more layouts here -->
       </layouts>
     </page>
