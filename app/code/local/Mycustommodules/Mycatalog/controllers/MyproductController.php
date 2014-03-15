@@ -2492,5 +2492,15 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             return 0;
         }
     }
+
+
+    public function getPointsCurrent_newAction($date = null, $arraymode = false){
+        $customerid = $this->getRequest()->getParam('customerid');
+        if(!$this->getRequest()->getParam('date'))
+            $date = null;
+        else
+            $date = $this->getRequest()->getParam('date');
+        var_dump(Mage::getModel('rewardpoints/stats')->getPointsCurrent($customerid, 1, $date, true));
+    }
 }
 ?>

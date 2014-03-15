@@ -662,6 +662,33 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
     }
     public function smogi_storeExpiryDate($orderinfo)
     {
+        $smogi_balance = Mage::getModel('rewardpoints/stats')->getPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id'], null, true);
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+        $arrEarnedPoints = $smogi_balance['history'];
+        $temp = $orderinfo['rewardpoints_quantity'];
+        foreach($arrEarnedPoints as $key => $value)
+        {
+            if($arrEarnedPoints[$key]['points_current'] <= 0)
+                continue;
+            if((strtotime($arrEarnedPoints[$key]['date_end']) > strtotime(date('Y-m-d'))) && (($arrEarnedPoints[$key]['points_current'] - $arrEarnedPoints[$key]['balance']) > 0))
+            {
+                if(($arrEarnedPoints[$key]['points_current'] - $arrEarnedPoints[$key]['balance']) >= $temp)
+                {
+                    $write->query("Insert into smogi_store_expiry_date values(null,".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".$temp.",'".$arrEarnedPoints[$key]['date_end']."',0)");
+                    $temp = 0;
+                }
+                else
+                {
+                    $write->query("Insert into smogi_store_expiry_date values(null,".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".($arrEarnedPoints[$key]['points_current'] - $arrEarnedPoints[$key]['balance']).",'".$arrEarnedPoints[$key]['date_end']."',0)");
+                    $temp -= $arrEarnedPoints[$key]['points_current'] - $arrEarnedPoints[$key]['balance'];
+                }
+                if($temp <= 0)
+                    break;
+            }
+        }
+    }
+    public function smogi_storeExpiryDate1($orderinfo)
+    {
 //        if (Mage::getStoreConfig('rewardpoints/default/flatstats', $orderinfo['store_id']))
 //            $smogi_balance =  Mage::getModel('rewardpoints/flatstats')->collectPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id']);
 //        else

@@ -322,20 +322,58 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
         return $row->getNbCredit();
     }
     
-    public function getPointsCurrent_new($customerid, $store_id, $date = null, $arraymode = false){
+    public function getPointsCurrent($customerid, $store_id, $date = null, $arraymode = false){
         if($date == null)
             $date = date('Y-m-d');
-        //$customerid = $this->getRequest()->getParam('customerid');
         $balanceon = strtotime($date);
         $read = Mage::getSingleton('core/resource')->getConnection('core_read');
-        $query = "SELECT rewardpoints_account_id,points_current, points_spent,date_start,date_end,points_current AS 'balance' FROM rewardpoints_account WHERE customer_id = 47 AND order_id IN (-3,-2,-1,-20) UNION SELECT rewardpoints_account_id,points_current, points_spent,date_start,date_end,points_current AS 'balance' FROM rewardpoints_account, sales_flat_order WHERE rewardpoints_account.customer_id = 47 AND order_id NOT IN (-3,-2,-1,-20) AND sales_flat_order.increment_id = rewardpoints_account.order_id AND sales_flat_order.state IN ('new','pending','processing','complete')) AS smogihistory ORDER BY rewardpoints_account_id";
+        $query = "SELECT * FROM (SELECT points_current, points_spent,points_current AS 'balance',date_start,date_end,rewardpoints_account_id FROM rewardpoints_account WHERE customer_id = ".$customerid." AND order_id IN (-3,-2,-1,-20) UNION SELECT points_current, points_spent,points_current AS 'balance',date_start,date_end,rewardpoints_account_id FROM rewardpoints_account, sales_flat_order WHERE rewardpoints_account.customer_id = ".$customerid." AND order_id NOT IN (-3,-2,-1,-20) AND sales_flat_order.increment_id = rewardpoints_account.order_id AND sales_flat_order.state IN ('new','pending','processing','complete')) AS smogihistory ORDER BY rewardpoints_account_id";
         $smogihistory = $read->fetchAll($query);
-        echo "<pre>";
-        print_r($smogihistory);
-        echo "<pre>";
+        for($i = 0; $i < count($smogihistory); $i++)
+        {
+            if($smogihistory[$i]['points_spent'] <= 0)
+                continue;
+            $temp = $smogihistory[$i]['points_spent'];
+            $negativebalance = 0;
+            for($j = 0; $j < $i; $j++)
+            {
+                if((strtotime($smogihistory[$j]['date_end']) > strtotime($smogihistory[$i]['date_start'])) && $smogihistory[$j]['balance'] > 0)
+                {
+                    if($smogihistory[$j]['balance'] >= $temp)
+                    {
+                        $smogihistory[$j]['balance'] -= $temp;
+                        $temp = 0;
+                    }
+                    else
+                    {
+                        $temp -= $smogihistory[$j]['balance'];
+                        $smogihistory[$j]['balance'] = 0;
+                    }
+                }
+                if($temp <= 0)
+                    break;
+            }
+        }
+        $negativebalance += $temp;
+        $balance = 0;
+        for($i = 0; $i < count($smogihistory); $i++)
+        {
+            if(strtotime($smogihistory[$i]['date_end']) > strtotime($date))
+            {
+                $balance += $smogihistory[$i]['balance'];
+            }
+        }
+        if(!$arraymode)
+            return $balance;
+        else
+            return array("history" => $smogihistory,"balance" => $balance,"negativebalance" => $negativebalance);
+//        echo "<pre>";
+//        print_r($smogihistory);
+//        echo "<pre>";
+        //echo 'Current Balance -> '.$balance;
     }
     
-    public function getPointsCurrent($customerid, $store_id, $date = null, $arraymode = false){
+    public function getPointsCurrent_old($customerid, $store_id, $date = null, $arraymode = false){
 
         if($date == null)
             $date = date('Y-m-d');

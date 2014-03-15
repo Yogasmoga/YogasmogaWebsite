@@ -392,48 +392,29 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
 
     public function smogi_storeExpiryDate($orderinfo)
     {
-        if (Mage::getStoreConfig('rewardpoints/default/flatstats', $orderinfo['store_id']))
-            $smogi_balance =  Mage::getModel('rewardpoints/flatstats')->collectPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id']);
-        else
-            $smogi_balance = Mage::getModel('rewardpoints/stats')->getPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id']);
-        Mage::log("smogi_balance #".$smogi_balance,null,'smogi_store_expiry.log');
-        $smogi_balance += $orderinfo['rewardpoints_quantity'];
+        $smogi_balance = Mage::getModel('rewardpoints/stats')->getPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id'], null, true);
         $write = Mage::getSingleton('core/resource')->getConnection('core_write');
-        $readresult=$write->query("select * from rewardpoints_account where customer_id=".$orderinfo['customer_id']." and points_current > 0 ORDER BY date_end DESC");
-        $temp = 0;
-        $customer_pointinfo = array();
-        $i=0;
-        while ($row = $readresult->fetch() ) {
-            $temp1 = 0;
-            if(($temp + $row['points_current']) > $smogi_balance)
-                $temp1 = $smogi_balance - $temp;
-            else
-                $temp1 = $row['points_current'];
-            $temp += $temp1;
-            //array_push($customer_pointinfo, array("points" => $row['points_current'], "date" => $row['date_end']));
-            $customer_pointinfo[$i]['points'] = $temp1;
-            $customer_pointinfo[$i]['date'] = $row['date_end'];
-            $i++;
-            if($temp >= $smogi_balance)
-                break;
-        }
-
-        $temp = 0;
-        Mage::log("customer_pointinfo #".count($customer_pointinfo),null,'smogi_store_expiry.log');
-        for($i = count($customer_pointinfo) -1; $i >= 0; $i--)
+        $arrEarnedPoints = $smogi_balance['history'];
+        $temp = $orderinfo['rewardpoints_quantity'];
+        foreach($arrEarnedPoints as $key => $value)
         {
-            $temp1 = 0;
-            Mage::log("customer_points".$customer_pointinfo[$i]['points'],null,'smogi_store_expiry.log');
-            if(($temp + $customer_pointinfo[$i]['points']) <=  $orderinfo['rewardpoints_quantity'])
-                $temp1 = $customer_pointinfo[$i]['points'];
-            else
-                $temp1 = $orderinfo['rewardpoints_quantity'] - $temp;
-            $query = "Insert into smogi_store_expiry_date values(null,".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".$temp1.",'".$customer_pointinfo[$i]['date']."',0)";
-            Mage::log("Query #".$query,null,'smogi_store_expiry.log');
-            $write->query("Insert into smogi_store_expiry_date values(null,".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".$temp1.",'".$customer_pointinfo[$i]['date']."',0)");
-            $temp += $temp1;
-            if($temp >= $orderinfo['rewardpoints_quantity'])
-                break;
+            if($arrEarnedPoints[$key]['points_current'] <= 0)
+                continue;
+            if((strtotime($arrEarnedPoints[$key]['date_end']) > strtotime(date('Y-m-d'))) && (($arrEarnedPoints[$key]['points_current'] - $arrEarnedPoints[$key]['balance']) > 0))
+            {
+                if(($arrEarnedPoints[$key]['points_current'] - $arrEarnedPoints[$key]['balance']) >= $temp)
+                {
+                    $write->query("Insert into smogi_store_expiry_date values(null,".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".$temp.",'".$arrEarnedPoints[$key]['date_end']."',0)");
+                    $temp = 0;
+                }
+                else
+                {
+                    $write->query("Insert into smogi_store_expiry_date values(null,".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".($arrEarnedPoints[$key]['points_current'] - $arrEarnedPoints[$key]['balance']).",'".$arrEarnedPoints[$key]['date_end']."',0)");
+                    $temp -= $arrEarnedPoints[$key]['points_current'] - $arrEarnedPoints[$key]['balance'];
+                }
+                if($temp <= 0)
+                    break;
+            }
         }
     }
 
