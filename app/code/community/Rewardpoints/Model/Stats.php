@@ -321,7 +321,20 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
 
         return $row->getNbCredit();
     }
-
+    
+    public function getPointsCurrent_new($customerid, $store_id, $date = null, $arraymode = false){
+        if($date == null)
+            $date = date('Y-m-d');
+        //$customerid = $this->getRequest()->getParam('customerid');
+        $balanceon = strtotime($date);
+        $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+        $query = "SELECT rewardpoints_account_id,points_current, points_spent,date_start,date_end,points_current AS 'balance' FROM rewardpoints_account WHERE customer_id = 47 AND order_id IN (-3,-2,-1,-20) UNION SELECT rewardpoints_account_id,points_current, points_spent,date_start,date_end,points_current AS 'balance' FROM rewardpoints_account, sales_flat_order WHERE rewardpoints_account.customer_id = 47 AND order_id NOT IN (-3,-2,-1,-20) AND sales_flat_order.increment_id = rewardpoints_account.order_id AND sales_flat_order.state IN ('new','pending','processing','complete')) AS smogihistory ORDER BY rewardpoints_account_id";
+        $smogihistory = $read->fetchAll($query);
+        echo "<pre>";
+        print_r($smogihistory);
+        echo "<pre>";
+    }
+    
     public function getPointsCurrent($customerid, $store_id, $date = null, $arraymode = false){
 
         if($date == null)
