@@ -475,8 +475,9 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
     }
     public function orderLog($orderNumber, $process, $creditMemoId = null, $log, $logType )
     {
-
-
+        $resource = Mage::getSingleton('core/resource');
+ 		$readConnection = $resource->getConnection('core_write');
+		$readConnection->query("Insert into smogi_debug_info values (NULL, '$orderNumber', '$process','$creditMemoId','$logType','$log',NOW())");
     }
 
 

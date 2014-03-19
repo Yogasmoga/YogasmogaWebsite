@@ -1342,81 +1342,93 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
     
     function refundsmogibucks($creditmemoid, $orderid)
     {
-        Mage::log("\n\n\n\n\nCredit Memo Id =".$creditmemoid, null, 'partial_ankit.log');
-        Mage::log("Order Id =".$orderid, null, 'partial_ankit.log');
-        if(!$this->islastcreditmemo($orderid, $creditmemoid, true)) //FOR FULL REFUND AT ONCE NO PROCESSING IS REQUIRED
-        {
-            $sum_smogi_customization = 0; //Variable to hold the customizations
-            if($this->islastcreditmemo($orderid, $creditmemoid, false)) //IF LAST REFUND AFTER REFUND
+        $order = Mage::getModel('sales/order')->load($orderid);
+        $orderincrementid = $order->getIncrementId();
+        try{
+            //Mage::log("\n\n\n\n\nCredit Memo Id =".$creditmemoid, null, 'partial_ankit.log');
+            //Mage::log("Order Id =".$orderid, null, 'partial_ankit.log');
+            if(!$this->islastcreditmemo($orderid, $creditmemoid, true)) //FOR FULL REFUND AT ONCE NO PROCESSING IS REQUIRED
             {
-                Mage::log("THIS IS THE LAST REFUND. REVERTING BACK ".$this->getcustomaddedsmogis($orderid)." BUCKS", null, 'partial_ankit.log');
-                $sum_smogi_customization -= $this->getcustomaddedsmogis($orderid);
-                $order = $this->getOrder();
-                $order->setState(Mage_Sales_Model_Order::STATE_CLOSED, true)->save();
+                $sum_smogi_customization = 0; //Variable to hold the customizations
+                if($this->islastcreditmemo($orderid, $creditmemoid, false)) //IF LAST REFUND AFTER REFUND
+                {
+                    //Mage::log("THIS IS THE LAST REFUND. REVERTING BACK ".$this->getcustomaddedsmogis($orderid)." BUCKS", null, 'partial_ankit.log');
+                    Mage::getModel('rewardpoints/stats')->orderLog($orderincrementid, 'smogi refund', $this->getId(),$this->getcustomaddedsmogis($orderid), 'LAST PARTIAL REFUND. REFUNDING BUCKS BACK TO USER');
+                    $sum_smogi_customization -= $this->getcustomaddedsmogis($orderid);
+                    $order = $this->getOrder();
+                    $order->setState(Mage_Sales_Model_Order::STATE_CLOSED, true)->save();
+                }
+                else
+                {
+                    if($this->issmogiused($orderid))
+                    {
+                        //Mage::log("THIS IS NOT THE LAST REFUND. ADDING ".$this->getmemodiscountamount($creditmemoid)." BUCKS", null, 'partial_ankit.log');    
+                        Mage::getModel('rewardpoints/stats')->orderLog($orderincrementid, 'smogi refund', $this->getId(),$this->getmemodiscountamount($creditmemoid), 'PARTIAL REFUND. REFUNDING BUCKS BACK TO USER');
+                        $sum_smogi_customization += $this->getmemodiscountamount($creditmemoid);
+                    }
+                    else
+                    {
+                        if(!$this->isdiscountused($orderid))
+                        {
+                            //Mage::log("NO DISCOUNTS USED ON THIS ORDER. TAKING BACK ".$this->calculateearnedpoints($creditmemoid)." BUCKS", null, 'partial_ankit.log');
+                            Mage::getModel('rewardpoints/stats')->orderLog($orderincrementid, 'smogi refund', $this->getId(),$this->calculateearnedpoints($creditmemoid), 'NO DISCOUNTS USED. TAKING BACK POINTS FROM USER');
+                            $sum_smogi_customization -= $this->calculateearnedpoints($creditmemoid);
+                        }       
+                    }
+                }
+                $sum_smogi_customization = round($sum_smogi_customization);
+                if($sum_smogi_customization != 0)
+                {
+                    $proxy = new SoapClient(Mage::getBaseUrl().'api/soap/?wsdl');
+            		$sessionId = $proxy->login('mobikasadeveloper', 'developerkey');
+                    $order = $this->getOrder();
+            		$customer_id = $order->getCustomerId();
+            		$storeIds = 1;
+                    if($sum_smogi_customization < 0)
+                    {
+                        $sum_smogi_customization *= -1;
+                        //$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $sum_smogi_customization, $storeIds));
+                        $proxy->call($sessionId, 'j2trewardapi.create', array(array('customer_id' => $customer_id, 'order_id' => $order->getIncrementId(), 'date_start' => date('Y-m-d'), 'points_spent' => $sum_smogi_customization, 'store_id' => $storeIds,'rewardpoints_description' => 'CreditMemo # '.$this->getIncrementId().'. Pulling back bucks added via partial refund(s).')));
+            			$this->savetodb($order->getId(), (-1 * $sum_smogi_customization));
+                    }
+                    else
+                    {
+                        //$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $sum_smogi_customization, $storeIds));
+                        $read = Mage::getSingleton('core/resource')->getConnection('core_write');
+                        $readresult=$read->query("SELECT * FROM smogi_store_expiry_date WHERE order_id = ".$order->getId()." AND (used_points - refunded_points) > 0 ORDER BY expiry_date DESC");
+                        $temp = $sum_smogi_customization;
+                        while ($row = $readresult->fetch() ) {
+                            if(($row['used_points'] - $row['refunded_points']) >= $temp)
+                            {
+                                $read->query("Update smogi_store_expiry_date set refunded_points=(refunded_points +".$temp.") where id=".$row['id']);
+                                $proxy->call($sessionId, 'j2trewardapi.create', array(array('customer_id' => $customer_id, 'order_id' => $order->getIncrementId(), 'date_start' => date('Y-m-d'),'date_end' => $row['expiry_date'], 'points_current' => $temp, 'store_id' => $storeIds,'rewardpoints_description' => 'CreditMemo # '.$creditmemoid.'. Refunding bucks via partial refund.')));
+                                $temp = 0;
+                            }
+                            else
+                            {
+                                $temp -= ($row['used_points'] - $row['refunded_points']);
+                                $read->query("Update smogi_store_expiry_date set refunded_points=used_points where id=".$row['id']);
+                                $proxy->call($sessionId, 'j2trewardapi.create', array(array('customer_id' => $customer_id, 'order_id' => $order->getIncrementId(), 'date_start' => date('Y-m-d'),'date_end' => $row['expiry_date'], 'points_current' => ($row['used_points'] - $row['refunded_points']), 'store_id' => $storeIds,'rewardpoints_description' => 'CreditMemo # '.$creditmemoid.'. Refunding bucks via partial refund.')));
+                            }
+                            if($temp <= 0)
+                                break;
+                        }
+                        //$proxy->call($sessionId, 'j2trewardapi.create', array(array('customer_id' => $customer_id, 'order_id' => $order->getIncrementId(), 'date_start' => date('Y-m-d'),'date_end' => date('Y-m-d',strtotime("+ 10 days")), 'points_current' => $sum_smogi_customization, 'store_id' => $storeIds,'rewardpoints_description' => 'CreditMemo # '.$creditmemoid.'. Refunding bucks via partial refund.')));
+                        $this->savetodb($order->getId(), $sum_smogi_customization);
+                    }
+                }            
             }
             else
             {
-                if($this->issmogiused($orderid))
-                {
-                    Mage::log("THIS IS NOT THE LAST REFUND. ADDING ".$this->getmemodiscountamount($creditmemoid)." BUCKS", null, 'partial_ankit.log');    
-                    $sum_smogi_customization += $this->getmemodiscountamount($creditmemoid);
-                }
-                else
-                {
-                    if(!$this->isdiscountused($orderid))
-                    {
-                        Mage::log("NO DISCOUNTS USED ON THIS ORDER. TAKING BACK ".$this->calculateearnedpoints($creditmemoid)." BUCKS", null, 'partial_ankit.log');    
-                        $sum_smogi_customization -= $this->calculateearnedpoints($creditmemoid);
-                    }       
-                }
-            }
-            $sum_smogi_customization = round($sum_smogi_customization);
-            if($sum_smogi_customization != 0)
-            {
-                $proxy = new SoapClient(Mage::getBaseUrl().'api/soap/?wsdl');
-        		$sessionId = $proxy->login('mobikasadeveloper', 'developerkey');
+                //Mage::log("FULL REFUND AT ONCE. NO PROCESSING REQUIRED.", null, 'partial_ankit.log');
+                Mage::getModel('rewardpoints/stats')->orderLog($orderincrementid, 'smogi refund', $this->getId(),'', 'FULL REFUND AT ONCE. NO PROCESSING REQUIRED');
                 $order = $this->getOrder();
-        		$customer_id = $order->getCustomerId();
-        		$storeIds = 1;
-                if($sum_smogi_customization < 0)
-                {
-                    $sum_smogi_customization *= -1;
-                    //$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $sum_smogi_customization, $storeIds));
-                    $proxy->call($sessionId, 'j2trewardapi.create', array(array('customer_id' => $customer_id, 'order_id' => $order->getIncrementId(), 'date_start' => date('Y-m-d'), 'points_spent' => $sum_smogi_customization, 'store_id' => $storeIds,'rewardpoints_description' => 'CreditMemo # '.$this->getIncrementId().'. Pulling back bucks added via partial refund(s).')));
-        			$this->savetodb($order->getId(), (-1 * $sum_smogi_customization));
-                }
-                else
-                {
-                    //$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $sum_smogi_customization, $storeIds));
-                    $read = Mage::getSingleton('core/resource')->getConnection('core_write');
-                    $readresult=$read->query("SELECT * FROM smogi_store_expiry_date WHERE order_id = ".$order->getId()." AND (used_points - refunded_points) > 0 ORDER BY expiry_date DESC");
-                    $temp = $sum_smogi_customization;
-                    while ($row = $readresult->fetch() ) {
-                        if(($row['used_points'] - $row['refunded_points']) >= $temp)
-                        {
-                            $read->query("Update smogi_store_expiry_date set refunded_points=(refunded_points +".$temp.") where id=".$row['id']);
-                            $proxy->call($sessionId, 'j2trewardapi.create', array(array('customer_id' => $customer_id, 'order_id' => $order->getIncrementId(), 'date_start' => date('Y-m-d'),'date_end' => $row['expiry_date'], 'points_current' => $temp, 'store_id' => $storeIds,'rewardpoints_description' => 'CreditMemo # '.$creditmemoid.'. Refunding bucks via partial refund.')));
-                            $temp = 0;
-                        }
-                        else
-                        {
-                            $temp -= ($row['used_points'] - $row['refunded_points']);
-                            $read->query("Update smogi_store_expiry_date set refunded_points=used_points where id=".$row['id']);
-                            $proxy->call($sessionId, 'j2trewardapi.create', array(array('customer_id' => $customer_id, 'order_id' => $order->getIncrementId(), 'date_start' => date('Y-m-d'),'date_end' => $row['expiry_date'], 'points_current' => ($row['used_points'] - $row['refunded_points']), 'store_id' => $storeIds,'rewardpoints_description' => 'CreditMemo # '.$creditmemoid.'. Refunding bucks via partial refund.')));
-                        }
-                        if($temp <= 0)
-                            break;
-                    }
-                    //$proxy->call($sessionId, 'j2trewardapi.create', array(array('customer_id' => $customer_id, 'order_id' => $order->getIncrementId(), 'date_start' => date('Y-m-d'),'date_end' => date('Y-m-d',strtotime("+ 10 days")), 'points_current' => $sum_smogi_customization, 'store_id' => $storeIds,'rewardpoints_description' => 'CreditMemo # '.$creditmemoid.'. Refunding bucks via partial refund.')));
-                    $this->savetodb($order->getId(), $sum_smogi_customization);
-                }
-            }            
-        }
-        else
-        {
-            Mage::log("FULL REFUND AT ONCE. NO PROCESSING REQUIRED.", null, 'partial_ankit.log');
-            $order = $this->getOrder();
                 $order->setState(Mage_Sales_Model_Order::STATE_CLOSED, true)->save();
+            }   
+        }
+        catch(Exception $e)
+        {
+            Mage::getModel('rewardpoints/stats')->orderLog($orderincrementid, 'smogi refund', $this->getId(),$e->getMessage(), 'ERROR');
         }
     }
      
@@ -1439,6 +1451,8 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
         //Mage::log("Order Id =".$order->getId(), null, 'partial_ankit.log');
         if($order->getId() > Mage::getModel('core/variable')->loadByCode('partial_nonapplicable')->getValue('plain'))
             $this->refundsmogibucks($this->getId(), $order->getId());
+        else
+            Mage::getModel('rewardpoints/stats')->orderLog($order->getIncrementId(), 'smogi refund', $this->getId(),'', 'Not refunding SMOGI as is restricted by custom variable');
         //$read = Mage::getSingleton('core/resource')->getConnection('core_read');
 //        $readresult=$read->query("Select order_id from sales_flat_creditmemo where entity_id=".$this->getId());
 //        $row = $readresult->fetch();

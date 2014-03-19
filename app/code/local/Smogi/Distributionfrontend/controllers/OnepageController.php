@@ -234,20 +234,24 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
         $lastQuoteId = $session->getLastQuoteId();
         $lastOrderId = $session->getLastOrderId();
         
-        Mage::log("Order #".$lastOrderId,null,'distribution.log');
-        Mage::getModel('rewardpoints/stats')->orderLog();
+        //Mage::log("Order #".$lastOrderId,null,'distribution.log');
+        $order = Mage::getModel('sales/order')->load($lastOrderId);
+        Mage::getModel('rewardpoints/stats')->orderLog($order->getIncrementId(), 'discount distribution', '','Frontend', 'Source');
         try{
             $write = Mage::getSingleton('core/resource')->getConnection('core_write');
-            $readresult=$write->query("Select base_discount_amount, rewardpoints_quantity, grand_total, coupon_code,store_id,entity_id,customer_id from sales_flat_order where entity_id=".$lastOrderId);
+            $readresult=$write->query("Select base_discount_amount, rewardpoints_quantity, grand_total, coupon_code,store_id,entity_id,customer_id,increment_id from sales_flat_order where entity_id=".$lastOrderId);
             $row = $readresult->fetch();
             $smogiused = false;
-			Mage::log("Base Discount = ".$row['base_discount_amount'],null,'distribution.log');
+			//Mage::log("Base Discount = ".$row['base_discount_amount'],null,'distribution.log');
+            Mage::getModel('rewardpoints/stats')->orderLog($order->getIncrementId(), 'discount distribution', '',$row['base_discount_amount'], 'Base Discount Amount');    
             $couponcode = $row['coupon_code'];
+            Mage::getModel('rewardpoints/stats')->orderLog($order->getIncrementId(), 'discount distribution', '',$couponcode, 'Coupon Code');
             //if($row['base_discount_amount'] < 0 && $row['grand_total'] > 0)
             if($row['base_discount_amount'] < 0 && $row['grand_total'] > 0 && $row['coupon_code'] == '')
             {
                 $discount_amount = $row['base_discount_amount'] * -1;
-				Mage::log("Rewardpoints = ".$row['rewardpoints_quantity'],null,'distribution.log');
+				//Mage::log("Rewardpoints = ".$row['rewardpoints_quantity'],null,'distribution.log');
+                Mage::getModel('rewardpoints/stats')->orderLog($order->getIncrementId(), 'discount distribution', '',$row['rewardpoints_quantity'], 'SMOGI Bucks Used');
                 if($row['rewardpoints_quantity'] > 0)
                 {
                     $smogiused = true;
@@ -274,12 +278,13 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
                     {
                         $write1 = Mage::getSingleton('core/resource')->getConnection('core_write');
                         $readresult1=$write1->query("SELECT COUNT(*) AS cnt FROM catalog_category_product ccp, catalog_category_flat_store_1 ccfs WHERE ccp.product_id = ".$row['product_id']." AND ccfs.entity_id = ccp.category_id AND category_id IN (".Mage::getModel('core/variable')->loadByCode('nosmogicategories ')->getValue('plain').")");
-                        Mage::log("SELECT COUNT(*) AS cnt FROM catalog_category_product ccp, catalog_category_flat_store_1 ccfs WHERE ccp.product_id = ".$row['product_id']." AND ccfs.entity_id = ccp.category_id AND category_id IN (".Mage::getModel('core/variable')->loadByCode('nosmogicategories ')->getValue('plain').")",null,'distribution.log');
+                        //Mage::log("SELECT COUNT(*) AS cnt FROM catalog_category_product ccp, catalog_category_flat_store_1 ccfs WHERE ccp.product_id = ".$row['product_id']." AND ccfs.entity_id = ccp.category_id AND category_id IN (".Mage::getModel('core/variable')->loadByCode('nosmogicategories ')->getValue('plain').")",null,'distribution.log');
                         $row1 = $readresult1->fetch();
                         if($row1['cnt'] > 0)
                         {
                             $temp['exclude'] = 1;
                             Mage::log("Excluded = ".$row['product_id'],null,'distribution.log');
+                            Mage::getModel('rewardpoints/stats')->orderLog($order->getIncrementId(), 'discount distribution', '',$row['product_id'], 'Excluding Product ID for distribution');            
                         }
                     }
                     array_push($arrOrderItem, $temp);
@@ -290,7 +295,8 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
                     if($arrOrderItem[$i]['exclude'] == 0)
                         $total += $arrOrderItem[$i]['price'];
                 }
-				Mage::log("Total Calculatable = ".$total,null,'distribution.log');
+				//Mage::log("Total Calculatable = ".$total,null,'distribution.log');
+                Mage::getModel('rewardpoints/stats')->orderLog($order->getIncrementId(), 'discount distribution', '',$total, 'Total Amount of products applicable for discount.');
                 $temp = 0;
                 for($i = 0; $i < count($arrOrderItem); $i++)
                 {
@@ -314,9 +320,11 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
                         $temp += $discount;
                         $arrOrderItem[$i]['price'] = $discount;   
                     }
-                    Mage::log($arrOrderItem[$i]['price']."  ".$arrOrderItem[$i]['product_id'] ,null,'distribution.log');
+                    //Mage::log($arrOrderItem[$i]['price']."  ".$arrOrderItem[$i]['product_id'] ,null,'distribution.log');
+                    Mage::getModel('rewardpoints/stats')->orderLog($order->getIncrementId(), 'discount distribution', '',$arrOrderItem[$i]['price'], 'New Discount for Product ID = '.$arrOrderItem[$i]['product_id']);
                 }
                 Mage::log($temp."   ".$discount_amount,null,'distribution.log');    
+                Mage::getModel('rewardpoints/stats')->orderLog($order->getIncrementId(), 'discount distribution', '',$temp, 'Sum of all allocated discounts');
                 if($temp < $discount_amount)
                 {
                     for($i = count($arrOrderItem)-1; $i >=0 ; $i--)
@@ -324,6 +332,7 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
                         if($arrOrderItem[$i]['exclude'] == 0)
                         {
                             $arrOrderItem[$i]['price'] += ($discount_amount - $temp);
+                            Mage::getModel('rewardpoints/stats')->orderLog($order->getIncrementId(), 'discount distribution', '',$arrOrderItem[$i]['price'], 'Allocated amount is less than discount amount, new discount for Product ID = '.$arrOrderItem[$i]['product_id']);
                             break;
                         }
                         //$arrOrderItem[count($arrOrderItem) - 1]['price'] += ($discount_amount - $temp);
@@ -337,6 +346,7 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
                         if($arrOrderItem[$i]['exclude'] == 0)
                         {
                             $arrOrderItem[$i]['price'] -= ($temp - $discount_amount);
+                            Mage::getModel('rewardpoints/stats')->orderLog($order->getIncrementId(), 'discount distribution', '',$arrOrderItem[$i]['price'], 'Allocated amount is more than discount amount, new discount for Product ID = '.$arrOrderItem[$i]['product_id']);
                             break;
                         }
                         //$arrOrderItem[count($arrOrderItem) - 1]['price'] += ($discount_amount - $temp);
@@ -350,12 +360,15 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
                     if($invoiceid !='')
                     $readresult=$write->query("Update sales_flat_invoice_item set discount_amount=".$arrOrderItem[$i]['price'].", base_discount_amount=".$arrOrderItem[$i]['price']." where parent_id=".$invoiceid." and order_item_id=".$arrOrderItem[$i]['item_id']);
                 }
-                Mage::log($temp."   ".$discount_amount,null,'distribution.log');
+                //Mage::log($temp."   ".$discount_amount,null,'distribution.log');
             }
-            
+            else
+            {
+                Mage::getModel('rewardpoints/stats')->orderLog($order->getIncrementId(), 'discount distribution', '','Reward Points is not used hence exiting.', 'EXIT');
+            }
             $readresult=$write->query("SELECT COUNT(item_id) AS cnt FROM sales_flat_order_item WHERE order_id=".$lastOrderId." AND qty_backordered>0");
             $row = $readresult->fetch();
-            $order = Mage::getModel('sales/order')->load($lastOrderId);
+            
             if($row['cnt'] > 0)
             {
                // $order = Mage::getModel('sales/order')->load($lastOrderId);
@@ -372,11 +385,13 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
                 //  $query = "Update rewardpoints_account set date_start='".date('Y-m-d')."' where rewardpoints_account_id=".$row['rewardpoints_account_id'];
                 //  Mage::log($query,null,'distirbution.log');
                 $write->query("Update rewardpoints_account set date_start='".date('Y-m-d')."' where rewardpoints_account_id=".$row['rewardpoints_account_id']);
+                Mage::getModel('rewardpoints/stats')->orderLog($order->getIncrementId(), 'smogi used point date', '',$row['rewardpoints_account_id'], 'Setting date for used smogi points = '.date('Y-m-d'));
             }
         }
         catch(Exception $e)
         {
-            Mage::log("Error Occured".$e->getMessage(),null,'distribution.log');
+            //Mage::log("Error Occured".$e->getMessage(),null,'distribution.log');
+            Mage::getModel('rewardpoints/stats')->orderLog($order->getIncrementId(), 'discount distribution', '',$e->getMessage(), 'ERROR');
         }
         
         $lastRecurringProfiles = $session->getLastRecurringProfileIds();
@@ -395,6 +410,8 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
     public function smogi_storeExpiryDate($orderinfo)
     {
         $smogi_balance = Mage::getModel('rewardpoints/stats')->getPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id'], null, true);
+        
+        Mage::getModel('rewardpoints/stats')->orderLog($orderinfo['increment_id'], 'smogi expiry date', '',json_encode($smogi_balance), 'Current SMOGI Balance');
         $write = Mage::getSingleton('core/resource')->getConnection('core_write');
         $arrEarnedPoints = $smogi_balance['history'];
         $temp = $orderinfo['rewardpoints_quantity'];
