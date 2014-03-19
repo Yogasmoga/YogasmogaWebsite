@@ -411,6 +411,8 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
     {
         Mage::log("store smogi expiry0",null,'distribution.log');
         $smogi_balance = Mage::getModel('rewardpoints/stats')->getPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id'], null, true);
+        echo "<pre>";
+        
         Mage::log("store smogi expiry",null,'distribution.log');
         //Mage::getModel('rewardpoints/stats')->orderLog($orderinfo['increment_id'], 'smogi expiry date', '',json_encode($smogi_balance), 'Current SMOGI Balance');
         Mage::log("store smogi expiry1",null,'distribution.log');
@@ -423,6 +425,8 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
                 continue;
             if((strtotime($arrEarnedPoints[$key]['date_end']) > strtotime(date('Y-m-d'))) && (($arrEarnedPoints[$key]['points_current'] - $arrEarnedPoints[$key]['balance']) > 0))
             {
+                echo "temp = ".$temp;
+                print_r($arrEarnedPoints[$key]);
                 if(($arrEarnedPoints[$key]['points_current'] - $arrEarnedPoints[$key]['balance']) >= $temp)
                 {
                     $write->query("Insert into smogi_store_expiry_date values(null,".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".$temp.",'".$arrEarnedPoints[$key]['date_end']."',0)");
@@ -437,6 +441,8 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
                     break;
             }
         }
+        echo "</pre>";
+        die();
         Mage::log("store smogi expiry2",null,'distribution.log');
     }
 
