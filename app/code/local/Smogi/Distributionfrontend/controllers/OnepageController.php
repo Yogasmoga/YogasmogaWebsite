@@ -411,6 +411,7 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
     
     public function smogi_setstartdate($incrementid)
     {
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
         $readresult=$write->query("SELECT * FROM rewardpoints_account WHERE order_id = '".$incrementid."' and date_start is null order by rewardpoints_account_id desc limit 1");
         $row = $readresult->fetch();
         $write->query("Update rewardpoints_account set date_start='".date('Y-m-d')."' where rewardpoints_account_id=".$row['rewardpoints_account_id']);
