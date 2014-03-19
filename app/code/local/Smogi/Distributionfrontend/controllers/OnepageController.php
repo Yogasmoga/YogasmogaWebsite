@@ -254,6 +254,7 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
                 Mage::getModel('rewardpoints/stats')->orderLog($order->getIncrementId(), 'discount distribution', '',$row['rewardpoints_quantity'], 'SMOGI Bucks Used');
                 if($row['rewardpoints_quantity'] > 0)
                 {
+                    $this->smogi_setstartdate($order->getIncrementId());
                     $smogiused = true;
                     $this->smogi_storeExpiryDate($row);
                 }
@@ -375,6 +376,7 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
                 $order->addStatusHistoryComment("This order contains Pre-Ordered items.");
                 $order->save();   
             }
+            /*
             if($smogiused)
             {
 
@@ -386,7 +388,7 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
                 //  Mage::log($query,null,'distirbution.log');
                 $write->query("Update rewardpoints_account set date_start='".date('Y-m-d')."' where rewardpoints_account_id=".$row['rewardpoints_account_id']);
                 Mage::getModel('rewardpoints/stats')->orderLog($order->getIncrementId(), 'smogi used point date', '',$row['rewardpoints_account_id'], 'Setting date for used smogi points = '.date('Y-m-d'));
-            }
+            }*/
         }
         catch(Exception $e)
         {
@@ -406,13 +408,21 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
         Mage::dispatchEvent('checkout_onepage_controller_success_action', array('order_ids' => array($lastOrderId)));
         $this->renderLayout();
     }
-
+    
+    public function smogi_setstartdate($incrementid)
+    {
+        $readresult=$write->query("SELECT * FROM rewardpoints_account WHERE order_id = '".$incrementid."' and date_start is null order by rewardpoints_account_id desc limit 1");
+        $row = $readresult->fetch();
+        $write->query("Update rewardpoints_account set date_start='".date('Y-m-d')."' where rewardpoints_account_id=".$row['rewardpoints_account_id']);
+        Mage::getModel('rewardpoints/stats')->orderLog($incrementid, 'smogi used point date', '',$row['rewardpoints_account_id'], 'Setting date for used smogi points = '.date('Y-m-d'));
+    }
+    
     public function smogi_storeExpiryDate($orderinfo)
     {
         Mage::log("store smogi expiry0",null,'distribution.log');
         $smogi_balance = Mage::getModel('rewardpoints/stats')->getPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id'], null, true);
-        echo "<pre>";
-        print_r($smogi_balance);
+        //echo "<pre>";
+//        print_r($smogi_balance);
         Mage::log("store smogi expiry",null,'distribution.log');
         //Mage::getModel('rewardpoints/stats')->orderLog($orderinfo['increment_id'], 'smogi expiry date', '',json_encode($smogi_balance), 'Current SMOGI Balance');
         Mage::log("store smogi expiry1",null,'distribution.log');
@@ -425,8 +435,8 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
                 continue;
             if((strtotime($arrEarnedPoints[$key]['date_end']) > strtotime(date('Y-m-d'))) && (($arrEarnedPoints[$key]['points_current'] - $arrEarnedPoints[$key]['balance']) > 0))
             {
-                echo "temp = ".$temp;
-                print_r($arrEarnedPoints[$key]);
+                //echo "temp = ".$temp;
+//                print_r($arrEarnedPoints[$key]);
                 if(($arrEarnedPoints[$key]['points_current'] - $arrEarnedPoints[$key]['balance']) >= $temp)
                 {
                     $write->query("Insert into smogi_store_expiry_date values(null,".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".$temp.",'".$arrEarnedPoints[$key]['date_end']."',0)");
@@ -441,9 +451,9 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
                     break;
             }
         }
-        echo "</pre>";
-        die();
-        Mage::log("store smogi expiry2",null,'distribution.log');
+        //echo "</pre>";
+//        die();
+//        Mage::log("store smogi expiry2",null,'distribution.log');
     }
 
     public function failureAction()
