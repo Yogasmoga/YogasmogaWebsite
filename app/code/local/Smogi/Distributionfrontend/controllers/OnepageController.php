@@ -420,9 +420,8 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
     
     public function smogi_storeExpiryDate($orderinfo)
     {
-        Mage::log("store smogi expiry0",null,'distribution.log');
         $smogi_balance = Mage::getModel('rewardpoints/stats')->getPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id'], null, true);
-        Mage::log(json_encode($smogi_balance),null,'distribution.log');
+        Mage::log(json_encode($smogi_balance),null,'smogi_balance.log');
         //Mage::getModel('rewardpoints/stats')->orderLog($orderinfo['increment_id'], 'smogi expiry date', '',json_encode($smogi_balance), 'Current SMOGI Balance');
         $write = Mage::getSingleton('core/resource')->getConnection('core_write');
         $arrEarnedPoints = $smogi_balance['history'];

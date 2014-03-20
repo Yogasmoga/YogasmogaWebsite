@@ -515,6 +515,7 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
                 Mage::getModel('rewardpoints/stats')->orderLog($order->getIncrementId(), 'discount distribution', '',$row['rewardpoints_quantity'], 'SMOGI Bucks Used');
                 if($row['rewardpoints_quantity'] > 0)
                 {
+                    $this->smogi_setstartdate($order->getIncrementId());
                     $smogiused = true;
                     $this->smogi_storeExpiryDate($row);
                 }
@@ -636,6 +637,7 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
                 $order->addStatusHistoryComment("This order contains Pre-Ordered items.");
                 $order->save();   
             }
+            /*
             if($smogiused)
             {
 
@@ -647,7 +649,7 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
                 //  Mage::log($query,null,'distirbution.log');
                 $write->query("Update rewardpoints_account set date_start='".date('Y-m-d')."' where rewardpoints_account_id=".$row['rewardpoints_account_id']);
                 Mage::getModel('rewardpoints/stats')->orderLog($order->getIncrementId(), 'smogi used point date', '',$row['rewardpoints_account_id'], 'Setting date for used smogi points = '.date('Y-m-d'));
-            }
+            }*/
         }
         catch(Exception $e)
         {
@@ -821,11 +823,19 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
             $this->_redirect('*/*/');
         }
     }
+    public function smogi_setstartdate($incrementid)
+    {
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+        $readresult=$write->query("SELECT * FROM rewardpoints_account WHERE order_id = '".$incrementid."' and date_start is null order by rewardpoints_account_id desc limit 1");
+        $row = $readresult->fetch();
+        $write->query("Update rewardpoints_account set date_start='".date('Y-m-d')."' where rewardpoints_account_id=".$row['rewardpoints_account_id']);
+        Mage::getModel('rewardpoints/stats')->orderLog($incrementid, 'smogi used point date', '',$row['rewardpoints_account_id'], 'Setting date for used smogi points = '.date('Y-m-d'));
+    }
     public function smogi_storeExpiryDate($orderinfo)
     {
         $smogi_balance = Mage::getModel('rewardpoints/stats')->getPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id'], null, true);
-        
-        Mage::getModel('rewardpoints/stats')->orderLog($orderinfo['increment_id'], 'smogi expiry date', '',json_encode($smogi_balance), 'Current SMOGI Balance');
+        Mage::log(json_encode($smogi_balance),null,'smogi_balance.log');
+        //Mage::getModel('rewardpoints/stats')->orderLog($orderinfo['increment_id'], 'smogi expiry date', '',json_encode($smogi_balance), 'Current SMOGI Balance');
         $write = Mage::getSingleton('core/resource')->getConnection('core_write');
         $arrEarnedPoints = $smogi_balance['history'];
         $temp = $orderinfo['rewardpoints_quantity'];
