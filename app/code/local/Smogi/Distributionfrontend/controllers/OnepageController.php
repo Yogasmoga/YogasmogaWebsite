@@ -426,6 +426,43 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
         $write = Mage::getSingleton('core/resource')->getConnection('core_write');
         $arrEarnedPoints = $smogi_balance['history'];
         $temp = $orderinfo['rewardpoints_quantity'];
+        $date_end = array();
+        foreach($arrEarnedPoints as $key => $value)
+        {
+            $date_end[$key] = $value['date_end'];
+        }
+        array_multisort($date_end, SORT_ASC, $arrEarnedPoints);
+        Mage::log(json_encode($arrEarnedPoints),null,'smogi_balance1.log');
+        foreach($arrEarnedPoints as $key => $value)
+        {
+            if($arrEarnedPoints[$key]['points_current'] <= 0)
+                continue;
+            if((strtotime($arrEarnedPoints[$key]['date_end']) > strtotime(date('Y-m-d'))) && ($arrEarnedPoints[$key]['balance'] > 0))
+            {
+                if($arrEarnedPoints[$key]['balance'] >= $temp)
+                {
+                    $write->query("Insert into smogi_store_expiry_date values(null,".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".$temp.",'".$arrEarnedPoints[$key]['date_end']."',0)");
+                    $temp = 0;
+                }
+                else
+                {
+                    $write->query("Insert into smogi_store_expiry_date values(null,".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".$arrEarnedPoints[$key]['balance'].",'".$arrEarnedPoints[$key]['date_end']."',0)");
+                    $temp -= $arrEarnedPoints[$key]['balance'];
+                }
+                if($temp <= 0)
+                    break;
+            }
+        }
+    }
+    
+    public function smogi_storeExpiryDate_old1($orderinfo)
+    {
+        $smogi_balance = Mage::getModel('rewardpoints/stats')->getPointsCurrent_excludelast($orderinfo['customer_id'], $orderinfo['store_id'], null, true);
+        Mage::log(json_encode($smogi_balance),null,'smogi_balance.log');
+        //Mage::getModel('rewardpoints/stats')->orderLog($orderinfo['increment_id'], 'smogi expiry date', '',json_encode($smogi_balance), 'Current SMOGI Balance');
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+        $arrEarnedPoints = $smogi_balance['history'];
+        $temp = $orderinfo['rewardpoints_quantity'];
         foreach($arrEarnedPoints as $key => $value)
         {
             if($arrEarnedPoints[$key]['points_current'] <= 0)
