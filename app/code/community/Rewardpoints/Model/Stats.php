@@ -329,7 +329,10 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
         //$customerid = $this->getRequest()->getParam('customerid');
         $balanceon = strtotime($date);
         $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+        $query= "SELECT * FROM  (SELECT SUM(points_current) AS points, date_end FROM rewardpoints_account WHERE customer_id = ".$customerid." AND points_current > 0 AND order_id IN (-3,-2,-1,-20) GROUP BY date_end UNION SELECT SUM(points_current) AS points, date_end FROM rewardpoints_account, sales_flat_order WHERE sales_flat_order.increment_id = rewardpoints_account.order_id AND sales_flat_order.state IN ('pending', 'processing', 'complete') AND order_id NOT IN (-3,-2,-1,-20) AND rewardpoints_account.customer_id = ".$customerid." AND points_current > 0 GROUP BY date_end) AS temp ORDER BY date_end";
+        Mage::log($query,null,"distribution.log");
         $readresult=$read->query("SELECT * FROM  (SELECT SUM(points_current) AS points, date_end FROM rewardpoints_account WHERE customer_id = ".$customerid." AND points_current > 0 AND order_id IN (-3,-2,-1,-20) GROUP BY date_end UNION SELECT SUM(points_current) AS points, date_end FROM rewardpoints_account, sales_flat_order WHERE sales_flat_order.increment_id = rewardpoints_account.order_id AND sales_flat_order.state IN ('pending', 'processing', 'complete') AND order_id NOT IN (-3,-2,-1,-20) AND rewardpoints_account.customer_id = ".$customerid." AND points_current > 0 GROUP BY date_end) AS temp ORDER BY date_end");
+
         $arrEarnedPoints = array();
         while($row = $readresult->fetch())
         {

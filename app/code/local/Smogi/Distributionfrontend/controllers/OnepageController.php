@@ -249,7 +249,11 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
                 $discount_amount = $row['base_discount_amount'] * -1;
 				Mage::log("Rewardpoints = ".$row['rewardpoints_quantity'],null,'distribution.log');
                 if($row['rewardpoints_quantity'] > 0)
+                {
                     $smogiused = true;
+                    $this->smogi_storeExpiryDate($row);
+                }
+
                 //Mage::log("Smogi used = $smogiused",null,'distribution.log');        
                 $readresult=$write->query("Select entity_id from sales_flat_invoice where order_id=".$lastOrderId);
                 $row = $readresult->fetch();
@@ -359,7 +363,9 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
             }
             if($smogiused)
             {
-                $write->query("Update rewardpoints_account set date_start='".date('Y-m-d')."' where order_id='".$order->getIncrementId()."'");
+                $readresult=$write->query("SELECT * FROM rewardpoints_account WHERE order_id = '".$order->getId()."' and date_start is null order by rewardpoints_account_id desc limit 1");
+                $row = $readresult->fetch();
+                $write->query("Update rewardpoints_account set date_start='".date('Y-m-d')."' where rewardpoints_account_id=".$row['rewardpoints_account_id']);
             }
         }
         catch(Exception $e)
@@ -378,6 +384,53 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
         $this->_initLayoutMessages('checkout/session');
         Mage::dispatchEvent('checkout_onepage_controller_success_action', array('order_ids' => array($lastOrderId)));
         $this->renderLayout();
+    }
+
+    public function smogi_storeExpiryDate($orderinfo)
+    {
+        if (Mage::getStoreConfig('rewardpoints/default/flatstats', $orderinfo['store_id']))
+            $smogi_balance =  Mage::getModel('rewardpoints/flatstats')->collectPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id']);
+        else
+            $smogi_balance = Mage::getModel('rewardpoints/stats')->getPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id']);
+        Mage::log("smogi_balance #".$smogi_balance,null,'smogi_store_expiry.log');
+        $smogi_balance += $orderinfo['rewardpoints_quantity'];
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+        $readresult=$write->query("select * from rewardpoints_account where customer_id=".$orderinfo['customer_id']." and points_current > 0 ORDER BY date_end DESC");
+        $temp = 0;
+        $customer_pointinfo = array();
+        $i=0;
+        while ($row = $readresult->fetch() ) {
+            $temp1 = 0;
+            if(($temp + $row['points_current']) > $smogi_balance)
+                $temp1 = $smogi_balance - $temp;
+            else
+                $temp1 = $row['points_current'];
+            $temp += $temp1;
+            //array_push($customer_pointinfo, array("points" => $row['points_current'], "date" => $row['date_end']));
+            $customer_pointinfo[$i]['points'] = $temp1;
+            $customer_pointinfo[$i]['date'] = $row['date_end'];
+            $i++;
+            if($temp >= $smogi_balance)
+                break;
+        }
+
+        $temp = 0;
+        Mage::log("customer_pointinfo #".count($customer_pointinfo),null,'smogi_store_expiry.log');
+        for($i = count($customer_pointinfo) -1; $i >= 0; $i--)
+        {
+            $temp1 = 0;
+            Mage::log("customer_points".$customer_pointinfo[$i]['points'],null,'smogi_store_expiry.log');
+            if(($temp + $customer_pointinfo[$i]['points']) <=  $orderinfo['rewardpoints_quantity'])
+                $temp1 = $customer_pointinfo[$i]['points'];
+            else
+                $temp1 = $orderinfo['rewardpoints_quantity'] - $temp;
+            $query = "Insert into smogi_store_expiry_date values(null,".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".$temp1.",'".$customer_pointinfo[$i]['date']."',0)";
+            Mage::log("Query #".$query,null,'smogi_store_expiry.log');
+            $write->query("Insert into smogi_store_expiry_date values(null,".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".$temp1.",'".$customer_pointinfo[$i]['date']."',0)");
+            $temp += $temp1;
+            if($temp >= $orderinfo['rewardpoints_quantity'])
+                break;
+        }
     }
 
     public function failureAction()

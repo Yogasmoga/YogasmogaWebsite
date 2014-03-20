@@ -61,7 +61,7 @@ class Rewardpoints_Block_Adminhtml_Customerpoints extends Mage_Adminhtml_Block_W
             'image'  => Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'/adminhtml/default/default/images/grid-cal.gif',
             'format' => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
             'required'  => true,
-            'class'     => 'validate-date ',
+            'class'     => 'validate-date',
         ));
 
         $fieldset->addField('date_end', 'date', array(
@@ -71,7 +71,7 @@ class Rewardpoints_Block_Adminhtml_Customerpoints extends Mage_Adminhtml_Block_W
             'image'  => Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'/adminhtml/default/default/images/grid-cal.gif',
             'format' => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
             'required'  => true,
-            'class'     => 'validate-date ',
+            'class'     => 'validate-date',
         ));
 
 

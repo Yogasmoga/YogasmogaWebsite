@@ -1388,7 +1388,26 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
                 else
                 {
                     //$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $sum_smogi_customization, $storeIds));
-                    $proxy->call($sessionId, 'j2trewardapi.create', array(array('customer_id' => $customer_id, 'order_id' => $order->getIncrementId(), 'date_start' => date('Y-m-d'),'date_end' => date('Y-m-d',strtotime("+ 10 days")), 'points_current' => $sum_smogi_customization, 'store_id' => $storeIds,'rewardpoints_description' => 'CreditMemo # '.$creditmemoid.'. Refunding bucks via partial refund.')));
+                    $read = Mage::getSingleton('core/resource')->getConnection('core_write');
+                    $readresult=$read->query("SELECT * FROM smogi_store_expiry_date WHERE order_id = ".$order->getId()." AND (used_points - refunded_points) > 0 ORDER BY expiry_date DESC");
+                    $temp = $sum_smogi_customization;
+                    while ($row = $readresult->fetch() ) {
+                        if(($row['used_points'] - $row['refunded_points']) >= $temp)
+                        {
+                            $read->query("Update smogi_store_expiry_date set refunded_points=(refunded_points +".$temp.") where id=".$row['id']);
+                            $proxy->call($sessionId, 'j2trewardapi.create', array(array('customer_id' => $customer_id, 'order_id' => $order->getIncrementId(), 'date_start' => date('Y-m-d'),'date_end' => $row['expiry_date'], 'points_current' => $temp, 'store_id' => $storeIds,'rewardpoints_description' => 'CreditMemo # '.$creditmemoid.'. Refunding bucks via partial refund.')));
+                            $temp = 0;
+                        }
+                        else
+                        {
+                            $temp -= ($row['used_points'] - $row['refunded_points']);
+                            $read->query("Update smogi_store_expiry_date set refunded_points=used_points where id=".$row['id']);
+                            $proxy->call($sessionId, 'j2trewardapi.create', array(array('customer_id' => $customer_id, 'order_id' => $order->getIncrementId(), 'date_start' => date('Y-m-d'),'date_end' => $row['expiry_date'], 'points_current' => ($row['used_points'] - $row['refunded_points']), 'store_id' => $storeIds,'rewardpoints_description' => 'CreditMemo # '.$creditmemoid.'. Refunding bucks via partial refund.')));
+                        }
+                        if($temp <= 0)
+                            break;
+                    }
+                    //$proxy->call($sessionId, 'j2trewardapi.create', array(array('customer_id' => $customer_id, 'order_id' => $order->getIncrementId(), 'date_start' => date('Y-m-d'),'date_end' => date('Y-m-d',strtotime("+ 10 days")), 'points_current' => $sum_smogi_customization, 'store_id' => $storeIds,'rewardpoints_description' => 'CreditMemo # '.$creditmemoid.'. Refunding bucks via partial refund.')));
                     $this->savetodb($order->getId(), $sum_smogi_customization);
                 }
             }            

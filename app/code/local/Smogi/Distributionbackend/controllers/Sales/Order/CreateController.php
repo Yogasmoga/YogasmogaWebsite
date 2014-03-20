@@ -499,7 +499,8 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
             Mage::log("Order #".$lastOrderId,null,'distribution.log');
 			try{
             $write = Mage::getSingleton('core/resource')->getConnection('core_write');
-            $readresult=$write->query("Select base_discount_amount, rewardpoints_quantity, grand_total, coupon_code from sales_flat_order where entity_id=".$lastOrderId);
+            //$readresult=$write->query("Select base_discount_amount, rewardpoints_quantity, grand_total, coupon_code, customer_id from sales_flat_order where entity_id=".$lastOrderId);
+            $readresult=$write->query("Select base_discount_amount, rewardpoints_quantity, grand_total, coupon_code,store_id,entity_id,customer_id from sales_flat_order where entity_id=".$lastOrderId);
             $row = $readresult->fetch();
             $smogiused = false;
 			Mage::log("Base Discount = ".$row['base_discount_amount'],null,'distribution.log');
@@ -510,7 +511,11 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
                 $discount_amount = $row['base_discount_amount'] * -1;
 				Mage::log("Rewardpoints = ".$row['rewardpoints_quantity'],null,'distribution.log');
                 if($row['rewardpoints_quantity'] > 0)
+                {
                     $smogiused = true;
+                    $this->smogi_storeExpiryDate($row);
+                }
+
                 //Mage::log("Smogi used = $smogiused",null,'distribution.log');        
                 $readresult=$write->query("Select entity_id from sales_flat_invoice where order_id=".$lastOrderId);
                 $row = $readresult->fetch();
@@ -620,12 +625,14 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
             }
             if($smogiused)
             {
-                 $write->query("Update rewardpoints_account set date_start='".date('Y-m-d')."' where order_id='".$order->getIncrementId()."'");
+                $readresult=$write->query("SELECT * FROM rewardpoints_account WHERE order_id = '".$order->getId()."' and date_start is null order by rewardpoints_account_id desc limit 1");
+                $row = $readresult->fetch();
+                $write->query("Update rewardpoints_account set date_start='".date('Y-m-d')."' where rewardpoints_account_id=".$row['rewardpoints_account_id']);
             }
         }
         catch(Exception $e)
         {
-            Mage::log("Error Occured",null,'distribution.log');
+            Mage::log("Error Occured".$e->getMessage(),null,'distribution.log');
         }
 			
 			/*******Distribution for Reorder********/
@@ -646,6 +653,47 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
         catch (Exception $e){
             $this->_getSession()->addException($e, $this->__('Order saving error: %s', $e->getMessage()));
             $this->_redirect('*/*/');
+        }
+    }
+    public function smogi_storeExpiryDate($orderinfo)
+    {
+//        if (Mage::getStoreConfig('rewardpoints/default/flatstats', $orderinfo['store_id']))
+//            $smogi_balance =  Mage::getModel('rewardpoints/flatstats')->collectPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id']);
+//        else
+            $smogi_balance = Mage::getModel('rewardpoints/stats')->getPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id']);
+        Mage::log("smogi_balance #".$smogi_balance,null,'smogi_store_expiry.log');
+        $smogi_balance += $orderinfo['rewardpoints_quantity'];
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+        $readresult=$write->query("select * from rewardpoints_account where customer_id=".$orderinfo['customer_id']." and points_current > 0 ORDER BY date_end DESC");
+        $temp = 0;
+        $customer_pointinfo = array();
+        $i=0;
+        while ($row = $readresult->fetch() ) {
+            $temp += $row['points_current'];
+            //array_push($customer_pointinfo, array("points" => $row['points_current'], "date" => $row['date_end']));
+            $customer_pointinfo[$i]['points'] = $row['points_current'];
+            $customer_pointinfo[$i]['date'] = $row['date_end'];
+            $i++;
+            if($temp >= $smogi_balance)
+                break;
+        }
+
+        $temp = 0;
+        Mage::log("customer_pointinfo #".count($customer_pointinfo),null,'smogi_store_expiry.log');
+        for($i = count($customer_pointinfo) -1; $i >= 0; $i--)
+        {
+            $temp1 = 0;
+            Mage::log("customer_points".$customer_pointinfo[$i]['points'],null,'smogi_store_expiry.log');
+            if(($temp + $customer_pointinfo[$i]['points']) <=  $orderinfo['rewardpoints_quantity'])
+                $temp1 = $customer_pointinfo[$i]['points'];
+            else
+                $temp1 = $orderinfo['rewardpoints_quantity'] - $temp;
+            $query = "Insert into smogi_store_expiry_date values(null,".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".$temp1.",'".$customer_pointinfo[$i]['date']."',0)";
+            Mage::log("Query #".$query,null,'smogi_store_expiry.log');
+            $write->query("Insert into smogi_store_expiry_date values(null,".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".$temp1.",'".$customer_pointinfo[$i]['date']."',0)");
+            $temp += $temp1;
+            if($temp >= $orderinfo['rewardpoints_quantity'])
+                break;
         }
     }
 
