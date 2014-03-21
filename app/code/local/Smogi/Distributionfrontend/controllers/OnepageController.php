@@ -363,8 +363,12 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
             }
             if($smogiused)
             {
-                $readresult=$write->query("SELECT * FROM rewardpoints_account WHERE order_id = '".$order->getId()."' and date_start is null order by rewardpoints_account_id desc limit 1");
+                // $query = "SELECT * FROM rewardpoints_account WHERE order_id = '".$order->getIncrementId()."' and date_start is null order by rewardpoints_account_id desc limit 1";
+                // Mage::log($query,null,'distirbution.log');
+                $readresult=$write->query("SELECT * FROM rewardpoints_account WHERE order_id = '".$order->getIncrementId()."' and date_start is null order by rewardpoints_account_id desc limit 1");
                 $row = $readresult->fetch();
+                //  $query = "Update rewardpoints_account set date_start='".date('Y-m-d')."' where rewardpoints_account_id=".$row['rewardpoints_account_id'];
+                //  Mage::log($query,null,'distirbution.log');
                 $write->query("Update rewardpoints_account set date_start='".date('Y-m-d')."' where rewardpoints_account_id=".$row['rewardpoints_account_id']);
             }
         }
