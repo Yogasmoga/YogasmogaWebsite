@@ -2513,5 +2513,18 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         print_r($history);
         echo "</pre>";
     }
+
+    public function comparenewoldsmogiAction()
+    {
+        set_time_limit(0);
+        $resource = Mage::getSingleton('core/resource');
+        $writeConnection = $resource->getConnection('core_write');
+        $readConnection = $resource->getConnection('core_write');
+        $temp = $readConnection->query("Select entity_id from customer_entity where is_active=1");
+        while($row = $temp->fetch())
+        {
+            $writeConnection->query("Insert into new_old_bucks_comparision values (".$row['entity_id'].", ".Mage::getModel('rewardpoints/stats')->getPointsCurrentdefault($row['entity_id'],1).", ".Mage::getModel('rewardpoints/stats')->getPointsCurrent($row['entity_id'],1).")");
+        }
+    }
 }
 ?>

@@ -327,8 +327,32 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
             $date = date('Y-m-d');
         $balanceon = strtotime($date);
         $read = Mage::getSingleton('core/resource')->getConnection('core_read');
-        $query = "SELECT * FROM (SELECT points_current, points_spent,points_current AS 'balance',date_start,date_end,rewardpoints_account_id FROM rewardpoints_account WHERE customer_id = ".$customerid." AND order_id IN (-3,-2,-1,-20) UNION SELECT points_current, points_spent,points_current AS 'balance',date_start,date_end,rewardpoints_account_id FROM rewardpoints_account, sales_flat_order WHERE rewardpoints_account.customer_id = ".$customerid." AND order_id NOT IN (-3,-2,-1,-20) AND sales_flat_order.increment_id = rewardpoints_account.order_id AND sales_flat_order.state IN ('new','pending','processing','complete')) AS smogihistory ORDER BY rewardpoints_account_id";
+        $query = "SELECT * FROM (SELECT points_current, points_spent,points_current AS 'balance',date_start,date_end,rewardpoints_account_id, order_id FROM rewardpoints_account WHERE customer_id = ".$customerid." AND order_id IN (-3,-2,-1,-20) UNION SELECT points_current, points_spent,points_current AS 'balance',date_start,date_end,rewardpoints_account_id, order_id FROM rewardpoints_account, sales_flat_order WHERE rewardpoints_account.customer_id = ".$customerid." AND order_id NOT IN (-3,-2,-1,-20) AND sales_flat_order.increment_id = rewardpoints_account.order_id AND sales_flat_order.state IN ('new','pending','processing','complete')) AS smogihistory ORDER BY rewardpoints_account_id";
         $smogihistory = $read->fetchAll($query);
+
+        $unsetarray = array();
+        for($i = 0; $i < count($smogihistory); $i++)
+        {
+            $orderid = $smogihistory[$i]['order_id'];
+            if(($orderid != -3 || $orderid != -2 || $orderid != -1 || $orderid != -20) && $smogihistory[$i]['points_spent'] > 0)
+            {
+                $temp = $smogihistory[$i]['points_spent'];
+                for($j = $i - 1; $j >= 0; $j--)
+                {
+                    if(($smogihistory[$j]['order_id'] == $smogihistory[$i]['order_id']) && $smogihistory[$j]['points_current'] > 0)
+                    {
+                        if($smogihistory[$j]['points_current'] >= $temp)
+                        {
+                            $smogihistory[$j]['points_current'] -= $temp;
+                            $smogihistory[$j]['balance'] -= $temp;
+                            array_push($unsetarray,$i);
+                            $smogihistory[$i]['points_spent'] = 0;
+                        }
+                    }
+                }
+            }
+        }
+
         $lastindex = count($smogihistory);
         if($excludelast)
             $lastindex--;
@@ -573,7 +597,14 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
 		$readConnection->query("Insert into smogi_debug_info values (NULL, '$orderNumber', '$process','$creditMemoId','$logType','$log',NOW())");
     }
 
-
+    public function getPointsCurrentdefault($customer_id, $store_id){
+        $total = $this->getPointsReceived($customer_id, $store_id) - $this->getPointsSpent($customer_id, $store_id);
+        if ($total > 0){
+            return $total;
+        } else {
+            return 0;
+        }
+    }
 
 }
 
