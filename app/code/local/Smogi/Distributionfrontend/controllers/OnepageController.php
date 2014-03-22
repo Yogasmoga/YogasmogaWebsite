@@ -236,6 +236,8 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
         
         //Mage::log("Order #".$lastOrderId,null,'distribution.log');
         $order = Mage::getModel('sales/order')->load($lastOrderId);
+        Mage::getModel('rewardpoints/stats')->ordercompleteoperations($order,'Frontend');
+        /*
         Mage::getModel('rewardpoints/stats')->orderLog($order->getIncrementId(), 'discount distribution', '','Frontend', 'Source');
         try{
             $write = Mage::getSingleton('core/resource')->getConnection('core_write');
@@ -376,25 +378,14 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
                 $order->addStatusHistoryComment("This order contains Pre-Ordered items.");
                 $order->save();   
             }
-            /*
-            if($smogiused)
-            {
-
-                // $query = "SELECT * FROM rewardpoints_account WHERE order_id = '".$order->getIncrementId()."' and date_start is null order by rewardpoints_account_id desc limit 1";
-                // Mage::log($query,null,'distirbution.log');
-                $readresult=$write->query("SELECT * FROM rewardpoints_account WHERE order_id = '".$order->getIncrementId()."' and date_start is null order by rewardpoints_account_id desc limit 1");
-                $row = $readresult->fetch();
-                //  $query = "Update rewardpoints_account set date_start='".date('Y-m-d')."' where rewardpoints_account_id=".$row['rewardpoints_account_id'];
-                //  Mage::log($query,null,'distirbution.log');
-                $write->query("Update rewardpoints_account set date_start='".date('Y-m-d')."' where rewardpoints_account_id=".$row['rewardpoints_account_id']);
-                Mage::getModel('rewardpoints/stats')->orderLog($order->getIncrementId(), 'smogi used point date', '',$row['rewardpoints_account_id'], 'Setting date for used smogi points = '.date('Y-m-d'));
-            }*/
+            
         }
         catch(Exception $e)
         {
             //Mage::log("Error Occured".$e->getMessage(),null,'distribution.log');
             Mage::getModel('rewardpoints/stats')->orderLog($order->getIncrementId(), 'discount distribution', '',$e->getMessage(), 'ERROR');
         }
+        */
         
         $lastRecurringProfiles = $session->getLastRecurringProfileIds();
         if (!$lastQuoteId || (!$lastOrderId && empty($lastRecurringProfiles))) {
