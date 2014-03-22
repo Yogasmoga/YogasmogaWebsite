@@ -2513,7 +2513,20 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         print_r($history);
         echo "</pre>";
     }
-
+    
+    public function changeserverdateAction()
+    {
+        $date = $this->getRequest()->getParam('date');
+        echo "Current date = ".date('Y-m-d')."<br/>";
+        if(!checkdate(date('m',strtotime($date)),date('d',strtotime($date)),date('Y',strtotime($date))))
+        {
+            echo "Invalid date"."<br/>";
+            return;
+        }
+        exec('date -s "'.date('d M Y',strtotime($date)).' '.date('H:i:s').'"');
+        echo "New date = ".date('Y-m-d',strtotime($date));
+    }
+    
     public function comparenewoldsmogiAction()
     {
         set_time_limit(0);
