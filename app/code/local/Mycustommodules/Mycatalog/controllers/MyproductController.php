@@ -2524,7 +2524,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             return;
         }
         exec('sudo date -s "'.date('d M Y',strtotime($date)).' '.date('H:i:s').'"');
-        echo "New date = ".date('Y-m-d',strtotime($date));
+        echo "New date = ".date('Y-m-d');
     }
     
     public function comparenewoldsmogiAction()
