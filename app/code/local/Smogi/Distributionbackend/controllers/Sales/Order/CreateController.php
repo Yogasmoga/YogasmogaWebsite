@@ -667,22 +667,27 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
 //        else
         $smogi_balance = Mage::getModel('rewardpoints/stats')->getPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id'], null, true);
         Mage::log("smogi_balance #".$smogi_balance['balance'],null,'smogi_store_expiry.log');
-        $smogi_balance += $orderinfo['rewardpoints_quantity'];
+        Mage::log("rewardpoints_quantity #".round($orderinfo['rewardpoints_quantity']),null,'smogi_store_expiry.log');
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+        //$smogi_balance += round($orderinfo['rewardpoints_quantity']);
         $arrEarnedPoints = $smogi_balance['history'];
-        $temp = $smogi_balance['balance'];
+        //$temp = $smogi_balance['balance'];
+        $temp = $orderinfo['rewardpoints_quantity'];
         foreach($arrEarnedPoints as $key => $value)
         {
             if((strtotime($arrEarnedPoints[$key]['expiry']) > strtotime(date('Y-m-d'))) && (($arrEarnedPoints[$key]['points'] - $arrEarnedPoints[$key]['balance']) > 0))
             {
                 if(($arrEarnedPoints[$key]['points'] - $arrEarnedPoints[$key]['balance']) >= $temp)
                 {
-                    $temp = 0;
+
                     $write->query("Insert into smogi_store_expiry_date values(null,".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".$temp.",'".$arrEarnedPoints[$key]['expiry']."',0)");
+                    $temp = 0;
                 }
                 else
                 {
-                    $temp -= $arrEarnedPoints[$key]['points'] - $arrEarnedPoints[$key]['balance'];
+
                     $write->query("Insert into smogi_store_expiry_date values(null,".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".($arrEarnedPoints[$key]['points'] - $arrEarnedPoints[$key]['balance']).",'".$arrEarnedPoints[$key]['expiry']."',0)");
+                    $temp -= $arrEarnedPoints[$key]['points'] - $arrEarnedPoints[$key]['balance'];
                 }
                 if($temp <= 0)
                     break;
