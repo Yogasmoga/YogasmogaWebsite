@@ -1988,6 +1988,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         echo "</pre>";
         //return $customerlist;
     }
+<<<<<<< HEAD
 	
 	public function exportsmoginotificationlogAction()
 	{
@@ -2057,5 +2058,565 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 			}
 		}
 	}
+=======
+	public function smogitestingAction()
+	{
+        //$rc = new ReflectionClass('Rewardpoints_Model_Stats');
+        //print_r($rc->newInstanceArgs('af'));
+        //$obj = new Rewardpoints_Model_Stats('abcd');
+        //echo $obj->getPointsCurrent(30, 1);
+        //die;
+        $days = $this->getRequest()->getParam('days');
+        Mage::register('smogi_exp_interval',$days );
+        echo "Points Available today--->".$points = Mage::getModel('rewardpoints/stats')->getPointsCurrent(30, 1)."<br/>";
+        //Mage::register('smogi_exp_interval', 0);
+		echo "Points Available after ".$days."days---> ".$points_new = Mage::getModel('rewardpoints/statsnew')->getPointsCurrent(30, 1)."<br/>";
+        echo "Expiry Smogi bugs are:-->";
+        echo $points-$points_new;
+
+		//echo $points = Mage::getModel('rewardpoints/stats')->getPointsReceived(30, 1);
+		//echo $points = Mage::getModel('rewardpoints/stats')->getPointsSpent(30, 1);
+		//echo $points = Mage::getModel('rewardpoints/stats')->getPointsReceivedReajustment(30, 1);
+		//echo $points = Mage::getModel('rewardpoints/stats')->getRealPointsLost(30, 1);
+		//echo $points = Mage::getModel('rewardpoints/stats')->getRealPointsReceivedNoExpiry(30, 1);
+		//echo $points = Mage::getModel('rewardpoints/stats')->loadpointsbydate(1, 30,'2014-05-31');
+	}
+    public  function checkSmogiExpiryAction()
+    {
+        $customerid = $this->getRequest()->getParam('customerid');
+        $balanceon = strtotime($this->getRequest()->getParam('date'));
+        $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+        //$readresult=$read->query("SELECT SUM(points_current) AS points, date_end FROM rewardpoints_account WHERE customer_id = ".$customerid." AND points_current > 0 GROUP BY date_end ORDER BY date_end");
+        $readresult=$read->query("SELECT * FROM  (SELECT SUM(points_current) AS points, date_end FROM rewardpoints_account WHERE customer_id = ".$customerid." AND points_current > 0 AND order_id IN (-3,-2,-1,-20) GROUP BY date_end UNION SELECT SUM(points_current) AS points, date_end FROM rewardpoints_account, sales_flat_order WHERE sales_flat_order.increment_id = rewardpoints_account.order_id AND sales_flat_order.state IN ('pending', 'processing', 'complete') AND order_id NOT IN (-3,-2,-1,-20) AND rewardpoints_account.customer_id = ".$customerid." AND points_current > 0 GROUP BY date_end) AS temp ORDER BY date_end");
+        $arrEarnedPoints = array();
+        while($row = $readresult->fetch())
+        {
+            array_push($arrEarnedPoints, array("points" => $row['points'], "expiry" => $row['date_end'], "balance" => $row['points']));
+        }
+        $arrSpentPoints = array();
+        $readresult=$read->query("SELECT SUM(points_spent) AS points, date_start FROM rewardpoints_account WHERE customer_id = ".$customerid." AND points_spent > 0 GROUP BY date_start ORDER BY date_start");
+        while($row = $readresult->fetch())
+        {
+            array_push($arrSpentPoints, array("points" => $row['points'], "usedon" => $row['date_start']));
+        }
+/*
+        foreach($arrEarnedPoints as $key => $value)
+        {
+            echo $arrEarnedPoints[$key]['balance'];
+            $arrEarnedPoints[$key]['balance'] = 0;
+            //$temp[$key]['balance'] = 0;
+        }*/
+        echo "<pre>";
+        foreach($arrSpentPoints as $spentinfo)
+        {
+            echo "processing . . <br/>";
+            print_r($spentinfo);
+            $temp = $spentinfo['points'];
+            foreach($arrEarnedPoints as $key => $value)
+            {
+
+                if((strtotime($arrEarnedPoints[$key]['expiry']) > strtotime($spentinfo['usedon'])) && ($arrEarnedPoints[$key]['balance'] > 0))
+                {
+                    if($arrEarnedPoints[$key]['balance'] >= $temp)
+                    {
+                        echo "temp = ".$temp."<br/>";
+                        $arrEarnedPoints[$key]['balance'] -= $temp;
+                        $temp = 0;
+                    }
+                    else
+                    {
+                        $temp -= $arrEarnedPoints[$key]['balance'];
+                        $arrEarnedPoints[$key]['balance'] = 0;
+                    }
+                    print_r($arrEarnedPoints[$key]);
+                    if($temp <= 0)
+                        break;
+                }
+            }
+            /*
+            foreach($arrEarnedPoints as $earninfo)
+            {
+                $temp = $spentinfo['points'];
+                if((strtotime($earninfo['expiry']) > strtotime($spentinfo['usedon'])) && ($earninfo['balance'] > 0))
+                {
+                    if($earninfo['balance'] > $temp)
+                    {
+                        $earninfo['balance'] -= $temp;
+                        $temp = 0;
+                    }
+                    else
+                    {
+                        $temp -= $earninfo['balance'];
+                        $earninfo['balance'] = 0;
+                    }
+                    if($temp <= 0)
+                        break;
+                }
+            }
+            */
+        }
+        $balance = 0;
+        foreach($arrEarnedPoints as $earninfo)
+        {
+            if(strtotime($earninfo['expiry']) > $balanceon)
+            {
+                //echo "adding to balance = ".$earninfo['expiry'].$earninfo['balance'];
+               $balance += $earninfo['balance'];
+            }
+        }
+        echo "balance = ".$balance;
+        print_r($arrEarnedPoints);
+        print_r($arrSpentPoints);
+        echo "</pre>";
+        /*
+        $points_current = array();
+        $points_spent = array();
+        $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+        $readresult=$read->query("SELECT * FROM rewardpoints_account WHERE customer_id = 30");
+        $i=0;$j=0;
+        while ($row = $readresult->fetch() )
+        {
+            //echo "<pre>";print_r($row);die;
+            if($row['points_current']>0)
+            {
+                $points_current[$i]['points'] = $row['points_current'];
+                $points_current[$i]['date_start'] = $row['date_start'];
+                $points_current[$i]['date_end'] = $row['date_end'];
+                $i++;
+            }
+            if($row['points_spent']>0)
+            {
+                $points_spent[$j]['points'] = $row['points_spent'];
+                $points_spent[$j]['date_start'] = $row['date_start'];
+                $j++;
+            }
+
+        }
+        //echo "<pre>";print_r($points_current);
+        //print_r($points_spent);
+
+        foreach($points_spent as $spent)
+        {
+
+        }
+*/
+
+
+
+    }
+    public  function smogiCurrentBalanceAction()
+    {
+        $customerid = $this->getRequest()->getParam('customerid');
+        $balanceon = strtotime($this->getRequest()->getParam('date'));
+        $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+        $readresult=$read->query("SELECT * FROM  (SELECT SUM(points_current) AS points, date_end FROM rewardpoints_account WHERE customer_id = ".$customerid." AND points_current > 0 AND order_id IN (-3,-2,-1,-20) GROUP BY date_end UNION SELECT SUM(points_current) AS points, date_end FROM rewardpoints_account, sales_flat_order WHERE sales_flat_order.increment_id = rewardpoints_account.order_id AND sales_flat_order.state IN ('pending', 'processing', 'complete') AND order_id NOT IN (-3,-2,-1,-20) AND rewardpoints_account.customer_id = ".$customerid." AND points_current > 0 GROUP BY date_end) AS temp ORDER BY date_end");
+        $arrEarnedPoints = array();
+        while($row = $readresult->fetch())
+        {
+            array_push($arrEarnedPoints, array("points" => $row['points'], "expiry" => $row['date_end'], "balance" => $row['points']));
+        }
+        $arrSpentPoints = array();
+        $readresult=$read->query("SELECT SUM(points_spent) AS points, date_start FROM rewardpoints_account WHERE customer_id = ".$customerid." AND points_spent > 0 GROUP BY date_start ORDER BY date_start");
+        while($row = $readresult->fetch())
+        {
+            array_push($arrSpentPoints, array("points" => $row['points'], "usedon" => $row['date_start']));
+        }
+
+
+        foreach($arrSpentPoints as $spentinfo)
+        {
+            $temp = $spentinfo['points'];
+            foreach($arrEarnedPoints as $key => $value)
+            {
+
+                if((strtotime($arrEarnedPoints[$key]['expiry']) > strtotime($spentinfo['usedon'])) && ($arrEarnedPoints[$key]['balance'] > 0))
+                {
+                    if($arrEarnedPoints[$key]['balance'] >= $temp)
+                    {
+
+                        $arrEarnedPoints[$key]['balance'] -= $temp;
+                        $temp = 0;
+                    }
+                    else
+                    {
+                        $temp -= $arrEarnedPoints[$key]['balance'];
+                        $arrEarnedPoints[$key]['balance'] = 0;
+                    }
+
+                    if($temp <= 0)
+                        break;
+                }
+            }
+
+        }
+        $balance = 0;
+        foreach($arrEarnedPoints as $earninfo)
+        {
+            if(strtotime($earninfo['expiry']) > $balanceon)
+            {
+                $balance += $earninfo['balance'];
+            }
+        }
+        echo "balance = ".$balance;
+
+    }
+    // set date limit in sql query
+    public  function smogiCurrentBalance2Action()
+    {
+        $customerid = $this->getRequest()->getParam('customerid');
+        $date = $this->getRequest()->getParam('date');
+        $balanceon = strtotime($this->getRequest()->getParam('date'));
+        $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+        //$readresult=$read->query("SELECT * FROM  (SELECT SUM(points_current) AS points, date_end FROM rewardpoints_account WHERE customer_id = ".$customerid." AND points_current > 0 AND order_id IN (-3,-2,-1,-20) GROUP BY date_end UNION SELECT SUM(points_current) AS points, date_end FROM rewardpoints_account, sales_flat_order WHERE sales_flat_order.increment_id = rewardpoints_account.order_id AND sales_flat_order.state IN ('pending', 'processing', 'complete') AND order_id NOT IN (-3,-2,-1,-20) AND rewardpoints_account.customer_id = ".$customerid." AND points_current > 0 GROUP BY date_end) AS temp ORDER BY date_end");
+        $readresult=$read->query("SELECT * FROM  (SELECT SUM(points_current) AS points, date_end, date_start FROM rewardpoints_account WHERE customer_id = ".$customerid." AND points_current > 0 AND order_id IN (-3,-2,-1,-20) GROUP BY date_end UNION SELECT SUM(points_current) AS points, date_end, date_start FROM rewardpoints_account, sales_flat_order  WHERE sales_flat_order.increment_id = rewardpoints_account.order_id AND sales_flat_order.state IN ('pending', 'processing', 'complete') AND order_id NOT IN (-3,-2,-1,-20) AND rewardpoints_account.customer_id = ".$customerid." AND points_current > 0 GROUP BY date_end)   AS temp WHERE temp.date_start < '".$date."' ORDER BY date_end");
+        $arrEarnedPoints = array();
+        while($row = $readresult->fetch())
+        {
+            array_push($arrEarnedPoints, array("points" => $row['points'], "expiry" => $row['date_end'], "balance" => $row['points']));
+        }
+        $arrSpentPoints = array();
+        $readresult=$read->query("SELECT SUM(points_spent) AS points, date_start FROM rewardpoints_account WHERE customer_id = ".$customerid." AND points_spent > 0 AND date_start < '".$date."' GROUP BY date_start ORDER BY date_start;");
+
+        while($row = $readresult->fetch())
+        {
+            array_push($arrSpentPoints, array("points" => $row['points'], "usedon" => $row['date_start']));
+        }
+
+
+        foreach($arrSpentPoints as $spentinfo)
+        {
+            $temp = $spentinfo['points'];
+            foreach($arrEarnedPoints as $key => $value)
+            {
+
+                if((strtotime($arrEarnedPoints[$key]['expiry']) > strtotime($spentinfo['usedon'])) && ($arrEarnedPoints[$key]['balance'] > 0))
+                {
+                    if($arrEarnedPoints[$key]['balance'] >= $temp)
+                    {
+
+                        $arrEarnedPoints[$key]['balance'] -= $temp;
+                        $temp = 0;
+                    }
+                    else
+                    {
+                        $temp -= $arrEarnedPoints[$key]['balance'];
+                        $arrEarnedPoints[$key]['balance'] = 0;
+                    }
+
+                    if($temp <= 0)
+                        break;
+                }
+            }
+
+        }
+        $balance = 0;
+        foreach($arrEarnedPoints as $earninfo)
+        {
+            if(strtotime($earninfo['expiry']) > $balanceon)
+            {
+                $balance += $earninfo['balance'];
+            }
+        }
+        echo "balance = ".$balance;
+
+    }
+    //set date limit in sql query
+    public  function smogiExpiryPoints2Action()
+    {
+        $customerid = $this->getRequest()->getParam('customerid');
+        $balanceon = strtotime($this->getRequest()->getParam('date'));
+        $date = $this->getRequest()->getParam('date');
+        $daysAfter = $this->getRequest()->getParam('days');
+        $newDate = date('Y-m-d',strtotime($this->getRequest()->getParam('date') . "+".$daysAfter." days"));
+        $balanceAfterDays = strtotime(date('Y-m-d',strtotime($this->getRequest()->getParam('date') . "+".$daysAfter." days")));
+
+        $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+        $readresult=$read->query("SELECT * FROM  (SELECT SUM(points_current) AS points, date_end, date_start FROM rewardpoints_account WHERE customer_id = ".$customerid." AND points_current > 0 AND order_id IN (-3,-2,-1,-20) GROUP BY date_end UNION SELECT SUM(points_current) AS points, date_end, date_start FROM rewardpoints_account, sales_flat_order  WHERE sales_flat_order.increment_id = rewardpoints_account.order_id AND sales_flat_order.state IN ('pending', 'processing', 'complete') AND order_id NOT IN (-3,-2,-1,-20) AND rewardpoints_account.customer_id = ".$customerid." AND points_current > 0 GROUP BY date_end)   AS temp WHERE temp.date_start < '".$date."' ORDER BY date_end");
+        $arrEarnedPoints = array();
+        while($row = $readresult->fetch())
+        {
+            array_push($arrEarnedPoints, array("points" => $row['points'], "expiry" => $row['date_end'], "balance" => $row['points']));
+        }
+        $arrSpentPoints = array();
+        $readresult=$read->query("SELECT SUM(points_spent) AS points, date_start FROM rewardpoints_account WHERE customer_id = ".$customerid." AND points_spent > 0 AND date_start < '".$date."' GROUP BY date_start ORDER BY date_start;");
+        while($row = $readresult->fetch())
+        {
+            array_push($arrSpentPoints, array("points" => $row['points'], "usedon" => $row['date_start']));
+        }
+
+
+        foreach($arrSpentPoints as $spentinfo)
+        {
+            $temp = $spentinfo['points'];
+            foreach($arrEarnedPoints as $key => $value)
+            {
+
+                if((strtotime($arrEarnedPoints[$key]['expiry']) > strtotime($spentinfo['usedon'])) && ($arrEarnedPoints[$key]['balance'] > 0))
+                {
+                    if($arrEarnedPoints[$key]['balance'] >= $temp)
+                    {
+
+                        $arrEarnedPoints[$key]['balance'] -= $temp;
+                        $temp = 0;
+                    }
+                    else
+                    {
+                        $temp -= $arrEarnedPoints[$key]['balance'];
+                        $arrEarnedPoints[$key]['balance'] = 0;
+                    }
+
+                    if($temp <= 0)
+                        break;
+                }
+            }
+
+        }
+        $balance = 0;
+        $balance2 = 0;
+
+        foreach($arrEarnedPoints as $earninfo)
+        {
+            if(strtotime($earninfo['expiry']) > $balanceon)
+            {
+                $balance += $earninfo['balance'];
+            }
+        }
+        foreach($arrEarnedPoints as $earninfo)
+        {
+            if(strtotime($earninfo['expiry']) > $balanceAfterDays)
+            {
+                $balance2 += $earninfo['balance'];
+            }
+        }
+        $bucksExpire = $balance - $balance2;
+        echo "Balance = ".$balance."<br/>";
+        echo "Balance after ".$daysAfter." days = ".$balance2."<br/>";
+        echo "Expiry On ".$newDate." = ".$bucksExpire."<br/>";
+    }
+
+
+    public  function smogiExpiryPointsAction()
+    {
+        $customerid = $this->getRequest()->getParam('customerid');
+        $balanceon = strtotime($this->getRequest()->getParam('date'));
+        $daysAfter = $this->getRequest()->getParam('days');
+        $newDate = date('Y-m-d',strtotime($this->getRequest()->getParam('date') . "+".$daysAfter." days"));
+        $balanceAfterDays = strtotime(date('Y-m-d',strtotime($this->getRequest()->getParam('date') . "+".$daysAfter." days")));
+
+        $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+        $readresult=$read->query("SELECT * FROM  (SELECT SUM(points_current) AS points, date_end FROM rewardpoints_account WHERE customer_id = ".$customerid." AND points_current > 0 AND order_id IN (-3,-2,-1,-20) GROUP BY date_end UNION SELECT SUM(points_current) AS points, date_end FROM rewardpoints_account, sales_flat_order WHERE sales_flat_order.increment_id = rewardpoints_account.order_id AND sales_flat_order.state IN ('pending', 'processing', 'complete') AND order_id NOT IN (-3,-2,-1,-20) AND rewardpoints_account.customer_id = ".$customerid." AND points_current > 0 GROUP BY date_end) AS temp ORDER BY date_end");
+        $arrEarnedPoints = array();
+        while($row = $readresult->fetch())
+        {
+            array_push($arrEarnedPoints, array("points" => $row['points'], "expiry" => $row['date_end'], "balance" => $row['points']));
+        }
+        $arrSpentPoints = array();
+        $readresult=$read->query("SELECT SUM(points_spent) AS points, date_start FROM rewardpoints_account WHERE customer_id = ".$customerid." AND points_spent > 0 GROUP BY date_start ORDER BY date_start");
+        while($row = $readresult->fetch())
+        {
+            array_push($arrSpentPoints, array("points" => $row['points'], "usedon" => $row['date_start']));
+        }
+
+
+        foreach($arrSpentPoints as $spentinfo)
+        {
+            $temp = $spentinfo['points'];
+            foreach($arrEarnedPoints as $key => $value)
+            {
+
+                if((strtotime($arrEarnedPoints[$key]['expiry']) > strtotime($spentinfo['usedon'])) && ($arrEarnedPoints[$key]['balance'] > 0))
+                {
+                    if($arrEarnedPoints[$key]['balance'] >= $temp)
+                    {
+
+                        $arrEarnedPoints[$key]['balance'] -= $temp;
+                        $temp = 0;
+                    }
+                    else
+                    {
+                        $temp -= $arrEarnedPoints[$key]['balance'];
+                        $arrEarnedPoints[$key]['balance'] = 0;
+                    }
+
+                    if($temp <= 0)
+                        break;
+                }
+            }
+
+        }
+        $balance = 0;
+        $balance2 = 0;
+
+        foreach($arrEarnedPoints as $earninfo)
+        {
+            if(strtotime($earninfo['expiry']) > $balanceon)
+            {
+                $balance += $earninfo['balance'];
+            }
+        }
+        foreach($arrEarnedPoints as $earninfo)
+        {
+            if(strtotime($earninfo['expiry']) > $balanceAfterDays)
+            {
+                $balance2 += $earninfo['balance'];
+            }
+        }
+        $bucksExpire = $balance - $balance2;
+        echo "Balance = ".$balance."<br/>";
+        echo "Balance after ".$daysAfter." days = ".$balance2."<br/>";
+        echo "Expiry On ".$newDate." = ".$bucksExpire."<br/>";
+    }
+    public function getPointsCurrentAction(){
+
+        $customerid = $this->getRequest()->getParam('customerid');
+        //$balanceon = strtotime($this->getRequest()->getParam('date'));
+        $date = null;
+        if($date == null)
+            $date = date('Y-m-d');
+        //$customerid = $this->getRequest()->getParam('customerid');
+        $balanceon = strtotime($date);
+        $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+        $readresult=$read->query("SELECT * FROM  (SELECT SUM(points_current) AS points, date_end FROM rewardpoints_account WHERE customer_id = ".$customerid." AND points_current > 0 AND order_id IN (-3,-2,-1,-20) GROUP BY date_end UNION SELECT SUM(points_current) AS points, date_end FROM rewardpoints_account, sales_flat_order WHERE sales_flat_order.increment_id = rewardpoints_account.order_id AND sales_flat_order.state IN ('pending', 'processing', 'complete') AND order_id NOT IN (-3,-2,-1,-20) AND rewardpoints_account.customer_id = ".$customerid." AND points_current > 0 GROUP BY date_end) AS temp ORDER BY date_end");
+        $arrEarnedPoints = array();
+        while($row = $readresult->fetch())
+        {
+            array_push($arrEarnedPoints, array("points" => $row['points'], "expiry" => $row['date_end'], "balance" => $row['points']));
+        }
+        $arrSpentPoints = array();
+        //$readresult=$read->query("SELECT SUM(points_spent) AS points, date_start FROM rewardpoints_account WHERE customer_id = ".$customerid." AND points_spent > 0 GROUP BY date_start ORDER BY date_start");
+        $readresult=$read->query("SELECT * FROM (SELECT SUM(points_spent) AS points, date_start FROM rewardpoints_account WHERE customer_id = ".$customerid." AND points_spent > 0 AND order_id IN (-3,-2,-1,-20) GROUP BY date_start UNION SELECT SUM(points_spent) AS points, date_start FROM rewardpoints_account, sales_flat_order WHERE sales_flat_order.increment_id = rewardpoints_account.order_id AND sales_flat_order.state IN ('pending', 'processing', 'complete')  AND order_id NOT IN (-3,-2,-1,-20) AND rewardpoints_account.customer_id = ".$customerid." AND points_spent > 0 GROUP BY date_start) AS temp ORDER BY date_start ");
+        while($row = $readresult->fetch())
+        {
+            array_push($arrSpentPoints, array("points" => $row['points'], "usedon" => $row['date_start']));
+        }
+
+        echo "<pre>";
+        foreach($arrSpentPoints as $spentinfo)
+        {
+            echo "processing . . <br/>";
+            print_r($spentinfo);
+            $temp = $spentinfo['points'];
+            foreach($arrEarnedPoints as $key => $value)
+            {
+
+                if((strtotime($arrEarnedPoints[$key]['expiry']) > strtotime($spentinfo['usedon'])) && ($arrEarnedPoints[$key]['balance'] > 0))
+                {
+                    if($arrEarnedPoints[$key]['balance'] >= $temp)
+                    {
+                        echo "temp = ".$temp."<br/>";
+                        $arrEarnedPoints[$key]['balance'] -= $temp;
+                        $temp = 0;
+                    }
+                    else
+                    {
+                        $temp -= $arrEarnedPoints[$key]['balance'];
+                        $arrEarnedPoints[$key]['balance'] = 0;
+                    }
+                    print_r($arrEarnedPoints[$key]);
+                    if($temp <= 0)
+                        break;
+                }
+            }
+        }
+
+        /*
+        foreach($arrSpentPoints as $spentinfo)
+        {
+            $temp = $spentinfo['points'];
+            foreach($arrEarnedPoints as $key => $value)
+            {
+
+                if((strtotime($arrEarnedPoints[$key]['expiry']) > strtotime($spentinfo['usedon'])) && ($arrEarnedPoints[$key]['balance'] > 0))
+                {
+                    if($arrEarnedPoints[$key]['balance'] >= $temp)
+                    {
+
+                        $arrEarnedPoints[$key]['balance'] -= $temp;
+                        $temp = 0;
+                    }
+                    else
+                    {
+                        $temp -= $arrEarnedPoints[$key]['balance'];
+                        $arrEarnedPoints[$key]['balance'] = 0;
+                    }
+
+                    if($temp <= 0)
+                        break;
+                }
+            }
+
+        }
+        */
+        $balance = 0;
+        foreach($arrEarnedPoints as $earninfo)
+        {
+            if(strtotime($earninfo['expiry']) > $balanceon)
+            {
+                $balance += $earninfo['balance'];
+            }
+        }
+
+        print_r($arrEarnedPoints);
+        print_r($arrSpentPoints);
+        echo "</pre>";
+
+
+        echo "balance = ".$balance;
+        return $balance;
+        $total = $this->getPointsReceived($customer_id, $store_id) - $this->getPointsSpent($customer_id, $store_id);
+        if ($total > 0){
+            return $total;
+        } else {
+            return 0;
+        }
+    }
+
+
+    public function getPointsCurrent_newAction($date = null, $arraymode = false){
+        $customerid = $this->getRequest()->getParam('customerid');
+        if(!$this->getRequest()->getParam('date'))
+            $date = null;
+        else
+            $date = $this->getRequest()->getParam('date');
+        echo "<pre>";
+        print_r(Mage::getModel('rewardpoints/stats')->getPointsCurrent($customerid, 1, $date, true));
+     //   var_dump(Mage::getModel('rewardpoints/stats')->getPointsCurrent($customerid, 1, $date, true));
+    }
+
+    public function getPointslogAction()
+    {
+        $customerid = $this->getRequest()->getParam('customerid');
+        $history = Mage::getModel('rewardpoints/stats')->getPointsCurrent_excludelast($customerid,1,null,true);
+        echo "<pre>";
+        print_r($history);
+        echo "</pre>";
+    }
+    
+    public function changeserverdateAction()
+    {
+        $date = $this->getRequest()->getParam('date');
+        echo "Current date = ".date('Y-m-d')."<br/>";
+        if(!checkdate(date('m',strtotime($date)),date('d',strtotime($date)),date('Y',strtotime($date))))
+        {
+            echo "Invalid date"."<br/>";
+            return;
+        }
+        echo shell_exec('sudo date -s "'.date('d M Y',strtotime($date)).' '.date('H:i:s').'"');
+        echo "New date = ".date('Y-m-d');
+    }
+    
+    public function comparenewoldsmogiAction()
+    {
+        set_time_limit(0);
+        $resource = Mage::getSingleton('core/resource');
+        $writeConnection = $resource->getConnection('core_write');
+        $readConnection = $resource->getConnection('core_write');
+        $temp = $readConnection->query("Select entity_id from customer_entity where is_active=1");
+        while($row = $temp->fetch())
+        {
+            $writeConnection->query("Insert into new_old_bucks_comparision values (".$row['entity_id'].", ".Mage::getModel('rewardpoints/stats')->getPointsCurrentdefault($row['entity_id'],1).", ".Mage::getModel('rewardpoints/stats')->getPointsCurrent($row['entity_id'],1).")");
+        }
+    }
+>>>>>>> staging
 }
 ?>

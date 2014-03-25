@@ -51,6 +51,9 @@
                         <stats>
                             <table>rewardpoints_account</table>
                         </stats>
+						<statsnew>
+                            <table>rewardpoints_account</table>
+                        </statsnew>
                         <rules>
                             <table>rewardpoints_rule</table>
                         </rules>
