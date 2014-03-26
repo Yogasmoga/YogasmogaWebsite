@@ -41,6 +41,53 @@
 
 </script>
 
+<div id="smogi-notify" style="display:none;font-size: 17px; color:#000000;height:210px;border: 3px solid #F5A13B;"><img style="height: :50px;width:165px;margin-top:22px;" alt ="Yogasmoga" src="<?php echo $this->getSkinUrl().'images/logo_smogi.png';?>" /><p style="width:450px;margin-top:30px;margin-left:10px;margin-right: 10px;"><?php echo '$'.$points_currently_used ;?> SMOGI Bucks have been applied towards your order.</p></div>
+<style type="text/css">
+    .fancybox-skin{
+        border-radius: 3px;
+    }
+    .fancybox-wrap{
+        border-radius: 3px;
+    }
+    .fancybox-close{
+        width: 40px;
+        height: 38px;
+        background: url("<?php echo $this->getSkinUrl().'images/cross_red1.png';?>");
+        background-repeat: no-repeat;
+    }
+</style>
+<script type="text/javascript">
+
+    jQuery(document).ready(function($){
+
+
+        setTimeout(function(){
+            $("#smogi-notify").fancybox({
+                'width'  : 600,
+                'height' : 600,
+                'transitionIn'	:	'elastic',
+                'transitionOut'	:	'elastic',
+                'speedIn'		:	600,
+                'speedOut'		:	200,
+                'overlayShow'	:	false
+
+            });
+
+
+            //$(".fancybox-wrap").css("width","431px");
+            $("#smogi-notify").css("font-size","17px");
+            $(".fancybox-item ").css("width","40px");
+            $(".fancybox-item").css("height","38px");
+
+            $("#smogi-notify").fancybox().trigger('click');
+        },500);
+
+
+
+    });
+
+</script>
+
 <?php
 
 
