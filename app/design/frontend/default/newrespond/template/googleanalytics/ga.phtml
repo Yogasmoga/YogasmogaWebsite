@@ -46,6 +46,7 @@ if($serverType == 'production')
                 _orderRevenueCheckout = '<?php echo number_format((float)$transactionTotal, 2, '.', '');?>';
 
             </script>
+            <?php /* BELOW IS OLD GTM CODE
             <script>
                 dataLayer = [{
                     'transactionId': <?php echo $lastordernum; ?>,  // unique transaction identifier goes here
@@ -61,9 +62,9 @@ if($serverType == 'production')
                     '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
                 })(window,document,'script','dataLayer','GTM-MG2242');</script>
             <!-- End Google Tag Manager ++++ -->
-
-        <?php   } ?>
-
+            */
+          } ?>
+        <?php /*
         <!-- Google Tag Manager ****** -->
         <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MG2242"
                           height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -73,7 +74,16 @@ if($serverType == 'production')
                 '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-MG2242');</script>
         <!-- End Google Tag Manager **** -->
-
+        */ ?>
+        <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TKNBJW"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TKNBJW');</script>
+<!-- End Google Tag Manager -->
 <script type="text/javascript">
 //<![CDATA[
     var _gaq = _gaq || [];

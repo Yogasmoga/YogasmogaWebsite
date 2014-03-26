@@ -1,11 +1,11 @@
-<?php 
+<?php
 class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller_Front_Action
 {
     public function testAction()
     {
         echo "Output from Product Module";
     }
-    
+
     public function capitalizeAction()
     {
         $write = Mage::getSingleton('core/resource')->getConnection('core_write');
@@ -14,7 +14,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
             $write->query("Update customer_address_entity_varchar set value='".str_replace("'","''",ucwords($row['value']))."' where value_id=".$row['value_id']);
         }
     }
-    
+
     public function inventoryAction()
     {
         $_product = Mage::getModel('catalog/product')->load($this->getRequest()->getParam('id'));
@@ -45,7 +45,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         }
         echo json_encode($inv);
     }
-    
+
     public function inventoryreportAction()
     {
         if($this->getRequest()->getParam('pass'))
@@ -101,20 +101,20 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
 //                echo 'test';
 //                echo $output;
                 //$fname = mktime();
-                
+
                 if($this->getRequest()->getParam('recurring') == "true")
                 {
                     $fname = date("M_j_Y");
                     $fname = "inv_".$fname;
-    
+
                     $baseDir = Mage::getBaseDir();
                     $varDir = $baseDir.DS.'recurringreports'.DS.'inventory'.DS.$fname.'.xls';
-    
+
                     unlink($varDir);
                     file_put_contents('recurringreports/inventory/'.$fname.'.xls',$output);
-                    return;    
+                    return;
                 }
-                
+
                 $fname = mktime();
                 file_put_contents('tempreports/'.$fname.'.xls',$output);
 
@@ -122,7 +122,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
             }
         }
     }
-    
+
     public function getinventoryhtml($product, &$output)
     {
         //echo $product->getId() . "\n\n";
@@ -162,7 +162,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
 //                                $productcolorinfo[$temp]["sizes"] = array($temp1);
 //                            }
             //echo $temp."   ".$temp1."<br/>";
-            
+
         }
         //echo "<pre>";
 //                        print_r($productcolorinfo);
@@ -177,8 +177,8 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
             if($sizeArray[$j] != "")
                 $output .= "<td style='background-color:#003366;'>Size ".$sizeArray[$j]."</td>";
             else
-                $output .= "<td style='background-color:#003366;'>Qty</td>";            
-        }   
+                $output .= "<td style='background-color:#003366;'>Qty</td>";
+        }
         $output .= "</tr>";
         foreach($productcolorinfo as $key=>$val)
         {
@@ -203,14 +203,14 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                         if($val[$sizeArray[$j]] <= 0)
                             $output .= "<td style='color:#fff;background-color:red;'>".number_format($val[$sizeArray[$j]])."</td>";
                         else
-                            $output .= "<td>".number_format($val[$sizeArray[$j]])."</td>";   
+                            $output .= "<td>".number_format($val[$sizeArray[$j]])."</td>";
                     }
                     $sizeTotal[$sizeArray[$j]] += $val[$sizeArray[$j]];
                 }
                 else
                     $output .= "<td style='background-color:black;color:#fff;'>0</td>";
-            }    
-            $output .= "</tr>";    
+            }
+            $output .= "</tr>";
         }
         $output .= "<tr style='font-weight:bold;'>";
         $output .= "<td>&nbsp;</td><td>&nbsp;</td>";
@@ -225,7 +225,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         $output .= "<tr><td colspan='20'></td></tr>";
 //                        $output .= "<tr><td colspan='20'></td></tr>";
     }
-    
+
     public function goysbalanceAction()
     {
         if($this->getRequest()->getParam('pass'))
@@ -252,7 +252,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                     }
                     if(strlen($cardslist) > 0)
                         $cardslist = substr($cardslist, 0, strlen($cardslist) - 1);
-                    
+
                     $outputtemp = "<tr><td>".$row['Id']."</td>";
                     $outputtemp .= "<td>".$row['Email']."</td>";
                     $outputtemp .= "<td>".$row['Name']."</td>";
@@ -261,15 +261,15 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                     $outputtemp .= "</tr>";
                     $output .= $outputtemp;
                 }
-                $output .= "</tbody></table>";                
+                $output .= "</tbody></table>";
                 //echo $output;
                 $fname = mktime();
                 file_put_contents('tempreports/'.$fname.'.xls',$output);
-                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");       
+                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");
             }
         }
     }
-    
+
     public function referralreportAction()
     {
         if($this->getRequest()->getParam('pass'))
@@ -302,15 +302,15 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     $outputtemp .= "</tr>";
                     $output .= $outputtemp;
                 }
-                $output .= "</tbody></table>";                
+                $output .= "</tbody></table>";
                 //echo $output;
                 $fname = "referral_".mktime();
                 file_put_contents('tempreports/'.$fname.'.xls',$output);
-                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");       
+                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");
             }
         }
     }
-            
+
     public function orderreportAction()
     {
         if($this->getRequest()->getParam('pass'))
@@ -327,7 +327,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     return;
                 }
                 $startdate = $datearr[2]."-".$datearr[0]."-".$datearr[1];
-                
+
                 $enddate = $this->getRequest()->getParam('enddate');
                 $datearr = split("-", $enddate);
                 //print_r($datearr);
@@ -377,11 +377,11 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $write11 = Mage::getSingleton('core/resource')->getConnection('core_read');
                         $readresult11 = $write->query("Select email from customer_entity where entity_id=".$row['customer_id']);
                         $row11 = $readresult11->fetch();
-                        $emailtotest = $row11['email'];        
+                        $emailtotest = $row11['email'];
                     }
                     else
                     {
-                        $emailtotest = $row['email']; 
+                        $emailtotest = $row['email'];
                     }
                     if(stripos($emailtotest,"mobikasa.com") !== false || $emailtotest == "mangat.c@gmail.com" || $emailtotest == "oksana.gervas@yogasmoga.com")
                         $outputtemp = "<tr style='background-color:#CCCCCC'>";
@@ -403,12 +403,12 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     $outputtemp .= "<td>".$row['region']."</td>";
                     $outputtemp .= "<td>".$row['city']."</td>";
                     $outputtemp .= "<td style='text-align:right;'>".$row['postcode']."</td>";
-                    
+
                     $write1 = Mage::getSingleton('core/resource')->getConnection('core_read');
                     //$result = $write1->query("SELECT item_id, product_id AS 'id', sku, qty_ordered AS 'ordered', qty_refunded AS 'refunded', qty_backordered AS 'backordered', qty_shipped AS 'shipped', product_id AS 'productid', sfoi.name AS 'name', sfoi.base_row_total, sfoi.discount_amount,(sfoi.base_row_total_incl_tax - sfoi.base_discount_amount) AS 'net_amount' FROM sales_flat_order_item sfoi WHERE product_type <> 'configurable' AND order_id=".$row['entity_id']);
                     $result = $write1->query("SELECT item_id, product_id AS 'id', sku, qty_ordered AS 'ordered', qty_refunded AS 'refunded', qty_backordered AS 'backordered', qty_shipped AS 'shipped', product_id AS 'productid', sfoi.name AS 'name', sfoi.base_row_total, sfoi.discount_amount, sfoi.base_tax_amount FROM sales_flat_order_item sfoi WHERE product_type <> 'configurable' AND order_id=".$row['entity_id']);
                     while ($row1 = $result->fetch() ) {
-                        
+
                         $productCats = array();
                         $taxPaid = $row1['base_tax_amount'];
                         $outputtemp1 = $outputtemp;
@@ -418,12 +418,12 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $netAmount = round(($rowTotal - $rowDiscount + $taxPaid), 2);
                         $_product = Mage::getModel('catalog/product')->load($row1['productid']);
                         if($_product->getTypeId() == "simple"){
-                            $write2 = Mage::getSingleton('core/resource')->getConnection('core_read');        
+                            $write2 = Mage::getSingleton('core/resource')->getConnection('core_read');
                             $result2 = $write2->query("SELECT name, product_id, base_tax_amount,row_total,discount_amount,(base_row_total_incl_tax-base_discount_amount) AS 'net_amount' FROM sales_flat_order_item sfoi WHERE product_type = 'configurable' AND item_id=".($row1['item_id'] - 1));
                             $row2 = $result2->fetch();
                             $name = $row2['name'];
                             $product = Mage::getModel('catalog/product')->load($row2['product_id']);
-                            $productCats = $product->getCategoryIds();                         
+                            $productCats = $product->getCategoryIds();
                             $taxPaid = $row2['base_tax_amount'];
                             $rowTotal = $row2['row_total'];
                             $rowDiscount = $row2['discount_amount'];
@@ -452,7 +452,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $outputtemp1 .= "<td>".$color."</td>";
                         $outputtemp1 .= "<td>".$_product->getAttributeText('size')."</td>";
                         if(array_search(8, $productCats) !== false){
-                            $outputtemp1 .= "<td>Yes</td>";    
+                            $outputtemp1 .= "<td>Yes</td>";
                         }
                         else
                         {
@@ -466,11 +466,11 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $outputtemp1 .= $orderTotal;
                         $outputtemp1 .= "<td>".$paymentMethod[$payment]."</td>";
                         $outputtemp1 .= "</tr>";
-                        $output .= $outputtemp1;                                
+                        $output .= $outputtemp1;
                     }
 
                 }
-          //      echo $output;
+                //      echo $output;
                 $fname = mktime();
                 file_put_contents('tempreports/'.$fname.'.xls',$output);
                 Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");
@@ -479,16 +479,16 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 echo "Invalid Password";
         }
     }
-    
+
     public function orderdevicereportAction()
     {
         if($this->getRequest()->getParam('pass'))
         {
             if($this->getRequest()->getParam('pass') == "MageHACKER")
             {
-			
-			/* Order date code */
-				$startdate = $this->getRequest()->getParam('startdate');
+
+                /* Order date code */
+                $startdate = $this->getRequest()->getParam('startdate');
                 $datearr = split("-", $startdate);
                 //print_r($datearr);
                 if(!checkdate($datearr[0], $datearr[1], $datearr[2]))
@@ -497,7 +497,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     return;
                 }
                 $startdate = $datearr[2]."-".$datearr[0]."-".$datearr[1];
-                
+
                 $enddate = $this->getRequest()->getParam('enddate');
                 $datearr = split("-", $enddate);
                 //print_r($datearr);
@@ -507,27 +507,27 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     return;
                 }
                 $enddate = $datearr[2]."-".$datearr[0]."-".$datearr[1]." 23:59:59";
-			
-			/* Order date code */
-                
-				$output = "<table border='1'><thead><tr>
+
+                /* Order date code */
+
+                $output = "<table border='1'><thead><tr>
                 <th>Order Date</th>
                 <th>Order No.</th>
                 <th>Device Type</th>
                 </tr><thead><tbody>";
                 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
-               // $readresult=$write->query("SELECT order_num AS 'orderno', is_mobile AS 'ismobile' FROM order_by_device");
+                // $readresult=$write->query("SELECT order_num AS 'orderno', is_mobile AS 'ismobile' FROM order_by_device");
                 $readresult=$write->query("SELECT order_num AS 'orderno', is_mobile AS 'ismobile', DATE_FORMAT(sales_flat_order.created_at, '%m-%d-%Y') AS 'orderdate' FROM order_by_device, sales_flat_order where order_by_device.order_num = sales_flat_order.increment_id and sales_flat_order.created_at >= '".$startdate."' and sales_flat_order.created_at <= '".$enddate."' ORDER BY sales_flat_order.created_at desc");
-				while ($row = $readresult->fetch() ) {
-					
-                    $outputtemp = "<tr><td>".$row['orderdate']."</td>"; 
-                    $outputtemp .= "<td>".$row['orderno']."</td>"; 
+                while ($row = $readresult->fetch() ) {
+
+                    $outputtemp = "<tr><td>".$row['orderdate']."</td>";
+                    $outputtemp .= "<td>".$row['orderno']."</td>";
                     if($row['ismobile'] == "0")
                         $outputtemp .= "<td>Desktop/Laptop/Ipad</td>";
                     else
                         $outputtemp .= "<td>Mobile Devices</td>";
-					 
-				
+
+
                     $outputtemp1 .= "</tr>";
                     $outputtemp1 = $outputtemp;
                     $output .= $outputtemp1;
@@ -535,14 +535,14 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 //echo $output;
                 $fname = mktime();
                 file_put_contents('tempreports/'.$fname.'.xls',$output);
-                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");       
+                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");
             }
         }
     }
 
     public function getgiftcardbalanceAction()
     {
-        if ($this->getRequest()->isPost() && $this->getRequest()->getPost('cardno')) 
+        if ($this->getRequest()->isPost() && $this->getRequest()->getPost('cardno'))
         {
             $cardno              = (string) $this->getRequest()->getPost('cardno');
             $cards = Mage::getModel('giftcards/giftcards')->getCollection()->addFieldToFilter('card_code', $cardno);
@@ -550,11 +550,11 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             $arr['status'] = "error";
             foreach ($cards as $card) {
                 $arr['balance'] = Mage::helper('core')->currency($card->getCardBalance());
-                $arr['status'] = "success";    
+                $arr['status'] = "success";
                 break;
             }
             $arr['message'] = "Invalid Card Number.";
-            echo json_encode($arr);    
+            echo json_encode($arr);
         }
         else
         {
@@ -564,7 +564,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             echo json_encode($arr);
         }
     }
-    
+
     public function resendinviteemailsAction()
     {
         try{
@@ -577,31 +577,31 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     while ($row = $readresult->fetch() ) {
                         //if($row['Child'] != "peeyush@mobikasa.com")
 //                            continue;
-                        
+
                         $customer = Mage::getModel('customer/customer')
-                        ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
-                        ->loadByEmail($row['Child']);
-                        $output = "unsent";                    
+                            ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
+                            ->loadByEmail($row['Child']);
+                        $output = "unsent";
                         if (!$customer->getId())
                         {
                             $customer = Mage::getModel('customer/customer')
-                            ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
-                            ->loadByEmail($row['Parent']);                        
+                                ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
+                                ->loadByEmail($row['Parent']);
                             //->loadByEmail('vishal@mobikasa.com');
                             //sleep(10);
-                            
+
                             //if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, 'ankit@mobikasa.com', $row['Name']))
-                            
+
                             if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, $row['Child'], $row['Name']))
-                            //if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, "ankit@mobikasa.com", $row['Name']))
+                                //if(Mage::getModel('rewardpoints/referral')->sendSubscription($customer, "ankit@mobikasa.com", $row['Name']))
                                 $output = "sent";
                             if($output == "sent")
                                 $write->query("Insert into myresendlog values(null,'".$row['Parent']."','".$row['Child']."',1,now())");
                             else
                                 $write->query("Insert into myresendlog values(null,'".$row['Parent']."','".$row['Child']."',0,now())");
-                            
+
                             Mage::log("|".$row['Parent']."|".$row['Child']."|".$row['Name']."|".$output,null,'resendlog.log');
-                            
+
                             //echo "correct  ";
                             //echo $row['Parent']." -> ".$row['Child']." -> ".$row['Name']."    ".$output."<br/>";
                         }
@@ -613,14 +613,14 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     Mage::log("Invalid password",null,'resendlog.log');
                     //echo "Invalid password";
                 }
-            }   
+            }
         }
         catch(Exception $e)
         {
             Mage::logException($e);
         }
     }
-    
+
     public function referfriendAction()
     {
         if ($this->getRequest()->isPost() && $this->getRequest()->getPost('email')) {
@@ -628,17 +628,17 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             $emails           = $this->getRequest()->getPost('email'); //trim((string) $this->getRequest()->getPost('email'));
             $names            = $this->getRequest()->getPost('name'); //trim((string) $this->getRequest()->getPost('name'));
             $id = $this->getRequest()->getPost('id');
-            
+
             $arr['message'] = "";
             $arr['status'] = "error";
-            
+
             $customerSession = Mage::getSingleton('customer/session');
             //$errors = array();
             try {
                 foreach ($emails as $key_email => $email){
                     $name = trim((string) $names[$key_email]);
                     $email = trim((string) $email);
-                    
+
                     ///////////////////////////////////////////
                     $no_errors = true;
                     if (!Zend_Validate::is($email, 'EmailAddress')) {
@@ -646,7 +646,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         //$errors[] = $this->__('Wrong email address (%s).', $email);
                         //$session->addError($this->__('Wrong email address (%s).', $email));
                         $arr['message'] = "Invalid Email Address (".$email.")";
-                        $arr['status'] = "error";            
+                        $arr['status'] = "error";
                         $no_errors = false;
                     }
                     if ($name == ''){
@@ -657,7 +657,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $arr['status'] = "error";
                         $no_errors = false;
                     }
-                    
+
                     if ($no_errors){
                         $custemail = $customerSession->getCustomer();
                         $custemail = $custemail->getEmail();
@@ -669,8 +669,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $referralModel = Mage::getModel('rewardpoints/referral');
 
                         $customer = Mage::getModel('customer/customer')
-                                        ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
-                                        ->loadByEmail($email);
+                            ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
+                            ->loadByEmail($email);
 
                         if ($referralModel->isSubscribed($email) || $customer->getEmail() == $email) {
                             //Mage::throwException($this->__('Email %s has been already submitted.', $email));
@@ -689,8 +689,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                 return;
                             } else {
                                 //$session->addError($this->__('There was a problem with the invitation email %s.', $email));
-                                
-                                
+
+
                                 //$arr['status'] = "success";
 //                                $arr['message'] = "Friend is successfully invited";
 //                                echo json_encode($arr);
@@ -699,7 +699,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                 $arr['status'] = "error";
                                 $arr['message'] = "Invitiation unsuccessfull.";
                                 echo json_encode($arr);
-                                return;    
+                                return;
                             }
                         }
                     }
@@ -715,7 +715,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             catch (Mage_Core_Exception $e) {
                 Mage::log('|'.$from."|Error|".$customer->getEmail()."|".$email."|".$e->getMessage(),null,'referlog.log');
                 //$session->addException($e, $this->__('%s', $e->getMessage()));
-                
+
             }
             catch (Exception $e) {
                 //print_r($e);
@@ -736,12 +736,12 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             return;
         }
     }
-    
+
     protected function getSkinUrl($path)
     {
         return Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)."frontend/yogasmoga/yogasmoga-theme/".$path;
     }
-    
+
     public function detailsAction()
     {
         //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN);
@@ -760,7 +760,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         if($price == "")
             $price = $_product->getPrice();
         $price = round($price,2);
-          if (floor($price)==$price)
+        if (floor($price)==$price)
             $price = floor($price);
         $rewardpoints = Mage::helper('rewardpoints/data')->getProductPointsText($_product, false, false);
         $rewardpoints = strip_tags($rewardpoints);
@@ -769,11 +769,11 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         $productrewardpoints = $rewardpoints;
         //$productrewardpoints = floor($price * $_rewardpointsearned);
         $productprice = "$".$price;
-        
+
         $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
         $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
         $productcolorinfo = array();
-        
+
         $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
         $sizeavaliable = false;
         foreach($configurableAttributeCollection as $attribute){
@@ -783,10 +783,10 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 break;
             }
             //echo "Attr-Code:".$attribute->getProductAttribute()->getAttributeCode()."<br/>";
-    //        echo "Attr-Label:".$attribute->getProductAttribute()->getFrontend()->getLabel()."<br/>";
-    //        echo "Attr-Id:".$attribute->getProductAttribute()->getId()."<br/>";
+            //        echo "Attr-Label:".$attribute->getProductAttribute()->getFrontend()->getLabel()."<br/>";
+            //        echo "Attr-Id:".$attribute->getProductAttribute()->getId()."<br/>";
         }
-        
+
         foreach($_childproducts as $_childproduct)
         {
             //echo Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
@@ -801,30 +801,30 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $productcolorinfo[$temp]['hex'] = $hexcodes;
                 $productcolorinfo[$temp]['value'] = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId());
                 //if(!array_key_exists('hex', $productcolorinfo[$temp]))
-    //            {
-    //                $hexcodes = explode(",", $hexcodes);
-    //                $productcolorinfo[$temp]['hex'] = $hexcodes;
-    //            }
+                //            {
+                //                $hexcodes = explode(",", $hexcodes);
+                //                $productcolorinfo[$temp]['hex'] = $hexcodes;
+                //            }
                 //if(count($productcolorinfo[$temp]["images"]) == 0)
-    //            {
-    //                $hexcodes = explode(",", $hexcodes);
-    //                $productcolorinfo[$temp]["hex"] = $hexcodes;
-    //            }
+                //            {
+                //                $hexcodes = explode(",", $hexcodes);
+                //                $productcolorinfo[$temp]["hex"] = $hexcodes;
+                //            }
                 //if(!isset($productcolorinfo[$temp]['hex']))
-    //            {
-    //                echo $temp;
-    //                $hexcodes = explode(",", $hexcodes);
-    //                //$productcolorinfo[$temp]['hex'] = $hexcodes;
-    //                array_push($productcolorinfo[$temp]['hex'], $hexcodes);   
-    //            }
+                //            {
+                //                echo $temp;
+                //                $hexcodes = explode(",", $hexcodes);
+                //                //$productcolorinfo[$temp]['hex'] = $hexcodes;
+                //                array_push($productcolorinfo[$temp]['hex'], $hexcodes);
+                //            }
             }
             $price = $_childproduct->getSpecialPrice();
             if($price == "")
                 $price = $_childproduct->getPrice();
             $price = round($price,2);
-              if (floor($price)==$price)
+            if (floor($price)==$price)
                 $price = floor($price);
-            
+
             $rewardpoints = Mage::helper('rewardpoints/data')->getProductPointsText($_childproduct, false, false);
             $rewardpoints = strip_tags($rewardpoints);
             //$rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "loyalty") - 1 - strlen("loyalty") - strpos($rewardpoints, "earn") + strlen("earn")));
@@ -847,14 +847,14 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             {
                 $productcolorinfo[$temp]["sizes"] = array($temp1);
                 if(!isset($productcolorinfo[$temp]["sizes"]))
-                    echo "not set";    
+                    echo "not set";
                 foreach($_gallery as $_image)
                 {
                     $imgdata = json_decode(trim($_image->getLabel()), true);
                     if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0)
                         continue;
-                    if($imgdata['color'] == Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId()))                
-                    //if(str_replace("*", "", $_image->getLabel()) == $temp)
+                    if($imgdata['color'] == Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId()))
+                        //if(str_replace("*", "", $_image->getLabel()) == $temp)
                     {
                         $alt = "";
                         if(isset($imgdata['alt']))
@@ -867,11 +867,11 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                 $abcclr = substr($abcclr, 0, strpos($abcclr, "|"));
                             $alt = $productname." - ".$abcclr;
                         }
-                        
+
                         $smallimageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75)->setQuality(100)."|".$alt;
                         $imageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(450, 450)->setQuality(100)."|".$alt;
                         $zoomimageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(750, 750)->setQuality(100)."|".$alt;
-                        
+
                         //if(count($productcolorinfo[$temp]["images"]) == 0)
                         if(!isset($productcolorinfo[$temp]["images"]))
                         {
@@ -893,7 +893,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 }
             }
         }
-        
+
         $tempproductcolorinfo = array();
         $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
         $allOptions = $attribute->getSource()->getAllOptions(true, true);
@@ -904,11 +904,11 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             }
         }
         $productcolorinfo = $tempproductcolorinfo;
-        
-        
+
+
         $productallsizes = array();
-        
-        
+
+
         $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
         $allOptions = $attribute->getSource()->getAllOptions(true, true);
         foreach ($allOptions as $instance) {
@@ -919,89 +919,89 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         <script type="text/javascript">
             _productcolorinfo = new Array();
             _cnfrewardpoint = '<?php echo $productrewardpoints; ?>';
-        <?php
-        $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
-        foreach($configurableAttributeCollection as $attribute){
-            //echo "Attr-Code:".$attribute->getProductAttribute()->getAttributeCode()."<br/>";
-    //        echo "Attr-Label:".$attribute->getProductAttribute()->getFrontend()->getLabel()."<br/>";
-    //        echo "Attr-Id:".$attribute->getProductAttribute()->getId()."<br/>";
-            ?>
+            <?php
+            $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
+            foreach($configurableAttributeCollection as $attribute){
+                //echo "Attr-Code:".$attribute->getProductAttribute()->getAttributeCode()."<br/>";
+        //        echo "Attr-Label:".$attribute->getProductAttribute()->getFrontend()->getLabel()."<br/>";
+        //        echo "Attr-Id:".$attribute->getProductAttribute()->getId()."<br/>";
+                ?>
             _productid = '<?php echo $productid; ?>';
             <?php
             if($attribute->getProductAttribute()->getAttributeCode() == "color")
             {
                 ?>
-                    _colorattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
-                <?php       
-            }
-            if($attribute->getProductAttribute()->getAttributeCode() == "size")
-            {
-                ?>
-                    _sizeattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
-                <?php       
-            }
+            _colorattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
+            <?php
         }
-        
-        $currentcolorcount = 0;
-        foreach($productcolorinfo as $key=>$val)
+        if($attribute->getProductAttribute()->getAttributeCode() == "size")
         {
             ?>
-                _productcolorinfo[<?php echo $currentcolorcount; ?>] = new Object();
-                _productcolorinfo[<?php echo $currentcolorcount; ?>].color = '<?php echo $key; ?>'; 
-                _productcolorinfo[<?php echo $currentcolorcount; ?>].hex = new Array();
-                <?php
-                    for($i = 0; $i < count($val['hex']); $i++)
-                    {
-                        ?>
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].hex[<?php echo $i; ?>] = '<?php echo $val['hex'][$i]; ?>';
-                        <?php
-                    } 
-                ?>
-                _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes = new Array();
-                <?php
-                    for($i = 0; $i < count($val['sizes']); $i++)
-                    {
-                        ?>
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes[<?php echo $i; ?>] = '<?php echo $val['sizes'][$i]; ?>';
-                        <?php
-                    } 
-                ?>
-                _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages = new Array();
-                <?php
-                    for($i = 0; $i < count($val['images']['zoom']); $i++)
-                    {
-                        $abc = explode("|", $val['images']['zoom'][$i]);
-                        ?>
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>] = new Array();
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
-                        <?php
-                    } 
-                ?>
-                _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages = new Array();
-                <?php
-                    for($i = 0; $i < count($val['images']['small']); $i++)
-                    {
-                        $abc = explode("|", $val['images']['small'][$i]);
-                        ?>
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>] = new Array();
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
-                        <?php
-                    } 
-                ?>
-                _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages = new Array();
-                <?php
-                    for($i = 0; $i < count($val['images']['big']); $i++)
-                    {
-                        $abc = explode("|", $val['images']['big'][$i]);
-                        ?>
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>] = new Array();
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
-                        <?php
-                    } 
-                ?>
+            _sizeattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
+            <?php
+        }
+    }
+
+    $currentcolorcount = 0;
+    foreach($productcolorinfo as $key=>$val)
+    {
+        ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>] = new Object();
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].color = '<?php echo $key; ?>';
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].hex = new Array();
+            <?php
+                for($i = 0; $i < count($val['hex']); $i++)
+                {
+                    ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].hex[<?php echo $i; ?>] = '<?php echo $val['hex'][$i]; ?>';
+            <?php
+        }
+    ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes = new Array();
+            <?php
+                for($i = 0; $i < count($val['sizes']); $i++)
+                {
+                    ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes[<?php echo $i; ?>] = '<?php echo $val['sizes'][$i]; ?>';
+            <?php
+        }
+    ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages = new Array();
+            <?php
+                for($i = 0; $i < count($val['images']['zoom']); $i++)
+                {
+                    $abc = explode("|", $val['images']['zoom'][$i]);
+                    ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>] = new Array();
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
+            <?php
+        }
+    ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages = new Array();
+            <?php
+                for($i = 0; $i < count($val['images']['small']); $i++)
+                {
+                    $abc = explode("|", $val['images']['small'][$i]);
+                    ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>] = new Array();
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
+            <?php
+        }
+    ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages = new Array();
+            <?php
+                for($i = 0; $i < count($val['images']['big']); $i++)
+                {
+                    $abc = explode("|", $val['images']['big'][$i]);
+                    ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>] = new Array();
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
+            <?php
+        }
+    ?>
             <?php
                     $currentcolorcount++;
                 }  
@@ -1010,22 +1010,22 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             //console.log(_productcolorinfo);
         </script>
         <?php
-            if(!$sizeavaliable)
-            {
-                ?>
-                    <script type="text/javascript">
-                        _sizesuperattribute = false;
-                    </script>
-                <?php
-            }
-            else
-            {
-                ?>
-                    <script type="text/javascript">
-                        _sizesuperattribute = true;
-                    </script>
-                <?php
-            }
+        if(!$sizeavaliable)
+        {
+            ?>
+            <script type="text/javascript">
+                _sizesuperattribute = false;
+            </script>
+        <?php
+        }
+        else
+        {
+            ?>
+            <script type="text/javascript">
+                _sizesuperattribute = true;
+            </script>
+        <?php
+        }
         ?>
         <?php /*
         <table class="productimagecontainer">
@@ -1075,56 +1075,56 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                     </table>
                                     <div id="colorcontainer">
                                         <?php
-                                                $primarycolorcode = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'primarycolorcode', Mage::app()->getStore()->getStoreId());
-                                                $first = true;
-                                                //print_r($productcolorinfo);
-                                                $colorcount = 0;
-                                                for($incr = 0; $incr < 2; $incr++)
+                                        $primarycolorcode = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'primarycolorcode', Mage::app()->getStore()->getStoreId());
+                                        $first = true;
+                                        //print_r($productcolorinfo);
+                                        $colorcount = 0;
+                                        for($incr = 0; $incr < 2; $incr++)
+                                        {
+                                            foreach($productcolorinfo as $key=>$colorinfo)
+                                            {
+                                                if($incr == 0)
                                                 {
-                                                    foreach($productcolorinfo as $key=>$colorinfo)
-                                                    {
-                                                        if($incr == 0)
-                                                        {
-                                                            if($colorinfo['value'] != $primarycolorcode)
-                                                                continue;
-                                                        }
-                                                        else
-                                                        {
-                                                            if($colorinfo['value'] == $primarycolorcode)
-                                                                continue;
-                                                        }
-                                                        $colorcount++;
-                                                        ?>
-                                                            <div>
-                                                                <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
-                                                                    <tr>
-                                                                        <?php
-                                                                            foreach($colorinfo['hex'] as $hex)
-                                                                            {
-                                                                                ?>
-                                                                                    <td style="background-color: <?php echo $hex ?>;">
-                                                                                    <div>
-                                                                                        &nbsp;
-                                                                                    </div>                                                
-                                                                                    </td>   
-                                                                                <?php
-                                                                            } 
-                                                                        ?>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
-                                                                        
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </div>
-                                                        <?php
-                                                        if(($colorcount % 5) == 0)
-                                                            echo "<br/>";
-                                                    }
+                                                    if($colorinfo['value'] != $primarycolorcode)
+                                                        continue;
                                                 }
-                                                 
-                                            ?>
+                                                else
+                                                {
+                                                    if($colorinfo['value'] == $primarycolorcode)
+                                                        continue;
+                                                }
+                                                $colorcount++;
+                                                ?>
+                                                <div>
+                                                    <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
+                                                        <tr>
+                                                            <?php
+                                                            foreach($colorinfo['hex'] as $hex)
+                                                            {
+                                                                ?>
+                                                                <td style="background-color: <?php echo $hex ?>;">
+                                                                    <div>
+                                                                        &nbsp;
+                                                                    </div>
+                                                                </td>
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
+
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <?php
+                                                if(($colorcount % 5) == 0)
+                                                    echo "<br/>";
+                                            }
+                                        }
+
+                                        ?>
                                     </div>
                                     <div style="clear: both;"></div>
                                     <table class="selectedsize" <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
@@ -1134,10 +1134,10 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                                 <td class="sizechartlink">
                                                     <div style="position: relative;">
                                                         <a href="javascript:void(0);">Size chart</a>
-                                                        
-                                                                <div id="sizechart">
-                                                                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
-                                                                </div>
+
+                                                        <div id="sizechart">
+                                                            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
+                                                        </div>
                                                     </div>
                                                 </td>
                                             <?php } ?>
@@ -1147,22 +1147,22 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                         <table>
                                             <tr>
                                                 <?php
-                                                    $sizecount = 0;
-                                                    foreach($productallsizes as $size)
-                                                    {
-                                                        //if($sizecount % 6 == 0 && $sizecount > 0)
-                                                        if(strpos($size['label'],"T") !== false & $sizecount == 0)
-                                                        {
-                                                            $sizecount++;
-                                                            ?>
-                                                            </tr>
-                                                            <tr>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                            <td><div value="<?php echo $size['value']; ?>" size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?></div></td>        
-                                                        <?php
-                                                    } 
+                                                $sizecount = 0;
+                                                foreach($productallsizes as $size)
+                                                {
+                                                //if($sizecount % 6 == 0 && $sizecount > 0)
+                                                if(strpos($size['label'],"T") !== false & $sizecount == 0)
+                                                {
+                                                $sizecount++;
+                                                ?>
+                                            </tr>
+                                            <tr>
+                                                <?php
+                                                }
+                                                ?>
+                                                <td><div value="<?php echo $size['value']; ?>" size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?></div></td>
+                                                <?php
+                                                }
                                                 ?>
                                             </tr>
                                         </table>
@@ -1176,12 +1176,12 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                                 <td class="howdoesitfitlink">
                                                     <div style="position: relative;">
                                                         <a href="javascript:void(0);">How does it fit?</a>
-                                                            <div id="howdoesitfitbox">
-                                                                <div id="howdoesitfitboxinner">
-                                                                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
-                                                                </div>
-                                                                <img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
-                                                            </div>                                                    
+                                                        <div id="howdoesitfitbox">
+                                                            <div id="howdoesitfitboxinner">
+                                                                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
+                                                            </div>
+                                                            <img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
+                                                        </div>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -1191,12 +1191,12 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                     <div class="sizeselector">
                                         <select class="qtyselector">
                                             <?php
-                                                for($i = 1; $i < 21; $i++)
-                                                {
-                                                    ?>
-                                                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                                    <?php
-                                                } 
+                                            for($i = 1; $i < 21; $i++)
+                                            {
+                                                ?>
+                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                            <?php
+                                            }
                                             ?>
                                         </select>
                                     </div>
@@ -1225,7 +1225,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                     */ ?>
                                     <div id="orderitem" class="addtobag spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_on.png'); ?>"></div>
                                     <div id="outofstockitem" class="outofstockitem"></div>
-                    <div id="preorderitem" class="preorderitem spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_now_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_now_on.png'); ?>"></div>
+                                    <div id="preorderitem" class="preorderitem spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_now_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_now_on.png'); ?>"></div>
                                     <div class="producterrorcontainer">
                                         <div class="errormsg">
                                         </div>
@@ -1238,10 +1238,10 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                             <?php echo Mage::getModel('core/variable')->loadByCode('preorder_message_detail')->getValue('html'); ?>
                             <img class="closeinfo" src="<?php echo $this->getSkinUrl('images/cross_red.png'); ?>" />
                         </div>
-                    </div>        
+                    </div>
                 </td>
                 <td id="tdpopupproductbigimage">
-                     <img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/450x450/040ec09b1e35df139433887a97daa66f/a/b/abstract_0011.jpg" />
+                    <img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/450x450/040ec09b1e35df139433887a97daa66f/a/b/abstract_0011.jpg" />
                 </td>
                 <td id="tdpopupproductsmallimages">
                     <table>
@@ -1267,24 +1267,24 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             </tr>
         </table>
         <img id="closelightbox" src="<?php echo $this->getSkinUrl('images/catalog/product/close1.png'); ?>" />
-        <?php
+    <?php
     }
 
     //code for dressing
 
     public function dressingBlockUpdateAction()
     {
-     if($this->getRequest()->getParam('dressing') != 'false')
+        if($this->getRequest()->getParam('dressing') != 'false')
         {
 
-    $dressingroomitems = explode("\n", strip_tags($this->getLayout()->createBlock('cms/block')->setBlockId("Women_Dressing_Room1")->toHtml()));
-    $model = Mage::getModel('catalog/product');
-    $dressImgPath = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."wysiwyg/dressingroom/new/";
+            $dressingroomitems = explode("\n", strip_tags($this->getLayout()->createBlock('cms/block')->setBlockId("Women_Dressing_Room1")->toHtml()));
+            $model = Mage::getModel('catalog/product');
+            $dressImgPath = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."wysiwyg/dressingroom/new/";
 
 
-    ?>
+            ?>
 
-<?php $html='
+            <?php $html='
 
     <div id="Dressingroom" desc="Dressing Room" class="pgsection mainshoppingbg" tw-summary="Check out YOGASMOGA&apos; '.'s cool Dressing Room">
         <div class="myheader" style="padding-bottom: 10px;">DRESSING ROOM</div>
@@ -1293,11 +1293,11 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         <div id="drsizechart" class="sizeChart">
             <div id="sizechart" style="left:0">
                 <div class="light-conent-box">';?>
-                    <?php
-                            $html.= $this->getLayout()->createBlock('cms/block')->setBlockId('size_chart')->toHtml();
-                            $html.= '</div>';
-                            $html.= '<img id="closesmlight" src='. $this->getSkinUrl("images/catalog/product/close_opaque.png").' />';
-                            $html.= '</div>
+            <?php
+            $html.= $this->getLayout()->createBlock('cms/block')->setBlockId('size_chart')->toHtml();
+            $html.= '</div>';
+            $html.= '<img id="closesmlight" src='. $this->getSkinUrl("images/catalog/product/close_opaque.png").' />';
+            $html.= '</div>
                                         <a class="size-link" href="javascript:viod(0);">Ally is 5&apos;'.'8". She is wearing<br />size 6 in tops and bottoms.</a>
                                     </div>
                                     <div class="dressingroomoptions">
@@ -1311,40 +1311,40 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                         <div id="dressingroomtop" actheight="305">
                                             <div class="ovl-box"></div>';
 
-                $topCount = 0;
-                $botCount = 0;
-                for($i = 1; $i < count($dressingroomitems); $i++){
-                    $detail = explode("|", $dressingroomitems[$i]);
-                    $product = $model->load(trim($detail[3]));
-                    if(trim($detail[0]) == "top"){
-                        $topCount++;
-                    }else{
-                        $botCount++;
-                    }
+            $topCount = 0;
+            $botCount = 0;
+            for($i = 1; $i < count($dressingroomitems); $i++){
+                $detail = explode("|", $dressingroomitems[$i]);
+                $product = $model->load(trim($detail[3]));
+                if(trim($detail[0]) == "top"){
+                    $topCount++;
+                }else{
+                    $botCount++;
                 }
-                $k = 0;
-                for($i = 1; $i < count($dressingroomitems); $i++){
-                    $detail = explode("|", $dressingroomitems[$i]);
-                    $product = $model->load(trim($detail[3]));
-                    if(trim($detail[0]) == "top"){
-                        $k++;
+            }
+            $k = 0;
+            for($i = 1; $i < count($dressingroomitems); $i++){
+                $detail = explode("|", $dressingroomitems[$i]);
+                $product = $model->load(trim($detail[3]));
+                if(trim($detail[0]) == "top"){
+                    $k++;
 
-                $html.=    '<div class="dritem" botpos=" intval(strip_tags($detail[6]))+8; ">
+                    $html.=    '<div class="dritem" botpos=" intval(strip_tags($detail[6]))+8; ">
                             <div class="dressing-img">';
 
-                                if($k == 1)
-                                {
-                                   $html.= '<img alt="'.html_entity_decode($product->getName().'" - "'.$detail[7]).'" width="'.trim(strip_tags($detail[4])).'" height="'.trim(strip_tags($detail[5])).'" style="margin-left:-'. intval(strip_tags($detail[4]))/2 . 'px" src="'. $dressImgPath.trim($detail[2]).'" loaded="1" />';
+                    if($k == 1)
+                    {
+                        $html.= '<img alt="'.html_entity_decode($product->getName().'" - "'.$detail[7]).'" width="'.trim(strip_tags($detail[4])).'" height="'.trim(strip_tags($detail[5])).'" style="margin-left:-'. intval(strip_tags($detail[4]))/2 . 'px" src="'. $dressImgPath.trim($detail[2]).'" loaded="1" />';
 
-                                }
-                                else
-                                {
+                    }
+                    else
+                    {
 
-                                    $html.= '<img alt="'. html_entity_decode($product->getName().'" - "'.$detail[7]).'" width="'. trim(strip_tags($detail[4])).'" height="'. trim(strip_tags($detail[5])).'" style="margin-left:-'. intval(strip_tags($detail[4]))/2 .'px;" realsrc="'. $dressImgPath.trim($detail[2]).'" src="" loaded="0" onload="drimgloaded(this);" />';
+                        $html.= '<img alt="'. html_entity_decode($product->getName().'" - "'.$detail[7]).'" width="'. trim(strip_tags($detail[4])).'" height="'. trim(strip_tags($detail[5])).'" style="margin-left:-'. intval(strip_tags($detail[4]))/2 .'px;" realsrc="'. $dressImgPath.trim($detail[2]).'" src="" loaded="0" onload="drimgloaded(this);" />';
 
-                                }
+                    }
 
-                $html.='    </div>
+                    $html.='    </div>
                             <div class="productdetail">
                                 <div class="detail-box">
                                     <div class="productcount">
@@ -1361,39 +1361,39 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                 </div>
                             </div>
                         </div>';
-                     }
                 }
-                $html.='<a class="prevBtn" href="javascript:void(0);">Prev</a>
+            }
+            $html.='<a class="prevBtn" href="javascript:void(0);">Prev</a>
                        <a class="nextBtn" href="javascript:void(0);">Next</a>
                     </div>
                     <div id="dressingroomdivider">&nbsp;</div>
                     <div id="dressingroombottom" actheight="450">
                         <div class="ovl-box"></div>';
 
-                $j = 0;
-                for($i = 1; $i < count($dressingroomitems); $i++){
-                    $detail = explode("|", $dressingroomitems[$i]);
-                    $product = $model->load(trim($detail[3]));
-                    if(trim($detail[0]) == "bottom"){
-                        $j++;
+            $j = 0;
+            for($i = 1; $i < count($dressingroomitems); $i++){
+                $detail = explode("|", $dressingroomitems[$i]);
+                $product = $model->load(trim($detail[3]));
+                if(trim($detail[0]) == "bottom"){
+                    $j++;
 
-            $html.= '<div class="dritem">
+                    $html.= '<div class="dritem">
                      <div class="dressing-img">';
 
-                                if($j == 1)
-                                {
+                    if($j == 1)
+                    {
 
-                                    $html.= '<img alt="'. html_entity_decode($product->getName().'" - "'.$detail[7]).'" width="'. trim(strip_tags($detail[4])).'" height="'. trim(strip_tags($detail[5])).'"  style="margin-left:-'. intval(strip_tags($detail[4]))/2 .'px;" src="'. $dressImgPath.trim($detail[2]).'" loaded="1" />';
+                        $html.= '<img alt="'. html_entity_decode($product->getName().'" - "'.$detail[7]).'" width="'. trim(strip_tags($detail[4])).'" height="'. trim(strip_tags($detail[5])).'"  style="margin-left:-'. intval(strip_tags($detail[4]))/2 .'px;" src="'. $dressImgPath.trim($detail[2]).'" loaded="1" />';
 
-                                }
-                                else
-                                {
+                    }
+                    else
+                    {
 
-                                    $html.= '<img alt="'. html_entity_decode($product->getName().'" - "'.$detail[7]).'" width="'. trim(strip_tags($detail[4])).'" height="'. trim(strip_tags($detail[5])).'"  style="margin-left:-'. intval(strip_tags($detail[4]))/2 .'px;" realsrc="'. $dressImgPath.trim($detail[2]) .'" src="" loaded="0" onload="drimgloaded(this);" />';
+                        $html.= '<img alt="'. html_entity_decode($product->getName().'" - "'.$detail[7]).'" width="'. trim(strip_tags($detail[4])).'" height="'. trim(strip_tags($detail[5])).'"  style="margin-left:-'. intval(strip_tags($detail[4]))/2 .'px;" realsrc="'. $dressImgPath.trim($detail[2]) .'" src="" loaded="0" onload="drimgloaded(this);" />';
 
-                                }
+                    }
 
-            $html.= '       </div>
+                    $html.= '       </div>
                             <div class="productdetail">
                                 <div class="productcount">
                                     <div class="current">'. $j.'</div>
@@ -1408,8 +1408,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                 <a href="#productgrid" class="grid-link">View All Products ></a>
                             </div>
                         </div>';
-                     }
                 }
+            }
             $html.= '    <a class="prevBtn" href="javascript:void(0);">Prev</a>
                 <a class="nextBtn" href="javascript:void(0);">Next</a>
             </div>
@@ -1423,10 +1423,10 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
         }
         $identifier = 'dressingUpdate';
-    Mage::getModel('cms/block')
-    ->load($identifier, 'identifier')
-    ->setData('content', $html)
-    ->save();
+        Mage::getModel('cms/block')
+            ->load($identifier, 'identifier')
+            ->setData('content', $html)
+            ->save();
 // echo $html;
 // echo 'saved';
     }
@@ -1502,7 +1502,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 //                $output .= "<tr><td style='color:#fff;background-color:black;'>VALUE</td><td colspan='4'>This combination of color and size is not available and not displayed on the product view page.</td></tr>";
                 $output .= "</table>";
                 //echo 'test';
-               // echo $output;
+                // echo $output;
                 $fname = mktime();
                 file_put_contents('tempreports/'.$fname.'.xls',$output);
                 Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");
@@ -1591,22 +1591,22 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     $isActive = $customer->getIsActive();
                     if($isActive)
                     {
-                    $id = $customer->getId();
-                    $name = $customer->getName();
-                    $email = $customer->getEmail();
-                    if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
-                        $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
-                        $available_points = $reward_flat_model->collectPointsCurrent($id, $store_id);
+                        $id = $customer->getId();
+                        $name = $customer->getName();
+                        $email = $customer->getEmail();
+                        if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+                            $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+                            $available_points = $reward_flat_model->collectPointsCurrent($id, $store_id);
 
-                    }
-                    else
-                    {
-                        $reward_model = Mage::getModel('rewardpoints/stats');
-                        $available_points = $reward_model->getPointsCurrent($id, $store_id);
-                    }
+                        }
+                        else
+                        {
+                            $reward_model = Mage::getModel('rewardpoints/stats');
+                            $available_points = $reward_model->getPointsCurrent($id, $store_id);
+                        }
 
-                    $total_available_points += $available_points;
-                    $output .= "<tr><td style='text-align:center;'>".$id."</td><td>".$name."</td><td>".$email."</td><td style='text-align:right;'>".$available_points."</tr>";
+                        $total_available_points += $available_points;
+                        $output .= "<tr><td style='text-align:center;'>".$id."</td><td>".$name."</td><td>".$email."</td><td style='text-align:right;'>".$available_points."</tr>";
                     }
                 }
 
@@ -1761,15 +1761,15 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
     public function aggregateRewardPointsAction()
     {
         $allStores = Mage::app()->getStores();
-        
-		$csv[0] = array('Name', 'Email', 'Bucks', 'Valid_Upto');	
+
+        $csv[0] = array('Name', 'Email', 'Bucks', 'Valid_Upto');
 
         foreach ($allStores as $_eachStoreId => $val)
         {
             /*$duration = Mage::getStoreConfig(self::XML_PATH_POINTS_DURATION, $store_id);
             if ($duration){*/
             $store_id = Mage::app()->getStore($_eachStoreId)->getId();
-         //   $days =  $this->getRequest()->getParam('days');
+            //   $days =  $this->getRequest()->getParam('days');
 
             $date = $this->getRequest()->getParam('date');
             $datearr = split("-", $date);
@@ -1779,34 +1779,34 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 echo "Invalid Date";
                 return;
             }
-			$requireddate = date('Y-m-d',strtotime($datearr[2].'-'.$datearr[0].'-'.$datearr[1]));
+            $requireddate = date('Y-m-d',strtotime($datearr[2].'-'.$datearr[0].'-'.$datearr[1]));
             $currentdate =  date('Y-m-d');
-			$diff = abs(strtotime($requireddate) - strtotime($currentdate));
+            $diff = abs(strtotime($requireddate) - strtotime($currentdate));
 
-			//$years = floor($diff / (365*60*60*24));
-			//$months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
-			$days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
-			$onedayless = date('Y-m-d', strtotime('-1 day', strtotime($requireddate)));
-			$middle = strtotime($onedayless);
-			$new_date = date('M j Y', $middle);
-			
+            //$years = floor($diff / (365*60*60*24));
+            //$months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+            $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+            $onedayless = date('Y-m-d', strtotime('-1 day', strtotime($requireddate)));
+            $middle = strtotime($onedayless);
+            $new_date = date('M j Y', $middle);
 
-			
+
+
             if($days == 0)
             {
                 continue;
             }
             $points = Mage::getModel('rewardpoints/stats')
                 ->getResourceCollection()
-               ->addFinishFilter($days)
+                ->addFinishFilter($days)
                 ->addValidPoints($store_id);
 
             if ($points->getSize()){
-				$i=1;
+                $i=1;
                 foreach ($points as $current_point){
                     $html .= "<tr>";
                     $customer_id = $current_point->getCustomerId();
-                     $points = $current_point->getNbCredit();
+                    $points = $current_point->getNbCredit();
                     if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
                         $points_received = Mage::getModel('rewardpoints/flatstats')->collectPointsCurrent($customer_id, $store_id);
                     } else {
@@ -1817,85 +1817,85 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     $customer = Mage::getModel('customer/customer')->load($customer_id);
                     $customerName = $customer->getName();
                     $customerEmail = $customer->getEmail();
-                    
-					$csv[$i] = array($customerName, $customerEmail, $points, $new_date);
+
+                    $csv[$i] = array($customerName, $customerEmail, $points, $new_date);
                     if ($points_received >= $points){
                         //3. send notification email
-                    /*    $customer = Mage::getModel('customer/customer')->load($customer_id);
-                        $customerName = $customer->getName();
-                        $customerEmail = $customer->getEmail();
-                        $html .= "<td>".$customer_id."</td>"."<td>".$customerName."</td>"."<td>".$customerEmail."</td></tr>";  */
+                        /*    $customer = Mage::getModel('customer/customer')->load($customer_id);
+                            $customerName = $customer->getName();
+                            $customerEmail = $customer->getEmail();
+                            $html .= "<td>".$customer_id."</td>"."<td>".$customerName."</td>"."<td>".$customerEmail."</td></tr>";  */
                         //Mage::getModel('rewardpoints/stats')->sendNotification($customer, $store_id, $points, $days);
                         //Mage::log("Email sent to coustomer id:".$customer_id.",Points:".$points,null,"smogiexpireemail.log");
                     }
-					$i++;
+                    $i++;
                 }
             }
 
         }
-         if($customerEmail == '')
-			{
-				echo 'No Record found for this date';
-				return;
-			}
-		$fname = 'smogi_bucks_expiring_on'.$new_date;
-		
+        if($customerEmail == '')
+        {
+            echo 'No Record found for this date';
+            return;
+        }
+        $fname = 'smogi_bucks_expiring_on'.$new_date;
 
-		$baseDir = Mage::getBaseDir();
-		$varDir = $baseDir.DS.'tempreports'.DS.$fname.'.csv';
-		
-		unlink($varDir);
-		$fp = fopen($varDir, 'w');
-		foreach ($csv as $fields) {
-		fputcsv($fp, $fields);
-		}
 
-		fclose($fp);
-		if(!file_exists($varDir))
-		{
-			echo 'Records are not found for this date';
-		}
-		else
-		{
-			
-			Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".csv");
-		}
-		//file_put_contents('tempreports/expiringbucks/'.$fname.'.xls',$html);
+        $baseDir = Mage::getBaseDir();
+        $varDir = $baseDir.DS.'tempreports'.DS.$fname.'.csv';
+
+        unlink($varDir);
+        $fp = fopen($varDir, 'w');
+        foreach ($csv as $fields) {
+            fputcsv($fp, $fields);
+        }
+
+        fclose($fp);
+        if(!file_exists($varDir))
+        {
+            echo 'Records are not found for this date';
+        }
+        else
+        {
+
+            Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".csv");
+        }
+        //file_put_contents('tempreports/expiringbucks/'.$fname.'.xls',$html);
 
     }
     public function aggregateRewardPoints_dayAction()
     {
         $allStores = Mage::app()->getStores();
-        
-		$csv[0] = array('Name', 'Email', 'Bucks', 'Valid_Upto');	
+
+        $csv[0] = array('Name', 'Email', 'Bucks', 'Valid_Upto');
 
         foreach ($allStores as $_eachStoreId => $val)
         {
             /*$duration = Mage::getStoreConfig(self::XML_PATH_POINTS_DURATION, $store_id);
             if ($duration){*/
             $store_id = Mage::app()->getStore($_eachStoreId)->getId();
-         //   $days =  $this->getRequest()->getParam('days');
+            //   $days =  $this->getRequest()->getParam('days');
 
-			$days = $this->getRequest()->getParam('day');
-			$new_date = date('Y-m-d');
-			
+            $days = $this->getRequest()->getParam('day');
+            $new_date = date('Y-m-d');
 
-			
+
+
             if($days == 0)
             {
                 continue;
             }
             $points = Mage::getModel('rewardpoints/stats')
                 ->getResourceCollection()
-               ->addFinishFilter($days)
+                ->addFinishFilter($days)
                 ->addValidPoints($store_id);
 
             if ($points->getSize()){
-				$i=1;
+                $i=1;
                 foreach ($points as $current_point){
                     $html .= "<tr>";
                     $customer_id = $current_point->getCustomerId();
-                     $points = $current_point->getNbCredit();
+                    $points = $current_point->getNbCredit();
                     if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
                         $points_received = Mage::getModel('rewardpoints/flatstats')->collectPointsCurrent($customer_id, $store_id);
                     } else {
@@ -1906,67 +1906,67 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     $customer = Mage::getModel('customer/customer')->load($customer_id);
                     $customerName = $customer->getName();
                     $customerEmail = $customer->getEmail();
-                    
-					$csv[$i] = array($customerName, $customerEmail, $points, $new_date);
+
+                    $csv[$i] = array($customerName, $customerEmail, $points, $new_date);
                     if ($points_received >= $points){
                         //3. send notification email
-                    /*    $customer = Mage::getModel('customer/customer')->load($customer_id);
-                        $customerName = $customer->getName();
-                        $customerEmail = $customer->getEmail();
-                        $html .= "<td>".$customer_id."</td>"."<td>".$customerName."</td>"."<td>".$customerEmail."</td></tr>";  */
+                        /*    $customer = Mage::getModel('customer/customer')->load($customer_id);
+                            $customerName = $customer->getName();
+                            $customerEmail = $customer->getEmail();
+                            $html .= "<td>".$customer_id."</td>"."<td>".$customerName."</td>"."<td>".$customerEmail."</td></tr>";  */
                         //Mage::getModel('rewardpoints/stats')->sendNotification($customer, $store_id, $points, $days);
                         //Mage::log("Email sent to coustomer id:".$customer_id.",Points:".$points,null,"smogiexpireemail.log");
                     }
-					$i++;
+                    $i++;
                 }
             }
 
         }
-         if($customerEmail == '')
-			{
-				echo 'No Record found for this date';
-				return;
-			}
-		$fname = 'smogi_bucks_expiring_on'.$new_date;
-		
+        if($customerEmail == '')
+        {
+            echo 'No Record found for this date';
+            return;
+        }
+        $fname = 'smogi_bucks_expiring_on'.$new_date;
 
-		$baseDir = Mage::getBaseDir();
-		$varDir = $baseDir.DS.'tempreports'.DS.$fname.'.csv';
-		
-		unlink($varDir);
-		$fp = fopen($varDir, 'w');
-		foreach ($csv as $fields) {
-		fputcsv($fp, $fields);
-		}
 
-		fclose($fp);
-		if(!file_exists($varDir))
-		{
-			echo 'Records are not found for this date';
-		}
-		else
-		{
-			
-			Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".csv");
-		}
-		//file_put_contents('tempreports/expiringbucks/'.$fname.'.xls',$html);
+        $baseDir = Mage::getBaseDir();
+        $varDir = $baseDir.DS.'tempreports'.DS.$fname.'.csv';
+
+        unlink($varDir);
+        $fp = fopen($varDir, 'w');
+        foreach ($csv as $fields) {
+            fputcsv($fp, $fields);
+        }
+
+        fclose($fp);
+        if(!file_exists($varDir))
+        {
+            echo 'Records are not found for this date';
+        }
+        else
+        {
+
+            Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".csv");
+        }
+        //file_put_contents('tempreports/expiringbucks/'.$fname.'.xls',$html);
 
     }
-    
+
     public function getCustomerslistAction()
     {
-        $allStores = Mage::app()->getStores();	
+        $allStores = Mage::app()->getStores();
         $customerlist = array();
         foreach ($allStores as $_eachStoreId => $val)
         {
             $store_id = Mage::app()->getStore($_eachStoreId)->getId();
             $days = $this->getRequest()->getParam('day');
-			$points = Mage::getModel('rewardpoints/stats')
-                        ->getResourceCollection()
-                        ->addFinishFilter($days)
-                        ->addValidPoints($store_id);
+            $points = Mage::getModel('rewardpoints/stats')
+                ->getResourceCollection()
+                ->addFinishFilter($days)
+                ->addValidPoints($store_id);
             if ($points->getSize()){
-				foreach ($points as $current_point){
+                foreach ($points as $current_point){
                     $customer_id = $current_point->getCustomerId();
                     $points = $current_point->getNbCredit();
                     $customer = Mage::getModel('customer/customer')->load($customer_id);
@@ -1981,8 +1981,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         echo "</pre>";
         //return $customerlist;
     }
-	public function smogitestingAction()
-	{
+    public function smogitestingAction()
+    {
         //$rc = new ReflectionClass('Rewardpoints_Model_Stats');
         //print_r($rc->newInstanceArgs('af'));
         //$obj = new Rewardpoints_Model_Stats('abcd');
@@ -1992,17 +1992,17 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         Mage::register('smogi_exp_interval',$days );
         echo "Points Available today--->".$points = Mage::getModel('rewardpoints/stats')->getPointsCurrent(30, 1)."<br/>";
         //Mage::register('smogi_exp_interval', 0);
-		echo "Points Available after ".$days."days---> ".$points_new = Mage::getModel('rewardpoints/statsnew')->getPointsCurrent(30, 1)."<br/>";
+        echo "Points Available after ".$days."days---> ".$points_new = Mage::getModel('rewardpoints/statsnew')->getPointsCurrent(30, 1)."<br/>";
         echo "Expiry Smogi bugs are:-->";
         echo $points-$points_new;
 
-		//echo $points = Mage::getModel('rewardpoints/stats')->getPointsReceived(30, 1);
-		//echo $points = Mage::getModel('rewardpoints/stats')->getPointsSpent(30, 1);
-		//echo $points = Mage::getModel('rewardpoints/stats')->getPointsReceivedReajustment(30, 1);
-		//echo $points = Mage::getModel('rewardpoints/stats')->getRealPointsLost(30, 1);
-		//echo $points = Mage::getModel('rewardpoints/stats')->getRealPointsReceivedNoExpiry(30, 1);
-		//echo $points = Mage::getModel('rewardpoints/stats')->loadpointsbydate(1, 30,'2014-05-31');
-	}
+        //echo $points = Mage::getModel('rewardpoints/stats')->getPointsReceived(30, 1);
+        //echo $points = Mage::getModel('rewardpoints/stats')->getPointsSpent(30, 1);
+        //echo $points = Mage::getModel('rewardpoints/stats')->getPointsReceivedReajustment(30, 1);
+        //echo $points = Mage::getModel('rewardpoints/stats')->getRealPointsLost(30, 1);
+        //echo $points = Mage::getModel('rewardpoints/stats')->getRealPointsReceivedNoExpiry(30, 1);
+        //echo $points = Mage::getModel('rewardpoints/stats')->loadpointsbydate(1, 30,'2014-05-31');
+    }
     public  function checkSmogiExpiryAction()
     {
         $customerid = $this->getRequest()->getParam('customerid');
@@ -2021,13 +2021,13 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         {
             array_push($arrSpentPoints, array("points" => $row['points'], "usedon" => $row['date_start']));
         }
-/*
-        foreach($arrEarnedPoints as $key => $value)
-        {
-            echo $arrEarnedPoints[$key]['balance'];
-            $arrEarnedPoints[$key]['balance'] = 0;
-            //$temp[$key]['balance'] = 0;
-        }*/
+        /*
+                foreach($arrEarnedPoints as $key => $value)
+                {
+                    echo $arrEarnedPoints[$key]['balance'];
+                    $arrEarnedPoints[$key]['balance'] = 0;
+                    //$temp[$key]['balance'] = 0;
+                }*/
         echo "<pre>";
         foreach($arrSpentPoints as $spentinfo)
         {
@@ -2083,7 +2083,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             if(strtotime($earninfo['expiry']) > $balanceon)
             {
                 //echo "adding to balance = ".$earninfo['expiry'].$earninfo['balance'];
-               $balance += $earninfo['balance'];
+                $balance += $earninfo['balance'];
             }
         }
         echo "balance = ".$balance;
@@ -2502,7 +2502,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             $date = $this->getRequest()->getParam('date');
         echo "<pre>";
         print_r(Mage::getModel('rewardpoints/stats')->getPointsCurrent($customerid, 1, $date, true));
-     //   var_dump(Mage::getModel('rewardpoints/stats')->getPointsCurrent($customerid, 1, $date, true));
+        //   var_dump(Mage::getModel('rewardpoints/stats')->getPointsCurrent($customerid, 1, $date, true));
     }
 
     public function getPointslogAction()
@@ -2513,7 +2513,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         print_r($history);
         echo "</pre>";
     }
-    
+
     public function changeserverdateAction()
     {
         $date = $this->getRequest()->getParam('date');
@@ -2526,7 +2526,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         echo shell_exec('sudo date -s "'.date('d M Y',strtotime($date)).' '.date('H:i:s').'"');
         echo "New date = ".date('Y-m-d');
     }
-    
+
     public function comparenewoldsmogiAction()
     {
         set_time_limit(0);
@@ -2537,6 +2537,74 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         while($row = $temp->fetch())
         {
             $writeConnection->query("Insert into new_old_bucks_comparision values (".$row['entity_id'].", ".Mage::getModel('rewardpoints/stats')->getPointsCurrentdefault($row['entity_id'],1).", ".Mage::getModel('rewardpoints/stats')->getPointsCurrent($row['entity_id'],1).")");
+        }
+    }
+    public function exportsmoginotificationlogAction()
+    {
+        if($this->getRequest()->getParam('pass'))
+        {
+            if($this->getRequest()->getParam('pass') == "MageHACKER")
+            {
+                $startdate = $this->getRequest()->getParam('startdate');
+                $datearr = split("-", $startdate);
+                //print_r($datearr);
+                if(!checkdate($datearr[0], $datearr[1], $datearr[2]))
+                {
+                    echo "Invalid Date";
+                    return;
+                }
+                $startdate = $datearr[2]."-".$datearr[0]."-".$datearr[1];
+
+                $enddate = $this->getRequest()->getParam('enddate');
+                $datearr = split("-", $enddate);
+                //print_r($datearr);
+                if(!checkdate($datearr[0], $datearr[1], $datearr[2]))
+                {
+                    echo "Invalid Date";
+                    return;
+                }
+                $enddate = $datearr[2]."-".$datearr[0]."-".$datearr[1];
+
+                $csv[0] = array('Notified On','Customer Name','Customer Email', '# Smogi Bucks','Expiry Date','Notification Period');
+                $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+                $readresult=$read->query("SELECT * FROM smogi_notify_log WHERE notify_date >='".$startdate."' AND notify_date <= '".$enddate."' order by notify_date desc ;");
+                $i = 1;
+                while ($row = $readresult->fetch() ) {
+                    //echo '<pre>';print_r($row);die;
+                    $id = $row['id'];
+                    $customer_data = Mage::getModel('customer/customer')->load($id);
+                    $csv[$i] = array($row['notify_date'],$customer_data['firstname'].' '.$customer_data['lastname'],$row['customer_email'],$row['bucks_expiring'],$row['bucks_expiration_date'],$row['notification_period']);
+                    $i++;
+                }
+                if($i == 1)
+                {
+                    echo 'No Record found for this date';
+                    return;
+                }
+                $fname = 'smogi_notify_log'.$startdate.'to'.$enddate;
+
+
+                $baseDir = Mage::getBaseDir();
+                echo $varDir = $baseDir.DS.'tempreports'.DS.$fname.'.csv';
+
+                unlink($varDir);
+                $fp = fopen($varDir, 'w');
+                foreach ($csv as $fields) {
+                    fputcsv($fp, $fields);
+                }
+
+                fclose($fp);
+                if(!file_exists($varDir))
+                {
+                    echo 'Records are not found for this date';
+                }
+                else
+                {
+
+                    Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".csv");
+                }
+
+            }
         }
     }
 }
