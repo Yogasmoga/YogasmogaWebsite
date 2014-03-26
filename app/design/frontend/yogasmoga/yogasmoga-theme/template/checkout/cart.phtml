@@ -58,7 +58,7 @@
             //$reward_model = Mage::getModel('rewardpoints/stats');
             //return $reward_model->getPointsCurrent($customerId, $store_id);
 
-            return Mage::getModel('rewardpoints/stats')->getPointsCurrent($customerId, $store_id, null, false, true);
+            return Mage::getModel('rewardpoints/stats')->getPointsCurrent($customerId, $store_id);
         }
     }
     
@@ -148,6 +148,7 @@
                 Mage::getSingleton('core/session')->setsmogiApplied(1);
                 Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
             }
+            /* apply Gift of YS automatically
             else
             {
                 if(Mage::getSingleton('core/session')->getsmogiApplied() == 0)
@@ -174,6 +175,7 @@
                 Mage::getSingleton('core/session')->setAutoAppliedDiscount($isAutoAppliedDiscount);
                 Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
             }
+            */
         }
 
         //end--custom auto smogi bucks apply
