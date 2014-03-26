@@ -31,6 +31,151 @@
  * @see Mage_Checkout_Block_Cart
  */
 ?>
+<?php
+
+
+
+if(!function_exists('getsmogipoints'))
+{
+    function getsmogipoints() {
+
+        $customerId = Mage::getModel('customer/session')->getCustomerId();
+        $store_id = Mage::app()->getStore()->getId();
+
+        /*
+            if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+                $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+                return $reward_flat_model->collectPointsCurrent($customerId, $store_id);
+            }
+          */
+
+        //$reward_model = Mage::getModel('rewardpoints/stats');
+        //return $reward_model->getPointsCurrent($customerId, $store_id);
+
+        return Mage::getModel('rewardpoints/stats')->getPointsCurrent($customerId, $store_id);
+    }
+}
+
+if(!function_exists('activategiftcard'))
+{
+    function activategiftcard()
+    {
+        //make giftcard active
+        //if(!Mage::getSingleton('core/session')->getGiftCardActivated())
+//            {
+        if(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()) > 0)
+        {
+            if(Mage::getSingleton('giftcards/session')->getActive() == "0" || Mage::getSingleton('giftcards/session')->getActive() == "")
+            {
+                Mage::getSingleton('core/session')->setGiftCardActivated('true');
+                Mage::getSingleton('giftcards/session')->setActive('1');
+                Mage::getSingleton('checkout/cart')->getQuote()->getShippingAddress()->setCollectShippingRates(true);
+                Mage::getSingleton('checkout/cart')->getQuote()->collectTotals()->save();
+                Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
+            }
+        }
+        //}
+
+        //deactivate smogi bucks
+        Mage::getSingleton('rewardpoints/session')->setProductChecked(0);
+        Mage::helper('rewardpoints/event')->setCreditPoints(0);
+        Mage::helper('checkout/cart')->getCart()->getQuote()
+            ->setRewardpointsQuantity(NULL)
+            ->setRewardpointsDescription(NULL)
+            ->setBaseRewardpoints(NULL)
+            ->setRewardpoints(NULL)
+            ->save();
+    }
+}
+
+if(!function_exists('activatesmogibucks'))
+{
+    function activatesmogibucks()
+    {
+        //activate smogi bucks
+
+        $session = Mage::getSingleton('core/session');
+        $points_value = getsmogipoints();
+        if (Mage::getStoreConfig('rewardpoints/default/max_point_used_order', Mage::app()->getStore()->getId())){
+            if ((int)Mage::getStoreConfig('rewardpoints/default/max_point_used_order', Mage::app()->getStore()->getId()) < $points_value){
+                $points_max = (int)Mage::getStoreConfig('rewardpoints/default/max_point_used_order', Mage::app()->getStore()->getId());
+                $session->addError($this->__('You tried to use %s loyalty points, but you can use a maximum of %s points per shopping cart.', $points_value, $points_max));
+                $points_value = $points_max;
+            }
+        }
+        $quote_id = Mage::helper('checkout/cart')->getCart()->getQuote()->getId();
+
+        Mage::getSingleton('rewardpoints/session')->setProductChecked(0);
+        Mage::getSingleton('rewardpoints/session')->setShippingChecked(0);
+
+        Mage::helper('rewardpoints/event')->setCreditPoints($points_value);
+
+
+        Mage::helper('checkout/cart')->getCart()->getQuote()
+            ->setRewardpointsQuantity($points_value)
+            ->save();
+
+        //deactivate gift card
+
+        Mage::getSingleton('giftcards/session')->setActive('0');
+        try {
+            Mage::getSingleton('checkout/cart')->getQuote()->getShippingAddress()->setCollectShippingRates(true);
+            Mage::getSingleton('checkout/cart')->getQuote()->collectTotals()->save();
+        } catch (Exception $e) {
+            //$this->_getSession()->addError($e->getMessage());
+        }
+    }
+}
+//custom auto smogi bucks apply
+//$isAutoAppliedDiscount = false ;
+//echo Mage::getSingleton('core/session')->getAutoAppliedDiscount();
+//echo  Mage::getSingleton('core/session')->getsmogiApplied();die('ttt');
+//Mage::getSingleton('core/session')->setAutoAppliedDiscount($isAutoAppliedDiscount);
+if(!(Mage::getSingleton('core/session')->getAutoAppliedDiscount()))
+{
+    $smogiBalance = getsmogipoints();
+    if(($smogiBalance > 0)&&(Mage::getSingleton('core/session')->getsmogiApplied() == 0))
+    {
+        activatesmogibucks();
+        $isAutoAppliedDiscount = 1 ;
+        Mage::getSingleton('core/session')->setAutoAppliedDiscount($isAutoAppliedDiscount);
+        Mage::getSingleton('core/session')->setsmogiApplied(1);
+        Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
+    }
+    /* apply Gift of YS automatically
+    else
+    {
+        if(Mage::getSingleton('core/session')->getsmogiApplied() == 0)
+        {
+            if(Mage::helper('customer')->isLoggedIn())
+            {
+                if(!Mage::getSingleton('core/session')->getGiftCardActivated())
+                {
+                    if(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()) > 0)
+                    {
+                        if(Mage::getSingleton('giftcards/session')->getActive() == "0" || Mage::getSingleton('giftcards/session')->getActive() == "")
+                        {
+                            Mage::getSingleton('core/session')->setGiftCardActivated('true');
+                            Mage::getSingleton('giftcards/session')->setActive('1');
+                            Mage::getSingleton('checkout/cart')->getQuote()->getShippingAddress()->setCollectShippingRates(true);
+                            Mage::getSingleton('checkout/cart')->getQuote()->collectTotals()->save();
+                            Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
+                        }
+                    }
+                }
+            }
+        }
+        $isAutoAppliedDiscount = 1 ;
+        Mage::getSingleton('core/session')->setAutoAppliedDiscount($isAutoAppliedDiscount);
+        Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
+    }
+    */
+}
+
+//end--custom auto smogi bucks apply
+?>
+
+
 <div class="cart">
 	<div class="page-title">
     	<h1>Shopping Bag</h1>

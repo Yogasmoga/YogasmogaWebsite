@@ -127,6 +127,7 @@
         
         <action method="addJs"><script>jquery/shoppingbag.js</script></action>
         <action method="addJs"><script>jquery/myaccount.js</script></action>
+        <action method="addJs"><script>jquery/jquery.fancybox-1.0.0.js</script></action>
         
     </reference>
 </checkout_cart_index>
