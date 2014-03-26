@@ -201,18 +201,14 @@
         //echo Mage::getSingleton('core/session')->getAutoAppliedDiscount();
         //echo  Mage::getSingleton('core/session')->getsmogiApplied();die('ttt');
         //Mage::getSingleton('core/session')->setAutoAppliedDiscount($isAutoAppliedDiscount);
-        if(!(Mage::getSingleton('core/session')->getAutoAppliedDiscount()))
+
+        if((Mage::getSingleton('core/session')->getAutoAppliedDiscount()== null)||(Mage::getSingleton('core/session')->getAutoAppliedDiscount()==2 ))
         {
-            $smogiBalance = getsmogipoints();
-            if(($smogiBalance > 0)&&(Mage::getSingleton('core/session')->getsmogiApplied() == 0))
+
+            if((Mage::getSingleton('core/session')->getAutoAppliedDiscount()!= null)&&(Mage::getSingleton('core/session')->getAutoAppliedDiscount()>1))
             {
-                activatesmogibucks();
                 $points_currently_used = getPointsCurrentlyUsed();
-                $isAutoAppliedDiscount = 1 ;
-                Mage::getSingleton('core/session')->setAutoAppliedDiscount($isAutoAppliedDiscount);
-                Mage::getSingleton('core/session')->setsmogiApplied(1);
-                //Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
-            ?>
+                ?>
                 <div id="smogi-notify" style="display:none;font-size: 17px; color:#000000;height:210px;border: 3px solid #F5A13B;"><img style="height: :50px;width:165px;margin-top:22px;" alt ="Yogasmoga" src="<?php echo $this->getSkinUrl().'images/logo_smogi.png';?>" /><p style="width:450px;margin-top:30px;margin-left:10px;margin-right: 10px;"><?php echo '$'.$points_currently_used ;?> SMOGI Bucks have been applied towards your order.</p></div>
                 <style type="text/css">
                     .fancybox-skin{
@@ -224,6 +220,8 @@
                     .fancybox-close{
                         width: 40px;
                         height: 38px;
+                        background: url("<?php echo $this->getSkinUrl().'images/cross_red1.png';?>");
+                        background-repeat: no-repeat;
                     }
                 </style>
                 <script type="text/javascript">
@@ -253,10 +251,32 @@
                     });
 
                 </script>
-
-
-            <?php
+                <?php
+                Mage::getSingleton('core/session')->setAutoAppliedDiscount(1);
             }
+            $smogiBalance = getsmogipoints();
+            if(($smogiBalance > 0)&&(Mage::getSingleton('core/session')->getsmogiApplied() == 0))
+            {
+                activatesmogibucks();
+
+                $isAutoAppliedDiscount = 1 ;
+                Mage::getSingleton('core/session')->setAutoAppliedDiscount($isAutoAppliedDiscount);
+                Mage::getSingleton('core/session')->setsmogiApplied(1);
+                if(Mage::getSingleton('core/session')->getAutoAppliedDiscount() == 1)
+                {
+                    Mage::getSingleton('core/session')->setAutoAppliedDiscount(2);
+                    Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
+
+                }
+
+
+                }
+
+
+
+
+
+
             /* apply Gift of YS automatically
             else
             {
