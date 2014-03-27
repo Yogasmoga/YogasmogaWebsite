@@ -203,7 +203,8 @@
         //echo Mage::getSingleton('core/session')->getAutoAppliedDiscount();
         //echo  Mage::getSingleton('core/session')->getsmogiApplied();die('ttt');
         //Mage::getSingleton('core/session')->setAutoAppliedDiscount($isAutoAppliedDiscount);
-
+    if(Mage::getSingleton('customer/session')->isLoggedIn())
+    {
         if((Mage::getSingleton('core/session')->getAutoAppliedDiscount()== null)||(Mage::getSingleton('core/session')->getAutoAppliedDiscount()==2 ))
         {
 
@@ -274,12 +275,7 @@
                 }
 
 
-                }
-
-
-
-
-
+            }
 
             /* apply Gift of YS automatically
             else
@@ -310,6 +306,7 @@
             }
             */
         }
+    }
 
         //end--custom auto smogi bucks apply
     
