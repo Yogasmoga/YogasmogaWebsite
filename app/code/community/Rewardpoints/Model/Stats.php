@@ -537,6 +537,116 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
         }
     }
     
+    public function distributediscount($order, $row, $lastOrderId)
+    {
+        $couponcode = $row['coupon_code'];
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+        $smogiused = false;
+        $discount_amount = $row['base_discount_amount'] * -1;
+        if($row['rewardpoints_quantity'] > 0)
+        {
+            $smogiused = true;
+        }        
+        $readresult=$write->query("Select entity_id from sales_flat_invoice where order_id=".$lastOrderId);
+        $row = $readresult->fetch();
+        if($row)
+            $invoiceid = $row['entity_id'];
+        else{
+            $invoiceid = '';
+        }
+        $arrOrderItem = array();
+        $readresult=$write->query("Select product_id, row_total_incl_tax, item_id from sales_flat_order_item where order_id=".$lastOrderId." and price > 0");
+        while ($row = $readresult->fetch() ) {
+            $temp = array();
+            $temp['product_id'] = $row['product_id'];
+            $temp['price'] = $row['row_total_incl_tax'];
+            $temp['item_id'] = $row['item_id'];
+            $temp['exclude'] = 0;
+            if($smogiused)
+            {
+                $write1 = Mage::getSingleton('core/resource')->getConnection('core_write');
+                $readresult1=$write1->query("SELECT COUNT(*) AS cnt FROM catalog_category_product ccp, catalog_category_flat_store_1 ccfs WHERE ccp.product_id = ".$row['product_id']." AND ccfs.entity_id = ccp.category_id AND category_id IN (".Mage::getModel('core/variable')->loadByCode('nosmogicategories ')->getValue('plain').")");
+                $row1 = $readresult1->fetch();
+                if($row1['cnt'] > 0)
+                {
+                    $temp['exclude'] = 1;
+                    $this->orderLog($order->getIncrementId(), 'discount distribution', '',$row['product_id'], 'Excluding Product ID for distribution');            
+                }
+            }
+            array_push($arrOrderItem, $temp);
+        }
+        $total = 0;
+        for($i = 0; $i < count($arrOrderItem); $i++)
+        {
+            if($arrOrderItem[$i]['exclude'] == 0)
+                $total += $arrOrderItem[$i]['price'];
+        }
+		$this->orderLog($order->getIncrementId(), 'discount distribution', '',$total, 'Total Amount of products applicable for discount.');
+        $temp = 0;
+        for($i = 0; $i < count($arrOrderItem); $i++)
+        {
+            if($arrOrderItem[$i]['exclude'] == 1)
+            {
+                $arrOrderItem[$i]['price'] = 0;    
+            }
+            else
+            {
+                if($couponcode == '')
+                {
+                    $percent = round((($arrOrderItem[$i]['price'] / $total) * 100), 2);
+                    $discount = round(($discount_amount * $percent) / 100);    
+                }
+                else
+                {
+                    $percent = ($arrOrderItem[$i]['price'] / $total) * 100;
+                    $discount = round((($discount_amount * $percent) / 100), 2);
+                    Mage::log($arrOrderItem[$i]['product_id']." - ".$percent."% - ".$discount,null,'distribution.log');
+                }
+                $temp += $discount;
+                $arrOrderItem[$i]['price'] = $discount;   
+            }
+            //Mage::log($arrOrderItem[$i]['price']."  ".$arrOrderItem[$i]['product_id'] ,null,'distribution.log');
+            $this->orderLog($order->getIncrementId(), 'discount distribution', '',$arrOrderItem[$i]['price'], 'New Discount for Product ID = '.$arrOrderItem[$i]['product_id']);
+        }
+        $this->orderLog($order->getIncrementId(), 'discount distribution', '',$temp, 'Sum of all allocated discounts');
+        if($temp < $discount_amount)
+        {
+            for($i = count($arrOrderItem)-1; $i >=0 ; $i--)
+            {
+                if($arrOrderItem[$i]['exclude'] == 0)
+                {
+                    $arrOrderItem[$i]['price'] += ($discount_amount - $temp);
+                    $this->orderLog($order->getIncrementId(), 'discount distribution', '',$arrOrderItem[$i]['price'], 'Allocated amount is less than discount amount, new discount for Product ID = '.$arrOrderItem[$i]['product_id']);
+                    break;
+                }
+                //$arrOrderItem[count($arrOrderItem) - 1]['price'] += ($discount_amount - $temp);
+            }
+
+        }
+        if($temp > $discount_amount)
+        {
+            for($i = count($arrOrderItem)-1; $i >=0 ; $i--)
+            {
+                if($arrOrderItem[$i]['exclude'] == 0)
+                {
+                    $arrOrderItem[$i]['price'] -= ($temp - $discount_amount);
+                    $this->orderLog($order->getIncrementId(), 'discount distribution', '',$arrOrderItem[$i]['price'], 'Allocated amount is more than discount amount, new discount for Product ID = '.$arrOrderItem[$i]['product_id']);
+                    break;
+                }
+                //$arrOrderItem[count($arrOrderItem) - 1]['price'] += ($discount_amount - $temp);
+            }
+
+        }
+        for($i = 0; $i < count($arrOrderItem); $i++)
+        {
+            //$readresult=$write->query("Update sales_flat_order_item set discount_amount=".$arrOrderItem[$i]['price'].", base_discount_amount=".$arrOrderItem[$i]['price'].", discount_invoiced=".$arrOrderItem[$i]['price'].", base_discount_invoiced=".$arrOrderItem[$i]['price']." where order_id=".$lastOrderId." and product_id=".$arrOrderItem[$i]['product_id']);
+            $readresult=$write->query("Update sales_flat_order_item set discount_amount=".$arrOrderItem[$i]['price'].", base_discount_amount=".$arrOrderItem[$i]['price'].", discount_invoiced=".$arrOrderItem[$i]['price'].", base_discount_invoiced=".$arrOrderItem[$i]['price']." where order_id=".$lastOrderId." and item_id=".$arrOrderItem[$i]['item_id']);
+            if($invoiceid !='')
+            $readresult=$write->query("Update sales_flat_invoice_item set discount_amount=".$arrOrderItem[$i]['price'].", base_discount_amount=".$arrOrderItem[$i]['price']." where parent_id=".$invoiceid." and order_item_id=".$arrOrderItem[$i]['item_id']);
+        }
+        //Mage::log($temp."   ".$discount_amount,null,'distribution.log');
+    }
+    
     public function ordercompleteoperations($order, $source)
     {
         $lastOrderId = $order->getId();
@@ -551,6 +661,26 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
             $couponcode = $row['coupon_code'];
             $this->orderLog($order->getIncrementId(), 'discount distribution', '',$couponcode, 'Coupon Code');
             //if($row['base_discount_amount'] < 0 && $row['grand_total'] > 0)
+            if($row['base_discount_amount'] < 0 && $row['grand_total'] > 0 && $row['coupon_code'] == '')
+            {
+                $this->orderLog($order->getIncrementId(), 'discount distribution', '','Yes', 'Applicable for distribution');
+                $this->distributediscount($order, $row, $lastOrderId);
+                //distribute discount
+            }
+            else
+                $this->orderLog($order->getIncrementId(), 'discount distribution', '','No', 'Applicable for distribution');
+            if($row['base_discount_amount'] < 0 && $row['rewardpoints_quantity'] > 0)
+            {
+                $this->orderLog($order->getIncrementId(), 'smogi used point date', '','Yes', 'Applicable for smogi store');
+                $this->smogi_setstartdate($order->getIncrementId());
+                $this->smogi_storeExpiryDate($row);
+                //store smogi expiry
+            }
+            else
+            {
+                $this->orderLog($order->getIncrementId(), 'smogi used point date', '','No', 'Applicable for smogi store');
+            }
+            /*
             if($row['base_discount_amount'] < 0 && $row['grand_total'] > 0 && $row['coupon_code'] == '')
             {
                 $discount_amount = $row['base_discount_amount'] * -1;
@@ -666,11 +796,13 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
                     $readresult=$write->query("Update sales_flat_invoice_item set discount_amount=".$arrOrderItem[$i]['price'].", base_discount_amount=".$arrOrderItem[$i]['price']." where parent_id=".$invoiceid." and order_item_id=".$arrOrderItem[$i]['item_id']);
                 }
                 //Mage::log($temp."   ".$discount_amount,null,'distribution.log');
+                
             }
             else
             {
                 $this->orderLog($order->getIncrementId(), 'discount distribution', '','Reward Points is not used hence exiting.', 'EXIT');
             }
+            */
             $readresult=$write->query("SELECT COUNT(item_id) AS cnt FROM sales_flat_order_item WHERE order_id=".$lastOrderId." AND qty_backordered>0");
             $row = $readresult->fetch();
             
