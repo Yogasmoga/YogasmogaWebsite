@@ -2539,5 +2539,73 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             $writeConnection->query("Insert into new_old_bucks_comparision values (".$row['entity_id'].", ".Mage::getModel('rewardpoints/stats')->getPointsCurrentdefault($row['entity_id'],1).", ".Mage::getModel('rewardpoints/stats')->getPointsCurrent($row['entity_id'],1).")");
         }
     }
+    public function exportsmoginotificationlogAction()
+    {
+        if($this->getRequest()->getParam('pass'))
+        {
+            if($this->getRequest()->getParam('pass') == "MageHACKER")
+            {
+                $startdate = $this->getRequest()->getParam('startdate');
+                $datearr = split("-", $startdate);
+                //print_r($datearr);
+                if(!checkdate($datearr[0], $datearr[1], $datearr[2]))
+                {
+                    echo "Invalid Date";
+                    return;
+                }
+                $startdate = $datearr[2]."-".$datearr[0]."-".$datearr[1];
+
+                $enddate = $this->getRequest()->getParam('enddate');
+                $datearr = split("-", $enddate);
+                //print_r($datearr);
+                if(!checkdate($datearr[0], $datearr[1], $datearr[2]))
+                {
+                    echo "Invalid Date";
+                    return;
+                }
+                $enddate = $datearr[2]."-".$datearr[0]."-".$datearr[1];
+
+                $csv[0] = array('Notified On','Customer Name','Customer Email', '# Smogi Bucks','Expiry Date','Notification Period');
+                $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+                $readresult=$read->query("SELECT * FROM smogi_notify_log WHERE notify_date >='".$startdate."' AND notify_date <= '".$enddate."' order by notify_date desc ;");
+                $i = 1;
+                while ($row = $readresult->fetch() ) {
+                    //echo '<pre>';print_r($row);die;
+                    $id = $row['id'];
+                    $customer_data = Mage::getModel('customer/customer')->load($id);
+                    $csv[$i] = array($row['notify_date'],$customer_data['firstname'].' '.$customer_data['lastname'],$row['customer_email'],$row['bucks_expiring'],$row['bucks_expiration_date'],$row['notification_period']);
+                    $i++;
+                }
+                if($i == 1)
+                {
+                    echo 'No Record found for this date';
+                    return;
+                }
+                $fname = 'smogi_notify_log'.$startdate.'to'.$enddate;
+
+
+                $baseDir = Mage::getBaseDir();
+                echo $varDir = $baseDir.DS.'tempreports'.DS.$fname.'.csv';
+
+                unlink($varDir);
+                $fp = fopen($varDir, 'w');
+                foreach ($csv as $fields) {
+                    fputcsv($fp, $fields);
+                }
+
+                fclose($fp);
+                if(!file_exists($varDir))
+                {
+                    echo 'Records are not found for this date';
+                }
+                else
+                {
+
+                    Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".csv");
+                }
+
+            }
+        }
+    }
 }
 ?>
