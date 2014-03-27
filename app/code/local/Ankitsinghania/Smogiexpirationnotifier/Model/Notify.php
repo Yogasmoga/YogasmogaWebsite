@@ -48,7 +48,7 @@ class Ankitsinghania_Smogiexpirationnotifier_Model_Notify extends Mage_Core_Mode
         {
             $store_id = Mage::app()->getStore($_eachStoreId)->getId();
             $days = $expiring_in_days;
-			$points = Mage::getModel('rewardpoints/stats')
+		/*	$points = Mage::getModel('rewardpoints/stats')
                         ->getResourceCollection()
                         ->addFinishFilter($days)
                         ->addValidPoints($store_id);
@@ -61,7 +61,27 @@ class Ankitsinghania_Smogiexpirationnotifier_Model_Notify extends Mage_Core_Mode
                     $customerEmail = $customer->getEmail();
                     array_push($customerlist, array("customer_id" => $customer_id, "customer_email" => $customerEmail, "customer_name" => $customerName,"bucks_expiring" => $points));
                 }
+            }*/
+            $resource = Mage::getSingleton('core/resource');
+            //$writeConnection = $resource->getConnection('core_write');
+            $readConnection = $resource->getConnection('core_write');
+            $temp = $readConnection->query("Select entity_id from customer_entity where is_active=1");
+            $date = date('Y-m-d');
+            $dateAfter = date('Y-m-d', strtotime($date. ' + '.$days.' day'));
+            while($customerId = $temp->fetch())
+            {
+                $customer = Mage::getModel('customer/customer')->load($customerId);
+                $customerName = $customer->getName();
+                $customerEmail = $customer->getEmail();
+                $customer_id =  $customer->getId();
+                $expireSmogiBucks = Mage::getModel('rewardpoints/stats')->getPointsCurrent($customer_id,$store_id) - Mage::getModel('rewardpoints/stats')->getPointsCurrent($customer_id,$store_id,$dateAfter);
+                if($expireSmogiBucks > 0)
+                {
+                    array_push($customerlist, array("customer_id" => $customer_id, "customer_email" => $customerEmail, "customer_name" => $customerName,"bucks_expiring" => $expireSmogiBucks));
+                }
+
             }
+
         }
         return $customerlist;
     }

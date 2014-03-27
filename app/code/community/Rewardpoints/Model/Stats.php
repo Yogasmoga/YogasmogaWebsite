@@ -423,7 +423,8 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
         $balance = 0;
         for($i = 0; $i < count($smogihistory); $i++)
         {
-            if(strtotime($smogihistory[$i]['date_end']) > strtotime($date))
+            //if(strtotime($smogihistory[$i]['date_end']) > strtotime($date))
+            if(strtotime($smogihistory[$i]['date_end']) > $balanceon)
             {
                 $balance += $smogihistory[$i]['balance'];
             }

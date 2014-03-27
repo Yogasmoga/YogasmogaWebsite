@@ -2607,5 +2607,18 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             }
         }
     }
+    public function testMailNotificationAction()
+    {
+        $days = $this->getRequest()->getParam('days');
+        $customerList = Mage::getModel('smogiexpirationnotifier/notify')->getCustomerslist($days);
+
+        foreach($customerList as $customer)
+        {
+            echo $customer['customer_id']. " ".$customer['customer_email']." ".$customer['customer_name']." ".$customer['bucks_expiring']."<br/>";
+        }
+
+        //Mage::getModel('smogiexpirationnotifier/notify')->notifyusers();
+        //echo Mage::getModel('rewardpoints/stats')->getPointsCurrent(1,1);
+    }
 }
 ?>
