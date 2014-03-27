@@ -16,25 +16,26 @@
  * @copyright  Copyright (c) 2011 J2T DESIGN. (http://www.j2t-design.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract
+class Rewardpoints_Model_Mysql4_Statsnew_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract
 {
     protected $_countAttribute = 'main_table.customer_id';
     //main_table.rewardpoints_account_id
     protected $_allowDisableGrouping = true;
+    public $interval = 10;
 
     public function _construct()
     {
         parent::_construct();
-        $this->_init('rewardpoints/stats');
+        $this->_init('rewardpoints/statsnew');
     }
-
+    
     public function setCountAttribute($value)
     {
         $this->_countAttribute = $value;
         return $this;
     }
-
-
+    
+   
     public function getSelectCountSql()
     {
         $countSelect = parent::getSelectCountSql();
@@ -46,25 +47,25 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
         }
         return $countSelect;
     }
-
+    
     public function getCountAttribute()
     {
         return $this->_countAttribute;
     }
-
-
-
+    
+    
+    
     public function addListRestriction()
     {
         $statuses = Mage::getStoreConfig('rewardpoints/default/valid_statuses', Mage::app()->getStore()->getId());
         $status_field = Mage::getStoreConfig('rewardpoints/default/status_used', Mage::app()->getStore()->getId());
 
         $order_states = explode(",", $statuses);
-
+        
         parent::_initSelect();
         $select = $this->getSelect();
-
-
+        
+        
         $select
             ->from($this->getTable('rewardpoints/rewardpoints_account'),array(new Zend_Db_Expr('SUM('.$this->getTable('rewardpoints/rewardpoints_account').'.points_current) AS all_points_accumulated'),new Zend_Db_Expr('SUM('.$this->getTable('rewardpoints/rewardpoints_account').'.points_spent) AS all_points_spent')))
             ->where($this->getTable('rewardpoints/rewardpoints_account').'.customer_id = e.entity_id');
@@ -86,27 +87,27 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
                                            FROM ".$table_sales_order." AS order_state
                                            WHERE order_state.value <> 'canceled'
                                            AND order_state.value in (?))
-                                        ) ) ", $order_states);
+                                        ) ) ", $order_states);   
         }
 
 
         //v.2.0.0
         if (Mage::getStoreConfig('rewardpoints/default/points_delay', Mage::app()->getStore()->getId())){
-            $this->getSelect()->where('( NOW() >= '.$this->getTable('rewardpoints/rewardpoints_account').'.date_start OR '.$this->getTable('rewardpoints/rewardpoints_account').'.date_start IS NULL)');
+            $this->getSelect()->where('( DATE_ADD(NOW(), INTERVAL '.$this->interval.' DAY) >= '.$this->getTable('rewardpoints/rewardpoints_account').'.date_start OR '.$this->getTable('rewardpoints/rewardpoints_account').'.date_start IS NULL)');
         }
-
+        
         if (Mage::getStoreConfig('rewardpoints/default/points_duration', Mage::app()->getStore()->getId())){
-            $select->where('( '.$this->getTable('rewardpoints/rewardpoints_account').'.date_end >= NOW() OR '.$this->getTable('rewardpoints/rewardpoints_account').'.date_end IS NULL)');
+            $select->where('( '.$this->getTable('rewardpoints/rewardpoints_account').'.date_end >= DATE_ADD(NOW(), INTERVAL '.$this->interval.' DAY) OR '.$this->getTable('rewardpoints/rewardpoints_account').'.date_end IS NULL)');
         }
 
         $select->group($this->getTable('rewardpoints/rewardpoints_account').'.customer_id');
 
-
+        
         return $this;
     }
-
-
-
+    
+    
+    
 
     public function setPriorityOrder($dir = 'ASC')
     {
@@ -121,7 +122,7 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
         return $this;
     }
 
-
+    
     public function groupByCustomer()
     {
         //$this->groupByAttribute('customer_id');
@@ -130,15 +131,15 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
 
         return $this;
     }
-
+    
     public function addFinishFilter($days)
     {
         //for example, DATEDIFF('1997-12-30','1997-12-25') returns 5
-        $this->getSelect()->where('( DATEDIFF(main_table.date_end, NOW()) = ? AND main_table.date_end IS NOT NULL)', $days);
+        $this->getSelect()->where('( DATEDIFF(main_table.date_end, DATE_ADD(NOW(), INTERVAL '.$this->interval.' DAY)) = ? AND main_table.date_end IS NOT NULL)', $days);
         return $this;
     }
-
-
+    
+    
     public function showCustomerInfo()
     {
         $customer = Mage::getModel('customer/customer');
@@ -158,33 +159,33 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
                  AND customer_lastname_table.attribute_id = '.(int) $lastname->getAttributeId() . '
                  ',
                 array('customer_lastname'=>'value')
-            )
-            ->joinLeft(
+             )
+             ->joinLeft(
                 array('customer_firstname_table'=>$firstname->getBackend()->getTable()),
                 'customer_firstname_table.entity_id=main_table.customer_id
                  AND customer_firstname_table.attribute_id = '.(int) $firstname->getAttributeId() . '
                  ',
                 array('customer_firstname'=>'value')
-            );
-
-
+             );
+        
+        
 
         return $this;
     }
-
-
-
+    
+    
+    
     public function joinEavTablesIntoCollection($mainTableForeignKey, $eavType){
-
-
+ 
+        
         $entityType = Mage::getModel('eav/entity_type')->loadByCode($eavType);
         $attributes = $entityType->getAttributeCollection();
         $entityTable = $this->getTable($entityType->getEntityTable());
-
+ 
         //Use an incremented index to make sure all of the aliases for the eav attribute tables are unique.
         $index = 1;
-
-
+        
+        
         $fields = array();
         foreach (Mage::getConfig()->getFieldset('customer_account') as $code=>$node) {
             if ($node->is('name')) {
@@ -192,54 +193,54 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
                 $fields[$code] = $code;
             }
         }
-
+        
         $expr = 'CONCAT('
             .(isset($fields['prefix']) ? 'IF({{prefix}} IS NOT NULL AND {{prefix}} != "", CONCAT({{prefix}}," "), ""),' : '')
             .'{{firstname}}'.(isset($fields['middlename']) ?  ',IF({{middlename}} IS NOT NULL AND {{middlename}} != "", CONCAT(" ",{{middlename}}), "")' : '').'," ",{{lastname}}'
             .(isset($fields['suffix']) ? ',IF({{suffix}} IS NOT NULL AND {{suffix}} != "", CONCAT(" ",{{suffix}}), "")' : '')
-            .')';
-
-
+        .')';
+        
+        
         foreach ($attributes->getItems() as $attribute){
             $alias = 'table'.$index;
             if ($attribute->getBackendType() != 'static'){
                 $table = $entityTable. '_'.$attribute->getBackendType();
                 $field = $alias.'.value';
                 $this->getSelect()
-                    ->joinLeft(array($alias => $table),
-                        'main_table.'.$mainTableForeignKey.' = '.$alias.'.entity_id and '.$alias.'.attribute_id = '.$attribute->getAttributeId(),
-                        array($attribute->getAttributeCode() => $field)
-                    );
+                ->joinLeft(array($alias => $table),
+                       'main_table.'.$mainTableForeignKey.' = '.$alias.'.entity_id and '.$alias.'.attribute_id = '.$attribute->getAttributeId(),
+                array($attribute->getAttributeCode() => $field)
+                );
                 $expr = str_replace('{{'.$attribute->getAttributeCode().'}}', $field, $expr);
-
+                
             }
             $index++;
         }
-
-
-
+        
+        
+        
         //Join in all of the static attributes by joining the base entity table.
         $this->getSelect()->joinLeft($entityTable, 'main_table.'.$mainTableForeignKey.' = '.$entityTable.'.entity_id');
-
+        
         $this->getSelect()->columns(array('name' => $expr));
-
-
-
+        
+        
+        
         return $this;
     }
-
-
+    
+    
     public function addClientEntries()
     {
         $this->getSelect()->joinLeft(
             array('cust' => $this->getTable('customer/entity')),
             'main_table.customer_id = cust.entity_id'
         );
-
+        
         return $this;
     }
-
-
+    
+    
     /*public function addpointsbydate($store_id, $customer_id, $date){
         $this->getSelect()->where("customer_id = ?", $customer_id);
         
@@ -250,39 +251,46 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
         return $this;
     }*/
 
+    public function setInterval($val)
+    {
+        $this->interval = $val;
+        return $this;
+    }
+
     public function addUsedpointsbydate($store_id, $customer_id){
+        //echo "abc".$this->interval."--------";
         $statuses = Mage::getStoreConfig('rewardpoints/default/valid_statuses', $store_id);
         $status_field = Mage::getStoreConfig('rewardpoints/default/status_used', $store_id);
-
+        
         $order_states = explode(",", $statuses);
-
+        
         $cols['points_spent'] = 'SUM(main_table.points_spent) as nb_credit_spent';
-
-
+        
+        
         //selection de tous les points utilisés à x date
         $this->getSelect()->from($this->getResource()->getMainTable().' as child_table', $cols);
         $cols_order['date_order'] = 'DATE_FORMAT(orders.created_at, "%Y-%m-%d") as date_order';
-
+        
         $this->getSelect()->from($this->getTable('sales/order').' as orders', $cols_order);
-
-
+        
+        
         if (version_compare(Mage::getVersion(), '1.4.0', '>=')){
             $this->getSelect()->where(" main_table.customer_id = $customer_id 
                                         AND main_table.points_spent > 0 
                                         AND main_table.order_id > 0 
                                         AND main_table.order_id = orders.increment_id"
-            );
-
-
+                                     );
+            
+            
             $this->getSelect()->where("orders.customer_id = main_table.customer_id");
             $this->getSelect()->where("orders.$status_field IN (?) OR (orders.$status_field = 'new' AND orders.customer_id = main_table.customer_id)",$order_states);
-
+            
         } else {
-
+            
             //J2T magento 1.3.x fix
-
+            
             $table_sales_order = $this->getTable('sales/order').'_varchar';
-
+            
             $this->getSelect()->where("main_table.customer_id = $customer_id 
                                        AND main_table.points_spent > 0 
                                        AND main_table.order_id > 0
@@ -304,41 +312,41 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
                     
                                        
                                        ", $order_states);
-
+            
         }
-
+        
         $this->getSelect()->where('main_table.rewardpoints_account_id = child_table.rewardpoints_account_id');
 
         if (Mage::getStoreConfig('rewardpoints/default/store_scope', $store_id)){
             $this->getSelect()->where('find_in_set(?, main_table.store_id)', $store_id);
         }
 
-
+        
         //$this->getSelect()->group('orders.created_at');
         $this->getSelect()->group('date_order');
-
-
+        
+        
         /*echo $this->getSelect()->__toString();
         die;*/
-
+        
         return $this;
-
+        
     }
-
+    
     public function addValidPoints($store_id, $unset_date_limits = false)
     {
         $statuses = Mage::getStoreConfig('rewardpoints/default/valid_statuses', $store_id);
         $status_field = Mage::getStoreConfig('rewardpoints/default/status_used', $store_id);
-
+        
         $order_states = explode(",", $statuses);
         $order_states_str = "'".implode("',",$order_states)."'";
-
+        
 
         $cols['points_current'] = 'SUM(main_table.points_current) as nb_credit';
         $cols['points_spent'] = 'SUM(main_table.points_spent) as nb_credit_spent';
-
+        
         $cols['points_available'] = '(SUM(main_table.points_current) - SUM(main_table.points_spent)) as nb_credit_available';
-
+        
 
         $this->getSelect()->from($this->getResource()->getMainTable().' as child_table', $cols);
 
@@ -349,7 +357,7 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
         if (class_exists('J2t_Rewardshare_Model_Stats', false)){
             $sql_share = "main_table.order_id = '".J2t_Rewardshare_Model_Stats::TYPE_POINTS_SHARE."' or";
         }
-
+        
         if (Mage::getConfig()->getModuleConfig('J2t_Rewardproductvalue')->is('active', 'true')){
             if (version_compare(Mage::getVersion(), '1.4.0', '>=')){
                 $sql_required = "(  
@@ -365,8 +373,8 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
                                  ) or ";
             }
         }
-
-
+        
+        
         if (version_compare(Mage::getVersion(), '1.4.0', '>=')){
             //main_table.order_id = '".J2t_Rewardshare_Model_Stats::TYPE_POINTS_SHARE."' or
             $this->getSelect()->where("($sql_required $sql_share main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW."' 
@@ -393,9 +401,9 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
                             )
                         )", $order_states);
         } else {
-
+            
             //J2T magento 1.3.x fix
-
+            
             $table_sales_order = $this->getTable('sales/order').'_varchar';
             $this->getSelect()->where(" ($sql_required $sql_share main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW."' 
                             OR main_table.order_id = '".Rewardpoints_Model_Stats::TYPE_POINTS_BIRTHDAY."'
@@ -425,18 +433,18 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
                                            AND (order_state.value in (?))
                                            )
                                         ) ) ", $order_states);
-
+            
             /*
              * or (orders.entity_id in (
                                 SELECT orders_new.entity_id FROM ".$table_sales_order." AS orders_new 
                                 WHERE orders_new.order_state = 'new') 
                                 AND main_table.points_spent > 0)
              */
-
+            
         }
-
-
-
+        
+        
+           
         //$this->getSelect()->where('main_table.customer_id IS NOT NULL');
         $this->getSelect()->where('main_table.rewardpoints_account_id = child_table.rewardpoints_account_id');
 
@@ -446,17 +454,17 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
 
         //v.2.0.0
         if (Mage::getStoreConfig('rewardpoints/default/points_delay', $store_id) && !$unset_date_limits){
-            $this->getSelect()->where('( NOW() >= main_table.date_start OR main_table.date_start IS NULL)');
+            $this->getSelect()->where('( DATE_ADD(NOW(), INTERVAL '.$this->interval.' DAY) >= main_table.date_start OR main_table.date_start IS NULL)');
         }
 
         if (Mage::getStoreConfig('rewardpoints/default/points_duration', $store_id) && !$unset_date_limits){
-            $this->getSelect()->where('( main_table.date_end >= NOW() or main_table.date_end IS NULL)');
+            $this->getSelect()->where('( main_table.date_end >= DATE_ADD(NOW(), INTERVAL '.$this->interval.' DAY) or main_table.date_end IS NULL)');
         }
         $this->getSelect()->group('main_table.customer_id');
-
+        
         /*echo $this->getSelect()->__toString();
         die;*/
-
+        
         return $this;
     }
 
@@ -465,7 +473,7 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
     {
 
         $status_field = Mage::getStoreConfig('rewardpoints/default/status_used', Mage::app()->getStore()->getId());
-
+        
         $this->getSelect()->joinLeft(
             array('ord' => $this->getTable('sales/order')),
             'main_table.order_id = ord.entity_id'
@@ -482,21 +490,21 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
         $cols['points_current'] = 'SUM(main_table.points_current) as nb_credit';
 
         $this->getSelect()->from($this->getResource()->getMainTable().' as child_table', $cols)
-            ->where('main_table.customer_id=?', $customer_id)
-            ->where('main_table.rewardpoints_account_id = child_table.rewardpoints_account_id');
+                ->where('main_table.customer_id=?', $customer_id)
+                ->where('main_table.rewardpoints_account_id = child_table.rewardpoints_account_id');
 
         if (Mage::getStoreConfig('rewardpoints/default/store_scope', $store_id) == 1){
             $this->getSelect()->where('find_in_set(?, main_table.store_id)', $store_id);
         }
-
-
+        
+        
         //v.2.0.0
         /*if (Mage::getStoreConfig('rewardpoints/default/points_delay', $store_id)){
             $this->getSelect()->where('( NOW() >= main_table.date_start OR main_table.date_start IS NULL)');
         }*/
 
         if (Mage::getStoreConfig('rewardpoints/default/points_duration', $store_id)){
-            $this->getSelect()->where('( main_table.date_end >= NOW() OR main_table.date_end IS NULL)');
+            $this->getSelect()->where('( main_table.date_end >= DATE_ADD(NOW(), INTERVAL '.$this->interval.' DAY) OR main_table.date_end IS NULL)');
         }
         $this->getSelect()->group('main_table.customer_id');
 
@@ -507,11 +515,11 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
     {
         $statuses = Mage::getStoreConfig('rewardpoints/default/valid_statuses', Mage::app()->getStore()->getId());
         $status_field = Mage::getStoreConfig('rewardpoints/default/status_used', Mage::app()->getStore()->getId());
-
+        
         $order_states_str = "'".implode("',",$order_states)."'";
-
+        
         $sql_required = "";
-
+        
         if (Mage::getConfig()->getModuleConfig('J2t_Rewardproductvalue')->is('active', 'true')){
             if (version_compare(Mage::getVersion(), '1.4.0', '>=')){
                 $sql_required = "(  
@@ -560,9 +568,9 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
                                            AND order_state.value in (?))
                                         ) ) ", $order_states);
         }
-
+           
         $this->getSelect()->where('main_table.customer_id = ?', $customer_id)
-            ->where('main_table.rewardpoints_account_id = child_table.rewardpoints_account_id');
+                          ->where('main_table.rewardpoints_account_id = child_table.rewardpoints_account_id');
 
         if (Mage::getStoreConfig('rewardpoints/default/store_scope', Mage::app()->getStore()->getId()) == 1){
             $this->getSelect()->where('find_in_set(?, main_table.store_id)', $store_id);
@@ -570,21 +578,21 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
 
         //v.2.0.0
         if ((Mage::getStoreConfig('rewardpoints/default/points_delay', $store_id) && !$spent)){
-            $this->getSelect()->where('( NOW() >= main_table.date_start OR main_table.date_start IS NULL)');
+            $this->getSelect()->where('( DATE_ADD(NOW(), INTERVAL '.$this->interval.' DAY) >= main_table.date_start OR main_table.date_start IS NULL)');
         }
 
         if ((Mage::getStoreConfig('rewardpoints/default/points_duration', $store_id) && !$spent) && !$remove_end){
-            $this->getSelect()->where('( main_table.date_end >= NOW() or main_table.date_end IS NULL)');
+            $this->getSelect()->where('( main_table.date_end >= DATE_ADD(NOW(), INTERVAL '.$this->interval.' DAY) or main_table.date_end IS NULL)');
         }
         $this->getSelect()->group('main_table.customer_id');
 
         //echo $this->getSelect()->__toString();
         //die;
-
+        
         return $this;
     }
-
-
+    
+    
     public function pointsByDate($dir = self::SORT_ORDER_DESC)
     {
         $this->setOrder('date_start ',  $dir);

@@ -495,135 +495,11 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
             $this->_redirect('*/sales_order/view', array('order_id' => $order->getId()));
 			
 			/*******Distribution for Reorder********/
-			$lastOrderId = $order->getId();
-            Mage::log("Order #".$lastOrderId,null,'distribution.log');
-			try{
-            $write = Mage::getSingleton('core/resource')->getConnection('core_write');
-            $readresult=$write->query("Select base_discount_amount, rewardpoints_quantity, grand_total, coupon_code from sales_flat_order where entity_id=".$lastOrderId);
-            $row = $readresult->fetch();
-            $smogiused = false;
-			Mage::log("Base Discount = ".$row['base_discount_amount'],null,'distribution.log');
-            $couponcode = $row['coupon_code'];
-            //if($row['base_discount_amount'] < 0 && $row['grand_total'] > 0)
-            if($row['base_discount_amount'] < 0 && $row['grand_total'] > 0 && $row['coupon_code'] == '')
-            {
-                $discount_amount = $row['base_discount_amount'] * -1;
-				Mage::log("Rewardpoints = ".$row['rewardpoints_quantity'],null,'distribution.log');
-                if($row['rewardpoints_quantity'] > 0)
-                    $smogiused = true;
-                //Mage::log("Smogi used = $smogiused",null,'distribution.log');        
-                $readresult=$write->query("Select entity_id from sales_flat_invoice where order_id=".$lastOrderId);
-                $row = $readresult->fetch();
-                if($row)
-                    $invoiceid = $row['entity_id'];
-                else{
-                    $invoiceid = '';
-                }
-                $arrOrderItem = array();
-                $readresult=$write->query("Select product_id, row_total_incl_tax, item_id from sales_flat_order_item where order_id=".$lastOrderId." and price > 0");
-                while ($row = $readresult->fetch() ) {
-                    $temp = array();
-                    $temp['product_id'] = $row['product_id'];
-                    $temp['price'] = $row['row_total_incl_tax'];
-                    $temp['item_id'] = $row['item_id'];
-                    $temp['exclude'] = 0;
-                    if($smogiused)
-                    {
-                        $write1 = Mage::getSingleton('core/resource')->getConnection('core_write');
-                        $readresult1=$write1->query("SELECT COUNT(*) AS cnt FROM catalog_category_product ccp, catalog_category_flat_store_1 ccfs WHERE ccp.product_id = ".$row['product_id']." AND ccfs.entity_id = ccp.category_id AND category_id IN (".Mage::getModel('core/variable')->loadByCode('nosmogicategories ')->getValue('plain').")");
-                        Mage::log("SELECT COUNT(*) AS cnt FROM catalog_category_product ccp, catalog_category_flat_store_1 ccfs WHERE ccp.product_id = ".$row['product_id']." AND ccfs.entity_id = ccp.category_id AND category_id IN (".Mage::getModel('core/variable')->loadByCode('nosmogicategories ')->getValue('plain').")",null,'distribution.log');
-                        $row1 = $readresult1->fetch();
-                        if($row1['cnt'] > 0)
-                        {
-                            $temp['exclude'] = 1;
-                            Mage::log("Excluded = ".$row['product_id'],null,'distribution.log');
-                        }
-                    }
-                    array_push($arrOrderItem, $temp);
-                }
-                $total = 0;
-                for($i = 0; $i < count($arrOrderItem); $i++)
-                {
-                    if($arrOrderItem[$i]['exclude'] == 0)
-                        $total += $arrOrderItem[$i]['price'];
-                }
-				Mage::log("Total Calculatable = ".$total,null,'distribution.log');
-                $temp = 0;
-                for($i = 0; $i < count($arrOrderItem); $i++)
-                {
-                    if($arrOrderItem[$i]['exclude'] == 1)
-                    {
-                        $arrOrderItem[$i]['price'] = 0;    
-                    }
-                    else
-                    {
-                        if($couponcode == '')
-                        {
-                            $percent = round((($arrOrderItem[$i]['price'] / $total) * 100), 2);
-                            $discount = round(($discount_amount * $percent) / 100);    
-                        }
-                        else
-                        {
-                            $percent = ($arrOrderItem[$i]['price'] / $total) * 100;
-                            $discount = round((($discount_amount * $percent) / 100), 2);
-                            Mage::log($arrOrderItem[$i]['product_id']." - ".$percent."% - ".$discount,null,'distribution.log');        
-                        }
-                        $temp += $discount;
-                        $arrOrderItem[$i]['price'] = $discount;   
-                    }
-                    Mage::log($arrOrderItem[$i]['price']."  ".$arrOrderItem[$i]['product_id'] ,null,'distribution.log');
-                }
-                Mage::log($temp."   ".$discount_amount,null,'distribution.log');    
-                if($temp < $discount_amount)
-                {
-                    for($i = count($arrOrderItem)-1; $i >=0 ; $i--)
-                    {
-                        if($arrOrderItem[$i]['exclude'] == 0)
-                        {
-                            $arrOrderItem[$i]['price'] += ($discount_amount - $temp);
-                            break;
-                        }
+            Mage::getModel('rewardpoints/stats')->ordercompleteoperations($order,'Backend');
 
-                    }
-                    //$arrOrderItem[count($arrOrderItem) - 1]['price'] += ($discount_amount - $temp);
-                }
-                if($temp > $discount_amount)
-                {
-                    for($i = count($arrOrderItem)-1; $i >=0 ; $i--)
-                    {
-                        if($arrOrderItem[$i]['exclude'] == 0)
-                        {
-                            $arrOrderItem[$i]['price'] -= ($temp - $discount_amount);
-                            break;
-                        }
-
-                    }
-                    //$arrOrderItem[count($arrOrderItem) - 1]['price'] -= ($temp - $discount_amount);
-                }
-                for($i = 0; $i < count($arrOrderItem); $i++)
-                {
-                    //$readresult=$write->query("Update sales_flat_order_item set discount_amount=".$arrOrderItem[$i]['price'].", base_discount_amount=".$arrOrderItem[$i]['price'].", discount_invoiced=".$arrOrderItem[$i]['price'].", base_discount_invoiced=".$arrOrderItem[$i]['price']." where order_id=".$lastOrderId." and product_id=".$arrOrderItem[$i]['product_id']);
-                    $readresult=$write->query("Update sales_flat_order_item set discount_amount=".$arrOrderItem[$i]['price'].", base_discount_amount=".$arrOrderItem[$i]['price'].", discount_invoiced=".$arrOrderItem[$i]['price'].", base_discount_invoiced=".$arrOrderItem[$i]['price']." where order_id=".$lastOrderId." and item_id=".$arrOrderItem[$i]['item_id']);
-                    if($invoiceid !='')
-                    $readresult=$write->query("Update sales_flat_invoice_item set discount_amount=".$arrOrderItem[$i]['price'].", base_discount_amount=".$arrOrderItem[$i]['price']." where parent_id=".$invoiceid." and order_item_id=".$arrOrderItem[$i]['item_id']);
-                }
-                Mage::log($temp."   ".$discount_amount,null,'distribution.log');
-            }
             
-            $readresult=$write->query("SELECT COUNT(item_id) AS cnt FROM sales_flat_order_item WHERE order_id=".$lastOrderId." AND qty_backordered>0");
-            $row = $readresult->fetch();
-            if($row['cnt'] > 0)
-            {
-                $order = Mage::getModel('sales/order')->load($lastOrderId);
-                $order->addStatusHistoryComment("This order contains Pre-Ordered items.");
-                $order->save();   
-            }   
-        }
-        catch(Exception $e)
-        {
-            Mage::log("Error Occured",null,'distribution.log');
-        }
-			
+            
+    
 			/*******Distribution for Reorder********/
         } catch (Mage_Payment_Model_Info_Exception $e) {
             $this->_getOrderCreateModel()->saveQuote();
@@ -644,6 +520,44 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
             $this->_redirect('*/*/');
         }
     }
+    public function smogi_setstartdate($incrementid)
+    {
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+        $readresult=$write->query("SELECT * FROM rewardpoints_account WHERE order_id = '".$incrementid."' and date_start is null order by rewardpoints_account_id desc limit 1");
+        $row = $readresult->fetch();
+        $write->query("Update rewardpoints_account set date_start='".date('Y-m-d')."' where rewardpoints_account_id=".$row['rewardpoints_account_id']);
+        Mage::getModel('rewardpoints/stats')->orderLog($incrementid, 'smogi used point date', '',$row['rewardpoints_account_id'], 'Setting date for used smogi points = '.date('Y-m-d'));
+    }
+    public function smogi_storeExpiryDate($orderinfo)
+    {
+        $smogi_balance = Mage::getModel('rewardpoints/stats')->getPointsCurrent($orderinfo['customer_id'], $orderinfo['store_id'], null, true);
+        Mage::log(json_encode($smogi_balance),null,'smogi_balance.log');
+        //Mage::getModel('rewardpoints/stats')->orderLog($orderinfo['increment_id'], 'smogi expiry date', '',json_encode($smogi_balance), 'Current SMOGI Balance');
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+        $arrEarnedPoints = $smogi_balance['history'];
+        $temp = $orderinfo['rewardpoints_quantity'];
+        foreach($arrEarnedPoints as $key => $value)
+        {
+            if($arrEarnedPoints[$key]['points_current'] <= 0)
+                continue;
+            if((strtotime($arrEarnedPoints[$key]['date_end']) > strtotime(date('Y-m-d'))) && (($arrEarnedPoints[$key]['points_current'] - $arrEarnedPoints[$key]['balance']) > 0))
+            {
+                if(($arrEarnedPoints[$key]['points_current'] - $arrEarnedPoints[$key]['balance']) >= $temp)
+                {
+                    $write->query("Insert into smogi_store_expiry_date values(null,".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".$temp.",'".$arrEarnedPoints[$key]['date_end']."',0)");
+                    $temp = 0;
+                }
+                else
+                {
+                    $write->query("Insert into smogi_store_expiry_date values(null,".$orderinfo['entity_id'].",".$orderinfo['customer_id'].",".($arrEarnedPoints[$key]['points_current'] - $arrEarnedPoints[$key]['balance']).",'".$arrEarnedPoints[$key]['date_end']."',0)");
+                    $temp -= $arrEarnedPoints[$key]['points_current'] - $arrEarnedPoints[$key]['balance'];
+                }
+                if($temp <= 0)
+                    break;
+            }
+        }
+    }
+
 
     /**
      * Acl check for admin
