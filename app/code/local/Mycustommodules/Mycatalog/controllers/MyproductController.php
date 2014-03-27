@@ -2622,7 +2622,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             $csv[$i] = array($customer['customer_id'],$customer['customer_email'],$customer['customer_name'],$customer['bucks_expiring'],$dateAfter);
             $i++;
         }
-        
+
         $fname = 'smogiExpiryReport_on'.$dateAfter;
 
 
