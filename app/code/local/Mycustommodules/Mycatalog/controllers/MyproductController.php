@@ -2610,13 +2610,34 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
     public function testMailNotificationAction()
     {
         $days = $this->getRequest()->getParam('days');
+        $dateAfter = date('Y-m-d', strtotime(date('Y-m-d'). ' + '.$days.' day'));
         $customerList = Mage::getModel('smogiexpirationnotifier/notify')->getCustomerslist($days);
+        $csv = array();
 
+        $csv[0] = array('Customer Id','Customer Email','Customer Name', '# Smogi Bucks','Expiry Date');
+        $i = 1;
         foreach($customerList as $customer)
         {
-            echo $customer['customer_id']. " ".$customer['customer_email']." ".$customer['customer_name']." ".$customer['bucks_expiring']."<br/>";
+            //echo $customer['customer_id']. " ".$customer['customer_email']." ".$customer['customer_name']." ".$customer['bucks_expiring']."<br/>";
+            $csv[$i] = array($customer['customer_id'],$customer['customer_email'],$customer['customer_name'],$customer['bucks_expiring'],$dateAfter);
+            $i++;
+        }
+        
+        $fname = 'smogiExpiryReport_on'.$dateAfter;
+
+
+        $baseDir = Mage::getBaseDir();
+        $varDir = $baseDir.DS.'tempreports'.DS.$fname.'.csv';
+
+        unlink($varDir);
+        $fp = fopen($varDir, 'w');
+        foreach ($csv as $fields) {
+            fputcsv($fp, $fields);
         }
 
+        Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".csv");
+       // echo "<pre>";
+        //print_r($csv);
         //Mage::getModel('smogiexpirationnotifier/notify')->notifyusers();
         //echo Mage::getModel('rewardpoints/stats')->getPointsCurrent(1,1);
     }
