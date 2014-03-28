@@ -2641,5 +2641,9 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         //Mage::getModel('smogiexpirationnotifier/notify')->notifyusers();
         //echo Mage::getModel('rewardpoints/stats')->getPointsCurrent(1,1);
     }
+    public function callnotifyusersAction()
+    {
+        Mage::getModel('smogiexpirationnotifier/notify')->notifyusers();
+    }
 }
 ?>
