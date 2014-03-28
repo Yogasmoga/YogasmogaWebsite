@@ -43,7 +43,7 @@
         <jobs>
             <Ankitsinghania_Smogiexpirationnotifier>
                 <schedule>
-                    <cron_expr>40 6 * * *</cron_expr>
+                    <cron_expr>0 7 * * *</cron_expr>
                 </schedule>
                 <run>
                     <model>smogiexpirationnotifier/notify::notifyusers</model>
