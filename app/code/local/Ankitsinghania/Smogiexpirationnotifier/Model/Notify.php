@@ -74,11 +74,27 @@ class Ankitsinghania_Smogiexpirationnotifier_Model_Notify extends Mage_Core_Mode
                 $customerName = $customer->getName();
                 $customerEmail = $customer->getEmail();
                 $customer_id =  $customer->getId();
-                $expireSmogiBucks = Mage::getModel('rewardpoints/stats')->getPointsCurrent($customer_id,$store_id) - Mage::getModel('rewardpoints/stats')->getPointsCurrent($customer_id,$store_id,$dateAfter);
-                if($expireSmogiBucks > 0)
+                //$expireSmogiBucks = Mage::getModel('rewardpoints/stats')->getPointsCurrent($customer_id,$store_id) - Mage::getModel('rewardpoints/stats')->getPointsCurrent($customer_id,$store_id,$dateAfter);
+
+                $afterSmogiArrray = Mage::getModel('rewardpoints/stats')->getPointsCurrent($customer_id,$store_id,$dateAfter, true);
+                $afterBalance = 0;
+
+                foreach($afterSmogiArrray["history"] as $smogi1)
                 {
-                    array_push($customerlist, array("customer_id" => $customer_id, "customer_email" => $customerEmail, "customer_name" => $customerName,"bucks_expiring" => $expireSmogiBucks));
+                    if(strtotime($dateAfter)== strtotime($smogi1["date_end"]))
+                    {
+                        $afterBalance += $smogi1["balance"];
+
+                    }
                 }
+
+                    $expireSmogiBucks = $afterBalance;
+                    if($expireSmogiBucks > 0)
+                    {
+                        array_push($customerlist, array("customer_id" => $customer_id, "customer_email" => $customerEmail, "customer_name" => $customerName,"bucks_expiring" => $expireSmogiBucks));
+                    }
+
+
 
             }
 
