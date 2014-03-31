@@ -76,7 +76,17 @@ jQuery(window).load(function(){
     $howdoesitfitblockid = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId());
     $sizechartblockid = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'size_chart', Mage::app()->getStore()->getStoreId());
     $cats = $_product->getCategoryIds();
-    $categoryid = Mage::getModel('catalog/category')->load($cats[0])->getId();
+    $categoryid = '';
+     $currentUrl = Mage::getUrl('*/*/*', array('_current' => true));
+    for($i=strlen($currentUrl)-2;$i>1;$i--)
+    {
+        $categoryid .= $currentUrl[$i];
+        if($currentUrl[$i] == '/')
+            break;
+
+    }
+    $categoryid = (int)$categoryid;
+    //$categoryid = Mage::getModel('catalog/category')->load($cats[0])->getId();
     $categoryurl = Mage::getModel("catalog/category")->load($categoryid)->getUrl();
     //echo $categoryid;
     $breadcrumb = '<a href="'.Mage::helper('core/url')->getHomeUrl().'">Home</a>';
