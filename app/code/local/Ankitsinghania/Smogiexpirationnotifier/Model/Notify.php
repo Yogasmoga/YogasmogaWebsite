@@ -29,11 +29,10 @@ class Ankitsinghania_Smogiexpirationnotifier_Model_Notify extends Mage_Core_Mode
                 $notification_log->setBucks_expiring($customer['bucks_expiring']);
                 $notification_log->setBucks_expiration_date($bucks_expiration_date);
                 $notification_log->setNotify_date($notify_date);
-                //if($serverType == 'production')
-				if(false)
-                    $notification_log->setEmail_status($this->sendemail($customer['customer_name'], $customer['customer_email'], $customer['bucks_expiring'], $notification_period));
-                else
-                    $notification_log->setEmail_status($this->sendemail($customer['customer_name'], "ankit@mobikasa.com", $customer['bucks_expiring'], $notification_period));
+                if($serverType == 'production')
+				    $notification_log->setEmail_status($this->sendemail($customer['customer_name'], $customer['customer_email'], $customer['bucks_expiring'], $notification_period));
+            /*    else
+                    $notification_log->setEmail_status($this->sendemail($customer['customer_name'], "ankit@mobikasa.com", $customer['bucks_expiring'], $notification_period));  */
                 $notification_log->setNotification_period($notification_period);
                 $notification_log->save();
             }
