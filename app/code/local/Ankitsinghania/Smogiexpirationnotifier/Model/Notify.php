@@ -13,7 +13,6 @@ class Ankitsinghania_Smogiexpirationnotifier_Model_Notify extends Mage_Core_Mode
     public function notifyusers()
     {
         Mage::log("notifying users", null, "smoginotifier.log");
-        return;
         $notification_periods = array(3,30);
         $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
         foreach($notification_periods as $notification_period)
