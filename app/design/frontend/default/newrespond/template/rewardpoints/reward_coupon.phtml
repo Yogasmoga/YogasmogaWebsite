@@ -38,7 +38,8 @@
     font-weight: normal;
     line-height: 1.2;">DO YOU HAVE SMOGI BUCKS?*</h6>
                 </div>
-                    <p>Returning customer? Use your SMOGI Bucks from past purchases.</p>
+                    <!--<p>Returning customer? Use your SMOGI Bucks from past purchases.</p> -->
+                    <p><a style="color: #D90D3D" href="<?php  echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/login?goto=cart" >New customer?</a> Claim your SMOGI<br />bucks! Create an account.<br/>Returning customer?</p>
             		
             		<a href="<?php  echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/login?goto=cart">
             		<button value="<?php echo $this->__('Login') ?>" class="button1 btn-cart1" title="Login" type="button"><span>LOGIN</span></button>
