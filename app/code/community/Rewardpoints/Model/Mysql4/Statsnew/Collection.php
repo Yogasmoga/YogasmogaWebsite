@@ -258,7 +258,7 @@ class Rewardpoints_Model_Mysql4_Statsnew_Collection extends Mage_Core_Model_Mysq
     }
 
     public function addUsedpointsbydate($store_id, $customer_id){
-        echo "abc".$this->interval;
+        //echo "abc".$this->interval."--------";
         $statuses = Mage::getStoreConfig('rewardpoints/default/valid_statuses', $store_id);
         $status_field = Mage::getStoreConfig('rewardpoints/default/status_used', $store_id);
         

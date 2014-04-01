@@ -38,43 +38,14 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
     // J2T points validation date
     protected $points_received_reajust;
     protected $points_spent;
-    
+
     protected $points_lost;
-    
+
     const XML_PATH_NOTIFICATION_EMAIL_TEMPLATE       = 'rewardpoints/notifications/notification_email_template';
     const XML_PATH_NOTIFICATION_EMAIL_IDENTITY       = 'rewardpoints/notifications/notification_email_identity';
 
-    public $interval = 0;
-
-    public function setInterval($val)
-    {
-        $this->interval = $val;
-        $this->points_received_reajust = null;
-        $this->$points_received = null;
-        $this->$points_received_no_exp = null;
-        $this->$points_spent = null;
-        $this->$points_lost = null;
-
-        return $this;
-    }
-/*
-    function __construct($interval)
-    {
-        echo "Constructor = ".$interval['interval']."<br/>";
-//die;
-        //$this->interval = 3;
-        parent::_construct($interval);
-        $this->_init('rewardpoints/stats');
-
-        $this->_targets = array(
-            self::TARGET_PER_ORDER     => Mage::helper('rewardpoints')->__('Related to Order ID'),
-            self::TARGET_FREE   => Mage::helper('rewardpoints')->__('Not related to Order ID'),
-        );
-    }*/
-
     public function _construct()
     {
-        //echo "constuctor called. . . . .".$this->interval."<br/>";
         parent::_construct();
         $this->_init('rewardpoints/stats');
 
@@ -99,27 +70,27 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
     {
         $res = array();
         foreach ($array as $value => $label) {
-        	$res[] = array('value' => $value, 'label' => $label);
+            $res[] = array('value' => $value, 'label' => $label);
         }
         return $res;
     }
-    
-    
+
+
     //J2T Check referral
     public function loadByReferralId($referral_id, $referral_customer_id = null)
     {
         $this->addData($this->getResource()->loadByReferralId($referral_id, $referral_customer_id));
         return $this;
     }
-    
+
     public function loadpointsbydate($store_id, $customer_id, $date){
-        $collection = $this->getCollection()->setInterval($this->interval);
-        $collection->getSelect()->where("main_table.customer_id = ?", $customer_id);        
+        $collection = $this->getCollection();
+        $collection->getSelect()->where("main_table.customer_id = ?", $customer_id);
         $collection->getSelect()->where("( ? >= main_table.date_start )", $date);
         $collection->getSelect()->where("( main_table.date_end >= ? )", $date);
-        $collection->getSelect()->where("( main_table.date_end <= DATE_ADD(NOW(), INTERVAL ".$this->interval." DAY) )");
+        $collection->getSelect()->where("( main_table.date_end <= NOW() )");
         $collection->addValidPoints($store_id, true);
-        
+
         //echo $collection->getSelect()->__toString();
         //die;
 
@@ -127,16 +98,16 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
         if (!$row) return $this;
         return $row;
     }
-    
-    public function getDobPoints($store_id, $customer_id) 
+
+    public function getDobPoints($store_id, $customer_id)
     {
         //self::TYPE_POINTS_BIRTHDAY
-        $collection = $this->getCollection()->setInterval($this->interval);
-        $collection->getSelect()->where("main_table.customer_id = ?", $customer_id);        
+        $collection = $this->getCollection();
+        $collection->getSelect()->where("main_table.customer_id = ?", $customer_id);
         //$collection->getSelect()->where("( ? >= main_table.date_start )", $date);
         $collection->getSelect()->where("main_table.order_id  = ?", self::TYPE_POINTS_BIRTHDAY);
         $collection->pointsByDate();
-        
+
         $row = $collection->getFirstItem();
         if (!$row) return $this;
         return $row;
@@ -144,21 +115,21 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
 
     public function loadByCustomerId($customer_id)
     {
-        $collection = $this->getCollection()->setInterval($this->interval);
+        $collection = $this->getCollection();
         $collection->getSelect()->where('customer_id = ?', $customer_id);
 
         $row = $collection->getFirstItem();
         if (!$row) return $this;
         return $row;
     }
-    
+
     public function loadReferrer($customer_id, $order_id)
     {
-        $collection = $this->getCollection()->setInterval($this->interval);
+        $collection = $this->getCollection();
         $collection->getSelect()->where('customer_id <> ?', $customer_id);
         $collection->getSelect()->where('order_id = ?', $order_id);
-        
-        
+
+
         $row = $collection->getFirstItem();
         if (!$row) return $this;
         return $row;
@@ -166,7 +137,7 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
 
     public function checkProcessedOrder($customer_id, $order_id, $isCredit = true)
     {
-        $collection = $this->getCollection()->setInterval($this->interval);
+        $collection = $this->getCollection();
         $collection->getSelect()->where('customer_id = ?', $customer_id);
         $collection->getSelect()->where('order_id = ?', $order_id);
         if ($isCredit){
@@ -183,7 +154,7 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
 
     public function getPointsUsed($order_id, $customer_id)
     {
-        $collection = $this->getCollection()->setInterval($this->interval);
+        $collection = $this->getCollection();
         $collection->getSelect()->where('customer_id = ?', $customer_id);
         $collection->getSelect()->where('order_id = ?', $order_id);
         $collection->getSelect()->where('points_spent > ?', '0');
@@ -195,12 +166,12 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
 
 
     public function getPointsWaitingValidation($customer_id, $store_id){
-        $collection = $this->getCollection()->setInterval($this->interval)->joinFullCustomerPoints($customer_id, $store_id);
+        $collection = $this->getCollection()->joinFullCustomerPoints($customer_id, $store_id);
         $row = $collection->getFirstItem();
         return $row->getNbCredit() - $this->getPointsReceived($customer_id, $store_id) + $this->getPointsReceivedReajustment($customer_id, $store_id);
     }
-    
-    
+
+
     public function sendNotification(Mage_Customer_Model_Customer $customer, $store_id, $points, $days)
     {
         $translate = Mage::getSingleton('core/translate');
@@ -217,66 +188,58 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
 
         $sender  = Mage::getStoreConfig(self::XML_PATH_NOTIFICATION_EMAIL_IDENTITY, $store_id);
         $email->setDesignConfig(array('area'=>'frontend', 'store'=>$store_id))
-                ->sendTransactional(
-                    $template,
-                    $sender,
-                    $recipient['email'],
-                    $recipient['name'],
-                    array(
-                        'points'   => $points,
-                        'days'   => $days,
-                        'customer' => $customer
-                    )
-                );
+            ->sendTransactional(
+                $template,
+                $sender,
+                $recipient['email'],
+                $recipient['name'],
+                array(
+                    'points'   => $points,
+                    'days'   => $days,
+                    'customer' => $customer
+                )
+            );
         $translate->setTranslateInline(true);
         return $email->getSentSuccess();
     }
-    
+
     /**
      * J2T modification fixing issue related to points validation dates
      * getPointsReceivedReajustment protected function allowing to readjust points regarding points validation dates
      * @param int $customer_id
      * @param int $store_id
-     * @return int 
+     * @return int
      */
-    public function getPointsReceivedReajustment($customer_id, $store_id) { //echo 'test';
+    protected function getPointsReceivedReajustment($customer_id, $store_id) {
         /*$points = Mage::getModel('rewardpoints/stats')
                                 ->getResourceCollection()
                                 ->addUsedpointsbydate($store_id, $customer_id);*/
-        
+
         if ($this->points_received_reajust != null){
             return $this->points_received_reajust;
         } else {
             //get all points used groupped by date
             $points = $this
-                                ->getResourceCollection()
-                                ->setInterval($this->interval)
-                                ->addUsedpointsbydate($store_id, $customer_id);
+                ->getResourceCollection()
+                ->addUsedpointsbydate($store_id, $customer_id);
             $acc_fix_points = 0;
-			
             if ($points->getSize()){
                 foreach ($points as $current_point){
-                    echo $current_point->getData('date_order')."      ".$current_point->getData('nb_credit_spent')."<br/>";
                     //validate points per date
                     $points_accum = Mage::getModel('rewardpoints/stats')->loadpointsbydate($store_id, $customer_id, $current_point->getData('date_order'));
-					//echo $current_point->getData('date_order')."<br/>";
-					//echo $current_point->getData('nb_credit_spent');
-					//echo '<pre>';print_r($points_accum);
-					//echo $points_accum->getData('nb_credit')."<br/>";
                     //if ($points_accum->getData('nb_credit') >= $current_point->getData('nb_credit_spent')){
                     //FIX POINTS READJUST!!!!
                     if ($points_accum->getData('nb_credit') >= $current_point->getData('nb_credit_spent')){
                         $acc_fix_points += $current_point->getData('nb_credit_spent');
-                    } 
+                    }
                 }
             }
-			//echo '<pre>';print_r($points);die('trest');
             $this->points_received_reajust = $acc_fix_points;
             return $acc_fix_points;
-        }        
+        }
     }
-    
-    
+
+
     public function getRealPointsLost($customerId, $store_id) {
         if ($this->points_lost){
             return $this->points_lost;
@@ -294,14 +257,14 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
         $order_states = explode(",", $statuses);
 
         //$order_states = array("'processing'","'complete'");
-        $collection = $this->getCollection()->setInterval($this->interval);
+        $collection = $this->getCollection();
         $collection->joinValidPointsOrder($customer_id, $store_id, $order_states);
-        
+
         /*$collection->printlogquery(true);
         die;*/
         $row = $collection->getFirstItem();
         $this->points_received = $row->getNbCredit() + $this->getPointsReceivedReajustment($customer_id, $store_id);
-        
+
         //J2T modification fixing issue related to points validation dates
         //return $row->getNbCredit();
         //echo $collection->getSelect()->__toString();
@@ -310,9 +273,9 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
         //die;
         return $row->getNbCredit() + $this->getPointsReceivedReajustment($customer_id, $store_id);
     }
-    
-    
-    
+
+
+
     public function getRealPointsReceivedNoExpiry($customer_id, $store_id){
         if ($this->points_received_no_exp){
             return $this->points_received_no_exp;
@@ -321,14 +284,14 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
         $order_states = explode(",", $statuses);
 
         //$order_states = array("'processing'","'complete'");
-        $collection = $this->getCollection()->setInterval($this->interval);
+        $collection = $this->getCollection();
         $collection->joinValidPointsOrder($customer_id, $store_id, $order_states, false, true);
-        
+
         /*$collection->printlogquery(true);
         die;*/
         $row = $collection->getFirstItem();
         $this->points_received_no_exp = $row->getNbCredit();
-        
+
         //J2T modification fixing issue related to points validation dates
         //return $row->getNbCredit();
         //echo $collection->getSelect()->__toString();
@@ -337,7 +300,7 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
     }
 
     public function getPointsSpent($customer_id, $store_id){
-        
+
         if ($this->points_spent){
             return $this->points_spent;
         }
@@ -349,9 +312,9 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
 
         //$order_states = array("'processing'","'complete'","'new'");
 
-        $collection = $this->getCollection()->setInterval($this->interval);
+        $collection = $this->getCollection();
         $collection->joinValidPointsOrder($customer_id, $store_id, $order_states, true);
-        
+
         $row = $collection->getFirstItem();
 
         $this->points_spent = $row->getNbCredit();
@@ -362,9 +325,9 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
     public function getPointsCurrent($customer_id, $store_id){
         $total = $this->getPointsReceived($customer_id, $store_id) - $this->getPointsSpent($customer_id, $store_id);
         if ($total > 0){
-                return $total;
+            return $total;
         } else {
-                return 0;
+            return 0;
         }
     }
 
@@ -375,7 +338,7 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
             'store_id' => $store_id,
             'points_current' => $pointsInt,
             'convertion_rate' => Mage::getStoreConfig('rewardpoints/default/points_money', $store_id)
-            );
+        );
         //v.2.0.0
         $add_delay = 0;
         if ($delay = Mage::getStoreConfig('rewardpoints/default/points_delay', $store_id) && $force_nodelay){
@@ -397,7 +360,7 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
         $this->save();
     }
 
-    
+
 
 }
 

@@ -258,7 +258,7 @@ class Rewardpoints_Model_Statsnew extends Mage_Core_Model_Abstract
 			
             if ($points->getSize()){
                 foreach ($points as $current_point){
-                    echo $current_point->getData('date_order')."      ".$current_point->getData('nb_credit_spent')."<br/>";
+                    //echo $current_point->getData('date_order')."      ".$current_point->getData('nb_credit_spent')."<br/>";
                     //validate points per date
                     $points_accum = Mage::getModel('rewardpoints/statsnew')->loadpointsbydate($store_id, $customer_id, $current_point->getData('date_order'));
 					//echo $current_point->getData('date_order')."<br/>";

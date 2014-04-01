@@ -1988,9 +1988,14 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         //$obj = new Rewardpoints_Model_Stats('abcd');
         //echo $obj->getPointsCurrent(30, 1);
         //die;
-        echo $points = Mage::getModel('rewardpoints/stats')->getPointsCurrent(30, 1)."<br/>";
-        Mage::register('smogi_exp_interval', 0);
-		echo $points = Mage::getModel('rewardpoints/statsnew')->getPointsCurrent(30, 1);
+        $days = $this->getRequest()->getParam('days');
+        Mage::register('smogi_exp_interval',$days );
+        echo "Points Available today--->".$points = Mage::getModel('rewardpoints/stats')->getPointsCurrent(30, 1)."<br/>";
+        //Mage::register('smogi_exp_interval', 0);
+		echo "Points Available after ".$days."days---> ".$points_new = Mage::getModel('rewardpoints/statsnew')->getPointsCurrent(30, 1)."<br/>";
+        echo "Expiry Smogi bugs are:-->";
+        echo $points-$points_new;
+
 		//echo $points = Mage::getModel('rewardpoints/stats')->getPointsReceived(30, 1);
 		//echo $points = Mage::getModel('rewardpoints/stats')->getPointsSpent(30, 1);
 		//echo $points = Mage::getModel('rewardpoints/stats')->getPointsReceivedReajustment(30, 1);
@@ -1998,5 +2003,10 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 		//echo $points = Mage::getModel('rewardpoints/stats')->getRealPointsReceivedNoExpiry(30, 1);
 		//echo $points = Mage::getModel('rewardpoints/stats')->loadpointsbydate(1, 30,'2014-05-31');
 	}
+    public  function checkSmogiExpiryAction()
+    {
+
+
+    }
 }
 ?>
