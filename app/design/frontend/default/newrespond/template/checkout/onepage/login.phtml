@@ -24,6 +24,9 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<?php
+Mage::getSingleton('core/session')->setGuestUser("guest");
+?>
 <?php /* Extensions placeholder */ ?>
 <?php echo $this->getChildHtml('checkout.onepage.login.extra')?>
 <div class="col2-set">
@@ -74,8 +77,10 @@
             <input type="hidden" name="checkout_method" id="login:register" value="register" checked="checked" />
         <?php endif; ?>
         <div class="buttons-set">
-            <button type="button" class="button btn-cont" onclick="checkout.setMethod();"><span><span><?php echo ($this->getQuote()->isAllowedGuestCheckout() ? $this->__('Continue') : $this->__('Register')) ?></span></span></button>
+
+         <button type="button" class="button btn-cont" onclick="window.location='<?php  echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/login?goto=cart';"><span><span><?php echo ($this->getQuote()->isAllowedGuestCheckout() ? $this->__('Continue') : $this->__('Register')) ?></span></span></button>
         </div>
+
     </div>
 </div>
 <script type="text/javascript">

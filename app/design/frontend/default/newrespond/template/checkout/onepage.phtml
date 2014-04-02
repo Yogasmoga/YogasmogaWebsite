@@ -24,7 +24,17 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<?php
+if(Mage::getSingleton('core/session')->getGuestUser() == 'guest')
+{
 
+    Mage::getSingleton('core/session')->setGuestUser("");
+    Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
+    //Mage::getSingleton('core/cookie')->set('afterlogindest', 'cart' ,time()+86400,'/');
+    //echo "here";
+}
+
+?>
 
 <?php
 
