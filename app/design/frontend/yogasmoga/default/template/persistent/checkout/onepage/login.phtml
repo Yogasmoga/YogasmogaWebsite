@@ -25,12 +25,16 @@
  */
 ?>
 <?php
+
 /**
  * Customer onepage checkout login form template
  *
  * @see app/design/frontend/base/default/template/checkout/onepage/login.phtml
  */
 /** @var $this Mage_Checkout_Block_Onepage_Login */
+?>
+<?php
+    Mage::getSingleton('core/session')->setGuestUser("guest");
 ?>
 <table class="fixwidth" id="tblcheckoutlogin">
     <tr>
@@ -89,8 +93,8 @@
                     <td>
                             <div class="sectionheader">NEW CUSTOMER</div>
                         <p>I am a new SMOGI.</p>
-                      <div id="checkout-guest-continue" class="spbutton" imageurl="<?php echo $this->getSkinUrl('images/checkout/continue_off.png'); ?>" downimageurl="<?php //echo $this->getSkinUrl('images/checkout/continue_on.png'); ?>"></div>
-                       <!-- <a style="margin-top: 45px;" href="<?php // echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/login?goto=cart"><img src="<?php// echo $this->getSkinUrl('images/checkout/continue_off.png'); ?>" /> </a>  -->
+                    <!--  <div id="checkout-guest-continue" class="spbutton" imageurl="<?php //echo $this->getSkinUrl('images/checkout/continue_off.png'); ?>" downimageurl="<?php //echo $this->getSkinUrl('images/checkout/continue_on.png'); ?>"></div>  -->
+                        <a  href="<?php  echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/login?goto=cart"><img style="margin-top: 45px;" src="<?php echo $this->getSkinUrl('images/checkout/continue_off.png'); ?>" /> </a>
                     </td>
                 </tr>
             </table>            
