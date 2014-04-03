@@ -30,17 +30,20 @@
  */
 ?>
 <?php
-if(Mage::getModel('core/cookie')->get('afterlogindest') == "cart")
+if(Mage::getSingleton('customer/session')->isLoggedIn())
 {
-    //Mage::getModel('core/cookie')->delete('afterlogindest');
+    if(Mage::getModel('core/cookie')->get('afterlogindest') == "cart")
+    {
+        //Mage::getModel('core/cookie')->delete('afterlogindest');
 
-    Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart#promotions");
-    Mage::getModel('core/cookie')->set('afterlogindest', 'cart123', 0,'/');
-}
-if(Mage::getModel('core/cookie')->get('afterlogindest') == "giftofys")
-{
-    Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."gift_of_ys#redeemcard");
-    Mage::getModel('core/cookie')->set('afterlogindest', 'cart123', 0,'/');
+        Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart#promotions");
+        Mage::getModel('core/cookie')->set('afterlogindest', 'cart123', 0,'/');
+    }
+    if(Mage::getModel('core/cookie')->get('afterlogindest') == "giftofys")
+    {
+        Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."gift_of_ys#redeemcard");
+        Mage::getModel('core/cookie')->set('afterlogindest', 'cart123', 0,'/');
+    }
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
