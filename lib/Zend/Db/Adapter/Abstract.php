@@ -480,7 +480,7 @@ abstract class Zend_Db_Adapter_Abstract
 
         // return the results embedded in the prepared statement object
         $stmt->setFetchMode($this->_fetchMode);
-		Mage::log($sql,null,"allquery.log");
+		//Mage::log($sql,null,"allquery.log");
         return $stmt;
     }
 

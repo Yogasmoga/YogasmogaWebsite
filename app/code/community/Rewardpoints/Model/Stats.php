@@ -473,6 +473,11 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
         $this->setData($post);
         $this->save();
     }
+    public function orderLog($orderNumber, $process, $creditMemoId = null, $log, $logType )
+    {
+
+
+    }
 
 
 

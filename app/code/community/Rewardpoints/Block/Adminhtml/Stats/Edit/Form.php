@@ -113,7 +113,7 @@ class Rewardpoints_Block_Adminhtml_Stats_Edit_Form extends Mage_Adminhtml_Block_
             'label'     => Mage::helper('rewardpoints')->__('To Date'),
             'image'  => Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'/adminhtml/default/default/images/grid-cal.gif',
             'format' => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
-            'required'  => false,
+            'required'  => true,
         ));
 
 

@@ -235,10 +235,10 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
         $lastOrderId = $session->getLastOrderId();
         
         Mage::log("Order #".$lastOrderId,null,'distribution.log');
-        
+        Mage::getModel('rewardpoints/stats')->orderLog();
         try{
             $write = Mage::getSingleton('core/resource')->getConnection('core_write');
-            $readresult=$write->query("Select base_discount_amount, rewardpoints_quantity, grand_total, coupon_code from sales_flat_order where entity_id=".$lastOrderId);
+            $readresult=$write->query("Select base_discount_amount, rewardpoints_quantity, grand_total, coupon_code,store_id,entity_id,customer_id from sales_flat_order where entity_id=".$lastOrderId);
             $row = $readresult->fetch();
             $smogiused = false;
 			Mage::log("Base Discount = ".$row['base_discount_amount'],null,'distribution.log');
@@ -355,14 +355,16 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
             
             $readresult=$write->query("SELECT COUNT(item_id) AS cnt FROM sales_flat_order_item WHERE order_id=".$lastOrderId." AND qty_backordered>0");
             $row = $readresult->fetch();
+            $order = Mage::getModel('sales/order')->load($lastOrderId);
             if($row['cnt'] > 0)
             {
-                $order = Mage::getModel('sales/order')->load($lastOrderId);
+               // $order = Mage::getModel('sales/order')->load($lastOrderId);
                 $order->addStatusHistoryComment("This order contains Pre-Ordered items.");
                 $order->save();   
             }
             if($smogiused)
             {
+
                 // $query = "SELECT * FROM rewardpoints_account WHERE order_id = '".$order->getIncrementId()."' and date_start is null order by rewardpoints_account_id desc limit 1";
                 // Mage::log($query,null,'distirbution.log');
                 $readresult=$write->query("SELECT * FROM rewardpoints_account WHERE order_id = '".$order->getIncrementId()."' and date_start is null order by rewardpoints_account_id desc limit 1");
@@ -374,7 +376,7 @@ class Smogi_Distributionfrontend_OnepageController extends Mage_Checkout_Onepage
         }
         catch(Exception $e)
         {
-            Mage::log("Error Occured",null,'distribution.log');
+            Mage::log("Error Occured".$e->getMessage(),null,'distribution.log');
         }
         
         $lastRecurringProfiles = $session->getLastRecurringProfileIds();
