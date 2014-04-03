@@ -16,7 +16,7 @@
  * @copyright  Copyright (c) 2009 J2T DESIGN. (http://www.j2t-design.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
+class Rewardpoints_Model_Statsnew extends Mage_Core_Model_Abstract
 {
     const TARGET_PER_ORDER     = 1;
     const TARGET_FREE   = 2;
@@ -46,6 +46,7 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
 
     public $interval = 0;
 
+
     public function setInterval($val)
     {
         $this->interval = $val;
@@ -74,9 +75,10 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
 
     public function _construct()
     {
+        $this->interval = Mage::registry('smogi_exp_interval');
         //echo "constuctor called. . . . .".$this->interval."<br/>";
         parent::_construct();
-        $this->_init('rewardpoints/stats');
+        $this->_init('rewardpoints/statsnew');
 
         $this->_targets = array(
             self::TARGET_PER_ORDER     => Mage::helper('rewardpoints')->__('Related to Order ID'),
@@ -258,7 +260,7 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
                 foreach ($points as $current_point){
                     echo $current_point->getData('date_order')."      ".$current_point->getData('nb_credit_spent')."<br/>";
                     //validate points per date
-                    $points_accum = Mage::getModel('rewardpoints/stats')->loadpointsbydate($store_id, $customer_id, $current_point->getData('date_order'));
+                    $points_accum = Mage::getModel('rewardpoints/statsnew')->loadpointsbydate($store_id, $customer_id, $current_point->getData('date_order'));
 					//echo $current_point->getData('date_order')."<br/>";
 					//echo $current_point->getData('nb_credit_spent');
 					//echo '<pre>';print_r($points_accum);

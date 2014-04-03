@@ -16,7 +16,7 @@
  * @copyright  Copyright (c) 2011 J2T DESIGN. (http://www.j2t-design.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract
+class Rewardpoints_Model_Mysql4_Statsnew_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract
 {
     protected $_countAttribute = 'main_table.customer_id';
     //main_table.rewardpoints_account_id
@@ -26,7 +26,7 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
     public function _construct()
     {
         parent::_construct();
-        $this->_init('rewardpoints/stats');
+        $this->_init('rewardpoints/statsnew');
     }
     
     public function setCountAttribute($value)
