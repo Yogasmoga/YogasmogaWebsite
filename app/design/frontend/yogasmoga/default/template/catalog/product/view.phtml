@@ -45,7 +45,13 @@ jQuery(window).load(function(){
 <?php $_helper = $this->helper('catalog/output'); ?>
 <?php $_product = $this->getProduct(); ?>
 <?php $_product = Mage::getModel('catalog/product')->load($_product->getId()); ?>
-
+<?php //echo $this->getReviewsSummaryHtml($_product, false, true)?>
+<?php echo $this->getReviewsSummaryHtml($_product, 'short')?>
+<?php $reviewHelper = $this->getLayout()->createBlock('review/helper');
+echo $reviewHelper->getSummaryHtml($_product, 'short', false);
+?>
+<?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+<?php echo $this->getChildHtml('reviews') ?>
 <?php
     //$stockItem = $_product->getStockItem();
 //    if($stockItem->getIsInStock())
