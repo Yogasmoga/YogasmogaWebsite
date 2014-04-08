@@ -2502,5 +2502,14 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             $date = $this->getRequest()->getParam('date');
         var_dump(Mage::getModel('rewardpoints/stats')->getPointsCurrent($customerid, 1, $date, true));
     }
+
+    public function getPointslogAction()
+    {
+        $customerid = $this->getRequest()->getParam('customerid');
+        $history = Mage::getModel('rewardpoints/stats')->getPointsCurrent_excludelast($customerid,1,null,true);
+        echo "<pre>";
+        print_r($history);
+        echo "</pre>";
+    }
 }
 ?>
