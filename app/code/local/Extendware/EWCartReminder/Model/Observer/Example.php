@@ -11,7 +11,10 @@ class Extendware_EWCartReminder_Model_Observer_Example
 		
 		// change any variables you want here
 		$variables['customer_name'] = ucwords(strtolower($variables['customer_name']));
-		
+		//for testing
+        //$variables['customer_name'] = "Testing Mobikasa";
+        Mage::log($variables['customer_name'],null,"abondandcart.log");
+        Mage::log('mobikasa-testing',null,"abondandcart.log");
 		// set the modified template variables in the transport so that it will be utilized
 		$observer->getTransport()->setTemplateVariables($variables);
 	}
