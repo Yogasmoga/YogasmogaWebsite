@@ -2691,12 +2691,15 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($id);
                 if (isset($parentIds[0])) {
                     $parentproduct = Mage::getModel('catalog/product')->load($parentIds[0]);
+                    $subhtml2 .= '<td>'.$parentproduct->getName().'</td>';
+                }else{
+                    $subhtml2 .= '<td>'.$_product->getName().'</td>';
                 }
                 //echo $parentproduct->getUrlKey();
                 //print_r($parentproduct);die;
 
                 //$subhtml2 .= '<td>'.$_product->getName().'</td>';
-                $subhtml2 .= '<td>'.$parentproduct->getName().'</td>';
+
                 $pcolor = (int) $_product->getColor();
                 $subhtml2 .= '<td>'.$color = array_search($pcolor, $colorarray).'</td>';
                 $subhtml2 .= '<td>'.$size = array_search($_product->getSize(), $productsizearray).'</td>';
