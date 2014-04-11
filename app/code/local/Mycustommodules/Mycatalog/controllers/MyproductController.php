@@ -2645,5 +2645,76 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
     {
         Mage::getModel('smogiexpirationnotifier/notify')->notifyusers();
     }
+    public function testabandonedcartAction()
+    {
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+        $readcolor = $write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao,   eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0
+  AND ea.attribute_code='color'");
+        $readcolor1 = $readcolor->fetchAll();
+        $colorarray = array();
+        for($i=0;$i<count($readcolor1);$i++)
+        {
+            $colorarray[$readcolor1[$i]['Attribute']] = $readcolor1[$i]['Value'];
+
+        }
+
+        //get product sizes
+        $productallsizes = array();
+
+
+        $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
+        $allOptions = $attribute->getSource()->getAllOptions(true, true);
+        for($i=0;$i<count($allOptions);$i++)
+        {
+            $productsizearray[$allOptions[$i]['label']] = $allOptions[$i]['value'];
+        }
+
+        //
+        $readresult=$write->query("SELECT customer_email , customer_firstname, customer_lastname ,GROUP_CONCAT(product_id) as product_id
+  FROM sales_flat_quote, sales_flat_quote_item WHERE is_active = 1 AND customer_email IS NOT NULL
+    AND items_count > 0 AND (SELECT is_active FROM customer_entity ce WHERE ce.entity_id = customer_id) = 1 AND sales_flat_quote_item.quote_id=sales_flat_quote.entity_id AND sales_flat_quote_item.product_type IN ('simple','giftcards')
+ GROUP BY customer_email ORDER BY  sales_flat_quote.updated_at DESC");
+        $html = '<table border="1"><tr><td>Email</td><td>First Name</td><td>Last Name</td> <td>Product Name</td><td>Color</td><td>Size</td></tr>';
+        while ($row = $readresult->fetch() ) {
+            $subhtml1 = '';
+            $subhtml1 .= '<tr><td>'.$row['customer_email'].'</td>';
+            $subhtml1 .= '<td>'.$row['customer_firstname'].'</td>';
+            $subhtml1 .= '<td>'.$row['customer_lastname'].'</td>';
+
+            $product_ids = explode(",", $row['product_id']);
+
+            foreach($product_ids as $id)
+            {
+                $subhtml2 = '';
+                $_product = Mage::getModel('catalog/product')->load($id);
+                //print_r($_product);die;
+                $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($id);
+                if (isset($parentIds[0])) {
+                    $parentproduct = Mage::getModel('catalog/product')->load($parentIds[0]);
+                }
+                //echo $parentproduct->getUrlKey();
+                //print_r($parentproduct);die;
+
+                //$subhtml2 .= '<td>'.$_product->getName().'</td>';
+                $subhtml2 .= '<td>'.$parentproduct->getName().'</td>';
+                $pcolor = (int) $_product->getColor();
+                $subhtml2 .= '<td>'.$color = array_search($pcolor, $colorarray).'</td>';
+                $subhtml2 .= '<td>'.$size = array_search($_product->getSize(), $productsizearray).'</td>';
+
+
+                $subhtml2 .= '</tr>';
+                $html .= $subhtml1.$subhtml2;
+
+
+            }
+
+
+
+        }
+        $html .= '</table>';
+        echo $html;
+
+
+    }
 }
 ?>
