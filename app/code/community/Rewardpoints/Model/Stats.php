@@ -322,19 +322,59 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
         return $row->getNbCredit();
     }
     
-    public function getPointsCurrent($customerid, $store_id, $date = null, $arraymode = false){
+    public function getPointsCurrent($customerid, $store_id, $date = null, $arraymode = false, $excludelast = false){
         if($date == null)
             $date = date('Y-m-d');
         $balanceon = strtotime($date);
         $read = Mage::getSingleton('core/resource')->getConnection('core_read');
         $query = "SELECT * FROM (SELECT points_current, points_spent,points_current AS 'balance',date_start,date_end,rewardpoints_account_id FROM rewardpoints_account WHERE customer_id = ".$customerid." AND order_id IN (-3,-2,-1,-20) UNION SELECT points_current, points_spent,points_current AS 'balance',date_start,date_end,rewardpoints_account_id FROM rewardpoints_account, sales_flat_order WHERE rewardpoints_account.customer_id = ".$customerid." AND order_id NOT IN (-3,-2,-1,-20) AND sales_flat_order.increment_id = rewardpoints_account.order_id AND sales_flat_order.state IN ('new','pending','processing','complete')) AS smogihistory ORDER BY rewardpoints_account_id";
         $smogihistory = $read->fetchAll($query);
-        for($i = 0; $i < count($smogihistory); $i++)
+        $lastindex = count($smogihistory);
+        if($excludelast)
+            $lastindex--;
+        for($i = 0; $i < $lastindex; $i++)
         {
             if($smogihistory[$i]['points_spent'] <= 0)
                 continue;
             $temp = $smogihistory[$i]['points_spent'];
             $negativebalance = 0;
+
+
+            $temparray = array();
+            for($j = 0; $j < $i; $j++)
+            {
+                array_push($temparray, array(
+                    "index" => $j,
+                    "date_end" => $smogihistory[$j]['date_end'],
+                    "balance" => $smogihistory[$j]['balance']
+                ));
+            }
+            $date_end = array();
+            foreach($temparray as $key => $value)
+            {
+                $date_end[$key] = $value['date_end'];
+            }
+            array_multisort($date_end, SORT_ASC, $temparray);
+            for($j = 0; $j < $i; $j++)
+            {
+                if((strtotime($temparray[$j]['date_end']) > strtotime($smogihistory[$i]['date_start'])) && $temparray[$j]['balance'] > 0)
+                {
+                    if($temparray[$j]['balance'] >= $temp)
+                    {
+                        $smogihistory[$temparray[$j]['index']]['balance'] -= $temp;
+                        $temp = 0;
+                    }
+                    else
+                    {
+                        $temp -= $temparray[$j]['balance'];
+                        $smogihistory[$temparray[$j]['index']]['balance'] = 0;
+                    }
+                }
+                if($temp <= 0)
+                    break;
+            }
+
+            /*
             for($j = 0; $j < $i; $j++)
             {
                 if((strtotime($smogihistory[$j]['date_end']) > strtotime($smogihistory[$i]['date_start'])) && $smogihistory[$j]['balance'] > 0)
@@ -353,6 +393,7 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
                 if($temp <= 0)
                     break;
             }
+            */
         }
         $negativebalance += $temp;
         $balance = 0;
