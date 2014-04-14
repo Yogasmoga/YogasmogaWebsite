@@ -617,7 +617,11 @@ class Smogi_Distributionbackend_Sales_Order_CreateController extends Mage_Adminh
                 $order = Mage::getModel('sales/order')->load($lastOrderId);
                 $order->addStatusHistoryComment("This order contains Pre-Ordered items.");
                 $order->save();   
-            }   
+            }
+            if($smogiused)
+            {
+                 $write->query("Update rewardpoints_account set date_start='".date('Y-m-d')."' where order_id='".$order->getIncrementId()."'");
+            }
         }
         catch(Exception $e)
         {

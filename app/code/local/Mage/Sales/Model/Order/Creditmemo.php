@@ -1381,12 +1381,14 @@ class Mage_Sales_Model_Order_Creditmemo extends Mage_Sales_Model_Abstract
                 if($sum_smogi_customization < 0)
                 {
                     $sum_smogi_customization *= -1;
-                    $proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $sum_smogi_customization, $storeIds));
+                    //$proxy->call($sessionId, 'j2trewardapi.remove', array($customer_id, $sum_smogi_customization, $storeIds));
+                    $proxy->call($sessionId, 'j2trewardapi.create', array(array('customer_id' => $customer_id, 'order_id' => $order->getIncrementId(), 'date_start' => date('Y-m-d'), 'points_spent' => $sum_smogi_customization, 'store_id' => $storeIds,'rewardpoints_description' => 'CreditMemo # '.$this->getIncrementId().'. Pulling back bucks added via partial refund(s).')));
         			$this->savetodb($order->getId(), (-1 * $sum_smogi_customization));
                 }
                 else
                 {
-                    $proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $sum_smogi_customization, $storeIds));
+                    //$proxy->call($sessionId, 'j2trewardapi.add', array($customer_id, $sum_smogi_customization, $storeIds));
+                    $proxy->call($sessionId, 'j2trewardapi.create', array(array('customer_id' => $customer_id, 'order_id' => $order->getIncrementId(), 'date_start' => date('Y-m-d'),'date_end' => date('Y-m-d',strtotime("+ 10 days")), 'points_current' => $sum_smogi_customization, 'store_id' => $storeIds,'rewardpoints_description' => 'CreditMemo # '.$creditmemoid.'. Refunding bucks via partial refund.')));
                     $this->savetodb($order->getId(), $sum_smogi_customization);
                 }
             }            
