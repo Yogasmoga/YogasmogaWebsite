@@ -491,10 +491,17 @@ body.cms-no-route{background:url(../images/error-bg.jpg) 50% 0 no-repeat;backgro
 
 .cms-mens .inputcontainer{margin-bottom:80px;}
 .cms-mens .inputcontainer .success{color:#666666;}
-.cms-mens .news-letter{top:33%;}
 .cms-mens .big-heading{width:80%; margin-bottom:55px;}
-.cms-mens .intro-text{width:80%;}
 .cms-mens .intro-desc{color:#000000 !important; font-size:13px; margin-top:19px !important;}
-.cms-mens .dharma-list{width:46%;}
 .cms-mens #btnNewsletter1{background: url(/media/wysiwyg/sign-up-submit.jpg) 0 0 no-repeat; height: 25px;}
 .cms-mens #txtNewsletterEmail1{color: #000000; font-style: normal; font-size: 16px; border-bottom-color: #000000;}
+
+.cms-mens .news-letter{top:31%;}
+.cms-mens p.big-heading{font-family: ITCAvantGardeProBk; font-size:35px; color:#000000; text-transform:uppercase;width:100%;margin-top: 0; margin-bottom: 55px;line-height: 38px;}
+.cms-mens p.big-heading span{font-family:ITCAvantGardeProBd; color:#000000;letter-spacing: -2px;}
+.cms-mens #txtNewsletterEmail1{font-family: ITCAvantGardeProMd;}
+.cms-mens p.intro-text{font-family: ITCAvantGardeProBk; font-size:35px; color:#000000; text-transform:uppercase;width:100%;margin:0;}
+.cms-mens p.intro-text span{font-family: ITCAvantGardeProBd;color:#000000;}
+.cms-mens .intro-desc{margin-top:9px !important; font-family:gothambook !important;}
+.dharma-list{width:100% !important; font-size:18px;}
+.dharma-list li{font-family: ITCAvantGardeProBk; color:#000;margin-bottom: 5px;}
