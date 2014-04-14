@@ -491,11 +491,8 @@ body.cms-no-route{background:url(../images/error-bg.jpg) 50% 0 no-repeat;backgro
 
 .cms-mens .inputcontainer{margin-bottom:80px;}
 .cms-mens .inputcontainer .success{color:#666666;}
-.cms-mens .news-letter{top:33%;}
 .cms-mens .big-heading{width:80%; margin-bottom:55px;}
-.cms-mens .intro-text{width:80%;}
 .cms-mens .intro-desc{color:#000000 !important; font-size:13px; margin-top:19px !important;}
-.cms-mens .dharma-list{width:46%;}
 .cms-mens #btnNewsletter1{background: url(/media/wysiwyg/sign-up-submit.jpg) 0 0 no-repeat; height: 25px;}
 .cms-mens #txtNewsletterEmail1{color: #000000; font-style: normal; font-size: 16px; border-bottom-color: #000000;}
 
