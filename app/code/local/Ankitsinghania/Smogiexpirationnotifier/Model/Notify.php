@@ -12,8 +12,6 @@ class Ankitsinghania_Smogiexpirationnotifier_Model_Notify extends Mage_Core_Mode
     
     public function notifyusers()
     {
-        return;
-        /*
         Mage::log("notifying users", null, "smoginotifier.log");
         $notification_periods = array(3,30);
         $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
@@ -33,13 +31,12 @@ class Ankitsinghania_Smogiexpirationnotifier_Model_Notify extends Mage_Core_Mode
                 $notification_log->setNotify_date($notify_date);
                 if($serverType == 'production')
 				    $notification_log->setEmail_status($this->sendemail($customer['customer_name'], $customer['customer_email'], $customer['bucks_expiring'], $notification_period));
-//                else
-//                    $notification_log->setEmail_status($this->sendemail($customer['customer_name'], "ankit@mobikasa.com", $customer['bucks_expiring'], $notification_period));  
+            /*    else
+                    $notification_log->setEmail_status($this->sendemail($customer['customer_name'], "ankit@mobikasa.com", $customer['bucks_expiring'], $notification_period));  */
                 $notification_log->setNotification_period($notification_period);
                 $notification_log->save();
             }
         }
-        */
     }
     
     public function getCustomerslist($expiring_in_days)
