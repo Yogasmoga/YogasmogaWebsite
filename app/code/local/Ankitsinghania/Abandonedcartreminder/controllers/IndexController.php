@@ -2,15 +2,27 @@
 class Ankitsinghania_Abandonedcartreminder_IndexController extends Mage_Core_Controller_Front_Action
 {
     public function indexAction(){
-        echo "hello from abandoned cart module";
+        echo "hello from Abandonedcartreminder extension.";
         return;
-        Mage::getModel('abandonedcartreminder/notify')->notify();
+        
+        Mage::getModel('smogiexpirationnotifier/notify')->notify();
         return;
+        echo "Am I working ??";
+        $notifications = Mage::getModel('smogiexpirationnotifier/notify');
+        $notifications->load(1);
+        $notifications->delete();
+        return;
+        $collection = Mage::getModel('smogiexpirationnotifier/notify')->getCollection();
+        foreach($collection as $data)
+        {
+             //$retour .= $data->getData('nom').' '.$data->getData('prenom').' '.$data->getData('telephone').'<br />';
+             echo $data->getData('customer_email')."<br/>";
+        }
     }
     
     public function notifyusersAction()
     {
-        Mage::getModel('abandonedcartreminder/notify')->notifyusers();
+        Mage::getModel('smogiexpirationnotifier/notify')->notifyusers();
     }
     
     public function createnotificationAction()
@@ -27,7 +39,7 @@ class Ankitsinghania_Abandonedcartreminder_IndexController extends Mage_Core_Con
     
     public function sendemailAction()
     {
-        echo Mage::getModel('abandonedcartreminder/notify')->sendemail("Manish Waliyan","ankit@mobikasa.com",100, 45);
+        echo Mage::getModel('smogiexpirationnotifier/notify')->sendemail("Manish Waliyan","ankit@mobikasa.com",100, 45);
     }
 }
 ?>
