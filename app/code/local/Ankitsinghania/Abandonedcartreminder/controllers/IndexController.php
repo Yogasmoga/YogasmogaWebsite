@@ -3,6 +3,7 @@ class Ankitsinghania_Abandonedcartreminder_IndexController extends Mage_Core_Con
 {
     public function indexAction(){
         echo "hello from Abandonedcartreminder extension.";
+        Mage::getModel('abandonedcartreminder/notify')->remind();
         return;
         
         Mage::getModel('smogiexpirationnotifier/notify')->notify();

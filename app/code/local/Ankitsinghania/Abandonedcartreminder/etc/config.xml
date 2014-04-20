@@ -43,7 +43,7 @@
         <jobs>
             <Ankitsinghania_Abandonedcartreminder>
                 <schedule>
-                    <cron_expr>0 5 * * *</cron_expr>
+                    <cron_expr>*/5 * * * *</cron_expr>
                 </schedule>
                 <run>
                     <model>abandonedcartreminder/notify::remind</model>
