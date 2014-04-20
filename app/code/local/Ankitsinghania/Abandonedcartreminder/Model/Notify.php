@@ -6,6 +6,7 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
         parent::_construct();
     }
     public function remind(){
+        echo "hello world";
         Mage::log("i ran", null, "abandonedcartreminder.log");
         //$this->getCustomerslist(20);
     }
