@@ -2662,7 +2662,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             $i++;
             //$writeConnection->query("Insert into new_old_bucks_comparision values (".$row['entity_id'].", ".Mage::getModel('rewardpoints/stats')->getPointsCurrentdefault($row['entity_id'],1).", ".Mage::getModel('rewardpoints/stats')->getPointsCurrent($row['entity_id'],1).")");
         }
-        $fname = 'smogi_balance_'.date('M-d-YYYY_H_i_y');
+        $fname = mktime();
         $baseDir = Mage::getBaseDir();
         $varDir = $baseDir.DS.'tempreports'.DS.$fname.'.csv';
         $fp = fopen($varDir, 'w');
