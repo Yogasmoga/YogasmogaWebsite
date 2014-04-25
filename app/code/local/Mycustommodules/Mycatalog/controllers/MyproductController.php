@@ -2658,7 +2658,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         $i = 1;
         while($row = $temp->fetch())
         {
-            $csv[$i] = array($row['Id'], $row['Name'],$row['Email'], Mage::getModel('rewardpoints/stats')->getPointsCurrent($row['entity_id'],1));
+            $csv[$i] = array($row['Id'], $row['Name'],$row['Email'], Mage::getModel('rewardpoints/stats')->getPointsCurrent($row['Id'],1));
             $i++;
             //$writeConnection->query("Insert into new_old_bucks_comparision values (".$row['entity_id'].", ".Mage::getModel('rewardpoints/stats')->getPointsCurrentdefault($row['entity_id'],1).", ".Mage::getModel('rewardpoints/stats')->getPointsCurrent($row['entity_id'],1).")");
         }
