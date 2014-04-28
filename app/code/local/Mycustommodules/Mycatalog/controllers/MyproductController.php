@@ -2646,5 +2646,33 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
     {
         Mage::getModel('smogiexpirationnotifier/notify')->notifyusers();
     }
+    
+    public function smogibalanceAction()
+    {
+        set_time_limit(0);
+        $resource = Mage::getSingleton('core/resource');
+        $writeConnection = $resource->getConnection('core_write');
+        $readConnection = $resource->getConnection('core_write');
+        $temp = $readConnection->query("SELECT entity_id AS 'Id', email AS 'Email', (SELECT CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=ce.entity_id AND attribute_id=5), ' ', (SELECT VALUE FROM customer_entity_varchar WHERE entity_id=ce.entity_id AND attribute_id=7))) AS 'Name'
+ FROM customer_entity ce  where ce.is_active=1 ORDER BY ce.entity_id");
+        $csv[0] = array('Customer Id','Customer Name','Customer Email', 'Smogi Bucks Balance');
+        $i = 1;
+        while($row = $temp->fetch())
+        {
+            $csv[$i] = array($row['Id'], $row['Name'],$row['Email'], Mage::getModel('rewardpoints/stats')->getPointsCurrent($row['Id'],1));
+            $i++;
+            //$writeConnection->query("Insert into new_old_bucks_comparision values (".$row['entity_id'].", ".Mage::getModel('rewardpoints/stats')->getPointsCurrentdefault($row['entity_id'],1).", ".Mage::getModel('rewardpoints/stats')->getPointsCurrent($row['entity_id'],1).")");
+        }
+        $fname = 'smogi_balance_'.date('M-d-YYYY_H_i_y');
+        $baseDir = Mage::getBaseDir();
+        $varDir = $baseDir.DS.'tempreports'.DS.$fname.'.csv';
+        $fp = fopen($varDir, 'w');
+        foreach ($csv as $fields) {
+            fputcsv($fp, $fields);
+        }
+        fclose($fp);
+        Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".csv");
+    }
+    
 }
 ?>
