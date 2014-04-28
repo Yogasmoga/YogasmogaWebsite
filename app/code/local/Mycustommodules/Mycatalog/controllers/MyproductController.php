@@ -174,7 +174,10 @@ AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
                         $sizeArray[$j] = $allsizearray[$i];
                     }
                 }
+
             }
+
+
 
             //if(isset($productcolorinfo[$temp]["sizes"]))
 //                            {
@@ -187,6 +190,14 @@ AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
 //                            }
             //echo $temp."   ".$temp1."<br/>";
 
+        }
+        for($k=0;$k<count($oldsizeArray);$k++)
+        {
+            if($oldsizeArray[$k] == '')
+            {
+                $sizeArray[count($sizeArray)] = $oldsizeArray[$k];
+                break;
+            }
         }
         //echo "<pre>";
 //                        print_r($productcolorinfo);
