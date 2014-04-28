@@ -2571,9 +2571,10 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $i = 1;
                 while ($row = $readresult->fetch() ) {
                     //echo '<pre>';print_r($row);die;
-                    $id = $row['id'];
-                    $customer_data = Mage::getModel('customer/customer')->load($id);
-                    $csv[$i] = array($row['notify_date'],$customer_data['firstname'].' '.$customer_data['lastname'],$row['customer_email'],$row['bucks_expiring'],$row['bucks_expiration_date'],$row['notification_period']);
+                    //$id = $row['id'];
+                   // $customer_data = Mage::getModel('customer/customer')->load($id);
+                   // $csv[$i] = array($row['notify_date'],$customer_data['firstname'].' '.$customer_data['lastname'],$row['customer_email'],$row['bucks_expiring'],$row['bucks_expiration_date'],$row['notification_period']);
+                    $csv[$i] = array($row['notify_date'],$row['customer_name'],$row['customer_email'],$row['bucks_expiring'],$row['bucks_expiration_date'],$row['notification_period']);
                     $i++;
                 }
                 if($i == 1)
