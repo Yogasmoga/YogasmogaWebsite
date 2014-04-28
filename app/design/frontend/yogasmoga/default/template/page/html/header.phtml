@@ -49,6 +49,41 @@ if($serverType == 'production')
     //Mage::getSingleton('core/session')->setmyVariable('myValue');
     //echo Mage::getSingleton('core/session')->getmyVariable();
 ?>
+<!-- sign-up pop up for first time user  -->
+<?php  if(!Mage::getSingleton('customer/session')->isLoggedIn()){
+         if(Mage::getModel('core/cookie')->get("signup_popup")== null)
+         {
+             Mage::getModel('core/cookie')->set("signup_popup", true);
+             ?>
+             <div id="signup">sign-up pop up for first time user </div>
+             <script type="application/javascript">
+                 jQuery(document).ready(function($){
+                     $( "#signup" ).dialog({
+                         autoOpen: true,
+                         show: {
+                             effect: "blind",
+                             duration: 1000
+                         },
+                         hide: {
+                             effect: "explode",
+                             duration: 1000
+                         }
+                     });
+                 });
+
+
+             </script>
+         <?php
+         }
+    $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+    if(strpos($currentUrl,'checkout/cart') !== false) {
+
+    }
+
+
+?>
+
+<?php } ?>
 <div class="header-container">
     <div id="globalheader" class="header
     <?php
