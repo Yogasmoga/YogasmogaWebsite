@@ -96,13 +96,13 @@ AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
                             array_push($arrAccessories, $product->getId());
                         }
                         else
-                            $this->getinventoryhtml($product->getId(), $output,$allsizearray);
+                            $this->getinventoryhtml($product->getId(), $output);
                     }
                     //echo $i . "\n\n";
 
                 }
                 for($ii = 0; $ii < count($arrAccessories); $ii++)
-                    $this->getinventoryhtml($arrAccessories[$ii], $output,$allsizearray);
+                    $this->getinventoryhtml($arrAccessories[$ii], $output);
 
                 $output .= "<tr><td colspan='2' style='font-weight:bold;'>LEGEND</td></tr>";
                 $output .= "<tr><td>VALUE</td><td colspan='4'>Product is in stock and the inventory is positive.</td></tr>";
@@ -135,7 +135,7 @@ AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
         }
     }
 
-    public function getinventoryhtml($product, &$output,$allsizearray)
+    public function getinventoryhtml($product, &$output)
     {
         //echo $product->getId() . "\n\n";
         $_product = Mage::getModel('catalog/product')->load($product);
@@ -160,22 +160,12 @@ AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
                 $productcolorinfo[$temp][$_childproduct->getAttributeText('size')] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
             else
                 $productcolorinfo[$temp][$_childproduct->getAttributeText('size')] = "_".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
-            if(array_search($_childproduct->getAttributeText('size'), $oldsizeArray ) === false)
+            if(array_search($_childproduct->getAttributeText('size'), $sizeArray ) === false)
             {
-                array_push($oldsizeArray , $_childproduct->getAttributeText('size'));
+                array_push($sizeArray , $_childproduct->getAttributeText('size'));
                 $sizeTotal[$_childproduct->getAttributeText('size')] = 0;
             }
-            for($i=0;$i<count($allsizearray);$i++)
-            {
-                for($j=0;$j<count($oldsizeArray);$j++)
-                {
-                    if($allsizearray[$i]== $oldsizeArray[$j])
-                    {
-                        $sizeArray[$j] = $allsizearray[$i];
-                    }
-                }
 
-            }
 
 
 
@@ -191,14 +181,7 @@ AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
             //echo $temp."   ".$temp1."<br/>";
 
         }
-        for($k=0;$k<count($oldsizeArray);$k++)
-        {
-            if($oldsizeArray[$k] == '')
-            {
-                $sizeArray[count($sizeArray)] = $oldsizeArray[$k];
-                break;
-            }
-        }
+
         //echo "<pre>";
 //                        print_r($productcolorinfo);
 //                        asort($sizeArray);
