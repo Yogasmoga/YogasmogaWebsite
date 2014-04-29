@@ -4324,3 +4324,12 @@ body.checkout-onepage-index #payment_form_stripe
 #popup-register .errortext{font-family: ITCAvantGardeProBk; font-size: 11px; color: #fff; height: 13px; vertical-align: top !important; min-height: 13px; border: none;}
 #popup-register .errortext div{display: none;}
 #popup-register input[type="submit"]{margin-top: 25px; cursor: pointer;}
+#map-fabrics table td img{width: 100%;}
+#map-fabrics table td{position: relative;}
+.fab_text {position: absolute; top:20%; width: 100%; text-align: center; font-family: ITCAvantGardeProBk; font-size: 30px; color: #666666}
+.fab_text h3{font-family:ITCAvantGardeProBk,gotham,Arial; font-weight: normal; font-size: 30px; color: #dd8820; text-tansform: uppercase; font-style: normal;}
+.fab_text h3 span{font-family:  ITCAvantGardeProBd,gotham-b,Arial;}
+.fab_text span.gold_divider{display: block;}
+.fab_text span.gold_divider img{width: auto !important; margin: 40px 0;}
+div.sub-fab{display: inline-block; margin: 0 30px; font-size: 28px;}
+div.sub-fab img{width: 60% !important; display: block; margin:25px auto 0 auto;}
