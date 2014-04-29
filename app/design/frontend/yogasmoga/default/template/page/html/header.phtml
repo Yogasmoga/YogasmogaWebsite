@@ -53,8 +53,9 @@ if($serverType == 'production')
 ?>
 <!-- sign-up pop up for first time user  -->
 <?php  if(!Mage::getSingleton('customer/session')->isLoggedIn()){
-         //if(Mage::getModel('core/cookie')->get("signup_popup")== null)
-        if(true)
+
+        //if(true)
+    if(Mage::getModel('core/cookie')->get("signup_popup")== null)
          {
              Mage::getModel('core/cookie')->set("signup_popup", true);
              ?>
