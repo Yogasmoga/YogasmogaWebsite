@@ -381,8 +381,15 @@
                       <!--<div style="width: 100%; position: absolute; top: 0px; left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 15px;font-family: gothamlight;padding:3px 0 !important;">NEW TO YOGASMOGA? Get $25 SMOGI Bucks toward your first order + Free Shipping to US &amp; Canada.</div> -->
                       <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/welcomes_banner.jpg" alt="THE ULTIMATE YOGA PANT. RUN JUMP 'N PLAY CROP" iwidth="1600" iheight="900" />
                         
-                        <div class="banner-txt3 promo2310" style="color : #333; left : 5%;">                        
-                        
+                        <div class="banner-txt3 promo2310" style="color : #333; left: 21%; top: 85%;">
+                        <a href="<?php echo $base_url; ?>women">
+                            <img src="<?php echo $this->getSkinUrl('images/shop_women.png') ?>" alt="SHOP WOMEN" style="width:80%; margin:0 auto !important;" />
+                        </a>
+                        </div>
+                        <div class="banner-txt3 promo2310" style="color : #333; left: 81%; top: 85%;">
+                        <a href="<?php echo $base_url; ?>mens">
+                            <img src="<?php echo $this->getSkinUrl('images/shop_men.png') ?>" alt="SHOP MEN" style="width:80%; margin:0 auto !important;" />
+                        </a>
                         </div>
                     </li>
 					<li>
@@ -758,7 +765,7 @@
                     </li>
                     */ ?>
                 </ul>
-                <div style="position: absolute; width: 400px; right: 4.625%; z-index:99; bottom: 9%; display:none;" id="playBtn" ><img alt="Get $25 SMOGI BUCKS TOWARD YOUR 1st ORDER & FREE SHIPPING" style="width : 100%" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/text_lines.png" />
+                <!-- <div style="position: absolute; width: 400px; right: 4.625%; z-index:99; bottom: 9%; display:none;" id="playBtn" ><img alt="Get $25 SMOGI BUCKS TOWARD YOUR 1st ORDER & FREE SHIPPING" style="width : 100%" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/text_lines.png" />
 					<div style="position: absolute; width: 72px; left: 15px; top: 17px;">
                       	<a href="<?php echo $this->getUrl('women');?>">
                       		<img style="width:100%;"  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/shop_now.png" alt="SHOP NOW" />
@@ -770,7 +777,7 @@
                         <img style="position : absolute; bottom : -40px; left : 0;"  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/send_a_gift.png" alt="DID YOU TAKE A BREATH TODAY? Video" />
                     </a>
                     */ ?>
-				</div>                
+				</div>  -->               
                 <?php /*Hiding the section below and making similar to SMOGI page
                 <div style="position: absolute; width: 400px; right: 4.625%; z-index:99; bottom: 9%; display:none;" id="playBtn" ><img alt="FOR OUR NEW PRODUCTS, NOW IN RICH NEW COLORS AND FLATTERING NEW STYLES." style="width : 100%" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/new_product.png" />
 					<div style="position: absolute; width: 72px; left: 15px; top: 17px;">
@@ -929,9 +936,31 @@
 					</div>
 				</div>
             </div>
+            <div id="map-fabrics">
+                <table width="100%" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td id="map" width="50%">
+                           <img src="<?php echo $this->getSkinUrl('images/map_bg.jpg') ?>" alt="DESIGNED IN NYC MADE IN USA" />                           
+                        </td>
+                        <td id="discover_fabrics" width="50%">
+                            <img src="<?php echo $this->getSkinUrl('images/fabrics_bg.jpg') ?>" alt="DISCOVER OUR ADVANCED PERFORMANCE FABRICS." />
+                            <div class="fab_text">
+                                <h3><span style="ITCAvantGardeProBd">DISCOVER</span> OUR ADVANCED<br />PERFORMANCE FABRICS.</h3>
+                                <span class="gold_divider"><img src="<?php echo $this->getSkinUrl('images/gold_divider.png') ?>" /></span>
+                                <div class="sub-fab">
+                                    AURUM&trade; 24<br /> AURUM&trade; STRIPE
+                                    <a href="<?php echo $base_url; ?>mens"><img src="<?php echo $this->getSkinUrl('images/shop_men.png') ?>" alt="SHOP MEN" /></a> 
+                                </div>
+                                <div class="sub-fab">
+                                    KOURA&trade;<br /> AURUM&trade; 1064
+                                 <a href="<?php echo $base_url; ?>women"><img src="<?php echo $this->getSkinUrl('images/shop_women.png') ?>" alt="SHOP WOMEN" /></a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table> 
+            </div>
 
-            <div id="shiv"></div>
-            
             <?php /*
             <div id="colortechnology" desc="Color Technology" style="width: 100%; height : 300px;background-image : url('<?php echo $this->getSkinUrl('images/bg_2.jpg') ?>');" class="bgimage pgsection">
             </div>
