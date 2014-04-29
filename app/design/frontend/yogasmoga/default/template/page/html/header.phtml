@@ -51,12 +51,13 @@ if($serverType == 'production')
 ?>
 <!-- sign-up pop up for first time user  -->
 <?php  if(!Mage::getSingleton('customer/session')->isLoggedIn()){
-         if(Mage::getModel('core/cookie')->get("signup_popup")== null)
+         //if(Mage::getModel('core/cookie')->get("signup_popup")== null)
+        if(true)
          {
              Mage::getModel('core/cookie')->set("signup_popup", true);
              ?>
              <div id="signup">
-                <form action="" method="post" id="popup-register" style="display: block; margin-top: 46px;">
+                <form action="" method="post" id="popup-register" style="display: block; margin-top: 46px;bottom:8%">
                  <table width="280" cellspacing="0" padding="0" align="center">
                      <tr>
                          <td class="label"><label for="firstname">First Name</label></td>
@@ -84,9 +85,16 @@ if($serverType == 'production')
                          <td class="inputholder">
                             <input type="password" class="requiredfield" name="password" id="password" defaulterrormsg="Password is required">
                         </td>
-                     </tr>                                         
+                     </tr>
+
+
+
+                     <input style="display: none;" type="password" class="requiredfield" name="confirmation" id="confirmation" defaulterrormsg="Password is required">
+                     <input style="display: none;" id="is_subscribed" class="checkbox" type="checkbox" checked="checked" value="1" name="is_subscribed">
+
                  </table>
-                    <input type="submit" value="" style="background-image: url(http://yogasmoga/skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png); width:135px; height:39px; border:none;">
+                    <input type="submit" id="signup-button" value="" style="background-image: url(<?php echo $this->getUrl()?>skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png); width:135px; height:39px; border:none;">
+                    <p id="err-msg" style="min-height:15px;min-height: 15px; width: 150px;  margin: 0 auto; font-size: 12px; visibility:hidden">All fields are required.</p>
                 </form>
              </div>
              <script type="application/javascript">
@@ -110,6 +118,75 @@ if($serverType == 'production')
                  });
 
 
+             </script>
+             <script type="application/javascript">
+                 jQuery(document).ready(function($){
+                     $("#signup-button").click(function(event){
+                         $("#err-msg").text("");
+
+                         if($("#firstname").val() == "")
+                         {
+                             event.preventDefault();
+                             $("#err-msg").css("visibility","visible");
+                             $("#err-msg").text("First Name is required.");
+                             return;
+                         }
+                         if($("#lastname").val() == "")
+                         {
+                             event.preventDefault();
+                             $("#err-msg").css("visibility","visible");
+                             $("#err-msg").text("Last Name is required.");
+                             return;
+                         }
+                         if($("#email_address").val() == "")
+                         {
+                             event.preventDefault();
+                             $("#err-msg").css("visibility","visible");
+                             $("#err-msg").text("Email Address is required.");
+                             return;
+                         }
+                         if($("#password").val() == "")
+                         {
+                             event.preventDefault();
+                             $("#err-msg").css("visibility","visible");
+                             $("#err-msg").text("Email Address is required.");
+                             return;
+                         }
+                         var str = $("#password").val();
+
+                         if(str.length < 6 )
+                         {
+                             event.preventDefault();
+                             $("#err-msg").css("visibility","visible");
+                             $("#err-msg").text("Please enter 6 or more characters.");
+                             return;
+                         }
+
+                         if(window.location.href.indexOf('https://') >= 0)
+                             _usesecureurl = true;
+                         else
+                             _usesecureurl = false;
+                         var url = homeUrl + 'mycatalog/myproduct/registercustomer';
+                         if(_usesecureurl)
+                             url = securehomeUrl + 'mycatalog/myproduct/registercustomer';
+                         var firstname = $("#firstname").val();
+                         var lastname = $("#lastname").val();
+                         var email_address = $("#email_address").val();
+                         var password = $("#password").val();
+                         var cpassword = $("#password").val();
+                         var is_subscribed = $("#is_subscribed").val();
+
+                         jQuery.ajax({
+                             url : url,
+                             type : 'POST',
+                             data : {'firstname':firstname,'lastname':lastname,'email':email_address,'password':password,'confirmation':cpassword,'is_subscribed':is_subscribed},
+                             success : function(data){
+                                 console.log(data);
+                             }
+                         });
+                         event.preventDefault();
+                     });
+                 });
              </script>
          <?php
          }
