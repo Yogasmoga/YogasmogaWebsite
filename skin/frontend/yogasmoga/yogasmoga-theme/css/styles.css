@@ -4309,3 +4309,18 @@ body.checkout-onepage-index #payment_form_stripe
 {
     cursor : pointer;
 }*/
+
+/****First Time Pop Up Home page****/
+.firstdialog{z-index: 90 !important;}
+.firstdialog { border: none ; background: transparent url("/skin/frontend/yogasmoga/yogasmoga-theme/images/popup_bg.png") 50% top repeat-x ; background-size: cover ; }
+.firstdialog .ui-widget-header { border:none; background: none; font-weight: bold; }
+.firstdialog .ui-dialog-titlebar-close{right: 7.3em ; top: 65% ; width: auto ; height: auto ; z-index: 500;}
+.firstdialog .ui-state-hover{border: none ; background: none ; padding: 1px !important;}
+.firstdialog .ui-icon-closethick{background:url("/skin/frontend/yogasmoga/yogasmoga-theme/images/pop-close.png") no-repeat ; width: 41px; height: 42px; background-position: 0 0;}
+#popup-register{font-family: ITCAvantGardeProBk; font-size: 13px;color: #fff;position: absolute; bottom: 14%; left: 20%;}
+#popup-register td{border: 0; border-bottom: 1px solid #ffffff; margin-bottom: 5px;}
+#popup-register td input{border: none; background: transparent;color: #fff;font-family: ITCAvantGardeProBk;}
+#popup-register td label{ padding-right: 10px;}
+#popup-register .errortext{font-family: ITCAvantGardeProBk; font-size: 11px; color: #fff; height: 13px; vertical-align: top !important; min-height: 13px; border: none;}
+#popup-register .errortext div{display: none;}
+#popup-register input[type="submit"]{margin-top: 25px; cursor: pointer;}

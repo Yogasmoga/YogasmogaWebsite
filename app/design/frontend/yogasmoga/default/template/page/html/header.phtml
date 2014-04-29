@@ -55,18 +55,56 @@ if($serverType == 'production')
          {
              Mage::getModel('core/cookie')->set("signup_popup", true);
              ?>
-             <div id="signup">sign-up pop up for first time user </div>
+             <div id="signup">
+                <form action="" method="post" id="popup-register" style="display: block; margin-top: 46px;">
+                 <table width="280" cellspacing="0" padding="0" align="center">
+                     <tr>
+                         <td class="label"><label for="firstname">First Name</label></td>
+                         <td class="inputholder">
+                            <input type="text" id="firstname" name="firstname" value="" maxlength="255" class="requiredfield no-bg">
+                        </td>
+                     </tr>
+                     <tr height="5"></tr>                     
+                     <tr>
+                         <td class="label"><label for="lastname">Last Name</label></td>
+                         <td class="inputholder">
+                            <input type="text" id="lastname" name="lastname" value="" maxlength="255" class="requiredfield no-bg">
+                        </td>
+                     </tr>
+                     <tr height="5"></tr>                     
+                     <tr>
+                         <td class="label"><label for="email_address">Email Address</label></td>
+                         <td class="inputholder">
+                            <input type="text" name="email" id="email_address" value="" class="requiredfield" defaulterrormsg="Email Address is required" autocapitalize="off">
+                        </td>
+                     </tr>
+                     <tr height="5"></tr>                     
+                     <tr>
+                         <td class="label"><label for="password">Password</label></td>
+                         <td class="inputholder">
+                            <input type="password" class="requiredfield" name="password" id="password" defaulterrormsg="Password is required">
+                        </td>
+                     </tr>                                         
+                 </table>
+                    <input type="submit" value="" style="background-image: url(http://yogasmoga/skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png); width:135px; height:39px; border:none;">
+                </form>
+             </div>
              <script type="application/javascript">
                  jQuery(document).ready(function($){
                      $( "#signup" ).dialog({
                          autoOpen: true,
+                         width: 460,
+                         height: 460,
+                         draggable: false,
+                         resizable: false,
+                         dialogClass : 'firstdialog',
                          show: {
-                             effect: "blind",
+                             effect: "fade",
                              duration: 1000
                          },
                          hide: {
-                             effect: "explode",
-                             duration: 1000
+                             effect: "fade",
+                             duration: 500
                          }
                      });
                  });
