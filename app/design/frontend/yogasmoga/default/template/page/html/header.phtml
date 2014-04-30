@@ -150,11 +150,21 @@ if($serverType == 'production')
                              $("#err-msg").text("Email Address is required.");
                              return;
                          }
+                         if($("#email_address").val() != "")
+                         {
+                             if(!validateEmail($("#email_address").val()))
+                             {
+                                 event.preventDefault();
+                                 $("#err-msg").css("visibility","visible");
+                                 $("#err-msg").text("Enter valid email address");
+                                 return;
+                             }
+                         }
                          if($("#password").val() == "")
                          {
                              event.preventDefault();
                              $("#err-msg").css("visibility","visible");
-                             $("#err-msg").text("Email Address is required.");
+                             $("#err-msg").text("Password is required.");
                              return;
                          }
                          var str = $("#password").val();
@@ -186,7 +196,24 @@ if($serverType == 'production')
                              type : 'POST',
                              data : {'firstname':firstname,'lastname':lastname,'email':email_address,'password':password,'confirmation':cpassword,'is_subscribed':is_subscribed},
                              success : function(data){
-                                 console.log(data);
+                                 //console.log(data);
+                                 data = eval('('+data + ')');
+                                 var status = data.status;
+                                 if(status == "success")
+                                 {
+                                     $( "#signup" ).dialog("close");
+
+                                     $(".topmenulinks").each(function() {
+
+                                     });
+                                     $('.topmenulinks').html($('.topmenulinks').html().replace('Log In','MY ACCOUNT'));
+                                     <?php
+                                      $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+                                        if(strpos($currentUrl,'checkout/cart') !== false) {
+                                            Mage::app()->getFrontController()->getResponse()->setRedirect($currentUrl);
+                                        }
+                                      ?>
+                                 }
                              }
                          });
                          event.preventDefault();
@@ -197,7 +224,7 @@ if($serverType == 'production')
          }
     $currentUrl = Mage::helper('core/url')->getCurrentUrl();
     if(strpos($currentUrl,'checkout/cart') !== false) {
-
+        //Mage::app()->getFrontController()->getResponse()->setRedirect($currentUrl);
     }
 
 
