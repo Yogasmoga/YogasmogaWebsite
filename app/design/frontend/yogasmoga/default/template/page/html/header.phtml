@@ -133,21 +133,21 @@ if($serverType == 'production')
                          {
                              event.preventDefault();
                              $("#err-msg").css("visibility","visible");
-                             $("#err-msg").text("First Name is required.");
+                             $("#err-msg").text("All fields are required.");
                              return;
                          }
                          if($("#lastname").val() == "")
                          {
                              event.preventDefault();
                              $("#err-msg").css("visibility","visible");
-                             $("#err-msg").text("Last Name is required.");
+                             $("#err-msg").text("All fields are required.");
                              return;
                          }
                          if($("#email_address").val() == "")
                          {
                              event.preventDefault();
                              $("#err-msg").css("visibility","visible");
-                             $("#err-msg").text("Email Address is required.");
+                             $("#err-msg").text("All fields are required.");
                              return;
                          }
                          if($("#email_address").val() != "")
@@ -164,7 +164,7 @@ if($serverType == 'production')
                          {
                              event.preventDefault();
                              $("#err-msg").css("visibility","visible");
-                             $("#err-msg").text("Password is required.");
+                             $("#err-msg").text("All fields are required.");
                              return;
                          }
                          var str = $("#password").val();
@@ -191,14 +191,19 @@ if($serverType == 'production')
                          var cpassword = $("#password").val();
                          var is_subscribed = $("#is_subscribed").val();
 
+                         if(_checksinghupformsubmit == false)
+                         {
+                             _checksinghupformsubmit = true;
                          jQuery.ajax({
                              url : url,
                              type : 'POST',
                              data : {'firstname':firstname,'lastname':lastname,'email':email_address,'password':password,'confirmation':cpassword,'is_subscribed':is_subscribed},
                              success : function(data){
-                                 //console.log(data);
+                                 _checksinghupformsubmit  = false;
+                                 console.log(data);
                                  data = eval('('+data + ')');
                                  var status = data.status;
+                                 var errors = data.errors;
                                  if(status == "success")
                                  {
                                      $( "#signup" ).dialog("close");
@@ -210,22 +215,26 @@ if($serverType == 'production')
                                      <?php
                                       $currentUrl = Mage::helper('core/url')->getCurrentUrl();
                                         if(strpos($currentUrl,'checkout/cart') !== false) {
-                                            Mage::app()->getFrontController()->getResponse()->setRedirect($currentUrl);
+                                           ?>window.location.reload(); <?php
                                         }
                                       ?>
+
+                                 }
+                                 else{
+                                     $("#err-msg").css("visibility","visible");
+                                     $("#err-msg").text(errors);
+
                                  }
                              }
                          });
+                         }
                          event.preventDefault();
                      });
                  });
              </script>
          <?php
          }
-    $currentUrl = Mage::helper('core/url')->getCurrentUrl();
-    if(strpos($currentUrl,'checkout/cart') !== false) {
-        //Mage::app()->getFrontController()->getResponse()->setRedirect($currentUrl);
-    }
+
 
 
 ?>
