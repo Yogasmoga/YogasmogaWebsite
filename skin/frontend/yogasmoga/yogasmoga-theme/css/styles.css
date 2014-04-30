@@ -35,9 +35,9 @@ a:hover       { text-decoration:none; color : #D90D3D; }
 :focus        { outline:0; }
 
 .topmenulinks li a {
-	font-family:gothamlight,gothambook;
-	font-size:11px;
-	}
+    font-family:gothamlight,gothambook;
+    font-size:11px;
+    }
 
 /* Headings */
 h1,h2,h3,
@@ -525,26 +525,26 @@ tr.summary-details-excluded { font-style:italic; }
 select{font-family:gothamlight; font-size:12px; padding:0; border:0; height:19px;}
 select option{padding:3px; background:#fff; border:0;}
 .customSelect {
-	background:url(../images/dd-arw.png) 100% 50% no-repeat; border-bottom:1px solid #666; font-family:gothamlight; font-size:12px; color:#2f2f2f;
-	height:16px; overflow:hidden; padding-right:12px; line-height:15px;
+    background:url(../images/dd-arw.png) 100% 50% no-repeat; border-bottom:1px solid #666; font-family:gothamlight; font-size:12px; color:#2f2f2f;
+    height:16px; overflow:hidden; padding-right:12px; line-height:15px;
 }
 select.qtyselector{border-bottom:0px solid #333;}
 #tblcheckoutsteps td {vertical-align:bottom;}
 #tblcheckoutsteps td select{margin-top:0px;}
 #tblcheckoutsteps td .customSelect {
-	border-bottom:0; font-family:gothamlight; font-size:12px; color:#2f2f2f;
-	height:16px; overflow:hidden; padding-right:12px; line-height:normal;
+    border-bottom:0; font-family:gothamlight; font-size:12px; color:#2f2f2f;
+    height:16px; overflow:hidden; padding-right:12px; line-height:normal;
 }
 .customSelect.customSelectOpen {
-	
+    
 }
 .cmbsize{display:none !important;}
 .customSelect.customSelectFocus {
 /* Styles for when the select box is in focus */
 }
 .customSelectInner {
-	white-space:nowrap;
-	overflow:hidden;
+    white-space:nowrap;
+    overflow:hidden;
 }
 
 /* Misc */
@@ -597,20 +597,20 @@ select.qtyselector{border-bottom:0px solid #333;}
     top: 0px;
     z-index: 100;
     height : 80px;
-	/*min-width:1150px;*/
+    /*min-width:1150px;*/
     min-width:960px;
     width : 100%;
-/*	max-width:1600px;*/
+/*  max-width:1600px;*/
 }
 .header {background-color: #FFFFFF;
     height: 81px;
     margin: 0 auto;
-	/*min-width:1150px;*/
+    /*min-width:1150px;*/
     min-width:960px;
     position: fixed;
     text-align: right;
     top: -80px;
-/*	max-width:1600px;*/
+/*  max-width:1600px;*/
     width: 100%;
     z-index: 1000; }
 
@@ -1932,12 +1932,12 @@ ul.topmenulinks li.selected
 }
 
 ul.topmenulinks li.selected a{
-	color:#d90d3d;
+    color:#d90d3d;
 }
 ul.topmenulinks li a
 {
     text-transform: uppercase;
-	color:#000;
+    color:#000;
 }
 ul.topmenulinks li a:hover,ul.topmenulinks li a:active{color:#d90d3d;}
 div#toprevolvingmessage blockquote {
@@ -2041,8 +2041,8 @@ input.watermark
 }
 
 #search_form {
-	float:left;
-	padding-top:5px;
+    float:left;
+    padding-top:5px;
     display:none;
 }
 
@@ -2115,7 +2115,7 @@ div.footer div.footdesc
 div.footer div.footdesc a, div.footer div.footdesc a:visited
 {
     margin: 0 5px;
-	color:#999;
+    color:#999;
 }
 
 div.footer div.footdesc a:hover
@@ -2196,7 +2196,7 @@ div.inputcontainer input[type='submit']
 {
     background: none repeat scroll 0% 0% transparent; 
     border: none;
-	cursor:pointer;
+    cursor:pointer;
 }
 
 div.inputcontainer
@@ -2231,7 +2231,7 @@ div.errormsg
 #pageScrollerNav
 {
     position: fixed;
-	display:none;
+    display:none;
     right: 10px;
     top: 200px;
     cursor : pointer;
@@ -2373,7 +2373,7 @@ div.mycategory-products div.item td.productname
     font-family:gothambook;
     font-size:10px;
     color : #666;
-	line-height:14px;
+    line-height:14px;
     text-transform: uppercase;
     /*height : 35px;*/
     vertical-align: top;
@@ -2415,8 +2415,8 @@ div.mycategory-products div.item td.productprice span.price
 
 div.mycategory-products div.item img.rotable
 {
-	position:absolute;
-	top:0; left:0;
+    position:absolute;
+    top:0; left:0;
 }
 
 div.mycategory-products div.item img.active.rotable
@@ -2475,26 +2475,26 @@ div.mycategory-products div.item td
 
 div.mycategory-products div.item td.productimage
 {
-	width:230px;
-	/*border:1px solid #DD8820;*/
+    width:230px;
+    /*border:1px solid #DD8820;*/
     vertical-align : bottom;
 }
 div.mycategory-products div.item td.productimage div.showloader
 {
-	background-image: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/loading_light.gif");
+    background-image: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/loading_light.gif");
     background-position: center center;
     background-repeat: no-repeat;
 }
 .cms-home div.mycategory-products div.item td.productimage{
-	width:230px;
+    width:230px;
 }
 div.mycategory-products div.item td.productimage div
 {
     width: 100%;
     width: 230px;
-	overflow:hidden;
-	position:relative;
-	height:345px;
+    overflow:hidden;
+    position:relative;
+    height:345px;
     margin-left: auto;
     margin-right: auto;   
 }
@@ -2542,7 +2542,7 @@ div.mycategory-products div.item:hover td.animateimage img.active
 .mylayerednavigation
 {
     left: 0;
-	top:110px;
+    top:110px;
     margin-left: 20px;
     position: absolute;
     text-align: left;
@@ -2700,9 +2700,9 @@ div.mylayerednavigation table.active td
     background-color : #EFEEED;   
 }
 div.searchitems td {
-	font-family:gothamlight;
-	font-size:9px;
-	letter-spacing:0.6pt;
+    font-family:gothamlight;
+    font-size:9px;
+    letter-spacing:0.6pt;
     color : #4C4C4C;
 }
 
@@ -2711,7 +2711,7 @@ table.staticproductgrid {
   margin-bottom:40px;
 }
 div.mycategory-products table.staticproductgrid  div.item table{
-	width:auto; margin:0 auto;
+    width:auto; margin:0 auto;
 }
 table.staticproductgrid td
 {
@@ -2791,9 +2791,9 @@ table.staticproductgrid div.item td.productimage img.active
     position : fixed;
     right : 0px;
     top : 55px;
-	box-shadow:0px 0px 1px #cecece;
+    box-shadow:0px 0px 1px #cecece;
     z-index : 999;
-	padding:8px; min-height:220px;
+    padding:8px; min-height:220px;
     display : none;
     border-top-width: 0;
 }
@@ -2849,14 +2849,14 @@ table.staticproductgrid div.item td.productimage img.active
 {
     vertical-align: top;
     width : 50px;
-	padding:8px 12px;
+    padding:8px 12px;
     text-align : center;
 }
 
 #myminicart div.minicartitems td
 {
     padding : 8px 0;
-	border-bottom:1px solid #ECECEC;
+    border-bottom:1px solid #ECECEC;
 }
 
 #myminicart div.minicartitems td.tdproductprice
@@ -2978,7 +2978,7 @@ li#minicartlink
 .fixwidth
 {
     max-width : 960px;
-	min-width:500px;
+    min-width:500px;
     margin-left : auto;
     margin-right : auto;
 }
@@ -3026,7 +3026,7 @@ table.inputtable td.errortext, table.gfredeem td.errortext, table#redeem td.erro
     font-size:11px;
     color : #D90D3D;
     height : 25px;
-	vertical-align:top !important;
+    vertical-align:top !important;
     min-height : 25px;
 }
 td.errortext div.success
@@ -3061,34 +3061,34 @@ table.inputtable td.errortext div,table.gfredeem td.errortext div,table#redeem t
 }
 
 .revolvingmessage-container p, .revolvingmessage-container a {
-	font-family:helveticaoblique;
-	font-size:11px;
-	font-style:italic;
-	color:#999999;
-	}
+    font-family:helveticaoblique;
+    font-size:11px;
+    font-style:italic;
+    color:#999999;
+    }
 
 .revolvingmessage-container a:hover {
-	color : #D90D3D;
-	}
-	
+    color : #D90D3D;
+    }
+    
 .revolvingmessage-container {
-	position:absolute;
-	text-align:right;
-	top:52px;
-	right:2px;
-	}
-	
+    position:absolute;
+    text-align:right;
+    top:52px;
+    right:2px;
+    }
+    
 #txtNewsletterEmail {
-	font-family:gothamlight;
-	font-size:11px;
-	letter-spacing:0.4px;
-	}
-	
+    font-family:gothamlight;
+    font-size:11px;
+    letter-spacing:0.4px;
+    }
+    
 .myaccountdashboard p {
-	font-family:gothamlight;
-	font-size:13px;
-	letter-spacing:0.4px;
-	}
+    font-family:gothamlight;
+    font-size:13px;
+    letter-spacing:0.4px;
+    }
 
 .productdtlbg
 {
@@ -3107,11 +3107,11 @@ table.inputtable td.errortext div,table.gfredeem td.errortext div,table#redeem t
 }
 
 .explore_btn {
-	background-image:url(../images/homepage/explore_off.png);
-	margin: 22px 0 0 88px;
-	width:137px;
-	height:29px;
-	}
+    background-image:url(../images/homepage/explore_off.png);
+    margin: 22px 0 0 88px;
+    width:137px;
+    height:29px;
+    }
     
 .top0{
     top : 0px;
@@ -3141,24 +3141,24 @@ div.big_big
 }
 div.opimage div, #zoomedfbdtl div
 {
-	text-align:center;
-	height:100%;
-	width:100%;
-	z-index:1;
+    text-align:center;
+    height:100%;
+    width:100%;
+    z-index:1;
     top : 0;
     left : 0;
     position : absolute;
 }
 #ftechimage{
-	color:#dd8820;
+    color:#dd8820;
 }
 div.opimage
 {
     position : relative;
-	z-index:0;
-	background-position:50% 50%;
-	background-repeat:repeat;
-	background-size:cover;
+    z-index:0;
+    background-position:50% 50%;
+    background-repeat:repeat;
+    background-size:cover;
     overflow : hidden;
 }
 div.opimage, div.opimage *
@@ -3198,7 +3198,7 @@ div.opimage .small h3.heading{color:#dd8820; font-style:italic;font-family:gotha
 /*====================*/
 #clrimage h3.heading,
 #clrimage{
-	color:#333;
+    color:#333;
 }
 #clrimage .opbox{position:absolute; font-family:gothambook; font-size:11px ;line-height:16px; color:#333; height:auto; left:auto; top:auto;}
 #clrimage .opbox h3.heading{font-family:ITCAvantGardeProBk, gotham  , Arial; font-weight:normal; font-size:19px;color:#333; font-style:normal; text-transform:uppercase; line-height:1.1; margin:10px 0;}
@@ -3229,11 +3229,11 @@ div.opimage .small h3.heading{color:#dd8820; font-style:italic;font-family:gotha
 
 /*div.opimage .small
 {
-	font-family:gothamMedium;
-	font-size:12px;
+    font-family:gothamMedium;
+    font-size:12px;
     z-index: 2;
-	cursor:pointer;
-	background-attachment:fixed; background-position:50% 50%; background-repeat:no-repeat; background-size:100%;
+    cursor:pointer;
+    background-attachment:fixed; background-position:50% 50%; background-repeat:no-repeat; background-size:100%;
 }*/
 div.opimage .small {
   background-attachment: fixed;
@@ -3390,8 +3390,8 @@ button span
 #drsizechart a
 {
     font-size : 11px;
-	line-height:14px;
-	display:block;
+    line-height:14px;
+    display:block;
     font-family: gothambook;
 }
 #drsizechart a.size-link{color:#333;}
@@ -3454,7 +3454,7 @@ div.emptyrecord
     color: black;
     font-family: gothamlight;
     font-size: 13px;
-	text-align:center;
+    text-align:center;
     letter-spacing: 0.2pt;
     margin-top : 30px;
 }
@@ -3599,10 +3599,10 @@ ul.messages
 }
 @media only screen and (device-width: 768px) {
   div.opimage .small {
-	  background-attachment: scroll !important;
-	}
-	#pgNavUp, #pgnavigator, #pgNavDown{display:none !important;}
-	body.cms-home #pgNavUp, body.cms-home #pgnavigator, body.cms-home #pgNavDown{display:block !important;}
+      background-attachment: scroll !important;
+    }
+    #pgNavUp, #pgnavigator, #pgNavDown{display:none !important;}
+    body.cms-home #pgNavUp, body.cms-home #pgnavigator, body.cms-home #pgNavDown{display:block !important;}
 }
 
 table.gfredeem td.inputholder, table#redeem td.inputholder
@@ -4311,13 +4311,13 @@ body.checkout-onepage-index #payment_form_stripe
 }*/
 
 /****First Time Pop Up Home page****/
-.firstdialog{z-index: 90 !important;}
-.firstdialog { border: none ; background: transparent url("/skin/frontend/yogasmoga/yogasmoga-theme/images/popup_bg.png") 50% top repeat-x ; background-size: cover ; }
+.firstdialog{z-index: 10003 !important;}
+.firstdialog { border: none; padding: 0 !important; background: transparent url("/skin/frontend/yogasmoga/yogasmoga-theme/images/popup_bg.png") 50% top repeat-x ; background-size: cover ; }
 .firstdialog .ui-widget-header { border:none; background: none; font-weight: bold; }
-.firstdialog .ui-dialog-titlebar-close{right: 7.3em ; top: 65% ; width: auto ; height: auto ; z-index: 500;}
+.firstdialog .ui-dialog-titlebar-close{right: 7.3em ; top: 100% ; width: auto ; height: auto ; z-index: 500;}
 .firstdialog .ui-state-hover{border: none ; background: none ; padding: 1px !important;}
 .firstdialog .ui-icon-closethick{background:url("/skin/frontend/yogasmoga/yogasmoga-theme/images/pop-close.png") no-repeat ; width: 41px; height: 42px; background-position: 0 0;}
-#popup-register{font-family: ITCAvantGardeProBk; font-size: 13px;color: #fff;position: absolute; bottom: 14%; left: 20%;}
+#popup-register{font-family: ITCAvantGardeProBk; font-size: 13px;color: #fff;position: absolute; bottom: 14%; left: 22%;}
 #popup-register td{border: 0; border-bottom: 1px solid #ffffff; margin-bottom: 5px;}
 #popup-register td input{border: none; background: transparent;color: #fff;font-family: ITCAvantGardeProBk;}
 #popup-register td label{ padding-right: 10px;}
@@ -4326,10 +4326,18 @@ body.checkout-onepage-index #payment_form_stripe
 #popup-register input[type="submit"]{margin-top: 25px; cursor: pointer;}
 #map-fabrics table td img{width: 100%;}
 #map-fabrics table td{position: relative;}
-.fab_text {display:none;position: absolute; top:20%; width: 100%; text-align: center; font-family: ITCAvantGardeProBk; font-size: 30px; color: #666666}
+.fab_text {position: absolute; top:20%; width: 100%; text-align: center; font-family: ITCAvantGardeProBk; font-size: 30px; color: #666666}
 .fab_text h3{font-family:ITCAvantGardeProBk,gotham,Arial; font-weight: normal; font-size: 30px; color: #dd8820; text-tansform: uppercase; font-style: normal;}
 .fab_text h3 span{font-family:  ITCAvantGardeProBd,gotham-b,Arial;}
 .fab_text span.gold_divider{display: block;}
 .fab_text span.gold_divider img{width: auto !important; margin: 40px 0;}
 div.sub-fab{display: inline-block; margin: 0 30px; font-size: 28px;}
 div.sub-fab img{width: 60% !important; display: block; margin:25px auto 0 auto;}
+.ui-widget-overlay { background: transparent 50% 50% repeat !important; opacity: .5;filter:Alpha(Opacity=50); }
+.firstdialog{width: 500px !important; height: 500px !important;}
+#signup{height: 455px !important; padding: 0 !important;}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+.firstdialog{width: 560px !important; height: 560px !important;}
+#signup{height: 515px !important; padding: 0 !important;}
+}
