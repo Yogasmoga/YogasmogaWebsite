@@ -2790,13 +2790,13 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         }
                     } else {
                         //$session->addError($this->__('Invalid customer data'));
-                        array_push($errors, "Invalid customer data");
+                        array_push($errors, "Invalid customer data.");
                     }
                 }
             } catch (Mage_Core_Exception $e) {
                 $session->setCustomerFormData($this->getRequest()->getPost());
                 if ($e->getCode() === Mage_Customer_Model_Customer::EXCEPTION_EMAIL_EXISTS) {
-                    array_push($errors, "Email Already Exists");
+                    array_push($errors, "Email Already Exists.");
                 } else {
                     array_push($errors, $e->getMessage());
                 }
