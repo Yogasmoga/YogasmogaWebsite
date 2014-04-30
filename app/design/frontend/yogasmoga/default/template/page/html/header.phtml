@@ -134,28 +134,38 @@ if($serverType == 'production')
                          {
                              event.preventDefault();
                              $("#err-msg").css("visibility","visible");
-                             $("#err-msg").text("First Name is required.");
+                             $("#err-msg").text("All fields are required.");
                              return;
                          }
                          if($("#lastname").val() == "")
                          {
                              event.preventDefault();
                              $("#err-msg").css("visibility","visible");
-                             $("#err-msg").text("Last Name is required.");
+                             $("#err-msg").text("All fields are required.");
                              return;
                          }
                          if($("#email_address").val() == "")
                          {
                              event.preventDefault();
                              $("#err-msg").css("visibility","visible");
-                             $("#err-msg").text("Email Address is required.");
+                             $("#err-msg").text("All fields are required.");
                              return;
+                         }
+                         if($("#email_address").val() != "")
+                         {
+                             if(!validateEmail($("#email_address").val()))
+                             {
+                                 event.preventDefault();
+                                 $("#err-msg").css("visibility","visible");
+                                 $("#err-msg").text("Enter valid email address");
+                                 return;
+                             }
                          }
                          if($("#password").val() == "")
                          {
                              event.preventDefault();
                              $("#err-msg").css("visibility","visible");
-                             $("#err-msg").text("Email Address is required.");
+                             $("#err-msg").text("All fields are required.");
                              return;
                          }
                          var str = $("#password").val();
@@ -182,24 +192,50 @@ if($serverType == 'production')
                          var cpassword = $("#password").val();
                          var is_subscribed = $("#is_subscribed").val();
 
+                         if(_checksinghupformsubmit == false)
+                         {
+                             _checksinghupformsubmit = true;
                          jQuery.ajax({
                              url : url,
                              type : 'POST',
                              data : {'firstname':firstname,'lastname':lastname,'email':email_address,'password':password,'confirmation':cpassword,'is_subscribed':is_subscribed},
                              success : function(data){
+                                 _checksinghupformsubmit  = false;
                                  console.log(data);
+                                 data = eval('('+data + ')');
+                                 var status = data.status;
+                                 var errors = data.errors;
+                                 if(status == "success")
+                                 {
+                                     $( "#signup" ).dialog("close");
+
+                                     $(".topmenulinks").each(function() {
+
+                                     });
+                                     $('.topmenulinks').html($('.topmenulinks').html().replace('Log In','MY ACCOUNT'));
+                                     <?php
+                                      $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+                                        if(strpos($currentUrl,'checkout/cart') !== false) {
+                                           ?>window.location.reload(); <?php
+                                        }
+                                      ?>
+
+                                 }
+                                 else{
+                                     $("#err-msg").css("visibility","visible");
+                                     $("#err-msg").text(errors);
+
+                                 }
                              }
                          });
+                         }
                          event.preventDefault();
                      });
                  });
              </script>
          <?php
          }
-    $currentUrl = Mage::helper('core/url')->getCurrentUrl();
-    if(strpos($currentUrl,'checkout/cart') !== false) {
 
-    }
 
 
 ?>
