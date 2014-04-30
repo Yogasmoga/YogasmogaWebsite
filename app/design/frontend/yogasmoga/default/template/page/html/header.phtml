@@ -65,28 +65,28 @@ if($serverType == 'production')
                      <tr>
                          <td class="label"><label for="firstname">First Name</label></td>
                          <td class="inputholder">
-                            <input type="text" id="firstname" name="firstname" value="" maxlength="255" class="requiredfield no-bg">
+                            <input type="text" id="firstname" name="firstname" value="" maxlength="30" class="requiredfield no-bg">
                         </td>
                      </tr>
                      <tr height="5"></tr>                     
                      <tr>
                          <td class="label"><label for="lastname">Last Name</label></td>
                          <td class="inputholder">
-                            <input type="text" id="lastname" name="lastname" value="" maxlength="255" class="requiredfield no-bg">
+                            <input type="text" id="lastname" name="lastname" value="" maxlength="30" class="requiredfield no-bg">
                         </td>
                      </tr>
                      <tr height="5"></tr>                     
                      <tr>
                          <td class="label"><label for="email_address">Email Address</label></td>
                          <td class="inputholder">
-                            <input type="text" name="email" id="email_address" value="" class="requiredfield" defaulterrormsg="Email Address is required" autocapitalize="off">
+                            <input type="text" name="email" id="email_address" autocomplete="off" value="" class="requiredfield" defaulterrormsg="Email Address is required" autocapitalize="off">
                         </td>
                      </tr>
                      <tr height="5"></tr>                     
                      <tr>
                          <td class="label"><label for="password">Password</label></td>
                          <td class="inputholder">
-                            <input type="password" class="requiredfield" name="password" id="password" defaulterrormsg="Password is required">
+                            <input type="password" autocomplete="off" maxlength="30" class="requiredfield" name="password" id="password" defaulterrormsg="Password is required">
                         </td>
                      </tr>
 
@@ -97,12 +97,14 @@ if($serverType == 'production')
 
                  </table>
 
-                    <input type="submit" id="signup-button" value="" style="background-image: url(<?php echo $this->getUrl()?>skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png); width:135px; height:39px; border:none;">
+                    <input type="submit" id="signup-button" value=""  style="background-image: url(<?php echo $this->getUrl()?>skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png); width:135px; height:39px; border:none;">
+                    <img style="width:0px;height:0px" id="signing-up" src="<?php echo $this->getUrl()?>skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png"/>
                     <p id="err-msg" style="min-height:15px;min-height: 37px; width: 150px;  margin: 0 auto; font-size: 12px; visibility:hidden">All fields are required.</p>
 
                 </form>
              </div>
              <script type="application/javascript">
+
                  jQuery(document).ready(function($){
                      $( "#signup" ).dialog({
                          autoOpen: true,
@@ -157,7 +159,7 @@ if($serverType == 'production')
                              {
                                  event.preventDefault();
                                  $("#err-msg").css("visibility","visible");
-                                 $("#err-msg").text("Enter valid email address");
+                                 $("#err-msg").text("Enter valid email address.");
                                  return;
                              }
                          }
@@ -174,7 +176,7 @@ if($serverType == 'production')
                          {
                              event.preventDefault();
                              $("#err-msg").css("visibility","visible");
-                             $("#err-msg").text("Please enter 6 or more characters.");
+                             $("#err-msg").text("Password requires 6 or more characters.");
                              return;
                          }
 
@@ -199,6 +201,9 @@ if($serverType == 'production')
                              url : url,
                              type : 'POST',
                              data : {'firstname':firstname,'lastname':lastname,'email':email_address,'password':password,'confirmation':cpassword,'is_subscribed':is_subscribed},
+                             beforeSend: function() {
+                                 $("#signup-button").css("background-image","url(<?php echo $this->getUrl()?>skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png)");
+                             },
                              success : function(data){
                                  _checksinghupformsubmit  = false;
                                  console.log(data);
@@ -222,6 +227,8 @@ if($serverType == 'production')
 
                                  }
                                  else{
+
+                                     $("#signup-button").css("background-image","url(<?php echo $this->getUrl()?>skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png)");
                                      $("#err-msg").css("visibility","visible");
                                      $("#err-msg").text(errors);
 
