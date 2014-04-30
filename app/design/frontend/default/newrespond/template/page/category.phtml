@@ -33,6 +33,20 @@
 				<?php $currentCategory = Mage::registry('current_category') ?>
 				<?php $_category = Mage::getModel('catalog/category')->load($currentCategory->getId()); ?>
 				<div class="page-title"><strong><?php echo $currentCategory->getName(); ?></strong></div>
+				<div class="page-title">
+				<?php
+					foreach (Mage::helper('catalog/category')->getStoreCategories() as $child) {
+						if ($child->getIsActive()) {
+							if($child->getId() == $currentcategoryid)
+								echo "<div>$child->getName()</div>";
+							else
+								echo "<div><a href='".Mage::getModel("catalog/category")->load($child->getId())->getUrl()."'>".$child->getName()."</a></div>";
+						}
+					}
+				?>
+				<strong><?php echo $currentCategory->getName(); ?></strong>
+				
+				</div>
 				<?php $_subcategories = $_category->getChildrenCategories(); ?>
 				<?php if (count($_subcategories) > 0): ?>
 					<div class="subnav-container">

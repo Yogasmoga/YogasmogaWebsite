@@ -25,9 +25,10 @@ jQuery(document).ready(function($){
     $(window).resize(function($) {
         //alert("resized");
         positionfloatingimages();
+		positionDiscoverSection();
     });
     
-    setTimeout(function(){ fixmainimage();}, 100);
+    setTimeout(function(){ fixmainimage();positionDiscoverSection();}, 100);
     
     $("div.nosheerinfo table.sharenosheer div").click(function(){
         if($(this).hasClass("twshare"))
@@ -41,6 +42,15 @@ jQuery(document).ready(function($){
     });
     
 });
+
+function positionDiscoverSection()
+{
+	var ht = jQuery("td#discover_fabrics div.fab_text").height();
+	console.log(ht);
+	var tdht = jQuery("td#discover_fabrics").height();
+	var top = (tdht - ht) / 2;
+	jQuery("td#discover_fabrics div.fab_text").css('top', top + 'px');
+}
 
 ///this was added for gilt promotion
 function positionfloatingimages()

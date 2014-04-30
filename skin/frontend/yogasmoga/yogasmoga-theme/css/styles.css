@@ -4341,3 +4341,7 @@ div.sub-fab img{width: 60% !important; display: block; margin:25px auto 0 auto;}
 .firstdialog{width: 560px !important; height: 560px !important;}
 #signup{height: 515px !important; padding: 0 !important;}
 }
+
+@media screen and (min-width: 1400px){ 
+    .fab_text h3,.fab_text,div.sub-fab{font-size: 36px;}
+    }
