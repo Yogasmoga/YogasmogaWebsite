@@ -60,7 +60,7 @@ if($serverType == 'production')
              Mage::getModel('core/cookie')->set("signup_popup", true);
              ?>
              <div id="signup">
-                <form action="" method="post" id="popup-register" style="display: block; margin-top: 46px;bottom:8%">
+                <form action="" method="post" id="popup-register" style="display: block; margin-top: 46px;bottom:5%">
                  <table width="280" cellspacing="0" padding="0" align="center">
                      <tr>
                          <td class="label"><label for="firstname">First Name</label></td>
@@ -98,7 +98,7 @@ if($serverType == 'production')
                  </table>
 
                     <input type="submit" id="signup-button" value="" style="background-image: url(<?php echo $this->getUrl()?>skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png); width:135px; height:39px; border:none;">
-                    <p id="err-msg" style="min-height:15px;min-height: 15px; width: 150px;  margin: 0 auto; font-size: 12px; visibility:hidden">All fields are required.</p>
+                    <p id="err-msg" style="min-height:15px;min-height: 37px; width: 150px;  margin: 0 auto; font-size: 12px; visibility:hidden">All fields are required.</p>
 
                 </form>
              </div>
@@ -111,6 +111,7 @@ if($serverType == 'production')
                          draggable: false,
                          resizable: false,
                          dialogClass : 'firstdialog',
+                         position: { my: "center",at: "center"},
                          show: {
                              effect: "fade",
                              duration: 1000
@@ -119,7 +120,7 @@ if($serverType == 'production')
                              effect: "fade",
                              duration: 500
                          }
-                     });
+                     });     
                  });
 
 
