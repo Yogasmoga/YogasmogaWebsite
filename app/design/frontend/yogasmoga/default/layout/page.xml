@@ -62,6 +62,7 @@ Default layout, loads most of the pages
                 <action method="addCss"><stylesheet>css/home_explore.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/fancy.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/flexslider.css</stylesheet></action>
+                <action method="addCss"><stylesheet>css/jqueryui/jquery-ui-1.9.1.custom.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/styles.css</stylesheet></action>
                 <action method="addItem"><type>skin_css</type><name>css/styles-ie.css</name><params/><if>lt IE 8</if></action>
                 <action method="addCss"><stylesheet>css/widgets.css</stylesheet></action>

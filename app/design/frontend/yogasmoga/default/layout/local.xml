@@ -6,7 +6,8 @@
 <reference name="head">
     <action method="addCss"><stylesheet>css/fonts.css</stylesheet></action>
     
-    
+
+
     <action method="addJs"><script>jquery/jquery-1.8.2.min.js</script></action>
     <action method="addJs"><script>jquery/myscripts.js</script></action>
     <action method="addJs"><script>jquery/mywatermark.js</script></action>
@@ -19,6 +20,7 @@
     <action method="addJs"><script>jquery/jquery.pagescroller.lite.js</script></action>
     <action method="addJs"><script>jquery/myvalidations.js</script></action>
     <action method="addJs"><script>jquery/globalsearch.js</script></action>
+    <action method="addJs"><script>jquery/jquery-ui-1.9.1.custom.min.js</script></action>
     
     
 </reference>
@@ -28,12 +30,11 @@
 
 <home>
     <reference name="head">
-        <action method="addCss"><stylesheet>css/jqueryui/jquery-ui-1.9.1.custom.css</stylesheet></action>
         <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
         
         <action method="addCss"><stylesheet>css/dressingroom.css</stylesheet></action>
         <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
-        <action method="addCss"><stylesheet>css/jqueryui/jquery-ui-1.9.1.custom.css</stylesheet></action>
+
         
         <action method="addJs"><script>jquery/jquery.touchSwipe.min.js</script></action>
         <action method="addJs"><script>jquery/jquery.bxSlider.min.js</script></action>
@@ -46,7 +47,7 @@
         <action method="addJs"><script>jquery/youtubevideo.js</script></action>
         <action method="addJs"><script>jquery/jquery.flexslider-min.js</script></action>
         <action method="addJs"><script>jquery/parallaxeffect.js</script></action>
-        <action method="addJs"><script>jquery/jquery-ui-1.9.1.custom.min.js</script></action>
+
         
         <action method="addJs"><script>jquery/tswipe.js</script></action>
         <action method="addJs"><script>jquery/dressingroom.js</script></action>
@@ -57,12 +58,11 @@
 
 <home1>
     <reference name="head">
-        <action method="addCss"><stylesheet>css/jqueryui/jquery-ui-1.9.1.custom.css</stylesheet></action>
         <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
         
         <action method="addCss"><stylesheet>css/dressingroom.css</stylesheet></action>
         <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
-        <action method="addCss"><stylesheet>css/jqueryui/jquery-ui-1.9.1.custom.css</stylesheet></action>
+
         
         <action method="addJs"><script>jquery/jquery.touchSwipe.min.js</script></action>
         <action method="addJs"><script>jquery/jquery.bxSlider.min.js</script></action>
@@ -75,7 +75,7 @@
         <action method="addJs"><script>jquery/youtubevideo.js</script></action>
         <action method="addJs"><script>jquery/jquery.flexslider-min.js</script></action>
         <action method="addJs"><script>jquery/parallaxeffect.js</script></action>
-        <action method="addJs"><script>jquery/jquery-ui-1.9.1.custom.min.js</script></action>
+
         
         <action method="addJs"><script>jquery/tswipe.js</script></action>
         <action method="addJs"><script>jquery/dressingroom.js</script></action>
@@ -100,7 +100,7 @@
         <action method="addJs"><script>jquery/myproductimageswitcher.js</script></action>
         <action method="addJs"><script>jquery/jquery.isotope.min.js</script></action>
         <action method="addJs"><script>jquery/mycategory.js</script></action>
-        <action method="addJs"><script>jquery/jquery-ui-1.9.1.custom.min.js</script></action>
+
         
         
     </reference>
@@ -108,7 +108,6 @@
     
 <catalog_product_view>
     <reference name="head">
-        <action method="addCss"><stylesheet>css/jqueryui/jquery-ui-1.9.1.custom.css</stylesheet></action>
         <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
         
         <action method="addJs"><script>jquery/myproduct_view.js</script></action>

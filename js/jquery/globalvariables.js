@@ -57,3 +57,4 @@ var _isCheckoutSuccessPage = false;
 var _orderNumberCheckout =  '';
 var _orderRevenueCheckout = '';
 var _isOnProductDetailPage = false; // check for product on product detail page
+var _checksinghupformsubmit = false;

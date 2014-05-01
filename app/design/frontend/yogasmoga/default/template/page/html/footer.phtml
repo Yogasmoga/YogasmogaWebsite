@@ -346,7 +346,28 @@ try {
 //    ->setData('content', 'Your new block content')
 //    ->save();
 ?>
+<!--
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        if(window.location.href.indexOf('https://') >= 0)
+            _usesecureurl = true;
+        else
+            _usesecureurl = false;
+        var url = homeUrl + 'mycatalog/myproduct/registercustomer';
+        if(_usesecureurl)
+            url = securehomeUrl + 'mycatalog/myproduct/registercustomer';
 
+        jQuery.ajax({
+            url : url,
+            type : 'POST',
+            data : {'firstname':'Manish','lastname':'Waliyan','email':'mwaliyan@gmail.com','password':'123456','confirmation':'123456','is_subscribed':'0'},
+            success : function(data){
+                console.log(data);
+            }
+        });
+    });
+</script>
+-->
 <?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
     if($serverType == 'production')
 	{
