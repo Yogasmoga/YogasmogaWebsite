@@ -4327,7 +4327,7 @@ body.checkout-onepage-index #payment_form_stripe
 #popup-register input[type="submit"]{margin-top: 25px; cursor: pointer;}
 #map-fabrics table td img{width: 100%;}
 #map-fabrics table td{position: relative;}
-.fab_text {position: absolute; top:20%; width: 100%; text-align: center; font-family: ITCAvantGardeProBk; font-size: 30px; color: #666666}
+.fab_text {position: absolute; top:10%; width: 100%; text-align: center; font-family: ITCAvantGardeProBk; font-size: 30px; color: #666666}
 .fab_text h3{font-family:ITCAvantGardeProBk,gotham,Arial; font-weight: normal; font-size: 30px; color: #dd8820; text-tansform: uppercase; font-style: normal;}
 .fab_text h3 span{font-family:  ITCAvantGardeProBd,gotham-b,Arial;}
 .fab_text span.gold_divider{display: block;}

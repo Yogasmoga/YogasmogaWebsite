@@ -25,10 +25,10 @@ jQuery(document).ready(function($){
     $(window).resize(function($) {
         //alert("resized");
         positionfloatingimages();
-		positionDiscoverSection();
+		//positionDiscoverSection();
     });
     
-    setTimeout(function(){ fixmainimage();positionDiscoverSection();}, 100);
+    setTimeout(function(){ fixmainimage();}, 100);
     
     $("div.nosheerinfo table.sharenosheer div").click(function(){
         if($(this).hasClass("twshare"))
