@@ -34,8 +34,7 @@
 $currentcategoryid = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
 				 ?>
 
-				<?php $_category = Mage::getModel('catalog/category')->load($currentCategory->getId()); ?>
-				<div class="page-title"><strong><?php echo $currentCategory->getName(); ?></strong></div>
+				<?php $_category = Mage::getModel('catalog/category')->load($currentCategory->getId()); ?>				
 				<div class="tabs-cont">
 				<table class="s-tabs" width="100%" cellspacing="0" cellpadding="0">
 				<tr>
