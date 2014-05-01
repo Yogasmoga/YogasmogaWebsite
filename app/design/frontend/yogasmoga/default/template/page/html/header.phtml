@@ -60,53 +60,103 @@ if($serverType == 'production')
              Mage::getModel('core/cookie')->set("signup_popup", true);
              ?>
              <div id="signup">
-                <form action="" method="post" id="popup-register" style="display: block; margin-top: 46px;bottom:5%">
-                 <table width="280" cellspacing="0" padding="0" align="center">
-                     <tr>
-                         <td class="label"><label for="firstname">First Name</label></td>
-                         <td class="inputholder">
-                            <input type="text" id="firstname" name="firstname" value="" maxlength="30" class="requiredfield no-bg">
-                        </td>
-                     </tr>
-                     <tr height="5"></tr>                     
-                     <tr>
-                         <td class="label"><label for="lastname">Last Name</label></td>
-                         <td class="inputholder">
-                            <input type="text" id="lastname" name="lastname" value="" maxlength="30" class="requiredfield no-bg">
-                        </td>
-                     </tr>
-                     <tr height="5"></tr>                     
-                     <tr>
-                         <td class="label"><label for="email_address">Email Address</label></td>
-                         <td class="inputholder">
-                            <input type="text" name="email" id="email_address" autocomplete="off" value="" class="requiredfield" defaulterrormsg="Email Address is required" autocapitalize="off">
-                        </td>
-                     </tr>
-                     <tr height="5"></tr>                     
-                     <tr>
-                         <td class="label"><label for="password">Password</label></td>
-                         <td class="inputholder">
-                            <input type="password" autocomplete="off" maxlength="30" class="requiredfield" name="password" id="password" defaulterrormsg="Password is required">
-                        </td>
-                     </tr>
+                <div id="sign_up_box">
+                    <img style="width:70%; margin-top: 8%;" src="<?php echo $this->getSkinUrl('images/sign_up_text.png') ?>" alt="FEEL THE SMOGI LOVE. Sign up and get $25 SMOGI bucks toward your first order." />
+                    <form action="" method="post" id="popup-register" style="display: block; margin-top: 46px;bottom:5%">
+                     <table width="250" cellspacing="0" padding="0" align="center">
+                         <tr>
+                             <td class="inputholder">
+                                <input type="text" id="pfirstname" name="pfirstname" class="watermark" watermark="First Name" value="" maxlength="30" class="requiredfield no-bg">
+                            </td>
+                         </tr>
+                         <tr height="5"></tr>                     
+                         <tr>
+                             
+                             <td class="inputholder">
+                                <input type="text" id="plastname" name="plastname" class="watermark" watermark="Last Name" value="" maxlength="30" class="requiredfield no-bg">
+                            </td>
+                         </tr>
+                         <tr height="5"></tr>                     
+                         <tr>
+                             
+                             <td class="inputholder">
+                                <input type="text" name="email" id="pemail_address" class="watermark" watermark="Email Address" autocomplete="off" value="" class="requiredfield" defaulterrormsg="Email Address is required" autocapitalize="off">
+                            </td>
+                         </tr>
+                         <tr height="5"></tr> 
+                         <tr id="fake_password">
+                              <td class="inputholder">
+                                <input type="text" autocomplete="off" maxlength="30" class="watermark" watermark="Select a password" class="requiredfield" name="password" id="f_password" defaulterrormsg="Password is required">
+                            </td>
+                         </tr>                    
+                         <tr id="o_password"> 
+                            <td class="inputholder">
+                                <input type="password" autocomplete="off" maxlength="30" class="watermark" watermark="Select a password" class="requiredfield" name="password" id="p_password" defaulterrormsg="Password is required">
+                            </td>
+                         </tr>
+                         <input style="display: none;" type="password" class="requiredfield" name="confirmation" id="confirmation" defaulterrormsg="Password is required">
+                         <input style="display: none;" id="is_subscribed" class="checkbox" type="checkbox" checked="checked" value="1" name="is_subscribed">
 
+                     </table>
 
+                        <input type="submit" id="signup-button" value=""  style="background-image: url(<?php echo $this->getUrl()?>skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png); width:135px; height:39px; border:none;">
+                        <img style="width:0px;height:0px" id="signing-up" src="<?php echo $this->getUrl()?>skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png"/>
+                        <p id="err-msg" style="min-height:15px;min-height: 37px; width: 150px;  margin: 0 auto; font-size: 12px; visibility:hidden">All fields are required.</p>
 
-                     <input style="display: none;" type="password" class="requiredfield" name="confirmation" id="confirmation" defaulterrormsg="Password is required">
-                     <input style="display: none;" id="is_subscribed" class="checkbox" type="checkbox" checked="checked" value="1" name="is_subscribed">
-
-                 </table>
-
-                    <input type="submit" id="signup-button" value=""  style="background-image: url(<?php echo $this->getUrl()?>skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png); width:135px; height:39px; border:none;">
-                    <img style="width:0px;height:0px" id="signing-up" src="<?php echo $this->getUrl()?>skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png"/>
-                    <p id="err-msg" style="min-height:15px;min-height: 37px; width: 150px;  margin: 0 auto; font-size: 12px; visibility:hidden">All fields are required.</p>
-
-                </form>
+                    </form>
+                </div>
+                <div id="thank_you_box" style="display:none;">
+                    <img style="width:60%; margin-top: 18%;" src="<?php echo $this->getSkinUrl('images/thank_you_text.png') ?>" alt="THANK YOU! Your SMOGI Bucks are waiting to be used at Checkout." />
+                    <table width="60%" ceelspacing="0" cellpadding="0" style="margin:12% auto 0;">
+                        <tr>
+                            <td style="text-align:left;">
+                                <a href="<?php echo $base_url; ?>women">
+                                <img src="<?php echo $this->getSkinUrl('images/shop_women.png') ?>" alt="SHOP WOMEN" style="width:85%; margin:0 auto !important;" />
+                                </a>
+                            </td>
+                            <td  style="text-align:right;">
+                                <a href="<?php echo $base_url; ?>mens">
+                                    <img src="<?php echo $this->getSkinUrl('images/shop_men.png') ?>" alt="SHOP MEN" style="width:85%; margin:0 auto !important;" />
+                                </a>
+                            </td>
+                        </tr>                        
+                    </table>
+                    <table width="60%" ceelspacing="0" cellpadding="0" style="margin:5% auto 0;">
+                        <tr>
+                            <td style="text-align:center;">
+                            <a href="<?php echo $base_url; ?>smogi-bucks">
+                                <img src="<?php echo $this->getSkinUrl('images/learn_bucks.png') ?>" alt="Learn more about SMOGI Bucks" style="width:75%; margin:0 auto !important;" /></a> 
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    
+                </div>
              </div>
              <script type="application/javascript">
 
-                 jQuery(document).ready(function($){                               
-
+                 jQuery(document).ready(function($){
+                               $("#f_password").focus(function(){
+                                    $(this).closest("#fake_password").hide();
+                                    $("#o_password").show();
+                                    $("#p_password").focus();
+                               }); 
+                               $("#p_password").blur(function(){
+                                    $(this).closest("#o_password").hide();
+                                    $("#fake_password").show();
+                                    if($(this).val() != "" )
+                                    {
+                                        $("#fake_password").hide();
+                                        $("#o_password").show();
+                                    }
+                                    if($.trim($(this).val()) == "Select a password")
+                                    {
+                                        $("#fake_password").show();
+                                        $("#o_password").hide();                                    
+                                    }
+                               }); 
+                                                                                      
+                                       
                      $( "#signup" ).dialog({
                          autoOpen: true,                         
                          draggable: false,
@@ -123,88 +173,102 @@ if($serverType == 'production')
                              duration: 500
                          },
                          open: function( event, ui ) {
+                            $("input#pfirstname").blur();
+                            $(".ui-widget-overlay").css({top:80});
+                            $(window).trigger("resize");
                             var pW = ($(document).width() - $(this).parent().width())/2;
                             var pH = ($(window).height() - $(this).parent().height())/2;                            
                             $(this).parent().css({left:pW,top:pH+10});                            
                             if ($(window).width() >= "1000") {
                                 $("html,body").css("overflow-x","hidden");                                
                             //$(window).trigger("resize");
-                            };                            
+                            };                
                          },
                          close: function( event, ui ) {
+                            _checkjsnav = true;
                             if ($(window).width() >= "1000") {
-                            $("html,body").css("overflow-x","auto");
+                            $("html,body").css("overflow-x","auto");                            
                             };
-                         },
-
-                         resize: function( event, ui ) {
-                            console.log("test");
-                            // var pW = ($(document).width() - $(this).parent().width())/2;
-                            // var pH = ($(window).height() - $(this).parent().height())/2;                            
-                            // $(this).parent().css({left:pW,top:pH+10});       
                          }
-                     });                       
+                     });
+                        
+                        $(".topmenulinks li a,.logo a").on("click",function() {                                
+                            var navHref = $(this).attr("href");
+                            window.location = navHref;                            
+                             }); 
+                        
+                                            
                     $(window).resize(function(event) {
                             var pW1 = ($(document).width() - $(".firstdialog").width())/2;
                             var pH1 = ($(window).height() - $(".firstdialog").height())/2;                            
-                            $(".firstdialog").css({left:pW1,top:pH1+10});
-                            console.log(pW1 + "--" + pH1 + "--");                                
+                            $(".firstdialog").css({left:pW1,top:pH1+10});                                                          
                           });
+                      setTimeout(function() {                                  
+                              $(".ui-widget-overlay").css({height:$(document).height()});
+                        }, 3000);                    
                      
                  });
-
 
              </script>
              <script type="application/javascript">
                  jQuery(document).ready(function($){
-                     $("#signup-button").click(function(event){
+                     $("#signup-button").click(function(event){                        
                          $("#err-msg").text("");
-
-                         if($("#firstname").val() == "")
+                         var fname = $.trim($("#pfirstname").val());
+                         var lname = $.trim($("#plastname").val());
+                         var email_id = $.trim($("#pemail_address").val());
+                         var pwd = $.trim($("#p_password").val());
+                         if(fname == "" || fname == "First Name")
                          {
                              event.preventDefault();
                              $("#err-msg").css("visibility","visible");
                              $("#err-msg").text("All fields are required.");
+                             // $("#pfirstname").focus();
                              return;
                          }
-                         if($("#lastname").val() == "")
+                         if(lname == "" || lname == "Last Name")
                          {
                              event.preventDefault();
                              $("#err-msg").css("visibility","visible");
                              $("#err-msg").text("All fields are required.");
+                             // $("#plastname").focus();
                              return;
                          }
-                         if($("#email_address").val() == "")
+                         if(email_id == "" || email_id == "Email Address")
                          {
                              event.preventDefault();
                              $("#err-msg").css("visibility","visible");
                              $("#err-msg").text("All fields are required.");
+                             // $("#pemail_address").focus();
                              return;
                          }
-                         if($("#email_address").val() != "")
+                         if(email_id != "")
                          {
-                             if(!validateEmail($("#email_address").val()))
+                             if(!validateEmail($("#pemail_address").val()))
                              {
                                  event.preventDefault();
                                  $("#err-msg").css("visibility","visible");
                                  $("#err-msg").text("Enter valid email address.");
+                                 // $("#pemail_address").focus();
                                  return;
                              }
                          }
-                         if($("#password").val() == "")
+                         if(pwd == "" || pwd == "Select a password")
                          {
                              event.preventDefault();
                              $("#err-msg").css("visibility","visible");
                              $("#err-msg").text("All fields are required.");
+                             // $("#p_password").focus();
                              return;
                          }
-                         var str = $("#password").val();
+                         var str = $("#p_password").val();
 
                          if(str.length < 6 )
                          {
                              event.preventDefault();
                              $("#err-msg").css("visibility","visible");
                              $("#err-msg").text("Password requires 6 or more characters.");
+                             // $("#p_password").focus();
                              return;
                          }
 
@@ -215,43 +279,50 @@ if($serverType == 'production')
                          var url = homeUrl + 'mycatalog/myproduct/registercustomer';
                          if(_usesecureurl)
                              url = securehomeUrl + 'mycatalog/myproduct/registercustomer';
-                         var firstname = $("#firstname").val();
-                         var lastname = $("#lastname").val();
-                         var email_address = $("#email_address").val();
-                         var password = $("#password").val();
-                         var cpassword = $("#password").val();
-                         var is_subscribed = $("#is_subscribed").val();
-
+                         // var pfirstname = $("#pfirstname").val();
+                         // var plastname = $("#plastname").val();
+                         // var pemail_address = $("#pemail_address").val();
+                         // var password = $("#p_password").val();
+                         var cpassword = pwd;
+                         var is_subscribed = $("#is_subscribed").val();                         
                          if(_checksinghupformsubmit == false)
                          {
+
                              _checksinghupformsubmit = true;
                          jQuery.ajax({
                              url : url,
                              type : 'POST',
-                             data : {'firstname':firstname,'lastname':lastname,'email':email_address,'password':password,'confirmation':cpassword,'is_subscribed':is_subscribed},
+                             data : {'firstname':fname,'lastname':lname,'email':email_id,'password':pwd,'confirmation':cpassword,'is_subscribed':is_subscribed},
                              beforeSend: function() {
-                                 $("#signup-button").css("background-image","url(<?php echo $this->getUrl()?>skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png)");
+                                 $("#signup-button").css("background-image","url(<?php echo $this->getUrl()?>skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png)");                                    
                              },
                              success : function(data){
                                  _checksinghupformsubmit  = false;
-                                 console.log(data);
+                                 // console.log(data);
                                  data = eval('('+data + ')');
                                  var status = data.status;
                                  var errors = data.errors;
                                  if(status == "success")
                                  {
-                                     $( "#signup" ).dialog("close");
+                                     // $( "#signup" ).dialog("close");
+                                     $("#sign_up_box").hide();
+                                     $("#thank_you_box").show();
 
-                                     $(".topmenulinks").each(function() {
-
-                                     });
+                                    
                                      $('.topmenulinks').html($('.topmenulinks').html().replace('Log In','MY ACCOUNT'));
-                                     <?php
-                                      $currentUrl = Mage::helper('core/url')->getCurrentUrl();
-                                        if(strpos($currentUrl,'checkout/cart') !== false) {
-                                           ?>window.location.reload(); <?php
+                                     $( "#signup" ).dialog({
+                                        close : function( event, ui ) {
+                                         <?php
+                                          $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+                                            if(strpos($currentUrl,'checkout/cart') !== false) {
+                                               ?>window.location.reload(); <?php
+                                            }
+                                            if(strpos($currentUrl,'customer/account/login') !== false) {
+                                               ?>window.location.reload(); <?php
+                                            }
+                                          ?>
                                         }
-                                      ?>
+                                    });
 
                                  }
                                  else{

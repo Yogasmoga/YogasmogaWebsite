@@ -34,18 +34,26 @@
 				<?php $_category = Mage::getModel('catalog/category')->load($currentCategory->getId()); ?>
 				<div class="page-title"><strong><?php echo $currentCategory->getName(); ?></strong></div>
 				<div class="page-title">
+				<table>
+				<tr>
 				<?php
 					foreach (Mage::helper('catalog/category')->getStoreCategories() as $child) {
+						?>
+						<td>
+						<?php
 						if ($child->getIsActive()) {
 							if($child->getId() == $currentcategoryid)
-								echo "<div>$child->getName()</div>";
+								echo "<div class='active'>$child->getName()</div>";
 							else
-								echo "<div><a href='".Mage::getModel("catalog/category")->load($child->getId())->getUrl()."'>".$child->getName()."</a></div>";
+								echo "<a href='".Mage::getModel("catalog/category")->load($child->getId())->getUrl()."'><div>".$child->getName()."</div></a>";
 						}
+						?>
+						<td>
+						<?php
 					}
 				?>
-				<strong><?php echo $currentCategory->getName(); ?></strong>
-				
+				</tr>
+				</table>
 				</div>
 				<?php $_subcategories = $_category->getChildrenCategories(); ?>
 				<?php if (count($_subcategories) > 0): ?>
