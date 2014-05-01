@@ -2779,6 +2779,10 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $session->setCustomerAsLoggedIn($customer);
                         $response['success_message'] = "Registered Successfully";
                         $response['status'] = "success";
+						
+						$write = Mage::getSingleton('core/resource')->getConnection('core_write');
+                        $write->query("insert into signup_popup_user values(null,'".$customer->getId()."',now())");
+						
                         echo json_encode($response);
                         //$url = $this->_welcomeCustomer($customer);
                         //$this->_redirectSuccess($url);
