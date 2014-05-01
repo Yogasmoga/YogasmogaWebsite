@@ -54,8 +54,9 @@ if($serverType == 'production')
 <!-- sign-up pop up for first time user  -->
 <?php  if(!Mage::getSingleton('customer/session')->isLoggedIn()){
 
-        //if(true)
-     if(Mage::getModel('core/cookie')->get("signup_popup")== null)
+        
+     // if(Mage::getModel('core/cookie')->get("signup_popup")== null)
+        if(false)
          {
              Mage::getModel('core/cookie')->set("signup_popup", true);
              ?>
@@ -110,12 +111,12 @@ if($serverType == 'production')
                     <table width="60%" ceelspacing="0" cellpadding="0" style="margin:12% auto 0;">
                         <tr>
                             <td style="text-align:left;">
-                                <a href="<?php echo $base_url; ?>women">
+                                <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>women">
                                 <img src="<?php echo $this->getSkinUrl('images/shop_women.png') ?>" alt="SHOP WOMEN" style="width:85%; margin:0 auto !important;" />
                                 </a>
                             </td>
                             <td  style="text-align:right;">
-                                <a href="<?php echo $base_url; ?>mens">
+                                <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>mens">
                                     <img src="<?php echo $this->getSkinUrl('images/shop_men.png') ?>" alt="SHOP MEN" style="width:85%; margin:0 auto !important;" />
                                 </a>
                             </td>
@@ -124,7 +125,7 @@ if($serverType == 'production')
                     <table width="60%" ceelspacing="0" cellpadding="0" style="margin:5% auto 0;">
                         <tr>
                             <td style="text-align:center;">
-                            <a href="<?php echo $base_url; ?>smogi-bucks">
+                            <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks">
                                 <img src="<?php echo $this->getSkinUrl('images/learn_bucks.png') ?>" alt="Learn more about SMOGI Bucks" style="width:75%; margin:0 auto !important;" /></a> 
                             </td>
                         </tr>

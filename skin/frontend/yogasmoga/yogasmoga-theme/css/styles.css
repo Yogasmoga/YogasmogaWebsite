@@ -4338,7 +4338,7 @@ div.sub-fab img{width: 60% !important; display: block; margin:25px auto 0 auto;}
 .firstdialog{width: 500px !important; height: 500px !important;}
 #signup{height: 455px !important; padding: 0 !important;}
 #o_password{display: none;}
-#Explore .bx-wrapper{background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/homepage/car_bg_blk.png") no-repeat scroll 30% center transparent !important;}
+#Explore .bx-wrapper{background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/homepage/car_bg_blk.png") no-repeat scroll 15% center transparent !important;}
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
 .firstdialog{width: 560px !important; height: 560px !important;}
