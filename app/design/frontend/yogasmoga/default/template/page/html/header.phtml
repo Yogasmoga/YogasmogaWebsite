@@ -55,8 +55,8 @@ if($serverType == 'production')
 <?php  if(!Mage::getSingleton('customer/session')->isLoggedIn()){
 
         
-      if(Mage::getModel('core/cookie')->get("signup_popup")== null)
-     //   if(false)
+     // if(Mage::getModel('core/cookie')->get("signup_popup")== null)
+        if(false)
          {
              Mage::getModel('core/cookie')->set("signup_popup", true);
              ?>
