@@ -2774,6 +2774,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         //$this->_redirectSuccess(Mage::getUrl('*/*/index', array('_secure'=>true)));
                         return;
                     } else {
+						$storeId = $customer->getSendemailStoreId();
+                        $customer->sendNewAccountEmail('registered', '', $storeId);
                         $session->setCustomerAsLoggedIn($customer);
                         $response['success_message'] = "Registered Successfully";
                         $response['status'] = "success";
