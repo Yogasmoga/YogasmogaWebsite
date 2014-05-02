@@ -2699,7 +2699,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         );
         if(!Mage::getSingleton('customer/session')->isLoggedIn()){
             if(Mage::getModel('core/cookie')->get("signup_popup")== null){
-                Mage::getModel('core/cookie')->set("signup_popup", true);
+                Mage::getModel('core/cookie')->set("signup_popup", true,10 * 365 * 24 * 60 * 60);
                 $response['status'] = "success";
                 echo json_encode($response);
                 return;
