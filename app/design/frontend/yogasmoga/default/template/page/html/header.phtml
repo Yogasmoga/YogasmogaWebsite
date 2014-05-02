@@ -109,6 +109,11 @@ if($serverType == 'production')
                         }
                     });
 
+                    $(".topmenulinks li a,.logo a").on("click",function() {
+                    var navHref = $(this).attr("href");
+                    window.location = navHref;
+                    });
+
                 }
 
             }
@@ -220,12 +225,6 @@ if($serverType == 'production')
                         $("#o_password").hide();
                     }
                 });
-
-                $(".topmenulinks li a,.logo a").on("click",function() {
-                    var navHref = $(this).attr("href");
-                    window.location = navHref;
-                });
-
 
                 $(window).resize(function(event) {
                     var pW1 = ($(document).width() - $(".firstdialog").width())/2;
