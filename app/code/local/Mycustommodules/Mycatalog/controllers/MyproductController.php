@@ -69,7 +69,19 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                         $i++;
                     }
                 }
-
+                $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov
+WHERE ea.attribute_id = eao.attribute_id
+AND eao.option_id = eaov.option_id
+AND eaov.store_id = 0
+AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
+                $i = 0;
+                $allsizearray = array();
+                while($row = $readresult->fetch())
+                {
+                    $allsizearray[$i] = $row['Attribute'];
+                    $i++;
+                }
 
                 $arrAccessories = array();
                 for ($i = 1; $i <= $productCollection1->getLastPageNumber(); $i++) {
@@ -131,6 +143,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
         $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
         $productcolorinfo = array();
         $sizeArray = array();
+        $oldsizeArray = array();
         $sizeTotal = array();
         foreach($_childproducts as $_childproduct)
         {
@@ -147,11 +160,15 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
                 $productcolorinfo[$temp][$_childproduct->getAttributeText('size')] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
             else
                 $productcolorinfo[$temp][$_childproduct->getAttributeText('size')] = "_".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
-            if(array_search($_childproduct->getAttributeText('size'), $sizeArray) === false)
+            if(array_search($_childproduct->getAttributeText('size'), $sizeArray ) === false)
             {
-                array_push($sizeArray, $_childproduct->getAttributeText('size'));
+                array_push($sizeArray , $_childproduct->getAttributeText('size'));
                 $sizeTotal[$_childproduct->getAttributeText('size')] = 0;
             }
+
+
+
+
             //if(isset($productcolorinfo[$temp]["sizes"]))
 //                            {
 //                                
@@ -164,6 +181,7 @@ class Mycustommodules_Mycatalog_MyproductController extends Mage_Core_Controller
             //echo $temp."   ".$temp1."<br/>";
 
         }
+
         //echo "<pre>";
 //                        print_r($productcolorinfo);
 //                        asort($sizeArray);
