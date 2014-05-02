@@ -68,8 +68,7 @@ if($serverType == 'production')
            // data : {'firstname':fname,'lastname':lname,'email':email_id,'password':pwd,'confirmation':cpassword,'is_subscribed':is_subscribed},
 
             success : function(data){
-                 console.log(data);
-                data = eval('('+data + ')');
+                 data = eval('('+data + ')');
                 var status = data.status;
 
                 if(status == "success")
