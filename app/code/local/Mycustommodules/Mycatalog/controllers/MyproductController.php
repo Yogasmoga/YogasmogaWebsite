@@ -2673,7 +2673,29 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         fclose($fp);
         Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".csv");
     }
+    public function checkforsignuppopupAction()
+    {
+        $response = array(
+            "status" => 'error'
 
+        );
+        if(!Mage::getSingleton('customer/session')->isLoggedIn()){
+            if(Mage::getModel('core/cookie')->get("signup_popup")== null){
+                Mage::getModel('core/cookie')->set("signup_popup", true);
+                $response['status'] = "success";
+                echo json_encode($response);
+                return;
+            }
+            else{
+                echo json_encode($response);
+                return;
+            }
+        }else{
+            echo json_encode($response);
+            return;
+        }
+
+    }
 
     public function registercustomerAction()
     {
