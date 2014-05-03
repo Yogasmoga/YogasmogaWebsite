@@ -2765,7 +2765,7 @@ table.staticproductgrid div.item td.productimage img.active
 
 .yogidialog.ui-dialog
 {
-    z-index : 10002 !important;
+    /*z-index : 10002 !important;*/
 }
 
 .ui-widget-overlay
@@ -4339,6 +4339,9 @@ div.sub-fab img{width: 60% !important; display: block; margin:25px auto 0 auto;}
 #signup{height: 455px !important; padding: 0 !important;}
 #o_password{display: none;}
 #Explore .bx-wrapper{background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/homepage/car_bg_blk.png") no-repeat scroll 15% center transparent !important;}
+
+/*Correction for product desc popup*/
+.ui-dialog.zoomdialog{z-index:10020 !important;}
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
 .firstdialog{width: 560px !important; height: 560px !important;}

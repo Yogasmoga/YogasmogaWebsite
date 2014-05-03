@@ -108,7 +108,7 @@ if($serverType == 'production')
                         }
                     });
 
-                    $(".topmenulinks li a,.logo a").on("click",function() {
+                    $(".header-container").on("click",".topmenulinks li a,.logo a",function() {
                     var navHref = $(this).attr("href");
                     window.location = navHref;
                     });
