@@ -2719,5 +2719,9 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
 
     }
+    public function callremindusersAction()
+    {
+        Mage::getModel('abandonedcartreminder/notify')->remindusers();
+    }
 }
 ?>
