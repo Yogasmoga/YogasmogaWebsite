@@ -4346,6 +4346,7 @@ div.sub-fab img{width: 60% !important; display: block; margin:25px auto 0 auto;}
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
 .firstdialog{width: 560px !important; height: 560px !important;}
 #signup{height: 515px !important; padding: 0 !important;}
+.firstdialog .ui-dialog-titlebar-close{right: 7.3em ; top: 155%;}
 }
 
 @media screen and (min-width: 1400px){ 
