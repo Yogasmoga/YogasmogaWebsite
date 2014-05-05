@@ -166,4 +166,7 @@ pip-log.txt
 sendy
 *.pem binary
 .idea/
+# unwanted files
+tempreports/
+recurringreports/
 
