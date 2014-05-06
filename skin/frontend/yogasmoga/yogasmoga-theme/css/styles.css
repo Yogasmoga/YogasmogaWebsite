@@ -4332,8 +4332,8 @@ body.checkout-onepage-index #payment_form_stripe
 .fab_text h3 span{font-family:  ITCAvantGardeProBd,gotham-b,Arial;}
 .fab_text span.gold_divider{display: block;}
 .fab_text span.gold_divider img{width: auto !important; margin: 40px 0;}
-div.sub-fab{display: inline-block; margin: 0 30px; font-size: 28px;}
-div.sub-fab img{width: 60% !important; display: block; margin:25px auto 0 auto;}
+div.sub-fab{display: inline-block; margin: 0 15px; font-size: 28px; width:40%;}
+div.sub-fab img{width: 45% !important; display: block; margin:25px auto 0 auto;}
 .ui-widget-overlay { background: #777777 50% 50% repeat !important; opacity: .5;filter:Alpha(Opacity=50); }
 .firstdialog{width: 500px !important; height: 500px !important;}
 #signup{height: 455px !important; padding: 0 !important;}
