@@ -31,48 +31,18 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
 
                     $notification_log = Mage::getModel('abandonedcartreminder/notify');
                     $notification_log->setCustomer_email($customer['customer_email']);
-                    $notification_log->setCustomer_firstname($customer['customer_fistname']);
+                    $notification_log->setCustomer_firstname($customer['customer_firstname']);
                     $notification_log->setCustomer_lastname($customer['customer_lastname']);
                     $notification_log->setCustomer_productname($customer['product_name']);
                     $notification_log->setCustomer_productcolor($customer['product_color']);
                     $notification_log->setCustomer_productsize($customer['product_size']);
-                    $notification_log->setEmail_status($this->sendemail($customer['customer_email'], $customer['customer_firstname'],$customer['customer_lastname'], $customer['product_name'], $customer['product_color'],$customer['product_size']));
+                    $notification_log->setEmail_status($this->sendemail($customer['customer_email'], $customer['customer_firstname'],$customer['customer_lastname'], $customer['product_name'], $customer['product_color'],$customer['product_size'],$customer['product_url'],$customer['product_imageurl'],$customer['product_html']));
                     Mage::log("notifying users before save".$customer['customer_email'], null, "abandonedcartreminder.log");
                 $notification_log->save();
                     Mage::log("notifying users after save".$customer['customer_email'], null, "abandonedcartreminder.log");
                 }
             }
         }
-
-
-    public function notifyusers()
-    {
-        Mage::log("notifying users", null, "smoginotifier.log");
-        $notification_periods = array(3,30);
-        $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
-        foreach($notification_periods as $notification_period)
-        {
-            $customerlist = $this->getabandonedlist($notification_period);
-            $notify_date = date('Y-m-d');
-            $bucks_expiration_date = date('Y-m-d', strtotime(" + ".$notification_period." days"));
-            foreach($customerlist as $customer)
-            {
-                $notification_log = Mage::getModel('smogiexpirationnotifier/notify');
-                $notification_log->setCustomer_id($customer['customer_id']);
-                $notification_log->setCustomer_email($customer['customer_email']);
-                $notification_log->setCustomer_name($customer['customer_name']);
-                $notification_log->setBucks_expiring($customer['bucks_expiring']);
-                $notification_log->setBucks_expiration_date($bucks_expiration_date);
-                $notification_log->setNotify_date($notify_date);
-                if($serverType == 'production')
-				    $notification_log->setEmail_status($this->sendemail($customer['customer_name'], $customer['customer_email'], $customer['bucks_expiring'], $notification_period));
-            /*    else
-                    $notification_log->setEmail_status($this->sendemail($customer['customer_name'], "ankit@mobikasa.com", $customer['bucks_expiring'], $notification_period));  */
-                $notification_log->setNotification_period($notification_period);
-                $notification_log->save();
-            }
-        }
-    }
     public function getabandonedlist()
     {
         $abandonedlist = array();
@@ -103,7 +73,8 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
   FROM sales_flat_quote, sales_flat_quote_item WHERE is_active = 1 AND customer_email IS NOT NULL
     AND items_count > 0 AND (SELECT is_active FROM customer_entity ce WHERE ce.entity_id = customer_id) = 1 AND sales_flat_quote_item.quote_id=sales_flat_quote.entity_id AND sales_flat_quote_item.product_type IN ('simple','giftcards')
  GROUP BY customer_email ORDER BY  sales_flat_quote.updated_at DESC");
-        $html = '<table border="1"><tr><td>Email</td><td>First Name</td><td>Last Name</td> <td>Product Name</td><td>Color</td><td>Size</td></tr>';
+
+
         while ($row = $readresult->fetch() ) {
 
             $row['customer_email'];
@@ -112,19 +83,37 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
 
 
             $product_ids = explode(",", $row['product_id']);
+            $tempcolor = '';
+            $tempproductname = '';
+            $tempsize = '';
+            $html = '';
+            $html ='<table cellspacing="10" cellpadding="5">
 
+                            <tr>
+		        				<th style="font-size: 12px;font-weight: bold; text-align: left; font-family:Calibri;color: #666;" colspan="5">SHOPPING BAG CONTENTS:</th>
+		        				<th></th>
+		        			</tr>';
             foreach($product_ids as $id)
             {
 
                 $productname = '';
+                $producturl = '';
+                $productimageurl = '';
                 $_product = Mage::getModel('catalog/product')->load($id);
+                //echo Mage::getBaseUrl().$_product->getUrlKey().".html";die;
                 //print_r($_product);die;
                 $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($id);
                 if (isset($parentIds[0])) {
                     $parentproduct = Mage::getModel('catalog/product')->load($parentIds[0]);
                     $productname = $parentproduct->getName();
+                    //print_r($parentproduct) ;die;
+                    $producturl = Mage::getBaseUrl().$parentproduct->getUrlKey();
+
+                    $productimageurl = (string)Mage::helper('catalog/image')->init($parentproduct, 'image')->resize(150);
                 }else{
+                    $producturl = Mage::getBaseUrl().$_product->getUrlKey();
                     $productname = $_product->getName();
+                    $productimageurl = (string)Mage::helper('catalog/image')->init($_product, 'image')->resize(150);
                 }
                 //echo $parentproduct->getUrlKey();
                 //print_r($parentproduct);die;
@@ -133,23 +122,123 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
 
                 $pcolor = (int) $_product->getColor();
                 $color = array_search($pcolor, $colorarray);
+                $tempcolor .= $color.',';
                 $size = array_search($_product->getSize(), $productsizearray);
+                $tempsize .= $size.',';
+                $tempproductname .= $productname.',';
+
+                $html .= '	<tr>
+		        				<td>&nbsp;</td>
+		        				<td style="text-align: center;padding-bottom: 3px;padding-top: 8px; border:1px solid #666666;">
+		        					<a  href="'.$producturl.'">
+		        						<img width="75" src="'.$productimageurl.'" alt="YOGASMOGA"  />
+		        					</a>
+		        				</td>
+		        				<td>
+		        					<a style="color: #666666;text-decoration: none;font-size: 12px;font-weight: bold; font-family:Calibri;" href="'.$producturl.'">
+		        						'.$productname.'
+		        					</a><br/>
+		        					<a style="color: #666666;text-decoration: none;font-size: 12px;font-weight: bold; font-family:Calibri;" href="'.$producturl.'">
+		        						COLOR: '.$color.'
+		        					</a><br/>
+		        					<a style="color: #666666;text-decoration: none;font-size: 12px;font-weight: bold; font-family:Calibri;" href="'.$producturl.'">
+		        						SIZE: '.$size.'
+		        					</a>
+		        				</td>
+		        			</tr>';
+
+
 
 //                $abandonedlist1 =  array($row['customer_email'], $row['customer_firstname'] , $row['customer_lastname'],$productname, $color, $size  );
-                $abandonedlist1 =  array("customer_email"=>$row['customer_email'], "customer_firstname"=>$row['customer_firstname'] ,"customer_lastname"=>$row['customer_lastname'],"product_name"=>$productname, "product_color"=>$color, "product_size"=> $size  );
-                array_push($abandonedlist, $abandonedlist1);
+                //$abandonedlist1 =  array("customer_email"=>$row['customer_email'], "customer_firstname"=>$row['customer_firstname'] ,"customer_lastname"=>$row['customer_lastname'],"product_name"=>$productname, "product_color"=>$color, "product_size"=> $size ,"product_url"=>$producturl,"product_imageurl" => $productimageurl );
+                //array_push($abandonedlist, $abandonedlist1);
 
 
 
             }
-
+            $html .= '<tr height="56">
+		        				<td></td>
+		        			</tr>
+		        		</table>';
+            $abandonedlist1 =  array("customer_email"=>$row['customer_email'], "customer_firstname"=>$row['customer_firstname'] ,"customer_lastname"=>$row['customer_lastname'],"product_name"=>$tempproductname, "product_color"=>$tempcolor, "product_size"=> $tempsize ,"product_url"=>$producturl,"product_imageurl" => $productimageurl,"product_html"=>$html );
+            array_push($abandonedlist, $abandonedlist1);
 
 
         }
-
+        //print_r($abandonedlist);die;
         return $abandonedlist;
 
     }
+    public function sendemail($recipient_email, $recipient_fistname,$recipient_lastname, $recipient_productname,$recipient_productcolor,$recipient_productsize,$recipient_producturl,$product_imageurl,$product_html )
+    {
+        $translate = Mage::getSingleton('core/translate');
+        $translate->setTranslateInline(false);
+        $email = Mage::getModel('core/email_template');
+
+        $mail_collection = Mage::getModel('core/email_template')->getCollection()->addFieldToFilter('template_code','abandonedcart_notification_email');
+        $template_id = $mail_collection->getFirstItem()->getTemplate_id();
+
+        $recipient = array(
+            'email' => $recipient_email,
+            'name'  => $recipient_fistname
+        );
+        $sender  = array(
+            'name' => 'YOGASMOGA',
+            'email' => 'ankit@mobikasa.com'
+        );
+        //echo "<pre>";print_r($email); die('test');
+        $email->setDesignConfig(array('area'=>'frontend', 'store'=> Mage::app()->getStore()->getId()))
+            ->sendTransactional(
+                $template_id,
+                $sender,
+                $recipient_email,
+                $recipient_fistname,
+
+                array(
+                    'lastname'        => $recipient_lastname,
+                    'producthtml'     => $product_html,
+                    'storeurl'         => Mage::getBaseUrl()
+//                    'productname' => $recipient_productname,
+//                    'productcolor' => $recipient_productcolor,
+//                    'productsize' => $recipient_productsize,
+//                    'producturl' => $recipient_producturl,
+//                    'productimageurl' => $product_imageurl
+                )
+
+            );
+        Mage::log("check email", null, "abandonedemailsend.log");
+        $translate->setTranslateInline(true);
+        return $email->getSentSuccess();
+    }
+    public function notifyusers()
+    {
+        Mage::log("notifying users", null, "smoginotifier.log");
+        $notification_periods = array(3,30);
+        $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
+        foreach($notification_periods as $notification_period)
+        {
+            $customerlist = $this->getabandonedlist($notification_period);
+            $notify_date = date('Y-m-d');
+            $bucks_expiration_date = date('Y-m-d', strtotime(" + ".$notification_period." days"));
+            foreach($customerlist as $customer)
+            {
+                $notification_log = Mage::getModel('smogiexpirationnotifier/notify');
+                $notification_log->setCustomer_id($customer['customer_id']);
+                $notification_log->setCustomer_email($customer['customer_email']);
+                $notification_log->setCustomer_name($customer['customer_name']);
+                $notification_log->setBucks_expiring($customer['bucks_expiring']);
+                $notification_log->setBucks_expiration_date($bucks_expiration_date);
+                $notification_log->setNotify_date($notify_date);
+                if($serverType == 'production')
+				    $notification_log->setEmail_status($this->sendemail($customer['customer_name'], $customer['customer_email'], $customer['bucks_expiring'], $notification_period));
+            /*    else
+                    $notification_log->setEmail_status($this->sendemail($customer['customer_name'], "ankit@mobikasa.com", $customer['bucks_expiring'], $notification_period));  */
+                $notification_log->setNotification_period($notification_period);
+                $notification_log->save();
+            }
+        }
+    }
+
     public function getCustomerslist($expiring_in_days)
     {
         $allStores = Mage::app()->getStores();	
@@ -212,39 +301,6 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
         return $customerlist;
     }
     
-    public function sendemail($recipient_email, $recipient_fistname,$recipient_lastname, $recipient_productname,$recipient_productcolor,$recipient_productsize )
-    {
-        $translate = Mage::getSingleton('core/translate');
-        $translate->setTranslateInline(false);
-        $email = Mage::getModel('core/email_template');
 
-        $mail_collection = Mage::getModel('core/email_template')->getCollection()->addFieldToFilter('template_code','abandonedcart_notification_email');
-        $template_id = $mail_collection->getFirstItem()->getTemplate_id();
-        
-        $recipient = array(
-            'email' => $recipient_email,
-            'name'  => $recipient_fistname
-        );
-        $sender  = array(
-            'name' => 'YOGASMOGA',
-            'email' => 'hello@yogasmoga.com'
-        );
-
-        $email->setDesignConfig(array('area'=>'frontend', 'store'=> Mage::app()->getStore()->getId()))
-                ->sendTransactional(
-                    $template_id,
-                    $sender,
-                    $recipient_email,
-                    $recipient_fistname,
-                    $recipient_lastname,
-                    $recipient_productname,
-                    $recipient_productcolor,
-                    $recipient_productsize
-
-                );
-        Mage::log("check email", null, "abandonedemailsend.log");
-        $translate->setTranslateInline(true);
-        return $email->getSentSuccess();
-    }
 }
 ?>
