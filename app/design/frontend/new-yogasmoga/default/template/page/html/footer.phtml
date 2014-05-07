@@ -1,0 +1,441 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<!-- <div class="footer-container"> -->
+    <div id="Sitemap" desc="Site Map" class="footer fullscreen pgsection" tw-summary="Check out YOGASMOGA. They make things for Life. One breath at a time">
+        <?php /*
+        <?php echo $this->getChildHtml() ?>
+        <p class="bugs"><?php echo $this->__('Help Us to Keep Magento Healthy') ?> - <a href="http://www.magentocommerce.com/bug-tracking" onclick="this.target='_blank'"><strong><?php echo $this->__('Report All Bugs') ?></strong></a> <?php echo $this->__('(ver. %s)', Mage::getVersion()) ?></p>
+        <address><?php echo $this->getCopyright() ?></address>
+        */ ?>
+        <table class="fullscreentable">
+            <tr>
+                <td>
+                    <div class="footheader">SHOP</div>
+                    <div class="footdesc">
+                        <?php
+                            $html = "";
+                            $currentcategoryid = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
+                            foreach (Mage::helper('catalog/category')->getStoreCategories() as $child) {
+                                if ($child->getIsActive()) {
+                                    if($child->getId() == $currentcategoryid)
+                                        $html .= "<a class='current' href='".Mage::getModel("catalog/category")->load($child->getId())->getUrl()."'>".$child->getName()."</a> / ";
+                                    else
+                                        $html .= "<a href='".Mage::getModel("catalog/category")->load($child->getId())->getUrl()."'>".$child->getName()."</a> / ";
+                                }
+                            }
+                            echo substr($html, 0, strlen($html) - 3);
+                        ?> 
+                         <!--/ <a href="<?php echo $this->getUrl('mens'); ?>">Men</a>  -->
+                    </div>
+                    <div class="footheader">OUR STORY</div>
+                    <div class="footdesc">
+                    <a href="<?php echo $this->getUrl('our-story'); ?>">OUR STORY</a> / 
+                    <a href="<?php echo $this->getUrl('our-story'); ?>#corevalues">CORE VALUES</a> /
+                    <a href="<?php echo $this->getUrl('our-story'); ?>#ethics">OUR ETHICS</a> /
+                    <a href="<?php echo $this->getUrl('our-story'); ?>#guidingSMOGI">COMMUNITY</a> /
+                    <a href="<?php echo $this->getUrl('our-story'); ?>#principlesofyoga">PRINCIPLES OF YOGA</a> /
+                    <a href="<?php echo $this->getUrl('our-story'); ?>#press">PRESS</a>
+
+                    </div>
+                    
+                    <div class="footheader">OUR EDGE</div>
+                    <div class="footdesc">
+                    <a href="<?php echo $this->getUrl('our-edge'); ?>#fabrictechnology">FABRIC TECHNOLOGY</a> / 
+                    <a href="<?php echo $this->getUrl('our-edge'); ?>#designelements">DESIGN ELEMENTS</a> /
+                    <a href="<?php echo $this->getUrl('our-edge'); ?>#productcare">PRODUCT CARE</a> /
+                    <a href="<?php echo $this->getUrl('our-edge'); ?>#sizechart">SIZE CHART</a>
+
+                    </div>
+                    
+                    <div class="footheader">SMOGI BUCKS</div>
+                    <div class="footdesc">
+                    <a href="<?php echo $this->getUrl('smogi-bucks'); ?>#q1">WHAT THEY ARE</a> / 
+                    <a href="<?php echo $this->getUrl('smogi-bucks'); ?>#q2">HOW TO GET THEM</a> /
+                    <a href="<?php echo $this->getUrl('smogi-bucks'); ?>#q3">WHAT TO DO WITH THEM</a>
+
+                    </div>
+                    
+                    <div class="footheader">HELP</div>
+                    <div class="footdesc">
+                    <a href="<?php echo $this->getUrl('help'); ?>#faq">FAQ</a> / 
+                    <a href="<?php echo $this->getUrl('help'); ?>#delivery">DELIVERY &amp; RETURNS</a> /
+                    <a href="<?php echo $this->getUrl('help'); ?>#join-the-team">JOIN THE TEAM</a> <br />
+                    <a href="<?php echo $this->getUrl('terms-of-use-and-conditions'); ?>">TERMS &amp; CONDITIONS</a> /
+                    <a href="<?php echo $this->getUrl('privacy-policy'); ?>">PRIVACY POLICY</a>
+                    </div>
+                    
+                    <div class="footheader">MY ACCOUNT</div>
+                    <div class="footdesc">
+                    <a href="<?php echo $this->getUrl('sales/order/history'); ?>">TRACK MY ORDER</a> / 
+                    <a href="<?php echo $this->getUrl('wishlist'); ?>">WISH LIST</a> /
+                    <a href="<?php echo $this->getUrl('checkout/cart'); ?>">SHOPPING BAG</a> /
+                    <a href="<?php echo $this->getUrl('customer/account'); ?>">DASHBOARD</a>
+                    </div>
+                    
+                    <div class="footheader">CONTACT US</div>
+                    <div class="footdesc">
+                    888-990-YOGA (9642) / <a href="mailto:hello@yogasmoga.com">HELLO@YOGASMOGA.COM</a><br />
+                    - <br />
+                    15 BROAD STREET <br />
+                    NEW YORK, NY <br />
+                    10005
+                    </div>
+                    
+                    <div class="footheader">STAY CONNECTED</div>
+                    <div class="footdesc" style="display: none;">
+                    <a target="_blank" href="http://www.facebook.com/YOGASMOGA">FACEBOOK</a> /
+                    <a target="_blank" href="http://www.twitter.com/YOGASMOGA">TWITTER</a> / 
+                    <a target="_blank" href="http://www.Pinterest.com/YOGASMOGA">PINTREST</a>
+                    </div>
+                    <table class="footersocialshare">
+                        <tr>
+                            <td>
+                                <a target="_blank" href="http://www.facebook.com/YOGASMOGA"><div class="footerfacebook"></div></a>            
+                            </td>
+                            <td>
+                                <a target="_blank" href="http://www.twitter.com/YOGASMOGA"><div class="footertwitter"></div></a>            
+                            </td>
+                            <td>
+                                <a target="_blank" href="http://www.Pinterest.com/YOGASMOGA"><div class="footerpinterest"></div></a>            
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <div class="footheader">EMAIL SIGN UP</div>
+                    <div class="footdesc">
+                        <div class="inputcontainer" style="width:127px;">
+                            <input id="txtNewsletterEmail" type="text" watermark="Enter Email" style="width: 110px;" />
+                            <input id="btnNewsletter" type="submit" value=">" />
+                        </div>
+                        <div id="footernotification" class="success notification">Thank You</div>
+                        <?php
+                         /*
+                         $coupon_code = Mage::getSingleton('checkout/session')->getQuote()->getCouponCode();
+                        if($coupon_code){
+                            echo "coupon used".$coupon_code;
+                        }else{
+                            echo "coupon not used";
+                        }
+                        <?php $shippingcode = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingMethod(); ?>
+                        <?php
+                            $quote = Mage::helper('checkout')->getQuote()->getData();
+                            echo "<pre>";
+                            print_r($quote);
+                            echo "</pre>";
+                            echo $shippingcode;
+                            $totalItemsInCart = Mage::helper('checkout/cart')->getItemsCount(); //total items in cart
+                            $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+                            $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
+                            echo "subtotal = ".$subtotal."<br/>";
+                            $grandtotal = $totals["grand_total"]->getValue(); //Grandtotal value
+                            echo "grandtotal = ".$grandtotal."<br/>";
+                            if(isset($totals['discount']) && $totals['discount']->getValue()) {
+                                $discount = $totals['discount']->getValue(); //Discount value if applied
+                            } else {
+                                $discount = 0;
+                            }
+                            echo "discount = ".$discount."<br/>";
+                            if(isset($totals['tax']) && $totals['tax']->getValue()) {
+                                $tax = $totals['tax']->getValue(); //Tax value if present
+                            } else {
+                                $tax = 0;
+                            }
+                            echo "tax = ".$tax."<br/>";
+                            
+                            echo Mage::helper('rewardpoints')->getPointsOnOrder();
+                            echo "sdfasdfsadfsad";
+                        ?>
+                        */ ?>
+                        <?php
+                            //$orderTotals = Mage::getModel('sales/order')->getCollection()
+//                                ->addAttributeToFilter('status', Mage_Sales_Model_Order::STATE_COMPLETE)
+//                                //->addAttributeToFilter('id', '11')
+//                                ->addAttributeToSelect('grand_total')
+//                                ->getColumnValues('grand_total');
+//                            $totalSum = array_sum($orderTotals);
+//                            echo "Total sum = ".
+//                            // If you need the value formatted as a price...
+//                            $totalSum = Mage::helper('core')->currency($totalSum, true, false);
+//                            
+                            
+                            //$write = Mage::getSingleton('core/resource')->getConnection('core_read');
+//                            $result = $write->query("SELECT IF(SUM(row_total) > 0, SUM(row_total), 0) as revenue FROM sales_flat_order sfo, sales_flat_order_item sfoi WHERE sfo.status='complete' AND sfo.entity_id=sfoi.order_id
+//AND sfoi.product_id = 11");
+//                            while ($row = $result->fetch() ) {
+//                                echo $row['revenue']."<br/>";
+//                            }
+                        ?>
+                        <?php //echo Mage::helper('core/http')->getHttpUserAgent() ?>
+                    </div>
+                    
+                    <div class="copyright"><?php echo $this->getCopyright() ?></div>
+                </td>
+            </tr>
+        </table>
+        <a href="<?php echo $this->getUrl('namaskar'); ?>" class="namaskarimage"><img src="<?php echo $this->getSkinUrl('images/namaskar.png'); ?>" class="namaskarimage" /></a>
+        <div class="sidenavpopup">
+        <div>abc</div>
+            <img src="<?php echo $this->getSkinUrl('images/tag_arrow.png'); ?>" />
+        </div>
+    </div>
+    <!--
+</div> -->
+<div id="pageScrollerNav">
+    <div id="shareicons">
+        <div id="pinterest"></div>
+        <div id="twitter">
+            <!-- <a id="atwitter" href="https://twitter.com/share"><div>&nbsp;</div></a> -->
+        </div>
+        <div id="facebook"></div>
+        <div id="mail"></div>
+    </div>
+    <div id="glbshare"></div>
+    <div id="pgNavUp">
+        <img onclick="pageScroller.prev();" src="<?php echo $this->getSkinUrl('images/navigation/up.png') ?>" />
+    </div>
+    <div id="pgNavDown"><img  onclick="pageScroller.next();" src="<?php echo $this->getSkinUrl('images/navigation/down.png') ?>" /></div>
+</div>
+<script>
+	$j('.footdesc a').click(function(){
+		var tar = $j(this).attr('href').split('#')[1];
+		var curtarget = "#"+ tar.charAt(0).toUpperCase() + tar.slice(1);
+		$j('html,body').animate({scrollTop: $j(curtarget).offset().top - _headerHeight},'fast', function(){
+			$j(window).scrollTop($j(window).scrollTop() + 1);
+		});
+	});
+</script>
+
+<?php
+/*
+try {
+            $storeObj = Mage::getModel('core/store')->load(Mage::app()->getStore()->getId());
+            //$customerEmailId = $parent->getEmail();
+//            $customerFName = $parent->getFirstName();
+//            $customerLName = $parent->getLastName();
+
+            $customerEmailId = "ankit@mobikasa.com";
+            $customerFName = "ankit";
+            $customerLName = "singhania";
+
+            //load the custom template to the email
+            $emailTemplate = Mage::getModel('core/email_template')
+                    ->loadDefault('custom_notification_template1');
+
+            // it depends on the template variables
+            $emailTemplateVariables = array();
+            $emailTemplateVariables['customername'] = $customerFName;
+            //$emailTemplateVariables['store'] = $storeObj;
+            //$emailTemplateVariables['payment_html'] = $method;
+
+
+            $emailTemplate->setSenderName('Yogasmoga');
+            $emailTemplate->setSenderEmail('report@yogasmoga.com');
+            $emailTemplate->setType('html');
+            $emailTemplate->setTemplateSubject('Notification');
+            $emailTemplate->send($customerEmailId, $customerFName . $customerLName, $emailTemplateVariables);
+            echo "sent";
+        } catch (Exception $e) {
+            $errorMessage = $e->getMessage();
+            echo $errorMessage;
+        }
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+        $readresult=$write->query("SELECT COUNT(rewardpoints_referral_email) as cnt FROM rewardpoints_referral WHERE rewardpoints_referral_status=1 AND rewardpoints_referral_parent_id=(SELECT entity_id FROM customer_entity ce WHERE ce.email='ankit@mobikasa.com')");
+        while ($row = $readresult->fetch() ) {
+            echo $row['cnt']."<br>";
+        }
+        */
+?>
+<?php /*
+        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+        $readresult=$write->query("SELECT COUNT(rewardpoints_referral_email) as cnt, rewardpoints_referral_parent_id as Id FROM rewardpoints_referral WHERE rewardpoints_referral_status=1 AND rewardpoints_referral_parent_id=(SELECT entity_id FROM customer_entity ce WHERE ce.email='ankit@mobikasa.com')");
+        $successreferalcount = 0;
+        $customerId = 0;
+        while ($row = $readresult->fetch() ) {
+            $successreferalcount = $row['cnt'];
+            $customerId = $row['Id'];
+        }
+        if($successreferalcount >= 2)
+        {
+            try {
+                $storeObj = Mage::getModel('core/store')->load(Mage::app()->getStore()->getId());
+                //$customerEmailId = $parent->getEmail();
+//                $customerFName = $parent->getFirstName();
+//                $customerLName = $parent->getLastName();
+
+
+                $customerEmailId = "ankit@mobikasa.com";
+                $customerFName = "Ankit";
+                $customerLName = "Singhania";
+
+                //load the custom template to the email
+                $emailTemplate = Mage::getModel('core/email_template')
+                        ->loadDefault('custom_notification_template1');
+
+                // it depends on the template variables
+                $emailTemplateVariables = array();
+
+
+
+                $emailTemplateVariables['customername'] = $customerFName." ".$customerLName;
+                $emailTemplateVariables['customeremail'] = $customerEmailId;
+                $emailTemplateVariables['referralcount'] = $successreferalcount;
+
+                $readresult=$write->query("SELECT CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.rewardpoints_referral_child_id AND attribute_id=5),' ',(SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.rewardpoints_referral_child_id AND attribute_id=7)) AS 'Name',rewardpoints_referral_email AS 'Email' FROM rewardpoints_referral rr WHERE rr.rewardpoints_referral_parent_id=".$customerId." AND rr.rewardpoints_referral_status=1");
+                $tableoutput = "<table border='1'><thead><tr><th>Name</th><th>Email</th></tr></thead><tbody>";
+                while ($row = $readresult->fetch() ) {
+                    $tableoutput .= "<tr><td>".$row['Name']."</td><td>".$row['Email']."</td></tr>";
+                }
+                $tableoutput .= "</tbody></table>";
+
+                $emailTemplateVariables['referraldetails'] = $tableoutput;
+                //$emailTemplateVariables['store'] = $storeObj;
+                //$emailTemplateVariables['payment_html'] = $method;
+
+
+                $emailTemplate->setSenderName('Yogasmoga');
+                $emailTemplate->setSenderEmail('report@yogasmoga.com');
+                $emailTemplate->setType('html');
+                $emailTemplate->setTemplateSubject('Notification');
+                $emailTemplate->send("ankit@mobikasa.com", "Ankit Singhania", $emailTemplateVariables);
+            } catch (Exception $e) {
+                $errorMessage = $e->getMessage();
+                //return $errorMessage;
+                Mage::log($errorMessage,null,'notification.log');
+            }
+        }
+        */
+
+//$order = Mage::getModel('sales/order')->load(103);
+//        $comment = 'blah blah';
+//        $order->addStatusHistoryComment($comment);
+//        $order->save();
+//$write = Mage::getSingleton('core/resource')->getConnection('core_read');
+//$readresult = $write->query("SELECT * FROM rewardpoints_account WHERE order_id='100000079'");
+//$row = $readresult->fetch();
+//if($row)
+//    echo "found";
+//    else
+//    echo "not found";
+//$identifier = 'test_block';
+//Mage::getModel('cms/block')
+//    ->load($identifier, 'identifier')
+//    ->setData('content', 'Your new block content')
+//    ->save();
+?>
+<!--
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        if(window.location.href.indexOf('https://') >= 0)
+            _usesecureurl = true;
+        else
+            _usesecureurl = false;
+        var url = homeUrl + 'mycatalog/myproduct/registercustomer';
+        if(_usesecureurl)
+            url = securehomeUrl + 'mycatalog/myproduct/registercustomer';
+
+        jQuery.ajax({
+            url : url,
+            type : 'POST',
+            data : {'firstname':'Manish','lastname':'Waliyan','email':'mwaliyan@gmail.com','password':'123456','confirmation':'123456','is_subscribed':'0'},
+            success : function(data){
+                console.log(data);
+            }
+        });
+    });
+</script>
+-->
+<?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
+    if($serverType == 'production')
+	{
+?>
+<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0018/1897.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+
+
+<!-- Add roll script below -->
+<script type="text/javascript">
+adroll_adv_id = "YOFQZUE36BBXTN2MHILUWB";
+adroll_pix_id = "YNMX4PSI6BGYTKAPJJWTMP";
+(function () {
+var oldonload = window.onload;
+window.onload = function(){
+   __adroll_loaded=true;
+   var scr = document.createElement("script");
+   var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+   scr.setAttribute('async', 'true');
+   scr.type = "text/javascript";
+   scr.src = host + "/j/roundtrip.js";
+   ((document.getElementsByTagName('head') || [null])[0] ||
+    document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+   if(oldonload){oldonload()}};
+}());
+</script>
+
+<!-- Google Code for Remarketing Tag -->
+<!--------------------------------------------------
+Add this code to all your webpages, right before the  tag
+Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
+--------------------------------------------------->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 990162677;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/990162677/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<script type="text/javascript">
+
+  (function() {
+    window._pa = window._pa || {};
+	if(_isCheckoutSuccessPage){
+     _pa.orderId = _orderNumberCheckout; // OPTIONAL: attach unique conversion identifier to conversions
+     _pa.revenue = _orderRevenueCheckout; // OPTIONAL: attach dynamic purchase values to conversions
+	 
+	 }
+	 if((_productid != '')&&(_isOnProductDetailPage))
+	 {
+		_pa.productId = _productid; // OPTIONAL: Include product ID for use with dynamic ads
+		
+	 }
+    var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
+    pa.src = ('https:' == document.location.protocol ? 'https:' : 'http:') + "//tag.perfectaudience.com/serve/5310b5f2fcdb878ad0000085.js";
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(pa, s);
+  })();
+</script>
+                
+    <?php } ?>

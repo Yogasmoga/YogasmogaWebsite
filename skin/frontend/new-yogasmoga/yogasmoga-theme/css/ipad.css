@@ -1,0 +1,12 @@
+#dressingroomholder div.productdetail
+{
+    display : block !important;
+}
+#dressingroomholder a.nextBtn, #dressingroomholder a.prevBtn
+{
+    display : inline !important;
+}
+div.mycategory-products div.item td.productprice span.price
+{
+    display : inline;
+}

@@ -1,0 +1,904 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Shopping cart template
+ *
+ * @see Mage_Checkout_Block_Cart
+ */
+?>
+
+
+<script type="text/javascript">
+//    jQuery(document).ready(function($){
+//        $("li#minicartlink").addClass('selected');
+//    });
+    _oncartpage = true;
+
+</script>
+
+
+
+<?php
+
+
+
+    if(!function_exists('getsmogipoints'))
+    {
+        function getsmogipoints() {
+
+            $customerId = Mage::getModel('customer/session')->getCustomerId();
+            $store_id = Mage::app()->getStore()->getId();
+
+        /*
+            if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+                $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+                return $reward_flat_model->collectPointsCurrent($customerId, $store_id);
+            }
+          */
+
+            //$reward_model = Mage::getModel('rewardpoints/stats');
+            //return $reward_model->getPointsCurrent($customerId, $store_id);
+
+            return Mage::getModel('rewardpoints/stats')->getPointsCurrent($customerId, $store_id);
+        }
+    }
+    
+    if(!function_exists('activategiftcard'))
+    {
+        function activategiftcard()
+        {
+            //make giftcard active
+            //if(!Mage::getSingleton('core/session')->getGiftCardActivated())
+//            {
+                if(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()) > 0)
+                {
+                    if(Mage::getSingleton('giftcards/session')->getActive() == "0" || Mage::getSingleton('giftcards/session')->getActive() == "")
+                    {
+                        Mage::getSingleton('core/session')->setGiftCardActivated('true');
+                        Mage::getSingleton('giftcards/session')->setActive('1');
+                        Mage::getSingleton('checkout/cart')->getQuote()->getShippingAddress()->setCollectShippingRates(true);
+                        Mage::getSingleton('checkout/cart')->getQuote()->collectTotals()->save();
+                        Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");   
+                    }   
+                }
+            //}
+            
+            //deactivate smogi bucks
+            Mage::getSingleton('rewardpoints/session')->setProductChecked(0);
+            Mage::helper('rewardpoints/event')->setCreditPoints(0);
+            Mage::helper('checkout/cart')->getCart()->getQuote()
+                    ->setRewardpointsQuantity(NULL)
+                    ->setRewardpointsDescription(NULL)
+                    ->setBaseRewardpoints(NULL)
+                    ->setRewardpoints(NULL)
+                    ->save();
+        }    
+    }
+    
+    if(!function_exists('activatesmogibucks'))
+    {
+        function activatesmogibucks()
+        {
+            //activate smogi bucks
+            
+            $session = Mage::getSingleton('core/session');
+            $points_value = getsmogipoints();
+            $points_max = 0;
+            if (Mage::getStoreConfig('rewardpoints/default/max_point_used_order', Mage::app()->getStore()->getId())){
+                if ((int)Mage::getStoreConfig('rewardpoints/default/max_point_used_order', Mage::app()->getStore()->getId()) < $points_value){
+                    $points_max = (int)Mage::getStoreConfig('rewardpoints/default/max_point_used_order', Mage::app()->getStore()->getId());
+                    $session->addError($this->__('You tried to use %s loyalty points, but you can use a maximum of %s points per shopping cart.', $points_value, $points_max));
+                    $points_value = $points_max;
+                }
+            }
+            $quote_id = Mage::helper('checkout/cart')->getCart()->getQuote()->getId();
+    
+            Mage::getSingleton('rewardpoints/session')->setProductChecked(0);
+            Mage::getSingleton('rewardpoints/session')->setShippingChecked(0);
+            
+            Mage::helper('rewardpoints/event')->setCreditPoints($points_value);
+            
+            
+            Mage::helper('checkout/cart')->getCart()->getQuote()
+                    ->setRewardpointsQuantity($points_value)
+                    ->save();
+    
+            //deactivate gift card
+            
+            Mage::getSingleton('giftcards/session')->setActive('0');
+            try {
+                Mage::getSingleton('checkout/cart')->getQuote()->getShippingAddress()->setCollectShippingRates(true);
+                Mage::getSingleton('checkout/cart')->getQuote()->collectTotals()->save();
+            } catch (Exception $e) {
+                //$this->_getSession()->addError($e->getMessage());
+            }
+
+        }   
+    }
+    if(!function_exists('getPointsCurrentlyUsed'))
+    {
+        function getPointsCurrentlyUsed() {
+            $creditpointsentered = Mage::helper('rewardpoints/event')->getCreditPoints();
+            $grandTotal = Mage::helper('checkout/cart')->getQuote()->getSubtotal();
+            //print_r($grandTotal);
+            $resource = Mage::getSingleton('core/resource');
+            $readConnection = $resource->getConnection('core_read');
+            $cartHelper = Mage::helper('checkout/cart');
+            $items = $cartHelper->getCart()->getItems();
+
+            foreach ($items as $item) {
+                if($item->getPrice() > 0)
+                {
+                    $itemId = $item->getProductId();
+                    $itemstotal = $item->getRowTotal();
+
+                    $query1 = "Select category_id, name from catalog_category_product, catalog_category_flat_store_1 where catalog_category_product.product_id = ".$itemId." and catalog_category_flat_store_1.entity_id = catalog_category_product.category_id";
+                    $categoryid = $readConnection->fetchAll($query1);
+                    $excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories')->getValue('plain');
+                    $excludecats = explode(",", $excludecats);
+
+                    for($id=0;$id<count($categoryid);$id++)
+                    {
+                        $flag = false;
+                        for($i = 0; $i < count($excludecats); $i++)
+                        {
+                            if($categoryid[$id]['category_id'] == $excludecats[$i])
+                            {
+                                $flag = true;
+                                break;
+                            }
+                        }
+                        if($flag)
+                            //if($categoryid[$id]['category_id'] == 8)
+                            //if($categoryid[$id]['name'] == 'Accessories')
+                        {
+                            $cattotal = $cattotal + $itemstotal;
+                        }
+                    }
+                }
+            }
+
+            $grandTotal = $grandTotal - $cattotal;
+
+            if ($creditpointsentered > $grandTotal)
+            {
+                //Mage::getSingleton('core/session')->setCreditPointsApplied($grandTotal);
+                return $grandTotal;
+            }
+            else
+            {
+                return $creditpointsentered;
+            }
+
+        }
+    }
+
+        //custom auto smogi bucks apply
+        //$isAutoAppliedDiscount = false ;
+        //echo Mage::getSingleton('core/session')->getAutoAppliedDiscount();
+        //echo  Mage::getSingleton('core/session')->getsmogiApplied();die('ttt');
+        //Mage::getSingleton('core/session')->setAutoAppliedDiscount($isAutoAppliedDiscount);
+    if(Mage::getSingleton('customer/session')->isLoggedIn())
+    {
+        if((Mage::getSingleton('core/session')->getAutoAppliedDiscount()== null)||(Mage::getSingleton('core/session')->getAutoAppliedDiscount()==2 ))
+        {
+
+            if((Mage::getSingleton('core/session')->getAutoAppliedDiscount()!= null)&&(Mage::getSingleton('core/session')->getAutoAppliedDiscount()>1))
+            {
+                $points_currently_used = getPointsCurrentlyUsed();
+                ?>
+                <div id="smogi-notify" style="display:none;font-size: 17px; color:#000000;height:210px;border: 3px solid #F5A13B;"><img style="height: :50px;width:165px;margin-top:22px;" alt ="Yogasmoga" src="<?php echo $this->getSkinUrl().'images/logo_smogi.png';?>" /><p style="width:450px;margin-top:30px;margin-left:10px;margin-right: 10px;"><?php echo '$'.$points_currently_used ;?> SMOGI Bucks have been applied towards your order.</p></div>
+                <style type="text/css">
+                    .fancybox-skin{
+                        border-radius: 3px;
+                    }
+                    .fancybox-wrap{
+                        border-radius: 3px;
+                    }
+                    .fancybox-close{
+                        width: 40px;
+                        height: 38px;
+                        background: url("<?php echo $this->getSkinUrl().'images/cross_red1.png';?>");
+                        background-repeat: no-repeat;
+                    }
+                </style>
+                <script type="text/javascript">
+
+                    jQuery(document).ready(function($){
+
+                        setTimeout(function(){
+                            $("#smogi-notify").fancybox({
+                                'width'  : 600,
+                                'height' : 600,
+                                'transitionIn'	:	'elastic',
+                                'transitionOut'	:	'elastic',
+                                'speedIn'		:	600,
+                                'speedOut'		:	200,
+                                'overlayShow'	:	false
+
+                            });
+
+
+                            //$(".fancybox-wrap").css("width","431px");
+                            $("#smogi-notify").css("font-size","17px");
+                            $(".fancybox-item ").css("width","40px");
+                            $(".fancybox-item").css("height","38px");
+
+                            $("#smogi-notify").fancybox().trigger('click');
+                        },500);
+
+
+                    });
+
+                </script>
+                <?php
+                Mage::getSingleton('core/session')->setAutoAppliedDiscount(1);
+            }
+            $smogiBalance = getsmogipoints();
+            if(($smogiBalance > 0)&&(Mage::getSingleton('core/session')->getsmogiApplied() == 0))
+            {
+                activatesmogibucks();
+
+                $isAutoAppliedDiscount = 1 ;
+                Mage::getSingleton('core/session')->setAutoAppliedDiscount($isAutoAppliedDiscount);
+                Mage::getSingleton('core/session')->setsmogiApplied(1);
+                if(Mage::getSingleton('core/session')->getAutoAppliedDiscount() == 1)
+                {
+                    Mage::getSingleton('core/session')->setAutoAppliedDiscount(2);
+                    Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
+
+                }
+
+
+            }
+
+            /* apply Gift of YS automatically
+            else
+            {
+                if(Mage::getSingleton('core/session')->getsmogiApplied() == 0)
+                {
+                    if(Mage::helper('customer')->isLoggedIn())
+                    {
+                        if(!Mage::getSingleton('core/session')->getGiftCardActivated())
+                        {
+                            if(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()) > 0)
+                            {
+                                if(Mage::getSingleton('giftcards/session')->getActive() == "0" || Mage::getSingleton('giftcards/session')->getActive() == "")
+                                {
+                                    Mage::getSingleton('core/session')->setGiftCardActivated('true');
+                                    Mage::getSingleton('giftcards/session')->setActive('1');
+                                    Mage::getSingleton('checkout/cart')->getQuote()->getShippingAddress()->setCollectShippingRates(true);
+                                    Mage::getSingleton('checkout/cart')->getQuote()->collectTotals()->save();
+                                    Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
+                                }
+                            }
+                        }
+                    }
+                }
+                $isAutoAppliedDiscount = 1 ;
+                Mage::getSingleton('core/session')->setAutoAppliedDiscount($isAutoAppliedDiscount);
+                Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
+            }
+            */
+        }
+    }
+
+        //end--custom auto smogi bucks apply
+    
+
+    //echo Mage::getSingleton('core/session')->getGiftCardActivated().'sdfdsfas';
+//    echo "Gift card active= ".Mage::getSingleton('giftcards/session')->getActive()."<br/>";
+//    echo "Gift Card balance = ".Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId())."<br/>";
+//    echo "Smogi buck used = ".Mage::helper('rewardpoints/event')->getCreditPoints()."<br/>";
+//    echo "Smogi buck total = ".getsmogipoints()."<br/>";
+    
+    //if(Mage::helper('customer')->isLoggedIn())
+//    {
+//        if(Mage::getSingleton('core/session')->getisdiscountinitiated() == "")
+//        {
+//            if(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()) > 0 || getsmogipoints() > 0)
+//            {
+//                if(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()) > getsmogipoints())
+//                {
+//                    activategiftcard();
+//                    Mage::getSingleton('core/session')->setisdiscountinitiated("giftcard");                   
+//                }
+//                else
+//                {
+//                    activatesmogibucks();
+//                    Mage::getSingleton('core/session')->setisdiscountinitiated("smogibucks");
+//                }
+//                Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");    
+//            }
+//            else
+//                Mage::getSingleton('core/session')->setisdiscountinitiated("giftcard");
+//        }
+//        else
+//        {
+//            if($this->getRequest()->getParam('active') == 'giftcard')
+//            {
+//                activategiftcard();
+//                Mage::getSingleton('core/session')->setisdiscountinitiated("giftcard");
+//                Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");            
+//            }
+//            if($this->getRequest()->getParam('active') == 'smogibucks')
+//            {
+//                activatesmogibucks();
+//                Mage::getSingleton('core/session')->setisdiscountinitiated("smogibucks");
+//                Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
+//            }
+//        }
+//    }
+//    else
+//    {
+//        Mage::getSingleton('core/session')->setisdiscountinitiated("");
+//    }
+    
+    //echo "enabled = ".Mage::getSingleton('core/session')->getisdiscountinitiated();
+    
+    ?>
+    <script type="text/javascript">
+        //_enablediscounttype = '<?php echo Mage::getSingleton('core/session')->getisdiscountinitiated(); ?>';
+    </script>
+    <?php
+
+    //comment for auto apply Gift of YS
+   /* if(Mage::helper('customer')->isLoggedIn())
+    {
+        if(!Mage::getSingleton('core/session')->getGiftCardActivated())
+        {
+            if(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()) > 0)
+            {
+                if(Mage::getSingleton('giftcards/session')->getActive() == "0" || Mage::getSingleton('giftcards/session')->getActive() == "")
+                {
+                    Mage::getSingleton('core/session')->setGiftCardActivated('true');
+                    Mage::getSingleton('giftcards/session')->setActive('1');
+                    Mage::getSingleton('checkout/cart')->getQuote()->getShippingAddress()->setCollectShippingRates(true);
+                    Mage::getSingleton('checkout/cart')->getQuote()->collectTotals()->save();
+                    Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");   
+                }   
+            }
+        }
+    }  */
+    //end --- comment for auto apply Gift of YS
+?>
+
+<?php /* speed fix
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" media="all" />
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myaccount.js"></script>
+*/ ?>
+
+
+<div class="cart">
+    <div class="myheader">SHOPPING BAG</div>
+    <div class="page-title">
+        <p class="cart-item">
+			<?php $count = $this->helper('checkout/cart')->getSummaryCount();
+			$total = $this->helper('checkout/cart')->getQuote()->getGrandTotal();if($count==1){
+				echo $this->__('1 ITEM',$count);
+			}
+			if($count>1){
+				echo $this->__('%s ITEMS',$count);
+			}
+			?>
+		</p>
+    </div>
+    <?php //echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <?php Mage::getSingleton('core/session')->setGlobalMessage($this->getMessagesBlock()->getGroupedHtml()); ?>
+    <?php echo $this->getChildHtml('form_before') ?>
+    <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" id="bagform" method="post">
+        <fieldset>
+            <table id="shopping-cart-table" class="data-table cart-table">
+                <col width="1" />
+                <col width="1" />
+                <col />
+            <?php //if ($this->helper('wishlist')->isAllowInCart()) : ?>
+            <?php if (false) : ?>
+                <col width="1" />
+            <?php endif ?>
+            <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                <col width="1" />
+            <?php endif; ?>
+            <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                <col width="1" />
+            <?php endif; ?>
+                <col width="1" />
+            <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                <col width="1" />
+            <?php endif; ?>
+            <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                <col width="1" />
+            <?php endif; ?>
+                <col width="150" />
+
+            <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
+                <thead>
+                    <tr>
+                        <th rowspan="<?php echo $mergedCells; ?>" class="a-center">&nbsp;</th>
+                        <th rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Item') ?></span></th>
+                        <th rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
+                        <th rowspan="<?php echo $mergedCells; ?>"></th>
+                        <?php //if ($this->helper('wishlist')->isAllowInCart()) : ?>
+                        <?php if (false) : ?>
+                        <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><span class="nobr"><?php echo $this->__('Move to Wish list') ?></span></th>
+                        <?php endif ?>
+                        <th class="a-center" colspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Price') ?></span></th>
+                        <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><?php echo $this->__('Qty') ?></th>
+                        <th class="a-right" colspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Subtotal') ?></th>
+                    </tr>
+                    <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
+                    <tr>
+                        <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+                        <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+                        <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+                        <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+                    </tr>
+                    <?php endif; ?>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td colspan="50" class="a-right">
+                            <?php if($this->getContinueShoppingUrl()): ?>
+                                <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+                            <?php endif; ?>
+                            <div>
+                                <button type="submit" class="button btn-update-bag"><span><span><?php echo $this->__('Update Shopping Cart') ?></span></span></button>
+                                <div style="clear: both;"></div>
+                            </div>
+							<?php //echo $this->getChildHtml('giftcards') ?>
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                <?php foreach($this->getItems() as $_item): ?>
+                    <?php echo $this->getItemHtml($_item) ?>
+                <?php endforeach ?>
+                
+                
+                <?php
+                        $productId = Mage::getModel('core/variable')->loadByCode('namaskar_bracelet_id')->getValue('plain');
+                        $quote = Mage::getSingleton('checkout/session')->getQuote();
+                        $foundInCart = false;
+                        foreach($quote->getAllVisibleItems() as $item) {
+                            if ($item->getData('product_id') == $productId) {
+                                $foundInCart = true;
+                                break;
+                            }
+                        }
+                        if(!$foundInCart)
+                        {
+                            // check for instorck and pre-ordered
+                            $doNotShowBracelet = false;
+                            $_product = Mage::getModel('catalog/product')->load(Mage::getModel('core/variable')->loadByCode('namaskar_bracelet_id')->getValue('plain'));
+                            $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
+                            foreach($_childproducts as $_childproduct)
+                            {
+                                //echo '<pre>'; print_r($_childproduct);die;
+
+                                $qty = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+                                $stock = $_childproduct->getStockItem();
+                                $inStock = $stock->getIsInStock();
+                                 $isPreorder = (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getBackorders();
+                                if(!(($inStock == 0)&&($isPreorder == 0)))
+                                {
+                                    $doNotShowBracelet = true;
+                                }
+
+
+                            }
+                            // end check for in stock
+
+                            if($doNotShowBracelet)
+                            {
+                                ?>
+                                <?php /* speed fix
+                                <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/shoppingbag.js"></script>
+                                */ ?>
+                                <?php
+                                $_helper = Mage::helper('catalog/output');
+                                $_product = Mage::getModel('catalog/product')->load(Mage::getModel('core/variable')->loadByCode('namaskar_bracelet_id')->getValue('plain'));
+                                $producturl = $_product->getProductUrl();
+                                $productname = $_helper->productAttribute($_product, $_product->getName(), 'name');
+                                $productid = $_product->getId();
+                                $price = $_product->getSpecialPrice();
+
+                                if($price == "")
+                                   $price = $_product->getPrice();
+                                $price = round($price,2);
+                                  if (floor($price)==$price)
+                                    $price = floor($price);
+                                $rewardpoints = Mage::helper('rewardpoints/data')->getProductPointsText($_product, false, false);
+                                $rewardpoints = strip_tags($rewardpoints);
+                                $rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "loyalty") - 1 - strlen("loyalty") - strpos($rewardpoints, "earn") + strlen("earn")));
+                                $productrewardpoints = $rewardpoints;
+                                //$productrewardpoints = floor($price * $_rewardpointsearned);
+                                $productprice = "$".$price;
+
+                                $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
+                                $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+                                $productcolorinfo = array();
+                                $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
+                                $sizeavaliable = false;
+                                foreach($configurableAttributeCollection as $attribute){
+                                    if($attribute->getProductAttribute()->getAttributeCode() == "size")
+                                    {
+                                        $sizeavaliable = true;
+                                        break;
+                                    }
+                                    //echo "Attr-Code:".$attribute->getProductAttribute()->getAttributeCode()."<br/>";
+                            //        echo "Attr-Label:".$attribute->getProductAttribute()->getFrontend()->getLabel()."<br/>";
+                            //        echo "Attr-Id:".$attribute->getProductAttribute()->getId()."<br/>";
+                                }
+                                foreach($_childproducts as $_childproduct)
+                                {
+                                    //echo '<pre>'; print_r($_childproduct);
+
+                                    //echo Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+                                    $temp = $_childproduct->getAttributeText('color');
+                                    if(strpos($temp,"|") !== FALSE)
+                                    {
+                                        $hexcodes = substr($temp, strpos($temp,"|") + 1);
+                                        $hexcodes = explode(",", $hexcodes);
+                                        $temp = substr($temp, 0, strpos($temp,"|"));
+                                        if(!isset($productcolorinfo[$temp]))
+                                            $productcolorinfo[$temp] = array();
+                                        $productcolorinfo[$temp]['hex'] = $hexcodes;
+                                        $productcolorinfo[$temp]['value'] = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId());
+                                    }
+                                    $price = $_childproduct->getSpecialPrice();
+                                    if($price == "")
+                                        $price = $_childproduct->getPrice();
+                                    $price = round($price,2);
+                                      if (floor($price)==$price)
+                                        $price = floor($price);
+
+                                    $rewardpoints = Mage::helper('rewardpoints/data')->getProductPointsText($_childproduct, false, false);
+                                    $rewardpoints = strip_tags($rewardpoints);
+                                    $rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "loyalty") - 1 - strlen("loyalty") - strpos($rewardpoints, "earn") + strlen("earn")));
+                                    if($sizeavaliable)
+                                        $temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
+                                    else
+                                        $temp1 = "2|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
+                                    //$temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
+                                    //if(array_key_exists("sizes", $productcolorinfo[$temp]))
+                                    if(isset($productcolorinfo[$temp]["sizes"]))
+                                    {
+                                        //echo "pushing";
+                                        array_push($productcolorinfo[$temp]["sizes"], $temp1);
+                                    }
+                                    else
+                                    {
+                                        $productcolorinfo[$temp]["sizes"] = array($temp1);
+                                        if(!isset($productcolorinfo[$temp]["sizes"]))
+                                            echo "not set";
+                                        foreach($_gallery as $_image)
+                                        {
+                                            if(str_replace("*", "", $_image->getLabel()) == $temp)
+                                            {
+                                                //echo $imageurl;
+                                                $smallimageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75);
+                                                $imageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(450, 450);
+                                                $zoomimageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(750, 750);
+
+                                                //if(count($productcolorinfo[$temp]["images"]) == 0)
+                                                if(!isset($productcolorinfo[$temp]["images"]))
+                                                {
+                                                    $productcolorinfo[$temp]["images"] = array();
+                                                    $productcolorinfo[$temp]["images"]["small"] = array($smallimageurl);
+                                                    $productcolorinfo[$temp]["images"]["zoom"] = array($zoomimageurl);
+                                                    $productcolorinfo[$temp]["images"]["big"] = array($imageurl);
+                                                    //echo "creating"."<br/>";
+                                                }
+                                                else
+                                                    if(count($productcolorinfo[$temp]["images"]["small"]) < 4)
+                                                    {
+                                                        array_push($productcolorinfo[$temp]["images"]["big"], $imageurl);
+                                                        array_push($productcolorinfo[$temp]["images"]["small"], $smallimageurl);
+                                                        //echo "pushing"."<br/>";
+                                                        array_push($productcolorinfo[$temp]["images"]["zoom"], $zoomimageurl);
+                                                    }
+                                            }
+                                        }
+                                    }
+                                }
+                                $tempproductcolorinfo = array();
+                                $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
+                                $allOptions = $attribute->getSource()->getAllOptions(true, true);
+                                foreach ($allOptions as $instance) {
+                                    if(array_key_exists($instance['label'], $productcolorinfo))
+                                    {
+                                        $tempproductcolorinfo[$instance['label']] = $productcolorinfo[$instance['label']];
+                                    }
+                                }
+                                $productcolorinfo = $tempproductcolorinfo;
+
+
+                                $productallsizes = array();
+
+
+                                $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
+                                $allOptions = $attribute->getSource()->getAllOptions(true, true);
+                                foreach ($allOptions as $instance) {
+                                    if($instance['label'] != "")
+                                        array_push($productallsizes, array("label" => $instance['label'], "value" => $instance['value']) );
+                                }
+                                ?>
+                                    <tr class="nohover">
+                                       <td style="border-top : 1px dotted #000000;" colspan="7">
+                                       <script type="text/javascript">
+                                            _productcolorinfo = new Array();
+                                        <?php
+                                        $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
+                                        foreach($configurableAttributeCollection as $attribute){
+                                            //echo "Attr-Code:".$attribute->getProductAttribute()->getAttributeCode()."<br/>";
+                                    //        echo "Attr-Label:".$attribute->getProductAttribute()->getFrontend()->getLabel()."<br/>";
+                                    //        echo "Attr-Id:".$attribute->getProductAttribute()->getId()."<br/>";
+                                            ?>
+                                            _productid = '<?php echo $productid; ?>';
+                                            <?php
+                                            if($attribute->getProductAttribute()->getAttributeCode() == "color")
+                                            {
+                                                ?>
+                                                    _colorattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
+                                                <?php
+                                            }
+                                            if($attribute->getProductAttribute()->getAttributeCode() == "size")
+                                            {
+                                                ?>
+                                                    _sizeattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
+                                                <?php
+                                            }
+                                        }
+
+                                        $currentcolorcount = 0;
+                                        foreach($productcolorinfo as $key=>$val)
+                                        {
+                                            ?>
+                                                _productcolorinfo[<?php echo $currentcolorcount; ?>] = new Object();
+                                                _productcolorinfo[<?php echo $currentcolorcount; ?>].color = '<?php echo $key; ?>';
+                                                _productcolorinfo[<?php echo $currentcolorcount; ?>].hex = new Array();
+                                                <?php
+                                                    for($i = 0; $i < count($val['hex']); $i++)
+                                                    {
+                                                        ?>
+                                                            _productcolorinfo[<?php echo $currentcolorcount; ?>].hex[<?php echo $i; ?>] = '<?php echo $val['hex'][$i]; ?>';
+                                                        <?php
+                                                    }
+                                                ?>
+                                                _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes = new Array();
+                                                <?php
+                                                    for($i = 0; $i < count($val['sizes']); $i++)
+                                                    {
+                                                        ?>
+                                                            _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes[<?php echo $i; ?>] = '<?php echo $val['sizes'][$i]; ?>';
+                                                        <?php
+                                                    }
+                                                ?>
+                                                _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages = new Array();
+                                                <?php
+                                                    for($i = 0; $i < count($val['images']['zoom']); $i++)
+                                                    {
+                                                        ?>
+                                                            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>] = '<?php echo substr($val['images']['zoom'][$i], 1); ?>';
+                                                        <?php
+                                                    }
+                                                ?>
+                                                _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages = new Array();
+                                                <?php
+                                                    for($i = 0; $i < count($val['images']['small']); $i++)
+                                                    {
+                                                        ?>
+                                                            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>] = '<?php echo substr($val['images']['small'][$i], 1); ?>';
+                                                        <?php
+                                                    }
+                                                ?>
+                                                _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages = new Array();
+                                                <?php
+                                                    for($i = 0; $i < count($val['images']['big']); $i++)
+                                                    {
+                                                        ?>
+                                                            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>] = '<?php echo substr($val['images']['big'][$i], 1); ?>';
+                                                        <?php
+                                                    }
+                                                ?>
+                                            <?php
+                                                    $currentcolorcount++;
+                                                }
+                                            ?>
+                                            //_productdisplaymode = 'popup';
+                                            //console.log(_productcolorinfo);
+                                        </script>
+                                        <?php
+                                            if(!$sizeavaliable)
+                                            {
+                                                ?>
+                                                    <script type="text/javascript">
+                                                        _sizesuperattribute = false;
+                                                    </script>
+                                                <?php
+                                            }
+                                        ?>
+                                        <div class="page-title" style="margin-bottom: 7px;">
+                                            <h1 class="checkout-namaskar-header">HELP THE NAMASK&Aacute;R FOUNDATION: ADD THIS BRACELET TO YOUR ORDER</h1>
+                                        </div>
+                                       </td>
+                                    </tr>
+                                    <tr class="nohover">
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <img src="<?php echo Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75); ?>" width="75" height="75" alt="<?php echo $productname; ?>" />
+                                        </td>
+                                        <td colspan="<?php if ($this->helper('wishlist')->isAllowInCart()) { echo "2"; } else { echo "2"; } ?>">
+                                            <h2 class="product-name">
+                                                <a href="<?php echo $producturl; ?>"><?php echo $productname; ?></a>
+                                            </h2>
+                                            <dl class="item-options">
+                                                <dt>COLOR:</dt>
+                                                <dd>
+                                                    <span id="spncolor">
+
+                                                    </span>
+                                                    <select id="cmbcolor">
+                                                        <?php
+                                                             foreach($productcolorinfo as $key=>$colorinfo)
+                                                            {
+                                                                ?>
+                                                                    <option value="<?php echo $colorinfo['value']; ?>"><?php echo $key; ?></option>
+                                                                <?php
+                                                            }
+                                                        ?>
+                                                    </select>
+                                                </dd>
+                                                <dt  <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>SIZE:</dt>
+                                                <dd <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
+                                                    <span id="spnsize"></span>
+                                                    <select id="cmbsize" class="cmbsize">
+                                                        <?php
+                                                            foreach($productallsizes as $size)
+                                                            {
+                                                                ?>
+                                                                    <option value="<?php echo $size['value']; ?>" size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?></option>
+                                                                <?php
+                                                            }
+                                                        ?>
+                                                    </select>
+                                                </dd>
+                                            </dl>
+                                            <?php
+                                                if(Mage::getSingleton("core/session")->getCartNamaskarError() > 0)
+                                                {
+                                                    ?>
+                                                    <p class="item-msg error">* The requested quantity for "<?php echo $productname; ?>" is not available.</p>
+                                                    <?php
+                                                }
+                                            ?>
+                                        </td>
+                                        <td class="a-right">
+                                            <span class="cart-price">
+                                                <span id="spnbaseprice" class="price">$<?php echo $price; ?></span>
+                                            </span>
+                                        </td>
+                                        <td class="a-center">
+                                            <input id="braceletcount" maxlength="12" class="input-text qty" title="Qty" size="4" value="<?php
+                                                if(Mage::getSingleton("core/session")->getCartNamaskarError())
+                                                    echo Mage::getSingleton("core/session")->getCartNamaskarError();
+                                                else
+                                                    echo "0";
+                                                Mage::getSingleton('core/session')->setCartNamaskarError('0');
+                                            ?>" name="cart[365][qty]" />
+                                        </td>
+                                        <td class="a-right last">
+                                            <span class="cart-price">
+                                                <span id="spntotalprice" class="price">$0.00</span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                <?php
+                            }
+                        }
+                    ?>
+                </tbody>
+            </table>
+            <?php echo $this->getChildHtml('giftcards') ?>      
+            <script type="text/javascript">decorateTable('shopping-cart-table')</script>
+        </fieldset>
+    </form>
+    <div class="cart-collaterals" style="padding-top:18px;">
+        <?php
+            $coupon_html = $this->getChildHtml('coupon');
+            //echo $coupon_html;
+            //$coupon_html = "abc|*|*|def";
+            if(strpos($coupon_html,"|*|*|") === fasle)
+            {
+                $smogi_html = $coupon_html;
+            }
+            else
+            {
+                $smogi_html = substr($coupon_html,0,strpos($coupon_html,"|*|*|"));
+                $promo_html = substr($coupon_html, strpos($coupon_html,"|*|*|") + 5);
+            }
+            //echo $smogi_html."<br/>".$promo_html;
+            //$coupon_html = split("|*|*|",$coupon_html);
+            //print_r($coupon_html);
+        ?>
+        <div class="smogi-block">
+            <?php echo $smogi_html; ?>
+        </div>
+		<div>
+		<div class="smogi-bucks">
+        
+        <?php //echo $smogi_html; //$this->getChildHtml('coupon'); ?>
+        <?php echo $promo_html; ?></div>
+        
+        <!-- div class="col2-set">
+            <div class="col-1">
+                <?php echo $this->getChildHtml('crosssell') ?>
+            </div>
+                    </div -->
+		<div class="col-2">
+                <?php // echo $this->getChildHtml('coupon') ?>
+                <?php // if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
+            </div>
+
+
+        <div class="totals">
+            <?php echo $this->getChildHtml('totals'); ?>
+            <?php if(!$this->hasError()){ ?>
+            <ul class="checkout-types">
+            <?php foreach ($this->getMethods('methods') as $method): ?>
+                <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+                <li><?php echo $methodHtml; ?></li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            </ul>
+            <?php } else{
+                ?>
+                <ul class="checkout-types">
+                <li>
+                <button type="button" title="<?php echo $this->__('Proceed to Checkout') ?>" class="button btn-proceed-checkout btn-checkout-disable"><span><span><?php echo $this->__('Proceed to Checkout') ?></span></span></button>
+        <div class="errortext"><?php echo html_entity_decode(strip_tags(Mage::getSingleton('core/session')->getGlobalMessage())); ?>
+</div></li>
+</ul>
+<style type="text/css">
+    /*table#shopping-cart-table div.preorderinfo { display : none !important;}*/
+</style>
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        jQuery("p.item-msg.error:contains('* Some of the products are currently out of stock')").hide();
+        jQuery("p.item-msg.error").each(function(){
+            jQuery(this).parent().find("div.preorderinfo").hide();
+        });
+    });
+</script>
+                <?php
+            } ?>
+        </div>
+		<div class="clearer"></div>
+		</div>
+    </div>
+</div>

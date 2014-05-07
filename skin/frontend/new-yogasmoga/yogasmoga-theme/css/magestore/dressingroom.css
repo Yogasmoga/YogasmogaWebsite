@@ -1,0 +1,174 @@
+.dressingroomsubheader
+{
+    font-family:gothambook;
+    margin-top: 10px;
+}
+.dressingroomoptions
+{
+    font-family:gothambook;
+    letter-spacing:0.8px;
+    margin-top : 10px;
+}
+#dressingroomdivider img
+{
+    width : 100%;
+}
+#dressingroomholder table
+{
+    width : 100%;
+    table-layout: fixed;
+}
+#dressingroomholder div.productdetail,#dressingroomholder img.invisible
+{
+    display: none;
+} 
+#dressingroomholder table td.goleft,#dressingroomholder table td.goright  
+{
+    width : 10%;
+}
+#dressingroomholder table td.goleft img,#dressingroomholder table td.goright img
+{
+    cursor: pointer;
+}
+#dressingroomholder table td
+{
+    text-align: center;
+    vertical-align: middle;
+}
+#dressingroomholder table td.detailholder  
+{
+    width: 25%;
+    min-width: 25%;
+    max-width: 25%;
+}
+#dressingroomholder div.productdetail div.viewdetails
+{
+    width : 169px;
+    height : 35px;
+    background-image : url('../images/catalog/product/dressingroom/view_details_off.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-top : 15px;
+}
+#dressingroomholder div.productdetail
+{
+    width : 225px;
+    color : #767676;
+}
+#dressingroomholder div.productdetail div
+{
+    text-align : left;
+}
+#dressingroomholder div.productdetail div.productcount
+{
+    font-size: 30px;
+    height: 50px;
+}
+#dressingroomholder div.productdetail div.productcount div
+{
+    float : left;
+}
+#dressingroomholder div.productdetail div.productcount div.current
+{
+    font-weight: bold;
+}
+#dressingroomholder div.productdetail div.productcount div.countdivider
+{
+    
+}
+#dressingroomholder div.productdetail div.productcount div.totalcount
+{
+    font-family : ChaletParisNineteenSeventy;
+    padding-left : 3px;       
+}
+#dressingroomholder div.productdetail div.productname
+{
+    font-family:gothamMedium;
+    font-size:10px;
+}
+#dressingroomholder div.productdetail div.productdescription
+{
+    font-family:gothambook;
+    font-size:10px;
+}
+#dressingroomdivider
+{
+    height : 2px;
+    overflow: hidden;
+}
+.dressingroombg
+{
+    background-image : url('../images/catalog/product/dressingroom/dressing_room_bg_830pix_01.png');
+    background-repeat: no-repeat;
+    background-position : center top;
+}
+#dressingroomholder
+{
+    margin-top : 20px;
+    margin-bottom : 50px;
+}
+#dressingroomholder #dressingroomtop table td.imageholder
+{
+    height : 220px;
+}
+#dressingroomholder #dressingroombottom table td.imageholder
+{
+    height : 430px;
+}
+
+/*-----------------New Dressing Room Designs---------------*/
+#dressingroombottom td.imageholder
+{
+    vertical-align : top;
+}
+#dressingroomtop
+{
+    position : relative;
+}
+#dressingroomtop td.imageholder img
+{
+    z-index: 2;
+    position : absolute;
+}
+#dressingroomholder #dressingroomtop table td.imageholder
+{
+    height : 280px;
+}
+.dressingroomoptions, .dressingroomsubheader
+{
+    display : none;
+}
+#dressingroomdivider
+{
+    height: 2px;
+    overflow: hidden;
+    position: absolute;
+    top: 280px;
+    z-index: 3;
+}
+#dressingroomholder
+{
+    position : relative;
+    background-image : url('../images/catalog/product/dressingroom/dressing_room_bg_830pix_city.png');
+    background-repeat: no-repeat;
+    background-position: center 105px;
+}
+.dressingroombg
+{
+    background-position : center -110px;
+}
+#dressingroombottom
+{
+    position : relative;
+    background-image : url('../images/catalog/product/dressingroom/dressing_room_bg_830pix_grass.png');
+    background-repeat: no-repeat;
+    background-position: center 230px;
+}
+div.totalcountregion
+{
+    background-image: url("../images/catalog/product/view_control_shade.png");
+    background-position: left center;
+    background-repeat: no-repeat;
+    margin-left: -20px;
+    padding-left: 20px;
+}

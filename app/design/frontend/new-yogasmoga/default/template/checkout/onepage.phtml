@@ -1,0 +1,205 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+    $allow = 0;
+    if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+        $allow++;
+    if(Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
+        $allow++;
+    if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
+        $allow++;
+    if($allow > 1)
+    //if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()) && Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
+    {
+        Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
+    }
+?>
+<?php Mage::getSingleton('core/session')->setrewardpointscount(Mage::helper('rewardpoints')->getPointsOnOrder()); ?>
+<?php
+    $isshippable = true;
+    if (!$this->getChild("shipping") || !$this->getChild("shipping")->isShow())
+        $isshippable = false;
+    $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals();
+    if(isset($totals['tax']) && $totals['tax']->getValue()) {
+        //echo $totals['tax']->getValue();
+        $tax = round($totals['tax']->getValue()); //Tax value if present
+    }
+?>
+<?php /* speed fix
+    <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/mycheckout1.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/myaccount.css'); ?>" media="all" />
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/checkout.css'); ?>" media="all" />
+*/ ?>
+
+
+<?php
+    if(!$this->helper('customer')->isLoggedIn())
+    {
+        echo $this->getChildHtml('login');
+    }
+?>
+<?php
+    if($isshippable)
+        {
+            //echo $this->getChildHtml('shipping');
+            ?>
+                <script type="text/javascript">
+                    _isshippable = true;
+                </script>
+            <?php
+        }
+    else
+    {
+        ?>
+            <script type="text/javascript">
+                _isshippable = false;
+            </script>
+        <?php
+    }
+?>
+<div id="tblcheckoutsteps" <?php if(!$this->helper('customer')->isLoggedIn()) { ?> style="display: none;" <?php } ?>>
+    <?php if($isshippable) 
+        {
+    ?>
+        <div id="coshipping" class="checkoutsteps">
+            <div class="checkoutstepheader codivider">
+                1. SHIPPING DETAILS
+            </div>
+            <div id="coshippingaddress" class="checkoutsubstep">
+                <div class="checkoutstepsubheader firstsubstep">SHIPPING ADDRESS</div>
+                <?php echo $this->getChildHtml('shipping'); ?>
+            </div>
+            <div id="coshippingmethod" class="checkoutsubstep inactive disabled" style="display: none;">
+                <div class="checkoutstepsubheader">SHIPPING METHOD</div>
+                <div id="shippingmethods"></div>
+            </div>
+        </div>
+        <?php
+    } ?>
+    <div id="cobilling" class="checkoutsteps <?php if(!$isshippable) { echo "active";} else { echo "inactive disabled";} ?>">
+        <div class="checkoutstepheader codivider">
+            <?php if($isshippable) { echo "2";} else { echo "1";} ?>
+            . BILLING AND PAYMENT DETAILS
+        </div>
+        <div id="cobillingaddress" class="checkoutsubstep codivider">
+            <div class="checkoutstepsubheader firstsubstep">BILLING ADDRESS</div>
+            <?php echo $this->getChildHtml('billing'); ?>
+        </div>
+        <div id="copaymentmethods" class="checkoutsubstep inactive disabled">
+            <div class="checkoutstepsubheader">PAYMENT INFORMATION<span> - YOGASMOGA accepts all major credit cards and PayPal.</span></div>
+            <div id="paymentmethods"></div>
+        </div>
+    </div>
+    <div id="coreview" class="checkoutsteps inactive disabled">
+        <div class="checkoutstepheader">
+            <?php if($isshippable) { echo "3";} else { echo "2";} ?>
+            . REVIEW AND SUBMIT    
+        </div>
+        <div id="orderreview" class="inactive disabled">
+    
+        </div>
+    </div>
+    <div id="ordersummary">
+    </div>
+    <div id="shippingsummary">
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('checkout_shipping_info')->toHtml(); ?>
+    </div>
+</div>
+<?php /*
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jQuery.dPassword.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function($){
+        //$('input:password').dPassword({
+//            duration: 1000
+//        });
+        $('#pass').dPassword({
+            duration: 1000
+        });
+        $('input[disabled]').removeAttr('disabled');
+    });
+</script>
+*/ ?>
+<?php /*
+<table id="tblcheckoutsteps" <?php if(!$this->helper('customer')->isLoggedIn()) { ?> style="display: none;" <?php } ?>>
+    <tr>
+        <td>
+            <div class="ordersummary">
+                
+            </div>
+        </td>
+        <td class="checkoutstepsholder">
+                    
+        </td>
+        <td>
+            <div class="shippingdetails">
+                
+            </div>
+        </td>
+    </tr>
+</table>
+
+
+
+
+
+
+<div class="page-title">
+    <h1><?php echo $this->__('Checkout') ?></h1>
+</div>
+<script type="text/javascript" src="<?php echo $this->getJsUrl('varien/accordion.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/opcheckout.js') ?>"></script>
+<ol class="opc" id="checkoutSteps">
+<?php $i=0; foreach($this->getSteps() as $_stepId => $_stepInfo): ?>
+<?php if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; $i++ ?>
+    <li id="opc-<?php echo $_stepId ?>" class="section<?php echo !empty($_stepInfo['allow'])?' allow':'' ?><?php echo !empty($_stepInfo['complete'])?' saved':'' ?>">
+        <div class="step-title">
+            <span class="number"><?php echo $i ?></span>
+            <h2><?php echo $_stepInfo['label'] ?></h2>
+            <a href="#"><?php echo $this->__('Edit') ?></a>
+        </div>
+        <div id="checkout-step-<?php echo $_stepId ?>" class="step a-item" style="display:none;">
+            <?php echo $this->getChildHtml($_stepId) ?>
+        </div>
+    </li>
+<?php endforeach ?>
+</ol>
+<script type="text/javascript">
+//<![CDATA[
+    var accordion = new Accordion('checkoutSteps', '.step-title', true);
+    <?php if($this->getActiveStep()): ?>
+    accordion.openSection('opc-<?php echo $this->getActiveStep() ?>');
+    <?php endif ?>
+    var checkout = new Checkout(accordion,{
+        progress: '<?php echo $this->getUrl('checkout/onepage/progress') ?>',
+        review: '<?php echo $this->getUrl('checkout/onepage/review') ?>',
+        saveMethod: '<?php echo $this->getUrl('checkout/onepage/saveMethod') ?>',
+        failure: '<?php echo $this->getUrl('checkout/cart') ?>'}
+    );
+//]]>
+</script>
+*/ ?>

@@ -1,0 +1,130 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?><?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
+if($serverType == 'production')
+{
+    ?>
+    <script src="//platform.twitter.com/oct.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        twttr.conversion.trackPid('l4bkd');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=l4bkd&p_id=Twitter" />
+    </noscript>
+<?php } ?>
+<meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
+<?php if(strpos(Mage::helper('core/url')->getCurrentUrl(),"customer/account/login") !== FALSE)
+    {
+        ?>
+        <title>My Account | Yoga Pants &amp; Yoga Gear for Sweaty Workouts | YOGASMOGA</title>
+        <meta name="description" content="YOGASMOGA makes the best performance workout clothes for yoga, spin, run, pilates & athletic activities. Advanced Sweat Wicking + Antimicrobial Fabrics." />
+        <meta name="keywords" content="Yoga, Yoga Clothes, Yoga Clothing, Yoga Apparel, Yoga Gear, Yoga Accessories, Athletic Apparel,  Women's Athletic Clothing, Men's Athletic Clothing, Women's Yoga Clothing, Men's Yoga Clothing, Clothes for Yoga, Yoga Pants, Sexy Yoga pants, Running Clothes, Spin Clothes, Dance Clothes" />
+        <?php
+    }
+    else
+    {
+        ?>
+            <title><?php echo $this->getTitle() ?></title>
+            <meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />
+            <meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />        
+        <?php
+    }
+ ?>
+<meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
+<link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<?php /* speed fix
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/fonts.css'); ?>" media="all" />
+*/ ?>
+<!--[if IE]>
+	
+<![endif]-->
+<!--[if !IE]><!-->
+	
+ <!--<![endif]-->
+<!--[if lt IE 7]>
+<script type="text/javascript">
+//<![CDATA[
+    var BLANK_URL = '<?php echo $this->helper('core/js')->getJsUrl('blank.html') ?>';
+    var BLANK_IMG = '<?php echo $this->helper('core/js')->getJsUrl('spacer.gif') ?>';
+//]]>
+</script>
+<![endif]-->
+<?php echo $this->getCssJsHtml() ?>
+<?php echo $this->getChildHtml() ?>
+<?php echo $this->helper('core/js')->getTranslatorScript() ?>
+<?php echo $this->getIncludes() ?>
+<?php /*
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myscripts.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/mywatermark.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/globalheader.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/globalvariables.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/sidenavigation.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/fullscreen.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/mynewsletter.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.quovolver.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.pagescroller.lite.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myvalidations.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/globalsearch.js"></script>
+*/ ?>
+<?php
+    if(strpos(Mage::helper('core/http')->getHttpUserAgent(), "iPad"))
+    {
+        ?>
+            <script type="text/javascript">
+                _onipad = true;
+            </script>
+            <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/ipad.css'); ?>" media="all" />
+        <?php      
+    }
+    else
+    {
+        ?>
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/nonipad.css'); ?>" media="all" />
+        <?php
+    }
+?>
+<script type="text/javascript" language="javascript">
+    jQuery.noConflict();
+    var homeUrl = '<?php echo Mage::helper('core/url')->getHomeUrl() ?>';
+    var securehomeUrl = '<?php echo Mage::getUrl('',array('_secure'=>true)); ?>';
+    var skinUrl = '<?php echo $this->getSkinUrl('') ?>';
+    var mediaUrl = '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>';
+    //console.log(skinUrl);
+</script>
+<?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
+if($serverType == 'production')
+{
+?>
+<script type="text/javascript">
+adroll_conversion_value_in_dollars = 'ADVERTISERS VARIABLE'; 
+adroll_custom_data = {"ORDER_ID": "ADVERTISERS VARIABLE"}
+</script>
+
+
+<?php } ?>
+
