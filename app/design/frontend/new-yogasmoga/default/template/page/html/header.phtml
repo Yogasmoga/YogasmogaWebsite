@@ -410,74 +410,57 @@ if($serverType == 'production')
                 </a>
             </h1>            
             <ul class="f-left main-menu">
-                <li>
-                    <a href="" class="menu-heading">Women</a>
-                    <ul class="sub-menu">
-                        <li>
-                            <ul>
-                                <li><a href="">What's new!</a></li>
-                                <li><a href="">Shop the colors!</a></li>
-                                <li><a href="">Top sellers</a></li>                            
-                            </ul>
-                        </li>                        
-                        <li>
-                            <a href="">Tops</a>
-                            <ul>
-                                <li><a href="">Bras</a></li>
-                                <li><a href="">Tanks / Tops</a></li>
-                                <li><a href="">Jackets</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="">Bottoms</a>
-                            <ul>
-                                <li><a href="">Pants</a></li>
-                                <li><a href="">Leggings</a></li>
-                                <li><a href="">Crops</a></li>
-                                <li><a href="">Shorts</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="">Accessories</a>
-                            <ul>
-                                <li><a href="">Head Bands</a></li>
-                                <li><a href="">Yoga Mats</a></li>
-                                <li><a href="">Yoga Towels</a></li>
-                                <li><a href="">Yoga Flops</a></li>
-                                <li><a href="">Namaskar Bracelets</a></li>                            
-                            </ul>
-                        </li>
-                    </ul>                    
-                </li>                
-                <li><a href="" class="menu-heading">Men</a>
-                    <ul class="sub-menu">
-                        <li>
-                            <ul>
-                                <li><a href="">What's new!</a></li>
-                                <li><a href="">Shop the colors!</a></li>
-                                <li><a href="">Top sellers</a></li>                            
-                            </ul>
-                        </li>                        
-                        <li>
-                            <a href="">Tops</a>
-                            <ul>
-                                <li><a href="">Bras</a></li>
-                                <li><a href="">Tanks / Tops</a></li>
-                                <li><a href="">Jackets</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="">Bottoms</a>
-                            <ul>
-                                <li><a href="">Pants</a></li>
-                                <li><a href="">Leggings</a></li>
-                                <li><a href="">Crops</a></li>
-                                <li><a href="">Shorts</a></li>
-                            </ul>
-                        </li>                        
-                    </ul>  
-                </li>
-            </ul>
+                <?php
+                $base_url = Mage::helper('core/url')->getHomeUrl();
+                $currentcategoryid = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
+                $cart = Mage::getModel('checkout/cart')->getQuote()->getData();
+                if(isset($cart['items_qty'])){
+                    $itemcount = (int)$cart['items_qty'];
+                } else {
+                    $itemcount = 0;
+                }
+
+                foreach (Mage::helper('catalog/category')->getStoreCategories() as $child1) {
+                    if ($child1->getIsActive()) {
+                        //show Main parent categories first level
+                        if($child1->getId() == $currentcategoryid)
+                            echo "<li><a class='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+                        else
+                            echo "<li><a class ='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+                        // show sub categories second level
+                        echo '<ul class="sub-menu"><li><ul><li><a href="">What\'s new!</a></li><li><a href="">Shop the colors!</a></li><li><a href="">Top sellers</a></li>
+                           </ul></li>';
+                                $subcategory = Mage::getModel('catalog/category')->load($child1->getId());
+                                $subcategories = $subcategory->getChildrenCategories();
+                                foreach ($subcategories as $child2)
+                                {
+                                    if($child2->getIsActive()) {
+                                    echo "<li><a href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a><ul>";
+                                         // show sub categories third level
+                                                $subsubcategory = Mage::getModel('catalog/category')->load($child2->getId());
+                                                $subsubcategories = $subsubcategory->getChildrenCategories();
+                                                foreach ($subsubcategories as $child3)
+                                                {
+                                                    if($child3->getIsActive()) {
+                                                        echo "<li><a href=\"".$child3->getUrl()."\">" . $child3->getName();
+                                                        echo "</a></li>";
+                                                    }
+                                                }
+
+                                    echo "</ul></li>";
+                                    }
+                                }
+
+                        echo "</ul></li>";
+                    }
+
+                }
+                echo "</ul>";
+                ?>
+
+
+
+
         </div>
         <div class="clearfix"></div>
         <div class="f-right header-right">
@@ -506,12 +489,13 @@ if($serverType == 'production')
                 </ul>
             </div>
             <div class="right-bottom-block">
-                <div class="search-bar f-right">
-                    <form>                    
-                        <input id="search_input" type="text" name="q" value="" watermark="Search" maxlength="200" class="watermark in-bl">
-                        <input id="search-btn" class="in-bl" type="submit" value="Search" style="">
-                    </form>
-                </div>
+<!--                <div class="search-bar f-right">-->
+<!--                    <form>-->
+<!--                        <input id="search_input" type="text" name="q" value="" watermark="Search" maxlength="200" class="watermark in-bl">-->
+<!--                        <input id="search-btn" class="in-bl" type="submit" value="Search" style="">-->
+<!--                    </form>-->
+<!--                </div>-->
+                <?php echo $this->getChildHtml('topSearch') ?>
                 <div class="f-right">
                     <ul class="main-menu main-menu2">                                          
                         <li>

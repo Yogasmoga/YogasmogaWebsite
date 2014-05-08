@@ -44,6 +44,14 @@ $catalogSearchHelper =  $this->helper('catalogsearch');
     </div>
 </form>
 */ ?>
+
+<div  class="search-bar f-right">
+    <form id="search_frm"  action="<?php echo $catalogSearchHelper->getResultUrl() ?>" method="get" autocomplete="off" >
+        <input id="search_input" type="text" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>" value="<?php echo $catalogSearchHelper->getEscapedQueryText() ?>" watermark="Search"  maxlength="<?php echo $catalogSearchHelper->getMaxQueryLength();?>"/>
+        <input id="search-btn" class="in-bl" type="submit" value="Search" style="">
+    </form>
+</div>
+<!--
 <div id="search_form" class="colorbg">
 	<form id="search_frm"  action="<?php echo $catalogSearchHelper->getResultUrl() ?>" method="get" autocomplete="off" >
 		<div style="border-bottom: 1px solid black;">
@@ -53,3 +61,4 @@ $catalogSearchHelper =  $this->helper('catalogsearch');
 	</form>
 </div>
 <div id="search_btn" ></div>
+-->
