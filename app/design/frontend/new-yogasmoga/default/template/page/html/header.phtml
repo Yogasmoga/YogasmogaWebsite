@@ -398,79 +398,188 @@ if($serverType == 'production')
     ?>">
         <?php //if ($this->getIsHomePage()):?>
         <?php if (true):?>
-        <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img class="logo" src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+        <!-- <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img class="logo" src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1> -->
         <?php else:?>
-        <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a class="logo" href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+        <!-- <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a class="logo" href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1> -->
         <?php endif?>
-        <table class="topmenutable">
-            <tr>
-                <td>
-                </td>
-                <td>
-                    <ul class="topmenulinks">
-                        <?php
-                            $base_url = Mage::helper('core/url')->getHomeUrl();
-                            //if($this->getRequest()->getControllerName() == "product")
-                            $currentcategoryid = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
-                            //$itemcount = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
-//                            if($itemcount == "")
-//                                $itemcount = "0";
-                            $cart = Mage::getModel('checkout/cart')->getQuote()->getData();
-                            if(isset($cart['items_qty'])){
-                                $itemcount = (int)$cart['items_qty'];
-                            } else {
-                                $itemcount = 0;
-                            }
-                            foreach (Mage::helper('catalog/category')->getStoreCategories() as $child) {
-                                if ($child->getIsActive()) {
-                                    if($child->getId() == $currentcategoryid)
-                                        echo "<li class='selected'><a href='".Mage::getModel("catalog/category")->load($child->getId())->getUrl()."'>".$child->getName()."</a></li>";
-                                    else
-                                        echo "<li><a href='".Mage::getModel("catalog/category")->load($child->getId())->getUrl()."'>".$child->getName()."</a></li>";
-                                }
-                            } 
-                        ?>
-                        <!--<li><a href="<?php echo $base_url; ?>mens">Men</a></li> -->
-                        <li><a href="<?php echo $base_url; ?>our-story">Our Story</a></li>
-                        <li><a href="<?php echo $base_url; ?>our-edge">Our Edge</a></li>
-                        <li><a href="<?php echo $base_url; ?>smogi-bucks">Smogi Bucks</a></li>
-<!--                        <li><a href="--><?php //echo $base_url; ?><!--gift_of_ys">Gift of YS</a></li>-->
-                        <?php
-                            if($this->helper('customer')->isLoggedIn())
-                            {
-                                ?>
-                                <li><a href="<?php echo $base_url; ?>customer/account">My Account</a></li>
-                                <?php
-                            } 
-                            else
-                            {
-                                ?>
-                                <li><a href="<?php echo $base_url; ?>customer/account/login">Log In</a></li>        
-                                <?php
-                            }
-                        ?>
-                        <li id="minicartlink"><a class="top-link-cart" href="javascript:void(0);<?php /*<?php echo $base_url; ?>checkout/cart/ */ ?>">SHOPPING BAG : <span class="cartitemcount"><?php echo $itemcount; ?></span></a></li>
-                        <?php /*
-                        <li><?php echo $this->helper('core/url')->getCurrentUrl(); ?></li>
-                        */ ?>
-                    </ul>
-                    
-                </td>
-                <td>
-                    <?php echo $this->getChildHtml('topSearch') ?>    
-                </td>
-            </tr>
-        </table>
         
-        <div class="revolvingmessage-container">
-            <?php 
-                if($this->helper('customer')->isLoggedIn())
-                    echo $this->getLayout()->createBlock('cms/block')->setBlockId('revolvingmessage_loggedin')->toHtml();
-                else
-                    echo $this->getLayout()->createBlock('cms/block')->setBlockId('revolvingmessage')->toHtml();
-            ?>
-                    
+        <div class="f-left header-left">
+            <h1 class="logo">
+                <a class="logo" href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>">
+                    <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+                </a>
+            </h1>            
+            <ul class="f-left main-menu">
+                <li>
+                    <a href="" class="menu-heading">Women</a>
+                    <ul class="sub-menu">
+                        <li>
+                            <ul>
+                                <li><a href="">What's new!</a></li>
+                                <li><a href="">Shop the colors!</a></li>
+                                <li><a href="">Top sellers</a></li>                            
+                            </ul>
+                        </li>                        
+                        <li>
+                            <a href="">Tops</a>
+                            <ul>
+                                <li><a href="">Bras</a></li>
+                                <li><a href="">Tanks / Tops</a></li>
+                                <li><a href="">Jackets</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">Bottoms</a>
+                            <ul>
+                                <li><a href="">Pants</a></li>
+                                <li><a href="">Leggings</a></li>
+                                <li><a href="">Crops</a></li>
+                                <li><a href="">Shorts</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">Accessories</a>
+                            <ul>
+                                <li><a href="">Head Bands</a></li>
+                                <li><a href="">Yoga Mats</a></li>
+                                <li><a href="">Yoga Towels</a></li>
+                                <li><a href="">Yoga Flops</a></li>
+                                <li><a href="">Namaskar Bracelets</a></li>                            
+                            </ul>
+                        </li>
+                    </ul>                    
+                </li>                
+                <li><a href="" class="menu-heading">Men</a>
+                    <ul class="sub-menu">
+                        <li>
+                            <ul>
+                                <li><a href="">What's new!</a></li>
+                                <li><a href="">Shop the colors!</a></li>
+                                <li><a href="">Top sellers</a></li>                            
+                            </ul>
+                        </li>                        
+                        <li>
+                            <a href="">Tops</a>
+                            <ul>
+                                <li><a href="">Bras</a></li>
+                                <li><a href="">Tanks / Tops</a></li>
+                                <li><a href="">Jackets</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">Bottoms</a>
+                            <ul>
+                                <li><a href="">Pants</a></li>
+                                <li><a href="">Leggings</a></li>
+                                <li><a href="">Crops</a></li>
+                                <li><a href="">Shorts</a></li>
+                            </ul>
+                        </li>                        
+                    </ul>  
+                </li>
+            </ul>
         </div>
+        <div class="clearfix"></div>
+        <div class="f-right header-right">
+            <div class="right-top-block">
+                <ul class="tr-menu">
+                    <li class="free-shipping">Free and fast shipping to US and Canada</li>
+                    <li>
+                        <a href="">Help</a>
+                        <ul class="sub-menu" style="left: -70px;">
+                            <li><a href="">Contact Us</a></li>
+                            <li><a href="">FAQ</a></li>
+                            <li><a href="">shipping and returns</a></li>
+                            <li><a href="">size chart</a></li>
+                            <li><a href="">product care</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">My Account</a>
+                        <ul class="sub-menu" style="left: -50px;">
+                            <li><a href="">track order</a></li>
+                            <li><a href="">account settings</a></li>
+                            <li><a href="">sign in</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Shopping Bag (0)</a></li>
+                </ul>
+            </div>
+            <div class="right-bottom-block">
+                <div class="search-bar f-right">
+                    <form>                    
+                        <input id="search_input" type="text" name="q" value="" watermark="Search" maxlength="200" class="watermark in-bl">
+                        <input id="search-btn" class="in-bl" type="submit" value="Search" style="">
+                    </form>
+                </div>
+                <div class="f-right">
+                    <ul class="main-menu main-menu2">                                          
+                        <li>
+                            <a href="">ys story</a>
+                            <ul class="sub-menu" style="left:0;">
+                                <li>
+                                    <ul>
+                                        <li><a href="">Our Story</a></li>
+                                        <li><a href="">Our core values</a></li>
+                                        <li><a href="">Our ethics</a></li>
+                                        <li><a href="">Made in usa</a></li>
+                                        <li><a href="">Principles of yoga</a></li>
+                                        <li><a href="">Namaskar Foundation</a></li>
+                                        <li><a href="">Press</a></li>
+                                    </ul>
+                                </li>                                                                
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">ys tech</a>
+                            <ul class="sub-menu" style="left:0;">
+                                <li>
+                                    <ul>
+                                        <li><a href="">ys fabric tech</a></li>
+                                        <li><a href="">ys color tech</a></li>
+                                        <li><a href="">design elements</a></li>
+                                    </ul>
+                                </li>                                
+                            </ul>
+                        </li>                        
+                        <li>
+                            <a href="">Smogi Bucks</a>
+                            <ul class="sub-menu" style="left:;">
+                                <li>
+                                    <ul>
+                                        <li><a href="">what is smogi bucks</a></li>
+                                        <li><a href="">how can i get them</a></li>
+                                        <li><a href="">smogi bucks balance</a></li>
+                                    </ul>
+                                </li>                                
+                            </ul>
+                        </li>
+                    </ul>
+                </div>  
+            </div>
+            <div class="clearfix"></div>
+            <!-- <div class="right-block f-right">
+                <div class="top-right-menu"></div>
+                              
+            </div>
+            <div class="left-block f-right">
+                <ul class="f-left main-menu">
+                    <li>
+                        <a href="" class="menu-heading">Women</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <ul>
+                                    <li><a href="">What's new!</a></li>
+                                    <li><a href="">Shop the colors!</a></li>
+                                    <li><a href="">Top sellers</a></li>
+                                </ul>
+                            </li>                                                
+                        </ul>                    
+                    </li>
+                </ul>
+            </div>  -->                       
+        </div>
+               
         
         <div class="quick-access">
             <?php //echo $this->getChildHtml('topSearch') ?>

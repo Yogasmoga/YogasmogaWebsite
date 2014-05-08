@@ -592,31 +592,7 @@ select.qtyselector{border-bottom:0px solid #333;}
 
 /* Header ================================================================================ */
 .logo { float:left; }
-.header-container {
-    position: fixed;
-    top: 0px;
-    /*z-index: 100;*/
-    height : 80px;
-    /*min-width:1150px;*/
-    min-width:960px;
-    width : 100%;
-/*  max-width:1600px;*/
-z-index: 10003;
-}
-.header {background-color: #FFFFFF;
-    height: 81px;
-    margin: 0 auto;
-    /*min-width:1150px;*/
-    min-width:960px;
-    position: fixed;
-    text-align: right;
-    top: -80px;
-/*  max-width:1600px;*/
-    width: 100%;
-    z-index: 1000; }
-
-.header .logo { float:left; text-decoration:none !important; margin:0 0 0 7px;}
-.header .logo strong { position:absolute; top:-999em; left:-999em; width:0; height:0; font-size:0; line-height:0; text-indent:-999em; overflow:hidden; }
+/*
 .header h1.logo { margin:0; }
 .header .quick-access { display:none;}
 .header .welcome-msg { margin:0; color:#fff; text-align:right; }
@@ -642,7 +618,7 @@ z-index: 10003;
 .header .links a { color:#dd8820; }
 .header-container .top-container { clear:both; padding:5px 10px 0 12px; text-align:right; }
 .header-container .top-container a { font-size:11px; color:#dd8820; }
-
+*/
 /********** < Navigation */
 .nav-container { background:#0a263d url(../images/bkg_nav0.jpg) 50% 0 repeat-y; }
 #nav { width:918px; margin:0 auto; padding:0 16px; font-size:13px; }
@@ -2047,15 +2023,7 @@ input.watermark
     display:none;
 }
 
-#search_text {
-    height: 20px;
-    width: 0px;
-    border: medium none;
-    font-family: gothamlight;
-    font-size: 11px;
-    letter-spacing: 0.4pt;
-    padding-bottom: 1px;
-}
+
 
 /* ------------------------------------------ */
 
