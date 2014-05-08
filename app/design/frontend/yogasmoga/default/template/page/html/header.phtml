@@ -101,6 +101,11 @@ if($serverType == 'production')
                             };
                         },
                         close: function( event, ui ) {
+
+                            <?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
+                                            if($serverType == 'production') {
+                                     ?>_gaq.push(['_trackEvent', 'account open popup', 'Close']);
+                            <?php } ?>
                             _checkjsnav = true;
                             if ($(window).width() >= "1000") {
                                 $("html,body").css("overflow-x","auto");
@@ -330,7 +335,15 @@ if($serverType == 'production')
                                 var status = data.status;
                                 var errors = data.errors;
                                 if(status == "success")
-                                {
+                                { 
+                                    //event tracking for signup popup registration success
+                                    <?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
+                                            if($serverType == 'production') {
+                                     ?>_gaq.push(['_trackEvent', 'account open popup', 'Sign Up']);
+                                     <?php } ?>
+
+
+
                                     // $( "#signup" ).dialog("close");
                                     $("#sign_up_box").hide();
                                     $("#thank_you_box").show();
