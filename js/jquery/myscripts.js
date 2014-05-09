@@ -1,5 +1,5 @@
 var _productcolorinfo = new Array();
-jQuery(document).ready(function($){
+jQuery(document).ready(function($){   
 	
         //console.clear();
 	//jQuery('#productdetails select, .cart select').customSelect();

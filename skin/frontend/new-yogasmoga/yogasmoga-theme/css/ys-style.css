@@ -7,6 +7,10 @@
 .c-align{text-align: center;}
 .clear-fix{clear:both;}
 .in-bl{display: inline-block;}
+.gothambd{font-family: gothambold;}
+.gothambk{font-family: gothambook;}
+.no-wrap{white-space: nowrap;}
+.pointer{cursor: pointer;}
 
 
 /****Header****/
@@ -40,3 +44,17 @@ ul.main-menu2 > li{position: relative; padding-top: 3px; height: 49px;-webkit-bo
 
 
 /****Footer****/
+#sitemap{width: 85%; margin: 0 auto;padding-top:20px;}
+.footer-block{width: 100%;margin-left: 35px;}
+.footer--block ul.site-map ul li{/*text-transform: uppercase;*/}
+ul.site-map > li{display: inline-block; vertical-align: top; text-align: left; width: 14.5%; margin:0 5px; word-wrap:break-word; }
+ul.site-map > li:first-child{}
+ul.site-map > li a{color: #58595b; font-size: 11px;}
+.online-status-icon{vertical-align: middle;}
+ul.site-map ul.social-icons {margin-top: 4px;}
+ul.site-map ul.social-icons li{display: inline-block; margin: 0 3px;}
+div.copy-privacy-likes{margin-top: 70px; margin-bottom: 35px;}
+div.copy-privacy-likes ul li{display: inline-block; font-size: 11px; color: #58595b; vertical-align: middle;}
+div.copy-privacy-likes ul li:first-child{margin-left: 5px;}
+div.copy-privacy-likes ul li a{font-size: 11px; color: #58595b}
+div.copy-privacy-likes ul li img{height: 30px;}

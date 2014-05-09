@@ -21,7 +21,7 @@
     <action method="addJs"><script>jquery/myvalidations.js</script></action>
     <action method="addJs"><script>jquery/globalsearch.js</script></action>
     <action method="addJs"><script>jquery/jquery-ui-1.9.1.custom.min.js</script></action>
-    
+    <action method="addJs"><script>new_jquery/common.js</script></action>
     
 </reference>
 
