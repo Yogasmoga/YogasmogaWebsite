@@ -89,6 +89,7 @@ if($serverType == 'production')
 
         <!-- call signup popup  -->
         <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/popups/popup_signup.phtml')->toHtml(); ?>
+        <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/popups/popup_signing.phtml')->toHtml(); ?>
         <script type="application/javascript">
 
             jQuery(document).ready(function($){
@@ -415,7 +416,7 @@ if($serverType == 'production')
                         <ul class="sub-menu" style="left: -50px;">
                             <li><a href="">track order</a></li>
                             <li><a href="">account settings</a></li>
-                            <li><a href="">sign in</a></li>
+                            <li><a id="signin" href="javascript:void(0);">sign in</a></li>
                         </ul>
                     </li>
                     <li><a href="javascript:void(0);">Shopping Bag (<span class="cartitemcount"><?php echo $itemcount; ?></span>)</a></li>

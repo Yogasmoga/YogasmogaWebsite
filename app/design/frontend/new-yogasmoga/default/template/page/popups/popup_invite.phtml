@@ -1,0 +1,72 @@
+<div id="invite_friends" style="display: none;">
+    <div id="sign_up_box">
+        <img style="width:70%; margin-top: 8%;" src="<?php echo $this->getSkinUrl('images/sign_up_text.png') ?>" alt="FEEL THE SMOGI LOVE. Sign up and get $25 SMOGI bucks toward your first order." />
+        <form action="" method="post" id="popup-register" style="display: block; margin-top: 46px;bottom:5%">
+            <table width="250" cellspacing="0" padding="0" align="center">
+                <tr>
+                    <td class="inputholder">
+                        <input type="text" id="pfirstname" name="pfirstname" class="watermark" watermark="First Name" value="" maxlength="30" class="requiredfield no-bg">
+                    </td>
+                </tr>
+                <tr height="5"></tr>
+                <tr>
+
+                    <td class="inputholder">
+                        <input type="text" id="plastname" name="plastname" class="watermark" watermark="Last Name" value="" maxlength="30" class="requiredfield no-bg">
+                    </td>
+                </tr>
+                <tr height="5"></tr>
+                <tr>
+
+                    <td class="inputholder">
+                        <input type="text" name="email" id="pemail_address" class="watermark" watermark="Email Address" autocomplete="off" value="" class="requiredfield" defaulterrormsg="Email Address is required" autocapitalize="off">
+                    </td>
+                </tr>
+                <tr height="5"></tr>
+                <tr id="fake_password">
+                    <td class="inputholder">
+                        <input type="text" autocomplete="off" maxlength="30" class="watermark" watermark="Select a password" class="requiredfield" name="password" id="f_password" defaulterrormsg="Password is required">
+                    </td>
+                </tr>
+                <tr id="o_password">
+                    <td class="inputholder">
+                        <input type="password" autocomplete="off" maxlength="30" class="watermark" watermark="Select a password" class="requiredfield" name="password" id="p_password" defaulterrormsg="Password is required">
+                    </td>
+                </tr>
+                <input style="display: none;" type="password" class="requiredfield" name="confirmation" id="confirmation" defaulterrormsg="Password is required">
+                <input style="display: none;" id="is_subscribed" class="checkbox" type="checkbox" checked="checked" value="1" name="is_subscribed">
+
+            </table>
+
+            <input type="submit" id="signup-button" value=""  style="background-image: url(<?php echo $this->getUrl()?>skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png); width:135px; height:39px; border:none;">
+            <img style="width:0px;height:0px" id="signing-up" src="<?php echo $this->getUrl()?>skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png"/>
+            <p id="err-msg" style="min-height:15px;min-height: 37px; width: 150px;  margin: 0 auto; font-size: 12px; visibility:hidden">All fields are required.</p>
+
+        </form>
+    </div>
+    <div id="thank_you_box" style="display:none;">
+        <img style="width:60%; margin-top: 18%;" src="<?php echo $this->getSkinUrl('images/thank_you_text.png') ?>" alt="THANK YOU! Your SMOGI Bucks are waiting to be used at Checkout." />
+        <table width="60%" ceelspacing="0" cellpadding="0" style="margin:12% auto 0;">
+            <tr>
+                <td style="text-align:left;">
+                    <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>women">
+                        <img src="<?php echo $this->getSkinUrl('images/shop_women.png') ?>" alt="SHOP WOMEN" style="width:85%; margin:0 auto !important;" />
+                    </a>
+                </td>
+                <td  style="text-align:right;">
+                    <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>mens">
+                        <img src="<?php echo $this->getSkinUrl('images/shop_men.png') ?>" alt="SHOP MEN" style="width:85%; margin:0 auto !important;" />
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <table width="60%" ceelspacing="0" cellpadding="0" style="margin:5% auto 0;">
+            <tr>
+                <td style="text-align:center;">
+                    <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks">
+                        <img src="<?php echo $this->getSkinUrl('images/learn_bucks.png') ?>" alt="Learn more about SMOGI Bucks" style="width:75%; margin:0 auto !important;" /></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -24,6 +24,8 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+    <!-- call invite popup  -->
+<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/popups/popup_invite.phtml')->toHtml(); ?>
 <!-- <div class="footer-container"> -->
     <div id="sitemap" desc="Site Map" class="pgsection l-align" tw-summary="Check out YOGASMOGA. They make things for Life. One breath at a time">
         <div class="footer-block">
@@ -79,7 +81,7 @@
                             </ul>
                         </li>
                         <li>&nbsp;</li>
-                        <li class="gothambd no-wrap"><a href="javascript:void(0);" class="share-frnds">SHARE WITH YOUR FRIENDS</a></li>                     
+                        <li class="gothambd no-wrap"><a id="invite-friend" href="javascript:void(0);" class="share-frnds">SHARE WITH YOUR FRIENDS</a></li>
                     </ul>
                 </li>
             </ul>
@@ -92,8 +94,8 @@
                     <li> | </li>
                     <li><a href="">TERMS & CONDITIONS</a></li>
                     <li>&nbsp;&nbsp;&nbsp;</li>
-                    <li id="facebook" class="pointer"><img src="<?php echo $this->getSkinUrl('images/footer/fb-like-btn.png') ?>" alt="Facebook"></li>
-                    <li id="twitter" class="pointer"><img src="<?php echo $this->getSkinUrl('images/footer/follow-twitter-btn.png') ?>" alt="Facebook"></li>
+                    <li id="facebook-like" class="pointer"><img src="<?php echo $this->getSkinUrl('images/footer/fb-like-btn.png') ?>" alt="Facebook"></li>
+                    <li id="twitter-follow" class="pointer"><img src="<?php echo $this->getSkinUrl('images/footer/follow-twitter-btn.png') ?>" alt="Twitter"></li>
                     <li id="paypal" class="pointer"><img src="<?php echo $this->getSkinUrl('images/footer/paypal-btn.png') ?>" alt="Facebook"></li>
                 </ul>
             </div>

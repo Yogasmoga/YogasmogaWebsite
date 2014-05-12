@@ -13,7 +13,7 @@
     <action method="addJs"><script>jquery/mywatermark.js</script></action>
     <action method="addJs"><script>jquery/globalheader.js</script></action>
     <action method="addJs"><script>jquery/globalvariables.js</script></action>
-    <action method="addJs"><script>jquery/sidenavigation.js</script></action>
+    <action method="addJs"><script>new_jquery/sidenavigation.js</script></action>
     <action method="addJs"><script>jquery/fullscreen.js</script></action>
     <action method="addJs"><script>jquery/mynewsletter.js</script></action>
     <action method="addJs"><script>jquery/jquery.quovolver.js</script></action>
