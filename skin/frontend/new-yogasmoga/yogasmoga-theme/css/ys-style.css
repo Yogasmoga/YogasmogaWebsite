@@ -24,7 +24,6 @@
 .pointer{cursor: pointer;}
 .full-width{width: 100%;}
 
-
 /****Header****/
 .header-container { background-color: #FFFFFF; position: fixed; top: 0px; height : 80px; width : 100%; z-index: 10003; }
 .header{ padding:0 10px;}
@@ -46,7 +45,7 @@ li.free-shipping{font-style: italic; margin-right: 15px;}
 ul.tr-menu > li > ul.sub-menu{position: absolute; text-align: center; width:180px; padding:10px 0; background: rgba(255,255,255,0.9); display: none; text-transform: uppercase; }
 ul.tr-menu > li:hover > ul.sub-menu{display: block;}
 ul.main-menu2{margin-left: 0;}
-ul.main-menu2 > li{position: relative; padding-top: 4px; height: 52px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+ul.main-menu2 > li{position: relative; padding-top: 2px; height: 52px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 ul.main-menu2 a.main-heading{display: block; height: 47px;}
 	/**Search Bar**/
 	.right-block{height: 80px;}
@@ -65,6 +64,32 @@ ul.main-menu2 a.main-heading{display: block; height: 47px;}
 .block1,.block2,.block3,.block4{display: inline-block; vertical-align: top; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 .block3{width: 45%;}
 .block4{width: 55%;}
+
+/****Side bar****/
+div.side-menu-bar{position: fixed; width:26%; vertical-align:top;}
+div.side-menu-bar ul{padding: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+div.side-menu-bar ul li a{font-size: 15px; font-family: gothambold; color: #58595b;}
+div.side-menu-bar ul li a span.arr{visibility: hidden;}
+div.side-menu-bar ul li a.current,div.side-menu-bar ul li a:hover{color:#cc0033;}
+div.side-menu-bar ul li a.current span.arr,div.side-menu-bar ul li a:hover span.arr{visibility: visible;}
+
+/***Our Story***/
+.pg-content{width:74%; vertical-align:top; color: #58595b; line-height: normal;}
+.os-banner{position: relative;font-size: 40px; }
+.os-banner img{width: 100%;} 
+.os-banner .banner-text{position:absolute; top:20%; left:7%; text-align: left;}
+.banner-text p{font-family: ITCAvantGardeProBd;}
+.banner-text span{font-family:"AvantGardeGothicITCW01B";}
+.box-str-container{width: 80%; margin-top: 60px; }
+.box-str{background: url("../images/big-divider.png") no-repeat bottom; padding-bottom:30px; margin-bottom: 30px;background-size: contain;}
+.box-str-container .img-box{width: 38%;}
+.box-str-container .img-box img{width: 100%;}
+.box-str-container .content-box{ width:62%; padding-left: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+.content-box p{font-family: gothambook; font-size: 13px; margin-bottom: 22px; line-height: 1.3;}
+.content-box p:last-child{margin: 0;}
+.box-str h2.heading{font-family: ITCAvantGardeProBd; font-size: 20px; color: #58595b; margin-bottom: 45px;}
+.box-str h2.heading span{font-family: ITCAvantGardeProBk;}
+.box-str.inverse .content-box{padding-right: 20px; padding-left: 0;}
 /****Footer****/
 #sitemap{width: 85%; margin: 0 auto;margin-top:90px;}
 .footer-block{width: 100%;margin-left: 35px;}
