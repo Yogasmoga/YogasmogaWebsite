@@ -23,6 +23,8 @@
 .no-wrap{white-space: nowrap;}
 .pointer{cursor: pointer;}
 .full-width{width: 100%;}
+.white{color: white !important;}
+.grey{color: #58595b !important;}
 
 /****Header****/
 .header-container { background-color: #FFFFFF; position: fixed; top: 0px; height : 80px; width : 100%; z-index: 10003; }
@@ -30,23 +32,29 @@
 .header .logo {margin:0;}
 ul.main-menu{margin-left: 40px;}
 ul.main-menu > li{display:inline-block; height: 80px; padding:0 10px; text-transform: uppercase; vertical-align: top; cursor:pointer;}
-ul.main-menu li a{color: #58595b; font-size: 13px; font-family: gothambold;}
+ul.main-menu li a,ul.tr-menu > li > ul.sub-menu li a{color: #58595b; font-size: 13px; font-family: gothambold;}
 ul.main-menu li a.menu-heading{line-height: 80px; vertical-align: middle;}
 ul.main-menu li ul.sub-menu{position: absolute; text-align: left; left: 0; background: rgba(255,255,255,0.9); padding: 15px; display: none;}
 ul.main-menu li ul.sub-menu > li{display: inline-block; vertical-align: top; min-width: 160px; border-left: 1px solid #ccc; padding:0 0 0 15px; min-height: 120px;}
+ul.main-menu2 li ul.sub-menu{width: 174px;}
+ul.main-menu2 li ul.sub-menu>li{min-height: 100%;}
 ul.main-menu li ul.sub-menu > li:first-child{border:none; padding:0;}
 ul.main-menu li ul.sub-menu > li > ul:first-child a{font-family: gothambold;}
-ul.main-menu li ul.sub-menu > li > ul a{font-family: gothambook;}
+ul.main-menu li ul.sub-menu > li > ul a,ul.main-menu2 li ul.sub-menu > li > ul:first-child a,ul.tr-menu > li > ul.sub-menu li a{font-family: gothambook;}
 ul.main-menu > li:hover{background: url("../images/menu_arrow.png") no-repeat bottom center; background-size: 17px 14px;}
 ul.main-menu > li:hover > ul.sub-menu{display: block;}
 ul.tr-menu{margin:5px 0;}
 ul.tr-menu > li{display: inline-block; padding: 0 3px; position: relative;}
 li.free-shipping{font-style: italic; margin-right: 15px;}
-ul.tr-menu > li > ul.sub-menu{position: absolute; text-align: center; width:180px; padding:10px 0; background: rgba(255,255,255,0.9); display: none; text-transform: uppercase; }
+ul.tr-menu > li > ul.sub-menu{position: absolute; text-align: center; width:200px; padding:10px 0; display: none; text-transform: uppercase; }
+ul.tr-menu > li > ul.sub-menu li{background: rgba(255,255,255,0.9); padding: 0 15px;}
+ul.tr-menu > li > ul.sub-menu li.last{padding-bottom: 10px;}
+ul.tr-menu > li > ul.sub-menu li.blank{height: 46px; background: transparent;}
 ul.tr-menu > li:hover > ul.sub-menu{display: block;}
 ul.main-menu2{margin-left: 0;}
 ul.main-menu2 > li{position: relative; padding-top: 2px; height: 52px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
-ul.main-menu2 a.main-heading{display: block; height: 47px;}
+ul.main-menu2 a.main-heading{display: block; height: 50px;}
+.sub-menu a:hover{color:#cc0033 !important;}
 	/**Search Bar**/
 	.right-block{height: 80px;}
 	.search-bar{border: 1px solid black; width: 225px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;	margin-right:3px;}
@@ -57,14 +65,23 @@ ul.main-menu2 a.main-heading{display: block; height: 47px;}
 .share-strip{padding: 25px 0; margin: 0 auto; width: 98%; font-size: 0; display: block;}
 .share-strip .blk{width: 50%; display: inline-block;}
 .share-strip ul li{ display: inline-block; padding: 0 5px; font-size: 12px; line-height: 21px;}
-.fabric-color{width: 90%; margin: 0 auto;background: url("../images/big-divider.png") no-repeat , url("../images/big-divider.png") no-repeat; background-position: top center, bottom center; height:auto;}
-.structure{width: 90%; margin: 0 auto; font-size: 0;}
+.fabric-color{width: 90%; margin: 0 auto;background: url("../images/big-divider.png") no-repeat , url("../images/big-divider.png") no-repeat; background-position: top center, bottom center; background-size:100%, 100%; height:auto; padding-bottom: 1px;}
+.structure{width: 90%; margin: 0 auto;}
 .block1{width: 65%;}
 .block2{width: 35%; padding-top: 10%; padding-left: 3%;}
-.block1,.block2,.block3,.block4{display: inline-block; vertical-align: top; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
-.block3{width: 45%;}
-.block4{width: 55%;}
-
+.block1,.block2,.block3,.block4{float: left; position: relative; vertical-align: top; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+.block-text{position: absolute; top: 8%; left: 6%;font-family:ITCAvantGardeProMd; line-height: normal;}
+ul.fabric-qua{position: absolute; bottom: 5%; width: 100%;}
+ul.fabric-qua li{display: inline-block; color: #fff; text-align: center; font-size: 0.8em; padding: 0 15px; }
+ul.fabric-qua li img{margin-bottom: 10px;}
+p.block-head{font-size: 15px; color: #de8a23}
+p.block-desc{font-size: 30px; color:#58595b;}
+p.block-link{margin-top: 30px;}
+p.block-link a{font-family: "AvantGardeGothicITCW01B"; color: #333; font-size: 14px; text-transform: uppercase; border-bottom: #cc0033 1px solid;}
+p.block-link a span{color: #cc0033;}
+.block-text2{position: absolute; bottom: 5%; left:6%; font-family:ITCAvantGardeProMd;}
+.block-text2 p.bracelet-count{font-family: gothamlight; font-size: 120px; line-height: 90px; margin-left: -10px;}
+.block-text2 span{font-size: 20px;}
 /****Side bar****/
 div.side-menu-bar{position: fixed; width:26%; vertical-align:top;}
 div.side-menu-bar ul{padding: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
@@ -94,7 +111,7 @@ div.side-menu-bar ul li a.current span.arr,div.side-menu-bar ul li a:hover span.
 #sitemap{width: 85%; margin: 0 auto;margin-top:90px;}
 .footer-block{width: 100%;margin-left: 35px;}
 .footer--block ul.site-map ul li{/*text-transform: uppercase;*/}
-ul.site-map > li{display: inline-block; vertical-align: top; text-align: left; width: 14.5%; margin:0 5px; word-wrap:break-word; }
+ul.site-map > li{color:#58595b; display: inline-block; vertical-align: top; text-align: left; width: 14.5%; margin:0 5px; word-wrap:break-word; }
 ul.site-map > li:first-child{}
 ul.site-map > li a{color: #58595b; font-size: 11px;}
 .online-status-icon{vertical-align: middle;}
@@ -105,3 +122,4 @@ div.copy-privacy-likes ul li{display: inline-block; font-size: 11px; color: #585
 div.copy-privacy-likes ul li:first-child{margin-left: 5px;}
 div.copy-privacy-likes ul li a{font-size: 11px; color: #58595b}
 div.copy-privacy-likes ul li img{height: 30px;}
+.block3 img,.block4 img{width: 100%;}

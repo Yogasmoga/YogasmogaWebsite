@@ -2,6 +2,7 @@ jQuery(document).ready(function($){
     initializesignuppopup();
     initializeinvitepopup();
     initializesigninpopup();
+    adjustimg();
 		$(".footer-block").on("click","#smogi-love",function(){
 			$("#signup").dialog( "open" );			
 		});
@@ -121,6 +122,25 @@ jQuery(document).ready(function($){
                     $("html,body").css("overflow-x","auto");
                 };
             }
+        });
+    }
+
+    function adjustimg(){
+        var mw = $(".structure").width() - 14;        
+        jQuery(".structure").each(function(){
+            var jQuerythis = jQuery(this),
+            blockOne = jQuerythis.find(".block3"),
+            blockTwo = jQuerythis.find(".block4"),
+            blockOneImg = blockOne.find("img"),
+            blockTwoImg = blockTwo.find("img");
+            blockOneImgHeight = blockOneImg.height() - 7,
+            blockOneImgWidth = blockOneImg.width() - 7,
+            blockTwoImgHeight = blockTwoImg.height() - 7,
+            blockTwoImgWidth = blockTwoImg.width() - 7;
+            ratioOne = (mw * blockTwoImgHeight) / (blockOneImgHeight * blockTwoImgWidth + blockTwoImgHeight * blockOneImgWidth);
+            ratioTwo = (mw * blockOneImgHeight) / (blockOneImgHeight * blockTwoImgWidth + blockTwoImgHeight * blockOneImgWidth);
+            blockOneImg.closest(".block3").width(ratioOne * blockOneImgWidth * 100 / mw + "%"); 
+            blockTwoImg.closest(".block4").width(ratioTwo * blockTwoImgWidth * 100 / mw + "%");            
         });
     }
 });
