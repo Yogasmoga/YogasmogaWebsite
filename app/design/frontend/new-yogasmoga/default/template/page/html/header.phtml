@@ -398,7 +398,7 @@ if($serverType == 'production')
         </div>
         <div class="clearfix"></div>
         <div class="f-right header-right">
-            <div class="right-top-block">
+            <div class="right-top-block r-align">
                 <ul class="tr-menu">
                     <li class="free-shipping">Free and fast shipping to US and Canada</li>
                     <li>
@@ -424,9 +424,8 @@ if($serverType == 'production')
                     <li><a href="javascript:void(0);">Shopping Bag (<span class="cartitemcount"><?php echo $itemcount; ?></span>)</a></li>
                 </ul>
             </div>
-            <div class="right-bottom-block">
-                <?php echo $this->getChildHtml('topSearch') ?>
-                <div class="f-right">
+            <div class="right-bottom-block">                
+                <div class="in-bl">
                     <ul class="main-menu main-menu2">                                          
                         <li>
                             <a href="<?php echo $this->getBaseUrl();?>our-story-new#story" class="main-heading">ys story</a>
@@ -460,9 +459,10 @@ if($serverType == 'production')
                             </ul>
                         </li>
                     </ul>
-                </div>                 
-            </div>
-            <div class="clearfix"></div> 
+                </div>
+                <?php echo $this->getChildHtml('topSearch') ?>    
+                            
+            </div>             
                                             
         </div>
                
