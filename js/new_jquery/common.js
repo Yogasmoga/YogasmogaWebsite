@@ -94,7 +94,7 @@ jQuery(document).ready(function($){
             draggable: false,
             resizable: false,
             modal: true,
-            dialogClass : 'firstdialog',
+            dialogClass : 'signinDialog',
             position: { my: "center center",at: "center center"},
             show: {
                 effect: "fade",
@@ -143,6 +143,18 @@ jQuery(document).ready(function($){
             blockTwoImg.closest(".block4").width(ratioTwo * blockTwoImgWidth * 100 / mw + "%");            
         });
     }
+
+    $(".sl-desc-handle").on("mouseover",function(){
+        $(this).next(".slide-desc").fadeIn();        
+    });
+    $(".sl-desc-handle").on("mouseout",function(){ 
+        setTimeout(function(){
+            $(".slide-desc").fadeOut();
+            console.log("test");
+        },5000);
+    });      
+        
+        
 });
 
 

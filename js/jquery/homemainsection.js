@@ -1,11 +1,11 @@
-jQuery(document).ready(function($){
+jQuery(document).ready(function($){  
     $(window).load(function(){
         $('.flexslider').flexslider({
             controlNav: true,
-            slideshowSpeed: 9000,
+            slideshowSpeed: 4500,
 			animationSpeed:1250,
 			easing:"linear",
-            directionNav: false,
+            directionNav: true,
             start: function(slider) {
                 //fixFlexisliderImage();
               },
@@ -40,8 +40,24 @@ jQuery(document).ready(function($){
         if($(this).hasClass("mlshare"))
             $("div#pageScrollerNav div#shareicons div#mail").trigger('click');
     });
+
+    sliderHeight();
+    //Height of the slider to show the share strip also on first view of the home page
+        function sliderHeight()
+        {
+            //Height of th header bar and the share strip
+            var nwinHeight = $(".share-strip").height() + 50 + 80;
+            //Height of window
+            var winHeight = $(window).height();
+            //calculation for the height of the slider
+            var sHeight = winHeight - nwinHeight;
+            //Calculated height applied to the slider    
+            $("#welcome").css("height",sHeight);
+        }
+
     
 });
+
 
 function positionDiscoverSection()
 {
