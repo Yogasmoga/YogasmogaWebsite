@@ -83,15 +83,17 @@ p.block-link a span{color: #cc0033;}
 .block-text2 p.bracelet-count{font-family: gothamlight; font-size: 120px; line-height: 90px; margin-left: -10px;}
 .block-text2 span{font-size: 20px;}
 /****Side bar****/
-div.side-menu-bar{position: fixed; width:26%; vertical-align:top;}
+div.side-menu-bar{position: fixed; width:26%; vertical-align:top;min-height: 300px;}
 div.side-menu-bar ul{padding: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 div.side-menu-bar ul li a{font-size: 15px; font-family: gothambold; color: #58595b;}
 div.side-menu-bar ul li a span.arr{visibility: hidden;}
 div.side-menu-bar ul li a.current,div.side-menu-bar ul li a:hover{color:#cc0033;}
 div.side-menu-bar ul li a.current span.arr,div.side-menu-bar ul li a:hover span.arr{visibility: visible;}
+/******CMS Page loader  ******/
+.cms-loader{margin-top: 100px;}
 
 /***Our Story***/
-.pg-content{width:74%; vertical-align:top; color: #58595b; line-height: normal;}
+.pg-content{width:74%; vertical-align:top; color: #58595b; line-height: normal;min-height: 300px;}
 .os-banner{position: relative;font-size: 40px; }
 .os-banner img{width: 100%;} 
 .os-banner .banner-text{position:absolute; top:20%; left:7%; text-align: left;}

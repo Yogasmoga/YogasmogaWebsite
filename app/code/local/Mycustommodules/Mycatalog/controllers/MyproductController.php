@@ -2856,6 +2856,28 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         //$this->_redirectError(Mage::getUrl('*/*/create', array('_secure' => true)));
     }
 
+    public function retrievecmsblockcontentAction()
+    {
+        $response = array(
+            "status" => 'error',
+            "html" => ''
+        );
+        if ($this->getRequest()->getPost('blockid')) {
+
+            $response['html'] = Mage::app()->getLayout()->createBlock('cms/block')->setBlockId($this->getRequest()->getPost('blockid'))->toHtml();
+            if($response['html'] != '')
+            {
+                $response['status']= "success";
+                echo json_encode($response);
+                return;
+            }
+            else{
+                $response['html'] = "<h1>Coming Soon...</h1>";
+                echo json_encode($response);
+                return;
+            }
+        }
+    }
 
     
 }
