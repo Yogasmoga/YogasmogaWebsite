@@ -2,6 +2,7 @@ jQuery(document).ready(function($){
 
     var objectPage={};
 
+    // check for url with HASH value for cms pages
     if(window.location.hash != '') {
         var blockid = window.location.hash;
         blockid = blockid.substring(1, blockid.length);
@@ -18,7 +19,7 @@ jQuery(document).ready(function($){
     }
 
 
-
+    // check for click from left column in cms pages
     $(".side-menu-bar").on("click","ul li",function(event){
 
         $(this).siblings().children("a").removeClass("current");
@@ -32,7 +33,8 @@ jQuery(document).ready(function($){
         retrievecmsblockcontent(data);
         event.preventDefault();
     });
-    $("#ys-story").on("click","li",function(event){
+    // check for click from top menu navigation for cms page
+    $("#cms-header-link").on("click","li",function(event){
         $(".pg-content").html("<img class='cms-loader' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/loading1.gif' />");
         var blockid_data = $(this).attr("data-blockid");
         retrievecmsblockcontent(blockid_data);
@@ -47,6 +49,7 @@ jQuery(document).ready(function($){
 
 
     });
+    // function for retrieving html for cms page via ajax
     function retrievecmsblockcontent(blockid)
     {
         if(window.location.href.indexOf('https://') >= 0)

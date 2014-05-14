@@ -94,12 +94,16 @@
                     <li> | </li>
                     <li><a href="">TERMS & CONDITIONS</a></li>
                     <li>&nbsp;&nbsp;&nbsp;</li>
-                    <li id="facebook-like" class="pointer"><img src="<?php echo $this->getSkinUrl('images/footer/fb-like-btn.png') ?>" alt="Facebook"></li>
-                    <li id="twitter-follow" class="pointer"><img src="<?php echo $this->getSkinUrl('images/footer/follow-twitter-btn.png') ?>" alt="Twitter"></li>
+                    <!--<li id="facebook-like" class="pointer"><img src="<?php echo $this->getSkinUrl('images/footer/fb-like-btn.png') ?>" alt="Facebook"></li> -->
+                    <!--<li id="twitter-follow" class="pointer"><img src="<?php echo $this->getSkinUrl('images/footer/follow-twitter-btn.png') ?>" alt="Twitter"></li> -->
+                    <li id="facebook-like" class="pointer"><iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fyogasmoga&amp;width&amp;layout=button&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=80&amp;appId=383166328486098" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:80px;" allowTransparency="true"></iframe></li>
+                    <li id="twitter-follow" class="pointer"><a href="https://twitter.com/intent/follow?original_referer=<?php echo urlencode($_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"])."&region=follow_link&screen_name=yogasmoga&tw_p=followbutton&variant=2.0"; ?>"><img src="<?php echo $this->getSkinUrl('images/footer/follow-twitter-btn.png') ?>" alt="Twitter"/></a></li>
+
                     <li id="paypal" class="pointer"><img src="<?php echo $this->getSkinUrl('images/footer/paypal-btn.png') ?>" alt="Facebook"></li>
                 </ul>
             </div>
-        </div>        
+        </div>
+        <script src="https://platform.twitter.com/widgets.js"></script>
     <div class="clearfix"></div> 
 <?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
     if($serverType == 'production')
