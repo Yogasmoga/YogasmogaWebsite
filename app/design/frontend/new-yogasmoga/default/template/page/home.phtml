@@ -95,20 +95,45 @@
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
             <div id="pagecontainer">
-                <div id="Welcome" class="fullscreenovfhidden flexslider pgsection neglectheaderwidth showloading" desc="Welcome to YOGASMOGA" style="border: none;border-radius : none;box-shadow:none;margin:0px;" tw-summary="">               
+                <div id="Welcome" class="fullscreenovfhidden flexslider showloading" desc="Welcome to YOGASMOGA" style="border: none;border-radius : none;box-shadow:none;margin:0px;" tw-summary="">               
                     <ul class="slides" id="homemainslider">
                         <li>                      
-                          <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/welcomes_banner1.jpg" alt="THE ULTIMATE YOGA PANT. RUN JUMP 'N PLAY CROP" iwidth="1600" iheight="900" />
+                          <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/new_banner1.jpg" alt="WE MAKE THINGS FROM THE HEART AND WITH LOVE— FOR WHEREVER LIFE TAKES YOU." iwidth="1600" iheight="900" />
+
+                            <div class="banner-txt3 promo2310" style="color : #333; left : 5%; top:10%;">
+                                <table>
+                                <tr>
+                                    <td class="white">WE MAKE THINGS</td>
+                                </tr>
+                                <tr>
+                                    <td class="white">FROM THE HEART AND</td>
+                                </tr> 
+                                <tr>
+                                    <td class="white">WITH LOVE—</td>
+                                </tr>                      
+                                </table>
+                                <span style="color: white; padding-top: 0px !important; font-family: ITCAvantGardeProBk; font-size:35px;">FOR WHEREVER LIFE<br />TAKES YOU.</span>  
+                                <table style="margin-top: 10% !important;">
+                                    <tr>
+                                        <td>
+                                            <a href="<?php echo $base_url; ?>women">
+                                                <img src="<?php echo $this->getSkinUrl('images/shop_women.png') ?>" alt="SHOP WOMEN" style="width:80%;" />
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="<?php echo $base_url; ?>mens">
+                                                <img src="<?php echo $this->getSkinUrl('images/shop_men.png') ?>" alt="SHOP MEN" style="width:80%;" />
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table> 
+                            </div>                           
                             
-                            <div class="banner-txt3 promo2310" style="color : #333; left: 21%; top: 85%;">
-                            <a href="<?php echo $base_url; ?>women">
-                                <img src="<?php echo $this->getSkinUrl('images/shop_women.png') ?>" alt="SHOP WOMEN" style="width:80%; margin:0 auto !important;" />
-                            </a>
-                            </div>
-                            <div class="banner-txt3 promo2310" style="color : #333; left: 68%; top: 85%;">
-                            <a href="<?php echo $base_url; ?>mens">
-                                <img src="<?php echo $this->getSkinUrl('images/shop_men.png') ?>" alt="SHOP MEN" style="width:80%; margin:0 auto !important;" />
-                            </a>
+                            <div style="position: absolute; width: 285px; right: 4.625%; z-index:99; bottom: 10%; height: 131px;" id="playBtn" >
+                                <div class="sl-desc-handle">
+                                        <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                                </div>
+                                <div class="slide-desc" style="">1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nulla lacus, tincidunt vel mi quis come modo elementum diam.</div>
                             </div>
                         </li>
     					<li>					  
@@ -132,12 +157,11 @@
                                 </a>
                             </span>  
                             </div>
-                            <div style="position: absolute; width: 400px; right: 4.625%; z-index:99; bottom: 9%; " id="playBtn" ><img alt="Get $25 SMOGI BUCKS TOWARD YOUR 1st ORDER & FREE SHIPPING" style="width : 100%" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/text_lines.png" />
-                                <div style="position: absolute; width: 72px; left: 15px; top: 17px;">
-                                    <a href="<?php echo $this->getUrl('women');?>">
-                                        <img style="width:100%;"  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/shop_now.png" alt="SHOP NOW" />
-                                    </a>
+                            <div style="position: absolute; width: 285px; right: 4.625%; z-index:99; bottom: 10%; height: 131px;" id="playBtn" >
+                                <div class="sl-desc-handle">
+                                        <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
                                 </div>
+                                <div class="slide-desc" style="">2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nulla lacus, tincidunt vel mi quis come modo elementum diam.</div>
                             </div>
                         </li>
     					<li>					  
@@ -160,14 +184,11 @@
                                 </a>
                             </span>  
                             </div>
-                            <div style="position: absolute; width: 400px; right: 4.625%; z-index:99; bottom: 9%;" id="playBtn1" ><img alt="Get $25 SMOGI BUCKS TOWARD YOUR 1st ORDER & FREE SHIPPING" style="width : 100%" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/text_lines.png" />
-                                <div style="position: absolute; width: 72px; left: 15px; top: 17px;">
-                                    <a href="<?php echo $this->getUrl('women');?>">
-                                        <img style="width:100%;"  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/shop_now.png" alt="SHOP NOW" />
-                                    </a>
+                            <div style="position: absolute; width: 285px; right: 4.625%; z-index:99; bottom: 10%; height: 131px;" id="playBtn" >
+                                <div class="sl-desc-handle">
+                                        <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
                                 </div>
-
-                               
+                                <div class="slide-desc" style="">3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nulla lacus, tincidunt vel mi quis come modo elementum diam.</div>
                             </div>
                         </li>	
                         <li style="background-color: #FFF;">
@@ -177,14 +198,12 @@
                             OUR CORE VALUE IS<br />GIVING, OUR GIFT IS<br />NAMASK&Aacute;R.<br />
                             <span style="color: #666;">WE CREATED THE <a href="/namaskar" style="color: #d90d3d !important;">NAMASK&Aacute;R FOUNDATION</a><br />BECAUSE WE CARE.</span>
                             </div>
-                            <div style="position: absolute; width: 400px; right: 4.625%; z-index:99; bottom: 9%; " id="playBtn2" >
-                                <img alt="Get $25 SMOGI BUCKS TOWARD YOUR 1st ORDER & FREE SHIPPING" style="width : 100%" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/text_lines.png" />
-                                <div style="position: absolute; width: 72px; left: 15px; top: 17px;">
-                                    <a href="<?php echo $this->getUrl('women');?>">
-                                        <img style="width:100%;"  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/shop_now.png" alt="SHOP NOW" />
-                                    </a>
-                                </div>                       
-                            </div>                        
+                            <div style="position: absolute; width: 285px; right: 4.625%; z-index:99; bottom: 10%; height: 131px;" id="playBtn" >
+                                <div class="sl-desc-handle">
+                                        <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                                </div>
+                                <div class="slide-desc" style="">4. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nulla lacus, tincidunt vel mi quis come modo elementum diam.</div>
+                            </div>                      
                         </li>
                     </ul>  
                 </div>
