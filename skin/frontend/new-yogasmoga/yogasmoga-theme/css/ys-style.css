@@ -139,7 +139,8 @@ div.copy-privacy-likes ul li img{height: 30px;}
 #sign-up-form table td,#sign-in-form table td{padding-bottom: 10px;}
 #sign-up-form table label,#sign-in-form table label{width: 30%; float: left; word-wrap:break-word; line-height: 26px;}
 #sign-up-form table input,#sign-in-form table input{width: 55%; padding: 3px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
-
+#sign-up-button {cursor:pointer;}
+.err-msg{color:#D90D3D;}
 /****Flexslider next previous arror****/
 .flex-direction-nav .flex-prev{background: url("../images/homepage/previous-slide.png") no-repeat bottom; background-size:100% 100%; width:24px; height: 46px;}
 .flex-direction-nav .flex-next{background: url("../images/homepage/next-slide.png") no-repeat bottom; background-size:100% 100%; width:24px; height: 46px;}
