@@ -85,6 +85,34 @@
     </reference>
 </home1>
 
+<women>
+    <reference name="head">
+        <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
+
+        <action method="addCss"><stylesheet>css/dressingroom.css</stylesheet></action>
+        <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
+
+
+        <action method="addJs"><script>jquery/jquery.touchSwipe.min.js</script></action>
+        <action method="addJs"><script>jquery/jquery.bxSlider.min.js</script></action>
+        <action method="addJs"><script>jquery/bxsliderscript.js</script></action>
+        <action method="addJs"><script>jquery/myproductimageswitcher.js</script></action>
+        <action method="addJs"><script>jquery/homemainsection.js</script></action>
+        <action method="addJs"><script>jquery/swfobject.js</script></action>
+        <action method="addJs"><script>jquery/jquery.pngFix.pack.js</script></action>
+        <action method="addJs"><script>jquery/jquery.fancybox-1.0.0.js</script></action>
+        <action method="addJs"><script>jquery/youtubevideo.js</script></action>
+        <action method="addJs"><script>jquery/jquery.flexslider-min.js</script></action>
+        <action method="addJs"><script>jquery/parallaxeffect.js</script></action>
+
+
+        <action method="addJs"><script>jquery/tswipe.js</script></action>
+        <action method="addJs"><script>jquery/dressingroom.js</script></action>
+        <action method="addJs"><script>jquery/myproductdetails.js</script></action>
+
+    </reference>
+</women>
+
 <catalog_category_layered>
     <reference name="head">
         <!--<action method="addCss"><stylesheet>css/jqueryui/jquery-ui-1.9.1.custom.css</stylesheet></action>

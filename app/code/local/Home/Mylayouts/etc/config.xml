@@ -53,6 +53,11 @@
           <template>page/home1.phtml</template>
           <layout_handle>home1</layout_handle>
         </home1>
+        <women translate="label">
+          <label>Women</label>
+          <template>page/women.phtml</template>
+          <layout_handle>women</layout_handle>
+        </women>
         <!-- add more layouts here -->
       </layouts>
     </page>
