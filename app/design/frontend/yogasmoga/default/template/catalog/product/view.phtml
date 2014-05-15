@@ -78,6 +78,8 @@ jQuery(window).load(function(){
     $cats = $_product->getCategoryIds();
     $categoryid = '';
      $currentUrl = Mage::getUrl('*/*/*', array('_current' => true));
+    if(strpos($currentUrl, "?") != false)
+        $currentUrl = substr($currentUrl, 0, strpos($currentUrl, "?"));
     for($i=strlen($currentUrl)-2;$i>1;$i--)
     {
         $categoryid .= $currentUrl[$i];
@@ -88,8 +90,7 @@ jQuery(window).load(function(){
     $categoryid = (int)$categoryid;
     //$categoryid = Mage::getModel('catalog/category')->load($cats[0])->getId();
     $categoryurl = Mage::getModel("catalog/category")->load($categoryid)->getUrl();
-    if(strpos($currentUrl, "?") != false)
-        $currentUrl = substr($currentUrl, 0, strpos($currentUrl, "?"));
+    
     //echo $categoryid;
     $breadcrumb = '<a href="'.Mage::helper('core/url')->getHomeUrl().'">Home</a>';
     $breadcrumb .= '&nbsp;&gt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load($categoryid)->getUrl().'">'.Mage::getModel("catalog/category")->load($categoryid)->getName().'</a>';
