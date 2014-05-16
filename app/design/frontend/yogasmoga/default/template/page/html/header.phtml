@@ -309,8 +309,12 @@ if($serverType == 'production')
                     else
                         _usesecureurl = false;
                     var url = homeUrl + 'mycatalog/myproduct/registercustomer';
-                    if(_usesecureurl)
+                    var imgurl = homeUrl;
+                    if(_usesecureurl){
                         url = securehomeUrl + 'mycatalog/myproduct/registercustomer';
+                        imgurl = securehomeUrl;
+                    }
+
                     // var pfirstname = $("#pfirstname").val();
                     // var plastname = $("#plastname").val();
                     // var pemail_address = $("#pemail_address").val();
@@ -326,7 +330,7 @@ if($serverType == 'production')
                             type : 'POST',
                             data : {'firstname':fname,'lastname':lname,'email':email_id,'password':pwd,'confirmation':cpassword,'is_subscribed':is_subscribed},
                             beforeSend: function() {
-                                $("#signup-button").css("background-image","url(<?php echo $this->getUrl()?>skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png)");
+                                $("#signup-button").css("background-image","url("+imgurl+"skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png)");
                             },
                             success : function(data){
                                 _checksinghupformsubmit  = false;
@@ -367,7 +371,7 @@ if($serverType == 'production')
                                 }
                                 else{
 
-                                    $("#signup-button").css("background-image","url(<?php echo $this->getUrl()?>skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png)");
+                                    $("#signup-button").css("background-image","url("+imgurl+"skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png)");
                                     $("#err-msg").css("visibility","visible");
                                     $("#err-msg").text(errors);
 
