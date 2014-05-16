@@ -417,18 +417,26 @@ if($serverType == 'production')
                         </ul>
                     </li>
                     <li><?php
-                                $session = Mage::getSingleton('customer/session');
-                                $islogedinuser = false;
-                                if ($session->isLoggedIn()) {
 
-                                }
+                                $islogedinuser = false;
+                        if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+
+                            $islogedinuser = true;
+                            $customer = Mage::getSingleton('customer/session')->getCustomer();
+                            $firstname = $customer->getFirstname();
+                            ?><script>
+                                _islogedinuser = true;
+                            </script>
+
+                        <?php
+                            }
                         ?>
-                        <a href="javascript:void(0);">My Account</a>
-                        <ul class="sub-menu l-align my-account" style="left: -50px;">
+                        <a href="javascript:void(0);"><?php if($islogedinuser)echo $firstname;else echo "My Account";  ?></a>
+                        <ul class="sub-menu l-align my-acnt" style="left: -50px;">
                             <li class="blank"></li>
-                            <li style="padding-top: 16px;"><a href="">track order</a></li>
-                            <li><a href="">account settings</a></li>
-                            <li class="last"><a id="signin" href="javascript:void(0);">sign in</a></li>
+                            <li style="padding-top: 16px;"><a href="<?php if($islogedinuser)echo $this->getBaseUrl()."sales/order/history/";else echo "javascript:void(0);";  ?>">track order</a></li>
+                            <li><a href="<?php if($islogedinuser)echo $this->getBaseUrl()."customer/account/index/";else echo "javascript:void(0);";  ?>">account settings</a></li>
+                            <li class="last"><a id="signin" href="<?php if($islogedinuser)echo $this->getBaseUrl()."customer/account/logout/";else echo "javascript:void(0);";  ?>"><?php if($islogedinuser)echo "Sign Out";else echo "Sign In";  ?></a></li>
                         </ul>
                     </li>
                     <li><a href="javascript:void(0);">Shopping Bag (<span class="cartitemcount"><?php echo $itemcount; ?></span>)</a></li>

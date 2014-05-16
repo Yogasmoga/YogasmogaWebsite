@@ -10,9 +10,10 @@ jQuery(document).ready(function($){
 
             $("#invite_friends").dialog( "open" );
         });
-        $(".right-top-block").on("click","ul.my-account li a",function(){
+        $(".right-top-block").on("click","ul.my-acnt li a",function(){
 
-            $("#signing_popup").dialog( "open" );
+            if(!_islogedinuser)
+                $("#signing_popup").dialog( "open" );
         });
 
     function initializesignuppopup(){
