@@ -134,17 +134,22 @@ div.copy-privacy-likes ul li img{height: 30px;}
 
 
 /***Sign In Popup***/
-#signing_popup{padding: 10px;}
-.signinDialog{width: 700px !important; min-height: 300px; z-index: 10003 !important; border: none; position: fixed; padding: 0 !important; background:#fff 50% top repeat-x; background-size: cover; }
+#signing_popup{padding: 0px;}
+.signinDialog{width: 750px !important; min-height: 300px; z-index: 10003 !important; border: none; position: fixed; padding: 0 !important; background:#fff 50% top repeat-x; background-size: cover; }
+.sign-up-block,.sign-in-block{width: 280px; padding: 0 47.5px;}
+.sign-up-block{background: url("../images/popups/pop-up-divider.png") right no-repeat;}
 .signinDialog .ui-widget-header{border:none; background: none; font-weight: bold;}
-#sign-up-form table td,#sign-in-form table td{padding-bottom: 10px;}
-#sign-up-form table label,#sign-in-form table label{width: 30%; float: left; word-wrap:break-word; line-height: 26px;}
-#sign-up-form table input,#sign-in-form table input{width: 55%; padding: 3px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
-#sign-up-button {cursor:pointer;}
+#sign-up-form table td,#sign-in-form table td{padding-bottom: 15px;}/*
+#sign-up-form table label,#sign-in-form table label{width: 30%; float: left; word-wrap:break-word; line-height: 26px;}*/
+#sign-up-form table input,#sign-in-form table input{width: 100%; padding: 7px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+#sign-up-button,#sign-in-button {cursor:pointer;}
 .err-msg{color:#D90D3D;}
 /****Flexslider next previous arror****/
 .flex-direction-nav .flex-prev{background: url("../images/homepage/previous-slide.png") no-repeat bottom; background-size:100% 100%; width:24px; height: 46px;}
 .flex-direction-nav .flex-next{background: url("../images/homepage/next-slide.png") no-repeat bottom; background-size:100% 100%; width:24px; height: 46px;}
+.signinDialog.ui-dialog .ui-dialog-titlebar-close,.signinDialog.ui-dialog .ui-dialog-titlebar-close:hover{width: auto; height: auto; z-index: 500;}
+.signinDialog .ui-icon-closethick{background: url("../images/pop-close.png") no-repeat bottom; border:none; background-size: cover; width: 30px; height: 30px;}
+.signinDialog .ui-state-hover{border:none !important;background:none !important;padding:1px!important}
 
 /****Women Landing page****/
 div.new-arrivals-block{background: url("../images/big-divider.png") no-repeat top,url("../images/big-divider.png") no-repeat bottom; padding: 30px 0; background-size: 100%,100%;}

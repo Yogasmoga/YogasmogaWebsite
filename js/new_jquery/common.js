@@ -105,7 +105,8 @@ jQuery(document).ready(function($){
                 duration: 500
             },
             open: function( event, ui ) {
-                $("input#pfirstname").blur();
+                // $("#signing_popup input[type=text],#signing_popup input[type=password]").val("");
+                $("input#pfname").blur();
                 $(".ui-widget-overlay").css({top:80});
                 $(window).trigger("resize");
                 var pW = ($(document).width() - $(this).parent().width())/2;
