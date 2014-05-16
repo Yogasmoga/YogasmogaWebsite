@@ -65,7 +65,7 @@ jQuery(window).load(function(){
 <?php
     /*
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
-*/ 
+*/
 ?>
 <?php
     //$pts = Mage::helper('rewardpoints/data')->getPointsOnOrder();
@@ -78,6 +78,9 @@ jQuery(window).load(function(){
     $cats = $_product->getCategoryIds();
     $categoryid = '';
      $currentUrl = Mage::getUrl('*/*/*', array('_current' => true));
+
+if(strpos($currentUrl, "?") != false)
+    $currentUrl = substr($currentUrl, 0, strpos($currentUrl, "?"));
     for($i=strlen($currentUrl)-2;$i>1;$i--)
     {
         $categoryid .= $currentUrl[$i];
