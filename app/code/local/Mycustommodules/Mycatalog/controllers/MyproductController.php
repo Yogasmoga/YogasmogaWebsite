@@ -2880,9 +2880,10 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $this->_welcomeCustomer($session->getCustomer(), true);
 
                     }
+                    $response['status'] = "success";
+                    echo json_encode($response);
+                    return;
 
-
-                    Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."customer/account");
                 } catch (Mage_Core_Exception $e) {
                     switch ($e->getCode()) {
                         case Mage_Customer_Model_Customer::EXCEPTION_EMAIL_NOT_CONFIRMED:
@@ -2914,7 +2915,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         $response['status'] = "error";
         $response['errors'] = $errors;
         echo json_encode($response);
-
+        return;
         //$this->_loginPostRedirect();
     }
 

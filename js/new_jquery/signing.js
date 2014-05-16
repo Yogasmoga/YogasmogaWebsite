@@ -87,7 +87,10 @@ function loginCustomer()
 
             if(status == "success")
             {
-                alert(data.status);
+                jQuery("#signin").html("SIGN OUT").attr("href",homeUrl+"customer/account/logout/");
+                jQuery("#signing_popup").dialog( "close" );
+                jQuery(".signin-loader").html("");
+                _islogedinuser = true;
             }
             else
             {
