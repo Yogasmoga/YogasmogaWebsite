@@ -4269,33 +4269,7 @@ body.checkout-onepage-index #payment_form_stripe
     cursor : pointer;
 }*/
 
-/****First Time Pop Up Home page****/
-.firstdialog{z-index: 10003 !important;}
-.firstdialog { border: none; position: fixed; padding: 0 !important; background: transparent url("/skin/frontend/yogasmoga/yogasmoga-theme/images/popup_bg_circle.png") 50% top repeat-x ; background-size: cover ; }
-.firstdialog .ui-widget-header { border:none; background: none; font-weight: bold; }
-.firstdialog .ui-dialog-titlebar-close{right: 7.3em ; top: 100% ; width: auto ; height: auto ; z-index: 500;}
-.firstdialog .ui-state-hover{border: none ; background: none ; padding: 1px !important;}
-.firstdialog .ui-icon-closethick{background:url("/skin/frontend/yogasmoga/yogasmoga-theme/images/pop-close.png") no-repeat ; width: 41px; height: 42px; background-position: 0 0;}
-#popup-register{font-family: ITCAvantGardeProBk; font-size: 13px;color: #fff;position: absolute; bottom: 14%; left: 25%;}
-#popup-register td{border: 0; border-bottom: 1px solid #ffffff; margin-bottom: 5px;}
-#popup-register td input{width:100%; border: none; background: transparent;color: #fff;font-family: ITCAvantGardeProBk;}
-#popup-register td label{ padding-right: 10px;}
-#popup-register .errortext{font-family: ITCAvantGardeProBk; font-size: 11px; color: #fff; height: 13px; vertical-align: top !important; min-height: 13px; border: none;}
-#popup-register .errortext div{display: none;}
-#popup-register input[type="submit"]{margin-top: 25px; cursor: pointer;}
-#map-fabrics table td img{width: 100%;}
-#map-fabrics table td{position: relative;}
-.fab_text {position: absolute; top:10%; width: 100%; text-align: center; font-family: ITCAvantGardeProBk; font-size: 30px; color: #666666}
-.fab_text h3{font-family:ITCAvantGardeProBk,gotham,Arial; font-weight: normal; font-size: 30px; color: #dd8820; text-tansform: uppercase; font-style: normal;}
-.fab_text h3 span{font-family:  ITCAvantGardeProBd,gotham-b,Arial;}
-.fab_text span.gold_divider{display: block;}
-.fab_text span.gold_divider img{width: auto !important; margin: 40px 0;}
-div.sub-fab{display: inline-block; margin: 0 15px; font-size: 28px; width:40%;}
-div.sub-fab img{width: 45% !important; display: block; margin:25px auto 0 auto;}
-.ui-widget-overlay { background: #777777 50% 50% repeat !important; opacity: .5;filter:Alpha(Opacity=50); }
-.firstdialog{width: 500px !important; height: 500px !important;}
-#signup{height: 455px !important; padding: 0 !important;}
-#o_password{display: none;}
+
 #Explore .bx-wrapper{background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/homepage/car_bg_blk.png") no-repeat scroll 15% center transparent !important;}
 
 /*Correction for product desc popup*/

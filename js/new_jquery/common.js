@@ -15,7 +15,7 @@ jQuery(document).ready(function($){
             if(!_islogedinuser)
                 $("#signing_popup").dialog( "open" );
         });
-
+        
     function initializesignuppopup(){
         $( "#signup" ).dialog({
                     autoOpen: false,
@@ -70,7 +70,7 @@ jQuery(document).ready(function($){
                 duration: 500
             },
             open: function( event, ui ) {
-                $("input#pfirstname").blur();
+                $("input#pfirstname").blur();                
                 $(".ui-widget-overlay").css({top:80});
                 $(window).trigger("resize");
                 var pW = ($(document).width() - $(this).parent().width())/2;
@@ -105,9 +105,9 @@ jQuery(document).ready(function($){
                 effect: "fade",
                 duration: 500
             },
-            open: function( event, ui ) {
-                // $("#signing_popup input[type=text],#signing_popup input[type=password]").val("");
-                $("input#pfname").blur();
+            open: function( event, ui ) {                
+                $("#sign-up-form input#fname").blur();
+                $("#sign-up-form #s_password,#sign-in-form #si_password").focus().blur();
                 $(".ui-widget-overlay").css({top:80});
                 $(window).trigger("resize");
                 var pW = ($(document).width() - $(this).parent().width())/2;
