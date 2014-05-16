@@ -16,7 +16,7 @@
 .r-align{text-align: right !important;}
 .c-align{text-align: center !important;}
 .clear-fix{clear:both;}
-.in-bl{display: inline-block;}
+.in-bl{display: inline-block !important;}
 .bl{display: block;}
 .gothambd{font-family: gothambold;}
 .gothambk{font-family: gothambook;}
@@ -28,7 +28,8 @@
 .lh-normal{line-height: normal !important;}
 
 /****Header****/
-.header-container { background-color: #FFFFFF; position: fixed; top: 0px; height : 80px; width : 100%; z-index: 10003; }
+/*#pagecontainer{min-width: 960px;}*/
+.header-container { background-color: #FFFFFF; position: fixed; top: 0px; height : 80px; width : 100%; z-index: 10003; min-width: 960px;}
 .header{ padding:0 10px;}
 .header .logo {margin:0;}
 ul.main-menu{margin-left: 40px;}
@@ -80,7 +81,7 @@ p.block-head{font-size: 15px; color: #de8a23}
 p.block-desc{font-size: 30px; color:#58595b;}
 p.block-link{margin-top: 30px;}
 p.block-link a{font-family: "AvantGardeGothicITCW01B"; color: #333; font-size: 14px; text-transform: uppercase; border-bottom: #cc0033 1px solid;}
-p.block-link a span{color: #cc0033;}
+p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight: normal;}
 .block-text2{position: absolute; bottom: 5%; left:6%; font-family:ITCAvantGardeProMd;}
 .block-text2 p.bracelet-count{font-family: gothamlight; font-size: 120px; line-height: 90px; margin-left: -10px;}
 .block-text2 span{font-size: 20px;}
@@ -143,3 +144,18 @@ div.copy-privacy-likes ul li img{height: 30px;}
 /****Flexslider next previous arror****/
 .flex-direction-nav .flex-prev{background: url("../images/homepage/previous-slide.png") no-repeat bottom; background-size:100% 100%; width:24px; height: 46px;}
 .flex-direction-nav .flex-next{background: url("../images/homepage/next-slide.png") no-repeat bottom; background-size:100% 100%; width:24px; height: 46px;}
+
+/****Women Landing page****/
+div.new-arrivals-block{background: url("../images/big-divider.png") no-repeat top,url("../images/big-divider.png") no-repeat bottom; padding: 30px 0; background-size: 100%,100%;}
+ul.new-arrivals{width: 90%; display: block; text-align:center; font-size: 0; margin: 0 auto;}
+ul.new-arrivals li{display: inline-block; width:20%; vertical-align: top; height:auto; max-width: 221px; max-height: 430px; margin-top: 40px;}
+ul.new-arrivals li img{ margin: 0 auto; display: block;}
+ul.new-arrivals li span{font-size: 12px; display: block; color: #58595b; text-transform: uppercase;}
+ul.new-arrivals li img.prd-image{width: 90%;}
+.prd-details{margin-top: 30px;}
+.prd-details .prd-price{margin-bottom: 10px;}
+li.new-arrivals-desc{text-align: left; font-family: ITCAvantGardeProMd; margin-top: 0 !important;}
+li.new-arrivals-desc .block-head{margin-bottom: 5px; font-size: 20px;}
+li.new-arrivals-desc .block-desc{margin-bottom: 25px; font-size: 32px;}
+li.new-arrivals-desc .block-link a{font-family: ITCAvantGardeProMd; font-size: 16px;}
+
