@@ -81,7 +81,20 @@ function loginCustomer()
         },
         success :   function(data){
 
-            alert("success");
+            data = eval('('+data + ')');
+            var status = data.status;
+            var error = data.error;
+
+            if(status == "success")
+            {
+                alert(data.status);
+            }
+            else
+            {
+                jQuery("#sign-in-form .err-msg").html(data.errors);
+                jQuery("#sign-in-form .err-msg").css("visibility","visible");
+                jQuery(".signin-loader").html("");
+            }
         }
 
     });

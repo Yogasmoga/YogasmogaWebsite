@@ -2856,43 +2856,66 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         //$this->_redirectError(Mage::getUrl('*/*/create', array('_secure' => true)));
     }
     public function logincustomerAction()
-    {echo $this->getRequest()->isPost('email').$this->getRequest()->isPost('pwd');die('test');
-        if ($this->_getSession()->isLoggedIn()) {
+    {
+        $response = array(
+                    "status" => 'error',
+                    "errors" => '',
+                    "success_message" => ''
+                );
+        $errors = array();
+        $session = Mage::getSingleton('customer/session');
+        if ($session->isLoggedIn()) {
             $this->_redirect('*/*/');
             return;
         }
 
-        $session = $this->_getSession();
+
         if ($this->getRequest()->isPost()) {
-            $login = $this->getRequest()->getPost('login');
-            if (!empty($login['username']) && !empty($login['password'])) {
+            $login['email'] = $this->getRequest()->getPost('email');
+            $login['pwd']   = $this->getRequest()->getPost('pwd');
+            if (!empty($login['email']) && !empty($login['pwd'])) {
                 try {
-                    $session->login($login['username'], $login['password']);
+                    $session->login($login['email'], $login['pwd']);
                     if ($session->getCustomer()->getIsJustConfirmed()) {
                         $this->_welcomeCustomer($session->getCustomer(), true);
+
                     }
+
+
+                    Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."customer/account");
                 } catch (Mage_Core_Exception $e) {
                     switch ($e->getCode()) {
                         case Mage_Customer_Model_Customer::EXCEPTION_EMAIL_NOT_CONFIRMED:
-                            $value = Mage::helper('customer')->getEmailConfirmationUrl($login['username']);
-                            $message = Mage::helper('customer')->__('This account is not confirmed. Click here to resend confirmation email.', $value);
+                            $value = Mage::helper('customer')->getEmailConfirmationUrl($login['email']);
+                            $message = Mage::helper('customer')->__('This account is not confirmed. <a href="%s">Click here</a> to resend confirmation email.', $value);
+                            array_push($errors,"This account is not confirmed.");
                             break;
                         case Mage_Customer_Model_Customer::EXCEPTION_INVALID_EMAIL_OR_PASSWORD:
                             $message = $e->getMessage();
+                            array_push($errors,"Invalid Email or Password");
                             break;
                         default:
+                            {
+                            array_push($errors,"Invalid Email or Password");
                             $message = $e->getMessage();
+                            }
+
                     }
                     $session->addError($message);
-                    $session->setUsername($login['username']);
+                    $session->setUsername($login['email']);
                 } catch (Exception $e) {
                     // Mage::logException($e); // PA DSS violation: this exception log can disclose customer password
                 }
             } else {
+                array_push($errors,"Email and Password are required.");
                 $session->addError($this->__('Login and password are required.'));
             }
         }
-        $this->_loginPostRedirect();
+        $response['status'] = "error";
+        $response['errors'] = $errors;
+        echo json_encode($response);
+
+        //$this->_loginPostRedirect();
     }
 
     public function retrievecmsblockcontentAction()
