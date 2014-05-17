@@ -38,7 +38,7 @@
         parse_str($qry, $params);
         ?>
         <script type="text/javascript">
-            console.log(<?php echo $qry ?>);
+            console.log(<?php echo $_item->getUrl(); ?>);
         </script>
         <?php
         //print_r($params);
