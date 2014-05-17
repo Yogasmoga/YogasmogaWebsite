@@ -36,6 +36,11 @@
 <?php foreach ($this->getItems() as $_item){ 
         $qry = parse_url($_item->getUrl(), PHP_URL_QUERY);
         parse_str($qry, $params);
+        ?>
+        <script type="text/javascript">
+            console.log(<?php echo json_encode($params); ?>);
+        </script>
+        <?php
         //print_r($params);
         $searchtype = "";
         $searchvalue = "";
