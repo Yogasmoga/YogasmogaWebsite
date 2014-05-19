@@ -60,7 +60,7 @@ jQuery(document).ready(function($){
             draggable: false,
             resizable: false,
             modal: true,
-            dialogClass : 'firstdialog',
+            dialogClass : 'sharingDialog',
             position: { my: "center center",at: "center center"},
             show: {
                 effect: "fade",
@@ -71,7 +71,7 @@ jQuery(document).ready(function($){
                 duration: 500
             },
             open: function( event, ui ) {
-                $("input#pfirstname").blur();                
+                $("input#friendname").blur();                
                 $(".ui-widget-overlay").css({top:80});
                 $(window).trigger("resize");
                 var pW = ($(document).width() - $(this).parent().width())/2;

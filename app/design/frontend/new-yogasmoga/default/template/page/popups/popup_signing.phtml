@@ -1,92 +1,90 @@
 <div id="signing_popup" style="display: none;">
-<div class="signing_popup_wrapper">  
-    <div class="sign-up-block f-left">
-        <p class="c-align form-heading">New to YOGASMOGA?</p>
-        <form id="sign-up-form" class="bl" action="" method="post">
-            <table width="100%" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td>
-                        <input type="text" id="fname" name="fname" class="watermark" watermark="First Name" value="" maxlength="30" class="requiredfield">
-                    </td>                    
-                </tr>
-                <tr>
-                    <td>
-                        <input type="text" id="lname" name="lname" class="watermark" watermark="Last Name" value="" maxlength="30" class="requiredfield">
-                    </td>                    
-                </tr>
-                <tr>
-                    <td>
-                        <input type="text" name="signup_email" id="signup_email" class="watermark" watermark="Email" autocomplete="off" value="" class="requiredfield" autocapitalize="off">
-                    </td>                    
-                </tr>
-                <!-- <tr id="fake_password_2">
-                    <td class="inputholder">
-                        <input type="text" autocomplete="off" maxlength="30" class="watermark" watermark="Select a password" class="requiredfield" name="password" id="f_password_2" defaulterrormsg="Password is required">
-                    </td>
-                </tr> -->
-                <tr id="o_password_2">
-                    <td>
-                        <input type="password" autocomplete="off" maxlength="30" class="watermark" watermark="Select a Password" class="requiredfield" name="s_password" id="s_password">
-                    </td>                    
-                </tr>
+    <div class="signing_popup_wrapper">  
+        <div class="sign-up-block f-left">
+            <p class="c-align form-heading">New to YOGASMOGA?</p>
+            <form id="sign-up-form" class="bl" action="" method="post">
+                <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td>
+                            <input type="text" id="fname" name="fname" class="watermark" watermark="First Name" value="" maxlength="30" class="requiredfield">
+                        </td>                    
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" id="lname" name="lname" class="watermark" watermark="Last Name" value="" maxlength="30" class="requiredfield">
+                        </td>                    
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="signup_email" id="signup_email" class="watermark" watermark="Email" autocomplete="off" value="" class="requiredfield" autocapitalize="off">
+                        </td>                    
+                    </tr>
+                    <!-- <tr id="fake_password_2">
+                        <td class="inputholder">
+                            <input type="text" autocomplete="off" maxlength="30" class="watermark" watermark="Select a password" class="requiredfield" name="password" id="f_password_2" defaulterrormsg="Password is required">
+                        </td>
+                    </tr> -->
+                    <tr id="o_password_2">
+                        <td>
+                            <input type="password" autocomplete="off" maxlength="30" class="watermark" watermark="Select a Password" class="requiredfield" name="s_password" id="s_password">
+                        </td>                    
+                    </tr>
 
-                <tr>
-                    <td>
-                        <input class="f-left" style="width:auto; margin-top: 3px; margin-right: 3px;" type="checkbox" name="in_touch" id="in_touch" checked="checked" class="checkbox">
-                        <label class="lh-normal" style="width:auto;" for="is_subscribed">Let's stay in touch!</label>           
-                    </td>                    
-                </tr>
-                <tr>
-                    <td class="no-padding">
-                        <input type="submit" id="sign-up-button" value="" style="background-image: url(<?php echo $this->getUrl()?>skin/frontend/new-yogasmoga/yogasmoga-theme/images/popups/signup-grey.png); width:278px; height:39px; background-size:100% 100%; border:none;">
-                    </td>
-                    <td align="center" class="form-loader no-padding c-align"></td>
-                </tr>
-                <tr>
-                    <td>
-                        <p style="min-height:15px;  margin: 0 auto; font-size: 12px; visibility:hidden" class="err-msg">All fields are required.</p>
-                    </td>
-                </tr>
-            </table>            
-        </form>
+                    <tr>
+                        <td>
+                            <input class="f-left" style="width:auto; margin-top: 3px; margin-right: 3px;" type="checkbox" name="in_touch" id="in_touch" checked="checked" class="checkbox">
+                            <label class="lh-normal" style="width:auto;" for="is_subscribed">Let's stay in touch!</label>           
+                        </td>                    
+                    </tr>
+                    <tr>
+                        <td class="no-padding">
+                            <input type="submit" id="sign-up-button" value="" style="background-image: url(<?php echo $this->getUrl()?>skin/frontend/new-yogasmoga/yogasmoga-theme/images/popups/signup-grey.png); width:278px; height:39px; background-size:100% 100%; border:none;">
+                        </td>
+                        <td align="center" class="form-loader no-padding c-align"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="min-height:15px;  margin: 0 auto; font-size: 12px; visibility:hidden" class="err-msg">All fields are required.</p>
+                        </td>
+                    </tr>
+                </table>            
+            </form>
+        </div>
+        <div class="sign-in-block f-right">
+            <p class="c-align form-heading">Already a SMOGI?</p>
+            <form id="sign-in-form" class="bl" action="ds" method="post">
+                <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td>                        
+                            <input type="text" id="si_email" name="si_email" class="watermark" watermark="Email" value="" maxlength="30" class="requiredfield">
+                        </td>                    
+                    </tr>                
+                    <tr>
+                        <td class="no-padding">                      
+                            <input type="password" autocomplete="off" maxlength="30" class="watermark" watermark="Password" class="requiredfield" name="si_password" id="si_password">
+                        </td>                    
+                    </tr>
+                    <tr>
+                        <td>
+                            <a class="forgot-link" href="<?php echo $this->getUrl().'customer/account/forgotpassword'; ?>" class="f-left"><?php echo $this->__('Forgot Your Password?') ?></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="no-padding">
+                            <input type="submit" id="sign-in-button" value=""  style="background-image: url(<?php echo $this->getUrl()?>skin/frontend/new-yogasmoga/yogasmoga-theme/images/popups/pop-signin-btn.png); width:278px; height:39px; background-size:100% 100%; border:none;">
+                        </td>
+                        <td align="center" class="form-loader no-padding c-align"></td>                    
+                    </tr>                
+                    <tr>
+                        <td>
+                            <p style="min-height:15px; margin: 0 auto; font-size: 12px; visibility:hidden" class="err-msg">All fields are required.</p>
+                        </td>               
+                    </tr>
+                </table>            
+            </form>
+        </div>
     </div>
-    <div class="sign-in-block f-right">
-        <p class="c-align form-heading">Already a SMOGI?</p>
-        <form id="sign-in-form" class="bl" action="ds" method="post">
-            <table width="100%" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td>                        
-                        <input type="text" id="si_email" name="si_email" class="watermark" watermark="Email" value="" maxlength="30" class="requiredfield">
-                    </td>                    
-                </tr>                
-                <tr>
-                    <td class="no-padding">                      
-                        <input type="password" autocomplete="off" maxlength="30" class="watermark" watermark="Password" class="requiredfield" name="si_password" id="si_password">
-                    </td>                    
-                </tr>
-                <tr>
-                    <td>
-                        <a class="forgot-link" href="<?php echo $this->getUrl().'customer/account/forgotpassword'; ?>" class="f-left"><?php echo $this->__('Forgot Your Password?') ?></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="no-padding">
-                        <input type="submit" id="sign-in-button" value=""  style="background-image: url(<?php echo $this->getUrl()?>skin/frontend/new-yogasmoga/yogasmoga-theme/images/popups/pop-signin-btn.png); width:278px; height:39px; background-size:100% 100%; border:none;">
-                    </td>
-                    <td align="center" class="form-loader no-padding c-align"></td>                    
-                </tr>                
-                <tr>
-                    <td>
-                        <p style="min-height:15px; margin: 0 auto; font-size: 12px; visibility:hidden" class="err-msg">All fields are required.</p>
-                    </td>               
-                </tr>
-            </table>            
-        </form>
+    <div class="thank-you-block no-display">
+        <p>Thank you for signing up.</p>
     </div>
-</div>
-<div class="thank-you-block no-display">
-    <p>Thank you for signing up.</p>
-</div>
-    
-    
 </div>
