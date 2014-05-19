@@ -16,6 +16,15 @@ function popupGetSigningLoginFormFieldsvalue(formid)
 
     return popupformvalidation(fname,lname,email_id,pwd,formid);
 }
+function sharewithfriendformvalidation(formid)
+{
+    var fname = "test";
+    var lname = "test";
+    var email_id = jQuery.trim(jQuery("#si_email").val());
+    var pwd = "test";
+    return popupformvalidation(fname,lname,email_id,pwd,formid);
+}
+
 function popupformvalidation(fname,lname,email_id,pwd,formid)
 {
 

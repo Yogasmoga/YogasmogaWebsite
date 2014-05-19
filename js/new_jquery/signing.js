@@ -39,20 +39,39 @@ function createCustomerAccount()
         url     :   url,
         type    :   'POST',
         data    :   {'firstname':fname,'lastname':lname,'email':email_id,'password':pwd,'confirmation':cpassword,'is_subscribed':is_subscribed},
-        beforeSend: function() {
-            jQuery("#sign-up-form").css("background-image","url(<?php echo $this->getUrl()?>skin/frontend/new-yogasmoga/yogasmoga-theme/images/signing_up.png)");
-            jQuery(".signup-loader").html("<img class='cms-loader' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/loading1.gif' />");
+        beforeSend: function() {            
+            jQuery("#sign-up-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/loading1.gif' style='width:40px;' />");
+            jQuery("#sign-up-button").parent().hide();
+            jQuery("#sign-up-form .form-loader").show();
         },
         success :   function(data){
 
             data = eval('('+data + ')');
+            var status = data.status;
+            var name = data.fname;
+
             if(status == "success")
             {
-                alert(data.status);
+                // console.log(data.status);
+                jQuery(".signing_popup_wrapper").addClass("no-display");
+                jQuery(".thank-you-block").removeClass("no-display");
+                _islogedinuser = true;
+                jQuery("#signin").html("SIGN OUT").attr({href:homeUrl+'customer/account/logout/',id:"sign-out"});
+                if(name != '')
+                    jQuery("#welcome-name").html(name);
+                setTimeout(function(){
+                    jQuery("#signing_popup").dialog("close");                    
+                },2000);
+
+    console.log("success");
             }
             else
             {
-                alert(data.errors);
+                // console.log(data.errors);
+                console.log("error");                
+                jQuery("#sign-up-button").parent().show();
+                jQuery("#sign-up-form .form-loader").hide();
+                jQuery("#sign-up-form .err-msg").html(data.errors).css("visibility","visible");
             }
         }
     });
@@ -75,28 +94,35 @@ function loginCustomer()
         url     :   url,
         type    :   'POST',
         data    :   {'email':email_id,'pwd':pwd},
-        beforeSend: function() {
-            jQuery("#sign-up-form").css("background-image","url(<?php echo $this->getUrl()?>skin/frontend/new-yogasmoga/yogasmoga-theme/images/signing_up.png)");
-            jQuery(".signin-loader").html("<img class='cms-loader' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/loading1.gif' />");
+        beforeSend: function() {            
+            jQuery("#sign-in-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/loading1.gif' style='width:40px;' />");
+            jQuery("#sign-in-button").parent().hide();
+            jQuery("#sign-in-form .form-loader").show();
         },
         success :   function(data){
 
             data = eval('('+data + ')');
             var status = data.status;
             var error = data.error;
+            var name = data.fname;
 
             if(status == "success")
             {
-                jQuery("#signin").html("SIGN OUT").attr("href",homeUrl+"customer/account/logout/");
+                jQuery("#signin").html("SIGN OUT").attr({href:homeUrl+'customer/account/logout/',id:"sign-out"});
                 jQuery("#signing_popup").dialog( "close" );
                 jQuery(".signin-loader").html("");
                 _islogedinuser = true;
+                console.log(name);
+                if(name != '')
+                    jQuery("#welcome-name").html(name);
+
             }
             else
             {
-                jQuery("#sign-in-form .err-msg").html(data.errors);
-                jQuery("#sign-in-form .err-msg").css("visibility","visible");
+                jQuery("#sign-in-form .err-msg").html(data.errors).css("visibility","visible");              
                 jQuery(".signin-loader").html("");
+                jQuery("#sign-in-button").parent().show();
+                jQuery("#sign-in-form .form-loader").hide();
             }
         }
 
