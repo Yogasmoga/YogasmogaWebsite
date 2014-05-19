@@ -3,6 +3,9 @@ jQuery(document).ready(function($){
     initializeinvitepopup();
     initializesigninpopup();
     adjustimg();
+    var winHeight = $(window).height();
+    $("div.2-columns-wrapper").find(".pg-content,.side-menu-bar").css("min-height", winHeight);    
+
 		$(".footer-block").on("click","#smogi-love",function(){
 			$("#signup").dialog( "open" );			
 		});
@@ -33,7 +36,7 @@ jQuery(document).ready(function($){
                         effect: "fade",
                         duration: 500
                     },
-                    open: function( event, ui ) {
+                    open: function( event, ui ) {                        
                         $("input#pfirstname").blur();
                         $(".ui-widget-overlay").css({top:80});
                         $(window).trigger("resize");
@@ -70,7 +73,7 @@ jQuery(document).ready(function($){
                 effect: "fade",
                 duration: 500
             },
-            open: function( event, ui ) {
+            open: function( event, ui ) {                
                 $("input#friendname").blur();                
                 $(".ui-widget-overlay").css({top:80});
                 $(window).trigger("resize");
@@ -106,7 +109,13 @@ jQuery(document).ready(function($){
                 effect: "fade",
                 duration: 500
             },
-            open: function( event, ui ) {                
+            open: function( event, ui ) {
+                if($("#signup").dialog( "isOpen" ) == true ){
+                    $("#signup").dialog( "close" );
+                }
+                if($("#invite_friends").dialog( "isOpen" ) == true){
+                    $("#invite_friends").dialog( "close" );
+                }                  
                 $("#sign-up-form input#fname").blur();
                 $("#sign-up-form #s_password,#sign-in-form #si_password").focus().blur();
                 $(".ui-widget-overlay").css({top:80});
