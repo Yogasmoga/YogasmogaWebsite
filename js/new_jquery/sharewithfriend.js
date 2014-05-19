@@ -47,8 +47,8 @@ function sharewithfriend()
                     jQuery("#invite_friends").dialog("close");
                     jQuery("#invite_friends").dialog({
                         close : function(event,ui){
-                            alert("test");
-                        };
+                           
+                        }
                     });
                 },2000);
             }
