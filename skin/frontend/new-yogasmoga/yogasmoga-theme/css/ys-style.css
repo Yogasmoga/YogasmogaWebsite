@@ -102,17 +102,17 @@ div.side-menu-bar ul li a.current span.arr,div.side-menu-bar ul li a:hover span.
 .os-banner{position: relative;font-size: 40px; }
 .os-banner img{width: 100%;} 
 .os-banner .banner-text{position:absolute; top:20%; left:7%; text-align: left;}
-.banner-text p{font-family: ITCAvantGardeProBd;}
-.banner-text span{font-family:"AvantGardeGothicITCW01B";}
+.banner-text p{font-family: ITCAvantGardeProBd; text-transform: uppercase;}
+.banner-text span{font-family:"AvantGardeGothicITCW01B"; text-transform: inherit;}
 .box-str-container{width: 80%; margin-top: 60px; }
 .box-str{background: url("../images/big-divider.png") no-repeat bottom; padding-bottom:30px; margin-bottom: 30px;background-size: contain;}
-.box-str-container .img-box{width: 38%;}
+.box-str-container .img-box{width: 37%; border: 1px solid #e1e1e1; padding: 2px;}
 .box-str-container .img-box img{width: 100%;}
-.box-str-container .content-box{ width:62%; padding-left: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+.box-str-container .content-box{ width:62%; padding-left: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 .content-box p{font-family: gothambook; font-size: 13px; margin-bottom: 22px; line-height: 1.3;}
 .content-box p:last-child{margin: 0;}
-.box-str h2.heading{font-family: ITCAvantGardeProBd; font-size: 20px; color: #58595b; margin-bottom: 45px;}
-.box-str h2.heading span{font-family: ITCAvantGardeProBk;}
+.box-str h2.heading{font-family: ITCAvantGardeProBd; font-size: 20px; color: #58595b; margin-bottom: 45px; text-transform: uppercase;}
+.box-str h2.heading span{font-family: ITCAvantGardeProBk; text-transform: inherit; }
 .box-str.inverse .content-box{padding-right: 20px; padding-left: 0;}
 /****Footer****/
 #sitemap{width: 85%; margin: 0 auto;margin-top:90px;}
@@ -195,3 +195,18 @@ li.new-arrivals-desc .block-head{margin-bottom: 5px; font-size: 20px;}
 li.new-arrivals-desc .block-desc{margin-bottom: 25px; font-size: 32px;}
 li.new-arrivals-desc .block-link a{font-family: ITCAvantGardeProMd; font-size: 16px;}
 
+/** YS-Tech Section **/
+.discImg{margin: 40px 0 20px;}
+ul.arw-list{display: block; margin: 0 0 25px 0; padding: 0; font-size: 13px;}
+ul.arw-list li{background: url("../images/list-arw.png") no-repeat 0 4px; display: block; line-height: 1.3; padding: 0 0 10px 15px;}
+sup {font-size: 13px; height: auto; line-height: inherit; padding: 0;}
+
+/** StorySection **/
+.wht-txt{color: #fff;}
+a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline; font-size: 12px;}
+.box-str-container .content-box.txt-block{ width: 100%;}
+
+/** sidebarNav Content **/
+.cntnt-nav{font-size: 17px; padding: 20px 20px 0; width: 73%;}
+.cntnt-nav > p{margin: 0 0 5px;}
+.cntnt-nav > p:last-child{margin: 0 0 15px;}
