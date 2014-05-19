@@ -11,7 +11,6 @@ jQuery(document).ready(function($){
             $("#invite_friends").dialog( "open" );
         });
         $(".right-top-block").on("click","ul.my-acnt li a",function(event){
-
             if(!_islogedinuser){
                 event.preventDefault();
                 $("#signing_popup").dialog( "open" );

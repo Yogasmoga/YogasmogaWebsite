@@ -88,7 +88,6 @@ ul,ol         { list-style:none; }
 .right        { float:right !important; }
 .f-none       { float:none !important; }
 .f-fix        { float:left; width:100%; }
-.no-display   { display:none; }
 .no-margin    { margin:0 !important; }
 .no-padding   { padding:0 !important; }
 .no-bg        { background:none !important; }

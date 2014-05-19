@@ -26,6 +26,8 @@
 .white{color: white !important;}
 .grey{color: #58595b !important;}
 .lh-normal{line-height: normal !important;}
+.no-display{display: none;}
+.no-padding{padding: 0;}
 
 /****Header****/
 /*#pagecontainer{min-width: 960px;}*/
@@ -132,10 +134,9 @@ div.copy-privacy-likes ul li img{height: 30px;}
 .block3 img,.block4 img{width: 100%;}
 #facebook-like,#twitter-follow{margin-right: 5px;}
 
-
 /***Sign In Popup***/
 #signing_popup{padding: 0px;}
-.signinDialog{width: 750px !important; min-height: 300px; z-index: 10010 !important; border: none; position: fixed; padding: 0 !important; background:#fff 50% top repeat-x; background-size: cover; }
+.signinDialog{width: 750px !important; min-height: 300px; z-index: 10010 !important; border: none; position: fixed; padding: 0 !important; background:#fff 50% top repeat-x; background-size: cover; overflow: initial; font-family: gothambook; color:#58595b !important;}
 .sign-up-block,.sign-in-block{width: 280px; padding: 0 47.5px;}
 .sign-up-block{background: url("../images/popups/pop-up-divider.png") right no-repeat;}
 .signinDialog .ui-widget-header{border:none; background: none; font-weight: bold;}
@@ -147,10 +148,13 @@ div.copy-privacy-likes ul li img{height: 30px;}
 /****Flexslider next previous arror****/
 .flex-direction-nav .flex-prev{background: url("../images/homepage/previous-slide.png") no-repeat bottom; background-size:100% 100%; width:24px; height: 46px;}
 .flex-direction-nav .flex-next{background: url("../images/homepage/next-slide.png") no-repeat bottom; background-size:100% 100%; width:24px; height: 46px;}
-.signinDialog.ui-dialog .ui-dialog-titlebar-close,.signinDialog.ui-dialog .ui-dialog-titlebar-close:hover{width: auto; height: auto; z-index: 500;}
-.signinDialog .ui-icon-closethick{background: url("../images/pop-close.png") no-repeat bottom; border:none; background-size: cover; width: 30px; height: 30px;}
+.signinDialog.ui-dialog .ui-dialog-titlebar-close{top: -0.2em; right: -1.2em; width: auto; height: auto; z-index: 500;}
+.signinDialog .ui-icon-closethick{background: url("../images/pop-close.png") no-repeat bottom; border:none; background-size: contain; width: 30px; height: 30px;}
 .signinDialog .ui-state-hover{border:none !important;background:none !important;padding:1px!important}
-
+.form-heading{font-size: 22px;}
+.thank-you-block p{display: block; text-align: center; font-size: 36px; width: 100%; margin-top: 30px;}
+#sign-in-form a.forgot-link { font-family: HelvLightRegular; font-size: 11px; text-decoration: underline; color: #9B9B9B;}
+#sign-in-form a.forgot-link:hover{color:#cc0033;}
 
 /****First Time Pop Up Home page****/
 .firstdialog{z-index: 10003 !important;}
