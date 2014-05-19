@@ -18,11 +18,37 @@ function popupGetSigningLoginFormFieldsvalue(formid)
 }
 function sharewithfriendformvalidation(formid)
 {
-    var fname = "test";
-    var lname = "test";
-    var email_id = jQuery.trim(jQuery("#si_email").val());
-    var pwd = "test";
-    return popupformvalidation(fname,lname,email_id,pwd,formid);
+    var fname = jQuery.trim(jQuery("#friendname").val());
+
+    var email_id = jQuery.trim(jQuery("#friendemail").val());
+    if(fname == "" || fname == "Friend's Name")
+    {
+
+        jQuery(formid).find(".err-msg").css("visibility","visible");
+        jQuery(formid).find(".err-msg").text("All fields are required.");
+
+        return "error";
+    }
+    if(email_id == "" || email_id == "Friend's Email")
+    {
+
+        jQuery(formid).find(".err-msg").css("visibility","visible");
+        jQuery(formid).find(".err-msg").text("All fields are required.");
+        return "error";
+    }
+    if(email_id != "")
+    {
+        if(!validateEmail(email_id))
+        {
+
+            jQuery(formid).find(".err-msg").css("visibility","visible");
+            jQuery(formid).find(".err-msg").text("Enter valid email address.");
+            return "error";
+        }
+    }
+
+
+    return "success" ;
 }
 
 function popupformvalidation(fname,lname,email_id,pwd,formid)
