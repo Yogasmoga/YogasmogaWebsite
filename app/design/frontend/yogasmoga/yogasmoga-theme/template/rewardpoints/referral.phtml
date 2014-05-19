@@ -177,7 +177,7 @@
             </tr>
         </tfoot>
     </table>
-    <div class="referfriend-subheader">KEEP TRACK OF YOUR INVITES</div>
+    <div class="referfriend-subheader">INVITE LIST</div>
     <?php
         $write = Mage::getSingleton('core/resource')->getConnection('core_read');
         $customerData = Mage::getModel('customer/customer')->load(Mage::getSingleton('customer/session')->getId())->getData();
@@ -196,9 +196,9 @@
                 <th class="email">
                     EMAIL ADDRESS
                 </th>
-                <th>
+                <!--<th>
                     STATUS
-                </th>
+                </th>-->
             </thead>
             <tbody id="main">
                 <?php
@@ -212,7 +212,7 @@
                                 <td class="email">
                                     <div><?php echo $result['rewardpoints_referral_email']; ?></div>
                                 </td>
-                                <td class="status">
+                               <!-- <td class="status">
                                     <?php
                                         if($result['rewardpoints_referral_status'] == 0)
                                         {
@@ -227,7 +227,7 @@
                                             <?php
                                         }
                                     ?>
-                                </td>
+                                </td> -->
                             </tr>                    
                         <?php
                     }              
