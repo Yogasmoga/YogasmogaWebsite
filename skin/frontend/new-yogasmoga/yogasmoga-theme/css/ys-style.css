@@ -89,6 +89,11 @@ p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight
 .block-text2 span{font-size: 20px;}
 .sl-desc-handle{cursor:pointer;position: absolute; width: 41px; right: 6px; bottom: -34px;}
 .slide-desc{display:none; position: absolute; right:41px; bottom:0; background-color:rgba(255,255,255,0.8); border-radius:2px; font-size: 12px; line-height: 18px; padding:15px !important; text-align: left; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; color:#58595b; width:240px; height:auto;}
+
+/****Flexslider next previous arror****/
+.flex-direction-nav .flex-prev{background: url("../images/homepage/previous-slide.png") no-repeat bottom; background-size:100% 100%; width:24px; height: 46px;}
+.flex-direction-nav .flex-next{background: url("../images/homepage/next-slide.png") no-repeat bottom; background-size:100% 100%; width:24px; height: 46px;}
+
 /****Side bar****/
 div.side-menu-bar{position: fixed; width:26%; vertical-align:top;min-height: 300px;}
 div.side-menu-bar ul{padding: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
@@ -135,26 +140,39 @@ div.copy-privacy-likes ul li img{height: 30px;}
 #facebook-like,#twitter-follow{margin-right: 5px;}
 
 /***Sign In Popup***/
-#signing_popup{padding: 0px;}
-.signinDialog{width: 750px !important; min-height: 300px; z-index: 10010 !important; border: none; position: fixed; padding: 0 !important; background:#fff 50% top repeat-x; background-size: cover; overflow: initial; font-family: gothambook; color:#58595b !important;}
+#signing_popup,#invite_friends{padding: 0px;}
+.signinDialog{width: 750px !important; min-height: 300px; z-index: 10012 !important; border: none; position: fixed; padding: 0 !important; background:#fff 50% top repeat-x; background-size: cover; overflow: initial; font-family: gothambook; color:#58595b !important;}
 .sign-up-block,.sign-in-block{width: 280px; padding: 0 47.5px;}
 .sign-up-block{background: url("../images/popups/pop-up-divider.png") right no-repeat;}
-.signinDialog .ui-widget-header{border:none; background: none; font-weight: bold;}
-#sign-up-form table td,#sign-in-form table td{padding-bottom: 15px;}
+.signinDialog .ui-widget-header,.sharingDialog .ui-widget-header{border:none; background: none; font-weight: bold;}
+.sharingDialog .ui-widget-header{margin-top: -33px;}
+#sign-up-form table td,#sign-in-form table td,
+#invite-friend-form table td{padding-bottom: 15px;}
 /*#sign-up-form table label,#sign-in-form table label{width: 30%; float: left; word-wrap:break-word; line-height: 26px;}*/
-#sign-up-form table input,#sign-in-form table input{width: 100%; padding: 7px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+#sign-up-form table input,
+#sign-in-form table input,
+#invite-friend-form table input{width: 100%; padding: 7px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 #sign-up-button,#sign-in-button {cursor:pointer;}
 .err-msg{color:#D90D3D;}
-/****Flexslider next previous arror****/
-.flex-direction-nav .flex-prev{background: url("../images/homepage/previous-slide.png") no-repeat bottom; background-size:100% 100%; width:24px; height: 46px;}
-.flex-direction-nav .flex-next{background: url("../images/homepage/next-slide.png") no-repeat bottom; background-size:100% 100%; width:24px; height: 46px;}
-.signinDialog.ui-dialog .ui-dialog-titlebar-close{top: -0.2em; right: -1.2em; width: auto; height: auto; z-index: 500;}
-.signinDialog .ui-icon-closethick{background: url("../images/pop-close.png") no-repeat bottom; border:none; background-size: contain; width: 30px; height: 30px;}
-.signinDialog .ui-state-hover{border:none !important;background:none !important;padding:1px!important}
+.signinDialog.ui-dialog .ui-dialog-titlebar-close,
+.sharingDialog.ui-dialog .ui-dialog-titlebar-close{top: -0.2em; right: -1.2em; width: auto; height: auto; z-index: 500;}
+.sharingDialog.ui-dialog .ui-dialog-titlebar-close{top:2em;}
+.signinDialog .ui-icon-closethick,
+.sharingDialog .ui-icon-closethick{background: url("../images/pop-close.png") no-repeat bottom; border:none; background-size: contain; width: 30px; height: 30px;}
+.signinDialog .ui-state-hover,
+.sharingDialog .ui-state-hover{border:none !important;background:none !important;padding:1px!important}
 .form-heading{font-size: 22px;}
 .thank-you-block p{display: block; text-align: center; font-size: 36px; width: 100%; margin-top: 30px;}
 #sign-in-form a.forgot-link { font-family: HelvLightRegular; font-size: 11px; text-decoration: underline; color: #9B9B9B;}
 #sign-in-form a.forgot-link:hover{color:#cc0033;}
+
+/***Share with your friend popup***/
+.sharingDialog{width: 640px !important; min-height: 300px; z-index: 10011 !important; border: none; position: fixed; padding: 0 !important; background:#fff 50% top repeat-x; background-size: cover; overflow: initial; font-family: gothambook; color:#58595b !important;}
+.invite-left{width:260px; /*height:333px;*/ background-color: #ccc;}
+.invite-right{width:305px; padding:30px 37.5px 0;}
+#invite-friend-form{width: 285px; margin: 0 auto;}
+.smogi-love-msg{margin-bottom: 45px;}
+.mt100{margin-top: 100px; margin-bottom: 0;}
 
 /****First Time Pop Up Home page****/
 .firstdialog{z-index: 10003 !important;}
@@ -179,7 +197,7 @@ div.copy-privacy-likes ul li img{height: 30px;}
 .fab_text span.gold_divider img{width: auto !important; margin: 40px 0;}
 div.sub-fab{display: inline-block; margin: 0 15px; font-size: 28px; width:40%;}
 div.sub-fab img{width: 45% !important; display: block; margin:25px auto 0 auto;}
-.ui-widget-overlay { background: #777777 50% 50% repeat !important; opacity: .5;filter:Alpha(Opacity=50); }
+.ui-widget-overlay { background: #777777 50% 50% repeat !important; opacity: .5;filter:Alpha(Opacity=50); z-index: 100 !important; }
 .firstdialog{width: 500px !important; height: 500px !important;}
 #signup{height: 455px !important; padding: 0 !important;}
 #o_password{display: none;}
