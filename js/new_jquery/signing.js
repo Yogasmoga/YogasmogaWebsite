@@ -48,6 +48,8 @@ function createCustomerAccount()
 
             data = eval('('+data + ')');
             var status = data.status;
+            var name = data.fname;
+
             if(status == "success")
             {
                 // console.log(data.status);
@@ -55,6 +57,8 @@ function createCustomerAccount()
                 jQuery(".thank-you-block").removeClass("no-display");
                 _islogedinuser = true;
                 jQuery("#signin").html("SIGN OUT").attr({href:homeUrl+'customer/account/logout/',id:"sign-out"});
+                if(name != '')
+                    jQuery("#welcome-name").html(name);
                 setTimeout(function(){
                     jQuery("#signing_popup").dialog("close");                    
                 },2000);
@@ -100,6 +104,7 @@ function loginCustomer()
             data = eval('('+data + ')');
             var status = data.status;
             var error = data.error;
+            var name = data.fname;
 
             if(status == "success")
             {
@@ -107,6 +112,10 @@ function loginCustomer()
                 jQuery("#signing_popup").dialog( "close" );
                 jQuery(".signin-loader").html("");
                 _islogedinuser = true;
+                console.log(name);
+                if(name != '')
+                    jQuery("#welcome-name").html(name);
+
             }
             else
             {

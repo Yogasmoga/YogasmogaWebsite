@@ -2720,9 +2720,11 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         $response = array(
             "status" => 'error',
             "errors" => '',
+            "fname"  => '',
             "success_message" => ""
         );
         $errors = array();
+        $fname = $this->getRequest()->getPost('firstname') ;
         $session = Mage::getSingleton('customer/session');
         if ($session->isLoggedIn()) {
             array_push($errors, "Already Logged In");
@@ -2809,6 +2811,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         );
                         $response['success_message'] = 'Account confirmation is required. Please, check your email for the confirmation link. To resend the confirmation email please <a href="'.Mage::helper('customer')->getEmailConfirmationUrl($customer->getEmail()).'">click here</a>.';
                         $response['status'] = "success";
+                        $response['fname'] = $this->getRequest()->getPost('firstname')  ;
                         echo json_encode($response);
                         //$session->addSuccess($this->__('Account confirmation is required. Please, check your email for the confirmation link. To resend the confirmation email please <a href="%s">click here</a>.', Mage::helper('customer')->getEmailConfirmationUrl($customer->getEmail())));
                         //$this->_redirectSuccess(Mage::getUrl('*/*/index', array('_secure'=>true)));
@@ -2819,6 +2822,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $session->setCustomerAsLoggedIn($customer);
                         $response['success_message'] = "Registered Successfully";
                         $response['status'] = "success";
+                        $response['fname'] = $this->getRequest()->getPost('firstname') ;
 						
 						$write = Mage::getSingleton('core/resource')->getConnection('core_write');
                         $write->query("insert into signup_popup_user values(null,'".$customer->getId()."',now())");
@@ -2860,6 +2864,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         $response = array(
                     "status" => 'error',
                     "errors" => '',
+                    "fname"   => '',
                     "success_message" => ''
                 );
         $errors = array();
@@ -2880,6 +2885,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $this->_welcomeCustomer($session->getCustomer(), true);
 
                     }
+                    $response['fname'] =  $session->getCustomer()->getFirstname();
                     $response['status'] = "success";
                     echo json_encode($response);
                     return;
