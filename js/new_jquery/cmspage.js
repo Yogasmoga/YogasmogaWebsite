@@ -34,7 +34,7 @@ jQuery(document).ready(function($){
         event.preventDefault();
     });
     // check for click from top menu navigation for cms page
-    $("#cms-header-link").on("click","li",function(event){
+    $(".cms-header-link").on("click","li",function(event){
         $(".pg-content").html("<img class='cms-loader' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/loading1.gif' />");
         var blockid_data = $(this).attr("data-blockid");
         retrievecmsblockcontent(blockid_data);

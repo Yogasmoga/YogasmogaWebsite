@@ -3,12 +3,20 @@ jQuery(document).ready(function($){
     initializeinvitepopup();
     initializesigninpopup();
     adjustimg();
+    var winHeight = $(window).height();
+    $("div.2-columns-wrapper").find(".pg-content,.side-menu-bar").css("min-height", winHeight);    
+
 		$(".footer-block").on("click","#smogi-love",function(){
 			$("#signup").dialog( "open" );			
 		});
         $(".footer-block").on("click","#invite-friend",function(){
-
-            $("#invite_friends").dialog( "open" );
+            if((!_islogedinuser)||(!_isClickShareWithFriends)){
+                _flagForShareFriends = true;
+                $("#signing_popup").dialog( "open" );
+            }else{
+               $("#invite_friends").dialog( "open" ); 
+            }
+            
         });
         $(".right-top-block").on("click","ul.my-acnt li a",function(event){
             if(!_islogedinuser){
@@ -34,6 +42,7 @@ jQuery(document).ready(function($){
                         duration: 500
                     },
                     open: function( event, ui ) {
+                        $(".ui-widget-overlay").css("z-index","100");
                         $("input#pfirstname").blur();
                         $(".ui-widget-overlay").css({top:80});
                         $(window).trigger("resize");
@@ -71,6 +80,7 @@ jQuery(document).ready(function($){
                 duration: 500
             },
             open: function( event, ui ) {
+                $(".ui-widget-overlay").css("z-index","100");
                 $("input#friendname").blur();                
                 $(".ui-widget-overlay").css({top:80});
                 $(window).trigger("resize");
@@ -106,7 +116,14 @@ jQuery(document).ready(function($){
                 effect: "fade",
                 duration: 500
             },
-            open: function( event, ui ) {                
+            open: function( event, ui ) {
+                $(".ui-widget-overlay").css("z-index","100");
+                if($("#signup").dialog( "isOpen" ) == true ){
+                    $("#signup").dialog( "close" );
+                }
+                if($("#invite_friends").dialog( "isOpen" ) == true){
+                    $("#invite_friends").dialog( "close" );
+                }                  
                 $("#sign-up-form input#fname").blur();
                 $("#sign-up-form #s_password,#sign-in-form #si_password").focus().blur();
                 $(".ui-widget-overlay").css({top:80});

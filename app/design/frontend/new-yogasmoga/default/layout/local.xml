@@ -25,6 +25,7 @@
     <action method="addJs"><script>new_jquery/cmspage.js</script></action>
     <action method="addJs"><script>new_jquery/signing.js</script></action>
     <action method="addJs"><script>new_jquery/popupformvalidation.js</script></action>
+    <action method="addJs"><script>new_jquery/sharewithfriend.js</script></action>
     
 </reference>
 

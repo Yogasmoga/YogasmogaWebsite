@@ -641,11 +641,15 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
     public function referfriendAction()
     {
+
         if ($this->getRequest()->isPost() && $this->getRequest()->getPost('email')) {
             $session         = Mage::getSingleton('core/session');
             $emails           = $this->getRequest()->getPost('email'); //trim((string) $this->getRequest()->getPost('email'));
             $names            = $this->getRequest()->getPost('name'); //trim((string) $this->getRequest()->getPost('name'));
             $id = $this->getRequest()->getPost('id');
+
+            $email           = trim((string) $this->getRequest()->getPost('email')); //trim((string) $this->getRequest()->getPost('email'));
+            $name            = trim((string) $this->getRequest()->getPost('name'));
 
             $arr['message'] = "";
             $arr['status'] = "error";
@@ -653,9 +657,9 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             $customerSession = Mage::getSingleton('customer/session');
             //$errors = array();
             try {
-                foreach ($emails as $key_email => $email){
-                    $name = trim((string) $names[$key_email]);
-                    $email = trim((string) $email);
+//                foreach ($emails as $key_email => $email){
+//                    $name = trim((string) $names[$key_email]);
+//                    $email = trim((string) $email);
 
                     ///////////////////////////////////////////
                     $no_errors = true;
@@ -728,7 +732,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         return;
                     }
                     ///////////////////////////////////////////
-                }
+       //         }  end foreach
             }
             catch (Mage_Core_Exception $e) {
                 Mage::log('|'.$from."|Error|".$customer->getEmail()."|".$email."|".$e->getMessage(),null,'referlog.log');

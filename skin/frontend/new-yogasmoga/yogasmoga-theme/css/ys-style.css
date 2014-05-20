@@ -132,12 +132,13 @@ ul.site-map > li a{color: #58595b; font-size: 11px;}
 ul.site-map ul.social-icons {margin-top: 4px;}
 ul.site-map ul.social-icons li{display: inline-block; margin: 0 3px;}
 div.copy-privacy-likes{margin-top: 70px; margin-bottom: 35px;}
-div.copy-privacy-likes ul li{display: inline-block; font-size: 11px; color: #58595b; vertical-align: middle;}
+div.copy-privacy-likes ul li{display: inline-block; font-size: 11px; color: #58595b; vertical-align: top;}
 div.copy-privacy-likes ul li:first-child{margin-left: 5px;}
 div.copy-privacy-likes ul li a{font-size: 11px; color: #58595b}
 div.copy-privacy-likes ul li img{height: 30px;}
 .block3 img,.block4 img{width: 100%;}
 #facebook-like,#twitter-follow{margin-right: 5px;}
+.pt1{padding-top: 1px;}
 
 /***Sign In Popup***/
 #signing_popup,#invite_friends{padding: 0px;}
@@ -173,6 +174,7 @@ div.copy-privacy-likes ul li img{height: 30px;}
 #invite-friend-form{width: 285px; margin: 0 auto;}
 .smogi-love-msg{margin-bottom: 45px;}
 .mt100{margin-top: 100px; margin-bottom: 0;}
+.invite-message{font-size: 18px;}
 
 /****First Time Pop Up Home page****/
 .firstdialog{z-index: 10003 !important;}
