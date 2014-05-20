@@ -237,6 +237,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 
 /** womenSection **/
 .clip-bg{background: url("../images/women/clip-bg.png") no-repeat right -6px, url("../images/big-divider.png") no-repeat center bottom / 100% auto rgba(0, 0, 0, 0); font-family: "ITCAvantGardeProMd", Arial; color: #58595B;}
+.featured-product{}
 
 /** textWomen **/
 .contWom h4{font-size: 20px; color: #DE8A23; margin: 40px 0;}
@@ -251,11 +252,11 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .figure > img{width: 100%;}
 
 /** colorStoryDiv **/
-.divider-btm{background: url("../images/big-divider.png") no-repeat center bottom / 100% auto rgba(0, 0, 0, 0);}
+.divider-btm{background: url("../images/big-divider.png") no-repeat center bottom; background-size: 100% auto;}
 .divider-btm .contWom{padding: 40px 0 10px;}
 .divider-btm .contWom h4{margin-top: 0;}
 .clrImg{width: 66%; display: inline-block; float: right; text-align: left;}
-.clrtxt{width: 34%; display: inline-block; text-align: left;}
+.clrtxt{width: 34%; display: inline-block; text-align: left; float: left;}
 
 /** Product Listing Page **/
 .bannerFluid img, .bannerFluid{width: 100%; padding-bottom: 27px; position: relative;}
@@ -282,3 +283,5 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .productCont .caption{display: block; font: bold 11px/16px gotham; margin: 30px 0 0; text-transform: uppercase;}
 .productCont .caption span{display: block;font-weight: normal;}
 .productCont .prod-img{width: 100%;}
+.ftr-txt{float: left; display: inline-block; width: 47%; text-align: left;}
+.ftr-img{display: inline-block; float: right; width: 32%;}
