@@ -142,7 +142,7 @@ div.copy-privacy-likes ul li img{height: 30px;}
 
 /***Sign In Popup***/
 #signing_popup,#invite_friends{padding: 0px;}
-.signinDialog{width: 750px !important; min-height: 300px; z-index: 10012 !important; border: none; position: fixed; padding: 0 !important; background:#fff 50% top repeat-x; background-size: cover; overflow: initial; font-family: gothambook; color:#58595b !important;}
+.signinDialog{width: 750px !important; min-height: 300px;/* z-index: 10012 !important;*/ border: none; position: fixed; padding: 0 !important; background:#fff 50% top repeat-x; background-size: cover; overflow: initial; font-family: gothambook; color:#58595b !important;}
 .sign-up-block,.sign-in-block{width: 280px; padding: 0 47.5px;}
 .sign-up-block{background: url("../images/popups/pop-up-divider.png") right no-repeat;}
 .signinDialog .ui-widget-header,.sharingDialog .ui-widget-header{border:none; background: none; font-weight: bold;}
@@ -168,7 +168,7 @@ div.copy-privacy-likes ul li img{height: 30px;}
 #sign-in-form a.forgot-link:hover{color:#cc0033;}
 
 /***Share with your friend popup***/
-.sharingDialog{width: 640px !important; min-height: 300px; z-index: 10011 !important; border: none; position: fixed; padding: 0 !important; background:#fff 50% top repeat-x; background-size: cover; overflow: initial; font-family: gothambook; color:#58595b !important;}
+.sharingDialog{width: 640px !important; min-height: 300px; /*z-index: 10011 !important;*/ border: none; position: fixed; padding: 0 !important; background:#fff 50% top repeat-x; background-size: cover; overflow: initial; font-family: gothambook; color:#58595b !important;}
 .invite-left{width:260px; /*height:333px;*/ background-color: #ccc;}
 .invite-right{width:305px; padding:30px 37.5px 0;}
 #invite-friend-form{width: 285px; margin: 0 auto;}
@@ -177,7 +177,7 @@ div.copy-privacy-likes ul li img{height: 30px;}
 .invite-message{font-size: 18px;}
 
 /****First Time Pop Up Home page****/
-.firstdialog{z-index: 10003 !important;}
+/*.firstdialog{z-index: 10003 !important;}*/
 .firstdialog { border: none; position: fixed; padding: 0 !important; background: transparent url("/skin/frontend/yogasmoga/yogasmoga-theme/images/popup_bg_circle.png") 50% top repeat-x ; background-size: cover ; }
 .firstdialog .ui-widget-header { border:none; background: none; font-weight: bold; }
 .firstdialog .ui-dialog-titlebar-close{right: 7.3em ; top: 100% ; width: auto ; height: auto ; z-index: 500;}

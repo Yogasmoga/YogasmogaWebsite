@@ -221,13 +221,16 @@ if($serverType == 'production')
                                 data = eval('('+data + ')');
                                 var status = data.status;
                                 var errors = data.errors;
+                                var name = data.fname;
                                 if(status == "success")
                                 {
                                     // $( "#signup" ).dialog("close");
                                     $("#sign_up_box").hide();
                                     $("#thank_you_box").show();
-
-
+                                    _islogedinuser = true;
+                                    $("#signin").html("SIGN OUT").attr({href:homeUrl+'customer/account/logout/',id:"sign-out"});
+                                    if(name != '')
+                                    $("#welcome-name").html(name);
                                     $('.topmenulinks').html($('.topmenulinks').html().replace('Log In','MY ACCOUNT'));
                                     $( "#signup" ).dialog({
                                         close : function( event, ui ) {
