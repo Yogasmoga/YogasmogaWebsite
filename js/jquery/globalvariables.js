@@ -59,3 +59,5 @@ var _orderRevenueCheckout = '';
 var _isOnProductDetailPage = false; // check for product on product detail page
 var _checksinghupformsubmit = false;
 var _islogedinuser = false; // check if user is logged in
+var _isClickShareWithFriends = false;  // check if click on share with friends
+var _flagForShareFriends = false;

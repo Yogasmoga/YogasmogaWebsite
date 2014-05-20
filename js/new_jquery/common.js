@@ -10,9 +10,9 @@ jQuery(document).ready(function($){
 			$("#signup").dialog( "open" );			
 		});
         $(".footer-block").on("click","#invite-friend",function(){
-            if(!_islogedinuser){
-                event.preventDefault();
-                $("#signing_popup").dialog( "open" );                
+            if((!_islogedinuser)||(!_isClickShareWithFriends)){
+                _flagForShareFriends = true;
+                $("#signing_popup").dialog( "open" );
             }else{
                $("#invite_friends").dialog( "open" ); 
             }
@@ -41,7 +41,8 @@ jQuery(document).ready(function($){
                         effect: "fade",
                         duration: 500
                     },
-                    open: function( event, ui ) {                        
+                    open: function( event, ui ) {
+                        $(".ui-widget-overlay").css("z-index","100");
                         $("input#pfirstname").blur();
                         $(".ui-widget-overlay").css({top:80});
                         $(window).trigger("resize");
@@ -78,7 +79,8 @@ jQuery(document).ready(function($){
                 effect: "fade",
                 duration: 500
             },
-            open: function( event, ui ) {                
+            open: function( event, ui ) {
+                $(".ui-widget-overlay").css("z-index","100");
                 $("input#friendname").blur();                
                 $(".ui-widget-overlay").css({top:80});
                 $(window).trigger("resize");
@@ -115,6 +117,7 @@ jQuery(document).ready(function($){
                 duration: 500
             },
             open: function( event, ui ) {
+                $(".ui-widget-overlay").css("z-index","100");
                 if($("#signup").dialog( "isOpen" ) == true ){
                     $("#signup").dialog( "close" );
                 }

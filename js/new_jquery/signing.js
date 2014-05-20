@@ -57,11 +57,17 @@ function createCustomerAccount()
                 jQuery(".thank-you-block").removeClass("no-display");
                 _islogedinuser = true;
                 jQuery("#signin").html("SIGN OUT").attr({href:homeUrl+'customer/account/logout/',id:"sign-out"});
+
                 if(name != '')
                     jQuery("#welcome-name").html(name);
                 setTimeout(function(){
                     jQuery("#signing_popup").dialog("close");                    
                 },2000);
+                if(_flagForShareFriends)
+                {
+                    _isClickShareWithFriends = true;
+                    jQuery("#invite_friends").dialog( "open" );
+                }
 
     console.log("success");
             }
@@ -115,6 +121,12 @@ function loginCustomer()
                 console.log(name);
                 if(name != '')
                     jQuery("#welcome-name").html(name);
+                if(_flagForShareFriends)
+                {
+                    _isClickShareWithFriends = true;
+                    jQuery("#invite_friends").dialog( "open" );
+                }
+
 
             }
             else
