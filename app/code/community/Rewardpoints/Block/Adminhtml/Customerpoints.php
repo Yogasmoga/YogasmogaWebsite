@@ -62,6 +62,7 @@ class Rewardpoints_Block_Adminhtml_Customerpoints extends Mage_Adminhtml_Block_W
             'format' => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
             'required'  => true,
             'class'     => 'validate-date',
+            'value'     => date('m/d/Y', Mage::getModel('core/date')->timestamp(time()))
         ));
 
         $fieldset->addField('date_end', 'date', array(
@@ -72,6 +73,7 @@ class Rewardpoints_Block_Adminhtml_Customerpoints extends Mage_Adminhtml_Block_W
             'format' => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
             'required'  => true,
             'class'     => 'validate-date',
+            'value'     => date('m/d/Y', strtotime(" + ".Mage::getStoreConfig('rewardpoints/default/points_duration')." days", Mage::getModel('core/date')->timestamp(time())))
         ));
 
 
