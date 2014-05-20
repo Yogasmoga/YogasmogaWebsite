@@ -10,8 +10,13 @@ jQuery(document).ready(function($){
 			$("#signup").dialog( "open" );			
 		});
         $(".footer-block").on("click","#invite-friend",function(){
-
-            $("#invite_friends").dialog( "open" );
+            if(!_islogedinuser){
+                event.preventDefault();
+                $("#signing_popup").dialog( "open" );                
+            }else{
+               $("#invite_friends").dialog( "open" ); 
+            }
+            
         });
         $(".right-top-block").on("click","ul.my-acnt li a",function(event){
             if(!_islogedinuser){

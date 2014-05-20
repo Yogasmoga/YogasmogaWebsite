@@ -41,13 +41,14 @@ function sharewithfriend()
             var message = data.message;
             if(status == "success")
             {
-                jQuery("#invite-friend-form").addClass("no-display");
-                jQuery(".smogi-love-msg").html("Thank you for sharing SMOGI Love").addClass("mt100");
+                jQuery(".invite-form").addClass("no-display");
+                jQuery(".invite-message").removeClass("no-display");                
                 setTimeout(function(){
                     jQuery("#invite_friends").dialog("close");
                     jQuery("#invite_friends").dialog({
                         close : function(event,ui){
-                           
+                            jQuery(".invite-message").addClass("no-display");
+                            jQuery(".invite-form").removeClass("no-display"); 
                         }
                     });
                 },2000);
