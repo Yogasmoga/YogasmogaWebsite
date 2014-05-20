@@ -213,9 +213,9 @@ ul.new-arrivals li img.prd-image{width: 90%;}
 .prd-details{margin-top: 30px;}
 .prd-details .prd-price{margin-bottom: 10px;}
 li.new-arrivals-desc{text-align: left; font-family: ITCAvantGardeProMd; margin-top: 0 !important;}
-li.new-arrivals-desc .block-head{margin-bottom: 5px; font-size: 20px;}
-li.new-arrivals-desc .block-desc{margin-bottom: 25px; font-size: 32px;}
-li.new-arrivals-desc .block-link a{font-family: ITCAvantGardeProMd; font-size: 16px;}
+li.new-arrivals-desc .block-head, .block-head{margin-bottom: 5px; font-size: 20px;}
+li.new-arrivals-desc .block-desc, .block-desc{margin-bottom: 25px; font-size: 32px;}
+li.new-arrivals-desc .block-link a, .block-link a{font-family: ITCAvantGardeProMd; font-size: 16px;}
 
 /** YS-Tech Section **/
 .discImg{margin: 40px 0 20px;}
@@ -232,3 +232,22 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .cntnt-nav{font-size: 17px; padding: 20px 20px 0; width: 73%;}
 .cntnt-nav > p{margin: 0 0 5px;}
 .cntnt-nav > p:last-child{margin: 0 0 15px;}
+
+/** womenSection **/
+.clip-bg{background: url("../images/women/clip-bg.png") no-repeat right -6px, url("../images/big-divider.png") no-repeat center bottom; font-family: "ITCAvantGardeProMd", Arial; color: #58595B;}
+
+/** textWomen **/
+.contWom h4{font-size: 20px; color: #DE8A23; margin: 40px 0;}
+.contWom h4 span{font-size: 35px; line-height: 42px; display: block; color: #58595B; margin: 10px 0 0;}
+.contWom p{font-size: 21px; margin-bottom: 20px;}
+.contWom p.block-link a{font-family: ITCAvantGardeProMd; font-size: 16px;}
+
+/** colorStory IMG Section **/
+.figCap{width: 373px; float: left; margin: 0 0 0 22px; }
+.figCap span{display: block; padding: 40px 0 30px; font-size: 13px; color: #666;}
+.figCap .figure{background: #d7ea98; width: 100%; height: 266px;}
+
+/** colorStoryDiv **/
+.divider-btm{background: url("../images/big-divider.png") no-repeat center bottom;}
+.divider-btm .contWom{padding: 40px 0 10px;}
+.divider-btm .contWom h4{margin-top: 0;}
