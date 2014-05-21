@@ -245,14 +245,46 @@
                 <div class="clear-fix"></div>
 
                 <!-- ProductListing Part -->
+
+
                 <div class="new-arrivals-block" style="width:90%; margin:0 auto;">                    
                     <ul class="new-arrivals">
-                        <li>
+                        <?php
+                        //retrieve color
+                        $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                        $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
+                        while ($row = $readresult->fetch() ) {
+                            $clrinfo[$row['Value']] = $row['Attribute'];
+                        }
+
+                        $categoryId = 9;
+                        $i = 0;
+                        $productCollection = Mage::getSingleton('catalog/category')->load($categoryId)->getProductCollection()->addAttributeToSelect('*');
+                        foreach($productCollection as $_product)
+                        {
+                            if($i==4)break;$i++;
+                         ?>
+                            <li>
+                                <a href="<?php echo $_product->getProductUrl() ?>"><img class="prd-image" src="<?php  echo $this->getSkinUrl('images/women/dum1.jpg')  //echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(221, 330)->setQuality(91); ?>" /></a>
+
+
+                                <div class="prd-details">
+                                    <a href = "<?php echo $_product->getProductUrl(); ?>"><span class="prd-name gothambd"><?php echo $_product->getName(); ?></span> </a>
+                                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
+                                    <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2);; ?></span>
+                                    <a href ="<?php echo $_product->getProductUrl();?>"> <img class="" src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" alt=""/> </a>
+                                </div>
+                            </li>
+                       <?php
+                        }
+
+                        ?>
+                        <?php /* <li>
                             <img class="prd-image" src="<?php echo $this->getSkinUrl('images/women/dum1.jpg') ?>" alt="">
                             <div class="prd-details">
                                 <span class="prd-name gothambd">Product 1</span>
                                 <span class="product-colors gothambk">Color1 / Color2</span>
-                                <span class="prd-price gothambk">$00</span>                                
+                                <span class="prd-price gothambk">$00</span>
                                 <img class="" src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" alt="">
                             </div>
                         </li>
@@ -261,7 +293,7 @@
                             <div class="prd-details">
                                 <span class="prd-name gothambd">Product 1</span>
                                 <span class="product-colors gothambk">Color1 / Color2</span>
-                                <span class="prd-price gothambk">$00</span>                                
+                                <span class="prd-price gothambk">$00</span>
                                 <img class="" src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" alt="">
                             </div>
                         </li>
@@ -270,7 +302,7 @@
                             <div class="prd-details">
                                 <span class="prd-name gothambd">Product 1</span>
                                 <span class="product-colors gothambk">Color1 / Color2</span>
-                                <span class="prd-price gothambk">$00</span>                                
+                                <span class="prd-price gothambk">$00</span>
                                 <img class="" src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" alt="">
                             </div>
                         </li>
@@ -279,16 +311,17 @@
                             <div class="prd-details">
                                 <span class="prd-name gothambd">Product 1</span>
                                 <span class="product-colors gothambk">Color1 / Color2</span>
-                                <span class="prd-price gothambk">$00</span>                                
+                                <span class="prd-price gothambk">$00</span>
                                 <img class="" src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" alt="">
                             </div>
-                        </li>
+                        </li> */
+                        ?>
                         <li class="new-arrivals-desc">
                             <p class="block-head">NEW ARRIVALS</p>
                             <p class="block-desc">SPRING IS IN.</p>
                             <p class="block-link">
                                 <a href="" class="grey">SHOP COLLECTION <strong class="in-bl">>>></strong></a>
-                            </p>   
+                            </p>
                         </li>
                     </ul>                    
                 </div>                

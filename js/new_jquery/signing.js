@@ -59,17 +59,16 @@ function createCustomerAccount()
                 jQuery("#signin").html("SIGN OUT").attr({href:homeUrl+'customer/account/logout/',id:"sign-out"});
 
                 if(name != '')
-                    jQuery("#welcome-name").html(name);
+                    jQuery("#welcome-name").html("Hi "+name);
                 setTimeout(function(){
                     jQuery("#signing_popup").dialog("close");                    
                 },2000);
-                if(_flagForShareFriends)
+                if(_isClickShareWithFriends)
                 {
-                    _isClickShareWithFriends = true;
                     jQuery("#invite_friends").dialog( "open" );
                 }
 
-    console.log("success");
+
             }
             else
             {
@@ -118,15 +117,12 @@ function loginCustomer()
                 jQuery("#signing_popup").dialog( "close" );
                 jQuery(".signin-loader").html("");
                 _islogedinuser = true;
-                console.log(name);
                 if(name != '')
-                    jQuery("#welcome-name").html(name);
-                if(_flagForShareFriends)
+                    jQuery("#welcome-name").html("Hi "+name);
+                if(_isClickShareWithFriends)
                 {
-                    _isClickShareWithFriends = true;
                     jQuery("#invite_friends").dialog( "open" );
                 }
-
 
             }
             else
