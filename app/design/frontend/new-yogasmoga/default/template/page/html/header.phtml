@@ -318,9 +318,11 @@ if($serverType == 'production')
                     if ($child1->getIsActive()) {
                         //show Main parent categories first level
                         if($child1->getId() == $currentcategoryid)
-                            echo "<li><a class='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+                           // echo "<li><a class='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+                        echo "<li><a class='menu-heading' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
                         else
-                            echo "<li><a class ='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+                            //echo "<li><a class ='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+                            echo "<li><a class='menu-heading' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
                         // show sub categories second level
 
 //                        echo '<ul class="sub-menu"><li><ul><li><a href="">What\'s new!</a></li><li><a href="">Shop the colors!</a></li><li><a href="">Top sellers</a></li>

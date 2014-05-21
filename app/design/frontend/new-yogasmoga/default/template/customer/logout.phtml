@@ -24,7 +24,17 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<script type="text/javascript">
+    if (document.cookie.indexOf("_flagForShareFriends") >= 0)
+        document.cookie ='_flagForShareFriends=false';
+    if (document.cookie.indexOf("_islogedinuser") >= 0)
+        document.cookie ='_islogedinuser=false';
+    if (document.cookie.indexOf("_isClickShareWithFriends") >= 0)
+        document.cookie ='_isClickShareWithFriends=false';
+</script>
 <?php
+
+
    Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl());
 ?>
 <?php /*
