@@ -48,7 +48,11 @@ function sharewithfriend()
                     jQuery("#invite_friends").dialog({
                         close : function(event,ui){
                             jQuery(".invite-message").addClass("no-display");
-                            jQuery(".invite-form").removeClass("no-display"); 
+                            jQuery(".invite-form").removeClass("no-display");
+                            jQuery("#invite-friend-form .form-loader").hide();
+                            jQuery("#send-invite").parent().show();
+                            jQuery("#invite-friend-form input").val("").focus().blur();
+
                         }
                     });
                 },2000);

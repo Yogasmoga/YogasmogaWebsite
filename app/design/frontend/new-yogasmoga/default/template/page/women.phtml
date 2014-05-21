@@ -250,6 +250,13 @@
                 <div class="new-arrivals-block" style="width:90%; margin:0 auto;">                    
                     <ul class="new-arrivals">
                         <?php
+                        //retrieve color
+                        $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                        $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
+                        while ($row = $readresult->fetch() ) {
+                            $clrinfo[$row['Value']] = $row['Attribute'];
+                        }
+
                         $categoryId = 9;
                         $i = 0;
                         $productCollection = Mage::getSingleton('catalog/category')->load($categoryId)->getProductCollection()->addAttributeToSelect('*');
@@ -262,8 +269,8 @@
 
 
                                 <div class="prd-details">
-                                    <a href = "<?php echo $_product->getProductUrl(); ?>"<span class="prd-name gothambd"><?php echo $_product->getName(); ?></span> </a>
-                                    <span class="product-colors gothambk"><?php echo $_product->getColor(); ?></span>
+                                    <a href = "<?php echo $_product->getProductUrl(); ?>"><span class="prd-name gothambd"><?php echo $_product->getName(); ?></span> </a>
+                                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
                                     <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2);; ?></span>
                                     <a href ="<?php echo $_product->getProductUrl();?>"> <img class="" src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" alt=""/> </a>
                                 </div>

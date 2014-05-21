@@ -230,7 +230,7 @@ if($serverType == 'production')
                                     _islogedinuser = true;
                                     $("#signin").html("SIGN OUT").attr({href:homeUrl+'customer/account/logout/',id:"sign-out"});
                                     if(name != '')
-                                    $("#welcome-name").html(name);
+                                    $("#welcome-name").html("Hi "+name);
                                     $('.topmenulinks').html($('.topmenulinks').html().replace('Log In','MY ACCOUNT'));
                                     $( "#signup" ).dialog({
                                         close : function( event, ui ) {
@@ -436,7 +436,7 @@ if($serverType == 'production')
                         <?php
                             }
                         ?>
-                        <a id="welcome-name" href="javascript:void(0);"><?php if($islogedinuser)echo $firstname;else echo "My Account";  ?></a>
+                        <a id="welcome-name" href="javascript:void(0);"><?php if($islogedinuser)echo "Hi ".$firstname;else echo "My Account";  ?></a>
                         <ul class="sub-menu l-align my-acnt" style="left: -50px;">
                             <li class="blank"></li>
                             <li style="padding-top: 16px;"><a href="<?php echo $this->getBaseUrl()."sales/order/history/"; ?>">track order</a></li>
