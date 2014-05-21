@@ -236,7 +236,8 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .cntnt-nav > p:last-child{margin: 0 0 15px;}
 
 /** womenSection **/
-.clip-bg{background: url("../images/women/clip-bg.png") no-repeat right -6px, url("../images/big-divider.png") no-repeat center bottom; font-family: "ITCAvantGardeProMd", Arial; color: #58595B;}
+.clip-bg{background: url("../images/women/clip-bg.png") no-repeat right -6px, url("../images/big-divider.png") no-repeat center bottom / 100% auto rgba(0, 0, 0, 0); font-family: "ITCAvantGardeProMd", Arial; color: #58595B;}
+.featured-product{}
 
 /** textWomen **/
 .contWom h4{font-size: 20px; color: #DE8A23; margin: 40px 0;}
@@ -245,11 +246,42 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .contWom p.block-link a{font-family: ITCAvantGardeProMd; font-size: 16px;}
 
 /** colorStory IMG Section **/
-.figCap{width: 373px; float: left; margin: 0 0 0 22px; }
+.figCap{width: 45%; float: left; margin: 0 0 0 22px; }
 .figCap span{display: block; padding: 40px 0 30px; font-size: 13px; color: #666;}
-.figCap .figure{background: #d7ea98; width: 100%; height: 266px;}
+.figCap .figure{background: #d7ea98; width: 100%; height: auto;}
+.figure > img{width: 100%;}
 
 /** colorStoryDiv **/
-.divider-btm{background: url("../images/big-divider.png") no-repeat center bottom;}
+.divider-btm{background: url("../images/big-divider.png") no-repeat center bottom; background-size: 100% auto;}
 .divider-btm .contWom{padding: 40px 0 10px;}
 .divider-btm .contWom h4{margin-top: 0;}
+.clrImg{width: 66%; display: inline-block; float: right; text-align: left;}
+.clrtxt{width: 34%; display: inline-block; text-align: left; float: left;}
+
+/** Product Listing Page **/
+.bannerFluid img, .bannerFluid{width: 100%; padding-bottom: 27px; position: relative;}
+.bannerFluid img{padding-bottom: 0;}
+.bannerFluid .bnrtxt{color: #fff; font: bold 48px ITCAvantGardeProMd; position: absolute; top: 175px; left: 85px;}
+.product-grid .side-menu-bar{position: inherit;}
+.product-grid .side-menu-bar{width: 20%}
+.product-grid{display: inline-block;}
+
+/** Product Heading **/
+.product-grid h4{background: url("../images/divider-sml.png") no-repeat center bottom; font: normal 18px gothambold; color: #58595b; padding: 15px 0 40px; margin: 0 0 77px; text-transform: uppercase;}
+
+/** categoryList Nav **/
+.categorylinks{margin:50px 0 0; float: left; list-style-type: none;}
+.categorylinks li, .categorylinks li a{font: normal 14px/24px gotham, arial !important; color: #58595b;}
+.categorylinks li.sub-head{margin: 30px 0 0;}
+.categorylinks li.sub-head > a, .categorylinks li a.bld{font-weight: bold !important;}
+.categorylinks .subnav{padding: 0;}
+.subnav > li{line-height: 20px;}
+.sub-head.current > a{color: #CC0033;}
+
+/** ProductsCotainer **/
+.productCont{min-height: 420px; display: inline-block; margin: 0 34px 50px;}
+.productCont .caption{display: block; font: bold 11px/16px gotham; margin: 30px 0 0; text-transform: uppercase;}
+.productCont .caption span{display: block;font-weight: normal;}
+.productCont .prod-img{width: 100%;}
+.ftr-txt{float: left; display: inline-block; width: 47%; text-align: left;}
+.ftr-img{display: inline-block; float: right; width: 32%;}
