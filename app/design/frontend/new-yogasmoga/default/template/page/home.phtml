@@ -291,6 +291,18 @@
                             </div>
                             <div class="block-text2 l-align">
                                 <p class="bracelet-count white">995</p>
+                                <?php
+                                $_product = Mage::getModel('catalog/product')->load(704);
+                                $sku = nl2br($_product->getSku());
+                                $product = Mage::getResourceModel('reports/product_collection')
+                                    ->addOrderedQty()
+                                    ->addAttributeToFilter('sku', $sku)
+                                    ->setOrder('ordered_qty', 'desc')
+                                    ->getFirstItem();
+
+                                echo 'Already Bought '.(int)$product->getOrderedQty();
+
+                                ?>
                                 <span class="white">BRACELETS SOLD</span>                                
                                 <p class="block-link">
                                     <a href="" class="white">Learn More <span>>>></span></a>
