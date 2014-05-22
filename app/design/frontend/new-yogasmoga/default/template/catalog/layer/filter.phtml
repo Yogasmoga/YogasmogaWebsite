@@ -31,6 +31,51 @@
  * @see Mage_Catalog_Block_Layer_Filter
  */
 ?>
+<?php
+$hasnosubcategoryhtml  = '';
+$withsubcategoryhtml = '';
+
+foreach ($this->getItems() as $_item){
+    $qry = parse_url($_item->getUrl(), PHP_URL_QUERY);
+    parse_str($qry, $params);
+    //print_r($params);die;
+    $searchtype = "";
+    $searchvalue = "";
+    foreach($params as $key=>$value)
+    {
+        $searchtype = $key;
+        $searchvalue = $value;
+    }
+    //echo $searchvalue.'--';
+    if($searchtype=="cat")
+    {
+
+        $subsubcategory = Mage::getModel('catalog/category')->load($searchvalue);
+        $subsubcategories = $subsubcategory->getChildrenCategories();
+        if($subsubcategory->getChildrenCount() == 0){
+             $hasnosubcategoryhtml .= $subsubcategory->getName().'--';
+        }else{
+            $withsubcategoryhtml .= $subsubcategory->getName().'-->';
+            foreach ($subsubcategories as $child3)
+                    {
+                        if($child3->getIsActive()) {
+                            $withsubcategoryhtml .= $child3->getName().'----';
+
+                        }
+                    }
+        }
+
+
+
+    }
+
+
+ }echo $hasnosubcategoryhtml;echo $withsubcategoryhtml; die;?>
+
+
+
+
+
 
 
 <?php foreach ($this->getItems() as $_item){ 
