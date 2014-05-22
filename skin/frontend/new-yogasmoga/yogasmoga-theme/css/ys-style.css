@@ -128,6 +128,7 @@ div.side-menu-bar ul li a.current span.arr,div.side-menu-bar ul li a:hover span.
 ul.site-map > li{color:#58595b; display: inline-block; vertical-align: top; text-align: left; width: 14.5%; margin:0 5px; word-wrap:break-word; }
 ul.site-map > li:first-child{}
 ul.site-map > li a{color: #58595b; font-size: 11px;}
+ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #CC0033; text-decoration: underline;}
 .online-status-icon{vertical-align: middle;}
 ul.site-map ul.social-icons {margin-top: 4px;}
 ul.site-map ul.social-icons li{display: inline-block; margin: 0 3px;}
@@ -139,6 +140,16 @@ div.copy-privacy-likes ul li img{height: 30px;}
 .block3 img,.block4 img{width: 100%;}
 #facebook-like,#twitter-follow{margin-right: 5px;}
 .pt1{padding-top: 1px;}
+.fb-icon, .twtr-icon, .pin-icon, .insta-icon{background: url("../images/footer/fb-icon.png") no-repeat center top; display: inline-block; height: 21px; width: 12px; margin-top: 5px;}
+.twtr-icon{width: 25px; background-image: url("../images/footer/tw-icon.png");}
+.insta-icon{width: 21px; background-image: url("../images/footer/insta-icon.png");}
+.pin-icon{width: 21px; background-image: url("../images/footer/pin-icon.png");}
+
+.fb-icon:hover{background-image: url("../images/footer/fb-icon-ovr.png");}
+.twtr-icon:hover{background-image: url("../images/footer/tw-icon-ovr.png");}
+.insta-icon:hover{background-image: url("../images/footer/insta-icon-ovr.png");}
+.pin-icon:hover{background-image: url("../images/footer/pin-icon-ovr.png");}
+
 
 /***Sign In Popup***/
 #signing_popup,#invite_friends{padding: 0px;}
@@ -215,8 +226,8 @@ ul.new-arrivals li img.prd-image{width: 90%;}
 .prd-details{margin-top: 30px;}
 .prd-details .prd-price{margin-bottom: 10px;}
 li.new-arrivals-desc{text-align: left; font-family: ITCAvantGardeProMd; margin-top: 0 !important;}
-li.new-arrivals-desc .block-head, .block-head{margin-bottom: 5px; font-size: 20px;}
-li.new-arrivals-desc .block-desc, .block-desc{margin-bottom: 25px; font-size: 32px;}
+li.new-arrivals-desc .block-head{margin-bottom: 5px; font-size: 20px;}
+li.new-arrivals-desc .block-desc{margin-bottom: 25px; font-size: 32px;}
 li.new-arrivals-desc .block-link a, .block-link a{font-family: ITCAvantGardeProMd; font-size: 16px;}
 
 /** YS-Tech Section **/
@@ -283,10 +294,10 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .productCont .prod-img{width: 100%;}
 
 /** Product Details Page **/
-.block-elm.btm-devider, .block-elm.btm-devider-big, .block-head, .product-details h2{background: url("../images/big-divider.png") no-repeat center bottom; background-size: 100% auto;}
+.block-elm.btm-devider, .block-elm.btm-devider-big, .product-details .block-head, .product-details h2{background: url("../images/big-divider.png") no-repeat center bottom; background-size: 100% auto;}
 .block-elm.btm-devider{padding-bottom: 40px;}
-.block-head, .product-details h2{font: normal 25px gothambold; color: #58595B; text-align: center; text-transform: uppercase; padding: 0 0 20px; margin: 0 0 35px;}
-.block-head{margin-bottom: 90px;}
+.product-details .block-head{margin-bottom: 90px; text-transform: uppercase; font: 18px gothambold; padding: 4px 0 20px;}
+.product-details h2{font: normal 25px gothambold; color: #58595B; text-align: center; text-transform: uppercase; padding: 0 0 20px; margin: 0 0 35px;}
 .product-details h2{font-size: 17px;}
 .block-elm{width: 70%; text-align: left; display: inline-block; clear: both; margin: auto auto 40px; color: #58595B; font: 14px/18px gothambook;}
 .block-elm.btm-devider-big{margin: 0; min-height: inherit; padding-bottom: 50px; text-align: center; width: 90%;}
@@ -329,14 +340,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .size{font-size: 11px; text-transform: uppercase; font-weight: bold;}
 .video-block, .video-block img{width: 100%;}
 
-.thumb-imgs {
-    float: left;
-    left: -138px;
-    margin: 0;
-    position: absolute;
-    text-align: center;
-    width: 138px;
-}
+.thumb-imgs{float: left; left: -138px; margin: 0; position: absolute; text-align: center; width: 138px;}
 .thumb-imgs img, .show-prodImg img{width: 100%;}
 .thumb-imgs img{margin-bottom: 22px;}
 
@@ -373,20 +377,21 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .online {color: #999999; float: right; font-style: italic; font-weight: bold; text-transform: capitalize;}
 .online > span {background: #00A14B; border-radius: 10px; display: inline-block; height: 9px; margin: 0 4px 0 0; width: 9px;}
 .readmore {color: #CC0033; font-size: 11px; margin: 0 5px; text-decoration: underline; text-transform: uppercase;}
-
-.fitDetail > div {
-    float: left;
-    max-width: 32%;
-}
-.fitDetail > div.tble {
-    margin: 0 4%;
-    min-width: 60%;
-}
-
-.fitDetail table {
-    display: inline-block;
-    margin: 25px 0 0;
-    width: 100%;
-}
-
+.fitDetail > div{float: left; max-width: 32%;}
+.fitDetail > div.tble{margin: 0 4%; min-width: 60%;}
+.fitDetail table{display: inline-block; margin: 25px 0 0; width: 100%;}
 .top-divider{background: url("../images/dvdr-new.jpg") no-repeat center top; background-size: 100% auto; margin: 40px 0 0; padding: 0;}
+.product-grid .pg-content{width: 75%;}
+
+/** iPad Specific CSS **/
+@media only screen and (device-width: 768px) {
+  /* For general iPad layouts */
+  .contWom h4, li.new-arrivals-desc .block-head{font-size: 15px;}
+  li.new-arrivals-desc .block-head{padding: 0; text-align: left;}
+  .contWom h4 span, li.new-arrivals-desc .block-desc, .os-banner, .bannerFluid .bnrtxt{font-size: 24px; line-height: 28px;}
+  .contWom p, div.side-menu-bar ul li a, .menu-bar ul li a{font-size: 14px;}
+  .contWom p.block-link a, li.new-arrivals-desc .block-link a{font-size: 12px;}
+  .box-str h2.heading{font-size: 16px;}
+
+}
+
