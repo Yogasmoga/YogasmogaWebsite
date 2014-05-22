@@ -128,7 +128,7 @@ div.side-menu-bar ul li a.current span.arr,div.side-menu-bar ul li a:hover span.
 ul.site-map > li{color:#58595b; display: inline-block; vertical-align: top; text-align: left; width: 14.5%; margin:0 5px; word-wrap:break-word; }
 ul.site-map > li:first-child{}
 ul.site-map > li a{color: #58595b; font-size: 11px;}
-ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #CC0033; text-decoration: underline;}
+ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #CC0033;}
 .online-status-icon{vertical-align: middle;}
 ul.site-map ul.social-icons {margin-top: 4px;}
 ul.site-map ul.social-icons li{display: inline-block; margin: 0 3px;}
