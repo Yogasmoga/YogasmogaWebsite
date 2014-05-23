@@ -1,57 +1,80 @@
 jQuery(document).ready(function($){
-    
-    // This is for view shopping bag div
-    //var shoppingWdth = $(".shopping-cart").width();
-    //shoppingWdth += 40;
-    //var bodyHght = $(".wrapper").height();
-    
-    //$("ul.tr-menu").find("li:nth-child(4)").on("click", function(){
-       // $(".shopping-cart").show().animate({
-       //     height: bodyHght
-     //   });
-      //  $(".page").css("position", "relative").animate({
-      //      left: -shoppingWdth
-       //   });
-   // });
+    scrollingLink();
+    openShoppingCart();
 
-   // $(".shopping-cart").find(".close").on("click", function(){
-     //   $(".page").removeAttr( "style" );
-    //    $(".shopping-cart").hide("slow").removeAttr( "style" );
-   // });
+    // Category links fixed on scroll function
+    function scrollingLink(){
+        var wdth = $(".cntn-scroll").width();
+        var nav = $('.scroller_anchor');
 
+        if (nav.length) {
+            var contentNav = nav.offset().top;
+            $(window).scroll(function(){
+                if($(window).scrollTop() >= contentNav && $('.cntn-scroll').css('position') != 'fixed') {
+                    // Change the CSS of the scroller to hilight it and fix it at the top of the screen.
+                    $('.cntn-scroll').css({
+                        'position': 'fixed',
+                        'top': '3px'
+                    });
+                    
+                    // this is container div class
+                    $(".cntn-scrol-not").css({
+                        marginLeft: wdth
+                    });
+                }
+                else if($(window).scrollTop() < contentNav && $('.cntn-scroll').css('position') != 'relative') {         
+                    // Change the CSS and put it back to its original position.
+                    $('.cntn-scroll').css({
+                        'position': '',
+                        'top': ''
+                    });
 
-    // This function is for fixing the category menu on window scroll
-    var wdth = $(".cntn-scroll").width();
+                    // this is container div class
+                    $(".cntn-scrol-not").css({
+                        marginLeft: ''
+                    });
+                }
+            });
+        };        
+    };
 
-    $(window).scroll(function(e) {
-        // Get the position of the location where the scroller starts.
-        // Put Element "scroller_anchor" before the scroll
-        var scroller_anchor = $(".scroller_anchor").offset().top;
-        
-        // Check if the user has scrolled and the current position is after the scroller's start location and if its not already fixed at the top
-        // Apply Class "cntn-scroll" to make element scrollable 
-        if ($(this).scrollTop() >= scroller_anchor && $('.cntn-scroll').css('position') != 'fixed') {
-            // Change the CSS of the scroller to hilight it and fix it at the top of the screen.
-            $('.cntn-scroll').css({
-                'position': 'fixed',
-                'top': '3px'
+    // Show/Hide Shopping Cart Container
+    function openShoppingCart(){
+        var shoppingWdth = $(".shopping-cart").width();
+        var bodyHght = $(window).height();
+
+        $(".open-cart").on("click", function(){
+            $(".shopping-cart").animate({
+                height: bodyHght
+            }).show( "slide", {direction: "right"}, "fast" );
+
+            $(".page").css("position", "relative").animate({
+                left: -shoppingWdth
             });
-            
-            $(".cntn-scrol-not").css({
-                marginLeft: wdth
+
+            $(".header-container").css("position", "relative");
+
+            return false;
+        });
+
+        $(".continuelink").on("click", function(){
+            $(".shopping-cart").animate({
+                height: bodyHght
+            }).hide( "slide", {direction: "right"}, "fast" );
+
+            $(".page").css("position", "relative").animate({
+                left: '0'
             });
-            
-        }
-        else if ($(this).scrollTop() < scroller_anchor && $('.cntn-scroll').css('position') != 'relative') {         
-            // Change the CSS and put it back to its original position.
-            $('.cntn-scroll').css({
-                'position': '',
-                'top': ''
-            });
-            $(".cntn-scrol-not").css({
-                marginLeft: ''
-            });
-        }
-    });
+
+            $(".header-container").css("position", "");
+
+            return false;
+        });
+
+        $(".addedItem li").find(".close").on("click", function(){
+            $(this).parent("li").remove();
+        });
+
+    };
 
 });

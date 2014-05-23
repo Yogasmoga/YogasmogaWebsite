@@ -6,10 +6,13 @@ jQuery(document).ready(function($){
 
 
     var winHeight = $(window).height();
-    $("div.2-columns-wrapper").find(".pg-content,.side-menu-bar").css("min-height", winHeight);    
+        $("div.2-columns-wrapper").find(".pg-content,.side-menu-bar").css("min-height", winHeight);    
 
 		$(".footer-block").on("click","#smogi-love",function(){
-			$("#signup").dialog( "open" );			
+             if(!_islogedinuser)
+            {
+			 $("#signup").dialog( "open" );			
+            }
 		});
         $(".footer-block").on("click","#invite-friend",function(){
 
@@ -19,9 +22,7 @@ jQuery(document).ready(function($){
                 $("#signing_popup").dialog( "open" );
             }else{
                 $("#invite_friends").dialog( "open" );
-            }
-
-            
+            }            
         });
         $(".right-top-block").on("click","ul.my-acnt li a",function(event){
             if(!_islogedinuser){
@@ -47,7 +48,7 @@ jQuery(document).ready(function($){
                         duration: 500
                     },
                     open: function( event, ui ) {
-                        jQuery("#popup-register input").val("").focus().blur();
+                        // jQuery("#popup-register input").val("").focus().blur();
                         $(".ui-widget-overlay").css("z-index","100");
                         $("input#pfirstname").blur();
                         $(".ui-widget-overlay").css({top:80});
@@ -123,8 +124,7 @@ jQuery(document).ready(function($){
                 effect: "fade",
                 duration: 500
             },
-            open: function( event, ui ) {
-                $("#sign-up-form input").val("").focus().blur();
+            open: function( event, ui ) {                
                 $(".ui-widget-overlay").css("z-index","100");
                 if($("#signup").dialog( "isOpen" ) == true ){
                     $("#signup").dialog( "close" );
@@ -133,7 +133,7 @@ jQuery(document).ready(function($){
                     $("#invite_friends").dialog( "close" );
                 }                  
                 $("#sign-up-form input#fname").blur();
-                $("#sign-up-form #s_password,#sign-in-form #si_password").focus().blur();
+                $("#sign-up-form #s_password,#sign-in-form #si_password").blur();
                 $(".ui-widget-overlay").css({top:80});
                 $(window).trigger("resize");
                 var pW = ($(document).width() - $(this).parent().width())/2;
@@ -179,11 +179,33 @@ jQuery(document).ready(function($){
     });
     $(".sl-desc-handle").on("mouseout",function(){ 
         setTimeout(function(){
-            $(".slide-desc").fadeOut();
-            console.log("test");
-        },5000);
+            $(".slide-desc").fadeOut();            
+        },4000);
     });      
-        
+    /***Fake password hack***/
+    
+    $(".f_password").focus(function(){        
+        var origPassword = $(this).parent().parent().next();
+        $(this).closest(".fake_password").hide();
+        $(origPassword).show();
+        $(origPassword).find(".o_password").focus();
+    });
+    $(".o_password").blur(function(){         
+        var fakeP = $(this).parent().parent().prev();
+        var OrigP = $(this).parent().parent();
+        OrigP.hide();
+        fakeP.show();
+        if($(this).val() != "" )
+        {            
+            fakeP.hide();
+            OrigP.show();
+        }        
+        // if($.trim($(this).val()) == "Select a password")
+        // {
+        //     fakeP.show();
+        //     OrigP.hide();          
+        // }
+    }); 
         
 });
 

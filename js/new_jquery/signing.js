@@ -1,12 +1,19 @@
 jQuery(document).ready(function($){
 
     $("#sign-up-form").submit(function(event){
-
         var formid = "#sign-up-form";
         var status = popupGetSigningCreateaccountFormFieldsvalue(formid);
         if(status != "error")
             createCustomerAccount();
-        event.preventDefault();
+        event.preventDefault();          
+                  
+    });
+    $("#sign-up-form").on("click","#sign-up-button", function(){     
+        var errMsgCont = $("#sign-up-form").find("p.err-msg");
+        if(errMsgCont.css("visibility") == "visible")
+        {
+            errMsgCont.css("visibility","hidden");
+        } 
     });
     $("#sign-in-form").submit(function(event){
 
@@ -15,6 +22,13 @@ jQuery(document).ready(function($){
         if(status != "error")
             loginCustomer();
         event.preventDefault();
+    });
+    $("#sign-in-form").on("click","#sign-in-button", function(){     
+        var errMsgCont = $("#sign-in-form").find("p.err-msg");
+        if(errMsgCont.css("visibility") == "visible")
+        {
+            errMsgCont.css("visibility","hidden");
+        } 
     });
 });
 
@@ -62,10 +76,12 @@ function createCustomerAccount()
                     jQuery("#welcome-name").html("Hi "+name);
                 setTimeout(function(){
                     jQuery("#signing_popup").dialog("close");                    
-                },2000);
+                },3000);
                 if(_isClickShareWithFriends)
                 {
-                    jQuery("#invite_friends").dialog( "open" );
+                    setTimeout(function(){
+                        jQuery("#invite_friends").dialog( "open" );
+                    },4000);                    
                 }
 
 

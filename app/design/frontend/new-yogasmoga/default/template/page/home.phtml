@@ -90,7 +90,86 @@
 <body class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>" style="margin-right:17px;overflow:hidden;">
 <?php echo $this->getChildHtml('after_body_start') ?>
 <div class="wrapper">
-<div class="shopping-cart"><span class="close">x</span></div>
+<!-- shopping cart -->
+<div class="shopping-cart">
+    <!-- ContinueShoppingBtn -->
+    <div class="cont-full capstxt">
+        <a href="#" id="continuelink" class="continuelink f-left">Continue Shopping</a>
+        <a href="#" class="continuelink f-right grn">Continue</a>
+    </div>
+    <!-- ContinueShoppingBtn -->
+    <!-- productOption -->
+    <div class="cont-full">
+        <!-- totalAmount -->
+        <div class="totalAmnt capstxt">
+            <span class="f-left">Total</span>
+            <span class="f-right">$55.00</span>
+        </div>
+        <!-- totalAmount -->
+        <!-- listItems -->
+        <ul>
+            <li>
+                <span class="f-left capstxt">1 item</span>
+                <span class="f-right">$55.00</span>
+            </li>
+            <li>
+                <span class="f-left">Shipping: FREE</span>
+                <span class="f-right capstxt">Free</span>
+            </li>
+        </ul>
+        <!-- listItems -->
+        <p class="c-align">Use your SMOGI Bucks for this purchase</p>
+        <!-- addItem Input -->
+        <div class="adddields">
+            <form>
+                <label><input type="text" name="count" id="count" value="10" /><span>+</span></label>
+                <label><input type="text" name="promocode" id="promocode" value="Add a promo code / gift card code" /><span>+</span></label>
+            </form>
+        </div>
+        <!-- addItem Input -->
+    </div>
+    <!-- productOption -->
+    <!-- stripGry -->
+    <div class="strip-gry">Free and fast shipping to US and Canada</div>
+    <!-- stripGry -->
+    <!-- productadded -->
+    <div class="addedItem">
+        <ul class="similarProdList">
+            <li>
+                <span class="wdth100"><img alt="Women's Top" src="<?php echo $this->getSkinUrl('images/shopping-cart/dum3.jpg') ?>"></span>
+                <span>
+                    <span class="quantity">qty</span>
+                    <span class="pname">Yantra tank</span>
+                    <span class="amnt">$55.00</span>
+                    <span class="clr">carbon 6 / verdi</span>
+                    <span class="size">size 4</span>
+                </span>
+                <a href="#" class="close"></a>
+            </li>
+            <li>
+                <span><img alt="Women's Top" src="<?php echo $this->getSkinUrl('images/shopping-cart/dum2.jpg') ?>"></span>
+                <span>
+                    <span class="quantity">qty</span>
+                    <span class="pname">Classic slimmie pant</span>
+                    <span class="amnt">$109.00</span>
+                    <span class="clr">midnight blue</span>
+                    <span class="size">size 4</span>
+                    <span class="fit">regular</span>
+                </span>
+                <a href="#" class="close"></a>
+            </li>
+            <li>
+                <span><img alt="Women's Top" src="<?php echo $this->getSkinUrl('images/shopping-cart/dum1.jpg') ?>"></span>
+                <span>
+                    <strong>HELP THE <br />NAMASKAR FOUNDATION</strong>
+                    <span class="capsnone">Add this bracelet to your order</span>
+                </span>
+            </li>
+        </ul>
+    </div>
+    <!-- productadded -->
+</div>
+<!-- shopping cart -->
 <div class="page-overlayy" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">&nbsp;</div>
     <?php echo $this->getChildHtml('global_notices') ?>
     <div class="page">

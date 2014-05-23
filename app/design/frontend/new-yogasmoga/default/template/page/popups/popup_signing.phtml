@@ -19,14 +19,14 @@
                             <input type="text" name="signup_email" id="signup_email" class="watermark" watermark="Email" autocomplete="off" value="" class="requiredfield" autocapitalize="off">
                         </td>                    
                     </tr>
-                    <!-- <tr id="fake_password_2">
+                    <tr class="fake_password">
                         <td class="inputholder">
-                            <input type="text" autocomplete="off" maxlength="30" class="watermark" watermark="Select a password" class="requiredfield" name="password" id="f_password_2" defaulterrormsg="Password is required">
+                            <input type="text" autocomplete="off" maxlength="30" class="watermark f_password" watermark="Select a password" class="requiredfield" name="password" defaulterrormsg="Password is required">
                         </td>
-                    </tr> -->
-                    <tr id="o_password_2">
+                    </tr> 
+                    <tr class="orig_password">
                         <td>
-                            <input type="password" autocomplete="off" maxlength="30" class="watermark" watermark="Select a Password" class="requiredfield" name="s_password" id="s_password">
+                            <input type="password" autocomplete="off" maxlength="30"  class="o_password requiredfield" name="s_password" id="s_password">
                         </td>                    
                     </tr>
 
@@ -58,10 +58,15 @@
                         <td>                        
                             <input type="text" id="si_email" name="si_email" class="watermark" watermark="Email" value="" maxlength="30" class="requiredfield">
                         </td>                    
-                    </tr>                
-                    <tr>
+                    </tr>
+                    <tr class="fake_password">
+                        <td class="inputholder no-padding">
+                            <input type="text" autocomplete="off" maxlength="30" class="watermark f_password requiredfield" watermark="Password" name="password" defaulterrormsg="Password is required">
+                        </td>
+                    </tr>                 
+                    <tr class="orig_password">
                         <td class="no-padding">                      
-                            <input type="password" autocomplete="off" maxlength="30" class="watermark" watermark="Password" class="requiredfield" name="si_password" id="si_password">
+                            <input type="password" autocomplete="off" maxlength="30" class="requiredfield o_password" name="si_password" id="si_password">
                         </td>                    
                     </tr>
                     <tr>
