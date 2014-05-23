@@ -202,6 +202,7 @@ jQuery(window).load(function(){
                         <div class="myheader zindex10 topvisible colorbg absoluteposition" id="allproduct">
                                         <span>ALL PRODUCTS</span>
                         </div>
+
                         <div class="mylayerednavigation alwaysvisible" style="width : 200px;">
                             <?php echo $this->getChildHtml('left') ?>
                         </div>
@@ -214,7 +215,7 @@ jQuery(window).load(function(){
                                                 &nbsp;                                                
                                             </td>
                                             <td style="vertical-align: top;">
-                                                <?php echo substr($htmlcontent,strpos($htmlcontent, "|*)%|") + 5); ?>        
+                                                <?php echo substr($htmlcontent,strpos($htmlcontent, "|*)%|") + 5); ?>
                                             </td>
                                             <td class="sidenavigationadjuster">
                                                 &nbsp;
@@ -234,6 +235,7 @@ jQuery(window).load(function(){
                         <div class="myheader zindex10 topvisible colorbg absoluteposition">
                                         ALL PRODUCTS
                         </div>
+
                         <div class="mylayerednavigation alwaysvisible" style="width : 200px;">
                             <?php echo $this->getChildHtml('left') ?>
                         </div>
@@ -247,7 +249,7 @@ jQuery(window).load(function(){
                                             </td>
                                             <td style="vertical-align: top;">
                                                 <?php //echo substr($htmlcontent,strpos($htmlcontent, "|*)%|") + 5); ?>
-                                                <?php echo substr($htmlcontent, 3); ?>        
+                                                <?php echo substr($htmlcontent, 3); ?>
                                             </td>
                                             <td class="sidenavigationadjuster">
                                                 &nbsp;

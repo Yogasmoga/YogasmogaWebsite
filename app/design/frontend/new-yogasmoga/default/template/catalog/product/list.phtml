@@ -1,57 +1,113 @@
 <div class="product-grid">
 <!-- bannerTop -->
-<div class="bannerFluid">
+<!--<div class="bannerFluid">
     <img src="{{skin url="images/product/bnr-big1.jpg"}}" alt="Women's Top" />
     <div class="bnrtxt">
         Women's Top
     </div>
-</div>
+</div> -->
 <!-- bannerTop -->
+<div class="2-columns-wrapper">
+<div class="pg-content f-left">
+<?php
+$_productCollection=$this->getLoadedProductCollection();
+$_helper = $this->helper('catalog/output');
+?>
+<?php $_collectionSize = $_productCollection->count() ?>
+<?php $_columnCount = $this->getColumnCount();?>
+<?php
+$write = Mage::getSingleton('core/resource')->getConnection('core_read');
+$readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
+while ($row = $readresult->fetch() ) {
+    $clrinfo[$row['Value']] = $row['Attribute'];
+}
+foreach ($_productCollection as $_product):
+
+    ?>
+    <h4><?php echo $_product->getName();?></h4>
+    <?php
+    if(Mage::getModel('catalog/product')->load($_product->getId())->getTypeID() == "configurable")
+    {
+        $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
+        $selectedColorarr = array();
+        foreach($_childproducts as $_childproduct)
+        {
+            $temp = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId());
+
+            if(strpos($colors,$temp.",") == false)
+                $colors .= $temp.",";
+            if(!in_array($temp,$selectedColorarr))
+            {
+                array_push($selectedColorarr,$temp);
+            }
+        }
+        //print_r($selectedColorarr);
+        //echo $sortOrder = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'sortorder', Mage::app()->getStore()->getStoreId());
+        foreach($selectedColorarr as $color)
+        { ?>
+            <div class="productCont">
+        <div class="prod-img">
+            <a href="<?php echo $_product->getProductUrl();?>" alt="<?php echo $_product->getName();?>">
+            <img class="prd-image" src="<?php  echo $this->getSkinUrl('images/women/dum1.jpg')//  echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(221, 330)->setQuality(91); ?>" /> </a>
+        </div>
+        <div class="caption">
+        <a href="<?php echo $_product->getProductUrl();?>"> <?php echo $clrinfo[$color]?></a><span>$<?php  echo  round($_product->getPrice(),2);?></span>
+        </div>
+    </div>
+    <?php
+        }
+    }
+
+
+
+
+
+
+
+    ?>
+
+<?php /*
+    <?php if ($i++%$_columnCount==0): ?>
+        <ul class="products-grid">
+    <?php endif ?>
+    <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+        <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+        <?php if($_product->getRatingSummary()): ?>
+            <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+        <?php endif; ?>
+        <?php echo $this->getPriceHtml($_product, true) ?>
+        <div class="actions">
+            <?php if($_product->isSaleable()): ?>
+                <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+            <?php else: ?>
+                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+            <?php endif; ?>
+            <ul class="add-to-links">
+                <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                    <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                <?php endif; ?>
+                <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                    <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                <?php endif; ?>
+            </ul>
+        </div>
+    </li>
+    <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+        </ul>
+    <?php endif */?>
+<?php endforeach ?>
+</div>
+</div>
+
+
+
 
 <!-- coloumnLayout -->
 <div class="2-columns-wrapper">
 
-<!-- leftNav Category -->
-<div class="side-menu-bar f-left l-align">
-    <ul class="categorylinks">
-        <li><a href="#" class="bld">WHAT’S NEW!</a></li>
-        <li><a href="#" class="bld">SHOP THE COLORS!</a></li>
-        <li><a href="#" class="bld">TOP SELLERS</a></li>
-        <!-- CategoryLink 1 -->
-        <li class="sub-head current"><a href="#">TOPS</a>
-            <ul class="subnav">
-                <li><a href="#">BRAS</a></li>
-                <li><a href="#">TANKS / TOPS</a></li>
-                <li><a href="#">JACKETS</a></li>
-            </ul>
-        </li>
-        <!-- CategoryLink 1 -->
 
-        <!-- CategoryLink 2 -->
-        <li class="sub-head"><a href="#">BOTTOMS</a>
-            <ul class="subnav">
-                <li><a href="#">PANTS</a></li>
-                <li><a href="#">LEGGINGS</a></li>
-                <li><a href="#">CROPS</a></li>
-                <li><a href="#">SHORTS</a></li>
-            </ul>
-        </li>
-        <!-- CategoryLink 2 -->
 
-        <!-- CategoryLink 3 -->
-        <li class="sub-head"><a href="#">ACCESSORIES</a>
-            <ul class="subnav">
-                <li><a href="#">HEAD BANDS</a></li>
-                <li><a href="#">YOGA MATS</a></li>
-                <li><a href="#">YOGA TOWELS</a></li>
-                <li><a href="#">YOGA FLOPS</a></li>
-                <li><a href="#">NAMASKAR BRACELETS</a></li>
-            </ul>
-        </li>
-        <!-- CategoryLink 3 -->
-    </ul>
-</div>
-<!-- leftNav Category -->
 
 <!-- Product Listing -->
 <div class="pg-content f-left">
