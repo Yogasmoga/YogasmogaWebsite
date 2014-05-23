@@ -78,7 +78,6 @@ if($serverType == 'production')
                     var navHref = $(this).attr("href");
                     window.location = navHref;
                     });
-
                 }
 
             }
@@ -92,26 +91,7 @@ if($serverType == 'production')
         <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/popups/popup_signing.phtml')->toHtml(); ?>
         <script type="application/javascript">
 
-            jQuery(document).ready(function($){
-                $("#f_password").focus(function(){
-                    $(this).closest("#fake_password").hide();
-                    $("#o_password").show();
-                    $("#p_password").focus();
-                });
-                $("#p_password").blur(function(){
-                    $(this).closest("#o_password").hide();
-                    $("#fake_password").show();
-                    if($(this).val() != "" )
-                    {
-                        $("#fake_password").hide();
-                        $("#o_password").show();
-                    }
-                    if($.trim($(this).val()) == "Select a password")
-                    {
-                        $("#fake_password").show();
-                        $("#o_password").hide();
-                    }
-                });
+            jQuery(document).ready(function($){               
 
                 $(window).resize(function(event) {
                     var pW1 = ($(document).width() - $(".firstdialog").width())/2;
