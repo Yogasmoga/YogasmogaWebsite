@@ -444,7 +444,7 @@ if($serverType == 'production')
                             <li class="last"><a id="signin" href="<?php if($islogedinuser)echo $this->getBaseUrl()."customer/account/logout/";else echo "javascript:void(0);";  ?>"><?php if($islogedinuser)echo "Sign Out";else echo "Sign In";  ?></a></li>
                         </ul>
                     </li>
-                    <li><a href="javascript:void(0);">Shopping Bag (<span class="cartitemcount"><?php echo $itemcount; ?></span>)</a></li>
+                    <li><a href="javascript:void(0);" class="open-cart">Shopping Bag (<span class="cartitemcount"><?php echo $itemcount; ?></span>)</a></li>
                 </ul>
             </div>
             <div class="right-bottom-block">                
