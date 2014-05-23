@@ -213,7 +213,9 @@ div.sub-fab img{width: 45% !important; display: block; margin:25px auto 0 auto;}
 .ui-widget-overlay { background: #777777 50% 50% repeat !important; opacity: .5;filter:Alpha(Opacity=50); z-index: 100 !important; }
 .firstdialog{width: 500px !important; height: 500px !important;}
 #signup{height: 455px !important; padding: 0 !important;}
-#o_password{display: none;}
+
+/***Fake password hack***/
+#o_password,tr.orig_password{display: none;}
 
 
 /****Women Landing page****/

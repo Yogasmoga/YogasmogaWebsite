@@ -8,6 +8,13 @@ jQuery(document).ready(function($){
             sharewithfriend();
         //event.preventDefault();
     });
+    $("#invite-friend-form").on("click","#send-invite", function(){     
+        var errMsgCont = $("#invite-friend-form").find("p.err-msg");
+        if(errMsgCont.css("visibility") == "visible")
+        {
+            errMsgCont.css("visibility","hidden");
+        } 
+    });
 
 });
 

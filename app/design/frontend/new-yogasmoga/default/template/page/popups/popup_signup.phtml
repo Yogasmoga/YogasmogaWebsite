@@ -17,20 +17,19 @@
                 </tr>
                 <tr height="5"></tr>
                 <tr>
-
                     <td class="inputholder">
                         <input type="text" name="email" id="pemail_address" class="watermark" watermark="Email Address" autocomplete="off" value="" class="requiredfield" defaulterrormsg="Email Address is required" autocapitalize="off">
                     </td>
                 </tr>
                 <tr height="5"></tr>
-                <tr id="fake_password">
+                <tr class="fake_password">
                     <td class="inputholder">
-                        <input type="text" autocomplete="off" maxlength="30" class="watermark" watermark="Select a password" class="requiredfield" name="password" id="f_password" defaulterrormsg="Password is required">
+                        <input type="text" autocomplete="off" maxlength="30" class="watermark f_password requiredfield" watermark="Select a password" name="password" id="f_password" defaulterrormsg="Password is required">
                     </td>
                 </tr>
-                <tr id="o_password">
+                <tr class="orig_password">
                     <td class="inputholder">
-                        <input type="password" autocomplete="off" maxlength="30" class="watermark" watermark="Select a password" class="requiredfield" name="password" id="p_password" defaulterrormsg="Password is required">
+                        <input type="password" autocomplete="off" maxlength="30" class="requiredfield o_password" name="password" id="p_password" defaulterrormsg="Password is required">
                     </td>
                 </tr>
                 <input style="display: none;" type="password" class="requiredfield" name="confirmation" id="confirmation" defaulterrormsg="Password is required">
