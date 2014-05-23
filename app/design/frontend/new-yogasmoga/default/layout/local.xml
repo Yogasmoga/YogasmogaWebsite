@@ -22,6 +22,7 @@
     <action method="addJs"><script>jquery/globalsearch.js</script></action>
     <action method="addJs"><script>jquery/jquery-ui-1.9.1.custom.min.js</script></action>
     <action method="addJs"><script>new_jquery/common.js</script></action>
+    <action method="addJs"><script>new_jquery/product.js</script></action>
     <action method="addJs"><script>new_jquery/cmspage.js</script></action>
     <action method="addJs"><script>new_jquery/signing.js</script></action>
     <action method="addJs"><script>new_jquery/popupformvalidation.js</script></action>

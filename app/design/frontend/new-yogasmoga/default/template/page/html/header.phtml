@@ -230,7 +230,7 @@ if($serverType == 'production')
                                     _islogedinuser = true;
                                     $("#signin").html("SIGN OUT").attr({href:homeUrl+'customer/account/logout/',id:"sign-out"});
                                     if(name != '')
-                                    $("#welcome-name").html(name);
+                                    $("#welcome-name").html("Hi "+name);
                                     $('.topmenulinks').html($('.topmenulinks').html().replace('Log In','MY ACCOUNT'));
                                     $( "#signup" ).dialog({
                                         close : function( event, ui ) {
@@ -318,9 +318,11 @@ if($serverType == 'production')
                     if ($child1->getIsActive()) {
                         //show Main parent categories first level
                         if($child1->getId() == $currentcategoryid)
-                            echo "<li><a class='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+                           // echo "<li><a class='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+                        echo "<li><a class='menu-heading' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
                         else
-                            echo "<li><a class ='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+                            //echo "<li><a class ='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+                            echo "<li><a class='menu-heading' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
                         // show sub categories second level
 
 //                        echo '<ul class="sub-menu"><li><ul><li><a href="">What\'s new!</a></li><li><a href="">Shop the colors!</a></li><li><a href="">Top sellers</a></li>
@@ -434,7 +436,7 @@ if($serverType == 'production')
                         <?php
                             }
                         ?>
-                        <a id="welcome-name" href="javascript:void(0);"><?php if($islogedinuser)echo $firstname;else echo "My Account";  ?></a>
+                        <a id="welcome-name" href="javascript:void(0);"><?php if($islogedinuser)echo "Hi ".$firstname;else echo "My Account";  ?></a>
                         <ul class="sub-menu l-align my-acnt" style="left: -50px;">
                             <li class="blank"></li>
                             <li style="padding-top: 16px;"><a href="<?php echo $this->getBaseUrl()."sales/order/history/"; ?>">track order</a></li>
@@ -464,11 +466,11 @@ if($serverType == 'production')
                             </ul>
                         </li>
                         <li>
-                            <a href="<?php echo $this->getBaseUrl();?>ys-tech-new#fabrictech" class="main-heading">ys tech</a>
-                            <ul  class="sub-menu l-align cms-header-link" style="left:-52px;">
-                                <li data-blockid="fabrictech"><a href="<?php echo $this->getBaseUrl();?>ys-tech-new#fabrictech">ys fabric tech</a></li>
-                                <li data-blockid="colortech"><a href="<?php echo $this->getBaseUrl();?>ys-tech-new#colortech">ys color tech</a></li>
-                                <li data-blockid="designelements"><a href="<?php echo $this->getBaseUrl();?>ys-tech-new#designelements">design elements</a></li>                                                               
+                            <a href="<?php echo $this->getBaseUrl();?>ys-tech-new#ys-fabric-tech" class="main-heading">ys tech</a>
+                            <ul class="sub-menu l-align cms-header-link" style="left:-52px;">
+                                <li data-blockid="ys-fabric-tech"><a href="<?php echo $this->getBaseUrl();?>ys-tech-new#ys-fabric-tech">ys fabric tech</a></li>
+                                <li data-blockid="ys-color-tech"><a href="<?php echo $this->getBaseUrl();?>ys-tech-new#ys-color-tech">ys color tech</a></li>
+                                <li data-blockid="design-elements"><a href="<?php echo $this->getBaseUrl();?>ys-tech-new#design-elements">design elements</a></li>                                                               
                             </ul>
                         </li>                        
                         <li>

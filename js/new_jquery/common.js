@@ -3,6 +3,8 @@ jQuery(document).ready(function($){
     initializeinvitepopup();
     initializesigninpopup();
     adjustimg();
+
+
     var winHeight = $(window).height();
     $("div.2-columns-wrapper").find(".pg-content,.side-menu-bar").css("min-height", winHeight);    
 
@@ -10,12 +12,15 @@ jQuery(document).ready(function($){
 			$("#signup").dialog( "open" );			
 		});
         $(".footer-block").on("click","#invite-friend",function(){
-            if((!_islogedinuser)||(!_isClickShareWithFriends)){
-                _flagForShareFriends = true;
+
+            if(!_islogedinuser)
+            {
+                _isClickShareWithFriends = true;
                 $("#signing_popup").dialog( "open" );
             }else{
-               $("#invite_friends").dialog( "open" ); 
+                $("#invite_friends").dialog( "open" );
             }
+
             
         });
         $(".right-top-block").on("click","ul.my-acnt li a",function(event){
@@ -42,6 +47,7 @@ jQuery(document).ready(function($){
                         duration: 500
                     },
                     open: function( event, ui ) {
+                        jQuery("#popup-register input").val("").focus().blur();
                         $(".ui-widget-overlay").css("z-index","100");
                         $("input#pfirstname").blur();
                         $(".ui-widget-overlay").css({top:80});
@@ -80,6 +86,7 @@ jQuery(document).ready(function($){
                 duration: 500
             },
             open: function( event, ui ) {
+                //$("#invite-friend-form input").val("").focus().blur();
                 $(".ui-widget-overlay").css("z-index","100");
                 $("input#friendname").blur();                
                 $(".ui-widget-overlay").css({top:80});
@@ -117,6 +124,7 @@ jQuery(document).ready(function($){
                 duration: 500
             },
             open: function( event, ui ) {
+                $("#sign-up-form input").val("").focus().blur();
                 $(".ui-widget-overlay").css("z-index","100");
                 if($("#signup").dialog( "isOpen" ) == true ){
                     $("#signup").dialog( "close" );
@@ -144,6 +152,8 @@ jQuery(document).ready(function($){
             }
         });
     }
+
+
 
     function adjustimg(){
         var mw = $(".structure").width() - 14;        
@@ -178,3 +188,14 @@ jQuery(document).ready(function($){
 });
 
 
+function getCookie(cname)
+{
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++)
+    {
+        var c = ca[i].trim();
+        if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+    }
+    return "";
+}

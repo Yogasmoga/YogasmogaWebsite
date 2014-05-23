@@ -90,6 +90,7 @@
 <body class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>" style="margin-right:17px;overflow:hidden;">
 <?php echo $this->getChildHtml('after_body_start') ?>
 <div class="wrapper">
+<div class="shopping-cart"><span class="close">x</span></div>
 <div class="page-overlayy" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">&nbsp;</div>
     <?php echo $this->getChildHtml('global_notices') ?>
     <div class="page">
@@ -245,7 +246,7 @@
                                 <p class="block-head">FABRIC TECHNOLOGY</p>
                                 <p class="block-desc white">CONSIDER<br />THE CLOTHES<br />YOU WEAR</p>
                                 <p class="block-link">
-                                    <a href="" class="white">Learn More <span>>>></span></a>
+                                    <a href="<?php echo $this->getBaseUrl();?>ys-tech-new#ys-fabric-tech" class="white">Learn More <span>>>></span></a>
                                 </p>
                             </div>
                             <ul class="fabric-qua">
@@ -273,7 +274,7 @@
                                 <p class="block-head">COLOR TECHNOLOGY</p>
                                 <p class="block-desc">WE’LL COLOR<br />YOUR WORLD. COLORS<br />THAT DON’T BLEED.</p>
                                 <p class="block-link">
-                                    <a href="" class="grey">Learn More <span>>>></span></a>
+                                    <a href="<?php echo $this->getBaseUrl();?>ys-tech-new#ys-color-tech" class="grey">Learn More <span>>>></span></a>
                                 </p>
                             </div>
                         </div>
@@ -281,7 +282,7 @@
                     </div>                                       
                     <div class="structure">
                         <div class="block3">
-                            <img class="full-width" src="<?php echo $this->getSkinUrl('images/homepage/made-in-usa.jpg') ?>" alt="">
+                            <a href="<?php echo $this->getBaseUrl();?>our-story-new#madeinusa"><img class="full-width" src="<?php echo $this->getSkinUrl('images/homepage/made-in-usa.jpg') ?>" alt=""></a>
                         </div>
                         <div class="block4">
                             <img class="full-width" src="<?php echo $this->getSkinUrl('images/homepage/namaskar-foundation.jpg') ?>" alt="">
@@ -291,9 +292,21 @@
                             </div>
                             <div class="block-text2 l-align">
                                 <p class="bracelet-count white">995</p>
+                                <?php
+                                $_product = Mage::getModel('catalog/product')->load(704);
+                                $sku = nl2br($_product->getSku());
+                                $product = Mage::getResourceModel('reports/product_collection')
+                                    ->addOrderedQty()
+                                    ->addAttributeToFilter('sku', $sku)
+                                    ->setOrder('ordered_qty', 'desc')
+                                    ->getFirstItem();
+
+                                echo 'Already Bought '.(int)$product->getOrderedQty();
+
+                                ?>
                                 <span class="white">BRACELETS SOLD</span>                                
                                 <p class="block-link">
-                                    <a href="" class="white">Learn More <span>>>></span></a>
+                                    <a href="<?php echo $this->getBaseUrl();?>our-story-new#namaskar" class="white">Learn More <span>>>></span></a>
                                 </p>
                             </div>
                         </div>
