@@ -44,29 +44,34 @@ jQuery(document).ready(function($){
         var bodyHght = $(window).height();
 
         $(".open-cart").on("click", function(){
+
             $(".shopping-cart").animate({
                 height: bodyHght
-            }).show( "slide", {direction: "right"}, "fast" );
+            }).show("fast");
 
             $(".page").css("position", "relative").animate({
                 left: -shoppingWdth
             });
 
-            $(".header-container").css("position", "relative");
+            $(".header-container").animate({
+                left: -shoppingWdth
+            });
 
             return false;
         });
 
         $(".continuelink").on("click", function(){
-            $(".shopping-cart").animate({
+            $(".shopping-cart").hide( "slide", {direction: "right"}, "fast" ).animate({
                 height: bodyHght
-            }).hide( "slide", {direction: "right"}, "fast" );
+            });
 
             $(".page").css("position", "relative").animate({
                 left: '0'
             });
 
-            $(".header-container").css("position", "");
+            $(".header-container").animate({
+                left: "0"
+            });
 
             return false;
         });
