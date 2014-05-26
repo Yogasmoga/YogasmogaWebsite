@@ -181,9 +181,9 @@ jQuery(document).ready(function($){
         //setTimeout(function(){
             //$(".slide-desc").fadeOut();            
         //},4000);
-    }); 
-
-    $("ul.main-menu").find("li").on("mouseout",function(){ 
+    });
+    
+    $("ul.main-menu").find("li").on("mouseout", function(){ 
         setTimeout(function(){
             $(this).find("ul.sub-menu").css("display", "none");            
         }, 4000);
