@@ -183,16 +183,29 @@ jQuery(document).ready(function($){
         //},4000);
     });
 
-    $('.main-menu > li, .tr-menu > li').bind({
+    // input box highlight on input focus
+    $("#search_input").bind({
+        focus: function(){
+            $(this).parents(".search-bar").addClass("shdow-search-box");
+        },
+        focusout: function(){
+            $(this).parents(".search-bar").removeClass("shdow-search-box");
+        }        
+    });
+
+    // for holding sub-menu open for 2 sec
+    $('.ctag-menu > li').bind({
         mouseenter: function() {
-            $('.main-menu > li').removeClass('smenu');
-            $(this).find("ul.sub-menu").addClass("show");
+            $('.ctag-menu > li').removeClass("smenu");
+            $("ul.sub-menu").hide();
+            $(this).find("ul.sub-menu").fadeIn();
         },
         mouseleave: function() {
-            $(this).find("ul.sub-menu").removeClass("show");
-            $(this).addClass("smenu").delay(2000)
+            $(this).find("ul.sub-menu").fadeIn().delay(500).fadeOut();
+            
+            $(this).addClass("smenu").delay(500)
             .queue(function() {
-                $(this).removeClass("smenu");
+               $(this).removeClass("smenu");
                 $(this).dequeue();
             });
         }
