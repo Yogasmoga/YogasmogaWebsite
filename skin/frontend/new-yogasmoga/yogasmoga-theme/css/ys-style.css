@@ -46,8 +46,12 @@ ul.main-menu2 li ul.sub-menu>li{min-height: 100%; border: none; padding: 0;}
 ul.main-menu li ul.sub-menu > li:first-child{border:none; padding:0;}
 ul.main-menu li ul.sub-menu > li > ul:first-child a{font-family: gothambold;}
 ul.main-menu li ul.sub-menu > li > ul a,ul.main-menu2 li ul.sub-menu > li > ul:first-child a,ul.tr-menu > li > ul.sub-menu li a{font-family: gothambook;}
-ul.main-menu > li:hover{background: url("../images/menu_arrow.png") no-repeat bottom center; background-size: 17px 14px;}
-ul.main-menu > li:hover > ul.sub-menu{display: block;}
+ul.main-menu > li.smenu, ul.main-menu > li:hover{background: url("../images/menu_arrow.png") no-repeat bottom center; background-size: 17px 14px;}
+ul.main-menu > li.smenu ul.sub-menu,
+ul.tr-menu > li.smenu ul.sub-menu, 
+ul.tr-menu > li.smenu ul.sub-menu.show, 
+ul.main-menu > li ul.sub-menu.show{display: block !important; }
+ul.main-menu > li:hover > ul.sub-menu{}
 ul.tr-menu{margin:5px 0;}
 ul.tr-menu > li{display: inline-block; padding: 0 3px; position: relative;}
 li.free-shipping{font-style: italic; margin-right: 15px;}
