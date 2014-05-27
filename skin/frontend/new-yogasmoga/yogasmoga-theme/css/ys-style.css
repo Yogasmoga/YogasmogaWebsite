@@ -28,6 +28,7 @@
 .lh-normal{line-height: normal !important;}
 .no-display{display: none;}
 .no-padding{padding: 0;}
+.mtop10{margin-top: 10px;}
 
 /****Header****/
 /*#pagecontainer{min-width: 960px;}*/
@@ -38,7 +39,7 @@ ul.main-menu{margin-left: 40px;}
 ul.main-menu > li{display:inline-block; height: 80px; padding:0 10px; text-transform: uppercase; vertical-align: top; cursor:pointer;}
 ul.main-menu li a,ul.tr-menu > li > ul.sub-menu li a{color: #58595b; font-size: 13px; font-family: gothambold;}
 ul.main-menu li a.menu-heading{line-height: 80px; vertical-align: middle;}
-ul.main-menu li ul.sub-menu{position: absolute; text-align: left; left: 0; background: url("../images/nav-bg.png") repeat-x left 80px; padding: 15px; display: none;}
+ul.main-menu li ul.sub-menu{position: absolute; text-align: left; left: 0; background: url("../images/nav-bg.png") repeat-x left top; padding: 15px; display: none;}
 ul.main-menu2 li ul.sub-menu{background-position: left top ;}
 ul.main-menu li ul.sub-menu > li{display: inline-block; vertical-align: top; min-width: 160px; border-left: 1px solid #ccc; padding:0 0 0 15px; min-height: 120px;}
 ul.main-menu2 li ul.sub-menu{width: 174px;}
@@ -47,11 +48,6 @@ ul.main-menu li ul.sub-menu > li:first-child{border:none; padding:0;}
 ul.main-menu li ul.sub-menu > li > ul:first-child a{font-family: gothambold;}
 ul.main-menu li ul.sub-menu > li > ul a,ul.main-menu2 li ul.sub-menu > li > ul:first-child a,ul.tr-menu > li > ul.sub-menu li a{font-family: gothambook;}
 ul.main-menu > li.smenu, ul.main-menu > li:hover{background: url("../images/menu_arrow.png") no-repeat bottom center; background-size: 17px 14px;}
-ul.main-menu > li.smenu ul.sub-menu,
-ul.tr-menu > li.smenu ul.sub-menu, 
-ul.tr-menu > li.smenu ul.sub-menu.show, 
-ul.main-menu > li ul.sub-menu.show{display: block !important; }
-ul.main-menu > li:hover > ul.sub-menu{}
 ul.tr-menu{margin:5px 0;}
 ul.tr-menu > li{display: inline-block; padding: 0 3px; position: relative;}
 li.free-shipping{font-style: italic; margin-right: 15px;}
@@ -64,6 +60,7 @@ ul.main-menu2{margin-left: 0; margin-right: 25px;}
 ul.main-menu2 > li{position: relative; padding-top: 2px; height: 50px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 ul.main-menu2 a.main-heading{display: block; height: 48px;}
 ul.main-menu2 li ul.sub-menu li a{font-family: gothambook;}
+ul.main-menu2 > li:hover > ul.sub-menu{display: block;}
 .sub-menu a:hover{color:#cc0033 !important;}
 /**Search Bar**/
 .right-block{height: 80px;}
@@ -436,7 +433,7 @@ ul.checkout-cont li.active .ovrlay-bg{display: none;}
 .checkout-cont .ovrlay-bg{display: block; background: #d6d6d6; height: 100%; width: 100%; position: absolute; top: 0; left: 0; opacity: 0.5;}
 .checkout-cont.active .ovrlay-bg{display: none;} **/
 ul.main-menu li a.posRel, .posRel{position: relative; z-index: 1;}
-ul.main-menu li ul.sub-menu.menu-ovr{padding-top: 95px; top: 0;}
+ul.main-menu li ul.sub-menu.menu-ovr{}
 
 
 
@@ -474,4 +471,11 @@ li.new-arrivals-desc .block-head{padding: 0; text-align: left;}
 
 /** checkout Dettail Page **/
 ul.checkout-cont li.active{background: url("../images/divider-sml.png") no-repeat center top;}
+}
+
+.shdow-search-box {
+	box-shadow: 0 0 3px rgba(219, 135, 38, 1);
+	-webkit-box-shadow: 0 0 3px rgba(219, 135, 38, 1);
+	-moz-box-shadow: 0 0 3px rgba(219, 135, 38, 1);
+	border: 1px solid rgba(219, 135, 38, 1);
 }
