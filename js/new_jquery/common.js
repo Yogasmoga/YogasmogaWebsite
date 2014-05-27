@@ -197,15 +197,14 @@ jQuery(document).ready(function($){
     $('.ctag-menu > li').bind({
         mouseenter: function() {
             $('.ctag-menu > li').removeClass("smenu");
-            $("ul.sub-menu").hide();
+            $(".ctag-menu > li ul.sub-menu").hide();
             $(this).find("ul.sub-menu").fadeIn();
         },
-        mouseleave: function() {
-            $(this).find("ul.sub-menu").fadeIn().delay(500).fadeOut();
-            
-            $(this).addClass("smenu").delay(500)
+        mouseleave: function() {            
+            $(this).addClass("smenu").delay(900)
             .queue(function() {
                $(this).removeClass("smenu");
+                $(this).find("ul.sub-menu").fadeOut();
                 $(this).dequeue();
             });
         }

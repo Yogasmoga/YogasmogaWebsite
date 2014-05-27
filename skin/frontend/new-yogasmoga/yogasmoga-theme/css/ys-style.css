@@ -39,7 +39,7 @@ ul.main-menu{margin-left: 40px;}
 ul.main-menu > li{display:inline-block; height: 80px; padding:0 10px; text-transform: uppercase; vertical-align: top; cursor:pointer;}
 ul.main-menu li a,ul.tr-menu > li > ul.sub-menu li a{color: #58595b; font-size: 13px; font-family: gothambold;}
 ul.main-menu li a.menu-heading{line-height: 80px; vertical-align: middle;}
-ul.main-menu li ul.sub-menu{position: absolute; text-align: left; left: 0; background: url("../images/nav-bg.png") repeat-x left 80px; padding: 15px; display: none;}
+ul.main-menu li ul.sub-menu{position: absolute; text-align: left; left: 0; background: url("../images/nav-bg.png") repeat-x left top; padding: 15px; display: none;}
 ul.main-menu2 li ul.sub-menu{background-position: left top ;}
 ul.main-menu li ul.sub-menu > li{display: inline-block; vertical-align: top; min-width: 160px; border-left: 1px solid #ccc; padding:0 0 0 15px; min-height: 120px;}
 ul.main-menu2 li ul.sub-menu{width: 174px;}
@@ -433,7 +433,7 @@ ul.checkout-cont li.active .ovrlay-bg{display: none;}
 .checkout-cont .ovrlay-bg{display: block; background: #d6d6d6; height: 100%; width: 100%; position: absolute; top: 0; left: 0; opacity: 0.5;}
 .checkout-cont.active .ovrlay-bg{display: none;} **/
 ul.main-menu li a.posRel, .posRel{position: relative; z-index: 1;}
-ul.main-menu li ul.sub-menu.menu-ovr{padding-top: 95px; top: 0;}
+ul.main-menu li ul.sub-menu.menu-ovr{}
 
 
 
@@ -474,8 +474,8 @@ ul.checkout-cont li.active{background: url("../images/divider-sml.png") no-repea
 }
 
 .shdow-search-box {
-	box-shadow: 0 0 3px rgba(81, 203, 238, 1);
-	-webkit-box-shadow: 0 0 3px rgba(81, 203, 238, 1);
-	-moz-box-shadow: 0 0 3px rgba(81, 203, 238, 1);
-	border: 1px solid rgba(81, 203, 238, 1);;
+	box-shadow: 0 0 3px rgba(219, 135, 38, 1);
+	-webkit-box-shadow: 0 0 3px rgba(219, 135, 38, 1);
+	-moz-box-shadow: 0 0 3px rgba(219, 135, 38, 1);
+	border: 1px solid rgba(219, 135, 38, 1);
 }
