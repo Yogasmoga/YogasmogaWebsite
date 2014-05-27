@@ -1,11 +1,10 @@
 jQuery(document).ready(function($){
+    adjustimg();
     initializesignuppopup();
     initializeinvitepopup();
     initializesigninpopup();
-    adjustimg();
 
-
-    var winHeight = $(window).height();
+        var winHeight = $(window).height();
         $("div.2-columns-wrapper").find(".pg-content,.side-menu-bar").css("min-height", winHeight);    
 
 		$(".footer-block").on("click","#smogi-love",function(){
@@ -178,10 +177,27 @@ jQuery(document).ready(function($){
         $(this).next(".slide-desc").fadeIn();        
     });
     $(".sl-desc-handle").on("mouseout",function(){ 
-        setTimeout(function(){
-            $(".slide-desc").fadeOut();            
-        },4000);
-    });      
+        $(".slide-desc").fadeOut();
+        //setTimeout(function(){
+            //$(".slide-desc").fadeOut();            
+        //},4000);
+    });
+
+    $('.main-menu > li, .tr-menu > li').bind({
+        mouseenter: function() {
+            $('.main-menu > li').removeClass('smenu');
+            $(this).find("ul.sub-menu").addClass("show");
+        },
+        mouseleave: function() {
+            $(this).find("ul.sub-menu").removeClass("show");
+            $(this).addClass("smenu").delay(2000)
+            .queue(function() {
+                $(this).removeClass("smenu");
+                $(this).dequeue();
+            });
+        }
+    });
+
     /***Fake password hack***/
     
     $(".f_password").focus(function(){        

@@ -38,15 +38,20 @@ ul.main-menu{margin-left: 40px;}
 ul.main-menu > li{display:inline-block; height: 80px; padding:0 10px; text-transform: uppercase; vertical-align: top; cursor:pointer;}
 ul.main-menu li a,ul.tr-menu > li > ul.sub-menu li a{color: #58595b; font-size: 13px; font-family: gothambold;}
 ul.main-menu li a.menu-heading{line-height: 80px; vertical-align: middle;}
-ul.main-menu li ul.sub-menu{position: absolute; text-align: left; left: 0; background: rgba(255,255,255,0.9); padding: 15px; display: none;}
+ul.main-menu li ul.sub-menu{position: absolute; text-align: left; left: 0; background: url("../images/nav-bg.png") repeat-x left 80px; padding: 15px; display: none;}
+ul.main-menu2 li ul.sub-menu{background-position: left top ;}
 ul.main-menu li ul.sub-menu > li{display: inline-block; vertical-align: top; min-width: 160px; border-left: 1px solid #ccc; padding:0 0 0 15px; min-height: 120px;}
 ul.main-menu2 li ul.sub-menu{width: 174px;}
 ul.main-menu2 li ul.sub-menu>li{min-height: 100%; border: none; padding: 0;}
 ul.main-menu li ul.sub-menu > li:first-child{border:none; padding:0;}
 ul.main-menu li ul.sub-menu > li > ul:first-child a{font-family: gothambold;}
 ul.main-menu li ul.sub-menu > li > ul a,ul.main-menu2 li ul.sub-menu > li > ul:first-child a,ul.tr-menu > li > ul.sub-menu li a{font-family: gothambook;}
-ul.main-menu > li:hover{background: url("../images/menu_arrow.png") no-repeat bottom center; background-size: 17px 14px;}
-ul.main-menu > li:hover > ul.sub-menu{display: block;}
+ul.main-menu > li.smenu, ul.main-menu > li:hover{background: url("../images/menu_arrow.png") no-repeat bottom center; background-size: 17px 14px;}
+ul.main-menu > li.smenu ul.sub-menu,
+ul.tr-menu > li.smenu ul.sub-menu, 
+ul.tr-menu > li.smenu ul.sub-menu.show, 
+ul.main-menu > li ul.sub-menu.show{display: block !important; }
+ul.main-menu > li:hover > ul.sub-menu{}
 ul.tr-menu{margin:5px 0;}
 ul.tr-menu > li{display: inline-block; padding: 0 3px; position: relative;}
 li.free-shipping{font-style: italic; margin-right: 15px;}
@@ -95,7 +100,7 @@ p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight
 .flex-direction-nav .flex-next{background: url("../images/homepage/next-slide.png") no-repeat bottom; background-size:100% 100%; width:24px; height: 46px;}
 
 /****Side bar****/
-div.side-menu-bar{ width:16%; vertical-align:top;min-height: 300px;}
+div.side-menu-bar{ width:300px; vertical-align:top;min-height: 300px;}
 div.side-menu-bar ul, .menu-bar ul{padding: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 div.side-menu-bar ul li a, .menu-bar ul li a{font-size: 15px; font-family: gothambold; color: #58595b;}
 div.side-menu-bar ul li a span.arr, , .menu-bar ul li a span.arr{visibility: hidden;}
@@ -105,7 +110,7 @@ div.side-menu-bar ul li a.current span.arr,div.side-menu-bar ul li a:hover span.
 .cms-loader{margin-top: 100px;}
 
 /***Our Story***/
-.pg-content{width:82%; vertical-align:top; color: #58595b; line-height: normal;min-height: 300px;}
+.pg-content{width:auto; margin: 0 0 0 300px; vertical-align:top; color: #58595b; line-height: normal;min-height: 300px;}
 .os-banner{position: relative;font-size: 40px; }
 .os-banner img{width: 100%;} 
 .os-banner .banner-text{position:absolute; top:20%; left:7%; text-align: left;}
@@ -280,7 +285,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .product-grid .side-menu-bar{width: 20%}
 .product-grid{display: inline-block;}
 
-.product-grid h4{background: url("../images/divider-sml.png") no-repeat center bottom; font: normal 18px gothambold; clear: both; color: #58595b; padding: 15px 0 40px; margin: 0 0 77px; text-transform: uppercase;}
+.product-grid h4{background: url("../images/divider-sml.png") no-repeat center bottom; font: normal 18px gothambold; display: inline-block; width: 100%; color: #58595b; padding: 15px 0 40px; margin: 0 0 77px; text-transform: uppercase;}
 
 .ctglink{margin:50px 0 0; float: left; list-style-type: none;}
 .ctglink li, .ctglink li a{font: normal 14px/24px gotham, arial !important; color: #58595b;}
@@ -383,39 +388,8 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .fitDetail > div.tble{margin: 0 4%; min-width: 60%;}
 .fitDetail table{display: inline-block; margin: 25px 0 0; width: 100%;}
 .top-divider{background: url("../images/dvdr-new.jpg") no-repeat center top; background-size: 100% auto; margin: 40px 0 0; padding: 0;}
-.product-grid .pg-content{width: 75%;}
-
-/** iPad Specific CSS **/
-@media only screen and (device-width: 768px) {
-  /* For general iPad layouts */
-  .contWom h4, li.new-arrivals-desc .block-head{font-size: 15px;}
-  li.new-arrivals-desc .block-head{padding: 0; text-align: left;}
-  .contWom h4 span, li.new-arrivals-desc .block-desc, .os-banner, .bannerFluid .bnrtxt{font-size: 24px; line-height: 28px;}
-  .contWom p, div.side-menu-bar ul li a, .menu-bar ul li a{font-size: 14px;}
-  .contWom p.block-link a, li.new-arrivals-desc .block-link a{font-size: 12px;}
-  .box-str h2.heading{font-size: 16px;}
-
-  /** ProductDetail Page **/
-  .block-elm{font-size: 11px;}
-  .prdname{font-size: 20px;}
-  .gry-box{padding: 15px;}
-  .blck-head-sml span{width: 50px;}
-  .size-list > li{margin: 0 2px 0 0; padding: 8px 2px; width: 26px;}
-  .wishlist{width: 50%;}
-  .earnbucks{margin: 0 2% 0 0; width: 48%;}
-  .social-ico img{margin: 0 0 0 5px;}
-  .online, .chatlink{margin: 0;}
-  .thumb-imgs{width: 100px;}
-
-  .fitDetail > div.tble, .fitDetail > div.video-box{max-width: 100%; float: left; margin: 0 0 15px; clear: both;}
-  .fitDetail > div.tble{max-width: 94%; margin: 0;}
-  .video-box p{margin: 0 0 10px;}
-  .video-box p.block-link a, div.tble p.block-link a{font-size: 10px;}
-  .video-box ul, .vlink-cont{float: left; width: 50%;}
-
-  .shopping-cart{font-size: 12px;}
-  .totalAmnt{font-size: 14px;}
-  .adddields input{width: 78%;}
+.menu-bar.cntn-scroll.f-left.l-align {
+    width: 300px;
 }
 
 /** ShoppingCart **/
@@ -435,7 +409,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .adddields label {float: left; width: 100%;}
 .adddields input {background: #fff; text-transform: capitalize; border: 0 none; display: block; float: left; font: italic 14px gothambook; height: 25px; margin: 0 0 10px; padding: 5px 12px; width: 84%;}
 .adddields span {background: 0 #eeefef; border: 1px solid #B3B3B3; float: left; height: 12px; padding: 8px 4px 14px; width: 6%;}
-.addedItem {background: #fff; float: right; min-height: 200px; width: 99.5%;}
+.addedItem {background: #fff; float: right; width: 99.5%;}
 .addedItem .similarProdList {font-size: 11px; width: 90%; text-transform: uppercase;}
 .addedItem .similarProdList > li {border-bottom: 1px solid #E6E6E6; margin: 0; padding: 10px 0; position: relative;}
 .addedItem .similarProdList > li:last-child{margin: 0; padding: 10px 0 0}
@@ -446,3 +420,58 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .addedItem .similarProdList span span:nth-child(2), .addedItem .similarProdList span span {display: block; text-align: left; width: 100%;}
 .addedItem .similarProdList span span.pname{font-weight: bold;}
 .addedItem .close{background: url("../images/shopping-cart/close.gif"); width: 12px; height: 13px; position: absolute; top: 15px; right: 0;}
+
+
+/** checkoutPage **/
+.checkout-detail{width: 100%; display: inline-block;}
+ul.checkout-cont{margin: 0; padding: 0; width: 100%; list-style: none;}
+ul.checkout-cont li {display: inline-block; margin: auto; min-height: 600px; padding: 0; position: relative; width: 33%;}
+ul.checkout-cont li.active{background: url("../images/big-divider.png") no-repeat center top; background-size: 100% auto;}
+ul.checkout-cont li .ovrlay-bg{display: block; background: #d6d6d6; height: 100%; width: 100%; position: absolute; top: 0; left: 0; opacity: 0.5;}
+ul.checkout-cont li.active .ovrlay-bg{display: none;}
+.checkout-details{padding: 38px 20px 20px; display: block;}
+
+/** .checkout-cont{min-height: 400px; margin: 0 2px 0 0; padding: 20px; text-align: center; float: left; position: relative; width: 30.6%;}
+.checkout-cont.active{background: url("../images/big-divider.png") no-repeat center top; background-size: 100% auto;}
+.checkout-cont .ovrlay-bg{display: block; background: #d6d6d6; height: 100%; width: 100%; position: absolute; top: 0; left: 0; opacity: 0.5;}
+.checkout-cont.active .ovrlay-bg{display: none;} **/
+ul.main-menu li a.posRel, .posRel{position: relative; z-index: 1;}
+ul.main-menu li ul.sub-menu.menu-ovr{padding-top: 95px; top: 0;}
+
+
+
+
+@media only screen and (device-width: 768px) {
+/* For general iPad layouts */
+.contWom h4, li.new-arrivals-desc .block-head{font-size: 15px;}
+li.new-arrivals-desc .block-head{padding: 0; text-align: left;}
+.contWom h4 span, li.new-arrivals-desc .block-desc, .os-banner, .bannerFluid .bnrtxt{font-size: 24px; line-height: 28px;}
+.contWom p, div.side-menu-bar ul li a, .menu-bar ul li a{font-size: 14px;}
+.contWom p.block-link a, li.new-arrivals-desc .block-link a{font-size: 12px;}
+.box-str h2.heading{font-size: 16px;}
+
+/** ProductDetail Page **/
+.block-elm{font-size: 11px;}
+.prdname{font-size: 20px;}
+.gry-box{padding: 15px;}
+.blck-head-sml span{width: 50px;}
+.size-list > li{margin: 0 2px 0 0; padding: 8px 2px; width: 26px;}
+.wishlist{width: 50%;}
+.earnbucks{margin: 0 2% 0 0; width: 48%;}
+.social-ico img{margin: 0 0 0 5px;}
+.online, .chatlink{margin: 0;}
+.thumb-imgs{width: 100px;}
+
+.fitDetail > div.tble, .fitDetail > div.video-box{max-width: 100%; float: left; margin: 0 0 15px; clear: both;}
+.fitDetail > div.tble{max-width: 94%; margin: 0;}
+.video-box p{margin: 0 0 10px;}
+.video-box p.block-link a, div.tble p.block-link a{font-size: 10px;}
+.video-box ul, .vlink-cont{float: left; width: 50%;}
+
+.adddields input, .shopping-cart, .continuelink{font-size: 11px !important;}
+.totalAmnt{font-size: 14px;}
+.adddields input{width: 75% !important;}
+
+/** checkout Dettail Page **/
+ul.checkout-cont li.active{background: url("../images/divider-sml.png") no-repeat center top;}
+}
