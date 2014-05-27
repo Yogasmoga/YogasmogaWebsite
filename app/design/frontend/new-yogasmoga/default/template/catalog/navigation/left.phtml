@@ -34,6 +34,67 @@
 <?php $_categories = $this->getCurrentChildCategories() ?>
 <?php $_count = is_array($_categories)?count($_categories):$_categories->count(); ?>
 <?php if($_count): ?>
+
+    <?php
+        foreach ($_categories as $category){
+            if($category->getIsActive()){
+                $path = $category->getPath();
+                $parentIds = explode('/', $path);
+//                unset($parentIds[0]);
+//                unset($parentIds[1]);
+                $parentCategoryId = $parentIds[2];
+                break;
+            }
+        }
+    ?>
+    <div class="scroller_anchor" style="height: 0px;"></div>
+    <div class="menu-bar cntn-scroll f-left l-align">
+    <ul class="ctglink">
+    <?php
+        $hasnosubcategoryhtml  = '';
+        $withsubcategoryhtml = '';
+
+        $subsubcategory1 = Mage::getModel('catalog/category')->load($parentCategoryId);
+        $subsubcategories = $subsubcategory1->getChildrenCategories();
+    foreach($subsubcategories as $subsubcategory){
+        if($subsubcategory->getChildrenCount() == 0){
+            $hasnosubcategoryhtml .= '<li><a href='.$subsubcategory->getUrl().' class="bld">'.$subsubcategory->getName().'</a></li>';
+        }else{
+            $withsubcategoryhtml .= '<li><a href='.$subsubcategory->getUrl().' class="bld">'.$subsubcategory->getName().'</a></li>';
+            $withsubcategoryhtml .= '<ul class = "subnav">';
+            $subsubsubcategory  = Mage::getModel('catalog/category')->load($subsubcategory->getId())->getChildrenCategories();
+            foreach ($subsubsubcategory as $child3)
+            {
+                if($child3->getIsActive()) {
+                    $withsubcategoryhtml .=  '<li><a href='.$child3->getUrl().'>'.$child3->getName().'</a></li>';
+
+                }
+            }
+            $withsubcategoryhtml .= '</ul>';
+        }
+    }
+        $withsubcategoryhtml .= '</ul></div>';
+
+        echo $hasnosubcategoryhtml.$withsubcategoryhtml;
+
+    ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <?php /*  this is default code by magento
 <div class="block block-layered-nav">
     <div class="block-title">
         <strong><span><?php echo $this->__('Browse By') ?></span></strong>
@@ -56,4 +117,5 @@
         <script type="text/javascript">decorateDataList('narrow-by-list2')</script>
     </div>
 </div>
+ */ ?>
 <?php endif; ?>
