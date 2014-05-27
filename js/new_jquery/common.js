@@ -1,9 +1,8 @@
 jQuery(document).ready(function($){
+    adjustimg();
     initializesignuppopup();
     initializeinvitepopup();
     initializesigninpopup();
-    adjustimg();
-
 
         var winHeight = $(window).height();
         $("div.2-columns-wrapper").find(".pg-content,.side-menu-bar").css("min-height", winHeight);    
@@ -178,10 +177,20 @@ jQuery(document).ready(function($){
         $(this).next(".slide-desc").fadeIn();        
     });
     $(".sl-desc-handle").on("mouseout",function(){ 
+        $(".slide-desc").fadeOut();
+        //setTimeout(function(){
+            //$(".slide-desc").fadeOut();            
+        //},4000);
+    });
+    
+    $("ul.main-menu").find("li").on("mouseout", function(){ 
         setTimeout(function(){
-            $(".slide-desc").fadeOut();            
-        },4000);
-    });      
+            $(this).find("ul.sub-menu").css("display", "none");            
+        }, 4000);
+    });
+
+
+
     /***Fake password hack***/
     
     $(".f_password").focus(function(){        

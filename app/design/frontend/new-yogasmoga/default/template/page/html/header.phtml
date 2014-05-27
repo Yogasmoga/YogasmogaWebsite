@@ -279,7 +279,7 @@ if($serverType == 'production')
         <?php endif?>
         
         <div class="f-left header-left">
-            <h1 class="logo">
+            <h1 class="logo posRel">
                 <a class="logo" href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>">
                     <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
                 </a>
@@ -299,15 +299,15 @@ if($serverType == 'production')
                         //show Main parent categories first level
                         if($child1->getId() == $currentcategoryid)
                            // echo "<li><a class='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
-                        echo "<li><a class='menu-heading' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
+                        echo "<li><a class='menu-heading posRel' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
                         else
                             //echo "<li><a class ='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
-                            echo "<li><a class='menu-heading' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
+                            echo "<li><a class='menu-heading posRel' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
                         // show sub categories second level
 
 //                        echo '<ul class="sub-menu"><li><ul><li><a href="">What\'s new!</a></li><li><a href="">Shop the colors!</a></li><li><a href="">Top sellers</a></li>
 //                           </ul></li>';
-                        $firstcolumn = '<ul class="sub-menu"><li><ul>';
+                        $firstcolumn = '<ul class="sub-menu menu-ovr"><li><ul>';
                         $remainingcolumn = '';
                         $subcategory = Mage::getModel('catalog/category')->load($child1->getId());
                         $subcategories = $subcategory->getChildrenCategories();
