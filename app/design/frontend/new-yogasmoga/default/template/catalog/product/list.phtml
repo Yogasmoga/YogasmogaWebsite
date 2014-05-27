@@ -17,15 +17,142 @@ $_helper = $this->helper('catalog/output');
 <?php $_columnCount = $this->getColumnCount();?>
 <?php
 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
-$readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
+$readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color' ORDER BY eao.sort_order,eaov.value");
+$colorIndexArr = array();
 while ($row = $readresult->fetch() ) {
     $clrinfo[$row['Value']] = $row['Attribute'];
+    $colorIndexArr [] = $row['Value'];
 }
-foreach ($_productCollection as $_product):
+foreach ($_productCollection as $_product){
+    $categoryId = $_product->getCategoryId();
+    break;
+}
+    $category = Mage::getModel('catalog/category')->load($categoryId)->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
+
+    $i=0;
+    $simpleProductArr = array();
+    $configurableProductArr = array();
+    $configurableProductArrKey = array();
+    $configurableProductSort = array();
+    $configurableProductSort2 = array();
+    $productSort = array();
+    foreach ($category as $products){
+
+
+        $simpleProduct= Mage::getModel('catalog/product')->load($products->getId());
+
+        $sproductColor = $simpleProduct->getColor();
+        $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($products->getId());
+        $configurableProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
+
+        if($configurableProduct->getId() != ''){
+            if(!array_key_exists($configurableProduct->getId(), $configurableProductArr))
+            {
+                $configurableProductArr[$configurableProduct->getId()] = array();
+                array_push($configurableProductArr[$configurableProduct->getId()],$sproductColor);
+                $configurableProductSort[]  = Mage::getResourceModel('catalog/product')->getAttributeRawValue($configurableProduct->getId(), 'sortorder', Mage::app()->getStore()->getStoreId());
+            }
+            else{
+                if(!in_array($sproductColor,$configurableProductArr[$configurableProduct->getId()]))
+                {
+                    array_push($configurableProductArr[$configurableProduct->getId()],$sproductColor);
+
+                }
+
+            }
+        }
+
+        //sort($configurableProductSort);
+
+    }
+
+    $configurableProductSort2 = $configurableProductSort;
+    $configurableProductArrKey = array_keys($configurableProductArr);  // get all root keys of configurable product array
+    array_multisort($configurableProductSort, $configurableProductArr);
+    array_multisort($configurableProductSort2, $configurableProductArrKey);
+
+    $i = 0;
+
+    // assign keys to configurable array because multisort destroy key when sorting
+    foreach($configurableProductArr as $key => $val){
+        $configurableProductArr[$configurableProductArrKey[$i]] = $configurableProductArr[$key];
+        // sort color according to the colors define in database
+        $tempArr = array();
+        $tempArr = $configurableProductArr[$configurableProductArrKey[$i]];
+        $sortedColor = array();
+        foreach($colorIndexArr as $col)
+        {
+            if(in_array($col,$tempArr)){
+                array_push($sortedColor,$col);
+            }
+            if(count($sortedColor)== count($tempArr))
+                break;
+        }
+        //array_replace($configurableProductArr[$configurableProductArrKey[$i]],$sortedColor);
+        $j=0;
+        foreach($configurableProductArr[$configurableProductArrKey[$i]] as &$proColor){
+            $proColor = $sortedColor[$j];
+
+            $j++;
+        }
+        // ------- end sort color according to the colors define in database
+
+        unset($configurableProductArr[$key]);
+        $i++;
+    }
+
+    //print_r($configurableProductArr);die;
+    foreach($configurableProductArr as $key => $val){
+        $confProduct = Mage::getModel('catalog/product')->load($key);
+        // get all images for the product
+        $_gallery = Mage::getModel('catalog/product')->load($key)->getMediaGalleryImages();
+        $imageArr = array();
+        foreach($_gallery as $_image)
+        {
+
+            $imgdata = json_decode(trim($_image->getLabel()), true);
+            $colorId = $imgdata['color'];
+
+            if(in_array($colorId,$configurableProductArr[$key]))
+            {
+                if(!array_key_exists($colorId,$imageArr))
+                {
+                    $imageArr[$colorId] = $_image->getFile();
+
+                }
+            }
+
+
+
+        }
+        ?><h4><?php echo $confProduct->getName();   ?></h4>
+    <?php
+        foreach($configurableProductArr[$key] as $childProduct){
+        ?>
+            <div class="productCont">
+                <div class="prod-img">
+                    <a href="<?php echo $confProduct->getProductUrl().'?color='.$childProduct;?>" alt="<?php echo $confProduct->getName();?>">
+                        <img class="prd-image" src="<?php    echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$imageArr[$childProduct])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(221, 330)->setQuality(91); ?>" /> </a>
+                </div>
+                <div class="caption">
+                    <a href="<?php echo $confProduct->getProductUrl();?>"> <?php echo $clrinfo[$childProduct]?></a><span>$<?php  echo  round($confProduct->getPrice(),2);?></span>
+                </div>
+            </div>
+
+        <?php
+        }
+    }
+
+    //print_r($configurableProductSort);
+   // print_r($configurableProductSort2);
+    //print_r($clrinfo);
+    //print_r($configurableProductArr);
+    //print_r($configurableProductArrKey);die;
+
 
     ?>
-    <h4><?php echo $_product->getName();?></h4>
     <?php
+/*
     if(Mage::getModel('catalog/product')->load($_product->getId())->getTypeID() == "configurable")
     {
         $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
@@ -48,7 +175,7 @@ foreach ($_productCollection as $_product):
             <div class="productCont">
         <div class="prod-img">
             <a href="<?php echo $_product->getProductUrl();?>" alt="<?php echo $_product->getName();?>">
-            <img class="prd-image" src="<?php  echo $this->getSkinUrl('images/women/dum1.jpg')//  echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(221, 330)->setQuality(91); ?>" /> </a>
+            <img class="prd-image" src="<?php    echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(221, 330)->setQuality(91); ?>" /> </a>
         </div>
         <div class="caption">
         <a href="<?php echo $_product->getProductUrl();?>"> <?php echo $clrinfo[$color]?></a><span>$<?php  echo  round($_product->getPrice(),2);?></span>
@@ -57,7 +184,7 @@ foreach ($_productCollection as $_product):
     <?php
         }
     }
-
+*/
 
 
 
@@ -96,195 +223,18 @@ foreach ($_productCollection as $_product):
     <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
         </ul>
     <?php endif */?>
-<?php endforeach ?>
+
 </div>
 </div>
 
 
 
 
-<!-- coloumnLayout -->
-<div class="2-columns-wrapper">
 
-
-
-
-<!-- Product Listing -->
-<div class="pg-content f-left">
-    <!-- productHeading -->
-    <h4>Yantra Tanks</h4>
-    <!-- productHeading -->
-
-    <!-- productCont -->
-    <div class="productCont">
-        <div class="prod-img">
-            <img src="{{skin url="images/product/dum1.jpg"}}" alt="Women's Top" />
-        </div>
-        <div class="caption">
-            Product<span>$000</span>
-        </div>
-    </div>
-    <!-- productCont -->
-    <!-- productCont -->
-    <div class="productCont">
-        <div class="prod-img">
-            <img src="{{skin url="images/product/dum2.jpg"}}" alt="Women's Top" />
-        </div>
-        <div class="caption">
-            Product<span>$000</span>
-        </div>
-    </div>
-    <!-- productCont -->
-    <!-- productCont -->
-    <div class="productCont">
-        <div class="prod-img">
-            <img src="{{skin url="images/product/dum3.jpg"}}" alt="Women's Top" />
-        </div>
-        <div class="caption">
-            Product<span>$000</span>
-        </div>
-    </div>
-    <!-- productCont -->
-    <!-- productCont -->
-    <div class="productCont">
-        <div class="prod-img">
-            <img src="{{skin url="images/product/dum4.jpg"}}" alt="Women's Top" />
-        </div>
-        <div class="caption">
-            Product<span>$000</span>
-        </div>
-    </div>
-    <!-- productCont -->
-    <!-- productCont -->
-    <div class="productCont">
-        <div class="prod-img">
-            <img src="{{skin url="images/product/dum3.jpg"}}" alt="Women's Top" />
-        </div>
-        <div class="caption">
-            Product<span>$000</span>
-        </div>
-    </div>
-    <!-- productCont -->
-    <!-- productCont -->
-    <div class="productCont">
-        <div class="prod-img">
-            <img src="{{skin url="images/product/dum1.jpg"}}" alt="Women's Top" />
-        </div>
-        <div class="caption">
-            Product<span>$000</span>
-        </div>
-    </div>
-    <!-- productCont -->
-    <!-- productCont -->
-    <div class="productCont">
-        <div class="prod-img">
-            <img src="{{skin url="images/product/dum4.jpg"}}" alt="Women's Top" />
-        </div>
-        <div class="caption">
-            Product<span>$000</span>
-        </div>
-    </div>
-    <!-- productCont -->
-    <!-- productCont -->
-    <div class="productCont">
-        <div class="prod-img">
-            <img src="{{skin url="images/product/dum2.jpg"}}" alt="Women's Top" />
-        </div>
-        <div class="caption">
-            Product<span>$000</span>
-        </div>
-    </div>
-    <!-- productCont -->
-
-    <!-- productHeading -->
-    <h4>sneak 'n peak bras</h4>
-    <!-- productHeading -->
-
-    <!-- productCont -->
-    <div class="productCont">
-        <div class="prod-img">
-            <img src="{{skin url="images/product/dum1.jpg"}}" alt="Women's Top" />
-        </div>
-        <div class="caption">
-            Product<span>$000</span>
-        </div>
-    </div>
-    <!-- productCont -->
-    <!-- productCont -->
-    <div class="productCont">
-        <div class="prod-img">
-            <img src="{{skin url="images/product/dum2.jpg"}}" alt="Women's Top" />
-        </div>
-        <div class="caption">
-            Product<span>$000</span>
-        </div>
-    </div>
-    <!-- productCont -->
-    <!-- productCont -->
-    <div class="productCont">
-        <div class="prod-img">
-            <img src="{{skin url="images/product/dum3.jpg"}}" alt="Women's Top" />
-        </div>
-        <div class="caption">
-            Product<span>$000</span>
-        </div>
-    </div>
-    <!-- productCont -->
-    <!-- productCont -->
-    <div class="productCont">
-        <div class="prod-img">
-            <img src="{{skin url="images/product/dum4.jpg"}}" alt="Women's Top" />
-        </div>
-        <div class="caption">
-            Product<span>$000</span>
-        </div>
-    </div>
-    <!-- productCont -->
-    <!-- productCont -->
-    <div class="productCont">
-        <div class="prod-img">
-            <img src="{{skin url="images/product/dum3.jpg"}}" alt="Women's Top" />
-        </div>
-        <div class="caption">
-            Product<span>$000</span>
-        </div>
-    </div>
-    <!-- productCont -->
-    <!-- productCont -->
-    <div class="productCont">
-        <div class="prod-img">
-            <img src="{{skin url="images/product/dum1.jpg"}}" alt="Women's Top" />
-        </div>
-        <div class="caption">
-            Product<span>$000</span>
-        </div>
-    </div>
-    <!-- productCont -->
-    <!-- productCont -->
-    <div class="productCont">
-        <div class="prod-img">
-            <img src="{{skin url="images/product/dum4.jpg"}}" alt="Women's Top" />
-        </div>
-        <div class="caption">
-            Product<span>$000</span>
-        </div>
-    </div>
-    <!-- productCont -->
-    <!-- productCont -->
-    <div class="productCont">
-        <div class="prod-img">
-            <img src="{{skin url="images/product/dum2.jpg"}}" alt="Women's Top" />
-        </div>
-        <div class="caption">
-            Product<span>$000</span>
-        </div>
-    </div>
     <!-- productCont -->
 
 </div>
 <!-- Product Listing -->
 
-</div>
-<!-- coloumnLayout -->
-</div>
+
 <div class="clear-fix"></div>
