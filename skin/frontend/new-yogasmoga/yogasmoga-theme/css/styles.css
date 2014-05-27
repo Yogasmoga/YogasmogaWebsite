@@ -77,7 +77,7 @@ ul,ol         { list-style:none; }
 .hidden       { display:block !important; border:0 !important; margin:0 !important; padding:0 !important; font-size:0 !important; line-height:0 !important; width:0 !important; height:0 !important; overflow:hidden !important; }
 .nobr         { white-space:nowrap !important; }
 .wrap         { white-space:normal !important; }
-.a-left       { text-align:left !important; }
+.a-left       { text-align:left !important; }`
 .a-center     { text-align:center !important; }
 .a-right      { text-align:right !important; }
 .v-top        { vertical-align:top; }

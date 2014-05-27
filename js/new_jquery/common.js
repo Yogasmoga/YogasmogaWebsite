@@ -5,7 +5,7 @@ jQuery(document).ready(function($){
     adjustimg();
 
 
-    var winHeight = $(window).height();
+        var winHeight = $(window).height();
         $("div.2-columns-wrapper").find(".pg-content,.side-menu-bar").css("min-height", winHeight);    
 
 		$(".footer-block").on("click","#smogi-love",function(){

@@ -42,7 +42,8 @@ jQuery(document).ready(function($){
     function openShoppingCart(){
         var shoppingWdth = $(".shopping-cart").width();
         var bodyHght = $(window).height();
-
+        console.log(shoppingWdth);
+        console.log(bodyHght);
         $(".open-cart").on("click", function(){
             $(".shopping-cart").animate({
                 height: bodyHght
