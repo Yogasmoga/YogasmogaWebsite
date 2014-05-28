@@ -265,7 +265,7 @@
                             if($i==4)break;$i++;
                          ?>
                             <li>
-                                <a href="<?php echo $_product->getProductUrl() ?>"><img class="prd-image" src="<?php  echo $this->getSkinUrl('images/women/dum1.jpg')  //echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(221, 330)->setQuality(91); ?>" /></a>
+                                <a id="<?php echo $_product->getId(); ?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(221, 330)->setQuality(91); ?>" /></a>
 
 
                                 <div class="prd-details">
@@ -324,7 +324,11 @@
                             </p>
                         </li>
                     </ul>                    
-                </div>                
+                </div>
+                <div style="display:none;">
+                    <div id="productdetailpopup">
+                    </div>
+                </div>
                 <!-- ProductListing Part -->
                 
                 <div class="clear-fix"></div>
