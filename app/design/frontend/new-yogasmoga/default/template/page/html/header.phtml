@@ -211,7 +211,7 @@ if($serverType == 'production')
                                     $("#signin").html("SIGN OUT").attr({href:homeUrl+'customer/account/logout/',id:"sign-out"});
                                     if(name != '')
                                     $("#welcome-name").html("Hi "+name);
-                                    $('.topmenulinks').html($('.topmenulinks').html().replace('Log In','MY ACCOUNT'));
+
                                     $( "#signup" ).dialog({
                                         close : function( event, ui ) {
                                             <?php
