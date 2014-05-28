@@ -1,14 +1,11 @@
-<div class="product-grid">
-<!-- bannerTop -->
-<!--<div class="bannerFluid">
-    <img src="{{skin url="images/product/bnr-big1.jpg"}}" alt="Women's Top" />
-    <div class="bnrtxt">
-        Women's Top
-    </div>
-</div> -->
-<!-- bannerTop -->
+<!-- viewWrapper -->
 <div class="2-columns-wrapper">
-<div class="pg-content f-left">
+<!-- leftCategoryLink -->
+<?php echo $this->getChildHtml('catalog.leftnav') ?>
+<!-- leftCategoryLink -->
+
+<!-- productGridView -->
+<div class="pg-content">
 <?php
 $_productCollection=$this->getLoadedProductCollection();
 $_helper = $this->helper('catalog/output');
@@ -245,16 +242,8 @@ foreach ($_productCollection as $_product){
     <?php endif */?>
 
 </div>
-</div>
-
-
-
-
-
-    <!-- productCont -->
+<!-- productGridView -->
 
 </div>
-<!-- Product Listing -->
-
-
+<!-- viewWrapper -->
 <div class="clear-fix"></div>
