@@ -108,7 +108,7 @@ div.side-menu-bar ul li a.current span.arr,div.side-menu-bar ul li a:hover span.
 
 /***Our Story***/
 .pg-content{width:auto; margin: 0 0 0 300px; vertical-align:top; color: #58595b; line-height: normal;min-height: 300px;}
-.os-banner{position: relative;font-size: 40px; }
+.os-banner{position: relative;font-size: 40px; min-height: 500px; }
 .os-banner img{width: 100%;} 
 .os-banner .banner-text{position:absolute; top:20%; left:7%; text-align: left;}
 .banner-text p{font-family: ITCAvantGardeProBd; text-transform: uppercase;}
@@ -446,6 +446,7 @@ ul.main-menu li ul.sub-menu.menu-ovr{}
 
 @media only screen and (device-width: 768px) {
 /* For general iPad layouts */
+.os-banner{min-height: 250px;}
 .contWom h4, li.new-arrivals-desc .block-head{font-size: 15px;}
 li.new-arrivals-desc .block-head{padding: 0; text-align: left;}
 .contWom h4 span, li.new-arrivals-desc .block-desc, .os-banner, .bannerFluid .bnrtxt{font-size: 24px; line-height: 28px;}

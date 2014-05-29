@@ -430,8 +430,7 @@ if($serverType == 'production')
             <div class="right-bottom-block">                
                 <div class="in-bl">
                     <ul class="main-menu main-menu2">                                          
-                        <li>
-                            <a href="<?php echo $this->getBaseUrl();?>our-story-new#story" class="main-heading">ys story</a>
+                        <li data-blockid = "story"><a href="<?php echo $this->getBaseUrl();?>our-story-new#story" class="main-heading">ys story</a>
 
                             <ul class="sub-menu l-align cms-header-link" style="left:-52px;">
 
@@ -445,20 +444,19 @@ if($serverType == 'production')
 
                             </ul>
                         </li>
-                        <li>
-                            <a href="<?php echo $this->getBaseUrl();?>ys-tech-new#ys-fabric-tech" class="main-heading">ys tech</a>
+                        <li data-blockid="ys-fabric-tech"><a href="<?php echo $this->getBaseUrl();?>ys-tech-new#ys-fabric-tech" class="main-heading">ys tech</a>
                             <ul class="sub-menu l-align cms-header-link" style="left:-52px;">
                                 <li data-blockid="ys-fabric-tech"><a href="<?php echo $this->getBaseUrl();?>ys-tech-new#ys-fabric-tech">ys fabric tech</a></li>
                                 <li data-blockid="ys-color-tech"><a href="<?php echo $this->getBaseUrl();?>ys-tech-new#ys-color-tech">ys color tech</a></li>
                                 <li data-blockid="design-elements"><a href="<?php echo $this->getBaseUrl();?>ys-tech-new#design-elements">design elements</a></li>                                                               
                             </ul>
                         </li>                        
-                        <li>
-                            <a href="" class="main-heading">Smogi Bucks</a>
+                        <li data-blockid="empty">
+                            <a href="javascript:void(0)" class="main-heading">Smogi Bucks</a>
                             <ul class="sub-menu l-align" style="left:-37px;">                                
-                                <li><a href="">what is smogi bucks</a></li>
-                                <li><a href="">how can i get them</a></li>
-                                <li><a href="">smogi bucks balance</a></li>                                                                 
+                                <li data-blockid="empty"><a href="javascript:void(0)">what is smogi bucks</a></li>
+                                <li data-blockid="empty"><a href="javascript:void(0)">how can i get them</a></li>
+                                <li data-blockid="empty"><a href="javascript:void(0)">smogi bucks balance</a></li>                                                                 
                             </ul>
                         </li>
                     </ul>

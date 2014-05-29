@@ -35,19 +35,38 @@ jQuery(document).ready(function($){
     });
     // check for click from top menu navigation for cms page
     $(".cms-header-link").on("click","li",function(event){
-        $(".pg-content").html("<img class='cms-loader' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/loading1.gif' />");
-        var blockid_data = $(this).attr("data-blockid");
-        retrievecmsblockcontent(blockid_data);
-        $(".side-menu-bar ul li").each(function(){
-           $(this).children("a").removeClass("current");
-           if($(this).attr("data-blockid") == blockid_data)
-           {
-               $(this).children("a").addClass("current");
-           }
-        });
+        if($(this).attr("data-blockid") != "empty"){
+            $(".pg-content").html("<img class='cms-loader' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/loading1.gif' />");
+            var blockid_data = $(this).attr("data-blockid");
+            retrievecmsblockcontent(blockid_data);
+            
+            $(".side-menu-bar ul li").each(function(){
+                $(this).children("a").removeClass("current");
+                if($(this).attr("data-blockid") == blockid_data)
+                {
+                   $(this).children("a").addClass("current");
+                }
+            });            
+        }
+       });
 
 
-
+     // check for click from top menu navigation for cms page
+    $(".main-menu2 li").find("a.main-heading").on("click",function(event){
+        if($(this).parent("li").attr("data-blockid") != "empty"){
+            $(".side-menu-bar ul li a").removeClass("current");
+            $(".pg-content").html("<img class='cms-loader' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/loading1.gif' />");
+            //alert($(this).parent("li").attr("data-blockid"));
+            var blockid_data = $(this).parent("li").attr("data-blockid");
+            retrievecmsblockcontent(blockid_data);
+            $(".side-menu-bar ul li").each(function(){
+               $(this).removeClass("current");
+               if($(this).attr("data-blockid") == blockid_data)
+               {
+                   $(this).children("a").addClass("current");
+               }
+            });          
+        }
     });
     // function for retrieving html for cms page via ajax
     function retrievecmsblockcontent(blockid)
