@@ -60,7 +60,7 @@
         if($subsubcategory->getChildrenCount() == 0){
             $hasnosubcategoryhtml .= '<li><a href='.$subsubcategory->getUrl().' class="bld">'.$subsubcategory->getName().'</a></li>';
         }else{
-            $withsubcategoryhtml .= '<li><a href='.$subsubcategory->getUrl().' class="bld">'.$subsubcategory->getName().'</a></li>';
+            $withsubcategoryhtml .= '<li class = "sub-head"><a href='.$subsubcategory->getUrl().' class="bld">'.$subsubcategory->getName().'</a></li>';
             $withsubcategoryhtml .= '<ul class = "subnav">';
             $subsubsubcategory  = Mage::getModel('catalog/category')->load($subsubcategory->getId())->getChildrenCategories();
             foreach ($subsubsubcategory as $child3)
