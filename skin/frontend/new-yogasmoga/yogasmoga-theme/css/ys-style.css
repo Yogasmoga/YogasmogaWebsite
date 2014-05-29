@@ -60,7 +60,7 @@ ul.main-menu2{margin-left: 0; margin-right: 25px;}
 ul.main-menu2 > li{position: relative; padding-top: 2px; height: 50px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 ul.main-menu2 a.main-heading{display: block; height: 48px;}
 ul.main-menu2 li ul.sub-menu li a{font-family: gothambook;}
-ul.main-menu2 > li:hover > ul.sub-menu{display: block;}
+ul.main-menu2 > li:hover > ul.sub-menu, ul.main-menu > li:hover > ul.sub-menu{display: block;}
 .sub-menu a:hover{color:#cc0033 !important;}
 /**Search Bar**/
 .right-block{height: 80px;}

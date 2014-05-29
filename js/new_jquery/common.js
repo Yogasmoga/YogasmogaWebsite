@@ -194,21 +194,15 @@ jQuery(document).ready(function($){
     });
 
     // for holding sub-menu open for 2 sec
-    $('.ctag-menu > li').bind({
-        mouseenter: function() {
-            $('.ctag-menu > li').removeClass("smenu");
-            $(".ctag-menu > li ul.sub-menu").hide();
-            $(this).find("ul.sub-menu").fadeIn();
-        },
-        mouseleave: function() {            
-            $(this).addClass("smenu").delay(900)
-            .queue(function() {
-               $(this).removeClass("smenu");
-                $(this).find("ul.sub-menu").fadeOut();
-                $(this).dequeue();
-            });
-        }
-    });
+    //$('.ctag-menu > li').mouseenter(function(){
+       // $("ul.sub-menu").hide();
+       // $('.ctag-menu > li').removeClass("arw")
+       // $(this).find(".sub-menu").fadeIn();
+   // });
+   // $('.ctag-menu > li').mouseleave(function(){
+       // $(this).find(".sub-menu").fadeIn().delay(500).fadeOut();
+    //});
+
 
     /***Fake password hack***/
     
