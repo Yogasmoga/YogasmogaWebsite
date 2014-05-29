@@ -3,16 +3,6 @@ jQuery(document).ready(function($){
     //openShoppingCart();
 
 
-    function cycleImages(){
-        var $active = $('.prod-img .active');
-        var $next = ($active.next().length > 0) ? $active.next() : $('.prod-img img:first');
-        $next.css('z-index',2);//move the next image up the pile
-        $active.fadeOut(1500,function(){//fade out the top image
-            $active.css('z-index',1).show().removeClass('active');//reset the z-index and unhide the image
-            $next.css('z-index',3).addClass('active');//make the next image the top one
-        });
-    };
-
     // Category links fixed on scroll function
     function scrollingLink(){
         var wdth = $(".cntn-scroll").width();
@@ -25,7 +15,7 @@ jQuery(document).ready(function($){
                     // Change the CSS of the scroller to hilight it and fix it at the top of the screen.
                     $('.cntn-scroll').css({
                         'position': 'fixed',
-                        'top': '50px'
+                        'top': '100px'
                     });
                     
                     // this is container div class
