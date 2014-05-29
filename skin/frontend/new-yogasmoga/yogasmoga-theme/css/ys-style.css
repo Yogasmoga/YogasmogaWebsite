@@ -284,7 +284,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 
 .product-grid h4{background: url("../images/divider-sml.png") no-repeat center bottom; font: normal 18px gothambold; display: inline-block; width: 100%; color: #58595b; padding: 15px 0 40px; margin: 0 0 77px; text-transform: uppercase;}
 
-.ctglink{margin:0 0 0; float: left; list-style-type: none;}
+.ctglink{margin:55px 0 0; float: left; list-style-type: none;}
 .ctglink li, .ctglink li a{font: normal 13px/24px gotham, arial !important; color: #58595b; text-transform: uppercase;}
 .ctglink li.sub-head{margin: 30px 0 0;}
 .ctglink li.sub-head > a, .ctglink li a.bld{font-weight: bold !important;}
@@ -485,8 +485,4 @@ ul.checkout-cont li.active{background: url("../images/divider-sml.png") no-repea
 	-webkit-box-shadow: 0 0 3px rgba(219, 135, 38, 1);
 	-moz-box-shadow: 0 0 3px rgba(219, 135, 38, 1);
 	border: 1px solid rgba(219, 135, 38, 1);
-}
-.menu-bar.cntn-scroll.f-left.l-align {
-	position: relative;
-	top: 50px;
 }
