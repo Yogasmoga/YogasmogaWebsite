@@ -77,6 +77,8 @@ ul.main-menu2 > li:hover > ul.sub-menu, ul.main-menu > li:hover > ul.sub-menu{di
 .block1{width: 65%;}
 .block2{width: 35%; padding-top: 10%; padding-left: 3%;}
 .block1,.block2,.block3,.block4{float: left; position: relative; vertical-align: top; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+.block3{width: 46.33414076626522%;}
+.block4{width: 53.66585923373478%;}
 .block-text{position: absolute; top: 8%; left: 6%;font-family:ITCAvantGardeProMd; line-height: normal;}
 ul.fabric-qua{position: absolute; bottom: 5%; width: 100%;}
 ul.fabric-qua li{display: inline-block; color: #fff; text-align: center; font-size: 0.8em; padding: 0 15px; }
@@ -438,8 +440,8 @@ ul.checkout-cont li.active .ovrlay-bg{display: none;}
 .checkout-cont.active{background: url("../images/big-divider.png") no-repeat center top; background-size: 100% auto;}
 .checkout-cont .ovrlay-bg{display: block; background: #d6d6d6; height: 100%; width: 100%; position: absolute; top: 0; left: 0; opacity: 0.5;}
 .checkout-cont.active .ovrlay-bg{display: none;} **/
-ul.main-menu li a.posRel, .posRel{position: relative; z-index: 1;}
-ul.main-menu li ul.sub-menu.menu-ovr{}
+/*ul.main-menu li a.posRel, .posRel{position: relative; z-index: 1;}
+ul.main-menu li ul.sub-menu.menu-ovr{}*/
 
 
 

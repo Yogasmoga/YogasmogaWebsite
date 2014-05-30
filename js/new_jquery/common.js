@@ -1,5 +1,4 @@
 jQuery(document).ready(function($){
-    adjustimg();
     initializesignuppopup();
     initializeinvitepopup();
     initializesigninpopup();
@@ -153,26 +152,6 @@ jQuery(document).ready(function($){
     }
 
 
-
-    function adjustimg(){
-        var mw = $(".structure").width() - 14;        
-        jQuery(".structure").each(function(){
-            var jQuerythis = jQuery(this),
-            blockOne = jQuerythis.find(".block3"),
-            blockTwo = jQuerythis.find(".block4"),
-            blockOneImg = blockOne.find("img"),
-            blockTwoImg = blockTwo.find("img");
-            blockOneImgHeight = blockOneImg.height() - 7,
-            blockOneImgWidth = blockOneImg.width() - 7,
-            blockTwoImgHeight = blockTwoImg.height() - 7,
-            blockTwoImgWidth = blockTwoImg.width() - 7;
-            ratioOne = (mw * blockTwoImgHeight) / (blockOneImgHeight * blockTwoImgWidth + blockTwoImgHeight * blockOneImgWidth);
-            ratioTwo = (mw * blockOneImgHeight) / (blockOneImgHeight * blockTwoImgWidth + blockTwoImgHeight * blockOneImgWidth);
-            blockOneImg.closest(".block3").width(ratioOne * blockOneImgWidth * 100 / mw + "%"); 
-            blockTwoImg.closest(".block4").width(ratioTwo * blockTwoImgWidth * 100 / mw + "%");            
-        });
-    }
-
     $(".sl-desc-handle").on("mouseover",function(){
         $(this).next(".slide-desc").fadeIn();        
     });
@@ -202,7 +181,6 @@ jQuery(document).ready(function($){
    // $('.ctag-menu > li').mouseleave(function(){
        // $(this).find(".sub-menu").fadeIn().delay(500).fadeOut();
     //});
-
 
     /***Fake password hack***/
     
