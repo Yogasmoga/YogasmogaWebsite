@@ -24,6 +24,7 @@ foreach ($_productCollection as $_product){
     $categoryId = $_product->getCategoryId();
     break;
 }
+if($categoryId != '')
     $category = Mage::getModel('catalog/category')->load($categoryId)->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
 
     $i=0;

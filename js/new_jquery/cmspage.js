@@ -4,6 +4,7 @@ jQuery(document).ready(function($){
 
     // check for url with HASH value for cms pages
     if(window.location.hash != '') {
+        $(".side-menu-bar ul li").children("a").find("span.arr").text("");
         var blockid = window.location.hash;
         blockid = blockid.substring(1, blockid.length);
         $(".pg-content").html("<img class='cms-loader' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/loading1.gif' />");
@@ -13,6 +14,7 @@ jQuery(document).ready(function($){
             if($(this).attr("data-blockid") == blockid)
             {
                 $(this).children("a").addClass("current");
+                $(this).children("a").find("span.arr").text(">");
             }
         });
 
@@ -21,10 +23,11 @@ jQuery(document).ready(function($){
 
     // check for click from left column in cms pages
     $(".side-menu-bar").on("click","ul li",function(event){
-
+        $(".side-menu-bar ul li").children("a").find("span.arr").text("");
         $(this).siblings().children("a").removeClass("current");
         $(this).children("a").addClass("current");
         location.hash = $(this).children("a").attr("href");
+        $(this).children("a").find("span.arr").text(">");
 
 //        event.preventDefault();
 //        alert($(this).text());
@@ -36,6 +39,7 @@ jQuery(document).ready(function($){
     // check for click from top menu navigation for cms page
     $(".cms-header-link").on("click","li",function(event){
         if($(this).attr("data-blockid") != "empty"){
+            $(".side-menu-bar ul li").children("a").find("span.arr").text("");
             $(".pg-content").html("<img class='cms-loader' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/loading1.gif' />");
             var blockid_data = $(this).attr("data-blockid");
             retrievecmsblockcontent(blockid_data);
@@ -45,6 +49,7 @@ jQuery(document).ready(function($){
                 if($(this).attr("data-blockid") == blockid_data)
                 {
                    $(this).children("a").addClass("current");
+                   $(this).children("a").find("span.arr").text(">");
                 }
             });            
         }
@@ -53,6 +58,7 @@ jQuery(document).ready(function($){
 
      // check for click from top menu navigation for cms page
     $(".main-menu2 li").find("a.main-heading").on("click",function(event){
+        $(".side-menu-bar ul li").children("a").find("span.arr").text("");
         if($(this).parent("li").attr("data-blockid") != "empty"){
             $(".side-menu-bar ul li a").removeClass("current");
             $(".pg-content").html("<img class='cms-loader' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/loading1.gif' />");
@@ -64,10 +70,12 @@ jQuery(document).ready(function($){
                if($(this).attr("data-blockid") == blockid_data)
                {
                    $(this).children("a").addClass("current");
+                   $(this).children("a").find("span.arr").text(">");
                }
             });          
         }
     });
+
     // function for retrieving html for cms page via ajax
     function retrievecmsblockcontent(blockid)
     {

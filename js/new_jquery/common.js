@@ -1,34 +1,53 @@
 jQuery(document).ready(function($){
     adjustimg();
+    imgHghtSize();
     initializesignuppopup();
     initializeinvitepopup();
     initializesigninpopup();
 
-        var winHeight = $(window).height();
-        $("div.2-columns-wrapper").find(".pg-content,.side-menu-bar").css("min-height", winHeight);    
 
-		$(".footer-block").on("click","#smogi-love",function(){
-             if(!_islogedinuser)
-            {
-			 $("#signup").dialog( "open" );			
-            }
-		});
-        $(".footer-block").on("click","#invite-friend",function(){
+    function imgHghtSize(){
+        var wdthblck3 = $(".structure .block3");
+        var wdthblck3Hght = $(".structure .block3").height();
+        var wdthblck4 = $(".structure .block4");
 
-            if(!_islogedinuser)
-            {
-                _isClickShareWithFriends = true;
-                $("#signing_popup").dialog( "open" );
-            }else{
-                $("#invite_friends").dialog( "open" );
-            }            
-        });
-        $(".right-top-block").on("click","ul.my-acnt li a",function(event){
-            if(!_islogedinuser){
-                event.preventDefault();
-                $("#signing_popup").dialog( "open" );
-            }
-        });
+        if($(wdthblck3).width() == '50%') {
+            //alert($(wdthblck3).height());
+            $(wdthblck4).width("50%").height($(".structure .block3").height());
+            $(wdthblck4).find("img").height($(".structure .block3").height());            
+        }
+        else{}
+
+        //$(wdthblck3).width("50%");
+        //$(wdthblck4).width("50%").height($(".structure .block3").height());
+        //$(wdthblck4).find("img").height($(".structure .block3").height());
+    }
+
+    var winHeight = $(window).height();
+    $("div.2-columns-wrapper").find(".pg-content,.side-menu-bar").css("min-height", winHeight);    
+
+	$(".footer-block").on("click","#smogi-love",function(){
+         if(!_islogedinuser)
+        {
+		 $("#signup").dialog( "open" );			
+        }
+	});
+    $(".footer-block").on("click","#invite-friend",function(){
+
+        if(!_islogedinuser)
+        {
+            _isClickShareWithFriends = true;
+            $("#signing_popup").dialog( "open" );
+        }else{
+            $("#invite_friends").dialog( "open" );
+        }            
+    });
+    $(".right-top-block").on("click","ul.my-acnt li a",function(event){
+        if(!_islogedinuser){
+            event.preventDefault();
+            $("#signing_popup").dialog( "open" );
+        }
+    });
         
     function initializesignuppopup(){
         $( "#signup" ).dialog({
@@ -152,10 +171,8 @@ jQuery(document).ready(function($){
         });
     }
 
-
-
     function adjustimg(){
-        var mw = $(".structure").width() - 14;        
+        var mw = $(".structure").width() - 14;
         jQuery(".structure").each(function(){
             var jQuerythis = jQuery(this),
             blockOne = jQuerythis.find(".block3"),
@@ -194,14 +211,6 @@ jQuery(document).ready(function($){
     });
 
     // for holding sub-menu open for 2 sec
-    //$('.ctag-menu > li').mouseenter(function(){
-       // $("ul.sub-menu").hide();
-       // $('.ctag-menu > li').removeClass("arw")
-       // $(this).find(".sub-menu").fadeIn();
-   // });
-   // $('.ctag-menu > li').mouseleave(function(){
-       // $(this).find(".sub-menu").fadeIn().delay(500).fadeOut();
-    //});
 
 
     /***Fake password hack***/
