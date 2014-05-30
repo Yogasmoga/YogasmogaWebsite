@@ -190,6 +190,7 @@ AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
 //                        echo "<br/><br/>";
         $output .= "<tr style='color:#FFFFFF;'>";
         $output .= "<td style='background-color:#003366;'>Name</td><td style='background-color:#003366;'>Color</td>";
+        sort($sizeArray);
         for($j = 0; $j < count($sizeArray); $j++)
         {
             if($sizeArray[$j] != "")
