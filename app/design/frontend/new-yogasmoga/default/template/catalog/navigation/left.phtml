@@ -45,7 +45,7 @@ foreach ($_categories as $category){
         $parentCategoryId = $parentIds[2];
         break;
     }
-}
+}   $currentUrl = Mage::helper('core/url')->getCurrentUrl();
     if($_count == 0)
     {
         $currentUrl = Mage::helper('core/url')->getCurrentUrl();
@@ -70,15 +70,24 @@ foreach ($_categories as $category){
         $subsubcategories = $subsubcategory1->getChildrenCategories();
     foreach($subsubcategories as $subsubcategory){
         if($subsubcategory->getChildrenCount() == 0){
-            $hasnosubcategoryhtml .= '<li><a href='.$subsubcategory->getUrl().' class="bld">'.$subsubcategory->getName().'</a></li>';
+            $hasnosubcategoryhtml .= '<li><a href='.$subsubcategory->getUrl().' class="bld ';
+            if($subsubcategory->getUrl() == $currentUrl)
+                $hasnosubcategoryhtml .= 'current';
+            $hasnosubcategoryhtml .= '">'.$subsubcategory->getName().'</a></li>';
         }else{
-            $withsubcategoryhtml .= '<li class = "sub-head"><a href='.$subsubcategory->getUrl().' class="bld">'.$subsubcategory->getName().'</a></li>';
+            $withsubcategoryhtml .= '<li class = "sub-head"><a href='.$subsubcategory->getUrl().' class="bld ';
+            if($subsubcategory->getUrl() == $currentUrl)
+                $withsubcategoryhtml .= 'current';
+            $withsubcategoryhtml .= '">'.$subsubcategory->getName().'</a></li>';
             $withsubcategoryhtml .= '<ul class = "subnav">';
             $subsubsubcategory  = Mage::getModel('catalog/category')->load($subsubcategory->getId())->getChildrenCategories();
             foreach ($subsubsubcategory as $child3)
             {
                 if($child3->getIsActive()) {
-                    $withsubcategoryhtml .=  '<li><a href='.$child3->getUrl().'>'.$child3->getName().'</a></li>';
+                    $withsubcategoryhtml .=  '<li><a ';
+                    if($child3->getUrl() == $currentUrl)
+                        $withsubcategoryhtml .= 'class = "current"';
+                    $withsubcategoryhtml .= 'href='.$child3->getUrl().'>'.$child3->getName().'</a></li>';
 
                 }
             }
