@@ -2,6 +2,10 @@ jQuery(document).ready(function($){
     scrollingLink();
     //openShoppingCart();
 
+var scrollBottom = $("#sitemap").height();
+
+
+
     // Category links fixed on scroll function
     function scrollingLink(){
         var wdth = $(".cntn-scroll").width();
@@ -34,8 +38,12 @@ jQuery(document).ready(function($){
                         marginLeft: ''
                     });
                 }
+                else if($(window).scrollTop() < contentNav && $('.cntn-scroll').css('position') != 'relative') {
+                    alert(scrollBottom);
+                }
             });
-        };        
+        }
+
     };
 
     // Show/Hide Shopping Cart Container
