@@ -33,19 +33,31 @@
 <?php if (!Mage::registry('current_category')) return ?>
 <?php $_categories = $this->getCurrentChildCategories() ?>
 <?php $_count = is_array($_categories)?count($_categories):$_categories->count(); ?>
-<?php if($_count): ?>
 
-    <?php
-        foreach ($_categories as $category){
-            if($category->getIsActive()){
-                $path = $category->getPath();
-                $parentIds = explode('/', $path);
+<?php
+$parentCategoryId = '';
+foreach ($_categories as $category){
+    if($category->getIsActive()){
+        $path = $category->getPath();
+        $parentIds = explode('/', $path);
 //                unset($parentIds[0]);
 //                unset($parentIds[1]);
-                $parentCategoryId = $parentIds[2];
-                break;
-            }
-        }
+        $parentCategoryId = $parentIds[2];
+        break;
+    }
+}
+    if($_count == 0)
+    {
+        $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+        $categoryName = explode('/', $currentUrl);
+        $urlKey = $categoryName[3];
+        $_category = Mage::getModel('catalog/category')->loadByAttribute('url_key', $urlKey);
+        $parentCategoryId =  $_category->getId();
+    }
+
+
+
+
     ?>
     <div class="scroller_anchor" style="height: 0px;"></div>
     <div class="menu-bar cntn-scroll f-left l-align">
@@ -118,4 +130,4 @@
     </div>
 </div>
  */ ?>
-<?php endif; ?>
+
