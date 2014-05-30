@@ -1,6 +1,7 @@
 #################
 ## Eclipse
 #################
+nbproject/
 media
 *.pydevproject
 .project
