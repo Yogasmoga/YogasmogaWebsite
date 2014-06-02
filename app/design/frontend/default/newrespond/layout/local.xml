@@ -29,6 +29,10 @@
 		<reference name="head">
 <action method="addJs"><script>mobile/jquery-1.7.2.min.js</script></action>
 <action method="addJs"><script>mobile/jquerycustom.js</script></action>
+<action method="addJs"><script>mobile/mywatermark.js</script></action>
+<action method="addJs"><script>mobile/globalvariables.js</script></action>
+
+            <action method="addItem"><type>skin_css</type><name>css/ys-style.css</name></action>
 			<!-- Link to external JavaScript file (e.g Jquery CDN)
 			
 			<block type="core/text" name="google.cdn.jquery">
@@ -49,6 +53,7 @@
 			<action method="removeItem"><type>skin_css</type><name>css/styles-ie.css</name><params/></action>
 			
 			<action method="addJs"><script>jquery/mymobile.js</script></action>
+			<action method="addJs"><script>jquery/jquery-ui-1.9.1.custom.min.js</script></action>
 
 			
 	
