@@ -1080,6 +1080,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             </tr>
         </table>
         */ ?>
+
         <table class="productdetailspopup normalproductdetail">
             <tr>
                 <td class="popupproductdetail">
