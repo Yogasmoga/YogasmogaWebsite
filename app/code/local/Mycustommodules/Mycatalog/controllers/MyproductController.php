@@ -1671,7 +1671,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $monthNum = $datearr[0];
                 $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
                 $monthName= substr($monthName,0,3);
-                $fileName = 'inv_'.$monthName.'_'.$datearr[1].'_'.$datearr[2];
+                $fileName = 'inv_'.$monthName.'_'.(int)$datearr[1].'_'.$datearr[2];
 
                 $baseDir = Mage::getBaseDir();
                 $varDir = $baseDir.DS.'recurringreports'.DS.'inventory';
@@ -1702,7 +1702,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $monthNum = $datearr[0];
                 $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
                 $monthName= substr($monthName,0,3);
-                $fileName = 'smogi_'.$monthName.'_'.$datearr[1].'_'.$datearr[2];
+                $fileName = 'smogi_'.$monthName.'_'.(int)$datearr[1].'_'.$datearr[2];
 
                 $baseDir = Mage::getBaseDir();
                 $varDir = $baseDir.DS.'recurringreports'.DS.'smogi';
