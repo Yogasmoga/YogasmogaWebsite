@@ -37,20 +37,16 @@ div.sub-fab img{width: 45% !important; display: block; margin:25px auto 0 auto;}
 /***Fake password hack***/
 #o_password,tr.orig_password{display: none;}
 
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) 
-and (orientation : landscape) 
-{
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape), 
+@media all and (orientation:landscape),
+@media screen and (min-aspect-ratio: 13/9) {
 .firstdialog { position: absolute; }
 .ui-widget-overlay {position: fixed;}
-
 }
 
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) 
-and (orientation : portrait) { 
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait), 
+@media all and (orientation:portrait),
+@media screen and (max-aspect-ratio: 13/9) {
 	.firstdialog{
 		left: 2% !important;
 	} 
