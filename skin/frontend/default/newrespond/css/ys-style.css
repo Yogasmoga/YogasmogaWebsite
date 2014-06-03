@@ -6,7 +6,7 @@
 .firstdialog .ui-state-hover{border: none ; background: none ; padding: 0px !important;}
 .firstdialog .ui-icon-closethick{background:url("../images/pop-close.png") no-repeat ; width: 30px; height: 31px; background-position: 0 0; display: block; font-size: 0;}
 #popup-register{font-family: itcavantgardebk; font-size: 11px;color: #fff;position: absolute; bottom: 14%; left: 22%;}
-#popup-register td{border: 0; border-bottom: 1px solid #ffffff; margin-bottom: 5px;}
+#popup-register td{border: 0; border-bottom: 1px solid #ffffff; margin-bottom: 2px; display: block;}
 #popup-register td input{width:100%; border: none; background: transparent;color: #fff;font-family: itcavantgardebk; font-size: 11px;}
 #popup-register td label{ padding-right: 10px;}
 #popup-register .errortext{font-family: itcavantgardebk; font-size: 11px; color: #fff; height: 13px; vertical-align: top !important; min-height: 13px; border: none;}
@@ -21,7 +21,7 @@
 .fab_text span.gold_divider img{width: auto !important; margin: 40px 0;}
 div.sub-fab{display: inline-block; margin: 0 15px; font-size: 28px; width:40%;}
 div.sub-fab img{width: 45% !important; display: block; margin:25px auto 0 auto;}
-.ui-widget-overlay { background: #777777 50% 50% repeat !important; opacity: .5;filter:Alpha(Opacity=50); z-index: 100 !important; }
+.ui-widget-overlay { background: #777 50% 50% repeat !important; opacity: .5; top:0 !important; position: absolute; filter:Alpha(Opacity=50); z-index: 100 !important; }
 .firstdialog {
     height: 385px !important;
     margin: auto !important;
@@ -42,7 +42,8 @@ and (min-device-width : 320px)
 and (max-device-width : 480px) 
 and (orientation : landscape) 
 {
-.firstdialog { position: absolute;}
+.firstdialog { position: absolute; }
+.ui-widget-overlay {position: fixed;}
 
 }
 

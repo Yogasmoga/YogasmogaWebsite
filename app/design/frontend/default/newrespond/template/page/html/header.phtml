@@ -30,8 +30,7 @@
 <!-- Paste this code right after the <body> tag on every page of your site. -->
 <!-- Qualaroo for yogasmoga.com  -->
 <?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
-//if($serverType == 'production')
-if(true)
+if($serverType == 'production')
 {
 ?>
 <script type="text/javascript">
@@ -63,8 +62,7 @@ if(true)
                  data = eval('('+data + ')');
                 var status = data.status;
 
-                //if(status == "success")
-                if(true)
+                if(status == "success")
                 {
                     $( "#signup" ).dialog({
                         autoOpen: true,
@@ -130,7 +128,7 @@ if(true)
         <div id="signup" style="display: none;">
             <div id="sign_up_box">
                 <img style="width:74%; margin-top: 8%;" src="<?php echo $this->getSkinUrl('images/sign_up_text.png') ?>" alt="FEEL THE SMOGI LOVE. Sign up and get $25 SMOGI bucks toward your first order." />
-                <form action="" method="post" id="popup-register" style="display: block; margin-top: 0;bottom:6%; width: auto;">
+                <form action="" method="post" id="popup-register" style="display: block; margin-top: 0;bottom:5%; width: auto;">
                     <table width="170" cellspacing="0" padding="0" align="center">
                         <tr>
                             <td class="inputholder">
@@ -148,7 +146,7 @@ if(true)
                         <tr>
 
                             <td class="inputholder">
-                                <input type="text" name="email" id="pemail_address" class="watermark" watermark="Email Address" autocomplete="off" value="" class="requiredfield" defaulterrormsg="Email Address is required" autocapitalize="off">
+                                <input type="text" name="email" id="pemail_address" class="watermark" watermark="Email" autocomplete="off" value="" class="requiredfield" defaulterrormsg="Email Address is required" autocapitalize="off">
                             </td>
                         </tr>
                         <tr height="5"></tr>
