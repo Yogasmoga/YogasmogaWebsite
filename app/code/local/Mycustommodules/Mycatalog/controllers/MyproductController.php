@@ -1083,6 +1083,23 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
         <table class="productdetailspopup normalproductdetail">
             <tr>
+                <!-- ProductThumbImages -->
+                <td id="tdpopupproductsmallimages">
+                    <table>
+                        <tr><td><img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/75x75/040ec09b1e35df139433887a97daa66f/a/b/abstract_0011.jpg" /></td></tr>
+                        <tr><td><img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/75x75/040ec09b1e35df139433887a97daa66f/a/b/abstract_0002_1.jpg" /></td></tr>
+                        <tr><td><img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/75x75/040ec09b1e35df139433887a97daa66f/a/b/abstract_0062_1.jpg" /></td></tr>
+                    </table>
+                </td>
+                <!-- ProductThumbImages -->
+
+                <!-- ProductBigImage -->
+                <td id="tdpopupproductbigimage">
+                    <img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/450x450/040ec09b1e35df139433887a97daa66f/a/b/abstract_0011.jpg" />
+                </td>
+                <!-- ProductBigImage -->
+
+                <!-- DetailsContent -->
                 <td class="popupproductdetail">
                     <div class="productoptions">
                         <table class="productdetailtable">
@@ -1264,16 +1281,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         </div>
                     </div>
                 </td>
-                <td id="tdpopupproductbigimage">
-                    <img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/450x450/040ec09b1e35df139433887a97daa66f/a/b/abstract_0011.jpg" />
-                </td>
-                <td id="tdpopupproductsmallimages">
-                    <table>
-                        <tr><td><img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/75x75/040ec09b1e35df139433887a97daa66f/a/b/abstract_0011.jpg" /></td></tr>
-                        <tr><td><img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/75x75/040ec09b1e35df139433887a97daa66f/a/b/abstract_0002_1.jpg" /></td></tr>
-                        <tr><td><img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/75x75/040ec09b1e35df139433887a97daa66f/a/b/abstract_0062_1.jpg" /></td></tr>
-                    </table>
-                </td>
+
+                <!-- DetailsContent -->
             </tr>
         </table>
         <table class="productdetailpopupbottomlinks">

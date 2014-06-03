@@ -143,15 +143,17 @@ table.productdetailtable table.selectedcolor td.selectedcolortext
     letter-spacing : 0.4pt;
 }
 
-table.productdetailtable div#colorcontainer
-{
-    margin-top : 5px;   
+table.productdetailtable div#colorcontainer {
+    float: left;
+    margin-top: 5px;
+    width: 100%;
 }
 
-table.productdetailtable div#colorcontainer div
-{
-    float : left;
-    margin-right : 6px;
+table.productdetailtable div#colorcontainer div {
+    float: left;
+    height: 25px;
+    margin: 0 10px 10px 0;
+    width: auto;
 }
 
 table.productdetailtable div#colorcontainer div table
@@ -162,7 +164,7 @@ table.productdetailtable div#colorcontainer div table
 
 table.productdetailtable div#colorcontainer div table tr:first-child td
 {
-    height : 10px;
+    height : 25px;
 }
 
 table.productdetailtable div#colorcontainer div table td div
