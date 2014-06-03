@@ -35,7 +35,9 @@ div.sub-fab img{width: 45% !important; display: block; margin:25px auto 0 auto;}
 }
 
 /***Fake password hack***/
-#o_password,tr.orig_password{display: none;}
+/*#o_password,tr.orig_password{display: none;}*/
+.pos-r{position: relative;}
+.dummy-placeholder{position: absolute; z-index: -999; top:4px;}
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape), 
 @media all and (orientation:landscape),
