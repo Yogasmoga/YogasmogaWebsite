@@ -26,7 +26,6 @@ div.sub-fab img{width: 45% !important; display: block; margin:25px auto 0 auto;}
     height: 385px !important;
     margin: auto !important;
     text-align: center !important;
-    top: 5% !important;
     width: 310px !important;
 }
 #signup{height:  !important; padding: 0 15px !important;}
@@ -35,23 +34,21 @@ div.sub-fab img{width: 45% !important; display: block; margin:25px auto 0 auto;}
 }
 
 /***Fake password hack***/
-#o_password,tr.orig_password{display: none;}
+/*#o_password,tr.orig_password{display: none;}*/
+.pos-r{position: relative;}
+.dummy-placeholder{position: absolute; z-index: -999; top:4px;}
 
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) 
-and (orientation : landscape) 
-{
-.firstdialog { position: absolute; }
-.ui-widget-overlay {position: fixed;}
 
+/** media for landscape **/
+/* @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape){
+	.firstdialog { position: fixed; }
+}*/
+
+@media all and (orientation:landscape) {
+	.firstdialog { position: absolute; top: 5% !important; }
 }
 
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) 
-and (orientation : portrait) { 
-	.firstdialog{
-		left: 2% !important;
-	} 
+/** media for portrait **/
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) {
+	.firstdialog{left: 2% !important;} 
 }

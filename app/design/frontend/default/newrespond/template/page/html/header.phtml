@@ -150,14 +150,15 @@ if($serverType == 'production')
                             </td>
                         </tr>
                         <tr height="5"></tr>
-                        <tr id="fake_password">
+                        <!-- <tr id="fake_password">
                             <td class="inputholder">
                                 <input type="text" autocomplete="off" maxlength="30" class="watermark" watermark="Select a password" class="requiredfield" name="password" id="f_password" defaulterrormsg="Password is required">
                             </td>
-                        </tr>
+                        </tr> -->
                         <tr id="o_password">
-                            <td class="inputholder">
-                                <input type="password" autocomplete="off" maxlength="30" class="watermark" watermark="Select a password" class="requiredfield" name="password" id="p_password" defaulterrormsg="Password is required">
+                            <td class="inputholder pos-r">
+                                <span class="dummy-placeholder">Select a password</span>
+                                <input type="password" autocomplete="off" maxlength="30" class="requiredfield" name="password" id="p_password" defaulterrormsg="Password is required">
                             </td>
                         </tr>
                         <input style="display: none;" type="password" class="requiredfield" name="confirmation" id="confirmation" defaulterrormsg="Password is required">
@@ -202,23 +203,20 @@ if($serverType == 'production')
         <script type="application/javascript">
 
             jQuery(document).ready(function($){
-                $("#f_password").focus(function(){
-                    $(this).closest("#fake_password").hide();
-                    $("#o_password").show();
-                    $("#p_password").focus();
+                var dummPlace = $(".dummy-placeholder");
+                $("#p_password").focus(function(){
+                    dummPlace.hide();
                 });
                 $("#p_password").blur(function(){
-                    $(this).closest("#o_password").hide();
-                    $("#fake_password").show();
+                    // $(this).closest("#o_password").hide();
+                    dummPlace.show();
                     if($(this).val() != "" )
                     {
-                        $("#fake_password").hide();
-                        $("#o_password").show();
+                        dummPlace.hide();                        
                     }
                     if($.trim($(this).val()) == "Select a password")
                     {
-                        $("#fake_password").show();
-                        $("#o_password").hide();
+                        dummPlace.show();                        
                     }
                 });
 
@@ -259,7 +257,7 @@ if($serverType == 'production')
                         // $("#plastname").focus();
                         return;
                     }
-                    if(email_id == "" || email_id == "Email Address")
+                    if(email_id == "" || email_id == "Email")
                     {
                         event.preventDefault();
                         $("#err-msg").css("visibility","visible");
