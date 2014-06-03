@@ -190,6 +190,7 @@ AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
 //                        echo "<br/><br/>";
         $output .= "<tr style='color:#FFFFFF;'>";
         $output .= "<td style='background-color:#003366;'>Name</td><td style='background-color:#003366;'>Color</td>";
+        sort($sizeArray);
         for($j = 0; $j < count($sizeArray); $j++)
         {
             if($sizeArray[$j] != "")
@@ -1079,6 +1080,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             </tr>
         </table>
         */ ?>
+
         <table class="productdetailspopup normalproductdetail">
             <tr>
                 <td class="popupproductdetail">
@@ -2848,7 +2850,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     }
                 }
             } catch (Mage_Core_Exception $e) {
-                $session->setCustomerFormData($this->getRequest()->getPost());
+                //$session->unsetAll();
+                //$session->setCustomerFormData($this->getRequest()->getPost());
                 if ($e->getCode() === Mage_Customer_Model_Customer::EXCEPTION_EMAIL_EXISTS) {
                     array_push($errors, "Email Already Exists.");
                 } else {

@@ -1,33 +1,34 @@
 jQuery(document).ready(function($){
+
     initializesignuppopup();
     initializeinvitepopup();
-    initializesigninpopup();
+    initializesigninpopup();    
 
-        var winHeight = $(window).height();
-        $("div.2-columns-wrapper").find(".pg-content,.side-menu-bar").css("min-height", winHeight);    
+    var winHeight = $(window).height();
+    $("div.2-columns-wrapper").find(".pg-content,.side-menu-bar").css("min-height", winHeight);    
 
-		$(".footer-block").on("click","#smogi-love",function(){
-             if(!_islogedinuser)
-            {
-			 $("#signup").dialog( "open" );			
-            }
-		});
-        $(".footer-block").on("click","#invite-friend",function(){
+	$(".footer-block").on("click","#smogi-love",function(){
+         if(!_islogedinuser)
+        {
+		 $("#signup").dialog( "open" );			
+        }
+	});
+    $(".footer-block").on("click","#invite-friend",function(){
 
-            if(!_islogedinuser)
-            {
-                _isClickShareWithFriends = true;
-                $("#signing_popup").dialog( "open" );
-            }else{
-                $("#invite_friends").dialog( "open" );
-            }            
-        });
-        $(".right-top-block").on("click","ul.my-acnt li a",function(event){
-            if(!_islogedinuser){
-                event.preventDefault();
-                $("#signing_popup").dialog( "open" );
-            }
-        });
+        if(!_islogedinuser)
+        {
+            _isClickShareWithFriends = true;
+            $("#signing_popup").dialog( "open" );
+        }else{
+            $("#invite_friends").dialog( "open" );
+        }            
+    });
+    $(".right-top-block").on("click","ul.my-acnt li a",function(event){
+        if(!_islogedinuser){
+            event.preventDefault();
+            $("#signing_popup").dialog( "open" );
+        }
+    });
         
     function initializesignuppopup(){
         $( "#signup" ).dialog({
@@ -151,7 +152,6 @@ jQuery(document).ready(function($){
         });
     }
 
-
     $(".sl-desc-handle").on("mouseover",function(){
         $(this).next(".slide-desc").fadeIn();        
     });
@@ -173,14 +173,6 @@ jQuery(document).ready(function($){
     });
 
     // for holding sub-menu open for 2 sec
-    //$('.ctag-menu > li').mouseenter(function(){
-       // $("ul.sub-menu").hide();
-       // $('.ctag-menu > li').removeClass("arw")
-       // $(this).find(".sub-menu").fadeIn();
-   // });
-   // $('.ctag-menu > li').mouseleave(function(){
-       // $(this).find(".sub-menu").fadeIn().delay(500).fadeOut();
-    //});
 
     /***Fake password hack***/
     

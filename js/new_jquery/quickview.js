@@ -1,9 +1,9 @@
 jQuery(document).ready(function($){
 
-    //$(".quick-view ").click(function(){
+    $(".quick-view ").click(function(){
 
-        //showQuickViewPopup($(this).attr('id'));
-   // });
+        showQuickViewPopup($(this).attr('id'));
+    });
 });
 function showQuickViewPopup(productid)
 {
@@ -22,6 +22,10 @@ function showQuickViewPopup(productid)
         url : url,
         data : {'id': productid},
         success : function(data){
+
+
+
+
             jQuery("#productdetailpopup").html(data);
             InitializeProductQty();
             if(jQuery("div#colorcontainer table:first").length > 0)

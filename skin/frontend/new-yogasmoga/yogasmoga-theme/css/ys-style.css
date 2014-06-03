@@ -101,7 +101,7 @@ p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight
 /****Side bar****/
 div.side-menu-bar{ width:300px; vertical-align:top;min-height: 300px; position: fixed;}
 div.side-menu-bar ul, .menu-bar ul{padding: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
-div.side-menu-bar ul li a, .menu-bar ul li a{font-size: 15px; font-family: gothambold; color: #58595b;}
+div.side-menu-bar ul li a, .menu-bar ul li a{text-transform: uppercase; font:14px/24px gothambold; color: #58595b;}
 div.side-menu-bar ul li a span.arr, , .menu-bar ul li a span.arr{visibility: hidden;}
 div.side-menu-bar ul li a.current,div.side-menu-bar ul li a:hover, .menu-bar ul li a.current, .menu-bar ul li a:hover{color:#cc0033;}
 div.side-menu-bar ul li a.current span.arr,div.side-menu-bar ul li a:hover span.arr, .menu-bar ul li a.current span.arr,.menu-bar ul li a:hover span.arr{visibility: visible;}
@@ -229,12 +229,13 @@ ul.new-arrivals li{display: inline-block; width:20%; vertical-align: top; height
 ul.new-arrivals li img{ margin: 0 auto; display: block;}
 ul.new-arrivals li span{font-size: 12px; display: block; color: #58595b; text-transform: uppercase;}
 ul.new-arrivals li img.prd-image{width: 90%;}
+ul.new-arrivals a.quick-view{min-height: 300px; display: inline-block; width: 100%;}
 .prd-details{margin-top: 30px;}
 .prd-details .prd-price{margin-bottom: 10px;}
 li.new-arrivals-desc{text-align: left; font-family: ITCAvantGardeProMd; margin-top: 0 !important;}
-li.new-arrivals-desc .block-head{margin-bottom: 5px; font-size: 20px;}
-li.new-arrivals-desc .block-desc{margin-bottom: 25px; font-size: 32px;}
-li.new-arrivals-desc .block-link a, .block-link a{font-family: ITCAvantGardeProMd; font-size: 16px;}
+li.new-arrivals-desc .block-head{margin-bottom: 5px; font-size: 18px;}
+li.new-arrivals-desc .block-desc{margin-bottom: 25px; font-size: 35px;}
+li.new-arrivals-desc .block-link a, .block-link a{font-family: ITCAvantGardeProMd; font-size: 14px;}
 
 /** YS-Tech Section **/
 .discImg{margin: 40px 0 20px;}
@@ -260,10 +261,10 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .divider-btm{background: url("../images/big-divider.png") no-repeat center bottom; background-size: 95% auto; text-align: left;}
 
 .divider-btm .contWom h4{margin-top: 0;}
-.contWom h4{font-size: 20px; color: #DE8A23; margin: 40px 0;}
-.contWom h4 span{font-size: 35px; line-height: 42px; display: block; color: #58595B; margin: 10px 0 0;}
-.contWom p{font-size: 21px; margin-bottom: 20px;}
-.contWom p.block-link a{font-family: ITCAvantGardeProMd; font-size: 16px;}
+.contWom h4{font-size: 18px; color: #DE8A23; margin: 40px 0;}
+.contWom h4 span{font-size: 35px; line-height: 40px; display: block; color: #58595B; margin: 10px 0 0;}
+.contWom p{font-size: 20px; margin-bottom: 20px;}
+.contWom p.block-link a{font-family: ITCAvantGardeProMd; font-size: 14px;}
 .contWom p.block-link{margin: 0;}
 
 .ftr-txt{float: left; width: 45%; text-align: left;}
@@ -282,7 +283,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .bannerFluid .bnrtxt{color: #fff; font: bold 48px ITCAvantGardeProMd; position: absolute; top: 175px; left: 85px;}
 .product-grid .side-menu-bar{position: inherit;}
 .product-grid .side-menu-bar{width: 20%}
-.product-grid{display: inline-block;}
+.product-grid{display: inline-block; width: 100%;}
 
 .product-grid h4{background: url("../images/divider-sml.png") no-repeat center bottom; font: normal 18px gothambold; display: inline-block; width: 100%; color: #58595b; padding: 15px 0 29px; margin: 0 0 77px; text-transform: uppercase;}
 
@@ -297,7 +298,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .productCont{min-height: 420px; display: inline-block; margin: 0 34px 50px; float: left; width: 230px;}
 .productCont .caption{display: block; font: bold 11px/16px gotham; margin: 30px 0 0; text-transform: uppercase;}
 .productCont .caption span{display: block;font-weight: normal;}
-.productCont .prod-img{width: 100%; height: 330px; margin: auto; text-align: center;}
+.productCont .prod-img{width: 100%; height: 330px; margin: auto; text-align: center;background: url("../images/new-loader.gif") no-repeat center center;}
 .prd-image:first-child {
     display: inline-block;
 }
