@@ -53,16 +53,18 @@ class Rewardpoints_Block_Adminhtml_Customerpoints extends Mage_Adminhtml_Block_W
         ));
         
 
-
+        $formatcustom="MM/dd/yyyy";
+        
         $fieldset->addField('date_start', 'date', array(
             'name'      => 'date_start',
             'title'     => Mage::helper('rewardpoints')->__('From Date'),
             'label'     => Mage::helper('rewardpoints')->__('From Date'),
             'image'  => Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'/adminhtml/default/default/images/grid-cal.gif',
-            'format' => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
+//            'format' => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
+            'format' => $formatcustom,
             'required'  => true,
             'class'     => 'validate-date',
-            'value'     => date('m/d/Y', Mage::getModel('core/date')->timestamp(time()))
+            'value'     => date('M/d/Y', Mage::getModel('core/date')->timestamp(time()))
         ));
 
         $fieldset->addField('date_end', 'date', array(
@@ -70,10 +72,11 @@ class Rewardpoints_Block_Adminhtml_Customerpoints extends Mage_Adminhtml_Block_W
             'title'     => Mage::helper('rewardpoints')->__('To Date'),
             'label'     => Mage::helper('rewardpoints')->__('To Date'),
             'image'  => Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'/adminhtml/default/default/images/grid-cal.gif',
-            'format' => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
+//            'format' => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
+            'format' => $formatcustom,
             'required'  => true,
             'class'     => 'validate-date',
-            'value'     => date('m/d/Y', strtotime(" + ".Mage::getStoreConfig('rewardpoints/default/points_duration')." days", Mage::getModel('core/date')->timestamp(time())))
+            'value'     => date('M/d/Y', strtotime(" + ".Mage::getStoreConfig('rewardpoints/default/points_duration')." days", Mage::getModel('core/date')->timestamp(time())))
         ));
 
 
