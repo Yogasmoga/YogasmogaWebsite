@@ -200,7 +200,7 @@ if(Mage::getSingleton('customer/session')->isLoggedIn())
         {
             $points_currently_used = getPointsCurrentlyUsed();
             ?>
-            <div id="smogi-notify" style="display:none;font-size: 17px; color:#000000;height:210px;border: 3px solid #F5A13B;"><img style="height: :50px;width:165px;margin-top:22px;" alt ="Yogasmoga" src="<?php echo $this->getSkinUrl().'images/logo_smogi.png';?>" /><p style="width:450px;margin-top:30px;margin-left:10px;margin-right: 10px;"><?php echo '$'.$points_currently_used ;?> SMOGI Bucks have been applied towards your order.</p></div>
+            <div id="smogi-notify" style="display:none;font-size: 17px; color:#000000;height:210px;border: 3px solid #F5A13B; text-align:center;"><img style="height: :50px;width:165px;margin-top:22px;" alt ="Yogasmoga" src="<?php echo $this->getSkinUrl().'images/logo_smogi.png';?>" /><p style="width:auto;margin-top:30px;margin-left:10px;margin-right: 10px; text-align:center;"><?php echo '$'.$points_currently_used ;?> SMOGI Bucks have been applied towards your order.</p></div>
             <style type="text/css">
                 .fancybox-skin{
                     border-radius: 3px;
@@ -218,7 +218,6 @@ if(Mage::getSingleton('customer/session')->isLoggedIn())
             <script type="text/javascript">
 
                 jQuery(document).ready(function($){
-                alert('test');
                     setTimeout(function(){
                         $("#smogi-notify").fancybox({
                             'width'  : 600,
