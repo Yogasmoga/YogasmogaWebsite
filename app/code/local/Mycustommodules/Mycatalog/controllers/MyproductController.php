@@ -113,7 +113,7 @@ AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
 //                echo 'test';
 //                echo $output;
                 //$fname = mktime();
-
+     //          die();
                 if($this->getRequest()->getParam('recurring') == "true")
                 {
                     $fname = date("M_j_Y");
@@ -190,7 +190,32 @@ AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
 //                        echo "<br/><br/>";
         $output .= "<tr style='color:#FFFFFF;'>";
         $output .= "<td style='background-color:#003366;'>Name</td><td style='background-color:#003366;'>Color</td>";
-        sort($sizeArray);
+      
+      if ($sizeArray[0] != '') {
+            if (preg_match('/^\d+$/', $sizeArray[0]) && preg_match('/^\d+$/', end($sizeArray)))
+                sort($sizeArray);
+            else if (!preg_match('/^\d+$/', $sizeArray[0])) {                
+                $data = array(
+                    1 => "S",
+                    2 => "S-T",
+                    3 => "M",
+                    4 => "M-T",
+                    5 => "L",
+                    6 => "L-T",
+                    7 => "XL",
+                    8 => "XL-T",
+                    9 => "XXL",
+                    10 => "XXL-T"
+                );                
+                $result = array(); // result array
+                foreach ($sizeArray as $key => $val) { // loop
+                    if (array_search($val, $data) != false) $result[array_search($val, $data)] = $val;
+                }                
+                $sizeArray = $result;
+                ksort($sizeArray);
+                $sizeArray = array_values($sizeArray);
+            }
+        }
         for($j = 0; $j < count($sizeArray); $j++)
         {
             if($sizeArray[$j] != "")
