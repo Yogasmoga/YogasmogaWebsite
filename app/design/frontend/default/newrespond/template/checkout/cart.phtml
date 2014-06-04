@@ -132,7 +132,172 @@ if(!function_exists('activatesmogibucks'))
 //echo  Mage::getSingleton('core/session')->getsmogiApplied();die('ttt');
 //Mage::getSingleton('core/session')->setAutoAppliedDiscount($isAutoAppliedDiscount);
 
-    if(Mage::getSingleton('customer/session')->isLoggedIn())
+if(!function_exists('getPointsCurrentlyUsed'))
+{
+    function getPointsCurrentlyUsed() {
+        $creditpointsentered = Mage::helper('rewardpoints/event')->getCreditPoints();
+        $grandTotal = Mage::helper('checkout/cart')->getQuote()->getSubtotal();
+        //print_r($grandTotal);
+        $resource = Mage::getSingleton('core/resource');
+        $readConnection = $resource->getConnection('core_read');
+        $cartHelper = Mage::helper('checkout/cart');
+        $items = $cartHelper->getCart()->getItems();
+
+        foreach ($items as $item) {
+            if($item->getPrice() > 0)
+            {
+                $itemId = $item->getProductId();
+                $itemstotal = $item->getRowTotal();
+
+                $query1 = "Select category_id, name from catalog_category_product, catalog_category_flat_store_1 where catalog_category_product.product_id = ".$itemId." and catalog_category_flat_store_1.entity_id = catalog_category_product.category_id";
+                $categoryid = $readConnection->fetchAll($query1);
+                $excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories')->getValue('plain');
+                $excludecats = explode(",", $excludecats);
+
+                for($id=0;$id<count($categoryid);$id++)
+                {
+                    $flag = false;
+                    for($i = 0; $i < count($excludecats); $i++)
+                    {
+                        if($categoryid[$id]['category_id'] == $excludecats[$i])
+                        {
+                            $flag = true;
+                            break;
+                        }
+                    }
+                    if($flag)
+                        //if($categoryid[$id]['category_id'] == 8)
+                        //if($categoryid[$id]['name'] == 'Accessories')
+                    {
+                        $cattotal = $cattotal + $itemstotal;
+                    }
+                }
+            }
+        }
+
+        $grandTotal = $grandTotal - $cattotal;
+
+        if ($creditpointsentered > $grandTotal)
+        {
+            //Mage::getSingleton('core/session')->setCreditPointsApplied($grandTotal);
+            return $grandTotal;
+        }
+        else
+        {
+            return $creditpointsentered;
+        }
+
+    }
+}
+
+// show popup on cart for smogi alert
+if(Mage::getSingleton('customer/session')->isLoggedIn())
+{
+    if((Mage::getSingleton('core/session')->getAutoAppliedDiscount()== null)||(Mage::getSingleton('core/session')->getAutoAppliedDiscount()==2 ))
+    {
+
+        if((Mage::getSingleton('core/session')->getAutoAppliedDiscount()!= null)&&(Mage::getSingleton('core/session')->getAutoAppliedDiscount()>1))
+        {
+            $points_currently_used = getPointsCurrentlyUsed();
+            ?>
+            <div id="smogi-notify" style="display:none;font-size: 17px; color:#000000;height:210px;border: 3px solid #F5A13B;"><img style="height: :50px;width:165px;margin-top:22px;" alt ="Yogasmoga" src="<?php echo $this->getSkinUrl().'images/logo_smogi.png';?>" /><p style="width:450px;margin-top:30px;margin-left:10px;margin-right: 10px;"><?php echo '$'.$points_currently_used ;?> SMOGI Bucks have been applied towards your order.</p></div>
+            <style type="text/css">
+                .fancybox-skin{
+                    border-radius: 3px;
+                }
+                .fancybox-wrap{
+                    border-radius: 3px;
+                }
+                .fancybox-close{
+                    width: 40px;
+                    height: 38px;
+                    background: url("<?php echo $this->getSkinUrl().'images/cross_red1.png';?>");
+                    background-repeat: no-repeat;
+                }
+            </style>
+            <script type="text/javascript">
+
+                jQuery(document).ready(function($){
+                alert('test');
+                    setTimeout(function(){
+                        $("#smogi-notify").fancybox({
+                            'width'  : 600,
+                            'height' : 600,
+                            'transitionIn'	:	'elastic',
+                            'transitionOut'	:	'elastic',
+                            'speedIn'		:	600,
+                            'speedOut'		:	200,
+                            'overlayShow'	:	false
+
+                        });
+
+
+                        //$(".fancybox-wrap").css("width","431px");
+                        $("#smogi-notify").css("font-size","17px");
+                        $(".fancybox-item ").css("width","40px");
+                        $(".fancybox-item").css("height","38px");
+
+                        $("#smogi-notify").fancybox().trigger('click');
+                    },500);
+
+
+                });
+
+            </script>
+            <?php
+            Mage::getSingleton('core/session')->setAutoAppliedDiscount(1);
+        }
+        $smogiBalance = getsmogipoints();
+        if(($smogiBalance > 0)&&(Mage::getSingleton('core/session')->getsmogiApplied() == 0))
+        {
+            activatesmogibucks();
+
+            $isAutoAppliedDiscount = 1 ;
+            Mage::getSingleton('core/session')->setAutoAppliedDiscount($isAutoAppliedDiscount);
+            Mage::getSingleton('core/session')->setsmogiApplied(1);
+            if(Mage::getSingleton('core/session')->getAutoAppliedDiscount() == 1)
+            {
+                Mage::getSingleton('core/session')->setAutoAppliedDiscount(2);
+                Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
+
+            }
+
+
+        }
+
+        /* apply Gift of YS automatically
+        else
+        {
+            if(Mage::getSingleton('core/session')->getsmogiApplied() == 0)
+            {
+                if(Mage::helper('customer')->isLoggedIn())
+                {
+                    if(!Mage::getSingleton('core/session')->getGiftCardActivated())
+                    {
+                        if(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()) > 0)
+                        {
+                            if(Mage::getSingleton('giftcards/session')->getActive() == "0" || Mage::getSingleton('giftcards/session')->getActive() == "")
+                            {
+                                Mage::getSingleton('core/session')->setGiftCardActivated('true');
+                                Mage::getSingleton('giftcards/session')->setActive('1');
+                                Mage::getSingleton('checkout/cart')->getQuote()->getShippingAddress()->setCollectShippingRates(true);
+                                Mage::getSingleton('checkout/cart')->getQuote()->collectTotals()->save();
+                                Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
+                            }
+                        }
+                    }
+                }
+            }
+            $isAutoAppliedDiscount = 1 ;
+            Mage::getSingleton('core/session')->setAutoAppliedDiscount($isAutoAppliedDiscount);
+            Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
+        }
+        */
+    }
+}
+
+// comment code for popup
+/*    if(Mage::getSingleton('customer/session')->isLoggedIn())
     {
         if(!(Mage::getSingleton('core/session')->getAutoAppliedDiscount()))
         {
@@ -145,6 +310,7 @@ if(!function_exists('activatesmogibucks'))
                 Mage::getSingleton('core/session')->setsmogiApplied(1);
                 Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
             }
+*/
             /* apply Gift of YS automatically
             else
             {
@@ -173,9 +339,10 @@ if(!function_exists('activatesmogibucks'))
                 Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
             }
             */
-        }
+/*        }
     }
-
+*/
+// end -- // comment code for popup
 //end--custom auto smogi bucks apply
 ?>
 
