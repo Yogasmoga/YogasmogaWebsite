@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Mycustommodules_Mynewtheme>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Mycustommodules_Mynewtheme>
+    </modules>
+</config>
