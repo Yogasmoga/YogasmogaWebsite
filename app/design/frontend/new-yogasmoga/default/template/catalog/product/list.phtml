@@ -145,7 +145,7 @@ if($categoryId != '')
                              foreach($imageArr[$childProduct] as $img )
                              {
                              ?>
-                                 <img class="prd-image" src="<?php    echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(221, 330)->setQuality(91); ?>" />
+                                 <img class="prd-image lazy" data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(221, 330)->setQuality(91); ?>" />
                              <?php
                              }
 
