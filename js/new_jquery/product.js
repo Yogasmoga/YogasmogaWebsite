@@ -2,11 +2,40 @@ jQuery(document).ready(function($){
     scrollingLink();
     //openShoppingCart();
 
-var scrollBottom = $("#sitemap").height();
+    // image lazy loading
+    $(function() {
+        $("img.lazy").lazyload({
+            skip_invisible  : false,
+            failure_limit : 1,
+            threshold : 500
+        });
+    }); 
 
 
+    // image rotate
+    //$(".prod-img").find("img:eq(0)").show();
+
+    xyzinterval = null;
+    $('.prod-img').hover(function(){
+        $(this).css("background", "none");
+        var $imgs = $(this).find("img"), current = 0;
+        
+        var xyzinterval = function() {
+            if (current >= $imgs.length) current = 0;
+            $imgs.eq(current++).fadeIn(function() {
+                $(this).delay(500).fadeOut(xyzinterval);
+            });
+        };
+        xyzinterval();
+    }, function(){
+        $(this).css("");
+        $(this).find("img").clearQueue().stop();
+        $(this).find("img").hide();
+        $(this).find("img:eq(0)").fadeIn();
+    });
 
     // Category links fixed on scroll function
+    var scrollBottom = $("#sitemap").height();
     function scrollingLink(){
         var wdth = $(".cntn-scroll").width();
         var nav = $('.scroller_anchor');

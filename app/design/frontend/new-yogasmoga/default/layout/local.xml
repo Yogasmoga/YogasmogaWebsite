@@ -28,6 +28,7 @@
     <action method="addJs"><script>new_jquery/popupformvalidation.js</script></action>
     <action method="addJs"><script>new_jquery/sharewithfriend.js</script></action>
     <action method="addJs"><script>new_jquery/quickview.js</script></action>
+    <action method="addJs"><script>new_jquery/jquery.lazyload.js</script></action>
 </reference>
 
 
