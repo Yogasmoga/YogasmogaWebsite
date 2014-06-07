@@ -346,10 +346,10 @@ jQuery(window).load(function(){
         <div style="padding:3px 0 !important;width: 100%; position: relative;  left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 16px;font-family: AvantGardeGothicMedium;">BUY 1 MEN'S TOP + 1 MEN'S BOTTOM - WE WILL AUTOMATICALLY ADD 1 SUNDAY TEE TO THE SHIPMENT.</div>
 <?php } ?>
  <?php 
-//    $yantratank_top_banner = Mage::getModel('core/variable')->loadByCode('yantratank_top_banner')->getValue('plain');
-//    if((int)$_product->getId() == 246 && $yantratank_top_banner=='true'){?>
-<!--        <div style="padding:3px 0 !important;width: 100%; position: relative;  left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 16px;font-family: AvantGardeGothicMedium;">BUY 1 YANTRA TANK + WE'LL SHIP YOU 2 - SAME SIZE, DIFFERENT COLOR OF OUR CHOICE.</div>-->
-<?php //} ?>
+    $yantratank_top_banner = Mage::getModel('core/variable')->loadByCode('yantratank_top_banner')->getValue('plain');
+    if((int)$_product->getId() == 246 && $yantratank_top_banner=='true'){?>
+        <div style="padding:3px 0 !important;width: 100%; position: relative;  left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 16px;font-family: AvantGardeGothicMedium;">BUY 1 YANTRA TANK + WE'LL SHIP YOU 2 - SAME SIZE, DIFFERENT COLOR OF OUR CHOICE.</div>
+<?php } ?>
     
 <?php //if((int)$_product->getId() == 700){?>
 <!--    <div style="padding:3px 0 !important;width: 100%; position: relative;  left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 16px;font-family: AvantGardeGothicMedium;">BUY 1 SLIMMIE PANT AND WE'LL SHIP YOU 2! <span style="font-family: helvetica;font-weight: bold;">&lt;&lt;</span> SECOND SLIMMIE: SAME SIZE, SURPRISE COLOR <span style="font-family: helvetica;font-weight: bold;">&gt;&gt;</span> FINAL SALE.</div>-->
