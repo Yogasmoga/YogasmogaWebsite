@@ -2882,7 +2882,12 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         //$this->_redirectError(Mage::getUrl('*/*/create', array('_secure' => true)));
     }
 
+    public function getmagentocurrenttimeAction()
+    {
+        echo "Magento Time :-".date("Y-m-d H:i:s", Mage::getModel('core/date')->timestamp(time()));
+        echo '<br/>Server Time :- '.date("Y-m-d H:i:s",time());
 
+    }
     
 }
 ?>
