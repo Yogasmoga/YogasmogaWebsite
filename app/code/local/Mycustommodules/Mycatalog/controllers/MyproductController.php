@@ -211,9 +211,9 @@ AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
                 foreach ($sizeArray as $key => $val) { // loop
                     if (array_search($val, $data) != false) $result[array_search($val, $data)] = $val;
                 }                
-                $sizeArray = $result;
-                ksort($sizeArray);
-                $sizeArray = array_values($sizeArray);
+                //$sizeArray = $result;
+                ksort($result);
+                $sizeArray = array_values($result);
             }
         }
         for($j = 0; $j < count($sizeArray); $j++)

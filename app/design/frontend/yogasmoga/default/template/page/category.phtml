@@ -202,6 +202,7 @@ jQuery(window).load(function(){
                         <div class="myheader zindex10 topvisible colorbg absoluteposition" id="allproduct">
                                         <span>ALL PRODUCTS</span>
                         </div>
+                            
                         <div class="mylayerednavigation alwaysvisible" style="width : 200px;">
                             <?php echo $this->getChildHtml('left') ?>
                         </div>
@@ -230,10 +231,22 @@ jQuery(window).load(function(){
                 else if(substr(trim($htmlcontent), 0, 3) == "|||")
                 {
                     ?>
-                        <div id="Allproducts" desc="<?php echo Mage::registry('current_category')->getName(); ?> Products" class="fullscreen pgsection productgrid-holder">
-                        <div class="myheader zindex10 topvisible colorbg absoluteposition">
-                                        ALL PRODUCTS
+            <?php
+                            $fathersday_top_banner  = Mage::getModel('core/variable')->loadByCode('fathersday_top_banner ')->getValue('plain');
+                            $layer = Mage::getSingleton('catalog/layer');
+                            $_category = $layer->getCurrentCategory();
+                            $currentCategoryId= $_category->getId();
+                            if($currentCategoryId==5 && $fathersday_top_banner=='true') {?>
+                            <div style="padding:3px 0 !important;width: 100%; position: relative;  left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 16px;font-family: AvantGardeGothicMedium;">BUY 1 MEN'S TOP + 1 MEN'S BOTTOM - WE WILL AUTOMATICALLY ADD 1 SUNDAY TEE TO THE SHIPMENT.</div>
+                            <?php }?>
+                            <div id="Allproducts" desc="<?php echo Mage::registry('current_category')->getName(); ?> Products" class="fullscreen pgsection productgrid-holder">
+                        
+                       <div class="myheader zindex10 topvisible colorbg absoluteposition">
+
+                            ALL PRODUCTS
+                                            
                         </div>
+
                         <div class="mylayerednavigation alwaysvisible" style="width : 200px;">
                             <?php echo $this->getChildHtml('left') ?>
                         </div>
