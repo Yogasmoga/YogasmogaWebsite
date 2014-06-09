@@ -1101,177 +1101,200 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
                 <!-- DetailsContent -->
                 <td class="popupproductdetail">
-                    <div class="productoptions">
+                    <div class="productoptions gry-box">
                         <table class="productdetailtable">
                             <tr>
                                 <td>
-                                    <div class="productname"><?php echo html_entity_decode($productname); ?></div>
-                                    <div class="productcost"><?php echo $productprice; ?></div>
-                                    <div class="shortdesc"><?php echo $_product->getShortDescription(); ?></div>
-                                    <table class="selectedcolor">
-                                        <tr>
-                                            <td>COLOR</td>
-                                            <td class="selectedcolortext"></td>
-                                        </tr>
-                                    </table>
-                                    <div id="colorcontainer">
-                                        <?php
-                                        $primarycolorcode = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'primarycolorcode', Mage::app()->getStore()->getStoreId());
-                                        $first = true;
-                                        //print_r($productcolorinfo);
-                                        $colorcount = 0;
-                                        for($incr = 0; $incr < 2; $incr++)
-                                        {
-                                            foreach($productcolorinfo as $key=>$colorinfo)
+                                    <!-- heading -->
+                                    <div class="productname prdname"><?php echo html_entity_decode($productname); ?>
+                                        <span class="productcost amount"><?php echo $productprice; ?></span>
+                                    </div>
+                                    <!-- heading -->
+
+                                    <!-- description -->
+                                    <div class="shortdesc box-seprtr dnone"><?php echo $_product->getShortDescription(); ?></div>
+                                    <!-- description -->
+
+                                    <!-- selectColor -->
+                                    <div class="box-seprtr">
+                                        <div class="blck-head-sml"><span>Step 1:</span> choose your color</div>
+                                        <table class="selectedcolor blck-head-sml">
+                                            <tr>
+                                                <td><span>COLOR:</span></td>
+                                                <td class="selectedcolortext"></td>
+                                            </tr>
+                                        </table>
+                                        <div id="colorcontainer">
+                                            <?php
+                                            $primarycolorcode = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'primarycolorcode', Mage::app()->getStore()->getStoreId());
+                                            $first = true;
+                                            //print_r($productcolorinfo);
+                                            $colorcount = 0;
+                                            for($incr = 0; $incr < 2; $incr++)
                                             {
-                                                if($incr == 0)
+                                                foreach($productcolorinfo as $key=>$colorinfo)
                                                 {
-                                                    if($colorinfo['value'] != $primarycolorcode)
-                                                        continue;
-                                                }
-                                                else
-                                                {
-                                                    if($colorinfo['value'] == $primarycolorcode)
-                                                        continue;
-                                                }
-                                                $colorcount++;
-                                                ?>
-                                                <div>
-                                                    <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
-                                                        <tr>
-                                                            <?php
-                                                            foreach($colorinfo['hex'] as $hex)
-                                                            {
+                                                    if($incr == 0)
+                                                    {
+                                                        if($colorinfo['value'] != $primarycolorcode)
+                                                            continue;
+                                                    }
+                                                    else
+                                                    {
+                                                        if($colorinfo['value'] == $primarycolorcode)
+                                                            continue;
+                                                    }
+                                                    $colorcount++;
+                                                    ?>
+                                                    <div <?php if($first) { echo "class='selected'"; $first = false; } ?>>
+                                                        <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
+                                                            <tr>
+                                                                <?php
+                                                                foreach($colorinfo['hex'] as $hex)
+                                                                {
+                                                                    ?>
+                                                                    <td style="background-color: <?php echo $hex ?>;">
+                                                                        <div>
+                                                                            &nbsp;
+                                                                        </div>
+                                                                    </td>
+                                                                <?php
+                                                                }
                                                                 ?>
-                                                                <td style="background-color: <?php echo $hex ?>;">
-                                                                    <div>
-                                                                        &nbsp;
-                                                                    </div>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
+
                                                                 </td>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
-
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                                <?php
-                                                if(($colorcount % 5) == 0)
-                                                    echo "<br/>";
-                                            }
-                                        }
-
-                                        ?>
-                                    </div>
-                                    <div style="clear: both;"></div>
-                                    <table class="selectedsize" <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
-                                        <tr>
-                                            <td>SIZE</td>
-                                            <?php if($sizechartblockid != "") {?>
-                                                <td class="sizechartlink">
-                                                    <div style="position: relative;">
-                                                        <a href="javascript:void(0);">Size chart</a>
-
-                                                        <div id="sizechart">
-                                                            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
-                                                        </div>
+                                                            </tr>
+                                                        </table>
                                                     </div>
-                                                </td>
-                                            <?php } ?>
-                                        </tr>
-                                    </table>
-                                    <div id="sizecontainer" <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
-                                        <table>
-                                            <tr>
-                                                <?php
-                                                $sizecount = 0;
-                                                foreach($productallsizes as $size)
-                                                {
-                                                //if($sizecount % 6 == 0 && $sizecount > 0)
-                                                if(strpos($size['label'],"T") !== false & $sizecount == 0)
-                                                {
-                                                $sizecount++;
-                                                ?>
-                                            </tr>
-                                            <tr>
-                                                <?php
+                                                    <?php
+                                                    //if(($colorcount % 5) == 0)
+                                                        //echo "<br/>";
                                                 }
-                                                ?>
-                                                <td><div value="<?php echo $size['value']; ?>" size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?></div></td>
-                                                <?php
-                                                }
-                                                ?>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    <?php if($howdoesitfitblockid != "") { ?>
-                                        <table class="fittable">
-                                            <tr>
-                                                <td>
-                                                    <div class="hanger"></div>
-                                                </td>
-                                                <td class="howdoesitfitlink">
-                                                    <div style="position: relative;">
-                                                        <a href="javascript:void(0);">How does it fit?</a>
-                                                        <div id="howdoesitfitbox">
-                                                            <div id="howdoesitfitboxinner">
-                                                                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
-                                                            </div>
-                                                            <img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    <?php } ?>
-                                    <div class="qty">QTY</div>
-                                    <div class="sizeselector">
-                                        <select class="qtyselector">
-                                            <?php
-                                            for($i = 1; $i < 21; $i++)
-                                            {
-                                                ?>
-                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                            <?php
                                             }
+
                                             ?>
-                                        </select>
+                                        </div>
+                                        <div style="clear:both;"></div>
                                     </div>
-                                    <div class="divider"></div>
-                                    <table class="smogibucks" <?php if(!$isrewardable) { echo "style='display:none;'"; } ?>>
-                                        <tr>
-                                            <td>
-                                                <div class="smogibuckcount">
-                                                    <table>
-                                                        <tr>
-                                                            <td>
-                                                                <?php echo $productrewardpoints; ?>
+                                    <!-- selectColor -->
+
+                                    <!-- selectSize -->
+                                    <div class="selectedsize" <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
+                                    <div class="box-seprtr">
+                                        <div class="blck-head-sml"><span>Step 2:</span> Select a size
+                                                <table class="f-right">
+                                                    <tr>
+                                                        <?php if($sizechartblockid != "") {?>
+                                                            <td class="sizechartlink">
+                                                                <div style="position: relative;">
+                                                                    <p class="block-link" style="margin: 0px; float: right;"><a href="javascript:void(0);" style="color:#CC0033; font-size:11px;">Size chart</a></p>
+                                                                    <div id="sizechart">
+                                                                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
+                                                                    </div>
+                                                                </div>
                                                             </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                            </td>
-                                            <td class="earnsmogibuckstext">
-                                                EARN <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks" target="_blank">SMOGI BUCKS</a><br/>WITH THIS PURCHASE
-                                            </td>
-                                        </tr>
-                                    </table>
+                                                        <?php } ?>
+                                                    </tr>
+                                                </table>
+                                        </div>
+                                        <div id="sizecontainer" <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
+                                            <table>
+                                                <tr>
+                                                    <?php
+                                                    $sizecount = 0;
+                                                    foreach($productallsizes as $size)
+                                                    {
+                                                    //if($sizecount % 6 == 0 && $sizecount > 0)
+                                                    if(strpos($size['label'],"T") !== false & $sizecount == 0)
+                                                    {
+                                                    $sizecount++;
+                                                    ?>
+                                                </tr>
+                                                <tr>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    <td><div value="<?php echo $size['value']; ?>" size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?></div></td>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <!-- selectSize -->
+
+                                    <!-- selectFit -->
+                                    <?php if($howdoesitfitblockid != "") { ?>
+                                    <div class="box-seprtr">
+                                        <div class="blck-head-sml"><span class="qty">QTY</span>
+                                                <table class="fittable">
+                                                    <tr>
+                                                        <td>
+                                                            <div class="hanger"></div>
+                                                        </td>
+                                                        <td class="howdoesitfitlink">
+                                                            <div style="position: relative;">
+                                                                <p class="block-link" style="margin: 0px; float: right;"><a href="javascript:void(0);">How does it fit?</a></p>
+                                                                <div id="howdoesitfitbox">
+                                                                    <div id="howdoesitfitboxinner">
+                                                                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
+                                                                    </div>
+                                                                    <img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                        </div>
+                                        <div class="sizeselector">
+                                            <select class="qtyselector">
+                                                <?php
+                                                for($i = 1; $i < 21; $i++)
+                                                {
+                                                    ?>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <?php } ?>
+                                    <!-- selectFit -->
                                     <?php /*
                                     <button id="orderitem" title="Add to Cart" class="button cbtn btn-bag"><span><span>Add to Cart</span></span></button>
 					                <button style="display: none;" id="preorderitem" title="Preorder" class="button cbtn btn-pre"><span>Preorder<span></span></span> </button>
                                     */ ?>
-                                    <div id="orderitem" class="addtobag spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_on.png'); ?>"></div>
-                                    <div id="outofstockitem" class="outofstockitem"></div>
-                                    <div id="preorderitem" class="preorderitem spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_now_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_now_on.png'); ?>"></div>
-                                    <div class="producterrorcontainer">
-                                        <div class="errormsg">
+                                    <!-- AddToBag -->
+                                    <div class="box-seprtr last">
+                                        <div class="blck-head-sml"><span>Step 3</span></div>
+                                        <!-- addtobag-btn -->
+                                        <div id="orderitem" class="addtobag spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_on.png'); ?>"></div>
+                                        <!-- addtobag-btn -->
+
+                                        <!-- outofstock-btn -->
+                                        <div id="outofstockitem" class="outofstockitem"></div>
+                                        <!-- outofstock-btn -->
+
+                                        <!-- preorder-btn -->
+                                        <div id="preorderitem" class="preorderitem spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_now_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_now_on.png'); ?>"></div>
+                                        <!-- preorder-btn -->
+                                        
+                                        <!-- producterror -->
+                                        <div class="producterrorcontainer">
+                                            <div class="errormsg"></div>
+                                            <img id="preorderhelp" src="<?php echo $this->getSkinUrl('images/help.png'); ?>" />
                                         </div>
-                                        <img id="preorderhelp" src="<?php echo $this->getSkinUrl('images/help.png'); ?>" />
+                                        <!-- producterror -->
+
+                                        <p class="c-align" style="margin:10px 0 0;"><em>Free and fast shipping to US and Canada</em></p>
                                     </div>
+                                    <!-- AddToBag -->
                                 </td>
                             </tr>
                         </table>
@@ -1280,6 +1303,26 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                             <img class="closeinfo" src="<?php echo $this->getSkinUrl('images/cross_red.png'); ?>" />
                         </div>
                     </div>
+                    <!-- SMOGIBUCKS -->
+                    <table class="smogibucks" <?php if(!$isrewardable) { echo "style='display:none;'"; } ?>>
+                        <tr>
+                            <td>
+                                <div class="smogibuckcount">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <?php echo $productrewardpoints; ?>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="earnsmogibuckstext">
+                                EARN <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks" target="_blank">SMOGI BUCKS</a> WITH THIS PURCHASE
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- SMOGIBUCKS -->                    
                 </td>
 
                 <!-- DetailsContent -->
@@ -1300,6 +1343,10 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             </tr>
         </table>
         <img id="closelightbox" src="<?php echo $this->getSkinUrl('images/catalog/product/close1.png'); ?>" />
+        <div class="quick-navigation">
+            <a href="#" class="quick-prev">Previous</a>
+            <a href="#" class="quick-next">Next</a>           
+        </div>
     <?php
     }
 
