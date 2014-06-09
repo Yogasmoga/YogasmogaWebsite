@@ -6,13 +6,43 @@ class Mycustommodules_Mynewtheme_CommonController extends Mage_Core_Controller_F
         echo "Output newtheme module";
     }
 
-    public function couponPostAction()
+    protected function _getCart()
+    {
+        return Mage::getSingleton('checkout/cart');
+    }
+
+    protected function _getSession()
+    {
+        return Mage::getSingleton('checkout/session');
+    }
+
+    protected function _getQuote()
+    {
+        return $this->_getCart()->getQuote();
+    }
+
+    function getCartItemCount()
+    {
+        return $this->_getCart()->getQuote()->getItemsCount();
+
+    }
+
+
+    public function applycouponcodeAction()
     {
         /**
          * No reason continue with empty shopping cart
          */
-        if (!$this->_getCart()->getQuote()->getItemsCount()) {
-            $this->_goBack();
+        $response = array(
+            "status" => 'error',
+            "errors" => '',
+            "success_message" => ""
+        );
+        $errors = array();
+
+        if (!$this->getCartItemCount()) {
+            $response['errors'] = "Your cart is empty";
+            echo json_encode($response);
             return;
         }
 
@@ -23,7 +53,8 @@ class Mycustommodules_Mynewtheme_CommonController extends Mage_Core_Controller_F
         $oldCouponCode = $this->_getQuote()->getCouponCode();
 
         if (!strlen($couponCode) && !strlen($oldCouponCode)) {
-            $this->_goBack();
+            $response['errors'] = "No Coupon code applied";
+            echo json_encode($response);
             return;
         }
 
@@ -38,25 +69,43 @@ class Mycustommodules_Mynewtheme_CommonController extends Mage_Core_Controller_F
                     $this->_getSession()->addSuccess(
                         $this->__('Coupon code "%s" was applied.', Mage::helper('core')->htmlEscape($couponCode))
                     );
+                    $response['success_message'] = "Coupon code".$couponCode."was applied Successfully";
+                    $response['status'] = "success";
+                    echo json_encode($response);
+                    return;
                 }
                 else {
                     $this->_getSession()->addError(
                         $this->__('cpnerror-msgCoupon code "%s" is not valid.', Mage::helper('core')->htmlEscape($couponCode))
                     );
+                    $response['errors'] = "Coupon code is not valid";
+                    echo json_encode($response);
+                    return;
                 }
             } else {
                 $this->_getSession()->addSuccess($this->__('Coupon code was canceled.'));
+                $response['errors'] = "Coupon code was canceled.";
+                echo json_encode($response);
+                return;
             }
 
         } catch (Mage_Core_Exception $e) {
             $this->_getSession()->addError("cpnerror-msg".$e->getMessage());
+            $response['errors'] = "Cannot apply the coupon code.";
+            echo json_encode($response);
+            return;
         } catch (Exception $e) {
             $this->_getSession()->addError($this->__('cpnerror-msgCannot apply the coupon code.'));
             Mage::logException($e);
+            $response['errors'] = "Cannot apply the coupon code.";
+            echo json_encode($response);
+            return;
         }
 
-        $this->_goBack();
+        //$this->_goBack();
     }
+
+
     
 }
 ?>
