@@ -9,6 +9,14 @@ jQuery(document).ready(function($){
         showQuickViewPopup($(this).attr('id'));
     });
 
+    // $(".quick-prev").click(function(){
+    //     alert("dsfsdf");
+    // });
+
+    // $(".quick-next").click(function(){
+    //     showQuickViewPopup($(this).attr('id'));
+    // });        
+
 });
 
 function showQuickViewPopup(productid)
@@ -31,8 +39,6 @@ function showQuickViewPopup(productid)
         success : function(data){
 
 
-
-
             jQuery("#productdetailpopup").html(data);
             jQuery("#productdetailpopup #colorcontainer > div.selected > table").trigger('click');
 
@@ -40,16 +46,32 @@ function showQuickViewPopup(productid)
             if(jQuery("div#colorcontainer table:first").length > 0)
                 changeColor(_dressingroomselectedcolor);
 
+            var nextIdView = parseInt(jQuery("#" + productid).closest("li").next().children("a").attr("id"));
+            var prevIdView = parseInt(jQuery("#" + productid).closest("li").prev().children("a").attr("id"));
 
+            if(nextIdView > 0){
+                jQuery(".quick-next").attr("id", nextIdView).css("display", "block");
+            }
 
-            //var nextIdView = jQuery(productid).html();
-            //var prevIdView = jQuery(".quick-view").attr("id", productid).parent("li").prev("li").children("a").attr("id");
-
-            //alert(nextIdView);
-            
-            //jQuery(".quick-next").attr("id", nextIdView);
-            //jQuery(".quick-prev").attr("id", prevIdView); 
+            if(prevIdView > 0){
+                jQuery(".quick-prev").attr("id", prevIdView).css("display", "block");
+            }
         }
     });
 
 }
+
+// function quickNavigation(){
+//     var nextIdView = parseInt(jQuery("#" + productid).closest("li").next().children("a").attr("id"));
+//     var prevIdView = parseInt(jQuery("#" + productid).closest("li").prev().children("a").attr("id"));
+
+//     alert(nextIdView);
+
+//     if(nextIdView > 0){
+//         jQuery(".quick-next").attr("id", nextIdView).css("display", "block");
+//     }
+
+//     if(prevIdView > 0){
+//         jQuery(".quick-prev").attr("id", prevIdView).css("display", "block");
+//     }
+// }
