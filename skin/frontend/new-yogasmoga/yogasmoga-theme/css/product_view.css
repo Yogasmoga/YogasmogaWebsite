@@ -95,11 +95,11 @@ table.productdetailtable div.breadcrumb a:hover{color:#d30d3d;}
 table.productdetailtable div.productname
 {
     font-family:ITCAvantGardeProBk, gotham  , Arial;
-    font-size: 20px;
+    font-size: 17px; /*20px*/
     letter-spacing: 0.4pt;
     line-height: 1.2em;
-    margin-bottom: 15px;
-    padding-bottom: 15px;
+    margin-bottom: 10px; /*15px*/
+    padding-bottom: 10px; /*15px*/
 }
 
 .dnone{
@@ -107,10 +107,10 @@ table.productdetailtable div.productname
 }
 
 table.productdetailtable div.box-seprtr{
-    margin-bottom: 15px;
-    font: 13px/18px gothambook;
+    margin-bottom: 10px; /*15px*/
+    font: 12px/18px gothambook; /*13px*/
     clear: both;
-    padding-bottom: 15px;
+    padding-bottom: 10px; /*15px*/
 }
 
 table.productdetailtable div.box-seprtr.last {
@@ -147,7 +147,7 @@ table.productdetailtable table.selectedcolor td:first-child
 .blck-head-sml span {
     display: inline-block;
     font-family: gothambold;
-    width: 60px;
+    width: 55px; /*60px*/
 }
 
 table.productdetailtable div#colorcontainer {
@@ -156,10 +156,10 @@ table.productdetailtable div#colorcontainer {
     width: 100%;
 }
 
-table.productdetailtable div#colorcontainer div {
+table.productdetailtable div#colorcontainer > div {
     float: left;
-    height: 25px;
-    margin: 5px 5px 3px 0;
+    height: 28px;
+    margin: 5px 5px 0 0; /*5px 5px 3px 0*/
     width: auto;
     padding: 2px;
     border: 1px solid transparent; 
@@ -167,7 +167,7 @@ table.productdetailtable div#colorcontainer div {
 
 table.productdetailtable div#colorcontainer div table
 {
-    width : 30px;
+    width : 25px;
     cursor : pointer;
 }
 
@@ -176,11 +176,36 @@ table.productdetailtable div#colorcontainer div table tr:first-child td
     height : 25px;
 }
 
-table.productdetailtable div#colorcontainer div table td div
+table.productdetailtable div#colorcontainer > div table tr:nth-child(1) td:nth-child(1)
 {
-    height : 10px;
-    overflow : hidden;
+     width:0; 
+     height:0; 
+     border-right:25px solid transparent !important;
+     border-top:3px solid transparent !important;
+
+     border-left-color: 25px;
+     border-left-style: solid;
+
+     border-bottom-width:25px;
+     border-bottom-style: solid;
 }
+
+table.productdetailtable div#colorcontainer > div table tr:nth-child(1) td:nth-child(2)
+{
+     width:0; 
+     height:0; 
+     border-left:25px solid transparent !important;
+     border-bottom:3px solid transparent !important;
+
+     border-right-color: 25px;
+     border-right-style: solid;
+
+     border-top-width:25px;
+     border-top-style: solid;
+     margin: 0 0 0 -28px;
+     float: left;
+}
+
 
 table.productdetailtable div#colorcontainer div table td.tdselectedcolor
 {
@@ -201,7 +226,7 @@ table.productdetailtable table.selectedsize td.sizechartlink a
 
 table.productdetailtable div#sizecontainer
 {
-    margin: 15px 0 0 0;
+    margin: 10px 0 0 0;
 }
 
 table.productdetailtable div#sizecontainer table td
@@ -220,7 +245,7 @@ table.productdetailtable div#sizecontainer table td:last-child
 
 table.productdetailtable div#sizecontainer table td div
 {
-    padding : 5px 10px;
+    padding : 2px 8px; /*5px 8px;*/
     margin: 0 5px 0 0;
     display: inline-block;
     border: 1px solid #A9A9A9;
@@ -270,7 +295,7 @@ table.productdetailtable table.fittable td:first-child
 table.productdetailtable table.fittable td.howdoesitfitlink a
 {
     color: #CC0033;
-    font-size: 11px;
+    font-size: 10px; /*11px*/
 }
 
 table.productdetailtable table.fittable td.howdoesitfitlink div
@@ -309,7 +334,7 @@ table.productdetailtable div.divider
 
 td.popupproductdetail table.smogibucks
 {
-    margin-top : ;
+    width: 332px;
 }
 
 td.popupproductdetail table.smogibucks td div.smogibuckcount
@@ -319,6 +344,16 @@ td.popupproductdetail table.smogibucks td div.smogibuckcount
     width : 32px;
     height : 32px;   
     margin-right : 8px;
+    float: left;
+}
+
+.earnsmogibuckstext{
+    float: left;
+    width: 75%;
+}
+
+.smogibucks .social-ico {
+    margin: 2px 0 0;
 }
 
 td.popupproductdetail table.smogibucks td div.smogibuckcount table td
@@ -329,7 +364,8 @@ td.popupproductdetail table.smogibucks td div.smogibuckcount table td
     width : 32px;
     height : 32px;
     color : #FFF;
-    font-size : 16px;
+    font-family: gothamlight;
+    font-size : 14px;
     letter-spacing: 0.2pt;
     padding-top : 16px;
 }
@@ -348,7 +384,7 @@ table.productdetailtable div.outofstockitem
     width : auto;
     height : 43px;
     background : url('../images/catalog/product/out_of_stock.png') no-repeat center center;
-    margin-top : 15px;
+    margin-top : 10px;
     display : none;
 }
 
@@ -357,7 +393,7 @@ table.productdetailtable div.addtobag
     height : 43px;
     padding: 0;
     background : url('../images/catalog/product/add_to_bag_off.png') no-repeat center center;
-    margin : 15px 0 0;
+    margin : 10px 0 0;
     cursor : pointer;
     width: auto;
 }
@@ -372,7 +408,7 @@ table.productdetailtable div.preorderitem
     width : auto;
     height : 43px;
     background : url('../images/catalog/product/pre_order_now_off.png') no-repeat center center;
-    margin-top : 15px;
+    margin-top : 10px;
     cursor : pointer;
     display : none;
     position: relative;
@@ -428,7 +464,7 @@ letter-spacing: 0.6pt;
 #productdetailpopup div.viewfulldetails, #productdetailpopup div.viewfulldetails a, #productdetailpopup div.viewfulldetails a:hover, #productdetailpopup div.viewfulldetails a:visited 
 {
     color : black;
-    font-family:gothamlight;    
+    font-family:gothambook;    
     font-size : 10px;
     letter-spacing: 0.6pt;
     margin-top : 25px;
@@ -625,10 +661,34 @@ table.productdetailspopup td.popupproductdetail
     min-width : 370px;
 }
 
+table.productdetailspopup td.popupproductdetail .box-desc-dvdr {
+    width: 332px;
+}
+
+table.productdetailspopup td.popupproductdetail .box-desc-dvdr .earnbucks {
+    width: 50%;
+}
+
+table.productdetailspopup td.popupproductdetail .box-desc-dvdr .badges {
+    font: 14px gothambook;
+    margin: 5px 10px 0 5px;
+}
+
+table.productdetailspopup td.popupproductdetail .box-desc-dvdr .wishlist {
+    display: inline-block;
+    float: right;
+    margin: 4px 0 0;
+}
+
+table.productdetailspopup td.popupproductdetail .box-desc-dvdr .social-ico {
+    margin-bottom: 0;
+}
+
 div.productoptions
 {
     width : 302px;
     padding: 15px;
+    min-height: 423px;
 }
 
 td.popupproductdetail div.productoptions
@@ -1013,12 +1073,25 @@ table.productdetailtable div#colorcontainer > div.selected table td.tdselectedco
 .quick-prev{background: url("../images/homepage/previous-slide.png") no-repeat bottom; background-size:100% 100%; left: 1%; width:24px; height: 46px;}
 .quick-navigation a {
     cursor: pointer;
-    opacity: 0.7;
+    opacity: 0.5;
     display: none;
-    height: 50px;
+    height: 40px;
     position: absolute;
     text-indent: -9999px;
     top: 44%;
-    width: 30px;
+    width: 25px;
     z-index: 10;
 }
+
+.quick-navigation a:hover{
+    opacity: 0.7;
+}
+
+.fbIcon, .twtrIcon, .pinIcon{background: url("../images/product/fb.png") no-repeat center top; display: inline-block; height: 27px; width: 28px; margin: 0 0 0 5px;}
+.fbIcon{margin: 0;}
+.twtrIcon{background-image: url("../images/product/twtr.png");}
+.pinIcon{background-image: url("../images/product/pntrst.png");}
+
+.fbIcon:hover{background-image: url("../images/product/fb-ovr.png");}
+.twtrIcon:hover{background-image: url("../images/product/twtr-ovr.png");}
+.pinIcon:hover{background-image: url("../images/product/pntrst-ovr.png");}

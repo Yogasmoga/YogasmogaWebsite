@@ -765,6 +765,11 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         return Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)."frontend/yogasmoga/yogasmoga-theme/".$path;
     }
 
+    protected function getNewSkinUrl($path)
+    {
+        return Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)."frontend/new-yogasmoga/yogasmoga-theme/".$path;
+    }
+
     public function detailsAction()
     {
         //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN);
@@ -1150,15 +1155,26 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                                         <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
                                                             <tr>
                                                                 <?php
+                                                                //echo '<pre>'; print_r($colorinfo); echo count($colorinfo['hex']); die('test');
                                                                 foreach($colorinfo['hex'] as $hex)
                                                                 {
+                                                                    if(count($colorinfo['hex']) == 1)
+                                                                    {
+
                                                                     ?>
-                                                                    <td style="background-color: <?php echo $hex ?>;">
-                                                                        <div>
-                                                                            &nbsp;
-                                                                        </div>
-                                                                    </td>
+                                                                         <td style="border-color: transparent !important; background-color: <?php echo $hex ?>;">
+                                                                            <div> </div>
+                                                                        </td>
+                                                                    <?php
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                    ?>   
+                                                                        <td style="border-color: <?php echo $hex ?>;">
+                                                                            <div> </div>
+                                                                        </td>
                                                                 <?php
+                                                                     }
                                                                 }
                                                                 ?>
                                                             </tr>
@@ -1183,8 +1199,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
                                     <!-- selectSize -->
                                     <div class="selectedsize" <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
-                                    <div class="box-seprtr">
-                                        <div class="blck-head-sml"><span>Step 2:</span> Select a size
+                                        <div class="box-seprtr">
+                                            <div class="blck-head-sml"><span>Step 2:</span> Select a size
                                                 <table class="f-right">
                                                     <tr>
                                                         <?php if($sizechartblockid != "") {?>
@@ -1199,39 +1215,39 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                                         <?php } ?>
                                                     </tr>
                                                 </table>
+                                            </div>
+                                            <div id="sizecontainer" <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
+                                                <table>
+                                                    <tr>
+                                                        <?php
+                                                        $sizecount = 0;
+                                                        foreach($productallsizes as $size)
+                                                        {
+                                                        //if($sizecount % 6 == 0 && $sizecount > 0)
+                                                        if(strpos($size['label'],"T") !== false & $sizecount == 0)
+                                                        {
+                                                        $sizecount++;
+                                                        ?>
+                                                    </tr>
+                                                    <tr>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                        <td><div value="<?php echo $size['value']; ?>" size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?></div></td>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                        <div id="sizecontainer" <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
-                                            <table>
-                                                <tr>
-                                                    <?php
-                                                    $sizecount = 0;
-                                                    foreach($productallsizes as $size)
-                                                    {
-                                                    //if($sizecount % 6 == 0 && $sizecount > 0)
-                                                    if(strpos($size['label'],"T") !== false & $sizecount == 0)
-                                                    {
-                                                    $sizecount++;
-                                                    ?>
-                                                </tr>
-                                                <tr>
-                                                    <?php
-                                                    }
-                                                    ?>
-                                                    <td><div value="<?php echo $size['value']; ?>" size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?></div></td>
-                                                    <?php
-                                                    }
-                                                    ?>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
                                     </div>
                                     <!-- selectSize -->
 
                                     <!-- selectFit -->
-                                    <?php if($howdoesitfitblockid != "") { ?>
                                     <div class="box-seprtr">
                                         <div class="blck-head-sml"><span class="qty">QTY</span>
+                                            <?php if($howdoesitfitblockid != "") { ?>
                                                 <table class="fittable">
                                                     <tr>
                                                         <td>
@@ -1250,6 +1266,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                                         </td>
                                                     </tr>
                                                 </table>
+                                            <?php } ?>
                                         </div>
                                         <div class="sizeselector">
                                             <select class="qtyselector">
@@ -1264,7 +1281,6 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                             </select>
                                         </div>
                                     </div>
-                                    <?php } ?>
                                     <!-- selectFit -->
                                     <?php /*
                                     <button id="orderitem" title="Add to Cart" class="button cbtn btn-bag"><span><span>Add to Cart</span></span></button>
@@ -1304,21 +1320,28 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         </div>
                     </div>
                     <!-- SMOGIBUCKS -->
-                    <table class="smogibucks" <?php if(!$isrewardable) { echo "style='display:none;'"; } ?>>
+                    <table class="font11 smogibucks" <?php if(!$isrewardable) { echo "style='display:none;'"; } ?>>
                         <tr>
-                            <td>
-                                <div class="smogibuckcount">
-                                    <table>
-                                        <tr>
-                                            <td>
-                                                <?php echo $productrewardpoints; ?>
-                                            </td>
-                                        </tr>
-                                    </table>
+                            <td width="50%">
+                                <div class="earnbucks">
+                                    <div class="smogibuckcount">
+                                        <table>
+                                            <tr>
+                                                <td><?php echo $productrewardpoints; ?></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <p class="earnsmogibuckstext">EARN <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks" target="_blank">SMOGI BUCKS</a> WITH THIS PURCHASE</p>
                                 </div>
                             </td>
-                            <td class="earnsmogibuckstext">
-                                EARN <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks" target="_blank">SMOGI BUCKS</a> WITH THIS PURCHASE
+                            <td width="50%">
+                                <div class="wishlist">
+                                    <div class="social-ico">
+                                        <a href="javascript:void(0)" class="twtrIcon" title="YogaSmoga - Twitter"></a> 
+                                        <a href="javascript:void(0)" class="pinIcon" title="YogaSmoga - Pinterest"></a>
+                                        <a href="javascript:void(0)" class="fbIcon" title="YogaSmoga - Facebook"></a>         
+                                    </div>
+                                </div>                                
                             </td>
                         </tr>
                     </table>
