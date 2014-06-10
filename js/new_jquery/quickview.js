@@ -22,7 +22,7 @@ jQuery(document).ready(function($){
 function showQuickViewPopup(productid)
 {
     productid = parseInt(productid);
-    jQuery("#productdetailpopup").html("<table style='width:100%;height : 530px;'><tr><td style='text-align:center;vertical-align:middle;'><img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/loading.gif' /></td></tr></table>");
+    jQuery("#productdetailpopup").html("<table style='width:100%;height : 530px;'><tr><td style='text-align:center;vertical-align:middle;'><img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' /></td></tr></table>");
     jQuery( "#productdetailpopup" ).dialog( "open" );
 
     if(window.location.href.indexOf('https://') >= 0)
@@ -40,7 +40,7 @@ function showQuickViewPopup(productid)
 
 
             jQuery("#productdetailpopup").html(data);
-            jQuery("#productdetailpopup #colorcontainer > div.selected > table").trigger('click');
+            jQuery("#productdetailpopup #colorcontainer > div:first-child > table").trigger('click');
 
             InitializeProductQty();
             if(jQuery("div#colorcontainer table:first").length > 0)
@@ -56,6 +56,13 @@ function showQuickViewPopup(productid)
             if(prevIdView > 0){
                 jQuery(".quick-prev").attr("id", prevIdView).css("display", "block");
             }
+
+            jQuery(".quick-next").click(function(){
+                showQuickViewPopup(jQuery(this).attr('id'));
+            });
+            jQuery(".quick-prev").click(function(){
+                showQuickViewPopup(jQuery(this).attr('id'));
+            });
         }
     });
 
