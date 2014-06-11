@@ -56,4 +56,34 @@ class MyCustommodules_Mynewtheme_GiftofysController extends Mage_Core_Controller
     return;
 
     }
+
+    public function giftcardActiveAction()
+    {
+        $response = array(
+            'status'=> 'error',
+            'error' => '',
+            'success_message' => ''
+        );
+        if (!Mage::helper('customer')->isLoggedIn()) {
+            $response['error'] = "Please login first for apply Gift of YS";
+            Mage::getSingleton('customer/session')->authenticate($this);
+            echo json_encode($response);
+            return;
+        }
+        if ((string)$this->getRequest()->getParam('giftcard_use') == '1') {
+            Mage::getSingleton('giftcards/session')->setActive('1');
+            $response['status'] = "success";
+            $response['success_message'] = "Gift Cart Successfully applied.";
+        } else {
+            Mage::getSingleton('giftcards/session')->setActive('0');
+        }
+        try {
+            $this->_getQuote()->getShippingAddress()->setCollectShippingRates(true);
+            $this->_getQuote()->collectTotals()->save();
+        } catch (Exception $e) {
+            $this->_getSession()->addError($e->getMessage());
+            $response['error'] = "There has been an error to apply Gift of YS.";
+        }
+        return;
+    }
 }
