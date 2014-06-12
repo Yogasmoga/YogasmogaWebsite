@@ -31,7 +31,8 @@
 <action method="addJs"><script>mobile/jquerycustom.js</script></action>
 <action method="addJs"><script>mobile/mywatermark.js</script></action>
 <action method="addJs"><script>mobile/globalvariables.js</script></action>
-
+            <action method="addJs"><script>mobile/jquery.fancybox-1.0.0.js</script></action>
+            <action method="addItem"><type>skin_css</type><name>css/fancy.css</name></action>
             <action method="addItem"><type>skin_css</type><name>css/ys-style.css</name></action>
 			<!-- Link to external JavaScript file (e.g Jquery CDN)
 			
@@ -317,7 +318,7 @@ Category default layout
     <checkout_cart_index>
         <reference name="root">
             <block type="page/html_footer" name="footer" as="footer" template="page/html/footer1.phtml" />
-        </reference>  
+        </reference>
     </checkout_cart_index>
 	
     <checkout_onepage_index>
