@@ -37,7 +37,7 @@ function sharewithfriend()
         type    :   'POST',
         data    :   {'name':fname,'email':email_id,'id':id},
         beforeSend: function() {
-            jQuery("#invite-friend-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:40px;' />");
+            jQuery("#invite-friend-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
             jQuery("#send-invite").parent().hide();
             jQuery("#invite-friend-form .form-loader").show();
         },

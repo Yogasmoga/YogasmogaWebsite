@@ -54,7 +54,7 @@ function createCustomerAccount()
         type    :   'POST',
         data    :   {'firstname':fname,'lastname':lname,'email':email_id,'password':pwd,'confirmation':cpassword,'is_subscribed':is_subscribed},
         beforeSend: function() {            
-            jQuery("#sign-up-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:40px;' />");
+            jQuery("#sign-up-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
             jQuery("#sign-up-button").parent().hide();
             jQuery("#sign-up-form .form-loader").show();
         },
@@ -116,7 +116,7 @@ function loginCustomer()
         type    :   'POST',
         data    :   {'email':email_id,'pwd':pwd},
         beforeSend: function() {            
-            jQuery("#sign-in-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:40px;' />");
+            jQuery("#sign-in-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
             jQuery("#sign-in-button").parent().hide();
             jQuery("#sign-in-form .form-loader").show();
         },

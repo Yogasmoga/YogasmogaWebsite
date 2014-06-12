@@ -25,7 +25,7 @@
 /* Reset ================================================================================= */
 * { margin:0; padding:0;}
 
-body          {font:12px/1.55 gothambook, Arial, Helvetica, sans-serif; color:#2f2f2f; text-align:center; overflow-y: scroll !important; }
+body          {font:12px/1.55 gothambook, Arial, Helvetica, sans-serif; color:#2f2f2f; text-align:center; }
 
 img           { border:0; vertical-align:top; }
 
