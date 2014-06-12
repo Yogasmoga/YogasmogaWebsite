@@ -510,7 +510,7 @@ function resizeProductBigImage()
         jQuery("table.tdbigimagecontainer img").css('max-height', 'auto');
         //jQuery("table.tdbigimagecontainer img").css('max-height', maxHeight + 'px');
     else
-        jQuery("table.tdbigimagecontainer img").css('max-height', '600px');
+        jQuery("table.tdbigimagecontainer img").css('max-height', 'auto');
 }
 
 function clearEmptycaptions()
