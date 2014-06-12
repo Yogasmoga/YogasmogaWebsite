@@ -648,10 +648,10 @@ if(strpos($currentUrl, "?") != false)
                                                         <?php if($sizechartblockid != "") {?>
                                                             <td class="sizechartlink">
                                                                 <div style="position: relative;">
-                                                                    <p class="block-link" style="margin: 0px; float: right;"><a href="javascript:void(0);" style="color:#CC0033; font-size:11px;">Size chart</a></p>
-                                                                    <div id="sizechart">
-                                                                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
-                                                                    </div>
+                                                                    <p class="block-link" style="margin: 0px; float: right;"><a id="sizechart" style="color:#CC0033; font-size:11px; cursor:pointer;">Size chart</a></p>
+                                                                    <!-- <div id="sizechart">
+                                                                        <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
+                                                                    </div> -->
                                                                 </div>
                                                             </td>
                                                         <?php } ?>
@@ -748,11 +748,11 @@ if(strpos($currentUrl, "?") != false)
                                         <!-- producterrorcontainer -->
                                         <div class="producterrorcontainer">
                                             <div class="errormsg"></div>
-                                            <div id="preorderinfo">
-                                                <?php echo Mage::getModel('core/variable')->loadByCode('preorder_message_detail')->getValue('html'); ?>
-                                                <img class="closeinfo" src="<?php echo $this->getSkinUrl('images/cross_red.png'); ?>" />
+                                            <!-- <div id="preorderinfo">
+                                                <?php //echo Mage::getModel('core/variable')->loadByCode('preorder_message_detail')->getValue('html'); ?>
+                                                <img class="closeinfo" src="<?php //echo $this->getSkinUrl('images/cross_red.png'); ?>" />
                                             </div>
-                                            <img id="preorderhelp" src="<?php echo $this->getSkinUrl('images/help.png'); ?>" />
+                                            <img id="preorderhelp" src="<?php //echo $this->getSkinUrl('images/help.png'); ?>" /> -->
                                         </div>
                                         <!-- producterrorcontainer -->
 
@@ -786,7 +786,7 @@ if(strpos($currentUrl, "?") != false)
                             <div class="wishlist">
                                 <div class="social-ico">
                                     <a id="twitter" href="javascript:void(0);" class="twtrIcon" title="YogaSmoga - Twitter"></a> 
-                                    <a id="pinterest" href="javascript:void(0)" class="pinIcon" title="YogaSmoga - Pinterest"></a>
+                                    <a id="pinterest" href="http://www.Pinterest.com/YOGASMOGA" class="pinIcon" title="YogaSmoga - Pinterest"></a>
                                     <a id="facebook" href="javascript:void(0);" class="fbIcon" title="YogaSmoga - Facebook"></a>         
                                 </div>
                                 <p class="wishlist-link"><a class="" href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productid; ?>/">ADD TO WISH LIST +</a></p>
@@ -862,6 +862,7 @@ if(strpos($currentUrl, "?") != false)
 
         <!-- FitAndFabricDetails -->
         <div class="block-elm btm-devider">
+        <a name="sizechart"></a>
             <!-- fitDetails -->
             <div class="wdth65">
               <!-- heading -->

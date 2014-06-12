@@ -95,14 +95,14 @@ jQuery(document).ready(function($){
         setTimeout(function(){ closeSharingOptions();}, 300);
     });
     
-    $(".sharing #facebook").click(function(){
+    $(".social-ico #facebook, .sharing #facebook").click(function(){
         initiateshareurl('facebook');
         //shareonfb();
     });
     $("#facebook-like").click(function(){
       // window.open("http://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width&layout=standard&action=like&show_faces=true&share=false&height=80&appId=383166328486098");
     });
-    $(".sharing #twitter").click(function(){
+    $(".social-ico #twitter, .sharing #twitter").click(function(){
         initiateshareurl('twitter');
         //shareontw();
     });

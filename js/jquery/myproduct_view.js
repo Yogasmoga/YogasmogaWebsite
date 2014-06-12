@@ -507,7 +507,7 @@ function resizeProductBigImage()
     var correction = 100;
     var maxHeight = _winH - correction;
     if(maxHeight > 600)
-        jQuery("table.tdbigimagecontainer img").css();
+        jQuery("table.tdbigimagecontainer img").css('max-height', 'auto');
         //jQuery("table.tdbigimagecontainer img").css('max-height', maxHeight + 'px');
     else
         jQuery("table.tdbigimagecontainer img").css('max-height', '600px');

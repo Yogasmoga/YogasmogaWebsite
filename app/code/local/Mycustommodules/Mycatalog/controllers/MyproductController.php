@@ -1308,7 +1308,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                         <!-- producterror -->
                                         <div class="producterrorcontainer">
                                             <div class="errormsg"></div>
-                                            <img id="preorderhelp" src="<?php echo $this->getSkinUrl('images/help.png'); ?>" />
+                                            <!-- <img id="preorderhelp" src="<?php //echo $this->getSkinUrl('images/help.png'); ?>" /> -->
                                         </div>
                                         <!-- producterror -->
 
@@ -1342,7 +1342,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                 <div class="wishlist">
                                     <div class="social-ico">
                                         <a id="twitter" href="javascript:void(0);" class="twtrIcon" title="YogaSmoga - Twitter"></a> 
-                                        <a id="pinterest" href="javascript:void(0)" class="pinIcon" title="YogaSmoga - Pinterest"></a>
+                                        <a id="pinterest" href="http://www.Pinterest.com/YOGASMOGA" class="pinIcon" title="YogaSmoga - Pinterest"></a>
                                         <a id="facebook" href="javascript:void(0)" class="fbIcon" title="YogaSmoga - Facebook"></a>         
                                     </div>
                                 </div>                                

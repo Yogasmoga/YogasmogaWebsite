@@ -138,6 +138,10 @@ jQuery(document).ready(function($){
        scrollToAnchor('smogi-bucks-balance');
     });
 
+    $(".sizechartlink .block-link a#sizechart").click(function() {
+       scrollToAnchor('sizechart');
+    });
+
 
     // function for retrieving html for cms page via ajax
     function retrievecmsblockcontent(blockid)
