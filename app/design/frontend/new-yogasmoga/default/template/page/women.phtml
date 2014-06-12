@@ -96,40 +96,22 @@
         <?php echo $this->getChildHtml('header') ?>
             <div id="pagecontainer">
                 <!-- WelcomeSection Slider -->
-                <div id="Welcome" class="fullscreenovfhidden flexslider showloading" desc="Welcome to YOGASMOGA" style="border: none;border-radius : none;box-shadow:none;margin:0px;" tw-summary="">               
+                <div id="Welcome" class="fullscreenovfhidden flexslider showloading" desc="Welcome to YOGASMOGA" style="border: none;border-radius : none;box-shadow:none;margin:0px;" tw-summary="">
                     <ul class="slides" id="homemainslider">
-                        <li>                      
-                          <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/new_banner1.jpg" alt="WE MAKE THINGS FROM THE HEART AND WITH LOVE— FOR WHEREVER LIFE TAKES YOU." iwidth="1600" iheight="900" />
+                        <li>
+                          <img class="fullscreen" src="<?php echo $this->getSkinUrl('images/homepage/welcomes_banner1.jpg') ?>" alt="WE MAKE THINGS FROM THE HEART AND WITH LOVE— FOR WHEREVER LIFE TAKES YOU." iwidth="1600" iheight="900" />
 
-                            <div class="banner-txt3 promo2310" style="color : #333; left : 5%; top:10%;">
-                                <table>
-                                <tr>
-                                    <td class="white">WE MAKE THINGS</td>
-                                </tr>
-                                <tr>
-                                    <td class="white">FROM THE HEART AND</td>
-                                </tr> 
-                                <tr>
-                                    <td class="white">WITH LOVE—</td>
-                                </tr>                      
-                                </table>
-                                <span style="color: white; padding-top: 0px !important; font-family: ITCAvantGardeProBk; font-size:35px;">FOR WHEREVER LIFE<br />TAKES YOU.</span>  
-                                <table style="margin-top: 10% !important;">
-                                    <tr>
-                                        <td>
-                                            <a href="<?php echo $base_url; ?>women">
-                                                <img src="<?php echo $this->getSkinUrl('images/shop_women.png') ?>" alt="SHOP WOMEN" style="width:80%;" />
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="<?php echo $base_url; ?>mens">
-                                                <img src="<?php echo $this->getSkinUrl('images/shop_men.png') ?>" alt="SHOP MEN" style="width:80%;" />
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </table> 
-                            </div>                           
-                            
+                            <div style="color : #333; left: 21%; top: 80%;" class="banner-txt3 promo2310">
+                        <a href="women_landing">
+                            <img style="width:80%; margin:0 auto !important;" alt="SHOP WOMEN" src="http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/shop_women.png">
+                        </a>
+                        </div>
+                        <div style="color : #333; left: 68%; top: 80%;" class="banner-txt3 promo2310">
+                        <a href="women_landing">
+                            <img style="width:80%; margin:0 auto !important;" alt="SHOP MEN" src="http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/shop_men.png">
+                        </a>
+                        </div>
+
                             <div style="position: absolute; width: 285px; right: 4.625%; z-index:99; bottom: 10%; height: 131px;" id="playBtn" >
                                 <div class="sl-desc-handle">
                                         <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
@@ -137,26 +119,26 @@
                                 <div class="slide-desc" style="">1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nulla lacus, tincidunt vel mi quis come modo elementum diam.</div>
                             </div>
                         </li>
-    					<li>					  
+                        <li>
                           <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/spring-collection.jpg" alt="PUT A LITTLE SPRING IN YOUR STEP" iwidth="1600" iheight="900" />
-                            
+
                             <div class="banner-txt3 promo2310" style="color : #333; left : 5%;">
                             <table>
                             <tr>
                                 <td>PUT A LITTLE SPRING</td>
                             </tr>
-    						<tr>
+                            <tr>
                                 <td>IN YOUR STEP.</td>
-                            </tr>						
+                            </tr>
                             </table>
                             <span style="color: rgb(51, 51, 51); padding-top: 28px ! important; font-size:18px;">NEW COLORS, NEW DESIGNS, NEW STYLES<br />FOR SPRING.</span>
                             <span style="text-transform: none; font-family: gothamlight; font-size: 13px; color: rgb(51, 51, 51); padding-top: 27px ! important;">
-    						Introducing <a style="color: #d90d3d;" href="/our-edge#fabrictechnology">AURUM&trade; Stripe</a> & <a style="color: #d90d3d;" href="/our-edge#fabrictechnology">AURUM&trade; 24</a>  – the most advanced<br /> performance fabrics. Feel the softness and breathability with<br /> advanced moisture management of superior fiber technology.</span>
+                            Introducing <a style="color: #d90d3d;" href="/our-edge#fabrictechnology">AURUM&trade; Stripe</a> & <a style="color: #d90d3d;" href="/our-edge#fabrictechnology">AURUM&trade; 24</a>  – the most advanced<br /> performance fabrics. Feel the softness and breathability with<br /> advanced moisture management of superior fiber technology.</span>
                             <span style="text-align: left; display: inline; float: left; margin-left: 0px ! important; font-size: 13px; padding-top: 42px ! important;" class="banner-txt3-link">
                                 <a href="/women" style="font-family: ITCAvantGardeProMd; color : #333;font-size:15px;">
                                 shop the new SPRING collection <strong style="">&gt;&gt;&gt;</strong>
                                 </a>
-                            </span>  
+                            </span>
                             </div>
                             <div style="position: absolute; width: 285px; right: 4.625%; z-index:99; bottom: 10%; height: 131px;" id="playBtn" >
                                 <div class="sl-desc-handle">
@@ -165,25 +147,25 @@
                                 <div class="slide-desc" style="">2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nulla lacus, tincidunt vel mi quis come modo elementum diam.</div>
                             </div>
                         </li>
-    					<li>					  
+                        <li>
                           <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/homepage_RJP1.jpg" alt="THE ULTIMATE YOGA PANT. RUN JUMP 'N PLAY CROP" iwidth="1600" iheight="900" />
-                            
+
                             <div class="banner-txt3 promo2310" style="color : #333; left : 5%;">
                             <table>
                             <tr>
                                 <td>THE ULTIMATE YOGA PANT:</td>
                             </tr>
-    						<tr>
+                            <tr>
                                 <td>RUN JUMP &#39;N PLAY CROP.</td>
-                            </tr>						
+                            </tr>
                             </table>
                             <span style="color: rgb(51, 51, 51); padding-top: 28px ! important; font-size:18px;">RUN FASTER. JUMP HIGHER. PLAY HARDER.</span>
-                            <span style="text-transform: none; font-family: gothamlight; font-size: 13px; color: rgb(51, 51, 51); padding-top: 27px ! important;">Whatever your game is, this cropped pant instantly transforms you<br/> into a stunning vision of curves and strength.	</span>
+                            <span style="text-transform: none; font-family: gothamlight; font-size: 13px; color: rgb(51, 51, 51); padding-top: 27px ! important;">Whatever your game is, this cropped pant instantly transforms you<br/> into a stunning vision of curves and strength. </span>
                             <span style="text-align: left; display: inline; float: left; margin-left: 0px ! important; font-size: 13px; padding-top: 42px ! important;" class="banner-txt3-link">
                                 <a href="/women/run-jump-n-play-crop-1288" style="font-family: ITCAvantGardeProMd; color : #333;font-size:15px;">
                                 SHOP run jump ‘n play crop <strong style="">&gt;&gt;&gt;</strong>
                                 </a>
-                            </span>  
+                            </span>
                             </div>
                             <div style="position: absolute; width: 285px; right: 4.625%; z-index:99; bottom: 10%; height: 131px;" id="playBtn" >
                                 <div class="sl-desc-handle">
@@ -191,10 +173,10 @@
                                 </div>
                                 <div class="slide-desc" style="">3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nulla lacus, tincidunt vel mi quis come modo elementum diam.</div>
                             </div>
-                        </li>	
+                        </li>
                         <li style="background-color: #FFF;">
                             <img mymargin="70" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_12/img1.jpg" alt="OUR CORE VALUE IS GIVING, OUR GIFT IS NAMASKAR " style="position: absolute; height: 100%; right: 0 !important; width: auto;min-height:660px;" />
-                            
+
                             <div class="banner-txt3 promo2310 promo1311" style="color : #666;left : 9%; top : 30%">
                             OUR CORE VALUE IS<br />GIVING, OUR GIFT IS<br />NAMASK&Aacute;R.<br />
                             <span style="color: #666;">WE CREATED THE <a href="/namaskar" style="color: #d90d3d !important;">NAMASK&Aacute;R FOUNDATION</a><br />BECAUSE WE CARE.</span>
@@ -204,9 +186,9 @@
                                         <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
                                 </div>
                                 <div class="slide-desc" style="">4. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nulla lacus, tincidunt vel mi quis come modo elementum diam.</div>
-                            </div>                      
+                            </div>
                         </li>
-                    </ul>  
+                    </ul>
                 </div>
                 <!-- WelcomeSection Slider -->
                 
@@ -224,21 +206,21 @@
                             <li>SHARE WITH YOUR FRIENDS</li>
                             <li>
                                 <a id="facebook" href="javascript:void(0);">
-                                    <img src="<?php echo $this->getSkinUrl('images/footer/fb-icon.png') ?>" alt="Facebook">
+                                    <img src="<?php echo $this->getSkinUrl('images/footer/fb-icon.png') ?>" onmouseover="this.src='<?php echo $this->getSkinUrl('images/footer/fb-icon-ovr.png') ?>';" onmouseout="this.src='<?php echo $this->getSkinUrl('images/footer/fb-icon.png') ?>';" alt="Facebook">
                                 </a>
                             </li>
                             <li>
                                 <a id="twitter" href="javascript:void(0);">
-                                    <img src="<?php echo $this->getSkinUrl('images/footer/tw-icon.png') ?>" alt="Twitter">
+                                    <img src="<?php echo $this->getSkinUrl('images/footer/tw-icon.png') ?>" onmouseover="this.src='<?php echo $this->getSkinUrl('images/footer/tw-icon-ovr.png') ?>';" onmouseout="this.src='<?php echo $this->getSkinUrl('images/footer/tw-icon.png') ?>';" alt="Twitter">
                                 </a>
                             </li>
                             <li>
                                 <a id="mail" href="javascript:void(0);">
-                                    <img src="<?php echo $this->getSkinUrl('images/footer/email.png') ?>" alt="Email">
+                                    <img src="<?php echo $this->getSkinUrl('images/footer/email.png') ?>" onmouseover="this.src='<?php echo $this->getSkinUrl('images/footer/email-ovr.png') ?>';" onmouseout="this.src='<?php echo $this->getSkinUrl('images/footer/email.png') ?>';"  alt="Email">
                                 </a>
                             </li>
                         </ul>
-                    </div>                    
+                    </div>
                 </div>
                 <!-- ShareSocialMedia Part -->
                 

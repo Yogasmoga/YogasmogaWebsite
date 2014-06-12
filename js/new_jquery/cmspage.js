@@ -13,7 +13,7 @@ jQuery(document).ready(function($){
 
         if((blockid != 'get-smogi-bucks') && (blockid != 'smogi-bucks-balance')) {
             $(".side-menu-bar ul li").children("a").find("span.arr").text("");
-            $(".pg-content").html("<img class='cms-loader' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/loading1.gif' />");
+            $(".pg-content").html("<img class='cms-loader' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
             retrievecmsblockcontent(blockid);
             
             $(".side-menu-bar ul li").each(function(){
@@ -47,7 +47,7 @@ jQuery(document).ready(function($){
         $(this).children("a").addClass("current");
         location.hash = $(this).children("a").attr("href");
         $(this).children("a").find("span.arr").text(">");
-        $(".pg-content").html("<img class='cms-loader' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/loading1.gif' />");
+        $(".pg-content").html("<img class='cms-loader' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
         var data = $(this).attr("data-blockid");
         retrievecmsblockcontent(data);
         event.preventDefault();
@@ -83,7 +83,7 @@ jQuery(document).ready(function($){
     $(".cms-header-link").on("click","li",function(event){
         if($(this).attr("data-blockid") != "empty"){
             $(".side-menu-bar ul li").children("a").find("span.arr").text("");
-            $(".pg-content").html("<img class='cms-loader' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/loading1.gif' />");
+            $(".pg-content").html("<img class='cms-loader' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
             var blockid_data = $(this).attr("data-blockid");
             retrievecmsblockcontent(blockid_data);
             
@@ -105,7 +105,7 @@ jQuery(document).ready(function($){
         if($(this).parent("li").attr("data-blockid") != "empty"){
             $(".side-menu-bar ul li a").removeClass("current");
             $(".side-menu-bar2 ul li a").removeClass("current");
-            $(".pg-content").html("<img class='cms-loader' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/loading1.gif' />");
+            $(".pg-content").html("<img class='cms-loader' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
             //alert($(this).parent("li").attr("data-blockid"));
             var blockid_data = $(this).parent("li").attr("data-blockid");
             var data_id = $(this).parent("li").attr("data-id");
