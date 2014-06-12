@@ -93,7 +93,7 @@ if(strpos($currentUrl, "?") != false)
     $categoryurl = Mage::getModel("catalog/category")->load($categoryid)->getUrl();
     //echo $categoryid;
     $breadcrumb = '<a href="'.Mage::helper('core/url')->getHomeUrl().'">Home</a>';
-    $breadcrumb .= '&nbsp;&gt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load($categoryid)->getUrl().'">'.Mage::getModel("catalog/category")->load($categoryid)->getName().'</a>';
+    $breadcrumb .= '&nbsp;/&nbsp;<a href="'.Mage::getModel("catalog/category")->load($categoryid)->getUrl().'">'.Mage::getModel("catalog/category")->load($categoryid)->getName().'</a>';
     //$breadcrumb .= '&nbsp;&lt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'">'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getName().'</a>';
     //echo $this->helper('core/url')->getCurrentUrl();
     ?>
@@ -131,9 +131,9 @@ if(strpos($currentUrl, "?") != false)
     
     if($this->getRequest()->getParam('from') == 'dressingroom')
         //$breadcrumb .= '&nbsp;&gt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'#dressingroom">DRESSING ROOM</a>&nbsp;&gt;';
-        $breadcrumb .= '&nbsp;&gt;&nbsp;<a href="'.Mage::helper('core/url')->getHomeUrl().'#dressingroom">DRESSING ROOM</a>&nbsp;&gt;';
+        $breadcrumb .= '&nbsp;/&nbsp;<a href="'.Mage::helper('core/url')->getHomeUrl().'#dressingroom">DRESSING ROOM</a>&nbsp;&gt;';
     else
-        $breadcrumb .= '&nbsp;&gt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'#productgrid">ALL PRODUCTS</a>&nbsp;&gt;';
+        $breadcrumb .= '&nbsp;/&nbsp;<a href="'.Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl().'#productgrid">ALL PRODUCTS</a>&nbsp;/';
     
         
     $productname = $_helper->productAttribute($_product, $_product->getName(), 'name');
@@ -272,8 +272,8 @@ if(strpos($currentUrl, "?") != false)
                     }
                     //echo $alt;
                     //echo $imageurl;
-                    $smallimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75)->setQuality(90)."|".$alt;
-                    $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(900, 900)->setQuality(90)."|".$alt;
+                    $smallimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90)."|".$alt;
+                    $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(771, 898)->setQuality(90)."|".$alt;
                     $zoomimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->setQuality(90)."|".$alt;
                     
                     $imagePath = substr($zoomimageurl, 1);
@@ -344,368 +344,652 @@ if(strpos($currentUrl, "?") != false)
     <div style="padding:3px 0 !important;width: 100%; position: relative;  left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 16px;font-family: AvantGardeGothicMedium;">BUY 1 SLIMMIE PANT AND WE'LL SHIP YOU 2! <span style="font-family: helvetica;font-weight: bold;">&lt;&lt;</span> SECOND SLIMMIE: SAME SIZE, SURPRISE COLOR <span style="font-family: helvetica;font-weight: bold;">&gt;&gt;</span> FINAL SALE.</div>
 <?php } ?>
 
+<!-- ProductPage -->
+<div class="product-details">
 
-<div id="productdetails" desc="<?php echo html_entity_decode($productname); ?>" class="fullscreen pgsection" style="position: relative;" hdependson="absproductoptions" tw-summary="Check out the <?php echo html_entity_decode($productname); ?>">
-    <script type="text/javascript">
-        var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
-    </script>
-    <script type="text/javascript">
-        jQuery(document).ready(function($){
-            selectmenulink('<?php echo $categoryurl; ?>');
-        });
-        _productcolorinfo = new Array();
-        _cnfrewardpoint = '<?php echo $productrewardpoints; ?>';
+    <!-- productdetails -->
+    <div id="productdetails" desc="<?php echo html_entity_decode($productname); ?>" class="fullscreen pgsection" style="position: relative;" hdependson="absproductoptions" tw-summary="Check out the <?php echo html_entity_decode($productname); ?>">
+        <script type="text/javascript">
+            var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+        </script>
+        <script type="text/javascript">
+            jQuery(document).ready(function($){
+                selectmenulink('<?php echo $categoryurl; ?>');
+            });
+            _productcolorinfo = new Array();
+            _cnfrewardpoint = '<?php echo $productrewardpoints; ?>';
+        <?php
+        $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
+        foreach($configurableAttributeCollection as $attribute){
+            //echo "Attr-Code:".$attribute->getProductAttribute()->getAttributeCode()."<br/>";
+    //        echo "Attr-Label:".$attribute->getProductAttribute()->getFrontend()->getLabel()."<br/>";
+    //        echo "Attr-Id:".$attribute->getProductAttribute()->getId()."<br/>";
+            ?>
+            _productid = '<?php echo $productid; ?>';
+            <?php
+            if($attribute->getProductAttribute()->getAttributeCode() == "color")
+            {
+                ?>
+                    _colorattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
+                <?php       
+            }
+            if($attribute->getProductAttribute()->getAttributeCode() == "size")
+            {
+                ?>
+                    _sizeattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
+                <?php       
+            }
+        }
+        
+        $currentcolorcount = 0;
+        foreach($productcolorinfo as $key=>$val)
+        {
+            ?>
+                _productcolorinfo[<?php echo $currentcolorcount; ?>] = new Object();
+                _productcolorinfo[<?php echo $currentcolorcount; ?>].color = '<?php echo $key; ?>'; 
+                _productcolorinfo[<?php echo $currentcolorcount; ?>].hex = new Array();
+                <?php
+                    for($i = 0; $i < count($val['hex']); $i++)
+                    {
+                        ?>
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].hex[<?php echo $i; ?>] = '<?php echo $val['hex'][$i]; ?>';
+                        <?php
+                    } 
+                ?>
+                _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes = new Array();
+                <?php
+                    for($i = 0; $i < count($val['sizes']); $i++)
+                    {
+                        ?>
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes[<?php echo $i; ?>] = '<?php echo $val['sizes'][$i]; ?>';
+                        <?php
+                    } 
+                ?>
+                _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages = new Array();
+                <?php
+                    for($i = 0; $i < count($val['images']['zoom']); $i++)
+                    {
+                        $abc = explode("|", $val['images']['zoom'][$i]);
+                        ?>
+                            //console.log('<?php echo $abc[0]; ?>');
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>] = new Array();
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
+                        <?php
+                    } 
+                ?>
+                _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages = new Array();
+                <?php
+                    for($i = 0; $i < count($val['images']['small']); $i++)
+                    {
+                        $abc = explode("|", $val['images']['small'][$i]);
+                        ?>
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>] = new Array();
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
+                        <?php
+                    } 
+                ?>
+                _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages = new Array();
+                <?php
+                    for($i = 0; $i < count($val['images']['big']); $i++)
+                    {
+                        $abc = explode("|", $val['images']['big'][$i]);
+                        ?>
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>] = new Array();
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
+                        <?php
+                    } 
+                ?>
+            <?php
+            $currentcolorcount++;
+        }
+    ?>
+        console.log(_productcolorinfo);
+        
+        //for(var i = 0; i < _productcolorinfo.length; i++)
+    //    {
+    //        console.log(_productcolorinfo[i].color);
+    //    }
+        
+        </script>
+        
     <?php
-    $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
-    foreach($configurableAttributeCollection as $attribute){
-        //echo "Attr-Code:".$attribute->getProductAttribute()->getAttributeCode()."<br/>";
-//        echo "Attr-Label:".$attribute->getProductAttribute()->getFrontend()->getLabel()."<br/>";
-//        echo "Attr-Id:".$attribute->getProductAttribute()->getId()."<br/>";
-        ?>
-        _productid = '<?php echo $productid; ?>';
-        <?php
-        if($attribute->getProductAttribute()->getAttributeCode() == "color")
+        if(!$sizeavaliable)
         {
             ?>
-                _colorattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
-            <?php       
+                <script type="text/javascript">
+                    _sizesuperattribute = false;
+                </script>
+            <?php
         }
-        if($attribute->getProductAttribute()->getAttributeCode() == "size")
+    ?>
+    <?php
+        if($_product->getAttributeText('canzoomimage') == "yes")
         {
             ?>
-                _sizeattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
-            <?php       
+                <style type="text/css">
+                    table.productimagecontainer table.tdbigimagecontainer td img
+                    {
+                        cursor : url("<?php echo $this->getSkinUrl('images/catalog/product/cursor_zoom_in.cur') ?>"), default;
+                    }
+                    td.canzoomin, td.canzoomin div, td.canzoomin img
+                    {
+                        cursor : url("<?php echo $this->getSkinUrl('images/catalog/product/cursor_zoom_in.cur') ?>"), default !important;
+                    }
+                    td.canzoomout, td.canzoomout div, td.canzoomout img
+                    {
+                        cursor : url("<?php echo $this->getSkinUrl('images/catalog/product/cursor_zoom_out.cur') ?>"), default !important;
+                    }
+                    img#zoomedimage1
+                    {
+                        cursor : url("<?php echo $this->getSkinUrl('images/catalog/product/cursor_zoom_in.cur') ?>"), default !important;
+                        max-height: 95%;
+                    }
+                    
+.zoomsmallimagecontainer tr {
+    float: left;
+    width: 100px;
+}
+                    table.productzoomtable td.zoomproductoptions{
+                        max-width: 380px;
+                        min-width: 380px;
+                        width: 380px;
+                    }
+                    .zoomsmallimagecontainer img{
+                        margin: 0 0 25px;
+                        max-width: 65%;
+                    }
+                    table.zoomsmallimagecontainer td{
+                        text-align: center;
+                    }
+                </style>
+                <script type="text/javascript">
+                    _canzoomimages = true;
+                </script>
+            <?php
         }
-    }
-    
-    $currentcolorcount = 0;
-    foreach($productcolorinfo as $key=>$val)
-    {
-        ?>
-            _productcolorinfo[<?php echo $currentcolorcount; ?>] = new Object();
-            _productcolorinfo[<?php echo $currentcolorcount; ?>].color = '<?php echo $key; ?>'; 
-            _productcolorinfo[<?php echo $currentcolorcount; ?>].hex = new Array();
-            <?php
-                for($i = 0; $i < count($val['hex']); $i++)
-                {
-                    ?>
-                        _productcolorinfo[<?php echo $currentcolorcount; ?>].hex[<?php echo $i; ?>] = '<?php echo $val['hex'][$i]; ?>';
-                    <?php
-                } 
-            ?>
-            _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes = new Array();
-            <?php
-                for($i = 0; $i < count($val['sizes']); $i++)
-                {
-                    ?>
-                        _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes[<?php echo $i; ?>] = '<?php echo $val['sizes'][$i]; ?>';
-                    <?php
-                } 
-            ?>
-            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages = new Array();
-            <?php
-                for($i = 0; $i < count($val['images']['zoom']); $i++)
-                {
-                    $abc = explode("|", $val['images']['zoom'][$i]);
-                    ?>
-                        //console.log('<?php echo $abc[0]; ?>');
-                        _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>] = new Array();
-                        _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
-                        _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
-                    <?php
-                } 
-            ?>
-            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages = new Array();
-            <?php
-                for($i = 0; $i < count($val['images']['small']); $i++)
-                {
-                    $abc = explode("|", $val['images']['small'][$i]);
-                    ?>
-                        _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>] = new Array();
-                        _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
-                        _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
-                    <?php
-                } 
-            ?>
-            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages = new Array();
-            <?php
-                for($i = 0; $i < count($val['images']['big']); $i++)
-                {
-                    $abc = explode("|", $val['images']['big'][$i]);
-                    ?>
-                        _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>] = new Array();
-                        _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
-                        _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
-                    <?php
-                } 
-            ?>
-        <?php
-        $currentcolorcount++;
-    }
-?>
-    console.log(_productcolorinfo);
-    
-    //for(var i = 0; i < _productcolorinfo.length; i++)
-//    {
-//        console.log(_productcolorinfo[i].color);
-//    }
-    
-    </script>
-    
-<?php
-    if(!$sizeavaliable)
-    {
-        ?>
-            <script type="text/javascript">
-                _sizesuperattribute = false;
-            </script>
-        <?php
-    }
-?>
-<?php
-    if($_product->getAttributeText('canzoomimage') == "yes")
-    {
-        ?>
-            <style type="text/css">
-                table.productimagecontainer table.tdbigimagecontainer td img
-                {
-                    cursor : url("<?php echo $this->getSkinUrl('images/catalog/product/cursor_zoom_in.cur') ?>"), default;
-                }
-                td.canzoomin, td.canzoomin div, td.canzoomin img
-                {
-                    cursor : url("<?php echo $this->getSkinUrl('images/catalog/product/cursor_zoom_in.cur') ?>"), default !important;
-                }
-                td.canzoomout, td.canzoomout div, td.canzoomout img
-                {
-                    cursor : url("<?php echo $this->getSkinUrl('images/catalog/product/cursor_zoom_out.cur') ?>"), default !important;
-                }
-                img#zoomedimage1
-                {
-                    cursor : url("<?php echo $this->getSkinUrl('images/catalog/product/cursor_zoom_in.cur') ?>"), default !important;
-                }
-            </style>
-            <script type="text/javascript">
-                _canzoomimages = true;
-            </script>
-        <?php
-    }
-?>
-    <table class="productimagecontainer">
-        <tr>
-            <td>
-                <table class="tdbigimagecontainer">
+    ?>    
+        <!-- pageBreadcrum -->
+        <div class="block-head"><div class="breadcrumb"><?php echo $breadcrumb; ?></div></div>
+        <!-- pageBreadcrum -->
+
+        <!-- ProductImageAndDetailContainer -->
+        <div class="block-elm">
+            <!-- ProductImageContainer -->
+            <div class="wdth65" style="position: relative;">
+                <!-- ImageGallery -->
+                <table class="productimagecontainer f-left">
                     <tr>
-                        <td>    
+                        <td>
+                            <div class="show-prodImg">
+                                <table class="tdbigimagecontainer">
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="thumb-imgs">
+                                <table class="smallimagecontiner" width="100%">
+                                    <tr></tr>
+                                </table>
+                            </div>
                         </td>
                     </tr>
-                </table>    
-            </td>
-        </tr>
-        <tr>
-            <td class="tddivider">
-                <div style="background:url(<?php echo $this->getSkinUrl('images/catalog/product/big_line.png'); ?>) 50% 50% no-repeat; height:5px;">&nbsp;
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table class="smallimagecontiner">
-                    <tr>
-                        
-                    </tr>
                 </table>
-            </td>
-        </tr>
-    </table>
-    <div id="absproductoptions" class="productoptions absoluteproductoptions">
-        <div class="disableproptions"></div>
-        <?php //echo Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId()); ?>
-        <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId(Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId()))->toHtml(); ?>
-		
-        
-        <table class="productdetailtable normalproductdetail">
-            <tr>
-                <td>
-                    <div class="breadcrumb"><?php echo $breadcrumb; ?></div>
-                    <div class="productname"><?php echo html_entity_decode($productname); ?></div>
-                    <div class="productcost"><?php echo $productprice; ?></div>
-                    <div class="shortdesc"><?php echo $_product->getDescription(); ?></div>
-                    <table class="selectedcolor">
-                        <tr>
-                            <td>COLOR</td>
-                            <td class="selectedcolortext"></td>
-                        </tr>
-                    </table>
-                    <div id="colorcontainer">
-                        <?php
-                            $primarycolorcode = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'primarycolorcode', Mage::app()->getStore()->getStoreId());
-                            $first = true;
-                            //print_r($productcolorinfo);
-                            $colorcount = 0;
-                            for($incr = 0; $incr < 2; $incr++)
-                            {
-                                foreach($productcolorinfo as $key=>$colorinfo)
-                                {
-                                    if($incr == 0)
-                                    {
-                                        if($colorinfo['value'] != $primarycolorcode)
-                                            continue;
-                                    }
-                                    else
-                                    {
-                                        if($colorinfo['value'] == $primarycolorcode)
-                                            continue;
-                                    }
-                                    $colorcount++;
-                                    ?>
-                                        <div>
-                                            <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
+                <!-- ImageGallery -->
+            </div>
+            <!-- ProductImageContainer -->
+
+            <!-- ProductDetailContainer -->
+            <div class="wdth35">
+                <!-- DetailsinGreyArea -->
+                <div class="gry-box">
+                    <div id="absproductoptions">
+                        <div class="disableproptions"></div>
+                        <table class="productdetailtable normalproductdetail">
+                            <tr>
+                                <td>
+                                    <!-- heading -->
+                                    <div class="prdname">
+                                        <div class="productname"><?php echo html_entity_decode($productname); ?></div>
+                                        <span class="productcost amount"><?php echo $productprice; ?></span>                                                          
+                                    </div>
+                                    <!-- heading -->
+
+                                    <!-- selectColor -->
+                                    <div class="box-seprtr">      
+                                        <div class="blck-head-sml"><span>Step 1:</span> choose your color</div>
+                                        <div class="blck-head-sml">
+                                            <table class="selectedcolor">
                                                 <tr>
-                                                    <?php
-                                                        foreach($colorinfo['hex'] as $hex)
-                                                        {
-                                                            ?>
-                                                                <td style="background-color: <?php echo $hex ?>;">
-                                                                <div>
-                                                                    &nbsp;
-                                                                </div>                                                
-                                                                </td>   
-                                                            <?php
-                                                        } 
-                                                    ?>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
-                                                    
-                                                    </td>
+                                                    <td><span>color:</span></td>
+                                                    <td class="selectedcolortext"></td>
                                                 </tr>
                                             </table>
                                         </div>
-                                    <?php
-                                    if(($colorcount % 5) == 0)
-                                        echo "<br/>";
-                                }
-                            }
-                             
-                        ?>
-                    </div>
-                    <div style="clear: both;"></div>
-                    <table class="selectedsize" <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?> >
-                        <tr>
-                            <td>SIZE</td>
-                            <?php if($sizechartblockid != ""){?>
-                            <td class="sizechartlink">
-                                <div style="position:relative;"><a href="javascript:void(0);">Size chart</a>
-                                		
-                                			<div id="sizechart">
-                                				<div class="light-conent-box">
-                                					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
-                                				</div>
-                                				<img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
-                                			</div>
-                                		
-		                          </div>
-                            </td>
-                            <?php } ?>
-                        </tr>
-                    </table>
-                    <div id="sizecontainer" <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
-                        <table>
-                            <tr>
-                                <?php
-                                    $sizecount = 0;
-                                    foreach($productallsizes as $size)
-                                    {
-                                        //if($sizecount % 6 == 0 && $sizecount > 0)
-                                        if(strpos($size['label'],"T") !== false & $sizecount == 0)
-                                        {
-                                            $sizecount++;
-                                            ?>
-                                            </tr>
-                                            <tr>
+                                        <div id="colorcontainer">
                                             <?php
-                                        }
-                                        ?>
-                                            <td><div value="<?php echo $size['value']; ?>" size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?></div></td>        
-                                        <?php
-                                    } 
-                                ?>
+                                                $primarycolorcode = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'primarycolorcode', Mage::app()->getStore()->getStoreId());
+                                                $first = true;
+                                                //print_r($productcolorinfo);
+                                                $colorcount = 0;
+                                                for($incr = 0; $incr < 2; $incr++)
+                                                {
+                                                    foreach($productcolorinfo as $key=>$colorinfo)
+                                                    {
+                                                        if($incr == 0)
+                                                        {
+                                                            if($colorinfo['value'] != $primarycolorcode)
+                                                                continue;
+                                                        }
+                                                        else
+                                                        {
+                                                            if($colorinfo['value'] == $primarycolorcode)
+                                                                continue;
+                                                        }
+                                                        $colorcount++;
+                                                        ?>
+                                                            <div>
+                                                                <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
+                                                                    <tr>
+                                                                                    <?php
+                                                                                    //echo '<pre>'; print_r($colorinfo); echo count($colorinfo['hex']); die('test');
+                                                                                    foreach($colorinfo['hex'] as $hex)
+                                                                                    {
+                                                                                        if(count($colorinfo['hex']) == 1)
+                                                                                        {
+
+                                                                                        ?>
+                                                                                             <td style="border-color: transparent !important; background-color: <?php echo $hex ?>;">
+                                                                                                <div> </div>
+                                                                                            </td>
+                                                                                        <?php
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                        ?>   
+                                                                                            <td style="border-color: <?php echo $hex ?>;">
+                                                                                                <div> </div>
+                                                                                            </td>
+                                                                                    <?php
+                                                                                         }
+                                                                                    }
+                                                                                    ?>
+                                                                                </tr>
+                                                                    <tr>
+                                                                        <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
+                                                                        
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        <?php
+                                                        //if(($colorcount % 5) == 0)
+                                                            //echo "<br/>";
+                                                    }
+                                                }
+                                                 
+                                            ?>
+                                        </div>
+                                        <div style="clear:both;"></div>
+                                    </div>
+                                    <!-- selectColor -->
+
+                                    <!-- selectSize -->
+                                    <div class="selectedsize" <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
+                                        <div class="box-seprtr">
+                                            <div class="blck-head-sml"><span>Step 2:</span> Select a size
+                                                <table class="f-right">
+                                                    <tr>
+                                                        <?php if($sizechartblockid != "") {?>
+                                                            <td class="sizechartlink">
+                                                                <div style="position: relative;">
+                                                                    <p class="block-link" style="margin: 0px; float: right;"><a href="javascript:void(0);" style="color:#CC0033; font-size:11px;">Size chart</a></p>
+                                                                    <div id="sizechart">
+                                                                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        <?php } ?>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div id="sizecontainer" <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
+                                                <table>
+                                                    <tr>
+                                                        <?php
+                                                        $sizecount = 0;
+                                                        foreach($productallsizes as $size)
+                                                        {
+                                                        //if($sizecount % 6 == 0 && $sizecount > 0)
+                                                        if(strpos($size['label'],"T") !== false & $sizecount == 0)
+                                                        {
+                                                        $sizecount++;
+                                                        ?>
+                                                    </tr>
+                                                    <tr>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                        <td><div value="<?php echo $size['value']; ?>" size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?></div></td>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- selectSize -->
+
+                                    <!-- fittable -->
+                                    <div class="box-seprtr">
+                                        <div class="blck-head-sml"><span class="qty">QTY</span>
+                                            <?php if($howdoesitfitblockid != "") { ?>
+                                                <table class="fittable">
+                                                    <tr>
+                                                        <td>
+                                                            <div class="hanger"></div>
+                                                        </td>
+                                                        <td class="howdoesitfitlink">
+                                                            <div style="position: relative;">
+                                                                <p class="block-link" style="margin: 0px; float: right;"><a href="javascript:void(0);">How does it fit?</a></p>
+                                                                <div id="howdoesitfitbox">
+                                                                    <div id="howdoesitfitboxinner">
+                                                                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
+                                                                    </div>
+                                                                    <img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            <?php } ?>
+                                        </div>
+                                        <div class="sizeselector">
+                                            <select class="qtyselector">
+                                                <?php
+                                                for($i = 1; $i < 21; $i++)
+                                                {
+                                                    ?>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- fittable -->
+
+                                    <!-- addToBag -->
+                                    <div class="box-seprtr last">
+                                        <div class="blck-head-sml"><span>Step 3</span></div>
+
+                                        <!-- addToBagBtn -->
+                                        <div id="orderitem" class="addtobag spbutton" 
+                                            imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>" 
+                                            downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>">
+                                        </div>
+                                        <!-- addToBagBtn -->
+
+                                        <!-- outOfStockBtn -->
+                                        <div id="outofstockitem" class="outofstockitem"></div>
+                                        <!-- outOfStockBtn -->
+
+                                        <!-- preOrderItemBtn -->
+                                        <div id="preorderitem" class="preorderitem spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>">
+                                        </div>
+                                        <!-- preOrderItemBtn -->
+
+                                        <!-- producterrorcontainer -->
+                                        <div class="producterrorcontainer">
+                                            <div class="errormsg"></div>
+                                            <div id="preorderinfo">
+                                                <?php echo Mage::getModel('core/variable')->loadByCode('preorder_message_detail')->getValue('html'); ?>
+                                                <img class="closeinfo" src="<?php echo $this->getSkinUrl('images/cross_red.png'); ?>" />
+                                            </div>
+                                            <img id="preorderhelp" src="<?php echo $this->getSkinUrl('images/help.png'); ?>" />
+                                        </div>
+                                        <!-- producterrorcontainer -->
+
+                                        <p class="c-align"><em>Free and fast shipping to US and Canada</em></p>
+                                    </div>
+                                    <!-- addToBag -->                                
+                                </td>
                             </tr>
                         </table>
+                        <img src="<?php echo $this->getSkinUrl('images/catalog/product/fabric_bg.png'); ?>" class="nodisplay" />
                     </div>
-                    <?php if($howdoesitfitblockid != ""){ ?>
-                        <table class="fittable">
-                            <tr>
-                                <td>
-                                    <div class="hanger"></div>
-                                </td>
-                                <td class="howdoesitfitlink">
-                                    <div style="position:relative;">
-                                        <a href="javascript:void(0);">How does it fit?</a>
-                        			     <div id="howdoesitfitbox">
-                        				    <div id="howdoesitfitboxinner">
-                        					   <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
-                        				    </div>
-                        				    <img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
-                        			     </div>
-    							     </div>
-                                </td>
-                            </tr>
-                        </table>
-                    <?php } ?>
-                    <div class="qty">QTY</div>
-                    <div class="sizeselector">
-                        <select class="qtyselector">
-                            <?php
-                                for($i = 1; $i < 21; $i++)
-                                {
-                                    ?>
-                                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                    <?php
-                                } 
-                            ?>
-                        </select>
-                    </div>
-                    <div class="divider"></div>
-                    <table class="smogibucks" <?php if(!$isrewardable) { echo "style='display:none;'"; } ?>>
-                        <tr>
-                            <td>
+                </div>
+                <!-- DetailsinGreyArea -->
+
+                <!-- SMOGIBUCKS -->
+                <table class="box-desc-dvdr font11 smogibucks" <?php if(!$isrewardable) { echo "style='display:none;'"; } ?>>
+                    <tr>
+                        <td width="50%">
+                            <div class="earnbucks">
                                 <div class="smogibuckcount">
                                     <table>
                                         <tr>
-                                            <td>
-                                                <?php echo $productrewardpoints; ?>
-                                            </td>
+                                            <td><?php echo $productrewardpoints; ?></td>
                                         </tr>
                                     </table>
                                 </div>
-                            </td>
-                            <td class="earnsmogibuckstext">
-                                EARN <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks" target="_blank">SMOGI BUCKS</a><br/>WITH THIS PURCHASE
-                            </td>
-                        </tr>
-                    </table>
-					<!-- <button id="orderitem" title="Add to Cart" class="button cbtn btn-bag"><span><span>Add to Cart</span></span></button>
-					<button style="display: none;" id="preorderitem" title="Preorder" class="button cbtn btn-pre"><span>Preorder<span></span></span> </button> -->
-                    <div id="orderitem" class="addtobag spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_on.png'); ?>"></div>
-                    <div id="outofstockitem" class="outofstockitem"></div>
-                    <div id="preorderitem" class="preorderitem spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_now_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_now_on.png'); ?>"></div>
-                    <div class="producterrorcontainer">
-                        <div class="errormsg">
-                        </div>
-						<div id="preorderinfo">
-							<?php echo Mage::getModel('core/variable')->loadByCode('preorder_message_detail')->getValue('html'); ?>
-							<img class="closeinfo" src="<?php echo $this->getSkinUrl('images/cross_red.png'); ?>" />
-						</div>
-                        <img id="preorderhelp" src="<?php echo $this->getSkinUrl('images/help.png'); ?>" />
-                    </div>
-                    <a class="addtowishlist" href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productid; ?>/">ADD TO WISH LIST +</a>
-                </td>
-            </tr>
-        </table>
-        <img src="<?php echo $this->getSkinUrl('images/catalog/product/fabric_bg.png'); ?>" class="nodisplay" />
+                                <p class="earnsmogibuckstext">EARN <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks" target="_blank">SMOGI BUCKS</a> WITH THIS PURCHASE</p>
+                            </div>
+                        </td>
+                        <td width="50%">
+                            <div class="wishlist">
+                                <div class="social-ico">
+                                    <a id="twitter" href="javascript:void(0);" class="twtrIcon" title="YogaSmoga - Twitter"></a> 
+                                    <a id="pinterest" href="javascript:void(0)" class="pinIcon" title="YogaSmoga - Pinterest"></a>
+                                    <a id="facebook" href="javascript:void(0);" class="fbIcon" title="YogaSmoga - Facebook"></a>         
+                                </div>
+                                <p class="wishlist-link"><a class="" href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productid; ?>/">ADD TO WISH LIST +</a></p>
+                            </div>                                
+                        </td>
+                    </tr>
+                </table>
+                <!-- SMOGIBUCKS -->
+
+                <!-- Desicription -->
+                <div class="box-desc-dvdr">
+                <p><strong>Need help?</strong> <a class="chatlink" href="#">chat with us</a><span class="online"><span></span>online</span></p>
+
+                <p><strong>Product description</strong><br>
+                    <!-- description -->
+                    <div class="shortdesc"><?php echo $_product->getDescription(); ?> <a class="readmore" href="#">read more</a></div>
+                    <!-- description -->
+                </div>
+                <!--Description -->
+
+                <!-- readReviews -->
+                <div class="box-desc-dvdr">
+                    <p style="margin:0;" class="block-link c-align"><a href="#">read all reviews</a></p>
+                </div>
+                <!-- readreviews -->
+            </div>
+            <!-- ProductDetailContainer -->
+        </div>
+        <!-- ProductImageAndDetailContainer -->
+
+        <!-- DesignFeatureAndCompleteLook -->
+        <div class="block-elm">
+            <!-- featureDesign -->
+            <div class="wdth65">
+              <!-- heading -->
+              <h2>Design features</h2>
+              <!-- heading -->
+
+              <!-- featuresList -->
+              <ul class="featureList">
+                <li><span class="ftrFig"></span><span>mauris vehicula cone imentum toro eu lorem pulvinar.</span></li>
+                <li><span class="ftrFig"></span><span>mauris vehicula cone imentum toro eu lorem pulvinar.</span></li>
+                <li><span class="ftrFig"></span><span>mauris vehicula cone imentum toro eu lorem pulvinar.</span></li>
+                <li><span class="ftrFig"></span><span>mauris vehicula cone imentum toro eu lorem pulvinar.</span></li>
+                <li><span class="ftrFig"></span><span>mauris vehicula cone imentum toro eu lorem pulvinar.</span></li>
+              </ul>
+              <!-- featuresList -->
+            </div>
+            <!-- featureDesign -->
+
+            <!-- completeLook -->
+            <div class="wdth35">
+              <!-- heading -->
+              <h2>complete the look</h2>
+              <!-- heading -->
+
+              <!-- prodSimilar -->
+              <ul class="similarProdList">
+                <li>
+                  <span><img alt="Women's Top" src="http://192.168.2.114/skin/frontend/new-yogasmoga/yogasmoga-theme/images/product/dum5.gif"></span>
+                  <span><strong>Product</strong>color/color<br>$000</span>
+                </li>
+                <li>
+                  <span><img alt="Women's Top" src="http://192.168.2.114/skin/frontend/new-yogasmoga/yogasmoga-theme/images/product/dum6.gif"></span>
+                  <span><strong>Product</strong>color/color<br>$000</span>
+                </li>
+              </ul>
+              <!-- prodSimilar -->          
+            </div>
+            <!-- completeLook -->    
+        </div>
+        <!-- DesignFeatureAndCompleteLook -->
+
+        <!-- FitAndFabricDetails -->
+        <div class="block-elm btm-devider">
+            <!-- fitDetails -->
+            <div class="wdth65">
+              <!-- heading -->
+              <h2>Fit details</h2>
+              <!-- heading -->
+
+              <div class="fitDetail">
+              <div class="video-box">
+                <ul>
+                  <li>Body hugging/form fitting</li>
+                  <li>High hip length</li>
+                  <li>Perfect racer back for movement</li>
+                </ul>
+
+                <div class="vlink-cont">
+                <p class="block-link"><a href="#">watch the video of how to measure</a></p>
+                <div class="video-block">
+                  <img alt="" src="http://192.168.2.114/skin/frontend/new-yogasmoga/yogasmoga-theme/images/product/video.gif">
+                </div>
+                </div>
+
+              </div>
+
+              <div class="tble">
+                <div class="f-left size">Size Chart</div>
+                <div class="f-right"><p style="margin:0;" class="block-link"><a href="#">How to measure</a></p></div>
+                <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                  <tbody><tr>
+                    <td><img alt="" src="http://192.168.2.114/skin/frontend/new-yogasmoga/yogasmoga-theme/images/product/scale-size.gif"></td>
+                    <td>Size 2 XXS</td>
+                    <td>Size 4 XS</td>
+                    <td>Size 6 S</td>
+                    <td>Size 8 M</td>
+                    <td>Size 10 L</td>
+                    <td>Size 12 XL</td>
+                  </tr>
+                  <tr>
+                    <td>Bust</td>
+                    <td>30"</td>
+                    <td>32"</td>
+                    <td>34"</td>
+                    <td>36"</td>
+                    <td>38"</td>
+                    <td>40"</td>
+                  </tr>
+                  <tr>
+                    <td>Weist</td>
+                    <td>22.5"</td>
+                    <td>24.5"</td>
+                    <td>26.5"</td>
+                    <td>28.5"</td>
+                    <td>30.5"</td>
+                    <td>32.5"</td>
+                  </tr>
+                  <tr>
+                    <td>Hips</td>
+                    <td>33"</td>
+                    <td>35"</td>
+                    <td>37"</td>
+                    <td>39"</td>
+                    <td>41"</td>
+                    <td>43"</td>
+                  </tr>
+                  <tr>
+                    <td>Inseam <span>Short</span></td>
+                    <td>30"</td>
+                    <td>30"</td>
+                    <td>30"</td>
+                    <td>30"</td>
+                    <td>30"</td>
+                    <td>30"</td>
+                  </tr>
+                  <tr>
+                    <td>inseam <span>regular</span></td>
+                    <td>31"</td>
+                    <td>31"</td>
+                    <td>31"</td>
+                    <td>31"</td>
+                    <td>31"</td>
+                    <td>41"</td>
+                  </tr>
+                  <tr>
+                    <td>Inseam <span>Tall</span></td>
+                    <td>32"</td>
+                    <td>31"</td>
+                    <td>32"</td>
+                    <td>32"</td>
+                    <td>32"</td>
+                    <td>42"</td>
+                  </tr>
+                </tbody></table>
+              </div>
+
+              </div>
+            </div>
+            <!-- fitDetails -->
+
+            <!-- fabricDetails -->
+            <div class="wdth35">
+              <!-- heading -->
+              <h2>fabric details</h2>
+              <!-- heading -->
+
+              <div class="fabDetail">
+                <h2>AURUM<sup>&trade;</sup></h2>
+                <ul>
+                  <li><span><img alt="" src="http://192.168.2.114/skin/frontend/new-yogasmoga/yogasmoga-theme/images/homepage/resistance-icon.png"></span>pilling-<br>resistence</li>
+                  <li><span><img alt="" src="http://192.168.2.114/skin/frontend/new-yogasmoga/yogasmoga-theme/images/homepage/moisture-icon.png"></span>moisture<br>management</li>
+                  <li><span><img alt="" src="http://192.168.2.114/skin/frontend/new-yogasmoga/yogasmoga-theme/images/homepage/hq-stretch-icon.png"></span>high quality<br>strech</li>
+                  <li><span><img alt="" src="http://192.168.2.114/skin/frontend/new-yogasmoga/yogasmoga-theme/images/homepage/nano.png"></span>nano<br>technology</li>
+                </ul>
+                <p>AURUM&trade; is an Exclusively Ours, a technical blend of Supplex&reg; and Lycra&reg;. Unlike Nylon that falls apart quickly, Supplex&reg; fibers are technically far more superior, advanced fiber technology that provides high performance benefits with the soft feel and breathability of cotton.</p>
+              </div>
+
+            </div>
+            <!-- fabricDetails -->    
+          </div>        
+        <!-- FitAndFabricDetails -->
+
+        <!-- CustomerReviews -->
+        <div class="block-elm btm-devider-big">
+            <div class="reviewTxt">"Customer review caption" - <span>Lorem ipsum<br>lorem ipsum dolor sit amet.</span></div>
+            <p class="block-link"><a href="#">read more reviews</a></p>
+        </div>        
+        <!-- CustomerReviews -->
     </div>
 </div>
+<!-- ProductPage -->
 <?php
     $productmodel = Mage::getResourceModel('catalog/product');
     $productid = $_product->getId();
@@ -765,20 +1049,20 @@ if(strpos($currentUrl, "?") != false)
 ?>
 
 <?php
-    $flag = true;
-    for($i = 1; $i <= 5; $i++)
-    {
-        if(!isset($dfimages[$i]))
-            $flag = false;
-    }
+//    $flag = true;
+ //   for($i = 1; $i <= 5; $i++)
+//    {
+//        if(!isset($dfimages[$i]))
+//            $flag = false;
+//    }
     //echo "flag = ".$flag;
-    if($flag)
-    {
-        if($_product->getAttributeText('design_feature_view') == "Landscape")
-        {
+ //   if($flag)
+    //{
+  //      if($_product->getAttributeText('design_feature_view') == "Landscape")
+   //     {
             ?>
-            <div id="Designdetails" class="pgsection" desc="Design Details" tw-summary="Check out the flattering design features from YOGASMOGA">
-                <table class="fullscreentable fullwidth">
+            <!-- <div id="Designdetails" class="pgsection" desc="Design Details" tw-summary="Check out the flattering design features from YOGASMOGA">
+                <!-- <table class="fullscreentable fullwidth">
                     <tr>
                         <td style="padding: 0 50px;">
                             <table class="productdesignfeatures">
@@ -788,8 +1072,8 @@ if(strpos($currentUrl, "?") != false)
                                             <tr>
                                                 <td style="padding:0 3% 3% 0px;">
                                                     <div size="half">
-                                                            <img class="shareit" src="<?php echo substr($dfimages[1]["url"], 1); ?>" alt="<?php echo $dfimages[1]["caption"]; ?>" />
-                                                            <div class="caption"><div><?php echo $dfimages[1]["caption"]; ?></div></div>
+                                                            <img class="shareit" src="<?php //echo substr($dfimages[1]["url"], 1); ?>" alt="<?php //echo $dfimages[1]["caption"]; ?>" />
+                                                            <div class="caption"><div><?php //echo $dfimages[1]["caption"]; ?></div></div>
                                                         <?php /*
                                                         <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
                                                         */ ?>
@@ -797,8 +1081,8 @@ if(strpos($currentUrl, "?") != false)
                                                 </td>
                                                 <td style="width: 41.5%; padding:0 3% 3% 0px;">
                                                     <div size="half">
-                                                            <img src="<?php echo substr($dfimages[2]["url"], 1); ?>" alt="<?php echo $dfimages[2]["caption"]; ?>" />
-                                                            <div class="caption"><div><?php echo $dfimages[2]["caption"]; ?></div></div>
+                                                            <img src="<?php //echo substr($dfimages[2]["url"], 1); ?>" alt="<?php //echo $dfimages[2]["caption"]; ?>" />
+                                                            <div class="caption"><div><?php //echo $dfimages[2]["caption"]; ?></div></div>
                                                         <?php /*
                                                         <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
                                                         */ ?>
@@ -809,8 +1093,8 @@ if(strpos($currentUrl, "?") != false)
                                     </td>
                                     <td rowspan="2" style="width: 49.33%;padding:0;">
                                         <div size="full">
-                                            <img src="<?php echo substr($dfimages[5]["url"], 1); ?>" alt="<?php echo $dfimages[3]["caption"]; ?>" />
-                                            <div class="caption"><div><?php echo $dfimages[3]["caption"]; ?></div></div>
+                                            <img src="<?php //echo substr($dfimages[5]["url"], 1); ?>" alt="<?php //echo $dfimages[3]["caption"]; ?>" />
+                                            <div class="caption"><div><?php// echo $dfimages[3]["caption"]; ?></div></div>
                                         </div>
                                     </td>
                                 </tr>
@@ -820,8 +1104,8 @@ if(strpos($currentUrl, "?") != false)
                                             <tr>
                                                 <td style="width: 41.5%; padding:0 3% 3% 0px;">
                                                     <div size="half">
-                                                            <img src="<?php echo substr($dfimages[3]["url"], 1); ?>" alt="<?php echo $dfimages[4]["caption"]; ?>" />
-                                                            <div class="caption"><div><?php echo $dfimages[4]["caption"]; ?></div></div>
+                                                            <img src="<?php //echo substr($dfimages[3]["url"], 1); ?>" alt="<?php //echo $dfimages[4]["caption"]; ?>" />
+                                                            <div class="caption"><div><?php //echo $dfimages[4]["caption"]; ?></div></div>
                                                         <?php /*
                                                         <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
                                                         */ ?>
@@ -829,8 +1113,8 @@ if(strpos($currentUrl, "?") != false)
                                                 </td>
                                                 <td style="padding:0 3% 3% 0px;">
                                                     <div size="half">
-                                                            <img src="<?php echo substr($dfimages[4]["url"], 1); ?>" alt="<?php echo $dfimages[5]["caption"]; ?>" />
-                                                            <div class="caption"><div><?php echo $dfimages[5]["caption"]; ?></div></div>
+                                                            <img src="<?php //echo substr($dfimages[4]["url"], 1); ?>" alt="<?php //echo $dfimages[5]["caption"]; ?>" />
+                                                            <div class="caption"><div><?php //echo $dfimages[5]["caption"]; ?></div></div>
                                                         <?php /*
                                                         <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
                                                         */ ?>
@@ -845,13 +1129,13 @@ if(strpos($currentUrl, "?") != false)
                         </td>
                     </tr>
                 </table>
-            </div>
+            </div> -->
             <?php
-        }
-        if($_product->getAttributeText('design_feature_view') == "Potrait")
-        {
+   //     }
+      //  if($_product->getAttributeText('design_feature_view') == "Potrait")
+     //   {//
             ?>
-            <div id="Designfeatures" class="pgsection" desc="Design Details" tw-summary="Check out the flattering design features from YOGASMOGA">
+            <!-- <div id="Designfeatures" class="pgsection" desc="Design Details" tw-summary="Check out the flattering design features from YOGASMOGA">
 				<table class="fullscreentable fullwidth">
                     <tr>
                         <td style="padding: 0 40px;">
@@ -859,8 +1143,8 @@ if(strpos($currentUrl, "?") != false)
                                 <tr>
                                     <td colspan="2">
                                        <div size="half">
-                                                <img class="shareit" class="magnifier" src="<?php echo substr($dfimages[1]["url"], 1); ?>" alt="<?php echo $dfimages[1]["caption"]; ?>" />
-                                                <div class="caption"><div><?php echo $dfimages[1]["caption"]; ?></div></div>
+                                                <img class="shareit" class="magnifier" src="<?php //echo substr($dfimages[1]["url"], 1); ?>" alt="<?php //echo $dfimages[1]["caption"]; ?>" />
+                                                <div class="caption"><div><?php //echo $dfimages[1]["caption"]; ?></div></div>
                                             <?php /*
                                             <div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
                                             */ ?>
@@ -868,22 +1152,22 @@ if(strpos($currentUrl, "?") != false)
                                     </td>
                                     <td rowspan="2" style="width: 29.25%;">
                                         <div size="full">
-                                            <img class="magnifier" src="<?php echo substr($dfimages[2]["url"], 1); ?>" alt="<?php echo $dfimages[2]["caption"]; ?>" />
-                                            <div class="caption"><div><?php echo $dfimages[2]["caption"]; ?></div></div>
+                                            <img class="magnifier" src="<?php //echo substr($dfimages[2]["url"], 1); ?>" alt="<?php //echo $dfimages[2]["caption"]; ?>" />
+                                            <div class="caption"><div><?php //echo $dfimages[2]["caption"]; ?></div></div>
                                         </div>
                                     </td>
                                     <td rowspan="2" style="width: 29.25%;">
                                         <div size="full">
-                                            <img class="magnifier" src="<?php echo substr($dfimages[3]["url"], 1); ?>" alt="<?php echo $dfimages[3]["caption"]; ?>" />
-                                            <div class="caption"><div><?php echo $dfimages[3]["caption"]; ?></div></div>
+                                            <img class="magnifier" src="<?php //echo substr($dfimages[3]["url"], 1); ?>" alt="<?php //echo $dfimages[3]["caption"]; ?>" />
+                                            <div class="caption"><div><?php //echo $dfimages[3]["caption"]; ?></div></div>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="width: 20.7%;">
 										<div size="half">
-												<img class="magnifier" src="<?php echo substr($dfimages[4]["url"], 1); ?>" alt="<?php echo $dfimages[4]["caption"]; ?>" />
-												<div class="caption"><div><?php echo $dfimages[4]["caption"]; ?></div></div>
+												<img class="magnifier" src="<?php// echo substr($dfimages[4]["url"], 1); ?>" alt="<?php //echo $dfimages[4]["caption"]; ?>" />
+												<div class="caption"><div><?php //echo $dfimages[4]["caption"]; ?></div></div>
 											<?php /*
 											<div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
 											*/ ?>
@@ -891,8 +1175,8 @@ if(strpos($currentUrl, "?") != false)
 									</td>
 									<td style="width: 20.7%;">
 										<div size="half">
-												<img class="magnifier" src="<?php echo substr($dfimages[5]["url"], 1); ?>" alt="<?php echo $dfimages[5]["caption"]; ?>" />
-												<div class="caption"><div><?php echo $dfimages[5]["caption"]; ?></div></div>
+												<img class="magnifier" src="<?php //echo substr($dfimages[5]["url"], 1); ?>" alt="<?php //echo $dfimages[5]["caption"]; ?>" />
+												<div class="caption"><div><?php //echo $dfimages[5]["caption"]; ?></div></div>
 											<?php /*
 											<div class="caption"><?php echo $productmodel->getAttributeRawValue($productid, 'design_feature_left_imagetext', $currentstoreid); ?></div>
 											*/ ?>
@@ -904,10 +1188,10 @@ if(strpos($currentUrl, "?") != false)
                         </td>
                     </tr>
                 </table>
-            </div>
-            <?php    
-        }        
-    }
+            </div> -->
+            <?php   
+     //   }        
+   // }
 ?>
 <?php /*
 <?php
@@ -1033,7 +1317,7 @@ if(strpos($currentUrl, "?") != false)
      }
 ?>
 */ ?>
-<?php
+<?php /*
     $fabric_block = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'fabric_technology', Mage::app()->getStore()->getStoreId());// $_product->getAttributeText('fabric_technology');
     if($fabric_block != "")
         $fabric_block_html = $this->getLayout()->createBlock('cms/block')->setBlockId($fabric_block)->toHtml();
@@ -1045,7 +1329,7 @@ if(strpos($currentUrl, "?") != false)
             </div>
         <?php
     }
-?>
+*/ ?>
 <?php /*
 <div smorigwidth="1600" smorigheight="300" id="ftechimage" origwidth="1600" origheight="900" desc="abcd" origwidthsm="1600" origheightsm="900" class="opimage closed" style="background-image:url(<?php echo $this->getSkinUrl('images/homepage/fabric_technology-bg.jpg'); ?>); margin:0 0 80px;">
 	<div class="small" style="background-image:url(<?php echo $this->getSkinUrl('images/homepage/fabric_technology-bg.jpg'); ?>);">
@@ -1151,77 +1435,101 @@ if(strpos($currentUrl, "?") != false)
      }
 ?>
 */ ?>
-<?php echo $this->getChildHtml('upsell_products') ?>
+
+<?php //echo $this->getChildHtml('upsell_products') ?>
+
+
+<!-- onZoomProductImage -->
 <div style="display:none;">
     <div id="zoompopup">
         <table class="productzoomtable">
             <tr>
+                <td id="zoomedproductimage"></td>
                 <td class="zoomproductoptions">
                     <table class="productdetailtable zoomproductdetail">
                         <tr>
                             <td>
-                                <div class="productname"><?php echo html_entity_decode($productname); ?></div>
-                                <div class="productcost"><?php echo $productprice; ?></div>
-                                <table class="selectedcolor">
-                                    <tr>
-                                        <td>COLOR</td>
-                                        <td class="selectedcolortext"></td>
-                                    </tr>
-                                </table>
-                                <div id="colorcontainer">
-                                    <?php
-                                        $first = true;
-                                        $colorcount = 0;
-                                        //print_r($productcolorinfo);
-                                         foreach($productcolorinfo as $key=>$colorinfo)
-                                        {
-                                            $colorcount++;
-                                            ?>
-                                                <div>
-                                                    <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
-                                                        <tr>
-                                                            <?php
-                                                                foreach($colorinfo['hex'] as $hex)
-                                                                {
-                                                                    ?>
-                                                                        <td style="background-color: <?php echo $hex ?>;">
-                                                                        <div>
-                                                                            &nbsp;
-                                                                        </div>                                                
-                                                                        </td>   
-                                                                    <?php
-                                                                } 
-                                                            ?>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
-                                                                  
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>  
-                                            <?php
-                                            if(($colorcount % 5) == 0)
-                                                echo "<br/>";
-                                        }
-                                    ?>
+                            <div class="gry-box" style="margin: 40px 20px; width: auto;">
+                                <div class="prdname">
+                                    <div class="productname"><?php echo html_entity_decode($productname); ?></div>
+                                    <span class="productcost amount"><?php echo $productprice; ?></span>
+                                </div>
+                                <div class="box-seprtr last">
+                                    <div class="blck-head-sml"><span>Step 1:</span> choose your color</div>
+                                    <div class="blck-head-sml">
+                                        <table class="selectedcolor">
+                                            <tr>
+                                                <td><span>color:</span></td>
+                                                <td class="selectedcolortext"></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div id="colorcontainer">
+                                        <?php
+                                            $first = true;
+                                            $colorcount = 0;
+                                            //print_r($productcolorinfo);
+                                             foreach($productcolorinfo as $key=>$colorinfo)
+                                            {
+                                                $colorcount++;
+                                                ?>
+                                                    <div>
+                                                        <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
+                                                            <tr>
+                                                                            <?php
+                                                                            //echo '<pre>'; print_r($colorinfo); echo count($colorinfo['hex']); die('test');
+                                                                            foreach($colorinfo['hex'] as $hex)
+                                                                            {
+                                                                                if(count($colorinfo['hex']) == 1)
+                                                                                {
+
+                                                                                ?>
+                                                                                     <td style="border-color: transparent !important; background-color: <?php echo $hex ?>;">
+                                                                                        <div> </div>
+                                                                                    </td>
+                                                                                <?php
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                ?>   
+                                                                                    <td style="border-color: <?php echo $hex ?>;">
+                                                                                        <div> </div>
+                                                                                    </td>
+                                                                            <?php
+                                                                                 }
+                                                                            }
+                                                                            ?>
+                                                                        </tr>
+                                                            <tr>
+                                                                <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
+                                                                
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>  
+                                                <?php
+                                                //if(($colorcount % 5) == 0)
+                                                    //echo "<br/>";
+                                            }
+                                        ?>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
                                 </div>
                                 <div style="clear: both;"></div>
-                                <table class="zoomsmallimagecontainer">
-                                    <tr><td><img src="" /></td></tr>
-                                    <tr><td><img src="" /></td></tr>
-                                    <tr><td><img src="" /></td></tr>
-                                </table>
+                                    <div class="" style="left:30px; top:0;">
+                                        <table class="zoomsmallimagecontainer" width="100%">
+                                            <tr><td><img src="" style="margin: 0 0 25px; max-width: 100%;" /></td></tr>
+                                            <tr><td><img src="" style="margin: 0 0 25px; max-width: 100%;" /></td></tr>
+                                            <tr><td><img src="" style="margin: 0 0 25px; max-width: 100%;" /></td></tr>
+                                        </table>
+                                    </div>
                                 <a href="javascript:void(0);" id="fbzoomtrigger" style="">Fabric Image</a>
-                                <div id="zoomedfbdtl">
-                                    
-                                </div>
+                                <div id="zoomedfbdtl"></div>
                             </td>
                         </tr>
                     </table>
-                </td>
-                <td id="zoomedproductimage">
-                    
                 </td>
             </tr>
         </table>
@@ -1232,6 +1540,7 @@ if(strpos($currentUrl, "?") != false)
         </div>
     </div>
 </div>
+<!-- onZoomProductImage -->
 <script type="text/javascript">
-		_isOnProductDetailPage = true;
-	</script>
+_isOnProductDetailPage = true;
+</script>

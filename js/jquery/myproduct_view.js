@@ -7,6 +7,12 @@ jQuery(document).ready(function($){
         //setTimeout(function(){ positiondesignfeatureheadimage(); }, 10);
         //positiondesignfeatureheadimage();
     });
+
+    // $("table.normalproductdetail div#colorcontainer table").live("click", function(){
+    //     $("table.normalproductdetail div#colorcontainer > div").removeClass("selected");
+    //     $(this).parent("div").addClass("selected");
+    // });
+    
     
     $("table.productdesignfeatures div[size]").hover(function(){
         if($(this).find("div.caption").is(':animated'))
@@ -501,7 +507,8 @@ function resizeProductBigImage()
     var correction = 100;
     var maxHeight = _winH - correction;
     if(maxHeight > 600)
-        jQuery("table.tdbigimagecontainer img").css('max-height', maxHeight + 'px');
+        jQuery("table.tdbigimagecontainer img").css();
+        //jQuery("table.tdbigimagecontainer img").css('max-height', maxHeight + 'px');
     else
         jQuery("table.tdbigimagecontainer img").css('max-height', '600px');
 }
@@ -523,7 +530,9 @@ function changezoomColor(clr, delay, imgindex)
         return;
     jQuery("table.zoomproductdetail table.selectedcolor td:last").html(clr);
     jQuery("table.zoomproductdetail div#colorcontainer table td").removeClass("tdselectedcolor");
+    jQuery("table.zoomproductdetail div#colorcontainer > div").removeClass("selected");
     jQuery("table.zoomproductdetail div#colorcontainer table[color='" + clr + "'] tr:nth-child(2) td").addClass("tdselectedcolor");
+    jQuery("table.zoomproductdetail div#colorcontainer table[color='" + clr + "']").parent("div").addClass("selected");
     var smallimagehtml = '';
     for(i = 0; i < _productcolorinfo[colorindex].smallimages.length; i++)
     {

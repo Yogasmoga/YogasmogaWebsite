@@ -274,7 +274,9 @@ function changeColor(clr)
     jQuery("div.smogibuckcount td").html(_cnfrewardpoint);
     jQuery("table.normalproductdetail table.selectedcolor td:last").html(clr);
     jQuery("table.normalproductdetail div#colorcontainer table td").removeClass("tdselectedcolor");
+    jQuery("table.normalproductdetail div#colorcontainer > div").removeClass("selected");
     jQuery("table.normalproductdetail div#colorcontainer table[color='" + clr + "'] tr:nth-child(2) td").addClass("tdselectedcolor");
+    jQuery("table.normalproductdetail div#colorcontainer table[color='" + clr + "']").parent("div").addClass("selected");
     jQuery("div#sizecontainer div").removeClass("dvselectedsize");
     //jQuery("div#sizecontainer div").addClass("disabled");
     jQuery("div#sizecontainer div").parent().addClass("disabled");

@@ -1086,7 +1086,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         </table>
         */ ?>
 
-        <table class="productdetailspopup normalproductdetail">
+        <table class="productdetailspopup normalproductdetail quickviewproductdetail">
             <tr>
                 <!-- ProductThumbImages -->
                 <td id="tdpopupproductsmallimages">
@@ -1290,7 +1290,9 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                     <div class="box-seprtr last">
                                         <div class="blck-head-sml"><span>Step 3</span></div>
                                         <!-- addtobag-btn -->
-                                        <div id="orderitem" class="addtobag spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_on.png'); ?>"></div>
+                                        <div id="orderitem" class="addtobag spbutton" 
+                                        imageurl="<?php echo $this->getNewSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>" 
+                                        downimageurl="<?php echo $this->getNewSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>"></div>
                                         <!-- addtobag-btn -->
 
                                         <!-- outofstock-btn -->
@@ -1298,7 +1300,9 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                         <!-- outofstock-btn -->
 
                                         <!-- preorder-btn -->
-                                        <div id="preorderitem" class="preorderitem spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_now_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_now_on.png'); ?>"></div>
+                                        <div id="preorderitem" class="preorderitem spbutton" 
+                                        imageurl="<?php echo $this->getNewSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>" 
+                                        downimageurl="<?php echo $this->getNewSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>"></div>
                                         <!-- preorder-btn -->
                                         
                                         <!-- producterror -->
@@ -1337,15 +1341,15 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                             <td width="50%">
                                 <div class="wishlist">
                                     <div class="social-ico">
-                                        <a href="javascript:void(0)" class="twtrIcon" title="YogaSmoga - Twitter"></a> 
-                                        <a href="javascript:void(0)" class="pinIcon" title="YogaSmoga - Pinterest"></a>
-                                        <a href="javascript:void(0)" class="fbIcon" title="YogaSmoga - Facebook"></a>         
+                                        <a id="twitter" href="javascript:void(0);" class="twtrIcon" title="YogaSmoga - Twitter"></a> 
+                                        <a id="pinterest" href="javascript:void(0)" class="pinIcon" title="YogaSmoga - Pinterest"></a>
+                                        <a id="facebook" href="javascript:void(0)" class="fbIcon" title="YogaSmoga - Facebook"></a>         
                                     </div>
                                 </div>                                
                             </td>
                         </tr>
                     </table>
-                    <!-- SMOGIBUCKS -->                    
+                    <!-- SMOGIBUCKS -->
                 </td>
 
                 <!-- DetailsContent -->

@@ -147,7 +147,7 @@ ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #CC0033;}
 .online-status-icon{vertical-align: middle;}
 ul.site-map ul.social-icons {margin-top: 4px;}
 ul.site-map ul.social-icons li{display: inline-block; margin: 0 3px;}
-div.copy-privacy-likes{margin-top: 70px; margin-bottom: 35px;}
+div.copy-privacy-likes{margin-top: 50px; margin-bottom: 0;}
 div.copy-privacy-likes ul li{display: inline-block; font-size: 11px; color: #58595b; vertical-align: top;}
 div.copy-privacy-likes ul li:first-child{margin-left: 5px;}
 div.copy-privacy-likes ul li a{font-size: 11px; color: #58595b}
@@ -320,7 +320,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .product-details h2{font: normal 25px gothambold; color: #58595B; text-align: center; text-transform: uppercase; padding: 0 0 20px; margin: 0 0 35px;}
 .product-details h2{font-size: 17px;}
 .block-elm{width: 70%; text-align: left; display: inline-block; clear: both; margin: auto auto 40px; color: #58595B; font: 14px/18px gothambook;}
-.block-elm.btm-devider-big{margin: 0; min-height: inherit; padding-bottom: 50px; text-align: center; width: 90%;}
+.block-elm.btm-devider-big{margin: 0; padding-bottom: 50px; text-align: center; width: 90%;}
 .wdth65{width: 63%; float: left; margin: 0 2% 0 0;}
 .wdth35{width: 35%; float: left;}
 
@@ -361,8 +361,8 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .video-block, .video-block img{width: 100%;}
 
 .thumb-imgs{float: left; left: -138px; margin: 0; position: absolute; text-align: center; width: 138px;}
-.thumb-imgs img, .show-prodImg img{width: 100%;}
-.thumb-imgs img{margin-bottom: 22px;}
+.thumb-imgs img{margin-bottom: 35px;}
+.thumb-imgs td:last-child{margin-bottom: 0;}
 
 .show-prodImg{width:100%; margin:0 2% 0 0; float: left;}
 
@@ -372,7 +372,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .box-seprtr {border-bottom: 1px solid #FFFFFF; margin: 0 0 20px; padding: 0 0 20px;}
 .box-seprtr.last{padding: 0; margin: 0; border-bottom: 0 none;}
 .blck-head-sml {text-transform: uppercase;}
-.blck-head-sml > span {display: inline-block; font-family: gothambold; width: 60px;}
+.blck-head-sml span {display: inline-block; font-family: gothambold; width: 60px;}
 .size-list {margin: 15px 0 0;}
 .size-list > li {border: 1px solid #A9A9A9; display: inline-block; margin: 0 11px 0 0; padding: 8px 12px; text-align: center;}
 .color-option {margin-top: 15px;}
@@ -524,4 +524,14 @@ ul.checkout-cont li.active{background: url("../images/divider-sml.png") no-repea
 .smogi-bucks .content-box ul li {
     font: 14px/35px gothambook;
     list-style: none outside none;
+}
+
+
+/** productDetailPage **/
+.smallimagecontiner td.selectedimage {
+    opacity: 0.5;
+}
+.smallimagecontiner td {
+    display: block;
+    opacity: 1;
 }
