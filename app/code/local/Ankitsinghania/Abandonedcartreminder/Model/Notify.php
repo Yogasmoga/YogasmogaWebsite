@@ -26,9 +26,11 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
 //                $notification_log->setEmail_status($this->sendemail($customer['customer_name'], $customer['customer_email'], $customer['bucks_expiring'], $notification_period));
                 /*    else
                         $notification_log->setEmail_status($this->sendemail($customer['customer_name'], "ankit@mobikasa.com", $customer['bucks_expiring'], $notification_period));  */
-                if($customer['customer_email']== "manish@mobikasa.com")
+                $write = Mage::getSingleton('core/resource')->getConnection('core_write');
+                $readresult=$write->query("SELECT count(*) as total,email_status FROM abandonedcart_reminder_log WHERE customer_email='".$customer['customer_email']."' AND cartid=".$customer['cartid']."  AND email_status <> 1");
+                $row=$readresult->fetch();                
+                if($row['total'] >= 0 && $customer['customer_email']== "manish@mobikasa.com")
                 {
-
                     $notification_log = Mage::getModel('abandonedcartreminder/notify');
                     $notification_log->setCustomer_email($customer['customer_email']);
                     $notification_log->setCustomer_firstname($customer['customer_firstname']);
@@ -36,7 +38,7 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
                     $notification_log->setCustomer_productname($customer['product_name']);
                     $notification_log->setCustomer_productcolor($customer['product_color']);
                     $notification_log->setCustomer_productsize($customer['product_size']);
-                    //$notification_log->setCustomer_cartid($customer['cartid']);
+                    $notification_log->setCustomer_cartid($customer['cartid']);
                     $notification_log->setEmail_status($this->sendemail($customer['customer_email'], $customer['customer_firstname'],$customer['customer_lastname'], $customer['product_name'], $customer['product_color'],$customer['product_size'],$customer['product_url'],$customer['product_imageurl'],$customer['product_html']));
                     Mage::log("notifying users before save".$customer['customer_email'], null, "abandonedcartreminder.log");
                 $notification_log->save();
@@ -69,20 +71,21 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
             $productsizearray[$allOptions[$i]['label']] = $allOptions[$i]['value'];
         }
 
-        //
-        $readresult=$write->query("SELECT customer_email , customer_firstname, customer_lastname ,GROUP_CONCAT(product_id) as product_id
+        $sdate= date('Y-m-d', strtotime('-4 days', strtotime(date('Y-m-d')))).' 00:00:00';
+        $edate= date('Y-m-d', strtotime('-3 days', strtotime(date('Y-m-d')))).' 23:59:59';
+        $readresult=$write->query("SELECT sales_flat_quote.entity_id,customer_email , customer_firstname, customer_lastname ,GROUP_CONCAT(product_id) as product_id
   FROM sales_flat_quote, sales_flat_quote_item WHERE is_active = 1 AND customer_email IS NOT NULL
     AND items_count > 0 AND (SELECT is_active FROM customer_entity ce WHERE ce.entity_id = customer_id) = 1 AND sales_flat_quote_item.quote_id=sales_flat_quote.entity_id AND sales_flat_quote_item.product_type IN ('simple','giftcards')
-    AND sales_flat_quote.updated_at <= ( CURDATE() - INTERVAL 3 DAY ) 
+    AND sales_flat_quote.updated_at between '".$sdate."' and '".$edate."' 
  GROUP BY customer_email ORDER BY  sales_flat_quote.updated_at DESC");
-
+        
         $abandonedproductsparentId=array();
         while ($row = $readresult->fetch() ) {
 
             $row['customer_email'];
             $row['customer_firstname'];
             $row['customer_lastname'];
-
+            
 
             $product_ids = explode(",", $row['product_id']);
             $tempcolor = '';
@@ -226,10 +229,10 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
                             <td></td>
                         </tr>
 		        </table>';
-           // echo $html;
+            echo $html;
             /////////////END/////////////////
 
-            $abandonedlist1 =  array("customer_email"=>$row['customer_email'], "customer_firstname"=>$row['customer_firstname'] ,"customer_lastname"=>$row['customer_lastname'],"product_name"=>$tempproductname, "product_color"=>$tempcolor, "product_size"=> $tempsize ,"product_url"=>$producturl,"product_imageurl" => $productimageurl,"product_html"=>$html );
+            $abandonedlist1 =  array("cartid"=>$row['entity_id'],"customer_email"=>$row['customer_email'], "customer_firstname"=>$row['customer_firstname'] ,"customer_lastname"=>$row['customer_lastname'],"product_name"=>$tempproductname, "product_color"=>$tempcolor, "product_size"=> $tempsize ,"product_url"=>$producturl,"product_imageurl" => $productimageurl,"product_html"=>$html );
             array_push($abandonedlist, $abandonedlist1);
 
 
