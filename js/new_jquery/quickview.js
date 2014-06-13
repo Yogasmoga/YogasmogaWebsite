@@ -1,6 +1,6 @@
 jQuery(document).ready(function($){
 
-    var objectPage={};
+
     $("table.normalproductdetail div#colorcontainer table").live("click", function(){
         $("table.normalproductdetail div#colorcontainer > div").removeClass("selected");
         $(this).parent("div").addClass("selected");
@@ -33,13 +33,19 @@ function showQuickViewPopup(productid)
     var url = homeUrl + 'mycatalog/myproduct/details';
     if(_usesecureurl)
         url = securehomeUrl + 'mycatalog/myproduct/details';
+
+    if(_quickViewObjectPage[productid]){
+        jQuery("#productdetailpopup").html(_quickViewObjectPage[productid]);
+        jQuery("#productdetailpopup #colorcontainer > div:first-child > table").trigger('click');
+    }
+    else{
     jQuery.ajax({
         type : 'POST',
         url : url,
         data : {'id': productid},
         success : function(data){
 
-
+            _quickViewObjectPage[productid] = data;
             jQuery("#productdetailpopup").html(data);
             jQuery("#productdetailpopup #colorcontainer > div:first-child > table").trigger('click');
 
@@ -66,6 +72,8 @@ function showQuickViewPopup(productid)
             });
         }
     });
+
+    }
 
 }
 
