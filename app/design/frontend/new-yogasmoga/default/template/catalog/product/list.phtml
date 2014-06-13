@@ -43,7 +43,7 @@ if($categoryId != '')
         $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($products->getId());
         $configurableProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
 
-        if($configurableProduct->getId() != ''){
+        if($configurableProduct->getId() != '' && $configurableProduct['status'] == 1){
             if(!array_key_exists($configurableProduct->getId(), $configurableProductArr))
             {
                 $configurableProductArr[$configurableProduct->getId()] = array();

@@ -47,6 +47,12 @@ function showQuickViewPopup(productid)
         if(prevIdView > 0){
             jQuery(".quick-prev").attr("id", prevIdView).css("display", "block");
         }
+        jQuery(".quick-next").click(function(){
+            showQuickViewPopup(jQuery(this).attr('id'));
+        });
+        jQuery(".quick-prev").click(function(){
+            showQuickViewPopup(jQuery(this).attr('id'));
+        });
     }
     else{
     jQuery.ajax({
