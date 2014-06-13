@@ -21,15 +21,19 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
             foreach($customerlist as $customer)
             {
 
-
+               // print_r($customer);
 //                if($serverType == 'production')
 //                $notification_log->setEmail_status($this->sendemail($customer['customer_name'], $customer['customer_email'], $customer['bucks_expiring'], $notification_period));
                 /*    else
                         $notification_log->setEmail_status($this->sendemail($customer['customer_name'], "ankit@mobikasa.com", $customer['bucks_expiring'], $notification_period));  */
                 $write = Mage::getSingleton('core/resource')->getConnection('core_write');
-                $readresult=$write->query("SELECT count(*) as total,email_status FROM abandonedcart_reminder_log WHERE customer_email='".$customer['customer_email']."' AND cartid=".$customer['cartid']."  AND email_status <> 1");
-                $row=$readresult->fetch();                
-                if($row['total'] >= 0 && $customer['customer_email']== "manish@mobikasa.com")
+                $readresult=$write->query("SELECT count(*) as total FROM abandonedcart_reminder_log WHERE customer_email='".$customer['customer_email']."' AND cartid=".$customer['cartid']."  AND email_status = 1 limit 1");
+                $total='';
+                while ($row = $readresult->fetch() ) {
+                    $total=$row['total'];
+                }
+               // echo $total;
+                if($total == 0 )
                 {
                     $notification_log = Mage::getModel('abandonedcartreminder/notify');
                     $notification_log->setCustomer_email($customer['customer_email']);
@@ -38,7 +42,7 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
                     $notification_log->setCustomer_productname($customer['product_name']);
                     $notification_log->setCustomer_productcolor($customer['product_color']);
                     $notification_log->setCustomer_productsize($customer['product_size']);
-                    $notification_log->setCustomer_cartid($customer['cartid']);
+                    $notification_log->setCartid($customer['cartid']);
                     $notification_log->setEmail_status($this->sendemail($customer['customer_email'], $customer['customer_firstname'],$customer['customer_lastname'], $customer['product_name'], $customer['product_color'],$customer['product_size'],$customer['product_url'],$customer['product_imageurl'],$customer['product_html']));
                     Mage::log("notifying users before save".$customer['customer_email'], null, "abandonedcartreminder.log");
                 $notification_log->save();
@@ -229,7 +233,7 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
                             <td></td>
                         </tr>
 		        </table>';
-            echo $html;
+          //  echo $html;
             /////////////END/////////////////
 
             $abandonedlist1 =  array("cartid"=>$row['entity_id'],"customer_email"=>$row['customer_email'], "customer_firstname"=>$row['customer_firstname'] ,"customer_lastname"=>$row['customer_lastname'],"product_name"=>$tempproductname, "product_color"=>$tempcolor, "product_size"=> $tempsize ,"product_url"=>$producturl,"product_imageurl" => $productimageurl,"product_html"=>$html );
