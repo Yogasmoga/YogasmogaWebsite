@@ -36,6 +36,7 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
                     $notification_log->setCustomer_productname($customer['product_name']);
                     $notification_log->setCustomer_productcolor($customer['product_color']);
                     $notification_log->setCustomer_productsize($customer['product_size']);
+                    //$notification_log->setCustomer_cartid($customer['cartid']);
                     $notification_log->setEmail_status($this->sendemail($customer['customer_email'], $customer['customer_firstname'],$customer['customer_lastname'], $customer['product_name'], $customer['product_color'],$customer['product_size'],$customer['product_url'],$customer['product_imageurl'],$customer['product_html']));
                     Mage::log("notifying users before save".$customer['customer_email'], null, "abandonedcartreminder.log");
                 $notification_log->save();
@@ -72,9 +73,10 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
         $readresult=$write->query("SELECT customer_email , customer_firstname, customer_lastname ,GROUP_CONCAT(product_id) as product_id
   FROM sales_flat_quote, sales_flat_quote_item WHERE is_active = 1 AND customer_email IS NOT NULL
     AND items_count > 0 AND (SELECT is_active FROM customer_entity ce WHERE ce.entity_id = customer_id) = 1 AND sales_flat_quote_item.quote_id=sales_flat_quote.entity_id AND sales_flat_quote_item.product_type IN ('simple','giftcards')
+    AND sales_flat_quote.updated_at <= ( CURDATE() - INTERVAL 3 DAY ) 
  GROUP BY customer_email ORDER BY  sales_flat_quote.updated_at DESC");
 
-
+        $abandonedproductsparentId=array();
         while ($row = $readresult->fetch() ) {
 
             $row['customer_email'];
@@ -88,27 +90,25 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
             $tempsize = '';
             $html = '';
             $html ='<table cellspacing="10" cellpadding="5">
-
-                            <tr>
-		        				<th style="font-size: 12px;font-weight: bold; text-align: left; font-family:Calibri;color: #666;" colspan="5">SHOPPING BAG CONTENTS:</th>
-		        				<th></th>
-		        			</tr>';
+                        <tr>
+                            <th style="font-size: 12px;font-weight: bold; text-align: left; font-family:Calibri;color: #666;" colspan="5">SHOPPING BAG CONTENTS:</th>
+                            <th></th>
+                        </tr>';
+            
             foreach($product_ids as $id)
-            {
-
+            {               
                 $productname = '';
                 $producturl = '';
                 $productimageurl = '';
                 $_product = Mage::getModel('catalog/product')->load($id);
+                
                 //echo Mage::getBaseUrl().$_product->getUrlKey().".html";die;
-                //print_r($_product);die;
                 $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($id);
                 if (isset($parentIds[0])) {
-                    $parentproduct = Mage::getModel('catalog/product')->load($parentIds[0]);
+                    $parentproduct = Mage::getModel('catalog/product')->load($parentIds[0]);                    
                     $productname = $parentproduct->getName();
-                    //print_r($parentproduct) ;die;
+                    $abandonedproductsparentId[] = $parentIds[0];
                     $producturl = Mage::getBaseUrl().$parentproduct->getUrlKey();
-
                     $productimageurl = (string)Mage::helper('catalog/image')->init($parentproduct, 'image')->resize(150);
                 }else{
                     $producturl = Mage::getBaseUrl().$_product->getUrlKey();
@@ -127,48 +127,131 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
                 $tempsize .= $size.',';
                 $tempproductname .= $productname.',';
 
-                $html .= '	<tr>
-		        				<td>&nbsp;</td>
-		        				<td style="text-align: center;padding-bottom: 3px;padding-top: 8px; border:1px solid #666666;">
-		        					<a  href="'.$producturl.'">
-		        						<img width="75" src="'.$productimageurl.'" alt="YOGASMOGA"  />
-		        					</a>
-		        				</td>
-		        				<td>
-		        					<a style="color: #666666;text-decoration: none;font-size: 12px;font-weight: bold; font-family:Calibri;" href="'.$producturl.'">
-		        						'.$productname.'
-		        					</a><br/>
-		        					<a style="color: #666666;text-decoration: none;font-size: 12px;font-weight: bold; font-family:Calibri;" href="'.$producturl.'">
-		        						COLOR: '.$color.'
-		        					</a><br/>
-		        					<a style="color: #666666;text-decoration: none;font-size: 12px;font-weight: bold; font-family:Calibri;" href="'.$producturl.'">
-		        						SIZE: '.$size.'
-		        					</a>
-		        				</td>
-		        			</tr>';
+                $html .= '<tr>
+                                <td>&nbsp;</td>
+                                    <td style="text-align: center;padding-bottom: 3px;padding-top: 8px; border:1px solid #ccc;">
+                                        <a  href="'.$producturl.'"  target="_blank">
+                                                <img width="75" src="'.$productimageurl.'" alt="YOGASMOGA"  />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a style="color: #666666;text-decoration: none;font-size: 12px;font-weight: bold; font-family:Calibri;" href="'.$producturl.'"  target="_blank">
+                                                '.$productname.'
+                                        </a><br/>
+                                        <a style="color: #666666;text-decoration: none;font-size: 12px;font-weight: bold; font-family:Calibri;" href="'.$producturl.'"  target="_blank">
+                                                COLOR: '.$color.'
+                                        </a><br/>
+                                        <a style="color: #666666;text-decoration: none;font-size: 12px;font-weight: bold; font-family:Calibri;" href="'.$producturl.'"  target="_blank">
+                                                SIZE: '.$size.'
+                                        </a>
+                                    </td>
+                            </tr>';
 
 
 
 //                $abandonedlist1 =  array($row['customer_email'], $row['customer_firstname'] , $row['customer_lastname'],$productname, $color, $size  );
                 //$abandonedlist1 =  array("customer_email"=>$row['customer_email'], "customer_firstname"=>$row['customer_firstname'] ,"customer_lastname"=>$row['customer_lastname'],"product_name"=>$productname, "product_color"=>$color, "product_size"=> $size ,"product_url"=>$producturl,"product_imageurl" => $productimageurl );
                 //array_push($abandonedlist, $abandonedlist1);
-
-
-
             }
-            $html .= '<tr height="56">
-		        				<td></td>
-		        			</tr>
-		        		</table>';
+            $html .= '  <tr height="56">
+                            <td></td>
+                        </tr>
+		        </table>';
+            ////////////Related Products HTML ///////////////
+            $html .='<table cellspacing="10" cellpadding="5">
+                        <tr>
+                            <td style="text-align: center;">
+                            <a style="width:640px;text-align: center" href="http://yogasmoga.com/women">
+                                    <img src="http://yogasmoga.com/media/wysiwyg/email_images/abandoned/btn_checkout.png" alt="YOGASMOGA" style="">
+                            </a>
+                           </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;">
+                                <img src="http://yogasmoga.com/media/wysiwyg/email_images/abandoned/divider.png" alt="YOGASMOGA" style="margin-bottom: 8px;">
+                            </td>
+                        </tr>
+                        </table>';
+            $abandonedproductsparentId = array_unique($abandonedproductsparentId);
+            $categoryIds = array();
+            foreach ($abandonedproductsparentId as $parentId) {
+                $parentproduct = Mage::getModel('catalog/product')->load($parentId);
+                $cat=$parentproduct->getCategoryIds();
+                foreach ($cat as $catId) {
+                    $categoryIds[] = $catId;
+                }
+            }
+            $catid='';
+            if(!in_array(5,$categoryIds) && in_array(3,$categoryIds)) $catid=3;
+            else if(in_array(5,$categoryIds) && !in_array(3,$categoryIds)) $catid=5;     
+            if($catid !='') { 
+                $category = Mage::getModel('catalog/category')->load($catid);
+                $collectionConfigurable = Mage::getResourceModel('catalog/product_collection')->addAttributeToFilter('type_id', 'configurable')->addAttributeToFilter('status', 1)->addCategoryFilter($category);
+            }
+            else $collectionConfigurable = Mage::getResourceModel('catalog/product_collection')->addAttributeToFilter('type_id', 'configurable')->addAttributeToFilter('status', 1);
+            $confis = array();
+            foreach ($collectionConfigurable as $_configurableproduct) {
+                $product = Mage::getModel('catalog/product')->load($_configurableproduct->getId());
+                $confis[] = $product->getId();
+            }
+            $out1 = array_diff($confis, $abandonedproductsparentId);            
+
+            $html .='<table cellspacing="10" cellpadding="5" width="100%">
+                        <tr>
+                            <td align="center" style="font-size: 12px;font-weight: bold; text-align:center; font-family:Calibri;color: #666;" colspan="3">YOU MAY ALSO LIKE:</td>
+                            
+                        </tr><tr>';
+            $i = 0;
+            $out1 = $this->shuffle_assoc($out1);
+            foreach ($out1 as $key => $value) {
+                $_rproduct = Mage::getModel('catalog/product')->load($value);
+                $rproductname = $_rproduct->getName();
+                $rproducturl = Mage::getBaseUrl() . $_rproduct->getUrlKey();
+                $rproductimageurl = (string) Mage::helper('catalog/image')->init($_rproduct, 'image')->resize(150);
+
+                $html .= '<td style="text-align: center;padding-bottom: 3px;padding-top: 8px;">
+                                        <a  href="' . $rproducturl . '" target="_blank">
+                                                <img  src="' . $rproductimageurl . '" alt="YOGASMOGA"  />
+                                        </a>
+                                    <br><br>
+                                        <a style="color: #666666;text-decoration: none;font-size: 12px;font-weight: bold; font-family:Calibri;" href="' . $rproducturl . '" target="_blank">
+                                                ' . $rproductname . '
+                                        </a>
+                                    </td>';
+                $i++;
+                if ($i == 3)
+                    break;
+            }
+            $html .= '</tr>  <tr height="56">
+                            <td></td>
+                        </tr>
+		        </table>';
+           // echo $html;
+            /////////////END/////////////////
+
             $abandonedlist1 =  array("customer_email"=>$row['customer_email'], "customer_firstname"=>$row['customer_firstname'] ,"customer_lastname"=>$row['customer_lastname'],"product_name"=>$tempproductname, "product_color"=>$tempcolor, "product_size"=> $tempsize ,"product_url"=>$producturl,"product_imageurl" => $productimageurl,"product_html"=>$html );
             array_push($abandonedlist, $abandonedlist1);
 
 
         }
+        
+
+
         //print_r($abandonedlist);die;
         return $abandonedlist;
 
     }
+    public function shuffle_assoc($list) { 
+        if (!is_array($list)) return $list; 
+
+        $keys = array_keys($list); 
+        shuffle($keys); 
+        $random = array(); 
+        foreach ($keys as $key) { 
+          $random[$key] = $list[$key]; 
+        }
+        return $random; 
+      } 
     public function sendemail($recipient_email, $recipient_fistname,$recipient_lastname, $recipient_productname,$recipient_productcolor,$recipient_productsize,$recipient_producturl,$product_imageurl,$product_html )
     {
         $translate = Mage::getSingleton('core/translate');
