@@ -33,7 +33,7 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
                     $total=$row['total'];
                 }
                // echo $total;
-                if($total == 0 )
+                if($total == 0 && $customer['customer_email']=='neha@mobikasa.com')
                 {
                     $notification_log = Mage::getModel('abandonedcartreminder/notify');
                     $notification_log->setCustomer_email($customer['customer_email']);
