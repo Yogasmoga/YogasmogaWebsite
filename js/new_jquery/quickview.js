@@ -37,6 +37,16 @@ function showQuickViewPopup(productid)
     if(_quickViewObjectPage[productid]){
         jQuery("#productdetailpopup").html(_quickViewObjectPage[productid]);
         jQuery("#productdetailpopup #colorcontainer > div:first-child > table").trigger('click');
+        var nextIdView = parseInt(jQuery("#" + productid).closest("li").next().children("a").attr("id"));
+        var prevIdView = parseInt(jQuery("#" + productid).closest("li").prev().children("a").attr("id"));
+
+        if(nextIdView > 0){
+            jQuery(".quick-next").attr("id", nextIdView).css("display", "block");
+        }
+
+        if(prevIdView > 0){
+            jQuery(".quick-prev").attr("id", prevIdView).css("display", "block");
+        }
     }
     else{
     jQuery.ajax({
