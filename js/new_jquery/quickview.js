@@ -1,5 +1,6 @@
 jQuery(document).ready(function($){
 
+    var objectPage={};
     $("table.normalproductdetail div#colorcontainer table").live("click", function(){
         $("table.normalproductdetail div#colorcontainer > div").removeClass("selected");
         $(this).parent("div").addClass("selected");
