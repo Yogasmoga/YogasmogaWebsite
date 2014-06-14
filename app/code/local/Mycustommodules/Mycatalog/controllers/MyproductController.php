@@ -1981,5 +1981,15 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         echo "</pre>";
         //return $customerlist;
     }
+	public function smogitestingAction()
+	{
+		//echo $points = Mage::getModel('rewardpoints/stats')->getPointsCurrent(30, 1);
+		//echo $points = Mage::getModel('rewardpoints/stats')->getPointsReceived(30, 1);
+		//echo $points = Mage::getModel('rewardpoints/stats')->getPointsSpent(30, 1);
+		//echo $points = Mage::getModel('rewardpoints/stats')->getPointsReceivedReajustment(30, 1);
+		echo $points = Mage::getModel('rewardpoints/stats')->getRealPointsLost(30, 1);
+		//echo $points = Mage::getModel('rewardpoints/stats')->getRealPointsReceivedNoExpiry(30, 1);
+		//echo $points = Mage::getModel('rewardpoints/stats')->loadpointsbydate(1, 30,'2014-05-31');
+	}
 }
 ?>

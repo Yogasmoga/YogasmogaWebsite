@@ -210,12 +210,13 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
      * @param int $store_id
      * @return int 
      */
-    protected function getPointsReceivedReajustment($customer_id, $store_id) {
+    public function getPointsReceivedReajustment($customer_id, $store_id) { //echo 'test';
         /*$points = Mage::getModel('rewardpoints/stats')
                                 ->getResourceCollection()
                                 ->addUsedpointsbydate($store_id, $customer_id);*/
         
-        if ($this->points_received_reajust != null){
+        //if ($this->points_received_reajust != null){
+		if(false){
             return $this->points_received_reajust;
         } else {
             //get all points used groupped by date
@@ -223,10 +224,15 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
                                 ->getResourceCollection()
                                 ->addUsedpointsbydate($store_id, $customer_id);
             $acc_fix_points = 0;
+			
             if ($points->getSize()){
                 foreach ($points as $current_point){
                     //validate points per date
                     $points_accum = Mage::getModel('rewardpoints/stats')->loadpointsbydate($store_id, $customer_id, $current_point->getData('date_order'));
+					//echo $current_point->getData('date_order')."<br/>";
+					//echo $current_point->getData('nb_credit_spent');
+					//echo '<pre>';print_r($points_accum);
+					//echo $points_accum->getData('nb_credit')."<br/>";
                     //if ($points_accum->getData('nb_credit') >= $current_point->getData('nb_credit_spent')){
                     //FIX POINTS READJUST!!!!
                     if ($points_accum->getData('nb_credit') >= $current_point->getData('nb_credit_spent')){
@@ -234,6 +240,7 @@ class Rewardpoints_Model_Stats extends Mage_Core_Model_Abstract
                     } 
                 }
             }
+			//echo '<pre>';print_r($points);die('trest');
             $this->points_received_reajust = $acc_fix_points;
             return $acc_fix_points;
         }        
