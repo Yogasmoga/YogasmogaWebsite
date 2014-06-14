@@ -32,8 +32,8 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
                 while ($row = $readresult->fetch() ) {
                     $total=$row['total'];
                 }
-               // echo $total;
-                if($total == 0 && $customer['customer_email']=='neha@mobikasa.com')
+                //echo $total;
+                if($total == 0 && $customer['customer_email']=='neeraj@mobikasa.com')
                 {
                     $notification_log = Mage::getModel('abandonedcartreminder/notify');
                     $notification_log->setCustomer_email($customer['customer_email']);
@@ -75,7 +75,7 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
             $productsizearray[$allOptions[$i]['label']] = $allOptions[$i]['value'];
         }
 
-        $sdate= date('Y-m-d', strtotime('-4 days', strtotime(date('Y-m-d')))).' 00:00:00';
+        $sdate= date('Y-m-d', strtotime('-3 days', strtotime(date('Y-m-d')))).' 00:00:00';
         $edate= date('Y-m-d', strtotime('-3 days', strtotime(date('Y-m-d')))).' 23:59:59';
         $readresult=$write->query("SELECT sales_flat_quote.entity_id,customer_email , customer_firstname, customer_lastname ,GROUP_CONCAT(product_id) as product_id
   FROM sales_flat_quote, sales_flat_quote_item WHERE is_active = 1 AND customer_email IS NOT NULL
