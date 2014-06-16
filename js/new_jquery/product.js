@@ -1,5 +1,6 @@
 jQuery(document).ready(function($){
     scrollingLink();
+    wishList();
     //openShoppingCart();
 
     // image lazy loading
@@ -10,6 +11,16 @@ jQuery(document).ready(function($){
             threshold : 500
         });
     }); 
+
+
+    function wishList(){
+        var wishlist = $(".wishlist-link");
+        $(wishlist).find("a").removeAttr("href").css("cursor", "pointer");;
+
+        $(wishlist).on("click", "a", function(){
+            $(this).text("ADDED TO WISH LIST").css("color", "#D90D3D");
+        });
+    }
 
 
     // image rotate
