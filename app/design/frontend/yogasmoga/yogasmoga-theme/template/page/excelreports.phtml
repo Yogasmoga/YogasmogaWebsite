@@ -1,4 +1,6 @@
 <?php 
+    if($_REQUEST['user'] == 'admin' && $_REQUEST['password'] == 'ys!12345')
+    {    
     $row= $this->getReports();
 ?>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
@@ -36,7 +38,8 @@ jQuery(document).ready(function(){
         var redirecturl=jQuery("#url").val();
         //alert(redirecturl);
         window.open(redirecturl);
-        window.focus();
+        return false;
+        //window.focus();
    });
 });
 function gethtml(startdate,enddate,description) {
@@ -94,3 +97,50 @@ function gethtml(startdate,enddate,description) {
                 </tbody></table>
             </form>
         </div>
+    <?php } 
+    else {
+    ?>   
+<table class="buttonholder" style="margin: auto; width: 40%;margin-top: 50px;">
+                    <tbody>
+                          <tr><td >Login</td></tr>
+<tr>
+                        <td>
+                            <form action="<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/myreports/reports';?>" method="post" id="login-form" style="width:50%;margin:auto;">
+                <table class="inputtable" style="margin-top : 26px;">
+                    <tbody><tr>
+                        <td class="label"><label for="email">Email Address</label></td>
+                        <td class="inputholder">
+                            <input type="text" name="user" value="" id="user">
+                        </td>
+                    </tr> 
+                    <tr><td colspan="2">&nbsp;</td></tr>
+                </tbody></table>
+                <table class="inputtable">
+                    <tbody><tr>
+                        <td class="label"><label for="pass">Password</label></td>
+                        <td class="inputholder">
+                            <input type="password" name="password" id="password">
+                        </td>
+                    </tr>
+                                        <tr><td colspan="2">&nbsp;</td></tr>
+
+                    
+                </tbody></table>
+                <div class="loginerrormsg errormsg"></div>
+                <table class="buttonholder">
+                    <tbody><tr>
+                        <td>
+                            <input type="submit" value="Login" name="send" style="background: #B40431;color:#FBEFF2;font-size:11px;padding:2px;">
+                        </td>
+                        <td>
+                            &nbsp;    
+                        </td>
+                    </tr>
+                </tbody></table>
+            </form>
+                        </td>
+                    </tr>
+                </tbody></table>
+
+     <?php } 
+?>
