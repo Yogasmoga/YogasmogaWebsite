@@ -170,14 +170,14 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
             $html .='<table cellspacing="10" cellpadding="5">
                         <tr>
                             <td style="text-align: center;">
-                            <a style="width:640px;text-align: center" href="'.Mage::helper('core/url')->getHomeUrl().'"/customer/account/login/">
-                                    <img src="'.Mage::helper('core/url')->getHomeUrl().'/media/wysiwyg/email_images/abandoned/btn_checkout.png" alt="YOGASMOGA" style="">
+                            <a style="width:640px;text-align: center" href="https://yogasmoga.com/customer/account/login/">
+                                    <img src="http://yogasmoga.com/media/wysiwyg/email_images/abandoned/btn_checkout.png" alt="YOGASMOGA" style="">
                             </a>
                            </td>
                         </tr>
                         <tr>
                             <td style="text-align: center;">
-                                <img src="'.Mage::helper('core/url')->getHomeUrl().'/media/wysiwyg/email_images/abandoned/divider.png" alt="YOGASMOGA" style="margin-bottom: 8px;">
+                                <img src="http://yogasmoga.com/media/wysiwyg/email_images/abandoned/divider.png" alt="YOGASMOGA" style="margin-bottom: 8px;">
                             </td>
                         </tr>
                         </table>';
