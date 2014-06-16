@@ -117,10 +117,10 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
                     $parentproduct = Mage::getModel('catalog/product')->load($parentIds[0]);                    
                     $productname = $parentproduct->getName();
                     $abandonedproductsparentId[] = $parentIds[0];
-                    $producturl = Mage::getBaseUrl().$parentproduct->getUrlKey();
+                    $producturl = Mage::getUrl().$parentproduct->getUrlKey();
                     $productimageurl = (string)Mage::helper('catalog/image')->init($parentproduct, 'image')->resize(150);
                 }else{
-                    $producturl = Mage::getBaseUrl().$_product->getUrlKey();
+                    $producturl = Mage::getUrl().$_product->getUrlKey();
                     $productname = $_product->getName();
                     $productimageurl = (string)Mage::helper('catalog/image')->init($_product, 'image')->resize(150);
                 }
@@ -170,7 +170,7 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
             $html .='<table cellspacing="10" cellpadding="5">
                         <tr>
                             <td style="text-align: center;">
-                            <a style="width:640px;text-align: center" href="http://yogasmoga.com/women">
+                            <a style="width:640px;text-align: center" href="http://yogasmoga.com/">
                                     <img src="http://yogasmoga.com/media/wysiwyg/email_images/abandoned/btn_checkout.png" alt="YOGASMOGA" style="">
                             </a>
                            </td>
@@ -215,7 +215,7 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
             foreach ($out1 as $key => $value) {
                 $_rproduct = Mage::getModel('catalog/product')->load($value);
                 $rproductname = $_rproduct->getName();
-                $rproducturl = Mage::getBaseUrl() . $_rproduct->getUrlKey();
+                $rproducturl = Mage::getUrl() . $_rproduct->getUrlKey();
                 $rproductimageurl = (string) Mage::helper('catalog/image')->init($_rproduct, 'image')->resize(150);
 
                 $html .= '<td style="text-align: center;padding-bottom: 3px;padding-top: 8px;">
