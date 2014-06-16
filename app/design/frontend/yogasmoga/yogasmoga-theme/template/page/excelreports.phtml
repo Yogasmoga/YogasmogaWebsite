@@ -50,7 +50,7 @@ function gethtml(startdate,enddate,description) {
     else html +='<td width="50%"></td>';
     html +='</tr></table>';
     jQuery('#inputhtml').empty().append(html);
-    jQuery( ".datepicker" ).datepicker({ dateFormat: 'mm-dd-yy' });
+    jQuery( ".datepicker" ).datepicker({ dateFormat: 'mm-dd-yy',maxDate: new Date() });
 }
 </script>
 <div style="text-align: center;width: 50%;margin:auto;">
