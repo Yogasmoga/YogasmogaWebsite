@@ -5,13 +5,14 @@
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script>
 jQuery(document).ready(function(){    
+    //alert(homeUrl);
     var rowdata=<?php echo json_encode($row);?>;
     jQuery("#reporttype").change(function(){
         jQuery("#result").empty();
         jQuery.each(rowdata, function (i, elem) {
             if (elem.id === jQuery("#reporttype").val()) {
                 gethtml(elem.startdate,elem.enddate,elem.description);
-                jQuery("#url").val(elem.url);
+                jQuery("#url").val(homeUrl+elem.url);
                 
             }
         });

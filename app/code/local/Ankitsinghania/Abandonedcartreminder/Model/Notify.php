@@ -34,8 +34,8 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
 //                }
                 //echo $total;
                 //print_r($customer);
-                if($customer['customer_email']=='neha@mobikasa.com')
-                {
+//                if($customer['customer_email']=='neha@mobikasa.com')
+//                {
                     /// $customer['customer_email'];
                     $notification_log = Mage::getModel('abandonedcartreminder/notify');
                     $notification_log->setCustomer_email($customer['customer_email']);
@@ -49,7 +49,7 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
                     Mage::log("notifying users before save".$customer['customer_email'], null, "abandonedcartreminder.log");
                 $notification_log->save();
                     Mage::log("notifying users after save".$customer['customer_email'], null, "abandonedcartreminder.log");
-                }
+//                }
             }
         }
     public function getabandonedlist()
@@ -170,14 +170,14 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
             $html .='<table cellspacing="10" cellpadding="5">
                         <tr>
                             <td style="text-align: center;">
-                            <a style="width:640px;text-align: center" href="http://yogasmoga.com/">
-                                    <img src="http://yogasmoga.com/media/wysiwyg/email_images/abandoned/btn_checkout.png" alt="YOGASMOGA" style="">
+                            <a style="width:640px;text-align: center" href="'.Mage::helper('core/url')->getHomeUrl().'"/customer/account/login/">
+                                    <img src="'.Mage::helper('core/url')->getHomeUrl().'/media/wysiwyg/email_images/abandoned/btn_checkout.png" alt="YOGASMOGA" style="">
                             </a>
                            </td>
                         </tr>
                         <tr>
                             <td style="text-align: center;">
-                                <img src="http://yogasmoga.com/media/wysiwyg/email_images/abandoned/divider.png" alt="YOGASMOGA" style="margin-bottom: 8px;">
+                                <img src="'.Mage::helper('core/url')->getHomeUrl().'/media/wysiwyg/email_images/abandoned/divider.png" alt="YOGASMOGA" style="margin-bottom: 8px;">
                             </td>
                         </tr>
                         </table>';
