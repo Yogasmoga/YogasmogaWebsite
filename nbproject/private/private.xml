@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/xampp/htdocs/yogasmoga/app/code/local/Mycustommodules/Myreports/controllers/MyreportsController.php</file>
+            <file>file:/E:/xampp/htdocs/yogasmoga/app/design/frontend/yogasmoga/default/layout/myreports.xml</file>
+            <file>file:/E:/xampp/htdocs/yogasmoga/app/code/local/Mycustommodules/Myreports/controllers/ReportsController.php</file>
             <file>file:/E:/xampp/htdocs/yogasmoga/app/etc/modules/Mycustommodules_Myreports.xml</file>
-            <file>file:/E:/xampp/htdocs/yogasmoga/app/code/local/Mycustommodules/Mycatalog/controllers/MyproductController.php</file>
+            <file>file:/E:/xampp/htdocs/yogasmoga/app/code/local/Mycustommodules/Myreports/Block/Reports.php</file>
             <file>file:/E:/xampp/htdocs/yogasmoga/app/code/local/Mycustommodules/Myreports/etc/config.xml</file>
-            <file>file:/E:/xampp/htdocs/yogasmoga/app/code/local/Ankitsinghania/Abandonedcartreminder/Model/Notify.php</file>
+            <file>file:/E:/xampp/htdocs/yogasmoga/app/design/frontend/yogasmoga/yogasmoga-theme/template/page/excelreports.phtml</file>
         </group>
     </open-files>
 </project-private>

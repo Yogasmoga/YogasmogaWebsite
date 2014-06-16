@@ -5,7 +5,17 @@
             <version>0.0.1</version>
         </mycustommodules_myreports>
     </modules>
-	<frontend>
+    <global>
+        <blocks>
+            <myreports>
+                <class>
+                    Mycustommodules_Myreports_block
+                </class>
+            </myreports>
+        </blocks>
+    </global>
+    
+    <frontend>
         <routers>
             <myreports>
                 <use>standard</use>
@@ -15,6 +25,13 @@
                 </args>
             </myreports>
         </routers>   
+            <layout>
+                <updates>
+                    <myreports>
+                        <file>myreports.xml</file>
+                    </myreports>
+                </updates>
+            </layout>
     </frontend>
 	<global>
 		<template>

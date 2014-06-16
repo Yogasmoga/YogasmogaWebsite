@@ -33,7 +33,8 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
                     $total=$row['total'];
                 }
                 //echo $total;
-                if($total == 0 && $customer['customer_email']=='neeraj@mobikasa.com')
+                //print_r($customer);
+                if($total == 0 && $customer['customer_email']=='neha@mobikasa.com')
                 {
                     $notification_log = Mage::getModel('abandonedcartreminder/notify');
                     $notification_log->setCustomer_email($customer['customer_email']);
@@ -233,7 +234,7 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
                             <td></td>
                         </tr>
 		        </table>';
-          //  echo $html;
+            //echo $html;
             /////////////END/////////////////
 
             $abandonedlist1 =  array("cartid"=>$row['entity_id'],"customer_email"=>$row['customer_email'], "customer_firstname"=>$row['customer_firstname'] ,"customer_lastname"=>$row['customer_lastname'],"product_name"=>$tempproductname, "product_color"=>$tempcolor, "product_size"=> $tempsize ,"product_url"=>$producturl,"product_imageurl" => $productimageurl,"product_html"=>$html );
