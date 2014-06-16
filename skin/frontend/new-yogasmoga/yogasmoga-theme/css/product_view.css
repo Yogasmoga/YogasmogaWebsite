@@ -594,10 +594,10 @@ table.productimagecontainer table.tdbigimagecontainer td
 {
     vertical-align: bottom;
     text-align: center;
-    width : 700px;
-    min-width : 700px;
-    max-width : 700px;
-    height : 600px;
+}
+
+table.productimagecontainer table.tdbigimagecontainer td img{
+    width: 100%;
 }
 
 table.productimagecontainer td.tddivider
