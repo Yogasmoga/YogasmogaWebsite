@@ -32,6 +32,9 @@
  */
 ?>
 <?php
+        // redirect to home page because we can not show login page in new-theme
+        Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getBaseUrl().'#login');
+
     if($this->getRequest()->getParam('goto') == 'cart')
     {
         Mage::getSingleton('core/cookie')->set('afterlogindest', 'cart' ,time()+86400,'/');

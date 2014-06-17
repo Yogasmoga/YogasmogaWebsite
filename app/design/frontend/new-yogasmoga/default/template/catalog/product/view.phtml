@@ -820,7 +820,17 @@ if(strpos($currentUrl, "?") != false)
 
                 <p><strong>Product description</strong><br>
                     <!-- description -->
-                    <div class="shortdesc"><?php echo $_product->getDescription(); ?> <a class="readmore" href="#">read more</a></div>
+                    <?php  if(strlen($_product->getDescription())< 200) { ?>
+                    <div class="shortdesc"><?php echo $_product->getDescription(); ?> </div>
+                    <?php }else{ $str = $_product->getDescription();
+                         $firststr = substr($str,0,200);
+                         $secondstr = substr($str,200,strlen($str));
+
+
+
+                        ?>
+                    <div class="shortdesc"><span><?php echo $firststr ; ?></span><span class = "sec-desc" ><?php echo $secondstr ; ?></span><span class="dot">...</span>  <p class="readmore">read more</p>  </div>
+                    <?php } ?>
                     <!-- description -->
                 </div>
                 <!--Description -->

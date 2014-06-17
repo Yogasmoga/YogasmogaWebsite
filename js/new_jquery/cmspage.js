@@ -11,7 +11,9 @@ jQuery(document).ready(function($){
         //     scrollToAnchor('get-smogi-bucks');            
         // }
 
-        if((blockid != 'get-smogi-bucks') && (blockid != 'smogi-bucks-balance')) {
+        //if((blockid != 'get-smogi-bucks') && (blockid != 'smogi-bucks-balance')) {
+        //  check for cms page hash values
+        if((blockid == 'story')||(blockid == 'corevalues')||(blockid == 'outethics')||(blockid == 'mageinusa')||(blockid == 'principles')||(blockid == 'namaskar')||(blockid == 'press')||(blockid == 'ys-fabric-tech')||(blockid == 'ys-color-tech')||(blockid == 'design-elements')||(blockid == 'smogibucks')){
             $(".side-menu-bar ul li").children("a").find("span.arr").text("");
             $(".pg-content").html("<img class='cms-loader' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
             retrievecmsblockcontent(blockid);
@@ -30,6 +32,11 @@ jQuery(document).ready(function($){
                     $(this).addClass("active");
                 }
             });
+        }
+        // check for login hash value for shot login form
+        if(blockid == 'login')
+        {
+            $("#signing_popup").dialog( "open" );
         }
         $(".side-menu-bar2 ul li").each(function(){
             $(this).children("a").removeClass("current");
