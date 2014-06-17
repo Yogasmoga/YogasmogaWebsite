@@ -77,8 +77,8 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
             $productsizearray[$allOptions[$i]['label']] = $allOptions[$i]['value'];
         }
 
-        $sdate= date('Y-m-d', strtotime('-3 days', strtotime(date('Y-m-d')))).' 00:00:00';
-        $edate= date('Y-m-d', strtotime('-3 days', strtotime(date('Y-m-d')))).' 23:59:59';
+        $sdate= date('Y-m-d', strtotime('-2 days', strtotime(date('Y-m-d')))).' 00:00:00';
+        $edate= date('Y-m-d', strtotime('-2 days', strtotime(date('Y-m-d')))).' 23:59:59';
         $readresult=$write->query("SELECT sales_flat_quote.entity_id,customer_email , customer_firstname, customer_lastname ,GROUP_CONCAT(product_id) as product_id
   FROM sales_flat_quote, sales_flat_quote_item WHERE is_active = 1 AND customer_email IS NOT NULL
     AND items_count > 0 AND (SELECT is_active FROM customer_entity ce WHERE ce.entity_id = customer_id) = 1 AND sales_flat_quote_item.quote_id=sales_flat_quote.entity_id AND sales_flat_quote_item.product_type IN ('simple','giftcards')
@@ -105,12 +105,14 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
                         </tr>';
             
             foreach($product_ids as $id)
-            {               
+            {    
+                
                 $productname = '';
                 $producturl = '';
                 $productimageurl = '';
                 $_product = Mage::getModel('catalog/product')->load($id);
-                
+                $pcolor = (int) $_product->getColor();
+                $color = array_search($pcolor, $colorarray);
                 //echo Mage::getBaseUrl().$_product->getUrlKey().".html";die;
                 $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($id);
                 if (isset($parentIds[0])) {
@@ -119,6 +121,24 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
                     $abandonedproductsparentId[] = $parentIds[0];
                     $producturl = Mage::helper('core/url')->getHomeUrl().$parentproduct->getUrlKey();
                     $productimageurl = (string)Mage::helper('catalog/image')->init($parentproduct, 'image')->resize(150);
+                    $_gallery =Mage::getModel('catalog/product')->load($parentIds[0])->getMediaGalleryImages();
+                    $imageArr = array();
+                    foreach($_gallery as $_image)
+                    {
+
+                        $imgdata = json_decode(trim($_image->getLabel()), true);
+                        $colorId = $imgdata['color'];
+                        
+                        if($colorId == $pcolor)
+                        {
+                            //echo $_image->getFile();
+                            $productimageurl= $_image->getUrl();
+                            break;
+                        }
+                        //echo $productimageurl = Mage::helper('catalog/image')->init($parentIds[0], 'thumbnail',$_image)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(150)->setQuality(91);
+                    }
+                    
+                    
                 }else{
                     $producturl = Mage::helper('core/url')->getHomeUrl().$_product->getUrlKey();
                     $productname = $_product->getName();
@@ -128,9 +148,11 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
                 //print_r($parentproduct);die;
 
                 //$subhtml2 .= '<td>'.$_product->getName().'</td>';
-
-                $pcolor = (int) $_product->getColor();
-                $color = array_search($pcolor, $colorarray);
+                //print_r($colorarray);
+//                $pcolor = (int) $_product->getColor();
+//                $color = array_search($pcolor, $colorarray);
+                //print_r($pcolor);
+                //print_r($color);
                 $tempcolor .= $color.',';
                 $size = array_search($_product->getSize(), $productsizearray);
                 $tempsize .= $size.',';
@@ -149,11 +171,11 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
                                         </a><br/>
                                         <a style="color: #666666;text-decoration: none;font-size: 12px;font-weight: bold; font-family:Calibri;" href="'.$producturl.'"  target="_blank">
                                                 COLOR: '.$color.'
-                                        </a><br/>
-                                        <a style="color: #666666;text-decoration: none;font-size: 12px;font-weight: bold; font-family:Calibri;" href="'.$producturl.'"  target="_blank">
+                                        </a>';
+                if($size !='') $html .= '<br/><a style="color: #666666;text-decoration: none;font-size: 12px;font-weight: bold; font-family:Calibri;" href="'.$producturl.'"  target="_blank">
                                                 SIZE: '.$size.'
-                                        </a>
-                                    </td>
+                                        </a>';
+                $html .= '</td>
                             </tr>';
 
 
