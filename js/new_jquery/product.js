@@ -94,6 +94,7 @@ jQuery(document).ready(function($){
     function scrollingLink(){
         var wdth = $(".cntn-scroll").width();
         var nav = $('.scroller_anchor');
+        var ftr = $('#sitemap').height();
 
         if (nav.length) {
             var contentNav = nav.offset().top;
@@ -102,7 +103,7 @@ jQuery(document).ready(function($){
                     // Change the CSS of the scroller to hilight it and fix it at the top of the screen.
                     $('.cntn-scroll').css({
                         'position': 'fixed',
-                        'top': '0'
+                        'bottom': ftr
                     });
                     
                     // this is container div class
@@ -114,7 +115,8 @@ jQuery(document).ready(function($){
                     // Change the CSS and put it back to its original position.
                     $('.cntn-scroll').css({
                         'position': '',
-                        'top': ''
+                        'top': '',
+                        'bottom': ''
                     });
 
                     // this is container div class
@@ -123,12 +125,19 @@ jQuery(document).ready(function($){
                     });
                 }
                 else if($(window).scrollTop() < contentNav && $('.cntn-scroll').css('position') != 'relative') {
-                    alert(scrollBottom);
+                    //alert(scrollBottom);
                 }
             });
         }
 
     };
+
+    $(window).scroll(function(){
+        // var bnnr = $(".bannerFluid").height();
+        // $('.cntn-scroll').css("top", bnnr);
+        // $('.cntn-scroll').stop();
+        // $('.cntn-scroll').animate({top:$(window).scrollTop()},400)
+    });
 
     // Show/Hide Shopping Cart Container
     function openShoppingCart(){

@@ -330,7 +330,8 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .featureList > li:last-child{margin: 0 0 0 1%;}
 .featureList > li{display: inline-block; float: left; margin: 0 1%; width: 18.2%;}
 .featureList span{display: block; margin: 20px 0; text-transform: capitalize;}
-.featureList span.ftrFig{background: #E5E9EC; height: 180px; margin: 0; width: 100%;}
+.featureList span.ftrFig{/*background: #E5E9EC;*/ margin: 0; }
+.featureList span.ftrFig img{width: 100%; }
 
 .similarProdList{margin: auto; width: 80%; font-size: 12px;}
 .similarProdList > li{float: left; width: 100%; margin: 0 0 20px;}
@@ -361,7 +362,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .size{font-size: 11px; text-transform: uppercase; font-weight: bold;}
 .video-block, .video-block img{width: 100%;}
 
-.thumb-imgs{float: left; left: -130px; margin: 0; position: absolute; text-align: center; width: 130px;}
+.thumb-imgs{float: left; left: -130px; margin: 0; position: absolute; text-align: center; width: 18%; min-width: 18%; max-width: 138px;}
 .thumb-imgs img{width: 90%;}
 .thumb-imgs td:last-child{margin-bottom: 0;}
 
@@ -559,4 +560,17 @@ ul.checkout-cont li.active{background: url("../images/divider-sml.png") no-repea
 
 .breadcrumb, .breadcrumb a{
 	color: #58595B;
+}
+
+.cntn-scroll{
+	position: absolute;
+}
+
+@media only screen and (max-width : 1024px) {
+ .fitDetail > div.tble, .fitDetail > div.video-box{max-width: 100%; float: left; margin: 0 0 15px; clear: both;}
+.fitDetail > div.tble{max-width: 94%; margin: 0;}
+.video-box p{margin: 0 0 10px;}
+.video-box p.block-link a, div.tble p.block-link a{font-size: 10px;}
+.video-box ul, .vlink-cont{float: left; width: 50%;}
+.gry-box{float: left;}
 }
