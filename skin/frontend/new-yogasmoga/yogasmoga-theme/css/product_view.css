@@ -1140,3 +1140,4 @@ table.productdetailtable div#colorcontainer > div.selected table td.tdselectedco
 .fbIcon:hover{background-image: url("../images/product/fb-ovr.png");}
 .twtrIcon:hover{background-image: url("../images/product/twtr-ovr.png");}
 .pinIcon:hover{background-image: url("../images/product/pntrst-ovr.png");}
+.sec-desc{display: none;}
