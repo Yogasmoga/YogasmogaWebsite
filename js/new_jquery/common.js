@@ -2,7 +2,27 @@ jQuery(document).ready(function($){
 
     initializesignuppopup();
     initializeinvitepopup();
-    initializesigninpopup();    
+    initializesigninpopup();
+    madeinusa();
+
+    function madeinusa(){
+        var block3H = $(".structure .block3").height();
+        var usatxt = $(".madeinusa-txt").height();
+
+        var storeH = block3H - usatxt;
+        var storeF = storeH/2;
+    
+        $(".madeinusa-txt").css("top", storeF);
+
+        $(window).resize(function(){
+            var block3H = $(".structure .block3").height();
+            var usatxt = $(".madeinusa-txt").height();
+
+            var storeH = block3H - usatxt;
+            var storeF = storeH/2;
+            $(".madeinusa-txt").css("top", storeF);
+        });
+    }
 
     var winHeight = $(window).height();
     $("div.2-columns-wrapper").find(".pg-content,.side-menu-bar").css("min-height", winHeight);    

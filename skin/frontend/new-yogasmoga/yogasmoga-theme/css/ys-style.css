@@ -73,7 +73,7 @@ ul.main-menu2 > li:hover > ul.sub-menu, ul.main-menu > li:hover > ul.sub-menu{di
 .share-strip .blk{width: 50%; display: inline-block;}
 .share-strip ul li{ display: inline-block; padding: 0 5px; font-size: 12px; line-height: 21px;}
 .newbg{background: url("../images/dvdr-new.jpg") no-repeat bottom center !important;}
-.fabric-color{width: 90%; margin: 0 auto;background: url("../images/big-divider.png") no-repeat , url("../images/big-divider.png") no-repeat; background-position: top center, bottom center; background-size:100%, 100%; height:auto; padding-bottom: 1px;}
+.fabric-color{width: 90%; max-width: 1600px; margin: 0 auto;background: url("../images/big-divider.png") no-repeat , url("../images/big-divider.png") no-repeat; background-position: top center, bottom center; background-size:100%, 100%; height:auto; padding-bottom: 1px;}
 .structure{width: 90%; margin: 0 auto;}
 .block1{width: 65%;}
 .block2{width: 35%; padding-top: 10%; padding-left: 3%;}
@@ -129,7 +129,7 @@ div.side-menu-bar ul li a:hover span.arr,
 .banner-text span{font-family:"AvantGardeGothicITCW01B"; text-transform: inherit;}
 .box-str-container{width: 80%; margin-top: 60px; }
 .box-str{background: url("../images/big-divider.png") no-repeat bottom; padding-bottom:30px; margin-bottom: 30px;background-size: contain;}
-.box-str-container .img-box{width: 37%; border: 1px solid #e1e1e1; padding: 2px;}
+.box-str-container .img-box{width: 37%; /*border: 1px solid #e1e1e1;*/ padding: 2px;}
 .box-str-container .img-box img{width: 100%;}
 .box-str-container .content-box{ width:62%; padding-left: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 .content-box p{font: 14px/1.5 gothambook; margin-bottom: 22px; }
@@ -138,10 +138,10 @@ div.side-menu-bar ul li a:hover span.arr,
 .box-str h2.heading span{font-family: ITCAvantGardeProBk; text-transform: inherit; }
 .box-str.inverse .content-box{padding-right: 20px; padding-left: 0;}
 /****Footer****/
-#sitemap{width: 85%; margin: 0 auto;margin-top:90px;}
-.footer-block{width: 100%;margin-left: 35px;}
+#sitemap{width: 85%; margin: 0 auto;margin-top:90px; word-wrap: break-word;}
+.footer-block{width: 100%;}
 .footer--block ul.site-map ul li{/*text-transform: uppercase;*/}
-ul.site-map > li{color:#58595b; display: inline-block; vertical-align: top; text-align: left; width: 14.5%; margin:0 5px; word-wrap:break-word; }
+ul.site-map > li{color:#58595b; display: inline-block; vertical-align: top; text-align: left; width: 16%; margin:0; word-wrap:break-word; }
 ul.site-map > li:first-child{}
 ul.site-map > li a{color: #58595b; font-size: 11px;}
 ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #CC0033;}
@@ -317,10 +317,10 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 /** Product Details Page **/
 .block-elm.btm-devider, .block-elm.btm-devider-big, .product-details .block-head, .product-details h2{background: url("../images/big-divider.png") no-repeat center bottom; background-size: 100% auto;}
 .block-elm.btm-devider{padding-bottom: 40px;}
-.product-details .block-head{margin-bottom: 90px; text-transform: uppercase; font: 18px gothambold; padding: 4px 0 20px;}
+.product-details .block-head{margin-bottom: 50px; text-transform: uppercase; font: 18px gothambold; padding: 4px 0 20px;}
 .product-details h2{font: normal 25px gothambold; color: #58595B; text-align: center; text-transform: uppercase; padding: 0 0 20px; margin: 0 0 35px;}
 .product-details h2{font-size: 17px;}
-.block-elm{width: 70%; text-align: left; display: inline-block; clear: both; margin: auto auto 40px; color: #58595B; font: 14px/18px gothambook;}
+.block-elm{width: 70%; text-align: left; display: inline-block; clear: both; margin: auto auto 40px; color: #58595B; font: 13px/18px gothambook;}
 .block-elm.btm-devider-big{margin: 0; padding-bottom: 50px; text-align: center; width: 90%;}
 .wdth65{width: 63%; float: left; margin: 0 2% 0 0;}
 .wdth35{width: 35%; float: left;}
@@ -361,16 +361,16 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .size{font-size: 11px; text-transform: uppercase; font-weight: bold;}
 .video-block, .video-block img{width: 100%;}
 
-.thumb-imgs{float: left; left: -138px; margin: 0; position: absolute; text-align: center; width: 138px;}
-.thumb-imgs img{margin-bottom: 35px;}
+.thumb-imgs{float: left; left: -130px; margin: 0; position: absolute; text-align: center; width: 130px;}
+.thumb-imgs img{width: 90%;}
 .thumb-imgs td:last-child{margin-bottom: 0;}
 
 .show-prodImg{width:100%; margin:0 2% 0 0; float: left;}
 
-.gry-box{background: #ededed; padding: 25px; margin-bottom: 10px;}
-.prdname{border-bottom: 1px solid #fff; font: 30px ITCAvantGardeProBk; margin: 0 0 20px; padding: 0 0 20px;}
+.gry-box{background: #ededed; padding: 10px 15px; margin-bottom: 10px;}
+.prdname{border-bottom: 1px solid #fff; font: 28px ITCAvantGardeProBk; margin: 0 0 15px; padding: 0 0 10px;}
 .amount {clear: both; display: block; margin: 5px 0 0;}
-.box-seprtr {border-bottom: 1px solid #FFFFFF; margin: 0 0 20px; padding: 0 0 20px;}
+.box-seprtr {border-bottom: 1px solid #FFFFFF; margin: 0 0 15px; padding: 0 0 10px;}
 .box-seprtr.last{padding: 0; margin: 0; border-bottom: 0 none;}
 .blck-head-sml {text-transform: uppercase;}
 .blck-head-sml span {display: inline-block; font-family: gothambold; width: 60px;}
@@ -402,9 +402,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .fitDetail > div.tble{margin: 0 4%; min-width: 60%;}
 .fitDetail table{display: inline-block; margin: 25px 0 0; width: 100%;}
 .top-divider{background: url("../images/dvdr-new.jpg") no-repeat center top; background-size: 100% auto; margin: 40px 0 0; padding: 0;}
-.menu-bar.cntn-scroll.f-left.l-align {
-    width: 300px;
-}
+.menu-bar.cntn-scroll.f-left.l-align {width: 300px;}
 
 /** ShoppingCart **/
 .shopping-cart{background: #eeefef; color: #58595b;  overflow: auto; position: fixed; right: 0; width: 27%; display: none; font: 14px gothambook; text-transform: capitalize;;}
@@ -445,18 +443,15 @@ ul.checkout-cont li .ovrlay-bg{display: block; background: #d6d6d6; height: 100%
 ul.checkout-cont li.active .ovrlay-bg{display: none;}
 .checkout-details{padding: 38px 20px 20px; display: block;}
 
-/** .checkout-cont{min-height: 400px; margin: 0 2px 0 0; padding: 20px; text-align: center; float: left; position: relative; width: 30.6%;}
-.checkout-cont.active{background: url("../images/big-divider.png") no-repeat center top; background-size: 100% auto;}
-.checkout-cont .ovrlay-bg{display: block; background: #d6d6d6; height: 100%; width: 100%; position: absolute; top: 0; left: 0; opacity: 0.5;}
-.checkout-cont.active .ovrlay-bg{display: none;} **/
-/*ul.main-menu li a.posRel, .posRel{position: relative; z-index: 1;}
-ul.main-menu li ul.sub-menu.menu-ovr{}*/
-
-
-
-
-@media only screen and (device-width: 768px) {
 /* For general iPad layouts */
+@media only screen and (device-width: 768px) {
+
+.sizechartlink p.block-link{float: left;}
+#absproductoptions table.productdetailtable div#sizecontainer table td div{width: 25px; padding: 2px; margin: 0 5px 0 0;}
+.madeinusa-txt{font-size: 26px !important;}
+.structure p.block-desc{font-size: 20px;}
+.structure p.block-link a{font-size: 12px;}
+.structure p.block-head{font-size: 14px;}
 .os-banner{min-height: 250px;}
 .contWom h4, li.new-arrivals-desc .block-head{font-size: 15px;}
 li.new-arrivals-desc .block-head{padding: 0; text-align: left;}
@@ -468,7 +463,7 @@ li.new-arrivals-desc .block-head{padding: 0; text-align: left;}
 /** ProductDetail Page **/
 .block-elm{font-size: 11px;}
 .prdname{font-size: 20px;}
-.gry-box{padding: 15px;}
+.gry-box{padding: 10px;}
 .blck-head-sml span{width: 50px;}
 .size-list > li{margin: 0 2px 0 0; padding: 8px 2px; width: 26px;}
 .wishlist{width: 50%;}
@@ -535,4 +530,33 @@ ul.checkout-cont li.active{background: url("../images/divider-sml.png") no-repea
 .smallimagecontiner td {
     display: block;
     opacity: 1;
+}
+
+/* MailSlider*/
+.flexslider .slides img {
+}
+
+.madeinusa-txt{
+	width: 100%; 
+	font: 38px itcavantgardeprobk; 
+	text-transform:uppercase;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.madeinusa-txt div{ 
+	width: 100%; 
+	height: 100%; 
+	vertical-align: middle; 
+}
+
+.madeinusa-txt span{
+	display: block;
+	clear: both;
+	font-family: itcavantgardepromd;
+}
+
+.breadcrumb, .breadcrumb a{
+	color: #58595B;
 }

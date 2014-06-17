@@ -1,7 +1,7 @@
 jQuery(document).ready(function($){
     scrollingLink();
     wishList();
-    //openShoppingCart();
+    openShoppingCart();
 
     // image lazy loading
     $(function() {

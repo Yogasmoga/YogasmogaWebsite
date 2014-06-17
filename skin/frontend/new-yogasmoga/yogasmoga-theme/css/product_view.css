@@ -77,7 +77,6 @@ table.productdetailtable
 
 table.productdetailtable>tbody>tr>td:first-child
 {
-    padding-left : 10px;
     width : 249px;
     max-width: 249px;
 }
@@ -277,9 +276,9 @@ table.productdetailtable div#sizecontainer table td div
 
 #absproductoptions table.productdetailtable div#sizecontainer table td div
 {
-    padding : 6px 0; /*5px 8px;*/
+    padding : 4px 0; /*5px 8px;*/
     margin: 0 10px 0 0;
-    width: 32px;
+    width: 28px;
 }
 
 table.productdetailtable div#sizecontainer table td div.dvselectedsize
@@ -628,8 +627,9 @@ table.productimagecontainer table.smallimagecontiner td
 
 .product-details table.productimagecontainer table.smallimagecontiner td
 {
-    width : auto;
+    width : 100%;
     height : auto;
+    margin-bottom: 35px;
 }
 
 table.productimagecontainer table.smallimagecontiner td.selectedimage, td#tdpopupproductsmallimages td.selectedimage, table.zoomsmallimagecontainer td.selectedimage, div#zoompopup div#zoomoptions img.disabled
