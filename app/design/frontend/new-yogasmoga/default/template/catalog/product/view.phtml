@@ -39,9 +39,6 @@ jQuery(window).load(function(){
 })
 </script>
 <img style="display:none;" src="<?php echo $this->getSkinUrl('images/zoom_assets/preloader.gif'); ?>" />
-<style type="text/css">
-    body{min-width : 1300px;}
-</style>
 <?php $_helper = $this->helper('catalog/output'); ?>
 <?php $_product = $this->getProduct(); ?>
 <?php $_product = Mage::getModel('catalog/product')->load($_product->getId()); ?>
@@ -697,13 +694,13 @@ if(strpos($currentUrl, "?") != false)
                                                         </td>
                                                         <td class="howdoesitfitlink">
                                                             <div style="position: relative;">
-                                                                <p class="block-link" style="margin: 0px; float: right;"><a href="javascript:void(0);">How does it fit?</a></p>
-                                                                <div id="howdoesitfitbox">
+                                                                <p class="block-link" style="margin: 0px; float: right;"><a id="how-does-it-fit" href="javascript:void(0);">How does it fit?</a></p>
+                                                                <!-- <div id="howdoesitfitbox">
                                                                     <div id="howdoesitfitboxinner">
-                                                                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
+                                                                        <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
                                                                     </div>
-                                                                    <img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
-                                                                </div>
+                                                                    <img src="<?php //echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
+                                                                </div> -->
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -861,10 +858,11 @@ if(strpos($currentUrl, "?") != false)
         <!-- DesignFeatureAndCompleteLook -->
 
         <!-- FitAndFabricDetails -->
-        <div class="block-elm btm-devider">
         <a name="sizechart"></a>
+        <div class="block-elm btm-devider">
             <!-- fitDetails -->
             <div class="wdth65">
+              <a name="how-does-it-fit"></a>
               <!-- heading -->
               <h2>Fit details</h2>
               <!-- heading -->

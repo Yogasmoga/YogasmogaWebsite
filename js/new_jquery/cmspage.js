@@ -142,6 +142,10 @@ jQuery(document).ready(function($){
        scrollToAnchor('sizechart');
     });
 
+    $(".howdoesitfitlink .block-link a#how-does-it-fit").click(function() {
+       scrollToAnchor('how-does-it-fit');
+    });
+
 
     // function for retrieving html for cms page via ajax
     function retrievecmsblockcontent(blockid)
