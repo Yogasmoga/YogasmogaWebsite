@@ -139,6 +139,12 @@ function loginCustomer()
                 {
                     jQuery("#invite_friends").dialog( "open" );
                 }
+                //check for _isClickAddtowishlist and trigger wishlist link automatically
+                if(_isClickAddtowishlist)
+                {
+                    jQuery(".wishlist-link a").trigger('click');
+                }
+
 
             }
             else

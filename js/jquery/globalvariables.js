@@ -62,3 +62,4 @@ var _islogedinuser = false; // check if user is logged in
 var _isClickShareWithFriends = false;  // check if click on share with friends
 var _flagForShareFriends = false;
 var _quickViewObjectPage = {}; // object variable to store quick view popup html
+var _isClickAddtowishlist = false; // check user click on add to wish list because without login user can not add to wishlist

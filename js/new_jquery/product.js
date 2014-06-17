@@ -15,10 +15,54 @@ jQuery(document).ready(function($){
 
     function wishList(){
         var wishlist = $(".wishlist-link");
-        $(wishlist).find("a").removeAttr("href").css("cursor", "pointer");;
+        //$(wishlist).find("a").removeAttr("href").css("cursor", "pointer");
 
-        $(wishlist).on("click", "a", function(){
-            $(this).text("ADDED TO WISH LIST").css("color", "#D90D3D");
+        $(wishlist).on("click", "a", function(event){
+            event.preventDefault();
+            if(!_islogedinuser)
+            {
+                _isClickAddtowishlist = true;
+                $("#signing_popup").dialog( "open" );
+
+            }
+
+            if(_islogedinuser)
+            {
+
+                var productid = $(wishlist).find("a").attr('id');
+                if(window.location.href.indexOf('https://') >= 0)
+                    _usesecureurl = true;
+                else
+                    _usesecureurl = false;
+                var url = homeUrl + 'mynewtheme/addtowishlist/applyAddToWishlist';
+                if(_usesecureurl)
+                    url = securehomeUrl + 'mynewtheme/addtowishlist/applyAddToWishlist';
+                $.ajax({
+
+                    type : 'POST',
+                    url : url,
+                    data : {'productid': productid},
+                    success : function(data){
+
+                        data = eval('('+data +')');
+                        var status = data.status;
+                        if(status == "success")
+                        {
+                            $(wishlist).text("ADDED TO WISH LIST").css("color", "#D90D3D");
+                        }
+                        else{
+                            $(this).text(data.errors).css("color", "#D90D3D");
+                        }
+
+                    }
+
+                });
+
+            }
+
+
+
+
         });
     }
 

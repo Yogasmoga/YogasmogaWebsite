@@ -106,6 +106,7 @@ class Mycustommodules_Mynewtheme_CommonController extends Mage_Core_Controller_F
     }
 
 
+
     
 }
 ?>
