@@ -37,7 +37,7 @@ jQuery(document).ready(function($){
 				//$("div.header-container div#smallmenu").fadeOut(500, function(){
 				$("div#bodycompensator").show().height(0);
 				$("div#bodycompensator").animate({
-					height : 80
+					height : 110
 				}, 500);
 				$("div#mainimage img.fullscreen").each(function(){
 					var ttop = ($(this).css('top') * 1) - 120;
@@ -47,7 +47,7 @@ jQuery(document).ready(function($){
 					}, 500);
 				});
 				$("div#mainimage").animate({
-					height : (($("div#mainimage").height() * 1) - 80)
+					height : (($("div#mainimage").height() * 1) - 110)
 				},500);
 				$("div.header-container div.header").animate({
 					top : '0px'
