@@ -112,7 +112,7 @@ jQuery(document).ready(function($){
                     // Change the CSS of the scroller to hilight it and fix it at the top of the screen.
                     $('.cntn-scroll').css({
                         'position': 'fixed',
-                        'bottom': ftr
+                        'top': '0'
                     });
                     
                     // this is container div class

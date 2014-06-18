@@ -51,10 +51,10 @@ ul.main-menu > li.smenu, ul.main-menu > li:hover, ul.main-menu2 > li.active{back
 ul.tr-menu{margin:5px 0;}
 ul.tr-menu > li{display: inline-block; padding: 0 3px; position: relative;}
 li.free-shipping{font-style: italic; margin-right: 15px;}
-ul.tr-menu > li > ul.sub-menu{position: absolute; text-align: center; width:200px; padding:10px 0; display: none; text-transform: uppercase; }
+ul.tr-menu > li > ul.sub-menu{position: absolute; text-align: center; width:200px; padding:0; z-index: 9; display: none; text-transform: uppercase; }
 ul.tr-menu > li > ul.sub-menu li{background: rgba(255,255,255,0.9); padding: 0 15px;}
 ul.tr-menu > li > ul.sub-menu li.last{padding-bottom: 10px;}
-ul.tr-menu > li > ul.sub-menu li.blank{height: 46px; background: transparent;}
+ul.tr-menu > li > ul.sub-menu li.blank{height: 20px; background: url("../images/menu_arrow.png") no-repeat 79px bottom rgba(255,255,255,0.9); background-size: 17px 14px;}
 ul.tr-menu > li:hover > ul.sub-menu{display: block;}
 ul.main-menu2{margin-left: 0; margin-right: 25px;}
 ul.main-menu2 > li{position: relative; padding-top: 2px; height: 50px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
