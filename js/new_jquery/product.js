@@ -21,11 +21,7 @@ jQuery(document).ready(function($){
 //        $(".sec-desc").slideUp('slow');
 //
 //    });
-    $(function(){
-        if($(".readmore").click()){
-            alert('stes');
-        }
-    })
+   
 
 
     function wishList(){
