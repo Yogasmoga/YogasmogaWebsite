@@ -2,6 +2,7 @@ jQuery(document).ready(function($){
     scrollingLink();
     wishList();
     openShoppingCart();
+    readmore();
 
     // image lazy loading
     $(function() {
@@ -11,22 +12,15 @@ jQuery(document).ready(function($){
             threshold : 500
         });
     }); 
-    //click on readmore on product detail page for description
 
-//    $(".readmore").on("click", function(){
-//        $(".dot").css("display","none");
-//        $(".sec-desc").slideDown('slow');
-////alert('tets');
-//    },function(){
-//        $(".sec-desc").slideUp('slow');
-//
-//    });
-    $(function(){
-        if($(".readmore").click()){
-            alert('stes');
-        }
-    })
-
+   function readmore(){
+       $(".readmore").on("click", function(){
+           $(".dot").toggleClass("dnone");
+           $(".sec-desc").toggleClass("dblock");
+           $("#less").toggleClass("dblock");
+           $("#more").toggleClass("dnone");
+       });
+   }
 
     function wishList(){
         var wishlist = $(".wishlist-link");
