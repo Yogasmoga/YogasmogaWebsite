@@ -257,7 +257,7 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
                             <td></td>
                         </tr>
 		        </table>';
-            echo $html;
+            //echo $html;
             /////////////END/////////////////
 
             $abandonedlist1 =  array("cartid"=>$row['entity_id'],"customer_email"=>$row['customer_email'], "customer_firstname"=>$row['customer_firstname'] ,"customer_lastname"=>$row['customer_lastname'],"product_name"=>$tempproductname, "product_color"=>$tempcolor, "product_size"=> $tempsize ,"product_url"=>$producturl,"product_imageurl" => $productimageurl,"product_html"=>$html );
