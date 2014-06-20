@@ -39,7 +39,7 @@
             </abandonedcartreminder>
         </routers>   
     </frontend>
-    <crontab>
+   <!-- <crontab>
         <jobs>
             <Ankitsinghania_Abandonedcartreminder>
                 <schedule>
@@ -50,5 +50,5 @@
                 </run>
             </Ankitsinghania_Abandonedcartreminder>
         </jobs>
-    </crontab>
+    </crontab>-->
 </config>

@@ -298,7 +298,7 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
         );
         $sender  = array(
             'name' => 'YOGASMOGA',
-            'email' => 'ankit@mobikasa.com'
+            'email' => 'hello@yogasmoga.com'
         );
         //echo "<pre>";print_r($email); die('test');
         $email->setDesignConfig(array('area'=>'frontend', 'store'=> Mage::app()->getStore()->getId()))
