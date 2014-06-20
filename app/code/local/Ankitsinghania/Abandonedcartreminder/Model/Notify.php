@@ -192,7 +192,7 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
             $html .='<table cellspacing="10" cellpadding="5">
                         <tr>
                             <td style="text-align: center;">
-                            <a style="width:640px;text-align: center" href="https://yogasmoga.com/customer/account/login/">
+                            <a style="width:640px;text-align: center" href="https://yogasmoga.com/customer/account/login?goto=cart">
                                     <img src="http://yogasmoga.com/media/wysiwyg/email_images/abandoned/btn_checkout.png" alt="YOGASMOGA" style="">
                             </a>
                            </td>
