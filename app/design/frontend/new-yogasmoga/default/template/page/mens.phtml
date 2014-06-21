@@ -1,6 +1,6 @@
 <?php
 /**
- *
+ * 
  * Magento
  *
  * NOTICE OF LICENSE
@@ -83,25 +83,19 @@
        setTimeout(function(){
             jQuery("div.page-overlayy").remove();
             jQuery("body").css('overflow','auto');
-       }, 500);
+       }, 500); 
     });
-</script>
+</script>    
 </head>
 <body class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>" style="margin-right:17px;overflow:hidden;">
 <?php echo $this->getChildHtml('after_body_start') ?>
 <div class="wrapper">
-
-<!-- shopping cart -->
-
-<!-- shopping cart -->
 <div class="page-overlayy" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">&nbsp;</div>
     <?php echo $this->getChildHtml('global_notices') ?>
-    <div class="shopping-cart">
-
-    </div>
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
             <div id="pagecontainer">
+                <!-- WelcomeSection Slider -->
                 <div id="Welcome" class="fullscreenovfhidden flexslider showloading" desc="Welcome to YOGASMOGA" style="border: none;border-radius : none;box-shadow:none;margin:0px;" tw-summary="">
                     <ul class="slides" id="homemainslider">
                         <li>
@@ -125,7 +119,7 @@
                                 <div class="slide-desc" style="">1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nulla lacus, tincidunt vel mi quis come modo elementum diam.</div>
                             </div>
                         </li>
-    					<li>
+                        <li>
                           <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/spring-collection.jpg" alt="PUT A LITTLE SPRING IN YOUR STEP" iwidth="1600" iheight="900" />
 
                             <div class="banner-txt3 promo2310" style="color : #333; left : 5%;">
@@ -133,13 +127,13 @@
                             <tr>
                                 <td>PUT A LITTLE SPRING</td>
                             </tr>
-    						<tr>
+                            <tr>
                                 <td>IN YOUR STEP.</td>
                             </tr>
                             </table>
                             <span style="color: rgb(51, 51, 51); padding-top: 28px ! important; font-size:18px;">NEW COLORS, NEW DESIGNS, NEW STYLES<br />FOR SPRING.</span>
                             <span style="text-transform: none; font-family: gothamlight; font-size: 13px; color: rgb(51, 51, 51); padding-top: 27px ! important;">
-    						Introducing <a style="color: #d90d3d;" href="/our-edge#fabrictechnology">AURUM&trade; Stripe</a> & <a style="color: #d90d3d;" href="/our-edge#fabrictechnology">AURUM&trade; 24</a>  – the most advanced<br /> performance fabrics. Feel the softness and breathability with<br /> advanced moisture management of superior fiber technology.</span>
+                            Introducing <a style="color: #d90d3d;" href="/our-edge#fabrictechnology">AURUM&trade; Stripe</a> & <a style="color: #d90d3d;" href="/our-edge#fabrictechnology">AURUM&trade; 24</a>  – the most advanced<br /> performance fabrics. Feel the softness and breathability with<br /> advanced moisture management of superior fiber technology.</span>
                             <span style="text-align: left; display: inline; float: left; margin-left: 0px ! important; font-size: 13px; padding-top: 42px ! important;" class="banner-txt3-link">
                                 <a href="/women_landing" style="font-family: ITCAvantGardeProMd; color : #333;font-size:15px;">
                                 shop the new SPRING collection <strong style="">&gt;&gt;&gt;</strong>
@@ -153,7 +147,7 @@
                                 <div class="slide-desc" style="">2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nulla lacus, tincidunt vel mi quis come modo elementum diam.</div>
                             </div>
                         </li>
-    					<li>
+                        <li>
                           <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/homepage_RJP1.jpg" alt="THE ULTIMATE YOGA PANT. RUN JUMP 'N PLAY CROP" iwidth="1600" iheight="900" />
 
                             <div class="banner-txt3 promo2310" style="color : #333; left : 5%;">
@@ -161,12 +155,12 @@
                             <tr>
                                 <td>THE ULTIMATE YOGA PANT:</td>
                             </tr>
-    						<tr>
+                            <tr>
                                 <td>RUN JUMP &#39;N PLAY CROP.</td>
                             </tr>
                             </table>
                             <span style="color: rgb(51, 51, 51); padding-top: 28px ! important; font-size:18px;">RUN FASTER. JUMP HIGHER. PLAY HARDER.</span>
-                            <span style="text-transform: none; font-family: gothamlight; font-size: 13px; color: rgb(51, 51, 51); padding-top: 27px ! important;">Whatever your game is, this cropped pant instantly transforms you<br/> into a stunning vision of curves and strength.	</span>
+                            <span style="text-transform: none; font-family: gothamlight; font-size: 13px; color: rgb(51, 51, 51); padding-top: 27px ! important;">Whatever your game is, this cropped pant instantly transforms you<br/> into a stunning vision of curves and strength. </span>
                             <span style="text-align: left; display: inline; float: left; margin-left: 0px ! important; font-size: 13px; padding-top: 42px ! important;" class="banner-txt3-link">
                                 <a href="/women/run-jump-n-play-crop-1288" style="font-family: ITCAvantGardeProMd; color : #333;font-size:15px;">
                                 SHOP run jump ‘n play crop <strong style="">&gt;&gt;&gt;</strong>
@@ -196,6 +190,9 @@
                         </li>
                     </ul>
                 </div>
+                <!-- WelcomeSection Slider -->
+                
+                <!-- ShareSocialMedia Part -->
                 <div class="share-strip">
                     <div class="blk l-align">
                         <ul>
@@ -225,88 +222,155 @@
                         </ul>
                     </div>
                 </div>
+                <!-- ShareSocialMedia Part -->
+                
                 <div class="clear-fix"></div>
-                <div class="fabric-color">
-                    <div class="structure">
-                        <div class="block1">
-                            <img class="full-width" src="<?php echo $this->getSkinUrl('images/homepage/fabric.jpg') ?>" alt="">
-                            <div class="block-text l-align">
-                                <p class="block-head">FABRIC TECHNOLOGY</p>
-                                <p class="block-desc white">CONSIDER<br />THE CLOTHES<br />YOU WEAR</p>
-                                <p class="block-link">
-                                    <a href="<?php echo $this->getBaseUrl();?>ys-tech-new#ys-fabric-tech" class="white">Learn More <span>>>></span></a>
-                                </p>
-                            </div>
-                            <ul class="fabric-qua">
-                                <li>
-                                    <img src="<?php echo $this->getSkinUrl('images/homepage/resistance-icon.png') ?>" alt="PILLING RESISTANCE">
-                                    <p>PILLING-<br />RESISTANCE</p>
-                                </li>
-                                <li>
-                                    <img src="<?php echo $this->getSkinUrl('images/homepage/moisture-icon.png') ?>" alt="MOISTURE MANAGEMENT">
-                                    <p>MOISTURE <br/>MANAGEMENT</p>
-                                </li>
-                                <li>
-                                    <img src="<?php echo $this->getSkinUrl('images/homepage/hq-stretch-icon.png') ?>" alt="HIGH QUALITY STRETCH">
-                                    <p>HIGH QUALITY <br />STRETCH</p>
-                                </li>
-                                <li>
-                                    <img src="<?php echo $this->getSkinUrl('images/homepage/made-in-usa-icon.png') ?>" alt="MADE IN USA">
-                                    <p>MADE IN <br />USA</p>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="block2">
-                            <img class="full-width" src="<?php echo $this->getSkinUrl('images/homepage/ss.png') ?>" alt="">
-                            <div class="block-text l-align">
-                                <p class="block-head">COLOR TECHNOLOGY</p>
-                                <p class="block-desc">WE’LL COLOR<br />YOUR WORLD. COLORS<br />THAT DON’T BLEED.</p>
-                                <p class="block-link">
-                                    <a href="<?php echo $this->getBaseUrl();?>ys-tech-new#ys-color-tech" class="grey">Learn More <span>>>></span></a>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="clear-fix"></div>
-                    </div>
-                    <div class="structure">
-                        <div class="block3" style="font-size:30px;">
-                            <a href="<?php echo $this->getBaseUrl();?>our-story-new#madeinusa">
-                                <img class="full-width" src="<?php echo $this->getSkinUrl('images/homepage/made-in-usa-bg.jpg') ?>" alt="">
-                            </a>
 
-                            <div class="madeinusa-txt">
-                                <div>Design in<span>NYC</span>Made In<span>USA</span></div>
-                            </div>
-                        </div>
-                        <div class="block4">
-                            <img class="full-width" src="<?php echo $this->getSkinUrl('images/homepage/namaskar-foundation.jpg') ?>" alt="">
-                            <div class="block-text l-align">
-                                <p class="block-head">NAMASKAR FOUNDATION</p>
-                                <p class="block-desc">GIVING IS<br />A CORE VALUE.</p>
-                            </div>
-                            <div class="block-text2 l-align">
-                                <?php
-                                $write = Mage::getSingleton('core/resource')->getConnection('core_read');
-                                $result = $write->query("SELECT COUNT(product_id) AS total_product_sold FROM sales_flat_order sfo, sales_flat_order_item sfoi WHERE sfo.status='complete' AND sfo.entity_id=sfoi.order_id AND sfoi.product_id = ".Mage::getModel('core/variable')->loadByCode('namaskar_bracelet_id')->getValue('plain'));
-                                $row = $result->fetch();
+                <!-- ProductListing Part -->
 
-                                if((int)$row['total_product_sold']>0)
-                                {
-                                ?>
-                                    <p class="bracelet-count white"><?php echo $row['total_product_sold']; ?></p>
 
-                                    <span class="white">BRACELETS SOLD</span>
-                                <?php } ?>
-                                <p class="block-link">
-                                    <a href="<?php echo $this->getBaseUrl();?>our-story-new#namaskar" class="white">Learn More <span>>>></span></a>
-                                </p>
+                <div class="new-arrivals-block" style="width:90%; margin:0 auto;">                    
+                    <ul class="new-arrivals">
+                        <?php
+                        //retrieve color
+                        $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                        $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
+                        while ($row = $readresult->fetch() ) {
+                            $clrinfo[$row['Value']] = $row['Attribute'];
+                        }
+
+                        $categoryId = 9;
+                        $i = 0;
+                        $productCollection = Mage::getSingleton('catalog/category')->load($categoryId)->getProductCollection()->addAttributeToSelect('*');
+                        foreach($productCollection as $_product)
+                        {
+                            if($i==4)break;$i++;
+                         ?>
+                            <li>
+                                <a id="<?php echo $_product->getId(); ?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(221, 330)->setQuality(91); ?>" /></a>
+
+
+                                <div class="prd-details">
+                                    <a href = "<?php echo $_product->getProductUrl(); ?>"><span class="prd-name gothambd"><?php echo $_product->getName(); ?></span> </a>
+                                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
+                                    <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2); ?></span>
+                                    <a id="<?php echo $_product->getId(); ?>" href="javascript:void(0)" class="quick-view">
+                                        <img src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" border="0" alt="" />
+                                    </a>
+                                </div>
+                            </li>
+                       <?php
+                        }
+
+                        ?>
+                        <?php /* <li>
+                            <img class="prd-image" src="<?php echo $this->getSkinUrl('images/women/dum1.jpg') ?>" alt="">
+                            <div class="prd-details">
+                                <span class="prd-name gothambd">Product 1</span>
+                                <span class="product-colors gothambk">Color1 / Color2</span>
+                                <span class="prd-price gothambk">$00</span>
+                                <img class="" src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" alt="">
                             </div>
-                        </div>
-                        <div class="clear-fix"></div>
+                        </li>
+                        <li>
+                            <img class="prd-image" src="<?php echo $this->getSkinUrl('images/women/dum2.jpg') ?>" alt="">
+                            <div class="prd-details">
+                                <span class="prd-name gothambd">Product 1</span>
+                                <span class="product-colors gothambk">Color1 / Color2</span>
+                                <span class="prd-price gothambk">$00</span>
+                                <img class="" src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" alt="">
+                            </div>
+                        </li>
+                        <li>
+                            <img class="prd-image" src="<?php echo $this->getSkinUrl('images/women/dum3.jpg') ?>" alt="">
+                            <div class="prd-details">
+                                <span class="prd-name gothambd">Product 1</span>
+                                <span class="product-colors gothambk">Color1 / Color2</span>
+                                <span class="prd-price gothambk">$00</span>
+                                <img class="" src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" alt="">
+                            </div>
+                        </li>
+                        <li>
+                            <img class="prd-image" src="<?php echo $this->getSkinUrl('images/women/dum4.jpg') ?>" alt="">
+                            <div class="prd-details">
+                                <span class="prd-name gothambd">Product 1</span>
+                                <span class="product-colors gothambk">Color1 / Color2</span>
+                                <span class="prd-price gothambk">$00</span>
+                                <img class="" src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" alt="">
+                            </div>
+                        </li> */
+                        ?>
+                        <li class="new-arrivals-desc">
+                            <p class="block-head">NEW ARRIVALS</p>
+                            <p class="block-desc">SPRING IS IN.</p>
+                            <p class="block-link">
+                                <a href="" class="grey">SHOP COLLECTION <strong class="in-bl">>>></strong></a>
+                            </p>
+                        </li>
+                    </ul>                    
+                </div>
+                <div style="display:none;">
+                    <div id="productdetailpopup">
                     </div>
                 </div>
-            </div> <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('dressingUpdate')->toHtml();?>
-            <?php echo $this->getChildHtml('footer'); ?>
+                <!-- ProductListing Part -->
+                
+                <div class="clear-fix"></div>
+
+                <!-- Feature Product -->
+                <div class="clip-bg">
+                    <div class="contWom featured-product">
+                        <div class="ftr-txt">
+                            <h4>FEATURED PRODUCT
+                                <span>THE JACKET WITH A BROOKLYN FLAIR.</span>
+                            </h4>
+
+                            <p>THE LIGHT WEIGHT JACKET OFFERS COOL FEATURES LIKE THE CONTRAST COLOR CUFFS AND COLLAR.</p>
+                            <p>THE DOUBLE ZIPPER HELPS YOU STYLE YOUR BROOKLYN JACKET IN MULTIPLE WAYS.</p>
+
+                            <p class="block-link"><a href="#">SHOP THE BRROKLYN JACKET <strong class="in-bl">&gt;&gt;&gt;</strong></a></p>
+                        </div>
+
+                        <div class="ftr-img">
+                            <img src="<?php echo $this->getSkinUrl('images/women/featuerd-prod.png') ?>" alt="" />
+                        </div>
+                    <div class="clear-fix"></div>
+                    </div>
+                </div>               
+                <!-- Feature Product -->       
+                
+                <div class="clear-fix"></div>
+
+                <!-- Feature Product -->
+                <div class="divider-btm">
+                    <div class="contWom featured-product">
+                        <div class="ftr-txt">
+                            <h4>COLOR STORY
+                                <span>LIME LITE</span>
+                            </h4>
+
+                            <p>VIVAMUS AT NIBH NON IPSUM<br />LUCTUS ADIPISCING.</p>
+
+                            <p class="block-link"><a href="#">SHOP LIME LITE <strong class="in-bl">&gt;&gt;&gt;</strong></a></p>
+                        </div>
+
+                        <div class="ftr-img">
+                            <div class="figCap">
+                                <div class="figure"><img src="<?php echo $this->getSkinUrl('/images/women/dum5.jpg') ?>" alt="" /></div>
+                                <span>mauris vehicula condimentum tortor eu pulvinar. Fusce a vestibulum turpis, non sollicitudin urna. Aenean ut faucibus diam, id posuere lacus. Vestibulum id eleifend libero. Aenean pharetra tincidunt lobortis. Donec vel neque varius, feugiat ligula vel, aliquet sem. Phasellus vel ultrices nisl, vulputate tristique tortor.</span>
+                            </div>
+                            <div class="figCap">
+                                <div class="figure"><img src="<?php echo $this->getSkinUrl('/images/women/dummy-grn-img.jpg') ?>" alt="" /></div>
+                                <span>Vivamus at nibh non ipsum luctus adipiscing. Aenean sit amet purus viverra, porta nunc eu, vestibulum augue. Pellentesque rhoncus molestie venenatis. Etiam bibendum nec orci id placerat. Phasellus quis orci a justo pretium lobortis at vitae dolor. Morbi nisl erat, condimentum a ipsum sit amet, imperdiet vulputate nibh. Donec semper</span>
+                            </div>
+                        </div>
+                    <div class="clear-fix"></div>
+                    </div>
+                </div>             
+                <!-- Feature Product -->
+            
+            </div> 
+            <?php echo $this->getChildHtml('footer'); ?>            
         </div>
         <?php echo $this->getChildHtml('before_body_end'); ?>
     </div>

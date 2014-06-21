@@ -1,14 +1,41 @@
 jQuery(document).ready(function($){
-
     showShoppingBagHtml();
+    openShoppingCart();
+
+
+    // Show/Hide Shopping Cart Container
+    function openShoppingCart(){
+        var shoppingWdth = $(".shopping-cart").width();
+        var bodyHght = $(window).height();
+
+        $(".open-cart").on("click", function(){
+            $(".shopping-cart").css({
+                "height": bodyHght,
+                "display": 'block'
+            }).removeClass("hdnovr");
+            $(".page").css("position", "relative").animate({ left: -shoppingWdth });
+            $(".header-container").animate({ left: -shoppingWdth });
+            $("body").addClass("hdnHgt");
+            return false;
+        });
+    };
+    // window resize
+    $(window).resize(function(){
+        var bodyHght = $(window).height();
+        $(".shopping-cart").css({
+            "height": bodyHght
+        });
+    });
+
     // add bracelet in cart
     var pid = '';
     var colorattributeid = '';
     var sizeattributeid = '';
     $(".addbracelet").live("click",function(){
-        pid = ($(this).parent("li").attr("productid")).trim();
-        colorattributeid = ($(this).parent("li").attr("colorattributeid")).trim();
-        sizeattributeid =  ($(this).parent("li").attr("sizeattributeid")).trim();
+        jQuery(this).html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
+        pid = ($(this).parent("span").parent("li").attr("productid")).trim();
+        colorattributeid = ($(this).parent("span").parent("li").attr("colorattributeid")).trim();
+        sizeattributeid =  ($(this).parent("span").parent("li").attr("sizeattributeid")).trim();
         addbracelettobag(pid,colorattributeid,sizeattributeid );
     });
     // end add bracelet in cart
@@ -16,6 +43,7 @@ jQuery(document).ready(function($){
     // delete product from cart
     $(".close").live("click",function(){
         var deleteproductid = ($(this).parent("li").attr("id")).trim();
+        jQuery(this).parent("li").html("<img style='margin:20px 0;' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
         deleteproduct(deleteproductid);
     });
 
@@ -40,7 +68,7 @@ jQuery(document).ready(function($){
             $("#signing_popup").dialog( "open" );
         }
         if(_islogedinuser)
-        {
+        {   
             applysmogibucks();
 
         }
@@ -49,10 +77,18 @@ jQuery(document).ready(function($){
     $(".removesmogi").live("click",function(){
         removesmogibucks();
     });
+    // reset page to default state
+    $("#continuelink").live("click", function(){
+        $(this).parent(".shopping-cart").addClass("hdnovr");
+        $(".page").animate({ left: '0' }).css("");
+        $(".header-container").animate({ left: "0" });
+        $("body").removeClass("hdnHgt");
+        return false;
+    });
 
-
-
-
+    // $(".addedItem li").find(".close").on("click", function(){
+    //     $(this).parent("li").remove();
+    // });
 });
 
 function showShoppingBagHtml()
@@ -68,18 +104,22 @@ function showShoppingBagHtml()
         url = securehomeUrl + 'mynewtheme/shoppingbag/showshoppingbaghtml';
         checkouturl = securehomeUrl + 'checkout/onepage';
     }
+    jQuery(".shopping-cart").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='margin:50% auto auto;' />");
     jQuery.ajax({url : checkouturl});
     setTimeout(function(){
-        jQuery.ajax({
-            url : url,
-            type : 'POST',
-            //data : {'blockid':blockid},
 
-            success : function(data){
-                data = eval('('+data + ')');
-                //console.log(data.html);
-                // alert(data.html);
-                jQuery(".shopping-cart").html(data.html);
+
+            jQuery.ajax({
+                url : url,
+                type : 'POST',
+                //data : {'blockid':blockid},
+
+                success : function(data){
+                    data = eval('('+data + ')');
+                    //console.log(data.html);
+                   // alert(data.html);
+                    jQuery(".shopping-cart").html(data.html);
+
 
 
             }
@@ -148,13 +188,6 @@ function deleteproduct(deletedproducid)
 
                 if(result.status == 'success')
                 {
-
-                    //jQuery(".shopping-cart").html(result.html);
-
-
-
-
-
                     showShoppingBagHtml();
                     jQuery(".cartitemcount").html(result.count);
 
@@ -167,8 +200,13 @@ function deleteproduct(deletedproducid)
 
 function applysmogibucks()
 {
-    var availablesmogi = (jQuery("#smogi").attr("available")).trim();
+    var availablesmogi = jQuery("#smogi").attr("available");
     var smogivalue = (jQuery("#smogi").attr("value")).trim();
+
+    if(isNaN(smogivalue)) {
+        alert("Enter Valid Number");
+        return false;
+    }
 
     var appliedvalue = jQuery(".smogi span.f-right").attr("usedpoints");
 
@@ -180,6 +218,11 @@ function applysmogibucks()
         {
             smogivalue = parseInt(smogivalue) + parseInt(appliedvalue);
         }
+    }
+
+    if(availablesmogi)
+    {
+        availablesmogi = (jQuery("#smogi").attr("available")).trim();
     }
 
 
