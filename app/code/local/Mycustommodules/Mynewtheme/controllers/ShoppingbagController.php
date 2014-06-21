@@ -815,12 +815,12 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $getsmogipointscurrentlyuserd = $this->getPointsCurrentlyUsed();
             $showedpoints = $getcustomerpoints - $getsmogipointscurrentlyuserd;
             if($showedpoints >= 1)
-                $html .=' <label><input type="text" available="'.$getcustomerpoints.'" name="smogi" id="smogi" value="'.$showedpoints.'" /><span class="applysmogi">+</span></label>';
+                $html .=' <label><input type="text" available="'.$getcustomerpoints.'" name="smogi" id="smogi" value="'.$showedpoints.'" /><span class="applysmogi">+</span><span class="error-count"></span></label>';
             if($showedpoints < 1)
-                $html .=' <label><input type="text" name="smogi" id="smogi" readonly="readonly" value="You have no more available SMOGI Bucks" /><span class="">+</span></label>';
+                $html .=' <label><input type="text" name="smogi" id="smogi" readonly="readonly" value="You have no more available SMOGI Bucks" /><span class="">+</span><span class="error-count"></span></label>';
 
-            $html .='           <label><input type="text" name="promocode" id="promocode" value="Add a promo code " /><span>+</span></label>
-                            <label><input type="text" name="giftcartcode" id="giftcartcode" value="Add a gift card code" /><span>+</span></label>';
+            $html .='           <label><input type="text" name="promocode" id="promocode" value="Add a promo code " /><span>+</span><span class="error-count"></span></label>
+                            <label><input type="text" name="giftcartcode" id="giftcartcode" value="Add a gift card code" /><span>+</span><span class="error-count"></span></label>';
 
         }
         // $html .='           <label><input type="text" name="promocode" id="promocode" value="Add a promo code " /><span>+</span></label>
