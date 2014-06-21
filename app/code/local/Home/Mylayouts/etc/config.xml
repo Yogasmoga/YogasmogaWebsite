@@ -58,6 +58,11 @@
           <template>page/women.phtml</template>
           <layout_handle>women</layout_handle>
         </women>
+        <mens translate="label">
+          <label>Mens</label>
+          <template>page/mens.phtml</template>
+          <layout_handle>mens</layout_handle>
+        </mens>
         <!-- add more layouts here -->
       </layouts>
     </page>

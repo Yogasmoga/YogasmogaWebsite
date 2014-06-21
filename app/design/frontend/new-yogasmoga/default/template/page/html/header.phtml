@@ -298,11 +298,11 @@ if($serverType == 'production')
                     if ($child1->getIsActive()) {
                         //show Main parent categories first level
                         if($child1->getId() == $currentcategoryid)
-                           // echo "<li><a class='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+                            //echo "<li><a class='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
                         echo "<li><a class='menu-heading posRel' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
                         else
                             //echo "<li><a class ='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
-                            echo "<li><a class='menu-heading posRel' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
+                            echo "<li><a class='menu-heading posRel' href='".$this->getBaseUrl()."mens_landing'>".$child1->getName()."</a>";
                         // show sub categories second level
 
 //                        echo '<ul class="sub-menu"><li><ul><li><a href="">What\'s new!</a></li><li><a href="">Shop the colors!</a></li><li><a href="">Top sellers</a></li>
@@ -390,15 +390,15 @@ if($serverType == 'production')
             <div class="right-top-block r-align">
                 <ul class="tr-menu">
                     <li class="free-shipping">Free and fast shipping to US and Canada</li>
-                    <li>
-                        <a href="">Help</a>
-                        <ul class="sub-menu l-align" style="left: -70px;">
+                    <li data-blockid = "help-new">
+                        <a href="<?php echo $this->getBaseUrl();?>help-new#faq">Help</a>
+                        <ul class="sub-menu l-align cms-header-link" style="left: -70px;">
                             <li class="blank"></li>
-                            <li style="padding-top: 16px;"><a href="">Contact Us</a></li>
-                            <li><a href="">FAQ</a></li>
-                            <li><a href="">shipping and returns</a></li>
-                            <li><a href="">size chart</a></li>
-                            <li class="last"><a href="">product care</a></li>
+                            <li style="padding-top: 16px;" data-blockid = "faq"><a href="<?php echo $this->getBaseUrl();?>help-new#faq">FAQ</a></li>
+                            <li data-blockid = "shipping-returns"><a href="<?php echo $this->getBaseUrl();?>help-new#shipping-returns">Shipping and Returns</a></li>
+                            <li data-blockid = "size-chart"><a href="<?php echo $this->getBaseUrl();?>help-new#size-chart">Size Chart</a></li>
+                            <li data-blockid = "product-care"><a href="<?php echo $this->getBaseUrl();?>help-new#product-care">Product Care</a></li>
+                            <li data-blockid = "email-us" class="last"><a href="<?php echo $this->getBaseUrl();?>help-new#email-us">Email Us</a></li>
                         </ul>
                     </li>
                     <li><?php

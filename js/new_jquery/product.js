@@ -104,6 +104,7 @@ jQuery(document).ready(function($){
         var wdth = $(".cntn-scroll").width();
         var nav = $('.scroller_anchor');
         var ftr = $('#sitemap').height();
+        var hdr = $('.header-container').height();
 
         if (nav.length) {
             var contentNav = nav.offset().top;
