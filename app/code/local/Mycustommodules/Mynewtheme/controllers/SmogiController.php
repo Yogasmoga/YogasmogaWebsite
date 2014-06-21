@@ -150,29 +150,40 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
     public function automaticapplysmogibucksAction()
     {
         //activate smogi bucks
-
-        $session = Mage::getSingleton('core/session');
-        $points_value = $this->getCustomerPoints();
-        $points_max = 0;
-        if (Mage::getStoreConfig('rewardpoints/default/max_point_used_order', Mage::app()->getStore()->getId())){
-            if ((int)Mage::getStoreConfig('rewardpoints/default/max_point_used_order', Mage::app()->getStore()->getId()) < $points_value){
-                $points_max = (int)Mage::getStoreConfig('rewardpoints/default/max_point_used_order', Mage::app()->getStore()->getId());
-                $session->addError($this->__('You tried to use %s loyalty points, but you can use a maximum of %s points per shopping cart.', $points_value, $points_max));
-                $points_value = $points_max;
+        $response = array(
+            "status" => "error",
+            "error"  => "",
+            "success_message" => ""
+        );
+            try{
+            $session = Mage::getSingleton('core/session');
+            $points_value = $this->getCustomerPoints();
+            $points_max = 0;
+            if (Mage::getStoreConfig('rewardpoints/default/max_point_used_order', Mage::app()->getStore()->getId())){
+                if ((int)Mage::getStoreConfig('rewardpoints/default/max_point_used_order', Mage::app()->getStore()->getId()) < $points_value){
+                    $points_max = (int)Mage::getStoreConfig('rewardpoints/default/max_point_used_order', Mage::app()->getStore()->getId());
+                    $session->addError($this->__('You tried to use %s loyalty points, but you can use a maximum of %s points per shopping cart.', $points_value, $points_max));
+                    $points_value = $points_max;
+                }
             }
-        }
-        $quote_id = Mage::helper('checkout/cart')->getCart()->getQuote()->getId();
+            $quote_id = Mage::helper('checkout/cart')->getCart()->getQuote()->getId();
 
-        Mage::getSingleton('rewardpoints/session')->setProductChecked(0);
-        Mage::getSingleton('rewardpoints/session')->setShippingChecked(0);
+            Mage::getSingleton('rewardpoints/session')->setProductChecked(0);
+            Mage::getSingleton('rewardpoints/session')->setShippingChecked(0);
 
-        Mage::helper('rewardpoints/event')->setCreditPoints($points_value);
+            Mage::helper('rewardpoints/event')->setCreditPoints($points_value);
 
 
-        Mage::helper('checkout/cart')->getCart()->getQuote()
-            ->setRewardpointsQuantity($points_value)
-            ->save();
+            Mage::helper('checkout/cart')->getCart()->getQuote()
+                ->setRewardpointsQuantity($points_value)
+                ->save();
+            $response['status'] = "success";
 
+        }catch (Exception $e){
+                $response['status'] = "error";
+                echo json_encode($response);
+                return;
+            }
         //deactivate gift card
 
         Mage::getSingleton('giftcards/session')->setActive('0');
@@ -180,8 +191,14 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
             Mage::getSingleton('checkout/cart')->getQuote()->getShippingAddress()->setCollectShippingRates(true);
             Mage::getSingleton('checkout/cart')->getQuote()->collectTotals()->save();
         } catch (Exception $e) {
-            //$this->_getSession()->addError($e->getMessage());
+            $response['status'] = "error";
+            echo json_encode($response);
+            return;
+
         }
+        $response['status'] = "success";
+        echo json_encode($response);
+        return;
 
     }
 

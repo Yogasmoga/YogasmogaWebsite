@@ -62,23 +62,29 @@ function showShoppingBagHtml()
     else
         _usesecureurl = false;
     var url = homeUrl + 'mynewtheme/shoppingbag/showshoppingbaghtml';
+    var checkouturl = homeUrl + 'checkout/onepage';
     if(_usesecureurl)
+    {
         url = securehomeUrl + 'mynewtheme/shoppingbag/showshoppingbaghtml';
+        checkouturl = securehomeUrl + 'checkout/onepage';
+    }
+    jQuery.ajax({url : checkouturl});
+    setTimeout(function(){
+        jQuery.ajax({
+            url : url,
+            type : 'POST',
+            //data : {'blockid':blockid},
 
-    jQuery.ajax({
-        url : url,
-        type : 'POST',
-        //data : {'blockid':blockid},
-
-        success : function(data){
-            data = eval('('+data + ')');
-            //console.log(data.html);
-           // alert(data.html);
-            jQuery(".shopping-cart").html(data.html);
+            success : function(data){
+                data = eval('('+data + ')');
+                //console.log(data.html);
+                // alert(data.html);
+                jQuery(".shopping-cart").html(data.html);
 
 
-        }
-    });
+            }
+        });
+    },100);
 }
 
 function addbracelettobag(pid,colorattributeid,sizeattributeid )
@@ -143,7 +149,13 @@ function deleteproduct(deletedproducid)
                 if(result.status == 'success')
                 {
 
-                    jQuery(".shopping-cart").html(result.html);
+                    //jQuery(".shopping-cart").html(result.html);
+
+
+
+
+
+                    showShoppingBagHtml();
                     jQuery(".cartitemcount").html(result.count);
 
                 }
@@ -233,6 +245,36 @@ function removesmogibucks()
             else
             {
                 alert('there is some error while removing smogi bucks');
+            }
+
+        }
+    });
+}
+
+function automaticapplysmogibucks()
+{
+    if(window.location.href.indexOf('https://') >= 0)
+        _usesecureurl = true;
+    else
+        _usesecureurl = false;
+    var url = homeUrl + 'mynewtheme/smogi/automaticapplysmogibucks';
+    if(_usesecureurl)
+        url = securehomeUrl + 'mynewtheme/smogi/automaticapplysmogibucks';
+    jQuery.ajax({
+        url : url,
+        type : 'POST',
+        // data : {'points_to_be_used':smogivalue},
+
+        success : function(data){
+            data = eval('('+data + ')');
+
+            if(data.status == "success")
+            {
+                showShoppingBagHtml();
+            }
+            else
+            {
+                alert('there is some error while apply auto smogi bucks');
             }
 
         }

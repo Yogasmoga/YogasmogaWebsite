@@ -148,7 +148,9 @@ function loginCustomer()
                 if(_isClickShoppingbagSignin)
                 {
                     _isClickShoppingbagSignin = false;
-                    showShoppingBagHtml();// call showShoppingBagHtml() declared in shoppingbag.js whick is responsible for load shopping bag html
+                    automaticapplysmogibucks(); // automatically apply smogi bucks in the shopping cart
+                    //showShoppingBagHtml();// call showShoppingBagHtml() declared in shoppingbag.js whick is responsible for load shopping bag html
+
                 }
                 if(_isClickApplySmogiBucks)
                 {
@@ -158,7 +160,8 @@ function loginCustomer()
                 if(_isClickSmogiLogin)
                 {
                     _isClickSmogiLogin = false;
-                    showShoppingBagHtml(); //call showShoppingBagHtml to load customer cart after login via smogi login button
+                    automaticapplysmogibucks(); // automatically apply smogi bucks in the shopping cart
+                    //showShoppingBagHtml(); //call showShoppingBagHtml to load customer cart after login via smogi login button
                 }
 
             }

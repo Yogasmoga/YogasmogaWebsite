@@ -615,6 +615,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
     public function deleteAction()
     {
+
         $id = (int) $this->getRequest()->getParam('id');
         if ($id) {
             try {
@@ -627,13 +628,47 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 return;
             }
         }
+        // check for whick type of promotion code is apply in the cart (this is because of to fix grand total in cart)
+        $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+        $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
+        $grandtotal = $totals["grand_total"]->getValue();
+       /*
+        if($grandtotal<0)
+        {
+            if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+            {
+                // check for Gift of YS
+            }
+            if(Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
+            {
+                if(Mage::getModel('smogiexpirationnotifier/applyremovediscount')->removesmogibucks())
+                {
+                    Mage::getSingleton('checkout/session')->getQuote()->setTotalsCollectedFlag(false)->collectTotals();
+//                    $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+//                    $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
+//                    $grandtotal = $totals["grand_total"]->getValue();
+//                    echo $grandtotal;
+//                    return;
+                    Mage::getModel('smogiexpirationnotifier/applyremovediscount')->automaticapplysmogibucks();
+                }
+            }
 
+            if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
+            {
+
+            }
+
+        }
+       */
+
+        echo json_encode(array("status" => "success", "count" => $this->getcartcount()));
+        return;
         echo json_encode(array("status" => "success","html" => $this->createshoppingbaghtml(), "count" => $this->getcartcount()));
     }
 
     protected function createshoppingbaghtml()
     {
-
+        Mage::getSingleton('checkout/session')->getQuote()->setTotalsCollectedFlag(false)->collectTotals();
         $html = '';
         $jshtml = '';
         $itemcount = $this->getcartcount();
