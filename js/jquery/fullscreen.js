@@ -34,7 +34,7 @@ function setfullscreenheight()
     //jQuery("div.fullscreenovfhidden").css('height', (_winH) + 'px');
     jQuery("div.fullscreenovfhidden").each(function(){       
             
-            jQuery(this).css('height', (_winH - 71) + 'px');        
+            jQuery(this).css('height', (_winH - 100) + 'px');        
     });
     var specialheight = false;
     jQuery.each(jQuery(".fullscreen"), function(){

@@ -46,7 +46,7 @@ jQuery(document).ready(function($){
         function sliderHeight()
         {
             //Height of th header bar and the share strip
-            var nwinHeight = $(".share-strip").height() + 50 + 80;
+            var nwinHeight = $(".share-strip").height() + 50 + 110;
             //Height of window
             var winHeight = $(window).height();
             //calculation for the height of the slider

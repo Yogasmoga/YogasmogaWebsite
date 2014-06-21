@@ -2,6 +2,7 @@ jQuery(document).ready(function($){
     scrollingLink();
     wishList();
     openShoppingCart();
+    readmore();
 
     // image lazy loading
     $(function() {
@@ -11,18 +12,15 @@ jQuery(document).ready(function($){
             threshold : 500
         });
     }); 
-    //click on readmore on product detail page for description
 
-//    $(".readmore").on("click", function(){
-//        $(".dot").css("display","none");
-//        $(".sec-desc").slideDown('slow');
-////alert('tets');
-//    },function(){
-//        $(".sec-desc").slideUp('slow');
-//
-//    });
-   
-
+   function readmore(){
+       $(".readmore").on("click", function(){
+           $(".dot").toggleClass("dnone");
+           $(".sec-desc").toggleClass("dblock");
+           $("#less").toggleClass("dblock");
+           $("#more").toggleClass("dnone");
+       });
+   }
 
     function wishList(){
         var wishlist = $(".wishlist-link");
@@ -114,7 +112,7 @@ jQuery(document).ready(function($){
                     // Change the CSS of the scroller to hilight it and fix it at the top of the screen.
                     $('.cntn-scroll').css({
                         'position': 'fixed',
-                        'bottom': ftr
+                        'top': '0'
                     });
                     
                     // this is container div class
