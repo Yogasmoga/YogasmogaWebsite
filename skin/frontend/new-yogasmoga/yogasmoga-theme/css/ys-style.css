@@ -649,4 +649,5 @@ div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{font: 13px
     margin: 2px 0 0 10px;
     text-align: center;
     width: 104px;
+    text-transform: uppercase;
 }
