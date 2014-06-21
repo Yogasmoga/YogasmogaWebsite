@@ -639,7 +639,15 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $itemcount = $this->getcartcount();
         if($itemcount < 1)
         {
-            $html = "<h1>Your cart is Empty.</h1>";
+            $html = '
+                <!-- ContinueShoppingBtn -->
+                    <div class="cont-full capstxt">
+                    <a href="javascript:void(0);" id="continuelink" class="continuelink f-left grn">Continue Shopping</a>
+                    <span class="continuelink f-right">Continue</span>
+                    </div>
+                <!-- ContinueShoppingBtn -->
+                <div class="empty-cart">your cart is empty.</div>
+            ';
 
             return $html;
         }
@@ -799,7 +807,9 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         <form>';
         $customerId = Mage::getModel('customer/session')->getCustomerId();
         if(!$customerId)
-             $html .=' <label><input type="text" name="smogi" available="0" id="smogi" value="You must be signed in to use SMOGI Bucks" readonly="readonly"/><span  class="smogi-login">+</span></label>';
+             $html .=' <label><input type="text" name="smogi" class="gry" available="0" id="smogi" value="You must be signed in to use SMOGI Bucks" readonly="readonly"/><span  class="smogi-login">+</span></label>
+                        <label><input type="text" name="promocode" class="gry" id="promocode" value="You must be signed in to add a promo code " readonly="readonly" /><span>+</span></label>
+                        <label><input type="text" name="giftcartcode" class="gry" id="giftcartcode" value="You must be signed in to add a gift card code" readonly="readonly" /><span>+</span></label>';
         else{
             $getcustomerpoints = $this->getCustomerPoints($customerId);
             $getsmogipointscurrentlyuserd = $this->getPointsCurrentlyUsed();
@@ -807,11 +817,14 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             if($showedpoints >= 1)
                 $html .=' <label><input type="text" available="'.$getcustomerpoints.'" name="smogi" id="smogi" value="'.$showedpoints.'" /><span class="applysmogi">+</span></label>';
             if($showedpoints < 1)
-                $html .=' <label><input type="text" name="smogi" id="smogi" readonly="readonly" value="You have no more available SMOGI Bucks" /><span class="applysmogi">+</span></label>';
+                $html .=' <label><input type="text" name="smogi" id="smogi" readonly="readonly" value="You have no more available SMOGI Bucks" /><span class="">+</span></label>';
+
+            $html .='           <label><input type="text" name="promocode" id="promocode" value="Add a promo code " /><span>+</span></label>
+                            <label><input type="text" name="giftcartcode" id="giftcartcode" value="Add a gift card code" /><span>+</span></label>';
 
         }
-        $html .='           <label><input type="text" name="promocode" id="promocode" value="Add a promo code " /><span>+</span></label>
-                            <label><input type="text" name="giftcartcode" id="giftcartcode" value="Add a gift card code" /><span>+</span></label>';
+        // $html .='           <label><input type="text" name="promocode" id="promocode" value="Add a promo code " /><span>+</span></label>
+        //                     <label><input type="text" name="giftcartcode" id="giftcartcode" value="Add a gift card code" /><span>+</span></label>';
         if(!$customerId)
             $html .= '<a class="shoppingbag-login" href="#login" >Sign-in or Register here</a>';
         $html .='                </form>
@@ -1165,7 +1178,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
 
-                $html .= '<select class="qtyselector">';
+                $html .= '<span style="width: auto;"><select class="qtyselector">';
 
                 for($i = 1; $i < 11; $i++)
                 {
@@ -1174,7 +1187,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
                 }
 
-                $html .= '</select><button class="addbracelet">Add to bag</button>
+                $html .= '</select><button class="addbracelet">Add to bag</button></span>
                                 </li>';
 
 

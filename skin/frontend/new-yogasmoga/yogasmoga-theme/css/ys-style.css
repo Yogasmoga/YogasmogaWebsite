@@ -1,6 +1,6 @@
 /* Layout ================================================================================ */
 .wrapper { min-width:100%;  margin:0 auto;}
-.page {display:block;}
+.page {display:block; background: #fff; z-index: 2; position: relative;}
 .page-print { background:#fff; padding:25px 30px; text-align:left; }
 .page-empty { background:#fff; padding:0px; text-align:left; }
 .page-popup { background:#fff; padding:25px 30px; text-align:left; }
@@ -407,22 +407,23 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .menu-bar.cntn-scroll.f-left.l-align {width: 270px;}
 
 /** ShoppingCart **/
-.shopping-cart{background: #eeefef; color: #58595b;  overflow: auto; position: fixed; right: 0; width: 27%; display: none; font: 14px gothambook; text-transform: capitalize;;}
+.shopping-cart{background: #eeefef; color: #58595b;  overflow: auto; position: fixed; right: 0; width: 400px; display: none; z-index: 1; font: 13px gothambook; text-transform: capitalize;;}
 .continuelink{background: url("../images/shopping-cart/gry-btn.png") no-repeat top left; margin: 0; padding: 16px 5px; width: 45%; display: inline-block; font: 12px gothambold;}
 .continuelink.grn{background-image: url("../images/shopping-cart/grn-btn.png"); color: #fff;}
-.cont-full{margin: 0 0 30px; padding: 20px;}
-.totalAmnt{border-bottom: 1px solid #dbdbdb; padding: 0 0 20px; margin: 0 0 20px; font-size: 18px; width: 100%; float: left;}
+.cont-full{margin: 0 0 20px; padding: 20px;}
+.totalAmnt{border-bottom: 1px solid #dbdbdb; padding: 0 0 10px; margin: 0 0 10px; font-size: 16px; width: 100%; float: left;}
 .cont-full li, .cont-full > ul{display: inline-block; width: 100%;}
-.cont-full > ul{margin: 0 0 30px;}
+.cont-full > ul{margin: 0 0 20px;}
 .cont-full li{padding: 5px 0;}
 .capstxt{text-transform: uppercase;}
 .strip-gry{background: #999; color: #fff; font-style: italic; text-transform: none; margin: 10px 0 0; text-align: center; padding: 10px; clear: both;}
 
 .adddields {clear: both; float: left; width: 100%; margin: 0 0 15px;}
 .adddields > form {display: block;}
-.adddields label {float: left; width: 100%;}
-.adddields input {background: #fff; text-transform: capitalize; border: 0 none; display: block; float: left; font: italic 14px gothambook; height: 25px; margin: 0 0 10px; padding: 5px 12px; width: 84%;}
-.adddields span {background: 0 #eeefef; border: 1px solid #B3B3B3; float: left; height: 12px; padding: 8px 4px 14px; width: 6%;}
+.adddields label {float: left; min-height: 40px; width: 100%;}
+.adddields input {background: #fff; text-transform: capitalize; border: 0 none; display: block; float: left; font: italic 12px gothambook; height: 20px; margin: 0; padding: 5px 12px; width: 84%;}
+.adddields input.gry{background: #B3B3B3; cursor: default; color: #fff;}
+.adddields span {background: 0 #eeefef; border: 1px solid #B3B3B3; float: left; height: auto; padding: 7px 4px 6px; width: 6%;}
 .addedItem {background: #fff; float: right; width: 99.5%;}
 .addedItem .similarProdList {font-size: 11px; width: 90%; text-transform: uppercase;}
 .addedItem .similarProdList > li {border-bottom: 1px solid #E6E6E6; margin: 0; padding: 10px 0; position: relative;}
@@ -430,7 +431,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .addedItem .similarProdList span {width: 40%;}
 .addedItem .similarProdList span:nth-child(2) {width: 55%;}
 .capsnone{text-transform: none !important;}
-.amnt, .quantity{margin: 0 0 10px !important;}
+.amnt, .quantity{margin: 0 0 6px !important;}
 .addedItem .similarProdList span span:nth-child(2), .addedItem .similarProdList span span {display: block; text-align: left; width: 100%;}
 .addedItem .similarProdList span span.pname{font-weight: bold;}
 .addedItem .close{background: url("../images/shopping-cart/close.gif"); width: 12px; height: 13px; position: absolute; top: 15px; right: 0;}
@@ -611,3 +612,41 @@ div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{font: 13px
 .sendmail{background: url("../images/send-mailbtn.jpg") no-repeat top left; float: right; width: 148px; height: 43px;}
 .clear:before, .clear:after {content: " "; display: table;}
 .clear:after {clear: both;}
+
+/** ShoppingBag **/
+.empty-cart{display: inline-block; font: 16px gothamlight; margin: 30px auto; text-transform: uppercase;}
+.error-count {
+    clear: both;
+    color: #ff0000;
+    display: none;
+    float: left;
+    font: 11px gothambook;
+    margin: 5px 0;
+    text-align: left;
+    text-transform: uppercase;
+}
+.shoppingbag-login {
+    color: #d90d3d;
+    font-style: italic;
+    text-decoration: underline;
+}
+.hdnHgt{overflow: hidden !important; height: auto;}
+.hdnovr{overflow: hidden;}
+.namaskarinfo select {
+    border: 1px solid #b4b4b4;
+    float: left;
+    height: 24px;
+    margin: 2px 0 10px;
+    padding: 4px 2px;
+}
+
+.namaskarinfo button {
+    background: url("../images/add-braceletbtn.jpg") no-repeat top left;
+    border: 0 none;
+    color: #fff;
+    font: 10px gothambold;
+    height: 26px;
+    margin: 2px 0 0 10px;
+    text-align: center;
+    width: 104px;
+}
