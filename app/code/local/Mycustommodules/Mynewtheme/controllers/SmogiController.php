@@ -73,13 +73,13 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
         );
 
         $point_details = $this->getPointsInfo();
-        echo '<pre>';print_r($point_details);
+        //echo '<pre>';print_r($point_details);
         $session = Mage::getSingleton('core/session');
         $points_value = $this->getRequest()->getParam('points_to_be_used');
         // check if required points are greater than customer points
         if($points_value > $point_details['customer_points'])
         {
-            $response['error'] = "Insufficient Points. Maximum points is".$point_details['customer_points'];
+            $response['error'] = "Insufficient Points. Maximum points is ".$point_details['customer_points'];
             echo json_encode($response);
             return;
         }

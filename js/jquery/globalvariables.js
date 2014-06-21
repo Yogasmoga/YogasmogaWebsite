@@ -63,3 +63,6 @@ var _isClickShareWithFriends = false;  // check if click on share with friends
 var _flagForShareFriends = false;
 var _quickViewObjectPage = {}; // object variable to store quick view popup html
 var _isClickAddtowishlist = false; // check user click on add to wish list because without login user can not add to wishlist
+var _isClickShoppingbagSignin = false; // check user click on sign in via shopping bag
+var _isClickApplySmogiBucks = false;
+var _isClickSmogiLogin = false;
