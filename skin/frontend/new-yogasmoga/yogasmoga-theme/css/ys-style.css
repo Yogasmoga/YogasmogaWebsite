@@ -601,9 +601,13 @@ div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{font: 13px
 .prd-txt h4{color:#58595b; font-size: 13px; line-height: 23px; text-align: center; text-transform: uppercase; margin-bottom: 40px;}
 
 /** emailUs **/
-.emailBox{background: #efefef; margin: auto; width: 70%; padding: 20px;}
+.emailBox{background: #efefef; margin: auto; width: auto; min-width: 80%; max-width: 960px; padding: 20px;}
 .emailBox > input, .emailBox > textarea{background: #fff; border: 0 none; width: 97%; padding: 10px; font: 13px gothambook; text-transform: capitalize; display: inline-block; margin-bottom: 10px; color: #58595b;}
-.gap{border-bottom: 2px solid #f7f7f7; margin: 40px 0; display: block; clear: both;}
-
-
-
+.gap{border-bottom: 2px solid #f7f7f7; margin: 20px 0; display: block; clear: both;}
+.emailBox > label{display: block; margin: 0 0 15px;}
+.sendmail, .choosefile{cursor: pointer;}
+.choosefile{background: url("../images/choosebtn.jpg") no-repeat top left; float: left; width: 147px; height: 44px;}
+.filepath{float: left; margin: 0 0 0 20px; width: 30%;}
+.sendmail{background: url("../images/send-mailbtn.jpg") no-repeat top left; float: right; width: 148px; height: 43px;}
+.clear:before, .clear:after {content: " "; display: table;}
+.clear:after {clear: both;}
