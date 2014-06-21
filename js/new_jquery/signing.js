@@ -137,6 +137,7 @@ function loginCustomer()
                     jQuery("#welcome-name").html("Hi "+name);
                 if(_isClickShareWithFriends)
                 {
+                    //_isClickShareWithFriends = false;
                     jQuery("#invite_friends").dialog( "open" );
                 }
                 //check for _isClickAddtowishlist and trigger wishlist link automatically
@@ -144,7 +145,21 @@ function loginCustomer()
                 {
                     jQuery(".wishlist-link a").trigger('click');
                 }
-
+                if(_isClickShoppingbagSignin)
+                {
+                    _isClickShoppingbagSignin = false;
+                    showShoppingBagHtml();// call showShoppingBagHtml() declared in shoppingbag.js whick is responsible for load shopping bag html
+                }
+                if(_isClickApplySmogiBucks)
+                {
+                    _isClickApplySmogiBucks = false;
+                    applysmogibucks();// call applysmogibucks() declared in shoppingbag.js
+                }
+                if(_isClickSmogiLogin)
+                {
+                    _isClickSmogiLogin = false;
+                    showShoppingBagHtml(); //call showShoppingBagHtml to load customer cart after login via smogi login button
+                }
 
             }
             else
