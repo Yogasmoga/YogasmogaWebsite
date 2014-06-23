@@ -829,9 +829,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         </li>';
         }
         // all conditions for apply coupon code (promotion code)
-        //$customerId = Mage::getModel('customer/session')->getCustomerId();
-       // if($customerId)
-            // Mage::getModel('smogiexpirationnotifier/applyremovediscount')->applycouponcode(1);
+
+
         $promotioncode = Mage::getModel('smogiexpirationnotifier/applyremovediscount')->getCouponCode();
         if($promotioncode)
         {

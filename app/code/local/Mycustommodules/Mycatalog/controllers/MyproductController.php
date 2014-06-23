@@ -2976,6 +2976,9 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
                     }
                     //Mage::getModel('smogiexpirationnotifier/applyremovediscount')->automaticapplysmogibucks();//smogi auto apply
+                    $promotioncode = Mage::getModel('smogiexpirationnotifier/applyremovediscount')->getCouponCode();
+                    if($promotioncode)
+                        Mage::getModel('smogiexpirationnotifier/applyremovediscount')->applycouponcode(1,null);
                     $response['fname'] =  $session->getCustomer()->getFirstname();
                     $response['status'] = "success";
                     echo json_encode($response);
@@ -3039,6 +3042,12 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         }
     }
 
+    public  function removepromoAction()
+    {
+        $promotioncode = Mage::getModel('smogiexpirationnotifier/applyremovediscount')->getCouponCode();
+        if($promotioncode)
+            Mage::getModel('smogiexpirationnotifier/applyremovediscount')->applycouponcode(1,null);
+    }
     
 }
 ?>
