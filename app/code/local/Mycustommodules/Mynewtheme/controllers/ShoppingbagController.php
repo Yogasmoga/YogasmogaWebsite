@@ -829,6 +829,9 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         </li>';
         }
         // all conditions for apply coupon code (promotion code)
+        //$customerId = Mage::getModel('customer/session')->getCustomerId();
+       // if($customerId)
+            // Mage::getModel('smogiexpirationnotifier/applyremovediscount')->applycouponcode(1);
         $promotioncode = Mage::getModel('smogiexpirationnotifier/applyremovediscount')->getCouponCode();
         if($promotioncode)
         {
@@ -893,6 +896,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         <label><input type="text" name="promocode" class="gry" id="promocode" value="You must be signed in to add a promo code " readonly="readonly" /><span class="promo-login">+</span></label>
                         <label><input type="text" name="giftcartcode" class="gry" id="giftcartcode" value="You must be signed in to add a gift card code" readonly="readonly" /><span class="giftcardlogin">+</span></label>';
         else{
+
+
             $getcustomerpoints = $this->getCustomerPoints($customerId);
             $getsmogipointscurrentlyuserd = $this->getPointsCurrentlyUsed();
             $showedpoints = $getcustomerpoints - $getsmogipointscurrentlyuserd;
