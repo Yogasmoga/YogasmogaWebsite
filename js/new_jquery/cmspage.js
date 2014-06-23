@@ -36,7 +36,12 @@ jQuery(document).ready(function($){
         // check for login hash value for shot login form
         if(blockid == 'login')
         {
-            $("#signing_popup").dialog( "open" );
+            if(!_islogedinuser)
+            {
+                _isClickSmogiLogin = true;
+                $("#signing_popup").dialog( "open" );
+            }
+
         }
 
         $(".side-menu-bar2 ul li").each(function(){

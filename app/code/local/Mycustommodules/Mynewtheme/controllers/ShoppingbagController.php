@@ -829,9 +829,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         </li>';
         }
         // all conditions for apply coupon code (promotion code)
-        //$customerId = Mage::getModel('customer/session')->getCustomerId();
-       // if($customerId)
-            // Mage::getModel('smogiexpirationnotifier/applyremovediscount')->applycouponcode(1);
+
+
         $promotioncode = Mage::getModel('smogiexpirationnotifier/applyremovediscount')->getCouponCode();
         if($promotioncode)
         {
@@ -903,7 +902,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $showedpoints = $getcustomerpoints - $getsmogipointscurrentlyuserd;
             if($showedpoints >= 1)
                 $html .=' <label><input type="text" available="'.$getcustomerpoints.'" name="smogi" id="smogi" value="'.$showedpoints.'" /><span class="applysmogi">+</span><span class="error-count"></span></label>';
-            if($showedpoints < 1) 
+            if($showedpoints < 1)
                 $html .=' <label><input type="text" name="smogi" id="smogi" readonly="readonly" value="You have no more available SMOGI Bucks" /><span class="">+</span><span class="error-count"></span></label>';
 
             // check if promotion code is used or not

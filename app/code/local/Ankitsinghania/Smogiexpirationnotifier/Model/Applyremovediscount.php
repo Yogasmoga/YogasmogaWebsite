@@ -135,7 +135,7 @@ class Ankitsinghania_Smogiexpirationnotifier_Model_Applyremovediscount extends M
     }
 
 
-    public function applycouponcode($remove = null, $couponCode = null )
+    public function applycouponcode($remove = '', $couponCode = '' )
     {
         /**
          * No reason continue with empty shopping cart
@@ -171,6 +171,7 @@ class Ankitsinghania_Smogiexpirationnotifier_Model_Applyremovediscount extends M
         if (!strlen($couponCode) && !strlen($oldCouponCode)) {
 //            $response['errors'] = "No Coupon code applied";
 //            echo json_encode($response);
+            echo 'no coupon and no oldcoupon';
             return "No Coupon code applied";
         }
 
@@ -199,7 +200,8 @@ class Ankitsinghania_Smogiexpirationnotifier_Model_Applyremovediscount extends M
                     return "Promo code is not valid";
                 }
             } else {
-                $this->_getSession()->addSuccess($this->__('Coupon code was canceled.'));
+                //$this->_getSession()->addSuccess($this->__('Coupon code was canceled.'));
+                //echo 'empty set';
 //                $response['status'] = "success";
 //                $response['success_message'] = "Promo code remove successfully.";
 //                echo json_encode($response);
