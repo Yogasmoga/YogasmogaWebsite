@@ -655,3 +655,10 @@ div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{font: 13px
     width: 104px;
     text-transform: uppercase;
 }
+.removesmogi {
+    color: #d90d3d;
+    cursor: pointer;
+    float: left;
+    font-size: 11px;
+    margin: 1px 0 0 4px;
+}
