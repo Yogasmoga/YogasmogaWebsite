@@ -554,7 +554,7 @@ function applygiftcardcode()
             }
             else
             {
-                alert(data.errors);
+                alert(data.error);
             }
         }
     });

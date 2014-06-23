@@ -829,6 +829,56 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         </li>';
         }
 
+        // all conditions for apply coupon code (promotion code)
+        //$customerId = Mage::getModel('customer/session')->getCustomerId();
+       // if($customerId)
+            // Mage::getModel('smogiexpirationnotifier/applyremovediscount')->applycouponcode(1);
+        $promotioncode = Mage::getModel('smogiexpirationnotifier/applyremovediscount')->getCouponCode();
+        if($promotioncode)
+        {
+            if(isset($totals['discount'])){
+                $discount = round($totals['discount']->getValue()); //Discount value if applied
+            }
+            $oCoupon = Mage::getModel('salesrule/coupon')->load($promotioncode, 'code');
+            $oRule = Mage::getModel('salesrule/rule')->load($oCoupon->getRuleId());
+            $coupondetails = $oRule->getData();
+            $coupondetails['discount_amount'] = number_format((float)$coupondetails['discount_amount'], 2, '.','');
+            if($coupondetails['simple_action'] == 'by_fixed')
+            {
+
+            }
+            if($coupondetails['simple_action'] == '')
+            {
+
+            }
+            if($coupondetails['simple_action'] == '')
+            {
+
+            }
+            if($coupondetails['simple_action'] == '')
+            {
+
+            }
+
+            $html .='<li class="promotion">
+                            <span class="f-left capstxt">'.$promotioncode.' promo  used  </span>
+                            <span class="removepromotion"><a>remove</a></span>
+                            <span class="f-right" usedpromotion ="'.$discount.'">-$'.$coupondetails['discount_amount'].'</span>
+                        </li>';
+
+
+        }
+        // all conditions for apply Gift of YS
+        if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+        {
+            $giftofysbalance = Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId());
+
+            $html .='<li class="giftcard">
+                            <span class="f-left capstxt">Gift of YS used  </span>
+                            <span class="removegiftcart"><a>remove</a></span>
+                            <span class="f-right" usedgiftcard ="'.$giftofysbalance.'">-$'.$giftofysbalance.'</span>
+                        </li>';
+        }
 
                  $html .=  '<li>
                             <span class="f-left">Shipping: FREE</span>
@@ -846,6 +896,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         <label><input type="text" name="promocode" class="gry" id="promocode" value="You must be signed in to add a promo code " readonly="readonly" /><span>+</span></label>
                         <label><input type="text" name="giftcartcode" class="gry" id="giftcartcode" value="You must be signed in to add a gift card code" readonly="readonly" /><span>+</span></label>';
         else{
+
+
             $getcustomerpoints = $this->getCustomerPoints($customerId);
             $getsmogipointscurrentlyuserd = $this->getPointsCurrentlyUsed();
             $showedpoints = $getcustomerpoints - $getsmogipointscurrentlyuserd;

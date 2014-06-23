@@ -111,4 +111,117 @@ class Ankitsinghania_Smogiexpirationnotifier_Model_Applyremovediscount extends M
         return Mage::getSingleton('checkout/cart')->getQuote()->getCouponCode();
     }
 
+    // code for remove all promotion code when login
+
+    protected function _getCart()
+    {
+        return Mage::getSingleton('checkout/cart');
+    }
+
+    protected function _getSession()
+    {
+        return Mage::getSingleton('checkout/session');
+    }
+
+    protected function _getQuote()
+    {
+        return $this->_getCart()->getQuote();
+    }
+
+    function getCartItemCount()
+    {
+        return $this->_getCart()->getQuote()->getItemsCount();
+
+    }
+
+
+    public function applycouponcode($remove = null, $couponCode = null )
+    {
+        /**
+         * No reason continue with empty shopping cart
+         */
+        $response = array(
+            "status" => 'error',
+            "errors" => '',
+            "success_message" => ""
+        );
+        $errors = array();
+
+        if (!$this->getCartItemCount()) {
+//            $response['errors'] = "Your cart is empty";
+//            echo json_encode($response);
+            return "Your cart is empty";
+        }
+
+        //$couponCode = (string) $this->getRequest()->getParam('coupon_code');
+        //$remove = (string) $this->getRequest()->getParam('remove');
+        $couponCode = (string) $couponCode;
+        $remove = (string) $remove;
+        if(!strlen($couponCode) && !strlen($remove) )
+        {
+//            $response['errors'] = "Promo code can't be empty";
+//            echo json_encode($response);
+            return "Promo code can't be empty";
+        }
+        if ($remove == 1) {
+            $couponCode = '';
+        }
+        $oldCouponCode = $this->_getQuote()->getCouponCode();
+
+        if (!strlen($couponCode) && !strlen($oldCouponCode)) {
+//            $response['errors'] = "No Coupon code applied";
+//            echo json_encode($response);
+            return "No Coupon code applied";
+        }
+
+        try {
+            $this->_getQuote()->getShippingAddress()->setCollectShippingRates(true);
+            $this->_getQuote()->setCouponCode(strlen($couponCode) ? $couponCode : '')
+                ->collectTotals()
+                ->save();
+
+            if (strlen($couponCode)) {
+                if ($couponCode == $this->_getQuote()->getCouponCode()) {
+                    $this->_getSession()->addSuccess(
+                        $this->__('Coupon code "%s" was applied.', Mage::helper('core')->htmlEscape($couponCode))
+                    );
+//                    $response['success_message'] = "Coupon code".$couponCode."was applied Successfully";
+//                    $response['status'] = "success";
+//                    echo json_encode($response);
+                    return "Coupon code".$couponCode."was applied Successfully";
+                }
+                else {
+                    $this->_getSession()->addError(
+                        $this->__('cpnerror-msgCoupon code "%s" is not valid.', Mage::helper('core')->htmlEscape($couponCode))
+                    );
+//                    $response['errors'] = "Promo code is not valid";
+//                    echo json_encode($response);
+                    return "Promo code is not valid";
+                }
+            } else {
+                $this->_getSession()->addSuccess($this->__('Coupon code was canceled.'));
+//                $response['status'] = "success";
+//                $response['success_message'] = "Promo code remove successfully.";
+//                echo json_encode($response);
+                return "Promo code remove successfully.";
+            }
+
+        } catch (Mage_Core_Exception $e) {
+            $this->_getSession()->addError("cpnerror-msg".$e->getMessage());
+//            $response['errors'] = "Cannot apply the Promo code.";
+//            echo json_encode($response);
+            return "Cannot apply the Promo code.";
+        } catch (Exception $e) {
+            $this->_getSession()->addError($this->__('cpnerror-msgCannot apply the coupon code.'));
+            Mage::logException($e);
+//            $response['errors'] = "Cannot apply the Promo code.";
+//            echo json_encode($response);
+            return "Cannot apply the Promo code.";
+        }
+
+        //$this->_goBack();
+    }
+
+
+
 }
