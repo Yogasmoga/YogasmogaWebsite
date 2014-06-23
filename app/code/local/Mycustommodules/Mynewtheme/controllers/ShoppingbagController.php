@@ -828,7 +828,6 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                             <span class="f-right" usedpoints ="'.$getsmogipointscurrentlyuserd.'">-$'.$getsmogipointscurrentlyuserd.'</span>
                         </li>';
         }
-
         // all conditions for apply coupon code (promotion code)
         //$customerId = Mage::getModel('customer/session')->getCustomerId();
        // if($customerId)
@@ -863,7 +862,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $html .='<li class="promotion">
                             <span class="f-left capstxt">'.$promotioncode.' promo  used  </span>
                             <span class="removepromotion"><a>remove</a></span>
-                            <span class="f-right" usedpromotion ="'.$discount.'">-$'.$coupondetails['discount_amount'].'</span>
+                            <span class="f-right" usedpromotion ="'.$discount.'">-$'.$discount.'</span>
                         </li>';
 
 
@@ -874,11 +873,12 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $giftofysbalance = Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId());
 
             $html .='<li class="giftcard">
-                            <span class="f-left capstxt">Gift of YS used  </span>
+                            <span class="f-left capstxt">Gift of YS used  |</span>
                             <span class="removegiftcart"><a>remove</a></span>
                             <span class="f-right" usedgiftcard ="'.$giftofysbalance.'">-$'.$giftofysbalance.'</span>
                         </li>';
         }
+
 
                  $html .=  '<li>
                             <span class="f-left">Shipping: FREE</span>
@@ -893,8 +893,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $customerId = Mage::getModel('customer/session')->getCustomerId();
         if(!$customerId)
              $html .=' <label><input type="text" name="smogi" class="gry" available="0" id="smogi" value="You must be signed in to use SMOGI Bucks" readonly="readonly"/><span  class="smogi-login">+</span></label>
-                        <label><input type="text" name="promocode" class="gry" id="promocode" value="You must be signed in to add a promo code " readonly="readonly" /><span>+</span></label>
-                        <label><input type="text" name="giftcartcode" class="gry" id="giftcartcode" value="You must be signed in to add a gift card code" readonly="readonly" /><span>+</span></label>';
+                        <label><input type="text" name="promocode" class="gry" id="promocode" value="You must be signed in to add a promo code " readonly="readonly" /><span class="promo-login">+</span></label>
+                        <label><input type="text" name="giftcartcode" class="gry" id="giftcartcode" value="You must be signed in to add a gift card code" readonly="readonly" /><span class="giftcardlogin">+</span></label>';
         else{
 
 
@@ -903,11 +903,50 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $showedpoints = $getcustomerpoints - $getsmogipointscurrentlyuserd;
             if($showedpoints >= 1)
                 $html .=' <label><input type="text" available="'.$getcustomerpoints.'" name="smogi" id="smogi" value="'.$showedpoints.'" /><span class="applysmogi">+</span><span class="error-count"></span></label>';
-            if($showedpoints < 1) 
+            if($showedpoints < 1)
                 $html .=' <label><input type="text" name="smogi" id="smogi" readonly="readonly" value="You have no more available SMOGI Bucks" /><span class="">+</span><span class="error-count"></span></label>';
 
-            $html .='           <label><input type="text" name="promocode" id="promocode" value="Add a promo code " /><span>+</span><span class="error-count"></span></label>
-                            <label><input type="text" name="giftcartcode" id="giftcartcode" value="Add a gift card code" /><span>+</span><span class="error-count"></span></label>';
+            // check if promotion code is used or not
+            if($promotioncode)
+            {
+                $html .='           <label><input type="text" name="promocode" id="promocode" value="'.$promotioncode.' promo  used " readonly="readonly" class="gry" /><span class="">+</span><span class="error-count"></span></label>';
+            }
+            else
+            {
+                $html .='           <label><input type="text" name="promocode" id="promocode" value="Add a promo code " /><span class="applypromo">+</span><span class="error-count"></span></label>';
+            }
+
+            // check for Gift of YS
+
+                $giftofysbalance = Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId());
+                $giftofysbalance = number_format((float)$giftofysbalance, 2, '.','');
+                if($giftofysbalance > 0)
+                {
+                    $html .='  <label><input type="text" name="giftcartcode" id="giftcartcode" value="Add a gift card code" /><span class="applygiftcard">+</span><span class="error-count"></span></label>';
+                    if(Mage::getSingleton("giftcards/session")->getActive() == "1")
+                    {
+                        $html .=  '<label> <input type="checkbox" value="1" checked="checked" class="giftcardcheckbox" /><p>Use your Gift Card balance: $'.$giftofysbalance.' available.</p></label>
+                    ';
+
+                    }
+                    else
+                    {
+                        $html .=  '<label style="min-height: inherit;"> <input type="checkbox" value="1"  class="giftcardcheckbox" /><p>Use your Gift Card balance: $'.$giftofysbalance.' available.</p></label> ';
+                    }
+                }
+
+
+
+                else
+                {
+                    $html .=' <label><input type="text" name="giftcartcode" id="giftcartcode" value="Add a gift card code" /><span class="applygiftcard">+</span><span class="error-count"></span></label>
+
+                    ';
+                }
+
+
+
+
 
         }
         // $html .='           <label><input type="text" name="promocode" id="promocode" value="Add a promo code " /><span>+</span></label>
@@ -915,6 +954,15 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         if(!$customerId)
             $html .= '<a class="shoppingbag-login" href="#login" >Sign-in or Register here</a>';
         $html .='                </form>
+
+
+                    <!-- errorDiv -->
+                    <div class="bagerror clear" style="display:none">
+                        <p> Gift of YS code, SMOGI Bucks and Promotion Code cannot be combined.</p>
+                        <p>Please use one and continue checkout.</p>
+                    </div>
+                    <!-- errorDiv -->
+
                     </div>
                     <!-- addItem Input -->
                 </div>

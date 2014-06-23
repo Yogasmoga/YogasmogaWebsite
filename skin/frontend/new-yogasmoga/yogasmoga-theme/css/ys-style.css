@@ -655,10 +655,30 @@ div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{font: 13px
     width: 104px;
     text-transform: uppercase;
 }
-.removesmogi {
-    color: #d90d3d;
+.removesmogi, .removegiftcart {
     cursor: pointer;
     float: left;
     font-size: 11px;
     margin: 1px 0 0 4px;
+}
+.removesmogi a, .removegiftcart a{
+    color: #d90d3d;
+}
+.bagerror {
+    clear: both;
+    color: #d90d3d;
+    font-size: 11px;
+    line-height: 15px;
+    text-align: center;
+}
+.adddields .giftcardcheckbox {
+    height: auto;
+    margin: 0 7px 0 0;
+    padding: 0;
+    width: auto;
+}
+.adddields p {
+    color: #d90d3d;
+    font: 11px gothambook;
+    text-transform: uppercase;
 }

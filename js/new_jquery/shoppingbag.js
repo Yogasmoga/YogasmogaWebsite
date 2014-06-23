@@ -2,6 +2,7 @@ jQuery(document).ready(function($){
     showShoppingBagHtml();
     openShoppingCart();
     inputFocus();
+    //checkAppliedPromotion();
 
 
     // Show/Hide Shopping Cart Container
@@ -20,7 +21,7 @@ jQuery(document).ready(function($){
             return false;
         });
     };
-    //check string 
+    //check shopping bag input focus/blur 
     function inputFocus(){
         $("#giftcartcode").live("focus", function () {
              if ($(this).val() == "Add a gift card code") {
@@ -66,6 +67,9 @@ jQuery(document).ready(function($){
          });
 
     }
+    // check applied promotion get alert
+    // function checkAppliedPromotion(){
+    // }
     // window resize
     $(window).resize(function(){
         var bodyHght = $(window).height();
@@ -127,9 +131,16 @@ jQuery(document).ready(function($){
         }
     });
     // remove smogi bucks from cart
-    $(".removesmogi").live("click",function(){
+    $(document).on("click", ".removesmogi", function(){
         $(this).html("<img style='height: 12px' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
+        alert("working");
         removesmogibucks();
+    });
+    // remove gift card from cart
+    $(".removegiftcart").live("click",function(){
+        $(this).html("<img style='height: 12px' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
+        _isClickRemoveGiftYS = 0;
+        redeemgiftcardcode();
     });
     /* =========== END  code for all events in shopping for appy smogi bucks in the cart  =========*/
 
@@ -143,19 +154,41 @@ jQuery(document).ready(function($){
 
     });
     $(".applypromo").live("click",function(){
-        if(!_islogedinuser)
-        {
-            //_isClickApplySmogiBucks = true;
-            $("#signing_popup").dialog( "open" );
-        }
-        if(_islogedinuser)
-        {
-            applypromocode();
 
+        var setSmogiBucks = jQuery(".smogi span.f-right").attr("usedpoints");
+        var setGiftCard = jQuery(".giftcard span.f-right").attr("usedgiftcard");
+        
+
+        if(setSmogiBucks){
+            $(".bagerror").slideDown();
+            setTimeout(function(){
+                $(".bagerror").slideUp("slow");
+            }, 3000);
+        }
+        
+        if(setGiftCard){
+            $(".bagerror").slideDown();
+            setTimeout(function(){
+                $(".bagerror").slideUp("slow");
+            }, 3000);
+        }
+        
+        else{
+            if(!_islogedinuser)
+            {
+            //_isClickApplySmogiBucks = true;
+                $("#signing_popup").dialog( "open" );
+            }
+
+            if(_islogedinuser)
+            {
+                applypromocode();
+            }
         }
 
     });
     $(".removepromotion").live("click",function(){
+        $(this).html("<img style='height: 12px' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
         removepromocode();
     });
 
@@ -475,11 +508,13 @@ function applypromocode()
 
                 if(data.status == "success")
                 {
+                    jQuery('.applypromo').html("<img style='height: 12px' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
                     _showShoppingbagLoader = false;
                     showShoppingBagHtml();
                 }
                 else
-                {
+                {   
+                    jQuery('.applypromo').html("+");
                     alert(data.errors);
                 }
 
@@ -561,7 +596,21 @@ function applygiftcardcode()
 }
 function redeemgiftcardcode()
 {
-    var redeemvalue = jQuery(".giftcardcheckbox").val();
+
+    var redeemvalue = '';
+
+    if(_isClickRemoveGiftYS == 0){
+        alert(redeemvalue);
+        redeemvalue = 0;
+    }else{
+        if(jQuery(".giftcardcheckbox").is(":checked")){
+            redeemvalue = 1;
+        }else{
+            redeemvalue = 0;alert(redeemvalue);
+        }
+    }
+
+    alert(redeemvalue);
 
     if(window.location.href.indexOf('https://') >= 0)
         _usesecureurl = true;

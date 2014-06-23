@@ -68,3 +68,4 @@ var _isClickApplySmogiBucks = false;
 var _isClickSmogiLogin = false;
 var _showShoppingbagLoader = true;
 var _isClickSigninMenu = false; // check if user click on sign in from the drop down menu
+var _isClickRemoveGiftYS = 1; // check if user click gift ys
