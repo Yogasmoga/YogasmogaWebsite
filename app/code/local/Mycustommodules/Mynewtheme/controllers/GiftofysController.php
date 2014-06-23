@@ -84,6 +84,7 @@ class MyCustommodules_Mynewtheme_GiftofysController extends Mage_Core_Controller
             $this->_getSession()->addError($e->getMessage());
             $response['error'] = "There has been an error to apply Gift of YS.";
         }
+        echo json_encode($response);
         return;
     }
 }

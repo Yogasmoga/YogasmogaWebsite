@@ -1,5 +1,5 @@
 <?php
-class Mycustommodules_Mynewtheme_CommonController extends Mage_Core_Controller_Front_Action
+class Mycustommodules_Mynewtheme_PromotionController extends Mage_Core_Controller_Front_Action
 {
     public function testAction()
     {
@@ -47,6 +47,13 @@ class Mycustommodules_Mynewtheme_CommonController extends Mage_Core_Controller_F
         }
 
         $couponCode = (string) $this->getRequest()->getParam('coupon_code');
+        $remove = (string) $this->getRequest()->getParam('remove');
+        if(!strlen($couponCode) && !strlen($remove) )
+        {
+            $response['errors'] = "Promo code can't be empty";
+            echo json_encode($response);
+            return;
+        }
         if ($this->getRequest()->getParam('remove') == 1) {
             $couponCode = '';
         }
@@ -78,26 +85,27 @@ class Mycustommodules_Mynewtheme_CommonController extends Mage_Core_Controller_F
                     $this->_getSession()->addError(
                         $this->__('cpnerror-msgCoupon code "%s" is not valid.', Mage::helper('core')->htmlEscape($couponCode))
                     );
-                    $response['errors'] = "Coupon code is not valid";
+                    $response['errors'] = "Promo code is not valid";
                     echo json_encode($response);
                     return;
                 }
             } else {
                 $this->_getSession()->addSuccess($this->__('Coupon code was canceled.'));
-                $response['errors'] = "Coupon code was canceled.";
+                $response['status'] = "success";
+                $response['success_message'] = "Promo code remove successfully.";
                 echo json_encode($response);
                 return;
             }
 
         } catch (Mage_Core_Exception $e) {
             $this->_getSession()->addError("cpnerror-msg".$e->getMessage());
-            $response['errors'] = "Cannot apply the coupon code.";
+            $response['errors'] = "Cannot apply the Promo code.";
             echo json_encode($response);
             return;
         } catch (Exception $e) {
             $this->_getSession()->addError($this->__('cpnerror-msgCannot apply the coupon code.'));
             Mage::logException($e);
-            $response['errors'] = "Cannot apply the coupon code.";
+            $response['errors'] = "Cannot apply the Promo code.";
             echo json_encode($response);
             return;
         }

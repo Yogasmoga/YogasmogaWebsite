@@ -106,4 +106,9 @@ class Ankitsinghania_Smogiexpirationnotifier_Model_Applyremovediscount extends M
         return $this->points_current;
     }
 
+    public function  getCouponCode()
+    {
+        return Mage::getSingleton('checkout/cart')->getQuote()->getCouponCode();
+    }
+
 }

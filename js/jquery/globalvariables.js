@@ -66,3 +66,5 @@ var _isClickAddtowishlist = false; // check user click on add to wish list becau
 var _isClickShoppingbagSignin = false; // check user click on sign in via shopping bag
 var _isClickApplySmogiBucks = false;
 var _isClickSmogiLogin = false;
+var _showShoppingbagLoader = true;
+var _isClickSigninMenu = false; // check if user click on sign in from the drop down menu

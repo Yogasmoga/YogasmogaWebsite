@@ -84,6 +84,36 @@ function createCustomerAccount()
                     },4000);                    
                 }
 
+                //check for _isClickAddtowishlist and trigger wishlist link automatically
+                if(_isClickAddtowishlist)
+                {
+                    jQuery(".wishlist-link a").trigger('click');
+                }
+                if(_isClickSigninMenu)
+                {
+                    automaticapplysmogibucks();
+                }
+
+                if(_isClickShoppingbagSignin)
+                {
+                    _isClickShoppingbagSignin = false;
+                    automaticapplysmogibucks(); // automatically apply smogi bucks in the shopping cart
+                    //showShoppingBagHtml();// call showShoppingBagHtml() declared in shoppingbag.js whick is responsible for load shopping bag html
+
+                }
+                if(_isClickApplySmogiBucks)
+                {
+                    _isClickApplySmogiBucks = false;
+                    applysmogibucks();// call applysmogibucks() declared in shoppingbag.js
+                }
+                if(_isClickSmogiLogin)
+                {
+                    _isClickSmogiLogin = false;
+                    automaticapplysmogibucks(); // automatically apply smogi bucks in the shopping cart
+                    //showShoppingBagHtml(); //call showShoppingBagHtml to load customer cart after login via smogi login button
+                }
+
+
 
             }
             else
@@ -135,6 +165,7 @@ function loginCustomer()
                 _islogedinuser = true;
                 if(name != '')
                     jQuery("#welcome-name").html("Hi "+name);
+
                 if(_isClickShareWithFriends)
                 {
                     //_isClickShareWithFriends = false;
@@ -145,6 +176,11 @@ function loginCustomer()
                 {
                     jQuery(".wishlist-link a").trigger('click');
                 }
+                if(_isClickSigninMenu)
+                {
+                    automaticapplysmogibucks();
+                }
+
                 if(_isClickShoppingbagSignin)
                 {
                     _isClickShoppingbagSignin = false;

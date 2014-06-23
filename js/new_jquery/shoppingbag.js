@@ -26,6 +26,11 @@ jQuery(document).ready(function($){
             "height": bodyHght
         });
     });
+    /* ===========  code for all events in shopping for appy smogi bucks in the cart  =========*/
+    // check if user click on sign in from the drop down menu
+    $("#signin").live("click",function(){
+        _isClickSigninMenu = true;
+    });
 
     // add bracelet in cart
     var pid = '';
@@ -77,6 +82,61 @@ jQuery(document).ready(function($){
     $(".removesmogi").live("click",function(){
         removesmogibucks();
     });
+    /* =========== END  code for all events in shopping for appy smogi bucks in the cart  =========*/
+
+
+
+    /* ===========  code for all events in shopping for appy Promotion code  in the cart  =========*/
+
+    $(".promo-login").live("click",function(){
+        _isClickSmogiLogin = true;
+        $("#signing_popup").dialog( "open" );
+
+    });
+    $(".applypromo").live("click",function(){
+        if(!_islogedinuser)
+        {
+            //_isClickApplySmogiBucks = true;
+            $("#signing_popup").dialog( "open" );
+        }
+        if(_islogedinuser)
+        {
+            applypromocode();
+
+        }
+
+    });
+    $(".removepromotion").live("click",function(){
+        removepromocode();
+    });
+
+    /* ===========  END code for all events in shopping for appy Promotion code  in the cart  =========*/
+
+    /* ===========  code for all events in shopping for appy Gift of YS   in the cart  =========*/
+
+    $(".giftcardlogin").live("click",function(){
+        _isClickSmogiLogin = true;
+        $("#signing_popup").dialog( "open" );
+
+    });
+    $(".applygiftcard").live("click",function(){
+        if(!_islogedinuser)
+        {
+           // _isClickApplySmogiBucks = true;
+            $("#signing_popup").dialog( "open" );
+        }
+        if(_islogedinuser)
+        {
+            applygiftcardcode();
+
+        }
+
+    });
+    $(".giftcardcheckbox").live("click",function(){
+        redeemgiftcardcode();
+    });
+
+    /* ===========  END code for all events in shopping for appy Gift of YS   in the cart  =========*/
     // reset page to default state
     $("#continuelink").live("click", function(){
         $(this).parent(".shopping-cart").addClass("hdnovr");
@@ -104,7 +164,15 @@ function showShoppingBagHtml()
         url = securehomeUrl + 'mynewtheme/shoppingbag/showshoppingbaghtml';
         checkouturl = securehomeUrl + 'checkout/onepage';
     }
-    jQuery(".shopping-cart").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='margin:50% auto auto;' />");
+    // check if user click on sign in from drop down menu
+    if(_isClickSigninMenu == true)
+    {
+        _showShoppingbagLoader = true;
+        _isClickSigninMenu = false;
+    }
+
+    if(_showShoppingbagLoader)
+        jQuery(".shopping-cart").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='margin:50% auto auto;' />");
     jQuery.ajax({url : checkouturl});
     setTimeout(function(){
 
@@ -188,6 +256,7 @@ function deleteproduct(deletedproducid)
 
                 if(result.status == 'success')
                 {
+                    _showShoppingbagLoader = false;
                     showShoppingBagHtml();
                     jQuery(".cartitemcount").html(result.count);
 
@@ -246,6 +315,7 @@ function applysmogibucks()
 
                 if(data.status == "success")
                 {
+                    _showShoppingbagLoader = false;
                     showShoppingBagHtml();
                 }
                 else
@@ -283,6 +353,7 @@ function removesmogibucks()
 
             if(data.status == "success")
             {
+                _showShoppingbagLoader = false;
                 showShoppingBagHtml();
             }
             else
@@ -313,6 +384,7 @@ function automaticapplysmogibucks()
 
             if(data.status == "success")
             {
+                _showShoppingbagLoader = false;
                 showShoppingBagHtml();
             }
             else
@@ -320,6 +392,146 @@ function automaticapplysmogibucks()
                 alert('there is some error while apply auto smogi bucks');
             }
 
+        }
+    });
+}
+
+function applypromocode()
+{
+
+    var promocode = (jQuery("#promocode").attr("value")).trim();
+
+        if(window.location.href.indexOf('https://') >= 0)
+            _usesecureurl = true;
+        else
+            _usesecureurl = false;
+        var url = homeUrl + 'mynewtheme/promotion/applycouponcode';
+        if(_usesecureurl)
+            url = securehomeUrl + 'mynewtheme/promotion/applycouponcode';
+
+        jQuery.ajax({
+            url : url,
+            type : 'POST',
+            data : {'coupon_code':promocode},
+
+            success : function(data){
+                data = eval('('+data + ')');
+
+                if(data.status == "success")
+                {
+                    _showShoppingbagLoader = false;
+                    showShoppingBagHtml();
+                }
+                else
+                {
+                    alert(data.errors);
+                }
+
+
+
+            }
+        });
+
+
+
+}
+
+function removepromocode()
+{
+    var promocode = (jQuery("#promocode").attr("value")).trim();
+
+    if(window.location.href.indexOf('https://') >= 0)
+        _usesecureurl = true;
+    else
+        _usesecureurl = false;
+    var url = homeUrl + 'mynewtheme/promotion/applycouponcode';
+    if(_usesecureurl)
+        url = securehomeUrl + 'mynewtheme/promotion/applycouponcode';
+
+    jQuery.ajax({
+        url : url,
+        type : 'POST',
+        data : {'remove':'1'},
+
+        success : function(data){
+            data = eval('('+data + ')');
+
+            if(data.status == "success")
+            {
+                _showShoppingbagLoader = false;
+                showShoppingBagHtml();
+            }
+            else
+            {
+                alert(data.errors);
+            }
+        }
+    });
+
+
+}
+
+function applygiftcardcode()
+{
+    var giftcardcode = (jQuery("#giftcartcode").attr("value")).trim();
+
+    if(window.location.href.indexOf('https://') >= 0)
+        _usesecureurl = true;
+    else
+        _usesecureurl = false;
+    var url = homeUrl + 'mynewtheme/giftofys/applyGiftCard';
+    if(_usesecureurl)
+        url = securehomeUrl + 'mynewtheme/giftofys/applyGiftCard';
+
+    jQuery.ajax({
+        url : url,
+        type : 'POST',
+        data : {'giftcard_code':giftcardcode},
+
+        success : function(data){
+            data = eval('('+data + ')');
+
+            if(data.status == "success")
+            {
+                _showShoppingbagLoader = false;
+                showShoppingBagHtml();
+            }
+            else
+            {
+                alert(data.errors);
+            }
+        }
+    });
+}
+function redeemgiftcardcode()
+{
+    var redeemvalue = jQuery(".giftcardcheckbox").val();
+
+    if(window.location.href.indexOf('https://') >= 0)
+        _usesecureurl = true;
+    else
+        _usesecureurl = false;
+    var url = homeUrl + 'mynewtheme/giftofys/giftcardactive';
+    if(_usesecureurl)
+        url = securehomeUrl + 'mynewtheme/giftofys/giftcardactive';
+
+    jQuery.ajax({
+        url : url,
+        type : 'POST',
+        data : {'giftcard_use':redeemvalue},
+
+        success : function(data){
+            data = eval('('+data + ')');
+
+            if(data.status == "success")
+            {
+                _showShoppingbagLoader = false;
+                showShoppingBagHtml();
+            }
+            else
+            {
+                alert(data.errors);
+            }
         }
     });
 }

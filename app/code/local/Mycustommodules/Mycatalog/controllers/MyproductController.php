@@ -2975,6 +2975,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $this->_welcomeCustomer($session->getCustomer(), true);
 
                     }
+                    //Mage::getModel('smogiexpirationnotifier/applyremovediscount')->automaticapplysmogibucks();//smogi auto apply
                     $response['fname'] =  $session->getCustomer()->getFirstname();
                     $response['status'] = "success";
                     echo json_encode($response);
