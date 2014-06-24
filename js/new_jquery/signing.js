@@ -178,6 +178,7 @@ function loginCustomer()
                 }
                 if(_isClickSigninMenu)
                 {
+
                     automaticapplysmogibucks();
                 }
 

@@ -557,7 +557,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
     {
         $html = $this->createshoppingbaghtml();
 
-        echo json_encode(array("status" => "success","html" => $html));
+        echo json_encode(array("status" => "success","html" => $html,"count" => $this->getcartcount()));
     }
     protected function _getSession()
     {
@@ -870,11 +870,15 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
         {
             $giftofysbalance = Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId());
+            $discount = $totals['discount']->getValue();
+            $discount = ($discount * -1.00);
+            $discount =  number_format((float)$discount, 2, '.','');  //Discount value if applied
+
 
             $html .='<li class="giftcard">
                             <span class="f-left capstxt">Gift of YS used  |</span>
                             <span class="removegiftcart"><a>remove</a></span>
-                            <span class="f-right" usedgiftcard ="'.$giftofysbalance.'">-$'.$giftofysbalance.'</span>
+                            <span class="f-right" usedgiftcard ="'.$discount.'">-$'.$discount.'</span>
                         </li>';
         }
 

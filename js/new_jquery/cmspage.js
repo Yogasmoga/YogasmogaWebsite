@@ -38,7 +38,7 @@ jQuery(document).ready(function($){
         {
             if(!_islogedinuser)
             {
-                _isClickSmogiLogin = true;
+                _isClickSigninMenu = true;
                 $("#signing_popup").dialog( "open" );
             }
 

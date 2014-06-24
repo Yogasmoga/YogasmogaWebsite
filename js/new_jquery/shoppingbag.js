@@ -247,6 +247,7 @@ function showShoppingBagHtml()
         checkouturl = securehomeUrl + 'checkout/onepage';
     }
     // check if user click on sign in from drop down menu
+
     if(_isClickSigninMenu == true)
     {
         _showShoppingbagLoader = true;
@@ -269,6 +270,7 @@ function showShoppingBagHtml()
                     //console.log(data.html);
                    // alert(data.html);
                     jQuery(".shopping-cart").html(data.html);
+                    jQuery(".cartitemcount").html(data.count);
 
 
 
@@ -475,6 +477,7 @@ function automaticapplysmogibucks()
             {
                 _showShoppingbagLoader = false;
                 showShoppingBagHtml();
+
             }
             else
             {
@@ -600,17 +603,16 @@ function redeemgiftcardcode()
     var redeemvalue = '';
 
     if(_isClickRemoveGiftYS == 0){
-        alert(redeemvalue);
         redeemvalue = 0;
     }else{
         if(jQuery(".giftcardcheckbox").is(":checked")){
             redeemvalue = 1;
         }else{
-            redeemvalue = 0;alert(redeemvalue);
+            redeemvalue = 0;
         }
     }
 
-    alert(redeemvalue);
+
 
     if(window.location.href.indexOf('https://') >= 0)
         _usesecureurl = true;
@@ -635,7 +637,7 @@ function redeemgiftcardcode()
             }
             else
             {
-                alert(data.errors);
+                alert(data.error);
             }
         }
     });
