@@ -77,8 +77,8 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
             $productsizearray[$allOptions[$i]['label']] = $allOptions[$i]['value'];
         }
 
-        $sdate= date('Y-m-d', strtotime('-2 days', strtotime(date('Y-m-d')))).' 00:00:00';
-        $edate= date('Y-m-d', strtotime('-2 days', strtotime(date('Y-m-d')))).' 23:59:59';
+        $sdate= date('Y-m-d', strtotime('-1 days', strtotime(date('Y-m-d')))).' 00:00:00';
+        $edate= date('Y-m-d', strtotime('-1 days', strtotime(date('Y-m-d')))).' 23:59:59';
         $readresult=$write->query("SELECT sales_flat_quote.entity_id,customer_email , customer_firstname, customer_lastname ,GROUP_CONCAT(product_id) as product_id
   FROM sales_flat_quote, sales_flat_quote_item WHERE is_active = 1 AND customer_email IS NOT NULL
     AND items_count > 0 AND (SELECT is_active FROM customer_entity ce WHERE ce.entity_id = customer_id) = 1 AND sales_flat_quote_item.quote_id=sales_flat_quote.entity_id AND sales_flat_quote_item.product_type IN ('simple','giftcards')
@@ -293,7 +293,8 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
         $template_id = $mail_collection->getFirstItem()->getTemplate_id();
 
         $recipient = array(
-            'email' => $recipient_email,
+            'email' => 'neha@mobikasa.com',
+//            'email' => $recipient_email,
             'name'  => $recipient_fistname
         );
         $sender  = array(
