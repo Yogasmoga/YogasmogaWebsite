@@ -795,3 +795,13 @@ div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{font: 13px
     font: 11px gothambook;
     text-transform: uppercase;
 }
+.zindexH{
+ background: transparent;
+ z-index: 9999;
+ position: absolute;
+ left: 0;
+ width: 100%;
+ height: 200px;
+ display:none;
+ top: 219px;
+}
