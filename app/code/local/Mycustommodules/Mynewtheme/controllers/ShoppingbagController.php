@@ -800,7 +800,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
     <!-- ContinueShoppingBtn -->
     <div class="cont-full capstxt">
         <a href="javascript:void(0);" id="continuelink" class="continuelink f-left">Continue Shopping</a>
-        <a href="<?php echo $this->getBaseUrl();?>checkout_new" class="continuelink f-right grn">Continue</a>
+        <a href="'.Mage::getBaseUrl().'checkout/onepage" id="continuecheckout" class="continuelink f-right grn">Continue</a>
     </div>
     <!-- ContinueShoppingBtn -->
     <!-- productOption -->

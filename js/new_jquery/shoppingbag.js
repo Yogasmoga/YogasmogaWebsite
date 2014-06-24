@@ -246,6 +246,20 @@ jQuery(document).ready(function($){
     // $(".addedItem li").find(".close").on("click", function(){
     //     $(this).parent("li").remove();
     // });
+
+    // check when click on continue checkout button on top of shopping bag
+    $(document).on("click", ".continuecheckout", function(event){
+
+        if(!_islogedinuser)
+        {
+            event.preventDefault();
+            _isClickContinueNotLogedin = true;
+            _isClickSigninMenu = true;
+            $("#signing_popup").dialog( "open" );
+        }
+
+
+    });
 });
 
 function showShoppingBagHtml()
@@ -262,7 +276,7 @@ function showShoppingBagHtml()
         checkouturl = securehomeUrl + 'checkout/onepage';
     }
     // check if user click on sign in from drop down menu
-
+//    alert(_isClickSigninMenu);
     if(_isClickSigninMenu == true)
     {
         _showShoppingbagLoader = true;
