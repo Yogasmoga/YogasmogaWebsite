@@ -22,10 +22,12 @@
 .checkoutcontinuebtn
 {
     background-image: url("../images/checkout/continue_off.png");
-    height: 29px;
-    margin-top: 40px;
-    width: 147px;
-    background-position : center 0;
+    background-position: center 0;
+    height: 46px;
+    margin: auto;
+    width: 304px;
+    border: 0 none;
+    outline: 0 none;
 }
 td.checkoutstepsholder
 {
@@ -35,32 +37,33 @@ td.checkoutstepsholder
 }
 #tblcheckoutsteps
 {
-    margin-left : auto;
+/*    margin-left : auto;
     margin-right : auto;
 	margin-bottom:70px;
     width : 755px;
     max-width : 755px;
     text-align : left;
-    position: relative;
+    position: relative;*/
 }
 #tblcheckoutsteps select
 {
-    max-width: 533px;   
+    display: none;
+/*    max-width: 533px;  */ 
 }
 #tblcheckoutsteps input[type='submit']
 {
-    float : right;
+/*    float : right;
     margin-right : 0;
-    margin-top : 30px;
+    margin-top : 30px;*/
 }
 div.checkoutstepheader
 {
-    font-family:gothambook;
+/*    font-family:gothambook;
     font-size: 18px;
     height: 42px;
     letter-spacing: 0.6pt;
-    /*margin-bottom: 10px;*/
-    padding-top: 13px;
+    margin-bottom: 10px;
+    padding-top: 13px;*/
     cursor : default;
 } 
 div.checkoutstepsubheader span{font-style:italic; color:#999; font-size:13px;}
@@ -84,13 +87,13 @@ div.cleaner
 }
 div.checkoutsteps
 {
-    background-image : url('../images/checkout/step_divider.png');
+/*    background-image : url('../images/checkout/step_divider.png');
     background-repeat : no-repeat;
-    background-position: center bottom;
+    background-position: center bottom;*/
 }
 div.checkoutsteps.inactive
 {
-    height : 55px;
+    /*height : 55px;*/
     overflow : hidden;
 }
 /*
@@ -101,7 +104,6 @@ div.checkoutsubstep.codivider
 */
 div.checkoutsubstep.codivider
 {
-    border-bottom : 1px dashed #B3B3B3;
 }
 div.checkoutsubstep.inactive
 {
@@ -278,21 +280,21 @@ table.co-ov-table tfoot tr.last td
 }
 div#coshipping, div#cobilling
 {
-    padding : 0 111px;
+    /*padding : 0 111px;*/
 }
 div#coreview
 {
-    padding : 0 91px;
+    /*padding : 0 91px;*/
 }
 div#coreview div.checkoutstepheader
 {
-    padding-left: 20px;
+    /*padding-left: 20px;*/
 }
 div#ordersummary, div#shippingsummary
 {
-    position: absolute;
-    top: 0;
-    background-color : #FAFAFA;
+    /*position: absolute;
+    top: 0;*/
+    background-color : #ededed;
     padding : 15px 20px 0 20px;
 }
 div#shippingsummary
@@ -300,22 +302,23 @@ div#shippingsummary
     left : 710px;
 }
 
-div#ordersummary
-{
-    right : 710px;
+div#ordersummary {
+    font: 14px/28px gothambook;
+    margin: auto;
+    text-align: left;
+    width: 270px;
+    min-height: 180px;
 }
 div#ordersummary span.anchor, div#shippingsummary span.anchor
 {
-    font-family:gothamMedium;
-    font-size : 11px;
-    letter-spacing: 0.6pt;
+    font: 14px gothambook;
     text-transform: uppercase;
     white-space: nowrap;
 }
 div#ordersummary table, div#shippingsummary table
 {
     margin-top : 10px;
-    width : 220px;
+    width : 100%;
 }
 div#shippingsummary table
 {
@@ -377,9 +380,7 @@ div#submiterrormsg
 }
 
 #ordersummary table td, #shippingsummary table td {
-	font-family:gothambook;
-	font-size:11px;
-	letter-spacing:0.4px;
+	font: 13px/28px gothambook;
 }
 
 table.co-ov-table td {
@@ -429,13 +430,7 @@ table.co-ov-table div.preorderinfo
 		right:auto;
 	}
 	div#shippingsummary table td{vertical-align:top; padding:0 10px 5px 0;}
-	div#ordersummary{
-		left:auto;
-		right:690px;
-	}
-	body{min-width:1280px;}
 	div#shippingsummary table{width:320px;}
-	div#ordersummary table{width:220px;}
 }
 
 
@@ -445,18 +440,14 @@ table.co-ov-table div.preorderinfo
 		right:auto;
 	}
 	div#shippingsummary table td{vertical-align:top; padding:0 10px 5px 0;}
-	div#ordersummary {
-	  background: none repeat scroll 0 0 transparent;
-	  left: auto;
-	  right: 630px;
-	}
-	body{min-width:1024px;}
 	div#shippingsummary table{width:200px;}
-	div#ordersummary table{width:220px;}
 }
 div.input-box select
 {
-    border-bottom: 1px solid black;
+    border: 0 none;
+}
+div.input-box select option{
+    padding: 5px 0;
 }
 #myminicart div.minicartitems:hover img.delete
 {
@@ -530,3 +521,12 @@ body.paypal-express-review .paypal-details td.total,body.paypal-express-review .
 }
 
 /*****************Paypal Checkout Form Ends****************/
+
+div#coshipping, div#cobilling {
+    margin: auto;
+    max-width: 80%;
+    min-width: 50%;
+    overflow: hidden;
+    padding: 0;
+    width: 304px;
+}
