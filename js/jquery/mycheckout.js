@@ -71,6 +71,7 @@ jQuery(document).ready(function($){
 			$("#shipping\\:firstname").val(ucFirstAllWords($("#shipping\\:firstname").val()));
             $("#shipping\\:lastname").val(ucFirstAllWords($("#shipping\\:lastname").val()));
 			// call function to add the new address to the dropdown on both shipping and billing
+			virtualsaveshippingaddress();
             saveShippingAddress();
         }
         return false;
@@ -641,6 +642,16 @@ function saveBillingAddress()
     });
 }
 
+function virtualsaveshippingaddress()
+{
+	var address = jQuery("form#checkout-shipping-form input#shipping\\:firstname").val() + " " + jQuery("form#checkout-shipping-form input#shipping\\:lastname").val() + "," + jQuery("form#checkout-shipping-form input#shipping\\:street1").val() + ",";
+	if(jQuery("form#checkout-shipping-form input#shipping\\:street2").val().length > 0)
+		address += jQuery("form#checkout-shipping-form input#shipping\\:street2").val() + ",";
+	address += jQuery("form#checkout-shipping-form input#shipping\\:city").val() + "," + jQuery("form#checkout-shipping-form select#shipping\\:region_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:region_id").val() + "']").html() + "," + jQuery("form#checkout-shipping-form input#shipping\\:postcode").val() + "," + jQuery("form#checkout-shipping-form select#shipping\\:country_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:country_id").val() + "']").html();
+	console.log(address);
+	jQuery("form#checkout-shipping-form ul#shipping-address-select li:last").before("<li value='x'>" + address + "</li>");
+}
+
 function saveShippingMethod()
 {
     if(_ischeckoutprocessing)
@@ -696,7 +707,7 @@ function saveShippingAddress()
             jQuery("div#shippingmethods").html(result['update_section']['html']);
 			// Select the chosen shipping method on the shipping form and call saveshippingmethod.
 			
-            reordersubsteps(jQuery("div#shippingmethods").parents("div.checkoutsubstep"));
+            //reordersubsteps(jQuery("div#shippingmethods").parents("div.checkoutsubstep"));
             if(jQuery("#shipping\\:use_for_billing").is(':checked'))
                 replicateShippingAddress();
 			
