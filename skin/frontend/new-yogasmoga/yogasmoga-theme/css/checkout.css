@@ -107,7 +107,6 @@ div.checkoutsubstep.codivider
 }
 div.checkoutsubstep.inactive
 {
-    height : 40px;
     overflow : hidden;
     cursor : default;
 }
