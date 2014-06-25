@@ -4,6 +4,7 @@ jQuery(document).ready(function($){
     breadValSelect();
     createNewElement();
     removeNameLabel();
+    searchCountry();
 
 
     $(".showUpadd").on("click", function(){
@@ -241,6 +242,25 @@ jQuery(document).ready(function($){
 //    }
     
 });
+
+function searchCountry(){
+//     var usCont = jQuery("#updateNameAdd").find("div:contains('United States')").attr("class");
+//     var cdCont = jQuery("#updateNameAdd").find("div:contains('Canada')");
+//     //jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+// alert(usCont);
+//     if(usCont){
+//         //jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
+//         alert("US");
+//     }
+//     else if(cdCont){
+//         //jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
+//         alert("CN");
+//     }
+//     else{
+// //        jQuery(".showShippingOpt").find("#other-shipping").addClass("availableShip");
+//         alert("OT");
+//     }
+}
 
 function removeNameLabel(){
     jQuery(".customer-name").find("input.no-bg").removeClass("no-bg");
