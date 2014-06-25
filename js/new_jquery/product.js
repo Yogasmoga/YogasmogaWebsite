@@ -4,7 +4,21 @@ jQuery(document).ready(function($){
     readmore();
 
     $("#orderitem, #preorderitem").live("click", function(){
+
+        var errormsg = '';
         setTimeout(function(){
+        if(jQuery("div#sizecontainer div.dvselectedsize").length == 0 && _productorderqty == 0)
+            {errormsg = "Please select quantity and size to continue.";alert('if');}
+        else
+        {
+            if(_productorderqty == 0)
+                errormsg = "Please select quantity to continue.";
+            if(jQuery("div#sizecontainer div.dvselectedsize").length == 0)
+                errormsg = "Please select size to continue.";
+            alert('else');
+            return;
+        }
+
             _isClickSigninMenu = true;
             if(!_islogedinuser)
                 showShoppingBagHtml();
@@ -13,7 +27,7 @@ jQuery(document).ready(function($){
             }
             $(".open-cart").trigger("click");
 
-        },100);
+        },20);
     });
 
 

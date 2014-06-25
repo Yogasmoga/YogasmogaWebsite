@@ -64,8 +64,9 @@ jQuery(document).ready(function($){
     $("#checkout-shipping-form").submit(function(){
         if(validateShippingAddressForm())
         {
-            $("#shipping\\:firstname").val(ucFirstAllWords($("#shipping\\:firstname").val()));
+			$("#shipping\\:firstname").val(ucFirstAllWords($("#shipping\\:firstname").val()));
             $("#shipping\\:lastname").val(ucFirstAllWords($("#shipping\\:lastname").val()));
+			// call function to add the new address to the dropdown on both shipping and billing
             saveShippingAddress();
         }
         return false;
@@ -624,9 +625,14 @@ function saveShippingAddress()
             result = eval('(' + result + ')');
             //console.log(result['update_section']['html']);
             jQuery("div#shippingmethods").html(result['update_section']['html']);
+			// Select the chosen shipping method on the shipping form and call saveshippingmethod.
+			
             reordersubsteps(jQuery("div#shippingmethods").parents("div.checkoutsubstep"));
             if(jQuery("#shipping\\:use_for_billing").is(':checked'))
                 replicateShippingAddress();
+			
+			//Save Billing Address here.
+			
             _ischeckoutprocessing = false;
             jQuery("#checkout-shipping-form input[type=submit]").show();
             jQuery("#checkout-shipping-form #procImg").remove();
