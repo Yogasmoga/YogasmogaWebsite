@@ -75,6 +75,8 @@ class MyCustommodules_Mynewtheme_GiftofysController extends Mage_Core_Controller
             $response['status'] = "success";
             $response['success_message'] = "Gift Cart Successfully applied.";
         } else {
+            $response['status'] = "success";
+            $response['success_message'] = "Gift Cart Successfully removed.";
             Mage::getSingleton('giftcards/session')->setActive('0');
         }
         try {

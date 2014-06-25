@@ -178,6 +178,7 @@ function loginCustomer()
                 }
                 if(_isClickSigninMenu)
                 {
+
                     automaticapplysmogibucks();
                 }
 
@@ -198,6 +199,10 @@ function loginCustomer()
                     _isClickSmogiLogin = false;
                     automaticapplysmogibucks(); // automatically apply smogi bucks in the shopping cart
                     //showShoppingBagHtml(); //call showShoppingBagHtml to load customer cart after login via smogi login button
+                }
+                if(_isClickContinueNotLogedin)
+                {
+                    automaticapplysmogibucks();
                 }
 
             }
