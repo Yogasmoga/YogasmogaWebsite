@@ -244,22 +244,19 @@ jQuery(document).ready(function($){
 });
 
 function searchCountry(){
-//     var usCont = jQuery("#updateNameAdd").find("div:contains('United States')").attr("class");
-//     var cdCont = jQuery("#updateNameAdd").find("div:contains('Canada')");
-//     //jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
-// alert(usCont);
-//     if(usCont){
-//         //jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
-//         alert("US");
-//     }
-//     else if(cdCont){
-//         //jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
-//         alert("CN");
-//     }
-//     else{
-// //        jQuery(".showShippingOpt").find("#other-shipping").addClass("availableShip");
-//         alert("OT");
-//     }
+    // var usCont = jQuery("#updateNameAdd").find("div:contains('United States')");
+    // var cdCont = jQuery("#updateNameAdd").find("div:contains('Canada')");
+    // jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+
+    // if(usCont){
+    //     jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
+    // }
+    // else if(cdCont){
+    //     jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
+    // }
+    // else{
+    //     jQuery(".showShippingOpt").find("#other-shipping").addClass("availableShip");
+    // }
 }
 
 function removeNameLabel(){
