@@ -924,6 +924,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $applypromo="applypromo";
             $applypromodisable="";
             $applysmogi="applysmogi";
+            $checkboxapplied="";
            if($checksmogiapplied)
            {
                 $gryclasspromo = "gry";
@@ -932,6 +933,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $applygiftdisable=" disabled='disabled'";
                 $applypromo="";
                 $applypromodisable=" disabled='disabled'";
+                $checkboxapplied=" disabled='disabled'";
            }
            if($checkpromoapplied)
            {
@@ -940,14 +942,17 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $applysmogi="";
                 $applygiftcard="";
                 $applygiftdisable=" disabled='disabled'";
+                $checkboxapplied=" disabled='disabled'";
            }
             if($checkgiftapplied)
            {
+                //$gryclassgift = "gry";
                 $gryclasssmogi = "gry";
                 $gryclasspromo = "gry";
                 $applysmogi="";
-                $applygiftcard="";
-                $applygiftdisable=" disabled='disabled'";
+                $checkboxapplied="";
+                //$applygiftcard="";
+                //$applygiftdisable=" disabled='disabled'";
                 $applypromo="";
                 $applypromodisable=" disabled='disabled'";
            }
@@ -976,12 +981,13 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     $html .='  <label><input class="'.$gryclassgift.'" type="text" name="giftcartcode" id="giftcartcode" placeholder="Add a gift card code" '.$applygiftdisable.'/><span class="'.$applygiftcard.'">+</span><span class="error-count"></span></label>';
                     if(Mage::getSingleton("giftcards/session")->getActive() == "1")
                     {
-                        $html .='<label> <input type="checkbox" value="1" checked="checked" class="giftcardcheckbox" /><p>Use your Gift Card balance: $'.$giftofysbalance.' available.</p></label>';
+                        $html .='<div> <input type="checkbox" value="1" checked="checked" class="giftcardcheckbox" '.$checkboxapplied.'/><p>Use your Gift Card balance: $'.$giftofysbalance.' available.</p></div>';
                     }
                     else
                     {
-                        $html .='<label style="min-height: inherit;"> <input type="checkbox" value="1"  class="giftcardcheckbox" /><p>Use your Gift Card balance: $'.$giftofysbalance.' available.</p></label> ';
+                        $html .='<div style="min-height: inherit;"> <input type="checkbox" value="1"  class="giftcardcheckbox"  '.$checkboxapplied.'/><p>Use your Gift Card balance: $'.$giftofysbalance.' available.</p></div>';
                     }
+                    $html .='<div class="giftcarloader" style="clear: both;text-align:left;position:text-align: left; width: 100%;"></div>';
                 }
 
 

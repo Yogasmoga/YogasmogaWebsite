@@ -46,14 +46,14 @@ jQuery(document).ready(function($){
         $("#smogi").live("blur", function () {
             var storeVal = $(this).attr("available");
             var appliedvalue = jQuery(".smogi span.f-right").attr("usedpoints");
-            var availablesmogi = jQuery("#smogi").attr("available");
+            //var availablesmogi = '';
+            var availablesmogi = (jQuery("#smogi").attr("available")).trim()? (jQuery("#smogi").attr("available")).trim():'';
+//            if(availablesmogi !='')
+//            {
+//                availablesmogi = (jQuery("#smogi").attr("available")).trim();
+//            }
 
-            if(availablesmogi)
-            {
-                availablesmogi = (jQuery("#smogi").attr("available")).trim();
-            }
-
-            if(appliedvalue)
+            if(availablesmogi !='' && appliedvalue  !='')
             {
                 appliedvalue = parseInt(appliedvalue);
                     if ($(this).val() == "") {
@@ -218,6 +218,7 @@ jQuery(document).ready(function($){
         }
     });
     $(".giftcardcheckbox").live("click",function(){
+        jQuery('.zindexH').show();
         redeemgiftcardcode();
     });
 
@@ -250,8 +251,9 @@ jQuery(document).ready(function($){
     });
 });
 function smogicart() {
+    jQuery('#redeemresult').empty();
     var smogi=jQuery.trim(jQuery('#smogi').val());
-    if(smogi !='') {
+    if(!isNaN(smogi) && smogi !='' && smogi != jQuery('#smogi').attr('placeholder')) {
         if(!_islogedinuser)
         {
             _isClickApplySmogiBucks = true;
@@ -266,9 +268,11 @@ function smogicart() {
                 jQuery('.zindexH').show();
                 applysmogibucks();
         } 
-    }   
+    }
+    else jQuery('#redeemresult').empty().append('Please enter smogi bucks.');
 }
 function promocodecart(){
+    jQuery('#redeemresult').empty();
     var promocode=jQuery.trim(jQuery('#promocode').val());
     if(promocode !='' && promocode != jQuery('#promocode').attr('placeholder')) {
         if(!_islogedinuser)
@@ -286,8 +290,10 @@ function promocodecart(){
                     applypromocode();
         }
     }
+    else jQuery('#redeemresult').empty().append('Please enter promo code.');
 }
 function giftcart() {
+    jQuery('#redeemresult').empty();
     var giftcartcode=jQuery.trim(jQuery('#giftcartcode').val());
     if(giftcartcode !='' && giftcartcode != jQuery('#giftcartcode').attr('placeholder')) {
         if(!_islogedinuser)
@@ -304,6 +310,7 @@ function giftcart() {
                 applygiftcardcode();
         }
     }
+    else jQuery('#redeemresult').empty().append('Please enter gift card code.');
 }
 function showShoppingBagHtml()
 {
@@ -425,7 +432,7 @@ function deleteproduct(deletedproducid)
 
 function applysmogibucks()
 {
-    jQuery('#redeemresult').empty();
+    
     var availablesmogi = jQuery("#smogi").attr("available");
     var smogivalue = (jQuery("#smogi").attr("value")).trim();
     smogivalue = parseInt(smogivalue);
@@ -563,7 +570,7 @@ function automaticapplysmogibucks()
 
 function applypromocode()
 {
-    jQuery('#redeemresult').empty();
+    
 
     var promocode = (jQuery("#promocode").attr("value")).trim();
 
@@ -606,7 +613,7 @@ function applypromocode()
 
 function removepromocode()
 {
-    jQuery('#redeemresult').empty();
+    
     var promocode = (jQuery("#promocode").attr("value")).trim();
 
     if(window.location.href.indexOf('https://') >= 0)
@@ -677,7 +684,8 @@ function applygiftcardcode()
 }
 function redeemgiftcardcode()
 {
-     jQuery('#redeemresult').empty();
+    jQuery('#redeemresult').empty();
+    
     var redeemvalue = '';
 
     if(_isClickRemoveGiftYS == 0){
@@ -699,7 +707,7 @@ function redeemgiftcardcode()
     var url = homeUrl + 'mynewtheme/giftofys/giftcardactive';
     if(_usesecureurl)
         url = securehomeUrl + 'mynewtheme/giftofys/giftcardactive';
-
+    jQuery(".giftcarloader").empty().append("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
     jQuery.ajax({
         url : url,
         type : 'POST',
@@ -712,11 +720,16 @@ function redeemgiftcardcode()
             {
                 _showShoppingbagLoader = false;
                 showShoppingBagHtml();
+                jQuery(".giftcarloader").empty();
+                jQuery('.zindexH').hide();
             }
             else
             {
                 jQuery('#redeemresult').empty().append(data.error);
+                jQuery(".giftcarloader").empty();
+                jQuery('.zindexH').hide();
             }
+            
         }
     });
 }
