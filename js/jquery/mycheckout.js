@@ -3,6 +3,30 @@ _usesecureurl = true;
 jQuery(document).ready(function($){
     breadValSelect();
     createNewElement();
+    removeNameLabel();
+    searchCountry();
+
+
+    $(".showUpadd").on("click", function(){
+        slideAddCont();
+    });
+
+
+    var firstShpVal = $(".showShippingOpt").find(".availableShip").find("li:nth-child(1)").text(); 
+    $(".shippingOption").find(".addVal").text(firstShpVal);
+
+    $(".showShpOpt").on("click", function(){
+        slideShpCont();                                       
+    });
+
+    $(".showShippingOpt").on("click", "li", function(){
+        var selectedVal = $(this).text();
+        $(".showShippingOpt li").removeClass("selected");
+        $(this).addClass("selected");
+        $(".shippingOption").find(".addVal").text(selectedVal);
+        slideShpCont();                                       
+    });
+
     //if($("div#checkout div:nth-child(2)").html().indexOf("support@intellectlabs.com") > 0)
 //        $("div#checkout div:nth-child(2)").hide();
     //if($("div.myheader:first").next().html().indexOf("support@intellectlabs.com") > 0)
@@ -167,7 +191,7 @@ jQuery(document).ready(function($){
             $("#checkout-shipping-address-new").hide();
             $("#shippingaddressselectionblock").removeClass('addressselector');
             $("#updateNameAdd").show();
-            $("#shippingaddressselectionblock").hide();
+            //$("#shippingaddressselectionblock").hide();
         }
     });    
     
@@ -221,7 +245,41 @@ jQuery(document).ready(function($){
     
 });
 
+function searchCountry(){
+//     var usCont = jQuery("#updateNameAdd").find("div:contains('United States')").attr("class");
+//     var cdCont = jQuery("#updateNameAdd").find("div:contains('Canada')");
+//     //jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+// alert(usCont);
+//     if(usCont){
+//         //jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
+//         alert("US");
+//     }
+//     else if(cdCont){
+//         //jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
+//         alert("CN");
+//     }
+//     else{
+// //        jQuery(".showShippingOpt").find("#other-shipping").addClass("availableShip");
+//         alert("OT");
+//     }
+}
 
+function removeNameLabel(){
+    jQuery(".customer-name").find("input.no-bg").removeClass("no-bg");
+    jQuery(".customer-name").find("td.label").remove();
+    jQuery(".customer-name").find("table.inputtable").addClass("wdth50");   
+    jQuery(".customer-name").find("table.inputtable:nth-child(2)").addClass("f-right"); 
+}
+
+function slideAddCont(){
+    jQuery(".showUpadd").toggleClass("reverse");                                             
+    jQuery(".listadd").slideToggle("slow");
+}
+
+function slideShpCont(){
+    jQuery(".showShpOpt").toggleClass("reverse");                                            
+    jQuery(".showShippingOpt").slideToggle("slow");
+}
 
 function breadValSelect(){
     var txtSl = jQuery('#shipping-address-select').find('option:selected').text();
