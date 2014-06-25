@@ -861,7 +861,7 @@ ul.checkout-cont li .listadd > li {
     display: inline-block;
     min-height: inherit;
     padding: 0;
-    width: 100%;
+    width: 100%;/*
  background: transparent;
  z-index: 9999;
  position: absolute;
@@ -869,5 +869,12 @@ ul.checkout-cont li .listadd > li {
  width: 100%;
  height: 200px;
  display:none;
- top: 219px;
+ top: 219px;*/
+}
+.showShippingOpt ul{
+	display: none !important;
+}
+
+.showShippingOpt ul.availableShip{
+	display: block !important;
 }
