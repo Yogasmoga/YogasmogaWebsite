@@ -1,16 +1,22 @@
 jQuery(document).ready(function($){
+	removeNameLabel();
 
 
 $(".showUpadd").on("click", function(){
 	slideAddCont();
+	
+	// $('#shipping-address-select').slideToggle().attr("size", function() { 
+	// 	return this.options.length; 
+	// }).css("height", "auto");
 });
 
-$(".showUpdateAdd").on("click", "li", function(){
-	$(".showUpdateAdd").find("li").removeClass("selected");
-	$(this).addClass("selected");	
-	var selectedAddVal = $(this).addClass("selected").text();
-	slideAddCont();										  
-});
+
+// $(".showUpdateAdd").on("click", "li", function(){
+// 	$(".showUpdateAdd").find("li").removeClass("selected");
+// 	$(this).addClass("selected");	
+// 	var selectedAddVal = $(this).addClass("selected").text();
+// 	slideAddCont();										  
+// });
 
 
 
@@ -27,17 +33,24 @@ $(".showShippingOpt").on("click", "li", function(){
 	slideShpCont();										  
 });
 
-// Add New Address
-$(".addnewBtn").on("click", function(){
-	$("#updateNameAdd, .selectAddress").hide();
-	$(".addNewAdd").slideDown("slow");
-});
+// // Add New Address
+// $(".addnewBtn").on("click", function(){
+// 	$("#updateNameAdd, .selectAddress").hide();
+// 	$(".addNewAdd").slideDown("slow");
+// });
 
 });
+
+function removeNameLabel(){
+	jQuery(".customer-name").find("input.no-bg").removeClass("no-bg");
+	jQuery(".customer-name").find("td.label").remove();
+	jQuery(".customer-name").find("table.inputtable").addClass("wdth50");	
+	jQuery(".customer-name").find("table.inputtable:nth-child(2)").addClass("f-right");	
+}
 
 function slideAddCont(){
 	jQuery(".showUpadd").toggleClass("reverse");											 
-	jQuery(".showUpdateAdd").slideToggle("slow");
+	jQuery(".listadd").slideToggle("slow");
 }
 
 function slideShpCont(){
