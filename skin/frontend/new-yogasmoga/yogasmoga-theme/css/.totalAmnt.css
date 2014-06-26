@@ -411,7 +411,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .continuelink{background: url("../images/shopping-cart/gry-btn.png") no-repeat top left; margin: 0; padding: 16px 5px; width: 45%; display: inline-block; font: 12px gothambold;}
 .continuelink.grn{background-image: url("../images/shopping-cart/grn-btn.png"); color: #fff;}
 .cont-full{/*margin: 0 0 20px;*/ padding: 20px 20px 0px 20px; background: #eeefef;}
-.totalAmnt{border-bottom: 1px solid #dbdbdb; padding: 0 0 10px; margin: 0 0 10px; font-size: 16px; width: 100%; float: left;}
+.totalAmnt{font-weight: bold;border-bottom: 1px solid #dbdbdb; padding: 0 0 10px; margin: 0 0 10px; font-size: 14px; width: 100%; float: left;}
 .cont-full li, .cont-full > ul{display: inline-block; width: 100%;}
 .cont-full > ul{margin: 0 0 20px;}
 .cont-full li{padding: 5px 0;}
