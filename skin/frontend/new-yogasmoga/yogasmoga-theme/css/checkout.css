@@ -269,13 +269,9 @@ table.co-ov-table tfoot tr.last td
 }
 #checkout-submit
 {
-    margin-top : 40px;
-    float : right;
-    width : 240px;
-    height : 43px;
-    background-image : url('../images/checkout/submit_off1.png');
-    background-repeat : no-repeat;
-    margin-right : 20px;
+    height: 43px;
+    margin: 40px auto auto;
+    width: 100%;
 }
 div#coshipping, div#cobilling
 {
