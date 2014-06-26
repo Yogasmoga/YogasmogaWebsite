@@ -795,12 +795,15 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
         $checksmogiapplied = false;
         $checkpromoapplied = false;
-        $checkgiftapplied = false;        
+        $checkgiftapplied = false; 
+        $customerId = Mage::getModel('customer/session')->getCustomerId();
+        if($customerId) $continuelink=Mage::getBaseUrl().'checkout/onepage';
+        else $continuelink="javascript:void(0);";
         $html = '
     <!-- ContinueShoppingBtn -->
     <div class="cont-full capstxt">
         <a href="javascript:void(0);" id="continuelink" class="continuelink f-left">Continue Shopping</a>
-        <a href="'.Mage::getBaseUrl().'checkout/onepage" id="continuecheckout" class="continuelink f-right grn">Continue</a>
+        <a href="'.$continuelink.'" id="continuecheckout" class="continuelink f-right grn">Continue</a>
         <div class="clear-fix"></div>
     </div>
     <!-- ContinueShoppingBtn -->
@@ -880,12 +883,12 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         {
             $giftofysbalance = Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId());
             $discount = $totals['discount']->getValue();
-            $discount = ($discount * -1.00);
-            $discount =  number_format((float)$discount, 2, '.','');  //Discount value if applied
+            $discount1 = ($discount * -1.00);
+            $discount =  number_format((float)$discount1, 2, '.','');  //Discount value if applied
 
 
             $html .='<li class="giftcard">
-                            <span class="f-left capstxt">Gift of YS used  |</span>
+                            <span class="f-left capstxt">$'.$discount1.' Gift of YS used  |</span>
                             <span class="removegiftcart"><a>remove</a></span>
 
                             <span class="f-right" usedgiftcard ="'.$discount.'">-$'.$discount.'</span>
@@ -925,6 +928,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $applypromo="applypromo";
             $applypromodisable="";
             $applysmogi="applysmogi";
+            $applysmogidisable="";
             $checkboxapplied="";
            if($checksmogiapplied)
            {
@@ -942,6 +946,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $gryclassgift = "gry";
                 $applysmogi="";
                 $applygiftcard="";
+                $applypromodisable=" disabled='disabled'";
+                $applysmogidisable=" disabled='disabled'";
                 $applygiftdisable=" disabled='disabled'";
                 $checkboxapplied=" disabled='disabled'";
            }
@@ -951,6 +957,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $gryclasssmogi = "gry";
                 $gryclasspromo = "gry";
                 $applysmogi="";
+                $applysmogidisable=" disabled='disabled'";
                 $checkboxapplied="";
                 //$applygiftcard="";
                 //$applygiftdisable=" disabled='disabled'";
@@ -958,19 +965,19 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $applypromodisable=" disabled='disabled'";
            }
             if($showedpoints >= 1) {
-                $html .=' <label><input type="text" class = "'.$gryclasssmogi.'" available="'.$getcustomerpoints.'" name="smogi" id="smogi" value="'.$showedpoints.'" /><span class="'.$applysmogi.'">+</span><span class="error-count"></span></label>';
+                $html .=' <label><input type="text" class = "'.$gryclasssmogi.'" available="'.$getcustomerpoints.'" name="smogi" id="smogi" value="'.$showedpoints.'" '.$applysmogidisable.'/><span class="'.$applysmogi.'">+</span><span class="error-count"></span></label>';
             }
             if($showedpoints < 1)
-                $html .=' <label><input type="text" name="smogi" class="gry" id="smogi" readonly="readonly" placeholder="You have no more available SMOGI Bucks" /><span class="">+</span><span class="error-count"></span></label>';
+                $html .=' <label><input type="text" name="smogi" class="gry" id="smogi" readonly="readonly" placeholder="You have no more available SMOGI Bucks" '.$applysmogidisable.'/><span class="">+</span><span class="error-count"></span></label>';
 
             // check if promotion code is used or not
             if($promotioncode)
             {
-                $html .='<label><input type="text" name="promocode" id="promocode" value="'.$promotioncode.' promo  used " readonly="readonly" class="gry" /><span class="">+</span><span class="error-count"></span></label>';
+                $html .='<label><input type="text" name="promocode" id="promocode" value="'.$promotioncode.' promo used"   '.$applypromodisable.' readonly="readonly" class="gry" /><span class="">+</span><span class="error-count"></span></label>';
             }
             else
             {
-                $html .='<label><input type="text" class="'.$gryclasspromo.'" name="promocode" id="promocode" placeholder="Add a promo code"  '.$applygiftdisable.'/><span class="'.$applypromo.'">+</span><span class="error-count"></span></label>';
+                $html .='<label><input type="text" class="'.$gryclasspromo.'" name="promocode" id="promocode" placeholder="Add a promo code"  '.$applypromodisable.'/><span class="'.$applypromo.'">+</span><span class="error-count"></span></label>';
             }
 
             // check for Gift of YS
@@ -1035,9 +1042,9 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     <span class="quantity">qty '.$item['quantity'].'</span>
                     <span class="pname">'.$item['name'].'</span>
                     <span class="amnt">'.$item['price'].'</span>
-                    <span class="clr">'.$item['color'].'</span>
-                    <span class="size">size '.$item['size'].'</span>
-                </span>
+                    <span class="clr">'.$item['color'].'</span>';
+            if($item['size'] !='') $html .='<span class="size">size '.$item['size'].'</span>';
+            $html .='</span>
 <a href="#" class="close"></a>
 </li>';
         }

@@ -1,6 +1,26 @@
 _preorderinfohovered = false;
 var _rewardpoints = 0;
 jQuery(document).ready(function($){
+    $(document).keydown( function(e) {
+        var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+        if (key==37) {  ///left key
+           // console.log ('left');
+            if($(".selected").prev('div').length) {
+                $(".selected").removeClass('selected').prev('div').addClass('selected');
+                changeColor($(".selected > table").attr("color"));
+            }
+        } 
+      //  else if (e.keyCode==38) { console.log ('up');} 
+        else if (key==39) {  ///right key
+           // console.log ('right');
+            if($(".selected").next('div').length) {
+                $(".selected").removeClass('selected').next('div').addClass('selected');
+                 changeColor($(".selected > table").attr("color"));
+            }
+        } 
+        //else if (e.keyCode==40) {console.log ('down');}
+        
+    });
     $("table.normalproductdetail div#colorcontainer table").live("click", function(){
         changeColor($(this).attr("color"));
     });
