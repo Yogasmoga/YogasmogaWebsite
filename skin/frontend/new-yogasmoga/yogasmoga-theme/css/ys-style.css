@@ -803,11 +803,11 @@ div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{font: 13px
 .removesmogi, .removegiftcart, .removepromotion {
     cursor: pointer;
     float: left;
-    font-size: 11px;
+    font-size: 12px;
     margin: 1px 0 0 4px;
 }
 .removesmogi a, .removegiftcart a, .removepromotion a{
-    color: #d90d3d;
+    color: #d90d3d;text-transform: none;   text-decoration: underline;
 }
 .bagerror {
     clear: both;
@@ -823,7 +823,7 @@ div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{font: 13px
     width: auto;
 }
 .adddields p {
-    font: 11px gothambook;
+    font: 12px gothambook;
     text-transform: none;
     text-align: left;
 }
