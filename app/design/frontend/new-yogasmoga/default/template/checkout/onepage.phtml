@@ -82,124 +82,75 @@
         <?php
     }
 ?>
-<div id="tblcheckoutsteps" <?php if(!$this->helper('customer')->isLoggedIn()) { ?> style="display: none;" <?php } ?>>
-    <?php if($isshippable) 
-        {
-    ?>
-        <div id="coshipping" class="checkoutsteps">
-            <div class="checkoutstepheader codivider">
-                1. SHIPPING DETAILS
+
+<!-- onePageCheckoutProcess -->
+<div id="tblcheckoutsteps" class="checkout-detail" <?php if(!$this->helper('customer')->isLoggedIn()) { ?> style="display: none;" <?php } ?>>
+<ul class="checkout-cont clear">
+    <!-- shippingDetails -->
+    <li id="shippingDetails" class="active">
+        <?php if($isshippable) 
+            {
+                ?>
+            <div id="coshipping" class="checkoutsteps">
+                <!-- <div class="checkoutstepheader codivider"></div> -->
+                <div class="headD">1<br>Shipping</div>
+
+                <div id="coshippingaddress" class="checkoutsubstep addNewAdd">
+                    <?php echo $this->getChildHtml('shipping'); ?>
+                </div>
+            
+                <div id="coshippingmethod" class="checkoutsubstep inactive disabled" style="display: none;">
+                    <div class="checkoutstepsubheader">SHIPPING METHOD</div>
+                    <div id="shippingmethods"></div>
+                </div>
             </div>
-            <div id="coshippingaddress" class="checkoutsubstep">
-                <div class="checkoutstepsubheader firstsubstep">SHIPPING ADDRESS</div>
-                <?php echo $this->getChildHtml('shipping'); ?>
-            </div>
-            <div id="coshippingmethod" class="checkoutsubstep inactive disabled" style="display: none;">
-                <div class="checkoutstepsubheader">SHIPPING METHOD</div>
-                <div id="shippingmethods"></div>
-            </div>
-        </div>
         <?php
-    } ?>
-    <div id="cobilling" class="checkoutsteps <?php if(!$isshippable) { echo "active";} else { echo "inactive disabled";} ?>">
-        <div class="checkoutstepheader codivider">
-            <?php if($isshippable) { echo "2";} else { echo "1";} ?>
-            . BILLING AND PAYMENT DETAILS
-        </div>
-        <div id="cobillingaddress" class="checkoutsubstep codivider">
-            <div class="checkoutstepsubheader firstsubstep">BILLING ADDRESS</div>
-            <?php echo $this->getChildHtml('billing'); ?>
-        </div>
-        <div id="copaymentmethods" class="checkoutsubstep inactive disabled">
-            <div class="checkoutstepsubheader">PAYMENT INFORMATION<span> - YOGASMOGA accepts all major credit cards and PayPal.</span></div>
-            <div id="paymentmethods"></div>
-        </div>
-    </div>
-    <div id="coreview" class="checkoutsteps inactive disabled">
-        <div class="checkoutstepheader">
-            <?php if($isshippable) { echo "3";} else { echo "2";} ?>
-            . REVIEW AND SUBMIT    
-        </div>
-        <div id="orderreview" class="inactive disabled">
-    
-        </div>
-    </div>
-    <div id="ordersummary">
-    </div>
-    <div id="shippingsummary">
-        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('checkout_shipping_info')->toHtml(); ?>
-    </div>
-</div>
-<?php /*
-<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jQuery.dPassword.js"></script>
-<script type="text/javascript">
-    jQuery(document).ready(function($){
-        //$('input:password').dPassword({
-//            duration: 1000
-//        });
-        $('#pass').dPassword({
-            duration: 1000
-        });
-        $('input[disabled]').removeAttr('disabled');
-    });
-</script>
-*/ ?>
-<?php /*
-<table id="tblcheckoutsteps" <?php if(!$this->helper('customer')->isLoggedIn()) { ?> style="display: none;" <?php } ?>>
-    <tr>
-        <td>
-            <div class="ordersummary">
-                
-            </div>
-        </td>
-        <td class="checkoutstepsholder">
-                    
-        </td>
-        <td>
-            <div class="shippingdetails">
-                
-            </div>
-        </td>
-    </tr>
-</table>
-
-
-
-
-
-
-<div class="page-title">
-    <h1><?php echo $this->__('Checkout') ?></h1>
-</div>
-<script type="text/javascript" src="<?php echo $this->getJsUrl('varien/accordion.js') ?>"></script>
-<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/opcheckout.js') ?>"></script>
-<ol class="opc" id="checkoutSteps">
-<?php $i=0; foreach($this->getSteps() as $_stepId => $_stepInfo): ?>
-<?php if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; $i++ ?>
-    <li id="opc-<?php echo $_stepId ?>" class="section<?php echo !empty($_stepInfo['allow'])?' allow':'' ?><?php echo !empty($_stepInfo['complete'])?' saved':'' ?>">
-        <div class="step-title">
-            <span class="number"><?php echo $i ?></span>
-            <h2><?php echo $_stepInfo['label'] ?></h2>
-            <a href="#"><?php echo $this->__('Edit') ?></a>
-        </div>
-        <div id="checkout-step-<?php echo $_stepId ?>" class="step a-item" style="display:none;">
-            <?php echo $this->getChildHtml($_stepId) ?>
-        </div>
+            }   
+                ?>
+        <div class="ovrlay-bg"></div>
     </li>
-<?php endforeach ?>
-</ol>
-<script type="text/javascript">
-//<![CDATA[
-    var accordion = new Accordion('checkoutSteps', '.step-title', true);
-    <?php if($this->getActiveStep()): ?>
-    accordion.openSection('opc-<?php echo $this->getActiveStep() ?>');
-    <?php endif ?>
-    var checkout = new Checkout(accordion,{
-        progress: '<?php echo $this->getUrl('checkout/onepage/progress') ?>',
-        review: '<?php echo $this->getUrl('checkout/onepage/review') ?>',
-        saveMethod: '<?php echo $this->getUrl('checkout/onepage/saveMethod') ?>',
-        failure: '<?php echo $this->getUrl('checkout/cart') ?>'}
-    );
-//]]>
-</script>
-*/ ?>
+    <!-- shippingDetails -->
+
+    <!-- BillingDetails -->
+    <li id="billingDetails">
+        <div id="cobilling" class="checkoutsteps <?php if(!$isshippable) { echo "active";} else { echo "inactive disabled";} ?>">
+            <div class="headD">
+                <?php if($isshippable) { echo "2";} else { echo "1";} ?><br />BILLING
+            </div>
+
+            <div id="cobillingaddress" class="checkoutsubstep codivider">
+                <?php echo $this->getChildHtml('billing'); ?>
+            </div>
+            
+            <div id="copaymentmethods" class="checkoutsubstep inactive disabled">
+                <div class="checkoutstepsubheader">PAYMENT INFORMATION<span> - YOGASMOGA accepts all major credit cards and PayPal.</span></div>
+                <div id="paymentmethods">
+					<?php echo $this->getChildHtml('payment'); ?>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ovrlay-bg"></div>
+    </li>
+    <!-- BillingDetails -->
+
+    <!-- ReviewOrder -->
+    <li id="reviewDetails">
+        <div id="coreview" class="checkoutsteps inactive disabled">
+            <div class="headD">
+                <?php if($isshippable) { echo "3";} else { echo "2";} ?><br />REVIEW   
+            </div>
+            <!-- <div id="orderreview" class="inactive disabled"></div> -->
+            <div id="ordersummary"></div>
+        </div>
+
+        
+        <div class="ovrlay-bg"></div>
+		<div id="checkout-submit">
+		<input id="final_checkout" type="submit" style="background-image: url(&quot;http://192.168.2.121/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/continue_off.png&quot;); display: inline;" imageurl="http://192.168.2.121/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/continue_off.png" downimageurl="http://192.168.2.121/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/continue_on.png" name="send" class="loginbtn spbutton custombtn checkoutcontinuebtn" value="">
+		</div>
+    </li>
+    <!-- ReviewOrder -->
+</ul>
+</div>
+<!-- onePageCheckoutProcess -->

@@ -3044,9 +3044,57 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
     public  function removepromoAction()
     {
-        $promotioncode = Mage::getModel('smogiexpirationnotifier/applyremovediscount')->getCouponCode();
-        if($promotioncode)
-            Mage::getModel('smogiexpirationnotifier/applyremovediscount')->applycouponcode(1,null);
+//        $methods = Mage::getSingleton('shipping/config')->getActiveCarriers();
+//
+//        $options = array();
+//
+//        foreach($methods as $_code => $_method)
+//        {
+//            if(!$_title = Mage::getStoreConfig("carriers/$_code/title"))
+//                $_title = $_code;
+//
+//            $options[] = array('value' => $_code, 'label' => $_title . " ($_code)");
+//            print_r($_code->getCode());die;
+//        }
+
+        //$methods = array(array('value'=>'','label'=>Mage::helper('adminhtml')->__('--Please Select--')));
+        $i=0;
+        $activeCarriers = Mage::getSingleton('shipping/config')->getActiveCarriers();
+        foreach($activeCarriers as $carrierCode => $carrierModel)
+        {
+            $options = array();
+            if( $carrierMethods = $carrierModel->getAllowedMethods() )
+            {
+
+                foreach ($carrierMethods as $methodCode => $method)
+                {
+                    //echo $price = $method->getPrice();
+                    $code= $carrierCode.'_'.$methodCode;
+                    $options[]=array('value'=>$code,'label'=>$method);
+                    $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax());
+                     $_incl = $this->getShippingPrice($_rate->getPrice(), true);
+                     echo $_excl;
+                     if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl)
+                         echo $this->__('Incl. Tax');  echo $_incl;
+
+
+                }
+                $methods[$code] = $method;
+                //$carrierTitle = Mage::getStoreConfig('carriers/'.$carrierCode.'/title');
+
+            }
+           // $methods[]=array('value'=>$options);
+        }echo $i;
+        echo '<pre>';print_r($methods);
+//        echo '<pre>';print_r($options);
+//        $_shippingRateGroups = Mage::getModel('checkout/cart')->getQuote()->getShippingAddress()->getGroupedAllShippingRates();
+//        foreach ($_shippingRateGroups as $code => $_rates)
+//        {
+//            foreach($_rates as $rate)
+//            {
+//                echo $rate->getCode().'455';
+//            }
+//        }
     }
     
 }

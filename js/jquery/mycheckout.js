@@ -1,6 +1,46 @@
 _stripecheck = false;
 _usesecureurl = true;
 jQuery(document).ready(function($){
+	setTimeout(function(){
+	jQuery("input[type='radio'][value='stripe']").attr("checked","checked");
+	checkpaymentmethod();
+	/*
+	if(jQuery("#stripe-update-payment").hasClass("use"))
+	{
+		jQuery("#stripe-update-payment").trigger('click');
+		jQuery("#stripe-update-payment-holder").hide();
+		jQuery("#change-stripe-detail").hide();
+	}
+	*/
+	}, 0);
+	
+
+    breadValSelect();
+    createNewElement();
+    removeNameLabel();
+    searchCountry();
+
+
+    $(".showUpadd").on("click", function(){
+        slideAddCont();
+    });
+
+
+    var firstShpVal = $(".showShippingOpt").find(".availableShip").find("li:nth-child(1)").text(); 
+    $(".shippingOption").find(".addVal").text(firstShpVal);
+
+    $(".showShpOpt").on("click", function(){
+        slideShpCont();                                       
+    });
+
+    $(".showShippingOpt").on("click", "li", function(){
+        var selectedVal = $(this).text();
+        $(".showShippingOpt li").removeClass("selected");
+        $(this).addClass("selected");
+        $(".shippingOption").find(".addVal").text(selectedVal);
+        slideShpCont();                                       
+    });
+
     //if($("div#checkout div:nth-child(2)").html().indexOf("support@intellectlabs.com") > 0)
 //        $("div#checkout div:nth-child(2)").hide();
     //if($("div.myheader:first").next().html().indexOf("support@intellectlabs.com") > 0)
@@ -8,6 +48,8 @@ jQuery(document).ready(function($){
     if($("#checkout-shipping-form").length == 0)
     {
         $("#co-billing-form").show();
+        $("#billingDetails").find(".ovrlay-bg").show();
+        $("#shippingDetails").find(".ovrlay-bg").hide();
         //jQuery('select').customSelect();
     }
     $("#checkout-login-form").submit(function(){
@@ -64,8 +106,10 @@ jQuery(document).ready(function($){
     $("#checkout-shipping-form").submit(function(){
         if(validateShippingAddressForm())
         {
-            $("#shipping\\:firstname").val(ucFirstAllWords($("#shipping\\:firstname").val()));
+			$("#shipping\\:firstname").val(ucFirstAllWords($("#shipping\\:firstname").val()));
             $("#shipping\\:lastname").val(ucFirstAllWords($("#shipping\\:lastname").val()));
+			// call function to add the new address to the dropdown on both shipping and billing
+			virtualsaveshippingaddress();
             saveShippingAddress();
         }
         return false;
@@ -145,6 +189,25 @@ jQuery(document).ready(function($){
             $("#shippingaddressselectionblock").removeClass('addressselector');
         }
     });
+
+    $("#shipping-address-select li").on("click", function(){
+        if($(this).attr("value") == "")
+        {
+            $("#checkout-shipping-address-new").show();
+            $("#shippingaddressselectionblock").addClass('addressselector');
+            $(this).parent().slideUp();
+            $("#updateNameAdd").hide();
+            
+            //jQuery('select').customSelect();
+        }
+        else
+        {
+            $("#checkout-shipping-address-new").hide();
+            $("#shippingaddressselectionblock").removeClass('addressselector');
+            $("#updateNameAdd").show();
+            //$("#shippingaddressselectionblock").hide();
+        }
+    });    
     
     $("select#billing-address-select").removeAttr('onchange');
     $("select#billing-address-select").change(function(){
@@ -196,6 +259,83 @@ jQuery(document).ready(function($){
     
 });
 
+function searchCountry(){
+    // var usCont = jQuery("#updateNameAdd").find("div:contains('United States')");
+    // var cdCont = jQuery("#updateNameAdd").find("div:contains('Canada')");
+    // jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+
+    // if(usCont){
+    //     jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
+    // }
+    // else if(cdCont){
+    //     jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
+    // }
+    // else{
+    //     jQuery(".showShippingOpt").find("#other-shipping").addClass("availableShip");
+    // }
+}
+
+function removeNameLabel(){
+    jQuery(".customer-name").find("input.no-bg").removeClass("no-bg");
+    jQuery(".customer-name").find("td.label").remove();
+    jQuery(".customer-name").find("table.inputtable").addClass("wdth50");   
+    jQuery(".customer-name").find("table.inputtable:nth-child(2)").addClass("f-right"); 
+}
+
+function slideAddCont(){
+    jQuery(".showUpadd").toggleClass("reverse");                                             
+    jQuery(".listadd").slideToggle("slow");
+}
+
+function slideShpCont(){
+    jQuery(".showShpOpt").toggleClass("reverse");                                            
+    jQuery(".showShippingOpt").slideToggle("slow");
+}
+
+function breadValSelect(){
+    var txtSl = jQuery('#shipping-address-select').find('option:selected').text();
+    txtSl = txtSl.replace(/,/g, "<br />");
+    jQuery("#updateNameAdd").find(".address").html(txtSl);
+
+    jQuery(document).on('click', '#shipping-address-select li', function () {
+        var selectedAdd = jQuery(this).text();
+
+        jQuery('#updateNameAdd').find('.address').html(selectedAdd.replace(/,/g, "<br />"));
+        jQuery('#updateNameAdd').find('.address').contents().first().wrap('<span>To: </span>');
+    });
+
+    jQuery('.address').each(function() {
+        jQuery(this).contents().first().wrap('<span>To: </span>');
+    });
+}
+
+function createNewElement(){
+    var list = jQuery("#shipping-address-select").find("option").size();
+    var optionval = jQuery("#shipping-address-select").find("option:nth-child(1)").html();
+    var selectID = jQuery("#shipping-address-select").attr("id");
+    var selectName = jQuery("#shipping-address-select").attr("name");
+    var listHTML;
+
+    for(var i=1;i<=list;i++){
+      var storeb = jQuery("#shipping-address-select").find('option[value="' + i + '"]').html();
+      var storeb1 = jQuery("#shipping-address-select").find('option[value=""]').html();
+      
+      var storeattr = jQuery("#shipping-address-select").find('option[value="' + i + '"]').attr("value");
+      var storeattr1 = jQuery("#shipping-address-select").find('option[value=""]').attr("value");
+      
+      if(storeb){
+        jQuery(".listadd").append('<li value="' + storeattr + '">' + storeb +  '</li>');
+      }
+      
+      else{
+        jQuery(".listadd").append('<li class="addnewBtn" value="' + storeattr1 + '">+ Add New Address</li>');
+      }  
+    }
+
+    jQuery(".listadd").attr("id", selectID);
+    jQuery(".listadd").attr("name", selectName);
+}
+
 function checkpaymentmethod()
 {
     if(jQuery("input[type='radio'][value='paypal_express']").is(':checked'))
@@ -214,6 +354,7 @@ function checkpaymentmethod()
             }
             else
             {
+				
                 if(jQuery("a#stripe-update-payment").hasClass("unuse"))
                     jQuery("div#change-stripe-detail").show();
                 else
@@ -571,6 +712,16 @@ function saveBillingAddress()
     });
 }
 
+function virtualsaveshippingaddress()
+{
+	var address = jQuery("form#checkout-shipping-form input#shipping\\:firstname").val() + " " + jQuery("form#checkout-shipping-form input#shipping\\:lastname").val() + "," + jQuery("form#checkout-shipping-form input#shipping\\:street1").val() + ",";
+	if(jQuery("form#checkout-shipping-form input#shipping\\:street2").val().length > 0)
+		address += jQuery("form#checkout-shipping-form input#shipping\\:street2").val() + ",";
+	address += jQuery("form#checkout-shipping-form input#shipping\\:city").val() + "," + jQuery("form#checkout-shipping-form select#shipping\\:region_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:region_id").val() + "']").html() + "," + jQuery("form#checkout-shipping-form input#shipping\\:postcode").val() + "," + jQuery("form#checkout-shipping-form select#shipping\\:country_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:country_id").val() + "']").html();
+	//console.log(address);
+	jQuery("form#checkout-shipping-form ul#shipping-address-select li:last").before("<li value='x'>" + address + "</li>");
+}
+
 function saveShippingMethod()
 {
     if(_ischeckoutprocessing)
@@ -586,21 +737,24 @@ function saveShippingMethod()
         url : url,
         data : {'shipping_method':jQuery('input:radio[name="shipping_method"]:checked').val()},
         success : function(result){
+			_ischeckoutprocessing = false;
             result = eval('(' + result + ')');
             //console.log(result['update_section']['html']);
             jQuery("div#paymentmethods").html(result['update_section']['html']);
-            reordersteps(jQuery("#cobilling"));
-            _ischeckoutprocessing = false;
+			jQuery("form#co-billing-form").submit();
+            //reordersteps(jQuery("#cobilling"));
+            
             jQuery("#co-shippingmethod-form input[type=submit]").show();
             jQuery("#co-shippingmethod-form #procImg").remove();
             getCartSummary();
+			jQuery("input[type='radio'][value='stripe']").attr("checked","checked");
             checkpaymentmethod();
-            if(jQuery("#stripe-update-payment").hasClass("use"))
+            /*if(jQuery("#stripe-update-payment").hasClass("use"))
             {
                 jQuery("#stripe-update-payment").trigger('click');
                 jQuery("#stripe-update-payment-holder").hide();
                 jQuery("#change-stripe-detail").hide();
-            }
+            }*/
         }
     });
 }
@@ -621,13 +775,21 @@ function saveShippingAddress()
         url : url,
         data : shippingdata,
         success : function(result){
+			_ischeckoutprocessing = false;
             result = eval('(' + result + ')');
             //console.log(result['update_section']['html']);
             jQuery("div#shippingmethods").html(result['update_section']['html']);
-            reordersubsteps(jQuery("div#shippingmethods").parents("div.checkoutsubstep"));
+			jQuery("form#co-shippingmethod-form input#" + "s_method_flatrate_flatrate").attr("checked","checked");
+			jQuery("form#co-shippingmethod-form").submit();
+			// Select the chosen shipping method on the shipping form and call saveshippingmethod.
+			
+            //reordersubsteps(jQuery("div#shippingmethods").parents("div.checkoutsubstep"));
             if(jQuery("#shipping\\:use_for_billing").is(':checked'))
                 replicateShippingAddress();
-            _ischeckoutprocessing = false;
+			
+			//Save Billing Address here.
+			
+            
             jQuery("#checkout-shipping-form input[type=submit]").show();
             jQuery("#checkout-shipping-form #procImg").remove();
             jQuery("#shipping\\:use_for_billing").removeAttr("checked");
