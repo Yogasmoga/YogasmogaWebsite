@@ -1,6 +1,20 @@
 _stripecheck = false;
 _usesecureurl = true;
 jQuery(document).ready(function($){
+	setTimeout(function(){
+	jQuery("input[type='radio'][value='stripe']").attr("checked","checked");
+	checkpaymentmethod();
+	/*
+	if(jQuery("#stripe-update-payment").hasClass("use"))
+	{
+		jQuery("#stripe-update-payment").trigger('click');
+		jQuery("#stripe-update-payment-holder").hide();
+		jQuery("#change-stripe-detail").hide();
+	}
+	*/
+	}, 0);
+	
+
     breadValSelect();
     createNewElement();
     removeNameLabel();
@@ -340,6 +354,7 @@ function checkpaymentmethod()
             }
             else
             {
+				
                 if(jQuery("a#stripe-update-payment").hasClass("unuse"))
                     jQuery("div#change-stripe-detail").show();
                 else
@@ -703,7 +718,7 @@ function virtualsaveshippingaddress()
 	if(jQuery("form#checkout-shipping-form input#shipping\\:street2").val().length > 0)
 		address += jQuery("form#checkout-shipping-form input#shipping\\:street2").val() + ",";
 	address += jQuery("form#checkout-shipping-form input#shipping\\:city").val() + "," + jQuery("form#checkout-shipping-form select#shipping\\:region_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:region_id").val() + "']").html() + "," + jQuery("form#checkout-shipping-form input#shipping\\:postcode").val() + "," + jQuery("form#checkout-shipping-form select#shipping\\:country_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:country_id").val() + "']").html();
-	console.log(address);
+	//console.log(address);
 	jQuery("form#checkout-shipping-form ul#shipping-address-select li:last").before("<li value='x'>" + address + "</li>");
 }
 
@@ -722,21 +737,24 @@ function saveShippingMethod()
         url : url,
         data : {'shipping_method':jQuery('input:radio[name="shipping_method"]:checked').val()},
         success : function(result){
+			_ischeckoutprocessing = false;
             result = eval('(' + result + ')');
             //console.log(result['update_section']['html']);
             jQuery("div#paymentmethods").html(result['update_section']['html']);
-            reordersteps(jQuery("#cobilling"));
-            _ischeckoutprocessing = false;
+			jQuery("form#co-billing-form").submit();
+            //reordersteps(jQuery("#cobilling"));
+            
             jQuery("#co-shippingmethod-form input[type=submit]").show();
             jQuery("#co-shippingmethod-form #procImg").remove();
             getCartSummary();
+			jQuery("input[type='radio'][value='stripe']").attr("checked","checked");
             checkpaymentmethod();
-            if(jQuery("#stripe-update-payment").hasClass("use"))
+            /*if(jQuery("#stripe-update-payment").hasClass("use"))
             {
                 jQuery("#stripe-update-payment").trigger('click');
                 jQuery("#stripe-update-payment-holder").hide();
                 jQuery("#change-stripe-detail").hide();
-            }
+            }*/
         }
     });
 }
@@ -757,9 +775,12 @@ function saveShippingAddress()
         url : url,
         data : shippingdata,
         success : function(result){
+			_ischeckoutprocessing = false;
             result = eval('(' + result + ')');
             //console.log(result['update_section']['html']);
             jQuery("div#shippingmethods").html(result['update_section']['html']);
+			jQuery("form#co-shippingmethod-form input#" + "s_method_flatrate_flatrate").attr("checked","checked");
+			jQuery("form#co-shippingmethod-form").submit();
 			// Select the chosen shipping method on the shipping form and call saveshippingmethod.
 			
             //reordersubsteps(jQuery("div#shippingmethods").parents("div.checkoutsubstep"));
@@ -768,7 +789,7 @@ function saveShippingAddress()
 			
 			//Save Billing Address here.
 			
-            _ischeckoutprocessing = false;
+            
             jQuery("#checkout-shipping-form input[type=submit]").show();
             jQuery("#checkout-shipping-form #procImg").remove();
             jQuery("#shipping\\:use_for_billing").removeAttr("checked");

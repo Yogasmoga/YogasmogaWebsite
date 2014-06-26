@@ -125,156 +125,7 @@
             <div id="copaymentmethods" class="checkoutsubstep inactive disabled">
                 <div class="checkoutstepsubheader">PAYMENT INFORMATION<span> - YOGASMOGA accepts all major credit cards and PayPal.</span></div>
                 <div id="paymentmethods">
-                        
-<!-- html for card -->
-<form style="display: block;" id="payment_form" action="">
-                                    <div class="paymentmethoddiv">
-            <input type="radio" id="p_method_stripe" value="stripe" name="payment[method]" onclick="payment.switchMethod('stripe')" checked="checked" class="radio paymethod">
-            <label for="p_method_stripe"><img class="v-middle" src="https://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/credit-card-strip.jpg"> </label>
-            </div>
-
-                <div>
-        
-<div id="payment_form_stripe">
-    <!-- img src="" style="margin: 0 0 40px;" / -->
-    <div style="display: block;" id="change-stripe-detail">
-                                    <input type="hidden" name="payment[create_stripe_customer]" value="1 " id="stripe_create_stripe_customer">
-                            <input type="hidden" name="payment[stripe_token]" value="tok_4HMPzPNrIwKv17" id="stripe_token">
-        <table class="twocolumn533">
-            <tbody><tr>
-                <td style="padding-right : 59px;">
-                    <table class="inputtable">
-                        <tbody><tr>
-                            <td class="label"><label for="stripe_cc_number">Credit Card Number</label></td>
-                            <td class="inputholder">
-                                <input type="text" id="stripe_cc_number" name="payment[cc_number]" class="requiredfield" value="" defaulterrormsg="Credit Card Number is required">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="errortext" colspan="2">
-                                <div>&nbsp;</div>
-                            </td>
-                        </tr>
-                    </tbody></table>
-                </td>
-                <td>
-                                            <table class="inputtable">
-                            <tbody><tr>
-                                <td class="label"><label href="#cvc-div" class="poplink" for="stripe_cc_cid">CVC</label></td>
-                                <td class="inputholder">
-                                    <div class="cvc-outer pop-outer">
-                                        <input type="text" class="requiredfield" id="stripe_cc_cid" name="payment[cc_cid]" value="">
-                                        <div id="cvc-div" class="popbox" style="display: none;">
-                                            <div style="width: 330px; text-align:left;s;"><span style="font-size: 12px; font-style: italic;">MasterCard, Visa, Diners Club, Discover and JCB: The CVC code is the last three numbers printed on the back signature panel of the card. For American Express card holders the CVC is the four-digit code on the front side of the card above the card number.</span><br> <img style="margin-top: 10px;" src="http://192.168.2.114/media/wysiwyg/cvc.jpg" alt=""></div>                                            <img id="closesmlight" src="http://192.168.2.114/skin/frontend/new-yogasmoga/yogasmoga-theme/images/cross_red.png">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="errortext" colspan="2">
-                                    <div class="cvc-outer pop-outer">
-                                        <a href="#cvc-div" class="cvv-what-is-this poplink">What is CVC?</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody></table>
-                                    </td>
-            </tr>
-            <tr>
-                <td>
-                    <table class="inputtable">
-                        <tbody><tr>
-                            <td class="label"><label for="stripe_expiration">Expiration Date</label></td>
-                            <td class="inputholder">
-                                <select id="stripe_expiration" name="payment[cc_exp_month]" class="requiredfield" defaulterrormsg="Expiry Date is required.">
-                                                                                                    <option value="0" selected="selected">Month</option>
-                                                                    <option value="1">01 - January</option>
-                                                                    <option value="2">02 - February</option>
-                                                                    <option value="3">03 - March</option>
-                                                                    <option value="4">04 - April</option>
-                                                                    <option value="5">05 - May</option>
-                                                                    <option value="6">06 - June</option>
-                                                                    <option value="7">07 - July</option>
-                                                                    <option value="8">08 - August</option>
-                                                                    <option value="9">09 - September</option>
-                                                                    <option value="10">10 - October</option>
-                                                                    <option value="11">11 - November</option>
-                                                                    <option value="12">12 - December</option>
-                                                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="errortext" colspan="2">
-                                <div>&nbsp;</div>
-                            </td>
-                        </tr>
-                    </tbody></table>
-                </td>
-                <td>
-                    <table class="inputtable nolabel">
-                        <tbody><tr>
-                            <td class="label"></td>
-                            <td class="inputholder">
-                                                                <select id="stripe_expiration_yr" name="payment[cc_exp_year]" class="requiredfield" defaulterrormsg="">
-                                                                    <option value="" selected="selected">Year</option>
-                                                                    <option value="2014">2014</option>
-                                                                    <option value="2015">2015</option>
-                                                                    <option value="2016">2016</option>
-                                                                    <option value="2017">2017</option>
-                                                                    <option value="2018">2018</option>
-                                                                    <option value="2019">2019</option>
-                                                                    <option value="2020">2020</option>
-                                                                    <option value="2021">2021</option>
-                                                                    <option value="2022">2022</option>
-                                                                    <option value="2023">2023</option>
-                                                                    <option value="2024">2024</option>
-                                                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="errortext" colspan="2">
-                                <div>&nbsp;</div>
-                            </td>
-                        </tr>
-                    </tbody></table>
-                </td>
-            </tr>
-        </tbody></table>
-    </div>
-            <input type="hidden" name="payment[stripe_customer_id]" value="" id="stripe_stripe_customer_id"> 
-            </div>
-
-
-
-
-
-    </div>
-                                        <div class="paymentmethoddiv">
-            <input type="radio" id="p_method_paypal_express" value="paypal_express" name="payment[method]" onclick="payment.switchMethod('paypal_express')" class="radio paymethod">
-            <label for="p_method_paypal_express"> 
-
-<!-- PayPal Logo -->
-<img src="http://192.168.2.114/skin/frontend/new-yogasmoga/yogasmoga-theme/images/paypal.jpg" alt="Acceptance Mark" class="v-middle">&nbsp;
-<!--<a href="https://www.paypal.com/us/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside" onclick="javascript:window.open('https://www.paypal.com/us/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside','olcwhatispaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, ,left=0, top=0, width=400, height=350'); return false;">What is PayPal?</a>-->
-<!-- PayPal Logo -->
-
-
-</label>
-            </div>
-
-                <div>
-        <ul class="form-list" id="payment_form_paypal_express" style="display:none;">
-    <li class="form-alt">You will be redirected to the PayPal website.</li>
-    </ul>
-    </div>
-                                        <input type="submit" value="" class="loginbtn spbutton custombtn checkoutcontinuebtn" name="send" downimageurl="http://192.168.2.114/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/continue_on.png" imageurl="http://192.168.2.114/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/continue_off.png" style="background-image: url(&quot;http://192.168.2.114/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/continue_off.png&quot;);">
-            <div class="cleaner"></div>
-            <div class="loginerrormsg errormsg" id="paymentmethoderrormsg"></div>      
-        </form>
-
-<!-- html for card -->
-
-
+					<?php echo $this->getChildHtml('payment'); ?>
                 </div>
             </div>
         </div>
@@ -295,6 +146,9 @@
 
         
         <div class="ovrlay-bg"></div>
+		<div id="checkout-submit">
+		<input id="final_checkout" type="submit" style="background-image: url(&quot;http://192.168.2.121/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/continue_off.png&quot;); display: inline;" imageurl="http://192.168.2.121/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/continue_off.png" downimageurl="http://192.168.2.121/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/continue_on.png" name="send" class="loginbtn spbutton custombtn checkoutcontinuebtn" value="">
+		</div>
     </li>
     <!-- ReviewOrder -->
 </ul>
