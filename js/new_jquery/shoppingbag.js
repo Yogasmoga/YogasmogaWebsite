@@ -84,13 +84,13 @@ jQuery(document).ready(function($){
     $("#signin").live("click",function(){
         _isClickSigninMenu = true;
     });
-    $(document).on("click","#continuecheckout",function(e){
-        e.preventDefault();
-        if(!_islogedinuser) {
+    if(!_islogedinuser) {
+        $(document).on("click","#continuecheckout",function(e){
+            e.preventDefault();        
             _isClickSigninMenu = true;
             $("#signing_popup").dialog( "open" );            
-        }        
-    });
+        });
+    }        
 //    $(document).on("click","#continuecheckout",function(e){
 //        e.prevenDefault();
 //        alert('22');
