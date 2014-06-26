@@ -9,12 +9,12 @@
 
 
 /****Common Styles****/
-.f-left{float: left;}
+.f-left{float: left;text-transform: none;}
 .f-right{float: right;}
 .f-none{float: none;}
 .l-align{text-align: left !important;}
 .r-align{text-align: right !important;}
-.c-align{text-align: center !important;}
+.c-align{text-align: center !important;text-transform: none;}
 .clear-fix{clear:both;}
 .in-bl{display: inline-block !important;}
 .bl{display: block;}
@@ -416,7 +416,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .cont-full > ul{margin: 0 0 20px;}
 .cont-full li{padding: 5px 0;}
 .capstxt{text-transform: uppercase;}
-.strip-gry{background: #999; color: #fff; font-style: italic; text-transform: none; /*margin: 10px 0 0;*/ text-align: center; padding: 20px 10px 10px 10px; clear: both;}
+.strip-gry{background: #999; color: #fff; font-style: italic; text-transform: none; /*margin: 10px 0 0;*/ text-align: center; padding: 10px; clear: both;}
 
 .adddields {clear: both; float: left; width: 100%; margin: 0 0 15px;}
 .adddields > form {display: block;}
@@ -824,7 +824,8 @@ div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{font: 13px
 }
 .adddields p {
     font: 11px gothambook;
-    text-transform: uppercase;
+    text-transform: none;
+    text-align: left;
 }
 
 

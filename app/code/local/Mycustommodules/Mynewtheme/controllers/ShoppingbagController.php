@@ -870,7 +870,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
 
             $html .='<li class="promotion">
-                            <span class="f-left capstxt">'.$promotioncode.' promo  used  |</span>
+                            <span class="f-left">&#39;'.$promotioncode.'&#39; promo used | </span>
                             <span class="removepromotion"><a>remove</a></span>
                             <span class="f-right" class="active" usedpromotion ="'.$discount.'">-$'.$discount.'</span>
                         </li>';
@@ -888,7 +888,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
             $html .='<li class="giftcard">
-                            <span class="f-left capstxt">$'.$discount1.' Gift of YS used  |</span>
+                            <span class="f-left">$'.$discount1.' Gift Cards used  |</span>
                             <span class="removegiftcart"><a>remove</a></span>
 
                             <span class="f-right" usedgiftcard ="'.$discount.'">-$'.$discount.'</span>
@@ -900,7 +900,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
                  $html .=  '<li>
-                            <span class="f-left">Shipping: FREE</span>
+                            <span class="f-left">Shipping: Free</span>
                             <span class="f-right capstxt">Free</span>
                         </li>
                     </ul>
@@ -911,9 +911,9 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         <form>';
         $customerId = Mage::getModel('customer/session')->getCustomerId();
         if(!$customerId)
-             $html .=' <label><input type="text" name="smogi" class="gry" available="0" id="smogi" value="You must be signed in to use SMOGI Bucks" readonly="readonly"/><span  class="smogi-login">+</span></label>
-                        <label><input type="text" name="promocode" class="gry" id="promocode" value="You must be signed in to Add a promo code" readonly="readonly" /><span class="promo-login">+</span></label>
-                        <label><input type="text" name="giftcartcode" class="gry" id="giftcartcode" value="You must be signed in to add a gift card code" readonly="readonly" /><span class="giftcardlogin">+</span></label>';
+             $html .=' <label><input type="text" name="smogi" class="gry" available="0" id="smogi" value="You must be signed in to use SMOGI Bucks" disabled="disabled"/><span  class="smogi-login">+</span></label>
+                        <label><input type="text" name="promocode" class="gry" id="promocode" value="You must be signed in to Add a promo code" disabled="disabled" /><span class="promo-login">+</span></label>
+                        <label><input type="text" name="giftcartcode" class="gry" id="giftcartcode" value="You must be signed in to add a gift card code" disabled="disabled" /><span class="giftcardlogin">+</span></label>';
         else{
 
 
@@ -968,12 +968,12 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $html .=' <label><input type="text" class = "'.$gryclasssmogi.'" available="'.$getcustomerpoints.'" name="smogi" id="smogi" value="'.$showedpoints.'" '.$applysmogidisable.'/><span class="'.$applysmogi.'">+</span><span class="error-count"></span></label>';
             }
             if($showedpoints < 1)
-                $html .=' <label><input type="text" name="smogi" class="gry" id="smogi" readonly="readonly" placeholder="You have no more available SMOGI Bucks" '.$applysmogidisable.'/><span class="">+</span><span class="error-count"></span></label>';
+                $html .=' <label><input type="text" name="smogi" class="gry" id="smogi" placeholder="You have no more available SMOGI Bucks" '.$applysmogidisable.'/><span class="">+</span><span class="error-count"></span></label>';
 
             // check if promotion code is used or not
             if($promotioncode)
             {
-                $html .='<label><input type="text" name="promocode" id="promocode" value="'.$promotioncode.' promo used"   '.$applypromodisable.' readonly="readonly" class="gry" /><span class="">+</span><span class="error-count"></span></label>';
+                $html .='<label><input type="text" name="promocode" id="promocode" value="'.$promotioncode.' promo used"   '.$applypromodisable.' class="gry" /><span class="">+</span><span class="error-count"></span></label>';
             }
             else
             {
