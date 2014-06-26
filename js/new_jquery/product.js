@@ -3,6 +3,20 @@ jQuery(document).ready(function($){
     wishList();
     readmore();
 
+    $("#orderitem, #preorderitem").live("click", function(){
+        setTimeout(function(){
+            _isClickSigninMenu = true;
+            if(!_islogedinuser)
+                showShoppingBagHtml();
+            else{
+                automaticapplysmogibucks();
+            }
+            $(".open-cart").trigger("click");
+
+        },100);
+    });
+
+
     // image lazy loading
     $(function() {
         $("img.lazy").lazyload({

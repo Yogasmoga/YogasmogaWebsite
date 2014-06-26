@@ -200,6 +200,10 @@ function loginCustomer()
                     automaticapplysmogibucks(); // automatically apply smogi bucks in the shopping cart
                     //showShoppingBagHtml(); //call showShoppingBagHtml to load customer cart after login via smogi login button
                 }
+                if(_isClickContinueNotLogedin)
+                {
+                    automaticapplysmogibucks();
+                }
 
             }
             else
