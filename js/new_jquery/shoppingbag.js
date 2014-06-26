@@ -44,10 +44,11 @@ jQuery(document).ready(function($){
              }
          });
         $("#smogi").live("blur", function () {
-            var storeVal = $(this).attr("available");
-            var appliedvalue = jQuery(".smogi span.f-right").attr("usedpoints");
+            var storeVal = jQuery(this).attr("available")? jQuery(this).attr("available"):0;
+            var appliedvalue = jQuery(".smogi span.f-right").attr("usedpoints")?jQuery(".smogi span.f-right").attr("usedpoints"):0;
             //var availablesmogi = '';
-            var availablesmogi = (jQuery("#smogi").attr("available")).trim()? (jQuery("#smogi").attr("available")).trim():'';
+            var availablesmogi = (jQuery("#smogi").attr("available")).trim()? (jQuery("#smogi").attr("available")).trim():0;
+            
 //            if(availablesmogi !='')
 //            {
 //                availablesmogi = (jQuery("#smogi").attr("available")).trim();
@@ -56,12 +57,13 @@ jQuery(document).ready(function($){
             if(availablesmogi !='' && appliedvalue  !='')
             {
                 appliedvalue = parseInt(appliedvalue);
+                availablesmogi = parseInt(availablesmogi);
                     if ($(this).val() == "") {
-                        $(this).attr("value", availablesmogi - appliedvalue);
+                        $(this).val(availablesmogi - appliedvalue);
                     }
             }else{
-                if ($(this).val() == "") {
-                    $(this).attr("value", storeVal);
+                if ($(this).val() == "" && storeVal !="") {
+                    $(this).val(storeVal);
                 }
             }
          });
@@ -82,6 +84,18 @@ jQuery(document).ready(function($){
     $("#signin").live("click",function(){
         _isClickSigninMenu = true;
     });
+    $(document).on("click","#continuecheckout",function(e){
+        e.preventDefault();
+        if(!_islogedinuser) {
+            _isClickSigninMenu = true;
+            $("#signing_popup").dialog( "open" );            
+        }        
+    });
+//    $(document).on("click","#continuecheckout",function(e){
+//        e.prevenDefault();
+//        alert('22');
+//    });
+    
 
     // add bracelet in cart
     var pid = '';
@@ -514,6 +528,7 @@ function removesmogibucks()
     var url = homeUrl + 'mynewtheme/smogi/removesmogibucks';
     if(_usesecureurl)
         url = securehomeUrl + 'mynewtheme/smogi/removesmogibucks';
+    jQuery('.zindexH').show();
     jQuery.ajax({
         url : url,
         type : 'POST',
@@ -526,10 +541,12 @@ function removesmogibucks()
             {
                 _showShoppingbagLoader = false;
                 showShoppingBagHtml();
+                jQuery('.zindexH').hide();
             }
             else
             {
                 jQuery('#redeemresult').empty().append('there is some error while removing smogi bucks');
+                
             }
 
         }
@@ -720,7 +737,6 @@ function redeemgiftcardcode()
             {
                 _showShoppingbagLoader = false;
                 showShoppingBagHtml();
-                jQuery(".giftcarloader").empty();
                 jQuery('.zindexH').hide();
             }
             else
