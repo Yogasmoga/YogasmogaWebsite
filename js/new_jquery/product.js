@@ -4,7 +4,40 @@ jQuery(document).ready(function($){
     readmore();
 
     $("#orderitem, #preorderitem").live("click", function(){
+        jQuery("div.producterrorcontainer div.errormsg").empty();
+        var errormsg = '';
+        if(jQuery("div#sizecontainer div.dvselectedsize").length == 0 && _productorderqty == 0)
+            errormsg = "Please select quantity and size to continue.";
+        else
+        {
+            if(_productorderqty == 0)
+                errormsg = "Please select quantity to continue.";
+            if(jQuery("div#sizecontainer div.dvselectedsize").length == 0)
+                errormsg = "Please select size to continue.";
+        }
+        if(errormsg != '')
+        {
+            jQuery("div.producterrorcontainer div.errormsg").hide();
+            jQuery("div.producterrorcontainer div.errormsg").html(errormsg);
+            jQuery("div.producterrorcontainer div.errormsg").fadeIn('fast');
+            jQuery("#orderitem").addClass('bagdisabled');
+            jQuery("#orderitem").removeClass('spbutton');
+            return;
+        }
+       // var errormsg = '';
         setTimeout(function(){
+//            if(jQuery("div#sizecontainer div.dvselectedsize").length == 0 && _productorderqty == 0)
+//                {errormsg = "Please select quantity and size to continue.";alert('if');}
+//            else
+//            {
+//                if(_productorderqty == 0)
+//                    errormsg = "Please select quantity to continue.";
+//                if(jQuery("div#sizecontainer div.dvselectedsize").length == 0)
+//                    errormsg = "Please select size to continue.";
+//                //alert('else');
+//                return;
+//            }
+
             _isClickSigninMenu = true;
             if(!_islogedinuser)
                 showShoppingBagHtml();
@@ -13,7 +46,7 @@ jQuery(document).ready(function($){
             }
             $(".open-cart").trigger("click");
 
-        },100);
+        },20);
     });
 
 

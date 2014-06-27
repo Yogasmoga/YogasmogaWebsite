@@ -9,12 +9,12 @@
 
 
 /****Common Styles****/
-.f-left{float: left;}
+.f-left{float: left;text-transform: none;}
 .f-right{float: right;}
 .f-none{float: none;}
 .l-align{text-align: left !important;}
 .r-align{text-align: right !important;}
-.c-align{text-align: center !important;}
+.c-align{text-align: center !important;text-transform: none;}
 .clear-fix{clear:both;}
 .in-bl{display: inline-block !important;}
 .bl{display: block;}
@@ -412,12 +412,12 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .continuelink{background: url("../images/shopping-cart/gry-btn.png") no-repeat top left; margin: 0; padding: 16px 5px; width: 45%; display: inline-block; font: 12px gothambold;}
 .continuelink.grn{background-image: url("../images/shopping-cart/grn-btn.png"); color: #fff;}
 .cont-full{/*margin: 0 0 20px;*/ padding: 20px 20px 0px 20px; background: #eeefef;}
-.totalAmnt{border-bottom: 1px solid #dbdbdb; padding: 0 0 10px; margin: 0 0 10px; font-size: 16px; width: 100%; float: left;}
+.totalAmnt{font-weight: bold;border-bottom: 1px solid #dbdbdb; padding: 0 0 10px; margin: 0 0 10px; font-size: 14px; width: 100%; float: left;}
 .cont-full li, .cont-full > ul{display: inline-block; width: 100%;}
 .cont-full > ul{margin: 0 0 20px;}
 .cont-full li{padding: 5px 0;}
 .capstxt{text-transform: uppercase;}
-.strip-gry{background: #999; color: #fff; font-style: italic; text-transform: none; /*margin: 10px 0 0;*/ text-align: center; padding: 20px 10px 10px 10px; clear: both;}
+.strip-gry{background: #999; color: #fff; font-style: italic; text-transform: none; /*margin: 10px 0 0;*/ text-align: center; padding: 10px; clear: both;}
 
 .adddields {clear: both; float: left; width: 100%; margin: 0 0 15px;}
 .adddields > form {display: block;}
@@ -443,7 +443,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 ul.checkout-cont{margin: 0; padding: 0; width: 100%; list-style: none; margin:20px 0 0;}
 ul.checkout-cont li {float:left; margin: auto; border-left:1px solid #fff; min-height: 600px; padding: 20px 0 0; position: relative; width: 33.2%;}
 ul.checkout-cont li.active{background: url('../images/big-divider.png') no-repeat center top; background-size: 100% auto;}
-ul.checkout-cont li .ovrlay-bg{display: none; background: #d6d6d6; height: 100%; width: 100%; position: absolute; top: 0; left: 0; opacity: 0.5;}
+ul.checkout-cont li .ovrlay-bg{display: block; background: #d6d6d6; height: 100%; width: 100%; position: absolute; top: 0; left: 0; opacity: 0.5;}
 ul.checkout-cont li.active .ovrlay-bg{display: none;}
 .checkout-details{padding: 38px 20px 20px; display: block;}
 .headD{font: 30px/40px itcavantgardeprobk, Arial; text-align:center; text-transform:uppercase; margin-bottom:30px;}
@@ -804,11 +804,11 @@ div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-trans
 .removesmogi, .removegiftcart, .removepromotion {
     cursor: pointer;
     float: left;
-    font-size: 11px;
+    font-size: 12px;
     margin: 1px 0 0 4px;
 }
 .removesmogi a, .removegiftcart a, .removepromotion a{
-    color: #d90d3d;
+    color: #d90d3d;text-transform: none;   text-decoration: underline;
 }
 .bagerror {
     clear: both;
@@ -824,8 +824,9 @@ div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-trans
     width: auto;
 }
 .adddields p {
-    font: 11px gothambook;
-    text-transform: uppercase;
+    font: 12px gothambook;
+    text-transform: none;
+    text-align: left;
 }
 
 
@@ -887,11 +888,13 @@ div.email-pref input[type="checkbox"]:checked + label:before { content: url("../
 	left: 0;
 	width: 100%;
 	height: 200px;
+        display: none;
 }
 ul.checkout-cont li .listadd{display: none;}
 ul.checkout-cont li .listadd > li {
     height: auto;
     min-height: inherit;
+    cursor: pointer;
     padding: 7px 0;
     width: 100%;
 }
@@ -916,7 +919,9 @@ ul.checkout-cont li .listadd > li {
     display: inline-block;
     min-height: inherit;
     padding: 0;
-    width: 100%;/*
+    width: 100%;
+    cursor: pointer;
+    /*
  background: transparent;
  z-index: 9999;
  position: absolute;
@@ -950,3 +955,11 @@ img#closelightbox{top: 40px !important; right: 28px !important; width: 21px;}
 table.tblwishlist tr.last td{border:none !important;}
 table.tblwishlist td.prprice{padding-left: 0 !important; text-align: left !important;}
 table.tblwishlist thead th{padding-bottom: 0 !important;}
+/***Checkout header footer display none**/
+.checkout-onepage-index .header-right.f-right,
+.checkout-onepage-index .quick-access,
+.checkout-onepage-index .main-menu.ctag-menu,
+.checkout-onepage-index #sitemap{
+	display: none;
+}
+

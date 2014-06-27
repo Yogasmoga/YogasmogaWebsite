@@ -269,13 +269,9 @@ table.co-ov-table tfoot tr.last td
 }
 #checkout-submit
 {
-    margin-top : 40px;
-    float : right;
-    width : 240px;
-    height : 43px;
-    background-image : url('../images/checkout/submit_off1.png');
-    background-repeat : no-repeat;
-    margin-right : 20px;
+    height: 43px;
+    margin: 40px auto auto;
+    width: 100%;
 }
 div#coshipping, div#cobilling
 {
@@ -525,7 +521,134 @@ div#coshipping, div#cobilling {
     margin: auto;
     max-width: 80%;
     min-width: 50%;
-    overflow: hidden;
+    overflow: inherit;
     padding: 0;
     width: 304px;
+}
+body.checkout-onepage-index li.form-alt {
+    background: none repeat scroll 0 0 #ededed;
+    display: block;
+    font: 15px/24px gothammedium;
+    margin: auto auto 40px;
+    min-height: inherit;
+    padding: 20px 0;
+    width: 100%;
+}
+div.paymentmethoddiv {
+    float: left;
+    margin: 0 0 20px;
+    overflow: hidden;
+    text-align: center;
+    width: 50%;
+}
+
+body.checkout-onepage-index #payment_form_stripe {
+    display: inline-block;
+    margin: 20px auto 30px;
+    width: 100%;
+}
+body.checkout-onepage-index #change-stripe-detail, body.checkout-onepage-index #stripe-payment-details, body.checkout-onepage-index a#stripe-update-payment {
+    display: none;
+    margin-left: 0;
+}
+
+#stripe-payment-details li {
+    clear: both;
+    display: block;
+    height: auto;
+    min-height: inherit;
+    padding: 0;
+    text-align: center;
+    width: auto;
+}
+
+#stripe-payment-details{
+   height: 114px;
+    margin: auto auto 30px;
+    padding: 85px 0 0;
+    text-align: center;
+    background: url("../images/checkout/creditblck.jpg") no-repeat top left;
+}
+
+
+#stripe-payment-details span {
+    color: #fff;
+    font: 19px gothambooklight;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px #666;
+}
+
+#stripe-payment-details li {
+    clear: both;
+    display: inline;
+    height: auto;
+    min-height: inherit;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+}
+
+
+#tblcheckoutsteps select#stripe_expiration_yr, #tblcheckoutsteps select#stripe_expiration {
+    display: block;
+    font: 11px gothambook;
+    height: 26px;
+    padding: 5px;
+    width: 100%;
+}
+
+table.inputtable tr:first-child td{
+    border: 0 none !important;
+}
+
+.crebg{
+    background: url("../images/checkout/creditbg.png") no-repeat top left;
+    height: 197px;
+    margin: 0;
+    padding: 65px 20px 0;
+    width: 100%;
+}
+
+#tblcheckoutsteps table.crebg td {
+    display: inline-block;
+    float: left;
+    padding: 0;
+    vertical-align: middle;
+    width: 100%;
+}
+
+table.twocolumn533.crebg table.inputtable input {
+    float: left;
+    font: 11px gothambook;
+    height: 20px;
+    padding: 5px;
+    width: 90%;
+}
+
+table.inputtable {
+    width: 100%;
+}
+
+
+.label > label {
+    color: #545454;
+    float: left;
+    font: 11px gothambook;
+    margin: 4px 0 0;
+}
+
+.twocolumn533.crebg tr {
+    display: block;
+    height: 33px;
+}
+.paymentmethoddiv img{
+    cursor: pointer;
+}
+
+.nopay{
+    background: none repeat scroll 0 0 #eeefef;
+    font: 13px gothambook;
+    margin: 0 0 30px;
+    padding: 20px;
 }
