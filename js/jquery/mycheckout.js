@@ -14,6 +14,8 @@ jQuery(document).ready(function($){
 	*/
 	}, 0);
 
+
+    changeFlag();
 	getSelectval();
     trimCountryText();
     breadValSelect();
@@ -155,7 +157,7 @@ jQuery(document).ready(function($){
                 return false;
             _ischeckoutprocessing = true;
             jQuery("#payment_form input[type=submit]").hide();
-            jQuery("#payment_form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/checkout/checkout-loader.gif' />");
+            jQuery("#payment_form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/new-loader.gif' />");
             if(_stripecheck)
             {
                 if(jQuery("#payment_form input[type='text']").length == 0)
@@ -254,7 +256,31 @@ jQuery(document).ready(function($){
     
 });
 
+function changeFlag(){
+    var flagVal = jQuery(this).find("option:selected").text();
 
+    if(flagVal == "United States"){
+        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+        jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
+        jQuery(".shipDetail").find(".country").find("img").addClass("dnone");
+        jQuery(".shipDetail").find(".country").find("img.usflag").removeClass("dnone");
+    }
+
+    else if(flagVal == "Canada"){
+        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+        jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
+        jQuery(".shipDetail").find(".country").find("img").addClass("dnone");
+        jQuery(".shipDetail").find(".country").find("img.cnflag").removeClass("dnone");
+    }
+
+    else{
+        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+        jQuery(".showShippingOpt").find("#other-shipping").addClass("availableShip");
+        jQuery(".shipDetail").find(".country").find("img").addClass("dnone");
+        jQuery(".shipDetail").find(".country").find("img.glflag").removeClass("dnone");
+    }
+
+}
 
 function getShippingID (){
     jQuery(".shippingOption").find("ul").find("li").removeClass("selected");
@@ -293,16 +319,22 @@ function getSelectval(){
         if(getVal == "United States"){
             jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
             jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
+            jQuery(".shipDetail").find(".country").find("img").addClass("dnone");
+            jQuery(".shipDetail").find(".country").find("img.usflag").removeClass("dnone");
         }
 
         else if(getVal == "Canada"){
             jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
             jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
+            jQuery(".shipDetail").find(".country").find("img").addClass("dnone");
+            jQuery(".shipDetail").find(".country").find("img.cnflag").removeClass("dnone");
         }
 
         else{
             jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
             jQuery(".showShippingOpt").find("#other-shipping").addClass("availableShip");
+            jQuery(".shipDetail").find(".country").find("img").addClass("dnone");
+            jQuery(".shipDetail").find(".country").find("img.glflag").removeClass("dnone");
         }
 
         addUpdTxt();
@@ -490,7 +522,7 @@ function submitcheckout()
         return;
     _ischeckoutprocessing = true;
     jQuery("#checkout-submit").hide();
-    jQuery("#checkout-submit").after("<img id='procImg' src='" + skinUrl + "images/checkout/checkout-loader.gif' />");
+    jQuery("#checkout-submit").after("<img id='procImg' src='" + skinUrl + "images/new-loader.gif' />");
     var url = homeUrl + 'checkout/onepage/saveOrder';
     if(_usesecureurl)
         url = securehomeUrl + 'checkout/onepage/saveOrder';
@@ -775,7 +807,7 @@ function saveBillingAddress()
         return;
     _ischeckoutprocessing = true;
     jQuery("#co-billing-form input[type=submit]").hide();
-    jQuery("#co-billing-form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/checkout/checkout-loader.gif' />");
+    jQuery("#co-billing-form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/new-loader.gif' />");
     var billingdata = jQuery("#co-billing-form").serialize();
     var url = homeUrl + 'checkout/onepage/saveBilling';
     if(_usesecureurl)
@@ -822,7 +854,7 @@ function saveShippingMethod()
         return;
     _ischeckoutprocessing = true;
     jQuery("#co-shippingmethod-form input[type=submit]").hide();
-    jQuery("#co-shippingmethod-form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/checkout/checkout-loader.gif' />");
+    jQuery("#co-shippingmethod-form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/new-loader.gif' />");
     var url = homeUrl + 'checkout/onepage/saveShippingMethod';
     if(_usesecureurl)
         url = securehomeUrl + 'checkout/onepage/saveShippingMethod';
@@ -863,7 +895,7 @@ function saveShippingAddress()
         return;
     _ischeckoutprocessing = true;
     jQuery("#checkout-shipping-form input[type=submit]").hide();
-    jQuery("#checkout-shipping-form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/checkout/checkout-loader.gif' />");
+    jQuery("#checkout-shipping-form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/new-loader.gif' />");
     var shippingdata = jQuery("#checkout-shipping-form").serialize();
     var url = homeUrl + 'checkout/onepage/saveShipping';
     if(_usesecureurl)

@@ -522,7 +522,7 @@ ul.checkout-cont li > .selectAddress ul li span{
     width: 100%;
 }
 span.country {
-    background: none repeat scroll 0 0 #ddd;
+	text-align: center;
     float: right;
     height: 23px;
     width: 36px;
@@ -554,10 +554,12 @@ span.country {
     padding: 7px 8px;
     width: 94%;
 }
-#checkout-shipping-form table.inputtable.wdth50 .inputholder > input {
+#checkout-shipping-form table.inputtable.wdth50 .inputholder > input,
+#co-billing-form table.inputtable.wdth50 .inputholder > input {
     width: 85% !important;
 }
-#checkout-shipping-form table.inputtable td.errortext {
+#checkout-shipping-form table.inputtable td.errortext,
+#co-billing-form table.inputtable td.errortext {
     height: 10px !important;
     font-family: gothambook;
     line-height: 15px;
@@ -567,22 +569,27 @@ span.country {
 	text-align: center !important;
 	font: 12px gothambook !important;
 }
-#checkout-shipping-form table.inputtable td.errortext{
+#checkout-shipping-form table.inputtable td.errortext,
+#co-billing-form table.inputtable td.errortext{
 	width: 90%;
 }
-#checkout-shipping-form table.inputtable.wdth50 {
+#checkout-shipping-form table.inputtable.wdth50,
+#co-billing-form table.inputtable.wdth50 {
     float: left;
     width: 50% !important;
 }
-#checkout-shipping-form table.inputtable.wdth20 {
+#checkout-shipping-form table.inputtable.wdth20,
+#co-billing-form table.inputtable.wdth20 {
     float: left;
     width: 19% !important;
 }
-#checkout-shipping-form table.inputtable.wdth20 .inputholder > input {
+#checkout-shipping-form table.inputtable.wdth20 .inputholder > input,
+#co-billing-form table.inputtable.wdth20 .inputholder > input {
     width: 69% !important;
 }
 
-#checkout-shipping-form table.inputtable.wdth30 {
+#checkout-shipping-form table.inputtable.wdth30,
+#co-billing-form table.inputtable.wdth30 {
     float: left;
     margin: 0 6px;
     width: 26% !important;
@@ -852,10 +859,12 @@ ul.checkout-cont li .listadd > li {
     padding: 7px 0;
     width: 100%;
 }
-#checkout-shipping-form table.inputtable {
+#checkout-shipping-form table.inputtable,
+#co-billing-form table.inputtable {
     width: 100% !important;
 }
-#checkout-shipping-form table.inputtable tr:first-child td{
+#checkout-shipping-form table.inputtable tr:first-child td,
+#co-billing-form table.inputtable tr:first-child td{
     border-bottom: 0 none;
 }
 #tblcheckoutsteps select#shipping\:country_id{
