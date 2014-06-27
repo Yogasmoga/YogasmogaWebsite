@@ -976,7 +976,7 @@ ul.checkout-cont li .listadd > li {
 {
         background: transparent;
 	z-index: 99999;
-	position: absolute;
+	position: fixed;
 	width: 100%;
         display: none;
         top: 0;
