@@ -117,48 +117,89 @@ jQuery(document).ready(function($) {
 //    });
 
 });
-function scrollingLink() {
-    var wdth = jQuery(".cntn-scroll").width();
-    var nav = jQuery('.scroller_anchor');
-    var ftr = jQuery('#sitemap').height();
-    var hdr = jQuery('.header-container').height();
+    // Category links fixed on scroll function
+    var scrollBottom = jQuery("#sitemap").height();
+    function scrollingLink(){
+        var wdth = jQuery(".cntn-scroll").width();
+        var nav = jQuery('.scroller_anchor');
+        var ftr = jQuery('#sitemap').height();
+        //var ftrt = jQuery('#sitemap');
+        //var contentNav2 = ftrt.offset().top;
+        
+        if (nav.length) {
+            
+            var contentNav = nav.offset().top;
+            jQuery(window).scroll(function(){                                     
+                if(jQuery(window).scrollTop() >= contentNav && jQuery('.cntn-scroll').css('position') != 'fixed') {
+                    // Change the CSS of the scroller to hilight it and fix it at the top of the screen.
+                    jQuery('.cntn-scroll').css({
+                        'position': 'fixed',
+                        'top': '0'
+                    });
+                    
+                    // this is container div class
+                    jQuery(".cntn-scrol-not").css({
+                        marginLeft: wdth
+                    });
+                }
+                else if(jQuery(window).scrollTop() < contentNav && jQuery('.cntn-scroll').css('position') != 'relative') {         
+                    // Change the CSS and put it back to its original position.
+                    jQuery('.cntn-scroll').css({
+                        'position': '',
+                        'top': '',
+                        'bottom': ''
+                    });
 
-    if (nav.length) {
-        var contentNav = nav.offset().top;
-        jQuery(window).scroll(function() {
-            if (jQuery(window).scrollTop() >= contentNav && jQuery('.cntn-scroll').css('position') != 'fixed') {
-                // Change the CSS of the scroller to hilight it and fix it at the top of the screen.
-                jQuery('.cntn-scroll').css({
-                    'position': 'fixed',
-                    'top': '0'
-                });
+                    // this is container div class
+                    jQuery(".cntn-scrol-not").css({
+                        marginLeft: ''
+                    });
+                }
+                else if(jQuery(window).scrollTop() < contentNav && jQuery('.cntn-scroll').css('position') != 'relative') {
+                    //alert(scrollBottom);
+                }
+                else{}
+                 if(document.documentElement.clientHeight + jQuery(document).scrollTop() >= document.body.offsetHeight  && jQuery('.cntn-scroll').css('position') == 'fixed') {
+                    // Change the CSS of the scroller to hilight it and fix it at the top of the screen.
+                 
+                 /*  jQuery('.cntn-scroll').css({
+                        'position': 'fixed',
+                        'top': '0',
+                        'margin-top': -ftr
+                    });*/
+                   
+                       jQuery('.cntn-scroll').animate({
+                                    position:'fixed',
+                                    opacity:'1.5',
+                                    top:'0',
+                                    top:-ftr
+                                     });                    
+                    
+                    // this is container div class
+                    jQuery(".cntn-scrol-not").css({
+                        marginLeft: wdth
+                    });
+                }
+                else if(jQuery(window).scrollTop() >= contentNav && jQuery('.cntn-scroll').css('position') == 'fixed'){
+                    // Change the CSS of the scroller to hilight it and fix it at the top of the screen.
+                    jQuery('.cntn-scroll').css({
+                        'position': 'fixed',
+                        'top': '0',
+                        'margin-top':'0em'
+                        
+                    });
+                    
+                    
+                    
+                    // this is container div class
+                    jQuery(".cntn-scrol-not").css({
+                        marginLeft: wdth
+                    });
+                }
+            });
+        }
 
-                // this is container div class
-                jQuery(".cntn-scrol-not").css({
-                    marginLeft: wdth
-                });
-            }
-            else if (jQuery(window).scrollTop() < contentNav && jQuery('.cntn-scroll').css('position') != 'relative') {
-                // Change the CSS and put it back to its original position.
-                jQuery('.cntn-scroll').css({
-                    'position': '',
-                    'top': '',
-                    'bottom': ''
-                });
-
-                // this is container div class
-                jQuery(".cntn-scrol-not").css({
-                    marginLeft: ''
-                });
-            }
-            else if (jQuery(window).scrollTop() < contentNav && jQuery('.cntn-scroll').css('position') != 'relative') {
-                //alert(scrollBottom);
-            }
-        });
-    }
-
-}
-;
+    };
 
 function readmore() {
     jQuery(".readmore").live("click", function() {
@@ -220,3 +261,73 @@ function wishList() {
 
     });
 }
+
+
+function scrollingContentLink(){
+        var wdth = jQuery(".top-divider").width();
+        var nav = jQuery('.scroller_content');
+        var ftr = jQuery('#sitemap').height();  
+        var ftr1 = jQuery('#sitemap');
+        if (ftr1.length) {          
+            var contentNav = ftr1.offset().top;
+            jQuery(window).scroll(function(){                                     
+                if(jQuery(window).scrollTop() >= document.body.offsetHeight && jQuery('.top-divider').css('position') != 'fixed') {
+                    
+                         jQuery('.top-divider').css({
+                        'position': 'fixed',
+                        'top': '0'
+                        
+                    });
+                    
+                    // this is container div class
+                    jQuery(".top-divider").css({
+                        marginLeft: wdth
+                    });
+                }
+                else if(jQuery(window).scrollTop() < contentNav && jQuery('.top-divider').css('position') != 'relative') {  
+                
+                    // Change the CSS and put it back to its original position.
+                    jQuery('.top-divider').css({
+                        'position': '',
+                        'top': '',
+                        'bottom': ''
+                    });
+
+                    // this is container div class
+                    jQuery(".top-divider").css({
+                        marginLeft: ''
+                    });
+                }
+                else if(jQuery(window).scrollTop() < contentNav && jQuery('.top-divider').css('position') != 'relative') {
+                    //alert(scrollBottom);
+                }
+                else{}
+                 if(document.documentElement.clientHeight + jQuery(document).scrollTop() >= document.body.offsetHeight  && jQuery('.top-divider').css('position') == 'fixed') {
+                    
+                           
+                       jQuery('.top-divider').animate({
+                                    position:'',
+                                    opacity:'1.5',
+                                    top:'0',
+                                    top:'-2em'
+                                     });                    
+                    
+                    // this is container div class
+                  
+                }
+                else {  
+                
+                    jQuery('.top-divider').css({
+                        'position': '',
+                        'top': '',
+                        'bottom': ''
+                    });
+    
+                    
+                    // this is container div class
+                 
+                }
+            });
+        }
+
+    };
