@@ -937,6 +937,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $gryclasspromo = "gry";
                 $gryclassgift = "gry";
                 $applygiftcard="";
+                if($showedpoints < 1) $applysmogidisable=" disabled='disabled'";
                 $applygiftdisable=" disabled='disabled'";
                 $applypromo="";
                 $applypromodisable=" disabled='disabled'";

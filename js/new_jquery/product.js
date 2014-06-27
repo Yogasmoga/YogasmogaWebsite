@@ -5,7 +5,7 @@ jQuery(document).ready(function($) {
 
 //    $("#orderitem, #preorderitem").live("click", function(){
     $("#orderitem, #preorderitem").live("click", function() {
-        if(_addingtocart) return;
+      //  alert('test');
         $("div.producterrorcontainer div.errormsg").empty();
         var errormsg = '';
         if ($("div#sizecontainer div.dvselectedsize").length == 0 && _productorderqty == 0)
@@ -44,17 +44,19 @@ jQuery(document).ready(function($) {
        // var errormsg = '';
 
             if(jQuery("div#sizecontainer div.dvselectedsize").length == 0 && _productorderqty == 0)
-                {errormsg = "Please select quantity and size to continue.";}
+                {errormsg = "Please select quantity and size to continue.";
+                return;}
             else
             {
-                if(_productorderqty == 0)
+            //    alert('l');
+                if(_productorderqty == 0) {
                     errormsg = "Please select quantity to continue.";
-                if(jQuery("div#sizecontainer div.dvselectedsize").length == 0)
+                    return;
+                }
+                if(jQuery("div#sizecontainer div.dvselectedsize").length == 0){
                     errormsg = "Please select size to continue.";
-
-                return;
+                return;}
             }
-
             _isClickSigninMenu = true;
             if (!_islogedinuser)
                 showShoppingBagHtml();
