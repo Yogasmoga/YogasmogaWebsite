@@ -26,7 +26,6 @@ jQuery(document).ready(function($) {
             $("#orderitem").removeClass('spbutton');
             return;
         }
-<<<<<<< HEAD
         // var errormsg = '';
         $("#addtobagloader").remove();            
         $( "<div id='addtobagloader'><img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' /></div>" ).insertAfter( jQuery(this) );
