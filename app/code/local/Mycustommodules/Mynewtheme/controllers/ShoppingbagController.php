@@ -832,7 +832,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         {
             $getsmogipointscurrentlyuserd = number_format((float)($getsmogipointscurrentlyuserd), 2, '.', '');
             $html .='<li class="smogi">
-                            <span class="f-left capstxt">SMOGI Bucks used | </span>
+                            <span class="f-left">SMOGI Bucks used | </span>
                             <span class="removesmogi"><a>remove</a></span>
                             <span class="f-right"  usedpoints ="'.$getsmogipointscurrentlyuserd.'">-$'.$getsmogipointscurrentlyuserd.'</span>
                         </li>';
