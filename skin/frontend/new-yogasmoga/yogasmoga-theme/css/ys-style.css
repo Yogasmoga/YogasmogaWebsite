@@ -847,6 +847,7 @@ ul.checkout-cont li .listadd{display: none;}
 ul.checkout-cont li .listadd > li {
     height: auto;
     min-height: inherit;
+    cursor: pointer;
     padding: 7px 0;
     width: 100%;
 }
@@ -871,7 +872,9 @@ ul.checkout-cont li .listadd > li {
     display: inline-block;
     min-height: inherit;
     padding: 0;
-    width: 100%;/*
+    width: 100%;
+    cursor: pointer;
+    /*
  background: transparent;
  z-index: 9999;
  position: absolute;
@@ -889,3 +892,9 @@ ul.checkout-cont li .listadd > li {
 	display: block !important;
 }
 
+.checkout-onepage-index .header-right.f-right,
+.checkout-onepage-index .quick-access,
+.checkout-onepage-index .main-menu.ctag-menu,
+.checkout-onepage-index #sitemap{
+	display: none;
+}
