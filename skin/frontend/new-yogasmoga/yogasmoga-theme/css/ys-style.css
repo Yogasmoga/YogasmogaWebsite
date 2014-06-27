@@ -971,6 +971,7 @@ ul.checkout-cont li .listadd > li {
     margin-top: 5px;
     padding: 5px;
     cursor: pointer;
+    font-weight: bold;
 }
 .pageoverlay
 {
