@@ -673,6 +673,8 @@ table.productimagecontainer table.tdbigimagecontainer td img{width: 95%; float: 
 .show-prodImg{width: 82%; margin: 0; float: right;}
 .thumb-imgs{left: 0;}
 
+.fixwidth{margin-left: 300px !important;}
+
 /** resizing fontsize **/
 ul.main-menu li a,ul.tr-menu > li > ul.sub-menu li a{font: bold 11px gothambook;}
 .share-strip ul li, p.block-link a, ul.new-arrivals li span{font-size: 11px;}
@@ -734,7 +736,7 @@ div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-trans
 .blockCont{width: 95%;}
 
 /** HelpPage **/
-.contact-summary{width: }
+.contact-summary{ }
 .contact-summary ul, .contact-summary ul li{list-style-type: none;}
 .contact-summary li{margin: 0; width: 32%; font-size: 11px; line-height: 18px; display: inline-block; text-align: center; background: url("../images/dvdr-new.jpg") no-repeat center top; background-size: 100% auto; padding: 15px 0 0;}
 .contact-summary span{font-family: gothambook; font-weight: bold; text-transform: uppercase;}
@@ -971,17 +973,22 @@ ul.checkout-cont li .listadd > li {
     margin-top: 5px;
     padding: 5px;
     cursor: pointer;
+    font-weight: bold;
 }
 .pageoverlay
 {
         background: transparent;
 	z-index: 99999;
-	position: fixed;
+	position: absolute;
 	width: 100%;
         display: none;
         top: 0;
         padding: 10px;
         cursor: pointer;
+}
+
+.catalog-category-view .pageoverlay{
+	position: fixed;
 }
 
 #addtobagloader {
@@ -1018,3 +1025,4 @@ table.tblwishlist thead th{padding-bottom: 0 !important;}
 	top: 3px !important;
 	width: auto !important;
 }
+.customer-address-index .myheader{display: none;}

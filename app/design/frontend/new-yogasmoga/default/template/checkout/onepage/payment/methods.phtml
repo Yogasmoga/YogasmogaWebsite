@@ -114,7 +114,7 @@
         <?php if($grandtotal <= 0) continue; ?>
             <?php if($_code=='cashondelivery'){ continue; }?>
             <div class="paymentmethoddiv">
-            <input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" onclick="payment.switchMethod('<?php echo $_code ?>')"<?php if($this->getSelectedMethodCode()==$_code): ?> checked="checked"<?php endif; ?> class="radio paymethod" />
+            <input style="display:none;" id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" onclick="payment.switchMethod('<?php echo $_code ?>')"<?php if($this->getSelectedMethodCode()==$_code): ?> checked="checked"<?php endif; ?> class="radio paymethod" />
             <label for="p_method_<?php echo $_code ?>"><?php echo html_entity_decode($this->escapeHtml($this->getMethodTitle($_method)))  ?> <?php echo $this->getMethodLabelAfterHtml($_method) ?></label>
             </div>
 

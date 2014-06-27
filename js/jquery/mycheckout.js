@@ -791,7 +791,9 @@ function savePayment()
                 designCartTotal();
 
                 jQuery("li#billingDetails .ovrlay-bg").show();
-                jQuery("li#reviewDetails .ovrlay-bg").hide();                
+                jQuery("li#billingDetails.active").removeClass("active");
+                jQuery("li#reviewDetails .ovrlay-bg").hide();            
+                jQuery("li#reviewDetails").addClass("active");                
             }
 
             _ischeckoutprocessing = false;
@@ -874,6 +876,8 @@ function saveShippingMethod()
 
             jQuery("li#shippingDetails .ovrlay-bg").show();
             jQuery("li#billingDetails .ovrlay-bg").hide();
+            jQuery("li#shippingDetails.active").removeClass("active");
+            jQuery("li#billingDetails").addClass("active");
 
             jQuery("#co-shippingmethod-form #procImg").remove();
             getCartSummary();
