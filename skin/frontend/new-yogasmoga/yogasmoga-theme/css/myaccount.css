@@ -251,10 +251,10 @@ a.forgot-link:hover
 {
     width : 533px;
 }
-#passwordchangeoptions
+/*#passwordchangeoptions
 {
     display : none;
-}
+}*/
 #changepasswordoptionholder
 {
     font-family:helveticaoblique;
@@ -384,15 +384,21 @@ button.button.btn-check
     margin-left : 15px;
     margin-top : -7px;
 }
-.account-nav{margin-bottom:28px;}
-ul.sub-nav{text-indent:0; list-style:none; padding:10px; margin:0; font-family:gotham, Arial; font-size:13px; text-transform:uppercase; text-align:center; line-height:24px;}
+.account-nav{margin-bottom:28px; /***NEW***/ width:270px; position: fixed;}
+ul.sub-nav{text-indent:0; list-style:none; padding:10px; margin:0; font-family:gotham, Arial; font-size:13px; text-transform:uppercase; /*text-align:center;*/ text-align: left; line-height:24px;}
 ul.sub-nav li {
-  background: url("../images/subsep.png") no-repeat scroll 100% 50% transparent;
-  display: inline;
+  /*background: url("../images/subsep.png") no-repeat scroll 100% 50% transparent;*/
+  /*display: inline;*/  
   height: 24px;
   margin: 0;
-  padding: 0 28px 0 10px;
+  /*padding: 0 28px 0 10px;*/
+  /**New**/
+  display: block;
 }
+ul.sub-nav li a{display: inline; font: 13px/24px gothambold; color: #58595b;}
+ul.sub-nav li a:hover,ul.sub-nav li.current a{color: #c03;}
+ul.sub-nav li a span.arr{visibility: hidden;}
+ul.sub-nav li.current a span.arr{visibility: visible;}
 ul.sub-nav li:last-child,
 ul.sub-nav li.last {background:none; padding-right:10px;}
 ul.sub-nav a{display:inline;}

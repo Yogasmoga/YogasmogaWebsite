@@ -8,6 +8,10 @@ jQuery(document).ready(function($){
         //positiondesignfeatureheadimage();
     });
 
+    $("#zoomoptions").on("click","#zoomin",function(){
+        $("td#zoomedproductimage img[zoomurl]").trigger("click");        
+    });
+
     // $("table.normalproductdetail div#colorcontainer table").live("click", function(){
     //     $("table.normalproductdetail div#colorcontainer > div").removeClass("selected");
     //     $(this).parent("div").addClass("selected");
@@ -457,8 +461,8 @@ function InitializeZoomPopup()
             jQuery("div.wrapper, div.ui-widget-overlay").css('height', 'auto');
         }
     });
-    jQuery("div#zoompopup table.productzoomtable>tbody>tr>td").height(_winH + _headerHeight);
-    jQuery("div#zoompopup table.productzoomtable>tbody>tr>td").css('max-height', (_winH + _headerHeight) + 'px');
+    jQuery("div#zoompopup table.productzoomtable>tbody>tr>td").height(_winH);
+    jQuery("div#zoompopup table.productzoomtable>tbody>tr>td").css('max-height', _winH + 'px');
     jQuery("div#zoompopup div#zoomoptions").css('top', (((_winH + _headerHeight) - jQuery("div#zoompopup div#zoomoptions").height()) / 2) + 'px');
     try{
        jQuery('img#zoomedimage').smoothZoom('resize', {width: (_winW - 250), height: (_winH + _headerHeight)});    

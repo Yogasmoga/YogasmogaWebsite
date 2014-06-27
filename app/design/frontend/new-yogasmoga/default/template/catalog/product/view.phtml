@@ -490,13 +490,13 @@ if(strpos($currentUrl, "?") != false)
     width: 100px;
 }
                     table.productzoomtable td.zoomproductoptions{
-                        max-width: 380px;
-                        min-width: 380px;
-                        width: 380px;
+                        max-width: 300px;
+                        min-width: 300px;
+                        width: 300px;
                     }
                     .zoomsmallimagecontainer img{
                         margin: 0 0 25px;
-                        max-width: 65%;
+                        max-width: 100%;
                     }
                     table.zoomsmallimagecontainer td{
                         text-align: center;
@@ -1470,19 +1470,22 @@ if(strpos($currentUrl, "?") != false)
 <div style="display:none;">
     <div id="zoompopup">
         <table class="productzoomtable">
-            <tr>
-                <td id="zoomedproductimage"></td>
+            <tr class="zoom-prd-details">
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>                
                 <td class="zoomproductoptions">
                     <table class="productdetailtable zoomproductdetail">
                         <tr>
                             <td>
-                            <div class="gry-box" style="margin: 40px 20px; width: auto;">
-                                <div class="prdname">
+                            <div class="zoom-prd-det" style="margin: 40px 20px; width: auto;">
+                                <div class="prdname in-bl vert-bottom">
                                     <div class="productname"><?php echo html_entity_decode($productname); ?></div>
-                                    <span class="productcost amount"><?php echo $productprice; ?></span>
+                                    <span class="productcost amount no-display"><?php echo $productprice; ?></span>
                                 </div>
-                                <div class="box-seprtr last">
-                                    <div class="blck-head-sml"><span>Step 1:</span> choose your color</div>
+                                <div class="box-seprtr last in-bl vert-bottom">
+                                    <div class="blck-head-sml no-display"><span>Step 1:</span> choose your color</div>
                                     <div class="blck-head-sml">
                                         <table class="selectedcolor">
                                             <tr>
@@ -1545,8 +1548,8 @@ if(strpos($currentUrl, "?") != false)
                                 </div>
                                 </div>
                                 <div style="clear: both;"></div>
-                                    <div class="" style="left:30px; top:0;">
-                                        <table class="zoomsmallimagecontainer" width="100%">
+                                    <div class="" style="margin-top:100px;">
+                                        <table class="zoomsmallimagecontainer" style="margin-left:40px;">
                                             <tr><td><img src="" style="margin: 0 0 25px; max-width: 100%;" /></td></tr>
                                             <tr><td><img src="" style="margin: 0 0 25px; max-width: 100%;" /></td></tr>
                                             <tr><td><img src="" style="margin: 0 0 25px; max-width: 100%;" /></td></tr>
@@ -1558,12 +1561,13 @@ if(strpos($currentUrl, "?") != false)
                         </tr>
                     </table>
                 </td>
+                <td id="zoomedproductimage"></td>
             </tr>
         </table>
-        <img id="closelightbox" src="<?php echo $this->getSkinUrl('images/catalog/product/close.png'); ?>" />
+        <img id="closelightbox" src="<?php echo $this->getSkinUrl('images/catalog/product/close-prd-zoom.png'); ?>" />
         <div id="zoomoptions">
-            <img id="zoomout" src="<?php echo $this->getSkinUrl('images/catalog/product/zoom_out.png'); ?>" />
-            <img id="zoomin" src="<?php echo $this->getSkinUrl('images/catalog/product/zoom_in.png'); ?>" />
+            <img id="zoomout" src="<?php echo $this->getSkinUrl('images/catalog/product/zoom-out.png'); ?>" />
+            <img id="zoomin" src="<?php echo $this->getSkinUrl('images/catalog/product/zoom-in.png'); ?>" />
         </div>
     </div>
 </div>
