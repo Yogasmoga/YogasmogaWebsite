@@ -42,7 +42,8 @@ jQuery(document).ready(function($){
 
 function showQuickViewPopup(productid, e)
 {
-    productid = parseInt(productid);
+   //alert(productid);
+   productid = parseInt(productid);
     jQuery("#productdetailpopup").html("<table style='width:100%;height : 530px;'><tr><td style='text-align:center;vertical-align:middle;'><img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' /></td></tr></table>");
     jQuery( "#productdetailpopup" ).dialog( "open" );
     if(window.location.href.indexOf('https://') >= 0)
@@ -53,7 +54,7 @@ function showQuickViewPopup(productid, e)
     if(_usesecureurl)
         url = securehomeUrl + 'mycatalog/myproduct/details';
 
-  if(_quickViewObjectPage[productid]){
+    if(_quickViewObjectPage[productid]){
        
         //alert(_quickViewObjectPage[productid]);
         jQuery("#productdetailpopup").html(_quickViewObjectPage[productid]);
@@ -175,4 +176,8 @@ function showQuickViewPopup(productid, e)
     });
 
     }
+    
+    
+    
+
 }
