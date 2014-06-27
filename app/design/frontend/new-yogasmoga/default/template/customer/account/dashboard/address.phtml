@@ -24,7 +24,21 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-    <tr>
+<div class="address-info">
+        <div class="billing-add f-left">
+            <!-- <span class="add-heading">Default Billing Address <a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a></span> -->
+            <?php echo '<span class="add-heading">Default Billing Address <a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a></span>' ?>
+           <?php echo $this->getPrimaryBillingAddressHtml() ?>
+        </div>
+        <div class="shipping-add f-right">
+            <!-- <span class="add-heading">Default Shipping Address <a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a></span> -->
+            <?php echo '<span class="add-heading">Default Shipping Address <a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a></span>' ?>
+            <?php echo $this->getPrimaryShippingAddressHtml() ?>
+        </div>  
+        <div class="clear-fix"></div>      
+    </div>
+    <?php /*
+     <tr>
         <td colspan="2">
             <div class="sectionheader addressbookheader"><?php echo $this->__('Address Book') ?><a href="<?php echo $this->getAddressBookUrl() ?>">Manage</a></div>
         </td>
@@ -76,7 +90,7 @@
 				</tr>
 			</table>
         </td>
-	</tr>
+	</tr> -->
         <!-- td class="column2cell">
             <table>
                 <tr>
@@ -89,8 +103,8 @@
                 </tr>
             </table>
             <?php echo $this->getPrimaryShippingAddressHtml() ?>
-        </td -->
-    </tr>
+        </td 
+    </tr> */ ?>
 <?php /*
 <div class="col2-set">
     <div class="box">

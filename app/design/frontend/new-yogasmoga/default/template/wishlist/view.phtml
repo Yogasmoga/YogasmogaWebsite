@@ -27,7 +27,13 @@
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/wishlist.css'); ?>" media="all" />
 <?php if ($this->helper('wishlist')->isAllow()) : ?>
-    <div class="myheader">MY WISH LIST</div>
+    <div class="header-top-bar"></div>
+    <div class="wishlist-header">
+        <h4>MY WISH LIST</h4>
+        <span class="wishlist-desc">LOREM IPSUM DOLOR SIT AMET CONSECTETUER ADIPISCING ELIT.</span>
+    </div>
+
+    <!-- <div class="myheader wishlist-header">MY WISH LIST</div> -->
     <div class="my-wishlist">
         <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
         <form id="wishlist-view-form" action="<?php echo $this->getUrl('*/*/update', array('wishlist_id' => $this->getWishlistInstance()->getId())) ?>" method="post">
@@ -69,7 +75,7 @@
         </script>
     </div>
     <?php echo $this->getChildHtml('bottom'); ?>
-    <div class="backlink">
+    <div class="backlink" >
         <a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>" class="back-link">&lt;&nbsp;<?php echo $this->__('Back') ?></a>
     </div>
 <?php endif ?>
@@ -122,6 +128,6 @@
     </div>
     <?php echo $this->getChildHtml('bottom'); ?>
     <div class="buttons-set">
-        <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+        <p class="back-link" style="display:block !important;"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
     </div>
 <?php endif ?>
