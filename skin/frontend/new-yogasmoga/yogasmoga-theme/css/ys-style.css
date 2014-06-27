@@ -736,7 +736,7 @@ div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-trans
 .blockCont{width: 95%;}
 
 /** HelpPage **/
-.contact-summary{width: }
+.contact-summary{ }
 .contact-summary ul, .contact-summary ul li{list-style-type: none;}
 .contact-summary li{margin: 0; width: 32%; font-size: 11px; line-height: 18px; display: inline-block; text-align: center; background: url("../images/dvdr-new.jpg") no-repeat center top; background-size: 100% auto; padding: 15px 0 0;}
 .contact-summary span{font-family: gothambook; font-weight: bold; text-transform: uppercase;}
@@ -973,6 +973,7 @@ ul.checkout-cont li .listadd > li {
     margin-top: 5px;
     padding: 5px;
     cursor: pointer;
+    font-weight: bold;
 }
 .pageoverlay
 {
