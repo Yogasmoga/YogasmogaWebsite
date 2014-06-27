@@ -407,7 +407,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .menu-bar.cntn-scroll.f-left.l-align {width: 270px;}
 
 /** ShoppingCart **/
-.shopping-cart{/*background: #eeefef;*/ color: #58595b;  overflow: auto; position: fixed; right: 0; width: 400px; display: none; z-index: 1; font: 13px gothambook; text-transform: capitalize;;}
+.shopping-cart{background: #eeefef; color: #58595b;  overflow: auto; position: fixed; right: 0; width: 400px; display: none; z-index: 1; font: 13px gothambook; text-transform: capitalize;;}
 .continuelink{background: url("../images/shopping-cart/gry-btn.png") no-repeat top left; margin: 0; padding: 16px 5px; width: 45%; display: inline-block; font: 12px gothambold;}
 .continuelink.grn{background-image: url("../images/shopping-cart/grn-btn.png"); color: #fff;}
 .cont-full{/*margin: 0 0 20px;*/ padding: 20px 20px 0px 20px; background: #eeefef;}
@@ -424,7 +424,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .adddields input {background: #fff; text-transform: capitalize; border: 0 none; display: block; float: left; font: italic 12px gothambook; height: 20px; margin: 0; padding: 5px 12px; width: 84%;}
 .adddields input.gry{background: #B3B3B3; cursor: default; color: #fff;}
 .adddields span {background: 0 #eeefef; border: 1px solid #B3B3B3; float: left; height: auto; padding: 7px 4px 6px; width: 6%;}
-.addedItem {background: #fff; float: right; width: 99.5%;}
+.addedItem {background: #fff; float: right; width: 99.5%;margin-bottom: 10px;}
 .addedItem .similarProdList {font-size: 11px; width: 90%; text-transform: uppercase;}
 .addedItem .similarProdList > li {border-bottom: 1px solid #E6E6E6; margin: 0; padding: 10px 0; position: relative;}
 .addedItem .similarProdList > li:last-child{margin: 0; padding: 10px 0 0}
@@ -843,6 +843,7 @@ div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{font: 13px
 	width: 100%;
 	height: 200px;
         display: none;
+        top: 210px;
 }
 ul.checkout-cont li .listadd{display: none;}
 ul.checkout-cont li .listadd > li {
@@ -889,4 +890,43 @@ ul.checkout-cont li .listadd > li {
 .showShippingOpt ul.availableShip{
 	display: block !important;
 }
+.bagerrormsg {
+    background: #6d292d;
+    color: #fff;
+    font-family: helveticaoblique;
+    font-size: 13px;
+    height: 163px;
+    margin: auto;
+    opacity: 0.7;
+    padding-top: 40%;
+    position: absolute;
+    width: 100%;
+    display:none;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-transform: none;
+}
+#redeemresult > button {
+    background: none repeat scroll 0 0 #ccc;
+    border: medium none;
+    color: #000;
+    margin-top: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+.pageoverlay
+{
+        background: transparent;
+	z-index: 99999;
+	position: absolute;
+	width: 100%;
+        display: none;
+        top: 0;
+        padding: 10px;
+        cursor: pointer;
+}
 
+#addtobagloader {
+    text-align: center;
+    width: 100%;
+}
