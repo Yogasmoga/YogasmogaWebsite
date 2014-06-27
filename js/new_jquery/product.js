@@ -24,8 +24,9 @@ jQuery(document).ready(function($){
             jQuery("#orderitem").removeClass('spbutton');
             return;
         }
-        var errormsg = '';
+       // var errormsg = '';
         setTimeout(function(){
+
             if(jQuery("div#sizecontainer div.dvselectedsize").length == 0 && _productorderqty == 0)
                 {errormsg = "Please select quantity and size to continue.";}
             else

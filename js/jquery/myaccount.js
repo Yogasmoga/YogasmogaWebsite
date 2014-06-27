@@ -81,10 +81,10 @@ jQuery(document).ready(function($){
             return false;
     });
     $("#change_password").click(function(){
-        togglePasswordChangeOption();
+        // togglePasswordChangeOption();
     });
     if($("#change_password").length > 0)
-        togglePasswordChangeOption();
+        // togglePasswordChangeOption();
     if($("select#country").length > 0)
     {
         $("select#country").attr("class","").addClass('requiredfield').attr("defaulterrormsg","Country is required").removeAttr("title").css("width","156px");

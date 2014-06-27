@@ -51,6 +51,7 @@
         <?php echo $this->getChildHtml('header') ?>
         <div id="pagecontainer">
             <div id="mainimage" class="fullscreen colorbg pgsection" desc="Accounts Page" style="position : relative;">
+                <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('customer/dashboard_nav.phtml')->toHtml(); ?>
                 <table class="fixwidth">
                     <tr>
                         <td>
