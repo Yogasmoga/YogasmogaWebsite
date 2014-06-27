@@ -301,7 +301,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 
 .product-grid h4{background: url("../images/divider-sml.png") no-repeat center bottom; background-size: 100% auto; font: normal 18px gothambold; display: inline-block; width: 100%; color: #58595b; padding: 15px 0 29px; margin: 0 0 77px; text-transform: uppercase;}
 
-.ctglink{margin:55px 0 0; float: left; list-style-type: none;}
+.ctglink{margin:95px 0 0; float: left; list-style-type: none;}
 .ctglink li, .ctglink li a{font: normal 13px/24px gotham, arial !important; color: #58595b; text-transform: uppercase;}
 .ctglink li.sub-head{margin: 30px 0 0;}
 .ctglink li.sub-head > a, .ctglink li a.bld{font-weight: bold !important;}
@@ -1011,4 +1011,10 @@ table.tblwishlist thead th{padding-bottom: 0 !important;}
 .checkout-onepage-index .main-menu.ctag-menu,
 .checkout-onepage-index #sitemap{
 	display: none;
+}
+
+#productdetailpopup img#closelightbox{
+	right: 5px !important;
+	top: 3px !important;
+	width: auto !important;
 }

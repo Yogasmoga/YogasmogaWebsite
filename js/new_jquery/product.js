@@ -200,7 +200,6 @@ jQuery(document).ready(function($) {
         }
 
     };
-;
 
 function readmore() {
     jQuery(".readmore").live("click", function() {
