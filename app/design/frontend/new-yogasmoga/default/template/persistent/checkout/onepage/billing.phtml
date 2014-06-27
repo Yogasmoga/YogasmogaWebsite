@@ -32,26 +32,50 @@
 </script>
 <form action="" id="co-billing-form" style="display: none;">
     <?php if ($this->customerHasAddresses()): ?>
-        <div id="billingaddressselectionblock">
+        <div id="billingaddressselectionblock" class="nopay">
             <label for="billing-address-select"><?php echo $this->__('Select a billing address from your address book or enter a new address.') ?></label>
            <div class="input-box">
                <?php echo $this->getAddressesHtmlSelect('billing') ?>
            </div>
         </div>
     <?php endif ?>
-    <div id="billing-new-address-form" <?php if ($this->customerHasAddresses()): ?> style="display:none;"<?php endif ?>>
+    <?php if (!$this->customerHasAddresses()): ?>
+        <div id="billingaddressselectionblock" class="nopay" style="display:none">
+            <label for="billing-address-select"><?php echo $this->__('Select a billing address from your address book or enter a new address.') ?></label>
+           <div class="input-box">
+               <?php echo $this->getAddressesHtmlSelect('billing') ?>
+           </div>
+        </div>
+    <?php endif ?>    
+    <div id="billing-new-address-form" class="gryWrap" <?php if ($this->customerHasAddresses()): ?> style="display:none;"<?php endif ?>>
+
+        <table class="inputtable">
+                        <tr>
+                            <td class="label dnone"><label for="billing:country_id"><?php echo $this->__('Country') ?></label></td>
+                            <td class="inputholder">
+                                <?php echo $this->getCountryHtmlSelect('billing') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="errortext" >
+                                <div>Country is required</div>
+                            </td>
+                        </tr>
+                    </table>
+
+    
         <input type="hidden" name="billing[address_id]" value="<?php echo $this->getAddress()->getId() ?>" id="billing:address_id" />
         <?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getAddress()->getFirstname() ? $this->getAddress() : $this->getQuote()->getCustomer())->setForceUseCustomerRequiredAttributes(!$this->isCustomerLoggedIn())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() ?>
         <input type="text" id="billing:company" name="billing[company]" value="<?php echo $this->escapeHtml($this->getAddress()->getCompany()) ?>" title="<?php echo $this->__('Company') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('company') ?>" style="display: none;" />
         <table class="inputtable">
             <tr>
-                <td class="label"><label for="billing:street1">Address</label></td>
+                <td class="label dnone"><label for="billing:street1">Address</label></td>
                 <td class="inputholder">
                     <input type="text" name="billing[street][]" id="billing:street1" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" class="requiredfield" defaulterrormsg="Address is required." />
                 </td>
             </tr>
             <tr>
-                <td class="errortext" colspan="2">
+                <td class="errortext" >
                     <div>Address is required</div>
                 </td>
             </tr>
@@ -59,13 +83,13 @@
         <?php for ($_i = 2, $_n = $this->helper('customer/address')->getStreetLines(); $_i <= $_n; $_i++): ?>
             <table class="inputtable nolabel">
                 <tr>
-                    <td class="label"></td>
+                    <td class="label dnone"></td>
                     <td class="inputholder">
                         <input type="text" name="billing[street][]" id="billing:street<?php echo $_i ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet($_i)) ?>" />
                     </td>
                 </tr>
                 <tr>
-                    <td class="errortext" colspan="2">
+                    <td class="errortext" >
                         <div>&nbsp;</div>
                     </td>
                 </tr>
@@ -74,39 +98,55 @@
         <?php if ($this->helper('customer/address')->isVatAttributeVisible()) : ?>
             <table class="inputtable">
                 <tr>
-                    <td class="label"><label for="billing:vat_id"><?php echo $this->__('VAT Number') ?></label></td>
+                    <td class="label dnone"><label for="billing:vat_id"><?php echo $this->__('VAT Number') ?></label></td>
                     <td class="inputholder">
                         <input type="text" id="billing:vat_id" name="billing[vat_id]" value="<?php echo $this->escapeHtml($this->getAddress()->getVatId()) ?>" class="requiredfield" defaulterrormsg="VAT Number is required" />
                     </td>
                 </tr>
                 <tr>
-                    <td class="errortext" colspan="2">
+                    <td class="errortext" >
                         <div>&nbsp;</div>
                     </td>
                 </tr>
             </table>
         <?php endif; ?>
-        <table class="inputtable">
+        <table class="inputtable wdth50">
             <tr>
-                <td class="label"><label for="billing:city"><?php echo $this->__('City') ?></label></td>
+                <td class="label dnone"><label for="billing:city"><?php echo $this->__('City') ?></label></td>
                 <td class="inputholder">
                     <input type="text" name="billing[city]" value="<?php echo $this->escapeHtml($this->getAddress()->getCity()) ?>" id="billing:city" class="requiredfield" defaulterrormsg="City is required" />
                 </td>
             </tr>
             <tr>
-                <td class="errortext" colspan="2">
+                <td class="errortext" >
                     <div>City is required</div>
                 </td>
             </tr>
         </table>
-        <table class="twocolumn533">
+<!--         <table class="twocolumn533">
             <tr>
                 <td style="padding-right : 59px;">
-                    <table class="inputtable">
+                    
+                </td>
+                <td>
+                     
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    
+                </td>
+                <td>
+
+                </td>
+            </tr>
+        </table> -->
+
+        <table class="inputtable wdth30">
                         <tr>
-                            <td class="label"><label for="billing:region"><?php echo $this->__('State') ?></label></td>
+                            <td class="label dnone"><label for="billing:region"><?php echo $this->__('State') ?></label></td>
                             <td class="inputholder">
-                                <select id="billing:region_id" name="billing[region_id]" class="requiredfield" style="display:none;" defaulterrormsg="State / Province is required.">
+                                <select id="billing:region_id" name="billing[region_id]" class="requiredfield" style="display:none;" defaulterrormsg="State / Province is required." style="width:72px">
                                     <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
                                 </select>
                                 <script type="text/javascript">
@@ -115,76 +155,56 @@
                                     //$('region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
                                 //]]>
                                 </script>
-                                <input type="text" id="billing:region" name="billing[region]" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>" class="requiredfield" defaulterrormsg="State / Province is required" />
+                                <input type="text" style="width: 80%;" id="billing:region" name="billing[region]" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>" class="requiredfield" defaulterrormsg="State / Province is required" />
                             </td>
                         </tr>
                         <tr>
-                            <td class="errortext" colspan="2">
+                            <td class="errortext" >
                                 <div>State / Province is required</div>
                             </td>
                         </tr>
                     </table>
-                </td>
-                <td>
-                    <table class="inputtable">
+
+<table class="inputtable wdth20 f-right">
                         <tr>
-                            <td class="label"><label for="billing:postcode"><?php echo $this->__('Zip/Postal Code') ?></label></td>
+                            <td class="label dnone"><label for="billing:postcode"><?php echo $this->__('Zip/Postal Code') ?></label></td>
                             <td class="inputholder">
                                 <input type="text" name="billing[postcode]" id="billing:postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" class="requiredfield" defaulterrormsg="Zip Code is required" />
                             </td>
                         </tr>
                         <tr>
-                            <td class="errortext" colspan="2">
+                            <td class="errortext" >
                                 <div>Zip is required</div>
                             </td>
                         </tr>
-                    </table>  
-                </td>
-            </tr>
-            <tr>
-                <td>
+                    </table> 
+
+
                     <table class="inputtable">
                         <tr>
-                            <td class="label"><label for="billing:country_id"><?php echo $this->__('Country') ?></label></td>
-                            <td class="inputholder">
-                                <?php echo $this->getCountryHtmlSelect('billing') ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="errortext" colspan="2">
-                                <div>Country is required</div>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-                <td>
-                    <table class="inputtable">
-                        <tr>
-                            <td class="label"><label for="billing:telephone"><?php echo $this->__('Telephone') ?></label></td>
+                            <td class="label dnone"><label for="billing:telephone"><?php echo $this->__('Telephone') ?></label></td>
                             <td class="inputholder">
                                 <input type="text" name="billing[telephone]" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) ?>" class="requiredfield" id="billing:telephone" defaulterrormsg="Telephone is required" />
                             </td>
                         </tr>
                         <tr>
-                            <td class="errortext" colspan="2">
+                            <td class="errortext" >
                                 <div>Telephone is required</div>
                             </td>
                         </tr>
                     </table>
                     <input type="text" name="billing[fax]" value="<?php echo $this->escapeHtml($this->getAddress()->getFax()) ?>" title="<?php echo $this->__('Fax') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('fax') ?>" id="billing:fax" style="display: none;" />
-                </td>
-            </tr>
-        </table>
+
         <?php if(!$this->isCustomerLoggedIn()): ?>
             <table class="inputtable">
                 <tr>
-                    <td class="label"><label for="billing:email"><?php echo $this->__('Email Address') ?></label></td>
+                    <td class="label dnone"><label for="billing:email"><?php echo $this->__('Email Address') ?></label></td>
                     <td class="inputholder">
                         <input type="text" name="billing[email]" id="billing:email" value="<?php echo $this->escapeHtml($this->getAddress()->getEmail()) ?>" class="requiredfield" defaulterrormsg="Email Address is required." />
                     </td>
                 </tr>
                 <tr>
-                    <td class="errortext" colspan="2">
+                    <td class="errortext" >
                         <div>&nbsp;</div>
                     </td>
                 </tr>
@@ -193,26 +213,26 @@
         <div id="billing-password">
             <table class="inputtable">
                 <tr>
-                    <td class="label"><label for="billing:customer_password"><?php echo $this->__('Create New Password') ?></label></td>
+                    <td class="label dnone"><label for="billing:customer_password"><?php echo $this->__('Create New Password') ?></label></td>
                     <td class="inputholder">
                         <input type="password" name="billing[customer_password]" id="billing:customer_password" defaulterrormsg="Password is required." />
                     </td>
                 </tr>
                 <tr>
-                    <td class="errortext" colspan="2">
+                    <td class="errortext" >
                         <div>&nbsp;</div>
                     </td>
                 </tr>
             </table>
             <table class="inputtable">
                 <tr>
-                    <td class="label"><label for="billing:confirm_password"><?php echo $this->__('Confirm New Password') ?></label></td>
+                    <td class="label dnone"><label for="billing:confirm_password"><?php echo $this->__('Confirm New Password') ?></label></td>
                     <td class="inputholder">
                         <input type="password" name="billing[confirm_password]" id="billing:confirm_password" defaulterrormsg="Confirm Password is required." />
                     </td>
                 </tr>
                 <tr>
-                    <td class="errortext" colspan="2">
+                    <td class="errortext" >
                         <div>&nbsp;</div>
                     </td>
                 </tr>

@@ -26,6 +26,7 @@ jQuery(document).ready(function($) {
             $("#orderitem").removeClass('spbutton');
             return;
         }
+<<<<<<< HEAD
         // var errormsg = '';
         $("#addtobagloader").remove();            
         $( "<div id='addtobagloader'><img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' /></div>" ).insertAfter( jQuery(this) );
@@ -41,6 +42,19 @@ jQuery(document).ready(function($) {
 //                //alert('else');
 //                return;
 //            }
+       // var errormsg = '';
+
+            if(jQuery("div#sizecontainer div.dvselectedsize").length == 0 && _productorderqty == 0)
+                {errormsg = "Please select quantity and size to continue.";}
+            else
+            {
+                if(_productorderqty == 0)
+                    errormsg = "Please select quantity to continue.";
+                if(jQuery("div#sizecontainer div.dvselectedsize").length == 0)
+                    errormsg = "Please select size to continue.";
+
+                return;
+            }
 
             _isClickSigninMenu = true;
             if (!_islogedinuser)

@@ -140,3 +140,4 @@ table.tblwishlist tbody tr:hover td.removeitem a
 
 #wishlist-table tr.even:hover,
 #wishlist-table tr.odd:hover{background:#f5f5f5;}
+.account-nav{display: none;}

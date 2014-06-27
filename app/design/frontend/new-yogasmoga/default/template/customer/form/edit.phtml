@@ -24,9 +24,8 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<div class="myheader">MY ACCOUNT</div>
-<form action="<?php echo $this->getUrl('customer/account/editPost') ?>" method="post" id="edit-accountinfo">
-    <div class="sectionheader">ACCOUNT INFORMATION</div>
+<div class="edit-info">
+<form action="<?php echo $this->getUrl('customer/account/editPost') ?>" method="post" id="edit-accountinfo">  
     <?php echo $this->getBlockHtml('formkey')?>
     <?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getCustomer())->toHtml() ?>
     <table class="inputtable">
@@ -42,18 +41,7 @@
             </td>
         </tr>
     </table>
-    <table id="changepasswordoptionholder">
-        <tr>
-            <td>
-                <input type="checkbox" name="change_password" id="change_password" value="1" <?php if($this->getCustomer()->getChangePassword()==1): ?> checked="checked"<?php endif; ?> class="checkbox" />            
-            </td>
-            <td style="padding-top : 2px;">
-                <label for="change_password"><?php echo $this->__('Change Password') ?></label>    
-            </td>
-        </tr>
-    </table>
-    <div id="passwordchangeoptions">
-        <table class="inputtable">
+    <table class="inputtable">
             <tr>
                 <td class="label"><label for="current_password"><?php echo $this->__('Current Password') ?></label></td>
                 <td class="inputholder">
@@ -66,7 +54,20 @@
                 </td>
             </tr>
         </table>
-        <table class="inputtable">
+        <div class="change-password-label">Change password</div>
+    <table id="changepasswordoptionholder">
+        <tr>
+            <td>
+                <input type="checkbox" name="change_password" id="change_password" value="1" <?php if($this->getCustomer()->getChangePassword()==1): ?> checked="checked"<?php endif; ?> class="checkbox" />            
+            </td>
+            <td style="padding-top : 2px;">
+                <label for="change_password"><?php echo $this->__('Change Password') ?></label>    
+            </td>
+        </tr>
+    </table>
+    <div id="passwordchangeoptions">
+        
+        <table class="inputtable f-left">
             <tr>
                 <td class="label"><label for="password">Create a Password</label></td>
                 <td class="inputholder">
@@ -79,7 +80,7 @@
                 </td>
             </tr>
         </table>
-        <table class="inputtable">
+        <table class="inputtable f-right">
             <tr>
                 <td class="label"><label for="confirmation">Confirm Password</label></td>
                 <td class="inputholder">
@@ -92,13 +93,31 @@
                 </td>
             </tr>
         </table>
+        <div class="clear-fix"></div>
     </div>
-    <button style="margin-top : 40px;" type="submit" class="savebtn spbutton custombtn" imageurl="<?php echo $this->getSkinUrl('images/customer/save_button_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl("images/customer/save_button_on.png"); ?>"></button>
-    <div class="loginerrormsg errormsg"><?php echo strip_tags($this->getMessagesBlock()->getGroupedHtml()); ?></div>
+    <div class="white-border"></div>
+    <div class="pref-options">
+        <div class="email-pref">
+            <input type="checkbox" id="latest-news" value="" /> <label for="latest-news">Our latest news and products</label>   
+        </div>
+        <div class="email-pref">
+            <input type="checkbox" id="account-settings" value="" /> <label for="account-settings">Account settings updates</label>
+        </div>
+        <div class="email-pref">
+            <input type="checkbox" id="order-status" value="" /> <label for="order-status">Order status</label>
+        </div>
+        <button style="position:absolute; right:0; bottom:-6px;" type="submit" class="savebtn spbutton custombtn" imageurl="<?php echo $this->getSkinUrl('images/customer/save_button_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl("images/customer/save_button_on.png"); ?>"></button>
+    </div>
+    
+    
+    <div class="clear-fix"></div>
+    <?php /*<div class="loginerrormsg errormsg"><?php echo strip_tags($this->getMessagesBlock()->getGroupedHtml()); ?></div> */ ?>
 </form>
+</div>
+<?php /*
 <div class="backlink">
     <a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>">&lt;&nbsp;<?php echo $this->__('Back') ?></a>
-</div>
+</div> */?>
 <?php /*
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jQuery.dPassword.js"></script>
 <script type="text/javascript">

@@ -38,14 +38,15 @@
 </style>
 <script type="text/javascript">
     jQuery("document").ready(function($){
-        $("div.buttons-set").html("<a href='" + homeUrl + "customer/account' class='back-link'>&lt;&nbsp;Back</a>");
+        // $("div.buttons-set").html("<a href='" + homeUrl + "customer/account' class='back-link'>&lt;&nbsp;Back</a>");
+        $("div.buttons-set").html("<a href='" + homeUrl + "customer/account' class='back-link'></a>");
     });
 </script>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <?php $_orders = $this->getOrders(); ?>
-<div class="page-title">
+<?php /*<div class="page-title">
     <h1><?php echo $this->__('My Orders') ?></h1>
-</div>
+</div>*/ ?>
 <?php //echo $this->getPagerHtml(); ?>
 <?php if($_orders->getSize()): ?>
 <table class="data-table ys" id="my-orders-table">
@@ -86,7 +87,7 @@
                 <?php endif ?>
                 </span>
             </td>
-        </tr>
+        </tr>        
         <?php endforeach; ?>
     </tbody>
 </table>

@@ -36,9 +36,14 @@
             <?php endforeach; ?>
             */ ?>
             <th>&nbsp;</th>
-            <th colspan="3">ITEM</th>
-            <th style="text-align: right;">PRICE</th>
-            <th>&nbsp;</th>
+            <th>ITEM</th>
+            <th style="text-align: left; padding-right: 10px;">PRICE</th>
+            <?php/*<th>&nbsp;</th>*/?>
+        </tr>
+         <tr class="bar" style="height: 5px;">
+            <td colspan="3" style="font-size: 0;">
+                <img src="<?php echo $this->getSkinUrl('images/big-divider.png'); ?>" style="width: 100%;">
+            </td>
         </tr>
     </thead>
     <tbody>
@@ -49,18 +54,24 @@
                 $_product = Mage::getModel('catalog/product')->load($_product->getId());
             ?>
                 <tr id="item_<?php echo $item->getId();?>">
-                    <td class="removeitem">
-                        <a class="btn-remove btn-remove2" title="Remove Item" href="<?php echo Mage::helper('core/url')->getHomeUrl()."/wishlist/index/remove/item/".$item->getWishlistItemId(); ?>">Remove item</a>
-                    </td>
+                    <?php/* <td class="removeitem">
+                        <a class="btn-remove btn-remove2" title="Remove Item" href="<?php echo Mage::helper('core/url')->getHomeUrl()."/wishlist/index/remove/item/".$item->getWishlistItemId(); ?>">Remove item</a> 
+                    </td> */?>
                     <td class="primage">
-                        <img src="<?php echo Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75); ?>" />
+                        <img src="<?php echo Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100); ?>" />
                     </td>
                     <td class="prname">
-                        <?php echo html_entity_decode(Mage::helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name')); ?>
+                        <span class="prd-nam"><?php echo html_entity_decode(Mage::helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name')); ?> </span>
+                        <span class="prd-deldet">
+                            <a href="<?php echo $_product->getProductUrl(); ?>">View Details</a><br/>
+                            <a class="prd-remove" title="Remove Item" href="<?php echo Mage::helper('core/url')->getHomeUrl()."/wishlist/index/remove/item/".$item->getWishlistItemId(); ?>">Delete</a>
+                        </span>                        
                     </td>
+                    <?php /*
                     <td class="prnote">
                         <textarea style="display: none;" placeholder="Notes. ." title="Comment" name="description[<?php echo $item->getWishlistItemId(); ?>]"><?php echo trim(($this->escapeHtml($item->getDescription()))); ?></textarea>
                     </td>
+                    */ ?>
                     <td class="prprice">
                         <?php
                             $price = $_product->getSpecialPrice();
@@ -72,14 +83,15 @@
                             echo "$".number_format((float)($price), 0, '.', '');
                         ?>
                     </td>
+                    <?php /*
                     <td class="praddtocart">
                         <?php /*
                         <button onclick="addWItemToCart(<?php echo $item->getWishlistItemId(); ?>);" downimageurl="<?php echo $this->getSkinUrl('images/add_to_cart_on.png'); ?>" imageurl="<?php echo $this->getSkinUrl('images/add_to_cart_off.png'); ?>" class="addtocartbtn spbutton custombtn" type="button"></button>
                         
                         <button onclick="window.location = '<?php echo $_product->getProductUrl(); ?>';" downimageurl="<?php echo $this->getSkinUrl('images/add_to_cart_on.png'); ?>" imageurl="<?php echo $this->getSkinUrl('images/add_to_cart_off.png'); ?>" class="addtocartbtn spbutton custombtn" type="button"></button>
-                        */ ?>
+                        
                         <a href="<?php echo $_product->getProductUrl(); ?>">View Details</a>
-                    </td>
+                    </td>*/ ?>
                     <?php /*
                     <?php foreach ($columns as $column): ?>
                         <td><?php $column->setItem($item); echo $column->toHtml($item);?>
@@ -89,6 +101,11 @@
                         </td>
                     <?php endforeach; ?>
                     */ ?>
+                </tr>
+                <tr class="bar" style="height: 5px;">
+                    <td colspan="3" style="font-size: 0;">
+                        <img src="<?php echo $this->getSkinUrl('images/big-divider.png'); ?>" style="width: 100%;">
+                    </td>
                 </tr>
             <?php endforeach ?>
         <?php else: ?>

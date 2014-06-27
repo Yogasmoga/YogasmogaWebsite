@@ -13,8 +13,11 @@ jQuery(document).ready(function($){
 	}
 	*/
 	}, 0);
-	
 
+
+    changeFlag();
+	getSelectval();
+    trimCountryText();
     breadValSelect();
     createNewElement();
     removeNameLabel();
@@ -25,12 +28,11 @@ jQuery(document).ready(function($){
         slideAddCont();
     });
 
-
-    var firstShpVal = $(".showShippingOpt").find(".availableShip").find("li:nth-child(1)").text(); 
-    $(".shippingOption").find(".addVal").text(firstShpVal);
-
+    addUpdTxt();
+    getShippingID();
     $(".showShpOpt").on("click", function(){
-        slideShpCont();                                       
+        slideShpCont();
+        trimDetailTxt();
     });
 
     $(".showShippingOpt").on("click", "li", function(){
@@ -38,7 +40,8 @@ jQuery(document).ready(function($){
         $(".showShippingOpt li").removeClass("selected");
         $(this).addClass("selected");
         $(".shippingOption").find(".addVal").text(selectedVal);
-        slideShpCont();                                       
+        slideShpCont(); 
+        trimDetailTxt();                                      
     });
 
     //if($("div#checkout div:nth-child(2)").html().indexOf("support@intellectlabs.com") > 0)
@@ -48,8 +51,6 @@ jQuery(document).ready(function($){
     if($("#checkout-shipping-form").length == 0)
     {
         $("#co-billing-form").show();
-        $("#billingDetails").find(".ovrlay-bg").show();
-        $("#shippingDetails").find(".ovrlay-bg").hide();
         //jQuery('select').customSelect();
     }
     $("#checkout-login-form").submit(function(){
@@ -156,7 +157,7 @@ jQuery(document).ready(function($){
                 return false;
             _ischeckoutprocessing = true;
             jQuery("#payment_form input[type=submit]").hide();
-            jQuery("#payment_form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/checkout/checkout-loader.gif' />");
+            jQuery("#payment_form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/new-loader.gif' />");
             if(_stripecheck)
             {
                 if(jQuery("#payment_form input[type='text']").length == 0)
@@ -194,20 +195,16 @@ jQuery(document).ready(function($){
         if($(this).attr("value") == "")
         {
             $("#checkout-shipping-address-new").show();
-            $("#shippingaddressselectionblock").addClass('addressselector');
-            $(this).parent().slideUp();
+            $("#shippingaddressselectionblock").hide().addClass('addressselector');
             $("#updateNameAdd").hide();
-            
-            //jQuery('select').customSelect();
         }
         else
         {
             $("#checkout-shipping-address-new").hide();
-            $("#shippingaddressselectionblock").removeClass('addressselector');
             $("#updateNameAdd").show();
-            //$("#shippingaddressselectionblock").hide();
+            $("#shippingaddressselectionblock").show().removeClass('addressselector');
         }
-    });    
+    });   
     
     $("select#billing-address-select").removeAttr('onchange');
     $("select#billing-address-select").change(function(){
@@ -259,6 +256,119 @@ jQuery(document).ready(function($){
     
 });
 
+function changeFlag(){
+    var flagVal = jQuery(this).find("option:selected").text();
+
+    if(flagVal == "United States"){
+        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+        jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
+        jQuery(".shipDetail").find(".country").find("img").addClass("dnone");
+        jQuery(".shipDetail").find(".country").find("img.usflag").removeClass("dnone");
+    }
+
+    else if(flagVal == "Canada"){
+        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+        jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
+        jQuery(".shipDetail").find(".country").find("img").addClass("dnone");
+        jQuery(".shipDetail").find(".country").find("img.cnflag").removeClass("dnone");
+    }
+
+    else{
+        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+        jQuery(".showShippingOpt").find("#other-shipping").addClass("availableShip");
+        jQuery(".shipDetail").find(".country").find("img").addClass("dnone");
+        jQuery(".shipDetail").find(".country").find("img.glflag").removeClass("dnone");
+    }
+
+}
+
+function getShippingID (){
+    jQuery(".shippingOption").find("ul").find("li").removeClass("selected");
+    jQuery(".shippingOption").find("ul.availableShip").find("li:first-child").addClass("selected");
+}
+
+function trimCountryText (){
+    var text = jQuery("select#shipping-address-select").find("option:selected").text();
+    var dsad = jQuery("form#checkout-shipping-form select#shipping\\:country_id").find("option:selected").text();
+    var textAfterHash = (text.substring(text.lastIndexOf(',') + 1)).trim();
+
+    jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+
+    if(textAfterHash == "United States" || dsad == "United States"){
+        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+        jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
+    }
+
+    else if(textAfterHash == "Canada" || dsad == "Canada"){
+        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+        jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
+    }
+
+    else{
+        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+        jQuery(".showShippingOpt").find("#other-shipping").addClass("availableShip");
+    }
+}
+
+function getSelectval(){
+
+
+    jQuery("form#checkout-shipping-form select#shipping\\:country_id").change(function(){
+        var getVal = jQuery(this).find("option:selected").text();
+
+        if(getVal == "United States"){
+            jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+            jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
+            jQuery(".shipDetail").find(".country").find("img").addClass("dnone");
+            jQuery(".shipDetail").find(".country").find("img.usflag").removeClass("dnone");
+        }
+
+        else if(getVal == "Canada"){
+            jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+            jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
+            jQuery(".shipDetail").find(".country").find("img").addClass("dnone");
+            jQuery(".shipDetail").find(".country").find("img.cnflag").removeClass("dnone");
+        }
+
+        else{
+            jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+            jQuery(".showShippingOpt").find("#other-shipping").addClass("availableShip");
+            jQuery(".shipDetail").find(".country").find("img").addClass("dnone");
+            jQuery(".shipDetail").find(".country").find("img.glflag").removeClass("dnone");
+        }
+
+        addUpdTxt();
+        getShippingID();
+    });
+}
+
+function trimDetailTxt (){
+    var usrDetail = jQuery("#updateNameAdd").find(".address").html();
+    var textAftrBr = (usrDetail.substring(usrDetail.lastIndexOf('<br>') + 4)).trim();
+    var dsad = jQuery("form#checkout-shipping-form select#shipping\\:country_id").find("option:selected").text();
+    jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+
+    if(textAftrBr == "United States" || dsad == "United States"){
+        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+        jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
+    }
+
+    else if(textAftrBr == "Canada" || dsad == "Canada"){
+        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+        jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
+    }
+
+    else{
+        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+        jQuery(".showShippingOpt").find("#other-shipping").addClass("availableShip");
+    }
+}
+
+function addUpdTxt(){
+    var shippingVal = jQuery(".showShippingOpt").find(".availableShip").find("li:first-child").text();
+    jQuery(".shippingOption").find(".addVal").text(shippingVal);   
+}
+
 function searchCountry(){
     // var usCont = jQuery("#updateNameAdd").find("div:contains('United States')");
     // var cdCont = jQuery("#updateNameAdd").find("div:contains('Canada')");
@@ -285,11 +395,13 @@ function removeNameLabel(){
 function slideAddCont(){
     jQuery(".showUpadd").toggleClass("reverse");                                             
     jQuery(".listadd").slideToggle("slow");
+    //trimCountryText();
 }
 
 function slideShpCont(){
     jQuery(".showShpOpt").toggleClass("reverse");                                            
     jQuery(".showShippingOpt").slideToggle("slow");
+    trimCountryText();
 }
 
 function breadValSelect(){
@@ -298,10 +410,18 @@ function breadValSelect(){
     jQuery("#updateNameAdd").find(".address").html(txtSl);
 
     jQuery(document).on('click', '#shipping-address-select li', function () {
-        var selectedAdd = jQuery(this).text();
+            var selectedAdd = jQuery(this).text();
 
-        jQuery('#updateNameAdd').find('.address').html(selectedAdd.replace(/,/g, "<br />"));
-        jQuery('#updateNameAdd').find('.address').contents().first().wrap('<span>To: </span>');
+            jQuery(this).parent().slideUp();
+            jQuery(".showUpadd").toggleClass("reverse");
+
+            jQuery('#updateNameAdd').find('.address').html(selectedAdd.replace(/,/g, "<br />"));
+            jQuery('#updateNameAdd').find('.address').contents().first().wrap('<span>To: </span>');  
+
+
+            trimDetailTxt();
+            addUpdTxt();
+            getShippingID();
     });
 
     jQuery('.address').each(function() {
@@ -340,7 +460,7 @@ function checkpaymentmethod()
 {
     if(jQuery("input[type='radio'][value='paypal_express']").is(':checked'))
     {
-        jQuery("ul#payment_form_paypal_express").show();
+        jQuery("ul#payment_form_paypal_express").css("margin-top", "-32px").show();
         jQuery("div#stripe-payment-details,a#stripe-update-payment,div#change-stripe-detail").hide(); 
     }
     
@@ -402,7 +522,7 @@ function submitcheckout()
         return;
     _ischeckoutprocessing = true;
     jQuery("#checkout-submit").hide();
-    jQuery("#checkout-submit").after("<img id='procImg' src='" + skinUrl + "images/checkout/checkout-loader.gif' />");
+    jQuery("#checkout-submit").after("<img id='procImg' src='" + skinUrl + "images/new-loader.gif' />");
     var url = homeUrl + 'checkout/onepage/saveOrder';
     if(_usesecureurl)
         url = securehomeUrl + 'checkout/onepage/saveOrder';
@@ -669,9 +789,13 @@ function savePayment()
                 reordersteps(jQuery("#coreview"));
                 jQuery("div#orderreview").html(result['update_section']['html']);
                 designCartTotal();
+
+                jQuery("li#billingDetails .ovrlay-bg").show();
+                jQuery("li#reviewDetails .ovrlay-bg").hide();                
             }
+
             _ischeckoutprocessing = false;
-            jQuery("#payment_form input[type=submit]").show();
+            jQuery("#payment_form input[type=submit]").hide();
             jQuery("#payment_form #procImg").remove();
         }
     });
@@ -683,7 +807,7 @@ function saveBillingAddress()
         return;
     _ischeckoutprocessing = true;
     jQuery("#co-billing-form input[type=submit]").hide();
-    jQuery("#co-billing-form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/checkout/checkout-loader.gif' />");
+    jQuery("#co-billing-form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/new-loader.gif' />");
     var billingdata = jQuery("#co-billing-form").serialize();
     var url = homeUrl + 'checkout/onepage/saveBilling';
     if(_usesecureurl)
@@ -719,7 +843,9 @@ function virtualsaveshippingaddress()
 		address += jQuery("form#checkout-shipping-form input#shipping\\:street2").val() + ",";
 	address += jQuery("form#checkout-shipping-form input#shipping\\:city").val() + "," + jQuery("form#checkout-shipping-form select#shipping\\:region_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:region_id").val() + "']").html() + "," + jQuery("form#checkout-shipping-form input#shipping\\:postcode").val() + "," + jQuery("form#checkout-shipping-form select#shipping\\:country_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:country_id").val() + "']").html();
 	//console.log(address);
-	jQuery("form#checkout-shipping-form ul#shipping-address-select li:last").before("<li value='x'>" + address + "</li>");
+    jQuery("form#checkout-shipping-form ul#shipping-address-select li:last").before("<li value='x'>" + address + "</li>");
+    jQuery("form#checkout-shipping-form select#shipping-address-select option").removeAttr("selected");
+    jQuery("form#checkout-shipping-form select#shipping-address-select option:last").before("<option selected='selected'>" + address + "</option>");
 }
 
 function saveShippingMethod()
@@ -728,7 +854,7 @@ function saveShippingMethod()
         return;
     _ischeckoutprocessing = true;
     jQuery("#co-shippingmethod-form input[type=submit]").hide();
-    jQuery("#co-shippingmethod-form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/checkout/checkout-loader.gif' />");
+    jQuery("#co-shippingmethod-form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/new-loader.gif' />");
     var url = homeUrl + 'checkout/onepage/saveShippingMethod';
     if(_usesecureurl)
         url = securehomeUrl + 'checkout/onepage/saveShippingMethod';
@@ -744,7 +870,11 @@ function saveShippingMethod()
 			jQuery("form#co-billing-form").submit();
             //reordersteps(jQuery("#cobilling"));
             
-            jQuery("#co-shippingmethod-form input[type=submit]").show();
+            jQuery("#co-shippingmethod-form input[type=submit]").hide();
+
+            jQuery("li#shippingDetails .ovrlay-bg").show();
+            jQuery("li#billingDetails .ovrlay-bg").hide();
+
             jQuery("#co-shippingmethod-form #procImg").remove();
             getCartSummary();
 			jQuery("input[type='radio'][value='stripe']").attr("checked","checked");
@@ -765,7 +895,7 @@ function saveShippingAddress()
         return;
     _ischeckoutprocessing = true;
     jQuery("#checkout-shipping-form input[type=submit]").hide();
-    jQuery("#checkout-shipping-form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/checkout/checkout-loader.gif' />");
+    jQuery("#checkout-shipping-form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/new-loader.gif' />");
     var shippingdata = jQuery("#checkout-shipping-form").serialize();
     var url = homeUrl + 'checkout/onepage/saveShipping';
     if(_usesecureurl)
@@ -779,7 +909,11 @@ function saveShippingAddress()
             result = eval('(' + result + ')');
             //console.log(result['update_section']['html']);
             jQuery("div#shippingmethods").html(result['update_section']['html']);
-			jQuery("form#co-shippingmethod-form input#" + "s_method_flatrate_flatrate").attr("checked","checked");
+
+            var getShpID =  jQuery(".shippingOption").find("ul.availableShip").find("li.selected").attr("id");
+            //alert(getShpID);
+
+			jQuery("form#co-shippingmethod-form input#" + getShpID).attr("checked","checked");
 			jQuery("form#co-shippingmethod-form").submit();
 			// Select the chosen shipping method on the shipping form and call saveshippingmethod.
 			
@@ -790,7 +924,20 @@ function saveShippingAddress()
 			//Save Billing Address here.
 			
             
-            jQuery("#checkout-shipping-form input[type=submit]").show();
+            // hiding shiipng divs
+            var txtSl = jQuery('#shipping-address-select').find('option:selected').text();
+            txtSl = txtSl.replace(/,/g, "<br />");
+
+            jQuery('#updateNameAdd').find('.address').html(txtSl);
+            jQuery('#updateNameAdd').find('.address').contents().first().wrap('<span>To: </span>');
+
+
+            jQuery("#checkout-shipping-form input[type=submit]").hide();
+            jQuery("#checkout-shipping-address-new").hide();
+            jQuery("#updateNameAdd").show();
+            jQuery("#shippingaddressselectionblock").show();
+
+
             jQuery("#checkout-shipping-form #procImg").remove();
             jQuery("#shipping\\:use_for_billing").removeAttr("checked");
         }

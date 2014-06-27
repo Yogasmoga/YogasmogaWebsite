@@ -43,23 +43,15 @@
 //        Mage::getSingleton('core/session')->setRedirect('');
 //    }
 ?>
- <div class="myheader" style="margin-bottom: 7px;">MY ACCOUNT</div>
- <div class="account-nav">
-	 <ul class="sub-nav">
-	<li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>sales/order/history">View Past Orders</a></li>
-	<li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>wishlist">Wish list</a></li>
-	<li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>rewardpoints/index/referral/">Refer A Friend</a></li>
-    <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/address">Address Book</a></li>
-	</ul>
-</div>
+ <?php /* <div class="myheader" style="margin-bottom: 7px;">MY ACCOUNT</div> */ ?>
+
  <div class="myaccountdashboard">
     <?php echo $this->getChildHtml('hello'); ?>
     <table style="width: 100%;">
         <?php echo $this->getChildHtml('info') ?> 
-        <?php //echo $this->getChildHtml('address') ?>
+        <?php echo $this->getChildHtml('address') ?>
     </table> 
- </div>
- 
+ </div> 
 <?php /* 
 <div class="page-head">
     <h3><?php echo $this->__('My Dashboard') ?></h3>
@@ -77,7 +69,6 @@
             <?php echo $this->getChildHtml('points') ?>
         </div>
 </div>
-
 <div class="account-box ad-account-info box">
     <div class="head box-title">
         <h3><?php echo $this->__('Account Information') ?></h3>
