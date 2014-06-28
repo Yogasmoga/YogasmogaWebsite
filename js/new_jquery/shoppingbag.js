@@ -14,13 +14,14 @@ jQuery(document).ready(function($){
    
     /* ===========  code for all events in shopping for appy smogi bucks in the cart  =========*/
     // check if user click on sign in from the drop down menu
+    
     $("#signin").on("click",function(){
         _isClickSigninMenu = true;
     });
     $("#hidemsg").live("click",function(){
          $('#redeemresult').empty().hide();
     });
-    $(".pageoverlay").live("click",function(){
+    $("#continuelink,.pageoverlay").live("click",function(){
         $(".pageoverlay").hide();
         $(".page").animate({ left: '0' }).css("");
         $(".header-container").animate({ left: "0" });
@@ -272,9 +273,10 @@ jQuery(window).resize(function(){
                 "display": 'block'
             }).removeClass("hdnovr");
             jQuery(".page").css("position", "relative").animate({ left: -shoppingWdth });
-            jQuery(".pageoverlay").css("height", bodyHght).css("width", jQuery(window).width()).show();
+            jQuery(".pageoverlay").css("min-height", bodyHght).css("width", jQuery(window).width()).show();
             jQuery(".header-container").animate({ left: -shoppingWdth });
             jQuery("body").addClass("hdnHgt");
+           // alert(bodyHght);
             return false;
         });
 }
@@ -297,7 +299,7 @@ function smogicart() {
                 applysmogibucks();
         } 
     }
-    else jQuery('#redeemresult').empty().append('Please enter valid smogi bucks.<br><button id="hidemsg">Ok</button>').show();
+    else jQuery('#redeemresult').empty().append('<div class="errorformat">Please enter valid smogi bucks.<br><button id="hidemsg">Ok</button></div>').show();
 }
 function promocodecart(){
     jQuery('#redeemresult').empty().hide();
@@ -318,7 +320,7 @@ function promocodecart(){
                     applypromocode();
         }
     }
-    else jQuery('#redeemresult').empty().append('Please enter valid promo code.<br><button id="hidemsg">Ok</button>').show();
+    else jQuery('#redeemresult').empty().append('<div class="errorformat">Please enter valid promo code.<br><button id="hidemsg">Ok</button></div>').show();
 }
 function giftcart() {
     jQuery('#redeemresult').empty().hide();
@@ -338,7 +340,7 @@ function giftcart() {
                 applygiftcardcode();
         }
     }
-    else jQuery('#redeemresult').empty().append('Please enter valid gift card code.<br><button id="hidemsg">Ok</button>').show();
+    else jQuery('#redeemresult').empty().append('<div class="errorformat">Please enter valid gift card code.<br><button id="hidemsg">Ok</button></div>').show();
 }
 function showShoppingBagHtml()
 {
@@ -378,8 +380,9 @@ function showShoppingBagHtml()
                    // alert(data.html);
                     jQuery(".shopping-cart").html(data.html);
                     jQuery(".cartitemcount").html(data.count);
-
-
+                    console.log(jQuery(".contfull2").outerHeight());
+                    jQuery(".bagerrormsg").height(jQuery(".contfull2").outerHeight());
+                    jQuery(".bagerrormsg").width(jQuery(".contfull2").outerWidth());
             }
         });
     },100);
@@ -468,7 +471,7 @@ function applysmogibucks()
 
     if(isNaN(smogivalue)) {
         jQuery('#smogi').next('span').addClass("applysmogi").empty().append("+");
-        jQuery('#redeemresult').empty().append('Enter valid number.<br><button id="hidemsg">Ok</button>').show();
+        jQuery('#redeemresult').empty().append('<div class="errorformat">Please enter valid number.<br><button id="hidemsg">Ok</button></div>').show();
         return false;
     }
 
@@ -514,7 +517,7 @@ function applysmogibucks()
                 }
                 else
                 {
-                    jQuery('#redeemresult').empty().append('There is some error while applying smogi bucks.<br><button id="hidemsg">Ok</button>').show();
+                    jQuery('#redeemresult').empty().append('<div class="errorformat">There is some error while applying smogi bucks.<br><button id="hidemsg">Ok</button></div>').show();
                     jQuery('#smogi').next('span').addClass("applysmogi").empty().append("+");
                     jQuery('.zindexH').hide();
                 }
@@ -526,7 +529,7 @@ function applysmogibucks()
     }
     else{
         jQuery('#smogi').next('span').addClass("applysmogi").empty().append("+");
-        jQuery('#redeemresult').empty().append('Please enter valid Smogi Bucks or available Smogi Bucks balance in your account is not sufficient.<br><button id="hidemsg">Ok</button>').show();
+        jQuery('#redeemresult').empty().append('<div class="errorformat">Please enter valid Smogi Bucks or available Smogi Bucks balance in your account is not sufficient.<br><button id="hidemsg">Ok</button></div>').show();
         jQuery('.zindexH').hide();
     }
 
@@ -558,7 +561,7 @@ function removesmogibucks()
             }
             else
             {
-                jQuery('#redeemresult').empty().append('There is some error while removing smogi bucks.<br><button id="hidemsg">Ok</button>').show();
+                jQuery('#redeemresult').empty().append('<div class="errorformat">There is some error while removing smogi bucks.<br><button id="hidemsg">Ok</button></div>').show();
                 
             }
 
@@ -590,7 +593,7 @@ function automaticapplysmogibucks()
             }
             else
             {
-                jQuery('#redeemresult').empty().append('There is some error while apply auto smogi bucks.<br><button id="hidemsg">Ok</button>').show();
+                jQuery('#redeemresult').empty().append('<div class="errorformat">There is some error while apply auto smogi bucks.<br><button id="hidemsg">Ok</button></div>').show();
             }
 
         }
@@ -626,7 +629,7 @@ function applypromocode()
                 }
                 else
                 {   
-                    jQuery('#redeemresult').empty().append(data.errors+'<br><button id="hidemsg">Ok</button>').show();
+                    jQuery('#redeemresult').empty().append('<div class="errorformat">'+data.errors+'<br><button id="hidemsg">Ok</button></div>').show();
                     jQuery('#promocode').next('span').addClass("applypromo").empty().append("+");
                     jQuery('.zindexH').hide();
                 }
@@ -668,7 +671,7 @@ function removepromocode()
             }
             else
             {
-                jQuery('#redeemresult').empty().append(data.errors+'<br><button id="hidemsg">Ok</button>').show();
+                jQuery('#redeemresult').empty().append('<div class="errorformat">'+data.errors+'<br><button id="hidemsg">Ok</button></div>').show();
             }
         }
     });
@@ -704,7 +707,7 @@ function applygiftcardcode()
             }
             else
             {
-                jQuery('#redeemresult').empty().append(data.error+'<br><button id="hidemsg">Ok</button>').show();
+                jQuery('#redeemresult').empty().append('<div class="errorformat">'+data.error+'<br><button id="hidemsg">Ok</button></div>').show();
                 jQuery('#giftcartcode').next('span').addClass("applygiftcard").empty().append("+");
                 jQuery('.zindexH').hide();
             }
@@ -753,7 +756,7 @@ function redeemgiftcardcode()
             }
             else
             {
-                jQuery('#redeemresult').empty().append(data.error+'<br><button id="hidemsg">Ok</button>').show();
+                jQuery('#redeemresult').empty().append('<div class="errorformat">'+data.error+'<br><button id="hidemsg">Ok</button></div>').show();
                 jQuery(".giftcarloader").empty();
                 jQuery('.zindexH').hide();
             }

@@ -327,42 +327,47 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .wdth65{width: 63%; float: left; margin: 0 2% 0 0;}
 .wdth35{width: 35%; float: left;}
 
-.featureList{width: 100%;}
+.featureList{width: 100%; margin-bottom: 40px;}
 .featureList > li:first-child{margin: 0 1% 0 0;}
 .featureList > li:last-child{margin: 0 0 0 1%;}
 .featureList > li{display: inline-block; float: left; margin: 0 1%; width: 18.2%;}
 .featureList span{display: block; margin: 20px 0; text-transform: capitalize;}
 .featureList span.ftrFig{/*background: #E5E9EC;*/ margin: 0; }
-.featureList span.ftrFig img{width: 100%; }
+.featureList span.ftrFig img{width: 100%; height: 200px;}
 
 .similarProdList{margin: auto; width: 80%; font-size: 12px;}
-.similarProdList > li{float: left; width: 100%; margin: 0 0 20px;}
-.similarProdList span{float: left; line-height: 20px; text-transform: uppercase; margin: 0 5% 0 0; text-align: center; width: 55%;}
-.similarProdList span:nth-child(2){width: 38%; margin: 0; text-align: left;}
+.similarProdList > li{float: left; width: 48%; margin: 0 0 40px;}
+.similarProdList > li:nth-child(2){float: right;}
+.similarProdList span{/*float: left;*/ line-height: 20px; text-transform: uppercase; /*margin: 0 5% 0 0;*/ text-align: center; /*width: 55%;*/ display: block; margin:0 auto; margin-bottom: 20px;}
+.similarProdList span:nth-child(2){/*width: 38%;*/ margin: 0; text-align: left;}
 .similarProdList span strong{display: block; font-weight: bold;}
 
+.reviews-cont{margin-top: 30px !important;}
 .reviewTxt{font: 19px/30px gothambold; margin: auto auto 40px; text-transform: uppercase;}
 .reviewTxt > span{text-transform: none; font-family: gothambook;}
 .block-elm .block-link a{color: #cc0033; font-size: 11px;}
 
 .fabDetail > h2{font: 43px ITCAvantGardeProBk; background: none; margin: -14px 0 0;}
 .fabDetail h2 sup{font-size: 22px;}
-.fabDetail ul{margin-bottom: 20px;}
-.fabDetail li{font-size: 11px; text-align: center; text-transform: uppercase; line-height: 15px; width: 23%; word-wrap: break-word; display: inline-block; margin: 0 0.5%;}
-.fabDetail li:first-child{margin: 0 0.5% 0 0;}
-.fabDetail li:nth-child(4){margin: 0 0 0 0.5%;}
+.fabDetail ul{margin-bottom: 10px;}
+.fabDetail li{font-size: 11px; text-align: center; text-transform: uppercase; line-height: 15px; width: 45%; word-wrap: break-word; display: inline-block; margin-bottom: 5%; vertical-align: top;}
+/*.fabDetail li:first-child{margin: 0 0.5% 0 0;}*/
+/*.fabDetail li:nth-child(4){margin: 0 0 0 0.5%;}*/
 .fabDetail li span{display: block; margin-bottom: 10px;}
 
 .fitDetail .wdth35{float: left; width: 29%; margin: 0 8% 0 0;}
 .fitDetail .wdth65{float: left; width: 58%;}
 .fitDetail tr:first-child td{border-bottom: 1px solid #58585A; font-weight: bold; padding: 0 6px 6px;}
+.fitDetail tr:first-child td:first-child{padding-left: 0;}
 .fitDetail td{border-right: 1px solid #DCDCDC; font-size: 11px; text-transform: uppercase; padding: 6px;}
 .fitDetail td:first-child{font-weight: bold; padding: 6px 0; width: 27%;}
 .fitDetail td:last-child{border-right: 0 none;}
 .fitDetail td span{font-weight: normal;}
-.fitDetail li{list-style: disc inside; line-height: 20px;}
+.fitDetail li{list-style: disc outside; line-height: 20px; margin-left: 20px;}
 .size{font-size: 11px; text-transform: uppercase; font-weight: bold;}
-.video-block, .video-block img{width: 100%;}
+/*.video-block, .video-block img{width: 100%;}*/
+.video-design-block{text-align: center; margin-bottom: 25px; }
+.how-to-measure{color: #c03; font-size: 11px; font-family: "AvantGardeGothicITCW01B"; border-bottom: #c03 1px solid; font-weight: normal;}
 
 .thumb-imgs{float: left; left: -130px; margin: 0; position: absolute; text-align: center; width: 18%; min-width: 18%; max-width: 138px;}
 .thumb-imgs img{width: 90%;}
@@ -401,8 +406,8 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .online {color: #999999; float: right; font-style: italic; font-weight: bold; text-transform: capitalize;}
 .online > span {background: #00A14B; border-radius: 10px; display: inline-block; height: 9px; margin: 0 4px 0 0; width: 9px;}
 .readmore {color: #CC0033; font-size: 11px; margin: 0 5px; text-decoration: underline; text-transform: uppercase;}
-.fitDetail > div{float: left; max-width: 32%;}
-.fitDetail > div.tble{margin: 0 4%; min-width: 60%;}
+/*.fitDetail > div{float: left; max-width: 32%;}*/
+/*.fitDetail > div.tble{margin: 0 4%; min-width: 60%;}*/
 .fitDetail table{display: inline-block; margin: 25px 0 0; width: 100%;}
 .top-divider{background: url("../images/dvdr-new.jpg") no-repeat center top; background-size: 100% auto; margin: 40px 0 0; padding: 0;}
 .menu-bar.cntn-scroll.f-left.l-align {width: 270px;}
@@ -423,7 +428,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .adddields > form {display: block;}
 .adddields label {float: left; min-height: 40px; width: 100%;}
 .adddields input {background: #fff; text-transform: capitalize; border: 0 none; display: block; float: left; font: italic 12px gothambook; height: 20px; margin: 0; padding: 5px 12px; width: 84%;}
-.adddields input.gry{background: #B3B3B3; cursor: default; color: #fff;}
+.adddields input.gry{background: #d3d3d3; cursor: default; color: #000;}
 .adddields span {background: 0 #eeefef; border: 1px solid #B3B3B3; float: left; height: auto; padding: 7px 4px 6px; width: 6%;}
 .addedItem {background: #fff; float: right; width: 99.5%;margin-bottom: 10px;}
 .addedItem .similarProdList {font-size: 11px; width: 90%; text-transform: uppercase;}
@@ -673,7 +678,7 @@ table.productimagecontainer table.tdbigimagecontainer td img{width: 95%; float: 
 .show-prodImg{width: 82%; margin: 0; float: right;}
 .thumb-imgs{left: 0;}
 
-.fixwidth{margin-left: 300px !important;}
+
 
 /** resizing fontsize **/
 ul.main-menu li a,ul.tr-menu > li > ul.sub-menu li a{font: bold 11px gothambook;}
@@ -703,6 +708,9 @@ div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-trans
 .wdth-sml{width: 520px !important; margin-right: 4px !important; background: url("../images/dvdr-new.jpg") no-repeat center top !important; background-size: 100% auto !important;}
 .pr-icon{width: 160px !important;}
 .cont-icon li{width: 170px !important;}
+ul.site-map{text-align: center;}
+ul.site-map>li{width: 30%; margin-bottom: 40px;}
+body{overflow-x:scroll !important; }
 }
 
 .dnone.dblock, .dblock{display: inline !important;}
@@ -958,15 +966,15 @@ ul.checkout-cont li .listadd > li {
     height: 163px;
     margin: auto;
     opacity: 0.7;
-    padding-top: 40%;
+/*    padding-top: 40%;*/
     position: absolute;
     width: 100%;
     display:none;
-    padding-left: 10px;
-    padding-right: 10px;
+/*    padding-left: 10px;
+    padding-right: 10px;*/
     text-transform: none;
 }
-#redeemresult > button {
+.errorformat > button {
     background: none repeat scroll 0 0 #ccc;
     border: medium none;
     color: #000;
@@ -974,6 +982,13 @@ ul.checkout-cont li .listadd > li {
     padding: 5px;
     cursor: pointer;
     font-weight: bold;
+}
+.errorformat{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    width: inherit;
 }
 .pageoverlay
 {
@@ -1001,7 +1016,7 @@ table.productzoomtable tr.zoom-prd-details > td{height: 80px !important; max-hei
 background-size: 100% auto; padding-bottom: 15px; padding-left: 30px;}
 table.productdetailtable div#colorcontainer{margin: 0 !important;}
 .zoomsmallimagecontainer tr{display: block !important; float: none !important;}
-.zoom-prd-det .box-seprtr.last{margin-left: 50px;}
+.zoom-prd-det .box-seprtr.last{margin-left: 50px; width: 600px;}
 div#zoompopup div#zoomoptions{width: auto !important; margin: 0 !important; top: 40px !important; display: block  !important; right: 70px  !important;}
 div#zoompopup div#zoomoptions img{padding:0 0 0 15px !important; width: 21px; height: 22px;}
 img#closelightbox{top: 40px !important; right: 28px !important; width: 21px;}
@@ -1026,3 +1041,4 @@ table.tblwishlist thead th{padding-bottom: 0 !important;}
 	width: auto !important;
 }
 .customer-address-index .myheader{display: none;}
+.fixwidth{margin-left: 300px !important;}

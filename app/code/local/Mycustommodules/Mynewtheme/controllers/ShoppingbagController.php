@@ -810,7 +810,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
     <div class="bagerrormsg" id="redeemresult"></div>
     <!-- ContinueShoppingBtn -->
     <!-- productOption -->
-    <div class="cont-full">';
+    <div class="cont-full contfull2">';
         $totalhtml = '
                         <!-- totalAmount -->
                         <div class="totalAmnt capstxt">
@@ -937,6 +937,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $gryclasspromo = "gry";
                 $gryclassgift = "gry";
                 $applygiftcard="";
+                if($showedpoints < 1) {
+                    $applysmogidisable=" disabled='disabled'";
+                    $gryclasssmogi = "gry";
+                }
                 $applygiftdisable=" disabled='disabled'";
                 $applypromo="";
                 $applypromodisable=" disabled='disabled'";
