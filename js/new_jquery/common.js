@@ -4,6 +4,7 @@ jQuery(document).ready(function($){
     initializeinvitepopup();
     initializesigninpopup();
     madeinusa();
+    $(window).resize();
 
     function madeinusa(){
         var block3H = $(".structure .block3").height();
