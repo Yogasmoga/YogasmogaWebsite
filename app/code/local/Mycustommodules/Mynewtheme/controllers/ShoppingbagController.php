@@ -807,6 +807,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         <a href="'.$continuelink.'" id="continuecheckout" class="continuelink f-right grn">Continue</a>
         <div class="clear-fix"></div>
     </div>
+    <div class="bagerrormsg" id="redeemresult"></div>
     <!-- ContinueShoppingBtn -->
     <!-- productOption -->
     <div class="cont-full">';
@@ -936,6 +937,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $gryclasspromo = "gry";
                 $gryclassgift = "gry";
                 $applygiftcard="";
+                if($showedpoints < 1) $applysmogidisable=" disabled='disabled'";
                 $applygiftdisable=" disabled='disabled'";
                 $applypromo="";
                 $applypromodisable=" disabled='disabled'";
@@ -1013,7 +1015,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
         }
-        $html .='<div class="errormsg" id="redeemresult"></div><div class="zindexH"></div>';
+        $html .='<div class="zindexH"></div>';
         // $html .='           <label><input type="text" name="promocode" id="promocode" value="Add a promo code" /><span>+</span></label>
         //                     <label><input type="text" name="giftcartcode" id="giftcartcode" value="Add a gift card code" /><span>+</span></label>';
         if(!$customerId)

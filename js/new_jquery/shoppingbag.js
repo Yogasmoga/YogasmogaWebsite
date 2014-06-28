@@ -5,85 +5,28 @@ jQuery(document).ready(function($){
     //checkAppliedPromotion();
 
 
-    // Show/Hide Shopping Cart Container
-    function openShoppingCart(){
-        var shoppingWdth = $(".shopping-cart").width();
-        var bodyHght = $(window).height();
-
-        $(".open-cart").on("click", function(){
-            $(".shopping-cart").css({
-                "height": bodyHght,
-                "display": 'block'
-            }).removeClass("hdnovr");
-            $(".page").css("position", "relative").animate({ left: -shoppingWdth });
-            $(".header-container").animate({ left: -shoppingWdth });
-            $("body").addClass("hdnHgt");
-            return false;
-        });
-    };
-    //check shopping bag input focus/blur 
-    function inputFocus(){
-        $("#giftcartcode").live("focus", function () {
-             if ($(this).val() == "Add a gift card code") {
-                 $(this).val("");
-             }
-         });
-        $("#giftcartcode").live("blur", function () {
-             if ($(this).val() == "") {
-                 $(this).val("Add a gift card code");
-             }
-         });
-        $("#promocode").live("focus", function () {
-             if ($(this).val() == "Add a promo code") {
-                 $(this).val("");
-             }
-         });
-        $("#promocode").live("blur", function () {
-             if ($(this).val() == "") {
-                 $(this).val("Add a promo code");
-             }
-         });
-        $("#smogi").live("blur", function () {
-            var storeVal = jQuery(this).attr("available")? jQuery(this).attr("available"):0;
-            var appliedvalue = jQuery(".smogi span.f-right").attr("usedpoints")?jQuery(".smogi span.f-right").attr("usedpoints"):0;
-            //var availablesmogi = '';
-            var availablesmogi = (jQuery("#smogi").attr("available")).trim()? (jQuery("#smogi").attr("available")).trim():0;
-            
-//            if(availablesmogi !='')
-//            {
-//                availablesmogi = (jQuery("#smogi").attr("available")).trim();
-//            }
-
-            if(availablesmogi !='' && appliedvalue  !='')
-            {
-                appliedvalue = parseInt(appliedvalue);
-                availablesmogi = parseInt(availablesmogi);
-                    if ($(this).val() == "") {
-                        $(this).val(availablesmogi - appliedvalue);
-                    }
-            }else{
-                if ($(this).val() == "" && storeVal !="") {
-                    $(this).val(storeVal);
-                }
-            }
-         });
-
-    }
+    
+    
     // check applied promotion get alert
     // function checkAppliedPromotion(){
     // }
     // window resize
-    $(window).resize(function(){
-        var bodyHght = $(window).height();
-        $(".shopping-cart").css({
-            "height": bodyHght
-        });
-    });
+   
     /* ===========  code for all events in shopping for appy smogi bucks in the cart  =========*/
     // check if user click on sign in from the drop down menu
-    $("#signin").live("click",function(){
+    $("#signin").on("click",function(){
         _isClickSigninMenu = true;
     });
+    $("#hidemsg").live("click",function(){
+         $('#redeemresult').empty().hide();
+    });
+    $(".pageoverlay").live("click",function(){
+        $(".pageoverlay").hide();
+        $(".page").animate({ left: '0' }).css("");
+        $(".header-container").animate({ left: "0" });
+        $("body").removeClass("hdnHgt");
+    });
+    
     if(!_islogedinuser) {
         $(document).on("click","#continuecheckout",function(e){
             e.preventDefault();        
@@ -91,7 +34,7 @@ jQuery(document).ready(function($){
             $("#signing_popup").dialog( "open" );            
         });
     }        
-//    $(document).on("click","#continuecheckout",function(e){
+//    $(document).live("click","#continuecheckout",function(e){
 //        e.prevenDefault();
 //        alert('22');
 //    });
@@ -101,18 +44,19 @@ jQuery(document).ready(function($){
     var pid = '';
     var colorattributeid = '';
     var sizeattributeid = '';
-    $(".addbracelet").live("click",function(){
+    jQuery(".addbracelet").live("click",function(){
         jQuery(this).html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
-        pid = ($(this).parent("span").parent("li").attr("productid")).trim();
-        colorattributeid = ($(this).parent("span").parent("li").attr("colorattributeid")).trim();
-        sizeattributeid =  ($(this).parent("span").parent("li").attr("sizeattributeid")).trim();
+        pid = (jQuery(this).parent("span").parent("li").attr("productid")).trim();
+        colorattributeid = (jQuery(this).parent("span").parent("li").attr("colorattributeid")).trim();
+        sizeattributeid =  (jQuery(this).parent("span").parent("li").attr("sizeattributeid")).trim();
         addbracelettobag(pid,colorattributeid,sizeattributeid );
     });
     // end add bracelet in cart
 
     // delete product from cart
-    $(".close").live("click",function(){
-        var deleteproductid = ($(this).parent("li").attr("id")).trim();
+    jQuery(".close").live("click",function(e){
+        e.preventDefault();
+        var deleteproductid = (jQuery(this).parent("li").attr("id")).trim();
         jQuery(this).parent("li").html("<img style='margin:20px 0;' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
         deleteproduct(deleteproductid);
     });
@@ -143,7 +87,8 @@ jQuery(document).ready(function($){
           
     });
     // remove smogi bucks from cart
-    $(document).on("click", ".removesmogi", function(){
+    $('.removesmogi').live("click", function(e){
+        e.preventDefault();
         $(this).html("<img style='height: 12px' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
         removesmogibucks();
     });
@@ -246,7 +191,7 @@ jQuery(document).ready(function($){
         return false;
     });
 
-    // $(".addedItem li").find(".close").on("click", function(){
+    // $(".addedItem li").find(".close").live("click", function(){
     //     $(this).parent("li").remove();
     // });
 
@@ -260,12 +205,81 @@ jQuery(document).ready(function($){
             _isClickSigninMenu = true;
             $("#signing_popup").dialog( "open" );
         }
-
-
     });
 });
+jQuery(window).resize(function(){
+    var bodyHght = jQuery(window).height();
+    jQuery(".shopping-cart").css({
+        "height": bodyHght
+    });
+});
+//check shopping bag input focus/blur 
+    function inputFocus(){
+        jQuery("#giftcartcode").live("focus", function () {
+             if (jQuery(this).val() == "Add a gift card code") {
+                 jQuery(this).val("");
+             }
+         });
+        jQuery("#giftcartcode").live("blur", function () {
+             if (jQuery(this).val() == "") {
+                 jQuery(this).val("Add a gift card code");
+             }
+         });
+        jQuery("#promocode").live("focus", function () {
+             if (jQuery(this).val() == "Add a promo code") {
+                 jQuery(this).val("");
+             }
+         });
+        jQuery("#promocode").live("blur", function () {
+             if (jQuery(this).val() == "") {
+                 jQuery(this).val("Add a promo code");
+             }
+         });
+        jQuery("#smogi").live("blur", function () {
+            var storeVal = jQuery(this).attr("available")? jQuery(this).attr("available"):0;
+            var appliedvalue = jQuery(".smogi span.f-right").attr("usedpoints")?jQuery(".smogi span.f-right").attr("usedpoints"):0;
+            //var availablesmogi = '';
+            var availablesmogi = (jQuery("#smogi").attr("available")).trim()? (jQuery("#smogi").attr("available")).trim():0;
+            
+//            if(availablesmogi !='')
+//            {
+//                availablesmogi = (jQuery("#smogi").attr("available")).trim();
+//            }
+
+            if(availablesmogi !='' && appliedvalue  !='')
+            {
+                appliedvalue = parseInt(appliedvalue);
+                availablesmogi = parseInt(availablesmogi);
+                    if (jQuery(this).val() == "") {
+                        jQuery(this).val(availablesmogi - appliedvalue);
+                    }
+            }else{
+                if (jQuery(this).val() == "" && storeVal !="") {
+                    jQuery(this).val(storeVal);
+                }
+            }
+         });
+
+    }
+// Show/Hide Shopping Cart Container
+    function openShoppingCart(){
+        var shoppingWdth = jQuery(".shopping-cart").width();
+        var bodyHght = jQuery(window).height();
+
+        jQuery(".open-cart").live("click", function(){
+            jQuery(".shopping-cart").css({
+                "height": bodyHght,
+                "display": 'block'
+            }).removeClass("hdnovr");
+            jQuery(".page").css("position", "relative").animate({ left: -shoppingWdth });
+            jQuery(".pageoverlay").css("height", bodyHght).css("width", jQuery(window).width()).show();
+            jQuery(".header-container").animate({ left: -shoppingWdth });
+            jQuery("body").addClass("hdnHgt");
+            return false;
+        });
+}
 function smogicart() {
-    jQuery('#redeemresult').empty();
+    jQuery('#redeemresult').empty().hide();
     var smogi=jQuery.trim(jQuery('#smogi').val());
     if(!isNaN(smogi) && smogi !='' && smogi != jQuery('#smogi').attr('placeholder')) {
         if(!_islogedinuser)
@@ -283,10 +297,10 @@ function smogicart() {
                 applysmogibucks();
         } 
     }
-    else jQuery('#redeemresult').empty().append('Please enter smogi bucks.');
+    else jQuery('#redeemresult').empty().append('Please enter valid smogi bucks.<br><button id="hidemsg">Ok</button>').show();
 }
 function promocodecart(){
-    jQuery('#redeemresult').empty();
+    jQuery('#redeemresult').empty().hide();
     var promocode=jQuery.trim(jQuery('#promocode').val());
     if(promocode !='' && promocode != jQuery('#promocode').attr('placeholder')) {
         if(!_islogedinuser)
@@ -304,10 +318,10 @@ function promocodecart(){
                     applypromocode();
         }
     }
-    else jQuery('#redeemresult').empty().append('Please enter promo code.');
+    else jQuery('#redeemresult').empty().append('Please enter valid promo code.<br><button id="hidemsg">Ok</button>').show();
 }
 function giftcart() {
-    jQuery('#redeemresult').empty();
+    jQuery('#redeemresult').empty().hide();
     var giftcartcode=jQuery.trim(jQuery('#giftcartcode').val());
     if(giftcartcode !='' && giftcartcode != jQuery('#giftcartcode').attr('placeholder')) {
         if(!_islogedinuser)
@@ -324,7 +338,7 @@ function giftcart() {
                 applygiftcardcode();
         }
     }
-    else jQuery('#redeemresult').empty().append('Please enter gift card code.');
+    else jQuery('#redeemresult').empty().append('Please enter valid gift card code.<br><button id="hidemsg">Ok</button>').show();
 }
 function showShoppingBagHtml()
 {
@@ -364,7 +378,6 @@ function showShoppingBagHtml()
                    // alert(data.html);
                     jQuery(".shopping-cart").html(data.html);
                     jQuery(".cartitemcount").html(data.count);
-
 
 
             }
@@ -455,7 +468,7 @@ function applysmogibucks()
 
     if(isNaN(smogivalue)) {
         jQuery('#smogi').next('span').addClass("applysmogi").empty().append("+");
-        jQuery('#redeemresult').empty().append("Enter Valid Number");
+        jQuery('#redeemresult').empty().append('Enter valid number.<br><button id="hidemsg">Ok</button>').show();
         return false;
     }
 
@@ -501,7 +514,7 @@ function applysmogibucks()
                 }
                 else
                 {
-                    jQuery('#redeemresult').empty().append('there is some error while applying smogi bucks');
+                    jQuery('#redeemresult').empty().append('There is some error while applying smogi bucks.<br><button id="hidemsg">Ok</button>').show();
                     jQuery('#smogi').next('span').addClass("applysmogi").empty().append("+");
                     jQuery('.zindexH').hide();
                 }
@@ -513,7 +526,7 @@ function applysmogibucks()
     }
     else{
         jQuery('#smogi').next('span').addClass("applysmogi").empty().append("+");
-        jQuery('#redeemresult').empty().append('Please input valid number/you have not sufficient points in account');
+        jQuery('#redeemresult').empty().append('Please enter valid Smogi Bucks or available Smogi Bucks balance in your account is not sufficient.<br><button id="hidemsg">Ok</button>').show();
         jQuery('.zindexH').hide();
     }
 
@@ -545,7 +558,7 @@ function removesmogibucks()
             }
             else
             {
-                jQuery('#redeemresult').empty().append('there is some error while removing smogi bucks');
+                jQuery('#redeemresult').empty().append('There is some error while removing smogi bucks.<br><button id="hidemsg">Ok</button>').show();
                 
             }
 
@@ -574,11 +587,10 @@ function automaticapplysmogibucks()
             {
                 _showShoppingbagLoader = false;
                 showShoppingBagHtml();
-
             }
             else
             {
-                jQuery('#redeemresult').empty().append('there is some error while apply auto smogi bucks');
+                jQuery('#redeemresult').empty().append('There is some error while apply auto smogi bucks.<br><button id="hidemsg">Ok</button>').show();
             }
 
         }
@@ -614,7 +626,7 @@ function applypromocode()
                 }
                 else
                 {   
-                    jQuery('#redeemresult').empty().append(data.errors);
+                    jQuery('#redeemresult').empty().append(data.errors+'<br><button id="hidemsg">Ok</button>').show();
                     jQuery('#promocode').next('span').addClass("applypromo").empty().append("+");
                     jQuery('.zindexH').hide();
                 }
@@ -656,7 +668,7 @@ function removepromocode()
             }
             else
             {
-                jQuery('#redeemresult').empty().append(data.errors);
+                jQuery('#redeemresult').empty().append(data.errors+'<br><button id="hidemsg">Ok</button>').show();
             }
         }
     });
@@ -666,7 +678,7 @@ function removepromocode()
 
 function applygiftcardcode()
 {
-     jQuery('#redeemresult').empty();
+     jQuery('#redeemresult').empty().hide();
      var giftcardcode = (jQuery("#giftcartcode").attr("value")).trim();
 
     if(window.location.href.indexOf('https://') >= 0)
@@ -692,7 +704,7 @@ function applygiftcardcode()
             }
             else
             {
-                jQuery('#redeemresult').empty().append(data.error);
+                jQuery('#redeemresult').empty().append(data.error+'<br><button id="hidemsg">Ok</button>').show();
                 jQuery('#giftcartcode').next('span').addClass("applygiftcard").empty().append("+");
                 jQuery('.zindexH').hide();
             }
@@ -701,7 +713,7 @@ function applygiftcardcode()
 }
 function redeemgiftcardcode()
 {
-    jQuery('#redeemresult').empty();
+    jQuery('#redeemresult').empty().hide();
     
     var redeemvalue = '';
 
@@ -741,7 +753,7 @@ function redeemgiftcardcode()
             }
             else
             {
-                jQuery('#redeemresult').empty().append(data.error);
+                jQuery('#redeemresult').empty().append(data.error+'<br><button id="hidemsg">Ok</button>').show();
                 jQuery(".giftcarloader").empty();
                 jQuery('.zindexH').hide();
             }

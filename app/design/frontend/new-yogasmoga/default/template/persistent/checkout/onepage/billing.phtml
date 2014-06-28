@@ -39,7 +39,15 @@
            </div>
         </div>
     <?php endif ?>
-    <div id="billing-new-address-form" <?php if ($this->customerHasAddresses()): ?> style="display:none;"<?php endif ?>>
+    <?php if (!$this->customerHasAddresses()): ?>
+        <div id="billingaddressselectionblock" class="nopay" style="display:none">
+            <label for="billing-address-select"><?php echo $this->__('Select a billing address from your address book or enter a new address.') ?></label>
+           <div class="input-box">
+               <?php echo $this->getAddressesHtmlSelect('billing') ?>
+           </div>
+        </div>
+    <?php endif ?>    
+    <div id="billing-new-address-form" class="gryWrap" <?php if ($this->customerHasAddresses()): ?> style="display:none;"<?php endif ?>>
 
         <table class="inputtable">
                         <tr>
@@ -138,7 +146,7 @@
                         <tr>
                             <td class="label dnone"><label for="billing:region"><?php echo $this->__('State') ?></label></td>
                             <td class="inputholder">
-                                <select id="billing:region_id" name="billing[region_id]" class="requiredfield" style="display:none;" defaulterrormsg="State / Province is required.">
+                                <select id="billing:region_id" name="billing[region_id]" class="requiredfield" style="display:none;" defaulterrormsg="State / Province is required." style="width:72px">
                                     <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
                                 </select>
                                 <script type="text/javascript">
@@ -147,7 +155,7 @@
                                     //$('region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
                                 //]]>
                                 </script>
-                                <input type="text" id="billing:region" name="billing[region]" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>" class="requiredfield" defaulterrormsg="State / Province is required" />
+                                <input type="text" style="width: 80%;" id="billing:region" name="billing[region]" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>" class="requiredfield" defaulterrormsg="State / Province is required" />
                             </td>
                         </tr>
                         <tr>

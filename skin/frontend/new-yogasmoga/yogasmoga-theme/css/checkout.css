@@ -47,7 +47,7 @@ td.checkoutstepsholder
 }
 #tblcheckoutsteps select
 {
-    display: none;
+    /*display: none;*/
 /*    max-width: 533px;  */ 
 }
 #tblcheckoutsteps input[type='submit']
@@ -388,8 +388,7 @@ table.co-ov-table tr.last td {
 }
 
 #procImg {
-	float:right ;
-	margin-top:40px;
+    margin: 30px auto;
 }
 #co-billing-form #procImg {margin-top:40px;}
 div#tblcheckoutsteps form
