@@ -378,7 +378,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .gry-box{background: #ededed; padding: 10px 15px; margin-bottom: 10px;}
 .prdname{border-bottom: 1px solid #fff; font: 28px ITCAvantGardeProBk;/* margin: 0 0 15px; padding: 0 0 10px;*/ margin-bottom: -4px;}
 .amount {clear: both; display: block; margin: 5px 0 0;}
-.box-seprtr {border-bottom: 1px solid #FFFFFF; margin: 0 0 15px; padding: 0 0 10px;}
+.box-seprtr {border-bottom: 1px solid #FFFFFF; margin: 0 0 15px; padding: 10px 0 10px;}
 .box-seprtr.last{padding: 0; margin: 0; border-bottom: 0 none;}
 .blck-head-sml {text-transform: uppercase;}
 .blck-head-sml span {display: inline-block; font-family: gothambold; width: 60px;}
@@ -434,7 +434,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .addedItem .similarProdList {font-size: 11px; width: 90%; text-transform: uppercase;}
 .addedItem .similarProdList > li {border-bottom: 1px solid #E6E6E6; margin: 0; padding: 10px 0; position: relative;}
 .addedItem .similarProdList > li:last-child{margin: 0; padding: 10px 0 0}
-.addedItem .similarProdList span {width: 40%;}
+.addedItem .similarProdList span {width: 40%; float: left;}
 .addedItem .similarProdList span:nth-child(2) {width: 55%;}
 .capsnone{text-transform: none !important;}
 .amnt, .quantity{margin: 0 0 6px !important;}
@@ -635,7 +635,7 @@ span.country {
 	.fitDetail > div.tble{max-width: 94%; margin: 0;}
 	.video-box p{margin: 0 0 10px;}
 	.video-box p.block-link a, div.tble p.block-link a{font-size: 10px;}
-	.video-box ul, .vlink-cont{float: left; width: 50%;}
+	/*.video-box ul, .vlink-cont{float: left; width: 50%;}*/
 
 	.adddields input, .shopping-cart, .continuelink{font-size: 11px !important;}
 	.totalAmnt{font-size: 14px;}
@@ -669,10 +669,10 @@ span.country {
 
 @media only screen and (max-width : 1024px) {
 .fitDetail > div.tble, .fitDetail > div.video-box{max-width: 100%; float: left; margin: 0 0 15px; clear: both;}
-.fitDetail > div.tble{max-width: 94%; margin: 0;}
+.fitDetail > div.tble{margin: 0; float: none;}
 .video-box p{margin: 0 0 10px;}
 .video-box p.block-link a, div.tble p.block-link a{font-size: 10px;}
-.video-box ul, .vlink-cont{float: left; width: 50%;}
+/*.video-box ul, .vlink-cont{float: left; width: 50%;}*/
 .gry-box{float: right; width: 90%;}
 table.productimagecontainer table.tdbigimagecontainer td img{width: 95%; float: right;}
 .show-prodImg{width: 82%; margin: 0; float: right;}
@@ -710,7 +710,9 @@ div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-trans
 .cont-icon li{width: 170px !important;}
 ul.site-map{text-align: center;}
 ul.site-map>li{width: 30%; margin-bottom: 40px;}
-body{overflow-x:scroll !important; }
+body{overflow-x:auto !important; }
+.account-nav{position: absolute !important;}
+.block-elm{padding-left: 5px;}
 }
 
 .dnone.dblock, .dblock{display: inline !important;}
@@ -857,7 +859,9 @@ body{overflow-x:scroll !important; }
 .address-info{font-size: 14px; margin-top: 100px;}
 .address-info .add-heading{display: block; margin-bottom: 15px;}
 .billing-add,.shipping-add{width: 40%;}
+.account-nav{width: 25% !important; max-width: 350px;}
 .account-nav.top-divider{padding-top: 20px; margin-top:0;}
+
 
 /***Order History***/
 #my-orders-table{border-spacing: 0; border-left: 1px solid #efefef;}
@@ -876,7 +880,7 @@ body{overflow-x:scroll !important; }
 #edit-accountinfo table tr:first-child td label,#edit-accountinfo table tr:first-child td input{font-size: 13px;}
 
 /***edit account Info***/
-.my-account .edit-info{background: #efefef; padding: 25px;}
+.my-account .edit-info{background: #efefef; padding: 25px; width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box; max-width: 700px; min-width: 500px;} 
 .backlink,#changepasswordoptionholder{display: none;}
 #passwordchangeoptions{display: block !important;}
 .change-password-label{margin-bottom: 5px;}
@@ -984,11 +988,17 @@ ul.checkout-cont li .listadd > li {
     font-weight: bold;
 }
 .errorformat{
-    display: flex;
+/*    display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;*/
+    display:table;
     height: inherit;
     width: inherit;
+}
+.errorformat > span {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
 }
 .pageoverlay
 {
@@ -1040,4 +1050,11 @@ table.tblwishlist thead th{padding-bottom: 0 !important;}
 	width: auto !important;
 }
 .customer-address-index .myheader{display: none;}
-.fixwidth{margin-left: 300px !important;}
+.fixwidth{margin-left: 25% !important; width: 75%;}
+.data-table.ys{min-width: 100% !important;}
+.dashboard-address-book{max-width: 700px; min-width: 500px;}
+.accountbg #mainimage{margin-top: 10px;}
+.addedItem .similarProdList>li{width: 100%;}
+.show-prodImg{width: 82%; margin: 0; float: right;}
+.thumb-imgs{left: 0;}
+table.productimagecontainer{margin-bottom: 70px;}
