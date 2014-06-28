@@ -461,8 +461,9 @@ function InitializeZoomPopup()
             jQuery("div.wrapper, div.ui-widget-overlay").css('height', 'auto');
         }
     });
-    jQuery("div#zoompopup table.productzoomtable>tbody>tr>td").height(_winH);
-    jQuery("div#zoompopup table.productzoomtable>tbody>tr>td").css('max-height', _winH + 'px');
+    console.log(jQuery("body").find(".zoom-prd-det").height());
+    jQuery("div#zoompopup table.productzoomtable>tbody>tr>td").height(_winH + _headerHeight);
+    jQuery("div#zoompopup table.productzoomtable>tbody>tr>td").css('max-height', (_winH + _headerHeight) + 'px');
     jQuery("div#zoompopup div#zoomoptions").css('top', (((_winH + _headerHeight) - jQuery("div#zoompopup div#zoomoptions").height()) / 2) + 'px');
     try{
        jQuery('img#zoomedimage').smoothZoom('resize', {width: (_winW - 250), height: (_winH + _headerHeight)});    
