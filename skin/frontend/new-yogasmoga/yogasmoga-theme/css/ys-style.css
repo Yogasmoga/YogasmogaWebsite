@@ -974,7 +974,7 @@ ul.checkout-cont li .listadd > li {
     padding-right: 10px;*/
     text-transform: none;
 }
-.errorformat > button {
+.errorformat > span > button {
     background: none repeat scroll 0 0 #ccc;
     border: medium none;
     color: #000;
@@ -994,7 +994,7 @@ ul.checkout-cont li .listadd > li {
 {
         background: transparent;
 	z-index: 99999;
-	position: absolute;
+	position: fixed;
 	width: 100%;
         display: none;
         top: 0;
