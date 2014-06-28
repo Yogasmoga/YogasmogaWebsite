@@ -974,7 +974,7 @@ ul.checkout-cont li .listadd > li {
     padding-right: 10px;*/
     text-transform: none;
 }
-.errorformat > button {
+.errorformat > span > button {
     background: none repeat scroll 0 0 #ccc;
     border: medium none;
     color: #000;
@@ -992,13 +992,12 @@ ul.checkout-cont li .listadd > li {
 }
 .pageoverlay
 {
-        background: transparent;
+        background: rgba(255, 255, 255, 0.1);
 	z-index: 99999;
-	position: absolute;
+	position: fixed;
 	width: 100%;
         display: none;
         top: 0;
-        padding: 10px;
         cursor: pointer;
 }
 
