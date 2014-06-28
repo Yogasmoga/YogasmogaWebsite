@@ -810,7 +810,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
     <div class="bagerrormsg" id="redeemresult"></div>
     <!-- ContinueShoppingBtn -->
     <!-- productOption -->
-    <div class="cont-full contfull2">';
+    <div class="cont-full contfull2"><div class="bagerrormsg" id="redeemresult"></div>';
         $totalhtml = '
                         <!-- totalAmount -->
                         <div class="totalAmnt capstxt">

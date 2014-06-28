@@ -984,11 +984,17 @@ ul.checkout-cont li .listadd > li {
     font-weight: bold;
 }
 .errorformat{
-    display: flex;
+/*    display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;*/
+    display:table;
     height: inherit;
     width: inherit;
+}
+.errorformat > span {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
 }
 .pageoverlay
 {
