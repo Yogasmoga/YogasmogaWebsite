@@ -520,6 +520,13 @@ if(strpos($currentUrl, "?") != false)
                 <table class="productimagecontainer f-left">
                     <tr>
                         <td>
+                            <div class="thumb-imgs">
+                                <table class="smallimagecontiner" width="100%">
+                                    <tr></tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td>
                             <div class="show-prodImg">
                                 <table class="tdbigimagecontainer">
                                     <tr>
@@ -528,13 +535,7 @@ if(strpos($currentUrl, "?") != false)
                                 </table>
                             </div>
                         </td>
-                        <td>
-                            <div class="thumb-imgs">
-                                <table class="smallimagecontiner" width="100%">
-                                    <tr></tr>
-                                </table>
-                            </div>
-                        </td>
+                        
                     </tr>
                 </table>
                 <!-- ImageGallery -->
@@ -843,13 +844,16 @@ if(strpos($currentUrl, "?") != false)
         <!-- ProductImageAndDetailContainer -->
 
         <!-- DesignFeatureAndCompleteLook -->
-        <div class="block-elm">
+        <div class="block-elm" style="margin-top:40px;">
             <!-- featureDesign -->
             <div class="wdth65">
               <!-- heading -->
               <h2>Design features</h2>
               <!-- heading -->
-
+              <!--Video Block-->
+              <div class="video-design-block">
+                  <img alt="" src="<?php echo $this->getSkinUrl('images/product/video-block-img.jpg'); ?>">
+                </div>
               <!-- featuresList -->
               <ul class="featureList">
                 <li><span class="ftrFig"><img alt="" src="<?php echo $this->getSkinUrl('images/gry-bg.jpg'); ?>"></span><span>mauris vehicula cone imentum toro eu lorem pulvinar.</span></li>
@@ -857,73 +861,41 @@ if(strpos($currentUrl, "?") != false)
                 <li><span class="ftrFig"><img alt="" src="<?php echo $this->getSkinUrl('images/gry-bg.jpg'); ?>"></span><span>mauris vehicula cone imentum toro eu lorem pulvinar.</span></li>
                 <li><span class="ftrFig"><img alt="" src="<?php echo $this->getSkinUrl('images/gry-bg.jpg'); ?>"></span><span>mauris vehicula cone imentum toro eu lorem pulvinar.</span></li>
                 <li><span class="ftrFig"><img alt="" src="<?php echo $this->getSkinUrl('images/gry-bg.jpg'); ?>"></span><span>mauris vehicula cone imentum toro eu lorem pulvinar.</span></li>
+                <span class="clear-fix"></span>
               </ul>
-              <!-- featuresList -->
-            </div>
-            <!-- featureDesign -->
-
-            <!-- completeLook -->
-            <div class="wdth35">
-              <!-- heading -->
-              <h2 class="newbg">complete the look</h2>
-              <!-- heading -->
-
-              <!-- prodSimilar -->
-              <ul class="similarProdList">
-                <li>
-                  <span><img alt="Women's Top" src="<?php echo $this->getSkinUrl('images/product/dum5.gif'); ?>"></span>
-                  <span><strong>Product</strong>color/color<br>$000</span>
-                </li>
-                <li>
-                  <span><img alt="Women's Top" src="<?php echo $this->getSkinUrl('images/product/dum6.gif'); ?>"></span>
-                  <span><strong>Product</strong>color/color<br>$000</span>
-                </li>
-              </ul>
-              <!-- prodSimilar -->          
-            </div>
-            <!-- completeLook -->    
-        </div>
-        <!-- DesignFeatureAndCompleteLook -->
-
-        <!-- FitAndFabricDetails -->
-        <a name="sizechart"></a>
-        <div class="block-elm btm-devider">
-            <!-- fitDetails -->
-            <div class="wdth65">
+              <!-- featuresList -->   
               <a name="how-does-it-fit"></a>
               <!-- heading -->
-              <h2>Fit details</h2>
+              <h2>Fit Story</h2>
               <!-- heading -->
 
               <div class="fitDetail">
-              <div class="video-box">
+              <div class="video-box f-left">
                 <ul>
                   <li>Body hugging/form fitting</li>
                   <li>High hip length</li>
                   <li>Perfect racer back for movement</li>
                 </ul>
 
-                <div class="vlink-cont">
-                <p class="block-link"><a href="#">watch the video of how to measure</a></p>
-                <div class="video-block">
+                <div class="vlink-cont" style="margin-left:20px;">
+                <p class="block-link"><a href="#">watch the video of how to measure</a></p>              
+                </div>
+              </div>
+              <div class="video-block f-right">
                   <img alt="" src="<?php echo $this->getSkinUrl('images/product/video.gif'); ?>">
                 </div>
-                </div>
+                <div class="clear-fix"></div>
 
-              </div>
-
-              <div class="tble">
-                <div class="f-left size">Size Chart</div>
-                <div class="f-right"><p style="margin:0;" class="block-link"><a href="#">How to measure</a></p></div>
+              <div class="tble">                
                 <table width="100%" cellspacing="0" cellpadding="0" border="0">
-                  <tbody><tr>
-                    <td><img alt="" src="<?php echo $this->getSkinUrl('images/product/scale-size.gif'); ?>"></td>
-                    <td>Size 2 XXS</td>
-                    <td>Size 4 XS</td>
-                    <td>Size 6 S</td>
-                    <td>Size 8 M</td>
-                    <td>Size 10 L</td>
-                    <td>Size 12 XL</td>
+                  <tbody style="width: 100%; display: table;"><tr>
+                    <td><span class="size">Size Chart</span><br/><a class="how-to-measure" href="#">How to measure</a></td>
+                    <td>Size<br/> 2 XXS</td>
+                    <td>Size<br/> 4 XS</td>
+                    <td>Size<br/> 6 S</td>
+                    <td>Size<br/> 8 M</td>
+                    <td>Size<br/> 10 L</td>
+                    <td>Size<br/> 12 XL</td>
                   </tr>
                   <tr>
                     <td>Bust</td>
@@ -984,12 +956,30 @@ if(strpos($currentUrl, "?") != false)
 
               </div>
             </div>
-            <!-- fitDetails -->
+            <!-- featureDesign -->
 
-            <!-- fabricDetails -->
+            <!-- completeLook -->
             <div class="wdth35">
               <!-- heading -->
-              <h2 class="newbg">fabric details</h2>
+              <h2 class="newbg">complete the look</h2>
+              <!-- heading -->
+
+              <!-- prodSimilar -->
+              <ul class="similarProdList">
+                <li>
+                  <span><img alt="Women's Top" src="<?php echo $this->getSkinUrl('images/product/dum5.gif'); ?>"></span>
+                  <span><strong>Product</strong>color/color<br>$000</span>
+                </li>
+                <li>
+                  <span><img alt="Women's Top" src="<?php echo $this->getSkinUrl('images/product/dum6.gif'); ?>"></span>
+                  <span><strong>Product</strong>color/color<br>$000</span>
+                </li>
+                <div class="clear-fix"></div>
+              </ul>
+                <!-- completeLook --> 
+              <!-- prodSimilar --> 
+              <!-- fabricDetails -->    
+               <h2 class="newbg">fabric story</h2>
               <!-- heading -->
 
               <div class="fabDetail">
@@ -1001,15 +991,21 @@ if(strpos($currentUrl, "?") != false)
                   <li><span><img alt="" src="<?php echo $this->getSkinUrl('images/homepage/nano.png'); ?>"></span>nano<br>technology</li>
                 </ul>
                 <p>AURUM&trade; is an Exclusively Ours, a technical blend of Supplex&reg; and Lycra&reg;. Unlike Nylon that falls apart quickly, Supplex&reg; fibers are technically far more superior, advanced fiber technology that provides high performance benefits with the soft feel and breathability of cotton.</p>
-              </div>
-
+              </div>     
             </div>
-            <!-- fabricDetails -->    
+            <!-- fabricDetails -->
+             
+        </div>
+        <!-- DesignFeatureAndCompleteLook -->
+
+        <!-- FitAndFabricDetails -->
+        <!-- <a name="sizechart"></a> -->
+        <div class="block-elm btm-devider">  
           </div>        
         <!-- FitAndFabricDetails -->
 
         <!-- CustomerReviews -->
-        <div class="block-elm btm-devider-big">
+        <div class="block-elm btm-devider-big reviews-cont">
             <div class="reviewTxt">"Customer review caption" - <span>Lorem ipsum<br>lorem ipsum dolor sit amet.</span></div>
             <p class="block-link"><a href="#">read more reviews</a></p>
         </div>        
