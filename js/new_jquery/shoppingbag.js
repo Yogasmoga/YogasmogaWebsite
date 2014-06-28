@@ -27,14 +27,16 @@ jQuery(document).ready(function($){
         $(".header-container").animate({ left: "0" });
         $("body").removeClass("hdnHgt");
     });
-    
-    if(!_islogedinuser) {
+    //if(!_islogedinuser) {
         $(document).on("click","#continuecheckout",function(e){
-            e.preventDefault();        
-            _isClickSigninMenu = true;
-            $("#signing_popup").dialog( "open" );            
+            if(!_islogedinuser) {
+                e.preventDefault(); 
+             //   console.log('Test-'+_islogedinuser);
+                _isClickSigninMenu = true;
+                $("#signing_popup").dialog( "open" );  
+            }
         });
-    }        
+   // }        
 //    $(document).live("click","#continuecheckout",function(e){
 //        e.prevenDefault();
 //        alert('22');
@@ -380,7 +382,7 @@ function showShoppingBagHtml()
                    // alert(data.html);
                     jQuery(".shopping-cart").html(data.html);
                     jQuery(".cartitemcount").html(data.count);
-                    console.log(jQuery(".contfull2").outerHeight());
+                   ////// console.log(jQuery(".contfull2").outerHeight());
                     jQuery(".bagerrormsg").height(jQuery(".contfull2").outerHeight());
                     jQuery(".bagerrormsg").width(jQuery(".contfull2").outerWidth());
             }
