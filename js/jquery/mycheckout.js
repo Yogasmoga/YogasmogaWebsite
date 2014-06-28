@@ -913,11 +913,7 @@ function saveShippingAddress()
             result = eval('(' + result + ')');
             //console.log(result['update_section']['html']);
             jQuery("div#shippingmethods").html(result['update_section']['html']);
-
-            var getShpID =  jQuery(".shippingOption").find("ul.availableShip").find("li.selected").attr("id");
-            //alert(getShpID);
-
-			jQuery("form#co-shippingmethod-form input#" + getShpID).attr("checked","checked");
+			jQuery("form#co-shippingmethod-form input#" + "s_method_flatrate_flatrate").attr("checked","checked");
 			jQuery("form#co-shippingmethod-form").submit();
 			// Select the chosen shipping method on the shipping form and call saveshippingmethod.
 			
