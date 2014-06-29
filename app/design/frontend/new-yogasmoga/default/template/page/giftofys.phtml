@@ -52,192 +52,22 @@
         <div id="pagecontainer">
             <div id="giftofys" class="fullscreen">
 				<div class="gift-of-ys pgsection" id="Whatis"  desc="Gift of YS">
-					<ul class="sub-nav">
-						<li><a href="#Whatis">What is?</a></li>
-						<li><a href="#Chkbal">Check Balance</a></li>
-                        <li><a href="#Redeemcard">Redeem</a></li>
-					</ul>
-					<h1 class="big-title">The Gift<br>Of Ys</h1>
-					<img src="<?php echo $this->getSkinUrl('images/goy-title.png'); ?>" />
-					<DIV CLASS="goy-banner">
-						<img class="shareit" src="<?php echo $this->getSkinUrl('images/gift_of_ys.png'); ?>" alt="The Gift of YS" />
-					</div>
-                    <?php /*
-					<form id="createcardform" name="createcardform" action="" method="post">
-						<input type="hidden" id="email-radio" name="card_type" value="email" />
-						<input type="hidden" id="productid" name="product" value="4" />
-						<input type="hidden" id="productqty" name="qty" value="1" />
-						<div class="goy-form">
-							<div class="row">
-								<div class="col">
-									<label for="mail_to">To</label>
-									<input type="text" class="requiredfield" id="mail-to" name="mail_to" style="width:330px"/>
-								</div>
-								<div class="col">
-									<label for="mail_from">From</label>
-									<input type="text" class="requiredfield" id="mail-from" name="mail_from" style="width:320px"/>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col">
-									<label for="mail_to_email">Recipient's Email address</label>
-									<input class="requiredfield" type="text" id="mail-to-email" name="mail_to_email" style="width:215px"/>
-								</div>
-								<div class="col">
-									<label for="mail_to_email_conf">Confirm Recipient's Email address</label>
-									<input class="requiredfield" type="text" id="mail-to-email-conf" name="mail_to_email_conf" style="width:175px"/>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col">
-									<label for="card_amount">Amount</label>
-									<select class="requiredfield" id="card-amount" name="card_amount"  style="float:right;">
-                                        <option value="1">$1.00</option>
-										<option value="50">$50.00</option>
-										<option value="100">$100.00</option>
-										<option value="200">$200.00</option>
-										<option value="500">$500.00</option>
-										<option value="1000">$1000.00</option>
-										<option value="5000">$5000.00</option>
-									</select>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col full">
-									<label for="mail_message">Message</label>
-									<textarea placeholder="Type your personalized mantra here." id="mail-message" name="mail_message" ></textarea>
-								</div>
-							</div>
-							<div class="button-set">
-								<button type="submit" name="Add to bag" class="button btn-addtobag"><span><span>Add to Bag</span></span></button>
-								<button type="reset" class="button btn-reset" name="reset"><span><span>Reset</span></span></button>
-							</div>
-						</div>
-					</form>
-                    */ ?>
-                    <form id="createcardform" name="createcardform" action="" method="post">
-                        <input type="hidden" id="email-radio" name="card_type" value="email" />
-						<input type="hidden" id="productid" name="product" value="4" />
-						<input type="hidden" id="productqty" name="qty" value="1" />
-                        <table class="twocolumn533">
-                            <tr>
-                                <td style="padding-right : 25px;">
-                                    <table class="inputtable">
-                                        <tr>
-                                            <td class="label"><label for="mail-to">To</label></td>
-                                            <td class="inputholder">
-                                                <input type="text" class="requiredfield" id="mail-to" name="mail_to" defaulterrormsg="Email Address is required."/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="errortext" colspan="2">
-                                                <div></div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td>
-                                    <table class="inputtable">
-                                        <tr>
-                                            <td class="label"><label for="mail-from">From</label></td>
-                                            <td class="inputholder">
-                                                <input type="text" class="requiredfield" id="mail-from" name="mail_from" defaulterrormsg="Your Name is required."/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="errortext" colspan="2">
-                                                <div></div>
-                                            </td>
-                                        </tr>
-                                    </table>  
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <table class="inputtable">
-                                        <tr>
-                                            <td class="label"><label for="mail-to-email">Recipient's Email address</label></td>
-                                            <td class="inputholder">
-                                                <input class="requiredfield" type="text" id="mail-to-email" name="mail_to_email" defaulterrormsg="Recipient's Email Address is required."/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="errortext" colspan="2">
-                                                <div></div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td>
-                                    <table class="inputtable">
-                                        <tr>
-                                            <td class="label"><label for="mail_to_email_conf">Confirm Recipient's Email address</label></td>
-                                            <td class="inputholder">
-                                                <input class="requiredfield" type="text" id="mail-to-email-conf" name="mail_to_email_conf"  defaulterrormsg="Confirmation Email Address is required."/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="errortext" colspan="2">
-                                                <div></div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <table class="inputtable">
-                                        <tr>
-                                            <td class="label"><label for="card-amount">Amount</label></td>
-                                            <td class="inputholder">
-                                                <?php /*
-                                                <select class="requiredfield" id="card-amount" name="card_amount" defaulterrormsg="Amount is required." style="width:100%;">
-                                                    <option value="">Select Amount</option>
-            										<option value="50">$50.00</option>
-            										<option value="100">$100.00</option>
-            										<option value="500">$500.00</option>
-            										<option value="1000">$1000.00</option>
-            									</select>
-                                                */ ?>
-                                                <input type="text" id="card-amount" name="card_amount" defaulterrormsg="Amount is required." class="requiredfield" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="errortext" colspan="2">
-                                                <div>State / Province is required</div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                        <div class="goy-form">
-                            <div class="row">
-    							<div class="col full">
-    								<label for="mail_message">Message</label>
-    								<textarea placeholder="Type your personalized mantra here." id="mail-message" name="mail_message" ></textarea>
-    							</div>
-    						</div>
-                            <div class="button-set">
-								<button type="submit" name="Add to bag" class="button btn-addtobag"><span><span>Add to Bag</span></span></button>
-								<button type="reset" class="button btn-reset" name="reset"><span><span>Reset</span></span></button>
-							</div>
-                        </div>
-                    </form>
-                    
-				</div>
-				<div class="goy-balance pgsection" id="Chkbal" desc="Check Balance">
-					<h4 class="sub-title">check balance</h4>
-					<p>Enter your Gift of YS code in the field below.</p>
+					<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('customer/dashboard_nav.phtml')->toHtml(); ?>
+                    <div class="fixwidth">
+    					<div class="header-top-bar"></div>
+                        <div class="referfriend-heading">
+                            <h4>YS GIFT CARD</h4>
+                            <span class="referfriend-desc">FROM ONE SMOGI TO ANOTHER</span>
+                        </div>  
+                        <div class="goy-balance" id="Chkbal" desc="Check Balance">
+                    <h4 class="sub-title">check balance</h4>
+                    <p>Enter your Gift of YS code in the field below.</p>
                     <form action="" method="post" id="cardbalanceform">
                     <table class="redeem-giftcard">
                         <tr>
                             <td>
                                 <table class="gfredeem">
-                                    <tr>
-                                        <td class="label">
-                                            <label for="gf1">Gift of YS Code</label>
-                                        </td>
+                                    <tr>                                        
                                         <td class="inputholder">
                                             <input type="text" id="gf1" />
                                         </td>
@@ -277,18 +107,18 @@
                     </table>
                     </form>
                     <?php /*
-					<form action="" method="post" id="cardbalanceform">
-						<div class="balance-form">
-							<div class="input_box">
-								<label for="cardno">Gift of YS Number or claim code </label><input type="text" id="cardno" name="cardno" placeholder="8VE6C-ST11X-RX1LA" />
-							</div>
-							<button type="submit" class="button btn-apply" name="apply"><span><span>Apply</span></span></button>
-						</div>
-					</form>
+                    <form action="" method="post" id="cardbalanceform">
+                        <div class="balance-form">
+                            <div class="input_box">
+                                <label for="cardno">Gift of YS Number or claim code </label><input type="text" id="cardno" name="cardno" placeholder="8VE6C-ST11X-RX1LA" />
+                            </div>
+                            <button type="submit" class="button btn-apply" name="apply"><span><span>Apply</span></span></button>
+                        </div>
+                    </form>
                     */ ?>
-				</div>
-                <div class="goy-balance pgsection" id="Redeemcard" desc="Redeem Card">
-					<h4 class="sub-title">ADD GIFT OF YS TO YOUR ACCOUNT</h4>
+                </div>
+                <div class="goy-balance" id="Redeemcard" desc="Redeem Card">
+                    <h4 class="sub-title">ADD GIFT OF YS TO YOUR ACCOUNT</h4>
                     <?php if(Mage::helper('customer')->isLoggedIn())
                         {
                             ?>
@@ -298,10 +128,7 @@
                                         <tr>
                                             <td>
                                                 <table id="redeem">
-                                                    <tr>
-                                                        <td class="label">
-                                                            <label for="gfr1">Gift of YS Code</label>
-                                                        </td>
+                                                    <tr>                                                        
                                                         <td class="inputholder">
                                                             <input type="text" id="gfr1" />
                                                         </td>
@@ -352,18 +179,185 @@
                             <?php
                         }
                     ?>
-					
+                    
                     <?php /*
-					<form action="" method="post" id="cardbalanceform">
-						<div class="balance-form">
-							<div class="input_box">
-								<label for="cardno">Gift of YS Number or claim code </label><input type="text" id="cardno" name="cardno" placeholder="8VE6C-ST11X-RX1LA" />
-							</div>
-							<button type="submit" class="button btn-apply" name="apply"><span><span>Apply</span></span></button>
-						</div>
-					</form>
+                    <form action="" method="post" id="cardbalanceform">
+                        <div class="balance-form">
+                            <div class="input_box">
+                                <label for="cardno">Gift of YS Number or claim code </label><input type="text" id="cardno" name="cardno" placeholder="8VE6C-ST11X-RX1LA" />
+                            </div>
+                            <button type="submit" class="button btn-apply" name="apply"><span><span>Apply</span></span></button>
+                        </div>
+                    </form>
                     */ ?>
-				</div>
+                </div>
+                        <?php /*
+    					<form id="createcardform" name="createcardform" action="" method="post">
+    						<input type="hidden" id="email-radio" name="card_type" value="email" />
+    						<input type="hidden" id="productid" name="product" value="4" />
+    						<input type="hidden" id="productqty" name="qty" value="1" />
+    						<div class="goy-form">
+    							<div class="row">
+    								<div class="col">
+    									<label for="mail_to">To</label>
+    									<input type="text" class="requiredfield" id="mail-to" name="mail_to" style="width:330px"/>
+    								</div>
+    								<div class="col">
+    									<label for="mail_from">From</label>
+    									<input type="text" class="requiredfield" id="mail-from" name="mail_from" style="width:320px"/>
+    								</div>
+    							</div>
+    							<div class="row">
+    								<div class="col">
+    									<label for="mail_to_email">Recipient's Email address</label>
+    									<input class="requiredfield" type="text" id="mail-to-email" name="mail_to_email" style="width:215px"/>
+    								</div>
+    								<div class="col">
+    									<label for="mail_to_email_conf">Confirm Recipient's Email address</label>
+    									<input class="requiredfield" type="text" id="mail-to-email-conf" name="mail_to_email_conf" style="width:175px"/>
+    								</div>
+    							</div>
+    							<div class="row">
+    								<div class="col">
+    									<label for="card_amount">Amount</label>
+    									<select class="requiredfield" id="card-amount" name="card_amount"  style="float:right;">
+                                            <option value="1">$1.00</option>
+    										<option value="50">$50.00</option>
+    										<option value="100">$100.00</option>
+    										<option value="200">$200.00</option>
+    										<option value="500">$500.00</option>
+    										<option value="1000">$1000.00</option>
+    										<option value="5000">$5000.00</option>
+    									</select>
+    								</div>
+    							</div>
+    							<div class="row">
+    								<div class="col full">
+    									<label for="mail_message">Message</label>
+    									<textarea placeholder="Type your personalized mantra here." id="mail-message" name="mail_message" ></textarea>
+    								</div>
+    							</div>
+    							<div class="button-set">
+    								<button type="submit" name="Add to bag" class="button btn-addtobag"><span><span>Add to Bag</span></span></button>
+    								<button type="reset" class="button btn-reset" name="reset"><span><span>Reset</span></span></button>
+    							</div>
+    						</div>
+    					</form>
+                        */ ?>
+                        <form id="createcardform" name="createcardform" action="" method="post">
+                            <input type="hidden" id="email-radio" name="card_type" value="email" />
+    						<input type="hidden" id="productid" name="product" value="4" />
+    						<input type="hidden" id="productqty" name="qty" value="1" />
+                            <table class="twocolumn533">
+                                <tr>
+                                    <td style="padding-right : 25px;">
+                                        <table class="inputtable">
+                                            <tr>
+                                                <td class="label"><label for="mail-to">To</label></td>
+                                                <td class="inputholder">
+                                                    <input type="text" class="requiredfield" id="mail-to" name="mail_to" defaulterrormsg="Email Address is required."/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="errortext" colspan="2">
+                                                    <div></div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table class="inputtable">
+                                            <tr>
+                                                <td class="label"><label for="mail-from">From</label></td>
+                                                <td class="inputholder">
+                                                    <input type="text" class="requiredfield" id="mail-from" name="mail_from" defaulterrormsg="Your Name is required."/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="errortext" colspan="2">
+                                                    <div></div>
+                                                </td>
+                                            </tr>
+                                        </table>  
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table class="inputtable">
+                                            <tr>
+                                                <td class="label"><label for="mail-to-email">Recipient's Email address</label></td>
+                                                <td class="inputholder">
+                                                    <input class="requiredfield" type="text" id="mail-to-email" name="mail_to_email" defaulterrormsg="Recipient's Email Address is required."/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="errortext" colspan="2">
+                                                    <div></div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table class="inputtable">
+                                            <tr>
+                                                <td class="label"><label for="mail_to_email_conf">Confirm Recipient's Email address</label></td>
+                                                <td class="inputholder">
+                                                    <input class="requiredfield" type="text" id="mail-to-email-conf" name="mail_to_email_conf"  defaulterrormsg="Confirmation Email Address is required."/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="errortext" colspan="2">
+                                                    <div></div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table class="inputtable">
+                                            <tr>
+                                                <td class="label"><label for="card-amount">Amount</label></td>
+                                                <td class="inputholder">
+                                                    <?php /*
+                                                    <select class="requiredfield" id="card-amount" name="card_amount" defaulterrormsg="Amount is required." style="width:100%;">
+                                                        <option value="">Select Amount</option>
+                										<option value="50">$50.00</option>
+                										<option value="100">$100.00</option>
+                										<option value="500">$500.00</option>
+                										<option value="1000">$1000.00</option>
+                									</select>
+                                                    */ ?>
+                                                    <input type="text" id="card-amount" name="card_amount" defaulterrormsg="Amount is required." class="requiredfield" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="errortext" colspan="2">
+                                                    <div>State / Province is required</div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="goy-form">
+                                <div class="row">
+        							<div class="col full">
+        								<label for="mail_message">Message</label>
+        								<textarea placeholder="Type your personalized mantra here." id="mail-message" name="mail_message" ></textarea>
+        							</div>
+        						</div>
+                                <div class="button-set">
+    								<button type="submit" name="Add to bag" class="button btn-addtobag"><span><span>Add to Bag</span></span></button>
+    								<button type="reset" class="button btn-reset" name="reset"><span><span>Reset</span></span></button>
+    							</div>
+                            </div>
+                        </form>
+
+
+                </div>
+                    
+				</div>				
                 <?php //echo $this->getChildHtml('content'); ?>  
             </div>
             <?php echo $this->getChildHtml('footer'); ?>

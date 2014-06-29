@@ -454,27 +454,29 @@ table#referrallink td
 }
 table#referrallink td.share a#twrefer
 {
-    background-image: url('../images/navigation/twitter.png');
+    background-image: url('../images/footer/tw-icon.png');
 }
 table#referrallink td.share a#twrefer:hover
 {
-    background-image: url('../images/navigation/twitter_hover.png');
+    background-image: url('../images/footer/tw-icon-ovr.png');
 }
 table#referrallink td.share a#fbrefer
 {
-    background-image: url('../images/navigation/facebook.png');
+    /*background-image: url('../images/navigation/facebook.png');*/
+    background-image: url('../images/footer/fb-icon.png');
 }
 table#referrallink td.share a#fbrefer:hover
 {
-    background-image: url('../images/navigation/facebook_hover.png');
+    background-image: url('../images/footer/fb-icon-ovr.png');
 }
 table#referrallink td.share a#mlrefer
 {
-    background-image: url('../images/navigation/mail.png');
+    background-image: url('../images/footer/email-ref.png');
+    background-size: cover;
 }
 table#referrallink td.share a#mlrefer:hover
 {
-    background-image: url('../images/navigation/mail_hover.png');
+    /*background-image: url('../images/footer/email-ref-ovr.png');*/
 }
 table#referrallink td.share
 {
@@ -752,3 +754,11 @@ div.givegift
     background-repeat: no-repeat;
     margin-left : 15px;
 }
+/***New CSS for the design**/
+table#referrallink td.share,table#referrallink td.link{display: block; text-align: center; width: 100%; max-width: 100%; min-width: 100%; margin-bottom: 10px; padding: 0; }
+table#referrallink td.share a{float: none; display: inline-block;}
+table#referrallink{width: 100%;}
+table#referrallink td.link input{text-align: center;}
+table#referrallink td.share a#fbrefer{width: 12px; height: 21px;}
+table#referrallink td.share a#twrefer{width: 25px; height: 21px;}
+table#referrallink td.share a#mlrefer{width: 27px; height: 19px;}

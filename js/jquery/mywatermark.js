@@ -24,7 +24,7 @@ jQuery(document).ready(function($){
     applywatermark();
 });
 
-function applywatermark() {
+function applywatermark() {    
     jQuery.each(jQuery("input[type='text'][watermark]"), function () {
         if(!jQuery(this).attr("usermodified"))
         {
