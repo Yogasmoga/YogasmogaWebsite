@@ -382,7 +382,7 @@ function showShoppingBagHtml()
                    // alert(data.html);
                     jQuery(".shopping-cart").html(data.html);
                     jQuery(".cartitemcount").html(data.count);
-                   ////// console.log(jQuery(".contfull2").outerHeight());
+                    ////alert(jQuery(".contfull2").outerHeight());
                     jQuery(".bagerrormsg").height(jQuery(".contfull2").outerHeight());
                     jQuery(".bagerrormsg").width(jQuery(".contfull2").outerWidth());
             }

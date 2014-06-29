@@ -69,7 +69,7 @@ jQuery(document).ready(function($) {
         setTimeout(function() {
             $(".open-cart").trigger("click");
             $("#addtobagloader").hide();            
-        }, 10000);
+        }, 5000);
     });
 
 

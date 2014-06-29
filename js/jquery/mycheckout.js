@@ -15,6 +15,7 @@ jQuery(document).ready(function($){
 	}, 0);
 
 
+    addNewAdd();
     changeFlag();
 	getSelectval();
     trimCountryText();
@@ -841,13 +842,31 @@ function saveBillingAddress()
 function virtualsaveshippingaddress()
 {
 	var address = jQuery("form#checkout-shipping-form input#shipping\\:firstname").val() + " " + jQuery("form#checkout-shipping-form input#shipping\\:lastname").val() + "," + jQuery("form#checkout-shipping-form input#shipping\\:street1").val() + ",";
-	if(jQuery("form#checkout-shipping-form input#shipping\\:street2").val().length > 0)
+	
+    if(jQuery("form#checkout-shipping-form input#shipping\\:street2").val().length > 0)
 		address += jQuery("form#checkout-shipping-form input#shipping\\:street2").val() + ",";
-	address += jQuery("form#checkout-shipping-form input#shipping\\:city").val() + "," + jQuery("form#checkout-shipping-form select#shipping\\:region_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:region_id").val() + "']").html() + "," + jQuery("form#checkout-shipping-form input#shipping\\:postcode").val() + "," + jQuery("form#checkout-shipping-form select#shipping\\:country_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:country_id").val() + "']").html();
-	//console.log(address);
-    jQuery("form#checkout-shipping-form ul#shipping-address-select li:last").before("<li value='x'>" + address + "</li>");
-    jQuery("form#checkout-shipping-form select#shipping-address-select option").removeAttr("selected");
-    jQuery("form#checkout-shipping-form select#shipping-address-select option:last").before("<option selected='selected'>" + address + "</option>");
+	
+
+    address += jQuery("form#checkout-shipping-form input#shipping\\:city").val() + "," + jQuery("form#checkout-shipping-form select#shipping\\:region_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:region_id").val() + "']").html() + "," + jQuery("form#checkout-shipping-form input#shipping\\:postcode").val() + "," + jQuery("form#checkout-shipping-form select#shipping\\:country_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:country_id").val() + "']").html();
+	
+
+    console.log(address);
+    
+    jQuery("form#checkout-shipping-form ul#shipping-address-select li:last").before("<li value='newAdd'>" + address + "</li>");
+    
+
+    //jQuery("select#shipping-address-select option:last").before("<option selected='selected'>" + address + "</option>");
+}
+
+function addNewAdd(){
+    var storeAdd = jQuery("form#checkout-shipping-form ul#shipping-address-select li[value='newAdd']").html();
+    jQuery("select#shipping-address-select option:last").before("<option selected='selected'>" + storeAdd + "</option>");
+    var tdht = jQuery("form#checkout-shipping-form select#shipping-address-select option[selected='selected']").html();
+
+    jQuery('#updateNameAdd').find('.address').html(tdht.replace(/,/g, "<br />"));
+    jQuery('#updateNameAdd').find('.address').contents().first().wrap('<span>To: </span>');  
+
+    //jQuery("#updateNameAdd").find(".address").html();
 }
 
 function saveShippingMethod()
@@ -871,7 +890,7 @@ function saveShippingMethod()
             jQuery("div#paymentmethods").html(result['update_section']['html']);
 			jQuery("form#co-billing-form").submit();
             //reordersteps(jQuery("#cobilling"));
-            
+            addNewAdd();
             jQuery("#co-shippingmethod-form input[type=submit]").hide();
 
             jQuery("li#shippingDetails .ovrlay-bg").show();
@@ -913,7 +932,11 @@ function saveShippingAddress()
             result = eval('(' + result + ')');
             //console.log(result['update_section']['html']);
             jQuery("div#shippingmethods").html(result['update_section']['html']);
-			jQuery("form#co-shippingmethod-form input#" + "s_method_flatrate_flatrate").attr("checked","checked");
+
+            var getShpID =  jQuery(".shippingOption").find("ul.availableShip").find("li.selected").attr("id");
+            //alert(getShpID);
+
+			jQuery("form#co-shippingmethod-form input#" + getShpID).attr("checked","checked");
 			jQuery("form#co-shippingmethod-form").submit();
 			// Select the chosen shipping method on the shipping form and call saveshippingmethod.
 			
