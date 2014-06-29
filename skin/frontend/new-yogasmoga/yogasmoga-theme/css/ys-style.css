@@ -860,6 +860,7 @@ body{overflow-x:auto !important; }
 .address-info .add-heading{display: block; margin-bottom: 15px;}
 .billing-add,.shipping-add{width: 40%;}
 .account-nav{width: 25% !important; max-width: 350px;}
+.account-nav ul.sub-nav li{background: none !important; padding: 0;}
 .account-nav.top-divider{padding-top: 20px; margin-top:0;}
 
 
@@ -880,7 +881,7 @@ body{overflow-x:auto !important; }
 #edit-accountinfo table tr:first-child td label,#edit-accountinfo table tr:first-child td input{font-size: 13px;}
 
 /***edit account Info***/
-.my-account .edit-info{background: #efefef; padding: 25px; width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box; max-width: 700px; min-width: 500px;} 
+.my-account .edit-info,.refer-frnd,.track-invites{background: #efefef; padding: 25px; width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box; max-width: 700px; min-width: 500px;} 
 .backlink,#changepasswordoptionholder{display: none;}
 #passwordchangeoptions{display: block !important;}
 .change-password-label{margin-bottom: 5px;}
@@ -902,6 +903,31 @@ div.email-pref input[type="checkbox"]{display: none;}
 div.email-pref label { cursor: pointer; padding-left: 36px; /*margin-right: 40px;*/}  
 div.email-pref label:before { content: ""; display: inline-block; width: 25px; height: 25px; margin-right: 10px; position: absolute; left: 0px; top: -5px; background-color: #ffffff;}  
 div.email-pref input[type="checkbox"]:checked + label:before { content: url("../images/checkbox-tick.png"); color: #DF4126; font-size: 18px; text-align: center; line-height: 24px; }  
+/***Share with a friend***/
+.refer-frnd,.track-invites{margin: 0 auto 20px auto;}
+.referfriend-invitehead .potential{display: none;}
+#referafriend-container{width: 75% !important; max-width: 960px; min-width: 500px;}
+table#referrallink{margin-left: auto; margin-right: auto;}
+.referfriend-subheader{font-size: 20px !important; font-family: ITCAvantGardeProMd !important; color: #666 !important;}
+table#referrallink td.link{border: none !important;}
+.refer-frnd table.referfriendforms,.track-invites table.referredfriendslist{width: 100%;}
+table.referfriendforms table.inputtable tr:first-child td{border: none !important;}
+table.referfriendforms td table.inputtable input[type='text']{padding: 5px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
+table.referfriendforms td.name, table.referfriendforms td.email{width: 38%; padding-right: 20px;}
+table.referfriendforms td.name table.inputtable,table.referfriendforms td.email table.inputtable{width: 100% !important;}
+td.btninvite{width: 93px;}
+div.invite{background-size: cover; height: 26px !important; margin-top: 10px;}
+table.referfriendforms td.remove img, table.referfriendforms td.success img{margin-top: 19px !important;}
+div#addanotherreferral{margin-bottom: 5px !important;}
+table.referredfriendslist td.name, table.referredfriendslist td.email{width: 48%;}
+.track-invites table.referredfriendslist td.name div,.track-invites table.referredfriendslist td.email div{border: none !important; width: 100% !important; min-width: 100% !important; max-width: 100% !important; margin-left: 0; text-transform: lowercase; margin-bottom: 5px;}
+.refer-frnd .referfriend-subheader,.track-invites .referfriend-subheader{font-size: 16px !important;}
+table#referrallink{margin-bottom: 40px !important;}
+table.referfriendforms td.processing img{margin-top: 15px !important;}
+
+
+
+
 .zindexH{
 	background: transparent;
 	z-index: 9999;
@@ -1024,9 +1050,9 @@ div#zoompopup div#zoomoptions{width: auto !important; margin: 0 !important; top:
 div#zoompopup div#zoomoptions img{padding:0 0 0 15px !important; width: 21px; height: 22px;}
 img#closelightbox{top: 40px !important; right: 28px !important; width: 21px;}
 .myheader.wishlist-header{width: 960px;}
-.wishlist-header{ padding-bottom: 60px; padding-top: 30px; text-align: center; }
-.wishlist-header h4{font-family: ITCAvantGardeProBk,gotham,Arial; width: 960px; color: #666; font-size: 30px; letter-spacing: 0.8pt;  }
-.header-top-bar{height:15px; background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/catalog/product/listing/line_all_product.png") no-repeat; background-position: bottom center; background-size: 100%; width: 960px;}
+.wishlist-header,.referfriend-heading{ padding-bottom: 60px; padding-top: 30px; text-align: center; }
+.wishlist-header h4,.referfriend-heading h4{font-family: ITCAvantGardeProMd,gotham,Arial; width: 100%; color: #666; font-size: 30px; letter-spacing: 0.8pt; font-weight: normal; }
+.header-top-bar{height:15px; background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/catalog/product/listing/line_all_product.png") no-repeat; background-position: bottom center; background-size: 100%; width: 100%;}
 table.tblwishlist tr.last td{border:none !important;}
 table.tblwishlist td.prprice{padding-left: 0 !important; text-align: left !important;}
 table.tblwishlist thead th{padding-bottom: 0 !important;}
@@ -1047,8 +1073,12 @@ table.tblwishlist thead th{padding-bottom: 0 !important;}
 .fixwidth{margin-left: 25% !important; width: 75%;}
 .data-table.ys{min-width: 100% !important;}
 .dashboard-address-book{max-width: 700px; min-width: 500px;}
-.accountbg #mainimage{margin-top: 10px;}
+.accountbg #mainimage,body.gift_of_ys .gift-of-ys{margin-top: 10px;}
+body.gift_of_ys .gift-of-ys{width: 100%; text-align: center;}
 .addedItem .similarProdList>li{width: 100%;}
 .show-prodImg{width: 82%; margin: 0; float: right;}
 .thumb-imgs{left: 0;}
 table.productimagecontainer{margin-bottom: 70px;}
+#cardredeemform .redeem-giftcard{margin-top: 0 !important;}
+.goy-balance{min-height:250px; max-height:250px; background: #efefef; padding: 25px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; max-width: 400px; min-width: 350px; width: 45% !important; display: inline-block !important; vertical-align: top;}
+.goy-balance#Chkbal{margin-right: 20px;}
