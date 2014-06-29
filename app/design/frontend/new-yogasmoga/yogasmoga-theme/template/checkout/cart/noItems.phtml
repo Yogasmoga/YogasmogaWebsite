@@ -38,7 +38,7 @@
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <?php echo $this->getChildHtml('checkout_cart_empty_widget'); ?>
     <p style="margin-bottom: 60px;"><?php echo $this->__('You have no items in your shopping bag.') ?></p>
-    <div onclick="window.location='<?php echo Mage::helper('core/url')->getHomeUrl()."women" ?>';" class="spbutton btncontinue" imageurl="<?php echo $this->getSkinUrl('images/continue_shopping_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/continue_shopping_on.png'); ?>"></div>
+    <div onclick="window.location='<?php echo Mage::helper('core/url')->getHomeUrl() ?>';" class="spbutton btncontinue" imageurl="<?php echo $this->getSkinUrl('images/continue_shopping_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/continue_shopping_on.png'); ?>"></div>
     <?php echo $this->getChildHtml('shopping.cart.table.after'); ?>
 </div>
 </div>
