@@ -1,4 +1,4 @@
-/* Layout ================================================================================ */
+http://www.templatemonster.com/help/magento-framework-how-to-addchange-product-video.html/* Layout ================================================================================ */
 .wrapper { min-width:100%;  margin:0 auto;}
 .page {display:block; background: #fff; z-index: 2; position: relative;}
 .page-print { background:#fff; padding:25px 30px; text-align:left; }
@@ -1108,6 +1108,7 @@ table.gfredeem td.dash, table#redeem td.dash{text-align: center; vertical-align:
 button.btn-reset span{ width: 147px !important; height: 42px !important; background: url(../images/reset-form.jpg) 0 0 no-repeat !important; }
 button.btn-addtobag span{width: 151px !important; height: 42px !important; background: url(../images/add-to-bag.jpg) 0 0 no-repeat !important;}
 .goy-balance .sub-title{padding-top: 0 !important;}
+.applygiftcard,.applypromo,.applysmogi {cursor: pointer;}
 table.productimagecontainer table.smallimagecontiner td:last-child{display: none;}
 #absproductoptions table.productdetailtable div#colorcontainer>div:nth-child(7n){margin-right: 0;}
 table.selectedcolor{margin-bottom: 5px;}
