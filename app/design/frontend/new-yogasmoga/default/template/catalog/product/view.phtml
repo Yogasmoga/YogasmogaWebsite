@@ -616,21 +616,21 @@ if(strpos($currentUrl, "?") != false)
                     <p class="block-link" style="margin-top: 15px;"><a href="#" class="com-a-prd-links">Watch the video of how to measure</a></p>
                     </div>
                   </div>
-<!--                      --><?php //$howToMeasureVidio = $_product->getHowToMeasureVideo() ;
-//
-//                      if($howToMeasureVidio != '' )
-//                      {
-//                      ?>
-<!--                    <div class="video-block f-right">-->
-<!---->
-<!--                            <video width="218" height="133" controls>-->
-<!--                              <source src="--><?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."how_to_measure_video/".$_product->getHowToMeasureVideo(); ?><!--" type="video/mp4">-->
-<!---->
-<!--                          </video>-->
-<!---->
-<!---->
-<!--                    </div>-->
-<!--                      --><?// } ?>
+                      <?php $howToMeasureVidio = $_product->getHowToMeasureVideo() ;
+
+                      if($howToMeasureVidio != '' )
+                      {
+                      ?>
+                    <div class="video-block f-right">
+
+                            <video width="218" height="133" controls>
+                              <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."how_to_measure_video/".$_product->getHowToMeasureVideo(); ?>" type="video/mp4">
+
+                          </video>
+
+
+                    </div>
+                      <? } ?>
                     <div class="clear-fix"></div>
 
                   <div class="tble">                
