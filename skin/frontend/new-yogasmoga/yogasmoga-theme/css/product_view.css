@@ -165,7 +165,7 @@ table.productdetailtable div#colorcontainer > div {
 }
 
 #absproductoptions table.productdetailtable div#colorcontainer > div {
-    height: 33px;
+    height: 25px;
 }
 
 table.productdetailtable div#colorcontainer div table
@@ -210,16 +210,16 @@ table.productdetailtable div#colorcontainer > div table tr:nth-child(1) td:nth-c
 }
 
 #absproductoptions table.productdetailtable div#colorcontainer > div table tr:nth-child(1) td:nth-child(1){
-     border-right:30px solid transparent !important;
+     border-right:22px solid transparent !important;
      border-left-color: 30px;
-     border-bottom-width:30px;
+     border-bottom-width:22px;
 }
 
 #absproductoptions table.productdetailtable div#colorcontainer > div table tr:nth-child(1) td:nth-child(2){
-     border-left:30px solid transparent !important;
+     border-left:21px solid transparent !important;
      border-right-color: 30px;
-     border-top-width:30px;
-     margin: 0 0 0 -33px;
+     border-top-width:22px;
+     margin: 0 0 0 -24px;
 }
 
 table.productdetailtable div#colorcontainer div table td.tdselectedcolor
@@ -391,7 +391,7 @@ td.popupproductdetail table.smogibucks td div.smogibuckcount,
 
 .earnsmogibuckstext{
     float: left;
-    width: 75%;
+    width: 100%;
 }
 
 .smogibucks .social-ico {
