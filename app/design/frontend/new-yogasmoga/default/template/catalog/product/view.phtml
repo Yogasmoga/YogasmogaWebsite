@@ -545,7 +545,7 @@ if(strpos($currentUrl, "?") != false)
                   <h2>Design features</h2>
                   <!-- heading -->
                   <!--Video Block-->
-                  <?php $designfeaturevidioname = $_product->getDesignFeatureVideo() ;
+                  <?php echo $designfeaturevidioname = $_product->getDesignFeatureVideo()  ;
 
                     if($designfeaturevidioname != '' )
                     {
@@ -616,7 +616,7 @@ if(strpos($currentUrl, "?") != false)
                     <p class="block-link" style="margin-top: 15px;"><a href="#" class="com-a-prd-links">Watch the video of how to measure</a></p>              
                     </div>
                   </div>
-                      <?php $howToMeasureVidio = $_product->getHowToMeasureVideo() ;
+                      <?php echo $howToMeasureVidio = $_product->getHowToMeasureVideo() ; die('test');
 
                       if($howToMeasureVidio != '' )
                       {
