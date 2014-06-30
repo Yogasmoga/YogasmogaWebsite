@@ -572,7 +572,7 @@ if(strpos($currentUrl, "?") != false)
                     </ul>
 
                     <div class="vlink-cont" style="margin-left:20px;">
-                    <p class="block-link"><a href="#">watch the video of how to measure</a></p>              
+                    <p class="block-link" style="margin-top: 15px;"><a href="#" class="com-a-prd-links">Watch the video of how to measure</a></p>              
                     </div>
                   </div>
                   <div class="video-block f-right">
@@ -583,7 +583,7 @@ if(strpos($currentUrl, "?") != false)
                   <div class="tble">                
                     <table width="100%" cellspacing="0" cellpadding="0" border="0">
                       <tbody style="width: 100%; display: table;"><tr>
-                        <td><span class="size">Size Chart</span><br/><a class="how-to-measure" href="#">How to measure</a></td>
+                        <td><span class="size">Size Chart</span><br/><a class="how-to-measure com-a-prd-links" href="#">How to measure</a></td>
                         <td>Size<br/> 2 XXS</td>
                         <td>Size<br/> 4 XS</td>
                         <td>Size<br/> 6 S</td>
@@ -656,7 +656,7 @@ if(strpos($currentUrl, "?") != false)
             <!-- ProductImageContainer -->
 
             <!-- ProductDetailContainer -->
-            <div class="wdth35">
+            <div class="wdth35" style="width:300px;">
                 <!-- DetailsinGreyArea -->
                 <div class="gry-box">
                     <div id="absproductoptions">
@@ -759,7 +759,7 @@ if(strpos($currentUrl, "?") != false)
                                                         <?php if($sizechartblockid != "") {?>
                                                             <td class="sizechartlink">
                                                                 <div style="position: relative;">
-                                                                    <p class="block-link" style="margin: 0px; float: right;"><a id="sizechart" style="color:#CC0033; font-size:11px; cursor:pointer;">Size chart</a></p>
+                                                                    <p class="block-link" style="margin: 0px; float: right;"><a id="sizechart" style="color:#CC0033; cursor:pointer;">Size chart</a></p>
                                                                     <!-- <div id="sizechart">
                                                                         <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
                                                                     </div> -->
@@ -799,16 +799,14 @@ if(strpos($currentUrl, "?") != false)
 
                                     <!-- fittable -->
                                     <div class="box-seprtr">
-                                        <div class="blck-head-sml"><span class="qty">QTY</span>
+                                        <div class="blck-head-sml"><span class="qty">Step 3:</span>
+                                            Select a length
                                             <?php if($howdoesitfitblockid != "") { ?>
                                                 <table class="fittable">
-                                                    <tr>
-                                                        <td>
-                                                            <div class="hanger"></div>
-                                                        </td>
+                                                    <tr>                                                        
                                                         <td class="howdoesitfitlink">
                                                             <div style="position: relative;">
-                                                                <p class="block-link" style="margin: 0px; float: right;"><a id="how-does-it-fit" href="javascript:void(0);">How does it fit?</a></p>
+                                                                <p class="block-link" style="margin: 2px 0 0 0; float: right;"><a id="how-does-it-fit" href="javascript:void(0);">How does it fit?</a></p>
                                                                 <!-- <div id="howdoesitfitbox">
                                                                     <div id="howdoesitfitboxinner">
                                                                         <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
@@ -867,7 +865,7 @@ if(strpos($currentUrl, "?") != false)
                                         </div>
                                         <!-- producterrorcontainer -->
 
-                                        <p class="c-align"><em>Free and fast shipping to US and Canada</em></p>
+                                        <p class="l-align" style="margin-top: 10px; font-size: 12px; margin-bottom: 20px;"><em>Free and fast shipping to US and Canada</em></p>
                                     </div>
                                     <!-- addToBag -->                                
                                 </td>
@@ -893,7 +891,7 @@ if(strpos($currentUrl, "?") != false)
                                 <p class="earnsmogibuckstext">EARN <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks" target="_blank">SMOGI BUCKS</a> WITH THIS PURCHASE</p>
                             </div>
                         </td>
-                        <td width="50%">
+                        <td width="50%" class="prd-add-to-wish">
                             <div class="wishlist">
                                 <div class="social-ico">
                                     <a id="twitter" href="javascript:void(0);" class="twtrIcon" title="YogaSmoga - Twitter"></a> 
@@ -927,9 +925,9 @@ if(strpos($currentUrl, "?") != false)
 
                 <!-- Desicription -->
                 <div class="box-desc-dvdr">
-                <p><strong>Need help?</strong> <a class="chatlink" href="#">chat with us</a><span class="online"><span></span>online</span></p>
+                <p style="margin-bottom: 15px;"><strong>Need help?</strong> <a class="chatlink" href="#">chat with us</a><span class="online"><span></span>Online now</span></p>
 
-                <p><strong>Product description</strong><br>
+                <p style="margin-bottom: 2px;"><strong>Product description</strong><br>
                     <!-- description -->
                     <?php  if(strlen($_product->getDescription())< 200) { ?>
                     <div class="shortdesc"><?php echo $_product->getDescription(); ?> </div>
@@ -940,7 +938,7 @@ if(strpos($currentUrl, "?") != false)
 
 
                         ?>
-                    <div class="shortdesc"><span><?php echo $firststr ; ?></span><span class = "sec-desc" ><?php echo $secondstr ; ?></span><span class="dot">...</span>  <p class="readmore" style="margin: 0; cursor:pointer;"><span id="more">read more</span><span id="less" class="dnone">read less</span></p>  </div>
+                    <div class="shortdesc"><span><?php echo $firststr ; ?></span><span class = "sec-desc" ><?php echo $secondstr ; ?></span><span class="dot">...</span>  <p class="readmore" style="margin: 0; cursor:pointer;"><span id="more">Read more</span><span id="less" class="dnone">Read less</span></p>  </div>
                     <?php } ?>
                     <!-- description -->
                 </div>
@@ -948,7 +946,7 @@ if(strpos($currentUrl, "?") != false)
 
                 <!-- readReviews -->
                 <div class="box-desc-dvdr">
-                    <p style="margin:0;" class="block-link c-align"><a href="#">read all reviews</a></p>
+                    <p style="margin:0;" class="block-link c-align prd-read-reviews"><a href="#">Read all reviews</a></p>
                 </div>
                 <!-- readreviews -->
 
@@ -991,17 +989,6 @@ if(strpos($currentUrl, "?") != false)
         </div>
         <!-- ProductImageAndDetailContainer -->
 
-        <!-- DesignFeatureAndCompleteLook -->
-        <div class="block-elm" style="margin-top:40px;">
-            <!-- featureDesign -->
-            
-            <!-- featureDesign -->
-
-            
-             
-        </div>
-        <!-- DesignFeatureAndCompleteLook -->
-
         <!-- FitAndFabricDetails -->
         <!-- <a name="sizechart"></a> -->
         <div class="block-elm btm-devider">  
@@ -1011,7 +998,7 @@ if(strpos($currentUrl, "?") != false)
         <!-- CustomerReviews -->
         <div class="block-elm btm-devider-big reviews-cont">
             <div class="reviewTxt">"Customer review caption" - <span>Lorem ipsum<br>lorem ipsum dolor sit amet.</span></div>
-            <p class="block-link"><a href="#">read more reviews</a></p>
+            <p class="block-link prd-read-reviews" style="margin-top: 15px;"><a href="#">Read more reviews</a></p>
         </div>        
         <!-- CustomerReviews -->
     </div>
@@ -1489,7 +1476,7 @@ if(strpos($currentUrl, "?") != false)
                                     <div class="blck-head-sml">
                                         <table class="selectedcolor">
                                             <tr>
-                                                <td><span>color:</span></td>
+                                                <td><span style="font-family:gothambook;">color:</span></td>
                                                 <td class="selectedcolortext"></td>
                                             </tr>
                                         </table>
