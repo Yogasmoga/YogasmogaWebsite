@@ -349,30 +349,32 @@ button.button.btn-redeem span{
 }
 button.button.btn-addtoaccount span{
     padding:0; 
-    width:137px; 
+    width:185px; 
     text-indent:-999em; 
-    height:29px; 
+    height:42px; 
     margin:0; 
-    background:url(../images/add_to_account_off.png) 0 0 no-repeat; 
+    background:url(../images/add-to-acnt.jpg) 0 0 no-repeat; 
     border:0;
+    margin-top: 10px;
 }
 button.button.btn-check span{
     padding:0; 
-    width:93px; 
+    width:150px; 
     text-indent:-999em; 
-    height:29px; 
+    height:42px; 
     margin:0; 
-    background:url(../images/check_off.png) 0 0 no-repeat; 
+    background:url(../images/check-ys-balance.jpg) 0 0 no-repeat; 
     border:0;
+    margin-top: 10px;
 }
 button.button.btn-addtoaccount:active span{
-    background:url(../images/add_to_account_on.png) 0 0 no-repeat;
+    /*background:url(../images/add_to_account_on.png) 0 0 no-repeat;*/
 }
 button.button.btn-redeem:active span{
     background:url(../images/redeem_on.png) 0 0 no-repeat;
 }
 button.button.btn-check:active span{
-    background:url(../images/check_on.png) 0 0 no-repeat;
+    /*background:url(../images/check_on.png) 0 0 no-repeat;*/
 }
 button.button.btn-redeem, button.button.btn-addtoaccount
 {

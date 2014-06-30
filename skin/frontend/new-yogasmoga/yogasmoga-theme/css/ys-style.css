@@ -860,7 +860,7 @@ body{overflow-x:auto !important; }
 .address-info .add-heading{display: block; margin-bottom: 15px;}
 .billing-add,.shipping-add{width: 40%;}
 .account-nav{width: 25% !important; max-width: 350px;}
-.account-nav ul.sub-nav li{background: none !important; padding: 0;}
+.account-nav ul.sub-nav li{background: none !important; padding: 0; display: block !important; text-align: left !important;}
 .account-nav.top-divider{padding-top: 20px; margin-top:0;}
 
 
@@ -906,17 +906,17 @@ div.email-pref input[type="checkbox"]:checked + label:before { content: url("../
 /***Share with a friend***/
 .refer-frnd,.track-invites{margin: 0 auto 20px auto;}
 .referfriend-invitehead .potential{display: none;}
-#referafriend-container{width: 75% !important; max-width: 960px; min-width: 500px;}
+#referafriend-container{width: 75% !important; margin-left: 25% !important; max-width: 960px; min-width: 500px;}
 table#referrallink{margin-left: auto; margin-right: auto;}
 .referfriend-subheader{font-size: 20px !important; font-family: ITCAvantGardeProMd !important; color: #666 !important;}
 table#referrallink td.link{border: none !important;}
 .refer-frnd table.referfriendforms,.track-invites table.referredfriendslist{width: 100%;}
 table.referfriendforms table.inputtable tr:first-child td{border: none !important;}
-table.referfriendforms td table.inputtable input[type='text']{padding: 5px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
+table.referfriendforms td table.inputtable input[type='text']{padding: 5px; height: 30px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
 table.referfriendforms td.name, table.referfriendforms td.email{width: 38%; padding-right: 20px;}
 table.referfriendforms td.name table.inputtable,table.referfriendforms td.email table.inputtable{width: 100% !important;}
 td.btninvite{width: 93px;}
-div.invite{background-size: cover; height: 26px !important; margin-top: 10px;}
+div.invite{background-size: cover; width:107px !important; height: 31px !important; margin-top: 10px;}
 table.referfriendforms td.remove img, table.referfriendforms td.success img{margin-top: 19px !important;}
 div#addanotherreferral{margin-bottom: 5px !important;}
 table.referredfriendslist td.name, table.referredfriendslist td.email{width: 48%;}
@@ -1058,7 +1058,7 @@ img#closelightbox{top: 40px !important; right: 28px !important; width: 21px;}
 .myheader.wishlist-header{width: 960px;}
 .wishlist-header,.referfriend-heading{ padding-bottom: 60px; padding-top: 30px; text-align: center; }
 .wishlist-header h4,.referfriend-heading h4{font-family: ITCAvantGardeProMd,gotham,Arial; width: 100%; color: #666; font-size: 30px; letter-spacing: 0.8pt; font-weight: normal; }
-.header-top-bar{height:15px; background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/catalog/product/listing/line_all_product.png") no-repeat; background-position: bottom center; background-size: 100%; width: 100%;}
+.header-top-bar{height:15px; background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/catalog/product/listing/line_all_product.png") no-repeat; background-position: top center; background-size: 100%; width: 100%;}
 table.tblwishlist tr.last td{border:none !important;}
 table.tblwishlist td.prprice{padding-left: 0 !important; text-align: left !important;}
 table.tblwishlist thead th{padding-bottom: 0 !important;}
@@ -1079,12 +1079,30 @@ table.tblwishlist thead th{padding-bottom: 0 !important;}
 .fixwidth{margin-left: 25% !important; width: 75%;}
 .data-table.ys{min-width: 100% !important;}
 .dashboard-address-book{max-width: 700px; min-width: 500px;}
-.accountbg #mainimage,body.gift_of_ys .gift-of-ys{margin-top: 10px;}
+.accountbg #mainimage,body.gift_of_ys .gift-of-ys{margin-top: 10px; background: url(../images/bot-divider.png) 50% 100% no-repeat;}
 body.gift_of_ys .gift-of-ys{width: 100%; text-align: center;}
 .addedItem .similarProdList>li{width: 100%;}
 .show-prodImg{width: 82%; margin: 0; float: right;}
 .thumb-imgs{left: 0;}
 table.productimagecontainer{margin-bottom: 70px;}
 #cardredeemform .redeem-giftcard{margin-top: 0 !important;}
-.goy-balance{min-height:250px; max-height:250px; background: #efefef; padding: 25px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; max-width: 400px; min-width: 350px; width: 45% !important; display: inline-block !important; vertical-align: top;}
-.goy-balance#Chkbal{margin-right: 20px;}
+.goy-balance{min-height:250px; max-height:250px; background: #efefef; padding: 25px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; max-width: 400px; width: 48% !important; display: inline-block !important; vertical-align: top; position: relative;
+}
+#createcardform{display: block; width: 80%; background: #efefef; padding: 25px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; margin: 0 auto;}
+.manage-goy{width:80%; margin: 0 auto; }
+#createcardform td.label{display: none;}
+#createcardform table{width: 100% !important;}
+#createcardform table.inputtable tbody tr:first-child{background:#fff; height: 30px;}
+#createcardform table.inputtable tbody tr td.inputholder{padding: 5px; border:none !important;}
+.goy-form .row{margin: 0 0 30px !important;}
+.goy-form .full{width: 100% !important; margin: 0 !important;}
+.goy-form .full textarea{max-width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; border:none !important; background: #fff !important;}
+textarea.watermark{color: gray !important; font-size: 13px !important;}
+.goy-form .col label{text-align: left; color: gray !important; font-style: normal !important; font-family: gothambook !important; font-size: 13px !important; margin-bottom: 5px !important; resize:none;}
+.goy-balance form{display: block; position: absolute; right: 25px; left: 25px; bottom: 25px;}
+table.gfredeem td.inputholder, table#redeem td.inputholder{width: 28%; background: #fff; padding: 5px; height: 30px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; border: none !important;}
+table.gfredeem td.dash, table#redeem td.dash{text-align: center; vertical-align: middle;}
+button.btn-reset span{ width: 147px !important; height: 42px !important; background: url(../images/reset-form.jpg) 0 0 no-repeat !important; }
+button.btn-addtobag span{width: 151px !important; height: 42px !important; background: url(../images/add-to-bag.jpg) 0 0 no-repeat !important;}
+.goy-balance .sub-title{padding-top: 0 !important;}
+
