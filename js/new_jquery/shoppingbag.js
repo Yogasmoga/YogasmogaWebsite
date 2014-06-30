@@ -1,6 +1,6 @@
 jQuery(document).ready(function($){
     showShoppingBagHtml();
-    openShoppingCart();
+//    openShoppingCart();
     inputFocus();
     //checkAppliedPromotion();
 
@@ -265,7 +265,7 @@ jQuery(window).resize(function(){
 
     }
 // Show/Hide Shopping Cart Container
-    function openShoppingCart(){
+    /*function openShoppingCart(){
         var shoppingWdth = jQuery(".shopping-cart").width();
         var bodyHght = jQuery(window).height();
 
@@ -281,7 +281,25 @@ jQuery(window).resize(function(){
            // alert(bodyHght);
             return false;
         });
-}
+    }*/
+    jQuery(".open-cart").live("click", function(){
+        openShoppingCart();
+    });
+    function openShoppingCart()
+    {
+        var shoppingWdth = jQuery(".shopping-cart").width();
+        var bodyHght = jQuery(window).height();
+        jQuery(".shopping-cart").css({
+            "height": bodyHght,
+            "display": 'block'
+        }).removeClass("hdnovr");
+        jQuery(".page").css("position", "relative").animate({ left: -shoppingWdth });
+        jQuery(".pageoverlay").css("min-height", bodyHght).css("width", jQuery(window).width()).animate({ left: -shoppingWdth }).show();
+        jQuery(".header-container").animate({ left: -shoppingWdth });
+        jQuery("body").addClass("hdnHgt");
+        // alert(bodyHght);
+        return false;
+    }
 function smogicart() {
     jQuery('#redeemresult').empty().hide();
     var smogi=jQuery.trim(jQuery('#smogi').val());
