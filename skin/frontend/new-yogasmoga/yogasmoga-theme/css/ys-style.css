@@ -370,7 +370,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .how-to-measure{color: #c03; font-size: 11px; font-family: "AvantGardeGothicITCW01B"; border-bottom: #c03 1px solid; font-weight: normal;}
 
 .thumb-imgs{float: left; left: -130px; margin: 0; position: absolute; text-align: center; width: 18%; min-width: 18%; max-width: 138px;}
-.thumb-imgs img{width: 90%;}
+.thumb-imgs img{/*width: 90%;*/}
 .thumb-imgs td:last-child{margin-bottom: 0;}
 
 .show-prodImg{width:100%; margin:0 2% 0 0; float: left;}

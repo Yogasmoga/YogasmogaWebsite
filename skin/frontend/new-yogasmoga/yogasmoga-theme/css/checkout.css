@@ -562,13 +562,25 @@ body.checkout-onepage-index #change-stripe-detail, body.checkout-onepage-index #
 }
 
 #stripe-payment-details{
-   height: 114px;
+    height: 116px;
     margin: auto auto 30px;
     padding: 85px 0 0;
+    position: relative;
     text-align: center;
     background: url("../images/checkout/creditblck.jpg") no-repeat top left;
+    background-size: 100% auto;
 }
 
+#payment_form_stripe > div {
+    margin: 0 0 30px;
+}
+
+.cardType {
+    bottom: -72px;
+    float: right;
+    position: absolute;
+    right: 20px;
+}
 
 #stripe-payment-details span {
     color: #fff;
@@ -607,6 +619,7 @@ table.inputtable tr:first-child td{
     margin: 0;
     padding: 65px 20px 0;
     width: 100%;
+    background-size: 100% auto;
 }
 
 #tblcheckoutsteps table.crebg td {
