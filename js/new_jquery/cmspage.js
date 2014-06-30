@@ -43,6 +43,11 @@ jQuery(document).ready(function($){
             }
 
         }
+        // when there are some product in cart and user hit www.yogasmoga.com/checkout/cart/ than it is redirect to home page and open cart in right side.
+        if(blockid == 'cart')
+        {
+            openShoppingCart();
+        }
 
         $(".side-menu-bar2 ul li").each(function(){
             $(this).children("a").removeClass("current");
@@ -52,6 +57,10 @@ jQuery(document).ready(function($){
             }
         });
     }
+    $(".email-us").live("click",function(){
+        alert('tests');
+        initiateshareurl('mail');
+    });
 
     // check for click from left column in cms pages
     $(".side-menu-bar").on("click","ul li",function(event){

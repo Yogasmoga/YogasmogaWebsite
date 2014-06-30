@@ -31,7 +31,9 @@
  * @see Mage_Checkout_Block_Cart
  */
 ?>
-
+<?php
+    Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getBaseUrl().'#cart');
+?>
 
 <script type="text/javascript">
 //    jQuery(document).ready(function($){

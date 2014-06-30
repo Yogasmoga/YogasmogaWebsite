@@ -1,6 +1,6 @@
 jQuery(document).ready(function($){
     showShoppingBagHtml();
-    openShoppingCart();
+//    openShoppingCart();
     inputFocus();
     //checkAppliedPromotion();
 
@@ -25,7 +25,7 @@ jQuery(document).ready(function($){
         $(".pageoverlay").hide();
         $(".page").animate({ left: '0' }).css("");
         $(".header-container").animate({ left: "0" });
-        $("body").removeClass("hdnHgt");
+        $("body").removeClass("hdnHgt");          
     });
     //if(!_islogedinuser) {
         $(document).on("click","#continuecheckout",function(e){
@@ -191,6 +191,9 @@ jQuery(document).ready(function($){
         $(".page").animate({ left: '0' }).css("");
         $(".header-container").animate({ left: "0" });
         $("body").removeClass("hdnHgt");
+        setInterval(function() {
+                if($(".checkoutshow").css('display','none')) $(".checkoutshow").show();
+        }, 30000);
         return false;
     });
 
@@ -265,7 +268,7 @@ jQuery(window).resize(function(){
 
     }
 // Show/Hide Shopping Cart Container
-    function openShoppingCart(){
+    /*function openShoppingCart(){
         var shoppingWdth = jQuery(".shopping-cart").width();
         var bodyHght = jQuery(window).height();
 
@@ -281,7 +284,25 @@ jQuery(window).resize(function(){
            // alert(bodyHght);
             return false;
         });
-}
+    }*/
+    jQuery(".open-cart").live("click", function(){
+        openShoppingCart();
+    });
+    function openShoppingCart()
+    {
+        var shoppingWdth = jQuery(".shopping-cart").width();
+        var bodyHght = jQuery(window).height();
+        jQuery(".shopping-cart").css({
+            "height": bodyHght,
+            "display": 'block'
+        }).removeClass("hdnovr");
+        jQuery(".page").css("position", "relative").animate({ left: -shoppingWdth });
+        jQuery(".pageoverlay").css("min-height", bodyHght).css("width", jQuery(window).width()).animate({ left: -shoppingWdth }).show();
+        jQuery(".header-container").animate({ left: -shoppingWdth });
+        jQuery("body").addClass("hdnHgt");
+        // alert(bodyHght);
+        return false;
+    }
 function smogicart() {
     jQuery('#redeemresult').empty().hide();
     var smogi=jQuery.trim(jQuery('#smogi').val());
@@ -454,6 +475,7 @@ function deleteproduct(deletedproducid)
                     _showShoppingbagLoader = false;
                     showShoppingBagHtml();
                     jQuery(".cartitemcount").html(result.count);
+                    if(result.count < 1 )  jQuery(".checkoutshow").hide();
 
                 }
 
