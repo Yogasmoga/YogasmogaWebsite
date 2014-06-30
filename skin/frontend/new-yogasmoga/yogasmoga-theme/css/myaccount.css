@@ -349,30 +349,32 @@ button.button.btn-redeem span{
 }
 button.button.btn-addtoaccount span{
     padding:0; 
-    width:137px; 
+    width:185px; 
     text-indent:-999em; 
-    height:29px; 
+    height:42px; 
     margin:0; 
-    background:url(../images/add_to_account_off.png) 0 0 no-repeat; 
+    background:url(../images/add-to-acnt.jpg) 0 0 no-repeat; 
     border:0;
+    margin-top: 10px;
 }
 button.button.btn-check span{
     padding:0; 
-    width:93px; 
+    width:150px; 
     text-indent:-999em; 
-    height:29px; 
+    height:42px; 
     margin:0; 
-    background:url(../images/check_off.png) 0 0 no-repeat; 
+    background:url(../images/check-ys-balance.jpg) 0 0 no-repeat; 
     border:0;
+    margin-top: 10px;
 }
 button.button.btn-addtoaccount:active span{
-    background:url(../images/add_to_account_on.png) 0 0 no-repeat;
+    /*background:url(../images/add_to_account_on.png) 0 0 no-repeat;*/
 }
 button.button.btn-redeem:active span{
     background:url(../images/redeem_on.png) 0 0 no-repeat;
 }
 button.button.btn-check:active span{
-    background:url(../images/check_on.png) 0 0 no-repeat;
+    /*background:url(../images/check_on.png) 0 0 no-repeat;*/
 }
 button.button.btn-redeem, button.button.btn-addtoaccount
 {
@@ -454,27 +456,29 @@ table#referrallink td
 }
 table#referrallink td.share a#twrefer
 {
-    background-image: url('../images/navigation/twitter.png');
+    background-image: url('../images/footer/tw-icon.png');
 }
 table#referrallink td.share a#twrefer:hover
 {
-    background-image: url('../images/navigation/twitter_hover.png');
+    background-image: url('../images/footer/tw-icon-ovr.png');
 }
 table#referrallink td.share a#fbrefer
 {
-    background-image: url('../images/navigation/facebook.png');
+    /*background-image: url('../images/navigation/facebook.png');*/
+    background-image: url('../images/footer/fb-icon.png');
 }
 table#referrallink td.share a#fbrefer:hover
 {
-    background-image: url('../images/navigation/facebook_hover.png');
+    background-image: url('../images/footer/fb-icon-ovr.png');
 }
 table#referrallink td.share a#mlrefer
 {
-    background-image: url('../images/navigation/mail.png');
+    background-image: url('../images/footer/email-ref.png');
+    background-size: cover;
 }
 table#referrallink td.share a#mlrefer:hover
 {
-    background-image: url('../images/navigation/mail_hover.png');
+    /*background-image: url('../images/footer/email-ref-ovr.png');*/
 }
 table#referrallink td.share
 {
@@ -752,3 +756,11 @@ div.givegift
     background-repeat: no-repeat;
     margin-left : 15px;
 }
+/***New CSS for the design**/
+table#referrallink td.share,table#referrallink td.link{display: block; text-align: center; width: 100%; max-width: 100%; min-width: 100%; margin-bottom: 10px; padding: 0; }
+table#referrallink td.share a{float: none; display: inline-block;}
+table#referrallink{width: 100%;}
+table#referrallink td.link input{text-align: center;}
+table#referrallink td.share a#fbrefer{width: 12px; height: 21px;}
+table#referrallink td.share a#twrefer{width: 25px; height: 21px;}
+table#referrallink td.share a#mlrefer{width: 27px; height: 19px;}
