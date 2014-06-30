@@ -528,10 +528,10 @@ body.checkout-onepage-index li.form-alt {
     background: none repeat scroll 0 0 #ededed;
     display: block;
     font: 15px/24px gothammedium;
-    margin: auto auto 40px;
+    margin: -16px auto 30px;
     min-height: inherit;
     padding: 20px 0;
-    width: 100%;
+    width: 99.7%;
 }
 div.paymentmethoddiv {
     float: left;
@@ -543,7 +543,7 @@ div.paymentmethoddiv {
 
 body.checkout-onepage-index #payment_form_stripe {
     display: inline-block;
-    margin: 20px auto 30px;
+    margin: auto;
     width: 100%;
 }
 body.checkout-onepage-index #change-stripe-detail, body.checkout-onepage-index #stripe-payment-details, body.checkout-onepage-index a#stripe-update-payment {
@@ -562,7 +562,7 @@ body.checkout-onepage-index #change-stripe-detail, body.checkout-onepage-index #
 }
 
 #stripe-payment-details{
-    height: 116px;
+    height: 110px;
     margin: auto auto 30px;
     padding: 85px 0 0;
     position: relative;
@@ -663,4 +663,16 @@ table.inputtable {
     font: 13px gothambook;
     margin: 0 0 30px;
     padding: 20px;
+}
+
+select#billing-address-select{
+    display: none;
+}
+
+#billing-address-select > li {
+    cursor: pointer;
+    height: auto;
+    min-height: inherit;
+    padding: 7px 0;
+    width: 100%;
 }

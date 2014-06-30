@@ -1,23 +1,23 @@
 _stripecheck = false;
 _usesecureurl = true;
 jQuery(document).ready(function($){
-	setTimeout(function(){
-	jQuery("input[type='radio'][value='stripe']").attr("checked","checked");
-	checkpaymentmethod();
-	/*
-	if(jQuery("#stripe-update-payment").hasClass("use"))
-	{
-		jQuery("#stripe-update-payment").trigger('click');
-		jQuery("#stripe-update-payment-holder").hide();
-		jQuery("#change-stripe-detail").hide();
-	}
-	*/
-	}, 0);
+    setTimeout(function(){
+    jQuery("input[type='radio'][value='stripe']").attr("checked","checked");
+    checkpaymentmethod();
+    /*
+    if(jQuery("#stripe-update-payment").hasClass("use"))
+    {
+        jQuery("#stripe-update-payment").trigger('click');
+        jQuery("#stripe-update-payment-holder").hide();
+        jQuery("#change-stripe-detail").hide();
+    }
+    */
+    }, 0);
 
 
-    addNewAdd();
+    //addNewAdd();
     changeFlag();
-	getSelectval();
+    getSelectval();
     trimCountryText();
     breadValSelect();
     createNewElement();
@@ -108,10 +108,10 @@ jQuery(document).ready(function($){
     $("#checkout-shipping-form").submit(function(){
         if(validateShippingAddressForm())
         {
-			$("#shipping\\:firstname").val(ucFirstAllWords($("#shipping\\:firstname").val()));
+            $("#shipping\\:firstname").val(ucFirstAllWords($("#shipping\\:firstname").val()));
             $("#shipping\\:lastname").val(ucFirstAllWords($("#shipping\\:lastname").val()));
-			// call function to add the new address to the dropdown on both shipping and billing
-			virtualsaveshippingaddress();
+            // call function to add the new address to the dropdown on both shipping and billing
+            virtualsaveshippingaddress();
             saveShippingAddress();
         }
         return false;
@@ -182,8 +182,8 @@ jQuery(document).ready(function($){
         {
             $("#checkout-shipping-address-new").show();
             $("#shippingaddressselectionblock").addClass('addressselector');    
-			
-			//jQuery('select').customSelect();
+            
+            //jQuery('select').customSelect();
         }
         else
         {
@@ -258,7 +258,7 @@ jQuery(document).ready(function($){
 });
 
 function changeFlag(){
-    var flagVal = jQuery(this).find("option:selected").text();
+    var flagVal = jQuery("#shipping\\:country_id").find("option:selected").text();
 
     if(flagVal == "United States"){
         jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
@@ -431,27 +431,21 @@ function breadValSelect(){
 }
 
 function createNewElement(){
-    var list = jQuery("#shipping-address-select").find("option").size();
-    var optionval = jQuery("#shipping-address-select").find("option:nth-child(1)").html();
-    var selectID = jQuery("#shipping-address-select").attr("id");
-    var selectName = jQuery("#shipping-address-select").attr("name");
-    var listHTML;
+    var list = jQuery("select#shipping-address-select").find("option").size();
+    var selectID = jQuery("select#shipping-address-select").attr("id");
+    var selectName = jQuery("select#shipping-address-select").attr("name");
 
-    for(var i=1;i<=list;i++){
-      var storeb = jQuery("#shipping-address-select").find('option[value="' + i + '"]').html();
-      var storeb1 = jQuery("#shipping-address-select").find('option[value=""]').html();
-      
-      var storeattr = jQuery("#shipping-address-select").find('option[value="' + i + '"]').attr("value");
-      var storeattr1 = jQuery("#shipping-address-select").find('option[value=""]').attr("value");
-      
-      if(storeb){
-        jQuery(".listadd").append('<li value="' + storeattr + '">' + storeb +  '</li>');
-      }
-      
-      else{
-        jQuery(".listadd").append('<li class="addnewBtn" value="' + storeattr1 + '">+ Add New Address</li>');
-      }  
-    }
+    jQuery("select#shipping-address-select option").each(function(){
+        var storeb = jQuery(this).html();
+        var storeb1 = jQuery(this).attr("value");
+
+        if(storeb1 == ""){
+            jQuery(".listadd").append('<li class="addnewBtn" value="' + storeb1 + '">+ Add New Address</li>');
+        }
+        else{
+            jQuery(".listadd").append('<li value="' + storeb1 + '">' + storeb +  '</li>');   
+        }
+    });
 
     jQuery(".listadd").attr("id", selectID);
     jQuery(".listadd").attr("name", selectName);
@@ -461,7 +455,7 @@ function checkpaymentmethod()
 {
     if(jQuery("input[type='radio'][value='paypal_express']").is(':checked'))
     {
-        jQuery("ul#payment_form_paypal_express").css("margin-top", "-32px").show();
+        jQuery("ul#payment_form_paypal_express").show();
         jQuery("div#stripe-payment-details,a#stripe-update-payment,div#change-stripe-detail").hide(); 
     }
     
@@ -475,7 +469,7 @@ function checkpaymentmethod()
             }
             else
             {
-				
+                
                 if(jQuery("a#stripe-update-payment").hasClass("unuse"))
                     jQuery("div#change-stripe-detail").show();
                 else
@@ -511,10 +505,10 @@ function getCartSummary()
         data : {},
         success : function(result){
             jQuery("div#ordersummary").html(result);
-            positionordersummary();
+            positionordersummary();      
         }
     });
-	//jQuery('select').customSelect();
+    //jQuery('select').customSelect();
 }
 
 function submitcheckout()
@@ -592,8 +586,8 @@ function reordersubsteps(stp)
     stp.removeClass('inactive');
     stp.show();
     stp.find("form").show(0, function(){
-		//jQuery('select').customSelect();
-	});
+        //jQuery('select').customSelect();
+    });
     //console.log(stp.offset());
 //    console.log(jQuery("html").scrollTop());
 //    console.log(stp.offset().top - jQuery("html").scrollTop() - _headerHeight);
@@ -810,7 +804,9 @@ function saveBillingAddress()
         return;
     _ischeckoutprocessing = true;
     jQuery("#co-billing-form input[type=submit]").hide();
+    jQuery("#payment_form input[type=submit]").hide();
     jQuery("#co-billing-form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/new-loader.gif' />");
+    jQuery("#payment_form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/new-loader.gif' />");
     var billingdata = jQuery("#co-billing-form").serialize();
     var url = homeUrl + 'checkout/onepage/saveBilling';
     if(_usesecureurl)
@@ -832,6 +828,11 @@ function saveBillingAddress()
             _ischeckoutprocessing = false;
             jQuery("#co-billing-form input[type=submit]").show();
             jQuery("#co-billing-form #procImg").remove();
+
+
+            jQuery("#payment_form #procImg").remove(); 
+            jQuery("#payment_form input[type=submit]").show();               
+
             //result = eval('(' + result + ')');
 //            //console.log(result['update_section']['html']);
 //            jQuery("div#shippingmethods").html(result['update_section']['html']);
@@ -841,32 +842,31 @@ function saveBillingAddress()
 
 function virtualsaveshippingaddress()
 {
-	var address = jQuery("form#checkout-shipping-form input#shipping\\:firstname").val() + " " + jQuery("form#checkout-shipping-form input#shipping\\:lastname").val() + "," + jQuery("form#checkout-shipping-form input#shipping\\:street1").val() + ",";
-	
+    var address = jQuery("form#checkout-shipping-form input#shipping\\:firstname").val() + " " + jQuery("form#checkout-shipping-form input#shipping\\:lastname").val() + "," + jQuery("form#checkout-shipping-form input#shipping\\:street1").val() + ",";
+    
     if(jQuery("form#checkout-shipping-form input#shipping\\:street2").val().length > 0)
-		address += jQuery("form#checkout-shipping-form input#shipping\\:street2").val() + ",";
-	
+        address += jQuery("form#checkout-shipping-form input#shipping\\:street2").val() + ",";
+    
 
     address += jQuery("form#checkout-shipping-form input#shipping\\:city").val() + "," + jQuery("form#checkout-shipping-form select#shipping\\:region_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:region_id").val() + "']").html() + "," + jQuery("form#checkout-shipping-form input#shipping\\:postcode").val() + "," + jQuery("form#checkout-shipping-form select#shipping\\:country_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:country_id").val() + "']").html();
-	
+    
 
-    console.log(address);
+    //console.log(address);
     
     jQuery("form#checkout-shipping-form ul#shipping-address-select li:last").before("<li value='newAdd'>" + address + "</li>");
+
+
+    jQuery('#updateNameAdd').find('.address').html(address.replace(/,/g, "<br />"));
+    jQuery('#updateNameAdd').find('.address').contents().first().wrap('<span>To: </span>');
+
     
 
     //jQuery("select#shipping-address-select option:last").before("<option selected='selected'>" + address + "</option>");
 }
 
 function addNewAdd(){
-    var storeAdd = jQuery("form#checkout-shipping-form ul#shipping-address-select li[value='newAdd']").html();
-    jQuery("select#shipping-address-select option:last").before("<option selected='selected'>" + storeAdd + "</option>");
-    var tdht = jQuery("form#checkout-shipping-form select#shipping-address-select option[selected='selected']").html();
-
-    jQuery('#updateNameAdd').find('.address').html(tdht.replace(/,/g, "<br />"));
-    jQuery('#updateNameAdd').find('.address').contents().first().wrap('<span>To: </span>');  
-
-    //jQuery("#updateNameAdd").find(".address").html();
+    var storeAdd = jQuery("ul#shipping-address-select li[value='newAdd']").html();
+    jQuery("select#shipping-address-select option:last").before("<option selected='selected'>" + storeAdd + "</option>"); 
 }
 
 function saveShippingMethod()
@@ -884,24 +884,30 @@ function saveShippingMethod()
         url : url,
         data : {'shipping_method':jQuery('input:radio[name="shipping_method"]:checked').val()},
         success : function(result){
-			_ischeckoutprocessing = false;
+            _ischeckoutprocessing = false;
             result = eval('(' + result + ')');
             //console.log(result['update_section']['html']);
             jQuery("div#paymentmethods").html(result['update_section']['html']);
-			jQuery("form#co-billing-form").submit();
+            jQuery("form#co-billing-form").submit();
             //reordersteps(jQuery("#cobilling"));
-            addNewAdd();
             jQuery("#co-shippingmethod-form input[type=submit]").hide();
 
-            jQuery("li#shippingDetails .ovrlay-bg").show();
+            jQuery("#co-shippingmethod-form #procImg").remove();
+            getCartSummary();
+            jQuery("input[type='radio'][value='stripe']").attr("checked","checked");
+            checkpaymentmethod();
+
+            // show/hide overlay for next step
+            jQuery("li#shippingDetails").css("background", "rgba(0, 0, 0, 0.1)");
+            jQuery("li#shippingDetails .ovrlay-bg").hide();
             jQuery("li#billingDetails .ovrlay-bg").hide();
             jQuery("li#shippingDetails.active").removeClass("active");
             jQuery("li#billingDetails").addClass("active");
 
-            jQuery("#co-shippingmethod-form #procImg").remove();
-            getCartSummary();
-			jQuery("input[type='radio'][value='stripe']").attr("checked","checked");
-            checkpaymentmethod();
+            jQuery("#checkout-shipping-form input[type=submit]").hide();
+            jQuery("#checkout-shipping-form #procImg").remove();
+
+
             /*if(jQuery("#stripe-update-payment").hasClass("use"))
             {
                 jQuery("#stripe-update-payment").trigger('click');
@@ -928,7 +934,7 @@ function saveShippingAddress()
         url : url,
         data : shippingdata,
         success : function(result){
-			_ischeckoutprocessing = false;
+            _ischeckoutprocessing = false;
             result = eval('(' + result + ')');
             //console.log(result['update_section']['html']);
             jQuery("div#shippingmethods").html(result['update_section']['html']);
@@ -936,32 +942,32 @@ function saveShippingAddress()
             var getShpID =  jQuery(".shippingOption").find("ul.availableShip").find("li.selected").attr("id");
             //alert(getShpID);
 
-			jQuery("form#co-shippingmethod-form input#" + getShpID).attr("checked","checked");
-			jQuery("form#co-shippingmethod-form").submit();
-			// Select the chosen shipping method on the shipping form and call saveshippingmethod.
-			
+            jQuery("form#co-shippingmethod-form input#" + getShpID).attr("checked","checked");
+            jQuery("form#co-shippingmethod-form").submit();
+            // Select the chosen shipping method on the shipping form and call saveshippingmethod.
+            
             //reordersubsteps(jQuery("div#shippingmethods").parents("div.checkoutsubstep"));
             if(jQuery("#shipping\\:use_for_billing").is(':checked'))
                 replicateShippingAddress();
-			
-			//Save Billing Address here.
-			
+            
+            //Save Billing Address here.
+            
             
             // hiding shiipng divs
-            var txtSl = jQuery('#shipping-address-select').find('option:selected').text();
-            txtSl = txtSl.replace(/,/g, "<br />");
+            // var txtSl = jQuery('ul#shipping-address-select').find("li[value='newAdd']").text();
+            // txtSl = txtSl.replace(/,/g, "<br />");
 
-            jQuery('#updateNameAdd').find('.address').html(txtSl);
-            jQuery('#updateNameAdd').find('.address').contents().first().wrap('<span>To: </span>');
+            // jQuery('#updateNameAdd').find('.address').html(txtSl);
+            // jQuery('#updateNameAdd').find('.address').contents().first().wrap('<span>To: </span>');
 
 
-            jQuery("#checkout-shipping-form input[type=submit]").hide();
+            //jQuery("#checkout-shipping-form input[type=submit]").hide();
             jQuery("#checkout-shipping-address-new").hide();
             jQuery("#updateNameAdd").show();
             jQuery("#shippingaddressselectionblock").show();
 
 
-            jQuery("#checkout-shipping-form #procImg").remove();
+            //jQuery("#checkout-shipping-form #procImg").remove();
             jQuery("#shipping\\:use_for_billing").removeAttr("checked");
         }
     });

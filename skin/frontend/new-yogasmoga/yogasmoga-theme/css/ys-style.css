@@ -492,7 +492,7 @@ ul.checkout-cont li > .selectAddress ul li span{
 .selectAddress > span {
     display: inline-block;
 }
-.addnewBtn {
+.addnewBtn, .addnewBtnBilling {
     width: 100%;
 	background: url('../images/gryBtn.jpg') no-repeat center top;
 	background-size: 100% auto;
@@ -508,7 +508,7 @@ ul.checkout-cont li > .selectAddress ul li span{
     text-transform: uppercase;
 }
 .showShippingOpt, .showUpdateAdd{display:none; border-top: 1px solid #9f9f9f; margin: 8px 0 0; padding: 8px 0 0;}
-.showUpadd, .showShpOpt{background: url('../images/arwbtm.jpg') no-repeat top left; width:17px; height:13px; float:right; margin:5px 0 0; cursor:pointer;}
+.showUpaddnew, .showUpadd, .showShpOpt{background: url('../images/arwbtm.jpg') no-repeat top left; width:17px; height:13px; float:right; margin:5px 0 0; cursor:pointer;}
 .showUpadd.reverse, .showShpOpt.reverse{background: url('../images/arwtop.jpg') no-repeat top left;}
 .continueBtn{
 	background: url('../images/contBtn.jpg') no-repeat top left;
@@ -938,7 +938,7 @@ table.referfriendforms td.processing img{margin-top: 15px !important;}
         display: none;
         top: 210px;
 }
-ul.checkout-cont li .listadd{display: none;}
+ul.checkout-cont li .listadd, ul.checkout-cont li .listaddnew{display: none;}
 ul.checkout-cont li .listadd > li {
     height: auto;
     min-height: inherit;
@@ -1106,3 +1106,21 @@ button.btn-reset span{ width: 147px !important; height: 42px !important; backgro
 button.btn-addtobag span{width: 151px !important; height: 42px !important; background: url(../images/add-to-bag.jpg) 0 0 no-repeat !important;}
 .goy-balance .sub-title{padding-top: 0 !important;}
 
+
+.checkNewAdd{
+	background: url(../images/checkout/checkbox.jpg) no-repeat top left !important;
+    float: left;
+    height: 34px;
+    margin: 0 12px 0 0;
+    width: 34px;
+    cursor: pointer;
+}
+
+.checkNewAdd.reverse{
+	background: url(../images/checkout/checkbox.jpg) no-repeat bottom left !important;
+}
+
+#billingaddressselectionblock > label {
+    display: inline-block;
+    float: left;
+}
