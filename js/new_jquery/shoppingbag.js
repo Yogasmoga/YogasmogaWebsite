@@ -25,7 +25,7 @@ jQuery(document).ready(function($){
         $(".pageoverlay").hide();
         $(".page").animate({ left: '0' }).css("");
         $(".header-container").animate({ left: "0" });
-        $("body").removeClass("hdnHgt");
+        $("body").removeClass("hdnHgt");          
     });
     //if(!_islogedinuser) {
         $(document).on("click","#continuecheckout",function(e){
@@ -191,6 +191,9 @@ jQuery(document).ready(function($){
         $(".page").animate({ left: '0' }).css("");
         $(".header-container").animate({ left: "0" });
         $("body").removeClass("hdnHgt");
+        setInterval(function() {
+                if($(".checkoutshow").css('display','none')) $(".checkoutshow").show();
+        }, 30000);
         return false;
     });
 
@@ -472,6 +475,7 @@ function deleteproduct(deletedproducid)
                     _showShoppingbagLoader = false;
                     showShoppingBagHtml();
                     jQuery(".cartitemcount").html(result.count);
+                    if(result.count < 1 )  jQuery(".checkoutshow").hide();
 
                 }
 
