@@ -906,7 +906,7 @@ div.email-pref input[type="checkbox"]:checked + label:before { content: url("../
 /***Share with a friend***/
 .refer-frnd,.track-invites{margin: 0 auto 20px auto;}
 .referfriend-invitehead .potential{display: none;}
-#referafriend-container{width: 75% !important; margin-left: 25% !important; max-width: 960px; min-width: 500px;}
+#referafriend-container{width: 75% !important; margin-left: 25% !important; max-width: 960px; min-width: 500px; margin-bottom: 100px;}
 table#referrallink{margin-left: auto; margin-right: auto;}
 .referfriend-subheader{font-size: 20px !important; font-family: ITCAvantGardeProMd !important; color: #666 !important;}
 table#referrallink td.link{border: none !important;}
@@ -1079,7 +1079,7 @@ table.tblwishlist thead th{padding-bottom: 0 !important;}
 .fixwidth{margin-left: 25% !important; width: 75%;}
 .data-table.ys{min-width: 100% !important;}
 .dashboard-address-book{max-width: 700px; min-width: 500px;}
-.accountbg #mainimage,body.gift_of_ys .gift-of-ys{margin-top: 10px; background: url(../images/bot-divider.png) 50% 100% no-repeat;}
+.accountbg #mainimage,body.gift_of_ys .gift-of-ys,body.rewardpoints-index-referral .accountbg{margin-top: 10px !important; background: url(../images/bot-divider.png) 50% 100% no-repeat;}
 body.gift_of_ys .gift-of-ys{width: 100%; text-align: center;}
 .addedItem .similarProdList>li{width: 100%;}
 .show-prodImg{width: 82%; margin: 0; float: right;}
