@@ -545,18 +545,58 @@ if(strpos($currentUrl, "?") != false)
                   <h2>Design features</h2>
                   <!-- heading -->
                   <!--Video Block-->
-                  <div class="video-design-block">
-                      <img alt="" src="<?php echo $this->getSkinUrl('images/product/video-block-img.jpg'); ?>">
+                  <?php $designfeaturevidioname = $_product->getDesignFeatureVideo() ;
+
+                    if($designfeaturevidioname != '' )
+                    {
+                        ?>
+                    <div class="video-design-block">
+
+                      <video width="320" height="240" controls>
+                          <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."design_features_video/".$_product->getDesignFeatureVideo(); ?>" type="video/mp4">
+
+                      </video>
                     </div>
+                    <?php } ?>
                   <!-- featuresList -->
-                  <ul class="featureList">
-                    <li><span class="ftrFig"><img alt="" src="<?php echo $this->getSkinUrl('images/gry-bg.jpg'); ?>"></span><span>mauris vehicula cone imentum toro eu lorem pulvinar.</span></li>
-                    <li><span class="ftrFig"><img alt="" src="<?php echo $this->getSkinUrl('images/gry-bg.jpg'); ?>"></span><span>mauris vehicula cone imentum toro eu lorem pulvinar.</span></li>
-                    <li><span class="ftrFig"><img alt="" src="<?php echo $this->getSkinUrl('images/gry-bg.jpg'); ?>"></span><span>mauris vehicula cone imentum toro eu lorem pulvinar.</span></li>
-                    <li><span class="ftrFig"><img alt="" src="<?php echo $this->getSkinUrl('images/gry-bg.jpg'); ?>"></span><span>mauris vehicula cone imentum toro eu lorem pulvinar.</span></li>
-                    <li><span class="ftrFig"><img alt="" src="<?php echo $this->getSkinUrl('images/gry-bg.jpg'); ?>"></span><span>mauris vehicula cone imentum toro eu lorem pulvinar.</span></li>
-                    <span class="clear-fix"></span>
-                  </ul>
+
+                <?php
+                $newdfimages = array();
+                $ftimage = "";
+                $ftimagespcl = "";
+                $ftimagesmall = "";
+                foreach($_gallery as $_image)
+                {
+                    $imgdata = json_decode(trim($_image->getLabel()), true);
+                    if($imgdata == NULL)
+                    {
+                    //echo $_image->getLabel();
+                    continue;
+                    }
+                    if(strcasecmp($imgdata['type'],"new design feature image") == 0 && isset($imgdata['position']))
+                    {
+                        $newdfimages[$imgdata['position']]["url"] = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
+                        if(isset($imgdata['caption']))
+                            $newdfimages[$imgdata['position']]["caption"] = $imgdata['caption'];
+                        else
+                            $newdfimages[$imgdata['position']]["caption"] = "";
+                        continue;
+                    }
+                }
+                ksort($newdfimages);
+//                echo '<pre>';print_r($newdfimages);die;
+                ?>
+                <ul class="featureList">
+                    <?php
+                     foreach($newdfimages as $ndfimg)
+                    {
+                        ?>
+                        <li><span class="ftrFig"><img alt="" src="<?php echo substr($ndfimg["url"], 1); ?>"></span><span><?php echo $ndfimg["caption"]; ?></span></li>
+                    <?php
+                    }
+                    ?>
+                </ul>
+                <div class="clear-fix"></div>
                   <!-- featuresList -->   
                   <a name="how-does-it-fit"></a>
                   <!-- heading -->
@@ -575,9 +615,21 @@ if(strpos($currentUrl, "?") != false)
                     <p class="block-link"><a href="#">watch the video of how to measure</a></p>              
                     </div>
                   </div>
-                  <div class="video-block f-right">
-                      <img alt="" src="<?php echo $this->getSkinUrl('images/product/video.gif'); ?>">
+                      <?php $howToMeasureVidio = $_product->getHowToMeasureVideo() ;
+
+                      if($howToMeasureVidio != '' )
+                      {
+                      ?>
+                    <div class="video-block f-right">
+
+                            <video width="218" height="133" controls>
+                              <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."how_to_measure_video/".$_product->getHowToMeasureVideo(); ?>" type="video/mp4">
+
+                          </video>
+
+
                     </div>
+                      <? } ?>
                     <div class="clear-fix"></div>
 
                   <div class="tble">                
@@ -1053,6 +1105,10 @@ if(strpos($currentUrl, "?") != false)
             $ftimagesmall = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
             continue;
         }
+
+
+
+
         
         if(strcasecmp($imgdata['type'], "design feature image") != 0 || !isset($imgdata['position']))
         //if(strpos($_image->getLabel(), "|DF") !== 0)
