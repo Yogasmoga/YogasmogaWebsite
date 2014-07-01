@@ -271,7 +271,7 @@ if(strpos($currentUrl, "?") != false)
                     //echo $alt;
                     //echo $imageurl;
                     $smallimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 120)->setQuality(90)."|".$alt;
-                    $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(771, 460)->setQuality(90)."|".$alt;
+                    $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(771, 700)->setQuality(90)."|".$alt;
                     $zoomimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->setQuality(90)."|".$alt;
                     
                     $imagePath = substr($zoomimageurl, 1);
@@ -648,6 +648,7 @@ if(strpos($currentUrl, "?") != false)
                       <? } ?>
                     <div class="clear-fix"></div>
                       <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
+
 
 
                   </div>
