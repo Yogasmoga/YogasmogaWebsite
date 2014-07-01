@@ -1163,6 +1163,10 @@ p.prd-read-reviews a,.com-a-prd-links{font-family: gothambook !important; text-t
 #payment_form_stripe > #stripe-update-payment-holder a {
     color: #58595b;
     display: block;
-    margin: 4px 0 0;
+    font: 12px/17px gothambook;
+    margin: -1px 0 0;
+    text-align: left;
     text-decoration: none;
+    text-transform: uppercase;
+    width: 80%;
 }
