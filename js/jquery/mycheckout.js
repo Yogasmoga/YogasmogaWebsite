@@ -31,14 +31,14 @@ jQuery(document).ready(function($){
     //     }
     // });
 
-    $(".selectAddress").on("click", function(){
+    $(".selectAddress .addVal, .showUpadd").on("click", function(){
         slideAddCont();
     });
 
 
     addUpdTxt();
     getShippingID();
-    $(".shippingOption").on("click", function(){
+    $(".shippingOption .addVal, .showShpOpt").on("click", function(){
         slideShpCont();
         trimDetailTxt();
     });
@@ -883,7 +883,7 @@ function virtualsaveshippingaddress()
     jQuery("form#checkout-shipping-form ul#shipping-address-select li:last").before("<li value='x'>" + address + "</li>");
     
 //    jQuery("select#shipping-address-select option").removeAttr("selected");
-    jQuery("select#shipping-address-select option:last").before("<option selected='selected'>" + address + "</option>");
+    //jQuery("select#shipping-address-select option:last").before("<option selected='selected'>" + address + "</option>");
 
 
 
@@ -975,7 +975,7 @@ function saveShippingAddress()
             
             
             // hiding shiipng divs
-            var txtSl = jQuery('select#shipping-address-select').find("option[selected='selected']:last").text();
+            var txtSl = jQuery('ul#shipping-address-select').find("li:last").prev().text();
             txtSl = txtSl.replace(/,/g, "<br />");
 
             jQuery('#updateNameAdd').find('.address').html(txtSl);

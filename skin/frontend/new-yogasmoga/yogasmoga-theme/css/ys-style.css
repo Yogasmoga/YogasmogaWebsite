@@ -1,4 +1,4 @@
-http://www.templatemonster.com/help/magento-framework-how-to-addchange-product-video.html/* Layout ================================================================================ */
+/*http://www.templatemonster.com/help/magento-framework-how-to-addchange-product-video.html/* Layout ================================================================================ */
 .wrapper { min-width:100%;  margin:0 auto;}
 .page {display:block; background: #fff; z-index: 2; position: relative;}
 .page-print { background:#fff; padding:25px 30px; text-align:left; }
@@ -1021,7 +1021,7 @@ ul.checkout-cont li .listadd > li {
     text-transform: none;
 }
 .errorformat > span > button {
-    background: none repeat scroll 0 0 #ccc;
+    background: none repeat scroll 0 0 #fff;
     border: medium none;
     color: #000;
     margin-top: 5px;
@@ -1041,6 +1041,7 @@ ul.checkout-cont li .listadd > li {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
+    padding:10px;
 }
 .pageoverlay
 {
