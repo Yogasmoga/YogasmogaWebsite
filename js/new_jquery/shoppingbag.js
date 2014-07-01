@@ -27,6 +27,10 @@ jQuery(document).ready(function($){
         $(".header-container").animate({ left: "0" });
         $("body").removeClass("hdnHgt");          
     });
+//    $(".adddields").live("click",function(){
+//         alert('1');
+//    });
+    
     //if(!_islogedinuser) {
         $(document).on("click","#continuecheckout",function(e){
             if(!_islogedinuser) {

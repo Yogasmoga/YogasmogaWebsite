@@ -42,8 +42,8 @@
                 <connection>
                     <host><![CDATA[localhost]]></host>
                     <username><![CDATA[root]]></username>
-                    <password><![CDATA[yogasmoga]]></password>
-                    <dbname><![CDATA[ys_feature_20may14]]></dbname>
+                    <password><![CDATA[]]></password>
+                    <dbname><![CDATA[yogasmoga]]></dbname>
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
                     <model><![CDATA[mysql4]]></model>
                     <type><![CDATA[pdo_mysql]]></type>
