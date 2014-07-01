@@ -72,6 +72,7 @@ jQuery(window).load(function(){
     $isrewardable = false;
     $howdoesitfitblockid = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId());
     $sizechartblockid = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'size_chart', Mage::app()->getStore()->getStoreId());
+    $fabricstoryblockid = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'fabric_story', Mage::app()->getStore()->getStoreId());
     $cats = $_product->getCategoryIds();
     $categoryid = '';
      $currentUrl = Mage::getUrl('*/*/*', array('_current' => true));
@@ -955,6 +956,22 @@ if(strpos($currentUrl, "?") != false)
 
                 <!-- completeLook -->            
                   <!-- heading -->
+                <?php //echo $this->getChildHtml('upsell_products');
+                $upsell_product = $_product->getUpSellProductCollection()->addAttributeToSort('position', Varien_Db_Select::SQL_ASC)->addStoreFilter();
+
+                //check if record is empty or not
+                foreach($upsell_product as $upsell)
+                {
+                    $product = Mage::getModel('catalog/product')->load($upsell->getId());
+                    $productType=$product->getTypeID();
+                    if($productType == 'simple')
+                    {
+                        echo $product->getColor();
+                    }
+                }
+
+
+                ?>
                   <h2 class="newbg" style="margin-top:70px;">complete the look</h2>
                   <!-- heading -->
 
@@ -972,20 +989,14 @@ if(strpos($currentUrl, "?") != false)
                   </ul>
                     <!-- completeLook --> 
                   <!-- prodSimilar --> 
-                  <!-- fabricDetails -->    
-                   <h2 class="newbg">fabric story</h2>
-                  <!-- heading -->
+                  <!-- fabricDetails  fabric story-->
+                    <?php
+                            if($fabricstoryblockid !='')
+                            {
+                                echo $this->getLayout()->createBlock('cms/block')->setBlockId($fabricstoryblockid)->toHtml();
+                            }
+                    ?>
 
-                  <div class="fabDetail">
-                    <h2>AURUM<sup>&trade;</sup></h2>
-                    <ul>
-                      <li><span><img alt="" src="<?php echo $this->getSkinUrl('images/homepage/resistance-icon.png'); ?>"></span>pilling-<br>resistence</li>
-                      <li><span><img alt="" src="<?php echo $this->getSkinUrl('images/homepage/moisture-icon.png'); ?>"></span>moisture<br>management</li>
-                      <li><span><img alt="" src="<?php echo $this->getSkinUrl('images/homepage/hq-stretch-icon.png'); ?>"></span>high quality<br>strech</li>
-                      <li><span><img alt="" src="<?php echo $this->getSkinUrl('images/homepage/nano.png'); ?>"></span>nano<br>technology</li>
-                    </ul>
-                    <p>AURUM&trade; is an Exclusively Ours, a technical blend of Supplex&reg; and Lycra&reg;. Unlike Nylon that falls apart quickly, Supplex&reg; fibers are technically far more superior, advanced fiber technology that provides high performance benefits with the soft feel and breathability of cotton.</p>
-                  </div>
             <!-- fabricDetails -->
             </div>
             <!-- ProductDetailContainer -->
