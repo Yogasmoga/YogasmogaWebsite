@@ -82,13 +82,23 @@ jQuery(window).load(function(){
     $path = $url->getPath();
     $urlpath = explode("/",substr($path,1));
     $newbreadcrumb = '<a href="'.Mage::helper('core/url')->getHomeUrl().'">Home</a>';
-    if(count($newbreadcrumb) ==1)
+    if(count($urlpath) ==1)
     {
-        $newbreadcrumb .= '&nbsp;/&nbsp;<a href="'.Mage::getModel("catalog/category")->load($categoryid)->getUrl().'">'.Mage::getModel("catalog/category")->load($categoryid)->getName().'</a>';
+        $newbreadcrumb .= '&nbsp;/&nbsp;<a href="'.Mage::getUrl().$urlpath[0].'">'.$urlpath[0].'</a>';
     }
-    if(count($newbreadcrumb) >1)
+    if(count($urlpath) >1)
     {
+        $j = 0;$previousurl='';
+        for($i=0;$i<count($urlpath)-1;$i++)
+        {
+            if(isset($urlpath[$i-1]))
+            {
+                $previousurl =  $previousurl.$urlpath[$i-1].'/';
+            }
 
+
+            $newbreadcrumb .= '&nbsp;/&nbsp;<a href="'.Mage::getUrl().$previousurl.$urlpath[$i].'">'.$urlpath[$i].'</a>';
+        }
     }
 /* End Show new breadcrumb in new theme */
 
@@ -529,6 +539,7 @@ if(strpos($currentUrl, "?") != false)
         }
     ?>    
         <!-- pageBreadcrum -->
+        <?php $breadcrumb = $newbreadcrumb;?>
         <div class="block-head"><div class="breadcrumb"><?php echo $breadcrumb; ?></div></div>
         <!-- pageBreadcrum -->
 
@@ -630,11 +641,10 @@ if(strpos($currentUrl, "?") != false)
                   <!-- featuresList -->
                   <?php
                   //$howToMeasureVidio = $_product->getHowToMeasureVideo() ;
-                  //if($sizechartblockid !='' || $howToMeasureVidio !='')
-                  //{
-                  //$howToMeasureVidio = $_product->getHowToMeasureVideo() ;
-                  if($sizechartblockid !='')
+                  $howToMeasureVidio = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_to_measure_video', Mage::app()->getStore()->getStoreId());
+                  if($sizechartblockid !='' || $howToMeasureVidio !='')
                   {
+
                   ?>
                   <a name="how-does-it-fit"></a>
                   <!-- heading -->
@@ -653,21 +663,21 @@ if(strpos($currentUrl, "?") != false)
                     <p class="block-link" style="margin-top: 15px;"><a href="#" class="com-a-prd-links">Watch the video of how to measure</a></p>
                     </div>
                   </div>
-<!--                      --><?php
-//
-//                      if($howToMeasureVidio != '' )
-//                      {
-//                      ?>
-<!--                    <div class="video-block f-right">-->
-<!---->
-<!--                            <video width="218" height="133" controls>-->
-<!--                              <source src="--><?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."how_to_measure_video/".$_product->getHowToMeasureVideo(); ?><!--" type="video/mp4">-->
-<!---->
-<!--                          </video>-->
-<!---->
-<!---->
-<!--                    </div>-->
-<!--                      --><?php// } ?>
+                      <?php
+
+                      if($howToMeasureVidio != '' )
+                      {
+                      ?>
+                    <div class="video-block f-right">
+
+                            <video width="218" height="133" controls>
+                              <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."how_to_measure_video/".$_product->getHowToMeasureVideo(); ?>" type="video/mp4">
+
+                          </video>
+
+
+                    </div>
+                      <?php } ?>
                     <div class="clear-fix"></div>
                       <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
                   </div>
