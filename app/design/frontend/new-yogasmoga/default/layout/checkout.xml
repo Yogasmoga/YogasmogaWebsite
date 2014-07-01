@@ -33,6 +33,7 @@ Default layout, loads most of the pages
 -->
 
     <default>
+        <action method="removeItem"><name>quickview.js</name></action>
 
         <!-- Mage_Checkout -->
         <reference name="top.links">
