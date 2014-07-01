@@ -956,19 +956,80 @@ if(strpos($currentUrl, "?") != false)
                   <!-- heading -->
                 <?php //echo $this->getChildHtml('upsell_products');
                 $upsell_product = $_product->getUpSellProductCollection()->addAttributeToSort('position', Varien_Db_Select::SQL_ASC)->addStoreFilter();
-
-                //check if record is empty or not
-                foreach($upsell_product as $upsell)
+                $count = count($upsell_product);
+                if($count > 1)
                 {
-                    $product = Mage::getModel('catalog/product')->load($upsell->getId());
-                    $productType=$product->getTypeID();
-                    if($productType == 'simple')
-                    {
-                        echo $product->getColor();
+                    $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                    $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
+                    while ($row = $readresult->fetch() ) {
+                        $clrinfo[$row['Value']] = $row['Attribute'];
                     }
+                ?>
+                    <h2 class="newbg" style="margin-top:70px;">complete the look</h2>
+                    <ul class="similarProdList">
+                <?php
+                    //check if record is empty or not
+                    $upsellsimplecount = 0;
+                    foreach($upsell_product as $upsell)
+                    {
+                        if($upsellsimplecount==2)break;
+                        $product = Mage::getModel('catalog/product')->load($upsell->getId());
+                        $productType=$product->getTypeID();
+                        if($productType == 'simple')
+                        {
+
+                            $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($upsell->getId());
+                            if (isset($parentIds[0]))
+                            {
+                                $parentproduct = Mage::getModel('catalog/product')->load($parentIds[0]);
+                                //print_r($parentproduct);die;
+                                $_gallery = Mage::getModel('catalog/product')->load($parentproduct->getId())->getMediaGalleryImages();
+                                foreach($_gallery as $_image)
+                                {
+                                    $imgdata = json_decode(trim($_image->getLabel()), true);
+                                    if($imgdata == NULL)
+                                    {
+                                        //echo $_image->getLabel();
+                                        continue;
+                                    }
+
+
+                                    if(strcasecmp($imgdata['type'],"product image") == 0  && $imgdata['color']== $product->getColor())
+                                    {
+                                        $upsellsimplecount++;
+                                       // $ftimage = $this->helper('catalog/image')->init($parentproduct, 'thumbnail', $_image->getFile());
+                                        $completelookimg = $this->helper('catalog/image')->init($parentproduct, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(121, 181)->setQuality(90);
+                                        ?>
+
+                                        <?php
+                                        break;
+                                    }
+
+
+
+
+
+                                }
+                            ?>
+                                <li><a href="<?php echo $parentproduct->getProductUrl(); ?>"
+                                <span><img alt="<?php echo $parentproduct->getName()?>" src="<?php echo $completelookimg; ?>"></span>
+                                <span><strong><?php echo $parentproduct->getName()?></strong><?php echo $clrinfo[$product->getColor()] ?><br><?php echo $parentproduct->getPrice() ?></span> </a>
+                            </li>
+
+                            <?php
+                            }
+
+
+
+
+
+                            ?>
+
+                        <?php
+                        }
+                    }
+
                 }
-
-
                 ?>
                   <h2 class="newbg" style="margin-top:70px;">complete the look</h2>
                   <!-- heading -->
