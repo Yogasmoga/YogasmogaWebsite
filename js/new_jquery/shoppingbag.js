@@ -27,6 +27,13 @@ jQuery(document).ready(function($){
         $(".header-container").animate({ left: "0" });
         $("body").removeClass("hdnHgt");          
     });
+    $("div.adddields span").live("click",function(){  
+         if(!$(this).attr('class')){
+            $('#redeemresult').empty().append('<div class="errorformat"><span>You cannot use Smogi Bucks, Promo Code and Gift Cards Code together.<br><button id="hidemsg">Ok</button></span></div>').show();
+         }
+    });
+    
+    
     //if(!_islogedinuser) {
         $(document).on("click","#continuecheckout",function(e){
             if(!_islogedinuser) {

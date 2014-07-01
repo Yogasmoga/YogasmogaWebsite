@@ -473,12 +473,12 @@ table#referrallink td.share a#fbrefer:hover
 }
 table#referrallink td.share a#mlrefer
 {
-    background-image: url('../images/footer/email-ref.png');
+    background-image: url('../images/footer/email-ref.jpg');
     background-size: cover;
 }
 table#referrallink td.share a#mlrefer:hover
 {
-    /*background-image: url('../images/footer/email-ref-ovr.png');*/
+    background-image: url('../images/footer/email-ref-ovr.jpg');*/
 }
 table#referrallink td.share
 {
@@ -761,6 +761,6 @@ table#referrallink td.share,table#referrallink td.link{display: block; text-alig
 table#referrallink td.share a{float: none; display: inline-block;}
 table#referrallink{width: 100%;}
 table#referrallink td.link input{text-align: center;}
-table#referrallink td.share a#fbrefer{width: 12px; height: 21px;}
+table#referrallink td.share a#fbrefer{width: 11px; height: 21px;}
 table#referrallink td.share a#twrefer{width: 25px; height: 21px;}
-table#referrallink td.share a#mlrefer{width: 27px; height: 19px;}
+table#referrallink td.share a#mlrefer{width: 28px; height: 18px;}

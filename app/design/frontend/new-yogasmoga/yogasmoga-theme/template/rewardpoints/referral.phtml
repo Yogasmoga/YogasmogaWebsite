@@ -249,12 +249,12 @@ Share The Joy Of YOGASMOGA, Get <?php echo $this->getReferrerPoints(); ?> SMOGI 
     <?php if($this->isPermanentLink()):?>
         <h3><?php echo $this->__('your invite link') ?></h3>
         <input type="text" disabled="disabled" value="<?php echo $this->getReferringUrl() ?>" class="share-link" onClick="this.select();" />
-		<button class="btn-copy button"><span><span>Copy</span></span></button>
-		<div class="social-btns" style="margin:10px 0 0;">
-			<a href="http://www.pinterest.com/YOGASMOGA" class="pinterest">Pinterest</a>
-			<a href="http://www.twitter.com/YOGASMOGA" class="twitter">Twitter</a>
-			<a href="http://www.facebook.com/YOGASMOGA" class="facebook">Facebook</a>
-		</div>
+        <button class="btn-copy button"><span><span>Copy</span></span></button>
+        <div class="social-btns" style="margin:10px 0 0;">
+            <a href="http://www.pinterest.com/YOGASMOGA" class="pinterest">Pinterest</a>
+            <a href="http://www.twitter.com/YOGASMOGA" class="twitter">Twitter</a>
+            <a href="http://www.facebook.com/YOGASMOGA" class="facebook">Facebook</a>
+        </div>
     <?php endif;?>
 
     <?php if($this->isAddthis()):?>
@@ -340,7 +340,7 @@ Share The Joy Of YOGASMOGA, Get <?php echo $this->getReferrerPoints(); ?> SMOGI 
             <a class="right" id="j2t-add-line" href="javascript:j2t_add_line();" title="<?php echo $this->__('Add new line') ?>">
                 <img src="<?php echo $this->getSkinUrl('images/j2t_add_one.png') ?>" alt="<?php echo $this->__('Add new line') ?>" />
             </a>  
-			<button class="btn-invite button" type="submit"><span><span><?php echo $this->__('Send') ?></span></span></button>			
+            <button class="btn-invite button" type="submit"><span><span><?php echo $this->__('Send') ?></span></span></button>          
         </fieldset>
         
         <script type="text/javascript">
