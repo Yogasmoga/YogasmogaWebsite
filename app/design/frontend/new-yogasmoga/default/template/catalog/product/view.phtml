@@ -75,10 +75,29 @@ jQuery(window).load(function(){
     $fabricstoryblockid = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'fabric_story', Mage::app()->getStore()->getStoreId());
     $cats = $_product->getCategoryIds();
     $categoryid = '';
+
+    /* Show new breadcrumb in new theme */
+    $urlString = Mage::helper('core/url')->getCurrentUrl();
+    $url = Mage::getSingleton('core/url')->parseUrl($urlString);
+    $path = $url->getPath();
+    $urlpath = explode("/",substr($path,1));
+    $newbreadcrumb = '<a href="'.Mage::helper('core/url')->getHomeUrl().'">Home</a>';
+    if(count($newbreadcrumb) ==1)
+    {
+        $newbreadcrumb .= '&nbsp;/&nbsp;<a href="'.Mage::getModel("catalog/category")->load($categoryid)->getUrl().'">'.Mage::getModel("catalog/category")->load($categoryid)->getName().'</a>';
+    }
+    if(count($newbreadcrumb) >1)
+    {
+
+    }
+/* End Show new breadcrumb in new theme */
+
      $currentUrl = Mage::getUrl('*/*/*', array('_current' => true));
+
 
 if(strpos($currentUrl, "?") != false)
     $currentUrl = substr($currentUrl, 0, strpos($currentUrl, "?"));
+
     for($i=strlen($currentUrl)-2;$i>1;$i--)
     {
         $categoryid .= $currentUrl[$i];
@@ -86,7 +105,7 @@ if(strpos($currentUrl, "?") != false)
             break;
 
     }
-    $categoryid = (int)$categoryid;
+    $categoryid = (int)$categoryid;//die;
     //$categoryid = Mage::getModel('catalog/category')->load($cats[0])->getId();
     $categoryurl = Mage::getModel("catalog/category")->load($categoryid)->getUrl();
     //echo $categoryid;
@@ -611,7 +630,10 @@ if(strpos($currentUrl, "?") != false)
                   <!-- featuresList -->
                   <?php
                   //$howToMeasureVidio = $_product->getHowToMeasureVideo() ;
-                  if($sizechartblockid !='' || $howToMeasureVidio !='')
+                  //if($sizechartblockid !='' || $howToMeasureVidio !='')
+                  //{
+                  //$howToMeasureVidio = $_product->getHowToMeasureVideo() ;
+                  if($sizechartblockid !='')
                   {
                   ?>
                   <a name="how-does-it-fit"></a>
@@ -645,7 +667,7 @@ if(strpos($currentUrl, "?") != false)
 <!---->
 <!---->
 <!--                    </div>-->
-<!--                      --><?// } ?>
+<!--                      --><?php// } ?>
                     <div class="clear-fix"></div>
                       <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
                   </div>
@@ -1011,7 +1033,7 @@ if(strpos($currentUrl, "?") != false)
 
                                 }
                             ?>
-                                <li><a href="<?php echo $parentproduct->getUrlKey().'?color='.$product->getColor(); ?>"
+                                <li><a href="<?php echo Mage::getBaseUrl().$parentproduct->getUrlPath().'?color='.$product->getColor(); ?>"
                                 <span><img alt="<?php echo $parentproduct->getName()?>" src="<?php echo $completelookimg; ?>"></span>
                                 <span><strong><?php echo $parentproduct->getName()?></strong><?php echo $clrinfo[$product->getColor()] ?><br>$<?php echo
                                     number_format((float)($parentproduct->getPrice()), 2, '.', '');?></span> </a>
@@ -1032,7 +1054,7 @@ if(strpos($currentUrl, "?") != false)
 
                 }
                 ?>
-                  
+
                     <!-- completeLook --> 
                   <!-- prodSimilar --> 
                   <!-- fabricDetails  fabric story-->
