@@ -35,7 +35,8 @@
     var StateCollection = <?php echo $this->helper('directory')->getRegionJson() ?>;
     console.log(StateCollection);
 </script>
-<div class="myheader">MY ACCOUNT</div>
+<div class="myheader no-display">MY ACCOUNT</div>
+<div class="edit-dash-address"></div>
 <div class="sectionheader"><?php echo $this->getTitle() ?></div>
 <form action="<?php echo $this->getSaveUrl() ?>" method="post" id="address-form">
     <?php echo $this->getBlockHtml('formkey')?>

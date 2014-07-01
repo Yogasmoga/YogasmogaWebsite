@@ -320,7 +320,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .block-elm.btm-devider, .block-elm.btm-devider-big, .product-details .block-head, .product-details h2{background: url("../images/big-divider.png") no-repeat center bottom; background-size: 100% auto;}
 .block-elm.btm-devider{padding-bottom: 40px;}
 .product-details .block-head{margin-bottom: 50px; text-transform: uppercase; font: 18px gothambold; padding: 4px 0 20px;}
-.product-details h2{font: normal 25px gothambold; font-size: 15px; color: #666; text-align: center; text-transform: uppercase; padding: 0 0 20px; margin: 0 0 35px;}
+.product-details h2{font: normal 25px gothambold; font-size: 15px; color: #666; text-align: center; text-transform: uppercase; padding: 0 0 20px; margin: 0 0 35px; background-size: contain !important;}
 .block-elm{width: 70%; text-align: left; display: inline-block; clear: both; margin: auto auto 40px; color: #58595B; font: 13px/18px gothambook;}
 .block-elm.btm-devider-big{margin: 0; padding-bottom: 50px; text-align: center; width: 90%;}
 .wdth65{width: 63%; float: left; margin: 0 2% 0 0;}
@@ -359,7 +359,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .fitDetail tr:first-child td{border-bottom: 1px solid #999; border-top: 1px solid #999; font-weight: bold; padding: 0 6px 6px;}
 .fitDetail tr:first-child td:first-child{padding-left: 0;}
 .fitDetail td{border-right: 1px solid #DCDCDC; font-size: 11px; text-transform: uppercase; padding: 6px; border-bottom: 1px solid #999;}
-.fitDetail td:first-child{font-weight: bold; padding: 6px 0; width: 27%;}
+.fitDetail td:first-child{font-weight: bold; padding: 6px 0; width: 26%;}
 .fitDetail td:last-child{border-right: 0 none;}
 .fitDetail td span{font-weight: normal;}
 .fitDetail li{list-style: disc outside; line-height: 20px; margin-left: 20px;}
@@ -1115,4 +1115,5 @@ table.selectedcolor{margin-bottom: 5px;}
 .prd-add-to-wish{position: relative;}
 .prd-add-to-wish .wishlist-link{position: absolute; bottom: 0; margin-bottom: 7px; right: 0;}
 p.prd-read-reviews a,.com-a-prd-links{font-family: gothambook !important; text-transform: initial !important;}
-
+div.men-size-chart tr:first-child td:first-child{width: 26%;}
+div.men-size-chart table tr:first-child td{width: 15%;}
