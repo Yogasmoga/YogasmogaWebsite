@@ -31,14 +31,14 @@ jQuery(document).ready(function($){
     //     }
     // });
 
-    $(".showUpadd").on("click", function(){
+    $(".selectAddress").on("click", function(){
         slideAddCont();
     });
 
 
     addUpdTxt();
     getShippingID();
-    $(".showShpOpt").on("click", function(){
+    $(".shippingOption").on("click", function(){
         slideShpCont();
         trimDetailTxt();
     });
@@ -237,7 +237,7 @@ jQuery(document).ready(function($){
             $("#change-stripe-detail").show();
             $("#stripe-payment-details").hide();
             $(this).removeClass('use').addClass('unuse');
-            $(this).parent().addClass("reverse");
+            $(this).addClass("reverse");
             $(this).html('Use Existing Payment Information');
             $('#stripe_create_stripe_customer').val("1");
         }
@@ -246,7 +246,7 @@ jQuery(document).ready(function($){
             $("#change-stripe-detail").hide();
             $("#stripe-payment-details").show();
             $(this).removeClass('unuse').addClass('use');
-            $(this).parent().removeClass("reverse");
+            $(this).removeClass("reverse");
             $(this).html('Change Payment Information');
             $('#stripe_create_stripe_customer').val('0');
         }
@@ -478,13 +478,17 @@ function checkpaymentmethod()
 {
     if(jQuery("input[type='radio'][value='paypal_express']").is(':checked'))
     {
+        jQuery("label[for='p_method_paypal_express'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/paypaltabovr.png");
         jQuery("ul#payment_form_paypal_express").show();
+        jQuery("label[for='p_method_stripe'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/credittab.png");
         jQuery("div#stripe-payment-details,a#stripe-update-payment,div#change-stripe-detail").hide(); 
     }
     
     if(jQuery("input[type='radio'][value='stripe']").is(':checked'))
     {
-            jQuery("ul#payment_form_paypal_express").hide();             
+            jQuery("ul#payment_form_paypal_express").hide();
+        jQuery("label[for='p_method_stripe'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/credittabovr.png");
+            jQuery("label[for='p_method_paypal_express'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/paypaltab.png");            
             jQuery("a#stripe-update-payment").show();
             if(jQuery("a#stripe-update-payment").length == 0)
             {
@@ -914,7 +918,8 @@ function saveShippingMethod()
             checkpaymentmethod();
 
             // show/hide overlay for next step
-            jQuery("li#shippingDetails").css("background", "rgba(0, 0, 0, 0.1)").addClass("reverseShip");
+            jQuery("li#shippingDetails").css("background", "rgba(0, 0, 0, 0.08)").addClass("reverseShip");
+            jQuery("#updateNameAdd").find(".gryWrap ").css("background", "#ddd");
             jQuery("li#shippingDetails .ovrlay-bg").hide();
             jQuery("li#billingDetails .ovrlay-bg").hide();
             jQuery("li#shippingDetails.active").removeClass("active");
