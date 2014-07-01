@@ -610,7 +610,7 @@ if(strpos($currentUrl, "?") != false)
                 <? } ?>
                   <!-- featuresList -->
                   <?php
-                  $howToMeasureVidio = $_product->getHowToMeasureVideo() ;
+                  //$howToMeasureVidio = $_product->getHowToMeasureVideo() ;
                   if($sizechartblockid !='' || $howToMeasureVidio !='')
                   {
                   ?>
@@ -631,21 +631,21 @@ if(strpos($currentUrl, "?") != false)
                     <p class="block-link" style="margin-top: 15px;"><a href="#" class="com-a-prd-links">Watch the video of how to measure</a></p>
                     </div>
                   </div>
-                      <?php
-
-                      if($howToMeasureVidio != '' )
-                      {
-                      ?>
-                    <div class="video-block f-right">
-
-                            <video width="218" height="133" controls>
-                              <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."how_to_measure_video/".$_product->getHowToMeasureVideo(); ?>" type="video/mp4">
-
-                          </video>
-
-
-                    </div>
-                      <? } ?>
+<!--                      --><?php
+//
+//                      if($howToMeasureVidio != '' )
+//                      {
+//                      ?>
+<!--                    <div class="video-block f-right">-->
+<!---->
+<!--                            <video width="218" height="133" controls>-->
+<!--                              <source src="--><?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."how_to_measure_video/".$_product->getHowToMeasureVideo(); ?><!--" type="video/mp4">-->
+<!---->
+<!--                          </video>-->
+<!---->
+<!---->
+<!--                    </div>-->
+<!--                      --><?// } ?>
                     <div class="clear-fix"></div>
                       <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
                   </div>
@@ -1011,9 +1011,10 @@ if(strpos($currentUrl, "?") != false)
 
                                 }
                             ?>
-                                <li><a href="<?php echo $parentproduct->getProductUrl(); ?>"
+                                <li><a href="<?php echo $parentproduct->getUrlKey().'?color='.$product->getColor(); ?>"
                                 <span><img alt="<?php echo $parentproduct->getName()?>" src="<?php echo $completelookimg; ?>"></span>
-                                <span><strong><?php echo $parentproduct->getName()?></strong><?php echo $clrinfo[$product->getColor()] ?><br><?php echo $parentproduct->getPrice() ?></span> </a>
+                                <span><strong><?php echo $parentproduct->getName()?></strong><?php echo $clrinfo[$product->getColor()] ?><br>$<?php echo
+                                    number_format((float)($parentproduct->getPrice()), 2, '.', '');?></span> </a>
                             </li>
 
                             <?php
@@ -1031,21 +1032,7 @@ if(strpos($currentUrl, "?") != false)
 
                 }
                 ?>
-                  <h2 class="newbg" style="margin-top:70px;">complete the look</h2>
-                  <!-- heading -->
-
-                  <!-- prodSimilar -->
-                  <ul class="similarProdList">
-                    <li>
-                      <span><img alt="Women's Top" src="<?php echo $this->getSkinUrl('images/product/dum5.gif'); ?>"></span>
-                      <span><strong>Product</strong>color/color<br>$000</span>
-                    </li>
-                    <li>
-                      <span><img alt="Women's Top" src="<?php echo $this->getSkinUrl('images/product/dum6.gif'); ?>"></span>
-                      <span><strong>Product</strong>color/color<br>$000</span>
-                    </li>
-                    <div class="clear-fix"></div>
-                  </ul>
+                  
                     <!-- completeLook --> 
                   <!-- prodSimilar --> 
                   <!-- fabricDetails  fabric story-->
