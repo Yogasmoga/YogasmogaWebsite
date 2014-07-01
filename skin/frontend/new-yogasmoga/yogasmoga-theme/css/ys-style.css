@@ -30,6 +30,7 @@ http://www.templatemonster.com/help/magento-framework-how-to-addchange-product-v
 .no-padding{padding: 0;}
 .mtop10{margin-top: 10px;}
 .vert-bottom{vertical-align: bottom;}
+.no-bg{background: none !important;}
 
 /****Header****/
 /*#pagecontainer{min-width: 960px;}*/
@@ -884,16 +885,16 @@ body{overflow-x:auto !important; }
 .pager .limiter{margin-right: 200px;}
 .pager{padding: 4px 10px;}
 #my-orders-table tbody td span.nobr a{color: #2f2f2f !important; border-bottom: 1px solid #d90d3d;}
-#edit-accountinfo table tr:first-child{background: #fff;}
-#edit-accountinfo table tr:first-child td{padding: 5px; border: none;}
-#edit-accountinfo table tr:first-child td label,#edit-accountinfo table tr:first-child td input{font-size: 13px;}
+#edit-accountinfo table tr:first-child,#address-form table tr:first-child{background: #fff;}
+#edit-accountinfo table tr:first-child td,#address-form table tr:first-child td{padding: 5px; border: none;}
+#edit-accountinfo table tr:first-child td label,#edit-accountinfo table tr:first-child td input,#address-form table tr:first-child td label{font-size: 13px;}
 
 /***edit account Info***/
-.my-account .edit-info,.refer-frnd,.track-invites{background: #efefef; padding: 25px; width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box; max-width: 700px; min-width: 500px;} 
+.my-account .edit-info,.refer-frnd,.track-invites,.edit-dash-address{background: #efefef; padding: 25px; width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box; max-width: 700px; min-width: 500px;} 
 .backlink,#changepasswordoptionholder{display: none;}
 #passwordchangeoptions{display: block !important;}
 .change-password-label{margin-bottom: 5px;}
-#edit-accountinfo table.inputtable{width: 100% !important;}
+#edit-accountinfo table.inputtable,#address-form table.inputtable{width: 100% !important;}
 #passwordchangeoptions table.inputtable{width: 49% !important;}
 .pref-options{position: relative;}
 .email-pref{position: relative; margin-bottom: 20px;}
@@ -907,10 +908,10 @@ table.tblwishlist td.prname .prd-deldet a{text-transform: capitalize; color: #c0
 table.tblwishlist td.primage{width: 200px !important;}
 table.tblwishlist td.prname{padding-left: 0;}
 /***Styling the checkboxes***/ 
-div.email-pref input[type="checkbox"]{display: none;}
-div.email-pref label { cursor: pointer; padding-left: 36px; /*margin-right: 40px;*/}  
-div.email-pref label:before { content: ""; display: inline-block; width: 25px; height: 25px; margin-right: 10px; position: absolute; left: 0px; top: -5px; background-color: #ffffff;}  
-div.email-pref input[type="checkbox"]:checked + label:before { content: url("../images/checkbox-tick.png"); color: #DF4126; font-size: 18px; text-align: center; line-height: 24px; }  
+div.email-pref input[type="checkbox"],tr.def-address input[type="checkbox"] {display: none;}
+div.email-pref label, tr.def-address label { cursor: pointer; padding-left: 36px; /*margin-right: 40px;*/}  
+div.email-pref label:before,tr.def-address label:before { content: ""; display: inline-block; width: 25px; height: 25px; margin-right: 10px; position: absolute; left: 0px; top: -5px; background-color: #ffffff;}  
+div.email-pref input[type="checkbox"]:checked + label:before, tr.def-address input[type="checkbox"]:checked + label:before { content: url("../images/checkbox-tick.png"); color: #DF4126; font-size: 18px; text-align: center; line-height: 24px; }  
 /***Share with a friend***/
 .refer-frnd,.track-invites{margin: 0 auto 20px auto;}
 .referfriend-invitehead .potential{display: none;}
@@ -1122,6 +1123,10 @@ table.selectedcolor{margin-bottom: 5px;}
 p.prd-read-reviews a,.com-a-prd-links{font-family: gothambook !important; text-transform: initial !important;}
 div.men-size-chart tr:first-child td:first-child{width: 26%;}
 div.men-size-chart table tr:first-child td{width: 15%;}
+.edit-dash-address .sectionheader{font-family: ITCAvantGardeProMd !important; color: #666 !important; font-size: 16px !important;}
+.left-col{width: 49%; float: left; padding: 0 !important;}
+.right-col{width: 49%; float: right; padding: 0 !important;}
+#address-form #country{width: 100%;}
 .checkNewAdd{
 	background: url(../images/checkout/checkbox.jpg) no-repeat top left !important;
     float: left;
