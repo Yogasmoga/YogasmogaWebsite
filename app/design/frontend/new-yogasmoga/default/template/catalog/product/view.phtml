@@ -72,6 +72,7 @@ jQuery(window).load(function(){
     $isrewardable = false;
     $howdoesitfitblockid = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId());
     $sizechartblockid = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'size_chart', Mage::app()->getStore()->getStoreId());
+    $fabricstoryblockid = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'fabric_story', Mage::app()->getStore()->getStoreId());
     $cats = $_product->getCategoryIds();
     $categoryid = '';
      $currentUrl = Mage::getUrl('*/*/*', array('_current' => true));
@@ -269,8 +270,8 @@ if(strpos($currentUrl, "?") != false)
                     }
                     //echo $alt;
                     //echo $imageurl;
-                    $smallimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 120)->setQuality(90)."|".$alt;
-                    $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(771, 460)->setQuality(90)."|".$alt;
+                    $smallimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90)."|".$alt;
+                    $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(771, 700)->setQuality(90)."|".$alt;
                     $zoomimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->setQuality(90)."|".$alt;
                     
                     $imagePath = substr($zoomimageurl, 1);
@@ -542,23 +543,13 @@ if(strpos($currentUrl, "?") != false)
                 <!-- featureDesign -->
                     <!-- heading -->
                     <div class="clear-fix"></div>
-                  <h2>Design features</h2>
-                  <!-- heading -->
-                  <!--Video Block-->
-                  <?php $designfeaturevidioname = $_product->getDesignFeatureVideo() ;
+                <!--Video Block-->
 
-                    if($designfeaturevidioname != '' )
-                    {
-                        ?>
-                    <div class="video-design-block">
+                <!-- show design feature section -->
+                <?php $designfeaturevidioname = $_product->getDesignFeatureVideo() ;?>
 
-                      <video width="320" height="240" controls>
-                          <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."design_features_video/".$_product->getDesignFeatureVideo(); ?>" type="video/mp4">
 
-                      </video>
-                    </div>
-                    <?php } ?>
-                  <!-- featuresList -->
+                <!-- featuresList -->
 
                 <?php
                 $newdfimages = array();
@@ -570,8 +561,8 @@ if(strpos($currentUrl, "?") != false)
                     $imgdata = json_decode(trim($_image->getLabel()), true);
                     if($imgdata == NULL)
                     {
-                    //echo $_image->getLabel();
-                    continue;
+                        //echo $_image->getLabel();
+                        continue;
                     }
                     if(strcasecmp($imgdata['type'],"new design feature image") == 0 && isset($imgdata['position']))
                     {
@@ -584,8 +575,26 @@ if(strpos($currentUrl, "?") != false)
                     }
                 }
                 ksort($newdfimages);
-//                echo '<pre>';print_r($newdfimages);die;
+                //                echo '<pre>';print_r($newdfimages);die;
                 ?>
+                <?php if($designfeaturevidioname !='' || count($newdfimages)>1 )
+                {?>
+                  <h2>Design features</h2>
+                  <!-- heading -->
+                    <?php
+                    if($designfeaturevidioname != '' )
+                    {
+                        ?>
+                        <div class="video-design-block">
+
+                            <video width="320" height="240" controls>
+                                <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."design_features_video/".$_product->getDesignFeatureVideo(); ?>" type="video/mp4">
+
+                            </video>
+                        </div>
+                    <?php } ?>
+
+
                 <ul class="featureList">
                     <?php
                      foreach($newdfimages as $ndfimg)
@@ -598,7 +607,13 @@ if(strpos($currentUrl, "?") != false)
                     <span class="clear-fix"></span>
 
                 </ul>
+                <? } ?>
                   <!-- featuresList -->
+                  <?php
+                  $howToMeasureVidio = $_product->getHowToMeasureVideo() ;
+                  if($sizechartblockid !='' || $howToMeasureVidio !='')
+                  {
+                  ?>
                   <a name="how-does-it-fit"></a>
                   <!-- heading -->
                   <h2>Fit Story</h2>
@@ -616,7 +631,7 @@ if(strpos($currentUrl, "?") != false)
                     <p class="block-link" style="margin-top: 15px;"><a href="#" class="com-a-prd-links">Watch the video of how to measure</a></p>
                     </div>
                   </div>
-                      <?php $howToMeasureVidio = $_product->getHowToMeasureVideo() ;
+                      <?php
 
                       if($howToMeasureVidio != '' )
                       {
@@ -632,76 +647,10 @@ if(strpos($currentUrl, "?") != false)
                     </div>
                       <? } ?>
                     <div class="clear-fix"></div>
-
-                  <div class="tble">                
-                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
-                      <tbody style="width: 100%; display: table;"><tr>
-                        <td><span class="size">Size Chart</span><br/><a class="how-to-measure com-a-prd-links" href="#">How to measure</a></td>
-                        <td>Size<br/> 2 XXS</td>
-                        <td>Size<br/> 4 XS</td>
-                        <td>Size<br/> 6 S</td>
-                        <td>Size<br/> 8 M</td>
-                        <td>Size<br/> 10 L</td>
-                        <td>Size<br/> 12 XL</td>
-                      </tr>
-                      <tr>
-                        <td>Bust</td>
-                        <td>30"</td>
-                        <td>32"</td>
-                        <td>34"</td>
-                        <td>36"</td>
-                        <td>38"</td>
-                        <td>40"</td>
-                      </tr>
-                      <tr>
-                        <td>Weist</td>
-                        <td>22.5"</td>
-                        <td>24.5"</td>
-                        <td>26.5"</td>
-                        <td>28.5"</td>
-                        <td>30.5"</td>
-                        <td>32.5"</td>
-                      </tr>
-                      <tr>
-                        <td>Hips</td>
-                        <td>33"</td>
-                        <td>35"</td>
-                        <td>37"</td>
-                        <td>39"</td>
-                        <td>41"</td>
-                        <td>43"</td>
-                      </tr>
-                      <tr>
-                        <td>Inseam <span>Short</span></td>
-                        <td>30"</td>
-                        <td>30"</td>
-                        <td>30"</td>
-                        <td>30"</td>
-                        <td>30"</td>
-                        <td>30"</td>
-                      </tr>
-                      <tr>
-                        <td>inseam <span>regular</span></td>
-                        <td>31"</td>
-                        <td>31"</td>
-                        <td>31"</td>
-                        <td>31"</td>
-                        <td>31"</td>
-                        <td>41"</td>
-                      </tr>
-                      <tr>
-                        <td>Inseam <span>Tall</span></td>
-                        <td>32"</td>
-                        <td>31"</td>
-                        <td>32"</td>
-                        <td>32"</td>
-                        <td>32"</td>
-                        <td>42"</td>
-                      </tr>
-                    </tbody></table>
+                      <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
                   </div>
+                <?php } ?>
 
-                  </div>
                   <!-- featureDesign -->
 
 
@@ -853,7 +802,7 @@ if(strpos($currentUrl, "?") != false)
                                     <!-- fittable -->
                                     <div class="box-seprtr">
                                         <div class="blck-head-sml"><span class="qty">Step 3:</span>
-                                            Select a length
+                                            Qty
                                             <?php if($howdoesitfitblockid != "") { ?>
                                                 <table class="fittable">
                                                     <tr>                                                        
@@ -889,7 +838,7 @@ if(strpos($currentUrl, "?") != false)
 
                                     <!-- addToBag -->
                                     <div class="box-seprtr last">
-                                        <div class="blck-head-sml"><span>Step 3</span></div>
+                                        <div class="blck-head-sml no-display"><span>Step 3</span></div>
 
                                         <!-- addToBagBtn -->
                                         <div id="orderitem" class="addtobag spbutton" 
@@ -963,7 +912,7 @@ if(strpos($currentUrl, "?") != false)
                                 if(($customerId = Mage::getSingleton('customer/session')->getCustomerId())&&($_in_wishlist))
                                 {
                                         ?>
-                                        <p class=""><a onlick="javascript:void(0)" >ADDED TO WISH LIST </a></p>
+                                        <p class="" style="position: absolute; bottom: 0; margin-bottom: 4px; right:0;"><a onlick="javascript:void(0)" >ADDED TO WISH LIST</a></p>
                                 <?php
                                     }else{
                                 ?>
@@ -1005,6 +954,83 @@ if(strpos($currentUrl, "?") != false)
 
                 <!-- completeLook -->            
                   <!-- heading -->
+                <?php //echo $this->getChildHtml('upsell_products');
+                $upsell_product = $_product->getUpSellProductCollection()->addAttributeToSort('position', Varien_Db_Select::SQL_ASC)->addStoreFilter();
+                $count = count($upsell_product);
+                if($count > 1)
+                {
+                    $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                    $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
+                    while ($row = $readresult->fetch() ) {
+                        $clrinfo[$row['Value']] = $row['Attribute'];
+                    }
+                ?>
+                    <h2 class="newbg" style="margin-top:70px;">complete the look</h2>
+                    <ul class="similarProdList">
+                <?php
+                    //check if record is empty or not
+                    $upsellsimplecount = 0;
+                    foreach($upsell_product as $upsell)
+                    {
+                        if($upsellsimplecount==2)break;
+                        $product = Mage::getModel('catalog/product')->load($upsell->getId());
+                        $productType=$product->getTypeID();
+                        if($productType == 'simple')
+                        {
+
+                            $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($upsell->getId());
+                            if (isset($parentIds[0]))
+                            {
+                                $parentproduct = Mage::getModel('catalog/product')->load($parentIds[0]);
+                                //print_r($parentproduct);die;
+                                $_gallery = Mage::getModel('catalog/product')->load($parentproduct->getId())->getMediaGalleryImages();
+                                foreach($_gallery as $_image)
+                                {
+                                    $imgdata = json_decode(trim($_image->getLabel()), true);
+                                    if($imgdata == NULL)
+                                    {
+                                        //echo $_image->getLabel();
+                                        continue;
+                                    }
+
+
+                                    if(strcasecmp($imgdata['type'],"product image") == 0  && $imgdata['color']== $product->getColor())
+                                    {
+                                        $upsellsimplecount++;
+                                       // $ftimage = $this->helper('catalog/image')->init($parentproduct, 'thumbnail', $_image->getFile());
+                                        $completelookimg = $this->helper('catalog/image')->init($parentproduct, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(121, 181)->setQuality(90);
+                                        ?>
+
+                                        <?php
+                                        break;
+                                    }
+
+
+
+
+
+                                }
+                            ?>
+                                <li><a href="<?php echo $parentproduct->getProductUrl(); ?>"
+                                <span><img alt="<?php echo $parentproduct->getName()?>" src="<?php echo $completelookimg; ?>"></span>
+                                <span><strong><?php echo $parentproduct->getName()?></strong><?php echo $clrinfo[$product->getColor()] ?><br><?php echo $parentproduct->getPrice() ?></span> </a>
+                            </li>
+
+                            <?php
+                            }
+
+
+
+
+
+                            ?>
+
+                        <?php
+                        }
+                    }
+
+                }
+                ?>
                   <h2 class="newbg" style="margin-top:70px;">complete the look</h2>
                   <!-- heading -->
 
@@ -1022,20 +1048,14 @@ if(strpos($currentUrl, "?") != false)
                   </ul>
                     <!-- completeLook --> 
                   <!-- prodSimilar --> 
-                  <!-- fabricDetails -->    
-                   <h2 class="newbg">fabric story</h2>
-                  <!-- heading -->
+                  <!-- fabricDetails  fabric story-->
+                    <?php
+                            if($fabricstoryblockid !='')
+                            {
+                                echo $this->getLayout()->createBlock('cms/block')->setBlockId($fabricstoryblockid)->toHtml();
+                            }
+                    ?>
 
-                  <div class="fabDetail">
-                    <h2>AURUM<sup>&trade;</sup></h2>
-                    <ul>
-                      <li><span><img alt="" src="<?php echo $this->getSkinUrl('images/homepage/resistance-icon.png'); ?>"></span>pilling-<br>resistence</li>
-                      <li><span><img alt="" src="<?php echo $this->getSkinUrl('images/homepage/moisture-icon.png'); ?>"></span>moisture<br>management</li>
-                      <li><span><img alt="" src="<?php echo $this->getSkinUrl('images/homepage/hq-stretch-icon.png'); ?>"></span>high quality<br>strech</li>
-                      <li><span><img alt="" src="<?php echo $this->getSkinUrl('images/homepage/nano.png'); ?>"></span>nano<br>technology</li>
-                    </ul>
-                    <p>AURUM&trade; is an Exclusively Ours, a technical blend of Supplex&reg; and Lycra&reg;. Unlike Nylon that falls apart quickly, Supplex&reg; fibers are technically far more superior, advanced fiber technology that provides high performance benefits with the soft feel and breathability of cotton.</p>
-                  </div>
             <!-- fabricDetails -->
             </div>
             <!-- ProductDetailContainer -->
