@@ -32,16 +32,16 @@
 </script>
 <form action="" id="co-billing-form" style="display: none;">
     <?php if ($this->customerHasAddresses()): ?>
-        <div id="billingaddressselectionblock" class="nopay">
-            <label for="billing-address-select"><?php echo $this->__('Select a billing address from your address book or enter a new address.') ?></label>
+        <div id="billingaddressselectionblock">
+            <label class="dnone" for="billing-address-select"><?php echo $this->__('Select a billing address from your address book or enter a new address.') ?></label>
            <div class="input-box">
                <?php echo $this->getAddressesHtmlSelect('billing') ?>
            </div>
         </div>
     <?php endif ?>
     <?php if (!$this->customerHasAddresses()): ?>
-        <div id="billingaddressselectionblock" class="nopay" style="display:none">
-            <label for="billing-address-select"><?php echo $this->__('Select a billing address from your address book or enter a new address.') ?></label>
+        <div id="billingaddressselectionblock" style="display:none">
+            <label class="dnone" for="billing-address-select"><?php echo $this->__('Select a billing address from your address book or enter a new address.') ?></label>
            <div class="input-box">
                <?php echo $this->getAddressesHtmlSelect('billing') ?>
            </div>
