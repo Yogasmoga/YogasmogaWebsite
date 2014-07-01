@@ -542,23 +542,13 @@ if(strpos($currentUrl, "?") != false)
                 <!-- featureDesign -->
                     <!-- heading -->
                     <div class="clear-fix"></div>
-                  <h2>Design features</h2>
-                  <!-- heading -->
-                  <!--Video Block-->
-                  <?php $designfeaturevidioname = $_product->getDesignFeatureVideo() ;
+                <!--Video Block-->
 
-                    if($designfeaturevidioname != '' )
-                    {
-                        ?>
-                    <div class="video-design-block">
+                <!-- show design feature section -->
+                <?php $designfeaturevidioname = $_product->getDesignFeatureVideo() ;?>
 
-                      <video width="320" height="240" controls>
-                          <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."design_features_video/".$_product->getDesignFeatureVideo(); ?>" type="video/mp4">
 
-                      </video>
-                    </div>
-                    <?php } ?>
-                  <!-- featuresList -->
+                <!-- featuresList -->
 
                 <?php
                 $newdfimages = array();
@@ -570,8 +560,8 @@ if(strpos($currentUrl, "?") != false)
                     $imgdata = json_decode(trim($_image->getLabel()), true);
                     if($imgdata == NULL)
                     {
-                    //echo $_image->getLabel();
-                    continue;
+                        //echo $_image->getLabel();
+                        continue;
                     }
                     if(strcasecmp($imgdata['type'],"new design feature image") == 0 && isset($imgdata['position']))
                     {
@@ -584,8 +574,26 @@ if(strpos($currentUrl, "?") != false)
                     }
                 }
                 ksort($newdfimages);
-//                echo '<pre>';print_r($newdfimages);die;
+                //                echo '<pre>';print_r($newdfimages);die;
                 ?>
+                <?php if($designfeaturevidioname !='' || count($newdfimages)>1 )
+                {?>
+                  <h2>Design features</h2>
+                  <!-- heading -->
+                    <?php
+                    if($designfeaturevidioname != '' )
+                    {
+                        ?>
+                        <div class="video-design-block">
+
+                            <video width="320" height="240" controls>
+                                <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."design_features_video/".$_product->getDesignFeatureVideo(); ?>" type="video/mp4">
+
+                            </video>
+                        </div>
+                    <?php } ?>
+
+
                 <ul class="featureList">
                     <?php
                      foreach($newdfimages as $ndfimg)
@@ -598,7 +606,13 @@ if(strpos($currentUrl, "?") != false)
                     <span class="clear-fix"></span>
 
                 </ul>
+                <? } ?>
                   <!-- featuresList -->
+                  <?php
+                  $howToMeasureVidio = $_product->getHowToMeasureVideo() ;
+                  if($sizechartblockid !='' || $howToMeasureVidio !='')
+                  {
+                  ?>
                   <a name="how-does-it-fit"></a>
                   <!-- heading -->
                   <h2>Fit Story</h2>
@@ -616,7 +630,7 @@ if(strpos($currentUrl, "?") != false)
                     <p class="block-link" style="margin-top: 15px;"><a href="#" class="com-a-prd-links">Watch the video of how to measure</a></p>
                     </div>
                   </div>
-                      <?php $howToMeasureVidio = $_product->getHowToMeasureVideo() ;
+                      <?php
 
                       if($howToMeasureVidio != '' )
                       {
@@ -632,76 +646,12 @@ if(strpos($currentUrl, "?") != false)
                     </div>
                       <? } ?>
                     <div class="clear-fix"></div>
+                      <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
 
-                  <div class="tble">                
-                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
-                      <tbody style="width: 100%; display: table;"><tr>
-                        <td><span class="size">Size Chart</span><br/><a class="how-to-measure com-a-prd-links" href="#">How to measure</a></td>
-                        <td>Size<br/> 2 XXS</td>
-                        <td>Size<br/> 4 XS</td>
-                        <td>Size<br/> 6 S</td>
-                        <td>Size<br/> 8 M</td>
-                        <td>Size<br/> 10 L</td>
-                        <td>Size<br/> 12 XL</td>
-                      </tr>
-                      <tr>
-                        <td>Bust</td>
-                        <td>30"</td>
-                        <td>32"</td>
-                        <td>34"</td>
-                        <td>36"</td>
-                        <td>38"</td>
-                        <td>40"</td>
-                      </tr>
-                      <tr>
-                        <td>Weist</td>
-                        <td>22.5"</td>
-                        <td>24.5"</td>
-                        <td>26.5"</td>
-                        <td>28.5"</td>
-                        <td>30.5"</td>
-                        <td>32.5"</td>
-                      </tr>
-                      <tr>
-                        <td>Hips</td>
-                        <td>33"</td>
-                        <td>35"</td>
-                        <td>37"</td>
-                        <td>39"</td>
-                        <td>41"</td>
-                        <td>43"</td>
-                      </tr>
-                      <tr>
-                        <td>Inseam <span>Short</span></td>
-                        <td>30"</td>
-                        <td>30"</td>
-                        <td>30"</td>
-                        <td>30"</td>
-                        <td>30"</td>
-                        <td>30"</td>
-                      </tr>
-                      <tr>
-                        <td>inseam <span>regular</span></td>
-                        <td>31"</td>
-                        <td>31"</td>
-                        <td>31"</td>
-                        <td>31"</td>
-                        <td>31"</td>
-                        <td>41"</td>
-                      </tr>
-                      <tr>
-                        <td>Inseam <span>Tall</span></td>
-                        <td>32"</td>
-                        <td>31"</td>
-                        <td>32"</td>
-                        <td>32"</td>
-                        <td>32"</td>
-                        <td>42"</td>
-                      </tr>
-                    </tbody></table>
-                  </div>
 
                   </div>
+                <?php } ?>
+
                   <!-- featureDesign -->
 
 
