@@ -608,7 +608,15 @@ if(strpos($currentUrl, "?") != false)
                                // echo '<pre>';print_r($newdfimages);die;
                 $newdfimagescount = (int)count($newdfimages);
                 ?>
-                
+                <?php if(($designfeaturevidioname !='') || ($newdfimagescount > 1 ))
+                {?>
+                    <h2>Design features</h2>
+                    <!-- heading -->
+
+
+
+
+                <?php } ?>
                   <!-- featureDesign -->
 
 
