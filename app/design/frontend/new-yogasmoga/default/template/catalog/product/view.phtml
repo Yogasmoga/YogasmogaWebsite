@@ -581,6 +581,60 @@ if(strpos($currentUrl, "?") != false)
 
                 <!-- featuresList -->
 
+                <?php
+                $newdfimages = array();
+                $ftimage = "";
+                $ftimagespcl = "";
+                $ftimagesmall = "";
+                foreach($_gallery as $_image)
+                {
+                    $imgdata = json_decode(trim($_image->getLabel()), true);
+                    if($imgdata == NULL)
+                    {
+                        //echo $_image->getLabel();
+                        continue;
+                    }
+                    if(strcasecmp($imgdata['type'],"new design feature image") == 0 && isset($imgdata['position']))
+                    {
+                        $newdfimages[$imgdata['position']]["url"] = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
+                        if(isset($imgdata['caption']))
+                            $newdfimages[$imgdata['position']]["caption"] = $imgdata['caption'];
+                        else
+                            $newdfimages[$imgdata['position']]["caption"] = "";
+                        continue;
+                    }
+                }
+                ksort($newdfimages);
+                //                echo '<pre>';print_r($newdfimages);die;
+                ?>
+                <?php if($designfeaturevidioname !='' || count($newdfimages)>1 )
+                {?>
+                    <h2>Design features</h2>
+                    <!-- heading -->
+                    <?php
+                    if($designfeaturevidioname != '' )
+                    {
+                        ?>
+                        <div class="video-design-block">
+
+
+                        </div>
+                    <?php } ?>
+
+
+                    <ul class="featureList">
+                        <?php
+                        foreach($newdfimages as $ndfimg)
+                        {
+                            ?>
+                            <li><span class="ftrFig"><img alt="" src="<?php echo substr($ndfimg["url"], 1); ?>"></span><span><?php echo $ndfimg["caption"]; ?></span></li>
+                        <?php
+                        }
+                        ?>
+                        <span class="clear-fix"></span>
+
+                    </ul>
+                <? } ?>
                   <!-- featureDesign -->
 
 
