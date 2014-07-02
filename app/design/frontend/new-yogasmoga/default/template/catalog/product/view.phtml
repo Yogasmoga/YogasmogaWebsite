@@ -606,15 +606,16 @@ if(strpos($currentUrl, "?") != false)
                 }
                 ksort($newdfimages);
                                // echo '<pre>';print_r($newdfimages);die;
+                $newdfimagescount = (int)count($newdfimages);
                 ?>
-                <?php if(($designfeaturevidioname !='') || (count($newdfimages)>1 ))
+                <?php if(($designfeaturevidioname !='') || ($newdfimagescount > 1 ))
                 {?>
                     <h2>Design features</h2>
                     <!-- heading -->
 
 
 
-                   
+
                 <? } ?>
                   <!-- featureDesign -->
 
