@@ -640,13 +640,10 @@ if($_product->getAttributeText('canzoomimage') == "yes")
     <?php } ?>
     <!-- featuresList -->
     <?php
-    //$howToMeasureVidio = $_product->getHowToMeasureVideo() ;
-    //$howToMeasureVidio = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_to_measure_video', Mage::app()->getStore()->getStoreId());
-    //  if($sizechartblockid !='' || $howToMeasureVidio !='')
-    //  {
-    if($sizechartblockid !='' )
+    $howToMeasureVidio = $_product->getHowToMeasureVideo() ;
+    $howToMeasureVidio = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_to_measure_video', Mage::app()->getStore()->getStoreId());
+    if($sizechartblockid !='' || $howToMeasureVidio !='')
     {
-
         ?>
         <a name="how-does-it-fit"></a>
         <!-- heading -->
@@ -665,21 +662,21 @@ if($_product->getAttributeText('canzoomimage') == "yes")
                     <p class="block-link" style="margin-top: 15px;"><a href="#" class="com-a-prd-links">Watch the video of how to measure</a></p>
                 </div>
             </div>
-            <!--                      --><?php
-            //
-            //                      if($howToMeasureVidio != '' )
-            //                      {
-            //                      ?>
-            <!--                    <div class="video-block f-right">-->
-            <!---->
-            <!--                            <video width="218" height="133" controls>-->
-            <!--                              <source src="--><?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."how_to_measure_video/".$_product->getHowToMeasureVideo(); ?><!--" type="video/mp4">-->
-            <!---->
-            <!--                          </video>-->
-            <!---->
-            <!---->
-            <!--                    </div>-->
-            <!--                      --><?php //} ?>
+                                  <?php
+
+                                  if($howToMeasureVidio != '' )
+                                  {
+                                  ?>
+                                <div class="video-block f-right">
+
+                                        <video width="218" height="133" controls>
+                                          <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."how_to_measure_video/".$_product->getHowToMeasureVideo(); ?>" type="video/mp4">
+
+                                      </video>
+
+
+                                </div>
+                                  <?php } ?>
             <div class="clear-fix"></div>
             <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
         </div>
