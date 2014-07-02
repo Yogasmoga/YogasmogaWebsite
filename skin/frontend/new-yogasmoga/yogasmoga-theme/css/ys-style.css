@@ -987,6 +987,7 @@ ul.checkout-cont li .listadd > li {
     padding: 0;
     width: 100%;
     cursor: pointer;
+    border:0 none;
     /*
  background: transparent;
  z-index: 9999;
@@ -1140,7 +1141,7 @@ div.men-size-chart table tr:first-child td{width: 15%;}
 .show-prodImg .tdbigimagecontainer{width: 80%;}
 .product-details table.productimagecontainer table.smallimagecontiner td{width: 90%;}
 .checkBCre, .checkNewAdd{
-	background: url(../images/checkout/checkbox.jpg) no-repeat top left !important;
+	background: url(../images/checkout/checkbox.jpg) no-repeat bottom left !important;
     float: left;
     height: 34px;
     margin: 0 12px 0 0;
@@ -1149,7 +1150,7 @@ div.men-size-chart table tr:first-child td{width: 15%;}
 }
 
 .checkNewAdd.reverse, .checkBCre.reverse{
-	background: url(../images/checkout/checkbox.jpg) no-repeat bottom left !important;
+	background: url(../images/checkout/checkbox.jpg) no-repeat top left !important;
 }
 
 #billingaddressselectionblock > label {
