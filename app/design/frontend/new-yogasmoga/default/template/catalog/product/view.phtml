@@ -586,25 +586,25 @@ if(strpos($currentUrl, "?") != false)
                 $ftimage = "";
                 $ftimagespcl = "";
                 $ftimagesmall = "";
-                foreach($_gallery as $_image)
-                {
-                    $imgdata = json_decode(trim($_image->getLabel()), true);
-                    if($imgdata == NULL)
-                    {
-                        //echo $_image->getLabel();
-                        continue;
-                    }
-                    if(strcasecmp($imgdata['type'],"new design feature image") == 0 && isset($imgdata['position']))
-                    {
-                        $newdfimages[$imgdata['position']]["url"] = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
-                        if(isset($imgdata['caption']))
-                            $newdfimages[$imgdata['position']]["caption"] = $imgdata['caption'];
-                        else
-                            $newdfimages[$imgdata['position']]["caption"] = "";
-                        continue;
-                    }
-                }
-                ksort($newdfimages);
+//                foreach($_gallery as $_image)
+//                {
+//                    $imgdata = json_decode(trim($_image->getLabel()), true);
+//                    if($imgdata == NULL)
+//                    {
+//                        //echo $_image->getLabel();
+//                        continue;
+//                    }
+//                    if(strcasecmp($imgdata['type'],"new design feature image") == 0 && isset($imgdata['position']))
+//                    {
+//                        $newdfimages[$imgdata['position']]["url"] = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
+//                        if(isset($imgdata['caption']))
+//                            $newdfimages[$imgdata['position']]["caption"] = $imgdata['caption'];
+//                        else
+//                            $newdfimages[$imgdata['position']]["caption"] = "";
+//                        continue;
+//                    }
+//                }
+//                ksort($newdfimages);
                 //                echo '<pre>';print_r($newdfimages);die;
                 ?>
                 <?php if($designfeaturevidioname !='' || count($newdfimages)>1 )
@@ -638,7 +638,7 @@ if(strpos($currentUrl, "?") != false)
                   <!-- featuresList -->
                   <?php
                   //$howToMeasureVidio = $_product->getHowToMeasureVideo() ;
-                  echo $howToMeasureVidio = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_to_measure_video', Mage::app()->getStore()->getStoreId());
+                  //$howToMeasureVidio = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_to_measure_video', Mage::app()->getStore()->getStoreId());
                 //  if($sizechartblockid !='' || $howToMeasureVidio !='')
                 //  {
                   if($sizechartblockid !='' )
