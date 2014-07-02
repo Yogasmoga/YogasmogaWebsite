@@ -113,7 +113,7 @@ AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
 //                echo 'test';
 //                echo $output;
                 //$fname = mktime();
-
+     //          die();
                 if($this->getRequest()->getParam('recurring') == "true")
                 {
                     $fname = date("M_j_Y");
@@ -191,6 +191,32 @@ AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
         $output .= "<tr style='color:#FFFFFF;'>";
         $output .= "<td style='background-color:#003366;'>Name</td><td style='background-color:#003366;'>Color</td>";
         sort($sizeArray);
+      
+      if ($sizeArray[0] != '') {
+            if (preg_match('/^\d+$/', $sizeArray[0]) && preg_match('/^\d+$/', end($sizeArray)))
+                sort($sizeArray);
+            else if (!preg_match('/^\d+$/', $sizeArray[0])) {                
+                $data = array(
+                    1 => "S",
+                    2 => "S-T",
+                    3 => "M",
+                    4 => "M-T",
+                    5 => "L",
+                    6 => "L-T",
+                    7 => "XL",
+                    8 => "XL-T",
+                    9 => "XXL",
+                    10 => "XXL-T"
+                );                
+                $result = array(); // result array
+                foreach ($sizeArray as $key => $val) { // loop
+                    if (array_search($val, $data) != false) $result[array_search($val, $data)] = $val;
+                }                
+                //$sizeArray = $result;
+                ksort($result);
+                $sizeArray = array_values($result);
+            }
+        }
         for($j = 0; $j < count($sizeArray); $j++)
         {
             if($sizeArray[$j] != "")
@@ -1760,7 +1786,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $monthNum = $datearr[0];
                 $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
                 $monthName= substr($monthName,0,3);
-                $fileName = 'inv_'.$monthName.'_'.$datearr[1].'_'.$datearr[2];
+                $fileName = 'inv_'.$monthName.'_'.(int)$datearr[1].'_'.$datearr[2];
 
                 $baseDir = Mage::getBaseDir();
                 $varDir = $baseDir.DS.'recurringreports'.DS.'inventory';
@@ -1791,7 +1817,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $monthNum = $datearr[0];
                 $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
                 $monthName= substr($monthName,0,3);
-                $fileName = 'smogi_'.$monthName.'_'.$datearr[1].'_'.$datearr[2];
+                $fileName = 'smogi_'.$monthName.'_'.(int)$datearr[1].'_'.$datearr[2];
 
                 $baseDir = Mage::getBaseDir();
                 $varDir = $baseDir.DS.'recurringreports'.DS.'smogi';
@@ -3094,7 +3120,12 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 //            {
 //                echo $rate->getCode().'455';
 //            }
-//        }
+    }
+    public function getmagentocurrenttimeAction()
+    {
+        echo "Magento Time :-".date("Y-m-d H:i:s", Mage::getModel('core/date')->timestamp(time()));
+        echo '<br/>Server Time :- '.date("Y-m-d H:i:s",time());
+
     }
     
 }
