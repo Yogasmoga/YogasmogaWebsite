@@ -607,7 +607,37 @@ if(strpos($currentUrl, "?") != false)
                 ksort($newdfimages);
                 //                echo '<pre>';print_r($newdfimages);die;
                 ?>
+                <?php if($designfeaturevidioname !='' || count($newdfimages)>1 )
+                {?>
+                    <h2>Design features</h2>
+                    <!-- heading -->
+                    <?php
+                    if($designfeaturevidioname != '' )
+                    {
+                        ?>
+                        <div class="video-design-block">
 
+                            <video width="320" height="240" controls>
+                                <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."design_features_video/".$_product->getDesignFeatureVideo(); ?>" type="video/mp4">
+
+                            </video>
+                        </div>
+                    <?php } ?>
+
+
+                    <ul class="featureList">
+                        <?php
+                        foreach($newdfimages as $ndfimg)
+                        {
+                            ?>
+                            <li><span class="ftrFig"><img alt="" src="<?php echo substr($ndfimg["url"], 1); ?>"></span><span><?php echo $ndfimg["caption"]; ?></span></li>
+                        <?php
+                        }
+                        ?>
+                        <span class="clear-fix"></span>
+
+                    </ul>
+                <? } ?>
                   <!-- featureDesign -->
 
 
