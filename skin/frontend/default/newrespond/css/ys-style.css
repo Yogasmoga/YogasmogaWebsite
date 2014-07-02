@@ -1,0 +1,54 @@
+/****First Time Pop Up Home page****/
+/*.firstdialog{z-index: 10003 !important;}*/
+.firstdialog { border: none; position: fixed; padding: 0 !important; background: transparent url("../images/popup_bg_square.png") left top repeat-x ; background-size: 100% 100%; }
+.firstdialog .ui-widget-header { border:none; background: none; font-weight: bold; }
+.firstdialog .ui-dialog-titlebar-close{right: 9.5% ; position: absolute; top: 7% ; width: auto ; height: auto ; z-index: 500;}
+.firstdialog .ui-state-hover{border: none ; background: none ; padding: 0px !important;}
+.firstdialog .ui-icon-closethick{background:url("../images/pop-close.png") no-repeat ; width: 30px; height: 31px; background-position: 0 0; display: block; font-size: 0;}
+#popup-register{font-family: itcavantgardebk; font-size: 11px;color: #fff;position: absolute; bottom: 14%; left: 22%;}
+#popup-register td{border: 0; border-bottom: 1px solid #ffffff; margin-bottom: 2px; display: block;}
+#popup-register td input{width:100%; border: none; background: transparent;color: #fff;font-family: itcavantgardebk; font-size: 11px;}
+#popup-register td label{ padding-right: 10px;}
+#popup-register .errortext{font-family: itcavantgardebk; font-size: 11px; color: #fff; height: 13px; vertical-align: top !important; min-height: 13px; border: none;}
+#popup-register .errortext div{display: none;}
+#popup-register input[type="submit"]{margin-top: 25px; cursor: pointer;}
+#map-fabrics table td img{width: 100%;}
+#map-fabrics table td{position: relative;}
+.fab_text {position: absolute; top:10%; width: 100%; text-align: center; font-family: itcavantgardebk; font-size: 30px; color: #666666}
+.fab_text h3{font-family:itcavantgardebk,gotham,Arial; font-weight: normal; font-size: 30px; color: #dd8820; text-tansform: uppercase; font-style: normal;}
+.fab_text h3 span{font-family:  ITCAvantGardeProBd,gotham-b,Arial;}
+.fab_text span.gold_divider{display: block;}
+.fab_text span.gold_divider img{width: auto !important; margin: 40px 0;}
+div.sub-fab{display: inline-block; margin: 0 15px; font-size: 28px; width:40%;}
+div.sub-fab img{width: 45% !important; display: block; margin:25px auto 0 auto;}
+.ui-widget-overlay { background: #777 50% 50% repeat !important; opacity: .5; top:0 !important; position: absolute; filter:Alpha(Opacity=50); z-index: 100 !important; }
+.firstdialog {
+    height: 385px !important;
+    margin: auto !important;
+    text-align: center !important;
+    width: 310px !important;
+}
+#signup{height:  !important; padding: 0 15px !important;}
+#signup > div {
+    text-align: center;
+}
+
+/***Fake password hack***/
+/*#o_password,tr.orig_password{display: none;}*/
+.pos-r{position: relative;}
+.dummy-placeholder{position: absolute; z-index: -999; top:4px;}
+
+
+/** media for landscape **/
+/* @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape){
+	.firstdialog { position: fixed; }
+}*/
+
+@media all and (orientation:landscape) {
+	.firstdialog { position: absolute; top: 5% !important; }
+}
+
+/** media for portrait **/
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) {
+	.firstdialog{left: 2% !important;} 
+}
