@@ -876,8 +876,8 @@ body{overflow-x:auto !important; }
 
 /***Order History***/
 #my-orders-table{border-spacing: 0; border-left: 1px solid #efefef;}
-#my-orders-table tr.last th{padding:25px 10px 20px 10px; }
-#my-orders-table tbody tr td{padding: 10px 10px 5px 10px; border-bottom: 10px solid #efefef;}
+#my-orders-table tr.last th{padding:25px 10px 20px 10px !important; }
+#my-orders-table tbody tr td{padding: 10px 10px 5px 10px !important; border-bottom: 10px solid #efefef;}
 #my-orders-table tbody tr td:nth-last-child(2){border-right: 1px solid #efefef;}
 #my-orders-table tbody tr:last-child td{border-bottom: 15px solid #efefef;}
 #my-orders-table tbody tr td:last-child{border-color: transparent;}
@@ -1058,17 +1058,19 @@ ul.checkout-cont li .listadd > li {
 }
 
 table.productzoomtable tr.zoom-prd-details > td{height: 80px !important; max-height: 80px !important;}
-.zoom-prd-det{width: 100% !important; position: absolute; left: 0; top:5px; margin:0 !important; background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/big-divider.png") no-repeat center bottom;
-background-size: 100% auto; padding-bottom: 15px; padding-left: 30px;}
+.zoom-prd-det{width: 100% !important; position: absolute; left: 0; top:5px; margin:0 !important; background:#fff url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/big-divider.png") no-repeat center bottom;
+background-size: 100% auto; padding-bottom: 15px; padding-left: 30px; z-index: 5000;}
+#zoomedproductimage{z-index: 1000;}
 table.productdetailtable div#colorcontainer{margin: 0 !important;}
 .zoomsmallimagecontainer tr{display: block !important; float: none !important;}
 .zoom-prd-det .box-seprtr.last{margin-left: 50px; width: 600px;}
-div#zoompopup div#zoomoptions{width: auto !important; margin: 0 !important; top: 40px !important; display: block  !important; right: 70px  !important;}
+div#zoompopup div#zoomoptions{width: auto !important; margin: 0 !important; top: 40px !important; display: block  !important; right: 70px  !important; z-index: 6000 !important;}
+.zoomdialog #closelightbox{z-index: 6000;}
 div#zoompopup div#zoomoptions img{padding:0 0 0 15px !important; width: 21px; height: 22px;}
 img#closelightbox{top: 40px !important; right: 28px !important; width: 21px;}
 .myheader.wishlist-header{width: 960px;}
-.wishlist-header,.referfriend-heading{ padding-bottom: 60px; padding-top: 30px; text-align: center; }
-.wishlist-header h4,.referfriend-heading h4{font-family: ITCAvantGardeProMd,gotham,Arial; width: 100%; color: #666; font-size: 30px; letter-spacing: 0.8pt; font-weight: normal; }
+.wishlist-header,.referfriend-heading,.order-sum-header{ padding-bottom: 60px; padding-top: 30px; text-align: center; }
+.wishlist-header h4,.referfriend-heading h4,.order-sum-header h4{font-family: ITCAvantGardeProMd,gotham,Arial; width: 100%; color: #666; font-size: 30px; letter-spacing: 0.8pt; font-weight: normal; }
 .header-top-bar{height:15px; background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/catalog/product/listing/line_all_product.png") no-repeat; background-position: top center; background-size: 100%; width: 100%;}
 table.tblwishlist tr.last td{border:none !important;}
 table.tblwishlist td.prprice{padding-left: 0 !important; text-align: left !important;}
@@ -1120,13 +1122,16 @@ button.btn-addtobag span{width: 151px !important; height: 42px !important; backg
 table.productimagecontainer table.smallimagecontiner td:last-child{display: none;}
 #absproductoptions table.productdetailtable div#colorcontainer>div:nth-child(7n){margin-right: 0;}
 table.selectedcolor{margin-bottom: 5px;}
-.prd-add-to-wish{position: relative;}
+.prd-add-to-wish{position: relative; text-align: right;}
+.prd-add-to-wish .wishlist{float: none !important; width: 100%; margin-left: auto;}
 .prd-add-to-wish .wishlist-link{position: absolute; bottom: 0; margin-bottom: 7px; right: 0;}
+table.smogibucks .earnbucks{width: 100%;}
 p.prd-read-reviews a,.com-a-prd-links{font-family: gothambook !important; text-transform: initial !important;}
 
 
 div.men-size-chart tr:first-child td:first-child{width: 26%;}
 div.men-size-chart table tr:first-child td{width: 15%;}
+.edit-dash-address{position: relative;}
 .edit-dash-address .sectionheader{font-family: ITCAvantGardeProMd !important; color: #666 !important; font-size: 16px !important;}
 .left-col{width: 49%; float: left; padding: 0 !important;}
 .right-col{width: 49%; float: right; padding: 0 !important;}
@@ -1185,3 +1190,7 @@ div.men-size-chart table tr:first-child td{width: 15%;}
     text-transform: uppercase;
     width: 80%;
 }
+
+/***View order modi***/
+body.sales-order-view #my-orders-table{border-left: none;}
+body.sales-order-view #my-orders-table thead tr th:first-child, body.sales-order-view #my-orders-table tbody tr td:first-child{border-left:1px solid #efefef;}

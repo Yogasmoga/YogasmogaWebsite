@@ -379,12 +379,16 @@ function changeColor(clr)
         if(jQuery("table.smallimagecontiner td").length > 0)
         {
             if(jQuery("table.tdbigimagecontainer img").length > 0)
-            {
+            {                
+                setTimeout(function(){
+                    setImageContheightPDP();
+                },1000);
                 jQuery("table.tdbigimagecontainer img").attr("src", jQuery("table.smallimagecontiner td:first").attr("bigimageurl"));
                 jQuery("table.tdbigimagecontainer img").attr("alt", jQuery("table.smallimagecontiner td:first").find('img:first').attr("alt"));
             }
-            else
-                jQuery("table.tdbigimagecontainer td").html("<img class='shareit' src='" + jQuery("table.smallimagecontiner td:first").attr("bigimageurl") + "' alt='" + jQuery("table.smallimagecontiner td:first").find('img:first').attr("alt") + "'>");
+            else{
+                jQuery("table.tdbigimagecontainer td").html("<img class='shareit' src='" + jQuery("table.smallimagecontiner td:first").attr("bigimageurl") + "' alt='" + jQuery("table.smallimagecontiner td:first").find('img:first').attr("alt") + "'>");                
+            }
             _curshareimgurl = jQuery("table.smallimagecontiner td:first").attr("bigimageurl");
         }
         jQuery("table.smallimagecontiner td:first").addClass("selectedimage");
@@ -472,3 +476,7 @@ function addtocart()
         }
     }); 
 }
+function setImageContheightPDP(){
+        var pdpimagecontH = jQuery("table.tdbigimagecontainer img").height();
+        jQuery("table.productimagecontainer").parent(".upper-container").css("min-height", pdpimagecontH + 70);
+    }
