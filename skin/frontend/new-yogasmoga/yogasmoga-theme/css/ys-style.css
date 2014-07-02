@@ -1005,13 +1005,13 @@ ul.checkout-cont li .listadd > li {
 	display: block !important;
 }
 .bagerrormsg {
-    background: #6d292d;
+    background: #D90D3D;
     color: #fff;
     font-family: helveticaoblique;
     font-size: 13px;
     height: 163px;
     margin: auto;
-    opacity: 0.7;
+    opacity: 0.9;
 /*    padding-top: 40%;*/
     position: absolute;
     width: 100%;
