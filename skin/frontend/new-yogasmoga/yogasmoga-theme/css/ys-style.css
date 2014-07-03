@@ -794,7 +794,7 @@ body{overflow-x:auto !important; }
 .clear:after {clear: both;}
 
 /** ShoppingBag **/
-.empty-cart{display: inline-block; font: 16px gothamlight; margin: 30px auto; text-transform: uppercase;}
+.empty-cart{display: inline-block; font: 11px gothamlight; margin: 30px auto; text-transform: uppercase;}
 .adddields span.error-count {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     border: 0 none;

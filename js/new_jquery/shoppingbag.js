@@ -760,7 +760,7 @@ function redeemgiftcardcode()
             redeemvalue = 0;
         }
     }
-
+    _isClickRemoveGiftYS=1;
 
 
     if(window.location.href.indexOf('https://') >= 0)
@@ -770,7 +770,7 @@ function redeemgiftcardcode()
     var url = homeUrl + 'mynewtheme/giftofys/giftcardactive';
     if(_usesecureurl)
         url = securehomeUrl + 'mynewtheme/giftofys/giftcardactive';
-    jQuery(".giftcarloader").empty().append("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
+    if(redeemvalue == 1) jQuery(".giftcarloader").empty().append("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
     jQuery.ajax({
         url : url,
         type : 'POST',
