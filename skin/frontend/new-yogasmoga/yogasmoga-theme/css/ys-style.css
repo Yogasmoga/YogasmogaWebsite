@@ -103,7 +103,7 @@ p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight
 .flex-direction-nav .flex-next{background: url("../images/homepage/next-slide.png") no-repeat bottom; background-size:100% 100%; width:24px; height: 46px;}
 
 /****Side bar****/
-div.side-menu-bar, .side-menu-bar2{ width:270px; vertical-align:top;min-height: 300px; position: fixed;}
+div.side-menu-bar, .side-menu-bar2{ width:270px; vertical-align:top; min-height: 300px; position: fixed;}
 div.side-menu-bar ul, .side-menu-bar2 ul, .menu-bar ul{padding: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-transform: uppercase; font:14px/24px gothambold; color: #58595b;}
 div.side-menu-bar ul li a span.arr, .side-menu-bar2 ul li a span.arr, .menu-bar ul li a span.arr{visibility: hidden;}
@@ -870,6 +870,8 @@ body{overflow-x:auto !important; }
 .myaccountdashboard a{font-size: 14px !important; color: #2f2f2f !important; font-weight: normal; border-bottom: 1px solid #d90d3d; margin-left:8px; padding: 0 !important; text-decoration: none !important;}
 .myaccountdashboard .sectionheader{font-size: 14px !important; margin-bottom: 5px !important;}
 .myaccountdashboard{width: auto !important;}
+body.customer-address-index .myaccountdashboard .sectionheader{display: none;}
+body.customer-address-index .myaccountdashboard .customeraddress td .subsectionheader{font-family: gothambold; color: #666; font-size: 12px !important; margin-bottom: 20px;}
 .gift-card-credit{margin-top: 60px;}
 .address-info{font-size: 14px; margin-top: 100px;}
 .address-info .add-heading{display: block; margin-bottom: 15px;}
@@ -1077,7 +1079,7 @@ div#zoompopup div#zoomoptions img{padding:0 0 0 15px !important; width: 21px; he
 img#closelightbox{top: 40px !important; right: 28px !important; width: 21px;}
 .myheader.wishlist-header{width: 960px;}
 .wishlist-header,.referfriend-heading,.order-sum-header{ padding-bottom: 60px; padding-top: 30px; text-align: center; }
-.wishlist-header h4,.referfriend-heading h4,.order-sum-header h4{font-family: ITCAvantGardeProMd,gotham,Arial; width: 100%; color: #666; font-size: 30px; letter-spacing: 0.8pt; font-weight: normal; }
+.wishlist-header h4,.referfriend-heading h4,.order-sum-header h4{font-family: ITCAvantGardeProMd,gotham,Arial; width: 100%; color: #666; font-size: 31px; letter-spacing: 0.8pt; font-weight: normal; }
 .header-top-bar{height:15px; background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/catalog/product/listing/line_all_product.png") no-repeat; background-position: top center; background-size: 100%; width: 100%;}
 table.tblwishlist tr.last td{border:none !important;}
 table.tblwishlist td.prprice{padding-left: 0 !important; text-align: left !important;}
@@ -1196,3 +1198,16 @@ div.men-size-chart table tr:first-child td{width: 15%;}
 /***View order modi***/
 body.sales-order-view #my-orders-table{border-left: none;}
 body.sales-order-view #my-orders-table thead tr th:first-child, body.sales-order-view #my-orders-table tbody tr td:first-child{border-left:1px solid #efefef;}
+/****/
+
+.2-columns-wrapper .top-divider{margin-top: 0 !important;}
+#wishlist-view-form .globalmsg{font-family: ITCAvantGardeProMd !important; color: #666 !important; font-weight: normal !important;}
+#wishlist-view-form p.wishlist-empty{font-family: gothambook !important; }
+.continueshopppingbtn{color: #fff; font-style: normal; font-variant: normal; font-weight: normal; font-size: 12px; line-height: normal; font-family: gothambold; text-transform: uppercase; background-image: url(../images/shopping-cart/grn-btn.png) !important; width: 184px !important; height: 48px !important;}
+.change-password-label,.email-pref label{color: #666666;}
+body.customer-address-index .myaccountdashboard .customeraddress th,
+body.customer-address-index .myaccountdashboard .customeraddress td,
+body.customer-address-index .myaccountdashboard .customeraddress a.addressLink,
+body.customer-address-index .myaccountdashboard a
+{font-family: gothambook; font-size: 13px !important; color: #666 !important; text-transform: capitalize;}
+body.customer-address-index .myaccountdashboard .customeraddress td{padding-top: 0 !important;}

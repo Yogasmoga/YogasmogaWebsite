@@ -100,7 +100,7 @@
     <tr class="customeraddress">
 		<td>
             <div class="subsectionheader">additional addresses
-            <a href="<?php echo $this->getAddAddressUrl() ?>">Add</a></div>
+            <a class="addtl-add-additon" href="<?php echo $this->getAddAddressUrl() ?>">Add</a></div>
 			<table class="address-table">
 				<colgroup>
 					<col width="150"/>
@@ -116,7 +116,7 @@
 				<tr>
 					<?php echo '<td>'.$adrs->getData('firstname').' '.$_address->getData('lastname').'</td>'; ?>
 					<td>
-						<div class="right"><a href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>"><?php echo $this->__('Edit') ?></a> <span class="separator">|</span> <a style="padding-left: 0;" href="#" onclick="return deleteAddress('<?php echo $_address->getId() ?>');"><?php echo $this->__('Remove') ?></a></div>
+						<div class="right"><a class="addtl-add-edit" href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>"><?php echo $this->__('Edit') ?></a> <span class="separator">|</span> <a class="addtl-add-remove" style="padding-left: 0;" href="#" onclick="return deleteAddress('<?php echo $_address->getId() ?>');"><?php echo $this->__('Remove') ?></a></div>
 						<p><?php echo $this->getAddressHtml($_address) ?></p>
 					</td>
 				</tr>
