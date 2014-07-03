@@ -352,7 +352,8 @@ div#ordersummary table td.divider, div#shippingsummary table td.divider
 }
 div.addressselector
 {
-    margin-bottom : 30px;
+    margin-bottom : 20px;
+    display: none;
 }
 #stripe-update-payment
 {
@@ -684,4 +685,33 @@ select#billing-address-select{
     min-height: inherit;
     padding: 7px 0;
     width: 100%;
+}
+
+#co-billing-form input.checkoutcontinuebtn[type="submit"] {
+    display: none !important;
+}
+
+.billingAdd a {
+    color: #58595b;
+    font: 11px/17px gothambook;
+    height: 33px;
+    margin: 0;
+    padding: 1px 0 0 42px;
+    text-align: left;
+    text-transform: uppercase;
+    width: auto;
+}
+
+.billingAdd a span{
+    text-transform: none;
+}
+
+.billingAdd {
+    display: inline-block;
+    width: 100%;
+    margin: 20px 0;
+}
+
+#cobillingaddress{
+    display: inline-block;
 }

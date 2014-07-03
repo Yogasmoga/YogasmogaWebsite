@@ -206,7 +206,7 @@
                     <?php if($this->isDefaultBilling()): ?>
                         <strong style="font-family:gothambook; font-size: 13px;"><?php echo $this->__('This is the Default Billing Address<br/>') ?></strong>
                     <?php elseif($this->canSetAsDefaultBilling()): ?>
-                        <table>
+                        <table style="margin-bottom: 10px;">
                             <tr class="no-bg def-address">
                                 <!-- <td>
                                     <input type="checkbox" id="primary_billing" name="default_billing" value="1" class="checkbox" /> 
@@ -242,7 +242,7 @@
          <?php /*
          </div>
          */ ?>
-         <button style="margin-top : 70px;" type="submit" class="savebtn spbutton custombtn" imageurl="<?php echo $this->getSkinUrl('images/customer/save_button_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl("images/customer/save_button_on.png"); ?>"></button>
+         <button style="position: absolute; right: 25px; bottom: 40px;" type="submit" class="savebtn spbutton custombtn" imageurl="<?php echo $this->getSkinUrl('images/save-grn-btn.jpg'); ?>" downimageurl="<?php echo $this->getSkinUrl("images/save-grn-btn.jpg"); ?>"></button>
         <div class="loginerrormsg errormsg"><?php echo strip_tags($this->getMessagesBlock()->getGroupedHtml()); ?></div>
     </form>
 </div>

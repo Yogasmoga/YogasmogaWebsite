@@ -36,6 +36,7 @@ jQuery(document).ready(function($){
     clearEmptycaptions();
     
     $("table.tdbigimagecontainer img").live("click", function(){
+        console.log($(".zoom-prd-det").height());
         if(!_canzoomimages)
             return;
         jQuery("#productdetailpopup").html("<table style='width:100%;height : 100%;'><tr><td style='text-align:center;vertical-align:middle;'>Loading. .</td></tr></table>");
@@ -460,10 +461,9 @@ function InitializeZoomPopup()
             jQuery("div.wrapper").removeClass('overflowhidden');
             jQuery("div.wrapper, div.ui-widget-overlay").css('height', 'auto');
         }
-    });
-    console.log(jQuery("body").find(".zoom-prd-det").height());
+    });    
     jQuery("div#zoompopup table.productzoomtable>tbody>tr>td").height(_winH + _headerHeight);
-    jQuery("div#zoompopup table.productzoomtable>tbody>tr>td").css('max-height', (_winH + _headerHeight) + 'px');
+    jQuery("div#zoompopup table.productzoomtable>tbody>tr>td").css('max-height', (_winH + _headerHeight) + 'px');    
     jQuery("div#zoompopup div#zoomoptions").css('top', (((_winH + _headerHeight) - jQuery("div#zoompopup div#zoomoptions").height()) / 2) + 'px');
     try{
        jQuery('img#zoomedimage').smoothZoom('resize', {width: (_winW - 250), height: (_winH + _headerHeight)});    
