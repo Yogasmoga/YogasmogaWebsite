@@ -243,9 +243,10 @@ a.forgot-link:hover
 }
 .savebtn
 {
-    background-image : url('../images/customer/save_button_off.png');
-    width : 89px;
-    height : 34px;
+    /*background-image : url('../images/customer/save_button_off.png');*/
+    background-image : url('../images/save-grn-btn.jpg');    
+    width : 87px;
+    height : 43px;
 }
 #edit-accountinfo table.inputtable
 {

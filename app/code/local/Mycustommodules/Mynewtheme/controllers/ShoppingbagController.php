@@ -798,7 +798,12 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $checkpromoapplied = false;
         $checkgiftapplied = false; 
         $customerId = Mage::getModel('customer/session')->getCustomerId();
-        if($customerId) $continuelink=Mage::getBaseUrl().'checkout/onepage';
+        if($customerId) {
+            $continuelink=Mage::getBaseUrl().'checkout/onepage';
+            $getcustomerpoints = $this->getCustomerPoints($customerId);
+            $getsmogipointscurrentlyuserd = $this->getPointsCurrentlyUsed();
+            $showedpoints = $getcustomerpoints - $getsmogipointscurrentlyuserd;
+        }
         else $continuelink="javascript:void(0);";
         $html = '
     <!-- ContinueShoppingBtn -->
@@ -899,15 +904,16 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         </li>';
             $checkgiftapplied = true;            
         }
-
-
+        if($checksmogiapplied == '1' && $showedpoints < 1) $usesmogi="<p class='c-align'>You can't use other codes with SMOGI Bucks.</p>";
+        else if($checksmogiapplied != '1' && $showedpoints < 1) $usesmogi='';
+        else $usesmogi='<p class="c-align">Use your SMOGI Bucks for this purchase</p>';
                  $html .=  '<li>
                             <span class="f-left">Shipping: Free</span>
                             <span class="f-right capstxt">Free</span>
                         </li>
                     </ul>
                     <!-- listItems -->
-                    <p class="c-align">Use your SMOGI Bucks for this purchase</p>
+                    '.$usesmogi.'
                     <!-- addItem Input -->
                     <div class="adddields">
                         <form>';
@@ -919,9 +925,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         else{
 
 
-            $getcustomerpoints = $this->getCustomerPoints($customerId);
-            $getsmogipointscurrentlyuserd = $this->getPointsCurrentlyUsed();
-            $showedpoints = $getcustomerpoints - $getsmogipointscurrentlyuserd;
+            
             $gryclasssmogi = "";
             $gryclasspromo = "";
             $gryclassgift = "";
@@ -996,7 +1000,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     $html .='  <label><input class="'.$gryclassgift.'" type="text" name="giftcartcode" id="giftcartcode" placeholder="Add a gift card code" '.$applygiftdisable.'/><span class="'.$applygiftcard.'">+</span><span class="error-count"></span></label>';
                     if(Mage::getSingleton("giftcards/session")->getActive() == "1")
                     {
-                        $html .='<div> <input type="checkbox" value="1" checked="checked" class="giftcardcheckbox" '.$checkboxapplied.'/><p>Use your Gift Card balance: $'.$giftofysbalance.' available.</p></div>';
+                      //  $html .='<div> <input type="checkbox" value="1" checked="checked" class="giftcardcheckbox" '.$checkboxapplied.'/><p>Use your Gift Card balance: $'.$giftofysbalance.' available.</p></div>';
                     }
                     else
                     {
@@ -1004,9 +1008,6 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     }
                     $html .='<div class="giftcarloader" style="clear: both;text-align:left;position:text-align: left; width: 100%;"></div>';
                 }
-
-
-
                 else
                 {
                     $html .=' <label><input  class="'.$gryclassgift.'" type="text" name="giftcartcode" id="giftcartcode" placeholder="Add a gift card code" '.$applygiftdisable.' /><span class="'.$applygiftcard.'">+</span><span class="error-count"></span></label>

@@ -501,6 +501,7 @@ function checkpaymentmethod()
     {
         jQuery("label[for='p_method_paypal_express'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/paypaltabovr.png");
         jQuery("ul#payment_form_paypal_express").show();
+        jQuery(".billingAdd").hide();
         jQuery("label[for='p_method_stripe'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/credittab.png");
         jQuery("div#stripe-payment-details,a#stripe-update-payment,div#change-stripe-detail").hide(); 
     }
@@ -508,6 +509,7 @@ function checkpaymentmethod()
     if(jQuery("input[type='radio'][value='stripe']").is(':checked'))
     {
             jQuery("ul#payment_form_paypal_express").hide();
+            jQuery(".billingAdd").show();
         jQuery("label[for='p_method_stripe'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/credittabovr.png");
             jQuery("label[for='p_method_paypal_express'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/paypaltab.png");            
             jQuery("a#stripe-update-payment").show();
@@ -918,7 +920,8 @@ function saveShippingMethod()
         return;
     _ischeckoutprocessing = true;
     jQuery("#co-shippingmethod-form input[type=submit]").hide();
-    jQuery("#co-shippingmethod-form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/new-loader.gif' />");
+    jQuery("#co-shippingmethod-form #cobillingaddress").after("<img id='procImg' src='" + skinUrl + "images/new-loader.gif' />");
+    jQuery("#co-billing-form #procImg").remove();
     var url = homeUrl + 'checkout/onepage/saveShippingMethod';
     if(_usesecureurl)
         url = securehomeUrl + 'checkout/onepage/saveShippingMethod';
