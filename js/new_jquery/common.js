@@ -6,6 +6,14 @@ jQuery(document).ready(function($){
     madeinusa();
     $(window).resize();
 
+    $(window).resize(function(){
+        setImageContheightPDP();
+    });    
+    function setImageContheightPDP(){
+        var pdpimagecontH = $("table.tdbigimagecontainer").find("img.shareit").height();
+        $("table.productimagecontainer").parent(".upper-container").css("min-height", pdpimagecontH + 70);
+    }
+
     function madeinusa(){
         var block3H = $(".structure .block3").height();
         var usatxt = $(".madeinusa-txt").height();
@@ -16,6 +24,7 @@ jQuery(document).ready(function($){
         $(".madeinusa-txt").css("top", storeF);
 
         $(window).resize(function(){
+             console.log($("table.tdbigimagecontainer").find("img.shareit").height());
             var block3H = $(".structure .block3").height();
             var usatxt = $(".madeinusa-txt").height();
 

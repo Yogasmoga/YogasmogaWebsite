@@ -548,27 +548,29 @@ if($_product->getAttributeText('canzoomimage') == "yes")
 <!-- ProductImageContainer -->
 <div class="wdth65" style="position: relative;">
     <!-- ImageGallery -->
-    <table class="productimagecontainer f-left">
-        <tr>
-            <td>
-                <div class="thumb-imgs">
-                    <table class="smallimagecontiner" width="100%">
-                        <tr></tr>
-                    </table>
-                </div>
-            </td>
-            <td>
-                <div class="show-prodImg">
-                    <table class="tdbigimagecontainer">
-                        <tr>
-                            <td></td>
-                        </tr>
-                    </table>
-                </div>
-            </td>
+    <div class="upper-container">
+        <table class="productimagecontainer f-left">
+            <tr>
+                <td>
+                    <div class="thumb-imgs">
+                        <table class="smallimagecontiner" width="100%">
+                            <tr></tr>
+                        </table>
+                    </div>
+                </td>
+                <td>
+                    <div class="show-prodImg">
+                        <table class="tdbigimagecontainer">
+                            <tr>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
 
-        </tr>
-    </table>
+            </tr>
+        </table>
+    </div>
     <!-- ImageGallery -->
     <!-- featureDesign -->
     <!-- heading -->
@@ -955,7 +957,6 @@ if($_product->getAttributeText('canzoomimage') == "yes")
     </tr>
 </table>
 <!-- SMOGIBUCKS -->
-
 <!-- Desicription -->
 <div class="box-desc-dvdr">
     <p style="margin-bottom: 15px;"><strong>Need help?</strong> <a class="chatlink" href="#">chat with us</a><span class="online"><span></span>Online now</span></p>
@@ -966,9 +967,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
     <div class="shortdesc"><?php echo $_product->getDescription(); ?> </div>
     <?php }else{ $str = $_product->getDescription();
         $firststr = substr($str,0,200);
-        $secondstr = substr($str,200,strlen($str));
-
-
+        $secondstr = substr($str,200,strlen($str));               
 
         ?>
         <div class="shortdesc"><span><?php echo $firststr ; ?></span><span class = "sec-desc" ><?php echo $secondstr ; ?></span><span class="dot">...</span>  <p class="readmore" style="margin: 0; cursor:pointer;"><span id="more">Read more</span><span id="less" class="dnone">Read less</span></p>  </div>
@@ -976,12 +975,6 @@ if($_product->getAttributeText('canzoomimage') == "yes")
     <!-- description -->
 </div>
 <!--Description -->
-
-<!-- readReviews -->
-<div class="box-desc-dvdr">
-    <p style="margin:0;" class="block-link c-align prd-read-reviews"><a href="#">Read all reviews</a></p>
-</div>
-<!-- readreviews -->
 
 <!-- completeLook -->
 <!-- heading -->
@@ -1050,19 +1043,17 @@ while ($row = $readresult->fetch() ) {
 
             <?php
             }
-
-
-
-
-
             ?>
 
         <?php
         }
     }
-
+    ?>
+    </ul>
+    <?php
     }
     ?>
+
 
     <!-- completeLook -->
     <!-- prodSimilar -->
@@ -1086,13 +1077,6 @@ while ($row = $readresult->fetch() ) {
 </div>
 <!-- FitAndFabricDetails -->
 
-<!-- CustomerReviews -->
-<div class="block-elm btm-devider-big reviews-cont">
-    <div class="reviewTxt">"Customer review caption" - <span>Lorem ipsum<br>lorem ipsum dolor sit amet.</span></div>
-    <p class="block-link prd-read-reviews" style="margin-top: 15px;"><a href="#">Read more reviews</a></p>
-</div>
-<!-- CustomerReviews -->
-</div>
 </div>
 <!-- ProductPage -->
 <?php

@@ -27,13 +27,18 @@
 <?php /** @var $this Mage_Sales_Block_Order_Info */ ?>
 <?php $_order = $this->getOrder() ?>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-<div class="page-title title-buttons">
+<div class="header-top-bar"></div>
+<div class="order-sum-header">
+        <h4>ORDER SUMMARY</h4>
+        <!-- <span class="wishlist-desc">LOREM IPSUM DOLOR SIT AMET CONSECTETUER ADIPISCING ELIT.</span> -->
+    </div>
+<!-- <div class="page-title title-buttons">
     <?php /*
     <h1><?php echo $this->__('Order #%s - %s', $_order->getRealOrderId(), $_order->getStatusLabel()) ?></h1>
     */ ?>
     <h1>ORDER SUMMARY</h1>
     <?php //echo $this->getChildHtml('buttons') ?>
-</div>
+</div> -->
 <?php /*
 <?php echo $this->getStatusHistoryRssUrl($_order) ?>
 <dl class="order-info">
