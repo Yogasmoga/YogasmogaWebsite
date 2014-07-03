@@ -146,6 +146,11 @@ jQuery(document).ready(function($){
         $('html,body').animate({scrollTop: aTag.offset().top},'slow');
     }
 
+    function scrollToAnchorNew(name){
+        var aTag = $("a[name='"+ name +"']");
+        $('html,body').animate({'scrollTop' : aTag},'slow');
+    }
+
     $(".side-menu-bar2 li[data-id='get-smogi-bucks'], .main-menu2 li[data-id='get-smogi-bucks']").click(function() {
        scrollToAnchor('get-smogi-bucks');
     });
@@ -163,7 +168,7 @@ jQuery(document).ready(function($){
     });
 
     $(".howdoesitfitlink .block-link a#how-does-it-fit").click(function() {
-       scrollToAnchor('how-does-it-fit');
+        scrollToAnchorNew('how-does-it-fit');
     });
 
 

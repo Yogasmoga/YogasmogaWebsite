@@ -1398,11 +1398,11 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         if(($customerId = Mage::getSingleton('customer/session')->getCustomerId())&&($_in_wishlist))
                         {
                             ?>
-                            <p class="" style="position: absolute; bottom: 0; margin-bottom: 4px; right:0;"><a onlick="javascript:void(0)" >ADDED TO WISH LIST</a></p>
+                            <p class="" style="margin-bottom: 0px; "><a onlick="javascript:void(0)" >ADDED TO WISH LIST</a></p>
                         <?php
                         }else{
                             ?>
-                            <p class="wishlist-link"><a class="" id="<?php echo $productid;?>" href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productid; ?>/">ADD TO WISH LIST +</a></p>
+                            <p class="wishlist-link" style="margin-bottom: 0;"><a style="border: 0 none;" class="" id="<?php echo $productid;?>" href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productid; ?>/">ADD TO WISH LIST +</a></p>
                         <?php } ?>
                     </div>
                 </td>
