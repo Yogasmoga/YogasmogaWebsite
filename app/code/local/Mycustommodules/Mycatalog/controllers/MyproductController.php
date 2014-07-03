@@ -1385,7 +1385,25 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             <tr>
                 <td>
                     <div class="addtowishlist">
-                        <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productid; ?>/">ADD TO WISHLIST +</a>
+                        <!--<a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productid; ?>/">ADD TO WISHLIST +</a>-->
+                        <?php
+                        $_in_wishlist = false;
+                        foreach (Mage::helper('wishlist')->getWishlistItemCollection() as $_wishlist_item){
+                            if($productid == $_wishlist_item->getProduct()->getId()){
+                                $_in_wishlist = true;
+                                break;
+                            }
+                        }
+
+                        if(($customerId = Mage::getSingleton('customer/session')->getCustomerId())&&($_in_wishlist))
+                        {
+                            ?>
+                            <p class="" style="position: absolute; bottom: 0; margin-bottom: 4px; right:0;"><a onlick="javascript:void(0)" >ADDED TO WISH LIST</a></p>
+                        <?php
+                        }else{
+                            ?>
+                            <p class="wishlist-link"><a class="" id="<?php echo $productid;?>" href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productid; ?>/">ADD TO WISH LIST +</a></p>
+                        <?php } ?>
                     </div>
                 </td>
                 <td class="tdviewfulldetails">
