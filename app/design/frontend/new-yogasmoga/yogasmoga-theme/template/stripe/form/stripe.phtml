@@ -157,8 +157,8 @@
 		<input type="hidden" name="payment[stripe_customer_id]" value="" id="<?php echo $_code?>_stripe_customer_id" /> 
 	<?php endif; ?>
     <?php if ($this->getIsStripeCustomer()) : ?>
-        <div id="stripe-update-payment-holder" class="checkBCre">
-    	<a id="stripe-update-payment" class="use"><?php echo $this->__("Change payment information") ?></a>
+        <div id="stripe-update-payment-holder">
+    	<a id="stripe-update-payment" class="use checkBCre"><?php echo $this->__("Change payment information") ?></a>
         </div>
     <?php endif; ?>
     <?php /*

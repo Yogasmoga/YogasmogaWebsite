@@ -36,13 +36,23 @@
 <?php foreach ($this->getItems() as $_item){ 
         $qry = parse_url($_item->getUrl(), PHP_URL_QUERY);
         parse_str($qry, $params);
+        /*
+        ?>
+        <script type="text/javascript">
+            console.log(<?php echo $_item->getUrl(); ?>);
+        </script>
+        <?php
+        */
         //print_r($params);
         $searchtype = "";
         $searchvalue = "";
         foreach($params as $key=>$value)
         {
-            $searchtype = $key;
-            $searchvalue = $value;
+            if($key == "cat")
+            {
+                $searchtype = $key;
+                $searchvalue = $value;   
+            }
         }
         $hassubcategory = false;
         if($searchtype=="cat")

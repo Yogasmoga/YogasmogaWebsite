@@ -6,7 +6,7 @@
     width : 237px;
 }
 #billing\:region_id {
-    width: 116px;
+    width: 72px;
 }
 #billing-password
 {
@@ -25,9 +25,10 @@
     background-position: center 0;
     height: 46px;
     margin: auto;
-    width: 304px;
+    width: 100%;
     border: 0 none;
     outline: 0 none;
+    background-size: 100% auto;
 }
 td.checkoutstepsholder
 {
@@ -267,19 +268,24 @@ table.co-ov-table tfoot tr.last td
 {
     border-top : 1px dotted black;
 }
-#checkout-submit
-{
+
+#checkout-submit {
     height: 43px;
     margin: 40px auto auto;
-    width: 100%;
+    max-width: 80%;
+    min-width: 50%;
+    width: 304px;
 }
 div#coshipping, div#cobilling
 {
     /*padding : 0 111px;*/
 }
-div#coreview
-{
-    /*padding : 0 91px;*/
+
+div#coreview {
+    margin: auto;
+    max-width: 80%;
+    min-width: 50%;
+    width: 304px;
 }
 div#coreview div.checkoutstepheader
 {
@@ -301,7 +307,7 @@ div#ordersummary {
     font: 14px/28px gothambook;
     margin: auto;
     text-align: left;
-    width: 270px;
+    width: ;
     min-height: 180px;
 }
 div#ordersummary span.anchor, div#shippingsummary span.anchor
@@ -346,7 +352,8 @@ div#ordersummary table td.divider, div#shippingsummary table td.divider
 }
 div.addressselector
 {
-    margin-bottom : 30px;
+    margin-bottom : 20px;
+    display: none;
 }
 #stripe-update-payment
 {
@@ -528,7 +535,7 @@ body.checkout-onepage-index li.form-alt {
     background: none repeat scroll 0 0 #ededed;
     display: block;
     font: 15px/24px gothammedium;
-    margin: -16px auto 30px;
+    margin: -16px auto 25px;
     min-height: inherit;
     padding: 20px 0;
     width: 99.7%;
@@ -563,16 +570,16 @@ body.checkout-onepage-index #change-stripe-detail, body.checkout-onepage-index #
 
 #stripe-payment-details{
     height: 110px;
-    margin: auto auto 30px;
+    margin: auto;
     padding: 85px 0 0;
     position: relative;
     text-align: center;
     background: url("../images/checkout/creditblck.jpg") no-repeat top left;
-    background-size: 100% auto;
+    background-size: 100% 100%;
 }
 
 #payment_form_stripe > div {
-    margin: 0 0 30px;
+    margin:0;
 }
 
 .cardType {
@@ -615,7 +622,7 @@ table.inputtable tr:first-child td{
 
 .crebg{
     background: url("../images/checkout/creditbg.png") no-repeat top left;
-    height: 197px;
+    height: auto;
     margin: 0;
     padding: 65px 20px 0;
     width: 100%;
@@ -654,8 +661,11 @@ table.inputtable {
     display: block;
     height: 33px;
 }
-.paymentmethoddiv img{
+
+.paymentmethoddiv img {
     cursor: pointer;
+    max-width: 100%;
+    width: 143px;
 }
 
 .nopay{
@@ -675,4 +685,33 @@ select#billing-address-select{
     min-height: inherit;
     padding: 7px 0;
     width: 100%;
+}
+
+#co-billing-form input.checkoutcontinuebtn[type="submit"] {
+    display: none !important;
+}
+
+.billingAdd a {
+    color: #58595b;
+    font: 11px/17px gothambook;
+    height: 33px;
+    margin: 0;
+    padding: 1px 0 0 42px;
+    text-align: left;
+    text-transform: uppercase;
+    width: auto;
+}
+
+.billingAdd a span{
+    text-transform: none;
+}
+
+.billingAdd {
+    display: inline-block;
+    width: 100%;
+    margin: 20px 0;
+}
+
+#cobillingaddress{
+    display: inline-block;
 }

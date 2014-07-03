@@ -1,4 +1,4 @@
-http://www.templatemonster.com/help/magento-framework-how-to-addchange-product-video.html/* Layout ================================================================================ */
+/*http://www.templatemonster.com/help/magento-framework-how-to-addchange-product-video.html/* Layout ================================================================================ */
 .wrapper { min-width:100%;  margin:0 auto;}
 .page {display:block; background: #fff; z-index: 2; position: relative;}
 .page-print { background:#fff; padding:25px 30px; text-align:left; }
@@ -438,7 +438,7 @@ table.box-desc-dvdr.smogibucks{margin-top: 20px; margin-bottom: 25px;}
 .adddields label {float: left; min-height: 40px; width: 100%;}
 .adddields input {background: #fff; text-transform: capitalize; border: 0 none; display: block; float: left; font: italic 12px gothambook; height: 20px; margin: 0; padding: 5px 12px; width: 84%;}
 .adddields input.gry{background: #d3d3d3; cursor: default; color: #000;}
-.adddields span {background: 0 #eeefef; border: 1px solid #B3B3B3; float: left; height: auto; padding: 7px 4px 6px; width: 6%;}
+.adddields span {background: 0 #eeefef; border: 1px solid #B3B3B3; float: left; height: auto; padding: 7px 4px 6px; width: 6%; cursor: pointer;}
 .addedItem {background: #fff; float: right; width: 99.5%;margin-bottom: 10px;}
 .addedItem .similarProdList {font-size: 11px; width: 90%; text-transform: uppercase;}
 .addedItem .similarProdList > li {border-bottom: 1px solid #E6E6E6; margin: 0; padding: 10px 0; position: relative;}
@@ -480,7 +480,8 @@ span.address {
     margin: auto auto 20px;
     padding: 8px;
     text-align: left;
-    width: 94%;
+    width: 93.5%;
+    cursor: pointer;
 }
 ul.checkout-cont li > .selectAddress ul li,
 ul.checkout-cont li > .shippingOption ul li {
@@ -517,7 +518,7 @@ ul.checkout-cont li > .selectAddress ul li span{
     text-transform: uppercase;
 }
 .showShippingOpt, .showUpdateAdd{display:none; border-top: 1px solid #9f9f9f; margin: 8px 0 0; padding: 8px 0 0;}
-.showUpaddnew, .showUpadd, .showCreOpt, .showShpOpt{background: url('../images/arwbtm.jpg') no-repeat top left; width:17px; height:13px; float:right; margin:5px 0 0; cursor:pointer;}
+.showUpaddnew, .showUpadd, .showCreOpt, .showShpOpt{background: url('../images/arwbtm.jpg') no-repeat top left; background-size: 100% auto; width:15px; height:13px; float:right; margin:5px 0 0; cursor:pointer;}
 .showUpadd.reverse, .showShpOpt.reverse{background: url('../images/arwtop.jpg') no-repeat top left;}
 .continueBtn{
 	background: url('../images/contBtn.jpg') no-repeat top left;
@@ -596,7 +597,7 @@ span.country {
 #checkout-shipping-form table.inputtable.wdth20,
 #co-billing-form table.inputtable.wdth20 {
     float: left;
-    width: 19% !important;
+    width: 22% !important;
 }
 #checkout-shipping-form table.inputtable.wdth20 .inputholder > input,
 #co-billing-form table.inputtable.wdth20 .inputholder > input {
@@ -606,7 +607,7 @@ span.country {
 #checkout-shipping-form table.inputtable.wdth30,
 #co-billing-form table.inputtable.wdth30 {
     float: left;
-    margin: 0 6px;
+    margin: 0 0;
     width: 26% !important;
 }
 #shipping\:region_id {
@@ -677,6 +678,10 @@ span.country {
 .cntn-scroll{position: absolute;}
 
 @media only screen and (max-width : 1024px) {
+#stripe-payment-details span{font: 17px gothambooklight !important;}
+.cardType {
+    bottom: -70px !important;
+}
 .fitDetail > div.tble, .fitDetail > div.video-box{max-width: 100%; float: left; margin: 0 0 15px; clear: both;}
 .fitDetail > div.tble{margin: 0; float: none;}
 .video-box p{margin: 0 0 10px;}
@@ -982,6 +987,7 @@ ul.checkout-cont li .listadd > li {
     padding: 0;
     width: 100%;
     cursor: pointer;
+    border:0 none;
     /*
  background: transparent;
  z-index: 9999;
@@ -1000,13 +1006,13 @@ ul.checkout-cont li .listadd > li {
 	display: block !important;
 }
 .bagerrormsg {
-    background: #6d292d;
+    background: #D90D3D;
     color: #fff;
     font-family: helveticaoblique;
     font-size: 13px;
     height: 163px;
     margin: auto;
-    opacity: 0.7;
+    opacity: 0.9;
 /*    padding-top: 40%;*/
     position: absolute;
     width: 100%;
@@ -1016,7 +1022,7 @@ ul.checkout-cont li .listadd > li {
     text-transform: none;
 }
 .errorformat > span > button {
-    background: none repeat scroll 0 0 #ccc;
+    background: rgba(255,255,255,1);
     border: medium none;
     color: #000;
     margin-top: 5px;
@@ -1036,6 +1042,7 @@ ul.checkout-cont li .listadd > li {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
+    padding:10px;
 }
 .pageoverlay
 {
@@ -1139,7 +1146,7 @@ div.men-size-chart table tr:first-child td{width: 15%;}
 .show-prodImg .tdbigimagecontainer{width: 80%;}
 .product-details table.productimagecontainer table.smallimagecontiner td{width: 90%;}
 .checkBCre, .checkNewAdd{
-	background: url(../images/checkout/checkbox.jpg) no-repeat top left !important;
+	background: url(../images/checkout/checkbox.jpg) no-repeat bottom left !important;
     float: left;
     height: 34px;
     margin: 0 12px 0 0;
@@ -1148,7 +1155,7 @@ div.men-size-chart table tr:first-child td{width: 15%;}
 }
 
 .checkNewAdd.reverse, .checkBCre.reverse{
-	background: url(../images/checkout/checkbox.jpg) no-repeat bottom left !important;
+	background: url(../images/checkout/checkbox.jpg) no-repeat top left !important;
 }
 
 #billingaddressselectionblock > label {
@@ -1174,21 +1181,16 @@ div.men-size-chart table tr:first-child td{width: 15%;}
 }
 
 
-#payment_form_stripe > #stripe-update-payment-holder {
-    margin: 0 0 20px;
-    padding: 0 0 0 45px;
-    width: auto;
-}
-
 #payment_form_stripe > #stripe-update-payment-holder a {
     color: #58595b;
     display: block;
-    font: 12px/17px gothambook;
-    margin: -1px 0 0;
+    font: 11px/17px gothambook;
     text-align: left;
     text-decoration: none;
     text-transform: uppercase;
-    width: 80%;
+    width: 60%;
+    margin: 20px 0;
+    padding: 0 0 0 45px;    
 }
 
 /***View order modi***/

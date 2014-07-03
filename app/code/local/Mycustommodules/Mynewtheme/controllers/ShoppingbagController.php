@@ -732,7 +732,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     array_push($miniitems, $temparray);
                 }
             }
-            elseif(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
+            else if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
             {
                 if($this->searchcart($miniitems, $item->getSku()) == false)
                 {
@@ -973,9 +973,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             if($showedpoints >= 1) {
                 $html .=' <label><input type="text" class = "'.$gryclasssmogi.'" available="'.$getcustomerpoints.'" name="smogi" id="smogi" value="'.$showedpoints.'" '.$applysmogidisable.'/><span class="'.$applysmogi.'">+</span><span class="error-count"></span></label>';
             }
-            if($showedpoints < 1)
+            if($showedpoints < 1) {
+                $applysmogidisable=" disabled='disabled'";
                 $html .=' <label><input type="text" name="smogi" class="gry" id="smogi" placeholder="You have no more available SMOGI Bucks" '.$applysmogidisable.'/><span class="">+</span><span class="error-count"></span></label>';
-
+            } 
             // check if promotion code is used or not
             if($promotioncode)
             {

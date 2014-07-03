@@ -239,10 +239,8 @@
     <!-- selectAddress -->
     <?php if ($this->customerHasAddresses()): ?>
         <div id="shippingaddressselectionblock" class="selectAddress clear">
-            <label for="shipping-address-select">
-                <?php echo $this->__('Use a different Shipping Address') ?>
-                <span class="showUpadd"></span>
-            </label>
+            <span class="addVal"><?php echo $this->__('Use a different Shipping Address') ?></span><label for="shipping-address-select"></label>
+            <span class="showUpadd"></span>
             <div class="input-box">
                 <?php echo $this->getAddressesHtmlSelect('shipping') ?>
 
@@ -252,10 +250,8 @@
     <?php endif ?>
     <?php if (!$this->customerHasAddresses()): ?>
         <div id="shippingaddressselectionblock" class="selectAddress clear" style="display:none">
-            <label for="shipping-address-select">
-                <?php echo $this->__('Use a different Shipping Address') ?>
-                <span class="showUpadd"></span>
-            </label>
+            <span class="addVal"><?php echo $this->__('Use a different Shipping Address') ?></span><label for="shipping-address-select"></label>
+            <span class="showUpadd"></span>
             <div class="input-box">
                 <?php echo $this->getAddressesHtmlSelect('shipping') ?>
 
