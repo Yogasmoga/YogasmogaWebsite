@@ -692,7 +692,7 @@ select#billing-address-select{
 }
 
 .billingAdd a {
-    color: #58595b;
+    color: #666;
     font: 11px/17px gothambook;
     height: 33px;
     margin: 0;
