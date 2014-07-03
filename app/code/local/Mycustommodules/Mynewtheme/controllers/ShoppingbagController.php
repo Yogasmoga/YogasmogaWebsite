@@ -1332,7 +1332,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
                 $html .= '<li class= "namaskarinfo" colorattributeid = "'.$colorattributeid.'" sizeattributeid = "'.$sizeattributeid.'" productid =" '.$productid.'">
-                            <span><img src="'.Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75).'" width="100" height="100" alt="'.$productname. '" /></span>
+                            <span><img src="'.Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 100).'" width="100" height="100" alt="'.$productname. '" /></span>
                             <span>
                                     <strong>HELP THE <br' . ' />NAMASKAR FOUNDATION</strong>
                                     <span class="capsnone">Add this bracelet to your order</span>

@@ -165,7 +165,7 @@ table.productdetailtable div#colorcontainer > div {
 }
 
 #absproductoptions table.productdetailtable div#colorcontainer > div {
-    height: 25px;
+    height: 28px;
 }
 
 table.productdetailtable div#colorcontainer div table
@@ -210,16 +210,16 @@ table.productdetailtable div#colorcontainer > div table tr:nth-child(1) td:nth-c
 }
 
 #absproductoptions table.productdetailtable div#colorcontainer > div table tr:nth-child(1) td:nth-child(1){
-     border-right:22px solid transparent !important;
-     border-left-color: 30px;
-     border-bottom-width:22px;
+     border-right:25px solid transparent !important;
+    /* border-left-color: 30px;*/
+     border-bottom-width:25px;
 }
 
 #absproductoptions table.productdetailtable div#colorcontainer > div table tr:nth-child(1) td:nth-child(2){
-     border-left:21px solid transparent !important;
+     border-left:25px solid transparent !important;
      border-right-color: 30px;
-     border-top-width:22px;
-     margin: 0 0 0 -24px;
+     border-top-width:25px;
+     margin: 0 0 0 -28px;
 }
 
 table.productdetailtable div#colorcontainer div table td.tdselectedcolor
@@ -348,7 +348,7 @@ table.productdetailtable div.sizeselector
 
 table.productdetailtable div.sizeselector select.qtyselector
 {
-    font-size: 12px;
+    font-size: 11px;
     height: 26px;
     padding: 4px;
     width: 100%;
@@ -357,7 +357,7 @@ table.productdetailtable div.sizeselector select.qtyselector
 table.productdetailtable div.sizeselector select.qtyselector
 {
     height: 29px;
-    font: 13px gothambook;
+    font: 11px gothambook;
     padding: 6px;
 }
 
@@ -423,11 +423,13 @@ td.popupproductdetail table.smogibucks td.earnsmogibuckstext
 
 table.productdetailtable div.outofstockitem
 {
-    width : auto;
+
     height : 44px;
     background : url('../images/catalog/product/out-of-stock-dis.png') no-repeat center center;
     margin-top : 10px;
     display : none;
+    width: 100%;
+    background-size: 100% auto;
 }
 
 table.productdetailtable div.addtobag{
@@ -436,7 +438,8 @@ table.productdetailtable div.addtobag{
     background : url('../images/catalog/product/add-to-bag-on.png') no-repeat center center; 
     margin : 10px 0 0;
     cursor : pointer;
-    width: auto;
+    width: 100%;
+    background-size: 100% auto;
 }
 
 table.productdetailtable div.addtobag.bagdisabled{
@@ -447,13 +450,14 @@ table.productdetailtable button.cbtn{margin-top:20px;}
 
 table.productdetailtable div.preorderitem
 {
-    width : auto;
     height : 44px;
     background : url('../images/catalog/product/pre-order-now-on.png') no-repeat center center;
     margin-top : 10px;
     cursor : pointer;
     display : none;
     position: relative;
+    width: 100%;
+    background-size: 100% auto;
 }
 
 table.productdetailtable div.producterrorcontainer

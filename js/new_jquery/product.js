@@ -213,7 +213,7 @@ function readmore() {
 }
 
 function wishList() {
-    var wishlist = jQuery(".wishlist-link");
+    var wishlist = ".wishlist-link";
     //$(wishlist).find("a").removeAttr("href").css("cursor", "pointer");
 
     jQuery(wishlist).live("click", "a", function(event) {
