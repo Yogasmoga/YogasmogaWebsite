@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-    scrollingLink();
+    //scrollingLink();
     wishList();
     readmore();
 
