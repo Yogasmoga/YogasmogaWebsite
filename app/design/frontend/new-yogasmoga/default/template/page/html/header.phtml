@@ -389,7 +389,7 @@ if($serverType == 'production')
         <div class="f-right header-right">
             <div class="right-top-block r-align">
                 <ul class="tr-menu">
-                    <li class="free-shipping">Free and fast shipping to US and Canada</li>
+                    <!-- <li class="free-shipping">Free and fast shipping to US and Canada</li> -->
                     <li data-blockid = "help-new">
                         <a href="<?php echo $this->getBaseUrl();?>help-new#faq">Help</a>
                         <ul class="sub-menu l-align cms-header-link" style="left: -70px;">
@@ -400,7 +400,7 @@ if($serverType == 'production')
                             <li data-blockid = "product-care"><a href="<?php echo $this->getBaseUrl();?>help-new#product-care">Product Care</a></li>
                             <li data-blockid = "email-us" class="last"><a href="<?php echo $this->getBaseUrl();?>help-new#email-us">Email Us</a></li>
                         </ul>
-                    </li>
+                    &nbsp;&nbsp;|</li>
                     <li><?php
 
                                 $islogedinuser = false;
@@ -423,7 +423,7 @@ if($serverType == 'production')
                             <li><a href="<?php echo $this->getBaseUrl()."customer/account/index/"; ?>">account settings</a></li>
                             <li class="last"><a id="signin" href="<?php if($islogedinuser)echo $this->getBaseUrl()."customer/account/logout/";else echo "javascript:void(0);";  ?>"><?php if($islogedinuser)echo "Sign Out";else echo "Sign In";  ?></a></li>
                         </ul>
-                    </li>
+                    &nbsp;&nbsp;|</li>
                     <li><a href="javascript:void(0);" class="open-cart">Shopping Bag (<span class="cartitemcount"><?php echo $itemcount; ?></span>)</a></li>
                     <li class="checkoutshow" style="display:none;"><a href="<?php echo $this->getBaseUrl();?>checkout/onepage">Checkout</a></li>
                 </ul>
@@ -462,7 +462,7 @@ if($serverType == 'production')
                     </ul>
                 </div>
                 <?php echo $this->getChildHtml('topSearch') ?>    
-                            
+                  <li class="free-shipping">Free and fast shipping to US and Canada</li>          
             </div>             
                                             
         </div>
