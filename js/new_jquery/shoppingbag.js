@@ -144,8 +144,15 @@ jQuery(document).ready(function($){
     });
     $(".applygiftcard").live("click",function(e){
         e.preventDefault(); 
-        if($('#giftcartcode').val().indexOf('-') == -1 ) promocodecart();
-        else giftcart();
+        if($('#giftcartcode').val().indexOf('-') == -1 )
+        {
+            //alert('if--');
+            promocodecart();
+        }
+        else{
+            //alert("else--");
+            giftcart();
+        }
        // return false;
         
     });
