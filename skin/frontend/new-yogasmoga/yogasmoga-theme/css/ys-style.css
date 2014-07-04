@@ -1029,44 +1029,37 @@ ul.checkout-cont li .listadd > li {
 	display: block !important;
 }
 .bagerrormsg {
-    background: #D90D3D;
-    color: #fff;
+/*    background: #eeefef;*/
+    color: #D90D3D;
     font-family: helveticaoblique;
-    font-size: 13px;
-    height: 163px;
+    font-size: 11px;
+    text-align:left;
+ /*   height: 163px;
     margin: auto;
     opacity: 0.9;
-/*    padding-top: 40%;*/
-    position: absolute;
+    padding-top: 40%;*/
+/*    position: absolute;*/
     width: 100%;
     display:none;
 /*    padding-left: 10px;
     padding-right: 10px;*/
     text-transform: none;
 }
-.errorformat > span > button {
-    background: rgba(255,255,255,1);
-    border: medium none;
-    color: #666;
-    margin-top: 5px;
-    padding: 5px;
-    cursor: pointer;
-    font-weight: bold;
-}
-.errorformat{
-/*    display: flex;
+
+/*.errorformat{
+    display: flex;
     justify-content: center;
-    align-items: center;*/
+    align-items: center;
     display:table;
     height: inherit;
     width: inherit;
-}
-.errorformat > span {
+}*/
+/*.errorformat > span {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
     padding:10px;
-}
+}*/
 .pageoverlay
 {
         background: rgba(255, 255, 255, 0.1);
@@ -1094,7 +1087,7 @@ background-size: 100% auto; padding-bottom: 15px; padding-left: 30px; z-index: 5
 table.productdetailtable div#colorcontainer{margin: 0 !important;}
 .zoomsmallimagecontainer tr{display: block !important; float: none !important;}
 .zoom-prd-det .box-seprtr.last{margin-left: 50px; width: 600px;}
-div#zoompopup div#zoomoptions{width: auto !important; margin: 0 !important; top: 40px !important; display: block  !important; right: 70px  !important; z-index: 6# !important;}
+div#zoompopup div#zoomoptions{width: auto !important; margin: 0 !important; top: 40px !important; display: block  !important; right: 70px  !important; z-index: 6 !important;}
 .zoomdialog #closelightbox{z-index: 6000;}
 div#zoompopup div#zoomoptions img{padding:0 0 0 15px !important; width: 21px; height: 22px;}
 img#closelightbox{top: 40px !important; right: 28px !important; width: 21px;}
