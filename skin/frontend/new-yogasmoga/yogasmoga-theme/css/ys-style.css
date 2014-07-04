@@ -73,10 +73,10 @@ ul.main-menu2 > li:hover > ul.sub-menu, ul.main-menu > li:hover > ul.sub-menu{di
 /**Home Page**/
 .share-strip{padding: 25px 0; margin: 0 auto; width: 98%; font-size: 0; display: block;}
 .share-strip .blk{width: 50%; display: inline-block;}
-.share-strip ul li{ display: inline-block; padding: 0 5px; font-size: 12px; line-height: 21px;}
+.share-strip ul li{ color:#666; display: inline-block; padding: 0 5px; font-size: 12px; line-height: 21px;}
 .newbg{background: url("../images/dvdr-new.jpg") no-repeat bottom center !important;}
 .fabric-color{width: 90%; max-width: 1600px; margin: 0 auto;background: url("../images/big-divider.png") no-repeat , url("../images/big-divider.png") no-repeat; background-position: top center, bottom center; background-size:100%, 100%; height:auto; padding-bottom: 1px;}
-.structure{width: 90%; margin: 0 auto;}
+.structure{width: 80%; margin: 0 auto;}
 .block1{width: 65%;}
 .block2{width: 35%; padding-top: 10%; padding-left: 3%;}
 .block1,.block2,.block3,.block4{float: left; position: relative; vertical-align: top; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
@@ -84,16 +84,17 @@ ul.main-menu2 > li:hover > ul.sub-menu, ul.main-menu > li:hover > ul.sub-menu{di
 .block4{width: 53.66585923373478%;}
 .block-text{position: absolute; top: 8%; left: 6%;font-family:ITCAvantGardeProMd; line-height: normal;}
 ul.fabric-qua{position: absolute; bottom: 5%; width: 100%;}
-ul.fabric-qua li{display: inline-block; color: #fff; text-align: center; font-size: 0.8em; padding: 0 15px; }
+ul.fabric-qua li{display: inline-block; color: #fff; text-align: center; font-size: 0.8em; padding: 0 30px; }
 ul.fabric-qua li img{margin-bottom: 10px;}
-p.block-head{font-size: 15px; color: #AD8536}
-p.block-desc{font-size: 30px; color:#666;}
+p.block-head{font-size: 18px; color: #AD8536}
+p.block-desc{font-size: 35px; color:#666;}
 p.block-link{margin-top: 30px;}
-p.block-link a{font-family: "AvantGardeGothicITCW01B"; color: #333; font-size: 14px; text-transform: uppercase; border-bottom: #cc0033 1px solid;}
+p.block-link a{font-family: "ITCAvantGardeProMd"; color: #666; font-size: 11px; text-transform: uppercase; border-bottom: #cc0033 1px solid;}
 p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight: normal;}
-.block-text2{position: absolute; bottom: 5%; left:6%; font-family:ITCAvantGardeProMd;}
+.block-text2{position: absolute; top: 26%; left:6%; font-family:ITCAvantGardeProMd;}
 .block-text2 p.bracelet-count{font-family: gothamlight; font-size: 120px; line-height: 90px; margin-left: -10px;}
-.block-text2 span{font-size: 20px;}
+.block-text2 p.block-link a{color:#666;}
+.block-text2 span{font-size: 11px;}
 .sl-desc-handle{cursor:pointer;position: absolute; width: 41px; right: 6px; bottom: -29px;}
 .flexslider .slides .sl-desc-handle img{width: 60%;}
 .slide-desc{display:none; position: absolute; right:41px; bottom:0; background-color:rgba(255,255,255,0.9); border-radius:6px 6px 0; font:11px/17px gothambook; padding:20px !important; text-align: left; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; color:#666; width:240px; height:auto;}
@@ -146,7 +147,7 @@ div.side-menu-bar ul li a:hover span.arr,
 .footer--block ul.site-map ul li{/*text-transform: uppercase;*/}
 ul.site-map > li{color:#666; display: inline-block; vertical-align: top; text-align: left; width: 16%; margin:0; word-wrap:break-word; }
 ul.site-map > li:first-child{}
-ul.site-map > li a{color: #666; font-size: 11px;}
+ul.site-map > li a{color: #666; font-size: 10px;}
 ul.site-map > li a:hover, div.copy-privacy-likes ul li a:hover{color: #CC0033;}
 .online-status-icon{vertical-align: middle;}
 ul.site-map ul.social-icons {margin-top: 4px;}
@@ -328,18 +329,26 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .wdth35{width: 35%; float: right;}
 
 .featureList{width: 100%; margin-bottom: 40px;}
-.featureList > li:last-child{margin: 0 !important;}
 
 /*.featureList > li{display: inline-block; float: left; margin: 0 1%; width: 23%;}*/
 /*.featureList span{display: block; margin: 20px 0; text-transform: capitalize;}*/
 /*.featureList span.ftrFig{*//*background: #E5E9EC;*//* margin: 0; text-align:center;}*/
 
-.featureList > li{display: inline-block; float: left; margin: 0 11px; width: 106px; text-align: center;}
+.featureList > li{display: inline-block; float: left; margin: 0 12px; min-width: 106px; max-width: 22%; width: auto; text-align: center;}
+
+.featureList > li:nth-child(1) {
+    margin: 0 7px 0 0 !important;
+}
+.featureList > li:nth-child(4) {
+    margin: 0 0 0 7px !important;
+}
+
+
 .featureList span{display: block; margin: 12px 0 0; font-size: 11px; text-transform: capitalize; text-align: left;}
-.featureList span.ftrFig{/*background: #E5E9EC;*/ margin: 0; text-align: center;}
+.featureList span.ftrFig{/*background: #E5E9EC;*/ margin: 0; text-align: center; height: 159px}
 .featureList span.ftrFig img{width: 100%;}
 
-.similarProdList{margin: auto; width: auto; font-size: 11px; color: #666;}
+.similarProdList{margin: auto auto 20px; width: auto; font-size: 11px; color: #666;}
 .similarProdList a {
     color: #666;
     text-align: center;
@@ -376,7 +385,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .fabDetail > h2{font: 24px ITCAvantGardeProBk; background: none; margin: -18px 0 0;}
 .fabDetail h2 sup{font-size: 18px;}
 .fabDetail ul{margin-bottom: 10px;}
-.fabDetail li{font: 9px/16px gothamMedium; text-align: center; text-transform: uppercase; width: 45%; word-wrap: break-word; display: inline-block; margin-bottom: 5%; vertical-align: top;}
+.fabDetail li{font: 9px/12px gothamMedium; text-align: center; text-transform: uppercase; width: 45%; word-wrap: break-word; display: inline-block; margin-bottom: 5%; vertical-align: top;}
 /*.fabDetail li:first-child{margin: 0 0.5% 0 0;}*/
 /*.fabDetail li:nth-child(4){margin: 0 0 0 0.5%;}*/
 .fabDetail li span{display: block; margin-bottom: 10px;}
@@ -692,7 +701,7 @@ span.country {
 
 /* MailSlider*/
 .flexslider .slides img {}
-.madeinusa-txt{width: 100%; font: 38px itcavantgardeprobk; text-transform:uppercase;position: absolute;top: 0;left: 0;}
+.madeinusa-txt{width: 100%; font: 37px itcavantgardeprobk; color: #666; text-transform:uppercase;position: absolute;top: 0;left: 0;}
 .madeinusa-txt div{width: 100%; height: 100%; vertical-align: middle; }
 .madeinusa-txt span{display: block; clear: both; font-family: itcavantgardepromd;}
 .breadcrumb, .breadcrumb a{color: #666; font: 11px gothamMedium;}
@@ -719,9 +728,10 @@ table.productimagecontainer{min-height: 560px !important;}
 /** resizing fontsize **/
 ul.main-menu li a,ul.tr-menu > li > ul.sub-menu li a{font: bold 11px/23px gothambook;}
 .share-strip ul li, p.block-link a, ul.new-arrivals li span{font-size: 11px;}
-.block-head{font-size: 13px;}
+p.block-head{font-size: 13px;}
 p.block-desc, .madeinusa-txt, li.new-arrivals-desc .block-desc{font-size: 25px;}
 p.block-link{margin-top: 20px;}
+.block-text2{top: 29%;}
 li.new-arrivals-desc .block-head, .contWom h4, .contWom p{font-size: 15px;}
 li.new-arrivals-desc .block-desc{margin-bottom: 0;}
 li.new-arrivals-desc .block-link a, .block-link a, .contWom p.block-link a{font-size: 12px;}
@@ -1251,3 +1261,7 @@ li.free-shipping {
     text-align: right;
 }
 .font10{font-size: 10px;}
+
+.site-map .gothambd {
+    font: 10px gothambold;
+}
