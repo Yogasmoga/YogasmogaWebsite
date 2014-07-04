@@ -311,7 +311,8 @@ function referafriend(name, email, id)
     jQuery.ajax({
         type : 'POST',
         url : securehomeUrl + 'mycatalog/myproduct/referfriend',
-        data : {'name[]':name,'email[]':email,'id':id},
+        //data : {'name[]':name,'email[]':email,'id':id},
+        data : {'name':name,'email':email,'id':id},
         beforeSend : function(){
             var tr = jQuery("table.referfriendforms tr#" + id);
             tr.find('td.btninvite').hide();

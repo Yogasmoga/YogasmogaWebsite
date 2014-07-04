@@ -25,7 +25,13 @@ class MyCustommodules_Mynewtheme_GiftofysController extends Mage_Core_Controller
             echo json_encode($response);
             return;
         }
-
+        // retrict user to apply gift of ys with promotion code
+        if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
+        {
+            $response['error'] = "Cannot apply Gift of YS with Promotion code";
+            echo json_encode($response);
+            return;
+        }
         $customerId = Mage::getSingleton('customer/session')->getCustomerId();
         $giftcardCode = trim((string) $this->getRequest()->getParam('giftcard_code'));
         $card = Mage::getModel('giftcards/giftcards')->load($giftcardCode, 'card_code');
@@ -71,6 +77,16 @@ class MyCustommodules_Mynewtheme_GiftofysController extends Mage_Core_Controller
             return;
         }
         if ((string)$this->getRequest()->getParam('giftcard_use') == '1') {
+
+            // retrict user to apply gift of ys with promotion code
+            if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
+            {
+                $response['error'] = "Cannot apply Gift of YS with Promotion code";
+                echo json_encode($response);
+                return;
+            }
+
+
             Mage::getSingleton('giftcards/session')->setActive('1');
             $response['status'] = "success";
             $response['success_message'] = "Gift Cart Successfully applied.";
