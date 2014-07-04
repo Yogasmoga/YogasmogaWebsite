@@ -159,7 +159,13 @@ jQuery(document).ready(function($){
     $(document).on('keypress', '#giftcartcode',function( event ) {
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if(keycode == 13) {
-            giftcart();
+            if($('#giftcartcode').val().indexOf('-') == -1 )
+            {
+                promocodecart();
+            }
+            else{
+                giftcart();
+            }
         }
     });
     $(".giftcardcheckbox").live("click",function(){
@@ -346,7 +352,7 @@ function giftcart() {
                 applygiftcardcode();
         }
     }
-    else jQuery('#redeemresult').empty().append('<div class="errorformat"><span>Please enter valid gift card code.<br><button id="hidemsg">Ok</button></span></div>').show();
+    else jQuery('#redeemresult').empty().append('<div class="errorformat"><span>Invalid gift of YS code.<br><button id="hidemsg">Ok</button></span></div>').show();
 }
 function showShoppingBagHtml()
 {

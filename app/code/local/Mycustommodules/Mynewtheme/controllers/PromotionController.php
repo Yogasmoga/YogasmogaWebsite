@@ -57,7 +57,7 @@ class Mycustommodules_Mynewtheme_PromotionController extends Mage_Core_Controlle
         // retrict user to apply  promotion code with gift of ys
         if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
         {
-            $response['errors'] = "Cannot apply  Promotion code with Gift of YS";
+            $response['errors'] = "You cannot apply  Promo Code with Gift Card";
             echo json_encode($response);
             return;
         }
