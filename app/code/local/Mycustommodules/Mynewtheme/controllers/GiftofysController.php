@@ -21,14 +21,14 @@ class MyCustommodules_Mynewtheme_GiftofysController extends Mage_Core_Controller
             'success_message' => ''
         );
         if (!Mage::helper('customer')->isLoggedIn()) {
-            $response['error'] = "Please login first for apply Gift of YS";
+            $response['error'] = "Please login first to apply Gift Card.";
             echo json_encode($response);
             return;
         }
         // retrict user to apply gift of ys with promotion code
         if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
         {
-            $response['error'] = "Cannot apply Gift of YS with Promotion code";
+            $response['error'] = "Cannot apply Gift of YS with Promo code.";
             echo json_encode($response);
             return;
         }
@@ -71,7 +71,7 @@ class MyCustommodules_Mynewtheme_GiftofysController extends Mage_Core_Controller
             'success_message' => ''
         );
         if (!Mage::helper('customer')->isLoggedIn()) {
-            $response['error'] = "Please login first for apply Gift of YS";
+            $response['error'] = "Please login first to apply Gift Code.";
             Mage::getSingleton('customer/session')->authenticate($this);
             echo json_encode($response);
             return;
@@ -81,7 +81,7 @@ class MyCustommodules_Mynewtheme_GiftofysController extends Mage_Core_Controller
             // retrict user to apply gift of ys with promotion code
             if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
             {
-                $response['error'] = "Cannot apply Gift of YS with Promotion code";
+                $response['error'] = "You cannot apply Gift Card with Promo code.";
                 echo json_encode($response);
                 return;
             }
@@ -100,7 +100,7 @@ class MyCustommodules_Mynewtheme_GiftofysController extends Mage_Core_Controller
             $this->_getQuote()->collectTotals()->save();
         } catch (Exception $e) {
             $this->_getSession()->addError($e->getMessage());
-            $response['error'] = "There has been an error to apply Gift of YS.";
+            $response['error'] = "There has been an error to apply Gift Card.";
         }
         echo json_encode($response);
         return;
