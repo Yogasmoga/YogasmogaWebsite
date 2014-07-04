@@ -1,5 +1,6 @@
 jQuery(document).ready(function($){
 
+   // hdrCenter();
     initializesignuppopup();
     initializeinvitepopup();
     initializesigninpopup();
@@ -242,4 +243,19 @@ function getCookie(cname)
         if (c.indexOf(name)==0) return c.substring(name.length,c.length);
     }
     return "";
+}
+
+function hdrCenter(){
+    var _wnWdth = jQuery(window).width();
+
+    var _hdrWdth = jQuery(".header-container").width();
+
+    var dvdWdth = _wnWdth - _hdrWdth;
+
+    var fCount = dvdWdth/2;
+
+    alert(fCount);
+
+
+    jQuery(".header-container").css("left", fCount);
 }

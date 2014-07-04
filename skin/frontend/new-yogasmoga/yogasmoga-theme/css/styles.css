@@ -3076,9 +3076,11 @@ table.inputtable td.errortext div,table.gfredeem td.errortext div,table#redeem t
 .top0{
     top : 0px;
 }
+
+/** Changes **/
 div#bodycompensator
 {
-    height : 110px;
+    height : 97px;
 }
 div.opimage div.big_big,
 div.opimage div.big_small{display:none;
