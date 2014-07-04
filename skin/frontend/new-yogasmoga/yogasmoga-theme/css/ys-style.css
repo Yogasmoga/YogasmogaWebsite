@@ -103,9 +103,9 @@ p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight
 .flex-direction-nav .flex-next{background: url("../images/homepage/next-slide.png") no-repeat bottom; background-size:100% 100%; width:24px; height: 46px;}
 
 /****Side bar****/
-div.side-menu-bar, .side-menu-bar2{ width:270px; vertical-align:top; min-height: 300px; position: fixed;}
+div.side-menu-bar, .side-menu-bar2{ width:225px; vertical-align:top; min-height: 300px; position: fixed;}
 div.side-menu-bar ul, .side-menu-bar2 ul, .menu-bar ul{padding: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
-div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-transform: uppercase; font:14px/24px gothambold; color: #58595b;}
+div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-transform: uppercase; font:11px/24px gothambold; color: #666; line-height: normal;}
 div.side-menu-bar ul li a span.arr, .side-menu-bar2 ul li a span.arr, .menu-bar ul li a span.arr{visibility: hidden;}
 div.side-menu-bar2 ul li a.current,
 div.side-menu-bar2 ul li a:hover,
@@ -124,21 +124,21 @@ div.side-menu-bar ul li a:hover span.arr,
 .cms-loader{margin-top: 100px;}
 
 /***Our Story***/
-.pg-content{width:auto; margin: 0 0 0 270px; vertical-align:top; color: #58595b; line-height: normal;min-height: 300px;}
-.os-banner{position: relative;font-size: 40px; min-height: 400px; }
+.pg-content{width:auto; margin: 0 0 0 245px; vertical-align:top; color: #58595b; line-height: normal;}
+.os-banner{position: relative;font-size: 40px; min-height: 300px; }
 .os-banner img{width: 100%;} 
 .os-banner .banner-text{position:absolute; top:20%; left:7%; text-align: left;}
 .banner-text p{font-family: ITCAvantGardeProBd; text-transform: uppercase;}
 .banner-text span{font-family:"AvantGardeGothicITCW01B"; text-transform: inherit;}
-.box-str-container{width: 95%; margin: 60px auto auto; }
-.box-str{background: url("../images/big-divider.png") no-repeat bottom; padding-bottom:30px; margin-bottom: 30px;background-size: contain;}
-.box-str-container .img-box{width: 37%; /*border: 1px solid #e1e1e1;*/ padding: 2px;}
+.box-str-container{width: 100%; margin: 48px auto auto; }
+.box-str{background: url("../images/big-divider.png") no-repeat bottom; padding-bottom:35px; margin-bottom: 30px;background-size: contain;}
+.box-str-container .img-box{width: 47%; /*border: 1px solid #e1e1e1; padding: 2px;*/ max-width: 500px; min-width: 275px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 .box-str-container .img-box img{width: 100%;}
-.box-str-container .content-box{ width:62%; padding-left: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.box-str-container .content-box{ width:50%; padding-left: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 .content-box p{font: 14px/1.5 gothambook; margin-bottom: 22px; }
 .content-box p:last-child{margin: 0;}
-.box-str h2.heading, .detailImg .heading, .coloumn-list li span{font-family: ITCAvantGardeProBk; font-weight: bold; font-size: 23px; color: #58595b; margin-bottom: 45px; text-transform: uppercase;}
-.box-str h2.heading span, .detailImg .heading span{font-weight: normal; display: block; text-transform: inherit; }
+.box-str h2.heading, .detailImg .heading, .coloumn-list li span{font-family: ITCAvantGardeProMd; /*font-weight: bold;*/ font-size: 20px; color: #58595b; margin-bottom: 45px; text-transform: uppercase;}
+.box-str h2.heading span, .detailImg .heading span{font-weight: normal; display: block; text-transform: inherit; font-family: AvantGardeGothicITCW01B; color: #666; }
 .box-str.inverse .content-box{padding-right: 20px; padding-left: 0;}
 /****Footer****/
 #sitemap{width: 85%; margin: 0 auto;margin-top:90px; word-wrap: break-word;}
@@ -253,7 +253,7 @@ li.new-arrivals-desc .block-desc{margin-bottom: 25px; font-size: 35px;}
 li.new-arrivals-desc .block-link a, .block-link a{font-family: ITCAvantGardeProMd; font-size: 14px;}
 
 /** YS-Tech Section **/
-.discImg{margin: 40px 0 20px;}
+.discImg{margin: 30px 0 20px;}
 ul.arw-list{display: block; margin: 0 0 25px 0; padding: 0; font-size: 13px;}
 ul.arw-list li{background: url("../images/list-arw.png") no-repeat 0 4px; display: block; line-height: 1.3; padding: 0 0 10px 15px;}
 sup {font-size: 11px; height: auto; line-height: inherit; padding: 0;}
@@ -657,13 +657,15 @@ span.country {
 .shdow-search-box {box-shadow: 0 0 3px rgba(219, 135, 38, 1); -webkit-box-shadow: 0 0 3px rgba(219, 135, 38, 1); -moz-box-shadow: 0 0 3px rgba(219, 135, 38, 1); border: 1px solid rgba(219, 135, 38, 1);}
 
 /** SMOGI Bucks Page **/
+.cms-smogibucks .smogi-bucks{width:58%; margin:0 auto;}
 .smogi-bucks .box-str {background: none repeat scroll 0 0 rgba(0, 0, 0, 0); margin: 0 0 50px; padding: 0;}
 .smogi-bucks .box-str .heading {margin: 0 0 10px;}
-.smogi-bucks .content-box {padding: 0;width: 100%;}
+.smogi-bucks .content-box {padding: 0;width: 100% !important;}
 .content-box ol li:last-child {padding-bottom: 0;}
 .content-box ol li {font: 14px/1.5 gothambook;list-style: decimal inside none;padding: 0 20px 15px;}
 .smogi-bucks .content-box ul {margin-top: 20px;}
 .smogi-bucks .content-box ul li {font: 14px/35px gothambook;list-style: none outside none;}
+.smogi-val-img{display: block; margin-bottom: 18px; margin-top: -5px;}
 
 /** productDetailPage **/
 .smallimagecontiner td.selectedimage {opacity: 0.5;}
@@ -712,7 +714,7 @@ ul.main-menu li ul.sub-menu > li > ul a, ul.main-menu2 li ul.sub-menu > li > ul:
 .productCont{margin: 0 20px 50px; width: 205px;}
 .product-details .block-head{font: bold 15px gothambook;}
 .ctglink li, .ctglink li a{font: 12px/23px gothambook !important;}
-div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-transform: uppercase; font: 14px/24px gothambold; color: #58595b;}
+/*div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-transform: uppercase; font: 14px/24px gothambold; color: #58595b;}*/
 .os-banner{font-size: 30px;}
 .banner-txt3{font-size: 25px;}
 
@@ -728,6 +730,8 @@ ul.site-map>li{width: 30%; margin-bottom: 40px;}
 body{overflow-x:auto !important; }
 .account-nav{position: absolute !important;}
 .block-elm{padding-left: 5px;}
+.box-str-container .content-box{width:44%; padding-left: 0;}
+.box-str.inverse .content-box{padding-right:0;}
 }
 
 .dnone.dblock, .dblock{display: inline !important;}
@@ -1101,7 +1105,7 @@ table.tblwishlist thead th{padding-bottom: 0 !important;}
 .fixwidth{margin-left: 25% !important; width: 75%;}
 .data-table.ys{min-width: 100% !important;}
 .dashboard-address-book{max-width: 700px; min-width: 500px;}
-.accountbg #mainimage,body.gift_of_ys .gift-of-ys,body.rewardpoints-index-referral .accountbg{margin-top: 10px !important; background: url(../images/bot-divider.png) 50% 100% no-repeat;}
+.accountbg #mainimage,body.gift_of_ys .gift-of-ys,body.rewardpoints-index-referral .accountbg,{margin-top: 10px !important; background: url(../images/bot-divider.png) 50% 100% no-repeat;}
 body.gift_of_ys .gift-of-ys{width: 100%; text-align: center;}
 .addedItem .similarProdList>li{width: 100%;}
 .show-prodImg{width: 82%; margin: 0; float: right;}
@@ -1204,7 +1208,7 @@ body.sales-order-view #my-orders-table{border-left: none;}
 body.sales-order-view #my-orders-table thead tr th:first-child, body.sales-order-view #my-orders-table tbody tr td:first-child{border-left:1px solid #efefef;}
 /****/
 
-.2-columns-wrapper .top-divider{margin-top: 0 !important;}
+.cms-our-story-new .top-divider,.cms-ys-tech-new .top-divider{margin: 0 0 0 !important;}
 #wishlist-view-form .globalmsg{font-family: ITCAvantGardeProMd !important; color: #666 !important; font-weight: normal !important;}
 #wishlist-view-form p.wishlist-empty{font-family: gothambook !important; }
 .continueshopppingbtn{color: #fff; font-style: normal; font-variant: normal; font-weight: normal; font-size: 12px; line-height: normal; font-family: gothambold; text-transform: uppercase; background-image: url(../images/shopping-cart/grn-btn.png) !important; width: 184px !important; height: 48px !important;}
@@ -1213,5 +1217,14 @@ body.customer-address-index .myaccountdashboard .customeraddress th,
 body.customer-address-index .myaccountdashboard .customeraddress td,
 body.customer-address-index .myaccountdashboard .customeraddress a.addressLink,
 body.customer-address-index .myaccountdashboard a
-{font-family: gothambook; font-size: 13px !important; color: #666 !important; text-transform: capitalize;}
+{font-family: gothambook; font-size: 11px !important; color: #666 !important; text-transform: capitalize;}
 body.customer-address-index .myaccountdashboard .customeraddress td{padding-top: 0 !important;}
+.cms-our-story-new .pg-content,.cms-ys-tech-new .pg-content{padding-right: 20%;}
+.cms-ys-tech-new .box-str h2.heading{margin-bottom:15px;}
+.fab-aurm.top-divider{background: url("../images/dvdr-new.jpg") no-repeat center top; background-size: 100% auto;}
+.box-str:last-child{background:none; padding-bottom:60px;}
+.cms-ys-tech-new #pagecontainer,.cms-our-story-new #pagecontainer,.cms-smogibucks #pagecontainer{background: url(../images/bot-divider.png) 50% 100% no-repeat;}
+
+
+
+
