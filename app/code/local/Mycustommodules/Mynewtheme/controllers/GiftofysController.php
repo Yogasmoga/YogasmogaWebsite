@@ -21,11 +21,17 @@ class MyCustommodules_Mynewtheme_GiftofysController extends Mage_Core_Controller
             'success_message' => ''
         );
         if (!Mage::helper('customer')->isLoggedIn()) {
-            $response['error'] = "Please login first for apply Gift of YS";
+            $response['error'] = "Please login first to apply Gift Card.";
             echo json_encode($response);
             return;
         }
-
+        // retrict user to apply gift of ys with promotion code
+        if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
+        {
+            $response['error'] = "Cannot apply Gift of YS with Promo code.";
+            echo json_encode($response);
+            return;
+        }
         $customerId = Mage::getSingleton('customer/session')->getCustomerId();
         $giftcardCode = trim((string) $this->getRequest()->getParam('giftcard_code'));
         $card = Mage::getModel('giftcards/giftcards')->load($giftcardCode, 'card_code');
@@ -65,12 +71,22 @@ class MyCustommodules_Mynewtheme_GiftofysController extends Mage_Core_Controller
             'success_message' => ''
         );
         if (!Mage::helper('customer')->isLoggedIn()) {
-            $response['error'] = "Please login first for apply Gift of YS";
+            $response['error'] = "Please login first to apply Gift Code.";
             Mage::getSingleton('customer/session')->authenticate($this);
             echo json_encode($response);
             return;
         }
         if ((string)$this->getRequest()->getParam('giftcard_use') == '1') {
+
+            // retrict user to apply gift of ys with promotion code
+            if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
+            {
+                $response['error'] = "You cannot apply Gift Card with Promo code.";
+                echo json_encode($response);
+                return;
+            }
+
+
             Mage::getSingleton('giftcards/session')->setActive('1');
             $response['status'] = "success";
             $response['success_message'] = "Gift Cart Successfully applied.";
@@ -84,7 +100,7 @@ class MyCustommodules_Mynewtheme_GiftofysController extends Mage_Core_Controller
             $this->_getQuote()->collectTotals()->save();
         } catch (Exception $e) {
             $this->_getSession()->addError($e->getMessage());
-            $response['error'] = "There has been an error to apply Gift of YS.";
+            $response['error'] = "There has been an error to apply Gift Card.";
         }
         echo json_encode($response);
         return;

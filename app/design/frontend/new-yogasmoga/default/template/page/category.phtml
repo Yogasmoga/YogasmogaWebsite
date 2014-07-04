@@ -135,13 +135,29 @@ jQuery(window).load(function(){
                         <!-- MainProductGridPage -->
                             <div class="product-grid">
 
-                                <?php //echo $this->getChildHtml('left') ?>
-                                <!-- ProductContentArea -->
-                                <?php echo substr($htmlcontent, 3); ?>
-                                <!-- ProductContentArea -->
-                            </div> 
+                                <!-- viewWrapper -->
+                                <div class="2-columns-wrapper">
+                                    <!-- leftCategoryLink -->
+                                    <?php //echo $this->getChildHtml('catalog.leftnav') ?>
+                                    <?php echo $this->getChildHtml('left') ?>
+                                    <!-- leftCategoryLink -->
+                                
+                                    <!-- ProductContentArea -->
+                                        <!-- productGridView -->
+                                        <div class="pg-content" style="padding:0 12% 0 0;">
+                                            <?php echo substr($htmlcontent, 3); ?>
+                                        </div>
+                                        <!-- productGridView -->
+                                    <!-- ProductContentArea -->
+
+                                
+                                </div>
+                                <!-- viewWrapper -->
+
+                            </div>
+                            <!-- mainProductGridPage -->
+
                         </div>
-                        <!-- mainProductGridPage -->
 
                     <?php
                 } 

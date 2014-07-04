@@ -812,10 +812,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         <a href="'.$continuelink.'" id="continuecheckout" class="continuelink f-right grn">Continue</a>
         <div class="clear-fix"></div>
     </div>
-    <div class="bagerrormsg" id="redeemresult"></div>
+    
     <!-- ContinueShoppingBtn -->
     <!-- productOption -->
-    <div class="cont-full contfull2"><div class="bagerrormsg" id="redeemresult"></div>';
+    <div class="cont-full contfull2">';
         $totalhtml = '
                         <!-- totalAmount -->
                         <div class="totalAmnt capstxt">
@@ -904,10 +904,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         </li>';
             $checkgiftapplied = true;            
         }
-        if($checksmogiapplied == '1' && $showedpoints < 1) $usesmogi="<p class='c-align'>You can't use other codes with SMOGI Bucks.</p>";
-        else if($checksmogiapplied != '1' && $showedpoints < 1) $usesmogi='';
-        else $usesmogi='<p class="c-align">Use your SMOGI Bucks for this purchase</p>';
-                 $html .=  '<li>
+        if($checksmogiapplied == '1' && $showedpoints > 0) $usesmogi="<p class='c-align'>You can't use other codes with SMOGI Bucks.</p>";
+        else if($checkpromoapplied == '1' || $checkgiftapplied == '1') $usesmogi='';
+        else if($checksmogiapplied != '1' && $showedpoints > 0) $usesmogi='<p class="c-align">Use your SMOGI Bucks for this purchase</p>';
+        $html .=  '<li>
                             <span class="f-left">Shipping: Free</span>
                             <span class="f-right capstxt">Free</span>
                         </li>
@@ -936,6 +936,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $applysmogi="applysmogi";
             $applysmogidisable="";
             $checkboxapplied="";
+            $smogiplaceholder="";
+            $showedpointsvalue=$showedpoints;
            if($checksmogiapplied)
            {
                 $gryclasspromo = "gry";
@@ -946,58 +948,63 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     $gryclasssmogi = "gry";
                 }
                 $applygiftdisable=" disabled='disabled'";
-                $applypromo="";
-                $applypromodisable=" disabled='disabled'";
+//                $applypromo="";
+//                $applypromodisable=" disabled='disabled'";
                 $checkboxapplied=" disabled='disabled'";
+                $showedpointsvalue=$showedpoints;
            }
            if($checkpromoapplied)
            {
+                $smogiplaceholder="SMOGI Bucks cannot be used with Promo Codes.";
                 $gryclasssmogi = "gry";
                 $gryclassgift = "gry";
                 $applysmogi="";
                 $applygiftcard="";
-                $applypromodisable=" disabled='disabled'";
+                //$applypromodisable=" disabled='disabled'";
                 $applysmogidisable=" disabled='disabled'";
                 $applygiftdisable=" disabled='disabled'";
                 $checkboxapplied=" disabled='disabled'";
+                $showedpointsvalue="";
            }
             if($checkgiftapplied)
            {
                 //$gryclassgift = "gry";
+                $smogiplaceholder="SMOGI Bucks cannot be used with Promo Codes.";
                 $gryclasssmogi = "gry";
                 $gryclasspromo = "gry";
                 $applysmogi="";
                 $applysmogidisable=" disabled='disabled'";
                 $checkboxapplied="";
+                $showedpointsvalue="";
                 //$applygiftcard="";
                 //$applygiftdisable=" disabled='disabled'";
-                $applypromo="";
-                $applypromodisable=" disabled='disabled'";
+             //   $applypromo="";
+               // $applypromodisable=" disabled='disabled'";
            }
             if($showedpoints >= 1) {
-                $html .=' <label><input type="text" class = "'.$gryclasssmogi.'" available="'.$getcustomerpoints.'" name="smogi" id="smogi" value="'.$showedpoints.'" '.$applysmogidisable.'/><span class="'.$applysmogi.'">+</span><span class="error-count"></span></label>';
+                $html .=' <label><input type="text" class = "'.$gryclasssmogi.'" placeholder="'.$smogiplaceholder.'" available="'.$getcustomerpoints.'" name="smogi" id="smogi" value="'.$showedpointsvalue.'" '.$applysmogidisable.'/><span class="'.$applysmogi.'">+</span><span class="error-count"></span></label>';
             }
             if($showedpoints < 1) {
                 $applysmogidisable=" disabled='disabled'";
                 $html .=' <label><input type="text" name="smogi" class="gry" id="smogi" placeholder="You have no more available SMOGI Bucks" '.$applysmogidisable.'/><span class="">+</span><span class="error-count"></span></label>';
             } 
             // check if promotion code is used or not
-            if($promotioncode)
-            {
-                $html .='<label><input type="text" name="promocode" id="promocode" value="'.$promotioncode.' promo used"   '.$applypromodisable.' class="gry" /><span class="">+</span><span class="error-count"></span></label>';
-            }
-            else
-            {
-                $html .='<label><input type="text" class="'.$gryclasspromo.'" name="promocode" id="promocode" placeholder="Add a promo code"  '.$applypromodisable.'/><span class="'.$applypromo.'">+</span><span class="error-count"></span></label>';
-            }
+//            if($promotioncode)
+//            {
+//                $html .='<label><input type="text" name="promocode" id="promocode" value="'.$promotioncode.' promo used"   '.$applypromodisable.' class="gry" /><span class="">+</span><span class="error-count"></span></label>';
+//            }
+//            else
+//            {
+//                $html .='<label><input type="text" class="'.$gryclasspromo.'" name="promocode" id="promocode" placeholder="Add a promo code"  '.$applypromodisable.'/><span class="'.$applypromo.'">+</span><span class="error-count"></span></label>';
+//            }
 
             // check for Gift of YS
 
                 $giftofysbalance = Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId());
                 $giftofysbalance = number_format((float)$giftofysbalance, 2, '.','');
-                if($giftofysbalance > 0)
+                if($giftofysbalance > 0 || $promotioncode == '1')
                 {
-                    $html .='  <label><input class="'.$gryclassgift.'" type="text" name="giftcartcode" id="giftcartcode" placeholder="Add a gift card code" '.$applygiftdisable.'/><span class="'.$applygiftcard.'">+</span><span class="error-count"></span></label>';
+                    $html .='  <label><input class="'.$gryclassgift.'" type="text" name="giftcartcode" id="giftcartcode" placeholder="Add a Promo Code / Gift Card Code" '.$applygiftdisable.'/><span class="'.$applygiftcard.'">+</span><span class="error-count"></span></label>';
                     if(Mage::getSingleton("giftcards/session")->getActive() == "1")
                     {
                       //  $html .='<div> <input type="checkbox" value="1" checked="checked" class="giftcardcheckbox" '.$checkboxapplied.'/><p>Use your Gift Card balance: $'.$giftofysbalance.' available.</p></div>';
@@ -1010,7 +1017,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 }
                 else
                 {
-                    $html .=' <label><input  class="'.$gryclassgift.'" type="text" name="giftcartcode" id="giftcartcode" placeholder="Add a gift card code" '.$applygiftdisable.' /><span class="'.$applygiftcard.'">+</span><span class="error-count"></span></label>
+                    $html .=' <label><input  class="'.$gryclassgift.'" type="text" name="giftcartcode" id="giftcartcode" placeholder="Add a Promo Code / Gift Card Code" '.$applygiftdisable.' /><span class="'.$applygiftcard.'">+</span><span class="error-count"></span></label>
 
                     ';
                 }
@@ -1020,7 +1027,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
         }
-        $html .='<div class="zindexH"></div>';
+        $html .='<div class="bagerrormsg" id="redeemresult"></div><div class="zindexH"></div>';
         // $html .='           <label><input type="text" name="promocode" id="promocode" value="Add a promo code" /><span>+</span></label>
         //                     <label><input type="text" name="giftcartcode" id="giftcartcode" value="Add a gift card code" /><span>+</span></label>';
         if(!$customerId)
@@ -1332,7 +1339,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
                 $html .= '<li class= "namaskarinfo" colorattributeid = "'.$colorattributeid.'" sizeattributeid = "'.$sizeattributeid.'" productid =" '.$productid.'">
-                            <span><img src="'.Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75).'" width="100" height="100" alt="'.$productname. '" /></span>
+                            <span><img src="'.Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 100).'" width="100" height="100" alt="'.$productname. '" /></span>
                             <span>
                                     <strong>HELP THE <br' . ' />NAMASKAR FOUNDATION</strong>
                                     <span class="capsnone">Add this bracelet to your order</span>
