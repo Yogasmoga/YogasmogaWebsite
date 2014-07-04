@@ -321,22 +321,21 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .block-elm.btm-devider, .block-elm.btm-devider-big, .product-details .block-head, .product-details h2{background: url("../images/big-divider.png") no-repeat center bottom; background-size: 100% auto;}
 .block-elm.btm-devider{padding-bottom: 40px;}
 .product-details .block-head{margin-bottom:30px; text-transform: uppercase; font: 18px gothambold; padding: 0 0 15px;}
-.product-details h2{font: normal 11pt gothamMedium; font-size: 15px; color: #666; text-align: center; text-transform: uppercase; padding: 0 0 20px; margin: 0 0 35px; background-size: contain !important;}
+.product-details h2{font: normal 11px gothambold; color: #666; text-align: center; text-transform: uppercase; padding: 0 0 12px; margin: 0 0 25px; background-size: contain !important;}
 .block-elm{width: 70%; text-align: left; display: inline-block; clear: both; margin: auto auto 40px; color: #666; font: 10px/16px gothambook;}
 .block-elm.btm-devider-big{margin: 0; padding-bottom: 50px; text-align: center; width: 90%;}
 .wdth65{width: 63%; float: left; margin: 0 2% 0 0;}
 .wdth35{width: 35%; float: right;}
 
 .featureList{width: 100%; margin-bottom: 40px;}
-.featureList > li:first-child{margin: 0 1% 0 0;}
-.featureList > li:last-child{margin: 0 0 0 1%;}
+.featureList > li:last-child{margin: 0 !important;}
 
 /*.featureList > li{display: inline-block; float: left; margin: 0 1%; width: 23%;}*/
 /*.featureList span{display: block; margin: 20px 0; text-transform: capitalize;}*/
 /*.featureList span.ftrFig{*//*background: #E5E9EC;*//* margin: 0; text-align:center;}*/
 
-.featureList > li{display: inline-block; float: left; margin: 0 1%; width: 23%; text-align: center;}
-.featureList span{display: block; margin: 20px 0; text-transform: capitalize; text-align: left;}
+.featureList > li{display: inline-block; float: left; margin: 0 11px; width: 106px; text-align: center;}
+.featureList span{display: block; margin: 12px 0 0; font-size: 11px; text-transform: capitalize; text-align: left;}
 .featureList span.ftrFig{/*background: #E5E9EC;*/ margin: 0; text-align: center;}
 .featureList span.ftrFig img{width: 100%;}
 
@@ -357,7 +356,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
     margin: 0;
 }
 .similarProdList span:nth-child(2) {
-    margin: 0;
+    margin: 20px 0 0;
     text-align: left;
 }
 .similarProdList span {
@@ -367,17 +366,17 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
     text-align: center;
     text-transform: uppercase;
 }
-.similarProdList span strong{display: block; font-family: gothammedium; color: #666;}
+.similarProdList span strong{display: block; font-family: gothambold; font-weight: normal; color: #666;}
 
 .reviews-cont{margin-top: 30px !important;}
 .reviewTxt{font: 19px/30px gothambold; margin: auto auto 0px; text-transform: uppercase;}
 .reviewTxt > span{text-transform: none; font-family: gothambook;}
 .block-elm .block-link a{color: #cc0033; font-size: 11px;}
 
-.fabDetail > h2{font: 32px ITCAvantGardeProBk; background: none; margin: -18px 0 0;}
-.fabDetail h2 sup{font-size: 22px;}
+.fabDetail > h2{font: 24px ITCAvantGardeProBk; background: none; margin: -18px 0 0;}
+.fabDetail h2 sup{font-size: 18px;}
 .fabDetail ul{margin-bottom: 10px;}
-.fabDetail li{font-size: 11px; text-align: center; text-transform: uppercase; line-height: 15px; width: 45%; word-wrap: break-word; display: inline-block; margin-bottom: 5%; vertical-align: top;}
+.fabDetail li{font: 9px/16px gothamMedium; text-align: center; text-transform: uppercase; width: 45%; word-wrap: break-word; display: inline-block; margin-bottom: 5%; vertical-align: top;}
 /*.fabDetail li:first-child{margin: 0 0.5% 0 0;}*/
 /*.fabDetail li:nth-child(4){margin: 0 0 0 0.5%;}*/
 .fabDetail li span{display: block; margin-bottom: 10px;}
@@ -386,15 +385,15 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .fitDetail .wdth65{float: left; width: 58%;}
 .fitDetail tr:first-child td{border-bottom: 1px solid #999; border-top: 1px solid #999; font-weight: bold; padding: 0 6px 6px;}
 .fitDetail tr:first-child td:first-child{padding-left: 0;}
-.fitDetail td{border-right: 1px solid #DCDCDC; font-size: 11px; text-transform: uppercase; padding: 6px; border-bottom: 1px solid #999;}
-.fitDetail td:first-child{font-weight: bold; padding: 6px 0; width: 26%;}
+.fitDetail td{border-right: 1px solid #DCDCDC; font-size: 10px; text-transform: uppercase; padding: 4px 6px; border-bottom: 1px solid #999;}
+.fitDetail td:first-child{font-weight: bold; padding: 4px 0; width: 26%;}
 .fitDetail td:last-child{border-right: 0 none;}
 .fitDetail td span{font-weight: normal;}
 .fitDetail li{list-style: disc outside; line-height: 20px; margin-left: 20px;}
-.size{font-size: 11px; text-transform: uppercase; font-weight: bold;}
+.size{font: 10px gothambold; text-transform: uppercase;}
 /*.video-block, .video-block img{width: 100%;}*/
-.video-design-block{text-align: center; margin-bottom: 25px; }
-.how-to-measure{color: #c03; font-size: 11px; font-family: "AvantGardeGothicITCW01B"; border-bottom: #c03 1px solid; font-weight: normal;}
+.video-design-block{text-align: center; margin-bottom: 20px; }
+.how-to-measure{color: #c03; font: 10px gothambook; border-bottom: #c03 1px solid; font-weight: normal;}
 
 .thumb-imgs{float: left; left: -130px; margin: 0; position: absolute; text-align: center; width: 17%; min-width: 10%; max-width: 138px;}
 .thumb-imgs img{width: 100%;}
@@ -421,7 +420,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .addtobag{background: url("../images/product/addtobag-btn.png") no-repeat center top; font-family: gothambold; color: #fff; text-align: center;	margin: 10px 0 15px; padding: 14px 0; text-transform: uppercase; width: 100%; display: block;}
 .addtobag:hover{text-decoration: underline; color: #fff;}
 
-.box-desc-dvdr{border-bottom: 1px solid #999; padding: 0 0 15px; margin-bottom: 15px;}
+.box-desc-dvdr{border-bottom: 1px solid #999; padding: 0 0 10px; margin-bottom: 15px;}
 .font11{font-size: 11px;}
 
 .earnbucks{display: inline-block;}
@@ -431,12 +430,12 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .social-ico {margin-bottom: 9px;}
 .social-ico img {margin: 0 5px;}
 .wishlist-link > a {border-bottom: 1px solid #CC0033;}
-table.box-desc-dvdr.smogibucks{margin-top: 20px; margin-bottom: 25px;}
+table.box-desc-dvdr.smogibucks{margin-top: 15px; margin-bottom: 15px;}
 .box-desc-dvdr.last {margin: 0;}
-.chatlink {border-bottom: 1px solid #CC0033;font-size: 11px;margin: 0 0 0 10px;text-transform: uppercase;}
-.online {color: #999999; float: right; font-style: italic; font-weight: bold; text-transform: capitalize;}
+.chatlink {border-bottom: 1px solid #CC0033;font-size: 10px;margin: 0 0 0 20px;text-transform: uppercase;}
+.online {color: #999999; float: right; font-style: italic; text-transform: capitalize;}
 .online > span {background: #00A14B; border-radius: 10px; display: inline-block; height: 9px; margin: 0 4px 0 0; width: 9px;}
-.readmore {color: #CC0033; font-size: 11px; margin: 0 5px; text-decoration: underline; text-transform: initial;}
+.readmore {color: #CC0033; font-size: 10px; margin: 0 5px; text-decoration: underline; text-transform: initial; padding: 5px 0 0;}
 /*.fitDetail > div{float: left; max-width: 32%;}*/
 /*.fitDetail > div.tble{margin: 0 4%; min-width: 60%;}*/
 .fitDetail table{display: inline-block; margin: 25px 0 0; width: 100%;}
@@ -1258,3 +1257,5 @@ li.free-shipping {
     margin: -24px 0 0;
     text-align: right;
 }
+.font10{font-size: 10px;}
+.font10{font-size: 10px;}

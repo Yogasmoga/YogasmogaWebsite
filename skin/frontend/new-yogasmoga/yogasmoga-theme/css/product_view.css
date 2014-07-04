@@ -377,10 +377,11 @@ td.popupproductdetail table.smogibucks td div.smogibuckcount,
 {
     background-image : url('../images/catalog/product/smogibuckcount_bg.png');
     background-repeat: no-repeat;
-    width : 32px;
-    height : 32px;   
+    width : 22px;
+    height : 22px;   
     margin-right : 8px;
     float: left;
+    background-size: 100% auto;
 }
 
 .product-details .smogibuckcount{
@@ -402,13 +403,12 @@ td.popupproductdetail table.smogibucks td div.smogibuckcount table td,
     /*vertical-align : middle;*/
     line-height: 0;
     text-align : center;
-    width : 32px;
-    height : 32px;
+    width : 22px;
+    height : 22px;
     color : #FFF;
-    font-family: gothamlight;
-    font-size : 14px;
-    letter-spacing: 0.2pt;
-    padding-top : 16px;
+    font-family: gothamMedium;
+    font-size : 12px;
+    padding-top : 10px;
 }
  
 td.popupproductdetail table.smogibucks td.earnsmogibuckstext
@@ -1135,7 +1135,7 @@ table.productdetailtable div#colorcontainer > div.selected table td.tdselectedco
     opacity: 0.7;
 }
 
-.fbIcon, .twtrIcon, .pinIcon{background: url("../images/product/fb.png") no-repeat center top; display: inline-block; height: 27px; width: 28px; margin: 0 0 0 5px;}
+.fbIcon, .twtrIcon, .pinIcon{background: url("../images/product/fb.png") no-repeat center top; display: inline-block; height: 22px; width: 22px; background-size: 100% auto; margin: 0 0 0 5px;}
 .fbIcon{margin: 0;}
 .twtrIcon{background-image: url("../images/product/twtr.png");}
 .pinIcon{background-image: url("../images/product/pntrst.png");}
