@@ -619,7 +619,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
             ?>
             <div class="video-design-block">
 
-                <video width="232" height="174" controls>
+                <video width="252" height="190" controls>
                     <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."design_features_video/".$_product->getDesignFeatureVideo(); ?>" type="video/mp4">
 
                 </video>
@@ -991,7 +991,7 @@ while ($row = $readresult->fetch() ) {
 }
 ?>
 <h2 class="newbg" style="margin-top:70px;">complete the look</h2>
-<ul class="similarProdList">
+<ul class="similarProdList clear">
     <?php
     //check if record is empty or not
     $upsellsimplecount = 0;
