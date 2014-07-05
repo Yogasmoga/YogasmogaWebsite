@@ -646,6 +646,7 @@ function applypromocode()
                 else
                 {   
                     showerror(''+data.errors+'');
+                    jQuery('#giftcartcode').val('');
                     jQuery('#giftcartcode').next('span').addClass("applygiftcard").empty().append("+");
                     jQuery('.zindexH').hide();
                 }
@@ -725,6 +726,7 @@ function applygiftcardcode()
             else
             {
                 showerror(''+data.error+'');
+                jQuery('#giftcartcode').val('');
                 jQuery('#giftcartcode').next('span').addClass("applygiftcard").empty().append("+");
                 jQuery('.zindexH').hide();
             }
