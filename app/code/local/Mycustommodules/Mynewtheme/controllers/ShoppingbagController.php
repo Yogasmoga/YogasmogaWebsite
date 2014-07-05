@@ -920,8 +920,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $customerId = Mage::getModel('customer/session')->getCustomerId();
         if(!$customerId)
              $html .=' <label><input type="text" name="smogi" class="gry" available="0" id="smogi" value="You must be signed in to use SMOGI Bucks" disabled="disabled"/><span  class="smogi-login">+</span></label>
-                        <label><input type="text" name="promocode" class="gry" id="promocode" value="You must be signed in to Add a promo code" disabled="disabled" /><span class="promo-login">+</span></label>
-                        <label><input type="text" name="giftcartcode" class="gry" id="giftcartcode" value="You must be signed in to add a gift card code" disabled="disabled" /><span class="giftcardlogin">+</span></label>';
+                        <label><input type="text" name="giftcartcode" class="gry" id="giftcartcode" value="You must be signed in to Promo Codes" disabled="disabled" /><span class="giftcardlogin">+</span></label>';
         else{
 
 
