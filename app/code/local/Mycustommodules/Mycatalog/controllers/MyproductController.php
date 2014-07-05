@@ -3020,9 +3020,10 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
                     }
                     //Mage::getModel('smogiexpirationnotifier/applyremovediscount')->automaticapplysmogibucks();//smogi auto apply
-                    $promotioncode = Mage::getModel('smogiexpirationnotifier/applyremovediscount')->getCouponCode();
-                    if($promotioncode)
-                        Mage::getModel('smogiexpirationnotifier/applyremovediscount')->applycouponcode(1,null);
+            // show coupon code in cart it is applied before in cart if not checkout
+                    //$promotioncode = Mage::getModel('smogiexpirationnotifier/applyremovediscount')->getCouponCode();
+                   // if($promotioncode)
+                     //   Mage::getModel('smogiexpirationnotifier/applyremovediscount')->applycouponcode(1,null);
                     $response['fname'] =  $session->getCustomer()->getFirstname();
                     $response['status'] = "success";
                     echo json_encode($response);

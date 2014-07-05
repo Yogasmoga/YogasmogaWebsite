@@ -91,14 +91,16 @@ function createCustomerAccount()
                 }
                 if(_isClickSigninMenu)
                 {
-                    automaticapplysmogibucks();
+                    //automaticapplysmogibucks();
+                    showShoppingBagHtml();
+
                 }
 
                 if(_isClickShoppingbagSignin)
                 {
                     _isClickShoppingbagSignin = false;
-                    automaticapplysmogibucks(); // automatically apply smogi bucks in the shopping cart
-                    //showShoppingBagHtml();// call showShoppingBagHtml() declared in shoppingbag.js whick is responsible for load shopping bag html
+                    //automaticapplysmogibucks(); // automatically apply smogi bucks in the shopping cart
+                    showShoppingBagHtml();// call showShoppingBagHtml() declared in shoppingbag.js whick is responsible for load shopping bag html
 
                 }
                 if(_isClickApplySmogiBucks)
@@ -109,8 +111,8 @@ function createCustomerAccount()
                 if(_isClickSmogiLogin)
                 {
                     _isClickSmogiLogin = false;
-                    automaticapplysmogibucks(); // automatically apply smogi bucks in the shopping cart
-                    //showShoppingBagHtml(); //call showShoppingBagHtml to load customer cart after login via smogi login button
+                    //automaticapplysmogibucks(); // automatically apply smogi bucks in the shopping cart
+                    showShoppingBagHtml(); //call showShoppingBagHtml to load customer cart after login via smogi login button
                 }
 
 
@@ -179,14 +181,15 @@ function loginCustomer()
                 if(_isClickSigninMenu)
                 {
 
-                    automaticapplysmogibucks();
+                    //automaticapplysmogibucks();
+                    showShoppingBagHtml();
                 }
 
                 if(_isClickShoppingbagSignin)
                 {
                     _isClickShoppingbagSignin = false;
-                    automaticapplysmogibucks(); // automatically apply smogi bucks in the shopping cart
-                    //showShoppingBagHtml();// call showShoppingBagHtml() declared in shoppingbag.js whick is responsible for load shopping bag html
+                    //automaticapplysmogibucks(); // automatically apply smogi bucks in the shopping cart
+                    showShoppingBagHtml();// call showShoppingBagHtml() declared in shoppingbag.js whick is responsible for load shopping bag html
 
                 }
                 if(_isClickApplySmogiBucks)
@@ -197,12 +200,13 @@ function loginCustomer()
                 if(_isClickSmogiLogin)
                 {
                     _isClickSmogiLogin = false;
-                    automaticapplysmogibucks(); // automatically apply smogi bucks in the shopping cart
-                    //showShoppingBagHtml(); //call showShoppingBagHtml to load customer cart after login via smogi login button
+                    //automaticapplysmogibucks(); // automatically apply smogi bucks in the shopping cart
+                    showShoppingBagHtml(); //call showShoppingBagHtml to load customer cart after login via smogi login button
                 }
                 if(_isClickContinueNotLogedin)
                 {
-                    automaticapplysmogibucks();
+                    //automaticapplysmogibucks();
+                    showShoppingBagHtml();
                 }
 
             }
