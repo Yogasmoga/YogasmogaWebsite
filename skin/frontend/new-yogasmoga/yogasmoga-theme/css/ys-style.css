@@ -107,7 +107,7 @@ p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight
 div.side-menu-bar, .side-menu-bar2{ width:225px; vertical-align:top; min-height: 300px; position: fixed;}
 div.side-menu-bar ul, .side-menu-bar2 ul, .menu-bar ul{padding: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 
-div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-transform: uppercase; font:11px/19px gothamlight; color: #666;}
+div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-transform: uppercase; font:11px/19px gothambold; color: #666;}
 div.side-menu-bar ul li a span.arr, .side-menu-bar2 ul li a span.arr, .menu-bar ul li a span.arr{visibility: hidden;}
 div.side-menu-bar2 ul li a.current,
 div.side-menu-bar2 ul li a:hover,
@@ -140,7 +140,7 @@ div.side-menu-bar ul li a:hover span.arr,
 .box-str-container .content-box{ width:50%; padding-left: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 .content-box p{font: 11px/16px gothambook; margin-bottom: 22px; }
 .content-box p:last-child{margin: 0;}
-.box-str h2.heading, .detailImg .heading, .coloumn-list li span{font:20px/25px ITCAvantGardeProMd; color: #666;  margin-bottom: 45px; text-transform: uppercase;}
+.box-str h2.heading, .detailImg .heading, .coloumn-list li span{font:19px/25px ITCAvantGardeProMd; color: #666;  margin-bottom: 45px; text-transform: uppercase;}
 .box-str h2.heading span, .detailImg .heading span{font-weight: normal; display: block; text-transform: inherit; font-family: AvantGardeGothicITCW01B; color: #666; }
 .box-str.inverse .content-box{padding-right: 20px; padding-left: 0;}
 /****Footer****/
@@ -258,7 +258,7 @@ li.new-arrivals-desc .block-link a, .block-link a{font-family: ITCAvantGardeProM
 /** YS-Tech Section **/
 .discImg{margin: 30px 0 20px;}
 ul.arw-list{display: block; margin: 0 0 25px 0; padding: 0; font-size: 13px;}
-ul.arw-list li{background: url("../images/list-arw.png") no-repeat 0 4px; display: block; line-height: 1.3; padding: 0 0 10px 15px;}
+ul.arw-list li{background: url("../images/list-arw.png") no-repeat 0 4px; display: block; line-height: 1.3; padding: 0 0 10px 15px; font-size:11px; color:#666;}
 sup {font-size: 11px; height: auto; line-height: inherit; padding: 0;}
 
 /** StorySection **/
@@ -779,7 +779,7 @@ ul.main-menu li ul.sub-menu > li > ul a, ul.main-menu2 li ul.sub-menu > li > ul:
 .product-details .block-head{font: bold 15px gothambook;}
 
 .ctglink li, .ctglink li a{font: 11px/19px gothamlight;}
-div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-transform: uppercase; font: 11px/19px gothamlight; color: #666;}
+div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-transform: uppercase; font: 11px/19px gothambold; color: #666;}
 
 .os-banner{font-size: 30px;}
 .banner-txt3{font-size: 25px;}
@@ -1285,6 +1285,8 @@ body.customer-address-index .myaccountdashboard .customeraddress td{padding-top:
 .fab-aurm.top-divider{background: url("../images/dvdr-new.jpg") no-repeat center top; background-size: 100% auto;}
 .box-str:last-child{background:none; padding-bottom:60px;}
 .cms-ys-tech-new #pagecontainer,.cms-our-story-new #pagecontainer,.cms-smogibucks #pagecontainer{background: url(../images/bot-divider.png) 50% 100% no-repeat;}
+.cms-smogibucks #pagecontainer { background: url(/skin/frontend/new-yogasmoga/yogasmoga-theme/images/bot-divider.png) no-repeat,url(/skin/frontend/new-yogasmoga/yogasmoga-theme/images/bot-divider.png) no-repeat; background-position: top center, bottom center; padding-top:52px; }
+.cms-smogibucks .box-str h2.heading{font-size:11px/19px gothambold !important;}
 
 
 /** making1024Details **/
