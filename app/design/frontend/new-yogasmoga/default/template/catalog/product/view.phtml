@@ -619,7 +619,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
             ?>
             <div class="video-design-block">
 
-                <video width="320" height="240" controls>
+                <video width="252" height="190" controls>
                     <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."design_features_video/".$_product->getDesignFeatureVideo(); ?>" type="video/mp4">
 
                 </video>
@@ -652,7 +652,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
         <h2>Fit</h2>
         <!-- heading -->
 
-        <div class="fitDetail">
+        <div class="fitDetail font11">
             <div class="video-box f-left">
                 <ul>
                     <li>Body hugging/form fitting</li>
@@ -901,7 +901,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
     </div>
     <!-- producterrorcontainer -->
 
-    <p class="l-align" style="margin-top: 10px; font-size: 12px; margin-bottom: 20px;"><em>Free and fast shipping to US and Canada</em></p>
+    <p class="c-align"><em>Free and fast shipping to US and Canada</em></p>
 </div>
 <!-- addToBag -->
 </td>
@@ -913,7 +913,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
 <!-- DetailsinGreyArea -->
 
 <!-- SMOGIBUCKS -->
-<table class="box-desc-dvdr font11 smogibucks" <?php if(!$isrewardable) { echo "style='display:none;'"; } ?>>
+<table class="box-desc-dvdr font10 smogibucks" <?php if(!$isrewardable) { echo "style='display:none;'"; } ?>>
     <tr>
         <td width="50%">
             <div class="earnbucks">
@@ -959,10 +959,10 @@ if($_product->getAttributeText('canzoomimage') == "yes")
 </table>
 <!-- SMOGIBUCKS -->
 <!-- Desicription -->
-<div class="box-desc-dvdr">
-    <p style="margin-bottom: 15px;"><strong>Need help?</strong> <a class="chatlink" href="#">chat with us</a><span class="online"><span></span>Online now</span></p>
+<div class="box-desc-dvdr font11">
+    <p style="margin-bottom: 15px;"><span sty;e="font:11px gothamBold;">Need help?</span> <a class="chatlink" href="#">chat with us</a><span class="online"><span></span>Online now</span></p>
 
-    <p style="margin-bottom: 2px;"><strong>Product description</strong><br>
+    <p style="margin-bottom: 2px; font:11px gothamBold;">Product description</p>
         <!-- description -->
         <?php  if(strlen($_product->getDescription())< 200) { ?>
     <div class="shortdesc"><?php echo $_product->getDescription(); ?> </div>
@@ -991,7 +991,7 @@ while ($row = $readresult->fetch() ) {
 }
 ?>
 <h2 class="newbg" style="margin-top:70px;">complete the look</h2>
-<ul class="similarProdList">
+<ul class="similarProdList clear">
     <?php
     //check if record is empty or not
     $upsellsimplecount = 0;
@@ -1556,7 +1556,7 @@ if($ftimage != "" && $ftimagesmall != "")
                                         <div class="blck-head-sml">
                                             <table class="selectedcolor">
                                                 <tr>
-                                                    <td><span style="font-family:gothambook;">color:</span></td>
+                                                    <td>COLOR:</td>
                                                     <td class="selectedcolortext"></td>
                                                 </tr>
                                             </table>

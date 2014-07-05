@@ -1,11 +1,3 @@
-<!-- viewWrapper -->
-<div class="2-columns-wrapper">
-<!-- leftCategoryLink -->
-<?php echo $this->getChildHtml('catalog.leftnav') ?>
-<!-- leftCategoryLink -->
-
-<!-- productGridView -->
-<div class="pg-content cntn-scrol-not">
 <?php
 $_productCollection=$this->getLoadedProductCollection();
 $_helper = $this->helper('catalog/output');
@@ -145,7 +137,7 @@ if($categoryId != '')
                              foreach($imageArr[$childProduct] as $img )
                              {
                              ?>
-                                 <img class="prd-image lazy" data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(221, 330)->setQuality(91); ?>" />
+                                 <img class="prd-image lazy" data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(181, 271)->setQuality(91); ?>" />
                              <?php
                              }
 
@@ -241,10 +233,4 @@ if($categoryId != '')
     <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
         </ul>
     <?php endif */?>
-
-</div>
-<!-- productGridView -->
-
-</div>
-<!-- viewWrapper -->
 <div class="clear-fix"></div>

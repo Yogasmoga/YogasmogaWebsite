@@ -36,7 +36,7 @@
     $_category  = $this->getCurrentCategory();
     $_imgHtml   = '';
     if ($_imgUrl = $_category->getImageUrl()) {
-        $_imgHtml = '<div class="bannerFluid"><img src="'.$_imgUrl.'" alt="'.$this->htmlEscape($_category->getName()).'" title="'.$this->htmlEscape($_category->getName()).'" /><div class="bnrtxt">Women Top</div></div>';
+        $_imgHtml = '<div class="bannerFluid"><img src="'.$_imgUrl.'" alt="'.$this->htmlEscape($_category->getName()).'" title="'.$this->htmlEscape($_category->getName()).'" /><div class="bnrtxt">Women\'s Top<span>introducing lorem</span></div></div>';
          $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
 
     }

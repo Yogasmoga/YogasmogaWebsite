@@ -398,7 +398,7 @@ ul.sub-nav li {
   /**New**/
   display: block;
 }
-ul.sub-nav li a{display: inline; font: 13px/24px gothambold; color: #58595b;}
+ul.sub-nav li a{display: inline; font: 13px/24px gothambold; color: #666;}
 ul.sub-nav li a:hover,ul.sub-nav li.current a{color: #c03;}
 ul.sub-nav li a span.arr{visibility: hidden;}
 ul.sub-nav li.current a span.arr{visibility: visible;}

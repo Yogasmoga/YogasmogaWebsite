@@ -50,14 +50,14 @@ class Mycustommodules_Mynewtheme_PromotionController extends Mage_Core_Controlle
         $remove = (string) $this->getRequest()->getParam('remove');
         if(!strlen($couponCode) && !strlen($remove) )
         {
-            $response['errors'] = "Promo code can't be empty";
+            $response['errors'] = "Please enter Promo Code.";
             echo json_encode($response);
             return;
         }
         // retrict user to apply  promotion code with gift of ys
         if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
         {
-            $response['errors'] = "Cannot apply  Promotion code with Gift of YS";
+            $response['errors'] = "You cannot apply  Promo Code with Gift Card.";
             echo json_encode($response);
             return;
         }
@@ -84,7 +84,7 @@ class Mycustommodules_Mynewtheme_PromotionController extends Mage_Core_Controlle
                     $this->_getSession()->addSuccess(
                         $this->__('Coupon code "%s" was applied.', Mage::helper('core')->htmlEscape($couponCode))
                     );
-                    $response['success_message'] = "Coupon code".$couponCode."was applied Successfully";
+                    $response['success_message'] = "Coupon code ".$couponCode." is applied Successfully.";
                     $response['status'] = "success";
                     echo json_encode($response);
                     return;
@@ -93,14 +93,14 @@ class Mycustommodules_Mynewtheme_PromotionController extends Mage_Core_Controlle
                     $this->_getSession()->addError(
                         $this->__('cpnerror-msgCoupon code "%s" is not valid.', Mage::helper('core')->htmlEscape($couponCode))
                     );
-                    $response['errors'] = "Promo code is not valid";
+                    $response['errors'] = "Promo code is not valid.";
                     echo json_encode($response);
                     return;
                 }
             } else {
                 $this->_getSession()->addSuccess($this->__('Coupon code was canceled.'));
                 $response['status'] = "success";
-                $response['success_message'] = "Promo code remove successfully.";
+                $response['success_message'] = "Promo code has been removed successfully.";
                 echo json_encode($response);
                 return;
             }
