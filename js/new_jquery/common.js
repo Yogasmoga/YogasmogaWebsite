@@ -1,5 +1,24 @@
 jQuery(document).ready(function($){
 
+	/**Menu delay**/
+
+	 $('ul.ctag-menu>li').hover(
+    function()
+    {
+      var timer = $(this).data('timer');
+      if(timer) clearTimeout(timer);
+      var li = $(this);
+      li.data('showTimer', setTimeout(function(){li.addClass('over'); },1));
+    },
+
+    function()
+    {
+      var showTimer = $(this).data('showTimer');
+      if(showTimer) clearTimeout(showTimer);
+      var li = $(this);
+      li.data('timer', setTimeout(function(){ li.removeClass('over'); }, 500));
+    });
+
    // hdrCenter();
     initializesignuppopup();
     initializeinvitepopup();
