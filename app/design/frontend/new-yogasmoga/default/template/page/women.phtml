@@ -242,7 +242,7 @@
                             $clrinfo[$row['Value']] = $row['Attribute'];
                         }
 
-                        $categoryId = 9;
+                        $categoryId = 39;
                         $i = 0;
                         $productCollection = Mage::getSingleton('catalog/category')->load($categoryId)->getProductCollection()->addAttributeToSelect('*');
                         foreach($productCollection as $_product)
@@ -321,6 +321,11 @@
                 <div class="clear-fix"></div>
 
                 <!-- Feature Product -->
+                <?php
+                $featurecategoryId = 40;
+                $featurecategory = Mage::getSingleton('catalog/category')->load($featurecategoryId);
+                $featurecategoryUrl = $featurecategory->getUrl();
+                ?>
                 <div class="clip-bg">
                     <div class="contWom featured-product">
                         <div class="ftr-txt">
@@ -331,7 +336,7 @@
                             <p>THE LIGHT WEIGHT JACKET OFFERS COOL FEATURES LIKE THE CONTRAST COLOR CUFFS AND COLLAR.</p>
                             <p>THE DOUBLE ZIPPER HELPS YOU STYLE YOUR BROOKLYN JACKET IN MULTIPLE WAYS.</p>
 
-                            <p class="block-link"><a href="#">SHOP THE BRROKLYN JACKET <strong class="in-bl">&gt;&gt;&gt;</strong></a></p>
+                            <p class="block-link"><a href="<?php echo $featurecategoryUrl; ?>">SHOP THE BRROKLYN JACKET <strong class="in-bl">&gt;&gt;&gt;</strong></a></p>
                         </div>
 
                         <div class="ftr-img">
@@ -345,6 +350,11 @@
                 <div class="clear-fix"></div>
 
                 <!-- Feature Product -->
+                <?php
+                $colorstorycategoryId = 40;
+                $colorstorycategory = Mage::getSingleton('catalog/category')->load($colorstorycategoryId);
+                $colorstorycategoryUrl = $colorstorycategory->getUrl();
+                ?>
                 <div class="divider-btm">
                     <div class="contWom featured-product">
                         <div class="ftr-txt">
@@ -354,7 +364,7 @@
 
                             <p>VIVAMUS AT NIBH NON IPSUM<br />LUCTUS ADIPISCING.</p>
 
-                            <p class="block-link"><a href="#">SHOP LIME LITE <strong class="in-bl">&gt;&gt;&gt;</strong></a></p>
+                            <p class="block-link"><a href="<?php echo $colorstorycategoryUrl;?>">SHOP LIME LITE <strong class="in-bl">&gt;&gt;&gt;</strong></a></p>
                         </div>
 
                         <div class="ftr-img">
