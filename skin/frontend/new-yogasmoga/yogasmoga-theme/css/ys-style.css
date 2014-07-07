@@ -448,7 +448,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .box-seprtr {border-bottom: 1px solid #FFFFFF; margin: 0 0 10px; padding: 10px 0;}
 .box-seprtr.last{padding: 0; margin: 0; border-bottom: 0 none;}
 .selectedsize .box-seprtr{padding-top: 0; margin-bottom: 0;}
-#sizechart,#how-does-it-fit{color: #CC0033; font-size: 10px; cursor: pointer; text-transform: initial; font-family: gothambook;}
+#sizechart,#how-does-it-fit,#size-pop-chart,#fit-how{color: #CC0033; font-size: 10px; cursor: pointer; text-transform: initial; font-family: gothambook;}
 .blck-head-sml {text-transform: uppercase; font-size: 10px;}
 .blck-head-sml span {display: inline-block; font-family: gothambold; /*width: 60px;*/ margin-right: 5px;}
 .size-list {margin: 15px 0 0;}
@@ -1150,6 +1150,7 @@ table.tblwishlist thead th{padding-bottom: 0 !important;}
 	right: 5px !important;
 	top: 3px !important;
 	width: auto !important;
+	padding: 0;
 }
 .customer-address-index .myheader{display: none;}
 .fixwidth{margin-left: 25% !important; width: 75%;}
@@ -1296,6 +1297,25 @@ li.free-shipping {
     font: 10px gothambold;
 }
 
+
 .address > span {
     font-family: gothammedium;
 }
+
+ul.design-elements{font-size: 0; text-align: left; background: url(../images/bot-divider.png) 50% 100% no-repeat; background-size: contain; background-position: top center; padding-top: 42px; margin-top: 37px;}
+ul.design-elements > li{width: 30%; text-align: left; /* min-width: 182px; */ display: inline-block; padding-right: 20px; vertical-align: top;}
+ul.design-elements > li:nth-child(3n){padding-right:0;}
+ul.design-elements li img{width:100%;}
+ul.design-elements li h2{font:11px/16px gothammedium !important; margin-top: 18px; margin-bottom: 14px;}
+ul.design-elements li p{font:11px/16px gothambook;}
+
+td#popupproductdetail table.productdetailtable div#colorcontainer>div{height: 20px !important;}
+td#popupproductdetail table.selectedcolor{margin-top: 0 !important;}
+
+/***Size chart on popup***/
+div#sizechart{width:700px; color: #666; border:none !important;}
+div#sizechart td { border-right: 1px solid #DCDCDC; font-size: 10px; text-transform: uppercase; padding: 4px 6px; border-bottom: 1px solid #999;}
+div#sizechart td:first-child { font-weight: bold; width: 26%; border-left: 1px solid #DCDCDC;}
+div#sizechart tr:first-child td {border-bottom: 1px solid #999; border-top: 1px solid #999; font-weight: bold; padding: 0 6px 6px;}
+div#sizechart td span { font-weight: normal; }
+

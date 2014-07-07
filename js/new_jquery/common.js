@@ -44,7 +44,6 @@ jQuery(document).ready(function($){
         $(".madeinusa-txt").css("top", storeF);
 
         $(window).resize(function(){
-             console.log($("table.tdbigimagecontainer").find("img.shareit").height());
             var block3H = $(".structure .block3").height();
             var usatxt = $(".madeinusa-txt").height();
 

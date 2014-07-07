@@ -1232,7 +1232,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                                         <?php if($sizechartblockid != "") {?>
                                                             <td class="sizechartlink">
                                                                 <div style="position: relative;">
-                                                                    <p class="block-link" style="margin: 0px; float: right;"><a href="javascript:void(0);" style="color:#CC0033; font-size:11px;">Size chart</a></p>
+                                                                    <p class="block-link" style="margin: 0px; float: right;"><a id="size-pop-chart" href="javascript:void(0);" style="color:#CC0033; font-size:11px;">Size chart</a></p>
                                                                     <div id="sizechart">
                                                                         <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
                                                                     </div>
@@ -1272,16 +1272,16 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
                                     <!-- selectFit -->
                                     <div class="box-seprtr">
-                                        <div class="blck-head-sml"><span class="qty">QTY</span>
+                                        <div class="blck-head-sml"><span>Step 3:</span> QTY
                                             <?php if($howdoesitfitblockid != "") { ?>
                                                 <table class="fittable">
                                                     <tr>
-                                                        <td>
+                                                        <!-- <td>
                                                             <div class="hanger"></div>
-                                                        </td>
+                                                        </td> -->
                                                         <td class="howdoesitfitlink">
                                                             <div style="position: relative;">
-                                                                <p class="block-link" style="margin: 0px; float: right;"><a href="javascript:void(0);">How does it fit?</a></p>
+                                                                <p class="block-link" style="margin: 0px; float: right;"><a id="fit-how" href="javascript:void(0);">How does it fit?</a></p>
                                                                 <div id="howdoesitfitbox">
                                                                     <div id="howdoesitfitboxinner">
                                                                         <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
@@ -1314,7 +1314,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                     */ ?>
                                     <!-- AddToBag -->
                                     <div class="box-seprtr last">
-                                        <div class="blck-head-sml"><span>Step 3</span></div>
+                                        <!-- <div class="blck-head-sml"><span>Step 3</span></div> -->
                                         <!-- addtobag-btn -->
                                         <div id="orderitem" class="addtobag spbutton" 
                                         imageurl="<?php echo $this->getNewSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>" 
@@ -1338,7 +1338,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                         </div>
                                         <!-- producterror -->
 
-                                        <p class="c-align" style="margin:10px 0 0;"><em>Free and fast shipping to US and Canada</em></p>
+                                        <p class="c-align" style="font-size:10px;"><em>Free and fast shipping to US and Canada</em></p>
                                     </div>
                                     <!-- AddToBag -->
                                 </td>
