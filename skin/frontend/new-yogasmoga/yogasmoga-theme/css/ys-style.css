@@ -95,10 +95,10 @@ p.block-desc{font-size: 35px; color:#666;}
 p.block-link{margin-top: 30px;}
 p.block-link a{font-family: "ITCAvantGardeProMd"; color: #666; font-size: 11px; text-transform: uppercase; border-bottom: #cc0033 1px solid;}
 p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight: normal;}
-.block-text2{position: absolute; top: 5%; left:6%; font-family:ITCAvantGardeProMd;}
+.block-text2{position: absolute; bottom: 5%; left:6%; font-family:ITCAvantGardeProMd;}
 .block-text2 p.bracelet-count{font-family: gothamlight; font-size: 120px; line-height: 90px; margin-left: -10px;}
 .block-text2 p.block-link a{color:#666;}
-.block-text2 span{font-size: 11px;}
+.block-text2 span{font-size: 18px;}
 .sl-desc-handle{cursor:pointer;position: absolute; width: 41px; right: 6px; bottom: -29px;}
 .flexslider .slides .sl-desc-handle img{width: 60%;}
 .slide-desc{display:none; position: absolute; right:41px; bottom:0; background-color:rgba(255,255,255,0.9); border-radius:6px 6px 0; font:11px/17px gothambook; padding:20px !important; text-align: left; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; color:#666; width:240px; height:auto;}

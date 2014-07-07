@@ -307,11 +307,11 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
                     if ($child1->getIsActive()) {
                         //show Main parent categories first level
                         if($child1->getId() == $currentcategoryid)
-                            //echo "<li><a class='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
-                        echo "<li><a class='menu-heading posRel' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
+                            echo "<li><a class='menu-heading ' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+                        //echo "<li><a class='menu-heading posRel' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
                         else
-                            //echo "<li><a class ='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
-                            echo "<li><a class='menu-heading posRel' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
+                            echo "<li><a class ='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+                            //echo "<li><a class='menu-heading posRel' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
                         // show sub categories second level
 
 //                        echo '<ul class="sub-menu"><li><ul><li><a href="">What\'s new!</a></li><li><a href="">Shop the colors!</a></li><li><a href="">Top sellers</a></li>
@@ -322,11 +322,12 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
                         $subcategories = $subcategory->getChildrenCategories();
                         foreach ($subcategories as $child2)
                         {
-                            if($child2->getIsActive()) {
+                            $subsubcategory = Mage::getModel('catalog/category')->load($child2->getId());
 
+                            if($child2->getIsActive() && $subsubcategory->getIncludeInMenu()) {
 
-                                $subsubcategory = Mage::getModel('catalog/category')->load($child2->getId());
-                                $subsubcategories = $subsubcategory->getChildrenCategories();
+                                 $subsubcategories = $subsubcategory->getChildrenCategories();
+
                                 if($subsubcategory->getChildrenCount() == 0){
                                     $firstcolumn .= "<li><a href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
                                 }
@@ -335,7 +336,9 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
                                     // show sub categories third level
                                     foreach ($subsubcategories as $child3)
                                     {
-                                        if($child3->getIsActive()) {
+                                        $subsubsubcategories = Mage::getModel('catalog/category')->load($child3->getId());
+
+                                        if($child3->getIsActive() && $subsubsubcategories->getIncludeInMenu()) {
                                             $remainingcolumn .= "<li><a href=\"".$child3->getUrl()."\">" . $child3->getName();
                                             $remainingcolumn .= "</a></li>";
                                         }
