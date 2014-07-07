@@ -93,12 +93,11 @@ table.productdetailtable div.breadcrumb a{color:#000;}
 table.productdetailtable div.breadcrumb a:hover{color:#d30d3d;}
 table.quickviewproductdetail div.productname
 {
-    font-family:ITCAvantGardeProBk, gotham  , Arial;
-    font-size: 17px; /*20px*/
-    letter-spacing: 0.4pt;
-    line-height: 1.2em;
-    margin-bottom: 10px; /*15px*/
-    padding-bottom: 10px; /*15px*/
+    border-bottom: 1px solid #fff;
+    font: 24px/29px ITCAvantGardeProBk;
+    padding-bottom: 8px;
+    margin-top: 5px;
+    color: #666;
 }
 
 .dnone{
@@ -146,7 +145,7 @@ table.productdetailtable table.selectedcolor td:first-child
 .quickviewproductdetail .blck-head-sml span {
     display: inline-block;
     font-family: gothambold;
-    width: 55px; /*60px*/
+    width: auto; /*60px*/
 }
 
 table.productdetailtable div#colorcontainer {
@@ -157,7 +156,7 @@ table.productdetailtable div#colorcontainer {
 
 table.productdetailtable div#colorcontainer > div {
     float: left;
-    height: 28px;
+    height: 20px;
     margin: 3px 3px 0 0; /*5px 5px 3px 0*/
     width: auto;
     padding: 2px;
@@ -369,7 +368,7 @@ table.productdetailtable div.divider
 
 td.popupproductdetail table.smogibucks
 {
-    width: 332px;
+    width: 100%;
 }
 
 td.popupproductdetail table.smogibucks td div.smogibuckcount,
@@ -392,6 +391,8 @@ td.popupproductdetail table.smogibucks td div.smogibuckcount,
 .earnsmogibuckstext{
     float: left;
     width: 100%;
+    color: #666;
+    font: 10px/16px gothambook;
 }
 
 .smogibucks .social-ico {
@@ -707,10 +708,10 @@ table.productdetailspopup
 
 table.productdetailspopup td.popupproductdetail
 {
-    padding-left : 19px;
-    width : 370px;
-    max-width : 370px;
-    min-width : 370px;
+    padding-right : 30px;
+    width : 281px;
+    max-width : 281px;
+    min-width : 281px;    
 }
 
 table.productdetailspopup td.popupproductdetail .box-desc-dvdr {
@@ -738,9 +739,14 @@ table.productdetailspopup td.popupproductdetail .box-desc-dvdr .social-ico {
 
 div.productoptions
 {
-    width : 302px;
-    padding: 15px;
+    width : 100%;
+    padding: 10px 15px;
     min-height: 423px;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    box-sizing:border-box;
 }
 
 td.popupproductdetail div.productoptions
@@ -1145,5 +1151,5 @@ table.productdetailtable div#colorcontainer > div.selected table td.tdselectedco
 .pinIcon:hover{background-image: url("../images/product/pntrst-ovr.png");}
 .sec-desc{display: none;}
 .dot{display: inline;}
-
+td.popupproductdetail table.smogibucks td div.smogibuckcount{margin: 0 8px 5px 0;}
 
