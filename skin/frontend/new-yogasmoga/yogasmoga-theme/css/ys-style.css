@@ -62,11 +62,7 @@ ul.main-menu2{margin-left: 0; margin-right: 20px;}
 ul.main-menu2 > li{position: relative; padding-top: 2px; height: 54px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 ul.main-menu2 a.main-heading{display: block; height: 52px;}
 ul.main-menu2 li ul.sub-menu li a{font-family: gothambook;}
-ul.main-menu2 > li:hover > ul.sub-menu/*, ul.main-menu > li:hover > ul.sub-menu*/{display: block;}
-.main-menu li.over ul
-	{
-		display: block !important;
-	}
+ul.main-menu2 > li:hover > ul.sub-menu, ul.main-menu > li:hover > ul.sub-menu{display: block;}
 .sub-menu a:hover{color:#cc0033 !important;}
 /**Search Bar**/
 .right-block{height: 80px;}
@@ -95,7 +91,7 @@ p.block-desc{font-size: 35px; color:#666;}
 p.block-link{margin-top: 30px;}
 p.block-link a{font-family: "ITCAvantGardeProMd"; color: #666; font-size: 11px; text-transform: uppercase; border-bottom: #cc0033 1px solid;}
 p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight: normal;}
-.block-text2{position: absolute; top: 5%; left:6%; font-family:ITCAvantGardeProMd;}
+.block-text2{position: absolute; top: 26%; left:6%; font-family:ITCAvantGardeProMd;}
 .block-text2 p.bracelet-count{font-family: gothamlight; font-size: 120px; line-height: 90px; margin-left: -10px;}
 .block-text2 p.block-link a{color:#666;}
 .block-text2 span{font-size: 11px;}
@@ -108,10 +104,9 @@ p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight
 .flex-direction-nav .flex-next{background: url("../images/homepage/next-slide.png") no-repeat bottom; background-size:100% 100%; width:54px; height: 66px;}
 
 /****Side bar****/
-div.side-menu-bar, .side-menu-bar2{ width:225px; vertical-align:top; min-height: 300px; position: fixed;}
+div.side-menu-bar, .side-menu-bar2{ width:270px; vertical-align:top; min-height: 300px; position: fixed;}
 div.side-menu-bar ul, .side-menu-bar2 ul, .menu-bar ul{padding: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
-
-div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-transform: uppercase; font:11px/19px gothambold; color: #666;}
+div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-transform: uppercase; font:11px/19px gothamlight; color: #666;}
 div.side-menu-bar ul li a span.arr, .side-menu-bar2 ul li a span.arr, .menu-bar ul li a span.arr{visibility: hidden;}
 div.side-menu-bar2 ul li a.current,
 div.side-menu-bar2 ul li a:hover,
@@ -130,22 +125,21 @@ div.side-menu-bar ul li a:hover span.arr,
 .cms-loader{margin-top: 100px;}
 
 /***Our Story***/
-
-.pg-content{width:auto; margin: 0 0 0 245px; vertical-align:top; color:  #666; line-height: normal;}
-.os-banner{position: relative;font-size: 40px; min-height: 300px; }
+.pg-content{width:auto; margin: 0 0 0 270px; vertical-align:top; color: #666; line-height: normal;min-height: 300px;}
+.os-banner{position: relative;font-size: 40px; min-height: 400px; }
 .os-banner img{width: 100%;} 
 .os-banner .banner-text{position:absolute; top:20%; left:7%; text-align: left;}
 .banner-text p{font:31px/25px ITCAvantGardeProMd; text-transform: uppercase;}
 .banner-text span{font-family:"AvantGardeGothicITCW01B"; text-transform: inherit;}
-.box-str-container{width: 100%; margin: 48px auto auto; }
-.box-str{background: url("../images/big-divider.png") no-repeat bottom; padding-bottom:35px; margin-bottom: 30px;background-size: contain;}
-.box-str-container .img-box{width: 47%; /*border: 1px solid #e1e1e1; padding: 2px;*/ max-width: 500px; min-width: 275px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.box-str-container{width: 95%; margin: 60px auto auto; }
+.box-str{background: url("../images/big-divider.png") no-repeat bottom; padding-bottom:30px; margin-bottom: 30px;background-size: contain;}
+.box-str-container .img-box{width: 37%; /*border: 1px solid #e1e1e1;*/ padding: 2px;}
 .box-str-container .img-box img{width: 100%;}
-.box-str-container .content-box{ width:50%; padding-left: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.box-str-container .content-box{ width:62%; padding-left: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 .content-box p{font: 11px/16px gothambook; margin-bottom: 22px; }
 .content-box p:last-child{margin: 0;}
-.box-str h2.heading, .detailImg .heading, .coloumn-list li span{font:19px/25px ITCAvantGardeProMd; color: #666;  margin-bottom: 45px; text-transform: uppercase;}
-.box-str h2.heading span, .detailImg .heading span{font-weight: normal; display: block; text-transform: inherit; font-family: AvantGardeGothicITCW01B; color: #666; }
+.box-str h2.heading, .detailImg .heading, .coloumn-list li span{font:20px/25px ITCAvantGardeProMd; color: #666; margin-bottom: 45px; text-transform: uppercase;}
+.box-str h2.heading span, .detailImg .heading span{font-weight: normal; display: block; text-transform: inherit; }
 .box-str.inverse .content-box{padding-right: 20px; padding-left: 0;}
 /****Footer****/
 #sitemap{width: 85%; margin: 0 auto;margin-top:90px; word-wrap: break-word;}
@@ -260,9 +254,9 @@ li.new-arrivals-desc .block-desc{margin-bottom: 25px; font-size: 35px;}
 li.new-arrivals-desc .block-link a, .block-link a{font-family: ITCAvantGardeProMd; font-size: 14px;}
 
 /** YS-Tech Section **/
-.discImg{margin: 30px 0 20px;}
+.discImg{margin: 40px 0 20px;}
 ul.arw-list{display: block; margin: 0 0 25px 0; padding: 0; font-size: 13px;}
-ul.arw-list li{background: url("../images/list-arw.png") no-repeat 0 4px; display: block; line-height: 1.3; padding: 0 0 10px 15px; font-size:11px; color:#666;}
+ul.arw-list li{background: url("../images/list-arw.png") no-repeat 0 4px; display: block; line-height: 1.3; padding: 0 0 10px 15px;}
 sup {font-size: 11px; height: auto; line-height: inherit; padding: 0;}
 
 /** StorySection **/
@@ -383,8 +377,8 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 
 
 .featureList span{display: block; margin: 12px 0 0; font-size: 11px; text-transform: capitalize; text-align: left;}
-.featureList span.ftrFig{/*background: #E5E9EC;*/ margin: 0; text-align: left; height: 200px; overflow: hidden;}
-.featureList span.ftrFig img{/*width: 100%;*/ height:100%;}
+.featureList span.ftrFig{/*background: #E5E9EC;*/ margin: 0; text-align: center; height: 159px}
+.featureList span.ftrFig img{width: 100%;}
 
 .similarProdList{margin: auto auto 20px; width: auto; font-size: 11px; color: #666;}
 .similarProdList a {
@@ -725,15 +719,13 @@ span.country {
 .shdow-search-box {box-shadow: 0 0 3px rgba(219, 135, 38, 1); -webkit-box-shadow: 0 0 3px rgba(219, 135, 38, 1); -moz-box-shadow: 0 0 3px rgba(219, 135, 38, 1); border: 1px solid rgba(219, 135, 38, 1);}
 
 /** SMOGI Bucks Page **/
-.cms-smogibucks .smogi-bucks{width:58%; margin:0 auto;}
 .smogi-bucks .box-str {background: none repeat scroll 0 0 rgba(0, 0, 0, 0); margin: 0 0 50px; padding: 0;}
 .smogi-bucks .box-str .heading {margin: 0 0 10px;}
-.smogi-bucks .content-box {padding: 0;width: 100% !important;}
+.smogi-bucks .content-box {padding: 0;width: 100%;}
 .content-box ol li:last-child {padding-bottom: 0;}
 .content-box ol li {font: 14px/1.5 gothambook;list-style: decimal inside none;padding: 0 20px 15px;}
 .smogi-bucks .content-box ul {margin-top: 20px;}
 .smogi-bucks .content-box ul li {font: 14px/35px gothambook;list-style: none outside none;}
-.smogi-val-img{display: block; margin-bottom: 18px; margin-top: -5px;}
 
 /** productDetailPage **/
 .smallimagecontiner td.selectedimage {opacity: 0.5;}
@@ -759,7 +751,7 @@ span.country {
 /*.video-box ul, .vlink-cont{float: left; width: 50%;}*/
 .gry-box{float: right; width: 90%;}
 table.productimagecontainer table.tdbigimagecontainer td img{width: 90% !important; float: none;}
-/*table.productimagecontainer{min-height: 560px !important;}*/
+table.productimagecontainer{min-height: 560px !important;}
 .show-prodImg{width: 74%; margin: 0; float: right;}
 .thumb-imgs img{width: 80%;}
 
@@ -781,10 +773,8 @@ ul.new-arrivals a.quick-view{min-height: inherit;}
 ul.main-menu li ul.sub-menu > li > ul:first-child a{font: bold 11px gothambook;}
 ul.main-menu li ul.sub-menu > li > ul a, ul.main-menu2 li ul.sub-menu > li > ul:first-child a, ul.tr-menu > li > ul.sub-menu li a, ul.main-menu2 li ul.sub-menu li a{font-weight: normal;}
 .product-details .block-head{font: bold 15px gothambook;}
-
 .ctglink li, .ctglink li a{font: 11px/19px gothamlight;}
-div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-transform: uppercase; font: 11px/19px gothambold; color: #666;}
-
+div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-transform: uppercase; font: 11px/19px gothamlight; color: #666;}
 .os-banner{font-size: 30px;}
 .banner-txt3{font-size: 25px;}
 
@@ -800,8 +790,6 @@ ul.site-map>li{width: 30%; margin-bottom: 40px;}
 body{overflow-x:auto !important; }
 .account-nav{position: absolute !important;}
 .block-elm{padding-left: 5px;}
-.box-str-container .content-box{width:44%; padding-left: 0;}
-.box-str.inverse .content-box{padding-right:0;}
 }
 
 .dnone.dblock, .dblock{display: inline !important;}
@@ -1168,12 +1156,12 @@ table.tblwishlist thead th{padding-bottom: 0 !important;}
 .fixwidth{margin-left: 25% !important; width: 75%;}
 .data-table.ys{min-width: 100% !important;}
 .dashboard-address-book{max-width: 700px; min-width: 500px;}
-.accountbg #mainimage,body.gift_of_ys .gift-of-ys,body.rewardpoints-index-referral .accountbg,{margin-top: 10px !important; background: url(../images/bot-divider.png) 50% 100% no-repeat;}
+.accountbg #mainimage,body.gift_of_ys .gift-of-ys,body.rewardpoints-index-referral .accountbg{margin-top: 10px !important; background: url(../images/bot-divider.png) 50% 100% no-repeat;}
 body.gift_of_ys .gift-of-ys{width: 100%; text-align: center;}
 .addedItem .similarProdList>li{width: 100%;}
 .show-prodImg{width: 74%; margin: 0; float: right;}
 .thumb-imgs{left: 0;}
-table.productimagecontainer{margin-bottom: 70px; /*min-height: 620px;*/}
+table.productimagecontainer{margin-bottom: 70px; min-height: 620px;}
 #cardredeemform .redeem-giftcard{margin-top: 0 !important;}
 .goy-balance{min-height:250px; max-height:250px; background: #efefef; padding: 25px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; max-width: 400px; width: 48% !important; display: inline-block !important; vertical-align: top; position: relative;
 }
@@ -1272,7 +1260,7 @@ body.sales-order-view #my-orders-table{border-left: none;}
 body.sales-order-view #my-orders-table thead tr th:first-child, body.sales-order-view #my-orders-table tbody tr td:first-child{border-left:1px solid #efefef;}
 /****/
 
-.cms-our-story-new .top-divider,.cms-ys-tech-new .top-divider{margin: 0 0 0 !important;}
+.2-columns-wrapper .top-divider{margin-top: 0 !important;}
 #wishlist-view-form .globalmsg{font-family: ITCAvantGardeProMd !important; color: #666 !important; font-weight: normal !important;}
 #wishlist-view-form p.wishlist-empty{font-family: gothambook !important; }
 .continueshopppingbtn{color: #fff; font-style: normal; font-variant: normal; font-weight: normal; font-size: 12px; line-height: normal; font-family: gothambold; text-transform: uppercase; background-image: url(../images/shopping-cart/grn-btn.png) !important; width: 184px !important; height: 48px !important;}
@@ -1281,16 +1269,12 @@ body.customer-address-index .myaccountdashboard .customeraddress th,
 body.customer-address-index .myaccountdashboard .customeraddress td,
 body.customer-address-index .myaccountdashboard .customeraddress a.addressLink,
 body.customer-address-index .myaccountdashboard a
-{font-family: gothambook; font-size: 11px !important; color: #666 !important; text-transform: capitalize;}
+{font-family: gothambook; font-size: 13px !important; color: #666 !important; text-transform: capitalize;}
 body.customer-address-index .myaccountdashboard .customeraddress td{padding-top: 0 !important;}
 
-.cms-our-story-new .pg-content,.cms-ys-tech-new .pg-content{padding-right: 20%;}
-.cms-ys-tech-new .box-str h2.heading{margin-bottom:15px;}
-.fab-aurm.top-divider{background: url("../images/dvdr-new.jpg") no-repeat center top; background-size: 100% auto;}
-.box-str:last-child{background:none; padding-bottom:60px;}
-.cms-ys-tech-new #pagecontainer,.cms-our-story-new #pagecontainer,.cms-smogibucks #pagecontainer{background: url(../images/bot-divider.png) 50% 100% no-repeat;}
-.cms-smogibucks #pagecontainer { background: url(../images/bot-divider.png) no-repeat,url(../images/bot-divider.png) no-repeat; background-position: top center, bottom center; padding-top:52px; }
-.cms-smogibucks .box-str h2.heading{font-size:11px/19px gothambold !important;}
+
+
+
 
 
 /** making1024Details **/
@@ -1312,10 +1296,3 @@ li.free-shipping {
 .site-map .gothambd {
     font: 10px gothambold;
 }
-
-ul.design-elements{font-size: 0; text-align: left; background: url(../images/bot-divider.png) 50% 100% no-repeat; background-size: contain; background-position: top center; padding-top: 42px; margin-top: 37px;}
-ul.design-elements > li{width: 30%; text-align: left; /* min-width: 182px; */ display: inline-block; padding-right: 20px; vertical-align: top;}
-ul.design-elements > li:nth-child(3n){padding-right:0;}
-ul.design-elements li img{width:100%;}
-ul.design-elements li h2{font:11px/16px gothammedium !important; margin-top: 18px; margin-bottom: 14px;}
-ul.design-elements li p{font:11px/16px gothambook;}
