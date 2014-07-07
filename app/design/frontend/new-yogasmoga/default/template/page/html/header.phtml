@@ -241,12 +241,15 @@ if($serverType == 'production')
                 });
             });
         </script>
-        <!--Start of Zopim Live Chat Script-->
 <?php
 $currentUrl = $this->helper('core/url')->getCurrentUrl();
-$currentUrl= $currentUrl.'/';
-if($currentUrl != $this->getUrl('checkout/onepage') || $currentUrl != $this->getUrl('checkout/onepage/success')){
-?><script type="text/javascript">
+$checkoutpage= $this->getUrl().'checkout/cart';
+$successpage= $this->getUrl().'checkout/onepage/success';
+
+if($currentUrl != $checkoutpage){
+?>
+<!--Start of Zopim Live Chat Script-->
+<script type="text/javascript">
 window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
 d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
 _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
