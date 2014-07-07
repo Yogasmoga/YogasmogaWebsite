@@ -244,7 +244,8 @@
 
                         $categoryId = 39;
                         $i = 0;
-                        $productCollection = Mage::getSingleton('catalog/category')->load($categoryId)->getProductCollection()->addAttributeToSelect('*');
+                        $newarrivals = Mage::getSingleton('catalog/category')->load($categoryId);
+                        $productCollection = $newarrivals->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
                         foreach($productCollection as $_product)
                         {
                             if($i==4)break;$i++;
@@ -307,7 +308,7 @@
                             <p class="block-head">NEW ARRIVALS</p>
                             <p class="block-desc">SPRING IS IN.</p>
                             <p class="block-link">
-                                <a href="" class="grey">SHOP COLLECTION <strong class="in-bl">>>></strong></a>
+                                <a href="<?php echo $newarrivals->getUrl(); ?>" class="grey">SHOP COLLECTION <strong class="in-bl">>>></strong></a>
                             </p>
                         </li>
                     </ul>                    
@@ -324,7 +325,7 @@
                 <?php
                 $featurecategoryId = 40;
                 $featurecategory = Mage::getSingleton('catalog/category')->load($featurecategoryId);
-                $featurecategoryUrl = $featurecategory->getUrl();
+                $featurecategoryUrl = Mage::getBaseUrl().$featurecategory->getUrlPath();
                 ?>
                 <div class="clip-bg">
                     <div class="contWom featured-product">
@@ -351,9 +352,9 @@
 
                 <!-- Feature Product -->
                 <?php
-                $colorstorycategoryId = 40;
+                $colorstorycategoryId = 41;
                 $colorstorycategory = Mage::getSingleton('catalog/category')->load($colorstorycategoryId);
-                $colorstorycategoryUrl = $colorstorycategory->getUrl();
+                $colorstorycategoryUrl = Mage::getBaseUrl().$colorstorycategory->getUrlPath();
                 ?>
                 <div class="divider-btm">
                     <div class="contWom featured-product">
