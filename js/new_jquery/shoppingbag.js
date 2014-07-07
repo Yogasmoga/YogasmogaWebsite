@@ -30,7 +30,7 @@ jQuery(document).ready(function($){
     $("div.adddields span").live("click",function(){  
          if(!$(this).attr('class')){
 //             showerror('You cannot use Smogi Bucks and Promo Code / Gift Card Code together.');   
-             showerror("You can't use other codes now.");   
+             showerror("You cannot use other codes now.");   
              
          }
     });
