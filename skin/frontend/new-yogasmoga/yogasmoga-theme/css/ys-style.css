@@ -59,8 +59,8 @@ ul.tr-menu > li > ul.sub-menu li.last{padding-bottom: 10px;}
 ul.tr-menu > li > ul.sub-menu li.blank{height: 23px; background: url("../images/menu_arrow.png") no-repeat 79px bottom rgba(230,230,230,0.9); background-size: 17px 14px;}
 ul.tr-menu > li:hover > ul.sub-menu{display: block;}
 ul.main-menu2{margin-left: 0; margin-right: 20px;}
-ul.main-menu2 > li{position: relative; padding-top: 2px; height: 54px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
-ul.main-menu2 a.main-heading{display: block; height: 52px;}
+ul.main-menu2 > li{position: relative; padding-top: 2px; height: 55px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+ul.main-menu2 a.main-heading{display: block; height: 53px;}
 ul.main-menu2 li ul.sub-menu li a{font-family: gothambook;}
 ul.main-menu2 > li:hover > ul.sub-menu, ul.main-menu > li:hover > ul.sub-menu{display: block;}
 .sub-menu a:hover{color:#cc0033 !important;}
@@ -515,7 +515,7 @@ table.box-desc-dvdr.smogibucks{margin-top: 15px; margin-bottom: 15px;}
 
 
 /** checkoutPage **/
-.checkout-detail{width: 100%; display: inline-block; color:#666; font:12px/20px gothambook, arial;}
+.checkout-detail{width: 100%; display: inline-block; color:#666; font:11px/16px gothambook, arial;}
 ul.checkout-cont{margin: 0; padding: 0; width: 100%; list-style: none; margin:20px 0 0;}
 ul.checkout-cont li {float:left; margin: auto; border-left:1px solid #fff; min-height: 600px; padding: 20px 0 0; position: relative; width: 33.2%;}
 ul.checkout-cont li.active{background: url('../images/big-divider.png') no-repeat center top; background-size: 100% auto;}
@@ -535,7 +535,6 @@ span.address {
 .gryWrap span{clear:both; display:block;}
 .gryWrap span:nth-child(1) {
     display: inline;
-    font-weight: bold;
 }
 .selectCreditCard, .selectAddress, .shippingOption {
     border: 1px solid #9f9f9f;
@@ -580,7 +579,7 @@ ul.checkout-cont li > .selectAddress ul li span{
     text-transform: uppercase;
 }
 .showShippingOpt, .showUpdateAdd{display:none; border-top: 1px solid #9f9f9f; margin: 8px 0 0; padding: 8px 0 0;}
-.showUpaddnew, .showUpadd, .showCreOpt, .showShpOpt{background: url('../images/arwbtm.jpg') no-repeat top left; background-size: 100% auto; width:15px; height:13px; float:right; margin:5px 0 0; cursor:pointer;}
+.showUpaddnew, .showUpadd, .showCreOpt, .showShpOpt{background: url('../images/arwbtm.jpg') no-repeat top left; background-size: 100% auto; width:15px; height:13px; float:right; margin:3px 0 0; cursor:pointer;}
 .showUpadd.reverse, .showShpOpt.reverse{background: url('../images/arwtop.jpg') no-repeat top left;}
 .continueBtn{
 	background: url('../images/contBtn.jpg') no-repeat top left;
@@ -1295,4 +1294,8 @@ li.free-shipping {
 
 .site-map .gothambd {
     font: 10px gothambold;
+}
+
+.address > span {
+    font-family: gothammedium;
 }

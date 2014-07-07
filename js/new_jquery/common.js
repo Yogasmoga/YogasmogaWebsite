@@ -264,17 +264,15 @@ function getCookie(cname)
     return "";
 }
 
-function hdrCenter(){
-    var _wnWdth = jQuery(window).width();
+// function hdrCenter(){     var _wnWdth = jQuery(window).width();
 
-    var _hdrWdth = jQuery(".header-container").width();
+//     var _hdrWdth = jQuery(".header-container").width();
 
-    var dvdWdth = _wnWdth - _hdrWdth;
+//     var dvdWdth = _wnWdth - _hdrWdth;
 
-    var fCount = dvdWdth/2;
+//     var fCount = dvdWdth/2;
 
-    alert(fCount);
+//     alert(fCount);
 
 
-    jQuery(".header-container").css("left", fCount);
-}
+//     jQuery(".header-container").css("left", fCount); // }

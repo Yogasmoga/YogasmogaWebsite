@@ -191,7 +191,7 @@ a.forgot-link:hover
 {
     text-transform:uppercase;
     font-family:gothambook;
-    font-size : 14px;
+    font-size : 11px;
     margin-bottom : 15px;
     
 }
@@ -321,12 +321,12 @@ div.shippingfootnote span.shippingnote
 
 .customeraddress td  {
 	font-family:gothamlight;
-	font-size:13px;
+	font-size:11px;
 }
 
 .giftcard-balance {
   font-family: gotham-l;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: normal;
   letter-spacing: 0.03em;
   line-height: 1.2;
@@ -388,7 +388,7 @@ button.button.btn-check
     margin-top : -7px;
 }
 .account-nav{margin-bottom:28px; /***NEW***/ width:270px; position: fixed;}
-ul.sub-nav{text-indent:0; list-style:none; padding:10px; margin:0; font-family:gotham, Arial; font-size:13px; text-transform:uppercase; /*text-align:center;*/ text-align: left; line-height:24px;}
+ul.sub-nav{text-indent:0; list-style:none; padding:10px; margin:0; font-family:gothambook, Arial; font-size:11px; text-transform:uppercase; /*text-align:center;*/ text-align: left; line-height:24px;}
 ul.sub-nav li {
   /*background: url("../images/subsep.png") no-repeat scroll 100% 50% transparent;*/
   /*display: inline;*/  
@@ -398,7 +398,7 @@ ul.sub-nav li {
   /**New**/
   display: block;
 }
-ul.sub-nav li a{display: inline; font: 13px/24px gothambold; color: #666;}
+ul.sub-nav li a{display: inline; font: 11px/16px gothammedium; color: #666;}
 ul.sub-nav li a:hover,ul.sub-nav li.current a{color: #c03;}
 ul.sub-nav li a span.arr{visibility: hidden;}
 ul.sub-nav li.current a span.arr{visibility: visible;}
@@ -422,7 +422,7 @@ ul.sub-nav a{display:inline;}
 {
     text-align: center !important;
     font-family : gothamlight;
-    font-size : 13px;
+    font-size : 11px;
     letter-spacing: 0.2pt;
 }
 .referfriend-subheader
@@ -527,7 +527,7 @@ table.referfriend-invitehead td.potential
 table.referfriend-invitehead td.potential span
 {
     font-family : gothamlight;
-    font-size : 13px;
+    font-size : 11px;
     background-image : url('../images/bkg_divider1.gif');
     background-repeat: repeat-x;
     background-position: bottom;
@@ -539,7 +539,7 @@ table.referfriend-invitehead td.potential span
 div#referafriend-container p
 {
     font-family : gothamlight;
-    font-size : 13px;
+    font-size : 11px;
     letter-spacing: 0.2pt;
     color : black;
     text-align: left;
@@ -551,7 +551,7 @@ table.referfriendforms
 table.referfriendforms th
 {
     font-family : gothamlight;
-    font-size : 13px;
+    font-size : 11px;
     letter-spacing : 0.4pt;
     color : #666;
 }
@@ -625,7 +625,7 @@ table.referredfriendslist th
 {
     color: #666666;
     font-family: gothamlight;
-    font-size: 13px;
+    font-size: 11px;
     letter-spacing: 0.4pt;
     padding-bottom : 15px;
 }
@@ -640,7 +640,7 @@ table.referredfriendslist th sup
 table.referredfriendslist td
 {
     font-family: gothamlight;
-    font-size: 13px;
+    font-size: 11px;
     letter-spacing: 0.4pt;
     color : #2F2F2F;
 }
