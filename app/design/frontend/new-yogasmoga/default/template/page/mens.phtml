@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ *
  * Magento
  *
  * NOTICE OF LICENSE
@@ -33,237 +33,241 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
 <head>
-<?php
+    <?php
     if($this->getRequest()->getParam('video') == 'true')
     {
         ?>
-            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb01.png" />
-            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb02.png" />
-            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb03.png" />
-            <meta property="og:title"content="YOGASMOGA | Did You Take a Breath Today?" />
-            <meta property="og:description"content="We are YOGASMOGA, We make things for life - One breath at a time." />
-        <?php
+        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb01.png" />
+        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb02.png" />
+        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb03.png" />
+        <meta property="og:title"content="YOGASMOGA | Did You Take a Breath Today?" />
+        <meta property="og:description"content="We are YOGASMOGA, We make things for life - One breath at a time." />
+    <?php
     }
     else
     {
         ?>
-            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/Untitled_Panorama2_c_1.jpg" />
-            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga_mood_2395.jpg" />
-            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/Yogasmoga_op.jpeg" />
-            <meta property="og:title"content="YOGASMOGA" />
-            <meta property="og:description"content="We are YOGASMOGA. We make things for LIFE. One breath at a time." />
-        <?php
+        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/Untitled_Panorama2_c_1.jpg" />
+        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga_mood_2395.jpg" />
+        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/Yogasmoga_op.jpeg" />
+        <meta property="og:title"content="YOGASMOGA" />
+        <meta property="og:description"content="We are YOGASMOGA. We make things for LIFE. One breath at a time." />
+    <?php
     }
-?>
+    ?>
 
-<?php echo $this->getChildHtml('head') ?>
+    <?php echo $this->getChildHtml('head') ?>
 
-<?php
+    <?php
     //if(Mage::getSingleton('core/session')->getShowVideo())
     if($this->getRequest()->getParam('video') == 'true')
     {
         //Mage::getSingleton('core/session')->setShowVideo(false);
         ?>
         <script type="text/javascript">
-			var loc = window.location;
-			history.replaceState("", document.title, loc.pathname + "breathe");
+            var loc = window.location;
+            history.replaceState("", document.title, loc.pathname + "breathe");
             jQuery(window).load(function(){
-				setTimeout(function(){$j("#hmpagevideo").trigger('click')},1000);
+                setTimeout(function(){$j("#hmpagevideo").trigger('click')},1000);
             });
         </script>
-        <?php
+    <?php
     }
-?>
-<script type="text/javascript">
-    jQuery(window).load(function(){
-        jQuery("div.showloading").removeClass('showloading');
-        setTimeout(function(){setfullscreenheight();},50);
-    });
-    jQuery(document).ready(function(){
-       setTimeout(function(){
-            jQuery("div.page-overlayy").remove();
-            jQuery("body").css('overflow','auto');
-       }, 500); 
-    });
-</script>    
+    ?>
+    <script type="text/javascript">
+        jQuery(window).load(function(){
+            jQuery("div.showloading").removeClass('showloading');
+            setTimeout(function(){setfullscreenheight();},50);
+        });
+        jQuery(document).ready(function(){
+            setTimeout(function(){
+                jQuery("div.page-overlayy").remove();
+                jQuery("body").css('overflow','auto');
+            }, 500);
+        });
+    </script>
 </head>
 <body class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>" style="margin-right:17px;overflow:hidden;">
 <?php echo $this->getChildHtml('after_body_start') ?>
 <div class="wrapper">
 <div class="page-overlayy" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">&nbsp;</div>
-    <?php echo $this->getChildHtml('global_notices') ?>
-    <div class="page">
-        <?php echo $this->getChildHtml('header') ?>
-            <div id="pagecontainer">
-                <!-- WelcomeSection Slider -->
-                <div id="Welcome" class="fullscreenovfhidden flexslider showloading" desc="Welcome to YOGASMOGA" style="border: none;border-radius : none;box-shadow:none;margin:0px;" tw-summary="">
-                    <ul class="slides" id="homemainslider">
-                        <li>
-                          <img class="fullscreen" src="<?php echo $this->getSkinUrl('images/homepage/welcomes_banner1.jpg') ?>" alt="WE MAKE THINGS FROM THE HEART AND WITH LOVE— FOR WHEREVER LIFE TAKES YOU." iwidth="1600" iheight="900" />
+<?php echo $this->getChildHtml('global_notices') ?>
+<div class="shopping-cart">
 
-                            <div style="color : #333; left: 21%; top: 80%;" class="banner-txt3 promo2310">
-                        <a href="/women_landing">
-                            <img style="width:80%; margin:0 auto !important;" alt="SHOP WOMEN" src="http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/shop_women.png">
-                        </a>
-                        </div>
-                        <div style="color : #333; left: 68%; top: 80%;" class="banner-txt3 promo2310">
-                        <a href="/mens_landing">
-                            <img style="width:80%; margin:0 auto !important;" alt="SHOP MEN" src="http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/shop_men.png">
-                        </a>
-                        </div>
+</div>
+<div class="page">
+<?php echo $this->getChildHtml('header') ?>
+<div id="pagecontainer">
+<!-- WelcomeSection Slider -->
+<div id="Welcome" class="fullscreenovfhidden flexslider showloading" desc="Welcome to YOGASMOGA" style="border: none;border-radius : none;box-shadow:none;margin:0px;" tw-summary="">
+    <ul class="slides" id="homemainslider">
+        <li>
+            <img class="fullscreen" src="<?php echo $this->getSkinUrl('images/homepage/welcomes_banner1.jpg') ?>" alt="WE MAKE THINGS FROM THE HEART AND WITH LOVE— FOR WHEREVER LIFE TAKES YOU." iwidth="1600" iheight="900" />
 
-                            <div style="position: absolute; width: 285px; right: 4.625%; z-index:99; bottom: 10%; height: 131px;" id="playBtn" >
-                                <div class="sl-desc-handle">
-                                        <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
-                                </div>
-                                <div class="slide-desc" style="">1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nulla lacus, tincidunt vel mi quis come modo elementum diam.</div>
-                            </div>
-                        </li>
-                        <li>
-                          <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/spring-collection.jpg" alt="PUT A LITTLE SPRING IN YOUR STEP" iwidth="1600" iheight="900" />
+            <div style="color : #333; left: 21%; top: 80%;" class="banner-txt3 promo2310">
+                <a href="/women_landing">
+                    <img style="width:80%; margin:0 auto !important;" alt="SHOP WOMEN" src="http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/shop_women.png">
+                </a>
+            </div>
+            <div style="color : #333; left: 68%; top: 80%;" class="banner-txt3 promo2310">
+                <a href="/mens_landing">
+                    <img style="width:80%; margin:0 auto !important;" alt="SHOP MEN" src="http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/shop_men.png">
+                </a>
+            </div>
 
-                            <div class="banner-txt3 promo2310" style="color : #333; left : 5%;">
-                            <table>
-                            <tr>
-                                <td>PUT A LITTLE SPRING</td>
-                            </tr>
-                            <tr>
-                                <td>IN YOUR STEP.</td>
-                            </tr>
-                            </table>
-                            <span style="color: rgb(51, 51, 51); padding-top: 28px ! important; font-size:18px;">NEW COLORS, NEW DESIGNS, NEW STYLES<br />FOR SPRING.</span>
+            <div style="position: absolute; width: 285px; right: 4.625%; z-index:99; bottom: 10%; height: 131px;" id="playBtn" >
+                <div class="sl-desc-handle">
+                    <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                </div>
+                <div class="slide-desc" style="">1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nulla lacus, tincidunt vel mi quis come modo elementum diam.</div>
+            </div>
+        </li>
+        <li>
+            <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/spring-collection.jpg" alt="PUT A LITTLE SPRING IN YOUR STEP" iwidth="1600" iheight="900" />
+
+            <div class="banner-txt3 promo2310" style="color : #333; left : 5%;">
+                <table>
+                    <tr>
+                        <td>PUT A LITTLE SPRING</td>
+                    </tr>
+                    <tr>
+                        <td>IN YOUR STEP.</td>
+                    </tr>
+                </table>
+                <span style="color: rgb(51, 51, 51); padding-top: 28px ! important; font-size:18px;">NEW COLORS, NEW DESIGNS, NEW STYLES<br />FOR SPRING.</span>
                             <span style="text-transform: none; font-family: gothamlight; font-size: 13px; color: rgb(51, 51, 51); padding-top: 27px ! important;">
                             Introducing <a style="color: #d90d3d;" href="/our-edge#fabrictechnology">AURUM&trade; Stripe</a> & <a style="color: #d90d3d;" href="/our-edge#fabrictechnology">AURUM&trade; 24</a>  – the most advanced<br /> performance fabrics. Feel the softness and breathability with<br /> advanced moisture management of superior fiber technology.</span>
                             <span style="text-align: left; display: inline; float: left; margin-left: 0px ! important; font-size: 13px; padding-top: 42px ! important;" class="banner-txt3-link">
                                 <a href="/women_landing" style="font-family: ITCAvantGardeProMd; color : #333;font-size:15px;">
-                                shop the new SPRING collection <strong style="">&gt;&gt;&gt;</strong>
+                                    shop the new SPRING collection <strong style="">&gt;&gt;&gt;</strong>
                                 </a>
                             </span>
-                            </div>
-                            <div style="position: absolute; width: 285px; right: 4.625%; z-index:99; bottom: 10%; height: 131px;" id="playBtn" >
-                                <div class="sl-desc-handle">
-                                        <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
-                                </div>
-                                <div class="slide-desc" style="">2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nulla lacus, tincidunt vel mi quis come modo elementum diam.</div>
-                            </div>
-                        </li>
-                        <li>
-                          <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/homepage_RJP1.jpg" alt="THE ULTIMATE YOGA PANT. RUN JUMP 'N PLAY CROP" iwidth="1600" iheight="900" />
+            </div>
+            <div style="position: absolute; width: 285px; right: 4.625%; z-index:99; bottom: 10%; height: 131px;" id="playBtn" >
+                <div class="sl-desc-handle">
+                    <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                </div>
+                <div class="slide-desc" style="">2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nulla lacus, tincidunt vel mi quis come modo elementum diam.</div>
+            </div>
+        </li>
+        <li>
+            <img class="fullscreen" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/homepage_RJP1.jpg" alt="THE ULTIMATE YOGA PANT. RUN JUMP 'N PLAY CROP" iwidth="1600" iheight="900" />
 
-                            <div class="banner-txt3 promo2310" style="color : #333; left : 5%;">
-                            <table>
-                            <tr>
-                                <td>THE ULTIMATE YOGA PANT:</td>
-                            </tr>
-                            <tr>
-                                <td>RUN JUMP &#39;N PLAY CROP.</td>
-                            </tr>
-                            </table>
-                            <span style="color: rgb(51, 51, 51); padding-top: 28px ! important; font-size:18px;">RUN FASTER. JUMP HIGHER. PLAY HARDER.</span>
-                            <span style="text-transform: none; font-family: gothamlight; font-size: 13px; color: rgb(51, 51, 51); padding-top: 27px ! important;">Whatever your game is, this cropped pant instantly transforms you<br/> into a stunning vision of curves and strength. </span>
+            <div class="banner-txt3 promo2310" style="color : #333; left : 5%;">
+                <table>
+                    <tr>
+                        <td>THE ULTIMATE YOGA PANT:</td>
+                    </tr>
+                    <tr>
+                        <td>RUN JUMP &#39;N PLAY CROP.</td>
+                    </tr>
+                </table>
+                <span style="color: rgb(51, 51, 51); padding-top: 28px ! important; font-size:18px;">RUN FASTER. JUMP HIGHER. PLAY HARDER.</span>
+                <span style="text-transform: none; font-family: gothamlight; font-size: 13px; color: rgb(51, 51, 51); padding-top: 27px ! important;">Whatever your game is, this cropped pant instantly transforms you<br/> into a stunning vision of curves and strength. </span>
                             <span style="text-align: left; display: inline; float: left; margin-left: 0px ! important; font-size: 13px; padding-top: 42px ! important;" class="banner-txt3-link">
                                 <a href="/women/run-jump-n-play-crop-1288" style="font-family: ITCAvantGardeProMd; color : #333;font-size:15px;">
-                                SHOP run jump ‘n play crop <strong style="">&gt;&gt;&gt;</strong>
+                                    SHOP run jump ‘n play crop <strong style="">&gt;&gt;&gt;</strong>
                                 </a>
                             </span>
-                            </div>
-                            <div style="position: absolute; width: 285px; right: 4.625%; z-index:99; bottom: 10%; height: 131px;" id="playBtn" >
-                                <div class="sl-desc-handle">
-                                        <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
-                                </div>
-                                <div class="slide-desc" style="">3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nulla lacus, tincidunt vel mi quis come modo elementum diam.</div>
-                            </div>
-                        </li>
-                        <li style="background-color: #FFF;">
-                            <img mymargin="70" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_12/img1.jpg" alt="OUR CORE VALUE IS GIVING, OUR GIFT IS NAMASKAR " style="position: absolute; height: 100%; right: 0 !important; width: auto;min-height:660px;" />
-
-                            <div class="banner-txt3 promo2310 promo1311" style="color : #666;left : 9%; top : 30%">
-                            OUR CORE VALUE IS<br />GIVING, OUR GIFT IS<br />NAMASK&Aacute;R.<br />
-                            <span style="color: #666;">WE CREATED THE <a href="/our-story-new#namaskar" style="color: #d90d3d !important;">NAMASK&Aacute;R FOUNDATION</a><br />BECAUSE WE CARE.</span>
-                            </div>
-                            <div style="position: absolute; width: 285px; right: 4.625%; z-index:99; bottom: 10%; height: 131px;" id="playBtn" >
-                                <div class="sl-desc-handle">
-                                        <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
-                                </div>
-                                <div class="slide-desc" style="">4. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nulla lacus, tincidunt vel mi quis come modo elementum diam.</div>
-                            </div>
-                        </li>
-                    </ul>
+            </div>
+            <div style="position: absolute; width: 285px; right: 4.625%; z-index:99; bottom: 10%; height: 131px;" id="playBtn" >
+                <div class="sl-desc-handle">
+                    <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
                 </div>
-                <!-- WelcomeSection Slider -->
-                
-                <!-- ShareSocialMedia Part -->
-                <div class="share-strip">
-                    <div class="blk l-align">
-                        <ul>
-                            <li><img src="<?php echo $this->getSkinUrl('images/homepage/usa-map.png') ?>" alt="US"></li>
-                            <li><img src="<?php echo $this->getSkinUrl('images/homepage/can-map.png') ?>" alt="Canada"></li>
-                            <li>FREE AND FAST SHIPPING TO US AND CANADA</li>
-                        </ul>
-                    </div>
-                    <div class="blk r-align">
-                        <ul class="sharing">
-                            <li>SHARE WITH YOUR FRIENDS</li>
-                            <li>
-                                <a id="facebook" href="javascript:void(0);">
-                                    <img src="<?php echo $this->getSkinUrl('images/footer/fb-icon.png') ?>" onmouseover="this.src='<?php echo $this->getSkinUrl('images/footer/fb-icon-ovr.png') ?>';" onmouseout="this.src='<?php echo $this->getSkinUrl('images/footer/fb-icon.png') ?>';" alt="Facebook">
-                                </a>
-                            </li>
-                            <li>
-                                <a id="twitter" href="javascript:void(0);">
-                                    <img src="<?php echo $this->getSkinUrl('images/footer/tw-icon.png') ?>" onmouseover="this.src='<?php echo $this->getSkinUrl('images/footer/tw-icon-ovr.png') ?>';" onmouseout="this.src='<?php echo $this->getSkinUrl('images/footer/tw-icon.png') ?>';" alt="Twitter">
-                                </a>
-                            </li>
-                            <li>
-                                <a id="mail" href="javascript:void(0);">
-                                    <img src="<?php echo $this->getSkinUrl('images/footer/email.png') ?>" onmouseover="this.src='<?php echo $this->getSkinUrl('images/footer/email-ovr.png') ?>';" onmouseout="this.src='<?php echo $this->getSkinUrl('images/footer/email.png') ?>';"  alt="Email">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="slide-desc" style="">3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nulla lacus, tincidunt vel mi quis come modo elementum diam.</div>
+            </div>
+        </li>
+        <li style="background-color: #FFF;">
+            <img mymargin="70" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/11_12/img1.jpg" alt="OUR CORE VALUE IS GIVING, OUR GIFT IS NAMASKAR " style="position: absolute; height: 100%; right: 0 !important; width: auto;min-height:660px;" />
+
+            <div class="banner-txt3 promo2310 promo1311" style="color : #666;left : 9%; top : 30%">
+                OUR CORE VALUE IS<br />GIVING, OUR GIFT IS<br />NAMASK&Aacute;R.<br />
+                <span style="color: #666;">WE CREATED THE <a href="/our-story-new#namaskar" style="color: #d90d3d !important;">NAMASK&Aacute;R FOUNDATION</a><br />BECAUSE WE CARE.</span>
+            </div>
+            <div style="position: absolute; width: 285px; right: 4.625%; z-index:99; bottom: 10%; height: 131px;" id="playBtn" >
+                <div class="sl-desc-handle">
+                    <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
                 </div>
-                <!-- ShareSocialMedia Part -->
-                
-                <div class="clear-fix"></div>
+                <div class="slide-desc" style="">4. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nulla lacus, tincidunt vel mi quis come modo elementum diam.</div>
+            </div>
+        </li>
+    </ul>
+</div>
+<!-- WelcomeSection Slider -->
 
-                <!-- ProductListing Part -->
+<!-- ShareSocialMedia Part -->
+<div class="share-strip">
+    <div class="blk l-align">
+        <ul>
+            <li><img src="<?php echo $this->getSkinUrl('images/homepage/usa-map.png') ?>" alt="US"></li>
+            <li><img src="<?php echo $this->getSkinUrl('images/homepage/can-map.png') ?>" alt="Canada"></li>
+            <li>FREE AND FAST SHIPPING TO US AND CANADA</li>
+        </ul>
+    </div>
+    <div class="blk r-align">
+        <ul class="sharing">
+            <li>SHARE WITH YOUR FRIENDS</li>
+            <li>
+                <a id="facebook" href="javascript:void(0);">
+                    <img src="<?php echo $this->getSkinUrl('images/footer/fb-icon.png') ?>" onmouseover="this.src='<?php echo $this->getSkinUrl('images/footer/fb-icon-ovr.png') ?>';" onmouseout="this.src='<?php echo $this->getSkinUrl('images/footer/fb-icon.png') ?>';" alt="Facebook">
+                </a>
+            </li>
+            <li>
+                <a id="twitter" href="javascript:void(0);">
+                    <img src="<?php echo $this->getSkinUrl('images/footer/tw-icon.png') ?>" onmouseover="this.src='<?php echo $this->getSkinUrl('images/footer/tw-icon-ovr.png') ?>';" onmouseout="this.src='<?php echo $this->getSkinUrl('images/footer/tw-icon.png') ?>';" alt="Twitter">
+                </a>
+            </li>
+            <li>
+                <a id="mail" href="javascript:void(0);">
+                    <img src="<?php echo $this->getSkinUrl('images/footer/email.png') ?>" onmouseover="this.src='<?php echo $this->getSkinUrl('images/footer/email-ovr.png') ?>';" onmouseout="this.src='<?php echo $this->getSkinUrl('images/footer/email.png') ?>';"  alt="Email">
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- ShareSocialMedia Part -->
+
+<div class="clear-fix"></div>
+
+<!-- ProductListing Part -->
 
 
-                <div class="new-arrivals-block" style="width:90%; margin:0 auto;">                    
-                    <ul class="new-arrivals">
-                        <?php
-                        //retrieve color
-                        $write = Mage::getSingleton('core/resource')->getConnection('core_read');
-                        $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
-                        while ($row = $readresult->fetch() ) {
-                            $clrinfo[$row['Value']] = $row['Attribute'];
-                        }
+<div class="new-arrivals-block" style="width:90%; margin:0 auto;">
+    <ul class="new-arrivals">
+        <?php
+        //retrieve color
+        $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+        $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
+        while ($row = $readresult->fetch() ) {
+            $clrinfo[$row['Value']] = $row['Attribute'];
+        }
 
-                        $categoryId = 9;
-                        $i = 0;
-                        $productCollection = Mage::getSingleton('catalog/category')->load($categoryId)->getProductCollection()->addAttributeToSelect('*');
-                        foreach($productCollection as $_product)
-                        {
-                            if($i==4)break;$i++;
-                         ?>
-                            <li>
-                                <a id="<?php echo $_product->getId(); ?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(221, 330)->setQuality(91); ?>" /></a>
+        $categoryId = 42;
+        $i = 0;
+        $newarrivals = Mage::getSingleton('catalog/category')->load($categoryId);
+        $productCollection = $newarrivals->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
+        foreach($productCollection as $_product)
+        {
+            if($i==4)break;$i++;
+            ?>
+            <li>
+                <a id="<?php echo $_product->getId(); ?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(221, 330)->setQuality(91); ?>" /></a>
 
 
-                                <div class="prd-details">
-                                    <a href = "<?php echo $_product->getProductUrl(); ?>"><span class="prd-name gothambd"><?php echo $_product->getName(); ?></span> </a>
-                                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
-                                    <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2); ?></span>
-                                    <a id="<?php echo $_product->getId(); ?>" href="javascript:void(0)" class="quick-view">
-                                        <img src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" border="0" alt="" />
-                                    </a>
-                                </div>
-                            </li>
-                       <?php
-                        }
+                <div class="prd-details">
+                    <a href = "<?php echo $_product->getProductUrl(); ?>"><span class="prd-name gothambd"><?php echo $_product->getName(); ?></span> </a>
+                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
+                    <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2); ?></span>
+                    <a id="<?php echo $_product->getId(); ?>" href="javascript:void(0)" class="quick-view">
+                        <img src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" border="0" alt="" />
+                    </a>
+                </div>
+            </li>
+        <?php
+        }
 
-                        ?>
-                        <?php /* <li>
+        ?>
+        <?php /* <li>
                             <img class="prd-image" src="<?php echo $this->getSkinUrl('images/women/dum1.jpg') ?>" alt="">
                             <div class="prd-details">
                                 <span class="prd-name gothambd">Product 1</span>
@@ -299,81 +303,91 @@
                                 <img class="" src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" alt="">
                             </div>
                         </li> */
-                        ?>
-                        <li class="new-arrivals-desc">
-                            <p class="block-head">NEW ARRIVALS</p>
-                            <p class="block-desc">SPRING IS IN.</p>
-                            <p class="block-link">
-                                <a href="" class="grey">SHOP COLLECTION <strong class="in-bl">>>></strong></a>
-                            </p>
-                        </li>
-                    </ul>                    
-                </div>
-                <div style="display:none;">
-                    <div id="productdetailpopup">
-                    </div>
-                </div>
-                <!-- ProductListing Part -->
-                
-                <div class="clear-fix"></div>
-
-                <!-- Feature Product -->
-                <div class="clip-bg">
-                    <div class="contWom featured-product">
-                        <div class="ftr-txt">
-                            <h4>FEATURED PRODUCT
-                                <span>THE JACKET WITH A BROOKLYN FLAIR.</span>
-                            </h4>
-
-                            <p>THE LIGHT WEIGHT JACKET OFFERS COOL FEATURES LIKE THE CONTRAST COLOR CUFFS AND COLLAR.</p>
-                            <p>THE DOUBLE ZIPPER HELPS YOU STYLE YOUR BROOKLYN JACKET IN MULTIPLE WAYS.</p>
-
-                            <p class="block-link"><a href="#">SHOP THE BRROKLYN JACKET <strong class="in-bl">&gt;&gt;&gt;</strong></a></p>
-                        </div>
-
-                        <div class="ftr-img">
-                            <img src="<?php echo $this->getSkinUrl('images/women/featuerd-prod.png') ?>" alt="" />
-                        </div>
-                    <div class="clear-fix"></div>
-                    </div>
-                </div>               
-                <!-- Feature Product -->       
-                
-                <div class="clear-fix"></div>
-
-                <!-- Feature Product -->
-                <div class="divider-btm">
-                    <div class="contWom featured-product">
-                        <div class="ftr-txt">
-                            <h4>COLOR STORY
-                                <span>LIME LITE</span>
-                            </h4>
-
-                            <p>VIVAMUS AT NIBH NON IPSUM<br />LUCTUS ADIPISCING.</p>
-
-                            <p class="block-link"><a href="#">SHOP LIME LITE <strong class="in-bl">&gt;&gt;&gt;</strong></a></p>
-                        </div>
-
-                        <div class="ftr-img">
-                            <div class="figCap">
-                                <div class="figure"><img src="<?php echo $this->getSkinUrl('/images/women/dum5.jpg') ?>" alt="" /></div>
-                                <span>mauris vehicula condimentum tortor eu pulvinar. Fusce a vestibulum turpis, non sollicitudin urna. Aenean ut faucibus diam, id posuere lacus. Vestibulum id eleifend libero. Aenean pharetra tincidunt lobortis. Donec vel neque varius, feugiat ligula vel, aliquet sem. Phasellus vel ultrices nisl, vulputate tristique tortor.</span>
-                            </div>
-                            <div class="figCap">
-                                <div class="figure"><img src="<?php echo $this->getSkinUrl('/images/women/dummy-grn-img.jpg') ?>" alt="" /></div>
-                                <span>Vivamus at nibh non ipsum luctus adipiscing. Aenean sit amet purus viverra, porta nunc eu, vestibulum augue. Pellentesque rhoncus molestie venenatis. Etiam bibendum nec orci id placerat. Phasellus quis orci a justo pretium lobortis at vitae dolor. Morbi nisl erat, condimentum a ipsum sit amet, imperdiet vulputate nibh. Donec semper</span>
-                            </div>
-                        </div>
-                    <div class="clear-fix"></div>
-                    </div>
-                </div>             
-                <!-- Feature Product -->
-            
-            </div> 
-            <?php echo $this->getChildHtml('footer'); ?>            
-        </div>
-        <?php echo $this->getChildHtml('before_body_end'); ?>
+        ?>
+        <li class="new-arrivals-desc">
+            <p class="block-head">NEW ARRIVALS</p>
+            <p class="block-desc">SPRING IS IN.</p>
+            <p class="block-link">
+                <a href="<?php echo $newarrivals->getUrl(); ?>" class="grey">SHOP COLLECTION <strong class="in-bl">>>></strong></a>
+            </p>
+        </li>
+    </ul>
+</div>
+<div style="display:none;">
+    <div id="productdetailpopup">
     </div>
+</div>
+<!-- ProductListing Part -->
+
+<div class="clear-fix"></div>
+
+<!-- Feature Product -->
+<?php
+$featurecategoryId = 40;
+$featurecategory = Mage::getSingleton('catalog/category')->load($featurecategoryId);
+$featurecategoryUrl = Mage::getBaseUrl().$featurecategory->getUrlPath();
+?>
+<div class="clip-bg">
+    <div class="contWom featured-product">
+        <div class="ftr-txt">
+            <h4>FEATURED PRODUCT
+                <span>THE JACKET WITH A BROOKLYN FLAIR.</span>
+            </h4>
+
+            <p>THE LIGHT WEIGHT JACKET OFFERS COOL FEATURES LIKE THE CONTRAST COLOR CUFFS AND COLLAR.</p>
+            <p>THE DOUBLE ZIPPER HELPS YOU STYLE YOUR BROOKLYN JACKET IN MULTIPLE WAYS.</p>
+
+            <p class="block-link"><a href="<?php echo $featurecategoryUrl; ?>">SHOP THE BRROKLYN JACKET <strong class="in-bl">&gt;&gt;&gt;</strong></a></p>
+        </div>
+
+        <div class="ftr-img">
+            <img src="<?php echo $this->getSkinUrl('images/women/featuerd-prod.png') ?>" alt="" />
+        </div>
+        <div class="clear-fix"></div>
+    </div>
+</div>
+<!-- Feature Product -->
+
+<div class="clear-fix"></div>
+
+<!-- Feature Product -->
+<?php
+$colorstorycategoryId = 41;
+$colorstorycategory = Mage::getSingleton('catalog/category')->load($colorstorycategoryId);
+$colorstorycategoryUrl = Mage::getBaseUrl().$colorstorycategory->getUrlPath();
+?>
+<div class="divider-btm">
+    <div class="contWom featured-product">
+        <div class="ftr-txt">
+            <h4>COLOR STORY
+                <span>LIME LITE</span>
+            </h4>
+
+            <p>VIVAMUS AT NIBH NON IPSUM<br />LUCTUS ADIPISCING.</p>
+
+            <p class="block-link"><a href="<?php echo $colorstorycategoryUrl;?>">SHOP LIME LITE <strong class="in-bl">&gt;&gt;&gt;</strong></a></p>
+        </div>
+
+        <div class="ftr-img">
+            <div class="figCap">
+                <div class="figure"><img src="<?php echo $this->getSkinUrl('/images/women/dum5.jpg') ?>" alt="" /></div>
+                <span>mauris vehicula condimentum tortor eu pulvinar. Fusce a vestibulum turpis, non sollicitudin urna. Aenean ut faucibus diam, id posuere lacus. Vestibulum id eleifend libero. Aenean pharetra tincidunt lobortis. Donec vel neque varius, feugiat ligula vel, aliquet sem. Phasellus vel ultrices nisl, vulputate tristique tortor.</span>
+            </div>
+            <div class="figCap">
+                <div class="figure"><img src="<?php echo $this->getSkinUrl('/images/women/dummy-grn-img.jpg') ?>" alt="" /></div>
+                <span>Vivamus at nibh non ipsum luctus adipiscing. Aenean sit amet purus viverra, porta nunc eu, vestibulum augue. Pellentesque rhoncus molestie venenatis. Etiam bibendum nec orci id placerat. Phasellus quis orci a justo pretium lobortis at vitae dolor. Morbi nisl erat, condimentum a ipsum sit amet, imperdiet vulputate nibh. Donec semper</span>
+            </div>
+        </div>
+        <div class="clear-fix"></div>
+    </div>
+</div>
+<!-- Feature Product -->
+
+</div>
+<?php echo $this->getChildHtml('footer'); ?>
+</div>
+<?php echo $this->getChildHtml('before_body_end'); ?>
+</div>
 </div>
 <?php echo $this->getAbsoluteFooter() ?>
 </body>
