@@ -58,11 +58,12 @@ jQuery(document).ready(function($) {
                 return;}
             }
             _isClickSigninMenu = true;
-            if (!_islogedinuser)
-                showShoppingBagHtml();
-            else {
-                automaticapplysmogibucks();
-            }
+            showShoppingBagHtml();
+//            if (!_islogedinuser)
+//                showShoppingBagHtml();
+//            else {
+//                automaticapplysmogibucks();
+//            }
             
 
         }, 20);
