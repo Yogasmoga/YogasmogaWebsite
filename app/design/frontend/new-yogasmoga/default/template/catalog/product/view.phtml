@@ -680,7 +680,8 @@ if($_product->getAttributeText('canzoomimage') == "yes")
                                 </div>
                                   <?php } ?>
             <div class="clear-fix"></div>
-            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>             
+
         <a name="sizechart"></a>
         </div>
     <?php } ?>
@@ -1537,10 +1538,10 @@ if($ftimage != "" && $ftimagesmall != "")
 <div style="display:none;">
     <div id="zoompopup">
         <table class="productzoomtable">
-            <tr class="zoom-prd-details">
+            <!-- <tr class="zoom-prd-details">
                 <td></td>
                 <td></td>
-            </tr>
+            </tr> -->
             <tr>
                 <td class="zoomproductoptions">
                     <table class="productdetailtable zoomproductdetail">
@@ -1615,7 +1616,7 @@ if($ftimage != "" && $ftimagesmall != "")
                                     </div>
                                 </div>
                                 <div style="clear: both;"></div>
-                                <div class="" style="margin-top:100px;">
+                                <div class="" style="margin-top:110px;">
                                     <table class="zoomsmallimagecontainer" style="margin-left:40px;">
                                         <tr><td><img src="" style="margin: 0 0 25px; max-width: 100%;" /></td></tr>
                                         <tr><td><img src="" style="margin: 0 0 25px; max-width: 100%;" /></td></tr>
