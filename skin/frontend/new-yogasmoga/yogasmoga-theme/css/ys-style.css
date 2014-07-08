@@ -147,7 +147,7 @@ div.side-menu-bar ul li a:hover span.arr,
 
 /***Our Story***/
 .pg-content{width:auto; margin: 0 0 0 270px; vertical-align:top; color: #666; line-height: normal;min-height: 300px;}
-.os-banner{position: relative;font-size: 40px; min-height: 400px; }
+.os-banner{position: relative;font-size: 40px; }
 .os-banner img{width: 100%;} 
 .os-banner .banner-text{position:absolute; top:20%; left:7%; text-align: left;}
 .banner-text p{font:31px/25px ITCAvantGardeProMd; text-transform: uppercase;}
@@ -156,7 +156,7 @@ div.side-menu-bar ul li a:hover span.arr,
 .box-str{background: url("../images/big-divider.png") no-repeat bottom; padding-bottom:30px; margin-bottom: 30px;background-size: contain;}
 .box-str-container .img-box{width: 37%; /*border: 1px solid #e1e1e1;*/ padding: 2px;}
 .box-str-container .img-box img{width: 100%;}
-.box-str-container .content-box{ width:50%; padding-left: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.box-str-container .content-box{ width:60%; padding-left: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 .content-box p,.contentWrap p{font: 11px/16px gothambook; margin-bottom: 22px; }
 .contentWrap p{margin-bottom: 10px;}
 .content-box p:last-child{margin: 0;}
@@ -279,7 +279,7 @@ li.new-arrivals-desc .block-link a, .block-link a{font-family: ITCAvantGardeProM
 /** YS-Tech Section **/
 .discImg{margin: 40px 0 20px;}
 ul.arw-list{display: block; margin: 0 0 25px 0; padding: 0; font-size: 13px;}
-ul.arw-list li{background: url("../images/list-arw.png") no-repeat 0 4px; display: block; line-height: 1.3; padding: 0 0 10px 15px;}
+ul.arw-list li{background: url("../images/list-arw.png") no-repeat 0 4px; display: block; line-height: 1.3; padding: 0 0 10px 15px; font: 11px/16px gothambook;}
 sup {font-size: 11px; height: auto; line-height: inherit; padding: 0;}
 
 /** StorySection **/
@@ -705,7 +705,7 @@ span.country {
 	.structure p.block-desc{font-size: 20px;}
 	.structure p.block-link a{font-size: 12px;}
 	.structure p.block-head{font-size: 14px;}
-	.os-banner{min-height: 250px;}
+	/*.os-banner{min-height: 250px;}*/
 	.contWom h4, li.new-arrivals-desc .block-head{font-size: 15px;}
 	li.new-arrivals-desc .block-head{padding: 0; text-align: left;}
 	.contWom h4 span, li.new-arrivals-desc .block-desc, .os-banner, .bannerFluid .bnrtxt{font-size: 24px; line-height: 28px;}
@@ -762,6 +762,14 @@ span.country {
 .cntn-scroll{position: absolute;}
 
 @media only screen and (max-width : 1024px) {
+
+	.coloumn-list li span {
+    font-size: 16px !important;
+}
+
+.coloumn-list li {
+    width: 28% !important;
+}
 
 .fullscreenovfhidden img.fullscreen{
     display: block;
@@ -830,12 +838,12 @@ body{overflow-x:auto !important; }
 .detailImg.nomrgn{margin: 0;}
 .detailImg > img {width: 100%;}
 .heading.gryedtxt {color: #666;margin: 0;}
-.raising-funds p{margin: 0;font-size: 13px;}
+.raising-funds p{margin: 8px 0;font-size: 13px;}
 .raising-funds .num{color: #cc0033;font: 74px gothamlight;margin: 0 0 5px;}
 .raising-funds .addbracelet{margin: 12px 0 0;display: inline-block;clear: both;}
 .coloumn-list ul, .coloumn-list li{list-style-type: none;}
 .coloumn-list ul{font-size: 13px; line-height: 20px; margin: 20px 0 0;}
-.coloumn-list li{float: left; margin: 15px 0 0; padding: 25px 0 0; text-align: left; width: 30%; background: url("../images/divider-sml.png") no-repeat center top; background-size: 100% auto;}
+.coloumn-list li{float: left; margin: 15px 0 0; padding: 25px 0 0; text-align: left; width: 30%; background: url("../images/dvdr-new.jpg") no-repeat center top; background-size: 100% auto;}
 .coloumn-list li span{color: #666; display: block; margin: 0 0 25px; font-size: 21px;}
 .coloumn-list li:nth-child(2){margin: 15px 30px 0;}
 
@@ -1309,8 +1317,8 @@ body.customer-address-index .myaccountdashboard .customeraddress td{padding-top:
 .fab-aurm.top-divider{background: url("../images/dvdr-new.jpg") no-repeat center top; background-size: 100% auto;}
 .box-str:last-child{background:none; padding-bottom:60px;}
 .cms-ys-tech #pagecontainer,.cms-our-story #pagecontainer,.cms-smogi-bucks #pagecontainer,.cms-help #pagecontainer{background: url(../images/bot-divider.png) 50% 100% no-repeat;}
-.cms-smogibucks #pagecontainer { background: url(../images/bot-divider.png) no-repeat,url(../images/bot-divider.png) no-repeat; background-position: top center, bottom center; padding-top:52px; }
-.cms-smogibucks .box-str h2.heading{font-size:11px/19px gothambold !important;}
+.cms-smogi-bucks #pagecontainer { margin: 10px 0 0; background: url(../images/big-divider.png) no-repeat,url(../images/big-divider.png) no-repeat; background-position: top center, bottom center; padding-top:52px; background-size: 100% auto; }
+.cms-smogi-bucks .box-str h2.heading{font-size:11px/19px gothambold !important;}
 
 
 /** making1024Details **/
@@ -1400,4 +1408,29 @@ div.side-menu-bar ul li a {
 
 .learnmore-nam > img {
     width: 90% !important;
+}
+
+a.redTxt {
+    color: #d90d3d;
+    text-decoration: none;
+}
+.smogi-bucks {
+    margin: auto;
+    width: 52%;
+}
+
+.shead {
+    color: #666;
+    font: 31px/27px AvantGardeGothicITCW01M;
+    margin: auto auto 30px;
+    padding: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+.shead span {
+    display: block;
+    font: 11px/27px gothammedium;
+    margin: 10px 0 0;
 }
