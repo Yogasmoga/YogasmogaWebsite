@@ -72,6 +72,22 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
             "success_message" => ""
         );
 
+        // retrict user to apply Smogi Bucks with Promotion Code
+        if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
+        {
+            $response['error'] = "You cannot apply Smogi Bucks with Promotion Code.";
+            echo json_encode($response);
+            return;
+        }
+        // retrict user to apply  smogi bucks with gift of ys
+        if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+        {
+            $response['errors'] = "You cannot apply  Smogi Bucks with Gift Card.";
+            echo json_encode($response);
+            return;
+        }
+
+
         $point_details = $this->getPointsInfo();
         //echo '<pre>';print_r($point_details);
         $session = Mage::getSingleton('core/session');

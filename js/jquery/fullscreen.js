@@ -1,17 +1,43 @@
 jQuery(document).ready(function($){
     //setfullscreenheight();
     setTimeout(function(){setfullscreenheight();},50);
-    //setTimeout(function(){$(window).trigger("resize");},1500);  
-     
+    //setTimeout(function(){$(window).trigger("resize");},1500);
     
     //setfullscreenheight(true);
-    $(window).resize(function($) {        
-        setfullscreenheight();        
+    $(window).resize(function($) {
+        //alert("resized");
+        setfullscreenheight();
+       // getvideowidth();
     });
 });
 
+/*function getvideowidth()
+{
+    winW = _winW;
+    if(winW < 1100)
+        winW = 1100;
+    videowidth = (1920/1080) * _winH;
+    videoheight = (1080/1920) * winW;
+    if((winW - videowidth) > (_winH - videoheight))
+    {
+        newwidth = winW + (winW - videowidth);
+        newheight = (1080/1920) * newwidth;
+    }
+    else
+    {
+        newheight = _winH + (_winH - videoheight);
+        newwidth = (1920/1080) * newheight;
+    }
+    jQuery(".fullscreenovfhidden iframe").width(newwidth);
+    jQuery(".fullscreenovfhidden iframe").height(newheight);
+    jQuery(".fullscreenovfhidden iframe").css('left',((winW - newwidth) / 2) + 'px');
+    jQuery(".fullscreenovfhidden iframe").css('top',((_winH - newheight)/ 2) + 'px');
+    return;
+}
+*/
 function setfullscreenheight()
-{      
+{
+    //console.log('called');
     if (document.body && document.body.offsetWidth) {
      _winW = document.body.offsetWidth;
      _winH = document.body.offsetHeight;
@@ -32,9 +58,20 @@ function setfullscreenheight()
     //jQuery("div.fullscreen, div.fullscreenovfhidden, div.bgimage").css('min-width', '1500px');
     
     //jQuery("div.fullscreenovfhidden").css('height', (_winH) + 'px');
-    jQuery("div.fullscreenovfhidden").each(function(){       
-            
-            jQuery(this).css('height', (_winH - 100) + 'px');        
+    jQuery("div.fullscreenovfhidden").each(function(){
+        if(jQuery(this).hasClass('neglectheaderwidth'))
+        {
+            if(!(jQuery("div#globalheader").hasClass('top0')))
+            {
+                jQuery(this).css('height', (_winH + _headerHeight) + 'px');
+                //console.log('setting special height');
+            }
+            else
+                jQuery(this).css('height', (_winH) + 'px');        
+        }
+        else
+            jQuery(this).css('height', (_winH) + 'px');
+        
     });
     var specialheight = false;
     jQuery.each(jQuery(".fullscreen"), function(){

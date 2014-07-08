@@ -557,8 +557,14 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
     public function showshoppingbaghtmlAction()
     {
         $html = $this->createshoppingbaghtml();
+        $countDiscountType = '';
+        $countDiscountType = $this->countDiscountType();
+        $discounttypeerror = 'Gift of YS code, SMOGI Bucks and Promotion Code cannot be combined.
+Please use one and continue checkout.';
 
-        echo json_encode(array("status" => "success","html" => $html,"count" => $this->getcartcount()));
+
+            echo json_encode(array("status" => "success","html" => $html,"count" => $this->getcartcount(),"countdiscount" => $countDiscountType,"discounttypeerror" => $discounttypeerror));
+
     }
     protected function _getSession()
     {
@@ -805,17 +811,33 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $showedpoints = $getcustomerpoints - $getsmogipointscurrentlyuserd;
         }
         else $continuelink="javascript:void(0);";
-        $html = '
-    <!-- ContinueShoppingBtn -->
-    <div class="cont-full capstxt">
-        <a href="javascript:void(0);" id="continuelink" class="continuelink f-left">Continue Shopping</a>
-        <a href="'.$continuelink.'" id="continuecheckout" class="continuelink f-right grn">Continue</a>
-        <div class="clear-fix"></div>
-    </div>
-    
-    <!-- ContinueShoppingBtn -->
-    <!-- productOption -->
-    <div class="cont-full contfull2">';
+        $allow = $this->countDiscountType();
+        if($allow > 1)
+        {
+                    $html = '
+            <!-- ContinueShoppingBtn -->
+            <div class="cont-full capstxt">
+                <a href="javascript:void(0);" id="continuelink" class="continuelink f-left">Continue Shopping</a>
+                <span class="continuelink f-right">Continue</span>
+                <div class="clear-fix"></div>
+            </div>
+
+            <!-- ContinueShoppingBtn -->
+            <!-- productOption -->
+            <div class="cont-full contfull2">';
+        }
+        else{   $html = '
+            <!-- ContinueShoppingBtn -->
+            <div class="cont-full capstxt">
+                <a href="javascript:void(0);" id="continuelink" class="continuelink f-left">Continue Shopping</a>
+                <a href="'.$continuelink.'" id="continuecheckout" class="continuelink f-right grn">Continue</a>
+                <div class="clear-fix"></div>
+            </div>
+
+            <!-- ContinueShoppingBtn -->
+            <!-- productOption -->
+            <div class="cont-full contfull2">';
+         }
         $totalhtml = '
                         <!-- totalAmount -->
                         <div class="totalAmnt capstxt">
@@ -1417,6 +1439,17 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         //print_r($html);die('test');
         //echo $html;
         //echo json_encode(array("html" => $html));
+    }
+    protected function countDiscountType()
+    {
+        $allow = 0;
+        if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+            $allow++;
+        if(Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
+            $allow++;
+        if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
+            $allow++;
+        return $allow;
     }
     protected function getCustomerPoints($customerId) {
 

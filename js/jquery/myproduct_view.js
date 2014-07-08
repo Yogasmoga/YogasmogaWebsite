@@ -7,16 +7,6 @@ jQuery(document).ready(function($){
         //setTimeout(function(){ positiondesignfeatureheadimage(); }, 10);
         //positiondesignfeatureheadimage();
     });
-
-    $("#zoomoptions").on("click","#zoomin",function(){
-        $("td#zoomedproductimage img[zoomurl]").trigger("click");        
-    });
-
-    // $("table.normalproductdetail div#colorcontainer table").live("click", function(){
-    //     $("table.normalproductdetail div#colorcontainer > div").removeClass("selected");
-    //     $(this).parent("div").addClass("selected");
-    // });
-    
     
     $("table.productdesignfeatures div[size]").hover(function(){
         if($(this).find("div.caption").is(':animated'))
@@ -36,7 +26,6 @@ jQuery(document).ready(function($){
     clearEmptycaptions();
     
     $("table.tdbigimagecontainer img").live("click", function(){
-        console.log($(".zoom-prd-det").height());
         if(!_canzoomimages)
             return;
         jQuery("#productdetailpopup").html("<table style='width:100%;height : 100%;'><tr><td style='text-align:center;vertical-align:middle;'>Loading. .</td></tr></table>");
@@ -461,9 +450,9 @@ function InitializeZoomPopup()
             jQuery("div.wrapper").removeClass('overflowhidden');
             jQuery("div.wrapper, div.ui-widget-overlay").css('height', 'auto');
         }
-    });    
+    });
     jQuery("div#zoompopup table.productzoomtable>tbody>tr>td").height(_winH + _headerHeight);
-    jQuery("div#zoompopup table.productzoomtable>tbody>tr>td").css('max-height', (_winH + _headerHeight) + 'px');    
+    jQuery("div#zoompopup table.productzoomtable>tbody>tr>td").css('max-height', (_winH + _headerHeight) + 'px');
     jQuery("div#zoompopup div#zoomoptions").css('top', (((_winH + _headerHeight) - jQuery("div#zoompopup div#zoomoptions").height()) / 2) + 'px');
     try{
        jQuery('img#zoomedimage').smoothZoom('resize', {width: (_winW - 250), height: (_winH + _headerHeight)});    
@@ -512,10 +501,9 @@ function resizeProductBigImage()
     var correction = 100;
     var maxHeight = _winH - correction;
     if(maxHeight > 600)
-        jQuery("table.tdbigimagecontainer img").css('max-height', 'auto');
-        //jQuery("table.tdbigimagecontainer img").css('max-height', maxHeight + 'px');
+        jQuery("table.tdbigimagecontainer img").css('max-height', maxHeight + 'px');
     else
-        jQuery("table.tdbigimagecontainer img").css('max-height', 'auto');
+        jQuery("table.tdbigimagecontainer img").css('max-height', '600px');
 }
 
 function clearEmptycaptions()
@@ -535,9 +523,7 @@ function changezoomColor(clr, delay, imgindex)
         return;
     jQuery("table.zoomproductdetail table.selectedcolor td:last").html(clr);
     jQuery("table.zoomproductdetail div#colorcontainer table td").removeClass("tdselectedcolor");
-    jQuery("table.zoomproductdetail div#colorcontainer > div").removeClass("selected");
     jQuery("table.zoomproductdetail div#colorcontainer table[color='" + clr + "'] tr:nth-child(2) td").addClass("tdselectedcolor");
-    jQuery("table.zoomproductdetail div#colorcontainer table[color='" + clr + "']").parent("div").addClass("selected");
     var smallimagehtml = '';
     for(i = 0; i < _productcolorinfo[colorindex].smallimages.length; i++)
     {

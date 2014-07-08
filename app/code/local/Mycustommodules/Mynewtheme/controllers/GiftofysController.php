@@ -32,6 +32,13 @@ class MyCustommodules_Mynewtheme_GiftofysController extends Mage_Core_Controller
             echo json_encode($response);
             return;
         }
+        // retrict user to apply gift of ys with smogi bucks
+        if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+        {
+            $response['error'] = "Cannot apply Gift of YS with Smogi Bucks.";
+            echo json_encode($response);
+            return;
+        }
         $customerId = Mage::getSingleton('customer/session')->getCustomerId();
         $giftcardCode = trim((string) $this->getRequest()->getParam('giftcard_code'));
         $card = Mage::getModel('giftcards/giftcards')->load($giftcardCode, 'card_code');
@@ -85,6 +92,13 @@ class MyCustommodules_Mynewtheme_GiftofysController extends Mage_Core_Controller
                 echo json_encode($response);
                 return;
             }
+            // retrict user to apply gift of ys with smogi bucks
+            if(Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
+            {
+                $response['error'] = "Cannot apply Gift of YS with Smogi Bucks.";
+                echo json_encode($response);
+                return;
+            }
 
 
             Mage::getSingleton('giftcards/session')->setActive('1');
@@ -99,6 +113,7 @@ class MyCustommodules_Mynewtheme_GiftofysController extends Mage_Core_Controller
             $this->_getQuote()->getShippingAddress()->setCollectShippingRates(true);
             $this->_getQuote()->collectTotals()->save();
         } catch (Exception $e) {
+
             $this->_getSession()->addError($e->getMessage());
             $response['error'] = "There has been an error to apply Gift Card.";
         }
