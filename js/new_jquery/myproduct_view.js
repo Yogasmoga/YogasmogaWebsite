@@ -457,14 +457,18 @@ function InitializeZoomPopup()
         //position: { my: "center top",at: "center top+80" },
         resizable : false,
         dialogClass : 'yogidialog zoomdialog',
+        open : function(){
+            console.log("--   " + jQuery(".zoom-prd-det").outerHeight());
+        },
         beforeClose : function(){
             jQuery("div.wrapper").removeClass('overflowhidden');
             jQuery("div.wrapper, div.ui-widget-overlay").css('height', 'auto');
+            console.log("----   " + jQuery(".zoom-prd-det").outerHeight());
         }
     });    
     jQuery("div#zoompopup table.productzoomtable>tbody>tr>td").height(_winH + _headerHeight);
     jQuery("div#zoompopup table.productzoomtable>tbody>tr>td").css('max-height', (_winH + _headerHeight) + 'px');    
-    jQuery("div#zoompopup div#zoomoptions").css('top', (((_winH + _headerHeight) - jQuery("div#zoompopup div#zoomoptions").height()) / 2) + 'px');
+    // jQuery("div#zoompopup div#zoomoptions").css('top', (((_winH) - jQuery("div#zoompopup div#zoomoptions").height()) / 2) + 'px');    
     try{
        jQuery('img#zoomedimage').smoothZoom('resize', {width: (_winW - 250), height: (_winH + _headerHeight)});    
     }
