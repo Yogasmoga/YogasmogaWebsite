@@ -1322,7 +1322,8 @@ body.customer-address-index .myaccountdashboard .customeraddress td{padding-top:
 .cms-ys-tech .box-str h2.heading{margin-bottom:15px;}
 .fab-aurm.top-divider{background: url("../images/dvdr-new.jpg") no-repeat center top; background-size: 100% auto;}
 .box-str:last-child{background:none; padding-bottom:60px;}
-.cms-ys-tech #pagecontainer,.cms-our-story #pagecontainer,.cms-smogi-bucks #pagecontainer,.cms-help #pagecontainer{background: url(../images/bot-divider.png) 50% 100% no-repeat;}
+
+.cms-ys-tech #pagecontainer,.cms-our-story #pagecontainer,.cms-smogi-bucks #pagecontainer,.cms-help #pagecontainer{background: url(../images/bot-divider.png) 50% 100% no-repeat; background-size: 90%;}
 .cms-smogi-bucks #pagecontainer { margin: 10px 0 0; background: url(../images/big-divider.png) no-repeat,url(../images/big-divider.png) no-repeat; background-position: top center, bottom center; padding-top:52px; background-size: 100% auto; }
 .cms-smogi-bucks .box-str h2.heading{font-size:11px/19px gothambold !important;}
 
