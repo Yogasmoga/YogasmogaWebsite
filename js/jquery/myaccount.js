@@ -81,10 +81,10 @@ jQuery(document).ready(function($){
             return false;
     });
     $("#change_password").click(function(){
-        // togglePasswordChangeOption();
+        togglePasswordChangeOption();
     });
     if($("#change_password").length > 0)
-        // togglePasswordChangeOption();
+        togglePasswordChangeOption();
     if($("select#country").length > 0)
     {
         $("select#country").attr("class","").addClass('requiredfield').attr("defaulterrormsg","Country is required").removeAttr("title").css("width","156px");
@@ -112,8 +112,8 @@ jQuery(document).ready(function($){
         return validateGiftCardForm($("#giftcardformmyaccount table.gfredeem"));
         //return false;
     });
-    $("div#addanotherreferral").click(function(){        
-        $("table.referfriendforms tbody#main").append("<tr id='" + (++_refercount) + "'>" + $("table.referfriendforms tr#template").html() + "</tr>");        
+    $("div#addanotherreferral").click(function(){
+        $("table.referfriendforms tbody#main").append("<tr id='" + (++_refercount) + "'>" + $("table.referfriendforms tr#template").html() + "</tr>");
         //$("table.referfriendforms tbody#main td.remove").show();
         $("table.referfriendforms tbody#main tr[id]").each(function(){
             //console.log($(this).find("td.btninvite").css('display'));
@@ -311,8 +311,7 @@ function referafriend(name, email, id)
     jQuery.ajax({
         type : 'POST',
         url : securehomeUrl + 'mycatalog/myproduct/referfriend',
-        //data : {'name[]':name,'email[]':email,'id':id},
-        data : {'name':name,'email':email,'id':id},
+        data : {'name[]':name,'email[]':email,'id':id},
         beforeSend : function(){
             var tr = jQuery("table.referfriendforms tr#" + id);
             tr.find('td.btninvite').hide();
