@@ -113,6 +113,7 @@ class MyCustommodules_Mynewtheme_GiftofysController extends Mage_Core_Controller
             $this->_getQuote()->getShippingAddress()->setCollectShippingRates(true);
             $this->_getQuote()->collectTotals()->save();
         } catch (Exception $e) {
+
             $this->_getSession()->addError($e->getMessage());
             $response['error'] = "There has been an error to apply Gift Card.";
         }

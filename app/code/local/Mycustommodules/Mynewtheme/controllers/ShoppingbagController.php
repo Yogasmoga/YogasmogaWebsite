@@ -562,6 +562,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $discounttypeerror = 'Gift of YS code, SMOGI Bucks and Promotion Code cannot be combined.
 Please use one and continue checkout.';
 
+
             echo json_encode(array("status" => "success","html" => $html,"count" => $this->getcartcount(),"countdiscount" => $countDiscountType,"discounttypeerror" => $discounttypeerror));
 
     }

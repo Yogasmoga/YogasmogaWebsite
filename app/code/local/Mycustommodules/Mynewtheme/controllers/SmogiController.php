@@ -87,6 +87,7 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
             return;
         }
 
+        
         $point_details = $this->getPointsInfo();
         //echo '<pre>';print_r($point_details);
         $session = Mage::getSingleton('core/session');

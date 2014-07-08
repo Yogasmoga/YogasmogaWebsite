@@ -70,6 +70,7 @@ class Mycustommodules_Mynewtheme_PromotionController extends Mage_Core_Controlle
         }
 
 
+
         if ($this->getRequest()->getParam('remove') == 1) {
             $couponCode = '';
         }
