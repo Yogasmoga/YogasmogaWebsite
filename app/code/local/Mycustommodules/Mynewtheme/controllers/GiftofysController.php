@@ -32,6 +32,13 @@ class MyCustommodules_Mynewtheme_GiftofysController extends Mage_Core_Controller
             echo json_encode($response);
             return;
         }
+        // retrict user to apply gift of ys with smogi bucks
+        if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+        {
+            $response['error'] = "Cannot apply Gift of YS with Smogi Bucks.";
+            echo json_encode($response);
+            return;
+        }
         $customerId = Mage::getSingleton('customer/session')->getCustomerId();
         $giftcardCode = trim((string) $this->getRequest()->getParam('giftcard_code'));
         $card = Mage::getModel('giftcards/giftcards')->load($giftcardCode, 'card_code');
@@ -82,6 +89,13 @@ class MyCustommodules_Mynewtheme_GiftofysController extends Mage_Core_Controller
             if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
             {
                 $response['error'] = "You cannot apply Gift Card with Promo code.";
+                echo json_encode($response);
+                return;
+            }
+            // retrict user to apply gift of ys with smogi bucks
+            if(Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
+            {
+                $response['error'] = "Cannot apply Gift of YS with Smogi Bucks.";
                 echo json_encode($response);
                 return;
             }

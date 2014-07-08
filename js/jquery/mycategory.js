@@ -12,15 +12,12 @@ jQuery(document).ready(function($){
         if($(this).find("td.tdselectedcolor").length > 0)
         {
             $(this).find("td.tdselectedcolor").removeClass('tdselectedcolor');
-            $(this).parents("div.item").removeClass('selected');
         }
         else
         {
             //console.log($(this).parents("div.item:first").find("td.tdselectedcolor").length);
             $(this).parents("div.item:first").find("td.tdselectedcolor").removeClass('tdselectedcolor');
-            $(this).parents("div.item:first").removeClass('selected');
             $(this).find("td.colorselector").addClass('tdselectedcolor');
-            $(this).parents("div.item").addClass('selected');
         }
         filterimages($(this).parents("div.item:first"));
         $(this).parents("div.item:first").find("td.animateimage img").removeClass('active').hide();

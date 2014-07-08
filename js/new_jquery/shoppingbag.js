@@ -410,6 +410,8 @@ function showShoppingBagHtml()
                    // alert(data.html);
                     jQuery(".shopping-cart").html(data.html);
                     jQuery(".cartitemcount").html(data.count);
+                    if(data.countdiscount > 1)
+                        showerror(data.discounttypeerror);
 //                    ////alert(jQuery(".contfull2").outerHeight());
 //                    jQuery(".bagerrormsg").height(jQuery(".contfull2").outerHeight());
 //                    jQuery(".bagerrormsg").width(jQuery(".contfull2").outerWidth());
@@ -792,7 +794,8 @@ function redeemgiftcardcode()
             }
             else
             {
-                showerror(''+data.error+'');
+                showerror(data.error);
+                if(jQuery(".giftcardcheckbox").is(":checked")) jQuery(".giftcardcheckbox").removeAttr('checked','checked');
                 jQuery(".giftcarloader").empty();
                 jQuery('.zindexH').hide();
             }

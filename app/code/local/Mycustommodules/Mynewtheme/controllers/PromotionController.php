@@ -61,6 +61,14 @@ class Mycustommodules_Mynewtheme_PromotionController extends Mage_Core_Controlle
             echo json_encode($response);
             return;
         }
+        // retrict user to apply Promotion code with smogi bucks
+        if(Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
+        {
+            $response['error'] = "You cannot apply  Promo Code with Smogi Bucks.";
+            echo json_encode($response);
+            return;
+        }
+
 
         if ($this->getRequest()->getParam('remove') == 1) {
             $couponCode = '';
