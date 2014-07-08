@@ -104,18 +104,21 @@ p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight
 .flex-direction-nav .flex-next{background: url("../images/homepage/next-slide.png") no-repeat bottom; background-size:100% 100%; width:54px; height: 66px;}
 
 /****Side bar****/
-div.side-menu-bar, .side-menu-bar2{ width:270px; vertical-align:top; min-height: 300px; position: fixed;}
-div.side-menu-bar ul, .side-menu-bar2 ul, .menu-bar ul{padding: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
-div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-transform: uppercase; font:11px/19px gothamlight; color: #666;}
-div.side-menu-bar ul li a span.arr, .side-menu-bar2 ul li a span.arr, .menu-bar ul li a span.arr{visibility: hidden;}
-div.side-menu-bar2 ul li a.current,
+div.side-menu-bar, .leftnav, .side-menu-bar2{ width:270px; vertical-align:top; min-height: 300px; position: fixed;}
+div.side-menu-bar ul, .leftnav ul, .side-menu-bar2 ul, .menu-bar ul{padding: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+div.side-menu-bar ul li a, .leftnav ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-transform: uppercase; font:11px/19px gothamlight; color: #666;}
+div.side-menu-bar ul li a span.arr, .leftnav ul li a span, .side-menu-bar2 ul li a span.arr, .menu-bar ul li a span.arr{visibility: hidden;}
+div.side-menu-bar2 ul li a.current, 
+.leftnav ul li a.current, 
+.leftnav ul li a:hover,
 div.side-menu-bar2 ul li a:hover,
 div.side-menu-bar ul li a.current,
 div.side-menu-bar ul li a:hover, 
 .menu-bar ul li a.current, 
 .menu-bar ul li a:hover{color:#cc0033;}
 
-div.side-menu-bar2 ul li a.current span.arr,
+div.side-menu-bar2 ul li a.current span.arr, 
+.leftnav ul li a.current span.arr,
 div.side-menu-bar2 ul li a:hover span.arr, 
 div.side-menu-bar ul li a.current span.arr,
 div.side-menu-bar ul li a:hover span.arr, 
@@ -443,7 +446,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .show-prodImg{width:100%; margin:0 2% 0 0; float: left;}
 
 .gry-box{background: #ededed; padding: 10px 15px; margin-bottom: 10px;}
-.prdname{border-bottom: 1px solid #fff; font: 24px/29px ITCAvantGardeProBk;/* margin: 0 0 15px; padding: 0 0 10px;*/ padding-bottom: 8px; margin-top: 5px;}
+.prdname{border-bottom: 1px solid #fff; text-transform: uppercase; font: 24px/29px ITCAvantGardeProBk;/* margin: 0 0 15px; padding: 0 0 10px;*/ padding-bottom: 8px; margin-top: 5px;}
 .amount {clear: both; display: block; margin: 0;}
 .box-seprtr {border-bottom: 1px solid #FFFFFF; margin: 0 0 10px; padding: 10px 0;}
 .box-seprtr.last{padding: 0; margin: 0; border-bottom: 0 none;}
