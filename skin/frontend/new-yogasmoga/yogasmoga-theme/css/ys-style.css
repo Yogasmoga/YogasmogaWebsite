@@ -807,7 +807,7 @@ div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-trans
 .cntnt-nav{width: 90%;}
 .wdth-sml{width: 520px !important; margin-right: 4px !important; background: url("../images/dvdr-new.jpg") no-repeat center top !important; background-size: 100% auto !important;}
 .pr-icon{width: 160px !important;}
-.cont-icon li{width: 170px !important;}
+/*.cont-icon li{width: 170px !important;}*/
 ul.site-map{text-align: center;}
 ul.site-map>li{width: 30%; margin-bottom: 40px;}
 body{overflow-x:auto !important; }
@@ -848,14 +848,14 @@ body{overflow-x:auto !important; }
 /** HelpPage **/
 .contact-summary{ }
 .contact-summary ul, .contact-summary ul li{list-style-type: none;}
-.contact-summary li{margin: 0; width: 32%; font-size: 11px; line-height: 18px; display: inline-block; text-align: center; background: url("../images/dvdr-new.jpg") no-repeat center top; background-size: 100% auto; padding: 15px 0 0;}
+.contact-summary li{margin: 0; width: 30%; font-size: 11px; line-height: 18px; display: inline-block; text-align: center; background: url("../images/dvdr-new.jpg") no-repeat center top; background-size: 100% auto; padding: 15px 0 0; vertical-align: top;}
 .contact-summary span{font-family: gothambook; font-weight: bold; text-transform: uppercase;}
 .call-icon, .chat-icon, .email-us{width: 50px; height: 30px; display: block; margin: auto; background: url("../images/icon-call.png") no-repeat left center;}
 .chat-icon{background-position: center center;}
 .email-us{background-position: right center;}
 .product-care-icon{width: 200px; font-size: 11px; text-transform: uppercase; float: left; text-align: center; padding: 20px 0 0; margin: 40px 0 0; background: url("../images/dvdr-new.jpg") no-repeat center top, url("../images/dvdr-new.jpg") no-repeat center bottom; background-size: 100% auto;}
 .product-care-icon li{margin-bottom: 20px;}
-.prd-txt{width: 100%; float: left;}
+.prd-txt{width: 100% !important; float: left;}
 .machine-wash, .tumble-dry, .bleach, .iron, .dry-clean{width: 40px; height: 30px; display: block; margin: auto; background: url("../images/care-icon.png") no-repeat center -5px;}
 .tumble-dry{background-position: center -66px;}
 .bleach{background-position: center -128px;}
