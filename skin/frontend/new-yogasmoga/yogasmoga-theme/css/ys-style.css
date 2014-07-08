@@ -142,9 +142,11 @@ div.side-menu-bar ul li a:hover span.arr,
 .box-str-container .img-box{width: 47%; /*border: 1px solid #e1e1e1; padding: 2px;*/ max-width: 500px; min-width: 275px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 .box-str-container .img-box img{width: 100%;}
 .box-str-container .content-box{ width:50%; padding-left: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
-.content-box p{font: 11px/16px gothambook; margin-bottom: 22px; }
+.content-box p,.contentWrap p{font: 11px/16px gothambook; margin-bottom: 22px; }
+.contentWrap p{margin-bottom: 10px;}
 .content-box p:last-child{margin: 0;}
-.box-str h2.heading, .detailImg .heading, .coloumn-list li span{font:19px/25px ITCAvantGardeProMd; color: #666;  margin-bottom: 45px; text-transform: uppercase;}
+.box-str h2.heading, .detailImg .heading, .coloumn-list li span,.contentWrap h2.heading{font:19px/25px ITCAvantGardeProMd; color: #666;  margin-bottom: 45px; text-transform: uppercase;}
+.contentWrap h2.heading{margin-bottom: 15px;}
 .box-str h2.heading span, .detailImg .heading span{font-weight: normal; display: block; text-transform: inherit; font-family: AvantGardeGothicITCW01B; color: #666; }
 .box-str.inverse .content-box{padding-right: 20px; padding-left: 0;}
 /****Footer****/
@@ -850,7 +852,7 @@ body{overflow-x:auto !important; }
 .bleach{background-position: center -128px;}
 .iron{background-position: center -186px;}
 .dry-clean{background-position: center -246px;}
-.septr{background: url("../images/divider-sml.png") no-repeat center top; background-size: 100% auto; margin-top: 40px; padding: 20px 0 0;}
+.septr{background: url("../images/divider-sml.png") no-repeat center top; background-size: contain; margin-top: 40px; padding: 20px 0 0;}
 .wdth-sml{width: 700px; margin: 40px 30px 0 0;}
 .cont-icon{width: 700px;}
 .prd-txt h4{color:#666; font-size: 13px; line-height: 23px; text-align: center; text-transform: uppercase; margin-bottom: 40px;}
@@ -1285,11 +1287,11 @@ body.customer-address-index .myaccountdashboard a
 {font-family: gothambook; font-size: 11px !important; color: #666 !important; text-transform: capitalize;}
 body.customer-address-index .myaccountdashboard .customeraddress td{padding-top: 0 !important;}
 
-.cms-our-story-new .pg-content,.cms-ys-tech-new .pg-content{padding-right: 20%;}
+.cms-our-story-new .pg-content,.cms-ys-tech-new .pg-content,.cms-help-new .pg-content{padding-right: 20%;}
 .cms-ys-tech-new .box-str h2.heading{margin-bottom:15px;}
 .fab-aurm.top-divider{background: url("../images/dvdr-new.jpg") no-repeat center top; background-size: 100% auto;}
 .box-str:last-child{background:none; padding-bottom:60px;}
-.cms-ys-tech-new #pagecontainer,.cms-our-story-new #pagecontainer,.cms-smogibucks #pagecontainer{background: url(../images/bot-divider.png) 50% 100% no-repeat;}
+.cms-ys-tech-new #pagecontainer,.cms-our-story-new #pagecontainer,.cms-smogibucks #pagecontainer,.cms-help-new #pagecontainer{background: url(../images/bot-divider.png) 50% 100% no-repeat;}
 .cms-smogibucks #pagecontainer { background: url(../images/bot-divider.png) no-repeat,url(../images/bot-divider.png) no-repeat; background-position: top center, bottom center; padding-top:52px; }
 .cms-smogibucks .box-str h2.heading{font-size:11px/19px gothambold !important;}
 
@@ -1330,3 +1332,8 @@ div#sizechart td { border-right: 1px solid #DCDCDC; font-size: 10px; text-transf
 div#sizechart td:first-child { font-weight: bold; width: 26%; border-left: 1px solid #DCDCDC;}
 div#sizechart tr:first-child td {border-bottom: 1px solid #999; border-top: 1px solid #999; font-weight: bold; padding: 0 6px 6px;}
 div#sizechart td span { font-weight: normal; }
+
+.cms-help-new .cont-icon{width:100%;}
+.cms-help-new table.measure-assets h3.specs{font:11px/16px gothambold; text-transform: uppercase; color: #666; margin-bottom: 18px;}
+.cms-help-new table.measure-assets tr td p{font:11px/16px gothambook; color: #666; margin-bottom: 18px;}
+.cms-help-new table.measure-assets tr td p span{font:11px/16px gothamMedium; display: block; text-transform: uppercase; color: #666;}
