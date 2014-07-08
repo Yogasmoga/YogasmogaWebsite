@@ -197,13 +197,13 @@ src:url("../fonts/d6c308a1-6908-40bc-b732-0fec02d083ac.eot?#iefix") format("eot"
 }
 /* ============== AvantGardeGothic Demi ===============*/
 @font-face{
-font-family:"AvantGardeGothicITCW01D 731075";
+font-family:"AvantGardeGothicITCW01D";
 src:url("../fonts/b74e5f86-4477-435a-abdf-32d8215f21bc.eot?#iefix");
 src:url("../fonts/b74e5f86-4477-435a-abdf-32d8215f21bc.eot?#iefix") format("eot"),url("../fonts/c18aee57-7585-4a8b-9a1c-69d226301d73.woff") format("woff"),url("../fonts/44ccbb2b-0fbc-4d95-b1da-0aa73bd26fb0.ttf") format("truetype"),url("../fonts/f2de529c-11d2-43b7-be7c-05c5aaeaf133.svg#f2de529c-11d2-43b7-be7c-05c5aaeaf133") format("svg");
 }
 /* ============== AvantGardeGothic Demi Oblique ===============*/
 @font-face{
-font-family:"AvantGardeGothicITCW01D 731078";
+font-family:"AvantGardeGothicITCW01DOB";
 src:url("../fonts/11458aa4-54c5-4577-b6c7-03209f393c77.eot?#iefix");
 src:url("../fonts/11458aa4-54c5-4577-b6c7-03209f393c77.eot?#iefix") format("eot"),url("../fonts/4e9994cb-061f-4678-850d-527f1d636f44.woff") format("woff"),url("../fonts/cb81a665-3c91-4f41-a739-dbf62a943154.ttf") format("truetype"),url("../fonts/a662b8b1-1550-4c01-9eec-437f22cab36e.svg#a662b8b1-1550-4c01-9eec-437f22cab36e") format("svg");
 }
