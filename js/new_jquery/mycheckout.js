@@ -16,26 +16,11 @@ jQuery(document).ready(function($){
     removeNameLabel();
     searchCountry();
 
-    // $(".paymentmethoddiv img").on("click", function(){
-    //     var img = $(".paymentmethoddiv img.paymethod");
-    //     var img1 = $(".paymentmethoddiv img.creditCard");
-
-    //     $(".paymentmethoddiv img").removeClass("reverse");
-    //     $(this).addClass("reverse");
-
-    //     if($(img).click()){
-    //         img.attr("src", img.attr("src").replace("tabovr", "tab"));
-    //     }
-    //     else{
-    //         img.attr("src", img.attr("src").replace("tab", "tabovr"));
-    //     }
-    // });
 
     $(".selectAddress .addVal, .showUpadd").on("click", function(){
         slideAddCont();
     });
-
-
+    
     addUpdTxt();
     getShippingID();
     $(".shippingOption .addVal, .showShpOpt").on("click", function(){
