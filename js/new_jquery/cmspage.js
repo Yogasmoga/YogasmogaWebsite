@@ -146,8 +146,6 @@ jQuery(document).ready(function($){
         $('html,body').animate({scrollTop: aTag.offset().top},'slow');
     }
 
-
-
     $(".side-menu-bar2 li[data-id='get-smogi-bucks'], .main-menu2 li[data-id='get-smogi-bucks']").click(function() {
        scrollToAnchor('get-smogi-bucks');
     });
@@ -161,7 +159,7 @@ jQuery(document).ready(function($){
     });
 
     $(".sizechartlink .block-link a#sizechart").click(function() {
-       scrollToAnchorNew('sizechart');
+       scrollToAnchor('sizechart');
     });
 
     $(".howdoesitfitlink .block-link a#how-does-it-fit").click(function() {
