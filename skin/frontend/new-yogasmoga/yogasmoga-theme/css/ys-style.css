@@ -147,7 +147,7 @@ div.side-menu-bar ul li a:hover span.arr,
 
 /***Our Story***/
 .pg-content{width:auto; margin: 0 0 0 270px; vertical-align:top; color: #666; line-height: normal;min-height: 300px;}
-.os-banner{position: relative;font-size: 40px; min-height: 400px; }
+.os-banner{position: relative;font-size: 40px; min-height: 300px; }
 .os-banner img{width: 100%;} 
 .os-banner .banner-text{position:absolute; top:20%; left:7%; text-align: left;}
 .banner-text p{font:31px/25px ITCAvantGardeProMd; text-transform: uppercase;}
@@ -160,7 +160,7 @@ div.side-menu-bar ul li a:hover span.arr,
 .content-box p,.contentWrap p{font: 11px/16px gothambook; margin-bottom: 22px; }
 .contentWrap p{margin-bottom: 10px;}
 .content-box p:last-child{margin: 0;}
-.box-str h2.heading, .detailImg .heading, .coloumn-list li span,.contentWrap h2.heading{font:19px/25px ITCAvantGardeProMd; color: #666;  margin-bottom: 45px; text-transform: uppercase;}
+.box-str h2.heading, .detailImg .heading, .coloumn-list li span/*.contentWrap h2.heading*/{font:19px/25px ITCAvantGardeProMd; color: #666;  margin-bottom: 45px; text-transform: uppercase;}
 .contentWrap h2.heading{margin-bottom: 15px;}
 .box-str h2.heading span, .detailImg .heading span{font-weight: normal; display: block; text-transform: inherit; font-family: AvantGardeGothicITCW01B; color: #666; }
 .box-str.inverse .content-box{padding-right: 20px; padding-left: 0;}
@@ -760,7 +760,7 @@ span.country {
 .madeinusa-txt span{display: block; clear: both; font-family: AvantGardeGothicITCW01D;}
 .breadcrumb, .breadcrumb a{color: #666; font: 11px gothamMedium;}
 .cntn-scroll{position: absolute;}
-
+.seventy-five{width:72% !important; margin-right:0 !important; }
 @media only screen and (max-width : 1024px) {
 .banner-txt3.promo2310{font: 31px/37px AvantGardeGothicITCW01D !important;}
 .banner-txt3.promo2310 span{font: 31px AvantGardeGothicITCW01X !important;}
@@ -806,13 +806,16 @@ div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-trans
 .box-str-container{width: 100%;}
 .cntnt-nav{width: 90%;}
 .wdth-sml{width: 520px !important; margin-right: 4px !important; background: url("../images/dvdr-new.jpg") no-repeat center top !important; background-size: 100% auto !important;}
-.pr-icon{width: 160px !important;}
+/*.pr-icon{width: 160px !important;}*/
 /*.cont-icon li{width: 170px !important;}*/
 ul.site-map{text-align: center;}
 ul.site-map>li{width: 30%; margin-bottom: 40px;}
 body{overflow-x:auto !important; }
 .account-nav{position: absolute !important;}
 .block-elm{padding-left: 5px;}
+.seventy-five{width: 100% !important;}
+.product-care-icon{width: 100% !important; background-size: 100% !important;}
+.product-care-icon li{margin-bottom: 20px; float: left; width: 20%;} 
 }
 
 .dnone.dblock, .dblock{display: inline !important;}
@@ -853,9 +856,9 @@ body{overflow-x:auto !important; }
 .call-icon, .chat-icon, .email-us{width: 50px; height: 30px; display: block; margin: auto; background: url("../images/icon-call.png") no-repeat left center;}
 .chat-icon{background-position: center center;}
 .email-us{background-position: right center;}
-.product-care-icon{width: 200px; font-size: 11px; text-transform: uppercase; float: left; text-align: center; padding: 20px 0 0; margin: 40px 0 0; background: url("../images/dvdr-new.jpg") no-repeat center top, url("../images/dvdr-new.jpg") no-repeat center bottom; background-size: 100% auto;}
+.product-care-icon{width: 25%; font-size: 11px; text-transform: uppercase; float: left; text-align: center; padding: 20px 0 0; margin: 40px 0 0; background: url("../images/dvdr-new.jpg") no-repeat center top, url("../images/dvdr-new.jpg") no-repeat center bottom; background-size: contain;}
 .product-care-icon li{margin-bottom: 20px;}
-.prd-txt{width: 100% !important; float: left;}
+/*.prd-txt{width: 100% !important; float: left;}*/
 .machine-wash, .tumble-dry, .bleach, .iron, .dry-clean{width: 40px; height: 30px; display: block; margin: auto; background: url("../images/care-icon.png") no-repeat center -5px;}
 .tumble-dry{background-position: center -66px;}
 .bleach{background-position: center -128px;}
@@ -1296,11 +1299,11 @@ body.customer-address-index .myaccountdashboard a
 {font-family: gothambook; font-size: 13px !important; color: #666 !important; text-transform: capitalize;}
 body.customer-address-index .myaccountdashboard .customeraddress td{padding-top: 0 !important;}
 
-.cms-our-story-new .pg-content,.cms-ys-tech-new .pg-content,.cms-help-new .pg-content{padding-right: 20%;}
-.cms-ys-tech-new .box-str h2.heading{margin-bottom:15px;}
+.cms-our-story .pg-content,.cms-ys-tech .pg-content,.cms-help .pg-content{padding-right: 20%;}
+.cms-ys-tech .box-str h2.heading{margin-bottom:15px;}
 .fab-aurm.top-divider{background: url("../images/dvdr-new.jpg") no-repeat center top; background-size: 100% auto;}
 .box-str:last-child{background:none; padding-bottom:60px;}
-.cms-ys-tech-new #pagecontainer,.cms-our-story-new #pagecontainer,.cms-smogibucks #pagecontainer,.cms-help-new #pagecontainer{background: url(../images/bot-divider.png) 50% 100% no-repeat;}
+.cms-ys-tech #pagecontainer,.cms-our-story #pagecontainer,.cms-smogibucks #pagecontainer,.cms-help #pagecontainer{background: url(../images/bot-divider.png) 50% 100% no-repeat;}
 .cms-smogibucks #pagecontainer { background: url(../images/bot-divider.png) no-repeat,url(../images/bot-divider.png) no-repeat; background-position: top center, bottom center; padding-top:52px; }
 .cms-smogibucks .box-str h2.heading{font-size:11px/19px gothambold !important;}
 
@@ -1348,10 +1351,10 @@ div#sizechart tr:first-child td {border-bottom: 1px solid #999; border-top: 1px 
 div#sizechart td span { font-weight: normal; }
 
 
-.cms-help-new .cont-icon{width:100%;}
-.cms-help-new table.measure-assets h3.specs{font:11px/16px gothambold; text-transform: uppercase; color: #666; margin-bottom: 18px;}
-.cms-help-new table.measure-assets tr td p{font:11px/16px gothambook; color: #666; margin-bottom: 18px;}
-.cms-help-new table.measure-assets tr td p span{font:11px/16px gothamMedium; display: block; text-transform: uppercase; color: #666;}
+.cms-help .cont-icon{width:100%;}
+.cms-help table.measure-assets h3.specs{font:11px/16px gothambold; text-transform: uppercase; color: #666; margin-bottom: 18px;}
+.cms-help table.measure-assets tr td p{font:11px/16px gothambook; color: #666; margin-bottom: 18px;}
+.cms-help table.measure-assets tr td p span{font:11px/16px gothamMedium; display: block; text-transform: uppercase; color: #666;}
 
 
 div.side-menu-bar ul li a {
@@ -1400,4 +1403,4 @@ div.side-menu-bar ul li a {
 .learnmore-nam > img {
     width: 90% !important;
 }
->>>>>>> 7cafc993493cc14e9e69e79f0593dee7b3b3e0a2
+
