@@ -458,7 +458,8 @@ function InitializeZoomPopup()
         resizable : false,
         dialogClass : 'yogidialog zoomdialog',
         open : function(){
-            console.log("--   " + jQuery(".zoom-prd-det").outerHeight());
+            console.log("--   " + jQuery(".zoom-prd-det").height());
+            // jQuery("div#zoompopup table.productzoomtable>tbody>tr>td").css({'display':'block','margin-top':'50px'});
         },
         beforeClose : function(){
             jQuery("div.wrapper").removeClass('overflowhidden');
