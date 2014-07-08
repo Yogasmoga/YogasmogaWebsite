@@ -760,7 +760,7 @@ span.country {
 .madeinusa-txt span{display: block; clear: both; font-family: AvantGardeGothicITCW01D;}
 .breadcrumb, .breadcrumb a{color: #666; font: 11px gothamMedium;}
 .cntn-scroll{position: absolute;}
-
+.seventy-five{width:72% !important; margin-right:0 !important; }
 @media only screen and (max-width : 1024px) {
 
 	.coloumn-list li span {
@@ -823,12 +823,14 @@ div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-trans
 .cntnt-nav{width: 90%;}
 .wdth-sml{width: 520px !important; margin-right: 4px !important;}
 .pr-icon{width: 160px !important;}
-/*.cont-icon li{width: 170px !important;}*/
 ul.site-map{text-align: center;}
 ul.site-map>li{width: 30%; margin-bottom: 40px;}
 body{overflow-x:auto !important; }
 .account-nav{position: absolute !important;}
 .block-elm{padding-left: 5px;}
+.seventy-five{width: 100% !important;}
+.product-care-icon{width: 100% !important; background-size: 100% !important;}
+.product-care-icon li{margin-bottom: 20px; float: left; width: 20%;} 
 }
 
 .dnone.dblock, .dblock{display: inline !important;}
@@ -869,9 +871,9 @@ body{overflow-x:auto !important; }
 .call-icon, .chat-icon, .email-us{width: 50px; height: 30px; display: block; margin: auto; background: url("../images/icon-call.png") no-repeat left center;}
 .chat-icon{background-position: center center;}
 .email-us{background-position: right center;}
-.product-care-icon{width: 200px; font-size: 11px; text-transform: uppercase; float: left; text-align: center; padding: 20px 0 0; margin: 40px 0 0; background: url("../images/dvdr-new.jpg") no-repeat center top, url("../images/dvdr-new.jpg") no-repeat center bottom; background-size: 100% auto;}
+.product-care-icon{width: 25%; font-size: 11px; text-transform: uppercase; float: left; text-align: center; padding: 20px 0 0; margin: 40px 0 0; background: url("../images/dvdr-new.jpg") no-repeat center top, url("../images/dvdr-new.jpg") no-repeat center bottom; background-size: contain;}
 .product-care-icon li{margin-bottom: 20px;}
-.prd-txt{width: 100% !important; float: left;}
+/*.prd-txt{width: 100% !important; float: left;}*/
 .machine-wash, .tumble-dry, .bleach, .iron, .dry-clean{width: 40px; height: 30px; display: block; margin: auto; background: url("../images/care-icon.png") no-repeat center -5px;}
 .tumble-dry{background-position: center -66px;}
 .bleach{background-position: center -128px;}
@@ -1320,7 +1322,6 @@ body.customer-address-index .myaccountdashboard .customeraddress td{padding-top:
 .cms-smogi-bucks #pagecontainer { margin: 10px 0 0; background: url(../images/big-divider.png) no-repeat,url(../images/big-divider.png) no-repeat; background-position: top center, bottom center; padding-top:52px; background-size: 100% auto; }
 .cms-smogi-bucks .box-str h2.heading{font-size:11px/19px gothambold !important;}
 
-
 /** making1024Details **/
 .catalog-product-view{}
 a{color: #666 ;}
@@ -1364,10 +1365,10 @@ div#sizechart tr:first-child td {border-bottom: 1px solid #999; border-top: 1px 
 div#sizechart td span { font-weight: normal; }
 
 
-.cms-help-new .cont-icon{width:100%;}
-.cms-help-new table.measure-assets h3.specs{font:11px/16px gothambold; text-transform: uppercase; color: #666; margin-bottom: 18px;}
-.cms-help-new table.measure-assets tr td p{font:11px/16px gothambook; color: #666; margin-bottom: 18px;}
-.cms-help-new table.measure-assets tr td p span{font:11px/16px gothamMedium; display: block; text-transform: uppercase; color: #666;}
+.cms-help .cont-icon{width:100%;}
+.cms-help table.measure-assets h3.specs{font:11px/16px gothambold; text-transform: uppercase; color: #666; margin-bottom: 18px;}
+.cms-help table.measure-assets tr td p{font:11px/16px gothambook; color: #666; margin-bottom: 18px;}
+.cms-help table.measure-assets tr td p span{font:11px/16px gothamMedium; display: block; text-transform: uppercase; color: #666;}
 
 
 div.side-menu-bar ul li a {

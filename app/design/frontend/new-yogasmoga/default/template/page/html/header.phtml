@@ -255,6 +255,21 @@ d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
 _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
 $.src='//v2.zopim.com/?2Fg0V06nbC3ddKB1tNUN3VPXPE7wA7eV';z.t=+new Date;$.
 type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+
+jQuery(document).ready(function($){
+    $zopim(function() {
+        $zopim.livechat.setOnStatus(bubble);
+    });
+});
+function bubble(status){
+    jQuery('.online-status-icon').attr('src','<?php echo $this->getSkinUrl('images/footer/offline.png') ?>');
+    jQuery('.online > span').css('background-color','#999');
+    if(status =='online')
+    {
+        jQuery('.online-status-icon').attr('src','<?php echo $this->getSkinUrl('images/footer/online.png') ?>');
+        jQuery('.online > span').css('background-color','#00A14B');
+    }
+}
 </script>
 <!--End of Zopim Live Chat Script-->
 <?php
