@@ -760,6 +760,14 @@ span.country {
 .cntn-scroll{position: absolute;}
 
 @media only screen and (max-width : 1024px) {
+
+.fullscreenovfhidden img.fullscreen{
+    display: block;
+    left: 0 !important;
+    width: 100% !important;
+    min-width: inherit !important;
+}
+
 .banner-txt3.promo2310{font: 31px/37px AvantGardeGothicITCW01D !important;}
 .banner-txt3.promo2310 span{font: 31px AvantGardeGothicITCW01X !important;}
 #stripe-payment-details span{font: 17px gothambooklight !important;}
@@ -1352,13 +1360,6 @@ div.side-menu-bar ul li a {
 }
 .header .logo {
     margin: 11px 0 0;
-}
-
-.fullscreenovfhidden img.fullscreen{
-    display: block;
-    left: 0 !important;
-    width: 100% !important;
-    min-width: inherit !important;
 }
 
 .banner-txt3.promo2310 {
