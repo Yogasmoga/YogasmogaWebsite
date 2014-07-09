@@ -1,7 +1,7 @@
 jQuery(document).ready(function($){
+	
 
 	/**Menu delay**/
-
 	 $('ul.ctag-menu>li').hover(
     function()
     {
@@ -23,11 +23,11 @@ jQuery(document).ready(function($){
     initializesignuppopup();
     initializeinvitepopup();
     initializesigninpopup();
-    madeinusa();
-    $(window).resize();
+    madeinusa();   
 
     $(window).resize(function(){
         setImageContheightPDP();
+        madeinusa();
     });    
     function setImageContheightPDP(){
         var pdpimagecontH = $("table.tdbigimagecontainer").find("img.shareit").height();
@@ -35,22 +35,14 @@ jQuery(document).ready(function($){
     }
 
     function madeinusa(){
+    	console.log("sda");
         var block3H = $(".structure .block3").height();
         var usatxt = $(".madeinusa-txt").height();
 
         var storeH = block3H - usatxt;
         var storeF = storeH/2;
     
-        $(".madeinusa-txt").css("top", storeF);
-
-        $(window).resize(function(){
-            var block3H = $(".structure .block3").height();
-            var usatxt = $(".madeinusa-txt").height();
-
-            var storeH = block3H - usatxt;
-            var storeF = storeH/2;
-            $(".madeinusa-txt").css("top", storeF);
-        });
+        $(".madeinusa-txt").css("top", storeF);        
     }
 
     var winHeight = $(window).height();
