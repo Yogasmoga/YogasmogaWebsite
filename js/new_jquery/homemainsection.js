@@ -1,10 +1,11 @@
-jQuery(document).ready(function($){  
+jQuery(document).ready(function($){
+    // sliderHeight();
     $(window).load(function(){
         $('.flexslider').flexslider({
             controlNav: true,
             slideshowSpeed: 4500,
-			animationSpeed:1250,
-			easing:"linear",
+            animationSpeed:1250,
+            easing:"linear",
             directionNav: true,
             start: function(slider) {
                 //fixFlexisliderImage();
@@ -15,17 +16,20 @@ jQuery(document).ready(function($){
              setTimeout(function(){ positionfloatingimages();;}, 50);
             }
         });
-		$('#playBtn').fadeIn(500, function(){$('.flexslider').css('background','#fff')});
-		$('.page-overlay').fadeOut(500, function(){$('.page-overlay').remove();});
-		$('body').css({overflow:'auto', marginRight:0});
+        $('#playBtn').fadeIn(500, function(){$('.flexslider').css('background','#fff')});
+        $('.page-overlay').fadeOut(500, function(){$('.page-overlay').remove();});
+        $('body').css({overflow:'auto', marginRight:0});
         positionfloatingimages();
     });
-	//fixmainimage();
+    fixmainimage();
     
     $(window).resize(function($) {
+        fixmainimage();
         //alert("resized");
-        positionfloatingimages();
-		//positionDiscoverSection();
+        // positionfloatingimages();
+        
+        //positionDiscoverSection();
+        // sliderHeight();
     });
     
     setTimeout(function(){ fixmainimage();}, 100);
@@ -40,32 +44,29 @@ jQuery(document).ready(function($){
         if($(this).hasClass("mlshare"))
             $("div#pageScrollerNav div#shareicons div#mail").trigger('click');
     });
-
-    sliderHeight();
-    //Height of the slider to show the share strip also on first view of the home page
-        function sliderHeight()
-        {
-            //Height of th header bar and the share strip
-            var nwinHeight = $(".share-strip").height() + 50 + 110;
-            //Height of window
-            var winHeight = $(window).height();
-            //calculation for the height of the slider
-            var sHeight = winHeight - nwinHeight;
-            //Calculated height applied to the slider    
-            $("#welcome").css("height",sHeight);
-        }
-
     
 });
+
+ // function sliderHeight()
+ //    {
+ //        //Height of th header bar and the share strip
+ //        var nwinHeight = jQuery(".share-strip").height() + 91 + 50;
+ //        //Height of window
+ //        var winHeight = jQuery(window).height();
+ //        //calculation for the height of the slider
+ //        var sHeight = winHeight - nwinHeight;            
+ //        //Calculated height applied to the slider
+ //        jQuery("div#Welcome").css("height",sHeight);
+ //    }
 
 
 function positionDiscoverSection()
 {
-	var ht = jQuery("td#discover_fabrics div.fab_text").height();
-	console.log(ht);
-	var tdht = jQuery("td#discover_fabrics").height();
-	var top = (tdht - ht) / 2;
-	jQuery("td#discover_fabrics div.fab_text").css('top', top + 'px');
+    var ht = jQuery("td#discover_fabrics div.fab_text").height();
+    console.log(ht);
+    var tdht = jQuery("td#discover_fabrics").height();
+    var top = (tdht - ht) / 2;
+    jQuery("td#discover_fabrics div.fab_text").css('top', top + 'px');
 }
 
 ///this was added for gilt promotion
@@ -118,36 +119,39 @@ function positionfloatingimages()
     console.log((jQuery("img.fltimage").position()).left);
     jQuery("img.fltimage").css("left", _space + "px");
     */
+    
 }
 
 function fixmainimage()
 {
-	jQuery("div#mainimage img.fullscreen").each(function(){
-		if(jQuery("div#globalheader").hasClass('top0'))
-			jQuery(this).css('top',((_winH - getScaledheight(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth"))) / 2) + 'px');
-		else
-			jQuery(this).css('top',((_winH + _headerHeight - getScaledheight(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth"))) / 2) + 'px');
+    jQuery("div#mainimage img.fullscreen").each(function(){
+        if(jQuery("div#globalheader").hasClass('top0'))
+            jQuery(this).css('top',((_winH - getScaledheight(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth"))) / 2) + 'px');
+        else
+            jQuery(this).css('top',((_winH + _headerHeight - getScaledheight(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth"))) / 2) + 'px');
     });
     
     jQuery(".fullscreenovfhidden img.fullscreen").each(function(){
-        var height = jQuery(this).height();
-        height = getScaledheight(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth")) * 1;
+        var height = jQuery(this).height();        
+        height = getScaledheight(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth")) * 1;             
         if(height > _winH)
         {
+            console.log("if");
             jQuery(this).css('top',((_winH - height) / 2) + 'px');
             jQuery(this).css('left', 0);
             jQuery(this).css('width', '100%');
             jQuery(this).css('height', 'auto');
         }
         else
-    	{
-        	height = getScaledwidth(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth")) * 1;
-        	//jQuery(this).css('left',((_winW - height) / 2) + 'px');
-        	jQuery(this).css('top', 0);
-        	jQuery(this).css('left',((_winW - height) / 2) + 'px');
+        {
+            console.log("else");
+            height = getScaledwidth(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth")) * 1;
+            //jQuery(this).css('left',((_winW - height) / 2) + 'px');
+            jQuery(this).css('top', 0);
+            jQuery(this).css('left',((_winW - height) / 2) + 'px');
             jQuery(this).css('width', 'auto');
             jQuery(this).css('height', '100%');
-    	}
+        }
     });
 }
 
@@ -165,7 +169,7 @@ function getScaledwidth(originalheight, originalwidth)
     originalheight = originalheight * 1;
     originalwidth = originalwidth * 1;
     w = ((originalwidth / originalheight) * _winH);
-	return w;
+    return w;
 }
 
 function fixFlexisliderImage()

@@ -755,7 +755,7 @@ span.country {
 .smallimagecontiner td {display: block;opacity: 1;}
 
 /* MailSlider*/
-.flexslider .slides img {}
+
 .madeinusa-txt{width: 100%; font: 37px itcavantgardeprobk; color: #666; text-transform:uppercase;position: absolute;top: 0;left: 0;}
 .madeinusa-txt div{width: 100%; height: 100%; vertical-align: middle; }
 .madeinusa-txt span{display: block; clear: both; font-family: AvantGardeGothicITCW01D;}
@@ -772,12 +772,12 @@ span.country {
     width: 28% !important;
 }
 
-.fullscreenovfhidden img.fullscreen{
+/*.fullscreenovfhidden img.fullscreen{
     display: block;
     left: 0 !important;
     width: 100% !important;
     min-width: inherit !important;
-}
+}*/
 
 .banner-txt3.promo2310{font: 31px/37px AvantGardeGothicITCW01D !important;}
 .banner-txt3.promo2310 span{font: 31px AvantGardeGothicITCW01X !important;}
@@ -1445,6 +1445,15 @@ a.redTxt {
 .contentWrap h2.heading.first{
 	margin-top: 0;
 }
+
+div#bodycompensator{height: 96px;}
+.fullscreenovfhidden img.fullscreen{
+    display: block;
+    left: 0 !important;
+    width: 100% !important;
+    min-width: inherit !important;
+}
+
 
 
 .leftnav a.current {
