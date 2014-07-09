@@ -1445,11 +1445,8 @@ a.redTxt {
 .contentWrap h2.heading.first{
 	margin-top: 0;
 }
-<<<<<<< HEAD
-/*
-@media only screen and (max-width : 4000px) and (min-width : 1450px) {
-	.flexslider .slides img {width: 100% !important; left:0 !important;}
-}*/
+
+
 
 div#bodycompensator{height: 96px;}
 .fullscreenovfhidden img.fullscreen{
@@ -1458,7 +1455,7 @@ div#bodycompensator{height: 96px;}
     width: 100% !important;
     min-width: inherit !important;
 }
-=======
+
 
 
 .leftnav a.current {
@@ -1466,4 +1463,4 @@ div#bodycompensator{height: 96px;}
     padding: 0 18px 0 0;
 }
 
->>>>>>> 9dfd46ae394e57b475425766f644ed2f8a78eae7
+

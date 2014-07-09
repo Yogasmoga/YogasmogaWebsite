@@ -23,8 +23,12 @@ jQuery(document).ready(function($){
     initializesignuppopup();
     initializeinvitepopup();
     initializesigninpopup();
-    madeinusa();   
-
+    madeinusa();
+    setTimeout(function(){
+    	madeinusa();
+    	console.log("timeout");
+    },500);
+    
     $(window).resize(function(){
         setImageContheightPDP();
         madeinusa();
@@ -34,16 +38,6 @@ jQuery(document).ready(function($){
         $("table.productimagecontainer").parent(".upper-container").css("min-height", pdpimagecontH + 70);
     }
 
-    function madeinusa(){
-    	console.log("sda");
-        var block3H = $(".structure .block3").height();
-        var usatxt = $(".madeinusa-txt").height();
-
-        var storeH = block3H - usatxt;
-        var storeF = storeH/2;
-    
-        $(".madeinusa-txt").css("top", storeF);        
-    }
 
     var winHeight = $(window).height();
     $("div.2-columns-wrapper").find(".pg-content").css("min-height", winHeight);    
@@ -257,6 +251,16 @@ function getCookie(cname)
     return "";
 }
 
+function madeinusa(){
+    	console.log("sda");
+        var block3H = jQuery(".structure .block3").height();
+        var usatxt = jQuery(".madeinusa-txt").height();
+
+        var storeH = block3H - usatxt;
+        var storeF = storeH/2;
+    
+        jQuery(".madeinusa-txt").css("top", storeF);        
+    }
 // function hdrCenter(){     var _wnWdth = jQuery(window).width();
 
 //     var _hdrWdth = jQuery(".header-container").width();
