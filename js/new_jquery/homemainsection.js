@@ -136,15 +136,13 @@ function fixmainimage()
         height = getScaledheight(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth")) * 1;             
         if(height > _winH)
         {
-            console.log("if");
             jQuery(this).css('top',((_winH - height) / 2) + 'px');
             jQuery(this).css('left', 0);
             jQuery(this).css('width', '100%');
             jQuery(this).css('height', 'auto');
         }
         else
-        {
-            console.log("else");
+        {            
             height = getScaledwidth(jQuery(this).attr("iheight"), jQuery(this).attr("iwidth")) * 1;
             //jQuery(this).css('left',((_winW - height) / 2) + 'px');
             jQuery(this).css('top', 0);
