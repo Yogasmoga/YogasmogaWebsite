@@ -31,6 +31,7 @@
     <action method="addJs"><script>new_jquery/quickview.js</script></action>
     <action method="addJs"><script>new_jquery/jquery.lazyload.js</script></action>
     <action method="addJs"><script>new_jquery/shoppingbag.js</script></action>
+    <action method="addJs"><script>new_jquery/emailus.js</script></action>
 </reference>
 
 
