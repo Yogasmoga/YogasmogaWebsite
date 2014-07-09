@@ -114,6 +114,13 @@ function createCustomerAccount()
                     //automaticapplysmogibucks(); // automatically apply smogi bucks in the shopping cart
                     showShoppingBagHtml(); //call showShoppingBagHtml to load customer cart after login via smogi login button
                 }
+                if(_isClickSmogiBucksPageLogin)
+                {
+                    _isClickSmogiBucksPageLogin =false;
+                    jQuery(".smogi-bucks-login").empty().append('<span>Just <a class="redTxt" href="customer/account/index/">view</a> your account to check your balance. </span>');
+                    //jQuery(".smogi-view-account").show();
+
+                }
 
 
 
@@ -207,6 +214,14 @@ function loginCustomer()
                 {
                     //automaticapplysmogibucks();
                     showShoppingBagHtml();
+                }
+
+                if(_isClickSmogiBucksPageLogin)
+                {
+                    _isClickSmogiBucksPageLogin =false;
+                    jQuery(".smogi-bucks-login").empty().append('<span>Just <a class="redTxt" href="customer/account/index/">view</a> your account to check your balance. </span>');
+                    //jQuery(".smogi-view-account").show();
+
                 }
 
             }
