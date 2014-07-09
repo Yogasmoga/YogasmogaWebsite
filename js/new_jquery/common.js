@@ -27,8 +27,11 @@ jQuery(document).ready(function($){
     setTimeout(function(){
     	madeinusa();
     	console.log("timeout");
-    },500);
+    },1000);
     
+    jQuery(".block3 a img").load(function(){
+    	madeinusa();
+    });
     $(window).resize(function(){
         setImageContheightPDP();
         madeinusa();
@@ -252,7 +255,6 @@ function getCookie(cname)
 }
 
 function madeinusa(){
-    	console.log("sda");
         var block3H = jQuery(".structure .block3").height();
         var usatxt = jQuery(".madeinusa-txt").height();
 
