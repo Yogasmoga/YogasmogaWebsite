@@ -78,6 +78,14 @@ jQuery(document).ready(function($){
             $("#signing_popup").dialog( "open" );
         }
     });
+
+    $(".smogi-bucks-login").live("click",function(event){
+        event.preventDefault();
+        if(!_islogedinuser)
+        {
+            $("#signing_popup").dialog( "open" );
+        }
+    });
         
     function initializesignuppopup(){
         $( "#signup" ).dialog({

@@ -241,8 +241,10 @@
         while ($row = $readresult->fetch() ) {
             $clrinfo[$row['Value']] = $row['Attribute'];
         }
+        $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_landing_category_ids')->getValue('plain')), true);
 
-        $categoryId = 42;
+        $categoryId = $categoryIds['new_arrivals'];
+
         $i = 0;
         $newarrivals = Mage::getSingleton('catalog/category')->load($categoryId);
         $productCollection = $newarrivals->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
@@ -323,7 +325,7 @@
 
 <!-- Feature Product -->
 <?php
-$featurecategoryId = 40;
+$featurecategoryId = $categoryIds['feature_product'];
 $featurecategory = Mage::getSingleton('catalog/category')->load($featurecategoryId);
 $featurecategoryUrl = Mage::getBaseUrl().$featurecategory->getUrlPath();
 ?>
@@ -352,7 +354,7 @@ $featurecategoryUrl = Mage::getBaseUrl().$featurecategory->getUrlPath();
 
 <!-- Feature Product -->
 <?php
-$colorstorycategoryId = 41;
+$colorstorycategoryId = $categoryIds['color_story'];
 $colorstorycategory = Mage::getSingleton('catalog/category')->load($colorstorycategoryId);
 $colorstorycategoryUrl = Mage::getBaseUrl().$colorstorycategory->getUrlPath();
 ?>
