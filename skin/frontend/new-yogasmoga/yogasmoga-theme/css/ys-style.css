@@ -837,11 +837,11 @@ body{overflow-x:auto !important; }
 .dnone.dblock, .dblock{display: inline !important;}
 .dnone{display: none !important;}
 .detailImg{position: relative; width: 100%; margin: 25px 0 0; clear: both; display: inline-block;}
-.detailImg .heading {color: #fff;left: 4%;line-height: 33px;position: absolute;text-align: left;top: 18%;}
+.detailImg .heading {color: #fff;left: 4%;line-height: 28px;position: absolute;text-align: left;top: 18%;}
 .detailImg.nomrgn{margin: 0;}
 .detailImg > img {width: 100%;}
 .heading.gryedtxt {color: #666;margin: 0;}
-.raising-funds p{margin: 8px 0;font-size: 13px;}
+.raising-funds p{margin: 8px 0;}
 .raising-funds .num{color: #cc0033;font: 74px gothamlight;margin: 0 0 5px;}
 .raising-funds .addbracelet{margin: 12px 0 0;display: inline-block;clear: both;}
 .coloumn-list ul, .coloumn-list li{list-style-type: none;}
@@ -1325,7 +1325,7 @@ body.customer-address-index .myaccountdashboard .customeraddress td{padding-top:
 .box-str:last-child{background:none; padding-bottom:60px;}
 
 .cms-ys-tech #pagecontainer,.cms-our-story #pagecontainer,.cms-smogi-bucks #pagecontainer,.cms-help #pagecontainer{background: url(../images/bot-divider.png) 50% 100% no-repeat; background-size: 90%;}
-.cms-smogi-bucks #pagecontainer { margin: 10px 0 0; background: url(../images/big-divider.png) no-repeat,url(../images/big-divider.png) no-repeat; background-position: top center, bottom center; padding-top:52px; background-size: 100% auto; }
+.cms-smogi-bucks #pagecontainer { margin: 25px 0 0; background: url(../images/big-divider.png) no-repeat,url(../images/big-divider.png) no-repeat; background-position: top center, bottom center; padding-top:52px; background-size: 100% auto; }
 .cms-smogi-bucks .box-str h2.heading{font-size:11px/19px gothambold !important;}
 
 /** making1024Details **/
