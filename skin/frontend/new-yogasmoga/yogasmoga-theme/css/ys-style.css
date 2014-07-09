@@ -95,7 +95,7 @@ p.block-desc{font-size: 35px; color:#666;}
 p.block-link{margin-top: 20px;}
 p.block-link a{font-family: gothammedium; color: #666; font-size: 11px; text-transform: uppercase; border-bottom: #cc0033 1px solid;}
 p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight: normal;}
-.block-text2{position: absolute; top: 30%; left:6%; font-family:ITCAvantGardeProMd;}
+.block-text2{position: absolute; bottom: 7%; left:6%; font-family:ITCAvantGardeProMd;}
 .block-text2 p.bracelet-count{font-family: gothamlight; font-size: 120px; line-height: 90px; margin-left: -10px;}
 .block-text2 p.block-link a{color:#666;}
 .block-text2 span{font-size: 11px;}
@@ -842,7 +842,7 @@ body{overflow-x:auto !important; }
 .detailImg > img {width: 100%;}
 .heading.gryedtxt {color: #666;margin: 0;}
 .raising-funds p{margin: 8px 0;}
-.raising-funds .num{color: #cc0033;font: 74px gothamlight;margin: 0 0 5px;}
+.raising-funds .num, .num{color: #cc0033;font: 74px gothamlight;margin: 0 0 5px;}
 .raising-funds .addbracelet{margin: 12px 0 0;display: inline-block;clear: both;}
 .coloumn-list ul, .coloumn-list li{list-style-type: none;}
 .coloumn-list ul{font-size: 11px; line-height: 16px; margin: 20px 0 0;}
