@@ -149,7 +149,8 @@ div.side-menu-bar ul li a:hover span.arr,
 .pg-content{width:auto; margin: 0 0 0 270px; vertical-align:top; color: #666; line-height: normal;min-height: 300px;}
 .os-banner{position: relative;font-size: 40px; }
 .os-banner img{width: 100%;} 
-.os-banner .banner-text{position:absolute; top:20%; left:7%; text-align: left;}
+.os-banner .banner-text{position:absolute; top:10%; left:5%; text-align: left;}
+/*.os-banner .banner-text.color{top:30%; left:7%; }*/
 .banner-text p{font:31px/25px ITCAvantGardeProMd; text-transform: uppercase;}
 .banner-text span{font-family:"AvantGardeGothicITCW01B"; text-transform: inherit;}
 .box-str-container{width: 95%; margin: 60px auto auto; }
@@ -844,7 +845,7 @@ body{overflow-x:auto !important; }
 .raising-funds .num{color: #cc0033;font: 74px gothamlight;margin: 0 0 5px;}
 .raising-funds .addbracelet{margin: 12px 0 0;display: inline-block;clear: both;}
 .coloumn-list ul, .coloumn-list li{list-style-type: none;}
-.coloumn-list ul{font-size: 13px; line-height: 20px; margin: 20px 0 0;}
+.coloumn-list ul{font-size: 11px; line-height: 16px; margin: 20px 0 0;}
 .coloumn-list li{float: left; margin: 15px 0 0; padding: 25px 0 0; text-align: left; width: 30%; background: url("../images/dvdr-new.jpg") no-repeat center top; background-size: 100% auto;}
 .coloumn-list li span{color: #666; display: block; margin: 0 0 25px; font-size: 21px;}
 .coloumn-list li:nth-child(2){margin: 15px 30px 0;}
@@ -1444,3 +1445,10 @@ a.redTxt {
 .contentWrap h2.heading.first{
 	margin-top: 0;
 }
+
+
+.leftnav a.current {
+    background: url(../images/arrow-Lnav.jpg) no-repeat right 3px rgba(0, 0, 0, 0);
+    padding: 0 18px 0 0;
+}
+

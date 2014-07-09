@@ -13,7 +13,7 @@ jQuery(document).ready(function($){
 
         //if((blockid != 'get-smogi-bucks') && (blockid != 'smogi-bucks-balance')) {
         //  check for cms page hash values
-        if((blockid == 'story')||(blockid == 'corevalues')||(blockid == 'outethics')||(blockid == 'mageinusa')||(blockid == 'principles')||(blockid == 'namaskar')||(blockid == 'press')||(blockid == 'ys-fabric-tech')||(blockid == 'ys-color-tech')||(blockid == 'design-elements')||(blockid == 'smogibucks')||(blockid == 'faq')||(blockid == 'shipping-returns')||(blockid == 'size-chart')||(blockid == 'product-care')||(blockid == 'email-us')){
+        if((blockid == 'story')||(blockid == 'corevalues')||(blockid == 'outethics')||(blockid == 'madeinusa')||(blockid == 'principles')||(blockid == 'namaskar')||(blockid == 'press')||(blockid == 'ys-fabric-tech')||(blockid == 'ys-color-tech')||(blockid == 'design-elements')||(blockid == 'faq')||(blockid == 'shipping-returns')||(blockid == 'size-chart')||(blockid == 'product-care')||(blockid == 'email-us')){
             $(".side-menu-bar ul li").children("a").find("span.arr").text("");
             $(".pg-content").html("<img class='cms-loader' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
             retrievecmsblockcontent(blockid);
@@ -76,17 +76,17 @@ jQuery(document).ready(function($){
     });
 
     // check for click from smogi bucks left column in cms pages
-    $(".side-menu-bar2").on("click","ul li",function(event){
+    /*$(".side-menu-bar2").on("click","ul li",function(event){
         $(".side-menu-bar2 ul li").children("a").find("span.arr").text("");
         $(this).siblings().children("a").removeClass("current");
         $(this).children("a").addClass("current");
         $(this).children("a").find("span.arr").text(">");
         location.hash = $(this).children("a").attr("href");
         event.preventDefault();
-    });    
+    });*/
 
     // check for click from top smogi bucks menu
-    $(".mlink").on("click","li",function(event){
+    /*$(".mlink").on("click","li",function(event){
         $(".side-menu-bar2 ul li").children("a").find("span.arr").text("");
         var id_data = $(this).attr("data-id");        
         $(".side-menu-bar2 ul li").each(function(){
@@ -97,7 +97,7 @@ jQuery(document).ready(function($){
                $(this).children("a").find("span.arr").text(">");
             }
         });        
-    });    
+    }); */
 
     // check for click from top menu navigation for cms page
     $(".cms-header-link").on("click","li",function(event){
