@@ -70,6 +70,8 @@ jQuery(document).ready(function($){
             $("#signing_popup").dialog( "open" );
         }
     });
+
+
         
     function initializesignuppopup(){
         $( "#signup" ).dialog({
