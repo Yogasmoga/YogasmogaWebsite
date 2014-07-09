@@ -82,7 +82,7 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
         // retrict user to apply  smogi bucks with gift of ys
         if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
         {
-            $response['errors'] = "You cannot apply  Smogi Bucks with Gift Card.";
+            $response['errors'] = "You cannot apply Smogi Bucks with Gift Card.";
             echo json_encode($response);
             return;
         }
