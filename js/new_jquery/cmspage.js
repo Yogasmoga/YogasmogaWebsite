@@ -98,6 +98,16 @@ jQuery(document).ready(function($){
             }
         });        
     }); */
+    // smogi bucks page
+    $("#smogi-bucks-login-link").live("click",function(event){
+        event.preventDefault();
+        if(!_islogedinuser)
+        {   _isClickSmogiBucksPageLogin = true;
+            $("#signing_popup").dialog( "open" );
+        }
+    });
+    if(_islogedinuser)
+        jQuery(".smogi-bucks-login").empty().append('<span>Just <a class="redTxt" href="customer/account/index/">view</a> your account to check your balance. </span>');
 
     // check for click from top menu navigation for cms page
     $(".cms-header-link").on("click","li",function(event){
