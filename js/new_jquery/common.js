@@ -1,7 +1,7 @@
 jQuery(document).ready(function($){
+	
 
 	/**Menu delay**/
-
 	 $('ul.ctag-menu>li').hover(
     function()
     {
@@ -24,34 +24,23 @@ jQuery(document).ready(function($){
     initializeinvitepopup();
     initializesigninpopup();
     madeinusa();
-    $(window).resize();
-
+    setTimeout(function(){
+    	madeinusa();
+    	console.log("timeout");
+    },1000);
+    
+    jQuery(".block3 a img").load(function(){
+    	madeinusa();
+    });
     $(window).resize(function(){
         setImageContheightPDP();
+        madeinusa();
     });    
     function setImageContheightPDP(){
         var pdpimagecontH = $("table.tdbigimagecontainer").find("img.shareit").height();
         $("table.productimagecontainer").parent(".upper-container").css("min-height", pdpimagecontH + 70);
     }
 
-    function madeinusa(){
-        var block3H = $(".structure .block3").height();
-        var usatxt = $(".madeinusa-txt").height();
-
-        var storeH = block3H - usatxt;
-        var storeF = storeH/2;
-    
-        $(".madeinusa-txt").css("top", storeF);
-
-        $(window).resize(function(){
-            var block3H = $(".structure .block3").height();
-            var usatxt = $(".madeinusa-txt").height();
-
-            var storeH = block3H - usatxt;
-            var storeF = storeH/2;
-            $(".madeinusa-txt").css("top", storeF);
-        });
-    }
 
     var winHeight = $(window).height();
     $("div.2-columns-wrapper").find(".pg-content").css("min-height", winHeight);    
@@ -265,6 +254,15 @@ function getCookie(cname)
     return "";
 }
 
+function madeinusa(){
+        var block3H = jQuery(".structure .block3").height();
+        var usatxt = jQuery(".madeinusa-txt").height();
+
+        var storeH = block3H - usatxt;
+        var storeF = storeH/2;
+    
+        jQuery(".madeinusa-txt").css("top", storeF);        
+    }
 // function hdrCenter(){     var _wnWdth = jQuery(window).width();
 
 //     var _hdrWdth = jQuery(".header-container").width();
