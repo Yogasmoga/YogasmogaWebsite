@@ -95,7 +95,7 @@ p.block-desc{font-size: 35px; color:#666;}
 p.block-link{margin-top: 20px;}
 p.block-link a{font-family: gothammedium; color: #666; font-size: 11px; text-transform: uppercase; border-bottom: #cc0033 1px solid;}
 p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight: normal;}
-.block-text2{position: absolute; top: 30%; left:6%; font-family:ITCAvantGardeProMd;}
+.block-text2{position: absolute; bottom: 7%; left:6%; font-family:ITCAvantGardeProMd;}
 .block-text2 p.bracelet-count{font-family: gothamlight; font-size: 120px; line-height: 90px; margin-left: -10px;}
 .block-text2 p.block-link a{color:#666;}
 .block-text2 span{font-size: 11px;}
@@ -755,7 +755,7 @@ span.country {
 .smallimagecontiner td {display: block;opacity: 1;}
 
 /* MailSlider*/
-.flexslider .slides img {}
+
 .madeinusa-txt{width: 100%; font: 37px itcavantgardeprobk; color: #666; text-transform:uppercase;position: absolute;top: 0;left: 0;}
 .madeinusa-txt div{width: 100%; height: 100%; vertical-align: middle; }
 .madeinusa-txt span{display: block; clear: both; font-family: AvantGardeGothicITCW01D;}
@@ -763,6 +763,10 @@ span.country {
 .cntn-scroll{position: absolute;}
 .seventy-five{width:72% !important; margin-right:0 !important; }
 @media only screen and (max-width : 1024px) {
+
+
+	.topMenu{top: -5em !important;}
+	.topLeftMenu{top: -12em !important;}
 
 	.coloumn-list li span {
     font-size: 16px !important;
@@ -772,12 +776,12 @@ span.country {
     width: 28% !important;
 }
 
-.fullscreenovfhidden img.fullscreen{
+/*.fullscreenovfhidden img.fullscreen{
     display: block;
     left: 0 !important;
     width: 100% !important;
     min-width: inherit !important;
-}
+}*/
 
 .banner-txt3.promo2310{font: 31px/37px AvantGardeGothicITCW01D !important;}
 .banner-txt3.promo2310 span{font: 31px AvantGardeGothicITCW01X !important;}
@@ -837,12 +841,12 @@ body{overflow-x:auto !important; }
 .dnone.dblock, .dblock{display: inline !important;}
 .dnone{display: none !important;}
 .detailImg{position: relative; width: 100%; margin: 25px 0 0; clear: both; display: inline-block;}
-.detailImg .heading {color: #fff;left: 4%;line-height: 33px;position: absolute;text-align: left;top: 18%;}
+.detailImg .heading {color: #fff;left: 4%;line-height: 28px;position: absolute;text-align: left;top: 18%;}
 .detailImg.nomrgn{margin: 0;}
 .detailImg > img {width: 100%;}
 .heading.gryedtxt {color: #666;margin: 0;}
-.raising-funds p{margin: 8px 0;font-size: 13px;}
-.raising-funds .num{color: #cc0033;font: 74px gothamlight;margin: 0 0 5px;}
+.raising-funds p{margin: 8px 0;}
+.raising-funds .num, .num{color: #cc0033;font: 74px gothamlight;margin: 0 0 5px;}
 .raising-funds .addbracelet{margin: 12px 0 0;display: inline-block;clear: both;}
 .coloumn-list ul, .coloumn-list li{list-style-type: none;}
 .coloumn-list ul{font-size: 11px; line-height: 16px; margin: 20px 0 0;}
@@ -1186,12 +1190,31 @@ table.tblwishlist tr.last td{border:none !important;}
 table.tblwishlist td.prprice{padding-left: 0 !important; text-align: left !important;}
 table.tblwishlist thead th{padding-bottom: 0 !important;}
 /***Checkout header footer display none**/
-.checkout-onepage-index .header-right.f-right,
-.checkout-onepage-index .quick-access,
-.checkout-onepage-index .main-menu.ctag-menu,
+.checkout-onepage-index .header-right .right-top-block.r-align,
+.checkout-onepage-index .in-bl,
+.checkout-onepage-index .main-menu.ctag-menu li,
 .checkout-onepage-index #sitemap{
-	display: none;
+	display: none !important;
 }
+.checkout-onepage-index .main-menu.ctag-menu li#stepCheck{
+    color: #666;
+    cursor: text;
+    display: block !important;
+    font: 11px gothammedium;
+    height: auto;
+    margin: 40px 0 0;
+}
+.f-left.main-menu.ctag-menu > li#stepCheck:hover {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.main-menu.ctag-menu li#stepCheck{
+	display: none !important;
+	height: auto; margin: 0;
+}
+.checkout-onepage-index .right-bottom-block li.free-shipping{
+	margin: 40px 0 0;
+}
+
 
 #productdetailpopup img#closelightbox{
 	right: 5px !important;
@@ -1325,7 +1348,7 @@ body.customer-address-index .myaccountdashboard .customeraddress td{padding-top:
 .box-str:last-child{background:none; padding-bottom:60px;}
 
 .cms-ys-tech #pagecontainer,.cms-our-story #pagecontainer,.cms-smogi-bucks #pagecontainer,.cms-help #pagecontainer{background: url(../images/bot-divider.png) 50% 100% no-repeat; background-size: 90%;}
-.cms-smogi-bucks #pagecontainer { margin: 10px 0 0; background: url(../images/big-divider.png) no-repeat,url(../images/big-divider.png) no-repeat; background-position: top center, bottom center; padding-top:52px; background-size: 100% auto; }
+.cms-smogi-bucks #pagecontainer { margin: 25px 0 0; background: url(../images/big-divider.png) no-repeat,url(../images/big-divider.png) no-repeat; background-position: top center, bottom center; padding-top:52px; background-size: 100% auto; }
 .cms-smogi-bucks .box-str h2.heading{font-size:11px/19px gothambold !important;}
 
 /** making1024Details **/
@@ -1447,8 +1470,86 @@ a.redTxt {
 }
 
 
+div#bodycompensator{height: 96px;}
+.fullscreenovfhidden img.fullscreen{
+    display: block;
+    left: 0 !important;
+    width: 100% !important;
+    min-width: inherit !important;
+}
+
+
+
 .leftnav a.current {
     background: url(../images/arrow-Lnav.jpg) no-repeat right 3px rgba(0, 0, 0, 0);
     padding: 0 18px 0 0;
 }
 
+
+.fullscreenovfhidden img.fullscreen{
+    display: block;
+    left: 0 !important;
+    width: 100% !important;
+    min-width: inherit !important;
+}
+.cms-help #fileupload .sendmail{ width: 143px; height: 43px; padding: 0; font-size: 0; background: url(../images/send-mailbtn.jpg) no-repeat top left; }
+
+
+
+@media screen and (min-width: 1024px) and (max-width: 1300px) {
+	p.block-desc, .madeinusa-txt, li.new-arrivals-desc .block-desc {
+	font-size: 25px !important;
+	}
+	p.block-head {
+	font-size: 13px;
+	}
+	.banner-txt3.promo2310 {
+	font: 31px/37px AvantGardeGothicITCW01D !important;
+	}
+
+	.banner-txt3.promo2310 span {
+	font: 31px/37px AvantGardeGothicITCW01X !important;
+	}
+}
+
+
+@media screen and (min-width: 1301px) and (max-width: 1450px) {
+	p.block-desc, .madeinusa-txt, li.new-arrivals-desc .block-desc {
+	font-size: 28px !important;
+	}
+	p.block-head {
+	font-size: 15px;
+	}
+	.banner-txt3.promo2310 {
+	font: 35px/41px AvantGardeGothicITCW01D !important;
+	}
+
+	.banner-txt3.promo2310 span {
+	font: 35px/41px AvantGardeGothicITCW01X !important;
+	}
+}
+
+
+@media screen and (min-width: 1451px) and (max-width: 1598px) {
+	p.block-desc, .madeinusa-txt, li.new-arrivals-desc .block-desc {
+	font-size: 32px !important;
+	}
+	p.block-head {
+	font-size: 17px;
+	}
+	.banner-txt3.promo2310 {
+	font: 40px/46px AvantGardeGothicITCW01D !important;
+	}
+
+	.banner-txt3.promo2310 span {
+	font: 40px/46px AvantGardeGothicITCW01X !important;
+	}
+}
+
+/****Choose file style****/
+.choose-file-cont{width: 147px; height: 43px; float: left; position: relative;}
+.choosefile-cover{width: 147px; height: 43px; background: url(../images/choosebtn.jpg) no-repeat scroll left top rgba(0, 0, 0, 0); position: absolute; top: 0; left: 0; cursor: pointer;}
+/***ends***/
+
+.reverseShip .headD{color: #c9c9c9;}
+.slider-call-to-action{float: left; margin-top: 7% !important;}
