@@ -15,54 +15,41 @@ var ftr1 = $('#sitemap');
     if (ftr1.length) {          
         var leftnav = ftr1.offset().top;
         $(window).scroll(function(){                                     
+
+            // All CMS/Static Pages
             if($(window).scrollTop() >= document.body.offsetHeight && $('.side-menu-bar').css('position') != 'fixed') {
-                $('.top-divider').css({
-                    'top': hdr
-                });
+                $('.top-divider').removeClass('topMenu');
             }
             else if($(window).scrollTop() < leftnav && $('.side-menu-bar').css('position') != 'relative') {  
-                $('.top-divider').css({
-                    'top': ''
-                });
+                $('.top-divider').removeClass('topMenu');
             }
             else if($(window).scrollTop() < leftnav && $('.side-menu-bar').css('position') != 'relative') {
                 //alert(scrollBottom);
             }
             else{}
              if(document.documentElement.clientHeight + $(document).scrollTop() >= document.body.offsetHeight  && $('.side-menu-bar').css('position') == 'fixed') {
-                $('.side-menu-bar').animate({
-                    top: -ftr
-                });
+                $('.side-menu-bar').addClass('topMenu', 400);
             }
             else {  
-                $('.side-menu-bar').css({
-                    'top': ''
-                });
+                $('.side-menu-bar').removeClass('topMenu');
             } 
             
+            // Women Grid LeftNavigation
             if($(window).scrollTop() >= document.body.offsetHeight && $('.leftnav').css('position') != 'fixed') {
-                $('.leftnav').css({
-                    'top': hdr
-                });
+                $('.leftnav').removeClass('topLeftMenu');
             }
             else if($(window).scrollTop() < leftnav && $('.leftnav').css('position') != 'relative') {  
-                $('.leftnav').css({
-                    'top': ''
-                });
+                $('.leftnav').removeClass('topLeftMenu');
             }
             else if($(window).scrollTop() < leftnav && $('.leftnav').css('position') != 'relative') {
                 //alert(scrollBottom);
             }
             else{}
              if(document.documentElement.clientHeight + $(document).scrollTop() >= document.body.offsetHeight  && $('.leftnav').css('position') == 'fixed') {
-                $('.leftnav').animate({
-                    top: -ftr5
-                });
+                $('.leftnav').addClass('topLeftMenu', 400);
             }
             else {  
-                $('.leftnav').css({
-                    'top': ''
-                });
+                $('.leftnav').removeClass('topLeftMenu');
             }        
         });
     }

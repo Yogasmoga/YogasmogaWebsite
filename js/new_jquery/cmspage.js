@@ -58,7 +58,7 @@ jQuery(document).ready(function($){
         });
     }
     $(".email-us").live("click",function(){
-        alert('tests');
+        //alert('tests');
         initiateshareurl('mail');
     });
 
@@ -73,6 +73,8 @@ jQuery(document).ready(function($){
         var data = $(this).attr("data-blockid");
         retrievecmsblockcontent(data);
         event.preventDefault();
+        $("html, body").animate({ scrollTop: 0 }, 400);
+        return false;
     });
 
     // check for click from smogi bucks left column in cms pages
