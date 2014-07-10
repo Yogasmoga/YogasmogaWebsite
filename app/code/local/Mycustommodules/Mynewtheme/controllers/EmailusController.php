@@ -59,7 +59,7 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         $headers .= "Reply-To: ". strip_tags($from) . "\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-        mail($toemail,$subject,$html,"From: $from\n");
+        mail($toemail,$subject,$html,$headers);
         //echo $html;
        echo json_encode($data);
 
