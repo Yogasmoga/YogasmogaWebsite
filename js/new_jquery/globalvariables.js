@@ -71,3 +71,5 @@ var _isClickSigninMenu = false; // check if user click on sign in from the drop 
 var _isClickRemoveGiftYS = 1; // check if user click gift ys
 var _isClickContinueNotLogedin = false; // check when click on continue checkout button on top of shopping bag
 var _isClickSmogiBucksPageLogin = false;
+var _isClickFooterWelcomeName = false;
+var _isClickFooterTrackOrder = false;

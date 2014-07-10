@@ -121,7 +121,14 @@ function createCustomerAccount()
                     //jQuery(".smogi-view-account").show();
 
                 }
-
+                if(_isClickFooterWelcomeName)
+                {
+                    window.location.assign(homeUrl+'customer/account/index');
+                }
+                if(_isClickFooterTrackOrder)
+                {
+                    window.location.assign(homeUrl+'sales/order/history/');
+                }
 
 
             }
@@ -222,6 +229,14 @@ function loginCustomer()
                     jQuery(".smogi-bucks-login").empty().append('<span>Just <a class="redTxt" href="customer/account/index/">view</a> your account to check your balance. </span>');
                     //jQuery(".smogi-view-account").show();
 
+                }
+                if(_isClickFooterWelcomeName)
+                {
+                    window.location.assign(homeUrl+'customer/account/index');
+                }
+                if(_isClickFooterTrackOrder)
+                {
+                    window.location.assign(homeUrl+'sales/order/history/');
                 }
 
             }

@@ -63,6 +63,25 @@ jQuery(document).ready(function($){
             $("#invite_friends").dialog( "open" );
         }            
     });
+    $(".footer-block").on("click","#welcome-name","#footer-trackorder",function(e){
+
+        if(!_islogedinuser)
+        {
+            e.preventDefault();
+            _isClickFooterWelcomeName = true;
+            $("#signing_popup").dialog( "open" );
+        }
+    });
+    $(".footer-block").on("click","#footer-trackorder",function(e){
+
+        if(!_islogedinuser)
+        {
+            e.preventDefault();
+            _isClickFooterTrackOrder = true;
+            $("#signing_popup").dialog( "open" );
+        }
+    });
+
     $(".right-top-block").on("click","ul.my-acnt li a",function(event){
         if(!_islogedinuser){
             event.preventDefault();
