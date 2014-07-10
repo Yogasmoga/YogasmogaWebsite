@@ -188,7 +188,9 @@
 
                         $categoryId = $categoryIds['new_arrivals'];
                         $i = 0;
-                        $newarrivals = Mage::getSingleton('catalog/category')->load($categoryId);
+                        $newarrivals = Mage::getModel('catalog/category')->load($categoryId);
+
+
                         $productCollection = $newarrivals->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
                         foreach($productCollection as $_product)
                         {

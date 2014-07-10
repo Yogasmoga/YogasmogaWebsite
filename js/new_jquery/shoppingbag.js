@@ -403,7 +403,7 @@ function showShoppingBagHtml()
                 url : url,
                 type : 'POST',
                 //data : {'blockid':blockid},
-
+                cache : false,
                 success : function(data){
                     data = eval('('+data + ')');
                     //console.log(data.html);
