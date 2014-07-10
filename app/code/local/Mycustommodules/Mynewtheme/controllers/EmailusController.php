@@ -44,6 +44,7 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         $html = '<html><body>';
         $html .='<table cellspacing="0" cellpadding="0" width="700" style="color:#333;font-family:arial;font-size:12px;">';
         $html .='<tr><td><img alt="YOGASMOGA logo" src="'.Mage::helper('core/url')->getHomeUrl().'/skin/frontend/new-yogasmoga/yogasmoga-theme/images/logo.png"></td><td width="50%" align="left"></td></tr>';
+        $html .='<tr><td '.$style.'></td><td width="50%" align="left">Help Query</td></tr>';
         $html .='<tr><td '.$style.'>Name:</td><td width="50%" align="left">'.$name.'</td></tr>';
         $html .='<tr><td '.$style.'>Topic:</td><td width="50%" align="left">'.$topic.'</td></tr>';
         $html .='<tr><td '.$style.'>Message:</td><td width="50%" align="left">'.$message.'</td></tr>';
@@ -52,7 +53,7 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         $html .='<tr><td '.$style.'>IP:</td><td width="50%" align="left">'.$_SERVER['REMOTE_ADDR'].'</td></tr>';
         if(!empty($file['name'])){  
             $fileurl=Mage::helper('core/url')->getHomeUrl().'uploads/'.$file['name'];
-            $html .='<tr><td width="50%" height="30" align="left">Uploaded File:</td><td width="50%" align="left">'.$fileurl.'</td></tr>';
+            $html .='<tr><td '.$style.'>Uploaded File:</td><td width="50%" align="left">'.$fileurl.'</td></tr>';
         }
         $html .='</table>';
         $html .= "</body></html>";

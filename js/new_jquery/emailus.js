@@ -29,13 +29,13 @@ jQuery(document).ready(function($){
                 var email = jQuery('#email').val();
                 if (name == '' || topic == '' || email == '')
                 {
-                    jQuery('#resultdiv').empty().append('Please enter name, topic and email address.');
+                    jQuery('#resultdiv').empty().append('Please enter name, topic and email address.').show().delay('10000').hide(0);
                     return false;
                 }
                 emailReg = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
                 var valid = emailReg.test(email);
                 if (!valid) {
-                    jQuery('#resultdiv').empty().append('Please enter valid email address.');
+                    jQuery('#resultdiv').empty().append('Please enter valid email address.').show().delay('10000').hide(0);
                     return false;
                 }
                 var data = new FormData();
@@ -64,12 +64,12 @@ jQuery(document).ready(function($){
                                 // Success so call function to process the form
                                 //submitForm(event, data);
                                 jQuery('input,textarea').val('');
-                                jQuery('#resultdiv').empty().append('Thanks for submitting your query.');
+                                jQuery('#resultdiv').empty().append('Thanks for submitting your query.').show().delay('10000').hide(0);
                         }
                         else
                         {
                                 // Handle errors here
-                                jQuery('#resultdiv').empty().append('ERRORS: ' + data.error);
+                                jQuery('#resultdiv').empty().append('ERRORS: ' + data.error).show().delay('10000').hide(0);
                               //  console.log('ERRORS: ' + data.error);
                         }
                     },
