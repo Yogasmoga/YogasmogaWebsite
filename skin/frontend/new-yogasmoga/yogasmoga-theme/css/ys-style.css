@@ -1190,12 +1190,31 @@ table.tblwishlist tr.last td{border:none !important;}
 table.tblwishlist td.prprice{padding-left: 0 !important; text-align: left !important;}
 table.tblwishlist thead th{padding-bottom: 0 !important;}
 /***Checkout header footer display none**/
-.checkout-onepage-index .header-right.f-right,
-.checkout-onepage-index .quick-access,
-.checkout-onepage-index .main-menu.ctag-menu,
+.checkout-onepage-index .header-right .right-top-block.r-align,
+.checkout-onepage-index .in-bl,
+.checkout-onepage-index .main-menu.ctag-menu li,
 .checkout-onepage-index #sitemap{
-	display: none;
+	display: none !important;
 }
+.checkout-onepage-index .main-menu.ctag-menu li#stepCheck{
+    color: #666;
+    cursor: text;
+    display: block !important;
+    font: 11px gothammedium;
+    height: auto;
+    margin: 40px 0 0;
+}
+.f-left.main-menu.ctag-menu > li#stepCheck:hover {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.main-menu.ctag-menu li#stepCheck{
+	display: none !important;
+	height: auto; margin: 0;
+}
+.checkout-onepage-index .right-bottom-block li.free-shipping{
+	margin: 40px 0 0;
+}
+
 
 #productdetailpopup img#closelightbox{
 	right: 5px !important;
@@ -1531,3 +1550,5 @@ div#bodycompensator{height: 96px;}
 .choose-file-cont{width: 147px; height: 43px; float: left; position: relative;}
 .choosefile-cover{width: 147px; height: 43px; background: url(../images/choosebtn.jpg) no-repeat scroll left top rgba(0, 0, 0, 0); position: absolute; top: 0; left: 0; cursor: pointer;}
 /***ends***/
+
+.reverseShip .headD{color: #c9c9c9;}
