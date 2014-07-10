@@ -850,7 +850,7 @@ body{overflow-x:auto !important; }
 .raising-funds .addbracelet{margin: 12px 0 0;display: inline-block;clear: both;}
 .coloumn-list ul, .coloumn-list li{list-style-type: none;}
 .coloumn-list ul{font-size: 11px; line-height: 16px; margin: 20px 0 0;}
-.coloumn-list li{float: left; margin: 15px 0 0; padding: 25px 0 0; text-align: left; width: 31%; background: url("../images/dvdr-new.jpg") no-repeat center top; background-size: 100% auto;}
+.coloumn-list li{float: left; margin: 15px 0 0; padding: 25px 0 0; text-align: left; width: 30%; background: url("../images/dvdr-new.jpg") no-repeat center top; background-size: 100% auto;}
 .coloumn-list li span{color: #666; display: block; margin: 0 0 25px; font-size: 21px;}
 .coloumn-list li:nth-child(2){margin: 15px 33px 0;}
 
