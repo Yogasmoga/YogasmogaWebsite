@@ -1531,3 +1531,5 @@ div#bodycompensator{height: 96px;}
 .choose-file-cont{width: 147px; height: 43px; float: left; position: relative;}
 .choosefile-cover{width: 147px; height: 43px; background: url(../images/choosebtn.jpg) no-repeat scroll left top rgba(0, 0, 0, 0); position: absolute; top: 0; left: 0; cursor: pointer;}
 /***ends***/
+
+.slider-call-to-action{float: left; margin-top: 7% !important;}
