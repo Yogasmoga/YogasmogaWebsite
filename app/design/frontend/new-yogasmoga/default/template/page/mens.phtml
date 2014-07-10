@@ -241,7 +241,7 @@
         while ($row = $readresult->fetch() ) {
             $clrinfo[$row['Value']] = $row['Attribute'];
         }
-        $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_landing_category_ids')->getValue('plain')), true);
+        $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('men_landing_category_ids')->getValue('plain')), true);
 
         $categoryId = $categoryIds['new_arrivals'];
 
