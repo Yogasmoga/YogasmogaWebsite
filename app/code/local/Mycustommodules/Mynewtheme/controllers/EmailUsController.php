@@ -5,7 +5,7 @@ class Mycustommodules_Mynewtheme_EmailUsController extends Mage_Core_Controller_
     public function sendMailAction()
     {
         $data = array();
-      //  print_r($this->getRequest()->getPost());
+        print_r($this->getRequest()->getPost());
         $name= $this->getRequest()->getPost('name');
         //$filedata= $this->getRequest()->getPost('filename');
         if(isset($name))
