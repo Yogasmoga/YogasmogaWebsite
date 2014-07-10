@@ -44,12 +44,12 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         $html = '<html><body>';
         $html .='<table cellspacing="0" cellpadding="0" width="700" style="color:#333;font-family:arial;font-size:12px;">';
         $html .='<tr><td><img alt="YOGASMOGA logo" src="'.Mage::helper('core/url')->getHomeUrl().'/skin/frontend/new-yogasmoga/yogasmoga-theme/images/logo.png"></td><td width="50%" align="left"></td></tr>';
-        $html .='<tr><td '.$style.'></td><td width="50%" align="left">Help Query</td></tr>';
+        $html .='<tr><td '.$style.'></td><td width="50%" align="left" valign="middle" style="font-size:14px;"><strong>Help Query</strong></td></tr>';
         $html .='<tr><td '.$style.'>Name:</td><td width="50%" align="left">'.$name.'</td></tr>';
         $html .='<tr><td '.$style.'>Topic:</td><td width="50%" align="left">'.$topic.'</td></tr>';
         $html .='<tr><td '.$style.'>Message:</td><td width="50%" align="left">'.$message.'</td></tr>';
         $html .='<tr><td '.$style.'>Email:</td><td width="50%" align="left">'.$email.'</td></tr>';
-        $html .='<tr><td '.$style.'>Date/Time:</td><td width="50%" align="left">'.date('Y-m-d H:i:s').'</td></tr>';
+        $html .='<tr><td style="width:50%;height:30px;text-align:left;font-weight:bold;">Date/Time:</td><td width="50%" align="left">'.date('Y-m-d H:i:s').'</td></tr>';
         $html .='<tr><td '.$style.'>IP:</td><td width="50%" align="left">'.$_SERVER['REMOTE_ADDR'].'</td></tr>';
         if(!empty($file['name'])){  
             $fileurl=Mage::helper('core/url')->getHomeUrl().'uploads/'.$file['name'];
