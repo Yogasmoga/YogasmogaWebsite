@@ -325,9 +325,6 @@ function scrollingContentLink(){
                         'top': '',
                         'bottom': ''
                     });
-    
-                    
-                    // this is container div class
                  
                 }
             });

@@ -19,49 +19,67 @@ jQuery(document).ready(function($){
 	{
                 event.stopPropagation(); // Stop stuff happening
                 event.preventDefault(); // Totally stop stuff happening
+                jQuery('#resultdiv').empty();
+                // START A LOADING SPINNER HERE
 
-        // START A LOADING SPINNER HERE
+                // Create a formdata object and add the files
+                var name = jQuery('#name').val();
+                var topic = jQuery('#topic').val();
+                var message = jQuery('#message').val();
+                var email = jQuery('#email').val();
+                if (name == '' || topic == '' || email == '')
+                {
+                    jQuery('#resultdiv').empty().append('Please enter name, topic and email address.').show().delay('10000').hide(0);
+                    return false;
+                }
+                emailReg = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+                var valid = emailReg.test(email);
+                if (!valid) {
+                    jQuery('#resultdiv').empty().append('Please enter valid email address.').show().delay('10000').hide(0);
+                    return false;
+                }
+                var data = new FormData();
+                jQuery.each(files, function(key, value)
+                {
+                        data.append(key, value);
+                });
+            //    alert(JSON.stringify(data));
+                data.append('topic', topic);
+                data.append('name', name);
+                data.append('message', message);
+                data.append('email', email);
 
-        // Create a formdata object and add the files
-        var data = new FormData();
-        jQuery.each(files, function(key, value)
-        {
-                data.append(key, value);
-        });
-    //    alert(JSON.stringify(data));
-        data.append('topic', $('#topic').val());
-        data.append('name', $('#name').val());
-        data.append('message', $('#message').val());
-        data.append('email', $('#email').val());
-        
-        jQuery.ajax({
-            url: 'mynewtheme/emailus/sendmail',
-            type: 'POST',
-            data: data,
-            cache: false,
-            dataType: 'json',
-            processData: false, // Don't process the files
-            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-            success: function(data, textStatus, jqXHR)
-            {
-            	if(typeof data.error === 'undefined')
-            	{
-            		// Success so call function to process the form
-            		//submitForm(event, data);
-            	}
-            	else
-            	{
-            		// Handle errors here
-            		console.log('ERRORS: ' + data.error);
-            	}
-            },
-            error: function(jqXHR, textStatus, errorThrown)
-            {
-            	// Handle errors here
-            	console.log('ERRORS: ' + textStatus);
-            	// STOP LOADING SPINNER
-            }
-        });
+                jQuery.ajax({
+                    url: 'mynewtheme/emailus/sendmail',
+                    type: 'POST',
+                    data: data,
+                    cache: false,
+                    dataType: 'json',
+                    processData: false, // Don't process the files
+                    contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+                    success: function(data, textStatus, jqXHR)
+                    {
+                        if(typeof data.error === 'undefined')
+                        {
+                                // Success so call function to process the form
+                                //submitForm(event, data);
+                                jQuery('input,textarea').val('');
+                                jQuery('#resultdiv').empty().append('Thanks for submitting your query.').show().delay('10000').hide(0);
+                        }
+                        else
+                        {
+                                // Handle errors here
+                                jQuery('#resultdiv').empty().append('ERRORS: ' + data.error).show().delay('10000').hide(0);
+                              //  console.log('ERRORS: ' + data.error);
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown)
+                    {
+                        // Handle errors here
+                       // console.log('ERRORS: ' + textStatus);
+                        // STOP LOADING SPINNER
+                    }
+                });
     }
 
     function submitForm(event, data)
@@ -108,5 +126,6 @@ jQuery(document).ready(function($){
             }
 		});
 	}
-	
-});
+
+       
+    });

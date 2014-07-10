@@ -30,6 +30,12 @@ jQuery(document).ready(function($){
 
     $(".showShippingOpt").on("click", "li", function(){
         var selectedVal = $(this).text();
+
+        $("form#checkout-shipping-form").find("input[type='submit']").show();
+        $("#shippingDetails").css("background", "").addClass("active");
+        $("#billingDetails").removeClass("active");
+        $("#billingDetails .ovrlay-bg").show();
+
         $(".showShippingOpt li").removeClass("selected");
         $(this).addClass("selected");
         $(".shippingOption").find(".addVal").text(selectedVal);
@@ -206,6 +212,7 @@ jQuery(document).ready(function($){
             $("#checkout-shipping-address-new").hide();
             $("#updateNameAdd").show();
             $("#shippingaddressselectionblock").show().removeClass('addressselector');
+
         }
     });   
     
@@ -442,6 +449,9 @@ function breadValSelect(){
     jQuery(document).on('click', '#shipping-address-select li', function () {
             var selectedAdd = jQuery(this).text();
 
+            jQuery("#shipping-address-select li").removeAttr('id');
+            jQuery(this).attr('id', 'selected');
+
             jQuery(this).parent().slideUp();
             jQuery(".showUpadd").toggleClass("reverse");
 
@@ -460,7 +470,6 @@ function breadValSelect(){
 }
 
 function createNewElement(){
-    var list = jQuery("select#shipping-address-select").find("option").size();
     var selectID = jQuery("select#shipping-address-select").attr("id");
     var selectName = jQuery("select#shipping-address-select").attr("name");
 
@@ -890,13 +899,8 @@ function virtualsaveshippingaddress()
 
     //console.log(address);
     
-    jQuery("form#checkout-shipping-form ul#shipping-address-select li:last").before("<li value='x'>" + address + "</li>");
-    
-//    jQuery("select#shipping-address-select option").removeAttr("selected");
-    //jQuery("select#shipping-address-select option:last").before("<option selected='selected'>" + address + "</option>");
-
-
-
+    jQuery("form#checkout-shipping-form ul#shipping-address-select li").removeAttr("id");
+    jQuery("form#checkout-shipping-form ul#shipping-address-select li:last").before("<li id='selected' value='x'>" + address + "</li>");
 }
 
 function saveShippingMethod()
@@ -995,7 +999,7 @@ function saveShippingAddress()
             
             
             // hiding shiipng divs
-            var txtSl = jQuery('ul#shipping-address-select').find("li:last").prev().text();
+            var txtSl = jQuery('ul#shipping-address-select').find("li#selected").text();
             txtSl = txtSl.replace(/,/g, "<br>");
 
             jQuery('#updateNameAdd').find('.address').html(txtSl);
