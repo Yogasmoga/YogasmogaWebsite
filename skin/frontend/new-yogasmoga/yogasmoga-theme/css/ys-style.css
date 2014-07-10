@@ -269,7 +269,7 @@ ul.new-arrivals li{display: inline-block; width:20%; vertical-align: top; height
 ul.new-arrivals li img{ margin: 0 auto; display: block;}
 ul.new-arrivals li span{font-size: 12px; display: block; color: #666; text-transform: uppercase;}
 ul.new-arrivals li img.prd-image{width: 90%;}
-ul.new-arrivals a.quick-view{min-height: 300px; display: inline-block; width: 100%;}
+ul.new-arrivals li > a.quick-view{min-height: 300px; display: inline-block; width: 100%;}
 .prd-details{margin-top: 30px;}
 .prd-details .prd-price{margin-bottom: 10px;}
 li.new-arrivals-desc{text-align: left; font-family: ITCAvantGardeProMd; margin-top: 0 !important;}
@@ -841,7 +841,7 @@ body{overflow-x:auto !important; }
 .dnone.dblock, .dblock{display: inline !important;}
 .dnone{display: none !important;}
 .detailImg{position: relative; width: 100%; margin: 25px 0 0; clear: both; display: inline-block;}
-.detailImg .heading {color: #fff;left: 4%;line-height: 28px;position: absolute;text-align: left;top: 18%;}
+.detailImg .heading {color: #fff;left: 4%;line-height: 28px;position: absolute;text-align: left;top: 18%; font: 23px/32px AvantGardeGothicITCW01D;}
 .detailImg.nomrgn{margin: 0;}
 .detailImg > img {width: 100%;}
 .heading.gryedtxt {color: #666;margin: 0;}
@@ -850,9 +850,9 @@ body{overflow-x:auto !important; }
 .raising-funds .addbracelet{margin: 12px 0 0;display: inline-block;clear: both;}
 .coloumn-list ul, .coloumn-list li{list-style-type: none;}
 .coloumn-list ul{font-size: 11px; line-height: 16px; margin: 20px 0 0;}
-.coloumn-list li{float: left; margin: 15px 0 0; padding: 25px 0 0; text-align: left; width: 30%; background: url("../images/dvdr-new.jpg") no-repeat center top; background-size: 100% auto;}
+.coloumn-list li{float: left; margin: 15px 0 0; padding: 25px 0 0; text-align: left; width: 31%; background: url("../images/dvdr-new.jpg") no-repeat center top; background-size: 100% auto;}
 .coloumn-list li span{color: #666; display: block; margin: 0 0 25px; font-size: 21px;}
-.coloumn-list li:nth-child(2){margin: 15px 30px 0;}
+.coloumn-list li:nth-child(2){margin: 15px 33px 0;}
 
 /** settingWidth **/
 .block-elm, div.new-arrivals-block, .clip-bg, .divider-btm, .fabric-color,#pagecontainer.accountbg,.pgsection,.settingWidth{min-width: 820px; max-width: 1600px; margin:0 auto;}
@@ -1553,3 +1553,8 @@ div#bodycompensator{height: 96px;}
 
 .reverseShip .headD{color: #c9c9c9;}
 .slider-call-to-action{float: left; margin-top: 7% !important;}
+
+
+.raising-funds img {
+    margin: 14px 0 0;
+}
