@@ -1,6 +1,5 @@
 <?php
-
-class Mycustommodules_Mynewtheme_EmailUsController extends Mage_Core_Controller_Front_Action
+class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_Front_Action
 {
     public function testAction()
     {
