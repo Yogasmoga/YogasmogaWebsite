@@ -1,5 +1,8 @@
 jQuery(document).ready(function($){
 	
+	$("body.cms-help").on("click", ".choosefile-cover", function(){
+		$(this).parent().find("input#file_upload").trigger("click");		
+	});
 
 	/**Menu delay**/
 	 $('ul.ctag-menu>li').hover(
@@ -25,8 +28,7 @@ jQuery(document).ready(function($){
     initializesigninpopup();
     madeinusa();
     setTimeout(function(){
-    	madeinusa();
-    	console.log("timeout");
+    	madeinusa();    	
     },1000);
     
     jQuery(".block3 a img").load(function(){
