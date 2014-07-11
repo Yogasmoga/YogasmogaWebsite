@@ -272,7 +272,7 @@ ul.new-arrivals li img.prd-image{width: 90%;}
 ul.new-arrivals li > a.quick-view{min-height: 300px; display: inline-block; width: 100%;}
 .prd-details{margin-top: 30px;}
 .prd-details .prd-price{margin-bottom: 10px;}
-li.new-arrivals-desc{text-align: left; font-family: ITCAvantGardeProMd; margin-top: 0 !important;}
+li.new-arrivals-desc{text-align: left; font-family: ITCAvantGardeProMd; margin-top: 33px !important;}
 li.new-arrivals-desc .block-head{margin-bottom: 5px; font-size: 18px;}
 li.new-arrivals-desc .block-desc{margin-bottom: 25px; font-size: 35px;}
 li.new-arrivals-desc .block-link a, .block-link a{font-family: ITCAvantGardeProMd; font-size: 14px;}
