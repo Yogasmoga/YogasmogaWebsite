@@ -401,8 +401,8 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 
 
 .featureList span{display: block; margin: 12px 0 0; font-size: 11px; text-transform: capitalize; text-align: left;}
-.featureList span.ftrFig{/*background: #E5E9EC;*/ margin: 0; text-align: left; height: 200px}
-.featureList span.ftrFig img{/*width: 100%;*/ height: 100%;}
+.featureList span.ftrFig{/*background: #E5E9EC;*/ margin: 0; text-align: left; /*height: 200px*/}
+.featureList span.ftrFig img{width: 100%; /*height: 100%;*/}
 
 .similarProdList{margin: auto auto 20px; width: auto; font-size: 11px; color: #666;}
 .similarProdList a {
@@ -837,6 +837,7 @@ body{overflow-x:auto !important; }
 .product-care-icon{width: 100% !important; background-size: 100% !important;}
 .product-care-icon li{margin-bottom: 20px; float: left; width: 20%;} 
 .contWom h4{font-size: 13px !important;}
+.figCap span{font-size: 11px;}
 }
 .contWom p{display: none;}
 .contWom p.block-link{display: block;}
