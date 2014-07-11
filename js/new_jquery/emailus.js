@@ -48,7 +48,8 @@ jQuery(document).ready(function($){
                 data.append('name', name);
                 data.append('message', message);
                 data.append('email', email);
-
+                jQuery('#loader').show();
+                jQuery('#submitfile').hide();
                 jQuery.ajax({
                     url: 'mynewtheme/emailus/sendmail',
                     type: 'POST',
@@ -72,6 +73,8 @@ jQuery(document).ready(function($){
                                 jQuery('#resultdiv').empty().append('ERRORS: ' + data.error).show().delay('10000').hide(0);
                               //  console.log('ERRORS: ' + data.error);
                         }
+                        jQuery('#loader').hide();
+                        jQuery('#submitfile').show();
                     },
                     error: function(jqXHR, textStatus, errorThrown)
                     {
