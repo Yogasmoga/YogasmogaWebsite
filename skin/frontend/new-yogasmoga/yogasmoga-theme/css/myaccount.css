@@ -228,11 +228,11 @@ a.forgot-link:hover
 
 .myaccountdashboard a
 {
-    color : #d90d3d;
+    color : #666;
     text-decoration: underline;
-    font-family: HelvLightRegular;
+    font-family: gothambook;
     font-size: 11px;
-    letter-spacing : 0.4pt;
+    /*letter-spacing : 0.4pt;*/
 	text-transform:none;
     padding-left : 8px;
 }
@@ -387,18 +387,19 @@ button.button.btn-check
     margin-left : 15px;
     margin-top : -7px;
 }
-.account-nav{margin-bottom:28px; /***NEW***/ width:270px; position: fixed;}
-ul.sub-nav{text-indent:0; list-style:none; padding:10px; margin:0; font-family:gothambook, Arial; font-size:11px; text-transform:uppercase; /*text-align:center;*/ text-align: left; line-height:24px;}
+.account-nav{margin-bottom:28px; /***NEW***/ width:270px !important; position: fixed;}
+ul.sub-nav{text-indent:0 !important; list-style:none !important; padding:10px 20px !important; margin:0 !important; font-family:gothambook !important; font-size:11px !important; text-transform:uppercase !important; /*text-align:center;*/ text-align: left !important; line-height:24px !important;}
 ul.sub-nav li {
   /*background: url("../images/subsep.png") no-repeat scroll 100% 50% transparent;*/
   /*display: inline;*/  
-  height: 24px;
+  /*height: 24px;*/
   margin: 0;
   /*padding: 0 28px 0 10px;*/
   /**New**/
   display: block;
+  line-height: normal;
 }
-ul.sub-nav li a{display: inline; font: 11px/16px gothammedium; color: #666;}
+ul.sub-nav li a{display: inline; font: 11px/19px gothammedium; color: #666;}
 ul.sub-nav li a:hover,ul.sub-nav li.current a{color: #c03;}
 ul.sub-nav li a span.arr{visibility: hidden;}
 ul.sub-nav li.current a span.arr{visibility: visible;}
@@ -538,10 +539,10 @@ table.referfriend-invitehead td.potential span
 }
 div#referafriend-container p
 {
-    font-family : gothamlight;
+    font-family : gothambook;
     font-size : 11px;
     letter-spacing: 0.2pt;
-    color : black;
+    color : #666;
     text-align: left;
 }
 table.referfriendforms

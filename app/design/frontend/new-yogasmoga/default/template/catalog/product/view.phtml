@@ -520,9 +520,9 @@ if($_product->getAttributeText('canzoomimage') == "yes")
             width: 100px;
         }
         table.productzoomtable td.zoomproductoptions{
-            max-width: 300px;
-            min-width: 300px;
-            width: 300px;
+            max-width: 200px;
+            min-width: 200px;
+            width: 200px;
         }
         .zoomsmallimagecontainer img{
             margin: 0 0 25px;
@@ -619,7 +619,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
             ?>
             <div class="video-design-block">
 
-                <video width="252" height="190" controls>
+                <video style="width:358px;" controls>
                     <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."design_features_video/".$_product->getDesignFeatureVideo(); ?>" type="video/mp4">
 
                 </video>
@@ -671,7 +671,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
                                   ?>
                                 <div class="video-block f-right">
 
-                                        <video width="181" height="136" controls>
+                                        <video controls>
                                           <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."how_to_measure_video/".$_product->getHowToMeasureVideo(); ?>" type="video/mp4">
 
                                       </video>
@@ -1538,16 +1538,11 @@ if($ftimage != "" && $ftimagesmall != "")
 <div style="display:none;">
     <div id="zoompopup">
         <table class="productzoomtable">
-            <!-- <tr class="zoom-prd-details">
-                <td></td>
-                <td></td>
-            </tr> -->
             <tr>
-                <td class="zoomproductoptions">
-                    <table class="productdetailtable zoomproductdetail">
-                        <tr>
-                            <td>
-                                <div class="zoom-prd-det" style="margin: 40px 20px; width: auto;">
+                <td colspan="2">
+                    <table class="productdetailtable zoomproductdetail" style="position:relative;">
+                    <tr><td>
+                    <div class="zoom-prd-det" style="margin: 40px 20px; width: auto;">
                                     <div class="prdname in-bl vert-bottom">
                                         <div class="productname"><?php echo html_entity_decode($productname); ?></div>
                                         <span class="productcost amount no-display"><?php echo $productprice; ?></span>
@@ -1616,7 +1611,21 @@ if($ftimage != "" && $ftimagesmall != "")
                                     </div>
                                 </div>
                                 <div style="clear: both;"></div>
-                                <div class="" style="margin-top:110px;">
+                                <img id="closelightbox" src="<?php echo $this->getSkinUrl('images/catalog/product/close-prd-zoom.png'); ?>" />
+                                <div id="zoomoptions">
+                                    <img id="zoomout" src="<?php echo $this->getSkinUrl('images/catalog/product/zoom-out.png'); ?>" />
+                                    <img id="zoomin" src="<?php echo $this->getSkinUrl('images/catalog/product/zoom-in.png'); ?>" />
+                                </div>
+                                </td></tr>
+                                </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="zoomproductoptions">
+                    <table class="productdetailtable zoomproductdetail">
+                        <tr>
+                            <td>                                
+                                <div class="zoom-thumb-imgs">
                                     <table class="zoomsmallimagecontainer" style="margin-left:40px;">
                                         <tr><td><img src="" style="margin: 0 0 25px; max-width: 100%;" /></td></tr>
                                         <tr><td><img src="" style="margin: 0 0 25px; max-width: 100%;" /></td></tr>
@@ -1631,12 +1640,7 @@ if($ftimage != "" && $ftimagesmall != "")
                 </td>
                 <td id="zoomedproductimage"></td>
             </tr>
-        </table>
-        <img id="closelightbox" src="<?php echo $this->getSkinUrl('images/catalog/product/close-prd-zoom.png'); ?>" />
-        <div id="zoomoptions">
-            <img id="zoomout" src="<?php echo $this->getSkinUrl('images/catalog/product/zoom-out.png'); ?>" />
-            <img id="zoomin" src="<?php echo $this->getSkinUrl('images/catalog/product/zoom-in.png'); ?>" />
-        </div>
+        </table>        
     </div>
 </div>
 <!-- onZoomProductImage -->
