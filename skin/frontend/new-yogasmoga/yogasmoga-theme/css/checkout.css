@@ -716,3 +716,4 @@ select#billing-address-select{
     display: inline-block;
     margin: -20px 0 0;
 }
+.addNewAdd .gryWrap input.checkbox{width:auto !important;}
