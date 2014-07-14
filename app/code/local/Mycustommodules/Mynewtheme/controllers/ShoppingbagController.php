@@ -559,8 +559,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $html = $this->createshoppingbaghtml();
         $countDiscountType = '';
         $countDiscountType = $this->countDiscountType();
-        $discounttypeerror = 'Gift of YS code, SMOGI Bucks and Promotion Code cannot be combined.
-Please use one and continue checkout.';
+        $discounttypeerror = 'Gift Card, SMOGI Bucks and Promotion Code cannot be combined.Please choose one and continue CheckOut.';
 
 
             echo json_encode(array("status" => "success","html" => $html,"count" => $this->getcartcount(),"countdiscount" => $countDiscountType,"discounttypeerror" => $discounttypeerror));
@@ -809,6 +808,7 @@ Please use one and continue checkout.';
             $getcustomerpoints = $this->getCustomerPoints($customerId);
             $getsmogipointscurrentlyuserd = $this->getPointsCurrentlyUsed();
             $showedpoints = $getcustomerpoints - $getsmogipointscurrentlyuserd;
+            if($getsmogipointscurrentlyuserd) $getcustomerpoints = $getcustomerpoints - $getsmogipointscurrentlyuserd;
         }
         else $continuelink="javascript:void(0);";
         $allow = $this->countDiscountType();
@@ -928,7 +928,7 @@ Please use one and continue checkout.';
         }
         if($checksmogiapplied == '1' && $showedpoints > 0) $usesmogi="<p class='c-align'>You can't use other codes with SMOGI Bucks.</p>";
         else if($checkpromoapplied == '1' || $checkgiftapplied == '1') $usesmogi='';
-        else if($checksmogiapplied != '1' && $showedpoints > 0) $usesmogi='<p class="c-align">Use your SMOGI Bucks for this purchase</p>';
+        else if($checksmogiapplied != '1' && $showedpoints > 0) $usesmogi='';
         $html .=  '<li>
                             <span class="f-left">Shipping: Free</span>
                             <span class="f-right capstxt">Free</span>
@@ -943,10 +943,7 @@ Please use one and continue checkout.';
         if(!$customerId)
              $html .=' <label><input type="text" name="smogi" class="gry" available="0" id="smogi" value="You must be signed in to use SMOGI Bucks" disabled="disabled"/><span  class="smogi-login">+</span></label>
                         <label><input type="text" name="giftcartcode" class="gry" id="giftcartcode" value="You must be signed in to use Promo Codes" disabled="disabled" /><span class="giftcardlogin">+</span></label>';
-        else{
-
-
-            
+        else{            
             $gryclasssmogi = "";
             $gryclasspromo = "";
             $gryclassgift = "";
@@ -957,7 +954,7 @@ Please use one and continue checkout.';
             $applysmogi="applysmogi";
             $applysmogidisable="";
             $checkboxapplied="";
-            $smogiplaceholder="";
+            $smogiplaceholder="Use Your ".$showedpoints." SMOGI Bucks Towards This Purchase";
             $showedpointsvalue=$showedpoints;
            if($checksmogiapplied)
            {
@@ -968,11 +965,11 @@ Please use one and continue checkout.';
                     $applysmogidisable=" disabled='disabled'";
                     $gryclasssmogi = "gry";
                 }
+                $showedpointsvalue=$showedpoints;
                 $applygiftdisable=" disabled='disabled'";
 //                $applypromo="";
 //                $applypromodisable=" disabled='disabled'";
                 $checkboxapplied=" disabled='disabled'";
-                $showedpointsvalue=$showedpoints;
            }
            if($checkpromoapplied)
            {
@@ -1003,7 +1000,7 @@ Please use one and continue checkout.';
                // $applypromodisable=" disabled='disabled'";
            }
             if($showedpoints >= 1) {
-                $html .=' <label><input type="text" class = "'.$gryclasssmogi.'" placeholder="'.$smogiplaceholder.'" available="'.$getcustomerpoints.'" name="smogi" id="smogi" value="'.$showedpointsvalue.'" '.$applysmogidisable.'/><span class="'.$applysmogi.'">+</span><span class="error-count"></span></label>';
+                $html .=' <label><input type="text" class = "'.$gryclasssmogi.'" placeholder="'.$smogiplaceholder.'" available="'.$getcustomerpoints.'" name="smogi" id="smogi"  '.$applysmogidisable.'/><span class="'.$applysmogi.'">+</span><span class="error-count"></span></label>';
             }
             if($showedpoints < 1) {
                 $applysmogidisable=" disabled='disabled'";

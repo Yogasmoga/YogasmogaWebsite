@@ -448,7 +448,7 @@ function bubble(status){
                         <?php
                             }
                         ?>
-                        <a id="welcome-name" href="javascript:void(0);"><?php if($islogedinuser)echo "Hi ".$firstname;else echo "My Account";  ?></a>
+                        <a id="welcome-name" href="<?php if($islogedinuser) echo $this->getBaseUrl()."customer/account/index/"; else echo "javascript:void(0);";  ?>"><?php if($islogedinuser)echo "Hi ".$firstname;else echo "My Account";  ?></a>
                         <ul class="sub-menu l-align my-acnt" style="left: -50px;">
                             <li class="blank"></li>
                             <li style="padding-top: 16px;"><a href="<?php echo $this->getBaseUrl()."sales/order/history/"; ?>">track order</a></li>
