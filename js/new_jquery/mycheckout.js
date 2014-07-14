@@ -108,7 +108,6 @@ jQuery(document).ready(function($){
               virtualsaveshippingaddress();
             }
             saveShippingAddress();
-            
         }
         return false;
     });
@@ -316,6 +315,40 @@ function changeFlag(){
         jQuery(".showShippingOpt").find("#other-shipping").addClass("availableShip");
         jQuery(".shipDetail").find(".country").find("img").addClass("dnone");
         jQuery(".shipDetail").find(".country").find("img.glflag").removeClass("dnone");
+    }
+
+}
+
+function getShippingID (){
+    jQuery(".shippingOption").find("ul").find("li").removeClass("selected");
+    jQuery(".shippingOption").find("ul.availableShip").find("li:first-child").addClass("selected");
+}
+
+function trimCountryText(){
+    var text = jQuery("ul#shipping-address-select").find("li#selected").text();
+    var textAfterHash = (text.substring(text.lastIndexOf(',') + 1)).trim();
+
+    jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+
+    if(textAfterHash == "United States"){
+        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+        jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
+        var valBox = jQuery(".showShippingOpt").find("#us-shipping.availableShip").find("li:first-child").text();
+        jQuery(".shippingOption").find(".addVal").text(valBox);
+    }
+
+    else if(textAfterHash == "Canada"){
+        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+        jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
+        var valBox2 = jQuery(".showShippingOpt").find("#canada-shipping.availableShip").find("li:first-child").text();
+        jQuery(".shippingOption").find(".addVal").text(valBox2);
+    }
+
+    else{
+        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+        jQuery(".showShippingOpt").find("#other-shipping").addClass("availableShip");
+        var valBox3 = jQuery(".showShippingOpt").find("#other-shipping.availableShip").find("li:first-child").text();
+        jQuery(".shippingOption").find(".addVal").text(valBox3);
     }
 }
 
@@ -896,7 +929,7 @@ function saveShippingAddress()
 
             jQuery("form#co-shippingmethod-form input#" + getShpID).attr("checked","checked");
             jQuery("form#co-shippingmethod-form").submit();
-            
+
 
             //reordersubsteps(jQuery("div#shippingmethods").parents("div.checkoutsubstep"));
             if(jQuery("#shipping\\:use_for_billing").is(':checked'))

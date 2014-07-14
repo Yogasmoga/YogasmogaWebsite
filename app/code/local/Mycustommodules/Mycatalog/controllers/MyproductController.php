@@ -3146,6 +3146,17 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         echo '<br/>Server Time :- '.date("Y-m-d H:i:s",time());
 
     }
+    public function gettotalsAction()
+    {
+        $quote = Mage::helper('checkout')->getQuote()->getData();
+        $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+        $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
+        $grandtotal = $totals["grand_total"]->getValue();
+        //echo $totals['tax'];die('tax');
+        echo $totals['base_tax_amount'];echo 'dff';
+        echo $totals['tax'];echo 'test';
+        //print_r($totals);
+    }
     
 }
 ?>
