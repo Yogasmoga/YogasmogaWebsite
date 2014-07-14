@@ -780,7 +780,16 @@ td#tdpopupproductbigimage
     text-align : center;
 }
 
-img#closelightbox, img#zoomcloselightbox
+img#closelightbox
+{
+    position : absolute;
+    /*top : 3px;*/
+    right : 5px;
+    cursor : pointer;
+    z-index : 3;
+    padding-left:22px;
+}
+img#zoomcloselightbox
 {
     position : absolute;
     top : 3px;
@@ -870,12 +879,12 @@ div#zoompopup div.absoluteproductoptions
 div#zoompopup div#zoomoptions
 {
     position : absolute;
-    right : 25px;
+    /*right : 25px;
     margin-top:-50px;
     display:none;
     z-index : 3;
     top : 0;
-    width : 29px;
+    width : 29px;*/
 }
 div#zoompopup div#zoomoptions img#zoomin
 {

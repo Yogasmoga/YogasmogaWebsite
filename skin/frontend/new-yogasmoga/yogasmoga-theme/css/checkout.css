@@ -688,7 +688,7 @@ select#billing-address-select{
 }
 
 #co-billing-form input.checkoutcontinuebtn[type="submit"] {
-    display: none !important;
+    /*display: none !important;*/
 }
 
 .billingAdd a {
@@ -714,4 +714,6 @@ select#billing-address-select{
 
 #cobillingaddress{
     display: inline-block;
+    margin: -20px 0 0;
 }
+.addNewAdd .gryWrap input.checkbox{width:auto !important;}
