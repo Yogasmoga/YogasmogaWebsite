@@ -11,11 +11,10 @@ jQuery(document).ready(function($){
     changeFlag();
     getSelectval();
     trimDetailTxt();
-    trimCountryText();
+    //trimCountryText();
     breadValSelect();
     createNewElement();
     removeNameLabel();
-    searchCountry();
 
     $(".showShippingOpt").focusout(function () {
         $(".showShippingOpt").slideUp("fast");
@@ -286,25 +285,33 @@ $(document).click( function(){
 
 });
 
+function getShippingID (){
+    jQuery(".shippingOption").find("ul").find("li").removeClass("selected");
+    jQuery(".shippingOption").find("ul.availableShip").find("li:first-child").addClass("selected");
+}
+
+function addUpdTxt(){
+    var shippingVal = jQuery(".showShippingOpt").find(".availableShip").find("li:first-child").text();
+    jQuery(".shippingOption").find(".addVal").text(shippingVal);
+}
+
 function changeFlag(){
     var flagVal = jQuery("#shipping\\:country_id").find("option:selected").text();
+    jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
 
     if(flagVal == "United States"){
-        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
         jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
         jQuery(".shipDetail").find(".country").find("img").addClass("dnone");
         jQuery(".shipDetail").find(".country").find("img.usflag").removeClass("dnone");
     }
 
     else if(flagVal == "Canada"){
-        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
         jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
         jQuery(".shipDetail").find(".country").find("img").addClass("dnone");
         jQuery(".shipDetail").find(".country").find("img.cnflag").removeClass("dnone");
     }
 
     else{
-        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
         jQuery(".showShippingOpt").find("#other-shipping").addClass("availableShip");
         jQuery(".shipDetail").find(".country").find("img").addClass("dnone");
         jQuery(".shipDetail").find(".country").find("img.glflag").removeClass("dnone");
@@ -348,23 +355,21 @@ function trimCountryText(){
 function getSelectval(){
     jQuery("form#checkout-shipping-form select#shipping\\:country_id").change(function(){
         var getVal = jQuery(this).find("option:selected").text();
+        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
 
         if(getVal == "United States"){
-            jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
             jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
             jQuery(".shipDetail").find(".country").find("img").addClass("dnone");
             jQuery(".shipDetail").find(".country").find("img.usflag").removeClass("dnone");
         }
 
         else if(getVal == "Canada"){
-            jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
             jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
             jQuery(".shipDetail").find(".country").find("img").addClass("dnone");
             jQuery(".shipDetail").find(".country").find("img.cnflag").removeClass("dnone");
         }
 
         else{
-            jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
             jQuery(".showShippingOpt").find("#other-shipping").addClass("availableShip");
             jQuery(".shipDetail").find(".country").find("img").addClass("dnone");
             jQuery(".shipDetail").find(".country").find("img.glflag").removeClass("dnone");
@@ -375,9 +380,9 @@ function getSelectval(){
     });
 }
 
-function trimDetailTxt (){
-    var usrDetail = jQuery("#updateNameAdd").find(".address").html();
-    var textAftrBr = (usrDetail.substring(usrDetail.lastIndexOf('<br>') + 5)).trim();
+function trimDetailTxt(){
+    var usrDetail = jQuery("ul#shipping-address-select").find("li#selected").text();
+    var textAftrBr = (usrDetail.substring(usrDetail.lastIndexOf(',') + 1)).trim();
     var dsad = jQuery("form#checkout-shipping-form select#shipping\\:country_id").find("option:selected").text();
     jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
 
@@ -385,24 +390,15 @@ function trimDetailTxt (){
         jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
         jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
     }
-
     else if(textAftrBr == "Canada" || dsad == "Canada"){
         jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
         jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
     }
-
     else{
         jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
         jQuery(".showShippingOpt").find("#other-shipping").addClass("availableShip");
     }
 }
-
-function addUpdTxt(){
-    var shippingVal = jQuery(".showShippingOpt").find(".availableShip").find("li:first-child").text();
-    jQuery(".shippingOption").find(".addVal").text(shippingVal);
-}
-
-function searchCountry(){}
 
 function removeNameLabel(){
     jQuery(".customer-name").find("input.no-bg").removeClass("no-bg");
@@ -424,16 +420,15 @@ function slideCreOpt(){
 function slideShpCont(){
     jQuery(".showShpOpt").toggleClass("reverse");
     jQuery(".showShippingOpt").slideToggle("slow");
-    trimCountryText();
+    //trimCountryText();
 }
 
 function breadValSelect(){
-    var txtSl = jQuery('#shipping-address-select').find('option:selected').text();
-    txtSl = txtSl.replace(/,/g, "<br>");
-    jQuery("#updateNameAdd").find(".address").html(txtSl);
+    // var txtSl = jQuery('#shipping-address-select').find('li#selected').text();
+    // txtSl = txtSl.replace(/,/g, "<br>");
+    // jQuery("#updateNameAdd").find(".address").html(txtSl);
 
     jQuery(document).on('click', '#shipping-address-select li', function () {
-        
         var selectedAdd = jQuery(this).text();
 
         jQuery("#shipping-address-select li").removeAttr('id');
@@ -444,7 +439,6 @@ function breadValSelect(){
 
         jQuery('#updateNameAdd').find('.address').html(selectedAdd.replace(/,/g, "<br>"));
         jQuery('#updateNameAdd').find('.address').contents().first().wrap('<span>To: </span>');
-        trimDetailTxt();
 
         jQuery("form#checkout-shipping-form").find("input[type='submit']").show();
         jQuery("#shippingDetails").css("background", "").addClass("active");
@@ -454,8 +448,7 @@ function breadValSelect(){
         jQuery(".billingAdd a.checkBCre").removeClass("reverse unuse").addClass("use");
         jQuery("form#payment_form input[type=submit]").addClass("mar0").removeClass("marbtm745");
 
-
-        
+        trimDetailTxt();
         addUpdTxt();
         getShippingID();
     });

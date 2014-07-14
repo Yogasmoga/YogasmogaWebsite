@@ -249,12 +249,12 @@ jQuery(window).resize(function(){
                 appliedvalue = parseInt(appliedvalue);
                 availablesmogi = parseInt(availablesmogi);
                     if (jQuery(this).val() == "") {
-                        smogipoints= availablesmogi - appliedvalue;
-                        if(smogipoints > 0) jQuery(this).val(smogipoints);
+                       // smogipoints= availablesmogi - appliedvalue;
+                        if(availablesmogi > 0) jQuery(this).attr('placeholder','Use Your '+availablesmogi+' SMOGI Bucks Towards This Purchase');
                     }
             }else{
                 if (jQuery(this).val() == "" && storeVal !="") {
-                    jQuery(this).val(storeVal);
+                    jQuery(this).attr('placeholder','Use Your '+storeVal+' SMOGI Bucks Towards This Purchase');
                 }
             }
          });
@@ -313,21 +313,21 @@ return false;
 function smogicart() {
     jQuery('#redeemresult').empty().hide();
     var smogi=jQuery.trim(jQuery('#smogi').val());
-    if(!isNaN(smogi) && smogi !='' && smogi != jQuery('#smogi').attr('placeholder')) {
-        if(!_islogedinuser)
-        {
-            _isClickApplySmogiBucks = true;
-            jQuery("#signing_popup").dialog( "open" );
-        }
-        
-        if(_islogedinuser)
-        {   
-            
-                jQuery(".applysmogi").removeClass("applysmogi");
-                jQuery('#smogi').next('span').empty().append("<img style='height: 12px' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
-                jQuery('.zindexH').show();
-                applysmogibucks();
-        } 
+    if(!isNaN(smogi) || smogi=='') { 
+            if(!_islogedinuser)
+            {
+                _isClickApplySmogiBucks = true;
+                jQuery("#signing_popup").dialog( "open" );
+            }
+
+            if(_islogedinuser)
+            {   
+
+                    jQuery(".applysmogi").removeClass("applysmogi");
+                    jQuery('#smogi').next('span').empty().append("<img style='height: 12px' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
+                    jQuery('.zindexH').show();
+                    applysmogibucks();
+            } 
     }
     else showerror('Please enter valid Smogi Bucks.');
 }
@@ -420,7 +420,7 @@ function showShoppingBagHtml()
     },100);
 }
 function showerror(msg){
-        jQuery('#redeemresult').empty().append(msg).show().delay('5000').hide(0);
+        jQuery('#redeemresult').empty().append(msg).show().delay('7000').hide(0);
 }
 function addbracelettobag(pid,colorattributeid,sizeattributeid )
 {
@@ -499,37 +499,44 @@ function applysmogibucks()
 {
     
     var availablesmogi = jQuery("#smogi").attr("available");
-    var smogivalue = (jQuery("#smogi").attr("value")).trim();
-    smogivalue = parseInt(smogivalue);
-    //alert(availablesmogi);
-    //alert(smogivalue);
-
-    if(isNaN(smogivalue)) {
+    var smogivalue = jQuery.trim(jQuery("#smogi").val());
+//    if(smogivalue > availablesmogi) {
+//        jQuery('#smogi').next('span').addClass("applysmogi").empty().append("+");
+//        showerror('Please enter valid Smogi Bucks or available Smogi Bucks balance in your account is not sufficient.');
+//        return false;
+//    }
+    //smogivalue = parseInt(smogivalue);
+    var appliedvalue = jQuery(".smogi span.f-right").attr("usedpoints");
+    if(smogivalue=='') {
+        smogivalue=availablesmogi;
+         //alert(availablesmogi);
+       // alert(smogivalue);
+    }
+    else if(isNaN(smogivalue) && smogivalue !='') {
         jQuery('#smogi').next('span').addClass("applysmogi").empty().append("+");
         showerror('Please enter valid number.');
         return false;
     }
 
-    var appliedvalue = jQuery(".smogi span.f-right").attr("usedpoints");
 
-    if(appliedvalue)
-    {
-        appliedvalue = parseInt(appliedvalue);
 
-        if(!(isNaN(appliedvalue)) && (appliedvalue > 0))
-        {
-            smogivalue = parseInt(smogivalue) + parseInt(appliedvalue);
-        }
-    }
 
     if(availablesmogi)
     {
         availablesmogi = (jQuery("#smogi").attr("available")).trim();
     }
-
-   
-    if(!(isNaN(smogivalue))&&(smogivalue > 0)&&(availablesmogi >= smogivalue))
+    ///////////alert(smogivalue+ '<=' +availablesmogi);
+    if(parseInt(smogivalue) <= parseInt(availablesmogi))
     {
+        if(appliedvalue)
+        {
+            appliedvalue = parseInt(appliedvalue);
+
+            if(!(isNaN(appliedvalue)) && (appliedvalue > 0))
+            {
+                smogivalue = parseInt(smogivalue) + parseInt(appliedvalue);
+            }
+        }
         if(window.location.href.indexOf('https://') >= 0)
             _usesecureurl = true;
         else
@@ -564,7 +571,7 @@ function applysmogibucks()
     }
     else{
         jQuery('#smogi').next('span').addClass("applysmogi").empty().append("+");
-        showerror('Please enter valid Smogi Bucks or available Smogi Bucks balance in your account is not sufficient.');
+        showerror('You do not have SMOGI Bucks in your account.');
         jQuery('.zindexH').hide();
     }
 
