@@ -371,15 +371,15 @@ function getSelectval(){
 function trimDetailTxt (){
     var usrDetail = jQuery("ul#shipping-address-select").find("li#selected").text();
     var textAftrBr = (usrDetail.substring(usrDetail.lastIndexOf(',') + 1)).trim();
-
+    var dsad = jQuery("form#checkout-shipping-form select#shipping\\:country_id").find("option:selected").text();
     jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
 
-    if(textAftrBr == "United States"){
+    if(textAftrBr == "United States" || dsad == "United States"){
         jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
         jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
     }
 
-    else if(textAftrBr == "Canada"){
+    else if(textAftrBr == "Canada" || dsad == "Canada"){
         jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
         jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
     }
