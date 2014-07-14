@@ -391,9 +391,9 @@ function slideShpCont(){
 }
 
 function breadValSelect(){
-    // var txtSl = jQuery('#shipping-address-select').find('li#selected').text();
-    // txtSl = txtSl.replace(/,/g, "<br>");
-    // jQuery("#updateNameAdd").find(".address").html(txtSl);
+    var txtSl = jQuery('#shipping-address-select').find('li#selected').text();
+    txtSl = txtSl.replace(/,/g, "<br>");
+    jQuery("#updateNameAdd").find(".address").html(txtSl);
 
     jQuery(document).on('click', '#shipping-address-select li', function () {
         var selectedAdd = jQuery(this).text();
