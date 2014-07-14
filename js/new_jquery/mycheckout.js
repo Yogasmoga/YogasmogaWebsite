@@ -109,6 +109,7 @@ jQuery(document).ready(function($){
               virtualsaveshippingaddress();
             }
             saveShippingAddress();
+
         }
         return false;
     });
@@ -835,6 +836,7 @@ function saveBillingAddress(){
         url : url,
         data : billingdata,
         success : function(result){
+            getCartSummary();
             result = eval('(' + result + ')');
             if(typeof result['error'] !== "undefined")
                 jQuery("#billingaddresserrormsg").html(result['message']);
@@ -937,7 +939,7 @@ function saveShippingAddress()
 
             jQuery("form#co-shippingmethod-form input#" + getShpID).attr("checked","checked");
             jQuery("form#co-shippingmethod-form").submit();
-            getCartSummary();
+            //getCartSummary();
 
             //reordersubsteps(jQuery("div#shippingmethods").parents("div.checkoutsubstep"));
             if(jQuery("#shipping\\:use_for_billing").is(':checked'))

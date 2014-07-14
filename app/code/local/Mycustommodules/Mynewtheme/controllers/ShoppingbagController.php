@@ -791,6 +791,8 @@ Please use one and continue checkout.';
         $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
         $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
         $grandtotal = $totals["grand_total"]->getValue();
+        //echo $totals['tax'];die('tax');
+
         $tax = 0;
         if(isset($totals['tax']) && $totals['tax']->getValue()) {
             $tax = $totals['tax']->getValue(); //Tax value if present
