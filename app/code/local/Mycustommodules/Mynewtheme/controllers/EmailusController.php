@@ -92,7 +92,7 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         $template_id = $mail_collection->getFirstItem()->getTemplate_id();
 
         $recipient = array(
-            'email' => 'neeraj@mobikasa.com',
+            'email' => 'neha@mobikasa.com',
             'name'  => 'YOGASMOGA'
         );
         $sender  = array(

@@ -192,7 +192,7 @@ jQuery(document).ready(function($){
         if(objectPage[blockid]){
             //alert(objectPage[blockid]);
             //$(objectPage[blockid]).appendTo(".pg-content");
-            $(".pg-content").html($(objectPage[blockid]));
+            $(".pg-content").html($(objectPage[blockid])).scrollTop(0);
 
         }
         else{
@@ -209,13 +209,13 @@ jQuery(document).ready(function($){
                     objectPage[blockid] = data.html;
                     if(status == "success")
                     {
-                        $(".pg-content").html($(objectPage[blockid]));
+                        $(".pg-content").html($(objectPage[blockid])).scrollTop(0);
 
 
                     }
                     else
                     {
-                        $(".pg-content").html($(objectPage[blockid]));
+                        $(".pg-content").html($(objectPage[blockid])).scrollTop(0);
                     }
 
                 }
