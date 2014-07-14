@@ -796,6 +796,7 @@ Please use one and continue checkout.';
         $tax = 0;
         if(isset($totals['tax']) && $totals['tax']->getValue()) {
             $tax = $totals['tax']->getValue(); //Tax value if present
+            $grandtotal = $grandtotal - $tax;
         } else {
             $tax = 0;
         }
@@ -959,10 +960,10 @@ Please use one and continue checkout.';
 
 
         $html .='     </li>';
-        if($tax > 0)
-            $html .= '<li>
-                        <span class="f-left">Tax: </span>
-                            <span class="f-right capstxt">'."$".number_format((float)($tax), 2, '.', '').'</span></li>';
+//        if($tax > 0)
+//            $html .= '<li>
+//                        <span class="f-left">Tax: </span>
+//                            <span class="f-right capstxt">'."$".number_format((float)($tax), 2, '.', '').'</span></li>';
         $html .= '  </ul>
                     <!-- listItems -->
                     '.$usesmogi.'

@@ -327,21 +327,21 @@ function trimCountryText(){
         jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
         jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
         var valBox = jQuery(".showShippingOpt").find("#us-shipping.availableShip").find("li:first-child").text();
-        jQuery(".shippingOption").find(".addVal").text(shippingVal);
+        jQuery(".shippingOption").find(".addVal").text(valBox);
     }
 
     else if(textAfterHash == "Canada"){
         jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
         jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
-        var valBox = jQuery(".showShippingOpt").find("#canada-shipping.availableShip").find("li:first-child").text();
-        jQuery(".shippingOption").find(".addVal").text(shippingVal);
+        var valBox2 = jQuery(".showShippingOpt").find("#canada-shipping.availableShip").find("li:first-child").text();
+        jQuery(".shippingOption").find(".addVal").text(valBox2);
     }
 
     else{
         jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
         jQuery(".showShippingOpt").find("#other-shipping").addClass("availableShip");
-        var valBox = jQuery(".showShippingOpt").find("#other-shipping.availableShip").find("li:first-child").text();
-        jQuery(".shippingOption").find(".addVal").text(shippingVal);
+        var valBox3 = jQuery(".showShippingOpt").find("#other-shipping.availableShip").find("li:first-child").text();
+        jQuery(".shippingOption").find(".addVal").text(valBox3);
     }
 }
 
