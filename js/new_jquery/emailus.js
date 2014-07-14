@@ -23,10 +23,10 @@ jQuery(document).ready(function($){
                 // START A LOADING SPINNER HERE
 
                 // Create a formdata object and add the files
-                var name = jQuery('#name').val();
-                var topic = jQuery('#topic').val();
-                var message = jQuery('#message').val();
-                var email = jQuery('#email').val();
+                var name = jQuery.trim(jQuery('#name').val());
+                var topic = jQuery.trim(jQuery('#topic').val());
+                var message = jQuery.trim(jQuery('#message').val());
+                var email = jQuery.trim(jQuery('#email').val());
                 if (name == '' || topic == '' || email == '')
                 {
                     jQuery('#resultdiv').empty().append('Please enter name, topic and email address.').show().delay('10000').hide(0);
