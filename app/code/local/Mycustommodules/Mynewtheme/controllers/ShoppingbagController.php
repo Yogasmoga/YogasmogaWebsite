@@ -926,13 +926,29 @@ Please use one and continue checkout.';
                         </li>';
             $checkgiftapplied = true;            
         }
+        $shippingPrice = '';
+        $shippingcode = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingMethod();
+        if($shippingcode == "")
+            $shippingPrice =  "FREE";
+        else
+            if($this->getShippingCost($shippingcode) == 0)
+                $shippingPrice = "FREE";
+            else
+                $shippingPrice =  "$".number_format((float)($this->getShippingCost($shippingcode)), 2, '.', '');
+
+
+
         if($checksmogiapplied == '1' && $showedpoints > 0) $usesmogi="<p class='c-align'>You can't use other codes with SMOGI Bucks.</p>";
         else if($checkpromoapplied == '1' || $checkgiftapplied == '1') $usesmogi='';
         else if($checksmogiapplied != '1' && $showedpoints > 0) $usesmogi='<p class="c-align">Use your SMOGI Bucks for this purchase</p>';
-        $html .=  '<li>
-                            <span class="f-left">Shipping: Free</span>
-                            <span class="f-right capstxt">Free</span>
-                        </li>
+        $html .=  '<li>';
+        if($shippingPrice == "FREE")
+            $html .= '      <span class="f-left">Shipping:Free </span>
+                            <span class="f-right capstxt">'.$shippingPrice.'</span>';
+        else
+            $html .= '      <span class="f-left">Shipping: </span>
+                            <span class="f-right capstxt">'.$shippingPrice.'</span>';
+        $html .='     </li>
                     </ul>
                     <!-- listItems -->
                     '.$usesmogi.'
@@ -1581,6 +1597,24 @@ Please use one and continue checkout.';
     protected function getSkinUrl($path)
     {
         return Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)."frontend/new-yogasmoga/yogasmoga-theme/".$path;
+    }
+    function getShippingCost($code)
+    {
+        //$rates = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->collectShippingRates()->getGroupedAllShippingRates();
+//         foreach ($rates as $carrier) {
+//            foreach ($carrier as $rate) {
+//                print_r($rate->getData());
+//            }
+//        }
+        $rates = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->collectShippingRates()->getGroupedAllShippingRates();
+        foreach ($rates as $carrier) {
+            foreach ($carrier as $rate) {
+                $temp = $rate->getData();
+                if($temp['code'] == $code)
+                    return $temp['price'];
+            }
+        }
+        return "";
     }
 
 }
