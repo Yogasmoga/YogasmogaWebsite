@@ -279,8 +279,14 @@ jQuery(document).ready(function($){
 $(document).click( function(){
     $(".showShippingOpt").hide();
     $(".listadd").hide();
-    $(".showUpadd").toggleClass("reverse");
-    $(".showShpOpt").toggleClass("reverse");
+
+    if($(".showUpadd").hasClass("reverse")){
+        $(this).removeClass("reverse");    
+    }
+
+    if($(".showShpOpt").hasClass("reverse")){
+        $(this).removeClass("reverse");    
+    }
 });
 
 });
@@ -875,17 +881,19 @@ function saveShippingMethod()
             result = eval('(' + result + ')');
             //console.log(result['update_section']['html']);
             jQuery("div#paymentmethods").html(result['update_section']['html']);
+           getCartSummary();
             
             jQuery(".billingAdd a").html(jQuery("form#checkout-shipping-form input#shipping\\:street1").val() + "<br>" + "<span>is also my billing address</span>");
 
             jQuery("form#co-billing-form").submit();
+
             //reordersteps(jQuery("#cobilling"));
             jQuery("#co-shippingmethod-form input[type=submit]").hide();
             jQuery("#co-billing-form input[type=submit]").hide();
 
             jQuery("#co-shippingmethod-form #procImg").remove();
             jQuery("#co-billing-form #procImg").remove();
-            getCartSummary();
+            
             jQuery("input[type='radio'][value='stripe']").attr("checked","checked");
             checkpaymentmethod();
 
@@ -924,19 +932,17 @@ function saveShippingAddress()
             //console.log(result['update_section']['html']);
             jQuery("div#shippingmethods").html(result['update_section']['html']);
 
-            var getShpID =  jQuery(".shippingOption").find("ul.availableShip").find("li.selected").attr("id");
+            var getShpID = jQuery(".shippingOption").find("ul li.selected").attr("id");
             alert(getShpID);
 
             jQuery("form#co-shippingmethod-form input#" + getShpID).attr("checked","checked");
             jQuery("form#co-shippingmethod-form").submit();
-            // Select the chosen shipping method on the shipping form and call saveshippingmethod.
+
+            
             
             //reordersubsteps(jQuery("div#shippingmethods").parents("div.checkoutsubstep"));
             if(jQuery("#shipping\\:use_for_billing").is(':checked'))
                 replicateShippingAddress();
-            
-            //Save Billing Address here.
-            
             
             // hiding shiipng divs
             var txtSl = jQuery('ul#shipping-address-select').find("li#selected").text();
