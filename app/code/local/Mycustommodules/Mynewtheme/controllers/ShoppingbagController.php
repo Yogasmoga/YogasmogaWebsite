@@ -791,6 +791,12 @@ Please use one and continue checkout.';
         $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
         $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
         $grandtotal = $totals["grand_total"]->getValue();
+        $tax = 0;
+        if(isset($totals['tax']) && $totals['tax']->getValue()) {
+            $tax = $totals['tax']->getValue(); //Tax value if present
+        } else {
+            $tax = 0;
+        }
 
         $minidetails['items'] = $miniitems;
         //$minidetails['totalitems'] = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
@@ -948,8 +954,14 @@ Please use one and continue checkout.';
         else
             $html .= '      <span class="f-left">Shipping: </span>
                             <span class="f-right capstxt">'.$shippingPrice.'</span>';
-        $html .='     </li>
-                    </ul>
+
+
+        $html .='     </li>';
+        //if($tax > 0)
+            $html .= '<li>
+                        <span class="f-left">Tax: </span>
+                            <span class="f-right capstxt">'."$".number_format((float)($tax), 2, '.', '').'</span></li>';
+        $html .= '  </ul>
                     <!-- listItems -->
                     '.$usesmogi.'
                     <!-- addItem Input -->
