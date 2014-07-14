@@ -957,7 +957,7 @@ Please use one and continue checkout.';
 
 
         $html .='     </li>';
-        //if($tax > 0)
+        if($tax > 0)
             $html .= '<li>
                         <span class="f-left">Tax: </span>
                             <span class="f-right capstxt">'."$".number_format((float)($tax), 2, '.', '').'</span></li>';
