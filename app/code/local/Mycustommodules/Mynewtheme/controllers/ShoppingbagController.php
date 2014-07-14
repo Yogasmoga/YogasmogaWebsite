@@ -684,8 +684,8 @@ Please use one and continue checkout.';
             $html = '
                 <!-- ContinueShoppingBtn -->
                     <div class="cont-full capstxt">
-                    <a href="javascript:void(0);" id="continuelink" class="continuelink f-left grn">Continue Shopping</a>
-                    <span class="continuelink f-right">Continue</span>
+                    <a href="javascript:void(0);" id="continuelink" class="continuelink f-left grn">Keep Shopping</a>
+                    <span class="continuelink f-right">Checkout</span>
                     </div>
                 <!-- ContinueShoppingBtn -->
                 <div class="empty-cart">your cart is empty.</div>
@@ -817,8 +817,8 @@ Please use one and continue checkout.';
                     $html = '
             <!-- ContinueShoppingBtn -->
             <div class="cont-full capstxt">
-                <a href="javascript:void(0);" id="continuelink" class="continuelink f-left">Continue Shopping</a>
-                <span class="continuelink f-right">Continue</span>
+                <a href="javascript:void(0);" id="continuelink" class="continuelink f-left">Keep Shopping</a>
+                <span class="continuelink f-right">Checkout</span>
                 <div class="clear-fix"></div>
             </div>
 
@@ -829,8 +829,8 @@ Please use one and continue checkout.';
         else{   $html = '
             <!-- ContinueShoppingBtn -->
             <div class="cont-full capstxt">
-                <a href="javascript:void(0);" id="continuelink" class="continuelink f-left">Continue Shopping</a>
-                <a href="'.$continuelink.'" id="continuecheckout" class="continuelink f-right grn">Continue</a>
+                <a href="javascript:void(0);" id="continuelink" class="continuelink f-left">Keep Shopping</a>
+                <a href="'.$continuelink.'" id="continuecheckout" class="continuelink f-right grn">Checkout</a>
                 <div class="clear-fix"></div>
             </div>
 
