@@ -8,11 +8,11 @@ jQuery(document).ready(function($){
     }, 0);
 
 
+    breadValSelect();
+    dfdfdffgf();
     changeFlag();
     getSelectval();
     trimDetailTxt();
-    //trimCountryText();
-    breadValSelect();
     createNewElement();
     removeNameLabel();
 
@@ -295,6 +295,17 @@ function addUpdTxt(){
     jQuery(".shippingOption").find(".addVal").text(shippingVal);
 }
 
+function dfdfdffgf(){
+    var txtSl = jQuery('#shipping-address-select').find('option:selected').text();
+    txtSl = txtSl.replace(/,/g, "<br>");
+    jQuery("#updateNameAdd").find(".address").html(txtSl);
+
+
+    jQuery('.address').each(function() {
+        jQuery(this).contents().first().wrap('<span>To: </span>');
+    });
+}
+
 function changeFlag(){
     var flagVal = jQuery("#shipping\\:country_id").find("option:selected").text();
     jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
@@ -317,11 +328,6 @@ function changeFlag(){
         jQuery(".shipDetail").find(".country").find("img.glflag").removeClass("dnone");
     }
 
-}
-
-function getShippingID (){
-    jQuery(".shippingOption").find("ul").find("li").removeClass("selected");
-    jQuery(".shippingOption").find("ul.availableShip").find("li:first-child").addClass("selected");
 }
 
 function trimCountryText(){
@@ -424,9 +430,6 @@ function slideShpCont(){
 }
 
 function breadValSelect(){
-    var txtSl = jQuery('ul#shipping-address-select').find('li#selected').text();
-    txtSl = txtSl.replace(/,/g, "<br>");
-    jQuery("#updateNameAdd").find(".address").html(txtSl);
 
     jQuery(document).on('click', '#shipping-address-select li', function () {
         var selectedAdd = jQuery(this).text();
@@ -451,10 +454,6 @@ function breadValSelect(){
         trimDetailTxt();
         addUpdTxt();
         getShippingID();
-    });
-
-    jQuery('.address').each(function() {
-        jQuery(this).contents().first().wrap('<span>To: </span>');
     });
 }
 
