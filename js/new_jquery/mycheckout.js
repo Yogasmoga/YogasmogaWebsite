@@ -933,12 +933,12 @@ function saveShippingAddress()
             jQuery("div#shippingmethods").html(result['update_section']['html']);
 
             var getShpID = jQuery(".shippingOption").find("ul li.selected").attr("id");
-            alert(getShpID);
+            //alert(getShpID);
 
             jQuery("form#co-shippingmethod-form input#" + getShpID).attr("checked","checked");
             jQuery("form#co-shippingmethod-form").submit();
 
-            
+
             
             //reordersubsteps(jQuery("div#shippingmethods").parents("div.checkoutsubstep"));
             if(jQuery("#shipping\\:use_for_billing").is(':checked'))
