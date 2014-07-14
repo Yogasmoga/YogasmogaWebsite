@@ -10,20 +10,26 @@ jQuery(document).ready(function($){
 
     changeFlag();
     getSelectval();
+    trimDetailTxt();
     trimCountryText();
     breadValSelect();
     createNewElement();
     removeNameLabel();
     searchCountry();
 
+    $(".showShippingOpt").focusout(function () {
+        $(".showShippingOpt").slideUp("fast");
+    })
 
-    $(".selectAddress .addVal, .showUpadd").on("click", function(){
+    $(".selectAddress .addVal, .showUpadd").on("click", function(event){
+        event.stopPropagation();
         slideAddCont();
     });
     
     addUpdTxt();
     getShippingID();
-    $(".shippingOption .addVal, .showShpOpt").on("click", function(){
+    $(".shippingOption .addVal, .showShpOpt").on("click", function(event){
+        event.stopPropagation();
         slideShpCont();
         trimDetailTxt();
     });
@@ -266,6 +272,17 @@ jQuery(document).ready(function($){
             
             checkpaymentmethod();
     });    
+
+
+
+// doc click event
+$(document).click( function(){
+    $(".showShippingOpt").hide();
+    $(".listadd").hide();
+    $(".showUpadd").toggleClass("reverse");
+    $(".showShpOpt").toggleClass("reverse");
+});
+
 });
 
 function changeFlag(){
@@ -301,17 +318,17 @@ function getShippingID (){
 
 function trimCountryText (){
     var text = jQuery("select#shipping-address-select").find("option:selected").text();
-    var dsad = jQuery("form#checkout-shipping-form select#shipping\\:country_id").find("option:selected").text();
+    var nedw = jQuery("form#checkout-shipping-form select#shipping\\:country_id").find("option:selected").text();
     var textAfterHash = (text.substring(text.lastIndexOf(',') + 1)).trim();
 
     jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
 
-    if(textAfterHash == "United States" || dsad == "United States"){
+    if(textAfterHash == "United States" || nedw == "United States"){
         jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
         jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
     }
 
-    else if(textAfterHash == "Canada" || dsad == "Canada"){
+    else if(textAfterHash == "Canada" || nedw == "Canada"){
         jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
         jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
     }
@@ -391,7 +408,7 @@ function removeNameLabel(){
 }
 
 function slideAddCont(){
-    jQuery(".showUpadd").toggleClass("reverse");                                             
+    jQuery(".showUpadd").toggleClass("reverse");
     jQuery(".listadd").slideToggle("slow");
 }
 
@@ -401,7 +418,7 @@ function slideCreOpt(){
 }
 
 function slideShpCont(){
-    jQuery(".showShpOpt").toggleClass("reverse");                                            
+    jQuery(".showShpOpt").toggleClass("reverse");
     jQuery(".showShippingOpt").slideToggle("slow");
     trimCountryText();
 }
@@ -412,6 +429,7 @@ function breadValSelect(){
     jQuery("#updateNameAdd").find(".address").html(txtSl);
 
     jQuery(document).on('click', '#shipping-address-select li', function () {
+        
         var selectedAdd = jQuery(this).text();
 
         jQuery("#shipping-address-select li").removeAttr('id');
@@ -422,6 +440,7 @@ function breadValSelect(){
 
         jQuery('#updateNameAdd').find('.address').html(selectedAdd.replace(/,/g, "<br>"));
         jQuery('#updateNameAdd').find('.address').contents().first().wrap('<span>To: </span>');
+        trimDetailTxt();
 
         jQuery("form#checkout-shipping-form").find("input[type='submit']").show();
         jQuery("#shippingDetails").css("background", "").addClass("active");
@@ -432,7 +451,7 @@ function breadValSelect(){
         jQuery("form#payment_form input[type=submit]").addClass("mar0").removeClass("marbtm745");
 
 
-        trimDetailTxt();
+        
         addUpdTxt();
         getShippingID();
     });
