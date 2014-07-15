@@ -25,7 +25,7 @@ jQuery(document).ready(function($){
         $(".pageoverlay").hide();
         $(".page").animate({ left: '0' }).css("");
         $(".header-container").animate({ left: "0" });
-        $("body").removeClass("hdnHgt");          
+        $("body, html").removeClass("hdnHgt");          
     });
     $("div.adddields span").live("click",function(){  
          if(!$(this).attr('class')){
@@ -182,7 +182,7 @@ jQuery(document).ready(function($){
         $(this).parent(".shopping-cart").addClass("hdnovr");
         $(".page").animate({ left: '0' }).css("");
         $(".header-container").animate({ left: "0" });
-        $("body").removeClass("hdnHgt");
+        $("body, html").removeClass("hdnHgt");
         setInterval(function() {
                 if($(".checkoutshow").css('display','none')) $(".checkoutshow").show();
         }, 30000);
@@ -306,7 +306,7 @@ jQuery(".shopping-cart").css({
 jQuery(".page").css("position", "relative").animate({ left: -shoppingWdth });
 jQuery(".pageoverlay").css("min-height", bodyHght).css("width", jQuery(window).width()).animate({ left: -shoppingWdth }).show();
 jQuery(".header-container").animate({ left: -shoppingWdth });
-jQuery("body").addClass("hdnHgt");
+jQuery("body, html").addClass("hdnHgt");
 // alert(bodyHght);
 return false;
 }

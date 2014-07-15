@@ -1589,3 +1589,7 @@ table.inputtable td.inputholder input[type='text'], table.inputtable td.inputhol
     padding: 0;
     width: auto !important;
 }
+
+.addedItem ul.similarProdList li span{
+    margin: 0;
+}
