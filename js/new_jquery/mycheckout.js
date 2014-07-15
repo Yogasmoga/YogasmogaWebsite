@@ -788,11 +788,29 @@ function savePayment()
         data : jQuery("#payment_form").serialize(),
         success : function(result){
             result = eval('(' + result + ')');
-            if(typeof result['redirect'] !== "undefined")
-                window.location.href = result['redirect'];
+            if(typeof result['redirect'] !== "undefined"){
+                    //window.location.href = result['redirect'];
+
+                    var payPalURL = result['redirect'];
+
+                    jQuery("li#reviewDetails #paypal-checkout").removeClass("dnone").attr("href", payPalURL);
+                    jQuery("li#reviewDetails #checkout-submit #final_checkout").addClass("dnone");
+
+                    jQuery(".billingAdd a").removeClass("reverse unuse").addClass("use").html(jQuery("form#co-billing-form input#billing\\:street1").val() + "<br>" + "<span>is my billing address</span>");
+                    jQuery("#billing-new-address-form").hide();
+                    jQuery("li#billingDetails .ovrlay-bg").show();
+                    jQuery("li#billingDetails .headD span").html("&#10004;");
+                    jQuery("li#shippingDetails .ovrlay-bg").show();
+                    jQuery("li#shippingDetails").removeClass("reverseShip").css("background", "transparent");
+                    jQuery("li#billingDetails.active").removeClass("active");
+                    jQuery("li#reviewDetails .ovrlay-bg").hide();
+                    jQuery("li#reviewDetails").addClass("active");
+            }
+
             
-            if(typeof result['error'] !== "undefined")
+            else if(typeof result['error'] !== "undefined"){
                 jQuery("#paymentmethoderrormsg").html(result['error']);
+            }
             else
             {
                 jQuery("#paymentmethoderrormsg").html('');
@@ -931,9 +949,11 @@ function saveShippingAddress()
             jQuery("div#shippingmethods").html(result['update_section']['html']);
 
             var getShpID = jQuery(".shippingOption").find("ul li.selected").attr("id");
-            //alert(getShpID);
+            //console.log(getShpID);
 
             jQuery("form#co-shippingmethod-form input#" + getShpID).attr("checked","checked");
+            console.log(jQuery('form#co-shippingmethod-form input:checked').attr("id"));
+
             jQuery("form#co-shippingmethod-form").submit();
 
 
