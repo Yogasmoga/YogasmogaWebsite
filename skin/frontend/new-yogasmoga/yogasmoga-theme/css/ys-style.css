@@ -501,7 +501,7 @@ table.box-desc-dvdr.smogibucks{margin-top: 15px; margin-bottom: 15px;}
 .box-desc-dvdr.last {margin: 0;}
 .chatlink {border-bottom: 1px solid #CC0033;font-size: 10px;margin: 0 0 0 20px;text-transform: uppercase;}
 .online {color: #999999; float: right; font-style: italic; text-transform: capitalize;}
-.online > span {background: #00A14B; border-radius: 10px; display: inline-block; height: 9px; margin: 0 4px 0 0; width: 9px;}
+.online > span {background: #00A14B; border-radius: 10px; display: inline-block; height: 6px; margin: 0 4px 0 0; width: 6px;}
 .readmore {color: #CC0033; font-size: 10px; margin: 0 5px; text-decoration: underline; text-transform: initial; padding: 5px 0 0;}
 /*.fitDetail > div{float: left; max-width: 32%;}*/
 /*.fitDetail > div.tble{margin: 0 4%; min-width: 60%;}*/
