@@ -1,15 +1,17 @@
 td.searchsidenavigation
 {
-    width : 180px;
-    padding-left : 20px;
+    width : 270px;
+    
     vertical-align: top;
     color : black;
 }
-td.searchsidenavigation div
+td.searchsidenavigation > div
 {
     text-align : left;
-	position:relative; top:38px;
-    text-transform: uppercase;
+	position:relative; 
+    top:80px;    
+    padding: 30px 20px 10px;
+    background-size: contain;
 }
 div.searchresultcount
 {
@@ -22,11 +24,12 @@ div.searchresultcount
 }
 td.searchsidenavigation div.subheader
 {
-    font-family:gothambold;
+   /* font-family:gothambold;
     font-size : 9px;
-    letter-spacing : 0.6pt;
+    letter-spacing : 0.6pt;*/
     margin-bottom : 11px;
-    margin-top : 40px;
+    color: #AD8536;
+    /*margin-top : 40px;*/
 }
 td.searchsidenavigation div.subheader:first-child
 {
@@ -37,10 +40,13 @@ td.searchsidenavigation a div:hover{background:#EFEEED;}
 
 td.searchsidenavigation div
 {
-    font-family:gothamlight;
-    font-size : 9px;
-    letter-spacing : 0.6pt;
-    margin-bottom : 3px;
+    text-transform: uppercase;
+    font: 11px/19px gothammedium;
+    color: #666;
+}
+td.searchsidenavigation a:hover div{
+    background: none;
+    color: #c03;
 }
 div.searchbutton
 {

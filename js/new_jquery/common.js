@@ -114,7 +114,7 @@ jQuery(document).ready(function($){
                         // jQuery("#popup-register input").val("").focus().blur();
                         $(".ui-widget-overlay").css("z-index","100");
                         $("input#pfirstname").blur();
-                        $(".ui-widget-overlay").css({top:80});
+                        $(".ui-widget-overlay").css({"top":"96px","position":"fixed"});
                         $(window).trigger("resize");
                         var pW = ($(document).width() - $(this).parent().width())/2;
                         var pH = ($(window).height() - $(this).parent().height())/2;
