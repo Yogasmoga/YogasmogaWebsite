@@ -228,6 +228,8 @@ div.copy-privacy-likes ul li img{height: 30px;}
 .invite-right{width:305px; padding:30px 37.5px 0;}
 #invite-friend-form{width: 285px; margin: 0 auto;}
 .smogi-love-msg{margin-bottom: 45px;}
+.smogi-love{cursor:pointer;}
+.smogi-love:hover{color: #CC0033;}
 .mt100{margin-top: 100px; margin-bottom: 0;}
 .invite-message{font-size: 18px;}
 
