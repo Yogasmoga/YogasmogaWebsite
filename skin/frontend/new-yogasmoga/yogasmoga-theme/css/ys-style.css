@@ -70,7 +70,7 @@ ul.main-menu2 > li:hover > ul.sub-menu, ul.main-menu > li:hover > ul.sub-menu{di
 .sub-menu a:hover{color:#cc0033 !important;}
 /**Search Bar**/
 .right-block{height: 80px;}
-.search-bar{border: 1px solid black; width: 175px; float: ; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;	margin-right:3px;}
+.search-bar{ border: 1px solid black; width: 175px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;	margin-right:3px;}
 #search_input { width: 145px; height: 22px; border: medium none; font-family: gothamlight; font-size: 11px; letter-spacing: 0.4pt; }
 #search-btn{background: transparent url("../images/search-icon.png") center no-repeat; border: none; width: 16px; height: 14px; font-size: 0; cursor: pointer; }
 
@@ -1340,7 +1340,7 @@ body.sales-order-view #my-orders-table{border-left: none;}
 body.sales-order-view #my-orders-table thead tr th:first-child, body.sales-order-view #my-orders-table tbody tr td:first-child{border-left:1px solid #efefef;}
 /****/
 
-.2-columns-wrapper .top-divider{margin-top: 0 !important;}
+.2-columns-wrapper .top-divider { margin-top: 0 !important;}
 #wishlist-view-form .globalmsg{font-family: ITCAvantGardeProMd !important; color: #666 !important; font-weight: normal !important;}
 #wishlist-view-form p.wishlist-empty{font-family: gothambook !important; }
 .continueshopppingbtn{color: #fff; font-style: normal; font-variant: normal; font-weight: normal; font-size: 12px; line-height: normal; font-family: gothambold; text-transform: uppercase; background-image: url(../images/shopping-cart/grn-btn.png) !important; width: 184px !important; height: 48px !important;}
