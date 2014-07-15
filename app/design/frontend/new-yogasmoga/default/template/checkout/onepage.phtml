@@ -93,7 +93,7 @@
                 ?>
             <div id="coshipping" class="checkoutsteps">
                 <!-- <div class="checkoutstepheader codivider"></div> -->
-                <div class="headD">1<br>Shipping</div>
+                <div class="headD"><span>1</span><br>Shipping</div>
 
                 <div id="coshippingaddress" class="checkoutsubstep addNewAdd">
                     <?php echo $this->getChildHtml('shipping'); ?>
@@ -115,7 +115,7 @@
     <li id="billingDetails">
         <div id="cobilling" class="checkoutsteps <?php if(!$isshippable) { echo "active";} else { echo "inactive disabled";} ?>">
             <div class="headD">
-                <?php if($isshippable) { echo "2";} else { echo "1";} ?><br />BILLING
+                <span><?php if($isshippable) { echo "2";} else { echo "1";} ?></span><br />BILLING
             </div>
 
 <!--             <div id="cobillingaddress" class="checkoutsubstep addNewAdd">
@@ -144,7 +144,7 @@
     <li id="reviewDetails">
         <div id="coreview" class="checkoutsteps inactive disabled">
             <div class="headD">
-                <?php if($isshippable) { echo "3";} else { echo "2";} ?><br />REVIEW   
+                <span><?php if($isshippable) { echo "3";} else { echo "2";} ?></span><br />REVIEW   
             </div>
             <!-- <div id="orderreview" class="inactive disabled"></div> -->
             <div id="ordersummary"></div>

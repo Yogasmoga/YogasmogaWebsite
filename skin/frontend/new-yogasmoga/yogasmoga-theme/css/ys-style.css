@@ -66,7 +66,8 @@ ul.main-menu2{margin-left: 0; margin-right: 20px;}
 ul.main-menu2 > li{position: relative; padding-top: 2px; height: 58px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 ul.main-menu2 a.main-heading{display: block; height: 56px;}
 ul.main-menu2 li ul.sub-menu li a{font-family: gothambook;}
-ul.main-menu2 > li:hover > ul.sub-menu, ul.main-menu > li:hover > ul.sub-menu{display: block;}
+ul.main-menu2 > li:hover > ul.sub-menu /*ul.main-menu > li:hover > ul.sub-menu*/{display: block;}
+ul.main-menu > li.over > ul.sub-menu{display: block;}
 .sub-menu a:hover{color:#cc0033 !important;}
 /**Search Bar**/
 .right-block{height: 80px;}
@@ -992,6 +993,7 @@ body.customer-address-index .myaccountdashboard .sectionheader{display: none;}
 body.customer-address-index .myaccountdashboard .customeraddress td .subsectionheader{font-family: gothambold; color: #666; font-size: 11px !important; margin-bottom: 10px;}
 .gift-card-credit{margin-top: 50px;}
 .address-info{font-size: 11px; margin-top: 100px; color: #666}
+.address-info .cname{display: block;}
 .address-info .add-heading{display: block; margin-bottom: 15px;}
 .billing-add,.shipping-add{width: 40%;}
 .account-nav{width: 25% !important; max-width: 350px;}
@@ -1358,7 +1360,7 @@ body.customer-address-index .myaccountdashboard .customeraddress td{padding-top:
 .box-str:last-child{background:none; padding-bottom:60px;}
 
 .cms-ys-tech #pagecontainer,.cms-our-story #pagecontainer,.cms-smogi-bucks #pagecontainer,.cms-help #pagecontainer{background: url(../images/bot-divider.png) 50% 100% no-repeat; background-size: 90%;}
-.cms-smogi-bucks #pagecontainer { margin: 25px 0 0; background: url(../images/big-divider.png) no-repeat,url(../images/big-divider.png) no-repeat; background-position: top center, bottom center; padding-top:52px; background-size: 100% auto; }
+.cms-smogi-bucks #pagecontainer { margin: 25px auto; background: url(../images/big-divider.png) no-repeat,url(../images/big-divider.png) no-repeat; background-position: top center, bottom center; padding-top:52px; background-size: 100% auto; }
 .cms-smogi-bucks .box-str h2.heading{font-size:11px/19px gothambold !important;}
 
 /** making1024Details **/
