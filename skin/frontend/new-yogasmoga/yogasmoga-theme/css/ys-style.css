@@ -66,11 +66,12 @@ ul.main-menu2{margin-left: 0; margin-right: 20px;}
 ul.main-menu2 > li{position: relative; padding-top: 2px; height: 58px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 ul.main-menu2 a.main-heading{display: block; height: 56px;}
 ul.main-menu2 li ul.sub-menu li a{font-family: gothambook;}
-ul.main-menu2 > li:hover > ul.sub-menu, ul.main-menu > li:hover > ul.sub-menu{display: block;}
+ul.main-menu2 > li:hover > ul.sub-menu /*ul.main-menu > li:hover > ul.sub-menu*/{display: block;}
+ul.main-menu > li.over > ul.sub-menu{display: block;}
 .sub-menu a:hover{color:#cc0033 !important;}
 /**Search Bar**/
 .right-block{height: 80px;}
-.search-bar{border: 1px solid black; width: 175px; float: ; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;	margin-right:3px;}
+.search-bar{ border: 1px solid black; width: 175px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;	margin-right:3px;}
 #search_input { width: 145px; height: 22px; border: medium none; font-family: gothamlight; font-size: 11px; letter-spacing: 0.4pt; }
 #search-btn{background: transparent url("../images/search-icon.png") center no-repeat; border: none; width: 16px; height: 14px; font-size: 0; cursor: pointer; }
 
@@ -228,6 +229,8 @@ div.copy-privacy-likes ul li img{height: 30px;}
 .invite-right{width:305px; padding:30px 37.5px 0;}
 #invite-friend-form{width: 285px; margin: 0 auto;}
 .smogi-love-msg{margin-bottom: 45px;}
+.smogi-love{cursor:pointer;}
+.smogi-love:hover{color: #CC0033;}
 .mt100{margin-top: 100px; margin-bottom: 0;}
 .invite-message{font-size: 18px;}
 
@@ -499,7 +502,7 @@ table.box-desc-dvdr.smogibucks{margin-top: 15px; margin-bottom: 15px;}
 .box-desc-dvdr.last {margin: 0;}
 .chatlink {border-bottom: 1px solid #CC0033;font-size: 10px;margin: 0 0 0 20px;text-transform: uppercase;}
 .online {color: #999999; float: right; font-style: italic; text-transform: capitalize;}
-.online > span {background: #00A14B; border-radius: 10px; display: inline-block; height: 9px; margin: 0 4px 0 0; width: 9px;}
+.online > span {background: #00A14B; border-radius: 10px; display: inline-block; height: 6px; margin: 0 4px 0 0; width: 6px;}
 .readmore {color: #CC0033; font-size: 10px; margin: 0 5px; text-decoration: underline; text-transform: initial; padding: 5px 0 0;}
 /*.fitDetail > div{float: left; max-width: 32%;}*/
 /*.fitDetail > div.tble{margin: 0 4%; min-width: 60%;}*/
@@ -899,7 +902,7 @@ body{overflow-x:auto !important; }
 
 /** emailUs **/
 .emailBox{background: #efefef; margin: auto; width: auto; min-width: 80%; max-width: 960px; padding: 20px;}
-.emailBox > input, .emailBox > textarea{background: #fff; border: 0 none; width: 97%; padding: 10px; font: 13px gothambook; text-transform: capitalize; display: inline-block; margin-bottom: 10px; color: #666;}
+.emailBox > input, .emailBox > textarea{background: #fff; border: 0 none; width: 97%; padding: 10px; font: 13px gothambook; text-transform: none; display: inline-block; margin-bottom: 10px; color: #666;}
 .gap{border-bottom: 2px solid #f7f7f7; margin: 20px 0; display: block; clear: both;}
 .emailBox > label{display: block; margin: 0 0 15px;}
 .sendmail, .choosefile{cursor: pointer;}
@@ -990,6 +993,7 @@ body.customer-address-index .myaccountdashboard .sectionheader{display: none;}
 body.customer-address-index .myaccountdashboard .customeraddress td .subsectionheader{font-family: gothambold; color: #666; font-size: 11px !important; margin-bottom: 10px;}
 .gift-card-credit{margin-top: 50px;}
 .address-info{font-size: 11px; margin-top: 100px; color: #666}
+.address-info .cname{display: block;}
 .address-info .add-heading{display: block; margin-bottom: 15px;}
 .billing-add,.shipping-add{width: 40%;}
 .account-nav{width: 25% !important; max-width: 350px;}
@@ -1054,7 +1058,7 @@ table.referfriendforms td.name table.inputtable,table.referfriendforms td.email 
 td.btninvite{width: 93px;}
 div.invite{background-size: cover; width:107px !important; height: 31px !important; margin-top: 10px;}
 table.referfriendforms td.remove img, table.referfriendforms td.success img{margin-top: 19px !important;}
-div#addanotherreferral{margin-bottom: 5px !important;}
+div#addanotherreferral{width:110px !important; margin-bottom: 5px !important;}
 table.referredfriendslist td.name, table.referredfriendslist td.email{width: 48%;}
 .track-invites table.referredfriendslist td.name div,.track-invites table.referredfriendslist td.email div{border: none !important; width: 100% !important; min-width: 100% !important; max-width: 100% !important; margin-left: 0; text-transform: lowercase; margin-bottom: 5px;}
 .refer-frnd .referfriend-subheader,.track-invites .referfriend-subheader{font-size: 11px !important; font-family: gothambold !important;}
@@ -1251,14 +1255,14 @@ table.productimagecontainer{margin-bottom: 70px; /*min-height: 620px;*/}
 .goy-form .row{margin: 0 0 30px !important;}
 .goy-form .full{width: 100% !important; margin: 0 !important;}
 .goy-form .full textarea{max-width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; border:none !important; background: #fff !important; font-size: 11px !important;}
-textarea.watermark{color: gray !important; font-size: 13px !important;}
+textarea.watermark{color: #666 !important; font-size: 13px !important;}
 .goy-form .col label{text-align: left; color: #666 !important; font-style: normal !important; font-family: gothambook !important; font-size: 13px !important; margin-bottom: 5px !important; resize:none;}
 .goy-balance form{display: block; position: absolute; right: 25px; left: 25px; bottom: 25px;}
 table.gfredeem td.inputholder, table#redeem td.inputholder{width: 28%; background: #fff; padding: 5px; height: 30px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; border: none !important;}
 table.gfredeem td.dash, table#redeem td.dash{text-align: center; vertical-align: middle;}
 button.btn-reset span{ width: 147px !important; height: 42px !important; background: url(../images/reset-form.jpg) 0 0 no-repeat !important; }
 button.btn-addtobag span{width: 151px !important; height: 42px !important; background: url(../images/add-to-bag.jpg) 0 0 no-repeat !important;}
-.goy-balance .sub-title{padding-top: 0 !important; font-family: gothambold !important; font-size: 11px !important;}
+.goy-balance .sub-title{padding-top: 0 !important; font-family: gothambold !important; font-size: 11px !important; }
 .goy-balance p{font-family: gothambook; font-size: 11px;}
 .applygiftcard,.applypromo,.applysmogi {cursor: pointer;}
 table.productimagecontainer table.smallimagecontiner td:last-child{display: none;}
@@ -1338,7 +1342,7 @@ body.sales-order-view #my-orders-table{border-left: none;}
 body.sales-order-view #my-orders-table thead tr th:first-child, body.sales-order-view #my-orders-table tbody tr td:first-child{border-left:1px solid #efefef;}
 /****/
 
-.2-columns-wrapper .top-divider{margin-top: 0 !important;}
+.2-columns-wrapper .top-divider { margin-top: 0 !important;}
 #wishlist-view-form .globalmsg{font-family: ITCAvantGardeProMd !important; color: #666 !important; font-weight: normal !important;}
 #wishlist-view-form p.wishlist-empty{font-family: gothambook !important; }
 .continueshopppingbtn{color: #fff; font-style: normal; font-variant: normal; font-weight: normal; font-size: 12px; line-height: normal; font-family: gothambold; text-transform: uppercase; background-image: url(../images/shopping-cart/grn-btn.png) !important; width: 184px !important; height: 48px !important;}
@@ -1356,7 +1360,7 @@ body.customer-address-index .myaccountdashboard .customeraddress td{padding-top:
 .box-str:last-child{background:none; padding-bottom:60px;}
 
 .cms-ys-tech #pagecontainer,.cms-our-story #pagecontainer,.cms-smogi-bucks #pagecontainer,.cms-help #pagecontainer{background: url(../images/bot-divider.png) 50% 100% no-repeat; background-size: 90%;}
-.cms-smogi-bucks #pagecontainer { margin: 25px 0 0; background: url(../images/big-divider.png) no-repeat,url(../images/big-divider.png) no-repeat; background-position: top center, bottom center; padding-top:52px; background-size: 100% auto; }
+.cms-smogi-bucks #pagecontainer { margin: 25px auto; background: url(../images/big-divider.png) no-repeat,url(../images/big-divider.png) no-repeat; background-position: top center, bottom center; padding-top:52px; background-size: 100% auto; }
 .cms-smogi-bucks .box-str h2.heading{font-size:11px/19px gothambold !important;}
 
 /** making1024Details **/
@@ -1573,7 +1577,7 @@ textarea{resize:none;}
 #zoomedfbdtl{display: none !important;}
 .zoom-prd-det .prdname{padding-bottom: 0 !important; }
 td#zoomedproductimage img#zoomedimage1{margin-top: 34px;}
-table.inputtable td.inputholder input[type='text'], table.inputtable td.inputholder input[type='password'], table.gfredeem td input[type='text'], table#redeem td input[type='text']{font-size: 11px !important;}
+table.inputtable td.inputholder input[type='text'], table.inputtable td.inputholder input[type='password'], table.gfredeem td input[type='text'], table#redeem td input[type='text'],label{font-size: 11px !important; font-family: gothambook; font-style: normal;}
 #referafriend-container{margin-left: 270px !important; width: auto !important; padding-right: 20%; max-width: 100% !important;}
 
 
@@ -1587,3 +1591,25 @@ table.inputtable td.inputholder input[type='text'], table.inputtable td.inputhol
     padding: 0;
     width: auto !important;
 }
+
+.addedItem ul.similarProdList li span{
+    margin: 0;
+}
+
+.checkout-link-top{
+    background: url(../images/checkoutbg.jpg) no-repeat top left;
+    color: #fff;
+    font-family: gothamMedium;
+    padding: 4px 10px 5px;
+}
+
+.checkout-link-top:hover{
+    color: #fff;
+}
+
+table.inputtable td.label, table.gfredeem td.label, table#redeem td.label,input{color: #666 !important;}
+.addtl-add-remove{margin-left: 0 !important;}
+body.customer-address-index .myaccountdashboard .customeraddress td:last-child{padding: 0; margin: 0;}
+.customeraddress .right,.customeraddress a.addressLink{margin:0 !important;}
+form#createcardform .sub-title{text-transform: uppercase; font-weight: normal; margin: 0 0 10px; color: #666; padding-top: 0; font-family: gothambold!important; font-size: 11px; text-align: left; margin-bottom: 20px;}
+button.button.btn-addtoaccount{margin: 0 !important;}

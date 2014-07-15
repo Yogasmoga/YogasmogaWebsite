@@ -43,6 +43,7 @@ jQuery(document).ready(function($){
         $("#billing-new-address-form, #cobillingaddress").hide();
         $(".billingAdd a.checkBCre").removeClass("reverse unuse").addClass("use");
         $("form#payment_form input[type=submit]").addClass("mar0").removeClass("marbtm745");
+        $("li#shippingDetails .headD span").html("1");
 
         $(".showShippingOpt li").removeClass("selected");
         $(this).addClass("selected");
@@ -201,6 +202,8 @@ jQuery(document).ready(function($){
             $("li#shippingDetails.reverseShip").css("background", "");
             $("li#billingDetails .ovrlay-bg, li#reviewDetails .ovrlay-bg").show();
             $("#checkout-shipping-form input[type=submit]").show();
+            $("li#shippingDetails .headD span").html("1");
+            $("#shippingaddressselectionblock").hide();
         }
         else
         {
@@ -801,6 +804,9 @@ function savePayment()
                 jQuery(".billingAdd a").removeClass("reverse unuse").addClass("use").html(jQuery("form#co-billing-form input#billing\\:street1").val() + "<br>" + "<span>is my billing address</span>");
                 jQuery("#billing-new-address-form").hide();
                 jQuery("li#billingDetails .ovrlay-bg").show();
+                jQuery("li#billingDetails .headD span").html("&#10004;");
+                jQuery("li#shippingDetails .ovrlay-bg").show();
+                jQuery("li#shippingDetails").removeClass("reverseShip").css("background", "transparent");
                 jQuery("li#billingDetails.active").removeClass("active");
                 jQuery("li#reviewDetails .ovrlay-bg").hide();            
                 jQuery("li#reviewDetails").addClass("active");                
@@ -892,6 +898,7 @@ function saveShippingMethod()
             jQuery("li#shippingDetails").css("background", "rgba(0, 0, 0, 0.08)").addClass("reverseShip");
             jQuery("#updateNameAdd").find(".gryWrap ").css("background", "#ddd");
             jQuery("li#shippingDetails .ovrlay-bg").hide();
+            jQuery("li#shippingDetails .headD span").html("&#10004;");
             jQuery("li#billingDetails .ovrlay-bg").hide();
             jQuery("li#shippingDetails.active").removeClass("active");
             jQuery("li#billingDetails").addClass("active");
