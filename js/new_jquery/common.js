@@ -114,7 +114,7 @@ jQuery(document).ready(function($){
                         // jQuery("#popup-register input").val("").focus().blur();
                         $(".ui-widget-overlay").css("z-index","100");
                         $("input#pfirstname").blur();
-                        $(".ui-widget-overlay").css({top:96});
+                        $(".ui-widget-overlay").css({"top":"96px","position":"fixed"});
                         $(window).trigger("resize");
                         var pW = ($(document).width() - $(this).parent().width())/2;
                         var pH = ($(window).height() - $(this).parent().height())/2;
@@ -153,7 +153,7 @@ jQuery(document).ready(function($){
                 //$("#invite-friend-form input").val("").focus().blur();
                 $(".ui-widget-overlay").css("z-index","100");
                 $("input#friendname").blur();                
-                $(".ui-widget-overlay").css({top:96});
+                $(".ui-widget-overlay").css({"top":"96px","position":"fixed"});
                 $(window).trigger("resize");
                 var pW = ($(document).width() - $(this).parent().width())/2;
                 var pH = ($(window).height() - $(this).parent().height())/2;
