@@ -1593,3 +1593,14 @@ table.inputtable td.inputholder input[type='text'], table.inputtable td.inputhol
 .addedItem ul.similarProdList li span{
     margin: 0;
 }
+
+.checkout-link-top{
+    background: url(../images/checkoutbg.jpg) no-repeat top left;
+    color: #fff;
+    font-family: gothamMedium;
+    padding: 4px 10px 5px;
+}
+
+.checkout-link-top:hover{
+    color: #fff;
+}
