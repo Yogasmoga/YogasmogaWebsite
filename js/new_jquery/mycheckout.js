@@ -787,7 +787,7 @@ function savePayment()
             result = eval('(' + result + ')');
             if(typeof result['redirect'] !== "undefined")
                 window.location.href = result['redirect'];
-                
+            
             if(typeof result['error'] !== "undefined")
                 jQuery("#paymentmethoderrormsg").html(result['error']);
             else
