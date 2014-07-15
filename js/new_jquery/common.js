@@ -50,7 +50,7 @@ jQuery(document).ready(function($){
     var winHeight = $(window).height();
     $("div.2-columns-wrapper").find(".pg-content").css("min-height", winHeight);    
 
-	$(".footer-block").on("click","#smogi-love",function(){
+	$(".footer-block").on("click",".smogi-love",function(){
          if(!_islogedinuser)
         {
 		 $("#signup").dialog( "open" );			
@@ -153,7 +153,7 @@ jQuery(document).ready(function($){
                 //$("#invite-friend-form input").val("").focus().blur();
                 $(".ui-widget-overlay").css("z-index","100");
                 $("input#friendname").blur();                
-                $(".ui-widget-overlay").css({top:80});
+                $(".ui-widget-overlay").css({"top":"96px","position":"fixed"});
                 $(window).trigger("resize");
                 var pW = ($(document).width() - $(this).parent().width())/2;
                 var pH = ($(window).height() - $(this).parent().height())/2;
@@ -197,7 +197,7 @@ jQuery(document).ready(function($){
                 }                  
                 $("#sign-up-form input#fname").blur();
                 $("#sign-up-form #s_password,#sign-in-form #si_password").blur();
-                $(".ui-widget-overlay").css({top:80});
+                $(".ui-widget-overlay").css({top:96});
                 $(window).trigger("resize");
                 var pW = ($(document).width() - $(this).parent().width())/2;
                 var pH = ($(window).height() - $(this).parent().height())/2;

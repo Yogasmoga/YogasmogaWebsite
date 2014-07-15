@@ -986,7 +986,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $applysmogi="applysmogi";
             $applysmogidisable="";
             $checkboxapplied="";
-            $smogiplaceholder="Use Your ".$showedpoints." SMOGI Bucks Towards This Purchase";
+            $smogiplaceholder="Use Your ".$showedpoints." SMOGI Bucks Toward This Purchase";
             $showedpointsvalue=$showedpoints;
            if($checksmogiapplied)
            {

@@ -25,12 +25,12 @@ jQuery(document).ready(function($){
         $(".pageoverlay").hide();
         $(".page").animate({ left: '0' }).css("");
         $(".header-container").animate({ left: "0" });
-        $("body").removeClass("hdnHgt");          
+        $("body, html").removeClass("hdnHgt");          
     });
     $("div.adddields span").live("click",function(){  
          if(!$(this).attr('class')){
 //             showerror('You cannot use Smogi Bucks and Promo Code / Gift Card Code together.');   
-             showerror("You cannot use other codes now.");   
+             showerror("Gift Card, SMOGI Bucks and Promo Code cannot be combined. Please choose one and continue CheckOut.");   
              
          }
     });
@@ -182,7 +182,7 @@ jQuery(document).ready(function($){
         $(this).parent(".shopping-cart").addClass("hdnovr");
         $(".page").animate({ left: '0' }).css("");
         $(".header-container").animate({ left: "0" });
-        $("body").removeClass("hdnHgt");
+        $("body, html").removeClass("hdnHgt");
         setInterval(function() {
                 if($(".checkoutshow").css('display','none')) $(".checkoutshow").show();
         }, 30000);
@@ -250,11 +250,11 @@ jQuery(window).resize(function(){
                 availablesmogi = parseInt(availablesmogi);
                     if (jQuery(this).val() == "") {
                        // smogipoints= availablesmogi - appliedvalue;
-                        if(availablesmogi > 0) jQuery(this).attr('placeholder','Use Your '+availablesmogi+' SMOGI Bucks Towards This Purchase');
+                        if(availablesmogi > 0) jQuery(this).attr('placeholder','Use Your '+availablesmogi+' SMOGI Bucks Toward This Purchase');
                     }
             }else{
                 if (jQuery(this).val() == "" && storeVal !="") {
-                    jQuery(this).attr('placeholder','Use Your '+storeVal+' SMOGI Bucks Towards This Purchase');
+                    jQuery(this).attr('placeholder','Use Your '+storeVal+' SMOGI Bucks Toward This Purchase');
                 }
             }
          });
@@ -306,7 +306,7 @@ jQuery(".shopping-cart").css({
 jQuery(".page").css("position", "relative").animate({ left: -shoppingWdth });
 jQuery(".pageoverlay").css("min-height", bodyHght).css("width", jQuery(window).width()).animate({ left: -shoppingWdth }).show();
 jQuery(".header-container").animate({ left: -shoppingWdth });
-jQuery("body").addClass("hdnHgt");
+jQuery("body, html").addClass("hdnHgt");
 // alert(bodyHght);
 return false;
 }
@@ -571,7 +571,7 @@ function applysmogibucks()
     }
     else{
         jQuery('#smogi').next('span').addClass("applysmogi").empty().append("+");
-        showerror('You do not have SMOGI Bucks in your account.');
+        showerror('You do not have enough SMOGI Bucks in your Account.');
         jQuery('.zindexH').hide();
     }
 
