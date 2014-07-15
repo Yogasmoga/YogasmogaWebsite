@@ -262,12 +262,18 @@ jQuery(document).ready(function($){
     });
 });
 function bubble(status){
-    jQuery('.online-status-icon').attr('src','<?php echo $this->getSkinUrl('images/footer/offline.png') ?>');
-    jQuery('.online > span').css('background-color','#999');
+   // jQuery('.online-status-icon').attr('src','<?php echo $this->getSkinUrl('images/footer/offline.png') ?>');
+    jQuery('.chat-status').empty().html('<img alt="" src="<?php echo $this->getSkinUrl('images/footer/offline.png') ?>" class="online-status-icon"> offline now');    
+  //  jQuery('.online > span').css('background-color','#999');
+    jQuery('.online').empty().html('<span style="background-color: #999;"></span> offline now');    
     if(status =='online')
     {
-        jQuery('.online-status-icon').attr('src','<?php echo $this->getSkinUrl('images/footer/online.png') ?>');
-        jQuery('.online > span').css('background-color','#00A14B');
+       //// jQuery('.online-status-icon').attr('src','<?php echo $this->getSkinUrl('images/footer/online.png') ?>');
+        jQuery('.chat-status').empty().html('<img alt="" src="<?php echo $this->getSkinUrl('images/footer/online.png') ?>" class="online-status-icon"> online now');    
+        ////jQuery('.online > span').css('background-color','#00A14B');
+        jQuery('.online').empty().html('<span style="background-color: #00a14b;"></span> online now');    
+        
+       // jQuery('.chat-status').text('online now');    
     }
 }
 </script>

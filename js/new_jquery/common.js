@@ -50,7 +50,7 @@ jQuery(document).ready(function($){
     var winHeight = $(window).height();
     $("div.2-columns-wrapper").find(".pg-content").css("min-height", winHeight);    
 
-	$(".footer-block").on("click","#smogi-love",function(){
+	$(".footer-block").on("click",".smogi-love",function(){
          if(!_islogedinuser)
         {
 		 $("#signup").dialog( "open" );			

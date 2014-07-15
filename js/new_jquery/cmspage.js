@@ -193,7 +193,6 @@ jQuery(document).ready(function($){
             //alert(objectPage[blockid]);
             //$(objectPage[blockid]).appendTo(".pg-content");
             $(".pg-content").html($(objectPage[blockid])).scrollTop(0);
-
         }
         else{
 
@@ -217,9 +216,13 @@ jQuery(document).ready(function($){
                     {
                         $(".pg-content").html($(objectPage[blockid])).scrollTop(0);
                     }
-
+                    
+            
                 }
             });
         }
+        $zopim(function() {
+            $zopim.livechat.setOnStatus(bubble);
+        });
     }
 });

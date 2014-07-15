@@ -27,9 +27,9 @@ jQuery(document).ready(function($){
                 var topic = jQuery.trim(jQuery('#topic').val());
                 var message = jQuery.trim(jQuery('#message').val());
                 var email = jQuery.trim(jQuery('#email').val());
-                if (name == '' || topic == '' || email == '')
+                if (name == '' || topic == '' || email == '' || message =='')
                 {
-                    jQuery('#resultdiv').empty().append('Please enter name, topic and email address.').show().delay('10000').hide(0);
+                    jQuery('#resultdiv').empty().append('All the fields are mandatory.').show().delay('10000').hide(0);
                     return false;
                 }
                 emailReg = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
@@ -39,10 +39,12 @@ jQuery(document).ready(function($){
                     return false;
                 }
                 var data = new FormData();
-                jQuery.each(files, function(key, value)
-                {
-                        data.append(key, value);
-                });
+                if(files){
+                    jQuery.each(files, function(key, value)
+                    {
+                            data.append(key, value);
+                    });
+                }
             //    alert(JSON.stringify(data));
                 data.append('topic', topic);
                 data.append('name', name);
