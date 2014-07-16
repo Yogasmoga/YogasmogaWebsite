@@ -154,12 +154,12 @@ jQuery(document).ready(function($){
             _ischeckoutprocessing = true;
             jQuery("#payment_form input[type=submit]").hide();
             jQuery("#payment_form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/new-loader.gif' />");
-            saveBillingAddress();
             jQuery("#billing-new-address-form").hide();
             if(_stripecheck)
             {
                 if(jQuery("#payment_form input[type='text']").length == 0){
                     savePayment();
+                    saveBillingAddress();
                 }
 
                 else{
@@ -790,7 +790,6 @@ function savePayment()
             result = eval('(' + result + ')');
             if(typeof result['redirect'] !== "undefined")
                 window.location.href = result['redirect'];
-                
             if(typeof result['error'] !== "undefined")
                 jQuery("#paymentmethoderrormsg").html(result['error']);
             else
