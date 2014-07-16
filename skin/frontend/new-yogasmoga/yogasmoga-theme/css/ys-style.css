@@ -1058,7 +1058,8 @@ table.referfriendforms td.name table.inputtable,table.referfriendforms td.email 
 td.btninvite{width: 93px;}
 div.invite{background-size: cover; width:107px !important; height: 31px !important; margin-top: 10px;}
 table.referfriendforms td.remove img, table.referfriendforms td.success img{margin-top: 19px !important;}
-div#addanotherreferral{width:110px !important; margin-bottom: 5px !important;}
+div#addanotherreferral{width:auto !important; margin-bottom: 5px !important; display: inline-block; border: none !important;}
+div#addanotherreferral p{border-bottom: 1px solid #D90D3D;}
 table.referredfriendslist td.name, table.referredfriendslist td.email{width: 48%;}
 .track-invites table.referredfriendslist td.name div,.track-invites table.referredfriendslist td.email div{border: none !important; width: 100% !important; min-width: 100% !important; max-width: 100% !important; margin-left: 0; text-transform: lowercase; margin-bottom: 5px;}
 .refer-frnd .referfriend-subheader,.track-invites .referfriend-subheader{font-size: 11px !important; font-family: gothambold !important;}
@@ -1196,7 +1197,7 @@ img#closelightbox{bottom: 20px !important; right: 28px !important; width: 21px;}
 .myheader.wishlist-header{width: 960px;}
 .wishlist-header,.referfriend-heading,.order-sum-header{ padding-bottom: 60px; padding-top: 30px; text-align: center; }
 .wishlist-header h4,.referfriend-heading h4,.order-sum-header h4{font-family: ITCAvantGardeProMd,gotham,Arial; width: 100%; color: #666; font-size: 31px; letter-spacing: 0.8pt; font-weight: normal; }
-.header-top-bar{height:15px; background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/catalog/product/listing/line_all_product.png") no-repeat; background-position: top center; background-size: 100%; width: 100%;}
+.header-top-bar{height:15px; background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/bot-divider.png") no-repeat; background-position: top center; background-size: 100%; width: 100%;}
 table.tblwishlist tr.last td{border:none !important;}
 table.tblwishlist td.prprice{padding-left: 0 !important; text-align: left !important;}
 table.tblwishlist thead th{padding-bottom: 0 !important; font-family: gothambold !important; color: #666 !important;}
@@ -1246,6 +1247,7 @@ table.productimagecontainer{margin-bottom: 70px; /*min-height: 620px;*/}
 #cardredeemform .redeem-giftcard{margin-top: 0 !important;}
 .goy-balance{margin-bottom:30px !important; min-height:250px; max-height:250px; background: #efefef; padding: 25px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; max-width: 400px; width: 48% !important; display: inline-block !important; vertical-align: top; position: relative;
 }
+.goy-form .button-set button.button{margin-left: 10px !important;}
 #createcardform{display: block; width: 80%; background: #efefef; padding: 25px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; margin: 0 auto;}
 .manage-goy{width:80%; margin: 0 auto; }
 #createcardform td.label{display: none;}
