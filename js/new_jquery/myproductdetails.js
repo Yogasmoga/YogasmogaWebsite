@@ -23,6 +23,8 @@ jQuery(document).ready(function($){
     });
     $("table.normalproductdetail div#colorcontainer table").live("click", function(){
         $('.errormsg').empty().hide();
+        jQuery("#orderitem").removeClass('bagdisabled');
+        jQuery("#orderitem").addClass('spbutton');
         changeColor($(this).attr("color"));
     });
     
@@ -53,6 +55,8 @@ jQuery(document).ready(function($){
     
     $("div#sizecontainer td:not(.disabled) div:not(.dvselectedsize)").live("click", function(){
         $('.errormsg').empty().hide();
+        jQuery("#orderitem").removeClass('bagdisabled');
+        jQuery("#orderitem").addClass('spbutton');
         changeproductsize($(this));
     });
     
@@ -61,6 +65,8 @@ jQuery(document).ready(function($){
         //alert("triggered");
         //console.log('triggered');
         $('.errormsg').empty().hide();
+        jQuery("#orderitem").removeClass('bagdisabled');
+        jQuery("#orderitem").addClass('spbutton');
         changeOrderqty($(this).val());
     });
     

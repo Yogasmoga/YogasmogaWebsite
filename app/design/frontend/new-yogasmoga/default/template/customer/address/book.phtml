@@ -48,6 +48,7 @@
 				<colgroup>
 					<col width="150"/>
 					<col width=""/>
+					<col width=""/>
 				</colgroup>
 				<tr>
 					<th>Name</th>
@@ -57,9 +58,11 @@
 				<?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling()): 
 						$adrs = Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses);
 						echo '<td>'.$adrs->getData('firstname').' '.$adrs->getData('lastname').'</td>'; ?>
+						<td>							
+							<?php echo $this->getAddressHtml($adrs); ?>
+						</td>
 						<td>
 							<a href="<?php echo $this->getAddressEditUrl($adrs) ?>" class="addressLink"><?php echo $this->__('edit') ?></a>
-							<?php echo $this->getAddressHtml($adrs); ?>
 						</td>
 				<?php else: ?>
 					<td><?php echo $this->__('You have no default billing address in your address book.') ?></td>
@@ -76,6 +79,7 @@
 				<colgroup>
 					<col width="150"/>
 					<col width=""/>
+					<col width=""/>
 				</colgroup>
 				<tr>
 					<th>Name</th>
@@ -85,10 +89,10 @@
 				<?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultShipping()): 
 						$adrs = Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses);
 						echo '<td>'.$adrs->getData('firstname').' '.$adrs->getData('lastname').'</td>'; ?>
-						<td>
-							<a href="<?php echo $this->getAddressEditUrl($adrs) ?>" class="addressLink"><?php echo $this->__('edit') ?></a>
+						<td>							
 							<?php echo $this->getAddressHtml($adrs); ?>
 						</td>
+						<td><a href="<?php echo $this->getAddressEditUrl($adrs) ?>" class="addressLink"><?php echo $this->__('edit') ?></a></td>
 				<?php else: ?>
 					<td><?php echo $this->__('You have no default Shipping address in your address book.') ?></td>
 				<?php endif ?>
@@ -99,11 +103,12 @@
 	<tr height="40px"></tr>
     <tr class="customeraddress">
 		<td>
-            <div class="subsectionheader">additional addresses
+            <div class="subsectionheader">additional address
             <a class="addtl-add-additon" href="<?php echo $this->getAddAddressUrl() ?>">Add</a></div>
 			<table class="address-table">
 				<colgroup>
 					<col width="150"/>
+					<col width=""/>
 					<col width=""/>
 				</colgroup>
 		
@@ -115,9 +120,11 @@
 				<?php foreach($_pAddsses as $_address): ?>
 				<tr>
 					<?php echo '<td>'.$adrs->getData('firstname').' '.$_address->getData('lastname').'</td>'; ?>
+					<td>						
+						<p><?php echo $this->getAddressHtml($_address) ?></p>
+					</td>
 					<td>
 						<div class="right"><a class="addtl-add-edit" href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>"><?php echo $this->__('Edit') ?></a> <span class="separator">|</span> <a class="addtl-add-remove" style="padding-left: 0;" href="#" onclick="return deleteAddress('<?php echo $_address->getId() ?>');"><?php echo $this->__('Remove') ?></a></div>
-						<p><?php echo $this->getAddressHtml($_address) ?></p>
 					</td>
 				</tr>
 				<?php endforeach; ?>

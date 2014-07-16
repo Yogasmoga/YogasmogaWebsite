@@ -30,7 +30,7 @@
     <?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getCustomer())->toHtml() ?>
     <table class="inputtable">
         <tr>
-            <td class="label"><label for="email"><?php echo $this->__('Email Address') ?></label></td>
+            <td class="label"><label for="email"><?php echo $this->__('Email') ?></label></td>
             <td class="inputholder">
                 <input type="text" name="email" id="email" value="<?php echo $this->htmlEscape($this->getCustomer()->getEmail()) ?>" class="requiredfield" defaulterrormsg="Email Address is required" />
             </td>
@@ -69,7 +69,7 @@
         
         <table class="inputtable f-left">
             <tr>
-                <td class="label"><label for="password">Create a Password</label></td>
+                <td class="label"><label for="password">New Password</label></td>
                 <td class="inputholder">
                     <input type="password" name="password" id="password" defaulterrormsg="Password is required" />
                 </td>

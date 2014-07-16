@@ -883,8 +883,14 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         if($promotioncode)
         {
             if(isset($totals['discount'])){
-                $discount = round($totals['discount']->getValue()); //Discount value if applied
-                $discount = substr($discount,1).'.00';
+                $discount = ($totals['discount']->getValue()); //Discount value if applied
+                $discount = substr($discount,1);
+                $afterdecimalcount = strlen(substr(strrchr($discount, "."), 1));
+                if($afterdecimalcount == 0)
+                    $discount .= '.00';
+                if($afterdecimalcount == 1)
+                    $discount .= '0';
+
             }
             $oCoupon = Mage::getModel('salesrule/coupon')->load($promotioncode, 'code');
             $oRule = Mage::getModel('salesrule/rule')->load($oCoupon->getRuleId());
