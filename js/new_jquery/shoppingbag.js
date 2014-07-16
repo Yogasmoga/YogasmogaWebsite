@@ -33,7 +33,7 @@ jQuery(document).ready(function($){
 //             showerror('You cannot use Smogi Bucks and Promo Code / Gift Card Code together.');   
             // showerror("Gift Card, SMOGI Bucks and Promo Code cannot be combined. Please choose one and continue CheckOut."); 
              if($(this).prev('input').attr('id')=='smogi'){
-                 if($(this).prev('input').attr('available') < 0) showerror('You do not have enough SMOGI Bucks in your Account.');
+                 if($(this).prev('input').attr('available') < 1) showerror('You do not have enough SMOGI Bucks in your Account.');
                  else showerror($(this).prev('input').attr('placeholder'));
              }
              else if($(this).prev('input').attr('id')=='giftcartcode'){
