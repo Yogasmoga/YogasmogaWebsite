@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Ankitsinghania_Abandonedcartreminder>
+            <version>0.0.1</version>
+        </Ankitsinghania_Abandonedcartreminder>
+    </modules>
+    <global>
+        <models>
+            <abandonedcartreminder>
+                <class>Ankitsinghania_Abandonedcartreminder_Model</class>
+                <resourceModel>abandonedcartreminder_mysql4</resourceModel>
+            </abandonedcartreminder>
+            <abandonedcartreminder_mysql4>
+                <class>Ankitsinghania_Abandonedcartreminder_Model_Mysql4</class>
+                <entities>
+                    <notify>
+                        <table>abandonedcart_reminder_log</table>
+                    </notify>
+                </entities>
+            </abandonedcartreminder_mysql4>
+        </models>
+        <resources>
+            <abandonedcartreminder_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </abandonedcartreminder_write>
+        </resources>
+    </global>
+    <frontend>
+        <routers>
+            <abandonedcartreminder>
+                <use>standard</use>
+                <args>
+                    <module>Ankitsinghania_Abandonedcartreminder</module>
+                    <frontName>abandonedcartreminder</frontName>
+                </args>
+            </abandonedcartreminder>
+        </routers>   
+    </frontend>
+    <crontab>
+        <jobs>
+            <Ankitsinghania_Abandonedcartreminder>
+                <schedule>
+                    <cron_expr>0 5 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>abandonedcartreminder/notify::remindusers</model>
+                </run>
+            </Ankitsinghania_Abandonedcartreminder>
+        </jobs>
+    </crontab>
+</config>
