@@ -3157,6 +3157,16 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         echo $totals['tax'];echo 'test';
         //print_r($totals);
     }
+    public function getStripeInfoAction()
+    {
+        if($this->getRequest()->getParam('id'))
+        {
+            $info = Mage::getModel('stripe/payment')->getStripeCustomer($this->getRequest()->getParam('id'));
+            print_r($info);
+        }
+
+
+    }
     
 }
 ?>

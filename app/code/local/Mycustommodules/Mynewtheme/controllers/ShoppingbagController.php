@@ -703,9 +703,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         Mage::app();
         Mage::getSingleton('core/session', array('name'=>'frontend'));
         $session = Mage::getSingleton('checkout/session');
-
+        $i=0;
         foreach ($session->getQuote()->getAllItems() as $item)
         {
+            
             $temparray = array();
             if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
             {
@@ -786,7 +787,16 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 //        print $output;
 
         $miniitems = array_reverse($miniitems);
+        //print_r($miniitems);
+        $customerId = Mage::getModel('customer/session')->getCustomerId();
 
+        if($customerId)
+        {
+            Mage::getSingleton('core/session')->setCartItems($miniitems);
+        }
+
+
+        //echo $foundOnlyNoSmogiProduct;
         $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
         $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
         $grandtotal = $totals["grand_total"]->getValue();
