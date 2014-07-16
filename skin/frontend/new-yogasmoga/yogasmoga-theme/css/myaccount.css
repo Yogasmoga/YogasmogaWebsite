@@ -545,6 +545,7 @@ div#referafriend-container p
     letter-spacing: 0.2pt;
     color : #666;
     text-align: left;
+    display: block !important;
 }
 table.referfriendforms
 {
