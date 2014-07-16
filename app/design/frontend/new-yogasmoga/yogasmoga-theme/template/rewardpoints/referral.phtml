@@ -175,7 +175,8 @@
     </div>
     <div class="track-invites">
         <div class="referfriend-subheader">INVITE LIST</div>
-        <p id="noreferralmsg" <?php if(count($results) > 0) { echo "style='display:none;'"; } ?> >After you invite some of your friends you will be able to keep track of their invitations here.</p>
+        <!-- <p id="noreferralmsg" <?php if(count($results) > 0) { echo "style='display:none;'"; } ?> >After you invite some of your friends you will be able to keep track of their invitations here.</p> -->
+        <p id="noreferralmsg">After you invite some of your friends you will be able to keep track of their invitations here.</p>
         <?php
             $write = Mage::getSingleton('core/resource')->getConnection('core_read');
             $customerData = Mage::getModel('customer/customer')->load(Mage::getSingleton('customer/session')->getId())->getData();

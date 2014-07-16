@@ -9,8 +9,7 @@ jQuery(document).ready(function($){
         goys();
     });
     function goys(){
-    	var aH = $("body.gift_of_ys").find("button.button.btn-addtoaccount span img").height();
-    	console.log(aH);
+    	var aH = $("body.gift_of_ys").find("button.button.btn-addtoaccount span img").height();    	
     	$("body.gift_of_ys").find("button.button.btn-check span img").css("height", aH);
     }
 	
