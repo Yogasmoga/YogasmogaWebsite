@@ -1,5 +1,6 @@
 jQuery(document).ready(function($){
-	setFeatureVideoWidth();
+	setFeatureVideoWidth();	
+	
 	/***Functions to called on resize***/
 	$(window).resize(function(){
         setImageContheightPDP();

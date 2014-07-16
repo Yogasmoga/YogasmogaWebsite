@@ -1058,7 +1058,7 @@ table.referfriendforms td.name table.inputtable,table.referfriendforms td.email 
 td.btninvite{width: 93px;}
 div.invite{background-size: cover; width:107px !important; height: 31px !important; margin-top: 10px;}
 table.referfriendforms td.remove img, table.referfriendforms td.success img{margin-top: 19px !important;}
-div#addanotherreferral{margin-bottom: 5px !important;}
+div#addanotherreferral{width:110px !important; margin-bottom: 5px !important;}
 table.referredfriendslist td.name, table.referredfriendslist td.email{width: 48%;}
 .track-invites table.referredfriendslist td.name div,.track-invites table.referredfriendslist td.email div{border: none !important; width: 100% !important; min-width: 100% !important; max-width: 100% !important; margin-left: 0; text-transform: lowercase; margin-bottom: 5px;}
 .refer-frnd .referfriend-subheader,.track-invites .referfriend-subheader{font-size: 11px !important; font-family: gothambold !important;}
@@ -1255,14 +1255,14 @@ table.productimagecontainer{margin-bottom: 70px; /*min-height: 620px;*/}
 .goy-form .row{margin: 0 0 30px !important;}
 .goy-form .full{width: 100% !important; margin: 0 !important;}
 .goy-form .full textarea{max-width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; border:none !important; background: #fff !important; font-size: 11px !important;}
-textarea.watermark{color: gray !important; font-size: 13px !important;}
+textarea.watermark{color: #666 !important; font-size: 13px !important;}
 .goy-form .col label{text-align: left; color: #666 !important; font-style: normal !important; font-family: gothambook !important; font-size: 13px !important; margin-bottom: 5px !important; resize:none;}
 .goy-balance form{display: block; position: absolute; right: 25px; left: 25px; bottom: 25px;}
 table.gfredeem td.inputholder, table#redeem td.inputholder{width: 28%; background: #fff; padding: 5px; height: 30px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; border: none !important;}
 table.gfredeem td.dash, table#redeem td.dash{text-align: center; vertical-align: middle;}
 button.btn-reset span{ width: 147px !important; height: 42px !important; background: url(../images/reset-form.jpg) 0 0 no-repeat !important; }
 button.btn-addtobag span{width: 151px !important; height: 42px !important; background: url(../images/add-to-bag.jpg) 0 0 no-repeat !important;}
-.goy-balance .sub-title{padding-top: 0 !important; font-family: gothambold !important; font-size: 11px !important;}
+.goy-balance .sub-title{padding-top: 0 !important; font-family: gothambold !important; font-size: 11px !important; }
 .goy-balance p{font-family: gothambook; font-size: 11px;}
 .applygiftcard,.applypromo,.applysmogi {cursor: pointer;}
 table.productimagecontainer table.smallimagecontiner td:last-child{display: none;}
@@ -1562,8 +1562,8 @@ div#bodycompensator{height: 96px;}
 }
 
 /****Choose file style****/
-.choose-file-cont{width: 147px; height: 43px; float: left; position: relative;}
-.choosefile-cover{width: 147px; height: 43px; background: url(../images/choosebtn.jpg) no-repeat scroll left top rgba(0, 0, 0, 0); position: absolute; top: 0; left: 0; cursor: pointer;}
+.choose-file-cont{width: 167px; height: 43px; float: left; position: relative;}
+.choosefile-cover{width: 167px; height: 43px; background: url(../images/choosebtn.jpg) no-repeat scroll left top rgba(0, 0, 0, 0); position: absolute; top: 0; left: 0; cursor: pointer; background-color:#efefef;}
 /***ends***/
 
 .reverseShip .headD{color: #c9c9c9;}
@@ -1577,7 +1577,7 @@ textarea{resize:none;}
 #zoomedfbdtl{display: none !important;}
 .zoom-prd-det .prdname{padding-bottom: 0 !important; }
 td#zoomedproductimage img#zoomedimage1{margin-top: 34px;}
-table.inputtable td.inputholder input[type='text'], table.inputtable td.inputholder input[type='password'], table.gfredeem td input[type='text'], table#redeem td input[type='text']{font-size: 11px !important;}
+table.inputtable td.inputholder input[type='text'], table.inputtable td.inputholder input[type='password'], table.gfredeem td input[type='text'], table#redeem td input[type='text'],label{font-size: 11px !important; font-family: gothambook; font-style: normal;}
 #referafriend-container{margin-left: 270px !important; width: auto !important; padding-right: 20%; max-width: 100% !important;}
 
 
@@ -1606,3 +1606,34 @@ table.inputtable td.inputholder input[type='text'], table.inputtable td.inputhol
 .checkout-link-top:hover{
     color: #fff;
 }
+
+table.inputtable td.label, table.gfredeem td.label, table#redeem td.label,input{color: #666 !important;}
+.addtl-add-remove{margin-left: 0 !important;}
+body.customer-address-index .myaccountdashboard .customeraddress td:last-child{padding: 0; margin: 0;}
+.customeraddress .right,.customeraddress a.addressLink{margin:0 !important;}
+form#createcardform .sub-title{text-transform: uppercase; font-weight: normal; margin: 0 0 10px; color: #666; padding-top: 0; font-family: gothambold!important; font-size: 11px; text-align: left; margin-bottom: 20px;}
+button.button.btn-addtoaccount{margin: 0 !important;}
+*::-webkit-input-placeholder {
+    color: #666;
+}
+*:-moz-placeholder {
+    /* FF 4-18 */
+    color: #666;
+}
+*::-moz-placeholder {
+    /* FF 19+ */
+    color: #666;
+}
+*:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #666;
+}
+.choose-file-cont #file_upload{
+	height: auto !important;
+  }
+@-moz-document url-prefix() { 
+  .choose-file-cont #file_upload{
+	right:-127px !important;
+  }
+}
+.emailBox>input, .emailBox>textarea{width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
