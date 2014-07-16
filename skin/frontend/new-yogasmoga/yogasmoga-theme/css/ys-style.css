@@ -1562,8 +1562,8 @@ div#bodycompensator{height: 96px;}
 }
 
 /****Choose file style****/
-.choose-file-cont{width: 147px; height: 43px; float: left; position: relative;}
-.choosefile-cover{width: 147px; height: 43px; background: url(../images/choosebtn.jpg) no-repeat scroll left top rgba(0, 0, 0, 0); position: absolute; top: 0; left: 0; cursor: pointer;}
+.choose-file-cont{width: 167px; height: 43px; float: left; position: relative;}
+.choosefile-cover{width: 167px; height: 43px; background: url(../images/choosebtn.jpg) no-repeat scroll left top rgba(0, 0, 0, 0); position: absolute; top: 0; left: 0; cursor: pointer; background-color:#efefef;}
 /***ends***/
 
 .reverseShip .headD{color: #c9c9c9;}
@@ -1628,3 +1628,12 @@ button.button.btn-addtoaccount{margin: 0 !important;}
     /* IE 10+ */
     color: #666;
 }
+.choose-file-cont #file_upload{
+	height: auto !important;
+  }
+@-moz-document url-prefix() { 
+  .choose-file-cont #file_upload{
+	right:-127px !important;
+  }
+}
+.emailBox>input, .emailBox>textarea{width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
