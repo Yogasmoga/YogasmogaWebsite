@@ -570,6 +570,7 @@ function applysmogibucks()
                 else
                 {
                     showerror('There is some error while applying smogi bucks.');
+                    showerror(data.error);
                     jQuery('#smogi').next('span').addClass("applysmogi").empty().append("+");
                     jQuery('.zindexH').hide();
                 }
