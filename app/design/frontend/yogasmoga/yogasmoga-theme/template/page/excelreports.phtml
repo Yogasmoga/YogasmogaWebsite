@@ -1,0 +1,146 @@
+<?php 
+    if($_REQUEST['user'] == 'admin' && $_REQUEST['password'] == 'ys!12345')
+    {    
+    $row= $this->getReports();
+?>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script>
+jQuery(document).ready(function(){    
+    //alert(homeUrl);
+    var rowdata=<?php echo json_encode($row);?>;
+    jQuery("#reporttype").change(function(){
+        jQuery("#result").empty();
+        jQuery.each(rowdata, function (i, elem) {
+            if (elem.id === jQuery("#reporttype").val()) {
+                gethtml(elem.startdate,elem.enddate,elem.description);
+                jQuery("#url").val(homeUrl+elem.url);
+                
+            }
+        });
+  });
+  jQuery(".custombtn").click(function(){
+        if(jQuery("#reporttype").val()=='') {
+            jQuery("#result").empty().text('Please select any report.');
+            return false;
+        }
+        if(jQuery("#startdate").length && jQuery("#startdate").val()=='') {
+            jQuery("#result").empty().text('Please select start date.');
+            return false;
+        } 
+        if(jQuery("#enddate").length && jQuery("#enddate").val()=='') {
+            jQuery("#result").empty().text('Please select end date.');
+            return false;
+        } 
+        jQuery("#url").val(function(i,v) { 
+               return v.replace("dt1", jQuery("#startdate").val()).replace("dt2", jQuery("#enddate").val()); 
+        });
+        var redirecturl=jQuery("#url").val();
+        //alert(redirecturl);
+        window.open(redirecturl);
+        return false;
+        //window.focus();
+   });
+});
+function gethtml(startdate,enddate,description) {
+    var html='';
+    html +='<table width="100%">';
+    if(description !='') html +='<tr><td colspan="2">'+description+'</td></tr>';
+    html +='<tr><td colspan="2">&nbsp;</td></tr>';
+    html +='<tr>';
+    if(startdate ==1)  html +='<td width="50%"><input style="margin-bottom: 20px;border: 1px solid #333333;padding: 2px;width: 90%;" type="text" id="startdate" class="datepicker" placeholder="Start Date"/></td>';
+    else html +='<td width="50%"></td>';
+    if(enddate ==1)    html +='<td width="50%"><input style="margin-bottom: 20px;border: 1px solid #333333;padding: 2px;width: 90%;" type="text" id="enddate" class="datepicker"  placeholder="End Date"/></td>';
+    else html +='<td width="50%"></td>';
+    html +='</tr></table>';
+    jQuery('#inputhtml').empty().append(html);
+    jQuery( ".datepicker" ).datepicker({ dateFormat: 'mm-dd-yy',maxDate: new Date() });
+}
+</script>
+<div style="text-align: center;width: 50%;margin:auto;">
+            <h2>Excel Reports</h2>
+            <form action="" method="post" id="login-form">
+                <div id="result" style='color:red;'></div>
+                <table class="inputtable" style="margin-top : 26px;width:70%;">
+                    <tbody><tr>
+                        <td class="label"><label for="email">Select Report Type</label></td>
+                        <td class="inputholder">
+                            <select name="reporttype" id="reporttype">
+                                <option value="" selected>Please select</option>
+                            <?php 
+                                foreach ($row as $r){?>
+                                <option value="<?php echo $r['id'];?>"><?php echo $r['title'];?></option>
+                                <?php
+                                }
+                            ?>
+                             </select>
+                            <input type="hidden" name="url" value="" id="url">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="errortext" colspan="2">
+                            <div>Email Address is required</div>
+                        </td>
+                    </tr>
+                </tbody></table>
+                <div id="inputhtml" style="width:73%;"></div>
+                <div class="loginerrormsg errormsg"></div>
+                <table class="buttonholder">
+                    <tbody><tr>
+                        <td>
+                            <input type="submit" value="Get Report" class="custombtn" name="send" style="background: #B40431;color:#FBEFF2;font-size:11px;padding:2px;">
+                        </td>
+                        <td>
+                            &nbsp;    
+                        </td>
+                    </tr>
+                </tbody></table>
+            </form>
+        </div>
+    <?php } 
+    else {
+    ?>   
+<table class="buttonholder" style="margin: auto; width: 40%;margin-top: 50px;">
+                    <tbody>
+                          <tr><td >Login</td></tr>
+<tr>
+                        <td>
+                            <form action="<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/myreports/reports';?>" method="post" id="login-form" style="width:50%;margin:auto;">
+                <table class="inputtable" style="margin-top : 26px;">
+                    <tbody><tr>
+                        <td class="label"><label for="email">Email Address</label></td>
+                        <td class="inputholder">
+                            <input type="text" name="user" value="" id="user">
+                        </td>
+                    </tr> 
+                    <tr><td colspan="2">&nbsp;</td></tr>
+                </tbody></table>
+                <table class="inputtable">
+                    <tbody><tr>
+                        <td class="label"><label for="pass">Password</label></td>
+                        <td class="inputholder">
+                            <input type="password" name="password" id="password">
+                        </td>
+                    </tr>
+                                        <tr><td colspan="2">&nbsp;</td></tr>
+
+                    
+                </tbody></table>
+                <div class="loginerrormsg errormsg"></div>
+                <table class="buttonholder">
+                    <tbody><tr>
+                        <td>
+                            <input type="submit" value="Login" name="send" style="background: #B40431;color:#FBEFF2;font-size:11px;padding:2px;">
+                        </td>
+                        <td>
+                            &nbsp;    
+                        </td>
+                    </tr>
+                </tbody></table>
+            </form>
+                        </td>
+                    </tr>
+                </tbody></table>
+
+     <?php } 
+?>
