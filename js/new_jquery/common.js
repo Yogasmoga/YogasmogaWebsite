@@ -1,12 +1,19 @@
 jQuery(document).ready(function($){
-	setFeatureVideoWidth();
+	setFeatureVideoWidth();	
+	goys();
 	/***Functions to called on resize***/
 	$(window).resize(function(){
         setImageContheightPDP();
         madeinusa();
         setFeatureVideoWidth();
+        goys();
     });
+    function goys(){
+    	var aH = $("body.gift_of_ys").find("button.button.btn-addtoaccount span img").height();    	
+    	$("body.gift_of_ys").find("button.button.btn-check span img").css("height", aH);
+    }
 	
+	// button.button.btn-addtoaccount span img, button.button.btn-check span img
 	$("body.cms-help").on("click", ".choosefile-cover", function(){
 		$(this).parent().find("input#file_upload").trigger("click");		
 	});

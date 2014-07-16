@@ -545,6 +545,7 @@ div#referafriend-container p
     letter-spacing: 0.2pt;
     color : #666;
     text-align: left;
+    display: block !important;
 }
 table.referfriendforms
 {
@@ -599,9 +600,10 @@ div.invite
 div.invited
 {
     background-image : url('../images/invited_disabled.png');
-    width : 91px;
-    height : 26px;
-    margin-top : 2px;
+    width: 107px;
+    height: 31px;
+    margin-top: 10px;
+    background-size: contain;
 }
 div#addanotherreferral
 {

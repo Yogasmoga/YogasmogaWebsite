@@ -1,4 +1,5 @@
 jQuery(document).ready(function($){
+
     showShoppingBagHtml();
 //    openShoppingCart();
     inputFocus();
@@ -30,8 +31,15 @@ jQuery(document).ready(function($){
     $("div.adddields span").live("click",function(){  
          if(!$(this).attr('class')){
 //             showerror('You cannot use Smogi Bucks and Promo Code / Gift Card Code together.');   
-             showerror("Gift Card, SMOGI Bucks and Promo Code cannot be combined. Please choose one and continue CheckOut.");   
-             
+            // showerror("Gift Card, SMOGI Bucks and Promo Code cannot be combined. Please choose one and continue CheckOut."); 
+             if($(this).prev('input').attr('id')=='smogi'){
+                 if($(this).prev('input').attr('available') < 1) showerror('You do not have enough SMOGI Bucks in your Account.');
+                 else showerror($(this).prev('input').attr('placeholder'));
+             }
+             else if($(this).prev('input').attr('id')=='giftcartcode'){
+                  if($(this).prev('input').data('used') =='yes') showerror('You cannot use another Promo Code / Gift Card Code.');
+                  else showerror('You cannot use Smogi Bucks and Promo Code / Gift Card Code together.');
+             }
          }
     });
     
@@ -184,7 +192,9 @@ jQuery(document).ready(function($){
         $(".header-container").animate({ left: "0" });
         $("body, html").removeClass("hdnHgt");
         setInterval(function() {
-                if($(".checkoutshow").css('display','none')) $(".checkoutshow").show();
+                if(_islogedinuser){
+                    if($(".checkoutshow").css('display','none')) $(".checkoutshow").show();
+                }
         }, 30000);
         return false;
     });
