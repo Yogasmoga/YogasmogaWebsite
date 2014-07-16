@@ -1613,3 +1613,18 @@ body.customer-address-index .myaccountdashboard .customeraddress td:last-child{p
 .customeraddress .right,.customeraddress a.addressLink{margin:0 !important;}
 form#createcardform .sub-title{text-transform: uppercase; font-weight: normal; margin: 0 0 10px; color: #666; padding-top: 0; font-family: gothambold!important; font-size: 11px; text-align: left; margin-bottom: 20px;}
 button.button.btn-addtoaccount{margin: 0 !important;}
+*::-webkit-input-placeholder {
+    color: #666;
+}
+*:-moz-placeholder {
+    /* FF 4-18 */
+    color: #666;
+}
+*::-moz-placeholder {
+    /* FF 19+ */
+    color: #666;
+}
+*:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #666;
+}
