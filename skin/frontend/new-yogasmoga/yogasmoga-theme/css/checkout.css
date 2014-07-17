@@ -312,7 +312,6 @@ div#ordersummary {
 div#ordersummary span.anchor, div#shippingsummary span.anchor
 {
     font: 14px gothambook;
-    text-transform: uppercase;
     white-space: nowrap;
 }
 div#ordersummary table, div#shippingsummary table
