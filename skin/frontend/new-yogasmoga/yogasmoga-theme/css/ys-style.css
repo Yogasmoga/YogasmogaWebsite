@@ -1198,7 +1198,6 @@ div#zoompopup div#zoomoptions img{padding:0 0 0 15px !important; width: 21px; he
 img#closelightbox{bottom: 20px !important; right: 28px !important; width: 21px;}
 .myheader.wishlist-header{width: 960px;}
 .wishlist-header,.referfriend-heading,.order-sum-header{ padding-bottom: 60px; padding-top: 30px; text-align: center; }
-
 .wishlist-header h4,.referfriend-heading h4,.order-sum-header h4{font-family: ITCAvantGardeProMd,gotham,Arial; width: 100%; color: #666; font-size: 31px; font-weight: normal; }
 .header-top-bar{height:15px; background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/catalog/product/listing/line_all_product.png") no-repeat; background-position: top center; background-size: 100%; width: 100%;}
 
@@ -1622,19 +1621,16 @@ body.customer-address-index .myaccountdashboard .customeraddress td:last-child{p
 form#createcardform .sub-title{text-transform: uppercase; font-weight: normal; margin: 0 0 10px; color: #666; padding-top: 0; font-family: gothambold!important; font-size: 11px; text-align: left; margin-bottom: 20px;}
 button.button.btn-addtoaccount{margin: 0 !important;}
 *::-webkit-input-placeholder {
-    color: #666;
+    color: #c03 !important;
 }
 *:-moz-placeholder {
-    /* FF 4-18 */
-    color: #666;
+    color: #c03 !important;
 }
 *::-moz-placeholder {
-    /* FF 19+ */
-    color: #666;
+    color: #c03 !important;
 }
 *:-ms-input-placeholder {
-    /* IE 10+ */
-    color: #666;
+    color: #c03 !important;
 }
 
 #reviewDetails > a#paypal-checkout {
@@ -1668,18 +1664,30 @@ button.button.btn-addtoaccount{margin: 0 !important;}
   }
 }
 .emailBox>input, .emailBox>textarea{width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
-.shopping-cart input::-webkit-input-placeholder {
+/*.shopping-cart input::-webkit-input-placeholder {
     color: #c03;
 }
 *:-moz-placeholder {
-    /* FF 4-18 */
     color: #666;
 }
 *::-moz-placeholder {
-    /* FF 19+ */
     color: #666;
 }
 *:-ms-input-placeholder {
-    /* IE 10+ */
     color: #666;
+}*/
+
+.shopping-cart input::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #c03 !important;
+}
+.shopping-cart input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #c03 !important;
+    opacity:  1;
+}
+.shopping-cart input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #c03 !important;
+    opacity:  1;
+}
+.shopping-cart input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #c03 !important;
 }
