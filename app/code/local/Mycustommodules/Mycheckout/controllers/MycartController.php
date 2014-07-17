@@ -459,7 +459,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         <span class="anchor">ORDER SUMMARY</span>
         <table>
             <tr>
-                <td>Order Subtotal</td>
+                <td><?php echo $this->getcartcount().' Items'?><!-- Order Subtotal --></td>
                 <td id="ordersubtotal" class="total">
                     $<?php echo number_format((float)($subtotal), 2, '.', ''); ?>
                 </td>
