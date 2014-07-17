@@ -71,6 +71,41 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
             "error"  => "",
             "success_message" => ""
         );
+        //check do not apply smogi bucks for only accesories in cart
+        $miniitems = Mage::getSingleton('core/session')->getCartItems();
+        if(isset($miniitems))
+        {
+            $excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories')->getValue('plain');
+            $excludecats = explode(",", $excludecats);
+            $foundOnlyNoSmogiProduct = 0;
+            $flag = 0;
+            foreach($miniitems as $mitem)
+            {
+                $mitemProduct = Mage::getModel('catalog/product')->load($mitem['pid']);
+                $cids = $mitemProduct->getCategoryIds();
+
+                $flag = 0;
+                foreach($excludecats as $key=>$val)
+                {
+                    $foundOnlyNoSmogiProduct = $this->_value_in_array($cids,$val);
+                    if($foundOnlyNoSmogiProduct == 1)
+                       $flag = 1;
+
+                }
+                if($flag == 0)break;
+//                echo $foundOnlyNoSmogiProduct;
+//                if($foundOnlyNoSmogiProduct == 0)die('treast');
+//                else die('dddd');
+            }
+            //echo $foundOnlyNoSmogiProduct;
+            if($flag == 1)
+            {
+                $response['error'] = "SMOGI Bucks cannot be used Toward Accessories.";
+                echo json_encode($response);
+                return;
+            }
+        }
+        //end check do not
 
         // retrict user to apply Smogi Bucks with Promotion Code
         if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
@@ -274,5 +309,17 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
         }
 
     }
+    public function _value_in_array($array, $find){
+        $exists = 0;
+        if(!is_array($array)){
+            return;
+        }
+        foreach ($array as $key => $value) {
 
+            if($find == $value){
+                $exists = 1;
+            }
+        }
+        return $exists;
+    }
 }

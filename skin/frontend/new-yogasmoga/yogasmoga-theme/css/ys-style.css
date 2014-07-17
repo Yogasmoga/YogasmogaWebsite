@@ -198,7 +198,7 @@ div.copy-privacy-likes ul li img{height: 30px;}
 
 /***Sign In Popup***/
 #signing_popup,#invite_friends{padding: 0px;}
-.signinDialog{width: 750px !important; min-height: 300px;/* z-index: 10012 !important;*/ border: none; position: fixed; padding: 0 !important; background:#fff 50% top repeat-x; background-size: cover; overflow: initial; font-family: gothambook; color:#666 !important;}
+.signinDialog{width: 750px !important; min-height: 200px;/* z-index: 10012 !important;*/ border: none; position: fixed; padding: 0 !important; background:#fff 50% top repeat-x; background-size: cover; overflow: initial; font-family: gothambook; color:#666 !important;}
 .sign-up-block,.sign-in-block{width: 280px; padding: 0 47.5px;}
 .sign-up-block{background: url("../images/popups/pop-up-divider.png") right no-repeat;}
 .signinDialog .ui-widget-header,.sharingDialog .ui-widget-header{border:none; background: none; font-weight: bold;}
@@ -219,7 +219,7 @@ div.copy-privacy-likes ul li img{height: 30px;}
 .signinDialog .ui-state-hover,
 .sharingDialog .ui-state-hover{border:none !important;background:none !important;padding:1px!important}
 .form-heading{font-size: 22px;}
-.thank-you-block p{display: block; text-align: center; font-size: 36px; width: 100%; margin-top: 30px;}
+.thank-you-block p{display: block; text-align: center; font-size: 22px; width: 100%; margin-top: 30px; font-family: gothambook;}
 #sign-in-form a.forgot-link { font-family: HelvLightRegular; font-size: 11px; text-decoration: underline; color: #9B9B9B;}
 #sign-in-form a.forgot-link:hover{color:#cc0033;}
 
@@ -243,7 +243,7 @@ div.copy-privacy-likes ul li img{height: 30px;}
 .firstdialog .ui-icon-closethick{background:url("/skin/frontend/yogasmoga/yogasmoga-theme/images/pop-close.png") no-repeat ; width: 41px; height: 42px; background-position: 0 0;}
 #popup-register{font-family: ITCAvantGardeProBk; font-size: 13px;color: #fff;position: absolute; bottom: 14%; left: 25%;}
 #popup-register td{border: 0; border-bottom: 1px solid #ffffff; margin-bottom: 5px;}
-#popup-register td input{width:100%; border: none; background: transparent;color: #fff;font-family: ITCAvantGardeProBk;}
+#popup-register td input{width:100%; border: none; background: transparent;color: #fff !important;font-family: ITCAvantGardeProBk;}
 #popup-register td label{ padding-right: 10px;}
 #popup-register .errortext{font-family: ITCAvantGardeProBk; font-size: 11px; color: #fff; height: 13px; vertical-align: top !important; min-height: 13px; border: none;}
 #popup-register .errortext div{display: none;}
@@ -527,7 +527,7 @@ table.box-desc-dvdr.smogibucks{margin-top: 15px; margin-bottom: 15px;}
 .adddields label {float: left; min-height: 40px; width: 100%;}
 .adddields input {background: #fff; text-transform: capitalize; border: 0 none; display: block; float: left; font: italic 12px gothambook; height: 20px; margin: 0; padding: 5px 12px; width: 84%;}
 .adddields input.gry{background: #d3d3d3; cursor: default; color: #666;}
-.adddields span {background: 0 #eeefef; border: 1px solid #B3B3B3; float: left; height: auto; padding: 7px 4px 6px; width: 6%; cursor: pointer;}
+.adddields span {background: 0 #eeefef; border: 1px solid #B3B3B3; float: left; height: 15px; padding: 7px 4px 6px; width: 6%; cursor: pointer;}
 .addedItem {background: #fff; float: right; width: 99.5%;margin-bottom: 10px;}
 .addedItem .similarProdList {font-size: 11px; width: 90%; text-transform: uppercase;}
 .addedItem .similarProdList > li {border-bottom: 1px solid #E6E6E6; margin: 0; padding: 10px 0; position: relative;}
@@ -961,7 +961,7 @@ body{overflow-x:auto !important; }
     margin: 1px 0 0 4px;
 }
 .removesmogi a, .removegiftcart a, .removepromotion a{
-    color: #d90d3d;text-transform: none;   text-decoration: underline;
+    color: #c03;text-transform: none;   text-decoration: underline;
 }
 .bagerror {
     clear: both;
@@ -1058,7 +1058,8 @@ table.referfriendforms td.name table.inputtable,table.referfriendforms td.email 
 td.btninvite{width: 93px;}
 div.invite{background-size: cover; width:107px !important; height: 31px !important; margin-top: 10px;}
 table.referfriendforms td.remove img, table.referfriendforms td.success img{margin-top: 19px !important;}
-div#addanotherreferral{width:110px !important; margin-bottom: 5px !important;}
+div#addanotherreferral{width:auto !important; margin-bottom: 5px !important; display: inline-block; border: none !important;}
+div#addanotherreferral p{border-bottom: 1px solid #D90D3D;}
 table.referredfriendslist td.name, table.referredfriendslist td.email{width: 48%;}
 .track-invites table.referredfriendslist td.name div,.track-invites table.referredfriendslist td.email div{border: none !important; width: 100% !important; min-width: 100% !important; max-width: 100% !important; margin-left: 0; text-transform: lowercase; margin-bottom: 5px;}
 .refer-frnd .referfriend-subheader,.track-invites .referfriend-subheader{font-size: 11px !important; font-family: gothambold !important;}
@@ -1197,8 +1198,13 @@ div#zoompopup div#zoomoptions img{padding:0 0 0 15px !important; width: 21px; he
 img#closelightbox{bottom: 20px !important; right: 28px !important; width: 21px;}
 .myheader.wishlist-header{width: 960px;}
 .wishlist-header,.referfriend-heading,.order-sum-header{ padding-bottom: 60px; padding-top: 30px; text-align: center; }
+
 .wishlist-header h4,.referfriend-heading h4,.order-sum-header h4{font-family: ITCAvantGardeProMd,gotham,Arial; width: 100%; color: #666; font-size: 31px; font-weight: normal; }
 .header-top-bar{height:15px; background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/catalog/product/listing/line_all_product.png") no-repeat; background-position: top center; background-size: 100%; width: 100%;}
+
+.wishlist-header h4,.referfriend-heading h4,.order-sum-header h4{font-family: ITCAvantGardeProMd,gotham,Arial; width: 100%; color: #666; font-size: 31px; letter-spacing: 0.8pt; font-weight: normal; }
+.header-top-bar{height:15px; background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/bot-divider.png") no-repeat; background-position: top center; background-size: 100%; width: 100%;}
+
 table.tblwishlist tr.last td{border:none !important;}
 table.tblwishlist td.prprice{padding-left: 0 !important; text-align: left !important;}
 table.tblwishlist thead th{padding-bottom: 0 !important; font-family: gothambold !important; color: #666 !important;}
@@ -1247,6 +1253,7 @@ table.productimagecontainer{margin-bottom: 70px; /*min-height: 620px;*/}
 #cardredeemform .redeem-giftcard{margin-top: 0 !important;}
 .goy-balance{margin-bottom:30px !important; min-height:250px; max-height:250px; background: #efefef; padding: 25px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; max-width: 400px; width: 48% !important; display: inline-block !important; vertical-align: top; position: relative;
 }
+.goy-form .button-set button.button{margin-left: 10px !important;}
 #createcardform{display: block; width: 80%; background: #efefef; padding: 25px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; margin: 0 auto;}
 .manage-goy{width:80%; margin: 0 auto; }
 #createcardform td.label{display: none;}
@@ -1563,8 +1570,8 @@ div#bodycompensator{height: 96px;}
 }
 
 /****Choose file style****/
-.choose-file-cont{width: 147px; height: 43px; float: left; position: relative;}
-.choosefile-cover{width: 147px; height: 43px; background: url(../images/choosebtn.jpg) no-repeat scroll left top rgba(0, 0, 0, 0); position: absolute; top: 0; left: 0; cursor: pointer;}
+.choose-file-cont{width: 167px; height: 43px; float: left; position: relative;}
+.choosefile-cover{width: 167px; height: 43px; background: url(../images/choosebtn.jpg) no-repeat scroll left top rgba(0, 0, 0, 0); position: absolute; top: 0; left: 0; cursor: pointer; background-color:#efefef;}
 /***ends***/
 
 .reverseShip .headD{color: #c9c9c9;}
@@ -1651,4 +1658,28 @@ button.button.btn-addtoaccount{margin: 0 !important;}
     font: italic 11px gothambook;
     margin: 0 0 0 40px;
     text-transform: initial;
+
+.choose-file-cont #file_upload{
+	height: auto !important;
+  }
+@-moz-document url-prefix() { 
+  .choose-file-cont #file_upload{
+	right:-127px !important;
+  }
+}
+.emailBox>input, .emailBox>textarea{width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+.shopping-cart input::-webkit-input-placeholder {
+    color: #c03;
+}
+*:-moz-placeholder {
+    /* FF 4-18 */
+    color: #666;
+}
+*::-moz-placeholder {
+    /* FF 19+ */
+    color: #666;
+}
+*:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #666;
 }

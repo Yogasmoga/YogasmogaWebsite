@@ -703,9 +703,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         Mage::app();
         Mage::getSingleton('core/session', array('name'=>'frontend'));
         $session = Mage::getSingleton('checkout/session');
-
+        $i=0;
         foreach ($session->getQuote()->getAllItems() as $item)
         {
+            
             $temparray = array();
             if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
             {
@@ -786,7 +787,16 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 //        print $output;
 
         $miniitems = array_reverse($miniitems);
+        //print_r($miniitems);
+        $customerId = Mage::getModel('customer/session')->getCustomerId();
 
+        if($customerId)
+        {
+            Mage::getSingleton('core/session')->setCartItems($miniitems);
+        }
+
+
+        //echo $foundOnlyNoSmogiProduct;
         $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
         $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
         $grandtotal = $totals["grand_total"]->getValue();
@@ -980,7 +990,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $customerId = Mage::getModel('customer/session')->getCustomerId();
         if(!$customerId)
              $html .=' <label><input type="text" name="smogi" class="gry" available="0" id="smogi" value="You must be signed in to use SMOGI Bucks" disabled="disabled"/><span  class="smogi-login">+</span></label>
-                        <label><input type="text" name="giftcartcode" class="gry" id="giftcartcode" value="You must be signed in to use Promo Codes" disabled="disabled" /><span class="giftcardlogin">+</span></label>';
+                        <label><input type="text" name="giftcartcode" data-used="no" class="gry" id="giftcartcode" value="You must be signed in to use Promo Codes" disabled="disabled" /><span class="giftcardlogin">+</span></label>';
         else{            
             $gryclasssmogi = "";
             $gryclasspromo = "";
@@ -994,6 +1004,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $checkboxapplied="";
             $smogiplaceholder="Use Your ".$showedpoints." SMOGI Bucks Toward This Purchase";
             $showedpointsvalue=$showedpoints;
+            $codeused='';
            if($checksmogiapplied)
            {
                 $gryclasspromo = "gry";
@@ -1021,6 +1032,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $applygiftdisable=" disabled='disabled'";
                 $checkboxapplied=" disabled='disabled'";
                 $showedpointsvalue="";
+                $codeused='yes';
            }
             if($checkgiftapplied)
            {
@@ -1032,6 +1044,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $applysmogidisable=" disabled='disabled'";
                 $checkboxapplied="";
                 $showedpointsvalue="";
+                $codeused='yes';
                 //$applygiftcard="";
                 //$applygiftdisable=" disabled='disabled'";
              //   $applypromo="";
@@ -1060,7 +1073,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $giftofysbalance = number_format((float)$giftofysbalance, 2, '.','');
                 if($giftofysbalance > 0 || $promotioncode == '1')
                 {
-                    $html .='  <label><input class="'.$gryclassgift.'" type="text" name="giftcartcode" id="giftcartcode" placeholder="Add a Promo Code / Gift Card Code" '.$applygiftdisable.'/><span class="'.$applygiftcard.'">+</span><span class="error-count"></span></label>';
+                    $html .='  <label><input class="'.$gryclassgift.'" type="text" data-used="'.$codeused.'" name="giftcartcode" id="giftcartcode" placeholder="Add a Promo Code / Gift Card Code" '.$applygiftdisable.'/><span class="'.$applygiftcard.'">+</span><span class="error-count"></span></label>';
                     if(Mage::getSingleton("giftcards/session")->getActive() == "1")
                     {
                       //  $html .='<div> <input type="checkbox" value="1" checked="checked" class="giftcardcheckbox" '.$checkboxapplied.'/><p>Use your Gift Card balance: $'.$giftofysbalance.' available.</p></div>';
@@ -1073,7 +1086,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 }
                 else
                 {
-                    $html .=' <label><input  class="'.$gryclassgift.'" type="text" name="giftcartcode" id="giftcartcode" placeholder="Add a Promo Code / Gift Card Code" '.$applygiftdisable.' /><span class="'.$applygiftcard.'">+</span><span class="error-count"></span></label>
+                    $html .=' <label><input  class="'.$gryclassgift.'" type="text" data-used="'.$codeused.'" name="giftcartcode" id="giftcartcode" placeholder="Add a Promo Code / Gift Card Code" '.$applygiftdisable.' /><span class="'.$applygiftcard.'">+</span><span class="error-count"></span></label>
 
                     ';
                 }
