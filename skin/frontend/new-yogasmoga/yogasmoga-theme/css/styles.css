@@ -394,7 +394,6 @@ p.required { font-size:11px; text-align:right; color:#D90d3d; }
     font-family: gothamlight;
     font-size: 13px;
     font-weight: normal;
-    letter-spacing: 0.4pt;
     margin-top : 5px;
     margin-bottom : 20px; 
 }
@@ -1374,18 +1373,23 @@ span.caddress span.ccon {display:block;}
 .pop-outer{position:relative;}
 .popbox {
   background: none repeat scroll 0 0 #FFFFFF;
-  border: 1px solid #999999;
+  border: 1px solid #9f9f9f;
   top: 0;
   left: 100%;
   margin-left: 15px;
-  padding: 25px;
+  padding: 10px;
   position: absolute;
   z-index: 9;
 }
 
+.popbox span {
+    font: 11px gothambook !important;
+    color: #666 !important;
+}
+
 .popbox #closesmlight{
   cursor: pointer;
-  padding: 15px;
+  padding: 5px;
   position: absolute;
   right: 0;
   top: 0;
@@ -2774,7 +2778,6 @@ table.staticproductgrid div.item td.productimage img.active
     height : 20px;
     font-family:gothambook;
     font-size : 11px;
-    letter-spacing : 0.4pt;
     vertical-align : middle;
     text-align: center;
 }
@@ -2788,7 +2791,6 @@ table.staticproductgrid div.item td.productimage img.active
 {
     font-family:gothamMedium;
     font-size : 11px;
-    letter-spacing : 0.4pt;
     font-weight: bold;
 }
 
@@ -2796,7 +2798,6 @@ table.staticproductgrid div.item td.productimage img.active
 {
     font-family:gothambook;
     font-size : 11px;
-    letter-spacing : 0.4pt;
     color : #999999;
 }
 
@@ -2867,7 +2868,6 @@ table.staticproductgrid div.item td.productimage img.active
 {
     font-size: 11px;
     font-weight: bold;
-    letter-spacing: 0.4pt;
     text-align: left;
 }
 
@@ -2957,7 +2957,6 @@ table.inputtable td.inputholder input[type='text'],table.inputtable td.inputhold
     width : 100%;
     border : none;
     font-size : 13px;
-    letter-spacing : 0.4pt;
     padding-bottom : 1px;
 }
 table.inputtable td.label, table.gfredeem td.label, table#redeem td.label
@@ -2967,7 +2966,6 @@ table.inputtable td.label, table.gfredeem td.label, table#redeem td.label
     padding-right : 20px;
     color : gray;
     font-style: italic;
-    letter-spacing: 0.4pt;
     white-space: nowrap;
     width : 10px;
 }
@@ -3396,7 +3394,6 @@ button span
     color: #2F2F2F;
     font-family: gothamlight;
     font-size: 13px;
-    letter-spacing: 0.4pt;
 }
 
 .data-table.ys thead th,.data-table.ys tr.last th
@@ -3404,7 +3401,6 @@ button span
     color: #666666;
     font-family: gothamlight;
     font-size: 13px;
-    letter-spacing: 0.4pt;
     padding-bottom: 5px;
     background : none;
     font-weight: normal;
@@ -3458,7 +3454,6 @@ div.emptyrecord
     color: #2F2F2F;
     font-family: gothamlight;
     font-size: 13px;
-    letter-spacing: 0.4pt;
 }
 .data-table.ys.prdetail tfoot tr.subtotal.first td
 {
@@ -3610,7 +3605,6 @@ form#discountFormPoints2 input.input-text
     border-bottom : 1px solid black;
     font-family: gothamlight;
     font-size: 11px;
-    letter-spacing: 0.4pt;
     padding-bottom: 1px;
 }/*
 #points_error
@@ -3902,7 +3896,6 @@ body.paypal-express-review #details-table tbody tr td h3.product-name
     color:#2F2F2F;
     font-family: gothambook;
     font-size: 18px;
-    letter-spacing: 0.4pt;
     text-transform: uppercase;
     font-weight: normal;
     height:30px;
