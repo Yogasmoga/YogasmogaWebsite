@@ -26,8 +26,8 @@
 ?>
 <div class="sectionheader">
     <?php
-            $customer = Mage::getSingleton('customer/session')->getCustomer();
-            $firstname = $customer->getFirstname();
+        $customer = Mage::getSingleton('customer/session')->getCustomer();
+        $firstname = $customer->getFirstname();
     ?>
 	<?php echo $this->__('HELLO %s!', $firstname); ?>
 	<!-- <a href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>">

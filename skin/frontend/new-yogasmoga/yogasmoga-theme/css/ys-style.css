@@ -198,7 +198,7 @@ div.copy-privacy-likes ul li img{height: 30px;}
 
 /***Sign In Popup***/
 #signing_popup,#invite_friends{padding: 0px;}
-.signinDialog{width: 750px !important; min-height: 300px;/* z-index: 10012 !important;*/ border: none; position: fixed; padding: 0 !important; background:#fff 50% top repeat-x; background-size: cover; overflow: initial; font-family: gothambook; color:#666 !important;}
+.signinDialog{width: 750px !important; min-height: 200px;/* z-index: 10012 !important;*/ border: none; position: fixed; padding: 0 !important; background:#fff 50% top repeat-x; background-size: cover; overflow: initial; font-family: gothambook; color:#666 !important;}
 .sign-up-block,.sign-in-block{width: 280px; padding: 0 47.5px;}
 .sign-up-block{background: url("../images/popups/pop-up-divider.png") right no-repeat;}
 .signinDialog .ui-widget-header,.sharingDialog .ui-widget-header{border:none; background: none; font-weight: bold;}
@@ -219,7 +219,7 @@ div.copy-privacy-likes ul li img{height: 30px;}
 .signinDialog .ui-state-hover,
 .sharingDialog .ui-state-hover{border:none !important;background:none !important;padding:1px!important}
 .form-heading{font-size: 22px;}
-.thank-you-block p{display: block; text-align: center; font-size: 36px; width: 100%; margin-top: 30px;}
+.thank-you-block p{display: block; text-align: center; font-size: 22px; width: 100%; margin-top: 30px; font-family: gothambook;}
 #sign-in-form a.forgot-link { font-family: HelvLightRegular; font-size: 11px; text-decoration: underline; color: #9B9B9B;}
 #sign-in-form a.forgot-link:hover{color:#cc0033;}
 
@@ -961,7 +961,7 @@ body{overflow-x:auto !important; }
     margin: 1px 0 0 4px;
 }
 .removesmogi a, .removegiftcart a, .removepromotion a{
-    color: #d90d3d;text-transform: none;   text-decoration: underline;
+    color: #c03;text-transform: none;   text-decoration: underline;
 }
 .bagerror {
     clear: both;
@@ -1639,3 +1639,18 @@ button.button.btn-addtoaccount{margin: 0 !important;}
   }
 }
 .emailBox>input, .emailBox>textarea{width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+.shopping-cart input::-webkit-input-placeholder {
+    color: #c03;
+}
+*:-moz-placeholder {
+    /* FF 4-18 */
+    color: #666;
+}
+*::-moz-placeholder {
+    /* FF 19+ */
+    color: #666;
+}
+*:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #666;
+}
