@@ -796,7 +796,7 @@ function savePayment()
                     var payPalURL = result['redirect'];
 
                     jQuery("li#reviewDetails #paypal-checkout").removeClass("dnone").attr("href", payPalURL);
-                    jQuery("li#reviewDetails #checkout-submit #final_checkout").addClass("dnone");
+                    jQuery("li#reviewDetails #checkout-submit").addClass("dnone");
 
                     jQuery(".billingAdd a").removeClass("reverse unuse").addClass("use").html(jQuery("form#co-billing-form input#billing\\:street1").val() + "<br>" + "<span>is my billing address</span>");
                     jQuery("#billing-new-address-form").hide();
