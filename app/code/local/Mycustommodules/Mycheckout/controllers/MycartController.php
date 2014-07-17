@@ -508,7 +508,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 <td colspan="2" class="divider"></td>
             </tr>
             <tr class="ordertotal">
-                <td><span class="anchor">ORDER TOTAL</span></td>
+                <td><span class="anchor">Grand Total</span></td>
                 <td id="ordertotal" class="total">
                     <?php echo "$".number_format((float)($grandtotal), 2, '.', ''); ?>
                 </td>

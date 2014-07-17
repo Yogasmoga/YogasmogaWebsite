@@ -71,8 +71,7 @@ div.checkoutstepsubheader span{font-style:italic; color:#999; font-size:13px;}
 div.checkoutstepsubheader
 {
     font-family: gothambook;
-    font-size : 14px;
-    letter-spacing : 0.4pt;
+    font-size : 11px;
     padding-top : 10px;
     height : 30px;
     cursor : default;
@@ -622,11 +621,18 @@ table.inputtable tr:first-child td{
 
 .crebg{
     background: url("../images/checkout/creditbg.png") no-repeat top left;
-    height: auto;
-    margin: 0;
-    padding: 65px 20px 0;
+    height: 197px;
+    margin: auto;
+    padding: 0;
     width: 100%;
-    background-size: 100% auto;
+    background-size: 100% 100%;
+}
+
+.crebg .twocolumn533 {
+    display: inline-block;
+    margin: auto;
+    padding: 65px 0 0;
+    width: 90%;
 }
 
 #tblcheckoutsteps table.crebg td {
@@ -717,3 +723,13 @@ select#billing-address-select{
     margin: -20px 0 0;
 }
 .addNewAdd .gryWrap input.checkbox{width:auto !important;}
+
+#tblcheckoutsteps td {
+    vertical-align: top;
+}
+
+.crebg > .twocolumn533 .inputholder input {
+    height: 20px;
+    padding: 4px !important;
+    width: 90% !important;
+}
