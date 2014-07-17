@@ -243,7 +243,7 @@ div.copy-privacy-likes ul li img{height: 30px;}
 .firstdialog .ui-icon-closethick{background:url("/skin/frontend/yogasmoga/yogasmoga-theme/images/pop-close.png") no-repeat ; width: 41px; height: 42px; background-position: 0 0;}
 #popup-register{font-family: ITCAvantGardeProBk; font-size: 13px;color: #fff;position: absolute; bottom: 14%; left: 25%;}
 #popup-register td{border: 0; border-bottom: 1px solid #ffffff; margin-bottom: 5px;}
-#popup-register td input{width:100%; border: none; background: transparent;color: #fff;font-family: ITCAvantGardeProBk;}
+#popup-register td input{width:100%; border: none; background: transparent;color: #fff !important;font-family: ITCAvantGardeProBk;}
 #popup-register td label{ padding-right: 10px;}
 #popup-register .errortext{font-family: ITCAvantGardeProBk; font-size: 11px; color: #fff; height: 13px; vertical-align: top !important; min-height: 13px; border: none;}
 #popup-register .errortext div{display: none;}
@@ -527,7 +527,7 @@ table.box-desc-dvdr.smogibucks{margin-top: 15px; margin-bottom: 15px;}
 .adddields label {float: left; min-height: 40px; width: 100%;}
 .adddields input {background: #fff; text-transform: capitalize; border: 0 none; display: block; float: left; font: italic 12px gothambook; height: 20px; margin: 0; padding: 5px 12px; width: 84%;}
 .adddields input.gry{background: #d3d3d3; cursor: default; color: #666;}
-.adddields span {background: 0 #eeefef; border: 1px solid #B3B3B3; float: left; height: auto; padding: 7px 4px 6px; width: 6%; cursor: pointer;}
+.adddields span {background: 0 #eeefef; border: 1px solid #B3B3B3; float: left; height: 15px; padding: 7px 4px 6px; width: 6%; cursor: pointer;}
 .addedItem {background: #fff; float: right; width: 99.5%;margin-bottom: 10px;}
 .addedItem .similarProdList {font-size: 11px; width: 90%; text-transform: uppercase;}
 .addedItem .similarProdList > li {border-bottom: 1px solid #E6E6E6; margin: 0; padding: 10px 0; position: relative;}
