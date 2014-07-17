@@ -427,7 +427,7 @@ function showShoppingBagHtml()
 //                    jQuery(".bagerrormsg").width(jQuery(".contfull2").outerWidth());
             }
         });
-    },100);
+    },500);
 }
 function showerror(msg){
         jQuery('#redeemresult').empty().append(msg).show().delay('7000').hide(0);

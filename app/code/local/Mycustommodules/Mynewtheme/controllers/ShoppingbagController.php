@@ -858,7 +858,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             <!-- productOption -->
             <div class="cont-full contfull2">';
          }
-        
+
         $totalhtml = '
                         <!-- totalAmount -->
                         <div class="totalAmnt capstxt">
