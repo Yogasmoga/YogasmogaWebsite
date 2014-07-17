@@ -581,7 +581,7 @@ body.checkout-onepage-index #change-stripe-detail, body.checkout-onepage-index #
 }
 
 .cardType {
-    bottom: -72px;
+    bottom: 20px;
     float: right;
     position: absolute;
     right: 20px;
