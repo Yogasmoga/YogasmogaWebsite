@@ -264,7 +264,8 @@
             $smogiBalance = getsmogipoints();
             if(($smogiBalance > 0)&&(Mage::getSingleton('core/session')->getsmogiApplied() == 0))
             {
-                activatesmogibucks();
+                //#cart disable auto smogi apply 17-07-2014
+                //activatesmogibucks();
 
                 $isAutoAppliedDiscount = 1 ;
                 Mage::getSingleton('core/session')->setAutoAppliedDiscount($isAutoAppliedDiscount);
