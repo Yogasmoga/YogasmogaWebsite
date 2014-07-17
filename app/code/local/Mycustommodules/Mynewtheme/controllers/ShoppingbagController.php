@@ -850,6 +850,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             <div class="cont-full capstxt">
                 <a href="javascript:void(0);" id="continuelink" class="continuelink f-left">Keep Shopping</a>
                 <a href="'.$continuelink.'" id="continuecheckout" class="continuelink f-right grn">Checkout</a>
+
                 <div class="clear-fix"></div>
             </div>
 
@@ -857,6 +858,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             <!-- productOption -->
             <div class="cont-full contfull2">';
          }
+
         $totalhtml = '
                         <!-- totalAmount -->
                         <div class="totalAmnt capstxt">
@@ -1555,7 +1557,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         //if($categoryid[$id]['category_id'] == 8)
                         //if($categoryid[$id]['name'] == 'Accessories')
                     {
-                        $cattotal = $cattotal + $itemstotal;
+                        $cattotal = $cattotal + $itemstotal;break;
                     }
                 }
             }
