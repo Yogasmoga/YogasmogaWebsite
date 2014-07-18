@@ -8,7 +8,6 @@ jQuery(document).ready(function($){
     }, 0);
 
 
-    // breadValSelect();
     dfdfdffgf();
     changeFlag();
     getSelectval();
@@ -370,15 +369,16 @@ function sameasBlankSelect(){
 
 function changeFlag(){
     var flagVal = jQuery("#shipping\\:country_id").find("option:selected").text();
+    var valSel = jQuery("#shipping\\:country_id").val();
     jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
 
-    if(flagVal == "United States"){
+    if(flagVal == "United States" || valSel == "United States"){
         jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
         jQuery(".shipDetail").find(".country").find("img").addClass("dnone");
         jQuery(".shipDetail").find(".country").find("img.usflag").removeClass("dnone");
     }
 
-    else if(flagVal == "Canada"){
+    else if(flagVal == "Canada" || valSel == "Canada"){
         jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
         jQuery(".shipDetail").find(".country").find("img").addClass("dnone");
         jQuery(".shipDetail").find(".country").find("img.cnflag").removeClass("dnone");
@@ -426,11 +426,11 @@ function trimDetailTxt(){
     var dsad = jQuery("form#checkout-shipping-form select#shipping\\:country_id").find("option:selected").text();
     jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
 
-    if(textAftrBr == "United States"){
+    if(textAftrBr == "United States" || dsad == "United States"){
         jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
         jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
     }
-    else if(textAftrBr == "Canada"){
+    else if(textAftrBr == "Canada" || dsad == "United States"){
         jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
         jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
     }
