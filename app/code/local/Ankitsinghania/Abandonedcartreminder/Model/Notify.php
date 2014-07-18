@@ -291,10 +291,9 @@ class Ankitsinghania_Abandonedcartreminder_Model_Notify extends Mage_Core_Model_
 
         $mail_collection = Mage::getModel('core/email_template')->getCollection()->addFieldToFilter('template_code','abandonedcart_notification_email');
         $template_id = $mail_collection->getFirstItem()->getTemplate_id();
-
+        $recipient_email='neha@mobikasa.com';
         $recipient = array(
-            'email' => 'neha@mobikasa.com',
-//            'email' => $recipient_email,
+            'email' => $recipient_email,
             'name'  => $recipient_fistname
         );
         $sender  = array(
