@@ -98,21 +98,34 @@ jQuery(document).ready(function($){
         fillBillingState(_curbillingstate);
     }
     
-    $("#checkout-shipping-form").submit(function(){
-        if(validateShippingAddressForm())
-        {
-            $("#shipping\\:firstname").val(ucFirstAllWords($("#shipping\\:firstname").val()));
-            $("#shipping\\:lastname").val(ucFirstAllWords($("#shipping\\:lastname").val()));
+    // $("#checkout-shipping-form").submit(function(){
+    //     if(validateShippingAddressForm())
+    //     {
+    //         $("#shipping\\:firstname").val(ucFirstAllWords($("#shipping\\:firstname").val()));
+    //         $("#shipping\\:lastname").val(ucFirstAllWords($("#shipping\\:lastname").val()));
 
-            if($("#checkout-shipping-address-new").is(":visible")){
-              //virtualsaveshippingaddress();
-              //virtualsave();
-            }
+    //         if($("#checkout-shipping-address-new").is(":visible")){
+    //           virtualsaveshippingaddress();
+    //           //virtualsave();
+    //         }
+
+    //         saveShippingAddress();
+    //     }
+    //     return false;
+    // });
+
+    $("#checkout-shipping-form").submit(function(){
+        $("#shipping\\:firstname").val(ucFirstAllWords($("#shipping\\:firstname").val()));
+        $("#shipping\\:lastname").val(ucFirstAllWords($("#shipping\\:lastname").val()));
+
+        if($("#checkout-shipping-address-new").is(":visible")){
+            validateShippingAddressForm();
             virtualsaveshippingaddress();
-            saveShippingAddress();
         }
+        saveShippingAddress();
         return false;
-    });
+    })
+
     
     $("#co-shippingmethod-form").live('submit', function(){
         if(jQuery('input:radio[name="shipping_method"]:checked').length > 0)
