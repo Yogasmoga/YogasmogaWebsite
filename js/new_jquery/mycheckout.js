@@ -105,9 +105,10 @@ jQuery(document).ready(function($){
             $("#shipping\\:lastname").val(ucFirstAllWords($("#shipping\\:lastname").val()));
 
             if($("#checkout-shipping-address-new").is(":visible")){
-              virtualsaveshippingaddress();
+              //virtualsaveshippingaddress();
               //virtualsave();
             }
+            virtualsaveshippingaddress();
             saveShippingAddress();
         }
         return false;
@@ -797,6 +798,10 @@ function savePayment()
 
                     jQuery("li#reviewDetails #paypal-checkout").removeClass("dnone").attr("href", payPalURL);
                     jQuery("li#reviewDetails #checkout-submit").addClass("dnone");
+
+                    jQuery("#paymentmethoderrormsg").html('');
+                    jQuery("form#co-billing-form").submit();
+                    designCartTotal();
 
                     jQuery(".billingAdd a").removeClass("reverse unuse").addClass("use").html(jQuery("form#co-billing-form input#billing\\:street1").val() + "<br>" + "<span>is my billing address</span>");
                     jQuery("#billing-new-address-form").hide();
