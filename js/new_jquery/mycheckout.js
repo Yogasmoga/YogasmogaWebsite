@@ -98,37 +98,37 @@ jQuery(document).ready(function($){
         fillBillingState(_curbillingstate);
     }
     
-    $("#checkout-shipping-form").submit(function(){
-        if(validateShippingAddressForm())
-        {
-            $("#shipping\\:firstname").val(ucFirstAllWords($("#shipping\\:firstname").val()));
-            $("#shipping\\:lastname").val(ucFirstAllWords($("#shipping\\:lastname").val()));
-            $("#shipping\\:region_id").val(ucFirstAllWords($("#shipping\\:region_id").val()));
-
-            if($("#checkout-shipping-address-new").is(":visible")){
-              virtualsaveshippingaddress();
-              //virtualsave();
-            }
-
-            saveShippingAddress();
-        }
-        return false;
-    });
-
     // $("#checkout-shipping-form").submit(function(){
-    //     $("#shipping\\:firstname").val(ucFirstAllWords($("#shipping\\:firstname").val()));
-    //     $("#shipping\\:region_id").val(ucFirstAllWords($("#shipping\\:region_id").val()));
-    //     //console.log();
-    //     $("#shipping\\:lastname").val(ucFirstAllWords($("#shipping\\:lastname").val()));
+    //     if(validateShippingAddressForm())
+    //     {
+    //         $("#shipping\\:firstname").val(ucFirstAllWords($("#shipping\\:firstname").val()));
+    //         $("#shipping\\:lastname").val(ucFirstAllWords($("#shipping\\:lastname").val()));
 
-    //     if($("#checkout-shipping-address-new").is(":visible")){
-    //         validateShippingAddressForm();
-    //         virtualsaveshippingaddress();
+    //         if($("#checkout-shipping-address-new").is(":visible")){
+    //           virtualsaveshippingaddress();
+    //           //virtualsave();
+    //         }
+    //         saveShippingAddress();
     //     }
-    //     saveShippingAddress();
     //     return false;
-    // })
+    // });
 
+     $("#checkout-shipping-form").submit(function(){
+         if(validateShippingAddressForm())
+         {
+             $("#shipping\\:firstname").val(ucFirstAllWords($("#shipping\\:firstname").val()));
+             $("#shipping\\:lastname").val(ucFirstAllWords($("#shipping\\:lastname").val()));
+            $("#shipping\\:region_id").val(ucFirstAllWords($("#shipping\\:region_id").val()));
+ 
+             if($("#checkout-shipping-address-new").is(":visible")){
+               virtualsaveshippingaddress();
+               //virtualsave();
+             }
+
+             saveShippingAddress();
+         }
+         return false;
+     });
     
     $("#co-shippingmethod-form").live('submit', function(){
         if(jQuery('input:radio[name="shipping_method"]:checked').length > 0)
@@ -443,11 +443,11 @@ function trimDetailTxt(){
     var dsad = jQuery("form#checkout-shipping-form select#shipping\\:country_id").find("option:selected").text();
     jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
 
-    if(textAftrBr == "United States" || dsad == "United States"){
+    if(textAftrBr == "United States"){
         jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
         jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
     }
-    else if(textAftrBr == "Canada" || dsad == "United States"){
+    else if(textAftrBr == "Canada"){
         jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
         jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
     }

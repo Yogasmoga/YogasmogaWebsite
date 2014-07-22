@@ -1620,16 +1620,17 @@ body.customer-address-index .myaccountdashboard .customeraddress td:last-child{p
 .customeraddress .right,.customeraddress a.addressLink{margin:0 !important;}
 form#createcardform .sub-title{text-transform: uppercase; font-weight: normal; margin: 0 0 10px; color: #666; padding-top: 0; font-family: gothambold!important; font-size: 11px; text-align: left; margin-bottom: 20px;}
 button.button.btn-addtoaccount{margin: 0 !important;}
-*::-webkit-input-placeholder {
+
+*.shopping-cart input#smogi::-webkit-input-placeholder {
     color: #c03 !important;
 }
-*:-moz-placeholder {
+*.shopping-cart input#smogi::-moz-placeholder {
     color: #c03 !important;
 }
-*::-moz-placeholder {
+*.shopping-cart input#smogi::-moz-placeholder {
     color: #c03 !important;
 }
-*:-ms-input-placeholder {
+*.shopping-cart input#smogi::-ms-input-placeholder {
     color: #c03 !important;
 }
 
