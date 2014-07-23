@@ -1,3 +1,15 @@
+<?php  $currentUrl = Mage::helper('core/url')->getCurrentUrl();?>
+<script type="text/javascript">
+    var currenturl = <?php echo $currentUrl; ?>
+    var s1 = <?php echo $currentUrl; ?>;
+    jQuery("ul.sub-nav li").each(function(){
+        var s2 = jQuery(this).find("a").attr("href");
+        if(s1 == s2)
+        {
+            jQuery(this).addClass("current");
+        }
+    });
+</script>
 <div class="account-nav top-divider">
 	<ul class="sub-nav">
 		<li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/index">Dashboard <span class="arr">&gt;</span></a></li>

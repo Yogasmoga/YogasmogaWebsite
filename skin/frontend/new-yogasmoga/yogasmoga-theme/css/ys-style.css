@@ -1590,7 +1590,7 @@ table.inputtable td.inputholder input[type='text'], table.inputtable td.inputhol
 
 .mar0{margin: 0 !important;}
 .martop35{margin: -35px 0 0 0 !important;}
-.marbtm745{margin: 0 0 -745px !important;}
+.marbtm745{margin: 0 0 -780px !important;}
 
 .addNewAdd .gryWrap input.checkbox {
     height: auto;
@@ -1696,6 +1696,7 @@ input#smogi:-ms-input-placeholder {
 }
 
 
+
 /****CMS Page CSS****/
 .cms-container{padding: 0 40px;}
 .cms-pg{width: auto; margin: 0 0 0 301px; vertical-align: top; color: #666; line-height: normal; min-height: 300px; border-top: 1px solid #555; padding-top: 15px;}
@@ -1709,4 +1710,13 @@ div.cms-side-nav ul{padding: 6px 10px 20px 0; -webkit-box-sizing: border-box; -m
 div.cms-side-nav ul li{font-family: gothambold; font-size: 11px; line-height: 19px;  color: #555; cursor:pointer;}
 div.cms-side-nav ul li:hover,div.cms-side-nav ul li.selected{color: #c03;}
 div.cms-side-nav ul li span{display: none;}
-/*div.cms-side-nav ul li:hover span,div.cms-side-nav ul li.selected span{opacity: 1;}
+/*div.cms-side-nav ul li:hover span,div.cms-side-nav ul li.selected span{opacity: 1;}*/
+
+.marginnone.marbtm745{margin: 0 !important}
+#tblcheckoutsteps div#submiterrormsg {
+    font: 11px/16px gothambook !important;
+    margin: 20px auto auto !important;
+    text-align: justify !important;
+    width: 304px;
+}
+
