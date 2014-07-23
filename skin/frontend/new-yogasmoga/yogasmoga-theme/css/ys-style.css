@@ -1695,3 +1695,9 @@ input#smogi:-ms-input-placeholder {
     color: #666;
 }
 
+#tblcheckoutsteps div#submiterrormsg {
+    font: 11px/16px gothambook !important;
+    margin: auto !important;
+    text-align: justify !important;
+    width: 304px;
+}
