@@ -8,10 +8,11 @@ jQuery(document).ready(function($){
     }, 0);
 
 
+    dynAddressVal();
     dfdfdffgf();
     changeFlag();
     getSelectval();
-    trimDetailTxt();
+    //trimDetailTxt();
     createNewElement();
     removeNameLabel();
 
@@ -433,14 +434,31 @@ function getSelectval(){
 function trimDetailTxt(){
     var usrDetail = jQuery("ul#shipping-address-select").find("li#selected").text();
     var textAftrBr = (usrDetail.substring(usrDetail.lastIndexOf(',') + 1)).trim();
-    var defaultvalue = jQuery("form#checkout-shipping-form select#shipping\\:country_id").find("option:selected").text();
     jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
 
-    if(textAftrBr == "United States" || defaultvalue == "United States"){
+    if(textAftrBr == "United States"){
         jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
         jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
     }
-    else if(textAftrBr == "Canada" || defaultvalue == "Canada"){
+    else if(textAftrBr == "Canada"){
+        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+        jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
+    }
+    else{
+        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+        jQuery(".showShippingOpt").find("#other-shipping").addClass("availableShip");
+    }
+}
+
+function dynAddressVal(){
+    var defaultvalue = jQuery("form#checkout-shipping-form select#shipping\\:country_id").find("option:selected").text();
+    jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+
+    if(defaultvalue == "United States"){
+        jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
+        jQuery(".showShippingOpt").find("#us-shipping").addClass("availableShip");
+    }
+    else if(defaultvalue == "Canada"){
         jQuery(".showShippingOpt").find("ul").removeClass("availableShip");
         jQuery(".showShippingOpt").find("#canada-shipping").addClass("availableShip");
     }
