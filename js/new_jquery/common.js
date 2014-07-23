@@ -1,4 +1,15 @@
 jQuery(document).ready(function($){
+    $("body").animate({scrollTop:0}, 1500);
+    /**For the cms pages**/
+    $(".cms-side-nav ul li").on("click", function(){
+        var sideCaller = $(this).data("caller");
+        var sideContentOffsetTop = $(".cms-pg").find("section#" + sideCaller).offset().top - 96;        
+        $("body").animate({scrollTop: sideContentOffsetTop}, 1500);
+        $(this).addClass("selected")
+                .siblings()
+                    .removeClass("selected");  
+    });
+
 	setFeatureVideoWidth();	
 	goys();
 	/***Functions to called on resize***/

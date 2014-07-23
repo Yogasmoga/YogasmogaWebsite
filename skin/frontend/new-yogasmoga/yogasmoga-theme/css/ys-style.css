@@ -1,4 +1,4 @@
-/*http://www.templatemonster.com/help/magento-framework-how-to-addchange-product-video.html/* Layout ================================================================================ */
+http://www.templatemonster.com/help/magento-framework-how-to-addchange-product-video.html/* Layout ================================================================================ */
 .wrapper { min-width:100%;  margin:0 auto;}
 .page {display:block; background: #fff; z-index: 2; position: relative;}
 .page-print { background:#fff; padding:25px 30px; text-align:left; }
@@ -124,7 +124,7 @@ p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight
 
 /****Side bar****/
 div.side-menu-bar, .leftnav, .side-menu-bar2{ width:270px; vertical-align:top; min-height: 300px; position: fixed;}
-div.side-menu-bar ul, .leftnav ul, .side-menu-bar2 ul, .menu-bar ul{padding: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+div.side-menu-bar ul, .leftnav ul, .side-menu-bar2 ul, .menu-bar ul{padding:6px 20px 20px 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 div.side-menu-bar ul li a, .leftnav ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-transform: uppercase; font:11px/19px gothamlight; color: #666;}
 div.side-menu-bar ul li a span.arr, .leftnav ul li a span, .side-menu-bar2 ul li a span.arr, .menu-bar ul li a span.arr{visibility: hidden;}
 div.side-menu-bar2 ul li a.current, 
@@ -833,7 +833,7 @@ div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-trans
 .pr-icon{width: 160px !important;}
 ul.site-map{text-align: center;}
 ul.site-map>li{width: 30%; margin-bottom: 40px;}
-body{overflow-x:auto !important; }
+body{overflow-x:auto !important; -webkit-font-smoothing:subpixel-antialiased;}
 .account-nav{position: absolute !important;}
 .block-elm{padding-left: 5px;}
 .seventy-five{width: 100% !important;}
@@ -862,7 +862,7 @@ body{overflow-x:auto !important; }
 .coloumn-list li:nth-child(2){margin: 15px 33px 0;}
 
 /** settingWidth **/
-.block-elm, div.new-arrivals-block, .clip-bg, .divider-btm, .fabric-color,#pagecontainer.accountbg,.pgsection,.settingWidth{min-width: 820px; max-width: 1600px; margin:0 auto;}
+/*.block-elm, div.new-arrivals-block, .clip-bg, .divider-btm, .fabric-color,#pagecontainer.accountbg,.pgsection,.settingWidth{min-width: 820px; max-width: 1600px; margin:0 auto;}*/
 /*#pagecontainer .2-columns-wrapper{width: 98%; margin: auto;}*/
 .fullscreenovfhidden,.share-strip{max-width: 2200px; min-width: 990px;}
 
@@ -1695,3 +1695,18 @@ input#smogi:-ms-input-placeholder {
     color: #666;
 }
 
+
+/****CMS Page CSS****/
+.cms-container{padding: 0 40px;}
+.cms-pg{width: auto; margin: 0 0 0 301px; vertical-align: top; color: #666; line-height: normal; min-height: 300px; border-top: 1px solid #555; padding-top: 15px;}
+.pg-heading{margin-bottom: 40px;}
+.pg-heading h2 {font-family: ITCAvantGardeProMd; font-size: 36px; color: #555555; line-height: 40px; margin-bottom: 10px;}
+.sec-head{font-family: gothambold; font-size: 11px; line-height: 17px; display: block; margin-bottom: 15px;}
+.pg-tagline,.cms-pg p{font-family: gothambook; font-size: 12px; line-height: 17px; margin-bottom: 10px;}
+.cms-pg section p:last-child{margin-bottom: 35px;}
+div.cms-side-nav{width: 270px; vertical-align: top; min-height: 300px; position: fixed; border-top: 1px solid #555;}
+div.cms-side-nav ul{padding: 6px 10px 20px 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+div.cms-side-nav ul li{font-family: gothambold; font-size: 11px; line-height: 19px;  color: #555; cursor:pointer;}
+div.cms-side-nav ul li:hover,div.cms-side-nav ul li.selected{color: #c03;}
+div.cms-side-nav ul li span{display: none;}
+/*div.cms-side-nav ul li:hover span,div.cms-side-nav ul li.selected span{opacity: 1;}
