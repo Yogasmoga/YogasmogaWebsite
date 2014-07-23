@@ -39,9 +39,8 @@ jQuery(document).ready(function($){
 
         $("#shippingDetails").css("background", "").addClass("active").removeClass("reverseShip");
 
-
-        $("#billingDetails").removeClass("active");
-        $("#billingDetails .ovrlay-bg").show();
+        $("#billingDetails, #reviewDetails").removeClass("active");
+        $("#billingDetails .ovrlay-bg, #reviewDetails .ovrlay-bg").show();
         $("#billing-new-address-form, #cobillingaddress").hide();
 
         $(".billingAdd a.checkBCre").removeClass("reverse unuse").addClass("use");
