@@ -83,8 +83,10 @@ jQuery(document).ready(function($){
     $("#change_password").click(function(){
         // togglePasswordChangeOption();
     });
-    if($("#change_password").length > 0)
+    if($("#change_password").length > 0){
         // togglePasswordChangeOption();
+    }
+
     if($("select#country").length > 0)
     {
         $("select#country").attr("class","").addClass('requiredfield').attr("defaulterrormsg","Country is required").removeAttr("title").css("width","156px");
@@ -100,7 +102,7 @@ jQuery(document).ready(function($){
 //        else
 //        {
 //            jQuery("select#region_id").hide();
-//            jQuery("input#region").show();   
+//            jQuery("input#region").show();
 //        }
     }
     $("#address-form").submit(function(){
