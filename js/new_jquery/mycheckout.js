@@ -114,19 +114,15 @@ jQuery(document).ready(function($){
     // });
 
      $("#checkout-shipping-form").submit(function(){
-         if(validateShippingAddressForm())
-         {
-             $("#shipping\\:firstname").val(ucFirstAllWords($("#shipping\\:firstname").val()));
-             $("#shipping\\:lastname").val(ucFirstAllWords($("#shipping\\:lastname").val()));
-            $("#shipping\\:region_id").val(ucFirstAllWords($("#shipping\\:region_id").val()));
- 
-             if($("#checkout-shipping-address-new").is(":visible")){
-               virtualsaveshippingaddress();
-               //virtualsave();
-             }
-
-             saveShippingAddress();
-         }
+        saveShippingAddress();
+        if($("#checkout-shipping-address-new").is(":visible")){
+            if(validateShippingAddressForm()){
+                $("#shipping\\:firstname").val(ucFirstAllWords($("#shipping\\:firstname").val()));
+                $("#shipping\\:lastname").val(ucFirstAllWords($("#shipping\\:lastname").val()));
+                $("#shipping\\:region_id").val(ucFirstAllWords($("#shipping\\:region_id").val()));
+                virtualsaveshippingaddress();
+            }
+        }
          return false;
      });
     
