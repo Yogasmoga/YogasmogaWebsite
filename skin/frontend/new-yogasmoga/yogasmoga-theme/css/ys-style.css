@@ -1621,6 +1621,21 @@ body.customer-address-index .myaccountdashboard .customeraddress td:last-child{p
 form#createcardform .sub-title{text-transform: uppercase; font-weight: normal; margin: 0 0 10px; color: #666; padding-top: 0; font-family: gothambold!important; font-size: 11px; text-align: left; margin-bottom: 20px;}
 button.button.btn-addtoaccount{margin: 0 !important;}
 
+
+*.shopping-cart input#smogi::-webkit-input-placeholder {
+    color: #c03 !important;
+}
+*.shopping-cart input#smogi::-moz-placeholder {
+    color: #c03 !important;
+}
+*.shopping-cart input#smogi::-moz-placeholder {
+    color: #c03 !important;
+}
+*.shopping-cart input#smogi::-ms-input-placeholder {
+    color: #c03 !important;
+}
+
+
 #reviewDetails > a#paypal-checkout {
     display: block;
     margin: 20px 0 0;
