@@ -1620,18 +1620,6 @@ body.customer-address-index .myaccountdashboard .customeraddress td:last-child{p
 .customeraddress .right,.customeraddress a.addressLink{margin:0 !important;}
 form#createcardform .sub-title{text-transform: uppercase; font-weight: normal; margin: 0 0 10px; color: #666; padding-top: 0; font-family: gothambold!important; font-size: 11px; text-align: left; margin-bottom: 20px;}
 button.button.btn-addtoaccount{margin: 0 !important;}
-*::-webkit-input-placeholder {
-    color: #c03 !important;
-}
-*:-moz-placeholder {
-    color: #c03 !important;
-}
-*::-moz-placeholder {
-    color: #c03 !important;
-}
-*:-ms-input-placeholder {
-    color: #c03 !important;
-}
 
 #reviewDetails > a#paypal-checkout {
     display: block;
@@ -1654,7 +1642,7 @@ button.button.btn-addtoaccount{margin: 0 !important;}
     font: italic 11px gothambook;
     margin: 0 0 0 40px;
     text-transform: initial;
-
+}
 .choose-file-cont #file_upload{
 	height: auto !important;
   }
@@ -1664,8 +1652,10 @@ button.button.btn-addtoaccount{margin: 0 !important;}
   }
 }
 .emailBox>input, .emailBox>textarea{width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
-/*.shopping-cart input::-webkit-input-placeholder {
-    color: #c03;
+
+/***placeholder color***/
+*::-webkit-input-placeholder {
+    color: #666;
 }
 *:-moz-placeholder {
     color: #666;
@@ -1675,19 +1665,18 @@ button.button.btn-addtoaccount{margin: 0 !important;}
 }
 *:-ms-input-placeholder {
     color: #666;
-}*/
+}
 
-.shopping-cart input::-webkit-input-placeholder { /* WebKit browsers */
-    color:    #c03 !important;
+input#smogi::-webkit-input-placeholder {
+    color: #c03 !important;
 }
-.shopping-cart input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    #c03 !important;
-    opacity:  1;
+input#smogi:-moz-placeholder {
+    color: #666;
 }
-.shopping-cart input::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:    #c03 !important;
-    opacity:  1;
+input#smogi::-moz-placeholder {
+    color: #666;
 }
-.shopping-cart input:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color:    #c03 !important;
+input#smogi:-ms-input-placeholder {
+    color: #666;
 }
+
