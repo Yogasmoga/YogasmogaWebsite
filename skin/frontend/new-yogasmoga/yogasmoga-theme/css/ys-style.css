@@ -1590,7 +1590,7 @@ table.inputtable td.inputholder input[type='text'], table.inputtable td.inputhol
 
 .mar0{margin: 0 !important;}
 .martop35{margin: -35px 0 0 0 !important;}
-.marbtm745{margin: 0 0 -745px !important;}
+.marbtm745{margin: 0 0 -780px !important;}
 
 .addNewAdd .gryWrap input.checkbox {
     height: auto;
@@ -1695,3 +1695,4 @@ input#smogi:-ms-input-placeholder {
     color: #666;
 }
 
+.marginnone.marbtm745{margin: 0 !important}
