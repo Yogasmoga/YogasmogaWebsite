@@ -892,28 +892,38 @@ function saveBillingAddress(){
     });
 }
 
-function virtualsaveshippingaddress()
-{
+function virtualsaveshippingaddress() {
     var address = jQuery("form#checkout-shipping-form input#shipping\\:firstname").val() + " " + jQuery("form#checkout-shipping-form input#shipping\\:lastname").val() + ", " + jQuery("form#checkout-shipping-form input#shipping\\:street1").val() + ", ";
     
     if(jQuery("form#checkout-shipping-form input#shipping\\:street2").val().length > 0)
         address += jQuery("form#checkout-shipping-form input#shipping\\:street2").val() + ", ";
     
-    address += jQuery("form#checkout-shipping-form input#shipping\\:city").val() + ", ";
-
-    if(jQuery("form#checkout-shipping-form input#shipping\\:region").is(":visible")){
-        address += jQuery("form#checkout-shipping-form input#shipping\\:region").val() + ", ";
-    }else{
-        address += jQuery("form#checkout-shipping-form select#shipping\\:region_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:region_id").val() + "']").html() + ", ";
-    }
-
-
-    address += jQuery("form#checkout-shipping-form input#shipping\\:postcode").val() + ", " + jQuery("form#checkout-shipping-form select#shipping\\:country_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:country_id").val() + "']").html();
+    address += jQuery("form#checkout-shipping-form input#shipping\\:city").val() + ", " + jQuery("form#checkout-shipping-form select#shipping\\:region_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:region_id").val() + "']").html() + ", " + jQuery("form#checkout-shipping-form input#shipping\\:postcode").val() + ", " + jQuery("form#checkout-shipping-form select#shipping\\:country_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:country_id").val() + "']").html();
     
     jQuery("form#checkout-shipping-form ul#shipping-address-select li").removeAttr("id");
     jQuery("form#checkout-shipping-form ul#shipping-address-select li[value='9999']").remove();
     jQuery("form#checkout-shipping-form ul#shipping-address-select li:last").before("<li id='selected' value='9999'>" + address + "</li>");
 }
+
+// function virtualsaveshippingaddress() {
+//     var address = jQuery("form#checkout-shipping-form input#shipping\\:firstname").val() + " " + jQuery("form#checkout-shipping-form input#shipping\\:lastname").val() + ", " + jQuery("form#checkout-shipping-form input#shipping\\:street1").val() + ", ";
+    
+//     if(jQuery("form#checkout-shipping-form input#shipping\\:street2").val().length > 0)
+//         address += jQuery("form#checkout-shipping-form input#shipping\\:street2").val() + ", ";
+    
+//     address += jQuery("form#checkout-shipping-form input#shipping\\:city").val() + ", ";
+
+//     if(jQuery("form#checkout-shipping-form input#shipping\\:region").is(":visible")){
+//         address += jQuery("form#checkout-shipping-form input#shipping\\:region").val() + ", ";
+//     }else{
+//         address += jQuery("form#checkout-shipping-form select#shipping\\:region_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:region_id").val() + "']").html() + ", ";
+//     }
+//     address += jQuery("form#checkout-shipping-form input#shipping\\:postcode").val() + ", " + jQuery("form#checkout-shipping-form select#shipping\\:country_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:country_id").val() + "']").html();
+    
+//     jQuery("form#checkout-shipping-form ul#shipping-address-select li").removeAttr("id");
+//     jQuery("form#checkout-shipping-form ul#shipping-address-select li[value='9999']").remove();
+//     jQuery("form#checkout-shipping-form ul#shipping-address-select li:last").before("<li id='selected' value='9999'>" + address + "</li>");
+// }
 
 function saveShippingMethod()
 {
