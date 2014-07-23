@@ -603,8 +603,11 @@ function submitcheckout()
         data : jQuery("#payment_form").serialize(),
         success : function(result){
             result = eval('(' + result + ')');
-            if(typeof result['error_messages'] !== "undefined")
-                jQuery("#submiterrormsg").html(result['error_messages']);
+            if(typeof result['error_messages'] !== "undefined"){
+                jQuery("#submiterrormsg").html(result['error_messages']).removeClass("dnone");
+                jQuery("#reviewDetails #procImg").remove();
+            }
+
             else
             {
                 jQuery("#submiterrormsg").html('');

@@ -1696,3 +1696,9 @@ input#smogi:-ms-input-placeholder {
 }
 
 .marginnone.marbtm745{margin: 0 !important}
+#tblcheckoutsteps div#submiterrormsg {
+    font: 11px/16px gothambook !important;
+    margin: 20px auto auto !important;
+    text-align: justify !important;
+    width: 304px;
+}
