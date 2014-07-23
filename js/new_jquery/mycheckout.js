@@ -989,7 +989,7 @@ function saveShippingAddress()
 
 
             //reordersubsteps(jQuery("div#shippingmethods").parents("div.checkoutsubstep"));
-            jQuery("#shipping\\:use_for_billing").attr("checked","checked");
+            //jQuery("#shipping\\:use_for_billing").attr("checked","checked");
             if(jQuery("#shipping\\:use_for_billing").is(':checked'))
                 replicateShippingAddress();
             
@@ -1008,7 +1008,7 @@ function saveShippingAddress()
 
 
             //jQuery("#checkout-shipping-form #procImg").remove();
-            //jQuery("#shipping\\:use_for_billing").removeAttr("checked");
+            jQuery("#shipping\\:use_for_billing").removeAttr("checked");
         }
     });
 }
