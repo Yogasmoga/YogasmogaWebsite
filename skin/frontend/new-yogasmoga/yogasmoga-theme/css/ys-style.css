@@ -542,9 +542,9 @@ table.box-desc-dvdr.smogibucks{margin-top: 15px; margin-bottom: 15px;}
 
 
 /** checkoutPage **/
-.checkout-detail{width: 100%; display: inline-block; color:#666; font:11px/16px gothambook, arial;}
+.checkout-detail{width: 100%; display: inline-block; color:#666; font:12px/21px gothambook;}
 ul.checkout-cont{margin: 0; padding: 0; width: 100%; list-style: none; margin:20px 0 0;}
-ul.checkout-cont > li{float:left; margin: auto; border-left:1px solid #fff; min-height: 600px; padding: 20px 0 0; position: relative; width: 33.2%;}
+ul.checkout-cont > li{float:left; margin: auto; border-left:1px solid #fff; min-height: 600px; padding: 60px 0 0; position: relative; width: 33.2%;}
 ul.checkout-cont > li.active{background: url('../images/border-gery.jpg') no-repeat center top;}
 ul.checkout-cont > li .ovrlay-bg{display: block; background: #d6d6d6; height: 100%; width: 100%; position: absolute; top: 0; left: 0; opacity: 0.5;}
 ul.checkout-cont > li.active .ovrlay-bg{display: none;}
@@ -568,6 +568,7 @@ span.address {
     margin: auto auto 19px;
     padding: 8px;
     text-align: left;
+    line-height: 18px;
     width: 93.5%;
     cursor: pointer;
 }
@@ -599,7 +600,7 @@ ul.checkout-cont li > .selectAddress ul li span{
     cursor: pointer;
     display: inline-block;
     font-size: 10px;
-    font-weight: bold;
+    font-family: gothammedium;
     margin: 10px 0 0 !important;
     padding: 4px 0 !important;
     text-align: center;
