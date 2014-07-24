@@ -1,0 +1,41 @@
+@font-face
+{
+    font-family: ITCAvantGardeProBk;
+    src: url('../fonts/ITCAvantGardePro-Bk.eot'); /* IE9 */
+}
+
+@font-face
+{
+    font-family: gothambook;
+    src: url('../fonts/gothambook.eot');
+}
+
+@font-face
+{
+    font-family: gothambold;
+    src: url('../fonts/gothambold.eot');
+}
+
+@font-face
+{
+    font-family: gothamlight;
+    src: url('../fonts/gothamlight.eot');
+}
+
+@font-face
+{
+    font-family: gothamMedium;
+    src: url('../fonts/Gotham-Medium.eot');
+}
+
+@font-face
+{
+    font-family: helveticaoblique;
+    src: url('../fonts/helveticaoblique.eot');
+}
+
+@font-face
+{
+    font-family: HelvLightRegular;
+    src: url('../fonts/HelvLightRegular.eot');
+}
