@@ -1,5 +1,34 @@
 jQuery(document).ready(function($){
-    $("body").animate({scrollTop:0}, 1500);
+    winW = $(window).width();
+    var designVid = $(".html-des-vid-popup");
+    var fitVid = $(".html-fit-vid-popup");
+    var pdpVidPop = $(".vid-popup-overlay");
+
+    $("body.catalog-product-view").on("click", "ul.featureList li:nth-child(4)", function(){ 
+              
+        $("body").scrollTop(0);
+        pdpVidPop.fadeIn();        
+        var designVidWidth = designVid.width();
+        var designVidHeight = designVid.height();
+        var pdpVidPopHeight = pdpVidPop.height();
+        var pdpVidPopWidth = pdpVidPop.width();          
+        designVid.css({"left" : (pdpVidPopWidth - designVidWidth)/2, "top" : (pdpVidPopHeight - designVidHeight)/2 }).fadeIn();
+    });
+    $("body.catalog-product-view").on("click", ".fitDetail .video-block img", function(){       
+        $("body").scrollTop(0);
+        pdpVidPop.fadeIn();
+        var fitVidWidth = fitVid.width();  
+        var fitVidHeight = fitVid.height();
+        var pdpVidPopHeight = pdpVidPop.height();  
+        var pdpVidPopWidth = pdpVidPop.width();      
+        fitVid.css({"left" : (pdpVidPopWidth - fitVidWidth)/2, "top" : (pdpVidPopHeight - fitVidHeight)/2}).fadeIn();
+    });
+    window.onkeyup = function (event) {
+        if (event.keyCode == 27) {            
+            $(".vid-popup-overlay,.html-des-vid-popup,.html-fit-vid-popup").fadeOut();
+        }
+    }
+    // $("body").animate({scrollTop:0}, 1500);
     /**For the cms pages**/
     $(".cms-side-nav ul li").on("click", function(){
         var sideCaller = $(this).data("caller");
@@ -18,6 +47,11 @@ jQuery(document).ready(function($){
         madeinusa();
         setFeatureVideoWidth();
         goys();
+        var vidOverlayW = pdpVidPop.width();
+        var vidOverlayH = pdpVidPop.height();
+        var vidPopWidth = $(".html-vid-pop").width();
+        var vidPopHeight = $(".html-vid-pop").height();
+        $(".html-vid-pop").css({"left": (vidOverlayW - vidPopWidth)/2, "top" : (vidOverlayH - vidPopHeight)/2 });        
     });
     function goys(){
     	var aH = $("body.gift_of_ys").find("button.button.btn-addtoaccount span img").height();    	
@@ -307,7 +341,7 @@ function madeinusa(){
 
  function setFeatureVideoWidth(){
  	var featureVideo = jQuery(".video-design-block video");
- 	var measureVideo = jQuery(".video-block video");
+ 	var measureVideo = jQuery(".video-block img");
  	var leftMostLi = jQuery(".product-details ul.featureList li:nth-child(1)").width(); 	 	
  	var leftmidLi = jQuery(".product-details ul.featureList li:nth-child(2)").width();
  	var rightmidLi = jQuery(".product-details ul.featureList li:nth-child(3)").width();
