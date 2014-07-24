@@ -1,0 +1,332 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+<?php echo $this->getChildHtml('head') ?>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/giftofys.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" media="all" />
+<script type="text/javascript">
+    _disablesidenavigation = true;
+</script>
+</head>
+<body class="<?php echo $this->getBodyClass()? $this->getBodyClass().' ' : ''; ?>gift_of_ys">
+<?php echo $this->getChildHtml('after_body_start') ?>
+<div class="wrapper">
+    <?php echo $this->getChildHtml('global_notices') ?>
+    <div class="page">
+        <?php echo $this->getChildHtml('header') ?>
+        <div id="pagecontainer">
+            <div id="giftofys" class="fullscreen">
+				<div class="gift-of-ys" id="Whatis">
+					<ul class="sub-nav">
+						<li><a href="#Whatis">What is?</a></li>
+						<li><a href="#chkbal">Check Balance</a></li>
+					</ul>
+					<h1 class="big-title">The Gift<br>Of Ys</h1>
+					<img src="<?php echo $this->getSkinUrl('images/goy-title.png'); ?>" />
+					<DIV CLASS="goy-banner">
+						<img src="<?php echo $this->getSkinUrl('images/gift_of_ys.png'); ?>" />
+					</div>
+					<form id="createcardform" name="createcardform" action="" method="post">
+						<input type="hidden" id="email-radio" name="card_type" value="email" />
+						<input type="hidden" id="productid" name="product" value="4" />
+						<input type="hidden" id="productqty" name="qty" value="1" />
+						<div class="goy-form">
+							<div class="row">
+								<div class="col">
+									<label for="mail_to">To</label>
+									<input type="text" class="requiredfield" id="mail-to" name="mail_to" style="width:330px"/>
+								</div>
+								<div class="col">
+									<label for="mail_from">From</label>
+									<input type="text" class="requiredfield" id="mail-from" name="mail_from" style="width:320px"/>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+									<label for="mail_to_email">Recipient's Email address</label>
+									<input class="requiredfield" type="text" id="mail-to-email" name="mail_to_email" style="width:215px"/>
+								</div>
+								<div class="col">
+									<label for="mail_to_email_conf">Confirm Recipient's Email address</label>
+									<input class="requiredfield" type="text" id="mail-to-email-conf" name="mail_to_email_conf" style="width:175px"/>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+									<label for="card_amount">Amount</label>
+									<select class="requiredfield" id="card-amount" name="card_amount"  style="float:right;">
+                                        <option value="1">$1.00</option>
+										<option value="50">$50.00</option>
+										<option value="100">$100.00</option>
+										<option value="200">$200.00</option>
+										<option value="500">$500.00</option>
+										<option value="1000">$1000.00</option>
+										<option value="5000">$5000.00</option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col full">
+									<label for="mail_message">Message</label>
+									<textarea placeholder="Type your personalized mantra here." id="mail-message" name="mail_message" ></textarea>
+								</div>
+							</div>
+							<div class="button-set">
+								<button type="submit" name="Add to bag" class="button btn-addtobag"><span><span>Add to Bag</span></span></button>
+								<button type="reset" class="button btn-reset" name="reset"><span><span>Reset</span></span></button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="goy-balance" id="chkbal	">
+					<h4 class="sub-title">check balance</h4>
+					<p>Enter your Gift of YS card number in the field below. Need help finding your Card#? See the card below. Please note, if your Gift of YS card does not have an access code, simply enter the Claim Code from the email.</p>
+					<form action="" method="post" id="cardbalanceform">
+						<div class="balance-form">
+							<div class="input_box">
+								<label for="cardno">Gift of YS Number or claim code </label><input type="text" id="cardno" name="cardno" placeholder="8VE6C-ST11X-RX1LA" />
+							</div>
+							<button type="submit" class="button btn-apply" name="apply"><span><span>Apply</span></span></button>
+						</div>
+					</form>
+				</div>
+                
+                <script type="text/javascript">
+                    jQuery(document).ready(function($){
+                        setTimeout(function(){
+                            $("div.parallax div.big_small.big_big").height(_winH);
+                            repositionparallax();
+                            //$("div.parallax").height(_winH);
+//                            $("div.parallax div.shadoweffector").height(_winH);    
+                        }, 200);
+                        
+                        $("div.parallax").click(function(){
+                            if($(this).hasClass('closed'))
+                            {
+                                $(this).removeClass('closed').addClass('opened');
+                                //$(this).height(_winH);
+//                                $(this).find("div.shadoweffector").height(_winH);
+                                
+                                $("html, body").animate({ scrollTop: ($(this).offset().top - _headerHeight) }, "slow");
+                                $(this).animate({ height: _winH }, 'slow', function() {});
+                                $(this).find('div.shadoweffector').animate({ height: _winH }, 'slow', function() {});
+                            }
+                            else
+                            {
+                                $(this).removeClass('opened').addClass('closed');
+                                $(this).animate({ height: 300 }, 'slow', function() {});
+                                $(this).find('div.shadoweffector').animate({ height: 300 }, 'slow', function() {});
+                                //$(this).height(300);
+//                                $(this).find("div.shadoweffector").height(300);
+                            }
+                        });
+                        
+                        $(window).resize(function(){
+                            setTimeout(function(){
+                                $("div.parallax div.big_small.big_big").height(_winH);
+                                if($('div.parallax').hasClass('opened'))
+                                {
+                                    $("div.parallax").height(_winH);
+                                    $("div.parallax div.shadoweffector").height(_winH);
+                                       
+                                }
+                            }, 200);
+                        });
+                        
+                        var scrolltime = false;
+                        $(window).scroll(function(){
+                            if (scrolltime) {
+                              clearTimeout(scrolltime);
+                           }
+                            scrolltime = setTimeout(function(){
+                                //console.log(($('body').scrollTop() % (_winH + _headerHeight)) - _headerHeight);
+                                //var scrollTop     = $(window).scrollTop();
+//                                elementOffset = $('#ftechimage').offset().top;
+//                                distance      = (elementOffset - scrollTop);
+//                                console.clear();
+//                                console.log(distance);
+                                //$("div.parallax div.big_small.big_big").css('top', -($('#ftechimage').offset().top - $(window).scrollTop()) + 'px');
+                                repositionparallax();
+                                return;
+                                $("div.parallax div.big_small.big_big").animate({
+                                    top : -($('#ftechimage').offset().top - $(window).scrollTop() - _headerHeight) + 'px'
+                                }, 500);
+                            }, 200);
+                        });
+                        
+                        
+                        function repositionparallax()
+                        {
+                            $("div.parallax").each(function(){
+                                $(this).find("div.big_small.big_big").animate({
+                                    top : -($(this).offset().top - $(window).scrollTop() - _headerHeight) + 'px'
+                                }, 500);
+                            });
+                        }
+                    });
+                </script>
+                
+                
+                
+                <style type="text/css">
+                    div.parallax
+                    {
+                        background-image:url('<?php echo $this->getSkinUrl('images/homepage/fabric_technology-bg1.jpg'); ?>');
+                        background-repeat: no-repeat;
+                        background-position: left top;
+                        overflow: hidden;
+                        position: relative;
+                        height : 300px;
+                        cursor : pointer;
+                    }
+                    div.parallax.closed p
+                    {
+                        color : transparent;
+                    }
+                    div.parallax.opened div.shadoweffector
+                    {
+                        color : transparent;
+                    }
+                    div.parallax div.big_small.big_big
+                    {
+                        background-size: cover;
+                        position : absolute;
+                    }
+                    
+                    div.parallax div
+                    {
+                        height: 100%;
+                        left: 0;
+                        position: absolute;
+                        text-align: center;
+                        top: 0;
+                        width: 100%;
+                    }
+                    
+                    div.parallax div.shadoweffector
+                    {
+                        box-shadow : 0 7px 18px black inset, 0 -7px 18px #161616 inset;
+                        position : absolute;
+                        top : 0;
+                        z-index : 1;
+                        height : 300px;
+                        color : #DD8820;
+                        font-size : 60px;
+                        padding-top : 115px;
+                    }
+                </style>
+                
+                
+                <div smorigwidth="1600" smorigheight="300" id="ftechimage" origwidth="1600" origheight="900" desc="abcd" origwidthsm="1600" origheightsm="900" class="parallax closed">
+                    <div class="shadoweffector">+</div>
+    				<div class="big_small big_big">
+    					<div class="opbox centered">
+    						<h3 class="heading">discover<span>aurum+<sup>TM</sup></span></h3>
+    						<p>This is IT. AURUM+<sup>TM</sup>, Exclusively Ours.<br/>
+    						AURUM+<sup>TM</sup> is a technical blend of Supplex<sup>&reg;</sup> and Lycra<sup>&reg;</sup>. Our competitors use a form of Nylon that is inferior and falls apart quickly. Supplex<sup>&reg;</sup> fibers are technically far superior, giving you the soft feel and breathability of cotton with the performance benefits of advanced fiber technology.</p>
+    					</div>
+    					<div class="opbox usa">
+    						<img src="<?php echo $this->getSkinUrl('images/homepage/usa.png'); ?>" />
+    						<h3 class="heading">
+    						Fabric proudly<br/><em>made</em><br/>in the USA</h3>
+    						<p>Science teaches, the fabric of our society can be more than the spirituality that binds us. We know that yoga pants can be hip and trendy. But, they can also create jobs for people in need when they're manufactured in a town that's desperate for opportunity. Not only are our fabrics made by our fellow Americans, but they are also eco-friendly as they haven't accumulated frequent flyer miles. <br/>
+    						We are a proud American company with a deep Indian soul.</p>
+    					</div>
+    					
+    					<div class="opbox amm">
+    						<img src="<?php echo $this->getSkinUrl('images/homepage/amm.png'); ?>" />
+    						<h3 class="heading">
+    						advanced<br/><em>moisture</em><br/>management</h3>
+    						<p>Take on the world and still look calm, cool and alluring. Our exclusive nanotechnology embeds<br/> moisture-wicking & antimicrobial treatments into the tiniest pores of our fabric. And that means moisture & bacteria make a quick exit so you'll always make a serene entrance.</p>
+    					</div>
+    					
+    					<div class="opbox hqs">
+    						<img src="<?php echo $this->getSkinUrl('images/homepage/hqs.png'); ?>" />
+    						<h3 class="heading">
+    						High<br/><em>Quality</em><br/>Stretch</h3>
+    						<p>We use a superior form of Lycra<sup>&reg;</sup> with very high memory retention. Our fabrics always bounces back for that snug feeling. You can reach, bend, and move through life anyway you wish and our clothes will gracefully follow.</p>
+    					</div>
+    					
+    					<div class="opbox rtp">
+    						<img src="<?php echo $this->getSkinUrl('images/homepage/rtp.png'); ?>" />
+    						<h3 class="heading">RESISTANCE<br/>TO PILLING</h3>
+    						<p>Leave the Pilling to Grandma's Sweater. Your favorite things should stay your favorite things, for life. Aurum+<sup>TM</sup> contains pilling resistant Supplex<sup>&reg;</sup> technology which generic nylons just can't compare to. Wear it & wash it till your heart's content, and always look razor sharp. You will stay feeling good, and looking good longer.</p>
+    					</div>
+    					
+    					<div class="opbox nano">
+    						<img src="<?php echo $this->getSkinUrl('images/homepage/nano.png'); ?>" />
+    						<h3 class="heading">NANOTECHNOLOGY</h3>
+    						<p>We use advanced nanotechnology to reach deep within the micro spaces between each weave as opposed to applying it topically on the fibers. This means far advanced moisture management. Go ahead and compare, you will see the stark difference. It's our challenge.</p>
+    					</div>
+    				</div>
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <?php //echo $this->getChildHtml('content'); ?>  
+            </div>
+            <?php echo $this->getChildHtml('footer'); ?>
+        </div>
+        <?php echo $this->getChildHtml('before_body_end'); ?>
+    </div>
+</div>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<div class="gift-card" id="Promotions">
+    
+    <?php if (Mage::helper('customer')->isLoggedIn()) : ?>
+    <h2 class="giftofyshead">GIFT OF YS</h2>
+    <p>Enter your Gift of YS Code in the field below to redeem your card.</p>
+    <div class="discount-form">
+        <form></form>
+        <form method="post" action="<?php echo $this->getUrl('*/*/giftcardPost').'#promotions'; ?>" id="giftcard-form">
+        <table class="redeem-giftcard">
+            <tbody><tr>
+                <td>
+                    <table class="gfredeem
+                    <?php
+                        if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false && strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"gferror--msg") !== false)
+                        {
+                            ?>
+                                error
+                            <?php
+                        }
+                    ?>
+                    " style="width : 298px;">
+                        <tbody><tr>
+                            <td class="label">
+                                <label for="gf1">Gift of YS Code</label>
+                            </td>
+                            <td class="inputholder">
+                                <input type="text" id="gf1">
+                            </td>
+                            <td class="dash">
+                                -
+                            </td>
+                            <td class="inputholder">
+                                <input type="text" id="gf2">
+                            </td>
+                            <td class="dash">
+                                -
+                            </td>
+                            <td class="inputholder">
+                                <input type="text" id="gf3">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" class="errortext">
+                                <div
+                                     <?php
+                        if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false && strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"gferror--msg") !== false)
+                        {
+                            ?>
+                                style="display: block;"
+                            <?php
+                        }
+                    ?>
+                                >
+                                    <?php
+                                        if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false && strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"gferror--msg") !== false)
+                                        {
+                                            ?>
+                                                <?php echo str_replace("gferror--msg","", strip_tags(Mage::getSingleton('core/session')->getGlobalMessage())); ?>            
+                                            <?php
+                                        }
+                                    ?>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </td>
+                <td style="padding-left: 5px;">
+                    <button value="Redeem" class="button btn-redeem" title="Redeem" type="submit"><span><span>Redeem</span></span></button>
+                    <input type="text" placeholder="8VE6C-ST11X-RX1LA" name="giftcard_code" id="giftcard_code" style="display: none;" />
+                </td>
+            </tr>
+        </tbody></table>
+        <?php /*
+        <div class="gift-box">
+			<label for="giftcard_code"><?php echo $this->__('Or'); ?></label>
+            <input value="" placeholder="Gift of YS code" name="giftcard_code" id="giftcard_code" class="input-text" />
+            <button value="<?php echo $this->__('Apply') ?>" onclick="giftcardForm.submit(true)" class="button btn-apply" title="Apply" type="button"><span><span><?php echo $this->__('Apply') ?></span></span></button>
+        </div>
+        */ ?>
+        </form>
+        <form method="post" action="<?php echo $this->getUrl('*/*/giftcardActive').'#promotions'; ?>" name="giftcardActive" id="giftcardActive">
+        <div class="input-box">
+            <input type="checkbox" value="1" name="giftcard_use" id="giftcard_use" class="checkbox" onclick="document.forms['giftcardActive'].submit()" <?php echo Mage::getSingleton('giftcards/session')->getActive() ? 'checked="checked"' : '' ?> />
+            <label for="giftcard_use"><?php echo $this->__('Redeem my Gift of YS Card. Balance :'); ?><?php echo Mage::helper('core')->currency(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId())); ?></label>
+        </div>
+        </form>
+        <?php /*
+        <div style="margin-top : 5px;">
+            Note : Gift of YS card needs to be <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/giftcards/balance" class="rdm">added to your account </a> prior to redemption.
+        </div>
+        */ ?>
+    </div>
+    <?php else : ?>
+    <h2 class="giftofyshead">GIFT OF YS</h2>
+    <h2>Do you have a <a target="_blank" href="<?php echo $this->getUrl('gift_of_ys'); ?>">Gift of YS</a> Code?</h2>
+    <div class="giftcard-login-msg">
+        <!--Please login to use your <a target="_blank" href="<?php echo $this->getUrl('gift_of_ys'); ?>">Gift of YS</a> Code.
+        <br /> -->
+        <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/login?goto=cart">
+            <button value="<?php echo $this->__('Login') ?>" class="button btn-logingoys gotologin" title="Login" type="button"><span><span>Login</span></span></button>
+        </a>
+    </div>
+    <?php endif; ?>
+</div>
+<script type="text/javascript">
+//&lt;![CDATA[
+    jQuery(document).ready(function($){
+    });
+
+var giftcardForm = new VarienForm('giftcard-form');
+giftcardForm.submit = function (isRemove) {
+    console.log('after');
+    if (isRemove) {
+        //$('giftcard_code').addClassName('required-entry');
+        $('giftcard_use').checked = "checkbox";
+        $('giftcard_use').value = "1";
+    } else {
+        $('giftcard_code').removeClassName('required-entry');
+        $('giftcard_use').value = "0";
+    }
+    return VarienForm.prototype.submit.bind(giftcardForm)();
+}
+//]]&gt;
+</script>

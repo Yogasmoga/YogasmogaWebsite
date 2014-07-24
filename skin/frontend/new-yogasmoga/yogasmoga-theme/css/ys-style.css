@@ -542,10 +542,10 @@ table.box-desc-dvdr.smogibucks{margin-top: 15px; margin-bottom: 15px;}
 
 
 /** checkoutPage **/
-.checkout-detail{width: 100%; display: inline-block; color:#666; font:11px/16px gothambook, arial;}
+.checkout-detail{width: 100%; display: inline-block; color:#666; font:12px/21px gothambook;}
 ul.checkout-cont{margin: 0; padding: 0; width: 100%; list-style: none; margin:20px 0 0;}
-ul.checkout-cont > li{float:left; margin: auto; border-left:1px solid #fff; min-height: 600px; padding: 20px 0 0; position: relative; width: 33.2%;}
-ul.checkout-cont > li.active{background: url('../images/checkout-divider.jpg') no-repeat center top; background-size: 100% auto;}
+ul.checkout-cont > li{float:left; margin: auto; border-left:1px solid #fff; min-height: 600px; padding: 60px 0 0; position: relative; width: 33.2%;}
+ul.checkout-cont > li.active{background: url('../images/border-gery.jpg') no-repeat center top;}
 ul.checkout-cont > li .ovrlay-bg{display: block; background: #d6d6d6; height: 100%; width: 100%; position: absolute; top: 0; left: 0; opacity: 0.5;}
 ul.checkout-cont > li.active .ovrlay-bg{display: none;}
 .checkout-details{padding: 38px 20px 20px; display: block;}
@@ -568,6 +568,7 @@ span.address {
     margin: auto auto 19px;
     padding: 8px;
     text-align: left;
+    line-height: 18px;
     width: 93.5%;
     cursor: pointer;
 }
@@ -599,7 +600,7 @@ ul.checkout-cont li > .selectAddress ul li span{
     cursor: pointer;
     display: inline-block;
     font-size: 10px;
-    font-weight: bold;
+    font-family: gothammedium;
     margin: 10px 0 0 !important;
     padding: 4px 0 !important;
     text-align: center;
@@ -1215,12 +1216,17 @@ table.tblwishlist thead th{padding-bottom: 0 !important; font-family: gothambold
 	display: none !important;
 }
 .checkout-onepage-index .main-menu.ctag-menu li#stepCheck{
-    color: #666;
+    color: #555;
     cursor: text;
     display: block !important;
-    font: 11px gothammedium;
+    font: 11px gothambold;
     height: auto;
     margin: 40px 0 0;
+}
+#stepCheck img {
+    float: left;
+    margin: -2px 0 0 5px;
+    padding: 0;
 }
 .f-left.main-menu.ctag-menu > li#stepCheck:hover {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
@@ -1655,9 +1661,12 @@ button.button.btn-addtoaccount{margin: 0 !important;}
 }
 
 #stepCheck > span {
-    font: italic 11px gothambook;
+    font: italic 10px gothambook;
     margin: 0 0 0 40px;
+    position: absolute;
+    right: 40px;
     text-transform: initial;
+    top: 40px;
 }
 .choose-file-cont #file_upload{
 	height: auto !important;
