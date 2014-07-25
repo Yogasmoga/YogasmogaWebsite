@@ -6,7 +6,7 @@ jQuery(document).ready(function($){
 
     $("body.catalog-product-view").on("click", "ul.featureList li:nth-child(4)", function(){ 
               
-        $("body").scrollTop(0);
+        // $("body").scrollTop(0);
         pdpVidPop.fadeIn();        
         var designVidWidth = designVid.width();
         var designVidHeight = designVid.height();
@@ -15,7 +15,7 @@ jQuery(document).ready(function($){
         designVid.css({"left" : (pdpVidPopWidth - designVidWidth)/2, "top" : (pdpVidPopHeight - designVidHeight)/2 }).fadeIn();
     });
     $("body.catalog-product-view").on("click", ".fitDetail .video-block img", function(){       
-        $("body").scrollTop(0);
+        // $("body").scrollTop(0);
         pdpVidPop.fadeIn();
         var fitVidWidth = fitVid.width();  
         var fitVidHeight = fitVid.height();
@@ -28,7 +28,7 @@ jQuery(document).ready(function($){
             $(".vid-popup-overlay,.html-des-vid-popup,.html-fit-vid-popup").fadeOut();
         }
     }
-    // $("body").animate({scrollTop:0}, 1500);
+   // $("body").scrollTop(0);
     /**For the cms pages**/
     $(".cms-side-nav ul li").on("click", function(){
         var sideCaller = $(this).data("caller");
@@ -99,7 +99,7 @@ jQuery(document).ready(function($){
 
 
     var winHeight = $(window).height();
-    $("div.2-columns-wrapper").find(".pg-content").css("min-height", winHeight);    
+    $("div.2-columns-wrapper").find(".pg-content,.side-menu-bar").css("min-height", winHeight - 96);    
 
 	$(".footer-block").on("click",".smogi-love",function(){
          if(!_islogedinuser)
