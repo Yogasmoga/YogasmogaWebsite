@@ -28,7 +28,12 @@
 <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/popups/popup_invite.phtml')->toHtml(); ?>
 <!-- <div class="footer-container"> -->
     <div id="sitemap" class="l-align">
-        <div class="footer-block">
+        <div class="logoCont">
+            <a class="logo" href="<?php echo $this->getUrl('') ?>" title="YogaSmoga">
+                <img src="<?php echo $this->getSkinUrl('images/logo.png') ?>" alt="YogaSmoga" />
+            </a>
+        </div>
+        <div class="footer-block shiftRight">
             <ul class="site-map">
                 <li>
                     <ul>
@@ -90,9 +95,9 @@
                 <ul>
                     <li class="pt1"><?php echo $this->getCopyright() ?></li>
                     <li class="pt1"> | </li>
-                    <li class="pt1"><a href="<?php echo $this->getUrl().'privacy-policy/'; ?>">PRIVACY POLICY</a></li>
+                    <li class="pt1"><a href="<?php echo $this->getUrl().'privacy-policy/'; ?>">Privacy Policy</a></li>
                     <li class="pt1"> | </li>
-                    <li class="pt1"><a href="<?php echo $this->getUrl().'terms-of-use-and-conditions/'; ?>">TERMS & CONDITIONS</a></li>
+                    <li class="pt1"><a href="<?php echo $this->getUrl().'terms-of-use-and-conditions/'; ?>">Terms & Conditions</a></li>
                     <li>&nbsp;&nbsp;&nbsp;</li>
                     <!--<li id="facebook-like" class="pointer"><img src="<?php echo $this->getSkinUrl('images/footer/fb-like-btn.png') ?>" alt="Facebook"></li> -->
                     <!--<li id="twitter-follow" class="pointer"><img src="<?php echo $this->getSkinUrl('images/footer/follow-twitter-btn.png') ?>" alt="Twitter"></li> -->
