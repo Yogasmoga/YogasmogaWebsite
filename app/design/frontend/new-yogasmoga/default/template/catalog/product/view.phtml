@@ -617,13 +617,13 @@ if($_product->getAttributeText('canzoomimage') == "yes")
         if($designfeaturevidioname != '' )
         {
             ?>
-            <div class="video-design-block">
+           <!--  <div class="video-design-block">
 
                 <video style="width:358px;" controls>
                     <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."design_features_video/".$_product->getDesignFeatureVideo(); ?>" type="video/mp4">
 
                 </video>
-            </div>
+            </div> -->
         <?php } ?>
 
 
@@ -669,11 +669,8 @@ if($_product->getAttributeText('canzoomimage') == "yes")
                                   if($howToMeasureVidio != '' )
                                   {
                                   ?>
-                                <div class="video-block f-right">
-
-                                        <video controls>
-                                          <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."how_to_measure_video/".$_product->getHowToMeasureVideo(); ?>" type="video/mp4">
-
+                               <div class="video-block f-right">
+                                        <img src="<?php echo $this->getSkinUrl('images/fit-vid-img.jpg'); ?>" />                                     
                                       </video>
 
 
@@ -961,9 +958,9 @@ if($_product->getAttributeText('canzoomimage') == "yes")
 <!-- SMOGIBUCKS -->
 <!-- Desicription -->
 <div class="box-desc-dvdr font11">
-    <p style="margin-bottom: 15px;"><span sty;e="font:11px gothamBold;">Need help?</span> <a class="chatlink" href="javascript:void($zopim.livechat.window.show())">chat with us</a><span class="online"><span></span>Online now</span></p>
+    <p style="margin-bottom: 35px;"><span style="">Need help?</span> <a class="chatlink" href="javascript:void($zopim.livechat.window.show())">chat with us</a><span class="online"><span></span>Online now</span></p>
 
-    <p style="margin-bottom: 2px; font:11px gothamBold;">Product description</p>
+    <h2>Product description</h2>
         <!-- description -->
         <?php  if(strlen($_product->getDescription())< 200) { ?>
     <div class="shortdesc"><?php echo $_product->getDescription(); ?> </div>
@@ -1037,7 +1034,7 @@ while ($row = $readresult->fetch() ) {
                 }
                 if($upsellsimplecount == 1){
                 ?>
-                    <h2 class="newbg" style="margin-top:70px;">complete the look</h2>
+                    <h2 class="newbg" style="margin-top:35px;">complete the look</h2>
                     <ul class="similarProdList clear">
                  <?php } ?>
                 <li><a href="<?php echo Mage::getBaseUrl().$parentproduct->getUrlPath().'?color='.$product->getColor(); ?>"
@@ -1080,10 +1077,22 @@ while ($row = $readresult->fetch() ) {
 
 <!-- FitAndFabricDetails -->
 <!-- <a name="sizechart"></a> -->
-<div class="block-elm btm-devider">
+<div class="btm-divider">
 </div>
 <!-- FitAndFabricDetails -->
 
+<!--Container for the video Popup-->
+<div class="html-vid-pop html-des-vid-popup">
+    <video style="width:100%;" controls>
+        <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."design_features_video/".$_product->getDesignFeatureVideo(); ?>" type="video/mp4">
+    </video>
+</div>
+<div class="html-vid-pop html-fit-vid-popup">
+    <video style="width:100%;" controls>
+        <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."how_to_measure_video/".$_product->getHowToMeasureVideo(); ?>" type="video/mp4">
+    </video>
+</div>
+<div class="vid-popup-overlay"></div>
 </div>
 <!-- ProductPage -->
 <?php
