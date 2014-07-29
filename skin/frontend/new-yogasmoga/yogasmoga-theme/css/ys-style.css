@@ -266,19 +266,22 @@ div.sub-fab img{width: 45% !important; display: block; margin:25px auto 0 auto;}
 
 
 /****Women Landing page****/
-div.new-arrivals-block{background: url("../images/big-divider.png") no-repeat top,url("../images/big-divider.png") no-repeat bottom; padding: 30px 0; background-size: 100%,100%;}
-ul.new-arrivals{width: 90%; display: block; text-align:center; font-size: 0; margin: 0 auto;}
-ul.new-arrivals li{display: inline-block; width:20%; vertical-align: top; height:auto; max-width: 221px; max-height: 430px; margin-top: 40px;}
+div.new-arrivals-block{/*background: url("../images/big-divider.png") no-repeat top,url("../images/big-divider.png") no-repeat bottom;*/ border-top:1px solid #555; padding: 30px 0; background-size: 100%,100%;}
+ul.new-arrivals{width: 100%; display: block; text-align:center; font-size: 0; margin: 0 auto;}
+ul.new-arrivals li{display: inline-block; width:20%; vertical-align: top; height:auto; /*max-width: 221px;*/ /*max-height: 430px;*/ margin-top: 30px;}
 ul.new-arrivals li img{ margin: 0 auto; display: block;}
 ul.new-arrivals li span{font-size: 12px; display: block; color: #666; text-transform: uppercase;}
-ul.new-arrivals li img.prd-image{width: 90%;}
-ul.new-arrivals li > a.quick-view{min-height: 300px; display: inline-block; width: 100%;}
+ul.new-arrivals li img.prd-image{width: 100%; min-width: 180px; padding: 0 10px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
+ul.new-arrivals li > a.quick-view{min-height: 250px; display: inline-block; width: 100%;}
 .prd-details{margin-top: 30px;}
-.prd-details .prd-price{margin-bottom: 10px;}
+.prd-details .prd-price{/*margin-bottom: 10px;*/}
 li.new-arrivals-desc{text-align: left; font-family: ITCAvantGardeProMd; margin-top: 33px !important;}
 li.new-arrivals-desc .block-head{margin-bottom: 5px; font-size: 18px;}
 li.new-arrivals-desc .block-desc{margin-bottom: 25px; font-size: 35px;}
 li.new-arrivals-desc .block-link a, .block-link a{font-family: ITCAvantGardeProMd; font-size: 14px;}
+.shop-col-desc{text-transform: uppercase; padding: 0 40px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
+.shop-col-desc span.na-head{font-family: ITCAvantGardeProMd; font-size: 36px; color: #555; margin-right: 15px;}
+.shop-col-desc span.na-link a{font-family: gothambook; font-size: 11px; line-height: 15px; border-bottom: #c03 1px solid; padding-bottom: 2px;}
 
 /** YS-Tech Section **/
 .discImg{margin: 40px 0 20px;}
@@ -1751,3 +1754,13 @@ body.cms-help .2-columns-wrapper{padding: 0 40px;}
 .cms-size-chart .fitDetail table{margin-top: 10px;}
 .cms-product-care{position: relative;}
 .cms-product-care .pc-right{float: left; width: auto; margin-right: 180px;}
+
+/***Landing Page***/
+ul.new-arrivals a.quick-view{display: none;}
+.wl-feat-prd,.wl-color-story-prd{font-size: 0; min-width: 1024px;}
+.wl-left-block,.wl-cs-right-block{width: 34%; display: inline-block; vertical-align: top;}
+.wl-right-block,.wl-cs-left-block{width: 66%; display: inline-block; vertical-align: top;}
+.wl-feat-prd img,.wl-color-story-prd img{width: 100%; display: block;}
+.top-left-block,.bottom-left-block,.top-right-block,.bottom-right-block{height: 50%; overflow: hidden;}
+.wl-feat-prd .top-left-block{background: #555555;}
+.wl-color-story-prd .bottom-right-block{background: #d6e997;}
