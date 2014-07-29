@@ -184,10 +184,21 @@ $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMedi
 $productcolorinfo = array();
 $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
 $sizeavaliable = false;
+$lengthavailable = false;
 foreach($configurableAttributeCollection as $attribute){
     if($attribute->getProductAttribute()->getAttributeCode() == "size")
     {
         $sizeavaliable = true;
+        break;
+    }
+    //echo "Attr-Code:".$attribute->getProductAttribute()->getAttributeCode()."<br/>";
+//        echo "Attr-Label:".$attribute->getProductAttribute()->getFrontend()->getLabel()."<br/>";
+//        echo "Attr-Id:".$attribute->getProductAttribute()->getId()."<br/>";
+}
+foreach($configurableAttributeCollection as $attribute){
+    if($attribute->getProductAttribute()->getAttributeCode() == "length")
+    {
+        $lengthavailable = true;
         break;
     }
     //echo "Attr-Code:".$attribute->getProductAttribute()->getAttributeCode()."<br/>";
@@ -248,96 +259,116 @@ foreach($_childproducts as $_childproduct)
     if($rewardpoints > 0)
         $isrewardable = true;
     //echo Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getIsInStock();
-    if($sizeavaliable)
-        $temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
-    else
-        $temp1 = "2|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
-    $temp1 .= "|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getIsInStock();
-    //if(array_key_exists("sizes", $productcolorinfo[$temp]))
-    $backOrderCheck = (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getBackorders();
-    $temp1 .= "|".$backOrderCheck;
-    if(isset($productcolorinfo[$temp]["sizes"]))
+    // for Length attribute if available
+    if($lengthavailable)
     {
-        //echo "pushing";
-        array_push($productcolorinfo[$temp]["sizes"], $temp1);
+        if(!isset($productcolorinfo[$temp]["sizes"]))
+            $productcolorinfo[$temp]["sizes"] = array($_childproduct->getAttributeText('size'));
+        else
+            array_push($productcolorinfo[$temp]["sizes"],$_childproduct->getAttributeText('size'));
+        
+        if(!isset($productcolorinfo[$temp]["length"]))
+        {
+            $productcolorinfo[$temp]["length"] = array(
+                                                        $_childproduct->getAttributeText('size')=> array()
+            );
+        }
+
+
     }
     else
     {
-        $productcolorinfo[$temp]["sizes"] = array($temp1);
-        if(!isset($productcolorinfo[$temp]["sizes"]))
-            echo "not set";
-        foreach($_gallery as $_image)
+        if($sizeavaliable)
+            $temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
+        else
+            $temp1 = "2|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
+        $temp1 .= "|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getIsInStock();
+        //if(array_key_exists("sizes", $productcolorinfo[$temp]))
+        $backOrderCheck = (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getBackorders();
+        $temp1 .= "|".$backOrderCheck;
+        if(isset($productcolorinfo[$temp]["sizes"]))
         {
-            //echo "<pre>";
-//                print_r($_image);
-//                echo "</pre>";
-//                break;
-            //echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->getOriginalWidth()."<br/>";
-            $imgdata = json_decode(trim($_image->getLabel()), true);
-            if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0)
-                continue;
-            if($imgdata['color'] == Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId()))
-                //if(str_replace("*", "", $_image->getLabel()) == $temp)
+            //echo "pushing";
+            array_push($productcolorinfo[$temp]["sizes"], $temp1);
+        }
+        else
+        {
+            $productcolorinfo[$temp]["sizes"] = array($temp1);
+            if(!isset($productcolorinfo[$temp]["sizes"]))
+                echo "not set";
+            foreach($_gallery as $_image)
             {
-                $alt = "";
-                if(isset($imgdata['alt']))
-                    $alt = $imgdata['alt'];
-
-                try{
-                    if($alt == "")
-                    {
-                        $abcclr = $_childproduct->getAttributeText('color');
-                        if(strpos($abcclr, "|") !== false)
-                            $abcclr = substr($abcclr, 0, strpos($abcclr, "|"));
-                        $alt = $productname." - ".$abcclr;
-                    }
-                }
-                catch(Exception $e)
+                //echo "<pre>";
+    //                print_r($_image);
+    //                echo "</pre>";
+    //                break;
+                //echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->getOriginalWidth()."<br/>";
+                $imgdata = json_decode(trim($_image->getLabel()), true);
+                if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0)
+                    continue;
+                if($imgdata['color'] == Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId()))
+                    //if(str_replace("*", "", $_image->getLabel()) == $temp)
                 {
-                    //echo $e->getMessage();
-                    Mage::logException($e);
-                }
-                //echo $alt;
-                //echo $imageurl;
-                $smallimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90)."|".$alt;
-                $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(771, 700)->setQuality(90)."|".$alt;
-                $zoomimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->setQuality(90)."|".$alt;
+                    $alt = "";
+                    if(isset($imgdata['alt']))
+                        $alt = $imgdata['alt'];
 
-                $imagePath = substr($zoomimageurl, 1);
-                $dirImg = Mage::getBaseDir().str_replace("/",DS,strstr($imagePath,'/media'));
-                if (file_exists($dirImg)) {
-                    $imageObj = new Varien_Image($dirImg);
-                    $width = $imageObj->getOriginalWidth();
-                    $height = $imageObj->getOriginalHeight();
-                    //echo $dirImg." - ".$width." x ".$height."<br/>";
-                    $zoomimageurl .= "|".$width."|".$height;
-                }
-                //else {
-//                        echo "File doesn't exist.";
-//                    }
-
-                //if(count($productcolorinfo[$temp]["images"]) == 0)
-                if(!isset($productcolorinfo[$temp]["images"]))
-                {
-                    $productcolorinfo[$temp]["images"] = array();
-                    $productcolorinfo[$temp]["images"]["small"] = array($smallimageurl);
-                    $productcolorinfo[$temp]["images"]["zoom"] = array($zoomimageurl);
-                    $productcolorinfo[$temp]["images"]["big"] = array($imageurl);
-                    //echo "creating"."<br/>";
-                }
-                else
-                    if(count($productcolorinfo[$temp]["images"]["small"]) < 4)
-                    {
-                        array_push($productcolorinfo[$temp]["images"]["big"], $imageurl);
-                        array_push($productcolorinfo[$temp]["images"]["small"], $smallimageurl);
-                        //echo "pushing"."<br/>";
-                        array_push($productcolorinfo[$temp]["images"]["zoom"], $zoomimageurl);
+                    try{
+                        if($alt == "")
+                        {
+                            $abcclr = $_childproduct->getAttributeText('color');
+                            if(strpos($abcclr, "|") !== false)
+                                $abcclr = substr($abcclr, 0, strpos($abcclr, "|"));
+                            $alt = $productname." - ".$abcclr;
+                        }
                     }
+                    catch(Exception $e)
+                    {
+                        //echo $e->getMessage();
+                        Mage::logException($e);
+                    }
+                    //echo $alt;
+                    //echo $imageurl;
+                    $smallimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90)."|".$alt;
+                    $imageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(771, 700)->setQuality(90)."|".$alt;
+                    $zoomimageurl = "_".$this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->setQuality(90)."|".$alt;
+
+                    $imagePath = substr($zoomimageurl, 1);
+                    $dirImg = Mage::getBaseDir().str_replace("/",DS,strstr($imagePath,'/media'));
+                    if (file_exists($dirImg)) {
+                        $imageObj = new Varien_Image($dirImg);
+                        $width = $imageObj->getOriginalWidth();
+                        $height = $imageObj->getOriginalHeight();
+                        //echo $dirImg." - ".$width." x ".$height."<br/>";
+                        $zoomimageurl .= "|".$width."|".$height;
+                    }
+                    //else {
+    //                        echo "File doesn't exist.";
+    //                    }
+
+                    //if(count($productcolorinfo[$temp]["images"]) == 0)
+                    if(!isset($productcolorinfo[$temp]["images"]))
+                    {
+                        $productcolorinfo[$temp]["images"] = array();
+                        $productcolorinfo[$temp]["images"]["small"] = array($smallimageurl);
+                        $productcolorinfo[$temp]["images"]["zoom"] = array($zoomimageurl);
+                        $productcolorinfo[$temp]["images"]["big"] = array($imageurl);
+                        //echo "creating"."<br/>";
+                    }
+                    else
+                        if(count($productcolorinfo[$temp]["images"]["small"]) < 4)
+                        {
+                            array_push($productcolorinfo[$temp]["images"]["big"], $imageurl);
+                            array_push($productcolorinfo[$temp]["images"]["small"], $smallimageurl);
+                            //echo "pushing"."<br/>";
+                            array_push($productcolorinfo[$temp]["images"]["zoom"], $zoomimageurl);
+                        }
+                }
             }
         }
     }
 }
-
+print_r($productcolorinfo);die;
 $tempproductcolorinfo = array();
 $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
 $allOptions = $attribute->getSource()->getAllOptions(true, true);
