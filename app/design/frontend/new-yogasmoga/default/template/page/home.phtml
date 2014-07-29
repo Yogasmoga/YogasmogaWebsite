@@ -32,6 +32,7 @@
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<meta name="viewport" content="width=device-width">
 <head>
 <?php
     if($this->getRequest()->getParam('video') == 'true')
@@ -86,182 +87,308 @@
        }, 500);
     });
 </script>
+<div class="namaskar-overlay1">&nbsp;</div>
+<script type="text/javascript">
+    jQuery(window).load(function(){
+        jQuery('body').css('overflow','auto');
+        jQuery('.namaskar-overlay1').fadeOut('slow');
+    })
+</script>
 </head>
 <body class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>" style="margin-right:17px;overflow:hidden;">
 <?php echo $this->getChildHtml('after_body_start') ?>
 <div class="wrapper">
+    <!-- pageOverlay -->
+    <div class="page-overlayy" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">&nbsp;</div>
+    <!-- pageOverlay -->
 
-<!-- shopping cart -->
-
-<!-- shopping cart -->
-<div class="page-overlayy" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">&nbsp;</div>
     <?php echo $this->getChildHtml('global_notices') ?>
-    <div class="shopping-cart">
 
-    </div>
+    <!-- shopping cart -->
+    <div class="shopping-cart"></div>
+    <!-- shopping cart -->
+
     <div class="page">
+        <!-- header -->
         <?php echo $this->getChildHtml('header') ?>
-            <div id="pagecontainer">
-                <!-- sliderBanner -->
-                <div id="Welcome" class="fullscreenovfhidden flexslider showloading" desc="Welcome to YOGASMOGA" style="border: none;border-radius : none;box-shadow:none;margin:0px;" tw-summary="">
-                    <ul class="slides" id="homemainslider">
-                        <li>
-                            <img class="fullscreen" src="<?php echo $this->getSkinUrl('images/homepage/HomeSlide-1.jpg') ?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." iwidth="1600" iheight="900" />
+        <!-- header -->
 
-                            <div style="color : #333; left: 17%; top: 80%; z-index:999;" class="banner-txt3 promo2310">
-                                <a href="/women">
-                                    <img style="width:80%;" alt="SHOP WOMEN" src="http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/shop_women.png" />
+        <!-- pagewrapper -->
+        <div id="pagecontainer">
+            <!-- sliderBanner -->
+            <div id="Welcome" class="fullscreenovfhidden flexslider showloading" desc="Welcome to YOGASMOGA" style="border: none;border-radius : none;box-shadow:none;margin:0px;" tw-summary="">
+                <ul class="slides" id="homemainslider">
+                    <li>
+                        <img class="fullscreen" src="<?php echo $this->getSkinUrl('images/homepage/HomeSlide-1.jpg') ?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." iwidth="1600" iheight="900" />
+
+                        <div style="color : #333; left: 17%; top: 80%; z-index:999;" class="banner-txt3 promo2310">
+                            <a href="/women">
+                                <img style="width:80%;" alt="SHOP WOMEN" src="http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/shop_women.png" />
+                            </a>
+                        </div>
+
+                        <div style="color : #333; left: 67%; top: 80%; z-index:999;" class="banner-txt3 promo2310">
+                            <a href="/mens">
+                                <img style="width:80%;" alt="SHOP MEN" src="http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/shop_men.png" />
+                            </a>
+                        </div>
+
+                        <div style="position: absolute; width: 285px; right: 4.625%; z-index:99; bottom: 10%; height: 131px;" id="playBtn" >
+                            <div class="sl-desc-handle">
+                                <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                            </div>
+                            <div class="slide-desc" style="">Lorem ipsum dolor sit amet, consectetur adip scing elit. Pellentesque nulla lacus tincidunt.</div>
+                        </div>
+                    </li>
+
+                    <li style="background-color: #FFF;">
+                            <img class="fullscreen" src="<?php echo $this->getSkinUrl('images/homepage/HomeSlide-2.jpg') ?>" alt="WE CREATED THE NAMASKÁR FOUNDATION BECAUSE WE CARE." iwidth="1600" iheight="900" />
+
+                            <div class="banner-txt3 promo2310 promo1311">
+                                OUR CORE VALUE IS GIVING,<br />OUR GIFT IS NAMASKÁR.
+                                <span>WE CREATED THE NAMASKÁR<br />FOUNDATION BECAUSE WE CARE.</span>
+                                <a class="learnmore-nam" href="/our-story#namaskar">
+                                    <img alt="Learn More" src="<?php echo $this->getSkinUrl('images/homepage/learnmore.jpg') ?>" />
                                 </a>
                             </div>
-
-                            <div style="color : #333; left: 67%; top: 80%; z-index:999;" class="banner-txt3 promo2310">
-                                <a href="/mens">
-                                    <img style="width:80%;" alt="SHOP MEN" src="http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/shop_men.png" />
-                                </a>
-                            </div>
-
+                        
                             <div style="position: absolute; width: 285px; right: 4.625%; z-index:99; bottom: 10%; height: 131px;" id="playBtn" >
                                 <div class="sl-desc-handle">
-                                    <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                                <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
                                 </div>
                                 <div class="slide-desc" style="">Lorem ipsum dolor sit amet, consectetur adip scing elit. Pellentesque nulla lacus tincidunt.</div>
                             </div>
-                        </li>
-
-                        <li style="background-color: #FFF;">
-                                <img class="fullscreen" src="<?php echo $this->getSkinUrl('images/homepage/HomeSlide-2.jpg') ?>" alt="WE CREATED THE NAMASKÁR FOUNDATION BECAUSE WE CARE." iwidth="1600" iheight="900" />
-
-                                <div class="banner-txt3 promo2310 promo1311">
-                                    OUR CORE VALUE IS GIVING,<br />OUR GIFT IS NAMASKÁR.
-                                    <span>WE CREATED THE NAMASKÁR<br />FOUNDATION BECAUSE WE CARE.</span>
-                                    <a class="learnmore-nam" href="/our-story#namaskar">
-                                        <img alt="Learn More" src="<?php echo $this->getSkinUrl('images/homepage/learnmore.jpg') ?>" />
-                                    </a>
-                                </div>
-                            
-                                <div style="position: absolute; width: 285px; right: 4.625%; z-index:99; bottom: 10%; height: 131px;" id="playBtn" >
-                                    <div class="sl-desc-handle">
-                                    <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
-                                    </div>
-                                    <div class="slide-desc" style="">Lorem ipsum dolor sit amet, consectetur adip scing elit. Pellentesque nulla lacus tincidunt.</div>
-                                </div>
-                        </li>
-                    </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- sliderBanner -->
+            
+            <!-- signup new -->
+            <div class="share-strip">
+                <div class="sign-up-new">
+                    <a href="javascript:void(0)">Sign-up</a>& WE’LL SURPRISE YOU
                 </div>
+            </div>
+            <!-- signup new -->
+            <div class="clear-fix"></div>
 
-                <!-- sliderBanner -->
-                <div class="share-strip">
-                    <div class="blk l-align">
-                        <ul>
-                            <li><img src="<?php echo $this->getSkinUrl('images/homepage/usa-map.png') ?>" alt="US"></li>
-                            <li><img src="<?php echo $this->getSkinUrl('images/homepage/can-map.png') ?>" alt="Canada"></li>
-                            <li>FREE AND FAST SHIPPING TO US AND CANADA</li>
-                        </ul>
-                    </div>
-                    <div class="blk r-align">
-                        <ul class="sharing">
-                            <li>SHARE WITH YOUR FRIENDS</li>
-                            <li>
-                                <a id="facebook" href="javascript:void(0);">
-                                    <img src="<?php echo $this->getSkinUrl('images/footer/fb-icon.png') ?>" onmouseover="this.src='<?php echo $this->getSkinUrl('images/footer/fb-icon-ovr.png') ?>';" onmouseout="this.src='<?php echo $this->getSkinUrl('images/footer/fb-icon.png') ?>';" alt="Facebook">
-                                </a>
-                            </li>
-                            <li>
-                                <a id="twitter" href="javascript:void(0);">
-                                    <img src="<?php echo $this->getSkinUrl('images/footer/tw-icon.png') ?>" onmouseover="this.src='<?php echo $this->getSkinUrl('images/footer/tw-icon-ovr.png') ?>';" onmouseout="this.src='<?php echo $this->getSkinUrl('images/footer/tw-icon.png') ?>';" alt="Twitter">
-                                </a>
-                            </li>
-                            <li>
-                                <a id="mail" href="javascript:void(0);">
-                                    <img src="<?php echo $this->getSkinUrl('images/footer/email.png') ?>" onmouseover="this.src='<?php echo $this->getSkinUrl('images/footer/email-ovr.png') ?>';" onmouseout="this.src='<?php echo $this->getSkinUrl('images/footer/email.png') ?>';"  alt="Email">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="clear-fix"></div>
-                <div class="fabric-color">
-                    <div class="structure">
-                        <div class="block1">
-                            <img class="full-width" src="<?php echo $this->getSkinUrl('images/homepage/fabric.jpg') ?>" alt="">
-                            <div class="block-text l-align">
-                                <p class="block-head">FABRIC TECHNOLOGY</p>
-                                <p class="block-desc white">CONSIDER<br />THE CLOTHES<br />YOU WEAR</p>
-                                <p class="block-link">
-                                    <a href="<?php echo $this->getBaseUrl();?>ys-tech#ys-fabric-tech" class="white">Learn More <span>>>></span></a>
-                                </p>
-                            </div>
-                            <ul class="fabric-qua">
+            <!-- middleContainer -->
+            <div class="cubix">
+                <!-- gridfull -->
+                <div class="gridfull ysfabricpart overridefix">
+                    <!-- grid6 -->
+                    <div class="grid65">
+                        <!-- slider -->
+                        <div class="sliderImg">
+                            <ul class="gridslider1">
                                 <li>
-                                    <img src="<?php echo $this->getSkinUrl('images/homepage/resistance-icon.png') ?>" alt="PILLING RESISTANCE">
-                                    <p>PILLING-<br />RESISTANCE</p>
+                                    <img class="img-responsive" src="http://staging.yogasmoga.com/media/wysiwyg/new-design-images/s1-img1.jpg" alt="" />
+                                    <div class="contentSlider sliderContent">
+                                        <div>
+                                            <h2>ys color technology</h2><br/>
+                                            <h3>THE SUNDAY TEE<br/>MADE WITH <span class="aurum">AURUM&reg;</span><br/><span>WORN BY KARAN</span></h3>
+                                            <a href="javascript:void(0)" class="shopnow-btn">shop now</a>
+                                        </div>
+                                    </div>                                    
                                 </li>
                                 <li>
-                                    <img src="<?php echo $this->getSkinUrl('images/homepage/moisture-icon.png') ?>" alt="MOISTURE MANAGEMENT">
-                                    <p>MOISTURE <br/>MANAGEMENT</p>
-                                </li>
-                                <li>
-                                    <img src="<?php echo $this->getSkinUrl('images/homepage/hq-stretch-icon.png') ?>" alt="HIGH QUALITY STRETCH">
-                                    <p>HIGH QUALITY <br />STRETCH</p>
-                                </li>
-                                <li>
-                                    <img src="<?php echo $this->getSkinUrl('images/homepage/made-in-usa-icon.png') ?>" alt="MADE IN USA">
-                                    <p>MADE IN <br />USA</p>
+                                    <img class="img-responsive" src="http://staging.yogasmoga.com/media/wysiwyg/new-design-images/s1-img2.jpg" alt="" />
+                                    <div class="contentSlider sliderContent">
+                                        <div>
+                                            <h2>ys color technology</h2><br/>
+                                            <h3>THE SUNDAY TEE<br/>MADE WITH <span class="aurum">AURUM&reg;</span><br/><span>WORN BY KARAN</span></h3>
+                                            <a href="javascript:void(0)" class="shopnow-btn">shop now</a>
+                                        </div>
+                                    </div>                                    
                                 </li>
                             </ul>
                         </div>
-                        <div class="block2">
-                            <img class="full-width" src="<?php echo $this->getSkinUrl('images/homepage/ss.png') ?>" alt="">
-                            <div class="block-text l-align">
-                                <p class="block-head">COLOR TECHNOLOGY</p>
-                                <p class="block-desc">WE’LL COLOR<br />YOUR WORLD. COLORS<br />THAT DON’T BLEED.</p>
-                                <p class="block-link">
-                                    <a href="<?php echo $this->getBaseUrl();?>ys-tech#ys-color-tech" class="grey">Learn More <span>>>></span></a>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="clear-fix"></div>
+                        <!-- slider -->
                     </div>
-                    <div class="structure">
-                        <div class="block3" style="font-size:30px;">
-                            <a href="<?php echo $this->getBaseUrl();?>our-story#madeinusa">
-                                <img class="full-width" src="<?php echo $this->getSkinUrl('images/homepage/made-in-usa-dark.jpg') ?>" alt="">
-                            </a>
+                    <!-- grid6 -->
 
-                            <div class="madeinusa-txt">
-                                <div>Designed in<span>NYC</span>Made In<span>USA</span></div>
+                    <!-- grid35 -->
+                    <div class="grid35">
+                        <!-- partOne -->
+                        <div class="compressBox">
+                            <div class="ctext">
+                                consider<br />the clothes<br />you wear
+                                <span><a class="learn-more" href="javascript:void(0)">learn more</a></span>
                             </div>
                         </div>
-                        <div class="block4">
-                            <img class="full-width" src="<?php echo $this->getSkinUrl('images/homepage/namaskar-foundation.jpg') ?>" alt="">
-                            <div class="block-text l-align">
-                                <p class="block-head">NAMASKÁR FOUNDATION</p>
-                                <p class="block-desc">GIVING IS<br />A CORE VALUE.</p>
-                                <p class="block-link">
-                                    <a href="<?php echo $this->getBaseUrl();?>our-story#namaskar" class="">Learn More <span>>>></span></a>
-                                </p>
+                        <!-- partOne -->
+                        <!-- partTwo -->
+                        <div class="iconspartone" id="iconspartone">
+                            <div class="row">
+                                <span>
+                                    <img src="<?php echo $this->getSkinUrl('images/new-elements/pilling.png') ?>" alt="" />
+                                    <span class="iconstxt">pilling-resistance</span>
+                                </span>
+                                <span>
+                                    <img src="<?php echo $this->getSkinUrl('images/new-elements/moisture.png') ?>" alt="" />
+                                    <span class="iconstxt">moisture management</span>
+                                </span>
                             </div>
-                            <div class="block-text2 l-align">
-                                <?php
-                                $write = Mage::getSingleton('core/resource')->getConnection('core_read');
-                                $result = $write->query("SELECT COUNT(product_id) AS total_product_sold FROM sales_flat_order sfo, sales_flat_order_item sfoi WHERE sfo.status='complete' AND sfo.entity_id=sfoi.order_id AND sfoi.product_id = ".Mage::getModel('core/variable')->loadByCode('namaskar_bracelet_id')->getValue('plain'));
-                                $row = $result->fetch();
-
-                                if((int)$row['total_product_sold']>0)
-                                {
-                                ?>
-                                    <p class="bracelet-count num"><?php echo $row['total_product_sold']; ?></p>
-
-                                    <span class="white">BRACELETS SOLD</span>
-                                <?php } ?>
-                                
+                            <div class="row">
+                                <span>
+                                    <img src="<?php echo $this->getSkinUrl('images/new-elements/strech.png') ?>" alt="" />
+                                    <span class="iconstxt">high quality stretch</span>
+                                </span>
+                                <span>
+                                    <img src="<?php echo $this->getSkinUrl('images/new-elements/usa.png') ?>" alt="" />
+                                    <span class="iconstxt">made in usa</span>
+                                </span>
                             </div>
                         </div>
-                        <div class="clear-fix"></div>
+                        <!-- partTwo -->
                     </div>
+                    <!-- grid35 -->
                 </div>
-            </div> <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('dressingUpdate')->toHtml();?>
-            <?php echo $this->getChildHtml('footer'); ?>
+                <!-- gridfull --> 
+                <!-- gridfull -->
+                <div class="gridfull yscolorpart overridefix">
+                    <!-- grid35 -->
+                    <div class="grid35 f-left">
+                        <!-- partOne -->
+                        <div class="multicolorcont">
+                            <div class="ctext">
+                                COLOR YOUR<br />WORLD. COLORS<br />THAT DON’T BLEED.
+                                <span><a class="learn-more white" href="javascript:void(0)">learn more</a></span>
+                            </div>
+                        </div>
+                        <!-- partOne -->
+                        <!-- partTwo -->
+                        <div class="iconspartone" id="iconsparttwo">
+                            <div class="row">
+                                <span>
+                                    <img src="<?php echo $this->getSkinUrl('images/new-elements/eco.png') ?>" alt="" />
+                                    <span class="iconstxt">ECO-FRIENDLY DYEING</span>
+                                </span>
+                                <span>
+                                    <img src="<?php echo $this->getSkinUrl('images/new-elements/colors.png') ?>" alt="" />
+                                    <span class="iconstxt">COLORS THAT WON’T BLEED</span>
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span>
+                                    <img src="<?php echo $this->getSkinUrl('images/new-elements/accuracy.png') ?>" alt="" />
+                                    <span class="iconstxt">COLOR ACCURACY</span>
+                                </span>
+                                <span>
+                                    <img src="<?php echo $this->getSkinUrl('images/new-elements/mis.png') ?>" alt="" />
+                                    <span class="iconstxt">DYEING DONE IN USA</span>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- partTwo -->
+                    </div>
+                    <!-- grid35 -->
+                    <!-- grid6 -->
+                    <div class="grid65 f-right ">
+                        <!-- slider -->
+                        <div class="sliderImg">
+                            <ul class="gridslider2">
+                                <li>
+                                    <img class="img-responsive" src="http://staging.yogasmoga.com/media/wysiwyg/new-design-images/s1-img2.jpg" alt="" />
+                                    <div class="contentSlider">
+                                        <div>
+                                            <h2 class="white">ys color technology</h2><br/>
+                                            <h3 class="white">THE SNEAK N’ PEEK BRA<br/>IN<span class="aurum">CORALLION</span><br/><span>WORN BY COURNEY</span></h3>
+                                            <a href="javascript:void(0)" class="shopnow-btn">shop now</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <img class="img-responsive" src="http://staging.yogasmoga.com/media/wysiwyg/new-design-images/s1-img1.jpg" alt="" />
+                                    <div class="contentSlider">
+                                        <div>
+                                            <h2 class="white">ys color technology</h2><br/>
+                                            <h3 class="white">THE SNEAK N’ PEEK BRA<br/>IN<span class="aurum">CORALLION</span><br/><span>WORN BY COURNEY</span></h3>
+                                            <a href="javascript:void(0)" class="shopnow-btn">shop now</a>
+                                        </div>
+                                    </div>                                 
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- slider -->
+                    </div>
+                    <!-- grid6 -->
+                </div>
+                <!-- gridfull --> 
+                <!-- gridfull -->
+                <div class="gridfull factorypart overridefix">
+                    <!-- grid6 -->
+                    <div class="grid65">
+                        <!-- slider -->
+                        <div class="sliderImg">
+                            <img class="img-responsive" src="http://staging.yogasmoga.com/media/wysiwyg/new-design-images/factoryimg.jpg" alt="" />
+                            <div class="contentSlider mistext">
+                                <div>
+                                    <h2 class="white">GIVING IS A CORE VALUE</h2><br/>
+                                    <h3 class="white">MADE IN USA<br/><span>1 US FACTORY 200 US WORKERS</span></h3>
+                                    <a href="javascript:void(0)" class="learn-more">LEARN MORE</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- slider -->
+                    </div>
+                    <!-- grid6 -->
+                    <!-- grid35 -->
+                    <div class="grid35">
+                        <!-- partOne -->
+                        <div class="factorythread">
+                            <div class="ctext">STREAMLINING<br />HELPING<br />REDUCING<br />RAISING</div>
+                        </div>
+                        <!-- partOne -->
+                        <!-- partTwo -->
+                        <div class="usamap"></div>
+                        <!-- partTwo -->
+                    </div>
+                    <!-- grid35 -->
+                </div>
+                <!-- gridfull --> 
+                <!-- gridfull -->
+                <div class="gridfull namaskarpart overridefix">
+                    <!-- grid35 -->
+                    <div class="grid35 f-left">
+                        <!-- partOne -->
+                        <div class="supportnamaskar">
+                            <div class="ctext"><a href="javascript:void(0)" class="learn-more">SUPPORT NAMASKAR</a></div>
+                        </div>
+                        <!-- partOne -->
+                        <!-- partTwo -->
+                        <div class="raisingfunds">
+                            <div class="ctext">RAISING THE FUNDS &<br />MAKING CHANGES<br />IN THE WORLD</div>
+                        </div>
+                        <!-- partTwo -->
+                    </div>
+                    <!-- grid35 -->
+                    <!-- grid6 -->
+                    <div class="grid65 f-right">
+                        <!-- slider -->
+                        <div class="sliderImg">
+                            <img class="img-responsive" src="http://staging.yogasmoga.com/media/wysiwyg/new-design-images/namaskar.jpg" alt="" />
+                            <div class="contentSlider namaskartxt">
+                                <div>
+                                    <h2 class="white">GIVING IS A CORE VALUE</h2><br/>
+                                    <h3 class="white">NAMASKÁR FOUNDATION<br/><span>WE HAVE CREATED THE NAMASKÁR FOUNDATION BECAUSE WE CARE.</span></h3>
+                                    <a href="javascript:void(0)" class="learn-more">LEARN MORE</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- slider -->
+                    </div>
+                    <!-- grid6 -->
+                </div>
+                <!-- gridfull --> 
+            </div>
+            <!-- middleContainer -->
+        </div>
+        <!-- pagewrapper -->
+
+        <!-- footer -->
+        <?php echo $this->getChildHtml('footer'); ?>
+        <!-- footer -->        
         </div>
         <?php echo $this->getChildHtml('before_body_end'); ?>
     </div>
