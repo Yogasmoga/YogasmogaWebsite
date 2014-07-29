@@ -266,7 +266,7 @@ foreach($_childproducts as $_childproduct)
             $productcolorinfo[$temp]["sizes"] = array($_childproduct->getAttributeText('size'));
         else
             array_push($productcolorinfo[$temp]["sizes"],$_childproduct->getAttributeText('size'));
-        
+
         if(!isset($productcolorinfo[$temp]["length"]))
         {
             $productcolorinfo[$temp]["length"] = array(
@@ -368,7 +368,7 @@ foreach($_childproducts as $_childproduct)
         }
     }
 }
-print_r($productcolorinfo);die;
+//print_r($productcolorinfo);die;
 $tempproductcolorinfo = array();
 $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
 $allOptions = $attribute->getSource()->getAllOptions(true, true);
