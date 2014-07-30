@@ -267,6 +267,7 @@ foreach($_childproducts as $_childproduct)
         else
             array_push($productcolorinfo[$temp]["sizes"],$_childproduct->getAttributeText('size'));
 
+        $temp1 = $_childproduct->getAttributeText('length')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
         if(!isset($productcolorinfo[$temp]["length"]))
         {
             $productcolorinfo[$temp]["length"] = array(
