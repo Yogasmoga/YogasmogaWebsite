@@ -56,12 +56,12 @@ ul.main-menu2 > li.rangoli:hover{
 
 /** footer **/
 .logoCont{
-    display: block;
-    width: 30%;
+    float: left;
+    width: 35%;
 }
 
 .footer-block {
-    width: 70%;
+    width: 65%;
 }
 
 .shiftRight{
@@ -74,7 +74,7 @@ ul.main-menu2 > li.rangoli:hover{
 
 ul.site-map > li{
     min-height: 140px;
-    width: 311px;
+    width: 290px;
     margin-bottom: 10px;
 }
 
@@ -100,6 +100,7 @@ ul.site-map > li{
 /** homepage **/
 .cubix{
     width: 100%;
+    min-width: 1024px;
 }
 
 .gridfull{
@@ -178,23 +179,25 @@ ul.site-map > li{
 
 .contentSlider h2{
     border-bottom: 1px solid #ae8637;
-    font: normal 13px/54px gothambold;
+    font-family: gothambold;
+    font-weight: normal;
     margin: auto auto 30px;
     width: 50%;
 }
 
 .contentSlider h3 {
-    font: 50px/53px AvantGardeGothicMedium;
+    font-family: AvantGardeGothicMedium;
 }
 
 .contentSlider h3 > span {
     display: block;
-    font: 24px/50px AvantGardeGothicITCW01B;
-    padding-top: 20px;
+    font-family: AvantGardeGothicITCW01B;
+    padding-top: 5px;
+    font-weight: normal;
 }
 
 .contentSlider h3 > .aurum {
-    font: 50px/53px AvantGardeGothicITCW01X;
+    font-family: AvantGardeGothicITCW01X;
     display: inline;
 }
 
@@ -210,9 +213,10 @@ ul.site-map > li{
     background: url("../images/new-elements/circlebg.png") no-repeat center center #ae8637;
     background-size: 100% 100%;
     width: 100%;
-    display: table;
+    display: block;
     vertical-align: middle;
     height: 50%;
+    position: relative;
 }
 
 .multicolorcont{
@@ -232,6 +236,8 @@ ul.site-map > li{
 
 .supportnamaskar{
     background: url("../images/new-elements/namaskarband.jpg") no-repeat center center #fff;
+    display: block;
+    position: relative;
 }
 
 .raisingfunds{
@@ -246,19 +252,20 @@ ul.site-map > li{
 }
 
 .supportnamaskar .ctext {
-    margin: 0;
-    vertical-align: bottom;
+        margin: 0;        
+        position: absolute;
+        bottom: 0px;
+        height: 70px;
 }
 
 .ctext{
-    font: 40px/50px AvantGardeGothicITCW01B;
+    font-family:AvantGardeGothicITCW01B;
     color: #fff;
     text-align: center;
-    width: 100%;
-    height: 100%;
-    text-transform: uppercase;
-    display: table-cell;
+    width: 100%;  
+    text-transform: uppercase;    
     vertical-align: middle;
+    position: absolute;
 }
 
 .ctext > span {
@@ -267,6 +274,7 @@ ul.site-map > li{
 
 .iconspartone{
     background: #fff;
+    height: 50%;
 }
 
 .iconspartone .row {
@@ -300,48 +308,21 @@ ul.site-map > li{
     vertical-align: middle;
 }
 
-@media only screen and (max-width : 1440px) {
-    .contentSlider h2,
+@media only screen and (max-width : 1440px) {   
     .shopnow-btn{
         margin-top: 30px;
-    }
+    }   
 
-
-    .contentSlider h3,
-    .contentSlider h3 > .aurum {
-        font-size: 44px;
-        line-height: 44px;
-    }
-
-    .contentSlider h3 > span {
-        font-size: 20px;
-        line-height: 35px;
-    }
-
-    .ctext{
-        font: 35px/45px AvantGardeGothicITCW01B;
-    }
 }
 
 @media only screen and (max-width : 1360px) {
-    .contentSlider h2{
-        font-size: 12px;
-        line-height: 45px;
-    }
-
-    .contentSlider h2,
+  
     .shopnow-btn{
         margin-top: 25px;
     }
 
-    .contentSlider h3 > span {
-        font-size: 22px;
-        line-height: 40px;
-    }
+   
 
-    .ctext{
-        font: 30px/33px AvantGardeGothicITCW01B;
-    }
 
     .iconspartone .row img {
         width: 40%;
@@ -353,31 +334,10 @@ ul.site-map > li{
 }
 
 @media only screen and (max-width: 1024px) {
-    .contentSlider h2{
-        font-size: 11px;
-        line-height: 35px;
-    }
-
-    .contentSlider h2,
     .shopnow-btn{
         margin-top: 20px;
     }
 
-
-    .contentSlider h3,
-    .contentSlider h3 > .aurum {
-        font-size: 36px;
-        line-height: 40px;
-    }
-
-    .contentSlider h3 > span {
-        font-size: 17px;
-        line-height: 35px;
-    }
-
-    .ctext{
-        font: 26px/33px AvantGardeGothicITCW01B;
-    }
 
     .iconspartone .row img {
         width: 30%;
@@ -396,6 +356,11 @@ ul.site-map > li{
     padding: 0;
     *zoom: 1;
 }
+
+.gridslider1 li, .gridslider2 li{
+    width: 100%;
+}
+
 
 .bx-wrapper img {
     max-width: 100%;
@@ -530,4 +495,52 @@ html[xmlns] .overridefix {
  
 * html .overridefix {
     height: 1%;
+}
+
+/** NewGrid **/
+.gridProdCubix {
+    margin: auto 40px;
+    display: inline-block;
+}
+
+.gridProdCubix .leftnav {
+    border-top: 1px solid #ccc;
+    position: inherit;
+    width: 150px;
+}
+
+.gridProdCubix .leftnav ul.ctglink{
+    width: 100%;
+    padding: 4px 0 0;
+}
+
+.gridWrap {
+    display: inline-block;
+    margin: 0 0 0 45px;
+    width: 87%;
+    min-width: 718px;
+}
+
+.product-grid .gridWrap h4{
+    background: none;
+    border-top: 1px solid #a6a6a6;
+    margin: 0 0 30px;
+    padding: 4px 0 0;
+    font: 11px/20px gothambold;
+    text-align: left;
+}
+
+.gridProdCubix .leftnav .ctglink li.sub-head > a, 
+.gridProdCubix .leftnav .ctglink li a.bld{
+    font-family: gothambold;
+    color: #555;
+}
+
+.gridWrap .productCont{
+    min-height: 420px;
+    width: 230px;
+}
+
+.productCont .prod-img{
+    height: 340px;
 }
