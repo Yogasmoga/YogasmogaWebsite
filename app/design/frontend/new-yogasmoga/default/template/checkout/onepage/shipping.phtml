@@ -202,7 +202,7 @@
         <table>
             <tr>
                 <td>
-                    <input type="checkbox" placeholder="City" name="shipping[save_in_address_book]" value="1" id="shipping:save_in_address_book" <?php if ($this->getAddress()->getSaveInAddressBook()):?> checked="checked"<?php endif;?> class="checkbox" />
+                    <input type="checkbox" name="shipping[save_in_address_book]" value="1" id="shipping:save_in_address_book" <?php if ($this->getAddress()->getSaveInAddressBook()):?> checked="checked"<?php endif;?> class="checkbox" />
                 </td>
                 <td style="padding-top : 2px;">
                     <label for="shipping:save_in_address_book"><?php echo $this->__('Save in Address Book') ?></label>
