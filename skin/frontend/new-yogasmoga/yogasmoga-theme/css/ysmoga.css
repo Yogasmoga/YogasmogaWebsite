@@ -94,7 +94,11 @@ ul.site-map > li{
 
     .shiftRight{
         float: none;
-    }  
+    }
+
+    .contentSlider.namaskartxt div {
+        width: 70% !important;
+    }
 }
 
 /** homepage **/
@@ -136,7 +140,7 @@ ul.site-map > li{
 }
 
 .learn-more {
-    border-bottom: 2px solid #bd4335;
+    border-bottom: 1px solid #c03;
     color: #fff;
     font: 11px/19px gothambook;
     margin: 30px 0 0;
@@ -247,7 +251,6 @@ ul.site-map > li{
 
 .supportnamaskar .learn-more {
     color: #555;
-    display: inline-block;
     margin: 0 0 20px;
 }
 
@@ -311,18 +314,13 @@ ul.site-map > li{
 @media only screen and (max-width : 1440px) {   
     .shopnow-btn{
         margin-top: 30px;
-    }   
-
+    }
 }
 
 @media only screen and (max-width : 1360px) {
-  
     .shopnow-btn{
         margin-top: 25px;
     }
-
-   
-
 
     .iconspartone .row img {
         width: 40%;
@@ -543,4 +541,14 @@ html[xmlns] .overridefix {
 
 .productCont .prod-img{
     height: 340px;
+}
+
+.chat-status{
+    font-style: italic;
+}
+
+.contentSlider.namaskartxt div {
+    margin: auto;
+    text-align: center;
+    width: 80%;
 }
