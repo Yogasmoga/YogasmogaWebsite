@@ -325,23 +325,27 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 /** Product Listing Page **/
 .bannerFluid {
     background: none repeat scroll 0 0 #fafafa;
-    height: 400px;
+    /*height: 400px;*/
     margin: 0 0 45px;
     position: relative;
     width: 100%;
 }
 
 .bannerFluid img {
-    bottom: 0;
+    width: 100%;
+/*    bottom: 0;
     position: absolute;
-    right: 70px;
+    right: 70px;*/
 }
 
 .bannerFluid .bnrtxt {
     color: #555;
     float: left;
-    font: 31px/37px itcavantgardepromd;
-    margin: 8% 0 0 8%;
+    font: 36px/40px itcavantgardepromd;
+    margin: 0;
+    left: 8%;
+    top: 13%;
+    position: absolute;
     text-align: left;
     text-transform: uppercase;
     width: 260px;
@@ -349,7 +353,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 
 .bnrtxt > span {
     display: block;
-    font: 30px AvantGardeGothicITCW01X;
+    font-family: AvantGardeGothicITCW01X;
 }
 /*.product-grid .side-menu-bar{position: inherit;}*/
 /*.product-grid .side-menu-bar{width: 20%}*/
@@ -1521,8 +1525,9 @@ div#bodycompensator{height: 73px;}
 
 
 .leftnav a.current {
-    background: url(../images/arrow-Lnav.jpg) no-repeat right 3px rgba(0, 0, 0, 0);
-    padding: 0 18px 0 0;
+/*    background: url(../images/arrow-Lnav.jpg) no-repeat right 3px rgba(0, 0, 0, 0);
+    padding: 0 18px 0 0;*/
+    color: #c03 !important;
 }
 
 
