@@ -575,3 +575,106 @@ ul.tr-menu > li.free-shipping {
     border-color: #ccc;
     margin-top: 50px;
 }
+
+/** newSharePopup **/
+.signinDialog .ui-icon-closethick{
+    background: url("../images/new-elements/close-sharepopup.png") no-repeat center bottom;
+    background-size: contain;
+    height: 49px;
+    position: relative;
+    right: -12px;
+    top: -12px;
+    width: 55px;
+}
+
+#signing_popup input {
+    border: 0 none;
+    font: 12px/16px gothambook;
+}
+
+.signinDialog{
+    font: 14px/19px gothambold;
+}
+
+.signinDialog #signing_popup{
+    padding: 0 0 30px;
+}
+
+.signinDialog .sign-up-block{
+    background: none;
+    border-right: 1px solid #c6c6c6;
+}
+
+.signinDialog .ui-dialog-titlebar {
+    height: 35px;
+    padding: 0;
+    position: relative;
+}
+
+.signinDialog .sign-up-block, 
+.signinDialog .sign-in-block {
+    padding: 0 29px;
+    width: 316px;
+}
+
+.signinDialog .form-heading {
+    text-transform: uppercase;
+    font-size: 14px;
+    margin: 0 0 30px;
+}
+
+.signinDialog.ui-corner-all, 
+.signinDialog .ui-corner-bottom, 
+.signinDialog .ui-corner-right, 
+.signinDialog .ui-corner-left, 
+.signinDialog .ui-corner-top,
+.signinDialog .ui-corner-br,
+.signinDialog .ui-corner-bl,
+.signinDialog .ui-corner-tr,
+.signinDialog .ui-corner-tl{
+    border-radius: 0 0 0 0;
+}
+
+.signinDialog #sign-up-form table input, 
+.signinDialog #sign-in-form table input{
+    padding: 10px;
+}
+
+.signinDialog #sign-in-form a.forgot-link {
+    border-bottom: 1px solid #c03;
+    color: #555;
+    display: inline-block;
+    font-family: gothambook;
+    font-size: 11px;
+    margin: 12px 0 20px;
+    padding: 0 0 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.signinDialog #sign-up-form table td, 
+.signinDialog #sign-in-form table td{
+    padding-bottom: 10px;
+}
+
+.intouchCheckbox input[type="checkbox"] {
+    display: none;
+}
+.intouchCheckbox input[type="checkbox"]+label {    
+    background: url("../images/new-elements/checkbox.jpg") no-repeat top left;
+    cursor: pointer;
+    display: inline-block;
+    height: auto;
+    margin: 2px 0 10px;
+    padding: 10px 0 10px 45px;
+    width: auto;
+}
+.intouchCheckbox input[type="checkbox"]:checked + label {
+    background: url("../images/new-elements/checkbox.jpg") no-repeat left -32px;
+}
+
+.signinDialog .err-msg {
+    color: #d90d3d;
+    font-family: gothambook;
+    font-size: 11px !important;
+}

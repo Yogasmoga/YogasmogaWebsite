@@ -197,7 +197,7 @@ div.copy-privacy-likes ul li img{height: 30px;}
 
 /***Sign In Popup***/
 #signing_popup,#invite_friends{padding: 0px;}
-.signinDialog{width: 750px !important; min-height: 200px;/* z-index: 10012 !important;*/ border: none; position: fixed; padding: 0 !important; background:#fff 50% top repeat-x; background-size: cover; overflow: initial; font-family: gothambook; color:#555 !important;}
+.signinDialog{width: 750px !important; min-height: 200px;/* z-index: 10012 !important;*/ border: none; position: fixed; padding: 0 !important; background:#f3f3f5 50% top repeat-x; background-size: cover; overflow: initial; font-family: gothambook; color:#555 !important;}
 .sign-up-block,.sign-in-block{width: 280px; padding: 0 47.5px;}
 .sign-up-block{background: url("../images/popups/pop-up-divider.png") right no-repeat;}
 .signinDialog .ui-widget-header,.sharingDialog .ui-widget-header{border:none; background: none; font-weight: bold;}
