@@ -74,6 +74,10 @@
 	font-weight:	normal;
 	font-style:		normal;
 }
+@font-face{
+	font-family: freight;
+	src: url('../fonts/freighttext-book.ttf') format('truetype');
+}
 
 @font-face {
     font-family: 'helveticaoblique';
