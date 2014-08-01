@@ -28,7 +28,7 @@
 }
 
 ul.main-menu2 > li.rangoli:hover{
-    background: url("../images/rangoli-arrow.png") no-repeat center bottom / 12px 11px transparent;
+/*    background: url("../images/rangoli-arrow.png") no-repeat center bottom / 12px 11px transparent;*/
 }
 
 /** banner **/
@@ -513,10 +513,8 @@ html[xmlns] .overridefix {
 }
 
 .gridWrap {
-    display: inline-block;
-    margin: 0 0 0 45px;
-    width: 87%;
-    min-width: 718px;
+    margin: 0 0 0 195px;
+    width: auto;
 }
 
 .product-grid .gridWrap h4{
@@ -535,8 +533,8 @@ html[xmlns] .overridefix {
 }
 
 .gridWrap .productCont{
-    min-height: 420px;
-    width: 230px;
+    min-height: 450px;
+    width: 238px;
 }
 
 .productCont .prod-img{
