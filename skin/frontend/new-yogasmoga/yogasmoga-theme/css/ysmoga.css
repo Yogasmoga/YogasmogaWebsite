@@ -678,3 +678,30 @@ ul.tr-menu > li.free-shipping {
     font-family: gothambook;
     font-size: 11px !important;
 }
+
+.sharingDialog{
+    width: 376px !important;
+    background: #f3f3f5 !important;
+    color: #555 !important;
+}
+
+.smogi-love-msg > span {
+    display: block;
+    font-family: gothambook;
+    margin: 4px 0 0;
+}
+
+#sign-up-form table td, #sign-in-form table td, #invite-friend-form table td {
+    padding-bottom: 10px !important;
+}
+
+#sign-up-form table input, #sign-in-form table input, #invite-friend-form table input {
+    border: 0 none !important;
+    font: 12px gothambook !important;
+    padding: 10px !important;
+}
+
+.smogi-love-msg {
+    font: 14px/19px gothambold !important;
+    margin-bottom: 40px !important;
+}
