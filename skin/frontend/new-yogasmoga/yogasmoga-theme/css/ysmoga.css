@@ -17,10 +17,6 @@
     float: right;
 }
 
-.header-right {
-    width: 550px;
-}
-
 .rangoli-head{
     color: #ff8785 !important;
     background: url("../images/rangoli-icon.png") no-repeat top left;
@@ -549,4 +545,22 @@ html[xmlns] .overridefix {
     margin: auto;
     text-align: center;
     width: 80%;
+}
+
+ul.tr-menu > li.free-shipping {
+    display: inline-block;
+    font: italic 10px gothambook;
+    margin: 0 30px 0 0;
+}
+
+.free-shipping > span {
+    padding: 2px 0 0;
+}
+
+.free-shipping > span span {
+    margin: 0 0 0 10px;
+}
+
+.free-shipping img {
+    margin: -2px 0 0 3px;
 }
