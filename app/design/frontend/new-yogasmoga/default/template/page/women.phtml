@@ -140,32 +140,8 @@
                 
                 <!-- ShareSocialMedia Part -->
                 <div class="share-strip">
-                    <div class="blk l-align">
-                        <ul>
-                            <li><img src="<?php echo $this->getSkinUrl('images/homepage/usa-map.png') ?>" alt="US"></li>
-                            <li><img src="<?php echo $this->getSkinUrl('images/homepage/can-map.png') ?>" alt="Canada"></li>
-                            <li>FREE AND FAST SHIPPING TO US AND CANADA</li>
-                        </ul>
-                    </div>
-                    <div class="blk r-align">
-                        <ul class="sharing">
-                            <li>SHARE WITH YOUR FRIENDS</li>
-                            <li>
-                                <a id="facebook" href="javascript:void(0);">
-                                    <img src="<?php echo $this->getSkinUrl('images/footer/fb-icon.png') ?>" onmouseover="this.src='<?php echo $this->getSkinUrl('images/footer/fb-icon-ovr.png') ?>';" onmouseout="this.src='<?php echo $this->getSkinUrl('images/footer/fb-icon.png') ?>';" alt="Facebook">
-                                </a>
-                            </li>
-                            <li>
-                                <a id="twitter" href="javascript:void(0);">
-                                    <img src="<?php echo $this->getSkinUrl('images/footer/tw-icon.png') ?>" onmouseover="this.src='<?php echo $this->getSkinUrl('images/footer/tw-icon-ovr.png') ?>';" onmouseout="this.src='<?php echo $this->getSkinUrl('images/footer/tw-icon.png') ?>';" alt="Twitter">
-                                </a>
-                            </li>
-                            <li>
-                                <a id="mail" href="javascript:void(0);">
-                                    <img src="<?php echo $this->getSkinUrl('images/footer/email.png') ?>" onmouseover="this.src='<?php echo $this->getSkinUrl('images/footer/email-ovr.png') ?>';" onmouseout="this.src='<?php echo $this->getSkinUrl('images/footer/email.png') ?>';"  alt="Email">
-                                </a>
-                            </li>
-                        </ul>
+                    <div class="sign-up-new">
+                        <a href="javascript:void(0)">Sign-up</a>&amp; WE’LL SURPRISE YOU
                     </div>
                 </div>
                 <!-- ShareSocialMedia Part -->
@@ -240,82 +216,75 @@
                 <!-- ProductListing Part -->                
                 <div class="clear-fix"></div>
                 <!-- Feature Product -->
-                <div class="wl-feat-prd">
-                    <section class="wl-left-block">
-                        <div class="top-left-block"></div>
-                        <div class="bottom-left-block"><img src="<?php echo $this->getSkinUrl('images/women/left-block-vid-img.jpg') ?>" alt="" /></div>
-                    </section>
-                    <section class="wl-right-block"><img src="<?php echo $this->getSkinUrl('images/women/feat-prd-main-img.jpg') ?>" alt="" /></section>
-                </div>
-                <!-- Color Story Product -->
-                <div class="wl-color-story-prd">                    
-                    <section class="wl-cs-left-block"><img src="<?php echo $this->getSkinUrl('images/women/cs-main-img.jpg') ?>" alt="" /></section>
-                    <section class="wl-cs-right-block">
-                        <div class="top-right-block"><img src="<?php echo $this->getSkinUrl('images/women/cs-vid-img.jpg') ?>" alt="" /></div>
-                        <div class="bottom-right-block"></div>                        
-                    </section>
-                </div>
-                <!-- Feature Product -->
                 <?php
                 $featurecategoryId = $categoryIds['feature_product'];
                 $featurecategory = Mage::getSingleton('catalog/category')->load($featurecategoryId);
                 $featurecategoryUrl = Mage::getBaseUrl().$featurecategory->getUrlPath();
-                ?>
-                <div class="clip-bg">
-                    <div class="contWom featured-product">
-                        <div class="ftr-txt">
-                            <h4>FEATURED PRODUCT
-                                <span>THE JACKET WITH A BROOKLYN FLAIR.</span>
-                            </h4>
-
-                            <p>THE LIGHT WEIGHT JACKET OFFERS COOL FEATURES LIKE THE CONTRAST COLOR CUFFS AND COLLAR.</p>
-                            <p>THE DOUBLE ZIPPER HELPS YOU STYLE YOUR BROOKLYN JACKET IN MULTIPLE WAYS.</p>
-
-                            <p class="block-link"><a href="<?php echo $featurecategoryUrl; ?>">SHOP THE BROOKLYN JACKET <strong class="in-bl">&gt;&gt;&gt;</strong></a></p>
+                ?>                  
+                <div class="wl-feat-prd">
+                    <section class="wl-left-block">
+                        <div class="top-left-block">
+                            <div class="block-content">
+                                <h4 class="cursive-text">Lorem ipsum dolor sit<br/>consectetuer adipiscing elit. </h4>
+                                <span class="b-heading top-b-heading">My Magazine</span>
+                            </div>
                         </div>
-
-                        <div class="ftr-img">
-                            <img src="<?php echo $this->getSkinUrl('images/women/featuerd-prod.png') ?>" alt="" />
+                        <div class="bottom-left-block" data-vid-handle="vid-blck-1">
+                            <img src="<?php echo $this->getSkinUrl('images/women/left-block-vid-img.jpg') ?>" alt="" />
                         </div>
-                    <div class="clear-fix"></div>
-                    </div>
-                </div>               
-                <!-- Feature Product -->       
-                
-                <div class="clear-fix"></div>
-
+                    </section>
+                    <section class="wl-right-block">
+                        <img src="<?php echo $this->getSkinUrl('images/women/feat-prd-main-img.jpg') ?>" alt="" />
+                        <div class="block-content">
+                                <span class="b-heading bottom-b-heading">My Magazine</span>
+                                <h4 class="main-img-text">THE JACKET WITH<br />A BROOKLYN FLAIR<span>14 colors</span></h4>
+                                <a href="<?php echo $featurecategoryUrl;?>" class="shopnow-btn">shop now</a>                                
+                            </div>
+                    </section>
+                </div>
                 <!-- Feature Product -->
+                <!-- Color Story Product -->
+                 <!-- Color Story -->
                 <?php
                 $colorstorycategoryId = $categoryIds['color_story'];
                 $colorstorycategory = Mage::getSingleton('catalog/category')->load($colorstorycategoryId);
                 $colorstorycategoryUrl = Mage::getBaseUrl().$colorstorycategory->getUrlPath();
                 ?>
-                <div class="divider-btm">
-                    <div class="contWom featured-product">
-                        <div class="ftr-txt">
-                            <h4>COLOR STORY
-                                <span>LIME LITE</span>
-                            </h4>
-
-                            <p>VIVAMUS AT NIBH NON IPSUM<br />LUCTUS ADIPISCING.</p>
-
-                            <p class="block-link"><a href="<?php echo $colorstorycategoryUrl;?>">SHOP LIME LITE <strong class="in-bl">&gt;&gt;&gt;</strong></a></p>
+                <div class="wl-color-story-prd">                    
+                    <section class="wl-cs-left-block">
+                        <img src="<?php echo $this->getSkinUrl('images/women/cs-main-img.jpg') ?>" alt="" />
+                        <div class="block-content"> 
+                            <span class="b-heading bottom-b-heading">color story</span>
+                            <h4 class="main-img-text">LIME LITE</h4>                                
                         </div>
-
-                        <div class="ftr-img">
-                            <div class="figCap">
-                                <div class="figure"><img src="<?php echo $this->getSkinUrl('/images/women/dum5.jpg') ?>" alt="" /></div>
-                                <span>mauris vehicula condimentum tortor eu pulvinar. Fusce a vestibulum turpis, non sollicitudin urna. Aenean ut faucibus diam, id posuere lacus. Vestibulum id eleifend libero. Aenean pharetra tincidunt lobortis. Donec vel neque varius, feugiat ligula vel, aliquet sem. Phasellus vel ultrices nisl, vulputate tristique tortor.</span>
-                            </div>
-                            <div class="figCap">
-                                <div class="figure"><img src="<?php echo $this->getSkinUrl('/images/women/dummy-grn-img.jpg') ?>" alt="" /></div>
-                                <span>Vivamus at nibh non ipsum luctus adipiscing. Aenean sit amet purus viverra, porta nunc eu, vestibulum augue. Pellentesque rhoncus molestie venenatis. Etiam bibendum nec orci id placerat. Phasellus quis orci a justo pretium lobortis at vitae dolor. Morbi nisl erat, condimentum a ipsum sit amet, imperdiet vulputate nibh. Donec semper</span>
-                            </div>
+                    </section>
+                    <section class="wl-cs-right-block">
+                        <div class="top-right-block" data-vid-handle="vid-blck-2">
+                            <img src="<?php echo $this->getSkinUrl('images/women/cs-vid-img.jpg') ?>" alt="" />
                         </div>
-                    <div class="clear-fix"></div>
-                    </div>
-                </div>             
-                <!-- Feature Product -->
+                        <div class="bottom-right-block">
+                            <div class="block-content">
+                                <h4 class="cursive-text grey">Lorem ipsum dolor sit<br/>consectetuer adipiscing elit. </h4>
+                                <span class="b-heading top-grey-b-heading grey">ROSE APOSTOLAKOS</span>
+                            </div>
+                        </div>                        
+                    </section>
+                </div>           
+
+                <div class="html-video-popup" id="vid-blck-1">
+                    <video style="width:100%;" controls>
+                        <source src="http://192.168.2.100/media/design_features_video/YANTRA_TANK_OK.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="html-video-popup" id="vid-blck-2">
+                    <video style="width:100%;" controls>
+                        <source src="http://192.168.2.100/media/how_to_measure_video/HOW_TO_MEASURE_WOMEN.mp4" type="video/mp4">
+                    </video>
+                </div> 
+                <div class="vid-popup-overlay"></div>  
+               
+                            
+                <!-- Color Story -->
             
             </div> 
             <?php echo $this->getChildHtml('footer'); ?>            
