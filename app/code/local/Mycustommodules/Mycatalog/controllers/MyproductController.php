@@ -830,6 +830,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
         $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
         $sizeavaliable = false;
+        $lengthavailable = 0;
         foreach($configurableAttributeCollection as $attribute){
             if($attribute->getProductAttribute()->getAttributeCode() == "size")
             {
@@ -839,6 +840,14 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             //echo "Attr-Code:".$attribute->getProductAttribute()->getAttributeCode()."<br/>";
             //        echo "Attr-Label:".$attribute->getProductAttribute()->getFrontend()->getLabel()."<br/>";
             //        echo "Attr-Id:".$attribute->getProductAttribute()->getId()."<br/>";
+        }
+        foreach($configurableAttributeCollection as $attribute){
+            if($attribute->getProductAttribute()->getAttributeCode() == "length")
+            {
+                $lengthavailable = 1;
+                break;
+            }
+
         }
 
         foreach($_childproducts as $_childproduct)
@@ -885,7 +894,72 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             $rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "smogi") - 3 - strlen("smogi") - strpos($rewardpoints, "earn") + strlen("earn")));
             if($rewardpoints > 0)
                 $isrewardable = true;
-            if($sizeavaliable)
+            if($lengthavailable)
+            {
+                if(!isset($productcolorinfo[$temp]["sizes"]))
+                    $productcolorinfo[$temp]["sizes"] = array($_childproduct->getAttributeText('size'));
+                else{
+                    if(!in_array($_childproduct->getAttributeText('size'),$productcolorinfo[$temp]["sizes"]))
+                        array_push($productcolorinfo[$temp]["sizes"],$_childproduct->getAttributeText('size'));
+                }
+
+
+                $temp1 = $_childproduct->getAttributeText('length')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
+                $temp1 .= "|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getIsInStock();
+                $backOrderCheck = (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getBackorders();
+                $temp1 .= "|".$backOrderCheck;
+                if(!isset($productcolorinfo[$temp]["length"]))
+                {
+                    $productcolorinfo[$temp]["length"][$_childproduct->getAttributeText('size')] = array($temp1);
+                    foreach($_gallery as $_image)
+                    {
+                        $imgdata = json_decode(trim($_image->getLabel()), true);
+                        if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0)
+                            continue;
+                        if($imgdata['color'] == Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId()))
+                            //if(str_replace("*", "", $_image->getLabel()) == $temp)
+                        {
+                            $alt = "";
+                            if(isset($imgdata['alt']))
+                                $alt = $imgdata['alt'];
+                            //echo $imageurl;
+                            if($alt == "")
+                            {
+                                $abcclr = $_childproduct->getAttributeText('color');
+                                if(strpos($abcclr, "|") !== false)
+                                    $abcclr = substr($abcclr, 0, strpos($abcclr, "|"));
+                                $alt = $productname." - ".$abcclr;
+                            }
+
+                            $smallimageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75)->setQuality(100)."|".$alt;
+                            $imageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(450, 450)->setQuality(100)."|".$alt;
+                            $zoomimageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(750, 750)->setQuality(100)."|".$alt;
+
+                            //if(count($productcolorinfo[$temp]["images"]) == 0)
+                            if(!isset($productcolorinfo[$temp]["images"]))
+                            {
+                                $productcolorinfo[$temp]["images"] = array();
+                                $productcolorinfo[$temp]["images"]["small"] = array($smallimageurl);
+                                $productcolorinfo[$temp]["images"]["zoom"] = array($zoomimageurl);
+                                $productcolorinfo[$temp]["images"]["big"] = array($imageurl);
+                                //echo "creating"."<br/>";
+                            }
+                            else
+                                if(count($productcolorinfo[$temp]["images"]["small"]) < 4)
+                                {
+                                    array_push($productcolorinfo[$temp]["images"]["big"], $imageurl);
+                                    array_push($productcolorinfo[$temp]["images"]["small"], $smallimageurl);
+                                    //echo "pushing"."<br/>";
+                                    array_push($productcolorinfo[$temp]["images"]["zoom"], $zoomimageurl);
+                                }
+                        }
+                    }
+                }
+            }
+            else
+            {
+
+                if($sizeavaliable)
                 $temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
             else
                 $temp1 = "2|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
@@ -896,6 +970,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             {
                 //echo "pushing";
                 array_push($productcolorinfo[$temp]["sizes"], $temp1);
+
             }
             else
             {
@@ -946,6 +1021,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     }
                 }
             }
+          }
         }
 
         $tempproductcolorinfo = array();
@@ -969,8 +1045,21 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             if($instance['label'] != "")
                 array_push($productallsizes, array("label" => $instance['label'], "value" => $instance['value']) );
         }
+
+        //for lenght attribute
+        $productalllength = array();
+        if($lengthavailable)
+        {
+            $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'length'); //here, "color" is the attribute_code
+            $allOptions = $attribute->getSource()->getAllOptions(true, true);
+            foreach ($allOptions as $instance) {
+                if($instance['label'] != "")
+                    array_push($productalllength, array("label" => $instance['label'], "value" => $instance['value']) );
+            }
+        }
         ?>
         <script type="text/javascript">
+            _islengthavailable = <?php echo $lengthavailable;?>;
             _productcolorinfo = new Array();
             _cnfrewardpoint = '<?php echo $productrewardpoints; ?>';
             <?php
@@ -994,12 +1083,18 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             _sizeattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
             <?php
         }
-    }
+            if($attribute->getProductAttribute()->getAttributeCode() == "length")
+            {
+            ?>
+                _lengthattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
+                <?php
+            }
+        }
 
-    $currentcolorcount = 0;
-    foreach($productcolorinfo as $key=>$val)
-    {
-        ?>
+            $currentcolorcount = 0;
+            foreach($productcolorinfo as $key=>$val)
+            {
+                ?>
             _productcolorinfo[<?php echo $currentcolorcount; ?>] = new Object();
             _productcolorinfo[<?php echo $currentcolorcount; ?>].color = '<?php echo $key; ?>';
             _productcolorinfo[<?php echo $currentcolorcount; ?>].hex = new Array();
@@ -1010,16 +1105,57 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             _productcolorinfo[<?php echo $currentcolorcount; ?>].hex[<?php echo $i; ?>] = '<?php echo $val['hex'][$i]; ?>';
             <?php
         }
-    ?>
-            _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes = new Array();
-            <?php
-                for($i = 0; $i < count($val['sizes']); $i++)
-                {
-                    ?>
-            _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes[<?php echo $i; ?>] = '<?php echo $val['sizes'][$i]; ?>';
-            <?php
-        }
-    ?>
+
+            if(!$lengthavailable)
+            {
+            ?>
+                _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes = new Array();
+                <?php
+                    for($i = 0; $i < count($val['sizes']); $i++)
+                    {
+                        ?>
+                _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes[<?php echo $i; ?>] = '<?php echo $val['sizes'][$i]; ?>';
+                <?php
+                }
+
+            }
+            // code for size and length attribute  only in case of length attribute available
+            if($lengthavailable)
+            {
+            ?>
+                _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes = new Array();
+                <?php
+                    for($i = 0; $i < count($val['sizes']); $i++)
+                    {
+                        ?>
+                        _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes[<?php echo $i; ?>] = '<?php echo $val['sizes'][$i]; ?>';
+                        <?php
+                    }
+                ?>
+                _productcolorinfo[<?php echo $currentcolorcount; ?>].length = new Array();
+                <?php
+
+                    foreach($val['length'] as $key => $value)
+                    {
+                        for($j = 0; $j < count($value); $j++)
+                        {
+                            if($j == 0)
+                            {
+                                ?>
+                                _productcolorinfo[<?php echo $currentcolorcount; ?>].length[<?php echo $key; ?>] = new Array();
+                                <?php
+                            }
+                ?>
+
+                _productcolorinfo[<?php echo $currentcolorcount; ?>].length[<?php echo $key; ?>][<?php echo $j; ?>] = '<?php echo $val['length'][$key][$j]; ?>';
+                   <?php
+                        }
+                    }
+
+
+
+            }
+            ?>
             _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages = new Array();
             <?php
                 for($i = 0; $i < count($val['images']['zoom']); $i++)
@@ -1269,6 +1405,18 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                         </div>
                                     </div>
                                     <!-- selectSize -->
+                                    <!-- select length -->
+                                    <div class="selectedlength" <?php if(!$lengthavailable) { echo "style='display:none;'"; } ?>>
+                                        <?php
+                                        foreach($productalllength as $length)
+                                        {
+                                            ?>
+                                            <div value="<?php echo $length['value']; ?>" size="<?php echo $length['label']; ?>"><?php echo $length['label']; ?></div>
+                                        <?php
+                                        }
+                                        ?>
+                                    </div>
+                                    <!-- select length -->
 
                                     <!-- selectFit -->
                                     <div class="box-seprtr">

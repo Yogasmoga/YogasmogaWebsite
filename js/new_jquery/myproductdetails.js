@@ -436,10 +436,13 @@ function addtocart()
     jQuery("div.producterrorcontainer div.errormsg").hide();
     var size = jQuery("div#sizecontainer div.dvselectedsize").attr("value");
     var color = jQuery("table.normalproductdetail div#colorcontainer table").has("td.tdselectedcolor").attr("value");
+    var length = 192;
     _addingtocart = true;
     var addurl = homeUrl + 'mycheckout/mycart/add?product=' + _productid + '&qty=' + _productorderqty + '&super_attribute[' + _colorattributeid + ']=' + color;
     if(_sizesuperattribute)
         addurl = addurl + '&super_attribute[' + _sizeattributeid + ']=' + size;
+    if(_islengthavailable)
+        addurl = addurl + '&super_attribute[' + _lengthattributeid + ']=' + length;
     jQuery.ajax({
         type : 'POST',
         url : addurl,

@@ -485,9 +485,9 @@ if($lengthavailable)
 }
 
 
-    echo "<pre>";
-    print_r($productcolorinfo);
-    echo "</pre>";
+//    echo "<pre>";
+//    print_r($productcolorinfo);
+//    echo "</pre>";die;
 
 ?>
 
@@ -553,9 +553,10 @@ foreach($productcolorinfo as $key=>$val)
     _productcolorinfo[<?php echo $currentcolorcount; ?>].hex[<?php echo $i; ?>] = '<?php echo $val['hex'][$i]; ?>';
     <?php
 }
-?>
-    if(!_islengthavailable)
+
+    if(!$lengthavailable)
     {
+    ?>
         _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes = new Array();
         <?php
             for($i = 0; $i < count($val['sizes']); $i++)
@@ -564,11 +565,12 @@ foreach($productcolorinfo as $key=>$val)
         _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes[<?php echo $i; ?>] = '<?php echo $val['sizes'][$i]; ?>';
         <?php
         }
-    ?>
+
     }
     // code for size and length attribute  only in case of length attribute available
-    if(_islengthavailable)
+    if($lengthavailable)
     {
+    ?>
         _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes = new Array();
         <?php
             for($i = 0; $i < count($val['sizes']); $i++)
@@ -578,7 +580,28 @@ foreach($productcolorinfo as $key=>$val)
         <?php
         }
     ?>
+        _productcolorinfo[<?php echo $currentcolorcount; ?>].length = new Array();
+        <?php
+
+            foreach($val['length'] as $key => $value)
+            {
+                for($j = 0; $j < count($value); $j++)
+                {
+                    if($j == 0)
+                    {
+                        ?>
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].length[<?php echo $key; ?>] = new Array();
+                        <?php
+                    }
+                ?>
+
+                        _productcolorinfo[<?php echo $currentcolorcount; ?>].length[<?php echo $key; ?>][<?php echo $j; ?>] = '<?php echo $val['length'][$key][$j]; ?>';
+                <?php
+                }
+            }
+
     }
+    ?>
     _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages = new Array();
     <?php
         for($i = 0; $i < count($val['images']['zoom']); $i++)
@@ -977,6 +1000,19 @@ if($_product->getAttributeText('canzoomimage') == "yes")
     </div>
 </div>
 <!-- selectSize -->
+<!-- select length -->
+<div class="selectedlength" <?php if(!$lengthavailable) { echo "style='display:none;'"; } ?>>
+    <?php
+        foreach($productalllength as $length)
+        {
+            ?>
+            <div value="<?php echo $length['value']; ?>" size="<?php echo $length['label']; ?>"><?php echo $length['label']; ?></div>
+            <?php
+        }
+    ?>
+</div>
+<!-- select length -->
+
 
 <!-- fittable -->
 <div class="box-seprtr">
