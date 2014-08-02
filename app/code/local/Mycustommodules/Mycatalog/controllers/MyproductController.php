@@ -1411,7 +1411,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                         foreach($productalllength as $length)
                                         {
                                             ?>
-                                            <div value="<?php echo $length['value']; ?>" size="<?php echo $length['label']; ?>"><?php echo $length['label']; ?></div>
+                                            <div value="<?php echo $length['value']; ?>" lengthtype="<?php echo $length['label']; ?>"><?php echo $length['label']; ?></div>
                                         <?php
                                         }
                                         ?>

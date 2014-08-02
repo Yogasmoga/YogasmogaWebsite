@@ -1757,3 +1757,7 @@ body.cms-help .2-columns-wrapper{padding: 0 40px;}
 .cms-size-chart .fitDetail table{margin-top: 10px;}
 .cms-product-care{position: relative;}
 .cms-product-care .pc-right{float: left; width: auto; margin-right: 180px;}
+
+.selectedlength div{display: inline-block; border: 1px solid #A9A9A9; text-align: center; cursor: pointer; padding: 2px 8px; margin: 0 7px 0 0;}
+.selectedlength div.selected{background: #666; border-color: #666; color: #fff;}
+.selectedlength{margin-top: 10px; border-bottom: 1px solid #FFF; padding-bottom: 10px;}

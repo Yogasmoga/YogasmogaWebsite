@@ -580,7 +580,7 @@ foreach($productcolorinfo as $key=>$val)
         <?php
         }
     ?>
-        _productcolorinfo[<?php echo $currentcolorcount; ?>].length = new Array();
+        _productcolorinfo[<?php echo $currentcolorcount; ?>].lengths = new Array();
         <?php
 
             foreach($val['length'] as $key => $value)
@@ -590,12 +590,12 @@ foreach($productcolorinfo as $key=>$val)
                     if($j == 0)
                     {
                         ?>
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].length[<?php echo $key; ?>] = new Array();
+                            _productcolorinfo[<?php echo $currentcolorcount; ?>].lengths[<?php echo $key; ?>] = new Array();
                         <?php
                     }
                 ?>
 
-                        _productcolorinfo[<?php echo $currentcolorcount; ?>].length[<?php echo $key; ?>][<?php echo $j; ?>] = '<?php echo $val['length'][$key][$j]; ?>';
+                        _productcolorinfo[<?php echo $currentcolorcount; ?>].lengths[<?php echo $key; ?>][<?php echo $j; ?>] = '<?php echo $val['length'][$key][$j]; ?>';
                 <?php
                 }
             }
@@ -643,7 +643,7 @@ foreach($productcolorinfo as $key=>$val)
     $currentcolorcount++;
 }
 ?>
-    console.log(_productcolorinfo);
+    console.log(_productcolorinfo);   
 
     //for(var i = 0; i < _productcolorinfo.length; i++)
     //    {
@@ -1002,11 +1002,12 @@ if($_product->getAttributeText('canzoomimage') == "yes")
 <!-- selectSize -->
 <!-- select length -->
 <div class="selectedlength" <?php if(!$lengthavailable) { echo "style='display:none;'"; } ?>>
+    <span class="blck-head-sml" style="display:block; margin-bottom: 10px;"><span>Step 3:</span> Select a length</span>
     <?php
         foreach($productalllength as $length)
         {
             ?>
-            <div value="<?php echo $length['value']; ?>" size="<?php echo $length['label']; ?>"><?php echo $length['label']; ?></div>
+            <div value="<?php echo $length['value']; ?>" lengthtype="<?php echo $length['label']; ?>"><?php echo $length['label']; ?></div>
             <?php
         }
     ?>
