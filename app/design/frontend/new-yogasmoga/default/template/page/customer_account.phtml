@@ -53,17 +53,19 @@
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
         <div id="pagecontainer">
-            <div id="mainimage" class="fullscreen colorbg pgsection" desc="Accounts Page" style="position : relative;">
+            <div id="mainimage" class="fullscreen colorbg pgsection dashboard-index" desc="Accounts Page" style="position : relative;">
                 <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('customer/dashboard_nav.phtml')->toHtml(); ?>
-                <table class="fixwidth">
-                    <tr>
-                        <td>
-                            <?php echo $this->getChildHtml('global_messages'); ?>
-                            <?php Mage::getSingleton('core/session')->setGlobalMessage($this->getChildHtml('global_messages')); ?>
-                            <?php echo $this->getChildHtml('content'); ?>    
-                        </td>
-                    </tr>
-                </table>  
+                <div class="pg-content">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing:0;">
+                        <tr>
+                            <td>
+                                <?php echo $this->getChildHtml('global_messages'); ?>
+                                <?php Mage::getSingleton('core/session')->setGlobalMessage($this->getChildHtml('global_messages')); ?>
+                                <?php echo $this->getChildHtml('content'); ?>    
+                            </td>
+                        </tr>
+                    </table>
+                </div>  
             </div>
             <?php echo $this->getChildHtml('footer'); ?>
         </div>

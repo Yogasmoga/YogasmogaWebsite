@@ -24,110 +24,38 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<div class="address-info">
-        <div class="billing-add f-left">
+<script type="text/javascript">
+jQuery(function(){
+       equaliseHeight();
+       jQuery(window).resize(function(){
+        equaliseHeight();
+       });
+});
+
+function equaliseHeight(){
+     var maxheight = 0;
+
+        jQuery('.address-info .add-box').each(function () {
+            maxheight = (jQuery(this).height() > maxheight ? jQuery(this).height() : maxheight);
+        });
+
+        jQuery('.address-info .add-box').height(maxheight);        
+}
+</script>
+<div class="dashboard-container">
+    <div class="address-info">
+        <div class="billing-add f-left add-box">
             <!-- <span class="add-heading">Default Billing Address <a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a></span> -->
-            <?php echo '<span class="add-heading">Default Billing Address <a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a></span>' ?>
+            <?php echo '<span class="add-heading">Default Billing Address</span>' ?>
            <?php echo $this->getPrimaryBillingAddressHtml() ?>
+           <?php echo '<a style="margin-top: 30px;" href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink f-right">Edit</a>'?>                 
         </div>
-        <div class="shipping-add f-right">
+        <div class="shipping-add f-right add-box">
             <!-- <span class="add-heading">Default Shipping Address <a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a></span> -->
-            <?php echo '<span class="add-heading">Default Shipping Address <a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a></span>' ?>
+            <?php echo '<span class="add-heading">Default Shipping Address</span>' ?>
             <?php echo $this->getPrimaryShippingAddressHtml() ?>
+            <?php echo '<a style="margin-top: 30px;" href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink f-right">Edit</a>' ?>
         </div>  
         <div class="clear-fix"></div>      
     </div>
-    <?php /*
-     <tr>
-        <td colspan="2">
-            <div class="sectionheader addressbookheader"><?php echo $this->__('Address Book') ?><a href="<?php echo $this->getAddressBookUrl() ?>">Manage</a></div>
-        </td>
-    </tr>
-    <tr class="customeraddress">
-        <td colspan="2">
-            <div class="subsectionheader">BILLING ADDRESS</div>
-			<table class="address-table">
-				<colgroup>
-					<col width="150"/>
-					<col width=""/>
-				</colgroup>
-				<tr>
-					<th>Name</th>
-					<th>Address</th>
-				</tr>
-				<tr>
-				<?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling()): 
-						$adrs = Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses);
-						echo '<td>'.$adrs->getData('firstname').' '.$adrs->getData('lastname').'</td>';
-						echo '<td><a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a>'.$this->getPrimaryBillingAddressHtml().'</td>'; ?>
-				<?php else: ?>
-					<td colspan+"2"><?php echo $this->__('You have no default billing address in your address book.') ?></td>
-				<?php endif ?>
-				</tr>
-			</table>
-        </td>
-	</tr>
-    <tr class="customeraddress">
-        <td colspan="2">
-            <div class="subsectionheader">Shipping ADDRESS</div>
-			<table class="address-table">
-				<colgroup>
-					<col width="150"/>
-					<col width=""/>
-				</colgroup>
-				<tr>
-					<th>Name</th>
-					<th>Address</th>
-				</tr>
-				<tr>
-				<?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultShipping()): 
-						$adrs = Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses);
-						echo '<td>'.$adrs->getData('firstname').' '.$adrs->getData('lastname').'</td>';
-						echo '<td><a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a>'.$this->getPrimaryShippingAddressHtml().'</td>'; ?>
-				<?php else: ?>
-					<td colspan+"2"><?php echo $this->__('You have no default Shipping address in your address book.') ?></td>
-				<?php endif ?>
-				</tr>
-			</table>
-        </td>
-	</tr> -->
-        <!-- td class="column2cell">
-            <table>
-                <tr>
-                    <td>
-                        <div class="subsectionheader">SHIPPING ADDRESS</div>            
-                    </td>
-                    <td class="tdsubsectionheaderlink">
-                        <a href="<?php echo $this->getPrimaryShippingAddressEditUrl() ?>">Edit</a>            
-                    </td>
-                </tr>
-            </table>
-            <?php echo $this->getPrimaryShippingAddressHtml() ?>
-        </td 
-    </tr> */ ?>
-<?php /*
-<div class="col2-set">
-    <div class="box">
-        <div class="box-title">
-            <h3><?php echo $this->__('Address Book') ?></h3>
-            <a href="<?php echo $this->getAddressBookUrl() ?>"><?php echo $this->__('Manage Addresses') ?></a>
-        </div>
-        <div class="box-content">
-            <div class="col-1">
-                <h4><?php echo $this->__('Default Billing Address') ?></h4>
-                <address>
-                    <?php echo $this->getPrimaryBillingAddressHtml() ?><br />
-                    <a href="<?php echo $this->getPrimaryBillingAddressEditUrl() ?>"><?php echo $this->__('Edit Address') ?></a>
-                </address>
-            </div>
-            <div class="col-2">
-                <h4><?php echo $this->__('Default Shipping Address') ?></h4>
-                <address>
-                    <?php echo $this->getPrimaryShippingAddressHtml() ?><br />
-                    <a href="<?php echo $this->getPrimaryShippingAddressEditUrl() ?>"><?php echo $this->__('Edit Address') ?></a>
-                </address>
-            </div>
-        </div>
-    </div>
 </div>
-*/ ?>
