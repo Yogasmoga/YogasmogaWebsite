@@ -63,7 +63,7 @@
                     <td class="prname">
                         <span class="prd-nam"><?php echo html_entity_decode(Mage::helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name')); ?> </span>
                         <span class="prd-deldet">
-                            <a href="<?php echo $_product->getProductUrl(); ?>">View Details</a><br/>
+                            <a href="<?php echo $_product->getProductUrl(); ?>">View Details</a>
                             <a class="prd-remove" title="Remove Item" href="<?php echo Mage::helper('core/url')->getHomeUrl()."/wishlist/index/remove/item/".$item->getWishlistItemId(); ?>">Delete</a>
                         </span>                        
                     </td>
@@ -101,12 +101,7 @@
                         </td>
                     <?php endforeach; ?>
                     */ ?>
-                </tr>
-                <tr class="bar" style="height: 5px;">
-                    <td colspan="3" style="font-size: 0;">
-                        <img src="<?php echo $this->getSkinUrl('images/big-divider.png'); ?>" style="width: 100%;">
-                    </td>
-                </tr>
+                </tr>                
             <?php endforeach ?>
         <?php else: ?>
             <td colspan="<?php echo count($columns);?>" class="wishlist-empty"><?php echo $this->__('This Wish list has no Items');?></td>

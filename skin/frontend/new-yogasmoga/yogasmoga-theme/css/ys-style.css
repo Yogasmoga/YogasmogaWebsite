@@ -1047,12 +1047,11 @@ body.customer-address-index .myaccountdashboard .customeraddress td .subsectionh
 .email-pref:last-child{margin-bottom: 0;}
 .white-border{border-top: 1px solid #fff; padding-top: 30px;}
 /***My Wish list***/
-.my-wishlist{width: 720px !important; margin: 0 auto;}
-table.tblwishlist td.prname{position: relative; font-family: gothambold !important; color: #555 !important;}
-table.tblwishlist td.prname .prd-deldet{position: absolute; left: 0px; bottom: 10px;}
-table.tblwishlist td.prname .prd-deldet a{text-transform: capitalize; color: #c03; text-decoration: underline; font-family: gothambook;}
+.my-wishlist{width: 100% !important; margin: 0 auto;}
+table.tblwishlist td.prname{position: relative; font-family: gothambold !important; color: #555 !important; padding-left: 0 !important;}
+table.tblwishlist td.prname .prd-deldet{position: absolute; left: 0px; bottom: 16px;}
+table.tblwishlist td.prname .prd-deldet a{text-transform: uppercase; color: #c03; font-family: gothambook; font-size: 11px; line-height: 25px; margin-right: 25px; border-bottom: 1px solid #c03; padding-bottom: 3px;}
 table.tblwishlist td.primage{width: 200px !important;}
-table.tblwishlist td.prname{padding-left: 0;}
 
 /***Styling the checkboxes***/ 
 div.email-pref input[type="checkbox"],tr.def-address input[type="checkbox"] {display: none;}
@@ -1220,7 +1219,7 @@ img#closelightbox{bottom: 20px !important; right: 28px !important; width: 21px;}
 .wishlist-header h4,.referfriend-heading h4,.order-sum-header h4{font-family: ITCAvantGardeProMd,gotham,Arial; width: 100%; color: #555; font-size: 31px; letter-spacing: 0.8pt; font-weight: normal; }
 .header-top-bar{height:15px; background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/bot-divider.png") no-repeat; background-position: top center; background-size: 100%; width: 100%;}
 
-table.tblwishlist tr.last td{border:none !important;}
+/*table.tblwishlist tr.last td{border:none !important;}*/
 table.tblwishlist td.prprice{padding-left: 0 !important; text-align: left !important;}
 table.tblwishlist thead th{padding-bottom: 0 !important; font-family: gothambold !important; color: #555 !important;}
 /***Checkout header footer display none**/
@@ -1264,7 +1263,7 @@ table.tblwishlist thead th{padding-bottom: 0 !important; font-family: gothambold
 /*.fixwidth{margin-left: 270px !important; width: auto; padding-right: 20%; max-width: 100% !important;}*/
 .data-table.ys{min-width: 100% !important;}
 .dashboard-address-book{max-width: 700px; min-width: 500px;}
-.accountbg #mainimage,body.gift_of_ys .gift-of-ys,body.rewardpoints-index-referral .accountbg{/*margin-top: 10px !important;*/ background: url(../images/bot-divider.png) 50% 100% no-repeat;}
+/*.accountbg #mainimage,body.gift_of_ys .gift-of-ys,body.rewardpoints-index-referral .accountbg{margin-top: 10px !important; background: url(../images/bot-divider.png) 50% 100% no-repeat;}*/
 body.gift_of_ys .gift-of-ys{width: 100%; text-align: center;}
 .addedItem .similarProdList>li{width: 100%;}
 .show-prodImg{width: 74%; margin: 0; float: right;}
@@ -1274,8 +1273,8 @@ table.productimagecontainer{margin-bottom: 70px; /*min-height: 620px;*/}
 .goy-balance{margin-bottom:30px !important; min-height:250px; max-height:250px; background: #efefef; padding: 25px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; max-width: 400px; width: 48% !important; display: inline-block !important; vertical-align: top; position: relative;
 }
 .goy-form .button-set button.button{margin-left: 10px !important;}
-#createcardform{display: block; width: 80%; background: #efefef; padding: 25px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; margin: 0 auto;}
-.manage-goy{width:80%; margin: 0 auto; }
+#createcardform{display: block; width: 100%; background: #efefef; padding: 25px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; margin: 0 auto;}
+.manage-goy{width:100%; margin: 0 auto; }
 #createcardform td.label{display: none;}
 #createcardform table{width: 100% !important;}
 #createcardform table.inputtable tbody tr:first-child{background:#fff; height: 30px;}
@@ -1288,10 +1287,10 @@ textarea.watermark{color: #555 !important; font-size: 13px !important;}
 .goy-balance form{display: block; position: absolute; right: 25px; left: 25px; bottom: 25px;}
 table.gfredeem td.inputholder, table#redeem td.inputholder{width: 28%; background: #fff; padding: 5px; height: 30px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; border: none !important;}
 table.gfredeem td.dash, table#redeem td.dash{text-align: center; vertical-align: middle;}
-button.btn-reset span{ width: 147px !important; height: 42px !important; background: url(../images/reset-form.jpg) 0 0 no-repeat !important; }
-button.btn-addtobag span{width: 151px !important; height: 42px !important; background: url(../images/add-to-bag.jpg) 0 0 no-repeat !important;}
-.goy-balance .sub-title{padding-top: 0 !important; font-family: gothambold !important; font-size: 11px !important; }
-.goy-balance p{font-family: gothambook; font-size: 11px;}
+button.btn-reset span{ width: 145px !important; height: 38px !important; background: url(../images/reset-gift.png) 0 0 no-repeat !important; }
+button.btn-addtobag span{width: 145px !important; height: 38px !important; background: url(../images/add-bag.png) 0 0 no-repeat !important;}
+.goy-balance .sub-title{padding-top: 0 !important; font-family: gothambold !important; font-size: 11px !important; margin: 0 0 10px !important; color: #666 !important; text-transform: uppercase !important; font-weight: normal !important; line-height: 17px;}
+.goy-balance p{font-family: gothambook; font-size: 12px; line-height: 17px;}
 .applygiftcard,.applypromo,.applysmogi {cursor: pointer;}
 table.productimagecontainer table.smallimagecontiner td:last-child{display: none;}
 /*#absproductoptions table.productdetailtable div#colorcontainer>div:nth-child(7n){margin-right: 0;}*/
@@ -1581,7 +1580,7 @@ table.inputtable td.label, table.gfredeem td.label, table#redeem td.label,input{
 .addtl-add-remove{margin-left: 0 !important;}
 body.customer-address-index .myaccountdashboard .customeraddress td:last-child{padding: 0; margin: 0;}
 .customeraddress .right,.customeraddress a.addressLink{margin:0 !important;}
-form#createcardform .sub-title{text-transform: uppercase; font-weight: normal; margin: 0 0 10px; color: #555; padding-top: 0; font-family: gothambold!important; font-size: 11px; text-align: left; margin-bottom: 20px;}
+form#createcardform .sub-title{text-transform: uppercase; font-weight: normal; margin: 0 0 10px; color: #555; padding-top: 0; font-family: gothambold!important; font-size: 11px; text-align: left; margin-bottom: 20px; line-height: 17px;}
 button.button.btn-addtoaccount{margin: 0 !important;}
 
 
@@ -1772,6 +1771,20 @@ div.product-details .block-elm{width: 100%;}
 .smogi-counting .smogi-count{font-family: ITCAvantGardeProBk; color: #cc0033; font-size: 36px; line-height: 40px; font-weight: normal;} 
 .smogi-counting span{color: #ae8637; font-family: AvantGardeGothicITCW01D; font-size: 15px; line-height: 19.41px;}
 .caddress{font-size: 12px; font-family: gothambook; line-height: 21px; color: #555; display: block}
+table.tblwishlist thead{display: none;}
+table.tblwishlist td{border-bottom: 1px solid #555 !important; padding: 20px 10px !important; line-height: 17px; font-size: 11px; color: #555 !important; }
+#wishlist-table tr.even:hover, #wishlist-table tr.odd:hover{background: none !important;}
+table.tblwishlist td.primage img{width: 60%;}
+.my-wishlist .buttons-set{margin-top: 30px !important;}
+#my-orders-table,body.customer-giftcards-balance .pager{display: none;}
+#giftofys{margin-bottom: 70px;}
+button.button span{border:none ;}
+.goy-form .full label { display: none; }
+.goy-form .full textarea { display: block; padding: 5px; width: 100%; height: 90px; }
+textarea.watermark{font-family: gothambook;}
+.goy-form .button-set button.button{float: right; margin-left: 10px !important;}
+button.btn-addtobag span { padding: 0; text-indent: -999em; margin: 0; border: 0;}
+button.btn-reset span{ padding: 0; text-indent: -999em; margin: 0; border: 0;}
 
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
     p.block-desc, .madeinusa-txt, li.new-arrivals-desc .block-desc,.contWom h4 span {
