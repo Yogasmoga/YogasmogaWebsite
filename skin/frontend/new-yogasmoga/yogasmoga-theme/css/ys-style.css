@@ -1855,6 +1855,7 @@ a.addtl-add-additon{margin-left: 13px !important;}
 .tbldivider:last-child{display: none;}
 .pm-box{max-width: 800px; min-width: 600px;}
 .payment-metthod-cont span{display: block; font-family: gothambook; font-size: 12px; line-height: 21px; color: #555}
+.payment-metthod-cont span img{margin-top: 20px;}
 .holder-name{font-family: gothambold; font-size: 12px; line-height: 21px; color: #555; text-transform: uppercase; margin:0;} 
 
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
