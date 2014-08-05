@@ -175,10 +175,11 @@
                         $productCollection = $newarrivals->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
                         foreach($productCollection as $_product)
                         {
-                            if($i==4)break;$i++;
+
+                            if($i==5)break;$i++;
                          ?>
                             <li>
-                                <a id="<?php echo $_product->getId(); ?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(221, 330)->setQuality(91); ?>" /></a>
+                                <a id="<?php echo $_product->getId(); ?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(91); ?>" /></a>
 
 
                                 <div class="prd-details">
@@ -193,20 +194,7 @@
                        <?php
                         }
 
-                        ?> 
-                       <li>
-                            <a id="204" class="quick-view" href="javascript:void(0);"><img class="prd-image" src="http://192.168.2.100/media/catalog/product/cache/1/thumbnail/221x330/24382d02732018ba96675613f9245ddb/c/l/classic-slimmie-pant-reg_carbon-6_carbon-6_spin.jpg"></a>
-
-
-                            <div class="prd-details">
-                                <a href="http://192.168.2.100/women/classic-slimmie-pant-regular-206"><span class="prd-name gothambd">Classic Slimmie Pant - Regular (Reversible)</span> </a>
-                                <span class="product-colors gothambk"></span>
-                                <span class="prd-price gothambk">$109</span>
-                                <a id="204" href="javascript:void(0)" class="quick-view">
-                                    <img src="http://192.168.2.100/skin/frontend/new-yogasmoga/yogasmoga-theme/images/women/add-to-bag.png" border="0" alt="">
-                                </a>
-                            </div>
-                        </li>                        
+                        ?>                        
                     </ul>                    
                 </div>
                 <div style="display:none;">

@@ -452,7 +452,8 @@ function bubble(status){
                             <li data-blockid = "product-care"><a href="<?php echo $this->getBaseUrl();?>help#product-care">Product Care</a></li>
                             <li data-blockid = "email-us" class="last"><a href="<?php echo $this->getBaseUrl();?>help#email-us">Email Us</a></li>
                         </ul>
-                    &nbsp;&nbsp;|</li>
+                        <span>|</span>
+                    </li>
                     <li><?php
 
                                 $islogedinuser = false;
@@ -475,7 +476,8 @@ function bubble(status){
                             <li><a href="<?php echo $this->getBaseUrl()."customer/account/index"; ?>">account settings</a></li>
                             <li class="last"><a id="signin" href="<?php if($islogedinuser)echo $this->getBaseUrl()."customer/account/logout/";else echo "javascript:void(0);";  ?>"><?php if($islogedinuser)echo "Sign Out";else echo "Sign In";  ?></a></li>
                         </ul>
-                    &nbsp;&nbsp;|</li>
+                        <span>|</span>
+                    </li>
                     <li><a href="javascript:void(0);" class="open-cart">Shopping Bag (<span class="cartitemcount"><?php echo $itemcount; ?></span>)</a></li>
                     <li class="checkoutshow" style="display:none;">|&nbsp;&nbsp;<a class="checkout-link-top" href="<?php echo $this->getBaseUrl();?>checkout/onepage">Checkout</a></li>
                 </ul>
@@ -511,7 +513,7 @@ function bubble(status){
                                 <li><a href="<?php echo $this->getBaseUrl();?>smogi-bucks#smogi-bucks-balance">smogi bucks balance</a></li>
                             </ul>
                         </li>
-                        <li class="rangoli"><a href="javascript:void(0)" class="rangoli-head">Rangoli</a></li>
+                        <li class="rangoli"><a href="javascript:void(0)" class="rangoliOrng" id="rangoli-head">Rangoli</a></li>
                     </ul>
                 </div>
                 <?php echo $this->getChildHtml('topSearch') ?>    

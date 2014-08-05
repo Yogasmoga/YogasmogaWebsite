@@ -1,4 +1,25 @@
 jQuery(document).ready(function($){
+
+
+
+//        var colourArr = ['#ff8785','#3c903a','#8e57b2','#0066a9','#5ea3dc', '#e60002', '#ffd716'];
+        var colourArr = ['rangoliOrng', 'rangoliPrpl','rangoliLBlu','rangoliGrn','rangoliBlu', 'rangoliRd', 'rangoliYlw'];
+        var count = 0;
+        if (count < colourArr.length) {
+            timer = setInterval(function(){
+                changeRangoliColour(colourArr[count]);
+                count++;
+                if (count === colourArr.length) {
+                    count = 0;
+                }
+            },5000);
+        }
+
+        function changeRangoliColour(colour) {
+            $('#rangoli-head').attr('class', colour);
+        }
+
+
 	    if(_currenturl.indexOf('#') > 0){
 			//$(window).scrollTop($(window).scrollTop() - _headerHeight);
 			//console.log($("#"+ _currenturl.substr(_currenturl.indexOf('#') + 1)));

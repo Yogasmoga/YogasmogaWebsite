@@ -2,10 +2,35 @@ jQuery(document).ready(function($) {
     //scrollingLink();
     wishList();
     readmore();
+    detailHeight();
+
+
+
 
 //    $("#orderitem, #preorderitem").live("click", function(){
     $("#orderitem, #preorderitem").live("click", function() {
-      //  alert('test');
+        if(_islengthavailable){
+             var errormsg = '';
+        if(jQuery("div.selectedlength div.selected").length == 0 && _productorderqty == 0)
+            errormsg = "Please select quantity and length to continue.";
+        else
+        {
+            if(_productorderqty == 0)
+                errormsg = "Please select quantity to continue.";
+            if(jQuery("div.selectedlength div.selected").length == 0)
+                errormsg = "Please select length to continue.";
+        }
+        if(errormsg != '')
+        {
+            jQuery("div.producterrorcontainer div.errormsg").hide();
+            jQuery("div.producterrorcontainer div.errormsg").html(errormsg);
+            jQuery("div.producterrorcontainer div.errormsg").fadeIn('fast');
+            jQuery("#orderitem").addClass('bagdisabled');
+            jQuery("#orderitem").removeClass('spbutton');
+            return;
+        }
+    }
+  else{
         $("div.producterrorcontainer div.errormsg").empty();
         var errormsg = '';
         if ($("div#sizecontainer div.dvselectedsize").length == 0 && _productorderqty == 0)
@@ -26,6 +51,7 @@ jQuery(document).ready(function($) {
             $("#orderitem").removeClass('spbutton');
             return;
         }
+    }
         // var errormsg = '';
         $("#addtobagloader").remove();            
         $( "<div id='addtobagloader'><img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' /></div>" ).insertAfter( jQuery(this) );
@@ -120,6 +146,16 @@ jQuery(document).ready(function($) {
 //    });
 
 });
+
+
+function detailHeight(){
+    var wdth35H = jQuery(".wdth35").height();
+    wdth35H = wdth35H-40;
+    console.log(wdth35H);
+    jQuery(".wdth65").css("min-height", wdth35H);    
+}
+
+
     // Category links fixed on scroll function
     var scrollBottom = jQuery("#sitemap").height();
     function scrollingLink(){
