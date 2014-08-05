@@ -1756,6 +1756,7 @@ body.cms-help .2-columns-wrapper{padding: 0 40px;}
 .cms-product-care{position: relative;}
 .cms-product-care .pc-right{float: left; width: auto; margin-right: 180px;}
 
+
 /***Landing Page***/
 ul.new-arrivals a.quick-view{display: none;}
 .wl-feat-prd,.wl-color-story-prd{font-size: 0; min-width: 1007px;}
@@ -1908,3 +1909,8 @@ button.btn-reset span{ padding: 0; text-indent: -999em; margin: 0; border: 0;}
     .pg-heading h2{font-size: 50px; line-height: 53px;}       
     
 }
+
+.selectedlength div{display: inline-block; border: 1px solid #A9A9A9; text-align: center; cursor: pointer; padding: 2px 8px; margin: 0 7px 0 0;}
+.selectedlength div.selected{background: #666; border-color: #666; color: #fff;}
+.selectedlength{margin-top: 10px; border-bottom: 1px solid #FFF; padding-bottom: 10px;}
+

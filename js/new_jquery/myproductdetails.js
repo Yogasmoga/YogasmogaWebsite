@@ -1,6 +1,9 @@
 _preorderinfohovered = false;
 var _rewardpoints = 0;
-jQuery(document).ready(function($){
+jQuery(window).load(function($){
+    selectfirstsizeonload();
+});
+jQuery(document).ready(function($){    
     $(document).keydown( function(e) {
         var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
         if (key==37) {  ///left key
@@ -20,12 +23,13 @@ jQuery(document).ready(function($){
         } 
         //else if (e.keyCode==40) {console.log ('down');}
         
-    });
-    $("table.normalproductdetail div#colorcontainer table").live("click", function(){
+    });    
+    $("table.normalproductdetail div#colorcontainer table").live("click", function(){ 
         $('.errormsg').empty().hide();
         jQuery("#orderitem").removeClass('bagdisabled');
         jQuery("#orderitem").addClass('spbutton');
         changeColor($(this).attr("color"));
+        selectfirstsizeonload();
     });
     
     $("table.smallimagecontiner td:not(.selectedimage)").live("click", function(){
@@ -53,11 +57,20 @@ jQuery(document).ready(function($){
         addtocart();
     });
     
-    $("div#sizecontainer td:not(.disabled) div:not(.dvselectedsize)").live("click", function(){
+    $("div#sizecontainer td:not(.disabled) div:not(.dvselectedsize)").live("click", function(){               
         $('.errormsg').empty().hide();
         jQuery("#orderitem").removeClass('bagdisabled');
         jQuery("#orderitem").addClass('spbutton');
-        changeproductsize($(this));
+        changeproductsize($(this));              
+    });
+
+    $(".selectedlength div:visible").live("click", function(){
+        $('.errormsg').empty().hide();
+        jQuery("#orderitem").removeClass('bagdisabled');
+        jQuery("#orderitem").addClass('spbutton');
+        changelengthtype($(this));
+        $(this).addClass("selected");
+        $(this).siblings().removeClass("selected");
     });
     
     InitializeProductQty();
@@ -168,9 +181,112 @@ function InitializeProductQty()
     _productorderqty = jQuery("div.sizeselector select.qtyselector").val();
 }
 
+function changelengthtype(sz){
+
+        //console.log('changing size');
+       jQuery("div.selectedlength div").removeClass("selected");
+        sz.addClass("selected");
+    
+    
+    if(sz.hasClass("outofstock"))
+    {
+        jQuery("#orderitem").hide();
+        jQuery("#preorderitem").hide();
+        jQuery("#preorderhelp").hide();
+        jQuery("#outofstockitem").show();
+//        return;
+    }
+    else
+    {
+        jQuery("#outofstockitem").hide();
+        var qty = sz.attr("qty") * 1;
+        var orderqty =_productorderqty;      
+        if((qty - orderqty) >= 0)
+        {
+            jQuery("#orderitem").show();
+            jQuery("#preorderitem").hide();
+            jQuery("#preorderhelp").hide();
+            jQuery("#outofstockitem").hide();
+        }
+        else
+        {
+            if(sz.hasClass("canbackorder"))
+            {
+                jQuery("#orderitem").hide();
+                jQuery("#preorderitem").show();
+                jQuery("#preorderhelp").show();
+                jQuery("#outofstockitem").hide();
+            }
+            else
+            {
+                jQuery("#orderitem").hide();
+                jQuery("#preorderitem").hide();
+                jQuery("#preorderhelp").hide();
+                jQuery("#outofstockitem").show();
+//                return;
+            }
+        }
+
+    }
+    
+
+    var price = sz.attr("price");
+    jQuery("div.productcost").html("$" + price);
+    //var rewardpoints = Math.floor((price * 1) * _rewardpointsearned);
+//    jQuery("div.smogibuckcount td").html(rewardpoints);
+    _rewardpoints = sz.attr("rewardpoints") * 1;
+    //console.log(jQuery("select.qtyselector").val());
+    if((jQuery("select.qtyselector").val() * 1) > 0)
+        jQuery("div.smogibuckcount td").html(_rewardpoints * (jQuery("select.qtyselector").val() * 1));
+    else
+        jQuery("div.smogibuckcount td").html(_rewardpoints);
+    
+    jQuery("#orderitem").removeClass("bagdisabled");
+    jQuery("#orderitem").addClass("spbutton");
+}
 function changeproductsize(sz)
-{
-    //console.log('changing size');
+{  
+       
+    if(_islengthavailable){
+        jQuery("div.selectedlength div").removeClass("selected");
+        jQuery("div#sizecontainer div").removeClass("dvselectedsize");
+        sz.addClass("dvselectedsize");
+        var colorName = jQuery("#colorcontainer div.selected table").attr("color");
+        var colorindex = searchproductcolorinfoarrray(colorName);
+        // console.log(colorindex);
+        var sizeVal = sz.attr("size");
+        //console.log(colorindex +"---"+sizeVal);
+        // console.log(_productcolorinfo[colorindex]);
+        jQuery(".selectedlength div").hide();
+        for(i = 0; i < _productcolorinfo[colorindex].lengths[sizeVal].length; i++)    
+            {
+            var lengthtemp = _productcolorinfo[colorindex].lengths[sizeVal][i].split("|");               
+            var lengthType = lengthtemp[0];
+            var qty = lengthtemp[1];
+            var price = lengthtemp[2];
+            var rewardpoints = lengthtemp[3];
+            var instock = lengthtemp[4];
+            var canbackorder = false;           
+            jQuery(".selectedlength div[lengthtype='"+lengthType+"']").attr("qty", qty);
+            jQuery(".selectedlength div[lengthtype='"+lengthType+"']").attr("price", price);
+            jQuery(".selectedlength div[lengthtype='"+lengthType+"']").attr("rewardpoints", rewardpoints);            
+            jQuery(".selectedlength div[lengthtype='"+lengthType+"']").show();
+            
+            if((lengthtemp[5] * 1) > 0)
+                canbackorder = true;
+
+                if(instock == 0)
+                jQuery(".selectedlength div[lengthtype='"+lengthType+"']").addClass('outofstock'); 
+            else
+                jQuery(".selectedlength div[lengthtype='"+lengthType+"']").removeClass('outofstock');
+
+            if(canbackorder)
+                jQuery(".selectedlength div[lengthtype='"+lengthType+"']").addClass('canbackorder');
+            else
+                jQuery(".selectedlength div[lengthtype='"+lengthType+"']").removeClass('canbackorder');    
+
+            }
+    }else{        
     jQuery("div#sizecontainer div").removeClass("dvselectedsize");
         sz.addClass("dvselectedsize");
     
@@ -229,11 +345,64 @@ function changeproductsize(sz)
     
     jQuery("#orderitem").removeClass("bagdisabled");
     jQuery("#orderitem").addClass("spbutton");
+
+    }
+     
 }
 
 function changeOrderqty(qty)
-{
-    qty = qty * 1;
+{   
+     if(_islengthavailable){ 
+            qty = qty * 1;
+            _productorderqty = qty;
+            
+            if(jQuery("div.selectedlength div.selected").length == 0)
+                return;
+            if(qty > 0)
+                jQuery("div.smogibuckcount td").html(_rewardpoints * qty);
+            else
+                jQuery("div.smogibuckcount td").html(_rewardpoints);
+            //jQuery("div.smogibuckcount td").html(_rewardpoints * qty);
+            var stockqty = jQuery("div.selectedlength div.selected").attr("qty") * 1;
+            if(jQuery("div.selectedlength div.selected").hasClass("outofstock"))
+            {
+                jQuery("#orderitem").hide();
+                jQuery("#preorderitem").hide();
+                jQuery("#preorderhelp").hide();
+                jQuery("#outofstockitem").show();
+        //        return;
+            }
+            else
+            {
+                jQuery("#outofstockitem").hide();
+                if((stockqty - qty) >= 0)
+                {
+                    jQuery("#orderitem").show();
+                    jQuery("#preorderitem").hide();
+                    jQuery("#preorderhelp").hide();
+                    jQuery("#outofstockitem").hide();
+                }
+                else
+                {
+                    if(jQuery("div.selectedlength div.selected").hasClass('canbackorder'))
+                    {
+                        jQuery("#orderitem").hide();
+                        jQuery("#preorderitem").show();
+                        jQuery("#preorderhelp").show();
+                        jQuery("#outofstockitem").hide();
+                    }
+                    else
+                    {
+                        jQuery("#orderitem").hide();
+                        jQuery("#preorderitem").hide();
+                        jQuery("#preorderhelp").hide();
+                        jQuery("#outofstockitem").show();
+                    }
+                }
+            }
+     }
+     else{
+        qty = qty * 1;
     _productorderqty = qty;
     
     if(jQuery("div#sizecontainer div.dvselectedsize").length == 0)
@@ -280,6 +449,8 @@ function changeOrderqty(qty)
             }
         }
     }
+     }
+    
 }
 
 function searchproductcolorinfoarrray(clr)
@@ -307,11 +478,11 @@ function changeColor(clr)
     jQuery("table.normalproductdetail div#colorcontainer table[color='" + clr + "'] tr:nth-child(2) td").addClass("tdselectedcolor");
     jQuery("table.normalproductdetail div#colorcontainer table[color='" + clr + "']").parent("div").addClass("selected");
     jQuery("div#sizecontainer div").removeClass("dvselectedsize");
-    //jQuery("div#sizecontainer div").addClass("disabled");
-    jQuery("div#sizecontainer div").parent().addClass("disabled");
+    //jQuery("div#sizecontainer div").addClass("disabled");    
+    jQuery("div#sizecontainer div").parent().addClass("disabled");    
     for(i = 0; i < _productcolorinfo[colorindex].sizes.length; i++)
     {
-        var sizetemp = _productcolorinfo[colorindex].sizes[i].split("|");
+        var sizetemp = _productcolorinfo[colorindex].sizes[i].split("|");        
         var size = sizetemp[0];
         var qty = sizetemp[1];
         var price = sizetemp[2];
@@ -414,78 +585,122 @@ function changeColor(clr)
 
 function addtocart()
 {
-    var errormsg = '';
-    if(jQuery("div#sizecontainer div.dvselectedsize").length == 0 && _productorderqty == 0)
-        errormsg = "Please select quantity and size to continue.";
-    else
-    {
-        if(_productorderqty == 0)
-            errormsg = "Please select quantity to continue.";
-        if(jQuery("div#sizecontainer div.dvselectedsize").length == 0)
-            errormsg = "Please select size to continue.";
-    }
-    if(errormsg != '')
-    {
-        jQuery("div.producterrorcontainer div.errormsg").hide();
-        jQuery("div.producterrorcontainer div.errormsg").html(errormsg);
-        jQuery("div.producterrorcontainer div.errormsg").fadeIn('fast');
-        jQuery("#orderitem").addClass('bagdisabled');
-        jQuery("#orderitem").removeClass('spbutton');
-        return;
-    }
-    jQuery("div.producterrorcontainer div.errormsg").hide();
-    var size = jQuery("div#sizecontainer div.dvselectedsize").attr("value");
-    var color = jQuery("table.normalproductdetail div#colorcontainer table").has("td.tdselectedcolor").attr("value");
-    _addingtocart = true;
-    var addurl = homeUrl + 'mycheckout/mycart/add?product=' + _productid + '&qty=' + _productorderqty + '&super_attribute[' + _colorattributeid + ']=' + color;
-    if(_sizesuperattribute)
-        addurl = addurl + '&super_attribute[' + _sizeattributeid + ']=' + size;
-    jQuery.ajax({
-        type : 'POST',
-        url : addurl,
-        data : {},
-        success : function(result){
-            result = eval('(' + result + ')');
-            _addingtocart = false;
-            if(result.status == 'success')
-            {
-                if(_productdisplaymode == "popup")
-                    jQuery( "#productdetailpopup" ).dialog( "close" );
-                jQuery("span.cartitemcount").html(result.count);
-                jQuery("div#myminicart").html(result.html);
-                jQuery("div#myminicart").slideDown('slow', function(){
-                    setTimeout(function(){ jQuery("div#myminicart").slideUp('slow'); }, 4000);
-                });
-                //jQuery("a.top-link-cart").fadeOut(500, function(){
-//                    jQuery("span.cartitemcount").html(result.count);
-//                    jQuery("a.top-link-cart").fadeIn(500);
-//                });
-                //jQuery("a.top-link-cart").animate({
-//                    opacity: 0,
-//                    filter : 0
-//                }, 500, function(){
-//                    jQuery("span.cartitemcount").html(result.count);
-//                    jQuery("a.top-link-cart").animate({
-//                        opacity: 1,
-//                        filter : 100
-//                    },500);
-//                });
-            }
-            else
-            {
-                alert('This item is out of stock.');
-            }
-            //
-//            result = eval('(' + result + ')');
-//            if(result.status == "0")
-//                jQuery("#footernotification").html(result.message).removeClass("success").addClass("error").fadeIn();
-//            else
-//                jQuery("#footernotification").html(result.message).removeClass("error").addClass("success").fadeIn();
-            //setTimeout(function(){ rremovenotifications(); }, 5000);
+    if(_islengthavailable){
+             var errormsg = '';
+        if(jQuery("div.selectedlength div.selected").length == 0 && _productorderqty == 0)
+            errormsg = "Please select quantity and length to continue.";
+        else
+        {
+            if(_productorderqty == 0)
+                errormsg = "Please select quantity to continue.";
+            if(jQuery("div.selectedlength div.selected").length == 0)
+                errormsg = "Please select length to continue.";
         }
-    }); 
+        if(errormsg != '')
+        {
+            jQuery("div.producterrorcontainer div.errormsg").hide();
+            jQuery("div.producterrorcontainer div.errormsg").html(errormsg);
+            jQuery("div.producterrorcontainer div.errormsg").fadeIn('fast');
+            jQuery("#orderitem").addClass('bagdisabled');
+            jQuery("#orderitem").removeClass('spbutton');
+            return;
+        }
+    }else{
+            var errormsg = '';
+        if(jQuery("div#sizecontainer div.dvselectedsize").length == 0 && _productorderqty == 0)
+            errormsg = "Please select quantity and size to continue.";
+        else
+        {
+            if(_productorderqty == 0)
+                errormsg = "Please select quantity to continue.";
+            if(jQuery("div#sizecontainer div.dvselectedsize").length == 0)
+                errormsg = "Please select size to continue.";
+        }
+        if(errormsg != '')
+        {
+            jQuery("div.producterrorcontainer div.errormsg").hide();
+            jQuery("div.producterrorcontainer div.errormsg").html(errormsg);
+            jQuery("div.producterrorcontainer div.errormsg").fadeIn('fast');
+            jQuery("#orderitem").addClass('bagdisabled');
+            jQuery("#orderitem").removeClass('spbutton');
+            return false;
+        }
+    }
+        jQuery("div.producterrorcontainer div.errormsg").hide();
+        var size = jQuery("div#sizecontainer div.dvselectedsize").attr("value");
+        var color = jQuery("table.normalproductdetail div#colorcontainer table").has("td.tdselectedcolor").attr("value");
+        var length = jQuery("div.selectedlength div.selected").attr("value");
+        _addingtocart = true;
+        var addurl = homeUrl + 'mycheckout/mycart/add?product=' + _productid + '&qty=' + _productorderqty + '&super_attribute[' + _colorattributeid + ']=' + color;
+        if(_sizesuperattribute)
+            addurl = addurl + '&super_attribute[' + _sizeattributeid + ']=' + size;
+        if(_islengthavailable)
+            addurl = addurl + '&super_attribute[' + _lengthattributeid + ']=' + length;
+        jQuery.ajax({
+            type : 'POST',
+            url : addurl,
+            data : {},
+            success : function(result){
+                result = eval('(' + result + ')');
+                _addingtocart = false;
+                if(result.status == 'success')
+                {
+                    if(_productdisplaymode == "popup")
+                        jQuery( "#productdetailpopup" ).dialog( "close" );
+                    jQuery("span.cartitemcount").html(result.count);
+                    jQuery("div#myminicart").html(result.html);
+                    jQuery("div#myminicart").slideDown('slow', function(){
+                        setTimeout(function(){ jQuery("div#myminicart").slideUp('slow'); }, 4000);
+                    });
+                    //jQuery("a.top-link-cart").fadeOut(500, function(){
+    //                    jQuery("span.cartitemcount").html(result.count);
+    //                    jQuery("a.top-link-cart").fadeIn(500);
+    //                });
+                    //jQuery("a.top-link-cart").animate({
+    //                    opacity: 0,
+    //                    filter : 0
+    //                }, 500, function(){
+    //                    jQuery("span.cartitemcount").html(result.count);
+    //                    jQuery("a.top-link-cart").animate({
+    //                        opacity: 1,
+    //                        filter : 100
+    //                    },500);
+    //                });
+                }
+                else
+                {
+                    alert('This item is out of stock.');
+                }
+                //
+    //            result = eval('(' + result + ')');
+    //            if(result.status == "0")
+    //                jQuery("#footernotification").html(result.message).removeClass("success").addClass("error").fadeIn();
+    //            else
+    //                jQuery("#footernotification").html(result.message).removeClass("error").addClass("success").fadeIn();
+                //setTimeout(function(){ rremovenotifications(); }, 5000);
+            }
+        }); 
+    
+
+
+    
 }
 function setImageContheightPDP(){
         var pdpimagecontH = jQuery("table.tdbigimagecontainer img").height();
         jQuery("table.productimagecontainer").parent(".upper-container").css("min-height", pdpimagecontH + 70);
     }
+
+/**In case of length available**/
+function selectfirstsizeonload(){
+    if(_islengthavailable){    
+    if(jQuery(".selectedsize").is(":visible"))
+    {
+        var firstSize = jQuery("div#sizecontainer td:not(.disabled)").first().find("div");
+        firstSize.addClass("dvselectedsize");
+        if(firstSize.hasClass("dvselectedsize"))
+        {            
+            changeproductsize(firstSize);
+        }        
+    }
+}
+}
