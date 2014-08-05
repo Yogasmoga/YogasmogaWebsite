@@ -955,6 +955,12 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         }
                     }
                 }
+                else{
+                    if(isset($productcolorinfo[$temp]["length"][$_childproduct->getAttributeText('size')]))
+                        array_push($productcolorinfo[$temp]["length"][$_childproduct->getAttributeText('size')],$temp1);
+                    else
+                        $productcolorinfo[$temp]["length"][$_childproduct->getAttributeText('size')] = array($temp1);
+                }
             }
             else
             {
@@ -1034,7 +1040,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             }
         }
         $productcolorinfo = $tempproductcolorinfo;
-
+        //print_r($productcolorinfo);die('test');
 
         $productallsizes = array();
 
@@ -1094,7 +1100,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             $currentcolorcount = 0;
             foreach($productcolorinfo as $key=>$val)
             {
-                ?>
+?>
             _productcolorinfo[<?php echo $currentcolorcount; ?>] = new Object();
             _productcolorinfo[<?php echo $currentcolorcount; ?>].color = '<?php echo $key; ?>';
             _productcolorinfo[<?php echo $currentcolorcount; ?>].hex = new Array();
@@ -1109,65 +1115,64 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             if(!$lengthavailable)
             {
             ?>
-                _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes = new Array();
-                <?php
-                    for($i = 0; $i < count($val['sizes']); $i++)
-                    {
-                        ?>
-                _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes[<?php echo $i; ?>] = '<?php echo $val['sizes'][$i]; ?>';
-                <?php
-                }
-
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes = new Array();
+            <?php
+                for($i = 0; $i < count($val['sizes']); $i++)
+                {
+                    ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes[<?php echo $i; ?>] = '<?php echo $val['sizes'][$i]; ?>';
+            <?php
             }
-            // code for size and length attribute  only in case of length attribute available
-            if($lengthavailable)
-            {
-            ?>
-                _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes = new Array();
-                <?php
-                    for($i = 0; $i < count($val['sizes']); $i++)
-                    {
-                        ?>
-                        _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes[<?php echo $i; ?>] = '<?php echo $val['sizes'][$i]; ?>';
-                        <?php
-                    }
-                ?>
-                _productcolorinfo[<?php echo $currentcolorcount; ?>].length = new Array();
-                <?php
 
-                    foreach($val['length'] as $key => $value)
+        }
+        // code for size and length attribute  only in case of length attribute available
+        if($lengthavailable)
+        {
+        ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes = new Array();
+            <?php
+                for($i = 0; $i < count($val['sizes']); $i++)
+                {
+                    ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes[<?php echo $i; ?>] = '<?php echo $val['sizes'][$i]; ?>';
+            <?php
+            }
+        ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].lengths = new Array();
+            <?php
+
+                foreach($val['length'] as $key => $value)
+                {
+                    for($j = 0; $j < count($value); $j++)
                     {
-                        for($j = 0; $j < count($value); $j++)
+                        if($j == 0)
                         {
-                            if($j == 0)
-                            {
-                                ?>
-                                _productcolorinfo[<?php echo $currentcolorcount; ?>].length[<?php echo $key; ?>] = new Array();
-                                <?php
-                            }
-                ?>
+                            ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].lengths[<?php echo $key; ?>] = new Array();
+            <?php
+        }
+    ?>
 
-                _productcolorinfo[<?php echo $currentcolorcount; ?>].length[<?php echo $key; ?>][<?php echo $j; ?>] = '<?php echo $val['length'][$key][$j]; ?>';
-                   <?php
-                        }
-                    }
-
-
-
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].lengths[<?php echo $key; ?>][<?php echo $j; ?>] = '<?php echo $val['length'][$key][$j]; ?>';
+            <?php
             }
-            ?>
+        }
+
+}
+?>
             _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages = new Array();
             <?php
                 for($i = 0; $i < count($val['images']['zoom']); $i++)
                 {
                     $abc = explode("|", $val['images']['zoom'][$i]);
                     ?>
+            //console.log('<?php echo $abc[0]; ?>');
             _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>] = new Array();
             _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
             _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
             <?php
         }
-    ?>
+        ?>
             _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages = new Array();
             <?php
                 for($i = 0; $i < count($val['images']['small']); $i++)
@@ -1179,7 +1184,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
             <?php
         }
-    ?>
+        ?>
             _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages = new Array();
             <?php
                 for($i = 0; $i < count($val['images']['big']); $i++)
@@ -1191,11 +1196,11 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
             <?php
         }
-    ?>
+        ?>
             <?php
-                    $currentcolorcount++;
-                }  
-            ?>
+            $currentcolorcount++;
+        }
+                    ?>
             _productdisplaymode = 'popup';
             //console.log(_productcolorinfo);
         </script>

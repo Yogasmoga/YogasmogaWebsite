@@ -255,7 +255,8 @@ function changeproductsize(sz)
         var colorindex = searchproductcolorinfoarrray(colorName);
         // console.log(colorindex);
         var sizeVal = sz.attr("size");
-        // console.log(_productcolorinfo[colorindex].lengths[sizeVal]);
+        //console.log(colorindex +"---"+sizeVal);
+        // console.log(_productcolorinfo[colorindex]);
         jQuery(".selectedlength div").hide();
         for(i = 0; i < _productcolorinfo[colorindex].lengths[sizeVal].length; i++)    
             {
