@@ -1070,16 +1070,16 @@ body{overflow-x:auto !important; -webkit-font-smoothing:subpixel-antialiased;}
 /****Dash board***/
 .smogi-info{font-family: gothambold !important; font-size: 11px !important; line-height: 19px; color: #555; }
 .smogi-info .smogi-count{color: #d90d3d;}
-.myaccountdashboard a{font-weight: normal; border-bottom: 1px solid #d90d3d; margin-left:8px; padding: 0 !important; text-decoration: none !important; }
+.myaccountdashboard a{font-weight: normal; border-bottom: 1px solid #d90d3d; margin-left:8px; padding: 0 !important; text-decoration: none !important; line-height: 19.45px !important; text-transform: uppercase !important;}
 .myaccountdashboard .sectionheader{font-size: 11px !important; line-height: 19px; margin-bottom: 5px !important;}
 .myaccountdashboard{width: auto !important;}
 body.customer-address-index .myaccountdashboard .sectionheader{display: none;}
-body.customer-address-index .myaccountdashboard .customeraddress td .subsectionheader{font-family: gothambold; color: #555; font-size: 11px !important; margin-bottom: 10px;}
+body.customer-address-index .myaccountdashboard .customeraddress td .subsectionheader{font-family: gothambold; color: #555; font-size: 11px !important; margin-bottom: 10px; line-height: 17px;}
 .gift-card-credit{margin-top: 50px;}
 .address-info{font-size: 11px; margin-top: 4%; color: #555}
 .address-info .cname{display: block;}
-.address-info .add-heading{display: block; margin-bottom: 20px; font-size: 11px; font-family: gothambold; text-transform: uppercase; color: #555; line-height: 21px;}
-.billing-add,.shipping-add{width: 48%; /*height:auto !important;*/ background: #efefef; padding: 20px 30px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box;}
+.myaccountdashboard .add-heading{display: block; margin-bottom: 20px; font-size: 11px; font-family: gothambold; text-transform: uppercase; color: #555; line-height: 21px;}
+.billing-add,.shipping-add,.payment-metthod-cont{position:relative; width: 48%; /*height:auto !important;*/ background: #efefef; padding: 20px 30px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box;}
 .myaccountdashboard p { font-family: gothambook; font-size: 11px; letter-spacing: normal; }
 
 
@@ -1101,7 +1101,7 @@ body.customer-address-index .myaccountdashboard .customeraddress td .subsectionh
 #edit-accountinfo table tr:first-child td label,#edit-accountinfo table tr:first-child td input,#address-form table tr:first-child td label{font-size: 11px;}
 
 /***edit account Info***/
-.my-account .edit-info,.refer-frnd,.track-invites,.edit-dash-address{background: #efefef; padding: 25px; width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box; max-width: 700px; min-width: 500px;} 
+.my-account .edit-info,.refer-frnd,.refer-link,.track-invites,.edit-dash-address{background: #efefef; padding: 25px; width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box; } 
 .backlink,#changepasswordoptionholder{display: none;}
 #passwordchangeoptions{display: block !important;}
 .change-password-label{margin-bottom: 5px;}
@@ -1124,7 +1124,7 @@ div.email-pref label, tr.def-address label { cursor: pointer; padding-left: 36px
 div.email-pref label:before,tr.def-address label:before { content: ""; display: inline-block; width: 25px; height: 25px; margin-right: 10px; position: absolute; left: 0px; top: -5px; background-color: #ffffff;}  
 div.email-pref input[type="checkbox"]:checked + label:before, tr.def-address input[type="checkbox"]:checked + label:before { content: url("../images/checkbox-tick.png"); color: #DF4126; font-size: 18px; text-align: center; line-height: 24px; }  
 /***Share with a friend***/
-.refer-frnd,.track-invites{margin: 0 auto 20px auto;}
+.refer-frnd,.track-invites,.refer-link{margin: 0 auto 20px auto;}
 .referfriend-invitehead .potential{display: none;}
 #referafriend-container{width: 75% !important; margin-left: 25% !important; max-width: 960px; min-width: 500px; margin-bottom: 100px;}
 table#referrallink{margin-left: auto; margin-right: auto;}
@@ -1142,9 +1142,11 @@ div#addanotherreferral{width:auto !important; margin-bottom: 5px !important; dis
 div#addanotherreferral p{border-bottom: 1px solid #D90D3D;}
 table.referredfriendslist td.name, table.referredfriendslist td.email{width: 48%;}
 .track-invites table.referredfriendslist td.name div,.track-invites table.referredfriendslist td.email div{border: none !important; width: 100% !important; min-width: 100% !important; max-width: 100% !important; margin-left: 0; text-transform: lowercase; margin-bottom: 5px;}
-.refer-frnd .referfriend-subheader,.track-invites .referfriend-subheader{font-size: 11px !important; font-family: gothambold !important;}
+.refer-frnd .referfriend-subheader,.track-invites .referfriend-subheader,.refer-link .referfriend-subheader{font-size: 11px !important; font-family: gothambold !important; line-height: 17px;margin-bottom: 19px;}
 table#referrallink{margin-bottom: 40px !important;}
 table.referfriendforms td.processing img{margin-top: 15px !important;}
+#uniquelink{font-size: 14px; line-height: 17px; font-family: gothambook; margin-bottom: 11.5px;}
+.share-cont table p{font-size: 11px; line-height: 17px; font-family: gothambook;}
 
 
 
@@ -1327,7 +1329,7 @@ table.tblwishlist thead th{padding-bottom: 0 !important; font-family: gothambold
 .customer-address-index .myheader{display: none;}
 /*.fixwidth{margin-left: 270px !important; width: auto; padding-right: 20%; max-width: 100% !important;}*/
 .data-table.ys{min-width: 100% !important;}
-.dashboard-address-book{max-width: 700px; min-width: 500px;}
+/*.dashboard-address-book{max-width: 700px; min-width: 500px;}*/
 /*.accountbg #mainimage,body.gift_of_ys .gift-of-ys,body.rewardpoints-index-referral .accountbg{margin-top: 10px !important; background: url(../images/bot-divider.png) 50% 100% no-repeat;}*/
 body.gift_of_ys .gift-of-ys{width: 100%; text-align: center;}
 .addedItem .similarProdList>li{width: 100%;}
@@ -1440,10 +1442,8 @@ body.sales-order-view #my-orders-table thead tr th:first-child, body.sales-order
 .continueshopppingbtn{color: #fff; font-style: normal; font-variant: normal; font-weight: normal; font-size: 12px; line-height: normal; font-family: gothambold; text-transform: uppercase; background-image: url(../images/shopping-cart/grn-btn.png) !important; width: 184px !important; height: 48px !important;}
 .change-password-label,.email-pref label{color: #555;}
 body.customer-address-index .myaccountdashboard .customeraddress th,
-body.customer-address-index .myaccountdashboard .customeraddress td,
-body.customer-address-index .myaccountdashboard .customeraddress a.addressLink,
-body.customer-address-index .myaccountdashboard a
-{font-family: gothambook; font-size: 11px !important; color: #555 !important; text-transform: capitalize;}
+body.customer-address-index .myaccountdashboard .customeraddress td
+{font-family: gothambook; font-size: 12px !important; color: #555 !important; text-transform: capitalize; line-height: 21px;}
 body.customer-address-index .myaccountdashboard .customeraddress td{padding-top: 0 !important;}
 
 /*.cms-our-story .pg-content,.cms-ys-tech .pg-content,.cms-help .pg-content{padding-right: 20%;}*/
@@ -1714,10 +1714,10 @@ input#smogi:-ms-input-placeholder {
 
 /****CMS Page CSS****/
 .pg-content section,.cms-size-chart{max-width: 800px;}
-.cms-container{padding: 15px 0 0 0;}
+.cms-container{padding: 15px 40px 0 40px;}
 .cms-pg{width: auto; margin: 0 0 0 301px; vertical-align: top; color: #666; line-height: normal; min-height: 300px; border-top: 1px solid #555; padding-top: 15px;}
 .pg-heading{margin-bottom: 40px;}
-.pg-heading h2 {font-family: ITCAvantGardeProMd; font-size: 36px; color: #555555; line-height: 40px; margin-bottom: 8px;}
+.pg-heading h2 {font-family: ITCAvantGardeProMd; font-size: 36px; color: #555555; line-height: 40px; margin-bottom: 8px; text-transform: uppercase;}
 .sec-head{font-family: gothambold; font-size: 11px; line-height: 17px; display: block; margin-bottom: 10px;}
 .pg-tagline,.cms-pg p, .pg-content section p{font-family: gothambook; font-size: 12px; line-height: 17px; margin-bottom: 10px; text-align: justify;}
 .cms-pg section p:last-child,.pg-content section p:last-child{margin-bottom: 35px;}
@@ -1753,6 +1753,7 @@ body.cms-help .2-columns-wrapper{padding: 0 40px;}
 .cms-product-care{position: relative;}
 .cms-product-care .pc-right{float: left; width: auto; margin-right: 180px;}
 
+
 /***Landing Page***/
 ul.new-arrivals a.quick-view{display: none;}
 .wl-feat-prd,.wl-color-story-prd{font-size: 0; min-width: 1007px;}
@@ -1783,9 +1784,12 @@ div.cms-side-nav{display: none;}
 .terms-conditions .pg-heading,.terms-conditions > p,.terms-conditions section{width: 58%; max-width: 1040px; margin-left:auto; margin-right: auto; }
 .terms-conditions > p{margin-bottom: 30px !important;}
 
-div.product-details .wdth65{width: auto; float: left; margin: 0 341px 0 0;}
-div.product-details .wdth35{width: 281px; position: absolute; right: 0;}
+div.product-details .wdth65{width: auto; float: none; margin: 0 341px 0 0;}
+div.product-details .wdth35{width: 281px; position: absolute; right: 0; display: inline-block; vertical-align: top; float: none; top: 0; height: 100%;}
 div.product-details .block-elm{width: 100%;}
+ul.sub-nav li { margin: 0; display: block; line-height: normal; }
+ul.sub-nav li a:hover, ul.sub-nav li.current a { color: #c03; }
+#homemainslider{position: relative !important;}
 
 
 /****Fonts Responsive***/
@@ -1814,12 +1818,12 @@ div.product-details .block-elm{width: 100%;}
 }
 
 /****Dashboard changes***/
-.dashboard-index{padding: 5px 40px 0 40px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
-.dashboard-container{margin: 0; width: auto;min-width: 600px; max-width: 800px;}
-.smogi-info-box{background: #efefef; width:100%; padding: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; text-align: center;}
-.smogi-info-box h6{font-family: gothambold; font-size: 11px; line-height: 21px; color: #555; text-transform: uppercase; margin-bottom: 25px;}
+.dashboard-index{padding: 15px 40px 0 40px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
+.dashboard-container,.share-cont{margin: 0; width: auto;min-width: 600px; max-width: 800px;}
+.smogi-info-box{background: #efefef; width:100%; padding:20px 20px 25px 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; text-align: center;}
+.smogi-info-box h6{font-family: gothambold; font-size: 11px; line-height: 21px; color: #555; text-transform: uppercase; margin-bottom: 15px;}
 .smogi-info-box p{font-family: gothambook; font-size: 12px; line-height: 21px; color: #666;}
-.smogi-counting{width: 124px; height: 124px; background: url(../images/bg-circle.png) no-repeat top left; display: block; background-size: 100% 100%; margin: 0 auto; padding: 20px 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
+.smogi-counting{width: 124px; height: 124px; background: url(../images/bg-circle.png) no-repeat top left; display: block; background-size: 100% 100%; margin: 0 auto 10px auto; padding: 20px 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
 .smogi-counting .smogi-count{font-family: ITCAvantGardeProBk; color: #cc0033; font-size: 36px; line-height: 40px; font-weight: normal;} 
 .smogi-counting span{color: #ae8637; font-family: AvantGardeGothicITCW01D; font-size: 15px; line-height: 19.41px;}
 .caddress{font-size: 12px; font-family: gothambook; line-height: 21px; color: #555; display: block}
@@ -1828,7 +1832,7 @@ table.tblwishlist td{border-bottom: 1px solid #555 !important; padding: 20px 10p
 #wishlist-table tr.even:hover, #wishlist-table tr.odd:hover{background: none !important;}
 table.tblwishlist td.primage img{width: 60%;}
 .my-wishlist .buttons-set{margin-top: 30px !important;}
-#my-orders-table,body.customer-giftcards-balance .pager{display: none;}
+body.customer-giftcards-balance #my-orders-table,body.customer-giftcards-balance .pager{display: none;}
 #giftofys{margin-bottom: 70px;}
 button.button span{border:none ;}
 .goy-form .full label { display: none; }
@@ -1837,6 +1841,16 @@ textarea.watermark{font-family: gothambook;}
 .goy-form .button-set button.button{float: right; margin-left: 10px !important;}
 button.btn-addtobag span { padding: 0; text-indent: -999em; margin: 0; border: 0;}
 button.btn-reset span{ padding: 0; text-indent: -999em; margin: 0; border: 0;}
+.subsectionheader .myaccountdashboard a{margin-left: 13px;}
+span.cname{display: block;}
+.addtional-add{background: #efefef; margin-top: 4%; padding: 20px 30px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
+a.addtl-add-additon{margin-left: 13px !important;}
+/*.tbldivider{display: none;}*/
+.tbldivider:last-child{display: none;}
+.pm-box{max-width: 800px; min-width: 600px;}
+.payment-metthod-cont span{display: block; font-family: gothambook; font-size: 12px; line-height: 21px; color: #555}
+.payment-metthod-cont span img{margin-top: 20px;}
+.holder-name{font-family: gothambold; font-size: 12px; line-height: 21px; color: #555; text-transform: uppercase; margin:0;} 
 
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
     p.block-desc, .madeinusa-txt, li.new-arrivals-desc .block-desc,.contWom h4 span {
@@ -1905,3 +1919,8 @@ button.btn-reset span{ padding: 0; text-indent: -999em; margin: 0; border: 0;}
     .pg-heading h2{font-size: 50px; line-height: 53px;}       
     
 }
+
+.selectedlength div{display: inline-block; border: 1px solid #A9A9A9; text-align: center; cursor: pointer; padding: 2px 8px; margin: 0 7px 0 0;}
+.selectedlength div.selected{background: #666; border-color: #666; color: #fff;}
+.selectedlength{margin-top: 10px; border-bottom: 1px solid #FFF; padding-bottom: 10px;}
+

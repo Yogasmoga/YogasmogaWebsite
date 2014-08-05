@@ -3,7 +3,7 @@
                     <div style="max-width: 800px; min-width: 600px;">
                         <div class="pg-heading">
                           <h2>YS GIFT CARD</h2>
-                          <span class="pg-tagline">You currently have $0.00 YS Gift Card credit.</span>
+                          <span class="pg-tagline">You currently have <?php echo Mage::helper('core')->currency(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomerId())); ?> YS Gift Card credit.</span>                          
                         </div>                        
                         <div class="manage-goy">                            
                         <div class="goy-balance f-left" id="Redeemcard" desc="Redeem Card">

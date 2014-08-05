@@ -35,7 +35,9 @@
     var StateCollection = <?php echo $this->helper('directory')->getRegionJson() ?>;
     console.log(StateCollection);
 </script>
-<div class="myheader no-display">MY ACCOUNT</div>
+<div class="pg-heading">
+      <h2>My Account</h2>      
+    </div> 
 <div class="edit-dash-address">
     <div class="sectionheader"><?php echo $this->getTitle() ?></div>
     <form action="<?php echo $this->getSaveUrl() ?>" method="post" id="address-form">
@@ -206,7 +208,7 @@
                     <?php if($this->isDefaultBilling()): ?>
                         <strong style="font-family:gothambook; font-size: 13px;"><?php echo $this->__('This is the Default Billing Address<br/>') ?></strong>
                     <?php elseif($this->canSetAsDefaultBilling()): ?>
-                        <table style="margin-bottom: 10px;">
+                        <table style="margin-bottom: 20px;">
                             <tr class="no-bg def-address">
                                 <!-- <td>
                                     <input type="checkbox" id="primary_billing" name="default_billing" value="1" class="checkbox" /> 
@@ -222,7 +224,7 @@
                     <?php if($this->isDefaultShipping()): ?>
                         <strong style="font-family:gothambook; font-size: 13px;"><?php echo $this->__('This is the Default Shipping Address<br/>') ?></strong>
                     <?php elseif($this->canSetAsDefaultShipping()): ?>
-                        <table style="margin-top:10px;">
+                        <table style="margin-top:20px;">
                             <tr class="no-bg def-address">
                                 <!-- <td> 
                                     <input type="checkbox" id="primary_shipping" name="default_shipping" value="1" class="checkbox" />

@@ -175,6 +175,7 @@
                         $productCollection = $newarrivals->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
                         foreach($productCollection as $_product)
                         {
+
                             if($i==5)break;$i++;
                          ?>
                             <li>

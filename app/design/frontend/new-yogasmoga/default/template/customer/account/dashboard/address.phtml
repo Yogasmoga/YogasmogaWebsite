@@ -33,28 +33,33 @@ jQuery(function(){
 });
 
 function equaliseHeight(){
-     var maxheight = 0;
+      var maxheight = "0px";
 
         jQuery('.address-info .add-box').each(function () {
-            maxheight = (jQuery(this).height() > maxheight ? jQuery(this).height() : maxheight);
+          jQuery(this).css("height", "auto");
+          maxheight = (jQuery(this).css("height") > maxheight ? jQuery(this).css("height") : maxheight);
+          console.log(jQuery(this).css("height"));  
         });
-
-        jQuery('.address-info .add-box').height(maxheight);        
+              
+        jQuery('.address-info .add-box').css("height", maxheight);
+        console.log(maxheight);        
 }
 </script>
 <div class="dashboard-container">
     <div class="address-info">
         <div class="billing-add f-left add-box">
-            <!-- <span class="add-heading">Default Billing Address <a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a></span> -->
+            <div style="margin-bottom:20px;"><!-- <span class="add-heading">Default Billing Address <a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a></span> -->
             <?php echo '<span class="add-heading">Default Billing Address</span>' ?>
-           <?php echo $this->getPrimaryBillingAddressHtml() ?>
-           <?php echo '<a style="margin-top: 30px;" href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink f-right">Edit</a>'?>                 
+           <?php echo $this->getPrimaryBillingAddressHtml(); ?>
+           </div>
+           <?php echo '<a style="position: absolute; right: 30px; bottom: 20px;" href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a>'?>                 
         </div>
         <div class="shipping-add f-right add-box">
-            <!-- <span class="add-heading">Default Shipping Address <a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a></span> -->
+            <div style="margin-bottom:20px;"><!-- <span class="add-heading">Default Shipping Address <a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a></span> -->
             <?php echo '<span class="add-heading">Default Shipping Address</span>' ?>
-            <?php echo $this->getPrimaryShippingAddressHtml() ?>
-            <?php echo '<a style="margin-top: 30px;" href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink f-right">Edit</a>' ?>
+            <?php echo $this->getPrimaryShippingAddressHtml(); ?>
+            </div>
+            <?php echo '<a style="position: absolute; right: 30px; bottom: 20px;" href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a>' ?>                        
         </div>  
         <div class="clear-fix"></div>      
     </div>
