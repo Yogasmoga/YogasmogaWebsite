@@ -79,7 +79,7 @@ ul.main-menu > li.over > ul.sub-menu{display: block;}
 #search-btn{background: transparent url("../images/search-icon.png") center no-repeat; border: none; width: 16px; height: 14px; font-size: 0; cursor: pointer; }
 
 /**Home Page**/
-.share-strip{padding: 11px 0; margin: 0 auto; width: 95%; font-size: 0; display: block;}
+.share-strip{padding: 11px 0; margin: 0 auto; width: 92%; font-size: 0; display: block;}
 .share-strip .blk{width: 50%; display: none;}
 .share-strip ul li{ color:#555; display: inline-block; padding: 0 5px; font-size: 12px; line-height: 21px;}
 .newbg{background: url("../images/dvdr-new.jpg") no-repeat bottom center !important;}
@@ -103,7 +103,7 @@ p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight
 .block-text2 p.bracelet-count{font-family: gothamlight; font-size: 120px; line-height: 90px; margin-left: -10px;}
 .block-text2 p.block-link a{color:#555;}
 .block-text2 span{font-size: 11px;}
-#playBtn{z-index: 99; width: 285px; height: auto; right: 30px; bottom: 30px; position: absolute;}
+#playBtn{z-index: 99; width: 285px; height: auto; right: 14px; bottom: 30px; position: absolute;}
 .sl-desc-handle {
     bottom: 0;
     cursor: pointer;
