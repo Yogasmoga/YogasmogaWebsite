@@ -218,7 +218,39 @@ div.copy-privacy-likes ul li img{height: 30px;}
 .signinDialog .ui-state-hover,
 .sharingDialog .ui-state-hover{border:none !important;background:none !important;padding:1px!important}
 .form-heading{font-size: 22px;}
-.thank-you-block p{display: block; text-align: center; font-size: 22px; width: 100%; margin-top: 30px; font-family: gothambook;}
+.thank-you-block {
+    position: relative;
+}
+.wdthauto.signinDialog .ui-icon-closethick {
+    left: -173px;
+    top: 20px;
+}
+.thank-you-block p {
+    bottom: 20px;
+    color: #fff;
+    display: block;
+    font: 14px/19px gothambook;
+    margin: 0;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+}
+.thank-you-block strong {
+    font-family: gothambold;
+    font-weight: normal;
+}
+
+.thank-you-block p > img {
+    display: block;
+    margin: auto auto 8px;
+}
+
+.thank-you-block a {
+    border-bottom: 1px solid #c03;
+    color: #fff;
+    padding: 2px 0 0;
+}
 #sign-in-form a.forgot-link { font-family: HelvLightRegular; font-size: 11px; text-decoration: underline; color: #9B9B9B;}
 #sign-in-form a.forgot-link:hover{color:#cc0033;}
 
@@ -525,9 +557,32 @@ table.box-desc-dvdr.smogibucks{margin-top: 15px; margin-bottom: -5px;}
 
 /** ShoppingCart **/
 .shopping-cart{background: #eeefef; color: #555;  overflow: auto; position: fixed; right: 0; width: 400px; display: none; z-index: 1; font: 13px gothambook; text-transform: capitalize;;}
-.continuelink{text-transform: uppercase;background: url("../images/shopping-cart/gry-btn.png") no-repeat top left; margin: 0; padding: 16px 5px; width: 45%; display: inline-block; font: 12px gothambold;}
-.continuelink.grn{background-image: url("../images/shopping-cart/grn-btn.png"); color: #fff;}
-.cont-full{/*margin: 0 0 20px;*/ padding: 20px 20px 0px 20px; background: #eeefef;}
+
+.continuelink {
+    background: none repeat scroll 0 0 #999;
+    display: inline-block;
+    float: left;
+    font: 11px/19px gothammedium;
+    margin: 0 10px 0 0;
+    padding: 10px 5px;
+    text-transform: uppercase;
+    width: 45%;
+    color: #fff;
+}
+.continuelink.grn {
+    background: none repeat scroll 0 0 #5ec52f;
+    color: #fff;
+}
+.cont-full .continuelink:nth-child(2) {
+    margin: 0 0 0 0;
+}
+.cont-full{padding: 20px 20px 0px 20px; background: #eeefef;}
+/*.cont-full {
+    background: none repeat scroll 0 0 #eeefef;
+    display: inline-block;
+    padding: 20px 0 0;
+    width: 100%;
+}*/
 .totalAmnt{font-weight: bold;border-bottom: 1px solid #dbdbdb; padding: 0 0 10px; margin: 0 0 10px; font-size: 14px; width: 100%; float: left;}
 .cont-full li, .cont-full > ul{display: inline-block; width: 100%;}
 .cont-full > ul{margin: 0 0 20px;}
@@ -931,7 +986,7 @@ body{overflow-x:auto !important; -webkit-font-smoothing:subpixel-antialiased;}
 .clear:after {clear: both;}
 
 /** ShoppingBag **/
-.empty-cart{display: inline-block; font: 11px gothamlight; margin: 30px auto; text-transform: uppercase;}
+.empty-cart{display: inline-block; font: 12px gothambook; margin: 30px auto; text-transform: uppercase;}
 .adddields span.error-count {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     border: 0 none;

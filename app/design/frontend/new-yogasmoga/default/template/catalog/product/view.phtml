@@ -663,6 +663,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
                 <div class="vlink-cont" style="margin-left:20px;">
                     <p class="block-link" style="margin-top: 15px;"><a href="#" class="com-a-prd-links">Watch the video of how to measure</a></p>
                 </div>
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
             </div>
                                   <?php
 

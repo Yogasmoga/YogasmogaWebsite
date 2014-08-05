@@ -705,3 +705,37 @@ ul.tr-menu > li.free-shipping {
     font: 14px/19px gothambold !important;
     margin-bottom: 40px !important;
 }
+
+@media only screen and (min-width : 1600px) {
+   .fitDetail .video-box .tble table {
+        display: block;
+        margin: 17px 0 0 !important;
+    } 
+   .fitDetail .tble table {
+        display: none;
+    } 
+    .video-box{
+        width: 45%;
+    }
+}
+
+@media only screen and (max-width : 1599px) {
+   .fitDetail .video-box .tble table {
+        display: none;
+    } 
+   .fitDetail .tble table {
+        display: block;
+    } 
+    .video-box{
+        width: auto;
+    }
+}
+
+.wdthauto{
+    /*width: auto !important;*/
+    background: none;
+}
+
+.logoCont img {
+    margin-left: 6px;
+}

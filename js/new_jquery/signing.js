@@ -69,6 +69,7 @@ function createCustomerAccount()
                 // console.log(data.status);
                 jQuery(".signing_popup_wrapper").addClass("no-display");
                 jQuery(".thank-you-block").removeClass("no-display");
+                jQuery(".signinDialog").addClass("wdthauto");
                 _islogedinuser = true;
                 jQuery("#signin").html("SIGN OUT").attr({href:homeUrl+'customer/account/logout/',id:"sign-out"});
 

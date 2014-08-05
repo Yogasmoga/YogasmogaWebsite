@@ -2,6 +2,10 @@ jQuery(document).ready(function($) {
     //scrollingLink();
     wishList();
     readmore();
+    detailHeight();
+
+
+
 
 //    $("#orderitem, #preorderitem").live("click", function(){
     $("#orderitem, #preorderitem").live("click", function() {
@@ -120,6 +124,16 @@ jQuery(document).ready(function($) {
 //    });
 
 });
+
+
+function detailHeight(){
+    var wdth35H = jQuery(".wdth35").height();
+    wdth35H = wdth35H-40;
+    console.log(wdth35H);
+    jQuery(".wdth65").css("min-height", wdth35H);    
+}
+
+
     // Category links fixed on scroll function
     var scrollBottom = jQuery("#sitemap").height();
     function scrollingLink(){

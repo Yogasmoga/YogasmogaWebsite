@@ -600,7 +600,8 @@ table.productimagecontainer table.tdbigimagecontainer td
 }
 
 table.productimagecontainer table.tdbigimagecontainer td img{
-    width: 100%;
+    /*width: 100%;*/
+    width: 72%;
 }
 
 table.productimagecontainer td.tddivider
