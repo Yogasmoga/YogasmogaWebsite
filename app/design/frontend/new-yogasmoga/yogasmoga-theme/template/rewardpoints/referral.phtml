@@ -17,45 +17,40 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
  ?>
- <style type="text/css">
-    #pagecontainer
-    {
-        position: relative;
-    }
- </style>
- <?php /* speed fix (unknown)
-<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myaccount.js"></script>
-<link media="all" href="<?php echo $this->getSkinUrl('css/myaccount.css'); ?>" type="text/css" rel="stylesheet" />
-*/ ?>
-<link media="all" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" type="text/css" rel="stylesheet" />
+
+<!-- <link media="all" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" type="text/css" rel="stylesheet" /> -->
 <script type="text/javascript">
     _disablesidenavigation = false;
 </script>
-<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('customer/dashboard_nav.phtml')->toHtml(); ?>
-<div id="referafriend-container" desc="Refer-A-Friend" class="pgsection">
-    <!-- <div class="myheader">REFER A FRIEND</div> -->
-    <div class="header-top-bar"></div>
-    <div class="referfriend-heading">
-        <h4>SHARE WITH YOUR FRIENDS</h4>
-        <span class="referfriend-desc">SHARE THE JOY OF YOGASMOGA,<br />YOUR FRIEND GETS $25 SMOGI BUCKS TOWARD THEIR 1ST ORDER.</span>
-    </div>    
-    <div class="referfriend-subheader c-align">YOUR INVITE LINK</div>
-    <table id="referrallink">
-        <tr>            
-            <td class="link">
-                <input id="uniquelink" type="text" value="<?php echo $this->getReferringUrl() ?>" readonly="true" />
-            </td>
-            <td class="share">                
-                <a href="#" id="fbrefer" onclick="sharereferlink('facebook');"></a>
-                <a href="#" onclick="sharereferlink('twitter');" id="twrefer"></a>
-                <a href="#" id="mlrefer" onclick="sharereferlink('mail');"></a>
-            </td>
-            <!-- <td class="copy">
-                <div id="copyurl" class="spbutton copy" imageurl="<?php echo $this->getSkinUrl('images/copy_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/copy_on.png'); ?>"></div>
-            </td> -->
-        </tr>
-    </table>
-    <div class="refer-frnd">
+<div class="dashboard-index">
+    <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('customer/dashboard_nav.phtml')->toHtml(); ?>
+<div class="pgsection pg-content">
+       <div class="pg-heading l-align">
+      <h2>SHARE WITH FRIENDS</h2>
+      <span class="pg-tagline">Share the joy of YOGASMOGA, your friend gets $25 SMOGI bucks toward their 1st order.</span>                          
+    </div> 
+<div class="share-cont">            
+            <div class="refer-link">
+                <table id="referrallink">
+                    <tr>
+                        <td>
+                            <div class="referfriend-subheader">YOUR INVITE LINK</div>                                
+                        </td>            
+                        <td class="link">
+                            <input id="uniquelink" type="text" value="<?php echo $this->getReferringUrl() ?>" readonly="true" />
+                        </td>
+                        <td class="share no-margin">                
+                            <a href="#" id="fbrefer" onclick="sharereferlink('facebook');"></a>
+                            <a href="#" onclick="sharereferlink('twitter');" id="twrefer"></a>
+                            <a href="#" id="mlrefer" onclick="sharereferlink('mail');"></a>
+                        </td>
+                        <!-- <td class="copy">
+                            <div id="copyurl" class="spbutton copy" imageurl="<?php echo $this->getSkinUrl('images/copy_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/copy_on.png'); ?>"></div>
+                        </td> -->
+                    </tr>
+                </table>
+            </div>            
+            <div class="refer-frnd">
         <table class="referfriend-invitehead">
             <tr>
                 <td>
@@ -176,7 +171,7 @@
     <div class="track-invites">
         <div class="referfriend-subheader">INVITE LIST</div>
         <!-- <p id="noreferralmsg" <?php if(count($results) > 0) { echo "style='display:none;'"; } ?> >After you invite some of your friends you will be able to keep track of their invitations here.</p> -->
-        <p id="noreferralmsg">After you invite some of your friends you will be able to keep track of their invitations here.</p>
+        <p class="l-align" id="noreferralmsg">After you invite some of your friends you will be able to keep track of their invitations here.</p>
         <?php
             $write = Mage::getSingleton('core/resource')->getConnection('core_read');
             $customerData = Mage::getModel('customer/customer')->load(Mage::getSingleton('customer/session')->getId())->getData();
@@ -223,8 +218,11 @@
             </tbody>
         </table>   
     </div>
-         
+</div>   
+</div><br /><br />
+<div class="new-bot-divider"></div>
 </div>
+
 <div class="backlink">
     <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/" class="back-link">&lt;&nbsp;<?php echo $this->__('Back') ?></a>
 </div>

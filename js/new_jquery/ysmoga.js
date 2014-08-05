@@ -87,9 +87,7 @@ function homeContent(){
 	var contH = jQuery(".ysfabricpart").find("ul.gridslider1 li:visible .sliderContent").height();
 
 	var hvalue = imgH - contH;
-	var vH = hvalue/2;
-	console.log(imgH);
-	console.log(contH);
+	var vH = hvalue/2;	
 
 	jQuery(".sliderContent").css("top", vH);
 };
