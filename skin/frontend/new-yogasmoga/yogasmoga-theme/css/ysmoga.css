@@ -17,10 +17,45 @@
     float: right;
 }
 
-.rangoli-head{
-    color: #ff8785 !important;
-    background: url("../images/rangoli-icon.png") no-repeat top left;
+a#rangoli-head{
+    background-image: url("../images/rangoli-icon.png");
+    background-repeat: no-repeat;
     padding: 1px 0 1px 15px;
+}
+
+.rangoliOrng{
+    background-position: top left;
+    color: #ff8785 !important;
+}
+
+.rangoliPrpl{
+    color: #8e59b3 !important;
+    background-position: left -20px;
+}
+
+.rangoliLBlu{
+    color: #5fa1db !important;
+    background-position: left -41px;
+}
+
+.rangoliGrn{
+    color: #3c9136 !important;
+    background-position: left -62px;
+}
+
+.rangoliBlu{
+    color: #0168aa !important;
+    background-position: left -83px;
+}
+
+.rangoliRd{
+    color: #e50000 !important;
+    background-position: left -104px;
+}
+
+.rangoliYlw{
+    color: #efca13 !important;
+    background-position: left -125px;
 }
 
 ul.main-menu2 > li.rangoli:hover{
@@ -53,11 +88,11 @@ ul.main-menu2 > li.rangoli:hover{
 /** footer **/
 .logoCont{
     float: left;
-    width: 35%;
+    width: 32.8%;
 }
 
 .footer-block {
-    width: 65%;
+    width: 67.2%;
 }
 
 .shiftRight{
@@ -65,12 +100,12 @@ ul.main-menu2 > li.rangoli:hover{
 }
 
 .footer-block > .site-map {
-    float: right;
+    /*float: right;*/
 }
 
 ul.site-map > li{
     min-height: 140px;
-    width: 290px;
+    width: 32.9%;
     margin-bottom: 10px;
 }
 
@@ -80,13 +115,17 @@ ul.site-map > li{
     }
     
     ul.site-map > li{
-        width: 278px;
+        width: 33%;
     }
 
     .footer-block {
         display: inline-block;
         width: 100%;
     } 
+
+    .footer-block > .site-map {
+        float: right;
+    }
 
     .shiftRight{
         float: none;
@@ -110,12 +149,12 @@ ul.site-map > li{
 }
 
 .grid65{
-    width: 65%;
+    width: 67.2%;
     float: left;
 }
 
 .grid35{
-    width: 35%;
+    width: 32.8%;
     float: right;
 }
 
@@ -550,7 +589,7 @@ html[xmlns] .overridefix {
 ul.tr-menu > li.free-shipping {
     display: inline-block;
     font: italic 10px gothambook;
-    margin: 0 30px 0 0;
+    margin: 0 35px 0 0;
 }
 
 .free-shipping > span {
@@ -562,7 +601,7 @@ ul.tr-menu > li.free-shipping {
 }
 
 .free-shipping img {
-    margin: -2px 0 0 3px;
+    margin: -2px 0 0 1px;
 }
 
 .ctglink li.sub-head {
