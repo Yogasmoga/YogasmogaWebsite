@@ -79,7 +79,7 @@ ul.main-menu > li.over > ul.sub-menu{display: block;}
 #search-btn{background: transparent url("../images/search-icon.png") center no-repeat; border: none; width: 16px; height: 14px; font-size: 0; cursor: pointer; }
 
 /**Home Page**/
-.share-strip{padding: 11px 0; margin: 0 auto; width: 95%; font-size: 0; display: block;}
+.share-strip{padding: 11px 0; margin: 0 auto; width: 92%; font-size: 0; display: block;}
 .share-strip .blk{width: 50%; display: none;}
 .share-strip ul li{ color:#555; display: inline-block; padding: 0 5px; font-size: 12px; line-height: 21px;}
 .newbg{background: url("../images/dvdr-new.jpg") no-repeat bottom center !important;}
@@ -103,12 +103,19 @@ p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight
 .block-text2 p.bracelet-count{font-family: gothamlight; font-size: 120px; line-height: 90px; margin-left: -10px;}
 .block-text2 p.block-link a{color:#555;}
 .block-text2 span{font-size: 11px;}
-.sl-desc-handle{cursor:pointer;position: absolute; width: 41px; right: 6px; bottom: -29px;}
-.flexslider .slides .sl-desc-handle img{width: 60%;}
+#playBtn{z-index: 99; width: 285px; height: auto; right: 14px; bottom: 30px; position: absolute;}
+.sl-desc-handle {
+    bottom: 0;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    width: 25px;
+}
+.flexslider .slides .sl-desc-handle img{/*width: 60%;*/}
 .slide-desc {
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 6px 6px 0;
-    bottom: -7px;
+    bottom: 22px;
     box-sizing: border-box;
     color: #555;
     display: none;
@@ -116,7 +123,7 @@ p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight
     height: auto;
     padding: 20px !important;
     position: absolute;
-    right: 42px;
+    right: 22px;
     text-align: left;
     width: 200px;
 }
@@ -1510,7 +1517,7 @@ div#sizechart td span { font-weight: normal; }
     left: 60px;
     text-align: left;
     text-transform: uppercase;
-    top: 60px;
+    top: 110px;
 }
 
 .banner-txt3.promo2310 span {
@@ -1529,7 +1536,7 @@ div#sizechart td span { font-weight: normal; }
 }
 
 .learnmore-nam > img {
-    width: 90% !important;
+    width: auto !important;
 }
 
 a.redTxt {
@@ -1563,12 +1570,7 @@ a.redTxt {
 
 
 div#bodycompensator{height: 70px;}
-.fullscreenovfhidden img.fullscreen{
-    display: block;
-    left: 0 !important;
-    width: 100% !important;
-    min-width: inherit !important;
-}
+
 
 
 
@@ -1576,14 +1578,6 @@ div#bodycompensator{height: 70px;}
 /*    background: url(../images/arrow-Lnav.jpg) no-repeat right 3px rgba(0, 0, 0, 0);
     padding: 0 18px 0 0;*/
     color: #c03 !important;
-}
-
-
-.fullscreenovfhidden img.fullscreen{
-    display: block;
-    left: 0 !important;
-    width: 100% !important;
-    min-width: inherit !important;
 }
 .cms-help #fileupload{display: block; margin-bottom: 60px;}
 .cms-help #fileupload .sendmail{ width: 146px; height: 39px; padding: 0; font-size: 0; background: url(../images/send-mail-btn.png) no-repeat top left; }
