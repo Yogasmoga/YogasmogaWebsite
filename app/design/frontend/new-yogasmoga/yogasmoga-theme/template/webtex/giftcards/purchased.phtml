@@ -29,7 +29,7 @@
     if(!$_cards->getSize())
         return;
 ?>
-<div style="margin-top: 80px;margin-left : 83px;">
+<div style="margin-top: 80px;margin-left : 83px; display:none;">
     <h3 class="heading-track">Purchased Gift of ys cards</h3>    
 </div>
 <?php //echo $this->getPagerHtml(); ?>
@@ -83,7 +83,7 @@
 <?php endif ?>
 <?php return; ?>
 <?php $_cards = $this->getCards(); ?>
-<div style="margin-top: 30px;">
+<div style="margin-top: 30px; display:none;">
     <h1><?php echo $this->__('Purchased Gift Cards') ?></h1>
 </div>
 <?php echo $this->getPagerHtml(); ?>

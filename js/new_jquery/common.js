@@ -118,6 +118,7 @@ jQuery(document).ready(function($){
 
     var winHeight = $(window).height();
     $("div.2-columns-wrapper").find(".pg-content,.side-menu-bar").css("min-height", winHeight - 96);    
+    $("div#mainimage").find(".pg-content,.account-nav").css("min-height", winHeight - 96);    
 
 	$(".footer-block").on("click",".smogi-love",function(){
          if(!_islogedinuser)

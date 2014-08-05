@@ -117,9 +117,9 @@ table.tblwishlist td.removeitem
 }
 .addwishlistbtn
 {
-    background-image : url('../images/add-to-bag.jpg');          
-    width : 151px;
-    height : 42px;
+    background-image : url('../images/update-wish.png');          
+    width : 145px;
+    height : 38px;
     margin-left : 20px;
 }
 .sharewishlistbtn1
@@ -130,9 +130,9 @@ table.tblwishlist td.removeitem
     margin-top : 80px;
 }
 .resetwishlistbtn{
-    background-image : url('../images/reset-form.jpg');
-    width : 147px;
-    height : 42px;
+    background-image : url('../images/share-wish.png');
+    width : 145px;
+    height : 38px;
 }
 #wishlist-view-form .buttons-set
 {

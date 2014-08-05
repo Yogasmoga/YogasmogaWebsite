@@ -1,6 +1,6 @@
 http://www.templatemonster.com/help/magento-framework-how-to-addchange-product-video.html/* Layout ================================================================================ */
 .wrapper { min-width:100%;  margin:0 auto;}
-.page {display:block; background: #fff; z-index: 2; position: relative;}
+.page {display:block; background: #fff; z-index: 2; position: relative; min-width: 1007px;}
 .page-print { background:#fff; padding:25px 30px; text-align:left; }
 .page-empty { background:#fff; padding:0px; text-align:left; }
 .page-popup { background:#fff; padding:25px 30px; text-align:left; }
@@ -123,9 +123,9 @@ p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight
 .flex-direction-nav .flex-next{background: url("../images/homepage/next-slide.png") no-repeat bottom; background-size:100% 100%; width:54px; height: 66px;}
 
 /****Side bar****/
-div.side-menu-bar, .leftnav, .side-menu-bar2{ width:270px; vertical-align:top; min-height: 300px; position: fixed; border-top: 1px solid #555;}
-div.side-menu-bar ul, .leftnav ul, .side-menu-bar2 ul, .menu-bar ul{padding:6px 10px 20px 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
-div.side-menu-bar ul li a, .leftnav ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-transform: uppercase; font:11px/19px gothamlight; color: #666;}
+div.side-menu-bar, .leftnav, .side-menu-bar2,.account-nav{ width:270px; vertical-align:top; min-height: 300px; position: fixed; border-top: 1px solid #555;}
+div.side-menu-bar ul, .leftnav ul, .side-menu-bar2 ul, .menu-bar ul,ul.sub-nav{padding:6px 10px 20px 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+div.side-menu-bar ul li a, .leftnav ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a,ul.sub-nav li a{text-transform: uppercase; font:11px/19px gothambold; color: #555;}
 div.side-menu-bar ul li a span.arr, .leftnav ul li a span, .side-menu-bar2 ul li a span.arr, .menu-bar ul li a span.arr{visibility: hidden;}
 div.side-menu-bar2 ul li a.current, 
 .leftnav ul li a.current, 
@@ -934,8 +934,9 @@ body{overflow-x:auto !important; -webkit-font-smoothing:subpixel-antialiased;}
 /** settingWidth **/
 /*.block-elm, div.new-arrivals-block, .clip-bg, .divider-btm, .fabric-color,#pagecontainer.accountbg,.pgsection,.settingWidth{min-width: 820px; max-width: 1600px; margin:0 auto;}*/
 /*#pagecontainer .2-columns-wrapper{width: 98%; margin: auto;}*/
+.2-columns-wrapper{-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 .block-elm,#productdetails{min-width: 820px; /*max-width: 1600px;*/ margin: 0 auto; position: relative;}
-.fullscreenovfhidden,.share-strip{ min-width: 1024px;}
+.fullscreenovfhidden,.share-strip{ min-width: 1007px;}
 
 
 /** termsPage **/
@@ -1059,19 +1060,16 @@ body{overflow-x:auto !important; -webkit-font-smoothing:subpixel-antialiased;}
 /****Dash board***/
 .smogi-info{font-family: gothambold !important; font-size: 11px !important; line-height: 19px; color: #555; }
 .smogi-info .smogi-count{color: #d90d3d;}
-.myaccountdashboard a{font-weight: normal; border-bottom: 1px solid #d90d3d; margin-left:8px; padding: 0 !important; text-decoration: none !important;}
+.myaccountdashboard a{font-weight: normal; border-bottom: 1px solid #d90d3d; margin-left:8px; padding: 0 !important; text-decoration: none !important; }
 .myaccountdashboard .sectionheader{font-size: 11px !important; line-height: 19px; margin-bottom: 5px !important;}
 .myaccountdashboard{width: auto !important;}
 body.customer-address-index .myaccountdashboard .sectionheader{display: none;}
 body.customer-address-index .myaccountdashboard .customeraddress td .subsectionheader{font-family: gothambold; color: #555; font-size: 11px !important; margin-bottom: 10px;}
 .gift-card-credit{margin-top: 50px;}
-.address-info{font-size: 11px; margin-top: 100px; color: #555}
+.address-info{font-size: 11px; margin-top: 4%; color: #555}
 .address-info .cname{display: block;}
-.address-info .add-heading{display: block; margin-bottom: 15px;}
-.billing-add,.shipping-add{width: 40%;}
-.account-nav{width: 25% !important; max-width: 350px;}
-.account-nav ul.sub-nav li{background: none !important; padding: 0; display: block !important; text-align: left !important; height: auto;}
-.account-nav.top-divider{padding-top: 20px; margin-top:0;}
+.address-info .add-heading{display: block; margin-bottom: 20px; font-size: 11px; font-family: gothambold; text-transform: uppercase; color: #555; line-height: 21px;}
+.billing-add,.shipping-add{width: 48%; /*height:auto !important;*/ background: #efefef; padding: 20px 30px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box;}
 .myaccountdashboard p { font-family: gothambook; font-size: 11px; letter-spacing: normal; }
 
 
@@ -1104,12 +1102,11 @@ body.customer-address-index .myaccountdashboard .customeraddress td .subsectionh
 .email-pref:last-child{margin-bottom: 0;}
 .white-border{border-top: 1px solid #fff; padding-top: 30px;}
 /***My Wish list***/
-.my-wishlist{width: 720px !important; margin: 0 auto;}
-table.tblwishlist td.prname{position: relative; font-family: gothambold !important; color: #555 !important;}
-table.tblwishlist td.prname .prd-deldet{position: absolute; left: 0px; bottom: 10px;}
-table.tblwishlist td.prname .prd-deldet a{text-transform: capitalize; color: #c03; text-decoration: underline; font-family: gothambook;}
+.my-wishlist{width: 100% !important; margin: 0 auto;}
+table.tblwishlist td.prname{position: relative; font-family: gothambold !important; color: #555 !important; padding-left: 0 !important;}
+table.tblwishlist td.prname .prd-deldet{position: absolute; left: 0px; bottom: 16px;}
+table.tblwishlist td.prname .prd-deldet a{text-transform: uppercase; color: #c03; font-family: gothambook; font-size: 11px; line-height: 25px; margin-right: 25px; border-bottom: 1px solid #c03; padding-bottom: 3px;}
 table.tblwishlist td.primage{width: 200px !important;}
-table.tblwishlist td.prname{padding-left: 0;}
 
 /***Styling the checkboxes***/ 
 div.email-pref input[type="checkbox"],tr.def-address input[type="checkbox"] {display: none;}
@@ -1277,7 +1274,7 @@ img#closelightbox{bottom: 20px !important; right: 28px !important; width: 21px;}
 .wishlist-header h4,.referfriend-heading h4,.order-sum-header h4{font-family: ITCAvantGardeProMd,gotham,Arial; width: 100%; color: #555; font-size: 31px; letter-spacing: 0.8pt; font-weight: normal; }
 .header-top-bar{height:15px; background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/bot-divider.png") no-repeat; background-position: top center; background-size: 100%; width: 100%;}
 
-table.tblwishlist tr.last td{border:none !important;}
+/*table.tblwishlist tr.last td{border:none !important;}*/
 table.tblwishlist td.prprice{padding-left: 0 !important; text-align: left !important;}
 table.tblwishlist thead th{padding-bottom: 0 !important; font-family: gothambold !important; color: #555 !important;}
 /***Checkout header footer display none**/
@@ -1318,10 +1315,10 @@ table.tblwishlist thead th{padding-bottom: 0 !important; font-family: gothambold
     padding: 0;
 }
 .customer-address-index .myheader{display: none;}
-.fixwidth{margin-left: 270px !important; width: auto; padding-right: 20%; max-width: 100% !important;}
+/*.fixwidth{margin-left: 270px !important; width: auto; padding-right: 20%; max-width: 100% !important;}*/
 .data-table.ys{min-width: 100% !important;}
 .dashboard-address-book{max-width: 700px; min-width: 500px;}
-.accountbg #mainimage,body.gift_of_ys .gift-of-ys,body.rewardpoints-index-referral .accountbg{/*margin-top: 10px !important;*/ background: url(../images/bot-divider.png) 50% 100% no-repeat;}
+/*.accountbg #mainimage,body.gift_of_ys .gift-of-ys,body.rewardpoints-index-referral .accountbg{margin-top: 10px !important; background: url(../images/bot-divider.png) 50% 100% no-repeat;}*/
 body.gift_of_ys .gift-of-ys{width: 100%; text-align: center;}
 .addedItem .similarProdList>li{width: 100%;}
 .show-prodImg{width: 74%; margin: 0; float: right;}
@@ -1331,8 +1328,8 @@ table.productimagecontainer{margin-bottom: 70px; /*min-height: 620px;*/}
 .goy-balance{margin-bottom:30px !important; min-height:250px; max-height:250px; background: #efefef; padding: 25px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; max-width: 400px; width: 48% !important; display: inline-block !important; vertical-align: top; position: relative;
 }
 .goy-form .button-set button.button{margin-left: 10px !important;}
-#createcardform{display: block; width: 80%; background: #efefef; padding: 25px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; margin: 0 auto;}
-.manage-goy{width:80%; margin: 0 auto; }
+#createcardform{display: block; width: 100%; background: #efefef; padding: 25px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; margin: 0 auto;}
+.manage-goy{width:100%; margin: 0 auto; }
 #createcardform td.label{display: none;}
 #createcardform table{width: 100% !important;}
 #createcardform table.inputtable tbody tr:first-child{background:#fff; height: 30px;}
@@ -1345,10 +1342,10 @@ textarea.watermark{color: #555 !important; font-size: 13px !important;}
 .goy-balance form{display: block; position: absolute; right: 25px; left: 25px; bottom: 25px;}
 table.gfredeem td.inputholder, table#redeem td.inputholder{width: 28%; background: #fff; padding: 5px; height: 30px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; border: none !important;}
 table.gfredeem td.dash, table#redeem td.dash{text-align: center; vertical-align: middle;}
-button.btn-reset span{ width: 147px !important; height: 42px !important; background: url(../images/reset-form.jpg) 0 0 no-repeat !important; }
-button.btn-addtobag span{width: 151px !important; height: 42px !important; background: url(../images/add-to-bag.jpg) 0 0 no-repeat !important;}
-.goy-balance .sub-title{padding-top: 0 !important; font-family: gothambold !important; font-size: 11px !important; }
-.goy-balance p{font-family: gothambook; font-size: 11px;}
+button.btn-reset span{ width: 145px !important; height: 38px !important; background: url(../images/reset-gift.png) 0 0 no-repeat !important; }
+button.btn-addtobag span{width: 145px !important; height: 38px !important; background: url(../images/add-bag.png) 0 0 no-repeat !important;}
+.goy-balance .sub-title{padding-top: 0 !important; font-family: gothambold !important; font-size: 11px !important; margin: 0 0 10px !important; color: #666 !important; text-transform: uppercase !important; font-weight: normal !important; line-height: 17px;}
+.goy-balance p{font-family: gothambook; font-size: 12px; line-height: 17px;}
 .applygiftcard,.applypromo,.applysmogi {cursor: pointer;}
 table.productimagecontainer table.smallimagecontiner td:last-child{display: none;}
 /*#absproductoptions table.productdetailtable div#colorcontainer>div:nth-child(7n){margin-right: 0;}*/
@@ -1497,13 +1494,6 @@ div#sizechart td span { font-weight: normal; }
 .cms-help table.measure-assets tr td p{font:11px/17px gothambook; color: #666; margin-bottom: 18px;}
 .cms-help table.measure-assets tr td p span{font:11px/17px gothambold; display: block; text-transform: uppercase; color: #666;}
 
-
-
-div.side-menu-bar ul li a {
-    font-family: gothambold !important; font-size: 11px; line-height: 19px; color: #555;;
-}
-
-
 .header a.logo {
     margin: 0;
 }
@@ -1645,7 +1635,7 @@ table.inputtable td.label, table.gfredeem td.label, table#redeem td.label,input{
 .addtl-add-remove{margin-left: 0 !important;}
 body.customer-address-index .myaccountdashboard .customeraddress td:last-child{padding: 0; margin: 0;}
 .customeraddress .right,.customeraddress a.addressLink{margin:0 !important;}
-form#createcardform .sub-title{text-transform: uppercase; font-weight: normal; margin: 0 0 10px; color: #555; padding-top: 0; font-family: gothambold!important; font-size: 11px; text-align: left; margin-bottom: 20px;}
+form#createcardform .sub-title{text-transform: uppercase; font-weight: normal; margin: 0 0 10px; color: #555; padding-top: 0; font-family: gothambold!important; font-size: 11px; text-align: left; margin-bottom: 20px; line-height: 17px;}
 button.button.btn-addtoaccount{margin: 0 !important;}
 
 
@@ -1726,7 +1716,7 @@ input#smogi:-ms-input-placeholder {
 }
 
 /****CMS Page CSS****/
-
+.pg-content section,.cms-size-chart{max-width: 800px;}
 .cms-container{padding: 15px 0 0 0;}
 .cms-pg{width: auto; margin: 0 0 0 301px; vertical-align: top; color: #666; line-height: normal; min-height: 300px; border-top: 1px solid #555; padding-top: 15px;}
 .pg-heading{margin-bottom: 40px;}
@@ -1812,6 +1802,7 @@ div.product-details .block-elm{width: 100%;}
     .contWom h4{font-size: 15px !important;}
 
     /**new**/
+    .contentSlider h2{font-size: 11px; line-height: 35px;}
     .block-content h4.main-img-text span,
     .contentSlider h3 span{font-size: 17px; line-height: 35px;}
     .block-content h4.cursive-text{font-size: 24px; line-height: 28px;}
@@ -1821,10 +1812,34 @@ div.product-details .block-elm{width: 100%;}
     .banner-txt3.promo2310 span,
     .new-arrivals-block span.na-head,
     .contentSlider h3,
-    .contentSlider h3 > .aurum{font-size: 36px; line-height: 40px;}    
-    .contentSlider h2{font-size: 11px; line-height: 35px;}  
+    .contentSlider h3 > .aurum,
+    .pg-heading h2{font-size: 36px; line-height: 40px;}
 }
 
+/****Dashboard changes***/
+.dashboard-index{padding: 5px 40px 0 40px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
+.dashboard-container{margin: 0; width: auto;min-width: 600px; max-width: 800px;}
+.smogi-info-box{background: #efefef; width:100%; padding: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; text-align: center;}
+.smogi-info-box h6{font-family: gothambold; font-size: 11px; line-height: 21px; color: #555; text-transform: uppercase; margin-bottom: 25px;}
+.smogi-info-box p{font-family: gothambook; font-size: 12px; line-height: 21px; color: #666;}
+.smogi-counting{width: 124px; height: 124px; background: url(../images/bg-circle.png) no-repeat top left; display: block; background-size: 100% 100%; margin: 0 auto; padding: 20px 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
+.smogi-counting .smogi-count{font-family: ITCAvantGardeProBk; color: #cc0033; font-size: 36px; line-height: 40px; font-weight: normal;} 
+.smogi-counting span{color: #ae8637; font-family: AvantGardeGothicITCW01D; font-size: 15px; line-height: 19.41px;}
+.caddress{font-size: 12px; font-family: gothambook; line-height: 21px; color: #555; display: block}
+table.tblwishlist thead{display: none;}
+table.tblwishlist td{border-bottom: 1px solid #555 !important; padding: 20px 10px !important; line-height: 17px; font-size: 11px; color: #555 !important; }
+#wishlist-table tr.even:hover, #wishlist-table tr.odd:hover{background: none !important;}
+table.tblwishlist td.primage img{width: 60%;}
+.my-wishlist .buttons-set{margin-top: 30px !important;}
+#my-orders-table,body.customer-giftcards-balance .pager{display: none;}
+#giftofys{margin-bottom: 70px;}
+button.button span{border:none ;}
+.goy-form .full label { display: none; }
+.goy-form .full textarea { display: block; padding: 5px; width: 100%; height: 90px; }
+textarea.watermark{font-family: gothambook;}
+.goy-form .button-set button.button{float: right; margin-left: 10px !important;}
+button.btn-addtobag span { padding: 0; text-indent: -999em; margin: 0; border: 0;}
+button.btn-reset span{ padding: 0; text-indent: -999em; margin: 0; border: 0;}
 
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
     p.block-desc, .madeinusa-txt, li.new-arrivals-desc .block-desc,.contWom h4 span {
@@ -1837,6 +1852,7 @@ div.product-details .block-elm{width: 100%;}
     .contWom h4{font-size: 17px !important;}
 
     /**new**/
+    .contentSlider h2{font-size: 12px; line-height: 45px;}
     .block-content h4.main-img-text span,
     .contentSlider h3 span{font-size: 19px; line-height: 39px;}
     .block-content h4.cursive-text{font-size: 28px; line-height: 32px;}
@@ -1846,8 +1862,8 @@ div.product-details .block-elm{width: 100%;}
     .banner-txt3.promo2310 span,
     .new-arrivals-block span.na-head,
     .contentSlider h3,
-    .contentSlider h3 > .aurum{font-size: 40px; line-height: 43px;}
-    .contentSlider h2{font-size: 12px; line-height: 45px;}    
+    .contentSlider h3 > .aurum,
+    .pg-heading h2{font-size: 40px; line-height: 43px;}    
     
 }
 
@@ -1861,6 +1877,7 @@ div.product-details .block-elm{width: 100%;}
     }   
 
     /**new**/
+    .contentSlider h2{font-size: 12px; line-height: 45px;}
     .block-content h4.main-img-text span,
     .contentSlider h3 span{font-size: 22px; line-height: 45px;}
     .block-content h4.cursive-text{font-size: 32px; line-height: 36px;}
@@ -1870,13 +1887,14 @@ div.product-details .block-elm{width: 100%;}
     .banner-txt3.promo2310 span,
     .new-arrivals-block span.na-head,
     .contentSlider h3,
-    .contentSlider h3 > .aurum{font-size: 45px; line-height: 48px;}
-    .contentSlider h2{font-size: 12px; line-height: 45px;}   
+    .contentSlider h3 > .aurum,
+    .pg-heading h2{font-size: 45px; line-height: 48px;}       
     
 }
 
 @media screen and (min-width: 1600px) {
     /**new**/
+    .contentSlider h2{font-size: 13px; line-height: 54px;}
     .block-content h4.main-img-text span,
     .contentSlider h3 span{font-size: 24px; line-height: 50px; }
     .block-content h4.cursive-text{font-size: 36px; line-height: 40px;}
@@ -1886,7 +1904,7 @@ div.product-details .block-elm{width: 100%;}
     .banner-txt3.promo2310 span,
     .new-arrivals-block span.na-head,
     .contentSlider h3,
-    .contentSlider h3 > .aurum{font-size: 50px; line-height: 53px;} 
-    .contentSlider h2{font-size: 13px; line-height: 54px;}   
+    .contentSlider h3 > .aurum,
+    .pg-heading h2{font-size: 50px; line-height: 53px;}       
     
 }

@@ -1,4 +1,4 @@
-.my-account{margin-bottom:70px;}
+.my-account{margin-bottom:70px; max-width: 800px;}
 .custombtn
 {
     border : none;
@@ -233,8 +233,10 @@ a.forgot-link:hover
     font-family: gothambook;
     font-size: 11px;
     /*letter-spacing : 0.4pt;*/
-	text-transform:none;
-    padding-left : 8px;
+	text-transform:uppercase;
+    line-height: 21px;
+    margin: 0;
+    display: inline-flex;
 }
 
 .myaccountdashboard a:hover
@@ -388,8 +390,6 @@ button.button.btn-check
     margin-left : 15px;
     margin-top : -7px;
 }
-.account-nav{margin-bottom:28px; /***NEW***/ width:270px !important; position: fixed;}
-ul.sub-nav{text-indent:0 !important; list-style:none !important; padding:10px 20px !important; margin:0 !important; font-family:gothambook !important; font-size:11px !important; text-transform:uppercase !important; /*text-align:center;*/ text-align: left !important; line-height:24px !important;}
 ul.sub-nav li {
   /*background: url("../images/subsep.png") no-repeat scroll 100% 50% transparent;*/
   /*display: inline;*/  
@@ -400,7 +400,6 @@ ul.sub-nav li {
   display: block;
   line-height: normal;
 }
-ul.sub-nav li a{display: inline; font: 11px/19px gothammedium; color: #666;}
 ul.sub-nav li a:hover,ul.sub-nav li.current a{color: #c03;}
 ul.sub-nav li a span.arr{visibility: hidden;}
 ul.sub-nav li.current a span.arr{visibility: visible;}
