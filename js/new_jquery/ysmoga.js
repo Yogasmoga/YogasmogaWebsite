@@ -59,7 +59,6 @@ function colorBoxHeight(){
 };
 
 function factorypart(){
-	
 	var factoryHeight = jQuery(".factorypart .img-responsive").height();
 
 	var mistext = jQuery(".mistext").height();
@@ -87,7 +86,8 @@ function homeContent(){
 	var contH = jQuery(".ysfabricpart").find("ul.gridslider1 li:visible .sliderContent").height();
 
 	var hvalue = imgH - contH;
-	var vH = hvalue/2;	
+	var vH = hvalue/2;
+//	vH = vH+47;	
 
 	jQuery(".sliderContent").css("top", vH);
 };
@@ -99,6 +99,7 @@ function homeContent1(){
 
 	var hvalue1 = imgH1 - contH1;
 	var vH1 = hvalue1/2;
+//	vH1 = vH1+51;
 
 	jQuery(".gridslider2 .contentSlider").css("top", vH1);
 };

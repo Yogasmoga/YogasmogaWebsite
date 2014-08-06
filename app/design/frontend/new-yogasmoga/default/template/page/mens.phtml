@@ -125,7 +125,7 @@
                 <!-- ShareSocialMedia Part -->
                 <div class="share-strip">
                     <div class="sign-up-new">
-                        <a href="javascript:void(0)">Sign-up</a>&amp; WE’LL SURPRISE YOU
+                        <a href="javascript:void(0)">Sign up</a>&amp; WE’LL SURPRISE YOU
                     </div>
                 </div>
                 <!-- ShareSocialMedia Part -->
@@ -139,7 +139,7 @@
                     <?php $newarrivals = Mage::getModel('catalog/category')->load($categoryId); ?>
                     <div class="shop-col-desc l-align">
                         <span class="na-head">Spring Is In</span>
-                        <span class="na-link"><a href="<?php echo $newarrivals->getUrl(); ?>">Shop Collection <strong>&gt;&gt;&gt;</strong></a></span>                       
+                        <span class="na-link"><a href="<?php echo $newarrivals->getUrl(); ?>">Shop New Collection</a></span>                       
                     </div>                    
                     <ul class="new-arrivals">
                         <?php
@@ -159,6 +159,7 @@
                         $productCollection = $newarrivals->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
                         foreach($productCollection as $_product)
                         {
+
                             if($i==5)break;$i++;
                          ?>
                             <li>
@@ -197,7 +198,7 @@
                         <div class="top-left-block">
                             <div class="block-content">
                                 <h4 class="cursive-text">Lorem ipsum dolor sit<br/>consectetuer adipiscing elit. </h4>
-                                <span class="b-heading top-b-heading">My Magazine</span>
+                                <span class="b-heading top-b-heading">NY Magazine</span>
                             </div>
                         </div>
                         <div class="bottom-left-block" data-vid-handle="vid-blck-1">
@@ -207,7 +208,7 @@
                     <section class="wl-right-block">
                         <img src="<?php echo $this->getSkinUrl('images/women/feat-prd-main-img.jpg') ?>" alt="" />
                         <div class="block-content">
-                                <span class="b-heading bottom-b-heading">My Magazine</span>
+                                <span class="b-heading bottom-b-heading">Featured Product</span>
                                 <h4 class="main-img-text">THE JACKET WITH<br />A BROOKLYN FLAIR<span>14 colors</span></h4>
                                 <a href="<?php echo $featurecategoryUrl;?>" class="shopnow-btn">shop now</a>                                
                             </div>
@@ -225,8 +226,9 @@
                     <section class="wl-cs-left-block">
                         <img src="<?php echo $this->getSkinUrl('images/women/cs-main-img.jpg') ?>" alt="" />
                         <div class="block-content"> 
-                            <span class="b-heading bottom-b-heading">color story</span>
-                            <h4 class="main-img-text">LIME LITE</h4>                                
+                            <span class="b-heading bottom-b-heading">color</span>
+                            <h4 class="main-img-text">LIME LITE</h4>   
+                            <a href="<?php echo $featurecategoryUrl;?>" class="shopnow-btn">shop now</a>                              
                         </div>
                     </section>
                     <section class="wl-cs-right-block">

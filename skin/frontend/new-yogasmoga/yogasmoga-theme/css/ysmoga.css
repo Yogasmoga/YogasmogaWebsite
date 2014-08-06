@@ -778,3 +778,9 @@ ul.tr-menu > li.free-shipping {
 .logoCont img {
     margin-left: 6px;
 }
+
+.contact-summary div.chat-status {
+    font-style: italic;
+    margin: 0;
+    padding: 0;
+}
