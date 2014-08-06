@@ -393,18 +393,17 @@ function featuredSec(){
     var lft_vid =jQuery(".bottom-left-block").height();        
     var lft_vid_img = jQuery('.bottom-left-block img');
     var lft_vid_img_height = lft_vid_img.height();
-    lft_vid_img.css("margin-top", (lft_vid - lft_vid_img_height)/2);
+    lft_vid_img.css("margin-top", (lft_vid - lft_vid_img_height)/2.07);
     
        
         setTimeout(function(){
             jQuery(".wl-color-story-prd .block-content").each(function(){
                 var bl_c_H = jQuery(this).height();
                 var parH = jQuery(this).parent().height();
-                var topPos = (parH - bl_c_H)/2;
+                var topPos = (parH - bl_c_H)/1.95;
                 jQuery(this).css("top", topPos);
             });
         },100);
-
               
 }
 
@@ -415,13 +414,21 @@ function featuredSec(){
     var rgt_vid =jQuery(".top-right-block").height();        
     var rgt_vid_img = jQuery(".top-right-block img");
     var rgt_vid_img_height = rgt_vid_img.height();
-    rgt_vid_img.css("margin-top", (rgt_vid - rgt_vid_img_height)/2);
+    rgt_vid_img.css("margin-top", (rgt_vid - rgt_vid_img_height)/2.07);
+
     jQuery(".wl-feat-prd .block-content").each(function(){
         var bl_c_H1 = jQuery(this).height();
         var parH1 = jQuery(this).parent().height();
-        var topPos1 = (parH1 - bl_c_H1)/2;
+        var topPos1 = (parH1 - bl_c_H1)/2.07;
         jQuery(this).css("top", topPos1);        
-    });               
+    });
+
+    jQuery(".wl-right-block .block-content").each(function(){
+        var bl_c_H2 = jQuery(this).height();
+        var parH2 = jQuery(this).parent().height();
+        var topPos2 = (parH2 - bl_c_H2)/1.6;
+        jQuery(this).css("top", topPos2);        
+    });     
 }
 
 function featLiHeightAd(){

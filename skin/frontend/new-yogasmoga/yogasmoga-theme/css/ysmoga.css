@@ -88,11 +88,12 @@ ul.main-menu2 > li.rangoli:hover{
 /** footer **/
 .logoCont{
     float: left;
-    width: 32.8%;
+    width: 33%;
 }
 
 .footer-block {
-    width: 67.2%;
+    width: 67%;
+    margin: 27px 0 0;
 }
 
 .shiftRight{
@@ -104,8 +105,8 @@ ul.main-menu2 > li.rangoli:hover{
 }
 
 ul.site-map > li{
-    min-height: 140px;
-    width: 32.9%;
+    min-height: 133px;
+    width: 33%;
     margin-bottom: 10px;
 }
 
@@ -149,12 +150,12 @@ ul.site-map > li{
 }
 
 .grid65{
-    width: 67.2%;
+    width: 66.7%;
     float: left;
 }
 
 .grid35{
-    width: 32.8%;
+    width: 33.3%;
     float: right;
 }
 
@@ -169,8 +170,8 @@ ul.site-map > li{
     color: #fff;
     text-align: center;
     text-transform: uppercase;
-    padding: 8px 20px;
-    margin: 30px 0 0;
+    padding: 8px 25px;
+    margin: 37px 0 0;
     display: inline-block;
 }
 
@@ -776,7 +777,7 @@ ul.tr-menu > li.free-shipping {
 }
 
 .logoCont img {
-    margin-left: 6px;
+    margin-left: 0;
 }
 
 .contact-summary div.chat-status {

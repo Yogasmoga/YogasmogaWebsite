@@ -63,7 +63,7 @@ function factorypart(){
 
 	var mistext = jQuery(".mistext").height();
 	var mstext = factoryHeight - mistext;
-	mstext = mstext/2;
+	mstext = mstext/1.5;
 	
 	jQuery(".mistext").css("top", mstext);
 	jQuery(".factorypart .grid35").css("height", factoryHeight);
@@ -74,7 +74,7 @@ function namaskarpart(){
 
 	var namaskartxt = jQuery(".namaskartxt").height();
 	var nmtxt = namaskarHeight - namaskartxt;
-	nmtxt = nmtxt/2;
+	nmtxt = nmtxt/1.5;
 
 	jQuery(".namaskarpart .grid35").css("height", namaskarHeight);
 	jQuery(".namaskartxt").css("top", nmtxt);
@@ -86,7 +86,7 @@ function homeContent(){
 	var contH = jQuery(".ysfabricpart").find("ul.gridslider1 li:visible .sliderContent").height();
 
 	var hvalue = imgH - contH;
-	var vH = hvalue/2;
+	var vH = hvalue/1.5;
 //	vH = vH+47;	
 
 	jQuery(".sliderContent").css("top", vH);
@@ -98,7 +98,7 @@ function homeContent1(){
 	var contH1 = jQuery(".yscolorpart").find("ul.gridslider2 li:visible .contentSlider").height();
 
 	var hvalue1 = imgH1 - contH1;
-	var vH1 = hvalue1/2;
+	var vH1 = hvalue1/1.5;
 //	vH1 = vH1+51;
 
 	jQuery(".gridslider2 .contentSlider").css("top", vH1);
@@ -108,7 +108,7 @@ function ctextVMiddle(){
 	jQuery(".compressBox .ctext, .multicolorcont .ctext, .factorythread .ctext, .raisingfunds .ctext").each(function(){
         var ctext_bl = jQuery(this).height();
         var parCtext = jQuery(this).parent().height();
-        var topPosCtext = (parCtext - ctext_bl)/2;
+        var topPosCtext = (parCtext - ctext_bl)/1.5;
         jQuery(this).css("top", topPosCtext);        
     }); 
 }
