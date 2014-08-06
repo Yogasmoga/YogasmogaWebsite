@@ -729,6 +729,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     }
                     if($this->issuperattribute($product, "size"))
                         $temparray['size'] = $_product->getAttributeText('size');
+                    if($this->issuperattribute($product, "length"))
+                        $temparray['length'] = $_product->getAttributeText('length');
                     $temparray['quantity'] = $item->getQty();
                     $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
                     //$temparray['imageurl'] = $this->getMiniImage($item->getProductId(), $temparray['color']);
@@ -839,6 +841,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 <a href="javascript:void(0);" id="continuelink" class="continuelink f-left">Keep Shopping</a>
                 <span class="continuelink f-right">Checkout</span>
                 <div class="clear-fix"></div>
+
             </div>
 
             <!-- ContinueShoppingBtn -->
@@ -852,6 +855,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 <a href="'.$continuelink.'" id="continuecheckout" class="continuelink f-right grn">Checkout</a>
 
                 <div class="clear-fix"></div>
+
             </div>
 
             <!-- ContinueShoppingBtn -->
@@ -1098,6 +1102,12 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
         }
+        $errormsg = '';
+        $globalerrormsg = html_entity_decode(strip_tags(Mage::getSingleton('core/session')->getGlobalMessage()));
+        if($globalerrormsg !='')
+                $errormsg = $globalerrormsg;
+        Mage::getSingleton('core/session')->setGlobalMessage('');
+        $html .='<div class="errortext">'.$errormsg.'</div>';
         $html .='<div class="bagerrormsg" id="redeemresult"></div><div class="zindexH"></div>';
         // $html .='           <label><input type="text" name="promocode" id="promocode" value="Add a promo code" /><span>+</span></label>
         //                     <label><input type="text" name="giftcartcode" id="giftcartcode" value="Add a gift card code" /><span>+</span></label>';
@@ -1130,6 +1140,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     <span class="amnt">'.$item['price'].'</span>
                     <span class="clr">'.$item['color'].'</span>';
             if($item['size'] !='') $html .='<span class="size">size '.$item['size'].'</span>';
+            if($item['length'] !='') $html .='<span class="size">'.$item['length'].'</span>';
             $html .='</span>
 <a href="#" class="close"></a>
 </li>';
