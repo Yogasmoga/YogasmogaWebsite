@@ -88,8 +88,6 @@ function homeContent(){
 
 	var hvalue = imgH - contH;
 	var vH = hvalue/2;
-	console.log(imgH);
-	console.log(contH);
 
 	jQuery(".sliderContent").css("top", vH);
 };

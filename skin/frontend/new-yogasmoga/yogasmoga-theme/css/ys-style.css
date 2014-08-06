@@ -1917,3 +1917,7 @@ button.btn-reset span{ padding: 0; text-indent: -999em; margin: 0; border: 0;}
 .selectedlength div.selected{background: #666; border-color: #666; color: #fff;}
 .selectedlength{margin-top: 10px; border-bottom: 1px solid #FFF; padding-bottom: 10px;}
 
+/* paypal error msg on shopping bag */
+.errortext{
+    text-align: left;
+}
