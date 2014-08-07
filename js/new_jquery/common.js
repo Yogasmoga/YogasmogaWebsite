@@ -432,7 +432,7 @@ function featuredSec(){
     jQuery(".wl-right-block .block-content").each(function(){
         var bl_c_H2 = jQuery(this).height();
         var parH2 = jQuery(this).parent().height();
-        var topPos2 = (parH2 - bl_c_H2)/1.91;
+        var topPos2 = (parH2 - bl_c_H2)/1.55;
         jQuery(this).css("top", topPos2);        
     });     
 }
