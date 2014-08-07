@@ -1930,17 +1930,20 @@ a.addtl-add-additon{margin-left: 13px !important;}
 /* paypal error msg on shopping bag */
 .errortext{
     text-align: left;
+    text-transform: none;
 }
 
+.addedItem .similarProdList > li .errortext{
+    clear: both;
+    display: block;
+    padding-top: 5px;
+}
 
 /** CMS Pages **/
-body.cms-help .2-columns-wrapper{
-    padding-top: 29px;
-}
-
 .emailBox>textarea{
     height: 116px;
 }
 
-    .topMenu{top: -20em !important;}
-    .topLeftMenu{top: -12em !important;}
+.topMenu{top: -20em !important;}
+.topLeftMenu{top: -12em !important;}
+

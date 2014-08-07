@@ -30,6 +30,19 @@
  * @var $test Mage_Customer_Block_Address_Book
  */
 ?>
+<?php
+$user = Mage::getSingleton('customer/session')->getCustomer();
+$stripeId = $user->getStripeCustomerId();
+$info = Mage::getModel('stripe/payment')->getStripeCustomer($stripeId);
+
+$cardholdername = $info['active_card']['name'];
+$cardlast4 = $info['active_card']['last4'];
+$cardexpmonth = $info['active_card']['exp_month'];
+$cardexpyear = $info['active_card']['exp_year'];
+$cardaddresscountry = $info['active_card']['address_country'];
+$cardtype = $info['active_card']['type'];
+
+?>
 <script type="text/javascript">
 </script>
 <div class="dashboard-index">
@@ -40,11 +53,19 @@
 			  <h2>Payment Methods</h2>      
 			</div>
 			<div class="payment-metthod-cont l-align" style="width:312px;" >
-				<h4 class="holder-name">Tapasya Bali</h4>
-				<span>000&nbsp;000&nbsp;0000</span>
-				<span>02/15</span>
-				<span>United States</span>
-				<span><img src="<?php echo $this->getSkinUrl('images/pm-master-card.png') ?>" alt="" /></span>
+				<?php if($stripeId !=''){?>
+                    <h4 class="holder-name"><?php echo $cardholdername;?></h4>
+                    <span>000&nbsp;000&nbsp;<?php echo $cardlast4; ?></span>
+                    <span><?php echo $cardexpmonth;?>/<?php echo $cardexpyear; ?></span>
+                    <span><?php echo $cardaddresscountry; ?></span>
+                    <span><?php echo $cardtype; ?></span>
+                    <span><img src="<?php echo $this->getSkinUrl('images/pm-master-card.png') ?>" alt="" /></span>
+                <?php }
+                else{
+                    echo 'No Payment Methods Found';
+                }
+
+                ?>
 			</div>
 		</div>
 	</div>
