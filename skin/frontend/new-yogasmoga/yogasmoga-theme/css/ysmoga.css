@@ -102,39 +102,13 @@ ul.main-menu2 > li.rangoli:hover{
 
 .footer-block > .site-map {
     /*float: right;*/
+    width: 100%;
 }
 
 ul.site-map > li{
     min-height: 133px;
-    width: 33%;
+    width: 32.5%;
     margin-bottom: 10px;
-}
-
-@media only screen and (max-width : 1024px) {
-    .logoCont{
-        display: none;
-    }
-    
-    ul.site-map > li{
-        width: 33%;
-    }
-
-    .footer-block {
-        display: inline-block;
-        width: 100%;
-    } 
-
-    .footer-block > .site-map {
-        float: right;
-    }
-
-    .shiftRight{
-        float: none;
-    }
-
-    .contentSlider.namaskartxt div {
-        width: 70% !important;
-    }
 }
 
 /** homepage **/
@@ -347,17 +321,13 @@ ul.site-map > li{
     vertical-align: middle;
 }
 
-@media only screen and (max-width : 1440px) {   
+@media only screen and (min-width : 1440px) {   
     .shopnow-btn{
         margin-top: 30px;
     }
-
-    .header {
-        padding: 0 54px 0 22px;
-    }
 }
 
-@media only screen and (max-width : 1360px) {
+@media only screen and (min-width : 1360px) {
     .shopnow-btn{
         margin-top: 25px;
     }
@@ -369,13 +339,9 @@ ul.site-map > li{
     .iconspartone .row .iconstxt {
         width: auto;
     }
-
-    .header {
-        padding: 0 45px 0 18px;
-    }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (min-width: 1007px) {
     .shopnow-btn{
         margin-top: 20px;
     }
@@ -394,6 +360,49 @@ ul.site-map > li{
     }
 }
 
+@media (max-width: 1024px) {
+    .logoCont{
+        display: none;
+    }
+    
+    ul.site-map > li{
+        width: 32.5%;
+    }
+
+    .footer-block {
+        display: inline-block;
+        width: 90%;
+        margin: 3px 0 0 11.2%;
+    } 
+
+    .footer-block > .site-map {
+    }
+
+    .shiftRight{
+        float: none;
+    }
+
+    .contentSlider.namaskartxt div {
+        width: 70% !important;
+    }
+
+    .shopnow-btn{
+        margin-top: 20px;
+    }
+
+
+    .iconspartone .row img {
+        width: 30%;
+    }
+
+    .iconspartone .row .iconstxt {
+        width: 70%;
+    }
+
+    .header {
+        padding: 0 40px 0 11px;
+    }
+}
 
 /** slider **/
 .bx-wrapper {

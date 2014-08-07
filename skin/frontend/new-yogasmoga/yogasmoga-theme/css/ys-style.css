@@ -852,8 +852,7 @@ span.country {
 @media only screen and (max-width : 1024px) {
 
 
-    .topMenu{top: -5em !important;}
-    .topLeftMenu{top: -12em !important;}
+
 
     .coloumn-list li span {
     font-size: 16px !important;
@@ -988,7 +987,7 @@ body{overflow-x:auto !important; -webkit-font-smoothing:subpixel-antialiased;}
 .prd-txt h4{color:#555; font-size: 13px; line-height: 23px; text-align: center; text-transform: uppercase; margin-bottom: 40px;}
 
 /** emailUs **/
-.emailBox{background: #efefef; margin: 0; width: auto; min-width: 645px; max-width: 800px; padding: 30px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+.emailBox{background: #efefef; margin: 0; width: auto; min-width: 645px; max-width: 800px; padding: 30px 30px 18px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 .emailBox > input, .emailBox > textarea{background: #fff; border: 0 none; width: 97%; padding: 10px; font: 13px gothambook; text-transform: none; display: inline-block; margin-bottom: 10px; color: #666;}
 .gap{border-bottom: 2px solid #f7f7f7; margin: 18px 0 29px; display: block; clear: both;}
 .emailBox > label{display: block; margin: 0 0 15px;}
@@ -1942,3 +1941,6 @@ body.cms-help .2-columns-wrapper{
 .emailBox>textarea{
     height: 116px;
 }
+
+    .topMenu{top: -20em !important;}
+    .topLeftMenu{top: -12em !important;}
