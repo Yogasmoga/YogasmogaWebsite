@@ -351,6 +351,10 @@ ul.site-map > li{
     .shopnow-btn{
         margin-top: 30px;
     }
+
+    .header {
+        padding: 0 54px 0 22px;
+    }
 }
 
 @media only screen and (max-width : 1360px) {
@@ -364,6 +368,10 @@ ul.site-map > li{
 
     .iconspartone .row .iconstxt {
         width: auto;
+    }
+
+    .header {
+        padding: 0 45px 0 18px;
     }
 }
 
@@ -379,6 +387,10 @@ ul.site-map > li{
 
     .iconspartone .row .iconstxt {
         width: 70%;
+    }
+
+    .header {
+        padding: 0 40px 0 11px;
     }
 }
 
@@ -785,3 +797,4 @@ ul.tr-menu > li.free-shipping {
     margin: 0;
     padding: 0;
 }
+

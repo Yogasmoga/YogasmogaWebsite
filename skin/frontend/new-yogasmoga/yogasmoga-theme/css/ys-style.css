@@ -134,7 +134,7 @@ p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight
 
 /****Side bar****/
 div.side-menu-bar, .leftnav, .side-menu-bar2,.account-nav{ width:270px; vertical-align:top; min-height: 300px; position: fixed; border-top: 1px solid #555;}
-div.side-menu-bar ul, .leftnav ul, .side-menu-bar2 ul, .menu-bar ul,ul.sub-nav{padding:6px 10px 20px 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+div.side-menu-bar ul, .leftnav ul, .side-menu-bar2 ul, .menu-bar ul,ul.sub-nav{padding:6px 10px 13px 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 div.side-menu-bar ul li a, .leftnav ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a,ul.sub-nav li a{text-transform: uppercase; font:11px/19px gothambold; color: #555;}
 div.side-menu-bar ul li a span.arr, .leftnav ul li a span, .side-menu-bar2 ul li a span.arr, .menu-bar ul li a span.arr{visibility: hidden;}
 div.side-menu-bar2 ul li a.current, 
@@ -963,7 +963,7 @@ body{overflow-x:auto !important; -webkit-font-smoothing:subpixel-antialiased;}
 /** HelpPage **/
 .contact-summary{border-top: 1px solid #555; color: #555; margin-top: 30px;}
 .contact-summary ul, .contact-summary ul li{list-style-type: none;}
-.contact-summary div{margin: 0; width: 100%; font-size: 11px; line-height: 18px; display: inline-block; text-align: left; background-size: 100% auto; padding: 30px 0 0; vertical-align: top;}
+.contact-summary div{margin: 0; width: 100%; font-size: 11px; line-height: 18px; display: inline-block; text-align: left; background-size: 100% auto; padding: 25px 0 0; vertical-align: top;}
 .contact-summary div:first-child{padding-top: 15px;}
 .contact-summary span{font-family: gothambold; text-transform: uppercase;}
 .call-icon, .chat-icon, .email-us{display: block; }
@@ -988,9 +988,9 @@ body{overflow-x:auto !important; -webkit-font-smoothing:subpixel-antialiased;}
 .prd-txt h4{color:#555; font-size: 13px; line-height: 23px; text-align: center; text-transform: uppercase; margin-bottom: 40px;}
 
 /** emailUs **/
-.emailBox{background: #efefef; margin: 0; width: auto; min-width: 600px; max-width: 800px; padding: 30px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+.emailBox{background: #efefef; margin: 0; width: auto; min-width: 645px; max-width: 800px; padding: 30px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 .emailBox > input, .emailBox > textarea{background: #fff; border: 0 none; width: 97%; padding: 10px; font: 13px gothambook; text-transform: none; display: inline-block; margin-bottom: 10px; color: #666;}
-.gap{border-bottom: 2px solid #f7f7f7; margin: 20px 0; display: block; clear: both;}
+.gap{border-bottom: 2px solid #f7f7f7; margin: 18px 0 29px; display: block; clear: both;}
 .emailBox > label{display: block; margin: 0 0 15px;}
 .sendmail, .choosefile{cursor: pointer;}
 .choosefile{background: url("../images/choosebtn.jpg") no-repeat top left; float: left; width: 147px; height: 44px;}
@@ -1719,7 +1719,7 @@ input#smogi:-ms-input-placeholder {
 .pg-content section,.cms-size-chart{max-width: 800px;}
 .cms-container{padding: 15px 40px 0 40px;}
 .cms-pg{width: auto; margin: 0 0 0 301px; vertical-align: top; color: #666; line-height: normal; min-height: 300px; border-top: 1px solid #555; padding-top: 15px;}
-.pg-heading{margin-bottom: 40px;}
+.pg-heading{margin-bottom: 49px;}
 .pg-heading h2 {font-family: ITCAvantGardeProMd; font-size: 36px; color: #555555; line-height: 40px; margin-bottom: 8px; text-transform: uppercase;}
 .sec-head{font-family: gothambold; font-size: 11px; line-height: 17px; display: block; margin-bottom: 10px;}
 .pg-tagline,.cms-pg p, .pg-content section p{font-family: gothambook; font-size: 12px; line-height: 17px; margin-bottom: 10px; text-align: justify;}
@@ -1931,4 +1931,14 @@ a.addtl-add-additon{margin-left: 13px !important;}
 /* paypal error msg on shopping bag */
 .errortext{
     text-align: left;
+}
+
+
+/** CMS Pages **/
+body.cms-help .2-columns-wrapper{
+    padding-top: 29px;
+}
+
+.emailBox>textarea{
+    height: 116px;
 }

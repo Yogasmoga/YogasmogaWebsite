@@ -1,5 +1,13 @@
 jQuery(document).ready(function($){
 
+// var bnrCMS = $(".bannerFluid").height();
+// $('.leftnav').css("margin-top", bnrCMS);
+
+// $(window).resize(function(){
+//     var bnrCMS = $(".bannerFluid").height();
+//     $('.leftnav').css("margin-top", bnrCMS);
+// });
+
 var nav = $('.side-menu-bar');
 var hdr = $('.header-container').height();
 hdr = hdr+4;
