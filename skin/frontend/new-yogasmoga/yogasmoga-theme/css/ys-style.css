@@ -34,7 +34,7 @@ http://www.templatemonster.com/help/magento-framework-how-to-addchange-product-v
 
 /****Header****/
 /*#pagecontainer{min-width: 960px;}*/
-.header-container { background-color: #fff; position: fixed; top: 0px; height : 70px; width : 100%; z-index: 10003; min-width: 1024px;}
+.header-container { background-color: #fff; position: fixed; top: 0px; height : 70px; width : 100%; z-index: 10003; min-width: 1007px;}
 .header{ padding:0 60px 0 30px;}
 .header .logo {margin:0;}
 ul.main-menu{margin-left: 0;}
@@ -79,7 +79,7 @@ ul.main-menu > li.over > ul.sub-menu{display: block;}
 #search-btn{background: transparent url("../images/search-icon.png") center no-repeat; border: none; width: 16px; height: 14px; font-size: 0; cursor: pointer; }
 
 /**Home Page**/
-.share-strip{padding: 11px 0; margin: 0 auto; width: 92%; font-size: 0; display: block;}
+.share-strip{padding: 8px 0; margin: 0 auto; width: 92%; font-size: 0; display: block;}
 .share-strip .blk{width: 50%; display: none;}
 .share-strip ul li{ color:#555; display: inline-block; padding: 0 5px; font-size: 12px; line-height: 21px;}
 .newbg{background: url("../images/dvdr-new.jpg") no-repeat bottom center !important;}
@@ -103,7 +103,7 @@ p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight
 .block-text2 p.bracelet-count{font-family: gothamlight; font-size: 120px; line-height: 90px; margin-left: -10px;}
 .block-text2 p.block-link a{color:#555;}
 .block-text2 span{font-size: 11px;}
-#playBtn{z-index: 99; width: 285px; height: auto; right: 29px; bottom: 30px; position: absolute;}
+#playBtn{z-index: 99; width: 285px; height: auto; right: 19px; bottom: 25px; position: absolute;}
 .sl-desc-handle {
     bottom: 0;
     cursor: pointer;
@@ -307,23 +307,23 @@ div.sub-fab img{width: 45% !important; display: block; margin:25px auto 0 auto;}
 
 
 /****Women Landing page****/
-div.new-arrivals-block{/*background: url("../images/big-divider.png") no-repeat top,url("../images/big-divider.png") no-repeat bottom;*/ border-top:1px solid #555; padding: 30px 0 37px; background-size: 100%,100%;}
+div.new-arrivals-block{/*background: url("../images/big-divider.png") no-repeat top,url("../images/big-divider.png") no-repeat bottom;*/ border-top:1px solid #555; padding: 22px 0 19px; background-size: 100%,100%;}
 ul.new-arrivals{width: 100%; display: block; text-align:center; font-size: 0; margin: 0 auto;}
-ul.new-arrivals li{display: inline-block; width:20%; vertical-align: top; height:auto; /*max-width: 221px;*/ /*max-height: 430px;*/ margin-top: 45px;}
+ul.new-arrivals li{display: inline-block; width:20%; vertical-align: top; height:auto; /*max-width: 221px;*/ /*max-height: 430px;*/ margin-top: 30px;}
 ul.new-arrivals li img{ margin: 0 auto; display: block;}
 ul.new-arrivals li span{font-size: 12px; display: block; color: #666; text-transform: uppercase;}
-ul.new-arrivals li img.prd-image{width:90%; height: 100%; min-width: 180px; margin: auto; padding: 0 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
-ul.new-arrivals li > a.quick-view{min-height: 250px; display: inline-block; width: 100%;}
+ul.new-arrivals li img.prd-image{width:100%; min-width: 180px; margin: auto; padding: 0 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
+ul.new-arrivals li > a.quick-view{min-height: 220px; display: inline-block; width: 100%;}
 /*.prd-details{margin-top: 30px;}*/
 .prd-details {
-margin-top: 12px;
+margin-top: 19px;
 }
 .prd-details .prd-price{/*margin-bottom: 10px;*/}
 li.new-arrivals-desc{text-align: left; font-family: ITCAvantGardeProMd; margin-top: 33px !important;}
 li.new-arrivals-desc .block-head{margin-bottom: 5px; font-size: 18px;}
 li.new-arrivals-desc .block-desc{margin-bottom: 25px; font-size: 35px;}
 li.new-arrivals-desc .block-link a, .block-link a{font-family: ITCAvantGardeProMd; font-size: 14px;}
-.shop-col-desc{text-transform: uppercase; padding: 0 63px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
+.shop-col-desc{text-transform: uppercase; padding: 0 0 0 40px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
 .shop-col-desc span.na-head{font-family: ITCAvantGardeProMd; font-size: 36px; color: #555; margin-right: 20px;}
 .shop-col-desc span.na-link a{font-family: gothambook; font-size: 11px; line-height: 15px; border-bottom: #c03 1px solid; padding-bottom: 2px;}
 
@@ -1769,12 +1769,12 @@ ul.new-arrivals a.quick-view{display: none;}
 .wl-feat-prd,.wl-color-story-prd{opacity: 0;}
 .wl-right-block,.top-left-block,.wl-cs-left-block,.bottom-right-block{position: relative;;}
 .block-content{position: absolute; width: 100%; top:0}
-.block-content h4.cursive-text{font-family: gothambook; font-style: italic; font-size: 24px; color: #fff; font-weight: normal; display: block; margin-bottom: 28px; line-height: normal; letter-spacing: -1px;}
-.block-content h4.main-img-text{font-family: ITCAvantGardeProMd; color: #fff; font-weight: normal; display: block; margin-top: 31px; text-transform: uppercase; letter-spacing: -0.5px;}
+.block-content h4.cursive-text{font-family: gothambook; font-style: italic; font-size: 24px; color: #fff; font-weight: normal; display: block; margin-bottom: 14px; line-height: normal; letter-spacing: -1px;}
+.block-content h4.main-img-text{font-family: ITCAvantGardeProMd; color: #fff; font-weight: normal; display: block; margin-top: 14px; text-transform: uppercase; letter-spacing: -0.5px;}
 .block-content h4.main-img-text span{display: block;}
 .b-heading{font-family: gothambook; font-size: 11px; color: #fff; text-transform: uppercase; display: inline-block; line-height: normal;} 
-.top-b-heading{border-top: 2px solid #fff; padding:14px 52px 0; /* padding: 10px 60px 0;*/ /*padding:10px 20px 0 20px;*/}
-.top-grey-b-heading{border-top: 1px solid #555; padding:15px 32px 0; margin: -2px 0 0;}
+.top-b-heading{border-top: 2px solid #fff; padding:8px 52px 0; /* padding: 10px 60px 0;*/ /*padding:10px 20px 0 20px;*/}
+.top-grey-b-heading{border-top: 2px solid #555; padding:8px 32px 0; margin: 1px 0 0;}
 .bottom-b-heading{border-bottom: 1px solid #fff; /*padding:0 100px 8px 100px;*/ padding: 0 170px 11px;}
 .shopnow-btn:hover{color: #fff;}
 .bottom-left-block,.top-right-block{cursor:pointer;}

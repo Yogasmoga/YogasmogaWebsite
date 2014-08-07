@@ -72,6 +72,7 @@ ul.main-menu2 > li.rangoli:hover{
     display: block;
     text-align: left;
     font: 14px/19px gothambook;
+    margin: 0 0 0 40px;
 }
 
 
@@ -81,7 +82,7 @@ ul.main-menu2 > li.rangoli:hover{
     display: inline-block;
     font: 10px gothammedium;
     margin: 0 8px 0 0;
-    padding: 9px 19px;
+    padding: 9px 19px 8px;
     text-transform: uppercase;
 }
 
@@ -321,13 +322,13 @@ ul.site-map > li{
     vertical-align: middle;
 }
 
-@media only screen and (min-width : 1440px) {   
+@media only screen and (max-width : 1440px) {   
     .shopnow-btn{
         margin-top: 30px;
     }
 }
 
-@media only screen and (min-width : 1360px) {
+@media only screen and (max-width : 1360px) {
     .shopnow-btn{
         margin-top: 25px;
     }
@@ -340,27 +341,23 @@ ul.site-map > li{
         width: auto;
     }
 }
-
-@media only screen and (min-width: 1007px) {
-    .shopnow-btn{
-        margin-top: 20px;
+/*
+@media only screen and (max-width : 1150px) {
+    ul.new-arrivals li:nth-child(5){
+        display: none;
     }
+}*/
 
-
-    .iconspartone .row img {
-        width: 30%;
+@media only screen and (max-width : 1200px) {
+    #show4.new-arrivals{
+        display: none;
     }
-
-    .iconspartone .row .iconstxt {
-        width: 70%;
-    }
-
-    .header {
-        padding: 0 40px 0 11px;
+    #show5.new-arrivals{
+        display: block;
     }
 }
-
-@media (max-width: 1024px) {
+/*
+@media only screen and (max-width: 1041px) {
     .logoCont{
         display: none;
     }
@@ -371,7 +368,7 @@ ul.site-map > li{
 
     .footer-block {
         display: inline-block;
-        width: 90%;
+        width: 88.8%;
         margin: 3px 0 0 11.2%;
     } 
 
@@ -401,6 +398,62 @@ ul.site-map > li{
 
     .header {
         padding: 0 40px 0 11px;
+    }
+}*/
+
+@media only screen and (max-width: 1024px) {
+    .logoCont{
+        display: none;
+    }
+    
+    ul.site-map > li{
+        width: 32.5%;
+    }
+
+    .footer-block {
+        display: inline-block;
+        width: 88.8%;
+        margin: 3px 0 0 11.2%;
+    } 
+
+    .footer-block > .site-map {
+    }
+
+    .shiftRight{
+        float: none;
+    }
+
+    .contentSlider.namaskartxt div {
+        width: 70% !important;
+    }
+
+    .shopnow-btn{
+        margin-top: 20px;
+    }
+
+
+    .iconspartone .row img {
+        width: 30%;
+    }
+
+    .iconspartone .row .iconstxt {
+        width: 70%;
+    }
+
+    .header {
+        padding: 0 40px 0 11px;
+    }
+
+    #show4.new-arrivals{
+        display: block;
+    }
+
+    #show5.new-arrivals{
+        display: none;
+    }
+
+    ul#show4.new-arrivals li{
+        width: 22%;
     }
 }
 
@@ -807,3 +860,6 @@ ul.tr-menu > li.free-shipping {
     padding: 0;
 }
 
+.flexslider{
+    min-height: 530px;
+}
