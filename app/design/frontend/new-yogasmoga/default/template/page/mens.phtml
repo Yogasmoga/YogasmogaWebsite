@@ -1,6 +1,6 @@
 <?php
 /**
- *
+ * 
  * Magento
  *
  * NOTICE OF LICENSE
@@ -33,32 +33,32 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
 <head>
-    <?php
+<?php
     if($this->getRequest()->getParam('video') == 'true')
     {
         ?>
-        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb01.png" />
-        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb02.png" />
-        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb03.png" />
-        <meta property="og:title"content="YOGASMOGA | Did You Take a Breath Today?" />
-        <meta property="og:description"content="We are YOGASMOGA, We make things for life - One breath at a time." />
-    <?php
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb01.png" />
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb02.png" />
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb03.png" />
+            <meta property="og:title"content="YOGASMOGA | Did You Take a Breath Today?" />
+            <meta property="og:description"content="We are YOGASMOGA, We make things for life - One breath at a time." />
+        <?php
     }
     else
     {
         ?>
-        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/Untitled_Panorama2_c_1.jpg" />
-        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga_mood_2395.jpg" />
-        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/Yogasmoga_op.jpeg" />
-        <meta property="og:title"content="YOGASMOGA" />
-        <meta property="og:description"content="We are YOGASMOGA. We make things for LIFE. One breath at a time." />
-    <?php
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/Untitled_Panorama2_c_1.jpg" />
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga_mood_2395.jpg" />
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/Yogasmoga_op.jpeg" />
+            <meta property="og:title"content="YOGASMOGA" />
+            <meta property="og:description"content="We are YOGASMOGA. We make things for LIFE. One breath at a time." />
+        <?php
     }
-    ?>
+?>
 
-    <?php echo $this->getChildHtml('head') ?>
+<?php echo $this->getChildHtml('head') ?>
 
-    <?php
+<?php
     //if(Mage::getSingleton('core/session')->getShowVideo())
     if($this->getRequest()->getParam('video') == 'true')
     {
@@ -71,56 +71,123 @@
                 setTimeout(function(){$j("#hmpagevideo").trigger('click')},1000);
             });
         </script>
-    <?php
+        <?php
     }
-    ?>
-    <script type="text/javascript">
-        jQuery(window).load(function(){
-            jQuery("div.showloading").removeClass('showloading');
-            setTimeout(function(){setfullscreenheight();},50);
-        });
-        jQuery(document).ready(function(){
-            setTimeout(function(){
-                jQuery("div.page-overlayy").remove();
-                jQuery("body").css('overflow','auto');
-            }, 500);
-        });
-    </script>
+?>
+<script type="text/javascript">
+    jQuery(window).load(function(){
+        jQuery("div.showloading").removeClass('showloading');
+        setTimeout(function(){setfullscreenheight();},50);
+    });
+    jQuery(document).ready(function(){
+       setTimeout(function(){
+            jQuery("div.page-overlayy").remove();
+            jQuery("body").css('overflow','auto');
+       }, 500); 
+    });
+</script>    
 </head>
 <body class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>" style="margin-right:17px;overflow:hidden;">
 <?php echo $this->getChildHtml('after_body_start') ?>
 <div class="wrapper">
 <div class="page-overlayy" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">&nbsp;</div>
-<?php echo $this->getChildHtml('global_notices') ?>
-<div class="shopping-cart">
+    <?php echo $this->getChildHtml('global_notices') ?>
+    <div class="shopping-cart">
 
-</div>
-<div class="page">
-<?php echo $this->getChildHtml('header') ?>
-<div id="pagecontainer">
-<!-- WelcomeSection Slider -->
-<div id="Welcome" class="fullscreenovfhidden flexslider showloading" desc="Welcome to YOGASMOGA" style="border: none;border-radius : none;box-shadow:none;margin:0px;" tw-summary="">
-    <ul class="slides" id="homemainslider">
-        <li>
-          <img class="fullscreen" src="<?php echo $this->getSkinUrl('images/men/menSlide1.jpg') ?>" alt="LOREM IPSUM" iwidth="1600" iheight="711" />
+    </div>
+    <div class="page">
+        <?php echo $this->getChildHtml('header') ?>
+            <div id="pagecontainer">
+            <!-- sliderBanner -->
+            <div class="flexslider showloading">
+                <ul class="slides">
+                    <li>
+                        <img src="<?php echo $this->getSkinUrl('images/homepage/MenSlider1.jpg') ?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
 
-            <div class="banner-txt3 promo2310 promo1311" style="color : #666;left : 5%;">
-            LOREM IPSUM<br />
-            <span style="color: #666;">LOREM IPSUM</span>
-            <a class="slider-call-to-action" href="/women_landing" style="margin-top:30% !important;">
-                    <img style="width:auto;" alt="SHOP WOMEN" src="<?php echo $this->getSkinUrl('images/men/learn-more.png') ?>">
-                </a>
+                            <div class="banner-txt3 promo2310 promo1311 white">
+                                WHAT'S NEW
+                            </div>                           
+
+                        <div id="playBtn">
+                            <div class="sl-desc-handle">
+                                <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                            </div>
+                            <div class="slide-desc" style="">Lorem ipsum dolor sit amet, consectetur adip scing elit. Pellentesque nulla lacus tincidunt.</div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="<?php echo $this->getSkinUrl('images/homepage/MenSlider2.jpg') ?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
+
+                            <div class="banner-txt3 promo2310 promo1311">
+                                Shop the colors
+                            </div>                           
+
+                        <div id="playBtn">
+                            <div class="sl-desc-handle">
+                                <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                            </div>
+                            <div class="slide-desc" style="">Lorem ipsum dolor sit amet, consectetur adip scing elit. Pellentesque nulla lacus tincidunt.</div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="<?php echo $this->getSkinUrl('images/homepage/MenSlider3.jpg') ?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
+
+                            <div class="banner-txt3 promo2310 promo1311">
+                                Top sellers
+                            </div>                           
+
+                        <div id="playBtn">
+                            <div class="sl-desc-handle">
+                                <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                            </div>
+                            <div class="slide-desc" style="">Lorem ipsum dolor sit amet, consectetur adip scing elit. Pellentesque nulla lacus tincidunt.</div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="<?php echo $this->getSkinUrl('images/homepage/MenSlider4.jpg') ?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
+
+                            <div class="banner-txt3 promo2310 promo1311 white">
+                                Men's tops
+                            </div>                           
+
+                        <div id="playBtn">
+                            <div class="sl-desc-handle">
+                                <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                            </div>
+                            <div class="slide-desc" style="">Lorem ipsum dolor sit amet, consectetur adip scing elit. Pellentesque nulla lacus tincidunt.</div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="<?php echo $this->getSkinUrl('images/homepage/MenSlider5.jpg') ?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
+
+                            <div class="banner-txt3 promo2310 promo1311">
+                                men's bottoms
+                            </div>                           
+
+                        <div id="playBtn">
+                            <div class="sl-desc-handle">
+                                <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                            </div>
+                            <div class="slide-desc" style="">Lorem ipsum dolor sit amet, consectetur adip scing elit. Pellentesque nulla lacus tincidunt.</div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="<?php echo $this->getSkinUrl('images/homepage/MenSlider6.jpg') ?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
+
+                            <div class="banner-txt3 promo2310 promo1311 white">
+                                accessories
+                            </div>                           
+
+                        <div id="playBtn">
+                            <div class="sl-desc-handle">
+                                <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                            </div>
+                            <div class="slide-desc" style="">Lorem ipsum dolor sit amet, consectetur adip scing elit. Pellentesque nulla lacus tincidunt.</div>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            <div style="position: absolute; width: 285px; right: 4.625%; z-index:99; bottom: 10%; height: 131px;" id="playBtn" >
-                <div class="sl-desc-handle">
-                        <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
-                </div>
-                <div class="slide-desc" style="">2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nulla lacus, tincidunt vel mi quis come modo elementum diam.</div>                                
-            </div>
-        </li>
-    </ul>
-</div>
-<!-- WelcomeSection Slider -->
+            <!-- sliderBanner -->
                 
                 <!-- ShareSocialMedia Part -->
                 <div class="share-strip">
