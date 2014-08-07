@@ -1928,4 +1928,10 @@ a.addtl-add-additon{margin-left: 13px !important;}
 /* paypal error msg on shopping bag */
 .errortext{
     text-align: left;
+    text-transform: none;
+}
+.addedItem .similarProdList > li .errortext{
+    clear: both;
+    display: block;
+    padding-top: 5px;
 }
