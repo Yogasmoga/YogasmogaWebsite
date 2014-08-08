@@ -41,7 +41,7 @@ http://www.templatemonster.com/help/magento-framework-how-to-addchange-product-v
 ul.main-menu{margin-left: 0;}
 ul.main-menu > li{display:inline-block; height: 70px; padding:0 12px; text-transform: uppercase; vertical-align: top; cursor:pointer;}
 ul.main-menu li a,ul.tr-menu > li > ul.sub-menu li a{color: #555; font: 11px/23px gothambold;}
-ul.main-menu li a.menu-heading{display: inline-block; padding: 37px 0 12px; vertical-align: middle;}
+ul.main-menu li a.menu-heading{display: inline-block; padding: 37px 0 10px; vertical-align: middle;}
 ul.main-menu li ul.sub-menu{position: absolute; text-align: left; left: 0; margin: 0; line-height: 21px; background: #f1f1f2; /*background: url("../images/nav-bg.png") repeat-x left top;*/ padding: 20px; display: none;}
 ul.main-menu2 li ul.sub-menu{background-position: left top ;}
 ul.main-menu li ul.sub-menu > li{display: inline-block; vertical-align: top; min-width: 160px; border-left: 1px solid #f8f8f8; padding:0 0 0 15px; min-height: 120px;}
@@ -81,7 +81,7 @@ ul.main-menu > li.over > ul.sub-menu{display: block;}
 #search-btn{background: transparent url("../images/search-icon.png") center no-repeat; border: none; width: 16px; height: 14px; font-size: 0; cursor: pointer; }
 
 /**Home Page**/
-.share-strip{padding: 8.5px 40px; margin: 0 auto; width: 92%; font-size: 0; display: block; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+.share-strip{padding: 8.5px 40px; margin: 0 auto; /*width: 92%;*/ font-size: 0; display: block; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 .share-strip .blk{width: 50%; display: none;}
 .share-strip ul li{ color:#555; display: inline-block; padding: 0 5px; font-size: 12px; line-height: 21px;}
 .newbg{background: url("../images/dvdr-new.jpg") no-repeat bottom center !important;}
@@ -105,7 +105,7 @@ p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight
 .block-text2 p.bracelet-count{font-family: gothamlight; font-size: 120px; line-height: 90px; margin-left: -10px;}
 .block-text2 p.block-link a{color:#555;}
 .block-text2 span{font-size: 11px;}
-#playBtn{z-index: 99; width: 285px; height: auto; right: 19px; bottom: 25px; position: absolute;}
+#playBtn{z-index: 99; width: 285px; height: auto; right: 19px; bottom: 19px; position: absolute;}
 .sl-desc-handle {
     bottom: 0;
     cursor: pointer;
@@ -1819,6 +1819,7 @@ ul.sub-nav li a:hover, ul.sub-nav li.current a { color: #c03; }
     .contentSlider h3,
     .contentSlider h3 > .aurum,
     .pg-heading h2{font-size: 36px; line-height: 40px;}
+    .namaskartxt h3 span{line-height: 24px;}
 }
 
 /****Dashboard changes***/

@@ -65,7 +65,7 @@ function factorypart(){
 	var mstext = factoryHeight - mistext;
 	mstext = mstext/1.5;
 	
-	jQuery(".mistext").css("top", mstext);
+	// jQuery(".mistext").css("top", mstext);
 	jQuery(".factorypart .grid35").css("height", factoryHeight);
 };
 
@@ -77,7 +77,7 @@ function namaskarpart(){
 	nmtxt = nmtxt/1.5;
 
 	jQuery(".namaskarpart .grid35").css("height", namaskarHeight);
-	jQuery(".namaskartxt").css("top", nmtxt);
+	// jQuery(".namaskartxt").css("top", nmtxt);
 };
 
 function homeContent(){
@@ -104,11 +104,11 @@ function homeContent1(){
 	// jQuery(".gridslider2 .contentSlider").css("top", vH1);
 };
 
-function ctextVMiddle(){
-	jQuery(".multicolorcont .ctext, .factorythread .ctext, .raisingfunds .ctext").each(function(){
-        var ctext_bl = jQuery(this).height();
-        var parCtext = jQuery(this).parent().height();
-        var topPosCtext = (parCtext - ctext_bl)/1.5;
-        jQuery(this).css("top", topPosCtext);        
-    }); 
-}
+// function ctextVMiddle(){
+// 	jQuery(".multicolorcont .ctext, .factorythread .ctext, .raisingfunds .ctext").each(function(){
+//         var ctext_bl = jQuery(this).height();
+//         var parCtext = jQuery(this).parent().height();
+//         var topPosCtext = (parCtext - ctext_bl)/1.5;
+//         jQuery(this).css("top", topPosCtext);        
+//     }); 
+// }

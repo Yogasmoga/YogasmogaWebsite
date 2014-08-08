@@ -72,7 +72,7 @@ ul.main-menu2 > li.rangoli:hover{
     display: block;
     text-align: left;
     font: 14px/19px gothambook;
-    margin: 0 0 0 40px;
+    /*margin: 0 0 0 40px;*/
 }
 
 
@@ -113,6 +113,7 @@ ul.site-map > li{
     min-height: 133px;
     width: 32.5%;
     margin-bottom: 10px;
+    max-width: 319px;
 }
 
 /** homepage **/
@@ -148,9 +149,12 @@ ul.site-map > li{
     color: #fff;
     text-align: center;
     text-transform: uppercase;
-    padding: 8px 25px;
+    /*padding: 8px 25px;*/
     margin: 37px 0 0;
     display: inline-block;
+    width: 113px;
+    height: 37px;
+    line-height: 37px;
 }
 
 .learn-more {
@@ -258,6 +262,7 @@ ul.site-map > li{
     background: url("../images/new-elements/namaskarband.jpg") no-repeat center center #fff;
     display: block;
     position: relative;
+    background-size: 100% 100%;
 }
 
 .raisingfunds{
@@ -273,8 +278,8 @@ ul.site-map > li{
 .supportnamaskar .ctext {
         margin: 0;        
         position: absolute;
-        bottom: 0px;
-        height: 70px;
+        bottom: 5.6910569105691056910569105691057%;
+        /*height: 70px;*/
 }
 
 .ctext{
@@ -363,12 +368,16 @@ ul.site-map > li{
     }*/
 
 @media only screen and (max-width : 1200px) {
-    #show4.new-arrivals{
-        display: none;
-    }
+    
     #show5.new-arrivals{
         display: block;
     }
+    .logoCont{display: none;}
+    .footer-block {
+        display: inline-block;
+        width: 88.8%;
+        margin: 3px 0 0 11.2%;
+        }
 }
 /*
 @media only screen and (max-width: 1041px) {
@@ -416,19 +425,19 @@ ul.site-map > li{
 }*/
 
 @media only screen and (max-width: 1024px) {
-    .logoCont{
+   /* .logoCont{
         display: none;
-    }
+    }*/
     
     ul.site-map > li{
         width: 32.5%;
     }
 
-    .footer-block {
+    /*.footer-block {
         display: inline-block;
         width: 88.8%;
         margin: 3px 0 0 11.2%;
-    } 
+    } */
 
     .footer-block > .site-map {
     }
@@ -446,10 +455,10 @@ ul.site-map > li{
     }
 
 
-    .iconspartone .row img {
+   /* .iconspartone .row img {
         width: 30%;
     }
-
+*/
     .iconspartone .row .iconstxt {
         width: 70%;
     }
@@ -471,6 +480,7 @@ ul.site-map > li{
     ul#show4.new-arrivals li{
         width: 22%;
     }
+    .bx-wrapper .bx-controls-direction a{width: 21px !important; height: 23px !important; background-size: 100% 100%;}
 }
 
 /** slider **/
@@ -878,4 +888,18 @@ ul.tr-menu > li.free-shipping {
 
 .flexslider{
     min-height: 530px;
+}
+
+@media only screen and (max-width: 1399px){
+    #show5.new-arrivals {
+    display: none;
+    }
+}
+@media only screen and (min-width : 1400px) {
+    #show4.new-arrivals{
+        display: none;
+    }
+    #show5.new-arrivals{
+        display: block;
+    }
 }
