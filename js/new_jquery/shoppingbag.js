@@ -422,6 +422,7 @@ function showShoppingBagHtml()
                     jQuery(".cartitemcount").html(data.count);
                     if(data.countdiscount > 1)
                         showerror(data.discounttypeerror);
+                    outofstockDisable();
 //                    ////alert(jQuery(".contfull2").outerHeight());
 //                    jQuery(".bagerrormsg").height(jQuery(".contfull2").outerHeight());
 //                    jQuery(".bagerrormsg").width(jQuery(".contfull2").outerWidth());
@@ -818,6 +819,18 @@ function redeemgiftcardcode()
                 jQuery('.zindexH').hide();
             }
             
+        }
+    });
+}
+
+function outofstockDisable(){
+    jQuery(".addedItem .similarProdList li").each(function(){
+       var outOfStock = jQuery(this).find("div.outofstockinfo");
+       var notAvail = jQuery(this).find("div.notavailproductinfo");
+        if(outOfStock.length > 0 || notAvail.length > 0)
+        {
+            jQuery("#continuecheckout").attr("href","javascript:void(0)").css("background","#999");
+            jQuery("#continuelink").css("background","#5ec52f");
         }
     });
 }

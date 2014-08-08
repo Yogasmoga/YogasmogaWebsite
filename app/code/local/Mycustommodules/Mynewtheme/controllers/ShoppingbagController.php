@@ -716,6 +716,11 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     $product = Mage::getModel('catalog/product')->load($item->getProductId());
                     $temparray['pid'] = $item->getProductId();
                     $temparray['sku'] = $item->getSku();
+                    $temparray['pavailableqty'] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty();
+                    $temparray['preorder'] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getBackorders();
+                    $temparray['instock'] = $_product->stock_item->is_in_stock;
+                    $temparray['typeid'] = 'configurable';
+
                     //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
                     $temparray['name'] = $item->getName();
                     if(strlen($temparray['name']) > 20)
@@ -747,6 +752,11 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     $_product = Mage::getModel('catalog/product')->load($item->getProductId());
                     $temparray['pid'] = $item->getProductId();
                     $temparray['sku'] = $item->getSku();
+                    $temparray['pavailableqty'] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty();
+                    $temparray['preorder'] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getBackorders();
+                    $temparray['instock'] = $_product->stock_item->is_in_stock;
+                    $temparray['typeid'] = 'simple';
+
                     //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
                     $temparray['name'] = $item->getName();
                     if(strlen($temparray['name']) > 20)
@@ -767,6 +777,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $_product = Mage::getModel('catalog/product')->load($item->getProductId());
                 $temparray['pid'] = $item->getProductId();
                 $temparray['sku'] = $item->getSku();
+                $temparray['pavailableqty'] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty();
+                $temparray['preorder'] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getBackorders();
+                $temparray['instock'] = $_product->stock_item->is_in_stock;
+                $temparray['typeid'] = '';
                 //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
                 $temparray['name'] = $item->getName();
                 if(strlen($temparray['name']) > 20)
@@ -1132,7 +1146,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         foreach($minidetails['items'] as $item)
         {
 
-            $html .='<li id="'.$item['itemid'].'">
+            $html .='<li id="'.$item['itemid'].'" availableqty="'.$item['pavailableqty'].'" backorder="'.$item['preorder'].'" instock="'.$item['instock'].'">
                 <a href="'.$item['producturl'].'"><span class="wdth100"><img alt="'.$item['name'].'" src="'.substr($item['imageurl'], 1).'" ></span></a>
 <span>
                     <span class="quantity">qty '.$item['quantity'].'</span>
@@ -1142,8 +1156,23 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             if($item['size'] !='') $html .='<span class="size">size '.$item['size'].'</span>';
             if($item['length'] !='') $html .='<span class="size">'.$item['length'].'</span>';
             $html .='</span>
-<a href="#" class="close"></a>
-</li>';
+<a href="#" class="close"></a>';
+            // Preorder
+            if($item['pavailableqty'] - $item['quantity'] < 0 && $item['preorder'] == 1 && $item['instock']&& ($item['typeid'] != "giftcards" && $item['typeid'] != ''))
+            {
+                $html .= '<div class="preorderinfo errortext">'.Mage::getModel("core/variable")->loadByCode("preorder_message_email")->getValue("html").'</div>';
+            }
+            //Out of stock
+            if($item['pavailableqty'] < 1 && $item['instock'] == 0 && $item['preorder'] == 0)
+            {
+                $html .= '<div class="outofstockinfo errortext">* This product is currently out of stock.</div>';
+            }
+            // Requested quantity is not available
+            if($item['pavailableqty'] < $item['quantity'] && $item['instock'] == 1 && $item['preorder'] == 0 )
+            {
+                $html .= '<div class="notavailproductinfo errortext">* The requested quantity for "'.$item['name'].'" is not available.</div>';
+            }
+            $html .='</li>';
         }
         // show bracelet if it is not in cart else do not show
         $namaskarbracelet = array();

@@ -400,7 +400,13 @@ function featuredSec(){
             jQuery(".wl-color-story-prd .block-content").each(function(){
                 var bl_c_H = jQuery(this).height();
                 var parH = jQuery(this).parent().height();
-                var topPos = (parH - bl_c_H)/1.95;
+                var topPos = (parH - bl_c_H)/1.99;
+                jQuery(this).css("top", topPos);
+            });
+            jQuery(".wl-cs-left-block .block-content").each(function(){
+                var bl_c_H = jQuery(this).height();
+                var parH = jQuery(this).parent().height();
+                var topPos = (parH - bl_c_H)/1.91;
                 jQuery(this).css("top", topPos);
             });
         },100);
@@ -419,14 +425,14 @@ function featuredSec(){
     jQuery(".wl-feat-prd .block-content").each(function(){
         var bl_c_H1 = jQuery(this).height();
         var parH1 = jQuery(this).parent().height();
-        var topPos1 = (parH1 - bl_c_H1)/2.07;
+        var topPos1 = (parH1 - bl_c_H1)/2;
         jQuery(this).css("top", topPos1);        
     });
 
     jQuery(".wl-right-block .block-content").each(function(){
         var bl_c_H2 = jQuery(this).height();
         var parH2 = jQuery(this).parent().height();
-        var topPos2 = (parH2 - bl_c_H2)/1.6;
+        var topPos2 = (parH2 - bl_c_H2)/1.55;
         jQuery(this).css("top", topPos2);        
     });     
 }

@@ -72,6 +72,7 @@ ul.main-menu2 > li.rangoli:hover{
     display: block;
     text-align: left;
     font: 14px/19px gothambook;
+    margin: 0 0 0 40px;
 }
 
 
@@ -105,39 +106,13 @@ ul.main-menu2 > li.rangoli:hover{
 
 .footer-block > .site-map {
     /*float: right;*/
+    width: 100%;
 }
 
 ul.site-map > li{
     min-height: 133px;
-    width: 33%;
+    width: 32.5%;
     margin-bottom: 10px;
-}
-
-@media only screen and (max-width : 1024px) {
-    .logoCont{
-        display: none;
-    }
-    
-    ul.site-map > li{
-        width: 33%;
-    }
-
-    .footer-block {
-        display: inline-block;
-        width: 100%;
-    } 
-
-    .footer-block > .site-map {
-        float: right;
-    }
-
-    .shiftRight{
-        float: none;
-    }
-
-    .contentSlider.namaskartxt div {
-        width: 70% !important;
-    }
 }
 
 /** homepage **/
@@ -360,6 +335,7 @@ ul.site-map > li{
    /* .header {
         padding: 0 54px 0 22px;
     }*/
+
 }
 
 @media only screen and (max-width : 1360px) {
@@ -374,13 +350,97 @@ ul.site-map > li{
     .iconspartone .row .iconstxt {
         width: auto;
     }
+}
+/*
+@media only screen and (max-width : 1150px) {
+    ul.new-arrivals li:nth-child(5){
+        display: none;
+    }
+}*/
 
    /* .header {
         padding: 0 45px 0 18px;
     }*/
+
+@media only screen and (max-width : 1200px) {
+    #show4.new-arrivals{
+        display: none;
+    }
+    #show5.new-arrivals{
+        display: block;
+    }
 }
+/*
+@media only screen and (max-width: 1041px) {
+    .logoCont{
+        display: none;
+    }
+    
+    ul.site-map > li{
+        width: 32.5%;
+    }
+
+    .footer-block {
+        display: inline-block;
+        width: 88.8%;
+        margin: 3px 0 0 11.2%;
+    } 
+
+    .footer-block > .site-map {
+    }
+
+    .shiftRight{
+        float: none;
+    }
+
+    .contentSlider.namaskartxt div {
+        width: 70% !important;
+    }
+
+    .shopnow-btn{
+        margin-top: 20px;
+    }
+
+
+    .iconspartone .row img {
+        width: 30%;
+    }
+
+    .iconspartone .row .iconstxt {
+        width: 70%;
+    }
+
+    .header {
+        padding: 0 40px 0 11px;
+    }
+}*/
 
 @media only screen and (max-width: 1024px) {
+    .logoCont{
+        display: none;
+    }
+    
+    ul.site-map > li{
+        width: 32.5%;
+    }
+
+    .footer-block {
+        display: inline-block;
+        width: 88.8%;
+        margin: 3px 0 0 11.2%;
+    } 
+
+    .footer-block > .site-map {
+    }
+
+    .shiftRight{
+        float: none;
+    }
+
+    .contentSlider.namaskartxt div {
+        width: 70% !important;
+    }
+
     .shopnow-btn{
         margin-top: 20px;
     }
@@ -396,9 +456,22 @@ ul.site-map > li{
 
     /*.header {
         padding: 0 40px 0 11px;
-    }*/
-}
 
+    }*/
+
+
+    #show4.new-arrivals{
+        display: block;
+    }
+
+    #show5.new-arrivals{
+        display: none;
+    }
+
+    ul#show4.new-arrivals li{
+        width: 22%;
+    }
+}
 
 /** slider **/
 .bx-wrapper {
@@ -803,3 +876,6 @@ ul.tr-menu > li.free-shipping {
     padding: 0;
 }
 
+.flexslider{
+    min-height: 530px;
+}
