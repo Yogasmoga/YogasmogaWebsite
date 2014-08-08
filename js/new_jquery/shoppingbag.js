@@ -402,10 +402,17 @@ function showShoppingBagHtml()
         _showShoppingbagLoader = true;
         _isClickSigninMenu = false;
     }
+    // check for paypal final review page
+    var check4reviewpage = false;
+    var curUrl = document.URL;console.log(window.location.href.indexOf('/paypal/express/review/')+"-------------");
+    if(window.location.href.indexOf('/paypal/express/review/') > 0)
+        check4reviewpage = true;
 
     if(_showShoppingbagLoader)
         jQuery(".shopping-cart").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='margin:80% auto auto;' />");
-    jQuery.ajax({url : checkouturl});
+    if(!check4reviewpage)
+        jQuery.ajax({url : checkouturl});
+    // end check for paypal final review page
     setTimeout(function(){
 
 
