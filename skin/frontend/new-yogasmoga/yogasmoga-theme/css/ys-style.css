@@ -34,13 +34,14 @@ http://www.templatemonster.com/help/magento-framework-how-to-addchange-product-v
 
 /****Header****/
 /*#pagecontainer{min-width: 960px;}*/
-.header-container { background-color: #fff; position: fixed; top: 0px; height : 70px; width : 100%; z-index: 10003; min-width: 1024px;}
-.header{ padding:0 60px 0 30px;}
+.header-container { background-color: #fff; position: fixed; top: 0px; height : 69px; width : 100%; z-index: 10003; min-width: 1007px;}
+/*.header{ padding:0 60px 0 30px;}*/
+.header{ padding:0 40px 0 13px;}
 .header .logo {margin:0;}
 ul.main-menu{margin-left: 0;}
-ul.main-menu > li{display:inline-block; height: 70px; padding:0 15px; text-transform: uppercase; vertical-align: top; cursor:pointer;}
+ul.main-menu > li{display:inline-block; height: 70px; padding:0 12px; text-transform: uppercase; vertical-align: top; cursor:pointer;}
 ul.main-menu li a,ul.tr-menu > li > ul.sub-menu li a{color: #555; font: 11px/23px gothambold;}
-ul.main-menu li a.menu-heading{display: inline-block; padding: 36px 0 12px; vertical-align: middle;}
+ul.main-menu li a.menu-heading{display: inline-block; padding: 37px 0 12px; vertical-align: middle;}
 ul.main-menu li ul.sub-menu{position: absolute; text-align: left; left: 0; margin: 0; line-height: 21px; background: #f1f1f2; /*background: url("../images/nav-bg.png") repeat-x left top;*/ padding: 20px; display: none;}
 ul.main-menu2 li ul.sub-menu{background-position: left top ;}
 ul.main-menu li ul.sub-menu > li{display: inline-block; vertical-align: top; min-width: 160px; border-left: 1px solid #f8f8f8; padding:0 0 0 15px; min-height: 120px;}
@@ -52,12 +53,13 @@ ul.main-menu li ul.sub-menu > li > ul a,ul.main-menu2 li ul.sub-menu > li > ul:f
 ul.main-menu > li.smenu, ul.main-menu > li:hover, ul.main-menu2 > li.active{background: url("../images/menu_arrow.png") no-repeat bottom center; background-size: 17px 14px;}
 
 ul.tr-menu {
-    margin: 10px 0 6px;
+    margin: 8px 0 6px;
     padding: 0;
+    font-size: 0px;
 }
 ul.tr-menu > li{display: inline-block; padding: 0; position: relative; font: 11px/19px gothambook; color: #555;}
 .tr-menu li > span {
-    padding: 0 10px;
+    padding: 0 13px 0 10px;
 }
 li.free-shipping{font-style: italic; margin-right: 15px;}
 ul.tr-menu > li > ul.sub-menu{position: absolute; text-align: center; width:200px; padding:0; z-index: 9; display: none; text-transform: uppercase; }
@@ -79,7 +81,7 @@ ul.main-menu > li.over > ul.sub-menu{display: block;}
 #search-btn{background: transparent url("../images/search-icon.png") center no-repeat; border: none; width: 16px; height: 14px; font-size: 0; cursor: pointer; }
 
 /**Home Page**/
-.share-strip{padding: 11px 0; margin: 0 auto; width: 92%; font-size: 0; display: block;}
+.share-strip{padding: 8.5px 40px; margin: 0 auto; width: 92%; font-size: 0; display: block; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 .share-strip .blk{width: 50%; display: none;}
 .share-strip ul li{ color:#555; display: inline-block; padding: 0 5px; font-size: 12px; line-height: 21px;}
 .newbg{background: url("../images/dvdr-new.jpg") no-repeat bottom center !important;}
@@ -1511,7 +1513,7 @@ div#sizechart td span { font-weight: normal; }
     margin: 0;
 }
 .header .logo {
-    margin: 12px 11px 0 0;
+    margin: 11px 14px 0 0;
 }
 
 .banner-txt3.promo2310 {
@@ -1572,7 +1574,7 @@ a.redTxt {
 }
 
 
-div#bodycompensator{height: 70px;}
+div#bodycompensator{height: 69px;}
 
 
 
@@ -1920,8 +1922,8 @@ a.addtl-add-additon{margin-left: 13px !important;}
     .new-arrivals-block span.na-head,
     .contentSlider h3,
     .contentSlider h3 > .aurum,
-    .pg-heading h2{font-size: 50px; line-height: 53px;}       
-    
+    .pg-heading h2{font-size: 50px; line-height: 53px;}
+    .header{ padding:0 60px 0 30px;}
 }
 
 .selectedlength div{display: inline-block; border: 1px solid #A9A9A9; text-align: center; cursor: pointer; padding: 2px 8px; margin: 0 7px 0 0;}

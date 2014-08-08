@@ -76,13 +76,16 @@ ul.main-menu2 > li.rangoli:hover{
 
 
 .sign-up-new > a {
-    background: #cc0033;
+    background: #c03;
     color: #fff;
     display: inline-block;
-    font: 10px gothammedium;
+    font: 11px gothammedium;
     margin: 0 8px 0 0;
-    padding: 9px 19px;
     text-transform: uppercase;
+    width: 80px;
+    text-align: center;
+    height: 28px;
+    line-height: 28px;
 }
 
 /** footer **/
@@ -150,12 +153,12 @@ ul.site-map > li{
 }
 
 .grid65{
-    width: 66.7%;
+    width: 66.633565044687189672293942403178%;
     float: left;
 }
 
 .grid35{
-    width: 33.3%;
+    width: 33.366434955312810327706057596822%;
     float: right;
 }
 
@@ -221,8 +224,10 @@ ul.site-map > li{
     border-bottom: 1px solid #ae8637;
     font-family: gothambold;
     font-weight: normal;
-    margin: auto auto 30px;
+    margin: auto auto 2.0549898167006109979633401221996%;
     width: 50%;
+    padding-bottom: 1.2219959266802443991853360488798%;
+    line-height: normal !important;
 }
 
 .contentSlider h3 {
@@ -250,7 +255,7 @@ ul.site-map > li{
 }
 
 .compressBox, .multicolorcont, .factorythread, .usamap, .supportnamaskar, .raisingfunds{
-    background: url("../images/new-elements/circlebg.png") no-repeat center center #ae8637;
+    background: url("../images/new-elements/goldbg.png") no-repeat center center #ae8637;
     background-size: 100% 100%;
     width: 100%;
     display: block;
@@ -352,9 +357,9 @@ ul.site-map > li{
         margin-top: 30px;
     }
 
-    .header {
+   /* .header {
         padding: 0 54px 0 22px;
-    }
+    }*/
 }
 
 @media only screen and (max-width : 1360px) {
@@ -370,9 +375,9 @@ ul.site-map > li{
         width: auto;
     }
 
-    .header {
+   /* .header {
         padding: 0 45px 0 18px;
-    }
+    }*/
 }
 
 @media only screen and (max-width: 1024px) {
@@ -389,9 +394,9 @@ ul.site-map > li{
         width: 70%;
     }
 
-    .header {
+    /*.header {
         padding: 0 40px 0 11px;
-    }
+    }*/
 }
 
 
@@ -759,11 +764,11 @@ ul.tr-menu > li.free-shipping {
 }
 
 @media only screen and (min-width : 1600px) {
-   .fitDetail .video-box .tble table {
+   #productdetails .fitDetail .video-box .tble table {
         display: block;
         margin: 17px 0 0 !important;
     } 
-   .fitDetail .tble table {
+   #productdetails .fitDetail .tble table {
         display: none;
     } 
     .video-box{
@@ -772,10 +777,10 @@ ul.tr-menu > li.free-shipping {
 }
 
 @media only screen and (max-width : 1599px) {
-   .fitDetail .video-box .tble table {
+   #productdetails .fitDetail .video-box .tble table {
         display: none;
     } 
-   .fitDetail .tble table {
+   #productdetails .fitDetail .tble table {
         display: block;
     } 
     .video-box{

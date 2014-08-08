@@ -89,7 +89,7 @@ function homeContent(){
 	var vH = hvalue/1.5;
 //	vH = vH+47;	
 
-	jQuery(".sliderContent").css("top", vH);
+	// jQuery(".sliderContent").css("top", vH);
 };
 
 function homeContent1(){
@@ -101,11 +101,11 @@ function homeContent1(){
 	var vH1 = hvalue1/1.5;
 //	vH1 = vH1+51;
 
-	jQuery(".gridslider2 .contentSlider").css("top", vH1);
+	// jQuery(".gridslider2 .contentSlider").css("top", vH1);
 };
 
 function ctextVMiddle(){
-	jQuery(".compressBox .ctext, .multicolorcont .ctext, .factorythread .ctext, .raisingfunds .ctext").each(function(){
+	jQuery(".multicolorcont .ctext, .factorythread .ctext, .raisingfunds .ctext").each(function(){
         var ctext_bl = jQuery(this).height();
         var parCtext = jQuery(this).parent().height();
         var topPosCtext = (parCtext - ctext_bl)/1.5;
