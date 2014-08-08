@@ -38,7 +38,7 @@
             <th>&nbsp;</th>
             <th>ITEM</th>
             <th style="text-align: left; padding-right: 10px;">PRICE</th>
-            <?php/*<th>&nbsp;</th>*/?>
+
         </tr>
          <tr class="bar" style="height: 5px;">
             <td colspan="3" style="font-size: 0;">
@@ -54,9 +54,11 @@
                 $_product = Mage::getModel('catalog/product')->load($_product->getId());
             ?>
                 <tr id="item_<?php echo $item->getId();?>">
-                    <?php/* <td class="removeitem">
+                    <?php
+                    /* <td class="removeitem">
                         <a class="btn-remove btn-remove2" title="Remove Item" href="<?php echo Mage::helper('core/url')->getHomeUrl()."/wishlist/index/remove/item/".$item->getWishlistItemId(); ?>">Remove item</a> 
-                    </td> */?>
+                    </td> */
+                    ?>
                     <td class="primage">
                         <img src="<?php echo Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100); ?>" />
                     </td>
