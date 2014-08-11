@@ -8,6 +8,9 @@ jQuery(window).load(function($){
     jQuery(".featureList span.ftrFig").css("height", featLiH);
 });
 jQuery(document).ready(function($){   
+    $("#productdetails").on("click",".vlink-cont a",function(){
+        $(".fitDetail .video-block img").click();
+    });
 // for share in checkout 
 $("div#addanothreferral").live("click", function(){
     $("table.referafriendcheck tbody#main").append("<tr id='" + (++_refercount) + "'>" + $("table.referafriendcheck tr#1").html() + "</tr>");   
@@ -218,7 +221,7 @@ $("table.referafriendcheck td.removeshare img").live('click', function(){
                         // jQuery("#popup-register input").val("").focus().blur();
                         $(".ui-widget-overlay").css("z-index","100");
                         $("input#pfirstname").blur();
-                        $(".ui-widget-overlay").css({"top":"73px","position":"fixed"});
+                        $(".ui-widget-overlay").css({"top":"69px","position":"fixed"});
                         $(window).trigger("resize");
                         var pW = ($(document).width() - $(this).parent().width())/2;
                         var pH = ($(window).height() - $(this).parent().height())/2;
@@ -257,7 +260,7 @@ $("table.referafriendcheck td.removeshare img").live('click', function(){
                 //$("#invite-friend-form input").val("").focus().blur();
                 $(".ui-widget-overlay").css("z-index","100");
                 $("input#friendname").blur();                
-                $(".ui-widget-overlay").css({"top":"73px","position":"fixed"});
+                $(".ui-widget-overlay").css({"top":"69px","position":"fixed"});
                 $(window).trigger("resize");
                 var pW = ($(document).width() - $(this).parent().width())/2;
                 var pH = ($(window).height() - $(this).parent().height())/2;
@@ -301,7 +304,7 @@ $("table.referafriendcheck td.removeshare img").live('click', function(){
                 }                  
                 $("#sign-up-form input#fname").blur();
                 $("#sign-up-form #s_password,#sign-in-form #si_password").blur();
-                $(".ui-widget-overlay").css({top:73});
+                $(".ui-widget-overlay").css({top:69});
                 $(window).trigger("resize");
                 var pW = ($(document).width() - $(this).parent().width())/2;
                 var pH = ($(window).height() - $(this).parent().height())/2;
@@ -404,7 +407,8 @@ function madeinusa(){
  	var vidFeatureWidth = leftmidLi + rightmidLi + 24;
  	var vidMeasureWidth = rightMostLi + rightmidLi + 19;
  	$(featureVideo).css({"width": vidFeatureWidth, "margin-left" : margnLeft});
- 	$(measureVideo).css({"width": vidMeasureWidth, "margin-right" : margnRight});
+ 	// $(measureVideo).css({"width": vidMeasureWidth, "margin-right" : margnRight});
+    $(measureVideo).css({"width": vidMeasureWidth});
  }
 // function hdrCenter(){     var _wnWdth = jQuery(window).width();
 

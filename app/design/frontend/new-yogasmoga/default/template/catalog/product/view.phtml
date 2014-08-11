@@ -781,7 +781,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
     ?>
     <?php if($designfeaturevidioname !='' || count($newdfimages)>1 )
     {?>
-        <h2 style="margin-bottom:50px;">Design features</h2>
+        <h2 style="margin-bottom:30px;">Design features</h2>
         <!-- heading -->
         <?php
         if($designfeaturevidioname != '' )
@@ -819,7 +819,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
         ?>
         <a name="how-does-it-fit"></a>
         <!-- heading -->
-        <h2>Fit</h2>
+        <h2 style="margin-bottom:20px;">Fit</h2>
         <!-- heading -->
 
         <div class="fitDetail font11">
@@ -830,7 +830,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
                     <li>Perfect racer back for movement</li>
                 </ul>
 
-                <div class="vlink-cont" style="margin-left:20px;">
+                <div class="vlink-cont" style="margin-left:16px;">
                     <p class="block-link" style="margin-top: 15px;"><a href="#" class="com-a-prd-links">Watch the video of how to measure</a></p>
                 </div>
                 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
@@ -1143,9 +1143,9 @@ if($_product->getAttributeText('canzoomimage') == "yes")
 <!-- SMOGIBUCKS -->
 <!-- Desicription -->
 <div class="box-desc-dvdr font11">
-    <p style="margin-bottom: 35px;"><span style="">Need help?</span> <a class="chatlink" href="javascript:void($zopim.livechat.window.show())">chat with us</a><span class="online"><span></span>Online now</span></p>
+    <p style="margin-bottom: 45px;"><span style="">Need help?</span> <a class="chatlink" href="javascript:void($zopim.livechat.window.show())">chat with us</a><span class="online"><span></span>Online now</span></p>
 
-    <h2>Product description</h2>
+    <h2 style="margin-bottom:20px;">Product description</h2>
         <!-- description -->
         <?php  if(strlen($_product->getDescription())< 200) { ?>
     <div class="shortdesc"><?php echo $_product->getDescription(); ?> </div>
@@ -1219,7 +1219,7 @@ while ($row = $readresult->fetch() ) {
                 }
                 if($upsellsimplecount == 1){
                 ?>
-                    <h2 class="newbg" style="margin-top:35px;">complete the look</h2>
+                    <h2 class="newbg" style="margin-top:35px; margin-bottom: 27px;">complete the look</h2>
                     <ul class="similarProdList clear">
                  <?php } ?>
                 <li><a href="<?php echo Mage::getBaseUrl().$parentproduct->getUrlPath().'?color='.$product->getColor(); ?>"
