@@ -8,6 +8,9 @@ jQuery(window).load(function($){
     jQuery(".featureList span.ftrFig").css("height", featLiH);
 });
 jQuery(document).ready(function($){   
+    $("#productdetails").on("click",".vlink-cont a",function(){
+        $(".fitDetail .video-block img").click();
+    });
 // for share in checkout 
 $("div#addanothreferral").live("click", function(){
     $("table.referafriendcheck tbody#main").append("<tr id='" + (++_refercount) + "'>" + $("table.referafriendcheck tr#1").html() + "</tr>");   
@@ -405,6 +408,7 @@ function madeinusa(){
  	var vidMeasureWidth = rightMostLi + rightmidLi + 19;
  	$(featureVideo).css({"width": vidFeatureWidth, "margin-left" : margnLeft});
  	// $(measureVideo).css({"width": vidMeasureWidth, "margin-right" : margnRight});
+    $(measureVideo).css({"width": vidMeasureWidth});
  }
 // function hdrCenter(){     var _wnWdth = jQuery(window).width();
 
