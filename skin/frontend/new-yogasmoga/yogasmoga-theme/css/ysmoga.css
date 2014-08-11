@@ -633,7 +633,7 @@ html[xmlns] .overridefix {
 
 /** NewGrid **/
 .gridProdCubix {
-    margin: auto;
+    margin: 29px auto auto;
     display: inline-block;
     width: 100%;
 }
