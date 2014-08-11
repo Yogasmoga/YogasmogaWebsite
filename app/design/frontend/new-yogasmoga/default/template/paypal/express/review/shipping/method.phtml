@@ -52,16 +52,10 @@
                 <?php foreach ($rates as $rate):?>
                     <table>
                             <tbody><tr>
-                                <td>
-                                <input type="radio" class="radio" id="s_method_<?php echo $this->renderShippingRateValue($rate)?>" value="<?php echo $this->renderShippingRateValue($rate)?>" name="shipping_method" <?php echo ($currentRate === $rate) ? ' checked="checked"' : '' ;?> />     
-                                </td>
-                                <td style="padding-top : 2px;">
+                                <td class="shippingRadio">
+                                <input type="radio" class="radio" id="s_method_<?php echo $this->renderShippingRateValue($rate)?>" value="<?php echo $this->renderShippingRateValue($rate)?>" name="shipping_method" <?php echo ($currentRate === $rate) ? ' checked="checked"' : '' ;?> /> 
                                     <label for="s_method_<?php echo $this->renderShippingRateValue($rate)?>"><?php echo formatshipmethod($this->renderShippingRateOption($rate))?>
-                                                                        </label>
-                                </td>
-                            </tr>
-                        </tbody></table>
-                    <?php
+                        <?php
                             $temp = Mage::app()->getLayout()->createBlock('cms/block')->setBlockId($this->renderShippingRateValue($rate))->toHtml();
                             //$temp = Mage::getModel('cms/block')->load('revolvingmessage_loggedin')->getContent();
 //                            $block  = Mage::getModel('cms/block')
@@ -79,6 +73,10 @@
                                 <?php
                             }
                         ?>
+                                                                        </label>
+                                </td>
+                            </tr>
+                        </tbody></table>
                 <?php endforeach;?>
             <?php endforeach;?>
         <?php else: ?>
