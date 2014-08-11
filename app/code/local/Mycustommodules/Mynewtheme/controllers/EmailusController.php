@@ -42,7 +42,7 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         $subject='Email Us Submission';
         $fileurl='';
         if(!empty($file['name'])){  
-            $fileurl=Mage::helper('core/url')->getHomeUrl().'uploads/'.$file['name'];
+            $fileurl=Mage::helper('core/url')->getHomeUrl().'uploads'.DS.$file['name'];
         }
         $html= array (
                     'name'        => $name,
@@ -92,19 +92,20 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         $template_id = $mail_collection->getFirstItem()->getTemplate_id();
 
         $recipient = array(
-            'email' => 'neha@mobikasa.com',
+            //'email' => 'neha@mobikasa.com',
+            'email' => 'manish@mobikasa.com',
             'name'  => 'YOGASMOGA'
         );
         $sender  = array(
             'name' => 'YOGASMOGA',
-            'email' => 'hello@yogasmoga.com'
+            'email' => 'manish@yogasmoga.com'
         );
         //echo "<pre>";print_r($email); die('test');
         $email->setDesignConfig(array('area'=>'frontend', 'store'=> Mage::app()->getStore()->getId()))
             ->sendTransactional(
                 $template_id,
                 $sender,
-                'neeraj@mobikasa.com',
+                'manish@mobikasa.com',
                 'YOGASMOGA',
                 $html
             );
