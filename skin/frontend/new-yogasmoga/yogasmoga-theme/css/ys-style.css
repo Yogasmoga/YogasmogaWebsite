@@ -373,7 +373,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .bannerFluid {
     background: none repeat scroll 0 0 #fafafa;
     /*height: 400px;*/
-    margin: 0 0 45px;
+    margin: 0 0 16px;
     position: relative;
     width: 100%;
 }
@@ -1505,7 +1505,7 @@ div#sizechart td span { font-weight: normal; }
 .cms-help .cont-icon{width:100%;}
 
 .cms-help table.measure-assets h3.specs{font:11px/17px gothambold; text-transform: uppercase; color: #666; margin-bottom: 18px;}
-.cms-help table.measure-assets tr td p{font:11px/17px gothambook; color: #666; margin-bottom: 18px;}
+.cms-help table.measure-assets tr td p{font:12px/17px gothambook; color: #666; margin-bottom: 18px;}
 .cms-help table.measure-assets tr td p span{font:11px/17px gothambold; display: block; text-transform: uppercase; color: #666;}
 
 .header a.logo {
@@ -1796,32 +1796,6 @@ ul.sub-nav li a:hover, ul.sub-nav li.current a { color: #c03; }
 #homemainslider{position: relative !important;}
 
 
-/****Fonts Responsive***/
-@media screen and (max-width: 1200px) {
-    p.block-desc, .madeinusa-txt, li.new-arrivals-desc .block-desc,.contWom h4 span {
-    font-size: 25px !important;
-    }
-    p.block-head {
-    font-size: 13px;
-    }    
-    .contWom h4{font-size: 15px !important;}
-
-    /**new**/
-    .contentSlider h2{font-size: 11px; line-height: 35px;}
-    .block-content h4.main-img-text span,
-    .contentSlider h3 span{font-size: 17px; line-height: 35px;}
-    .block-content h4.cursive-text{font-size: 24px; line-height: 28px;}
-    .ctext{font-size: 26px; line-height: 33px;}
-    .block-content h4.main-img-text,
-    .banner-txt3.promo2310,
-    .banner-txt3.promo2310 span,
-    .new-arrivals-block span.na-head,
-    .contentSlider h3,
-    .contentSlider h3 > .aurum,
-    .pg-heading h2{font-size: 36px; line-height: 40px;}
-    .namaskartxt h3 span{line-height: 24px;}
-}
-
 /****Dashboard changes***/
 .dashboard-index{padding: 15px 40px 0 40px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
 .dashboard-container,.share-cont{margin: 0; width: auto;min-width: 600px; max-width: 800px;}
@@ -1858,6 +1832,31 @@ a.addtl-add-additon{margin-left: 13px !important;}
 .holder-name{font-family: gothambold; font-size: 12px; line-height: 21px; color: #555; text-transform: uppercase; margin:0;} 
 .share-cont{margin-bottom: 70px;}
 
+/****Fonts Responsive***/
+@media screen and (max-width: 1200px) {
+    p.block-desc, .madeinusa-txt, li.new-arrivals-desc .block-desc,.contWom h4 span {
+    font-size: 25px !important;
+    }
+    p.block-head {
+    font-size: 13px;
+    }    
+    .contWom h4{font-size: 15px !important;}
+
+    /**new**/
+    .contentSlider h2{font-size: 11px; line-height: 35px;}
+    .block-content h4.main-img-text span,
+    .contentSlider h3 span{font-size: 17px; line-height: 35px;}
+    .block-content h4.cursive-text{font-size: 24px; line-height: 28px;}
+    .ctext{font-size: 26px; line-height: 33px;}
+    .block-content h4.main-img-text,
+    .banner-txt3.promo2310,
+    .banner-txt3.promo2310 span,
+    .new-arrivals-block span.na-head,
+    .contentSlider h3,
+    .contentSlider h3 > .aurum{font-size: 36px; line-height: 40px;}
+    .namaskartxt h3 span{line-height: 24px;}
+}
+
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
     p.block-desc, .madeinusa-txt, li.new-arrivals-desc .block-desc,.contWom h4 span {
     font-size: 28px !important;
@@ -1879,9 +1878,8 @@ a.addtl-add-additon{margin-left: 13px !important;}
     .banner-txt3.promo2310 span,
     .new-arrivals-block span.na-head,
     .contentSlider h3,
-    .contentSlider h3 > .aurum,
-    .pg-heading h2{font-size: 40px; line-height: 43px;}    
-    
+    .contentSlider h3 > .aurum{font-size: 40px; line-height: 43px;}  
+    .bx-wrapper .bx-controls-direction a{width: 21px !important; height: 23px !important; background-size: 100% 100%;}
 }
 
 
@@ -1904,9 +1902,8 @@ a.addtl-add-additon{margin-left: 13px !important;}
     .banner-txt3.promo2310 span,
     .new-arrivals-block span.na-head,
     .contentSlider h3,
-    .contentSlider h3 > .aurum,
-    .pg-heading h2{font-size: 45px; line-height: 48px;}       
-    
+    .contentSlider h3 > .aurum{font-size: 45px; line-height: 48px;}  
+    .bx-wrapper .bx-controls-direction a{width: 25px !important; height: 27px !important; background-size: 100% 100%;}
 }
 
 @media screen and (min-width: 1600px) {
@@ -1921,8 +1918,7 @@ a.addtl-add-additon{margin-left: 13px !important;}
     .banner-txt3.promo2310 span,
     .new-arrivals-block span.na-head,
     .contentSlider h3,
-    .contentSlider h3 > .aurum,
-    .pg-heading h2{font-size: 50px; line-height: 53px;}
+    .contentSlider h3 > .aurum{font-size: 50px; line-height: 53px;}
     .header{ padding:0 60px 0 30px;}
 }
 
