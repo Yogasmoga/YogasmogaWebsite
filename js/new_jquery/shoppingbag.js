@@ -404,7 +404,7 @@ function showShoppingBagHtml()
     }
     // check for paypal final review page
     var check4reviewpage = false;
-    var curUrl = document.URL;console.log(window.location.href.indexOf('/paypal/express/review/')+"-------------");
+    var curUrl = document.URL;
     if(window.location.href.indexOf('/paypal/express/review/') > 0)
         check4reviewpage = true;
 

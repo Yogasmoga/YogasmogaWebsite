@@ -1,5 +1,5 @@
 jQuery(document).ready(function($){
-    jQuery("#update_order").trigger('click');
+    //jQuery("#update_order").trigger('click');
     setTimeout(function(){
         jQuery("input[type='radio'][name='shipping_method']").live('click', function(){
             jQuery("#update_order").trigger('click');                        

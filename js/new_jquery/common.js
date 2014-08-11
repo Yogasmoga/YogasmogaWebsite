@@ -8,6 +8,9 @@ jQuery(window).load(function($){
     jQuery(".featureList span.ftrFig").css("height", featLiH);
 });
 jQuery(document).ready(function($){   
+    $("#productdetails").on("click",".vlink-cont a",function(){
+        $(".fitDetail .video-block img").click();
+    });
 // for share in checkout 
 $("div#addanothreferral").live("click", function(){
     $("table.referafriendcheck tbody#main").append("<tr id='" + (++_refercount) + "'>" + $("table.referafriendcheck tr#1").html() + "</tr>");   
@@ -147,6 +150,12 @@ $("table.referafriendcheck td.removeshare img").live('click', function(){
     $("div.2-columns-wrapper").find(".pg-content,.side-menu-bar").css("min-height", winHeight - 96);    
     // $("div#mainimage").find(".pg-content,.account-nav").css("min-height", winHeight - 96);
     // $(".dashboard-index").find(".pg-content,.account-nav").css("min-height", winHeight - 96);        
+    $(".share-strip").on("click",".smogi-love a",function(){
+        if(!_islogedinuser)
+        {
+            $("#signup").dialog( "open" );
+        }
+    });
 
 	$(".footer-block").on("click",".smogi-love",function(){
          if(!_islogedinuser)
@@ -398,7 +407,8 @@ function madeinusa(){
  	var vidFeatureWidth = leftmidLi + rightmidLi + 24;
  	var vidMeasureWidth = rightMostLi + rightmidLi + 19;
  	$(featureVideo).css({"width": vidFeatureWidth, "margin-left" : margnLeft});
- 	$(measureVideo).css({"width": vidMeasureWidth, "margin-right" : margnRight});
+ 	// $(measureVideo).css({"width": vidMeasureWidth, "margin-right" : margnRight});
+    $(measureVideo).css({"width": vidMeasureWidth});
  }
 // function hdrCenter(){     var _wnWdth = jQuery(window).width();
 
