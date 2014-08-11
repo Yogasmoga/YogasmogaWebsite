@@ -633,14 +633,16 @@ html[xmlns] .overridefix {
 
 /** NewGrid **/
 .gridProdCubix {
-    margin: auto 40px;
+    margin: auto;
     display: inline-block;
+    width: 100%;
 }
 
 .gridProdCubix .leftnav {
     border-top: 1px solid #ccc;
     position: inherit;
     width: 150px;
+    margin: 0 0 0 40px;
 }
 
 .gridProdCubix .leftnav ul.ctglink{
@@ -648,8 +650,13 @@ html[xmlns] .overridefix {
     padding: 4px 0 0;
 }
 
+.gridProdCubix .leftnav .ctglink ul.subnav a {
+    font-family: gothambook;
+}
+
 .gridWrap {
-    margin: 0 0 0 195px;
+    margin: 0 40px 0 235px;
+    /*margin: 0 0 0 195px;*/
     width: auto;
 }
 
