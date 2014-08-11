@@ -150,7 +150,7 @@ $("table.referafriendcheck td.removeshare img").live('click', function(){
     $("div.2-columns-wrapper").find(".pg-content,.side-menu-bar").css("min-height", winHeight - 96);    
     // $("div#mainimage").find(".pg-content,.account-nav").css("min-height", winHeight - 96);
     // $(".dashboard-index").find(".pg-content,.account-nav").css("min-height", winHeight - 96);        
-    $(".share-strip").on("click",".smogi-love a",function(){
+    $(".share-strip").on("click",".sign-up-new a",function(){
         if(!_islogedinuser)
         {
             $("#signup").dialog( "open" );
