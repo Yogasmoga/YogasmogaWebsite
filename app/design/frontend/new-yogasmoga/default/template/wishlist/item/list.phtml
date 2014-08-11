@@ -69,11 +69,11 @@
                             <a class="prd-remove" title="Remove Item" href="<?php echo Mage::helper('core/url')->getHomeUrl()."/wishlist/index/remove/item/".$item->getWishlistItemId(); ?>">Delete</a>
                         </span>                        
                     </td>
-                    <?php /*
+
                     <td class="prnote">
                         <textarea style="display: none;" placeholder="Notes. ." title="Comment" name="description[<?php echo $item->getWishlistItemId(); ?>]"><?php echo trim(($this->escapeHtml($item->getDescription()))); ?></textarea>
                     </td>
-                    */ ?>
+
                     <td class="prprice">
                         <?php
                             $price = $_product->getSpecialPrice();
