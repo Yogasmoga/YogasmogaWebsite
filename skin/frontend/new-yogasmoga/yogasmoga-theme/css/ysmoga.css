@@ -73,8 +73,9 @@ ul.main-menu2 > li.rangoli:hover{
     text-align: left;
     font: 14px/19px gothambook;
     /*margin: 0 0 0 40px;*/
+    color:#555;
 }
-
+.sign-up-new:hover{color:#555;}
 
 .sign-up-new > a {
     background: #c03;
@@ -299,6 +300,11 @@ ul.site-map > li{
 .iconspartone{
     background: #fff;
     height: 50%;
+    padding: 8.5% 14.7% 0;
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box; 
+    -ms-box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 .iconspartone .row {
@@ -313,7 +319,16 @@ ul.site-map > li{
     display: table-cell;
     height: 100%;
     vertical-align: middle;
-    width: 50%;
+    width: 44%;
+}
+.iconspartone .row img {
+width: 50%;
+}
+.iconspartone .row > span:nth-child(odd){
+    float: left;
+}
+.iconspartone .row > span:nth-child(even){
+    float: right;
 }
 
 .iconspartone .row > span .iconstxt {
@@ -348,10 +363,10 @@ ul.site-map > li{
         margin-top: 25px;
     }
 
-    .iconspartone .row img {
+   /* .iconspartone .row img {
         width: 40%;
     }
-
+*/
     .iconspartone .row .iconstxt {
         width: auto;
     }
@@ -460,9 +475,9 @@ ul.site-map > li{
         width: 30%;
     }
 */
-    .iconspartone .row .iconstxt {
+   /* .iconspartone .row .iconstxt {
         width: 70%;
-    }
+    }*/
 
     /*.header {
         padding: 0 40px 0 11px;
@@ -1033,3 +1048,4 @@ table.inputtable tr:first-child td {
     height: 30px;
     width: 100px;
 }
+.invite-form{width: auto !important; padding: 0;}
