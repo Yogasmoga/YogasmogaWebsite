@@ -68,8 +68,8 @@ ul.tr-menu > li > ul.sub-menu li.last{padding-bottom: 10px;}
 ul.tr-menu > li > ul.sub-menu li.blank{height: 23px; background: url("../images/menu_arrow.png") no-repeat 79px bottom #f1f1f2; background-size: 17px 14px;}
 ul.tr-menu > li:hover > ul.sub-menu{display: block;}
 ul.main-menu2{margin-left: 0; margin-right: 5px;}
-ul.main-menu2 > li{position: relative; padding: 0 10px; height: 32px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
-ul.main-menu2 a.main-heading{display: block; height: 33px;}
+ul.main-menu2 > li{position: relative; padding: 0 10px; height: 34px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+ul.main-menu2 a.main-heading{display: block; height: 35px;}
 ul.main-menu2 li ul.sub-menu li a{font-family: gothambook;}
 ul.main-menu2 > li:hover > ul.sub-menu /*ul.main-menu > li:hover > ul.sub-menu*/{display: block;}
 ul.main-menu > li.over > ul.sub-menu{display: block;}
