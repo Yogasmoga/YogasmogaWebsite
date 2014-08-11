@@ -378,7 +378,7 @@ function madeinusa(){
  	var vidFeatureWidth = leftmidLi + rightmidLi + 24;
  	var vidMeasureWidth = rightMostLi + rightmidLi + 19;
  	$(featureVideo).css({"width": vidFeatureWidth, "margin-left" : margnLeft});
- 	$(measureVideo).css({"width": vidMeasureWidth, "margin-right" : margnRight});
+ 	// $(measureVideo).css({"width": vidMeasureWidth, "margin-right" : margnRight});
  }
 // function hdrCenter(){     var _wnWdth = jQuery(window).width();
 
