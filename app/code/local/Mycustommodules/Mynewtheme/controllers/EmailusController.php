@@ -14,10 +14,10 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         {	
                 $error = false;
                 $files = array();
-                $baseDir = Mage::getBaseDir();
-                $uploaddir = $baseDir.DS.'uploads'.DS;
+                echo $baseDir = Mage::getBaseDir();
+                echo $uploaddir = $baseDir.DS.'uploads'.DS;
                 foreach($_FILES as $file)
-                {
+                {print_r($file);echo $file['tmp_name'].'---';echo $uploaddir.basename($file['name']);
                         if(move_uploaded_file($file['tmp_name'], $uploaddir .basename($file['name'])))
                         {
                                 $files[] = $uploaddir .$file['name'];
