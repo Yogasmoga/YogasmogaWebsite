@@ -1,4 +1,4 @@
-http://www.templatemonster.com/help/magento-framework-how-to-addchange-product-video.html/* Layout ================================================================================ */
+/* Layout ================================================================================ */
 .wrapper { min-width:100%;  margin:0 auto;}
 .page {display:block; background: #fff; z-index: 2; position: relative; min-width: 1007px;}
 .page-print { background:#fff; padding:25px 30px; text-align:left; }
@@ -1622,7 +1622,7 @@ table.inputtable td.inputholder input[type='text'], table.inputtable td.inputhol
 }
 
 .checkout-link-top{
-    background: url(../images/checkoutbg.jpg) no-repeat top left;
+    background: #5ec52f;
     color: #fff;
     font-family: gothamMedium;
     padding: 4px 10px 5px;

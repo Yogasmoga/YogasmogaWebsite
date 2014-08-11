@@ -1,3 +1,4 @@
+var _refercount = 1;
 jQuery(window).load(function($){    
     featuredSec(); 
     colorStorySec();
@@ -7,6 +8,26 @@ jQuery(window).load(function($){
     jQuery(".featureList span.ftrFig").css("height", featLiH);
 });
 jQuery(document).ready(function($){   
+// for share in checkout 
+// $("div#addanothreferral").live("click", function(){
+//     $("table.referafriendcheck tbody#main").append("<tr id='" + (++_refercount) + "'>" + $("table.referafriendcheck tr#template").html() + "</tr>");   
+//     $("table.referafriendcheck tbody#main tr[id]").each(function(){
+//         if($(this).find("td.btnshare").css('display') != 'none')
+//         {
+//             $(this).find('td.removeshare').show();
+//         }
+//     });
+// });
+
+// $("table.referafriendcheck td.removeshare img").live('click', function(){
+//     if($(this).parents("table:first").find("tbody#main>tr").length > 2)
+//     {
+//         $(this).parents("tr:first").remove();
+//         if($("table.referafriendcheck tbody#main>tr").length <= 2)
+//             $("table.referafriendcheck tbody#main td.removeshare").hide();
+//     }   
+// });
+
     /***Functions to called on resize***/
     $(window).resize(function(){
         featuredSec();
@@ -442,3 +463,18 @@ function featLiHeightAd(){
     jQuery(".featureList span.ftrFig").css("height", featLiH);
 }
 
+
+function validatereferform(elem)
+{
+    unsetAllError(elem);
+    var flag = validatefields(elem);
+    if(elem.find('td.email input').val() != "")
+    {
+        if(!validateEmail(elem.find('td.email input').val()))
+        {
+            setOnError(elem.find('td.email input'), "Please enter a valid Email Address.");
+            flag = false;
+        }
+    }
+    return flag;
+}
