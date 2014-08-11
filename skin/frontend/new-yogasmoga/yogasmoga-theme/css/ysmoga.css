@@ -634,14 +634,16 @@ html[xmlns] .overridefix {
 
 /** NewGrid **/
 .gridProdCubix {
-    margin: auto 40px;
+    margin: 29px auto auto;
     display: inline-block;
+    width: 100%;
 }
 
 .gridProdCubix .leftnav {
     border-top: 1px solid #ccc;
     position: inherit;
     width: 150px;
+    margin: 0 0 0 40px;
 }
 
 .gridProdCubix .leftnav ul.ctglink{
@@ -649,8 +651,13 @@ html[xmlns] .overridefix {
     padding: 4px 0 0;
 }
 
+.gridProdCubix .leftnav .ctglink ul.subnav a {
+    font-family: gothambook;
+}
+
 .gridWrap {
-    margin: 0 0 0 195px;
+    margin: 0 40px 0 235px;
+    /*margin: 0 0 0 195px;*/
     width: auto;
 }
 
@@ -903,4 +910,9 @@ ul.tr-menu > li.free-shipping {
     #show5.new-arrivals{
         display: block;
     }
+}
+
+
+ul.main-menu > li.rangoli:hover {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
 }

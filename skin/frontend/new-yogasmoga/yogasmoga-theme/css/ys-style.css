@@ -373,7 +373,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .bannerFluid {
     background: none repeat scroll 0 0 #fafafa;
     /*height: 400px;*/
-    margin: 0 0 45px;
+    margin: 0 0 16px;
     position: relative;
     width: 100%;
 }
