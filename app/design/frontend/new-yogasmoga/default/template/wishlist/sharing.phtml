@@ -24,10 +24,22 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<script type="text/javascript">
+    jQuery("ul.sub-nav li").each(function(){
+        var currU = jQuery(this).text();
+        if(currU == "Wish list")  {
+            jQuery(this).addClass("current");
+        }      
+    });
+    // jQuery("ul.sub-nav li").text()
+</script>
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/wishlist.css'); ?>" media="all" />
-<div class="page-title">
+<!-- <div class="page-title">
     <h1><?php echo $this->__('SHARE WISH LIST') ?></h1>
-</div>
+</div> -->
+<div class="pg-heading">
+      <h2>SHARE WISH LIST</h2>      
+    </div>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <form action="<?php echo $this->getSendUrl() ?>" id="form-share-wishlist" method="post">
     <?php echo $this->getBlockHtml('formkey')?>
@@ -44,7 +56,7 @@
             </td>
         </tr>
     </table>
-    <table class="inputtable" style="margin-top: 60px;">
+    <table class="inputtable" style="margin-top: 10px;">
         <tr>
             <td class="label"><label for="email_address"><?php echo $this->__('Message...') ?></label></td>
             <td class="inputholder">
@@ -58,7 +70,7 @@
         </tr>
     </table>
     <center>
-    <button downimageurl="<?php echo $this->getSkinUrl('images/share_your_wishlist_on.png'); ?>" imageurl="<?php echo $this->getSkinUrl('images/share_your_wishlist_off.png'); ?>" class="sharewishlistbtn1 spbutton custombtn" type="submit"></button>
+    <button downimageurl="<?php echo $this->getSkinUrl('images/share_your_wishlist_on.png'); ?>" imageurl="<?php echo $this->getSkinUrl('images/share_your_wishlist_off.png'); ?>" class="sharewishlistbtn1 spbutton custombtn" type="submit">Share your wish list</button>
     </center>
 </form>
 <div class="backlink">

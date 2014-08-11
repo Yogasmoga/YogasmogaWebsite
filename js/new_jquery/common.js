@@ -7,6 +7,13 @@ jQuery(window).load(function($){
     jQuery(".featureList span.ftrFig").css("height", featLiH);
 });
 jQuery(document).ready(function($){   
+        $(".goy-form").on("click",".button.btn-reset", function(e){  
+            e.preventDefault();
+            $("#createcardform td.inputholder input, #createcardform .goy-form #mail-message").each(function(){
+                var ra1 = $(this).attr("watermark");
+                $(this).attr("value", ra1);
+            });            
+    })  
     /***Functions to called on resize***/
     $(window).resize(function(){
         featuredSec();

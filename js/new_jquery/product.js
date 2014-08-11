@@ -1,3 +1,6 @@
+jQuery(window).load(function($){ 
+    detailHeight();
+});
 jQuery(document).ready(function($) {
     //scrollingLink();
     wishList();
@@ -150,7 +153,7 @@ jQuery(document).ready(function($) {
 
 function detailHeight(){
     var wdth35H = jQuery(".wdth35").height();
-    wdth35H = wdth35H-40;
+    wdth35H = wdth35H;
     console.log(wdth35H);
     jQuery(".wdth65").css("min-height", wdth35H);    
 }
