@@ -903,8 +903,8 @@ ul.new-arrivals a.quick-view{min-height: inherit;}
 ul.main-menu li ul.sub-menu > li > ul:first-child a{font: 11px/21px gothambold;}
 ul.main-menu li ul.sub-menu > li > ul a, ul.main-menu2 li ul.sub-menu > li > ul:first-child a, ul.tr-menu > li > ul.sub-menu li a, ul.main-menu2 li ul.sub-menu li a{font-weight: normal;}
 .product-details .block-head{font: bold 15px gothambook;}
-.ctglink li, .ctglink li a{font: 11px/19px gothamlight;}
-div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-transform: uppercase; font: 11px/19px gothamlight; color: #555;}
+/*.ctglink li, .ctglink li a{font: 11px/19px gothamlight;}*/
+/*div.side-menu-bar ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a{text-transform: uppercase; font: 11px/19px gothamlight; color: #555;}*/
 .os-banner{font-size: 30px;}
 .banner-txt3{font-size: 25px;}
 
@@ -1788,7 +1788,7 @@ ul.new-arrivals a.quick-view{display: none;}
 div.cms-side-nav{display: none;}
 .terms-conditions{margin: 0 auto;}
 .terms-conditions .pg-heading{text-align: center;}
-.terms-conditions .pg-heading,.terms-conditions > p,.terms-conditions section{width: 58%; max-width: 1040px; margin-left:auto; margin-right: auto; }
+.terms-conditions .pg-heading,.terms-conditions > p,.terms-conditions section{width: 60%; max-width: 1040px; margin-left:auto; margin-right: auto; }
 .terms-conditions > p{margin-bottom: 30px !important;}
 
 div.product-details .wdth65{width: auto; float: none; margin: 0 321px 0 0;}
@@ -1978,7 +1978,8 @@ table.productimagecontainer table.tdbigimagecontainer{margin-left: 24% !importan
 #productdetails .similarProdList>li img{width: 98%;}
 #productdetails .similarProdList span:nth-child(2){margin: 16px 0 0;}
 #productdetails .fabDetail li{font: 11px/15px gothambook;}
-#productdetails .fabDetail li:nth-child(odd){width: 150px;}
-#productdetails .fabDetail li:nth-child(even){width: 131px;}
+#productdetails .fabDetail li:nth-child(odd){width: 148px;}
+#productdetails .fabDetail li:nth-child(even){width: 128px;}
 .video-box .tble{margin-top: 33px;}
-
+li.sub-head a:hover{color: #c03 !important;}
+.similarProdList span strong:hover{color: #c03;}

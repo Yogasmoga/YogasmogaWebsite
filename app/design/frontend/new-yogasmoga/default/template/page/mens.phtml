@@ -205,12 +205,16 @@
 
 
                 <div class="new-arrivals-block" style="width:100%; margin:0 auto;">
+                    <?php $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_landing_category_ids')->getValue('plain')), true);
+
+                    $categoryId = $categoryIds['new_arrivals'];
+                    ?>
                     <?php $newarrivals = Mage::getModel('catalog/category')->load($categoryId); ?>
                     <div class="shop-col-desc l-align">
                         <span class="na-head">Spring Is In</span>
                         <span class="na-link"><a href="<?php echo $newarrivals->getUrl(); ?>">Shop New Collection</a></span>                       
                     </div>                    
-                    <ul class="new-arrivals">
+                    
                         <?php
                         //retrieve color
                         $write = Mage::getSingleton('core/resource')->getConnection('core_read');
@@ -218,18 +222,46 @@
                         while ($row = $readresult->fetch() ) {
                             $clrinfo[$row['Value']] = $row['Attribute'];
                         }
-                        $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_landing_category_ids')->getValue('plain')), true);
-
-                        $categoryId = $categoryIds['new_arrivals'];
+//                        $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_landing_category_ids')->getValue('plain')), true);
+//
+//                        $categoryId = $categoryIds['new_arrivals'];
                         $i = 0;
-                        $newarrivals = Mage::getModel('catalog/category')->load($categoryId);
+                        //$newarrivals = Mage::getModel('catalog/category')->load($categoryId);
 
 
                         $productCollection = $newarrivals->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
+                        ?>
+                        <ul id="show5" class="new-arrivals">        
+                        <?php
                         foreach($productCollection as $_product)
                         {
 
                             if($i==5)break;$i++;
+                         ?>
+                            <li>
+                                <a id="<?php echo $_product->getId(); ?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(91); ?>" /></a>
+
+
+                                <div class="prd-details">
+                                    <a href = "<?php echo $_product->getProductUrl(); ?>"><span class="prd-name gothambd"><?php echo $_product->getName(); ?></span> </a>
+                                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
+                                    <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2); ?></span>
+                                    <a id="<?php echo $_product->getId(); ?>" href="javascript:void(0)" class="quick-view">
+                                        <img src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" border="0" alt="" />
+                                    </a>
+                                </div>
+                            </li>
+                       <?php
+                        }
+
+                        ?>                        
+                    </ul>
+                    <ul id="show4" class="new-arrivals">        
+                        <?php $i=0;
+                        foreach($productCollection as $_product)
+                        {
+
+                            if($i==4)break;$i++;
                          ?>
                             <li>
                                 <a id="<?php echo $_product->getId(); ?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(91); ?>" /></a>
@@ -315,12 +347,12 @@
 
                 <div class="html-video-popup" id="vid-blck-1">
                     <video style="width:100%;" controls>
-                        <source src="http://192.168.2.100/media/design_features_video/YANTRA_TANK_OK.mp4" type="video/mp4">
+                        <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'design_features_video/BROOKLYN JACKET_ok.mp4'; ?>" type="video/mp4">
                     </video>
                 </div>
                 <div class="html-video-popup" id="vid-blck-2">
                     <video style="width:100%;" controls>
-                        <source src="http://192.168.2.100/media/how_to_measure_video/HOW_TO_MEASURE_WOMEN.mp4" type="video/mp4">
+                        <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'design_features_video/BROOKLYN JACKET_ok.mp4'; ?>" type="video/mp4">
                     </video>
                 </div> 
                 <div class="vid-popup-overlay"></div>  
