@@ -3514,7 +3514,8 @@ div.col2-set.order-info-box,div.col2-set
     border : none;
     font-family: gothamlight;
     font-size: 13px;
-    letter-spacing: 0.2pt;
+    width: 660px;
+    margin: auto;
 }
 div.col2-set.order-info-box h2, div.col2-set h2
 {
@@ -3802,15 +3803,50 @@ div.info-set table
     margin-right: auto;    
 }
 
-body.paypal-express-review #order_review_form table.inputtable
-{
-    width:420px;
+
+body.paypal-express-review #order_review_form table.inputtable {
+    display: inline-block;
+    float: left;
+    width: 280px;
+}
+
+body.paypal-express-review #order_review_form table tbody,
+body.paypal-express-review #order_review_form table tr,
+body.paypal-express-review #order_review_form table td {
+    display: inline-block;
+    width: 100%;
+}
+
+body.paypal-express-review #order_review_form table.inputtable td.inputholder select {
+    width: 100% !important;
+}
+
+#billing-address input, #billing-address select,
+#shipping-address input, #shipping-address select {
+    background: none repeat scroll 0 0 #fff !important;
+    float: left;
+    height: 30px;
+    padding: 0 10px;
+    width: 93% !important;
+}
+
+#billing-address td.label,
+#shipping-address td.label {
+    display: none !important;
+}
+
+.box.paypal-shipping-method {
+    margin: 55px 0 0;
 }
 
 body.paypal-express-review #order_review_form table.inputtable label
 {   
     font-size: 11px;
     font-weight: normal;
+}
+
+body.paypal-express-review .legend1 {
+    padding-bottom: 0;
 }
 
 body.paypal-express-review #order_review_form .form-list li.control label
@@ -3830,21 +3866,45 @@ body.paypal-express-review #order_review_form table.inputtable td.inputholder se
 
 body.paypal-express-review #order_review_form .info-set h2.addresses
 {
-    margin:-20px 0 15px; padding:5px 0; position:relative; font-family: gothambook; text-transform: uppercase; font-size: 18px;  
+    color: #555;
+    font: 11px/21px gothammedium;
+    margin: 0;
+    padding: 0 0 20px;
+    position: relative;
+    text-transform: uppercase; 
 }
 
 body.paypal-express-review div.col-1,body.paypal-express-review div.col-2
 {
-    width:auto;
+    background: #f3f3f4;
 }
 
-
-
-body.paypal-express-review div.page-title
-{
-    margin-bottom: 45px;
+#billing-address, #shipping-address{
+    display: inline-block;
+    float: left;
+    padding: 20px;
+    width: 280px;
 }
 
+#shipping-address {
+    float: right;
+}
+
+body.paypal-express-review div.page-title {
+    border-top: 1px solid #999;
+    margin: 29px 40px 72px;
+    padding: 17px 0 0;
+    width: auto;
+}
+
+body.paypal-express-review div.page-title h1 {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #555;
+    font: 36px/40px ITCAvantGardeProMd;
+    letter-spacing: inherit;
+    margin: 0;
+    padding: 0;
+}
 
 body.paypal-express-review #details-table tr th
 {
@@ -3870,20 +3930,45 @@ body.paypal-express-review #details-table tbody tr td h3.product-name
     margin-bottom: 5px;
 }
 
+.paypal-review-order .info-set1 {
+    margin: 50px auto auto;
+    padding: 0;
+    width: 660px;
+}
+
 .info-set1 h2.legend1
 {
     font-family: gothambook;
     text-align: left;    
 }
 
-.info-set1 h2.legend1 a
-{
-    color: #D90D3D;
-    font-family: HelvLightRegular;
-    font-size: 12px;
-    font-weight: bold;
-    text-decoration: underline;
-    margin-left: 5px;    
+
+.info-set1 h2.legend1 a {
+    border-bottom: 1px solid #d90d3d;
+    color: #555;
+    font: 11px/25px gothambook;
+    margin: -2px 0 0 13px;
+    padding: 0 0 2px;
+    text-decoration: none;
+}
+
+.paypal-review-order thead {
+    border-bottom: 1px solid #b9b9b9;
+    display: block;
+    margin: 0 0 25px;
+    width: 100%;
+}
+
+.paypal-review-order .paypal-details{
+    width: 100% !important;
+}
+
+table.co-ov-table thead th {
+    color: #555 !important;
+    font: 11px/17px gothammedium;
+    padding: 0 0 4px !important;
+    text-align: left !important;
+    width: 61% !important;
 }
 
 .info-set1 {   padding:0; }
@@ -3891,14 +3976,16 @@ body.paypal-express-review #details-table tbody tr td h3.product-name
 #checkout-buttons
 {   max-width: 960px; margin-left: auto; margin-right: auto;}
 
-.paypal-shipping-method h3
-{
-    color:#2F2F2F;
-    font-family: gothambook;
-    font-size: 18px;
+.paypal-shipping-method h3, .info-set1 h2.legend1 {
+    color: #555;
+    font: 20px/29px ITCAvantGardeProBk;
     text-transform: uppercase;
-    font-weight: normal;
-    height:30px;
+    margin: 0 0 25px;
+}
+
+#shipping-method-container strong, #shipping-method-container label {
+    color: #555;
+    font: 11px/17px gothammedium;
 }
 
 #shipping-method-container table
@@ -3914,6 +4001,9 @@ body.paypal-express-review #details-table tbody tr td h3.product-name
     font-size:12px;
 }
 
+.paypal-review-order .info-set{
+    padding: 0;
+}
 
 /*#shipping-method-container table td label
 {
@@ -3922,11 +4012,34 @@ body.paypal-express-review #details-table tbody tr td h3.product-name
     font-size:12px;
 }*/
 
-#shipping-method-container div.shippingdescription
-{
-    margin:5px 0 0 0;
-    font-size: 12px;
+
+#shipping-method-container div.shippingdescription {
+    color: #ccc;
+    font: 12px/15px gothambook;
+    margin: 0;
+    text-align: left;
+    text-transform: none;
 }
+
+.shippingRadio input[type="radio"] {
+    display: none;
+}
+
+.shippingRadio input[type="radio"] + label {
+    background: url("../images/radiobg.jpg") no-repeat left -33px rgba(0, 0, 0, 0);
+    cursor: pointer;
+    display: inline-block;
+    height: auto;
+    margin: 0;
+    padding: 0 0 0 53px;
+    width: auto;
+}
+
+.shippingRadio input[type="radio"]:checked + label {
+    background-position: left top;
+}
+
+
 
 .col2-set .col-3 { width:100%; text-align: left; }
 
@@ -4278,3 +4391,67 @@ body.checkout-onepage-index #payment_form_stripe
 @media screen and (min-width: 1400px){ 
     .fab_text h3,.fab_text,div.sub-fab{font-size: 36px;}
     }
+
+
+
+.invite-box .social-btns a
+{
+    width : 20px;
+    height : 20px;
+    margin : 0 12px 0 0 !important;
+    display : block;
+    float : left;
+}
+
+.invite-box .social-btns a.pinterest
+{
+    background-image: url('../images/footer/pin-icon.png');
+    background-position: left top;
+}
+.invite-box .social-btns a.pinterest:hover
+{
+    background-image: url('../images/footer/pin-icon-ovr.png');
+    background-position: left top;
+}
+
+.invite-box .social-btns a.twitter
+{
+    background-image: url('../images/footer/tw-icon.png');
+    background-position: left top;
+}
+.invite-box .social-btns a.twitter:hover
+{
+    background-image: url('../images/footer/tw-icon-ovr.png');
+    background-position: left top;
+}
+.invite-box .social-btns a.facebook
+{
+    background-image: url('../images/footer/fb-icon.png');
+    background-position: left top;
+}
+.invite-box .social-btns a.facebook:hover
+{
+    background-image: url('../images/footer/fb-icon-ovr.png');
+    background-position: left top;
+}
+.invite-box .social-btns a.email
+{
+    background-image: url('../images/footer/email-ref.jpg');
+    background-size: cover;
+    background-position: left top;
+}
+.invite-box .social-btns a.email:hover
+{
+    background-image: url('../images/footer/email-ref-ovr.jpg');
+    background-position: left top;
+}
+
+
+.invite-box .social-btns a.facebook{width: 11px; height: 21px;}
+.invite-box .social-btns a.twitter{width: 25px; height: 21px;}
+.invite-box .social-btns a.email{width: 28px; height: 18px;}
+.invite-box .social-btns a.pinterest{width: 21px; height: 21px;}
+
+#addanothreferral{
+    float: left;
+}
