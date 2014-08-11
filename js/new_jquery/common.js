@@ -27,7 +27,13 @@ $("table.referafriendcheck td.removeshare img").live('click', function(){
             $("table.referafriendcheck tbody#main td.removeshare").hide();
     }   
 });
-
+        $(".goy-form").on("click",".button.btn-reset", function(e){  
+            e.preventDefault();
+            $("#createcardform td.inputholder input, #createcardform .goy-form #mail-message").each(function(){
+                var ra1 = $(this).attr("watermark");
+                $(this).attr("value", ra1);
+            });            
+    })  
     /***Functions to called on resize***/
     $(window).resize(function(){
         featuredSec();

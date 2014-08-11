@@ -203,6 +203,10 @@
 
 
                 <div class="new-arrivals-block" style="width:100%; margin:0 auto;">
+                    <?php $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_landing_category_ids')->getValue('plain')), true);
+
+                    $categoryId = $categoryIds['new_arrivals'];
+                    ?>
                     <?php $newarrivals = Mage::getModel('catalog/category')->load($categoryId); ?>
                     <div class="shop-col-desc l-align">
                         <span class="na-head">Spring Is In</span>
@@ -216,11 +220,11 @@
                         while ($row = $readresult->fetch() ) {
                             $clrinfo[$row['Value']] = $row['Attribute'];
                         }
-                        $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_landing_category_ids')->getValue('plain')), true);
-
-                        $categoryId = $categoryIds['new_arrivals'];
+//                        $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_landing_category_ids')->getValue('plain')), true);
+//
+//                        $categoryId = $categoryIds['new_arrivals'];
                         $i = 0;
-                        $newarrivals = Mage::getModel('catalog/category')->load($categoryId);
+                        //$newarrivals = Mage::getModel('catalog/category')->load($categoryId);
 
 
                         $productCollection = $newarrivals->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
@@ -341,12 +345,12 @@
 
                 <div class="html-video-popup" id="vid-blck-1">
                     <video style="width:100%;" controls>
-                        <source src="http://192.168.2.100/media/design_features_video/YANTRA_TANK_OK.mp4" type="video/mp4">
+                        <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'design_features_video/BROOKLYN JACKET_ok.mp4'; ?>" type="video/mp4">
                     </video>
                 </div>
                 <div class="html-video-popup" id="vid-blck-2">
                     <video style="width:100%;" controls>
-                        <source src="http://192.168.2.100/media/how_to_measure_video/HOW_TO_MEASURE_WOMEN.mp4" type="video/mp4">
+                        <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'design_features_video/BROOKLYN JACKET_ok.mp4'; ?>" type="video/mp4">
                     </video>
                 </div> 
                 <div class="vid-popup-overlay"></div>  

@@ -111,9 +111,9 @@ ul.main-menu2 > li.rangoli:hover{
 
 ul.site-map > li{
     min-height: 133px;
-    width: 32.5%;
+    width: 33%;
     margin-bottom: 10px;
-    max-width: 319px;
+    max-width: 348px;
 }
 
 /** homepage **/
@@ -378,6 +378,7 @@ ul.site-map > li{
         width: 88.8%;
         margin: 3px 0 0 11.2%;
         }
+        .bx-wrapper .bx-controls-direction a{width: 21px !important; height: 23px !important; background-size: 100% 100%;}
 }
 /*
 @media only screen and (max-width: 1041px) {

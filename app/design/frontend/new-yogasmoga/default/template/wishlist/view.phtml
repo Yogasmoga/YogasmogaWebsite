@@ -31,7 +31,15 @@
       <h2>MY WISH LIST</h2>
       <span class="pg-tagline">Lorem ipsum dolor sit amet consectetuer adipiscing elit.</span>
     </div>  
-
+     <div class="share-wishlist-popup">
+        <span class="close-share"><img src="<?php echo $this->getSkinUrl('images/close-sharepopup.png') ?>" alt=""></span>
+        <h4>Share wish list</h4>
+        <form>
+            <textarea watermark="Email Addresses, separated by commas"></textarea>
+            <textarea watermark="Type your message here"></textarea>
+            <button id="share-wish"></button>
+        </form>
+    </div>
     <!-- <div class="myheader wishlist-header">MY WISH LIST</div> -->
     <div class="my-wishlist">
         <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
@@ -124,7 +132,7 @@
         }
         //]]>
         </script>
-    </div>
+    </div>   
     <?php echo $this->getChildHtml('bottom'); ?>
     <div class="buttons-set">
         <p class="back-link" style="display:block !important;"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
