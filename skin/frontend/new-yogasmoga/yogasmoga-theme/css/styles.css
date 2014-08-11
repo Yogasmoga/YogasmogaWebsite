@@ -4451,3 +4451,7 @@ body.checkout-onepage-index #payment_form_stripe
 .invite-box .social-btns a.twitter{width: 25px; height: 21px;}
 .invite-box .social-btns a.email{width: 28px; height: 18px;}
 .invite-box .social-btns a.pinterest{width: 21px; height: 21px;}
+
+#addanothreferral{
+    float: left;
+}

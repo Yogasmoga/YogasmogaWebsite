@@ -155,8 +155,9 @@ if($serverType == 'production')
 <div class="conf-box">
 <?php if ($this->getOrderId()):?>
 <p class="conf-msg">
-You have earned <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks"><?php echo Mage::getSingleton('core/session')->getrewardpointscount(); ?> SMOGI Bucks</a> with your purchase.<br/>
-Your order <?php if ($this->getCanViewOrder()){?><a href="<?php echo $this->escapeHtml($this->getViewOrderUrl()); ?>">#<?php echo $this->escapeHtml($this->getOrderId()); ?></a><?php }else{ echo '#'.$this->escapeHtml($this->getOrderId()); } ?> has been received<br/>and you will be receiving an email soon with your shipment tracking number.</p>
+You have earned <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks"><?php echo Mage::getSingleton('core/session')->getrewardpointscount(); ?> SMOGI Bucks</a> with your purchase!<br/>
+Your order <?php if ($this->getCanViewOrder()){?><a href="<?php echo $this->escapeHtml($this->getViewOrderUrl()); ?>">#<?php echo $this->escapeHtml($this->getOrderId()); ?></a><?php }else{ echo '#'.$this->escapeHtml($this->getOrderId()); } ?> has been received and you will be<br/>
+receiving an email soon with your shipment tracking number.</p>
 <p>If you have any questions, please call us at 888-990-YOGA (9642)</p>
 <?php /* if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
     <p>
@@ -167,8 +168,8 @@ Your order <?php if ($this->getCanViewOrder()){?><a href="<?php echo $this->esca
 <?php endif;?>
 </div>
 <div class="invite-box">
-<!-- <h2 class="sub-title">Invite your friends and earn 25 SMOGI Bucks</h2>
-<p>For each friend you invite we will credit your account with 25 SMOGI Bucks after your friend's first purchase has been shipped.<br/>Enter your friend's email below.</p> -->
+<h2 class="sub-title dnone">Invite your friends and earn 25 SMOGI Bucks</h2>
+<p class="dnone">For each friend you invite we will credit your account with 25 SMOGI Bucks after your friend's first purchase has been shipped.<br/>Enter your friend's email below.</p>
 <?php
     if($this->helper('customer')->isLoggedIn())
     {
@@ -219,61 +220,19 @@ Your order <?php if ($this->getCanViewOrder()){?><a href="<?php echo $this->esca
                 });
             </script>
             <div class="invite-action">
-            	<div class="invite-form">
+                <div class="invite-form">
                 SHARE WITH YOUR FRIENDS
                 <span>Share the YOGASMOGA joy, your friends get $25 SMOGI bucks toward their 1st order.</span>
-            		<form id="referfriend" action="" method="post">
+                    <form id="referfriend" action="" method="post">
                         <table width="100%" class="referafriendcheck">
                             <tbody id="main">
-                                <tr id="template">
-                                    <td>
-                                        <table class="inputtable">
-                                            <tr>
-                                                <td class="label dnone"><label for="name">Friend's Name</label></td>
-                                                <td class="inputholder">
-                                                    <input type="text" class="requiredfield" id="name" defaulterrormsg="Friend's Name is required" />
-                                                    <input type="text" style="display: none;" name="from" id="from" value="Checkout" />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="errortext" colspan="2">
-                                                    <div>Friend's Name is required</div>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                    <td style="padding-left: 15px;">
-                                        <table class="inputtable">
-                                            <tr>
-                                                <td class="label dnone"><label for="email">Friend's Email</label></td>
-                                                <td class="inputholder">
-                                                    <input type="text" class="requiredfield" defaulterrormsg="Friend's Email is required" id="email" />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="errortext" colspan="2">
-                                                    <div>Friend's Name is required</div>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>                                           
-                                    <td class="btnshare" style="padding-left: 15px; width:100px;">
-                                        <button class="button btn-invite"><span><span>Invite</span></span></button>            
-                                    </td>                                
-                                    <td class="result" style="padding-left: 15px;padding-top : 9px; width: 15px;">
-                                        <img src="<?php echo $this->getSkinUrl('images/invite_success.png') ?>" />
-                                    </td>
-                                    <td style="display: none; padding: 9px 0 0 15px; width: 11px;" class="removeshare">
-                                        <img src="http://192.168.2.114/skin/frontend/new-yogasmoga/yogasmoga-theme/images/invite_cross.png">
-                                    </td>
-                                </tr>
                                 <tr id="1">
                                     <td>
                                         <table class="inputtable">
                                             <tr>
                                                 <td class="label dnone"><label for="name">Friend's Name</label></td>
                                                 <td class="inputholder">
-                                                    <input type="text" class="requiredfield" id="name" defaulterrormsg="Friend's Name is required" />
+                                                    <input type="text" name="name" class="requiredfield" id="name" defaulterrormsg="Friend's Name is required" />
                                                     <input type="text" style="display: none;" name="from" id="from" value="Checkout" />
                                                 </td>
                                             </tr>
@@ -289,7 +248,7 @@ Your order <?php if ($this->getCanViewOrder()){?><a href="<?php echo $this->esca
                                             <tr>
                                                 <td class="label dnone"><label for="email">Friend's Email</label></td>
                                                 <td class="inputholder">
-                                                    <input type="text" class="requiredfield" defaulterrormsg="Friend's Email is required" id="email" />
+                                                    <input type="text" class="requiredfield" name="email" defaulterrormsg="Friend's Email is required" id="email" />
                                                 </td>
                                             </tr>
                                             <tr>
@@ -298,19 +257,18 @@ Your order <?php if ($this->getCanViewOrder()){?><a href="<?php echo $this->esca
                                                 </td>
                                             </tr>
                                         </table>
-                                    </td>                                           
+                                    </td>
                                     <td class="btnshare" style="padding-left: 15px; width:100px;">
                                         <button class="button btn-invite"><span><span>Invite</span></span></button>            
-                                    </td>                                
+                                    </td>
                                     <td class="result" style="padding-left: 15px;padding-top : 9px; width: 15px;">
                                         <img src="<?php echo $this->getSkinUrl('images/invite_success.png') ?>" />
                                     </td>
                                     <td style="display: none; padding: 9px 0 0 15px; width: 11px;" class="removeshare">
-                                        <img src="http://192.168.2.114/skin/frontend/new-yogasmoga/yogasmoga-theme/images/invite_cross.png">
+                                        <img src="<?php echo $this->getSkinUrl('images/invite_cross.png') ?>" />
                                     </td>
                                 </tr>
                             </tbody>
-
                             <tfoot>
                                 <tr>
                                     <td colspan="4">
@@ -324,30 +282,30 @@ Your order <?php if ($this->getCanViewOrder()){?><a href="<?php echo $this->esca
                             </tfoot>
                         </table>
                         <?php /*
-            			<div class="input_box">
-            			<label>Friend's Name</label>
-            			<input type="text" class="input-box" name="name[]" />
-            			</div>
                         <div class="input_box">
-            			<label>Friend's Email</label>
-            			<input type="text" class="input-box" name="email[]" />
-            			</div>
-            			<button class="button btn-invite"><span><span>Invite</span></span></button>
+                        <label>Friend's Name</label>
+                        <input type="text" class="input-box" name="name[]" />
+                        </div>
+                        <div class="input_box">
+                        <label>Friend's Email</label>
+                        <input type="text" class="input-box" name="email[]" />
+                        </div>
+                        <button class="button btn-invite"><span><span>Invite</span></span></button>
                         */ ?>
-            		</form>
-            	</div>
-            	<?php
+                    </form>
+                </div>
+                <?php
                     $userId = Mage::getSingleton('customer/session')->getCustomer()->getId();
                     $refurl = $this->getUrl('rewardpoints/index/goReferral', array("referrer" => $userId));
                 ?>
-            	<div class="social-btns">
-                                YOUR SHARE LINK
+                <div class="social-btns">
+                YOUR SHARE LINK
                                 <span><?php echo $refurl; ?></span>
                     <a href="#" class="facebook" onclick="sharereferlink('facebook','<?php echo $refurl; ?>')">Facebook</a>
                     <a href="#" class="twitter" onclick="sharereferlink('twitter','<?php echo $refurl; ?>')">Twitter</a>
                     <a href="#" class="email" onclick="sharereferlink('mail','<?php echo $refurl; ?>')">Email</a>
-            		<a style="display: none;" href="#" class="pinterest" onclick="sharereferlink('pinterest','<?php echo $refurl; ?>')">Pinterest</a>
-            	</div>
+                    <a style="display: none;" href="#" class="pinterest" onclick="sharereferlink('pinterest','<?php echo $refurl; ?>')">Pinterest</a>
+                </div>
             </div>      
         <?php
     }
@@ -366,5 +324,5 @@ Your order <?php if ($this->getCanViewOrder()){?><a href="<?php echo $this->esca
     <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
 <?php endforeach;?>
 </ul>
-<?php endif;?>	
+<?php endif;?>  
 </div>
