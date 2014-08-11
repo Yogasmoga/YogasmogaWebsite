@@ -652,6 +652,7 @@ html[xmlns] .overridefix {
     margin: 29px auto auto;
     display: inline-block;
     width: 100%;
+    position: relative;
 }
 
 .gridProdCubix .leftnav {
