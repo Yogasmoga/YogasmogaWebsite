@@ -52,7 +52,6 @@ jQuery(document).ready(function($){
                 data.append('email', email);
                 jQuery('#loader').show();
                 jQuery('#submitfile').hide();
-                jQuery("#submitfile").after("<img class='f-right' style='margin: 10px 20px 0px 0px;' id='procImg' src='" + skinUrl + "images/new-loader.gif' />");
                 jQuery.ajax({
                     url: 'mynewtheme/emailus/sendmail',
                     type: 'POST',
@@ -78,7 +77,6 @@ jQuery(document).ready(function($){
                         }
                         jQuery('#loader').hide();
                         jQuery('#submitfile').show();
-                        jQuery("#procImg").remove();
                     },
                     error: function(jqXHR, textStatus, errorThrown)
                     {
