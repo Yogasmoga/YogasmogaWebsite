@@ -593,6 +593,9 @@ table.box-desc-dvdr.smogibucks{margin-top: 15px; margin-bottom: -5px;}
     width: 45%;
     color: #fff;
 }
+a.continuelink:hover{
+    color: #fff;
+}
 .continuelink.grn {
     background: none repeat scroll 0 0 #5ec52f;
     color: #fff;
