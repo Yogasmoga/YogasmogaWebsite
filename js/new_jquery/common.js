@@ -21,7 +21,7 @@ $(".goy-form").on("click",".button.btn-reset", function(e){
 }); 
 
     /***Functions to called on resize***/
-    $(window).resize(function(){
+    $(window).resize(function(){        
         featuredSec();
         colorStorySec();
         setImageContheightPDP();
@@ -47,7 +47,8 @@ $(".goy-form").on("click",".button.btn-reset", function(e){
     $(".bottom-left-block,.top-right-block").on("click", function(){
         var vidHandle = $(this).data("vid-handle");               
         pdpVidPop.fadeIn();      
-        $("#" + vidHandle).css({"left" : (pdpVidPop.width() - htmlVidpop.width())/2, "top" : (pdpVidPop.height() - htmlVidpop.height())/2 }).fadeIn();               
+        $("#" + vidHandle).css({"left" : (pdpVidPop.width() - htmlVidpop.width())/2, "top" : (pdpVidPop.height() - htmlVidpop.height())/2 }).fadeIn();
+        jQuery(window).trigger("resize");               
     });
 
     $("body.catalog-product-view").on("click", "ul.featureList li:nth-child(4)", function(){               
@@ -58,6 +59,7 @@ $(".goy-form").on("click",".button.btn-reset", function(e){
         var pdpVidPopHeight = pdpVidPop.height();
         var pdpVidPopWidth = pdpVidPop.width();          
         designVid.css({"left" : (pdpVidPopWidth - designVidWidth)/2, "top" : (pdpVidPopHeight - designVidHeight)/2 }).fadeIn();
+        jQuery(window).resize();
     });
 
     $("body.catalog-product-view").on("click", ".fitDetail .video-block img", function(){       
@@ -68,6 +70,7 @@ $(".goy-form").on("click",".button.btn-reset", function(e){
         var pdpVidPopHeight = pdpVidPop.height();  
         var pdpVidPopWidth = pdpVidPop.width();      
         fitVid.css({"left" : (pdpVidPopWidth - fitVidWidth)/2, "top" : (pdpVidPopHeight - fitVidHeight)/2}).fadeIn();
+        jQuery(window).resize();
     });
     window.onkeyup = function (event) {
         if (event.keyCode == 27) {            
@@ -75,6 +78,10 @@ $(".goy-form").on("click",".button.btn-reset", function(e){
             htmlVidpop.fadeOut();            
         }
     }
+    jQuery("body").on("click",".vid-popup-overlay", function(){
+        $(".vid-popup-overlay,.html-des-vid-popup,.html-fit-vid-popup").fadeOut();
+            htmlVidpop.fadeOut();
+    });
    // $("body").scrollTop(0);
     /**For the cms pages**/
     $(".cms-side-nav ul li").on("click", function(){

@@ -45,9 +45,9 @@
     <?php echo $this->getBlockHtml('formkey')?>
     <table class="inputtable">
         <tr>
-            <td class="label"><label for="email_address"><?php echo $this->__('Email Addresses, separated by commas') ?></label></td>
+            <!-- <td class="label"><label for="email_address"><?php echo $this->__('Email Addresses, separated by commas') ?></label></td> -->
             <td class="inputholder">
-                <input type="text" name="emails" id="email_address" value="<?php echo $this->getEnteredData('emails'); ?>" class="requiredfield" defaulterrormsg="Email Addresses are required" />
+                <input type="text" name="emails" id="email_address" value="<?php echo $this->getEnteredData('emails'); ?>" watermark="Email Addresses, separated by commas" class="requiredfield watermark" defaulterrormsg="Email Addresses are required" />
             </td>
         </tr>
         <tr>
@@ -56,11 +56,11 @@
             </td>
         </tr>
     </table>
-    <table class="inputtable" style="margin-top: 10px;">
+    <table class="inputtable" style="margin-top: 0px;">
         <tr>
-            <td class="label"><label for="email_address"><?php echo $this->__('Message...') ?></label></td>
+            <!-- <td class="label"><label for="email_address"><?php echo $this->__('Message...') ?></label></td> -->
             <td class="inputholder">
-                <input type="text" name="message" id="message" value="<?php echo $this->getEnteredData('message'); ?>" />
+                <input type="text" name="message" id="message" value="<?php echo $this->getEnteredData('message'); ?>" watermark="Type your message here" class="watermark" />
             </td>
         </tr>
         <tr>
