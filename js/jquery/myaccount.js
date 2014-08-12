@@ -727,7 +727,9 @@ function createcard()
             result = eval('(' + result + ')');
             _addingtocart = false;
             if(result.status == 'success')
-            {
+            {_showShoppingbagLoader = true;
+                showShoppingBagHtml();
+                jQuery(".open-cart").trigger("click");
                 if(_productdisplaymode == "popup")
                     jQuery( "#productdetailpopup" ).dialog( "close" );
                 jQuery("span.cartitemcount").html(result.count);
