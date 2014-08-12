@@ -588,22 +588,22 @@ table.referfriendforms td table.inputtable
 {
     margin-right : 20px;
 }
-table.referfriendforms td table.inputtable input[type='text']
+/*table.referfriendforms td table.inputtable input[type='text']
 {
     margin-top : 10px;
-}
+}*/
 div.invite
 {
-    background-image : url('../images/invite_off.png');
+    background-image : url('../images/invite-frnds.png');
     width : 93px;
     height : 29px;
 }
 div.invited
 {
-    background-image : url('../images/invited_disabled.png');
+    background-image : url('../images/invited-frnd.png');
     width: 107px;
     height: 31px;
-    margin-top: 10px;
+    /*margin-top: 10px;*/
     background-size: contain;
 }
 div#addanotherreferral
