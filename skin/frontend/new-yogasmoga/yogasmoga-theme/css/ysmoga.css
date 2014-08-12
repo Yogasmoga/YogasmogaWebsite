@@ -323,7 +323,7 @@ ul.site-map > li{
     width: 44%;
 }
 .iconspartone .row img {
-width: 50%;
+width: 60%;
 }
 .iconspartone .row > span:nth-child(odd){
     float: left;
@@ -336,7 +336,7 @@ width: 50%;
     color: #555;
     display: block;
     font: 11px/15px gothambook;
-    margin: 15px auto auto;
+    margin: 10px auto auto;
     text-transform: uppercase;
 }
 
