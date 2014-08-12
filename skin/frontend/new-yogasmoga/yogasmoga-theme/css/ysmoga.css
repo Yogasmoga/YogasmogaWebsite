@@ -69,6 +69,7 @@ ul.main-menu2 > li.rangoli:hover{
 
 /** stripe below banner **/
 .sign-up-new{
+    cursor: inherit;
     display: block;
     text-align: left;
     font: 14px/19px gothambook;

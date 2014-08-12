@@ -69,7 +69,7 @@ ul.tr-menu > li > ul.sub-menu li.blank{height: 23px; background: url("../images/
 ul.tr-menu > li:hover > ul.sub-menu{display: block;}
 ul.main-menu2{margin-left: 0; margin-right: 5px;}
 ul.main-menu2 > li{position: relative; padding: 0 10px; height: 34px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
-ul.main-menu2 a.main-heading{display: block; height: 35px;}
+ul.main-menu2 a.main-heading{display: block; height: 34px;}
 ul.main-menu2 li ul.sub-menu li a{font-family: gothambook;}
 ul.main-menu2 > li:hover > ul.sub-menu /*ul.main-menu > li:hover > ul.sub-menu*/{display: block;}
 ul.main-menu > li.over > ul.sub-menu{display: block;}
@@ -1983,4 +1983,5 @@ table.productimagecontainer table.tdbigimagecontainer{margin-left: 24% !importan
 .video-box .tble{margin-top: 33px;}
 li.sub-head a:hover{color: #c03 !important;}
 .similarProdList span strong:hover{color: #c03;}
-.leftnav{position: absolute !important;}
+
+ul.main-menu2 a.main-heading,  x:-moz-any-link {height:35px;}

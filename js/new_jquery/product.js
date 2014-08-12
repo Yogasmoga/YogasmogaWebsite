@@ -2,7 +2,7 @@ jQuery(window).load(function($){
     detailHeight();
 });
 jQuery(document).ready(function($) {
-    //scrollingLink();
+    scrollingLink();
     wishList();
     readmore();
     detailHeight();
@@ -176,7 +176,7 @@ function detailHeight(){
                     // Change the CSS of the scroller to hilight it and fix it at the top of the screen.
                     jQuery('.cntn-scroll').css({
                         'position': 'fixed',
-                        'top': '0'
+                        'top': '73px'
                     });
                     
                     // this is container div class
@@ -213,7 +213,6 @@ function detailHeight(){
                        jQuery('.cntn-scroll').animate({
                                     position:'fixed',
                                     opacity:'1.5',
-                                    top:'0',
                                     top:-ftr
                                      });                    
                     
@@ -226,7 +225,7 @@ function detailHeight(){
                     // Change the CSS of the scroller to hilight it and fix it at the top of the screen.
                     jQuery('.cntn-scroll').css({
                         'position': 'fixed',
-                        'top': '0',
+                        'top': '73px',
                         'margin-top':'0em'
                         
                     });
