@@ -28,8 +28,10 @@
 jQuery(function(){
        equaliseHeight();
        jQuery(window).resize(function(){
-        equaliseHeight();
+        // equaliseHeight();
        });
+       var smogiCount = jQuery(".smogi-counting .smogi-count").text();
+       jQuery(".smogi-counting .smogi-count").text(jQuery.trim(smogiCount));
 });
 
 function equaliseHeight(){

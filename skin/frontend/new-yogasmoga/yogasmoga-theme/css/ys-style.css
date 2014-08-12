@@ -65,7 +65,7 @@ li.free-shipping{font-style: italic; margin-right: 15px;}
 ul.tr-menu > li > ul.sub-menu{position: absolute; text-align: center; width:200px; padding:0; z-index: 9; display: none; text-transform: uppercase; }
 ul.tr-menu > li > ul.sub-menu li{background: #f1f1f2; padding: 0 15px;}
 ul.tr-menu > li > ul.sub-menu li.last{padding-bottom: 10px;}
-ul.tr-menu > li > ul.sub-menu li.blank{height: 23px; background: url("../images/menu_arrow.png") no-repeat 79px bottom #f1f1f2; background-size: 17px 14px;}
+ul.tr-menu > li > ul.sub-menu li.blank{height: 23px; background: url("../images/menu_arrow.png") no-repeat bottom center #f1f1f2; background-size: 17px 14px;}
 ul.tr-menu > li:hover > ul.sub-menu{display: block;}
 ul.main-menu2{margin-left: 0; margin-right: 5px;}
 ul.main-menu2 > li{position: relative; padding: 0 10px; height: 34px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
@@ -1365,7 +1365,7 @@ table.productimagecontainer{margin-bottom: 70px; /*min-height: 620px;*/}
 #createcardform table.inputtable tbody tr td.inputholder{padding: 8px; border:none !important;}
 .goy-form .row{margin: 0 0 30px !important;}
 .goy-form .full{width: 100% !important; margin: 0 !important;}
-.goy-form .full textarea{max-width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; border:none !important; background: #fff !important; font-size: 11px !important; font-size: 11px !important; font-family: gothambook; color: #555;}
+.goy-form .full textarea{max-width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; border:none !important; background: #fff !important; font-size: 11px !important; font-family: gothambook !important; color: #555;}
 textarea.watermark{color: #555 !important; font-size: 13px !important;}
 .goy-form .col label{text-align: left; color: #555 !important; font-style: normal !important; font-family: gothambook !important; font-size: 13px !important; margin-bottom: 5px !important; resize:none;}
 .goy-balance form{display: block; position: absolute; right: 32px; left: 32px; bottom: 25px;}
@@ -1531,7 +1531,7 @@ div#sizechart td span { font-weight: normal; }
 .banner-txt3.promo2310 {
     color: #555;
     font: 46px/51px AvantGardeGothicITCW01D;
-    left: 60px;
+    left: 3.85625%;
     text-align: left;
     text-transform: uppercase;
     top: 110px;
@@ -1731,7 +1731,7 @@ input#smogi:-ms-input-placeholder {
 
 /****CMS Page CSS****/
 .pg-content section,.cms-size-chart{max-width: 800px;}
-.cms-container{padding: 15px 40px 0 40px;}
+.cms-container{padding: 29px 40px 0 40px;}
 .cms-pg{width: auto; margin: 0 0 0 301px; vertical-align: top; color: #666; line-height: normal; min-height: 300px; border-top: 1px solid #555; padding-top: 15px;}
 .pg-heading{margin-bottom: 49px;}
 .pg-heading h2 {font-family: ITCAvantGardeProMd; font-size: 36px; color: #555555; line-height: 40px; margin-bottom: 8px; text-transform: uppercase;}
@@ -1830,7 +1830,7 @@ body.customer-giftcards-balance #my-orders-table,body.customer-giftcards-balance
 #giftofys{margin-bottom: 70px;}
 button.button span{border:none ;}
 .goy-form .full label { display: none; }
-.goy-form .full textarea { display: block; padding: 5px; width: 100%; height: 125px; }
+.goy-form .full textarea { display: block !important; padding: 5px !important; width: 100% !important; height: 125px !important; }
 textarea.watermark{font-family: gothambook;}
 .goy-form .button-set button.button{float: right; margin-left: 10px !important;}
 button.btn-addtobag span { padding: 0; text-indent: -999em; margin: 0; border: 0;}
@@ -1996,6 +1996,13 @@ table.productimagecontainer table.tdbigimagecontainer{margin-left: 24% !importan
 li.sub-head a:hover{color: #c03 !important;}
 .similarProdList span strong:hover{color: #c03;}
 
+#wishlist-view-form .addwishlistbtn{display: none;}
+body.cms-gift-of-ys #giftofys{-webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
+body.cms-gift-of-ys .gift-of-ys{background: none !important;}
+body.cms-gift-of-ys .gift-of-ys .fixwidth{width: 63.559%; max-width: 1040px; margin-left: auto; margin-right: auto;} 
+body.cms-gift-of-ys .gift-banner p{font-family: gothambook; font-size: 12px; line-height: 25px; margin-bottom: 37px; margin-top: -20px;}
+body.cms-gift-of-ys .gift-of-ys #createcardform{padding-top: 30px; padding-bottom: 30px;}
+
 ul.main-menu2 a.main-heading,  x:-moz-any-link {height:35px;}
 
 
@@ -2027,6 +2034,7 @@ ul.main-menu2 a.main-heading,  x:-moz-any-link {height:35px;}
     width: 93px !important;
     height: 29px !important;
 }
+
 
 .addNewAdd .gryWrap table.inputtable td select#shipping\:country_id{
     padding: 5px;
