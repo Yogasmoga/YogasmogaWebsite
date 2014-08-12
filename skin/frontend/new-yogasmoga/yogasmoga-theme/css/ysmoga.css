@@ -719,7 +719,7 @@ html[xmlns] .overridefix {
 }
 
 .productCont .prod-img{
-    height: 340px;
+    height: 338px;
 }
 
 .chat-status{
@@ -856,6 +856,25 @@ ul.tr-menu > li.free-shipping {
 }
 .intouchCheckbox input[type="checkbox"]:checked + label {
     background: url("../images/new-elements/checkbox.jpg") no-repeat left -32px;
+}
+
+.checkShippingBox input[type="checkbox"],
+.checkBillingBox input[type="checkbox"] {
+    display: none;
+}
+.checkShippingBox input[type="checkbox"]+label,
+.checkBillingBox input[type="checkbox"]+label {    
+    background: url("../images/checkout/saveAddCheckbox.png") no-repeat top left;
+    cursor: pointer;
+    display: inline-block;
+    height: auto;
+    margin: 2px 0 0;
+    padding: 5px 0 6px 50px;
+    width: auto;
+}
+.checkShippingBox input[type="checkbox"]:checked + label,
+.checkBillingBox input[type="checkbox"]:checked + label {
+    background: url("../images/checkout/saveAddCheckbox.png") no-repeat left -32px;
 }
 
 .signinDialog .err-msg {

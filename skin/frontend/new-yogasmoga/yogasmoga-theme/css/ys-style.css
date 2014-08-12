@@ -638,7 +638,7 @@ table.box-desc-dvdr.smogibucks{margin-top: 15px; margin-bottom: -5px;}
 ul.checkout-cont{margin: 0; padding: 0; width: 100%; list-style: none; margin:20px 0 0;}
 ul.checkout-cont > li{float:left; margin: auto; border-left:1px solid #fff; min-height: 600px; padding: 62px 0 0; position: relative; width: 33.2%;}
 ul.checkout-cont > li.active{background: url('../images/border-gery.jpg') no-repeat center top;}
-ul.checkout-cont > li .ovrlay-bg{display: block; background: #d6d6d6; height: 100%; width: 100%; position: absolute; top: 0; left: 0; opacity: 0.5;}
+ul.checkout-cont > li .ovrlay-bg{display: block; background: #e2e1e1; height: 100%; width: 100%; position: absolute; top: 0; left: 0; opacity: 0.5;}
 ul.checkout-cont > li.active .ovrlay-bg{display: none;}
 .checkout-details{padding: 38px 20px 20px; display: block;}
 .headD{font: 30px/40px itcavantgardeprobk, Arial; text-align:center; text-transform:uppercase; margin-bottom:50px;}
@@ -1439,7 +1439,7 @@ div.men-size-chart table tr:first-child td{width: 13.975155279503105590062111801
     text-decoration: none;
     text-transform: uppercase;
     width: 60%;
-    margin: 20px 0 0;
+    margin: 18px 0 0;
     padding: 0 0 0 45px;    
 }
 
@@ -2043,4 +2043,14 @@ ul.main-menu2 a.main-heading,  x:-moz-any-link {height:35px;}
 
 #checkout-shipping-address-new label[for="shipping:save_in_address_book"] {
     font-size: 12px !important;
+}
+
+#ordertotal {
+    font-family: gothammedium !important;
+}
+
+#ordersummary td.divider{
+    background: none;
+    border-bottom: 1px solid #fff;
+    height: 10px;
 }
