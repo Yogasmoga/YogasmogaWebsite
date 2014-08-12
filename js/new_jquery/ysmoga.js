@@ -14,7 +14,7 @@ jQuery(window).load(function($){
 		colorBoxHeight();
 		factorypart();	
 		namaskarpart();	
-		ctextVMiddle();
+		// ctextVMiddle();
 	},100);
 });
 
@@ -27,7 +27,7 @@ jQuery(document).ready(function($){
 		colorBoxHeight();
 		factorypart();
 		namaskarpart();	
-		ctextVMiddle();	
+		// ctextVMiddle();	
 	});	
 });
 
@@ -104,11 +104,11 @@ function homeContent1(){
 	// jQuery(".gridslider2 .contentSlider").css("top", vH1);
 };
 
-// function ctextVMiddle(){
-// 	jQuery(".multicolorcont .ctext, .factorythread .ctext, .raisingfunds .ctext").each(function(){
-//         var ctext_bl = jQuery(this).height();
-//         var parCtext = jQuery(this).parent().height();
-//         var topPosCtext = (parCtext - ctext_bl)/1.5;
-//         jQuery(this).css("top", topPosCtext);        
-//     }); 
-// }
+function ctextVMiddle(){
+	jQuery(".multicolorcont .ctext, .factorythread .ctext, .raisingfunds .ctext").each(function(){
+        var ctext_bl = jQuery(this).height();
+        var parCtext = jQuery(this).parent().height();
+        var topPosCtext = (parCtext - ctext_bl)/1.5;
+        jQuery(this).css("top", topPosCtext);        
+    }); 
+}
