@@ -223,7 +223,112 @@ receiving an email soon with your shipment tracking number.</p>
                 <div class="invite-form">
                 SHARE WITH YOUR FRIENDS
                 <span>Share the YOGASMOGA joy, your friends get $25 SMOGI bucks toward their 1st order.</span>
-                    <form id="referfriend" action="" method="post">
+                    <table class="referfriendforms" width="100%">            
+                        <tbody id="main">
+                            <tr id="template">
+                                <td class="name">
+                                    <table class="inputtable nolabel">
+                                        <tr>
+                                            <td class="label"><label for="email">Email Address</label></td>
+                                            <td class="inputholder">
+                                                <input type="text" class="requiredfield" placeholder="Name" value="" defaulterrormsg="Friend's name is required." />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="errortext" colspan="2">
+                                                <div>Friend's name is required.</div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td class="email">
+                                    <table class="inputtable nolabel">
+                                        <tr>
+                                            <td class="label"><label for="email">Email Address</label></td>
+                                            <td class="inputholder">
+                                                <input type="text" class="requiredfield" placeholder="Email Address" value="" defaulterrormsg="Friend's Email Address is required." />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="errortext" colspan="2">
+                                                <div>Friend's Email Address is required.</div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td class="btninvite">
+                                    <div class="spbutton invite" imageurl="<?php echo $this->getSkinUrl('images/new-elements/share_off.jpg'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/new-elements/share_on.jpg'); ?>"></div>
+                                </td>
+                                <td class="btninvited">
+                                    <div class="invited"></div>
+                                </td>
+                                <td class="remove">
+                                    <img src="<?php echo $this->getSkinUrl('images/invite_cross.png'); ?>" />
+                                </td>
+                                <td class="processing">
+                                    <img src="<?php echo $this->getSkinUrl('images/processing.gif'); ?>" />
+                                </td>
+                                <td class="success">
+                                    <img src="<?php echo $this->getSkinUrl('images/invite_success.png'); ?>" />
+                                </td>
+                            </tr>
+                            <tr id="1">
+                                <td class="name">
+                                    <table class="inputtable nolabel">
+                                        <tr>                                
+                                            <td class="inputholder">
+                                                <input type="text" class="watermark requiredfield" watermark="Name" value="" defaulterrormsg="Friend's name is required." />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="errortext" colspan="2">
+                                                <div>Friend's name is required.</div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td class="email">
+                                    <table class="inputtable nolabel">
+                                        <tr>                                
+                                            <td class="inputholder">
+                                                <input type="text" class="watermark requiredfield" value="" watermark="Email Address" defaulterrormsg="Friend's Email Address is required." />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="errortext" colspan="2">
+                                                <div>Friend's Email Address is required.</div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td class="btninvite">
+                                    <div class="spbutton invite" imageurl="<?php echo $this->getSkinUrl('images/new-elements/share_off.jpg'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/new-elements/share_on.jpg'); ?>"></div>
+                                </td>
+                                <td class="btninvited">
+                                    <div class="invited"></div>
+                                </td>
+                                <td class="remove" style="display: none;">
+                                    <img src="<?php echo $this->getSkinUrl('images/invite_cross.png'); ?>" />
+                                </td>
+                                <td class="processing">
+                                    <img src="<?php echo $this->getSkinUrl('images/processing.gif'); ?>" />
+                                </td>
+                                <td class="success">
+                                    <img src="<?php echo $this->getSkinUrl('images/invite_success.png'); ?>" />
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6">
+                                    <div id="addanotherreferral">
+                                        <p>ADD ANOTHER +</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>                
+                    <form id="referfriend" class="dnone" action="" method="post">
                         <table width="100%" class="referafriendcheck">
                             <tbody id="main">
                                 <tr id="1">

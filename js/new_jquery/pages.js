@@ -47,25 +47,25 @@ var ftr1 = $('#sitemap');
             } 
             
             // Women Grid LeftNavigation
-            if($(window).scrollTop() >= document.body.offsetHeight && $('.leftnav').css('position') != 'fixed') {
-                $('.leftnav').removeClass('topLeftMenu');
-            }
-            else if($(window).scrollTop() < leftnav && $('.leftnav').css('position') != 'relative') {  
-                $('.leftnav').removeClass('topLeftMenu');
-            }
-            else if($(window).scrollTop() < leftnav && $('.leftnav').css('position') != 'relative') {
-                //alert(scrollBottom);
-            }
-            else{}
-             if(document.documentElement.clientHeight + $(document).scrollTop() >= document.body.offsetHeight  && $('.leftnav').css('position') == 'fixed') {
-                // $('.leftnav').addClass('topLeftMenu', 400);
-                $('.leftnav').animate({
-                    'top': -ftr
-                }, 400);
-            }
-            else {  
-                $('.leftnav').removeClass('topLeftMenu');
-            }        
+            // if($(window).scrollTop() >= document.body.offsetHeight && $('.leftnav').css('position') != 'fixed') {
+            //     $('.leftnav').removeClass('topLeftMenu');
+            // }
+            // else if($(window).scrollTop() < leftnav && $('.leftnav').css('position') != 'relative') {  
+            //     $('.leftnav').removeClass('topLeftMenu');
+            // }
+            // else if($(window).scrollTop() < leftnav && $('.leftnav').css('position') != 'relative') {
+            //     //alert(scrollBottom);
+            // }
+            // else{}
+            //  if(document.documentElement.clientHeight + $(document).scrollTop() >= document.body.offsetHeight  && $('.leftnav').css('position') == 'fixed') {
+            //     // $('.leftnav').addClass('topLeftMenu', 400);
+            //     $('.leftnav').animate({
+            //         'top': -ftr
+            //     }, 400);
+            // }
+            // else {  
+            //     $('.leftnav').removeClass('topLeftMenu');
+            // }        
         });
     }
 
