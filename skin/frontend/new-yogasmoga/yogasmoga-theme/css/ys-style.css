@@ -2054,3 +2054,7 @@ ul.main-menu2 a.main-heading,  x:-moz-any-link {height:35px;}
     border-bottom: 1px solid #fff;
     height: 10px;
 }
+
+.gridProdCubix .leftnav .ctglink li a.bld:hover{
+    color: #c03;
+}
