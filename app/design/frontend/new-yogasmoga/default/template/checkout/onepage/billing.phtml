@@ -230,10 +230,8 @@
         <?php if ($this->isCustomerLoggedIn() && $this->customerHasAddresses()):?>
             <table>
                 <tr>
-                    <td>
+                    <td class="checkBillingBox">
                         <input type="checkbox" name="billing[save_in_address_book]" value="1" id="billing:save_in_address_book" <?php if ($this->getAddress()->getSaveInAddressBook()):?> checked="checked"<?php endif;?> class="checkbox" />
-                    </td>
-                    <td style="padding-top : 2px;">
                         <label for="billing:save_in_address_book"><?php echo $this->__('Save in address book') ?></label>
                     </td>
                 </tr>

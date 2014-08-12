@@ -303,15 +303,15 @@ div#shippingsummary
 }
 
 div#ordersummary {
-    font: 14px/28px gothambook;
+    font: 12px/21px gothambook;
     margin: auto;
     text-align: left;
     width: ;
-    min-height: 180px;
+    min-height: 170px;
 }
 div#ordersummary span.anchor, div#shippingsummary span.anchor
 {
-    font: 14px gothambook;
+    font: 11px/21px gothammedium;
     white-space: nowrap;
 }
 div#ordersummary table, div#shippingsummary table
@@ -341,8 +341,8 @@ div#ordersummary table td, div#shippingsummary table td
 }
 div#ordersummary table tr.ordertotal td, div#shippingsummary table tr.ordertotal td
 {
-    padding-top : 15px;
-    padding-bottom : 15px;
+    padding-top : 10px;
+    padding-bottom : 0;
 }
 div#ordersummary table td.divider, div#shippingsummary table td.divider
 {
@@ -532,15 +532,16 @@ div#coshipping, div#cobilling {
 body.checkout-onepage-index li.form-alt {
     background: none repeat scroll 0 0 #ededed;
     display: block;
-    font: 15px/24px gothammedium;
-    margin: -16px auto 25px;
+    font: 13px/21px gothambook;
+    margin: -20px auto 18px;
     min-height: inherit;
-    padding: 20px 0;
-    width: 99.7%;
+    padding: 20px;
+    width: 86.5%;
+    text-align: left;
 }
 div.paymentmethoddiv {
     float: left;
-    margin: 0 0 20px;
+    margin: 0 0 18px;
     overflow: hidden;
     text-align: center;
     width: 50%;
@@ -713,7 +714,7 @@ select#billing-address-select{
 .billingAdd {
     display: inline-block;
     width: 100%;
-    margin: 20px 0;
+    margin: 14px 0;
 }
 
 #cobillingaddress{
