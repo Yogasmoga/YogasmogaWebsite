@@ -50,133 +50,17 @@
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
         <div id="pagecontainer">
-            <div id="giftofys" class="fullscreen">
-				<div class="gift-of-ys pgsection" id="Whatis"  desc="Gift of YS">
-					<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('customer/dashboard_nav.phtml')->toHtml(); ?>
-                    <div class="fixwidth">
-    					<div class="header-top-bar"></div>
-                        <div class="referfriend-heading">
+            <div id="giftofys" class="fullscreen" style="padding:29px 40px 0 40px;">
+				<div class="gift-of-ys pgsection cms-pg" id="Whatis"  desc="Gift of YS" style="margin:0 auto;">					
+                    <div class="fixwidth">    					
+                        <!-- <div class="referfriend-heading">
                             <h4>YS GIFT CARD</h4>
                             <span class="referfriend-desc">FROM ONE SMOGI TO ANOTHER</span>
-                        </div>
-                        <div class="manage-goy">
-                            <div class="goy-balance f-left" id="Chkbal" desc="Check Balance">
-                            <h4 class="sub-title">check balance</h4>
-                            <p>Enter your Gift of YS code in the field below.</p>
-                            <form action="" method="post" id="cardbalanceform">
-                            <table class="redeem-giftcard">
-                                <tr>
-                                    <td>
-                                        <table class="gfredeem">
-                                            <tr>                                        
-                                                <td class="inputholder">
-                                                    <input type="text" id="gf1" />
-                                                </td>
-                                                <td class="dash">
-                                                    -
-                                                </td>
-                                                <td class="inputholder">
-                                                    <input type="text" id="gf2" />
-                                                </td>
-                                                <td class="dash">
-                                                    -
-                                                </td>
-                                                <td class="inputholder">
-                                                    <input type="text" id="gf3" />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="errortext" colspan="6">
-                                                    <div>Gift Card Code is required.</div>
-                                                    <?php
-                                                        if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false)
-                                                        {
-                                                            ?>
-                                                                <div style="display: block;"><?php echo strip_tags(Mage::getSingleton('core/session')->getGlobalMessage()); ?></div>            
-                                                            <?php
-                                                        }
-                                                    ?>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>                                    
-                                </tr>
-                                <tr>
-                                    <td style="text-align:right;">
-                                        <button type="submit" title="<?php echo $this->__('Redeem') ?>" class="button btn-check" value="<?php echo $this->__('Redeem') ?>"><span><span><img src="<?php echo $this->getSkinUrl('images/check-ys-balance.jpg') ?>" alt=""/></span></span></button>
-                                        <input type="text" style="display: none;" id="cardno" name="cardno" placeholder="8VE6C-ST11X-RX1LA" />
-                                    </td>
-                                </tr>   
-                            </table>
-                            </form>                            
-                        </div>
-                        <div class="goy-balance f-right" id="Redeemcard" desc="Redeem Card">
-                            <h4 class="sub-title">ADD GIFT OF YS TO YOUR ACCOUNT</h4>
-                            <?php if(Mage::helper('customer')->isLoggedIn())
-                                {
-                                    ?>
-                                        <p>Enter your Gift of YS Code in the field below to redeem your card.</p>
-                                        <form action="" method="post" id="cardredeemform">
-                                            <table class="redeem-giftcard">
-                                                <tr>
-                                                    <td>
-                                                        <table id="redeem">
-                                                            <tr>                                                        
-                                                                <td class="inputholder">
-                                                                    <input type="text" id="gfr1" />
-                                                                </td>
-                                                                <td class="dash">
-                                                                    -
-                                                                </td>
-                                                                <td class="inputholder">
-                                                                    <input type="text" id="gfr2" />
-                                                                </td>
-                                                                <td class="dash">
-                                                                    -
-                                                                </td>
-                                                                <td class="inputholder">
-                                                                    <input type="text" id="gfr3" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="errortext" colspan="6">
-                                                                    <div>Gift Card Code is required.</div>
-                                                                    <?php
-                                                                        if(strpos(Mage::getSingleton('core/session')->getGlobalMessage(),"error-msg") !== false)
-                                                                        {
-                                                                            ?>
-                                                                                <div style="display: block;"><?php echo strip_tags(Mage::getSingleton('core/session')->getGlobalMessage()); ?></div>            
-                                                                            <?php
-                                                                        }
-                                                                    ?>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>                                                    
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align:right;">
-                                                        <button type="submit" title="<?php echo $this->__('Redeem') ?>" class="button btn-addtoaccount" value="<?php echo $this->__('Redeem') ?>"><span><span><img src="<?php echo $this->getSkinUrl('images/add-to-acnt.jpg') ?>" alt=""/></span></span></button>
-                                                        <input type="text" style="display: none;" id="giftcard_code" name="giftcard_code" placeholder="8VE6C-ST11X-RX1LA" />
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </form>        
-                                    <?php
-                                }
-                                else
-                                {
-                                    ?>
-                                        <p>Log in to redeem your Gift of YS Card.</p>
-                                        <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/login?goto=giftofys">
-                                            <button type="button" title="Login" class="button btn-login" value="Login"><span><span>Login</span></span></button>
-                                        </a>
-                                    <?php
-                                }
-                            ?>
-                        </div>
-                        <div class="clear-fix"></div>
-                        </div>  
+                        </div> -->
+                        <div class="pg-heading" style="margin-bottom:35px;">
+                            <h2>YS GIFT CARD</h2>
+                            <span class="pg-tagline">From one SMOGI to another</span>
+                        </div>                        
                         
                         <?php /*
     					<form id="createcardform" name="createcardform" action="" method="post">
@@ -231,11 +115,15 @@
     						</div>
     					</form>
                         */ ?>
+                        <div class="gift-banner c-align">
+                            <img src="<?php echo $this->getSkinUrl('images/gift-card-img.jpg') ?>" alt="" style="width:100%" />
+                            <p class="c-align">Help friends to keep calm and get their Mantra on. Give the Gift of YS.</p>
+                        </div>
                         <form id="createcardform" name="createcardform" action="" method="post">
                             <input type="hidden" id="email-radio" name="card_type" value="email" />
     						<input type="hidden" id="productid" name="product" value="4" />
     						<input type="hidden" id="productqty" name="qty" value="1" />
-                            <h4 class="sub-title">Give YS Gift Card</h4>
+                            <!-- <h4 class="sub-title">Give YS Gift Card</h4> -->
                             <table class="twocolumn533">
                                 <tr>
                                     <td>
@@ -350,7 +238,8 @@
 
                 </div>
                     
-				</div>				
+				</div>		
+                <div class="new-bot-divider"></div>		
                 <?php //echo $this->getChildHtml('content'); ?>  
             </div>
             <?php echo $this->getChildHtml('footer'); ?>
