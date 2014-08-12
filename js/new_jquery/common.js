@@ -1,42 +1,25 @@
 var _refercount = 1;
 jQuery(window).load(function($){    
     featuredSec(); 
-    colorStorySec();
+    colorStorySec();    
     jQuery(".wl-feat-prd,.wl-color-story-prd").animate({opacity:1},1000);   
     featLiHeightAd(); 
     var featLiH = jQuery(".featureList span.ftrFig img").first().height();
-    jQuery(".featureList span.ftrFig").css("height", featLiH);
+    jQuery(".featureList span.ftrFig").css("height", featLiH);    
 });
 jQuery(document).ready(function($){   
     $("#productdetails").on("click",".vlink-cont a",function(){
         $(".fitDetail .video-block img").click();
     });
-// for share in checkout 
-$("div#addanothreferral").live("click", function(){
-    $("table.referafriendcheck tbody#main").append("<tr id='" + (++_refercount) + "'>" + $("table.referafriendcheck tr#1").html() + "</tr>");   
-    $("table.referafriendcheck tbody#main tr[id]").each(function(){
-        if($(this).find("td.btnshare").css('display') != 'none')
-        {
-            $(this).find('td.removeshare').show();
-        }
-    });
-});
 
-$("table.referafriendcheck td.removeshare img").live('click', function(){
-    if($(this).parents("table:first").find("tbody#main>tr").length > 1)
-    {
-        $(this).parents("tr:first").remove();
-        if($("table.referafriendcheck tbody#main>tr").length <= 1)
-            $("table.referafriendcheck tbody#main td.removeshare").hide();
-    }   
-});
-        $(".goy-form").on("click",".button.btn-reset", function(e){  
-            e.preventDefault();
-            $("#createcardform td.inputholder input, #createcardform .goy-form #mail-message").each(function(){
-                var ra1 = $(this).attr("watermark");
-                $(this).attr("value", ra1);
-            });            
-    })  
+$(".goy-form").on("click",".button.btn-reset", function(e){  
+    e.preventDefault();
+    $("#createcardform td.inputholder input, #createcardform .goy-form #mail-message").each(function(){
+        var ra1 = $(this).attr("watermark");
+        $(this).attr("value", ra1);
+    });            
+}); 
+
     /***Functions to called on resize***/
     $(window).resize(function(){
         featuredSec();
@@ -173,7 +156,7 @@ $("table.referafriendcheck td.removeshare img").live('click', function(){
             $("#invite_friends").dialog( "open" );
         }            
     });
-    $(".footer-block").on("click","#welcome-name","#footer-trackorder",function(e){
+    $(".footer-block").on("click","#welcome-name",function(e){
 
         if(!_islogedinuser)
         {
@@ -424,28 +407,28 @@ function madeinusa(){
 //     jQuery(".header-container").css("left", fCount); // }
 
 function featuredSec(){
-    var fs_right = jQuery('.wl-right-block img').css("height");
+    var fs_right = jQuery('.wl-right-block').css("height");    
     var fs_lft = jQuery('.wl-left-block');    
     fs_lft.css("height", fs_right);
     var lft_vid =jQuery(".bottom-left-block").height();        
     var lft_vid_img = jQuery('.bottom-left-block img');
     var lft_vid_img_height = lft_vid_img.height();
-    lft_vid_img.css("margin-top", (lft_vid - lft_vid_img_height)/2.07);
-    
-       
-        setTimeout(function(){
+    lft_vid_img.css("margin-top", (lft_vid - lft_vid_img_height)/2.07);           
+        var posContent = setTimeout(function(){
+            jQuery(window).resize();
             jQuery(".wl-color-story-prd .block-content").each(function(){
                 var bl_c_H = jQuery(this).height();
                 var parH = jQuery(this).parent().height();
                 var topPos = (parH - bl_c_H)/1.99;
-                jQuery(this).css("top", topPos);
+                jQuery(this).css("top", topPos);                
             });
             jQuery(".wl-cs-left-block .block-content").each(function(){
                 var bl_c_H = jQuery(this).height();
                 var parH = jQuery(this).parent().height();
                 var topPos = (parH - bl_c_H)/1.91;
                 jQuery(this).css("top", topPos);
-            });
+            });            
+            clearTimeout(posContent);
         },100);
               
 }

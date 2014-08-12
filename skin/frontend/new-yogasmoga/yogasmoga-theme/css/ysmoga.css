@@ -69,6 +69,7 @@ ul.main-menu2 > li.rangoli:hover{
 
 /** stripe below banner **/
 .sign-up-new{
+    cursor: inherit;
     display: block;
     text-align: left;
     font: 14px/19px gothambook;
@@ -1000,7 +1001,7 @@ ul.main-menu > li.rangoli:hover {
     margin: 0 !important;
 }
 
-.social-btns, .invite-form {
+.social-btns, .invite-action .invite-form {
     background: none repeat scroll 0 0 #f3f3f4;
     color: #555 !important;
     font: 11px/17px gothambold !important;
