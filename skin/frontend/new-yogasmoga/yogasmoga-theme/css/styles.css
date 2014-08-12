@@ -3813,8 +3813,16 @@ body.paypal-express-review #order_review_form table.inputtable {
 body.paypal-express-review #order_review_form table tbody,
 body.paypal-express-review #order_review_form table tr,
 body.paypal-express-review #order_review_form table td {
-    display: inline-block;
     width: 100%;
+}
+
+body.paypal-express-review #order_review_form #billing-address table tbody,
+body.paypal-express-review #order_review_form #billing-address table tr,
+body.paypal-express-review #order_review_form #billing-address table td,
+body.paypal-express-review #order_review_form #shipping-address table tbody,
+body.paypal-express-review #order_review_form #shipping-address table tr,
+body.paypal-express-review #order_review_form #shipping-address table td {
+    display: inline-block;
 }
 
 body.paypal-express-review #order_review_form table.inputtable td.inputholder select {
