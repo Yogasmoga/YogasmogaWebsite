@@ -1994,3 +1994,33 @@ li.sub-head a:hover{color: #c03 !important;}
 .similarProdList span strong:hover{color: #c03;}
 
 ul.main-menu2 a.main-heading,  x:-moz-any-link {height:35px;}
+
+
+.confirmation-page table.referfriendforms td.name, 
+.confirmation-page table.referfriendforms td.email {
+    padding-right: 0;
+    width: auto;
+}
+
+.confirmation-page table.referfriendforms td.remove img, 
+.confirmation-page table.referfriendforms td.success img{
+    margin-left: 15px;
+}
+
+.confirmation-page .btninvited{
+    width: 107px;
+}
+
+.confirmation-page div.invite {
+    background-image: url("../images/new-elements/share_off.jpg");
+}
+
+.confirmation-page div.invited {
+    background-image: url("../images/new-elements/shared.jpg");
+}
+
+.confirmation-page div.invite,
+.confirmation-page div.invited {
+    width: 93px !important;
+    height: 29px !important;
+}
