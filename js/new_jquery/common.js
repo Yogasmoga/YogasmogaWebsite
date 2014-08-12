@@ -207,7 +207,7 @@ $(".goy-form").on("click",".button.btn-reset", function(e){
                         $(".ui-widget-overlay").css({"top":"69px","position":"fixed"});
                         $(window).trigger("resize");
                         var pW = ($(document).width() - $(this).parent().width())/2;
-                        var pH = ($(window).height() - $(this).parent().height())/2;
+                        var pH = ($(window).height() - $(this).parent().height())/2;                        
                         $(this).parent().css({left:pW,top:pH+10});
                         if ($(window).width() >= "1000") {
                             $("html,body").css("overflow-x","hidden");
