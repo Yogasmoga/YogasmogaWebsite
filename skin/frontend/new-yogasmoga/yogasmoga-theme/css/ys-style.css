@@ -269,13 +269,22 @@ div.copy-privacy-likes ul li img{height: 30px;}
 /***Share with your friend popup***/
 .sharingDialog{width: 640px !important; min-height: 300px; /*z-index: 10011 !important;*/ border: none; position: fixed; padding: 0 !important; background:#fff 50% top repeat-x; background-size: cover; overflow: initial; font-family: gothambook; color:#555 !important;}
 .invite-left{width:260px; /*height:333px;*/ background-color: #ccc;}
-.invite-right{width:305px; padding:30px 37.5px 0;}
-#invite-friend-form{width: 285px; margin: 0 auto;}
-.smogi-love-msg{margin-bottom: 45px;}
+.invite-right{width:315px; padding:30px 30px 0;}
+#invite-friend-form{width: 315px; margin: 0 auto;}
+.smogi-love-msg{margin-bottom: 45px; text-transform: uppercase;}
 .smogi-love{cursor:pointer;}
 .smogi-love:hover{color: #CC0033;}
 .mt100{margin-top: 100px; margin-bottom: 0;}
 .invite-message{font-size: 18px;}
+#invite_friends .invite-form{margin-top: 0 !important;}
+#invite_friends .invite-message{margin-top: 50px;}
+
+.sharingDialog.ui-corner-all, 
+.sharingDialog .ui-corner-bottom, 
+.sharingDialog .ui-corner-right, 
+.sharingDialog .ui-corner-br {
+    border-radius: 0 !important;
+}
 
 /****First Time Pop Up Home page****/
 /*.firstdialog{z-index: 10003 !important;}*/
