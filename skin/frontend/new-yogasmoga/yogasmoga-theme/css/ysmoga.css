@@ -348,30 +348,6 @@ width: 60%;
     vertical-align: middle;
 }
 
-@media only screen and (max-width : 1440px) {   
-    .shopnow-btn{
-        margin-top: 30px;
-    }
-
-   /* .header {
-        padding: 0 54px 0 22px;
-    }*/
-
-}
-
-@media only screen and (max-width : 1360px) {
-    .shopnow-btn{
-        margin-top: 25px;
-    }
-
-   /* .iconspartone .row img {
-        width: 40%;
-    }
-*/
-    .iconspartone .row .iconstxt {
-        width: auto;
-    }
-}
 /*
 @media only screen and (max-width : 1150px) {
     ul.new-arrivals li:nth-child(5){
@@ -383,19 +359,6 @@ width: 60%;
         padding: 0 45px 0 18px;
     }*/
 
-@media only screen and (max-width : 1250px) {
-    
-    #show5.new-arrivals{
-        display: block;
-    }
-    .logoCont{display: none;}
-    .footer-block {
-        display: inline-block;
-        width: 88.8%;
-        margin: 3px 0 0 11.2%;
-        }
-        .bx-wrapper .bx-controls-direction a{width: 21px !important; height: 23px !important; background-size: 100% 100%;}
-}
 /*
 @media only screen and (max-width: 1041px) {
     .logoCont{
@@ -441,36 +404,67 @@ width: 60%;
     }
 }*/
 
+@media only screen and (max-width : 1440px) {   
+    .shopnow-btn{
+        margin-top: 30px;
+    }
+
+   /* .header {
+        padding: 0 54px 0 22px;
+    }*/
+
+}
+
+@media only screen and (max-width : 1360px) {
+    .shopnow-btn{
+        margin-top: 25px;
+    }
+
+   /* .iconspartone .row img {
+        width: 40%;
+    }
+    */
+    .iconspartone .row .iconstxt {
+        width: auto;
+    }
+}
+
+@media only screen and (max-width : 1250px) {
+    #show5.new-arrivals{
+        display: block;
+    }
+
+    .logoCont{
+        display: none;
+    }
+
+    .footer-block {
+        display: inline-block;
+        width: 88.8%;
+        margin: 3px 0 0 11.2%;
+    }
+    
+    .bx-wrapper .bx-controls-direction a{
+        width: 21px !important; 
+        height: 23px !important; 
+        background-size: 100% 100%;
+    }
+
+    .headD{
+        font: 28px/35px itcavantgardeprobk;
+    }
+}
+
 @media only screen and (max-width: 1024px) {
    /* .logoCont{
         display: none;
     }*/
     
-    ul.site-map > li{
-        width: 32.5%;
-    }
-
     /*.footer-block {
         display: inline-block;
         width: 88.8%;
         margin: 3px 0 0 11.2%;
     } */
-
-    .footer-block > .site-map {
-    }
-
-    .shiftRight{
-        float: none;
-    }
-
-    .contentSlider.namaskartxt div {
-        width: 70% !important;
-    }
-
-    .shopnow-btn{
-        margin-top: 20px;
-    }
-
 
    /* .iconspartone .row img {
         width: 30%;
@@ -485,6 +479,23 @@ width: 60%;
 
     }*/
 
+    ul.site-map > li{
+        width: 32.5%;
+    }
+
+    .footer-block > .site-map {}
+
+    .shiftRight{
+        float: none;
+    }
+
+    .contentSlider.namaskartxt div {
+        width: 70% !important;
+    }
+
+    .shopnow-btn{
+        margin-top: 20px;
+    }
 
     #show4.new-arrivals{
         display: block;
@@ -497,7 +508,16 @@ width: 60%;
     ul#show4.new-arrivals li{
         width: 22%;
     }
-    .bx-wrapper .bx-controls-direction a{width: 21px !important; height: 23px !important; background-size: 100% 100%;}
+
+    .bx-wrapper .bx-controls-direction a{
+        width: 21px !important; 
+        height: 23px !important; 
+        background-size: 100% 100%;
+    }
+
+    .headD{
+        font: 24px/29px itcavantgardeprobk;
+    }
 }
 
 /** slider **/

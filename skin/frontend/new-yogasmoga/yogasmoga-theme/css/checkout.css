@@ -527,7 +527,7 @@ div#coshipping, div#cobilling {
     min-width: 50%;
     overflow: inherit;
     padding: 0;
-    width: 304px;
+    width: 300px;
 }
 body.checkout-onepage-index li.form-alt {
     background: none repeat scroll 0 0 #ededed;
@@ -572,7 +572,7 @@ body.checkout-onepage-index #change-stripe-detail, body.checkout-onepage-index #
     padding: 85px 0 0;
     position: relative;
     text-align: center;
-    background: url("../images/checkout/creditblck.jpg") no-repeat top left;
+    background: url("../images/checkout/creditblck.png") no-repeat top left;
     background-size: 100% 100%;
 }
 
@@ -589,11 +589,9 @@ body.checkout-onepage-index #change-stripe-detail, body.checkout-onepage-index #
 }
 
 #stripe-payment-details span {
-    color: #fff;
-    font: 19px gothambooklight;
-    letter-spacing: 1px;
+    color: #555;
+    font: 20px/29px itcavantgardeprobk;
     text-transform: uppercase;
-    text-shadow: 1px 1px 1px #666;
 }
 
 #stripe-payment-details li {
@@ -671,7 +669,7 @@ table.inputtable {
 .paymentmethoddiv img {
     cursor: pointer;
     max-width: 100%;
-    width: 143px;
+    width: 119px;
 }
 
 .nopay{
