@@ -543,6 +543,7 @@ width: 60%;
     height: auto;
     left: 1%;
     right: 1%;
+    position: static;
 }
 
 .bx-controls-auto{
