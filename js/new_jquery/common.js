@@ -6,6 +6,7 @@ jQuery(window).load(function($){
     featLiHeightAd(); 
     var featLiH = jQuery(".featureList span.ftrFig img").first().height();
     jQuery(".featureList span.ftrFig").css("height", featLiH);    
+
 });
 jQuery(document).ready(function($){   
     $("#productdetails").on("click",".vlink-cont a",function(){
@@ -72,6 +73,7 @@ $(".goy-form").on("click",".button.btn-reset", function(e){
         fitVid.css({"left" : (pdpVidPopWidth - fitVidWidth)/2, "top" : (pdpVidPopHeight - fitVidHeight)/2}).fadeIn();
         jQuery(window).resize();
     });
+   
     window.onkeyup = function (event) {
         if (event.keyCode == 27) {            
             $(".vid-popup-overlay,.html-des-vid-popup,.html-fit-vid-popup").fadeOut();

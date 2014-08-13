@@ -21,41 +21,49 @@ a#rangoli-head{
     background-image: url("../images/rangoli-icon.png");
     background-repeat: no-repeat;
     padding: 1px 0 1px 15px;
+    display: block;
 }
 
 .rangoliOrng{
-    background-position: top left;
+    background-position: left 5px;
     color: #ff8785 !important;
+    display: block;
 }
 
 .rangoliPrpl{
     color: #8e59b3 !important;
-    background-position: left -20px;
+    background-position: left -16px;
+    display: block;
 }
 
 .rangoliLBlu{
     color: #5fa1db !important;
-    background-position: left -41px;
+    background-position: left -37px;
+    display: block;
 }
 
 .rangoliGrn{
     color: #3c9136 !important;
-    background-position: left -62px;
+    background-position: left -58px;
+    display: block;
 }
 
 .rangoliBlu{
     color: #0168aa !important;
-    background-position: left -83px;
+    background-position: left -79px;
+    display: block;
 }
 
 .rangoliRd{
     color: #e50000 !important;
-    background-position: left -104px;
+    background-position: left -100px;
+    display: block;
 }
 
 .rangoliYlw{
     color: #efca13 !important;
-    background-position: left -125px;
+    background-position: left -121px;
+    display: block;
 }
 
 ul.main-menu2 > li.rangoli:hover{
@@ -540,10 +548,9 @@ width: 60%;
 
 .bx-controls {
     bottom: 15px;
-    height: auto;
+    height: 100%;
     left: 1%;
     right: 1%;
-    position: static;
 }
 
 .bx-controls-auto{
@@ -562,7 +569,7 @@ width: 60%;
 .bx-wrapper .bx-pager,
 .bx-wrapper .bx-controls-auto {
     position: absolute;
-    bottom: 10px;
+    bottom: 0;
     margin: auto;
     width: 100%;
 }
@@ -671,7 +678,7 @@ html[xmlns] .overridefix {
 
 /** NewGrid **/
 .gridProdCubix {
-    margin: auto;
+    margin: 29px auto auto;
     display: inline-block;
     width: 100%;
     position: relative;
@@ -720,7 +727,7 @@ html[xmlns] .overridefix {
 }
 
 .productCont .prod-img{
-    height: 338px;
+    height: 340px;
 }
 
 .chat-status{
@@ -857,25 +864,6 @@ ul.tr-menu > li.free-shipping {
 }
 .intouchCheckbox input[type="checkbox"]:checked + label {
     background: url("../images/new-elements/checkbox.jpg") no-repeat left -32px;
-}
-
-.checkShippingBox input[type="checkbox"],
-.checkBillingBox input[type="checkbox"] {
-    display: none;
-}
-.checkShippingBox input[type="checkbox"]+label,
-.checkBillingBox input[type="checkbox"]+label {    
-    background: url("../images/checkout/saveAddCheckbox.png") no-repeat top left;
-    cursor: pointer;
-    display: inline-block;
-    height: auto;
-    margin: 2px 0 0;
-    padding: 5px 0 6px 50px;
-    width: auto;
-}
-.checkShippingBox input[type="checkbox"]:checked + label,
-.checkBillingBox input[type="checkbox"]:checked + label {
-    background: url("../images/checkout/saveAddCheckbox.png") no-repeat left -32px;
 }
 
 .signinDialog .err-msg {
