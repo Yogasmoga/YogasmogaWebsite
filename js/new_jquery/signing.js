@@ -240,6 +240,9 @@ function loginCustomer()
                 {
                     window.location.assign(homeUrl+'sales/order/history/');
                 }
+                if (jQuery("body").hasClass("cms-smogi-bucks")) {
+                    jQuery(".gd-container1").hide();
+                }
 
             }
             else

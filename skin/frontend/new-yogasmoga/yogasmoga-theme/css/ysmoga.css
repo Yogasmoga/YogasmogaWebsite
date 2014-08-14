@@ -958,7 +958,7 @@ ul.tr-menu > li.free-shipping {
 }
 
 
-ul.main-menu > li.rangoli:hover {
+ul.main-menu > li.rangoli:hover,ul.main-menu > li.no-arrow:hover {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
 

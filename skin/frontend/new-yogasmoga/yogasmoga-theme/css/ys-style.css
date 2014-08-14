@@ -27,7 +27,7 @@
 .grey{color: #555 !important;}
 .lh-normal{line-height: normal !important;}
 .no-display{display: none !important;}
-.no-padding{padding: 0;}
+.no-padding{padding: 0 !important;}
 .mtop10{margin-top: 10px;}
 .vert-bottom{vertical-align: bottom;}
 .no-bg{background: none !important;}
@@ -1473,7 +1473,7 @@ body.customer-address-index .myaccountdashboard .customeraddress td{padding-top:
 .box-str:last-child{background:none; padding-bottom:60px;}
 
 /*.cms-ys-tech #pagecontainer,.cms-our-story #pagecontainer,.cms-smogi-bucks #pagecontainer,.cms-help #pagecontainer{background: url(../images/bot-divider.png) 50% 100% no-repeat; background-size: 90%;}*/
-.cms-smogi-bucks #pagecontainer { margin: 25px auto; background: url(../images/big-divider.png) no-repeat,url(../images/big-divider.png) no-repeat; background-position: top center, bottom center; padding-top:52px; background-size: 100% auto; }
+/*.cms-smogi-bucks #pagecontainer { margin: 25px auto; background: url(../images/big-divider.png) no-repeat,url(../images/big-divider.png) no-repeat; background-position: top center, bottom center; padding-top:52px; background-size: 100% auto; }*/
 .cms-smogi-bucks .box-str h2.heading{font-size:11px/19px gothambold !important;}
 
 /** making1024Details **/
@@ -1744,7 +1744,7 @@ input#smogi:-ms-input-placeholder {
 .cms-pg section p:last-child,.pg-content section p:last-child{margin-bottom: 35px;}
 section a{color: #d90d3d;}
 div.cms-side-nav{width: 270px; vertical-align: top; min-height: 300px; position: fixed; border-top: 1px solid #555;}
-div.cms-side-nav ul{padding: 6px 10px 20px 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
+div.cms-side-nav ul{padding: 12px 10px 20px 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
 div.cms-side-nav ul li{font-family: gothambold; font-size: 11px; line-height: 19px;  color: #555; cursor:pointer;}
 div.cms-side-nav ul li:hover,div.cms-side-nav ul li.selected{color: #c03;}
 div.cms-side-nav ul li span{display: none;}
@@ -2063,3 +2063,15 @@ ul.main-menu2 a.main-heading,  x:-moz-any-link {height:35px;}
 .gridProdCubix .leftnav .ctglink li a.bld:hover{
     color: #c03;
 }
+/**Smogi Bucks **/
+.gd-container{background:#ae8637; width: 100%; min-height: 251px; margin-top: 25px; margin-bottom: 28px; text-align: center;}
+.gd-container1{display:none; background:#ae8637; width: 100%; /*min-height: 130px;*/ margin-bottom: 28px; padding: 0 30px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
+.gd-valign{line-height: 251px;}
+.gd-valign img{vertical-align: middle;}
+.cms-pg.smogi-bucks section .sec-head{border-top:1px solid #555; padding-top:7px; margin-bottom: 15px;}
+.cms-pg.smogi-bucks section p{margin-bottom: 20px;}
+.cms-pg.smogi-bucks section#what-smogi-bucks1 .sec-head{border:none; padding: 0;}
+.cms-pg.smogi-bucks #sign-in-form tr{width: 49%;}
+.cms-pg.smogi-bucks #sign-in-form tr td{display: block;}
+.cms-pg.smogi-bucks section p:last-child{margin-bottom: 0px;}
+.cms-pg.smogi-bucks section{margin-bottom: 47px; max-width: 800px;}
