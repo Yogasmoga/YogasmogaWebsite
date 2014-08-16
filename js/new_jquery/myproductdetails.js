@@ -636,6 +636,8 @@ function addtocart()
             addurl = addurl + '&super_attribute[' + _sizeattributeid + ']=' + size;
         if(_islengthavailable)
             addurl = addurl + '&super_attribute[' + _lengthattributeid + ']=' + length;
+        if(_isoptionavailable)
+            addurl = addurl + '&options['+2+']=' + 3;
         jQuery.ajax({
             type : 'POST',
             url : addurl,

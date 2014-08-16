@@ -15,6 +15,7 @@ var _colorattributeid = '';//Color Attribute Id of the Product
 var _sizeattributeid = '';//Size Attribute Id of the Product
 var _lengthattributeid = '';// length Attribute Id of the Product
 var _islengthavailable = 0; // check if length attribute is available
+var _isoptionavailable = 0; // check if Bra option available
 var _productid = ''; //Id of the product currently being displayed
 var _productdisplaymode = 'page';//Product Display Mode ('popup' and 'page')
 var _addingtocart = false; //Is Product being added to cart
