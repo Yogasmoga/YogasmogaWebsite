@@ -172,7 +172,7 @@ ul.site-map > li{
     color: #fff;
     font: 11px/19px gothambook;
     margin: 30px 0 0;
-    padding: 0 0 2px;
+    padding: 0 0 5px;
 }
 
 .learn-more:hover{
@@ -854,16 +854,16 @@ ul.tr-menu > li.free-shipping {
     display: none;
 }
 .intouchCheckbox input[type="checkbox"]+label {    
-    background: url("../images/new-elements/checkbox.jpg") no-repeat top left;
+    background: url("../images/new-elements/checkbox1.jpg") no-repeat top left;
     cursor: pointer;
     display: inline-block;
     height: auto;
     margin: 2px 0 10px;
-    padding: 10px 0 10px 45px;
+    padding: 10px 0 9px 45px;
     width: auto;
 }
 .intouchCheckbox input[type="checkbox"]:checked + label {
-    background: url("../images/new-elements/checkbox.jpg") no-repeat left -32px;
+    background: url("../images/new-elements/checkbox1.jpg") no-repeat left -32px;
 }
 
 .signinDialog .err-msg {

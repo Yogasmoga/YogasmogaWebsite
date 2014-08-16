@@ -76,9 +76,9 @@ function createCustomerAccount()
                 if(name != ''){
                     jQuery("#welcome-name").html("Hi "+name).attr("href",homeUrl+'customer/account/');
                 }
-                setTimeout(function(){
+                /*setTimeout(function(){
                     jQuery("#signing_popup").dialog("close");                    
-                },3000);
+                },3000);*/
                 if(_isClickShareWithFriends)
                 {
                     setTimeout(function(){
