@@ -27,7 +27,7 @@
 .grey{color: #555 !important;}
 .lh-normal{line-height: normal !important;}
 .no-display{display: none !important;}
-.no-padding{padding: 0;}
+.no-padding{padding: 0 !important;}
 .mtop10{margin-top: 10px;}
 .vert-bottom{vertical-align: bottom;}
 .no-bg{background: none !important;}
@@ -1117,7 +1117,8 @@ body.customer-address-index .myaccountdashboard .customeraddress td .subsectionh
 .pager .amount strong{font-weight: normal; font-family: gothambook; font-size: 11px; letter-spacing: normal;}
 #my-orders-table tbody td span.nobr a{color: #555 !important; border-bottom: 1px solid #d90d3d;}
 #edit-accountinfo table tr:first-child,#address-form table tr:first-child{background: #fff; height: 34px;}
-#edit-accountinfo table tr:first-child td,#address-form table tr:first-child td{padding: 8px; border: none;}
+#edit-accountinfo table tr:first-child td{padding:0 8px; border: none; height: 34px; line-height: 34px;}
+#address-form table tr:first-child td{padding:8px; border: none;}
 #edit-accountinfo table tr:first-child td label,#edit-accountinfo table tr:first-child td input,#address-form table tr:first-child td label{font-size: 11px;}
 
 /***edit account Info***/
@@ -1156,15 +1157,15 @@ table.referfriendforms td table.inputtable input[type='text']{padding: 5px; heig
 table.referfriendforms td.name, table.referfriendforms td.email{width: 38%; padding-right: 20px;}
 table.referfriendforms td.name table.inputtable,table.referfriendforms td.email table.inputtable{width: 100% !important;}
 td.btninvite{width: 93px;}
-div.invite{background-size: cover; width:107px !important; height: 31px !important; margin-top: 10px;}
-table.referfriendforms td.remove img, table.referfriendforms td.success img{margin-top: 19px !important;}
+div.invite{background-size: cover; width:107px !important; height: 31px !important;/* margin-top: 10px;*/}
+/*table.referfriendforms td.remove img, table.referfriendforms td.success img{margin-top: 19px !important;}*/
 div#addanotherreferral{width:auto !important; margin-bottom: 5px !important; display: inline-block; border: none !important;}
 div#addanotherreferral p{border-bottom: 1px solid #D90D3D;}
 table.referredfriendslist td.name, table.referredfriendslist td.email{width: 48%;}
 .track-invites table.referredfriendslist td.name div,.track-invites table.referredfriendslist td.email div{border: none !important; width: 100% !important; min-width: 100% !important; max-width: 100% !important; margin-left: 0; text-transform: lowercase; margin-bottom: 5px;}
 .refer-frnd .referfriend-subheader,.track-invites .referfriend-subheader,.refer-link .referfriend-subheader{font-size: 11px !important; font-family: gothambold !important; line-height: 17px;margin-bottom: 19px;}
 table#referrallink{margin-bottom: 40px !important;}
-table.referfriendforms td.processing img{margin-top: 15px !important;}
+/*table.referfriendforms td.processing img{margin-top: 15px !important;}*/
 #uniquelink{font-size: 14px; line-height: 17px; font-family: gothambook; margin-bottom: 11.5px;}
 .share-cont table p{font-size: 11px; line-height: 17px; font-family: gothambook;}
 
@@ -1472,7 +1473,7 @@ body.customer-address-index .myaccountdashboard .customeraddress td{padding-top:
 .box-str:last-child{background:none; padding-bottom:60px;}
 
 /*.cms-ys-tech #pagecontainer,.cms-our-story #pagecontainer,.cms-smogi-bucks #pagecontainer,.cms-help #pagecontainer{background: url(../images/bot-divider.png) 50% 100% no-repeat; background-size: 90%;}*/
-.cms-smogi-bucks #pagecontainer { margin: 25px auto; background: url(../images/big-divider.png) no-repeat,url(../images/big-divider.png) no-repeat; background-position: top center, bottom center; padding-top:52px; background-size: 100% auto; }
+/*.cms-smogi-bucks #pagecontainer { margin: 25px auto; background: url(../images/big-divider.png) no-repeat,url(../images/big-divider.png) no-repeat; background-position: top center, bottom center; padding-top:52px; background-size: 100% auto; }*/
 .cms-smogi-bucks .box-str h2.heading{font-size:11px/19px gothambold !important;}
 
 /** making1024Details **/
@@ -1743,7 +1744,7 @@ input#smogi:-ms-input-placeholder {
 .cms-pg section p:last-child,.pg-content section p:last-child{margin-bottom: 35px;}
 section a{color: #d90d3d;}
 div.cms-side-nav{width: 270px; vertical-align: top; min-height: 300px; position: fixed; border-top: 1px solid #555;}
-div.cms-side-nav ul{padding: 6px 10px 20px 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
+div.cms-side-nav ul{padding: 12px 10px 20px 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
 div.cms-side-nav ul li{font-family: gothambold; font-size: 11px; line-height: 19px;  color: #555; cursor:pointer;}
 div.cms-side-nav ul li:hover,div.cms-side-nav ul li.selected{color: #c03;}
 div.cms-side-nav ul li span{display: none;}
@@ -1758,7 +1759,7 @@ div.cms-side-nav ul li span{display: none;}
 }
 
 .html-des-vid-popup,.html-fit-vid-popup{position: fixed; width: 50%; display: none; top:100px; z-index: 10099;}
-.vid-popup-overlay{position: fixed; background: rgba(0,0,0,0.5); width: 100%; height: 100%; top:0; left:0; display: none; z-index: 10098;}
+.vid-popup-overlay{position: fixed; background: rgba(0,0,0,0.5); width: 100%; height: 100%; top:0; left:0; display: none; z-index: 10098; cursor:pointer;}
 #productdetails{padding: 0 40px; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -ms-box-sizing:border-box; box-sizing:border-box;}
 table.selectedcolor td span{font-family: gothambook;}
 table.productdetailtable div#colorcontainer>div.selected{border-color:#999999;}
@@ -2048,6 +2049,7 @@ ul.main-menu2 a.main-heading,  x:-moz-any-link {height:35px;}
     font-size: 12px !important;
 }
 
+
 #ordertotal {
     font-family: gothammedium !important;
 }
@@ -2061,3 +2063,15 @@ ul.main-menu2 a.main-heading,  x:-moz-any-link {height:35px;}
 .gridProdCubix .leftnav .ctglink li a.bld:hover{
     color: #c03;
 }
+/**Smogi Bucks **/
+.gd-container{background:#ae8637; width: 100%; min-height: 251px; margin-top: 25px; margin-bottom: 28px; text-align: center;}
+.gd-container1{display:none; background:#ae8637; width: 100%; /*min-height: 130px;*/ margin-bottom: 28px; padding: 0 30px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
+.gd-valign{line-height: 251px;}
+.gd-valign img{vertical-align: middle;}
+.cms-pg.smogi-bucks section .sec-head{border-top:1px solid #555; padding-top:7px; margin-bottom: 15px;}
+.cms-pg.smogi-bucks section p{margin-bottom: 20px;}
+.cms-pg.smogi-bucks section#what-smogi-bucks1 .sec-head{border:none; padding: 0;}
+.cms-pg.smogi-bucks #sign-in-form tr{width: 49%;}
+.cms-pg.smogi-bucks #sign-in-form tr td{display: block;}
+.cms-pg.smogi-bucks section p:last-child{margin-bottom: 0px;}
+.cms-pg.smogi-bucks section{margin-bottom: 47px; max-width: 800px;}

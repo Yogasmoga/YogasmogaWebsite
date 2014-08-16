@@ -6,6 +6,7 @@ jQuery(window).load(function($){
     featLiHeightAd(); 
     var featLiH = jQuery(".featureList span.ftrFig img").first().height();
     jQuery(".featureList span.ftrFig").css("height", featLiH);    
+
 });
 jQuery(document).ready(function($){   
     $("#productdetails").on("click",".vlink-cont a",function(){
@@ -19,9 +20,13 @@ $(".goy-form").on("click",".button.btn-reset", function(e){
         $(this).attr("value", ra1);
     });            
 }); 
-
+    winW = $(window).width();
+    var designVid = $(".html-des-vid-popup");
+    var fitVid = $(".html-fit-vid-popup");
+    var htmlVidpop = $(".html-video-popup");
+    var pdpVidPop = $(".vid-popup-overlay");
     /***Functions to called on resize***/
-    $(window).resize(function(){
+    $(window).resize(function(){        
         featuredSec();
         colorStorySec();
         setImageContheightPDP();
@@ -36,18 +41,13 @@ $(".goy-form").on("click",".button.btn-reset", function(e){
         var vidPopHeight = $(".html-vid-pop").height();
         $(".html-vid-pop").css({"left": (vidOverlayW - vidPopWidth)/2, "top" : (vidOverlayH - vidPopHeight)/2 }); 
         $(".html-video-popup").css({"left": (vidOverlayW - htmlVidpop.width())/2, "top" : (vidOverlayH - htmlVidpop.height())/2 });
-    });
-
-    winW = $(window).width();
-    var designVid = $(".html-des-vid-popup");
-    var fitVid = $(".html-fit-vid-popup");
-    var htmlVidpop = $(".html-video-popup");
-    var pdpVidPop = $(".vid-popup-overlay");
+    });    
 
     $(".bottom-left-block,.top-right-block").on("click", function(){
         var vidHandle = $(this).data("vid-handle");               
         pdpVidPop.fadeIn();      
-        $("#" + vidHandle).css({"left" : (pdpVidPop.width() - htmlVidpop.width())/2, "top" : (pdpVidPop.height() - htmlVidpop.height())/2 }).fadeIn();               
+        $("#" + vidHandle).css({"left" : (pdpVidPop.width() - htmlVidpop.width())/2, "top" : (pdpVidPop.height() - htmlVidpop.height())/2 }).fadeIn();
+        jQuery(window).trigger("resize");               
     });
 
     $("body.catalog-product-view").on("click", "ul.featureList li:nth-child(4)", function(){               
@@ -58,6 +58,7 @@ $(".goy-form").on("click",".button.btn-reset", function(e){
         var pdpVidPopHeight = pdpVidPop.height();
         var pdpVidPopWidth = pdpVidPop.width();          
         designVid.css({"left" : (pdpVidPopWidth - designVidWidth)/2, "top" : (pdpVidPopHeight - designVidHeight)/2 }).fadeIn();
+        jQuery(window).resize();
     });
 
     $("body.catalog-product-view").on("click", ".fitDetail .video-block img", function(){       
@@ -68,19 +69,30 @@ $(".goy-form").on("click",".button.btn-reset", function(e){
         var pdpVidPopHeight = pdpVidPop.height();  
         var pdpVidPopWidth = pdpVidPop.width();      
         fitVid.css({"left" : (pdpVidPopWidth - fitVidWidth)/2, "top" : (pdpVidPopHeight - fitVidHeight)/2}).fadeIn();
+        jQuery(window).resize();
     });
+   
     window.onkeyup = function (event) {
         if (event.keyCode == 27) {            
             $(".vid-popup-overlay,.html-des-vid-popup,.html-fit-vid-popup").fadeOut();
             htmlVidpop.fadeOut();            
         }
     }
+    jQuery("body").on("click",".vid-popup-overlay", function(){
+        $(".vid-popup-overlay,.html-des-vid-popup,.html-fit-vid-popup").fadeOut();
+            htmlVidpop.fadeOut();
+    });
    // $("body").scrollTop(0);
     /**For the cms pages**/
     $(".cms-side-nav ul li").on("click", function(){
         var sideCaller = $(this).data("caller");
-        var sideContentOffsetTop = $(".cms-pg").find("section#" + sideCaller).offset().top - 96;        
-        $("body").animate({scrollTop: sideContentOffsetTop}, 1500);
+        var sideContentOffsetTop = $(".cms-pg").find("section#" + sideCaller).offset().top - 98;
+        var sideContentOffsetTopEX = $(".cms-pg").find("section#" + sideCaller).offset().top - 128;
+        if(sideCaller == "what-smogi-bucks"){
+            $("body").animate({scrollTop: sideContentOffsetTopEX}, 1500);
+        }else{
+            $("body").animate({scrollTop: sideContentOffsetTop}, 1500);
+        }
         $(this).addClass("selected")
                 .siblings()
                     .removeClass("selected");  

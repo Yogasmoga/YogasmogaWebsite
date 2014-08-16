@@ -141,12 +141,12 @@ jQuery(document).ready(function($) {
     // Category links fixed on scroll function
     var scrollBottom = $("#sitemap").height();
 
-//    $(window).scroll(function(){
-//        // var bnnr = $(".bannerFluid").height();
-//        // $('.cntn-scroll').css("top", bnnr);
-//        // $('.cntn-scroll').stop();
-//        // $('.cntn-scroll').animate({top:$(window).scrollTop()},400)
-//    });
+   // $(window).load(function(){
+   //     var bnnr = $(".bannerFluid").height();
+   //     $('.cntn-scroll').css("top", bnnr);
+   //     $('.cntn-scroll').stop();
+   //     $('.cntn-scroll').animate({top:$(window).scrollTop()},400)
+   // });
 
 });
 
@@ -165,6 +165,7 @@ function detailHeight(){
         var wdth = jQuery(".cntn-scroll").width();
         var nav = jQuery('.scroller_anchor');
         var ftr = jQuery('#sitemap').height();
+        var bnnaer = jQuery('.bannerFluid').height();
         //var ftrt = jQuery('#sitemap');
         //var contentNav2 = ftrt.offset().top;
         
@@ -176,7 +177,7 @@ function detailHeight(){
                     // Change the CSS of the scroller to hilight it and fix it at the top of the screen.
                     jQuery('.cntn-scroll').css({
                         'position': 'fixed',
-                        'top': '73px'
+                        'top': '80px'
                     });
                     
                     // this is container div class
@@ -188,8 +189,7 @@ function detailHeight(){
                     // Change the CSS and put it back to its original position.
                     jQuery('.cntn-scroll').css({
                         'position': '',
-                        'top': '',
-                        'bottom': ''
+                        'top': ''
                     });
 
                     // this is container div class
@@ -224,9 +224,9 @@ function detailHeight(){
                 else if(jQuery(window).scrollTop() >= contentNav && jQuery('.cntn-scroll').css('position') == 'fixed'){
                     // Change the CSS of the scroller to hilight it and fix it at the top of the screen.
                     jQuery('.cntn-scroll').css({
+                        'margin-top':'0em',
                         'position': 'fixed',
-                        'top': '73px',
-                        'margin-top':'0em'
+                        'top': '75px',
                         
                     });
                     
