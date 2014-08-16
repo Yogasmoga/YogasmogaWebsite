@@ -1026,7 +1026,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
                 foreach($productalloptions as $options)
                 {
                 ?>
-                    <div value="<?php echo $options['default_price']; ?>" title="<?php echo $options['default_title']; ?>" optionid="<?php echo $options['option_id']; ?>"><?php echo $options['default_title']; ?></div>
+                    <div value="<?php echo $options['default_price']; ?>" title="<?php echo $options['default_title']; ?>" optionid="<?php echo $options['option_id']; ?>" optiontypeid="<?php echo $options['option_type_id']; ?>"><?php echo $options['default_title']; ?></div>
                 <?php
                 }
             ?>

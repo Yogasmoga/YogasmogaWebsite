@@ -2,6 +2,7 @@ _preorderinfohovered = false;
 var _rewardpoints = 0;
 jQuery(window).load(function($){
     selectfirstsizeonload();
+    insertBraOption();
 });
 jQuery(document).ready(function($){    
     $(document).keydown( function(e) {
@@ -636,8 +637,10 @@ function addtocart()
             addurl = addurl + '&super_attribute[' + _sizeattributeid + ']=' + size;
         if(_islengthavailable)
             addurl = addurl + '&super_attribute[' + _lengthattributeid + ']=' + length;
-        if(_isoptionavailable)
-            addurl = addurl + '&options['+2+']=' + 3;
+        if(_isoptionavailable && _braSelected){            
+            addurl = addurl + '&options['+_braOptionID+']=' + _braOptionTypeID;
+            console.log(_braOptionTypeID + "---" + _braOptionID);
+        }
         jQuery.ajax({
             type : 'POST',
             url : addurl,
@@ -705,4 +708,31 @@ function selectfirstsizeonload(){
         }        
     }
 }
+}
+
+function insertBraOption(){
+    jQuery("#includeoption div:nth-child(2)").addClass("selected");
+    var braValue = parseInt(jQuery("#includeoption div:nth-child(1)").attr("value"));
+    jQuery("#productdetails").on("click","#includeoption div",function(){        
+        jQuery(this).addClass("selected").siblings().removeClass("selected");          
+            if(jQuery(this).text() == "Y" || jQuery(this).text() == "y"){
+                if(_braSelected == 0){                
+                    var productCost = jQuery(".productcost").text().split("$");
+                    var productCostV = parseInt(productCost[1]) + braValue;
+                    jQuery(".productcost").text("$" + productCostV);
+                    _braSelected = 1;
+                    _braOptionTypeID = jQuery(this).attr("optiontypeid");                    
+                    _braOptionID = jQuery(this).attr("optionid");                    
+                }
+            }
+            else if(jQuery(this).text() == "N" || jQuery(this).text() == "n"){
+                    if(_braSelected == 1){
+                    _braSelected = 0;
+                    var productCost = jQuery(".productcost").text().split("$");
+                    var productCostV = parseInt(productCost[1]) - braValue;
+                    jQuery(".productcost").text("$" + productCostV);
+                }
+            }
+    });
+
 }
