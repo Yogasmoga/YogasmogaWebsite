@@ -3,7 +3,7 @@ jQuery(document).ready(function($){
     $(window).load(function(){
         $('.flexslider').flexslider({
             controlNav: true,
-            slideshowSpeed: 4500,
+            slideshowSpeed: 5000,
             animationSpeed:1250,
             easing:"linear",
             directionNav: true,
