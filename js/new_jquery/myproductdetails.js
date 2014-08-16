@@ -467,6 +467,7 @@ function searchproductcolorinfoarrray(clr)
 
 function changeColor(clr)
 {
+    jQuery("body").find("#includeoption div:nth-child(2)").trigger("click"); 
     var colorindex = searchproductcolorinfoarrray(clr);
     if(colorindex == -1)
         return;
@@ -633,6 +634,7 @@ function addtocart()
         var length = jQuery("div.selectedlength div.selected").attr("value");
         _addingtocart = true;
         var addurl = homeUrl + 'mycheckout/mycart/add?product=' + _productid + '&qty=' + _productorderqty + '&super_attribute[' + _colorattributeid + ']=' + color;
+        console.log(_braSelected + "---" +  _isoptionavailable);
         if(_sizesuperattribute)
             addurl = addurl + '&super_attribute[' + _sizeattributeid + ']=' + size;
         if(_islengthavailable)
@@ -711,21 +713,23 @@ function selectfirstsizeonload(){
 }
 
 function insertBraOption(){
-    jQuery("#includeoption div:nth-child(2)").addClass("selected");
-    var braValue = parseInt(jQuery("#includeoption div:nth-child(1)").attr("value"));
-    jQuery("#productdetails").on("click","#includeoption div",function(){        
+    _braSelected = 0;
+    jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");    
+    jQuery("body").on("click","#includeoption div",function(){
+        var braValue = parseInt(jQuery("#includeoption div:nth-child(1)").attr("value"));
         jQuery(this).addClass("selected").siblings().removeClass("selected");          
             if(jQuery(this).text() == "Y" || jQuery(this).text() == "y"){
                 if(_braSelected == 0){                
                     var productCost = jQuery(".productcost").text().split("$");
-                    var productCostV = parseInt(productCost[1]) + braValue;
+                    var productCostV = parseInt(productCost[1]) + braValue;                    
+                    console.log(productCost[1]);
                     jQuery(".productcost").text("$" + productCostV);
                     _braSelected = 1;
                     _braOptionTypeID = jQuery(this).attr("optiontypeid");                    
                     _braOptionID = jQuery(this).attr("optionid");                    
                 }
             }
-            else if(jQuery(this).text() == "N" || jQuery(this).text() == "n"){
+            if(jQuery(this).text() == "N" || jQuery(this).text() == "n"){
                     if(_braSelected == 1){
                     _braSelected = 0;
                     var productCost = jQuery(".productcost").text().split("$");

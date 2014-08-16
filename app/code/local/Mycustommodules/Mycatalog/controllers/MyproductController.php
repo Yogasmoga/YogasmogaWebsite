@@ -1087,6 +1087,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         ?>
         <script type="text/javascript">
             _islengthavailable = <?php echo $lengthavailable;?>;
+             _isoptionavailable = <?php echo $optionavailable;?>;
             _productcolorinfo = new Array();
             _cnfrewardpoint = '<?php echo $productrewardpoints; ?>';
             <?php
@@ -1434,7 +1435,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                                 foreach($productalloptions as $options)
                                                 {
                                                     ?>
-                                                    <div value="<?php echo $options['default_price']; ?>" title="<?php echo $options['default_title']; ?>" optionid="<?php echo $options['option_id']; ?>"><?php echo $options['default_title']; ?></div>
+                                                    <div value="<?php echo $options['default_price']; ?>" title="<?php echo $options['default_title']; ?>" optionid="<?php echo $options['option_id']; ?>" optiontypeid="<?php echo $options['option_type_id']; ?>"><?php echo $options['default_title']; ?></div>
                                                 <?php
                                                 }
                                                 ?>
