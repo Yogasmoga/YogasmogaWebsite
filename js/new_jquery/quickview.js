@@ -42,6 +42,7 @@ jQuery(document).ready(function($){
 
 function showQuickViewPopup(productid, e)
 {
+
    //alert(productid);
    productid = parseInt(productid);
     jQuery("#productdetailpopup").html("<table style='width:100%;height : 530px;'><tr><td style='text-align:center;vertical-align:middle;'><img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' /></td></tr></table>");
@@ -58,6 +59,7 @@ function showQuickViewPopup(productid, e)
        
         //alert(_quickViewObjectPage[productid]);
         jQuery("#productdetailpopup").html(_quickViewObjectPage[productid]);
+        insertBraOption();    
         jQuery("#productdetailpopup #colorcontainer > div:first-child > table").trigger('click');
 
         var nextIdView1 = parseInt(jQuery("#" + productid).closest("li").next().children("a").attr("id"));
@@ -114,11 +116,12 @@ function showQuickViewPopup(productid, e)
         type : 'POST',
         url : url,
         data : {'id': productid},
-        success : function(data){
-
+        success : function(data){          
+            
             _quickViewObjectPage[productid] = data;
             
             jQuery("#productdetailpopup").html(data);
+            insertBraOption();
             jQuery("#productdetailpopup #colorcontainer > div:first-child > table").trigger('click');
 
             InitializeProductQty();

@@ -1,4 +1,4 @@
-jQuery(window).load(function($){
+	jQuery(window).load(function($){
 	homeContent();
 	homeContent1();
 	compressBoxHeight();
@@ -37,14 +37,16 @@ function sliderHomeBx(){
 		mode: 'fade',
 		auto: true,
 		autoControls: true,
-		pause: 5000		
+		pause: 5000,
+		speed: 1250		
 	});
 
 	jQuery('.gridslider2').bxSlider({
 		mode: 'fade',
 		auto: true,
 		autoControls: true,
-		pause: 2000
+		pause: 5000,
+		speed: 1250
 	});	
 };
 

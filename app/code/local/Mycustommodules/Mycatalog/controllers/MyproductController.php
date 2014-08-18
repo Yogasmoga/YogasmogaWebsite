@@ -830,6 +830,27 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
         $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
         $sizeavaliable = false;
+        // check Include Bra option
+        $optionType = null;
+        $optionavailable = 0;
+        $productalloptions = array();
+        $customProduct = $_product;
+        foreach($customProduct->getOptions() as $options)
+        {
+            $optionType = $options->getType(); // get option type
+
+            $optionValues = $options->getValues();
+            $optionavailable = count($optionValues);
+            foreach($optionValues as $optVal)
+            {
+
+                array_push($productalloptions,$optVal->getData());
+                // or $optVal->getData('option_id')  array_push($productallsizes, array("label" => $instance['label'], "value" => $instance['value']) );
+            }
+        };
+
+
+        // end check Include Bra option
         $lengthavailable = 0;
         foreach($configurableAttributeCollection as $attribute){
             if($attribute->getProductAttribute()->getAttributeCode() == "size")
@@ -1066,6 +1087,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         ?>
         <script type="text/javascript">
             _islengthavailable = <?php echo $lengthavailable;?>;
+             _isoptionavailable = <?php echo $optionavailable;?>;
             _productcolorinfo = new Array();
             _cnfrewardpoint = '<?php echo $productrewardpoints; ?>';
             <?php
@@ -1406,6 +1428,18 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                                         ?>
                                                     </tr>
                                                 </table>
+                                            </div>
+                                            <div id="includeoption" <?php if(!$optionavailable){echo "style='display:none;'";} ?>  >
+                                                INCLUDE BRA INSERT:
+                                                <?php
+                                                foreach($productalloptions as $options)
+                                                {
+                                                    ?>
+                                                    <div value="<?php echo $options['default_price']; ?>" title="<?php echo $options['default_title']; ?>" optionid="<?php echo $options['option_id']; ?>" optiontypeid="<?php echo $options['option_type_id']; ?>"><?php echo $options['default_title']; ?></div>
+                                                <?php
+                                                }
+                                                ?>
+
                                             </div>
                                         </div>
                                     </div>

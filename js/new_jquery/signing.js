@@ -76,9 +76,9 @@ function createCustomerAccount()
                 if(name != ''){
                     jQuery("#welcome-name").html("Hi "+name).attr("href",homeUrl+'customer/account/');
                 }
-                setTimeout(function(){
+                /*setTimeout(function(){
                     jQuery("#signing_popup").dialog("close");                    
-                },3000);
+                },3000);*/
                 if(_isClickShareWithFriends)
                 {
                     setTimeout(function(){
@@ -239,6 +239,9 @@ function loginCustomer()
                 if(_isClickFooterTrackOrder)
                 {
                     window.location.assign(homeUrl+'sales/order/history/');
+                }
+                if (jQuery("body").hasClass("cms-smogi-bucks")) {
+                    jQuery(".gd-container1").hide();
                 }
 
             }

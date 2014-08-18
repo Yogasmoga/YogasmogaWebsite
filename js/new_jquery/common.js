@@ -20,7 +20,11 @@ $(".goy-form").on("click",".button.btn-reset", function(e){
         $(this).attr("value", ra1);
     });            
 }); 
-
+    winW = $(window).width();
+    var designVid = $(".html-des-vid-popup");
+    var fitVid = $(".html-fit-vid-popup");
+    var htmlVidpop = $(".html-video-popup");
+    var pdpVidPop = $(".vid-popup-overlay");
     /***Functions to called on resize***/
     $(window).resize(function(){        
         featuredSec();
@@ -37,13 +41,7 @@ $(".goy-form").on("click",".button.btn-reset", function(e){
         var vidPopHeight = $(".html-vid-pop").height();
         $(".html-vid-pop").css({"left": (vidOverlayW - vidPopWidth)/2, "top" : (vidOverlayH - vidPopHeight)/2 }); 
         $(".html-video-popup").css({"left": (vidOverlayW - htmlVidpop.width())/2, "top" : (vidOverlayH - htmlVidpop.height())/2 });
-    });
-
-    winW = $(window).width();
-    var designVid = $(".html-des-vid-popup");
-    var fitVid = $(".html-fit-vid-popup");
-    var htmlVidpop = $(".html-video-popup");
-    var pdpVidPop = $(".vid-popup-overlay");
+    });    
 
     $(".bottom-left-block,.top-right-block").on("click", function(){
         var vidHandle = $(this).data("vid-handle");               
@@ -88,8 +86,13 @@ $(".goy-form").on("click",".button.btn-reset", function(e){
     /**For the cms pages**/
     $(".cms-side-nav ul li").on("click", function(){
         var sideCaller = $(this).data("caller");
-        var sideContentOffsetTop = $(".cms-pg").find("section#" + sideCaller).offset().top - 96;        
-        $("body").animate({scrollTop: sideContentOffsetTop}, 1500);
+        var sideContentOffsetTop = $(".cms-pg").find("section#" + sideCaller).offset().top - 98;
+        var sideContentOffsetTopEX = $(".cms-pg").find("section#" + sideCaller).offset().top - 128;
+        if(sideCaller == "what-smogi-bucks"){
+            $("body").animate({scrollTop: sideContentOffsetTopEX}, 1500);
+        }else{
+            $("body").animate({scrollTop: sideContentOffsetTop}, 1500);
+        }
         $(this).addClass("selected")
                 .siblings()
                     .removeClass("selected");  
