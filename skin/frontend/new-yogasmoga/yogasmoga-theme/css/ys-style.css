@@ -135,10 +135,12 @@ p.block-link a span,p.block-link a strong{color: #cc0033 !important; font-weight
 .flex-direction-nav .flex-next{background: url("../images/homepage/next-slide.png") no-repeat bottom; background-size:100% 100%; width:54px; height: 66px;}
 
 /****Side bar****/
-div.side-menu-bar, .leftnav, .side-menu-bar2,.account-nav{ width:270px; vertical-align:top; min-height: 300px; position: fixed; border-top: 1px solid #555;}
-div.side-menu-bar ul, .leftnav ul, .side-menu-bar2 ul, .menu-bar ul,ul.sub-nav{padding:12px 10px 13px 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
-div.side-menu-bar ul li a, .leftnav ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a,ul.sub-nav li a{text-transform: uppercase; font:11px/19px gothambold; color: #555;}
-div.side-menu-bar ul li a span.arr, .leftnav ul li a span, .side-menu-bar2 ul li a span.arr, .menu-bar ul li a span.arr{visibility: hidden;}
+div.side-menu-bar, .leftnav, .side-menu-bar2,.account-nav, .search-nav{ width:270px; vertical-align:top; min-height: 300px; position: fixed; border-top: 1px solid #555;}
+div.search-nav ul, div.side-menu-bar ul, .leftnav ul, .side-menu-bar2 ul, .menu-bar ul,ul.sub-nav{padding:12px 10px 13px 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+div.search-nav ul li a, div.side-menu-bar ul li a, .leftnav ul li a, .side-menu-bar2 ul li a, .menu-bar ul li a,ul.sub-nav li a{text-transform: uppercase; font:11px/19px gothambold; color: #555;}
+div.search-nav ul li a span.arr, div.side-menu-bar ul li a span.arr, .leftnav ul li a span, .side-menu-bar2 ul li a span.arr, .menu-bar ul li a span.arr{visibility: hidden;}
+
+div.search-nav ul li a.current, 
 div.side-menu-bar2 ul li a.current, 
 .leftnav ul li a.current, 
 .leftnav ul li a:hover,
@@ -148,6 +150,7 @@ div.side-menu-bar ul li a:hover,
 .menu-bar ul li a.current, 
 .menu-bar ul li a:hover{color:#cc0033;}
 
+div.search-nav ul li a.current span.arr, 
 div.side-menu-bar2 ul li a.current span.arr, 
 .leftnav ul li a.current span.arr,
 div.side-menu-bar2 ul li a:hover span.arr, 
