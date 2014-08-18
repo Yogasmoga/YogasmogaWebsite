@@ -1465,7 +1465,7 @@ table.inputtable tr:first-child td {
 }
 
 .gridCMSPages sup{
-    font: 12px/8px gothambook;
+    font: 13px/6px gothambook;
 }
 
 .colorFilterGrid {
@@ -1591,4 +1591,49 @@ table.inputtable tr:first-child td {
 ul.arw-list li{
     font: 12px/17px gothambook !important;
     text-align: left !important;
+}
+
+/** SearchPage **/
+table#searchBox input#txtSearch {
+    border: 1px solid #a6a6a6;
+    font: 11px/25px gothambook;
+    padding: 0 5px;
+    width: 234px;
+    height: 23px;
+    border-right: 0 none;
+}
+
+table#searchBox div.searchbutton{
+    background-image: url("../images/new-elements/searchBox-icon.jpg");
+    height: 23px;
+    width: 19px;
+    padding: 0 7px 0 0;
+    border: 1px solid #a6a6a6;
+    border-left: 0 none;
+}
+
+.catalogsearch-result-index .pg-heading {
+    margin-bottom: 23px;
+    letter-spacing: 1px;
+}
+
+.catalogsearch-result-index div.mycategory-products {
+    margin-top: 35px;
+}
+
+.catalogsearch-result-index div.mycategory-products div.item{
+    margin: 0 30px 0 0;
+}
+
+.catalogsearch-result-index div.mycategory-products div.item td.productname {
+    color: #555;
+    font: 11px/19px gothambold;
+    padding: 22px 0 0 !important;
+    text-transform: uppercase;
+}
+
+.catalogsearch-result-index div.mycategory-products div.item td.productprice span.price {
+    color: #555;
+    font: 11px/19px gothambook;
+    display: block !important;
 }

@@ -26,15 +26,42 @@
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/searchresults.css'); ?>" media="all" />
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/mycatalogsearch.js"></script>
-<div class="myheader">SEARCH RESULTS</div>
+<!-- <div class="myheader">SEARCH RESULTS</div> -->
 <!-- div class="searchresultcount">WE&rsquo;VE FOUND <span id="spresultcount">5 PRODUCT MATCHES</span> FOR &ldquo;<?php echo $this->helper('catalogsearch')->getEscapedQueryText(); ?>&rdquo;</div -->
-<table style="margin:45px auto 0;">
+
+
+<div class="2-columns-wrapper" style="padding:29px 40px 0 40px;">
+
+<!-- leftnav -->
+<div style="margin-top: 0px; min-height: 798px;" class="side-menu-bar f-left l-align">
+<ul>
+<li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>help#size-chart">SIZE CHARTS</a></li>
+<li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>gift_of_ys">ys gift card</a></li>
+<li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks">smogi bucks</a></li>
+<li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>help#shipping-returns">DELIVERY And RETURNS</a></li>
+<li><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>namaskar-foundation">Namaskár Foundation</a></li>
+</ul>
+</div>
+<!-- leftnav -->
+
+
+<!-- RightCont -->
+<div class="pg-content" style="min-height: 798px;">
+<div class="cms-faq l-align">
+<!-- heading -->
+<div class="pg-heading">
+    <h2>SEARCH RESULTS</h2>   
+</div>
+<!-- heading -->
+
+<!-- searchBox -->
+<table width="273px" border="0" cellspacing="0" cellpadding="0" id="searchBox">
     <tr>
         <td>
-           <table class="inputtable nolabel" style="width: 245px;">
+           <table class="inputtable nolabel">
                 <tr>
                     <td class="label"><label for="txtSearch">Search text</label></td>
-                    <td class="inputholder"><input style="height:24px;" type="text" id="txtSearch" value="<?php echo $this->helper('catalogsearch')->getEscapedQueryText(); ?>" /></td>
+                    <td class="inputholder"><input type="text" id="txtSearch" value="<?php echo $this->helper('catalogsearch')->getEscapedQueryText(); ?>" /></td>
                 </tr>
                 <tr>
                     <td class="errortext" colspan="2">
@@ -43,14 +70,17 @@
                 </tr>
            </table> 
         </td>
-        <td style="padding-left : 10px;">
-            <div id="btnSearch" class="searchbutton spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/search_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/search_on.png'); ?>"></div>
+        <td>
+            <div id="btnSearch" class="searchbutton spbutton" imageurl="<?php echo $this->getSkinUrl('images/new-elements/searchBox-icon.jpg'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/new-elements/searchBox-icon.jpg'); ?>"></div>
         </td>
     </tr>
 </table>
-<table style="width: 100%;">
+<!-- searchBox -->
+
+<!-- ProductImages -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-        <td class="searchsidenavigation">
+    <!-- <td class="searchsidenavigation">
             <div class="alwaysvisible top-divider">
                 <?php /*
                 <?php
@@ -85,9 +115,9 @@
                 <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks">
                     <div>SMOGI BUCKS</div>
                 </a>
-                <!-- <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>our-story#guidingSMOGI">
+                <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>our-story#guidingSMOGI">
                     <div>NADIA ZAKI</div>
-                </a> -->
+                </a> 
                 <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>help#shipping-returns">
                     <div>DELIVERY &amp; RETURNS</div>
                 </a>   
@@ -95,12 +125,19 @@
                     <div>Namaskár Foundation </div>
                 </a>
             </div>
-        </td>
+        </td> -->
         <td>
             <?php echo $this->getProductListHtml(); ?>
         </td>
     </tr>
 </table>
+<!-- ProductImages -->
+</div>
+</div>
+<!-- RightCont -->
+<div class="new-bot-divider"></div>
+</div>
+<div class="clear-fix"></div>
 
 <?php /*
 <?php if($this->getResultCount()): ?>
