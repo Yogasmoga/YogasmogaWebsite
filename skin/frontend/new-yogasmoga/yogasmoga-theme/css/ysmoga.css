@@ -1079,3 +1079,346 @@ table.inputtable tr:first-child td {
     width: 100px;
 }
 .invite-form{width: auto !important; padding: 0;}
+
+
+/** YSStory **/
+.gridCMSPages{
+    width: 100%;
+    min-width: 1024px;
+}
+
+.gridFullWidth{
+    width: 100%;
+    display: inline-block;
+    clear: both;
+    font-size: 0px;
+}
+
+.block66{
+    width: 66.6015625%;
+    vertical-align: top;
+}
+
+.block33{
+    width: 33.3984375%;
+}
+
+.block50{
+    width: 50%;
+    float: left;
+}
+
+.block30{
+    width: 33.3984375%;
+/*    display: inline-block;*/
+    float: left;
+    vertical-align: top;
+    font: 12px/17px gothambook;
+}
+
+.gridFullWidth .block30:last-child {
+    width: 33.2032%;
+}
+
+.block66, .block33, .block50, .block100{
+    font: 12px/17px gothambook;
+    display: inline-block;
+    color: #555;
+}
+
+.block100{
+    width: 100%;
+}
+
+.cmsNavigation, .headingBlock, .joybalance, .joybalanceText, .namaskarsideImage{
+    width: 100%;
+    display: block;
+    height: 50%;
+}
+
+.cmsNavigation{
+    background: #f3f3f4;
+}
+
+.headingBlock{
+    background: #ae8637;
+}
+
+.cmsNavigation > ul {
+    font: 11px/19px gothambold;
+    padding: 35px 0 0 40px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.cmsNavigation > ul li,
+.cmsNavigation > ul li a {
+    color: #555;
+}
+
+.cmsNavigation > ul li a:hover,
+.cmsNavigation > ul li a.current {
+    color: #c03;
+}
+
+.gridCMSPages h4{
+    font: 36px/40px ITCAvantGardeProMd;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.gridCMSPages h4 .smallHead{
+    font: 17px/35px ITCAvantGardeProBk;
+    margin: 5px 0 0;
+}
+
+.gridCMSPages .topHead{
+    font: 11px/27px gothambold;
+    border-bottom: 1px solid #fff;
+    margin: 0 195px 15px;
+}
+
+.gridCMSPages h4 .smallHead,
+.gridCMSPages .topHead{
+    display: block;
+}
+
+.gridCMSPages h4,
+.gridCMSPages .topHead{
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.positionAbs{
+    position: absolute;
+    width: 100%;
+    text-align: center;    
+}
+
+.cntntheading {
+    font: 24px/29px ITCAvantGardeProMd;
+    margin: 22px 0 20px;
+    min-height: 56px;
+    text-transform: uppercase;
+}
+
+.cntntheading > span {
+    display: block;
+    font-family: AvantGardeGothicITCW01X;
+    /*margin: 5px 0 0;*/
+}
+
+.contnttxt{
+    /*margin: auto 3.90625%;*/
+    margin: auto 4.90625%;
+}
+
+.contnttxt p {
+    margin: 0 0 21px;
+    text-align: justify;
+}
+
+.contnttxt p:last-child {
+    margin-bottom: 0;
+}
+
+.marginbottom50{
+    margin-bottom: 41px;
+}
+
+.marginbottom60{
+    margin-bottom: 63px;
+}
+
+.joybalance{
+    background: #ff8785;
+    position: relative;
+}
+
+.joybalanceText .contnttxt{
+    /*margin: 3.02734375% !important;*/
+    margin: 7.8% 9% !important;
+}
+
+.joybalanceText .contnttxt p{
+    margin: 0 0 18px;
+}
+
+.joybalance .cntntheading {
+    font-family: ITCAvantGardeProBk;
+}
+
+.bottomdivider{
+    border-bottom: 1px solid #999;
+    margin: 50px 3.90625% 0;
+}
+
+.f11 {
+    text-transform: uppercase;
+    border-bottom: 2px solid #e68099;
+    padding: 0 0 3px;
+}
+
+.postop0{
+    top: 16.69921875%;
+}
+
+.posRel{
+    position: relative;
+}
+
+.htext{
+    margin: 52px 70px 0;
+}
+
+.ysbottomsection{
+    margin-bottom: 14px;
+}
+
+.lineheight18 p{
+    margin-bottom: 16px;
+}
+
+.gridBlockContent{
+    min-height: 152px;
+    color: #555;
+    text-align: center;
+    padding: 17px 0;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.gridBlockContent > span{
+    font: 11px/31px gothambold;
+    display: block;
+    border-bottom: 1px solid #999;
+    width: 28%;
+    margin: auto;
+}
+
+.gridBlockContent h3{
+    font: 36px/40px ITCAvantGardeProMd;
+    color: #555;
+    margin: 15px 0 0;
+}
+
+.gridBlockContent h3 span{
+    font: 17px/35px ITCAvantGardeProBk;
+    margin: 4px 0 0;
+    display: block;
+}
+
+.block30 .cntntheading,
+.gridFullWidth .block30 .contnttxt p{
+    text-align: left;
+}
+
+.gridFullWidth .block30:first-child .iconBlock,
+.block30:first-child .cntntheading,
+.gridFullWidth .block30:first-child .contnttxt{
+    margin-left: 11.90625%;
+}
+
+.gridFullWidth .block30 .contnttxt{
+    margin-left: 0;
+}
+
+.gridFullWidth .block30 .cntntheading{
+    margin-top: 16px;
+}
+
+.gridFullWidth .block30:last-child .cntntheading{
+    min-height: inherit;
+}
+
+.iconBlock img{
+    padding-top: 29px;
+}
+
+.iconBlock{
+    min-height: 77px;
+    width: 100%;
+    text-align: left;
+    display: inline-block;
+}
+
+.iconrh .block30 .iconBlock{
+    min-height: 68px !important;
+}
+
+.iconrh .block30 .cntntheading{
+    min-height: inherit;
+}
+
+.bgf3f3f4{
+    background: #f3f3f4;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.grnbtn{
+    background: #5ec52f;
+    padding: 10px 25px;
+    text-align: center;
+    font: 11px/19px gothammedium;
+    color: #fff;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.mrgn24top{
+    margin-top: 60px;
+}
+
+.mrgnbtm0{
+    margin-bottom: 0;
+}
+
+.mrgntop7{
+    margin-top: 6px;
+}
+
+.disInline{
+    display: inline;
+}
+
+.gridCMSPages .coloumn-list ul {
+    font: 12px/17px gothambook;
+    color: #555;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
+.gridCMSPages .coloumn-list li {
+    background: none;
+    float: left;
+    margin: 2.1% 0 26px 1% !important;
+    padding: 0;
+    text-align: left;
+    width: 28.398%;
+}
+
+.gridCMSPages .coloumn-list li:nth-child(1){
+    margin-left: 3.9% !important;
+}
+
+.gridCMSPages .coloumn-list li:nth-child(0){
+    margin: 0 !important;
+}
+
+.gridCMSPages .coloumn-list li span{
+    font: 24px/29px ITCAvantGardeProMd;
+    margin: 0 0 19px;
+}
+
+.gridCMSPages .coloumn-list li span > span{
+    font-family: AvantGardeGothicITCW01D;
+    display: inline;
+    margin: 0 9px 0 0;
+}
+
+.gridCMSPages .coloumn-list li:last-child{
+    width: 28.203%;
+    margin-left: 4.9% !important;
+}
