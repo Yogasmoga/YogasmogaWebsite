@@ -1422,3 +1422,161 @@ table.inputtable tr:first-child td {
     width: 28.203%;
     margin-left: 4.9% !important;
 }
+
+
+/** YSTechPages **/
+.gridBottomDesp {
+    margin: 50px 0 0;
+    text-align: left;
+    width: 100%;
+    clear: both;
+    display: inline-block;
+    font-size: 0;
+/*    border-top: 1px solid #999;
+    padding: 15px 0 0;*/
+}
+
+.nogridborder{
+    border-top: 0 none;
+    margin-top: 64px;
+}
+
+.goldtext{
+    color: #ae8637;
+    margin-top: 21px !important;
+}
+
+.gridBottomDesp .block30 .textContainer {
+    margin-left: 11.4%;
+    padding: 7px 0 0;
+    border-top: 1px solid #999;
+    text-transform: uppercase;
+    letter-spacing: -0.85px;
+}
+
+.gridBottomDesp .block66 .textContainer {
+    margin-right: 5.9%;
+    padding: 7px 0 0;
+    border-top: 1px solid #999;
+}
+
+.nogridborder .textContainer {
+    margin: 0 4%;
+}
+
+.gridCMSPages sup{
+    font: 12px/8px gothambook;
+}
+
+.colorFilterGrid {
+    display: inline-block;
+    margin: 0 4% 30px;
+    width: 92%;
+    text-transform: uppercase;
+    font: 20px/24px ITCAvantGardeProBk;
+}
+
+.colorFilterGrid a {
+    color: #fff;
+    float: left;
+    width: 16.6667%;
+    height: 120px;
+    text-align: center;
+}
+
+.colorFilterGrid a span {
+    display: inline-block;
+}
+
+.ys-gold{
+    background: #ae8637;
+}
+
+.corallion{
+    background: #ee8591;
+}
+
+.crimson-rose{
+    background: #f36d75;
+}
+
+.vermelho{
+    background: #ff4100;
+}
+
+.klarit-red{
+    background: #9d2536;
+}
+
+.tickled-pink{
+    background: #b35c92;
+}
+
+.violet-twilight{
+    background: #704796;
+}
+
+.seattle-mist{
+    background: #a28ca7;
+}
+
+.shangri-la{
+    background: #b5b3b7;
+}
+
+.boy-blue{
+    background: #94c6d5;
+}
+
+.jodhpur-blue{
+    background: #095970;
+}
+
+.india-blue{
+    background: #303aa9;
+}
+
+.midnight-blue{
+    background: #171f6e;
+}
+
+.verdi{
+    background: #a28ca7;
+}
+
+.lime-lite{
+    background: #bed481;
+}
+
+.spanish-grey{
+    background: #e7e6eb;
+}
+
+.grey-caviar{
+    background: #6c6a6b;
+}
+
+.carbon6{
+    background: #111c22;
+}
+
+.cms-ys-color-tech .cntntheading{
+    min-height: inherit;
+}
+
+.mrgn35top{
+    margin-top: 35px !important;
+}
+
+.gridBottomDesp .block66 .textContainer a {
+    border-bottom: 1px solid #d2204d;
+    padding: 0 0 3px;
+}
+
+.linkheader {
+    color: #555;
+    border-bottom: 1px solid #d2204d;
+    padding: 149px 0 4px;
+    text-transform: uppercase;
+    display: inline-block;
+}

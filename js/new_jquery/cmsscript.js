@@ -5,9 +5,8 @@ jQuery(window).load(function($){
 	joybalanceheight();
 	ysbannertxtheight();
 	equalBlockImgH();
-		block50height();
-		uifixes();
-	//madeinusagifs();
+	block50height();
+	uifixes();
 
 	setTimeout(function(){
 		block66height();
@@ -17,8 +16,7 @@ jQuery(window).load(function($){
 		ysbannertxtheight();
 		equalBlockImgH();
 		block50height();
-//		madeinusagifs();
-uifixes();
+		uifixes();
 	},100);
 });
 
@@ -31,9 +29,72 @@ jQuery(document).ready(function($){
 		ysbannertxtheight();
 		equalBlockImgH();
 		block50height();
-//		madeinusagifs();
 		uifixes();
-	});	
+	});
+
+$("#workersgif").live('click', function(){
+    if($(this).hasClass('workersgif')){
+		var storeGifValue = $(this).data("gif");
+		$(this).attr("src", storeGifValue);
+		$(this).removeClass("workersgif");
+		$(this).addClass("stopworkersgif"); 
+    }
+    else{
+		var storeSrcValue = $(this).data("src");
+		$(this).attr("src", storeSrcValue);
+		$(this).removeClass("stopworkersgif");
+		$(this).addClass("workersgif");
+    }
+});
+
+
+$("#streamlined").live('click', function(){
+    if($(this).hasClass('streamlined')){
+		var streamGifValue = $(this).data("gif");
+		$(this).attr("src", streamGifValue);
+		$(this).removeClass("streamlined");
+		$(this).addClass("stopstreamlined"); 
+    }
+    else{
+		var streamSrcValue = $(this).data("src");
+		$(this).attr("src", streamSrcValue);
+		$(this).removeClass("stopstreamlined");
+		$(this).addClass("streamlined");
+    }
+});
+
+
+$("#footprints").live('click', function(){
+    if($(this).hasClass('footprints')){
+		var footGifValue = $(this).data("gif");
+		$(this).attr("src", footGifValue);
+		$(this).removeClass("footprints");
+		$(this).addClass("stopfootprints"); 
+    }
+    else{
+		var footSrcValue = $(this).data("src");
+		$(this).attr("src", footSrcValue);
+		$(this).removeClass("stopfootprints");
+		$(this).addClass("footprints");
+    }
+});
+
+
+$("#wages").live('click', function(){
+    if($(this).hasClass('wages')){
+		var wagesGifValue = $(this).data("gif");
+		$(this).attr("src", wagesGifValue);
+		$(this).removeClass("wages");
+		$(this).addClass("stopwages"); 
+    }
+    else{
+		var wagesSrcValue = $(this).data("src");
+		$(this).attr("src", wagesSrcValue);
+		$(this).removeClass("stopwages");
+		$(this).addClass("wages");
+    }
+});
+
 });
 
 // CalcBlocksHeight
@@ -118,61 +179,15 @@ function madeinusagifs(){
 
 function equalBlockImgH(){
 	var height = jQuery(".gridFullWidth .block30:first-child img.img-responsive").height();
-	console.log(height);
 	jQuery(".gridFullWidth .block30:last-child img.img-responsive").css("height", height);
-	console.log(jQuery(".gridFullWidth .block30:last-child img.img-responsive").height());
 };
 
 function uifixes(){
-	jQuery(".workersgif").click(function(){
-		var storeGifValue = jQuery(this).attr("data-gif");
-		jQuery(this).attr("src", storeGifValue);
-		jQuery(this).addClass("stopworkersgif");
-		jQuery(this).removeClass("workersgif");
+	jQuery(".colorFilterGrid a").each(function(){		
+		var colorBoxHeight = jQuery(this).height();
+		var colorTextHeight = jQuery(this).find("span").height();
+		var calcColorheight = colorBoxHeight-colorTextHeight;
+		calcColorheight = calcColorheight/2;
+		jQuery(this).find("span").css("padding-top", calcColorheight);	
 	});
-	jQuery(".stopworkersgif").click(function(){
-		var storeSrcValue = jQuery(this).attr("data-src");
-		jQuery(this).attr("src", storeSrcValue);
-		jQuery(this).addClass("workersgif");
-		jQuery(this).removeClass("stopworkersgif");
-	});
-
-	jQuery(".streamlined").click(function(){
-		var storeGifValue1 = jQuery(this).attr("data-gif");
-		jQuery(this).attr("src", storeGifValue1);
-		jQuery(this).addClass("stopstreamlined");
-		jQuery(this).removeClass("streamlined");
-	});
-	jQuery(".stopstreamlined").click(function(){
-		var storeSrcValue1 = jQuery(this).attr("data-gif");
-		jQuery(this).attr("src", storeSrcValue1);
-		jQuery(this).addClass("streamlined");
-		jQuery(this).removeClass("stopstreamlined");
-	});
-
-	jQuery(".footprints").click(function(){
-		var storeGifValue2 = jQuery(this).attr("data-gif");
-		jQuery(this).attr("src", storeGifValue2);
-		jQuery(this).addClass("stopfootprints");
-		jQuery(this).removeClass("footprints");
-	});
-	jQuery(".stopfootprints").click(function(){
-		var storeSrcValue2 = jQuery(this).attr("data-gif");
-		jQuery(this).attr("src", storeSrcValue2);
-		jQuery(this).addClass("footprints");
-		jQuery(this).removeClass("stopfootprints");
-	});
-
-	jQuery(".wages").click(function(){
-		var storeGifValue3 = jQuery(this).attr("data-gif");
-		jQuery(this).attr("src", storeGifValue3);
-		jQuery(this).addClass("stopwages");
-		jQuery(this).removeClass("wages");
-	});
-	jQuery(".stopwages").click(function(){
-		var storeSrcValue3 = jQuery(this).attr("data-gif");
-		jQuery(this).attr("src", storeSrcValue3);
-		jQuery(this).addClass("wages");
-		jQuery(this).removeClass("stopwages");
-	});	
 };
