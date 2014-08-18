@@ -141,6 +141,7 @@ div.search-nav ul li a, div.side-menu-bar ul li a, .leftnav ul li a, .side-menu-
 div.search-nav ul li a span.arr, div.side-menu-bar ul li a span.arr, .leftnav ul li a span, .side-menu-bar2 ul li a span.arr, .menu-bar ul li a span.arr{visibility: hidden;}
 
 div.search-nav ul li a.current, 
+div.search-nav ul li a:hover, 
 div.side-menu-bar2 ul li a.current, 
 .leftnav ul li a.current, 
 .leftnav ul li a:hover,
