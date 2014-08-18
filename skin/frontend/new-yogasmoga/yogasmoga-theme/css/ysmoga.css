@@ -1561,8 +1561,13 @@ table.inputtable tr:first-child td {
 }
 
 .cms-ys-color-tech .cntntheading,
-.cms-our-core-values .cntntheading{
+.cms-our-core-values .cntntheading,
+.cms-design-elements .cntntheading{
     min-height: inherit;
+}
+
+.cms-design-elements .cntntheading{
+    margin-top: 34px !important;
 }
 
 .mrgn35top{
@@ -1580,4 +1585,9 @@ table.inputtable tr:first-child td {
     padding: 149px 0 4px;
     text-transform: uppercase;
     display: inline-block;
+}
+
+ul.arw-list li{
+    font: 12px/17px gothambook !important;
+    text-align: left !important;
 }
