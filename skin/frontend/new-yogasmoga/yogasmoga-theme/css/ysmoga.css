@@ -1560,7 +1560,8 @@ table.inputtable tr:first-child td {
     background: #111c22;
 }
 
-.cms-ys-color-tech .cntntheading{
+.cms-ys-color-tech .cntntheading,
+.cms-our-core-values .cntntheading{
     min-height: inherit;
 }
 
