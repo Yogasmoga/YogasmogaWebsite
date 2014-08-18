@@ -1486,6 +1486,7 @@ table.inputtable tr:first-child td {
 
 .colorFilterGrid a span {
     display: inline-block;
+    /*width: 50%;*/
 }
 
 .ys-gold{

@@ -95,6 +95,14 @@ $("#wages").live('click', function(){
     }
 });
 
+$(".gridCMSPages a#discoverFabric").click(function() {
+    showDiscover('discoverFabric');
+});
+
+$(".gridCMSPages a#discoverColor").click(function() {
+    showDiscover('discoverColor');
+});
+
 });
 
 // CalcBlocksHeight
@@ -190,4 +198,9 @@ function uifixes(){
 		calcColorheight = calcColorheight/2;
 		jQuery(this).find("span").css("padding-top", calcColorheight);	
 	});
+};
+
+function showDiscover(discover){
+    var nameDiscover = jQuery("a[name='"+ discover +"']");
+    jQuery('html,body').animate({scrollTop: nameDiscover.offset().top - 98},'slow');
 };
