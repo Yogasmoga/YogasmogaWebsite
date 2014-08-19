@@ -706,12 +706,14 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $i=0;
         foreach ($session->getQuote()->getAllItems() as $item)
         {
-            
+
             $temparray = array();
             if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
             {
-                if($this->searchcart($miniitems, $item->getSku()) == false)
-                {
+                $productselectedoption = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
+
+                if($this->searchcart($miniitems, $item->getSku()) == false || count($productselectedoption['options'])>0 )
+                { //echo $item->getSku().'++';
                     $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$item->getSku());
                     $product = Mage::getModel('catalog/product')->load($item->getProductId());
                     $temparray['pid'] = $item->getProductId();
@@ -736,6 +738,11 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         $temparray['size'] = $_product->getAttributeText('size');
                     if($this->issuperattribute($product, "length"))
                         $temparray['length'] = $_product->getAttributeText('length');
+                    if(count($productselectedoption['options'])>0)
+                    {
+                        $temparray['optionlabel'] = $productselectedoption['options'][0]['label'];
+                        $temparray['optionvalue'] = $productselectedoption['options'][0]['value'];
+                    }
                     $temparray['quantity'] = $item->getQty();
                     $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
                     //$temparray['imageurl'] = $this->getMiniImage($item->getProductId(), $temparray['color']);
@@ -1155,6 +1162,11 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     <span class="clr">'.$item['color'].'</span>';
             if($item['size'] !='') $html .='<span class="size">size '.$item['size'].'</span>';
             if($item['length'] !='') $html .='<span class="size">'.$item['length'].'</span>';
+            if($item['optionlabel'] != '')
+            {
+                $html .='<span class="size">'.$item['optionlabel'].'</span>';
+                $html .='<span class="clr">'.$item['optionvalue'].'</span>';
+             }
             $html .='</span>
 <a href="#" class="close"></a>';
             // Preorder
