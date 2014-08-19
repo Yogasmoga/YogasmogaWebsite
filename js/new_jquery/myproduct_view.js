@@ -448,8 +448,8 @@ function InitializeZoomPopup()
     //console.log(_winH + _headerHeight);
     jQuery("#zoompopup").dialog({
         autoOpen: false,
-        show: "scale",
-        hide: "scale",
+        show: "fade",
+        hide: "fade",
         width : tempwidth,
         height : _winH + _headerHeight,
         modal : true,

@@ -1,5 +1,4 @@
-jQuery(document).ready(function($){
-
+/*jQuery(document).ready(function($){
 // var bnrCMS = $(".bannerFluid").height();
 // $('.leftnav').css("margin-top", bnrCMS);
 
@@ -69,5 +68,41 @@ var ftr1 = $('#sitemap');
         });
     }
 
+});*/
 
+jQuery(window).load(function($){
+    leftNavPos();
 });
+function leftNavPos(){
+    var ra = '#sitemap,.scroller_anchor,.bannerFluid';
+    jQuery(ra).appear();
+
+    jQuery(document.body).on('appear', '#sitemap', function(e, $affected) {       
+        var ra1 = jQuery(".gridProdCubix").find(".leftnav");
+        var helpNav = jQuery("#pagecontainer").find(".side-menu-bar");
+        var accntNav = jQuery("#pagecontainer").find(".account-nav");
+        helpNav.addClass("helpNav");
+        ra1.addClass("ra").removeClass("ra1");
+        if(jQuery(window).height() <= "600"){
+            accntNav.addClass("accntNav");
+        }                   
+      });
+    jQuery(document.body).on('disappear', '.bannerFluid', function(e, $affected) {       
+        var ra1 = jQuery(".gridProdCubix").find(".leftnav");
+        ra1.addClass("ra1");           
+      });
+    jQuery(document.body).on('disappear', '#sitemap', function(e, $affected) {       
+        var ra1 = jQuery(".gridProdCubix").find(".leftnav");
+        var helpNav = jQuery("#pagecontainer").find(".side-menu-bar");
+        var accntNav = jQuery("#pagecontainer").find(".account-nav");
+        ra1.removeClass("ra").addClass("ra1");
+        helpNav.removeClass("helpNav");  
+        if(jQuery(window).height() <= "600"){
+            accntNav.removeClass("accntNav");
+        }              
+      });
+    jQuery(document.body).on('appear', '.bannerFluid', function(e, $affected) {       
+        var ra1 = jQuery(".gridProdCubix").find(".leftnav");
+        ra1.removeClass("ra1");           
+      });
+}

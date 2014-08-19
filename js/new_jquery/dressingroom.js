@@ -82,8 +82,8 @@ jQuery(document).ready(function($){
     });
 	$("#productdetailpopup").dialog({
         autoOpen: false,
-        show: "scale",
-        hide: "scale",
+        show: "fade",
+        hide: "fade",
         width : 920,
         minHeight : 530,
         modal : true,

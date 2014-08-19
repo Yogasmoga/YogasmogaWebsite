@@ -2,7 +2,7 @@ jQuery(window).load(function($){
     detailHeight();
 });
 jQuery(document).ready(function($) {
-    scrollingLink();
+    // scrollingLink();
     wishList();
     readmore();
     detailHeight();

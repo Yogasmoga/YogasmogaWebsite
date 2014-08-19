@@ -239,17 +239,23 @@
                             if($i==5)break;$i++;
                          ?>
                             <li>
-                                <a id="<?php echo $_product->getId(); ?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(91); ?>" /></a>
-
-
+                                <a id="<?php echo $_product->getId(); ?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(91); ?>" />
                                 <div class="prd-details">
+                                    <span class="prd-name gothambd"><?php echo $_product->getName(); ?></span>
+                                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
+                                    <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2); ?></span>
+                                </div>
+                                </a>
+
+            
+                             <?php /*   <div class="prd-details">
                                     <a href = "<?php echo $_product->getProductUrl(); ?>"><span class="prd-name gothambd"><?php echo $_product->getName(); ?></span> </a>
                                     <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
                                     <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2); ?></span>
                                     <a id="<?php echo $_product->getId(); ?>" href="javascript:void(0)" class="quick-view">
                                         <img src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" border="0" alt="" />
                                     </a>
-                                </div>
+                                </div> */ ?>
                             </li>
                        <?php
                         }
@@ -264,17 +270,22 @@
                             if($i==4)break;$i++;
                          ?>
                             <li>
-                                <a id="<?php echo $_product->getId(); ?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(91); ?>" /></a>
+                                <a id="<?php echo $_product->getId(); ?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(91); ?>" />
 
-
-                                <div class="prd-details">
+                                    <div class="prd-details">
+                                    <span class="prd-name gothambd"><?php echo $_product->getName(); ?></span>
+                                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
+                                    <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2); ?></span>
+                                    </div>
+                               <?php /* <div class="prd-details">
                                     <a href = "<?php echo $_product->getProductUrl(); ?>"><span class="prd-name gothambd"><?php echo $_product->getName(); ?></span> </a>
                                     <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
                                     <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2); ?></span>
                                     <a id="<?php echo $_product->getId(); ?>" href="javascript:void(0)" class="quick-view">
                                         <img src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" border="0" alt="" />
                                     </a>
-                                </div>
+                                </div>*/ ?>
+                                </a>
                             </li>
                        <?php
                         }
@@ -303,7 +314,7 @@
                             </div>
                         </div>
                         <div class="bottom-left-block" data-vid-handle="vid-blck-1">
-                            <img src="<?php echo $this->getSkinUrl('images/women/left-block-vid-img.jpg') ?>" alt="" />
+                            <!-- <img src="<?php echo $this->getSkinUrl('images/women/left-block-vid-img.jpg') ?>" alt="" /> -->
                         </div>
                     </section>
                     <section class="wl-right-block">
@@ -334,7 +345,7 @@
                     </section>
                     <section class="wl-cs-right-block">
                         <div class="top-right-block" data-vid-handle="vid-blck-2">
-                            <img src="<?php echo $this->getSkinUrl('images/women/cs-vid-img.jpg') ?>" alt="" />
+                            <!-- <img src="<?php echo $this->getSkinUrl('images/women/cs-vid-img.jpg') ?>" alt="" /> -->
                         </div>
                         <div class="bottom-right-block">
                             <div class="block-content">

@@ -1450,17 +1450,17 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
                 $html .= '<li class= "namaskarinfo" colorattributeid = "'.$colorattributeid.'" sizeattributeid = "'.$sizeattributeid.'" productid =" '.$productid.'">
-                            <span><img src="'.Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 100).'" width="100" height="100" alt="'.$productname. '" /></span>
+                            <span class="c-align"><img src="'.Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 100).'" width="" height="" alt="'.$productname. '" /></span>
                             <span>
-                                    <strong>HELP THE <br' . ' />NAMASKAR FOUNDATION</strong>
-                                    <span class="capsnone">Add this bracelet to your order</span>
-                            </span>
+                                    <strong>HELP THE NAMASKÁR<br' . ' />FOUNDATION</strong>
+                                    <span class="">Add this bracelet<br' . ' />to your order</span>
+                            
                             ';
                 ?>
 
 
 
-                <?php $html .= '<select id="cmbcolor">';
+                <?php $html .= '<select id="cmbcolor" style="width: 116px;">';
 
                 foreach($productcolorinfo as $key=>$colorinfo)
                 {
@@ -1499,7 +1499,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
 
-                $html .= '<span style="width: auto;"><select class="qtyselector">';
+                $html .= '<span style="width: 47px; float:right;"><select class="qtyselector">';
 
                 for($i = 1; $i < 11; $i++)
                 {
@@ -1508,7 +1508,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
                 }
 
-                $html .= '</select><button class="addbracelet">Add to bag</button></span>
+                $html .= '</select></span><button class="addbracelet">Add to bag</button></span>
                                 </li>';
 
 
