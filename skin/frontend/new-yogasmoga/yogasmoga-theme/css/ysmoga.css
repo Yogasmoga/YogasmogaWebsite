@@ -1641,6 +1641,10 @@ table#searchBox div.searchbutton{
     display: block !important;
 }
 
+#workersgif, #streamlined, #footprints, #wages{
+    cursor: pointer;
+}
+
 /** Rangoli **/
 .rangoliCMSpage{
     width: 100%;
