@@ -1637,3 +1637,137 @@ table#searchBox div.searchbutton{
     font: 11px/19px gothambook;
     display: block !important;
 }
+
+/** Rangoli **/
+.rangoliCMSpage{
+    width: 100%;
+    min-width: 1024px;
+}
+
+.rangoliCMSpage .gridFullWidth{
+    width: 100%;
+    display: inline-block;
+    font: 12px/17px gothambook;
+}
+
+.rangoliSliderContent{
+    color: #fff;
+    text-transform: uppercase;
+    position: absolute;
+    top: 4.6%;
+    left: 10%;
+    right: 10%;
+    width: 80%;
+}
+
+.rlogo{
+    margin: 0 auto 11.5% !important;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.flexslider .slides .rlogo img {
+    display: inline-block;
+    text-align: center;
+    width: auto;
+}
+
+.rSldrHeading{
+    font: 38px/50px ITCAvantGardeProMd;
+    margin: 0 0 11.5% !important;
+    text-align: center;
+}
+
+.rSldrHeading span{
+    font-family: AvantGardeGthcITCW01XLt;
+}
+
+.rSldrForm{
+    margin: auto;
+    display: block;
+}
+
+.rSldrForm .formheading{
+    font: 17px/35px ITCAvantGardeProBk;
+    margin: 0 0 11px !important;
+    display: block;
+}
+
+.cms-rangoli .cntntheading{
+    margin-top: 30px;
+}
+
+.cms-rangoli .bottomdivider{
+    margin-top: 57px;
+}
+
+#rangoliEmailForm{
+    width: 476px;
+    margin: auto !important;
+    display: inline-block;
+}
+
+#rangoliEmailForm #email{
+    background: #fff;
+    border: 0 none;
+    color: #555;
+    font: 12px/17px gothambook;
+    margin: 0 9px 0 0 !important;
+    padding: 10px !important;
+    width: 301px;
+}
+
+#rangoliEmailForm #submit{
+    background: #5ec52f;
+    border: 0 none;
+    color: #fff !important;
+    font: 11px/17px gothambold;
+    padding: 10px !important;
+    text-transform: uppercase;
+    width: 142px;
+    cursor: pointer;
+}
+
+/* rangoliSliderFixes */
+.cms-rangoli .flex-control-nav{
+    bottom: 4px;
+}
+
+.cms-rangoli .flex-control-paging li a{
+    width: 6px;
+    height: 6px;
+}
+
+.cms-rangoli .flex-control-nav.flex-control-paging li:nth-child(1) a {
+    background: #ffd717;
+}
+
+.cms-rangoli .flex-control-nav.flex-control-paging li:nth-child(2) a {
+    background: #ff6500;
+}
+
+.cms-rangoli .flex-control-nav.flex-control-paging li:nth-child(3) a {
+    background: #e60000;
+}
+
+.cms-rangoli .flex-control-nav.flex-control-paging li:nth-child(4) a {
+    background: #6d1c91;
+}
+
+.cms-rangoli .flex-control-nav.flex-control-paging li:nth-child(5) a {
+    background: #006eff;
+}
+
+.cms-rangoli .flex-control-nav.flex-control-paging li:nth-child(6) a {
+    background: #00a800;
+}
+
+.cms-rangoli .flex-control-nav.flex-control-paging li:nth-child(7) a {
+    background: #000;
+}
+
+.cms-rangoli .flex-control-nav.flex-control-paging li a.flex-active,
+.cms-rangoli .flex-control-nav.flex-control-paging li a:hover {
+    background: #cb0032;
+}
