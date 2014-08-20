@@ -76,6 +76,7 @@ var _isClickContinueNotLogedin = false; // check when click on continue checkout
 var _isClickSmogiBucksPageLogin = false;
 var _isClickFooterWelcomeName = false;
 var _isClickFooterTrackOrder = false;
+var _redirectFromSingingPopup = null; // redirect from singing popup to track order or dashboard
 var _braSelected = 0;
 var _braOptionID = null;
 var _braOptionTypeID = null;
