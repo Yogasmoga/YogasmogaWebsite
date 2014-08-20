@@ -1560,11 +1560,12 @@ div#sizechart td span { font-weight: normal; }
     text-align: left;
 }
 
-.learnmore-nam{
+
+.learnmore-nam {
     float: left;
-    height: 47px !important;
-    margin: 30px 0 0 !important;
-    width: 140px !important;
+    height: 43px !important;
+    margin: 30px 20px 0 0 !important;
+    width: 144px !important;
 }
 
 .learnmore-nam > img {
