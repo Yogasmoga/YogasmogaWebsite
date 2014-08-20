@@ -32,7 +32,7 @@ jQuery(document).ready(function($){
     });
 });
 
-function createCustomerAccount()
+function  createCustomerAccount()
 {
     var fname = jQuery.trim(jQuery("#fname").val());
     var lname = jQuery.trim(jQuery("#lname").val());
@@ -66,7 +66,7 @@ function createCustomerAccount()
 
             if(status == "success")
             {
-                // console.log(data.status);
+               // console.log(data.status);
                 jQuery(".signing_popup_wrapper").addClass("no-display");
                 jQuery(".thank-you-block").removeClass("no-display");
                 jQuery(".signinDialog").addClass("wdthauto");
@@ -131,8 +131,14 @@ function createCustomerAccount()
                 {
                     window.location.assign(homeUrl+'sales/order/history/');
                 }
+                // redirect from singing popup to track order or dashboard
 
-
+                jQuery("#signing_popup").dialog({
+                    close: function( event, ui ) {
+                        if(_redirectFromSingingPopup != null)
+                            window.location.assign(_redirectFromSingingPopup);
+                    }
+                });
             }
             else
             {
@@ -177,6 +183,8 @@ function loginCustomer()
 
             if(status == "success")
             {
+                if(_redirectFromSingingPopup != null)
+                    window.location.assign(_redirectFromSingingPopup);
                 jQuery("#signin").html("SIGN OUT").attr({href:homeUrl+'customer/account/logout/',id:"sign-out"});
                 jQuery("#signing_popup").dialog( "close" );
                 jQuery(".signin-loader").html("");
