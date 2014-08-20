@@ -220,18 +220,19 @@ jQuery(document).ready(function($){
         }
     });
 
-    $("#editShippingMethod").live("click", function(){
+    $(".edit-curr-shipng-add").live("click", function(){
+        $(".edit-curr-shipng-add").addClass("dnone");
         $("select#shipping-address-select").val('');
         $("select#shipping-address-select").trigger("change");
         $("#updateNameAdd").hide();
         $("#shippingaddressselectionblock").hide();
         sameasBlankSelect();
         removeReviewActiveState();
-        resetCheckoutForm();        
     });
 
     $("#shipping-address-select li").live("click", function(){
         if($(this).attr("value") == "") {
+            $(".edit-curr-shipng-add").addClass("dnone");
             $("select#shipping-address-select").val('');
             $("select#shipping-address-select").trigger("change");
             $("#updateNameAdd").hide();
@@ -241,6 +242,7 @@ jQuery(document).ready(function($){
             resetCheckoutForm();
         }
         else if($(this).attr("value") == "9999"){
+            $(".edit-curr-shipng-add").removeClass("dnone");
             var selectedAdd = $(this).text();
             $("select#shipping-address-select").val('');
             $("select#shipping-address-select").trigger("change");
@@ -276,6 +278,7 @@ jQuery(document).ready(function($){
         else {
             var selectedAdd = $(this).text();
 
+            $(".edit-curr-shipng-add").addClass("dnone");
             $("#shipping-address-select li").removeAttr('id');
             $(this).attr('id', 'selected');
 
@@ -1050,7 +1053,7 @@ function saveShippingMethod()
 
             jQuery("#checkout-shipping-form input[type=submit]").hide();
             jQuery("#checkout-shipping-form #procImg").remove();
-            jQuery("#editShippingMethod").removeClass("dnone");
+            jQuery(".edit-curr-shipng-add").removeClass("dnone");
         }
     });
 }
@@ -1281,7 +1284,7 @@ function validateShippingAddressForm()
 }
 
 function resetCheckoutForm(){
-    // jQuery(':input','#checkout-shipping-form').not(':button, :submit, :reset, :hidden, :checkbox').val('').removeAttr('checked').removeAttr('selected');
-    // jQuery('#checkout-shipping-form #shipping\\:country_id').val( "US" );
-    // jQuery('#checkout-shipping-form #shipping\\:country_id').trigger( "change" );
+    jQuery(':input','#checkout-shipping-form').not(':button, :submit, :reset, :hidden, :checkbox').val('').removeAttr('checked').removeAttr('selected');
+    jQuery('#checkout-shipping-form #shipping\\:country_id').val( "US" );
+    jQuery('#checkout-shipping-form #shipping\\:country_id').trigger( "change" );
 }
