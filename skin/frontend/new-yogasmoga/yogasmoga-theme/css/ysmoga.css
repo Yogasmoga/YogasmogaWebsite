@@ -1849,7 +1849,15 @@ table#searchBox div.searchbutton{
     width: 33.8%;
     float: left;
 }
+.pressBlock > a{
+    min-height: 251px;
+}
+.pressBlock a .textContainer > div{
+    color: #fff;
+}
 .pressBlock:hover .textContainer > div{
     color: #c03;
+}
+.pressBlock:hover{
     cursor: pointer;
 }

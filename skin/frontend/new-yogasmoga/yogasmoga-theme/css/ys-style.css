@@ -1561,11 +1561,18 @@ div#sizechart td span { font-weight: normal; }
 }
 
 
-.learnmore-nam {
+/*.learnmore-nam {
     float: left;
     height: 43px !important;
     margin: 30px 20px 0 0 !important;
     width: 144px !important;
+}*/
+
+.learnmore-nam {
+    float: left;
+    height: 37px !important;
+    margin: 30px 20px 0 0 !important;
+    width: 124px !important;
 }
 
 .learnmore-nam > img {
