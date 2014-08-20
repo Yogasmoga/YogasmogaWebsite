@@ -207,6 +207,16 @@ jQuery(document).ready(function($){
         }
     });
 
+    $("#editShippingMethod").live("click", function(){
+        $("select#shipping-address-select").val('');
+        $("select#shipping-address-select").trigger("change");
+        $("#updateNameAdd").hide();
+        $("#shippingaddressselectionblock").hide();
+        sameasBlankSelect();
+        removeReviewActiveState();
+        resetCheckoutForm();        
+    });
+
     $("#shipping-address-select li").live("click", function(){
         if($(this).attr("value") == "") {
             $("select#shipping-address-select").val('');
@@ -1022,6 +1032,7 @@ function saveShippingMethod()
 
             jQuery("#checkout-shipping-form input[type=submit]").hide();
             jQuery("#checkout-shipping-form #procImg").remove();
+            jQuery("#editShippingMethod").removeClass("dnone");
         }
     });
 }
@@ -1252,7 +1263,7 @@ function validateShippingAddressForm()
 }
 
 function resetCheckoutForm(){
-    jQuery(':input','#checkout-shipping-form').not(':button, :submit, :reset, :hidden, :checkbox').val('').removeAttr('checked').removeAttr('selected');
-    jQuery('#checkout-shipping-form #shipping\\:country_id').val( "US" );
-    jQuery('#checkout-shipping-form #shipping\\:country_id').trigger( "change" );
+    // jQuery(':input','#checkout-shipping-form').not(':button, :submit, :reset, :hidden, :checkbox').val('').removeAttr('checked').removeAttr('selected');
+    // jQuery('#checkout-shipping-form #shipping\\:country_id').val( "US" );
+    // jQuery('#checkout-shipping-form #shipping\\:country_id').trigger( "change" );
 }
