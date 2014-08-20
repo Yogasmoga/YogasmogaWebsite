@@ -1783,3 +1783,56 @@ table#searchBox div.searchbutton{
 .cms-rangoli .flex-control-nav.flex-control-paging li a:hover {
     background: #cb0032;
 }
+
+/** YSPRESS **/
+.pressPage .gridFullWidth{
+    display: inherit;
+}
+.pressBlock{
+    min-height: 251px;
+    color: #fff;
+    text-transform: uppercase;
+}
+.bg5744a8{
+    background: #5744a8;
+}
+.bg1266ac{
+    background: #1266ac;
+}
+.bgc3262c{
+    background: #c3262c;
+}
+.bg67335a{
+    background: #67335a;
+}
+.bgc5218c{
+    background: #c5218c;
+}
+.bg323f48{
+    background: #323f48;
+}
+.bg288788{
+    background: #288788;
+}
+.pressHead{
+    font: 36px/40px ITCAvantGardeProMd;
+}
+.presstxt {
+    margin: 25px 0 0;
+}
+.presstxt p{
+    font: 17px/19px ITCAvantGardeProBk;
+}
+.presstxt p span {
+    display: block;
+    font: 12px/17px gothambook;
+    margin: 25px 0 0;
+}
+.minh250{
+    min-height: 251px;
+}
+.pressPage .bottomdivider {
+    clear: both;
+    display: inline-block;
+    width: 92.1875%;
+}

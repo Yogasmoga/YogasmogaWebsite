@@ -7,6 +7,7 @@ jQuery(window).load(function($){
 	equalBlockImgH();
 	block50height();
 	uifixes();
+	pressContent();
 
 	setTimeout(function(){
 		block66height();
@@ -205,4 +206,14 @@ function uifixes(){
 function showDiscover(discover){
     var nameDiscover = jQuery("a[name='"+ discover +"']");
     jQuery('html,body').animate({scrollTop: nameDiscover.offset().top - 98},'slow');
+};
+
+function pressContent(){
+	jQuery(".gridFullWidth .pressBlock").each(function(){		
+		var pressBoxHeight = jQuery(this).height();
+		var pressTextHeight = jQuery(this).find(".textContainer").height();
+		var calcPressheight = pressBoxHeight-pressTextHeight;
+		calcPressheight = calcPressheight/2;
+		jQuery(this).find(".textContainer").css("padding-top", calcPressheight);	
+	});
 };
