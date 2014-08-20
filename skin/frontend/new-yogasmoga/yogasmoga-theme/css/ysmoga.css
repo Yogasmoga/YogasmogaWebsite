@@ -1584,7 +1584,8 @@ table.inputtable tr:first-child td {
 .linkheader {
     color: #555;
     border-bottom: 1px solid #d2204d;
-    padding: 149px 0 4px;
+    padding: 0 0 4px;
+    margin: 149px 0 0;
     text-transform: uppercase;
     display: inline-block;
 }
@@ -1601,14 +1602,17 @@ table#searchBox input#txtSearch {
     padding: 0 5px;
     width: 234px;
     height: 23px;
+    border-radius: 0 0 0 0;
     border-right: 0 none;
+    box-shadow: none;
+    -webkit-appearance: none;
 }
 
 table#searchBox div.searchbutton{
     background-image: url("../images/new-elements/searchBox-icon.jpg");
     height: 23px;
     width: 19px;
-    padding: 0 7px 0 0;
+    padding: 0 8px 0 0;
     border: 1px solid #a6a6a6;
     border-left: 0 none;
 }
@@ -1637,6 +1641,10 @@ table#searchBox div.searchbutton{
     color: #555;
     font: 11px/19px gothambook;
     display: block !important;
+}
+
+#workersgif, #streamlined, #footprints, #wages{
+    cursor: pointer;
 }
 
 /** Rangoli **/
@@ -1717,6 +1725,7 @@ table#searchBox div.searchbutton{
     margin: 0 9px 0 0 !important;
     padding: 10px !important;
     width: 301px;
+    border-radius: 0 0 0 0;
 }
 
 #rangoliEmailForm #submit{
@@ -1728,6 +1737,9 @@ table#searchBox div.searchbutton{
     text-transform: uppercase;
     width: 142px;
     cursor: pointer;
+    border-radius: 0 0 0 0;
+    box-shadow: none;
+    -webkit-appearance: none;
 }
 
 /* rangoliSliderFixes */
