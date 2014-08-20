@@ -1855,9 +1855,6 @@ table#searchBox div.searchbutton{
 .pressBlock a .textContainer > div{
     color: #fff;
 }
-.pressBlock:hover .textContainer > div{
-    color: #c03;
-}
 .pressBlock:hover{
     cursor: pointer;
 }
