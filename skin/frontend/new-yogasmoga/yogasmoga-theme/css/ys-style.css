@@ -714,8 +714,8 @@ ul.checkout-cont li > .selectAddress ul li span{
     background: #999 !important;
 }
 .showShippingOpt, .showUpdateAdd{display:none; border-top: 1px solid #9f9f9f; margin: 8px 0 0; padding: 8px 0 0;}
-.showUpaddnew, .showUpadd, .showCreOpt, .showShpOpt{background: url('../images/arwbtm.jpg') no-repeat top left; background-size: 100% auto; width:11px; height:7px; float:right; margin:6px 0 0; cursor:pointer;}
-.showUpadd.reverse, .showShpOpt.reverse{background: url('../images/arwtop.jpg') no-repeat top left;}
+.showUpaddnew, .showUpadd, .showCreOpt, .showShpOpt{background: url('../images/checkout-arr-btn.png') no-repeat top left; background-size: 100% auto; width:11px; height:7px; float:right; margin:6px 0 0; cursor:pointer;}
+.showUpadd.reverse, .showShpOpt.reverse{background: url('../images/checkout-arr-btn-top.png') no-repeat top left;}
 .continueBtn{
     background: url('../images/contBtn.jpg') no-repeat top left;
     color: #fff;
@@ -1015,7 +1015,7 @@ body{overflow-x:auto !important; -webkit-font-smoothing:subpixel-antialiased;}
 
 /** emailUs **/
 .emailBox{background: #efefef; margin: 0; width: auto; min-width: 645px; max-width: 800px; padding: 30px 30px 18px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
-.emailBox > input, .emailBox > textarea{background: #fff; border: 0 none; width: 97%; padding: 10px; font: 13px gothambook; text-transform: none; display: inline-block; margin-bottom: 10px; color: #666;}
+.emailBox > input, .emailBox > textarea{background: #fff; border: 0 none; width: 97%; padding: 10px; font: 12px gothambook; text-transform: none; display: inline-block; margin-bottom: 10px; color: #666;}
 .gap{border-bottom: 1px solid #f7f7f7; margin: 18px 0 29px; display: block; clear: both;}
 .emailBox > label{display: block; margin: 0 0 15px;}
 .sendmail, .choosefile{cursor: pointer;}
@@ -2113,3 +2113,6 @@ input:-webkit-autofill:focus {
 .ra{position: absolute; bottom:350px;}
 .helpNav{position: absolute !important; top:98px;}
 .accntNav{position: absolute !important; top:29px;}
+.contentSlider{z-index: 10000;}
+.zopim body{display: none !important;}
+.data-table.ys tbody td:last-child span.nobr a{font-size: 11px;}

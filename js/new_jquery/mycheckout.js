@@ -23,13 +23,17 @@ jQuery(document).ready(function($){
     $(".selectAddress .addVal, .showUpadd").on("click", function(event){
         event.stopPropagation();
         slideAddCont();
+        jQuery(".showShpOpt").removeClass("reverse");
+        jQuery(".showShippingOpt").slideUp("slow");
     });
 
     addUpdTxt();
     getShippingID();
     $(".shippingOption .addVal, .showShpOpt").on("click", function(event){
         event.stopPropagation();
-        slideShpCont();
+        slideShpCont(); 
+        jQuery(".showUpadd").removeClass("reverse");
+        jQuery(".listadd").slideUp("slow");       
     });
 
     $(".showShippingOpt").on("click", "li", function(){
@@ -40,7 +44,9 @@ jQuery(document).ready(function($){
         $("#shippingDetails").css("background", "").addClass("active").removeClass("reverseShip");
 
         $("#billingDetails, #reviewDetails").removeClass("active");
-        $("#billingDetails .ovrlay-bg, #reviewDetails .ovrlay-bg").show();
+        // $("#billingDetails .ovrlay-bg, #reviewDetails .ovrlay-bg").show();
+        $("#reviewDetails .ovrlay-bg").show();
+        $("#billingDetails").css("background","rgba(0, 0, 0, 0.0784314)");
         $("#billing-new-address-form, #cobillingaddress").hide();
 
         $(".billingAdd a.checkBCre").removeClass("reverse unuse").addClass("use");
@@ -51,6 +57,13 @@ jQuery(document).ready(function($){
         $(this).addClass("selected");
         $(".shippingOption").find(".addVal").text(selectedVal);
         slideShpCont();
+    });
+    
+    $("#payment_form .paymentmethoddiv,#payment_form .paymentmethoddiv,.checkBCre").live("click", function(){
+        $("#reviewDetails .ovrlay-bg").show();
+        $("#shippingDetails").css("background","rgba(0, 0, 0, 0.0784314)");
+        $("#billingDetails").css("background","");
+        $("#billingDetails .checkoutcontinuebtn").show();
     });
 
     if($("#checkout-shipping-form").length == 0)
@@ -250,7 +263,8 @@ jQuery(document).ready(function($){
             $("form#checkout-shipping-form").find("input[type='submit']").show();
             $("#shippingDetails").css("background", "").addClass("active");
             $("#billingDetails").removeClass("active");
-            $("#billingDetails .ovrlay-bg").show();
+            // $("#billingDetails .ovrlay-bg").show();
+            $("#billingDetails").css("background","");
             $("#billing-new-address-form, #cobillingaddress").hide();
             $(".billingAdd a.checkBCre").removeClass("reverse unuse").addClass("use");
             $("form#payment_form input[type=submit]").addClass("mar0").removeClass("marbtm745");
@@ -275,7 +289,8 @@ jQuery(document).ready(function($){
             $("form#checkout-shipping-form").find("input[type='submit']").show();
             $("#shippingDetails").css("background", "").addClass("active");
             $("#billingDetails").removeClass("active");
-            $("#billingDetails .ovrlay-bg").show();
+            // $("#billingDetails .ovrlay-bg").show();
+            $("#billingDetails").css("background","");
             $("#billing-new-address-form, #cobillingaddress").hide();
             $(".billingAdd a.checkBCre").removeClass("reverse unuse").addClass("use");
             $("form#payment_form input[type=submit]").addClass("mar0").removeClass("marbtm745");
@@ -344,6 +359,7 @@ jQuery(document).ready(function($){
             $(this).html($("form#checkout-shipping-form input#shipping\\:street1").val() + "<br>" + "<span>is also my billing address</span>");
         }
     });
+
 
     $(window).resize(function(){
         positionordersummary();
@@ -858,7 +874,8 @@ function savePayment()
 
                     jQuery(".billingAdd a").removeClass("reverse unuse").addClass("use").html(jQuery("form#co-billing-form input#billing\\:street1").val() + "<br>" + "<span>is my billing address</span>");
                     jQuery("#billing-new-address-form").hide();
-                    jQuery("li#billingDetails .ovrlay-bg").show();
+                    // jQuery("li#billingDetails .ovrlay-bg").show();
+                    jQuery("li#billingDetails").css("background","rgba(0, 0, 0, 0.0784314)");
                     jQuery("li#billingDetails .headD span").html("&#10003;");
                     jQuery("li#shippingDetails .ovrlay-bg").show();
                     jQuery("li#shippingDetails").removeClass("reverseShip").css("background", "transparent");
@@ -879,7 +896,8 @@ function savePayment()
 
                 jQuery(".billingAdd a").removeClass("reverse unuse").addClass("use").html(jQuery("form#co-billing-form input#billing\\:street1").val() + "<br>" + "<span>is my billing address</span>");
                 jQuery("#billing-new-address-form").hide();
-                jQuery("li#billingDetails .ovrlay-bg").show();
+                // jQuery("li#billingDetails .ovrlay-bg").show();
+                jQuery("li#billingDetails").css("background","rgba(0, 0, 0, 0.0784314)");
                 jQuery("li#billingDetails .headD span").html("&#10003;");
                 jQuery("li#shippingDetails .ovrlay-bg").show();
                 jQuery("li#shippingDetails").removeClass("reverseShip").css("background", "transparent");

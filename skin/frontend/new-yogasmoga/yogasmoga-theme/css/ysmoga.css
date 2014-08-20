@@ -546,12 +546,12 @@ width: 60%;
     display: block;
 }
 
-.bx-controls {
+/*.bx-controls {
     bottom: 15px;
     height: 100%;
     left: 1%;
     right: 1%;
-}
+}*/
 
 .bx-controls-auto{
     display: none;
@@ -569,7 +569,7 @@ width: 60%;
 .bx-wrapper .bx-pager,
 .bx-wrapper .bx-controls-auto {
     position: absolute;
-    bottom: 0;
+    bottom: 15px;
     margin: auto;
     width: 100%;
 }
@@ -603,6 +603,7 @@ width: 60%;
     height: 32px;
     text-indent: -9999px;
     z-index: 9999;
+    margin-top: -16px;
 }
 
 .bx-wrapper .bx-controls-direction a.disabled {
@@ -648,11 +649,11 @@ width: 60%;
     float: none;
 }
 
-.bx-controls-direction {
+/*.bx-controls-direction {
     position: absolute;
     top: 50%;
     width: 100%;
-}
+}*/
 
 /** selfClear **/
 .overridefix:after {
