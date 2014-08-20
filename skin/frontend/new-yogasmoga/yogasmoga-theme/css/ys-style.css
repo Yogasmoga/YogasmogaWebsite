@@ -1171,14 +1171,14 @@ td.btninvite{width: 93px;}
 div.invite{background-size: cover; width:107px !important; height: 31px !important;/* margin-top: 10px;*/}
 /*table.referfriendforms td.remove img, table.referfriendforms td.success img{margin-top: 19px !important;}*/
 div#addanotherreferral{width:auto !important; margin-bottom: 5px !important; display: inline-block; border: none !important;}
-div#addanotherreferral p{border-bottom: 1px solid #D90D3D; padding-bottom: 2px;}
+div#addanotherreferral p{border-bottom: 1px solid #D90D3D; padding-bottom: 2px; font-size: 11px;}
 table.referredfriendslist td.name, table.referredfriendslist td.email{width: 48%;}
 .track-invites table.referredfriendslist td.name div,.track-invites table.referredfriendslist td.email div{border: none !important; width: 100% !important; min-width: 100% !important; max-width: 100% !important; margin-left: 0; text-transform: lowercase; margin-bottom: 5px;}
 .refer-frnd .referfriend-subheader,.track-invites .referfriend-subheader,.refer-link .referfriend-subheader{font-size: 11px !important; font-family: gothambold !important; line-height: 17px;margin-bottom: 19px;}
 table#referrallink{margin-bottom: 40px !important;}
 /*table.referfriendforms td.processing img{margin-top: 15px !important;}*/
 #uniquelink{font-size: 14px; line-height: 17px; font-family: gothambook; margin-bottom: 11.5px;}
-.share-cont table p{font-size: 11px; line-height: 17px; font-family: gothambook;}
+.share-cont table p{font-size: 12px; line-height: 17px; font-family: gothambook;}
 
 
 
@@ -1380,7 +1380,7 @@ table.productimagecontainer{margin-bottom: 70px; /*min-height: 620px;*/}
 #createcardform table.inputtable tbody tr td.inputholder{padding: 8px; border:none !important;}
 .goy-form .row{margin: 0 0 30px !important;}
 .goy-form .full{width: 100% !important; margin: 0 !important;}
-.goy-form .full textarea{max-width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; border:none !important; background: #fff !important; font-size: 11px !important; font-family: gothambook !important; color: #555;}
+.goy-form .full textarea{max-width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; border:none !important; background: #fff !important; font-size: 12px !important; font-family: gothambook !important; color: #555;}
 textarea.watermark{color: #555 !important; font-size: 13px !important;}
 .goy-form .col label{text-align: left; color: #555 !important; font-style: normal !important; font-family: gothambook !important; font-size: 13px !important; margin-bottom: 5px !important; resize:none;}
 .goy-balance form{display: block; position: absolute; right: 32px; left: 32px; bottom: 25px;}
