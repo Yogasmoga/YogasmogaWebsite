@@ -354,9 +354,9 @@ jQuery(window).load(function(){
         <div style="padding:3px 0 !important;width: 100%; position: relative;  left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 16px;font-family: AvantGardeGothicMedium;">YANTRA TANK BUY ONE, GET ONE FREE EVENT :  BUY 1 YANTRA TANK AND WE'LL AUTOMATICALLY SHIP YOU 2 <span style="font-family:Gotham;"> &gt;&gt; </span> SAME SIZE, DIFFERENT COLOR. FINAL SALE.</div>
 <?php } ?>
     
-<?php //if((int)$_product->getId() == 700){?>
-<!--    <div style="padding:3px 0 !important;width: 100%; position: relative;  left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 16px;font-family: AvantGardeGothicMedium;">BUY 1 SLIMMIE PANT AND WE'LL SHIP YOU 2! <span style="font-family: helvetica;font-weight: bold;">&lt;&lt;</span> SECOND SLIMMIE: SAME SIZE, SURPRISE COLOR <span style="font-family: helvetica;font-weight: bold;">&gt;&gt;</span> FINAL SALE.</div>-->
-<?php //} ?>
+<?php if((int)$_product->getId() == 962){?>
+    <div style="padding:3px 0 !important;width: 100%; position: relative;  left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 16px;font-family: AvantGardeGothicMedium;">Limited Time: 50% Off Clearance Sale Item. Price as Marked in Red Below. No Exchanges or Returns.</div>
+<?php } ?>
 
 
 <div id="productdetails" desc="<?php echo html_entity_decode($productname); ?>" class="fullscreen pgsection" style="position: relative;" hdependson="absproductoptions" tw-summary="Check out the <?php echo html_entity_decode($productname); ?>">
@@ -535,14 +535,17 @@ jQuery(window).load(function(){
         <div class="disableproptions"></div>
         <?php //echo Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId()); ?>
         <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId(Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId()))->toHtml(); ?>
-		
+        <?php
+        // only using country of manufacture for sale only
+        $forSaleonly = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'country_of_manufacture', Mage::app()->getStore()->getStoreId());
+        ?>
         
         <table class="productdetailtable normalproductdetail">
             <tr>
                 <td>
                     <div class="breadcrumb"><?php echo $breadcrumb; ?></div>
                     <div class="productname"><?php echo html_entity_decode($productname); ?></div>
-                    <div class="productcost"><?php echo $productprice; ?></div>
+                    <div class="productcost <?php echo $forSaleonly; ?>"><?php echo $productprice; ?></div>
                     <div class="shortdesc"><?php echo $_product->getDescription(); ?></div>
                     <table class="selectedcolor">
                         <tr>
