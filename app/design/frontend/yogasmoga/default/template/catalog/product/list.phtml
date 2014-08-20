@@ -462,9 +462,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="productprice">
+                                <?php
+                                // only using country of manufacture for sale only
+                                $forSaleonly = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'country_of_manufacture', Mage::app()->getStore()->getStoreId());
+                                ?>
+                                <td class="productprice <?php echo $forSaleonly; ?>">
                                     <span class="price">
-                                    <?php 
+                                    <?php
                                         $model = Mage::getModel('catalog/product');
                                         $_product = $model->load($_product->getId());
                                         $price = $_product->getSpecialPrice();
