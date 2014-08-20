@@ -121,6 +121,7 @@ jQuery(document).ready(function($){
 
             if($("#checkout-shipping-address-new").is(":visible")){
                 virtualsaveshippingaddress();
+                $(".edit-curr-shipng-add").removeClass("dnone");
             }
             saveShippingAddress();
         }
@@ -1053,7 +1054,6 @@ function saveShippingMethod()
 
             jQuery("#checkout-shipping-form input[type=submit]").hide();
             jQuery("#checkout-shipping-form #procImg").remove();
-            jQuery(".edit-curr-shipng-add").removeClass("dnone");
         }
     });
 }
