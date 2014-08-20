@@ -59,13 +59,13 @@
 */
 #Explore #slider .carousel-desc img{max-height:200px; max-width:100%;}
 
-.bx-controls {
+/*.bx-controls {
   bottom: 65px;
   height: 15px;
   left: 10%;
   position: absolute;
   right: 10%;
-}
+}*/
 .bx-pager{background:url(../images/expsep.gif) 100% 50% no-repeat; height:15px; display:block;}
 .bx-pager-item {
   display: block;

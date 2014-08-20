@@ -14,13 +14,14 @@ jQuery(document).ready(function($){
         $(".fitDetail .video-block img").click();
     });
 
-$(".goy-form").on("click",".button.btn-reset", function(e){  
-    e.preventDefault();
-    $("#createcardform td.inputholder input, #createcardform .goy-form #mail-message").each(function(){
-        var goyReset = $(this).attr("watermark");
-        $(this).attr("value", goyReset);
-    });            
-}); 
+    $(".goy-form").on("click",".button.btn-reset", function(e){  
+        e.preventDefault();
+        $("#createcardform td.inputholder input, #createcardform .goy-form #mail-message").each(function(){
+            var goyReset = $(this).attr("watermark");
+            $(this).attr("value", goyReset);
+        });            
+    }); 
+
     winW = $(window).width();
     var designVid = $(".html-des-vid-popup");
     var fitVid = $(".html-fit-vid-popup");
@@ -428,19 +429,13 @@ function featuredSec(){
     var lft_vid_img_height = lft_vid_img.height();
     // lft_vid_img.css("margin-top", (lft_vid - lft_vid_img_height)/2.07);           
         var posContent = setTimeout(function(){
-            jQuery(window).resize();
+            // jQuery(window).resize();
             jQuery(".wl-color-story-prd .block-content").each(function(){
                 var bl_c_H = jQuery(this).height();
                 var parH = jQuery(this).parent().height();
                 var topPos = (parH - bl_c_H)/1.99;
                 jQuery(this).css("top", topPos);                
-            });
-            jQuery(".wl-cs-left-block .block-content").each(function(){
-                var bl_c_H = jQuery(this).height();
-                var parH = jQuery(this).parent().height();
-                var topPos = (parH - bl_c_H)/1.91;
-                jQuery(this).css("top", topPos);
-            });            
+            });                       
             clearTimeout(posContent);
         },100);
               
