@@ -23,10 +23,10 @@ jQuery(document).ready(function($){
 	$(window).resize(function(){
 		homeContent();
 		homeContent1();
-		compressBoxHeight();
+		compressBoxHeightRes();
 		colorBoxHeight();
-		factorypart();
-		namaskarpart();	
+		factorypartRes();
+		namaskarpartRes();	
 		// ctextVMiddle();	
 	});	
 });
@@ -51,37 +51,62 @@ function sliderHomeBx(){
 };
 
 function compressBoxHeight(){	
-	var sliderBoxHeight = jQuery(".ysfabricpart .grid65").height();
-	jQuery(".ysfabricpart .grid35").css("height", sliderBoxHeight);
+	setTimeout(function(){
+	    compressBoxHeightRes();
+    },500);
 };
-
+function compressBoxHeightRes(){
+	 	var gd1 = jQuery(".ysfabricpart .sliderImg").height();
+	 	jQuery(".ysfabricpart .compressBox").css("height", gd1/2);
+	    var gd2 = jQuery(".ysfabricpart .compressBox").height();
+	    var gdHeight = gd1-gd2;	    
+	    // jQuery("div.text").html("fabricpar---" + gd1 + "----" + gd2 + "---" + "---" + gdHeight );	       
+	    jQuery(".ysfabricpart .iconspartone").css("height", gdHeight);
+	    jQuery(".ysfabricpart").animate({"opacity":1});
+}
 function colorBoxHeight(){
-	var sliderBoxHeight2 = jQuery(".yscolorpart .grid65").height();
-	jQuery(".yscolorpart .grid35").css("height", sliderBoxHeight2);
+	setTimeout(function(){
+	   colorBoxHeightRes();
+    },500);
 };
+function colorBoxHeightRes(){
+	var gd1 = jQuery(".yscolorpart .sliderImg").height();
+	jQuery(".yscolorpart .multicolorcont").css("height", gd1/2);
+    var gd2 = jQuery(".yscolorpart .multicolorcont").height();	        
+    var gdHeight = gd1-gd2;	    
+    // jQuery("div.text").html("icons---" + gd1 + "----" + gd2 + "---" + "---" + gdHeight );	       
+    jQuery(".yscolorpart .iconspartone").css("height", gdHeight);
+    jQuery(".yscolorpart").animate({"opacity":1});
+}
+function factorypart(){	
+	setTimeout(function(){
+	    factorypartRes();
+    },500);
 
-function factorypart(){
-	var factoryHeight = jQuery(".factorypart .img-responsive").height();
-
-	var mistext = jQuery(".mistext").height();
-	var mstext = factoryHeight - mistext;
-	mstext = mstext/1.5;
-	
-	// jQuery(".mistext").css("top", mstext);
-	jQuery(".factorypart .grid35").css("height", factoryHeight);
 };
-
-function namaskarpart(){
-	var namaskarHeight = jQuery(".namaskarpart .img-responsive").height();	
-
-	var namaskartxt = jQuery(".namaskartxt").height();
-	var nmtxt = namaskarHeight - namaskartxt;
-	nmtxt = nmtxt/1.5;
-
-	jQuery(".namaskarpart .grid35").css("height", namaskarHeight);
-	// jQuery(".namaskartxt").css("top", nmtxt);
+function factorypartRes(){
+	var gd1 = jQuery(".factorypart .img-responsive").height();
+	jQuery(".factorypart .factorythread").css("height", gd1/2);
+    var gd2 = jQuery(".factorypart .factorythread").height();
+    var gdHeight = gd1-gd2;	    
+    // jQuery("div.text").html("factory---" + gd1 + "----" + gd2 + "---" + "---" + gdHeight );	       
+    jQuery(".factorypart .usamap").css("height", gdHeight);
+    jQuery(".factorypart").animate({"opacity":1});
+}
+function namaskarpart(){	
+	 setTimeout(function(){
+	    namaskarpartRes();
+    },500);
 };
-
+function namaskarpartRes(){
+	var gd1 = jQuery(".namaskarpart .img-responsive").height(); 
+    jQuery(".namaskarpart .supportnamaskar").css("height", gd1/2);
+    var gd2 = jQuery(".namaskarpart .supportnamaskar").height();
+    var gdHeight = gd1-gd2;	    
+    // jQuery("div.text").html("namaskar---" + gd1 + "----" + gd2 + "---" + "---" + gdHeight );	       
+    jQuery(".namaskarpart .raisingfunds").css("height", gdHeight);
+    jQuery(".namaskarpart").animate({"opacity":1});    
+}
 function homeContent(){
 	// verticle center
 	var imgH = jQuery("ul.gridslider1 li:visible").height();
@@ -89,9 +114,7 @@ function homeContent(){
 
 	var hvalue = imgH - contH;
 	var vH = hvalue/1.5;
-//	vH = vH+47;	
 
-	// jQuery(".sliderContent").css("top", vH);
 };
 
 function homeContent1(){
