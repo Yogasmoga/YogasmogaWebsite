@@ -213,7 +213,8 @@ jQuery(window).load(function(){
         $price = round($price,2);
           if (floor($price)==$price)
             $price = floor($price);
-        
+        // for show two digit after decimal
+        $price = number_format((float)($price), 2, '.', '');
         $rewardpoints = Mage::helper('rewardpoints/data')->getProductPointsText($_childproduct, false, false);
         $rewardpoints = strip_tags($rewardpoints);
         //$rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "loyalty") - 1 - strlen("loyalty") - strpos($rewardpoints, "earn") + strlen("earn")));
