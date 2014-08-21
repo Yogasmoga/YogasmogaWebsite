@@ -14,7 +14,13 @@ div.mylayerednavigation div.searchitems div:hover
 {
     background-color : #EFEEED;
 }
-div.mycategory-products div.item td.productprice span.price
+/*div.mycategory-products div.item td.productprice span.price
 {
     display : none;
+}*/
+div.mycategory-products div.item td.productprice span.price
+{
+    display : block;
 }
+.productprice.IN span.price{color:rgba(255, 0, 0, 0.99)!important;}
+.productcost.IN{color:rgba(255, 0, 0, 0.99)!important;}
