@@ -1861,3 +1861,60 @@ table#searchBox div.searchbutton{
 .pressBlock:hover{
     cursor: pointer;
 }
+
+/** AurumFabricTable **/
+.fabrictable{
+    margin: 64px 4% 0;
+    width: 92%;
+}
+.fabrictable .aurumheadingcell td,
+.fabrictable .aurumiconcell td {
+    border-bottom: 1px solid #999;
+    border-right: 1px solid #999;
+    padding: 13px 0;
+    text-align: center;
+}
+.fabrictable .aurumheadingcell td{
+    color: #ae8637;
+    font: 24px/29px ITCAvantGardeProMd;
+    text-transform: uppercase;
+    text-align: left;
+}
+.fabrictable .aurumiconcell td{
+    width: 9.17%;
+    vertical-align: middle;
+}
+.fabrictable .aurumheadingcell td small{
+    color: #555;
+    font: 8px/11px ITCAvantGardeProMd;
+}
+.aurumheadingcell sup {
+    font: 18px/6px itcavantgardepromd;
+}
+.fabrictable .aurumiconcell tr:nth-child(2) td {
+    font: 8px/11px itcavantgardeprobk !important;
+    height: 45px;
+    padding: 5px 6px !important;
+    text-align: left !important;
+    vertical-align: top;
+}
+.fabrictable .aurumiconcell tr:nth-child(1) td {
+    /*padding: 0 !important;*/
+}
+.fabrictable .aurumiconcell tr.headingcell td {
+    /*border: 0 none !important;*/
+    border-top: 1px solid #999;
+    color: #555;
+    font: 11px/19px gothambold !important;
+    height: 55px;
+    padding: 0 !important;
+    text-align: center !important;
+    text-transform: uppercase;
+}
+.gbold {
+    border-top: 1px solid #999;
+    color: #555 !important;
+    font: 11px/19px gothambold !important;
+    height: 85px;
+    vertical-align: middle;
+}
