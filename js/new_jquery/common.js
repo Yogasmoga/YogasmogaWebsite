@@ -192,6 +192,7 @@ jQuery(document).ready(function($){
     $(".right-top-block").on("click","ul.my-acnt li a",function(event){
         if(!_islogedinuser){
             event.preventDefault();
+            _redirectFromSingingPopup = $(this).attr("href");
             $("#signing_popup").dialog( "open" );
         }
     });
