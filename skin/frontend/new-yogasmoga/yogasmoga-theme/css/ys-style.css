@@ -572,7 +572,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 table.box-desc-dvdr.smogibucks{margin-top: 15px; margin-bottom: -5px;}
 .box-desc-dvdr.last {margin: 0;}
 .chatlink {border-bottom: 1px solid #CC0033;font-size: 11px;margin: 0 0 0 20px;text-transform: uppercase; padding-bottom: 5px;}
-.online {color: #999999; float: right; font-style: italic; text-transform: capitalize;}
+.online {color: #999999; float: right; font-style: italic; /*text-transform: capitalize;*/}
 .online > span {background: #00A14B; border-radius: 10px; display: inline-block; height: 6px; margin: 0 4px 0 0; width: 6px;}
 .readmore{padding: 5px 0 0;}
 .readmore span{ border-bottom: 1px solid #C03; font-size: 11px; text-transform: uppercase; color: #555; padding-bottom: 5px;}

@@ -139,7 +139,7 @@ table.quickviewproductdetail div.shortdesc {
 
 table.productdetailtable table.selectedcolor td:first-child
 {
-    padding-right : 4px;
+    /*padding-right : 4px;*/
 }
 
 .quickviewproductdetail .blck-head-sml span {
