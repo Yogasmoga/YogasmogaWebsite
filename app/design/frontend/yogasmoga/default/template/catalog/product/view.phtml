@@ -150,7 +150,7 @@ jQuery(window).load(function(){
     //echo $rewardpoints;
     $rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "smogi") - 3 - strlen("smogi") - strpos($rewardpoints, "earn") + strlen("earn")));
     $productrewardpoints = $rewardpoints;
-    $productprice = "$".$price;
+    $productprice = "$".number_format((float)($price), 2, '.', '');
     
     $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
     $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
