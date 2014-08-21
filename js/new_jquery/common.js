@@ -2,7 +2,7 @@ var _refercount = 1;
 jQuery(window).load(function($){    
     featuredSec(); 
     colorStorySec();    
-    // homeWidthCalc();
+    homeWidthCalc();
     jQuery(".wl-feat-prd,.wl-color-story-prd").animate({opacity:1},1000);   
     featLiHeightAd(); 
     var featLiH = jQuery(".featureList span.ftrFig img").first().height();
@@ -487,9 +487,20 @@ function validatereferform(elem)
 }
 
 function homeWidthCalc(){    
-    var gridLeft = document.getElementById("grid1-left");
-    var gridRIght = document.getElementById("grid1-right");
-    var gridLeftW = window.getComputedStyle(gridLeft).width;
-    var gridRIghtW = window.getComputedStyle(gridRIght).width;
-    console.log(gridLeftW + "---" + gridRIghtW);   
+    // var gridLeft = document.getElementById("grid1-left");
+    // var gridRIght = document.getElementById("grid1-right");
+    // var gridLeftW = window.getComputedStyle(gridLeft).width;
+    // var gridRIghtW = window.getComputedStyle(gridRIght).width;
+    // console.log(gridLeftW + "---" + gridRIghtW);
+    // setTimeout(function(){
+    // var gd1 = jQuery(".namaskarpart").height();
+    // var gd2 = jQuery(".namaskarpart .raisingfunds").height();
+    // var gd3 = jQuery(".namaskarpart .supportnamaskar").height();    
+    // jQuery(".namaskarpart .grid35,.namaskarpart .grid65").css("height",gd1);
+    // var gdS = gd1-gd3;
+    // jQuery("div.text").html(gd1 + "----" + gd2 + "---" + gd3 + "---" + gdS );
+    // console.log(gd1 + "----" );   
+    // jQuery(".namaskarpart .raisingfunds,.usamap").css("height", gdS);
+    // },500);
+    
 }
