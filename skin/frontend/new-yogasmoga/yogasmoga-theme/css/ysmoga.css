@@ -1176,7 +1176,8 @@ table.inputtable tr:first-child td {
 .gridCMSPages .topHead{
     font: 11px/27px gothambold;
     border-bottom: 1px solid #fff;
-    margin: 0 195px 15px;
+    width: 292px;
+    margin: auto auto 15px;
 }
 
 .gridCMSPages h4 .smallHead,
@@ -1284,7 +1285,7 @@ table.inputtable tr:first-child td {
     min-height: 152px;
     color: #555;
     text-align: center;
-    padding: 17px 0;
+    padding: 15px 0;
     width: 100%;
     text-transform: uppercase;
 }
@@ -1368,7 +1369,7 @@ table.inputtable tr:first-child td {
 }
 
 .mrgn24top{
-    margin-top: 60px;
+    margin-top: 41px;
 }
 
 .mrgnbtm0{
@@ -1784,6 +1785,10 @@ table#searchBox div.searchbutton{
 .cms-rangoli .flex-control-nav.flex-control-paging li a:hover {
     background: #cb0032;
 }
+#ysnamaskartxt .topHead{
+    width: 292px;
+    margin: auto auto 15px;
+}
 
 /** YSPRESS **/
 .pressPage .gridFullWidth{
@@ -1917,4 +1922,12 @@ table#searchBox div.searchbutton{
     font: 11px/19px gothambold !important;
     height: 85px;
     vertical-align: middle;
+}
+
+/** HomepageFixes **/
+.contentSlider .aurum sup {
+    font-size: 40px;
+ }
+ .aurum > strong {
+    font: normal 37px/30px AvantGardeGothicITCW01X;
 }
