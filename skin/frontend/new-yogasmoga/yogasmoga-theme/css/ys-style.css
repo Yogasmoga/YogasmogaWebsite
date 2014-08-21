@@ -1147,7 +1147,7 @@ body.customer-address-index .myaccountdashboard .customeraddress td .subsectionh
 .my-wishlist{width: 100% !important; margin: 0 auto;}
 table.tblwishlist td.prname{position: relative; font-family: gothambold !important; color: #555 !important; padding-left: 0 !important; width: 53.105%;}
 table.tblwishlist td.prname .prd-deldet{position: absolute; left: 0px; bottom: 16px;}
-table.tblwishlist td.prname .prd-deldet a{text-transform: uppercase; color: #c03; font-family: gothambook; font-size: 11px; line-height: 25px; margin-right: 25px; border-bottom: 1px solid #c03; padding-bottom: 5px;}
+table.tblwishlist td.prname .prd-deldet a{text-transform: uppercase; /*color: #c03;*/ font-family: gothambook; font-size: 11px; line-height: 25px; margin-right: 25px; border-bottom: 1px solid #c03; padding-bottom: 5px;}
 table.tblwishlist td.primage{width: 26.70% !important; padding-top: 16px !important;}
 
 /***Styling the checkboxes***/ 
