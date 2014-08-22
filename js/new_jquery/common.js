@@ -451,7 +451,7 @@ function featuredSec(){
     var cs_left = jQuery('.wl-cs-left-block').height();
     jQuery(".wl-cs-right-block").css("height", cs_left);
     var cs_right = jQuery(".wl-cs-right-block").height();
-    console.log(cs_right + "----" + cs_left);    
+    // console.log(cs_right + "----" + cs_left);    
     var bIsAppleMobile = fnIsAppleMobile();  
     if(!bIsAppleMobile){
         jQuery(".wl-cs-right-block .top-right-block,.wl-cs-right-block .bottom-right-block").css("height", cs_right/2);
