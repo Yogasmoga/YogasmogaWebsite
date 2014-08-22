@@ -31,7 +31,7 @@
     <action method="addJs"><script>new_jquery/shoppingbag.js</script></action>
     <action method="addJs"><script>new_jquery/emailus.js</script></action>
     <action method="addJs"><script>new_jquery/jquery.appear.js</script></action>
-    <action method="addJs"><script>new_jquery/cmsscript.js</script></action>
+    <action method="addJs"><script>new_jquery/cmsscript.js</script></action>    
 </reference>
 
 
@@ -60,7 +60,7 @@
         <action method="addJs"><script>new_jquery/tswipe.js</script></action>
         <action method="addJs"><script>new_jquery/dressingroom.js</script></action>
         <action method="addJs"><script>new_jquery/myproductdetails.js</script></action>
-
+        <action method="addJs"><script>new_jquery/ysmoga.js</script></action>
     </reference>
 </home>
 
