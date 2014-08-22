@@ -40,9 +40,10 @@
     <?php if($this->getShowAmounts()): ?>
     <p class="amount">
         <?php if($this->getLastPageNum()>1): ?>
-            <?php echo $this->__('Items %s to %s of %s total', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
+            <?php //echo $this->__('Items %s to %s of %s total', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
+            <?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?>
         <?php else: ?>
-            <strong><?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?></strong>
+            <strong><?php //echo $this->__('%s Item(s)', $this->getTotalNum()) ?><?php echo $this->__('%s Item', $this->getTotalNum()) ?></strong>
         <?php endif; ?>
     </p>
     <?php endif ?>

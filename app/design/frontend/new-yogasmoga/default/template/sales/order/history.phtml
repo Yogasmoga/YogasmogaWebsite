@@ -40,10 +40,17 @@
     jQuery("document").ready(function($){
         // $("div.buttons-set").html("<a href='" + homeUrl + "customer/account' class='back-link'>&lt;&nbsp;Back</a>");
         $("div.buttons-set").html("<a href='" + homeUrl + "customer/account' class='back-link'></a>");
+        $("ul.sub-nav li").each(function(){
+            var thisURL = $(this).find("a").attr("href");
+            var currURL = homeUrl + "sales/order/history";
+            if(thisURL == currURL){
+                $(this).addClass("current");
+            }            
+        });
     });
 </script>
-<div class="pg-heading">
-      <h2>My Orders</h2>      
+<div class="pg-heading" style="margin-bottom:89px;">
+      <h2>My Order</h2>      
     </div>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <?php $_orders = $this->getOrders(); ?>
@@ -61,11 +68,11 @@
     <col width="1" />
     <thead>
         <tr>
-            <th><?php echo $this->__('Order #') ?></th>
-            <th><?php echo $this->__('Date') ?></th>
-            <th width="130"><?php echo $this->__('Ship To') ?></th>
-            <th><span class="nobr"><?php echo $this->__('Order Total') ?></span></th>
-            <th><span class="nobr"><?php echo $this->__('Order Status') ?></span></th>
+            <th style="width: 16%;"><?php echo $this->__('Order#') ?></th>
+            <th style="width: 12%;"><?php echo $this->__('Date') ?></th>
+            <th style="width: 23%;"><?php echo $this->__('Ship To') ?></th>
+            <th style="width: 12%;"><span class="nobr"><?php //echo $this->__('Order Total') ?>Order<br />Total</span></th>
+            <th style="width: 16%;"><span class="nobr"><?php //echo $this->__('Order Status') ?>Order<br />Status</span></th>
             <th>&nbsp;</th>
         </tr>
     </thead>
@@ -76,7 +83,7 @@
             <td><?php echo $_order->getRealOrderId() ?></td>
             <td><span class="nobr"><?php echo $this->formatDate($_order->getCreatedAtStoreDate()) ?></span></td>
             <td><?php echo $_order->getShippingAddress() ? $this->htmlEscape($_order->getShippingAddress()->getName()) : '&nbsp;' ?></td>
-            <td class="numeric"><?php echo $_order->formatPrice($_order->getGrandTotal()) ?></td>
+            <td class="numeric l-align"><?php echo $_order->formatPrice($_order->getGrandTotal()) ?></td>
             <td class="no-wrap"><?php 
             if(strcasecmp($_order->getStatusLabel(),"complete") == 0)
                 echo "<a href='".$this->getViewUrl($_order)."' class='link-reorder'>".$_order->getStatusLabel()."</a>";

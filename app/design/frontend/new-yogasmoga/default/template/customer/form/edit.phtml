@@ -33,9 +33,9 @@
     <?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getCustomer())->toHtml() ?>
     <table class="inputtable">
         <tr>
-            <td class="label"><label for="email"><?php echo $this->__('Email') ?></label></td>
+            <!-- <td class="label"><label for="email"><?php echo $this->__('Email') ?></label></td> -->
             <td class="inputholder">
-                <input type="text" name="email" id="email" value="<?php echo $this->htmlEscape($this->getCustomer()->getEmail()) ?>" class="requiredfield" defaulterrormsg="Email Address is required" />
+                <input type="text" name="email" id="email" value="<?php echo $this->htmlEscape($this->getCustomer()->getEmail()) ?>" class="requiredfield watermark" watermark="Email" defaulterrormsg="Email Address is required" />
             </td>
         </tr>
         <tr>
@@ -45,10 +45,15 @@
         </tr>
     </table>
     <table class="inputtable">
-            <tr>
-                <td class="label"><label for="current_password"><?php echo $this->__('Current Password') ?></label></td>
+            <tr class="fake_password">
                 <td class="inputholder">
-                    <input type="password" name="current_password" id="current_password" defaulterrormsg="Current Password is required"  />
+                    <input type="text" autocomplete="off" maxlength="30" class="watermark f_password" watermark="Current Password" class="requiredfield" name="password" defaulterrormsg="Password is required">
+                </td>
+            </tr>
+            <tr class="orig_password">
+                <!-- <td class="label"><label for="current_password"><?php echo $this->__('Current Password') ?></label></td> -->
+                <td class="inputholder">
+                    <input type="password" name="current_password" id="current_password" defaulterrormsg="Current Password is required" class="o_password" />
                 </td>
             </tr>
             <tr>
@@ -71,10 +76,15 @@
     <div id="passwordchangeoptions">
         
         <table class="inputtable f-left">
-            <tr>
-                <td class="label"><label for="password">New Password</label></td>
+            <tr class="fake_password">
                 <td class="inputholder">
-                    <input type="password" name="password" id="password" defaulterrormsg="Password is required" />
+                    <input type="text" autocomplete="off" maxlength="30" class="watermark f_password" watermark="New Password" class="requiredfield" name="password" defaulterrormsg="Password is required">
+                </td>
+            </tr>
+            <tr class="orig_password">
+                <!-- <td class="label"><label for="password">New Password</label></td> -->
+                <td class="inputholder">
+                    <input type="password" name="password" id="password" defaulterrormsg="Password is required" class="o_password"/>
                 </td>
             </tr>
             <tr>
@@ -84,10 +94,15 @@
             </tr>
         </table>
         <table class="inputtable f-right">
-            <tr>
-                <td class="label"><label for="confirmation">Confirm Password</label></td>
+            <tr class="fake_password">
                 <td class="inputholder">
-                    <input type="password" name="confirmation" id="confirmation" defaulterrormsg="Confirmation Password is required" />
+                    <input type="text" autocomplete="off" maxlength="30" class="watermark f_password" watermark="Confirm Password" class="requiredfield" name="password" defaulterrormsg="Password is required">
+                </td>
+            </tr>
+            <tr class="orig_password">
+                <!-- <td class="label"><label for="confirmation">Confirm Password</label></td> -->
+                <td class="inputholder">
+                    <input type="password" name="confirmation" id="confirmation" defaulterrormsg="Confirmation Password is required" class="o_password" />
                 </td>
             </tr>
             <tr>
