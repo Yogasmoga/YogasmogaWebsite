@@ -162,7 +162,7 @@ ul.site-map > li{
     /*padding: 8px 25px;*/
     margin: 37px 0 0;
     display: inline-block;
-    width: 113px;
+    width: 116px;
     height: 37px;
     line-height: 37px;
 }
@@ -1926,8 +1926,11 @@ table#searchBox div.searchbutton{
 
 /** HomepageFixes **/
 .contentSlider .aurum sup {
-    font-size: 40px;
+    font-size: 25px;
  }
  .aurum > strong {
     font: normal 37px/30px AvantGardeGothicITCW01X;
+}
+.flex-control-nav{
+    z-index: 1 !important;
 }
