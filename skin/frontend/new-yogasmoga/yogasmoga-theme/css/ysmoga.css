@@ -1937,3 +1937,6 @@ table#searchBox div.searchbutton{
 .fitDetail .video-block img{
     cursor: pointer;
 }
+.rSldrHeading span > span {
+    text-transform: capitalize !important;
+}
