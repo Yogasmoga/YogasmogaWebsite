@@ -20,7 +20,7 @@
 
 jQuery(document).ready(function($){
 	sliderHomeBx();
-	jQuery(window).resize(function(){
+	$(window).resize(function(){
 		homeContent();
 		homeContent1();
 		compressBoxHeightRes();
