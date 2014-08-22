@@ -467,6 +467,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .featureList > li:nth-child(4) {
     /*margin: 0 0 0 7px !important;*/
     padding:0;
+    cursor: pointer;
 }
 
 

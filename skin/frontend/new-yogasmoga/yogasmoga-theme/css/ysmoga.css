@@ -1934,3 +1934,6 @@ table#searchBox div.searchbutton{
 .flex-control-nav{
     z-index: 1 !important;
 }
+.fitDetail .video-block img{
+    cursor: pointer;
+}

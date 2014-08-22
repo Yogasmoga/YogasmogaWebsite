@@ -170,12 +170,17 @@ jQuery(document).ready(function($){
        scrollToAnchor('smogi-bucks-balance');
     });
 
-    $(".sizechartlink .block-link a#sizechart").click(function() {
-       scrollToAnchor('sizechart');
-    });
+    function showHowDoesItFit(name){
+        var howdoesitfitlink = jQuery("a[name='"+ name +"']");
+        jQuery('html,body').animate({scrollTop: howdoesitfitlink.offset().top - 98},'slow');
+    };
 
     $(".howdoesitfitlink .block-link a#how-does-it-fit").click(function() {
-        scrollToAnchor('how-does-it-fit');
+        showHowDoesItFit('how-does-it-fit');
+    });
+
+    $(".sizechartlink .block-link a#sizechart").click(function() {
+       showHowDoesItFit('sizechart');
     });
 
 
