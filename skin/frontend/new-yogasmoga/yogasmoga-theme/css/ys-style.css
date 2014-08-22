@@ -1799,8 +1799,8 @@ body.cms-help .2-columns-wrapper{padding: 0 40px;}
 /***Landing Page***/
 ul.new-arrivals a.quick-view{display: none;}
 .wl-feat-prd,.wl-color-story-prd{font-size: 0; min-width: 1007px;}
-.wl-left-block,.wl-cs-right-block{width:33.3984375%; display: inline-block; vertical-align: top;}
-.wl-right-block,.wl-cs-left-block{width:66.6015625%; display: inline-block; vertical-align: top;}
+.wl-left-block,.wl-cs-right-block{width:33.366434955312810327706057596822%; /*display: inline-block; vertical-align: top;*/}
+.wl-right-block,.wl-cs-left-block{width:66.633565044687189672293942403178%; /*display: inline-block; vertical-align: top;*/}
 .wl-feat-prd img,.wl-color-story-prd img{width: 100%; display: block;}
 .top-left-block,.bottom-left-block,.top-right-block,.bottom-right-block{width: 100%; display: block; height: 50%;}
 .wl-feat-prd .top-left-block{background: #555555;}

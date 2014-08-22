@@ -1,12 +1,10 @@
 var _refercount = 1;
 jQuery(window).load(function($){    
     featuredSec(); 
-    colorStorySec();    
-    homeWidthCalc();
-    jQuery(".wl-feat-prd,.wl-color-story-prd").animate({opacity:1},1000);   
+    colorStorySec();
     featLiHeightAd(); 
     var featLiH = jQuery(".featureList span.ftrFig img").first().height();
-    jQuery(".featureList span.ftrFig").css("height", featLiH);   
+    jQuery(".featureList span.ftrFig").css("height", featLiH);            
 
 });
 jQuery(document).ready(function($){   
@@ -421,13 +419,19 @@ function madeinusa(){
 
 //     jQuery(".header-container").css("left", fCount); // }
 
-function featuredSec(){
-    var fs_right = jQuery('.wl-right-block').css("height");    
-    var fs_lft = jQuery('.wl-left-block');    
-    fs_lft.css("height", fs_right);
-    var lft_vid =jQuery(".bottom-left-block").height();        
-    var lft_vid_img = jQuery('.bottom-left-block img');
-    var lft_vid_img_height = lft_vid_img.height();
+function featuredSec(){    
+    var fs_right = jQuery('.wl-right-block').height();
+    jQuery(".wl-left-block").css("height", fs_right);
+    var fs_left = jQuery(".wl-left-block").height();       
+    var bIsAppleMobile = fnIsAppleMobile();  
+    if(!bIsAppleMobile){ 
+        jQuery(".wl-left-block .top-left-block,.wl-left-block .bottom-left-block").css("height", fs_left/2);
+    }else if(bIsAppleMobile){
+        jQuery(".wl-left-block .top-left-block").css("height", fs_left/2);
+        var fs_left_top = jQuery(".wl-left-block .top-left-block").height();
+        var fs_left_bot_H = fs_left - fs_left_top;
+        jQuery(".wl-left-block .bottom-left-block").css("height", fs_left_bot_H);
+    }
     // lft_vid_img.css("margin-top", (lft_vid - lft_vid_img_height)/2.07);           
         var posContent = setTimeout(function(){
             // jQuery(window).resize();
@@ -439,16 +443,24 @@ function featuredSec(){
             });                       
             clearTimeout(posContent);
         },100);
+    jQuery(".wl-feat-prd,.wl-color-story-prd").animate({opacity:1},100);
               
 }
 
- function colorStorySec(){
-    var cs_left = jQuery('.wl-cs-left-block img').css("height");
-    var cs_rgt = jQuery('.wl-cs-right-block');    
-    cs_rgt.css("height", cs_left);
-    var rgt_vid =jQuery(".top-right-block").height();        
-    var rgt_vid_img = jQuery(".top-right-block img");
-    var rgt_vid_img_height = rgt_vid_img.height();
+ function colorStorySec(){    
+    var cs_left = jQuery('.wl-cs-left-block').height();
+    jQuery(".wl-cs-right-block").css("height", cs_left);
+    var cs_right = jQuery(".wl-cs-right-block").height();
+    console.log(cs_right + "----" + cs_left);    
+    var bIsAppleMobile = fnIsAppleMobile();  
+    if(!bIsAppleMobile){
+        jQuery(".wl-cs-right-block .top-right-block,.wl-cs-right-block .bottom-right-block").css("height", cs_right/2);
+    }else if(bIsAppleMobile){
+        jQuery(".wl-cs-right-block .top-right-block").css("height", cs_right/2);    
+        var cs_right_top = jQuery(".wl-cs-right-block .top-right-block").height();
+        var cs_right_bot_H = cs_right - cs_right_top;    
+        jQuery(".wl-cs-right-block .bottom-right-block").css("height", cs_right_bot_H);
+    }
     // rgt_vid_img.css("margin-top", (rgt_vid - rgt_vid_img_height)/2.07);
 
     jQuery(".wl-feat-prd .block-content").each(function(){
@@ -457,13 +469,8 @@ function featuredSec(){
         var topPos1 = (parH1 - bl_c_H1)/2;
         jQuery(this).css("top", topPos1);        
     });
-
-    jQuery(".wl-right-block .block-content").each(function(){
-        var bl_c_H2 = jQuery(this).height();
-        var parH2 = jQuery(this).parent().height();
-        var topPos2 = (parH2 - bl_c_H2)/1.55;
-        jQuery(this).css("top", topPos2);        
-    });     
+    jQuery(".wl-feat-prd,.wl-color-story-prd").animate({opacity:1},100);   
+       
 }
 
 function featLiHeightAd(){
@@ -487,21 +494,17 @@ function validatereferform(elem)
     return flag;
 }
 
-function homeWidthCalc(){    
-    // var gridLeft = document.getElementById("grid1-left");
-    // var gridRIght = document.getElementById("grid1-right");
-    // var gridLeftW = window.getComputedStyle(gridLeft).width;
-    // var gridRIghtW = window.getComputedStyle(gridRIght).width;
-    // console.log(gridLeftW + "---" + gridRIghtW);
-    // setTimeout(function(){
-    // var gd1 = jQuery(".namaskarpart").height();
-    // var gd2 = jQuery(".namaskarpart .raisingfunds").height();
-    // var gd3 = jQuery(".namaskarpart .supportnamaskar").height();    
-    // jQuery(".namaskarpart .grid35,.namaskarpart .grid65").css("height",gd1);
-    // var gdS = gd1-gd3;
-    // jQuery("div.text").html(gd1 + "----" + gd2 + "---" + gd3 + "---" + gdS );
-    // console.log(gd1 + "----" );   
-    // jQuery(".namaskarpart .raisingfunds,.usamap").css("height", gdS);
-    // },500);
-    
-}
+function fnIsAppleMobile() 
+{
+    if (navigator && navigator.userAgent && navigator.userAgent != null) 
+    {
+        var strUserAgent = navigator.userAgent.toLowerCase();
+        var arrMatches = strUserAgent.match(/(iphone|ipod|ipad)/);
+        if (arrMatches != null) 
+             return true;
+    } // End if (navigator && navigator.userAgent) 
+
+    return false;
+} // End Function fnIsAppleMobile
+
+
