@@ -121,7 +121,7 @@ function block50height(){
 	var imgcontb1H = jQuery(".eqaulcontbg #imgcontb1").height();
 	var blocktxtheight = jQuery(".eqaulcontbg #imgcontb1 .textContainer").height();
 	var calcheightNamskr = imgcontb1H-blocktxtheight;
-	calcheightNamskr = calcheightNamskr/1.8;
+	calcheightNamskr = calcheightNamskr/1.5;
 	jQuery(".eqaulcontbg #imgcontb1 .textContainer").css("top", calcheightNamskr);
 };
 
@@ -177,8 +177,15 @@ function ysbannertxtheight(){
 	var ysbannertxtheightNamaskar = jQuery(".namaskarblock1 .block66").height();
 	var ystxtheight5 = jQuery(".namaskarblock1 #ysbannertxtSix").height();
 	var calcheight5 = ysbannertxtheightNamaskar-ystxtheight5;
-	calcheight5 = calcheight5/2.3;
+	calcheight5 = calcheight5/1.75;
 	jQuery(".namaskarblock1 #ysbannertxtSix").css("top", calcheight5);
+
+
+	var ysnamaskarblock = jQuery(".namaskarblock2 .block100").height();
+	var ysnamaskartxt = jQuery(".namaskarblock2 #ysnamaskartxt").height();
+	var calcheight6 = ysnamaskarblock-ysnamaskartxt;
+	calcheight6 = calcheight6/2.05;
+	jQuery(".namaskarblock2 #ysnamaskartxt").css("top", calcheight6);
 };
 
 function madeinusagifs(){

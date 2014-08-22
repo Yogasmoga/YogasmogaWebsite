@@ -3,12 +3,18 @@
 jQuery(function(){
 	var currenturl = "<?php echo $currentUrl; ?>";
     var s1 = "<?php echo $currentUrl; ?>";
+    var editBilling = homeUrl + 'customer/address/edit/id/1/';
+    var editShipping = homeUrl + 'customer/address/edit/id/2/';
+    var viewOrder = homeUrl + 'sales/order/view/order_id/';
     console.log(s1);
 	jQuery("ul.sub-nav li").each(function(){
 	        var s2 = jQuery(this).find("a").attr("href");	        
 	        if(s1 == s2)
 	        {
 	            jQuery(this).addClass("current");
+	        }
+	        else if(s1 == editBilling || s1 == editShipping || s1 == viewOrder){
+	        	jQuery(".sub-nav li:nth-child(1)").addClass("current");
 	        }
 	    });
 });    

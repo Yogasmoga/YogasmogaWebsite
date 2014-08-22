@@ -322,7 +322,7 @@ div.sub-fab img{width: 45% !important; display: block; margin:25px auto 0 auto;}
 
 
 /****Women Landing page****/
-div.new-arrivals-block{/*background: url("../images/big-divider.png") no-repeat top,url("../images/big-divider.png") no-repeat bottom;*/ border-top:1px solid #555; padding: 2.1% 0 19px; background-size: 100%,100%;}
+div.new-arrivals-block{/*background: url("../images/big-divider.png") no-repeat top,url("../images/big-divider.png") no-repeat bottom; border-top:1px solid #555;*/ background: #f3f3f4; padding: 2.1% 0 19px; background-size: 100%,100%;}
 ul.new-arrivals{width: 100%; display: block; text-align:center; font-size: 0; margin: 0 auto;}
 ul.new-arrivals li{display: inline-block; width:20%; vertical-align: top; height:auto; /*max-width: 221px;*/ /*max-height: 430px;*/ margin-top: 30px;}
 ul.new-arrivals li img{ margin: 0 auto; display: block;}
@@ -572,7 +572,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 table.box-desc-dvdr.smogibucks{margin-top: 15px; margin-bottom: -5px;}
 .box-desc-dvdr.last {margin: 0;}
 .chatlink {border-bottom: 1px solid #CC0033;font-size: 11px;margin: 0 0 0 20px;text-transform: uppercase; padding-bottom: 5px;}
-.online {color: #999999; float: right; font-style: italic; text-transform: capitalize;}
+.online {color: #999999; float: right; font-style: italic; /*text-transform: capitalize;*/}
 .online > span {background: #00A14B; border-radius: 10px; display: inline-block; height: 6px; margin: 0 4px 0 0; width: 6px;}
 .readmore{padding: 5px 0 0;}
 .readmore span{ border-bottom: 1px solid #C03; font-size: 11px; text-transform: uppercase; color: #555; padding-bottom: 5px;}
@@ -1147,7 +1147,7 @@ body.customer-address-index .myaccountdashboard .customeraddress td .subsectionh
 .my-wishlist{width: 100% !important; margin: 0 auto;}
 table.tblwishlist td.prname{position: relative; font-family: gothambold !important; color: #555 !important; padding-left: 0 !important; width: 53.105%;}
 table.tblwishlist td.prname .prd-deldet{position: absolute; left: 0px; bottom: 16px;}
-table.tblwishlist td.prname .prd-deldet a{text-transform: uppercase; color: #c03; font-family: gothambook; font-size: 11px; line-height: 25px; margin-right: 25px; border-bottom: 1px solid #c03; padding-bottom: 5px;}
+table.tblwishlist td.prname .prd-deldet a{text-transform: uppercase; /*color: #c03;*/ font-family: gothambook; font-size: 11px; line-height: 25px; margin-right: 25px; border-bottom: 1px solid #c03; padding-bottom: 5px;}
 table.tblwishlist td.primage{width: 26.70% !important; padding-top: 16px !important;}
 
 /***Styling the checkboxes***/ 
@@ -1814,8 +1814,8 @@ ul.new-arrivals a.quick-view{display: none;}
 .block-content h4.main-img-text span{display: block;}
 .b-heading{font-family: gothambook; font-size: 11px; color: #fff; text-transform: uppercase; display: inline-block; line-height: normal;} 
 .top-b-heading{border-top: 1px solid #fff; padding:8px 52px 0; /* padding: 10px 60px 0;*/ /*padding:10px 20px 0 20px;*/}
-.top-grey-b-heading{border-top: 1px solid #555; padding:8px 32px 0; margin: 1px 0 0;}
-.bottom-b-heading{border-bottom: 1px solid #fff; /*padding:0 100px 8px 100px;*/ padding: 0 170px 11px;}
+.top-grey-b-heading{border-top: 1px solid #555; /*padding:8px 32px 0;*/ padding: 8px 0 0; width: 149px; margin: 1px 0 0;}
+.bottom-b-heading{border-bottom: 1px solid #fff; /*padding:0 100px 8px 100px; padding: 0 170px 11px; */ padding: 0 0 11px; width: 292px;}
 .shopnow-btn:hover{color: #fff;}
 .bottom-left-block,.top-right-block{cursor:pointer;}
 .html-video-popup{position: fixed; width: 50%; display: none; top: 100px; z-index: 10099;}

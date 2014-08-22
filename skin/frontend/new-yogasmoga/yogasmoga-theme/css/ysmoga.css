@@ -1176,7 +1176,8 @@ table.inputtable tr:first-child td {
 .gridCMSPages .topHead{
     font: 11px/27px gothambold;
     border-bottom: 1px solid #fff;
-    margin: 0 195px 15px;
+    width: 292px;
+    margin: auto auto 15px;
 }
 
 .gridCMSPages h4 .smallHead,
@@ -1284,7 +1285,7 @@ table.inputtable tr:first-child td {
     min-height: 152px;
     color: #555;
     text-align: center;
-    padding: 17px 0;
+    padding: 15px 0;
     width: 100%;
     text-transform: uppercase;
 }
@@ -1368,7 +1369,7 @@ table.inputtable tr:first-child td {
 }
 
 .mrgn24top{
-    margin-top: 60px;
+    margin-top: 41px;
 }
 
 .mrgnbtm0{
@@ -1543,7 +1544,7 @@ table.inputtable tr:first-child td {
 }
 
 .verdi{
-    background: #a28ca7;
+    background: #03856d;
 }
 
 .lime-lite{
@@ -1784,6 +1785,10 @@ table#searchBox div.searchbutton{
 .cms-rangoli .flex-control-nav.flex-control-paging li a:hover {
     background: #cb0032;
 }
+#ysnamaskartxt .topHead{
+    width: 292px;
+    margin: auto auto 15px;
+}
 
 /** YSPRESS **/
 .pressPage .gridFullWidth{
@@ -1860,4 +1865,69 @@ table#searchBox div.searchbutton{
 }
 .pressBlock:hover{
     cursor: pointer;
+}
+
+/** AurumFabricTable **/
+.fabrictable{
+    margin: 64px 4% 0;
+    width: 92%;
+}
+.fabrictable .aurumheadingcell td,
+.fabrictable .aurumiconcell td {
+    border-bottom: 1px solid #999;
+    border-right: 1px solid #999;
+    padding: 13px 0;
+    text-align: center;
+}
+.fabrictable .aurumheadingcell td{
+    color: #ae8637;
+    font: 24px/29px ITCAvantGardeProMd;
+    text-transform: uppercase;
+    text-align: left;
+}
+.fabrictable .aurumiconcell td{
+    width: 9.17%;
+    vertical-align: middle;
+}
+.fabrictable .aurumheadingcell td small{
+    color: #555;
+    font: 8px/11px ITCAvantGardeProMd;
+}
+.aurumheadingcell sup {
+    font: 18px/6px itcavantgardepromd;
+}
+.fabrictable .aurumiconcell tr:nth-child(2) td {
+    font: 8px/11px itcavantgardeprobk !important;
+    height: 45px;
+    padding: 5px 6px !important;
+    text-align: left !important;
+    vertical-align: top;
+}
+.fabrictable .aurumiconcell tr:nth-child(1) td {
+    /*padding: 0 !important;*/
+}
+.fabrictable .aurumiconcell tr.headingcell td {
+    /*border: 0 none !important;*/
+    border-top: 1px solid #999;
+    color: #555;
+    font: 11px/19px gothambold !important;
+    height: 55px;
+    padding: 0 !important;
+    text-align: center !important;
+    text-transform: uppercase;
+}
+.gbold {
+    border-top: 1px solid #999;
+    color: #555 !important;
+    font: 11px/19px gothambold !important;
+    height: 85px;
+    vertical-align: middle;
+}
+
+/** HomepageFixes **/
+.contentSlider .aurum sup {
+    font-size: 40px;
+ }
+ .aurum > strong {
+    font: normal 37px/30px AvantGardeGothicITCW01X;
 }
