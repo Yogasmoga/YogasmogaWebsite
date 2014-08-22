@@ -467,6 +467,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .featureList > li:nth-child(4) {
     /*margin: 0 0 0 7px !important;*/
     padding:0;
+    cursor: pointer;
 }
 
 
@@ -1575,9 +1576,9 @@ div#sizechart td span { font-weight: normal; }
 
 .learnmore-nam {
     float: left;
-    height: 37px !important;
+    height: 40px !important;
     margin: 30px 20px 0 0 !important;
-    width: 124px !important;
+    width: 142px !important;
 }
 
 .learnmore-nam > img {
@@ -2036,7 +2037,7 @@ body.cms-gift-of-ys .gift-of-ys .fixwidth{width: 63.559%; max-width: 1040px; mar
 body.cms-gift-of-ys .gift-banner p{font-family: gothambook; font-size: 12px; line-height: 25px; margin-bottom: 37px; margin-top: -20px;}
 body.cms-gift-of-ys .gift-of-ys #createcardform{padding-top: 30px; padding-bottom: 30px;}
 
-ul.main-menu2 a.main-heading,  x:-moz-any-link {height:35px;}
+ul.main-menu2 a.main-heading,  x:-moz-any-link {height:34px;}
 
 
 .confirmation-page table.referfriendforms td.name, 

@@ -162,7 +162,7 @@ ul.site-map > li{
     /*padding: 8px 25px;*/
     margin: 37px 0 0;
     display: inline-block;
-    width: 113px;
+    width: 116px;
     height: 37px;
     line-height: 37px;
 }
@@ -728,7 +728,7 @@ html[xmlns] .overridefix {
 }
 
 .productCont .prod-img{
-    height: 340px;
+    height: 338px;
 }
 
 .chat-status{
@@ -1897,7 +1897,7 @@ table#searchBox div.searchbutton{
     font: 18px/6px itcavantgardepromd;
 }
 .fabrictable .aurumiconcell tr:nth-child(2) td {
-    font: 8px/11px itcavantgardeprobk !important;
+    font: 11px/17px itcavantgardeprobk !important;
     height: 45px;
     padding: 5px 6px !important;
     text-align: left !important;
@@ -1920,14 +1920,25 @@ table#searchBox div.searchbutton{
     border-top: 1px solid #999;
     color: #555 !important;
     font: 11px/19px gothambold !important;
-    height: 85px;
+    height: 108px;
     vertical-align: middle;
 }
 
 /** HomepageFixes **/
 .contentSlider .aurum sup {
-    font-size: 40px;
+    font-size: 25px;
  }
  .aurum > strong {
     font: normal 37px/30px AvantGardeGothicITCW01X;
 }
+
+.flex-control-nav{
+    z-index: 1 !important;
+}
+.fitDetail .video-block img{
+    cursor: pointer;
+}
+.rSldrHeading span > span {
+    text-transform: capitalize !important;
+}
+
