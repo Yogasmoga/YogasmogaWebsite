@@ -1899,7 +1899,7 @@ table#searchBox div.searchbutton{
 }
 .fabrictable .aurumiconcell tr:nth-child(2) td {
     font: 10px/14px itcavantgardeprobk !important;
-    height: 65px;
+    height: 70px;
     padding: 5px 6px !important;
     text-align: left !important;
     vertical-align: top;
@@ -1921,7 +1921,7 @@ table#searchBox div.searchbutton{
     border-top: 1px solid #999;
     color: #555 !important;
     font: 11px/19px gothambold !important;
-    height: 105px;
+    height: 110px;
     vertical-align: middle;
 }
 
@@ -1937,6 +1937,7 @@ table#searchBox div.searchbutton{
 .flex-control-nav{
     left: 40%;
     right: 40%;
+    width: auto !important;
 }
 .fitDetail .video-block img{
     cursor: pointer;
