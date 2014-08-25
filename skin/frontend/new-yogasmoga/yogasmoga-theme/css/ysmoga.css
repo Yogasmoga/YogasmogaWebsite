@@ -1928,6 +1928,7 @@ table#searchBox div.searchbutton{
 /** HomepageFixes **/
 .contentSlider .aurum sup {
     font-size: 25px;
+    line-height: 20px;
  }
  .aurum > strong {
     font: normal 37px/30px AvantGardeGothicITCW01X;
