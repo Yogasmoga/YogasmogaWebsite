@@ -64,6 +64,7 @@ jQuery(document).ready(function($){
         $("#shippingDetails").css("background","rgba(0, 0, 0, 0.0784314)");
         $("#billingDetails").css("background","");
         $("#billingDetails .checkoutcontinuebtn").show();
+        $("#billingDetails .checkoutcontinuebtn.marbtm745").hide()
     });
 
     if($("#checkout-shipping-form").length == 0)
@@ -97,7 +98,7 @@ jQuery(document).ready(function($){
 
     if($("select#shipping\\:country_id").length > 0)
     {
-        $("select#shipping\\:country_id").attr("class","").addClass('requiredfield').attr("defaulterrormsg","Country is required").removeAttr("title");
+        $("select#shipping\\:country_id").attr("class","").addClass('requiredfield').attr("defaulterrormsg","Country is required.").removeAttr("title");
         $("select#shipping\\:country_id").change(function(){
             fillShippingState();
         });
@@ -106,7 +107,7 @@ jQuery(document).ready(function($){
 
     if($("select#billing\\:country_id").length > 0)
     {
-        $("select#billing\\:country_id").attr("class","").addClass('requiredfield').attr("defaulterrormsg","Country is required").removeAttr("title");
+        $("select#billing\\:country_id").attr("class","").addClass('requiredfield').attr("defaulterrormsg","Country is required.").removeAttr("title");
         $("select#billing\\:country_id").change(function(){
             fillBillingState();
         });
@@ -1287,4 +1288,10 @@ function resetCheckoutForm(){
     jQuery(':input','#checkout-shipping-form').not(':button, :submit, :reset, :hidden, :checkbox').val('').removeAttr('checked').removeAttr('selected');
     jQuery('#checkout-shipping-form #shipping\\:country_id').val( "US" );
     jQuery('#checkout-shipping-form #shipping\\:country_id').trigger( "change" );
+    // jQuery(':input').focus().blur();
+    jQuery("#shipping\\:firstname,#shipping\\:lastname").each(function(){
+        var waterVal =jQuery(this).attr("watermark");
+        jQuery(this).removeClass("watermark").removeAttr("watermark");
+        jQuery(this).attr("placeholder", waterVal);
+    });
 }
