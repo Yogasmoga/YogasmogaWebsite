@@ -30,6 +30,8 @@
 ?>
 
 <?php
+    $productselectedoptionarray = array("foo" => "bar");
+    Mage::register('productselectedoptionarray', $productselectedoptionarray);
     function format_bill($html)
     {
         //return $html;
@@ -96,7 +98,49 @@
         }
         return false;
     }
-    
+    function searchcartnew($minidetails, $sku, $productselectedoptioncount = null)
+    {
+        if($productselectedoptioncount > 0)
+        {
+            $optionarray = Mage::registry('productselectedoptionarray');
+            if(searchforoptionproduct($optionarray,$sku) == false)
+            {
+                array_push($optionarray, $sku);
+                Mage::unregister('productselectedoptionarray');
+                Mage::register('productselectedoptionarray', $optionarray);
+                return false;
+            }
+            else
+                return true;
+        }
+        foreach($minidetails as $item)
+        {
+            if($item['sku'] == $sku  )
+            {
+                $optionarray = Mage::registry('productselectedoptionarray');
+                if(searchforoptionproduct($optionarray,$sku) == true)
+                {
+                    return false;
+                }
+                return true;
+            }
+
+        }
+        return false;
+    }
+    function searchforoptionproduct($productarr,$sku)
+    {
+        foreach($productarr as $key=>$value)
+        {
+            if($value == $sku  )
+            {
+                return true;
+            }
+
+        }
+        return false;
+    }
+
     function getMiniImage($productid, $color)
     {
         $_gallery = Mage::getModel('catalog/product')->load($productid)->getMediaGalleryImages();
@@ -182,7 +226,10 @@
             $temparray = array();
             if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
             {
-                if(searchcart($miniitems, $item->getSku()) == false)
+                $productselectedoption = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
+                $productselectedoptioncount = count($productselectedoption['options']);
+
+                if(searchcartnew($miniitems, $item->getSku(),$productselectedoptioncount) == false  )
                 {
                     $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$item->getSku());
                     $product = Mage::getModel('catalog/product')->load($item->getProductId());
@@ -203,6 +250,13 @@
                     }
                     if(issuperattribute($product, "size"))
                         $temparray['size'] = $_product->getAttributeText('size');
+                    if(issuperattribute($product, "length"))
+                        $temparray['length'] = $_product->getAttributeText('length');
+                    if(count($productselectedoption['options'])>0)
+                    {
+                        $temparray['optionlabel'] = $productselectedoption['options'][0]['label'];
+                        $temparray['optionvalue'] = $productselectedoption['options'][0]['value'];
+                    }
                     $temparray['quantity'] = $item->getQty();
                     $temparray['individualprice'] = $item->getBaseCalculationPrice();
                     $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 0, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
@@ -326,6 +380,14 @@
                                         }   
                                      ?>
                                      <?php
+                                        if(isset($item['length']))
+                                        {
+                                            ?>
+                                                <div class="productdetail"><span class="productattribute">LENGTH:</span>&nbsp;&nbsp;<?php echo $item['length']; ?></div>
+                                            <?php
+                                        }
+                                     ?>
+                                     <?php
                                         if($item['preorder'])
                                         {
                                             ?>
@@ -360,6 +422,22 @@
                                             <?php
                                         }   
                                      ?>
+                                    <?php
+                                    if(isset($item['length']))
+                                    {
+                                        ?>
+                                        <div class="productdetail"><span class="productattribute">LENGTH:</span>&nbsp;&nbsp;<?php echo $item['length']; ?></div>
+                                    <?php
+                                    }
+                                    ?>
+                                    <?php
+                                    if(isset($item['optionlabel']))
+                                    {
+                                        ?>
+                                        <div class="productdetail"><span class="productattribute"><?php echo $item['optionlabel'].":"; ?></span>&nbsp;&nbsp;<?php echo $item['optionvalue']; ?></div>
+                                    <?php
+                                    }
+                                    ?>
                                      <?php
                                         if($item['preorder'])
                                         {
