@@ -319,12 +319,13 @@ function bubble(status){
                 </a>
             </h1>            
             <ul class="f-left main-menu ctag-menu">
-            <li id="stepCheck">3 Step Checkout <span>Free and fast shipping to US and Canada
-                <span class="f-right" style="margin: 0 0 0 10px">
+            <li id="stepCheck">3 Step Checkout <span><span class="f-left">Free and fast shipping to US and Canada</span>
+                <span class="f-left" style="margin: 0 0 0 10px">
                     <img alt="YOGASMOGA - United States" src="<?php echo $this->getSkinUrl('images/us-flag.jpg') ?>" />
                     <img alt="YOGASMOGA - Canada" src="<?php echo $this->getSkinUrl('images/can-flag.jpg') ?>" />
                     <img alt="YOGASMOGA - Global" src="<?php echo $this->getSkinUrl('images/global-flag.jpg') ?>" />
                 </span>
+                <div class="clear-fix"></div>
             </span></li>
                 <?php
                 $base_url = Mage::helper('core/url')->getHomeUrl();

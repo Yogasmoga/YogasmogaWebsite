@@ -2131,8 +2131,8 @@ input:-webkit-autofill:focus {
 .data-table.ys tbody td:last-child span.nobr a{font-size: 11px;}
 .track-invites table.referredfriendslist td.name div, .track-invites table.referredfriendslist td.email div{font-size:12px !important;}
 .namaskarpart,.factorypart,.yscolorpart,.ysfabricpart{opacity: 0;}
-td.checkShippingBox input[type="checkbox"]{display: none;}
-td.checkShippingBox input[type="checkbox"]+label{
+td.checkShippingBox input[type="checkbox"],td.checkBillingBox input[type="checkbox"]{display: none;}
+td.checkShippingBox input[type="checkbox"]+label, td.checkBillingBox input[type="checkbox"]+label{
     background: url("../images/new-elements/checkbox1.jpg") no-repeat top left;
     cursor: pointer;
     display: inline-block;
@@ -2141,6 +2141,6 @@ td.checkShippingBox input[type="checkbox"]+label{
     padding: 6px 0 0px 52px;
     width: auto;
 }
-td.checkShippingBox input[type="checkbox"]:checked + label {
+td.checkShippingBox input[type="checkbox"]:checked + label, td.checkBillingBox input[type="checkbox"]:checked + label {
     background: url("../images/new-elements/checkbox1.jpg") no-repeat left -32px;
 }
