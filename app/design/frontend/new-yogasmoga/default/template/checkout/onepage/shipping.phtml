@@ -26,7 +26,7 @@
 ?>
 <script type="text/javascript">
     var StateCollection = <?php echo $this->helper('directory')->getRegionJson() ?>;
-    //console.log(StateCollection);
+    //console.log(StateCollection);    
 </script>
 <form action="" id="checkout-shipping-form">
 
@@ -135,7 +135,7 @@
     <!-- City -->
 
     <!-- State -->
-    <table class="inputtable wdth30">
+    <table class="inputtable wdth50 f-right">
         <tr>
             <td class="inputholder">
                 <select id="shipping:region_id" placeholder="ST" name="shipping[region_id]" style="display:none;" defaulterrormsg="State / Province is required.">
@@ -160,7 +160,7 @@
 
 
     <!-- ZipCode -->
-    <table class="inputtable wdth20 f-right">
+    <table class="inputtable wdth50">
         <tr>
             <td class="inputholder">
                 <input type="text" placeholder="Zip Code" name="shipping[postcode]" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" id="shipping:postcode" class="requiredfield" defaulterrormsg="Zip Code is required" />
@@ -184,7 +184,7 @@
             </td>
         </tr>
 
-                <table class="inputtable">
+                <table class="inputtable wdth50 f-right">
                     <tr>
                         <td class="inputholder">
                             <input type="text" placeholder="Telephone" name="shipping[telephone]" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) ?>" class="requiredfield" id="shipping:telephone" defaulterrormsg="Telephone is required" />
@@ -201,12 +201,13 @@
     
 
     <?php if ($this->isCustomerLoggedIn() && $this->customerHasAddresses()):?>
-        <table>
+        <table style="width:100%;">
             <tr>
                 <td class="checkShippingBox">
-                    <input type="checkbox" name="shipping[save_in_address_book]" value="1" id="shipping:save_in_address_book" <?php if ($this->getAddress()->getSaveInAddressBook()):?> checked="checked"<?php endif;?> class="checkbox" />
+                    <input style="margin-top:4px;" type="checkbox" name="shipping[save_in_address_book]" value="1" id="shipping:save_in_address_book" <?php if ($this->getAddress()->getSaveInAddressBook()):?> checked="checked"<?php endif;?> class="checkbox f-left" />
 
-                    <label for="shipping:save_in_address_book"><?php echo $this->__('Save in Address Book') ?></label>
+                    <label class="f-left" for="shipping:save_in_address_book"><?php echo $this->__('Save in Address Book') ?></label>
+                    <div class="clear-fix"></div>
                 </td>
             </tr>
         </table>

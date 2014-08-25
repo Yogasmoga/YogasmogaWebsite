@@ -129,7 +129,24 @@ jQuery(document).ready(function($){
             });
         }
        });
-
+    /***For Footer # links **/
+      $("ul.site-map").on("click","li.cms-id", function(){       
+        if($(this).attr("data-blockid") != "empty"){
+            $(".side-menu-bar ul li").children("a").find("span.arr").text("");
+            $(".pg-content").html("<img class='cms-loader' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
+            var blockid_data = $(this).attr("data-blockid");
+            retrievecmsblockcontent(blockid_data);
+            
+            $(".side-menu-bar ul li").each(function(){
+                $(this).children("a").removeClass("current");
+                if($(this).attr("data-blockid") == blockid_data)
+                {
+                   $(this).children("a").addClass("current");
+                   $(this).children("a").find("span.arr").text(">");
+                }
+            });
+        } 
+      });
 
      // check for click from top menu navigation for cms page
     $(".main-menu2 li").find("a.main-heading").on("click",function(event){
@@ -170,12 +187,17 @@ jQuery(document).ready(function($){
        scrollToAnchor('smogi-bucks-balance');
     });
 
-    $(".sizechartlink .block-link a#sizechart").click(function() {
-       scrollToAnchor('sizechart');
-    });
+    function showHowDoesItFit(name){
+        var howdoesitfitlink = jQuery("a[name='"+ name +"']");
+        jQuery('html,body').animate({scrollTop: howdoesitfitlink.offset().top - 98},'slow');
+    };
 
     $(".howdoesitfitlink .block-link a#how-does-it-fit").click(function() {
-        scrollToAnchor('how-does-it-fit');
+        showHowDoesItFit('how-does-it-fit');
+    });
+
+    $(".sizechartlink .block-link a#sizechart").click(function() {
+       showHowDoesItFit('sizechart');
     });
 
 
@@ -192,7 +214,8 @@ jQuery(document).ready(function($){
         if(objectPage[blockid]){
             //alert(objectPage[blockid]);
             //$(objectPage[blockid]).appendTo(".pg-content");
-            $(".pg-content").html($(objectPage[blockid])).scrollTop(0);
+            $("body,html").scrollTop(0);
+            $(".pg-content").html($(objectPage[blockid]));
             $zopim(function() {
                 $zopim.livechat.setOnStatus(bubble);
             });
@@ -211,13 +234,13 @@ jQuery(document).ready(function($){
                     objectPage[blockid] = data.html;
                     if(status == "success")
                     {
-                        $(".pg-content").html($(objectPage[blockid])).scrollTop(0);
-
-
+                        $("body,html").scrollTop(0);
+                        $(".pg-content").html($(objectPage[blockid]));
                     }
                     else
                     {
-                        $(".pg-content").html($(objectPage[blockid])).scrollTop(0);
+                        $("body,html").scrollTop(0);
+                        $(".pg-content").html($(objectPage[blockid]));
                     }
                     $zopim(function() {
                         $zopim.livechat.setOnStatus(bubble);

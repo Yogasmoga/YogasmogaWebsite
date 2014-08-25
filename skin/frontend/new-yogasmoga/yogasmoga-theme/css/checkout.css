@@ -136,9 +136,9 @@ table.co-ov-table tr.first td.a-left.total
 }
 table.co-ov-table thead th
 {
-    font-family:gothambook;
+    font-family:gothambold;
     font-size : 11px;
-    letter-spacing: 0.6pt;
+    /*letter-spacing: 0.6pt;*/
     font-weight: bold;
     padding-bottom : 30px;
 }
@@ -253,7 +253,7 @@ table.co-ov-table tfoot tr td
 {
     padding-bottom : 17px;
     text-transform: uppercase;
-    padding-right : 10px;
+    /*padding-right : 10px;*/
 }
 table.co-ov-table tfoot tr.first td,table.co-ov-table tfoot tr.last td
 {

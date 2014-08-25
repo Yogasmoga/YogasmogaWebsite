@@ -30,28 +30,28 @@
 ?>
 <?php if ($this->includeTax() && $this->getTotalExclTax()>=0):?>
 <tr>
-    <td style="<?php echo $this->getStyle() ?>" class="a-right" colspan="<?php echo $this->getColspan(); ?>">
-        <?php echo $this->helper('tax')->__('TOTAL BEFORE SHIPPING')?>
+    <td style="<?php echo $this->getStyle() ?>" class="a-right gothambd" colspan="<?php echo $this->getColspan(); ?>">
+        <?php echo $this->helper('tax')->__('TOTAL AMOUNT PAYABLE')?>
     </td>
-    <td style="<?php echo $this->getStyle() ?>" class="a-right">
+    <td style="<?php echo $this->getStyle() ?>" class="a-right gothambd">
         <?php echo $this->helper('checkout')->formatPrice($this->getTotalExclTax()) ?>
     </td>
 </tr>
 <?php echo $this->renderTotals('taxes', $this->getColspan()); ?>
 <tr>
-    <td style="<?php echo $this->getStyle() ?>" class="a-right" colspan="<?php echo $this->getColspan(); ?>">
-        <?php echo $this->helper('tax')->__('TOTAL BEFORE SHIPPING')?>
+    <td style="<?php echo $this->getStyle() ?>" class="a-right gothambd" colspan="<?php echo $this->getColspan(); ?>">
+        <?php echo $this->helper('tax')->__('TOTAL AMOUNT PAYABLE')?>
     </td>
-    <td style="<?php echo $this->getStyle() ?>" class="a-right">
+    <td style="<?php echo $this->getStyle() ?>" class="a-right gothambd">
         <?php echo $this->helper('checkout')->formatPrice($this->getTotal()->getValue()) ?>
     </td>
 </tr>
 <?php else:?>
 <tr>
-    <td style="<?php echo $this->getStyle() ?>" class="a-right" colspan="<?php echo $this->getColspan(); ?>">
-        <?php echo $this->helper('tax')->__('TOTAL BEFORE SHIPPING')?>
+    <td style="<?php echo $this->getStyle() ?>" class="a-right gothambd" colspan="<?php echo $this->getColspan(); ?>">
+        <?php echo $this->helper('tax')->__('TOTAL AMOUNT PAYABLE')?>
     </td>
-    <td style="<?php echo $this->getStyle() ?>" class="a-right">
+    <td style="<?php echo $this->getStyle() ?>" class="a-right gothambd">
         <?php echo $this->helper('checkout')->formatPrice($this->getTotal()->getValue()) ?>
     </td>
 </tr>

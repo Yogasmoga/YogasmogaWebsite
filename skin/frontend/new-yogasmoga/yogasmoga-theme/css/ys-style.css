@@ -18,8 +18,8 @@
 .clear-fix{clear:both;}
 .in-bl{display: inline-block !important;}
 .bl{display: block;}
-.gothambd{font-family: gothambold;}
-.gothambk{font-family: gothambook;}
+.gothambd{font-family: gothambold !important;}
+.gothambk{font-family: gothambook !important;}
 .no-wrap{white-space: nowrap;}
 .pointer{cursor: pointer;}
 .full-width{width: 100%;}
@@ -467,6 +467,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .featureList > li:nth-child(4) {
     /*margin: 0 0 0 7px !important;*/
     padding:0;
+    cursor: pointer;
 }
 
 
@@ -746,8 +747,8 @@ span.country {
 .addNewAdd .gryWrap table.inputtable td select {
     background: none repeat scroll 0 0 #fff;
     display: block;
-    font: italic 12px gothambook;
-    height: 36px;
+    font: 12px gothambook;
+    height: 34px;
     padding: 9px 5px 5px;
     width: 271px;
 }
@@ -763,12 +764,14 @@ span.country {
     border: 0 none;
     font: italic 12px gothambook;
     height: 22px;
-    padding: 5px 8px;
+    padding: 0 8px;
+    height: 34px;
     width: 94%;
 }
 #checkout-shipping-form table.inputtable.wdth50 .inputholder > input,
 #co-billing-form table.inputtable.wdth50 .inputholder > input {
-    width: 85% !important;
+    width: 100% !important;
+    -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box;
 }
 #checkout-shipping-form table.inputtable td.errortext,
 #co-billing-form table.inputtable td.errortext {
@@ -788,7 +791,8 @@ span.country {
 #checkout-shipping-form table.inputtable.wdth50,
 #co-billing-form table.inputtable.wdth50 {
     float: left;
-    width: 50% !important;
+    width: 48.5% !important;
+
 }
 #checkout-shipping-form table.inputtable.wdth20,
 #co-billing-form table.inputtable.wdth20 {
@@ -1115,22 +1119,24 @@ body.customer-address-index .myaccountdashboard .customeraddress td .subsectionh
 
 
 /***Order History***/
-#my-orders-table{border-spacing: 0; border-left: 1px solid #efefef;}
-#my-orders-table tr.last th{padding:25px 10px 20px 10px !important; }
-#my-orders-table tbody tr td{padding: 10px 10px 5px 10px !important; border-bottom: 10px solid #efefef; color: #555 !important; font-size: 12px; font-family: gothambook;}
+#my-orders-table{border-spacing: 0; background: #f3f3f4; padding: 30px 30px 20px 30px;}
+#my-orders-table tr.last th{padding: 0 0 15px 0!important; border-bottom: 1px solid #999; }
+#my-orders-table tbody tr td{padding: 7px 0 !important; border-bottom: 1px solid #999; color: #555 !important; font-size: 12px; font-family: gothambook; line-height: 17px; vertical-align: initial;}
 #my-orders-table tbody tr td:nth-last-child(2){border-right: 1px solid #efefef;}
-#my-orders-table tbody tr:last-child td{border-bottom: 15px solid #efefef;}
-#my-orders-table tbody tr td:last-child{border-color: transparent;}
-#my-orders-table thead tr th{background: #efefef; font-size: 11px; color: #555; font-family: gothambook;}
+/*#my-orders-table tbody tr:last-child td{border-bottom: 15px solid #efefef;}*/
+/*#my-orders-table tbody tr td:last-child{border-color: transparent;}*/
+#my-orders-table thead tr th{font-size: 12px; color: #555; font-family: gothambold; vertical-align: top;}
 #my-orders-table thead tr th:last-child{background: transparent;}
-.pager .limiter{margin-right: 200px;}
-.pager{padding: 4px 10px; color: #555; font-family: gothambook; font-size: 12px; font-weight: normal; letter-spacing: normal;}
+.pager{padding: 4px 10px; color: #555; font-family: gothambook; font-size: 12px; font-weight: normal; letter-spacing: normal; background: #f3f3f4; margin: 0; padding: 0 30px 30px 30px;}
 .pager .amount strong{font-weight: normal; font-family: gothambook; font-size: 12px; letter-spacing: normal;}
-#my-orders-table tbody td span.nobr a{color: #555 !important; border-bottom: 1px solid #d90d3d; padding-bottom: 5px; text-transform: uppercase;}
-#edit-accountinfo table tr:first-child,#address-form table tr:first-child{background: #fff; height: 34px;}
-#edit-accountinfo table tr:first-child td{padding:0 8px; border: none; height: 34px; line-height: 34px;}
+#my-orders-table tbody td span.nobr a{color: #555 !important; border-bottom: 1px solid #d90d3d; padding-bottom: 2px; text-transform: uppercase;}
+#edit-accountinfo table tr:first-child,#address-form table tr:first-child,tr.orig_password{background: #fff; height: 34px;}
+#edit-accountinfo table tr:first-child td,tr.orig_password td{padding:0 8px; border: none; height: 34px; line-height: 34px;}
 #address-form table tr:first-child td{padding:8px; border: none;}
 #edit-accountinfo table tr:first-child td label,#edit-accountinfo table tr:first-child td input,#address-form table tr:first-child td label{font-size: 11px;}
+.pager .limiter select{margin-right: 6px; margin-left: 8px; width: 59px; height: 30px; padding-left: 16px;}
+.pager .amount,.pager .pages{height: 30px; line-height: 30px;}
+.pager .pages strong{font-family: gothambook !important;}
 
 /***edit account Info***/
 .my-account .edit-info,.refer-frnd,.refer-link,.track-invites,.edit-dash-address{background: #efefef; padding: 25px; width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box; } 
@@ -1570,9 +1576,9 @@ div#sizechart td span { font-weight: normal; }
 
 .learnmore-nam {
     float: left;
-    height: 37px !important;
+    height: 40px !important;
     margin: 30px 20px 0 0 !important;
-    width: 124px !important;
+    width: 142px !important;
 }
 
 .learnmore-nam > img {
@@ -2031,7 +2037,7 @@ body.cms-gift-of-ys .gift-of-ys .fixwidth{width: 63.559%; max-width: 1040px; mar
 body.cms-gift-of-ys .gift-banner p{font-family: gothambook; font-size: 12px; line-height: 25px; margin-bottom: 37px; margin-top: -20px;}
 body.cms-gift-of-ys .gift-of-ys #createcardform{padding-top: 30px; padding-bottom: 30px;}
 
-ul.main-menu2 a.main-heading,  x:-moz-any-link {height:35px;}
+ul.main-menu2 a.main-heading,  x:-moz-any-link {height:34px;}
 
 
 .confirmation-page table.referfriendforms td.name, 
@@ -2125,3 +2131,16 @@ input:-webkit-autofill:focus {
 .data-table.ys tbody td:last-child span.nobr a{font-size: 11px;}
 .track-invites table.referredfriendslist td.name div, .track-invites table.referredfriendslist td.email div{font-size:12px !important;}
 .namaskarpart,.factorypart,.yscolorpart,.ysfabricpart{opacity: 0;}
+td.checkShippingBox input[type="checkbox"]{display: none;}
+td.checkShippingBox input[type="checkbox"]+label{
+    background: url("../images/new-elements/checkbox1.jpg") no-repeat top left;
+    cursor: pointer;
+    display: inline-block;
+    height: 26px;
+    margin: 2px 0 20px;
+    padding: 6px 0 0px 52px;
+    width: auto;
+}
+td.checkShippingBox input[type="checkbox"]:checked + label {
+    background: url("../images/new-elements/checkbox1.jpg") no-repeat left -32px;
+}
