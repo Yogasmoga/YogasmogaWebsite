@@ -103,7 +103,8 @@ $shippingAddress = $this->getShippingAddress();
         <?php echo $this->getChildHtml('agreements'); ?>
         <div id="checkout-buttons">
             <div class="buttons-set buttons-set-order" id="review-buttons-container">
-                <button type="button" id="review_button" value="<?php echo $this->__('Place Order') ?>" class="button btn-checkout"><span><span class="no-bg"><?php echo $this->__('Place Order') ?></span></span></button>
+                <button style="margin:0;" type="button" id="update_order_dummy" class="button btn-checkout f-left"><!-- <span><span class="no-bg"><?php echo $this->__('Update Order Data') ?></span></span> --></button>
+                <button type="button" id="review_button" value="<?php echo $this->__('Place Order') ?>" class="button btn-checkout"><!-- <span><span class="no-bg"><?php echo $this->__('Place Order') ?></span></span> --></button>
                 <button type="button" id="review_submit" value="<?php echo $this->__('Place Order') ?>" class="button btn-checkout"><span><span><?php echo $this->__('Place Order') ?></span></span></button>
                 <button type="button" id="update_order" class="button btn-checkout"><span><span class="no-bg"><?php echo $this->__('Update Order Data') ?></span></span></button>                
                 <?php /*

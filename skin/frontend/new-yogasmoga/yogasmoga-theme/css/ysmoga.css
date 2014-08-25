@@ -840,7 +840,7 @@ ul.tr-menu > li.free-shipping {
     display: inline-block;
     font-family: gothambook;
     font-size: 11px;
-    margin: 12px 0 20px;
+    margin: 22px 0 20px;
     padding: 0 0 2px;
     text-decoration: none;
     text-transform: uppercase;
@@ -859,7 +859,7 @@ ul.tr-menu > li.free-shipping {
     cursor: pointer;
     display: inline-block;
     height: auto;
-    margin: 2px 0 10px;
+    margin: 2px 0 20px;
     padding: 10px 0 9px 45px;
     width: auto;
 }
@@ -886,7 +886,7 @@ ul.tr-menu > li.free-shipping {
 }
 
 #sign-up-form table td, #sign-in-form table td, #invite-friend-form table td {
-    padding-bottom: 10px !important;
+    padding-bottom: 10px;
 }
 
 #sign-up-form table input, #sign-in-form table input, #invite-friend-form table input {
@@ -1931,6 +1931,7 @@ table#searchBox div.searchbutton{
  .aurum > strong {
     font: normal 37px/30px AvantGardeGothicITCW01X;
 }
+
 .flex-control-nav{
     z-index: 1 !important;
 }
@@ -1940,3 +1941,4 @@ table#searchBox div.searchbutton{
 .rSldrHeading span > span {
     text-transform: capitalize !important;
 }
+

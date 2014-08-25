@@ -3835,7 +3835,8 @@ body.paypal-express-review #order_review_form table.inputtable td.inputholder se
     float: left;
     height: 30px;
     padding: 0 10px;
-    width: 93% !important;
+    width: 100% !important;
+    -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box;
 }
 
 #billing-address td.label,
@@ -3900,7 +3901,7 @@ body.paypal-express-review div.col-1,body.paypal-express-review div.col-2
 
 body.paypal-express-review div.page-title {
     border-top: 1px solid #999;
-    margin: 29px 40px 72px;
+    margin: 29px 40px 52px;
     padding: 17px 0 0;
     width: auto;
 }
@@ -3956,16 +3957,17 @@ body.paypal-express-review #details-table tbody tr td h3.product-name
     color: #555;
     font: 11px/25px gothambook;
     margin: -2px 0 0 13px;
-    padding: 0 0 2px;
+    padding: 0 0 4px;
     text-decoration: none;
 }
 
 .paypal-review-order thead {
-    border-bottom: 1px solid #b9b9b9;
-    display: block;
+   /* border-bottom: 1px solid #b9b9b9;
+    display: block;*/
     margin: 0 0 25px;
     width: 100%;
 }
+
 
 .paypal-review-order .paypal-details{
     width: 100% !important;
@@ -3982,11 +3984,11 @@ table.co-ov-table thead th {
 .info-set1 {   padding:0; }
 
 #checkout-buttons
-{   max-width: 960px; margin-left: auto; margin-right: auto;}
+{   max-width: 660px; margin-left: auto; margin-right: auto;}
 
 .paypal-shipping-method h3, .info-set1 h2.legend1 {
     color: #555;
-    font: 20px/29px ITCAvantGardeProBk;
+    font: 20px/29px ITCAvantGardeProMd;
     text-transform: uppercase;
     margin: 0 0 25px;
 }
@@ -4034,17 +4036,18 @@ table.co-ov-table thead th {
 }
 
 .shippingRadio input[type="radio"] + label {
-    background: url("../images/radiobg.jpg") no-repeat left -33px rgba(0, 0, 0, 0);
+    background: url("../images/new-elements/checkbox1.jpg") no-repeat left top rgba(0, 0, 0, 0);
     cursor: pointer;
     display: inline-block;
     height: auto;
     margin: 0;
     padding: 0 0 0 53px;
     width: auto;
+    height: 32px
 }
 
 .shippingRadio input[type="radio"]:checked + label {
-    background-position: left top;
+    background-position: left -32px ;
 }
 
 
@@ -4086,7 +4089,7 @@ body.paypal-express-review #shipping-method-container > table:first-child {
     margin-top: 0;
 }
 body.paypal-express-review #shipping-method-container > table {
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .no-padding-bottom
@@ -4122,12 +4125,12 @@ body.paypal-express-review #order_review_form button.no-checkout#update_order:ac
     background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/update_order_off.png") no-repeat scroll 0 0 ;
 }
 
-body.paypal-express-review #order_review_form button#review_button span
+body.paypal-express-review #order_review_form button#review_button 
 {
-    background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/checkout/submit_off1.png") no-repeat scroll 0 0 ;
+    background: url("../images/checkout/pp-submit.png") no-repeat scroll 0 0 ;
     border: 0 none;
-    width:286px;
-    height: 43px;    
+    width:145px;
+    height: 38px;    
     margin: 0;
     padding: 0;
     text-indent: -999em;    
@@ -4341,8 +4344,10 @@ td.order-status
 body.paypal-express-review button#update_order_dummy
 {
     float: right;    
-    margin-top: -35px;
+    margin-top: 10px;
     margin-bottom: 10px;
+    background: url("../images/checkout/pp-update.png") no-repeat scroll 0 0 ;
+    width: 145px; height: 38px;
 }
 
 body.paypal-express-review button#update_order_dummy span
@@ -4463,3 +4468,8 @@ body.checkout-onepage-index #payment_form_stripe
 #addanothreferral{
     float: left;
 }
+/**Updation css**/
+.paypal-review-order .paypal-details thead tr th{border-bottom: 1px solid #999;}
+.paypal-review-order .paypal-details tbody tr.pritem td{border-bottom: 1px solid #999; padding: 24px 0 18px; width: auto !important;}
+.paypal-review-order .paypal-details .productname{font-family: gothambold; color: #555; font-size: 11px; text-transform: uppercase;}
+.paypal-review-order .paypal-details .productdetail span{font-size: 11px;}

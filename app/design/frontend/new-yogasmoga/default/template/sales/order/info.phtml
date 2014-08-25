@@ -27,7 +27,18 @@
 <?php /** @var $this Mage_Sales_Block_Order_Info */ ?>
 <?php $_order = $this->getOrder() ?>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-
+<script type="text/javascript">
+jQuery(document).ready(function($){
+         $("ul.sub-nav li").each(function(){
+            var thisURL = $(this).find("a").attr("href");
+            var currURL = homeUrl + "sales/order/history";
+            if(thisURL == currURL){
+                $(this).addClass("current");
+            }            
+        });
+       
+    });
+</script>
 <!-- <div class="order-sum-header">
         <h4>ORDER SUMMARY</h4>        
     </div> -->

@@ -80,3 +80,4 @@ var _redirectFromSingingPopup = null; // redirect from singing popup to track or
 var _braSelected = 0;
 var _braOptionID = null;
 var _braOptionTypeID = null;
+var _footerLinkId = 1;
