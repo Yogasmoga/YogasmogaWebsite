@@ -2,6 +2,7 @@
 class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Controller_Front_Action
 {
     protected $points_current = '';
+    protected $productselectedoptionarray = array("foo" => "bar");
     public function testAction()
     {
         echo "Output newtheme_ShoppingbagController";
@@ -180,7 +181,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         foreach($minidetails['items'] as $item)
         {
 
-        $html .='<li>
+            $html .='<li>
                 <a href="'.$item['producturl'].'"><span class="wdth100"><img alt="'.$item['name'].'" src="'.substr($item['imageurl'], 1).'" ></span></a>
 <span>
                     <span class="quantity">qty '.$item['quantity'].'</span>
@@ -192,7 +193,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 <a href="#" class="close"></a>
 </li>';
         }
-            // show bracelet if it is not in cart else do not show
+        // show bracelet if it is not in cart else do not show
         $namaskarbracelet = array();
         $productId = Mage::getModel('core/variable')->loadByCode('namaskar_bracelet_id')->getValue('plain');
         $quote = Mage::getSingleton('checkout/session')->getQuote();
@@ -362,100 +363,100 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 }
                 ?>
 
-                        <script type="text/javascript">
-                            _productcolorinfo = new Array();
-                            <?php
-                            $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
-                            foreach($configurableAttributeCollection as $attribute){
-                                //echo "Attr-Code:".$attribute->getProductAttribute()->getAttributeCode()."<br/>";
-                        //        echo "Attr-Label:".$attribute->getProductAttribute()->getFrontend()->getLabel()."<br/>";
-                        //        echo "Attr-Id:".$attribute->getProductAttribute()->getId()."<br/>";
-                                ?>
-                            _productid = '<?php echo $productid; ?>';
-                            <?php
-                            if($attribute->getProductAttribute()->getAttributeCode() == "color")
-                            {
-                                ?>
-                            _colorattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
-                            <?php
-                        }
-                        if($attribute->getProductAttribute()->getAttributeCode() == "size")
-                        {
-                            ?>
-                            _sizeattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
-                            <?php
-                        }
-                    }
-
-                    $currentcolorcount = 0;
-                    foreach($productcolorinfo as $key=>$val)
+                <script type="text/javascript">
+                    _productcolorinfo = new Array();
+                    <?php
+                    $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
+                    foreach($configurableAttributeCollection as $attribute){
+                        //echo "Attr-Code:".$attribute->getProductAttribute()->getAttributeCode()."<br/>";
+                //        echo "Attr-Label:".$attribute->getProductAttribute()->getFrontend()->getLabel()."<br/>";
+                //        echo "Attr-Id:".$attribute->getProductAttribute()->getId()."<br/>";
+                        ?>
+                    _productid = '<?php echo $productid; ?>';
+                    <?php
+                    if($attribute->getProductAttribute()->getAttributeCode() == "color")
                     {
                         ?>
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>] = new Object();
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].color = '<?php echo $key; ?>';
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].hex = new Array();
-                            <?php
-                                for($i = 0; $i < count($val['hex']); $i++)
-                                {
-                                    ?>
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].hex[<?php echo $i; ?>] = '<?php echo $val['hex'][$i]; ?>';
-                            <?php
-                        }
+                    _colorattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
+                    <?php
+                }
+                if($attribute->getProductAttribute()->getAttributeCode() == "size")
+                {
                     ?>
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes = new Array();
-                            <?php
-                                for($i = 0; $i < count($val['sizes']); $i++)
-                                {
-                                    ?>
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes[<?php echo $i; ?>] = '<?php echo $val['sizes'][$i]; ?>';
-                            <?php
-                        }
-                    ?>
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages = new Array();
-                            <?php
-                                for($i = 0; $i < count($val['images']['zoom']); $i++)
-                                {
-                                    ?>
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>] = '<?php echo substr($val['images']['zoom'][$i], 1); ?>';
-                            <?php
-                        }
-                    ?>
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages = new Array();
-                            <?php
-                                for($i = 0; $i < count($val['images']['small']); $i++)
-                                {
-                                    ?>
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>] = '<?php echo substr($val['images']['small'][$i], 1); ?>';
-                            <?php
-                        }
-                    ?>
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages = new Array();
-                            <?php
-                                for($i = 0; $i < count($val['images']['big']); $i++)
-                                {
-                                    ?>
-                            _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>] = '<?php echo substr($val['images']['big'][$i], 1); ?>';
-                            <?php
-                        }
-                    ?>
-                            <?php
-                                    $currentcolorcount++;
-                                }
-                            ?>
-                            //_productdisplaymode = 'popup';
-                            //console.log(_productcolorinfo);
-                        </script>
-                        <?php
-                        if(!$sizeavaliable)
+                    _sizeattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
+                    <?php
+                }
+            }
+
+            $currentcolorcount = 0;
+            foreach($productcolorinfo as $key=>$val)
+            {
+                ?>
+                    _productcolorinfo[<?php echo $currentcolorcount; ?>] = new Object();
+                    _productcolorinfo[<?php echo $currentcolorcount; ?>].color = '<?php echo $key; ?>';
+                    _productcolorinfo[<?php echo $currentcolorcount; ?>].hex = new Array();
+                    <?php
+                        for($i = 0; $i < count($val['hex']); $i++)
                         {
                             ?>
-                            <script type='text/javascript'>
-                                _sizesuperattribute = false;
-                            </script>
-                        <?php
+                    _productcolorinfo[<?php echo $currentcolorcount; ?>].hex[<?php echo $i; ?>] = '<?php echo $val['hex'][$i]; ?>';
+                    <?php
+                }
+            ?>
+                    _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes = new Array();
+                    <?php
+                        for($i = 0; $i < count($val['sizes']); $i++)
+                        {
+                            ?>
+                    _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes[<?php echo $i; ?>] = '<?php echo $val['sizes'][$i]; ?>';
+                    <?php
+                }
+            ?>
+                    _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages = new Array();
+                    <?php
+                        for($i = 0; $i < count($val['images']['zoom']); $i++)
+                        {
+                            ?>
+                    _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>] = '<?php echo substr($val['images']['zoom'][$i], 1); ?>';
+                    <?php
+                }
+            ?>
+                    _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages = new Array();
+                    <?php
+                        for($i = 0; $i < count($val['images']['small']); $i++)
+                        {
+                            ?>
+                    _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>] = '<?php echo substr($val['images']['small'][$i], 1); ?>';
+                    <?php
+                }
+            ?>
+                    _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages = new Array();
+                    <?php
+                        for($i = 0; $i < count($val['images']['big']); $i++)
+                        {
+                            ?>
+                    _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>] = '<?php echo substr($val['images']['big'][$i], 1); ?>';
+                    <?php
+                }
+            ?>
+                    <?php
+                            $currentcolorcount++;
                         }
-                        ?>
-<?php
+                    ?>
+                    //_productdisplaymode = 'popup';
+                    //console.log(_productcolorinfo);
+                </script>
+                <?php
+                if(!$sizeavaliable)
+                {
+                    ?>
+                    <script type='text/javascript'>
+                        _sizesuperattribute = false;
+                    </script>
+                <?php
+                }
+                ?>
+                <?php
                 $html .= '<li>
                             <span><img src="'.Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75).'" width="100" height="100" alt="'.$productname. '" /></span>
                             <span>
@@ -463,59 +464,59 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                                     <span class="capsnone">Add this bracelet to your order</span>
                             </span>
                             ';
-?>
+                ?>
 
 
 
-                         <?php $html .= '<select id="cmbcolor">';
+                <?php $html .= '<select id="cmbcolor">';
 
-                                    foreach($productcolorinfo as $key=>$colorinfo)
-                                    {
+                foreach($productcolorinfo as $key=>$colorinfo)
+                {
 
-                                       $html .= '<option value="'. $colorinfo['value'].'">'. $key.'</option>';
+                    $html .= '<option value="'. $colorinfo['value'].'">'. $key.'</option>';
 
-                                    }
+                }
 
-                                $html .= '</select>';
-
-
-
-                                $html .= '<select id="cmbsize" class="cmbsize"';
-                                  if(!$sizeavaliable)
-                                  {
-                                      $html .= 'style="display:none;">';
-                                  }
-
-                                    foreach($productallsizes as $size)
-                                    {
-
-                                        $html .= '<option value="'.$size['value'].'" size="'.$size['label'].'">'. $size['label'].'</option>';
-
-                                    }
-
-                                $html .= '</select>';
+                $html .= '</select>';
 
 
 
-                        if(Mage::getSingleton("core/session")->getCartNamaskarError() > 0)
-                        {
-                            $html .= '<p class="item-msg error">* The requested quantity for "'.$productname.'" is not available.</p>';
+                $html .= '<select id="cmbsize" class="cmbsize"';
+                if(!$sizeavaliable)
+                {
+                    $html .= 'style="display:none;">';
+                }
 
-                        }
+                foreach($productallsizes as $size)
+                {
+
+                    $html .= '<option value="'.$size['value'].'" size="'.$size['label'].'">'. $size['label'].'</option>';
+
+                }
+
+                $html .= '</select>';
+
+
+
+                if(Mage::getSingleton("core/session")->getCartNamaskarError() > 0)
+                {
+                    $html .= '<p class="item-msg error">* The requested quantity for "'.$productname.'" is not available.</p>';
+
+                }
 
 
 
 
-                    $html .= '<select class="qtyselector">';
+                $html .= '<select class="qtyselector">';
 
-                        for($i = 1; $i < 11; $i++)
-                        {
+                for($i = 1; $i < 11; $i++)
+                {
 
-                           $html .=  '<option value="'.$i.'">'. $i.'</option>';
+                    $html .=  '<option value="'.$i.'">'. $i.'</option>';
 
-                        }
+                }
 
-                    $html .= '</select>
+                $html .= '</select>
                                 </li>';
 
 
@@ -524,8 +525,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
         }
 
-            // end to show braclet
-            $html .= '</ul>
+        // end to show braclet
+        $html .= '</ul>
                                     </div>
                                     <!-- productadded -->
                                     </div>';
@@ -562,7 +563,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $discounttypeerror = 'Gift Card, SMOGI Bucks and Promotion Code cannot be combined.Please choose one and continue CheckOut.';
 
 
-            echo json_encode(array("status" => "success","html" => $html,"count" => $this->getcartcount(),"countdiscount" => $countDiscountType,"discounttypeerror" => $discounttypeerror));
+        echo json_encode(array("status" => "success","html" => $html,"count" => $this->getcartcount(),"countdiscount" => $countDiscountType,"discounttypeerror" => $discounttypeerror));
 
     }
     protected function _getSession()
@@ -638,34 +639,34 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
         $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
         $grandtotal = $totals["grand_total"]->getValue();
-       /*
-        if($grandtotal<0)
-        {
-            if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
-            {
-                // check for Gift of YS
-            }
-            if(Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
-            {
-                if(Mage::getModel('smogiexpirationnotifier/applyremovediscount')->removesmogibucks())
-                {
-                    Mage::getSingleton('checkout/session')->getQuote()->setTotalsCollectedFlag(false)->collectTotals();
-//                    $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
-//                    $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
-//                    $grandtotal = $totals["grand_total"]->getValue();
-//                    echo $grandtotal;
-//                    return;
-                    Mage::getModel('smogiexpirationnotifier/applyremovediscount')->automaticapplysmogibucks();
-                }
-            }
+        /*
+         if($grandtotal<0)
+         {
+             if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+             {
+                 // check for Gift of YS
+             }
+             if(Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
+             {
+                 if(Mage::getModel('smogiexpirationnotifier/applyremovediscount')->removesmogibucks())
+                 {
+                     Mage::getSingleton('checkout/session')->getQuote()->setTotalsCollectedFlag(false)->collectTotals();
+ //                    $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+ //                    $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
+ //                    $grandtotal = $totals["grand_total"]->getValue();
+ //                    echo $grandtotal;
+ //                    return;
+                     Mage::getModel('smogiexpirationnotifier/applyremovediscount')->automaticapplysmogibucks();
+                 }
+             }
 
-            if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
-            {
+             if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
+             {
 
-            }
+             }
 
-        }
-       */
+         }
+        */
 
         echo json_encode(array("status" => "success", "count" => $this->getcartcount()));
         return;
@@ -705,15 +706,17 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $session = Mage::getSingleton('checkout/session');
         $i=0;
         foreach ($session->getQuote()->getAllItems() as $item)
-        {
+        {//echo ++$i.'--';
 
             $temparray = array();
             if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
             {
                 $productselectedoption = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
+                $productselectedoptioncount = count($productselectedoption['options']);
 
-                if($this->searchcart($miniitems, $item->getSku()) == false || count($productselectedoption['options'])>0 )
+                if($this->searchcartnew($miniitems, $item->getSku(),$productselectedoptioncount) == false  )
                 { //echo $item->getSku().'++';
+
                     $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$item->getSku());
                     $product = Mage::getModel('catalog/product')->load($item->getProductId());
                     $temparray['pid'] = $item->getProductId();
@@ -753,7 +756,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 }
             }
             else if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "simple")
-            {
+            {//echo 'else if';
                 if($this->searchcart($miniitems, $item->getSku()) == false)
                 {
                     $_product = Mage::getModel('catalog/product')->load($item->getProductId());
@@ -808,7 +811,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 //        echo "Grand total:".$grandTotal."<br/>";
 //
 //        print $output;
-
+        //print_r($miniitems);die('tst');
         $miniitems = array_reverse($miniitems);
         //print_r($miniitems);
         $customerId = Mage::getModel('customer/session')->getCustomerId();
@@ -843,7 +846,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
         $checksmogiapplied = false;
         $checkpromoapplied = false;
-        $checkgiftapplied = false; 
+        $checkgiftapplied = false;
         $customerId = Mage::getModel('customer/session')->getCustomerId();
         if($customerId) {
             $continuelink=Mage::getBaseUrl().'checkout/onepage';
@@ -856,7 +859,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $allow = $this->countDiscountType();
         if($allow > 1)
         {
-                    $html = '
+            $html = '
             <!-- ContinueShoppingBtn -->
             <div class="cont-full capstxt">
                 <a href="javascript:void(0);" id="continuelink" class="continuelink f-left">Keep Shopping</a>
@@ -882,7 +885,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             <!-- ContinueShoppingBtn -->
             <!-- productOption -->
             <div class="cont-full contfull2">';
-         }
+        }
 
         $totalhtml = '
                         <!-- totalAmount -->
@@ -911,7 +914,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                             <span class="removesmogi"><a>remove</a></span>
                             <span class="f-right"  usedpoints ="'.$getsmogipointscurrentlyuserd.'">-$'.$getsmogipointscurrentlyuserd.'</span>
                         </li>';
-             $checksmogiapplied = true;           
+            $checksmogiapplied = true;
         }
         // all conditions for apply coupon code (promotion code)
 
@@ -955,7 +958,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                             <span class="removepromotion"><a>remove</a></span>
                             <span class="f-right" class="active" usedpromotion ="'.$discount.'">-$'.$discount.'</span>
                         </li>';
-             $checkpromoapplied = true;           
+            $checkpromoapplied = true;
 
 
         }
@@ -976,7 +979,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
                         </li>';
-            $checkgiftapplied = true;            
+            $checkgiftapplied = true;
         }
         $shippingPrice = '';
         $shippingcode = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingMethod();
@@ -1016,9 +1019,9 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         <form>';
         $customerId = Mage::getModel('customer/session')->getCustomerId();
         if(!$customerId)
-             $html .=' <label><input type="text" name="smogi" class="gry" available="0" id="smogi" value="You must be signed in to use SMOGI Bucks" disabled="disabled"/><span  class="smogi-login">+</span></label>
+            $html .=' <label><input type="text" name="smogi" class="gry" available="0" id="smogi" value="You must be signed in to use SMOGI Bucks" disabled="disabled"/><span  class="smogi-login">+</span></label>
                         <label><input type="text" name="giftcartcode" data-used="no" class="gry" id="giftcartcode" value="You must be signed in to use Promo Codes" disabled="disabled" /><span class="giftcardlogin">+</span></label>';
-        else{            
+        else{
             $gryclasssmogi = "";
             $gryclasspromo = "";
             $gryclassgift = "";
@@ -1032,8 +1035,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $smogiplaceholder="Use Your ".$showedpoints." SMOGI Bucks Toward This Purchase";
             $showedpointsvalue=$showedpoints;
             $codeused='';
-           if($checksmogiapplied)
-           {
+            if($checksmogiapplied)
+            {
                 $gryclasspromo = "gry";
                 $gryclassgift = "gry";
                 $applygiftcard="";
@@ -1046,9 +1049,9 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 //                $applypromo="";
 //                $applypromodisable=" disabled='disabled'";
                 $checkboxapplied=" disabled='disabled'";
-           }
-           if($checkpromoapplied)
-           {
+            }
+            if($checkpromoapplied)
+            {
                 $smogiplaceholder="SMOGI Bucks cannot be used with Promo Codes.";
                 $gryclasssmogi = "gry";
                 $gryclassgift = "gry";
@@ -1060,9 +1063,9 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $checkboxapplied=" disabled='disabled'";
                 $showedpointsvalue="";
                 $codeused='yes';
-           }
+            }
             if($checkgiftapplied)
-           {
+            {
                 //$gryclassgift = "gry";
                 $smogiplaceholder="SMOGI Bucks cannot be used with Promo Codes.";
                 $gryclasssmogi = "gry";
@@ -1074,16 +1077,16 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $codeused='yes';
                 //$applygiftcard="";
                 //$applygiftdisable=" disabled='disabled'";
-             //   $applypromo="";
-               // $applypromodisable=" disabled='disabled'";
-           }
+                //   $applypromo="";
+                // $applypromodisable=" disabled='disabled'";
+            }
             if($showedpoints >= 1) {
                 $html .=' <label><input type="text" class = "'.$gryclasssmogi.'" placeholder="'.$smogiplaceholder.'" available="'.$getcustomerpoints.'" name="smogi" id="smogi"  '.$applysmogidisable.'/><span class="'.$applysmogi.'">+</span><span class="error-count"></span></label>';
             }
             if($showedpoints < 1) {
                 $applysmogidisable=" disabled='disabled'";
                 $html .=' <label><input type="text" name="smogi" class="gry" id="smogi" placeholder="You have no more available SMOGI Bucks" '.$applysmogidisable.'/><span class="">+</span><span class="error-count"></span></label>';
-            } 
+            }
             // check if promotion code is used or not
 //            if($promotioncode)
 //            {
@@ -1096,27 +1099,27 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
             // check for Gift of YS
 
-                $giftofysbalance = Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId());
-                $giftofysbalance = number_format((float)$giftofysbalance, 2, '.','');
-                if($giftofysbalance > 0 || $promotioncode == '1')
+            $giftofysbalance = Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId());
+            $giftofysbalance = number_format((float)$giftofysbalance, 2, '.','');
+            if($giftofysbalance > 0 || $promotioncode == '1')
+            {
+                $html .='  <label><input class="'.$gryclassgift.'" type="text" data-used="'.$codeused.'" name="giftcartcode" id="giftcartcode" placeholder="Add a Promo Code / Gift Card Code" '.$applygiftdisable.'/><span class="'.$applygiftcard.'">+</span><span class="error-count"></span></label>';
+                if(Mage::getSingleton("giftcards/session")->getActive() == "1")
                 {
-                    $html .='  <label><input class="'.$gryclassgift.'" type="text" data-used="'.$codeused.'" name="giftcartcode" id="giftcartcode" placeholder="Add a Promo Code / Gift Card Code" '.$applygiftdisable.'/><span class="'.$applygiftcard.'">+</span><span class="error-count"></span></label>';
-                    if(Mage::getSingleton("giftcards/session")->getActive() == "1")
-                    {
-                      //  $html .='<div> <input type="checkbox" value="1" checked="checked" class="giftcardcheckbox" '.$checkboxapplied.'/><p>Use your Gift Card balance: $'.$giftofysbalance.' available.</p></div>';
-                    }
-                    else
-                    {
-                        $html .='<div style="min-height: inherit;"> <input type="checkbox" value="1"  class="giftcardcheckbox"  '.$checkboxapplied.'/><p>Use your Gift Card balance: $'.$giftofysbalance.' available.</p></div>';
-                    }
-                    $html .='<div class="giftcarloader" style="clear: both;text-align:left;position:text-align: left; width: 100%;"></div>';
+                    //  $html .='<div> <input type="checkbox" value="1" checked="checked" class="giftcardcheckbox" '.$checkboxapplied.'/><p>Use your Gift Card balance: $'.$giftofysbalance.' available.</p></div>';
                 }
                 else
                 {
-                    $html .=' <label><input  class="'.$gryclassgift.'" type="text" data-used="'.$codeused.'" name="giftcartcode" id="giftcartcode" placeholder="Add a Promo Code / Gift Card Code" '.$applygiftdisable.' /><span class="'.$applygiftcard.'">+</span><span class="error-count"></span></label>
+                    $html .='<div style="min-height: inherit;"> <input type="checkbox" value="1"  class="giftcardcheckbox"  '.$checkboxapplied.'/><p>Use your Gift Card balance: $'.$giftofysbalance.' available.</p></div>';
+                }
+                $html .='<div class="giftcarloader" style="clear: both;text-align:left;position:text-align: left; width: 100%;"></div>';
+            }
+            else
+            {
+                $html .=' <label><input  class="'.$gryclassgift.'" type="text" data-used="'.$codeused.'" name="giftcartcode" id="giftcartcode" placeholder="Add a Promo Code / Gift Card Code" '.$applygiftdisable.' /><span class="'.$applygiftcard.'">+</span><span class="error-count"></span></label>
 
                     ';
-                }
+            }
 
 
 
@@ -1126,7 +1129,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $errormsg = '';
         $globalerrormsg = html_entity_decode(strip_tags(Mage::getSingleton('core/session')->getGlobalMessage()));
         if($globalerrormsg !='')
-                $errormsg = $globalerrormsg;
+            $errormsg = $globalerrormsg;
         Mage::getSingleton('core/session')->setGlobalMessage('');
         $html .='<div class="errortext">'.$errormsg.'</div>';
         $html .='<div class="bagerrormsg" id="redeemresult"></div><div class="zindexH"></div>';
@@ -1166,7 +1169,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             {
                 $html .='<span class="size">'.$item['optionlabel'].'</span>';
                 $html .='<span class="clr">'.$item['optionvalue'].'</span>';
-             }
+            }
             $html .='</span>
 <a href="#" class="close"></a>';
             // Preorder
@@ -1369,86 +1372,86 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $jshtml .= '<script type="text/javascript">
                     _productcolorinfo = new Array();';
 
-                    $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
-                    foreach($configurableAttributeCollection as $attribute){
-                        //echo "Attr-Code:".$attribute->getProductAttribute()->getAttributeCode()."<br/>";
-                //        echo "Attr-Label:".$attribute->getProductAttribute()->getFrontend()->getLabel()."<br/>";
-                //        echo "Attr-Id:".$attribute->getProductAttribute()->getId()."<br/>";
+                $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
+                foreach($configurableAttributeCollection as $attribute){
+                    //echo "Attr-Code:".$attribute->getProductAttribute()->getAttributeCode()."<br/>";
+                    //        echo "Attr-Label:".$attribute->getProductAttribute()->getFrontend()->getLabel()."<br/>";
+                    //        echo "Attr-Id:".$attribute->getProductAttribute()->getId()."<br/>";
 
                     $jshtml .= ' _productid = '.$productid.'; ';
 
                     if($attribute->getProductAttribute()->getAttributeCode() == "color")
                     {
 
-                    $jshtml .= '_colorattributeid = '.$attribute->getProductAttribute()->getId().';';
+                        $jshtml .= '_colorattributeid = '.$attribute->getProductAttribute()->getId().';';
                         $colorattributeid = $attribute->getProductAttribute()->getId();
 
+                    }
+                    if($attribute->getProductAttribute()->getAttributeCode() == "size")
+                    {
+
+                        $jshtml .= '_sizeattributeid = '.$attribute->getProductAttribute()->getId().';';
+                        $sizeattributeid = $attribute->getProductAttribute()->getId();
+                    }
                 }
-                if($attribute->getProductAttribute()->getAttributeCode() == "size")
+
+                $currentcolorcount = 0;
+                foreach($productcolorinfo as $key=>$val)
                 {
 
-                    $jshtml .= '_sizeattributeid = '.$attribute->getProductAttribute()->getId().';';
-                    $sizeattributeid = $attribute->getProductAttribute()->getId();
-                }
-            }
+                    $jshtml .= ' _productcolorinfo['.$currentcolorcount.'] = new Object();';
+                    $jshtml .= ' _productcolorinfo['.$currentcolorcount.'].color = '.$key.';';
+                    $jshtml .= ' _productcolorinfo['.$currentcolorcount.'].hex = new Array();';
 
-            $currentcolorcount = 0;
-            foreach($productcolorinfo as $key=>$val)
-            {
+                    for($i = 0; $i < count($val['hex']); $i++)
+                    {
 
-                   $jshtml .= ' _productcolorinfo['.$currentcolorcount.'] = new Object();';
-                   $jshtml .= ' _productcolorinfo['.$currentcolorcount.'].color = '.$key.';';
-                   $jshtml .= ' _productcolorinfo['.$currentcolorcount.'].hex = new Array();';
+                        $jshtml .= '_productcolorinfo['.$currentcolorcount.'].hex['.$i.'] = '. $val['hex'][$i].';';
 
-                        for($i = 0; $i < count($val['hex']); $i++)
-                        {
-
-                    $jshtml .= '_productcolorinfo['.$currentcolorcount.'].hex['.$i.'] = '. $val['hex'][$i].';';
-
-                }
+                    }
 
                     $jshtml .= '_productcolorinfo['.$currentcolorcount.'].sizes = new Array();';
 
-                        for($i = 0; $i < count($val['sizes']); $i++)
-                        {
+                    for($i = 0; $i < count($val['sizes']); $i++)
+                    {
 
-                    $jshtml .= '_productcolorinfo['.$currentcolorcount.'].sizes['.$i.'] = '.$val['sizes'][$i].';';
+                        $jshtml .= '_productcolorinfo['.$currentcolorcount.'].sizes['.$i.'] = '.$val['sizes'][$i].';';
 
-                }
+                    }
 
                     $jshtml .= '_productcolorinfo['.$currentcolorcount.'].zoomimages = new Array();';
 
-                        for($i = 0; $i < count($val['images']['zoom']); $i++)
-                        {
+                    for($i = 0; $i < count($val['images']['zoom']); $i++)
+                    {
 
-                    $jshtml .= '_productcolorinfo['.$currentcolorcount.'].zoomimages['.$i.'] = '.substr($val['images']['zoom'][$i], 1).';';
+                        $jshtml .= '_productcolorinfo['.$currentcolorcount.'].zoomimages['.$i.'] = '.substr($val['images']['zoom'][$i], 1).';';
 
-                }
+                    }
 
                     $jshtml .= '_productcolorinfo['.$currentcolorcount.'].smallimages = new Array();';
 
-                        for($i = 0; $i < count($val['images']['small']); $i++)
-                        {
+                    for($i = 0; $i < count($val['images']['small']); $i++)
+                    {
 
-                    $jshtml .= '_productcolorinfo['.$currentcolorcount.'].smallimages['.$i.'] = '. substr($val['images']['small'][$i], 1).';';
+                        $jshtml .= '_productcolorinfo['.$currentcolorcount.'].smallimages['.$i.'] = '. substr($val['images']['small'][$i], 1).';';
 
-                }
+                    }
 
                     $jshtml .= '_productcolorinfo['.$currentcolorcount.'].bigimages = new Array();';
 
-                        for($i = 0; $i < count($val['images']['big']); $i++)
-                        {
+                    for($i = 0; $i < count($val['images']['big']); $i++)
+                    {
 
-                    $jshtml .= '_productcolorinfo['.$currentcolorcount.'].bigimages['. $i.'] = '. substr($val['images']['big'][$i], 1).';';
+                        $jshtml .= '_productcolorinfo['.$currentcolorcount.'].bigimages['. $i.'] = '. substr($val['images']['big'][$i], 1).';';
 
+                    }
+
+
+                    $currentcolorcount++;
                 }
 
-
-                            $currentcolorcount++;
-                        }
-
-                    //_productdisplaymode = 'popup';
-                    //console.log(_productcolorinfo);
+                //_productdisplaymode = 'popup';
+                //console.log(_productcolorinfo);
                 $jshtml .= '</script>';
 
                 if(!$sizeavaliable)
@@ -1537,7 +1540,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
         return $html;
-         //return $jshtml.$html;
+        //return $jshtml.$html;
         //print_r($html);die('test');
         //echo $html;
         //echo json_encode(array("html" => $html));
@@ -1647,6 +1650,44 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         {
             if($item['sku'] == $sku)
                 return true;
+        }
+        return false;
+    }
+    public function searchcartnew($minidetails, $sku, $productselectedoptioncount = null)
+    {
+        if($productselectedoptioncount > 0)
+        {
+            if($this->searchforoptionproduct($this->productselectedoptionarray,$sku) == false)
+            {
+                array_push($this->productselectedoptionarray, $sku);
+                return false;
+            }
+            else
+                return true;
+        }
+        foreach($minidetails as $item)
+        {
+            if($item['sku'] == $sku  )
+            {
+                if($this->searchforoptionproduct($this->productselectedoptionarray,$sku) == true)
+                {
+                    return false;
+                }
+                return true;
+            }
+
+        }
+        return false;
+    }
+    public function searchforoptionproduct($productarr,$sku)
+    {
+        foreach($productarr as $key=>$value)
+        {
+            if($value == $sku  )
+            {
+                return true;
+            }
+
         }
         return false;
     }

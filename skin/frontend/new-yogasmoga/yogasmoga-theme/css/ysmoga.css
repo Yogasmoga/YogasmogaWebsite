@@ -1861,7 +1861,7 @@ table#searchBox div.searchbutton{
     color: #fff;
 }
 .pressBlock:hover .textContainer > div{
-    color: #c03;
+/*    color: #c03;*/
 }
 .pressBlock:hover{
     cursor: pointer;
@@ -1897,7 +1897,7 @@ table#searchBox div.searchbutton{
     font: 18px/6px itcavantgardepromd;
 }
 .fabrictable .aurumiconcell tr:nth-child(2) td {
-    font: 11px/17px itcavantgardeprobk !important;
+    font: 8px/11px itcavantgardeprobk !important;
     height: 45px;
     padding: 5px 6px !important;
     text-align: left !important;
@@ -1920,7 +1920,7 @@ table#searchBox div.searchbutton{
     border-top: 1px solid #999;
     color: #555 !important;
     font: 11px/19px gothambold !important;
-    height: 108px;
+    height: 85px;
     vertical-align: middle;
 }
 
