@@ -186,6 +186,7 @@ function ysbannertxtheight(){
 	var calcheight6 = ysnamaskarblock-ysnamaskartxt;
 	calcheight6 = calcheight6/2.05;
 	jQuery(".namaskarblock2 #ysnamaskartxt").css("top", calcheight6);
+
 };
 
 function madeinusagifs(){

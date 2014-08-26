@@ -1689,7 +1689,7 @@ table#searchBox div.searchbutton{
 
 .rSldrHeading{
     font: 38px/50px ITCAvantGardeProMd;
-    margin: 0 0 11.5% !important;
+    margin: 0;
     text-align: center;
 }
 
@@ -1698,14 +1698,22 @@ table#searchBox div.searchbutton{
 }
 
 .rSldrForm{
-    margin: auto;
-    display: block;
+    margin: auto !important;
+    display: block;/*
+    left: 37%;
+    right: 37%;*/
+    top: 36.4%;
+    position: absolute;
+    z-index: 9;
+    width: 100%;
 }
 
 .rSldrForm .formheading{
     font: 17px/35px ITCAvantGardeProBk;
     margin: 0 0 11px !important;
     display: block;
+    text-transform: uppercase;
+    color: #fff;
 }
 
 .cms-rangoli .cntntheading{
@@ -1722,7 +1730,7 @@ table#searchBox div.searchbutton{
     display: inline-block;
 }
 
-#rangoliEmailForm #email{
+#rangoliEmailForm #txtNewsletterEmail{
     background: #fff;
     border: 0 none;
     color: #555;
@@ -1733,7 +1741,7 @@ table#searchBox div.searchbutton{
     border-radius: 0 0 0 0;
 }
 
-#rangoliEmailForm #submit{
+#rangoliEmailForm #btnNewsletter{
     background: #5ec52f;
     border: 0 none;
     color: #fff !important;
@@ -1745,6 +1753,12 @@ table#searchBox div.searchbutton{
     border-radius: 0 0 0 0;
     box-shadow: none;
     -webkit-appearance: none;
+}
+
+#rangoliEmailForm #footernotification {
+    color: #fff;
+    display: block;
+    text-align: left;
 }
 
 /* rangoliSliderFixes */
@@ -1800,7 +1814,8 @@ table#searchBox div.searchbutton{
     display: inherit;
 }
 .pressBlock{
-    min-height: 300px;
+    min-height: 251px;
+    height: 320px;
     color: #fff;
     text-transform: uppercase;
 }
@@ -1840,7 +1855,8 @@ table#searchBox div.searchbutton{
     margin: 25px 0 0;
 }
 .minh250{
-    min-height: 300px;
+    min-height: 251px;
+    height: 320px;
 }
 .pressPage .bottomdivider {
     clear: both;
@@ -1861,6 +1877,7 @@ table#searchBox div.searchbutton{
 }
 .pressBlock > a{
     min-height: 251px;
+    height: 320px;
 }
 .pressBlock a .textContainer > div{
     color: #fff;
