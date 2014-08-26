@@ -1589,8 +1589,8 @@ table.inputtable tr:first-child td {
 .linkheader {
     color: #555;
     border-bottom: 1px solid #d2204d;
-    padding: 0 0 4px;
-    margin: 149px 0 0;
+    padding: 0 0 0;
+    margin: 152px 0 0;
     text-transform: uppercase;
     display: inline-block;
 }
@@ -1800,7 +1800,7 @@ table#searchBox div.searchbutton{
     display: inherit;
 }
 .pressBlock{
-    min-height: 251px;
+    min-height: 300px;
     color: #fff;
     text-transform: uppercase;
 }
@@ -1840,7 +1840,7 @@ table#searchBox div.searchbutton{
     margin: 25px 0 0;
 }
 .minh250{
-    min-height: 251px;
+    min-height: 300px;
 }
 .pressPage .bottomdivider {
     clear: both;
