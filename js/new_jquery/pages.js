@@ -83,7 +83,7 @@ function leftNavPos(){
         var accntNav = jQuery("#pagecontainer").find(".account-nav");
         helpNav.addClass("helpNav");
         ra1.addClass("ra").removeClass("ra1");
-        if(jQuery(window).height() <= "600"){
+        if(jQuery(window).height() <= "768"){
             accntNav.addClass("accntNav");
         }                   
       });
@@ -97,7 +97,7 @@ function leftNavPos(){
         var accntNav = jQuery("#pagecontainer").find(".account-nav");
         ra1.removeClass("ra").addClass("ra1");
         helpNav.removeClass("helpNav");  
-        if(jQuery(window).height() <= "600"){
+        if(jQuery(window).height() <= "768"){
             accntNav.removeClass("accntNav");
         }              
       });

@@ -251,6 +251,8 @@ table.productdetailtable div#sizecontainer
 
 table.productdetailtable div#sizecontainer table td
 {
+    float: left;
+    margin-bottom: 10px;
 }
 
 table.productdetailtable div#sizecontainer table td.disabled
