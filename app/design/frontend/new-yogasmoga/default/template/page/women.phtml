@@ -78,6 +78,22 @@
     jQuery(window).load(function(){
         jQuery("div.showloading").removeClass('showloading');
         setTimeout(function(){setfullscreenheight();},50);
+
+        jQuery("body").on("click",".vid-popup-overlay", function(){        
+            var dfVid1 = document.getElementById("vid-1");            
+            var dfVid2 = document.getElementById("vid-2");  
+            dfVid1.pause();
+            dfVid2.pause();              
+        });
+        window.onkeyup = function (event) {
+            if (event.keyCode == 27) { 
+                jQuery(".vid-popup-overlay").trigger("click");
+            var dfVid1 = document.getElementById("vid-1");            
+            var dfVid2 = document.getElementById("vid-2");  
+            dfVid1.pause();
+            dfVid2.pause();                
+            }
+        }
     });
     jQuery(document).ready(function(){
        setTimeout(function(){
@@ -377,13 +393,13 @@
                 </div>           
 
                 <div class="html-video-popup" id="vid-blck-1">
-                    <video style="width:100%;" controls>
-                        <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'design_features_video/BROOKLYN_JACKET_ok.mp4'; ?>" type="video/mp4">
+                    <video id="vid-1" style="width:100%;" controls>
+                        <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'design_features_video/YANTRA_TANK_OK.mp4'; ?>" type="video/mp4">
                     </video>
                 </div>
                 <div class="html-video-popup" id="vid-blck-2">
-                    <video style="width:100%;" controls>
-                        <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'design_features_video/BROOKLYN_JACKET_ok.mp4'; ?>" type="video/mp4">
+                    <video id="vid-2" style="width:100%;" controls>
+                        <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'design_features_video/YANTRA_TANK_OK.mp4'; ?>" type="video/mp4">
                     </video>
                 </div> 
                 <div class="vid-popup-overlay"></div>  

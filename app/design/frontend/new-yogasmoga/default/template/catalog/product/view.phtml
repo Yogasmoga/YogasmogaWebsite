@@ -36,6 +36,23 @@
     jQuery(window).load(function(){
         jQuery('body').css('overflow','auto');
         jQuery('.namaskar-overlay1').fadeOut('slow');
+        jQuery("body").on("click",".vid-popup-overlay", function(){        
+            var dfVid = document.getElementById("df-vid");
+            var measureVid = document.getElementById("measure-vid");                        
+            dfVid.pause();            
+            measureVid.pause();
+
+        });
+        window.onkeyup = function (event) {
+            if (event.keyCode == 27) {
+            jQuery(".vid-popup-overlay").trigger("click"); 
+                var dfVid = document.getElementById("df-vid");
+                var measureVid = document.getElementById("measure-vid");                        
+                dfVid.pause();            
+                measureVid.pause();
+                                  
+            }
+        }
     })
 </script>
 <img style="display:none;" src="<?php echo $this->getSkinUrl('images/zoom_assets/preloader.gif'); ?>" />
@@ -821,10 +838,11 @@ if($_product->getAttributeText('canzoomimage') == "yes")
 
         <ul class="featureList">
             <?php
+            $i=0;
             foreach($newdfimages as $ndfimg)
-            {
+            {$i++;
                 ?>
-                <li><span class="ftrFig"><img alt="" src="<?php echo substr($ndfimg["url"], 1); ?>"></span><span><?php echo $ndfimg["caption"]; ?></span></li>
+                <li class="<?php if($i==4)echo 'last-df'; ?>"><span class="ftrFig "><img class="vid-pl-btn" src="<?php echo $this->getSkinUrl('images/vid-icon-img.png'); ?>"><img class="df-img" alt="" src="<?php echo substr($ndfimg["url"], 1); ?>"></span><span><?php echo $ndfimg["caption"]; ?></span></li>
             <?php
             }
             ?>
@@ -1302,12 +1320,12 @@ while ($row = $readresult->fetch() ) {
 
 <!--Container for the video Popup-->
 <div class="html-vid-pop html-des-vid-popup">
-    <video style="width:100%;" controls>
+    <video id="df-vid" style="width:100%;" controls>
         <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."design_features_video/".$_product->getDesignFeatureVideo(); ?>" type="video/mp4">
     </video>
 </div>
 <div class="html-vid-pop html-fit-vid-popup">
-    <video style="width:100%;" controls>
+    <video id="measure-vid" style="width:100%;" controls>
         <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."how_to_measure_video/".$_product->getHowToMeasureVideo(); ?>" type="video/mp4">
     </video>
 </div>
