@@ -56,6 +56,10 @@ function compressBoxHeight(){
     },500);
 };
 function compressBoxHeightRes(){
+		var conWid = jQuery(".cubix").width();
+		var bigSide = jQuery(".cubix .grid65").width();
+		jQuery(".cubix .grid35").css({"width": conWid - bigSide,"position":"absolute"});		
+		var isSafari = browserTest();
 	 	var gd1 = jQuery(".ysfabricpart .sliderImg").height();
 	 	jQuery(".ysfabricpart .compressBox").css("height", gd1/2);
 	    var gd2 = jQuery(".ysfabricpart .compressBox").height();
@@ -85,6 +89,7 @@ function factorypart(){
 
 };
 function factorypartRes(){
+	jQuery(".factorypart .grid35").css("right",0);
 	var gd1 = jQuery(".factorypart .img-responsive").height();
 	jQuery(".factorypart .factorythread").css("height", gd1/2);
     var gd2 = jQuery(".factorypart .factorythread").height();

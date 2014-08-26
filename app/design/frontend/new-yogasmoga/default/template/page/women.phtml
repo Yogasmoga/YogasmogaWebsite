@@ -78,6 +78,22 @@
     jQuery(window).load(function(){
         jQuery("div.showloading").removeClass('showloading');
         setTimeout(function(){setfullscreenheight();},50);
+
+        jQuery("body").on("click",".vid-popup-overlay", function(){        
+            var dfVid1 = document.getElementById("vid-1");            
+            var dfVid2 = document.getElementById("vid-2");  
+            dfVid1.pause();
+            dfVid2.pause();              
+        });
+        window.onkeyup = function (event) {
+            if (event.keyCode == 27) { 
+                jQuery(".vid-popup-overlay").trigger("click");
+            var dfVid1 = document.getElementById("vid-1");            
+            var dfVid2 = document.getElementById("vid-2");  
+            dfVid1.pause();
+            dfVid2.pause();                
+            }
+        }
     });
     jQuery(document).ready(function(){
        setTimeout(function(){
@@ -101,6 +117,24 @@
             <!-- sliderBanner -->
             <div class="flexslider showloading">
                 <ul class="slides">
+                    <li>
+                        <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/WomenSlider.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
+
+                            <div class="banner-txt3 promo2310 promo1311 white">
+                                Meet paradeiza red.
+                                <span class="white">our newest shade<br />in fitness apparel.</span>
+                                <a class="learnmore-nam" href="javascript:void(0)">
+                                    <img alt="Shop paradeiza red" src="<?php echo $this->getSkinUrl('images/homepage/shop-paradeizared.jpg') ?>" />
+                                </a>
+                            </div>                           
+
+                        <div id="playBtn">
+                            <div class="sl-desc-handle">
+                                <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                            </div>
+                            <div class="slide-desc" style="">Our AIRH fabric is the ultimate performance fabric. It is cool to the touch, light as air and highly breathable. Courtney wears the Momentum Legging and Ooh La La Bra to reach new heights in her yoga practice.</div>
+                        </div>
+                    </li>
                     <li>
                         <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/WomenSlider1.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
 
@@ -309,8 +343,8 @@
                     <section class="wl-left-block f-left">
                         <div class="top-left-block">
                             <div class="block-content">
-                                <h4 class="cursive-text">Lorem ipsum dolor sit<br/>consectetuer adipiscing elit. </h4>
-                                <span class="b-heading top-b-heading">NY Magazine</span>
+                                <h4 class="cursive-text">A hot new yoga fashion brand<br/>launches with Indian roots<br />and modern flair.</h4>
+                                <span class="b-heading top-b-heading">WELL + GOOD</span>
                             </div>
                         </div>
                         <div class="bottom-left-block" data-vid-handle="vid-blck-1">
@@ -318,10 +352,10 @@
                         </div>
                     </section>
                     <section class="wl-right-block f-right">
-                        <img src="<?php echo $this->getSkinUrl('images/women/feat-prd-main-img.jpg') ?>" alt="" />
+                        <img src="<?php echo $this->getSkinUrl('images/women/feat-prd-main-img1.jpg') ?>" alt="" />
                         <div class="block-content">
                                 <span class="b-heading bottom-b-heading">Featured Product</span>
-                                <h4 class="main-img-text">THE JACKET WITH<br />A BROOKLYN FLAIR<span>14 colors</span></h4>
+                                <h4 class="main-img-text">OOH LA LA BRA<span>5 colors</span></h4>
                                 <a href="<?php echo $featurecategoryUrl;?>" class="shopnow-btn">shop now</a>                                
                             </div>
                     </section>
@@ -337,10 +371,10 @@
                 ?>
                 <div class="wl-color-story-prd">                    
                     <section class="wl-cs-left-block f-left">
-                        <img src="<?php echo $this->getSkinUrl('images/women/cs-main-img.jpg') ?>" alt="" />
+                        <img src="<?php echo $this->getSkinUrl('images/women/cs-main-img1.jpg') ?>" alt="" />
                         <div class="block-content"> 
                             <span class="b-heading bottom-b-heading">color</span>
-                            <h4 class="main-img-text">LIME LITE</h4>   
+                            <h4 class="main-img-text">PARADEIZA RED</h4>   
                             <a href="<?php echo $featurecategoryUrl;?>" class="shopnow-btn">shop now</a>                              
                         </div>
                     </section>
@@ -350,8 +384,8 @@
                         </div>
                         <div class="bottom-right-block">
                             <div class="block-content">
-                                <h4 class="cursive-text grey">Paradeiza Red - our rich,<br/>deep pink is perfect for the<br/>late summer and early fall months.</h4>
-                                <span class="b-heading top-grey-b-heading grey">ROSE APOSTOLAKOS, DESIGNER</span>
+                                <h4 class="cursive-text">Paradeiza Red - our rich, deep pink<br/>is perfect for the late summer<br/>and early fall months.</h4>
+                                <span class="b-heading top-grey-b-heading">ROSE APOSTOLAKOS, DESIGNER</span>
                             </div>
                         </div>                        
                     </section>
@@ -359,13 +393,13 @@
                 </div>           
 
                 <div class="html-video-popup" id="vid-blck-1">
-                    <video style="width:100%;" controls>
-                        <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'design_features_video/BROOKLYN_JACKET_ok.mp4'; ?>" type="video/mp4">
+                    <video id="vid-1" style="width:100%;" controls>
+                        <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'design_features_video/YANTRA_TANK_OK.mp4'; ?>" type="video/mp4">
                     </video>
                 </div>
                 <div class="html-video-popup" id="vid-blck-2">
-                    <video style="width:100%;" controls>
-                        <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'design_features_video/BROOKLYN_JACKET_ok.mp4'; ?>" type="video/mp4">
+                    <video id="vid-2" style="width:100%;" controls>
+                        <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'design_features_video/YANTRA_TANK_OK.mp4'; ?>" type="video/mp4">
                     </video>
                 </div> 
                 <div class="vid-popup-overlay"></div>  

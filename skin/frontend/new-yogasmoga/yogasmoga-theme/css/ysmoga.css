@@ -136,16 +136,18 @@ ul.site-map > li{
     width: 100%;
     height: auto;
     display: inline-block;
+    overflow:hidden;
 }
 
 .grid65{
     width: 66.633565044687189672293942403178%;
-    float: left;
+    /*float: left;*/    
 }
 
 .grid35{
     width: 33.366434955312810327706057596822%;
-    float: right;
+    /*float: right;*/
+    position: absolute;
 }
 
 /** misc-class/id **/
@@ -172,7 +174,7 @@ ul.site-map > li{
     color: #fff;
     font: 11px/19px gothambook;
     margin: 30px 0 0;
-    padding: 0 0 5px;
+    padding: 0 0 3px;
 }
 
 .learn-more:hover{
@@ -461,6 +463,7 @@ width: 60%;
     .headD{
         font: 28px/35px itcavantgardeprobk;
     }
+    #sitemap{margin-top: 82px;}
 }
 
 @media only screen and (max-width: 1024px) {
@@ -841,9 +844,10 @@ ul.tr-menu > li.free-shipping {
     font-family: gothambook;
     font-size: 11px;
     margin: 22px 0 20px;
-    padding: 0 0 2px;
+    padding: 0 0 0px;
     text-decoration: none;
     text-transform: uppercase;
+    line-height:18px;
 }
 
 .signinDialog #sign-up-form table td, 
@@ -1504,7 +1508,7 @@ table.inputtable tr:first-child td {
 }
 
 .crimson-rose{
-    background: #f36d75;
+    background: #c94b4f;
 }
 
 .vermelho{
@@ -1512,7 +1516,7 @@ table.inputtable tr:first-child td {
 }
 
 .klarit-red{
-    background: #9d2536;
+    background: #6d292d;
 }
 
 .tickled-pink{
@@ -1528,7 +1532,7 @@ table.inputtable tr:first-child td {
 }
 
 .shangri-la{
-    background: #b5b3b7;
+    background: #8298bc;
 }
 
 .boy-blue{
@@ -1536,15 +1540,15 @@ table.inputtable tr:first-child td {
 }
 
 .jodhpur-blue{
-    background: #095970;
+    background: #015971;
 }
 
 .india-blue{
-    background: #303aa9;
+    background: #314479;
 }
 
 .midnight-blue{
-    background: #171f6e;
+    background: #29304c;
 }
 
 .verdi{
@@ -1556,7 +1560,7 @@ table.inputtable tr:first-child td {
 }
 
 .spanish-grey{
-    background: #e7e6eb;
+    background: #b5b3b7;
 }
 
 .grey-caviar{
@@ -1966,3 +1970,6 @@ table#searchBox div.searchbutton{
     text-transform: capitalize !important;
 }
 
+
+.ysfabricpart .grid35,.factorypart .grid35{left:66.633565044687189672293942403178%;}
+.namaskarpart .grid35,.yscolorpart .grid35{right:66.633565044687189672293942403178%;}

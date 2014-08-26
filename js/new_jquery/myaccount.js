@@ -305,6 +305,10 @@ function validatereferform(elem)
             flag = false;
         }
     }
+    if(elem.find('td.name input').val() == "Name")
+    {
+        setOnError(elem.find('td.name input'), "Friend's name is required.");
+    }
     return flag;
 }
 
@@ -507,7 +511,7 @@ function validateCreateGiftCardForm()
     {
         if(!validateEmail(jQuery("#mail-to-email").val()))
         {
-            setOnError(jQuery("#mail-to-email"), "Please enter a valid Email Address.");
+            setOnError(jQuery("#mail-to-email"), "Please enter a valid Recipient's Email Address.");
             flag = false;    
         }
     }
@@ -515,7 +519,7 @@ function validateCreateGiftCardForm()
     {
         if(!validateEmail(jQuery("#mail-to-email-conf").val()))
         {
-            setOnError(jQuery("#mail-to-email-conf"), "Please enter a valid Email Address.");
+            setOnError(jQuery("#mail-to-email-conf"), "Please enter a valid Recipient's Email Address.");
             flag = false;    
         }
     }
@@ -523,7 +527,7 @@ function validateCreateGiftCardForm()
     {
         if(jQuery("#mail-to-email").val() != jQuery("#mail-to-email-conf").val())
         {
-            setOnError(jQuery("#mail-to-email-conf"),"Please make sure the Email Addresses match.");
+            setOnError(jQuery("#mail-to-email-conf"),"Please make sure the Recipient's Email Addresses match.");
             flag = false;
         }
     }

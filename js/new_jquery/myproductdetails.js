@@ -564,7 +564,11 @@ function changeColor(clr)
             {                
                 setTimeout(function(){
                     setImageContheightPDP();
-                },1000);
+                    console.log("ds");
+                    if(jQuery(".video-block").length <= 0){
+                        jQuery(".fitDetail .com-a-prd-links").hide();
+                    }
+                },500);
                 jQuery("table.tdbigimagecontainer img").attr("src", jQuery("table.smallimagecontiner td:first").attr("bigimageurl"));
                 jQuery("table.tdbigimagecontainer img").attr("alt", jQuery("table.smallimagecontiner td:first").find('img:first').attr("alt"));
             }
