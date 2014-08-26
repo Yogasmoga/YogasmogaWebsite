@@ -713,6 +713,7 @@ function selectfirstsizeonload(){
             changeproductsize(firstSize);
         }        
     }
+        jQuery(".qty").empty().html("Step 4");
 }
 }
 
