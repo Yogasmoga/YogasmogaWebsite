@@ -148,30 +148,30 @@ function joybalanceheight(){
 };
 
 function ysbannertxtheight(){
-	var ysbannertxtheight = jQuery(".ystopsection .block66").height();
+	// var ysbannertxtheight = jQuery(".ystopsection .block66").height();
 	// OurStory
-	var ystxtheight = jQuery(".ystopsection #ysbannertxt").height();
-	var calcheighttt = ysbannertxtheight-ystxtheight;
-	calcheighttt = calcheighttt/1.24;
-	jQuery(".ystopsection #ysbannertxt").css("top", calcheighttt);
+	// var ystxtheight = jQuery(".ystopsection #ysbannertxt").height();
+	// var calcheighttt = ysbannertxtheight-ystxtheight;
+	// calcheighttt = calcheighttt/1.24;
+	// jQuery(".ystopsection #ysbannertxt").css("top", calcheighttt);
 
 	// CoreValues
-	var ystxtheight2 = jQuery(".ystopsection #ysbannertxtTwo").height();
-	var calcheight2 = ysbannertxtheight-ystxtheight2;
-	calcheight2 = calcheight2/1.34;
-	jQuery(".ystopsection #ysbannertxtTwo").css("top", calcheight2);
+	// var ystxtheight2 = jQuery(".ystopsection #ysbannertxtTwo").height();
+	// var calcheight2 = ysbannertxtheight-ystxtheight2;
+	// calcheight2 = calcheight2/1.34;
+	// jQuery(".ystopsection #ysbannertxtTwo").css("top", calcheight2);
 
 	// Ethics
-	var ystxtheight3 = jQuery(".ystopsection #ysbannertxtThree").height();
-	var calcheight3 = ysbannertxtheight-ystxtheight3;
-	calcheight3 = calcheight3/1.23;
-	jQuery(".ystopsection #ysbannertxtThree").css("top", calcheight3);
+	// var ystxtheight3 = jQuery(".ystopsection #ysbannertxtThree").height();
+	// var calcheight3 = ysbannertxtheight-ystxtheight3;
+	// calcheight3 = calcheight3/1.23;
+	// jQuery(".ystopsection #ysbannertxtThree").css("top", calcheight3);
 
 	// PrinciplesYoga
-	var ystxtheight4 = jQuery(".ystopsection #ysbannertxtFour").height();
-	var calcheight4 = ysbannertxtheight-ystxtheight4;
-	calcheight4 = calcheight4/2.3;
-	jQuery(".ystopsection #ysbannertxtFour").css("top", calcheight4);
+	// var ystxtheight4 = jQuery(".ystopsection #ysbannertxtFour").height();
+	// var calcheight4 = ysbannertxtheight-ystxtheight4;
+	// calcheight4 = calcheight4/2.3;
+	// jQuery(".ystopsection #ysbannertxtFour").css("top", calcheight4);
 
 	// NamaskarFoundation
 	var ysbannertxtheightNamaskar = jQuery(".namaskarblock1 .block66").height();
