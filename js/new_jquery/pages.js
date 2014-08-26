@@ -80,8 +80,10 @@ function leftNavPos(){
     jQuery(document.body).on('appear', '#sitemap', function(e, $affected) {       
         var ra1 = jQuery(".gridProdCubix").find(".leftnav");
         var helpNav = jQuery("#pagecontainer").find(".side-menu-bar");
+        var searchNav = jQuery("#pagecontainer").find(".search-nav");
         var accntNav = jQuery("#pagecontainer").find(".account-nav");
         helpNav.addClass("helpNav");
+        searchNav.addClass("helpNav");
         ra1.addClass("ra").removeClass("ra1");
         if(jQuery(window).height() <= "600"){
             accntNav.addClass("accntNav");
@@ -94,9 +96,11 @@ function leftNavPos(){
     jQuery(document.body).on('disappear', '#sitemap', function(e, $affected) {       
         var ra1 = jQuery(".gridProdCubix").find(".leftnav");
         var helpNav = jQuery("#pagecontainer").find(".side-menu-bar");
+        var searchNav = jQuery("#pagecontainer").find(".search-nav");
         var accntNav = jQuery("#pagecontainer").find(".account-nav");
         ra1.removeClass("ra").addClass("ra1");
         helpNav.removeClass("helpNav");  
+        searchNav.removeClass("helpNav");
         if(jQuery(window).height() <= "600"){
             accntNav.removeClass("accntNav");
         }              
