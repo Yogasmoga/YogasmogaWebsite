@@ -63,6 +63,11 @@
           <template>page/mens.phtml</template>
           <layout_handle>mens</layout_handle>
         </mens>
+        <rangoli translate="label">
+          <label>Rangoli</label>
+          <template>page/rangoli.phtml</template>
+          <layout_handle>rangoli</layout_handle>
+        </rangoli>
         <!-- add more layouts here -->
       </layouts>
     </page>

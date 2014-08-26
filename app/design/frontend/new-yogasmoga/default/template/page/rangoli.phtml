@@ -1,0 +1,391 @@
+<?php
+/**
+ * 
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+<?php
+    if($this->getRequest()->getParam('video') == 'true')
+    {
+        ?>
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb01.png" />
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb02.png" />
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb03.png" />
+            <meta property="og:title"content="YOGASMOGA | Did You Take a Breath Today?" />
+            <meta property="og:description"content="We are YOGASMOGA, We make things for life - One breath at a time." />
+        <?php
+    }
+    else
+    {
+        ?>
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/Untitled_Panorama2_c_1.jpg" />
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga_mood_2395.jpg" />
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/Yogasmoga_op.jpeg" />
+            <meta property="og:title"content="YOGASMOGA" />
+            <meta property="og:description"content="We are YOGASMOGA. We make things for LIFE. One breath at a time." />
+        <?php
+    }
+?>
+
+<?php echo $this->getChildHtml('head') ?>
+
+
+<?php /*
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/jqueryui/jquery-ui-1.9.1.custom.css'); ?>" media="all" />
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/product_view.css'); ?>" media="all" />
+
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery-ui-1.9.1.custom.min.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.bxSlider.min.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/bxsliderscript.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myproductimageswitcher.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/homemainsection.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/swfobject.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.pngFix.pack.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.fancybox-1.0.0.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/youtubevideo.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/parallaxeffect.js"></script>
+*/ ?>
+<?php
+    //if(Mage::getSingleton('core/session')->getShowVideo())
+    if($this->getRequest()->getParam('video') == 'true')
+    {
+        //Mage::getSingleton('core/session')->setShowVideo(false);
+        ?>
+        <script type="text/javascript">
+			var loc = window.location;
+			history.replaceState("", document.title, loc.pathname + "breathe");
+            jQuery(window).load(function(){
+				setTimeout(function(){$j("#hmpagevideo").trigger('click')},1000);
+            });
+        </script>
+        <?php
+    }
+?>
+<script type="text/javascript">
+    jQuery(window).load(function(){
+        jQuery("div.showloading").removeClass('showloading');
+        setTimeout(function(){setfullscreenheight();},50);
+    });
+    jQuery(document).ready(function(){
+       setTimeout(function(){
+            jQuery("div.page-overlayy").remove();
+            jQuery("body").css('overflow','auto');
+       }, 500); 
+    });
+</script>
+    <!-- this script is for home video for valentine's day  -->
+<!--<script type="text/javascript">
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    var player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('youtubeplayer', {
+        width: '100%',
+        height : '100%',
+        videoId: 'gPLyklRtlN8',
+        playerVars : {
+            controls : 0,
+            showinfo : 0,
+            'wmode': 'transparent',
+            rel : 0
+        },
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+    }
+        function onPlayerStateChange(event) {
+        if (event.data == 0) {
+            //event.target.playVideo();
+            jQuery("div#Welcome").removeClass('videomode');
+            player.stopVideo();
+        }
+      }
+    function onPlayerReady(event) {
+        //console.log("player ready");
+        //jQuery("#htmlvideo iframe").addAttribute()
+        //        event.target.playVideo();
+    }
+    jQuery(document).ready(function($){
+        $("#homemainslider").click(function(){
+            if(!_onipad)
+            {
+                setTimeout(function(){getvideowidth();},100);
+                $("div#Welcome").addClass('videomode');
+                player.playVideo();   
+            }
+            else
+                $("#hmpagevideo").trigger('click');
+        });
+    });
+</script>
+-->
+</head>
+<body class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>" style="margin-right:17px;overflow:hidden;">
+<?php echo $this->getChildHtml('after_body_start') ?>
+<div class="wrapper">
+<div class="page-overlayy" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">&nbsp;</div>
+    <?php echo $this->getChildHtml('global_notices') ?>
+    <div class="page">
+        <?php echo $this->getChildHtml('header') ?>
+        <div id="pagecontainer">
+        <div class="namaskar-overlay1">&nbsp;</div>
+        <script type="text/javascript">
+            jQuery(window).load(function(){
+                jQuery('body').css('overflow','auto');
+                jQuery('.namaskar-overlay1').fadeOut('slow');
+                jQuery('.flexslider').flexslider({
+                    controlNav: true,
+                    slideshowSpeed: 5000,
+                    animationSpeed:1250,
+                    easing:"linear",
+                    directionNav: true
+                });
+            })
+        </script>
+        <!-- startCMSPages -->
+        <div class="rangoliCMSpage">
+            <!-- gridBlockOne -->
+            <div class="gridFullWidth">
+                <!-- RangoliSlider -->
+                <div class="flexslider showloading">
+                    <ul class="slides">
+                        <li>
+                            <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/new-design-images/RangoliSlider1.jpg" alt="" />
+                            <!-- rangoliContent -->
+                            <div class="rangoliSliderContent">
+                                <div class="rlogo">
+                                    <img src="<?php echo $this->getSkinUrl()?>images/new-elements/rangoli-logo.png" alt="" />
+                                </div>
+                                <div class="rSldrHeading">
+                                    THE GENESIS OF RANGOLI<br />IS IN COLOR
+                                </div>
+                                <div class="rSldrForm">
+                                    <div class="formheading">
+                                        coming soon
+                                    </div>
+                                    <form id="rangoliEmailForm">
+                                        <label>
+                                            <input type="text" name="email" id="email" placeholder="Be the first to know, Enter your email here" />
+                                            <input type="button" name="submit" id="submit" value="submit" />
+                                        </label>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- rangoliContent -->
+                        </li>
+                        <li>
+                            <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/new-design-images/RangoliSlider2.jpg" alt="" />
+                            <!-- rangoliContent -->
+                            <div class="rangoliSliderContent">
+                                <div class="rlogo">
+                                    <img src="<?php echo $this->getSkinUrl(); ?>images/new-elements/rangoli-logo.png" alt="" />
+                                </div>
+                                <div class="rSldrHeading">
+                                    THE GENESIS OF RANGOLI<br />IS IN COLOR
+                                </div>
+                                <div class="rSldrForm">
+                                    <div class="formheading">
+                                        coming soon
+                                    </div>
+                                    <form id="rangoliEmailForm">
+                                        <label>
+                                            <input type="text" name="email" id="email" placeholder="Be the first to know, Enter your email here" />
+                                            <input type="button" name="submit" id="submit" value="submit" />
+                                        </label>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- rangoliContent -->
+                        </li>
+                        <li>
+                            <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/new-design-images/RangoliSlider3.jpg" alt="" />
+                            <!-- rangoliContent -->
+                            <div class="rangoliSliderContent">
+                                <div class="rlogo">
+                                    <img src="<?php echo $this->getSkinUrl(); ?>images/new-elements/rangoli-logo.png" alt="" />
+                                </div>
+                                <div class="rSldrHeading">
+                                    RANG = <span>Color</span><br />OLI = <span>That mixes/belongs to (Color)</span>
+                                </div>
+                                <div class="rSldrForm">
+                                    <div class="formheading">
+                                        coming soon
+                                    </div>
+                                    <form id="rangoliEmailForm">
+                                        <label>
+                                            <input type="text" name="email" id="email" placeholder="Be the first to know, Enter your email here" />
+                                            <input type="button" name="submit" id="submit" value="submit" />
+                                        </label>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- rangoliContent -->
+                        </li>
+                        <li>
+                            <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/new-design-images/RangoliSlider4.jpg" alt="" />
+                            <!-- rangoliContent -->
+                            <div class="rangoliSliderContent">
+                                <div class="rlogo">
+                                    <img src="<?php echo $this->getSkinUrl();?>images/new-elements/rangoli-logo.png" alt="" />
+                                </div>
+                                <div class="rSldrHeading">
+                                    THE GENESIS OF RANGOLI<br />IS IN COLOR
+                                </div>
+                                <div class="rSldrForm">
+                                    <div class="formheading">
+                                        coming soon
+                                    </div>
+                                    <form id="rangoliEmailForm">
+                                        <label>
+                                            <input type="text" name="email" id="email" placeholder="Be the first to know, Enter your email here" />
+                                            <input type="button" name="submit" id="submit" value="submit" />
+                                        </label>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- rangoliContent -->
+                        </li>
+                        <li>
+                            <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/new-design-images/RangoliSlider2.jpg" alt="" />
+                            <!-- rangoliContent -->
+                            <div class="rangoliSliderContent">
+                                <div class="rlogo">
+                                    <img src="<?php echo $this->getSkinUrl(); ?>images/new-elements/rangoli-logo.png" alt="" />
+                                </div>
+                                <div class="rSldrHeading">
+                                    THE GENESIS OF RANGOLI<br />IS IN COLOR
+                                </div>
+                                <div class="rSldrForm">
+                                    <div class="formheading">
+                                        coming soon
+                                    </div>
+                                    <form id="rangoliEmailForm">
+                                        <label>
+                                            <input type="text" name="email" id="email" placeholder="Be the first to know, Enter your email here" />
+                                            <input type="button" name="submit" id="submit" value="submit" />
+                                        </label>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- rangoliContent -->
+                        </li>
+                        <li>
+                            <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/new-design-images/RangoliSlider3.jpg" alt="" />
+                            <!-- rangoliContent -->
+                            <div class="rangoliSliderContent">
+                                <div class="rlogo">
+                                    <img src="<?php echo $this->getSkinUrl(); ?>images/new-elements/rangoli-logo.png" alt="" />
+                                </div>
+                                <div class="rSldrHeading">
+                                    RANG = <span>Color</span><br />OLI = <span>That mixes/belongs to (Color)</span>
+                                </div>
+                                <div class="rSldrForm">
+                                    <div class="formheading">
+                                        coming soon
+                                    </div>
+                                    <form id="rangoliEmailForm">
+                                        <label>
+                                            <input type="text" name="email" id="email" placeholder="Be the first to know, Enter your email here" />
+                                            <input type="button" name="submit" id="submit" value="submit" />
+                                        </label>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- rangoliContent -->
+                        </li>
+                        <li>
+                            <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/new-design-images/RangoliSlider4.jpg" alt="" />
+                            <!-- rangoliContent -->
+                            <div class="rangoliSliderContent">
+                                <div class="rlogo">
+                                    <img src="<?php echo $this->getSkinUrl(); ?>images/new-elements/rangoli-logo.png" alt="" />
+                                </div>
+                                <div class="rSldrHeading">
+                                    THE GENESIS OF RANGOLI<br />IS IN COLOR
+                                </div>
+                                <div class="rSldrForm">
+                                    <div class="formheading">
+                                        coming soon
+                                    </div>
+                                    <form id="rangoliEmailForm">
+                                        <label>
+                                            <input type="text" name="email" id="email" placeholder="Be the first to know, Enter your email here" />
+                                            <input type="button" name="submit" id="submit" value="submit" />
+                                        </label>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- rangoliContent -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- RangoliSlider -->
+            </div>
+            <!-- gridBlockOne -->
+
+            <!-- gridBlockTwo -->
+            <div class="gridFullWidth">
+                <!-- TextContent -->
+                <div class="textContainer">
+                    <div class="cntntheading">
+                        DISCOVER, SHARE, ENJOY<span>OUR INNOVATIVE & INTERACTIVE COMMUNITY SPACE</span>
+                    </div>
+                    <div class="contnttxt">
+                        <p class="c-align">At YOGASMOGA we know that people have a love affair with color.<br />They romance color, they feel it-it speaks to them and they deeply desire it.<br />This deep connection that people have with color is a key driver of Rangoli.</p>
+                    </div>
+                </div>
+                <!-- TextContent -->
+            </div>
+            <!-- gridBlockTwo -->
+
+            <!-- bottomDivider -->
+            <div class="bottomdivider"></div>
+            <!-- bottomDivider -->
+
+        </div>
+        <!-- endCMSPages -->
+
+
+            <?php echo $this->getChildHtml('footer'); ?>
+
+        </div>
+        <?php echo $this->getChildHtml('before_body_end'); ?>
+    </div>
+</div>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>
