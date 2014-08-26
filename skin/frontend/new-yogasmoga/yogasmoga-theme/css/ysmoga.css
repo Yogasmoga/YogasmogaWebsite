@@ -1261,8 +1261,8 @@ table.inputtable tr:first-child td {
 
 .f11 {
     text-transform: uppercase;
-    border-bottom: 2px solid #e68099;
-    padding: 0 0 3px;
+    border-bottom: 1px solid #c03;
+    padding: 0 0 1px;
 }
 
 .postop0{
@@ -1274,7 +1274,7 @@ table.inputtable tr:first-child td {
 }
 
 .htext{
-    margin: 52px 70px 0;
+    margin: 52px 50px 0;
 }
 
 .ysbottomsection{
@@ -1286,16 +1286,16 @@ table.inputtable tr:first-child td {
 }
 
 .gridBlockContent{
-    min-height: 152px;
+    min-height: 141px;
     color: #555;
     text-align: center;
-    padding: 15px 0;
+    padding: 22px 0;
     width: 100%;
     text-transform: uppercase;
 }
 
 .gridBlockContent > span{
-    font: 11px/31px gothambold;
+    font: 11px/25px gothambold;
     display: block;
     border-bottom: 1px solid #999;
     width: 28%;
@@ -1370,6 +1370,10 @@ table.inputtable tr:first-child td {
     color: #fff;
     display: inline-block;
     text-transform: uppercase;
+}
+
+.grnbtn:hover{
+    color: #fff;
 }
 
 .mrgn24top{
@@ -1504,7 +1508,7 @@ table.inputtable tr:first-child td {
 }
 
 .crimson-rose{
-    background: #f36d75;
+    background: #c94b4f;
 }
 
 .vermelho{
@@ -1512,7 +1516,7 @@ table.inputtable tr:first-child td {
 }
 
 .klarit-red{
-    background: #9d2536;
+    background: #6d292d;
 }
 
 .tickled-pink{
@@ -1528,7 +1532,7 @@ table.inputtable tr:first-child td {
 }
 
 .shangri-la{
-    background: #b5b3b7;
+    background: #8298bc;
 }
 
 .boy-blue{
@@ -1536,15 +1540,15 @@ table.inputtable tr:first-child td {
 }
 
 .jodhpur-blue{
-    background: #095970;
+    background: #015971;
 }
 
 .india-blue{
-    background: #303aa9;
+    background: #314479;
 }
 
 .midnight-blue{
-    background: #171f6e;
+    background: #29304c;
 }
 
 .verdi{
@@ -1556,7 +1560,7 @@ table.inputtable tr:first-child td {
 }
 
 .spanish-grey{
-    background: #e7e6eb;
+    background: #b5b3b7;
 }
 
 .grey-caviar{
@@ -1589,8 +1593,8 @@ table.inputtable tr:first-child td {
 .linkheader {
     color: #555;
     border-bottom: 1px solid #d2204d;
-    padding: 0 0 4px;
-    margin: 149px 0 0;
+    padding: 0 0 0;
+    margin: 152px 0 0;
     text-transform: uppercase;
     display: inline-block;
 }
@@ -1689,7 +1693,7 @@ table#searchBox div.searchbutton{
 
 .rSldrHeading{
     font: 38px/50px ITCAvantGardeProMd;
-    margin: 0 0 11.5% !important;
+    margin: 0;
     text-align: center;
 }
 
@@ -1698,14 +1702,22 @@ table#searchBox div.searchbutton{
 }
 
 .rSldrForm{
-    margin: auto;
-    display: block;
+    margin: auto !important;
+    display: block;/*
+    left: 37%;
+    right: 37%;*/
+    top: 36.4%;
+    position: absolute;
+    z-index: 9;
+    width: 100%;
 }
 
 .rSldrForm .formheading{
     font: 17px/35px ITCAvantGardeProBk;
     margin: 0 0 11px !important;
     display: block;
+    text-transform: uppercase;
+    color: #fff;
 }
 
 .cms-rangoli .cntntheading{
@@ -1722,7 +1734,7 @@ table#searchBox div.searchbutton{
     display: inline-block;
 }
 
-#rangoliEmailForm #email{
+#rangoliEmailForm #txtNewsletterEmail{
     background: #fff;
     border: 0 none;
     color: #555;
@@ -1733,7 +1745,7 @@ table#searchBox div.searchbutton{
     border-radius: 0 0 0 0;
 }
 
-#rangoliEmailForm #submit{
+#rangoliEmailForm #btnNewsletter{
     background: #5ec52f;
     border: 0 none;
     color: #fff !important;
@@ -1747,9 +1759,15 @@ table#searchBox div.searchbutton{
     -webkit-appearance: none;
 }
 
+#rangoliEmailForm #footernotification {
+    color: #fff;
+    text-align: left;
+}
+
 /* rangoliSliderFixes */
 .cms-rangoli .flex-control-nav{
     bottom: 4px;
+    z-index: 9 !important;
 }
 
 .cms-rangoli .flex-control-paging li a{
@@ -1800,6 +1818,7 @@ table#searchBox div.searchbutton{
 }
 .pressBlock{
     min-height: 251px;
+    height: 320px;
     color: #fff;
     text-transform: uppercase;
 }
@@ -1840,6 +1859,7 @@ table#searchBox div.searchbutton{
 }
 .minh250{
     min-height: 251px;
+    height: 320px;
 }
 .pressPage .bottomdivider {
     clear: both;
@@ -1860,6 +1880,7 @@ table#searchBox div.searchbutton{
 }
 .pressBlock > a{
     min-height: 251px;
+    height: 320px;
 }
 .pressBlock a .textContainer > div{
     color: #fff;
@@ -1901,8 +1922,8 @@ table#searchBox div.searchbutton{
     font: 18px/6px itcavantgardepromd;
 }
 .fabrictable .aurumiconcell tr:nth-child(2) td {
-    font: 8px/11px itcavantgardeprobk !important;
-    height: 45px;
+    font: 10px/14px itcavantgardeprobk !important;
+    height: 70px;
     padding: 5px 6px !important;
     text-align: left !important;
     vertical-align: top;
@@ -1924,20 +1945,23 @@ table#searchBox div.searchbutton{
     border-top: 1px solid #999;
     color: #555 !important;
     font: 11px/19px gothambold !important;
-    height: 85px;
+    height: 110px;
     vertical-align: middle;
 }
 
 /** HomepageFixes **/
 .contentSlider .aurum sup {
     font-size: 25px;
+    line-height: 20px;
  }
  .aurum > strong {
     font: normal 37px/30px AvantGardeGothicITCW01X;
 }
 
 .flex-control-nav{
-    z-index: 1 !important;
+    left: 40%;
+    right: 40%;
+    width: auto !important;
 }
 .fitDetail .video-block img{
     cursor: pointer;

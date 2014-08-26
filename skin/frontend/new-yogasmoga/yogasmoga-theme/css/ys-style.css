@@ -1921,6 +1921,13 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .contentSlider h3,
     .contentSlider h3 > .aurum{font-size: 36px; line-height: 40px;}
     .namaskartxt h3 span{line-height: 24px;}
+
+    /* cmsheading */
+    .gridCMSPages h4, .gridBlockContent h3, .pressHead{font-size: 36px !important; line-height: 40px !important;}
+    .rSldrHeading{font-size: 38px !important; line-height: 50px !important;}
+    .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 17px !important; line-height: 35px !important;}
+    .cntntheading, .gridCMSPages .coloumn-list li span{font-size: 24px !important; line-height: 29px !important;}
+    .presstxt p{font-size: 17px !important; line-height: 19px !important;}
 }
 
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
@@ -1946,6 +1953,13 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .contentSlider h3,
     .contentSlider h3 > .aurum{font-size: 40px; line-height: 43px;}  
     .bx-wrapper .bx-controls-direction a{width: 21px !important; height: 23px !important; background-size: 100% 100%;}
+
+
+    /* cmsheading */
+    .gridCMSPages h4, .gridBlockContent h3, .pressHead, .rSldrHeading{font-size: 40px !important; line-height: 43px !important;}
+    .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 19px !important; line-height: 39px !important;}
+    .cntntheading, .gridCMSPages .coloumn-list li span{font-size: 28px !important; line-height: 33px !important;}
+    .presstxt p{font-size: 19px !important; line-height: 23px !important;}
 }
 
 
@@ -1970,6 +1984,13 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .contentSlider h3,
     .contentSlider h3 > .aurum{font-size: 45px; line-height: 48px;}  
     .bx-wrapper .bx-controls-direction a{width: 25px !important; height: 27px !important; background-size: 100% 100%;}
+
+
+    /* cmsheading */
+    .gridCMSPages h4, .gridBlockContent h3, .pressHead, .rSldrHeading{font-size: 45px !important; line-height: 48px !important;}
+    .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 22px !important; line-height: 45px !important;}
+    .cntntheading, .gridCMSPages .coloumn-list li span{font-size: 32px !important; line-height: 37px !important;}
+    .presstxt p{font-size: 22px !important; line-height: 29px !important;}
 }
 
 @media screen and (min-width: 1600px) {
@@ -1986,6 +2007,13 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .contentSlider h3,
     .contentSlider h3 > .aurum{font-size: 50px; line-height: 53px;}
     .header{ padding:0 60px 0 30px;}
+
+
+    /* cmsheading */
+    .gridCMSPages h4, .gridBlockContent h3, .pressHead, .rSldrHeading{font-size: 50px !important; line-height: 53px !important;}
+    .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 24px !important; line-height: 50px !important;}
+    .cntntheading, .gridCMSPages .coloumn-list li span{font-size: 36px !important; line-height: 41px !important;}
+    .presstxt p{font-size: 24px !important; line-height: 34px !important;}
 }
 
 .selectedlength div{display: inline-block; border: 1px solid #A9A9A9; text-align: center; cursor: pointer; padding: 2px 8px; margin: 0 7px 0 0;}
