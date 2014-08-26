@@ -305,6 +305,10 @@ function validatereferform(elem)
             flag = false;
         }
     }
+    if(elem.find('td.name input').val() == "Name")
+    {
+        setOnError(elem.find('td.name input'), "Friend's name is required.");
+    }
     return flag;
 }
 
