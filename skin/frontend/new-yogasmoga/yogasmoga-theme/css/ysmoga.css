@@ -1257,8 +1257,8 @@ table.inputtable tr:first-child td {
 
 .f11 {
     text-transform: uppercase;
-    border-bottom: 2px solid #e68099;
-    padding: 0 0 3px;
+    border-bottom: 1px solid #c03;
+    padding: 0 0 1px;
 }
 
 .postop0{
@@ -1270,7 +1270,7 @@ table.inputtable tr:first-child td {
 }
 
 .htext{
-    margin: 52px 70px 0;
+    margin: 52px 50px 0;
 }
 
 .ysbottomsection{
@@ -1282,16 +1282,16 @@ table.inputtable tr:first-child td {
 }
 
 .gridBlockContent{
-    min-height: 152px;
+    min-height: 141px;
     color: #555;
     text-align: center;
-    padding: 15px 0;
+    padding: 22px 0;
     width: 100%;
     text-transform: uppercase;
 }
 
 .gridBlockContent > span{
-    font: 11px/31px gothambold;
+    font: 11px/25px gothambold;
     display: block;
     border-bottom: 1px solid #999;
     width: 28%;
@@ -1366,6 +1366,10 @@ table.inputtable tr:first-child td {
     color: #fff;
     display: inline-block;
     text-transform: uppercase;
+}
+
+.grnbtn:hover{
+    color: #fff;
 }
 
 .mrgn24top{
