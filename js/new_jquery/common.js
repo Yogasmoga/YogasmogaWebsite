@@ -4,9 +4,10 @@ jQuery(window).load(function($){
     colorStorySec();
     featLiHeightAd(); 
     browserTest();
-    setFeatureVideoWidth();
+    setFeatureVideoWidth();    
     var featLiH = jQuery(".featureList span.ftrFig img.df-img").first().height();
-    jQuery(".featureList span.ftrFig").css("height", featLiH);            
+    jQuery(".featureList span.ftrFig").css("height", featLiH);   
+    playBtnPos();         
 
 });
 jQuery(document).ready(function($){   
@@ -35,6 +36,7 @@ jQuery(document).ready(function($){
         madeinusa();
         setFeatureVideoWidth();
         goys();
+        playBtnPos();
         var featLiH = jQuery(".featureList span.ftrFig img.df-img").first().height();
         jQuery(".featureList span.ftrFig").css("height", featLiH); 
         var vidOverlayW = pdpVidPop.width();
@@ -43,6 +45,7 @@ jQuery(document).ready(function($){
         var vidPopHeight = $(".html-vid-pop").height();
         $(".html-vid-pop").css({"left": (vidOverlayW - vidPopWidth)/2, "top" : (vidOverlayH - vidPopHeight)/2 }); 
         $(".html-video-popup").css({"left": (vidOverlayW - htmlVidpop.width())/2, "top" : (vidOverlayH - htmlVidpop.height())/2 });
+        playBtnPos();
     });    
 
     $(".bottom-left-block,.top-right-block").on("click", function(){
@@ -415,15 +418,7 @@ function madeinusa(){
  	var vidMeasureWidth = rightMostLi + rightmidLi + 19;
  	$(featureVideo).css({"width": vidFeatureWidth, "margin-left" : margnLeft});
  	// $(measureVideo).css({"width": vidMeasureWidth, "margin-right" : margnRight});
-    $(measureVideo).css({"width": vidMeasureWidth});
-    var plBtn =jQuery("ul.featureList li.last-df").find("img.vid-pl-btn");
-    var plBtnW = plBtn.width();
-    var plBtnH = plBtn.height();
-    var pbConW = jQuery("ul.featureList li.last-df span.ftrFig").width();
-    var pbConH = jQuery("ul.featureList li.last-df span.ftrFig").height();
-    var topPos = (pbConH - plBtnH)/2;
-    var leftPos = (pbConW - plBtnW)/2;
-    plBtn.css({"top":topPos, "left":leftPos});
+    $(measureVideo).css({"width": vidMeasureWidth});   
 
  }
 // function hdrCenter(){     var _wnWdth = jQuery(window).width();
@@ -549,4 +544,15 @@ function fnIsAppleMobile()
 
 function browserTest(){ 
    return jQuery.browser.safari;
+}
+
+function playBtnPos(){
+    var plBtn =jQuery("ul.featureList li.last-df").find("img.vid-pl-btn");
+    var plBtnW = plBtn.width();
+    var plBtnH = plBtn.height();
+    var pbConW = jQuery("ul.featureList li.last-df span.ftrFig").width();
+    var pbConH = jQuery("ul.featureList li.last-df span.ftrFig").height();
+    var topPos = (pbConH - plBtnH)/2;
+    var leftPos = (pbConW - plBtnW)/2;
+    plBtn.css({"top":topPos, "left":leftPos});    
 }
