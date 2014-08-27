@@ -278,6 +278,24 @@ function bubble(status){
 }
 </script>
 <!--End of Zopim Live Chat Script-->
+<script type="text/javascript">
+    jQuery(document).ready(function($){
+        // for macOS
+        if(navigator.userAgent.indexOf('Mac') > 0) {
+            $('body').addClass('mac-os');
+        }
+
+        // for chrome only
+        if(navigator.userAgent.indexOf('Chrome') > 0) {
+            $('body').addClass('chrome');
+        }
+
+        // for safari only
+        if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+            $('body').addClass('safari');
+        }
+    });
+</script>
 <?php
 }
 ?>

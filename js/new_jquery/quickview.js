@@ -81,10 +81,10 @@ function showQuickViewPopup(productid, e)
             showQuickViewPopup(jQuery(this).attr('id'));
         });
 
-        jQuery(document).keydown(function(e){ 
+        jQuery(document).keydown(function(e){
         var nextIdView1 = parseInt(jQuery("#" + productid).closest("li").next().children("a").attr("id"));
         var prevIdView1 = parseInt(jQuery("#" + productid).closest("li").prev().children("a").attr("id"));
-            e.preventDefault();
+            //e.preventDefault();
              var PrevID = jQuery('.quick-prev').attr('id');
              if(PrevID > 0){                 
             if (e.keyCode == 37) {
@@ -148,8 +148,8 @@ function showQuickViewPopup(productid, e)
                 showQuickViewPopup(jQuery(this).attr('id'));
             });
             
-            jQuery(document).keydown(function(e){ 
-                e.preventDefault();
+            jQuery(document).keydown(function(e){
+                //e.preventDefault();
                  var PrevID = jQuery('.quick-prev').attr('id');
                  if(PrevID > 0){                     
                 if (e.keyCode == 37) {                  
