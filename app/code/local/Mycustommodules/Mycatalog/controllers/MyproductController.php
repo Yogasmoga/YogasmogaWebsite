@@ -671,12 +671,14 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
         if ($this->getRequest()->isPost() && $this->getRequest()->getPost('email')) {
             $session         = Mage::getSingleton('core/session');
-            $emails           = $this->getRequest()->getPost('email'); //trim((string) $this->getRequest()->getPost('email'));
-            $names            = $this->getRequest()->getPost('name'); //trim((string) $this->getRequest()->getPost('name'));
+            $email           = $this->getRequest()->getPost('email'); //trim((string) $this->getRequest()->getPost('email'));
+            $name            = $this->getRequest()->getPost('name'); //trim((string) $this->getRequest()->getPost('name'));
             $id = $this->getRequest()->getPost('id');
 
-            $email           = trim((string) $this->getRequest()->getPost('email')); //trim((string) $this->getRequest()->getPost('email'));
-            $name            = trim((string) $this->getRequest()->getPost('name'));
+            if(is_array ($email))
+                $email           = $email[0]; //trim((string) $this->getRequest()->getPost('email'));
+            if(is_array ($name))
+                $name            = $name[0];
 
             $arr['message'] = "";
             $arr['status'] = "error";
