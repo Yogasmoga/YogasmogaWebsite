@@ -34,23 +34,23 @@
 <div class="namaskar-overlay1">&nbsp;</div>
 <script type="text/javascript">
     jQuery(window).load(function(){
+        setImageContheightPDP();
         jQuery('body').css('overflow','auto');
         jQuery('.namaskar-overlay1').fadeOut('slow');
         jQuery("body").on("click",".vid-popup-overlay", function(){        
             var dfVid = document.getElementById("df-vid");
-            var measureVid = document.getElementById("measure-vid");                        
-            dfVid.pause();            
-            measureVid.pause();
+            var measureVid = document.getElementById("measure-vid");  
+            if(jQuery(".html-des-vid-popup").is(":visible")){
+                dfVid.pause();    
+            }                      
+            if(jQuery(".html-fit-vid-popup").is(":visible")){
+                measureVid.pause();
+            }
 
         });
         window.onkeyup = function (event) {
             if (event.keyCode == 27) {
             jQuery(".vid-popup-overlay").trigger("click"); 
-                var dfVid = document.getElementById("df-vid");
-                var measureVid = document.getElementById("measure-vid");                        
-                dfVid.pause();            
-                measureVid.pause();
-                                  
             }
         }
     })
@@ -873,7 +873,10 @@ if($_product->getAttributeText('canzoomimage') == "yes")
                 <div class="vlink-cont" style="margin-left:16px;">
                     <p class="block-link" style="margin-top: 15px;"><a href="#" class="com-a-prd-links">Watch the video of how to measure</a></p>
                 </div>
-                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
+                <div class="sm-size-chart">
+                    <a class="size-res"></a>
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
+                </div>                
             </div>
                                   <?php
 
@@ -888,9 +891,11 @@ if($_product->getAttributeText('canzoomimage') == "yes")
                                 </div>
                                   <?php } ?>
             <div class="clear-fix"></div>
-            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>             
-
-        <a name="sizechart"></a>
+            <div class="lg-size-chart">
+                <a class="size-res-org" name="sizechart"></a>
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>             
+            </div>
+        
         </div>
     <?php } ?>
 

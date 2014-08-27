@@ -563,8 +563,7 @@ function changeColor(clr)
             if(jQuery("table.tdbigimagecontainer img").length > 0)
             {                
                 setTimeout(function(){
-                    setImageContheightPDP();
-                    console.log("ds");
+                    // setImageContheightPDP();                    
                     if(jQuery(".video-block").length <= 0){
                         jQuery(".fitDetail .com-a-prd-links").hide();
                     }
@@ -698,7 +697,7 @@ function addtocart()
 }
 function setImageContheightPDP(){
         var pdpimagecontH = jQuery("table.tdbigimagecontainer img").height();
-        jQuery("table.productimagecontainer").parent(".upper-container").css("min-height", pdpimagecontH + 70);
+        jQuery("table.productimagecontainer").parent(".upper-container").css("min-height", pdpimagecontH + 70);       
     }
 
 /**In case of length available**/

@@ -335,11 +335,18 @@ function referafriend(name, email, id)
                 tr.find('td.processing').hide();
                 tr.find('td.btninvite').hide();
                 tr.find('td.btninvited').show();
-                tr.find('td.success').show();
+                tr.find('td.success').show();                
                 var html = "<tr><td class='name'><div>" + tr.find('td.name input').val() + "</div></td><td class='email'><div>" + tr.find('td.email input').val() + "</div></td><td class='status'></td></tr>";
                 jQuery("table.referredfriendslist tbody#main").append(html);
                 jQuery("table.referredfriendslist").show();
                 jQuery("p#noreferralmsg").hide();
+                tr.addClass("success");
+                jQuery("table.referfriendforms tr.success td").each(function(){
+                      var shareInput = jQuery(this).find("input");  
+                      var shareInputWater = shareInput.attr("watermark");
+                      shareInput.addClass("watermark").val(shareInputWater);
+                      shareInput.blur();
+                });                                 
             }
             else
             {
@@ -349,7 +356,7 @@ function referafriend(name, email, id)
                 tr.find('td.btninvite').show();
                 if(jQuery("table.referfriendforms tbody#main>tr").length > 2)
                     tr.find('td.remove').show();
-                tr.find('td.processing').hide();
+                tr.find('td.processing').hide(); 
             }
         }
     });
