@@ -2020,7 +2020,7 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 
 .selectedlength div{display: inline-block; border: 1px solid #A9A9A9; text-align: center; cursor: pointer; padding: 2px 8px; margin: 0 7px 0 0;}
 .selectedlength div.selected{background: #666; border-color: #666; color: #fff;}
-.selectedlength{margin-top: 10px; border-bottom: 1px solid #FFF; padding-bottom: 10px;}
+.selectedlength{margin-top: 10px; border-bottom: 1px solid #FFF; text-transform: uppercase; padding-bottom: 10px;}
 
 /* paypal error msg on shopping bag */
 .errortext{
@@ -2185,3 +2185,12 @@ td.checkShippingBox input[type="checkbox"]:checked + label, td.checkBillingBox i
 ul.featureList li{position: relative;}
 ul.featureList li img.vid-pl-btn {width: auto; position: absolute; width: 40%; max-width: 91px; display: none;}
 ul.featureList li.last-df img.vid-pl-btn{display: block;}
+
+.lightgrey{background: #cacaca !important;}
+.lightgrey .top-grey-b-heading{border-color: #555;}
+.main-img-text sup {
+    font-family: itcavantgardeprobk;
+    font-size: 25px;
+}
+.wl-left-block .bottom-left-block.mens-left-blockbg{background: url(../images/women/left-block-vid-img2.jpg) no-repeat; background-size: 100% 100%;}
+.wl-color-story-prd .iconspartone .row img{display: inline;}
