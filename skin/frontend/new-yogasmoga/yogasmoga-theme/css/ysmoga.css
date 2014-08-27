@@ -358,71 +358,10 @@ width: 60%;
     vertical-align: middle;
 }
 
-/*
-@media only screen and (max-width : 1150px) {
-    ul.new-arrivals li:nth-child(5){
-        display: none;
-    }
-}*/
-
-   /* .header {
-        padding: 0 45px 0 18px;
-    }*/
-
-/*
-@media only screen and (max-width: 1041px) {
-    .logoCont{
-        display: none;
-    }
-    
-    ul.site-map > li{
-        width: 32.5%;
-    }
-
-    .footer-block {
-        display: inline-block;
-        width: 88.8%;
-        margin: 3px 0 0 11.2%;
-    } 
-
-    .footer-block > .site-map {
-    }
-
-    .shiftRight{
-        float: none;
-    }
-
-    .contentSlider.namaskartxt div {
-        width: 70% !important;
-    }
-
-    .shopnow-btn{
-        margin-top: 20px;
-    }
-
-
-    .iconspartone .row img {
-        width: 30%;
-    }
-
-    .iconspartone .row .iconstxt {
-        width: 70%;
-    }
-
-    .header {
-        padding: 0 40px 0 11px;
-    }
-}*/
-
 @media only screen and (max-width : 1440px) {   
     .shopnow-btn{
         margin-top: 30px;
     }
-
-   /* .header {
-        padding: 0 54px 0 22px;
-    }*/
-
 }
 
 @media only screen and (max-width : 1360px) {
@@ -430,10 +369,6 @@ width: 60%;
         margin-top: 25px;
     }
 
-   /* .iconspartone .row img {
-        width: 40%;
-    }
-    */
     .iconspartone .row .iconstxt {
         width: auto;
     }
@@ -463,33 +398,11 @@ width: 60%;
     .headD{
         font: 28px/35px itcavantgardeprobk;
     }
+
     #sitemap{margin-top: 82px;}
 }
 
 @media only screen and (max-width: 1024px) {
-   /* .logoCont{
-        display: none;
-    }*/
-    
-    /*.footer-block {
-        display: inline-block;
-        width: 88.8%;
-        margin: 3px 0 0 11.2%;
-    } */
-
-   /* .iconspartone .row img {
-        width: 30%;
-    }
-*/
-   /* .iconspartone .row .iconstxt {
-        width: 70%;
-    }*/
-
-    /*.header {
-        padding: 0 40px 0 11px;
-
-    }*/
-
     ul.site-map > li{
         width: 32.5%;
     }
@@ -548,13 +461,6 @@ width: 60%;
     max-width: 100%;
     display: block;
 }
-
-/*.bx-controls {
-    bottom: 15px;
-    height: 100%;
-    left: 1%;
-    right: 1%;
-}*/
 
 .bx-controls-auto{
     display: none;
@@ -651,12 +557,6 @@ width: 60%;
 .bx-pager-item:last-child {
     float: none;
 }
-
-/*.bx-controls-direction {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-}*/
 
 /** selfClear **/
 .overridefix:after {
@@ -1115,7 +1015,6 @@ table.inputtable tr:first-child td {
 
 .block30{
     width: 33.3984375%;
-/*    display: inline-block;*/
     float: left;
     vertical-align: top;
     font: 12px/17px gothambook;
@@ -1178,10 +1077,11 @@ table.inputtable tr:first-child td {
 }
 
 .gridCMSPages .topHead{
-    font: 11px/27px gothambold;
+    font: 11px/normal gothambold;
     border-bottom: 1px solid #fff;
     width: 292px;
     margin: auto auto 15px;
+    padding: 0 0 1.222%;
 }
 
 .gridCMSPages h4 .smallHead,
@@ -1442,8 +1342,6 @@ table.inputtable tr:first-child td {
     clear: both;
     display: inline-block;
     font-size: 0;
-/*    border-top: 1px solid #999;
-    padding: 15px 0 0;*/
 }
 
 .nogridborder{
@@ -1703,9 +1601,7 @@ table#searchBox div.searchbutton{
 
 .rSldrForm{
     margin: auto !important;
-    display: block;/*
-    left: 37%;
-    right: 37%;*/
+    display: block;
     top: 36.4%;
     position: absolute;
     z-index: 9;
@@ -1970,6 +1866,63 @@ table#searchBox div.searchbutton{
     text-transform: capitalize !important;
 }
 
+.ysfabricpart .grid35, .factorypart .grid35 {
+    left:66.633565044687189672293942403178%;
+}
 
-.ysfabricpart .grid35,.factorypart .grid35{left:66.633565044687189672293942403178%;}
-.namaskarpart .grid35,.yscolorpart .grid35{right:66.633565044687189672293942403178%;}
+.namaskarpart .grid35, .yscolorpart .grid35{
+    right:66.633565044687189672293942403178%;
+}
+
+/** SafariFixes **/
+body.safari .block33,
+body.mac-os .block33{
+    float: left;
+}
+
+body.safari .gridFullWidth,
+body.mac-os .gridFullWidth{
+    display: inherit;
+    float: left;
+    width: 100%;
+}
+
+body.safari .block66,
+body.mac-os .block66{
+    width: 66.68417%;
+    float: left;
+}
+
+/*body.safari .block50,
+body.mac-os .block50{
+    width: 49.999% 0;
+}*/
+
+body.safari .gridFullWidth .block30:last-child,
+body.mac-os .gridFullWidth .block30:last-child {
+    width: 33.3158%;
+}
+
+body.safari .gridCMSPages.pressPage .gridFullWidth .block30:last-child,
+body.mac-os .gridCMSPages.pressPage .gridFullWidth .block30:last-child {
+    width: 33.21%;
+}
+
+body.safari .gridFullWidth .block50:last-child,
+body.mac-os .gridFullWidth .block50:last-child {
+    width: 50.078%;
+}
+
+body.safari .bottomdivider,
+body.mac-os .bottomdivider {
+    clear: both;
+    float: left;
+    width: 92.1875%;
+}
+
+/** iPadlandscape **/
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+    .block66, .block33{
+        float: left !important;
+    } 
+}
