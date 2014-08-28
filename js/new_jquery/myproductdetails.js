@@ -4,7 +4,10 @@ jQuery(window).load(function($){
     selectfirstsizeonload();
     insertBraOption();
 });
-jQuery(document).ready(function($){    
+jQuery(document).ready(function($){
+
+    if(_sizesuperattribute == false)
+        jQuery(".qty").empty().html("Step 2");
     $(document).keydown( function(e) {
         var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
         if (key==37) {  ///left key
