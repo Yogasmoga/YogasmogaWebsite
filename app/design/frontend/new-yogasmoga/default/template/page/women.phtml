@@ -241,51 +241,88 @@
                 <!-- ProductListing Part -->
 
 
-                <div class="new-arrivals-block" style="width:100%; margin:0 auto;">
-                    <?php $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_landing_category_ids')->getValue('plain')), true);
+            <div class="new-arrivals-block" style="width:100%; margin:0 auto;">
+                <?php $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_landing_category_ids')->getValue('plain')), true);
 
-                    $categoryId = $categoryIds['new_arrivals'];
-                    ?>
-                    <?php $newarrivals = Mage::getModel('catalog/category')->load($categoryId); ?>
-                    <div class="shop-col-desc l-align">
-                        <span class="na-head">Spring Is In</span>
-                        <span class="na-link"><a href="<?php echo $newarrivals->getUrl(); ?>">Shop New Collection</a></span>                       
-                    </div>                    
-                    
-                        <?php
-                        //retrieve color
-                        $write = Mage::getSingleton('core/resource')->getConnection('core_read');
-                        $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
-                        while ($row = $readresult->fetch() ) {
-                            $clrinfo[$row['Value']] = $row['Attribute'];
-                        }
-//                        $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_landing_category_ids')->getValue('plain')), true);
-//
-//                        $categoryId = $categoryIds['new_arrivals'];
-                        $i = 0;
-                        //$newarrivals = Mage::getModel('catalog/category')->load($categoryId);
+                $categoryId = $categoryIds['quick_view'];
+                ?>
+                <?php $newarrivals = Mage::getModel('catalog/category')->load($categoryId); ?>
+                <div class="shop-col-desc l-align">
+                    <span class="na-head">Spring Is In</span>
+                    <span class="na-link"><a href="<?php echo $newarrivals->getUrl(); ?>">Shop New Collection</a></span>
+                </div>
+
+                <?php
+                //retrieve color
+                $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
+                while ($row = $readresult->fetch() ) {
+                    $clrinfo[$row['Value']] = $row['Attribute'];
+                }
+                //                        $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_landing_category_ids')->getValue('plain')), true);
+                //
+                //                        $categoryId = $categoryIds['new_arrivals'];
+
+                //$newarrivals = Mage::getModel('catalog/category')->load($categoryId);
 
 
-                        $productCollection = $newarrivals->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
-                        ?>
-                        <ul id="show5" class="new-arrivals">        
-                        <?php
-                        foreach($productCollection as $_product)
+                $productCollection = $newarrivals->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
+                $quickviewproducts = array();
+
+                foreach($productCollection as $_product)
+                {
+
+                    $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+                    $grayimgage = '';
+                    foreach($_gallery as $_image)
+                    {
+                        $imgdata = json_decode(trim($_image->getLabel()), true);
+                        if($imgdata == NULL)
                         {
+                            continue;
+                        }
 
-                            if($i==5)break;$i++;
-                         ?>
-                            <li>
-                                <a id="<?php echo $_product->getId(); ?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(91); ?>" />
+                        if(strcasecmp($imgdata['type'],"grey background") == 0 && $imgdata['color'] != '' && $imgdata['quick_view_position'] != '' )
+                        {
+                            $grayimgage = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(90);
+
+//                $quickviewproducts[$imgdata['quick_view_position']]['position'] = $imgdata['quick_view_position'];
+                            $quickviewproducts[$imgdata['quick_view_position']]['id'] = $_product->getId();
+                            $quickviewproducts[$imgdata['quick_view_position']]['name'] = $_product->getName();
+                            $quickviewproducts[$imgdata['quick_view_position']]['color'] = $imgdata['color'];
+                            $quickviewproducts[$imgdata['quick_view_position']]['price'] = round($_product->getPrice(),2);
+                            $quickviewproducts[$imgdata['quick_view_position']]['imgurl'] = (string)$grayimgage;
+                            if(count($quickviewproducts) == 5 )break;
+                        }
+
+                    }
+                }
+
+
+                ksort($quickviewproducts);
+
+
+                ?>
+                <ul id="show5" class="new-arrivals">
+                    <?php
+                    $i=0;
+                    foreach($quickviewproducts as $_product)
+                    {
+
+
+                        ?>
+                        <li>
+
+                            <a id="<?php echo $_product['id'].'-'.++$i; ?>" color="<?php echo $_product['color'];?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $_product['imgurl']; ?>" />
                                 <div class="prd-details">
-                                    <span class="prd-name gothambd"><?php echo $_product->getName(); ?></span>
-                                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
-                                    <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2); ?></span>
+                                    <span class="prd-name gothambd"><?php echo $_product['name']; ?></span>
+                                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product['color']]; ?></span>
+                                    <span class="prd-price gothambk">$<?php echo  $_product['price']; ?></span>
                                 </div>
-                                </a>
+                            </a>
 
-            
-                             <?php /*   <div class="prd-details">
+
+                            <?php /*   <div class="prd-details">
                                     <a href = "<?php echo $_product->getProductUrl(); ?>"><span class="prd-name gothambd"><?php echo $_product->getName(); ?></span> </a>
                                     <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
                                     <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2); ?></span>
@@ -293,43 +330,47 @@
                                         <img src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" border="0" alt="" />
                                     </a>
                                 </div> */ ?>
-                            </li>
-                       <?php
-                        }
+                        </li>
+                    <?php
+                    }
 
-                        ?>                        
-                    </ul>
-                    <ul id="show4" class="new-arrivals">        
-                        <?php $i=0;
-                        foreach($productCollection as $_product)
-                        {
+                    ?>
+                </ul>
 
-                            if($i==4)break;$i++;
-                         ?>
-                            <li>
-                                <a id="<?php echo $_product->getId(); ?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(91); ?>" />
+                <ul id="show4" class="new-arrivals">
+                    <?php
+                    $i=0;
+                    foreach($quickviewproducts as $_product)
+                    {
 
-                                    <div class="prd-details">
-                                    <span class="prd-name gothambd"><?php echo $_product->getName(); ?></span>
-                                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
-                                    <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2); ?></span>
-                                    </div>
-                               <?php /* <div class="prd-details">
+                        if($i==4)break;$i++;
+                        ?>
+                        <li>
+
+                            <a id="<?php echo $_product['id']; ?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $_product['imgurl']; ?>" />
+                                <div class="prd-details">
+                                    <span class="prd-name gothambd"><?php echo $_product['name']; ?></span>
+                                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product['color']]; ?></span>
+                                    <span class="prd-price gothambk">$<?php echo  $_product['price']; ?></span>
+                                </div>
+                            </a>
+
+
+                            <?php /*   <div class="prd-details">
                                     <a href = "<?php echo $_product->getProductUrl(); ?>"><span class="prd-name gothambd"><?php echo $_product->getName(); ?></span> </a>
                                     <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
                                     <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2); ?></span>
                                     <a id="<?php echo $_product->getId(); ?>" href="javascript:void(0)" class="quick-view">
                                         <img src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" border="0" alt="" />
                                     </a>
-                                </div>*/ ?>
-                                </a>
-                            </li>
-                       <?php
-                        }
+                                </div> */ ?>
+                        </li>
+                    <?php
+                    }
 
-                        ?>                        
-                    </ul>                    
-                </div>
+                    ?>
+                </ul>
+            </div>
                 <div style="display:none;">
                     <div id="productdetailpopup">
                     </div>
