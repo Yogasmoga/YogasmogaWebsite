@@ -340,13 +340,7 @@ function referafriend(name, email, id)
                 jQuery("table.referredfriendslist tbody#main").append(html);
                 jQuery("table.referredfriendslist").show();
                 jQuery("p#noreferralmsg").hide();
-                tr.addClass("success");
-                jQuery("table.referfriendforms tr.success td").each(function(){
-                      var shareInput = jQuery(this).find("input");  
-                      var shareInputWater = shareInput.attr("watermark");
-                      shareInput.addClass("watermark").val(shareInputWater);
-                      shareInput.blur();
-                });                                 
+
             }
             else
             {
