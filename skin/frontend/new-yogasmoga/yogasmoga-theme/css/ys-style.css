@@ -2195,6 +2195,6 @@ table.referfriendforms td.success img{cursor:default !important;}
     font-family: itcavantgardeprobk;
     font-size: 25px;
 }
-.wl-left-block .bottom-left-block.mens-left-blockbg{background: url(../images/women/left-block-vid-img2.jpg) no-repeat; background-size: 100% 100%;}
+.wl-left-block .bottom-left-block.mens-left-blockbg{background: url(../images/women/left-block-vid-img2.jpg) no-repeat center center; cursor: default; background-size: 100% 100%; width: 100%;}
 .wl-color-story-prd .iconspartone .row img{display: inline;}
 

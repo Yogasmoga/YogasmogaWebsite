@@ -28,7 +28,7 @@ jQuery(document).ready(function($){
 		factorypartRes();
 		namaskarpartRes();	
 		// ctextVMiddle();	
-	});	
+	}).trigger('resize');	
 });
 
 // sliderFunction
