@@ -1783,7 +1783,7 @@ div.cms-side-nav ul li span{display: none;}
     width: 304px;
 }
 
-.html-des-vid-popup,.html-fit-vid-popup{position: fixed; width: 50%; display: none; top:100px; z-index: 10099;}
+.html-des-vid-popup,.html-fit-vid-popup,.size-chart-pop{position: fixed; width: 50%; display: none; top:100px; z-index: 10099;}
 .vid-popup-overlay{position: fixed; background: rgba(0,0,0,0.5); width: 100%; height: 100%; top:0; left:0; display: none; z-index: 10098; cursor:pointer;}
 #productdetails{padding: 0 40px; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -ms-box-sizing:border-box; box-sizing:border-box; max-width: 1600px;}
 table.selectedcolor td span{font-family: gothambook;}
@@ -1799,7 +1799,7 @@ body.cms-help .2-columns-wrapper{padding: 0 40px;}
 .cms-size-chart .fitDetail table tr{height:30px;}
 .cms-product-care{position: relative;}
 .cms-product-care .pc-right{float: left; width: auto; margin-right: 180px;}
-#size-chart-vid{font-family: gothambook; font-size: 11px; line-height: 17px; border-bottom: 1px solid #c03; float: left; margin-top: 17px;}
+#size-chart-vid{font-family: gothambook; font-size: 11px; line-height: 17px; border-bottom: 1px solid #c03; float: left; margin-top: 17px; cursor:pointer;}
 
 
 /***Landing Page***/
@@ -2186,6 +2186,9 @@ ul.featureList li{position: relative;}
 ul.featureList li img.vid-pl-btn {width: auto; position: absolute; width: 40%; max-width: 91px; display: none;}
 ul.featureList li.last-df img.vid-pl-btn{display: block;}
 
+table.referfriendforms td.success img{cursor:default !important;}
+
+
 .lightgrey{background: #cacaca !important;}
 .lightgrey .top-grey-b-heading{border-color: #555;}
 .main-img-text sup {
@@ -2194,3 +2197,4 @@ ul.featureList li.last-df img.vid-pl-btn{display: block;}
 }
 .wl-left-block .bottom-left-block.mens-left-blockbg{background: url(../images/women/left-block-vid-img2.jpg) no-repeat; background-size: 100% 100%;}
 .wl-color-story-prd .iconspartone .row img{display: inline;}
+

@@ -803,7 +803,7 @@ ul.tr-menu > li.free-shipping {
     font: 14px/19px gothambold !important;
     margin-bottom: 40px !important;
 }
-
+#productdetails .fitDetail .video-box a[name="sizechart"]{display: none;}
 @media only screen and (min-width : 1600px) {
    #productdetails .fitDetail .video-box .tble table {
         display: block;
@@ -815,6 +815,7 @@ ul.tr-menu > li.free-shipping {
     .video-box{
         width: 45%;
     }
+    #productdetails .fitDetail .video-box a[name="sizechart"]{display: block;}
 }
 
 @media only screen and (max-width : 1599px) {

@@ -83,15 +83,11 @@
             var dfVid1 = document.getElementById("vid-1");            
             var dfVid2 = document.getElementById("vid-2");  
             dfVid1.pause();
-            dfVid2.pause();              
+            //dfVid2.pause();              
         });
         window.onkeyup = function (event) {
             if (event.keyCode == 27) { 
-                jQuery(".vid-popup-overlay").trigger("click");
-            var dfVid1 = document.getElementById("vid-1");            
-            var dfVid2 = document.getElementById("vid-2");  
-            dfVid1.pause();
-            dfVid2.pause();                
+                jQuery(".vid-popup-overlay").trigger("click");                            
             }
         }
     });

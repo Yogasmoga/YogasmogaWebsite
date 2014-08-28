@@ -7,10 +7,11 @@ jQuery(window).load(function($){
     setFeatureVideoWidth();    
     var featLiH = jQuery(".featureList span.ftrFig img.df-img").first().height();
     jQuery(".featureList span.ftrFig").css("height", featLiH);   
-    playBtnPos();         
-
+    playBtnPos();
+    sizeChartScroll();    
 });
-jQuery(document).ready(function($){   
+jQuery(document).ready(function($){ 
+sizeChartPop(); 
     $("#productdetails").on("click",".vlink-cont a",function(){
         $(".fitDetail .video-block img").click();
     });
@@ -45,7 +46,14 @@ jQuery(document).ready(function($){
         var vidPopHeight = $(".html-vid-pop").height();
         $(".html-vid-pop").css({"left": (vidOverlayW - vidPopWidth)/2, "top" : (vidOverlayH - vidPopHeight)/2 }); 
         $(".html-video-popup").css({"left": (vidOverlayW - htmlVidpop.width())/2, "top" : (vidOverlayH - htmlVidpop.height())/2 });
+        /**Size Chart popup**/
+        var sizePop = jQuery(".size-chart-pop");
+        var popOver = jQuery(window);        
+        var topPos = (popOver.height() - sizePop.height())/2;
+        var leftPos = (popOver.width() - sizePop.width())/2;        
+        sizePop.css({"top": topPos, "left": leftPos});
         playBtnPos();
+        sizeChartScroll();
     });    
 
     $(".bottom-left-block,.top-right-block").on("click", function(){
@@ -67,9 +75,9 @@ jQuery(document).ready(function($){
         var pdpVidPopHeight = pdpVidPop.height();
         var pdpVidPopWidth = pdpVidPop.width();          
         designVid.css({"left" : (pdpVidPopWidth - designVidWidth)/2, "top" : (pdpVidPopHeight - designVidHeight)/2 }).fadeIn();
-        jQuery(window).resize();
         var dfVid = document.getElementById("df-vid");
         dfVid.play();
+        jQuery(window).resize();        
     });
 
     $("body.catalog-product-view").on("click", ".fitDetail .video-block img", function(){       
@@ -80,19 +88,19 @@ jQuery(document).ready(function($){
         var pdpVidPopHeight = pdpVidPop.height();  
         var pdpVidPopWidth = pdpVidPop.width();              
         fitVid.css({"left" : (pdpVidPopWidth - fitVidWidth)/2, "top" : (pdpVidPopHeight - fitVidHeight)/2}).fadeIn();
-        jQuery(window).resize();
-        var measureVid = document.getElementById("measure-vid");
+         var measureVid = document.getElementById("measure-vid");
         measureVid.play();
+        jQuery(window).resize();       
     });
    
     window.onkeyup = function (event) {
-        if (event.keyCode == 27) { 
-            $(".vid-popup-overlay,.html-des-vid-popup,.html-fit-vid-popup").fadeOut();
-            htmlVidpop.fadeOut();            
+        if (event.keyCode == 27) {              
+            $(".vid-popup-overlay,.html-des-vid-popup,.html-fit-vid-popup,.size-chart-pop").fadeOut();
+            htmlVidpop.fadeOut();
         }
     }
     jQuery("body").on("click",".vid-popup-overlay", function(){
-        $(".vid-popup-overlay,.html-des-vid-popup,.html-fit-vid-popup").fadeOut();
+        $(".vid-popup-overlay,.html-des-vid-popup,.html-fit-vid-popup,.size-chart-pop").fadeOut();
             htmlVidpop.fadeOut();
     });
    // $("body").scrollTop(0);
@@ -556,3 +564,26 @@ function playBtnPos(){
     var leftPos = (pbConW - plBtnW)/2;
     plBtn.css({"top":topPos, "left":leftPos});    
 }
+
+function sizeChartScroll(){
+    var smallSizeChart = jQuery("div.sm-size-chart");
+    if(smallSizeChart.find("div.tble table").is(":visible")){
+        smallSizeChart.find("a.size-res").attr("name","sizechart");
+    }else{
+        smallSizeChart.find("a.size-res").attr("name","");
+    }
+}
+
+function sizeChartPop(){ 
+    jQuery(".cms-help").on("click","#size-chart-vid", function(){  
+        var sizePop = jQuery(".size-chart-pop");
+        var popOver = jQuery(window);        
+        var topPos = (popOver.height() - sizePop.height())/2;
+        var leftPos = (popOver.width() - sizePop.width())/2;
+        jQuery(".vid-popup-overlay").fadeIn();
+        sizePop.css({"top": topPos, "left": leftPos}).fadeIn();
+        var sizeChatVid = document.getElementById("sizeChartVid");
+        sizeChatVid.play();
+    });    
+}
+
