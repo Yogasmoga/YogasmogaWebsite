@@ -426,22 +426,22 @@ td.popupproductdetail table.smogibucks td.earnsmogibuckstext
 table.productdetailtable div.outofstockitem
 {
 
-    height : 44px;
+    height : 39px;
     background : url('../images/catalog/product/out-of-stock-dis.png') no-repeat center center;
     margin-top : 10px;
     display : none;
     width: 100%;
-    background-size: 100% auto;
+    /*background-size: 100% auto;*/
 }
 
 table.productdetailtable div.addtobag{
-    height : 44px;
+    height : 39px;
     padding: 0;
     background : url('../images/catalog/product/add-to-bag-on.png') no-repeat center center; 
     margin : 10px 0 0;
     cursor : pointer;
     width: 100%;
-    background-size: 100% auto;
+    /*background-size: 100% auto;*/
 }
 
 table.productdetailtable div.addtobag.bagdisabled{
@@ -452,14 +452,14 @@ table.productdetailtable button.cbtn{margin-top:20px;}
 
 table.productdetailtable div.preorderitem
 {
-    height : 44px;
+    height : 39px;
     background : url('../images/catalog/product/pre-order-now-on.png') no-repeat center center;
     margin-top : 10px;
     cursor : pointer;
     display : none;
     position: relative;
     width: 100%;
-    background-size: 100% auto;
+    /*background-size: 100% auto;*/
 }
 
 table.productdetailtable div.producterrorcontainer
