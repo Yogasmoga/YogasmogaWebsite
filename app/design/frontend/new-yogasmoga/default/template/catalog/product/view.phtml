@@ -884,7 +884,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
                                   {
                                   ?>
                                <div class="video-block f-right">
-                                        <img src="<?php echo $this->getSkinUrl('images/fit-vid-img.jpg'); ?>" />                                     
+                                        <img src="<?php echo $this->getSkinUrl('images/how-to-measure-thumbnail.jpg'); ?>" />                                     
                                       </video>
 
 
@@ -1074,7 +1074,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
 
 
 <!-- fittable -->
-<div class="box-seprtr">
+<div class="box-seprtr dnone">
     <div class="blck-head-sml"><span class="qty">Step 3:</span>
         Qty
         <?php if($howdoesitfitblockid != "") { ?>
@@ -1111,8 +1111,8 @@ if($_product->getAttributeText('canzoomimage') == "yes")
 <!-- fittable -->
 
 <!-- addToBag -->
-<div class="box-seprtr last">
-    <div class="blck-head-sml no-display"><span>Step 3</span></div>
+<div class="box-seprtr last" style="padding-top:10px;">
+    <div class="blck-head-sml"><span class="qty">Step 3</span></div>
 
     <!-- addToBagBtn -->
     <div id="orderitem" class="addtobag spbutton"
@@ -1153,7 +1153,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
 <!-- DetailsinGreyArea -->
 
 <!-- SMOGIBUCKS -->
-<table class="box-desc-dvdr font10 smogibucks" <?php if(!$isrewardable) { echo "style='display:none;'"; } ?>>
+<table class="box-desc-dvdr font11 smogibucks" <?php if(!$isrewardable) { echo "style='display:none;'"; } ?>>
     <tr>
         <td width="50%">
             <div class="earnbucks">

@@ -3050,18 +3050,18 @@ table.inputtable td.errortext div,table.gfredeem td.errortext div,table#redeem t
 
 .productdtlbg
 {
-    background-image: url("../images/background/productdtlbg.jpg");
+/*    background-image: url("../images/background/productdtlbg.jpg");
     background-position: center top;
     background-repeat: repeat-y;
-    background-size: cover;
+    background-size: cover;*/
 }
 
 .mainshoppingbg
 {
-    background-image: url("../images/background/main_shopping_bg.jpg");
+/*    background-image: url("../images/background/main_shopping_bg.jpg");
     background-position: center top;
     background-repeat: repeat-y;
-    background-size: cover;
+    background-size: cover;*/
 }
 
 .explore_btn {
@@ -3597,7 +3597,7 @@ form#discountFormPoints2 a
 form#discountFormPoints2 div.errortext, div.errortext
 {
     color: #D90D3D;
-    font-family: helveticaoblique;
+    font-family: gothambook;
     font-size: 11px;    
 }
 form#discountFormPoints2 input.input-text
@@ -3644,22 +3644,22 @@ div.gotoshoppingbag
 
 body.cms-mens
 {
-    background:#fff url(../images/background/cat_mens_bg.jpg) 0 0 no-repeat; background-size:100%;
+    /*background:#fff url(../images/background/cat_mens_bg.jpg) 0 0 no-repeat; background-size:100%;*/
 }
 
 body.catalogsearch-result-index
 {
-    background:#fff url("../images/background/search_bg.jpg") 0 0 no-repeat; background-size:100%;
+    /*background:#fff url("../images/background/search_bg.jpg") 0 0 no-repeat; background-size:100%;*/
 }
 
 body.checkout-cart-index
 {
-    background:#fff url("../images/background/shoppingbag_bg.jpg") 0 0 no-repeat; background-size:100%;
+    /*background:#fff url("../images/background/shoppingbag_bg.jpg") 0 0 no-repeat; background-size:100%;*/
 }
 
 body.checkout-continue
 {
-    background:#fff url("../images/background/checkout_bg.jpg") 0 0 no-repeat; background-size:100%;
+    /*background:#fff url("../images/background/checkout_bg.jpg") 0 0 no-repeat; background-size:100%;*/
 }
 
 

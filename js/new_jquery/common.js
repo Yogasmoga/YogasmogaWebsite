@@ -54,7 +54,11 @@ sizeChartPop();
         sizePop.css({"top": topPos, "left": leftPos});
         playBtnPos();
         sizeChartScroll();
-    });    
+    });  
+
+    $(".bottom-left-block.mens-left-blockbg").on("click", function(e){
+        e.stopImmediatePropagation();
+    });  
 
     $(".bottom-left-block,.top-right-block").on("click", function(){
         var vidHandle = $(this).data("vid-handle");               

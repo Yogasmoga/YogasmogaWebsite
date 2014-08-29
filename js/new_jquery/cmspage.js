@@ -1,5 +1,19 @@
 jQuery(document).ready(function($){
 
+    // Will also work for relative and absolute hrefs
+    var url = window.location.href;
+    $('.main-menu li a').each(function(){
+        var linkurl = $(this).attr("href");
+
+        if(linkurl == url){
+            $(this).parent().addClass('active');
+        }
+    });
+
+    $('.main-menu ul.sub-menu li a').filter(function() {
+        return this.href == url;
+    }).parents("li").addClass('active');
+
     var objectPage={};
 
     // check for url with HASH value for cms pages

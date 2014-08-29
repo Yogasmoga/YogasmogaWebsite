@@ -172,7 +172,16 @@
     <?php endif; ?>
     <?php if ($this->getIsStripeCustomer()) : ?>
         <div id="stripe-update-payment-holder">
-        <a id="stripe-update-payment" class="use checkBCre"><?php echo $this->__("Change payment information") ?></a>
+
+    <div class="creditOption clear">
+        <span class="addVal">Use a different Credit Card</span><span class="showCrdtOpt"></span>
+        <a id="stripe-update-payment" class="use checkBCre showcreditcardopt"><?php echo $this->__("Change payment information") ?></a>
+    </div>
+
+
+
+
+        
         </div>
     <?php endif; ?>
     <?php /*

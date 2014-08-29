@@ -1168,7 +1168,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             if($item['optionlabel'] != '')
             {
                 $html .='<span class="size">'.$item['optionlabel'].'</span>';
-                $html .='<span class="clr">'.$item['optionvalue'].'</span>';
+                //$html .='<span class="clr">'.$item['optionvalue'].'</span>';
             }
             $html .='</span>
 <a href="#" class="close"></a>';

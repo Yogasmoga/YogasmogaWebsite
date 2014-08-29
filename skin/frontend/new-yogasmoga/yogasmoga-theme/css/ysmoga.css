@@ -1899,9 +1899,12 @@ body.mac-os .block50{
     width: 49.999% 0;
 }*/
 
-body.safari .gridFullWidth .block30:last-child,
-body.mac-os .gridFullWidth .block30:last-child {
+body.safari .gridFullWidth .block30:last-child {
     width: 33.3158%;
+}
+
+body.mac-os .gridFullWidth .block30:last-child {
+    width: 33.25%;
 }
 
 body.safari .gridCMSPages.pressPage .gridFullWidth .block30:last-child,
@@ -1919,6 +1922,10 @@ body.mac-os .bottomdivider {
     clear: both;
     float: left;
     width: 92.1875%;
+}
+
+body.mac-os .headingBlock{
+    height: 50.8%;
 }
 
 /** iPadlandscape **/

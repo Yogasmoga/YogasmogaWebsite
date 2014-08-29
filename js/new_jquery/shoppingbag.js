@@ -38,7 +38,7 @@ jQuery(document).ready(function($){
              }
              else if($(this).prev('input').attr('id')=='giftcartcode'){
                   if($(this).prev('input').data('used') =='yes') showerror('You cannot use another Promo Code / Gift Card Code.');
-                  else showerror('You cannot use Smogi Bucks and Promo Code / Gift Card Code together.');
+                  else showerror('You cannot use SMOGI Bucks &<br />Promo Code/Gift Card Code together.');
              }
          }
     });

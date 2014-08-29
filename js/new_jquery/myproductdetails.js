@@ -4,7 +4,10 @@ jQuery(window).load(function($){
     selectfirstsizeonload();
     insertBraOption();
 });
-jQuery(document).ready(function($){    
+jQuery(document).ready(function($){
+
+    if(_sizesuperattribute == false)
+        jQuery(".qty").empty().html("Step 2");
     $(document).keydown( function(e) {
         var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
         if (key==37) {  ///left key
@@ -246,8 +249,8 @@ function changelengthtype(sz){
     jQuery("#orderitem").addClass("spbutton");
 }
 function changeproductsize(sz)
-{  
-       
+{
+    jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
     if(_islengthavailable){
         jQuery("div.selectedlength div").removeClass("selected");
         jQuery("div#sizecontainer div").removeClass("dvselectedsize");
