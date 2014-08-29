@@ -164,12 +164,12 @@ table.productdetailtable div#colorcontainer > div {
 }
 
 #absproductoptions table.productdetailtable div#colorcontainer > div {
-    height: 20px;
+    height: 22px;
 }
 
 table.productdetailtable div#colorcontainer div table
 {
-    width : 17px;
+    width : 19px;
     cursor : pointer;
 }
 
@@ -182,13 +182,13 @@ table.productdetailtable div#colorcontainer > div table tr:nth-child(1) td:nth-c
 {
      width:0; 
      height:0; 
-     border-right:17px solid transparent !important;
+     border-right:19px solid transparent !important;
      border-top:3px solid transparent !important;
 
-     border-left-color: 17px;
+     border-left-color: 19px;
      border-left-style: solid;
 
-     border-bottom-width:17px;
+     border-bottom-width:19px;
      border-bottom-style: solid;
 }
 
@@ -196,29 +196,28 @@ table.productdetailtable div#colorcontainer > div table tr:nth-child(1) td:nth-c
 {
      width:0; 
      height:0; 
-     border-left:17px solid transparent !important;
+     border-left:19px solid transparent !important;
      border-bottom:3px solid transparent !important;
 
-     border-right-color: 17px;
+     border-right-color: 19px;
      border-right-style: solid;
 
-     border-top-width:17px;
+     border-top-width:19px;
      border-top-style: solid;
      margin: 0 0 0 -20px;
      float: left;
 }
 
 #absproductoptions table.productdetailtable div#colorcontainer > div table tr:nth-child(1) td:nth-child(1){
-     border-right:17px solid transparent !important;
-    /* border-left-color: 30px;*/
-     border-bottom-width:17px;
+     border-right:19px solid transparent !important;
+     border-bottom-width:19px;
 }
 
 #absproductoptions table.productdetailtable div#colorcontainer > div table tr:nth-child(1) td:nth-child(2){
-     border-left:17px solid transparent !important;
-     border-right-color: 17px;
-     border-top-width:17px;
-     margin: 0 0 0 -20px;
+     border-left:19px solid transparent !important;
+     border-right-color: 19px;
+     border-top-width:19px;
+     margin: 0 0 0 -22px;
 }
 
 table.productdetailtable div#colorcontainer div table td.tdselectedcolor
@@ -386,7 +385,7 @@ td.popupproductdetail table.smogibucks td div.smogibuckcount,
 }
 
 .product-details .smogibuckcount{
-    margin: 0 8px 5px 0;
+    margin: 0 8px 7px 0;
     float: none;    
 }
 
@@ -411,7 +410,7 @@ td.popupproductdetail table.smogibucks td div.smogibuckcount table td,
     color : #FFF;
     font-family: gothamMedium;
     font-size : 12px;
-    padding-top : 10px;
+    padding : 10px 0 0 1px;
 }
  
 td.popupproductdetail table.smogibucks td.earnsmogibuckstext

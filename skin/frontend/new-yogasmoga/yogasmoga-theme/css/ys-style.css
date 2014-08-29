@@ -471,7 +471,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 }
 
 
-.featureList span{display: block; margin: 12px 0 0; font-size: 12px; text-transform: capitalize; text-align: left;}
+.featureList span{display: block; margin: 15px 0 0; font-size: 12px; text-transform: capitalize; text-align: left;}
 .featureList span.ftrFig{/*background: #E5E9EC;*/ margin: 0; text-align: left; /*height: 200px*/ overflow: hidden}
 .featureList span.ftrFig img{width: 100%; /*height: 100%;*/}
 
@@ -515,11 +515,11 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 
 .fabDetail > h2{font: 24px ITCAvantGardeProBk; background: none; margin: -18px 0 30px; border:none;}
 .fabDetail h2 sup{font-size: 18px;}
-.fabDetail ul{margin-bottom: 10px;}
-.fabDetail li{font: 9px/12px gothamMedium; text-align: left; text-transform: uppercase; width: 45%; word-wrap: break-word; display: inline-block; margin-bottom: 25px; vertical-align: top;}
+.fabDetail ul{margin-bottom: 17px;}
+.fabDetail li{font: 9px/12px gothamMedium; text-align: left; text-transform: uppercase; width: 45%; word-wrap: break-word; display: inline-block; margin-bottom: 20px; vertical-align: top;}
 /*.fabDetail li:first-child{margin: 0 0.5% 0 0;}*/
 /*.fabDetail li:nth-child(4){margin: 0 0 0 0.5%;}*/
-.fabDetail li span{display: block; margin-bottom: 10px;}
+.fabDetail li span{display: block; margin-bottom: 16px;}
 
 .fitDetail .wdth35{float: left; width: 29%; margin: 0 8% 0 0;}
 .fitDetail .wdth65{float: left; width: 58%;}
@@ -2262,4 +2262,7 @@ table.referfriendforms td.success img{cursor:default !important;}
 }
 .zoomdialog {
     width: 100% !important;
+}
+.freeshipptext{
+    padding: 14px 0 13px;
 }
