@@ -471,7 +471,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 }
 
 
-.featureList span{display: block; margin: 12px 0 0; font-size: 12px; text-transform: capitalize; text-align: left;}
+.featureList span{display: block; margin: 15px 0 0; font-size: 12px; text-transform: capitalize; text-align: left;}
 .featureList span.ftrFig{/*background: #E5E9EC;*/ margin: 0; text-align: left; /*height: 200px*/ overflow: hidden}
 .featureList span.ftrFig img{width: 100%; /*height: 100%;*/}
 
@@ -515,11 +515,11 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 
 .fabDetail > h2{font: 24px ITCAvantGardeProBk; background: none; margin: -18px 0 30px; border:none;}
 .fabDetail h2 sup{font-size: 18px;}
-.fabDetail ul{margin-bottom: 10px;}
-.fabDetail li{font: 9px/12px gothamMedium; text-align: left; text-transform: uppercase; width: 45%; word-wrap: break-word; display: inline-block; margin-bottom: 25px; vertical-align: top;}
+.fabDetail ul{margin-bottom: 17px;}
+.fabDetail li{font: 9px/12px gothamMedium; text-align: left; text-transform: uppercase; width: 45%; word-wrap: break-word; display: inline-block; margin-bottom: 20px; vertical-align: top;}
 /*.fabDetail li:first-child{margin: 0 0.5% 0 0;}*/
 /*.fabDetail li:nth-child(4){margin: 0 0 0 0.5%;}*/
-.fabDetail li span{display: block; margin-bottom: 10px;}
+.fabDetail li span{display: block; margin-bottom: 16px;}
 
 .fitDetail .wdth35{float: left; width: 29%; margin: 0 8% 0 0;}
 .fitDetail .wdth65{float: left; width: 58%;}
@@ -660,6 +660,10 @@ ul.checkout-cont > li.active .ovrlay-bg{display: none;}
     margin: auto auto 18px;
     padding: 15px;
     text-align: left;
+}
+#checkout-shipping-address-new.gryWrap,
+#billing-new-address-form.gryWrap{
+    padding: 12px;
 }
 span.address {
     font-weight: normal !important;
@@ -1312,8 +1316,7 @@ width: 100%;
 }
 
 table.productzoomtable tr.zoom-prd-details > td{height: 80px !important; max-height: 80px !important;}
-.zoom-prd-det{width: 100% !important;/* position: absolute; left: 0;*/ padding-top:5px; margin:0 !important; background:#fff url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/big-divider.png") no-repeat center bottom;
-background-size: 100% auto; padding-bottom: 15px; padding-left: 30px; z-index: 5000;}
+.zoom-prd-det{width: 100% !important;/* position: absolute; left: 0;*/ padding-top:5px; margin:0 !important; background:#fff none; border-bottom: 1px solid #555; padding-bottom: 15px; padding-left: 30px; z-index: 5000;}
 #zoomedproductimage{z-index: 1000;}
 table.productdetailtable div#colorcontainer{margin: 0 !important;}
 .zoomsmallimagecontainer tr{display: block !important; float: none !important;}
@@ -1345,7 +1348,7 @@ table.tblwishlist thead th{padding-bottom: 0 !important; font-family: gothambold
     display: block !important;
     font: 11px gothambold;
     height: auto;
-    margin: 40px 0 0;
+    margin: 44px 0 0;
 }
 #stepCheck img {
     float: left;
@@ -1403,7 +1406,7 @@ button.btn-addtobag span{width: 145px !important; height: 38px !important; backg
 .goy-balance .sub-title{padding-top: 0 !important; font-family: gothambold !important; font-size: 11px !important; margin: 0 0 15px !important; color: #666 !important; text-transform: uppercase !important; font-weight: normal !important; line-height: 17px;}
 .goy-balance p{font-family: gothambook; font-size: 12px; line-height: 17px;}
 .applygiftcard,.applypromo,.applysmogi {cursor: pointer;}
-table.productimagecontainer table.smallimagecontiner td:last-child{display: none;}
+/*table.productimagecontainer table.smallimagecontiner td:last-child{display: none;}*/
 /*#absproductoptions table.productdetailtable div#colorcontainer>div:nth-child(7n){margin-right: 0;}*/
 table.selectedcolor{margin: 3px 0 5px;}
 .prd-add-to-wish{position: relative; text-align: right;}
@@ -1671,8 +1674,8 @@ table.inputtable td.inputholder input[type='text'], table.inputtable td.inputhol
 
 
 .mar0{margin: 0 !important;}
-.martop35{margin: -35px 0 0 0 !important;}
-.marbtm745{margin: 0 0 -830px !important;}
+.martop35{margin: -43px 0 0 0 !important;}
+.marbtm745{margin: 0 0 -751px !important;}
 
 .addNewAdd .gryWrap input.checkbox {
     height: auto;
@@ -1741,7 +1744,7 @@ button.button.btn-addtoaccount{margin: 0 !important;}
     position: absolute;
     right: 40px;
     text-transform: initial;
-    top: 40px;
+    top: 19px;
 }
 .choose-file-cont #file_upload{
     height: auto !important;
@@ -2131,6 +2134,7 @@ ul.main-menu2 a.main-heading,  x:-moz-any-link {height:34px;}
 
 #checkout-shipping-address-new label[for="shipping:save_in_address_book"] {
     font-size: 12px !important;
+    margin: 0;
 }
 
 
@@ -2141,7 +2145,7 @@ ul.main-menu2 a.main-heading,  x:-moz-any-link {height:34px;}
 #ordersummary td.divider{
     background: none;
     border-bottom: 1px solid #fff;
-    height: 10px;
+    height: 6px;
 }
 
 .gridProdCubix .leftnav .ctglink li a.bld:hover{
@@ -2191,7 +2195,7 @@ td.checkShippingBox input[type="checkbox"]+label, td.checkBillingBox input[type=
     cursor: pointer;
     display: inline-block;
     height: 26px;
-    margin: 2px 0 20px;
+    margin: 2px 0 0;
     padding: 6px 0 0px 52px;
     width: auto;
 }
@@ -2236,4 +2240,29 @@ table.referfriendforms td.success img{cursor:default !important;}
 
 #payment_form_stripe > div#stripe-update-payment-holder {
     margin: 18px 0 0;
+}
+
+#payment_form .paymentmethoddiv:nth-child(2) label {
+    float: left;
+    margin: 0 0 0 10px;
+}
+
+#payment_form .paymentmethoddiv:nth-child(1) label {
+    float: right;
+    margin: 0 10px 0 0;
+}
+
+#reviewDetails div#ordersummary table{
+    margin-top: 0;
+}
+
+#reviewDetails div#ordersummary{
+    padding: 11px 20px 10px;
+    min-height: 100px;
+}
+.zoomdialog {
+    width: 100% !important;
+}
+.freeshipptext{
+    padding: 14px 0 13px;
 }

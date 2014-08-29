@@ -1190,7 +1190,7 @@ table.inputtable tr:first-child td {
     min-height: 141px;
     color: #555;
     text-align: center;
-    padding: 22px 0;
+    padding: 21px 0 22px;
     width: 100%;
     text-transform: uppercase;
 }
@@ -1200,7 +1200,7 @@ table.inputtable tr:first-child td {
     display: block;
     border-bottom: 1px solid #999;
     width: 28%;
-    margin: auto;
+    margin: auto auto 48px;
 }
 
 .gridBlockContent h3{
@@ -1265,7 +1265,7 @@ table.inputtable tr:first-child td {
 
 .grnbtn{
     background: #5ec52f;
-    padding: 10px 25px;
+    padding: 7px 20px 8px;
     text-align: center;
     font: 11px/19px gothammedium;
     color: #fff;
@@ -1618,7 +1618,7 @@ table#searchBox div.searchbutton{
 }
 
 .cms-rangoli .cntntheading{
-    margin-top: 30px;
+    margin-top: 29px;
 }
 
 .cms-rangoli .bottomdivider{
@@ -1838,6 +1838,9 @@ table#searchBox div.searchbutton{
     text-align: center !important;
     text-transform: uppercase;
 }
+.fabrictable .aurumheadingcell td:last-child, .fabrictable .aurumiconcell td:last-child {
+    border-right: 0 none;
+}
 .gbold {
     border-top: 1px solid #999;
     color: #555 !important;
@@ -1850,11 +1853,10 @@ table#searchBox div.searchbutton{
 .contentSlider .aurum sup {
     font-size: 25px;
     line-height: 20px;
- }
- .aurum > strong {
+}
+.aurum > strong {
     font: normal 37px/30px AvantGardeGothicITCW01X;
 }
-
 .flex-control-nav{
     left: 40%;
     right: 40%;
