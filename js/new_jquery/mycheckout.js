@@ -577,7 +577,7 @@ function checkpaymentmethod()
         jQuery("label[for='p_method_paypal_express'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/paypaltabovr.png");
         jQuery("ul#payment_form_paypal_express").show();
         jQuery(".billingAdd").hide();
-        jQuery("#paymentmethoderrormsg, #cobillingaddress").addClass("dnone");
+        jQuery("#paymentmethoderrormsg, #cobillingaddress, #stripe-update-payment-holder").addClass("dnone");
         jQuery("#payment_form input[type='submit']").addClass("marginnone");
         jQuery("label[for='p_method_stripe'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/credittab.png");
         jQuery("div#stripe-payment-details,a#stripe-update-payment,div#change-stripe-detail").hide();
@@ -588,7 +588,7 @@ function checkpaymentmethod()
         jQuery("ul#payment_form_paypal_express").hide();
         jQuery("#payment_form input[type='submit']").removeClass("marginnone");
         jQuery(".billingAdd").show();
-        jQuery("#paymentmethoderrormsg, #cobillingaddress").removeClass("dnone");
+        jQuery("#paymentmethoderrormsg, #cobillingaddress, #stripe-update-payment-holder").removeClass("dnone");
         jQuery("label[for='p_method_stripe'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/credittabovr.png");
         jQuery("label[for='p_method_paypal_express'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/paypaltab.png");
         //jQuery("a#stripe-update-payment").show();
@@ -915,6 +915,8 @@ function savePayment()
                 jQuery("#paymentmethoderrormsg").html('');
                 reordersteps(jQuery("#coreview"));
                 jQuery("div#orderreview").html(result['update_section']['html']);
+                jQuery("li#reviewDetails #checkout-submit").removeClass("dnone");
+                jQuery("li#reviewDetails #paypal-checkout").addClass("dnone");
                 jQuery("form#co-billing-form").submit();
                 designCartTotal();
 
