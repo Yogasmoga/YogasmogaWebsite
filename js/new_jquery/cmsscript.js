@@ -1,5 +1,7 @@
 jQuery(window).load(function($){
+		widthCont();
 	block66height();
+		widthConttwo();
 	headingBlock();
 	block66heightbottom();
 	joybalanceheight();
@@ -10,6 +12,8 @@ jQuery(window).load(function($){
 	pressContent();
 
 	setTimeout(function(){
+		widthCont();
+		widthConttwo();
 		block66height();
 		headingBlock();
 		block66heightbottom();
@@ -25,6 +29,8 @@ jQuery(window).load(function($){
 
 jQuery(document).ready(function($){
 	$(window).resize(function(){
+		widthCont();
+		widthConttwo();
 		block66height();
 		headingBlock();
 		block66heightbottom();
@@ -109,9 +115,28 @@ $(".gridCMSPages a#discoverColor").click(function() {
 });
 
 // CalcBlocksHeight
-function block66height(){	
+function widthCont(){	
+	var yssection = jQuery(".ystopsection").width();
+	var block66ys = jQuery(".ystopsection .block66").width();
+	jQuery(".ystopsection .block33").css({"width": yssection - block66ys,"position":"absolute","left":"0"});
+};
+
+function widthConttwo(){	
+	var yssectiontwo = jQuery(".ysbottomsection").width();
+	var block66ystwo = jQuery(".ysbottomsection .block66").width();
+	jQuery(".ysbottomsection .block33").css({"width": yssectiontwo - block66ystwo,"position":"absolute","right":"0"});
+};
+
+function block66height(){
 	var block66height = jQuery(".ystopsection .block66").height();
-	jQuery(".ystopsection .block33").css("height", block66height);
+
+	jQuery(".ystopsection .cmsNavigation").css("height", block66height/2);
+
+    var block66height2 = jQuery(".ystopsection .cmsNavigation").height();
+    var gdHeightnew = block66height-block66height2;
+
+    jQuery(".ystopsection .headingBlock").css("height", gdHeightnew);
+    jQuery(".ystopsection").animate({"opacity":1});
 };
 
 function block50height(){	
@@ -134,7 +159,7 @@ function headingBlock(){
 };
 
 function block66heightbottom(){	
-	var block66height = jQuery(".ysbottomsection .block66").height();
+	var block66height = jQuery(".ysbottomsection .block66 img.img-responsive").height();
 	jQuery(".ysbottomsection .block33").css("height", block66height);
 };
 

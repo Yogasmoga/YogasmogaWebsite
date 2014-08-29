@@ -1001,9 +1001,27 @@ table.inputtable tr:first-child td {
     font-size: 0px;
 }
 
+body.mac-os .gridFullWidth{
+    display: block;
+    float: left;
+    overflow: hidden;
+    height: auto;
+}
+body.mac-os .gridFullWidth:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+html[xmlns] body.mac-os .gridFullWidth:after {
+    display: block;
+}
 .block66{
     width: 66.6015625%;
     vertical-align: top;
+    float: right;
 }
 
 .block33{
@@ -1882,3 +1900,33 @@ table#searchBox div.searchbutton{
     right:66.633565044687189672293942403178%;
 }
 
+body.mac-os .grnbtn{
+    padding-bottom: 4px;
+}
+
+body.mac-os .gridBlockContent{
+    clear: both;
+}
+
+body.mac-os .gridFullWidth .block30:last-child {
+    width: 33.25%;
+}
+
+body.mac-os .gridFullWidth .block50:last-child {
+    width: 50.028%;
+}
+
+body.mac-os .gridFullWidth .block50:last-child .img-responsive{
+    width: 100.1%;
+}
+
+body.mac-os .bottomdivider{
+    clear: both;
+    float: left;
+    width: 92.1875%;
+}
+
+body.mac-os ul.main-menu2 > li,
+body.mac-os ul.main-menu2 a.main-heading{
+    height: 32px;
+}

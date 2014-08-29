@@ -1460,7 +1460,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                     <!-- select length -->
 
                                     <!-- selectFit -->
-                                    <div class="box-seprtr">
+                                    <div class="box-seprtr dnone">
                                         <div class="blck-head-sml"><span>Step 3:</span> QTY
                                             <?php if($howdoesitfitblockid != "") { ?>
                                                 <table class="fittable">
@@ -1503,7 +1503,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                     */ ?>
                                     <!-- AddToBag -->
                                     <div class="box-seprtr last">
-                                        <!-- <div class="blck-head-sml"><span>Step 3</span></div> -->
+                                        <div class="blck-head-sml"><span class="qty">Step 3</span></div>
                                         <!-- addtobag-btn -->
                                         <div id="orderitem" class="addtobag spbutton" 
                                         imageurl="<?php echo $this->getNewSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>" 
