@@ -231,6 +231,7 @@ function getfreshInventory()
             }
             //jQuery("div#colorcontainer table[color]:first").trigger('click');
             jQuery("div#absproductoptions div.disableproptions").remove();
+
         }
     });
 }

@@ -1407,7 +1407,7 @@ button.btn-addtobag span{width: 145px !important; height: 38px !important; backg
 .goy-balance .sub-title{padding-top: 0 !important; font-family: gothambold !important; font-size: 11px !important; margin: 0 0 15px !important; color: #666 !important; text-transform: uppercase !important; font-weight: normal !important; line-height: 17px;}
 .goy-balance p{font-family: gothambook; font-size: 12px; line-height: 17px;}
 .applygiftcard,.applypromo,.applysmogi {cursor: pointer;}
-table.productimagecontainer table.smallimagecontiner td:last-child{display: none;}
+/*table.productimagecontainer table.smallimagecontiner td:last-child{display: none;}*/
 /*#absproductoptions table.productdetailtable div#colorcontainer>div:nth-child(7n){margin-right: 0;}*/
 table.selectedcolor{margin: 3px 0 5px;}
 .prd-add-to-wish{position: relative; text-align: right;}
