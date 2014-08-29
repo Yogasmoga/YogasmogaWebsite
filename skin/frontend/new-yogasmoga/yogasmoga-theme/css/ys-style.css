@@ -41,8 +41,8 @@
 ul.main-menu{margin-left: 0;}
 ul.main-menu > li{display:inline-block; height: 70px; padding:0 12px; text-transform: uppercase; vertical-align: top; cursor:pointer;}
 ul.main-menu li a,ul.tr-menu > li > ul.sub-menu li a{color: #555; font: 11px/23px gothambold;}
-ul.main-menu li a.menu-heading{display: inline-block; padding: 36px 0 10px; vertical-align: middle;}
-ul.main-menu li ul.sub-menu{position: absolute; text-align: left; left: 0; margin: 0; line-height: 21px; background: #f1f1f2; /*background: url("../images/nav-bg.png") repeat-x left top;*/ padding: 20px; display: none;}
+ul.main-menu li a.menu-heading{display: inline-block; padding: 37px 0 9px; vertical-align: middle;}
+ul.main-menu li ul.sub-menu{position: absolute; text-align: left; left: 0; margin: 0; line-height: 21px; background: #f1f1f2; /*background: url("../images/nav-bg.png") repeat-x left top;*/ padding: 6px 20px; display: none;}
 ul.main-menu2 li ul.sub-menu{background-position: left top ;}
 ul.main-menu li ul.sub-menu > li{display: inline-block; vertical-align: top; min-width: 160px; border-left: 1px solid #f8f8f8; padding:0 0 0 15px; min-height: 120px;}
 ul.main-menu2 li ul.sub-menu{width: 174px;}
@@ -64,12 +64,12 @@ ul.tr-menu > li{display: inline-block; padding: 0; position: relative; font: 11p
 li.free-shipping{font-style: italic; margin-right: 15px;}
 ul.tr-menu > li > ul.sub-menu{position: absolute; text-align: center; width:200px; padding:0; z-index: 9; display: none; text-transform: uppercase; }
 ul.tr-menu > li > ul.sub-menu li{background: #f1f1f2; padding: 0 15px;}
-ul.tr-menu > li > ul.sub-menu li.last{padding-bottom: 10px;}
-ul.tr-menu > li > ul.sub-menu li.blank{height: 23px; background: url("../images/menu_arrow.png") no-repeat bottom center #f1f1f2; background-size: 17px 14px;}
+ul.tr-menu > li > ul.sub-menu li.last{padding-bottom: 6px;}
+ul.tr-menu > li > ul.sub-menu li.blank{height: 26px; background: url("../images/menu_arrow.png") no-repeat bottom center #f1f1f2; background-size: 17px 14px;}
 ul.tr-menu > li:hover > ul.sub-menu{display: block;}
 ul.main-menu2{margin-left: 0; margin-right: 5px;}
-ul.main-menu2 > li{position: relative; padding: 0 10px; height: 34px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
-ul.main-menu2 a.main-heading{display: block; height: 33px;}
+ul.main-menu2 > li{position: relative; padding: 0 10px; height: 32px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; margin-top:1px;}
+ul.main-menu2 a.main-heading{display: block; height: 32px;}
 ul.main-menu2 li ul.sub-menu li a{font-family: gothambook;}
 ul.main-menu2 > li:hover > ul.sub-menu /*ul.main-menu > li:hover > ul.sub-menu*/{display: block;}
 ul.main-menu > li.over > ul.sub-menu{display: block;}
@@ -1072,16 +1072,19 @@ body{overflow-x:auto !important; -webkit-font-smoothing:subpixel-antialiased;}
 }
 
 .namaskarinfo button {
-    background: #5ec52f;
+    /*background: #5ec52f;*/
     border: 0 none;
-    color: #fff;
-    font: 10px gothambold;
-    height: 38px;
+    color: #555;
+    font: 11px gothambook;
+    /*height: 38px;*/
     margin: 2px 0 0 0px;
     text-align: center;
-    width: 172px;
+    /*width: 172px;*/
     text-transform: uppercase;
     cursor: pointer;
+    border-bottom:1px solid #c03;
+    padding-bottom: 3px;
+    float: left;
 }
 .removesmogi, .removegiftcart, .removepromotion {
     cursor: pointer;
@@ -1719,6 +1722,18 @@ button.button.btn-addtoaccount{margin: 0 !important;}
 }
 *.shopping-cart input#smogi::-ms-input-placeholder {
     color: #ae8637 !important;
+}
+*.shopping-cart input.lightgray::-webkit-input-placeholder {
+    color: lightgray !important;
+}
+*.shopping-cart input.lightgray::-moz-placeholder {
+    color: lightgray !important;
+}
+*.shopping-cart input.lightgray::-moz-placeholder {
+    color: lightgray !important;
+}
+*.shopping-cart input.lightgray::-ms-input-placeholder {
+    color: lightgray !important;
 }
 
 

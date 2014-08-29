@@ -8,9 +8,15 @@ jQuery(window).load(function($){
     var featLiH = jQuery(".featureList span.ftrFig img.df-img").first().height();
     jQuery(".featureList span.ftrFig").css("height", featLiH);   
     playBtnPos();
-    sizeChartScroll();    
+    sizeChartScroll();        
 });
 jQuery(document).ready(function($){ 
+    var isSafari = browserTest();
+    if(isSafari){
+        console.log("test");
+        alert("dfssdfd");
+        jQuery("ul.main-menu2 a.main-heading").css("height","31px");
+    }
 sizeChartPop(); 
     $("#productdetails").on("click",".vlink-cont a",function(){
         $(".fitDetail .video-block img").click();
@@ -497,10 +503,10 @@ function featuredSec(){
     if(!bIsAppleMobile){
         jQuery(".wl-cs-right-block .top-right-block,.wl-cs-right-block .bottom-right-block").css("height", cs_right/2);
         if(isSafari){
-            jQuery(".wl-cs-right-block .top-right-block").css("height", cs_right/2);    
-            var cs_right_top = jQuery(".wl-cs-right-block .top-right-block").height();
+            jQuery(".wl-cs-right-block .iconspartone").css("height", cs_right/2);    
+            var cs_right_top = jQuery(".wl-cs-right-block #iconspartone").css("height");
             var cs_right_bot_H = cs_right - cs_right_top;    
-            jQuery(".wl-cs-right-block .bottom-right-block").css("height", cs_right_bot_H);
+            jQuery(".wl-cs-right-block .bottom-right-block").css("height", cs_right_bot_H);                        
         }
     }else if(bIsAppleMobile){
         jQuery(".wl-cs-right-block .top-right-block").css("height", cs_right/2);    
