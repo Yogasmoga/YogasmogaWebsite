@@ -1908,6 +1908,18 @@ body.mac-os .gridBlockContent{
     clear: both;
 }
 
+body.mac-os .gridFullWidth .block30:last-child {
+    width: 33.25%;
+}
+
+body.mac-os .gridFullWidth .block50:last-child {
+    width: 50.028%;
+}
+
+body.mac-os .gridFullWidth .block50:last-child .img-responsive{
+    width: 100.1%;
+}
+
 body.mac-os .bottomdivider{
     clear: both;
     float: left;
