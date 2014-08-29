@@ -1841,6 +1841,9 @@ table#searchBox div.searchbutton{
 .fabrictable .aurumheadingcell td:last-child, .fabrictable .aurumiconcell td:last-child {
     border-right: 0 none;
 }
+.fabrictable .aurumheadingcell tr td:first-child, .fabrictable .aurumiconcell tr td:first-child {
+    border-right: 1px solid #999;
+}
 .gbold {
     border-top: 1px solid #999;
     color: #555 !important;
