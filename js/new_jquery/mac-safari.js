@@ -1,5 +1,5 @@
 jQuery(window).load(function($){
-	setImageHeightSafari();
+	//setImageHeightSafari();
 });
 
 jQuery(document).ready(function($){
@@ -23,10 +23,6 @@ jQuery(document).ready(function($){
 });
 
 function setImageHeightSafari(){
-	// var blockImgH = jQuery("body.mac-os .gridFullWidth .block50:nth-child(1) img, body.safari .gridFullWidth .block50:nth-child(1) img").height();
-	// jQuery(".gridFullWidth .block50:nth-child(2) img.img-responsive").css("height", blockImgH);
-
-
 	jQuery("body.mac-os .gridFullWidth").each(function(){
 		var blockImgH = jQuery(this).find(".block50:nth-child(1) img").height();
 		jQuery(this).find(".block50:nth-child(2) img.img-responsive").css("height", blockImgH);
@@ -36,7 +32,4 @@ function setImageHeightSafari(){
 		var blockImgH = jQuery(this).find(".block50:nth-child(1) img").height();
 		jQuery(this).find(".block50:nth-child(2) img.img-responsive").css("height", blockImgH);
 	});
-
-
-
 }

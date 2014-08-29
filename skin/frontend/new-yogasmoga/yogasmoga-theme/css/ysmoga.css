@@ -990,7 +990,7 @@ table.inputtable tr:first-child td {
 /** YSStory **/
 .gridCMSPages{
     width: 100%;
-    min-width: 1024px;
+    min-width: 1007px;
 }
 
 .gridFullWidth{
@@ -1877,62 +1877,3 @@ table#searchBox div.searchbutton{
     right:66.633565044687189672293942403178%;
 }
 
-/** SafariFixes **/
-body.safari .block33,
-body.mac-os .block33{
-    float: left;
-}
-
-body.safari .gridFullWidth,
-body.mac-os .gridFullWidth{
-    display: inherit;
-    float: left;
-    width: 100%;
-}
-
-body.safari .block66,
-body.mac-os .block66{
-    width: 66.68417%;
-    float: left;
-}
-
-/*body.safari .block50,
-body.mac-os .block50{
-    width: 49.999% 0;
-}*/
-
-body.safari .gridFullWidth .block30:last-child {
-    width: 33.3158%;
-}
-
-body.mac-os .gridFullWidth .block30:last-child {
-    width: 33.25%;
-}
-
-body.safari .gridCMSPages.pressPage .gridFullWidth .block30:last-child,
-body.mac-os .gridCMSPages.pressPage .gridFullWidth .block30:last-child {
-    width: 33.21%;
-}
-
-body.safari .gridFullWidth .block50:last-child,
-body.mac-os .gridFullWidth .block50:last-child {
-    width: 50.078%;
-}
-
-body.safari .bottomdivider,
-body.mac-os .bottomdivider {
-    clear: both;
-    float: left;
-    width: 92.1875%;
-}
-
-body.mac-os .headingBlock{
-    height: 50.8%;
-}
-
-/** iPadlandscape **/
-@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
-    .block66, .block33{
-        float: left !important;
-    } 
-}
