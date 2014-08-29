@@ -15,7 +15,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $itemcount = $this->getcartcount();
         if($itemcount < 1)
         {
-            $html = "<h1>Your cart is Empty.</h1>";
+            $html = "<h1>Your cart is Empty</h1>";
             echo json_encode(array("html" => $html));
             return;
         }
@@ -688,7 +688,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     <span class="continuelink f-right">Checkout</span>
                     </div>
                 <!-- ContinueShoppingBtn -->
-                <div class="empty-cart">your cart is empty.</div>
+                <div class="empty-cart">your cart is empty</div>
             ';
 
             return $html;
