@@ -217,7 +217,7 @@ ul.site-map > li{
     font-weight: normal;
     margin: auto auto 2.0549898167006109979633401221996%;
     width: 50%;
-    padding-bottom: 1.2219959266802443991853360488798%;
+    padding-bottom: 8px;
     line-height: normal !important;
 }
 
@@ -399,7 +399,7 @@ width: 60%;
         font: 28px/35px itcavantgardeprobk;
     }
 
-    #sitemap{margin-top: 82px;}
+    #sitemap{padding-top: 51px;}
 }
 
 @media only screen and (max-width: 1024px) {
@@ -480,7 +480,8 @@ width: 60%;
     position: absolute;
     bottom: 15px;
     margin: auto;
-    width: 100%;
+    /*width: 100%;*/
+    left:49%;
 }
 
 .bx-wrapper .bx-loading {
@@ -1100,7 +1101,7 @@ html[xmlns] body.mac-os .gridFullWidth:after {
     border-bottom: 1px solid #fff;
     width: 292px;
     margin: auto auto 15px;
-    padding: 0 0 1.222%;
+    padding: 0 0 8px;
 }
 
 .gridCMSPages h4 .smallHead,
@@ -1218,6 +1219,7 @@ html[xmlns] body.mac-os .gridFullWidth:after {
     display: block;
     border-bottom: 1px solid #999;
     width: 28%;
+    padding-bottom: 1px;
     margin: auto auto 48px;
 }
 
@@ -1510,7 +1512,7 @@ html[xmlns] body.mac-os .gridFullWidth:after {
 .linkheader {
     color: #555;
     border-bottom: 1px solid #d2204d;
-    padding: 0 0 0;
+    padding: 0 0 1px;
     margin: 152px 0 0;
     text-transform: uppercase;
     display: inline-block;

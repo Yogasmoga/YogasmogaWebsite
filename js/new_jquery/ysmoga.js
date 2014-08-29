@@ -4,18 +4,19 @@
 	compressBoxHeight();
 	colorBoxHeight();
 	factorypart();
-	namaskarpart();
+	namaskarpart();	
+	jQuery(".cubix").animate({"opacity":1});
 	// factorythreadHeight();
 
-	setTimeout(function(){
-		homeContent();
-		homeContent1();
-		compressBoxHeight();
-		colorBoxHeight();
-		factorypart();	
-		namaskarpart();	
-		// ctextVMiddle();
-	},100);
+	// setTimeout(function(){
+	// 	homeContent();
+	// 	homeContent1();
+	// 	compressBoxHeight();
+	// 	colorBoxHeight();
+	// 	factorypart();	
+	// 	namaskarpart();	
+	// 	// ctextVMiddle();
+	// },100);
 });
 
 jQuery(document).ready(function($){
@@ -66,7 +67,7 @@ function compressBoxHeightRes(){
 	    var gdHeight = gd1-gd2;	    
 	    // jQuery("div.text").html("fabricpar---" + gd1 + "----" + gd2 + "---" + "---" + gdHeight );	       
 	    jQuery(".ysfabricpart .iconspartone").css("height", gdHeight);
-	    jQuery(".ysfabricpart").animate({"opacity":1});
+	    jQuery(".ysfabricpart").animate({"opacity":1});	    	    
 }
 function colorBoxHeight(){
 	setTimeout(function(){

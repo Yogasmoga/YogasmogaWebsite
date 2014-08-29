@@ -1019,8 +1019,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         <form>';
         $customerId = Mage::getModel('customer/session')->getCustomerId();
         if(!$customerId)
-            $html .=' <label><input type="text" name="smogi" class="gry" available="0" id="smogi" value="You must be signed in to use SMOGI Bucks" disabled="disabled"/><span  class="smogi-login">+</span></label>
-                        <label><input type="text" name="giftcartcode" data-used="no" class="gry" id="giftcartcode" value="You must be signed in to use Promo Codes" disabled="disabled" /><span class="giftcardlogin">+</span></label>';
+            $html .=' <label><input type="text" name="smogi" class="gry lightgray" available="0" id="smogi" value="Sign in to use SMOGI Bucks" disabled="disabled"/><span  class="smogi-login">+</span></label>
+                        <label><input type="text" name="giftcartcode" data-used="no" class="gry lightgray" id="giftcartcode" value="Sign in to use Promo Code / Gift Card Code" disabled="disabled" /><span class="giftcardlogin">+</span></label>';
         else{
             $gryclasssmogi = "";
             $gryclasspromo = "";
@@ -1032,7 +1032,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $applysmogi="applysmogi";
             $applysmogidisable="";
             $checkboxapplied="";
-            $smogiplaceholder="Use Your ".$showedpoints." SMOGI Bucks Toward This Purchase";
+            $smogiplaceholder="Use your ".$showedpoints." SMOGI Bucks toward this purchase";
             $showedpointsvalue=$showedpoints;
             $codeused='';
             if($checksmogiapplied)

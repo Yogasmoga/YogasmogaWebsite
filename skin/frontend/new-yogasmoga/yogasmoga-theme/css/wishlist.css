@@ -131,7 +131,7 @@ table.tblwishlist td.removeitem
 }
 .resetwishlistbtn{
     background-image : url('../images/share-wish.png');
-    width : 145px;
+    width : 144px;
     height : 38px;
 }
 #wishlist-view-form .buttons-set
