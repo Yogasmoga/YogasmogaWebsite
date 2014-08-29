@@ -1843,7 +1843,7 @@ ul.new-arrivals a.quick-view{display: none;}
 .wl-feat-prd,.wl-color-story-prd{opacity: 0; overflow: hidden;}
 .wl-right-block,.top-left-block,.wl-cs-left-block,.bottom-right-block{position: relative;;}
 .block-content{position: absolute; width: 100%; top:0}
-.block-content h4.cursive-text{font-family: gothambook; font-style: italic; font-size: 24px; color: #fff; font-weight: normal; display: block; margin-bottom: 14px; line-height: normal; letter-spacing: -1px;}
+.block-content h4.cursive-text{font-family: gothambook; font-style: italic; font-size: 24px; color: #fff; font-weight: normal; display: block; margin-bottom: 14px; line-height: normal; letter-spacing: -1px; width: 95%; margin-left: auto; margin-right: auto;}
 .block-content h4.main-img-text{font-family: ITCAvantGardeProMd; color: #fff; font-weight: normal; display: block; margin-top: 14px; text-transform: uppercase; letter-spacing: -0.5px;}
 .block-content h4.main-img-text span{display: block;}
 
@@ -2189,7 +2189,7 @@ input:-webkit-autofill:focus {
 .zopim body{display: none !important;}
 .data-table.ys tbody td:last-child span.nobr a{font-size: 11px;}
 .track-invites table.referredfriendslist td.name div, .track-invites table.referredfriendslist td.email div{font-size:12px !important;}
-.namaskarpart,.factorypart,.yscolorpart,.ysfabricpart{opacity: 0;}
+/*.namaskarpart,.factorypart,.yscolorpart,.ysfabricpart{opacity: 0;}*/
 td.checkShippingBox input[type="checkbox"],td.checkBillingBox input[type="checkbox"]{display: none;}
 td.checkShippingBox input[type="checkbox"]+label, td.checkBillingBox input[type="checkbox"]+label{
     background: url("../images/new-elements/checkbox1.jpg") no-repeat top left;

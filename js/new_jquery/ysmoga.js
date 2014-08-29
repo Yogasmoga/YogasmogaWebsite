@@ -4,24 +4,21 @@
 	compressBoxHeight();
 	colorBoxHeight();
 	factorypart();
-	namaskarpart();	
-	jQuery(".cubix").animate({"opacity":1});
+	namaskarpart();		
+	jQuery(window).trigger("resize");
 	// factorythreadHeight();
 
-	// setTimeout(function(){
-	// 	homeContent();
-	// 	homeContent1();
-	// 	compressBoxHeight();
-	// 	colorBoxHeight();
-	// 	factorypart();	
-	// 	namaskarpart();	
-	// 	// ctextVMiddle();
-	// },100);
+	setTimeout(function(){
+		jQuery('body').css('overflow','auto');
+	    jQuery('.namaskar-overlay1').fadeOut('slow');		
+		jQuery(".cubix").animate({"opacity":1},200);	
+		// ctextVMiddle();
+	},1000);
 });
 
 jQuery(document).ready(function($){
-	sliderHomeBx();
-	$(window).resize(function(){
+	
+	$(window).resize(function(){			
 		homeContent();
 		homeContent1();
 		compressBoxHeightRes();
@@ -29,7 +26,8 @@ jQuery(document).ready(function($){
 		factorypartRes();
 		namaskarpartRes();	
 		// ctextVMiddle();	
-	}).trigger('resize');	
+	});	
+	sliderHomeBx();
 });
 
 // sliderFunction
@@ -67,7 +65,7 @@ function compressBoxHeightRes(){
 	    var gdHeight = gd1-gd2;	    
 	    // jQuery("div.text").html("fabricpar---" + gd1 + "----" + gd2 + "---" + "---" + gdHeight );	       
 	    jQuery(".ysfabricpart .iconspartone").css("height", gdHeight);
-	    jQuery(".ysfabricpart").animate({"opacity":1});	    	    
+	    // jQuery(".ysfabricpart").animate({"opacity":1});	 	    	       	    
 }
 function colorBoxHeight(){
 	setTimeout(function(){
@@ -81,7 +79,7 @@ function colorBoxHeightRes(){
     var gdHeight = gd1-gd2;	    
     // jQuery("div.text").html("icons---" + gd1 + "----" + gd2 + "---" + "---" + gdHeight );	       
     jQuery(".yscolorpart .iconspartone").css("height", gdHeight);
-    jQuery(".yscolorpart").animate({"opacity":1});
+    // jQuery(".yscolorpart").animate({"opacity":1});
 }
 function factorypart(){	
 	setTimeout(function(){
@@ -97,7 +95,7 @@ function factorypartRes(){
     var gdHeight = gd1-gd2;	    
     // jQuery("div.text").html("factory---" + gd1 + "----" + gd2 + "---" + "---" + gdHeight );	       
     jQuery(".factorypart .usamap").css("height", gdHeight);
-    jQuery(".factorypart").animate({"opacity":1});
+    // jQuery(".factorypart").animate({"opacity":1});
 }
 function namaskarpart(){	
 	 setTimeout(function(){
@@ -111,7 +109,7 @@ function namaskarpartRes(){
     var gdHeight = gd1-gd2;	    
     // jQuery("div.text").html("namaskar---" + gd1 + "----" + gd2 + "---" + "---" + gdHeight );	       
     jQuery(".namaskarpart .raisingfunds").css("height", gdHeight);
-    jQuery(".namaskarpart").animate({"opacity":1});    
+    // jQuery(".namaskarpart").animate({"opacity":1});    
 }
 function homeContent(){
 	// verticle center
