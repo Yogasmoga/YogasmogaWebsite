@@ -61,7 +61,7 @@ jQuery(document).ready(function($){
 
         $(".billingAdd a.checkBCre").removeClass("reverse unuse").addClass("use");
         $("form#payment_form input[type=submit]").addClass("mar0").removeClass("marbtm745");
-        $("li#shippingDetails .headD span").html("1");
+        //$("li#shippingDetails .headD span").html("1");
 
         $(".showShippingOpt li").removeClass("selected");
         $(this).addClass("selected");
@@ -428,7 +428,7 @@ function sameasBlankSelect(){
     jQuery("li#shippingDetails").removeClass("reverseShip").addClass("active").css("background", "transparent");
     jQuery("li#billingDetails .ovrlay-bg, li#reviewDetails .ovrlay-bg").show().removeClass("active");
     jQuery("#checkout-shipping-form input[type=submit]").show();
-    jQuery("li#shippingDetails .headD span").html("1");
+    //jQuery("li#shippingDetails .headD span").html("1");
 }
 
 function changeFlag(){
@@ -941,21 +941,21 @@ function showShppingStepScOne(){
     jQuery("li#shippingDetails").css("background", "rgba(0, 0, 0, 0.08)").addClass("reverseShip");
     jQuery("#updateNameAdd").find(".gryWrap ").css("background", "#ddd");
     jQuery("li#shippingDetails .ovrlay-bg").hide();
-    jQuery("li#shippingDetails .headD span").html("&#10003;");
+    //jQuery("li#shippingDetails .headD span").html("&#10003;");
 }
 
 function showShppingStepScTwo(){
     jQuery("li#shippingDetails").css("background", "rgba(0, 0, 0, 0.08)").addClass("reverseShip");
     jQuery("#updateNameAdd").find(".gryWrap ").css("background", "#ddd");
     jQuery("li#shippingDetails .ovrlay-bg").hide();
-    jQuery("li#shippingDetails .headD span").html("&#10003;");
+    //jQuery("li#shippingDetails .headD span").html("&#10003;");
 }
 
 function showShppingStepScThree(){
     jQuery("li#shippingDetails").css("background", "rgba(0, 0, 0, 0.08)").addClass("reverseShip");
     jQuery("#updateNameAdd").find(".gryWrap ").css("background", "#ddd");
     jQuery("li#shippingDetails .ovrlay-bg").hide();
-    jQuery("li#shippingDetails .headD span").html("&#10003;");
+    //jQuery("li#shippingDetails .headD span").html("&#10003;");
 }
 
 function removeReviewActiveState(){
@@ -1067,7 +1067,7 @@ function saveShippingMethod()
             jQuery("li#shippingDetails").css("background", "rgba(0, 0, 0, 0.08)").addClass("reverseShip");
             jQuery("#updateNameAdd").find(".gryWrap ").css("background", "#ddd");
             jQuery("li#shippingDetails .ovrlay-bg").hide();
-            jQuery("li#shippingDetails .headD span").html("&#10003;");
+            //jQuery("li#shippingDetails .headD span").html("&#10003;");
             jQuery("li#billingDetails .ovrlay-bg").hide();
             jQuery("li#shippingDetails.active").removeClass("active");
             jQuery("li#billingDetails").addClass("active");

@@ -661,6 +661,10 @@ ul.checkout-cont > li.active .ovrlay-bg{display: none;}
     padding: 15px;
     text-align: left;
 }
+#checkout-shipping-address-new.gryWrap,
+#billing-new-address-form.gryWrap{
+    padding: 12px;
+}
 span.address {
     font-weight: normal !important;
 }
@@ -1345,7 +1349,7 @@ table.tblwishlist thead th{padding-bottom: 0 !important; font-family: gothambold
     display: block !important;
     font: 11px gothambold;
     height: auto;
-    margin: 40px 0 0;
+    margin: 44px 0 0;
 }
 #stepCheck img {
     float: left;
@@ -1671,8 +1675,8 @@ table.inputtable td.inputholder input[type='text'], table.inputtable td.inputhol
 
 
 .mar0{margin: 0 !important;}
-.martop35{margin: -35px 0 0 0 !important;}
-.marbtm745{margin: 0 0 -830px !important;}
+.martop35{margin: -43px 0 0 0 !important;}
+.marbtm745{margin: 0 0 -751px !important;}
 
 .addNewAdd .gryWrap input.checkbox {
     height: auto;
@@ -1741,7 +1745,7 @@ button.button.btn-addtoaccount{margin: 0 !important;}
     position: absolute;
     right: 40px;
     text-transform: initial;
-    top: 40px;
+    top: 19px;
 }
 .choose-file-cont #file_upload{
     height: auto !important;
@@ -2131,6 +2135,7 @@ ul.main-menu2 a.main-heading,  x:-moz-any-link {height:34px;}
 
 #checkout-shipping-address-new label[for="shipping:save_in_address_book"] {
     font-size: 12px !important;
+    margin: 0;
 }
 
 
@@ -2141,7 +2146,7 @@ ul.main-menu2 a.main-heading,  x:-moz-any-link {height:34px;}
 #ordersummary td.divider{
     background: none;
     border-bottom: 1px solid #fff;
-    height: 10px;
+    height: 6px;
 }
 
 .gridProdCubix .leftnav .ctglink li a.bld:hover{
@@ -2191,7 +2196,7 @@ td.checkShippingBox input[type="checkbox"]+label, td.checkBillingBox input[type=
     cursor: pointer;
     display: inline-block;
     height: 26px;
-    margin: 2px 0 20px;
+    margin: 2px 0 0;
     padding: 6px 0 0px 52px;
     width: auto;
 }
@@ -2236,4 +2241,23 @@ table.referfriendforms td.success img{cursor:default !important;}
 
 #payment_form_stripe > div#stripe-update-payment-holder {
     margin: 18px 0 0;
+}
+
+#payment_form .paymentmethoddiv:nth-child(2) label {
+    float: left;
+    margin: 0 0 0 10px;
+}
+
+#payment_form .paymentmethoddiv:nth-child(1) label {
+    float: right;
+    margin: 0 10px 0 0;
+}
+
+#reviewDetails div#ordersummary table{
+    margin-top: 0;
+}
+
+#reviewDetails div#ordersummary{
+    padding: 11px 20px 10px;
+    min-height: 100px;
 }

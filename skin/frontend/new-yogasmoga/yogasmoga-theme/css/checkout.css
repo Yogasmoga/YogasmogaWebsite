@@ -733,7 +733,7 @@ select#billing-address-select{
     width: 90% !important;
 }
 .addVal{width: 265px; display: inline-block;}
-#shippingDetails.reverseShip .selectAddress,#shippingDetails.reverseShip .shippingOption{background: rgb(221, 221, 221);}
+#shippingDetails.reverseShip .selectAddress,#shippingDetails.reverseShip .shippingOption{background: #ebebeb;}
 #shippingDetails.reverseShip .selectAddress:hover,#shippingDetails.reverseShip .shippingOption:hover, #billingDetails .creditOption:hover{background: rgb(255,255,255);}
 div.edit-curr-shipng-add{display: block; margin-bottom: 20px; }
-div.edit-curr-shipng-add span{font-family: gothambook; font-size: 11px; line-height:11px; text-transform: uppercase; border-bottom:1px solid #c03; padding-bottom:5px; cursor:pointer;}
+div.edit-curr-shipng-add span{font-family: gothambook; font-size: 11px; line-height:11px; text-transform: uppercase; border-bottom:1px solid #c03; padding-bottom:8px; cursor:pointer;}
