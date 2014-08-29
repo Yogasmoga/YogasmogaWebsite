@@ -1000,6 +1000,7 @@ table.inputtable tr:first-child td {
     display: inline-block;
     clear: both;
     font-size: 0px;
+    float: left;
 }
 
 body.mac-os .gridFullWidth{
@@ -1207,6 +1208,7 @@ html[xmlns] body.mac-os .gridFullWidth:after {
 }
 
 .gridBlockContent{
+    clear: both;
     min-height: 141px;
     color: #555;
     text-align: center;
@@ -1221,7 +1223,7 @@ html[xmlns] body.mac-os .gridFullWidth:after {
     border-bottom: 1px solid #999;
     width: 28%;
     padding-bottom: 1px;
-    margin: auto auto 48px;
+    margin: auto auto 43px;
 }
 
 .gridBlockContent h3{
@@ -1901,16 +1903,12 @@ table#searchBox div.searchbutton{
     right:66.633565044687189672293942403178%;
 }
 
-body.mac-os .grnbtn{
-    padding-bottom: 4px;
-}
-
-body.mac-os .gridBlockContent{
-    clear: both;
-}
-
 body.mac-os .gridFullWidth .block30:last-child {
     width: 33.25%;
+}
+
+body.mac-os .grnbtn{
+    padding-bottom: 4px;
 }
 
 body.mac-os .gridFullWidth .block50:last-child {
@@ -1921,7 +1919,7 @@ body.mac-os .gridFullWidth .block50:last-child .img-responsive{
     width: 100.1%;
 }
 
-body.mac-os .bottomdivider{
+.bottomdivider{
     clear: both;
     float: left;
     width: 92.1875%;

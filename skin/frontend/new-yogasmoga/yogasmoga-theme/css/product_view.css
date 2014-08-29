@@ -156,7 +156,7 @@ table.productdetailtable div#colorcontainer {
 
 table.productdetailtable div#colorcontainer > div {
     float: left;
-    height: 20px;
+    height: 22px;
     margin: 3px 3px 0 0; /*5px 5px 3px 0*/
     width: auto;
     padding: 2px;
@@ -204,7 +204,7 @@ table.productdetailtable div#colorcontainer > div table tr:nth-child(1) td:nth-c
 
      border-top-width:19px;
      border-top-style: solid;
-     margin: 0 0 0 -20px;
+     margin: 0 0 0 -22px;
      float: left;
 }
 
@@ -274,10 +274,12 @@ table.productdetailtable div#sizecontainer table td div
     cursor: pointer;
 }
 
-#absproductoptions table.productdetailtable div#sizecontainer table td div
-{
-    padding : 2px 8px; /*5px 8px;*/
+
+#absproductoptions table.productdetailtable div#sizecontainer table td div {
+    height: 18px;
     margin: 0 7px 0 0;
+    padding: 1px 0;
+    width: 20px;
 }
 
 table.productdetailtable div#sizecontainer table td div.dvselectedsize
