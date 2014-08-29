@@ -13,8 +13,6 @@ jQuery(window).load(function($){
 jQuery(document).ready(function($){ 
     var isSafari = browserTest();
     if(isSafari){
-        console.log("test");
-        alert("dfssdfd");
         jQuery("ul.main-menu2 a.main-heading").css("height","31px");
     }
 sizeChartPop(); 
