@@ -1902,6 +1902,10 @@ body.mac-os .grnbtn{
     padding-bottom: 4px;
 }
 
+body.mac-os .gridBlockContent{
+    clear: both;
+}
+
 body.mac-os .bottomdivider{
     clear: both;
     float: left;
