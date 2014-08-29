@@ -233,9 +233,9 @@ $productforsale = explode(",", $productforsale);
 
 ?>
 
-<?php if(array_search((int)$_product->getId(),$productforsale) != false){?>
-    <div style="text-transform:uppercase;padding:3px 0 !important;width: 100%; position: relative;  left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 16px;margin-bottom: 10px;">Limited Time: 50% Off Clearance Sale Item. Price as Marked in Red Below. No Exchanges or Returns.</div>
-<?php } ?>
+<?php //if(array_search((int)$_product->getId(),$productforsale) != false){?>
+    <!--<div style="text-transform:uppercase;padding:3px 0 !important;width: 100%; position: relative;  left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 16px;margin-bottom: 10px;">Limited Time: 50% Off Clearance Sale Item. Price as Marked in Red Below. No Exchanges or Returns.</div>
+--><?php// } ?>
 <div class="product-view">
     <div class="product-essential">
     <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
