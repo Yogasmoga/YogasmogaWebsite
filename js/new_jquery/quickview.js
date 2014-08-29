@@ -45,7 +45,7 @@ function showQuickViewPopup(productid, e)
 
    //alert(productid);
    //productid = parseInt(productid);
-
+    var firstClickColor = jQuery("div.new-arrivals-block ul.new-arrivals li a[id=" + productid + "]").attr("color");
     jQuery("#productdetailpopup").html("<table style='width:100%;height : 530px;'><tr><td style='text-align:center;vertical-align:middle;'><img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' /></td></tr></table>");
     jQuery( "#productdetailpopup" ).dialog( "open" );
     if(window.location.href.indexOf('https://') >= 0)
@@ -61,7 +61,8 @@ function showQuickViewPopup(productid, e)
         //alert(_quickViewObjectPage[productid]);
         jQuery("#productdetailpopup").html(_quickViewObjectPage[productid]);
         insertBraOption();    
-        jQuery("#productdetailpopup #colorcontainer > div:first-child > table").trigger('click');
+//        jQuery("#productdetailpopup #colorcontainer > div:first-child > table").trigger('click');
+        jQuery("#colorcontainer > div table[value=" + firstClickColor + "]").trigger("click");
 
         var nextIdView1 = jQuery("#" + productid).closest("li").next().children("a").attr("id");
         var prevIdView1 = jQuery("#" + productid).closest("li").prev().children("a").attr("id");
@@ -115,8 +116,8 @@ function showQuickViewPopup(productid, e)
     else{
         var id = productid
         id = id.substring(0, id.length - 2);
-        console.log(id);
-        console.log(productid);
+//        console.log(id);
+//        console.log(productid);
     jQuery.ajax({
         type : 'POST',
         url : url,
@@ -127,7 +128,9 @@ function showQuickViewPopup(productid, e)
             
             jQuery("#productdetailpopup").html(data);
             insertBraOption();
-            jQuery("#productdetailpopup #colorcontainer > div:first-child > table").trigger('click');
+//            jQuery("#productdetailpopup #colorcontainer > div:first-child > table").trigger('click');
+            jQuery("#colorcontainer > div table[value=" + firstClickColor + "]").trigger("click");
+
 
             InitializeProductQty();
             if(jQuery("div#colorcontainer table:first").length > 0)
@@ -135,7 +138,7 @@ function showQuickViewPopup(productid, e)
 
             var nextIdView = jQuery("#" + productid).closest("li").next().children("a").attr("id");
             var prevIdView = jQuery("#" + productid).closest("li").prev().children("a").attr("id");
-            console.log(nextIdView+' '+prevIdView);
+           // console.log(nextIdView+' '+prevIdView);
 //alert(nextIdView);
             if(typeof(nextIdView) != 'undefined'){
                 jQuery(".quick-next").attr("id", nextIdView).css("display", "block");
