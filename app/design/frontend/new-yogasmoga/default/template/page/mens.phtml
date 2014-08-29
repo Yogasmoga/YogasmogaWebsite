@@ -92,7 +92,7 @@
     jQuery(document).ready(function(){
         jQuery('body').css('overflow','auto');
         jQuery('.namaskar-overlay1').fadeOut('slow');
-    })
+    });
 </script>  
 </head>
 <body class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>" style="margin-right:17px;overflow:hidden;">
@@ -336,7 +336,7 @@
             ?>
             <li>
 
-                <a id="<?php echo $_product['id']; ?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $_product['imgurl']; ?>" />
+                <a id="<?php echo $_product['id'].'-'.$i; ?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $_product['imgurl']; ?>" />
                     <div class="prd-details">
                         <span class="prd-name gothambd"><?php echo $_product['name']; ?></span>
                         <span class="product-colors gothambk"><?php echo $clrinfo[$_product['color']]; ?></span>
