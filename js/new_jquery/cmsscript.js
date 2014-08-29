@@ -1,5 +1,6 @@
 jQuery(window).load(function($){
 		widthCont();
+		widthContthree();
 	block66height();
 		widthConttwo();
 	headingBlock();
@@ -13,6 +14,7 @@ jQuery(window).load(function($){
 
 	setTimeout(function(){
 		widthCont();
+		widthContthree();
 		widthConttwo();
 		block66height();
 		headingBlock();
@@ -30,6 +32,7 @@ jQuery(window).load(function($){
 jQuery(document).ready(function($){
 	$(window).resize(function(){
 		widthCont();
+		widthContthree();
 		widthConttwo();
 		block66height();
 		headingBlock();
@@ -119,6 +122,17 @@ function widthCont(){
 	var yssection = jQuery(".ystopsection").width();
 	var block66ys = jQuery(".ystopsection .block66").width();
 	jQuery(".ystopsection .block33").css({"width": yssection - block66ys,"position":"absolute","left":"0"});
+};
+
+function widthContthree(){	
+	// var block30full = jQuery(".gridFullWidth").width();
+	// var block30first = jQuery(".gridFullWidth .block30:nth-child(1)").width();
+	// var block30Second = jQuery(".gridFullWidth .block30:nth-child(2)").width();
+
+	// var block30fulln = block30first+block30Second;
+	// var block30fullw = block30full-block30fulln;
+
+	// jQuery(".gridFullWidth .block30:nth-child(3)").css("width", block30fullw);
 };
 
 function widthConttwo(){	
