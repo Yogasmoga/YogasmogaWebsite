@@ -26,7 +26,8 @@ jQuery(document).ready(function($){
         $(".pageoverlay").hide();
         $(".page").animate({ left: '0' }).css("");
         $(".header-container").animate({ left: "0" });
-        $("body, html").removeClass("hdnHgt");          
+        $("body, html").removeClass("hdnHgt");     
+        jQuery(".side-menu-bar,.account-nav,.leftnav").css("position","");     
     });
     $("div.adddields span").live("click",function(){  
          if(!$(this).attr('class')){
@@ -384,6 +385,7 @@ function giftcart() {
 }
 function showShoppingBagHtml()
 {
+    jQuery(".side-menu-bar,.account-nav,.leftnav").css("position","absolute");
     if(window.location.href.indexOf('https://') >= 0)
         _usesecureurl = true;
     else

@@ -1085,7 +1085,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
             if($showedpoints < 1) {
                 $applysmogidisable=" disabled='disabled'";
-                $html .=' <label><input type="text" name="smogi" class="gry" id="smogi" placeholder="You have no more available SMOGI Bucks" '.$applysmogidisable.'/><span class="">+</span><span class="error-count"></span></label>';
+                $html .=' <label><input type="text" name="smogi" class="gry lightgray" placeholder="You have no more available SMOGI Bucks" '.$applysmogidisable.'/><span class="">+</span><span class="error-count"></span></label>';
             }
             // check if promotion code is used or not
 //            if($promotioncode)

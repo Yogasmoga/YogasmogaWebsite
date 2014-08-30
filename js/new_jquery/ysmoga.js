@@ -9,15 +9,15 @@
 	// factorythreadHeight();
 
 	setTimeout(function(){
-		jQuery('body').css('overflow','auto');
-	    jQuery('.namaskar-overlay1').fadeOut('slow');		
+
 		jQuery(".cubix").animate({"opacity":1},200);	
 		// ctextVMiddle();
 	},1000);
 });
 
 jQuery(document).ready(function($){
-	
+		jQuery('body').css('overflow','auto');
+	    jQuery('.namaskar-overlay1').fadeOut('slow');
 	$(window).resize(function(){			
 		homeContent();
 		homeContent1();
