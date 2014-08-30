@@ -389,6 +389,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
     margin: 0 0 16px;
     position: relative;
     width: 100%;
+    z-index: 999;
 }
 
 .bannerFluid img {
@@ -1834,7 +1835,7 @@ table.productdetailtable div#colorcontainer>div.selected{border-color:#999999;}
 /****Help Section***/
 body.cms-help .2-columns-wrapper{padding: 0 40px;}
 
-.new-bot-divider{height: 1px; border-top:1px solid #555;}
+.new-bot-divider{height: 60px; border-bottom:1px solid #555;}
 .cms-size-chart .how-to-measure{display: none;}
 .cms-size-chart .fitDetail table{margin-top: -5px;}
 .cms-size-chart .fitDetail table tr{height:30px;}
@@ -2194,9 +2195,9 @@ input:-webkit-autofill:focus {
 #includeoption{margin-top: 10px;}
 #includeoption div{display: inline-block; border: 1px solid #A9A9A9; text-align: center; cursor: pointer; padding: 2px 7px; margin: 0 2px 0 0;}
 #includeoption div.selected{background: #666; color:#fff;}
-.grid-bottom{padding: 0 40px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
+.grid-bottom{padding: 0 40px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; height: 60px; border-bottom: 1px solid #555;}
 
-.ra1{position: fixed; top:75px;}
+.ra1{position: fixed; top:89px;}
 .ra{position: absolute; bottom:350px;}
 .helpNav{position: absolute !important; top:98px;}
 .accntNav{position: absolute !important; top:29px;}
@@ -2291,3 +2292,8 @@ table.referfriendforms td.success img{cursor:default !important;}
     padding: 14px 0 13px;
 }
 
+.pos-fix{position: fixed !important;}
+.pos-abs{position: absolute !important;}
+.opac{opacity:0;}
+.pg-content section:last-child p:last-child{margin-bottom:0;}
+.measure-assets:last-child{margin-bottom:0 !important};

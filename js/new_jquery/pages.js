@@ -70,43 +70,65 @@ var ftr1 = $('#sitemap');
 
 });*/
 
-jQuery(window).load(function($){
+jQuery(window).ready(function($){
     leftNavPos();
 });
 function leftNavPos(){
-    var ra = '#sitemap,.scroller_anchor,.bannerFluid';
+    var ra = '#sitemap,.scroller_anchor,.bannerFluid,.grid-bottom,.new-bot-divider:last-child';
     jQuery(ra).appear();
+    
+    var ra1 = jQuery(".gridProdCubix").find(".leftnav");
+    var helpNav = jQuery("#pagecontainer").find(".side-menu-bar");
+    var accntNav = jQuery("#pagecontainer").find(".account-nav");
 
-    jQuery(document.body).on('appear', '#sitemap', function(e, $affected) {       
-        var ra1 = jQuery(".gridProdCubix").find(".leftnav");
-        var helpNav = jQuery("#pagecontainer").find(".side-menu-bar");
-        var searchNav = jQuery("#pagecontainer").find(".search-nav");
-        var accntNav = jQuery("#pagecontainer").find(".account-nav");
-        helpNav.addClass("helpNav");
-        searchNav.addClass("helpNav");
-        ra1.addClass("ra").removeClass("ra1");
-        if(jQuery(window).height() <= "768"){
-            accntNav.addClass("accntNav");
-        }                   
+    jQuery(document.body).on('appear','.grid-bottom', function(e, $affected) {
+        ra1.addClass("pos-abs").removeClass("pos-fix").css({"top":"","bottom" : "400px"})     
+     });
+    jQuery(document.body).on('disappear', '.grid-bottom', function(e, $affected) { 
+        ra1.addClass("pos-fix").removeClass("pos-abs").css({"bottom":"","top":"89px"});        
+    });
+    jQuery(document.body).on('disappear', '.bannerFluid', function(e, $affected) {         
+        ra1.addClass("pos-fix").removeClass("pos-abs").css({"top":"89px"});        
       });
-    jQuery(document.body).on('disappear', '.bannerFluid', function(e, $affected) {       
-        var ra1 = jQuery(".gridProdCubix").find(".leftnav");
-        ra1.addClass("ra1");           
+    jQuery(document.body).on('appear', '.bannerFluid,.scroller_anchor', function(e, $affected) {               
+        ra1.addClass("pos-abs").removeClass("pos-fix").css({"top":"29px"});       
       });
-    jQuery(document.body).on('disappear', '#sitemap', function(e, $affected) {       
-        var ra1 = jQuery(".gridProdCubix").find(".leftnav");
-        var helpNav = jQuery("#pagecontainer").find(".side-menu-bar");
-        var searchNav = jQuery("#pagecontainer").find(".search-nav");
-        var accntNav = jQuery("#pagecontainer").find(".account-nav");
-        ra1.removeClass("ra").addClass("ra1");
-        helpNav.removeClass("helpNav");  
-
-        if(jQuery(window).height() <= "768"){        
-            accntNav.removeClass("accntNav");
-        }              
-      });
-    jQuery(document.body).on('appear', '.bannerFluid', function(e, $affected) {       
-        var ra1 = jQuery(".gridProdCubix").find(".leftnav");
-        ra1.removeClass("ra1");           
+    jQuery(document.body).on('appear','.new-bot-divider:last-child', function(e, $affected) {
+        helpNav.addClass("pos-abs").removeClass("pos-fix").css({"top":"98px"});
+        accntNav.addClass("pos-abs").removeClass("pos-fix").css({"top":""});             
+     });
+    jQuery(document.body).on('disappear', '.new-bot-divider:last-child', function(e, $affected) {          
+        helpNav.addClass("pos-fix").removeClass("pos-abs").css({"top":"98px"});
+        accntNav.addClass("pos-fix").removeClass("pos-abs").css({"top":"98px"}); 
       });
 }
+
+ // function collision($div1, $div2) {
+ //      var x1 = $div1.offset().left;
+ //      var y1 = $div1.offset().top;
+ //      var h1 = $div1.outerHeight(true);
+ //      var w1 = $div1.outerWidth(true);
+ //      var b1 = y1 + h1;
+ //      var r1 = x1 + w1;
+ //      var x2 = $div2.offset().left;
+ //      var y2 = $div2.offset().top;
+ //      var h2 = $div2.outerHeight(true);
+ //      var w2 = $div2.outerWidth(true);
+ //      var b2 = y2 + h2;
+ //      var r2 = x2 + w2;
+        
+ //      if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
+ //      return true;
+ //    }
+
+ // jQuery(window).scroll(function(){
+ //        var ra = collision(jQuery('.leftnav'), jQuery('.grid-bottom'));
+ //        var ra1 =  collision(jQuery('.leftnav'), jQuery('#sitemap'));    
+ //        console.log(ra + "---" + ra1);   
+ //        if(ra || ra1){
+ //            console.log("yes");
+ //            jQuery('.leftnav').css({"top":"","bottom":"600px"});
+ //        }else{
+ //            jQuery('.leftnav').css({"position":"fixed","top":"89px","bottom":""});
+ //        }      
+ // });
