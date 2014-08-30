@@ -521,13 +521,16 @@ body.paypal-express-review .paypal-details td.total,body.paypal-express-review .
 
 /*****************Paypal Checkout Form Ends****************/
 
-div#coshipping, div#cobilling {
+div#coshipping, div#cobilling, div#cobillingGOYS {
     margin: auto;
     /*max-width: 80%;*/
     min-width: 50%;
     overflow: inherit;
     padding: 0;
     width: 300px;
+}
+div#cobillingGOYS #billing-new-address-form{
+    display: block;
 }
 body.checkout-onepage-index li.form-alt {
     background: none repeat scroll 0 0 #ededed;
@@ -734,6 +737,6 @@ select#billing-address-select{
 }
 .addVal{width: 265px; display: inline-block;}
 #shippingDetails.reverseShip .selectAddress,#shippingDetails.reverseShip .shippingOption{background: #ebebeb;}
-#shippingDetails.reverseShip .selectAddress:hover,#shippingDetails.reverseShip .shippingOption:hover, #billingDetails .creditOption:hover{background: rgb(255,255,255);}
+#shippingDetails.reverseShip .selectAddress:hover,#shippingDetails.reverseShip .sbillingAdd:hover,#shippingDetails.reverseShip .shippingOption:hover, #billingDetails .creditOption:hover{background: rgb(255,255,255);}
 div.edit-curr-shipng-add{display: block; margin-bottom: 20px; }
 div.edit-curr-shipng-add span{font-family: gothambook; font-size: 11px; line-height:11px; text-transform: uppercase; border-bottom:1px solid #c03; padding-bottom:3px; cursor:pointer;}

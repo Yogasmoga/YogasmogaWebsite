@@ -106,6 +106,26 @@
         <?php
             }   
                 ?>
+
+        <!-- giftOfYSCase -->
+        <?php if(!$isshippable)
+        {
+            ?>
+            <div id="cobillingGOYS" class="checkoutsteps">
+                <div class="headD"><span>1</span><br>Billing</div>          
+
+                <!-- NewBillingForm -->
+                <div id="cobillingaddress" class="checkoutsubstep addNewAdd">
+                    <?php echo $this->getChildHtml('billing'); ?>
+                </div>
+                <!-- NewBillingForm -->
+
+            </div>
+
+        <?php }
+        ?>
+        <!-- giftOfYSCase -->
+
         <div class="ovrlay-bg"></div>
     </li>
     <!-- shippingDetails -->
@@ -114,7 +134,8 @@
     <li id="billingDetails">
         <div id="cobilling" class="checkoutsteps <?php if(!$isshippable) { echo "active";} else { echo "inactive disabled";} ?>">
             <div class="headD">
-                <span><?php if($isshippable) { echo "2";} else { echo "1";} ?></span><br />BILLING
+                <span><?php if($isshippable) { echo "2";} else { echo "2";} ?></span><br />
+                <?php if($isshippable) { echo "BILLING";} else { echo "PAYMENT";} ?>
             </div>
 
 <!--             <div id="cobillingaddress" class="checkoutsubstep addNewAdd">
@@ -125,13 +146,18 @@
                 <div id="paymentmethods">
 					<?php //echo $this->getChildHtml('payment'); ?>
                    
-                    <img style="width:100%;" src="<?php echo $this->getSkinUrl("images/checkout/bgd.png") ?>" />
+                   <img style="width:100%;" src="<?php echo $this->getSkinUrl("images/checkout/bgd.png") ?>" />
                 </div>
+
+                <?php if($isshippable)
+                {
+                    ?>
                 <div id="cobillingaddress" class="checkoutsubstep addNewAdd" style="display:none">
                     <?php echo $this->getChildHtml('billing'); ?> 
                 </div>
 
-
+                <?php }
+                ?>
             </div>
         </div>
         
@@ -143,7 +169,7 @@
     <li id="reviewDetails">
         <div id="coreview" class="checkoutsteps inactive disabled">
             <div class="headD">
-                <span><?php if($isshippable) { echo "3";} else { echo "2";} ?></span><br />REVIEW   
+                <span><?php if($isshippable) { echo "3";} else { echo "3";} ?></span><br />REVIEW   
             </div>
             <!-- <div id="orderreview" class="inactive disabled"></div> -->
             <div id="ordersummary"></div>

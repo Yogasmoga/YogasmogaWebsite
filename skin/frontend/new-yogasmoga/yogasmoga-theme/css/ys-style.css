@@ -672,7 +672,7 @@ span.address {
 .gryWrap span:nth-child(1) {
     display: inline;
 }
-.selectCreditCard, .selectAddress, .shippingOption, .creditOption {
+.selectCreditCard, .selectAddress, .shippingOption, .creditOption, .sbillingAdd {
     border: 1px solid #9f9f9f;
     margin: auto auto 18px;
     padding: 6px 8px;
@@ -682,7 +682,8 @@ span.address {
     cursor: pointer;
 }
 ul.checkout-cont li > .selectAddress ul li,
-ul.checkout-cont li > .shippingOption ul li {
+ul.checkout-cont li > .shippingOption ul li,
+ul.checkout-cont li > .sbillingAdd ul li {
     clear: both;
     display: inline-block;
     margin: 0;
@@ -693,14 +694,16 @@ ul.checkout-cont li > .shippingOption ul li {
     padding: 0 0 5px;
     width: 100% !important;
 }
-ul.checkout-cont li > .selectAddress ul li span{
+ul.checkout-cont li > .selectAddress ul li span,
+ul.checkout-cont li > .sbillingAdd ul li span{
     font-weight:bold;
     margin: 0 5px 0 0;
 }
-.selectAddress > span {
+.selectAddress > span,
+.sbillingAdd > span {
     display: inline-block;
 }
-.addnewCredit, .addnewBtn, .addnewBtnBilling {
+.addnewCredit, .addnewBtn, .addnewBtnBilling, .addnewBillingBtn {
     width: 100%;
     background: url('../images/gryBtn.jpg') no-repeat center top;
     background-size: 100% auto;
@@ -715,12 +718,12 @@ ul.checkout-cont li > .selectAddress ul li span{
     text-align: center;
     text-transform: uppercase;
 }
-.addnewBtn{
+.addnewBtn, .addnewBillingBtn{
     background: #999 !important;
 }
-.showShippingOpt, .showUpdateAdd, .showCreditcard{display:none; border-top: 1px solid #9f9f9f; margin: 8px 0 0; padding: 8px 0 0;}
-.showUpaddnew, .showUpadd, .showCreOpt, .showShpOpt, .showCrdtOpt{background: url('../images/checkout-arr-btn.png') no-repeat top left; background-size: 100% auto; width:11px; height:7px; float:right; margin:6px 0 0; cursor:pointer;}
-.showUpadd.reverse, .showShpOpt.reverse, .showCrdtOpt.reverse{background: url('../images/checkout-arr-btn-top.png') no-repeat top left;}
+.showShippingOpt, .showUpdateAdd, .showCreditcard, .billingaddlist{display:none; border-top: 1px solid #9f9f9f; margin: 8px 0 0; padding: 8px 0 0;}
+.showUpaddnew, .showUpadd, .showCreOpt, .showShpOpt, .showCrdtOpt, .showBillingadd{background: url('../images/checkout-arr-btn.png') no-repeat top left; background-size: 100% auto; width:11px; height:7px; float:right; margin:6px 0 0; cursor:pointer;}
+.showUpadd.reverse, .showShpOpt.reverse, .showCrdtOpt.reverse, .showBillingadd.reverse{background: url('../images/checkout-arr-btn-top.png') no-repeat top left;}
 .continueBtn{
     background: url('../images/contBtn.jpg') no-repeat top left;
     color: #fff;
