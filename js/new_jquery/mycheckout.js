@@ -18,17 +18,17 @@ jQuery(document).ready(function($){
 
     $(".showShippingOpt").focusout(function () {
         $(".showShippingOpt").slideUp("fast");
-    }); 
+    });
 
     $(".creditOption .addVal, .showCrdtOpt").live("click", function(event){
         event.stopPropagation();
         slideCreditCont();
-    }); 
+    });
 
     $(".showcreditcardopt").live("click", function(){
         jQuery(".showShpOpt").removeClass("reverse");
         jQuery(".showcreditcardopt").slideUp("slow");
-    });  
+    });
 
     $(".selectAddress .addVal, .showUpadd").on("click", function(event){
         event.stopPropagation();
@@ -41,9 +41,9 @@ jQuery(document).ready(function($){
     getShippingID();
     $(".shippingOption .addVal, .showShpOpt").on("click", function(event){
         event.stopPropagation();
-        slideShpCont(); 
+        slideShpCont();
         jQuery(".showUpadd").removeClass("reverse");
-        jQuery(".listadd").slideUp("slow");       
+        jQuery(".listadd").slideUp("slow");
     });
 
     $(".showShippingOpt").on("click", "li", function(){
@@ -68,7 +68,7 @@ jQuery(document).ready(function($){
         $(".shippingOption").find(".addVal").text(selectedVal);
         slideShpCont();
     });
-    
+
     $("#payment_form .paymentmethoddiv,#payment_form .paymentmethoddiv,.checkBCre").live("click", function(){
         $("#reviewDetails .ovrlay-bg").show();
         $("#shippingDetails").css("background","rgba(0, 0, 0, 0.0784314)");
@@ -887,25 +887,25 @@ function savePayment()
             if(typeof result['redirect'] !== "undefined"){
 //                window.location.href = result['redirect'];
 
-                    var payPalURL = result['redirect'];
+                var payPalURL = result['redirect'];
 
-                    jQuery("li#reviewDetails #paypal-checkout").removeClass("dnone").attr("href", payPalURL);
-                    jQuery("li#reviewDetails #checkout-submit").addClass("dnone");
+                jQuery("li#reviewDetails #paypal-checkout").removeClass("dnone").attr("href", payPalURL);
+                jQuery("li#reviewDetails #checkout-submit").addClass("dnone");
 
-                    jQuery("#paymentmethoderrormsg").html('');
-                    jQuery("form#co-billing-form").submit();
-                    designCartTotal();
+                jQuery("#paymentmethoderrormsg").html('');
+                jQuery("form#co-billing-form").submit();
+                designCartTotal();
 
-                    jQuery(".billingAdd a").removeClass("reverse unuse").addClass("use").html(jQuery("form#co-billing-form input#billing\\:street1").val() + "<br>" + "<span>is my billing address</span>");
-                    jQuery("#billing-new-address-form").hide();
-                    // jQuery("li#billingDetails .ovrlay-bg").show();
-                    jQuery("li#billingDetails").css("background","rgba(0, 0, 0, 0.0784314)");
-                    jQuery("li#billingDetails .headD span").html("&#10003;");
-                    jQuery("li#shippingDetails .ovrlay-bg").show();
-                    jQuery("li#shippingDetails").removeClass("reverseShip").css("background", "transparent");
-                    jQuery("li#billingDetails.active").removeClass("active");
-                    jQuery("li#reviewDetails .ovrlay-bg").hide();
-                    jQuery("li#reviewDetails").addClass("active");
+                jQuery(".billingAdd a").removeClass("reverse unuse").addClass("use").html(jQuery("form#co-billing-form input#billing\\:street1").val() + "<br>" + "<span>is my billing address</span>");
+                jQuery("#billing-new-address-form").hide();
+                // jQuery("li#billingDetails .ovrlay-bg").show();
+                jQuery("li#billingDetails").css("background","rgba(0, 0, 0, 0.0784314)");
+                jQuery("li#billingDetails .headD span").html("&#10003;");
+                jQuery("li#shippingDetails .ovrlay-bg").show();
+                jQuery("li#shippingDetails").removeClass("reverseShip").css("background", "transparent");
+                jQuery("li#billingDetails.active").removeClass("active");
+                jQuery("li#reviewDetails .ovrlay-bg").hide();
+                jQuery("li#reviewDetails").addClass("active");
             }
             else if(typeof result['error'] !== "undefined"){
                 jQuery("#paymentmethoderrormsg").html(result['error']);

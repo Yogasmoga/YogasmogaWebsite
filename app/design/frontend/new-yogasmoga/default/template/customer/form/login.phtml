@@ -33,6 +33,15 @@
 ?>
 <?php
         // redirect to home page because we can not show login page in new-theme
+if(strpos(strip_tags($this->getMessagesBlock()->getGroupedHtml()), "xyxyxyx") === false)
+{
+    if(strpos(strip_tags($this->getMessagesBlock()->getGroupedHtml()), "reset your password"))
+    {
+        echo "An email has been sent.</br>Please check your inbox to reset your password.";
+        $reseterror = "An email has been sent.</br>Please check your inbox to reset your password.";
+        Mage::getSingleton('core/session')->setResetError($reseterror);
+    }
+}
         Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getBaseUrl().'#login');
 
     if($this->getRequest()->getParam('goto') == 'cart')

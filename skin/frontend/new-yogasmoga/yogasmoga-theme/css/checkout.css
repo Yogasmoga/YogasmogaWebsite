@@ -38,35 +38,35 @@ td.checkoutstepsholder
 }
 #tblcheckoutsteps
 {
-/*    margin-left : auto;
-    margin-right : auto;
-	margin-bottom:70px;
-    width : 755px;
-    max-width : 755px;
-    text-align : left;
-    position: relative;*/
+    /*    margin-left : auto;
+        margin-right : auto;
+        margin-bottom:70px;
+        width : 755px;
+        max-width : 755px;
+        text-align : left;
+        position: relative;*/
 }
 #tblcheckoutsteps select
 {
     /*display: none;*/
-/*    max-width: 533px;  */ 
+    /*    max-width: 533px;  */
 }
 #tblcheckoutsteps input[type='submit']
 {
-/*    float : right;
-    margin-right : 0;
-    margin-top : 30px;*/
+    /*    float : right;
+        margin-right : 0;
+        margin-top : 30px;*/
 }
 div.checkoutstepheader
 {
-/*    font-family:gothambook;
-    font-size: 18px;
-    height: 42px;
-    letter-spacing: 0.6pt;
-    margin-bottom: 10px;
-    padding-top: 13px;*/
+    /*    font-family:gothambook;
+        font-size: 18px;
+        height: 42px;
+        letter-spacing: 0.6pt;
+        margin-bottom: 10px;
+        padding-top: 13px;*/
     cursor : default;
-} 
+}
 div.checkoutstepsubheader span{font-style:italic; color:#999; font-size:13px;}
 div.checkoutstepsubheader
 {
@@ -87,9 +87,9 @@ div.cleaner
 }
 div.checkoutsteps
 {
-/*    background-image : url('../images/checkout/step_divider.png');
-    background-repeat : no-repeat;
-    background-position: center bottom;*/
+    /*    background-image : url('../images/checkout/step_divider.png');
+        background-repeat : no-repeat;
+        background-position: center bottom;*/
 }
 div.checkoutsteps.inactive
 {
@@ -149,7 +149,7 @@ table.co-ov-table thead th a
     font-size : 10px;
     font-family:HelvLightRegular;
 }
-table.co-ov-table td.price,table.co-ov-table td.total 
+table.co-ov-table td.price,table.co-ov-table td.total
 {
     text-align : right;
 }
@@ -163,7 +163,7 @@ table.co-ov-table th.total
     text-align : right;
     /*padding-right : 20px;*/
 }
-table.co-ov-table th.total, table.co-ov-table td.total 
+table.co-ov-table th.total, table.co-ov-table td.total
 {
     width : 75px;
     min-width : 75px;
@@ -211,7 +211,7 @@ table.co-ov-table tr.co-ov-finaltotal td
 table.co-ov-table th.qty,table.co-ov-table td.qty, table.co-ov-table td.co-ov-summaryanchor
 {
     padding-right : 30px;
-} 
+}
 table.co-ov-table th.qty,table.co-ov-table td.qty
 {
     text-align : center;
@@ -327,7 +327,7 @@ div#shippingsummary table td.total
 {
     text-align : left;
 }
-div#ordersummary table td.total 
+div#ordersummary table td.total
 {
     text-align: right;
 }
@@ -380,16 +380,16 @@ div#submiterrormsg
 }
 
 #ordersummary table td, #shippingsummary table td {
-	font: 13px/28px gothambook;
+    font: 13px/28px gothambook;
 }
 
 table.co-ov-table td {
-	font-family:gothambook;
+    font-family:gothambook;
 }
 
 table.co-ov-table tr.last td {
-	font-family:gothamMedium;
-	font-weight:normal;
+    font-family:gothamMedium;
+    font-weight:normal;
 }
 
 #procImg {
@@ -409,10 +409,10 @@ button:active
     outline : none;
 }
 div.shippingdescription {
-  font-family: gothamlight;
-  font-weight: normal;
-  margin: 5px 0 30px;
-  text-align: justify;
+    font-family: gothamlight;
+    font-weight: normal;
+    margin: 5px 0 30px;
+    text-align: justify;
 }
 div.shippingdescription  strong{font-weight:normal; font-family:gothamMedium;}
 .red-txt{color:#d90d3d;}
@@ -424,22 +424,22 @@ table.co-ov-table div.preorderinfo
 #shippingmethods td label{color:#dd8820; text-transform:uppercase;}
 
 @media screen and (max-width: 1480px) {
-	div#shippingsummary{
-		left : 690px;
-		right:auto;
-	}
-	div#shippingsummary table td{vertical-align:top; padding:0 10px 5px 0;}
-	div#shippingsummary table{width:320px;}
+    div#shippingsummary{
+        left : 690px;
+        right:auto;
+    }
+    div#shippingsummary table td{vertical-align:top; padding:0 10px 5px 0;}
+    div#shippingsummary table{width:320px;}
 }
 
 
 @media screen and (max-width: 1280px) {
-	div#shippingsummary{
-		left : 650px;
-		right:auto;
-	}
-	div#shippingsummary table td{vertical-align:top; padding:0 10px 5px 0;}
-	div#shippingsummary table{width:200px;}
+    div#shippingsummary{
+        left : 650px;
+        right:auto;
+    }
+    div#shippingsummary table td{vertical-align:top; padding:0 10px 5px 0;}
+    div#shippingsummary table{width:200px;}
 }
 div.input-box select
 {
@@ -482,7 +482,7 @@ div#shippingsummary td#ordersubtotal
 }
 #tblcheckoutsteps div.checkoutsubstep.inactive
 {
-    
+
 }
 div.paymentmethoddiv
 {
