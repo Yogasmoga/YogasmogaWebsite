@@ -266,7 +266,7 @@ table.productdetailtable div#sizecontainer table td:last-child
 
 table.productdetailtable div#sizecontainer table td div
 {
-    padding : 2px 8px; /*5px 8px;*/
+    padding : 2px 8px !important; /*5px 8px;*/
     margin: 0 5px 0 0;
     display: inline-block;
     border: 1px solid #A9A9A9;

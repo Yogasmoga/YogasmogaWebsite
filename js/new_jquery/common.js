@@ -171,7 +171,7 @@ sizeChartPop();
 
 
     var winHeight = $(window).height();
-    $("div.2-columns-wrapper").find(".pg-content,.side-menu-bar").css("min-height", winHeight - 96);
+    $("div.2-columns-wrapper").find(".pg-content").css("min-height", winHeight - 96);
     $("#Allproducts").find(".gridProdCubix").css("min-height", winHeight - 96);     
     // $("div#mainimage").find(".pg-content,.account-nav").css("min-height", winHeight - 96);
     // $(".dashboard-index").find(".pg-content,.account-nav").css("min-height", winHeight - 96);        

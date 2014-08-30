@@ -33,7 +33,7 @@
     <!-- UpdateNameAdd -->
     <div id="updateNameAdd" <?php if ($this->customerHasAddresses()): ?> style="display:block;"<?php endif ?> style="display:none;">
         <div class="gryWrap clearfix">
-            <span class="address">15 William Street 15E<br>New York, NY, 10005<br>United States</span>
+            <span class="address"></span>
         </div>
         <!-- Edit Shipping address -->
         <div class="edit-curr-shipng-add dnone"><span>EDIT CURRENT SHIPPING ADDRESS</span></div>
@@ -45,9 +45,9 @@
     <!-- shipFlag -->
     <span class="shipDetail clear">Ship to:
         <span class="country">
-            <img src="<?php echo $this->getSkinUrl('images/flag1.jpg'); ?>" class="usflag" alt="United States" />
-            <img src="<?php echo $this->getSkinUrl('images/checkout/canflag.png'); ?>" class="cnflag dnone" alt="Canada" />
-            <img src="<?php echo $this->getSkinUrl('images/checkout/globe.png'); ?>" class="glflag dnone" alt="Global" />
+            <img src="<?php echo $this->getSkinUrl('images/us-flag.jpg'); ?>" class="usflag" alt="United States" />
+            <img src="<?php echo $this->getSkinUrl('images/checkout/can-flag.jpg'); ?>" class="cnflag dnone" alt="Canada" />
+            <img src="<?php echo $this->getSkinUrl('images/checkout/global-flag.jpg'); ?>" class="glflag dnone" alt="Global" />
         </span>
     </span>
     <!-- shipFlag -->
@@ -261,7 +261,6 @@
             </div>
         </div>
     <?php endif ?>
-
     <!-- selectAddress -->
 
 
