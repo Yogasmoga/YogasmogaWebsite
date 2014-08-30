@@ -1924,7 +1924,11 @@ body.mac-os .gridFullWidth .block50:last-child .img-responsive{
 }
 
 body.mac-os.chrome .gridFullWidth .block30:last-child {
-    width: 33.25%;
+    width: 33.2%;
+}
+
+body.mac-os.chrome .press .block30:last-child {
+    width: 33.1% !important;
 }
 
 body.mac-os .gridFullWidth .block30:last-child {
@@ -1939,5 +1943,5 @@ body.mac-os .gridFullWidth .block30:last-child {
 
 body.mac-os ul.main-menu2 > li,
 body.mac-os ul.main-menu2 a.main-heading{
-    height: 32px;
+    height: 31px;
 }
