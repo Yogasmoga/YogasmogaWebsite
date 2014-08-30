@@ -34,6 +34,10 @@
     $isshippable = true;
     if (!$this->getChild("shipping") || !$this->getChild("shipping")->isShow())
         $isshippable = false;
+
+    $isshippable = Mage::getSingleton('core/session')->getIsShippable();
+
+//    echo $isshippable;die("test");
 ?>
 <?php
     if($isshippable)
@@ -72,7 +76,7 @@
     <?php endif ?>  
 
         <?php if(!$isshippable)
-        {
+        {//echo $isshippable;die("test");
             ?>
 
                 <!-- UpdateNameAdd -->
@@ -85,7 +89,6 @@
 
 
                 <!-- selectAddress -->
-                <?php if ($this->customerHasAddresses()): ?>
                     <div id="billingaddblock" class="sbillingAdd clear">
                         <span class="addVal"><?php echo $this->__('Use a different Billing Address') ?></span>
                         <label for="billing-address-select"></label>
@@ -94,7 +97,6 @@
                             <ul class="billingaddlist"></ul>
                         </div>
                     </div>
-                <?php endif ?>
                 <!-- selectAddress -->
 
 
@@ -103,7 +105,7 @@
         ?>
 
 
-    <div id="billing-new-address-form" class="gryWrap" <?php if ($this->customerHasAddresses()): ?> style="display:none;"<?php endif ?> style="display:block;">
+    <div id="billing-new-address-form" class="gryWrap" <?php if ($this->customerHasAddresses()): ?> style="display:none;"<?php endif ?> style="display:inline-block;">
 
         <table class="inputtable">
                         <tr>

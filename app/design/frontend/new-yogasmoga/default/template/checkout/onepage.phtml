@@ -43,6 +43,11 @@
     $isshippable = true;
     if (!$this->getChild("shipping") || !$this->getChild("shipping")->isShow())
         $isshippable = false;
+
+    Mage::getSingleton('core/session')->setIsShippable($isshippable);
+
+
+
     $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals();
     if(isset($totals['tax']) && $totals['tax']->getValue()) {
         //echo $totals['tax']->getValue();

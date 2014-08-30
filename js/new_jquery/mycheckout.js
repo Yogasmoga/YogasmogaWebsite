@@ -23,6 +23,12 @@ jQuery(document).ready(function($){
 
 
     if(!_isshippable){
+
+
+
+
+
+
         // forGiftOfYS
         createBillingList();
         greyBillingBox();
@@ -31,6 +37,10 @@ jQuery(document).ready(function($){
             event.stopPropagation();
             slideBillingCont();
         });
+
+        if($("#billing-new-address-form").is(":visible")){
+            $("#billingaddblock").hide();
+        }
 
         $("#billing-address-select li").live("click", function(){
             if($(this).attr("value") == "") {
@@ -60,7 +70,7 @@ jQuery(document).ready(function($){
                 $(this).parent().slideUp();
                 $(".showBillingadd").toggleClass("reverse");
 
-                $('#updateBillingAdd').find('.address').html(selectedAdd.replace(/,/g, "<br>"));
+                $('#updateBillingAdd').find('.address').html(selectedBillingAdd.replace(/,/g, "<br>"));
                 $('#updateBillingAdd').find('.address').contents().first().wrap('<span>To: </span>');
 
                 $("form#co-billing-form").find("input[type='submit']").show();
@@ -314,6 +324,7 @@ jQuery(document).ready(function($){
     });
     getCartSummary();
     $("select#shipping-address-select").removeAttr('onchange');
+    $("select#billing-address-select").removeAttr('onchange');
     $("select#shipping-address-select").change(function(){
         if($(this).val() == "")
         {
@@ -1155,6 +1166,7 @@ function saveBillingAddressGYS(){
                 jQuery("#billingaddresserrormsg").html(result['message']);
             else
             {
+                //alert("asdsafs");
                 jQuery("div#paymentmethods").html(result['update_section']['html']);
                 //checkpaymentmethod();
                 jQuery(".billingAdd").hide().html("");
@@ -1184,8 +1196,9 @@ function saveBillingAddressGYS(){
 
                 jQuery("#co-billing-form input[type=submit]").hide();
                 jQuery("#co-billing-form #procImg").remove();
-                jQuery(".paymentmethoddiv input#p_method_stripe").trigger("click");
-
+                jQuery(".paymentmethoddiv input#p_method_stripe").attr("checked", "checked");
+                jQuery("#change-stripe-detail").show().css("margin", "0 0 20px");
+                jQuery(".paymentmethoddiv label[for='p_method_stripe']").trigger("click");
             }
         }
     });
@@ -1292,7 +1305,6 @@ function saveShippingAddress()
             jQuery("div#shippingmethods").html(result['update_section']['html']);
 
             var getShpID = jQuery(".shippingOption").find("ul li.selected").attr("id");
-            console.log(getShpID);
 
             jQuery("form#co-shippingmethod-form input#" + getShpID).attr("checked","checked");
             console.log(jQuery('form#co-shippingmethod-form input:checked').attr("id"));
