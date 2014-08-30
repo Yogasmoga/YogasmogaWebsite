@@ -87,12 +87,23 @@ function leftNavPos(){
     jQuery(document.body).on('disappear', '.grid-bottom', function(e, $affected) { 
         ra1.addClass("pos-fix").removeClass("pos-abs").css({"bottom":"","top":"89px"});        
     });
-    jQuery(document.body).on('disappear', '.bannerFluid', function(e, $affected) {         
-        ra1.addClass("pos-fix").removeClass("pos-abs").css({"top":"89px"});        
-      });
-    jQuery(document.body).on('appear', '.bannerFluid,.scroller_anchor', function(e, $affected) {               
-        ra1.addClass("pos-abs").removeClass("pos-fix").css({"top":"29px"});       
-      });
+   
+    if(jQuery('.bannerFluid').is(":visible")){
+         jQuery(document.body).on('disappear', '.bannerFluid', function(e, $affected) {         
+            ra1.addClass("pos-fix").removeClass("pos-abs").css({"top":"89px"});        
+          });
+         jQuery(document.body).on('appear', '.bannerFluid,.scroller_anchor', function(e, $affected) {               
+            ra1.addClass("pos-abs").removeClass("pos-fix").css({"top":"29px"});       
+          });         
+    }else{
+        jQuery(document.body).on('disappear', '.scroller_anchor', function(e, $affected) {         
+            ra1.addClass("pos-fix").removeClass("pos-abs").css({"top":"89px"});        
+          });
+        jQuery(document.body).on('appear', '.scroller_anchor', function(e, $affected) {       
+             ra1.addClass("pos-abs").removeClass("pos-fix").css({"top":"29px"});        
+          });        
+    }
+    
     jQuery(document.body).on('appear','.new-bot-divider:last-child', function(e, $affected) {
         helpNav.addClass("pos-abs").removeClass("pos-fix").css({"top":"98px"});
         accntNav.addClass("pos-abs").removeClass("pos-fix").css({"top":""});             
