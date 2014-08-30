@@ -25,34 +25,29 @@
  */
 ?>
 <?php
-    $allow = 0;
-    if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
-        $allow++;
-    if(Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
-        $allow++;
-    if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
-        $allow++;
-    if($allow > 1)
+$allow = 0;
+if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+    $allow++;
+if(Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
+    $allow++;
+if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode())
+    $allow++;
+if($allow > 1)
     //if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()) && Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
-    {
-        Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
-    }
+{
+    Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
+}
 ?>
 <?php Mage::getSingleton('core/session')->setrewardpointscount(Mage::helper('rewardpoints')->getPointsOnOrder()); ?>
 <?php
-    $isshippable = true;
-    if (!$this->getChild("shipping") || !$this->getChild("shipping")->isShow())
-        $isshippable = false;
-
-    Mage::getSingleton('core/session')->setIsShippable($isshippable);
-
-
-
-    $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals();
-    if(isset($totals['tax']) && $totals['tax']->getValue()) {
-        //echo $totals['tax']->getValue();
-        $tax = round($totals['tax']->getValue()); //Tax value if present
-    }
+$isshippable = true;
+if (!$this->getChild("shipping") || !$this->getChild("shipping")->isShow())
+    $isshippable = false;
+$totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals();
+if(isset($totals['tax']) && $totals['tax']->getValue()) {
+    //echo $totals['tax']->getValue();
+    $tax = round($totals['tax']->getValue()); //Tax value if present
+}
 ?>
 <?php /* speed fix
     <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/mycheckout1.js"></script>
@@ -63,135 +58,109 @@
 
 
 <?php
-    if(!$this->helper('customer')->isLoggedIn())
-    {
-        echo $this->getChildHtml('login');
-    }
+if(!$this->helper('customer')->isLoggedIn())
+{
+    echo $this->getChildHtml('login');
+}
 ?>
 <?php
-    if($isshippable)
-        {
-            //echo $this->getChildHtml('shipping');
-            ?>
-                <script type="text/javascript">
-                    _isshippable = true;
-                </script>
-            <?php
-        }
-    else
-    {
-        ?>
-            <script type="text/javascript">
-                _isshippable = false;
-            </script>
-        <?php
-    }
+if($isshippable)
+{
+    //echo $this->getChildHtml('shipping');
+    ?>
+    <script type="text/javascript">
+        _isshippable = true;
+    </script>
+<?php
+}
+else
+{
+    ?>
+    <script type="text/javascript">
+        _isshippable = false;
+    </script>
+<?php
+}
 ?>
 <!-- onePageCheckoutProcess -->
 <div id="tblcheckoutsteps" class="checkout-detail" <?php if(!$this->helper('customer')->isLoggedIn()) { ?> style="display: none;" <?php } ?>>
-<ul class="checkout-cont clear">
-    <!-- shippingDetails -->
-    <li id="shippingDetails" class="active">
-        <?php if($isshippable) 
+    <ul class="checkout-cont clear">
+        <!-- shippingDetails -->
+        <li id="shippingDetails" class="active">
+            <?php if($isshippable)
             {
                 ?>
-            <div id="coshipping" class="checkoutsteps">
-                <!-- <div class="checkoutstepheader codivider"></div> -->
-                <div class="headD"><span>1</span><br>Shipping</div>
+                <div id="coshipping" class="checkoutsteps">
+                    <!-- <div class="checkoutstepheader codivider"></div> -->
+                    <div class="headD"><span>1</span><br>Shipping</div>
 
-                <div id="coshippingaddress" class="checkoutsubstep addNewAdd">
-                    <?php echo $this->getChildHtml('shipping'); ?>
-                </div>
-            
-                <div id="coshippingmethod" class="checkoutsubstep inactive disabled" style="display: none;">
-                    <div class="checkoutstepsubheader">SHIPPING METHOD</div>
-                    <div id="shippingmethods"></div>
-                </div>
-            </div>
-        <?php
-            }   
-                ?>
+                    <div id="coshippingaddress" class="checkoutsubstep addNewAdd">
+                        <?php echo $this->getChildHtml('shipping'); ?>
+                    </div>
 
-        <!-- giftOfYSCase -->
-        <?php if(!$isshippable)
-        {
+                    <div id="coshippingmethod" class="checkoutsubstep inactive disabled" style="display: none;">
+                        <div class="checkoutstepsubheader">SHIPPING METHOD</div>
+                        <div id="shippingmethods"></div>
+                    </div>
+                </div>
+            <?php
+            }
             ?>
-            <div id="cobillingGOYS" class="checkoutsteps">
-                <div class="headD"><span>1</span><br>Billing</div>          
+            <div class="ovrlay-bg"></div>
+        </li>
+        <!-- shippingDetails -->
 
-                <!-- NewBillingForm -->
-                <div id="cobillingaddress" class="checkoutsubstep addNewAdd">
-                    <?php echo $this->getChildHtml('billing'); ?>
+        <!-- BillingDetails -->
+        <li id="billingDetails">
+            <div id="cobilling" class="checkoutsteps <?php if(!$isshippable) { echo "active";} else { echo "inactive disabled";} ?>">
+                <div class="headD">
+                    <span><?php if($isshippable) { echo "2";} else { echo "1";} ?></span><br />BILLING
                 </div>
-                <!-- NewBillingForm -->
 
-            </div>
-
-        <?php }
-        ?>
-        <!-- giftOfYSCase -->
-
-        <div class="ovrlay-bg"></div>
-    </li>
-    <!-- shippingDetails -->
-
-    <!-- BillingDetails -->
-    <li id="billingDetails">
-        <div id="cobilling" class="checkoutsteps <?php if(!$isshippable) { echo "active";} else { echo "inactive disabled";} ?>">
-            <div class="headD">
-                <span><?php if($isshippable) { echo "2";} else { echo "2";} ?></span><br />
-                <?php if($isshippable) { echo "BILLING";} else { echo "PAYMENT";} ?>
-            </div>
-
-<!--             <div id="cobillingaddress" class="checkoutsubstep addNewAdd">
+                <!--             <div id="cobillingaddress" class="checkoutsubstep addNewAdd">
                 <?php //echo $this->getChildHtml('billing'); ?>
             </div> -->
-            
-            <div id="copaymentmethods" class="checkoutsubstep inactive disabled">
-                <div id="paymentmethods">
-					<?php //echo $this->getChildHtml('payment'); ?>
-                   
-                   <img style="width:100%;" src="<?php echo $this->getSkinUrl("images/checkout/bgd.png") ?>" />
+
+                <div id="copaymentmethods" class="checkoutsubstep inactive disabled">
+                    <div id="paymentmethods">
+                        <?php //echo $this->getChildHtml('payment'); ?>
+
+                        <img style="width:100%;" src="<?php echo $this->getSkinUrl("images/checkout/bgd.png") ?>" />
+                    </div>
+                    <div id="cobillingaddress" class="checkoutsubstep addNewAdd" style="display:none">
+                        <?php echo $this->getChildHtml('billing'); ?>
+                    </div>
+
+
                 </div>
+            </div>
 
-                <?php if($isshippable)
-                {
-                    ?>
-                <div id="cobillingaddress" class="checkoutsubstep addNewAdd" style="display:none">
-                    <?php echo $this->getChildHtml('billing'); ?> 
+            <div class="ovrlay-bg"></div>
+        </li>
+        <!-- BillingDetails -->
+
+        <!-- ReviewOrder -->
+        <li id="reviewDetails">
+            <div id="coreview" class="checkoutsteps inactive disabled">
+                <div class="headD">
+                    <span><?php if($isshippable) { echo "3";} else { echo "2";} ?></span><br />REVIEW
                 </div>
-
-                <?php }
-                ?>
+                <!-- <div id="orderreview" class="inactive disabled"></div> -->
+                <div id="ordersummary"></div>
             </div>
-        </div>
-        
-        <div class="ovrlay-bg"></div>
-    </li>
-    <!-- BillingDetails -->
 
-    <!-- ReviewOrder -->
-    <li id="reviewDetails">
-        <div id="coreview" class="checkoutsteps inactive disabled">
-            <div class="headD">
-                <span><?php if($isshippable) { echo "3";} else { echo "3";} ?></span><br />REVIEW   
+
+            <div class="ovrlay-bg"></div>
+            <div id="checkout-submit">
+                <input id="final_checkout" type="submit" style="background-image: url('/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/credit-checkout.jpg'); display: inline;" downimageurl="<?php echo $this->getSkinUrl('images/checkout/credit-checkout.jpg'); ?>" imageurl="<?php echo $this->getSkinUrl('images/checkout/credit-checkout.jpg'); ?>" name="send" class="loginbtn spbutton custombtn checkoutcontinuebtn" value="" />
             </div>
-            <!-- <div id="orderreview" class="inactive disabled"></div> -->
-            <div id="ordersummary"></div>
-        </div>
-
-        
-        <div class="ovrlay-bg"></div>
-		<div id="checkout-submit">
-               <input id="final_checkout" type="submit" style="background-image: url('/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/credit-checkout.jpg'); display: inline;" downimageurl="<?php echo $this->getSkinUrl('images/checkout/credit-checkout.jpg'); ?>" imageurl="<?php echo $this->getSkinUrl('images/checkout/credit-checkout.jpg'); ?>" name="send" class="loginbtn spbutton custombtn checkoutcontinuebtn" value="" />
-		</div>
-        <div id="submiterrormsg" class="loginerrormsg errormsg dnone"></div>
+            <div id="submiterrormsg" class="loginerrormsg errormsg dnone"></div>
 
 
-        <a class="dnone" id="paypal-checkout" href=""><img src="<?php echo $this->getSkinUrl('images/checkout/paypal-checkout.jpg'); ?>"/> </a>
+            <a class="dnone" id="paypal-checkout" href=""><img src="<?php echo $this->getSkinUrl('images/checkout/paypal-checkout.jpg'); ?>"/> </a>
 
-    </li>
-    <!-- ReviewOrder -->
-</ul>
+        </li>
+        <!-- ReviewOrder -->
+    </ul>
 </div>
 <!-- onePageCheckoutProcess -->
