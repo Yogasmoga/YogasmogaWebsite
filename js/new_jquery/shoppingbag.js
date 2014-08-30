@@ -385,7 +385,7 @@ function giftcart() {
 }
 function showShoppingBagHtml()
 {
-    jQuery(".side-menu-bar,.account-nav,.leftnav").css("position","absolute");
+    // jQuery(".side-menu-bar,.account-nav,.leftnav").css("position","absolute");
     if(window.location.href.indexOf('https://') >= 0)
         _usesecureurl = true;
     else
