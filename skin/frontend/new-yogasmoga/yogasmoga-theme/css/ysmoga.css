@@ -22,7 +22,7 @@ a#rangoli-head{
     background-repeat: no-repeat;
     padding: 1px 0 1px 15px;
     display: block;
-    margin-top: -3px;
+    margin-top: -1px;
 }
 
 .rangoliOrng{
@@ -335,6 +335,7 @@ ul.site-map > li{
 }
 .iconspartone .row img {
 width: 60%;
+max-width: 90px;
 }
 .iconspartone .row > span:nth-child(odd){
     float: left;
@@ -1262,9 +1263,18 @@ html[xmlns] body.mac-os .gridFullWidth:after {
 }
 
 .iconBlock img{
-    padding-top: 29px;
+    padding-top: 29px;    
+}
+body.cms-ys-fabric-tech .iconBlock img, body.cms-ys-color-tech .iconBlock img{
+    width: 34px;
 }
 
+body.cms-principles-of-yoga .iconBlock img{
+    height: 34px;
+}
+body.cms-principles-of-yoga .iconBlock:first-child img{
+    height: 44px;
+}
 .iconBlock{
     min-height: 77px;
     width: 100%;

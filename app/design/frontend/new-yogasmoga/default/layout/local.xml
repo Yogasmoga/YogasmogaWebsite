@@ -33,6 +33,7 @@
     <action method="addJs"><script>new_jquery/emailus.js</script></action>
     <action method="addJs"><script>new_jquery/jquery.appear.js</script></action>
     <action method="addJs"><script>new_jquery/cmsscript.js</script></action>   
+    <action method="addCss"><stylesheet>css/mywebfonts.css</stylesheet></action>
 </reference>
 
 
@@ -43,7 +44,7 @@
         <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
         
         <action method="addCss"><stylesheet>css/dressingroom.css</stylesheet></action>
-        <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
+        <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>      
 
         
         <action method="addJs"><script>new_jquery/jquery.touchSwipe.min.js</script></action>

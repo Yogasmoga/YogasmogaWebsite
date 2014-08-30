@@ -263,6 +263,7 @@
         <?php if (!$this->canShip()): ?>
             <input type="hidden" name="billing[use_for_shipping]" value="1" />
         <?php endif; ?>
+        <div style="clear:both;"></div>
     </div>
     <input type="submit" imageurl="<?php echo $this->getSkinUrl('images/checkout/continue_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/checkout/continue_on.png'); ?>" name="send" class="loginbtn spbutton custombtn checkoutcontinuebtn" value="" />
     <div class="cleaner"></div>
