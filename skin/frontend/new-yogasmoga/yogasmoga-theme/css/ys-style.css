@@ -2307,4 +2307,4 @@ body.mac-os ul.main-menu2 > li{margin-top: 2px;}
 
 form#popup-register tr.orig_password{height: 21px; background:none;}
 form#popup-register tr.orig_password td{height: auto; line-height: normal;}
-
+p.err-msg-reset{font-family: gothambook; color: #c03;}
