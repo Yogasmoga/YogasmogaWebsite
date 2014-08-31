@@ -574,7 +574,7 @@ function checkpaymentmethod()
 {
     if(jQuery("input[type='radio'][value='paypal_express']").is(':checked'))
     {
-        jQuery("label[for='p_method_paypal_express'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/paypaltabovr.png");
+        jQuery("label[for='p_method_paypal_express'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/paypaltabovrnew.png");
         jQuery("ul#payment_form_paypal_express").show();
         jQuery(".billingAdd").hide();
         jQuery("#paymentmethoderrormsg, #cobillingaddress, #stripe-update-payment-holder").addClass("dnone");
@@ -589,8 +589,8 @@ function checkpaymentmethod()
         jQuery("#payment_form input[type='submit']").removeClass("marginnone");
         jQuery(".billingAdd").show();
         jQuery("#paymentmethoderrormsg, #cobillingaddress, #stripe-update-payment-holder").removeClass("dnone");
-        jQuery("label[for='p_method_stripe'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/credittabovr.png");
-        jQuery("label[for='p_method_paypal_express'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/paypaltab.png");
+        jQuery("label[for='p_method_stripe'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/credittabovrnew.png");
+        jQuery("label[for='p_method_paypal_express'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/paypaltabnew.png");
         //jQuery("a#stripe-update-payment").show();
         if(jQuery("a#stripe-update-payment").length == 0)
         {

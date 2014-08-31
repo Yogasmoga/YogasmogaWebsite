@@ -257,16 +257,18 @@
             <input type="radio" name="billing[use_for_shipping]" id="billing:use_for_shipping_yes" value="0"<?php if ($this->isUseBillingAddressForShipping()) {?> checked="checked"<?php }?> title="<?php echo  $this->__('Ship to this address') ?>" onclick="$('shipping:same_as_billing').checked = true;" class="radio" style="display: none;" />
             <input type="radio" name="billing[use_for_shipping]" id="billing:use_for_shipping_no" value="1"<?php if (!$this->isUseBillingAddressForShipping()) {?> checked="checked"<?php }?> title="<?php echo $this->__('Ship to different address') ?>" onclick="$('shipping:same_as_billing').checked = false;" class="radio" style="display: none;" />
             */ ?>
-    <input type="radio" name="billing[use_for_shipping]" id="billing:use_for_shipping_yes" value="0" checked="checked" title="<?php echo  $this->__('Ship to this address') ?>" onclick="$('shipping:same_as_billing').checked = true;" class="radio" style="display: none;" />
-    <input type="radio" name="billing[use_for_shipping]" id="billing:use_for_shipping_no" value="1" title="<?php echo $this->__('Ship to different address') ?>" onclick="$('shipping:same_as_billing').checked = false;" class="radio" style="display: none;" />
-<?php endif; ?>
-<?php if (!$this->canShip()): ?>
-    <input type="hidden" name="billing[use_for_shipping]" value="1" />
-<?php endif; ?>
-</div>
-<input type="submit" imageurl="<?php echo $this->getSkinUrl('images/checkout/continue_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/checkout/continue_on.png'); ?>" name="send" class="loginbtn spbutton custombtn checkoutcontinuebtn" value="" />
-<div class="cleaner"></div>
-<div id="billingaddresserrormsg" class="loginerrormsg errormsg"></div>
+
+            <input type="radio" name="billing[use_for_shipping]" id="billing:use_for_shipping_yes" value="0" checked="checked" title="<?php echo  $this->__('Ship to this address') ?>" onclick="$('shipping:same_as_billing').checked = true;" class="radio" style="display: none;" />
+            <input type="radio" name="billing[use_for_shipping]" id="billing:use_for_shipping_no" value="1" title="<?php echo $this->__('Ship to different address') ?>" onclick="$('shipping:same_as_billing').checked = false;" class="radio" style="display: none;" />
+        <?php endif; ?>
+        <?php if (!$this->canShip()): ?>
+            <input type="hidden" name="billing[use_for_shipping]" value="1" />
+        <?php endif; ?>
+        <div style="clear:both;"></div>
+    </div>
+    <input type="submit" imageurl="<?php echo $this->getSkinUrl('images/checkout/continue_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/checkout/continue_on.png'); ?>" name="send" class="loginbtn spbutton custombtn checkoutcontinuebtn" value="" />
+    <div class="cleaner"></div>
+    <div id="billingaddresserrormsg" class="loginerrormsg errormsg"></div>
 </form>
 <?php return; ?>
 

@@ -13,9 +13,11 @@ jQuery(window).load(function($){
 jQuery(document).ready(function($){ 
     var isSafari = browserTest();
     if(isSafari){
-        jQuery("ul.main-menu2 a.main-heading").css("height","31px");
+        // jQuery("ul.main-menu2 a.main-heading").css("height","31px");
+        // jQuery("ul.main-menu li a.menu-heading").css({"padding-top":"39px","padding-bottom":"7px"});
+        // jQuery("ul.main-menu2 > li").css("margin-top","2px");
     }
-sizeChartPop(); 
+sizeChartPop();    
     $("#productdetails").on("click",".vlink-cont a",function(){
         $(".fitDetail .video-block img").click();
     });

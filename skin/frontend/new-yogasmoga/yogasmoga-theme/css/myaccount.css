@@ -690,7 +690,7 @@ form#createcardform table.twocolumn533 table.inputtable
 }
 form#form-validate-resetpassword table.inputtable
 {
-    width : 533px;
+    width : 100%;
 }
 form#form-validate-resetpassword input[type='submit']
 {
