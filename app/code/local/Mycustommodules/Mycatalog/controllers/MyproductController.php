@@ -1448,6 +1448,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                     <!-- selectSize -->
                                     <!-- select length -->
                                     <div class="selectedlength" <?php if(!$lengthavailable) { echo "style='display:none;'"; } ?>>
+                                        <div class="blck-head-sml"><span>Step 3:</span>Select a length</div>
                                         <?php
                                         foreach($productalllength as $length)
                                         {
