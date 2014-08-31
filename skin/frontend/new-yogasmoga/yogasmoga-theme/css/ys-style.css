@@ -1496,6 +1496,7 @@ div.men-size-chart table tr:first-child td{width: 13.975155279503105590062111801
 .selectedcolortext{
     display: inline-block !important;
     text-transform: none;
+    font-size:12px;
 }
 
 /***View order modi***/
@@ -1834,7 +1835,7 @@ table.productdetailtable div#colorcontainer>div.selected{border-color:#999999;}
 /****Help Section***/
 body.cms-help .2-columns-wrapper{padding: 0 40px;}
 
-.new-bot-divider{height: 1px; border-top:1px solid #555;}
+.new-bot-divider{border-bottom: 1px solid #555; height: 60px;}
 .cms-size-chart .how-to-measure{display: none;}
 .cms-size-chart .fitDetail table{margin-top: -5px;}
 .cms-size-chart .fitDetail table tr{height:30px;}
@@ -1932,16 +1933,16 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 .share-wishlist-popup form textarea{width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; border: none !important; background: #fff !important; font-size: 12px !important; font-family: gothambook; margin-bottom: 10px; height: 75px; padding: 8px 12px;}
 .share-wishlist-popup h4{font-family: gothambold; text-transform: uppercase; font-size: 11px; color: #555; line-height: 21px; margin-bottom: 16px;}
 #share-wish{width: 100%; background: #5ec52f; height: 38px; border: 0;}
-#form-share-wishlist,#forgot-password-form{display: block; background: #efefef; padding: 20px 30px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
-#form-share-wishlist table tr:first-child,#forgot-password-form table tr:first-child{ background: #fff; height: 34px; line-height: 34px }
-#form-share-wishlist table tr:first-child td,#forgot-password-form table tr:first-child td{ padding:0 8px; border: none; }
+#form-share-wishlist,#forgot-password-form,#form-validate-resetpassword{display: block; background: #efefef; padding: 20px 30px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
+#form-share-wishlist table tr:first-child,#forgot-password-form table tr:first-child,#form-validate-resetpassword table tr:first-child{ background: #fff; height: 34px; line-height: 34px }
+#form-share-wishlist table tr:first-child td,#forgot-password-form table tr:first-child td, #form-validate-resetpassword table tr:first-child td{ padding:0 8px; border: none; }
 #form-share-wishlist .sharewishlistbtn1{background-image: none !important; background: #5ec52f; font-family: gothamMedium; font-size: 11px; line-height: 19px; color: #fff; text-transform: uppercase; margin-top: 10px !important;}
 #form-share-wishlist table.inputtable{width: 100% !important;}
 #forgot-password-form{margin-bottom: 70px;}
 #forgot-password-form table.inputtable { width: 100% !important; }
-#forgot-password-form .submitbtn { background-image : url('../images/submit-btn.png'); background-repeat: no-repeat; background-position: center; width : 146px; height : 38px; margin-top: 10px !important;}
+#forgot-password-form .submitbtn,#form-validate-resetpassword .submitbtn{ background-image : url('../images/submit-btn.png'); background-repeat: no-repeat; background-position: center; width : 146px; height : 38px; margin-top: 10px !important;}
 
-/****Fonts Responsive***/
+/****Fonts Responsive***/   
 @media screen and (max-width: 1200px) {
     p.block-desc, .madeinusa-txt, li.new-arrivals-desc .block-desc,.contWom h4 span {
         font-size: 25px !important;
@@ -2194,7 +2195,7 @@ input:-webkit-autofill:focus {
 #includeoption{margin-top: 10px;}
 #includeoption div{display: inline-block; border: 1px solid #A9A9A9; text-align: center; cursor: pointer; padding: 2px 7px; margin: 0 2px 0 0;}
 #includeoption div.selected{background: #666; color:#fff;}
-.grid-bottom{padding: 0 40px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;}
+.grid-bottom{margin: 0 40px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; height: 60px; border-bottom: 1px solid #555;}
 
 .ra1{position: fixed; top:75px;}
 .ra{position: absolute; bottom:350px;}
@@ -2267,13 +2268,13 @@ table.referfriendforms td.success img{cursor:default !important;}
 
 
 #payment_form .paymentmethoddiv:nth-child(2) label {
-    float: left;
-    margin: 0 0 0 10px;
+    float: right;
+    margin: 0 6px 0 0px;
 }
 
 #payment_form .paymentmethoddiv:nth-child(1) label {
-    float: right;
-    margin: 0 10px 0 0;
+    float: left;
+    margin: 0 0 0 3px;
 }
 
 #reviewDetails div#ordersummary table{
@@ -2303,4 +2304,7 @@ table.referfriendforms td.success img{cursor:default !important;}
 body.mac-os ul.main-menu2 a.main-heading{height:30px !important;}
 body.mac-os ul.main-menu li a.menu-heading{padding-top:39px; padding-bottom:7px;}
 body.mac-os ul.main-menu2 > li{margin-top: 2px;} 
+
+form#popup-register tr.orig_password{height: 21px; background:none;}
+form#popup-register tr.orig_password td{height: auto; line-height: normal;}
 

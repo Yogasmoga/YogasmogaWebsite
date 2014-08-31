@@ -278,8 +278,12 @@ table.productdetailtable div#sizecontainer table td div
 #absproductoptions table.productdetailtable div#sizecontainer table td div {
     /*height: 18px;*/
     margin: 0 7px 0 0;
-    padding: 1px 0;
-    width: 20px;
+    padding: 1px 4px !important;
+    min-width: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 table.productdetailtable div#sizecontainer table td div.dvselectedsize

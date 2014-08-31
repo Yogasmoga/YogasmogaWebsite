@@ -1527,7 +1527,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                         </div>
                                         <!-- producterror -->
 
-                                        <p class="c-align" style="font-size:10px;"><em>Free and fast shipping to US and Canada</em></p>
+                                        <p class="c-align freeshipptext"><em>Free and fast shipping to US and Canada</em></p>
                                     </div>
                                     <!-- AddToBag -->
                                 </td>
