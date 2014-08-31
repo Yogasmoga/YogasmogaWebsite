@@ -1429,7 +1429,7 @@ div.men-size-chart table tr:first-child td{width: 13.975155279503105590062111801
 #address-form #country{width: 100%;}
 .show-prodImg .tdbigimagecontainer{width: 75.5%;}
 .product-details table.productimagecontainer table.smallimagecontiner td{width: 90%;}
-.checkBCre, .checkNewAdd{
+.checkNewAdd{
     background: url(../images/checkout/checkbox.jpg) no-repeat bottom left !important;
     float: left;
     height: 34px;
@@ -1438,8 +1438,29 @@ div.men-size-chart table tr:first-child td{width: 13.975155279503105590062111801
     cursor: pointer;
 }
 
-.checkNewAdd.reverse, .checkBCre.reverse{
+.checkNewAdd.reverse{
     background: url(../images/checkout/checkbox.jpg) no-repeat top left !important;
+}
+
+.checkBCre{
+    background: url(../images/checkout/checkbox-new.png) no-repeat bottom left !important;
+    float: left;
+    height: 34px;
+    margin: 0 12px 0 0;
+    width: 34px;
+    cursor: pointer;
+}
+
+.checkBCre.reverse{
+    background: #fff url(../images/checkout/checkbox-new.png) no-repeat top left !important;
+}
+
+.checkBCre:hover{
+    background: url(../images/checkout/checkbox-new-over.png) no-repeat bottom left !important;
+}
+
+.checkBCre.reverse:hover{
+    background: #fff url(../images/checkout/checkbox-new-over.png) no-repeat top left !important;
 }
 
 #billingaddressselectionblock > label {
@@ -2309,3 +2330,4 @@ body.mac-os ul.main-menu2 > li{margin-top: 2px;}
 form#popup-register tr.orig_password{height: 21px; background:none;}
 form#popup-register tr.orig_password td{height: auto; line-height: normal;}
 p.err-msg-reset{font-family: gothambook; color: #c03;}
+.paypal-review-order{margin: 0 40px;}
