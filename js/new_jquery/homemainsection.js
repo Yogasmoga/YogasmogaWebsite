@@ -63,7 +63,7 @@ jQuery(document).ready(function($){
 function positionDiscoverSection()
 {
     var ht = jQuery("td#discover_fabrics div.fab_text").height();
-    console.log(ht);
+    //console.log(ht);
     var tdht = jQuery("td#discover_fabrics").height();
     var top = (tdht - ht) / 2;
     jQuery("td#discover_fabrics div.fab_text").css('top', top + 'px');

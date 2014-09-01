@@ -9,7 +9,7 @@ jQuery(document).ready(function($){
         setfullscreenheight();
        // getvideowidth();
     });
-    console.log($(window).height());
+    //console.log($(window).height());
 });
 
 /*function getvideowidth()
@@ -101,7 +101,7 @@ function setfullscreenheight()
             if(jQuery(this).hasClass("hdependson"))
             {
                 tempheight = jQuery("#" + jQuery(this).attr("hdependson")).height();
-                console.log(tempheight);
+                //console.log(tempheight);
                 if(tempheight < _winH)
                     tempheight = _winH; 
                 else

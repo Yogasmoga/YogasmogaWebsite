@@ -36,7 +36,7 @@ jQuery(document).ready(function($){
     clearEmptycaptions();
     
     $("table.tdbigimagecontainer img").live("click", function(){
-        console.log($(".zoom-prd-det").height());
+        //console.log($(".zoom-prd-det").height());
         if(!_canzoomimages)
             return;
         jQuery("#productdetailpopup").html("<table style='width:100%;height : 100%;'><tr><td style='text-align:center;vertical-align:middle;'>Loading. .</td></tr></table>");
@@ -459,13 +459,13 @@ function InitializeZoomPopup()
         resizable : false,
         dialogClass : 'yogidialog zoomdialog',
         open : function(){
-            console.log("--   " + jQuery(".zoom-prd-det").css("height"));
+            //console.log("--   " + jQuery(".zoom-prd-det").css("height"));
             // jQuery("div#zoompopup table.productzoomtable>tbody>tr>td").css({'display':'block','margin-top':'50px'});
         },
         beforeClose : function(){
             jQuery("div.wrapper").removeClass('overflowhidden');
             jQuery("div.wrapper, div.ui-widget-overlay").css('height', 'auto');
-            console.log("----   " + jQuery(".zoom-prd-det").css("height"));
+            //console.log("----   " + jQuery(".zoom-prd-det").css("height"));
         }
     });    
     // jQuery("div#zoompopup table.productzoomtable>tbody>tr>td#zoomproductoptions,div#zoompopup table.productzoomtable>tbody>tr>td#zoomedproductimage").height(_winH + _headerHeight);
