@@ -8,9 +8,11 @@ jQuery(window).load(function($){
     var featLiH = jQuery(".featureList span.ftrFig img.df-img").first().height();
     jQuery(".featureList span.ftrFig").css("height", featLiH);   
     playBtnPos();
-    sizeChartScroll();        
+    sizeChartScroll();      
+    jQuery("body").animate({opacity:1},100); 
 });
-jQuery(document).ready(function($){ 
+jQuery(document).ready(function($){  
+
     var isSafari = browserTest();
     if(isSafari){
         // jQuery("ul.main-menu2 a.main-heading").css("height","31px");
