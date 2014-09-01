@@ -6,6 +6,7 @@
 .page-popup { background:#fff; padding:25px 30px; text-align:left; }
 .main-container { background:#fbfaf6 url(../images/bkg_main1.gif) 50% 0 no-repeat; }
 .main { width:900px; margin:0 auto; min-height:400px; padding:25px 25px 80px; background:#fffffe url(../images/bkg_main2.gif) 0 0 no-repeat; text-align:left; }
+body{-webkit-font-smoothing: subpixel-antialiased; opacity:0;}
 
 
 /****Common Styles****/
@@ -389,6 +390,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
     margin: 0 0 16px;
     position: relative;
     width: 100%;
+    z-index: 9999;
 }
 
 .bannerFluid img {
@@ -2332,11 +2334,18 @@ table.referfriendforms td.success img{cursor:default !important;}
 body.mac-os ul.main-menu2 a.main-heading{height:30px !important;}
 body.mac-os ul.main-menu li a.menu-heading{padding-top:39px; padding-bottom:7px;}
 body.mac-os ul.main-menu2 > li{margin-top: 2px;} 
+body.mac-os ul.tr-menu>li.free-shipping{line-height: 15px;}
 
 form#popup-register tr.orig_password{height: 21px; background:none;}
 form#popup-register tr.orig_password td{height: auto; line-height: normal;}
 p.err-msg-reset{font-family: gothambook; color: #c03;}
 .paypal-review-order{margin: 0 40px;}
+
+
+/***For the left NAV***/
+.scrolltop{position: fixed !important; top: 79px !important;}
+.scrolltopend{position: absolute !important; top: auto !important; bottom: auto !important;}
+#smogi-login-link{cursor: pointer;}
 
 
 
