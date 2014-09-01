@@ -2,6 +2,16 @@ _stripecheck = false;
 _usesecureurl = true;
 jQuery(document).ready(function($){
 
+
+    // if(jQuery("form#checkout-shipping-form").is(":visible")){
+    //     jQuery("#shipping\\:firstname,#shipping\\:lastname").each(function(){
+    //         var waterVal = jQuery(this).attr("watermark");
+    //         jQuery(this).removeClass("watermark").removeAttr("watermark");
+    //         jQuery(this).attr("placeholder", waterVal);    
+    //         jQuery(this).attr("value","");
+    //     });
+    // }
+
     setTimeout(function(){
         jQuery("input[type='radio'][value='stripe']").attr("checked","checked");
         checkpaymentmethod();
@@ -15,6 +25,8 @@ jQuery(document).ready(function($){
     //trimDetailTxt();
     createNewElement();
     removeNameLabel();
+
+
 
 
     // forGiftOfYS
@@ -113,17 +125,17 @@ jQuery(document).ready(function($){
 
     $(".showShippingOpt").focusout(function () {
         $(".showShippingOpt").slideUp("fast");
-    });
+    }); 
 
     $(".creditOption .addVal, .showCrdtOpt").live("click", function(event){
         event.stopPropagation();
         slideCreditCont();
-    });
+    }); 
 
     $(".showcreditcardopt").live("click", function(){
         jQuery(".showShpOpt").removeClass("reverse");
         jQuery(".showcreditcardopt").slideUp("slow");
-    });
+    });  
 
     $(".selectAddress .addVal, .showUpadd").on("click", function(event){
         event.stopPropagation();
@@ -136,9 +148,9 @@ jQuery(document).ready(function($){
     getShippingID();
     $(".shippingOption .addVal, .showShpOpt").on("click", function(event){
         event.stopPropagation();
-        slideShpCont();
+        slideShpCont(); 
         jQuery(".showUpadd").removeClass("reverse");
-        jQuery(".listadd").slideUp("slow");
+        jQuery(".listadd").slideUp("slow");       
     });
 
     $(".showShippingOpt").on("click", "li", function(){
@@ -163,7 +175,7 @@ jQuery(document).ready(function($){
         $(".shippingOption").find(".addVal").text(selectedVal);
         slideShpCont();
     });
-
+    
     $("#payment_form .paymentmethoddiv,#payment_form .paymentmethoddiv,.checkBCre").live("click", function(){
         $("#reviewDetails .ovrlay-bg").show();
         $("#shippingDetails").css("background","rgba(0, 0, 0, 0.0784314)");
@@ -267,6 +279,7 @@ jQuery(document).ready(function($){
     });
 
     $("#co-billing-form").submit(function(){
+
         if(!_isshippable){
             if(validateBillingAddressForm())
             {
@@ -290,7 +303,6 @@ jQuery(document).ready(function($){
             }
             return false;
         }
-//        return false;
     });
 
     $("#payment_form").live('submit', function(){
@@ -351,6 +363,7 @@ jQuery(document).ready(function($){
     });
     getCartSummary();
     $("select#shipping-address-select").removeAttr('onchange');
+    $("select#billing-address-select").removeAttr('onchange');
     $("select#shipping-address-select").change(function(){
         if($(this).val() == "")
         {
@@ -437,9 +450,7 @@ jQuery(document).ready(function($){
 
             $("form#checkout-shipping-form").find("input[type='submit']").show();
             $("#shippingDetails").css("background", "").addClass("active");
-            $("#billingDetails").removeClass("active");
-            // $("#billingDetails .ovrlay-bg").show();
-            $("#billingDetails").css("background","");
+            $("#billingDetails").removeClass("active").css("background", "");
             $("#billing-new-address-form, #cobillingaddress").hide();
             $(".billingAdd a.checkBCre").removeClass("reverse unuse").addClass("use");
             $("form#payment_form input[type=submit]").addClass("mar0").removeClass("marbtm745");
@@ -573,7 +584,6 @@ function greyBillingBox(){
         jQuery(this).contents().first().wrap('<span>To: </span>');
     });
 }
-
 
 function sameasBlankSelect(){
     jQuery("li#shippingDetails").removeClass("reverseShip").addClass("active").css("background", "transparent");
@@ -753,8 +763,10 @@ function checkpaymentmethod()
     {
         jQuery("label[for='p_method_paypal_express'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/paypaltabovr.png");
         jQuery("ul#payment_form_paypal_express").show();
-        jQuery(".billingAdd").hide();
-        jQuery("#paymentmethoderrormsg, #cobillingaddress, #stripe-update-payment-holder").addClass("dnone");
+        if(_isshippable){
+            jQuery("#billingDetails .billingAdd").hide();    
+        }    
+        jQuery("#paymentmethoderrormsg, #billingDetails #cobillingaddress, #stripe-update-payment-holder").addClass("dnone");
         jQuery("#payment_form input[type='submit']").addClass("marginnone");
         jQuery("label[for='p_method_stripe'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/credittab.png");
         jQuery("div#stripe-payment-details,a#stripe-update-payment,div#change-stripe-detail").hide();
@@ -1071,22 +1083,23 @@ function savePayment()
             
                     var payPalURL = result['redirect'];
 
-                jQuery("li#reviewDetails #paypal-checkout").removeClass("dnone").attr("href", payPalURL);
-                jQuery("li#reviewDetails #checkout-submit").addClass("dnone");
+                    jQuery("li#reviewDetails #paypal-checkout").removeClass("dnone").attr("href", payPalURL);
+                    jQuery("li#reviewDetails #checkout-submit").addClass("dnone");
 
-                jQuery("#paymentmethoderrormsg").html('');
-                if(_isshippable){
-                   // jQuery("form#co-billing-form").submit();
-                }
-                designCartTotal();
-                jQuery(".billingAdd a").removeClass("reverse unuse").addClass("use").html(jQuery("form#co-billing-form input#billing\\:street1").val() + "<br>" + "<span>is my billing address</span>");
-                jQuery("#billingDetails #cobillingaddress").hide();
-                jQuery("li#billingDetails").css("background","rgba(0, 0, 0, 0.0784314)");
-                jQuery("li#shippingDetails .ovrlay-bg").show();
-                jQuery("li#shippingDetails").removeClass("reverseShip").css("background", "transparent");
-                jQuery("li#billingDetails.active").removeClass("active");
-                jQuery("li#reviewDetails .ovrlay-bg").hide();
-                jQuery("li#reviewDetails").addClass("active");
+                    jQuery("#paymentmethoderrormsg").html('');
+                    if(_isshippable){
+                       // jQuery("form#co-billing-form").submit();
+                    }
+                    designCartTotal();
+                    jQuery(".billingAdd a").removeClass("reverse unuse").addClass("use").html(jQuery("form#co-billing-form input#billing\\:street1").val() + "<br>" + "<span>is my billing address</span>");
+                    jQuery("#billingDetails #cobillingaddress").hide();
+                    // jQuery("li#billingDetails .ovrlay-bg").show();
+                    jQuery("li#billingDetails").css("background","rgba(0, 0, 0, 0.0784314)");
+                    jQuery("li#shippingDetails .ovrlay-bg").show();
+                    jQuery("li#shippingDetails").removeClass("reverseShip").css("background", "transparent");
+                    jQuery("li#billingDetails.active").removeClass("active");
+                    jQuery("li#reviewDetails .ovrlay-bg").hide();
+                    jQuery("li#reviewDetails").addClass("active");
             }
             else if(typeof result['error'] !== "undefined"){
                 jQuery("#paymentmethoderrormsg").html(result['error']);
@@ -1107,7 +1120,6 @@ function savePayment()
                 jQuery("#billingDetails #cobillingaddress").hide();
                 // jQuery("li#billingDetails .ovrlay-bg").show();
                 jQuery("li#billingDetails").css("background","rgba(0, 0, 0, 0.0784314)");
-                //jQuery("li#billingDetails .headD span").html("&#10003;");
                 jQuery("li#shippingDetails .ovrlay-bg").show();
                 jQuery("li#shippingDetails").removeClass("reverseShip").css("background", "transparent");
                 jQuery("li#billingDetails.active").removeClass("active");
@@ -1203,8 +1215,9 @@ function saveBillingAddressGYS(){
                 //checkpaymentmethod();
                 jQuery(".billingAdd").hide().html("");
                 jQuery("#stripe-payment-details").show();
-                jQuery("label[for='p_method_stripe'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/credittabovr.png");
-                jQuery("label[for='p_method_paypal_express'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/paypaltab.png");
+                jQuery(".creditOption").css("margin", "0 0 18px");
+                jQuery("label[for='p_method_stripe'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/credittabovrnew.png");
+                jQuery("label[for='p_method_paypal_express'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/paypaltabnew.png");
                 reordersubsteps(jQuery("#copaymentmethods"));
                 var textbilling = jQuery('ul#billing-address-select').find("li#selected").text();
                 textbilling = textbilling.replace(/,/g, "<br>");
@@ -1230,7 +1243,6 @@ function saveBillingAddressGYS(){
                 jQuery("#co-billing-form #procImg").remove();
                 jQuery(".paymentmethoddiv input#p_method_stripe").attr("checked", "checked");
                 jQuery(".paymentmethoddiv label[for='p_method_stripe']").trigger("click");
-                console.log(_getGOYSFirstUser);
                 if(_getGOYSFirstUser){
                     jQuery("#change-stripe-detail").show().css("margin", "0 0 20px");
                 }
@@ -1264,6 +1276,7 @@ function virtualsavebillingaddress() {
     jQuery("form#co-billing-form ul#billing-address-select li[value='99999']").remove();
     jQuery("form#co-billing-form ul#billing-address-select li:last").before("<li id='selected' value='99999'>" + addressbilling + "</li>");
 }
+
 
 function saveShippingMethod()
 {
@@ -1339,11 +1352,9 @@ function saveShippingAddress()
             jQuery("div#shippingmethods").html(result['update_section']['html']);
 
             var getShpID = jQuery(".shippingOption").find("ul li.selected").attr("id");
-            console.log(getShpID);
 
             jQuery("form#co-shippingmethod-form input#" + getShpID).attr("checked","checked");
-            console.log(jQuery('form#co-shippingmethod-form input:checked').attr("id"));
-
+            
             jQuery("form#co-shippingmethod-form").submit();
 
 

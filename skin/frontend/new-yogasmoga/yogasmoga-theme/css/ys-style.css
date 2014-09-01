@@ -68,7 +68,7 @@ ul.tr-menu > li > ul.sub-menu li.last{padding-bottom: 6px;}
 ul.tr-menu > li > ul.sub-menu li.blank{height: 26px; background: url("../images/menu_arrow.png") no-repeat bottom center #f1f1f2; background-size: 17px 14px;}
 ul.tr-menu > li:hover > ul.sub-menu{display: block;}
 ul.main-menu2{margin-left: 0; margin-right: 5px;}
-ul.main-menu2 > li{position: relative; padding: 0 10px; height: 32px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; margin-top:1px;}
+ul.main-menu2 > li{position: relative; padding: 0 10px; height: 33px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; margin-top:1px;}
 ul.main-menu2 a.main-heading{display: block; height: 32px;}
 ul.main-menu2 li ul.sub-menu li a{font-family: gothambook;}
 ul.main-menu2 > li:hover > ul.sub-menu /*ul.main-menu > li:hover > ul.sub-menu*/{display: block;}
@@ -672,7 +672,7 @@ span.address {
 .gryWrap span:nth-child(1) {
     display: inline;
 }
-.selectCreditCard, .selectAddress, .shippingOption, .creditOption {
+.selectCreditCard, .selectAddress, .shippingOption, .creditOption, .sbillingAdd {
     border: 1px solid #9f9f9f;
     margin: auto auto 18px;
     padding: 6px 8px;
@@ -682,7 +682,8 @@ span.address {
     cursor: pointer;
 }
 ul.checkout-cont li > .selectAddress ul li,
-ul.checkout-cont li > .shippingOption ul li {
+ul.checkout-cont li > .shippingOption ul li,
+ul.checkout-cont li > .sbillingAdd ul li {
     clear: both;
     display: inline-block;
     margin: 0;
@@ -693,14 +694,16 @@ ul.checkout-cont li > .shippingOption ul li {
     padding: 0 0 5px;
     width: 100% !important;
 }
-ul.checkout-cont li > .selectAddress ul li span{
+ul.checkout-cont li > .selectAddress ul li span,
+ul.checkout-cont li > .sbillingAdd ul li span{
     font-weight:bold;
     margin: 0 5px 0 0;
 }
-.selectAddress > span {
+.selectAddress > span,
+.sbillingAdd > span {
     display: inline-block;
 }
-.addnewCredit, .addnewBtn, .addnewBtnBilling {
+.addnewCredit, .addnewBtn, .addnewBtnBilling, .addnewBillingBtn {
     width: 100%;
     background: url('../images/gryBtn.jpg') no-repeat center top;
     background-size: 100% auto;
@@ -715,12 +718,12 @@ ul.checkout-cont li > .selectAddress ul li span{
     text-align: center;
     text-transform: uppercase;
 }
-.addnewBtn{
+.addnewBtn, .addnewBillingBtn{
     background: #999 !important;
 }
-.showShippingOpt, .showUpdateAdd, .showCreditcard{display:none; border-top: 1px solid #9f9f9f; margin: 8px 0 0; padding: 8px 0 0;}
-.showUpaddnew, .showUpadd, .showCreOpt, .showShpOpt, .showCrdtOpt{background: url('../images/checkout-arr-btn.png') no-repeat top left; background-size: 100% auto; width:11px; height:7px; float:right; margin:6px 0 0; cursor:pointer;}
-.showUpadd.reverse, .showShpOpt.reverse, .showCrdtOpt.reverse{background: url('../images/checkout-arr-btn-top.png') no-repeat top left;}
+.showShippingOpt, .showUpdateAdd, .showCreditcard, .billingaddlist{display:none; border-top: 1px solid #9f9f9f; margin: 8px 0 0; padding: 8px 0 0;}
+.showUpaddnew, .showUpadd, .showCreOpt, .showShpOpt, .showCrdtOpt, .showBillingadd{background: url('../images/checkout-arr-btn.png') no-repeat top left; background-size: 100% auto; width:11px; height:7px; float:right; margin:6px 0 0; cursor:pointer;}
+.showUpadd.reverse, .showShpOpt.reverse, .showCrdtOpt.reverse, .showBillingadd.reverse{background: url('../images/checkout-arr-btn-top.png') no-repeat top left;}
 .continueBtn{
     background: url('../images/contBtn.jpg') no-repeat top left;
     color: #fff;
@@ -728,7 +731,7 @@ ul.checkout-cont li > .selectAddress ul li span{
     margin: auto;
     padding: 16px 0;
     text-transform: uppercase;
-    width: 301px;
+    width: 301px;   
     cursor: pointer;
 }
 .shipDetail {
@@ -2132,7 +2135,7 @@ body.cms-gift-of-ys .gift-of-ys .fixwidth{width: 63.559%; max-width: 1040px; mar
 body.cms-gift-of-ys .gift-banner p{font-family: gothambook; font-size: 12px; line-height: 25px; margin-bottom: 37px; margin-top: -20px;}
 body.cms-gift-of-ys .gift-of-ys #createcardform{padding-top: 30px; padding-bottom: 30px;}
 
-ul.main-menu2 a.main-heading,  x:-moz-any-link {height:34px;}
+ul.main-menu2 a.main-heading,  x:-moz-any-link {height:33px;}
 
 
 .confirmation-page table.referfriendforms td.name,
@@ -2334,3 +2337,10 @@ form#popup-register tr.orig_password{height: 21px; background:none;}
 form#popup-register tr.orig_password td{height: auto; line-height: normal;}
 p.err-msg-reset{font-family: gothambook; color: #c03;}
 .paypal-review-order{margin: 0 40px;}
+
+
+
+.cardType img {
+    float: right;
+    width: 70%;
+}

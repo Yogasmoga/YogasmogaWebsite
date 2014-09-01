@@ -42,7 +42,9 @@ if($allow > 1)
 <?php
 $isshippable = true;
 if (!$this->getChild("shipping") || !$this->getChild("shipping")->isShow())
+{
     $isshippable = false;
+}
 $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals();
 if(isset($totals['tax']) && $totals['tax']->getValue()) {
     //echo $totals['tax']->getValue();
@@ -66,7 +68,6 @@ if(!$this->helper('customer')->isLoggedIn())
 <?php
 if($isshippable)
 {
-    //echo $this->getChildHtml('shipping');
     ?>
     <script type="text/javascript">
         _isshippable = true;
@@ -81,6 +82,8 @@ else
     </script>
 <?php
 }
+
+Mage::getSingleton('core/session')->setIsShippable((int)$isshippable);
 ?>
 <!-- onePageCheckoutProcess -->
 <div id="tblcheckoutsteps" class="checkout-detail" <?php if(!$this->helper('customer')->isLoggedIn()) { ?> style="display: none;" <?php } ?>>
@@ -106,6 +109,21 @@ else
             <?php
             }
             ?>
+            <?php if(!$isshippable)
+            {
+                ?>
+                <div id="coshipping" class="checkoutsteps">
+                    <!-- <div class="checkoutstepheader codivider"></div> -->
+                    <div class="headD"><span>1</span><br>Billing</div>
+
+                    <div id="cobillingaddress" class="checkoutsubstep addNewAdd">
+                        <?php echo $this->getChildHtml('billing'); ?>
+                    </div>
+                </div>
+            <?php
+            }
+            ?>
+
             <div class="ovrlay-bg"></div>
         </li>
         <!-- shippingDetails -->
@@ -114,7 +132,8 @@ else
         <li id="billingDetails">
             <div id="cobilling" class="checkoutsteps <?php if(!$isshippable) { echo "active";} else { echo "inactive disabled";} ?>">
                 <div class="headD">
-                    <span><?php if($isshippable) { echo "2";} else { echo "1";} ?></span><br />BILLING
+                    <span><?php if($isshippable) { echo "2";} else { echo "2";} ?></span><br />
+                    <?php if($isshippable) { echo "BILLING";} else { echo "Payment";} ?>
                 </div>
 
                 <!--             <div id="cobillingaddress" class="checkoutsubstep addNewAdd">
@@ -127,9 +146,18 @@ else
 
                         <img style="width:100%;" src="<?php echo $this->getSkinUrl("images/checkout/bgd.png") ?>" />
                     </div>
-                    <div id="cobillingaddress" class="checkoutsubstep addNewAdd" style="display:none">
-                        <?php echo $this->getChildHtml('billing'); ?>
-                    </div>
+
+                    <?php if($isshippable)
+                    {
+                        ?>
+                        <div id="cobillingaddress" class="checkoutsubstep addNewAdd" style="display:none">
+                            <?php echo $this->getChildHtml('billing'); ?>
+                        </div>
+                    <?php
+                    }
+                    ?>
+
+
 
 
                 </div>
@@ -143,7 +171,7 @@ else
         <li id="reviewDetails">
             <div id="coreview" class="checkoutsteps inactive disabled">
                 <div class="headD">
-                    <span><?php if($isshippable) { echo "3";} else { echo "2";} ?></span><br />REVIEW
+                    <span><?php if($isshippable) { echo "3";} else { echo "3";} ?></span><br />REVIEW
                 </div>
                 <!-- <div id="orderreview" class="inactive disabled"></div> -->
                 <div id="ordersummary"></div>
