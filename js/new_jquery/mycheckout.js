@@ -709,6 +709,27 @@ function createNewElement(){
     jQuery(".listadd").attr("name", selectName);
 }
 
+function createBillingList(){
+    var billingSID = jQuery("select#billing-address-select").attr("id");
+    var billingName = jQuery("select#billing-address-select").attr("name");
+
+    jQuery("select#billing-address-select option").each(function(){
+        var storebilling = jQuery(this).html();
+        var storebilling1 = jQuery(this).attr("value");
+        var billingselected = jQuery(this).attr("selected");
+
+        if(storebilling1 == ""){
+            jQuery(".billingaddlist").append('<li class="addnewBillingBtn" value="' + storebilling1 + '">+ Add New Address</li>');
+        }
+        else{
+            jQuery(".billingaddlist").append('<li id="' + billingselected + '" value="' + storebilling1 + '">' + storebilling +  '</li>');
+        }
+    });
+
+    jQuery(".billingaddlist").attr("id", billingSID);
+    jQuery(".billingaddlist").attr("name", billingName);
+}
+
 function checkpaymentmethod()
 {
     if(jQuery("input[type='radio'][value='paypal_express']").is(':checked'))
