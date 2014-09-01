@@ -999,7 +999,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         else if($checksmogiapplied != '1' && $showedpoints > 0) $usesmogi='<p class="c-align">Use your SMOGI Bucks for this purchase</p>';
         $html .=  '<li>';
         if($shippingPrice == "FREE")
-            $html .= '      <span class="f-left">Shipping:Free </span>
+            $html .= '      <span class="f-left">Shipping: </span>
                             <span class="f-right capstxt">'.$shippingPrice.'</span>';
         else
             $html .= '      <span class="f-left">Shipping: </span>
