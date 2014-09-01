@@ -1666,7 +1666,7 @@ div#bodycompensator{height: 69px;}
 .choosefile-cover{width: 166px; height: 38px; background: url(../images/choose-btn.png) no-repeat scroll left top rgba(0, 0, 0, 0); position: absolute; top: 0; left: 0; cursor: pointer; background-color:#efefef;}
 /***ends***/
 
-.reverseShip .headD{color: #c9c9c9;}
+/*.reverseShip .headD{color: #c9c9c9;}*/
 .slider-call-to-action{float: left; margin-top: 7% !important;}
 
 
@@ -2300,3 +2300,7 @@ table.referfriendforms td.success img{cursor:default !important;}
 .opac{opacity:0;}
 .pg-content section:last-child p:last-child{margin-bottom:0;}
 .measure-assets:last-child{margin-bottom:0 !important};
+
+#cobillingaddress #co-billing-form input.checkoutcontinuebtn[type="submit"]{
+    display: none;
+}

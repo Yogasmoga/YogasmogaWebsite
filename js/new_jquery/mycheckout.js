@@ -22,16 +22,22 @@ jQuery(document).ready(function($){
 
 
 
+    // forGiftOfYS
     if(!_isshippable){
-
-
-
-
-
-
-        // forGiftOfYS
         createBillingList();
         greyBillingBox();
+
+        $(".edit-curr-billing-add").live("click", function(){
+            $("#shippingDetails #co-billing-form input[type='submit']").show();
+            $(".edit-curr-billing-add").addClass("dnone");
+            $("select#billing-address-select").val('');
+            $("select#billing-address-select").trigger("change");
+            $("#updateBillingAdd").hide();
+            $("#billingaddblock").hide();
+            sameasBlankSelect();
+            removeReviewActiveState();
+            removeBillingActiveState();
+        });
 
         $(".sbillingAdd .addVal, .showBillingadd").live("click", function(event){
             event.stopPropagation();
@@ -44,6 +50,7 @@ jQuery(document).ready(function($){
 
         $("#billing-address-select li").live("click", function(){
             if($(this).attr("value") == "") {
+                $(".edit-curr-billing-add").addClass("dnone");
                 $("select#billing-address-select").val('');
                 $("select#billing-address-select").trigger("change");
                 $("#updateBillingAdd, #billingaddblock").hide();
@@ -56,6 +63,7 @@ jQuery(document).ready(function($){
                 $("#updateBillingAdd").find(".gryWrap").css("background", "");
             }
             else if($(this).attr("value") == "99999"){
+                $(".edit-curr-billing-add").removeClass("dnone");
                 var selectedBillingAdd = $(this).text();
                 sameasBlankSelect();
                 removeReviewActiveState();
@@ -80,6 +88,7 @@ jQuery(document).ready(function($){
                 //$("#billing-new-address-form, #cobillingaddress").hide();
             }
             else {
+                $(".edit-curr-billing-add").addClass("dnone");
                 var selectedBillingAdd = $(this).text();
                 sameasBlankSelect();
                 removeReviewActiveState();
@@ -270,6 +279,7 @@ jQuery(document).ready(function($){
 
                 if($("#billing-new-address-form").is(":visible")){
                     virtualsavebillingaddress();
+                    $(".edit-curr-billing-add").removeClass("dnone");
                 }
                 saveBillingAddressGYS();
             }
@@ -287,10 +297,10 @@ jQuery(document).ready(function($){
     });
 
     $("#payment_form").live('submit', function(){
-
         if(jQuery("#payment_form input[value='free']").length > 0)
         {
             savePayment();
+
             return false;
         }
         if(validatePaymentForm())
@@ -298,14 +308,31 @@ jQuery(document).ready(function($){
             if(_ischeckoutprocessing)
                 return false;
             _ischeckoutprocessing = true;
-            jQuery("#payment_form input[type=submit]").hide();
-            jQuery("#payment_form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/new-loader.gif' />");
-            jQuery("#billing-new-address-form").hide();
+
             if(_stripecheck)
             {
+
+                if(_isshippable){
+                    if(validateBillingAddressForm())
+                    {
+                        jQuery("#billing\\:firstname").val(ucFirstAllWords($("#billing\\:firstname").val()));
+                        jQuery("#billing\\:lastname").val(ucFirstAllWords($("#billing\\:lastname").val()));
+                        jQuery("#payment_form input[type=submit]").hide();
+                        jQuery("#payment_form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/new-loader.gif' />");
+                        jQuery("#billingDetails #cobillingaddress").hide();
+                        saveBillingAddress();
+                    }
+                    else{
+                        _ischeckoutprocessing = false;
+                        return false;
+                    }                    
+                }
+                else{
+                    jQuery("#payment_form input[type=submit]").hide();
+                    jQuery("#payment_form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/new-loader.gif' />");                    
+                }
                 if(jQuery("#payment_form input[type='text']").length == 0){
                     savePayment();
-                    saveBillingAddress();
                 }
 
                 else{
@@ -313,8 +340,11 @@ jQuery(document).ready(function($){
                 }
 
             }
-            else
+            else{
+                jQuery("#payment_form input[type=submit]").hide();
+                jQuery("#payment_form input[type=submit]").after("<img id='procImg' src='" + skinUrl + "images/new-loader.gif' />");
                 savePayment();
+            }
         }
         return false;
     });
@@ -443,6 +473,7 @@ jQuery(document).ready(function($){
             $(this).addClass("reverse");
             $(this).html('Use Existing Credit Card Details');
             $('#stripe_create_stripe_customer').val("1");
+            $("#co-billing-form input.checkoutcontinuebtn[type='submit']").hide();
             if(!_isshippable){
                 jQuery(".paymentmethoddiv input#p_method_stripe").trigger("click");
             }
@@ -455,6 +486,7 @@ jQuery(document).ready(function($){
             $(this).removeClass("reverse");
             $(this).html('Change Credit Card Details');
             $('#stripe_create_stripe_customer').val('0');
+            $("#co-billing-form input.checkoutcontinuebtn[type='submit']").hide();
         }
     });
 
@@ -734,13 +766,16 @@ function checkpaymentmethod()
     if(jQuery("input[type='radio'][value='stripe']").is(':checked'))
     {
         jQuery("ul#payment_form_paypal_express").hide();
-        jQuery("#payment_form input[type='submit']").removeClass("marginnone");
+        jQuery("#payment_form input[type='submit']").removeClass("marginnone marbtm745");
         if(_isshippable){
             jQuery("#billingDetails .billingAdd").show();    
         }
-        jQuery("#paymentmethoderrormsg, #cobillingaddress, #stripe-update-payment-holder").removeClass("dnone");
+        jQuery("#paymentmethoderrormsg, #billingDetails #cobillingaddress, #stripe-update-payment-holder").removeClass("dnone");
         jQuery("label[for='p_method_stripe'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/credittabovr.png");
         jQuery("label[for='p_method_paypal_express'] img").attr("src", "/skin/frontend/new-yogasmoga/yogasmoga-theme/images/checkout/paypaltab.png");
+        if(jQuery("#billingDetails #cobillingaddress").is(":visible")){
+            jQuery("#payment_form input[type='submit']").addClass("marbtm745");
+        }
         //jQuery("a#stripe-update-payment").show();
         if(jQuery("a#stripe-update-payment").length == 0)
         {
@@ -1036,7 +1071,7 @@ function savePayment()
             result = eval('(' + result + ')');
             if(typeof result['redirect'] !== "undefined"){
 //                window.location.href = result['redirect'];
-
+            
                     var payPalURL = result['redirect'];
 
                     jQuery("li#reviewDetails #paypal-checkout").removeClass("dnone").attr("href", payPalURL);
@@ -1044,11 +1079,11 @@ function savePayment()
 
                     jQuery("#paymentmethoderrormsg").html('');
                     if(_isshippable){
-                        jQuery("form#co-billing-form").submit();
+                       // jQuery("form#co-billing-form").submit();
                     }
                     designCartTotal();
                     jQuery(".billingAdd a").removeClass("reverse unuse").addClass("use").html(jQuery("form#co-billing-form input#billing\\:street1").val() + "<br>" + "<span>is my billing address</span>");
-                    jQuery("#billing-new-address-form").hide();
+                    jQuery("#billingDetails #cobillingaddress").hide();
                     // jQuery("li#billingDetails .ovrlay-bg").show();
                     jQuery("li#billingDetails").css("background","rgba(0, 0, 0, 0.0784314)");
                     jQuery("li#shippingDetails .ovrlay-bg").show();
@@ -1067,13 +1102,13 @@ function savePayment()
                 jQuery("div#orderreview").html(result['update_section']['html']);
                 jQuery("li#reviewDetails #checkout-submit").removeClass("dnone");
                 jQuery("li#reviewDetails #paypal-checkout").addClass("dnone");
-                    if(_isshippable){
-                        jQuery("form#co-billing-form").submit();
-                    }
+                if(_isshippable){
+                    //jQuery("form#co-billing-form").submit();
+                }
                 designCartTotal();
 
                 jQuery(".billingAdd a").removeClass("reverse unuse").addClass("use").html(jQuery("form#co-billing-form input#billing\\:street1").val() + "<br>" + "<span>is my billing address</span>");
-                jQuery("#billing-new-address-form").hide();
+                jQuery("#billingDetails #cobillingaddress").hide();
                 // jQuery("li#billingDetails .ovrlay-bg").show();
                 jQuery("li#billingDetails").css("background","rgba(0, 0, 0, 0.0784314)");
                 jQuery("li#shippingDetails .ovrlay-bg").show();
@@ -1197,8 +1232,11 @@ function saveBillingAddressGYS(){
                 jQuery("#co-billing-form input[type=submit]").hide();
                 jQuery("#co-billing-form #procImg").remove();
                 jQuery(".paymentmethoddiv input#p_method_stripe").attr("checked", "checked");
-                jQuery("#change-stripe-detail").show().css("margin", "0 0 20px");
                 jQuery(".paymentmethoddiv label[for='p_method_stripe']").trigger("click");
+                console.log(_getGOYSFirstUser);
+                if(_getGOYSFirstUser){
+                    jQuery("#change-stripe-detail").show().css("margin", "0 0 20px");
+                }
             }
         }
     });
@@ -1223,7 +1261,7 @@ function virtualsavebillingaddress() {
     if(jQuery("form#co-billing-form input#billing\\:street2").val().length > 0)
         addressbilling += " " + jQuery("form#co-billing-form input#billing\\:street2").val();
 
-    addressbilling += ", " + jQuery("form#co-billing-form input#billing\\:city").val() + ", " + jQuery("form#co-billing-form select#billing\\:region_id option[value='" + jQuery("form#co-billing-form select#billing\\:region_id").val() + "']").html() + " " + jQuery("form#checkout-shipping-form input#billing\\:postcode").val() + ", " + jQuery("form#co-billing-form select#billing\\:country_id option[value='" + jQuery("form#co-billing-form select#billing\\:country_id").val() + "']").html();
+    addressbilling += ", " + jQuery("form#co-billing-form input#billing\\:city").val() + ", " + jQuery("form#co-billing-form select#billing\\:region_id option[value='" + jQuery("form#co-billing-form select#billing\\:region_id").val() + "']").html() + " " + jQuery("form#co-billing-form input#billing\\:postcode").val() + ", " + jQuery("form#co-billing-form select#billing\\:country_id option[value='" + jQuery("form#co-billing-form select#billing\\:country_id").val() + "']").html();
 
     jQuery("form#co-billing-form ul#billing-address-select li").removeAttr("id");
     jQuery("form#co-billing-form ul#billing-address-select li[value='99999']").remove();
@@ -1274,7 +1312,7 @@ function saveShippingMethod()
             //jQuery("li#shippingDetails .headD span").html("&#10003;");
             jQuery("li#billingDetails .ovrlay-bg").hide();
             jQuery("li#shippingDetails.active").removeClass("active");
-            jQuery("li#billingDetails").addClass("active");
+            jQuery("li#billingDetails").addClass("active").css("background", "");
 
             jQuery("#checkout-shipping-form input[type=submit]").hide();
             jQuery("#checkout-shipping-form #procImg").remove();

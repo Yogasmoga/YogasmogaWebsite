@@ -64,7 +64,7 @@
                                         <tr>
                                             <td class="label dnone"><label for="<?php echo $_code ?>_cc_number"><?php echo Mage::helper('payment')->__('Credit Card Number') ?></label></td>
                                             <td class="inputholder">
-                                            <input type="text" id="<?php echo $_code ?>_cc_number" placeholder="Card Number" name="payment[cc_number]" class="requiredfield" value="<?php echo $this->getInfoData('cc_number')?>" defaulterrormsg="Credit Card Number is required"/>
+                                            <input type="text" id="<?php echo $_code ?>_cc_number" placeholder="Enter Card Number" name="payment[cc_number]" class="requiredfield" value="<?php echo $this->getInfoData('cc_number')?>" defaulterrormsg="Credit Card Number is required"/>
                                             </td>
                                         </tr>
                                         <tr>
@@ -93,7 +93,7 @@
                                         <tr>
                                             <td class="errortext" colspan="2">
                                                 <div class="cvc-outer pop-outer">
-                                                <a href="#cvc-div" class="cvv-what-is-this poplink"><?php echo $this->__('What is CVC?') ?></a>
+                                                <a href="#cvc-div" class="cvv-what-is-this poplink" style="color:#c03;"><?php echo $this->__('What is CVC?') ?></a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -122,7 +122,7 @@
                             </tr>
                                         <tr>
                                             <td class="errortext" colspan="2">
-                                            <div style="text-align:right;">&nbsp;</div>
+                                            <div style="text-align:right; margin:0 -11px 0 0;">&nbsp;</div>
                                             </td>
                                         </tr>
                         </table>
@@ -436,7 +436,7 @@ function stripeResponseHandler(status, response) {
                             <tr>
                                 <td class="errortext" colspan="2">
                                     <div class="cvc-outer pop-outer">
-                                        <a href="#cvc-div" class="cvv-what-is-this poplink"><?php echo $this->__('What is CVC?') ?></a>
+                                        <a href="#cvc-div" class="cvv-what-is-this poplink" style="color:#c03;"><?php echo $this->__('What is CVC?') ?></a>
                                     </div>
                                 </td>
                             </tr>

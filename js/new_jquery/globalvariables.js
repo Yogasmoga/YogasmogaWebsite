@@ -81,3 +81,4 @@ var _braSelected = 0;
 var _braOptionID = null;
 var _braOptionTypeID = null;
 var _footerLinkId = 1;
+var _getGOYSFirstUser = 0; // check for First time user for GOYS

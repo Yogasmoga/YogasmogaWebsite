@@ -84,6 +84,8 @@
                     <div class="gryWrap clearfix">
                         <span class="address"></span>
                     </div>
+                    <!-- Edit Billing address -->
+                    <div class="edit-curr-billing-add dnone"><span>EDIT CURRENT BILLING ADDRESS</span></div>
                 </div>
                 <!-- UpdateNameAdd --> 
 
@@ -323,7 +325,13 @@
             <input type="hidden" name="billing[use_for_shipping]" value="1" />
         <?php endif; ?>
     </div>
-    <input type="submit" imageurl="<?php echo $this->getSkinUrl('images/checkout/continue_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/checkout/continue_on.png'); ?>" name="send" class="loginbtn spbutton custombtn checkoutcontinuebtn" value="" />
+
+        <?php if(!$isshippable)
+        {
+            ?>
+        <input type="submit" imageurl="<?php echo $this->getSkinUrl('images/checkout/continue_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/checkout/continue_on.png'); ?>" name="send" class="loginbtn spbutton custombtn checkoutcontinuebtn" value="" />
+<?php }
+        ?>
     <div class="cleaner"></div>
     <div id="billingaddresserrormsg" class="loginerrormsg errormsg"></div>
 </form>
