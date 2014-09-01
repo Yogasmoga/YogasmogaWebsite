@@ -9,7 +9,7 @@ jQuery(document).ready(function($){
 
 
     dynAddressVal();
-    dfdfdffgf();
+    greyShippingBox();
     changeFlag();
     getSelectval();
     //trimDetailTxt();
@@ -534,10 +534,12 @@ jQuery(document).ready(function($){
         $(".showShippingOpt").hide();
         $(".listadd").hide();
         $(".showcreditcardopt").hide();
+        $(".billingaddlist").hide();
 
         $(".showUpadd").removeClass("reverse");
         $(".showShpOpt").removeClass("reverse");
         $(".showCrdtOpt").removeClass("reverse");
+        $(".showBillingadd").removeClass("reverse");
     });
 
 });
@@ -552,7 +554,7 @@ function addUpdTxt(){
     jQuery(".shippingOption").find(".addVal").text(shippingVal);
 }
 
-function dfdfdffgf(){
+function greyShippingBox(){
     var txtSl = jQuery('#shipping-address-select').find('option:selected').text();
     txtSl = txtSl.replace(/,/g, "<br>");
     jQuery("#updateNameAdd").find(".address").html(txtSl);
@@ -562,6 +564,18 @@ function dfdfdffgf(){
         jQuery(this).contents().first().wrap('<span>To: </span>');
     });
 }
+
+function greyBillingBox(){
+    var txtSl = jQuery('#billing-address-select').find('option:selected').text();
+    txtSl = txtSl.replace(/,/g, "<br>");
+    jQuery("#updateBillingAdd").find(".address").html(txtSl);
+
+
+    jQuery('#updateBillingAdd .address').each(function() {
+        jQuery(this).contents().first().wrap('<span>To: </span>');
+    });
+}
+
 
 function sameasBlankSelect(){
     jQuery("li#shippingDetails").removeClass("reverseShip").addClass("active").css("background", "transparent");
