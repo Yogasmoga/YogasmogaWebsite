@@ -1448,6 +1448,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                     <!-- selectSize -->
                                     <!-- select length -->
                                     <div class="selectedlength" <?php if(!$lengthavailable) { echo "style='display:none;'"; } ?>>
+                                        <div class="blck-head-sml"><span>Step 3:</span>Select a length</div>
                                         <?php
                                         foreach($productalllength as $length)
                                         {
@@ -1527,7 +1528,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                         </div>
                                         <!-- producterror -->
 
-                                        <p class="c-align" style="font-size:10px;"><em>Free and fast shipping to US and Canada</em></p>
+                                        <p class="c-align freeshipptext"><em>Free and fast shipping to US and Canada</em></p>
                                     </div>
                                     <!-- AddToBag -->
                                 </td>

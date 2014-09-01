@@ -192,6 +192,7 @@ button.btn-checkout:active span{background-position:0 100%;}
 .confirmation-page  p{margin:0 0 10px;}
 .confirmation-page  p.conf-msg{font-size:19px; line-height:30px; margin:0 0 30px;}
 .confirmation-page  a{color:#d90d3d; text-decoration:underline;}
+.confirmation-page  p.conf-msg a{padding-bottom: 2px;}
 .confirmation-page .conf-box{background:url(../images/div-sep.png) 50% 100% no-repeat; margin: 0 0 45px; padding-bottom:36px;}
 .confirmation-page .invite-box .sub-title{text-transform:none; margin:0 0 5px;}
 .invite-action{width:710px; margin:80px auto 0; min-height:35px;}

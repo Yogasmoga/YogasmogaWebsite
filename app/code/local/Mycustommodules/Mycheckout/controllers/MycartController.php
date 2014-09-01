@@ -387,9 +387,9 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
     
     public function minidetailsAction()
     {
-       // $output = $this->getminicarthtml();
-       // echo json_encode(array("html" => $output, "count" => $this->getcartcount()));
-        echo json_encode(array("count" => $this->getcartcount()));
+        $output = $this->getminicarthtml();
+        echo json_encode(array("html" => $output, "count" => $this->getcartcount()));
+        //echo json_encode(array("count" => $this->getcartcount()));
     }
     
     function getShippingCost($code)
