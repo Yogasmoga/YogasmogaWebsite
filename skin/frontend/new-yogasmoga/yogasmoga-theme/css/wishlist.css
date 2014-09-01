@@ -17,12 +17,13 @@ p.wishlist-empty
     font-size : 13px;
     letter-spacing: 0.4pt;
 }
-.continueshopppingbtn
+#wishlist-view-form .continueshopppingbtn
 {
-    background-image : url('../images/continue_shopping_off.png');
-    width : 239px;
-    height : 35px;
+    background-image : url('../images/continue-shopping.png') !important;
+    width : 250px !important;
+    height : 39px !important;
     margin-top : 30px; 
+    font-size:0;
 }
 table.tblwishlist
 {

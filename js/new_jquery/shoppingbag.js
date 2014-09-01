@@ -1,5 +1,12 @@
 jQuery(document).ready(function($){
 
+    $("body").on("click",".shopping-cart label[for='giftCardShop']",function(){      
+            if(jQuery(".giftcardcheckbox").attr("disabled") == "disabled"){
+                console.log("dasDSFSF");
+                jQuery('#giftcartcode').next('span').click();                
+            }
+    });
+
     showShoppingBagHtml();
 //    openShoppingCart();
     inputFocus();
@@ -39,7 +46,7 @@ jQuery(document).ready(function($){
              }
              else if($(this).prev('input').attr('id')=='giftcartcode'){
                   if($(this).prev('input').data('used') =='yes') showerror('You cannot use another Promo Code / Gift Card Code.');
-                  else showerror('You cannot use SMOGI Bucks &<br />Promo Code/Gift Card Code together.');
+                  else showerror('You cannot use SMOGI Bucks & Promo Code/Gift Card Code together.');
              }
          }
     });
@@ -182,9 +189,10 @@ jQuery(document).ready(function($){
     });
     $(".giftcardcheckbox").live("click",function(){
         jQuery('.zindexH').show();
-        redeemgiftcardcode();
-    });
-
+        redeemgiftcardcode();         
+    });    
+        
+        
     /* ===========  END code for all events in shopping for appy Gift of YS   in the cart  =========*/
     // reset page to default state
     $("#continuelink").live("click", function(){

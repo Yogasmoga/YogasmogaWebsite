@@ -250,6 +250,7 @@ function loginCustomer()
                 }
                 if (jQuery("body").hasClass("cms-smogi-bucks")) {
                     jQuery(".gd-container1").hide();
+                    window.location.assign(homeUrl+'customer/account/index');
                 }
 
             }

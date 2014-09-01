@@ -9,7 +9,7 @@ jQuery(window).load(function($){
     jQuery(".featureList span.ftrFig").css("height", featLiH);   
     playBtnPos();
     sizeChartScroll();      
-    jQuery("body").animate({opacity:1},100); 
+    // jQuery("body").animate({opacity:1},100); 
 });
 jQuery(document).ready(function($){  
 

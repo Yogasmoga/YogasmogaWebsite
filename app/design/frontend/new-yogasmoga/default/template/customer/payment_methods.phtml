@@ -41,6 +41,7 @@ $cardexpmonth = $info['active_card']['exp_month'];
 $cardexpyear = $info['active_card']['exp_year'];
 $cardaddresscountry = $info['active_card']['address_country'];
 $cardtype = $info['active_card']['type'];
+$cardtype = strtolower($cardtype);
 
 ?>
 <script type="text/javascript">
@@ -55,11 +56,23 @@ $cardtype = $info['active_card']['type'];
 			<div class="payment-metthod-cont l-align" style="width:312px;" >
 				<?php if($stripeId !=''){?>
                     <h4 class="holder-name"><?php echo $cardholdername;?></h4>
-                    <span>000&nbsp;000&nbsp;<?php echo $cardlast4; ?></span>
+                    <span>XXXX&nbsp;XXXX&nbsp;XXXX&nbsp;<?php echo $cardlast4; ?></span>
                     <span><?php echo $cardexpmonth;?>/<?php echo $cardexpyear; ?></span>
                     <span><?php echo $cardaddresscountry; ?></span>
-                    <!-- <span><?php //echo $cardtype; ?></span> -->
-                    <span><img src="<?php echo $this->getSkinUrl('images/credit-card-strip.jpg') ?>" alt="" /></span>
+                    <!-- <span><?php echo $cardtype; ?></span> -->
+                    <span class="card-images">
+                    	<img src="<?php 
+                    		if($cardtype == 'visa')
+                    			echo $this->getSkinUrl('images/visa-card.png');
+                    		if($cardtype == 'mastercard')
+                    			echo $this->getSkinUrl('images/master-card.png');
+                    		if($cardtype == 'discover')
+                    			echo $this->getSkinUrl('images/discover-card.png');
+                    		if($cardtype == 'american express')
+                    			echo $this->getSkinUrl('images/blue-card.png');	
+
+                    	?>" alt="" />                   	
+                    </span>
                 <?php }
                 else{
                     echo 'No Payment Methods Found';

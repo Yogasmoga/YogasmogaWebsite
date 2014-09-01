@@ -1110,7 +1110,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 }
                 else
                 {
-                    $html .='<div style="min-height: inherit;"> <input type="checkbox" value="1"  class="giftcardcheckbox"  '.$checkboxapplied.'/><p>Use your Gift Card balance: $'.$giftofysbalance.' available.</p></div>';
+                    $html .='<div style="min-height: inherit;"> <input type="checkbox" id="giftCardShop" value="1"  class="giftcardcheckbox"  '.$checkboxapplied.'/><label for="giftCardShop">Use your Gift Card balance: $'.$giftofysbalance.' available.</label></div>';
                 }
                 $html .='<div class="giftcarloader" style="clear: both;text-align:left;position:text-align: left; width: 100%;"></div>';
             }

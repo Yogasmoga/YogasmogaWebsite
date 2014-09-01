@@ -6,7 +6,7 @@
 .page-popup { background:#fff; padding:25px 30px; text-align:left; }
 .main-container { background:#fbfaf6 url(../images/bkg_main1.gif) 50% 0 no-repeat; }
 .main { width:900px; margin:0 auto; min-height:400px; padding:25px 25px 80px; background:#fffffe url(../images/bkg_main2.gif) 0 0 no-repeat; text-align:left; }
-body{-webkit-font-smoothing: subpixel-antialiased; opacity:0;}
+body{-webkit-font-smoothing: subpixel-antialiased; /*opacity:0;*/}
 
 
 /****Common Styles****/
@@ -2353,3 +2353,9 @@ p.err-msg-reset{font-family: gothambook; color: #c03;}
     float: right;
     width: 70%;
 }
+
+label[for="giftCardShop"]{ width: auto; min-height: inherit; margin-bottom: 10px; padding-left: 20px; margin-left: -20px; }
+.aurumiconcell img{width: 24px;}
+table.aurumiconcell tr td:nth-child(5) img{width: 28px;}
+table.aurumiconcell tr td:nth-child(6) img{width: 32px;}
+table.aurumiconcell tr td:nth-child(8) img,table.aurumiconcell tr td:nth-child(9) img{width: 25px;}
