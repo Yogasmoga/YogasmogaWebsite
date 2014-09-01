@@ -43,6 +43,10 @@ jQuery(document).ready(function($){
 		block50height();
 		uifixes();
 	});
+ /**Smogi Login**/
+    $("body.cms-smogi-bucks").on("click","a.smogi-login-link", function(event){    	    
+     	$("body.cms-smogi-bucks").find("#sign-in-button").click();     	
+    });
 
 $("#workersgif").live('click', function(){
     if($(this).hasClass('workersgif')){

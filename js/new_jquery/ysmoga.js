@@ -9,10 +9,9 @@
 	// factorythreadHeight();
 
 	setTimeout(function(){
-
 		jQuery(".cubix").animate({"opacity":1},200);	
 		// ctextVMiddle();
-	},1000);
+	},500);
 });
 
 jQuery(document).ready(function($){
