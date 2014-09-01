@@ -17,8 +17,6 @@ jQuery(document).ready(function($){
     removeNameLabel();
 
 
-
-
     // forGiftOfYS
     if(!_isshippable){
         createBillingList();
@@ -685,6 +683,11 @@ function removeNameLabel(){
 function slideAddCont(){
     jQuery(".showUpadd").toggleClass("reverse");
     jQuery(".listadd").slideToggle("slow");
+}
+
+function slideBillingCont(){
+    jQuery(".showBillingadd").toggleClass("reverse");
+    jQuery(".billingaddlist").slideToggle("slow");
 }
 
 function slideCreditCont(){
@@ -1544,6 +1547,18 @@ function resetCheckoutForm(){
     jQuery('#checkout-shipping-form #shipping\\:country_id').trigger( "change" );
     // jQuery(':input').focus().blur();
     jQuery("#shipping\\:firstname,#shipping\\:lastname").each(function(){
+        var waterVal =jQuery(this).attr("watermark");
+        jQuery(this).removeClass("watermark").removeAttr("watermark");
+        jQuery(this).attr("placeholder", waterVal);
+    });
+}
+
+function resetBillingForm(){
+    jQuery(':input','#co-billing-form').not(':button, :submit, :reset, :hidden, :checkbox').val('').removeAttr('checked').removeAttr('selected');
+    jQuery('#co-billing-form #billing\\:country_id').val( "US" );
+    jQuery('#co-billing-form #billing\\:country_id').trigger( "change" );
+    // jQuery(':input').focus().blur();
+    jQuery("#billing\\:firstname, #billing\\:lastname").each(function(){
         var waterVal =jQuery(this).attr("watermark");
         jQuery(this).removeClass("watermark").removeAttr("watermark");
         jQuery(this).attr("placeholder", waterVal);
