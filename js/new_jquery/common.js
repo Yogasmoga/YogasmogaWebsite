@@ -91,7 +91,7 @@ sizeChartPop();
         dfVid2.play();               
     });
 
-    $("body.catalog-product-view").on("click", "ul.featureList li:nth-child(4)", function(){               
+    $("body.catalog-product-view").on("click", "ul.featureList li.last-df", function(){               
         // $("body").scrollTop(0);
         pdpVidPop.fadeIn();        
         var designVidWidth = designVid.width();
