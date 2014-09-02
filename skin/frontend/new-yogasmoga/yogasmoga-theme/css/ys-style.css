@@ -2363,7 +2363,7 @@ p.err-msg-reset{font-family: gothambook; color: #c03;}
 
 label[for="giftCardShop"]{ width: auto; min-height: inherit; margin-bottom: 10px; padding-left: 20px; margin-left: -20px; }
 .aurumiconcell img{width: 24px;}
-table.aurumiconcell tr td:nth-child(5) img{width: 28px;}
+table.aurumiconcell tr td:nth-child(5) img, table.aurumiconcell tr td:nth-child(10) img{width: 28px;}
 table.aurumiconcell tr td:nth-child(6) img{width: 32px;}
 table.aurumiconcell tr td:nth-child(8) img,table.aurumiconcell tr td:nth-child(9) img{width: 25px;}
 
