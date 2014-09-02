@@ -1,0 +1,34 @@
+<?php  $currentUrl = Mage::helper('core/url')->getCurrentUrl();?>
+<script type="text/javascript">
+jQuery(function(){
+	var currenturl = "<?php echo $currentUrl; ?>";
+    var s1 = "<?php echo $currentUrl; ?>";
+    var editBilling = homeUrl + 'customer/address/edit/id/1/';
+    var editShipping = homeUrl + 'customer/address/edit/id/2/';
+    var viewOrder = homeUrl + 'sales/order/view/order_id/';
+    console.log(s1);
+	jQuery("ul.sub-nav li").each(function(){
+	        var s2 = jQuery(this).find("a").attr("href");	        
+	        if(s1 == s2)
+	        {
+	            jQuery(this).addClass("current");
+	        }
+	        else if(s1 == editBilling || s1 == editShipping || s1 == viewOrder){
+	        	jQuery(".sub-nav li:nth-child(1)").addClass("current");
+	        }
+	    });
+});    
+    
+</script>
+<div class="account-nav l-align">
+	<ul class="sub-nav">
+		<li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/index">Dashboard</a></li>
+		<li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>sales/order/history">My Orders</a></li>
+		<li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>wishlist">Wish list</a></li>
+		<li style="margin-bottom:20px;"><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/giftcards/balance">Redeem YS Gift Card</a></li>		
+	    <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/edit">Edit Account Info</a></li>
+	    <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>payment-methods">Payment Methods</a></li>
+	    <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/address">Address Book</a></li>
+	    <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>rewardpoints/index/referral/">Share with friends</a></li>
+	</ul>
+</div>

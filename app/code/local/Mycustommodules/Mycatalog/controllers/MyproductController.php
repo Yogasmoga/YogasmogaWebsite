@@ -190,6 +190,7 @@ AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
 //                        echo "<br/><br/>";
         $output .= "<tr style='color:#FFFFFF;'>";
         $output .= "<td style='background-color:#003366;'>Name</td><td style='background-color:#003366;'>Color</td>";
+        sort($sizeArray);
       
       if ($sizeArray[0] != '') {
             if (preg_match('/^\d+$/', $sizeArray[0]) && preg_match('/^\d+$/', end($sizeArray)))
@@ -667,11 +668,17 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
     public function referfriendAction()
     {
+
         if ($this->getRequest()->isPost() && $this->getRequest()->getPost('email')) {
             $session         = Mage::getSingleton('core/session');
-            $emails           = $this->getRequest()->getPost('email'); //trim((string) $this->getRequest()->getPost('email'));
-            $names            = $this->getRequest()->getPost('name'); //trim((string) $this->getRequest()->getPost('name'));
+            $email           = $this->getRequest()->getPost('email'); //trim((string) $this->getRequest()->getPost('email'));
+            $name            = $this->getRequest()->getPost('name'); //trim((string) $this->getRequest()->getPost('name'));
             $id = $this->getRequest()->getPost('id');
+
+            if(is_array ($email))
+                $email           = $email[0]; //trim((string) $this->getRequest()->getPost('email'));
+            if(is_array ($name))
+                $name            = $name[0];
 
             $arr['message'] = "";
             $arr['status'] = "error";
@@ -679,9 +686,9 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             $customerSession = Mage::getSingleton('customer/session');
             //$errors = array();
             try {
-                foreach ($emails as $key_email => $email){
-                    $name = trim((string) $names[$key_email]);
-                    $email = trim((string) $email);
+//                foreach ($emails as $key_email => $email){
+//                    $name = trim((string) $names[$key_email]);
+//                    $email = trim((string) $email);
 
                     ///////////////////////////////////////////
                     $no_errors = true;
@@ -754,7 +761,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         return;
                     }
                     ///////////////////////////////////////////
-                }
+       //         }  end foreach
             }
             catch (Mage_Core_Exception $e) {
                 Mage::log('|'.$from."|Error|".$customer->getEmail()."|".$email."|".$e->getMessage(),null,'referlog.log');
@@ -784,6 +791,11 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
     protected function getSkinUrl($path)
     {
         return Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)."frontend/yogasmoga/yogasmoga-theme/".$path;
+    }
+
+    protected function getNewSkinUrl($path)
+    {
+        return Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)."frontend/new-yogasmoga/yogasmoga-theme/".$path;
     }
 
     public function detailsAction()
@@ -820,6 +832,28 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
         $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
         $sizeavaliable = false;
+        // check Include Bra option
+        $optionType = null;
+        $optionavailable = 0;
+        $productalloptions = array();
+        $customProduct = $_product;
+        foreach($customProduct->getOptions() as $options)
+        {
+            $optionType = $options->getType(); // get option type
+
+            $optionValues = $options->getValues();
+            $optionavailable = count($optionValues);
+            foreach($optionValues as $optVal)
+            {
+
+                array_push($productalloptions,$optVal->getData());
+                // or $optVal->getData('option_id')  array_push($productallsizes, array("label" => $instance['label'], "value" => $instance['value']) );
+            }
+        };
+
+
+        // end check Include Bra option
+        $lengthavailable = 0;
         foreach($configurableAttributeCollection as $attribute){
             if($attribute->getProductAttribute()->getAttributeCode() == "size")
             {
@@ -829,6 +863,14 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             //echo "Attr-Code:".$attribute->getProductAttribute()->getAttributeCode()."<br/>";
             //        echo "Attr-Label:".$attribute->getProductAttribute()->getFrontend()->getLabel()."<br/>";
             //        echo "Attr-Id:".$attribute->getProductAttribute()->getId()."<br/>";
+        }
+        foreach($configurableAttributeCollection as $attribute){
+            if($attribute->getProductAttribute()->getAttributeCode() == "length")
+            {
+                $lengthavailable = 1;
+                break;
+            }
+
         }
 
         foreach($_childproducts as $_childproduct)
@@ -875,7 +917,78 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             $rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "smogi") - 3 - strlen("smogi") - strpos($rewardpoints, "earn") + strlen("earn")));
             if($rewardpoints > 0)
                 $isrewardable = true;
-            if($sizeavaliable)
+            if($lengthavailable)
+            {
+                if(!isset($productcolorinfo[$temp]["sizes"]))
+                    $productcolorinfo[$temp]["sizes"] = array($_childproduct->getAttributeText('size'));
+                else{
+                    if(!in_array($_childproduct->getAttributeText('size'),$productcolorinfo[$temp]["sizes"]))
+                        array_push($productcolorinfo[$temp]["sizes"],$_childproduct->getAttributeText('size'));
+                }
+
+
+                $temp1 = $_childproduct->getAttributeText('length')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
+                $temp1 .= "|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getIsInStock();
+                $backOrderCheck = (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getBackorders();
+                $temp1 .= "|".$backOrderCheck;
+                if(!isset($productcolorinfo[$temp]["length"]))
+                {
+                    $productcolorinfo[$temp]["length"][$_childproduct->getAttributeText('size')] = array($temp1);
+                    foreach($_gallery as $_image)
+                    {
+                        $imgdata = json_decode(trim($_image->getLabel()), true);
+                        if($imgdata == NULL || strcasecmp($imgdata['type'], "product image") != 0)
+                            continue;
+                        if($imgdata['color'] == Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId()))
+                            //if(str_replace("*", "", $_image->getLabel()) == $temp)
+                        {
+                            $alt = "";
+                            if(isset($imgdata['alt']))
+                                $alt = $imgdata['alt'];
+                            //echo $imageurl;
+                            if($alt == "")
+                            {
+                                $abcclr = $_childproduct->getAttributeText('color');
+                                if(strpos($abcclr, "|") !== false)
+                                    $abcclr = substr($abcclr, 0, strpos($abcclr, "|"));
+                                $alt = $productname." - ".$abcclr;
+                            }
+
+                            $smallimageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(75, 75)->setQuality(100)."|".$alt;
+                            $imageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(450, 450)->setQuality(100)."|".$alt;
+                            $zoomimageurl = "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(750, 750)->setQuality(100)."|".$alt;
+
+                            //if(count($productcolorinfo[$temp]["images"]) == 0)
+                            if(!isset($productcolorinfo[$temp]["images"]))
+                            {
+                                $productcolorinfo[$temp]["images"] = array();
+                                $productcolorinfo[$temp]["images"]["small"] = array($smallimageurl);
+                                $productcolorinfo[$temp]["images"]["zoom"] = array($zoomimageurl);
+                                $productcolorinfo[$temp]["images"]["big"] = array($imageurl);
+                                //echo "creating"."<br/>";
+                            }
+                            else
+                                if(count($productcolorinfo[$temp]["images"]["small"]) < 4)
+                                {
+                                    array_push($productcolorinfo[$temp]["images"]["big"], $imageurl);
+                                    array_push($productcolorinfo[$temp]["images"]["small"], $smallimageurl);
+                                    //echo "pushing"."<br/>";
+                                    array_push($productcolorinfo[$temp]["images"]["zoom"], $zoomimageurl);
+                                }
+                        }
+                    }
+                }
+                else{
+                    if(isset($productcolorinfo[$temp]["length"][$_childproduct->getAttributeText('size')]))
+                        array_push($productcolorinfo[$temp]["length"][$_childproduct->getAttributeText('size')],$temp1);
+                    else
+                        $productcolorinfo[$temp]["length"][$_childproduct->getAttributeText('size')] = array($temp1);
+                }
+            }
+            else
+            {
+
+                if($sizeavaliable)
                 $temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
             else
                 $temp1 = "2|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty()."|".$price."|".$rewardpoints;
@@ -886,6 +999,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             {
                 //echo "pushing";
                 array_push($productcolorinfo[$temp]["sizes"], $temp1);
+
             }
             else
             {
@@ -936,6 +1050,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     }
                 }
             }
+          }
         }
 
         $tempproductcolorinfo = array();
@@ -948,7 +1063,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             }
         }
         $productcolorinfo = $tempproductcolorinfo;
-
+        //print_r($productcolorinfo);die('test');
 
         $productallsizes = array();
 
@@ -959,8 +1074,22 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             if($instance['label'] != "")
                 array_push($productallsizes, array("label" => $instance['label'], "value" => $instance['value']) );
         }
+
+        //for lenght attribute
+        $productalllength = array();
+        if($lengthavailable)
+        {
+            $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'length'); //here, "color" is the attribute_code
+            $allOptions = $attribute->getSource()->getAllOptions(true, true);
+            foreach ($allOptions as $instance) {
+                if($instance['label'] != "")
+                    array_push($productalllength, array("label" => $instance['label'], "value" => $instance['value']) );
+            }
+        }
         ?>
         <script type="text/javascript">
+            _islengthavailable = <?php echo $lengthavailable;?>;
+             _isoptionavailable = <?php echo $optionavailable;?>;
             _productcolorinfo = new Array();
             _cnfrewardpoint = '<?php echo $productrewardpoints; ?>';
             <?php
@@ -984,12 +1113,18 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             _sizeattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
             <?php
         }
-    }
+            if($attribute->getProductAttribute()->getAttributeCode() == "length")
+            {
+            ?>
+                _lengthattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
+                <?php
+            }
+        }
 
-    $currentcolorcount = 0;
-    foreach($productcolorinfo as $key=>$val)
-    {
-        ?>
+            $currentcolorcount = 0;
+            foreach($productcolorinfo as $key=>$val)
+            {
+?>
             _productcolorinfo[<?php echo $currentcolorcount; ?>] = new Object();
             _productcolorinfo[<?php echo $currentcolorcount; ?>].color = '<?php echo $key; ?>';
             _productcolorinfo[<?php echo $currentcolorcount; ?>].hex = new Array();
@@ -1000,7 +1135,10 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             _productcolorinfo[<?php echo $currentcolorcount; ?>].hex[<?php echo $i; ?>] = '<?php echo $val['hex'][$i]; ?>';
             <?php
         }
-    ?>
+
+            if(!$lengthavailable)
+            {
+            ?>
             _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes = new Array();
             <?php
                 for($i = 0; $i < count($val['sizes']); $i++)
@@ -1008,20 +1146,57 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     ?>
             _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes[<?php echo $i; ?>] = '<?php echo $val['sizes'][$i]; ?>';
             <?php
+            }
+
+        }
+        // code for size and length attribute  only in case of length attribute available
+        if($lengthavailable)
+        {
+        ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes = new Array();
+            <?php
+                for($i = 0; $i < count($val['sizes']); $i++)
+                {
+                    ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].sizes[<?php echo $i; ?>] = '<?php echo $val['sizes'][$i]; ?>';
+            <?php
+            }
+        ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].lengths = new Array();
+            <?php
+
+                foreach($val['length'] as $key => $value)
+                {
+                    for($j = 0; $j < count($value); $j++)
+                    {
+                        if($j == 0)
+                        {
+                            ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].lengths[<?php echo $key; ?>] = new Array();
+            <?php
         }
     ?>
+
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].lengths[<?php echo $key; ?>][<?php echo $j; ?>] = '<?php echo $val['length'][$key][$j]; ?>';
+            <?php
+            }
+        }
+
+}
+?>
             _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages = new Array();
             <?php
                 for($i = 0; $i < count($val['images']['zoom']); $i++)
                 {
                     $abc = explode("|", $val['images']['zoom'][$i]);
                     ?>
+            //console.log('<?php echo $abc[0]; ?>');
             _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>] = new Array();
             _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
             _productcolorinfo[<?php echo $currentcolorcount; ?>].zoomimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
             <?php
         }
-    ?>
+        ?>
             _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages = new Array();
             <?php
                 for($i = 0; $i < count($val['images']['small']); $i++)
@@ -1033,7 +1208,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             _productcolorinfo[<?php echo $currentcolorcount; ?>].smallimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
             <?php
         }
-    ?>
+        ?>
             _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages = new Array();
             <?php
                 for($i = 0; $i < count($val['images']['big']); $i++)
@@ -1045,11 +1220,11 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             _productcolorinfo[<?php echo $currentcolorcount; ?>].bigimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
             <?php
         }
-    ?>
+        ?>
             <?php
-                    $currentcolorcount++;
-                }  
-            ?>
+            $currentcolorcount++;
+        }
+                    ?>
             _productdisplaymode = 'popup';
             //console.log(_productcolorinfo);
         </script>
@@ -1101,180 +1276,261 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             </tr>
         </table>
         */ ?>
-        <table class="productdetailspopup normalproductdetail">
+
+        <table class="productdetailspopup normalproductdetail quickviewproductdetail">
             <tr>
+                <!-- ProductThumbImages -->
+                <td id="tdpopupproductsmallimages">
+                    <table>
+                        <tr><td><img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/75x75/040ec09b1e35df139433887a97daa66f/a/b/abstract_0011.jpg" /></td></tr>
+                        <tr><td><img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/75x75/040ec09b1e35df139433887a97daa66f/a/b/abstract_0002_1.jpg" /></td></tr>
+                        <tr><td><img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/75x75/040ec09b1e35df139433887a97daa66f/a/b/abstract_0062_1.jpg" /></td></tr>
+                    </table>
+                </td>
+                <!-- ProductThumbImages -->
+
+                <!-- ProductBigImage -->
+                <td id="tdpopupproductbigimage">
+                    <img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/450x450/040ec09b1e35df139433887a97daa66f/a/b/abstract_0011.jpg" />
+                </td>
+                <!-- ProductBigImage -->
+
+                <!-- DetailsContent -->
                 <td class="popupproductdetail">
-                    <div class="productoptions">
+                    <div class="productoptions gry-box">
                         <table class="productdetailtable">
                             <tr>
                                 <td>
-                                    <div class="productname"><?php echo html_entity_decode($productname); ?></div>
-                                    <div class="productcost"><?php echo $productprice; ?></div>
-                                    <div class="shortdesc"><?php echo $_product->getShortDescription(); ?></div>
-                                    <table class="selectedcolor">
-                                        <tr>
-                                            <td>COLOR</td>
-                                            <td class="selectedcolortext"></td>
-                                        </tr>
-                                    </table>
-                                    <div id="colorcontainer">
-                                        <?php
-                                        $primarycolorcode = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'primarycolorcode', Mage::app()->getStore()->getStoreId());
-                                        $first = true;
-                                        //print_r($productcolorinfo);
-                                        $colorcount = 0;
-                                        for($incr = 0; $incr < 2; $incr++)
-                                        {
-                                            foreach($productcolorinfo as $key=>$colorinfo)
+                                    <!-- heading -->
+                                    <div class="productname prdname"><?php echo html_entity_decode($productname); ?>
+                                        <span class="productcost amount"><?php echo $productprice; ?></span>
+                                    </div>
+                                    <!-- heading -->
+
+                                    <!-- description -->
+                                    <div class="shortdesc box-seprtr dnone"><?php echo $_product->getShortDescription(); ?></div>
+                                    <!-- description -->
+
+                                    <!-- selectColor -->
+                                    <div class="box-seprtr">
+                                        <div class="blck-head-sml"><span>Step 1:</span> choose your color</div>
+                                        <table class="selectedcolor blck-head-sml">
+                                            <tr>
+                                                <td><span>COLOR:</span></td>
+                                                <td class="selectedcolortext"></td>
+                                            </tr>
+                                        </table>
+                                        <div id="colorcontainer">
+                                            <?php
+                                            $primarycolorcode = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'primarycolorcode', Mage::app()->getStore()->getStoreId());
+                                            $first = true;
+                                            //print_r($productcolorinfo);
+                                            $colorcount = 0;
+                                            for($incr = 0; $incr < 2; $incr++)
                                             {
-                                                if($incr == 0)
+                                                foreach($productcolorinfo as $key=>$colorinfo)
                                                 {
-                                                    if($colorinfo['value'] != $primarycolorcode)
-                                                        continue;
-                                                }
-                                                else
-                                                {
-                                                    if($colorinfo['value'] == $primarycolorcode)
-                                                        continue;
-                                                }
-                                                $colorcount++;
-                                                ?>
-                                                <div>
-                                                    <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
-                                                        <tr>
-                                                            <?php
-                                                            foreach($colorinfo['hex'] as $hex)
-                                                            {
+                                                    if($incr == 0)
+                                                    {
+                                                        if($colorinfo['value'] != $primarycolorcode)
+                                                            continue;
+                                                    }
+                                                    else
+                                                    {
+                                                        if($colorinfo['value'] == $primarycolorcode)
+                                                            continue;
+                                                    }
+                                                    $colorcount++;
+                                                    ?>
+                                                    <div <?php if($first) { echo "class='selected'"; $first = false; } ?>>
+                                                        <table color="<?php echo $key; ?>" value="<?php echo $colorinfo['value']; ?>">
+                                                            <tr>
+                                                                <?php
+                                                                //echo '<pre>'; print_r($colorinfo); echo count($colorinfo['hex']); die('test');
+                                                                foreach($colorinfo['hex'] as $hex)
+                                                                {
+                                                                    if(count($colorinfo['hex']) == 1)
+                                                                    {
+
+                                                                    ?>
+                                                                         <td style="border-color: transparent !important; background-color: <?php echo $hex ?>;">
+                                                                            <div> </div>
+                                                                        </td>
+                                                                    <?php
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                    ?>   
+                                                                        <td style="border-color: <?php echo $hex ?>;">
+                                                                            <div> </div>
+                                                                        </td>
+                                                                <?php
+                                                                     }
+                                                                }
                                                                 ?>
-                                                                <td style="background-color: <?php echo $hex ?>;">
-                                                                    <div>
-                                                                        &nbsp;
-                                                                    </div>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
+
                                                                 </td>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="<?php echo count($colorinfo['hex']); ?>" <?php if($first) { echo "class='tdselectedcolor'"; $first = false; } ?>>
-
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                                <?php
-                                                if(($colorcount % 5) == 0)
-                                                    echo "<br/>";
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                    <?php
+                                                    //if(($colorcount % 5) == 0)
+                                                        //echo "<br/>";
+                                                }
                                             }
-                                        }
 
+                                            ?>
+                                        </div>
+                                        <div style="clear:both;"></div>
+                                    </div>
+                                    <!-- selectColor -->
+
+                                    <!-- selectSize -->
+                                    <div class="selectedsize" <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
+                                        <div class="box-seprtr">
+                                            <div class="blck-head-sml"><span>Step 2:</span> Select a size
+                                                <table class="f-right">
+                                                    <tr>
+                                                        <?php if($sizechartblockid != "") {?>
+                                                            <td class="sizechartlink">
+                                                                <div style="position: relative;">
+                                                                    <p class="block-link" style="margin: 0px; float: right;"><a id="size-pop-chart" href="javascript:void(0);" style="color:#CC0033; font-size:11px;">Size chart</a></p>
+                                                                    <div id="sizechart">
+                                                                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        <?php } ?>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div id="sizecontainer" <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
+                                                <table>
+                                                    <tr>
+                                                        <?php
+                                                        $sizecount = 0;
+                                                        foreach($productallsizes as $size)
+                                                        {
+                                                        //if($sizecount % 6 == 0 && $sizecount > 0)
+                                                        if(strpos($size['label'],"T") !== false & $sizecount == 0)
+                                                        {
+                                                        $sizecount++;
+                                                        ?>
+                                                    </tr>
+                                                    <tr>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                        <td><div value="<?php echo $size['value']; ?>" size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?></div></td>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div id="includeoption" <?php if(!$optionavailable){echo "style='display:none;'";} ?>  >
+                                                INCLUDE BRA INSERT:
+                                                <?php
+                                                foreach($productalloptions as $options)
+                                                {
+                                                    ?>
+                                                    <div value="<?php echo $options['default_price']; ?>" title="<?php echo $options['default_title']; ?>" optionid="<?php echo $options['option_id']; ?>" optiontypeid="<?php echo $options['option_type_id']; ?>"><?php echo $options['default_title']; ?></div>
+                                                <?php
+                                                }
+                                                ?>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- selectSize -->
+                                    <!-- select length -->
+                                    <div class="selectedlength" <?php if(!$lengthavailable) { echo "style='display:none;'"; } ?>>
+                                        <div class="blck-head-sml"><span>Step 3:</span>Select a length</div>
+                                        <?php
+                                        foreach($productalllength as $length)
+                                        {
+                                            ?>
+                                            <div value="<?php echo $length['value']; ?>" lengthtype="<?php echo $length['label']; ?>"><?php echo $length['label']; ?></div>
+                                        <?php
+                                        }
                                         ?>
                                     </div>
-                                    <div style="clear: both;"></div>
-                                    <table class="selectedsize" <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
-                                        <tr>
-                                            <td>SIZE</td>
-                                            <?php if($sizechartblockid != "") {?>
-                                                <td class="sizechartlink">
-                                                    <div style="position: relative;">
-                                                        <a href="javascript:void(0);">Size chart</a>
+                                    <!-- select length -->
 
-                                                        <div id="sizechart">
-                                                            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizechartblockid)->toHtml(); ?>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            <?php } ?>
-                                        </tr>
-                                    </table>
-                                    <div id="sizecontainer" <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
-                                        <table>
-                                            <tr>
-                                                <?php
-                                                $sizecount = 0;
-                                                foreach($productallsizes as $size)
-                                                {
-                                                //if($sizecount % 6 == 0 && $sizecount > 0)
-                                                if(strpos($size['label'],"T") !== false & $sizecount == 0)
-                                                {
-                                                $sizecount++;
-                                                ?>
-                                            </tr>
-                                            <tr>
-                                                <?php
-                                                }
-                                                ?>
-                                                <td><div value="<?php echo $size['value']; ?>" size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?></div></td>
-                                                <?php
-                                                }
-                                                ?>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    <?php if($howdoesitfitblockid != "") { ?>
-                                        <table class="fittable">
-                                            <tr>
-                                                <td>
-                                                    <div class="hanger"></div>
-                                                </td>
-                                                <td class="howdoesitfitlink">
-                                                    <div style="position: relative;">
-                                                        <a href="javascript:void(0);">How does it fit?</a>
-                                                        <div id="howdoesitfitbox">
-                                                            <div id="howdoesitfitboxinner">
-                                                                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
+                                    <!-- selectFit -->
+                                    <div class="box-seprtr dnone">
+                                        <div class="blck-head-sml"><span>Step 3:</span> QTY
+                                            <?php if($howdoesitfitblockid != "") { ?>
+                                                <table class="fittable">
+                                                    <tr>
+                                                        <!-- <td>
+                                                            <div class="hanger"></div>
+                                                        </td> -->
+                                                        <td class="howdoesitfitlink">
+                                                            <div style="position: relative;">
+                                                                <p class="block-link" style="margin: 0px; float: right;"><a id="fit-how" href="javascript:void(0);">How does it fit?</a></p>
+                                                                <div id="howdoesitfitbox">
+                                                                    <div id="howdoesitfitboxinner">
+                                                                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
+                                                                    </div>
+                                                                    <img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
+                                                                </div>
                                                             </div>
-                                                            <img src="<?php echo $this->getSkinUrl('images/catalog/product/close_opaque.png'); ?>" id="closesmlight" />
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    <?php } ?>
-                                    <div class="qty">QTY</div>
-                                    <div class="sizeselector">
-                                        <select class="qtyselector">
-                                            <?php
-                                            for($i = 1; $i < 21; $i++)
-                                            {
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            <?php } ?>
+                                        </div>
+                                        <div class="sizeselector">
+                                            <select class="qtyselector">
+                                                <?php
+                                                for($i = 1; $i < 21; $i++)
+                                                {
+                                                    ?>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                <?php
+                                                }
                                                 ?>
-                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                            <?php
-                                            }
-                                            ?>
-                                        </select>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="divider"></div>
-                                    <table class="smogibucks" <?php if(!$isrewardable) { echo "style='display:none;'"; } ?>>
-                                        <tr>
-                                            <td>
-                                                <div class="smogibuckcount">
-                                                    <table>
-                                                        <tr>
-                                                            <td>
-                                                                <?php echo $productrewardpoints; ?>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                            </td>
-                                            <td class="earnsmogibuckstext">
-                                                EARN <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks" target="_blank">SMOGI BUCKS</a><br/>WITH THIS PURCHASE
-                                            </td>
-                                        </tr>
-                                    </table>
+                                    <!-- selectFit -->
                                     <?php /*
                                     <button id="orderitem" title="Add to Cart" class="button cbtn btn-bag"><span><span>Add to Cart</span></span></button>
 					                <button style="display: none;" id="preorderitem" title="Preorder" class="button cbtn btn-pre"><span>Preorder<span></span></span> </button>
                                     */ ?>
-                                    <div id="orderitem" class="addtobag spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add_to_bag_on.png'); ?>"></div>
-                                    <div id="outofstockitem" class="outofstockitem"></div>
-                                    <div id="preorderitem" class="preorderitem spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_now_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre_order_now_on.png'); ?>"></div>
-                                    <div class="producterrorcontainer">
-                                        <div class="errormsg">
+                                    <!-- AddToBag -->
+                                    <div class="box-seprtr last">
+                                        <div class="blck-head-sml"><span class="qty">Step 3</span></div>
+                                        <!-- addtobag-btn -->
+                                        <div id="orderitem" class="addtobag spbutton" 
+                                        imageurl="<?php echo $this->getNewSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>" 
+                                        downimageurl="<?php echo $this->getNewSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>"></div>
+                                        <!-- addtobag-btn -->
+
+                                        <!-- outofstock-btn -->
+                                        <div id="outofstockitem" class="outofstockitem"></div>
+                                        <!-- outofstock-btn -->
+
+                                        <!-- preorder-btn -->
+                                        <div id="preorderitem" class="preorderitem spbutton" 
+                                        imageurl="<?php echo $this->getNewSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>" 
+                                        downimageurl="<?php echo $this->getNewSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>"></div>
+                                        <!-- preorder-btn -->
+                                        
+                                        <!-- producterror -->
+                                        <div class="producterrorcontainer">
+                                            <div class="errormsg"></div>
+                                            <!-- <img id="preorderhelp" src="<?php //echo $this->getSkinUrl('images/help.png'); ?>" /> -->
                                         </div>
-                                        <img id="preorderhelp" src="<?php echo $this->getSkinUrl('images/help.png'); ?>" />
+                                        <!-- producterror -->
+
+                                        <p class="c-align freeshipptext"><em>Free and fast shipping to US and Canada</em></p>
                                     </div>
+                                    <!-- AddToBag -->
                                 </td>
                             </tr>
                         </table>
@@ -1283,24 +1539,61 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                             <img class="closeinfo" src="<?php echo $this->getSkinUrl('images/cross_red.png'); ?>" />
                         </div>
                     </div>
-                </td>
-                <td id="tdpopupproductbigimage">
-                    <img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/450x450/040ec09b1e35df139433887a97daa66f/a/b/abstract_0011.jpg" />
-                </td>
-                <td id="tdpopupproductsmallimages">
-                    <table>
-                        <tr><td><img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/75x75/040ec09b1e35df139433887a97daa66f/a/b/abstract_0011.jpg" /></td></tr>
-                        <tr><td><img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/75x75/040ec09b1e35df139433887a97daa66f/a/b/abstract_0002_1.jpg" /></td></tr>
-                        <tr><td><img src="http://192.168.2.110/yogasmoga/media/catalog/product/cache/1/thumbnail/75x75/040ec09b1e35df139433887a97daa66f/a/b/abstract_0062_1.jpg" /></td></tr>
+                    <!-- SMOGIBUCKS -->
+                    <table class="font11 smogibucks" <?php if(!$isrewardable) { echo "style='display:none;'"; } ?>>
+                        <tr>
+                            <td width="50%">
+                                <div class="earnbucks">
+                                    <div class="smogibuckcount">
+                                        <table>
+                                            <tr>
+                                                <td><?php echo $productrewardpoints; ?></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <p class="earnsmogibuckstext">EARN <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks" target="_blank">SMOGI BUCKS</a> WITH THIS PURCHASE</p>
+                                </div>
+                            </td>
+                            <td width="50%">
+                                <div class="wishlist">
+                                    <div class="social-ico">
+                                        <a id="twitter" href="javascript:void(0);" class="twtrIcon" title="YogaSmoga - Twitter"></a> 
+                                        <a id="pinterest" href="http://www.Pinterest.com/YOGASMOGA" class="pinIcon" title="YogaSmoga - Pinterest"></a>
+                                        <a id="facebook" href="javascript:void(0)" class="fbIcon" title="YogaSmoga - Facebook"></a>         
+                                    </div>
+                                </div>                                
+                            </td>
+                        </tr>
                     </table>
+                    <!-- SMOGIBUCKS -->
                 </td>
+
+                <!-- DetailsContent -->
             </tr>
         </table>
         <table class="productdetailpopupbottomlinks">
             <tr>
                 <td>
                     <div class="addtowishlist">
-                        <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productid; ?>/">ADD TO WISHLIST +</a>
+                        <!--<a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productid; ?>/">ADD TO WISHLIST +</a>-->
+                        <?php
+                        $_in_wishlist = false;
+                        foreach (Mage::helper('wishlist')->getWishlistItemCollection() as $_wishlist_item){
+                            if($productid == $_wishlist_item->getProduct()->getId()){
+                                $_in_wishlist = true;
+                                break;
+                            }
+                        }
+
+                        if(($customerId = Mage::getSingleton('customer/session')->getCustomerId())&&($_in_wishlist))
+                        {
+                            ?>
+                            <p class="" style="margin-bottom: 0px; "><a onlick="javascript:void(0)" >ADDED TO WISH LIST</a></p>
+                        <?php
+                        }else{
+                            ?>
+                            <p class="wishlist-link" style="margin-bottom: 0;"><a style="border: 0 none;" class="" id="<?php echo $productid;?>" href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/add/product/<?php echo $productid; ?>/">ADD TO WISH LIST +</a></p>
+                        <?php } ?>
                     </div>
                 </td>
                 <td class="tdviewfulldetails">
@@ -1311,6 +1604,10 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
             </tr>
         </table>
         <img id="closelightbox" src="<?php echo $this->getSkinUrl('images/catalog/product/close1.png'); ?>" />
+        <div class="quick-navigation">
+            <a href="#" class="quick-prev">Previous</a>
+            <a href="#" class="quick-next">Next</a>           
+        </div>
     <?php
     }
 
@@ -2746,9 +3043,11 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         $response = array(
             "status" => 'error',
             "errors" => '',
+            "fname"  => '',
             "success_message" => ""
         );
         $errors = array();
+        $fname = $this->getRequest()->getPost('firstname') ;
         $session = Mage::getSingleton('customer/session');
         if ($session->isLoggedIn()) {
             array_push($errors, "Already Logged In");
@@ -2835,6 +3134,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         );
                         $response['success_message'] = 'Account confirmation is required. Please, check your email for the confirmation link. To resend the confirmation email please <a href="'.Mage::helper('customer')->getEmailConfirmationUrl($customer->getEmail()).'">click here</a>.';
                         $response['status'] = "success";
+                        $response['fname'] = $this->getRequest()->getPost('firstname')  ;
                         echo json_encode($response);
                         //$session->addSuccess($this->__('Account confirmation is required. Please, check your email for the confirmation link. To resend the confirmation email please <a href="%s">click here</a>.', Mage::helper('customer')->getEmailConfirmationUrl($customer->getEmail())));
                         //$this->_redirectSuccess(Mage::getUrl('*/*/index', array('_secure'=>true)));
@@ -2845,6 +3145,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $session->setCustomerAsLoggedIn($customer);
                         $response['success_message'] = "Registered Successfully";
                         $response['status'] = "success";
+                        $response['fname'] = $this->getRequest()->getPost('firstname') ;
 						
 						$write = Mage::getSingleton('core/resource')->getConnection('core_write');
                         $write->query("insert into signup_popup_user values(null,'".$customer->getId()."',now())");
@@ -2866,7 +3167,8 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     }
                 }
             } catch (Mage_Core_Exception $e) {
-                $session->setCustomerFormData($this->getRequest()->getPost());
+                //$session->unsetAll();
+                //$session->setCustomerFormData($this->getRequest()->getPost());
                 if ($e->getCode() === Mage_Customer_Model_Customer::EXCEPTION_EMAIL_EXISTS) {
                     array_push($errors, "Email Already Exists.");
                 } else {
@@ -2881,11 +3183,178 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         echo json_encode($response);
         //$this->_redirectError(Mage::getUrl('*/*/create', array('_secure' => true)));
     }
+    public function logincustomerAction()
+    {
+        $response = array(
+                    "status" => 'error',
+                    "errors" => '',
+                    "fname"   => '',
+                    "success_message" => ''
+                );
+        $errors = array();
+        $session = Mage::getSingleton('customer/session');
+        if ($session->isLoggedIn()) {
+            $this->_redirect('*/*/');
+            return;
+        }
 
+
+        if ($this->getRequest()->isPost()) {
+            $login['email'] = $this->getRequest()->getPost('email');
+            $login['pwd']   = $this->getRequest()->getPost('pwd');
+            if (!empty($login['email']) && !empty($login['pwd'])) {
+                try {
+                    $session->login($login['email'], $login['pwd']);
+                    if ($session->getCustomer()->getIsJustConfirmed()) {
+                        $this->_welcomeCustomer($session->getCustomer(), true);
+
+                    }
+                    //Mage::getModel('smogiexpirationnotifier/applyremovediscount')->automaticapplysmogibucks();//smogi auto apply
+            // show coupon code in cart it is applied before in cart if not checkout
+                    //$promotioncode = Mage::getModel('smogiexpirationnotifier/applyremovediscount')->getCouponCode();
+                   // if($promotioncode)
+                     //   Mage::getModel('smogiexpirationnotifier/applyremovediscount')->applycouponcode(1,null);
+                    $response['fname'] =  $session->getCustomer()->getFirstname();
+                    $response['status'] = "success";
+                    echo json_encode($response);
+                    return;
+
+                } catch (Mage_Core_Exception $e) {
+                    switch ($e->getCode()) {
+                        case Mage_Customer_Model_Customer::EXCEPTION_EMAIL_NOT_CONFIRMED:
+                            $value = Mage::helper('customer')->getEmailConfirmationUrl($login['email']);
+                            $message = Mage::helper('customer')->__('This account is not confirmed. <a href="%s">Click here</a> to resend confirmation email.', $value);
+                            array_push($errors,"This account is not confirmed.");
+                            break;
+                        case Mage_Customer_Model_Customer::EXCEPTION_INVALID_EMAIL_OR_PASSWORD:
+                            $message = $e->getMessage();
+                            array_push($errors,"Invalid Email or Password");
+                            break;
+                        default:
+                            {
+                            array_push($errors,"Invalid Email or Password");
+                            $message = $e->getMessage();
+                            }
+
+                    }
+                    $session->addError($message);
+                    $session->setUsername($login['email']);
+                } catch (Exception $e) {
+                    // Mage::logException($e); // PA DSS violation: this exception log can disclose customer password
+                }
+            } else {
+                array_push($errors,"Email and Password are required.");
+                $session->addError($this->__('Login and password are required.'));
+            }
+        }
+        $response['status'] = "error";
+        $response['errors'] = $errors;
+        echo json_encode($response);
+        return;
+        //$this->_loginPostRedirect();
+    }
+
+    public function retrievecmsblockcontentAction()
+    {
+        $response = array(
+            "status" => 'error',
+            "html" => ''
+        );
+        if ($this->getRequest()->getPost('blockid')) {
+
+            $response['html'] = Mage::app()->getLayout()->createBlock('cms/block')->setBlockId($this->getRequest()->getPost('blockid'))->toHtml();
+            if($response['html'] != '')
+            {
+                $response['status']= "success";
+                echo json_encode($response);
+                return;
+            }
+            else{
+                $response['html'] = "<h1>Coming Soon...".$this->getRequest()->getPost('blockid')."</h1>";
+                echo json_encode($response);
+                return;
+            }
+        }
+    }
+
+    public  function removepromoAction()
+    {
+//        $methods = Mage::getSingleton('shipping/config')->getActiveCarriers();
+//
+//        $options = array();
+//
+//        foreach($methods as $_code => $_method)
+//        {
+//            if(!$_title = Mage::getStoreConfig("carriers/$_code/title"))
+//                $_title = $_code;
+//
+//            $options[] = array('value' => $_code, 'label' => $_title . " ($_code)");
+//            print_r($_code->getCode());die;
+//        }
+
+        //$methods = array(array('value'=>'','label'=>Mage::helper('adminhtml')->__('--Please Select--')));
+        $i=0;
+        $activeCarriers = Mage::getSingleton('shipping/config')->getActiveCarriers();
+        foreach($activeCarriers as $carrierCode => $carrierModel)
+        {
+            $options = array();
+            if( $carrierMethods = $carrierModel->getAllowedMethods() )
+            {
+
+                foreach ($carrierMethods as $methodCode => $method)
+                {
+                    //echo $price = $method->getPrice();
+                    $code= $carrierCode.'_'.$methodCode;
+                    $options[]=array('value'=>$code,'label'=>$method);
+                    $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax());
+                     $_incl = $this->getShippingPrice($_rate->getPrice(), true);
+                     echo $_excl;
+                     if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl)
+                         echo $this->__('Incl. Tax');  echo $_incl;
+
+
+                }
+                $methods[$code] = $method;
+                //$carrierTitle = Mage::getStoreConfig('carriers/'.$carrierCode.'/title');
+
+            }
+           // $methods[]=array('value'=>$options);
+        }echo $i;
+        echo '<pre>';print_r($methods);
+//        echo '<pre>';print_r($options);
+//        $_shippingRateGroups = Mage::getModel('checkout/cart')->getQuote()->getShippingAddress()->getGroupedAllShippingRates();
+//        foreach ($_shippingRateGroups as $code => $_rates)
+//        {
+//            foreach($_rates as $rate)
+//            {
+//                echo $rate->getCode().'455';
+//            }
+    }
     public function getmagentocurrenttimeAction()
     {
         echo "Magento Time :-".date("Y-m-d H:i:s", Mage::getModel('core/date')->timestamp(time()));
         echo '<br/>Server Time :- '.date("Y-m-d H:i:s",time());
+
+    }
+    public function gettotalsAction()
+    {
+        $quote = Mage::helper('checkout')->getQuote()->getData();
+        $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+        $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
+        $grandtotal = $totals["grand_total"]->getValue();
+        //echo $totals['tax'];die('tax');
+        echo $totals['base_tax_amount'];echo 'dff';
+        echo $totals['tax'];echo 'test';
+        //print_r($totals);
+    }
+    public function getStripeInfoAction()
+    {
+        if($this->getRequest()->getParam('id'))
+        {
+            $info = Mage::getModel('stripe/payment')->getStripeCustomer($this->getRequest()->getParam('id'));
+            print_r($info);
+        }
+
 
     }
     

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+		<reference name="head">
+		<!--	<action method="addCss"><stylesheet>css/magestore/sociallogin.css</stylesheet></action> -->
+		</reference>
+		<reference name="top.container">
+			<block type="sociallogin/autosociallogin" before="-" name="header.sociallogin">
+				<action method="setBlockPosition"><position>header</position></action>
+			</block>
+		</reference>			
+	</default>
+	
+	<customer_account_login>
+		<reference name="content">
+			<block type="sociallogin/autosociallogin" before="-" name="before.customer.login.sociallogin" >
+				<action method="setBlockPosition"><position>before-customer-login</position></action>
+			</block>
+			<block type="sociallogin/autosociallogin" after="-" name="after.customer.login.sociallogin" >
+				<action method="setBlockPosition"><position>after-customer-login</position></action>
+			</block>			
+		</reference>		
+	</customer_account_login>
+	
+	<customer_account_create>
+		<reference name="content">
+			<block type="sociallogin/autosociallogin" before="-" name="before.customer.registration.sociallogin" >
+				<action method="setBlockPosition"><position>before-customer-registration</position></action>
+			</block>
+			<block type="sociallogin/autosociallogin" after="-" name="after.customer.registration.sociallogin" >
+				<action method="setBlockPosition"><position>after-customer-registration</position></action>
+			</block>			
+		</reference>		
+	</customer_account_create>		
+	
+</layout>

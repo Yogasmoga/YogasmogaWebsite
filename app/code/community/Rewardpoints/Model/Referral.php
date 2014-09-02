@@ -123,6 +123,7 @@ class Rewardpoints_Model_Referral extends Mage_Core_Model_Abstract
                         'referral'      => $this,
                         'store_name'    => Mage::getModel('core/store')->load(Mage::app()->getStore()->getCode())->getName(),
                         'referral_url'  => Mage::getUrl('rewardpoints/index/goReferral', array("referrer" => $parent->getId()))
+                        //'comment' => "This is test comment for testing purpose"
                     )
                 );
 

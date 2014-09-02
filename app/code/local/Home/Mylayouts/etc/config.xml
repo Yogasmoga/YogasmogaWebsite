@@ -53,6 +53,21 @@
           <template>page/home1.phtml</template>
           <layout_handle>home1</layout_handle>
         </home1>
+        <women translate="label">
+          <label>Women</label>
+          <template>page/women.phtml</template>
+          <layout_handle>women</layout_handle>
+        </women>
+        <mens translate="label">
+          <label>Mens</label>
+          <template>page/mens.phtml</template>
+          <layout_handle>mens</layout_handle>
+        </mens>
+        <rangoli translate="label">
+          <label>Rangoli</label>
+          <template>page/rangoli.phtml</template>
+          <layout_handle>rangoli</layout_handle>
+        </rangoli>
         <!-- add more layouts here -->
       </layouts>
     </page>

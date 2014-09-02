@@ -1,0 +1,180 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for filter items block
+ *
+ * @see Mage_Catalog_Block_Layer_Filter
+ */
+?>
+<div class="scroller_anchor" style="height: 29px;"></div>
+<div class="leftnav f-left l-align cntn-scroll">
+<ul class="ctglink">
+<!-- <div class="leftnav f-left l-align">
+<ul class="ctglink"> -->
+<?php
+$hasnosubcategoryhtml  = '';
+$withsubcategoryhtml = '';
+
+foreach ($this->getItems() as $_item){
+    $qry = parse_url($_item->getUrl(), PHP_URL_QUERY);
+    parse_str($qry, $params);
+    //print_r($params);die;
+    $searchtype = "";
+    $searchvalue = "";
+    foreach($params as $key=>$value)
+    {
+        $searchtype = $key;
+        $searchvalue = $value.' ';
+    }
+    //echo $searchvalue.'--';
+    if($searchtype=="cat")
+    {
+
+        $subsubcategory = Mage::getModel('catalog/category')->load($searchvalue);
+        $subsubcategories = $subsubcategory->getChildrenCategories();
+        if($subsubcategory->getChildrenCount() == 0){
+             $hasnosubcategoryhtml .= '<li><a href='.$subsubcategory->getUrl().' class="bld">'.$subsubcategory->getName().'</a></li>';
+        }else{
+            $withsubcategoryhtml .= '<li class = "sub-head"><a href='.$subsubcategory->getUrl().' class="bld">'.$subsubcategory->getName().'</a></li>';
+            $withsubcategoryhtml .= '<ul class = "subnav">';
+            foreach ($subsubcategories as $child3)
+                    {
+                        if($child3->getIsActive()) {
+                            $withsubcategoryhtml .=  '<li><a href='.$child3->getUrl().'>'.$child3->getName().'</a></li>';
+
+                        }
+                    }
+            $withsubcategoryhtml .= '</ul>';
+        }
+
+
+
+    }
+
+
+ }
+$withsubcategoryhtml .= '</ul></div>';
+
+echo $hasnosubcategoryhtml.$withsubcategoryhtml; ?>
+
+
+
+
+<!--
+
+<?php foreach ($this->getItems() as $_item){ 
+        $qry = parse_url($_item->getUrl(), PHP_URL_QUERY);
+        parse_str($qry, $params);
+        //print_r($params);
+        $searchtype = "";
+        $searchvalue = "";
+        foreach($params as $key=>$value)
+        {
+            $searchtype = $key;
+            $searchvalue = $value;
+        }
+        $hassubcategory = false;
+        if($searchtype=="cat")
+        {
+            $children = Mage::getModel('catalog/category')->getCategories($searchvalue);
+            foreach ($children as $category) {
+                $hassubcategory = true;
+                break;
+                //echo $category->getName();
+            }
+        }
+    ?>
+    <div <?php /* title="<?php echo $searchvalue ?>" */ ?> id="<?php echo $searchtype; ?>|<?php echo $searchvalue ?>" searchattr="<?php echo $searchtype; ?>" searchval="<?php echo $searchvalue ?>" class="<?php if($hassubcategory) { echo "pcategory closed";} ?>">
+        <table class="inactive">
+            <tr>
+                <td>
+                    <?php
+                        if(strpos($_item->getLabel(), "|") != false || strpos($_item->getLabel(), "|") !== false)
+                            echo html_entity_decode(substr($_item->getLabel(), 0, strpos($_item->getLabel(), "|"))); 
+                        else
+                            echo html_entity_decode($_item->getLabel());
+                    ?>
+                </td>
+                <td class="add">
+                    <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/ic_plus.png'); ?>" />
+                </td>
+                <td class="remove">
+                    <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/ic_close.png'); ?>" />
+                </td>
+            </tr>
+        </table>
+    </div>
+<?php
+    if($hassubcategory)
+    {
+        $parentcategoryid = $searchvalue;
+        foreach ($children as $category) {
+            $searchvalue = $category->getId();
+            $catname = $category->getName();
+            ?>
+                <div <?php /* title="<?php echo $searchvalue ?>" */ ?> id="<?php echo $searchtype; ?>|<?php echo $searchvalue ?>" searchattr="<?php echo $searchtype; ?>" searchval="<?php echo $searchvalue ?>" class="subcategory <?php echo $parentcategoryid; ?>">
+                    <table class="inactive">
+                        <tr>
+                            <td>
+                                <?php
+                                    if(strpos($catname, "|") != false || strpos($catname, "|") !== false)
+                                        echo html_entity_decode(substr($catname, 0, strpos($catname, "|"))); 
+                                    else
+                                        echo html_entity_decode($catname);
+                                ?>
+                            </td>
+                            <td class="add">
+                                <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/ic_plus.png'); ?>" />
+                            </td>
+                            <td class="remove">
+                                <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/ic_close.png'); ?>" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            <?php  
+            //echo $category->getId();
+        }
+    }
+ } ?>
+-->
+<?php /*
+<ol>
+<?php foreach ($this->getItems() as $_item): ?>
+    <li>
+        <?php if ($_item->getCount() > 0): ?>
+        <a href="<?php echo $this->urlEscape($_item->getUrl()) ?>"><?php echo $_item->getLabel() ?></a>
+        <?php else: echo $_item->getLabel() ?>
+        <?php endif; ?>
+        <?php if ($this->shouldDisplayProductCount()): ?>
+        (<?php echo $_item->getCount() ?>)
+        <?php endif; ?>
+    </li>
+<?php endforeach ?>
+</ol>
+*/ ?>

@@ -1,0 +1,135 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/searchresults.css'); ?>" media="all" />
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/mycatalogsearch.js"></script>
+<div class="myheader">SEARCH RESULTS</div>
+<!-- div class="searchresultcount">WE&rsquo;VE FOUND <span id="spresultcount">5 PRODUCT MATCHES</span> FOR &ldquo;<?php echo $this->helper('catalogsearch')->getEscapedQueryText(); ?>&rdquo;</div -->
+<table style="margin:45px auto 0;">
+    <tr>
+        <td>
+           <table class="inputtable nolabel" style="width: 245px;">
+                <tr>
+                    <td class="label"><label for="txtSearch">Search text</label></td>
+                    <td class="inputholder"><input style="height:24px;" type="text" id="txtSearch" value="<?php echo $this->helper('catalogsearch')->getEscapedQueryText(); ?>" /></td>
+                </tr>
+                <tr>
+                    <td class="errortext" colspan="2">
+                        <div>Enter Search Term</div>
+                    </td>
+                </tr>
+           </table> 
+        </td>
+        <td style="padding-left : 10px;">
+            <div id="btnSearch" class="searchbutton spbutton" imageurl="<?php echo $this->getSkinUrl('images/catalog/product/search_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/search_on.png'); ?>"></div>
+        </td>
+    </tr>
+</table>
+<table style="width: 100%;">
+    <tr>
+        <td class="searchsidenavigation">
+            <div class="alwaysvisible top-divider">
+                <?php /*
+                <?php
+                    $collection = Mage::getModel('catalogsearch/query')->getCollection()
+                                     ->setPopularQueryFilter()
+                                     ->setPageSize(4)->getItems();
+                    if(count($collection) > 0)
+                    {
+                        ?>
+                            <div class="subheader">TOP SEARCHES</div>
+                            <?php
+                                foreach($collection as $item)
+                                 {
+                                    ?>
+                                        <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>catalogsearch/result/?q=<?php echo $item->getName(); ?>">
+                                        <div><?php echo $item->getName(); ?></div>
+                                        </a>
+                                    <?php
+                                 } 
+                            ?>        
+                        <?php
+                    } 
+                ?>
+                */ ?>
+                <div class="subheader">HELPFUL LINKS</div>
+                <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>help#size-chart">
+                    <div>SIZE CHART</div>
+                </a>
+                <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>gift_of_ys">
+                    <div>GIFT OF YS</div>
+                </a>
+                <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>smogi-bucks">
+                    <div>SMOGI BUCKS</div>
+                </a>
+                <!-- <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>our-story#guidingSMOGI">
+                    <div>NADIA ZAKI</div>
+                </a> -->
+                <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>help#shipping-returns">
+                    <div>DELIVERY &amp; RETURNS</div>
+                </a>   
+                <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>our-story#namaskar" class="current">
+                    <div>Namaskár Foundation </div>
+                </a>
+            </div>
+        </td>
+        <td>
+            <?php echo $this->getProductListHtml(); ?>
+        </td>
+    </tr>
+</table>
+
+<?php /*
+<?php if($this->getResultCount()): ?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="page-title">
+    <?php if ($this->helper('rss/catalog')->getTagFeedUrl()): ?>
+        <a href="<?php echo $this->helper('rss/catalog')->getTagFeedUrl() ?>" class="nobr link-rss"><?php echo $this->__('Subscribe to Feed') ?></a>
+    <?php endif; ?>
+    <h1><?php echo ($this->getHeaderText() || $this->getHeaderText() === false) ? $this->getHeaderText() : $this->__("Search results for '%s'", $this->helper('catalogsearch')->getEscapedQueryText()) ?></h1>
+</div>
+    <?php if ($messages = $this->getNoteMessages()):?>
+    <p class="note-msg">
+        <?php foreach ($messages as $message):?>
+            <?php echo $message?><br />
+        <?php endforeach;?>
+    </p>
+    <?php endif; ?>
+    <?php echo $this->getProductListHtml() ?>
+<?php else: ?>
+<div class="page-title">
+    <h1><?php echo ($this->getHeaderText() || $this->getHeaderText() === false) ? $this->getHeaderText() : $this->__("Search results for '%s'", $this->helper('catalogsearch')->getEscapedQueryText()) ?></h1>
+</div>
+<p class="note-msg">
+    <?php echo ($this->getNoResultText()) ? $this->getNoResultText() : $this->__('Your search returns no results.') ?>
+    <?php if ($messages = $this->getNoteMessages()):?>
+        <?php foreach ($messages as $message):?>
+        <br /><?php echo $message?>
+        <?php endforeach;?>
+    <?php endif; ?>
+</p>
+<?php endif; ?>
+*/ ?>

@@ -84,10 +84,14 @@ class IntellectLabs_Stripe_Block_Form_Stripe extends Mage_Payment_Block_Form_Cc
 		if (!is_object($stripeCustomer)) return "";
 		
 		$month = date("F",mktime(0, 0, 0, $stripeCustomer->active_card->exp_month, 1, 2012));
-		
-		return "<span>Card Type: <strong>{$stripeCustomer->active_card->type}</strong></span><br />" .
-			   "<span>Last 4 Digits: <strong>{$stripeCustomer->active_card->last4}</strong></span><br />" .
-			   "<span>Expires : <strong>{$month}/{$stripeCustomer->active_card->exp_year}</strong></span>";
+
+		// return "<span>Card Type: <strong>{$stripeCustomer->active_card->type}</strong></span><br />" .
+		//  	   "<span>Last 4 Digits: <strong>{$stripeCustomer->active_card->last4}</strong></span><br />" .
+		// 	   "<span>Expires : <strong>{$month}/{$stripeCustomer->active_card->exp_year}</strong></span>";
+
+		$var =  $this->getSkinUrl('images/credit-card-strip.jpg');
+		return "<span>xxxx xxxx xxxx <strong>{$stripeCustomer->active_card->last4}</strong></span><br />" .
+				"<span class='cardType'><img src='".$var."' class='v-middle' /></span>";			   
 				
 	}
 	

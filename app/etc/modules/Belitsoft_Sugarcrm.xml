@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<config>
-    <modules>
-        <Belitsoft_Sugarcrm>
-            <active>true</active>
-            <codePool>local</codePool>
-        </Belitsoft_Sugarcrm>
-    </modules>
-</config> 
