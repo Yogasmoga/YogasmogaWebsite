@@ -2376,11 +2376,6 @@ table.aurumiconcell tr td:nth-child(8) img,table.aurumiconcell tr td:nth-child(9
 .cms-our-story .gridFullWidth.ysbottomsection{
     margin-top: 0;
 }
-
-.smogi-love.no-over-state:hover{
-    cursor: inherit;
-    color: #555;
-}
 #paymentmethoderrormsg.loginerrormsg.errormsg {
     margin: 5px 0 0;
 }
@@ -2401,6 +2396,11 @@ table.aurumiconcell tr td:nth-child(8) img,table.aurumiconcell tr td:nth-child(9
     cursor: inherit;
     color: #555;
 }
+
+a.no-over-state:hover{
+    cursor: inherit !important;
+}
+
 #paymentmethoderrormsg.loginerrormsg.errormsg {
     margin: 5px 0 0;
 }

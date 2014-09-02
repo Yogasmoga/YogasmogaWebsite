@@ -199,9 +199,12 @@ sizeChartPop();
     }
 
     if(!_islogedinuser){
-        $(".footer-block .smogi-love").removeClass("no-over-state");
-    }else{
-        $(".footer-block .smogi-love").addClass("no-over-state");
+        jQuery(".footer-block .smogi-love").removeClass("no-over-state");
+        jQuery(".share-strip .sign-up-new a").removeClass("no-over-state");
+    }
+    else{
+        jQuery(".footer-block .smogi-love").addClass("no-over-state");
+        jQuery(".share-strip .sign-up-new a").addClass("no-over-state");
     }
 
 
