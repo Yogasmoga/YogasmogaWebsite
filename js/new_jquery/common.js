@@ -9,9 +9,21 @@ jQuery(window).load(function($){
     jQuery(".featureList span.ftrFig").css("height", featLiH);   
     playBtnPos();
     sizeChartScroll();      
-    // jQuery("body").animate({opacity:1},100); 
+    // jQuery("body").animate({opacity:1},100);     
 });
 jQuery(document).ready(function($){  
+    var i = 0;
+    var pageReload = setInterval(function(){
+        i++;        
+        if(i == 10){
+            clearInterval(pageReload);            
+            if($(".namaskar-overlay1").is(":visible")){
+                window.location.reload();
+            }else{
+                return false;
+            }
+        }
+    },1000);
 
     var isSafari = browserTest();
     if(isSafari){

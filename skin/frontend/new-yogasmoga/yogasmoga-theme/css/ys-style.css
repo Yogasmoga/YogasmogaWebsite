@@ -1087,9 +1087,15 @@ span.country {
     /*width: 172px;*/
     text-transform: uppercase;
     cursor: pointer;
+    /*border-bottom:1px solid #c03;
+    padding-bottom: 3px;*/
+    float: left;
+}
+.namaskarinfo button span{
+    color: #555;
+    font: 11px gothambook;
     border-bottom:1px solid #c03;
     padding-bottom: 3px;
-    float: left;
 }
 .removesmogi, .removegiftcart, .removepromotion {
     cursor: pointer;
@@ -2409,3 +2415,4 @@ table.productdetailspopup td#tdpopupproductsmallimages tr:nth-child(4){
     display: none !important;
 }
 .share-strip,.new-arrivals-block{opacity: 0;}
+.cat-slide .flex-direction-nav{display: none;}
