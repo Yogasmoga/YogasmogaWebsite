@@ -14,10 +14,13 @@ jQuery(window).load(function($){
 jQuery(document).ready(function($){  
     var i = 0;
     var pageReload = setInterval(function(){
-        i++;        
+        i++;      
+        console.log(i);  
         if(i == 10){
+            console.log("test1");
             clearInterval(pageReload);            
             if($(".namaskar-overlay1").is(":visible")){
+                console.log("test2");
                 window.location.reload();
             }else{
                 return false;
