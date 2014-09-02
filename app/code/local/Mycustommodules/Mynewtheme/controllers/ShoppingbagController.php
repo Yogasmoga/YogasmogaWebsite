@@ -972,7 +972,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
             $html .='<li class="giftcard">
-                            <span class="f-left">$'.$discount1.' Gift Cards used  |</span>
+                            <span class="f-left">$'.$discount1.' Gift Card used  |</span>
                             <span class="removegiftcart"><a>remove</a></span>
 
                             <span class="f-right" usedgiftcard ="'.$discount.'">-$'.$discount.'</span>
@@ -997,6 +997,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         else if($checkpromoapplied == '1' || $checkgiftapplied == '1') $usesmogi='';
         else if($checksmogiapplied != '1' && $showedpoints > 0) $usesmogi='';
         else if($checksmogiapplied != '1' && $showedpoints > 0) $usesmogi='<p class="c-align">Use your SMOGI Bucks for this purchase</p>';
+        $usesmogi = '';
         $html .=  '<li>';
         if($shippingPrice == "FREE")
             $html .= '      <span class="f-left">Shipping: </span>

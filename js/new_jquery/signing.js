@@ -139,6 +139,15 @@ function  createCustomerAccount()
                             window.location.assign(_redirectFromSingingPopup);
                     }
                 });
+
+
+                // for remove over state on feel smogi love
+                if(!_islogedinuser){
+                    jQuery(".footer-block .smogi-love").removeClass("no-over-state");
+                }
+                else{
+                    jQuery(".footer-block .smogi-love").addClass("no-over-state");
+                }
             }
             else
             {
@@ -251,6 +260,14 @@ function loginCustomer()
                 if (jQuery("body").hasClass("cms-smogi-bucks")) {
                     jQuery(".gd-container1").hide();
                     window.location.assign(homeUrl+'customer/account/index');
+                }
+
+                // for remove over state on feel smogi love
+                if(!_islogedinuser){
+                    jQuery(".footer-block .smogi-love").removeClass("no-over-state");
+                }
+                else{
+                    jQuery(".footer-block .smogi-love").addClass("no-over-state");
                 }
 
             }
