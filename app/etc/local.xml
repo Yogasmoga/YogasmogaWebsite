@@ -43,7 +43,7 @@
                     <host><![CDATA[yogasmoga.ctfwon1h9dxc.us-east-1.rds.amazonaws.com]]></host>
                     <username><![CDATA[yogasmoga]]></username>
                     <password><![CDATA[Yoga$moga]]></password>
-                    <dbname><![CDATA[ys_feature_20may14]]></dbname>
+                    <dbname><![CDATA[yogasmoga]]></dbname>
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
                     <model><![CDATA[mysql4]]></model>
                     <type><![CDATA[pdo_mysql]]></type>
