@@ -29,7 +29,12 @@ jQuery(document).ready(function($){
     $("#hidemsg").live("click",function(){
          $('#redeemresult').empty().hide();
     });
-    $("#continuelink,.pageoverlay").live("click",function(){
+    $("#continuelink,.pageoverlay").live("click",function(){        
+        var leftNav = jQuery(".leftnav");
+        if(leftNav.is(":visible")){
+            var offset = leftNav.parent().offset().top - 58;
+            $(window).scrollTop(offset); 
+        }   
         $(".pageoverlay").hide();
         $(".page").animate({ left: '0' }).css("");
         $(".header-container").animate({ left: "0" });
@@ -298,7 +303,7 @@ jQuery(window).resize(function(){
         });
     }*/
     jQuery(".open-cart").live("click", function(){
-        openShoppingCart();
+        openShoppingCart();             
     });
 
 function occurrences(string, substring){
@@ -316,6 +321,13 @@ function occurrences(string, substring){
 
 function openShoppingCart()
 {
+    var leftNav = jQuery(".leftnav");
+    var leftNavVis = leftNav.is(":visible");
+    var leftNavPos = leftNav.css("position");
+    if(leftNavVis && leftNavPos == "fixed"){        
+        leftNav.removeClass("scrolltop");
+    }
+
 var shoppingWdth = jQuery(".shopping-cart").width();
 var bodyHght = jQuery(window).height();
 jQuery(".shopping-cart").css({
