@@ -400,6 +400,7 @@ function showShoppingBagHtml()
         _usesecureurl = false;
     var url = homeUrl + 'mynewtheme/shoppingbag/showshoppingbaghtml';
     var checkouturl = homeUrl + 'checkout/onepage';
+    checkouturl = securehomeUrl + 'checkout/onepage';
     if(_usesecureurl)
     {
         url = securehomeUrl + 'mynewtheme/shoppingbag/showshoppingbaghtml';
