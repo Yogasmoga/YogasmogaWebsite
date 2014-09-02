@@ -2260,6 +2260,8 @@ td.checkShippingBox input[type="checkbox"]:checked + label, td.checkBillingBox i
 ul.featureList li{position: relative;}
 ul.featureList li img.vid-pl-btn {width: auto; position: absolute; width: 40%; max-width: 91px; display: none;}
 ul.featureList li.last-df img.vid-pl-btn{display: block;}
+ul.featureList li.last-df.df-no-vid img.vid-pl-btn{display: none;}
+ul.featureList li.last-df.df-no-vid{cursor: default;}
 
 table.referfriendforms td.success img{cursor:default !important;}
 
