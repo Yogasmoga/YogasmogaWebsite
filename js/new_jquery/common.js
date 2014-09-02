@@ -548,7 +548,7 @@ function featuredSec(){
         jQuery(".wl-cs-right-block .top-right-block").css("height", cs_right/2);    
         var cs_right_top = jQuery(".wl-cs-right-block .top-right-block").height();
         var cs_right_bot_H = cs_right - cs_right_top;    
-        jQuery(".wl-cs-right-block .bottom-right-block").css("height", cs_right_bot_H);
+        jQuery(".wl-cs-right-block .bottom-right-block").css("height", cs_right_bot_H);        
     }
     // rgt_vid_img.css("margin-top", (rgt_vid - rgt_vid_img_height)/2.07);
 
