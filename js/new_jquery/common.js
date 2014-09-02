@@ -12,21 +12,18 @@ jQuery(window).load(function($){
     // jQuery("body").animate({opacity:1},100);     
 });
 jQuery(document).ready(function($){  
-    var i = 0;
-    var pageReload = setInterval(function(){
-        i++;      
-        console.log(i);  
-        if(i == 10){
-            console.log("test1");
-            clearInterval(pageReload);            
-            if($(".namaskar-overlay1").is(":visible")){
-                console.log("test2");
-                window.location.reload();
-            }else{
-                return false;
-            }
-        }
-    },1000);
+    // var i = 0;
+    // var pageReload = setInterval(function(){
+    //     i++; 
+    //     if(i == 10){
+    //         clearInterval(pageReload);            
+    //         if($(".namaskar-overlay1").is(":visible")){                
+    //             window.location.reload();
+    //         }else{
+    //             return false;
+    //         }
+    //     }
+    // },1000);
 
     var isSafari = browserTest();
     if(isSafari){
