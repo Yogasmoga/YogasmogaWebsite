@@ -144,9 +144,11 @@ function  createCustomerAccount()
                 // for remove over state on feel smogi love
                 if(!_islogedinuser){
                     jQuery(".footer-block .smogi-love").removeClass("no-over-state");
+                    jQuery(".share-strip .sign-up-new a").removeClass("no-over-state");
                 }
                 else{
                     jQuery(".footer-block .smogi-love").addClass("no-over-state");
+                    jQuery(".share-strip .sign-up-new a").addClass("no-over-state");
                 }
             }
             else
@@ -265,9 +267,11 @@ function loginCustomer()
                 // for remove over state on feel smogi love
                 if(!_islogedinuser){
                     jQuery(".footer-block .smogi-love").removeClass("no-over-state");
+                    jQuery(".share-strip .sign-up-new a").removeClass("no-over-state");
                 }
                 else{
                     jQuery(".footer-block .smogi-love").addClass("no-over-state");
+                    jQuery(".share-strip .sign-up-new a").addClass("no-over-state");
                 }
 
             }

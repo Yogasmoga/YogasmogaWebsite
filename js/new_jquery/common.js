@@ -12,18 +12,18 @@ jQuery(window).load(function($){
     // jQuery("body").animate({opacity:1},100);     
 });
 jQuery(document).ready(function($){  
-    // var i = 0;
-    // var pageReload = setInterval(function(){
-    //     i++; 
-    //     if(i == 10){
-    //         clearInterval(pageReload);            
-    //         if($(".namaskar-overlay1").is(":visible")){                
-    //             window.location.reload();
-    //         }else{
-    //             return false;
-    //         }
-    //     }
-    // },1000);
+    /*var i = 0;
+    var pageReload = setInterval(function(){
+        i++; 
+        if(i == 10){
+            clearInterval(pageReload);            
+            if($(".namaskar-overlay1").is(":visible")){                
+                window.location.reload();
+            }else{
+                return false;
+            }
+        }
+    },1000);*/
 
     var isSafari = browserTest();
     if(isSafari){
@@ -91,7 +91,7 @@ sizeChartPop();
         dfVid2.play();               
     });
 
-    $("body.catalog-product-view").on("click", "ul.featureList li:nth-child(4)", function(){               
+    $("body.catalog-product-view").on("click", "ul.featureList li.last-df", function(){               
         // $("body").scrollTop(0);
         pdpVidPop.fadeIn();        
         var designVidWidth = designVid.width();
@@ -199,9 +199,12 @@ sizeChartPop();
     }
 
     if(!_islogedinuser){
-        $(".footer-block .smogi-love").removeClass("no-over-state");
-    }else{
-        $(".footer-block .smogi-love").addClass("no-over-state");
+        jQuery(".footer-block .smogi-love").removeClass("no-over-state");
+        jQuery(".share-strip .sign-up-new a").removeClass("no-over-state");
+    }
+    else{
+        jQuery(".footer-block .smogi-love").addClass("no-over-state");
+        jQuery(".share-strip .sign-up-new a").addClass("no-over-state");
     }
 
 
