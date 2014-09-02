@@ -842,7 +842,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
             foreach($newdfimages as $ndfimg)
             {$i++;
                 ?>
-                <li class="<?php if($i==4){echo 'last-df'; if( $designfeaturevidioname == '') echo 'df-no-vid'} ?>"><span class="ftrFig "><img class="vid-pl-btn" src="<?php echo $this->getSkinUrl('images/vid-icon-img.png'); ?>"><img class="df-img" alt="" src="<?php echo substr($ndfimg["url"], 1); ?>"></span><span><?php echo $ndfimg["caption"]; ?></span></li>
+                <li class="<?php if($i==4){echo 'last-df'; if( $designfeaturevidioname == '') echo 'df-no-vid'; } ?>"><span class="ftrFig "><img class="vid-pl-btn" src="<?php echo $this->getSkinUrl('images/vid-icon-img.png'); ?>"><img class="df-img" alt="" src="<?php echo substr($ndfimg["url"], 1); ?>"></span><span><?php echo $ndfimg["caption"]; ?></span></li>
             <?php
             }
             ?>
