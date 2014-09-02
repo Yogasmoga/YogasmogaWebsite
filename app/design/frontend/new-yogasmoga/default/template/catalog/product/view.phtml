@@ -1324,16 +1324,26 @@ while ($row = $readresult->fetch() ) {
 <!-- FitAndFabricDetails -->
 
 <!--Container for the video Popup-->
+<?php
+    if($designfeaturevidioname != '')
+    {
+?>
 <div class="html-vid-pop html-des-vid-popup">
     <video id="df-vid" style="width:100%;" controls>
         <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."design_features_video/".$_product->getDesignFeatureVideo(); ?>" type="video/mp4">
     </video>
 </div>
+<?php }  ?>
+<?php
+if($howToMeasureVidio != '')
+{
+?>
 <div class="html-vid-pop html-fit-vid-popup">
     <video id="measure-vid" style="width:100%;" controls>
         <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."how_to_measure_video/".$_product->getHowToMeasureVideo(); ?>" type="video/mp4">
     </video>
 </div>
+<?php }  ?>
 <div class="vid-popup-overlay"></div>
 </div>
 <!-- ProductPage -->
