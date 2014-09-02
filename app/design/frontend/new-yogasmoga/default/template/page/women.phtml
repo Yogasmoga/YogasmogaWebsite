@@ -89,13 +89,17 @@
             if (event.keyCode == 27) { 
                 jQuery(".vid-popup-overlay").trigger("click");                            
             }
+        }     
+        var ra = document.getElementById("bannerimg").complete;
+        if(ra){
+            jQuery(".share-strip, .new-arrivals-block").animate({opacity:1},100);
         }
-    });
+    });    
     jQuery(document).ready(function(){
        setTimeout(function(){
             jQuery("div.page-overlayy").remove();
             jQuery("body").css('overflow','auto');
-       }, 500); 
+       }, 500);              
     });
 </script>   
 <div class="namaskar-overlay1">&nbsp;</div>
@@ -121,7 +125,7 @@
             <div class="flexslider showloading">
                 <ul class="slides">
                     <li>
-                        <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/WomenSlider.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
+                        <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/WomenSlider.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
 
                             <div class="banner-txt3 promo2310 promo1311 white">
                                 Meet paradeiza red.
