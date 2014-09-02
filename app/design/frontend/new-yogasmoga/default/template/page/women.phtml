@@ -89,22 +89,22 @@
             if (event.keyCode == 27) { 
                 jQuery(".vid-popup-overlay").trigger("click");                            
             }
+        }     
+        var bannerImg = document.getElementById("bannerimg").complete;
+        if(bannerImg){
+            jQuery(".share-strip, .new-arrivals-block").animate({opacity:1},100);
         }
-    });
+        jQuery('body').css('overflow','auto');
+        jQuery('.namaskar-overlay1').fadeOut('slow');
+    });    
     jQuery(document).ready(function(){
        setTimeout(function(){
             jQuery("div.page-overlayy").remove();
             jQuery("body").css('overflow','auto');
-       }, 500); 
+       }, 500);              
     });
 </script>   
 <div class="namaskar-overlay1">&nbsp;</div>
-<script type="text/javascript">
-    jQuery(document).ready(function(){
-        jQuery('body').css('overflow','auto');
-        jQuery('.namaskar-overlay1').fadeOut('slow');
-    })
-</script> 
 </head>
 <body class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>" style="margin-right:17px;overflow:hidden;">
 <?php echo $this->getChildHtml('after_body_start') ?>
@@ -118,10 +118,10 @@
         <?php echo $this->getChildHtml('header') ?>
             <div id="pagecontainer">
             <!-- sliderBanner -->
-            <div class="flexslider showloading">
+            <div class="flexslider showloading cat-slide">
                 <ul class="slides">
                     <li>
-                        <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/WomenSlider.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
+                        <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/WomenSlider.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
 
                             <div class="banner-txt3 promo2310 promo1311 white">
                                 Meet paradeiza red.

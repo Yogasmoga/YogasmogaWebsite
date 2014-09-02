@@ -1524,7 +1524,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
                 }
 
-                $html .= '</select></span><button class="addbracelet">Add to bag</button></span>
+                $html .= '</select></span><div class="clear-fix"></div><button class="addbracelet"><span>Add to bag</span></button></span>
                                 </li>';
 
 
