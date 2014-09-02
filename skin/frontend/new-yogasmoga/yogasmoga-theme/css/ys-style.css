@@ -2381,3 +2381,10 @@ table.aurumiconcell tr td:nth-child(8) img,table.aurumiconcell tr td:nth-child(9
 #shippingaddresserrormsg.loginerrormsg.errormsg {
     margin: 5px 0 0;
 }
+
+/** hide forthImage **/
+.zoom-thumb-imgs .zoomsmallimagecontainer tr:nth-child(4),
+table.productimagecontainer table.smallimagecontiner td:nth-child(4),
+table.productdetailspopup td#tdpopupproductsmallimages tr:nth-child(4){
+    display: none !important;
+}
