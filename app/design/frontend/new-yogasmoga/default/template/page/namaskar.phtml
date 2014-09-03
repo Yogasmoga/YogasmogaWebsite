@@ -1,0 +1,158 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+<?php echo $this->getChildHtml('head') ?>
+<script type="text/javascript">
+    _disablesidenavigation = false;
+</script>
+</head>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?> style="overflow:hidden;">
+<?php echo $this->getChildHtml('after_body_start') ?>
+<div class="wrapper">
+    <?php echo $this->getChildHtml('global_notices') ?>
+    <div class="page">
+        <?php echo $this->getChildHtml('header') ?>
+        <div class="main-container col1-layout">
+            <div class="main">
+                <?php echo $this->getChildHtml('breadcrumbs') ?>
+                <div class="col-main">
+                    <?php echo $this->getChildHtml('global_messages') ?>
+<div class="namaskar-overlay" style="background:#fff url(<?php echo $this->getSkinUrl('images/loading.gif') ?>) 50% 50% no-repeat; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">&nbsp;</div>
+<div class="nam-page">
+	<div class="namsec first pgsection" id="Giving" desc="Giving" tw-summary="Check out the #NAMASKAR Foundation">
+		<img class="bg-img" src="<?php echo $this->getSkinUrl('images/namaskar/nam1.jpg'); ?>" alt="Namaskar Foundation &ndash; Giving is a Core Value of YOGASMOGA" />
+		<img class="hidden" src="<?php echo $this->getSkinUrl('images/namaskar/snm1.jpg'); ?>" />
+        <img class="bg-img shareit hidden" src="<?php echo $this->getSkinUrl('images/namaskar/nam1.jpg'); ?>" alt="Namaskar Foundation &ndash; Giving is a Core Value of YOGASMOGA" />
+		<div class="values-box cbox">
+			<h1 class="value-title">GIVING is a Core Value of YOGASMOGA.</h1>
+			<p style="letter-spacing:-1px;">We have created the Namask&aacute;r Foundation because we care. </p>
+			<p>We recognize that textile production is typically done in the most economically challenged locations of the world. It is our absolute obligation and duty to give back. We welcome you to join us on this journey.</p>
+		</div>
+		<div class="change-box cbox pgsection" id="Join" desc="Pledge Counter" tw-summary="Check out how YOGASMOGA is joing hands to make a change. #NAMASKAR Foundation">
+		    <img class="bg-img shareit hidden" src="<?php echo $this->getSkinUrl('images/namaskar/nam1.jpg'); ?>" alt="Namaskar Foundation &ndash; Giving is a Core Value of YOGASMOGA" />	
+            <img class="hidden" src="<?php echo $this->getSkinUrl('images/namaskar/snm2.jpg'); ?>" />
+            <?php /*
+			<span class="count">$<?php 
+			 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+			 $result = $write->query("SELECT IF(SUM(row_total) > 0, SUM(row_total), 0) as revenue FROM sales_flat_order sfo, sales_flat_order_item sfoi WHERE sfo.status='complete' AND sfo.entity_id=sfoi.order_id AND sfoi.product_id = ".Mage::getModel('core/variable')->loadByCode('namaskar_bracelet_id')->getValue('plain'));
+			$row = $result->fetch();
+            $row['revenue'] += 1000;
+			 echo number_format($row['revenue']);
+			?></span>
+            */ ?>
+			<p>JOINING HANDS TO MAKE A CHANGE.<br/>
+			<strong>namask&Aacute;r.</strong></p>
+		</div>
+	</div>
+	<div class="namsec second pgsection" id="Raisingfund" desc="Raising the Funds" tw-summary="Check out the #NAMASKAR Bracelets">
+		<img class="bg-img" src="<?php echo $this->getSkinUrl('images/namaskar/nam2.jpg'); ?>" alt="Namaskar Foundation &ndash; Raising the Funds and Making Change in the World." />
+		<img class="shareit hidden" src="<?php echo $this->getSkinUrl('images/namaskar/snm3.jpg'); ?>" />
+		<div class="foundation-box cbox">
+			<h1 class="heading-foundation">THE NAMASK&Aacute;R FOUNDATION.<span>raising the funds.</span></h1>
+			<p>YOGASMOGA has coordinated the manufacture and sales of hand woven bracelets that are being made on handlooms in remote villages of the Himalayas. These hand woven bracelets are sold by YOGASMOGA for $10 and Net Proceeds of all sales will be donated to the NAMASK&Aacute;R Foundation.</p>
+			<a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>women/namaskar-bracelet">
+			<div class="spbutton btnbracelet" imageurl="<?php echo $this->getSkinUrl('images/add_bracelet_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/add_bracelet_on.png'); ?>"></div>
+			</a>
+		</div>
+	</div>
+	
+	<div class="namsec second-a pgsection" id="Make-change" desc="Making a Change" tw-summary="Check out the #NAMASKAR Foundation">
+		<img class="bg-img" src="<?php echo $this->getSkinUrl('images/namaskar/nam2a.jpg'); ?>" alt="Namaskar Foundation &ndash; Raising the Funds and Making Change in the World." />
+		<img class="shareit hidden" src="<?php echo $this->getSkinUrl('images/namaskar/snm3.jpg'); ?>" />
+		<div class="fchange-box cbox">
+			<h1 class="heading-mc">THE NAMASK&Aacute;R FOUNDATION<span>Making Change in The World.</span></h1>
+			<p>The Namask&aacute;r<br/>Foundation focuses its<br/>energies on three equally<br/>important causes.</p>
+		</div>
+	</div>
+	<div class="namsec third pgsection" id="Ourmission" desc="Our Mission" tw-summary="Check out the #NAMASKAR Foundation">
+		<img class="bg-img" src="<?php echo $this->getSkinUrl('images/namaskar/nam3.jpg'); ?>" alt="Namaskar Foundation &ndash; The Meaning" />
+		<img class="shareit hidden" src="<?php echo $this->getSkinUrl('images/namaskar/snm5.jpg'); ?>" />
+		<div class="works-cols">
+			<div class="health left">
+			<h1 class="title">1. Health</h1>
+			</p>In our travels to the developing world we have realized that people (especially women) lack even a basic level of health care. <br/>
+			The Namask&aacute;r Foundation seeks to provide basic health initiatives, immunization, care and education around early child birth so that each child born has an opportunity to a successful future that they deserve.</p>
+			</div>
+			<div class="microlending right">
+			<h1 class="title">3. Microlending</h1>
+			</p>The Namask&aacute;r Foundation seeks to provide micro loans ($10 - $50) to individuals in developing economies who have no access to banks. These micro loans provide an opportunity to individuals to jump-start small cottage industries  that over time generate income. One of the very first micro lending projects that NAMASK&Aacute;R is working on is setting up handlooms for women in the remote villages of the Himalayas so that these women can earn a living producing Namask&aacute;r bracelets.</p>
+			</div>
+			<div class="education">
+			<h1 class="title">2. Education</h1>
+			</p>Education is the foundation of well-being. The Namask&aacute;r Foundation seeks to provide education that gives children and young adults a chance to grow into productive, fulfilled adults. NAMASK&Aacute;R intends to develop education programs, including work with existing education based charities.</p>
+			</div>
+		</div>
+	</div>
+	<div class="namsec third-a">
+		<img class="bg-img" src="<?php echo $this->getSkinUrl('images/namaskar/namaskaarm.png'); ?>" alt="Namaskar Foundation &ndash; The Meaning" />
+		<div class="meaning-box cbox pgsection" id="Meaning" desc="Namask&aacute;r: The Meaning" tw-summary="Check out the #NAMASKAR Foundation">
+			<img class="shareit hidden" src="<?php echo $this->getSkinUrl('images/namaskar/snm5.jpg'); ?>" />
+			<h1 class="heading-mc">namask&Aacute;r: the meaning</h1>
+			<p>While many are familiar with the greeting &ndash; Namast&eacute; -fewer in the west are familiar with the traditional Indian greeting &ndash; Namask&aacute;r. More respectful than Namast&eacute;, it is not simply a greeting but a profound philosophy of shunning arrogance and negating one&rsquo;s ego. The gesture, Namask&aacute;r, represents the belief that there is a divine spark within each of us that is located in the heart chakra. This gesture is an acknowledgement of the soul in one &ndash; by the soul in another. We join our hands together to recognize each other&rsquo;s soul, aiming to connect and honor each other.</p>
+		</div>
+	</div>
+	<div class="namsec forth pgsection" id="Support" desc="Support Namask&aacute;r" tw-summary="Check out the #NAMASKAR Foundation">
+		<img class="bg-img" src="<?php echo $this->getSkinUrl('images/namaskar/nam4.jpg'); ?>" alt="Namaskar Foundation &ndash; Please Support by Purchasing a Namaskar Bracelet."/>
+		<img class="shareit hidden" src="<?php echo $this->getSkinUrl('images/namaskar/snm7.jpg'); ?>" />
+		<div class="support-box cbox">
+			<h1 class="heading-mc"><span>SUPPORT</span>NAMASK&Aacute;R</h1>
+			<p>We bring the Namask&aacute;r bracelet to you as a traditional symbol of the deep Yoga culture that connects two people &ndash; our SMOGIs and the weavers of the Himalayas.
+			The weavers (mostly women) have lost much of their business to machine manufacturing and today we give you an opportunity to connect directly with these hard working people so you can help them attain the means they need to continue their craft, while you proudly wear a hand made (and beautiful) Namask&aacute;r bracelet.</p>
+			<a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>women/namaskar-bracelet">
+			<div class="spbutton btnbracelet" imageurl="<?php echo $this->getSkinUrl('images/add_bracelet_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/add_bracelet_on.png'); ?>"></div>
+			</a>
+		</div>
+	</div>
+	<div class="disclaimer">
+		Namaskar Foundation, Inc. was incorporated on January 15, 2013 and is organized exclusively for charitable and educational purposes.  It is currently in the process of applying to the Internal Revenue Service for tax-exempt status as a 501(c)(3) organization. 
+
+	</div>
+</div>
+
+<script type="text/javascript">
+jQuery(window).load(function(){
+	jQuery('body').css('overflow','auto');
+	jQuery('.namaskar-overlay').fadeOut('slow');
+})
+</script>
+                </div>
+            </div>
+        </div>
+        <?php echo $this->getChildHtml('footer') ?>
+        <?php echo $this->getChildHtml('before_body_end') ?>
+    </div>
+</div>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>

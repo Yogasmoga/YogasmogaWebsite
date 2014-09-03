@@ -1,0 +1,93 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var $this Mage_Sales_Block_Order_Totals
+ * @see Mage_Sales_Block_Order_Totals
+ */
+?>
+<?php foreach ($this->getTotals() as $_code => $_total): ?>
+    <?php if ($_total->getBlockName()): ?>
+        <?php echo $this->getChildHtml($_total->getBlockName(), false); ?>
+    <?php else:?>
+    <tr class="<?php echo $_code?>">
+        <td <?php echo $this->getLabelProperties()?>>
+            <?php if ($_total->getStrong()):?>
+            <strong><?php echo $this->escapeHtml($_total->getLabel());?></strong>
+            <?php else:?>
+            <?php
+                if(strpos($_total->getLabel(),"Discount") !== false)
+                {
+                    $str1 = $_total->getLabel();
+                    $str1 = str_replace("Card,","Card AND", $str1);
+                    $str1 = str_replace("Gift Card","Gift of YS Card", $str1);
+                    $str1 = str_replace("Discount","", $str1);
+                    $str1 = str_replace(")","", $str1);
+                    $str1 = str_replace("(","", $str1);
+                    $str1 = str_replace("smogi bucks","SMOGI Bucks", $str1);
+                    
+                    //echo "abc";
+                    //echo $this->getOrder()->getRealOrderId();
+                    $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                    $readresult=$write->query("SELECT coupon_code FROM sales_flat_order WHERE increment_id='".$this->getOrder()->getRealOrderId()."'");
+                    $coupon_code = "";
+                    while ($row = $readresult->fetch() ) {
+                        $coupon_code = $row['coupon_code'];
+                    }
+                    if($coupon_code != ""){
+                        $str1 = str_replace($coupon_code,ucwords($coupon_code)." Promotion", $str1);                        
+                    }
+                    //$coupon_code = $readresult->fetch();
+//                    $coupon_code = $coupon_code[0]['coupon_code'];
+//                    echo $coupon_code."HHH";
+//                    $coupon_code = Mage::getSingleton('checkout/session')->getQuote()->getCouponCode();
+//                    if($coupon_code){
+//                        //echo "coupon used".$coupon_code;
+//                        $str1 = str_replace($coupon_code,$coupon_code." PROMOTION", $str1);
+//                        
+//                    }
+                    
+                    if(trim($str1) == "")
+                        $str1 = "Discount";
+                    echo $this->escapeHtml($str1);
+                }
+                else
+                {
+                    echo $this->escapeHtml($_total->getLabel());
+                }
+            ?>
+            <?php //echo $this->escapeHtml($_total->getLabel());?>
+            <?php endif?>
+        </td>
+        <td <?php echo $this->getValueProperties()?>>
+            <?php if ($_total->getStrong()):?>
+            <strong><?php echo $this->formatValue($_total) ?></strong>
+            <?php else:?>
+            <?php echo $this->formatValue($_total) ?>
+            <?php endif?>
+        </td>
+    </tr>
+    <?php endif?>
+<?php endforeach?>

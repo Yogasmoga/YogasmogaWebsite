@@ -4352,3 +4352,11 @@ div.sub-fab img{width: 45% !important; display: block; margin:25px auto 0 auto;}
 @media screen and (min-width: 1400px){ 
     .fab_text h3,.fab_text,div.sub-fab{font-size: 36px;}
     }
+
+/*  for show price in red for sale*/
+div.mycategory-products div.item td.productprice span.price
+{
+    display : block !important;
+}
+.productprice.IN span.price{color:rgba(255, 0, 0, 0.99)!important;}
+.productcost.IN{color:rgba(255, 0, 0, 0.99)!important;}

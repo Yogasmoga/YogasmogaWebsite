@@ -1,0 +1,268 @@
+.dressingroomsubheader
+{
+    font-family:gothambook;
+    margin-top: 10px;
+}
+.dressingroomoptions
+{
+    font-family:gothambook;
+    letter-spacing:0.8px;
+    margin-top : 10px;
+}
+#dressingroomdivider img
+{
+    width : 100%;
+}
+#dressingroomholder table
+{
+    width : 100%;
+    table-layout: fixed;
+}
+#dressingroomholder div.productdetail, #dressingroomholder img.invisible {
+  margin-right: 10%;
+  margin-top: -150px;
+  display:none;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+#dressingroomholder table td.goleft,#dressingroomholder table td.goright  
+{
+    width : 10%;
+}
+#dressingroomholder table td.goleft img,#dressingroomholder table td.goright img
+{
+    cursor: pointer;
+}
+#dressingroomholder table td
+{
+    text-align: center;
+    vertical-align: middle;
+}
+#dressingroomholder table td.detailholder  
+{
+    width: 25%;
+    min-width: 25%;
+   max-width: 25%;
+}
+#dressingroomholder div.productdetail div.viewdetails, #dressingroomholder div.productdetail button.viewdetails
+{
+    width : 169px;
+    height : 35px;
+	text-indent:-999em;
+    background-image : url('../images/catalog/product/dressingroom/view_details_off.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-top : 10px;
+}
+@media only screen and (device-width: 768px) {
+  #dressingroomholder div.productdetail div.viewdetails {
+	  background: none !important;
+	  text-indent:0;
+	  float:left;
+	  margin-top:1px;
+	  color:#D90d3d;
+	  line-height:14px;
+	  box-shadow:none;
+	  border-bottom:1px solid #D90d3d;
+	  width:auto;
+	  height:auto;
+	}
+	#dressingroomholder div.productdetail div.productdescription{display:none;}
+}
+#dressingroomholder div.productdetail
+{
+	padding-right:50px;
+    color : #767676;
+}
+#dressingroomholder div.productdetail div
+{
+    text-align : left;
+}
+#dressingroomholder div.productdetail div.productcount
+{
+    font-size: 30px;
+    height: 50px;
+}
+#dressingroomholder div.productdetail div.productcount div
+{
+    float : left;
+}
+#dressingroomholder div.productdetail div.productcount div.current
+{
+    font-weight: bold;
+	line-height:43px;
+}
+#dressingroomholder div.productdetail div.productcount div.countdivider
+{
+    
+}
+#dressingroomholder div.productdetail div.productcount div.totalcount
+{
+   font-family : ChaletParisNineteenSeventy, gotham, Arial;
+    padding-left : 3px;       
+}
+#dressingroomholder div.productdetail div.productname
+{
+    font-family:gothamMedium;
+    font-size:11px;
+}
+#dressingroomholder div.productdetail div.productdescription {
+  font-family: gothambook;
+  font-size: 11px;
+  height: 30px;
+  line-height: 14px;
+  overflow: hidden;
+}
+
+#dressingroomdivider
+{
+    height : 2px;
+    overflow: hidden;
+}
+.dressingroombg
+{
+    background-image : url('../images/catalog/product/dressingroom/dressing_room_bg_830pix_01.png');
+    background-repeat: no-repeat;
+    background-position : center top;
+}
+#dressingroomholder
+{
+    margin-top : 20px;
+}
+#dressingroomholder .ovl-box{
+  content: ".";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+#dressingroomholder #dressingroomtop table td.imageholder
+{
+    height : 220px;
+}
+dressingroomholder #dressingroombottom table td.imageholder
+{
+    height : 430px;
+}
+
+/*-----------------New Dressing Room Designs---------------*/
+#dressingroombottom td.imageholder
+{
+    vertical-align : top;
+}
+#dressingroomtop
+{
+    position : relative;
+}
+#dressingroomtop td.imageholder img
+{
+    z-index: 2;
+    position : absolute;
+}
+#dressingroomholder #dressingroomtop table td.imageholder
+{
+    height : 280px;
+}
+.dressingroomoptions, .dressingroomsubheader
+{
+    display : none;
+}
+#dressingroomdivider
+{
+    display : none;
+	position:relative;
+	width:100%;
+	background:url(../images/catalog/product/dressingroom/dressing_divider.png) 50% 50% no-repeat;
+    height: 2px;
+    z-index: 3;
+}
+#dressingroomholder {
+  background-image: url("../images/catalog/product/dressingroom/a.png");
+  background-position: center 47%;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  position: relative;
+  width : 100%;
+  overflow: hidden;
+}
+.dressingroombg
+{
+   background-position : center -110px;
+}
+#dressingroombottom {
+  background-image: url("../images/catalog/product/dressingroom/b.png");
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
+  height: 450px;
+  margin-top: 0;
+  padding-bottom: 45px;
+  position: relative;
+}
+div.totalcountregion
+{
+    background-image: url("../images/catalog/product/view_control_shade.png");
+    background-position: left center;
+    background-repeat: no-repeat;
+    margin-left: -20px;
+    padding-left: 20px;
+}
+
+#dressingroomholder .doverlay {position:absolute; z-index:9; background:#fff url(../images/loading.gif) 50% 50% no-repeat; top:0; bottom:0; left:0; right:0;}
+#dressingroomtop{position:relative; height:305px; z-index:2;}
+.dritem{position:absolute; left:0; right:0; top:0; display:block; bottom:0; visibility:hidden;}
+.dritem .dressing-img img{position:absolute; left:50%; height:756px; width:auto;}
+#dressingroombottom .dritem { bottom:45px;}
+#dressingroombottom .dritem .dressing-img img{top:auto; bottom:0;}
+
+#dressingroomtop div.productdetail{
+  margin-right: 10%;
+  margin-top: -85px;
+  position: absolute;
+  left: 65%;
+  z-index:5;
+  top: 50%;
+}
+#dressingroombottom div.productdetail{
+  margin-right: 10%;
+  margin-top: -75px;
+  position: absolute;
+  left: 65%;
+  top: 50%;
+  z-index:5;
+}
+#dressingroomholder a.nextBtn,
+#dressingroomholder a.prevBtn{position:absolute; top:0; bottom:0; text-indent:-999em; width:180px; display:none; z-index:9;}
+
+#dressingroomholder a.nextBtn{background:url(../images/catalog/product/dressingroom/arrow_right.png) 100px 50% no-repeat; right:0px;}
+#dressingroomholder a.prevBtn{background:url(../images/catalog/product/dressingroom/arrow_left.png) 59px 50% no-repeat; left:0px;}
+#dressingroombottom a.prevBtn{background-position:59px 40%;}
+#dressingroombottom a.nextBtn{background-position:100px 40%;}
+
+
+
+
+
+
+
+.sizeChart{
+    bottom: 25%;
+    left: 35%;
+    z-index:9;
+    position: absolute;
+
+}
+.dressingroomsubheader1 {
+  font-family: gothambook;
+  font-size: 11px;
+  letter-spacing: 0.4pt;
+  line-height: 18px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+#allproducts span
+{
+    cursor: pointer;
+}

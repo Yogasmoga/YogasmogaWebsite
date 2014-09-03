@@ -228,6 +228,14 @@ $productType = $_product->getTypeID();
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<?php $productforsale  = Mage::getModel('core/variable')->loadByCode('product_for_sale')->getValue('plain');
+$productforsale = explode(",", $productforsale);
+
+?>
+
+<?php //if(array_search((int)$_product->getId(),$productforsale) != false){?>
+    <!--<div style="text-transform:uppercase;padding:3px 0 !important;width: 100%; position: relative;  left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 16px;margin-bottom: 10px;">Limited Time: 50% Off Clearance Sale Item. Price as Marked in Red Below. No Exchanges or Returns.</div>
+--><?php// } ?>
 <div class="product-view">
     <div class="product-essential">
     <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
@@ -235,8 +243,11 @@ $productType = $_product->getTypeID();
             <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
             <input type="hidden" name="related_product" id="related-products-field" value="" />
         </div>
-		
-		<div class="product-name">
+        <?php
+        // only using country of manufacture for sale only
+        $forSaleonly = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'country_of_manufacture', Mage::app()->getStore()->getStoreId());
+        ?>
+		<div class="product-name <?php echo $forSaleonly;?>">
                 <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
         </div>
         <?php

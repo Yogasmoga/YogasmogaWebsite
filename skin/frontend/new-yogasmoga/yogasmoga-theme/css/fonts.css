@@ -1,0 +1,267 @@
+@font-face
+{
+    font-family: ITCAvantGardeProBd;
+	src:			url('../fonts/7265b8d0-a67c-4a8b-84aa-273d1759270a.ttf') format('truetype');
+	src:			url('../fonts/85564178-fd88-4387-9226-0e632723ca24.eot?#iefix') format('embedded-opentype'),
+					url('../fonts/7265b8d0-a67c-4a8b-84aa-273d1759270a.ttf') format('truetype'),
+					url('../fonts/75d377f2-28ee-43f8-b231-44f8eba218c4.svg#75d377f2-28ee-43f8-b231-44f8eba218c4') format('svg');
+	font-weight:	normal;
+	font-style:		normal;
+}
+
+@font-face
+{
+    font-family: ITCAvantGardeProBk;
+	src:			url('../fonts/2d4f1d98-ddb3-4acc-ae78-c8b1863f780e.ttf') format('truetype');
+	src:			url('../fonts/2a334c60-3e0d-4f43-b0e9-5284ea33961a.eot?#iefix') format('embedded-opentype'),
+					url('../fonts/2d4f1d98-ddb3-4acc-ae78-c8b1863f780e.ttf') format('truetype'),
+					url('../fonts/80f98a03-905d-49e6-8614-cec7c32ca4f2.svg#80f98a03-905d-49e6-8614-cec7c32ca4f2') format('svg');
+	font-weight:	normal;
+	font-style:		normal;
+}
+
+@font-face
+{
+    font-family: ITCAvantGardeProMd;
+	src:			url('../fonts/9093e944-c2da-4954-953f-ca2eb3a227dd.ttf') format('truetype');
+	src:			url('../fonts/5daf8f81-4f5b-4b44-8fd3-91c56d20e799.eot?#iefix') format('embedded-opentype'),
+					url('../fonts/9093e944-c2da-4954-953f-ca2eb3a227dd.ttf') format('truetype'),
+					url('../fonts/e3929a31-b148-4180-91be-4b490bdac87d.svg#e3929a31-b148-4180-91be-4b490bdac87d') format('svg');
+	font-weight:	normal;
+	font-style:		normal;
+}
+
+@font-face
+{
+    font-family: gothambook;
+	src:			url('../fonts/Gotham-Book.ttf') format('truetype');
+	src:			url('../fonts/Gotham-Book.eot?#iefix') format('embedded-opentype'),
+					url('../fonts/Gotham-Book.ttf') format('truetype'),
+					url('../fonts/Gotham-Book.svg#Gotham-Book') format('svg');
+	font-weight:	normal;
+	font-style:		normal;
+}
+
+@font-face
+{
+    font-family: gothamMedium;
+	src:			url('../fonts/Gotham-Medium.ttf') format('truetype');
+	src:			url('../fonts/Gotham-Medium.eot?#iefix') format('embedded-opentype'),
+					url('../fonts/Gotham-Medium.ttf') format('truetype'),
+					url('../fonts/Gotham-Medium.svg#Gotham-Medium') format('svg');
+	font-weight:	normal;
+	font-style:		normal;
+}
+
+@font-face
+{
+    font-family: gothambold;
+	src:			url('../fonts/Gotham-Bold.ttf') format('truetype');
+	src:			url('../fonts/Gotham-Bold.eot?#iefix') format('embedded-opentype'),
+					url('../fonts/Gotham-Bold.ttf') format('truetype'),
+					url('../fonts/Gotham-Bold.svg#Gotham-Bold') format('svg');
+	font-weight:	normal;
+	font-style:		normal;
+}
+
+@font-face
+{
+    font-family: gothamlight;
+	src:			url('../fonts/Gotham-Light.ttf') format('truetype');
+	src:			url('../fonts/Gotham-Light.eot?#iefix') format('embedded-opentype'),
+					url('../fonts/Gotham-Light.ttf') format('truetype'),
+					url('../fonts/Gotham-Light.svg#Gotham-Light') format('svg');
+	font-weight:	normal;
+	font-style:		normal;
+}
+@font-face{
+	font-family: freight;
+	src: url('../fonts/freighttext-book.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'helveticaoblique';
+    src: url('../fonts/helveticaoblique.eot');
+    src: local('helveticaoblique'), 
+         url('../fonts/helveticaoblique.ttf') format('truetype'); 
+}
+
+
+@font-face {
+    font-family: 'HelvLightRegular';
+    src: url('../fonts/HelvLightRegular.eot');
+    src: local('HelvLightRegular'), 
+         url('../fonts/HelvLightRegular.ttf') format('truetype'); 
+}
+
+@font-face {
+    font-family: 'ChaletParisNineteenSeventy';
+    src: url('../fonts/ChaletParisNineteenSeventy.eot');
+    src: local('ChaletParisNineteenSeventy'), 
+         url('../fonts/ChaletParisNineteenSeventy.ttf') format('truetype'); 
+}
+
+@font-face
+{
+    font-family: gotham;
+	src:			url('../fonts/Gotham-Book.ttf') format('truetype');
+	src:			url('../fonts/Gotham-Book.eot?#iefix') format('embedded-opentype'),
+					url('../fonts/Gotham-Book.ttf') format('truetype'),
+					url('../fonts/Gotham-Book.svg#Gotham-Book') format('svg');
+	font-weight:	normal;
+	font-style:		normal;
+}
+
+@font-face
+{
+    font-family: gotham-m;
+	src:			url('../fonts/Gotham-Medium.ttf') format('truetype');
+	src:			url('../fonts/Gotham-Medium.eot?#iefix') format('embedded-opentype'),
+					url('../fonts/Gotham-Medium.ttf') format('truetype'),
+					url('../fonts/Gotham-Medium.svg#Gotham-Medium') format('svg');
+	font-weight:	normal;
+	font-style:		normal;
+}
+
+@font-face
+{
+    font-family: gotham-b;
+	src:			url('../fonts/Gotham-Bold.ttf') format('truetype');
+	src:			url('../fonts/Gotham-Bold.eot?#iefix') format('embedded-opentype'),
+					url('../fonts/Gotham-Bold.ttf') format('truetype'),
+					url('../fonts/Gotham-Bold.svg#Gotham-Bold') format('svg');
+	font-weight:	normal;
+	font-style:		normal;
+}
+
+@font-face
+{
+    font-family: gotham-l;
+	src:			url('../fonts/Gotham-Light.ttf') format('truetype');
+	src:			url('../fonts/Gotham-Light.eot?#iefix') format('embedded-opentype'),
+					url('../fonts/Gotham-Light.ttf') format('truetype'),
+					url('../fonts/Gotham-Light.svg#Gotham-Light') format('svg');
+	font-weight:	normal;
+	font-style:		normal;
+}
+
+@font-face
+{
+    font-family: gotham-t;
+	src:			url('../fonts/Gotham-Thin.ttf') format('truetype');
+	src:			url('../fonts/Gotham-Thin.eot?#iefix') format('embedded-opentype'),
+					url('../fonts/Gotham-Thin.ttf') format('truetype'),
+					url('../fonts/Gotham-Thin.svg#Gotham-Thin') format('svg');
+	font-weight:	normal;
+	font-style:		normal;
+}
+
+@font-face{
+font-family:"AvantGardeGothicBold";
+src:url("../fonts/85564178-fd88-4387-9226-0e632723ca24.eot?#iefix");
+src:url("../fonts/85564178-fd88-4387-9226-0e632723ca24.eot?#iefix") format("eot"),url("../fonts/e9a79553-7093-47c7-8d9c-70dc3619e94b.woff") format("woff"),url("../fonts/7265b8d0-a67c-4a8b-84aa-273d1759270a.ttf") format("truetype"),url("../fonts/75d377f2-28ee-43f8-b231-44f8eba218c4.svg#75d377f2-28ee-43f8-b231-44f8eba218c4") format("svg");
+}
+
+@font-face{
+font-family:"AvantGardeGothicMedium";
+src:url("../fonts/5daf8f81-4f5b-4b44-8fd3-91c56d20e799.eot?#iefix");
+src:url("../fonts/5daf8f81-4f5b-4b44-8fd3-91c56d20e799.eot?#iefix") format("eot"),url("../fonts/43b723ac-a6f2-4d5d-9d72-c50aea85ecee.woff") format("woff"),url("../fonts/9093e944-c2da-4954-953f-ca2eb3a227dd.ttf") format("truetype"),url("../fonts/e3929a31-b148-4180-91be-4b490bdac87d.svg#e3929a31-b148-4180-91be-4b490bdac87d") format("svg");
+}
+
+@font-face{
+font-family:"AvantGardeGothicITCW01B";
+src:url("../fonts/2a334c60-3e0d-4f43-b0e9-5284ea33961a.eot?#iefix");
+src:url("../fonts/2a334c60-3e0d-4f43-b0e9-5284ea33961a.eot?#iefix") format("eot"),url("../fonts/c68f0543-0caf-4988-b234-355520476b8c.woff") format("woff"),url("../fonts/2d4f1d98-ddb3-4acc-ae78-c8b1863f780e.ttf") format("truetype"),url("../fonts/80f98a03-905d-49e6-8614-cec7c32ca4f2.svg#80f98a03-905d-49e6-8614-cec7c32ca4f2") format("svg");
+}
+
+/*@import url("http://fast.fonts.com/t/1.css?apiType=css&projectid=1a4e62cb-0317-405d-b235-77ba23f264bb");*/
+/* ============== AvantGardeGothic Bold ===============*/
+@font-face{
+font-family:"AvantGardeGothicITCW01B 731063";
+src:url("../fonts/85564178-fd88-4387-9226-0e632723ca24.eot?#iefix");
+src:url("../fonts/85564178-fd88-4387-9226-0e632723ca24.eot?#iefix") format("eot"),url("../fonts/e9a79553-7093-47c7-8d9c-70dc3619e94b.woff") format("woff"),url("../fonts/7265b8d0-a67c-4a8b-84aa-273d1759270a.ttf") format("truetype"),url("../fonts/75d377f2-28ee-43f8-b231-44f8eba218c4.svg#75d377f2-28ee-43f8-b231-44f8eba218c4") format("svg");
+}
+/* ============== AvantGardeGothic Bold Oblique ===============*/
+@font-face{
+font-family:"AvantGardeGothicITCW01B 731066";
+src:url("../fonts/e19b7bd0-1d20-4e6a-89ab-a1fa1c037ccb.eot?#iefix");
+src:url("../fonts/e19b7bd0-1d20-4e6a-89ab-a1fa1c037ccb.eot?#iefix") format("eot"),url("../fonts/dc20a858-c78b-4d4e-b595-9f2981f7fb01.woff") format("woff"),url("../fonts/78e9d6a0-3eab-40f1-bd47-94f2496ca5ab.ttf") format("truetype"),url("../fonts/e19a45f4-7180-41a1-9815-c6350e91a172.svg#e19a45f4-7180-41a1-9815-c6350e91a172") format("svg");
+}
+/* ============== AvantGardeGothic Book ===============*/
+@font-face{
+font-family:"AvantGardeGothicITCW01B";
+src:url("../fonts/2a334c60-3e0d-4f43-b0e9-5284ea33961a.eot?#iefix");
+src:url("../fonts/2a334c60-3e0d-4f43-b0e9-5284ea33961a.eot?#iefix") format("eot"),url("../fonts/c68f0543-0caf-4988-b234-355520476b8c.woff") format("woff"),url("../fonts/2d4f1d98-ddb3-4acc-ae78-c8b1863f780e.ttf") format("truetype"),url("../fonts/80f98a03-905d-49e6-8614-cec7c32ca4f2.svg#80f98a03-905d-49e6-8614-cec7c32ca4f2") format("svg");
+}
+/* ============== AvantGardeGothic Book Oblique ===============*/
+@font-face{
+font-family:"AvantGardeGothicITCW01B 731072";
+src:url("../fonts/d6c308a1-6908-40bc-b732-0fec02d083ac.eot?#iefix");
+src:url("../fonts/d6c308a1-6908-40bc-b732-0fec02d083ac.eot?#iefix") format("eot"),url("../fonts/7571e8e6-97a2-48aa-97c1-b8aeeefc5409.woff") format("woff"),url("../fonts/8f1e17ad-3b38-4d51-83f5-4e5469174a77.ttf") format("truetype"),url("../fonts/1ee7d1fd-0f7c-4d70-b970-f4dc602eab62.svg#1ee7d1fd-0f7c-4d70-b970-f4dc602eab62") format("svg");
+}
+/* ============== AvantGardeGothic Demi ===============*/
+@font-face{
+font-family:"AvantGardeGothicITCW01D";
+src:url("../fonts/b74e5f86-4477-435a-abdf-32d8215f21bc.eot?#iefix");
+src:url("../fonts/b74e5f86-4477-435a-abdf-32d8215f21bc.eot?#iefix") format("eot"),url("../fonts/c18aee57-7585-4a8b-9a1c-69d226301d73.woff") format("woff"),url("../fonts/44ccbb2b-0fbc-4d95-b1da-0aa73bd26fb0.ttf") format("truetype"),url("../fonts/f2de529c-11d2-43b7-be7c-05c5aaeaf133.svg#f2de529c-11d2-43b7-be7c-05c5aaeaf133") format("svg");
+}
+/* ============== AvantGardeGothic Demi Oblique ===============*/
+@font-face{
+font-family:"AvantGardeGothicITCW01DOB";
+src:url("../fonts/11458aa4-54c5-4577-b6c7-03209f393c77.eot?#iefix");
+src:url("../fonts/11458aa4-54c5-4577-b6c7-03209f393c77.eot?#iefix") format("eot"),url("../fonts/4e9994cb-061f-4678-850d-527f1d636f44.woff") format("woff"),url("../fonts/cb81a665-3c91-4f41-a739-dbf62a943154.ttf") format("truetype"),url("../fonts/a662b8b1-1550-4c01-9eec-437f22cab36e.svg#a662b8b1-1550-4c01-9eec-437f22cab36e") format("svg");
+}
+/* ============== AvantGardeGothic Light ===============*/
+@font-face{
+font-family:"AvantGardeGothicITCW01X";
+src:url("../fonts/d042c69d-2a74-4689-9915-3c34306a3b76.eot?#iefix");
+src:url("../fonts/d042c69d-2a74-4689-9915-3c34306a3b76.eot?#iefix") format("eot"),url("../fonts/0312a390-01c7-423e-ad0c-b5b4f25229af.woff") format("woff"),url("../fonts/16e3b729-9cc0-490e-9de3-d678f36aba08.ttf") format("truetype"),url("../fonts/2c90e8aa-95a7-463c-956c-c7fac7412d35.svg#2c90e8aa-95a7-463c-956c-c7fac7412d35") format("svg");
+}
+/* ============== AvantGardeGothic Light Oblique ===============*/
+@font-face{
+font-family:"AvantGardeGthcITCW01XLt";
+src:url("../fonts/d01a8f67-8405-4cae-b551-81e6e2f0f1fc.eot?#iefix");
+src:url("../fonts/d01a8f67-8405-4cae-b551-81e6e2f0f1fc.eot?#iefix") format("eot"),url("../fonts/cbcc0864-520a-4f87-ae06-18e3c2126319.woff") format("woff"),url("../fonts/dc7e1ce5-7e29-4869-84cb-fbb7198f1744.ttf") format("truetype"),url("../fonts/9da14a9f-19c0-4b12-9e55-2b4c46277aeb.svg#9da14a9f-19c0-4b12-9e55-2b4c46277aeb") format("svg");
+}
+/* ============== AvantGardeGothic Medium ===============*/
+@font-face{
+font-family:"AvantGardeGothicITCW01M";
+src:url("../fonts/5daf8f81-4f5b-4b44-8fd3-91c56d20e799.eot?#iefix");
+src:url("../fonts/5daf8f81-4f5b-4b44-8fd3-91c56d20e799.eot?#iefix") format("eot"),url("../fonts/43b723ac-a6f2-4d5d-9d72-c50aea85ecee.woff") format("woff"),url("../fonts/9093e944-c2da-4954-953f-ca2eb3a227dd.ttf") format("truetype"),url("../fonts/e3929a31-b148-4180-91be-4b490bdac87d.svg#e3929a31-b148-4180-91be-4b490bdac87d") format("svg");
+}
+/* ============== AvantGardeGothic Medium Oblique ===============*/
+@font-face{
+font-family:"AvantGardeGothicITCW01M 731090";
+src:url("../fonts/e77dac3e-51a1-44bd-8a8c-042137ec2a31.eot?#iefix");
+src:url("../fonts/e77dac3e-51a1-44bd-8a8c-042137ec2a31.eot?#iefix") format("eot"),url("../fonts/8513e971-f071-42cc-9f20-914ffc672da4.woff") format("woff"),url("../fonts/9cea694b-1cf4-4bed-91e2-34b5e3f3bbfe.ttf") format("truetype"),url("../fonts/14ef78e2-840f-42a0-ade1-5c2aa453ac56.svg#14ef78e2-840f-42a0-ade1-5c2aa453ac56") format("svg");
+}
+/* ============== AvantGardeGothic Cond Bold  ===============*/
+@font-face{
+font-family:"ITCAvantGardeW01-CnBd";
+src:url("../fonts/e281da55-f74b-42e2-89fd-2b018480f34d.eot?#iefix");
+src:url("../fonts/e281da55-f74b-42e2-89fd-2b018480f34d.eot?#iefix") format("eot"),url("../fonts/30d9d074-824f-4957-a97e-90c6b45bab98.woff") format("woff"),url("../fonts/378b3a59-dd26-4da2-b7e3-edb4c737dcc5.ttf") format("truetype"),url("../fonts/d209c71b-de66-4172-8488-c843b48ccf91.svg#d209c71b-de66-4172-8488-c843b48ccf91") format("svg");
+}
+/* ============== AvantGardeGothic Cond Book ===============*/
+@font-face{
+font-family:"ITCAvantGardeW01-CnBk";
+src:url("../fonts/e76a8487-8e09-44e7-9962-57cf7b20834c.eot?#iefix");
+src:url("../fonts/e76a8487-8e09-44e7-9962-57cf7b20834c.eot?#iefix") format("eot"),url("../fonts/c24e2d71-b63f-4e78-aef6-684261af637f.woff") format("woff"),url("../fonts/35d68eec-04ea-4f4c-9c46-7d792fbac25c.ttf") format("truetype"),url("../fonts/97fb8cd4-bd1f-4c24-81d4-0ade48c166ff.svg#97fb8cd4-bd1f-4c24-81d4-0ade48c166ff") format("svg");
+}
+/* ============== AvantGardeGothic Cond Demi  ===============*/
+@font-face{
+font-family:"ITCAvantGardeW01-CnDm";
+src:url("../fonts/319c0d8f-e81b-4cc6-9ca9-5f0fc4220357.eot?#iefix");
+src:url("../fonts/319c0d8f-e81b-4cc6-9ca9-5f0fc4220357.eot?#iefix") format("eot"),url("../fonts/492a4e64-4c6c-40b2-ade3-d1ebc5d93405.woff") format("woff"),url("../fonts/f2b8da61-91b4-4c82-a0bb-1abed8b8a9c7.ttf") format("truetype"),url("../fonts/e1ee22b5-5f91-478c-88c3-ca2d903cf54d.svg#e1ee22b5-5f91-478c-88c3-ca2d903cf54d") format("svg");
+}
+/* ============== AvantGardeGothic Cond Medium  ===============*/
+@font-face{
+font-family:"ITCAvantGardeW01-CnMd";
+src:url("../fonts/968b5bd4-722a-4632-aeac-7b4b32775ac9.eot?#iefix");
+src:url("../fonts/968b5bd4-722a-4632-aeac-7b4b32775ac9.eot?#iefix") format("eot"),url("../fonts/f20fba45-d4bf-4a8a-a08c-1dec4f3af1ba.woff") format("woff"),url("../fonts/848a6b60-443b-4d0e-ac26-e029aa6b4b93.ttf") format("truetype"),url("../fonts/e2d317fa-40ef-4dc6-a126-89aff6207703.svg#e2d317fa-40ef-4dc6-a126-89aff6207703") format("svg");
+}
+/* ============== AvantGardeGothic Book ===============*/
+@font-face{
+font-family:"ITCAvantGardeGothW04-Bo 1122878";
+src:url("../fonts/daa5c000-4e87-40e9-9689-eec7fd2a19e1.eot?#iefix");
+src:url("../fonts/daa5c000-4e87-40e9-9689-eec7fd2a19e1.eot?#iefix") format("eot"),url("../fonts/e58aa4f4-3fa9-4138-9cc9-712e1955902c.woff") format("woff"),url("../fonts/b335d0cc-8594-4212-a73a-eb2a55d2b008.ttf") format("truetype"),url("../fonts/3fec63b6-5c06-495d-8bad-0555b665ab8e.svg#3fec63b6-5c06-495d-8bad-0555b665ab8e") format("svg");
+}

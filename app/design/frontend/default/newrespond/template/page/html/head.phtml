@@ -147,3 +147,17 @@ adroll_custom_data = {"ORDER_ID": "ADVERTISERS VARIABLE"}
 </script>
 
 <?php } ?>
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<script type="text/javascript" language="javascript">
+jQuery(window).resize(function() {
+    jQuery("#signup").dialog("option", "position", "center");
+});
+</script>
+<script type="text/javascript" language="javascript">
+    jQuery.noConflict();
+    var homeUrl = '<?php echo Mage::helper('core/url')->getHomeUrl() ?>';
+    var securehomeUrl = '<?php echo Mage::getUrl('',array('_secure'=>true)); ?>';
+    var skinUrl = '<?php echo $this->getSkinUrl('') ?>';
+    var mediaUrl = '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>';
+    //console.log(skinUrl);
+</script>

@@ -79,7 +79,28 @@
         }
     }
     $colors = $tempcolor;
+        // custom gallery for mobile 21-08-2014
         //print_r($colors);
+        $configurableproduct = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null,$_product);
+        $showcolorarr = array(); // used to show the images only for the colors associated with the configurable product.
+
+        foreach($configurableproduct as $childproduct)
+        {
+            array_push($showcolorarr,$childproduct->getColor());
+
+        }
+        $showcolorarr = array_unique($showcolorarr);
+
+        $colors = array_intersect($colors,$showcolorarr);
+        $i=0;
+        foreach ($colors as $k => $v) {
+            unset ($colors[$k]);
+            $colors[$i] = $v;
+            $i++;
+        }
+
+        //print_r($colors);die;
+        // end custom gallery for mobile 21-08-2014
             $activities = array();
             for($i = 0; $i < count($colors); $i++)
             {

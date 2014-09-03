@@ -1,0 +1,248 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php if(count($this->getItemCollection()->getItems())): ?>
+<?php
+    $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+    $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
+    while ($row = $readresult->fetch() ) {
+        $clrinfo[$row['Value']] = $row['Attribute'];    
+    }
+?>
+<div id="Related-products" class="fullscreen colorbg pgsection" desc="Other Products You May Like" tw-summary="Check out the great Yoga clothes from YOGASMOGA">
+    <table class="fullscreentable">
+    <tr>
+        <td style="padding-right: 50px;padding-left : 50px;" class="verticaltopalign">
+            <div class="myheader absoluteposition" style="margin-top: 50px;">YOU MAY ALSO LIKE</div>
+            <div id="mycategory_products" class="mycategory-products" style="margin-top: 150px;">
+            <table class="staticproductgrid">
+                <tr>
+            <?php
+                $category = Mage::getModel('catalog/category')->load(9);
+                $_helper = $this->helper('catalog/output');
+                $productcount = 0;
+                foreach($category->getProductCollection() as $_product)
+                {
+                    if($productcount >= 4)
+                        continue;
+                    $productcount++;
+                }
+                $tdwidth = 100 / $productcount;
+                $tdwidth = 100 / count($this->getItemCollection()->getItems());
+                if($tdwidth < 25)
+                    $tdwidth = 25; 
+                $productcount = 1;
+                $shareimg = false;
+                foreach($this->getItemCollection()->getItems() as $_product)
+                {
+                    if($productcount > 4)
+                        continue;
+                    $productcount++;
+                    $colors = ","; 
+                    $temp = "";
+                    $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
+                    foreach($_childproducts as $_childproduct)
+                    {
+                        $temp = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childproduct->getId(), 'color', Mage::app()->getStore()->getStoreId());
+                        if(strpos($colors,",".$temp.",") == false)
+                            $colors .= $temp.",";  
+                    }
+                    $model = Mage::getModel('catalog/product');
+                    $_product = $model->load($_product->getId());
+                    ?>
+                        <td style="width : <?php echo $tdwidth."%"; ?>;">
+                        <div bestfor="<?php echo ",".Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'bestfor', Mage::app()->getStore()->getStoreId()).","; ?>" cat="<?php echo ",".implode(",", $_product->getCategoryIds()).","; ?>" id="<?php echo $_product->getId(); ?>" class="item" color="<?php echo $colors; ?>">
+                            <a href="<?php echo $_product->getProductUrl(); ?>">
+                            <table>
+                                <tr>
+                                    <td class="productimage">
+                                        <div>
+                                            <?php
+                                                $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+                                                $index = 1;
+                                                $firstimg = true;
+                                                foreach($_gallery as $_image)
+                                                {
+                                                    $imgdata = json_decode(trim($_image->getLabel()), true);
+                                                //var_dump(json_decode(trim($_image->getLabel()), true));
+                                                //echo $_image->getLabel()."<br/>";
+                                                if($imgdata == NULL || strcasecmp($imgdata['type'],"product image") != 0)
+                                                    continue;
+                                                
+                                                if($imgdata['default'] != "yes")
+                                                    continue;
+                                                
+                                                //if(!($imgdata['type'] == "product image" && $imgdata['default'] == "yes"))
+    //                                                continue;
+                                                
+                                                //if(strpos($_image->getLabel(),"*") === false)
+    //                                                continue;
+                                                if($index > 4)
+                                                    break;
+                                                    
+                                                $alt = "";
+												if(isset($imgdata['alt']))
+                                                    $alt = $imgdata['alt'];
+                                                
+                                                if($alt == "")
+                                                {
+                                                    $alt = html_entity_decode($_helper->productAttribute($_product, $_product->getName(), 'name'));
+                                                    if(isset($imgdata['color']))
+                                                        $alt .= " - ".$clrinfo[$imgdata['color']];
+                                                }
+                                                ?>
+                                                <img class="
+                                                <?php
+                                                    if($imgdata['default'] == "yes")
+                                                    {
+                                                        if($firstimg)
+                                                        {
+                                                            $firstimg = false;
+                                                            echo " default active rotable";
+                                                            if(!$shareimg)
+                                                            {
+                                                                $shareimg = true;
+                                                                echo " shareit";
+                                                            }
+                                                        }
+                                                        else
+                                                            echo " default rotable";
+                                                    }
+                                                    if(isset($imgdata['color']))
+                                                    {
+                                                        echo " color_".strtolower(str_replace(" ","_",$imgdata['color']));
+                                                    }
+                                                    if(isset($imgdata['bestfor']))
+                                                    {
+                                                        echo " bestfor_".strtolower(str_replace(" ","_",$imgdata['bestfor']));
+                                                    }
+                                                ?>
+                                                "
+                                                 src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(230, 345)->setQuality(91); ?>"  alt="<?php echo $alt; ?>" onload="showme(this);" />
+                                                <?php
+                                                $index++;
+                                            } 
+                                        ?>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="animateimage" style="padding-bottom: 10px;">
+                                        <a href="javascript:void(0);" style="display: block;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                                         <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/nline_01.png') ?>" class="active" usemap="#<?php echo $_product->getId(); ?>" />
+                                         <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/nline_02.png') ?>" usemap="#<?php echo $_product->getId(); ?>" />
+                                         <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/nline_03.png') ?>" usemap="#<?php echo $_product->getId(); ?>" />
+                                         <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/nline_04.png') ?>" usemap="#<?php echo $_product->getId(); ?>" />
+                                         
+                                         <map name="<?php echo $_product->getId(); ?>">
+                                          <!-- <area shape="rect" coords="0,0,2,13" class="line1" href="javascript:void(0);" />
+                                          <area shape="poly" coords="12,0,16,0,10,13,4,13" class="line2" href="javascript:void(0);"/>
+                                          <area shape="poly" coords="27,4,28,7,19,13,14,13" class="line3" href="javascript:void(0);"/> -->
+                                          <area shape="poly" coords="0,13,0,2,4,5,9,10,12,13,12,15,6,15" class="line1" href="javascript:void(0);" />
+                                          <area shape="poly" coords="13,12,9,8,9,7,6,4,6,0,14,0,14,12" class="line2" href="javascript:void(0);" />
+                                          <area shape="poly" coords="16,14,16,0,25,0,23,3,23,4,20,7,20,9,17,12,17,15" class="line3" href="javascript:void(0);" />
+                                          <area shape="poly" coords="18,15,18,13,21,10,21,9,23,7,23,5,28,0,29,0,29,15" class="line4" href="javascript:void(0);" />
+                                        </map>
+                                         
+                                         <?php /*
+                                         <img src="<?php echo $this->getSkinUrl('images/catalog/product/listing/line_off.png') ?>" class="inactive" />
+                                         */ ?>
+                                         </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="productname">
+                                        <?php 
+                                        //$model = Mage::getModel('catalog/product');
+//                                        $_product = $model->load($_product->getId());
+                                        //echo $_product->getPrice();
+                                        echo html_entity_decode($_helper->productAttribute($_product, $_product->getName(), 'name')); ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="productprice">
+                                        <span class="price">
+                                        <?php 
+                                            $price = $_product->getSpecialPrice();
+                                            if($price == "")
+                                                $price = $_product->getPrice();
+                                            $price = round($price,2);
+                                              if (floor($price)==$price)
+                                                echo "$".(string)floor($price);
+                                                else
+                                                    echo "$".$price;
+                                         ?>
+                                         </span>
+                                        <?php // print_r($_product); ?>
+                                    </td>
+                                </tr>
+                            </table>
+                            </a>
+                        </div>
+                        </td>
+                    <?php
+                } 
+            ?>
+                </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+    </table>
+    <map name="primagemap">
+      <area shape="poly" coords="0,13,0,2,4,5,9,10,12,13,12,15,6,15" class="line1" href="javascript:void(0);" />
+      <area shape="poly" coords="13,12,9,8,9,7,6,4,6,0,14,0,14,12" class="line2" href="javascript:void(0);" />
+      <area shape="poly" coords="16,14,16,0,25,0,23,3,23,4,20,7,20,9,17,12,17,15" class="line3" href="javascript:void(0);" />
+      <area shape="poly" coords="18,15,18,13,21,10,21,9,23,7,23,5,28,0,29,0,29,15" class="line4" href="javascript:void(0);" />
+    </map>
+</div>
+<?php /*
+<div class="box-collateral box-up-sell">
+    <h2><?php echo $this->__('You may also be interested in the following product(s)') ?></h2>
+    <table class="products-grid" id="upsell-product-table">
+    <?php // $this->setColumnCount(5); // uncomment this line if you want to have another number of columns. also can be changed in layout ?>
+    <?php $this->resetItemsIterator() ?>
+    <?php for($_i=0;$_i<$this->getRowCount();$_i++): ?>
+        <tr>
+        <?php for($_j=0;$_j<$this->getColumnCount();$_j++): ?>
+            <?php if($_link=$this->getIterableItem()): ?>
+            <td>
+                <a href="<?php echo $_link->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_link->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_link, 'small_image')->resize(125) ?>" width="125" height="125" alt="<?php echo $this->htmlEscape($_link->getName()) ?>" /></a>
+                <h3 class="product-name"><a href="<?php echo $_link->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_link->getName()) ?>"><?php echo $this->htmlEscape($_link->getName()) ?></a></h3>
+                <?php echo $this->getPriceHtml($_link, true, '-upsell') ?>
+                <?php echo $this->getReviewsSummaryHtml($_link) ?>
+            </td>
+            <?php else: ?>
+            <td class="empty">&nbsp;</td>
+            <?php endif; ?>
+        <?php endfor; ?>
+        </tr>
+    <?php endfor; ?>
+    </table>
+    <script type="text/javascript">decorateTable('upsell-product-table')</script>
+</div>
+*/ ?>
+<?php endif ?>

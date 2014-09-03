@@ -78,6 +78,8 @@ jQuery(window).load(function(){
     $cats = $_product->getCategoryIds();
     $categoryid = '';
      $currentUrl = Mage::getUrl('*/*/*', array('_current' => true));
+    if(strpos($currentUrl, "?") != false)
+        $currentUrl = substr($currentUrl, 0, strpos($currentUrl, "?"));
     for($i=strlen($currentUrl)-2;$i>1;$i--)
     {
         $categoryid .= $currentUrl[$i];
@@ -88,6 +90,7 @@ jQuery(window).load(function(){
     $categoryid = (int)$categoryid;
     //$categoryid = Mage::getModel('catalog/category')->load($cats[0])->getId();
     $categoryurl = Mage::getModel("catalog/category")->load($categoryid)->getUrl();
+    
     //echo $categoryid;
     $breadcrumb = '<a href="'.Mage::helper('core/url')->getHomeUrl().'">Home</a>';
     $breadcrumb .= '&nbsp;&gt;&nbsp;<a href="'.Mage::getModel("catalog/category")->load($categoryid)->getUrl().'">'.Mage::getModel("catalog/category")->load($categoryid)->getName().'</a>';
@@ -147,7 +150,7 @@ jQuery(window).load(function(){
     //echo $rewardpoints;
     $rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "smogi") - 3 - strlen("smogi") - strpos($rewardpoints, "earn") + strlen("earn")));
     $productrewardpoints = $rewardpoints;
-    $productprice = "$".$price;
+    $productprice = "$".number_format((float)($price), 2, '.', '');
     
     $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
     $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
@@ -210,7 +213,8 @@ jQuery(window).load(function(){
         $price = round($price,2);
           if (floor($price)==$price)
             $price = floor($price);
-        
+        // for show two digit after decimal
+        $price = number_format((float)($price), 2, '.', '');
         $rewardpoints = Mage::helper('rewardpoints/data')->getProductPointsText($_childproduct, false, false);
         $rewardpoints = strip_tags($rewardpoints);
         //$rewardpoints = trim(substr($rewardpoints, strpos($rewardpoints, "earn") + strlen("earn"), strpos($rewardpoints, "loyalty") - 1 - strlen("loyalty") - strpos($rewardpoints, "earn") + strlen("earn")));
@@ -348,13 +352,17 @@ jQuery(window).load(function(){
  <?php 
     $yantratank_top_banner = Mage::getModel('core/variable')->loadByCode('yantratank_top_banner')->getValue('plain');
     if((int)$_product->getId() == 246 && $yantratank_top_banner=='true'){?>
-        <div style="padding:3px 0 !important;width: 100%; position: relative;  left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 16px;font-family: AvantGardeGothicMedium;">BUY 1 YANTRA TANK + WE'LL SHIP YOU 2 - SAME SIZE, DIFFERENT COLOR OF OUR CHOICE.</div>
+        <div style="padding:3px 0 !important;width: 100%; position: relative;  left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 16px;font-family: AvantGardeGothicMedium;">YANTRA TANK BUY ONE, GET ONE FREE EVENT :  BUY 1 YANTRA TANK AND WE'LL AUTOMATICALLY SHIP YOU 2 <span style="font-family:Gotham;"> &gt;&gt; </span> SAME SIZE, DIFFERENT COLOR. FINAL SALE.</div>
 <?php } ?>
-    
-<?php //if((int)$_product->getId() == 700){?>
-<!--    <div style="padding:3px 0 !important;width: 100%; position: relative;  left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 16px;font-family: AvantGardeGothicMedium;">BUY 1 SLIMMIE PANT AND WE'LL SHIP YOU 2! <span style="font-family: helvetica;font-weight: bold;">&lt;&lt;</span> SECOND SLIMMIE: SAME SIZE, SURPRISE COLOR <span style="font-family: helvetica;font-weight: bold;">&gt;&gt;</span> FINAL SALE.</div>-->
-<?php //} ?>
+<?php $productforsale  = Mage::getModel('core/variable')->loadByCode('product_for_sale')->getValue('plain');
+$productforsale = explode(",", $productforsale);
 
+?>
+<!--
+<?php //if(array_search((int)$_product->getId(),$productforsale) != false){?>
+    <div style="text-transform:uppercase;padding:3px 0 !important;width: 100%; position: relative;  left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 16px;font-family: AvantGardeGothicMedium;">Limited Time: 50% Off Clearance Sale Item. Price as Marked in Red Below. No Exchanges or Returns.</div>
+<?php // } ?>
+-->
 
 <div id="productdetails" desc="<?php echo html_entity_decode($productname); ?>" class="fullscreen pgsection" style="position: relative;" hdependson="absproductoptions" tw-summary="Check out the <?php echo html_entity_decode($productname); ?>">
     <script type="text/javascript">
@@ -532,14 +540,17 @@ jQuery(window).load(function(){
         <div class="disableproptions"></div>
         <?php //echo Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId()); ?>
         <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId(Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_does_it_fit', Mage::app()->getStore()->getStoreId()))->toHtml(); ?>
-		
+        <?php
+        // only using country of manufacture for sale only
+        $forSaleonly = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'country_of_manufacture', Mage::app()->getStore()->getStoreId());
+        ?>
         
         <table class="productdetailtable normalproductdetail">
             <tr>
                 <td>
                     <div class="breadcrumb"><?php echo $breadcrumb; ?></div>
                     <div class="productname"><?php echo html_entity_decode($productname); ?></div>
-                    <div class="productcost"><?php echo $productprice; ?></div>
+                    <div class="productcost <?php echo $forSaleonly; ?>"><?php echo $productprice; ?></div>
                     <div class="shortdesc"><?php echo $_product->getDescription(); ?></div>
                     <table class="selectedcolor">
                         <tr>

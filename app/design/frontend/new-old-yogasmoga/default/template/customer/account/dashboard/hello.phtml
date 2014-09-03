@@ -1,0 +1,62 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="sectionheader">
+    <?php
+        $customer = Mage::getSingleton('customer/session')->getCustomer();
+        $firstname = $customer->getFirstname();
+    ?>
+	<?php echo $this->__('HELLO %s!', $firstname); ?>
+	<!-- <a href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>">
+		Log out
+	</a> -->
+</div>
+
+<p class="smogi-info"><?php echo $this->__('You currently have') ?>
+            <span class="smogi-count"><?php
+                $store_id = Mage::app()->getStore()->getId();
+                $customerId = Mage::getModel('customer/session')->getCustomerId();
+                if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+                    $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+                    echo $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
+                    //Mage::helper('core')->currency($reward_flat_model->collectPointsCurrent($customerId, $store_id)+0);
+                }        
+                
+                $reward_model = Mage::getModel('rewardpoints/stats');
+                //echo "$".number_format((float)($reward_model->getPointsCurrent($customerId, $store_id)+0), 2, '.','');
+                echo $reward_model->getPointsCurrent($customerId, $store_id)+0;                    
+                //Mage::helper('core')->currency($reward_model->getPointsCurrent($customerId, $store_id)+0);
+             ?></span>
+             <?php echo $this->__('SMOGI Bucks to use in your next purchase.') ?><a href="<?php echo Mage::getUrl(''); ?>smogi-bucks"><?php echo $this->__('Find out how to earn more.') ?></a>
+			</p>
+<!-- <p><?php echo $this->__('From your Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.') ?></p> -->
+
+<?php /*
+<div class="welcome-msg">
+    <p class="hello"><strong><?php echo $this->__('Hello, %s!', $this->htmlEscape($this->getCustomerName())) ?></strong></p>
+    <p><?php echo $this->__('From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.') ?></p>
+</div>
+*/ ?>

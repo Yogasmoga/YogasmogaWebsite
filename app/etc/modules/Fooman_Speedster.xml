@@ -4,6 +4,11 @@
         <Fooman_Speedster>
             <active>true</active>
             <codePool>community</codePool>
-        </Fooman_Speedster>        
+            <depends>
+                <Mage_Page/>
+                <Mage_Adminhtml/>
+                <Fooman_Common/>
+            </depends>
+        </Fooman_Speedster>
     </modules>
 </config>
