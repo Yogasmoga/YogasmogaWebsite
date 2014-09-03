@@ -2397,8 +2397,9 @@ table.aurumiconcell tr td:nth-child(8) img,table.aurumiconcell tr td:nth-child(9
     color: #555;
 }
 
+.sign-up-new a.no-over-state,
 a.no-over-state:hover{
-    cursor: inherit !important;
+    cursor: text !important;
 }
 
 #paymentmethoderrormsg.loginerrormsg.errormsg {
