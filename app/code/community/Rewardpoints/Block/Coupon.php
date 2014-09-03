@@ -104,6 +104,7 @@ class Rewardpoints_Block_Coupon extends Mage_Checkout_Block_Cart_Abstract
 								//if($categoryid[$id]['name'] == 'Accessories')
 								{
 								  $cattotal = $cattotal + $itemstotal;
+                                    break;
 								}
 							}
 				}

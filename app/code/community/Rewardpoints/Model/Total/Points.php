@@ -89,6 +89,7 @@ class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Tot
 									{
 									 	$accessories++;
 									  $cattotal = $cattotal + $itemstotal;
+                                        break;
 									}
 								}
 					

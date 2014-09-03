@@ -101,7 +101,6 @@ publish
 # Others
 [Bb]in
 [Oo]bj
-sql
 TestResults
 *.Cache
 ClientBin
@@ -171,3 +170,4 @@ sendy
 tempreports/
 recurringreports/
 
+/nbproject/private/

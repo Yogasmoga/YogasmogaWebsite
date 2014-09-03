@@ -70,6 +70,7 @@ class Rewardpoints_Model_Adminhtml_Ordercreate extends Mage_Adminhtml_Model_Sale
 								//if($categoryid[$id]['name'] == 'Accessories')
 								{
 								  $cattotal = $cattotal + $itemstotal;
+                                    break;
 								}
 							}
 						$tot = $tot + $itemstotal;

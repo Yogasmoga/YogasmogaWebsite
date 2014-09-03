@@ -1,0 +1,14 @@
+
+
+<?php
+$write = Mage::getSingleton('core/resource')->getConnection('core_read');
+$result = $write->query("SELECT COUNT(product_id) AS total_product_sold FROM sales_flat_order sfo, sales_flat_order_item sfoi WHERE sfo.status='complete' AND sfo.entity_id=sfoi.order_id AND sfoi.product_id = ".Mage::getModel('core/variable')->loadByCode('namaskar_bracelet_id')->getValue('plain'));
+$row = $result->fetch();
+
+if((int)$row['total_product_sold']>0)
+{
+echo $row['total_product_sold'];
+
+
+ }
+?>

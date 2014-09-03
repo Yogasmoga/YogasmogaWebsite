@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <mycustommodules_mynewtheme>
+            <version>0.0.1</version>
+        </mycustommodules_mynewtheme>
+    </modules>
+	<frontend>
+        <routers>
+            <mynewtheme>
+                <use>standard</use>
+                <args>
+                    <module>Mycustommodules_Mynewtheme</module>
+                    <frontName>mynewtheme</frontName>
+                </args>
+            </mynewtheme>
+        </routers>   
+    </frontend>
+</config>

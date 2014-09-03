@@ -1,0 +1,462 @@
+<?php
+/**
+ * 
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+<?php
+    if($this->getRequest()->getParam('video') == 'true')
+    {
+        ?>
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb01.png" />
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb02.png" />
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb03.png" />
+            <meta property="og:title"content="YOGASMOGA | Did You Take a Breath Today?" />
+            <meta property="og:description"content="We are YOGASMOGA, We make things for life - One breath at a time." />
+        <?php
+    }
+    else
+    {
+        ?>
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/Untitled_Panorama2_c_1.jpg" />
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga_mood_2395.jpg" />
+            <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/Yogasmoga_op.jpeg" />
+            <meta property="og:title"content="YOGASMOGA" />
+            <meta property="og:description"content="We are YOGASMOGA. We make things for LIFE. One breath at a time." />
+        <?php
+    }
+?>
+
+<?php echo $this->getChildHtml('head') ?>
+
+<?php
+    //if(Mage::getSingleton('core/session')->getShowVideo())
+    if($this->getRequest()->getParam('video') == 'true')
+    {
+        //Mage::getSingleton('core/session')->setShowVideo(false);
+        ?>
+        <script type="text/javascript">
+			var loc = window.location;
+			history.replaceState("", document.title, loc.pathname + "breathe");
+            jQuery(window).load(function(){
+				setTimeout(function(){$j("#hmpagevideo").trigger('click')},1000);
+            });
+        </script>
+        <?php
+    }
+?>
+<script type="text/javascript">
+    jQuery(window).load(function(){
+        jQuery("div.showloading").removeClass('showloading');
+        setTimeout(function(){setfullscreenheight();},50);
+
+        jQuery("body").on("click",".vid-popup-overlay", function(){        
+            var dfVid1 = document.getElementById("vid-1");            
+            var dfVid2 = document.getElementById("vid-2");  
+            dfVid1.pause();
+            //dfVid2.pause();              
+        });
+        window.onkeyup = function (event) {
+            if (event.keyCode == 27) { 
+                jQuery(".vid-popup-overlay").trigger("click");                            
+            }
+        }     
+        var bannerImg = document.getElementById("bannerimg").complete;
+        if(bannerImg){
+            jQuery(".share-strip, .new-arrivals-block").animate({opacity:1},100);
+        }
+        jQuery('body').css('overflow','auto');
+        jQuery('.namaskar-overlay1').fadeOut('slow');
+    });    
+    jQuery(document).ready(function(){
+       setTimeout(function(){
+            jQuery("div.page-overlayy").remove();
+            jQuery("body").css('overflow','auto');
+       }, 500);              
+    });
+</script>   
+<div class="namaskar-overlay1">&nbsp;</div>
+</head>
+<body class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>" style="margin-right:17px;overflow:hidden;">
+<?php echo $this->getChildHtml('after_body_start') ?>
+<div class="wrapper">
+<div class="page-overlayy" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">&nbsp;</div>
+    <?php echo $this->getChildHtml('global_notices') ?>
+    <div class="shopping-cart">
+
+    </div>
+    <div class="page">
+        <?php echo $this->getChildHtml('header') ?>
+            <div id="pagecontainer">
+            <!-- sliderBanner -->
+            <div class="flexslider showloading cat-slide">
+                <ul class="slides">
+                    <li>
+                        <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/WomenSlider.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
+
+                            <div class="banner-txt3 promo2310 promo1311 white">
+                                Meet paradeiza red.
+                                <span class="white">our newest shade<br />in fitness apparel.</span>
+                                <a class="learnmore-nam" href="<?php echo $this->getBaseUrl().'women/tops'; ?>">
+                                    <img alt="Shop paradeiza red" src="<?php echo $this->getSkinUrl('images/homepage/shop-paradeizared.jpg') ?>" />
+                                </a>
+                            </div>                           
+
+                        <div id="playBtn">
+                            <div class="sl-desc-handle">
+                                <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                            </div>
+                            <div class="slide-desc" style="">Our AIRH fabric is the ultimate performance fabric. It is cool to the touch, light as air and highly breathable. Courtney wears the Momentum Legging and Ooh La La Bra to reach new heights in her yoga practice.</div>
+                        </div>
+                    </li>
+<!--                     <li>
+                        <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/WomenSlider1.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
+
+                            <div class="banner-txt3 promo2310 promo1311 white">
+                                WHAT'S NEW
+                            </div>                           
+
+                        <div id="playBtn">
+                            <div class="sl-desc-handle">
+                                <img src="<?php //echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                            </div>
+                            <div class="slide-desc" style="">Our AIRH fabric is the ultimate performance fabric. It is cool to the touch, light as air and highly breathable. Courtney wears the Momentum Legging and Ooh La La Bra to reach new heights in her yoga practice.</div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/WomenSlider2.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
+
+                            <div class="banner-txt3 promo2310 promo1311">
+                                Shop the colors
+                            </div>                           
+
+                        <div id="playBtn">
+                            <div class="sl-desc-handle">
+                                <img src="<?php //echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                            </div>
+                            <div class="slide-desc" style="">Our AIRH fabric is the ultimate performance fabric. It is cool to the touch, light as air and highly breathable. Courtney wears the Momentum Legging and Ooh La La Bra to reach new heights in her yoga practice.</div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/WomenSlider3.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
+
+                            <div class="banner-txt3 promo2310 promo1311 white">
+                                Top sellers
+                            </div>                           
+
+                        <div id="playBtn">
+                            <div class="sl-desc-handle">
+                                <img src="<?php //echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                            </div>
+                            <div class="slide-desc" style="">Our AIRH fabric is the ultimate performance fabric. It is cool to the touch, light as air and highly breathable. Courtney wears the Momentum Legging and Ooh La La Bra to reach new heights in her yoga practice.</div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/WomenSlider4.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
+
+                            <div class="banner-txt3 promo2310 promo1311">
+                                Women's tops
+                            </div>                           
+
+                        <div id="playBtn">
+                            <div class="sl-desc-handle">
+                                <img src="<?php //echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                            </div>
+                            <div class="slide-desc" style="">Our AIRH fabric is the ultimate performance fabric. It is cool to the touch, light as air and highly breathable. Courtney wears the Momentum Legging and Ooh La La Bra to reach new heights in her yoga practice.</div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/WomenSlider5.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
+
+                            <div class="banner-txt3 promo2310 promo1311">
+                                women's bottoms
+                            </div>                           
+
+                        <div id="playBtn">
+                            <div class="sl-desc-handle">
+                                <img src="<?php //echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                            </div>
+                            <div class="slide-desc" style="">Our AIRH fabric is the ultimate performance fabric. It is cool to the touch, light as air and highly breathable. Courtney wears the Momentum Legging and Ooh La La Bra to reach new heights in her yoga practice.</div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/WomenSlider6.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
+
+                            <div class="banner-txt3 promo2310 promo1311">
+                                accessories
+                            </div>                           
+
+                        <div id="playBtn">
+                            <div class="sl-desc-handle">
+                                <img src="<?php //echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                            </div>
+                            <div class="slide-desc" style="">Our AIRH fabric is the ultimate performance fabric. It is cool to the touch, light as air and highly breathable. Courtney wears the Momentum Legging and Ooh La La Bra to reach new heights in her yoga practice.</div>
+                        </div>
+                    </li> -->
+                </ul>
+            </div>
+            <!-- sliderBanner -->
+                
+            <!-- signup new -->
+            <div class="share-strip">
+                <div class="sign-up-new">
+
+                    <a href="javascript:void(0)">Sign up</a><span>&amp; WE’LL SURPRISE YOU</span>
+
+                </div>
+            </div>
+            <!-- signup new -->
+                
+                <div class="clear-fix"></div>
+
+                <!-- ProductListing Part -->
+
+
+            <div class="new-arrivals-block" style="width:100%; margin:0 auto;">
+                <?php $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_landing_category_ids')->getValue('plain')), true);
+
+                $categoryId = $categoryIds['quick_view'];
+                ?>
+                <?php $newarrivals = Mage::getModel('catalog/category')->load($categoryId); ?>
+                <div class="shop-col-desc l-align">
+                    <span class="na-head">NEW ARRIVALS</span>
+                    <span class="na-link"><a href="<?php echo $newarrivals->getUrl(); ?>">Shop New Collection</a></span>
+                </div>
+
+                <?php
+                //retrieve color
+                $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
+                while ($row = $readresult->fetch() ) {
+                    $clrinfo[$row['Value']] = $row['Attribute'];
+                }
+                //                        $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_landing_category_ids')->getValue('plain')), true);
+                //
+                //                        $categoryId = $categoryIds['new_arrivals'];
+
+                //$newarrivals = Mage::getModel('catalog/category')->load($categoryId);
+
+
+                $productCollection = $newarrivals->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
+                $quickviewproducts = array();
+
+                foreach($productCollection as $_product)
+                {
+
+                    $_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+                    $grayimgage = '';
+                    foreach($_gallery as $_image)
+                    {
+                        $imgdata = json_decode(trim($_image->getLabel()), true);
+                        if($imgdata == NULL)
+                        {
+                            continue;
+                        }
+
+                        if(strcasecmp($imgdata['type'],"grey background") == 0 && $imgdata['color'] != '' && $imgdata['quick_view_position'] != '' )
+                        {
+                            $grayimgage = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(90);
+
+//                $quickviewproducts[$imgdata['quick_view_position']]['position'] = $imgdata['quick_view_position'];
+                            $quickviewproducts[$imgdata['quick_view_position']]['id'] = $_product->getId();
+                            $quickviewproducts[$imgdata['quick_view_position']]['name'] = $_product->getName();
+                            $quickviewproducts[$imgdata['quick_view_position']]['color'] = $imgdata['color'];
+                            $quickviewproducts[$imgdata['quick_view_position']]['price'] = round($_product->getPrice(),2);
+                            $quickviewproducts[$imgdata['quick_view_position']]['imgurl'] = (string)$grayimgage;
+                            if(count($quickviewproducts) == 5 )break;
+                        }
+
+                    }
+                }
+
+
+                ksort($quickviewproducts);
+
+
+                ?>
+                <ul id="show5" class="new-arrivals">
+                    <?php
+                    $i=0;
+                    foreach($quickviewproducts as $_product)
+                    {
+
+
+                        ?>
+                        <li>
+
+                            <a id="<?php echo $_product['id'].'-'.++$i; ?>" color="<?php echo $_product['color'];?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $_product['imgurl']; ?>" />
+                                <div class="prd-details">
+                                    <span class="prd-name gothambd"><?php echo $_product['name']; ?></span>
+                                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product['color']]; ?></span>
+                                    <span class="prd-price gothambk">$<?php echo  $_product['price']; ?></span>
+                                </div>
+                            </a>
+
+
+                            <?php /*   <div class="prd-details">
+                                    <a href = "<?php echo $_product->getProductUrl(); ?>"><span class="prd-name gothambd"><?php echo $_product->getName(); ?></span> </a>
+                                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
+                                    <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2); ?></span>
+                                    <a id="<?php echo $_product->getId(); ?>" href="javascript:void(0)" class="quick-view">
+                                        <img src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" border="0" alt="" />
+                                    </a>
+                                </div> */ ?>
+                        </li>
+                    <?php
+                    }
+
+                    ?>
+                </ul>
+
+                <ul id="show4" class="new-arrivals">
+                    <?php
+                    $i=0;
+                    foreach($quickviewproducts as $_product)
+                    {
+
+                        if($i==4)break;$i++;
+                        ?>
+                        <li>
+
+                            <a id="<?php echo $_product['id'].'-'.$i; ?>" class="quick-view" href="javascript:void(0);<?php //echo $_product->getProductUrl() ?>"><img class="prd-image"  src="<?php  echo $_product['imgurl']; ?>" />
+                                <div class="prd-details">
+                                    <span class="prd-name gothambd"><?php echo $_product['name']; ?></span>
+                                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product['color']]; ?></span>
+                                    <span class="prd-price gothambk">$<?php echo  $_product['price']; ?></span>
+                                </div>
+                            </a>
+
+
+                            <?php /*   <div class="prd-details">
+                                    <a href = "<?php echo $_product->getProductUrl(); ?>"><span class="prd-name gothambd"><?php echo $_product->getName(); ?></span> </a>
+                                    <span class="product-colors gothambk"><?php echo $clrinfo[$_product->getColor()]; ?></span>
+                                    <span class="prd-price gothambk">$<?php echo  round($_product->getPrice(),2); ?></span>
+                                    <a id="<?php echo $_product->getId(); ?>" href="javascript:void(0)" class="quick-view">
+                                        <img src="<?php echo $this->getSkinUrl('images/women/add-to-bag.png') ?>" border="0" alt="" />
+                                    </a>
+                                </div> */ ?>
+                        </li>
+                    <?php
+                    }
+
+                    ?>
+                </ul>
+            </div>
+                <div style="display:none;">
+                    <div id="productdetailpopup">
+                    </div>
+                </div>
+                <!-- ProductListing Part -->                
+                <div class="clear-fix"></div>
+                <!-- Feature Product -->
+                <?php
+                $featurecategoryId = $categoryIds['feature_product'];
+                $featurecategory = Mage::getSingleton('catalog/category')->load($featurecategoryId);
+                $featurecategoryUrl = Mage::getBaseUrl().$featurecategory->getUrlPath();
+                ?>                  
+                <div class="wl-feat-prd">
+                    <section class="wl-left-block f-left">
+                        <div class="top-left-block">
+                            <div class="block-content">
+                                <h4 class="cursive-text">A hot new yoga fashion brand launches with Indian roots and modern flair.</h4>
+                                <span class="b-heading top-b-heading">WELL + GOOD</span>
+                            </div>
+                        </div>
+                        <div class="bottom-left-block" data-vid-handle="vid-blck-1">
+                            <!-- <img src="<?php echo $this->getSkinUrl('images/women/left-block-vid-img.jpg') ?>" alt="" /> -->
+                        </div>
+                    </section>
+                    <section class="wl-right-block f-right">
+                        <img src="<?php echo $this->getSkinUrl('images/women/feat-prd-main-img1.jpg') ?>" alt="" />
+                        <div class="block-content">
+                                <span class="b-heading bottom-b-heading">Featured Product</span>
+                                <h4 class="main-img-text">OOH LA LA BRA<span>5 colors</span></h4>
+                                <a href="<?php echo $this->getBaseUrl().'women/tops/ooh-la-la-bra';?>" class="shopnow-btn">shop now</a>
+                            </div>
+                    </section>
+                    <div class="clear-fix"></div>
+                </div>
+                <!-- Feature Product -->
+                <!-- Color Story Product -->
+                 <!-- Color Story -->
+                <?php
+                $colorstorycategoryId = $categoryIds['color_story'];
+                $colorstorycategory = Mage::getSingleton('catalog/category')->load($colorstorycategoryId);
+                $colorstorycategoryUrl = Mage::getBaseUrl().$colorstorycategory->getUrlPath();
+                ?>
+                <div class="wl-color-story-prd">                    
+                    <section class="wl-cs-left-block f-left">
+                        <img src="<?php echo $this->getSkinUrl('images/women/cs-main-img1.jpg') ?>" alt="" />
+                        <div class="block-content"> 
+                            <span class="b-heading bottom-b-heading">color</span>
+                            <h4 class="main-img-text">PARADEIZA RED</h4>   
+                            <a href="<?php echo $this->getBaseUrl().'women/tops';?>" class="shopnow-btn">shop now</a>
+                        </div>
+                    </section>
+                    <section class="wl-cs-right-block f-right">
+                        <div class="top-right-block" data-vid-handle="vid-blck-2">
+                            <!-- <img src="<?php echo $this->getSkinUrl('images/women/cs-vid-img.jpg') ?>" alt="" /> -->
+                        </div>
+                        <div class="bottom-right-block">
+                            <div class="block-content">
+                                <h4 class="cursive-text">Paradeiza Red - our rich, deep pink is perfect for the late summer and early fall months.</h4>
+                                <span class="b-heading top-grey-b-heading">ROSE APOSTOLAKOS, DESIGNER</span>
+                            </div>
+                        </div>                        
+                    </section>
+                    <div class="clear-fix"></div>
+                </div>           
+
+                <div class="html-video-popup" id="vid-blck-1">
+                    <video id="vid-1" style="width:100%;" controls>
+                        <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'design_features_video/Ooh_La_la_Bra.mp4'; ?>" type="video/mp4">
+                    </video>
+                </div>
+                <div class="html-video-popup" id="vid-blck-2">
+                    <video id="vid-2" style="width:100%;" controls>
+                        <source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'design_features_video/IMAGINE_TANK.mp4'; ?>" type="video/mp4">
+                    </video>
+                </div> 
+                <div class="vid-popup-overlay"></div>  
+               
+                            
+                <!-- Color Story -->
+            
+            </div> 
+            <?php echo $this->getChildHtml('footer'); ?>            
+        </div>
+        <?php echo $this->getChildHtml('before_body_end'); ?>
+    </div>
+</div>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>

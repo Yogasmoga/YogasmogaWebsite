@@ -1,0 +1,412 @@
+<?php
+/**
+ * J2T RewardsPoint2
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@j2t-design.com so we can send you a copy immediately.
+ *
+ * @category   Magento extension
+ * @package    RewardsPoint2
+ * @copyright  Copyright (c) 2009 J2T DESIGN. (http://www.j2t-design.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ ?>
+ <style type="text/css">
+    #pagecontainer
+    {
+        position: relative;
+    }
+ </style>
+ <?php /* speed fix (unknown)
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>jquery/myaccount.js"></script>
+<link media="all" href="<?php echo $this->getSkinUrl('css/myaccount.css'); ?>" type="text/css" rel="stylesheet" />
+*/ ?>
+<link media="all" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" type="text/css" rel="stylesheet" />
+<script type="text/javascript">
+    _disablesidenavigation = false;
+</script>
+<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('customer/dashboard_nav.phtml')->toHtml(); ?>
+<div id="referafriend-container" desc="Refer-A-Friend" class="pgsection">
+    <!-- <div class="myheader">REFER A FRIEND</div> -->
+    <div class="header-top-bar"></div>
+    <div class="referfriend-heading">
+        <h4>SHARE WITH YOUR FRIENDS</h4>
+        <span class="referfriend-desc">SHARE THE JOY OF YOGASMOGA,<br />YOUR FRIEND GETS $25 SMOGI BUCKS TOWARD THEIR 1ST ORDER.</span>
+    </div>    
+    <div class="referfriend-subheader c-align">YOUR INVITE LINK</div>
+    <table id="referrallink">
+        <tr>            
+            <td class="link">
+                <input id="uniquelink" type="text" value="<?php echo $this->getReferringUrl() ?>" readonly="true" />
+            </td>
+            <td class="share">                
+                <a href="#" id="fbrefer" onclick="sharereferlink('facebook');"></a>
+                <a href="#" onclick="sharereferlink('twitter');" id="twrefer"></a>
+                <a href="#" id="mlrefer" onclick="sharereferlink('mail');"></a>
+            </td>
+            <!-- <td class="copy">
+                <div id="copyurl" class="spbutton copy" imageurl="<?php echo $this->getSkinUrl('images/copy_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/copy_on.png'); ?>"></div>
+            </td> -->
+        </tr>
+    </table>
+    <div class="refer-frnd">
+        <table class="referfriend-invitehead">
+            <tr>
+                <td>
+                    <div class="referfriend-subheader">INVITE YOUR FRIENDS TO YOGASMOGA</div>
+                    <p>Let them in on the SMOGI Secret.</p>            
+                </td>
+                <td class="potential">
+                    Potential SMOGI Bucks:<span>$25</span>
+                </td>
+            </tr>
+        </table>
+        <table class="referfriendforms">            
+            <tbody id="main">
+                <tr id="template">
+                    <td class="name">
+                        <table class="inputtable nolabel">
+                            <tr>
+                                <td class="label"><label for="email">Email Address</label></td>
+                                <td class="inputholder">
+                                    <input type="text" class="requiredfield" placeholder="Name" value="" defaulterrormsg="Friend's name is required." />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="errortext" colspan="2">
+                                    <div>Friend's name is required.</div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="email">
+                        <table class="inputtable nolabel">
+                            <tr>
+                                <td class="label"><label for="email">Email Address</label></td>
+                                <td class="inputholder">
+                                    <input type="text" class="requiredfield" placeholder="Email Address" value="" defaulterrormsg="Friend's Email Address is required." />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="errortext" colspan="2">
+                                    <div>Friend's Email Address is required.</div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="btninvite">
+                        <div class="spbutton invite" imageurl="<?php echo $this->getSkinUrl('images/invite_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/invite_on.png'); ?>"></div>
+                    </td>
+                    <td class="btninvited">
+                        <div class="invited"></div>
+                    </td>
+                    <td class="remove">
+                        <img src="<?php echo $this->getSkinUrl('images/invite_cross.png'); ?>" />
+                    </td>
+                    <td class="processing">
+                        <img src="<?php echo $this->getSkinUrl('images/processing.gif'); ?>" />
+                    </td>
+                    <td class="success">
+                        <img src="<?php echo $this->getSkinUrl('images/invite_success.png'); ?>" />
+                    </td>
+                </tr>
+                <tr id="1">
+                    <td class="name">
+                        <table class="inputtable nolabel">
+                            <tr>                                
+                                <td class="inputholder">
+                                    <input type="text" class="watermark requiredfield" watermark="Name" value="" defaulterrormsg="Friend's name is required." />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="errortext" colspan="2">
+                                    <div>Friend's name is required.</div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="email">
+                        <table class="inputtable nolabel">
+                            <tr>                                
+                                <td class="inputholder">
+                                    <input type="text" class="watermark requiredfield" value="" watermark="Email Address" defaulterrormsg="Friend's Email Address is required." />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="errortext" colspan="2">
+                                    <div>Friend's Email Address is required.</div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="btninvite">
+                        <div class="spbutton invite" imageurl="<?php echo $this->getSkinUrl('images/invite_off.png'); ?>" downimageurl="<?php echo $this->getSkinUrl('images/invite_on.png'); ?>"></div>
+                    </td>
+                    <td class="btninvited">
+                        <div class="invited"></div>
+                    </td>
+                    <td class="remove" style="display: none;">
+                        <img src="<?php echo $this->getSkinUrl('images/invite_cross.png'); ?>" />
+                    </td>
+                    <td class="processing">
+                        <img src="<?php echo $this->getSkinUrl('images/processing.gif'); ?>" />
+                    </td>
+                    <td class="success">
+                        <img src="<?php echo $this->getSkinUrl('images/invite_success.png'); ?>" />
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6">
+                        <div id="addanotherreferral">
+                            <p>ADD ANOTHER +</p>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="track-invites">
+        <div class="referfriend-subheader">INVITE LIST</div>
+        <!-- <p id="noreferralmsg" <?php if(count($results) > 0) { echo "style='display:none;'"; } ?> >After you invite some of your friends you will be able to keep track of their invitations here.</p> -->
+        <p id="noreferralmsg">After you invite some of your friends you will be able to keep track of their invitations here.</p>
+        <?php
+            $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+            $customerData = Mage::getModel('customer/customer')->load(Mage::getSingleton('customer/session')->getId())->getData();
+            $result = $write->query("Select * from rewardpoints_referral where rewardpoints_referral_parent_id = ".$customerData['entity_id']);
+            $results = $write->fetchAll("Select * from rewardpoints_referral where rewardpoints_referral_parent_id = ".$customerData['entity_id']);
+            //echo count($results);
+            //echo "<pre>";
+    //        print_r($results);
+    //        echo "</pre>";
+        ?>
+        <table class="referredfriendslist" <?php if(count($results) == 0) { echo "style='display:none;'"; } ?> >            
+            <tbody id="main">
+                <?php
+                    foreach($results as $result)
+                    {
+                        ?>
+                            <tr>
+                                <td class="name">
+                                    <div><?php echo $result['rewardpoints_referral_name']; ?></div>
+                                </td>
+                                <td class="email">
+                                    <div><?php echo $result['rewardpoints_referral_email']; ?></div>
+                                </td>
+                                <td class="status">
+                                    <?php
+                                        if($result['rewardpoints_referral_status'] == 0)
+                                        {
+                                            ?>
+                                                                                
+                                            <?php
+                                        }
+                                        else
+                                        {
+                                            ?>
+                                                <img src="<?php echo $this->getSkinUrl('images/invite_success.png'); ?>" />      
+                                            <?php
+                                        }
+                                    ?>
+                                </td>
+                            </tr>                    
+                        <?php
+                    }              
+                ?>
+            </tbody>
+        </table>   
+    </div>
+         
+</div>
+<div class="backlink">
+    <a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/" class="back-link">&lt;&nbsp;<?php echo $this->__('Back') ?></a>
+</div>
+<?php return; ?>
+ <div class="refer-friend">
+<div class="page-title">
+    <h1><?php echo $this->__('Refer A Friend') ?></h1>
+</div>
+<h2 class="sub-title">
+Share The Joy Of YOGASMOGA, Get <?php echo $this->getReferrerPoints(); ?> SMOGI Bucks (worth $<?php echo $this->getReferrerPoints(); ?>)
+<span>For each friend you invite that goes shopping with us for their first time, you receive $<?php echo $this->getReferrerPoints(); ?> SMOGI Bucks.</span>
+</h2>
+<?php /* if($this->getReferrerPoints()):?>
+    <?php echo $this->__('For any first valid order placed by referred friend, you earn: <strong>%s points</strong>', $this->getReferrerPoints());?>
+    <br />
+<?php endif;?>
+<?php if($this->getFriendPoints()):?>
+    <?php echo $this->__('For any first valid order placed by referred friend, your friend gets: <strong>%s extra points</strong>', $this->getFriendPoints());?>
+<?php endif; */?>
+
+<?php if($this->isAddthis() || $this->isPermanentLink()):?>
+<div class="refer-box right">
+    <?php if($this->isPermanentLink()):?>
+        <h3><?php echo $this->__('your invite link') ?></h3>
+        <input type="text" disabled="disabled" value="<?php echo $this->getReferringUrl() ?>" class="share-link" onClick="this.select();" />
+        <button class="btn-copy button"><span><span>Copy</span></span></button>
+        <div class="social-btns" style="margin:10px 0 0;">
+            <a href="http://www.pinterest.com/YOGASMOGA" class="pinterest">Pinterest</a>
+            <a href="http://www.twitter.com/YOGASMOGA" class="twitter">Twitter</a>
+            <a href="http://www.facebook.com/YOGASMOGA" class="facebook">Facebook</a>
+        </div>
+    <?php endif;?>
+
+    <?php if($this->isAddthis()):?>
+    <div class="box-account box-recent">
+        <fieldset class="group-select">
+            
+            <div class="head box-title">
+                <h3><?php echo $this->__('Share referring link') ?></h3>
+            </div>
+            <ul>
+                <li>
+                    <div class="input-box">
+                        <label for="j2t-share-title"><?php echo $this->__('Sharing title (may not be used)') ?></label><br />
+                        <input onkeyup="j2tReinitializeAddThis();" type="text" name="j2t-share-title" id="j2t-share-title" value="<?php echo $this->__('Great deals here!');?>" class="input-text" />
+                    </div>
+                    <div class="input-box">
+                        <label for="j2t-share-text"><?php echo $this->__('Sharing text (may not be used)') ?></label><br />
+                        <textarea onkeyup="j2tReinitializeAddThis();" id="j2t-share-text" name="j2t-share-text" cols="100" rows="5" class="input-text"><?php echo $this->__('Visit this for great deals!');?></textarea>
+                    </div>
+                </li>
+            </ul>
+        </fieldset>
+    
+        <br />
+        
+        <!-- AddThis Button BEGIN -->
+        <?php echo Mage::getStoreConfig('rewardpoints/registration/referral_addthis_code', Mage::app()->getStore()->getId());?>
+        <script type="text/javascript">
+            var addthis_share =
+            {
+                url: "<?php echo $this->getReferringUrl();?>",
+                title: $('j2t-share-title').value,
+                description: $('j2t-share-text').value
+            }
+        </script>
+        
+        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=<?php echo Mage::getStoreConfig('rewardpoints/registration/referral_addthis_account', Mage::app()->getStore()->getId());?>"></script>
+        <!-- AddThis Button END -->
+        
+        
+        <?php /*?>
+        <a class="addthis_button" id="j2t-post-share" addthis:url="<?php echo $this->getReferringUrl();?>" addthis:title="<?php echo $this->__('Great deals here!');?>" addthis:description="<?php echo $this->__('Visit this for great deals!');?>"></a>
+        <script type="text/javascript">
+            function j2tReinitializeAddThis(){
+              if (window.addthis){
+                 $('j2t-post-share').writeAttribute('addthis:title', $('j2t-share-title').value);
+                 $('j2t-post-share').writeAttribute('addthis:description', $('j2t-share-text').value);
+                 window.addthis.ost = 0;
+                 window.addthis.ready();
+              }
+           }
+            //addthis.button('#j2t-post-share', {}, {url: "<?php echo $this->getReferringUrl();?>", title: $('j2t-share-title').value, description: $('j2t-share-text').value});
+            addthis.button('#j2t-post-share');
+        </script>
+        <?php */?>
+    </div>
+    <?php endif;?>
+</div>
+<?php endif;?>
+
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<form action="<?php echo $this->getUrl('rewardpoints/index/referral/') ?>" method="post" id="form-validate">
+    <div class="box-invite left">
+        <fieldset class="group-select" id="j2t-referral-lines">
+            <?php /*?><input type="hidden" value="Il1NwrpfsCuSmp03" name="form_key"/><?php */?>
+            <?php echo $this->getBlockHtml('formkey')?>
+            <h3><?php echo $this->__('Invite Your Friends to YOGASMOGA<span>Let Them In On The SMOGI Secret.</span>') ?></h3>
+            
+            <ul class="form-list">
+                <li class="fields">
+                    <div class="j2t-rewardpoints-referral">
+                        <div class="field j2t-rewardpoints-name">
+                            <label for="name" class="required" id="label-name"><em>*</em><?php echo $this->__('Friend\'s name') ?></label>
+                            <input type="text" name="name[]" value="" title="<?php echo $this->__('Friend\' name') ?>" class="required-entry input-text" style="width:160px;" id="name" />
+                        </div>
+                        <div class="field j2t-rewardpoints-email">
+                            <label for="email" class="required validate-email" id="label-email"><em>*</em><?php echo $this->__('Friend\'s email address') ?></label>
+                            <input type="text" name="email[]" value="" title="<?php echo $this->__('Friend\'s email address') ?>" class="required-entry input-text" style="width:130px;" id="email" />
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <a class="right" id="j2t-add-line" href="javascript:j2t_add_line();" title="<?php echo $this->__('Add new line') ?>">
+                <img src="<?php echo $this->getSkinUrl('images/j2t_add_one.png') ?>" alt="<?php echo $this->__('Add new line') ?>" />
+            </a>  
+            <button class="btn-invite button" type="submit"><span><span><?php echo $this->__('Send') ?></span></span></button>          
+        </fieldset>
+        
+        <script type="text/javascript">
+            var elmt_id_j2t = 0;
+            function j2t_add_line(){
+                var form_list_ul = $('j2t-add-line').up().down("ul");
+                //var form_list_ul_clone = Element.clone(form_list_ul, true);
+                var form_list_ul_clone = form_list_ul.cloneNode(true);
+                
+                form_list_ul_clone.down("#label-name").id = "label-name-"+elmt_id_j2t;
+                form_list_ul_clone.down("#name").id = "name-"+elmt_id_j2t;
+                form_list_ul_clone.down("#label-email").id = "label-email-"+elmt_id_j2t;
+                form_list_ul_clone.down("#email").id = "email-"+elmt_id_j2t;
+                
+                form_list_ul_clone.down("#name-"+elmt_id_j2t).value = "";
+                form_list_ul_clone.down("#email-"+elmt_id_j2t).value = "";
+                
+                var del_img = new Element('img', {src: '<?php echo $this->getSkinUrl('images/j2t_minus_one.png') ?>'})
+                form_list_ul_clone.down(".j2t-rewardpoints-email").insert({
+                    bottom: del_img
+                });
+                del_img.observe('click', function(event) {
+                    Event.element(event).up("ul").remove();
+                });
+                
+                $('j2t-add-line').insert({ before: form_list_ul_clone });
+                elmt_id_j2t++;
+            }
+        </script>
+    </div>
+</form>
+
+<div class="clearer" style="clear:both; margin:0 0 40px;">&nbsp;</div>
+<script type="text/javascript">
+    var dataForm = new VarienForm('form-validate', true);
+</script>
+<br /><br />
+<?php $_referred = $this->getReferred();?>
+<h3 class="heading-track">Keep track of your invites</h3>
+<?php if($_referred->getSize()): ?>
+<?php echo $this->getPagerHtml() ?>
+<table cellspacing="0" class="data-table" id="referred-friends-table">
+    <thead>
+        <tr>
+            <?php ?><th><?php echo $this->__('Full Name') ?></th><?php ?>
+            <th><?php echo $this->__('Email') ?></th>
+            <!--<th><?php echo $this->__('Registered?') ?></th>-->
+            <th><?php echo $this->__('First order?') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php $_odd = ''; ?>
+        <?php foreach ($_referred as $_friend): ?>
+            <tr>
+                <?php ?><td><?php echo $_friend->getRewardpoints_referral_name() ?></td><?php ?>
+                <td><?php echo $_friend->getRewardpoints_referral_email() ?></td>
+                <!--<td><?php echo $_friend->getRewardpoints_referral_child_id() ? $this->__('yes') : $this->__('no') ?></td>-->
+                <td class="a-right"><?php echo $_friend->getRewardpoints_referral_status() ? $this->__('yes') : $this->__('no') ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<?php echo $this->getPagerHtml() ?>
+<?php else: ?>
+    <p><?php echo $this->__('After you invite some of your friends you will be able to keep track of their invitations here..'); ?></p>
+<?php endif ?>
+<div class="clearer" style="clear:both; margin:0 0 80px;">&nbsp;</div>
+</div>

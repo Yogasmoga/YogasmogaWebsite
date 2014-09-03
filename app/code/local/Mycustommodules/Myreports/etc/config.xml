@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <mycustommodules_myreports>
+            <version>0.0.1</version>
+        </mycustommodules_myreports>
+    </modules>
+    <global>
+        <blocks>
+            <myreports>
+                <class>
+                    Mycustommodules_Myreports_block
+                </class>
+            </myreports>
+        </blocks>
+    </global>
+    
+    <frontend>
+        <routers>
+            <myreports>
+                <use>standard</use>
+                <args>
+                    <module>Mycustommodules_Myreports</module>
+                    <frontName>myreports</frontName>
+                </args>
+            </myreports>
+        </routers>   
+            <layout>
+                <updates>
+                    <myreports>
+                        <file>myreports.xml</file>
+                    </myreports>
+                </updates>
+            </layout>
+    </frontend>
+	<global>
+		<template>
+            <email>
+                <custom_notification_template1>
+					<label>Yogasmoga Notification</label>
+					<file>custom_rewardpoint_notification.html</file>
+					<type>html</type>
+				</custom_notification_template1>
+            </email>
+        </template>
+	</global>
+</config>

@@ -389,6 +389,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
     {
         $output = $this->getminicarthtml();
         echo json_encode(array("html" => $output, "count" => $this->getcartcount()));
+        //echo json_encode(array("count" => $this->getcartcount()));
     }
     
     function getShippingCost($code)
@@ -455,26 +456,12 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
             $tax = 0;
         }
         ?>
-        <span class="anchor">ORDER SUMMARY</span>
+        <span class="anchor dnone">ORDER SUMMARY</span>
         <table>
             <tr>
-                <td>Order Subtotal</td>
+                <td><?php echo $this->getcartcount().' ITEMS'?><!-- Order Subtotal --></td>
                 <td id="ordersubtotal" class="total">
                     $<?php echo number_format((float)($subtotal), 2, '.', ''); ?>
-                </td>
-            </tr>            
-            <tr>
-                <td>Shipping</td>
-                <td id="shippingtotal" class="total">
-                    <?php $shippingcode = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingMethod();
-                        if($shippingcode == "")
-                            echo "-";
-                        else
-                            if($this->getShippingCost($shippingcode) == 0)
-                                echo "FREE";
-                            else
-                                echo "$".number_format((float)($this->getShippingCost($shippingcode)), 2, '.', '');
-                    ?>
                 </td>
             </tr>
             <?php
@@ -490,6 +477,20 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                     <?php
                 }
             ?>
+            <tr>
+                <td>Shipping</td>
+                <td id="shippingtotal" class="total">
+                    <?php $shippingcode = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingMethod();
+                        if($shippingcode == "")
+                            echo "-";
+                        else
+                            if($this->getShippingCost($shippingcode) == 0)
+                                echo "FREE";
+                            else
+                                echo "$".number_format((float)($this->getShippingCost($shippingcode)), 2, '.', '');
+                    ?>
+                </td>
+            </tr>
             <?php
                 if($discount > 0)
                 {
@@ -507,7 +508,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
                 <td colspan="2" class="divider"></td>
             </tr>
             <tr class="ordertotal">
-                <td><span class="anchor">ORDER TOTAL</span></td>
+                <td><span class="anchor">GRAND TOTAL</span></td>
                 <td id="ordertotal" class="total">
                     <?php echo "$".number_format((float)($grandtotal), 2, '.', ''); ?>
                 </td>

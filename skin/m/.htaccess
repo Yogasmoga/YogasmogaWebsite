@@ -12,6 +12,6 @@
 
 ############################################
 ## Compress, Combine and Cache Javascript/CSS
-    RewriteRule ^([^/]+)(/.*.(js|css))$ /lib/minify/m.php?f=$2&d=$1
+    RewriteRule ^([^/]+)(/.*.(js|css))$ ../../lib/minify/m.php?f=$2&d=$1
 
 </IfModule>
