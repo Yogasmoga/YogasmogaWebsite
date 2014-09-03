@@ -545,10 +545,19 @@ function featuredSec(){
             jQuery(".wl-cs-right-block .bottom-right-block").css("height", cs_right_bot_H);                        
         }
     }else if(bIsAppleMobile){
-        jQuery(".wl-cs-right-block .top-right-block").css("height", cs_right/2);    
-        var cs_right_top = jQuery(".wl-cs-right-block .top-right-block").height();
-        var cs_right_bot_H = cs_right - cs_right_top;    
-        jQuery(".wl-cs-right-block .bottom-right-block").css("height", cs_right_bot_H);        
+        var menBlock = jQuery(".wl-cs-right-block .top-right-block#iconspartone").is(":visible");
+        if(menBlock){           
+            jQuery(".wl-cs-right-block .top-right-block").css("height", (cs_right/2)); 
+            var cs_right_top = jQuery(".wl-cs-right-block .top-right-block").outerHeight();
+            var cs_right_bot_H = cs_right - cs_right_top;    
+            jQuery(".wl-cs-right-block .bottom-right-block").css("height", cs_right_bot_H);            
+            //jQuery(".mens-left-blockbg").css({"background":"none", "font-size":"25px"}).text(cs_right/2 + "--"+ cs_left/2+ "--" + cs_right_bot_H + "--" + cs_right_top);
+        }else{
+            jQuery(".wl-cs-right-block .top-right-block").css("height", cs_right/2);
+            var cs_right_top = jQuery(".wl-cs-right-block .top-right-block").height();
+            var cs_right_bot_H = cs_right - cs_right_top;    
+            jQuery(".wl-cs-right-block .bottom-right-block").css("height", cs_right_bot_H);
+        }        
     }
     // rgt_vid_img.css("margin-top", (rgt_vid - rgt_vid_img_height)/2.07);
 
