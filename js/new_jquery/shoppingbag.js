@@ -39,7 +39,8 @@ jQuery(document).ready(function($){
         $(".page").animate({ left: '0' }).css("");
         $(".header-container").animate({ left: "0" });
         $("body, html").removeClass("hdnHgt");     
-        jQuery(".side-menu-bar,.account-nav,.leftnav").css("position","");     
+        jQuery(".side-menu-bar,.account-nav").removeClass("scrolltopend"); 
+        $(window).scrollTop("79px");   
     });
     $("div.adddields span").live("click",function(){  
          if(!$(this).attr('class')){
@@ -327,6 +328,7 @@ function openShoppingCart()
     if(leftNavVis && leftNavPos == "fixed"){        
         leftNav.removeClass("scrolltop");
     }
+    jQuery(".side-menu-bar,.account-nav").addClass("scrolltopend");
 
 var shoppingWdth = jQuery(".shopping-cart").width();
 var bodyHght = jQuery(window).height();
@@ -404,8 +406,7 @@ function giftcart() {
     else showerror('Invalid gift of YS code.');
 }
 function showShoppingBagHtml()
-{
-    // jQuery(".side-menu-bar,.account-nav,.leftnav").css("position","absolute");
+{    
     if(window.location.href.indexOf('https://') >= 0)
         _usesecureurl = true;
     else

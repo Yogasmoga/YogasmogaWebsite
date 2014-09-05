@@ -12,6 +12,9 @@ jQuery(window).load(function($){
     // jQuery("body").animate({opacity:1},100);     
 });
 jQuery(document).ready(function($){  
+    $("body").on("click", function(){              
+        $zopim.livechat.window.hide();         
+    });
     /*var i = 0;
     var pageReload = setInterval(function(){
         i++; 
