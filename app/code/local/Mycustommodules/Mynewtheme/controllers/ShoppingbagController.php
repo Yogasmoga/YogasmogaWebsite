@@ -728,8 +728,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
                     //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
                     $temparray['name'] = $item->getName();
-                    if(strlen($temparray['name']) > 20)
-                        $temparray['name'] = substr($temparray['name'], 0, 19)."...";
+                    //if(strlen($temparray['name']) > 20)
+                        //$temparray['name'] = substr($temparray['name'], 0, 19)."...";
 
                     if($this->issuperattribute($product, "color"))
                     {
@@ -769,8 +769,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
                     //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
                     $temparray['name'] = $item->getName();
-                    if(strlen($temparray['name']) > 20)
-                        $temparray['name'] = substr($temparray['name'], 0, 19)."...";
+                    //if(strlen($temparray['name']) > 20)
+                        //$temparray['name'] = substr($temparray['name'], 0, 19)."...";
                     $temparray['quantity'] = $item->getQty();
                     $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
                     $temparray['imageurl'] = $this->getMiniImage($item->getProductId());
@@ -793,8 +793,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $temparray['typeid'] = '';
                 //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
                 $temparray['name'] = $item->getName();
-                if(strlen($temparray['name']) > 20)
-                    $temparray['name'] = substr($temparray['name'], 0, 19)."...";
+                //if(strlen($temparray['name']) > 20)
+                    //$temparray['name'] = substr($temparray['name'], 0, 19)."...";
                 $temparray['quantity'] = $item->getQty();
                 $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
                 $temparray['imageurl'] = $this->getMiniImage($item->getProductId());
@@ -1059,7 +1059,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
             if($checkpromoapplied)
             {
-                $smogiplaceholder="SMOGI Bucks cannot be used with Promo Codes.";
+                $smogiplaceholder="SMOGI Bucks cannot be used with Promo Codes";
                 $gryclasssmogi = "gry";
                 $gryclassgift = "gry";
                 $applysmogi="";
@@ -1074,7 +1074,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             if($checkgiftapplied)
             {
                 //$gryclassgift = "gry";
-                $smogiplaceholder="SMOGI Bucks cannot be used with Promo Codes.";
+                $smogiplaceholder="SMOGI Bucks cannot be used with Promo Codes";
                 $gryclasssmogi = "gry";
                 $gryclasspromo = "gry";
                 $applysmogi="";
@@ -1117,7 +1117,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 }
                 else
                 {
-                    $html .='<div style="min-height: inherit;"> <input type="checkbox" id="giftCardShop" value="1"  class="giftcardcheckbox"  '.$checkboxapplied.'/><label for="giftCardShop">Use your Gift Card balance: $'.$giftofysbalance.' available.</label></div>';
+                    $html .='<div style="min-height: inherit;"> <input type="checkbox" id="giftCardShop" value="1"  class="giftcardcheckbox"  '.$checkboxapplied.'/><label for="giftCardShop">Use your Gift Card balance: $'.$giftofysbalance.' available</label></div>';
                 }
                 $html .='<div class="giftcarloader" style="clear: both;text-align:left;position:text-align: left; width: 100%;"></div>';
             }

@@ -1008,7 +1008,7 @@ function validatePaymentForm()
             }
         }
         if(!flag)
-            jQuery("#paymentmethoderrormsg").html('Please fill in the required fields in red to continue.');
+            jQuery("#paymentmethoderrormsg").html('Please fill in the required fields in red to continue');
         else
             jQuery("#paymentmethoderrormsg").html('');
         return flag;
@@ -1047,7 +1047,7 @@ function validatePaymentForm()
         }
     }
     if(!flag)
-        jQuery("#paymentmethoderrormsg").html('Please fill in the required fields in red to continue.');
+        jQuery("#paymentmethoderrormsg").html('Please fill in the required fields in red to continue');
     else
         jQuery("#paymentmethoderrormsg").html('');
     return flag;
@@ -1527,7 +1527,7 @@ function validateBillingAddressForm()
         }
     }
     if(!flag)
-        jQuery("#billingaddresserrormsg").html('Please fill in the required fields in red to continue.');
+        jQuery("#billingaddresserrormsg").html('Please fill in the required fields in red to continue');
     else
         jQuery("#billingaddresserrormsg").html('');
     return flag;
@@ -1546,7 +1546,7 @@ function validateShippingAddressForm()
         }
     }
     if(!flag)
-        jQuery("#shippingaddresserrormsg").html('Please fill in the required fields in red to continue.');
+        jQuery("#shippingaddresserrormsg").html('Please fill in the required fields in red to continue');
     else
         jQuery("#shippingaddresserrormsg").html('');
     return flag;
