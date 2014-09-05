@@ -596,13 +596,13 @@ function addtocart()
     if(_islengthavailable){
              var errormsg = '';
         if(jQuery("div.selectedlength div.selected").length == 0 && _productorderqty == 0)
-            errormsg = "Please select quantity and length to continue.";
+            errormsg = "Please select quantity and length to continue";
         else
         {
             if(_productorderqty == 0)
-                errormsg = "Please select quantity to continue.";
+                errormsg = "Please select quantity to continue";
             if(jQuery("div.selectedlength div.selected").length == 0)
-                errormsg = "Please select length to continue.";
+                errormsg = "Please select length to continue";
         }
         if(errormsg != '')
         {
@@ -616,13 +616,13 @@ function addtocart()
     }else{
             var errormsg = '';
         if(jQuery("div#sizecontainer div.dvselectedsize").length == 0 && _productorderqty == 0)
-            errormsg = "Please select quantity and size to continue.";
+            errormsg = "Please select quantity and size to continue";
         else
         {
             if(_productorderqty == 0)
-                errormsg = "Please select quantity to continue.";
+                errormsg = "Please select quantity to continue";
             if(jQuery("div#sizecontainer div.dvselectedsize").length == 0)
-                errormsg = "Please select size to continue.";
+                errormsg = "Please select size to continue";
         }
         if(errormsg != '')
         {

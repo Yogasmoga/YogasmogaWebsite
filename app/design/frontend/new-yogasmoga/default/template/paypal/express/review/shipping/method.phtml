@@ -55,6 +55,8 @@
                                 <td class="shippingRadio">
                                 <input type="radio" class="radio" id="s_method_<?php echo $this->renderShippingRateValue($rate)?>" value="<?php echo $this->renderShippingRateValue($rate)?>" name="shipping_method" <?php echo ($currentRate === $rate) ? ' checked="checked"' : '' ;?> /> 
                                     <label for="s_method_<?php echo $this->renderShippingRateValue($rate)?>"><?php echo formatshipmethod($this->renderShippingRateOption($rate))?>
+                         <?php //print_r($rate->price());die; ?>
+
                         <?php
                             $temp = Mage::app()->getLayout()->createBlock('cms/block')->setBlockId($this->renderShippingRateValue($rate))->toHtml();
                             //$temp = Mage::getModel('cms/block')->load('revolvingmessage_loggedin')->getContent();

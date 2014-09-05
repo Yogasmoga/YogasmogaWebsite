@@ -15,13 +15,13 @@ jQuery(document).ready(function($) {
         if(_islengthavailable){
              var errormsg = '';
         if(jQuery("div.selectedlength div.selected").length == 0 && _productorderqty == 0)
-            errormsg = "Please select quantity and length to continue.";
+            errormsg = "Please select quantity and length to continue";
         else
         {
             if(_productorderqty == 0)
-                errormsg = "Please select quantity to continue.";
+                errormsg = "Please select quantity to continue";
             if(jQuery("div.selectedlength div.selected").length == 0)
-                errormsg = "Please select length to continue.";
+                errormsg = "Please select length to continue";
         }
         if(errormsg != '')
         {
@@ -37,13 +37,13 @@ jQuery(document).ready(function($) {
         $("div.producterrorcontainer div.errormsg").empty();
         var errormsg = '';
         if ($("div#sizecontainer div.dvselectedsize").length == 0 && _productorderqty == 0)
-            errormsg = "Please select quantity and size to continue.";
+            errormsg = "Please select quantity and size to continue";
         else
         {
             if (_productorderqty == 0)
-                errormsg = "Please select quantity to continue.";
+                errormsg = "Please select quantity to continue";
             if ($("div#sizecontainer div.dvselectedsize").length == 0)
-                errormsg = "Please select size to continue.";
+                errormsg = "Please select size to continue";
         }
         if (errormsg != '')
         {
@@ -73,17 +73,17 @@ jQuery(document).ready(function($) {
        // var errormsg = '';
 
             if(jQuery("div#sizecontainer div.dvselectedsize").length == 0 && _productorderqty == 0)
-                {errormsg = "Please select quantity and size to continue.";
+                {errormsg = "Please select quantity and size to continue";
                 return;}
             else
             {
             //    alert('l');
                 if(_productorderqty == 0) {
-                    errormsg = "Please select quantity to continue.";
+                    errormsg = "Please select quantity to continue";
                     return;
                 }
                 if(jQuery("div#sizecontainer div.dvselectedsize").length == 0){
-                    errormsg = "Please select size to continue.";
+                    errormsg = "Please select size to continue";
                 return;}
             }
             _isClickSigninMenu = true;

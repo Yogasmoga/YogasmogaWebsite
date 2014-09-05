@@ -47,12 +47,12 @@ jQuery(document).ready(function($){
 //             showerror('You cannot use Smogi Bucks and Promo Code / Gift Card Code together.');   
             // showerror("Gift Card, SMOGI Bucks and Promo Code cannot be combined. Please choose one and continue CheckOut."); 
              if($(this).prev('input').attr('id')=='smogi'){
-                 if($(this).prev('input').attr('available') < 1) showerror('You do not have enough SMOGI Bucks in your Account.');
+                 if($(this).prev('input').attr('available') < 1) showerror('You do not have enough SMOGI Bucks in your Account');
                  else showerror($(this).prev('input').attr('placeholder'));
              }
              else if($(this).prev('input').attr('id')=='giftcartcode'){
-                  if($(this).prev('input').data('used') =='yes') showerror('You cannot use another Promo Code / Gift Card Code.');
-                  else showerror('You cannot use SMOGI Bucks & Promo Code/Gift Card Code together.');
+                  if($(this).prev('input').data('used') =='yes') showerror('You cannot use another Promo Code / Gift Card Code');
+                  else showerror('You cannot use SMOGI Bucks & Promo Code/Gift Card Code together');
              }
          }
     });
@@ -383,7 +383,7 @@ function promocodecart(){
                     applypromocode();
         }
     }
-    else showerror('Please enter valid code.');
+    else showerror('Please enter valid code');
 }
 function giftcart() {
     jQuery('#redeemresult').empty().hide();
@@ -556,7 +556,7 @@ function applysmogibucks()
     }
     else if(isNaN(smogivalue) && smogivalue !='') {
         jQuery('#smogi').next('span').addClass("applysmogi").empty().append("+");
-        showerror('Please enter valid number.');
+        showerror('Please enter valid number');
         return false;
     }
 
@@ -601,7 +601,7 @@ function applysmogibucks()
                 }
                 else
                 {
-                    showerror('There is some error while applying smogi bucks.');
+                    showerror('There is some error while applying smogi bucks');
                     showerror(data.error);
                     jQuery('#smogi').next('span').addClass("applysmogi").empty().append("+");
                     jQuery('.zindexH').hide();
@@ -614,7 +614,7 @@ function applysmogibucks()
     }
     else{
         jQuery('#smogi').next('span').addClass("applysmogi").empty().append("+");
-        showerror('You do not have enough SMOGI Bucks in your Account.');
+        showerror('You do not have enough SMOGI Bucks in your Account');
         jQuery('.zindexH').hide();
     }
 
@@ -646,7 +646,7 @@ function removesmogibucks()
             else
             {
                 jQuery('.zindexH').hide();
-                showerror('There is some error while removing smogi bucks.');
+                showerror('There is some error while removing smogi bucks');
                 
             }
 
@@ -678,7 +678,7 @@ function automaticapplysmogibucks()
             }
             else
             {
-                showerror('There is some error while apply auto smogi bucks.');
+                showerror('There is some error while apply auto smogi bucks');
             }
 
         }
