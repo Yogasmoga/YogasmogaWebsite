@@ -232,12 +232,16 @@
 <div class="new-arrivals-block" style="width:100%; margin:0 auto;">
     <?php $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('men_landing_category_ids')->getValue('plain')), true);
 
-     $categoryId = $categoryIds['quick_view'];
+    $categoryId_newcollection = $categoryIds['new_collection'];
+    $categoryId_quickview = $categoryIds['quick_view'];
     ?>
-    <?php $newarrivals = Mage::getModel('catalog/category')->load($categoryId); ?>
+    <?php
+        $newcollection = Mage::getModel('catalog/category')->load($categoryId_newcollection);
+        $newarrivals = Mage::getModel('catalog/category')->load($categoryId_quickview);
+    ?>
     <div class="shop-col-desc l-align">
         <span class="na-head">NEW ARRIVALS</span>
-        <span class="na-link"><a href="<?php echo $newarrivals->getUrl(); ?>">Shop New Collection</a></span>
+        <span class="na-link"><a href="<?php echo $newcollection->getUrl(); ?>">Shop New Collection</a></span>
     </div>
 
     <?php

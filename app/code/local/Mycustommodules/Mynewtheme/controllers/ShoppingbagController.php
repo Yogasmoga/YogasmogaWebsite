@@ -844,6 +844,12 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $minidetails['grandtotal'] = "$".number_format((float)$grandtotal, 2, '.','');
         $minidetails['checkoutlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/onepage";
 
+        $stritem = 'item';
+        if($this->getcartcount() > 1)
+        {
+            $stritem = 'items';
+        }
+
         $checksmogiapplied = false;
         $checkpromoapplied = false;
         $checkgiftapplied = false;
@@ -899,7 +905,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     <!-- listItems -->
                     <ul>
                         <li>
-                            <span class="f-left capstxt">'.$minidetails['totalitems'].' item</span>
+                            <span class="f-left capstxt">'.$minidetails['totalitems'].' '.$stritem.'</span>
                             <span class="f-right">'.$minidetails['subtotal'].'</span>
                         </li>';
 
