@@ -11,9 +11,12 @@ jQuery(window).load(function($){
     sizeChartScroll();      
     // jQuery("body").animate({opacity:1},100);     
 });
-jQuery(document).ready(function($){  
-    $("body").on("click", function(){              
-        $zopim.livechat.window.hide();         
+jQuery(document).ready(function($){
+
+    $("body").on("click", function(){
+        if(jQuery(".zopim").is(":visible")){
+            $zopim.livechat.window.hide();             
+        }             
     });
     /*var i = 0;
     var pageReload = setInterval(function(){
