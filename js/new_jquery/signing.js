@@ -191,6 +191,7 @@ function loginCustomer()
             var status = data.status;
             var error = data.error;
             var name = data.fname;
+            var somgiBal = data.smogi;
 
             if(status == "success")
             {
@@ -203,6 +204,9 @@ function loginCustomer()
                 if(name != '')
                     jQuery("#welcome-name").html("Hi "+name).attr("href",homeUrl+'customer/account/');
 
+                jQuery(".before-login").hide();
+                jQuery(".after-login").show();
+                jQuery(".after-login li.smogi-balance a span").html(somgiBal);                
                 if(_isClickShareWithFriends)
                 {
                     //_isClickShareWithFriends = false;

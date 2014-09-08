@@ -71,11 +71,18 @@
                        <li data-blockid="faq" class="cms-id"><a href="<?php echo Mage::getBaseUrl().'help#faq'?>">FAQ</a></li>
                     </ul>
                 </li>
-                <li>
-                    <ul>
+                <li>              
+                               
+                    <ul class="after-login <?php if (Mage::getSingleton('customer/session')->isLoggedIn()) echo 'sb-show'; ?>">
+                        <li><a href="<?php echo Mage::getBaseUrl().'smogi-bucks' ?>" id="" class="smogi-balance gothambd">SMOGI BUCKS</a></li>
+                        <li class="smogi-balance"><a href="<?php echo Mage::getBaseUrl().'smogi-bucks' ?>">You currently have <span></span> SMOGI Bucks<br/> to use toward your order.</a></li>                        
+                    </ul>
+                
+                    <ul class="before-login <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()) echo 'sb-show'; ?>">
                         <li><a href="javascript:void(0);" id="" class="smogi-love gothambd">FEEL THE SMOGI LOVE</a></li>
                         <li class="smogi-love">Sign up for $25 SMOGI Bucks<br/> toward your first order.</li>                        
-                    </ul>
+                    </ul>               
+                    
                 </li>
                 <li>
                     <ul>
