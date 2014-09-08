@@ -210,11 +210,13 @@ sizeChartPop();
 
     if(!_islogedinuser){
         jQuery(".footer-block .smogi-love").removeClass("no-over-state");
-        jQuery(".share-strip .sign-up-new a").removeClass("no-over-state");
+        jQuery(".share-strip .sign-up-new a").removeClass("dnone");
+        jQuery(".share-strip .sign-up-new span").text("& WE'LL SURPRISE YOU");
     }
     else{
         jQuery(".footer-block .smogi-love").addClass("no-over-state");
-        jQuery(".share-strip .sign-up-new a").addClass("no-over-state");
+        jQuery(".share-strip .sign-up-new a").addClass("dnone");
+        jQuery(".share-strip .sign-up-new span").text("Hi! Welcome To YOGASMOGA..");
     }
 
 
