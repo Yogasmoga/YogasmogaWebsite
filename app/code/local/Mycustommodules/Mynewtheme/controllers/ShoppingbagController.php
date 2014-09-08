@@ -624,10 +624,29 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
     {
 
         $id = (int) $this->getRequest()->getParam('id');
+        $deletedqty = (int) $this->getRequest()->getParam('deleteqty');
         if ($id) {
             try {
-                $this->_getCart()->removeItem($id)
-                    ->save();
+                if($deletedqty >1)
+                {
+                    // update item quantity in cart -1 for each time
+                    $quote = Mage::getSingleton('checkout/session')->getQuote();
+                    $cartItems = $quote->getAllVisibleItems();
+                    $cart = Mage::getSingleton('checkout/cart');
+                    foreach ($cartItems as $item) {
+                        if($id==$item->getId())
+                        {
+                            $item->setQty($deletedqty-1);
+                            //$item->setQty($_POST['qty']); // UPDATE ONLY THE QTY, NOTHING ELSE!
+                            $cart->save();  // SAVE
+                            //Mage::getSingleton('checkout/session')->setCartWasUpdated(true);
+                        }
+
+                    }
+                    // end update item quantity in cart -1 for each time
+                }
+                else
+                    $this->_getCart()->removeItem($id)->save();
             } catch (Exception $e) {
                 echo json_encode(array("status" => "error"));
                 //$this->_getSession()->addError($this->__('Cannot remove the item.'));
@@ -747,7 +766,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         $temparray['optionvalue'] = $productselectedoption['options'][0]['value'];
                     }
                     $temparray['quantity'] = $item->getQty();
-                    $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
+                    //$temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
+                    $temparray['price'] = "$".number_format((float)( $item->getBaseCalculationPrice()), 2, '.', '');
                     //$temparray['imageurl'] = $this->getMiniImage($item->getProductId(), $temparray['color']);
                     $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'color', Mage::app()->getStore()->getStoreId()));
                     $temparray['itemid'] = $item->getItemId();
@@ -772,7 +792,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     //if(strlen($temparray['name']) > 20)
                         //$temparray['name'] = substr($temparray['name'], 0, 19)."...";
                     $temparray['quantity'] = $item->getQty();
-                    $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
+                    //$temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
+                    $temparray['price'] = "$".number_format((float)( $item->getBaseCalculationPrice()), 2, '.', '');
                     $temparray['imageurl'] = $this->getMiniImage($item->getProductId());
                     $temparray['imageurl'] = "_".Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 100)->setQuality(100);
                     $temparray['producturl'] = $_product->getProductUrl();
@@ -796,7 +817,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 //if(strlen($temparray['name']) > 20)
                     //$temparray['name'] = substr($temparray['name'], 0, 19)."...";
                 $temparray['quantity'] = $item->getQty();
-                $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
+                //$temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
+                $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');
                 $temparray['imageurl'] = $this->getMiniImage($item->getProductId());
                 $temparray['imageurl'] = "_".Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 100)->setQuality(100);
                 $temparray['producturl'] = $_product->getProductUrl();
@@ -820,7 +842,25 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         {
             Mage::getSingleton('core/session')->setCartItems($miniitems);
         }
+        // show every quantity seperatly in shopping bag
+        $newminiitems = $miniitems;
+        $miniitems = array();
+        foreach($newminiitems as $item)
+        {
+            if($item['quantity'] > 1)
+            {
+                for($i = 0;$i < $item['quantity'];$i++)
+                {
+                    array_push($miniitems,$item);
+                }
+            }
+            else{
+                array_push($miniitems,$item);
+            }
 
+        }
+        //print_r($miniitems);die('test');
+        // end show every quantity
 
         //echo $foundOnlyNoSmogiProduct;
         $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
@@ -1166,7 +1206,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $html .='<li id="'.$item['itemid'].'" availableqty="'.$item['pavailableqty'].'" backorder="'.$item['preorder'].'" instock="'.$item['instock'].'">
                 <a href="'.$item['producturl'].'"><span class="wdth100"><img alt="'.$item['name'].'" src="'.substr($item['imageurl'], 1).'" ></span></a>
 <span>
-                    <span class="quantity">qty '.$item['quantity'].'</span>
+                    <span class="quantity dnone" cartqty='.$item['quantity'].'>qty '.$item['quantity'].'</span>
                     <span class="pname">'.$item['name'].'</span>
                     <span class="amnt">'.$item['price'].'</span>
                     <span class="clr">'.$item['color'].'</span>';

@@ -91,8 +91,9 @@ jQuery(document).ready(function($){
     jQuery(".close").live("click",function(e){
         e.preventDefault();
         var deleteproductid = (jQuery(this).parent("li").attr("id")).trim();
+        var productcartqty = jQuery(this).prev("span").find("span.quantity").attr("cartqty")
         jQuery(this).parent("li").html("<img style='margin:20px 0;' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
-        deleteproduct(deleteproductid);
+        deleteproduct(deleteproductid,productcartqty);
     });
 
     // open login popup for click on sign in on shopping bag
@@ -511,7 +512,7 @@ function addbracelettobag(pid,colorattributeid,sizeattributeid )
     }
 }
 
-function deleteproduct(deletedproducid)
+function deleteproduct(deletedproducid,productcartqty)
 {
     if(deletedproducid >0)
     {
@@ -519,7 +520,7 @@ function deleteproduct(deletedproducid)
         jQuery.ajax({
             type : 'POST',
             url : addurl,
-            data : {'id':deletedproducid},
+            data : {'id':deletedproducid,'deleteqty':productcartqty},
             success : function(result){
                 result = eval('(' + result + ')');
 
