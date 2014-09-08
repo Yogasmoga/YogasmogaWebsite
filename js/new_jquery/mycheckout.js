@@ -1003,7 +1003,7 @@ function validatePaymentForm()
             if(!Stripe.validateExpiry(jQuery("#stripe_expiration").val(), jQuery("#stripe_expiration_yr").val()))
             {
                 flag = false;
-                setOnError(jQuery("#stripe_expiration"), "Invalid Expiration Date.");
+                setOnError(jQuery("#stripe_expiration"), "Invalid Expiration Date");
                 setOnError(jQuery("#stripe_expiration_yr"));
             }
         }
@@ -1042,7 +1042,7 @@ function validatePaymentForm()
         if(!Stripe.validateExpiry(jQuery("#stripe_expiration").val(), jQuery("#stripe_expiration_yr").val()))
         {
             flag = false;
-            setOnError(jQuery("#stripe_expiration"), "Invalid Expiration Date.");
+            setOnError(jQuery("#stripe_expiration"), "Invalid Expiration Date");
             setOnError(jQuery("#stripe_expiration_yr"));
         }
     }
