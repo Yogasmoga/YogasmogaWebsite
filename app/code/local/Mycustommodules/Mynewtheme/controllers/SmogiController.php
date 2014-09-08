@@ -64,6 +64,19 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
         return array('min_use' => $min_use, 'customer_points' => $customerPoints, 'points_money' => $points_money, 'step' => $step, 'step_apply' => $step_apply, 'full_use' => $full_use, 'max_use' => $max_use);
     }
 
+    public function getCustomerPointsFooterAction()
+    {
+        $response = array(
+            "status" => "error",
+            "smogi"  => "",
+            "success_message" => ""
+        );
+        $customerPoints = $this->getCustomerPoints();        
+        $response["status"] = "success";
+        $response["smogi"] = $customerPoints;
+        echo json_encode($response);
+        return ;
+    }
     public function applysmogibucksAction()
     {
         $response = array(

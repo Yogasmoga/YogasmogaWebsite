@@ -3189,6 +3189,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     "status" => 'error',
                     "errors" => '',
                     "fname"   => '',
+                    "smogi" => '',
                     "success_message" => ''
                 );
         $errors = array();
@@ -3215,6 +3216,13 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                    // if($promotioncode)
                      //   Mage::getModel('smogiexpirationnotifier/applyremovediscount')->applycouponcode(1,null);
                     $response['fname'] =  $session->getCustomer()->getFirstname();
+                    //Retrieve smogi balance
+                                         
+                    $smogiBalance = Mage::getModel('smogiexpirationnotifier/applyremovediscount')->getCustomerPoints();
+                   
+                    $response['smogi'] = $smogiBalance;
+                   
+                    //end
                     $response['status'] = "success";
                     echo json_encode($response);
                     return;
