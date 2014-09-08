@@ -113,7 +113,7 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
             //echo $foundOnlyNoSmogiProduct;
             if($flag == 1)
             {
-                $response['error'] = "SMOGI Bucks cannot be used Toward Accessories.";
+                $response['error'] = "SMOGI Bucks cannot be used Toward Accessories";
                 echo json_encode($response);
                 return;
             }
