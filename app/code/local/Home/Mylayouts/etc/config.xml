@@ -68,6 +68,11 @@
           <template>page/rangoli.phtml</template>
           <layout_handle>rangoli</layout_handle>
         </rangoli>
+        <shopthecolors translate="label">
+          <label>Shop The Colors</label>
+          <template>page/shopthecolors.phtml</template>
+          <layout_handle>shopthecolors</layout_handle>
+        </shopthecolors>
         <!-- add more layouts here -->
       </layouts>
     </page>
