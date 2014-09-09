@@ -215,7 +215,7 @@ jQuery(document).ready(function($){
 
     if($("select#shipping\\:country_id").length > 0)
     {
-        $("select#shipping\\:country_id").attr("class","").addClass('requiredfield').attr("defaulterrormsg","Country is required.").removeAttr("title");
+        $("select#shipping\\:country_id").attr("class","").addClass('requiredfield').attr("defaulterrormsg","Country is required").removeAttr("title");
         $("select#shipping\\:country_id").change(function(){
             fillShippingState();
         });
@@ -224,7 +224,7 @@ jQuery(document).ready(function($){
 
     if($("select#billing\\:country_id").length > 0)
     {
-        $("select#billing\\:country_id").attr("class","").addClass('requiredfield').attr("defaulterrormsg","Country is required.").removeAttr("title");
+        $("select#billing\\:country_id").attr("class","").addClass('requiredfield').attr("defaulterrormsg","Country is required").removeAttr("title");
         $("select#billing\\:country_id").change(function(){
             fillBillingState();
         });
@@ -998,6 +998,18 @@ function validatePaymentForm()
                 setOnError(jQuery("#stripe_cc_cid"));
             }
         }
+        if(jQuery("#stripe_expiration").val() != "" && jQuery("#stripe_expiration_yr").val() == "")
+        {
+            flag = false;
+            setOnError(jQuery("#stripe_expiration"), "Expiry Date is required");
+            setOnError(jQuery("#stripe_expiration_yr"));
+        }
+        if(jQuery("#stripe_expiration").val() == "" && jQuery("#stripe_expiration_yr").val() != "")
+        {
+            flag = false;
+            setOnError(jQuery("#stripe_expiration"), "Expiry Date is required");
+            setOnError(jQuery("#stripe_expiration_yr"));
+        }
         if(jQuery("#stripe_expiration").val() != "" && jQuery("#stripe_expiration_yr").val() != "")
         {
             if(!Stripe.validateExpiry(jQuery("#stripe_expiration").val(), jQuery("#stripe_expiration_yr").val()))
@@ -1036,6 +1048,18 @@ function validatePaymentForm()
             flag = false;
             setOnError(jQuery("#stripe_cc_cid"));
         }
+    }
+    if(jQuery("#stripe_expiration").val() != "" && jQuery("#stripe_expiration_yr").val() == "")
+    {
+        flag = false;
+        setOnError(jQuery("#stripe_expiration"), "Expiry Date is required");
+        setOnError(jQuery("#stripe_expiration_yr"));
+    }
+    if(jQuery("#stripe_expiration").val() == "" && jQuery("#stripe_expiration_yr").val() != "")
+    {
+        flag = false;
+        setOnError(jQuery("#stripe_expiration"), "Expiry Date is required");
+        setOnError(jQuery("#stripe_expiration_yr"));
     }
     if(jQuery("#stripe_expiration").val() != "" && jQuery("#stripe_expiration_yr").val() != "")
     {
