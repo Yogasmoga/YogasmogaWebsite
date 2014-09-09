@@ -864,11 +864,12 @@ if($_product->getAttributeText('canzoomimage') == "yes")
 
         <div class="fitDetail font11">
             <div class="video-box f-left">
-                <ul>
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
+                <!--<ul>
                     <li>Body hugging/form fitting</li>
                     <li>High hip length</li>
                     <li>Perfect racer back for movement</li>
-                </ul>
+                </ul>-->
 
                 <div class="vlink-cont" style="margin-left:16px;">
                     <p class="block-link" style="margin-top: 15px;"><a href="#" class="com-a-prd-links">Watch how to measure</a></p>
