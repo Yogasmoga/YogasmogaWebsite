@@ -796,7 +796,7 @@ ul.tr-menu > li.free-shipping {
     padding-bottom: 10px;
 }
 
-#sign-up-form table input, #sign-in-form table input, #invite-friend-form table input {
+#sign-up-form table input, #sign-in-form table input, #invite-friend-form table input,#sb-sign-in-form table input {
     border: 0 none !important;
     font: 12px gothambook !important;
     padding: 10px !important;
