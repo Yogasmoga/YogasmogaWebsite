@@ -73,6 +73,11 @@
           <template>page/shopthecolors.phtml</template>
           <layout_handle>shopthecolors</layout_handle>
         </shopthecolors>
+        <topsellers translate="label">
+          <label>Top Sellers</label>
+          <template>page/topsellers.phtml</template>
+          <layout_handle>topsellers</layout_handle>
+        </topsellers>
         <!-- add more layouts here -->
       </layouts>
     </page>

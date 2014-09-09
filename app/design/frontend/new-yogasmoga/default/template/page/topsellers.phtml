@@ -102,16 +102,31 @@
                 <div id="Allproducts" class="fullscreen pgsection " desc="Shop The Colors!" style="min-height: 422px;">
                     <div class="product-grid">
                         <div class="2-columns-wrapper">
-                                <?php 
-                                    $categoryId = json_decode(trim(Mage::getModel('core/variable')->loadByCode('shopthecolor_categoryid')->getValue('plain')), true);                                   
-                                    $shopthecolorCategory = Mage::getModel('catalog/category')->load($categoryId['shop_the_color_id']);
+                                <?php
+                                    // code for get left nav
+                                    $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+                                    $categoryName = explode('/', $currentUrl);
+                                    $urlKey = $categoryName[3];
+                                    $_category = Mage::getModel('catalog/category')->loadByAttribute('url_key', $urlKey);
+                                    $parentCategoryId =  $_category->getId();
+                                    // end code for left nav
+
+
+                                    $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('topsellers_categoryid')->getValue('plain')), true);
+                                $categoryId = '';
+                                    if($urlKey == 'women')
+                                        $categoryId = $categoryIds['top_sellers_women'];
+                                    if($urlKey == 'mens')
+                                        $categoryId = $categoryIds['top_sellers_mens'];
+
+                                    $shopthecolorCategory = Mage::getModel('catalog/category')->load($categoryId);
                                     $shopthecolor_imgUrl = $shopthecolorCategory -> getImageUrl();
                                     $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
                                 ?>
                                 <!-- bannerContainer -->
                                 <div class="bannerFluid">
                                     <img title="Shop The Colors" alt="Shop The Colors" src="<?php echo $shopthecolor_imgUrl; ?>">
-                                    <div class="bnrtxt">shop the colors</div>
+                                    <div class="bnrtxt">BEST SELLERS</div>
                                 </div>
                                 <!-- bannerContainer -->
 
@@ -176,7 +191,7 @@
                                     <!-- productGridImages -->
                                     <div class="gridWrap">
                                         <!-- gridHeading -->
-                                        <h4>PARADEIZA RED & CORALLION</h4>
+                                        <h4>BEST SELLERS</h4>
                                         <!-- gridHeading -->
                                         <?php
                                             // get color array
