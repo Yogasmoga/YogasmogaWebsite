@@ -177,6 +177,33 @@
     </reference>
 </rangoli>
 
+    <shopthecolors>
+        <reference name="head">
+            <!-- <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action> -->
+
+            <!-- <action method="addCss"><stylesheet>css/dressingroom.css</stylesheet></action> -->
+            <!-- <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>       -->
+
+
+            <action method="addJs"><script>new_jquery/jquery.touchSwipe.min.js</script></action>
+            <action method="addJs"><script>new_jquery/jquery.bxSlider.min.js</script></action>
+            <action method="addJs"><script>new_jquery/bxsliderscript.js</script></action>
+            <!-- <action method="addJs"><script>new_jquery/myproductimageswitcher.js</script></action> -->
+            <action method="addJs"><script>new_jquery/homemainsection.js</script></action>
+            <action method="addJs"><script>new_jquery/swfobject.js</script></action>
+            <action method="addJs"><script>new_jquery/jquery.pngFix.pack.js</script></action>
+            <action method="addJs"><script>new_jquery/jquery.fancybox-1.0.0.js</script></action>
+            <!-- <action method="addJs"><script>new_jquery/youtubevideo.js</script></action> -->
+            <action method="addJs"><script>new_jquery/jquery.flexslider-min.js</script></action>
+            <!-- <action method="addJs"><script>new_jquery/parallaxeffect.js</script></action> -->
+            <!-- <action method="addJs"><script>new_jquery/ysmoga.js</script></action> -->
+            <action method="addJs"><script>new_jquery/tswipe.js</script></action>
+            <!-- <action method="addJs"><script>new_jquery/dressingroom.js</script></action> -->
+            <!-- <action method="addJs"><script>new_jquery/myproductdetails.js</script></action> -->
+            <action method="addJs"><script>new_jquery/ysmoga.js</script></action>
+        </reference>
+    </shopthecolors>
+
 
     <catalog_category_layered>
     <reference name="head">
