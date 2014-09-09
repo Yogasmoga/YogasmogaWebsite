@@ -2,15 +2,15 @@ _stripecheck = false;
 _usesecureurl = true;
 jQuery(document).ready(function($){
 
-
-    // if(jQuery("form#checkout-shipping-form").is(":visible")){
-    //     jQuery("#shipping\\:firstname,#shipping\\:lastname").each(function(){
-    //         var waterVal = jQuery(this).attr("watermark");
-    //         jQuery(this).removeClass("watermark").removeAttr("watermark");
-    //         jQuery(this).attr("placeholder", waterVal);    
-    //         jQuery(this).attr("value","");
-    //     });
-    // }
+    // set placeholder for firstname and lastname shippng form
+    if($("form#checkout-shipping-form").is(":visible")){
+        $("#shipping\\:firstname,#shipping\\:lastname").each(function(){
+            var waterVal = $(this).attr("watermark");
+            $(this).removeClass("watermark").removeAttr("watermark");
+            $(this).attr("placeholder", waterVal);    
+            $(this).attr("value","");
+        });
+    };
 
     setTimeout(function(){
         jQuery("input[type='radio'][value='stripe']").attr("checked","checked");
@@ -215,7 +215,7 @@ jQuery(document).ready(function($){
 
     if($("select#shipping\\:country_id").length > 0)
     {
-        $("select#shipping\\:country_id").attr("class","").addClass('requiredfield').attr("defaulterrormsg","Country is required.").removeAttr("title");
+        $("select#shipping\\:country_id").attr("class","").addClass('requiredfield').attr("defaulterrormsg","Country is required").removeAttr("title");
         $("select#shipping\\:country_id").change(function(){
             fillShippingState();
         });
@@ -224,7 +224,7 @@ jQuery(document).ready(function($){
 
     if($("select#billing\\:country_id").length > 0)
     {
-        $("select#billing\\:country_id").attr("class","").addClass('requiredfield').attr("defaulterrormsg","Country is required.").removeAttr("title");
+        $("select#billing\\:country_id").attr("class","").addClass('requiredfield').attr("defaulterrormsg","Country is required").removeAttr("title");
         $("select#billing\\:country_id").change(function(){
             fillBillingState();
         });
@@ -998,6 +998,18 @@ function validatePaymentForm()
                 setOnError(jQuery("#stripe_cc_cid"));
             }
         }
+        if(jQuery("#stripe_expiration").val() != "" && jQuery("#stripe_expiration_yr").val() == "")
+        {
+            flag = false;
+            setOnError(jQuery("#stripe_expiration"), "Expiry Date is required");
+            setOnError(jQuery("#stripe_expiration_yr"));
+        }
+        if(jQuery("#stripe_expiration").val() == "" && jQuery("#stripe_expiration_yr").val() != "")
+        {
+            flag = false;
+            setOnError(jQuery("#stripe_expiration"), "Expiry Date is required");
+            setOnError(jQuery("#stripe_expiration_yr"));
+        }
         if(jQuery("#stripe_expiration").val() != "" && jQuery("#stripe_expiration_yr").val() != "")
         {
             if(!Stripe.validateExpiry(jQuery("#stripe_expiration").val(), jQuery("#stripe_expiration_yr").val()))
@@ -1036,6 +1048,18 @@ function validatePaymentForm()
             flag = false;
             setOnError(jQuery("#stripe_cc_cid"));
         }
+    }
+    if(jQuery("#stripe_expiration").val() != "" && jQuery("#stripe_expiration_yr").val() == "")
+    {
+        flag = false;
+        setOnError(jQuery("#stripe_expiration"), "Expiry Date is required");
+        setOnError(jQuery("#stripe_expiration_yr"));
+    }
+    if(jQuery("#stripe_expiration").val() == "" && jQuery("#stripe_expiration_yr").val() != "")
+    {
+        flag = false;
+        setOnError(jQuery("#stripe_expiration"), "Expiry Date is required");
+        setOnError(jQuery("#stripe_expiration_yr"));
     }
     if(jQuery("#stripe_expiration").val() != "" && jQuery("#stripe_expiration_yr").val() != "")
     {
@@ -1496,7 +1520,7 @@ function validateBillingAddressForm()
         if(!validateZip(jQuery("#billing\\:postcode").val()))
         {
             flag = false;
-            setOnError(jQuery("#billing\\:postcode"), "Invalid Zip Code.");
+            setOnError(jQuery("#billing\\:postcode"), "Invalid Zip Code");
         }
     }
     if(jQuery("#billing\\:email").length > 0)
@@ -1542,7 +1566,7 @@ function validateShippingAddressForm()
         if(!validateZip(jQuery("#shipping\\:postcode").val()))
         {
             flag = false;
-            setOnError(jQuery("#shipping\\:postcode"), "Invalid Zip Code.");
+            setOnError(jQuery("#shipping\\:postcode"), "Invalid Zip Code");
         }
     }
     if(!flag)
