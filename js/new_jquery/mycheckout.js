@@ -2,15 +2,15 @@ _stripecheck = false;
 _usesecureurl = true;
 jQuery(document).ready(function($){
 
-
-    // if(jQuery("form#checkout-shipping-form").is(":visible")){
-    //     jQuery("#shipping\\:firstname,#shipping\\:lastname").each(function(){
-    //         var waterVal = jQuery(this).attr("watermark");
-    //         jQuery(this).removeClass("watermark").removeAttr("watermark");
-    //         jQuery(this).attr("placeholder", waterVal);    
-    //         jQuery(this).attr("value","");
-    //     });
-    // }
+    // set placeholder for firstname and lastname shippng form
+    if($("form#checkout-shipping-form").is(":visible")){
+        $("#shipping\\:firstname,#shipping\\:lastname").each(function(){
+            var waterVal = $(this).attr("watermark");
+            $(this).removeClass("watermark").removeAttr("watermark");
+            $(this).attr("placeholder", waterVal);    
+            $(this).attr("value","");
+        });
+    };
 
     setTimeout(function(){
         jQuery("input[type='radio'][value='stripe']").attr("checked","checked");
@@ -1520,7 +1520,7 @@ function validateBillingAddressForm()
         if(!validateZip(jQuery("#billing\\:postcode").val()))
         {
             flag = false;
-            setOnError(jQuery("#billing\\:postcode"), "Invalid Zip Code.");
+            setOnError(jQuery("#billing\\:postcode"), "Invalid Zip Code");
         }
     }
     if(jQuery("#billing\\:email").length > 0)
@@ -1566,7 +1566,7 @@ function validateShippingAddressForm()
         if(!validateZip(jQuery("#shipping\\:postcode").val()))
         {
             flag = false;
-            setOnError(jQuery("#shipping\\:postcode"), "Invalid Zip Code.");
+            setOnError(jQuery("#shipping\\:postcode"), "Invalid Zip Code");
         }
     }
     if(!flag)
