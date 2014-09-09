@@ -16,6 +16,15 @@ function popupGetSigningLoginFormFieldsvalue(formid)
 
     return popupformvalidation(fname,lname,email_id,pwd,formid);
 }
+function popGetSigningLoginFormFieldsvalue(formid)
+{
+    var fname = "test";
+    var lname = "test";
+    var email_id = jQuery.trim(jQuery("#sb_email").val());
+    var pwd = jQuery.trim(jQuery("#sb_password").val());
+
+    return popupformvalidation(fname,lname,email_id,pwd,formid);
+}
 function sharewithfriendformvalidation(formid)
 {
     var fname = jQuery.trim(jQuery("#friendname").val());
@@ -72,7 +81,7 @@ function popupformvalidation(fname,lname,email_id,pwd,formid)
         // jQuery("#plastname").focus();
         return "error";
     }
-    if(email_id == "" || email_id == "Email Address")
+    if(email_id == "" || email_id == "Email Address" || email_id == "Enter your email")
     {
 
         jQuery(formid).find(".err-msg").css("visibility","visible");
@@ -91,7 +100,7 @@ function popupformvalidation(fname,lname,email_id,pwd,formid)
             return "error";
         }
     }
-    if(pwd == "" || pwd == "Select a password")
+    if(pwd == "" || pwd == "Select a password" || pwd == "Enter your password")
     {
 
         jQuery(formid).find(".err-msg").css("visibility","visible");

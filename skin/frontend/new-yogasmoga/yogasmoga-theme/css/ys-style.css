@@ -224,7 +224,8 @@ div.copy-privacy-likes ul li img{height: 30px;}
 /*#sign-up-form table label,#sign-in-form table label{width: 30%; float: left; word-wrap:break-word; line-height: 26px;}*/
 #sign-up-form table input,
 #sign-in-form table input,
-#invite-friend-form table input{width: 100%; padding: 7px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+#invite-friend-form table input,
+#sb-sign-in-form table input{width: 100%; padding: 7px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 #sign-up-button,#sign-in-button {cursor:pointer;}
 .err-msg{color:#D90D3D;}
 .signinDialog.ui-dialog .ui-dialog-titlebar-close,
@@ -2208,8 +2209,8 @@ ul.main-menu2 a.main-heading,  x:-moz-any-link {height:33px;}
 .cms-pg.smogi-bucks section .sec-head{border-top:1px solid #555; padding-top:7px; margin-bottom: 15px;}
 .cms-pg.smogi-bucks section p{margin-bottom: 20px;}
 .cms-pg.smogi-bucks section#what-smogi-bucks1 .sec-head{border:none; padding: 0;}
-.cms-pg.smogi-bucks #sign-in-form tr{width: 49%;}
-.cms-pg.smogi-bucks #sign-in-form tr td{display: block;}
+.cms-pg.smogi-bucks #sb-sign-in-form tr{width: 49%;}
+.cms-pg.smogi-bucks #sb-sign-in-form tr td{display: block;}
 .cms-pg.smogi-bucks section p:last-child{margin-bottom: 0px;}
 .cms-pg.smogi-bucks section{margin-bottom: 47px; max-width: 800px;}
 
@@ -2432,3 +2433,4 @@ table.productdetailspopup td#tdpopupproductsmallimages tr:nth-child(4){
 /*.after-login{display: none;}*/
 .after-login,.before-login{display: none;}
 .sb-show{display: block;}
+#sb-sign-in-button{cursor:pointer;}
