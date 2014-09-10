@@ -3,7 +3,7 @@ _usesecureurl = true;
 jQuery(document).ready(function($){
 
     // set placeholder for firstname and lastname shippng form
-    if($("form#checkout-shipping-form").is(":visible")){
+    /*if($("form#checkout-shipping-form").is(":visible")){
         $("#shipping\\:firstname,#shipping\\:lastname").each(function(){
             var waterVal = $(this).attr("watermark");
             $(this).removeAttr("watermark");
@@ -19,7 +19,7 @@ jQuery(document).ready(function($){
             }
 
         });
-    };
+    };*/
 
     setTimeout(function(){
         jQuery("input[type='radio'][value='stripe']").attr("checked","checked");
