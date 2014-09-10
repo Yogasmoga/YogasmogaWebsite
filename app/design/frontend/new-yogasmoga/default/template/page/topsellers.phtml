@@ -114,10 +114,16 @@
 
                                     $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('topsellers_categoryid')->getValue('plain')), true);
                                 $categoryId = '';
+                                $bannerTxt = '';
                                     if($urlKey == 'women')
+                                    {
                                         $categoryId = $categoryIds['top_sellers_women'];
+                                        $bannerTxt = 'white';
+                                    }
                                     if($urlKey == 'mens')
+                                    {
                                         $categoryId = $categoryIds['top_sellers_mens'];
+                                    }
 
                                     $shopthecolorCategory = Mage::getModel('catalog/category')->load($categoryId);
                                     $shopthecolor_imgUrl = $shopthecolorCategory -> getImageUrl();
@@ -126,7 +132,7 @@
                                 <!-- bannerContainer -->
                                 <div class="bannerFluid">
                                     <img title="Best Sellers" alt="Best Sellers" src="<?php echo $shopthecolor_imgUrl; ?>">
-                                    <div class="bnrtxt"><h1>BEST SELLERS</h1></div>
+                                    <div class="bnrtxt"><h1 class="<?php echo $bannerTxt ?>">BEST SELLERS</h1></div>
                                 </div>
                                 <!-- bannerContainer -->
 
