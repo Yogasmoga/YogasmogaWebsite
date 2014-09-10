@@ -144,19 +144,20 @@ if($categoryId != '')
         foreach($configurableProductArr[$key] as $childProduct){
         ?>
             <div class="productCont">
-                <div class="prod-img">
-                    <a href="<?php echo $confProduct->getProductUrl().'?color='.$childProduct;?>" >
-                        <?php
-                             foreach($imageArr[$childProduct] as $img )
-                             {
-                             ?>
-                                 <img alt="<?php echo $confProduct->getName();?>" class="prd-image lazy" data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91); ?>" />
-                             <?php
-                             }
+                <a href="<?php echo $confProduct->getProductUrl().'?color='.$childProduct;?>" >
+                    <div class="prod-img">
+                            <?php
+                                 foreach($imageArr[$childProduct] as $img )
+                                 {
+                                 ?>
+                                     <img alt="<?php echo $confProduct->getName();?>" class="prd-image lazy" data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91); ?>" />
+                                 <?php
+                                 }
 
-                        ?>
-                        <!--<img class="prd-image" src="<?php    echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$imageArr[$childProduct])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(221, 330)->setQuality(91); ?>" />--> </a>
-                </div>
+                            ?>
+                            <!--<img class="prd-image" src="<?php    echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$imageArr[$childProduct])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(221, 330)->setQuality(91); ?>" />-->
+                    </div>
+                </a>
                 <div class="caption">
                     <a href="<?php echo $confProduct->getProductUrl();?>"> <?php echo $clrinfo[$childProduct]?></a><span>$<?php  echo  round($confProduct->getPrice(),2);?></span>
                 </div>

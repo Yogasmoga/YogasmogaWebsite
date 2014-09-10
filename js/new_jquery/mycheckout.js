@@ -6,9 +6,18 @@ jQuery(document).ready(function($){
     if($("form#checkout-shipping-form").is(":visible")){
         $("#shipping\\:firstname,#shipping\\:lastname").each(function(){
             var waterVal = $(this).attr("watermark");
-            $(this).removeClass("watermark").removeAttr("watermark");
+            $(this).removeAttr("watermark");
+            $(this).removeClass("watermark");
             $(this).attr("placeholder", waterVal);    
-            $(this).attr("value","");
+            //$(this).val('');
+
+            if($("#shipping\\:firstname").val() == 'First Name'){
+               $(this).val('');
+            }
+            if($("#shipping\\:lastname").val() == 'Last Name'){
+               $(this).val('');
+            }
+
         });
     };
 
@@ -1281,7 +1290,15 @@ function virtualsaveshippingaddress() {
     if(jQuery("form#checkout-shipping-form input#shipping\\:street2").val().length > 0)
         address += " " + jQuery("form#checkout-shipping-form input#shipping\\:street2").val();
 
-    address += ", " + jQuery("form#checkout-shipping-form input#shipping\\:city").val() + ", " + jQuery("form#checkout-shipping-form select#shipping\\:region_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:region_id").val() + "']").html() + " " + jQuery("form#checkout-shipping-form input#shipping\\:postcode").val() + ", " + jQuery("form#checkout-shipping-form select#shipping\\:country_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:country_id").val() + "']").html();
+    address += ", " + jQuery("form#checkout-shipping-form input#shipping\\:city").val();
+
+    if(jQuery("form#checkout-shipping-form input#shipping\\:region").is(":visible")){
+        address += " , " + jQuery("form#checkout-shipping-form input#shipping\\:region").val() + " ";
+    }else{
+        address += " , " + jQuery("form#checkout-shipping-form select#shipping\\:region_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:region_id").val() + "']").html() + " ";
+    }
+
+    address += jQuery("form#checkout-shipping-form input#shipping\\:postcode").val() + ", " + jQuery("form#checkout-shipping-form select#shipping\\:country_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:country_id").val() + "']").html();
 
     jQuery("form#checkout-shipping-form ul#shipping-address-select li").removeAttr("id");
     jQuery("form#checkout-shipping-form ul#shipping-address-select li[value='9999']").remove();
@@ -1294,7 +1311,15 @@ function virtualsavebillingaddress() {
     if(jQuery("form#co-billing-form input#billing\\:street2").val().length > 0)
         addressbilling += " " + jQuery("form#co-billing-form input#billing\\:street2").val();
 
-    addressbilling += ", " + jQuery("form#co-billing-form input#billing\\:city").val() + ", " + jQuery("form#co-billing-form select#billing\\:region_id option[value='" + jQuery("form#co-billing-form select#billing\\:region_id").val() + "']").html() + " " + jQuery("form#co-billing-form input#billing\\:postcode").val() + ", " + jQuery("form#co-billing-form select#billing\\:country_id option[value='" + jQuery("form#co-billing-form select#billing\\:country_id").val() + "']").html();
+    addressbilling += ", " + jQuery("form#co-billing-form input#billing\\:city").val();
+
+    if(jQuery("form#co-billing-form input#billing\\:region").is(":visible")){
+        address += " , " + jQuery("form#co-billing-form input#billing\\:region").val() + " ";
+    }else{
+        address += " , " + jQuery("form#co-billing-form select#billing\\:region_id option[value='" + jQuery("form#co-billing-form select#billing\\:region_id").val() + "']").html() + " ";
+    }
+
+    addressbilling += jQuery("form#co-billing-form input#billing\\:postcode").val() + ", " + jQuery("form#co-billing-form select#billing\\:country_id option[value='" + jQuery("form#co-billing-form select#billing\\:country_id").val() + "']").html();
 
     jQuery("form#co-billing-form ul#billing-address-select li").removeAttr("id");
     jQuery("form#co-billing-form ul#billing-address-select li[value='99999']").remove();
