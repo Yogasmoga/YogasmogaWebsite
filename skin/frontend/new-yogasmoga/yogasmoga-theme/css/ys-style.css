@@ -2445,3 +2445,8 @@ table.productdetailspopup td#tdpopupproductsmallimages tr:nth-child(4){
 .after-login,.before-login{display: none;}
 .sb-show{display: block;}
 #sb-sign-in-button{cursor:pointer;}
+.prod-img > a {
+    display: block;
+    height: 338px;
+    width: 100%;
+}

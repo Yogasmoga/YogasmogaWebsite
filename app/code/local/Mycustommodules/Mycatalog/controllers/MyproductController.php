@@ -3223,6 +3223,12 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     $response['smogi'] = $smogiBalance;
                    
                     //end
+                    // unset shipping method
+//                         $shippingaddress = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress();
+//                         $shippingaddress->setShippingMethod('');
+//                         $shippingaddress->save();
+                    // end unset shipping method
+
                     $response['status'] = "success";
                     echo json_encode($response);
                     return;
