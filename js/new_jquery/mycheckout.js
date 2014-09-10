@@ -10,6 +10,14 @@ jQuery(document).ready(function($){
             $(this).removeClass("watermark");
             $(this).attr("placeholder", waterVal);    
             //$(this).val('');
+
+            if($("#shipping\\:firstname").val() == 'First Name'){
+               $(this).val('');
+            }
+            if($("#shipping\\:lastname").val() == 'Last Name'){
+               $(this).val('');
+            }
+
         });
     };
 
