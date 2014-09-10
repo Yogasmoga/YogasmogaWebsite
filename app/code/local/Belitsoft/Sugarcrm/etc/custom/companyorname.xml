@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<custom>
-	<companyorfirstlastname translate="label">
-		<label>Company or First Name + Last Name</label>
-		<model>sugarcrm/custom_companyorname::get</model>
-		<params></params>
-		<sort>10</sort>
-	</companyorfirstlastname>
-</custom>
