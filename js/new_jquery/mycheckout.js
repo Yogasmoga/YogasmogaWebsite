@@ -1312,9 +1312,9 @@ function virtualsavebillingaddress() {
     addressbilling += ", " + jQuery("form#co-billing-form input#billing\\:city").val();
 
     if(jQuery("form#co-billing-form input#billing\\:region").is(":visible")){
-        address += " , " + jQuery("form#co-billing-form input#billing\\:region").val() + " ";
+        addressbilling += " , " + jQuery("form#co-billing-form input#billing\\:region").val() + " ";
     }else{
-        address += " , " + jQuery("form#co-billing-form select#billing\\:region_id option[value='" + jQuery("form#co-billing-form select#billing\\:region_id").val() + "']").html() + " ";
+        addressbilling += " , " + jQuery("form#co-billing-form select#billing\\:region_id option[value='" + jQuery("form#co-billing-form select#billing\\:region_id").val() + "']").html() + " ";
     }
 
     addressbilling += jQuery("form#co-billing-form input#billing\\:postcode").val() + ", " + jQuery("form#co-billing-form select#billing\\:country_id option[value='" + jQuery("form#co-billing-form select#billing\\:country_id").val() + "']").html();
