@@ -2441,6 +2441,7 @@ table.productdetailspopup td#tdpopupproductsmallimages tr:nth-child(4){
 .productCont .prod-img img{
     visibility: hidden;
 }
+
 /*.after-login{display: none;}*/
 .after-login,.before-login{display: none;}
 .sb-show{display: block;}
@@ -2448,4 +2449,10 @@ table.productdetailspopup td#tdpopupproductsmallimages tr:nth-child(4){
 
 .productCont > a {
     display: inline-block;
+}
+
+.prod-img > a {
+    display: block;
+    height: 338px;
+    width: 100%;
 }

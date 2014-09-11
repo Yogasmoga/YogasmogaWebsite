@@ -14,7 +14,7 @@ jQuery(window).load(function($){
 });
 jQuery(document).ready(function($){
     // get smogi value in footer
-    
+
     $("body").on("click", function(){
         if(jQuery(".zopim").is(":visible")){
             $zopim.livechat.window.hide();             
