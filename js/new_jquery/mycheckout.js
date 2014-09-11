@@ -9,17 +9,15 @@ jQuery(document).ready(function($){
             $(this).removeAttr("watermark");
             $(this).removeClass("watermark");
             $(this).attr("placeholder", waterVal);    
-            //$(this).val('');
-
+            
             if($("#shipping\\:firstname").val() == 'First Name'){
-               $(this).reset();
+               $(this).val('');
             }
             if($("#shipping\\:lastname").val() == 'Last Name'){
-               $(this).reset();
+               $(this).val('');
             }
-
         });
-    };
+    }
 
     setTimeout(function(){
         jQuery("input[type='radio'][value='stripe']").attr("checked","checked");
