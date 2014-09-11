@@ -12,10 +12,10 @@ jQuery(document).ready(function($){
             //$(this).val('');
 
             if($("#shipping\\:firstname").val() == 'First Name'){
-               $(this).val('');
+               $(this).reset();
             }
             if($("#shipping\\:lastname").val() == 'Last Name'){
-               $(this).val('');
+               $(this).reset();
             }
 
         });
