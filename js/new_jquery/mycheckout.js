@@ -3,23 +3,21 @@ _usesecureurl = true;
 jQuery(document).ready(function($){
 
     // set placeholder for firstname and lastname shippng form
-    /*if($("form#checkout-shipping-form").is(":visible")){
+    if($("form#checkout-shipping-form").is(":visible")){
         $("#shipping\\:firstname,#shipping\\:lastname").each(function(){
             var waterVal = $(this).attr("watermark");
             $(this).removeAttr("watermark");
             $(this).removeClass("watermark");
             $(this).attr("placeholder", waterVal);    
-            //$(this).val('');
-
+            
             if($("#shipping\\:firstname").val() == 'First Name'){
-               $(this).reset();
+               $(this).val('');
             }
             if($("#shipping\\:lastname").val() == 'Last Name'){
-               $(this).reset();
+               $(this).val('');
             }
-
         });
-    };*/
+    }
 
     setTimeout(function(){
         jQuery("input[type='radio'][value='stripe']").attr("checked","checked");
