@@ -100,6 +100,7 @@ if($categoryId != '')
     }
 
     //print_r($configurableProductArr);die;
+    $firsth1 = 1;
     foreach($configurableProductArr as $key => $val){
         $confProduct = Mage::getModel('catalog/product')->load($key);
         // get all images for the product
@@ -137,7 +138,12 @@ if($categoryId != '')
         ?>
 
     <!-- GridHeading -->
-    <h4><?php echo $confProduct->getName();?></h4>
+     <?php if($firsth1 == 1){ $firsth1 = 2;?>
+    <h1><?php echo $confProduct->getName();?></h1>
+    <?php }else{ ?>
+         <h4><?php echo $confProduct->getName();?></h4>
+
+    <?php    } ?>
     <!-- GridHeading -->
 
     <?php

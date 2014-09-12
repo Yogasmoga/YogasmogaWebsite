@@ -2462,3 +2462,15 @@ table.productdetailspopup td#tdpopupproductsmallimages tr:nth-child(4){
 .productCont .prod-img{
     position : relative;
 }
+.product-grid .gridWrap h1 {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-top: 1px solid #a6a6a6;
+    font: 11px/20px gothambold;
+    margin: 0 0 30px;
+    padding: 4px 0 0;
+    text-align: left;
+    color: #555;
+    text-transform: uppercase;
+    display: inline-block;
+    width: 100%;
+}
