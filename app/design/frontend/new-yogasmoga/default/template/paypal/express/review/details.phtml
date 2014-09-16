@@ -240,8 +240,8 @@
                     $temparray['sku'] = $item->getSku();
                     //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
                     $temparray['name'] = $item->getName();
-                    if(strlen($temparray['name']) > 14)
-                        $temparray['name'] = substr($temparray['name'], 0, 13)."...";
+                    //if(strlen($temparray['name']) > 14)
+                        //$temparray['name'] = substr($temparray['name'], 0, 13)."...";
                     if(issuperattribute($product, "color"))
                     {
                         $temparray['color'] = $_product->getAttributeText('color');
@@ -279,8 +279,8 @@
                     $temparray['sku'] = $item->getSku();
                     //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
                     $temparray['name'] = $item->getName();
-                    if(strlen($temparray['name']) > 14)
-                        $temparray['name'] = substr($temparray['name'], 0, 13)."...";
+                    //if(strlen($temparray['name']) > 14)
+                        //$temparray['name'] = substr($temparray['name'], 0, 13)."...";
                     $temparray['quantity'] = $item->getQty();
                     $temparray['individualprice'] = $item->getBaseCalculationPrice();
                     $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 0, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
@@ -304,8 +304,8 @@
                     $temparray['sku'] = $item->getSku();
                     //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
                     $temparray['name'] = $item->getName();
-                    if(strlen($temparray['name']) > 14)
-                        $temparray['name'] = substr($temparray['name'], 0, 13)."...";
+                    //if(strlen($temparray['name']) > 14)
+                        //$temparray['name'] = substr($temparray['name'], 0, 13)."...";
                     $temparray['quantity'] = $item->getQty();
                     $temparray['individualprice'] = $item->getBaseCalculationPrice();
                     $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 0, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
