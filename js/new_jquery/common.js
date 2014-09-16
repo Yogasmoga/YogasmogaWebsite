@@ -216,7 +216,8 @@ sizeChartPop();
     else{
         jQuery(".footer-block .smogi-love").addClass("no-over-state");
         jQuery(".share-strip .sign-up-new a").addClass("dnone");
-        jQuery(".share-strip .sign-up-new span").text("Hi! Welcome To YOGASMOGA..");
+        jQuery(".share-strip .sign-up-new span").text("Welcome To YOGASMOGA.");
+        // jQuery(".share-strip .sign-up-new span").text("Hi! Welcome To YOGASMOGA..");
     }
 
 
