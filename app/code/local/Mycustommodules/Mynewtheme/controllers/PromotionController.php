@@ -125,7 +125,7 @@ class Mycustommodules_Mynewtheme_PromotionController extends Mage_Core_Controlle
                     $this->_getSession()->addSuccess(
                         $this->__('Coupon code "%s" was applied.', Mage::helper('core')->htmlEscape($couponCode))
                     );
-                    $response['success_message'] = "Coupon code ".$couponCode." is applied Successfully.";
+                    $response['success_message'] = "Coupon code ".$couponCode." is applied Successfully";
                     $response['status'] = "success";
                     echo json_encode($response);
                     return;
@@ -134,14 +134,14 @@ class Mycustommodules_Mynewtheme_PromotionController extends Mage_Core_Controlle
                     $this->_getSession()->addError(
                         $this->__('cpnerror-msgCoupon code "%s" is not valid.', Mage::helper('core')->htmlEscape($couponCode))
                     );
-                    $response['errors'] = "Promo code is not valid.";
+                    $response['errors'] = "Promo code is not valid";
                     echo json_encode($response);
                     return;
                 }
             } else {
-                $this->_getSession()->addSuccess($this->__('Coupon code was canceled.'));
+                $this->_getSession()->addSuccess($this->__('Coupon code was canceled'));
                 $response['status'] = "success";
-                $response['success_message'] = "Promo code has been removed successfully.";
+                $response['success_message'] = "Promo code has been removed successfully";
                 echo json_encode($response);
                 return;
             }
