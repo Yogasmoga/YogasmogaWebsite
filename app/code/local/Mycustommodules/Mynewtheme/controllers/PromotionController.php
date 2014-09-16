@@ -50,21 +50,21 @@ class Mycustommodules_Mynewtheme_PromotionController extends Mage_Core_Controlle
         $remove = (string) $this->getRequest()->getParam('remove');
         if(!strlen($couponCode) && !strlen($remove) )
         {
-            $response['errors'] = "Please enter Promo Code.";
+            $response['errors'] = "Please enter Promo Code";
             echo json_encode($response);
             return;
         }
         // retrict user to apply  promotion code with gift of ys
         if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
         {
-            $response['errors'] = "You cannot apply  Promo Code with Gift Card.";
+            $response['errors'] = "You cannot apply  Promo Code with Gift Card";
             echo json_encode($response);
             return;
         }
         // retrict user to apply Promotion code with smogi bucks
         if(Mage::helper('rewardpoints/event')->getCreditPoints() > 0)
         {
-            $response['error'] = "You cannot apply  Promo Code with Smogi Bucks.";
+            $response['error'] = "You cannot apply  Promo Code with Smogi Bucks";
             echo json_encode($response);
             return;
         }
@@ -81,7 +81,39 @@ class Mycustommodules_Mynewtheme_PromotionController extends Mage_Core_Controlle
             echo json_encode($response);
             return;
         }
+        //check do not apply smogi bucks for only accesories in cart
+        $miniitems = Mage::getSingleton('core/session')->getCartItems();
+        if(isset($miniitems))
+        {
+            $excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories')->getValue('plain');
+            $excludecats = explode(",", $excludecats);
+            $foundOnlyNoSmogiProduct = 0;
+            $flag = 0;
+            foreach($miniitems as $mitem)
+            {
+                $mitemProduct = Mage::getModel('catalog/product')->load($mitem['pid']);
+                $cids = $mitemProduct->getCategoryIds();
 
+                $flag = 0;
+                foreach($excludecats as $key=>$val)
+                {
+                    $foundOnlyNoSmogiProduct = $this->_value_in_array($cids,$val);
+                    if($foundOnlyNoSmogiProduct == 1)
+                        $flag = 1;
+
+                }
+                if($flag == 0)break;
+//                echo $foundOnlyNoSmogiProduct;
+//                if($foundOnlyNoSmogiProduct == 0)die('treast');
+//                else die('dddd');
+            }
+            if($flag == 1)
+            {
+                $response['errors'] = "Promo Codes cannot be used toward Accessories";
+                echo json_encode($response);
+                return;
+            }
+        // end check do not apply smogi bucks for only accesories in cart
         try {
             $this->_getQuote()->getShippingAddress()->setCollectShippingRates(true);
             $this->_getQuote()->setCouponCode(strlen($couponCode) ? $couponCode : '')
@@ -133,5 +165,19 @@ class Mycustommodules_Mynewtheme_PromotionController extends Mage_Core_Controlle
 
 
     
+}
+    public function _value_in_array($array, $find){
+        $exists = 0;
+        if(!is_array($array)){
+            return;
+        }
+        foreach ($array as $key => $value) {
+
+            if($find == $value){
+                $exists = 1;
+            }
+        }
+        return $exists;
+    }
 }
 ?>
