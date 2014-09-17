@@ -27,7 +27,7 @@ foreach ($_productCollection as $_product){
 if($categoryId != '')
     $category = Mage::getModel('catalog/category')->load($categoryId)->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
 
-    $i=0;
+    $i=50;
     $simpleProductArr = array();
     $configurableProductArr = array();
     $configurableProductArrKey = array();
@@ -38,6 +38,7 @@ if($categoryId != '')
 
 
         $simpleProduct= Mage::getModel('catalog/product')->load($products->getId());
+        //print_r($simpleProduct);die;
 
         $sproductColor = $simpleProduct->getColor();
         $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($products->getId());
@@ -47,13 +48,27 @@ if($categoryId != '')
             if(!array_key_exists($configurableProduct->getId(), $configurableProductArr))
             {
                 $configurableProductArr[$configurableProduct->getId()] = array();
-                array_push($configurableProductArr[$configurableProduct->getId()],$sproductColor);
+                //array_push($configurableProductArr[$configurableProduct->getId()],$sproductColor);
+                if($simpleProduct->getGridsortorder())
+                    $configurableProductArr[$configurableProduct->getId()][$simpleProduct->getGridsortorder()] = $sproductColor;
+                else
+                {
+                    $configurableProductArr[$configurableProduct->getId()][$i.'temp'] = $sproductColor;
+                    $i++;
+                }
                 $configurableProductSort[]  = Mage::getResourceModel('catalog/product')->getAttributeRawValue($configurableProduct->getId(), 'sortorder', Mage::app()->getStore()->getStoreId());
             }
             else{
                 if(!in_array($sproductColor,$configurableProductArr[$configurableProduct->getId()]))
                 {
-                    array_push($configurableProductArr[$configurableProduct->getId()],$sproductColor);
+                    //array_push($configurableProductArr[$configurableProduct->getId()],$sproductColor);
+                    if($simpleProduct->getGridsortorder())
+                        $configurableProductArr[$configurableProduct->getId()][$simpleProduct->getGridsortorder()] = $sproductColor;
+                    else
+                    {
+                        $configurableProductArr[$configurableProduct->getId()][$i.'temp'] = $sproductColor;
+                        $i++;
+                    }
 
                 }
 
@@ -63,15 +78,27 @@ if($categoryId != '')
         //sort($configurableProductSort);
 
     }
+    // sort colors on grid page like sort yantra tank products(colors) on grid page
+    $altconfigurableProductArr = array();
+    foreach($configurableProductArr as $key => $val)
+    {
+        ksort($val);
+        $altconfigurableProductArr[$key] = $val;
 
-    $configurableProductSort2 = $configurableProductSort;
-    $configurableProductArrKey = array_keys($configurableProductArr);  // get all root keys of configurable product array
-    array_multisort($configurableProductSort, $configurableProductArr);
-    array_multisort($configurableProductSort2, $configurableProductArrKey);
+    }
+    $configurableProductArr = $altconfigurableProductArr;
+
+    // end sort colors on grid page like sort yantra tank products(colors) on grid page
+
+    //$configurableProductSort2 = $configurableProductSort;
+    //$configurableProductArrKey = array_keys($configurableProductArr);  // get all root keys of configurable product array
+    //array_multisort($configurableProductSort, $configurableProductArr);
+    //array_multisort($configurableProductSort2, $configurableProductArrKey);
 
     $i = 0;
 
     // assign keys to configurable array because multisort destroy key when sorting
+/*
     foreach($configurableProductArr as $key => $val){
         $configurableProductArr[$configurableProductArrKey[$i]] = $configurableProductArr[$key];
         // sort color according to the colors define in database
@@ -97,7 +124,7 @@ if($categoryId != '')
 
         unset($configurableProductArr[$key]);
         $i++;
-    }
+    }*/
 
     //print_r($configurableProductArr);die;
     $firsth1 = 1;

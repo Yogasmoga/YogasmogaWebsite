@@ -1172,7 +1172,10 @@ if($_product->getAttributeText('canzoomimage') == "yes")
             <div class="wishlist">
                 <div class="social-ico">
                     <a id="twitter" href="javascript:void(0);" class="twtrIcon" title="YogaSmoga - Twitter"></a>
-                    <a id="pinterest" href="http://www.Pinterest.com/YOGASMOGA" class="pinIcon" title="YogaSmoga - Pinterest"></a>
+                    <a id="dnone" href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" ><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>
+                    <!-- Please call pinit.js only once per page -->
+                    <script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
+                    <a id="pinterest" href="javascript:void(0);" class="pinIcon" title="YogaSmoga - Pinterest"></a>
                     <a id="facebook" href="javascript:void(0);" class="fbIcon" title="YogaSmoga - Facebook"></a>
                 </div>
                 <?php
@@ -1281,7 +1284,7 @@ while ($row = $readresult->fetch() ) {
                     <ul class="similarProdList clear">
                  <?php } ?>
                 <li><a href="<?php echo Mage::getBaseUrl().$parentproduct->getUrlPath().'?color='.$product->getColor(); ?>"
-                    <span><img alt="<?php echo $parentproduct->getName()?>" src="<?php echo $completelookimg; ?>"></span>
+                    <span><img nopin = "nopin" alt="<?php echo $parentproduct->getName()?>" src="<?php echo $completelookimg; ?>"></span>
                                 <span><strong><?php echo $parentproduct->getName()?></strong><?php echo $clrinfo[$product->getColor()] ?><br>$<?php echo
                                     number_format((float)($parentproduct->getPrice()), 2, '.', '');?></span> </a>
                 </li>
