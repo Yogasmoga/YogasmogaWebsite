@@ -1904,7 +1904,7 @@ ul.new-arrivals a.quick-view{display: none;}
 .bottom-left-block,.top-right-block{cursor:pointer;}
 .html-video-popup{position: fixed; width: 50%; display: none; top: 100px; z-index: 10099;}
 .wl-cs-right-block .top-right-block{background:url(../images/women/cs-vid-img1.jpg) no-repeat; background-size: 100% 100%;}
-.wl-left-block .bottom-left-block{background: url(../images/women/left-block-vid-img1.jpg) no-repeat; background-size: 100% 100%;}
+.wl-left-block .bottom-left-block{background: url(../images/women/tippytoelegging-vidbg.jpg) no-repeat; background-size: 100% 100%;}
 
 div.cms-side-nav{display: none;}
 .terms-conditions{margin: 0 auto;}
@@ -2428,3 +2428,4 @@ table.productdetailspopup td#tdpopupproductsmallimages tr:nth-child(4){
 .productCont .prod-img img{
     visibility: hidden;
 }
+.banner-txt3.promo2310 span.wlandingsup{color: rgb(255, 255, 255); height: auto; vertical-align: top; display: inline; font: 34px/45px AvantGardeGothicITCW01X; margin: 0px;}
