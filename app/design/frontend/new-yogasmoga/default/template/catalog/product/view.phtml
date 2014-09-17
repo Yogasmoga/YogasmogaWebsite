@@ -842,7 +842,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
             foreach($newdfimages as $ndfimg)
             {$i++;
                 ?>
-                <li class="<?php if($i==4 && $designfeaturevidioname != ''){echo 'last-df';} if($i==4 && $designfeaturevidioname == '') echo ' df-no-vid'; ?>"><span class="ftrFig "><img class="vid-pl-btn" src="<?php echo $this->getSkinUrl('images/vid-icon-img.png'); ?>"><img class="df-img" alt="" src="<?php echo substr($ndfimg["url"], 1); ?>"></span><span><?php echo $ndfimg["caption"]; ?></span></li>
+                <li class="<?php if($i==4 && $designfeaturevidioname != ''){echo 'last-df';} if($i==4 && $designfeaturevidioname == '') echo ' df-no-vid'; ?>"><span class="ftrFig "><img nopin="nopin" class="vid-pl-btn" src="<?php echo $this->getSkinUrl('images/vid-icon-img.png'); ?>"><img class="df-img" alt="" src="<?php echo substr($ndfimg["url"], 1); ?>"></span><span><?php echo $ndfimg["caption"]; ?></span></li>
             <?php
             }
             ?>
@@ -885,7 +885,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
                                   {
                                   ?>
                                <div class="video-block f-right">
-                                        <img src="<?php echo $this->getSkinUrl('images/how-to-measure-thumbnail.jpg'); ?>" />                                     
+                                        <img nopin="nopin" src="<?php echo $this->getSkinUrl('images/how-to-measure-thumbnail.jpg'); ?>" />
                                       </video>
 
 
@@ -1175,7 +1175,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
                     <a id="dnone" href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" ><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>
                     <!-- Please call pinit.js only once per page -->
                     <script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
-                    <a id="pinterest" href="javascript:void(0);" class="pinIcon" title="YogaSmoga - Pinterest"></a>
+                    <!--<a id="pinterest" href="javascript:void(0);" class="pinIcon" title="YogaSmoga - Pinterest"></a> -->
                     <a id="facebook" href="javascript:void(0);" class="fbIcon" title="YogaSmoga - Facebook"></a>
                 </div>
                 <?php
