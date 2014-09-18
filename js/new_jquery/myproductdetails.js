@@ -649,6 +649,8 @@ function addtocart()
             addurl = addurl + '&options['+_braOptionID+']=' + _braOptionTypeID;
             console.log(_braOptionTypeID + "---" + _braOptionID);
         }
+        // for do not call old shopping bag html in new theme
+        addurl = addurl + '&showhtml=0';
         jQuery.ajax({
             type : 'POST',
             url : addurl,

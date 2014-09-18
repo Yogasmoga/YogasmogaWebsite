@@ -101,6 +101,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
     {
         $cart   = $this->_getCart();
         $params = $this->getRequest()->getParams();
+        $showhtml = $params['showhtml'];
         try {
             if (isset($params['qty'])) {
                 $filter = new Zend_Filter_LocalizedToNormalized(
@@ -135,7 +136,10 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
             Mage::dispatchEvent('checkout_cart_add_product_complete',
                 array('product' => $product, 'request' => $this->getRequest(), 'response' => $this->getResponse())
             );
-            echo json_encode(array("status" => "success", "html" => $this->getminicarthtml(), "count" => $this->getcartcount()));
+            $minicarthtml = '';
+            if($showhtml == '')
+                $minicarthtml = $this->getminicarthtml();
+            echo json_encode(array("status" => "success","html" => $minicarthtml , "count" => $this->getcartcount()));
             //echo "success";
             //if (!$this->_getSession()->getNoCartRedirect(true)) {
 //                if (!$cart->getQuote()->getHasError()){

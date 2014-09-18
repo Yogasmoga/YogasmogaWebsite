@@ -556,7 +556,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         return false;
     }
     public function showshoppingbaghtmlAction()
-    {
+    {echo $milliseconds = round(microtime(true) * 1000);
         $html = $this->createshoppingbaghtml();
         $countDiscountType = '';
         $countDiscountType = $this->countDiscountType();
@@ -564,6 +564,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
         echo json_encode(array("status" => "success","html" => $html,"count" => $this->getcartcount(),"countdiscount" => $countDiscountType,"discounttypeerror" => $discounttypeerror));
+        echo $milliseconds = round(microtime(true) * 1000);die;
 
     }
     protected function _getSession()
