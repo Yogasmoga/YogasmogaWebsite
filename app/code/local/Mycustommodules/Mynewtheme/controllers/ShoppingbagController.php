@@ -896,11 +896,11 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $checkgiftapplied = false;
         $customerId = Mage::getModel('customer/session')->getCustomerId();
         if($customerId) {
-            $continuelink=Mage::getBaseUrl().'checkout/onepage';
+            /*$continuelink=Mage::getBaseUrl().'checkout/onepage';
             $getcustomerpoints = $this->getCustomerPoints($customerId);
             $getsmogipointscurrentlyuserd = $this->getPointsCurrentlyUsed();
             $showedpoints = $getcustomerpoints - $getsmogipointscurrentlyuserd;
-            if($getsmogipointscurrentlyuserd) $getcustomerpoints = $getcustomerpoints - $getsmogipointscurrentlyuserd;
+            if($getsmogipointscurrentlyuserd) $getcustomerpoints = $getcustomerpoints - $getsmogipointscurrentlyuserd;*/
         }
         else $continuelink="javascript:void(0);";
         $allow = $this->countDiscountType();
@@ -952,7 +952,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
         $checkisactive = '';
 
-        $getsmogipointscurrentlyuserd = $this->getPointsCurrentlyUsed();
+        //$getsmogipointscurrentlyuserd = $this->getPointsCurrentlyUsed();
         if($getsmogipointscurrentlyuserd > 0)
         {
             $getsmogipointscurrentlyuserd = number_format((float)($getsmogipointscurrentlyuserd), 2, '.', '');
