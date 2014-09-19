@@ -1154,9 +1154,9 @@ if($_product->getAttributeText('canzoomimage') == "yes")
 <!-- DetailsinGreyArea -->
 
 <!-- SMOGIBUCKS -->
-<table class="box-desc-dvdr font11 smogibucks" <?php if(!$isrewardable) { echo "style='display:none;'"; } ?>>
+<table class="box-desc-dvdr font11 smogibucks" >
     <tr>
-        <td width="50%">
+        <td width="50%" <?php if(!$isrewardable) { echo "style='visibility:hidden'"; } ?>>
             <div class="earnbucks">
                 <div class="smogibuckcount">
                     <table>
