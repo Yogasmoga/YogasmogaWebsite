@@ -2425,9 +2425,7 @@ a.no-over-state:hover{
 }
 
 /** hide forthImage **/
-.zoom-thumb-imgs .zoomsmallimagecontainer tr:nth-child(4),
-table.productimagecontainer table.smallimagecontiner td:nth-child(4),
-table.productdetailspopup td#tdpopupproductsmallimages tr:nth-child(4){
+table.smallimagecontiner td.selectedimage{
     display: none !important;
 }
 .share-strip,.new-arrivals-block{opacity: 0;}
