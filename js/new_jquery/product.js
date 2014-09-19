@@ -97,10 +97,10 @@ jQuery(document).ready(function($) {
             
 
         }, 20);
-        setTimeout(function() {
+        /*setTimeout(function() {
             $(".open-cart").trigger("click");
             $("#addtobagloader").hide();            
-        }, 4000);
+        }, 4000);*/
     });
 
 

@@ -469,11 +469,27 @@ function fastShowShoppingBagHtml()
     else
         _usesecureurl = false;
     var url = homeUrl + 'mynewtheme/shoppingbag/fastshowshoppingbaghtml';
+    // for check empty shopping bag
+    if(jQuery(".cartitemcount").html() == '0')
+    {
+        var url = homeUrl + 'mynewtheme/shoppingbag/showshoppingbaghtml';
+        _isEmptyShoppingBag = true;
+    }
+    else
+    {
+
+        _isEmptyShoppingBag = false;
+    }
+
+
     var checkouturl = homeUrl + 'checkout/onepage';
     checkouturl = securehomeUrl + 'checkout/onepage';
     if(_usesecureurl)
     {
         url = securehomeUrl + 'mynewtheme/shoppingbag/fastshowshoppingbaghtml';
+        // for check empty shopping bag
+        if(_isEmptyShoppingBag)
+            url = homeUrl + 'mynewtheme/shoppingbag/showshoppingbaghtml';
         checkouturl = securehomeUrl + 'checkout/onepage';
     }
     // check if user click on sign in from drop down menu
@@ -505,11 +521,20 @@ function fastShowShoppingBagHtml()
             success : function(data){
                 data = eval('('+data + ')');
                 shoppingBagTotals();
+                // click on shopping bag in header to show shopping bag html
+                jQuery(".open-cart").trigger("click");
+                jQuery("#addtobagloader").hide();
+
                 //console.log(data.html);
                 // alert(data.html);
-                jQuery(".shopping-cart ul.similarProdList").prepend(data.html);
-                //jQuery(".shopping-cart").html(data.html);
-                jQuery(".cartitemcount").html(data.count);
+                if(_isEmptyShoppingBag)
+                    jQuery(".shopping-cart").html(data.html);
+                else
+                    jQuery(".shopping-cart ul.similarProdList").prepend(data.html);
+
+
+
+                    jQuery(".cartitemcount").html(data.count);
                 if(data.countdiscount > 1)
                     showerror(data.discounttypeerror);
                 outofstockDisable();

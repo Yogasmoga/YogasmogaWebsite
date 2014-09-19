@@ -83,3 +83,4 @@ var _braOptionTypeID = null;
 var _footerLinkId = 1;
 var _getGOYSFirstUser = 0; // check for First time user for GOYS
 var _smogiPageLogin = false; // for the smogi bucks login
+var _isEmptyShoppingBag = false; // set

@@ -982,7 +982,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     <ul>
                         <li>
                             <span class="f-left capstxt cart-totalitems">'.$minidetails['totalitems'].' '.$stritem.'</span>
-                            <span class="f-right cart-subtable">'.$minidetails['subtotal'].'</span>
+                            <span class="f-right cart-subtotal">'.$minidetails['subtotal'].'</span>
                         </li>';
 
         $checkisactive = '';
