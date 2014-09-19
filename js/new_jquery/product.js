@@ -87,7 +87,8 @@ jQuery(document).ready(function($) {
                 return;}
             }
             _isClickSigninMenu = true;
-            showShoppingBagHtml();
+            //showShoppingBagHtml();
+            fastShowShoppingBagHtml();
 //            if (!_islogedinuser)
 //                showShoppingBagHtml();
 //            else {
@@ -99,7 +100,7 @@ jQuery(document).ready(function($) {
         setTimeout(function() {
             $(".open-cart").trigger("click");
             $("#addtobagloader").hide();            
-        }, 5000);
+        }, 4000);
     });
 
 

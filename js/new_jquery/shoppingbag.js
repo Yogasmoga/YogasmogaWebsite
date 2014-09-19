@@ -462,6 +462,118 @@ function showShoppingBagHtml()
         });
     },500);
 }
+function fastShowShoppingBagHtml()
+{
+    if(window.location.href.indexOf('https://') >= 0)
+        _usesecureurl = true;
+    else
+        _usesecureurl = false;
+    var url = homeUrl + 'mynewtheme/shoppingbag/fastshowshoppingbaghtml';
+    var checkouturl = homeUrl + 'checkout/onepage';
+    checkouturl = securehomeUrl + 'checkout/onepage';
+    if(_usesecureurl)
+    {
+        url = securehomeUrl + 'mynewtheme/shoppingbag/fastshowshoppingbaghtml';
+        checkouturl = securehomeUrl + 'checkout/onepage';
+    }
+    // check if user click on sign in from drop down menu
+//    alert(_isClickSigninMenu);
+    if(_isClickSigninMenu == true)
+    {
+        _showShoppingbagLoader = true;
+        _isClickSigninMenu = false;
+    }
+    // check for paypal final review page
+    var check4reviewpage = false;
+    var curUrl = document.URL;
+    if(window.location.href.indexOf('/paypal/express/review/') > 0)
+        check4reviewpage = true;
+
+    if(_showShoppingbagLoader)
+        //jQuery(".shopping-cart").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='margin:80% auto auto;' />");
+    /*if(!check4reviewpage)
+        jQuery.ajax({url : checkouturl});*/
+    // end check for paypal final review page
+    setTimeout(function(){
+
+
+        jQuery.ajax({
+            url : url,
+            type : 'POST',
+            //data : {'blockid':blockid},
+            cache : false,
+            success : function(data){
+                data = eval('('+data + ')');
+                shoppingBagTotals();
+                //console.log(data.html);
+                // alert(data.html);
+                jQuery(".shopping-cart ul.similarProdList").prepend(data.html);
+                //jQuery(".shopping-cart").html(data.html);
+                jQuery(".cartitemcount").html(data.count);
+                if(data.countdiscount > 1)
+                    showerror(data.discounttypeerror);
+                outofstockDisable();
+//                    ////alert(jQuery(".contfull2").outerHeight());
+//                    jQuery(".bagerrormsg").height(jQuery(".contfull2").outerHeight());
+//                    jQuery(".bagerrormsg").width(jQuery(".contfull2").outerWidth());
+            }
+        });
+    },0);
+
+}
+function shoppingBagTotals()
+{
+    if(window.location.href.indexOf('https://') >= 0)
+        _usesecureurl = true;
+    else
+        _usesecureurl = false;
+    var url = homeUrl + 'mynewtheme/shoppingbag/shoppingbagtotals';
+    var checkouturl = homeUrl + 'checkout/onepage';
+    checkouturl = securehomeUrl + 'checkout/onepage';
+    if(_usesecureurl)
+    {
+        url = securehomeUrl + 'mynewtheme/shoppingbag/shoppingbagtotals';
+        checkouturl = securehomeUrl + 'checkout/onepage';
+    }
+    // check if user click on sign in from drop down menu
+
+    if(_isClickSigninMenu == true)
+    {
+        _showShoppingbagLoader = true;
+        _isClickSigninMenu = false;
+    }
+    // check for paypal final review page
+    var check4reviewpage = false;
+    var curUrl = document.URL;
+    if(window.location.href.indexOf('/paypal/express/review/') > 0)
+        check4reviewpage = true;
+
+    if(_showShoppingbagLoader)
+    //jQuery(".shopping-cart").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='margin:80% auto auto;' />");
+    if(!check4reviewpage)
+     jQuery.ajax({url : checkouturl});
+    // end check for paypal final review page
+    setTimeout(function(){
+
+
+        jQuery.ajax({
+            url : url,
+            type : 'POST',
+            //data : {'blockid':blockid},
+            cache : false,
+            success : function(data){
+                data = eval('('+data + ')');
+
+                jQuery(".shopping-cart .cart-totalitems").html(data.count);
+                jQuery(".shopping-cart .cart-subtotal").html(data.subtotal);
+                jQuery(".shopping-cart .cart-grandtotal").html(data.grandtotal);
+            }
+        });
+    },500);
+
+}
+
+
 function showerror(msg){
         jQuery('#redeemresult').empty().append(msg).show().delay('7000').hide(0);
 }
