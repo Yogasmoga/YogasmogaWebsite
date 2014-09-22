@@ -35,6 +35,7 @@ jQuery(document).ready(function($){
         }
     },1000);*/
 
+
     var isSafari = browserTest();
     if(isSafari){
         // jQuery("ul.main-menu2 a.main-heading").css("height","31px");

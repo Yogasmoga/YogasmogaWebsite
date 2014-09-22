@@ -44,9 +44,20 @@ jQuery(document).ready(function($){
 		uifixes();
 	});
  /**Smogi Login popup**/
+    if(_islogedinuser)
+    {
+        $("a.smogi-login-link").css("border","none");
+        $("a.smogi-login-link").css("cursor","auto");
+    }
+
     $("body.cms-smogi-bucks").on("click","a.smogi-login-link", function(event){
-    	jQuery(window).scrollTop(0);    	    
-     	jQuery("#signing_popup").dialog("open");     	
+
+        if(!_islogedinuser)
+        {
+            jQuery(window).scrollTop(0);
+            jQuery("#signing_popup").dialog("open");
+        }
+
     });
 
 $("#workersgif").live('click', function(){
