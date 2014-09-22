@@ -595,6 +595,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
         //$minidetails['totalitems'] = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
         $totalitems = $this->getcartcount().' items';
+        if($this->getcartcount() == 1)
+            $totalitems = $this->getcartcount().' item';
         $subtotal = "$".number_format((float)$subtotal, 2, '.','');// round(Mage::getModel('checkout/cart')->getQuote()->getGrandTotal(), 2);
         $grandtotal = "$".number_format((float)$grandtotal, 2, '.','');
         //end totals

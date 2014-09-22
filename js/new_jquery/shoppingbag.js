@@ -594,7 +594,7 @@ function shoppingBagTotals()
                 jQuery(".shopping-cart .cart-grandtotal").html(data.grandtotal);
             }
         });
-    },1000);
+    },5000);
 
 }
 
