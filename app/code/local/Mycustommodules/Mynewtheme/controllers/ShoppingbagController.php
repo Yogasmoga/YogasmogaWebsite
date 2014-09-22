@@ -588,8 +588,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         if(isset($totals['tax']) && $totals['tax']->getValue()) {
             $tax = $totals['tax']->getValue(); //Tax value if present
             $grandtotal = $grandtotal - $tax;
+            Mage::log($grandtotal.'---if---'.$tax,null,'grandtotal.log');
         } else {
             $tax = 0;
+            Mage::log($grandtotal.'---else---'.$tax,null,'grandtotal.log');
         }
 
 
