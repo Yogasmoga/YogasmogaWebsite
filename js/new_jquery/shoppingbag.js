@@ -543,7 +543,7 @@ function fastShowShoppingBagHtml()
 //                    jQuery(".bagerrormsg").width(jQuery(".contfull2").outerWidth());
             }
         });
-    },0);
+    },500);
 
 }
 function shoppingBagTotals()
