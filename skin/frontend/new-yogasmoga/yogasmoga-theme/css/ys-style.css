@@ -401,7 +401,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
         right: 70px;*/
 }
 
-.bannerFluid .bnrtxt h1 {
+.bannerFluid .bnrtxt h1, .bnr {
     color: #555;
     float: left;
     font: 36px/40px itcavantgardepromd;
@@ -2475,4 +2475,6 @@ table.smallimagecontiner td.selectedimage{
     display: inline-block;
     width: 100%;
 }
+
+
 
