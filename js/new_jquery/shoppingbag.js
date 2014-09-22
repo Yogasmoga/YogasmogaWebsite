@@ -591,10 +591,11 @@ function shoppingBagTotals()
 
                 jQuery(".shopping-cart .cart-totalitems").html(data.count);
                 jQuery(".shopping-cart .cart-subtotal").html(data.subtotal);
-                jQuery(".shopping-cart .cart-grandtotal").html(data.grandtotal);
+                if(data.grandtotal != 'donotshowprice')
+                    jQuery(".shopping-cart .cart-grandtotal").html(data.grandtotal);
             }
         });
-    },5000);
+    },500);
 
 }
 

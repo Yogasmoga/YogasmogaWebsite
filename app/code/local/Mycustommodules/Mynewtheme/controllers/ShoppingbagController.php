@@ -583,26 +583,27 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
         $grandtotal = $totals["grand_total"]->getValue();
         //echo $totals['tax'];die('tax');
-        $quote = Mage::getModel('checkout/session')->getQuote();
-        $quoteData= $quote->getData();
-        $grandtotal=$quoteData['grand_total'];
+
         $tax = 0;
-        /*if(isset($totals['tax']) && $totals['tax']->getValue()) {
+        if(isset($totals['tax']) && $totals['tax']->getValue()) {
             $tax = $totals['tax']->getValue(); //Tax value if present
             $grandtotal = $grandtotal - $tax;
-
         } else {
             $tax = 0;
-
-        }*/
+        }
 
 
         //$minidetails['totalitems'] = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
         $totalitems = $this->getcartcount().' items';
-        if($this->getcartcount() == 1)
-            $totalitems = $this->getcartcount().' item';
         $subtotal = "$".number_format((float)$subtotal, 2, '.','');// round(Mage::getModel('checkout/cart')->getQuote()->getGrandTotal(), 2);
         $grandtotal = "$".number_format((float)$grandtotal, 2, '.','');
+        if($this->getcartcount() == 1)
+        {
+            $totalitems = $this->getcartcount().' item';
+            $grandtotal = 'donotshowprice';
+        }
+
+
         //end totals
         echo json_encode(array("status" => "success","count" => $totalitems,"subtotal" => $subtotal,"grandtotal" => $grandtotal));
     }
