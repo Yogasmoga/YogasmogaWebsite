@@ -587,14 +587,14 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $quoteData= $quote->getData();
         $grandtotal=$quoteData['grand_total'];
         $tax = 0;
-        if(isset($totals['tax']) && $totals['tax']->getValue()) {
+        /*if(isset($totals['tax']) && $totals['tax']->getValue()) {
             $tax = $totals['tax']->getValue(); //Tax value if present
             $grandtotal = $grandtotal - $tax;
 
         } else {
             $tax = 0;
 
-        }
+        }*/
 
 
         //$minidetails['totalitems'] = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
