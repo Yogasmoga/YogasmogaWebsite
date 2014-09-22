@@ -48,6 +48,7 @@ jQuery(document).ready(function($){
     {
         $("a.smogi-login-link").css("border","none");
         $("a.smogi-login-link").css("cursor","auto");
+        $("a.smogi-login-link").css("color","#555");
     }
 
     $("body.cms-smogi-bucks").on("click","a.smogi-login-link", function(event){
