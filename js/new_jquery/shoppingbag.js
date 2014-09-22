@@ -591,8 +591,14 @@ function shoppingBagTotals()
 
                 jQuery(".shopping-cart .cart-totalitems").html(data.count);
                 jQuery(".shopping-cart .cart-subtotal").html(data.subtotal);
+                
+                var dontshow = 'donotshowprice';
                 if(data.grandtotal != 'donotshowprice')
+                {
                     jQuery(".shopping-cart .cart-grandtotal").html(data.grandtotal);
+
+                }
+
             }
         });
     },500);
