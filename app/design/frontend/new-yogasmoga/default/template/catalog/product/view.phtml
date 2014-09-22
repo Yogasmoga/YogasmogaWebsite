@@ -842,7 +842,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
             foreach($newdfimages as $ndfimg)
             {$i++;
                 ?>
-                <li class="<?php if($i==4 && $designfeaturevidioname != ''){echo 'last-df';} if($i==4 && $designfeaturevidioname == '') echo ' df-no-vid'; ?>"><span class="ftrFig "><img class="vid-pl-btn" src="<?php echo $this->getSkinUrl('images/vid-icon-img.png'); ?>"><img class="df-img" alt="" src="<?php echo substr($ndfimg["url"], 1); ?>"></span><span><?php echo $ndfimg["caption"]; ?></span></li>
+                <li class="<?php if($i==4 && $designfeaturevidioname != ''){echo 'last-df';} if($i==4 && $designfeaturevidioname == '') echo ' df-no-vid'; ?>"><span class="ftrFig "><img nopin="nopin" class="vid-pl-btn" src="<?php echo $this->getSkinUrl('images/vid-icon-img.png'); ?>"><img nopin="nopin" class="df-img" alt="" src="<?php echo substr($ndfimg["url"], 1); ?>"></span><span><?php echo $ndfimg["caption"]; ?></span></li>
             <?php
             }
             ?>
@@ -864,14 +864,15 @@ if($_product->getAttributeText('canzoomimage') == "yes")
 
         <div class="fitDetail font11">
             <div class="video-box f-left">
-                <ul>
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howdoesitfitblockid)->toHtml(); ?>
+                <!--<ul>
                     <li>Body hugging/form fitting</li>
                     <li>High hip length</li>
                     <li>Perfect racer back for movement</li>
-                </ul>
+                </ul>-->
 
                 <div class="vlink-cont" style="margin-left:16px;">
-                    <p class="block-link" style="margin-top: 15px;"><a href="#" class="com-a-prd-links">Watch the video of how to measure</a></p>
+                    <p class="block-link" style="margin-top: 15px;"><a href="#" class="com-a-prd-links">Watch how to measure</a></p>
                 </div>
                 <div class="sm-size-chart">
                     <a class="size-res"></a>
@@ -884,7 +885,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
                                   {
                                   ?>
                                <div class="video-block f-right">
-                                        <img src="<?php echo $this->getSkinUrl('images/how-to-measure-thumbnail.jpg'); ?>" />                                     
+                                        <img nopin="nopin" src="<?php echo $this->getSkinUrl('images/how-to-measure-thumbnail.jpg'); ?>" />
                                       </video>
 
 
@@ -916,7 +917,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
 <td>
 <!-- heading -->
 <div class="prdname">
-    <div class="productname"><?php echo html_entity_decode($productname); ?></div>
+    <div class="productname"><h1><?php echo html_entity_decode($productname); ?></h1></div>
     <span class="productcost amount"><?php echo $productprice; ?></span>
 </div>
 <!-- heading -->
@@ -1153,9 +1154,9 @@ if($_product->getAttributeText('canzoomimage') == "yes")
 <!-- DetailsinGreyArea -->
 
 <!-- SMOGIBUCKS -->
-<table class="box-desc-dvdr font11 smogibucks" <?php if(!$isrewardable) { echo "style='display:none;'"; } ?>>
+<table class="box-desc-dvdr font11 smogibucks" >
     <tr>
-        <td width="50%">
+        <td width="50%" <?php if(!$isrewardable) { echo "style='visibility:hidden'"; } ?>>
             <div class="earnbucks">
                 <div class="smogibuckcount">
                     <table>
@@ -1171,7 +1172,10 @@ if($_product->getAttributeText('canzoomimage') == "yes")
             <div class="wishlist">
                 <div class="social-ico">
                     <a id="twitter" href="javascript:void(0);" class="twtrIcon" title="YogaSmoga - Twitter"></a>
-                    <a id="pinterest" href="http://www.Pinterest.com/YOGASMOGA" class="pinIcon" title="YogaSmoga - Pinterest"></a>
+                    <a id="dnone" href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" ><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>
+                    <!-- Please call pinit.js only once per page -->
+                    <script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
+                    <!--<a id="pinterest" href="javascript:void(0);" class="pinIcon" title="YogaSmoga - Pinterest"></a> -->
                     <a id="facebook" href="javascript:void(0);" class="fbIcon" title="YogaSmoga - Facebook"></a>
                 </div>
                 <?php
@@ -1280,7 +1284,7 @@ while ($row = $readresult->fetch() ) {
                     <ul class="similarProdList clear">
                  <?php } ?>
                 <li><a href="<?php echo Mage::getBaseUrl().$parentproduct->getUrlPath().'?color='.$product->getColor(); ?>"
-                    <span><img alt="<?php echo $parentproduct->getName()?>" src="<?php echo $completelookimg; ?>"></span>
+                    <span><img nopin = "nopin" alt="<?php echo $parentproduct->getName()?>" src="<?php echo $completelookimg; ?>"></span>
                                 <span><strong><?php echo $parentproduct->getName()?></strong><?php echo $clrinfo[$product->getColor()] ?><br>$<?php echo
                                     number_format((float)($parentproduct->getPrice()), 2, '.', '');?></span> </a>
                 </li>

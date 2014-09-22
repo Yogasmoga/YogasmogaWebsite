@@ -8,10 +8,20 @@ jQuery(window).load(function($){
     var featLiH = jQuery(".featureList span.ftrFig img.df-img").first().height();
     jQuery(".featureList span.ftrFig").css("height", featLiH);   
     playBtnPos();
-    sizeChartScroll();      
+    sizeChartScroll();   
+
     // jQuery("body").animate({opacity:1},100);     
 });
-jQuery(document).ready(function($){  
+jQuery(document).ready(function($){
+    // get smogi value in footer
+
+    $("body").on("click", function(){
+        if(jQuery(".zopim").is(":visible")){
+            $zopim.livechat.window.hide();             
+        }             
+    });
+    if(_islogedinuser)
+        smogifootervalue(); 
     /*var i = 0;
     var pageReload = setInterval(function(){
         i++; 
@@ -200,11 +210,14 @@ sizeChartPop();
 
     if(!_islogedinuser){
         jQuery(".footer-block .smogi-love").removeClass("no-over-state");
-        jQuery(".share-strip .sign-up-new a").removeClass("no-over-state");
+        jQuery(".share-strip .sign-up-new a").removeClass("dnone");
+        jQuery(".share-strip .sign-up-new span").text("& WE'LL SURPRISE YOU");
     }
     else{
         jQuery(".footer-block .smogi-love").addClass("no-over-state");
-        jQuery(".share-strip .sign-up-new a").addClass("no-over-state");
+        jQuery(".share-strip .sign-up-new a").addClass("dnone");
+        jQuery(".share-strip .sign-up-new span").text("Welcome To YOGASMOGA.");
+        // jQuery(".share-strip .sign-up-new span").text("Hi! Welcome To YOGASMOGA..");
     }
 
 
@@ -640,5 +653,36 @@ function sizeChartPop(){
         var sizeChatVid = document.getElementById("sizeChartVid");
         sizeChatVid.play();
     });    
+}
+
+function smogifootervalue()
+{
+    if(window.location.href.indexOf('https://') >= 0)
+        _usesecureurl = true;
+    else
+        _usesecureurl = false;
+    var url = homeUrl + 'mynewtheme/smogi/getCustomerPointsFooter';
+    if(_usesecureurl)
+        url = securehomeUrl + 'mynewtheme/smogi/getCustomerPointsFooter';
+
+    jQuery.ajax({
+
+        url     :   url,
+        type    :   'POST',
+        
+        success :   function(data){
+
+            data = eval('('+data + ')');
+            var status = data.status;
+            var error = data.error;
+            var somgiBal = data.smogi;
+
+            if(status == "success")
+            {
+                jQuery(".after-login li.smogi-balance a span").html(somgiBal);  
+            }
+        }    
+        
+    });
 }
 

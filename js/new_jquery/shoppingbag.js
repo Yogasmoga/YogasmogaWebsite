@@ -39,19 +39,20 @@ jQuery(document).ready(function($){
         $(".page").animate({ left: '0' }).css("");
         $(".header-container").animate({ left: "0" });
         $("body, html").removeClass("hdnHgt");     
-        jQuery(".side-menu-bar,.account-nav,.leftnav").css("position","");     
+        jQuery(".side-menu-bar,.account-nav").removeClass("scrolltopend"); 
+        $(window).scrollTop("79px");   
     });
     $("div.adddields span").live("click",function(){  
          if(!$(this).attr('class')){
 //             showerror('You cannot use Smogi Bucks and Promo Code / Gift Card Code together.');   
             // showerror("Gift Card, SMOGI Bucks and Promo Code cannot be combined. Please choose one and continue CheckOut."); 
              if($(this).prev('input').attr('id')=='smogi'){
-                 if($(this).prev('input').attr('available') < 1) showerror('You do not have enough SMOGI Bucks in your Account.');
+                 if($(this).prev('input').attr('available') < 1) showerror('You do not have enough SMOGI Bucks in your Account');
                  else showerror($(this).prev('input').attr('placeholder'));
              }
              else if($(this).prev('input').attr('id')=='giftcartcode'){
-                  if($(this).prev('input').data('used') =='yes') showerror('You cannot use another Promo Code / Gift Card Code.');
-                  else showerror('You cannot use SMOGI Bucks & Promo Code/Gift Card Code together.');
+                  if($(this).prev('input').data('used') =='yes') showerror('You cannot use another Promo Code / Gift Card Code');
+                  else showerror('You cannot use SMOGI Bucks & Promo Code/Gift Card Code together');
              }
          }
     });
@@ -90,8 +91,9 @@ jQuery(document).ready(function($){
     jQuery(".close").live("click",function(e){
         e.preventDefault();
         var deleteproductid = (jQuery(this).parent("li").attr("id")).trim();
+        var productcartqty = jQuery(this).prev("span").find("span.quantity").attr("cartqty")
         jQuery(this).parent("li").html("<img style='margin:20px 0;' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
-        deleteproduct(deleteproductid);
+        deleteproduct(deleteproductid,productcartqty);
     });
 
     // open login popup for click on sign in on shopping bag
@@ -327,6 +329,7 @@ function openShoppingCart()
     if(leftNavVis && leftNavPos == "fixed"){        
         leftNav.removeClass("scrolltop");
     }
+    jQuery(".side-menu-bar,.account-nav").addClass("scrolltopend");
 
 var shoppingWdth = jQuery(".shopping-cart").width();
 var bodyHght = jQuery(window).height();
@@ -381,7 +384,7 @@ function promocodecart(){
                     applypromocode();
         }
     }
-    else showerror('Please enter valid code.');
+    else showerror('Please enter valid code');
 }
 function giftcart() {
     jQuery('#redeemresult').empty().hide();
@@ -404,8 +407,7 @@ function giftcart() {
     else showerror('Invalid gift of YS code.');
 }
 function showShoppingBagHtml()
-{
-    // jQuery(".side-menu-bar,.account-nav,.leftnav").css("position","absolute");
+{    
     if(window.location.href.indexOf('https://') >= 0)
         _usesecureurl = true;
     else
@@ -460,6 +462,143 @@ function showShoppingBagHtml()
         });
     },500);
 }
+function fastShowShoppingBagHtml()
+{
+    if(window.location.href.indexOf('https://') >= 0)
+        _usesecureurl = true;
+    else
+        _usesecureurl = false;
+    var url = homeUrl + 'mynewtheme/shoppingbag/fastshowshoppingbaghtml';
+    // for check empty shopping bag
+    if(jQuery(".cartitemcount").html() == '0')
+    {
+        var url = homeUrl + 'mynewtheme/shoppingbag/showshoppingbaghtml';
+        _isEmptyShoppingBag = true;
+    }
+    else
+    {
+
+        _isEmptyShoppingBag = false;
+    }
+
+
+    var checkouturl = homeUrl + 'checkout/onepage';
+    checkouturl = securehomeUrl + 'checkout/onepage';
+    if(_usesecureurl)
+    {
+        url = securehomeUrl + 'mynewtheme/shoppingbag/fastshowshoppingbaghtml';
+        // for check empty shopping bag
+        if(_isEmptyShoppingBag)
+            url = homeUrl + 'mynewtheme/shoppingbag/showshoppingbaghtml';
+        checkouturl = securehomeUrl + 'checkout/onepage';
+    }
+    // check if user click on sign in from drop down menu
+//    alert(_isClickSigninMenu);
+    if(_isClickSigninMenu == true)
+    {
+        _showShoppingbagLoader = true;
+        _isClickSigninMenu = false;
+    }
+    // check for paypal final review page
+    var check4reviewpage = false;
+    var curUrl = document.URL;
+    if(window.location.href.indexOf('/paypal/express/review/') > 0)
+        check4reviewpage = true;
+
+    if(_showShoppingbagLoader)
+        //jQuery(".shopping-cart").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='margin:80% auto auto;' />");
+    /*if(!check4reviewpage)
+        jQuery.ajax({url : checkouturl});*/
+    // end check for paypal final review page
+    setTimeout(function(){
+
+
+        jQuery.ajax({
+            url : url,
+            type : 'POST',
+            //data : {'blockid':blockid},
+            cache : false,
+            success : function(data){
+                data = eval('('+data + ')');
+                shoppingBagTotals();
+                // click on shopping bag in header to show shopping bag html
+                jQuery(".open-cart").trigger("click");
+                jQuery("#addtobagloader").hide();
+
+                //console.log(data.html);
+                // alert(data.html);
+                if(_isEmptyShoppingBag)
+                    jQuery(".shopping-cart").html(data.html);
+                else
+                    jQuery(".shopping-cart ul.similarProdList").prepend(data.html);
+
+
+
+                    jQuery(".cartitemcount").html(data.count);
+                if(data.countdiscount > 1)
+                    showerror(data.discounttypeerror);
+                outofstockDisable();
+//                    ////alert(jQuery(".contfull2").outerHeight());
+//                    jQuery(".bagerrormsg").height(jQuery(".contfull2").outerHeight());
+//                    jQuery(".bagerrormsg").width(jQuery(".contfull2").outerWidth());
+            }
+        });
+    },500);
+
+}
+function shoppingBagTotals()
+{
+    if(window.location.href.indexOf('https://') >= 0)
+        _usesecureurl = true;
+    else
+        _usesecureurl = false;
+    var url = homeUrl + 'mynewtheme/shoppingbag/shoppingbagtotals';
+    var checkouturl = homeUrl + 'checkout/onepage';
+    checkouturl = securehomeUrl + 'checkout/onepage';
+    if(_usesecureurl)
+    {
+        url = securehomeUrl + 'mynewtheme/shoppingbag/shoppingbagtotals';
+        checkouturl = securehomeUrl + 'checkout/onepage';
+    }
+    // check if user click on sign in from drop down menu
+
+    if(_isClickSigninMenu == true)
+    {
+        _showShoppingbagLoader = true;
+        _isClickSigninMenu = false;
+    }
+    // check for paypal final review page
+    var check4reviewpage = false;
+    var curUrl = document.URL;
+    if(window.location.href.indexOf('/paypal/express/review/') > 0)
+        check4reviewpage = true;
+
+    if(_showShoppingbagLoader)
+    //jQuery(".shopping-cart").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='margin:80% auto auto;' />");
+    if(!check4reviewpage)
+     jQuery.ajax({url : checkouturl});
+    // end check for paypal final review page
+    setTimeout(function(){
+
+
+        jQuery.ajax({
+            url : url,
+            type : 'POST',
+            //data : {'blockid':blockid},
+            cache : false,
+            success : function(data){
+                data = eval('('+data + ')');
+
+                jQuery(".shopping-cart .cart-totalitems").html(data.count);
+                jQuery(".shopping-cart .cart-subtotal").html(data.subtotal);
+                jQuery(".shopping-cart .cart-grandtotal").html(data.grandtotal);
+            }
+        });
+    },500);
+
+}
+
+
 function showerror(msg){
         jQuery('#redeemresult').empty().append(msg).show().delay('7000').hide(0);
 }
@@ -510,7 +649,7 @@ function addbracelettobag(pid,colorattributeid,sizeattributeid )
     }
 }
 
-function deleteproduct(deletedproducid)
+function deleteproduct(deletedproducid,productcartqty)
 {
     if(deletedproducid >0)
     {
@@ -518,7 +657,7 @@ function deleteproduct(deletedproducid)
         jQuery.ajax({
             type : 'POST',
             url : addurl,
-            data : {'id':deletedproducid},
+            data : {'id':deletedproducid,'deleteqty':productcartqty},
             success : function(result){
                 result = eval('(' + result + ')');
 
@@ -555,7 +694,7 @@ function applysmogibucks()
     }
     else if(isNaN(smogivalue) && smogivalue !='') {
         jQuery('#smogi').next('span').addClass("applysmogi").empty().append("+");
-        showerror('Please enter valid number.');
+        showerror('Please enter valid number');
         return false;
     }
 
@@ -600,7 +739,7 @@ function applysmogibucks()
                 }
                 else
                 {
-                    showerror('There is some error while applying smogi bucks.');
+                    showerror('There is some error while applying smogi bucks');
                     showerror(data.error);
                     jQuery('#smogi').next('span').addClass("applysmogi").empty().append("+");
                     jQuery('.zindexH').hide();
@@ -613,7 +752,7 @@ function applysmogibucks()
     }
     else{
         jQuery('#smogi').next('span').addClass("applysmogi").empty().append("+");
-        showerror('You do not have enough SMOGI Bucks in your Account.');
+        showerror('You do not have enough SMOGI Bucks in your Account');
         jQuery('.zindexH').hide();
     }
 
@@ -645,7 +784,7 @@ function removesmogibucks()
             else
             {
                 jQuery('.zindexH').hide();
-                showerror('There is some error while removing smogi bucks.');
+                showerror('There is some error while removing smogi bucks');
                 
             }
 
@@ -677,7 +816,7 @@ function automaticapplysmogibucks()
             }
             else
             {
-                showerror('There is some error while apply auto smogi bucks.');
+                showerror('There is some error while apply auto smogi bucks');
             }
 
         }

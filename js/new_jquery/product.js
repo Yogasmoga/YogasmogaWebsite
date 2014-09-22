@@ -15,13 +15,13 @@ jQuery(document).ready(function($) {
         if(_islengthavailable){
              var errormsg = '';
         if(jQuery("div.selectedlength div.selected").length == 0 && _productorderqty == 0)
-            errormsg = "Please select quantity and length to continue.";
+            errormsg = "Please select quantity and length to continue";
         else
         {
             if(_productorderqty == 0)
-                errormsg = "Please select quantity to continue.";
+                errormsg = "Please select quantity to continue";
             if(jQuery("div.selectedlength div.selected").length == 0)
-                errormsg = "Please select length to continue.";
+                errormsg = "Please select length to continue";
         }
         if(errormsg != '')
         {
@@ -37,13 +37,13 @@ jQuery(document).ready(function($) {
         $("div.producterrorcontainer div.errormsg").empty();
         var errormsg = '';
         if ($("div#sizecontainer div.dvselectedsize").length == 0 && _productorderqty == 0)
-            errormsg = "Please select quantity and size to continue.";
+            errormsg = "Please select quantity and size to continue";
         else
         {
             if (_productorderqty == 0)
-                errormsg = "Please select quantity to continue.";
+                errormsg = "Please select quantity to continue";
             if ($("div#sizecontainer div.dvselectedsize").length == 0)
-                errormsg = "Please select size to continue.";
+                errormsg = "Please select size to continue";
         }
         if (errormsg != '')
         {
@@ -73,21 +73,22 @@ jQuery(document).ready(function($) {
        // var errormsg = '';
 
             if(jQuery("div#sizecontainer div.dvselectedsize").length == 0 && _productorderqty == 0)
-                {errormsg = "Please select quantity and size to continue.";
+                {errormsg = "Please select quantity and size to continue";
                 return;}
             else
             {
             //    alert('l');
                 if(_productorderqty == 0) {
-                    errormsg = "Please select quantity to continue.";
+                    errormsg = "Please select quantity to continue";
                     return;
                 }
                 if(jQuery("div#sizecontainer div.dvselectedsize").length == 0){
-                    errormsg = "Please select size to continue.";
+                    errormsg = "Please select size to continue";
                 return;}
             }
             _isClickSigninMenu = true;
-            showShoppingBagHtml();
+            //showShoppingBagHtml();
+            fastShowShoppingBagHtml();
 //            if (!_islogedinuser)
 //                showShoppingBagHtml();
 //            else {
@@ -96,10 +97,10 @@ jQuery(document).ready(function($) {
             
 
         }, 20);
-        setTimeout(function() {
+        /*setTimeout(function() {
             $(".open-cart").trigger("click");
             $("#addtobagloader").hide();            
-        }, 5000);
+        }, 4000);*/
     });
 
 
@@ -148,7 +149,7 @@ jQuery(document).ready(function($) {
             if (current >= $imgs.length)
                 current = 0;
             $imgs.eq(current++).css("visibility", "visible").fadeIn(function() {
-                $(this).delay(800).fadeOut(xyzinterval);
+                $(this).delay(500).fadeOut(xyzinterval);
             });
         };
         xyzinterval();

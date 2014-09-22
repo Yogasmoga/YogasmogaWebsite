@@ -224,7 +224,8 @@ div.copy-privacy-likes ul li img{height: 30px;}
 /*#sign-up-form table label,#sign-in-form table label{width: 30%; float: left; word-wrap:break-word; line-height: 26px;}*/
 #sign-up-form table input,
 #sign-in-form table input,
-#invite-friend-form table input{width: 100%; padding: 7px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+#invite-friend-form table input,
+#sb-sign-in-form table input{width: 100%; padding: 7px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 #sign-up-button,#sign-in-button {cursor:pointer;}
 .err-msg{color:#D90D3D;}
 .signinDialog.ui-dialog .ui-dialog-titlebar-close,
@@ -400,7 +401,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
         right: 70px;*/
 }
 
-.bannerFluid .bnrtxt {
+.bannerFluid .bnrtxt h1 {
     color: #555;
     float: left;
     font: 36px/40px itcavantgardepromd;
@@ -473,7 +474,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 }
 
 
-.featureList span{display: block; margin: 15px 0 0; font-size: 12px; text-transform: capitalize; text-align: left;}
+.featureList span{display: block; margin: 15px 0 0; font-size: 12px; text-transform: inherit; text-align: left;}
 .featureList span.ftrFig{/*background: #E5E9EC;*/ margin: 0; text-align: left; /*height: 200px*/ overflow: hidden}
 .featureList span.ftrFig img{width: 100%; /*height: 100%;*/}
 
@@ -518,7 +519,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .fabDetail > h2{font: 24px ITCAvantGardeProBk; background: none; margin: -18px 0 30px; border:none;}
 .fabDetail h2 sup{font-size: 18px;}
 .fabDetail ul{margin-bottom: 17px;}
-.fabDetail li{font: 9px/12px gothamMedium; text-align: left; text-transform: uppercase; width: 45%; word-wrap: break-word; display: inline-block; margin-bottom: 20px; vertical-align: top;}
+.fabDetail li{font: 9px/12px gothamMedium; text-align: center; text-transform: uppercase; width: 45%; word-wrap: break-word; display: inline-block; margin-bottom: 20px; vertical-align: top;}
 /*.fabDetail li:first-child{margin: 0 0.5% 0 0;}*/
 /*.fabDetail li:nth-child(4){margin: 0 0 0 0.5%;}*/
 .fabDetail li span{display: block; margin-bottom: 16px;}
@@ -545,6 +546,12 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 
 .gry-box{background: #ededed; padding: 10px 15px; margin-bottom: 10px; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -ms-box-sizing:border-box; box-sizing:border-box;}
 .prdname{border-bottom: 1px solid #fff; text-transform: uppercase; font: 24px/29px ITCAvantGardeProBk;/* margin: 0 0 15px; padding: 0 0 10px;*/ padding-bottom: 8px; margin-top: 5px;}
+.prdname h1 {
+    color: #555;
+    font: 24px/29px ITCAvantGardeProBk;
+    margin: 0;
+    padding: 0;
+}
 .amount {clear: both; display: block; margin: 0;}
 .box-seprtr {border-bottom: 1px solid #FFFFFF; margin: 0 0 10px; padding: 10px 0;}
 .box-seprtr.last{padding: 0; margin: 0; border-bottom: 0 none;}
@@ -833,14 +840,14 @@ span.country {
     /*.os-banner{min-height: 250px;}*/
     .contWom h4, li.new-arrivals-desc .block-head{font-size: 15px;}
     li.new-arrivals-desc .block-head{padding: 0; text-align: left;}
-    .contWom h4 span, li.new-arrivals-desc .block-desc, .os-banner, .bannerFluid .bnrtxt{font-size: 24px; line-height: 28px;}
+    .contWom h4 span, li.new-arrivals-desc .block-desc, .os-banner, .bannerFluid .bnrtxt h1{font-size: 24px; line-height: 28px;}
     .contWom p, div.side-menu-bar ul li a, .menu-bar ul li a{font-size: 14px;}
     .contWom p.block-link a, li.new-arrivals-desc .block-link a{font-size: 12px;}
     .box-str h2.heading{font-size: 16px;}
 
     /** ProductDetail Page **/
     .block-elm{font-size: 11px;}
-    .prdname{font-size: 20px;}
+    .prdname, .prdname h1{font-size: 20px;}
     .gry-box{padding: 10px;}
     .blck-head-sml span{width: 50px;}
     .size-list > li{margin: 0 2px 0 0; padding: 8px 2px; width: 26px;}
@@ -1611,7 +1618,8 @@ div#sizechart td span { font-weight: normal; }
     margin: 11px 14px 0 0;
 }
 
-.banner-txt3.promo2310 {
+.banner-txt3.promo2310,
+.banner-txt3.promo2310 h1 {
     color: #555;
     font: 46px/51px AvantGardeGothicITCW01D;
     left: 3.85625%;
@@ -1837,7 +1845,7 @@ input#smogi:-ms-input-placeholder {
 .cms-container{padding: 29px 40px 0 40px;}
 .cms-pg{width: auto; margin: 0 0 0 301px; vertical-align: top; color: #666; line-height: normal; min-height: 300px; border-top: 1px solid #555; padding-top: 15px;}
 .pg-heading{margin-bottom: 49px;}
-.pg-heading h2 {font-family: ITCAvantGardeProMd; font-size: 36px; color: #555555; line-height: 40px; margin-bottom: 8px; text-transform: uppercase;}
+.pg-heading h2, .pg-heading h1{font-family: ITCAvantGardeProMd; font-size: 36px; color: #555555; line-height: 40px; margin-bottom: 8px; text-transform: uppercase;}
 .sec-head{font-family: gothambold; font-size: 11px; line-height: 17px; display: block; margin-bottom: 10px;}
 .pg-tagline,.cms-pg p, .pg-content section p{font-family: gothambook; font-size: 12px; line-height: 17px; margin-bottom: 10px; text-align: justify;}
 .cms-pg section p:last-child,.pg-content section p:last-child{margin-bottom: 35px;}
@@ -1992,6 +2000,7 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .ctext{font-size: 26px; line-height: 33px;}
     .block-content h4.main-img-text,
     .banner-txt3.promo2310,
+    .banner-txt3.promo2310 h1,
     .banner-txt3.promo2310 span,
     .new-arrivals-block span.na-head,
     .contentSlider h3,
@@ -1999,8 +2008,8 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .namaskartxt h3 span{line-height: 24px;}
 
     /* cmsheading */
-    .gridCMSPages h4, .gridBlockContent h3, .pressHead{font-size: 36px !important; line-height: 40px !important;}
-    .rSldrHeading{font-size: 38px !important; line-height: 50px !important;}
+    .gridCMSPages h4, .gridCMSPages h1, .gridCMSPages h1, .gridBlockContent h3, .pressHead{font-size: 36px !important; line-height: 40px !important;}
+    .rSldrHeading, .rSldrHeading h1{font-size: 38px !important; line-height: 50px !important;}
     .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 17px !important; line-height: 35px !important;}
     .cntntheading, .gridCMSPages .coloumn-list li span{font-size: 24px !important; line-height: 29px !important;}
     .presstxt p{font-size: 17px !important; line-height: 19px !important;}
@@ -2024,6 +2033,7 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .ctext{font-size: 30px; line-height: 38px;}
     .block-content h4.main-img-text,
     .banner-txt3.promo2310,
+    .banner-txt3.promo2310 h1,
     .banner-txt3.promo2310 span,
     .new-arrivals-block span.na-head,
     .contentSlider h3,
@@ -2032,7 +2042,7 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 
 
     /* cmsheading */
-    .gridCMSPages h4, .gridBlockContent h3, .pressHead, .rSldrHeading{font-size: 40px !important; line-height: 43px !important;}
+    .gridCMSPages h4, .gridCMSPages h1, .gridBlockContent h3, .pressHead, .rSldrHeading, .rSldrHeading h1{font-size: 40px !important; line-height: 43px !important;}
     .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 19px !important; line-height: 39px !important;}
     .cntntheading, .gridCMSPages .coloumn-list li span{font-size: 28px !important; line-height: 33px !important;}
     .presstxt p{font-size: 19px !important; line-height: 23px !important;}
@@ -2055,6 +2065,7 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .ctext{font-size: 35px; line-height: 44px;}
     .block-content h4.main-img-text,
     .banner-txt3.promo2310,
+    .banner-txt3.promo2310 h1,
     .banner-txt3.promo2310 span,
     .new-arrivals-block span.na-head,
     .contentSlider h3,
@@ -2063,7 +2074,7 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 
 
     /* cmsheading */
-    .gridCMSPages h4, .gridBlockContent h3, .pressHead, .rSldrHeading{font-size: 45px !important; line-height: 48px !important;}
+    .gridCMSPages h4, .gridCMSPages h1, .gridBlockContent h3, .pressHead, .rSldrHeading, .rSldrHeading h1{font-size: 45px !important; line-height: 48px !important;}
     .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 22px !important; line-height: 45px !important;}
     .cntntheading, .gridCMSPages .coloumn-list li span{font-size: 32px !important; line-height: 37px !important;}
     .presstxt p{font-size: 22px !important; line-height: 29px !important;}
@@ -2078,6 +2089,7 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .ctext{font-size: 40px; line-height: 50px;}
     .block-content h4.main-img-text,
     .banner-txt3.promo2310,
+    .banner-txt3.promo2310 h1,
     .banner-txt3.promo2310 span,
     .new-arrivals-block span.na-head,
     .contentSlider h3,
@@ -2086,7 +2098,7 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 
 
     /* cmsheading */
-    .gridCMSPages h4, .gridBlockContent h3, .pressHead, .rSldrHeading{font-size: 50px !important; line-height: 53px !important;}
+    .gridCMSPages h4, .gridCMSPages h1, .gridBlockContent h3, .pressHead, .rSldrHeading, .rSldrHeading h1{font-size: 50px !important; line-height: 53px !important;}
     .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 24px !important; line-height: 50px !important;}
     .cntntheading, .gridCMSPages .coloumn-list li span{font-size: 36px !important; line-height: 41px !important;}
     .presstxt p{font-size: 24px !important; line-height: 34px !important;}
@@ -2130,8 +2142,8 @@ table.productimagecontainer table.tdbigimagecontainer{margin-left: 24% !importan
 #productdetails .similarProdList>li img{width: 98%;}
 #productdetails .similarProdList span:nth-child(2){margin: 16px 0 0;}
 #productdetails .fabDetail li{font: 11px/15px gothambook;}
-#productdetails .fabDetail li:nth-child(odd){width: 148px;}
-#productdetails .fabDetail li:nth-child(even){width: 128px;}
+#productdetails .fabDetail li:nth-child(odd){width: 49%;}
+#productdetails .fabDetail li:nth-child(even){width: 49%;}
 .video-box .tble{margin-top: 33px;}
 li.sub-head a:hover{color: #c03 !important;}
 .similarProdList span strong:hover{color: #c03;}
@@ -2208,8 +2220,8 @@ ul.main-menu2 a.main-heading,  x:-moz-any-link {height:33px;}
 .cms-pg.smogi-bucks section .sec-head{border-top:1px solid #555; padding-top:7px; margin-bottom: 15px;}
 .cms-pg.smogi-bucks section p{margin-bottom: 20px;}
 .cms-pg.smogi-bucks section#what-smogi-bucks1 .sec-head{border:none; padding: 0;}
-.cms-pg.smogi-bucks #sign-in-form tr{width: 49%;}
-.cms-pg.smogi-bucks #sign-in-form tr td{display: block;}
+.cms-pg.smogi-bucks #sb-sign-in-form tr{width: 49%;}
+.cms-pg.smogi-bucks #sb-sign-in-form tr td{display: block;}
 .cms-pg.smogi-bucks section p:last-child{margin-bottom: 0px;}
 .cms-pg.smogi-bucks section{margin-bottom: 47px; max-width: 800px;}
 
@@ -2368,6 +2380,7 @@ label[for="giftCardShop"]{ width: auto; min-height: inherit; margin-bottom: 10px
 table.aurumiconcell tr td:nth-child(5) img, table.aurumiconcell tr td:nth-child(10) img{width: 28px;}
 table.aurumiconcell tr td:nth-child(6) img{width: 32px;}
 table.aurumiconcell tr td:nth-child(8) img,table.aurumiconcell tr td:nth-child(9) img{width: 25px;}
+table.aurumiconcell tr{min-height: 56px;}
 
 .colorFilterGrid:nth-child(3) {
     margin-bottom: 0;
@@ -2412,9 +2425,7 @@ a.no-over-state:hover{
 }
 
 /** hide forthImage **/
-.zoom-thumb-imgs .zoomsmallimagecontainer tr:nth-child(4),
-table.productimagecontainer table.smallimagecontiner td:nth-child(4),
-table.productdetailspopup td#tdpopupproductsmallimages tr:nth-child(4){
+table.smallimagecontiner td.selectedimage{
     display: none !important;
 }
 .share-strip,.new-arrivals-block{opacity: 0;}
@@ -2428,4 +2439,40 @@ table.productdetailspopup td#tdpopupproductsmallimages tr:nth-child(4){
 .productCont .prod-img img{
     visibility: hidden;
 }
+
 .banner-txt3.promo2310 span.wlandingsup{color: rgb(255, 255, 255); height: auto; vertical-align: top; display: inline; font: 24px/39px AvantGardeGothicITCW01X; margin: 0px;}
+
+
+/*.after-login{display: none;}*/
+.after-login,.before-login{display: none;}
+.sb-show{display: block;}
+#sb-sign-in-button{cursor:pointer;}
+
+.productCont > a {
+    display: inline-block;
+}
+.clickable {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    /*background: red;
+    opacity: 0.2;*/
+}
+.productCont .prod-img{
+    position : relative;
+}
+.product-grid .gridWrap h1 {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-top: 1px solid #a6a6a6;
+    font: 11px/20px gothambold;
+    margin: 0 0 30px;
+    padding: 4px 0 0;
+    text-align: left;
+    color: #555;
+    text-transform: uppercase;
+    display: inline-block;
+    width: 100%;
+}
+

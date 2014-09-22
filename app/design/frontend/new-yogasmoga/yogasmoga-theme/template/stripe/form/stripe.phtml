@@ -112,7 +112,7 @@
                             <tr>
                                 <td class="label" style="width: 80px; padding: 2px 0px 0px;"><label for="<?php echo $_code ?>_expiration"><?php echo Mage::helper('payment')->__('Expiration') ?></label></td>
                                 <td class="inputholder" style="float: right; width: 104px;">
-                                    <select id="<?php echo $_code ?>_expiration" name="payment[cc_exp_month]" class="requiredfield" defaulterrormsg="Expiry Date is required.">
+                                    <select id="<?php echo $_code ?>_expiration" name="payment[cc_exp_month]" class="requiredfield" defaulterrormsg="Expiry Date is required">
                                     <?php $_ccExpMonth = $this->getInfoData('cc_exp_month') ?>
                                     <?php foreach ($this->getCcMonths() as $k=>$v): ?>
                                         <option value="<?php echo $k ?>" <?php if($k==$_ccExpMonth): ?>selected="selected"<?php endif ?>><?php echo $v ?></option>
@@ -450,7 +450,7 @@ function stripeResponseHandler(status, response) {
                         <tr>
                             <td class="label"><label for="<?php echo $_code ?>_expiration"><?php echo Mage::helper('payment')->__('Expiration Date') ?></label></td>
                             <td class="inputholder">
-                                <select id="<?php echo $_code ?>_expiration" name="payment[cc_exp_month]" class="requiredfield" defaulterrormsg="Expiry Date is required.">
+                                <select id="<?php echo $_code ?>_expiration" name="payment[cc_exp_month]" class="requiredfield" defaulterrormsg="Expiry Date is required">
                                 <?php $_ccExpMonth = $this->getInfoData('cc_exp_month') ?>
                                 <?php foreach ($this->getCcMonths() as $k=>$v): ?>
                                     <option value="<?php echo $k ?>" <?php if($k==$_ccExpMonth): ?>selected="selected"<?php endif ?>><?php echo $v ?></option>

@@ -796,7 +796,7 @@ ul.tr-menu > li.free-shipping {
     padding-bottom: 10px;
 }
 
-#sign-up-form table input, #sign-in-form table input, #invite-friend-form table input {
+#sign-up-form table input, #sign-in-form table input, #invite-friend-form table input,#sb-sign-in-form table input {
     border: 0 none !important;
     font: 12px gothambook !important;
     padding: 10px !important;
@@ -1088,7 +1088,8 @@ html[xmlns] body.mac-os .gridFullWidth:after {
     color: #c03;
 }
 
-.gridCMSPages h4{
+.gridCMSPages h4,
+.gridCMSPages h1{
     font: 36px/40px ITCAvantGardeProMd;
     text-transform: uppercase;
     position: relative;
@@ -1113,6 +1114,7 @@ html[xmlns] body.mac-os .gridFullWidth:after {
 }
 
 .gridCMSPages h4,
+.gridCMSPages h1,
 .gridCMSPages .topHead{
     text-transform: uppercase;
     color: #fff;
@@ -1623,10 +1625,11 @@ table#searchBox div.searchbutton{
     width: auto;
 }
 
-.rSldrHeading{
+.rSldrHeading, .rSldrHeading h1{
     font: 38px/50px ITCAvantGardeProMd;
     margin: 0;
     text-align: center;
+    color: #fff;
 }
 
 .rSldrHeading span{

@@ -2,15 +2,22 @@ _stripecheck = false;
 _usesecureurl = true;
 jQuery(document).ready(function($){
 
-
-    // if(jQuery("form#checkout-shipping-form").is(":visible")){
-    //     jQuery("#shipping\\:firstname,#shipping\\:lastname").each(function(){
-    //         var waterVal = jQuery(this).attr("watermark");
-    //         jQuery(this).removeClass("watermark").removeAttr("watermark");
-    //         jQuery(this).attr("placeholder", waterVal);    
-    //         jQuery(this).attr("value","");
-    //     });
-    // }
+    // set placeholder for firstname and lastname shippng form
+    if($("form#checkout-shipping-form").is(":visible")){
+        $("#shipping\\:firstname,#shipping\\:lastname").each(function(){
+            var waterVal = $(this).attr("watermark");
+            $(this).removeAttr("watermark");
+            $(this).removeClass("watermark");
+            $(this).attr("placeholder", waterVal);    
+            
+            if($("#shipping\\:firstname").val() == 'First Name'){
+               $(this).val('');
+            }
+            if($("#shipping\\:lastname").val() == 'Last Name'){
+               $(this).val('');
+            }
+        });
+    }
 
     setTimeout(function(){
         jQuery("input[type='radio'][value='stripe']").attr("checked","checked");
@@ -215,7 +222,7 @@ jQuery(document).ready(function($){
 
     if($("select#shipping\\:country_id").length > 0)
     {
-        $("select#shipping\\:country_id").attr("class","").addClass('requiredfield').attr("defaulterrormsg","Country is required.").removeAttr("title");
+        $("select#shipping\\:country_id").attr("class","").addClass('requiredfield').attr("defaulterrormsg","Country is required").removeAttr("title");
         $("select#shipping\\:country_id").change(function(){
             fillShippingState();
         });
@@ -224,7 +231,7 @@ jQuery(document).ready(function($){
 
     if($("select#billing\\:country_id").length > 0)
     {
-        $("select#billing\\:country_id").attr("class","").addClass('requiredfield').attr("defaulterrormsg","Country is required.").removeAttr("title");
+        $("select#billing\\:country_id").attr("class","").addClass('requiredfield').attr("defaulterrormsg","Country is required").removeAttr("title");
         $("select#billing\\:country_id").change(function(){
             fillBillingState();
         });
@@ -998,17 +1005,29 @@ function validatePaymentForm()
                 setOnError(jQuery("#stripe_cc_cid"));
             }
         }
+        if(jQuery("#stripe_expiration").val() != "" && jQuery("#stripe_expiration_yr").val() == "")
+        {
+            flag = false;
+            setOnError(jQuery("#stripe_expiration"), "Expiry Date is required");
+            setOnError(jQuery("#stripe_expiration_yr"));
+        }
+        if(jQuery("#stripe_expiration").val() == "" && jQuery("#stripe_expiration_yr").val() != "")
+        {
+            flag = false;
+            setOnError(jQuery("#stripe_expiration"), "Expiry Date is required");
+            setOnError(jQuery("#stripe_expiration_yr"));
+        }
         if(jQuery("#stripe_expiration").val() != "" && jQuery("#stripe_expiration_yr").val() != "")
         {
             if(!Stripe.validateExpiry(jQuery("#stripe_expiration").val(), jQuery("#stripe_expiration_yr").val()))
             {
                 flag = false;
-                setOnError(jQuery("#stripe_expiration"), "Invalid Expiration Date.");
+                setOnError(jQuery("#stripe_expiration"), "Invalid Expiration Date");
                 setOnError(jQuery("#stripe_expiration_yr"));
             }
         }
         if(!flag)
-            jQuery("#paymentmethoderrormsg").html('Please fill in the required fields in red to continue.');
+            jQuery("#paymentmethoderrormsg").html('Please fill in the required fields in red to continue');
         else
             jQuery("#paymentmethoderrormsg").html('');
         return flag;
@@ -1037,17 +1056,29 @@ function validatePaymentForm()
             setOnError(jQuery("#stripe_cc_cid"));
         }
     }
+    if(jQuery("#stripe_expiration").val() != "" && jQuery("#stripe_expiration_yr").val() == "")
+    {
+        flag = false;
+        setOnError(jQuery("#stripe_expiration"), "Expiry Date is required");
+        setOnError(jQuery("#stripe_expiration_yr"));
+    }
+    if(jQuery("#stripe_expiration").val() == "" && jQuery("#stripe_expiration_yr").val() != "")
+    {
+        flag = false;
+        setOnError(jQuery("#stripe_expiration"), "Expiry Date is required");
+        setOnError(jQuery("#stripe_expiration_yr"));
+    }
     if(jQuery("#stripe_expiration").val() != "" && jQuery("#stripe_expiration_yr").val() != "")
     {
         if(!Stripe.validateExpiry(jQuery("#stripe_expiration").val(), jQuery("#stripe_expiration_yr").val()))
         {
             flag = false;
-            setOnError(jQuery("#stripe_expiration"), "Invalid Expiration Date.");
+            setOnError(jQuery("#stripe_expiration"), "Invalid Expiration Date");
             setOnError(jQuery("#stripe_expiration_yr"));
         }
     }
     if(!flag)
-        jQuery("#paymentmethoderrormsg").html('Please fill in the required fields in red to continue.');
+        jQuery("#paymentmethoderrormsg").html('Please fill in the required fields in red to continue');
     else
         jQuery("#paymentmethoderrormsg").html('');
     return flag;
@@ -1257,7 +1288,15 @@ function virtualsaveshippingaddress() {
     if(jQuery("form#checkout-shipping-form input#shipping\\:street2").val().length > 0)
         address += " " + jQuery("form#checkout-shipping-form input#shipping\\:street2").val();
 
-    address += ", " + jQuery("form#checkout-shipping-form input#shipping\\:city").val() + ", " + jQuery("form#checkout-shipping-form select#shipping\\:region_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:region_id").val() + "']").html() + " " + jQuery("form#checkout-shipping-form input#shipping\\:postcode").val() + ", " + jQuery("form#checkout-shipping-form select#shipping\\:country_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:country_id").val() + "']").html();
+    address += ", " + jQuery("form#checkout-shipping-form input#shipping\\:city").val();
+
+    if(jQuery("form#checkout-shipping-form input#shipping\\:region").is(":visible")){
+        address += " , " + jQuery("form#checkout-shipping-form input#shipping\\:region").val() + " ";
+    }else{
+        address += " , " + jQuery("form#checkout-shipping-form select#shipping\\:region_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:region_id").val() + "']").html() + " ";
+    }
+
+    address += jQuery("form#checkout-shipping-form input#shipping\\:postcode").val() + ", " + jQuery("form#checkout-shipping-form select#shipping\\:country_id option[value='" + jQuery("form#checkout-shipping-form select#shipping\\:country_id").val() + "']").html();
 
     jQuery("form#checkout-shipping-form ul#shipping-address-select li").removeAttr("id");
     jQuery("form#checkout-shipping-form ul#shipping-address-select li[value='9999']").remove();
@@ -1270,7 +1309,15 @@ function virtualsavebillingaddress() {
     if(jQuery("form#co-billing-form input#billing\\:street2").val().length > 0)
         addressbilling += " " + jQuery("form#co-billing-form input#billing\\:street2").val();
 
-    addressbilling += ", " + jQuery("form#co-billing-form input#billing\\:city").val() + ", " + jQuery("form#co-billing-form select#billing\\:region_id option[value='" + jQuery("form#co-billing-form select#billing\\:region_id").val() + "']").html() + " " + jQuery("form#co-billing-form input#billing\\:postcode").val() + ", " + jQuery("form#co-billing-form select#billing\\:country_id option[value='" + jQuery("form#co-billing-form select#billing\\:country_id").val() + "']").html();
+    addressbilling += ", " + jQuery("form#co-billing-form input#billing\\:city").val();
+
+    if(jQuery("form#co-billing-form input#billing\\:region").is(":visible")){
+        addressbilling += " , " + jQuery("form#co-billing-form input#billing\\:region").val() + " ";
+    }else{
+        addressbilling += " , " + jQuery("form#co-billing-form select#billing\\:region_id option[value='" + jQuery("form#co-billing-form select#billing\\:region_id").val() + "']").html() + " ";
+    }
+
+    addressbilling += jQuery("form#co-billing-form input#billing\\:postcode").val() + ", " + jQuery("form#co-billing-form select#billing\\:country_id option[value='" + jQuery("form#co-billing-form select#billing\\:country_id").val() + "']").html();
 
     jQuery("form#co-billing-form ul#billing-address-select li").removeAttr("id");
     jQuery("form#co-billing-form ul#billing-address-select li[value='99999']").remove();
@@ -1496,7 +1543,7 @@ function validateBillingAddressForm()
         if(!validateZip(jQuery("#billing\\:postcode").val()))
         {
             flag = false;
-            setOnError(jQuery("#billing\\:postcode"), "Invalid Zip Code.");
+            setOnError(jQuery("#billing\\:postcode"), "Invalid Zip Code");
         }
     }
     if(jQuery("#billing\\:email").length > 0)
@@ -1527,7 +1574,7 @@ function validateBillingAddressForm()
         }
     }
     if(!flag)
-        jQuery("#billingaddresserrormsg").html('Please fill in the required fields in red to continue.');
+        jQuery("#billingaddresserrormsg").html('Please fill in the required fields in red to continue');
     else
         jQuery("#billingaddresserrormsg").html('');
     return flag;
@@ -1542,11 +1589,11 @@ function validateShippingAddressForm()
         if(!validateZip(jQuery("#shipping\\:postcode").val()))
         {
             flag = false;
-            setOnError(jQuery("#shipping\\:postcode"), "Invalid Zip Code.");
+            setOnError(jQuery("#shipping\\:postcode"), "Invalid Zip Code");
         }
     }
     if(!flag)
-        jQuery("#shippingaddresserrormsg").html('Please fill in the required fields in red to continue.');
+        jQuery("#shippingaddresserrormsg").html('Please fill in the required fields in red to continue');
     else
         jQuery("#shippingaddresserrormsg").html('');
     return flag;

@@ -43,9 +43,10 @@ jQuery(document).ready(function($){
 		block50height();
 		uifixes();
 	});
- /**Smogi Login**/
-    $("body.cms-smogi-bucks").on("click","a.smogi-login-link", function(event){    	    
-     	$("body.cms-smogi-bucks").find("#sign-in-button").click();     	
+ /**Smogi Login popup**/
+    $("body.cms-smogi-bucks").on("click","a.smogi-login-link", function(event){
+    	jQuery(window).scrollTop(0);    	    
+     	jQuery("#signing_popup").dialog("open");     	
     });
 
 $("#workersgif").live('click', function(){
@@ -170,10 +171,10 @@ function block50height(){
 
 function headingBlock(){
 	var headingBlock = jQuery(".headingBlock").height();
-	var headingh4 = jQuery(".headingBlock h4").height();
-	var calcheight = headingBlock-headingh4;
+	var headingh1 = jQuery(".headingBlock h1").height();
+	var calcheight = headingBlock-headingh1;
 	calcheight = calcheight/2;
-	jQuery(".headingBlock h4").css("top", calcheight);
+	jQuery(".headingBlock h1").css("top", calcheight);
 };
 
 function block66heightbottom(){	

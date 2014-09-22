@@ -15,10 +15,18 @@ jQuery(document).ready(function($){
             errMsgCont.css("visibility","hidden");
         } 
     });
-    $("#sign-in-form").submit(function(event){
-
+    $("#sign-in-form").submit(function(event){        
         var formid = "#sign-in-form";
-        var status = popupGetSigningLoginFormFieldsvalue(formid);
+        var status = popupGetSigningLoginFormFieldsvalue(formid);        
+        if(status != "error")
+            loginCustomer();
+        event.preventDefault();
+    });
+    /***login form for smogi buck page***/
+    $("#sb-sign-in-form").submit(function(event){
+        _smogiPageLogin = true;
+        var formid = "#sb-sign-in-form";       
+        var status = popGetSigningLoginFormFieldsvalue(formid);       
         if(status != "error")
             loginCustomer();
         event.preventDefault();
@@ -144,11 +152,14 @@ function  createCustomerAccount()
                 // for remove over state on feel smogi love
                 if(!_islogedinuser){
                     jQuery(".footer-block .smogi-love").removeClass("no-over-state");
-                    jQuery(".share-strip .sign-up-new a").removeClass("no-over-state");
+                    jQuery(".share-strip .sign-up-new a").removeClass("dnone");
+                    jQuery(".share-strip .sign-up-new span").text("& WE'LL SURPRISE YOU");
                 }
                 else{
                     jQuery(".footer-block .smogi-love").addClass("no-over-state");
-                    jQuery(".share-strip .sign-up-new a").addClass("no-over-state");
+                    jQuery(".share-strip .sign-up-new a").addClass("dnone");
+                    jQuery(".share-strip .sign-up-new span").text("Welcome To YOGASMOGA.");
+                    // jQuery(".share-strip .sign-up-new span").text("Hi! Welcome To YOGASMOGA..");
                 }
             }
             else
@@ -164,9 +175,14 @@ function  createCustomerAccount()
 }
 
 function loginCustomer()
-{
-    var email_id = jQuery.trim(jQuery("#si_email").val());
-    var pwd = jQuery.trim(jQuery("#si_password").val());
+{    
+    if(_smogiPageLogin){
+        var email_id = jQuery.trim(jQuery("#sb_email").val());
+        var pwd = jQuery.trim(jQuery("#sb_password").val());
+    }else{
+        var email_id = jQuery.trim(jQuery("#si_email").val());
+        var pwd = jQuery.trim(jQuery("#si_password").val());    
+    }    
     if(window.location.href.indexOf('https://') >= 0)
         _usesecureurl = true;
     else
@@ -180,10 +196,16 @@ function loginCustomer()
         url     :   url,
         type    :   'POST',
         data    :   {'email':email_id,'pwd':pwd},
-        beforeSend: function() {            
-            jQuery("#sign-in-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
-            jQuery("#sign-in-button").parent().hide();
-            jQuery("#sign-in-form .form-loader").show();
+        beforeSend: function() { 
+            if(_smogiPageLogin){               
+                jQuery("#sb-sign-in-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
+                jQuery("#sb-sign-in-button").parent().hide();
+                jQuery("#sb-sign-in-form .form-loader").show();                
+            }else{
+                jQuery("#sign-in-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
+                jQuery("#sign-in-button").parent().hide();
+                jQuery("#sign-in-form .form-loader").show();
+            }
         },
         success :   function(data){
 
@@ -191,6 +213,7 @@ function loginCustomer()
             var status = data.status;
             var error = data.error;
             var name = data.fname;
+            var somgiBal = data.smogi;
 
             if(status == "success")
             {
@@ -203,6 +226,9 @@ function loginCustomer()
                 if(name != '')
                     jQuery("#welcome-name").html("Hi "+name).attr("href",homeUrl+'customer/account/');
 
+                jQuery(".before-login").hide();
+                jQuery(".after-login").show();
+                jQuery(".after-login li.smogi-balance a span").html(somgiBal);                
                 if(_isClickShareWithFriends)
                 {
                     //_isClickShareWithFriends = false;
@@ -267,20 +293,31 @@ function loginCustomer()
                 // for remove over state on feel smogi love
                 if(!_islogedinuser){
                     jQuery(".footer-block .smogi-love").removeClass("no-over-state");
-                    jQuery(".share-strip .sign-up-new a").removeClass("no-over-state");
+                    jQuery(".share-strip .sign-up-new a").removeClass("dnone");
+                    jQuery(".share-strip .sign-up-new span").text("& WE'LL SURPRISE YOU");
                 }
                 else{
                     jQuery(".footer-block .smogi-love").addClass("no-over-state");
-                    jQuery(".share-strip .sign-up-new a").addClass("no-over-state");
+                    jQuery(".share-strip .sign-up-new a").addClass("dnone");
+                    jQuery(".share-strip .sign-up-new span").text("Welcome To YOGASMOGA.");
+                    // jQuery(".share-strip .sign-up-new span").text("Hi! Welcome To YOGASMOGA..");
                 }
 
             }
             else
             {
-                jQuery("#sign-in-form .err-msg").html(data.errors).css("visibility","visible");              
-                jQuery(".signin-loader").html("");
-                jQuery("#sign-in-button").parent().show();
-                jQuery("#sign-in-form .form-loader").hide();
+                if(_smogiPageLogin){
+                    _smogiPageLogin = false;
+                    jQuery("#sb-sign-in-form .err-msg").html(data.errors).css("visibility","visible");              
+                    jQuery(".signin-loader").html("");
+                    jQuery("#sb-sign-in-button").parent().show();
+                    jQuery("#sb-sign-in-form .form-loader").hide();    
+                }else{
+                    jQuery("#sign-in-form .err-msg").html(data.errors).css("visibility","visible");              
+                    jQuery(".signin-loader").html("");
+                    jQuery("#sign-in-button").parent().show();
+                    jQuery("#sign-in-form .form-loader").hide();
+                }                
             }
         }
 

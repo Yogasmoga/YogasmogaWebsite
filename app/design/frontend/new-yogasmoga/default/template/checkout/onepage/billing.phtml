@@ -64,7 +64,7 @@
             <tr>
                 <td class="label dnone"><label for="billing:street1">Address</label></td>
                 <td class="inputholder">
-                    <input type="text" name="billing[street][]" id="billing:street1" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" class="requiredfield" defaulterrormsg="Address is required." />
+                    <input type="text" name="billing[street][]" id="billing:street1" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" class="requiredfield" defaulterrormsg="Address is required" />
                 </td>
             </tr>
             <tr>
@@ -124,7 +124,7 @@
             <tr>
                 <td class="label dnone"><label for="billing:region"><?php echo $this->__('State/Province') ?></label></td>
                 <td class="inputholder">
-                    <select style="width:72px" id="billing:region_id" name="billing[region_id]" class="requiredfield" style="display:none;" defaulterrormsg="State / Province is required.">
+                    <select style="width:72px" id="billing:region_id" name="billing[region_id]" class="requiredfield" style="display:none;" defaulterrormsg="State / Province is required">
                         <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
                     </select>
                     <script type="text/javascript">
@@ -148,7 +148,7 @@
                         <tr>
                             <td class="label dnone"><label for="billing:region"><?php echo $this->__('State/Province') ?></label></td>
                             <td class="inputholder">
-                                <select id="billing:region_id" name="billing[region_id]" class="requiredfield" style="display:none;" defaulterrormsg="State / Province is required.">
+                                <select id="billing:region_id" name="billing[region_id]" class="requiredfield" style="display:none;" defaulterrormsg="State / Province is required">
                                     <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
                                 </select>
                                 <script type="text/javascript">
@@ -189,7 +189,7 @@
                 <tr>
                     <td class="label dnone"><label for="billing:email"><?php echo $this->__('Email Address') ?></label></td>
                     <td class="inputholder">
-                        <input type="text" name="billing[email]" id="billing:email" value="<?php echo $this->escapeHtml($this->getAddress()->getEmail()) ?>" class="requiredfield" defaulterrormsg="Email Address is required." />
+                        <input type="text" name="billing[email]" id="billing:email" value="<?php echo $this->escapeHtml($this->getAddress()->getEmail()) ?>" class="requiredfield" defaulterrormsg="Email Address is required" />
                     </td>
                 </tr>
                 <tr>
@@ -204,7 +204,7 @@
                 <tr>
                     <td class="label dnone"><label for="billing:customer_password"><?php echo $this->__('Password') ?></label></td>
                     <td class="inputholder">
-                        <input type="password" name="billing[customer_password]" id="billing:customer_password" class="requiredfield" defaulterrormsg="Password is required." />
+                        <input type="password" name="billing[customer_password]" id="billing:customer_password" class="requiredfield" defaulterrormsg="Password is required" />
                     </td>
                 </tr>
                 <tr>
@@ -217,7 +217,7 @@
                 <tr>
                     <td class="label dnone"><label for="billing:confirm_password"><?php echo $this->__('Confirm Password') ?></label></td>
                     <td class="inputholder">
-                        <input type="password" name="billing[confirm_password]" id="billing:confirm_password" class="requiredfield" defaulterrormsg="Confirm Password is required." />
+                        <input type="password" name="billing[confirm_password]" id="billing:confirm_password" class="requiredfield" defaulterrormsg="Confirm Password is required" />
                     </td>
                 </tr>
                 <tr>

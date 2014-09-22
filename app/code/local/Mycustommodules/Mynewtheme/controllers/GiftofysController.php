@@ -47,12 +47,12 @@ class MyCustommodules_Mynewtheme_GiftofysController extends Mage_Core_Controller
             $card->activateCardForCustomer($customerId);
 
             $response['status'] = "success";
-            $response['success_message'] = "Gift Card ".Mage::helper('core')->escapeHtml($giftcardCode)."was applied.";
+            $response['success_message'] = "Gift Card ".Mage::helper('core')->escapeHtml($giftcardCode)."was applied";
 
             Mage::getSingleton('giftcards/session')->setActive('1');
             echo json_encode($response);
         } else {
-            $response['error'] = "Gift Card ".Mage::helper('core')->escapeHtml($giftcardCode)." is not valid.";
+            $response['error'] = "Gift Card ".Mage::helper('core')->escapeHtml($giftcardCode)." is not valid";
             echo json_encode($response);
 
         }
@@ -61,7 +61,7 @@ class MyCustommodules_Mynewtheme_GiftofysController extends Mage_Core_Controller
             $this->_getQuote()->collectTotals()->save();
         } catch (Exception $e) {
             $this->_getSession()->addError("gferror--msg".$e->getMessage());
-            $response['error'] = "Gift Card ".Mage::helper('core')->escapeHtml($giftcardCode)." is not valid.";
+            $response['error'] = "Gift Card ".Mage::helper('core')->escapeHtml($giftcardCode)." is not valid";
             echo json_encode($response);
             return;
         }

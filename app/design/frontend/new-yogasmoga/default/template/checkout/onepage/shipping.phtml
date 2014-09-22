@@ -45,9 +45,9 @@
     <!-- shipFlag -->
     <span class="shipDetail clear">Ship to:
         <span class="country">
-            <img src="<?php echo $this->getSkinUrl('images/Icon-USflag.png'); ?>" class="usflag" alt="United States" />
-            <img src="<?php echo $this->getSkinUrl('images/can-flag.png'); ?>" class="cnflag dnone" alt="Canada" />
-            <img src="<?php echo $this->getSkinUrl('images/global-flag.png'); ?>" class="glflag dnone" alt="Global" />
+            <img src="<?php echo $this->getSkinUrl('images/USAflag.png'); ?>" class="usflag" alt="United States" />
+            <img src="<?php echo $this->getSkinUrl('images/canada-flag.png'); ?>" class="cnflag dnone" alt="Canada" />
+            <img src="<?php echo $this->getSkinUrl('images/globe-flag.png'); ?>" class="glflag dnone" alt="Global" />
         </span>
     </span>
     <!-- shipFlag -->
@@ -76,7 +76,7 @@
     <table class="inputtable">
         <tr>
             <td class="inputholder">
-                <input type="text" placeholder="Address Line 1" name="shipping[street][]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" id="shipping:street1" class="requiredfield" defaulterrormsg="Address is required." />
+                <input type="text" placeholder="Address Line 1" name="shipping[street][]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" id="shipping:street1" class="requiredfield" defaulterrormsg="Address is required" />
             </td>
         </tr>
         <tr>
@@ -123,7 +123,7 @@
     <table class="inputtable wdth50">
         <tr>
             <td class="inputholder">
-                <input type="text" name="shipping[city]" placeholder="City" value="<?php echo $this->escapeHtml($this->getAddress()->getCity()) ?>" class="requiredfield" id="shipping:city" defaulterrormsg="City is required." />
+                <input type="text" name="shipping[city]" placeholder="City" value="<?php echo $this->escapeHtml($this->getAddress()->getCity()) ?>" class="requiredfield" id="shipping:city" defaulterrormsg="City is required" />
             </td>
         </tr>
         <tr>
@@ -138,7 +138,7 @@
     <table class="inputtable wdth50 f-right">
         <tr>
             <td class="inputholder">
-                <select id="shipping:region_id" placeholder="ST" name="shipping[region_id]" style="display:none;" defaulterrormsg="State is required.">
+                <select id="shipping:region_id" placeholder="ST" name="shipping[region_id]" style="display:none;" defaulterrormsg="State is required">
                     <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
                 </select>
                 <script type="text/javascript">
@@ -147,7 +147,7 @@
                     //$('region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
                     //]]>
                 </script>
-                <input type="text" placeholder="ST" style="width:80%" id="shipping:region" name="shipping[region]" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>" class="requiredfield" defaulterrormsg="State is required." />
+                <input type="text" placeholder="ST" style="width:80%" id="shipping:region" name="shipping[region]" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>" class="requiredfield" defaulterrormsg="State is required" />
             </td>
         </tr>
         <tr>
@@ -163,7 +163,7 @@
     <table class="inputtable wdth50 f-left">
         <tr>
             <td class="inputholder">
-                <input type="text" placeholder="Zip Code" name="shipping[postcode]" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" id="shipping:postcode" class="requiredfield" defaulterrormsg="Zip Code is required." />
+                <input type="text" placeholder="Zip Code" name="shipping[postcode]" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" id="shipping:postcode" class="requiredfield" defaulterrormsg="Zip Code is required" />
             </td>
         </tr>
         <tr>
@@ -187,12 +187,12 @@
         <table class="inputtable wdth50 f-right">
             <tr>
                 <td class="inputholder">
-                    <input type="text" placeholder="Telephone" name="shipping[telephone]" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) ?>" class="requiredfield" id="shipping:telephone" defaulterrormsg="Telephone is required." />
+                    <input type="text" placeholder="Telephone" name="shipping[telephone]" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) ?>" class="requiredfield" id="shipping:telephone" defaulterrormsg="Telephone is required" />
                 </td>
             </tr>
             <tr>
                 <td class="errortext">
-                    <div>Telephone is required.</div>
+                    <div>Telephone is required</div>
                 </td>
             </tr>
         </table>
@@ -220,19 +220,19 @@
 
 <!-- selectShipping -->
 <div class="shippingOption clear">
-    <span class="addVal">YS 3/5 Bus. Day Expedited Service ($0.00)</span><span class="showShpOpt"></span>
+    <span class="addVal">YS 3/5 Day Expedited Service ($0.00)</span><span class="showShpOpt"></span>
     <div class="showShippingOpt clear">
         <ul id="us-shipping">
-            <li value="1" id="s_method_freeshipping_freeshipping"><span>YS 3/5 Bus. Day Expedited Service ($0.00)</span></li>
+            <li value="1" id="s_method_freeshipping_freeshipping"><span>YS 3/5 Day Expedited Service ($0.00)</span></li>
             <li value="2" id="s_method_flatrate_flatrate"><span>YS 2 Day Guaranteed Service ($25.00)</span></li>
             <li value="3" id="s_method_tablerate_bestway"><span>YS 1 Day Guaranteed Service ($38.00)</span></li>
         </ul>
         <ul id="canada-shipping">
-            <li value="1" id="s_method_ysfirstclassservice_ysfirstclassservice"><span>YS First Class Service ($0.00)</span></li>
-            <li value="2" id="s_method_ysprimeservice_ysprimeservice"><span>YS Prime Service ($35.00)</span></li>
+            <li value="1" id="s_method_ysfirstclassservice_ysfirstclassservice"><span>YS First Class Service : 6/10 Days ($0.00)</span></li>
+            <li value="2" id="s_method_ysprimeservice_ysprimeservice"><span>YS Prime Service : 3/6 Days ($35.00)</span></li>
         </ul>
         <ul id="other-shipping">
-            <li value="1" id="s_method_ysinternationalpriority_ysinternationalpriority"><span>YS International Priority Service ($35.00)</span></li>
+            <li value="1" id="s_method_ysinternationalpriority_ysinternationalpriority"><span>YS International Priority Service : 6/10 Days ($35.00)</span></li>
         </ul>
     </div>
 </div>

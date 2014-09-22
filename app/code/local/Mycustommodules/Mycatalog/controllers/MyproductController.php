@@ -110,6 +110,8 @@ AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
                 $output .= "<tr><td style='color:#fff;background-color:red;'>VALUE</td><td colspan='4'>Product is in stock and is in pre-order state.</td></tr>";
                 $output .= "<tr><td style='color:#fff;background-color:black;'>VALUE</td><td colspan='4'>This combination of color and size is not available and not displayed on the product view page.</td></tr>";
                 $output .= "</table>";
+
+                
 //                echo 'test';
 //                echo $output;
                 //$fname = mktime();
@@ -145,6 +147,7 @@ AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
         $sizeArray = array();
         $oldsizeArray = array();
         $sizeTotal = array();
+        $length = '';
         foreach($_childproducts as $_childproduct)
         {
             //echo Mage::Helper('catalog/output')->productAttribute($_childproduct, $_childproduct->getName(), 'name')."         ";
@@ -156,10 +159,24 @@ AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
                     $productcolorinfo[$temp] = array();
             }
             //$temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
-            if(Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getIsInStock())
-                $productcolorinfo[$temp][$_childproduct->getAttributeText('size')] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+
+            if($_childproduct->getAttributeText('length'))
+            {
+                $length = $_childproduct->getAttributeText('length');
+                if(Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getIsInStock())
+                    $productcolorinfo[$temp][$length][$_childproduct->getAttributeText('size')] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+                else
+                    $productcolorinfo[$temp][$length][$_childproduct->getAttributeText('size')] = "_".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+
+            }
             else
-                $productcolorinfo[$temp][$_childproduct->getAttributeText('size')] = "_".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+            {
+                if(Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getIsInStock())
+                    $productcolorinfo[$temp][$_childproduct->getAttributeText('size')] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+                else
+                    $productcolorinfo[$temp][$_childproduct->getAttributeText('size')] = "_".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+            }
+
             if(array_search($_childproduct->getAttributeText('size'), $sizeArray ) === false)
             {
                 array_push($sizeArray , $_childproduct->getAttributeText('size'));
@@ -190,6 +207,12 @@ AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
 //                        echo "<br/><br/>";
         $output .= "<tr style='color:#FFFFFF;'>";
         $output .= "<td style='background-color:#003366;'>Name</td><td style='background-color:#003366;'>Color</td>";
+        if($length)
+        {
+            $output .= "<td style='background-color:#003366;'>Length</td>";
+
+        }
+
         sort($sizeArray);
       
       if ($sizeArray[0] != '') {
@@ -212,6 +235,276 @@ AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
                 foreach ($sizeArray as $key => $val) { // loop
                     if (array_search($val, $data) != false) $result[array_search($val, $data)] = $val;
                 }                
+                //$sizeArray = $result;
+                ksort($result);
+                $sizeArray = array_values($result);
+            }
+        }
+        for($j = 0; $j < count($sizeArray); $j++)
+        {
+            if($sizeArray[$j] != "")
+                $output .= "<td style='background-color:#003366;'>Size ".$sizeArray[$j]."</td>";
+            else
+                $output .= "<td style='background-color:#003366;'>Qty</td>";
+        }
+        $output .= "</tr>";
+        $lengthOutput = '';
+        foreach($productcolorinfo as $key=>$val)
+        {
+            if($length)
+            {
+//                print_r($key);
+//                print_r($val);die;
+                foreach($val as $k => $v)
+                {
+                    $output .= "<tr>";
+                    $output .= "<td>$productname</td><td>$key</td><td>$k</td>";
+                    for($j = 0; $j <count($sizeArray); $j++)
+                    {
+                        if(isset($v[$sizeArray[$j]]))
+                        {
+                            $outofstock = false;
+                            if(strpos($v[$sizeArray[$j]], "_") !== false)
+                            {
+                                $outofstock = true;
+                            }
+                            $v[$sizeArray[$j]] = str_replace("_","",$v[$sizeArray[$j]]);
+                            if($outofstock)
+                            {
+                                $output .= "<td style='color:#fff;background-color:gray;'>".number_format($v[$sizeArray[$j]])."</td>";
+                            }
+                            else
+                            {
+                                if($v[$sizeArray[$j]] <= 0)
+                                    $output .= "<td style='color:#fff;background-color:red;'>".number_format($v[$sizeArray[$j]])."</td>";
+                                else
+                                    $output .= "<td>".number_format($v[$sizeArray[$j]])."</td>";
+                            }
+                            $sizeTotal[$sizeArray[$j]] += $v[$sizeArray[$j]];
+                        }
+                        else
+                            $output .= "<td style='background-color:black;color:#fff;'>0</td>";
+
+                    }
+
+                }
+
+
+            }
+            else
+            {
+                $output .= "<tr>";
+                $output .= "<td>$productname</td><td>".$key."</td>";
+                for($j = 0; $j < count($sizeArray); $j++)
+                {
+                    if(isset($val[$sizeArray[$j]]))
+                    {
+                        $outofstock = false;
+                        if(strpos($val[$sizeArray[$j]], "_") !== false)
+                        {
+                            $outofstock = true;
+                        }
+                        $val[$sizeArray[$j]] = str_replace("_","",$val[$sizeArray[$j]]);
+                        if($outofstock)
+                        {
+                            $output .= "<td style='color:#fff;background-color:gray;'>".number_format($val[$sizeArray[$j]])."</td>";
+                        }
+                        else
+                        {
+                            if($val[$sizeArray[$j]] <= 0)
+                                $output .= "<td style='color:#fff;background-color:red;'>".number_format($val[$sizeArray[$j]])."</td>";
+                            else
+                                $output .= "<td>".number_format($val[$sizeArray[$j]])."</td>";
+                        }
+                        $sizeTotal[$sizeArray[$j]] += $val[$sizeArray[$j]];
+                    }
+                    else
+                        $output .= "<td style='background-color:black;color:#fff;'>0</td>";
+                }
+                $output .= "</tr>";
+            }
+        }//if($length){echo $output;die;}
+        $output .= "<tr style='font-weight:bold;'>";
+        $output .= "<td>&nbsp;</td><td>&nbsp;</td>";
+        if($length)
+            $output .= "<td>&nbsp;</td>";
+        $g_sum = 0;
+        for($j = 0; $j < count($sizeArray); $j++)
+        {
+            $output .= "<td>".$sizeTotal[$sizeArray[$j]]."</td>";
+            $g_sum += $sizeTotal[$sizeArray[$j]];
+        }
+        $output .= "<td style='color:red;'>".$g_sum."</td>";
+        $output .= "</tr>";
+        $output .= "<tr><td colspan='20'></td></tr>";
+//                        $output .= "<tr><td colspan='20'></td></tr>";
+    }
+    public function inventoryreportAction_backup_11_09_2014()
+    {
+        if($this->getRequest()->getParam('pass'))
+        {
+            if($this->getRequest()->getParam('pass') == "MageHACKER")
+            {
+                $output = "<table>" ;
+                $output .= "<tr><td style='height:80px;width:200px !important'><img src='http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/logo.png' /></td><td style='vertical-align:middle' colspan='5'>INVENTORY STATUS AS OF ".date("dS M,Y")."</td></tr>";
+                $productCollection1 = Mage::getModel('catalog/product')->getCollection()->addAttributeToFilter(array(array('attribute'=>'type_id', 'eq'=>'configurable'), array('attribute'=>'status', 'eq' => Mage_Catalog_Model_Product_Status::STATUS_DISABLED)))->setPageSize(20000);
+                //$productCollection = Mage::getModel('catalog/product')->getCollection()->addAttributeToFilter(array(array('attribute'=>'type_id', 'eq'=>'configurable'), array('attribute'=>'status', 'eq' => '2')));
+                //$productCollection = Mage::getResourceModel('catalog/product_collection')->addAttributeToFilter('type_id', array('eq' => 'configurable'));
+
+                // custom code for filter enabled product
+                $productCollection = array();
+
+                $i=0;
+                foreach($productCollection1 as $product){
+                    $status = $product->getStatus();
+                    if($status == 1){
+                        $productCollection[$i] = $product;
+                        $i++;
+                    }
+                }
+                $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov
+WHERE ea.attribute_id = eao.attribute_id
+AND eao.option_id = eaov.option_id
+AND eaov.store_id = 0
+AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
+                $i = 0;
+                $allsizearray = array();
+                while($row = $readresult->fetch())
+                {
+                    $allsizearray[$i] = $row['Attribute'];
+                    $i++;
+                }
+
+                $arrAccessories = array();
+                for ($i = 1; $i <= $productCollection1->getLastPageNumber(); $i++) {
+                    if ($productCollection1->isLoaded()) {
+                        $productCollection1->clear();
+                        $productCollection1->setPage($i);
+                        $productCollection1->setPageSize(20000);
+                    }
+                    foreach ($productCollection as $product) { //echo '<pre>'; print_r($product);die('ttt');
+                        $productCats = $product->getCategoryIds();
+                        if(array_search(8, $productCats) !== false){
+                            array_push($arrAccessories, $product->getId());
+                        }
+                        else
+                            $this->getinventoryhtml($product->getId(), $output);
+                    }
+                    //echo $i . "\n\n";
+
+                }
+                for($ii = 0; $ii < count($arrAccessories); $ii++)
+                    $this->getinventoryhtml($arrAccessories[$ii], $output);
+
+                $output .= "<tr><td colspan='2' style='font-weight:bold;'>LEGEND</td></tr>";
+                $output .= "<tr><td>VALUE</td><td colspan='4'>Product is in stock and the inventory is positive.</td></tr>";
+                $output .= "<tr><td style='color:#fff;background-color:gray;'>VALUE</td><td colspan='4'>Product is out of stock.</td></tr>";
+                $output .= "<tr><td style='color:#fff;background-color:red;'>VALUE</td><td colspan='4'>Product is in stock and is in pre-order state.</td></tr>";
+                $output .= "<tr><td style='color:#fff;background-color:black;'>VALUE</td><td colspan='4'>This combination of color and size is not available and not displayed on the product view page.</td></tr>";
+                $output .= "</table>";
+//                echo 'test';
+//                echo $output;
+                //$fname = mktime();
+                //          die();
+                if($this->getRequest()->getParam('recurring') == "true")
+                {
+                    $fname = date("M_j_Y");
+                    $fname = "inv_".$fname;
+
+                    $baseDir = Mage::getBaseDir();
+                    $varDir = $baseDir.DS.'recurringreports'.DS.'inventory'.DS.$fname.'.xls';
+
+                    unlink($varDir);
+                    file_put_contents('recurringreports/inventory/'.$fname.'.xls',$output);
+                    return;
+                }
+
+                $fname = mktime();
+                file_put_contents('tempreports/'.$fname.'.xls',$output);
+
+                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");
+            }
+        }
+    }
+
+    public function getinventoryhtml_backup_11_09_2014($product, &$output)
+    {
+        //echo $product->getId() . "\n\n";
+        $_product = Mage::getModel('catalog/product')->load($product);
+        $productname = Mage::Helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name');
+        $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
+        $productcolorinfo = array();
+        $sizeArray = array();
+        $oldsizeArray = array();
+        $sizeTotal = array();
+        foreach($_childproducts as $_childproduct)
+        {
+            //echo Mage::Helper('catalog/output')->productAttribute($_childproduct, $_childproduct->getName(), 'name')."         ";
+            $temp = $_childproduct->getAttributeText('color');
+            if(strpos($temp,"|") !== FALSE)
+            {
+                $temp = substr($temp, 0, strpos($temp,"|"));
+                if(!isset($productcolorinfo[$temp]))
+                    $productcolorinfo[$temp] = array();
+            }
+            //$temp1 = $_childproduct->getAttributeText('size')."|".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+            if(Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getIsInStock())
+                $productcolorinfo[$temp][$_childproduct->getAttributeText('size')] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+            else
+                $productcolorinfo[$temp][$_childproduct->getAttributeText('size')] = "_".Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
+            if(array_search($_childproduct->getAttributeText('size'), $sizeArray ) === false)
+            {
+                array_push($sizeArray , $_childproduct->getAttributeText('size'));
+                $sizeTotal[$_childproduct->getAttributeText('size')] = 0;
+            }
+
+
+
+
+            //if(isset($productcolorinfo[$temp]["sizes"]))
+//                            {
+//
+//                                array_push($productcolorinfo[$temp]["sizes"], $temp1);
+//                            }
+//                            else
+//                            {
+//                                $productcolorinfo[$temp]["sizes"] = array($temp1);
+//                            }
+            //echo $temp."   ".$temp1."<br/>";
+
+        }
+
+        //echo "<pre>";
+//                        print_r($productcolorinfo);
+//                        asort($sizeArray);
+//                        print_r($sizeArray);
+//                        echo "</pre>";
+//                        echo "<br/><br/>";
+        $output .= "<tr style='color:#FFFFFF;'>";
+        $output .= "<td style='background-color:#003366;'>Name</td><td style='background-color:#003366;'>Color</td>";
+        sort($sizeArray);
+
+        if ($sizeArray[0] != '') {
+            if (preg_match('/^\d+$/', $sizeArray[0]) && preg_match('/^\d+$/', end($sizeArray)))
+                sort($sizeArray);
+            else if (!preg_match('/^\d+$/', $sizeArray[0])) {
+                $data = array(
+                    1 => "S",
+                    2 => "S-T",
+                    3 => "M",
+                    4 => "M-T",
+                    5 => "L",
+                    6 => "L-T",
+                    7 => "XL",
+                    8 => "XL-T",
+                    9 => "XXL",
+                    10 => "XXL-T"
+                );
+                $result = array(); // result array
+                foreach ($sizeArray as $key => $val) { // loop
+                    if (array_search($val, $data) != false) $result[array_search($val, $data)] = $val;
+                }
                 //$sizeArray = $result;
                 ksort($result);
                 $sizeArray = array_values($result);
@@ -3189,6 +3482,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     "status" => 'error',
                     "errors" => '',
                     "fname"   => '',
+                    "smogi" => '',
                     "success_message" => ''
                 );
         $errors = array();
@@ -3215,6 +3509,19 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                    // if($promotioncode)
                      //   Mage::getModel('smogiexpirationnotifier/applyremovediscount')->applycouponcode(1,null);
                     $response['fname'] =  $session->getCustomer()->getFirstname();
+                    //Retrieve smogi balance
+                                         
+                    $smogiBalance = Mage::getModel('smogiexpirationnotifier/applyremovediscount')->getCustomerPoints();
+                   
+                    $response['smogi'] = $smogiBalance;
+                   
+                    //end
+                    // unset shipping method
+                         $shippingaddress = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress();
+                         $shippingaddress->setShippingMethod('');
+                         $shippingaddress->save();
+                    // end unset shipping method
+
                     $response['status'] = "success";
                     echo json_encode($response);
                     return;
