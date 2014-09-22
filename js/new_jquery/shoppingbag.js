@@ -591,7 +591,7 @@ function shoppingBagTotals()
 
                 jQuery(".shopping-cart .cart-totalitems").html(data.count);
                 jQuery(".shopping-cart .cart-subtotal").html(data.subtotal);
-                
+
                 var dontshow = 'donotshowprice';
                 if(data.grandtotal != 'donotshowprice')
                 {

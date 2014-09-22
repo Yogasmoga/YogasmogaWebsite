@@ -1894,7 +1894,7 @@ ul.new-arrivals a.quick-view{display: none;}
 .wl-feat-prd img,.wl-color-story-prd img{width: 100%; display: block;}
 .top-left-block,.bottom-left-block,.top-right-block,.bottom-right-block{width: 100%; display: block; height: 50%;}
 .wl-feat-prd .top-left-block{background: #555555;}
-.wl-color-story-prd .bottom-right-block{background: #e0235d;}
+.wl-color-story-prd .bottom-right-block{background: #f3ab47;}
 .category-women{margin: 0 !important;}
 .wl-feat-prd,.wl-color-story-prd{opacity: 0; overflow: hidden;}
 .wl-right-block,.top-left-block,.wl-cs-left-block,.bottom-right-block{position: relative;;}
@@ -1911,7 +1911,7 @@ ul.new-arrivals a.quick-view{display: none;}
 .shopnow-btn:hover{color: #fff;}
 .bottom-left-block,.top-right-block{cursor:pointer;}
 .html-video-popup{position: fixed; width: 50%; display: none; top: 100px; z-index: 10099;}
-.wl-cs-right-block .top-right-block{background:url(../images/women/cs-vid-img1.jpg) no-repeat; background-size: 100% 100%;}
+.wl-cs-right-block .top-right-block{background:url(../images/women/twisti-tank-vid-thumb.jpg) no-repeat; background-size: 100% 100%;}
 .wl-left-block .bottom-left-block{background: url(../images/women/tippytoelegging-vidbg.jpg) no-repeat; background-size: 100% 100%;}
 
 div.cms-side-nav{display: none;}
