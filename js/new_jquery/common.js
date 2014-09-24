@@ -14,7 +14,9 @@ jQuery(window).load(function($){
 });
 jQuery(document).ready(function($){
     // get smogi value in footer
-
+    $("#pinterest").on("click",function(){
+        initiateshareurl('pinterest');
+    });
     $("body").on("click", function(){
         if(jQuery(".zopim").is(":visible")){
             $zopim.livechat.window.hide();             

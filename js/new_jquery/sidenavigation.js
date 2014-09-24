@@ -107,10 +107,10 @@ jQuery(document).ready(function($){
         //shareontw();
     });
     
-    /*$("#pageScrollerNav #shareicons #pinterest").click(function(){
+    $("#pageScrollerNav #shareicons #pinterest").click(function(){
         initiateshareurl('pinterest');
         //shareonpt();
-    });*/
+    });
     
     $(".sharing #mail").click(function(){
         //_cursharetype = 'mail';
