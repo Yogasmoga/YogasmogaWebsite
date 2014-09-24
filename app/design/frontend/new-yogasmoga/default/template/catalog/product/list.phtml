@@ -80,7 +80,7 @@ if($categoryId != '')
     }
     // sort configurable product on grid page
     //$categoryId = 6; //replace with your own
-        /*$category = new Varien_Object(array('id'=>$categoryId));
+        $category = new Varien_Object(array('id'=>$categoryId));
         $positions = Mage::getResourceModel('catalog/category')->getProductsPosition($category);
         //print_r($positions);
         $temp = array();
@@ -108,7 +108,7 @@ if($categoryId != '')
             //array_push($configurableProductArr[$tempconfkeys[$i]],$tempval);
             $configurableProductArr[$tempconfkeys[$k]]= $tempval;
             $k++;
-        }*/
+        }
             /*print_r($temp);
             print_r($configurableProductArr);
             print_r($temp1);
