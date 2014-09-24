@@ -78,6 +78,11 @@
           <template>page/topsellers.phtml</template>
           <layout_handle>topsellers</layout_handle>
         </topsellers>
+        <whatsnew translate="label">
+          <label>Whats New</label>
+          <template>page/whatsnew.phtml</template>
+          <layout_handle>whatsnew</layout_handle>
+        </whatsnew>
         <!-- add more layouts here -->
       </layouts>
     </page>

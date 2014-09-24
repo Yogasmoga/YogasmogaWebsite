@@ -39,6 +39,11 @@ jQuery(document).ready(function($){
             
         });
     }
+
+    $("#pinterest").on("click",function(){
+        initiateshareurl('pinterest');
+    });
+
     $("body").on("click", function(){
         if(jQuery(".zopim").is(":visible")){
             $zopim.livechat.window.hide();             

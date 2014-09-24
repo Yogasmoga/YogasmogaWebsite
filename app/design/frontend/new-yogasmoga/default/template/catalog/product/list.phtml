@@ -78,7 +78,48 @@ if($categoryId != '')
         //sort($configurableProductSort);
 
     }
+    // sort configurable product on grid page
+    //$categoryId = 6; //replace with your own
+        $category = new Varien_Object(array('id'=>$categoryId));
+        $positions = Mage::getResourceModel('catalog/category')->getProductsPosition($category);
+        //print_r($positions);
+        $temp = array();
+        $temp1 = array();
+        $tempconfkeys = array();
+        $tempconfigurableProductArr = array();
+
+        foreach($configurableProductArr as $key => $val)
+        {
+            array_push($temp, $positions[$key]);
+
+        }
+        $temp1 = $temp;
+        $tempconfkeys = array_keys($configurableProductArr);
+        $tempconfigurableProductArr = $configurableProductArr;
+
+        array_multisort($temp ,$configurableProductArr);
+        array_multisort($temp1 ,$tempconfkeys);
+        $k = 0;
+        foreach($configurableProductArr as $key => $val)
+        {
+            $tempval = array();
+            $tempval  = $val;
+            unset($configurableProductArr[$key]);
+            //array_push($configurableProductArr[$tempconfkeys[$i]],$tempval);
+            $configurableProductArr[$tempconfkeys[$k]]= $tempval;
+            $k++;
+        }
+            /*print_r($temp);
+            print_r($configurableProductArr);
+            print_r($temp1);
+            print_r($tempconfkeys   );
+            print_r($configurableProductArr);*/
+
+    // end sort configurable product on grid page
+
+
     // sort colors on grid page like sort yantra tank products(colors) on grid page
+    //print_r($configurableProductArr);
     $altconfigurableProductArr = array();
     foreach($configurableProductArr as $key => $val)
     {
@@ -87,7 +128,7 @@ if($categoryId != '')
 
     }
     $configurableProductArr = $altconfigurableProductArr;
-
+    //print_r($configurableProductArr);die;
     // end sort colors on grid page like sort yantra tank products(colors) on grid page
 
     //$configurableProductSort2 = $configurableProductSort;
