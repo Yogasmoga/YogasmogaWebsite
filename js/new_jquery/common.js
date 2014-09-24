@@ -14,7 +14,31 @@ jQuery(window).load(function($){
 });
 jQuery(document).ready(function($){
     // get smogi value in footer
-
+    if(fnIsAppleMobile()){
+        var i = 1;
+        var j = 1;
+        jQuery("body").on("click",".menu-heading", function(event){
+        var ra = jQuery(this).text();   
+        if(ra == "women" || ra == "Women"){
+           if(i < 2){            
+            j=1;
+            i++;
+            return false;
+           }else if (i == 2){          
+            return true;
+           } 
+       }else if(ra == "men" || ra == "Men"){
+            if(j < 2){
+            i = 1;            
+            j++;
+            return false;
+           }else if (j == 2){          
+            return true;
+           } 
+       }        
+            
+        });
+    }
     $("body").on("click", function(){
         if(jQuery(".zopim").is(":visible")){
             $zopim.livechat.window.hide();             

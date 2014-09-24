@@ -2478,3 +2478,4 @@ table.smallimagecontiner td.selectedimage{
 
 
 
+.pageanim{transform: translateX(-400px); transition:all 0.5s linear;}

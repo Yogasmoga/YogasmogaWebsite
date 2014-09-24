@@ -36,6 +36,7 @@ jQuery(document).ready(function($){
             $(window).scrollTop(offset); 
         }   
         $(".pageoverlay").hide();
+        jQuery(".shopping-cart").css("z-index", "1");
         $(".page").animate({ left: '0' }).css("");
         $(".header-container").animate({ left: "0" });
         $("body, html").removeClass("hdnHgt");     
@@ -204,6 +205,7 @@ jQuery(document).ready(function($){
     // reset page to default state
     $("#continuelink").live("click", function(){
         $(this).parent(".shopping-cart").addClass("hdnovr");
+        jQuery(".shopping-cart").css("z-index", "1");
         $(".page").animate({ left: '0' }).css("");
         $(".header-container").animate({ left: "0" });
         $("body, html").removeClass("hdnHgt");
@@ -332,10 +334,11 @@ function openShoppingCart()
     jQuery(".side-menu-bar,.account-nav").addClass("scrolltopend");
 
 var shoppingWdth = jQuery(".shopping-cart").width();
-var bodyHght = jQuery(window).height();
+var bodyHght = jQuery("body").height();
 jQuery(".shopping-cart").css({
     "height": bodyHght,
-    "display": 'block'
+    "display": 'block',
+    "z-index":  10
 }).removeClass("hdnovr");
 jQuery(".page").css("position", "relative").animate({ left: -shoppingWdth });
 jQuery(".pageoverlay").css("min-height", bodyHght).css("width", jQuery(window).width()).animate({ left: -shoppingWdth }).show();
