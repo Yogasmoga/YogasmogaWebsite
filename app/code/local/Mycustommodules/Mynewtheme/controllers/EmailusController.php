@@ -45,15 +45,14 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
             $fileurl=Mage::helper('core/url')->getHomeUrl().'uploads'.DS.$file['name'];
         }
         $html= array (
-                    'customername'        => $name,
+                    'name'        => $name,
                     'topic'       => $topic,
                     'message'     => $message,
-                    'customeremail'       => $email,
+                    'email'       => $email,
                     'fileurl'     => $fileurl,
                     'ip'          => $_SERVER['REMOTE_ADDR'],
                     'date'        => date('Y-m-d H:i:s')
         );
-
 //        $style='style="width:50%;height:30px;text-align:left;font-weight:bold;"';
 //        $html = '<html><body>';
 //        $html .='<table cellspacing="0" cellpadding="0" width="700" style="color:#333;font-family:arial;font-size:12px;">';
@@ -78,13 +77,12 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
 //        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 //        mail($toemail,$subject,$html,$headers);
         //echo $html;
-        $cusemail = $email;
-       $this->sendemail($html,$cusemail,$name);
+       $this->sendemail($html);
        echo json_encode($data);
 
     }
     
-    public function sendemail($html,$cusemail,$name)
+    public function sendemail($html)
     {
         $translate = Mage::getSingleton('core/translate');
         $translate->setTranslateInline(false);
@@ -99,15 +97,15 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
             'name'  => 'YOGASMOGA'
         );
         $sender  = array(
-            'name' => 'test',
-            'email' => 'hhhhhhhh@mobikasa.com'
+            'name' => 'YOGASMOGA',
+            'email' => 'manish@yogasmoga.com'
         );
         //echo "<pre>";print_r($email); die('test');
         $email->setDesignConfig(array('area'=>'frontend', 'store'=> Mage::app()->getStore()->getId()))
             ->sendTransactional(
                 $template_id,
                 $sender,
-                'manish@mobikasa.com',
+                'shiju@mobikasa.com',
                 'YOGASMOGA',
                 $html
             );
