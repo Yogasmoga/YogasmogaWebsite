@@ -38,7 +38,6 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         $message= $this->getRequest()->getPost('message');
         if(!isset($message)) $message='';
         $email= $this->getRequest()->getPost('email');
-        $customeremail = $email;
         $from='hello@yogasmoga.com';
         $subject='Email Us Submission';
         $fileurl='';
@@ -78,12 +77,12 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
 //        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 //        mail($toemail,$subject,$html,$headers);
         //echo $html;
-       $this->sendemail($html,$name,$customeremail);
+       $this->sendemail($html);
        echo json_encode($data);
 
     }
     
-    public function sendemail($html,$name1,$customeremail1)
+    public function sendemail($html)
     {
         $translate = Mage::getSingleton('core/translate');
         $translate->setTranslateInline(false);
@@ -91,23 +90,22 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
 
         $mail_collection = Mage::getModel('core/email_template')->getCollection()->addFieldToFilter('template_code','help_form');
         $template_id = $mail_collection->getFirstItem()->getTemplate_id();
-        $name = $name1;
-        $customeremail = $customeremail1;
+
         $recipient = array(
             //'email' => 'neha@mobikasa.com',
             'email' => 'manish@mobikasa.com',
             'name'  => 'YOGASMOGA'
         );
         $sender  = array(
-            'name' => 'testing',
-            'email' => 'manish123@mobikasa.com'
-        );//print_r($sender);
+            'name' => 'YOGASMOGA',
+            'email' => 'manish@yogasmoga.com'
+        );
         //echo "<pre>";print_r($email); die('test');
         $email->setDesignConfig(array('area'=>'frontend', 'store'=> Mage::app()->getStore()->getId()))
             ->sendTransactional(
                 $template_id,
                 $sender,
-                'manish@mobikasa.com',
+                'shiju@mobikasa.com',
                 'YOGASMOGA',
                 $html
             );
