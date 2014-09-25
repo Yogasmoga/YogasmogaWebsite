@@ -45,14 +45,15 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
             $fileurl=Mage::helper('core/url')->getHomeUrl().'uploads'.DS.$file['name'];
         }
         $html= array (
-                    'name'        => $name,
+                    'customername'        => $name,
                     'topic'       => $topic,
                     'message'     => $message,
-                    'email'       => $email,
+                    'customeremail'       => $email,
                     'fileurl'     => $fileurl,
                     'ip'          => $_SERVER['REMOTE_ADDR'],
                     'date'        => date('Y-m-d H:i:s')
         );
+
 //        $style='style="width:50%;height:30px;text-align:left;font-weight:bold;"';
 //        $html = '<html><body>';
 //        $html .='<table cellspacing="0" cellpadding="0" width="700" style="color:#333;font-family:arial;font-size:12px;">';
@@ -77,12 +78,13 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
 //        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 //        mail($toemail,$subject,$html,$headers);
         //echo $html;
-       $this->sendemail($html);
+        $cusemail = $email;
+       $this->sendemail($html,$cusemail,$name);
        echo json_encode($data);
 
     }
     
-    public function sendemail($html)
+    public function sendemail($html,$cusemail,$name)
     {
         $translate = Mage::getSingleton('core/translate');
         $translate->setTranslateInline(false);
@@ -97,8 +99,8 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
             'name'  => 'YOGASMOGA'
         );
         $sender  = array(
-            'name' => 'YOGASMOGA',
-            'email' => 'manish@yogasmoga.com'
+            'name' => $name,
+            'email' => $cusemail
         );
         //echo "<pre>";print_r($email); die('test');
         $email->setDesignConfig(array('area'=>'frontend', 'store'=> Mage::app()->getStore()->getId()))
