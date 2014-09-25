@@ -77,12 +77,12 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
 //        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 //        mail($toemail,$subject,$html,$headers);
         //echo $html;
-       $this->sendemail($html);
+       $this->sendemail($html,$email,$name);
        echo json_encode($data);
 
     }
     
-    public function sendemail($html)
+    public function sendemail($html,$cusemail, $cusname)
     {
         $translate = Mage::getSingleton('core/translate');
         $translate->setTranslateInline(false);
@@ -97,8 +97,8 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
             'name'  => 'YOGASMOGA'
         );
         $sender  = array(
-            'name' => 'YOGASMOGA123',
-            'email' => 'manish123@yogasmoga.com'
+            'name' => $cusemail,
+            'email' => $cusname
         );
         //echo "<pre>";print_r($email); die('test');
         $email->setDesignConfig(array('area'=>'frontend', 'store'=> Mage::app()->getStore()->getId()))
