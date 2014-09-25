@@ -101,7 +101,7 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         $sender  = array(
             'name' => 'testing',
             'email' => 'manish123@mobikasa.com'
-        );print_r($sender);
+        );//print_r($sender);
         //echo "<pre>";print_r($email); die('test');
         $email->setDesignConfig(array('area'=>'frontend', 'store'=> Mage::app()->getStore()->getId()))
             ->sendTransactional(
