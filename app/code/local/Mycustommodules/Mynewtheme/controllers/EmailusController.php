@@ -99,9 +99,9 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
             'name'  => 'YOGASMOGA'
         );
         $sender  = array(
-            'name' => $name,
-            'email' => $customeremail
-        );
+            'name' => 'testing',
+            'email' => 'manish123@mobikasa.com'
+        );print_r($sender);
         //echo "<pre>";print_r($email); die('test');
         $email->setDesignConfig(array('area'=>'frontend', 'store'=> Mage::app()->getStore()->getId()))
             ->sendTransactional(
