@@ -97,15 +97,15 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
             'name'  => 'YOGASMOGA'
         );
         $sender  = array(
-            'name' => 'YOGASMOGA',
-            'email' => 'manish@yogasmoga.com'
+            'name' => 'YOGASMOGA123',
+            'email' => 'manish123@yogasmoga.com'
         );
         //echo "<pre>";print_r($email); die('test');
         $email->setDesignConfig(array('area'=>'frontend', 'store'=> Mage::app()->getStore()->getId()))
             ->sendTransactional(
                 $template_id,
                 $sender,
-                'shiju@mobikasa.com',
+                'manish@mobikasa.com',
                 'YOGASMOGA',
                 $html
             );
