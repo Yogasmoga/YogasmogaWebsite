@@ -1,8 +1,6 @@
 <?php
 class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_Front_Action
 {
-    public $cusemail1 = "";
-    public $cusname1 = "";
     public function testAction()
     {
         echo "Test";
@@ -17,7 +15,7 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
                 $error = false;
                 $files = array();
                 $baseDir = Mage::getBaseDir();
-                $uploaddir = $baseDir.DS.'tempreports'.DS.'uploads'.DS;
+                $uploaddir = $baseDir.DS.'uploads'.DS;
                 foreach($_FILES as $file)
                 {//print_r($file);echo $file['tmp_name'].'---';echo $uploaddir.basename($file['name']);
                         if(move_uploaded_file($file['tmp_name'], $uploaddir.basename($file['name'])))
@@ -47,10 +45,10 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
             $fileurl=Mage::helper('core/url')->getHomeUrl().'uploads'.DS.$file['name'];
         }
         $html= array (
-                    'cusname'        => $name,
+                    'name'        => $name,
                     'topic'       => $topic,
                     'message'     => $message,
-                    'cusemail'       => $email,
+                    'email'       => $email,
                     'fileurl'     => $fileurl,
                     'ip'          => $_SERVER['REMOTE_ADDR'],
                     'date'        => date('Y-m-d H:i:s')
@@ -79,8 +77,6 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
 //        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 //        mail($toemail,$subject,$html,$headers);
         //echo $html;
-        $this->cusemail1 = $email;
-        $this->cusname1 = $name;
        $this->sendemail($html);
        echo json_encode($data);
 
@@ -100,13 +96,10 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
             'email' => 'manish@mobikasa.com',
             'name'  => 'YOGASMOGA'
         );
-        //$cusname = 'YOGASMOGA123';
-        //$cusemail = 'manish123@yogasmoga.com';
         $sender  = array(
-            'name' => $this->cusname1,
-            'email' => $this->cusemail1
+            'name' => 'YOGASMOGA',
+            'email' => 'manish@yogasmoga.com'
         );
-
         //echo "<pre>";print_r($email); die('test');
         $email->setDesignConfig(array('area'=>'frontend', 'store'=> Mage::app()->getStore()->getId()))
             ->sendTransactional(
