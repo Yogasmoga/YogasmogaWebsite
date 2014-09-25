@@ -1,8 +1,8 @@
 <?php
 class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_Front_Action
 {
-    public $cusemail = "";
-    public $cusname = "";
+    public $cusemail1 = "";
+    public $cusname1 = "";
     public function testAction()
     {
         echo "Test";
@@ -79,8 +79,8 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
 //        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 //        mail($toemail,$subject,$html,$headers);
         //echo $html;
-        $this->cusemail = $email;
-        $this->cusname = $name;
+        $this->cusemail1 = $email;
+        $this->cusname1 = $name;
        $this->sendemail($html);
        echo json_encode($data);
 
@@ -103,8 +103,8 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         //$cusname = 'YOGASMOGA123';
         //$cusemail = 'manish123@yogasmoga.com';
         $sender  = array(
-            'name' => $this->cusname,
-            'email' => $this->cusemail
+            'name' => $this->cusname1,
+            'email' => $this->cusemail1
         );
 
         //echo "<pre>";print_r($email); die('test');
