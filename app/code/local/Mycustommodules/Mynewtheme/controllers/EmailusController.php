@@ -83,7 +83,7 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
 
     }
     
-    public function sendemail($html,$name,$customeremail)
+    public function sendemail($html,$name1,$customeremail1)
     {
         $translate = Mage::getSingleton('core/translate');
         $translate->setTranslateInline(false);
@@ -91,7 +91,8 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
 
         $mail_collection = Mage::getModel('core/email_template')->getCollection()->addFieldToFilter('template_code','help_form');
         $template_id = $mail_collection->getFirstItem()->getTemplate_id();
-
+        $name = $name1;
+        $customeremail = $customeremail1;
         $recipient = array(
             //'email' => 'neha@mobikasa.com',
             'email' => 'manish@mobikasa.com',
