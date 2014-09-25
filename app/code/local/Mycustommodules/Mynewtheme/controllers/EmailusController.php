@@ -105,7 +105,7 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
             ->sendTransactional(
                 $template_id,
                 $sender,
-                'shiju@mobikasa.com',
+                'manishss@mobikasa.com',
                 'YOGASMOGA',
                 $html
             );
