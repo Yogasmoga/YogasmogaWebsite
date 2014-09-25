@@ -45,10 +45,10 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
             $fileurl=Mage::helper('core/url')->getHomeUrl().'uploads'.DS.$file['name'];
         }
         $html= array (
-                    'name'        => $name,
+                    'cusname'        => $name,
                     'topic'       => $topic,
                     'message'     => $message,
-                    'email'       => $email,
+                    'cusemail'       => $email,
                     'fileurl'     => $fileurl,
                     'ip'          => $_SERVER['REMOTE_ADDR'],
                     'date'        => date('Y-m-d H:i:s')
