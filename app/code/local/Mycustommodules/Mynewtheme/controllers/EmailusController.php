@@ -1,33 +1,35 @@
 <?php
 class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_Front_Action
 {
+    public $cusemail1 = "";
+    public $cusname1 = "";
     public function testAction()
     {
         echo "Test";
-        
+
     }
     public function sendMailAction()
     {
         $data = array();
-       // print_r($this->getRequest()->getPost());
+        // print_r($this->getRequest()->getPost());
         if(!empty($_FILES))
-        {	
-                $error = false;
-                $files = array();
-                $baseDir = Mage::getBaseDir();
-                $uploaddir = $baseDir.DS.'uploads'.DS;
-                foreach($_FILES as $file)
-                {//print_r($file);echo $file['tmp_name'].'---';echo $uploaddir.basename($file['name']);
-                        if(move_uploaded_file($file['tmp_name'], $uploaddir.basename($file['name'])))
-                        {
-                                $files[] = $uploaddir .$file['name'];
-                        }
-                        else
-                        {
-                            $error = true;
-                        }
+        {
+            $error = false;
+            $files = array();
+            $baseDir = Mage::getBaseDir();
+            $uploaddir = $baseDir.DS.'tempreports'.DS.'uploads'.DS;
+            foreach($_FILES as $file)
+            {//print_r($file);echo $file['tmp_name'].'---';echo $uploaddir.basename($file['name']);
+                if(move_uploaded_file($file['tmp_name'], $uploaddir.basename($file['name'])))
+                {
+                    $files[] = $uploaddir .$file['name'];
                 }
-                $data = ($error) ? array('error' => 'There was an error uploading your files') : array('files' => $files);
+                else
+                {
+                    $error = true;
+                }
+            }
+            $data = ($error) ? array('error' => 'There was an error uploading your files') : array('files' => $files);
         }
 //        else
 //        {
@@ -41,17 +43,17 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         $from='hello@yogasmoga.com';
         $subject='Email Us Submission';
         $fileurl='';
-        if(!empty($file['name'])){  
+        if(!empty($file['name'])){
             $fileurl=Mage::helper('core/url')->getHomeUrl().'uploads'.DS.$file['name'];
         }
         $html= array (
-                    'name'        => $name,
-                    'topic'       => $topic,
-                    'message'     => $message,
-                    'email'       => $email,
-                    'fileurl'     => $fileurl,
-                    'ip'          => $_SERVER['REMOTE_ADDR'],
-                    'date'        => date('Y-m-d H:i:s')
+            'cusname'        => $name,
+            'topic'       => $topic,
+            'message'     => $message,
+            'cusemail'       => $email,
+            'fileurl'     => $fileurl,
+            'ip'          => $_SERVER['REMOTE_ADDR'],
+            'date'        => date('Y-m-d H:i:s')
         );
 //        $style='style="width:50%;height:30px;text-align:left;font-weight:bold;"';
 //        $html = '<html><body>';
@@ -77,11 +79,13 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
 //        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 //        mail($toemail,$subject,$html,$headers);
         //echo $html;
-       $this->sendemail($html);
-       echo json_encode($data);
+        $this->cusemail1 = $email;
+        $this->cusname1 = $name;
+        $this->sendemail($html);
+        echo json_encode($data);
 
     }
-    
+
     public function sendemail($html)
     {
         $translate = Mage::getSingleton('core/translate');
@@ -96,10 +100,15 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
             'email' => 'manish@mobikasa.com',
             'name'  => 'YOGASMOGA'
         );
+        $cusname = $this->cusname1;
+        $cusemail = 'hello@yogasmoga.com';
         $sender  = array(
-            'name' => 'YOGASMOGA',
-            'email' => 'manish@yogasmoga.com'
+            //'name' => $this->cusname1,
+            //'email' => $this->cusemail1
+            'name' => $cusname,
+            'email' => $cusemail
         );
+
         //echo "<pre>";print_r($email); die('test');
         $email->setDesignConfig(array('area'=>'frontend', 'store'=> Mage::app()->getStore()->getId()))
             ->sendTransactional(
