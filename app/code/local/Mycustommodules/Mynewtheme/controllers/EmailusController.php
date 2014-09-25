@@ -17,7 +17,7 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
                 $error = false;
                 $files = array();
                 $baseDir = Mage::getBaseDir();
-                $uploaddir = $baseDir.DS.'uploads'.DS;
+                $uploaddir = $baseDir.DS.'tempreports'.DS.'uploads'.DS;
                 foreach($_FILES as $file)
                 {//print_r($file);echo $file['tmp_name'].'---';echo $uploaddir.basename($file['name']);
                         if(move_uploaded_file($file['tmp_name'], $uploaddir.basename($file['name'])))
@@ -106,7 +106,7 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
             'name' => $this->cusname,
             'email' => $this->cusemail
         );
-        
+
         //echo "<pre>";print_r($email); die('test');
         $email->setDesignConfig(array('area'=>'frontend', 'store'=> Mage::app()->getStore()->getId()))
             ->sendTransactional(
