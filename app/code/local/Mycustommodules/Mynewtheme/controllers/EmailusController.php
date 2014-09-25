@@ -99,8 +99,8 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         $cusname = 'testmanish';
         $cusemail = 'testtest@mobikasa.com';
         $sender  = array(
-            'name' => $cusname,
-            'email' => $cusemail
+            'name' => 'testmanish',
+            'email' => 'testtest@mobikasa.com'
         );
         //echo "<pre>";print_r($email); die('test');
         $email->setDesignConfig(array('area'=>'frontend', 'store'=> Mage::app()->getStore()->getId()))
