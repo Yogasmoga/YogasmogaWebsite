@@ -44,7 +44,7 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         $subject='Email Us Submission';
         $fileurl='';
         if(!empty($file['name'])){
-            $fileurl=Mage::helper('core/url')->getHomeUrl().'uploads'.DS.$file['name'];
+            $fileurl=Mage::helper('core/url')->getHomeUrl().DS.'tempreports'.'uploads'.DS.$file['name'];
         }
         $html= array (
             'cusname'        => $name,
