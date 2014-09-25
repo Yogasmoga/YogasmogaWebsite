@@ -96,6 +96,8 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
             'email' => 'manish@mobikasa.com',
             'name'  => 'YOGASMOGA'
         );
+        $cusname = 'testmanish';
+        $cusemail = 'testtest@mobikasa.com';
         $sender  = array(
             'name' => $cusname,
             'email' => $cusemail
