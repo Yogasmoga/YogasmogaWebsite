@@ -1,6 +1,8 @@
 <?php
 class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_Front_Action
 {
+    public $cusemail = "";
+    public $cusname = "public";
     public function testAction()
     {
         echo "Test";
@@ -77,13 +79,14 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
 //        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 //        mail($toemail,$subject,$html,$headers);
         //echo $html;
-
-       $this->sendemail($html,$email,$name);
+        $this->cusemail = $email;
+        $this->cusname = $name;
+       $this->sendemail($html);
        echo json_encode($data);
 
     }
     
-    public function sendemail($html,$cusemail,$cusname)
+    public function sendemail($html)
     {
         $translate = Mage::getSingleton('core/translate');
         $translate->setTranslateInline(false);
@@ -100,9 +103,10 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         //$cusname = 'YOGASMOGA123';
         //$cusemail = 'manish123@yogasmoga.com';
         $sender  = array(
-            'name' => $cusname,
-            'email' => $cusemail
+            'name' => $this->cusname,
+            'email' => $this->cusemail
         );
+        
         //echo "<pre>";print_r($email); die('test');
         $email->setDesignConfig(array('area'=>'frontend', 'store'=> Mage::app()->getStore()->getId()))
             ->sendTransactional(
