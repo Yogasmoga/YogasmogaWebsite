@@ -38,6 +38,7 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         $message= $this->getRequest()->getPost('message');
         if(!isset($message)) $message='';
         $email= $this->getRequest()->getPost('email');
+        $customeremail = $email;
         $from='hello@yogasmoga.com';
         $subject='Email Us Submission';
         $fileurl='';
@@ -77,12 +78,12 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
 //        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 //        mail($toemail,$subject,$html,$headers);
         //echo $html;
-       $this->sendemail($html);
+       $this->sendemail($html,$name,$customeremail);
        echo json_encode($data);
 
     }
     
-    public function sendemail($html)
+    public function sendemail($html,$name,$customeremail)
     {
         $translate = Mage::getSingleton('core/translate');
         $translate->setTranslateInline(false);
@@ -97,8 +98,8 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
             'name'  => 'YOGASMOGA'
         );
         $sender  = array(
-            'name' => 'YOGASMOGA',
-            'email' => 'manish12@yogasmoga.com'
+            'name' => $name,
+            'email' => $customeremail
         );
         //echo "<pre>";print_r($email); die('test');
         $email->setDesignConfig(array('area'=>'frontend', 'store'=> Mage::app()->getStore()->getId()))
