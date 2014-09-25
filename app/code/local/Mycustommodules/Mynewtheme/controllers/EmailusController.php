@@ -97,8 +97,8 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
             'name'  => 'YOGASMOGA'
         );
         $sender  = array(
-            'name' => $cusemail,
-            'email' => $cusname
+            'name' => $cusname,
+            'email' => $cusemail
         );
         //echo "<pre>";print_r($email); die('test');
         $email->setDesignConfig(array('area'=>'frontend', 'store'=> Mage::app()->getStore()->getId()))
