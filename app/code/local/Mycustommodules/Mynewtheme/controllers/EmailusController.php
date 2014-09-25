@@ -2,7 +2,7 @@
 class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_Front_Action
 {
     public $cusemail = "";
-    public $cusname = "public";
+    public $cusname = "";
     public function testAction()
     {
         echo "Test";
