@@ -727,9 +727,17 @@ function redeemcard()
 
 function createcard()
 {
+    if(window.location.href.indexOf('https://') >= 0)
+        _usesecureurl = true;
+    else
+        _usesecureurl = false;
+    var url = homeUrl + 'mycheckout/mycart/add';
+    if(_usesecureurl)
+        url = securehomeUrl + 'mycheckout/mycart/add';
+
     jQuery.ajax({
         type : 'POST',
-        url : homeUrl + 'mycheckout/mycart/add',
+        url : url,
         data : jQuery("#createcardform").serialize(),
         success : function(result){
             result = eval('(' + result + ')');
