@@ -115,6 +115,11 @@ class Mage_Core_Model_Email extends Varien_Object
         //$this->_mail = new Zend_Mail('utf-8');
         
         $mail = new Zend_Mail('utf-8');
+        if(Mage::getSingleton('core/session')->getSenderEmail() != '')
+        {
+            $mail->setReplyTo( Mage::getSingleton('core/session')->getSenderEmail());
+            Mage::getSingleton('core/session')->setSenderEmail('');
+        }
         //$mail->setReturnPath('chetan.mangat@yogasmoga.com');
         $emailId = Mage::getModel('core/variable')->loadByCode('email_return_path')->getValue('plain');
         if($emailId != '')

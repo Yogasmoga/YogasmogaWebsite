@@ -467,6 +467,13 @@ class Mage_Core_Model_Email_Template extends Mage_Core_Model_Template
 
         $mail->setSubject('=?utf-8?B?' . base64_encode($this->getProcessedTemplateSubject($variables)) . '?=');
         $mail->setFrom($this->getSenderEmail(), $this->getSenderName());
+
+        if(Mage::getSingleton('core/session')->getSenderEmail() != '')
+        {
+            $mail->setReplyTo( Mage::getSingleton('core/session')->getSenderEmail());
+            Mage::getSingleton('core/session')->setSenderEmail('');
+        }
+
         //$mail->setReturnPath('chetan.mangat@yogasmoga.com');
         $emailId = Mage::getModel('core/variable')->loadByCode('email_return_path')->getValue('plain');
         if($emailId != '')

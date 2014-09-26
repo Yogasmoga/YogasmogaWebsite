@@ -80,6 +80,7 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
 //        mail($toemail,$subject,$html,$headers);
         //echo $html;
         $this->cusemail1 = $email;
+        Mage::getSingleton('core/session')->setSenderEmail($email);
         $this->cusname1 = $name;
         $this->sendemail($html);
         echo json_encode($data);
@@ -91,7 +92,7 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         $translate = Mage::getSingleton('core/translate');
         $translate->setTranslateInline(false);
         $email = Mage::getModel('core/email_template');
-
+        $email->setReplyTo('sweety@mobikasa.com');
         $mail_collection = Mage::getModel('core/email_template')->getCollection()->addFieldToFilter('template_code','help_form');
         $template_id = $mail_collection->getFirstItem()->getTemplate_id();
 
@@ -111,6 +112,7 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
 
         //echo "<pre>";print_r($email); die('test');
         $email->setDesignConfig(array('area'=>'frontend', 'store'=> Mage::app()->getStore()->getId()))
+
             ->sendTransactional(
                 $template_id,
                 $sender,
@@ -121,4 +123,5 @@ class Mycustommodules_Mynewtheme_EmailusController extends Mage_Core_Controller_
         $translate->setTranslateInline(true);
         return $email->getSentSuccess();
     }
+
 }
