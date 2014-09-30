@@ -68,7 +68,7 @@ jQuery(document).ready(function($){
                                 // Success so call function to process the form
                                 //submitForm(event, data);
                                 jQuery('input,textarea').val('');
-                                jQuery('#resultdiv').empty().append('Thanks for submitting your query.').show().delay('10000').hide(0);
+                                jQuery('#resultdiv').empty().append('Thanks for your email.').show().delay('10000').hide(0);
                         }
                         else
                         {
