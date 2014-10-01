@@ -1699,7 +1699,7 @@ div#bodycompensator{height: 69px;}
 .cms-help #fileupload .sendmail{ width: 144px; height: 38px; padding: 0; font-size: 0; background: url(../images/send-mail-btn.png) no-repeat top left; }
 
 /****Choose file style****/
-.choose-file-cont{width: 166px; height: 38px; float: left; position: relative;}
+.choose-file-cont{width: 250px; height: 38px; float: left; position: relative;}
 .choosefile-cover{width: 166px; height: 38px; background: url(../images/choose-btn.png) no-repeat scroll left top rgba(0, 0, 0, 0); position: absolute; top: 0; left: 0; cursor: pointer; background-color:#efefef;}
 /***ends***/
 
