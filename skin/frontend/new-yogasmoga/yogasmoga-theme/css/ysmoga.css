@@ -1942,7 +1942,7 @@ body.mac-os.chrome .gridFullWidth .block30:last-child {
 }
 
 body.mac-os .gridFullWidth .block30:last-child {
-    width: 33.25%;
+    /*width: 33.25%;*/
 }
 
 .bottomdivider{
