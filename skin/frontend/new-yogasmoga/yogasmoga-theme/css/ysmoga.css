@@ -1921,7 +1921,8 @@ body.mac-os .grnbtn{
 }
 
 body.mac-os .gridFullWidth .block50:last-child {
-    width: 50.028%;
+    /*width: 50.028%;*/
+    width: 50%;
 }
 
 body.mac-os.chrome .gridFullWidth .block50:last-child {
