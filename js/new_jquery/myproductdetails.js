@@ -250,6 +250,10 @@ function changelengthtype(sz){
 }
 function changeproductsize(sz)
 {
+    //update price
+    var salePrice = sz.attr("price");
+    jQuery(".amount").html("$" + salePrice);
+    //update price ends
     jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
     if(_islengthavailable){
         jQuery("div.selectedlength div").removeClass("selected");
@@ -470,6 +474,7 @@ function searchproductcolorinfoarrray(clr)
 
 function changeColor(clr)
 {
+    jQuery(".amount").removeClass("insale-price");
     jQuery("body").find("#includeoption div:nth-child(2)").trigger("click"); 
     var colorindex = searchproductcolorinfoarrray(clr);
     if(colorindex == -1)
@@ -589,6 +594,19 @@ function changeColor(clr)
     if(!_sizesuperattribute)
         changeproductsize(jQuery("div#sizecontainer td:not(.disabled) div:not(.dvselectedsize):first"));
     //jQuery("#orderitem").addClass("bagdisabled");
+
+    // check for insale
+    var amount = jQuery(".amount");
+    var firstSize = jQuery("div#sizecontainer td:not(.disabled)").first().find("div");
+    var firstSizePrice = firstSize.attr("price");
+    if(_productcolorinfo[colorindex].insale == 'Yes'){
+        firstSize.trigger("click");
+        amount.html("$" + firstSizePrice);
+        amount.addClass("insale-price");
+    }else{
+        amount.html("$" + firstSizePrice);
+    }
+    //end insale
 }
 
 function addtocart()

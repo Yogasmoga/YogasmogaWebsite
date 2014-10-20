@@ -278,6 +278,16 @@ foreach($_childproducts as $_childproduct)
 //                array_push($productcolorinfo[$temp]['hex'], $hexcodes);   
 //            }
     }
+    // check product in sale or not
+    if(!isset($productcolorinfo[$temp]["insale"]))
+    {
+        $insalevalue = $_childproduct->getAttributeText('insale');
+        if($insalevalue == 'Yes')
+            $productcolorinfo[$temp]["insale"] = $insalevalue;
+    }
+
+    // end check product in sale
+
     //if(!isset($productcolorinfo[$temp]))
 //            $productcolorinfo[$temp] = array();
 //        $productcolorinfo[$temp]['rewardpoints'] = Mage::helper('rewardpoints/data')->getProductPointsText($_childproduct, false, false);
@@ -584,6 +594,16 @@ foreach($productcolorinfo as $key=>$val)
 ?>
     _productcolorinfo[<?php echo $currentcolorcount; ?>] = new Object();
     _productcolorinfo[<?php echo $currentcolorcount; ?>].color = '<?php echo $key; ?>';
+
+    // check for in sale
+    <?php
+        if(isset($val['insale']))
+        {
+    ?>
+            _productcolorinfo[<?php echo $currentcolorcount; ?>].insale = '<?php echo $val['insale']; ?>';
+    <?php } ?>
+    // end check for in sale
+
     _productcolorinfo[<?php echo $currentcolorcount; ?>].hex = new Array();
     <?php
         for($i = 0; $i < count($val['hex']); $i++)
