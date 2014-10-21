@@ -290,11 +290,11 @@ foreach($configurableProductArr as $key => $val){
         <?php
                 if($showInSaleProduct && $childProduct['insale'] == 'Yes')
                 {
-            ?> <a href="<?php echo $confProduct->getProductUrl();?>"> <?php echo $clrinfo[$childProduct]?></a><span>was $<?php  echo  round($confProduct->getPrice(),2);?></span>
+            ?> <a href="<?php echo $confProduct->getProductUrl().'?color='.$childProduct['color'];?>"> <?php echo $clrinfo[$childProduct['color']]?></a><span>was $<?php  echo  round($confProduct->getPrice(),2);?></span>
                 <span style="color:#c03;">now $<?php  echo  round($childProduct['price'],2);?></span>
             <?php }else{
             ?>
-                    <a href="<?php echo $confProduct->getProductUrl();?>"> <?php echo $clrinfo[$childProduct]?></a><span>$<?php  echo  round($confProduct->getPrice(),2);?></span>
+                    <a href="<?php echo $confProduct->getProductUrl().'?color='.$childProduct['color'];?>"> <?php echo $clrinfo[$childProduct['color']]?></a><span>$<?php  echo  round($confProduct->getPrice(),2);?></span>
             <?php    }
         ?>
             </div>
