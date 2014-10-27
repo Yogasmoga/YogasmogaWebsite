@@ -60,14 +60,25 @@ class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Tot
 			$excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories')->getValue('plain');
 			$excludecats = explode(",", $excludecats);
 			$accessories = 0;
+            $itemids = array();
+            $count = 0;
+
+            foreach ($items as $item) {
+                array_push($itemids, $item->getProductId());
+            }
 			foreach ($items as $item) {
 								
 									
 					
 								 $itemId = $item->getProductId();
 								 $itemstotal = $item->getRowTotal();
-								 
-								$query1 = "Select category_id, name from catalog_category_product, catalog_category_flat_store_1 where catalog_category_product.product_id = ".$itemId." and catalog_category_flat_store_1.entity_id = catalog_category_product.category_id";
+
+                if($item->getProductType() == "configurable")
+                {$query1 = "Select category_id, name from catalog_category_product, catalog_category_flat_store_1 where catalog_category_product.product_id IN (".$itemId.",".$itemids[$count + 1].") and catalog_category_flat_store_1.entity_id = catalog_category_product.category_id";
+
+                }
+                else
+                    $query1 = "Select category_id, name from catalog_category_product, catalog_category_flat_store_1 where catalog_category_product.product_id = ".$itemId." and catalog_category_flat_store_1.entity_id = catalog_category_product.category_id";
 								$categoryid = $readConnection->fetchAll($query1);
 								
 								$excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories')->getValue('plain');
@@ -94,7 +105,7 @@ class Rewardpoints_Model_Total_Points extends Mage_Sales_Model_Quote_Address_Tot
 								}
 					
 					$tot = $tot + $itemstotal;
-								
+                $count++;
 								
 				}
 			Mage::getSingleton('core/session')->setAccessoriesTot($cattotal);
