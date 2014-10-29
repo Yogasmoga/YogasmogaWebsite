@@ -101,6 +101,10 @@ publish
 # Others
 [Bb]in
 [Oo]bj
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1d4b12b38d0cf4e366ca8def494565736363c615
 TestResults
 *.Cache
 ClientBin
