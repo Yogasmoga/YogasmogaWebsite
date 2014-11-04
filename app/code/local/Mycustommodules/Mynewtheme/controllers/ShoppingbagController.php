@@ -787,6 +787,21 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     $temparray['preorder'] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getBackorders();
                     $temparray['instock'] = $_product->stock_item->is_in_stock;
                     $temparray['typeid'] = 'configurable';
+                    // for insale
+                    $temparray['insale'] = $_product->getAttributeText('insale');
+                    $temparray['confPrice'] = '';
+                    if($temparray['insale'] == 'Yes')
+                    {
+                        $confProduct = Mage::getModel('catalog/product')->load($item->getProductId());
+                        $temparray['confPrice'] = "$".number_format((float)( $confProduct->getPrice()), 2, '.', '');
+
+
+                    }
+
+
+
+
+
 
                     //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
                     $temparray['name'] = $item->getName();
@@ -1250,15 +1265,28 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 <a href="'.$item['producturl'].'"><span class="wdth100"><img alt="'.$item['name'].'" src="'.substr($item['imageurl'], 1).'" ></span></a>
 <span>
                     <span class="quantity dnone" cartqty='.$item['quantity'].'>qty '.$item['quantity'].'</span>
-                    <span class="pname">'.$item['name'].'</span>
-                    <span class="amnt">'.$item['price'].'</span>
-                    <span class="clr">'.$item['color'].'</span>';
+                    <span class="pname">'.$item['name'].'</span>';
+
+            if($item['insale'] == 'Yes')
+            {
+                $html .='<span class="amnt" style="color : #c03;">'.$item['price'].'</span>
+                            <span class="insale"  > was '.$item['confPrice'].'</span>';
+            }
+            else{
+                $html .='<span class="amnt">'.$item['price'].'</span>';
+            }
+
+            $html .='<span class="clr">'.$item['color'].'</span>';
             if($item['size'] !='') $html .='<span class="size">size '.$item['size'].'</span>';
             if($item['length'] !='') $html .='<span class="size">'.$item['length'].'</span>';
             if($item['optionlabel'] != '')
             {
                 $html .='<span class="size">'.$item['optionlabel'].'</span>';
                 //$html .='<span class="clr">'.$item['optionvalue'].'</span>';
+            }
+            if($item['insale'] == 'Yes')
+            {
+                $html .='<span class="size" style="color: #c03;">Final Sale</span>';
             }
             $html .='</span>
 <a href="#" class="close"></a>';
@@ -1662,6 +1690,16 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $temparray['instock'] = $_product->stock_item->is_in_stock;
                 $temparray['typeid'] = 'configurable';
 
+                // for insale
+                $temparray['insale'] = $_product->getAttributeText('insale');
+                $temparray['confPrice'] = '';
+                if($temparray['insale'] == 'Yes')
+                {
+                    $confProduct = Mage::getModel('catalog/product')->load($item->getProductId());
+                    $temparray['confPrice'] = "$".number_format((float)( $confProduct->getPrice()), 2, '.', '');
+
+
+                }
                 //$temparray['name'] = $_helper->productAttribute($_product, $_product->getName(), 'name');
                 $temparray['name'] = $item->getName();
                 //if(strlen($temparray['name']) > 20)
@@ -1701,9 +1739,19 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 <a href="'.$item['producturl'].'"><span class="wdth100"><img alt="'.$item['name'].'" src="'.substr($item['imageurl'], 1).'" ></span></a>
 <span>
                     <span class="quantity dnone" cartqty='.$item['quantity'].'>qty '.$item['quantity'].'</span>
-                    <span class="pname">'.$item['name'].'</span>
-                    <span class="amnt">'.$item['price'].'</span>
-                    <span class="clr">'.$item['color'].'</span>';
+                    <span class="pname">'.$item['name'].'</span>';
+
+                if($item['insale'] == 'Yes')
+                {
+                    $html .='<span class="amnt" style="color : #c03;">'.$item['price'].'</span>
+                                    <span class="insale"  > was '.$item['confPrice'].'</span>';
+                }
+                else{
+                    $html .='<span class="amnt">'.$item['price'].'</span>';
+                }
+
+
+                    $html .='<span class="clr">'.$item['color'].'</span>';
             if($item['size'] !='') $html .='<span class="size">size '.$item['size'].'</span>';
             if($item['length'] !='') $html .='<span class="size">'.$item['length'].'</span>';
             if($item['optionlabel'] != '')
@@ -1711,6 +1759,11 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 $html .='<span class="size">'.$item['optionlabel'].'</span>';
                 //$html .='<span class="clr">'.$item['optionvalue'].'</span>';
             }
+
+        if($item['insale'] == 'Yes')
+        {
+            $html .='<span class="size" style="color: #c03;">Final Sale</span>';
+        }
             $html .='</span>
 <a href="#" class="close"></a>';
             // Preorder

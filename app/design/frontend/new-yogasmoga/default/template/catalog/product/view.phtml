@@ -938,7 +938,8 @@ if($_product->getAttributeText('canzoomimage') == "yes")
 <!-- heading -->
 <div class="prdname">
     <div class="productname"><h1><?php echo html_entity_decode($productname); ?></h1></div>
-    <span class="productcost amount"><?php echo $productprice; ?></span>
+    <span class="productcost amount "><?php echo $productprice; ?></span>
+    <span class="was-amount no-display" style="text-transform: lowercase;"><?php echo 'was '.$productprice; ?></span>
 </div>
 <!-- heading -->
 
@@ -1163,6 +1164,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
     <!-- producterrorcontainer -->
 
     <p class="c-align freeshipptext"><em>Free and fast shipping to US and Canada</em></p>
+    <p class="insale dnone" style="color: #c03;">Final Sale</p>
 </div>
 <!-- addToBag -->
 </td>
@@ -1841,6 +1843,7 @@ if($ftimage != "" && $ftimagesmall != "")
                                     <div class="prdname in-bl vert-bottom">
                                         <div class="productname"><?php echo html_entity_decode($productname); ?></div>
                                         <span class="productcost amount no-display"><?php echo $productprice; ?></span>
+
                                     </div>
                                     <div class="box-seprtr last in-bl vert-bottom">
                                         <div class="blck-head-sml no-display"><span>Step 1:</span> choose your color</div>

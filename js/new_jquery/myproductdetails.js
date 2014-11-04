@@ -475,6 +475,9 @@ function searchproductcolorinfoarrray(clr)
 function changeColor(clr)
 {
     jQuery(".amount").removeClass("insale-price");
+    jQuery(".box-seprtr").find("p.insale").addClass("dnone");
+    jQuery(".was-amount").addClass("no-display");
+
     jQuery("body").find("#includeoption div:nth-child(2)").trigger("click"); 
     var colorindex = searchproductcolorinfoarrray(clr);
     if(colorindex == -1)
@@ -603,6 +606,9 @@ function changeColor(clr)
         firstSize.trigger("click");
         amount.html("$" + firstSizePrice);
         amount.addClass("insale-price");
+        jQuery(".box-seprtr").find("p.insale").removeClass("dnone");
+        jQuery(".was-amount").removeClass("no-display");
+
     }else{
         amount.html("$" + firstSizePrice);
     }
