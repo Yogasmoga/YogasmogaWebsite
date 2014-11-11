@@ -86,6 +86,7 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
         );
         //check do not apply smogi bucks for only accesories in cart
         $miniitems = Mage::getSingleton('core/session')->getCartItems();
+        
         if(isset($miniitems))
         {
             $excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories')->getValue('plain');
@@ -94,9 +95,10 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
             $flag = 0;
             foreach($miniitems as $mitem)
             {
-                $mitemProduct = Mage::getModel('catalog/product')->load($mitem['pid']);
+                //$mitemProduct = Mage::getModel('catalog/product')->load($mitem['pid']);
+                $mitemProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $mitem['sku']);
                 $cids = $mitemProduct->getCategoryIds();
-
+                //print_r($cids);
                 $flag = 0;
                 foreach($excludecats as $key=>$val)
                 {
@@ -109,13 +111,14 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
 //                echo $foundOnlyNoSmogiProduct;
 //                if($foundOnlyNoSmogiProduct == 0)die('treast');
 //                else die('dddd');
+                //echo $flag;
             }
             //echo $foundOnlyNoSmogiProduct;
             if($flag == 1)
             {
-                /*$response['error'] = "SMOGI Bucks cannot be used Toward Accessories";
+                $response['error'] = "SMOGI Bucks cannot be used Toward Accessories";
                 echo json_encode($response);
-                return;*/
+                return;
             }
         }
         //end check do not

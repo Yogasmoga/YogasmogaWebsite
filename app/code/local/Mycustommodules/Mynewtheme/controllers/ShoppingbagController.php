@@ -1286,7 +1286,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
             if($item['insale'] == 'Yes')
             {
-                $html .='<span class="size" style="color: #c03;">Final Sale</span>';
+                $html .='<span class="size" style="color: #c03;">This Item is Final Sale. Cannot be exchanged or returned.</span>';
             }
             $html .='</span>
 <a href="#" class="close"></a>';
@@ -1733,6 +1733,17 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $i++;
         }
 
+        $customerId = Mage::getModel('customer/session')->getCustomerId();
+
+        if($customerId)
+        {
+            $cartItems = Mage::getSingleton('core/session')->getCartItems();
+            array_reverse($cartItems);
+            array_push($cartItems,$minidetailss['items']);
+            array_reverse($cartItems);
+            Mage::getSingleton('core/session')->setCartItems($cartItems);
+        }
+
             $item = $temparray;
 
             $html .='<li id="'.$item['itemid'].'" availableqty="'.$item['pavailableqty'].'" backorder="'.$item['preorder'].'" instock="'.$item['instock'].'">
@@ -1762,7 +1773,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
         if($item['insale'] == 'Yes')
         {
-            $html .='<span class="size" style="color: #c03;">Final Sale</span>';
+            $html .='<span class="size" style="color: #c03;">This Item is Final Sale. Cannot be exchanged or returned.</span>';
         }
             $html .='</span>
 <a href="#" class="close"></a>';
