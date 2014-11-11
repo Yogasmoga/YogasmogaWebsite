@@ -296,7 +296,7 @@ function changeproductsize(sz)
             }
         // check for insale
         var amount = jQuery(".amount");
-        var firstSize = jQuery("div.selectedlength div").first();
+        var firstSize = jQuery("div.selectedlength div").first().next();
         var firstSizePrice = firstSize.attr("price");
         if(_productcolorinfo[colorindex].insale == 'Yes'){
             firstSize.trigger("click");
