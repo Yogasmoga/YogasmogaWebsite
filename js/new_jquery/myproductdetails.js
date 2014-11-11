@@ -617,16 +617,21 @@ function changeColor(clr)
     var amount = jQuery(".amount");
     var firstSize = jQuery("div#sizecontainer td:not(.disabled)").first().find("div");
     var firstSizePrice = firstSize.attr("price");
-    if(_productcolorinfo[colorindex].insale == 'Yes'){
-        firstSize.trigger("click");
-        amount.html("$" + firstSizePrice);
-        amount.addClass("insale-price");
-        jQuery(".box-seprtr").find("p.insale").removeClass("dnone");
-        jQuery(".was-amount").removeClass("no-display");
+    console.log(_islengthavailable+"--manish")
+    if(!_islengthavailable)
+    {
+        if(_productcolorinfo[colorindex].insale == 'Yes'){
+            firstSize.trigger("click");
+            amount.html("$" + firstSizePrice);
+            amount.addClass("insale-price");
+            jQuery(".box-seprtr").find("p.insale").removeClass("dnone");
+            jQuery(".was-amount").removeClass("no-display");
 
-    }else{
-        amount.html("$" + firstSizePrice);
+        }else{
+            amount.html("$" + firstSizePrice);
+        }
     }
+
     //end insale
 }
 
