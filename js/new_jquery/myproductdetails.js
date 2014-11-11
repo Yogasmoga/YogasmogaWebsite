@@ -294,6 +294,21 @@ function changeproductsize(sz)
                 jQuery(".selectedlength div[lengthtype='"+lengthType+"']").removeClass('canbackorder');    
 
             }
+        // check for insale
+        var amount = jQuery(".amount");
+        var firstSize = jQuery("div.selectedlength div").first();
+        var firstSizePrice = firstSize.attr("price");
+        if(_productcolorinfo[colorindex].insale == 'Yes'){
+            firstSize.trigger("click");
+            amount.html("$" + firstSizePrice);
+            amount.addClass("insale-price");
+            jQuery(".box-seprtr").find("p.insale").removeClass("dnone");
+            jQuery(".was-amount").removeClass("no-display");
+
+        }else{
+            amount.html("$" + firstSizePrice);
+        }
+        //end insale
     }else{        
     jQuery("div#sizecontainer div").removeClass("dvselectedsize");
         sz.addClass("dvselectedsize");
