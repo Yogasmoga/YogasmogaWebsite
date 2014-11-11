@@ -1,52 +1,42 @@
 <?php
-$myfile = fopen("mailchimp.txt", "r") or die("Unable to open file!");
-$api_key = fgets($myfile);
-$list_id = fgets($myfile);
+
+$myfile = fopen("mailchimp_list.txt", "r") or die("Unable to open file!");
+$api_key = trim(fgets($myfile));
+$list_id = trim(fgets($myfile));
 fclose($myfile);
 
-echo "[ $api_key , $list_id ] <br/><br/>";
+if(isset($list_id) && strlen($list_id)>0){
 
 ini_set('max_execution_time', 36000);
 ini_set('memory_limit', '1024M');
 
+echo "Synchronizing, please wait...";
+
 require 'app/Mage.php';
 $app = Mage::app('');
 
-$columns = array('customers_firstname','customers_lastname','customers_email_address');
 
-/* get Newsletter Subscriber whose status is equal to "Subscribed"    */
+$array = array();
 
-$sql = "SELECT * FROM newsletter_subscriber WHERE subscriber_status = 1";
-$connection = Mage::getSingleton('core/resource')->getConnection('core_read');
+$collectionSub = Mage::getResourceModel ('newsletter/subscriber_collection')           
+            -> AddFieldToFilter ('subscriber_status', array ('eq' => 3));						/* 1=> subscribed,  2=> not active,  3=> unsubscribed */
+			
 
-$i = 0;
-foreach ($connection->fetchAll($sql) as $arr_row) {
-
-	++$i;
-
-    $loademail = $arr_row['subscriber_email'];
-
-    $customer = Mage::getModel('customer/customer');
-    $customer->setWebsiteId(Mage::app()->getStore()->getWebsiteId());
-    $customer->loadByEmail($loademail);
-
-    $fname = explode(',', $customer->getData('firstname'));
-    $lname = explode(',', $customer->getData('lastname'));
-    $email = explode(',', $customer->getData('email'));
-    $fname = $fname[0];
-    $lname = $lname[0];
-    $email = $email[0];
-    if ($fname=="" && $lname=="")
-    {
-        $fname="--";
-        $lname="--";
-        $email=$arr_row['subscriber_email'];
-    }
-
-    $batch[] = array('EMAIL'=>$email, 'FNAME'=>$fname, 'LNAME'=>$lname);
+foreach($collectionSub as $sub) {
+	$array[] = $sub['subscriber_email'];
 }
 
-echo "Found = " . count($batch);
+$collection = Mage::getModel('customer/customer')->getCollection()
+->addAttributeToSelect('firstname')
+->addAttributeToSelect('lastname')
+->addAttributeToSelect('email')
+->addAttributeToFilter('email', array('nin' => $array));
+
+foreach ($collection as $item)
+{
+	$row = $item->getData();
+	$batch[] = array('EMAIL'=>$row['email'], 'FNAME'=>$row['firstname'], 'LNAME'=>$row['lastname']);
+}
 
 include("mailchimpapi/Drewm/MailChimp.php");
 
@@ -70,5 +60,15 @@ foreach($batch as $single){
         'replace_interests' => false,
         'send_welcome'      => false,
     ));
+	
+	print_r($result);
+	
+	echo "<hr/>";
 }
+
+echo "<br/>Task completed";
+
+}
+else
+	echo "I guess list id is not provided or invalid";
 ?>
