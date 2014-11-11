@@ -86,7 +86,7 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
         );
         //check do not apply smogi bucks for only accesories in cart
         $miniitems = Mage::getSingleton('core/session')->getCartItems();
-        
+
         if(isset($miniitems))
         {
             $excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories')->getValue('plain');
