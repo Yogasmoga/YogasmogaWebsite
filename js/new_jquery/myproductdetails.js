@@ -613,24 +613,37 @@ function changeColor(clr)
         changeproductsize(jQuery("div#sizecontainer td:not(.disabled) div:not(.dvselectedsize):first"));
     //jQuery("#orderitem").addClass("bagdisabled");
 
+
+
+
+
     // check for insale
     var amount = jQuery(".amount");
-    var firstSize = jQuery("div#sizecontainer td:not(.disabled)").first().find("div");
-    var firstSizePrice = firstSize.attr("price");
-    console.log(_islengthavailable+"--manish")
-    if(!_islengthavailable)
+    var firstSize = '',firstSizePrice= '';
+    if(_islengthavailable)
     {
+        // check for insale
+        firstSize = jQuery("div.selectedlength div").first().next();
+        firstSizePrice = firstSize.attr("price");
+        //end insale
+    }else{
+        firstSize = jQuery("div#sizecontainer td:not(.disabled)").first().find("div");
+        firstSizePrice = firstSize.attr("price");
+    }
+    console.log(amount+"--"+firstSize.html()+"--"+firstSizePrice);
         if(_productcolorinfo[colorindex].insale == 'Yes'){
-            firstSize.trigger("click");
+            firstSize.trigger("click");//console.log(firstSizePrice+"mmmmm");
             amount.html("$" + firstSizePrice);
             amount.addClass("insale-price");
             jQuery(".box-seprtr").find("p.insale").removeClass("dnone");
             jQuery(".was-amount").removeClass("no-display");
 
         }else{
+
+            //console.log(firstSizePrice+"oooooo");
             amount.html("$" + firstSizePrice);
         }
-    }
+
 
     //end insale
 }
