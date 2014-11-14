@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <mod_adminhtml_custom_index>
+        <reference name="content">
+            <block type="mod/adminhtml_custom" name="custom_index" template="mailchimp/settingsform.phtml"/>
+        </reference>
+    </mod_adminhtml_custom_index>
+
+    <mod_adminhtml_custom_unsubscribe>
+        <reference name="content">
+            <block type="mod/adminhtml_custom" name="custom_unsubscribe" template="mailchimp/unsubscribeform.phtml"/>
+        </reference>
+    </mod_adminhtml_custom_unsubscribe>
+
+</layout>

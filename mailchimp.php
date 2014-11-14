@@ -1,74 +1,72 @@
 <?php
 
 $myfile = fopen("mailchimp_list.txt", "r") or die("Unable to open file!");
-$api_key = trim(fgets($myfile));
-$list_id = trim(fgets($myfile));
+$apikey_listid = trim(fgets($myfile));
 fclose($myfile);
 
-if(isset($list_id) && strlen($list_id)>0){
+$ar = explode(",", $apikey_listid);
 
-ini_set('max_execution_time', 36000);
-ini_set('memory_limit', '1024M');
+$api_key = trim($ar[0]);
+$list_id = trim($ar[1]);
 
-echo "Synchronizing, please wait...";
+//echo "API Key = $api_key <br/><br/>";
+//echo "List ID = $list_id <br/><br/>";
 
-require 'app/Mage.php';
-$app = Mage::app('');
+$correct = isset($api_key) && isset($list_id) && (strlen($list_id) > 0) && (strlen($api_key) > 0);
+
+if ($correct) {
+
+    ini_set('max_execution_time', 36000);
+    ini_set('memory_limit', '1024M');
+
+    echo "Synchronizing, please wait...";
+
+    require 'app/Mage.php';
+    $app = Mage::app('');
 
 
-$array = array();
+    $collection = Mage::getModel('customer/customer')->getCollection()
+        ->addAttributeToSelect('firstname')
+        ->addAttributeToSelect('lastname')
+        ->addAttributeToSelect('email');
 
-$collectionSub = Mage::getResourceModel ('newsletter/subscriber_collection')           
-            -> AddFieldToFilter ('subscriber_status', array ('eq' => 3));						/* 1=> subscribed,  2=> not active,  3=> unsubscribed */
-			
+    foreach ($collection as $item) {
+        $row = $item->getData();
 
-foreach($collectionSub as $sub) {
-	$array[] = $sub['subscriber_email'];
-}
+        if(strstr( $row['email'], "example.com")>-1)
+            ;
+        else
+            $batch[] = array('EMAIL' => $row['email'], 'FNAME' => $row['firstname'], 'LNAME' => $row['lastname']);
+    }
 
-$collection = Mage::getModel('customer/customer')->getCollection()
-->addAttributeToSelect('firstname')
-->addAttributeToSelect('lastname')
-->addAttributeToSelect('email')
-->addAttributeToFilter('email', array('nin' => $array));
+    echo "<br>Synchronizing " . count($batch) . " customers<br/> ";
 
-foreach ($collection as $item)
-{
-	$row = $item->getData();
-	$batch[] = array('EMAIL'=>$row['email'], 'FNAME'=>$row['firstname'], 'LNAME'=>$row['lastname']);
-}
+    include("mailchimpapi/Drewm/MailChimp.php");
 
-include("mailchimpapi/Drewm/MailChimp.php");
+    $mailChimp = new Drewm\MailChimp($api_key);
 
-$mailChimp = new Drewm\MailChimp($api_key);
+    $i = 0;
+    foreach ($batch as $single) {
 
-$i = 0;
-foreach($batch as $single){
+        ++$i;
 
-	++$i;
-	
-	$email = $single["EMAIL"];
-	$fname = $single["FNAME"];
-	$lname = $single["LNAME"];
-	
-    $result = $mailChimp->call('lists/subscribe', array(
-        'id'                => $list_id,
-        'email'             => array('email'=>$email),
-        'merge_vars'        => array('FNAME'=>$fname, 'LNAME'=>$lname),
-        'double_optin'      => false,
-        'update_existing'   => true,
-        'replace_interests' => false,
-        'send_welcome'      => false,
-    ));
-	
-	print_r($result);
-	
-	echo "<hr/>";
-}
+        $email = $single["EMAIL"];
+        $fname = $single["FNAME"];
+        $lname = $single["LNAME"];
 
-echo "<br/>Task completed";
+        $result = $mailChimp->call('lists/subscribe', array(
+            'id' => $list_id,
+            'email' => array('email' => $email),
+            'merge_vars' => array('FNAME' => $fname, 'LNAME' => $lname),
+            'double_optin' => false,
+            'update_existing' => true,
+            'replace_interests' => false,
+            'send_welcome' => false,
+        ));
+    }
 
-}
-else
-	echo "I guess list id is not provided or invalid";
+    echo "<br/>Task completed";
+
+} else
+    echo "I guess api key or list id are invalid";
 ?>

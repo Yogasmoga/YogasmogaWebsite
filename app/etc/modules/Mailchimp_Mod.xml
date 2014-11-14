@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <AW_All>
-            <active>false</active>
+        <Mailchimp_Mod>
+            <active>true</active>
             <codePool>local</codePool>
-        </AW_All>
+        </Mailchimp_Mod>
     </modules>
 </config>

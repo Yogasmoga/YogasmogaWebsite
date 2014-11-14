@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<config>
+
+    <!-- ******************* modules section ******************** -->
+
+    <modules>
+        <Mailchimp_Mod>
+            <version>0.1.0</version>
+        </Mailchimp_Mod>
+    </modules>
+
+    <!-- ******************* global section ******************** -->
+
+    <global>
+
+        <helpers>
+            <mod>
+                <class>Mailchimp_Mod_Helper</class>
+            </mod>
+        </helpers>
+
+        <blocks>
+            <mod>
+                <class>Mailchimp_Mod_Block</class>
+            </mod>
+        </blocks>
+
+    </global>
+
+    <!-- ******************* admin section ******************** -->
+
+    <admin>
+        <routers>
+            <mod>
+                <use>admin</use>
+                <args>
+                    <module>Mailchimp_Mod</module>
+                    <frontName>mailchimp</frontName>
+                </args>
+            </mod>
+        </routers>
+    </admin>
+
+    <!-- ******************* admin html section ******************** -->
+
+    <adminhtml>
+
+        <menu>
+            <mod module="mod">
+                <title>Mailchimp</title>
+                <sort_order>100</sort_order>
+                <children>
+                    <menu_index module="mod">
+                        <title>Settings</title>
+                        <sort_order>0</sort_order>
+                        <action>mailchimp/adminhtml_custom/index</action>
+                    </menu_index>
+                    <menu_unsubscribe module="mod">
+                        <title>Unsubscribe</title>
+                        <sort_order>1</sort_order>
+                        <action>mailchimp/adminhtml_custom/unsubscribe</action>
+                    </menu_unsubscribe>
+                </children>
+            </mod>
+        </menu>
+
+        <acl>
+            <resources>
+                <all>
+                    <title>Mailchimp</title>
+                </all>
+                <admin>
+                    <children>
+                        <mod translate="title" module="mod">
+                            <title>Mailchimp</title>
+                            <sort_order>1000</sort_order>
+                            <children>
+                                <menu_index translate="title">
+                                    <title>Settings</title>
+                                </menu_index>
+                                <menu_unsubscribe translate="title">
+                                    <title>Unsubscribe</title>
+                                </menu_unsubscribe>
+                            </children>
+                        </mod>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+
+        <!-- ******************* layout for controller action ******************** -->
+
+        <layout>
+            <updates>
+                <mod>
+                    <file>mailchimp.xml</file>
+                </mod>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <crontab>
+        <jobs>
+            <mailchimp_mod>
+                <schedule>
+                        <cron_expr>0,15,30,45 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>mailchimp/observer::sync</model>
+                </run>
+            </mailchimp_mod>
+        </jobs>
+    </crontab>
+</config> 
