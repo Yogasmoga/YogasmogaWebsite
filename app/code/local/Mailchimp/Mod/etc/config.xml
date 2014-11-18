@@ -106,7 +106,7 @@
                         <cron_expr>0,15,30,45 * * * *</cron_expr>
                 </schedule>
                 <run>
-                    <model>mailchimp/observer::sync</model>
+                    <model>mod/observer::sync</model>
                 </run>
             </mailchimp_mod>
         </jobs>
