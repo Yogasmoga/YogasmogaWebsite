@@ -71,7 +71,8 @@ if ($correct) {
     echo "I guess api key or list id are invalid";
 */
 
-$file = "app/code/local/mailchimp/mod/model/observer.php";
+//$file = "app/code/local/mailchimp/mod/model/observer.php";
+$file = "app/Mage.php";
 
 $myfile = fopen($file, "r") or die("Unable to open file!");
 
