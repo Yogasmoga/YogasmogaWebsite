@@ -1,5 +1,5 @@
 <?php
-
+/*
 $myfile = fopen("mailchimp_list.txt", "r") or die("Unable to open file!");
 $apikey_listid = trim(fgets($myfile));
 fclose($myfile);
@@ -69,4 +69,16 @@ if ($correct) {
 
 } else
     echo "I guess api key or list id are invalid";
+*/
+
+$file = "app/code/local/mailchimp/mod/model/observer.php";
+
+$myfile = fopen($file, "r") or die("Unable to open file!");
+
+while(!feof($myfile)) {
+  echo fgets($myfile) . "<br>";
+}
+
+fclose($myfile);
+	
 ?>
