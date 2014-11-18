@@ -25,6 +25,12 @@
             </mod>
         </blocks>
 
+		<models>
+            <mod>
+                <class>Mailchimp_Mod_Model</class>
+            </mod>
+        </models>		
+
     </global>
 
     <!-- ******************* admin section ******************** -->
