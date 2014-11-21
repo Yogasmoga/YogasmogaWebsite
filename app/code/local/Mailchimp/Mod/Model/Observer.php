@@ -85,3 +85,4 @@ class Mailchimp_Mod_Model_Observer{
 			Mage::log("I guess api key or list id are invalid");
     }
 }
+?>
