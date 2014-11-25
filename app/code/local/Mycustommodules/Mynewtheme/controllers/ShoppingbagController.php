@@ -602,10 +602,421 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $totalitems = $this->getcartcount().' item';
             $grandtotal = 'donotshowprice';
         }
+        //$discountHtml = $this->updateDiscount();
+        $customerId = Mage::getModel('customer/session')->getCustomerId();
+        $discountHtml = '';
+        if($customerId) {
+            $discountHtml = $this->newUpdateDiscount($grandtotal,$totalitems, $subtotal);
+        }
 
 
         //end totals
-        echo json_encode(array("status" => "success","count" => $totalitems,"subtotal" => $subtotal,"grandtotal" => $grandtotal));
+        echo json_encode(array("status" => "success","count" => $totalitems,"subtotal" => $subtotal,"grandtotal" => $grandtotal, "upperHtml"=>$discountHtml));
+    }
+
+    public function newUpdateDiscount($grandtotal, $totalitems, $subtotal)
+    {
+        $totalhtml = '';
+        $totalhtml .= '
+                        <!-- totalAmount -->
+                        <div class="totalAmnt capstxt">
+                            <span class="f-left">Total</span>
+                            <span class="f-right cart-grandtotal">'.$grandtotal.'</span>
+                        </div>
+                        <!-- totalAmount -->';
+        $html = $totalhtml;
+        $stritem = 'item';
+        if($this->getcartcount() > 1)
+        {
+            $stritem = 'items';
+        }
+        $checksmogiapplied = false;
+        $checkpromoapplied = false;
+        $checkgiftapplied = false;
+        $customerId = Mage::getModel('customer/session')->getCustomerId();
+        if($customerId) {
+            $continuelink=Mage::getBaseUrl().'checkout/onepage';
+            $getcustomerpoints = $this->getCustomerPoints($customerId);
+            $getsmogipointscurrentlyuserd = $this->getPointsCurrentlyUsed();
+            $showedpoints = $getcustomerpoints - $getsmogipointscurrentlyuserd;
+            if($getsmogipointscurrentlyuserd) $getcustomerpoints = $getcustomerpoints - $getsmogipointscurrentlyuserd;
+        }
+        $html .='
+                    <!-- listItems -->
+                    <ul id="sub-totals-discount">
+                        <li>
+                            <span class="f-left capstxt cart-totalitems">'.$totalitems.' '.$stritem.'</span>
+                            <span class="f-right cart-subtotal">'.$subtotal.'</span>
+                        </li>';
+
+        $checkisactive = '';
+
+        $getsmogipointscurrentlyuserd = $this->getPointsCurrentlyUsed();
+        if($getsmogipointscurrentlyuserd > 0)
+        {
+            $getsmogipointscurrentlyuserd = number_format((float)($getsmogipointscurrentlyuserd), 2, '.', '');
+            $html .='<li class="smogi">
+                            <span class="f-left">SMOGI Bucks used | </span>
+                            <span class="removesmogi"><a>remove</a></span>
+                            <span class="f-right"  usedpoints ="'.$getsmogipointscurrentlyuserd.'">-$'.$getsmogipointscurrentlyuserd.'</span>
+                        </li>';
+            $checksmogiapplied = true;
+        }
+        // all conditions for apply coupon code (promotion code)
+        $checkgiftsapply = false;
+        if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+        {
+            $checkgiftsapply = true;
+        }
+        $promotioncode = Mage::getModel('smogiexpirationnotifier/applyremovediscount')->getCouponCode();
+        if($promotioncode == '' && !$checksmogiapplied && !$checkgiftsapply)
+        {
+            $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+            if(isset($totals['discount']) && $totals['discount']->getValue())
+                $promotioncode = true;
+        }
+
+
+
+        if($promotioncode)
+        {
+            if(isset($totals['discount'])){
+                $discount = ($totals['discount']->getValue()); //Discount value if applied
+                $discount = substr($discount,1);
+                $discount = number_format((float)$discount, 2, '.','');
+                $afterdecimalcount = strlen(substr(strrchr($discount, "."), 1));
+                if($afterdecimalcount == 0)
+                    $discount .= '.00';
+                if($afterdecimalcount == 1)
+                    $discount .= '0';
+
+            }
+            $oCoupon = Mage::getModel('salesrule/coupon')->load($promotioncode, 'code');
+            $oRule = Mage::getModel('salesrule/rule')->load($oCoupon->getRuleId());
+            $coupondetails = $oRule->getData();
+            $coupondetails['discount_amount'] = number_format((float)$coupondetails['discount_amount'], 2, '.','');
+            if($coupondetails['simple_action'] == 'by_fixed')
+            {
+
+            }
+            if($coupondetails['simple_action'] == '')
+            {
+
+            }
+            if($coupondetails['simple_action'] == '')
+            {
+
+            }
+            if($coupondetails['simple_action'] == '')
+            {
+
+            }
+            if($promotioncode == 1)
+            {
+                $html .='<li class="promotion">
+                            <span class="f-left">Discount : </span>
+                            <span class="f-right" class="active" usedpromotion ="'.$discount.'">-$'.$discount.'</span>
+                        </li>';
+            }else{
+                $html .='<li class="promotion">
+                            <span class="f-left">&#39;'.$promotioncode.'&#39; promo used | </span>
+                            <span class="removepromotion"><a>remove</a></span>
+                            <span class="f-right" class="active" usedpromotion ="'.$discount.'">-$'.$discount.'</span>
+                        </li>';
+            }
+
+            $checkpromoapplied = true;
+
+
+        }
+        // all conditions for apply Gift of YS
+        if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+        {
+            $giftofysbalance = Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId());
+            $discount = $totals['discount']->getValue();
+            $discount1 = ($discount * -1.00);
+            $discount =  number_format((float)$discount1, 2, '.','');  //Discount value if applied
+
+
+            $html .='<li class="giftcard">
+                            <span class="f-left">$'.$discount1.' Gift Card used  |</span>
+                            <span class="removegiftcart"><a>remove</a></span>
+
+                            <span class="f-right" usedgiftcard ="'.$discount.'">-$'.$discount.'</span>
+
+
+                        </li>';
+            $checkgiftapplied = true;
+        }
+        $shippingPrice = '';
+        $shippingcode = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingMethod();
+        if($shippingcode == "")
+            $shippingPrice =  "FREE";
+        else
+            if($this->getShippingCost($shippingcode) == 0)
+                $shippingPrice = "FREE";
+            else
+                $shippingPrice =  "$".number_format((float)($this->getShippingCost($shippingcode)), 2, '.', '');
+
+
+
+        if($checksmogiapplied == '1' && $showedpoints > 0) $usesmogi="<p class='c-align'>You can't use other codes with SMOGI Bucks.</p>";
+        else if($checkpromoapplied == '1' || $checkgiftapplied == '1') $usesmogi='';
+        else if($checksmogiapplied != '1' && $showedpoints > 0) $usesmogi='';
+        else if($checksmogiapplied != '1' && $showedpoints > 0) $usesmogi='<p class="c-align">Use your SMOGI Bucks for this purchase</p>';
+        $usesmogi = '';
+        $html .=  '<li>';
+        if($shippingPrice == "FREE")
+            $html .= '      <span class="f-left">Shipping: </span>
+                            <span class="f-right capstxt">'.$shippingPrice.'</span>';
+        else
+            $html .= '      <span class="f-left">Shipping: </span>
+                            <span class="f-right capstxt">'.$shippingPrice.'</span>';
+
+
+        $html .='     </li>';
+//        if($tax > 0)
+//            $html .= '<li>
+//                        <span class="f-left">Tax: </span>
+//                            <span class="f-right capstxt">'."$".number_format((float)($tax), 2, '.', '').'</span></li>';
+        $html .= '  </ul>
+                    <!-- listItems -->
+                    '.$usesmogi.'
+                    <!-- addItem Input -->
+                    <div class="adddields">
+                        <form>';
+        $customerId = Mage::getModel('customer/session')->getCustomerId();
+        if(!$customerId)
+            $html .=' <label><input type="text" name="smogi" class="gry lightgray" available="0" id="smogi" value="Sign in to use SMOGI Bucks" disabled="disabled"/><span  class="smogi-login">+</span></label>
+                        <label><input type="text" name="giftcartcode" data-used="no" class="gry lightgray" id="giftcartcode" value="Sign in to use Promo Code / Gift Card Code" disabled="disabled" /><span class="giftcardlogin">+</span></label>';
+        else{
+            $gryclasssmogi = "";
+            $gryclasspromo = "";
+            $gryclassgift = "";
+            $applygiftcard="applygiftcard";
+            $applygiftdisable="";
+            $applypromo="applypromo";
+            $applypromodisable="";
+            $applysmogi="applysmogi";
+            $applysmogidisable="";
+            $checkboxapplied="";
+            $smogiplaceholder="Use your ".$showedpoints." SMOGI Bucks toward this purchase";
+            $showedpointsvalue=$showedpoints;
+            $codeused='';
+            if($checksmogiapplied)
+            {
+                $gryclasspromo = "gry";
+                $gryclassgift = "gry";
+                $applygiftcard="";
+                if($showedpoints < 1) {
+                    $applysmogidisable=" disabled='disabled'";
+                    $gryclasssmogi = "gry";
+                }
+                $showedpointsvalue=$showedpoints;
+                $applygiftdisable=" disabled='disabled'";
+//                $applypromo="";
+//                $applypromodisable=" disabled='disabled'";
+                $checkboxapplied=" disabled='disabled'";
+            }
+            if($checkpromoapplied)
+            {
+                $smogiplaceholder="SMOGI Bucks cannot be used with Promo Codes";
+                $gryclasssmogi = "gry";
+                $gryclassgift = "gry";
+                $applysmogi="";
+                $applygiftcard="";
+                //$applypromodisable=" disabled='disabled'";
+                $applysmogidisable=" disabled='disabled'";
+                $applygiftdisable=" disabled='disabled'";
+                $checkboxapplied=" disabled='disabled'";
+                $showedpointsvalue="";
+                $codeused='yes';
+            }
+            if($checkgiftapplied)
+            {
+                //$gryclassgift = "gry";
+                $smogiplaceholder="SMOGI Bucks cannot be used with Promo Codes";
+                $gryclasssmogi = "gry";
+                $gryclasspromo = "gry";
+                $applysmogi="";
+                $applysmogidisable=" disabled='disabled'";
+                $checkboxapplied="";
+                $showedpointsvalue="";
+                $codeused='yes';
+                //$applygiftcard="";
+                //$applygiftdisable=" disabled='disabled'";
+                //   $applypromo="";
+                // $applypromodisable=" disabled='disabled'";
+            }
+            if($showedpoints >= 1) {
+                $html .=' <label><input type="text" class = "'.$gryclasssmogi.'" placeholder="'.$smogiplaceholder.'" available="'.$getcustomerpoints.'" name="smogi" id="smogi"  '.$applysmogidisable.'/><span class="'.$applysmogi.'">+</span><span class="error-count"></span></label>';
+            }
+            if($showedpoints < 1) {
+                $applysmogidisable=" disabled='disabled'";
+                $html .=' <label><input type="text" name="smogi" class="gry lightgray" placeholder="You have no more available SMOGI Bucks" '.$applysmogidisable.'/><span class="">+</span><span class="error-count"></span></label>';
+            }
+            // check if promotion code is used or not
+//            if($promotioncode)
+//            {
+//                $html .='<label><input type="text" name="promocode" id="promocode" value="'.$promotioncode.' promo used"   '.$applypromodisable.' class="gry" /><span class="">+</span><span class="error-count"></span></label>';
+//            }
+//            else
+//            {
+//                $html .='<label><input type="text" class="'.$gryclasspromo.'" name="promocode" id="promocode" placeholder="Add a promo code"  '.$applypromodisable.'/><span class="'.$applypromo.'">+</span><span class="error-count"></span></label>';
+//            }
+
+            // check for Gift of YS
+
+            $giftofysbalance = Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId());
+            $giftofysbalance = number_format((float)$giftofysbalance, 2, '.','');
+            if($giftofysbalance > 0 || $promotioncode == '1')
+            {
+                $html .='  <label><input class="'.$gryclassgift.'" type="text" data-used="'.$codeused.'" name="giftcartcode" id="giftcartcode" placeholder="Add a Promo Code / Gift Card Code" '.$applygiftdisable.'/><span class="'.$applygiftcard.'">+</span><span class="error-count"></span></label>';
+                if(Mage::getSingleton("giftcards/session")->getActive() == "1")
+                {
+                    //  $html .='<div> <input type="checkbox" value="1" checked="checked" class="giftcardcheckbox" '.$checkboxapplied.'/><p>Use your Gift Card balance: $'.$giftofysbalance.' available.</p></div>';
+                }
+                else
+                {
+                    $html .='<div style="min-height: inherit;"> <input type="checkbox" id="giftCardShop" value="1"  class="giftcardcheckbox"  '.$checkboxapplied.'/><label for="giftCardShop">Use your Gift Card balance: $'.$giftofysbalance.' available</label></div>';
+                }
+                $html .='<div class="giftcarloader" style="clear: both;text-align:left;position:text-align: left; width: 100%;"></div>';
+            }
+            else
+            {
+                $html .=' <label><input  class="'.$gryclassgift.'" type="text" data-used="'.$codeused.'" name="giftcartcode" id="giftcartcode" placeholder="Add a Promo Code / Gift Card Code" '.$applygiftdisable.' /><span class="'.$applygiftcard.'">+</span><span class="error-count"></span></label>
+
+                    ';
+            }
+
+
+
+
+
+        }
+        $errormsg = '';
+        $globalerrormsg = html_entity_decode(strip_tags(Mage::getSingleton('core/session')->getGlobalMessage()));
+        if($globalerrormsg !='')
+            $errormsg = $globalerrormsg;
+        Mage::getSingleton('core/session')->setGlobalMessage('');
+        $html .='<div class="errortext">'.$errormsg.'</div>';
+        $html .='<div class="bagerrormsg" id="redeemresult"></div><div class="zindexH"></div>';
+        // $html .='           <label><input type="text" name="promocode" id="promocode" value="Add a promo code" /><span>+</span></label>
+        //                     <label><input type="text" name="giftcartcode" id="giftcartcode" value="Add a gift card code" /><span>+</span></label>';
+        if(!$customerId)
+            $html .= '<a class="shoppingbag-login" href="#login" >Sign-in or Register here</a>';
+        $html .='                </form>
+
+
+
+
+                    </div>
+                    <div class="clear-fix"></div>
+
+                    ';
+
+        return $html;
+
+
+    }
+    public  function updateDiscount()
+    {
+        $html = '';
+        $getsmogipointscurrentlyuserd = $this->getPointsCurrentlyUsed();
+        if($getsmogipointscurrentlyuserd > 0)
+        {
+            $getsmogipointscurrentlyuserd = number_format((float)($getsmogipointscurrentlyuserd), 2, '.', '');
+            $html .='<li class="smogi">
+                            <span class="f-left">SMOGI Bucks used | </span>
+                            <span class="removesmogi"><a>remove</a></span>
+                            <span class="f-right"  usedpoints ="'.$getsmogipointscurrentlyuserd.'">-$'.$getsmogipointscurrentlyuserd.'</span>
+                        </li>';
+            $checksmogiapplied = true;
+        }
+        // all conditions for apply coupon code (promotion code)
+
+
+        $promotioncode = Mage::getModel('smogiexpirationnotifier/applyremovediscount')->getCouponCode();
+        if($promotioncode == '' && !$checksmogiapplied)
+        {
+            $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+            if(isset($totals['discount']) && $totals['discount']->getValue())
+                $promotioncode = true;
+        }
+
+
+
+        if($promotioncode)
+        {
+            if(isset($totals['discount'])){
+                $discount = ($totals['discount']->getValue()); //Discount value if applied
+                $discount = substr($discount,1);
+                $discount = number_format((float)$discount, 2, '.','');
+                //$afterdecimalcount = strlen(substr(strrchr($discount, "."), 1));
+                $afterdecimalcount = number_format((float)$discount, 2, '.','');
+                /*if($afterdecimalcount == 0)
+                    $discount .= '.00';
+                if($afterdecimalcount == 1)
+                    $discount .= '0';*/
+
+            }
+            $oCoupon = Mage::getModel('salesrule/coupon')->load($promotioncode, 'code');
+            $oRule = Mage::getModel('salesrule/rule')->load($oCoupon->getRuleId());
+            $coupondetails = $oRule->getData();
+            $coupondetails['discount_amount'] = number_format((float)$coupondetails['discount_amount'], 2, '.','');
+            if($coupondetails['simple_action'] == 'by_fixed')
+            {
+
+            }
+            if($coupondetails['simple_action'] == '')
+            {
+
+            }
+            if($coupondetails['simple_action'] == '')
+            {
+
+            }
+            if($coupondetails['simple_action'] == '')
+            {
+
+            }
+            if($promotioncode == 1)
+            {
+                $html .='<li class="promotion">
+                            <span class="f-left">Discount : </span>
+                            <span class="f-right" class="active" usedpromotion ="'.$discount.'">-$'.$discount.'</span>
+                        </li>';
+            }else{
+                $html .='<li class="promotion">
+                            <span class="f-left">&#39;'.$promotioncode.'&#39; promo used | </span>
+                            <span class="removepromotion"><a>remove</a></span>
+                            <span class="f-right" class="active" usedpromotion ="'.$discount.'">-$'.$discount.'</span>
+                        </li>';
+            }
+
+            return $html;
+
+
+        }
+        // all conditions for apply Gift of YS
+        if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+        {
+            $giftofysbalance = Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId());
+            $discount = $totals['discount']->getValue();
+            $discount1 = ($discount * -1.00);
+            $discount =  number_format((float)$discount1, 2, '.','');  //Discount value if applied
+
+
+            $html .='<li class="giftcard">
+                            <span class="f-left">$'.$discount1.' Gift Card used  |</span>
+                            <span class="removegiftcart"><a>remove</a></span>
+
+                            <span class="f-right" usedgiftcard ="'.$discount.'">-$'.$discount.'</span>
+
+
+                        </li>';
+            $checkgiftapplied = true;
+        }
     }
 
     protected function _getSession()
@@ -1001,7 +1412,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $html .= $totalhtml;
         $html .='
                     <!-- listItems -->
-                    <ul>
+                    <ul id="sub-totals-discount">
                         <li>
                             <span class="f-left capstxt cart-totalitems">'.$minidetails['totalitems'].' '.$stritem.'</span>
                             <span class="f-right cart-subtotal">'.$minidetails['subtotal'].'</span>
@@ -1022,8 +1433,22 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         }
         // all conditions for apply coupon code (promotion code)
 
-
+        // for 75 $ auto apply
+        $checkgiftsapply = false;
+        if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
+            {
+            $checkgiftsapply = true;
+            }
         $promotioncode = Mage::getModel('smogiexpirationnotifier/applyremovediscount')->getCouponCode();
+        if($promotioncode == '' && !$checksmogiapplied && !$checkgiftsapply)
+        {
+            $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+            if(isset($totals['discount']) && $totals['discount']->getValue())
+                $promotioncode = true;
+        }
+        // end // for 75 $ auto apply
+
+
         if($promotioncode)
         {
             if(isset($totals['discount'])){
@@ -1056,12 +1481,20 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             {
 
             }
-
-            $html .='<li class="promotion">
+            if($promotioncode == 1)
+            {
+                $html .='<li class="promotion">
+                            <span class="f-left">Discount : </span>
+                            <span class="f-right" class="active" usedpromotion ="'.$discount.'">-$'.$discount.'</span>
+                        </li>';
+            }else{
+                $html .='<li class="promotion">
                             <span class="f-left">&#39;'.$promotioncode.'&#39; promo used | </span>
                             <span class="removepromotion"><a>remove</a></span>
                             <span class="f-right" class="active" usedpromotion ="'.$discount.'">-$'.$discount.'</span>
                         </li>';
+            }
+
             $checkpromoapplied = true;
 
 

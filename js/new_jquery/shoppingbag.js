@@ -594,13 +594,36 @@ function shoppingBagTotals()
 
                 jQuery(".shopping-cart .cart-totalitems").html(data.count);
                 jQuery(".shopping-cart .cart-subtotal").html(data.subtotal);
+                /*
+                if(jQuery("#sub-totals-discount li").eq(1).hasClass('promotion')) {
+                    jQuery("#sub-totals-discount li.promotion").remove();
+                }
+                if(jQuery("#sub-totals-discount li").eq(1).hasClass('smogi')) {
+                    jQuery("#sub-totals-discount li.smogi").remove();
+                }
+                if(jQuery("#sub-totals-discount li").eq(1).hasClass('giftcard')) {
+                    jQuery("#sub-totals-discount li.giftcard").remove();
+                }
+                jQuery("#sub-totals-discount li").eq(0).after(data.discounthtml);
+                jQuery("#smogi").attr("disabled","disabled");
+                jQuery("#giftcartcode").attr("disabled","disabled");
+                if(data.discounthtml != null) {
 
+                    jQuery("span.applysmogi").click(function() {
+                        return false;
+                    });
+                }*/
+
+
+                //jQuery("#sub-totals-discount").eq("0").find('li').append(data.discounthtml);
                 var dontshow = 'donotshowprice';
                 if(data.grandtotal != 'donotshowprice')
                 {
                     jQuery(".shopping-cart .cart-grandtotal").html(data.grandtotal);
 
                 }
+                if(data.upperHtml != '')
+                    jQuery(".contfull2").html('').append(data.upperHtml);
 
             }
         });

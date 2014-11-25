@@ -99,6 +99,9 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
     
     public function addAction()
     {
+        Mage::getModel('smogiexpirationnotifier/applyremovediscount')->removesmogibucks();
+        Mage::getSingleton('giftcards/session')->setActive('0');
+
         $cart   = $this->_getCart();
         $params = $this->getRequest()->getParams();
         $showhtml = $params['showhtml'];
