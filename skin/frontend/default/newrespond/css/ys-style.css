@@ -52,3 +52,6 @@ div.sub-fab img{width: 45% !important; display: block; margin:25px auto 0 auto;}
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) {
 	.firstdialog{left: 2% !important;} 
 }
+span.label{
+    color: #000000!important;
+}
