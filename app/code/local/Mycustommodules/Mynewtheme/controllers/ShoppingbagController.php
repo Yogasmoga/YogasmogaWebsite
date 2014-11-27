@@ -674,6 +674,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
             if(isset($totals['discount']) && $totals['discount']->getValue())
                 $promotioncode = true;
+
+            echo $promotioncode;echo 'manish';
         }
 
 
