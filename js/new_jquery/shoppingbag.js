@@ -631,7 +631,7 @@ function shoppingBagTotals()
 
             }
         });
-    },500);
+    },1000);
 
 }
 
