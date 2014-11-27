@@ -395,7 +395,29 @@ if(Mage::getSingleton('customer/session')->isLoggedIn())
             </table>
         </fieldset>
     </form>
-    <div class="cart-collaterals">
+    <?php
+
+
+    $promotioncode = Mage::getModel('smogiexpirationnotifier/applyremovediscount')->getCouponCode();
+    if($promotioncode == '')
+    {
+        $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+        if(isset($totals['discount']) && $totals['discount']->getValue())
+        {
+            $promotioncode = true;
+            //echo $promotioncode;echo 'manish';
+        }
+
+
+    }
+        if($promotioncode == 1)
+        {
+    ?>
+
+    <div class="cart-collaterals" id="for-discount-check" discount = "yes">
+        <?php }else{ ?>
+        <div class="cart-collaterals">
+            <?php } ?>
             <div class="collat-wrap">
             	<?php  echo $this->getChildHtml('giftcards') ?>
                 <?php  echo $this->getChildHtml('coupon') ?>
@@ -432,3 +454,22 @@ if(Mage::getSingleton('customer/session')->isLoggedIn())
             </div>
     </div>
 </div>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+
+            var promo = jQuery("#for-discount-check").attr("discount");
+            if(promo == 'yes')
+            {
+                console.log('re');
+                jQuery("#gf1").prop('disabled', true);
+                jQuery("#gf2").prop('disabled', true);
+                jQuery("#gf3").prop('disabled', true);
+                jQuery("#giftcard_use").prop('disabled', true);
+                jQuery("#giftcard_code").prop('disabled', true);
+                jQuery("#points_to_be_used").prop('disabled', true);
+            }
+
+
+        });
+    </script>
