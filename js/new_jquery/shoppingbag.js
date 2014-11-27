@@ -623,7 +623,11 @@ function shoppingBagTotals()
 
                 }
                 if(data.upperHtml != '')
+                {
                     jQuery(".contfull2").html('').append(data.upperHtml);
+
+                }
+
 
             }
         });

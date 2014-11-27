@@ -600,7 +600,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         if($this->getcartcount() == 1)
         {
             $totalitems = $this->getcartcount().' item';
-            $grandtotal = 'donotshowprice';
+            //$grandtotal = 'donotshowprice';
         }
         //$discountHtml = $this->updateDiscount();
         $customerId = Mage::getModel('customer/session')->getCustomerId();
@@ -645,7 +645,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     <!-- listItems -->
                     <ul id="sub-totals-discount">
                         <li>
-                            <span class="f-left capstxt cart-totalitems">'.$totalitems.' '.$stritem.'</span>
+                            <span class="f-left capstxt cart-totalitems">'.$totalitems.'</span>
                             <span class="f-right cart-subtotal">'.$subtotal.'</span>
                         </li>';
 
