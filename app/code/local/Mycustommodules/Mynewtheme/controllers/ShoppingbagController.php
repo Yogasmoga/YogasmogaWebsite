@@ -600,7 +600,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         if($this->getcartcount() == 1)
         {
             $totalitems = $this->getcartcount().' item';
-            //$grandtotal = 'donotshowprice';
+            $grandtotal = 'donotshowprice';
         }
         //$discountHtml = $this->updateDiscount();
         $customerId = Mage::getModel('customer/session')->getCustomerId();

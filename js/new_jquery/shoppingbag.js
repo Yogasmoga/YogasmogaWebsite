@@ -580,6 +580,7 @@ function shoppingBagTotals()
     //jQuery(".shopping-cart").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='margin:80% auto auto;' />");
     if(!check4reviewpage)
      jQuery.ajax({url : checkouturl});
+    //window.location.reload();
     // end check for paypal final review page
     setTimeout(function(){
 
@@ -622,7 +623,7 @@ function shoppingBagTotals()
                     jQuery(".shopping-cart .cart-grandtotal").html(data.grandtotal);
 
                 }
-                if(data.upperHtml != '')
+                if(data.upperHtml != '' && data.grandtotal != 'donotshowprice' )
                 {
                     jQuery(".contfull2").html('').append(data.upperHtml);
 
