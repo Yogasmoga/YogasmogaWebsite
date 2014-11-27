@@ -578,6 +578,19 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
     }
     public function shoppingbagtotalsAction()
     {
+        // refresh cart total
+        $cart = Mage::getSingleton('checkout/session')->getQuote();
+
+        foreach ($cart->getAllAddresses() as $address)
+        {
+            $cart->unsetData('cached_items_nonnominal');
+            $cart->unsetData('cached_items_nominal');
+        }
+
+        $cart->setTotalsCollectedFlag(false);
+        $cart->collectTotals();
+        // end refresh cart total
+
         // totals
         $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
         $subtotal = $totals["subtotal"]->getValue(); //Subtotal value
@@ -668,6 +681,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         {
             $checkgiftsapply = true;
         }
+        // refresh cart total
         $cart = Mage::getSingleton('checkout/session')->getQuote();
 
         foreach ($cart->getAllAddresses() as $address)
@@ -678,7 +692,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
         $cart->setTotalsCollectedFlag(false);
         $cart->collectTotals();
-
+        // end refresh cart total
         $promotioncode = Mage::getModel('smogiexpirationnotifier/applyremovediscount')->getCouponCode();
         if($promotioncode == '' && !$checksmogiapplied && !$checkgiftsapply)
         {
