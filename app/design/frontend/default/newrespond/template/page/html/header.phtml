@@ -64,7 +64,7 @@ if($serverType == 'production')
                 status = "error";// stop signup popup
                 if(status == "success")
                 {
-                    $( "#signup" ).dialog({
+                    /*$( "#signup" ).dialog({
                         autoOpen: true,
                         draggable: false,
                         resizable: false,
@@ -103,7 +103,7 @@ if($serverType == 'production')
                                 $("html,body").css("overflow-x","auto");
                             };
                         }
-                    });
+                    });*/
 
                     $(".header-container").on("click",".topmenulinks li a,.logo a",function() {
                     var navHref = $(this).attr("href");
