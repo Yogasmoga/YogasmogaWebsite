@@ -209,6 +209,85 @@ $i = 0;
     }*/
 
 //print_r($configurableProductArr);die;
+// carbon 6 only
+
+    if($categoryId == $categoryIds['insale_category_id'])
+    {
+        $simpleproductarr = array();
+
+        $productCollection = Mage::getModel('catalog/category')->load($categoryId)->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
+        ?>
+        <h4>Carbon 6</h4>
+        <?php
+        foreach($productCollection as $product)
+        {
+
+            if($product->getColor() == 76 && $categoryId == $categoryIds['insale_category_id'])
+            {
+                $simpleproductarr['id'] =  $product->getId();
+                $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($simpleproductarr['id']);
+                $simpleproductarr['parentid'] =  $parentIds[0];
+                $simpleproductarr['parentname'] =  Mage::getModel('catalog/product')->load($parentIds[0])->getName();
+                $simpleproductarr['color'] =  $product->getColor();
+                $simpleproductarr['price'] =  $product->getPrice();
+                $_gallery = Mage::getModel('catalog/product')->load($parentIds[0])->getMediaGalleryImages();
+                $imageArr = array();
+                foreach($_gallery as $_image)
+                {
+
+                    $imgdata = json_decode(trim($_image->getLabel()), true);
+
+                    $colorId = $imgdata['color'];
+
+                    if($imgdata['type'] == 'product image' && $imgdata['color'] == $simpleproductarr['color'] )
+                    {
+
+                        if(count($imageArr[$colorId])<=3)
+                        {
+
+                            array_push($imageArr,$_image->getFile());
+
+                        }
+                    }
+
+                }
+                $simpleproductarr['image'] =  $imageArr;
+
+                $confProduct = Mage::getModel('catalog/product')->load($simpleproductarr['parentid']);
+                // show html of the product
+                ?>
+
+                <div class="productCont">
+                    <div class="prod-img">
+                        <a href="<?php echo $confProduct->getProductUrl().'?color='.$simpleproductarr['color'];?>" >
+                            <?php
+                            foreach($simpleproductarr['image'] as $img )
+                            {
+                                ?>
+                                <img alt="<?php echo $confProduct->getName();?>" class="prd-image lazy" data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91); ?>" />
+                            <?php
+                            }
+
+                            ?>
+                        </a>
+                    </div>
+                    <div class="caption">
+                        <div class="caption">
+                            <a href="<?php echo $confProduct->getProductUrl();?>"><?php echo $confProduct->getName().'<br/>';?> <?php echo $clrinfo[$simpleproductarr['color']]?></a>
+
+                            <span style="color:#c03;"> $<?php  echo  round( $simpleproductarr['price'],2);?></span>
+                            <span>was $<?php  echo  round($confProduct->getPrice(),2);?></span>
+                        </div>
+                    </div>
+                </div>
+            <?php
+            }
+        }
+    }
+    ?>
+<?php
+// carbon 6 end
+
 $firsth1 = 1;
 foreach($configurableProductArr as $key => $val){
     $confProduct = Mage::getModel('catalog/product')->load($key);
@@ -256,6 +335,7 @@ foreach($configurableProductArr as $key => $val){
 
     }
     ?>
+
 
     <!-- GridHeading -->
     <?php if($firsth1 == 1){ $firsth1 = 2;?>
@@ -306,6 +386,10 @@ foreach($configurableProductArr as $key => $val){
     <?php
     }
 }
+
+
+
+
 
 //print_r($configurableProductSort);
 // print_r($configurableProductSort2);
