@@ -675,7 +675,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             if(isset($totals['discount']) && $totals['discount']->getValue())
             {
                 $promotioncode = true;
-                echo $promotioncode;echo 'manish';
+                //echo $promotioncode;echo 'manish';
             }
 
 
