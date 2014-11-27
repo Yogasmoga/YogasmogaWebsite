@@ -668,6 +668,17 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         {
             $checkgiftsapply = true;
         }
+        $cart = Mage::getSingleton('checkout/session')->getQuote();
+
+        foreach ($cart->getAllAddresses() as $address)
+        {
+            $cart->unsetData('cached_items_nonnominal');
+            $cart->unsetData('cached_items_nominal');
+        }
+
+        $cart->setTotalsCollectedFlag(false);
+        $cart->collectTotals();
+
         $promotioncode = Mage::getModel('smogiexpirationnotifier/applyremovediscount')->getCouponCode();
         if($promotioncode == '' && !$checksmogiapplied && !$checkgiftsapply)
         {
@@ -675,7 +686,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             if(isset($totals['discount']) && $totals['discount']->getValue())
             {
                 $promotioncode = true;
-                //echo $promotioncode;echo 'manish';
+                echo $promotioncode;echo 'manish';
             }
 
 
