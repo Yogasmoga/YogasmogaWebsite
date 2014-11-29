@@ -31,7 +31,7 @@ if($categoryId != '')
 // check for in sale category
 $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('insale_category')->getValue('plain')), true);
 $showInSaleProduct = false;
-if($categoryId == $categoryIds['insale_category_id'])
+if($categoryId == $categoryIds['insale_category_id_women'] || $categoryId == $categoryIds['insale_category_id_mens'] )
 {
     $showInSaleProduct = true;
 }
@@ -211,19 +211,27 @@ $i = 0;
 //print_r($configurableProductArr);die;
 // carbon 6 only
 
-    if($categoryId == $categoryIds['insale_category_id'])
+    if($categoryId == $categoryIds['insale_category_id_women'] || $categoryId == $categoryIds['insale_category_id_mens'])
     {
         $simpleproductarr = array();
 
         $productCollection = Mage::getModel('catalog/category')->load($categoryId)->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
         ?>
-        <h4>Carbon 6</h4>
+
         <?php
+        $flag = true;
         foreach($productCollection as $product)
         {
 
-            if($product->getColor() == 76 && $categoryId == $categoryIds['insale_category_id'])
+
+            if($product->getColor() == 76 && ($categoryId == $categoryIds['insale_category_id_women'] || $categoryId == $categoryIds['insale_category_id_mens']))
             {
+                if($flag)
+                {
+                    $flag = false;
+                    ?><h4>Carbon 6</h4><?php
+                }
+
                 $simpleproductarr['id'] =  $product->getId();
                 $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($simpleproductarr['id']);
                 $simpleproductarr['parentid'] =  $parentIds[0];
