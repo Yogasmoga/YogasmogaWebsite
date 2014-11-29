@@ -30,7 +30,7 @@ if($categoryId != '')
 
 // check for in sale category
 $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('insale_category')->getValue('plain')), true);
-$showInSaleProduct = false;
+$showInSaleProduct = true;
 if($categoryId == $categoryIds['insale_category_id_women'] || $categoryId == $categoryIds['insale_category_id_mens'] )
 {
     $showInSaleProduct = true;
