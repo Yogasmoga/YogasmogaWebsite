@@ -70,7 +70,7 @@ if($serverType == 'production')
             success : function(data){
                  data = eval('('+data + ')');
                 var status = data.status;
-                status = "error";// stop signup popup
+                //status = "error";// stop signup popup
                 if(status == "success")
                 {
                     $("#signup").dialog( "open" );
