@@ -334,7 +334,7 @@ function openShoppingCart()
     jQuery(".side-menu-bar,.account-nav").addClass("scrolltopend");
 
 var shoppingWdth = jQuery(".shopping-cart").width();
-var bodyHght = jQuery("body").height();
+var bodyHght = jQuery("window").height();
 jQuery(".shopping-cart").css({
     "height": bodyHght,
     "display": 'block',
