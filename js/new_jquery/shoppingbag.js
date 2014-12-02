@@ -335,8 +335,10 @@ function openShoppingCart()
 
 var shoppingWdth = jQuery(".shopping-cart").width();
 var bodyHght = jQuery("body").height();// for shopping (undo)
+var windowHght = jQuery(window).height();
+    //console.log(windowHght+"manish");
 jQuery(".shopping-cart").css({
-    "height": bodyHght,
+    "height": windowHght,
     "display": 'block',
     "z-index":  10
 }).removeClass("hdnovr");
