@@ -37,7 +37,7 @@ class MageWorkshop_DetailedReview_Helper_Data extends Mage_Core_Helper_Abstract 
     private $_currentProtocolSecurity;
 
     public function getCurrentUrlWithNewParam($key, $value) {
-        $params = '?feedback=1&';
+        $params = '?';
         foreach ($_GET as $k => $v) {
             if ($k == 'feedback' || ($k == $key && $v == 'true') || $k == 'show_popup' )
                 continue;
@@ -140,7 +140,8 @@ class MageWorkshop_DetailedReview_Helper_Data extends Mage_Core_Helper_Abstract 
 
     public function getOptionalCategory($product = null, $param = null){
         if ( is_null($product) ) {
-            $product = Mage::registry('current_product');
+             $product = Mage::getModel('catalog/product')->load($_REQUEST['reviewId']);
+            //$product = Mage::registry('current_product');
         }
         if ( !$product || !$product_id = $product->getId() ) return false;
         if ( is_null($param) ) {

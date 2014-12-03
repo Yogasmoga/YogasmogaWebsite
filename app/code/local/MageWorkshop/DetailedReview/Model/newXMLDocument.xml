@@ -1,0 +1,45 @@
+        <reference name="head">
+    <action method="addItem" ifconfig="detailedreview/settings/enable">
+        <type>skin_css</type>
+        <name>css/detailedreview/jquery-ui.css</name>
+    </action>
+    <action method="addItem" ifconfig="detailedreview/settings/enable">
+        <type>skin_css</type>
+        <name>css/detailedreview/jquery.lightbox-0.5.css</name>
+    </action>
+    <action method="addItem">
+        <type>skin_css</type>
+        <name>css/styles.css</name>
+    </action>
+
+</reference>
+<reference name="content">
+<block type="detailedreview/review_form" name="product.review.form" as="review_form" template="detailedreview/review/form.phtml">
+        <block type="page/html_wrapper" name="product.review.form.fields.before" as="form_fields_before" translate="label">
+            <label>Review Form Fields Before</label>
+            <action method="setMayBeInvisible">
+                <value>1</value>
+            </action>
+        </block>
+    </block>
+    <block type="core/template" name="reviews_wrapper">
+        <block type="detailedreview/rating_entity_detailed" name="reviews_detailed"/>
+        <block type="detailedreview/page_html_pager" name="product_review_list.toolbar"/>
+
+    </block>
+
+</reference>
+<reference name="before_body_end">
+    <block type="detailedreview/js" after="detailedreview_header_timezone" name="detailedreview_header_js">
+        <action method="setTemplate" ifconfig="detailedreview/settings/enable">
+            <template>detailedreview/js.phtml</template>
+        </action>
+    </block>
+    <block type="core/template" after="detailedreview_header_js" name="detailedreview_header_include_css">
+        <action method="setTemplate" ifconfig="detailedreview/settings/enable">
+            <template>detailedreview/include_css.phtml</template>
+        </action>
+    </block>
+    
+</reference>
+

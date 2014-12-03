@@ -195,7 +195,8 @@ class MageWorkshop_DetailedReview_Model_Review extends Mage_Review_Model_Review
     {
         if (!isset($this->_reviewsCollection) || $processForce) {
             $params = Mage::app()->getRequest()->getParams();
-            $product = Mage::registry('product');
+            $product = Mage::getModel('catalog/product')->load($_REQUEST['reviewId']);
+            //$product = Mage::registry('product');
             /** @var MageWorkshop_DetailedReview_Model_Mysql4_Review_Collection $reviewsCollection */
             $reviewsCollection = Mage::getModel('review/review')->getCollection();
             $reviewsCollection->addOwnershipInfo()

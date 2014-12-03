@@ -1,0 +1,19 @@
+<?php echo "<pre>";
+$product = Mage::getModel('catalog/product')->load(1); 
+
+print_r($product);
+echo $this->getReviewsSummaryHtml($product, false, true)?>
+<?php 
+
+$review = Mage::getModel('review/review');
+$collection = $review->getProductCollection();
+$collection->addAttributeToSelect('*')
+           ->getSelect()
+           ->limit(5);
+           //->order('rand()');
+$review->appendSummary($collection);
+
+foreach($collection as $product) {
+   //     print_r($product->debug());
+}
+?>

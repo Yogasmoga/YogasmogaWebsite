@@ -1219,6 +1219,7 @@ if($_product->getAttributeText('canzoomimage') == "yes")
     <?php } ?>
     <!-- description -->
 </div>
+<?php echo $this->getReviewsSummaryHtml($_product, false, true)?><a href="<?php echo $this->getUrl('review')."?reviewId=".$_product->getId();?>">Read All Reviews</a>
 <!--Description -->
 
 <!-- completeLook -->
