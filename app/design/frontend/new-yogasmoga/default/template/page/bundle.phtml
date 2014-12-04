@@ -132,7 +132,7 @@
 
                     $bundleCategory = Mage::getModel('catalog/category')->load($categoryId);
                     $bundleCategory_imgUrl = $bundleCategory -> getImageUrl();
-                    $productCollection = $bundleCategory->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
+                    $productCollection = $bundleCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
                     ?>
                     <!-- bannerContainer -->
                     <div class="bannerFluid">
@@ -214,15 +214,69 @@
                                         $colorIndexArr [] = $row['Value'];
                                     }
 
+                                    $bundleParentProductIdsArr = json_decode(trim(Mage::getModel('core/variable')->loadByCode('bundle_product_Ids')->getValue('plain')), true);
+                                    $bundleParentProductIds = explode(",",$bundleParentProductIdsArr['bundle_products']);
 
-
-                                    $configurableProduct = array();
+                                    $simpleproductarr = array();
                                     foreach($productCollection as $product)
                                     {
+                                        $simpleproductarr['id'] =  $product->getId();
+                                        $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($simpleproductarr['id']);
+                                       // if(arrar_search())
+                                        //print_r($parentIds);die;
+                                        $simpleproductarr['parentid'] =  $parentIds[0];
+                                        $simpleproductarr['parentname'] =  Mage::getModel('catalog/product')->load($parentIds[0])->getName();
+                                        $simpleproductarr['color'] =  $product->getColor();
+                                        $simpleproductarr['price'] =  $product->getPrice();
+                                        $_gallery = Mage::getModel('catalog/product')->load($parentIds[0])->getMediaGalleryImages();
+                                        $imageArr = array();
+                                        foreach($_gallery as $_image)
+                                        {
 
-                                        $configurableProduct['id'] = $product->getId();
+                                            $imgdata = json_decode(trim($_image->getLabel()), true);
 
+                                            $colorId = $imgdata['color'];
 
+                                            if($imgdata['type'] == 'product image' && $imgdata['color'] == $simpleproductarr['color'] )
+                                            {
+
+                                                if(count($imageArr[$colorId])<=3)
+                                                {
+
+                                                    array_push($imageArr,$_image->getFile());
+
+                                                }
+                                            }
+
+                                        }
+                                        $simpleproductarr['image'] =  $imageArr;
+
+                                        $confProduct = Mage::getModel('catalog/product')->load($simpleproductarr['parentid']);
+                                        // show html of the product
+                                        ?>
+
+                                        <div class="productCont">
+                                            <div class="prod-img">
+                                                <a href="<?php echo $confProduct->getProductUrl().'?color='.$simpleproductarr['color'];?>" >
+                                                    <?php
+                                                    foreach($simpleproductarr['image'] as $img )
+                                                    {
+                                                        ?>
+                                                        <img alt="<?php echo $confProduct->getName();?>" class="prd-image lazy" data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91); ?>" />
+                                                    <?php
+                                                    }
+
+                                                    ?>
+                                                </a>
+                                                <a class="clickable" href="<?php echo $confProduct->getProductUrl().'?color='.$simpleproductarr['color'];?>"></a>
+                                            </div>
+                                            <div class="caption">
+                                                <div class="caption">
+                                                    <a href="<?php echo $confProduct->getProductUrl();?>"><?php echo $confProduct->getName().'<br/>';?> <?php echo $clrinfo[$simpleproductarr['color']]?></a><span>$<?php  echo  round($confProduct->getPrice(),2);?></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php
 
                                     }
 
