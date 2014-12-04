@@ -137,7 +137,7 @@
                     <!-- bannerContainer -->
                     <div class="bannerFluid">
                         <img title="Bundle" alt="Bundle" src="<?php echo $bundleCategory_imgUrl; ?>">
-                        <div class="bnrtxt"><h1 class="<?php //echo $bannerTxt ?>">Bundles</h1></div>
+                        <div class="bnrtxt"><h1 class="<?php //echo $bannerTxt ?>">HOLIDAY GIFT SETS</h1></div>
                     </div>
                     <!-- bannerContainer -->
 
@@ -200,9 +200,9 @@
                                 <!-- leftNav -->
 
                                 <!-- productGridImages -->
-                                <div class="gridWrap">
+                                <div class="gridWrap gs-bundle">
                                     <!-- gridHeading -->
-                                    <!--<h4>BEST SELLERS</h4>-->
+                                    <h1>$250 GIFT SETS</h1>
                                     <!-- gridHeading -->
                                     <?php
                                     // get color array
@@ -255,7 +255,7 @@
                                         // show html of the product
                                         ?>
 
-                                        <div class="productCont">
+                                        <!-- <div class="productCont">
                                             <div class="prod-img">
                                                 <a href="<?php echo $confProduct->getProductUrl().'?color='.$simpleproductarr['color'];?>" >
                                                     <?php
@@ -275,12 +275,64 @@
                                                     <a href="<?php echo $confProduct->getProductUrl();?>"><?php echo $confProduct->getName().'<br/>';?> <?php echo $clrinfo[$simpleproductarr['color']]?></a><span>$<?php  echo  round($confProduct->getPrice(),2);?></span>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     <?php
 
                                     }
 
                                     ?>
+
+                                     <!-- Gift set(one-image stack) container-->
+                                    <div class="one-image-stack">
+                                        <div class="giftSetImg">
+                                            <img src="<?php echo $this->getSkinUrl('images/gift-sets/os-img.jpg') ?>" alt="" />
+                                        </div>
+                                        <div class="gs-prd-det">
+                                            <div class="gs-left-prd single-pred-det">
+                                                <a href="">Product Name</a>
+                                                <span class="gs-color-name">Color / Color</span>
+                                                <span class="gs-color-name">$000 Sold Individually</span>
+                                            </div>
+                                            <div class="gs-center-prd grp-pred-det">
+                                                <a href="">Lorem Knit Set</a>                                                
+                                                <span class="gs-color-name">$250</span>
+                                            </div>
+                                            <div class="gs-right-prd single-pred-det">
+                                                <a href="">Product Name</a>
+                                                <span class="gs-color-name">Color / Color</span>
+                                                <span class="gs-color-name">$000 Sold Individually</span>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </div> 
+                                    <!-- Gift set(two-image stack) container-->
+                                    <div class="two-image-stack">
+                                        <div class="giftSetImg">
+                                            <div class="stack-left-img f-left">
+                                                <img src="<?php echo $this->getSkinUrl('images/gift-sets/ls-img.jpg') ?>" alt=""/>
+                                            </div>
+                                            <div class="stack-right-img f-right">
+                                                <img src="<?php echo $this->getSkinUrl('images/gift-sets/ls-img.jpg') ?>" alt=""/>
+                                            </div>
+                                        </div>
+                                        <div class="gs-prd-det">
+                                            <div class="gs-left-prd single-pred-det">
+                                                <a href="">Product Name</a>
+                                                <span class="gs-color-name">Color / Color</span>
+                                                <span class="gs-color-name">$000 Sold Individually</span>
+                                            </div>
+                                            <div class="gs-center-prd grp-pred-det">
+                                                <a href="">Lorem Knit Set</a>                                                
+                                                <span class="gs-color-name">$250</span>
+                                            </div>
+                                            <div class="gs-right-prd single-pred-det">
+                                                <a href="">Product Name</a>
+                                                <span class="gs-color-name">Color / Color</span>
+                                                <span class="gs-color-name">$000 Sold Individually</span>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </div> 
                                 </div>
                                 <!-- productGridImages -->
 
