@@ -713,7 +713,8 @@ function addtocart()
             console.log(_braOptionTypeID + "---" + _braOptionID);
         }
 
-        if(_isBundleOptionAvailable){
+        //if(_isBundleOptionAvailable && ){
+        if(false){
             var optId = jQuery(".cs-addPrd").attr("optionid");
             var optTypeId = jQuery(".cs-addPrd").attr("optiontypeid");
             addurl = addurl + '&options['+optId+']=' + optTypeId;

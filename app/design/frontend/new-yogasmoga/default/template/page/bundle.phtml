@@ -241,7 +241,7 @@
                                         $_gallery = Mage::getModel('catalog/product')->load($parentProductId)->getMediaGalleryImages();
                                         $parentProductInfo = Mage::getModel('catalog/product')->load($parentProductId);
                                         $bundleProduct['name'] = $parentProductInfo->getName();
-
+                                        $bundleProduct['price'] = "$".number_format((float)( $parentProductInfo->getPrice()), 2, '.', '');
                                         $firstParent = Mage::getModel('catalog/product')->load($parentIds[0]);
                                         $mainProduct = array();
 
@@ -268,7 +268,7 @@
                                                 $scarfInfo['name'] = $imgdata['name'];
                                                 $scarfInfo['color'] = $imgdata['color'];
                                                 $scarfInfo['price'] = "$".number_format((float)( $imgdata['price']), 2, '.', '');
-                                                $bundleProduct['price'] = "$".number_format((float)( $imgdata['bundlePrice']), 2, '.', '');
+
                                             }
 
 

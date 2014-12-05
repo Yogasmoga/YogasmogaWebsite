@@ -2439,7 +2439,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         <td>
         <!-- heading -->
         <div class="productname prdname"><?php echo html_entity_decode($productname); ?>
-            <span class="productcost amount"><?php echo $productprice; ?></span>
+            <span class="productcost-bundle amount-bundle"><?php echo $productprice; ?></span>
         </div>
         <!-- heading -->
 
@@ -2639,7 +2639,33 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 					                <button style="display: none;" id="preorderitem" title="Preorder" class="button cbtn btn-pre"><span>Preorder<span></span></span> </button>
                                     */ ?>
         <!-- AddToBag -->
+        <div class="box-seprtr last">
+            <div class="blck-head-sml"><span class="qty">Step 3</span></div>
+            <!-- addtobag-btn -->
+            <div id="orderitem" class="addtobag spbutton"
+                 imageurl="<?php echo $this->getNewSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>"
+                 downimageurl="<?php echo $this->getNewSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>"></div>
+            <!-- addtobag-btn -->
 
+            <!-- outofstock-btn -->
+            <div id="outofstockitem" class="outofstockitem"></div>
+            <!-- outofstock-btn -->
+
+            <!-- preorder-btn -->
+            <div id="preorderitem" class="preorderitem spbutton"
+                 imageurl="<?php echo $this->getNewSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>"
+                 downimageurl="<?php echo $this->getNewSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>"></div>
+            <!-- preorder-btn -->
+
+            <!-- producterror -->
+            <div class="producterrorcontainer">
+                <div class="errormsg"></div>
+                <!-- <img id="preorderhelp" src="<?php //echo $this->getSkinUrl('images/help.png'); ?>" /> -->
+            </div>
+            <!-- producterror -->
+
+            <p class="c-align freeshipptext"><em>Free and fast shipping to US and Canada</em></p>
+        </div>
         <!-- AddToBag -->
         </td>
         </tr>
@@ -2713,53 +2739,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 </td>
             </tr>
         </table>
-        <div class="combo-sale">
-            <?php $i=1;
-            foreach($bundlealloptions as $options)
-            {
-                ?>
-                <div class="cs-addPrd <?php echo 'scarf'.$i; ?>"  value="<?php echo $options['default_price']; ?>" title="<?php echo $options['default_title']; ?>" optionid="<?php echo $options['option_id']; ?>" optiontypeid="<?php echo $options['option_type_id']; ?>"><?php echo $options['default_title']; ?></div>
-            <?php
-            }
 
-            ?>
-            <h3>Combo Sale</h3>
-            <div class="cs-products f-left">
-                <img src="<?php echo $this->bundlesmallimageurl;?>"/>
-                <img src="<?php echo $this->getNewSkinUrl("images/plus.png") ?>" alt=""width="24"/>
-                <img src="<?php echo $this->scarfsmallimageurl;?>" />
-                <img src="<?php echo $this->getNewSkinUrl("images/equal.png")?>" alt="" width="24"/>
-                <span class="cs-total-price">$250</span>
-            </div>
-            <!-- AddToBag -->
-            <div class="box-seprtr last f-left">
-                <!-- addtobag-btn -->
-                <div id="orderitem" class="addtobag spbutton"
-                     imageurl="<?php echo $this->getNewSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>"
-                     downimageurl="<?php echo $this->getNewSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>"></div>
-                <!-- addtobag-btn -->
-
-                <!-- outofstock-btn -->
-                <div id="outofstockitem" class="outofstockitem"></div>
-                <!-- outofstock-btn -->
-
-                <!-- preorder-btn -->
-                <div id="preorderitem" class="preorderitem spbutton"
-                     imageurl="<?php echo $this->getNewSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>"
-                     downimageurl="<?php echo $this->getNewSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>"></div>
-                <!-- preorder-btn -->
-
-                <!-- producterror -->
-                <div class="producterrorcontainer">
-                    <div class="errormsg"></div>
-                    <!-- <img id="preorderhelp" src="<?php //echo $this->getSkinUrl('images/help.png'); ?>" /> -->
-                </div>
-                <!-- producterror -->
-
-                <p class="c-align freeshipptext"><em>Free and fast shipping to US and Canada</em></p>
-            </div>
-            <div class="clear"></div>
-        </div>
         <!-- AddToBag -->
         <img id="closelightbox" src="<?php echo $this->getSkinUrl('images/catalog/product/close1.png'); ?>" />
         <div class="quick-navigation">

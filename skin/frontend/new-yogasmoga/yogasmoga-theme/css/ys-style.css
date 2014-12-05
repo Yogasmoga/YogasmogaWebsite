@@ -2515,7 +2515,6 @@ table.smallimagecontiner td.selectedimage{
 .combo-sale{margin-bottom: 20px;}
 .combo-sale img{margin-right:15px; vertical-align: middle;}
 .combo-sale > div{margin-left:25px;}
-.bundlePop table.productdetailtable div.box-seprtr.last{display:none;}
 .bundlePop .selectedsize .box-seprtr{border-bottom: none;}
 .combo-sale div.addtobag {
     background: url("../images/catalog/product/add-to-bag-on.png") no-repeat scroll center center rgba(0, 0, 0, 0);
