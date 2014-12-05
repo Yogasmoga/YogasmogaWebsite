@@ -219,9 +219,9 @@
 
                                     $simpleproductarr = array();
                                     $bundleProducts = array();
-                                    $bundleProduct = array();
+                                    $bundleProduct = array();$i=0;
                                     foreach($productCollection as $product)
-                                    {
+                                    {echo $i++;
                                         $parentProductId = '';
 
                                         $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($product->getId());
