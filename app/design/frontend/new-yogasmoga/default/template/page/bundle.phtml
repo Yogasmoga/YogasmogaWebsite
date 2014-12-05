@@ -280,7 +280,7 @@
                                         array_push($bundleProducts,$bundleProduct);
 
                                     }
-
+                                    print_r($bundleProducts);die;
                                         foreach($bundleProducts as $bun){
                                             $confProduct = Mage::getModel('catalog/product')->load($bun['id']);
                                             if(sizeof($bun['images']) == 1){
