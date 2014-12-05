@@ -220,15 +220,25 @@
                                     $simpleproductarr = array();
                                     foreach($productCollection as $product)
                                     {
+                                        $parentProductId = '';
                                         $simpleproductarr['id'] =  $product->getId();
                                         $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($simpleproductarr['id']);
-                                       // if(arrar_search())
-                                        //print_r($parentIds);die;
-                                        $simpleproductarr['parentid'] =  $parentIds[0];
-                                        $simpleproductarr['parentname'] =  Mage::getModel('catalog/product')->load($parentIds[0])->getName();
+                                        // for parent find as bundle
+                                            foreach($bundleParentProductIds as $key=>$val){
+                                                for($i = 0; $i<sizeof($parentIds);$i++){
+                                                    if($parentIds[$i] == $val){
+                                                        $parentProductId = $val;
+                                                        break;
+                                                    }
+                                                }
+                                            }
+
+                                        // end for parent find as bundle
+                                        $simpleproductarr['parentid'] =  $parentProductId;
+                                        $simpleproductarr['parentname'] =  Mage::getModel('catalog/product')->load($parentProductId)->getName();
                                         $simpleproductarr['color'] =  $product->getColor();
                                         $simpleproductarr['price'] =  $product->getPrice();
-                                        $_gallery = Mage::getModel('catalog/product')->load($parentIds[0])->getMediaGalleryImages();
+                                        $_gallery = Mage::getModel('catalog/product')->load($parentProductId)->getMediaGalleryImages();
                                         $imageArr = array();
                                         foreach($_gallery as $_image)
                                         {
@@ -237,7 +247,7 @@
 
                                             $colorId = $imgdata['color'];
 
-                                            if($imgdata['type'] == 'product image' && $imgdata['color'] == $simpleproductarr['color'] )
+                                            if($imgdata['type'] == 'bundle' || $imgdata['color'] == $simpleproductarr['color'] )
                                             {
 
                                                 if(count($imageArr[$colorId])<=3)
@@ -268,7 +278,7 @@
 
                                                     ?>
                                                 </a>
-                                                <a class="clickable" href="<?php echo $confProduct->getProductUrl().'?color='.$simpleproductarr['color'];?>"></a>
+                                                <a class="clickable bundle-view" id="<?php echo $simpleproductarr['parentid'];?>" href="javascript:void(0);"></a>
                                             </div>
                                             <div class="caption">
                                                 <div class="caption">
@@ -290,6 +300,10 @@
                         <div class="clear-fix"></div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div style="display:none;">
+            <div id="bundleProductPopup">
             </div>
         </div>
 
