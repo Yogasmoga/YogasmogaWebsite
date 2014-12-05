@@ -2494,6 +2494,24 @@ table.smallimagecontiner td.selectedimage{
 }
 .insale-price{color:#CC0033;}
 
+
+
+
+/***Bundle Gift Sets***/
+.giftSetImg{width: 100%; display:block;}
+.one-image-stack,.two-image-stack{margin-bottom: 40px;}
+.one-image-stack .giftSetImg img{width: 100%; display: block;}
+.two-image-stack .giftSetImg div{width: 49%; display: block;}
+.two-image-stack .giftSetImg div img{width: 100%;}
+.gs-prd-det .gs-left-prd{width: 33%; float: left; text-align: left;}
+.gs-prd-det .gs-center-prd{width: 34%; float: left; text-align: center;}
+.gs-prd-det .gs-right-prd{width: 33%; float: left; text-align: right;}
+.single-pred-det{display: block; font: 11px/16px gothambold; margin: 19px auto auto; text-transform: uppercase;}
+.single-pred-det span{display: block; font-family: gothambook;}
+.grp-pred-det{display: block; font: 11px/28px gothambook; margin: 19px auto auto; text-transform: uppercase;}
+.grp-pred-det a{font: 24px ITCAvantGardeProBk; display: block; line-height: 27px;}
+.gs-bundle > h1{margin-bottom: 17px !important;}
+
 .combo-sale{margin-bottom: 20px;}
 .combo-sale img{margin-right:15px; vertical-align: middle;}
 .combo-sale > div{margin-left:25px;}

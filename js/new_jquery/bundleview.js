@@ -3,7 +3,7 @@ jQuery(document).ready(function($){
     $(".bundle-view").click(function(event){
         console.log('test');
         event.preventDefault();
-        showBundleViewPopup($(this).attr('id'));
+        showBundleViewPopup($(this).attr('pro-id'));
     });
 
     $("#bundleProductPopup").dialog({
@@ -45,6 +45,13 @@ function showBundleViewPopup(id)
 
             jQuery("#bundleProductPopup").html(data);
             jQuery("#colorcontainer div:first-child").click();
+
+            var proCost = jQuery(".productcost").html().replace("$", "");
+            var optCost = jQuery(".combo-sale").find("div.scarf1").attr("value");
+             optCost = parseFloat(optCost).toFixed(2)*1;
+            proCost = (proCost*1)+optCost;
+            jQuery(".cs-total-price").html("$"+proCost);
+
 
             /*insertBraOption();
 //            jQuery("#productdetailpopup #colorcontainer > div:first-child > table").trigger('click');
