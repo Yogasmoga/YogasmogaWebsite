@@ -117,7 +117,7 @@
                     $bannerTxt = '';
                     if($urlKey == 'women')
                     {
-                        echo $categoryId = $categoryIds['bundle_women'];die;
+                        $categoryId = $categoryIds['bundle_women'];
                         //$categoryId = '46'; //replace with your own
                         $category = new Varien_Object(array('id'=>$categoryId));
                         $positions = Mage::getResourceModel('catalog/category')->getProductsPosition($category);
