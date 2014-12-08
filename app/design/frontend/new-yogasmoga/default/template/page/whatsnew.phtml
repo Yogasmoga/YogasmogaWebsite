@@ -205,9 +205,14 @@
                                                     }
                                                 }
                                             }
-                                            $withsubcategoryhtml .= '</ul></div>';
+                                            //$withsubcategoryhtml .= '</ul></div>';
 
-                                            echo $hasnosubcategoryhtml.$withsubcategoryhtml;
+                                            // Gift of ys
+                                            $goys = '<li class="sub-head"><a class="bld" href="javascript:void(0);">Gift Sets</a></li>';
+                                            $goys .= '<ul class="subnav">
+                <li><a href="'.$this->getUrl("gift_of_ys").'">GIFT CARD</a></li>
+              </ul>';
+                                            echo $hasnosubcategoryhtml.$goys.$withsubcategoryhtml.'</ul></div>';
 
                                             ?>
                                     <!-- leftNav -->
