@@ -223,28 +223,9 @@
                                         }
                                     }
                                 }
-                                //$withsubcategoryhtml .= '</ul></div>';
-                                $currentUrl = Mage::helper('core/url')->getCurrentUrl();
-                                $categoryName = explode('/', $currentUrl);
-                                $urlKey = $categoryName[3];
-                                $goys = '<li class="sub-head"><a class="bld" href="javascript:void(0);">Gifts</a></li>';
-                                if($urlKey == "women"){
-                                    $goys .= "<ul class='subnav'>
+                                $withsubcategoryhtml .= '</ul></div>';
 
-                <li><a href=".$this->getUrl()."women/gift-sets-for-150/>Gift Sets for $150</a></li>
-                <li><a href=".$this->getUrl()."women/gift-sets-for-250/>Gift Sets for $250</a></li>
-                <li><a href=".$this->getUrl()."gift_of_ys/>Gift Card</a></li>
-              </ul>";
-
-                                }
-                                if($urlKey == "mens"){
-                                    $goys .= "<ul class='subnav'>
-
-                <li><a href=".$this->getUrl()."mens/gift-sets-for-150/>Gift Sets for $150</a></li>
-                <li><a href=".$this->getUrl()."gift_of_ys/>Gift Card</a></li>
-              </ul>";
-                                }
-                                echo $hasnosubcategoryhtml.$goys.$withsubcategoryhtml;
+                                echo $hasnosubcategoryhtml.$withsubcategoryhtml;
 
                                 ?>
                                 <!-- leftNav -->
