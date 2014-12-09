@@ -2433,7 +2433,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
         <!-- DetailsContent -->
         <td class="popupproductdetail">
-        <div class="productoptions gry-box" style="min-height: 340px;">
+        <div class="productoptions gry-box" style="min-height: 340px;$">
         <table class="productdetailtable">
         <tr>
         <td>
@@ -2719,7 +2719,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     ?>
                     <tr>
                         <td width="100%">
-                            <p class="bun-pro"><a href="<?php echo $bunProduct->getProductUrl(true);?>"><strong><?php echo $bunProduct->getName(); ?></strong></a> in <?php echo $clrinfo['224'];?> Sold individually at <?php echo "$".number_format((float)( $bunProduct->getPrice()), 2, '.', '');?></p>
+                            <p class="bun-pro"><a href="<?php echo $bunProduct->getProductUrl(true).'?color='.$val['color'];?>"><strong><?php echo $bunProduct->getName(); ?></strong></a> in <?php echo $clrinfo[$val['color']];?> Sold individually at <?php echo "$".number_format((float)( $bunProduct->getPrice()), 2, '.', '');?></p>
                         </td>
                     </tr>
                 <?php
