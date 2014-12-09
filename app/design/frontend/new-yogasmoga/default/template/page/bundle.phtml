@@ -126,9 +126,19 @@
                         $bannerTxt = 'white';
                         $bunCatName = "$250 GIFT SETS";
                     }
-                    if($urlKey == 'gift-sets-for-150')
+                    if($urlKey == 'gift-sets-for-150' && $categoryName[3] == "women" )
                     {
                         $categoryId = $categoryIds['bundle_women_150'];
+                        //$categoryId = '46'; //replace with your own
+                        $category = new Varien_Object(array('id'=>$categoryId));
+                        $positions = Mage::getResourceModel('catalog/category')->getProductsPosition($category);
+                        //print_r($positions);die;
+                        $bannerTxt = 'white';
+                        $bunCatName = "$150 GIFT SETS";
+                    }
+                    if($urlKey == 'gift-sets-for-150' && $categoryName[3] == "mens" )
+                    {
+                        $categoryId = $categoryIds['bundle_mens_150'];
                         //$categoryId = '46'; //replace with your own
                         $category = new Varien_Object(array('id'=>$categoryId));
                         $positions = Mage::getResourceModel('catalog/category')->getProductsPosition($category);

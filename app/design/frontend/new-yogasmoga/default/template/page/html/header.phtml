@@ -367,6 +367,7 @@ function bubble(status){
                 } else {
                     $itemcount = 0;
                 }
+                $i = 1;
                 foreach (Mage::helper('catalog/category')->getStoreCategories() as $child1) {
                     if ($child1->getIsActive()) {
                         //show Main parent categories first level
@@ -415,6 +416,29 @@ function bubble(status){
                         }
                         $firstcolumn .= "</ul>";
                         echo $firstcolumn.$remainingcolumn;
+                        $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+                        $categoryName = explode('/', $currentUrl);
+                        $urlKey = $categoryName[3];
+                        if($i == 1){
+                            echo "<li>
+                                    <a href='javascript:void(0)'> GIFTS </a>
+                                    <ul>
+                                        <li><a href=".$this->getHomeUrl()."women/gift-sets-for-150/>Gift Sets for $150</a></li>
+                                        <li><a href=".$this->getHomeUrl()."women/gift-sets-for-250/>Gift Sets for $250</a></li>
+                                         <li><a href=".$this->getHomeUrl()."gift_of_ys/>Gift Card</a></li>
+                                    </ul>
+                              </li>";
+                        }
+                        if($i == 2){
+                            echo "<li>
+                                    <a href='javascript:void(0)'> GIFTS </a>
+                                    <ul>
+                                        <li><a href=".$this->getHomeUrl()."mens/gift-sets-for-150/>Gift Sets for $150</a></li>
+                                        <li><a href=".$this->getHomeUrl()."gift_of_ys/>Gift Card</a></li>
+                                    </ul>
+                              </li>";
+                        }$i++;
+
                         echo "</ul></li>";
                     }
 

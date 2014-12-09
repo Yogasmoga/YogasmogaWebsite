@@ -891,8 +891,15 @@ function applypromocode()
                     showShoppingBagHtml();
                 }
                 else
-                {   
-                    showerror(''+data.errors+'');
+                {
+                    var ff = "ff2014";
+                    if(promocode.toLowerCase() == ff)
+                    {
+                        showerror(''+"Promo Code cannot be applied on ONE 2 MANY items"+'');
+                    }else{
+                        showerror(''+data.errors+'');
+                    }
+
                     jQuery('#giftcartcode').val('');
                     jQuery('#giftcartcode').next('span').addClass("applygiftcard").empty().append("+");
                     jQuery('.zindexH').hide();
