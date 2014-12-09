@@ -132,12 +132,12 @@
 
                     $bundleCategory = Mage::getModel('catalog/category')->load($categoryId);
                     $bundleCategory_imgUrl = $bundleCategory -> getImageUrl();
-                    $productCollection = $bundleCategory->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
+                    $productCollection = $bundleCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
                     ?>
                     <!-- bannerContainer -->
                     <div class="bannerFluid">
                         <img title="Bundle" alt="Bundle" src="<?php echo $bundleCategory_imgUrl; ?>">
-                        <div class="bnrtxt"><h1 class="<?php //echo $bannerTxt ?>">Bundles</h1></div>
+                        <div class="bnrtxt"><h1 class="<?php //echo $bannerTxt ?>">HOLIDAY GIFT SETS</h1></div>
                     </div>
                     <!-- bannerContainer -->
 
@@ -200,9 +200,9 @@
                                 <!-- leftNav -->
 
                                 <!-- productGridImages -->
-                                <div class="gridWrap">
+                                <div class="gridWrap gs-bundle">
                                     <!-- gridHeading -->
-                                    <!--<h4>BEST SELLERS</h4>-->
+                                    <h1>$250 GIFT SETS</h1>
                                     <!-- gridHeading -->
                                     <?php
                                     // get color array
@@ -214,19 +214,167 @@
                                         $colorIndexArr [] = $row['Value'];
                                     }
 
+                                    $bundleParentProductIdsArr = json_decode(trim(Mage::getModel('core/variable')->loadByCode('bundle_product_Ids')->getValue('plain')), true);
+                                    $bundleParentProductIds = explode(",",$bundleParentProductIdsArr['bundle_products']);
 
-
-                                    $configurableProduct = array();
+                                    $simpleproductarr = array();
+                                    $bundleProducts = array();
+                                    $bundleProduct = array();$i=0;
                                     foreach($productCollection as $product)
                                     {
+                                        $parentProductId = '';
 
-                                        $configurableProduct['id'] = $product->getId();
+                                        $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($product->getId());
+
+                                        // for parent find as bundle
+                                            foreach($bundleParentProductIds as $key=>$val){
+                                                for($i = 0; $i<sizeof($parentIds);$i++){
+                                                    if($parentIds[$i] == $val){
+                                                        $parentProductId = $val;
+                                                        break;
+                                                    }
+                                                }
+                                            }
+
+                                        // end for parent find as bundle
+                                        $bundleProduct['id'] = $parentProductId;
+                                        $_gallery = Mage::getModel('catalog/product')->load($parentProductId)->getMediaGalleryImages();
+                                        $parentProductInfo = Mage::getModel('catalog/product')->load($parentProductId);
+                                        $bundleProduct['name'] = $parentProductInfo->getName();
+                                        $bundleProduct['price'] = "$".number_format((float)( $parentProductInfo->getPrice()), 2, '.', '');
+                                        $firstParent = Mage::getModel('catalog/product')->load($parentIds[0]);
+                                        $mainProduct = array();
+
+                                        $mainProduct['name']= $firstParent->getName();
+                                        $mainProduct['color']= $product->getColor();
+                                        $mainProduct['price']= "$".number_format((float)( $product->getPrice()), 2, '.', '');
+                                        $bundleProduct['mainProduct'] = $mainProduct;
+
+                                        $imageArr = array();
+                                        $scarfInfo = array();
+                                        foreach($_gallery as $_image)
+                                        {
+
+                                            $imgdata = json_decode(trim($_image->getLabel()), true);
+
+                                            $colorId = $imgdata['color'];
+
+                                            if($imgdata['type'] == 'bundle')
+                                            {
+                                                    array_push($imageArr,$_image->getFile());
+                                            }
+                                            if($imgdata['type'] == 'scarf')
+                                            {
+                                                $scarfInfo['name'] = $imgdata['name'];
+                                                $scarfInfo['color'] = $imgdata['color'];
+                                                $scarfInfo['price'] = "$".number_format((float)( $imgdata['price']), 2, '.', '');
+
+                                            }
 
 
+                                        }
+
+                                        $bundleProduct['images']= $imageArr;
+                                        $bundleProduct['bundlewith'] = $scarfInfo;
+
+                                        array_push($bundleProducts,$bundleProduct);
 
                                     }
 
+                                        foreach($bundleProducts as $bun){
+                                            $confProduct = Mage::getModel('catalog/product')->load($bun['id']);
+                                            if(sizeof($bun['images']) == 1){
+                                            ?>
+                                                <div class="one-image-stack">
+                                                    <div class="giftSetImg">
+                                                        <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>">
+                                                        <img   src="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$bun['images'][0])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->setQuality(91); ?>" /></a>
+                                                    </div>
+                                                    <div class="gs-prd-det">
+                                                        <div class="gs-left-prd single-pred-det">
+                                                            <a href="javascript:void(0);"><?php echo $bun['mainProduct']['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $clrinfo[$bun['mainProduct']['color']]; ?></span>
+                                                            <span class="gs-color-name"><?php echo $bun['mainProduct']['price']; ?> SOLD INDIVIDUALLY</span>
+                                                        </div>
+                                                        <div class="gs-center-prd grp-pred-det">
+                                                            <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>"><?php echo $bun['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $bun['price']; ?></span>
+                                                        </div>
+                                                        <div class="gs-right-prd single-pred-det">
+                                                            <a href="javascript:void(0);"><?php echo $bun['bundlewith']['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $clrinfo[$bun['bundlewith']['color']]; ?></span>
+                                                            <span class="gs-color-name"><?php echo $bun['bundlewith']['price']; ?> SOLD INDIVIDUALLY</span>
+                                                        </div>
+                                                        <div class="clear"></div>
+                                                    </div>
+                                                </div>
+                                            <?php
+                                            }else{
+                                            ?>
+                                                <div class="two-image-stack">
+                                                    <div class="giftSetImg">
+                                                        <div class="stack-left-img f-left">
+                                                            <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>">
+                                                            <img   src="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$bun['images'][0])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->setQuality(91); ?>" /></a>
+                                                        </div>
+                                                        <div class="stack-right-img f-right">
+
+                                                            <img   src="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$bun['images'][1])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->setQuality(91); ?>" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="gs-prd-det">
+                                                        <div class="gs-left-prd single-pred-det">
+                                                            <a href="javascript:void(0);"><?php echo $bun['mainProduct']['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $clrinfo[$bun['mainProduct']['color']]; ?></span>
+                                                            <span class="gs-color-name"><?php echo $bun['mainProduct']['price']; ?> SOLD INDIVIDUALLY</span>
+                                                        </div>
+                                                        <div class="gs-center-prd grp-pred-det">
+                                                            <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>"><?php echo $bun['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $bun['price']; ?></span>
+                                                        </div>
+                                                        <div class="gs-right-prd single-pred-det">
+                                                            <a href="javascript:void(0);"><?php echo $bun['bundlewith']['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $clrinfo[$bun['bundlewith']['color']]; ?></span>
+                                                            <span class="gs-color-name"><?php echo $bun['bundlewith']['price']; ?> SOLD INDIVIDUALLY</span>
+                                                        </div>
+                                                        <div class="clear"></div>
+                                                    </div>
+                                                </div>
+                                            <?php
+                                            }
+                                        }
+
+                                        // show html of the product
+                                        ?>
+
+                                        <!-- <div class="productCont">
+                                            <div class="prod-img">
+                                                <a href="<?php echo $confProduct->getProductUrl().'?color='.$simpleproductarr['color'];?>" >
+                                                    <?php
+                                                    foreach($simpleproductarr['image'] as $img )
+                                                    {
+                                                        ?>
+                                                        <img alt="<?php echo $confProduct->getName();?>" class="prd-image lazy" data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91); ?>" />
+                                                    <?php
+                                                    }
+
+                                                    ?>
+                                                </a>
+                                                <a class="clickable bundle-view" id="<?php echo $simpleproductarr['parentid'];?>" href="javascript:void(0);"></a>
+                                            </div>
+                                            <div class="caption">
+                                                <div class="caption">
+                                                    <a href="<?php echo $confProduct->getProductUrl();?>"><?php echo $confProduct->getName().'<br/>';?> <?php echo $clrinfo[$simpleproductarr['color']]?></a><span>$<?php  echo  round($confProduct->getPrice(),2);?></span>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                    <?php
+
+
+
                                     ?>
+
+
                                 </div>
                                 <!-- productGridImages -->
 
@@ -236,6 +384,10 @@
                         <div class="clear-fix"></div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div style="display:none;">
+            <div id="bundleProductPopup">
             </div>
         </div>
 

@@ -2493,3 +2493,57 @@ table.smallimagecontiner td.selectedimage{
     padding: 4px 10px;
 }
 .insale-price{color:#CC0033;}
+
+
+
+
+/***Bundle Gift Sets***/
+.giftSetImg{width: 100%; display:block;}
+.one-image-stack,.two-image-stack{margin-bottom: 40px;}
+.one-image-stack .giftSetImg img{width: 100%; display: block;}
+.two-image-stack .giftSetImg div{width: 49%; display: block;}
+.two-image-stack .giftSetImg div img{width: 100%;}
+.gs-prd-det .gs-left-prd{width: 33%; float: left; text-align: left;}
+.gs-prd-det .gs-center-prd{width: 34%; float: left; text-align: center;}
+.gs-prd-det .gs-right-prd{width: 33%; float: left; text-align: right;}
+.single-pred-det{display: block; font: 11px/16px gothambold; margin: 19px auto auto; text-transform: uppercase;}
+.single-pred-det span{display: block; font-family: gothambook;}
+.grp-pred-det{display: block; font: 11px/28px gothambook; margin: 19px auto auto; text-transform: uppercase;}
+.grp-pred-det a{font: 24px ITCAvantGardeProBk; display: block; line-height: 27px;}
+.gs-bundle > h1{margin-bottom: 17px !important;}
+
+.combo-sale{margin-bottom: 20px;}
+.combo-sale img{margin-right:15px; vertical-align: middle;}
+.combo-sale > div{margin-left:25px;}
+.bundlePop .selectedsize .box-seprtr{border-bottom: none;}
+.combo-sale div.addtobag {
+    background: url("../images/catalog/product/add-to-bag-on.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 39px;
+    margin: 10px 0 0;
+    padding: 0;
+    width: 100%;
+}
+.combo-sale div.outofstockitem {
+    background: url("../images/catalog/product/out-of-stock-dis.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    display: none;
+    height: 39px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.combo-sale div.preorderitem {
+    background: url("../images/catalog/product/pre-order-now-on.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    cursor: pointer;
+    display: none;
+    height: 39px;
+    margin-top: 10px;
+    position: relative;
+    width: 100%;
+}
+.combo-sale div.box-seprtr.last{height:65px; overflow:hidden; margin-top: 18px;}
+.cs-products{margin-right: 30px;}
+.cs-products span.cs-total-price{font-size: 24px; font-family:gothamBold; vertical-align: middle;}
+.combo-sale h3{font: 20px/29px gothamBook; text-decoration: underline; padding-left: 25px; text-align: left;}
+.bundlePop img#closelightbox { padding: 0; right: 5px !important; top: 3px !important;  width: auto !important;}
+.cs-addPrd{visibility:hidden; height:0;}

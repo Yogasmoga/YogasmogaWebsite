@@ -32,8 +32,44 @@
     <action method="addJs"><script>new_jquery/shoppingbag.js</script></action>
     <action method="addJs"><script>new_jquery/emailus.js</script></action>
     <action method="addJs"><script>new_jquery/jquery.appear.js</script></action>
-    <action method="addJs"><script>new_jquery/cmsscript.js</script></action>   
+    <action method="addJs"><script>new_jquery/cmsscript.js</script></action>
+    <action method="addJs"><script>new_jquery/bundleview.js</script></action>
     <action method="addCss"><stylesheet>css/mywebfonts.css</stylesheet></action>
+
+
+    // to be removed
+    <!--<action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
+    <action method="addCss"><stylesheet>css/dressingroom.css</stylesheet></action>
+
+    <action method="addJs"><script>new_jquery/myproductdetails.js</script></action>
+    <action method="addJs"><script>new_jquery/myproduct_view.js</script></action>-->
+    <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
+
+    <action method="addCss"><stylesheet>css/dressingroom.css</stylesheet></action>
+    <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
+
+
+    <action method="addJs"><script>new_jquery/jquery.touchSwipe.min.js</script></action>
+    <action method="addJs"><script>new_jquery/jquery.bxSlider.min.js</script></action>
+    <action method="addJs"><script>new_jquery/bxsliderscript.js</script></action>
+    <action method="addJs"><script>new_jquery/myproductimageswitcher.js</script></action>
+    <action method="addJs"><script>new_jquery/homemainsection.js</script></action>
+    <action method="addJs"><script>new_jquery/swfobject.js</script></action>
+    <action method="addJs"><script>new_jquery/jquery.pngFix.pack.js</script></action>
+    <action method="addJs"><script>new_jquery/jquery.fancybox-1.0.0.js</script></action>
+    <action method="addJs"><script>new_jquery/youtubevideo.js</script></action>
+    <action method="addJs"><script>new_jquery/jquery.flexslider-min.js</script></action>
+    <action method="addJs"><script>new_jquery/parallaxeffect.js</script></action>
+
+
+    <action method="addJs"><script>new_jquery/tswipe.js</script></action>
+    <action method="addJs"><script>new_jquery/dressingroom.js</script></action>
+    <action method="addJs"><script>new_jquery/myproductdetails.js</script></action>
+
+
+
+
+
 </reference>
 
 
@@ -256,30 +292,59 @@
         </reference>
     </whatsnew>
 
-    <bundle>
+    <newbundle>
         <reference name="head">
-            <!-- <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action> -->
+            <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
 
-            <!-- <action method="addCss"><stylesheet>css/dressingroom.css</stylesheet></action> -->
-            <!-- <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>       -->
+            <action method="addCss"><stylesheet>css/dressingroom.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
 
 
             <action method="addJs"><script>new_jquery/jquery.touchSwipe.min.js</script></action>
             <action method="addJs"><script>new_jquery/jquery.bxSlider.min.js</script></action>
             <action method="addJs"><script>new_jquery/bxsliderscript.js</script></action>
-            <!-- <action method="addJs"><script>new_jquery/myproductimageswitcher.js</script></action> -->
+            <action method="addJs"><script>new_jquery/myproductimageswitcher.js</script></action>
             <action method="addJs"><script>new_jquery/homemainsection.js</script></action>
             <action method="addJs"><script>new_jquery/swfobject.js</script></action>
             <action method="addJs"><script>new_jquery/jquery.pngFix.pack.js</script></action>
             <action method="addJs"><script>new_jquery/jquery.fancybox-1.0.0.js</script></action>
-            <!-- <action method="addJs"><script>new_jquery/youtubevideo.js</script></action> -->
+            <action method="addJs"><script>new_jquery/youtubevideo.js</script></action>
             <action method="addJs"><script>new_jquery/jquery.flexslider-min.js</script></action>
-            <!-- <action method="addJs"><script>new_jquery/parallaxeffect.js</script></action> -->
-            <!-- <action method="addJs"><script>new_jquery/ysmoga.js</script></action> -->
+            <action method="addJs"><script>new_jquery/parallaxeffect.js</script></action>
+
+
             <action method="addJs"><script>new_jquery/tswipe.js</script></action>
-            <!-- <action method="addJs"><script>new_jquery/dressingroom.js</script></action> -->
-            <!-- <action method="addJs"><script>new_jquery/myproductdetails.js</script></action> -->
-            <action method="addJs"><script>new_jquery/ysmoga.js</script></action>
+            <action method="addJs"><script>new_jquery/dressingroom.js</script></action>
+            <action method="addJs"><script>new_jquery/myproductdetails.js</script></action>
+
+        </reference>
+    </newbundle>
+
+    <bundle>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
+
+            <action method="addCss"><stylesheet>css/dressingroom.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
+
+
+            <action method="addJs"><script>new_jquery/jquery.touchSwipe.min.js</script></action>
+            <action method="addJs"><script>new_jquery/jquery.bxSlider.min.js</script></action>
+            <action method="addJs"><script>new_jquery/bxsliderscript.js</script></action>
+            <action method="addJs"><script>new_jquery/myproductimageswitcher.js</script></action>
+            <action method="addJs"><script>new_jquery/homemainsection.js</script></action>
+            <action method="addJs"><script>new_jquery/swfobject.js</script></action>
+            <action method="addJs"><script>new_jquery/jquery.pngFix.pack.js</script></action>
+            <action method="addJs"><script>new_jquery/jquery.fancybox-1.0.0.js</script></action>
+            <action method="addJs"><script>new_jquery/youtubevideo.js</script></action>
+            <action method="addJs"><script>new_jquery/jquery.flexslider-min.js</script></action>
+            <action method="addJs"><script>new_jquery/parallaxeffect.js</script></action>
+
+
+            <action method="addJs"><script>new_jquery/tswipe.js</script></action>
+            <action method="addJs"><script>new_jquery/dressingroom.js</script></action>
+            <action method="addJs"><script>new_jquery/myproductdetails.js</script></action>
+
         </reference>
     </bundle>
 
