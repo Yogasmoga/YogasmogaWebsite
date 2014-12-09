@@ -2448,7 +2448,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         <!-- description -->
 
         <!-- selectColor -->
-        <div class="box-seprtr">
+        <div class="box-seprtr" style="display: none;">
             <div class="blck-head-sml"><span>Step 1:</span> choose your color</div>
             <table class="selectedcolor blck-head-sml">
                 <tr>
