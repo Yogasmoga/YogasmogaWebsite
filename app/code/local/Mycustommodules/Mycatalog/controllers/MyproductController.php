@@ -2433,7 +2433,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
         <!-- DetailsContent -->
         <td class="popupproductdetail">
-        <div class="productoptions gry-box">
+        <div class="productoptions gry-box" style="min-height: 340px;">
         <table class="productdetailtable">
         <tr>
         <td>
@@ -2527,7 +2527,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         <!-- selectSize -->
         <div class="selectedsize" <?php if(!$sizeavaliable) { echo "style='display:none;'"; } ?>>
             <div class="box-seprtr">
-                <div class="blck-head-sml"><span>Step 2:</span> Select a size
+                <div class="blck-head-sml"><span>Step 1:</span> Select a size
                     <table class="f-right">
                         <tr>
                             <?php if($sizechartblockid != "") {?>
@@ -2640,7 +2640,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                                     */ ?>
         <!-- AddToBag -->
         <div class="box-seprtr last">
-            <div class="blck-head-sml"><span class="qty">Step 3</span></div>
+            <div class="blck-head-sml"><span class="qty">Step 2</span></div>
             <!-- addtobag-btn -->
             <div id="orderitem" class="addtobag spbutton"
                  imageurl="<?php echo $this->getNewSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>"
@@ -2700,6 +2700,32 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                     </div>
                 </td>
             </tr>
+        </table>
+        <table>
+            <?php
+            // bundle description products
+            $clrinfo = '';
+            $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+            $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color' ORDER BY eao.sort_order,eaov.value");
+            $colorIndexArr = array();
+            while ($row = $readresult->fetch() ) {
+                $clrinfo[$row['Value']] = $row['Attribute'];
+                $colorIndexArr [] = $row['Value'];
+            }
+                $bundleProductsInfo = json_decode(trim(Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'bundle_products', Mage::app()->getStore()->getStoreId())), true);
+
+                foreach($bundleProductsInfo as $key=>$val){
+                    $bunProduct = Mage::getModel('catalog/product')->load($val['id']);
+                    ?>
+                    <tr>
+                        <td width="100%">
+                            <p class="bun-pro"><a href="<?php echo $bunProduct->getProductUrl(true);?>"><strong><?php echo $bunProduct->getName(); ?></strong></a> in <?php echo $clrinfo['224'];?> Sold individually at <?php echo "$".number_format((float)( $bunProduct->getPrice()), 2, '.', '');?></p>
+                        </td>
+                    </tr>
+                <?php
+                }
+            ?>
+
         </table>
         <!-- SMOGIBUCKS -->
         </td>

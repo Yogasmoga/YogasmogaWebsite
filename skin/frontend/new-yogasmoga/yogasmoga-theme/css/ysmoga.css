@@ -1955,3 +1955,9 @@ body.mac-os ul.main-menu2 > li,
 body.mac-os ul.main-menu2 a.main-heading{
     height: 30px;
 }
+
+.bun-pro{color: #666;
+    float: left;
+    font: 11px/15px gothambook;
+    width: 100%;
+}
