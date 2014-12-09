@@ -287,13 +287,14 @@
                                             ?>
                                                 <div class="one-image-stack">
                                                     <div class="giftSetImg">
-                                                        <img   src="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$bun['images'][0])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->setQuality(91); ?>" />
+                                                        <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>">
+                                                        <img   src="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$bun['images'][0])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->setQuality(91); ?>" /></a>
                                                     </div>
                                                     <div class="gs-prd-det">
                                                         <div class="gs-left-prd single-pred-det">
                                                             <a href="javascript:void(0);"><?php echo $bun['mainProduct']['name']; ?></a>
                                                             <span class="gs-color-name"><?php echo $clrinfo[$bun['mainProduct']['color']]; ?></span>
-                                                            <span class="gs-color-name"><?php echo $bun['mainProduct']['price']; ?></span>
+                                                            <span class="gs-color-name"><?php echo $bun['mainProduct']['price']; ?> SOLD INDIVIDUALLY</span>
                                                         </div>
                                                         <div class="gs-center-prd grp-pred-det">
                                                             <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>"><?php echo $bun['name']; ?></a>
@@ -302,7 +303,7 @@
                                                         <div class="gs-right-prd single-pred-det">
                                                             <a href="javascript:void(0);"><?php echo $bun['bundlewith']['name']; ?></a>
                                                             <span class="gs-color-name"><?php echo $clrinfo[$bun['bundlewith']['color']]; ?></span>
-                                                            <span class="gs-color-name"><?php echo $bun['bundlewith']['price']; ?></span>
+                                                            <span class="gs-color-name"><?php echo $bun['bundlewith']['price']; ?> SOLD INDIVIDUALLY</span>
                                                         </div>
                                                         <div class="clear"></div>
                                                     </div>
@@ -313,8 +314,8 @@
                                                 <div class="two-image-stack">
                                                     <div class="giftSetImg">
                                                         <div class="stack-left-img f-left">
-
-                                                            <img   src="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$bun['images'][0])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->setQuality(91); ?>" />
+                                                            <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>">
+                                                            <img   src="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$bun['images'][0])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->setQuality(91); ?>" /></a>
                                                         </div>
                                                         <div class="stack-right-img f-right">
 
@@ -325,7 +326,7 @@
                                                         <div class="gs-left-prd single-pred-det">
                                                             <a href="javascript:void(0);"><?php echo $bun['mainProduct']['name']; ?></a>
                                                             <span class="gs-color-name"><?php echo $clrinfo[$bun['mainProduct']['color']]; ?></span>
-                                                            <span class="gs-color-name"><?php echo $bun['mainProduct']['price']; ?></span>
+                                                            <span class="gs-color-name"><?php echo $bun['mainProduct']['price']; ?> SOLD INDIVIDUALLY</span>
                                                         </div>
                                                         <div class="gs-center-prd grp-pred-det">
                                                             <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>"><?php echo $bun['name']; ?></a>
@@ -334,7 +335,7 @@
                                                         <div class="gs-right-prd single-pred-det">
                                                             <a href="javascript:void(0);"><?php echo $bun['bundlewith']['name']; ?></a>
                                                             <span class="gs-color-name"><?php echo $clrinfo[$bun['bundlewith']['color']]; ?></span>
-                                                            <span class="gs-color-name"><?php echo $bun['bundlewith']['price']; ?></span>
+                                                            <span class="gs-color-name"><?php echo $bun['bundlewith']['price']; ?> SOLD INDIVIDUALLY</span>
                                                         </div>
                                                         <div class="clear"></div>
                                                     </div>
