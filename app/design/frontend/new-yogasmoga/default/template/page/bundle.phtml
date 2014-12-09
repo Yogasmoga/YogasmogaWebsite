@@ -115,6 +115,7 @@
                     $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('bundle_categoryid')->getValue('plain')), true);
                     $categoryId = '';
                     $bannerTxt = '';
+                    $bunCatName = '';
                     if($urlKey == 'gift-sets-for-250')
                     {
                         $categoryId = $categoryIds['bundle_women_250'];
@@ -123,6 +124,7 @@
                         $positions = Mage::getResourceModel('catalog/category')->getProductsPosition($category);
                         //print_r($positions);die;
                         $bannerTxt = 'white';
+                        $bunCatName = "$250 GIFT SETS";
                     }
                     if($urlKey == 'gift-sets-for-150')
                     {
@@ -132,6 +134,7 @@
                         $positions = Mage::getResourceModel('catalog/category')->getProductsPosition($category);
                         //print_r($positions);die;
                         $bannerTxt = 'white';
+                        $bunCatName = "$150 GIFT SETS";
                     }
                     if($urlKey == 'bundle-cat')
                     {
@@ -220,7 +223,7 @@
                                 <!-- productGridImages -->
                                 <div class="gridWrap gs-bundle">
                                     <!-- gridHeading -->
-                                    <h1>$250 GIFT SETS</h1>
+                                    <h1><?php echo $bunCatName; ?></h1>
                                     <!-- gridHeading -->
                                     <?php
                                     // get color array
