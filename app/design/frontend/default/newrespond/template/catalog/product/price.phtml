@@ -426,3 +426,21 @@
         </div>
     <?php endif; /* if ($this->getDisplayMinimalPrice() && $_minimalPrice): */ ?>
 <?php endif; /* if (!$_product->isGrouped()): */ ?>
+<?php
+// price show added price  for bundle product
+$bundleProductsInfo = json_decode(trim(Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'bundle_products', Mage::app()->getStore()->getStoreId())), true);
+$subBunTotal = 0;
+foreach($bundleProductsInfo as $key=>$val){
+    $bunProduct = Mage::getModel('catalog/product')->load($val['id']);
+    $subBunTotal +=(int) $bunProduct->getPrice();
+}
+if($subBunTotal){
+    echo '<div class="price-box">
+                            <span class="regular-price">
+                                <span class="price" style="color:#EC0D43 !important;">(a $'.number_format((float)( $subBunTotal), 2, '.', '').' Value)</span>
+                            </span>
+                       </div>
+                    ';
+}
+// end price show added price  for bundle product
+?>
