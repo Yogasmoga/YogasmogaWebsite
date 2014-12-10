@@ -1,0 +1,108 @@
+<?php
+/**
+ *
+ * @category    design
+ * @package     default_respond
+ * @copyright   Copyright (c) by Ben Chakroun (http://respondtheme.com)
+ * @license     licensed under MIT (http://www.opensource.org/licenses/mit-license.php)
+ *
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>"> <!--<![endif]-->
+<head>
+<?php echo $this->getChildHtml('head') ?>
+</head>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<?php echo $this->getChildHtml('after_body_start') ?>
+<div class="wrapper">
+    <?php echo $this->getChildHtml('global_notices') ?>
+    <div class="page layout-grid">
+        <?php echo $this->getChildHtml('header') ?>
+        <div class="main-container col1-layout">
+            <div class="main">
+				<?php $_helper = Mage::helper('catalog/category') ?>
+				<?php $currentCategory = Mage::registry('current_category');
+$currentcategoryid = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
+				 ?>
+
+				<?php $_category = Mage::getModel('catalog/category')->load($currentCategory->getId()); ?>				
+				<div class="tabs-cont">
+				<table class="s-tabs" width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+				<?php
+					foreach (Mage::helper('catalog/category')->getStoreCategories() as $child) {
+						?>
+						<?php
+						if ($child->getIsActive()) {
+							if($child->getId() == $currentcategoryid)
+								echo "<td width='50%' height='35' class='active'><div>".$child->getName()."</div>";
+							else
+								echo "<td width='50%' height='35'><a href='".Mage::getModel("catalog/category")->load($child->getId())->getUrl()."'><div>".$child->getName()."</div></a>";
+						}
+						?>
+						</td>
+						<?php
+					}
+				?>
+				</tr>
+				</table>
+				</div>
+				<?php $_subcategories = $_category->getChildrenCategories(); ?>
+				<?php if (count($_subcategories) > 0): ?>
+					<div class="subnav-container">
+						<select>
+							<option>Filter By</option>
+							<?php foreach($_subcategories as $_subcategory): ?>
+								<option value="<?php echo $_helper->getCategoryUrl($_subcategory) ?>"><?php echo $_subcategory->getName() ?></option>
+							<?php endforeach; ?>
+						</select>
+					</div>
+					<script>
+						$j('.subnav-container select').change(function(){
+							$url = $j(this).val();
+							window.location.href = $url;
+						})
+					</script>
+				<?php endif; ?>
+                <?php /*<div class="col-wrapper">*/ ?>
+                    <div class="col-main">
+                        <?php echo $this->getChildHtml('global_messages') ?>
+                        <?php echo $this->getChildHtml('content') ?>
+                    </div>
+                    <!-- div class="col-left sidebar"><?php // echo $this->getChildHtml('left') ?></div -->
+                </div>
+                <?php /*<div class="col-right sidebar"><?php echo $this->getChildHtml('right') ?></div>*/ ?>
+            <?php /*</div>*/ ?>
+        </div>
+        <?php echo $this->getChildHtml('footer') ?>
+        <?php echo $this->getChildHtml('before_body_end') ?>
+    </div>
+</div>
+<style>
+.tabs-cont{margin-bottom: 30px;}
+.s-tabs{border:2px solid #F7A13C; }
+.s-tabs td{font-family: ITCAvantGardeBk; font-size: 18px; font-weight: normal; text-align:center; cursor:pointer;vertical-align: middle; padding-top: 5px;}
+.s-tabs td.active,.s-tabs td:hover{background-color:#F7A13C; color:#ffffff;}
+.s-tabs td:hover a{color: #ffffff; text-decoration: none;}
+</style>
+<script type="text/javascript">
+$j(document).ready(function(){
+$j(".s-tabs tr td").click(function(){
+ var tabSel = $j(this).data("tab");
+$j(this).addClass("active").siblings("").removeClass("active");
+$j("#"  + tabSel).show().siblings(".tabs_inner").hide();
+});
+});
+</script>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>
