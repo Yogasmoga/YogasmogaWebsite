@@ -539,8 +539,14 @@ if($lengthavailable)
 
 ?>
 
-<?php if((int)$_product->getId() == 700){?>
+<?php if((int)$_product->getId() == 172 && false){?>
     <div style="padding:3px 0 !important;width: 100%; position: relative;  left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 16px;font-family: AvantGardeGothicMedium;">BUY 1 SLIMMIE PANT AND WE'LL SHIP YOU 2! <span style="font-family: helvetica;font-weight: bold;">&lt;&lt;</span> SECOND SLIMMIE: SAME SIZE, SURPRISE COLOR <span style="font-family: helvetica;font-weight: bold;">&gt;&gt;</span> FINAL SALE.</div>
+<?php } ?>
+
+<?php
+    $proId = (int)$_product->getId();
+if($proId == 1808 || $proId == 1810 || $proId == 1822 || $proId == 1828 || $proId == 1836 || $proId == 1851 ){?>
+    <div style="padding:3px 0 !important;width: 100%; position: relative;  left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 16px;font-family: AvantGardeGothicMedium;">SHOP OUR SWEATER & SCARVES SONA™ KNIT GIFT SETS FOR AN EVEN BETTER VALUE.</div>
 <?php } ?>
 
 <!-- ProductPage -->
