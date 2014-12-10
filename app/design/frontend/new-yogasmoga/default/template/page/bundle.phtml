@@ -337,6 +337,8 @@
 
                                         foreach($bundleProducts as $bun){
                                             $confProduct = Mage::getModel('catalog/product')->load($bun['id']);
+                                          $valFst =  (int)str_replace("$","",$bun['mainProduct']['price']);
+                                          $valSec = (int) str_replace("$","",$bun['bundlewith']['price']);
                                             if(sizeof($bun['images']) == 1){
                                             ?>
                                                 <div class="one-image-stack">
@@ -352,7 +354,8 @@
                                                         </div>
                                                         <div class="gs-center-prd grp-pred-det">
                                                             <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>"><?php echo $bun['name']; ?></a>
-                                                            <span class="gs-color-name"><?php echo $bun['price']; ?></span>
+                                                            <span class="gs-color-name"><?php echo $bun['price']; ?></span><br />
+                                                            <span class="gs-color-name" style="color:red">(a <?php echo '$'.($valFst+$valSec); ?> Value)</span>
                                                         </div>
                                                         <div class="gs-right-prd single-pred-det">
                                                             <a href="javascript:void(0);"><?php echo $bun['bundlewith']['name']; ?></a>
@@ -385,6 +388,7 @@
                                                         <div class="gs-center-prd grp-pred-det">
                                                             <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>"><?php echo $bun['name']; ?></a>
                                                             <span class="gs-color-name"><?php echo $bun['price']; ?></span>
+                                                            <span class="gs-color-name" style="color:red">(a <?php echo '$'.($valFst+$valSec); ?> Value)</span>
                                                         </div>
                                                         <div class="gs-right-prd single-pred-det">
                                                             <a href="javascript:void(0);"><?php echo $bun['bundlewith']['name']; ?></a>
