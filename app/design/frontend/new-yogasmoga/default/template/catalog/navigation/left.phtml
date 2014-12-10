@@ -108,7 +108,7 @@ foreach ($_categories as $category){
     $currentUrl = Mage::helper('core/url')->getCurrentUrl();
     $categoryName = explode('/', $currentUrl);
     $urlKey = $categoryName[3];
-    $goys = '<li class="sub-head"><a class="bld" href="javascript:void(0);">Gifts</a></li>';
+    $goys = '<li class="sub-head"><a class="bld" href='.$this->getUrl().'women/gifts>Gifts</a></li>';
     if($urlKey == "women"){
         $goys .= "<ul class='subnav'>
 
