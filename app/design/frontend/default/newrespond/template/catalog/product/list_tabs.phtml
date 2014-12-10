@@ -87,6 +87,26 @@
                 ?>
                 <h2 class="product-name <?php //echo $forSaleonly; ?>"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo html_entity_decode($_helper->productAttribute($_product, $_product->getName(), 'name')); ?></a></h2>
                 <?php echo $this->getPriceHtml($_product, true) ?>
+
+                <?php
+                // price show added price  for bundle product
+                $bundleProductsInfo = json_decode(trim(Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'bundle_products', Mage::app()->getStore()->getStoreId())), true);
+                $subBunTotal = 0;
+                foreach($bundleProductsInfo as $key=>$val){
+                    $bunProduct = Mage::getModel('catalog/product')->load($val['id']);
+                    $subBunTotal +=(int) $bunProduct->getPrice();
+                }
+                if($subBunTotal){
+                 echo '<div class="price-box">
+                            <span class="regular-price">
+                                <span class="price" style="color:#EC0D43 !important;">(a $'.number_format((float)( $subBunTotal), 2, '.', '').' Value)</span>
+                            </span>
+                       </div>
+                    ';
+                }
+                // end price show added price  for bundle product
+                ?>
+
 				<div class="actions">
 				<button type="button" title="<?php echo $this->__('View Detail') ?>" class="button btn-detail" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('View Details') ?></span></span></button>
 				</div>

@@ -2713,13 +2713,13 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $colorIndexArr [] = $row['Value'];
             }
                 $bundleProductsInfo = json_decode(trim(Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'bundle_products', Mage::app()->getStore()->getStoreId())), true);
-
+            $sumOfvar = 0;
                 foreach($bundleProductsInfo as $key=>$val){
                     $bunProduct = Mage::getModel('catalog/product')->load($val['id']);
                     ?>
                     <tr>
                         <td width="100%">
-                            <p class="bun-pro"><a href="<?php echo $bunProduct->getProductUrl(true).'?color='.$val['color'];?>"><strong><?php echo $bunProduct->getName(); ?></strong></a> in <?php echo $clrinfo[$val['color']];?> Sold individually for <?php echo "$".(int) $bunProduct->getPrice(); $sumOfvar = $bunProduct->getPrice()+$bunProduct->getPrice();//echo "$".number_format((float)( $bunProduct->getPrice()), 2, '.', '');?></p>
+                            <p class="bun-pro"><a href="<?php echo $bunProduct->getProductUrl(true).'?color='.$val['color'];?>"><strong><?php echo $bunProduct->getName(); ?></strong></a> in <?php echo $clrinfo[$val['color']];?> Sold individually for <?php echo "$".(int) $bunProduct->getPrice(); $sumOfvar += $bunProduct->getPrice();//echo "$".number_format((float)( $bunProduct->getPrice()), 2, '.', '');?></p>
                         </td>
                     </tr>
                    <?php
