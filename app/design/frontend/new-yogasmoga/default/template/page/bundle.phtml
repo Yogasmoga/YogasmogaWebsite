@@ -160,7 +160,7 @@
                         $categoryId = $categoryIds['whatsnew_mens'];
                         $bannerTxt = 'white';
                     }
-
+                    
                     $bundleCategory = Mage::getModel('catalog/category')->load($categoryId);
                     $bundleCategory_imgUrl = $bundleCategory -> getImageUrl();
                     $productCollection = $bundleCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
@@ -295,13 +295,13 @@
                                         $_gallery = Mage::getModel('catalog/product')->load($parentProductId)->getMediaGalleryImages();
                                         $parentProductInfo = Mage::getModel('catalog/product')->load($parentProductId);
                                         $bundleProduct['name'] = $parentProductInfo->getName();
-                                        $bundleProduct['price'] = "$".number_format((float)( $parentProductInfo->getPrice()), 2, '.', '');
+                                        $bundleProduct['price'] = "$".(int) $parentProductInfo->getPrice();//"$".number_format((float)( $parentProductInfo->getPrice()), 2, '.', '');
                                         $firstParent = Mage::getModel('catalog/product')->load($parentIds[0]);
                                         $mainProduct = array();
 
                                         $mainProduct['name']= $firstParent->getName();
                                         $mainProduct['color']= $product->getColor();
-                                        $mainProduct['price']= "$".number_format((float)( $product->getPrice()), 2, '.', '');
+                                        $mainProduct['price']= "$".(int) $product->getPrice();//"$".number_format((float)( $product->getPrice()), 2, '.', '');
                                         $bundleProduct['mainProduct'] = $mainProduct;
 
                                         $imageArr = array();
@@ -321,7 +321,7 @@
                                             {
                                                 $scarfInfo['name'] = $imgdata['name'];
                                                 $scarfInfo['color'] = $imgdata['color'];
-                                                $scarfInfo['price'] = "$".number_format((float)( $imgdata['price']), 2, '.', '');
+                                                $scarfInfo['price'] = "$".(int) $imgdata['price'];//"$".number_format((float)( $imgdata['price']), 2, '.', '');
 
                                             }
 
@@ -348,7 +348,7 @@
                                                         <div class="gs-left-prd single-pred-det">
                                                             <a href="javascript:void(0);"><?php echo $bun['mainProduct']['name']; ?></a>
                                                             <span class="gs-color-name"><?php echo $clrinfo[$bun['mainProduct']['color']]; ?></span>
-                                                            <span class="gs-color-name"><?php echo $bun['mainProduct']['price']; ?> SOLD INDIVIDUALLY</span>
+                                                            <span class="gs-color-name">SOLD INDIVIDUALLY for <?php echo $bun['mainProduct']['price']; ?> </span>
                                                         </div>
                                                         <div class="gs-center-prd grp-pred-det">
                                                             <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>"><?php echo $bun['name']; ?></a>
@@ -357,7 +357,7 @@
                                                         <div class="gs-right-prd single-pred-det">
                                                             <a href="javascript:void(0);"><?php echo $bun['bundlewith']['name']; ?></a>
                                                             <span class="gs-color-name"><?php echo $clrinfo[$bun['bundlewith']['color']]; ?></span>
-                                                            <span class="gs-color-name"><?php echo $bun['bundlewith']['price']; ?> SOLD INDIVIDUALLY</span>
+                                                            <span class="gs-color-name">SOLD INDIVIDUALLY for <?php echo $bun['bundlewith']['price']; ?> </span>
                                                         </div>
                                                         <div class="clear"></div>
                                                     </div>
@@ -380,7 +380,7 @@
                                                         <div class="gs-left-prd single-pred-det">
                                                             <a href="javascript:void(0);"><?php echo $bun['mainProduct']['name']; ?></a>
                                                             <span class="gs-color-name"><?php echo $clrinfo[$bun['mainProduct']['color']]; ?></span>
-                                                            <span class="gs-color-name"><?php echo $bun['mainProduct']['price']; ?> SOLD INDIVIDUALLY</span>
+                                                            <span class="gs-color-name">SOLD INDIVIDUALLY for <?php echo $bun['mainProduct']['price']; ?> </span>
                                                         </div>
                                                         <div class="gs-center-prd grp-pred-det">
                                                             <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>"><?php echo $bun['name']; ?></a>
@@ -389,7 +389,7 @@
                                                         <div class="gs-right-prd single-pred-det">
                                                             <a href="javascript:void(0);"><?php echo $bun['bundlewith']['name']; ?></a>
                                                             <span class="gs-color-name"><?php echo $clrinfo[$bun['bundlewith']['color']]; ?></span>
-                                                            <span class="gs-color-name"><?php echo $bun['bundlewith']['price']; ?> SOLD INDIVIDUALLY</span>
+                                                            <span class="gs-color-name">SOLD INDIVIDUALLY for <?php echo $bun['bundlewith']['price']; ?> </span>
                                                         </div>
                                                         <div class="clear"></div>
                                                     </div>
