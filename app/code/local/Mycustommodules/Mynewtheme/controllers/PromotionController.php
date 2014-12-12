@@ -108,10 +108,10 @@ class Mycustommodules_Mynewtheme_PromotionController extends Mage_Core_Controlle
 //                else die('dddd');
             }
             if($flag == 1)
-            {
-                $response['errors'] = "Promo Codes cannot be used toward Accessories";
+            {// comment the code on client demand
+             /*   $response['errors'] = "Promo Codes cannot be used toward Accessories";
                 echo json_encode($response);
-                return;
+                return;*/
             }
         // end check do not apply smogi bucks for only accesories in cart
         try {
