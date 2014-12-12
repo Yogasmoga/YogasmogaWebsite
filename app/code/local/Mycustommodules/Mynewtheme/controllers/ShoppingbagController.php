@@ -2128,6 +2128,18 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
     }
     protected function fastcreateshoppingbaghtml()
     {
+        // refresh cart total
+        $cart = Mage::getSingleton('checkout/session')->getQuote();
+
+        foreach ($cart->getAllAddresses() as $address)
+        {
+            $cart->unsetData('cached_items_nonnominal');
+            $cart->unsetData('cached_items_nominal');
+        }
+
+        $cart->setTotalsCollectedFlag(false);
+        $cart->collectTotals();
+        // end refresh cart total
         /*$productID=Mage::getSingleton('checkout/session')->getLastAddedProductId(true);
         echo $productID."<br>";
         $_product=Mage::getModel('catalog/product')->load($productID);
