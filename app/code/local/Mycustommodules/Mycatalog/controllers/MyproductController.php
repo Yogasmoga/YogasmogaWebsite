@@ -1835,7 +1835,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         </div>
                     </div>
                     <!-- SMOGIBUCKS -->
-                    <table class="font11 smogibucks" <?php if(!$isrewardable) { //echo "style='display:none;'"; } ?>>
+                    <table class="font11 smogibucks" <?php if(!$isrewardable) { echo "style='display:none;'"; } ?>>
                         <tr>
                             <td width="50%">
                                 <div class="earnbucks">
@@ -2676,7 +2676,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
         </div>
         </div>
         <!-- SMOGIBUCKS -->
-        <table class="font11 smogibucks" <?php if(!$isrewardable) { echo "style='display:none;'"; } ?>>
+        <table class="font11 smogibucks" <?php if(!$isrewardable) { echo "style='display:block;'"; } ?>>
             <tr>
                 <td width="50%">
                     <div class="earnbucks">
