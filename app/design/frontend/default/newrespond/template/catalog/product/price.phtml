@@ -437,10 +437,11 @@ foreach($bundleProductsInfo as $key=>$val){
 if($subBunTotal){
     echo '<div class="price-box">
                             <span class="regular-price">
-                                <span class="price" style="color:#EC0D43 !important;">(a $'.number_format((float)( $subBunTotal), 2, '.', '').' Value)</span>
+                                <span class="price" style="color:#EC0D43 !important;">(a $'.(int) $subBunTotal.' Value)</span>
                             </span>
                        </div>
                     ';
 }
 // end price show added price  for bundle product
+// <span class="price" style="color:#EC0D43 !important;">(a $'.number_format((float)( $subBunTotal), 2, '.', '').' Value)</span>
 ?>
