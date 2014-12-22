@@ -17,6 +17,7 @@ local.properties
 .settings/
 .loadpath
 errors/local.xml
+app/etc/local.xml
 
 # External tool builders
 .externalToolBuilders/

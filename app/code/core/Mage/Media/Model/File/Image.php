@@ -171,7 +171,7 @@ class Mage_Media_Model_File_Image extends Mage_Core_Model_Resource_Abstract
         switch (strtolower($extension)) {
             case 'jpg':
             case 'jpeg':
-                $result = imagejpeg($object->getTmpImage(), $object->getFilePath(true), 80);
+                $result = imagejpeg($object->getTmpImage(), $object->getFilePath(true), 100);
                 break;
             case 'gif':
                 $result = imagegif($object->getTmpImage(), $object->getFilePath(true));
