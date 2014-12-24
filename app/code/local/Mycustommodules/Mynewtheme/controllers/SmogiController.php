@@ -86,6 +86,7 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
         );
         //check do not apply smogi bucks for only accesories in cart
         $miniitems = Mage::getSingleton('core/session')->getCartItems();
+
         if(isset($miniitems))
         {
             $excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories')->getValue('plain');
@@ -94,9 +95,10 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
             $flag = 0;
             foreach($miniitems as $mitem)
             {
-                $mitemProduct = Mage::getModel('catalog/product')->load($mitem['pid']);
+                //$mitemProduct = Mage::getModel('catalog/product')->load($mitem['pid']);
+                $mitemProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $mitem['sku']);
                 $cids = $mitemProduct->getCategoryIds();
-
+                //print_r($cids);
                 $flag = 0;
                 foreach($excludecats as $key=>$val)
                 {
@@ -109,11 +111,12 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
 //                echo $foundOnlyNoSmogiProduct;
 //                if($foundOnlyNoSmogiProduct == 0)die('treast');
 //                else die('dddd');
+                //echo $flag;
             }
             //echo $foundOnlyNoSmogiProduct;
             if($flag == 1)
             {
-                $response['error'] = "SMOGI Bucks cannot be used Toward Accessories";
+                $response['error'] = "SMOGI Bucks cannot be used Toward Accessories / ONE 2 MANY Items";
                 echo json_encode($response);
                 return;
             }
@@ -274,14 +277,26 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
         $readConnection = $resource->getConnection('core_read');
         $cartHelper = Mage::helper('checkout/cart');
         $items = $cartHelper->getCart()->getItems();
+        $itemids = array();
+        $count = 0;
 
         foreach ($items as $item) {
+            array_push($itemids, $item->getProductId());
+        }
+
+        foreach ($items as $item) {
+
             if($item->getPrice() > 0)
             {
                 $itemId = $item->getProductId();
                 $itemstotal = $item->getRowTotal();
 
-                $query1 = "Select category_id, name from catalog_category_product, catalog_category_flat_store_1 where catalog_category_product.product_id = ".$itemId." and catalog_category_flat_store_1.entity_id = catalog_category_product.category_id";
+                if($item->getProductType() == "configurable")
+                {$query1 = "Select category_id, name from catalog_category_product, catalog_category_flat_store_1 where catalog_category_product.product_id IN (".$itemId.",".$itemids[$count + 1].") and catalog_category_flat_store_1.entity_id = catalog_category_product.category_id";
+
+                }
+                else
+                    $query1 = "Select category_id, name from catalog_category_product, catalog_category_flat_store_1 where catalog_category_product.product_id = ".$itemId." and catalog_category_flat_store_1.entity_id = catalog_category_product.category_id";
                 $categoryid = $readConnection->fetchAll($query1);
                 $excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories')->getValue('plain');
                 $excludecats = explode(",", $excludecats);
@@ -305,6 +320,7 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
                     }
                 }
             }
+            $count++;
         }
 
         $grandTotal = $grandTotal - $cattotal;

@@ -183,6 +183,9 @@ jQuery(document).ready(function($){
 function InitializeProductQty()
 {
     _productorderqty = jQuery("div.sizeselector select.qtyselector").val();
+    _productorderqty = 1;
+
+
 }
 
 function changelengthtype(sz){
@@ -250,6 +253,10 @@ function changelengthtype(sz){
 }
 function changeproductsize(sz)
 {
+    //update price
+    var salePrice = sz.attr("price");
+    jQuery(".amount").html("$" + salePrice);
+    //update price ends
     jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
     if(_islengthavailable){
         jQuery("div.selectedlength div").removeClass("selected");
@@ -290,10 +297,25 @@ function changeproductsize(sz)
                 jQuery(".selectedlength div[lengthtype='"+lengthType+"']").removeClass('canbackorder');    
 
             }
+        // check for insale
+        var amount = jQuery(".amount");
+        var firstSize = jQuery("div.selectedlength div").first().next();
+        var firstSizePrice = firstSize.attr("price");
+        if(_productcolorinfo[colorindex].insale == 'Yes'){
+            firstSize.trigger("click");
+            amount.html("$" + firstSizePrice);
+            amount.addClass("insale-price");
+            jQuery(".box-seprtr").find("p.insale").removeClass("dnone");
+            jQuery(".was-amount").removeClass("no-display");
+
+        }else{
+            amount.html("$" + firstSizePrice);
+        }
+        //end insale
     }else{        
     jQuery("div#sizecontainer div").removeClass("dvselectedsize");
         sz.addClass("dvselectedsize");
-    
+
     if(sz.hasClass("outofstock"))
     {
         jQuery("#orderitem").hide();
@@ -303,12 +325,13 @@ function changeproductsize(sz)
 //        return;
     }
     else
-    {
+    { console.log('1');
         jQuery("#outofstockitem").hide();
         var qty = sz.attr("qty") * 1;
         var orderqty =_productorderqty;
+        console.log(qty+"---"+orderqty);
         if((qty - orderqty) >= 0)
-        {
+        { console.log('2');
             jQuery("#orderitem").show();
             jQuery("#preorderitem").hide();
             jQuery("#preorderhelp").hide();
@@ -317,14 +340,14 @@ function changeproductsize(sz)
         else
         {
             if(sz.hasClass("canbackorder"))
-            {
+            { console.log('3');
                 jQuery("#orderitem").hide();
                 jQuery("#preorderitem").show();
                 jQuery("#preorderhelp").show();
                 jQuery("#outofstockitem").hide();
             }
             else
-            {
+            { console.log('4');
                 jQuery("#orderitem").hide();
                 jQuery("#preorderitem").hide();
                 jQuery("#preorderhelp").hide();
@@ -470,6 +493,10 @@ function searchproductcolorinfoarrray(clr)
 
 function changeColor(clr)
 {
+    jQuery(".amount").removeClass("insale-price");
+    jQuery(".box-seprtr").find("p.insale").addClass("dnone");
+    jQuery(".was-amount").addClass("no-display");
+
     jQuery("body").find("#includeoption div:nth-child(2)").trigger("click"); 
     var colorindex = searchproductcolorinfoarrray(clr);
     if(colorindex == -1)
@@ -483,11 +510,11 @@ function changeColor(clr)
     jQuery("table.normalproductdetail div#colorcontainer table[color='" + clr + "'] tr:nth-child(2) td").addClass("tdselectedcolor");
     jQuery("table.normalproductdetail div#colorcontainer table[color='" + clr + "']").parent("div").addClass("selected");
     jQuery("div#sizecontainer div").removeClass("dvselectedsize");
-    //jQuery("div#sizecontainer div").addClass("disabled");    
-    jQuery("div#sizecontainer div").parent().addClass("disabled");    
+    //jQuery("div#sizecontainer div").addClass("disabled");
+    jQuery("div#sizecontainer div").parent().addClass("disabled");
     for(i = 0; i < _productcolorinfo[colorindex].sizes.length; i++)
     {
-        var sizetemp = _productcolorinfo[colorindex].sizes[i].split("|");        
+        var sizetemp = _productcolorinfo[colorindex].sizes[i].split("|");
         var size = sizetemp[0];
         var qty = sizetemp[1];
         var price = sizetemp[2];
@@ -518,6 +545,8 @@ function changeColor(clr)
     jQuery("#preorderhelp").hide();
     jQuery("#outofstockitem").hide();
     var smallimagehtml = '';
+    console.log(_productdisplaymode);
+
     if(_productdisplaymode == 'popup')
     {
         for(i = 0; i < _productcolorinfo[colorindex].smallimages.length; i++)
@@ -589,6 +618,40 @@ function changeColor(clr)
     if(!_sizesuperattribute)
         changeproductsize(jQuery("div#sizecontainer td:not(.disabled) div:not(.dvselectedsize):first"));
     //jQuery("#orderitem").addClass("bagdisabled");
+
+
+
+
+
+    // check for insale
+    var amount = jQuery(".amount");
+    var firstSize = '',firstSizePrice= '';
+    if(_islengthavailable)
+    {
+        // check for insale
+        firstSize = jQuery("div.selectedlength div").first().next();
+        firstSizePrice = firstSize.attr("price");
+        //end insale
+    }else{
+        firstSize = jQuery("div#sizecontainer td:not(.disabled)").first().find("div");
+        firstSizePrice = firstSize.attr("price");
+    }
+    console.log(amount+"--"+firstSize.html()+"--"+firstSizePrice);
+        if(_productcolorinfo[colorindex].insale == 'Yes'){
+            firstSize.trigger("click");//console.log(firstSizePrice+"mmmmm");
+            amount.html("$" + firstSizePrice);
+            amount.addClass("insale-price");
+            jQuery(".box-seprtr").find("p.insale").removeClass("dnone");
+            jQuery(".was-amount").removeClass("no-display");
+
+        }else{
+
+            //console.log(firstSizePrice+"oooooo");
+            amount.html("$" + firstSizePrice);
+        }
+
+
+    //end insale
 }
 
 function addtocart()
@@ -649,6 +712,13 @@ function addtocart()
             addurl = addurl + '&options['+_braOptionID+']=' + _braOptionTypeID;
             console.log(_braOptionTypeID + "---" + _braOptionID);
         }
+
+        //if(_isBundleOptionAvailable && ){
+        if(false){
+            var optId = jQuery(".cs-addPrd").attr("optionid");
+            var optTypeId = jQuery(".cs-addPrd").attr("optiontypeid");
+            addurl = addurl + '&options['+optId+']=' + optTypeId;
+        }
         // for do not call old shopping bag html in new theme
         addurl = addurl + '&showhtml=0';
         jQuery.ajax({
@@ -660,8 +730,12 @@ function addtocart()
                 _addingtocart = false;
                 if(result.status == 'success')
                 {
-                    if(_productdisplaymode == "popup")
+                    if(_productdisplaymode == "popup"){
                         jQuery( "#productdetailpopup" ).dialog( "close" );
+                        jQuery( "#bundleProductPopup" ).dialog( "close" );
+
+                    }
+
                     jQuery("span.cartitemcount").html(result.count);
                     jQuery("div#myminicart").html(result.html);
                     jQuery("div#myminicart").slideDown('slow', function(){

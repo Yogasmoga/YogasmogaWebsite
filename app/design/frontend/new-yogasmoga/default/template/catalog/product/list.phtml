@@ -1,11 +1,11 @@
 <!-- productGridView -->
 <div class="gridProdCubix">
-    <!-- leftNavGrid -->
-    <?php echo $this->getChildHtml('catalog.leftnav') ?>
-    <!-- leftNavGrid -->
+<!-- leftNavGrid -->
+<?php echo $this->getChildHtml('catalog.leftnav') ?>
+<!-- leftNavGrid -->
 
-    <!-- GridProducts -->
-    <div class="gridWrap">
+<!-- GridProducts -->
+<div class="gridWrap">
 <?php
 $_productCollection=$this->getLoadedProductCollection();
 $_helper = $this->helper('catalog/output');
@@ -27,118 +27,159 @@ foreach ($_productCollection as $_product){
 if($categoryId != '')
     $category = Mage::getModel('catalog/category')->load($categoryId)->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
 
-    $i=50;
-    $simpleProductArr = array();
-    $configurableProductArr = array();
-    $configurableProductArrKey = array();
-    $configurableProductSort = array();
-    $configurableProductSort2 = array();
-    $productSort = array();
-    foreach ($category as $products){
+
+// check for in sale category
+$categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('insale_category')->getValue('plain')), true);
+$showInSaleProduct = true;
+if($categoryId == $categoryIds['insale_category_id_women'] || $categoryId == $categoryIds['insale_category_id_mens'] )
+{
+    $showInSaleProduct = true;
+}
+// end check for in sale category
+
+$i=50;
+$simpleProductArr = array();
+$configurableProductArr = array();
+$configurableProductArrKey = array();
+$configurableProductSort = array();
+$configurableProductSort2 = array();
+$productSort = array();$t =0;
+foreach ($category as $products){
 
 
-        $simpleProduct= Mage::getModel('catalog/product')->load($products->getId());
-        //print_r($simpleProduct);die;
+    $simpleProduct= Mage::getModel('catalog/product')->load($products->getId());
+    $insalevalue = $simpleProduct->getAttributeText('insale');
+    /*if($insalevalue == 'Yes')
+        die('found');*/
+    //print_r($simpleProduct);die;
 
-        $sproductColor = $simpleProduct->getColor();
-        $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($products->getId());
-        $configurableProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
+    $sproductColor = $simpleProduct->getColor();
+    $simpleProductPrice =  $simpleProduct->getPrice();
+    $insalevalue = $simpleProduct->getAttributeText('insale');
+    $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($products->getId());
+    $configurableProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
 
-        if($configurableProduct->getId() != '' && $configurableProduct['status'] == 1){
-            if(!array_key_exists($configurableProduct->getId(), $configurableProductArr))
+    if($configurableProduct->getId() != '' && $configurableProduct['status'] == 1){
+        if(!array_key_exists($configurableProduct->getId(), $configurableProductArr))
+        {
+            $configurableProductArr[$configurableProduct->getId()] = array();
+            //array_push($configurableProductArr[$configurableProduct->getId()],$sproductColor);
+            if($simpleProduct->getGridsortorder())
             {
-                $configurableProductArr[$configurableProduct->getId()] = array();
+                $configurableProductArr[$configurableProduct->getId()][$simpleProduct->getGridsortorder()]['color'] = $sproductColor;
+                $configurableProductArr[$configurableProduct->getId()][$simpleProduct->getGridsortorder()]['price'] = $simpleProductPrice;
+                $configurableProductArr[$configurableProduct->getId()][$simpleProduct->getGridsortorder()]['insale'] = $insalevalue;
+            }
+
+            else
+            {
+                $configurableProductArr[$configurableProduct->getId()][$i.'temp']['color'] = $sproductColor;
+                $configurableProductArr[$configurableProduct->getId()][$i.'temp']['price'] = $simpleProductPrice;
+                $configurableProductArr[$configurableProduct->getId()][$i.'temp']['insale'] = $insalevalue;
+                $i++;
+            }
+            $configurableProductSort[]  = Mage::getResourceModel('catalog/product')->getAttributeRawValue($configurableProduct->getId(), 'sortorder', Mage::app()->getStore()->getStoreId());
+        }
+        else{
+            $check = 0;
+
+
+            foreach($configurableProductArr[$configurableProduct->getId()] as $key => $val)
+            {
+                 $check = in_array($sproductColor,$configurableProductArr[$configurableProduct->getId()][$key]);
+                 if($check)
+                     break;
+
+            }
+
+            //if(!in_array($sproductColor,$configurableProductArr[$configurableProduct->getId()]))
+            if(!$check)
+            {
                 //array_push($configurableProductArr[$configurableProduct->getId()],$sproductColor);
                 if($simpleProduct->getGridsortorder())
-                    $configurableProductArr[$configurableProduct->getId()][$simpleProduct->getGridsortorder()] = $sproductColor;
+                {
+                    $configurableProductArr[$configurableProduct->getId()][$simpleProduct->getGridsortorder()]['color'] = $sproductColor;
+                    $configurableProductArr[$configurableProduct->getId()][$simpleProduct->getGridsortorder()]['price'] = $simpleProductPrice;
+                    $configurableProductArr[$configurableProduct->getId()][$simpleProduct->getGridsortorder()]['insale'] = $insalevalue;
+                }
+
                 else
                 {
-                    $configurableProductArr[$configurableProduct->getId()][$i.'temp'] = $sproductColor;
+                    $configurableProductArr[$configurableProduct->getId()][$i.'temp']['color'] = $sproductColor;
+                    $configurableProductArr[$configurableProduct->getId()][$i.'temp']['price'] = $simpleProductPrice;
+                    $configurableProductArr[$configurableProduct->getId()][$i.'temp']['insale'] = $insalevalue;
                     $i++;
                 }
-                $configurableProductSort[]  = Mage::getResourceModel('catalog/product')->getAttributeRawValue($configurableProduct->getId(), 'sortorder', Mage::app()->getStore()->getStoreId());
-            }
-            else{
-                if(!in_array($sproductColor,$configurableProductArr[$configurableProduct->getId()]))
-                {
-                    //array_push($configurableProductArr[$configurableProduct->getId()],$sproductColor);
-                    if($simpleProduct->getGridsortorder())
-                        $configurableProductArr[$configurableProduct->getId()][$simpleProduct->getGridsortorder()] = $sproductColor;
-                    else
-                    {
-                        $configurableProductArr[$configurableProduct->getId()][$i.'temp'] = $sproductColor;
-                        $i++;
-                    }
-
-                }
 
             }
+
         }
-
-        //sort($configurableProductSort);
-
     }
-    // sort configurable product on grid page
-    //$categoryId = 6; //replace with your own
-        $category = new Varien_Object(array('id'=>$categoryId));
-        $positions = Mage::getResourceModel('catalog/category')->getProductsPosition($category);
-        //print_r($positions);
-        $temp = array();
-        $temp1 = array();
-        $tempconfkeys = array();
-        $tempconfigurableProductArr = array();
 
-        foreach($configurableProductArr as $key => $val)
-        {
-            array_push($temp, $positions[$key]);
+    //sort($configurableProductSort);
 
-        }
-        $temp1 = $temp;
-        $tempconfkeys = array_keys($configurableProductArr);
-        $tempconfigurableProductArr = $configurableProductArr;
+}
+// sort configurable product on grid page
+//$categoryId = 6; //replace with your own
+$category = new Varien_Object(array('id'=>$categoryId));
+$positions = Mage::getResourceModel('catalog/category')->getProductsPosition($category);
+//print_r($positions);
+$temp = array();
+$temp1 = array();
+$tempconfkeys = array();
+$tempconfigurableProductArr = array();
 
-        array_multisort($temp ,$configurableProductArr);
-        array_multisort($temp1 ,$tempconfkeys);
-        $k = 0;
-        foreach($configurableProductArr as $key => $val)
-        {
-            $tempval = array();
-            $tempval  = $val;
-            unset($configurableProductArr[$key]);
-            //array_push($configurableProductArr[$tempconfkeys[$i]],$tempval);
-            $configurableProductArr[$tempconfkeys[$k]]= $tempval;
-            $k++;
-        }
-            /*print_r($temp);
-            print_r($configurableProductArr);
-            print_r($temp1);
-            print_r($tempconfkeys   );
-            print_r($configurableProductArr);*/
+foreach($configurableProductArr as $key => $val)
+{
+    array_push($temp, $positions[$key]);
 
-    // end sort configurable product on grid page
+}
+$temp1 = $temp;
+$tempconfkeys = array_keys($configurableProductArr);
+$tempconfigurableProductArr = $configurableProductArr;
+
+array_multisort($temp ,$configurableProductArr);
+array_multisort($temp1 ,$tempconfkeys);
+$k = 0;
+foreach($configurableProductArr as $key => $val)
+{
+    $tempval = array();
+    $tempval  = $val;
+    unset($configurableProductArr[$key]);
+    //array_push($configurableProductArr[$tempconfkeys[$i]],$tempval);
+    $configurableProductArr[$tempconfkeys[$k]]= $tempval;
+    $k++;
+}
+/*print_r($temp);
+print_r($configurableProductArr);
+print_r($temp1);
+print_r($tempconfkeys   );
+print_r($configurableProductArr);*/
+
+// end sort configurable product on grid page
 
 
-    // sort colors on grid page like sort yantra tank products(colors) on grid page
-    //print_r($configurableProductArr);
-    $altconfigurableProductArr = array();
-    foreach($configurableProductArr as $key => $val)
-    {
-        ksort($val);
-        $altconfigurableProductArr[$key] = $val;
+// sort colors on grid page like sort yantra tank products(colors) on grid page
+//print_r($configurableProductArr);die;
+$altconfigurableProductArr = array();
+foreach($configurableProductArr as $key => $val)
+{
+    ksort($val);
+    $altconfigurableProductArr[$key] = $val;
 
-    }
-    $configurableProductArr = $altconfigurableProductArr;
-    //print_r($configurableProductArr);die;
-    // end sort colors on grid page like sort yantra tank products(colors) on grid page
+}
+$configurableProductArr = $altconfigurableProductArr;
+//print_r($configurableProductArr);die;
+// end sort colors on grid page like sort yantra tank products(colors) on grid page
 
-    //$configurableProductSort2 = $configurableProductSort;
-    //$configurableProductArrKey = array_keys($configurableProductArr);  // get all root keys of configurable product array
-    //array_multisort($configurableProductSort, $configurableProductArr);
-    //array_multisort($configurableProductSort2, $configurableProductArrKey);
+//$configurableProductSort2 = $configurableProductSort;
+//$configurableProductArrKey = array_keys($configurableProductArr);  // get all root keys of configurable product array
+//array_multisort($configurableProductSort, $configurableProductArr);
+//array_multisort($configurableProductSort2, $configurableProductArrKey);
 
-    $i = 0;
+$i = 0;
 
-    // assign keys to configurable array because multisort destroy key when sorting
+// assign keys to configurable array because multisort destroy key when sorting
 /*
     foreach($configurableProductArr as $key => $val){
         $configurableProductArr[$configurableProductArrKey[$i]] = $configurableProductArr[$key];
@@ -167,91 +208,208 @@ if($categoryId != '')
         $i++;
     }*/
 
-    //print_r($configurableProductArr);die;
-    $firsth1 = 1;
-    foreach($configurableProductArr as $key => $val){
-        $confProduct = Mage::getModel('catalog/product')->load($key);
-        // get all images for the product
-        $_gallery = Mage::getModel('catalog/product')->load($key)->getMediaGalleryImages();
-        $imageArr = array();
-        foreach($_gallery as $_image)
-        {
+//print_r($configurableProductArr);die;
+// carbon 6 only
 
-            $imgdata = json_decode(trim($_image->getLabel()), true);
-            $colorId = $imgdata['color'];
+    //if($categoryId == $categoryIds['insale_category_id_women'] || $categoryId == $categoryIds['insale_category_id_mens'])
+    if(false)
+    {
+        $simpleproductarr = array();
 
-            if(in_array($colorId,$configurableProductArr[$key]))
-            {
-
-                if(count($imageArr[$colorId])<=3)
-                {
-                    if(!array_key_exists($colorId,$imageArr))
-                    {
-                        $imageArr[$colorId] = $_image->getFile();
-                        $imageArr[$colorId] = array();
-                        array_push($imageArr[$colorId],$_image->getFile());
-
-                    }
-                    else
-                    {
-                        array_push($imageArr[$colorId],$_image->getFile());
-                    }
-                }
-            }
-
-
-
-
-        }
+        $productCollection = Mage::getModel('catalog/category')->load($categoryId)->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
         ?>
 
+        <?php
+        $flag = true;
+        foreach($productCollection as $product)
+        {
+
+
+            if($product->getColor() == 76 && ($categoryId == $categoryIds['insale_category_id_women'] || $categoryId == $categoryIds['insale_category_id_mens']))
+            {
+                if($flag)
+                {
+                    $flag = false;
+                    ?><h4>Carbon 6</h4><?php
+                }
+
+                $simpleproductarr['id'] =  $product->getId();
+                $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($simpleproductarr['id']);
+                $simpleproductarr['parentid'] =  $parentIds[0];
+                $simpleproductarr['parentname'] =  Mage::getModel('catalog/product')->load($parentIds[0])->getName();
+                $simpleproductarr['color'] =  $product->getColor();
+                $simpleproductarr['price'] =  $product->getPrice();
+                $_gallery = Mage::getModel('catalog/product')->load($parentIds[0])->getMediaGalleryImages();
+                $imageArr = array();
+                foreach($_gallery as $_image)
+                {
+
+                    $imgdata = json_decode(trim($_image->getLabel()), true);
+
+                    $colorId = $imgdata['color'];
+
+                    if($imgdata['type'] == 'product image' && $imgdata['color'] == $simpleproductarr['color'] )
+                    {
+
+                        if(count($imageArr[$colorId])<=3)
+                        {
+
+                            array_push($imageArr,$_image->getFile());
+
+                        }
+                    }
+
+                }
+                $simpleproductarr['image'] =  $imageArr;
+
+                $confProduct = Mage::getModel('catalog/product')->load($simpleproductarr['parentid']);
+                // show html of the product
+                ?>
+
+                <div class="productCont">
+                    <div class="prod-img">
+                        <a href="<?php echo $confProduct->getProductUrl().'?color='.$simpleproductarr['color'];?>" >
+                            <?php
+                            foreach($simpleproductarr['image'] as $img )
+                            {
+                                ?>
+                                <img alt="<?php echo $confProduct->getName();?>" class="prd-image lazy" data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91); ?>" />
+                            <?php
+                            }
+
+                            ?>
+                        </a>
+                    </div>
+                    <div class="caption">
+                        <div class="caption">
+                            <a href="<?php echo $confProduct->getProductUrl();?>"><?php echo $confProduct->getName().'<br/>';?> <?php echo $clrinfo[$simpleproductarr['color']]?></a>
+
+                            <span style="color:#c03;"> $<?php  echo  round( $simpleproductarr['price'],2);?></span>
+                            <span>was $<?php  echo  round($confProduct->getPrice(),2);?></span>
+                        </div>
+                    </div>
+                </div>
+            <?php
+            }
+        }
+    }
+    ?>
+<?php
+// carbon 6 end
+
+$firsth1 = 1;
+foreach($configurableProductArr as $key => $val){
+    $confProduct = Mage::getModel('catalog/product')->load($key);
+    // get all images for the product
+    $_gallery = Mage::getModel('catalog/product')->load($key)->getMediaGalleryImages();
+    $imageArr = array();
+    $check = 0;
+    foreach($_gallery as $_image)
+    {
+
+        $imgdata = json_decode(trim($_image->getLabel()), true);
+        $colorId = $imgdata['color'];
+        foreach($configurableProductArr[$key] as $k => $v)
+        {
+            $testArr = array();
+            $testArr = array_values($configurableProductArr[$key][$k]);
+            $check = in_array($colorId,$v);
+            if($check)
+                break;
+
+        }
+
+
+       // if(in_array($colorId,$configurableProductArr[$key]))
+        if($check)
+        {
+
+            if(count($imageArr[$colorId])<=3)
+            {
+                if(!array_key_exists($colorId,$imageArr))
+                {
+                    $imageArr[$colorId] = array();
+                    array_push($imageArr[$colorId],$_image->getFile());
+
+                }
+                else
+                {
+                    array_push($imageArr[$colorId],$_image->getFile());
+                }
+            }
+        }
+
+
+
+
+    }
+    ?>
+
+
     <!-- GridHeading -->
-     <?php if($firsth1 == 1){ $firsth1 = 2;?>
-    <h1><?php echo $confProduct->getName();?></h1>
+    <?php if($firsth1 == 1){ $firsth1 = 2;?>
+        <h1><?php echo $confProduct->getName();?></h1>
     <?php }else{ ?>
-         <h4><?php echo $confProduct->getName();?></h4>
+        <h4><?php echo $confProduct->getName();?></h4>
 
     <?php    } ?>
     <!-- GridHeading -->
 
     <?php
-        foreach($configurableProductArr[$key] as $childProduct){
+    foreach($configurableProductArr[$key] as $childProduct){
         ?>
-            <div class="productCont">
-                <div class="prod-img">
-                    <a href="<?php echo $confProduct->getProductUrl().'?color='.$childProduct;?>" >
-                        <?php
-                             foreach($imageArr[$childProduct] as $img )
-                             {
-                             ?>
-                                <img alt="<?php echo $confProduct->getName();?>" class="prd-image lazy" data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91); ?>" />
-                             <?php
-                             }
+        <div class="productCont">
+            <div class="prod-img">
+                <a href="<?php echo $confProduct->getProductUrl().'?color='.$childProduct['color'];?>" >
+                    <?php
+                    foreach($imageArr[$childProduct['color']] as $img )
+                    {
                         ?>
-                    </a>
-                    <a class="clickable" href="<?php echo $confProduct->getProductUrl().'?color='.$childProduct;?>"></a>
-                    <?php ?>
-                        <!--<img class="prd-image" src="<?php    echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$imageArr[$childProduct])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(221, 330)->setQuality(91); ?>" />-->
-                </div>
-                <div class="caption">
-                    <a href="<?php echo $confProduct->getProductUrl();?>"> <?php echo $clrinfo[$childProduct]?></a><span>$<?php  echo  round($confProduct->getPrice(),2);?></span>
-                </div>
+                        <img alt="<?php echo $confProduct->getName();?>" class="prd-image lazy" data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91); ?>" />
+                    <?php
+                    }
+                    ?>
+                </a>
+                <a class="clickable" href="<?php echo $confProduct->getProductUrl().'?color='.$childProduct['color'];?>"></a>
+                <?php ?>
+                <!--<img class="prd-image" src="<?php    echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$imageArr[$childProduct])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(221, 330)->setQuality(91); ?>" />-->
             </div>
+            <div class="caption">
 
         <?php
-        }
-    }
-
-    //print_r($configurableProductSort);
-   // print_r($configurableProductSort2);
-    //print_r($clrinfo);
-    //print_r($configurableProductArr);
-    //print_r($configurableProductArrKey);die;
+                if($showInSaleProduct && $childProduct['insale'] == 'Yes')
+                {
+            ?> <a href="<?php echo $confProduct->getProductUrl().'?color='.$childProduct['color'];?>"> <?php echo $clrinfo[$childProduct['color']]?></a>
+                    <span style="color:#c03;"> $<?php  echo  round($childProduct['price'],2);?></span>
+                    <span>was $<?php  echo  round($confProduct->getPrice(),2);?></span>
 
 
-    ?>
+            <?php }else{
+            ?>
+                    <a href="<?php echo $confProduct->getProductUrl().'?color='.$childProduct['color'];?>"> <?php echo $clrinfo[$childProduct['color']]?></a><span>$<?php  echo  round($confProduct->getPrice(),2);?></span>
+            <?php    }
+        ?>
+            </div>
+        </div>
 
     <?php
+    }
+}
+
+
+
+
+
+//print_r($configurableProductSort);
+// print_r($configurableProductSort2);
+//print_r($clrinfo);
+//print_r($configurableProductArr);
+//print_r($configurableProductArrKey);die;
+
+
+?>
+
+<?php
 /*
     if(Mage::getModel('catalog/product')->load($_product->getId())->getTypeID() == "configurable")
     {
@@ -291,7 +449,7 @@ if($categoryId != '')
 
 
 
-    ?>
+?>
 
 <?php /*
     <?php if ($i++%$_columnCount==0): ?>
@@ -323,9 +481,9 @@ if($categoryId != '')
     <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
         </ul>
     <?php endif */?>
-    <div class="clear-fix"></div>
-    </div>
-    <!-- GridProducts -->
+<div class="clear-fix"></div>
+</div>
+<!-- GridProducts -->
 </div>
 <div class="grid-bottom"><!-- <div class="new-bot-divider"></div> --></div>
 <!-- productGridView -->

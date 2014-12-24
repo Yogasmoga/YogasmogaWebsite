@@ -334,9 +334,11 @@ function openShoppingCart()
     jQuery(".side-menu-bar,.account-nav").addClass("scrolltopend");
 
 var shoppingWdth = jQuery(".shopping-cart").width();
-var bodyHght = jQuery("body").height();
+var bodyHght = jQuery("body").height();// for shopping (undo)
+var windowHght = jQuery(window).height();
+    //console.log(windowHght+"manish");
 jQuery(".shopping-cart").css({
-    "height": bodyHght,
+    "height": windowHght,
     "display": 'block',
     "z-index":  10
 }).removeClass("hdnovr");
@@ -580,6 +582,7 @@ function shoppingBagTotals()
     //jQuery(".shopping-cart").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='margin:80% auto auto;' />");
     if(!check4reviewpage)
      jQuery.ajax({url : checkouturl});
+    //window.location.reload();
     // end check for paypal final review page
     setTimeout(function(){
 
@@ -594,13 +597,40 @@ function shoppingBagTotals()
 
                 jQuery(".shopping-cart .cart-totalitems").html(data.count);
                 jQuery(".shopping-cart .cart-subtotal").html(data.subtotal);
+                /*
+                if(jQuery("#sub-totals-discount li").eq(1).hasClass('promotion')) {
+                    jQuery("#sub-totals-discount li.promotion").remove();
+                }
+                if(jQuery("#sub-totals-discount li").eq(1).hasClass('smogi')) {
+                    jQuery("#sub-totals-discount li.smogi").remove();
+                }
+                if(jQuery("#sub-totals-discount li").eq(1).hasClass('giftcard')) {
+                    jQuery("#sub-totals-discount li.giftcard").remove();
+                }
+                jQuery("#sub-totals-discount li").eq(0).after(data.discounthtml);
+                jQuery("#smogi").attr("disabled","disabled");
+                jQuery("#giftcartcode").attr("disabled","disabled");
+                if(data.discounthtml != null) {
 
+                    jQuery("span.applysmogi").click(function() {
+                        return false;
+                    });
+                }*/
+
+
+                //jQuery("#sub-totals-discount").eq("0").find('li').append(data.discounthtml);
                 var dontshow = 'donotshowprice';
                 if(data.grandtotal != 'donotshowprice')
                 {
                     jQuery(".shopping-cart .cart-grandtotal").html(data.grandtotal);
 
                 }
+                if(data.upperHtml != '' && data.grandtotal != 'donotshowprice' )
+                {
+                    jQuery(".contfull2").html('').append(data.upperHtml);
+
+                }
+
 
             }
         });
@@ -861,8 +891,15 @@ function applypromocode()
                     showShoppingBagHtml();
                 }
                 else
-                {   
-                    showerror(''+data.errors+'');
+                {
+                    var ff = "ff2014";
+                    if(promocode.toLowerCase() == ff)
+                    {
+                        showerror(''+"Promo Code cannot be applied on ONE 2 MANY items"+'');
+                    }else{
+                        showerror(''+data.errors+'');
+                    }
+
                     jQuery('#giftcartcode').val('');
                     jQuery('#giftcartcode').next('span').addClass("applygiftcard").empty().append("+");
                     jQuery('.zindexH').hide();

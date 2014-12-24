@@ -83,6 +83,16 @@
           <template>page/whatsnew.phtml</template>
           <layout_handle>whatsnew</layout_handle>
         </whatsnew>
+        <bundle translate="label">
+          <label>Bundle</label>
+          <template>page/bundle.phtml</template>
+          <layout_handle>bundle</layout_handle>
+        </bundle>
+          <newbundle translate="label">
+              <label>new bundle</label>
+              <template>page/bundle.phtml</template>
+              <layout_handle>bundle</layout_handle>
+          </newbundle>
         <!-- add more layouts here -->
       </layouts>
     </page>

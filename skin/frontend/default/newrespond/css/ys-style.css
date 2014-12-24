@@ -52,3 +52,33 @@ div.sub-fab img{width: 45% !important; display: block; margin:25px auto 0 auto;}
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) {
 	.firstdialog{left: 2% !important;} 
 }
+/* 27-11-2014 new code */
+span.label{
+    color: #000000!important;
+}
+
+td.women-tab a{
+    color: #fff;
+    display: inline-block;
+    height: 35px;
+    line-height: 28px;
+    vertical-align: top;
+    width: 100%;
+}
+td.women-tab a:hover{ color: #fff; text-decoration: none; }
+.s-tabs1{
+    border: 2px solid #f7a13c;
+}
+.s-tabs1 td.active {
+    background-color: #f7a13c;
+    color: #ffffff;
+}
+.s-tabs1 td {
+    cursor: pointer;
+    font-family: ITCAvantGardeBk;
+    font-size: 18px;
+    font-weight: normal;
+    padding-top: 5px;
+    text-align: center;
+    vertical-align: middle;
+}

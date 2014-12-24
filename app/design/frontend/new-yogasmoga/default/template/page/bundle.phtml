@@ -1,0 +1,636 @@
+<?php
+/**
+ *
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+    <?php
+    if($this->getRequest()->getParam('video') == 'true')
+    {
+        ?>
+        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb01.png" />
+        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb02.png" />
+        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb03.png" />
+        <meta property="og:title"content="YOGASMOGA | Did You Take a Breath Today?" />
+        <meta property="og:description"content="We are YOGASMOGA, We make things for life - One breath at a time." />
+    <?php
+    }
+    else
+    {
+        ?>
+        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/Untitled_Panorama2_c_1.jpg" />
+        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga_mood_2395.jpg" />
+        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/Yogasmoga_op.jpeg" />
+        <meta property="og:title"content="YOGASMOGA" />
+        <meta property="og:description"content="We are YOGASMOGA. We make things for LIFE. One breath at a time." />
+    <?php
+    }
+    ?>
+
+    <?php echo $this->getChildHtml('head') ?>
+
+    <?php
+    //if(Mage::getSingleton('core/session')->getShowVideo())
+    if($this->getRequest()->getParam('video') == 'true')
+    {
+        //Mage::getSingleton('core/session')->setShowVideo(false);
+        ?>
+        <script type="text/javascript">
+            var loc = window.location;
+            history.replaceState("", document.title, loc.pathname + "breathe");
+            jQuery(window).load(function(){
+                setTimeout(function(){$j("#hmpagevideo").trigger('click')},1000);
+            });
+        </script>
+    <?php
+    }
+    ?>
+    <script type="text/javascript">
+        jQuery(window).load(function(){
+            jQuery("div.showloading").removeClass('showloading');
+            setTimeout(function(){setfullscreenheight();},50);
+            jQuery('body').css('overflow','auto');
+            jQuery('.namaskar-overlay1').fadeOut('slow');
+        });
+        jQuery(document).ready(function(){
+            setTimeout(function(){
+                jQuery("div.page-overlayy").remove();
+                jQuery("body").css('overflow','auto');
+            }, 500);
+        });
+    </script>
+    <!--<div class="namaskar-overlay1">&nbsp;</div> -->
+</head>
+<body class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>">
+<?php echo $this->getChildHtml('after_body_start') ?>
+<div class="wrapper">
+<div class="page-overlayy" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">&nbsp;</div>
+<?php echo $this->getChildHtml('global_notices') ?>
+<div class="shopping-cart"></div>
+<div class="page">
+    <?php echo $this->getChildHtml('header') ?>
+    <div id="pagecontainer">
+        <div id="Allproducts" class="fullscreen pgsection " desc="Top Sellers" style="min-height: 422px;">
+            <div class="product-grid">
+                <div class="2-columns-wrapper">
+                    <?php
+                    // code for get left nav
+                    $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+                    $categoryName = explode('/', $currentUrl);
+                    $urlKey = $categoryName[4];
+                    $_category = Mage::getModel('catalog/category')->loadByAttribute('url_key', $urlKey);
+                    $parentCategoryId =  $_category->getId();
+                    // end code for left nav
+
+
+                    $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('bundle_categoryid')->getValue('plain')), true);
+                    $categoryId = '';
+                    $bannerTxt = '';
+                    $bunCatName = '';
+                    $showBothCat = 0;
+                    if($urlKey == 'gifts' && $categoryName[3] == "women")
+                    {
+                        $categoryId = $categoryIds['bundle_women_gifts'];
+                        //$categoryId = '46'; //replace with your own
+                        $category = new Varien_Object(array('id'=>$categoryId));
+                        $positions = Mage::getResourceModel('catalog/category')->getProductsPosition($category);
+                        //print_r($positions);die;
+                        $bannerTxt = 'white';
+                        $bunCatName = "$150 GIFT SETS";
+                        $showBothCat = 1;
+                    }
+                    if($urlKey == 'gifts' && $categoryName[3] == "mens")
+                    {
+                        $categoryId = $categoryIds['bundle_mens_gifts'];
+                        //$categoryId = '46'; //replace with your own
+                        $category = new Varien_Object(array('id'=>$categoryId));
+                        $positions = Mage::getResourceModel('catalog/category')->getProductsPosition($category);
+                        //print_r($positions);die;
+                        $bannerTxt = 'white';
+                        $bunCatName = "$250 GIFT SETS";
+                        $showBothCat = 1;
+                    }
+                    // end gifts
+                    if($urlKey == 'gift-sets-for-250' && $categoryName[3] == "women")
+                    {
+                        $categoryId = $categoryIds['bundle_women_250'];
+                        //$categoryId = '46'; //replace with your own
+                        $category = new Varien_Object(array('id'=>$categoryId));
+                        $positions = Mage::getResourceModel('catalog/category')->getProductsPosition($category);
+                        //print_r($positions);die;
+                        $bannerTxt = 'white';
+                        $bunCatName = "$250 GIFT SETS";
+                    }
+                    if($urlKey == 'gift-sets-for-150' && $categoryName[3] == "women" )
+                    {
+                        $categoryId = $categoryIds['bundle_women_150'];
+                        //$categoryId = '46'; //replace with your own
+                        $category = new Varien_Object(array('id'=>$categoryId));
+                        $positions = Mage::getResourceModel('catalog/category')->getProductsPosition($category);
+                        //print_r($positions);die;
+                        $bannerTxt = 'white';
+                        $bunCatName = "$150 GIFT SETS";
+                    }
+                    if($urlKey == 'gift-sets-for-150' && $categoryName[3] == "mens" )
+                    {
+                        $categoryId = $categoryIds['bundle_mens_150'];
+                        //$categoryId = '46'; //replace with your own
+                        $category = new Varien_Object(array('id'=>$categoryId));
+                        $positions = Mage::getResourceModel('catalog/category')->getProductsPosition($category);
+                        //print_r($positions);die;
+                        $bannerTxt = 'white';
+                        $bunCatName = "$150 GIFT SETS";
+                    }
+                    if($urlKey == 'bundle-cat')
+                    {
+                        $categoryId = $categoryIds['bundle_women_250'];
+                        //$categoryId = '46'; //replace with your own
+                        $category = new Varien_Object(array('id'=>$categoryId));
+                        $positions = Mage::getResourceModel('catalog/category')->getProductsPosition($category);
+                        //print_r($positions);die;
+                        $bannerTxt = 'white';
+                    }
+                    if($urlKey == 'mens')
+                    {
+                        $categoryId = $categoryIds['whatsnew_mens'];
+                        $bannerTxt = 'white';
+                    }
+                    
+                    $bundleCategory = Mage::getModel('catalog/category')->load($categoryId);
+                    $bundleCategory_imgUrl = $bundleCategory -> getImageUrl();
+                    $productCollection = $bundleCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
+                    ?>
+                    <!-- bannerContainer -->
+                    <div class="bannerFluid">
+                        <img title="Bundle" alt="Bundle" src="<?php echo $bundleCategory_imgUrl; ?>">
+                        <div class="bnrtxt"><h1 class="<?php //echo $bannerTxt ?>"></h1></div>
+                    </div>
+                    <!-- bannerContainer -->
+
+                    <!-- middleContainer -->
+                    <div class="gridProdCubix" style="min-height: 798px;">
+                        <?php
+                        $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+                        $categoryName = explode('/', $currentUrl);
+                        $urlKey = $categoryName[3];
+                        $_category = Mage::getModel('catalog/category')->loadByAttribute('url_key', $urlKey);
+                        $parentCategoryId =  $_category->getId();
+                        ?>
+
+                        <!-- leftNav -->
+                        <div class="scroller_anchor" style="height: 29px;"></div>
+                        <div class="leftnav f-left l-align cntn-scroll">
+                            <ul class="ctglink">
+                                <?php
+                                $hasnosubcategoryhtml  = '';
+                                $withsubcategoryhtml = '';
+
+                                $subsubcategory1 = Mage::getModel('catalog/category')->load($parentCategoryId);
+                                $subsubcategories = $subsubcategory1->getChildrenCategories();
+                                foreach($subsubcategories as $subsubcategory){
+                                    // do not show category in left Nav if it is not include top navigation
+                                    $showCategoryInLeftNav = Mage::getModel('catalog/category')->load($subsubcategory->getId());
+                                    if($showCategoryInLeftNav->getIncludeInMenu())
+                                    {
+                                        if($subsubcategory->getChildrenCount() == 0){
+                                            $hasnosubcategoryhtml .= '<li><a href='.$subsubcategory->getUrl().' class="bld ';
+                                            if($subsubcategory->getUrl() == $currentUrl)
+                                                $hasnosubcategoryhtml .= 'current';
+                                            $hasnosubcategoryhtml .= '">'.$subsubcategory->getName().'</a></li>';
+                                        }else{
+                                            $withsubcategoryhtml .= '<li class = "sub-head"><a href='.$subsubcategory->getUrl().' class="bld ';
+                                            if($subsubcategory->getUrl() == $currentUrl)
+                                                $withsubcategoryhtml .= 'current';
+                                            $withsubcategoryhtml .= '">'.$subsubcategory->getName().'</a></li>';
+                                            $withsubcategoryhtml .= '<ul class = "subnav">';
+                                            $subsubsubcategory  = Mage::getModel('catalog/category')->load($subsubcategory->getId())->getChildrenCategories();
+                                            foreach ($subsubsubcategory as $child3)
+                                            {
+                                                if($child3->getIsActive()) {
+                                                    $withsubcategoryhtml .=  '<li><a ';
+                                                    if($child3->getUrl() == $currentUrl)
+                                                        $withsubcategoryhtml .= 'class = "current"';
+                                                    $withsubcategoryhtml .= 'href='.$child3->getUrl().'>'.$child3->getName().'</a></li>';
+
+                                                }
+                                            }
+                                            $withsubcategoryhtml .= '</ul>';
+                                        }
+                                    }
+                                }
+                                //$withsubcategoryhtml .= '</ul></div>';
+
+                                // Gift of ys
+                                $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+                                $categoryName = explode('/', $currentUrl);
+                                $urlKey = $categoryName[3];
+                                $goys = '<li class="sub-head"><a class="bld" href='.$this->getUrl().'women/gifts>Gifts</a></li>';
+                                if($urlKey == "women"){
+                                    $goys .= "<ul class='subnav'>
+
+                <li><a href=".$this->getUrl()."women/gift-sets-for-150/>Gift Sets for $150</a></li>
+                <li><a href=".$this->getUrl()."women/gift-sets-for-250/>Gift Sets for $250</a></li>
+                <li><a href=".$this->getUrl()."gift_of_ys/>Gift Card</a></li>
+              </ul>";
+
+                                }
+                                if($urlKey == "mens"){
+                                    $goys .= "<ul class='subnav'>
+
+                <li><a href=".$this->getUrl()."mens/gift-sets-for-150/>Gift Sets for $150</a></li>
+                <li><a href=".$this->getUrl()."gift_of_ys/>Gift Card</a></li>
+              </ul>";
+                                }
+
+                                echo $hasnosubcategoryhtml.$goys.$withsubcategoryhtml.'</ul></div>';
+
+
+                                ?>
+                                <!-- leftNav -->
+
+                                <!-- productGridImages -->
+                                <div class="gridWrap gs-bundle">
+                                    <!-- gridHeading -->
+                                    <h1><?php echo $bunCatName; ?></h1>
+                                    <!-- gridHeading -->
+                                    <?php
+                                    // get color array
+                                    $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                                    $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color' ORDER BY eao.sort_order,eaov.value");
+                                    $colorIndexArr = array();
+                                    while ($row = $readresult->fetch() ) {
+                                        $clrinfo[$row['Value']] = $row['Attribute'];
+                                        $colorIndexArr [] = $row['Value'];
+                                    }
+
+                                    $bundleParentProductIdsArr = json_decode(trim(Mage::getModel('core/variable')->loadByCode('bundle_product_Ids')->getValue('plain')), true);
+                                    $bundleParentProductIds = explode(",",$bundleParentProductIdsArr['bundle_products']);
+
+                                    $simpleproductarr = array();
+                                    $bundleProducts = array();
+                                    $bundleProduct = array();$i=0;
+                                    $bundleProduct250 = array();
+                                    $bundleProduct150 = array();
+                                    foreach($productCollection as $product)
+                                    {
+                                        $parentProductId = '';
+
+                                        $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($product->getId());
+
+                                        // for parent find as bundle
+                                            foreach($bundleParentProductIds as $key=>$val){
+                                                for($i = 0; $i<sizeof($parentIds);$i++){
+                                                    if($parentIds[$i] == $val){
+                                                        $parentProductId = $val;
+                                                        break;
+                                                    }
+                                                }
+                                            }
+
+                                        // end for parent find as bundle
+                                        $bundleProduct['id'] = $parentProductId;
+                                        $_gallery = Mage::getModel('catalog/product')->load($parentProductId)->getMediaGalleryImages();
+                                        $parentProductInfo = Mage::getModel('catalog/product')->load($parentProductId);
+                                        $bundleProduct['name'] = $parentProductInfo->getName();
+                                        $bundleProduct['price'] = "$".(int) $parentProductInfo->getPrice();//"$".number_format((float)( $parentProductInfo->getPrice()), 2, '.', '');
+                                        $firstParent = Mage::getModel('catalog/product')->load($parentIds[0]);
+                                        $mainProduct = array();
+
+                                        $mainProduct['name']= $firstParent->getName();
+                                        $mainProduct['color']= $product->getColor();
+                                        $mainProduct['price']= "$".(int) $product->getPrice();//"$".number_format((float)( $product->getPrice()), 2, '.', '');
+                                        $bundleProduct['mainProduct'] = $mainProduct;
+
+                                        $imageArr = array();
+                                        $scarfInfo = array();
+                                        foreach($_gallery as $_image)
+                                        {
+
+                                            $imgdata = json_decode(trim($_image->getLabel()), true);
+
+                                            $colorId = $imgdata['color'];
+
+                                            if($imgdata['type'] == 'bundle')
+                                            {
+                                                    array_push($imageArr,$_image->getFile());
+                                            }
+                                            if($imgdata['type'] == 'scarf')
+                                            {
+                                                $scarfInfo['name'] = $imgdata['name'];
+                                                $scarfInfo['color'] = $imgdata['color'];
+                                                $scarfInfo['price'] = "$".(int) $imgdata['price'];//"$".number_format((float)( $imgdata['price']), 2, '.', '');
+
+                                            }
+
+
+                                        }
+
+                                        $bundleProduct['images']= $imageArr;
+                                        $bundleProduct['bundlewith'] = $scarfInfo;
+
+                                        array_push($bundleProducts,$bundleProduct);
+
+                                        // show both category
+                                        if($showBothCat){
+                                            if($bundleProduct['price'] == "$150"){
+                                                array_push($bundleProduct150,$bundleProduct);
+                                            }
+                                            if($bundleProduct['price'] == "$250"){
+                                                array_push($bundleProduct250,$bundleProduct);
+                                            }
+                                        }
+
+                                    }
+                                    if($showBothCat){
+                                        foreach($bundleProduct150 as $bun){
+                                            $confProduct = Mage::getModel('catalog/product')->load($bun['id']);
+                                            $valFst =  (int)str_replace("$","",$bun['mainProduct']['price']);
+                                            $valSec = (int) str_replace("$","",$bun['bundlewith']['price']);
+                                            if(sizeof($bun['images']) == 1){
+                                                ?>
+                                                <div class="one-image-stack">
+                                                    <div class="giftSetImg">
+                                                        <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>">
+                                                            <img   src="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$bun['images'][0])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->setQuality(91); ?>" /></a>
+                                                    </div>
+                                                    <div class="gs-prd-det">
+                                                        <div class="gs-left-prd single-pred-det">
+                                                            <a href="javascript:void(0);"><?php echo $bun['mainProduct']['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $clrinfo[$bun['mainProduct']['color']]; ?></span>
+                                                            <span class="gs-color-name">SOLD INDIVIDUALLY for <?php echo $bun['mainProduct']['price']; ?> </span>
+                                                        </div>
+                                                        <div class="gs-center-prd grp-pred-det">
+                                                            <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>"><?php echo $bun['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $bun['price']; ?></span><br />
+                                                            <span class="gs-color-name" style="color:red">(a <?php echo '$'.($valFst+$valSec); ?> Value)</span>
+                                                        </div>
+                                                        <div class="gs-right-prd single-pred-det">
+                                                            <a href="javascript:void(0);"><?php echo $bun['bundlewith']['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $clrinfo[$bun['bundlewith']['color']]; ?></span>
+                                                            <span class="gs-color-name">SOLD INDIVIDUALLY for <?php echo $bun['bundlewith']['price']; ?> </span>
+                                                        </div>
+                                                        <div class="clear"></div>
+                                                    </div>
+                                                </div>
+                                            <?php
+                                            }else{
+                                                ?>
+                                                <div class="two-image-stack">
+                                                    <div class="giftSetImg">
+                                                        <div class="stack-left-img f-left">
+                                                            <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>">
+                                                                <img   src="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$bun['images'][0])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->setQuality(91); ?>" /></a>
+                                                        </div>
+                                                        <div class="stack-right-img f-right">
+
+                                                            <img   src="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$bun['images'][1])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->setQuality(91); ?>" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="gs-prd-det">
+                                                        <div class="gs-left-prd single-pred-det">
+                                                            <a href="javascript:void(0);"><?php echo $bun['mainProduct']['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $clrinfo[$bun['mainProduct']['color']]; ?></span>
+                                                            <span class="gs-color-name">SOLD INDIVIDUALLY for <?php echo $bun['mainProduct']['price']; ?> </span>
+                                                        </div>
+                                                        <div class="gs-center-prd grp-pred-det">
+                                                            <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>"><?php echo $bun['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $bun['price']; ?></span>
+                                                            <span class="gs-color-name" style="color:red">(a <?php echo '$'.($valFst+$valSec); ?> Value)</span>
+                                                        </div>
+                                                        <div class="gs-right-prd single-pred-det">
+                                                            <a href="javascript:void(0);"><?php echo $bun['bundlewith']['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $clrinfo[$bun['bundlewith']['color']]; ?></span>
+                                                            <span class="gs-color-name">SOLD INDIVIDUALLY for <?php echo $bun['bundlewith']['price']; ?> </span>
+                                                        </div>
+                                                        <div class="clear"></div>
+                                                    </div>
+                                                </div>
+                                            <?php
+                                            }
+                                        }
+                                        echo "<h1>$250 GIFT SETS</h1>";
+                                        foreach($bundleProduct250 as $bun){
+                                            $confProduct = Mage::getModel('catalog/product')->load($bun['id']);
+                                            $valFst =  (int)str_replace("$","",$bun['mainProduct']['price']);
+                                            $valSec = (int) str_replace("$","",$bun['bundlewith']['price']);
+                                            if(sizeof($bun['images']) == 1){
+                                                ?>
+                                                <div class="one-image-stack">
+                                                    <div class="giftSetImg">
+                                                        <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>">
+                                                            <img   src="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$bun['images'][0])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->setQuality(91); ?>" /></a>
+                                                    </div>
+                                                    <div class="gs-prd-det">
+                                                        <div class="gs-left-prd single-pred-det">
+                                                            <a href="javascript:void(0);"><?php echo $bun['mainProduct']['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $clrinfo[$bun['mainProduct']['color']]; ?></span>
+                                                            <span class="gs-color-name">SOLD INDIVIDUALLY for <?php echo $bun['mainProduct']['price']; ?> </span>
+                                                        </div>
+                                                        <div class="gs-center-prd grp-pred-det">
+                                                            <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>"><?php echo $bun['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $bun['price']; ?></span><br />
+                                                            <span class="gs-color-name" style="color:red">(a <?php echo '$'.($valFst+$valSec); ?> Value)</span>
+                                                        </div>
+                                                        <div class="gs-right-prd single-pred-det">
+                                                            <a href="javascript:void(0);"><?php echo $bun['bundlewith']['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $clrinfo[$bun['bundlewith']['color']]; ?></span>
+                                                            <span class="gs-color-name">SOLD INDIVIDUALLY for <?php echo $bun['bundlewith']['price']; ?> </span>
+                                                        </div>
+                                                        <div class="clear"></div>
+                                                    </div>
+                                                </div>
+                                            <?php
+                                            }else{
+                                                ?>
+                                                <div class="two-image-stack">
+                                                    <div class="giftSetImg">
+                                                        <div class="stack-left-img f-left">
+                                                            <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>">
+                                                                <img   src="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$bun['images'][0])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->setQuality(91); ?>" /></a>
+                                                        </div>
+                                                        <div class="stack-right-img f-right">
+
+                                                            <img   src="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$bun['images'][1])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->setQuality(91); ?>" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="gs-prd-det">
+                                                        <div class="gs-left-prd single-pred-det">
+                                                            <a href="javascript:void(0);"><?php echo $bun['mainProduct']['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $clrinfo[$bun['mainProduct']['color']]; ?></span>
+                                                            <span class="gs-color-name">SOLD INDIVIDUALLY for <?php echo $bun['mainProduct']['price']; ?> </span>
+                                                        </div>
+                                                        <div class="gs-center-prd grp-pred-det">
+                                                            <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>"><?php echo $bun['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $bun['price']; ?></span>
+                                                            <span class="gs-color-name" style="color:red">(a <?php echo '$'.($valFst+$valSec); ?> Value)</span>
+                                                        </div>
+                                                        <div class="gs-right-prd single-pred-det">
+                                                            <a href="javascript:void(0);"><?php echo $bun['bundlewith']['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $clrinfo[$bun['bundlewith']['color']]; ?></span>
+                                                            <span class="gs-color-name">SOLD INDIVIDUALLY for <?php echo $bun['bundlewith']['price']; ?> </span>
+                                                        </div>
+                                                        <div class="clear"></div>
+                                                    </div>
+                                                </div>
+                                            <?php
+                                            }
+                                        }
+
+                                    }else{
+                                        foreach($bundleProducts as $bun){
+                                            $confProduct = Mage::getModel('catalog/product')->load($bun['id']);
+                                            $valFst =  (int)str_replace("$","",$bun['mainProduct']['price']);
+                                            $valSec = (int) str_replace("$","",$bun['bundlewith']['price']);
+                                            if(sizeof($bun['images']) == 1){
+                                                ?>
+                                                <div class="one-image-stack">
+                                                    <div class="giftSetImg">
+                                                        <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>">
+                                                            <img   src="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$bun['images'][0])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->setQuality(91); ?>" /></a>
+                                                    </div>
+                                                    <div class="gs-prd-det">
+                                                        <div class="gs-left-prd single-pred-det">
+                                                            <a href="javascript:void(0);"><?php echo $bun['mainProduct']['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $clrinfo[$bun['mainProduct']['color']]; ?></span>
+                                                            <span class="gs-color-name">SOLD INDIVIDUALLY for <?php echo $bun['mainProduct']['price']; ?> </span>
+                                                        </div>
+                                                        <div class="gs-center-prd grp-pred-det">
+                                                            <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>"><?php echo $bun['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $bun['price']; ?></span><br />
+                                                            <span class="gs-color-name" style="color:red">(a <?php echo '$'.($valFst+$valSec); ?> Value)</span>
+                                                        </div>
+                                                        <div class="gs-right-prd single-pred-det">
+                                                            <a href="javascript:void(0);"><?php echo $bun['bundlewith']['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $clrinfo[$bun['bundlewith']['color']]; ?></span>
+                                                            <span class="gs-color-name">SOLD INDIVIDUALLY for <?php echo $bun['bundlewith']['price']; ?> </span>
+                                                        </div>
+                                                        <div class="clear"></div>
+                                                    </div>
+                                                </div>
+                                            <?php
+                                            }else{
+                                                ?>
+                                                <div class="two-image-stack">
+                                                    <div class="giftSetImg">
+                                                        <div class="stack-left-img f-left">
+                                                            <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>">
+                                                                <img   src="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$bun['images'][0])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->setQuality(91); ?>" /></a>
+                                                        </div>
+                                                        <div class="stack-right-img f-right">
+
+                                                            <img   src="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$bun['images'][1])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->setQuality(91); ?>" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="gs-prd-det">
+                                                        <div class="gs-left-prd single-pred-det">
+                                                            <a href="javascript:void(0);"><?php echo $bun['mainProduct']['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $clrinfo[$bun['mainProduct']['color']]; ?></span>
+                                                            <span class="gs-color-name">SOLD INDIVIDUALLY for <?php echo $bun['mainProduct']['price']; ?> </span>
+                                                        </div>
+                                                        <div class="gs-center-prd grp-pred-det">
+                                                            <a href="javascript:void(0);" class="bundle-view" pro-id="<?php echo $bun['id'] ?>"><?php echo $bun['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $bun['price']; ?></span>
+                                                            <span class="gs-color-name" style="color:red">(a <?php echo '$'.($valFst+$valSec); ?> Value)</span>
+                                                        </div>
+                                                        <div class="gs-right-prd single-pred-det">
+                                                            <a href="javascript:void(0);"><?php echo $bun['bundlewith']['name']; ?></a>
+                                                            <span class="gs-color-name"><?php echo $clrinfo[$bun['bundlewith']['color']]; ?></span>
+                                                            <span class="gs-color-name">SOLD INDIVIDUALLY for <?php echo $bun['bundlewith']['price']; ?> </span>
+                                                        </div>
+                                                        <div class="clear"></div>
+                                                    </div>
+                                                </div>
+                                            <?php
+                                            }
+                                        }
+                                    }
+
+
+
+                                        // show html of the product
+                                        ?>
+
+                                        <!-- <div class="productCont">
+                                            <div class="prod-img">
+                                                <a href="<?php echo $confProduct->getProductUrl().'?color='.$simpleproductarr['color'];?>" >
+                                                    <?php
+                                                    foreach($simpleproductarr['image'] as $img )
+                                                    {
+                                                        ?>
+                                                        <img alt="<?php echo $confProduct->getName();?>" class="prd-image lazy" data-original="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$img)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(225, 364)->setQuality(91); ?>" />
+                                                    <?php
+                                                    }
+
+                                                    ?>
+                                                </a>
+                                                <a class="clickable bundle-view" id="<?php echo $simpleproductarr['parentid'];?>" href="javascript:void(0);"></a>
+                                            </div>
+                                            <div class="caption">
+                                                <div class="caption">
+                                                    <a href="<?php echo $confProduct->getProductUrl();?>"><?php echo $confProduct->getName().'<br/>';?> <?php echo $clrinfo[$simpleproductarr['color']]?></a><span>$<?php  echo  round($confProduct->getPrice(),2);?></span>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                    <?php
+
+
+
+                                    ?>
+
+
+                                </div>
+                                <!-- productGridImages -->
+
+                        </div>
+                        <!-- middleContainer -->
+                        <div class="grid-bottom"></div>
+                        <div class="clear-fix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display:none;">
+            <div id="bundleProductPopup">
+            </div>
+        </div>
+
+        <!-- footer -->
+        <?php echo $this->getChildHtml('footer'); ?>
+        <!-- footer -->
+
+    </div>
+    <?php echo $this->getChildHtml('before_body_end'); ?>
+</div>
+</div>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>

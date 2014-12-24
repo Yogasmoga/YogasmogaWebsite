@@ -1894,7 +1894,7 @@ ul.new-arrivals a.quick-view{display: none;}
 .wl-feat-prd img,.wl-color-story-prd img{width: 100%; display: block;}
 .top-left-block,.bottom-left-block,.top-right-block,.bottom-right-block{width: 100%; display: block; height: 50%;}
 .wl-feat-prd .top-left-block{background: #555555;}
-.wl-color-story-prd .bottom-right-block{background: #595758;}
+.wl-color-story-prd .bottom-right-block{background: #b10707;}
 .category-women{margin: 0 !important;}
 .wl-feat-prd,.wl-color-story-prd{opacity: 0; overflow: hidden;}
 .wl-right-block,.top-left-block,.wl-cs-left-block,.bottom-right-block{position: relative;;}
@@ -1909,10 +1909,11 @@ ul.new-arrivals a.quick-view{display: none;}
 
 .bottom-b-heading{border-bottom: 1px solid #fff; /*padding:0 100px 8px 100px; padding: 0 170px 11px; */ padding: 0 0 10px; width: 292px;}
 .shopnow-btn:hover{color: #fff;}
-.bottom-left-block,.top-right-block{cursor:pointer;}
+/*.bottom-left-block,.top-right-block{cursor:pointer;}*/
 .html-video-popup{position: fixed; width: 50%; display: none; top: 100px; z-index: 10099;}
-.wl-cs-right-block .top-right-block{background:url(../images/women/grey-play.jpg) no-repeat; background-size: 100% 100%;}
-.wl-left-block .bottom-left-block{background: url(../images/women/ballerina-crop-vid-img.jpg) no-repeat; background-size: 100% 100%;}
+.wl-cs-right-block .top-right-block{background:url(../images/women/WomenLanding3.jpg) no-repeat; background-size: 100% 100%;}
+.wl-left-block .bottom-left-block{background: url(../images/women/pullover-small.jpg) no-repeat; background-size: 100% 100%;}
+
 
 div.cms-side-nav{display: none;}
 .terms-conditions{margin: 0 auto;}
@@ -2491,3 +2492,58 @@ table.smallimagecontiner td.selectedimage{
     font-size: 12px;
     padding: 4px 10px;
 }
+.insale-price{color:#CC0033;}
+
+
+
+
+/***Bundle Gift Sets***/
+.giftSetImg{width: 100%; display:block;}
+.one-image-stack,.two-image-stack{margin-bottom: 40px;}
+.one-image-stack .giftSetImg img{width: 100%; display: block;}
+.two-image-stack .giftSetImg div{width: 49%; display: block;}
+.two-image-stack .giftSetImg div img{width: 100%;}
+.gs-prd-det .gs-left-prd{width: 33%; float: left; text-align: left;}
+.gs-prd-det .gs-center-prd{width: 34%; float: left; text-align: center;}
+.gs-prd-det .gs-right-prd{width: 33%; float: left; text-align: right;}
+.single-pred-det{display: block; font: 11px/16px gothambold; margin: 19px auto auto; text-transform: uppercase;}
+.single-pred-det span{display: block; font-family: gothambook;}
+.grp-pred-det{display: block; font: 11px/28px gothambook; margin: 19px auto auto; text-transform: uppercase;}
+.grp-pred-det a{font: 24px ITCAvantGardeProBk; display: block; line-height: 27px;}
+.gs-bundle > h1{margin-bottom: 17px !important;}
+
+.combo-sale{margin-bottom: 20px;}
+.combo-sale img{margin-right:15px; vertical-align: middle;}
+.combo-sale > div{margin-left:25px;}
+.bundlePop .selectedsize .box-seprtr{border-bottom: none;}
+.combo-sale div.addtobag {
+    background: url("../images/catalog/product/add-to-bag-on.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 39px;
+    margin: 10px 0 0;
+    padding: 0;
+    width: 100%;
+}
+.combo-sale div.outofstockitem {
+    background: url("../images/catalog/product/out-of-stock-dis.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    display: none;
+    height: 39px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.combo-sale div.preorderitem {
+    background: url("../images/catalog/product/pre-order-now-on.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    cursor: pointer;
+    display: none;
+    height: 39px;
+    margin-top: 10px;
+    position: relative;
+    width: 100%;
+}
+.combo-sale div.box-seprtr.last{height:65px; overflow:hidden; margin-top: 18px;}
+.cs-products{margin-right: 30px;}
+.cs-products span.cs-total-price{font-size: 24px; font-family:gothamBold; vertical-align: middle;}
+.combo-sale h3{font: 20px/29px gothamBook; text-decoration: underline; padding-left: 25px; text-align: left;}
+.bundlePop img#closelightbox { padding: 0; right: 5px !important; top: 3px !important;  width: auto !important;}
+.cs-addPrd{visibility:hidden; height:0;}

@@ -99,6 +99,32 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
     
     public function addAction()
     {
+        Mage::getModel('smogiexpirationnotifier/applyremovediscount')->removesmogibucks();
+        if(Mage::getSingleton('checkout/session')->getQuote()->getCouponCode() != ''){
+            try{
+                $this->_getQuote()->getShippingAddress()->setCollectShippingRates(true);
+                $this->_getQuote()->setCouponCode('')
+                    ->collectTotals()
+                    ->save();
+                // refresh cart total
+                $cart = Mage::getSingleton('checkout/session')->getQuote();
+
+                foreach ($cart->getAllAddresses() as $address)
+                {
+                    $cart->unsetData('cached_items_nonnominal');
+                    $cart->unsetData('cached_items_nominal');
+                }
+
+                $cart->setTotalsCollectedFlag(false);
+                $cart->collectTotals();
+            }catch (Exception $e){
+                die($e->getMessage());
+            }
+
+        }
+
+        Mage::getSingleton('giftcards/session')->setActive('0');
+
         $cart   = $this->_getCart();
         $params = $this->getRequest()->getParams();
         $showhtml = $params['showhtml'];
