@@ -253,7 +253,7 @@
                                 $currentUrl = Mage::helper('core/url')->getCurrentUrl();
                                 $categoryName = explode('/', $currentUrl);
                                 $urlKey = $categoryName[3];
-                                $goys = '<li class="sub-head"><a class="bld" href='.$this->getUrl().'women/gifts>Gifts</a></li>';
+                                /*$goys = '<li class="sub-head"><a class="bld" href='.$this->getUrl().'women/gifts>Gifts</a></li>';
                                 if($urlKey == "women"){
                                     $goys .= "<ul class='subnav'>
 
@@ -269,7 +269,7 @@
                 <li><a href=".$this->getUrl()."mens/gift-sets-for-150/>Gift Sets for $150</a></li>
                 <li><a href=".$this->getUrl()."gift_of_ys/>Gift Card</a></li>
               </ul>";
-                                }
+                                }*/
 
                                 echo $hasnosubcategoryhtml.$goys.$withsubcategoryhtml.'</ul></div>';
 
