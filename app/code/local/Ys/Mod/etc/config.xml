@@ -4,9 +4,9 @@
     <!-- ******************* modules section ******************** -->
 
     <modules>
-        <Mailchimp_Mod>
+        <Ys_Mod>
             <version>0.1.0</version>
-        </Mailchimp_Mod>
+        </Ys_Mod>
     </modules>
 
     <!-- ******************* global section ******************** -->
@@ -15,24 +15,35 @@
 
         <helpers>
             <mod>
-                <class>Mailchimp_Mod_Helper</class>
+                <class>Ys_Mod_Helper</class>
             </mod>
         </helpers>
 
         <blocks>
             <mod>
-                <class>Mailchimp_Mod_Block</class>
+                <class>Ys_Mod_Block</class>
             </mod>
         </blocks>
 
-		<models>
+        <models>
             <mod>
-                <class>Mailchimp_Mod_Model</class>
+                <class>Ys_Mod_Model</class>
             </mod>
-        </models>		
+        </models>
 
     </global>
 
+    <frontend>
+        <routers>
+            <mailchimp_unsubscribe>
+                <use>standard</use>
+                <args>
+                    <module>Ys_Mod</module>
+                    <frontName>ys</frontName>
+                </args>
+            </mailchimp_unsubscribe>
+        </routers>
+    </frontend>
     <!-- ******************* admin section ******************** -->
 
     <admin>
@@ -40,8 +51,8 @@
             <mod>
                 <use>admin</use>
                 <args>
-                    <module>Mailchimp_Mod</module>
-                    <frontName>mailchimp</frontName>
+                    <module>Ys_Mod</module>
+                    <frontName>ys</frontName>
                 </args>
             </mod>
         </routers>
@@ -53,18 +64,18 @@
 
         <menu>
             <mod module="mod">
-                <title>Mailchimp</title>
+                <title>Ys</title>
                 <sort_order>100</sort_order>
                 <children>
                     <menu_index module="mod">
-                        <title>Settings</title>
+                        <title>Mailchimp Settings</title>
                         <sort_order>0</sort_order>
-                        <action>mailchimp/adminhtml_custom/index</action>
+                        <action>ys/adminhtml_custom/index</action>
                     </menu_index>
                     <menu_unsubscribe module="mod">
-                        <title>Unsubscribe</title>
+                        <title>Newsletter Unsubscribe</title>
                         <sort_order>1</sort_order>
-                        <action>mailchimp/adminhtml_custom/unsubscribe</action>
+                        <action>ys/adminhtml_custom/unsubscribe</action>
                     </menu_unsubscribe>
                 </children>
             </mod>
@@ -73,12 +84,12 @@
         <acl>
             <resources>
                 <all>
-                    <title>Mailchimp</title>
+                    <title>Ys</title>
                 </all>
                 <admin>
                     <children>
                         <mod translate="title" module="mod">
-                            <title>Mailchimp</title>
+                            <title>Ys</title>
                             <sort_order>1000</sort_order>
                             <children>
                                 <menu_index translate="title">
@@ -99,7 +110,7 @@
         <layout>
             <updates>
                 <mod>
-                    <file>mailchimp.xml</file>
+                    <file>ys.xml</file>
                 </mod>
             </updates>
         </layout>
@@ -107,14 +118,14 @@
 
     <crontab>
         <jobs>
-            <mailchimp_mod>
+            <ys_mod>
                 <schedule>
-                        <cron_expr>0,15,30,45 * * * *</cron_expr>
+                    <cron_expr>1 */6 * * *</cron_expr>
                 </schedule>
                 <run>
                     <model>mod/observer::sync</model>
                 </run>
-            </mailchimp_mod>
+            </ys_mod>
         </jobs>
     </crontab>
 </config> 

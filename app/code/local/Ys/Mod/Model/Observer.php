@@ -1,5 +1,5 @@
 <?php
-class Mailchimp_Mod_Model_Observer{
+class Ys_Mod_Model_Observer{
 
     public function sync(){
 

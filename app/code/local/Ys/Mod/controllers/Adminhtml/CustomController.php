@@ -1,5 +1,5 @@
 <?php
-class Mailchimp_Mod_Adminhtml_CustomController extends Mage_Adminhtml_Controller_Action
+class Ys_Mod_Adminhtml_CustomController extends Mage_Adminhtml_Controller_Action
 {
     public function indexAction()
     {
