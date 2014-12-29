@@ -121,7 +121,7 @@ class Ys_Mod_Model_Observer{
                     break;
                 }
 
-                if($customerAddress) {
+                if(isset($customerAddress)) {
                     $country = Mage::app()->getLocale()->getCountryTranslation($customerAddress['country_id']);
                     $state = $customerAddress['region'];
                 }
@@ -140,7 +140,7 @@ class Ys_Mod_Model_Observer{
                     'send_welcome' => false,
                 ));
 
-                Mage::log("******** Customer registration synced ********");
+                Mage::log("******** Customer registration status = " . implode(" : ", $result));
                 //}
             }
         }
@@ -191,8 +191,6 @@ class Ys_Mod_Model_Observer{
                         $state = $customerAddress['region'];
                     }
 
-                    Mage::log($fname . " , " . $lname . " , " . $state . " , " . $country);
-
                     $result = $mailChimp->call('lists/subscribe', array(
                         'id' => $list_id,
                         'email' => array('email' => $email),
@@ -203,7 +201,7 @@ class Ys_Mod_Model_Observer{
                         'send_welcome' => false,
                     ));
 
-                    Mage::log("******** Customer address updated synced ********");
+                    Mage::log("******** Customer address updated status = " . implode(" : ", $result));
                     //}
                 }
             }

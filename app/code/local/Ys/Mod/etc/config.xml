@@ -31,6 +31,27 @@
             </mod>
         </models>
 
+        <events>
+            <customer_register_success>
+                <observers>
+                    <Ys_Mod_customer_register_success>
+                        <type>singleton</type>
+                        <class>Ys_Mod_Model_Observer</class>
+                        <method>customerRegisterSuccess</method>
+                    </Ys_Mod_customer_register_success>
+                </observers>
+            </customer_register_success>
+            <customer_address_save_after>
+                <observers>
+                    <Ys_Mod_customer_register_success>
+                        <type>singleton</type>
+                        <class>Ys_Mod_Model_Observer</class>
+                        <method>customerAddressSaveAfter</method>
+                    </Ys_Mod_customer_register_success>
+                </observers>
+            </customer_address_save_after>
+        </events>
+
     </global>
 
     <frontend>
