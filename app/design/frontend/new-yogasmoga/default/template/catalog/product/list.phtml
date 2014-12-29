@@ -8,7 +8,8 @@
 <!-- GridProducts -->
 <div class="gridWrap">
 <?php
-	foreach ($_productCollection as $_product){
+	$_productCollectionForOneToMany=$this->getLoadedProductCollection();
+	foreach ($_productCollectionForOneToMany as $_product){
 		$categoryIdForOneToMany = $_product->getCategoryId();
 		break;
 	}
