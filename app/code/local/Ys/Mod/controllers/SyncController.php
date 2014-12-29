@@ -18,7 +18,9 @@ class Ys_Mod_SyncController extends Mage_Core_Controller_Front_Action {
 
             $data = $this->getRequest()->getPost();
 
-            $email = $data['email'];
+            Mage::log(print_r($data));
+
+            $email = $data['data[email]'];
 
             Mage::getModel('newsletter/subscriber')->loadByEmail($email)->unsubscribe();
 
