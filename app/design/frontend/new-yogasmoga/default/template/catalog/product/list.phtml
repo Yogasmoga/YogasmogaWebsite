@@ -1,4 +1,5 @@
 <!-- productGridView -->
+
 <div class="gridProdCubix">
 <!-- leftNavGrid -->
 <?php echo $this->getChildHtml('catalog.leftnav') ?>
@@ -6,6 +7,16 @@
 
 <!-- GridProducts -->
 <div class="gridWrap">
+<?php
+	foreach ($_productCollection as $_product){
+		$categoryIdForOneToMany = $_product->getCategoryId();
+		break;
+	}
+
+?>
+<?php if($categoryIdForOneToMany == 43 ){?>
+    <div style="margin-bottom: 10px;padding:3px 0 !important;width: 100%; position: relative;  left: 0px; background-color: #EC0D43; z-index: 10;color: #FFFEFF;font-size: 16px;font-family: AvantGardeGothicMedium;">ONE 2 MANY Items are already marked down. FIT2015 promo code cannot be used on these items.</div>
+<?php } ?>
 <?php
 $_productCollection=$this->getLoadedProductCollection();
 $_helper = $this->helper('catalog/output');
