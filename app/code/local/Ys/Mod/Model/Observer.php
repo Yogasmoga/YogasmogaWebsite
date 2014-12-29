@@ -84,5 +84,131 @@ class Ys_Mod_Model_Observer{
 		} else
 			Mage::log("I guess api key or list id are invalid");
     }
+
+    public function customerRegisterSuccess(Varien_Event_Observer $observer)
+    {
+        $event = $observer->getEvent();
+        $customer = $event->getCustomer();
+        $email = $customer->getEmail();
+        if ($email) {
+
+            $myfile = fopen("mailchimp_list.txt", "r") or die("Unable to open file!");
+            $apikey_listid = trim(fgets($myfile));
+            fclose($myfile);
+
+            $ar = explode(",", $apikey_listid);
+
+            $api_key = trim($ar[0]);
+            $list_id = trim($ar[1]);
+
+            $correct = isset($api_key) && isset($list_id) && (strlen($list_id) > 0) && (strlen($api_key) > 0);
+
+            if ($correct) {
+
+                $subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($email);
+
+                //if ($subscriber->getId()) {
+
+                include("mailchimpapi/Drewm/MailChimp.php");
+
+                $mailChimp = new Drewm\MailChimp($api_key);
+
+                $fname = $customer->getFirstname();
+                $lname = $customer->getLastname();
+
+                foreach ($customer->getAddresses() as $address) {
+                    $customerAddress = $address->toArray();
+                    break;
+                }
+
+                if($customerAddress) {
+                    $country = Mage::app()->getLocale()->getCountryTranslation($customerAddress['country_id']);
+                    $state = $customerAddress['region'];
+                }
+                else{
+                    $country = "";
+                    $state = "";
+                }
+
+                $result = $mailChimp->call('lists/subscribe', array(
+                    'id' => $list_id,
+                    'email' => array('email' => $email),
+                    'merge_vars' => array('FNAME' => $fname, 'LNAME' => $lname, 'STATE' => $state, 'COUNTRY' => $country),
+                    'double_optin' => false,
+                    'update_existing' => true,
+                    'replace_interests' => false,
+                    'send_welcome' => false,
+                ));
+
+                Mage::log("******** Customer registration synced ********");
+                //}
+            }
+        }
+    }
+
+    public function customerAddressSaveAfter()
+    {
+        Mage::log("Address update event fired");
+
+        if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+            Mage::log("\nCustomer is logged");
+            $customer = Mage::getSingleton('customer/session')->getCustomer();
+
+            $email = $customer->getEmail();
+            if ($email) {
+
+                $myfile = fopen("mailchimp_list.txt", "r") or die("Unable to open file!");
+                $apikey_listid = trim(fgets($myfile));
+                fclose($myfile);
+
+                $ar = explode(",", $apikey_listid);
+
+                $api_key = trim($ar[0]);
+                $list_id = trim($ar[1]);
+
+                $correct = isset($api_key) && isset($list_id) && (strlen($list_id) > 0) && (strlen($api_key) > 0);
+
+                if ($correct) {
+
+                    //$subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($email);
+
+                    //if ($subscriber->getId()) {
+                    Mage::log("\nCustomer is subscribed");
+                    include("mailchimpapi/Drewm/MailChimp.php");
+
+                    $mailChimp = new Drewm\MailChimp($api_key);
+
+                    $fname = $customer->getFirstname();
+                    $lname = $customer->getLastname();
+
+                    foreach ($customer->getAddresses() as $address) {
+                        $customerAddress = $address->toArray();
+                        break;
+                    }
+
+                    if ($customerAddress) {
+                        $country = Mage::app()->getLocale()->getCountryTranslation($customerAddress['country_id']);
+                        $state = $customerAddress['region'];
+                    }
+
+                    Mage::log($fname . " , " . $lname . " , " . $state . " , " . $country);
+
+                    $result = $mailChimp->call('lists/subscribe', array(
+                        'id' => $list_id,
+                        'email' => array('email' => $email),
+                        'merge_vars' => array('FNAME' => $fname, 'LNAME' => $lname, 'STATE' => $state, 'COUNTRY' => $country),
+                        'double_optin' => false,
+                        'update_existing' => true,
+                        'replace_interests' => false,
+                        'send_welcome' => false,
+                    ));
+
+                    Mage::log("******** Customer address updated synced ********");
+                    //}
+                }
+            }
+        }
+    }
 }
+
 ?>

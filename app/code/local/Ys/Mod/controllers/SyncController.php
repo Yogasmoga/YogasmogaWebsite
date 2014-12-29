@@ -16,15 +16,21 @@ class Ys_Mod_SyncController extends Mage_Core_Controller_Front_Action {
 
         if ($correct) {
 
-            $data = $this->getRequest()->getPost();
+            $data = $this->getRequest()->getPrams();
 
-            Mage::log(print_r($data));
+            $email = $data['data']['email'];
 
-            $email = $data['data[email]'];
-
-            Mage::getModel('newsletter/subscriber')->loadByEmail($email)->unsubscribe();
-
-            Mage::log("Mailchimp Unsubscribe Task Completed at : " . date("Y-m-d h:i:s"));
+            $subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($email);
+            if (!$subscriber->getId()
+                || $subscriber->getStatus() == Mage_Newsletter_Model_Subscriber::STATUS_UNSUBSCRIBED
+                || $subscriber->getStatus() == Mage_Newsletter_Model_Subscriber::STATUS_NOT_ACTIVE) {
+                Mage::log("Subscriber not found");
+            }
+            else{
+                $subscriber->setStatus(Mage_Newsletter_Model_Subscriber::STATUS_UNSUBSCRIBED);
+                $subscriber->save();
+                Mage::log("Mailchimp Unsubscribe Task Completed at : " . date("Y-m-d h:i:s"));
+            }
 
         } else
             Mage::log("I guess api key or list id are invalid");

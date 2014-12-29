@@ -82,32 +82,43 @@ class Ys_Mod_Adminhtml_CustomController extends Mage_Adminhtml_Controller_Action
 
         $email = $data['email'];
 
-        Mage::getModel('newsletter/subscriber')->loadByEmail($email)->unsubscribe();
+        $subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($email);
+        if (!$subscriber->getId()
+            || $subscriber->getStatus() == Mage_Newsletter_Model_Subscriber::STATUS_UNSUBSCRIBED
+            || $subscriber->getStatus() == Mage_Newsletter_Model_Subscriber::STATUS_NOT_ACTIVE) {
 
-        $myfile = fopen("mailchimp_list.txt", "r");
-        $str = fgets($myfile);
-        fclose($myfile);
+            $message = 'Email does not exist as subscriber';
+            Mage::getSingleton('core/session')->setUnsubscribemessage($message);
+        }
+        else {
+            $subscriber->setStatus(Mage_Newsletter_Model_Subscriber::STATUS_UNSUBSCRIBED);
+            $subscriber->save();
 
-        $ar = explode(",", $str);
+            $myfile = fopen("mailchimp_list.txt", "r");
+            $str = fgets($myfile);
+            fclose($myfile);
 
-        $api_key = $ar[0];
-        $list_id = $ar[1];
+            $ar = explode(",", $str);
 
-        include("mailchimpapi/Drewm/MailChimp.php");
+            $api_key = $ar[0];
+            $list_id = $ar[1];
 
-        $mailChimp = new Drewm\MailChimp($api_key);
+            include("mailchimpapi/Drewm/MailChimp.php");
 
-        $result = $mailChimp->call('lists/unsubscribe', array(
-            'id'                => $list_id,
-            'email'             => array('email'=>$email),
-            'delete_member'     => false,
-            'send_goodbye'      => false,
-            'send_notify'      => false,
-        ));
+            $mailChimp = new Drewm\MailChimp($api_key);
 
-        $message = 'Customer unsubscribed successfully.';
-        Mage::getSingleton('core/session')->setUnsubscribemessage($message);
+            $result = $mailChimp->call('lists/unsubscribe', array(
+                'id' => $list_id,
+                'email' => array('email' => $email),
+                'delete_member' => false,
+                'send_goodbye' => false,
+                'send_notify' => false,
+            ));
 
-        $this->_redirect('mod/adminhtml_custom/unsubscribe');
+            $message = 'Customer unsubscribed successfully.';
+            Mage::getSingleton('core/session')->setUnsubscribemessage($message);
+
+            $this->_redirect('mod/adminhtml_custom/unsubscribe');
+        }
     }
 }
