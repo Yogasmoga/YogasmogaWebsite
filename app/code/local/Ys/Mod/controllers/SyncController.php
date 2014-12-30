@@ -16,7 +16,7 @@ class Ys_Mod_SyncController extends Mage_Core_Controller_Front_Action {
 
         if ($correct) {
 
-            $data = $this->getRequest()->getPrams();
+            $data = $this->getRequest()->getParams();
 
             $email = $data['data']['email'];
 
