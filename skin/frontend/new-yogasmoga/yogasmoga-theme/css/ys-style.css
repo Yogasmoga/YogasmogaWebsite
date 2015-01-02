@@ -1893,7 +1893,7 @@ ul.new-arrivals a.quick-view{display: none;}
 .wl-right-block,.wl-cs-left-block{width:66.633565044687189672293942403178%; /*display: inline-block; vertical-align: top;*/}
 .wl-feat-prd img,.wl-color-story-prd img{width: 100%; display: block;}
 .top-left-block,.bottom-left-block,.top-right-block,.bottom-right-block{width: 100%; display: block; height: 50%;}
-.wl-feat-prd .top-left-block{background: #555555;}
+.wl-feat-prd .top-left-block{background: #d7ea98;}
 .wl-color-story-prd .bottom-right-block{background: #b10707;}
 .category-women{margin: 0 !important;}
 .wl-feat-prd,.wl-color-story-prd{opacity: 0; overflow: hidden;}
@@ -1912,7 +1912,7 @@ ul.new-arrivals a.quick-view{display: none;}
 /*.bottom-left-block,.top-right-block{cursor:pointer;}*/
 .html-video-popup{position: fixed; width: 50%; display: none; top: 100px; z-index: 10099;}
 .wl-cs-right-block .top-right-block{background:url(../images/women/WomenLanding3.jpg) no-repeat; background-size: 100% 100%;}
-.wl-left-block .bottom-left-block{background: url(../images/women/pullover-small.jpg) no-repeat; background-size: 100% 100%;}
+.wl-left-block .bottom-left-block{background: url(../images/women/dum5.jpg) no-repeat; background-size: 100% 100%;}
 
 
 div.cms-side-nav{display: none;}
