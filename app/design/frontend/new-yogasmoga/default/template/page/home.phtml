@@ -77,10 +77,11 @@
         jQuery(window).load(function(){
             jQuery("div.showloading").removeClass('showloading');
             setTimeout(function(){setfullscreenheight();},50);
-            var bannerImg = document.getElementById("bannerimg").complete;
-            if(bannerImg){
-                jQuery(".share-strip, .new-arrivals-block").animate({opacity:1},100);
-            }
+//            var bannerImg = document.getElementById("bannerimg").complete;
+//            if(bannerImg){
+//                jQuery(".share-strip, .new-arrivals-block").animate({opacity:1},100);
+//            }
+
             jQuery('.namaskar-overlay1').fadeOut('slow');
         });
         jQuery(document).ready(function(){
@@ -110,7 +111,13 @@
 <div id="pagecontainer">
 <!-- sliderBanner -->
 <div class="flexslider showloading">
+
+
 <ul class="slides">
+
+
+
+
 <!--<li>
 <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/75_off2.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
 <div class="banner-txt3 promo2310 promo1311 white">
@@ -138,6 +145,10 @@ $75 OFF
 </div>-->
 <!-- <span style="position: absolute;top:160px;left: 0px;font-size: 350px;margin:auto;right:0;bottom:0;font-weight: 300;font-family: AvantGardeGothicITCW01X" class="white">75</span>-->
 <!--</li>-->
+
+
+
+
 <!--<li>
 <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/YS_HomePage1.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
 <div class="banner-txt3 promo2310 promo1311 white">
@@ -158,6 +169,10 @@ WRAP UP<br />IN OUR NEW KNITS
 <div class="slide-desc" style="">Kara is wearing the Rhapsody Drape made from the soft and luxurious SONA™ fabric – a custom blend of silk, wool and cashmere. Easy, effortless and exceptionally beautiful, this versatile drape is the essential transitional gym-to-life piece.</div>
 </div>
 </li>-->
+
+
+
+<!--
 <li>
     <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/homepage-slider-slide1.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
 
@@ -182,6 +197,10 @@ WRAP UP<br />IN OUR NEW KNITS
 
 
 </li>
+-->
+
+
+<!--
 <li>
     <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/50FitHpBanner.jpg'?>" alt="YogaSmoga - FASHION, FIT & FUNCTION" />
     <div class="banner-txt3 promo2310 promo1311 white">
@@ -206,6 +225,10 @@ WRAP UP<br />IN OUR NEW KNITS
 <div class="slide-desc" style="">Kara is wearing the Rhapsody Drape made from the soft and luxurious SONA™ fabric – a custom blend of silk, wool and cashmere. Easy, effortless and exceptionally beautiful, this versatile drape is the essential transitional gym-to-life piece.</div>
 </div> <?php */ ?>
 </li>
+-->
+
+
+
 <?php /*
 <li>
 <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/gs-homepage-banner.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
@@ -230,6 +253,9 @@ GIVE THE PERFECT GIFTTTT
 <div class="slide-desc" style="">Kara is wearing the Rhapsody Drape made from the soft and luxurious SONA™ fabric – a custom blend of silk, wool and cashmere. Easy, effortless and exceptionally beautiful, this versatile drape is the essential transitional gym-to-life piece.</div>
 </div> <?php
 </li>*/ ?>
+
+
+
 <!--
 <li>
 <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/nam.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
@@ -259,6 +285,9 @@ NAMASKÁR Foundation.
 </div> <?php */ ?>
 </li>
 -->
+
+
+
 <!--<li>
 <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/newarrival.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
 <div class="banner-txt3 promo2310 promo1311 white">
@@ -278,6 +307,10 @@ NEW ARRIVALS<br />IN HOLIDAY HUES
 <div class="slide-desc" style="">Our newest designs feature soft earth tones and rich hues to bring warmth and texture to your winter wardrobe. Surround yourself in our luxurious SONA <sup>TM</sup> Knits or try a sleek piece from our Vivacity Mesh Collection. </div>
 </div>
 </li> -->
+
+
+
+<!--
 <li>
     <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/one2many.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
     <div class="banner-txt3 promo2310 promo1311 white">
@@ -290,13 +323,17 @@ NEW ARRIVALS<br />IN HOLIDAY HUES
 <span style="font-size: 17px;line-height: 20px;font-weight: 600;text-transform: none;margin-top: 50px!important;" class="white"><sup>*</sup>Final sale. No exchanges or returns.<br/>Cannot be combined with other offers.
 </span>
     </div>
-    <!--<div id="playBtn">
+
+    <div id="playBtn">
 <div class="sl-desc-handle">
 <img src="<?php /*echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') */?>" alt="Description handle" />
 </div>
 <div class="slide-desc" style="">Kara is wearing the Rhapsody Drape made from the soft and luxurious SONA<sup>&#0153</sup> fabric – a custom blend of silk, wool and cashmere. Easy, effortless and exceptionally beautiful, this versatile drape is the essential transitional gym-to-life piece.</div>
-</div>-->
-</li>
+</div>
+</li> -->
+
+
+
 <!--
 <li>
 <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/HomeSlide1.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
@@ -320,6 +357,9 @@ WE ARE YOGASMOGA.<br />WE MAKE THINGS FOR LIFE -
 </div>
 </li>
 -->
+
+
+
 <!--<li>
 <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/HomeSlide2.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
 <div class="banner-txt3 promo2310 promo1311">
@@ -340,6 +380,9 @@ A BIT MORE<br />ABOUT US -
 </div>
 </li>
 -->
+
+
+
 <li>
     <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/HomeSlide3.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
     <div class="banner-txt3 promo2310 promo1311 white">
@@ -359,6 +402,9 @@ A BIT MORE<br />ABOUT US -
         <div class="slide-desc" style="">AURUM<sup>&reg;</sup>, KOURA<sup>&trade;</sup> and AIRH<sup>&trade;</sup>. Ever thought about the meaning behind our fabric names? Each has the same root – translating to “gold,” exhibiting our steadfast commitment to providing our SMOGIs with the very best, top of the line, gold-standard in fabric technology.</div>
     </div>
 </li>
+
+
+
 <li>
     <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/HomeSlide4.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
     <div class="banner-txt3 promo2310 promo1311">
@@ -375,7 +421,10 @@ A BIT MORE<br />ABOUT US -
         <div class="slide-desc" style="">We recognize that textile production is typically done in the most economically challenged locations of the world. It is our absolute obligation and duty to give back. We welcome you to join us on this journey.</div>
     </div>
 </li>
+
+
 </ul>
+
 </div>
 <!-- sliderBanner -->
 <!-- signup new -->
