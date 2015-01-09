@@ -30,7 +30,7 @@
                 <class>Ys_Mod_Model</class>
             </mod>
         </models>
-
+<!--
         <events>
             <customer_register_success>
                 <observers>
@@ -51,7 +51,7 @@
                 </observers>
             </customer_address_save_after>
         </events>
-
+-->
     </global>
 
     <frontend>
