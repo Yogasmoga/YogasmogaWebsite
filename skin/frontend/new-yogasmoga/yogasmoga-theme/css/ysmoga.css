@@ -1961,3 +1961,15 @@ body.mac-os ul.main-menu2 a.main-heading{
     font: 11px/15px gothambook;
     width: 100%;
 }
+.dash-grey {
+    border: 2px solid #555555;
+    display: inline-block !important;
+    vertical-align: middle;
+    width: 30px;
+}
+.dash-white {
+    border: 2px solid #fff;
+    display: inline-block !important;
+    vertical-align: middle;
+    width: 30px;
+}
