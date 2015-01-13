@@ -85,6 +85,7 @@ class Ys_Mod_Model_Observer{
 			Mage::log("I guess api key or list id are invalid");
     }
 
+/*
     public function customerRegisterSuccess(Varien_Event_Observer $observer)
     {
         $event = $observer->getEvent();
@@ -207,6 +208,7 @@ class Ys_Mod_Model_Observer{
             }
         }
     }
+*/
 }
 
 ?>
