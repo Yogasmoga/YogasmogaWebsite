@@ -1975,20 +1975,17 @@ body.mac-os ul.main-menu2 a.main-heading{
 }
 
 /*/////////////////////////////*/
+
+/*
 .inner-text-container {
-    height: 200px;
+    height: auto !important;
     position: relative;
 }
-.inner-text-container.super-smogi {
-    height: 260px;
-}
-.inner-text-container.namaskar {
-    height: 155px;
-}
+
 .inner-text-container .learnmore-nam{
     display: inline;
     position: absolute;
-    bottom: 0 !important;
+    top: 100% !important;
     padding: 0 !important;
     margin: 0 !important;
 }
@@ -1999,7 +1996,7 @@ body.mac-os ul.main-menu2 a.main-heading{
     float: left;
 }
 .learnmore-nam >img{
-    width:142px !important;
+    width:auto !important;
 }
 .inner-text-container .learnmore-nam:nth-child(2){
     left: 0;
@@ -2010,17 +2007,13 @@ body.mac-os ul.main-menu2 a.main-heading{
     float: none;
 }
 
-
-
-@media screen and (max-width:1400px){
-    .inner-text-container {
-        height: 235px;
-        position: relative;
-    }
-    .inner-text-container.super-smogi {
-        height: 295px;
-    }
-    .inner-text-container.namaskar {
-        height: 190px;
-    }
+*/
+.flex-active-slide .learnmore-nam ,.flex-active-slide .learnmore-nam:hover,.slides li .learnmore-nam,.slides li .learnmore-nam:hover {
+    background: none repeat scroll 0 0 #b1892f;
+    color: #fff;
+    float: left;
+    font-size: 12px;
+    margin: 25px 20px 0 0 !important;
+    width: 155px;
+    text-align: center;
 }
