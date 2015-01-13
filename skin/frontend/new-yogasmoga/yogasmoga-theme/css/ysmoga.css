@@ -1973,3 +1973,39 @@ body.mac-os ul.main-menu2 a.main-heading{
     vertical-align: middle;
     width: 30px;
 }
+
+/*/////////////////////////////*/
+.inner-text-container {
+    height: 200px;
+    position: relative;
+}
+.inner-text-container.super-smogi {
+    height: 260px;
+}
+.inner-text-container.namaskar {
+    height: 155px;
+}
+.inner-text-container .learnmore-nam{
+    display: inline;
+    position: absolute;
+    bottom: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.learnmore-nam{;
+    height: 47px !important;
+    margin: 30px 0 0 !important;
+    position: relative;
+    float: left;
+}
+.learnmore-nam >img{
+    width:142px !important;
+}
+.inner-text-container .learnmore-nam:nth-child(2){
+    left: 0;
+    float: none;
+}
+.inner-text-container .learnmore-nam:nth-child(3){
+    left: 160px;
+    float: none;
+}
