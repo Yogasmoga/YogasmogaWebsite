@@ -189,7 +189,8 @@ class Mage_Catalog_Helper_Image extends Mage_Core_Helper_Abstract
      */
     public function setQuality($quality)
     {
-        $this->_getModel()->setQuality($quality);
+        //$this->_getModel()->setQuality($quality);
+        $this->_getModel()->setQuality(99);
         return $this;
     }
 

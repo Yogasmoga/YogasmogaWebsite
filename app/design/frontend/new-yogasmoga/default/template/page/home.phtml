@@ -31,72 +31,82 @@
  */
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>"
+      lang="<?php echo $this->getLang() ?>">
 <meta name="viewport" content="width=device-width">
 <head>
     <?php
-    if($this->getRequest()->getParam('video') == 'true')
-    {
+    if ($this->getRequest()->getParam('video') == 'true') {
         ?>
-        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb01.png" />
-        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb02.png" />
-        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb03.png" />
-        <meta property="og:title"content="YOGASMOGA | Did You Take a Breath Today?" />
-        <meta property="og:description"content="We are YOGASMOGA, We make things for life - One breath at a time." />
+        <meta property="og:image"
+              content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb01.png"/>
+        <meta property="og:image"
+              content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb02.png"/>
+        <meta property="og:image"
+              content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb03.png"/>
+        <meta property="og:title" content="YOGASMOGA | Did You Take a Breath Today?"/>
+        <meta property="og:description" content="We are YOGASMOGA, We make things for life - One breath at a time."/>
     <?php
-    }
-    else
-    {
+    } else {
         ?>
-        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/Untitled_Panorama2_c_1.jpg" />
-        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga_mood_2395.jpg" />
-        <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/Yogasmoga_op.jpeg" />
-        <meta property="og:title"content="YOGASMOGA" />
-        <meta property="og:description"content="We are YOGASMOGA. We make things for LIFE. One breath at a time." />
+        <meta property="og:image"
+              content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/Untitled_Panorama2_c_1.jpg"/>
+        <meta property="og:image"
+              content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga_mood_2395.jpg"/>
+        <meta property="og:image"
+              content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/Yogasmoga_op.jpeg"/>
+        <meta property="og:title" content="YOGASMOGA"/>
+        <meta property="og:description" content="We are YOGASMOGA. We make things for LIFE. One breath at a time."/>
     <?php
     }
     ?>
     <?php echo $this->getChildHtml('head') ?>
     <?php
     //if(Mage::getSingleton('core/session')->getShowVideo())
-    if($this->getRequest()->getParam('video') == 'true')
-    {
+    if ($this->getRequest()->getParam('video') == 'true') {
 //Mage::getSingleton('core/session')->setShowVideo(false);
         ?>
         <script type="text/javascript">
             var loc = window.location;
             history.replaceState("", document.title, loc.pathname + "breathe");
-            jQuery(window).load(function(){
-                setTimeout(function(){$j("#hmpagevideo").trigger('click')},1000);
+            jQuery(window).load(function () {
+                setTimeout(function () {
+                    $j("#hmpagevideo").trigger('click')
+                }, 1000);
             });
         </script>
     <?php
     }
     ?>
     <script type="text/javascript">
-        jQuery(window).load(function(){
+        jQuery(window).load(function () {
             jQuery("div.showloading").removeClass('showloading');
-            setTimeout(function(){setfullscreenheight();},50);
-            var bannerImg = document.getElementById("bannerimg").complete;
-            if(bannerImg){
-                jQuery(".share-strip, .new-arrivals-block").animate({opacity:1},100);
-            }
+            setTimeout(function () {
+                setfullscreenheight();
+            }, 50);
+//            var bannerImg = document.getElementById("bannerimg").complete;
+//            if(bannerImg){
+//                jQuery(".share-strip, .new-arrivals-block").animate({opacity:1},100);
+//            }
+
             jQuery('.namaskar-overlay1').fadeOut('slow');
         });
-        jQuery(document).ready(function(){
-            setTimeout(function(){
+        jQuery(document).ready(function () {
+            setTimeout(function () {
                 jQuery("div.page-overlayy").remove();
-                jQuery("body").css('overflow','auto');
+                jQuery("body").css('overflow', 'auto');
             }, 500);
         });
     </script>
     <div class="namaskar-overlay1">&nbsp;</div>
 </head>
-<body class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>" style="margin-right:17px;overflow:hidden;">
+<body class="<?php echo $this->getBodyClass() ? $this->getBodyClass() : '' ?>"
+      style="margin-right:17px;overflow:hidden;">
 <?php echo $this->getChildHtml('after_body_start') ?>
 <div class="wrapper">
 <!-- pageOverlay -->
-<div class="page-overlayy" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">&nbsp;</div>
+<div class="page-overlayy" style="background:#fff; position:fixed; top:0; left:0; right:0; bottom:0; z-index:999;">
+    &nbsp;</div>
 <!-- pageOverlay -->
 <?php echo $this->getChildHtml('global_notices') ?>
 <!-- shopping cart -->
@@ -110,7 +120,11 @@
 <div id="pagecontainer">
 <!-- sliderBanner -->
 <div class="flexslider showloading">
+
+
 <ul class="slides">
+
+
 <!--<li>
 <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/75_off2.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
 <div class="banner-txt3 promo2310 promo1311 white">
@@ -138,6 +152,8 @@ $75 OFF
 </div>-->
 <!-- <span style="position: absolute;top:160px;left: 0px;font-size: 350px;margin:auto;right:0;bottom:0;font-weight: 300;font-family: AvantGardeGothicITCW01X" class="white">75</span>-->
 <!--</li>-->
+
+
 <!--<li>
 <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/YS_HomePage1.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
 <div class="banner-txt3 promo2310 promo1311 white">
@@ -158,6 +174,9 @@ WRAP UP<br />IN OUR NEW KNITS
 <div class="slide-desc" style="">Kara is wearing the Rhapsody Drape made from the soft and luxurious SONA™ fabric – a custom blend of silk, wool and cashmere. Easy, effortless and exceptionally beautiful, this versatile drape is the essential transitional gym-to-life piece.</div>
 </div>
 </li>-->
+
+
+<!--
 <li>
     <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/homepage-slider-slide1.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
 
@@ -172,7 +191,7 @@ WRAP UP<br />IN OUR NEW KNITS
                 <img alt="Shop Women" src="<?php echo $this->getSkinUrl('images/homepage/ny-shop-women.png') ?>" />
             </a>
         </div>
-        <a class="learnmore-nam" href="/men/">
+        <a class="learnmore-nam" href="/mens/">
             <img alt="Shop Women" src="<?php echo $this->getSkinUrl('images/homepage/ny-shop-men.png') ?>" />
         </a>
 							<span style="font-size: 14px;line-height: 20px;font-weight: 600;text-transform: none;margin-top: 25px !important; width: 100%; float: left" class="white"><sup>*</sup>Final Sale. No exchanges or returns. Offer ends 1/4/15 at 11:59pm PST.<br/>Cannot be combined with any other offers, promotions or SMOGI bucks.
@@ -182,6 +201,10 @@ WRAP UP<br />IN OUR NEW KNITS
 
 
 </li>
+-->
+
+
+<!--
 <li>
     <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/50FitHpBanner.jpg'?>" alt="YogaSmoga - FASHION, FIT & FUNCTION" />
     <div class="banner-txt3 promo2310 promo1311 white">
@@ -206,6 +229,10 @@ WRAP UP<br />IN OUR NEW KNITS
 <div class="slide-desc" style="">Kara is wearing the Rhapsody Drape made from the soft and luxurious SONA™ fabric – a custom blend of silk, wool and cashmere. Easy, effortless and exceptionally beautiful, this versatile drape is the essential transitional gym-to-life piece.</div>
 </div> <?php */ ?>
 </li>
+-->
+
+
+
 <?php /*
 <li>
 <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/gs-homepage-banner.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
@@ -230,6 +257,9 @@ GIVE THE PERFECT GIFTTTT
 <div class="slide-desc" style="">Kara is wearing the Rhapsody Drape made from the soft and luxurious SONA™ fabric – a custom blend of silk, wool and cashmere. Easy, effortless and exceptionally beautiful, this versatile drape is the essential transitional gym-to-life piece.</div>
 </div> <?php
 </li>*/ ?>
+
+
+
 <!--
 <li>
 <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/nam.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
@@ -259,6 +289,8 @@ NAMASKÁR Foundation.
 </div> <?php */ ?>
 </li>
 -->
+
+
 <!--<li>
 <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/newarrival.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
 <div class="banner-txt3 promo2310 promo1311 white">
@@ -278,104 +310,147 @@ NEW ARRIVALS<br />IN HOLIDAY HUES
 <div class="slide-desc" style="">Our newest designs feature soft earth tones and rich hues to bring warmth and texture to your winter wardrobe. Surround yourself in our luxurious SONA <sup>TM</sup> Knits or try a sleek piece from our Vivacity Mesh Collection. </div>
 </div>
 </li> -->
+
+
 <li>
-    <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/one2many.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
+    <img id="bannerimg"
+         src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/HomeSlide1.jpg' ?>"
+         alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO."/>
+
     <div class="banner-txt3 promo2310 promo1311 white">
-        SUPER SMOGI SAVINGS
-        <span class="white" style="text-transform: none;margin-top: 20px!important;font-weight: 600;font-size: 40px;line-height: 45px;">Shop your favorites styles<br/>in our new ONE 2 MANY<br/>Sale Section</span>
-        <a class="learnmore-nam" href="/women/one-too-many">
-            <img alt="Shop Women" src="<?php echo $this->getSkinUrl('images/homepage/shopone2many.png') ?>" />
-        </a>
-        <br/>
-<span style="font-size: 17px;line-height: 20px;font-weight: 600;text-transform: none;margin-top: 50px!important;" class="white"><sup>*</sup>Final sale. No exchanges or returns.<br/>Cannot be combined with other offers.
-</span>
-    </div>
-    <!--<div id="playBtn">
-<div class="sl-desc-handle">
-<img src="<?php /*echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') */?>" alt="Description handle" />
-</div>
-<div class="slide-desc" style="">Kara is wearing the Rhapsody Drape made from the soft and luxurious SONA<sup>&#0153</sup> fabric – a custom blend of silk, wool and cashmere. Easy, effortless and exceptionally beautiful, this versatile drape is the essential transitional gym-to-life piece.</div>
-</div>-->
-</li>
-<!--
-<li>
-<img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/HomeSlide1.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
-<div class="banner-txt3 promo2310 promo1311 white">
-<h1 class="white">
-WE ARE YOGASMOGA.<br />WE MAKE THINGS FOR LIFE -
-<span class="white">ONE BREATH AT A TIME.</span>
-</h1>
-<a class="learnmore-nam" href="/women">
-<img alt="Shop Women" src="<?php echo $this->getSkinUrl('images/homepage/SHOPWOMEN.png') ?>" />
-</a>
-<a class="learnmore-nam" href="/mens">
-<img alt="Shop Men" src="<?php echo $this->getSkinUrl('images/homepage/SHOP_MEN.png') ?>" />
-</a>
-</div>
-<div id="playBtn">
-<div class="sl-desc-handle">
-<img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
-</div>
-<div class="slide-desc" style="">We create our products from the heart and with love and we want everyone to feel that. We strive to become your partner in the pursuit of wellness – wherever you are today and wherever you are going tomorrow. Whether you’re on the go, or simply being, we’re happy to be with you.</div>
-</div>
-</li>
--->
-<!--<li>
-<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/HomeSlide2.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
-<div class="banner-txt3 promo2310 promo1311">
-A BIT MORE<br />ABOUT US -
-<span>JOY, ENERGY & BALANCE.</span>
-<a class="learnmore-nam" href="/women">
-<img alt="Shop Women" src="<?php echo $this->getSkinUrl('images/homepage/SHOPWOMEN.png') ?>" />
-</a>
-<a class="learnmore-nam" href="/mens">
-<img alt="Shop Men" src="<?php echo $this->getSkinUrl('images/homepage/SHOP_MEN.png') ?>" />
-</a>
-</div>
-<div id="playBtn">
-<div class="sl-desc-handle">
-<img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
-</div>
-<div class="slide-desc" style="">Bringing your concentration to your third-eye center, the space between your brows, allows the body and mind to enter a space of total focused awareness and develop a deeper connection to your yoga practice. </div>
-</div>
-</li>
--->
-<li>
-    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/HomeSlide3.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
-    <div class="banner-txt3 promo2310 promo1311 white">
-        A MANTRA OF INNOVATION -
-        <span class="white">OUR PLEDGE TO USE THE<br />BEST FABRIC TECHNOLOGIES.</span>
+        <h1 class="white">
+            WE ARE YOGASMOGA.<br/>WE MAKE THINGS FOR LIFE <span class="dash-white"></span>
+            <span class="white">ONE BREATH AT A TIME.</span>
+        </h1>
         <a class="learnmore-nam" href="/women">
-            <img alt="Shop Women" src="<?php echo $this->getSkinUrl('images/homepage/SHOPWOMEN.png') ?>" />
+            <img alt="Shop Women" src="<?php echo $this->getSkinUrl('images/homepage/SHOPWOMEN.png') ?>"/>
         </a>
         <a class="learnmore-nam" href="/mens">
-            <img alt="Shop Men" src="<?php echo $this->getSkinUrl('images/homepage/SHOP_MEN.png') ?>" />
+            <img alt="Shop Men" src="<?php echo $this->getSkinUrl('images/homepage/SHOP_MEN.png') ?>"/>
         </a>
     </div>
     <div id="playBtn">
         <div class="sl-desc-handle">
-            <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+            <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>"
+                 alt="Description handle"/>
         </div>
-        <div class="slide-desc" style="">AURUM<sup>&reg;</sup>, KOURA<sup>&trade;</sup> and AIRH<sup>&trade;</sup>. Ever thought about the meaning behind our fabric names? Each has the same root – translating to “gold,” exhibiting our steadfast commitment to providing our SMOGIs with the very best, top of the line, gold-standard in fabric technology.</div>
+        <div class="slide-desc" style="">We design with our active SMOGIs in mind. From candlelight vinyasa classes, to
+            long runs along the pier and bike rides to brunch, you can be sure that your YOGASMOGAs will stay fresh,
+            wherever life takes you.
+        </div>
     </div>
 </li>
+
 <li>
-    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/HomeSlide4.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
+    <img
+        src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/HomeSlide2.jpg' ?>"
+        alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO."/>
+
+    <div class="banner-txt3 promo2310 promo1311">
+        A BIT MORE<br/>ABOUT US <span class="dash-grey"></span>
+        <span>JOY, ENERGY & BALANCE.</span>
+        <a class="learnmore-nam" href="/women">
+            <img alt="Shop Women" src="<?php echo $this->getSkinUrl('images/homepage/SHOPWOMEN.png') ?>"/>
+        </a>
+        <a class="learnmore-nam" href="/mens">
+            <img alt="Shop Men" src="<?php echo $this->getSkinUrl('images/homepage/SHOP_MEN.png') ?>"/>
+        </a>
+    </div>
+    <div id="playBtn">
+        <div class="sl-desc-handle">
+            <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>"
+                 alt="Description handle"/>
+        </div>
+        <div class="slide-desc" style="">Bringing your concentration to your third-eye center, the space between your
+            brows, allows the body and mind to enter a space of total focused awareness and develop a deeper connection
+            to your yoga practice.
+        </div>
+    </div>
+</li>
+
+<li>
+    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/HomeSlide3.jpg'?>" alt="A MANTRA OF INNOVATION" />
+    <div class="banner-txt3 promo2310 promo1311 white">
+        A MANTRA OF INNOVATION &mdash;
+        <span class="white">OUR PLEDGE TO USE THE<br />BEST FABRIC TECHNOLOGIES.</span>
+        <a class="learnmore-nam" href="/women">
+            <!-- <img alt="Shop Women" src="<?php echo $this->getSkinUrl('images/homepage/SHOPWOMEN.png') ?>" /> -->
+            Shop Women
+        </a>
+        <a class="learnmore-nam" href="/mens">
+            <!-- <img alt="Shop Men" src="<?php echo $this->getSkinUrl('images/homepage/SHOP_MEN.png') ?>" /> -->
+            Shop Men
+        </a>
+    </div>
+    <div id="playBtn">
+        <div class="sl-desc-handle">
+            <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>"
+                 alt="Description handle"/>
+        </div>
+        <div class="slide-desc" style="">AURUM<sup>&reg;</sup>, KOURA<sup>&trade;</sup> and AIRH<sup>&trade;</sup>. Ever
+            thought about the meaning behind our fabric names? Each has the same root – translating to “gold,”
+            exhibiting our steadfast commitment to providing our SMOGIs with the very best, top of the line,
+            gold-standard in fabric technology.
+        </div>
+    </div>
+</li>
+
+
+
+<li>
+    <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/one2many.jpg'?>" alt="SUPER SMOGI SAVINGS" />
+    <div class="banner-txt3 promo2310 promo1311 white">
+        SUPER SMOGI SAVINGS
+        <span class="white"
+              style="text-transform: none;margin-top: 20px!important;font-weight: 600;font-size: 40px;line-height: 45px;">Shop your favorites styles<br/>in our new ONE 2 MANY<br/>Sale Section</span>
+        <a class="learnmore-nam" href="/women/one-too-many">
+            <!-- <img alt="Shop Women" src="<?php echo $this->getSkinUrl('images/homepage/shopone2many.png') ?>" /> -->
+            Shop one 2 many
+        </a>
+        <br/>
+<span style="font-size: 17px;line-height: 20px;font-weight: 600;text-transform: none;margin-top: 50px!important;"
+      class="white"><sup>*</sup>Final sale. No exchanges or returns.<br/>Cannot be combined with other offers.
+</span>
+    </div>
+
+    <div id="playBtn">
+        <div class="sl-desc-handle">
+            <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>"
+                 alt="Description handle"/>
+        </div>
+        <div class="slide-desc" style="">Kara is wearing the Rhapsody Drape made from the soft and luxurious SONA<sup>&#0153</sup>
+            fabric – a custom blend of silk, wool and cashmere. Easy, effortless and exceptionally beautiful, this
+            versatile drape is the essential transitional gym-to-life piece.
+        </div>
+    </div>
+</li>
+
+
+<li>
+    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/HomeSlide4.jpg'?>" alt="OUR CORE VALUE IS GIVING." />
     <div class="banner-txt3 promo2310 promo1311">
         OUR CORE VALUE IS GIVING.
         <span>OUR GIFT IS NAMASKÁR. </span>
         <a class="learnmore-nam" href="/namaskar">
-            <img alt="Learn More" src="<?php echo $this->getSkinUrl('images/homepage/LEARN_MORE.png')?>" />
+            <!-- <img alt="Learn More" src="<?php echo $this->getSkinUrl('images/homepage/LEARN_MORE.png')?>" /> -->
+            Learn More
         </a>
     </div>
     <div id="playBtn">
         <div class="sl-desc-handle">
-            <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+            <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>"
+                 alt="Description handle"/>
         </div>
-        <div class="slide-desc" style="">We recognize that textile production is typically done in the most economically challenged locations of the world. It is our absolute obligation and duty to give back. We welcome you to join us on this journey.</div>
+        <div class="slide-desc" style="">We recognize that textile production is typically done in the most economically
+            challenged locations of the world. It is our absolute obligation and duty to give back. We welcome you to
+            join us on this journey.
+        </div>
     </div>
 </li>
+
+
 </ul>
+
 </div>
 <!-- sliderBanner -->
 <!-- signup new -->
@@ -397,22 +472,34 @@ A BIT MORE<br />ABOUT US -
             <ul class="gridslider1">
                 <li>
                     <!--<img class="img-responsive" src="<?php /*echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/left-1.jpg'*/?>" alt="MOMENTUM CROP" />-->
-                    <img class="img-responsive" src="<?php echo $this->getSkinUrl().'images/homepage/left-1.jpg'?>" alt="MOMENTUM CROP" />
+                    <img class="img-responsive" src="<?php echo $this->getSkinUrl() . 'images/homepage/left-1.jpg' ?>"
+                         alt="MOMENTUM CROP"/>
+
                     <div class="contentSlider sliderContent" style="top:33.419551934826883910386965376782%;">
                         <div>
                             <h2 class="white">ys fabric tech</h2>
-                            <h3 class="white">DISCOVER<br/>OUR SONA<span class="aurum" style="font-weight: 600;">&trade;</span> KNITS COLLECTION<BR/><span class="aurum">ALL WRAPPED UP</span></h3>
-                            <a href="/women" class="shopnow-btn" style="margin-top:2.240325865580448065173116089613%;">shop now</a>
+
+                            <h3 class="white">DISCOVER<br/>OUR SONA<span class="aurum"
+                                                                         style="font-weight: 600;">&trade;</span> KNITS
+                                COLLECTION<BR/><span class="aurum">ALL WRAPPED UP</span></h3>
+                            <a href="/women" class="shopnow-btn" style="margin-top:2.240325865580448065173116089613%;">shop
+                                now</a>
                         </div>
                     </div>
                 </li>
                 <li>
-                    <img class="img-responsive" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/slider1.jpg'?>" alt="Sherpa Long Sleeve Tee" />
+                    <img class="img-responsive"
+                         src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/slider1.jpg' ?>"
+                         alt="Sherpa Long Sleeve Tee"/>
+
                     <div class="contentSlider sliderContent" style="top:33.419551934826883910386965376782%;">
                         <div>
                             <h2 class="white">ys fabric tech</h2>
-                            <h3 class="white">THE SHERPA LONG SLEEVE TEE<br/>MADE WITH <span class="aurum">AURUM<sup>&reg;</sup> 1064</span></h3>
-                            <a href="/mens" class="shopnow-btn" style="margin-top:2.240325865580448065173116089613%;">shop now</a>
+
+                            <h3 class="white">THE SHERPA LONG SLEEVE TEE<br/>MADE WITH <span
+                                    class="aurum">AURUM<sup>&reg;</sup> 1064</span></h3>
+                            <a href="/mens" class="shopnow-btn" style="margin-top:2.240325865580448065173116089613%;">shop
+                                now</a>
                         </div>
                     </div>
                 </li>
@@ -426,31 +513,31 @@ A BIT MORE<br />ABOUT US -
         <!-- partOne -->
         <div class="compressBox">
             <div class="ctext" style="top:27.894308943089430894308943089431%;">
-                consider<br />the clothes<br />you wear
+                consider<br/>the clothes<br/>you wear
                 <span style="margin-top: 7px;"><a class="learn-more" href="/ys-fabric-tech">learn more</a></span>
             </div>
         </div>
         <!-- partOne -->
         <!-- partTwo -->
-        <a href="<?php echo $this->getBaseUrl().'ys-fabric-tech'; ?>">
+        <a href="<?php echo $this->getBaseUrl() . 'ys-fabric-tech'; ?>">
             <div class="iconspartone" id="iconspartone">
                 <div class="row">
 <span>
-<img src="<?php echo $this->getSkinUrl('images/new-elements/pilling.png') ?>" alt="Yogasmoga Anti-Pilling" />
+<img src="<?php echo $this->getSkinUrl('images/new-elements/pilling.png') ?>" alt="Yogasmoga Anti-Pilling"/>
 <span class="iconstxt">RESISTANCE TO PILLING</span>
 </span>
 <span>
-<img src="<?php echo $this->getSkinUrl('images/new-elements/moisture.png') ?>" alt="Yogasmoga Moisture Wicking" />
+<img src="<?php echo $this->getSkinUrl('images/new-elements/moisture.png') ?>" alt="Yogasmoga Moisture Wicking"/>
 <span class="iconstxt">ADVANCED MOISTURE MANAGEMENT</span>
 </span>
                 </div>
                 <div class="row">
 <span>
-<img src="<?php echo $this->getSkinUrl('images/new-elements/stretch.png') ?>" alt="Yogasmoga Stretch" />
+<img src="<?php echo $this->getSkinUrl('images/new-elements/stretch.png') ?>" alt="Yogasmoga Stretch"/>
 <span class="iconstxt">HIGH QUALITY STRETCH</span>
 </span>
 <span>
-<img src="<?php echo $this->getSkinUrl('images/new-elements/usa.png') ?>" alt="Yogasmoga USA" />
+<img src="<?php echo $this->getSkinUrl('images/new-elements/usa.png') ?>" alt="Yogasmoga USA"/>
 <span class="iconstxt">PROUDLY MADE IN THE USA</span>
 </span>
                 </div>
@@ -468,31 +555,33 @@ A BIT MORE<br />ABOUT US -
         <!-- partOne -->
         <div class="multicolorcont">
             <div class="ctext" style="top: 29.113821138211382113821138211382%;">
-                COLOR YOUR<br />WORLD. COLORS<br />THAT DON’T BLEED.
-                <span style="margin-top: 2.1910569105691056910569105691057%;"><a class="learn-more white" href="/ys-color-tech">learn more</a></span>
+                COLOR YOUR<br/>WORLD. COLORS<br/>THAT DON’T BLEED.
+                <span style="margin-top: 2.1910569105691056910569105691057%;"><a class="learn-more white"
+                                                                                 href="/ys-color-tech">learn
+                        more</a></span>
             </div>
         </div>
         <!-- partOne -->
         <!-- partTwo -->
-        <a href="<?php echo $this->getBaseUrl().'ys-color-tech'; ?>">
+        <a href="<?php echo $this->getBaseUrl() . 'ys-color-tech'; ?>">
             <div class="iconspartone" id="iconsparttwo">
                 <div class="row">
 <span>
-<img src="<?php echo $this->getSkinUrl('images/new-elements/eco.png') ?>" alt="Yogasmoga Eco" />
+<img src="<?php echo $this->getSkinUrl('images/new-elements/eco.png') ?>" alt="Yogasmoga Eco"/>
 <span class="iconstxt">ECO-FRIENDLY DYEING</span>
 </span>
 <span>
-<img src="<?php echo $this->getSkinUrl('images/new-elements/colors.png') ?>" alt="Yogasmoga Colors" />
+<img src="<?php echo $this->getSkinUrl('images/new-elements/colors.png') ?>" alt="Yogasmoga Colors"/>
 <span class="iconstxt">COLORS THAT WON’T FADE</span>
 </span>
                 </div>
                 <div class="row">
 <span>
-<img src="<?php echo $this->getSkinUrl('images/new-elements/accuracy.png') ?>" alt="Yogasmoga Accuracy" />
+<img src="<?php echo $this->getSkinUrl('images/new-elements/accuracy.png') ?>" alt="Yogasmoga Accuracy"/>
 <span class="iconstxt">COLOR ACCURACY</span>
 </span>
 <span>
-<img src="<?php echo $this->getSkinUrl('images/new-elements/mis.png') ?>" alt="Yogasmoga Icon" />
+<img src="<?php echo $this->getSkinUrl('images/new-elements/mis.png') ?>" alt="Yogasmoga Icon"/>
 <span class="iconstxt">DYEING PROUDLY DONE IN THE USA</span>
 </span>
                 </div>
@@ -507,23 +596,33 @@ A BIT MORE<br />ABOUT US -
         <div class="sliderImg">
             <ul class="gridslider2">
                 <li>
-                    <img class="img-responsive" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/slider3.jpg'?>" alt="Mens Sunday Tee" />
+                    <img class="img-responsive"
+                         src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/slider3.jpg' ?>"
+                         alt="Mens Sunday Tee"/>
+
                     <div class="contentSlider" style="top:36.659877800407331975560081466395%">
                         <div>
                             <h2 class="white">YS COLOR TECH</h2>
-                            <h3 class="white">THE SUNDAY TEE<br/>IN<span class="aurum">&nbsp;MIDNIGHT BLUE<br />& GREY CAVIAR</span></h3>
-                            <a href="/mens" class="shopnow-btn" style="margin-top:1.0366598778004073319755600814664%;">shop now</a>
+
+                            <h3 class="white">THE SUNDAY TEE<br/>IN<span class="aurum">&nbsp;MIDNIGHT BLUE<br/>& GREY CAVIAR</span>
+                            </h3>
+                            <a href="/mens" class="shopnow-btn" style="margin-top:1.0366598778004073319755600814664%;">shop
+                                now</a>
                         </div>
                     </div>
                 </li>
                 <li>
                     <!--<img class="img-responsive" src="<?php /*echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/right-1.jpg'*/?>" alt="Mens Sunday Tee" />-->
-                    <img class="img-responsive" src="<?php echo $this->getSkinUrl().'images/homepage/right-1.jpg'?>" alt="Mens Sunday Tee" />
+                    <img class="img-responsive" src="<?php echo $this->getSkinUrl() . 'images/homepage/right-1.jpg' ?>"
+                         alt="Mens Sunday Tee"/>
+
                     <div class="contentSlider" style="top:36.659877800407331975560081466395%">
                         <div>
                             <h2 class="white">YS COLOR TECH</h2>
+
                             <h3 class="white">THE VIVACITY LEGGING<br/>IN<span class="aurum">&nbsp;OLIVINE</span></h3>
-                            <a href="/women" class="shopnow-btn" style="margin-top:1.0366598778004073319755600814664%;">shop now</a>
+                            <a href="/women" class="shopnow-btn" style="margin-top:1.0366598778004073319755600814664%;">shop
+                                now</a>
                         </div>
                     </div>
                 </li>
@@ -540,11 +639,16 @@ A BIT MORE<br />ABOUT US -
     <div class="grid65 f-left">
         <!-- slider -->
         <div class="sliderImg">
-            <img class="img-responsive" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/factoryimg.jpg'?>" alt="Yogasmoga Factory" />
+            <img class="img-responsive"
+                 src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/factoryimg.jpg' ?>"
+                 alt="Yogasmoga Factory"/>
+
             <div class="contentSlider mistext" style="top:38.911201629327902240325865580448%">
                 <div>
                     <h2 class="white">RESPONSIBLE PRODUCTION</h2>
-                    <h3 class="white" style="margin-bottom: 1.5329938900203665987780040733198%;">MADE IN USA<span>2 US FACTORIES 2000 US WORKERS</span></h3>
+
+                    <h3 class="white" style="margin-bottom: 1.5329938900203665987780040733198%;">MADE IN USA<span>2 US FACTORIES 2000 US WORKERS</span>
+                    </h3>
                     <a href="/made-in-usa" class="learn-more">LEARN MORE</a>
                 </div>
             </div>
@@ -554,13 +658,15 @@ A BIT MORE<br />ABOUT US -
     <!-- grid6 -->
     <!-- grid35 -->
     <div class="grid35">
-        <!-- partOne --><a href="<?php echo $this->getBaseUrl().'made-in-usa'; ?>">
+        <!-- partOne --><a href="<?php echo $this->getBaseUrl() . 'made-in-usa'; ?>">
             <div class="factorythread">
-                <div class="ctext" style="top:27.994308943089430894308943089431%;">STREAMLINING<br />HELPING<br />REDUCING<br />RAISING</div>
-            </div></a>
+                <div class="ctext" style="top:27.994308943089430894308943089431%;">STREAMLINING<br/>HELPING<br/>REDUCING<br/>RAISING
+                </div>
+            </div>
+        </a>
         <!-- partOne -->
         <!-- partTwo -->
-        <a href="<?php echo $this->getBaseUrl().'made-in-usa'; ?>">
+        <a href="<?php echo $this->getBaseUrl() . 'made-in-usa'; ?>">
             <div class="usamap"></div>
         </a>
         <!-- partTwo -->
@@ -574,13 +680,16 @@ A BIT MORE<br />ABOUT US -
     <div class="grid35">
         <!-- partOne -->
         <div class="supportnamaskar">
-            <div class="ctext"><a href="/women/accessories/namaskar-bracelet" class="learn-more">SUPPORT NAMASKÁR</a></div>
+            <div class="ctext"><a href="/women/accessories/namaskar-bracelet" class="learn-more">SUPPORT NAMASKÁR</a>
+            </div>
         </div>
         <!-- partOne -->
         <!-- partTwo -->
-        <a href="<?php echo $this->getBaseUrl().'namaskar'; ?>">
+        <a href="<?php echo $this->getBaseUrl() . 'namaskar'; ?>">
             <div class="raisingfunds">
-                <div class="ctext" style="top:34.734693877551020408163265306122%;">RAISING THE FUNDS &<br />MAKING CHANGES<br />IN THE WORLD</div>
+                <div class="ctext" style="top:34.734693877551020408163265306122%;">RAISING THE FUNDS &<br/>MAKING
+                    CHANGES<br/>IN THE WORLD
+                </div>
             </div>
         </a>
         <!-- partTwo -->
@@ -590,11 +699,17 @@ A BIT MORE<br />ABOUT US -
     <div class="grid65 f-right">
         <!-- slider -->
         <div class="sliderImg">
-            <img class="img-responsive" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/namaskar.jpg'?>" alt="Namaskar Bracelet" />
+            <img class="img-responsive"
+                 src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/namaskar.jpg' ?>"
+                 alt="Namaskar Bracelet"/>
+
             <div class="contentSlider namaskartxt" style="top:38.085539714867617107942973523422%;">
                 <div>
-                    <h2 class="white" style="margin-bottom:3.1549898167006109979633401221996%;">GIVING IS A CORE VALUE</h2>
-                    <h3 class="white" style="margin-bottom:4.5329938900203665987780040733198%;">NAMASKÁR FOUNDATION<span>WE HAVE CREATED THE NAMASKÁR FOUNDATION BECAUSE WE CARE.</span></h3>
+                    <h2 class="white" style="margin-bottom:3.1549898167006109979633401221996%;">GIVING IS A CORE
+                        VALUE</h2>
+
+                    <h3 class="white" style="margin-bottom:4.5329938900203665987780040733198%;">NAMASKÁR
+                        FOUNDATION<span>WE HAVE CREATED THE NAMASKÁR FOUNDATION BECAUSE WE CARE.</span></h3>
                     <a href="/namaskar" class="learn-more">LEARN MORE</a>
                 </div>
             </div>

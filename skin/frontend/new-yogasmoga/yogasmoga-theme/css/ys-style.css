@@ -45,7 +45,7 @@ ul.main-menu li a,ul.tr-menu > li > ul.sub-menu li a{color: #555; font: 11px/23p
 ul.main-menu li a.menu-heading{display: inline-block; padding: 37px 0 9px; vertical-align: middle;}
 ul.main-menu li ul.sub-menu{position: absolute; text-align: left; left: 0; margin: 0; line-height: 21px; background: #f1f1f2; /*background: url("../images/nav-bg.png") repeat-x left top;*/ padding: 6px 20px; display: none;}
 ul.main-menu2 li ul.sub-menu{background-position: left top ;}
-ul.main-menu li ul.sub-menu > li{display: inline-block; vertical-align: top; min-width: 160px; border-left: 1px solid #f8f8f8; padding:0 0 0 15px; min-height: 120px;}
+ul.main-menu li ul.sub-menu > li{display: inline-block; vertical-align: top; min-width: 160px; border-left: 1px solid #f8f8f8; padding:0 0 0 15px; /*min-height: 120px;*/}
 ul.main-menu2 li ul.sub-menu{width: 174px;}
 ul.main-menu2 li ul.sub-menu>li{min-height: 100%; border: none; padding: 0;}
 ul.main-menu li ul.sub-menu > li:first-child{border:none; padding:0;}
@@ -1625,7 +1625,8 @@ div#sizechart td span { font-weight: normal; }
     left: 3.85625%;
     text-align: left;
     text-transform: uppercase;
-    top: 88px;
+    top: 95px;
+    left:80px;
 }
 
 .banner-txt3.promo2310 span {
@@ -1649,6 +1650,14 @@ div#sizechart td span { font-weight: normal; }
     height: 40px !important;
     margin: 30px 20px 0 0 !important;
     width: 142px !important;
+}
+.cms-home .flexslider a.learnmore-nam{
+    font: 11px gothammedium;
+    background: #AE8637;
+    color: #fff !Important;
+    text-align: center;
+    line-height: 40px;
+    font-weight: normal;
 }
 
 .learnmore-nam > img {
