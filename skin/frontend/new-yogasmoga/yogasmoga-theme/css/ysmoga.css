@@ -2009,3 +2009,18 @@ body.mac-os ul.main-menu2 a.main-heading{
     left: 160px;
     float: none;
 }
+
+
+
+@media screen and (max-width:1400px){
+    .inner-text-container {
+        height: 235px;
+        position: relative;
+    }
+    .inner-text-container.super-smogi {
+        height: 295px;
+    }
+    .inner-text-container.namaskar {
+        height: 190px;
+    }
+}
