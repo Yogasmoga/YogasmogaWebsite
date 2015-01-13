@@ -143,7 +143,7 @@ AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
     {
         //echo $product->getId() . "\n\n";
         $_product = Mage::getModel('catalog/product')->load($product);
-        $productname = Mage::Helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name');
+        $productname = Mage::Helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name');echo $productname."<br/>";
         $_childproducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
         $productcolorinfo = array();
         $sizeArray = array();
@@ -231,12 +231,13 @@ AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
                     7 => "XL",
                     8 => "XL-T",
                     9 => "XXL",
-                    10 => "XXL-T"
+                    10 => "XXL-T",
+                    11 => "ONE SIZE"
                 );                
                 $result = array(); // result array
                 foreach ($sizeArray as $key => $val) { // loop
                     if (array_search($val, $data) != false) $result[array_search($val, $data)] = $val;
-                }                
+                }//echo "<pre>";    print_r($sizeArray);echo "<br/>-----<br/>";
                 //$sizeArray = $result;
                 ksort($result);
                 $sizeArray = array_values($result);
@@ -4613,6 +4614,98 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
     public function callremindusersAction()
     {
         Mage::getModel('abandonedcartreminder/notify')->remindusers();
+    }
+
+    // for download all type of products either it is disabled or enabled
+    public function inventoryreportforallproductsstatusAction()
+    {
+        if($this->getRequest()->getParam('pass'))
+        {
+            if($this->getRequest()->getParam('pass') == "MageHACKER")
+            {
+                $output = "<table>" ;
+                $output .= "<tr><td style='height:80px;width:200px !important'><img src='http://yogasmoga.com/skin/frontend/yogasmoga/yogasmoga-theme/images/logo.png' /></td><td style='vertical-align:middle' colspan='5'>INVENTORY STATUS AS OF ".date("dS M,Y")."</td></tr>";
+                $productCollection1 = Mage::getModel('catalog/product')->getCollection()->addAttributeToFilter(array(array('attribute'=>'type_id', 'eq'=>'configurable'), array('attribute'=>'status', 'eq' => Mage_Catalog_Model_Product_Status::STATUS_DISABLED)))->setPageSize(20000);
+                //$productCollection = Mage::getModel('catalog/product')->getCollection()->addAttributeToFilter(array(array('attribute'=>'type_id', 'eq'=>'configurable'), array('attribute'=>'status', 'eq' => '2')));
+                //$productCollection = Mage::getResourceModel('catalog/product_collection')->addAttributeToFilter('type_id', array('eq' => 'configurable'));
+
+                // custom code for filter enabled product
+                $productCollection = array();
+
+                $i=0;
+                foreach($productCollection1 as $product){
+                    $status = $product->getStatus();
+                    if(($status == 1 || $status == 2) && $product->getTypeId()== "configurable"){
+                        $productCollection[$i] = $product;
+                        $i++;
+                    }
+                }
+                $write = Mage::getSingleton('core/resource')->getConnection('core_read');
+                $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov
+WHERE ea.attribute_id = eao.attribute_id
+AND eao.option_id = eaov.option_id
+AND eaov.store_id = 0
+AND ea.attribute_code='size' ORDER BY eao.sort_order, eaov.value");
+                $i = 0;
+                $allsizearray = array();
+                while($row = $readresult->fetch())
+                {
+                    $allsizearray[$i] = $row['Attribute'];
+                    $i++;
+                }
+
+                $arrAccessories = array();
+                for ($i = 1; $i <= $productCollection1->getLastPageNumber(); $i++) {
+                    if ($productCollection1->isLoaded()) {
+                        $productCollection1->clear();
+                        $productCollection1->setPage($i);
+                        $productCollection1->setPageSize(20000);
+                    }
+                    foreach ($productCollection as $product) { //echo '<pre>'; print_r($product);die('ttt');
+                        $productCats = $product->getCategoryIds();
+                        if(array_search(8, $productCats) !== false){
+                            array_push($arrAccessories, $product->getId());
+                        }
+                        else
+                            $this->getinventoryhtml($product->getId(), $output);
+                    }
+                    // $i . "\n\n";
+
+                }
+                for($ii = 0; $ii < count($arrAccessories); $ii++){
+                        $this->getinventoryhtml($arrAccessories[$ii], $output);
+                }
+                $output .= "<tr><td colspan='2' style='font-weight:bold;'>LEGEND</td></tr>";
+                $output .= "<tr><td>VALUE</td><td colspan='4'>Product is in stock and the inventory is positive.</td></tr>";
+                $output .= "<tr><td style='color:#fff;background-color:gray;'>VALUE</td><td colspan='4'>Product is out of stock.</td></tr>";
+                $output .= "<tr><td style='color:#fff;background-color:red;'>VALUE</td><td colspan='4'>Product is in stock and is in pre-order state.</td></tr>";
+                $output .= "<tr><td style='color:#fff;background-color:black;'>VALUE</td><td colspan='4'>This combination of color and size is not available and not displayed on the product view page.</td></tr>";
+                $output .= "</table>";
+
+
+//                echo 'test';
+//                echo $output;
+                //$fname = mktime();
+                //          die();
+                if($this->getRequest()->getParam('recurring') == "true")
+                {
+                    $fname = date("M_j_Y");
+                    $fname = "inv_".$fname;
+
+                    $baseDir = Mage::getBaseDir();
+                    $varDir = $baseDir.DS.'recurringreports'.DS.'inventory'.DS.$fname.'.xls';
+
+                    unlink($varDir);
+                    file_put_contents('recurringreports/inventory/'.$fname.'.xls',$output);
+                    return;
+                }
+
+                $fname = mktime();
+                file_put_contents('tempreports/'.$fname.'.xls',$output);
+
+                Mage::app()->getFrontController()->getResponse()->setRedirect(str_replace("/index.php","",Mage::helper('core/url')->getHomeUrl())."tempreports/".$fname.".xls");
+            }
+        }
     }
 }
 ?>

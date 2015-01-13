@@ -16,7 +16,7 @@ jQuery(document).ready(function(){
         jQuery.each(rowdata, function (i, elem) {
             if (elem.id === jQuery("#reporttype").val()) {
                 gethtml(elem.startdate,elem.enddate,elem.description);
-                jQuery("#url").val(homeUrl+elem.url);
+                jQuery("#url").val(homeUrl+elem.url);console.log(homeUrl+elem.url);
                 
             }
         });
