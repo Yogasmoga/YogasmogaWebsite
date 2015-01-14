@@ -2016,4 +2016,27 @@ body.mac-os ul.main-menu2 a.main-heading{
     margin: 25px 20px 0 0 !important;
     width: 155px;
     text-align: center;
+    line-height:40px;
+}
+.wait-is-over h1 span:first-child{
+    margin-top:20px !important;
+}
+
+.inner-text-container.wait-is-over span {
+    font-size: 30px;
+    font-family: avantgardegothicitcw01b;
+    text-transform:none;
+    float: left;
+    font-family: AvantGardeGothicITCW01B;
+    font-size: 30px;
+    width: 100%;
+    line-height: 40px;
+}
+/*
+.share-strip, .new-arrivals-block{
+    opacity:1;
+}
+*/
+.top-grey-b-heading {
+    border-top: 1px solid #fff !important;
 }

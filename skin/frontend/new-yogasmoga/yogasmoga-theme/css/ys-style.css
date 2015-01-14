@@ -1893,7 +1893,12 @@ ul.new-arrivals a.quick-view{display: none;}
 .wl-right-block,.wl-cs-left-block{width:66.633565044687189672293942403178%; /*display: inline-block; vertical-align: top;*/}
 .wl-feat-prd img,.wl-color-story-prd img{width: 100%; display: block;}
 .top-left-block,.bottom-left-block,.top-right-block,.bottom-right-block{width: 100%; display: block; height: 50%;}
-.wl-feat-prd .top-left-block{background: #d7ea98;}
+.wl-feat-prd .top-left-block{
+    /*
+    background: #d7ea98;
+    */
+    background: #7c7f65;
+}
 .wl-color-story-prd .bottom-right-block{background: #b10707;}
 .category-women{margin: 0 !important;}
 .wl-feat-prd,.wl-color-story-prd{opacity: 0; overflow: hidden;}
