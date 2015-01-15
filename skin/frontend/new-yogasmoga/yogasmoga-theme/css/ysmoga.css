@@ -2051,12 +2051,6 @@ body.mac-os ul.main-menu2 a.main-heading{
 
 /*///////////////////////////////////////*/
 
-.quick-view .prd-details {
-    background: none repeat scroll 0 0 #fff;
-    padding: 20px 0;
-}
-
-
 .new-arrivals-block{
     padding-bottom:0;
 }
@@ -2077,5 +2071,5 @@ div.new-arrivals-block{
 }
 
 .quick-view .prd-details {
-    padding: 20px 0;
+    padding: 50px 0 10px;
 }
