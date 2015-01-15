@@ -2043,3 +2043,8 @@ body.mac-os ul.main-menu2 a.main-heading{
 .top-grey-b-heading {
     border-top: 1px solid #fff !important;
 }
+
+.block-content.contentSlider .b-heading.bottom-b-heading {
+    margin-bottom: 30px;
+    width: 42%;
+}
