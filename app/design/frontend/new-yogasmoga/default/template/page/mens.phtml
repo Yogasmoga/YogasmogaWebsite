@@ -237,7 +237,11 @@
 <!-- ProductListing Part -->
 
 
-<div class="new-arrivals-block" style="width:100%; margin:0 auto;">
+<div class="new-arrivals-block" style="width:100%; margin:0 auto; position: relative;">
+
+    <div class="white-box"></div>
+
+
     <?php $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('men_landing_category_ids')->getValue('plain')), true);
 
     $categoryId_newcollection = $categoryIds['new_collection'];

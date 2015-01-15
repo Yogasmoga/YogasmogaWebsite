@@ -2048,3 +2048,34 @@ body.mac-os ul.main-menu2 a.main-heading{
     margin-bottom: 30px;
     width: 42%;
 }
+
+/*///////////////////////////////////////*/
+
+.quick-view .prd-details {
+    background: none repeat scroll 0 0 #fff;
+    padding: 20px 0;
+}
+
+
+.new-arrivals-block{
+    padding-bottom:0;
+}
+
+div.new-arrivals-block{
+    z-index:-1;
+    position:relative;
+}
+
+
+.white-box {
+    background: none repeat scroll 0 0 #fff;
+    bottom: 0;
+    height: 100px;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+
+.quick-view .prd-details {
+    padding: 20px 0;
+}
