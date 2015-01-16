@@ -1916,8 +1916,11 @@ ul.new-arrivals a.quick-view{display: none;}
 .shopnow-btn:hover{color: #fff;}
 /*.bottom-left-block,.top-right-block{cursor:pointer;}*/
 .html-video-popup{position: fixed; width: 50%; display: none; top: 100px; z-index: 10099;}
+/*
 .wl-cs-right-block .top-right-block{background:url(../images/women/WomenLanding3.jpg) no-repeat; background-size: 100% 100%;}
-.wl-left-block .bottom-left-block{background: url(../images/women/dum5.jpg) no-repeat; background-size: 100% 100%;}
+.wl-left-block .bottom-left-block{background: url(../images/women/dum5.jpg) no-repeat; background-size: 100% 100%;} */
+.wl-cs-right-block .top-right-block{background:url(../images/women/andman-green-featured-image.jpg) no-repeat; background-size: 100% 100%;}
+.wl-left-block .bottom-left-block{background: url(../images/women/featured-image.jpg) no-repeat; background-size: 100% 100%;}
 
 
 div.cms-side-nav{display: none;}
