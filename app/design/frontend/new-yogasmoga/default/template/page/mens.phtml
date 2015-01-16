@@ -109,15 +109,21 @@
 <div class="flexslider showloading cat-slide">
     <ul class="slides">
         <li>
-            <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/MenSlide.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
+            <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/mens-page/mens-page-banner-2.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
 
             <div class="banner-txt3 promo2310 promo1311 white">
-                <h1 class="white">
-                    READY TO TRAIN,<br />ANY DAY OF THE WEEK.
-                    <span class="white">THE SUNDAY TEE,<br />YOUR EVERYDAY TEE.</span>
+                <h1>
+
+                    BACK TO BASICS<br/>
+                    WITH THE MEN'S GOA TEE
+                    <span style="font-family: ITCAvantGardeProBk;font-weight: 500;">CLEAN LINES AND SIMPLE STYLE</span>
+                    <span style="font-family: ITCAvantGardeProBk;font-weight: 500;">MEET ADVANCED QUALITY &amp;</span>
+                    <span style="font-family: ITCAvantGardeProBk;font-weight: 500;">HIGH TECH FABRICS</span>
+
+
                 </h1>
-                <a class="learnmore-nam" href="<?php echo $this->getBaseUrl().'mens/tops'; ?>">
-                    <img alt="Shop Sunday Tee" src="<?php echo $this->getSkinUrl('images/homepage/shop-sundaytee.jpg') ?>" />
+                <a class="learnmore-nam" href="<?php echo $this->getBaseUrl().'goa-short-sleeve-tee'; ?>">
+                    SHOP THE GOA TEE
                 </a>
             </div>
 
@@ -125,7 +131,7 @@
                 <div class="sl-desc-handle">
                     <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
                 </div>
-                <div class="slide-desc" style="">Aim high and you can do more. David wears the extremely soft and superior moisture wicking Sunday Tee and the Dharma Pant to achieve his goals.</div>
+                <div class="slide-desc" style="">The newest men's basic tee is a lightweight and versatile wardrobe staple. The Mosaic Spanish Grey is an updated variety of one of our signature colors.</div>
             </div>
         </li>
 <!--         <li>
@@ -231,7 +237,11 @@
 <!-- ProductListing Part -->
 
 
-<div class="new-arrivals-block" style="width:100%; margin:0 auto;">
+<div class="new-arrivals-block" style="width:100%; margin:0 auto; position: relative;">
+
+    <div class="white-box"></div>
+
+
     <?php $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('men_landing_category_ids')->getValue('plain')), true);
 
     $categoryId_newcollection = $categoryIds['new_collection'];
@@ -381,20 +391,25 @@ $featurecategoryUrl = Mage::getBaseUrl().$featurecategory->getUrlPath();
     <section class="wl-left-block f-left">
         <div class="top-left-block">
             <div class="block-content">
-                <h4 class="cursive-text">YOGASMOGA sells smart, attractive pieces for men, with lots of attention to detail and fabrics with a great feel.<!--The feeling of this shirt is like butter. Super soft and cozy for those cooler days.--></h4>
-                <span class="b-heading top-b-heading">LA Times</span>
+                <h4 class="cursive-text">A hot new yoga fashion brand<br/>
+                    launches with Indian roots<br/>
+                    and modern flair.<!--The feeling of this shirt is like butter. Super soft and cozy for those cooler days.--></h4>
+                <span class="b-heading top-b-heading">WELL + GOOD</span>
             </div>
         </div>
         <div class="bottom-left-block mens-left-blockbg">
             <!-- <img src="<?php echo $this->getSkinUrl('images/women/left-block-vid-img2.jpg') ?>" alt="" /> -->
+            <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) ?>wysiwyg/new-design-images/mens-page/mens-design-feature-image-2.jpg" alt="" />
         </div>
     </section>
     <section class="wl-right-block f-right">
-        <img src="<?php echo $this->getSkinUrl('images/women/feat-prd-main-img2.jpg') ?>" alt="" />
-        <div class="block-content">
+       <!-- <img src="<?php echo $this->getSkinUrl('images/women/feat-prd-main-img2.jpg') ?>" alt="" /> -->
+        <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) ?>wysiwyg/new-design-images/mens-page/mens-feature-product-image-2.jpg" alt=""/>
+        <div class="block-content contentSlider">
             <span class="b-heading bottom-b-heading">FEATURED PRODUCT</span>
-            <h4 class="main-img-text">SHERPA LONG<br />SLEEVE TEE<span>4 colors</span></h4>
-            <a href="<?php echo $this->getBaseUrl().'mens/tops/tees/sherpa-long-sleeve-tee';?>" class="shopnow-btn">shop now</a>
+            <h3 class="white">THE DOON LONG SLEEVE TEE<br>IN<span class="aurum"> KOURA 24</span></h3>
+            <!-- <h4 class="main-img-text">THE DOON LONG SLEEVE TEE<br/>IN<span> KOURA 24</span></h4> -->
+            <a href="<?php echo $this->getBaseUrl().'doon-long-sleeve-tee';?>" class="shopnow-btn">SHOP NOW</a>
         </div>
     </section>
     <div class="clear-fix"></div>
@@ -409,41 +424,49 @@ $colorstorycategoryUrl = Mage::getBaseUrl().$colorstorycategory->getUrlPath();
 ?>
 <div class="wl-color-story-prd">
     <section class="wl-cs-left-block f-left">
-        <img src="<?php echo $this->getSkinUrl('images/women/cs-main-img2.jpg') ?>" alt="" />
+        <!-- <img src="<?php echo $this->getSkinUrl('images/women/cs-main-img2.jpg') ?>" alt="" /> -->
+        <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) ?>wysiwyg/new-design-images/mens-page/mens-feature-fabric-image-2.jpg" alt="" />
         <div class="block-content">
-            <span class="b-heading bottom-b-heading">fabric</span>
-            <h4 class="main-img-text">AURUM<sup>&reg;</sup></h4>
-            <a href="<?php echo $this->getBaseUrl().'mens/tops';?>" class="shopnow-btn">shop now</a>
+            <span class="b-heading bottom-b-heading">FEATURED FABRIC</span>
+            <h4 class="main-img-text">KOURA 24</h4>
+            <a href="<?php echo $this->getBaseUrl().'goa-short-sleeve-tee';?>" class="shopnow-btn">shop now</a>
         </div>
     </section>
     <section class="wl-cs-right-block f-right">
         <div class="top-right-block iconspartone" id="iconspartone" style="background:none">
             <div class="row">
                                 <span>
-                                    <img src="<?php echo $this->getSkinUrl('images/new-elements/pilling.png') ?>" alt="" />
-                                    <span class="iconstxt">RESISTANCE TO PILLING</span>
+                                    <!-- <img src="<?php echo $this->getSkinUrl('images/new-elements/pilling.png') ?>" alt="" /> -->
+                                    <img src="<?php echo $this->getSkinUrl('images/icons/nano-tech.png') ?>" alt="" />
+                                    <span class="iconstxt">NANOTECHNOLOGY</span>
                                 </span>
                                 <span>
-                                    <img src="<?php echo $this->getSkinUrl('images/new-elements/moisture.png') ?>" alt="" />
+                                    <!-- <img src="<?php echo $this->getSkinUrl('images/new-elements/moisture.png') ?>" alt="" /> -->
+                                    <img src="<?php echo $this->getSkinUrl('images/icons/moisture.png') ?>" alt="" />
                                     <span class="iconstxt">ADVANCED MOISTURE MANAGEMENT</span>
                                 </span>
             </div>
             <div class="row">
                                 <span>
-                                    <img src="<?php echo $this->getSkinUrl('images/new-elements/stretch.png') ?>" alt="" />
-                                    <span class="iconstxt">HIGH QUALITY STRETCH</span>
+                                    <!-- <img src="<?php echo $this->getSkinUrl('images/new-elements/stretch.png') ?>" alt="" /> -->
+                                    <img src="<?php echo $this->getSkinUrl('images/icons/breath.png') ?>" alt="" />
+                                    <span class="iconstxt">HIGH BREATHABILITY</span>
                                 </span>
                                 <span>
-                                    <img src="<?php echo $this->getSkinUrl('images/new-elements/usa.png') ?>" alt="" />
-                                    <span class="iconstxt">PROUDLY MADE IN THE USA</span>
+                                   <!-- <img src="<?php echo $this->getSkinUrl('images/new-elements/usa.png') ?>" alt="" /> -->
+                                    <img src="<?php echo $this->getSkinUrl('images/icons/light-weight.png') ?>" alt="" />
+                                    <span class="iconstxt">LIGHT WEIGHT FABRIC</span>
                                 </span>
             </div>
         </div>
         <!-- partTwo -->
-        <div class="bottom-right-block lightgrey">
+        <div class="bottom-right-block">
             <div class="block-content">
-                <h4 class="cursive-text grey">AURUM is the gold standard in fabric technology.</h4>
-                <span class="b-heading top-grey-b-heading grey">ROSE APOSTOLAKOS, DESIGNER</span>
+                <h4 class="cursive-text white">KOURA 24<br/>
+                    is a durable, high performance<br/>
+                    fabric that is soft and light enough<br/>
+                    to feel like you have nothing on.</h4>
+                <span class="b-heading top-grey-b-heading white">ROSE APOSTOLAKOS, DESIGNER</span>
             </div>
         </div>
     </section>

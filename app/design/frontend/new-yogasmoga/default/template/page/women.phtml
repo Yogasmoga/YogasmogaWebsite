@@ -121,29 +121,30 @@
             <div class="flexslider showloading cat-slide">
                 <ul class="slides">
                     <li>
-                        <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/Banner-WomenLanding.jpg'?>" alt="YogaSmoga - yogasmoga vivacity mesh collection" />
+                        <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/women-page/basic-tee-banner.jpg'?>" alt="YogaSmoga - yogasmoga vivacity mesh collection" />
 
                             <div class="banner-txt3 promo2310 promo1311 white">
                                 <h1 >
-                                introducing<br />
-                                the yogasmoga vivacity<br/>
-                                mesh collection
-                                <span class="">for an extra kick<br />and a touch of gold</span>
+                                INTRODUCING OUR BASIC TEE<br/>
+                                <span style="font-family: ITCAvantGardeProBk;font-weight: 500;">TO TAKE YOU FROM THE GYM,<br />TO YOGA CLASS,<br/>TO LIFE</span>
+                                <span style="margin-top: 30px !important;font-size:30px; line-height:1;font-family:avantgardegothicitcw01b; text-transform:none">Stay fresh for the moments that <br/>matter in our UP-TO-THE-MINUTE Tee</span>
+
+                                    <a class="learnmore-nam" href="/up-to-the-minute-tee" >
+                                        SHOP IT
+                                    </a>
                                 </h1>
-                                <a style="width: auto !important;" class="learnmore-nam" href="<?php echo $this->getBaseUrl().'women/bottoms/crops/vivacity-crop?color=107'; ?>">
-                                    <img alt="Shop crop " src="<?php echo $this->getSkinUrl('images/homepage/shop-the-vivacity-crop.png') ?>" />
-                                </a>
-                                <a style="width: auto !important;" class="learnmore-nam" href="<?php echo $this->getBaseUrl().'women/bottoms/leggings/vivacity-legging?color=107'; ?>">
-                                    <img alt="Shop crop " src="<?php echo $this->getSkinUrl('images/homepage/shop-the-vivacity-legging.png') ?>" />
-                                </a>
+
                             </div>                           
 
-                        <div id="playBtn">
+                        <!--<div id="playBtn">
                             <div class="sl-desc-handle">
                                 <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
                             </div>
                             <div class="slide-desc" style="">The Vivacity Crop and Leggings bring spunk to your legwear. Signature gold Zari Mesh paneling adds a hint of sparkle. Keep extra cool in a vigorous workout and extra stylish while out on the town.</div>
                         </div>
+                        -->
+
+
                     </li>
 <!--                     <li>
                         <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/WomenSlider1.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
@@ -248,7 +249,11 @@
                 <!-- ProductListing Part -->
 
 
-            <div class="new-arrivals-block" style="width:100%; margin:0 auto;">
+            <div class="new-arrivals-block" style="width:100%; margin:0 auto;position: relative;">
+
+
+                <div class="white-box"></div>
+
                 <?php $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_landing_category_ids')->getValue('plain')), true);
 
                 $categoryId_newcollection = $categoryIds['new_collection'];
@@ -397,7 +402,7 @@
                     <section class="wl-left-block f-left">
                         <div class="top-left-block">
                             <div class="block-content">
-                                <h4 class="cursive-text">A hot new yoga fashion brand launches with Indian roots and modern flair.</h4>
+                                <h4 class="cursive-text">A hot new yoga fashion brand <br/> launches with Indian roots<br/> and modern flair.</h4>
                                 <span class="b-heading top-b-heading">WELL + GOOD</span>
                             </div>
                         </div>
@@ -406,11 +411,12 @@
                         </div>
                     </section>
                     <section class="wl-right-block f-right">
-                        <img src="<?php echo $this->getSkinUrl('images/women/cs-main-img.jpg') ?>" alt="" />
+                        <!--<img src="<?php echo $this->getSkinUrl('images/women/cs-main-img.jpg') ?>" alt="" /> -->
+                        <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/women-page/vivacity-long-sleeve.jpg'?>" alt="" />
                         <div class="block-content">
                                 <span class="b-heading bottom-b-heading">Featured Product</span>
-                                <h4 class="main-img-text">Twistie Tank<span>7 colors</span></h4>
-                                <a href="<?php echo $this->getBaseUrl().'women/tops/tanks-tops/twistie-tank?color=112';?>" class="shopnow-btn">shop now</a>
+                                <h4 class="main-img-text">THE VIVACITY LONG <br/>SLEEVE TEE <!--<span>7 colors</span>--></h4>
+                                <a href="<?php echo $this->getBaseUrl().'vivacity-long-sleeve';?>" class="shopnow-btn">shop now</a>
                             </div>
                     </section>
                     <div class="clear-fix"></div>
@@ -425,20 +431,22 @@
                 ?>
                 <div class="wl-color-story-prd">                    
                     <section class="wl-cs-left-block f-left">
-                        <img src="<?php echo $this->getSkinUrl('images/women/WomenLanding4.jpg') ?>" alt="" />
+                        <!--<img src="<?php echo $this->getSkinUrl('images/women/WomenLanding4.jpg') ?>" alt="" /> -->
+                        <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/women-page/andman-green.jpg'?>" alt="" />
                         <div class="block-content"> 
-                            <span class="b-heading bottom-b-heading">color</span>
-                            <h4 class="main-img-text">Rudhira</h4>
-                            <a href="<?php echo $this->getBaseUrl().'women/tops/sweaters-scarves/rhapsody-drape?color=214';?>" class="shopnow-btn">shop now</a>
+                            <span class="b-heading bottom-b-heading">FEATURED COLOR</span>
+                            <h4 class="main-img-text">ANDAMAN GREEN</h4>
+                            <a href="<?php echo $this->getBaseUrl().'up-to-the-minute-tee';?>" class="shopnow-btn">shop now</a>
                         </div>
                     </section>
                     <section class="wl-cs-right-block f-right">
                         <div class="top-right-block" data-vid-handle="vid-blck-2">
                             <!-- <img src="<?php echo $this->getSkinUrl('images/women/cs-vid-img.jpg') ?>" alt="" /> -->
                         </div>
-                        <div class="bottom-right-block">
+                        <div class="bottom-right-block andman-green">
                             <div class="block-content">
-                                <h4 class="cursive-text">Rudhira is a rich, true red with soft brick tones. It is one of those colors that warms up any outfit a perfect holiday color.</h4>
+                                <h4 class="cursive-text">ANDAMAN GREEN<br/>is a calming blue green that <br/>easily takes you from chill of <br/>winter
+                                 into the new spring.</h4>
                                 <span class="b-heading top-grey-b-heading">ROSE APOSTOLAKOS, DESIGNER</span>
                             </div>
                         </div>                        

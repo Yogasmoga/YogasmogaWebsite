@@ -257,7 +257,7 @@ ul.site-map > li{
 }
 
 .multicolorcont{
-    background: url("../images/new-elements/mcolorbg1.jpg") no-repeat center center transparent;
+    background: url("../images/new-elements/mcolorbg2.jpg") no-repeat center center transparent;
     background-size: 100% 100%;
 }
 
@@ -1972,4 +1972,107 @@ body.mac-os ul.main-menu2 a.main-heading{
     display: inline-block !important;
     vertical-align: middle;
     width: 30px;
+}
+
+/*/////////////////////////////*/
+
+/*
+.inner-text-container {
+    height: auto !important;
+    position: relative;
+}
+
+.inner-text-container .learnmore-nam{
+    display: inline;
+    position: absolute;
+    top: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.learnmore-nam{;
+    height: 47px !important;
+    margin: 30px 0 0 !important;
+    position: relative;
+    float: left;
+}
+.learnmore-nam >img{
+    width:auto !important;
+}
+.inner-text-container .learnmore-nam:nth-child(2){
+    left: 0;
+    float: none;
+}
+.inner-text-container .learnmore-nam:nth-child(3){
+    left: 160px;
+    float: none;
+}
+
+*/
+.banner-txt3.promo1311 {
+    left: 77px !important;
+}
+.flex-active-slide .learnmore-nam ,.flex-active-slide .learnmore-nam:hover,.slides li .learnmore-nam,.slides li .learnmore-nam:hover {
+    background: none repeat scroll 0 0 #b1892f;
+    color: #fff;
+    float: left;
+    font-size: 12px;
+    margin: 25px 20px 0 0 !important;
+    width: 155px;
+    text-align: center;
+    line-height:40px;
+}
+.wait-is-over h1 span:first-child{
+    margin-top:20px !important;
+}
+
+.inner-text-container.wait-is-over span {
+    font-size: 30px;
+    font-family: avantgardegothicitcw01b;
+    text-transform:none;
+    float: left;
+    font-family: AvantGardeGothicITCW01B;
+    font-size: 30px;
+    width: 100%;
+    line-height: 40px;
+}
+/*
+.share-strip, .new-arrivals-block{
+    opacity:1;
+}
+*/
+.top-grey-b-heading {
+    border-top: 1px solid #fff !important;
+}
+
+.block-content.contentSlider .b-heading.bottom-b-heading {
+    margin-bottom: 30px;
+    width: 42%;
+}
+
+/*///////////////////////////////////////*/
+
+.new-arrivals-block{
+    padding-bottom:0;
+}
+
+div.new-arrivals-block{
+    z-index:0;
+    position:relative;
+}
+
+
+.white-box {
+    background: none repeat scroll 0 0 #fff;
+    bottom: 0;
+    height: 100px;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+
+.quick-view .prd-details {
+    padding: 50px 0 10px;
+}
+.bottom-right-block.andman-green {
+    background: none repeat scroll 0 0 #54acaa;
 }
