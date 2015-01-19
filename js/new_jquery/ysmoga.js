@@ -1,11 +1,12 @@
-	jQuery(window).load(function($){
+    	jQuery(window).load(function($){
 	homeContent();
 	homeContent1();
 	compressBoxHeight();
 	colorBoxHeight();
 	factorypart();
-	namaskarpart();		
-	jQuery(window).trigger("resize");
+	namaskarpart();
+            jQuery(".share-strip, .new-arrivals-block").animate({"opacity":1},200);
+            jQuery(window).trigger("resize");
 	// factorythreadHeight();
 
 	setTimeout(function(){
