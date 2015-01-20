@@ -1904,7 +1904,7 @@ ul.new-arrivals a.quick-view{display: none;}
 .wl-feat-prd,.wl-color-story-prd{opacity: 0; overflow: hidden;}
 .wl-right-block,.top-left-block,.wl-cs-left-block,.bottom-right-block{position: relative;;}
 .block-content{position: absolute; width: 100%; top:0}
-.block-content h4.cursive-text{font-family: FreightTextProBook-Italic; font-size: 24px; color: #fff; font-weight: normal; display: block; margin-bottom: 14px; line-height: normal; letter-spacing: -1px; width: 85%; margin-left: auto; margin-right: auto;}
+.block-content h4.cursive-text{font-family: FreightTextProBook-Italic; font-size: 24px; color: #fff; font-weight: normal; display: block; margin-bottom: 14px; line-height: normal; letter-spacing: 0.1px; width: 85%; margin-left: auto; margin-right: auto;}
 .block-content h4.main-img-text{font-family: ITCAvantGardeProMd; color: #fff; font-weight: normal; display: block; margin-top: 14px; text-transform: uppercase; letter-spacing: -0.5px;}
 .block-content h4.main-img-text span{display: block;}
 
@@ -2103,7 +2103,7 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .contentSlider h2{font-size: 13px; line-height: 54px;}
     .block-content h4.main-img-text span,
     .contentSlider h3 span{font-size: 24px; line-height: 50px; }
-    .block-content h4.cursive-text{font-size: 36px; line-height: 40px;}
+    .block-content h4.cursive-text{font-size: 37px; line-height: 40px;}
     .ctext{font-size: 40px; line-height: 50px;}
     .ctext .dash-white {
         border-width: 2px;
