@@ -2085,3 +2085,23 @@ div.new-arrivals-block{
 .top-left-block.purple{
     background: #5a0a5f;
 }
+
+
+/*////////////////////////////////////////*/
+.tippy-toe h1 span {
+    text-align: center !important;
+}
+.tippy-toe h1 {
+    text-align: center !important;
+    width: 100% !important;
+}
+.banner-txt3.promo2310.promo1311.tippy-toe {
+    box-sizing: border-box;
+    left: 0 !important;
+    text-align: center;
+    width: 100%;
+}
+.tippy-toe img {
+    margin: 0 auto !important;
+    width: auto !important;
+}
