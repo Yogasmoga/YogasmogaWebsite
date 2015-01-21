@@ -2105,3 +2105,11 @@ div.new-arrivals-block{
     margin: 0 auto !important;
     width: auto !important;
 }
+
+.tippy-toe a, .tippy-toe a:hover {
+    color: #555;
+}
+
+.tippy-toe span img {
+    display: inline-block !important;
+}
