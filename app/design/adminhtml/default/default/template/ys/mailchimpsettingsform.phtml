@@ -1,0 +1,27 @@
+<form action="<?php echo $this->getUrl('*/*/saveMailchimpSettings')?>" method="post">
+    <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+    <h3>Mailchimp Settings</h3>
+
+    <br/>
+
+    <table style="width:500px">
+        <tr>
+            <td style="width:150px;">API Key</td>
+            <td><input type="text" name="apikey" style="width:100%;padding:4px; border:solid 1px rgb(200,200,200)" value="<?php echo Mage::registry('apikey');?>"/></td>
+        </tr>
+        <tr><td colspan="2">&nbsp;</td></tr>
+        <tr>
+            <td style="width:150px;">List ID</td>
+            <td><input type="text" name="listid" style="width:100%;padding:4px; border:solid 1px rgb(200,200,200)" value="<?php echo Mage::registry('listid');?>"/></td>
+        </tr>
+        <tr><td colspan="2">&nbsp;</td></tr>
+        <tr>
+            <td style="width:150px;">&nbsp;</td>
+            <td><input type="submit" value="Save"/></td>
+        </tr>
+    </table>
+
+</form>
+
+<br/>
+<div><h4><?php echo Mage::registry('message');?></h4></div>

@@ -30,28 +30,28 @@
                 <class>Ys_Mod_Model</class>
             </mod>
         </models>
-<!--
-        <events>
-            <customer_register_success>
-                <observers>
-                    <Ys_Mod_customer_register_success>
-                        <type>singleton</type>
-                        <class>Ys_Mod_Model_Observer</class>
-                        <method>customerRegisterSuccess</method>
-                    </Ys_Mod_customer_register_success>
-                </observers>
-            </customer_register_success>
-            <customer_address_save_after>
-                <observers>
-                    <Ys_Mod_customer_register_success>
-                        <type>singleton</type>
-                        <class>Ys_Mod_Model_Observer</class>
-                        <method>customerAddressSaveAfter</method>
-                    </Ys_Mod_customer_register_success>
-                </observers>
-            </customer_address_save_after>
-        </events>
--->
+
+        <!--<events>-->
+            <!--<customer_register_success>-->
+                <!--<observers>-->
+                    <!--<Ys_Mod_customer_register_success>-->
+                        <!--<type>singleton</type>-->
+                        <!--<class>Ys_Mod_Model_Observer</class>-->
+                        <!--<method>customerRegisterSuccess</method>-->
+                    <!--</Ys_Mod_customer_register_success>-->
+                <!--</observers>-->
+            <!--</customer_register_success>-->
+            <!--<customer_address_save_after>-->
+                <!--<observers>-->
+                    <!--<Ys_Mod_customer_register_success>-->
+                        <!--<type>singleton</type>-->
+                        <!--<class>Ys_Mod_Model_Observer</class>-->
+                        <!--<method>customerAddressSaveAfter</method>-->
+                    <!--</Ys_Mod_customer_register_success>-->
+                <!--</observers>-->
+            <!--</customer_address_save_after>-->
+        <!--</events>-->
+
     </global>
 
     <frontend>
@@ -91,13 +91,18 @@
                     <menu_index module="mod">
                         <title>Mailchimp Settings</title>
                         <sort_order>0</sort_order>
-                        <action>ys/adminhtml_custom/index</action>
+                        <action>ys/adminhtml_custom/mailchimpSettings</action>
                     </menu_index>
                     <menu_unsubscribe module="mod">
                         <title>Newsletter Unsubscribe</title>
                         <sort_order>1</sort_order>
-                        <action>ys/adminhtml_custom/unsubscribe</action>
+                        <action>ys/adminhtml_custom/unsubscribeFromNewsletter</action>
                     </menu_unsubscribe>
+                    <menu_uploadproducts module="mod">
+                        <title>Upload Products</title>
+                        <sort_order>2</sort_order>
+                        <action>ys/adminhtml_custom/uploadProducts</action>
+                    </menu_uploadproducts>
                 </children>
             </mod>
         </menu>
@@ -114,10 +119,13 @@
                             <sort_order>1000</sort_order>
                             <children>
                                 <menu_index translate="title">
-                                    <title>Settings</title>
+                                    <title>Mailchimp Settings</title>
                                 </menu_index>
                                 <menu_unsubscribe translate="title">
-                                    <title>Unsubscribe</title>
+                                    <title>Newsletter Unsubscribe</title>
+                                </menu_unsubscribe>
+                                <menu_unsubscribe translate="title">
+                                    <title>Upload Products</title>
                                 </menu_unsubscribe>
                             </children>
                         </mod>
@@ -137,16 +145,16 @@
         </layout>
     </adminhtml>
 
-    <crontab>
-        <jobs>
-            <ys_mod>
-                <schedule>
-                    <cron_expr>1 5 * * *</cron_expr>
-                </schedule>
-                <run>
-                    <model>mod/observer::sync</model>
-                </run>
-            </ys_mod>
-        </jobs>
-    </crontab>
+    <!--<crontab>-->
+        <!--<jobs>-->
+            <!--<ys_mod>-->
+                <!--<schedule>-->
+                    <!--<cron_expr>1 5 * * *</cron_expr>-->
+                <!--</schedule>-->
+                <!--<run>-->
+                    <!--<model>mod/observer::sync</model>-->
+                <!--</run>-->
+            <!--</ys_mod>-->
+        <!--</jobs>-->
+    <!--</crontab>-->
 </config> 

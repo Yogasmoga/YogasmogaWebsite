@@ -1,167 +1,29 @@
 <?php
-class Ys_Mod_Adminhtml_CustomController extends Mage_Adminhtml_Controller_Action
+class Ys_Mod_Adminhtml_ProductController extends Mage_Adminhtml_Controller_Action
 {
-    public function mailchimpSettingsAction()
-    {
-        $myfile = fopen("mailchimp_list.txt", "r");
-        $str = fgets($myfile);
-        fclose($myfile);
-
-        if (isset($str)) {
-            $ar = explode(",", $str);
-
-            if (is_array($ar) && count($ar) > 0) {
-                $apikey = $ar[0];
-                $listid = $ar[1];
-            } else {
-                $apikey = "";
-                $listid = "";
-            }
-        } else {
-            $apikey = "";
-            $listid = "";
-        }
-
-        Mage::register('apikey', $apikey);
-        Mage::register('listid', $listid);
-
-        $message = Mage::getSingleton('core/session')->getMessage();
-
-        if (isset($message) && strlen($message) > 0)
-            ;
-        else
-            $message = "";
-
-        Mage::register('message', $message);
-
-        $this->loadLayout();
-        $this->_title($this->__("Mailchimp Settings"));
-        $this->renderLayout();
-
-        Mage::getSingleton('core/session')->setMessage("");
-    }
-
-    public function saveMailchimpSettingsAction()
-    {
-        $data = $this->getRequest()->getPost();
-
-        $apikey = $data['apikey'];
-        $listid = $data['listid'];
-
-        $myfile = fopen("mailchimp_list.txt", "w");
-        fwrite($myfile, "$apikey,$listid");
-        fclose($myfile);
-
-        $message = 'Mailchimp settings saved successfully.';
-        Mage::getSingleton('core/session')->setMessage($message);
-
-        $this->_redirect('mod/adminhtml_custom/mailchimpsettings');
-    }
-
-    public function unsubscribeFromNewsletterAction()
-    {
-
-        $message = Mage::getSingleton('core/session')->getUnsubscribemessage();
-
-        if (isset($message) && strlen($message) > 0)
-            ;
-        else
-            $message = "";
-
-        Mage::register('unsubscribemessage', $message);
-
-        $this->loadLayout();
-        $this->_title($this->__("Unsubscribe Customer"));
-        $this->renderLayout();
-
-        Mage::getSingleton('core/session')->setUnsubscribemessage("");
-    }
-
-    public function unsubscribeCustomerAction()
-    {
-        $data = $this->getRequest()->getPost();
-
-        $email = $data['email'];
-
-        $subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($email);
-        if (!$subscriber->getId()
-            || $subscriber->getStatus() == Mage_Newsletter_Model_Subscriber::STATUS_UNSUBSCRIBED
-            || $subscriber->getStatus() == Mage_Newsletter_Model_Subscriber::STATUS_NOT_ACTIVE
-        ) {
-
-            $message = 'Email does not exist as subscriber';
-            Mage::getSingleton('core/session')->setUnsubscribemessage($message);
-        } else {
-            $subscriber->setStatus(Mage_Newsletter_Model_Subscriber::STATUS_UNSUBSCRIBED);
-            $subscriber->save();
-
-            $myfile = fopen("mailchimp_list.txt", "r");
-            $str = fgets($myfile);
-            fclose($myfile);
-
-            $ar = explode(",", $str);
-
-            $api_key = $ar[0];
-            $list_id = $ar[1];
-
-            include("mailchimpapi/Drewm/MailChimp.php");
-
-            $mailChimp = new Drewm\MailChimp($api_key);
-
-            $result = $mailChimp->call('lists/unsubscribe', array(
-                'id' => $list_id,
-                'email' => array('email' => $email),
-                'delete_member' => false,
-                'send_goodbye' => false,
-                'send_notify' => false,
-            ));
-
-            $message = 'Customer unsubscribed successfully.';
-            Mage::getSingleton('core/session')->setUnsubscribemessage($message);
-
-            $this->_redirect('mod/adminhtml_custom/unsubscribe');
-        }
-    }
-
     public function uploadProductsAction(){
         $this->loadLayout();
         $this->_title($this->__("Upload Products"));
         $this->renderLayout();
     }
 
-    /********************* product upload code **********************/
+/********************* product upload code **********************/
 
     public function saveProductsAction(){
-
-//        $uploader = new Varien_File_Uploader('file');
-////        $uploader->setAllowedExtensions(array('json'));
-////        $uploader->setAllowRenameFiles(false);
-////        $uploader->setFilesDispersion(false);
-//        $path = Mage::getBaseDir('uploads');
-//        $filename = $_FILES['file']['name'];
-//        $uploader->save($path, $filename);
-//
-//        if(isset($_FILES["file"])) {
-//            $target_dir = getcwd();
-//            $target_file = $target_dir . basename($_FILES["file"]["name"]);
-//
-//            if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-//                $filename = $_FILES["file"]["name"];
-//                echo "done";
-//            }
-//        }
-//        else{
-//            echo "No file provided";
-//            die();
-//        }
-
-//        $filename = $path . $filename;
-
-        $target_file = Mage::getBaseDir() . "\\temp\\" . basename($_FILES["file"]["name"]);
-
-        $filename = $target_file;
+echo "hi";
+        die();
+        $uploader = new Varien_File_Uploader('file');
+        $uploader->setAllowedExtensions(array('json'));
+        $uploader->setAllowRenameFiles(false);
+        $uploader->setFilesDispersion(false);
+        $path = Mage::getBaseDir('media');
+        $filename = $_FILES['file']['name'];
+        $uploader->save($path, $filename);
 
         if(isset($_FILES["file"])) {
+            $target_dir = getcwd();
+            $target_file = $target_dir . basename($_FILES["file"]["name"]);
+
             if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
                 $filename = $_FILES["file"]["name"];
                 echo "done";
@@ -171,6 +33,8 @@ class Ys_Mod_Adminhtml_CustomController extends Mage_Adminhtml_Controller_Action
             echo "No file provided";
             die();
         }
+
+        $filename = $path . $filename;
 
         $configurable_products      = $this->readConfigurable($filename);
         $product_colors             = $this->readProductColors($filename);
@@ -192,10 +56,7 @@ class Ys_Mod_Adminhtml_CustomController extends Mage_Adminhtml_Controller_Action
     }
 
     function readConfigurable($filename){
-        //require_once Mage::getBaseDir() . '\\lib\\PHPExcel\\IOFactory.php';
-
-        $includePath = Mage::getBaseDir(). "/lib/PhpExcel/Reader";
-        set_include_path(get_include_path() . PS . $includePath);
+        require_once 'PHPExcel/IOFactory.php';
 
         $objPHPExcel = PHPExcel_IOFactory::load($filename);
 
@@ -261,12 +122,12 @@ class Ys_Mod_Adminhtml_CustomController extends Mage_Adminhtml_Controller_Action
         }
 
         unset($worksheet);
-Mage::log('configurable read');
+
         return $configurable_products;
     }
 
     function readProductColors($filename){
-        require_once Mage::getBaseDir() . '\\lib\\PHPExcel\\IOFactory.php';
+        require_once 'PHPExcel/IOFactory.php';
 
         $objPHPExcel = PHPExcel_IOFactory::load($filename);
 
@@ -295,7 +156,7 @@ Mage::log('configurable read');
     }
 
     function readColorsToAdd($filename){
-        require_once Mage::getBaseDir() . '\\lib\\PHPExcel\\IOFactory.php';
+        require_once 'PHPExcel/IOFactory.php';
 
         $objPHPExcel = PHPExcel_IOFactory::load($filename);
 
@@ -326,7 +187,7 @@ Mage::log('configurable read');
     }
 
     function readProductImages($filename){
-        require_once Mage::getBaseDir() . '\\lib\\PHPExcel\\IOFactory.php';
+        require_once 'PHPExcel/IOFactory.php';
 
         $objPHPExcel = PHPExcel_IOFactory::load($filename);
 
@@ -365,7 +226,7 @@ Mage::log('configurable read');
     }
 
     function readImageCaptions($filename){
-        require_once Mage::getBaseDir() . '\\lib\\PHPExcel\\IOFactory.php';
+        require_once 'PHPExcel/IOFactory.php';
 
         $objPHPExcel = PHPExcel_IOFactory::load($filename);
 
@@ -414,7 +275,7 @@ Mage::log('configurable read');
     }
 
     function readAssociatedProducts($filename){
-        require_once Mage::getBaseDir() . '\\lib\\PHPExcel\\IOFactory.php';
+        require_once 'PHPExcel/IOFactory.php';
 
         $objPHPExcel = PHPExcel_IOFactory::load($filename);
 

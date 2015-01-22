@@ -1,0 +1,22 @@
+<form action="<?php echo $this->getUrl('*/*/unsubscribeCustomer')?>" method="post">
+    <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+    <h3>Unsubscribe Customer</h3>
+
+    <br/>
+
+    <table style="width:500px">
+        <tr>
+            <td style="width:150px;">Email</td>
+            <td><input type="text" name="email" style="width:100%;padding:4px; border:solid 1px rgb(200,200,200)" value=""/></td>
+        </tr>
+        <tr><td colspan="2">&nbsp;</td></tr>
+        <tr>
+            <td style="width:150px;">&nbsp;</td>
+            <td><input type="submit" value="Unsubscribe"/></td>
+        </tr>
+    </table>
+
+</form>
+
+<br/>
+<div><h4><?php echo Mage::registry('unsubscribemessage');?></h4></div>

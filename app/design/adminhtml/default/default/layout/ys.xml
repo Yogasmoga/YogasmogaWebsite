@@ -1,15 +1,21 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
-    <mod_adminhtml_custom_index>
+    <mod_adminhtml_custom_mailchimpsettings>
         <reference name="content">
-            <block type="mod/adminhtml_custom" name="custom_index" template="ys/settingsform.phtml"/>
+            <block type="mod/adminhtml_custom" name="custom_mailchimpsettings" template="ys/mailchimpsettingsform.phtml"/>
         </reference>
-    </mod_adminhtml_custom_index>
+    </mod_adminhtml_custom_mailchimpsettings>
 
-    <mod_adminhtml_custom_unsubscribe>
+    <mod_adminhtml_custom_unsubscribefromnewsletter>
         <reference name="content">
-            <block type="mod/adminhtml_custom" name="custom_unsubscribe" template="ys/unsubscribeform.phtml"/>
+            <block type="mod/adminhtml_custom" name="custom_unsubscribefromnewsletter" template="ys/unsubscribefromnewsletterform.phtml"/>
         </reference>
-    </mod_adminhtml_custom_unsubscribe>
+    </mod_adminhtml_custom_unsubscribefromnewsletter>
+
+    <mod_adminhtml_custom_uploadproducts>
+        <reference name="content">
+            <block type="mod/adminhtml_custom" name="custom_uploadproducts" template="ys/uploadproductsform.phtml"/>
+        </reference>
+    </mod_adminhtml_custom_uploadproducts>
 
 </layout>
