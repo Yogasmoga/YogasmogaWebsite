@@ -1919,8 +1919,11 @@ ul.new-arrivals a.quick-view{display: none;}
 /*
 .wl-cs-right-block .top-right-block{background:url(../images/women/WomenLanding3.jpg) no-repeat; background-size: 100% 100%;}
 .wl-left-block .bottom-left-block{background: url(../images/women/dum5.jpg) no-repeat; background-size: 100% 100%;} */
-.wl-cs-right-block .top-right-block{background:url(../images/women/andman-green-featured-image-new.jpg) no-repeat; background-size: 100% 100%;}
+/*.wl-cs-right-block .top-right-block{background:url(../images/women/andman-green-featured-image-new.jpg) no-repeat; background-size: 100% 100%;}*/
 /*.wl-left-block .bottom-left-block{background: url(../images/women/featured-image.jpg) no-repeat; background-size: 100% 100%;}*/
+
+.wl-cs-right-block .top-right-block{background:url(../images/women/cloth-look.jpg) no-repeat; background-size: 100% 100%;}
+
 .wl-left-block .bottom-left-block{background: url(../images/women/featured-image-new.jpg) no-repeat; background-size: 100% 100%;}
 
 

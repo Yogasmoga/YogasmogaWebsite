@@ -2085,6 +2085,12 @@ div.new-arrivals-block{
 .top-left-block.purple{
     background: #5a0a5f;
 }
+.bottom-right-block.purple{
+    background: #5a0a5f;
+}
+.top-left-block.brown-green{
+    background: #787e6a;
+}
 
 
 /*////////////////////////////////////////*/
@@ -2104,4 +2110,12 @@ div.new-arrivals-block{
 .tippy-toe img {
     margin: 0 auto !important;
     width: auto !important;
+}
+
+.tippy-toe a, .tippy-toe a:hover {
+    color: #555;
+}
+
+.tippy-toe span img {
+    display: inline-block !important;
 }
