@@ -68,15 +68,20 @@ class Ys_Mod_Model_Observer{
                 $state = $single["STATE"];
                 $country = $single["COUNTRY"];
 
-                $result = $mailChimp->call('lists/subscribe', array(
-                    'id' => $list_id,
-                    'email' => array('email' => $email),
-                    'merge_vars' => array('FNAME' => $fname, 'LNAME' => $lname, 'STATE' => $state, 'COUNTRY' => $country),
-                    'double_optin' => false,
-                    'update_existing' => true,
-                    'replace_interests' => false,
-                    'send_welcome' => false,
-                ));
+                $subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($email);
+
+                if($subscriber->isSubscribed()) {
+
+                    $result = $mailChimp->call('lists/subscribe', array(
+                        'id' => $list_id,
+                        'email' => array('email' => $email),
+                        'merge_vars' => array('FNAME' => $fname, 'LNAME' => $lname, 'STATE' => $state, 'COUNTRY' => $country),
+                        'double_optin' => false,
+                        'update_existing' => true,
+                        'replace_interests' => false,
+                        'send_welcome' => false,
+                    ));
+                }
             }
 
 			Mage::log("Mailchimp Synchronize Task Completed at : " . date("Y-m-d h:i:s"));
@@ -85,7 +90,6 @@ class Ys_Mod_Model_Observer{
 			Mage::log("I guess api key or list id are invalid");
     }
 
-/*
     public function customerRegisterSuccess(Varien_Event_Observer $observer)
     {
         $event = $observer->getEvent();
@@ -208,7 +212,6 @@ class Ys_Mod_Model_Observer{
             }
         }
     }
-*/
 }
 
 ?>
