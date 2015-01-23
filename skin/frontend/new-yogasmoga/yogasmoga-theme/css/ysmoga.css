@@ -2110,6 +2110,7 @@ div.new-arrivals-block{
 .tippy-toe img {
     margin: 0 auto !important;
     width: auto !important;
+    display: inline !important;
 }
 
 .tippy-toe a, .tippy-toe a:hover {
@@ -2118,4 +2119,7 @@ div.new-arrivals-block{
 
 .tippy-toe span img {
     display: inline-block !important;
+}
+.banner-txt3.promo2310.promo1311.tippy-toe.images{
+    width:250px !important; left: 50% !important; margin-left: -125px !important; top:195px;
 }
