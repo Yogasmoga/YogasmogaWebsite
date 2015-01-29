@@ -66,7 +66,10 @@
   position: absolute;
   right: 10%;
 }
-.bx-pager{background:url(../images/expsep.gif) 100% 50% no-repeat; height:15px; display:block;}
+.bx-pager{
+    /*background:url(../images/expsep.gif) 100% 50% no-repeat;*/
+    height:15px; display:block;
+}
 .bx-pager-item {
   display: block;
   float: left;
