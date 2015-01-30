@@ -2091,7 +2091,9 @@ div.new-arrivals-block{
 .top-left-block.brown-green{
     background: #787e6a;
 }
-
+.top-left-block.dark-red {
+    background: #871621;
+}
 
 /*////////////////////////////////////////*/
 .tippy-toe h1 span {
