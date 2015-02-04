@@ -271,7 +271,7 @@ function changeFabric(current_color){
 
             var fabric_color = jQuery(this).attr('rel').toLowerCase();
 
-            if(current_color==fabric_color){
+            if(current_color.toLowerCase()==fabric_color){
                 jQuery(this).show();
                 jQuery(".mainfabric").hide();
                 found = true;
