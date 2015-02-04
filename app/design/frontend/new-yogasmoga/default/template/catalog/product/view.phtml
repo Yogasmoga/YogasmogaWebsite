@@ -970,7 +970,7 @@ if ($_product->getAttributeText('canzoomimage') == "yes") {
             </table>
         </div>
 
-        <?php if (!$optionAvailable) {
+        <?php if ($optionAvailable===0) {
             $includeoption = "style='display:none'";
         } ?>
 
@@ -1884,6 +1884,7 @@ if ($ftimage != "" && $ftimagesmall != "") {
 <!-- onZoomProductImage -->
 <script type="text/javascript">
     _isOnProductDetailPage = true;
+    bra_cup_insert_count = parseInt("<?php echo $optionAvailable; ?>");
 
 //    window.onload = initFabric;
 

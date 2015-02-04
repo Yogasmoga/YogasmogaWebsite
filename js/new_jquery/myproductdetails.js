@@ -5,6 +5,7 @@ var currentColorObject;     // to store what color is clicked
 var fabrics = Array();
 var bra_cup_insert_value_array = Array();
 var bra_cup_insert_color_array = Array();
+var bra_cup_insert_count = 0;
 
 jQuery(window).load(function($){
     selectfirstsizeonload();
@@ -301,7 +302,7 @@ function changeBraCupInsert(current_color){
         }
     }
 
-    if(!hide)
+    if(!hide && bra_cup_insert_count>0)
         jQuery("#includeoption").show();
 }
 
