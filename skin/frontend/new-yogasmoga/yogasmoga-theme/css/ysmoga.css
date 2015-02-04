@@ -2238,3 +2238,83 @@ div.new-arrivals-block{
 .gridfull{
     float: left;
 }
+.contentSlider.mistext .large-text {
+    border-bottom:none;
+    color: #fff !important;
+    font-family: AvantGardeGothicMedium;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 40px !important;
+}
+.contentSlider.mistext .large-text span{
+    font-size: 19px;
+    line-height:39px;
+    color: #fff;
+    font-family: AvantGardeGothicITCW01B;
+    font-weight: normal;
+}
+
+
+
+@media screen and (min-width:1600px){
+    /* **********************HOME PAGE ********************* **/
+    .contentSlider .small-text {
+        font-size: 14px !important;
+    }
+    .contentSlider .large-text{
+        font-size: 50px !important;
+        line-height: 53px !important;
+    }
+    .contentSlider p.large-text span {
+        font-size: 50px !important;
+        line-height: 53px !important;
+    }
+    .contentSlider.mistext .large-text {
+        font-size: 40px !important;
+        line-height: 40px !important;
+    }
+    .contentSlider.mistext .large-text span {
+        font-size: 22px !important;
+        line-height: 42px !important;
+    }
+    #bucket1_slider .bucket-slide h1, #bucket1_slider .bucket-slide .bold, #bucket1_slider .bucket-slide .light, #bucket1_slider .bucket-slide span{
+        font-size: 50px;
+        line-height: 53px;
+    }
+    #bucket1_slider .over-the-slide a{
+        line-height: 50px;
+    }
+
+    /* ******************************************************* **/
+}
+@media screen and (min-width: 1401px) and (max-width: 1599px) {
+    /* **********************HOME PAGE ********************* **/
+    .contentSlider .small-text {
+        font-size: 14px !important;
+    }
+    .contentSlider .large-text{
+        font-size: 45px !important;
+        line-height: 48px !important;
+    }
+    .contentSlider p.large-text span {
+        font-size: 45px !important;
+        line-height: 48px !important;
+    }
+    .contentSlider.mistext .large-text {
+        font-size: 45px !important;
+        line-height: 45px !important;
+    }
+    .contentSlider.mistext .large-text span {
+        font-size: 22px !important;
+        line-height: 42px !important;
+    }
+    #bucket1_slider .bucket-slide h1, #bucket1_slider .bucket-slide .bold, #bucket1_slider .bucket-slide .light, #bucket1_slider .bucket-slide span{
+        font-size: 45px;
+        line-height: 48px;
+    }
+    #bucket1_slider .over-the-slide a{
+        line-height: 45px;
+    }
+
+    /* ******************************************************* **/
+}
