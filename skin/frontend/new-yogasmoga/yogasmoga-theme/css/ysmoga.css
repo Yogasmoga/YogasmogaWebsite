@@ -2096,32 +2096,145 @@ div.new-arrivals-block{
 }
 
 /*////////////////////////////////////////*/
-.tippy-toe h1 span {
-    text-align: center !important;
+
+
+/* ***********************HOME PAGE SLIDER****************************** */
+
+#bucket1_slider .bucket-slide {
+    position: relative;
+    color:#555555;
+    height:100%;
+    text-align: left;
 }
-.tippy-toe h1 {
-    text-align: center !important;
-    width: 100% !important;
+#bucket1_slider .bucket-slide h1{
+    font-size: 40px;
+    line-height: 43px;
+    margin: 0px;
+    font-family:"AvantGardeGothicITCW01D";
+    color:#555555;
 }
-.banner-txt3.promo2310.promo1311.tippy-toe {
+#bucket1_slider .bucket-slide .bold{
+    font-size: 40px;
+    line-height: 43px;
+    margin: 0px;
+    font-family:"AvantGardeGothicITCW01D";
+}
+#bucket1_slider .bucket-slide p {
+    margin: 0;
+}
+#bucket1_slider .bucket-slide .light{
+    font-size: 40px;
+    line-height: 43px;
+    margin: 0px;
+    font-family:"AvantGardeGothicITCW01X";
+    color:#555555;
+}
+#bucket1_slider .bucket-slide span{
+    font-size: 40px;
+    line-height: 43px;
+    margin: 0px;
+    font-family:"AvantGardeGothicITCW01X";
+    color:#555555;
+}
+#bucket1_slider .over-the-slide.tippy-toe p > img {
+    display: inline-block;
+    margin: 0 auto;
+    width: auto;
+}
+#bucket1_slider .over-the-slide.white h1{
+    color:#fff;
+}
+#bucket1_slider .over-the-slide.white span{
+    color:#fff;
+}
+#bucket1_slider .over-the-slide {
+    padding: 80px 77px !important;
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
     box-sizing: border-box;
-    left: 0 !important;
+    height: 100%;
+}
+#bucket1_slider .over-the-slide.tippy-toe p{
     text-align: center;
+}
+#bucket1_slider .over-the-slide.tippy-toe p > a{
+    background: none;
+    float:none;
+    margin: 0 auto;
+}
+#bucket1_slider .over-the-slide.tippy-toe p > a img{
+    width: auto;
+    display: inline;
+}
+#bucket1_slider .over-the-slide a{
+    background: none repeat scroll 0 0 #b1892f;
+    color: #fff;
+    float: left;
+    font-size: 12px;
+    line-height: 40px;
+    margin: 25px 20px 0 0 !important;
+    text-align: center;
+    width: 155px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: AvantGardeGothicITCW01D;
+}
+#bucket1_slider .text-align-middle{
+    text-align: center;
+}
+#bucket1_slider .classic-tee{
+    position: absolute;
+    bottom: 0;
+}
+#bucket1_slider .classic-tee a{
+    width: auto;
+    padding: 0 15px !important;
+}
+#bucket1_slider .tippy-toe-external-links{
+    position: absolute;
+    width:250px !important;
+    left: 50% !important;
+    margin-left: -125px !important;
+    top:195px;
+}
+#bucket1_slider .tippy-toe-external-links img{
+    width: auto !important;
+    display:inline;
+}
+#bucket1_slider .over-the-slide.text-align-middle.tippy-toe {
+    height: auto;
+    padding: 80px 0 0 !important;
     width: 100%;
 }
-.tippy-toe img {
-    margin: 0 auto !important;
-    width: auto !important;
-    display: inline !important;
+/* ***********************BUCKET-2 SLIDER @ HOMEPAGE *********************** */
+.contentSlider .small-text, .gridslider1 .large-text{
+    color: #fff !important;
 }
-
-.tippy-toe a, .tippy-toe a:hover {
-    color: #555;
+.contentSlider .small-text {
+    border-bottom: 1px solid #fff;
+    font-family: gothambold;
+    font-weight: normal;
+    line-height: normal;
+    margin: auto auto 2.05499%;
+    padding-bottom: 8px;
+    width: 50%;
+    font-size: 12px;
 }
-
-.tippy-toe span img {
-    display: inline-block !important;
+.contentSlider .large-text{
+    font-size: 40px;
+    line-height: 43px;
 }
-.banner-txt3.promo2310.promo1311.tippy-toe.images{
-    width:250px !important; left: 50% !important; margin-left: -125px !important; top:195px;
+.contentSlider p.large-text{
+    font-family: AvantGardeGothicMedium;
+    color: #fff;
+}
+.contentSlider p.large-text span{
+    font-size: 40px;
+    line-height: 43px;
+    font-family: AvantGardeGothicITCW01X;
+}
+.gridfull{
+    float: left;
 }
