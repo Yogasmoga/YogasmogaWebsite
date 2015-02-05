@@ -275,6 +275,7 @@ function changeFabric(current_color){
                 jQuery(this).show();
                 jQuery(".mainfabric").hide();
                 found = true;
+                return;
             }
         });
 
