@@ -2168,6 +2168,7 @@ div.new-arrivals-block{
     width: auto;
     display: inline;
 }
+/*
 #bucket1_slider .over-the-slide a{
     background: none repeat scroll 0 0 #b1892f;
     color: #fff;
@@ -2180,18 +2181,26 @@ div.new-arrivals-block{
     text-transform: uppercase;
     text-decoration: none;
     font-family: AvantGardeGothicITCW01D;
+}*/
+#bucket1_slider .over-the-slide .learn-more{
+    text-transform: uppercase;
+    padding-bottom: 3px !important;
+    color: #555 !important;
+}
+#bucket1_slider .over-the-slide .learn-more.white{
+    color: #fff !important;
 }
 #bucket1_slider .text-align-middle{
     text-align: center;
 }
-#bucket1_slider .classic-tee{
+#bucket1_slider .bottom{
     position: absolute;
     bottom: 0;
 }
-#bucket1_slider .classic-tee a{
+/*#bucket1_slider .bottom a{
     width: auto;
     padding: 0 15px !important;
-}
+}*/
 #bucket1_slider .tippy-toe-external-links{
     position: absolute;
     width:250px !important;
@@ -2253,6 +2262,41 @@ div.new-arrivals-block{
     font-family: AvantGardeGothicITCW01B;
     font-weight: normal;
 }
+#bucket1_slider .bucket-slide .bold.date {
+    font-size: 18px;
+    line-height: normal;
+    font-family: avantgardegothicmedium;
+}
+#bucket1_slider .bucket-slide .over-the-slide .white p,#bucket1_slider .bucket-slide .over-the-slide .white p span{
+    color: #fff !important;
+}
+
+#bucket1_slider .over-the-slide .bottom {
+    bottom: 80px;
+    box-sizing: border-box;
+    left: 0;
+    width: 100%;
+}
+#bucket1_slider .over-the-slide.made-in-usa .bottom{
+    font-size:18px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
