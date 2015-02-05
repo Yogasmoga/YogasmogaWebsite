@@ -1,38 +1,5 @@
-﻿<?php
-/**
- *
- * Magento
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License (AFL 3.0)
- * that is bundled with this package in the file LICENSE_AFL.txt.
- * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/afl-3.0.php
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade Magento to newer
- * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
- *
- * @category design
- * @package base_default
- * @copyright Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
- * @license http://opensource.org/licenses/afl-3.0.php Academic Free License (AFL 3.0)
- */
-?>
-<?php
-/**
- * Template for Mage_Page_Block_Html
- */
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>"
-      lang="<?php echo $this->getLang() ?>">
+﻿<!DOCTYPE HTML>
+<html>
 <meta name="viewport" content="width=device-width">
 <head>
     <?php
@@ -45,7 +12,7 @@
         <meta property="og:image"
               content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb03.png"/>
         <meta property="og:title" content="YOGASMOGA | Did You Take a Breath Today?"/>
-        <meta property="og:description" content="We are YOGASMOGA, We make things for life - One breath at a time."/>
+        <meta property="og:description" content="YOGASMOGA makes technical performance clothes for women & men for yoga, running, spin, workouts, and more. Free shipping to US and Canada."/>
     <?php
     } else {
         ?>
@@ -56,7 +23,7 @@
         <meta property="og:image"
               content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/Yogasmoga_op.jpeg"/>
         <meta property="og:title" content="YOGASMOGA"/>
-        <meta property="og:description" content="We are YOGASMOGA. We make things for LIFE. One breath at a time."/>
+        <meta property="og:description" content="YOGASMOGA makes technical performance apparel for women & men for yoga, running, spin, workouts, and more. Free shipping to US and Canada."/>
     <?php
     }
     ?>
@@ -119,546 +86,155 @@
 <!-- pagewrapper -->
 <div id="pagecontainer">
 <!-- sliderBanner -->
-<div class="flexslider showloading">
 
-
-<ul class="slides">
-
-
-<!--<li>
-<img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/75_off2.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
-<div class="banner-txt3 promo2310 promo1311 white">
-$75 OFF
-<span class="white">ANY TOP & BOTTOM<br/>COMBINATION</span>
-<span style="font-size: 24px;line-height: 26px;font-weight: 600;text-transform: none;margin-top: 20px!important;" class="white">Limited time only<br/>Offer ends December 1st <br/>at 11:59 PM PST</span>
-<br/>
-<a class="learnmore-nam" href="/women">
-<img alt="Shop Women" src="<?php echo $this->getSkinUrl('images/homepage/SHOPWOMEN.png') ?>" />
-</a>
-<a class="learnmore-nam" href="/mens">
-<img alt="Shop Men" src="<?php echo $this->getSkinUrl('images/homepage/SHOP_MEN.png') ?>" />
-</a>
-<br/>
-<span style="font-size: 17px;line-height: 20px;font-weight: 600;text-transform: none;margin-top: 50px!important;" class="white"><sup>*</sup>Final sale on all sale price combinations.<br/>No exchanges or returns.<br/>Cannot be combined with other offers.
-<br/>
-<br/>The discount will be automatically <br/>applied at checkout.</span>
-</div>
-<!--<div style="float: left; width: 100%; text-align: center; text-transform: uppercase; position: absolute; bottom: 50px; left: 0px;">DOLLARS <strong>OFF</strong><br />Aany top and bottom <br><strong>combination</strong></div>-->
-<!--<div id="playBtn">
-<div class="sl-desc-handle">
-<img src="<?php /*echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') */?>" alt="Description handle" />
-</div>
-<div class="slide-desc" style="">Kara is wearing the Rhapsody Drape made from the soft and luxurious SONA<sup>&#0153</sup> fabric – a custom blend of silk, wool and cashmere. Easy, effortless and exceptionally beautiful, this versatile drape is the essential transitional gym-to-life piece.</div>
-</div>-->
-<!-- <span style="position: absolute;top:160px;left: 0px;font-size: 350px;margin:auto;right:0;bottom:0;font-weight: 300;font-family: AvantGardeGothicITCW01X" class="white">75</span>-->
-<!--</li>-->
-
-
-<!--<li>
-<img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/YS_HomePage1.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
-<div class="banner-txt3 promo2310 promo1311 white">
-<h1 class="">
-WRAP UP<br />IN OUR NEW KNITS
-<span class="">INTRODUCING THE SONA<sup style="font-size: 24px;">TM</sup><br/>KNIT COLLECTION<br/>COZY SWEATERS IN OUR<br/>NEW CUSTOM BLEND
-<br/>OF WOOL, SILK AND <br/>CASHMERE
-</span>
-</h1>
-<a class="learnmore-nam" href="/women">
-<img alt="Shop Women" src="<?php echo $this->getSkinUrl('images/homepage/shop_the_sona_collection1.png') ?>" />
-</a>
-</div>
-<div id="playBtn">
-<div class="sl-desc-handle">
-<img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
-</div>
-<div class="slide-desc" style="">Kara is wearing the Rhapsody Drape made from the soft and luxurious SONA™ fabric – a custom blend of silk, wool and cashmere. Easy, effortless and exceptionally beautiful, this versatile drape is the essential transitional gym-to-life piece.</div>
-</div>
-</li>-->
-
-
-<!--
-<li>
-    <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/homepage-slider-slide1.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
-
-
-
-    <div class="banner-txt3 promo2310 promo1311 white">
-        <h1 class="white">From our hearts & with love,</h1>
-        <span class="white">Happy New Year from YOGASMOGA</span>
-        <span class="white" style="font-size: 17px;line-height: 22px;font-weight: 600;text-transform: none;margin-top: 25px !important;">For a limited time only, Enjoy 50% off all apparel. Use Code <span style="color: #67d5e7; display:inline;font-size: 17px;line-height: 22px;font-weight: 600;text-transform: none;margin-top: 25px !important;">FIT2015</span></span>
-        <div>
-            <a class="learnmore-nam" href="/women/">
-                <img alt="Shop Women" src="<?php echo $this->getSkinUrl('images/homepage/ny-shop-women.png') ?>" />
-            </a>
-        </div>
-        <a class="learnmore-nam" href="/mens/">
-            <img alt="Shop Women" src="<?php echo $this->getSkinUrl('images/homepage/ny-shop-men.png') ?>" />
-        </a>
-							<span style="font-size: 14px;line-height: 20px;font-weight: 600;text-transform: none;margin-top: 25px !important; width: 100%; float: left" class="white"><sup>*</sup>Final Sale. No exchanges or returns. Offer ends 1/4/15 at 11:59pm PST.<br/>Cannot be combined with any other offers, promotions or SMOGI bucks.
-                            </span>
-
-    </div>
-
-
-</li>
--->
-
-
-<!--
-<li>
-    <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/50FitHpBanner.jpg'?>" alt="YogaSmoga - FASHION, FIT & FUNCTION" />
-    <div class="banner-txt3 promo2310 promo1311 white">
-        <h1 class="white">
-            FASHION, FIT & FUNCTION
-        </h1>
-        <span class="white" style="text-transform: none;margin-top: 10px!important;font-weight: 600;font-size: 40px;line-height: 45px;">50% OFF&#8212;FEEL THE SMOGI LOVE</span>
-<span class="white" style="text-transform:none; font-size: 28px; line-height: 34px; margin-top: 25px!important; margin-bottom: 45px !important; font-weight: 600; width: 100%;">For a limited time, enjoy 50% off all apparel.<br />Use Code <font style="color:#cc3300;">FIT2015</font>
-</span>
-        <a class="learnmore-nam" href="/women" style="margin-right: 10px !important;">
-            <img alt="Shop Women" src="<?php echo $this->getSkinUrl('images/homepage/SHOPWOMEN.png') ?>" />
-        </a>
-        <a class="learnmore-nam" href="/mens">
-            <img alt="Shop Men" src="<?php echo $this->getSkinUrl('images/homepage/SHOP_MEN.png') ?>" />
-        </a><br />
-        <span style="clear:both; font-size: 17px;line-height: 20px;font-weight: 600;text-transform: none;margin-top: 25px!important;" class="white"><sup>*</sup>Final Sale. No exchanges or returns.<br />Offer ends 1/4/15 at 11:59pm PST.<br />Cannot be combined with any other offers,<br />promotions or SMOGI bucks.</span>
-    </div>
-    <?php /* ?><div id="playBtn">
-<div class="sl-desc-handle">
-<img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
-</div>
-<div class="slide-desc" style="">Kara is wearing the Rhapsody Drape made from the soft and luxurious SONA™ fabric – a custom blend of silk, wool and cashmere. Easy, effortless and exceptionally beautiful, this versatile drape is the essential transitional gym-to-life piece.</div>
-</div> <?php */ ?>
-</li>
--->
-
-
-
-<?php /*
-<li>
-<img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/gs-homepage-banner.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
-<div class="banner-txt3 promo2310 promo1311 white">
-<h1 class="black">
-GIVE THE PERFECT GIFTTTT
-</h1>
-<span class="black" style="text-transform: none;margin-top: 10px!important;font-weight: 600;font-size: 40px;line-height: 45px;">AT A PRICE THAT'S<br/>OH SO NICE.</span>
-<span class="black" style="text-transform:none; font-size: 28px; line-height: 30px; margin-top: 25px!important; font-weight: 600; width: 100%;">A custom blend of <br/>silk, wool and cashmere, <br/> the SONA<sup>TM</sup> knits are soft,<br/>delicate and luxurious--
-<br/> the essential layering <br/> pieces for every wardrobe.
-</span>
-<span class="black" style="font-size: 17px;line-height: 20px;font-weight: 600;text-transform: none;margin-top: 25px !important;" class="white"><sup>*</sup>All Sales are Final. No exchanges or returns.<br/>Offer ends Christmas Eve 12/24 at 11:59pm PST.
-</span>
-<a class="learnmore-nam" href="/women/gift-sets-for-250/">
-<img alt="Shop Women" src="<?php echo $this->getSkinUrl('images/homepage/gs-shop.jpg') ?>" />
-</a>
-</div>
-<?php /* ?><div id="playBtn">
-<div class="sl-desc-handle">
-<img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
-</div>
-<div class="slide-desc" style="">Kara is wearing the Rhapsody Drape made from the soft and luxurious SONA™ fabric – a custom blend of silk, wool and cashmere. Easy, effortless and exceptionally beautiful, this versatile drape is the essential transitional gym-to-life piece.</div>
-</div> <?php
-</li>*/ ?>
-
-
-
-<!--
-<li>
-<img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/nam.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
-<div class="banner-txt3 promo2310 promo1311 white">
-<h1 class="white">
-THE SEASON FOR GIVING
-</h1>
-<span class="white" style="text-transform: none;font-weight: 600;font-size: 40px;line-height: 45px;">AND GIVING BACK</span>
-<span class="white" style="text-transform:none; font-size: 28px; line-height: 30px; margin-top: 25px!important; font-weight: 600; width: 100%;">GIVING IS A CORE VALUE OF YOGASMOGA.
-</span>
-<span class="white" style="font-size: 17px;line-height: 22px;font-weight: 600;text-transform: none;margin-top: 25px !important;" class="white">In the spirit of giving, we will include a free<br/>NAMASKÁR bracelet with every order placed,<br/>and donate the net proceeds to the <br/>
-NAMASKÁR Foundation.
-</span>
-<a class="learnmore-nam" href="/women/tops/">
-<img alt="Shop Women" src="<?php echo $this->getSkinUrl('images/homepage/btn1.png') ?>" />
-</a><br/>
-<span class="white" style="font-size: 14px;line-height: 13px;font-weight: 600;text-transform: none;margin-top: 25px !important;" class="white"><sup>*</sup>Orders must be placed before 11:59 pm PST on 12/24
-</span>
-<span class="white" style="font-size: 17px;line-height: 22px;font-weight: 600;text-transform: none;margin-top: 20px !important;" class="white"><a class="white" style="border-bottom: 1px solid #f30f44" href="/namaskar">What is NAMASKÁR?</a>
-</span>
-</div>
-<?php /* ?><div id="playBtn">
-<div class="sl-desc-handle">
-<img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
-</div>
-<div class="slide-desc" style="">Kara is wearing the Rhapsody Drape made from the soft and luxurious SONA™ fabric – a custom blend of silk, wool and cashmere. Easy, effortless and exceptionally beautiful, this versatile drape is the essential transitional gym-to-life piece.</div>
-</div> <?php */ ?>
-</li>
--->
-
-
-<!--<li>
-<img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/newarrival.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
-<div class="banner-txt3 promo2310 promo1311 white">
-<h1 class="white">
-NEW ARRIVALS<br />IN HOLIDAY HUES
-</h1>
-<span class="white" style="text-transform:none; font-size: 28px; line-height: 30px; margin-top: 35px!important; font-weight: 600; float: left; width: 100%;">Shop your favorite styles<br/>in new shades of red and green
-</span>
-<a class="learnmore-nam" href="/women/what-s-new">
-<img alt="Shop Women" src="<?php echo $this->getSkinUrl('images/homepage/new_arr.png') ?>" />
-</a>
-</div>
-<div id="playBtn">
-<div class="sl-desc-handle">
-<img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
-</div>
-<div class="slide-desc" style="">Our newest designs feature soft earth tones and rich hues to bring warmth and texture to your winter wardrobe. Surround yourself in our luxurious SONA <sup>TM</sup> Knits or try a sleek piece from our Vivacity Mesh Collection. </div>
-</div>
-</li> -->
-
-<!--
-<li>
-    <img id="bannerimg"
-         src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/HomeSlide1.jpg' ?>"
-         alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO."/>
-
-    <div class="banner-txt3 promo2310 promo1311 white">
-        <div class="inner-text-container">
-            <h1 class="white">
-                WE ARE YOGASMOGA.<br/>WE MAKE THINGS FOR LIFE <span class="dash-white"></span>
-                <span class="white">ONE BREATH AT A TIME.</span>
-                <a class="learnmore-nam" href="/women">
-                    SHOP WOMEN
-                </a>
-                <a class="learnmore-nam" href="/mens">
-                    SHOP MEN
-                </a>
-            </h1>
-
-
-
-        </div>
-    </div>
-    <div id="playBtn">
-        <div class="sl-desc-handle">
-            <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>"
-                 alt="Description handle"/>
-        </div>
-        <div class="slide-desc" style="">We design with our active SMOGIs in mind. From candlelight vinyasa classes, to
-            long runs along the pier and bike rides to brunch, you can be sure that your YOGASMOGAs will stay fresh,
-            wherever life takes you.
-        </div>
-    </div>
-</li>
--->
-
-
-
-
-
-
-
-    <li  style="cursor:pointer;">
-        <a href="/women/bottoms/leggings/tippy-toe-legging?color=76">
-        <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/tipe-toe.jpg' ?>"
-             alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO."/>
-        </a>
-        <div class="banner-txt3 promo2310 promo1311 tippy-toe">
-
-                <h1 onclick="window.location='/women/bottoms/leggings/tippy-toe-legging?color=76'">
-                    <a href="/women/bottoms/leggings/tippy-toe-legging?color=76">THE #1 OPAQUE YOGA PANT:
-                        <span>THE TIPPY TOE LEGGING</span></a>
-
-                 </h1>
-                    <!--<a class="learnmore-nam" href="/up-to-the-minute-tee" style="width: 240px !important">
-                        SHOP THE UP-TO-THE-MINUTE TEE
-                    </a>-->
-        </div>
-        <div  class="banner-txt3 promo2310 promo1311 tippy-toe images">
-            <h1>
-            <a target="_blank" href="https://www.rankandstyle.com/top-10-list/best-opaque-yoga-pants/yoga-smoga-tippy-toe-legging/">
-                <img id="bannerimg"
-                     src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rankandstyle.jpg ' ?>" />
-            </a>
-
-            <a target="_blank" href="http://www.refinery29.com/most-opaque-yoga-pants#slide" >
-                <img id="bannerimg"
-                     src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/refinery29.png ' ?>" />
-            </a>
-
-            </h1>
-        </div>
-
-
-
-        <!--   <div id="playBtn">
-            <div class="sl-desc-handle">
-                <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>"
-                     alt="Description handle"/>
-            </div>
-            <div class="slide-desc" style="">A just a few moments of seated meditation will bring sense of mindfulness to your day. The Goa Short Sleeve tee is a lightweight classic tee perfect for a trip to the farmers market, or a yoga class after work.
-
-            </div>
-        </div>-->
-
-
-    </li>
-
-
-
-
-
-
-
-
-    <li>
-    <img id="bannerimg"
-         src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/mens-basic-tee.jpg' ?>"
-         alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO."/>
-
-    <div class="banner-txt3 promo2310 promo1311">
-        <div class="inner-text-container ">
-            <h1 >
-                NEW MEN'S BASIC TEES ARE HERE
-                <span >SIMPLE STYLE FOR EVERYDAY</span>
-                <span >ADVANCED FABRIC TECH</span>
-                <span >FOR EVERY WORKOUT</span>
-                <a class="learnmore-nam" href="/goa-short-sleeve-tee">
-                    SHOP THE GOA TEE
-                </a>
-                <a class="learnmore-nam" href="/doon-long-sleeve-tee">
-                    SHOP THE DOON TEE
-                </a>
-            </h1>
-
-
-
-        </div>
-    </div>
-    <div id="playBtn">
-        <div class="sl-desc-handle">
-            <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>"
-                 alt="Description handle"/>
-        </div>
-        <div class="slide-desc" style="">A just a few moments of seated meditation will bring sense of mindfulness to your day.
-            The Goa Short Sleeve tee is a lightweight classic tee perfect for a trip to the farmers market, or a yoga class after work.
-
-        </div>
-    </div>
-</li>
-
-
-
-
-
-
-
-
-
-
-
-
-    <li>
-        <img id="bannerimg"
-             src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/up-to-the-minute-tee-02.jpg' ?>"
-             alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO."/>
-
-        <div class="banner-txt3 promo2310 promo1311 up-to-the-minute-tee">
-            <div class="inner-text-container ">
-                <h1 >
-                    INTRODUCING <br/> OUR CLASSIC TEE<br/>FOR WOMEN
-                    <span>FEEL FRESH FOR THE MOMENTS<br/>THAT MATTER IN OUR<br/>UP-TO-THE-MINUTE TEE</span>
-
-                    <a class="learnmore-nam" href="/up-to-the-minute-tee" style="width: 240px !important">
-                        SHOP THE UP-TO-THE-MINUTE TEE
+    <div class="flexslider" id="bucket1_slider">
+        <ul class="slides">
+            <li>
+                <div class="bucket-slide">
+                    <a href="/women/bottoms/leggings/tippy-toe-legging?color=76">
+                        <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/tipe-toe.jpg' ?>" title="Tippy Toe Legging. #1 Opaque Yoga Pant" alt="Tippy Toe Legging. #1 Opaque Yoga Pant" />
                     </a>
-                </h1>
+                    <div class="over-the-slide text-align-middle tippy-toe" onclick="window.location='/women/bottoms/leggings/tippy-toe-legging?color=76'">
+                        <h1 class="bold">THE #1 OPAQUE YOGA PANT:</h1>
+                        <p class="light">THE TIPPY TOE LEGGING</p>
+                    </div>
+                        <p class="tippy-toe-external-links">
+                            <a target="_blank" href="https://www.rankandstyle.com/top-10-list/best-opaque-yoga-pants/yoga-smoga-tippy-toe-legging/">
+                                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rankandstyle.jpg ' ?>" />
+                            </a>
+                            <a target="_blank" href="http://www.refinery29.com/most-opaque-yoga-pants#slide" >
+                                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/refinery29.png ' ?>" />
+                            </a>
+                        </p>
 
 
 
-            </div>
-        </div>
+                </div>
+            </li>
 
+            <li>
+                <div class="bucket-slide">
+                    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/mens-basic-tee.jpg' ?>" />
+                    <div class="over-the-slide">
+                        <p class="bold">NEW MEN'S BASIC TEES ARE HERE</p>
+                        <p  class="light"><span>SIMPLE STYLE FOR EVERYDAY</span><br/>
+                            <span>ADVANCED FABRIC TECH</span><br/>
+                            <span>FOR EVERY WORKOUT</span>
+                        </p>
+                        <p><a href="#">SHOP THE GOA TEE</a> <a href="#">SHOP THE DOON TEE</a> </p>
 
-        <!--   <div id="playBtn">
-            <div class="sl-desc-handle">
-                <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>"
-                     alt="Description handle"/>
-            </div>
-            <div class="slide-desc" style="">A just a few moments of seated meditation will bring sense of mindfulness to your day. The Goa Short Sleeve tee is a lightweight classic tee perfect for a trip to the farmers market, or a yoga class after work.
+                    </div>
+                </div>
+                <div id="playBtn">
+                    <div class="sl-desc-handle">
+                        <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>"
+                             alt="Description handle"/>
+                    </div>
+                    <div class="slide-desc" style="">A just a few moments of seated meditation will bring sense of mindfulness to your day.
+                        The Goa Short Sleeve tee is a lightweight classic tee perfect for a trip to the farmers market, or a yoga class after work.
 
-            </div>
-        </div>-->
+                    </div>
+                </div>
+            </li>
 
+            <li>
+                <div class="bucket-slide">
+                    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/up-to-the-minute-tee-02.jpg' ?>" />
+                    <div class="over-the-slide">
+                        <div class="bucket-slide">
+                            <div class="classic-tee">
+                                <p class="bold">INTRODUCING<br/>
+                                    OUR CLASSIC TEE<br/>
+                                    FOR WOMEN </p>
+                                <p><span>FEEL FRESH FOR THE MOMENTS</span><br/>
+                                    <span>THAT MATTER IN OUR</span><br/>
+                                    <span>UP-TO-THE-MINUTE TEE</span></p>
+                                <p><a href="#">SHOP THE UP-TO-THE-MINUTE TEE</a> </p>
 
-    </li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
 
+            <li>
+                <div class="bucket-slide">
+                    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/HomeSlide3.jpg' ?>" />
+                    <div class="over-the-slide white">
+                        <p class="bold">A MANTRA OF INNOVATION</p>
+                        <p><span>OUR PLEDGE TO USE THE</span><br/>
+                            <span>BEST FABRIC TECHNOLOGIES</span></p>
+                        <p><a href="#">SHOP WOMEN</a> <a href="#">SHOP MEN</a> </p>
 
+                    </div>
+                </div>
+                <div id="playBtn">
+                    <div class="sl-desc-handle">
+                        <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>"
+                             alt="Description handle"/>
+                    </div>
+                    <div class="slide-desc" style="">AURUM<sup>&reg;</sup>, KOURA<sup>&trade;</sup> and AIRH<sup>&trade;</sup>. Ever
+                        thought about the meaning behind our fabric names? Each has the same root � translating to �gold,�
+                        exhibiting our steadfast commitment to providing our SMOGIs with the very best, top of the line,
+                        gold-standard in fabric technology.
+                    </div>
+                </div>
+            </li>
 
+            <li>
+                <div class="bucket-slide">
+                    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/HomeSlide2.jpg' ?>" />
+                    <div class="over-the-slide">
+                        <p class="bold">A BIT MORE<br/>
+                            ABOUT US</p>
+                        <p><span>JOY, ENERGY & BALANCE</span></p>
+                        <p><a href="#">SHOP WOMEN</a> <a href="#">SHOP MEN</a> </p>
 
+                    </div>
+                </div>
+                <div id="playBtn">
+                    <div class="sl-desc-handle">
+                        <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>"
+                             alt="Description handle"/>
+                    </div>
+                    <div class="slide-desc" style="">Bringing your concentration to your third-eye center, the space between your
+                        brows, allows the body and mind to enter a space of total focused awareness and develop a deeper connection
+                        to your yoga practice.
+                    </div>
+                </div>
+            </li>
 
+            <li>
+                <div class="bucket-slide">
+                    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/HomeSlide4.jpg' ?>" />
+                    <div class="over-the-slide">
+                        <p class="bold">OUR CORE VALUE IS GIVING</p>
+                        <p><span>OUR GIFT IS NAMASK&AacuteR</span></p>
+                        <p><a href="#">LEARN MORE</a> </p>
+                    </div>
+                </div>
+                <div id="playBtn">
+                    <div class="sl-desc-handle">
+                        <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>"
+                             alt="Description handle"/>
+                    </div>
+                    <div class="slide-desc" style="">We recognize that textile production is typically done in the most economically
+                        challenged locations of the world. It is our absolute obligation and duty to give back. We welcome you to
+                        join us on this journey.
+                    </div>
+                </div>
+            </li>
 
-
-
-    <li>
-    <img
-        src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/HomeSlide3.jpg' ?>"
-        alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO."/>
-
-    <div class="banner-txt3 promo2310 promo1311 white">
-        <div class="inner-text-container">
-            <h1 class="white">
-                A MANTRA OF INNOVATION
-                <span class="white">OUR PLEDGE TO USE THE<br/>BEST FABRIC TECHNOLOGIES</span>
-                <a class="learnmore-nam" href="/women">
-                    SHOP WOMEN
-                </a>
-                <a class="learnmore-nam" href="/mens">
-                    SHOP MEN
-                </a>
-            </h1>
-
-        </div>
+        </ul>
     </div>
-    <div id="playBtn">
-        <div class="sl-desc-handle">
-            <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>"
-                 alt="Description handle"/>
-        </div>
-        <div class="slide-desc" style="">AURUM<sup>&reg;</sup>, KOURA<sup>&trade;</sup> and AIRH<sup>&trade;</sup>. Ever
-            thought about the meaning behind our fabric names? Each has the same root – translating to “gold,”
-            exhibiting our steadfast commitment to providing our SMOGIs with the very best, top of the line,
-            gold-standard in fabric technology.
-        </div>
-    </div>
-</li>
-
-
-
-
-
-
-
-
-
-<li>
-    <img
-        src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/HomeSlide2.jpg' ?>"
-        alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO."/>
-
-    <div class="banner-txt3 promo2310 promo1311">
-        <div class="inner-text-container">
-            <h1>
-                A BIT MORE<br/>ABOUT US
-                <span>JOY, ENERGY & BALANCE</span>
-                <a class="learnmore-nam" href="/women">
-                    SHOP WOMEN
-                </a>
-                <a class="learnmore-nam" href="/mens">
-                    SHOP MEN
-                </a>
-            </h1>
-
-        </div>
-    </div>
-    <div id="playBtn">
-        <div class="sl-desc-handle">
-            <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>"
-                 alt="Description handle"/>
-        </div>
-        <div class="slide-desc" style="">Bringing your concentration to your third-eye center, the space between your
-            brows, allows the body and mind to enter a space of total focused awareness and develop a deeper connection
-            to your yoga practice.
-        </div>
-    </div>
-</li>
-
-
-
-
-
-
-
-<!--
-<li>
-    <img id="bannerimg"
-         src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/one2many.jpg' ?>"
-         alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO."/>
-
-    <div class="banner-txt3 promo2310 promo1311 white">
-        <div class="inner-text-container">
-            <h1 class="white">
-                SUPER SMOGI SAVINGS
-                <span class="white">Shop your favorites styles
-                <br/>in our new ONE 2 MANY<br/>Sale Section</span>
-                <a class="learnmore-nam" href="/women/one-too-many">
-                    SHOP ONE 2 MANY
-                </a>
-
-                <br/>
-                <span style="font-size: 17px;line-height: 20px;font-weight: 600;text-transform: none;margin-top: 50px!important;"
-                      class="white"><sup>*</sup>Final sale. No exchanges or returns.<br/>Cannot be combined with other offers.
-                </span>
-            </h1>
-
-        </div>
-        
-
-
-    </div>
-
-    <div id="playBtn">
-        <div class="sl-desc-handle">
-            <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>"
-                 alt="Description handle"/>
-        </div>
-        <div class="slide-desc" style="">Kara is wearing the Rhapsody Drape made from the soft and luxurious SONA<sup>&#0153</sup>
-            fabric – a custom blend of silk, wool and cashmere. Easy, effortless and exceptionally beautiful, this
-            versatile drape is the essential transitional gym-to-life piece.
-        </div>
-    </div>
-</li>
--->
-
-
-
-
-
-
-<li>
-    <img
-        src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/HomeSlide4.jpg' ?>"
-        alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO."/>
-
-    <div class="banner-txt3 promo2310 promo1311">
-        <div class="inner-text-container namaskar">
-            <h1>
-                OUR CORE VALUE IS GIVING
-                <span>OUR GIFT IS NAMASKÁR </span>
-                <a class="learnmore-nam" href="/namaskar">
-                    LEARN MORE
-                </a>
-            </h1>
-
-        </div>
-    </div>
-    <div id="playBtn">
-        <div class="sl-desc-handle">
-            <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>"
-                 alt="Description handle"/>
-        </div>
-        <div class="slide-desc" style="">We recognize that textile production is typically done in the most economically
-            challenged locations of the world. It is our absolute obligation and duty to give back. We welcome you to
-            join us on this journey.
-        </div>
-    </div>
-</li>
-
-
-
-
-
-
-</ul>
-
-</div>
 <!-- sliderBanner -->
-
+<script>
+    $(window).load(function() {
+        $('#bucket1_slider').flexslider({
+            animation: "fade"
+        });
+    });
+</script>
 <!-- signup new -->
 
 <div class="share-strip">
@@ -678,51 +254,17 @@ NEW ARRIVALS<br />IN HOLIDAY HUES
         <div class="sliderImg">
             <ul class="gridslider1">
 
-                <!--
 
                 <li>
-
-                <img class="img-responsive" src="<?php echo $this->getSkinUrl() . 'images/homepage/left-1.jpg' ?>"
-                     alt="MOMENTUM CROP"/>
-                <div class="contentSlider sliderContent" style="top:33.419551934826883910386965376782%;">
-                    <div>
-                        <h2 class="white">ys fabric tech</h2>
-                        <h3 class="white">DISCOVER<br/>OUR SONA<span class="aurum"
-                                                                     style="font-weight: 600;">&trade;</span> KNITS
-                            COLLECTION<BR/><span class="aurum">ALL WRAPPED UP</span></h3>
-                        <a href="/women" class="shopnow-btn" style="margin-top:2.240325865580448065173116089613%;">shop
-                            now</a>
-                    </div>
-                </div>
-                </li>
-                <li>
-                    <img class="img-responsive"
-                         src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/slider1.jpg' ?>"
-                         alt="Sherpa Long Sleeve Tee"/>
-                    <div class="contentSlider sliderContent" style="top:33.419551934826883910386965376782%;">
-                        <div>
-                            <h2 class="white">ys fabric tech</h2>
-                            <h3 class="white">THE SHERPA LONG SLEEVE TEE<br/>MADE WITH <span
-                                    class="aurum">AURUM<sup>&reg;</sup> 1064</span></h3>
-                            <a href="/mens" class="shopnow-btn" style="margin-top:2.240325865580448065173116089613%;">shop
-                                now</a>
-                        </div>
-                    </div>
-                </li>
-
-
-                -->
-
-                <li>
-                    <!--<img class="img-responsive" src="<?php /*echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/left-1.jpg'*/?>" alt="MOMENTUM CROP" />-->
-                    <img class="img-responsive" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity-crop-2.jpg' ?>"
-                         alt="THE VIVACITY CROP"/>
+                    <img class="img-responsive" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity-crop-2.jpg' ?>" title="Fabric Tech. Zari Mesh"
+                         alt="Fabric Tech. Zari Mesh"/>
 
                     <div class="contentSlider sliderContent" style="top:33.419551934826883910386965376782%;">
                         <div>
-                            <h2 class="white">ys fabric tech</h2>
+                            <h3 class="small-text">ys fabric tech</h3>
 
-                            <h3 class="white">COOL, SLEEK &amp; STYLISH<br/>ZARI MESH <br/><span class="aurum">THE VIVACITY CROP</span></h3>
+                            <h3 class="large-text">COOL, SLEEK &amp; STYLISH<br/>ZARI MESH </h3>
+                            <p class="large-text"><span>THE VIVACITY CROP</span></p>
                             <a href="/women" class="shopnow-btn" style="margin-top:2.240325865580448065173116089613%;">SHOP NOW</a>
                         </div>
                     </div>
@@ -736,10 +278,10 @@ NEW ARRIVALS<br />IN HOLIDAY HUES
 
                     <div class="contentSlider sliderContent" style="top:33.419551934826883910386965376782%;">
                         <div>
-                            <h2 class="white">ys fabric tech</h2>
+                            <p class="small-text">ys fabric tech</p>
 
-                            <h3 class="white">INTRODUCING KOURA 24<br/>LIGHTWEIGHT LUXURY<br/>
-                                <span class="aurum">THE GOA TEE</span></h3>
+                            <p class="large-text">INTRODUCING KOURA 24<br/>LIGHTWEIGHT LUXURY<br/>
+                                <span>THE GOA TEE</span></p>
                             <a href="/mens" class="shopnow-btn" style="margin-top:2.240325865580448065173116089613%;">SHOP NOW</a>
                         </div>
                     </div>
@@ -839,29 +381,6 @@ NEW ARRIVALS<br />IN HOLIDAY HUES
         <div class="sliderImg">
             <ul class="gridslider2">
 
-                <!--
-
-
-                <li>
-                    <img class="img-responsive"
-                    src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/slider3.jpg' ?>"
-                    alt="Mens Sunday Tee"/>
-                    <div class="contentSlider" style="top:36.659877800407331975560081466395%">
-                    <div>
-                    <h2 class="white">YS COLOR TECH</h2>
-                    <h3 class="white">THE SUNDAY TEE<br/>IN<span class="aurum">&nbsp;MIDNIGHT BLUE<br/>& GREY CAVIAR</span>
-                    </h3>
-                    <a href="/mens" class="shopnow-btn" style="margin-top:1.0366598778004073319755600814664%;">shop
-                    now</a>
-                    </div>
-                    </div>
-                </li>
-
-
-                -->
-
-
-
 
                 <li>
                     <!--<img class="img-responsive" src="<?php /*echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/right-1.jpg'*/?>" alt="Mens Sunday Tee" />-->
@@ -870,33 +389,13 @@ NEW ARRIVALS<br />IN HOLIDAY HUES
 
                     <div class="contentSlider" style="top:36.659877800407331975560081466395%">
                         <div>
-                            <h2 class="white">YS COLOR TECH</h2>
+                            <p class="small-text">YS COLOR TECH</p>
 
-                            <h3 class="white">INTRODUCING THE DOON<br/>LONG SLEEVE TEE IN<br/><span class="aurum">RUDHIRA</span></h3>
+                            <p class="large-text">INTRODUCING THE DOON<br/>LONG SLEEVE TEE IN<br/><span class="aurum">RUDHIRA</span></p>
                             <a href="/mens/tops/tees/doon-long-sleeve-tee?color=214" class="shopnow-btn" style="margin-top:1.0366598778004073319755600814664%;">SHOP NOW</a>
                         </div>
                     </div>
                 </li>
-
-
-
-                <!--
-                <li>
-                    <img class="img-responsive" src="<?php /*echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/right-1.jpg'*/?>" alt="Mens Sunday Tee" />-->
-                  <!---  <img class="img-responsive" src="<?php echo $this->getSkinUrl() . 'images/homepage/right-1.jpg' ?>"
-                         alt="Mens Sunday Tee"/>
-                    <div class="contentSlider" style="top:36.659877800407331975560081466395%">
-                        <div>
-                            <h2 class="white">YS COLOR TECH</h2>
-                            <h3 class="white">THE VIVACITY LEGGING<br/>IN<span class="aurum">&nbsp;OLIVINE</span></h3>
-                            <a href="/vivacity-crop" class="shopnow-btn" style="margin-top:1.0366598778004073319755600814664%;">shop
-                                now</a>
-                        </div>
-                    </div>
-                </li>
-                -->
-
-
 
 
                 <li>
@@ -906,11 +405,12 @@ NEW ARRIVALS<br />IN HOLIDAY HUES
 
                     <div class="contentSlider" style="top:36.659877800407331975560081466395%">
                         <div>
-                            <h2 class="white">YS COLOR TECH</h2>
+                            <p class="small-text">YS COLOR TECH</p>
 
-                            <h3 class="white">GET CARRIED AWAY<br/><span class="aurum">THE UP-TO-THE-MINUTE TEE IN<br/>
+                            <p class="large-text">GET CARRIED AWAY<br/>
+                                <span>THE UP-TO-THE-MINUTE TEE IN<br/>
                                 ANDAMAN GREEN MINI STRIPE</span>
-                            </h3>
+                            </p>
                             <a href="/up-to-the-minute-tee" class="shopnow-btn" style="margin-top:1.0366598778004073319755600814664%;">SHOP NOW</a>
                         </div>
                     </div>
@@ -932,14 +432,14 @@ NEW ARRIVALS<br />IN HOLIDAY HUES
         <div class="sliderImg">
             <img class="img-responsive"
                  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/factoryimg.jpg' ?>"
-                 alt="Yogasmoga Factory"/>
+                 alt="Made in USA and NYC. YOGASMOGA" title="Made in USA and NYC. YOGASMOGA"/>
 
             <div class="contentSlider mistext" style="top:38.911201629327902240325865580448%">
                 <div>
-                    <h2 class="white">RESPONSIBLE PRODUCTION</h2>
+                    <p class="small-text">RESPONSIBLE PRODUCTION</p>
 
-                    <h3 class="white" style="margin-bottom: 1.5329938900203665987780040733198%;">MADE IN USA<span>2 US FACTORIES 2000 US WORKERS</span>
-                    </h3>
+                    <h2 class="large-text" style="margin-bottom: 6px;">MADE IN USA <br/><span>2 US FACTORIES 2000 US WORKERS</span>
+                    </h2>
                     <a href="/made-in-usa" class="learn-more">LEARN MORE</a>
                 </div>
             </div>
@@ -994,13 +494,13 @@ NEW ARRIVALS<br />IN HOLIDAY HUES
                  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/namaskar.jpg' ?>"
                  alt="Namaskar Bracelet"/>
 
-            <div class="contentSlider namaskartxt" style="top:38.085539714867617107942973523422%;">
+            <div class="contentSlider mistext" style="top:38.085539714867617107942973523422%;">
                 <div>
-                    <h2 class="white" style="margin-bottom:3.1549898167006109979633401221996%;">GIVING IS A CORE
-                        VALUE</h2>
+                    <p class="small-text" style="margin-bottom:3.1549898167006109979633401221996%;">GIVING IS A CORE
+                        VALUE</p>
 
-                    <h3 class="white" style="margin-bottom:4.5329938900203665987780040733198%;">NAMASKÁR
-                        FOUNDATION<span>WE HAVE CREATED THE NAMASKÁR FOUNDATION BECAUSE WE CARE.</span></h3>
+                    <p class="large-text" style="margin-bottom:4.5329938900203665987780040733198%;">NAMASKÁR FOUNDATION<br/>
+                        <span>WE HAVE CREATED THE NAMASKÁR FOUNDATION BECAUSE WE CARE.</span></p>
                     <a href="/namaskar" class="learn-more">LEARN MORE</a>
                 </div>
             </div>
