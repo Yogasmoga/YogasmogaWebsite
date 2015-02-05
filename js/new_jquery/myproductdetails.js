@@ -272,9 +272,11 @@ function changeFabric(current_color){
             var fabric_color = jQuery(this).attr('rel').toLowerCase();
 
             if(current_color.toLowerCase()==fabric_color){
+                jQuery(".fabric_story_block").hide();
                 jQuery(this).show();
                 jQuery(".mainfabric").hide();
                 found = true;
+                return;
             }
         });
 

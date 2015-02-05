@@ -217,8 +217,10 @@ foreach ($_childProducts as $_childProduct) {
         if (isset($tempFabricStoryBlockId) && strlen($tempFabricStoryBlockId) > 0) {
             $fabric_changed = true;
 
-            if (!isset($arFabricArray[$colorName]))
-                $arFabricArray[$colorName] = $tempFabricStoryBlockId;
+            $colorNameLowercase = strtolower($colorName);
+
+            if (!isset($arFabricArray[$colorNameLowercase]))
+                $arFabricArray[$colorNameLowercase] = $tempFabricStoryBlockId;
         }
     }
 
