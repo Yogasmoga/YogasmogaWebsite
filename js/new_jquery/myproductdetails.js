@@ -1,5 +1,12 @@
 _preorderinfohovered = false;
 var _rewardpoints = 0;
+var currentColorObject;     // to store what color is clicked
+
+var fabrics = Array();
+var bra_cup_insert_value_array = Array();
+var bra_cup_insert_color_array = Array();
+var bra_cup_insert_count = 0;
+
 jQuery(window).load(function($){
     selectfirstsizeonload();
     insertBraOption();
@@ -28,7 +35,8 @@ jQuery(document).ready(function($){
         //else if (e.keyCode==40) {console.log ('down');}
         
     });    
-    $("table.normalproductdetail div#colorcontainer table").live("click", function(){ 
+    $("table.normalproductdetail div#colorcontainer table").live("click", function(){
+        currentColorObject = $(this);
         $('.errormsg').empty().hide();
         jQuery("#orderitem").removeClass('bagdisabled');
         jQuery("#orderitem").addClass('spbutton');
@@ -251,6 +259,53 @@ function changelengthtype(sz){
     jQuery("#orderitem").removeClass("bagdisabled");
     jQuery("#orderitem").addClass("spbutton");
 }
+
+function changeFabric(current_color){
+
+    if(jQuery(".fabric_story_block")!=null) {
+
+//        var current_color = jQuery(".selectedcolortext").html().toLowerCase();
+
+        var found = false;
+        jQuery(".fabric_story_block").each(function () {
+
+            var fabric_color = jQuery(this).attr('rel').toLowerCase();
+
+            if(current_color.toLowerCase()==fabric_color){
+                jQuery(this).show();
+                jQuery(".mainfabric").hide();
+                found = true;
+            }
+        });
+
+        if(!found){
+            jQuery(".fabric_story_block").hide();
+            jQuery(".mainfabric").show();
+        }
+    }
+}
+
+function changeBraCupInsert(current_color){
+
+    var hide = false;
+
+    for(var i=0;i<bra_cup_insert_color_array.length;i++){
+        var color = bra_cup_insert_color_array[i];
+        var value = bra_cup_insert_value_array[i];
+        console.log(color.toLowerCase() + " , " + current_color.toLowerCase() + " , " + (color.toLowerCase()==current_color.toLowerCase()));
+        if(color.toLowerCase()==current_color.toLowerCase()){
+            if(value.toLowerCase()=="yes"){
+                jQuery("#includeoption").hide();
+                hide = true;
+                break;
+            }
+        }
+    }
+
+    if(!hide && bra_cup_insert_count>0)
+        jQuery("#includeoption").show();
+}
+
 function changeproductsize(sz)
 {
     //update price
@@ -493,6 +548,9 @@ function searchproductcolorinfoarrray(clr)
 
 function changeColor(clr)
 {
+    changeFabric(clr);
+    changeBraCupInsert(clr);
+
     jQuery(".amount").removeClass("insale-price");
     jQuery(".box-seprtr").find("p.insale").addClass("dnone");
     jQuery(".was-amount").addClass("no-display");
