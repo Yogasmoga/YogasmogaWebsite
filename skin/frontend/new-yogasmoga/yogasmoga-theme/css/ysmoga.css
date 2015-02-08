@@ -2169,19 +2169,7 @@ div.new-arrivals-block{
     display: inline;
 }
 /*
-#bucket1_slider .over-the-slide a{
-    background: none repeat scroll 0 0 #b1892f;
-    color: #fff;
-    float: left;
-    font-size: 12px;
-    line-height: 40px;
-    margin: 25px 20px 0 0 !important;
-    text-align: center;
-    width: 155px;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-family: AvantGardeGothicITCW01D;
-}*/
+#bucket1_slider */
 #bucket1_slider .over-the-slide .learn-more{
     text-transform: uppercase;
     padding-bottom: 3px !important;
@@ -2284,7 +2272,19 @@ div.new-arrivals-block{
 
 /* ///////////////WOMENS PAGE ///////////////////////////////// */
 
-
+#bucket1_slider .over-the-slide a.btn{
+    background: none repeat scroll 0 0 #b1892f;
+    color: #fff;
+    float: left;
+    font-size: 12px;
+    line-height: 40px;
+    margin: 25px 20px 0 0 !important;
+    text-align: center;
+    width: 155px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: AvantGardeGothicITCW01D;
+}
 
 
 

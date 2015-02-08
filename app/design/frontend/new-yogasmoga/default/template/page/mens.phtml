@@ -40,8 +40,8 @@
         <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb01.png" />
         <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb02.png" />
         <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb03.png" />
-        <meta property="og:title"content="YOGASMOGA | Did You Take a Breath Today?" />
-        <meta property="og:description"content="We are YOGASMOGA, We make things for life - One breath at a time." />
+        <meta property="og:title"content="Yoga Clothing Mens - Sweat Wicking Performance | YOGASMOGA" />
+        <meta property="og:description"content="YOGASMOGA makes the best mens performance and workout clothing for yoga, spin, running and more. Featuring Advanced Sweat Wicking & Antimicrobial. Free Shipping to US & Canada" />
     <?php
     }
     else
@@ -50,8 +50,8 @@
         <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/Untitled_Panorama2_c_1.jpg" />
         <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga_mood_2395.jpg" />
         <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/Yogasmoga_op.jpeg" />
-        <meta property="og:title"content="YOGASMOGA" />
-        <meta property="og:description"content="We are YOGASMOGA. We make things for LIFE. One breath at a time." />
+        <meta property="og:title"content="Yoga Clothing Mens - Sweat Wicking Performance | YOGASMOGA" />
+        <meta property="og:description"content="YOGASMOGA makes the best mens performance and workout clothing for yoga, spin, running and more. Featuring Advanced Sweat Wicking & Antimicrobial. Free Shipping to US & Canada" />
     <?php
     }
     ?>
@@ -106,33 +106,37 @@
 <?php echo $this->getChildHtml('header') ?>
 <div id="pagecontainer">
 <!-- sliderBanner -->
-<div class="flexslider showloading cat-slide">
+<div class="flexslider showloading cat-slide" id="bucket1_slider">
     <ul class="slides">
         <li>
-            <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/mens-page/mens-page-banner-2.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
+            <div class="bucket-slide">
+                <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/mens-page/mens-page-banner-2.jpg'?>" alt="Mens Yoga Clothing. YOGASMOGA" title="Mens Yoga Clothing. YOGASMOGA" />
 
-            <div class="banner-txt3 promo2310 promo1311 white">
-                <h1>
+                <div class="over-the-slide">
+                    <h3 class="bold" style="color:#555;">
 
-                    BACK TO BASICS<br/>
-                    WITH THE MEN'S GOA TEE
-                    <span style="font-family: ITCAvantGardeProBk;font-weight: 500;">CLEAN LINES AND SIMPLE STYLE</span>
-                    <span style="font-family: ITCAvantGardeProBk;font-weight: 500;">MEET ADVANCED QUALITY &amp;</span>
-                    <span style="font-family: ITCAvantGardeProBk;font-weight: 500;">HIGH TECH FABRICS</span>
-
-
-                </h1>
-                <a class="learnmore-nam" href="<?php echo $this->getBaseUrl().'goa-short-sleeve-tee'; ?>">
-                    SHOP THE GOA TEE
-                </a>
-            </div>
-
-            <div id="playBtn">
-                <div class="sl-desc-handle">
-                    <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                        BACK TO BASICS<br/>
+                        WITH THE MEN'S GOA TEE </h3>
+                    <p class="light">
+                        <span style="font-family: ITCAvantGardeProBk;color:#555;font-weight: 500;">CLEAN LINES AND SIMPLE STYLE<br/>
+                        MEET ADVANCED QUALITY &amp;<br/>
+                        HIGH TECH FABRICS</span>
+                    </p>
+                    <p>
+                        <a class="btn"  href="<?php echo $this->getBaseUrl().'goa-short-sleeve-tee'; ?>">
+                            SHOP THE GOA TEE
+                        </a>
+                    </p>
                 </div>
-                <div class="slide-desc" style="">The newest men's basic tee is a lightweight and versatile wardrobe staple. The Mosaic Spanish Grey is an updated variety of one of our signature colors.</div>
+
+                <div id="playBtn">
+                    <div class="sl-desc-handle">
+                        <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
+                    </div>
+                    <div class="slide-desc" style="">The newest men's basic tee is a lightweight and versatile wardrobe staple. The Mosaic Spanish Grey is an updated variety of one of our signature colors.</div>
+                </div>
             </div>
+
         </li>
 <!--         <li>
             <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/MenSlide1.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
