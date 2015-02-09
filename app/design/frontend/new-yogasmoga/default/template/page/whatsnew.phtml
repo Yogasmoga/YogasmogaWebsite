@@ -287,7 +287,7 @@
                                                 
                                                     <div class="productCont">
                                                         <div class="prod-img">
-                                                            <a href="<?php echo $confProduct->getProductUrl().'?color='.$simpleproductarr['color'];?>" >
+                                                            <a href="<?php echo $confProduct->getUrlPath().'?color='.$simpleproductarr['color'];?>" >
                                                                 <?php
                                                                 foreach($simpleproductarr['image'] as $img )
                                                                 {
@@ -298,11 +298,11 @@
 
                                                                 ?>
                                                                  </a>
-                                                            <a class="clickable" href="<?php echo $confProduct->getProductUrl().'?color='.$simpleproductarr['color'];?>"></a>
+                                                            <a class="clickable" href="<?php echo $confProduct->getUrlPath().'?color='.$simpleproductarr['color'];?>"></a>
                                                         </div>
                                                         <div class="caption">
                                                             <div class="caption">
-                                                                <a href="<?php echo $confProduct->getProductUrl();?>"><?php echo $confProduct->getName().'<br/>';?> <?php echo $clrinfo[$simpleproductarr['color']]?></a><span>$<?php  echo  round($confProduct->getPrice(),2);?></span>
+                                                                <a href="<?php echo $confProduct->getUrlPath();?>"><?php echo $confProduct->getName().'<br/>';?> <?php echo $clrinfo[$simpleproductarr['color']]?></a><span>$<?php  echo  round($confProduct->getPrice(),2);?></span>
                                                             </div>
                                                         </div>
                                                     </div>
