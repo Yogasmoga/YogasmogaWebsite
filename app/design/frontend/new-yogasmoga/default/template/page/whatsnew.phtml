@@ -40,8 +40,8 @@
             <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb01.png" />
             <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb02.png" />
             <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb03.png" />
-            <meta property="og:title"content="What's New - Womens Yoga Clothing| YOGASMOGA" />
-            <meta property="og:description"content="YOGASMOGA makes technical performance clothing for active women for yoga, running, spin, workouts, and more. Shop What’s New. Free shipping to US and Canada." />
+            <meta property="og:title"content="YOGASMOGA | Did You Take a Breath Today?" />
+            <meta property="og:description"content="We are YOGASMOGA, We make things for life - One breath at a time." />
         <?php
     }
     else
@@ -50,8 +50,8 @@
             <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/Untitled_Panorama2_c_1.jpg" />
             <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga_mood_2395.jpg" />
             <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/Yogasmoga_op.jpeg" />
-            <meta property="og:title"content="What's New - Womens Yoga Clothing| YOGASMOGA" />
-            <meta property="og:description"content="YOGASMOGA makes technical performance clothing for active women for yoga, running, spin, workouts, and more. Shop What’s New. Free shipping to US and Canada." />
+            <meta property="og:title"content="YOGASMOGA" />
+            <meta property="og:description"content="We are YOGASMOGA. We make things for LIFE. One breath at a time." />
         <?php
     }
 ?>
@@ -109,10 +109,12 @@
                                     $urlKey = $categoryName[3];
                                     $_category = Mage::getModel('catalog/category')->loadByAttribute('url_key', $urlKey);
                                     $parentCategoryId =  $_category->getId();
+
                                     // end code for left nav
 
 
                                     $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('whatsnew_categoryid')->getValue('plain')), true);
+
                                 $categoryId = '';
                                 $bannerTxt = '';
                                     if($urlKey == 'women')
@@ -136,7 +138,7 @@
                                 ?>
                                 <!-- bannerContainer -->
                                 <div class="bannerFluid">
-                                    <img title="What's New - Womens Yoga Clothing| YOGASMOGA" alt="What's New - Womens Yoga Clothing| YOGASMOGA" src="<?php echo $shopthecolor_imgUrl; ?>">
+                                    <img title="Top Sellers" alt="Top Sellers" src="<?php echo $shopthecolor_imgUrl; ?>">
                                     <div class="bnrtxt">
                                         <h1 class="white<?php //echo $bannerTxt ?>">WHAT'S NEW</h1>
                                     </div>
@@ -146,6 +148,15 @@
                                             ?>
                                         
                                     <div style="position: absolute; width: 700px; left: 8%; top: 22%; float: left; color: #555555; text-align: left;">
+                                       <!-- <h2 style="font-size: 30px; line-height: 30px; padding-bottom: 0px; color: #555555; margin-bottom: 0px;"><strong>KNIT COLLECTION</strong></h2>
+                                        <span style="font-size: 26px; line-height: 28px; color: #555555;font-weight: 300;">Introducing SONA<sup>TM___</sup> <br/> Our new custom blend of silk, wool <br/>and cashmere.</span>
+                                        <h2 style="font-size: 30px; line-height: 30px; padding-bottom: 0px; color: #555555; margin-bottom: 0px; margin-top: 30px"><strong>MESH COLLECTION</strong></h2>
+                                        <span style="font-size: 26px; line-height: 28px; color: #555555;font-weight: 300;">Discover the sleek and stylish design<br/>of the Vivacity Legging and Vivacity Crop.</span>
+                                        <h2 style="font-size: 30px; line-height: 30px; padding-bottom: 0px; color: #555555; margin-bottom: 0px; margin-top: 30px"><strong>RUDHIRA</strong></h2>
+                                        <span style="font-size: 26px; line-height: 28px; color: #555555; font-weight: 300;">A rich, true red with soft brick tones.<br/>It warms up any outfit a perfect holiday color.</span>
+                                        <h2 style="font-size: 30px; line-height: 30px; padding-bottom: 0px; color: #555555; margin-bottom: 0px; margin-top: 30px"><strong>OLIVINE</strong></h2>
+                                        <span style="font-size: 26px; line-height: 28px; color: #555555; font-weight: 300;">Our new deep green is a versatile neutral<br/>for your winter wardrobe.</span>
+                                        -->
 
                                     </div>
                                     <?php } ?>
@@ -287,7 +298,7 @@
                                                 
                                                     <div class="productCont">
                                                         <div class="prod-img">
-                                                            <a href="<?php echo $confProduct->getUrlPath().'?color='.$simpleproductarr['color'];?>" >
+                                                            <a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?>" >
                                                                 <?php
                                                                 foreach($simpleproductarr['image'] as $img )
                                                                 {
@@ -298,11 +309,11 @@
 
                                                                 ?>
                                                                  </a>
-                                                            <a class="clickable" href="<?php echo $confProduct->getUrlPath().'?color='.$simpleproductarr['color'];?>"></a>
+                                                            <a class="clickable" href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?>"></a>
                                                         </div>
                                                         <div class="caption">
                                                             <div class="caption">
-                                                                <a href="<?php echo $confProduct->getUrlPath();?>"><?php echo $confProduct->getName().'<br/>';?> <?php echo $clrinfo[$simpleproductarr['color']]?></a><span>$<?php  echo  round($confProduct->getPrice(),2);?></span>
+                                                                <a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl();?>"><?php echo $confProduct->getName().'<br/>';?> <?php echo $clrinfo[$simpleproductarr['color']]?></a><span>$<?php  echo  round($confProduct->getPrice(),2);?></span>
                                                             </div>
                                                         </div>
                                                     </div>
