@@ -1,7 +1,7 @@
 <?php
 class Ys_Mod_Adminhtml_CustomController extends Mage_Adminhtml_Controller_Action
 {
-    public function mailchimpSettingsAction()
+    public function mailchimpAction()
     {
         $myfile = fopen("mailchimp_list.txt", "r");
         $str = fgets($myfile);
@@ -41,7 +41,7 @@ class Ys_Mod_Adminhtml_CustomController extends Mage_Adminhtml_Controller_Action
         Mage::getSingleton('core/session')->setMessage("");
     }
 
-    public function saveMailchimpSettingsAction()
+    public function savemailchimpAction()
     {
         $data = $this->getRequest()->getPost();
 
@@ -55,10 +55,10 @@ class Ys_Mod_Adminhtml_CustomController extends Mage_Adminhtml_Controller_Action
         $message = 'Mailchimp settings saved successfully.';
         Mage::getSingleton('core/session')->setMessage($message);
 
-        $this->_redirect('mod/adminhtml_custom/mailchimpsettings');
+        $this->_redirect('ys/adminhtml_custom/mailchimp');
     }
 
-    public function unsubscribeFromNewsletterAction()
+    public function unsubscribeAction()
     {
 
         $message = Mage::getSingleton('core/session')->getUnsubscribemessage();
@@ -77,7 +77,7 @@ class Ys_Mod_Adminhtml_CustomController extends Mage_Adminhtml_Controller_Action
         Mage::getSingleton('core/session')->setUnsubscribemessage("");
     }
 
-    public function unsubscribeCustomerAction()
+    public function unsubscribenowAction()
     {
         $data = $this->getRequest()->getPost();
 
@@ -118,20 +118,20 @@ class Ys_Mod_Adminhtml_CustomController extends Mage_Adminhtml_Controller_Action
 
             $message = 'Customer unsubscribed successfully.';
             Mage::getSingleton('core/session')->setUnsubscribemessage($message);
-
-            $this->_redirect('mod/adminhtml_custom/unsubscribe');
         }
+        $this->_redirect('ys/adminhtml_custom/unsubscribe');
     }
 
-    public function uploadProductsAction(){
+    /********************* product upload code **********************/
+
+    public function uploadAction(){
+
         $this->loadLayout();
         $this->_title($this->__("Upload Products"));
         $this->renderLayout();
     }
 
-    /********************* product upload code **********************/
-
-    public function saveProductsAction(){
+    public function saveproductsAction(){
 
 //        $uploader = new Varien_File_Uploader('file');
 ////        $uploader->setAllowedExtensions(array('json'));

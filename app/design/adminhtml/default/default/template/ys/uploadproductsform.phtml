@@ -1,6 +1,6 @@
 <h3>Upload Products</h3><br/>
 
-<form action="<?php echo $this->getUrl('*/*/saveProducts')?>" target="ifr" method="post" enctype="multipart/form-data" onsubmit="return upload()">
+<form action="<?php echo $this->getUrl('*/*/saveproducts')?>" target="ifr" method="post" enctype="multipart/form-data" onsubmit="return upload()">
     <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
     Select file : <input type="file" name="file"/> &nbsp; <input type="submit" value="Upload Products"/>
 </form>
@@ -15,12 +15,12 @@
 <script type="text/javascript">
     function upload(){
 
-        $("#message").show();
-        $("#message").html("Uploading, please wait....");
+        jQuery("#message").show();
+        jQuery("#message").html("Uploading, please wait....");
 
-        $("#ifr").load(function(){
-            $("#message").show();
-            $("#message").html("Products uploaded successfully").fadeOut(10000, function(){$("#message").html("")});
+        jQuery("#ifr").load(function(){
+            jQuery("#message").show();
+            jQuery("#message").html("Products uploaded successfully").fadeOut(10000, function(){$("#message").html("")});
         });
 
         return true;

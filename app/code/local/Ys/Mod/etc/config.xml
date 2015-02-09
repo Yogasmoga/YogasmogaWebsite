@@ -14,43 +14,22 @@
     <global>
 
         <helpers>
-            <mod>
+            <Mod>
                 <class>Ys_Mod_Helper</class>
-            </mod>
+            </Mod>
         </helpers>
 
         <blocks>
-            <mod>
+            <Mod>
                 <class>Ys_Mod_Block</class>
-            </mod>
+            </Mod>
         </blocks>
 
         <models>
-            <mod>
+            <Mod>
                 <class>Ys_Mod_Model</class>
-            </mod>
+            </Mod>
         </models>
-
-        <!--<events>-->
-            <!--<customer_register_success>-->
-                <!--<observers>-->
-                    <!--<Ys_Mod_customer_register_success>-->
-                        <!--<type>singleton</type>-->
-                        <!--<class>Ys_Mod_Model_Observer</class>-->
-                        <!--<method>customerRegisterSuccess</method>-->
-                    <!--</Ys_Mod_customer_register_success>-->
-                <!--</observers>-->
-            <!--</customer_register_success>-->
-            <!--<customer_address_save_after>-->
-                <!--<observers>-->
-                    <!--<Ys_Mod_customer_register_success>-->
-                        <!--<type>singleton</type>-->
-                        <!--<class>Ys_Mod_Model_Observer</class>-->
-                        <!--<method>customerAddressSaveAfter</method>-->
-                    <!--</Ys_Mod_customer_register_success>-->
-                <!--</observers>-->
-            <!--</customer_address_save_after>-->
-        <!--</events>-->
 
     </global>
 
@@ -69,13 +48,13 @@
 
     <admin>
         <routers>
-            <mod>
+            <Mod>
                 <use>admin</use>
                 <args>
                     <module>Ys_Mod</module>
                     <frontName>ys</frontName>
                 </args>
-            </mod>
+            </Mod>
         </routers>
     </admin>
 
@@ -84,27 +63,27 @@
     <adminhtml>
 
         <menu>
-            <mod module="mod">
+            <Mod module="Mod">
                 <title>Ys</title>
                 <sort_order>100</sort_order>
                 <children>
-                    <menu_index module="mod">
+                    <menu_index module="Mod">
                         <title>Mailchimp Settings</title>
                         <sort_order>0</sort_order>
-                        <action>ys/adminhtml_custom/mailchimpSettings</action>
+                        <action>ys/adminhtml_custom/mailchimp</action>
                     </menu_index>
-                    <menu_unsubscribe module="mod">
+                    <menu_unsubscribe module="Mod">
                         <title>Newsletter Unsubscribe</title>
                         <sort_order>1</sort_order>
-                        <action>ys/adminhtml_custom/unsubscribeFromNewsletter</action>
+                        <action>ys/adminhtml_custom/unsubscribe</action>
                     </menu_unsubscribe>
-                    <menu_uploadproducts module="mod">
+                    <menu_uploadproducts module="Mod">
                         <title>Upload Products</title>
                         <sort_order>2</sort_order>
-                        <action>ys/adminhtml_custom/uploadProducts</action>
+                        <action>ys/adminhtml_custom/upload</action>
                     </menu_uploadproducts>
                 </children>
-            </mod>
+            </Mod>
         </menu>
 
         <acl>
@@ -114,7 +93,7 @@
                 </all>
                 <admin>
                     <children>
-                        <mod translate="title" module="mod">
+                        <Mod translate="title" module="Mod">
                             <title>Ys</title>
                             <sort_order>1000</sort_order>
                             <children>
@@ -128,7 +107,7 @@
                                     <title>Upload Products</title>
                                 </menu_unsubscribe>
                             </children>
-                        </mod>
+                        </Mod>
                     </children>
                 </admin>
             </resources>
@@ -145,16 +124,4 @@
         </layout>
     </adminhtml>
 
-    <!--<crontab>-->
-        <!--<jobs>-->
-            <!--<ys_mod>-->
-                <!--<schedule>-->
-                    <!--<cron_expr>1 5 * * *</cron_expr>-->
-                <!--</schedule>-->
-                <!--<run>-->
-                    <!--<model>mod/observer::sync</model>-->
-                <!--</run>-->
-            <!--</ys_mod>-->
-        <!--</jobs>-->
-    <!--</crontab>-->
-</config> 
+</config>
