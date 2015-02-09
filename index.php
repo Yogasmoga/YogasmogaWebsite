@@ -39,6 +39,8 @@ Whoops, it looks like you have an invalid PHP version.</h3></div><p>Magento supp
  */
 error_reporting(E_ALL | E_STRICT);
 
+ini_set ( 'max_execution_time', 1800);
+
 /**
  * Compilation includes configuration file
  */
