@@ -40,8 +40,8 @@
             <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb01.png" />
             <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb02.png" />
             <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb03.png" />
-            <meta property="og:title"content="YOGASMOGA | Did You Take a Breath Today?" />
-            <meta property="og:description"content="We are YOGASMOGA, We make things for life - One breath at a time." />
+            <meta property="og:title"content="Womens Yoga Clothes - Sweat Wicking Performance | YOGASMOGA" />
+            <meta property="og:description"content="YOGASMOGA makes the best womens performance workout clothes for yoga, spin, & running. Advanced Sweat Wicking & Antimicrobial fabric. Free Shipping to US & Canada. " />
         <?php
     }
     else
@@ -50,8 +50,8 @@
             <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/Untitled_Panorama2_c_1.jpg" />
             <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/main_section/yogasmoga_mood_2395.jpg" />
             <meta property="og:image"content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/Yogasmoga_op.jpeg" />
-            <meta property="og:title"content="YOGASMOGA" />
-            <meta property="og:description"content="We are YOGASMOGA. We make things for LIFE. One breath at a time." />
+            <meta property="og:title"content="Womens Yoga Clothes - Sweat Wicking Performance | YOGASMOGA" />
+            <meta property="og:description"content="YOGASMOGA makes the best womens performance workout clothes for yoga, spin, & running. Advanced Sweat Wicking & Antimicrobial fabric. Free Shipping to US & Canada. " />
         <?php
     }
 ?>
@@ -118,23 +118,28 @@
         <?php echo $this->getChildHtml('header') ?>
             <div id="pagecontainer">
             <!-- sliderBanner -->
-            <div class="flexslider showloading cat-slide">
+            <div class="flexslider showloading cat-slide" id="bucket1_slider">
                 <ul class="slides">
                     <li>
-                        <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/women-page/women-banner.jpg'?>" alt="YogaSmoga - yogasmoga vivacity mesh collection" />
+                        <div class="bucket-slide">
+                            <img id="bannerimg" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/women-page/women-banner.jpg'?>" alt="Womens Yoga Clothes - Sweat Wicking Performance | YOGASMOGA" title="Womens Yoga Clothes - Sweat Wicking Performance | YOGASMOGA" />
 
-                            <div class="banner-txt3 promo2310 promo1311 white" style="margin-top:95px !important">
-                                <h1 class="white">
-                                INTRODUCING <br/>OUR CLASSIC TEE<br/>
-                                <span class="white">TO TAKE YOU FROM THE GYM<br/>TO YOGA CLASS<br/>TO LIFE</span>
+                            <div class="over-the-slide">
+                                <div style="margin-top:8% !important">
+                                    <h3 class="bold white">
+                                        INTRODUCING <br/>OUR CLASSIC TEE</h3>
+                                    <p class="light white">
+                                        <span class="white">TO TAKE YOU FROM THE GYM<br/>TO YOGA CLASS<br/>TO LIFE</span>
+                                    </p>
+                                    <p>
+                                        <a class="btn" href="/women/tops/tanks-tops/up-to-the-minute-tee?color=217" style="width: 240px !important" >
+                                            SHOP THE UP-TO-THE-MINUTE TEE
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
 
-
-                                    <a class="learnmore-nam" href="/women/tops/tanks-tops/up-to-the-minute-tee?color=217" style="width: 240px !important" >
-                                        SHOP THE UP-TO-THE-MINUTE TEE
-                                    </a>
-                                </h1>
-
-                            </div>                           
 
                         <!--<div id="playBtn">
                             <div class="sl-desc-handle">
@@ -146,90 +151,6 @@
 
 
                     </li>
-<!--                     <li>
-                        <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/WomenSlider1.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
-
-                            <div class="banner-txt3 promo2310 promo1311 white">
-                                WHAT'S NEW
-                            </div>                           
-
-                        <div id="playBtn">
-                            <div class="sl-desc-handle">
-                                <img src="<?php //echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
-                            </div>
-                            <div class="slide-desc" style="">Our AIRH fabric is the ultimate performance fabric. It is cool to the touch, light as air and highly breathable. Courtney wears the Momentum Legging and Ooh La La Bra to reach new heights in her yoga practice.</div>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/WomenSlider2.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
-
-                            <div class="banner-txt3 promo2310 promo1311">
-                                Shop the colors
-                            </div>                           
-
-                        <div id="playBtn">
-                            <div class="sl-desc-handle">
-                                <img src="<?php //echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
-                            </div>
-                            <div class="slide-desc" style="">Our AIRH fabric is the ultimate performance fabric. It is cool to the touch, light as air and highly breathable. Courtney wears the Momentum Legging and Ooh La La Bra to reach new heights in her yoga practice.</div>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/WomenSlider3.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
-
-                            <div class="banner-txt3 promo2310 promo1311 white">
-                                Top sellers
-                            </div>                           
-
-                        <div id="playBtn">
-                            <div class="sl-desc-handle">
-                                <img src="<?php //echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
-                            </div>
-                            <div class="slide-desc" style="">Our AIRH fabric is the ultimate performance fabric. It is cool to the touch, light as air and highly breathable. Courtney wears the Momentum Legging and Ooh La La Bra to reach new heights in her yoga practice.</div>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/WomenSlider4.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
-
-                            <div class="banner-txt3 promo2310 promo1311">
-                                Women's tops
-                            </div>                           
-
-                        <div id="playBtn">
-                            <div class="sl-desc-handle">
-                                <img src="<?php //echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
-                            </div>
-                            <div class="slide-desc" style="">Our AIRH fabric is the ultimate performance fabric. It is cool to the touch, light as air and highly breathable. Courtney wears the Momentum Legging and Ooh La La Bra to reach new heights in her yoga practice.</div>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/WomenSlider5.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
-
-                            <div class="banner-txt3 promo2310 promo1311">
-                                women's bottoms
-                            </div>                           
-
-                        <div id="playBtn">
-                            <div class="sl-desc-handle">
-                                <img src="<?php //echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
-                            </div>
-                            <div class="slide-desc" style="">Our AIRH fabric is the ultimate performance fabric. It is cool to the touch, light as air and highly breathable. Courtney wears the Momentum Legging and Ooh La La Bra to reach new heights in her yoga practice.</div>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/WomenSlider6.jpg'?>" alt="YogaSmoga - WELCOMES MEN TO FEEL THE SMOGI LOVE TOO." />
-
-                            <div class="banner-txt3 promo2310 promo1311">
-                                accessories
-                            </div>                           
-
-                        <div id="playBtn">
-                            <div class="sl-desc-handle">
-                                <img src="<?php //echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>" alt="Description handle" />
-                            </div>
-                            <div class="slide-desc" style="">Our AIRH fabric is the ultimate performance fabric. It is cool to the touch, light as air and highly breathable. Courtney wears the Momentum Legging and Ooh La La Bra to reach new heights in her yoga practice.</div>
-                        </div>
-                    </li> -->
                 </ul>
             </div>
             <!-- sliderBanner -->
@@ -263,22 +184,16 @@
                     $newcollection = Mage::getModel('catalog/category')->load($categoryId_newcollection);
                     $newarrivals = Mage::getModel('catalog/category')->load($categoryId_quickview); ?>
                 <div class="shop-col-desc l-align">
-                    <span class="na-head">NEW ARRIVALS</span>
-                    <span class="na-link"><a href="<?php echo $newcollection->getUrl(); ?>">Shop New Collection</a></span>
+                   <h2><span class="na-head">NEW ARRIVALS</span>
+                    <span class="na-link"><a href="<?php echo $newcollection->getUrl(); ?>">Shop New Collection</a></span></h2>
                 </div>
 
                 <?php
-                //retrieve color
                 $write = Mage::getSingleton('core/resource')->getConnection('core_read');
                 $readresult=$write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
                 while ($row = $readresult->fetch() ) {
                     $clrinfo[$row['Value']] = $row['Attribute'];
                 }
-                //                        $categoryIds = json_decode(trim(Mage::getModel('core/variable')->loadByCode('women_landing_category_ids')->getValue('plain')), true);
-                //
-                //                        $categoryId = $categoryIds['new_arrivals'];
-
-                //$newarrivals = Mage::getModel('catalog/category')->load($categoryId);
 
 
                 $productCollection = $newarrivals->getProductCollection()->addAttributeToFilter('type_id', 'configurable')->addAttributeToSelect('*');
