@@ -39,7 +39,7 @@
     $categoryBannerLabel = json_decode(trim(Mage::getModel('core/variable')->loadByCode('category_banner_label')->getValue('plain')), true);
 
     if ($_imgUrl = $_category->getImageUrl()) {
-        $_imgHtml = '<div class="bannerFluid"><img src="'.$_imgUrl.'" alt="'.$this->htmlEscape($_category->getName()).'" title="'.$this->htmlEscape($_category->getName()).'" />'.$categoryBannerLabel[$_category->getId()].'</div>';
+        $_imgHtml = '<div class="bannerFluid"><img src="'.$_imgUrl.'" alt="'.$this->htmlEscape($_category->getDescription()).'" title="'.$this->htmlEscape($_category->getDescription()).'" />'.$categoryBannerLabel[$_category->getId()].'</div>';
          $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
 
     }

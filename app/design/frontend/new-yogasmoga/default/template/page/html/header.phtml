@@ -368,14 +368,30 @@ function bubble(status){
                     $itemcount = 0;
                 }
                 $i = 1;
+                $urlString = Mage::helper('core/url')->getCurrentUrl();         // the url we see in browser   ex.   http://ysrangoli.com.local/mens/bottoms/shorts
+                $url = Mage::getSingleton('core/url')->parseUrl($urlString);
+
+                $path = $url->getPath();    // this part of url =>    /mens/bottoms/shorts
+                $urlPath = explode("/", $path);
+                $currentMainCategoryName = $urlPath[1];
+
+
                 foreach (Mage::helper('catalog/category')->getStoreCategories() as $child1) {
                     if ($child1->getIsActive()) {
-                        //show Main parent categories first level
-                        if($child1->getId() == $currentcategoryid)
-                            echo "<li><a class='menu-heading ' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+
+                            //echo "<li><h1><a class='menu-heading ' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a></h1>";
                         //echo "<li><a class='menu-heading posRel' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
-                        else
-                            echo "<li><a class ='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+
+                            $loopCategory = Mage::getModel("catalog/category")->load($child1->getId())->getUrl();
+                            $pos = strrpos($loopCategory, '/');
+                            $loopCategory = substr($loopCategory, $pos+1);
+
+
+                            if(strtolower($currentMainCategoryName)===strtolower($loopCategory))
+                                echo "<li><h1><a class='menu-heading ' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a></h1>";
+                            else
+                                echo "<li><a class='menu-heading ' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+
                             //echo "<li><a class='menu-heading posRel' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
                         // show sub categories second level
 

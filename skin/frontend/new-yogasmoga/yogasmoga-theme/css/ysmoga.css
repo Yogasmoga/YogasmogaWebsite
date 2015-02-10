@@ -2268,8 +2268,13 @@ div.new-arrivals-block{
 #bucket1_slider .over-the-slide.made-in-usa .bottom{
     font-size:18px;
 }
-
-
+.footer-block h1, .header-container h1, .subnav h1{
+    margin:0 !important;
+    line-height:13px;
+}
+.footer-block h1 a{
+    line-height:16px !important;
+}
 /* ///////////////WOMENS PAGE ///////////////////////////////// */
 
 #bucket1_slider .over-the-slide a.btn{

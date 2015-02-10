@@ -91,10 +91,18 @@ foreach ($_categories as $category){
                     foreach ($subsubsubcategory as $child3)
                     {
                         if($child3->getIsActive()) {
-                            $withsubcategoryhtml .=  '<li><a ';
-                            if($child3->getUrl() == $currentUrl)
-                                $withsubcategoryhtml .= 'class = "current"';
-                            $withsubcategoryhtml .= 'href='.$child3->getUrl().'>'.$child3->getName().'</a></li>';
+                            $withsubcategoryhtml .=  '<li>';
+                            //check for current url for h1 tag.......
+                            if($child3->getUrl() == $currentUrl){
+                                    $withsubcategoryhtml .=  '<h1><a ';
+                                    $withsubcategoryhtml .= 'class = "current"';
+                                    $withsubcategoryhtml .= 'href='.$child3->getUrl().'>'.$child3->getName().'</a></h1></li>';
+                            }
+                            else{
+                                    $withsubcategoryhtml .=  '<a ';
+                                    //$withsubcategoryhtml .= '';
+                                    $withsubcategoryhtml .= 'href='.$child3->getUrl().'>'.$child3->getName().'</a></li>';
+                                }
 
                         }
                     }
