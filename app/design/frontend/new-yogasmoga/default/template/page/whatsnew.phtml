@@ -133,12 +133,15 @@
                                     }
 
                                     $shopthecolorCategory = Mage::getModel('catalog/category')->load($categoryId);
-                                    $shopthecolor_imgUrl = $shopthecolorCategory -> getImageUrl();
-                                    $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
+                                    $shopthecolor_imgUrl = $shopthecolorCategory->getImageUrl();
+                                    $shopthecolor_alt = $shopthecolorCategory->getDescription();
+                                  $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
+
+
                                 ?>
                                 <!-- bannerContainer -->
                                 <div class="bannerFluid">
-                                    <img title="Top Sellers" alt="Top Sellers" src="<?php echo $shopthecolor_imgUrl; ?>">
+                                    <img title="<?php echo $shopthecolor_alt; ?>" alt="<?php echo $shopthecolor_alt; ?>" src="<?php echo $shopthecolor_imgUrl; ?>">
                                     <div class="bnrtxt">
                                         <h1 class="white<?php //echo $bannerTxt ?>">WHAT'S NEW</h1>
                                     </div>
