@@ -28,28 +28,28 @@
  */
 ?>
 <!-- Paste this code right after the <body> tag on every page of your site. -->
-    <!-- Qualaroo for yogasmoga.com  -->
+<!-- Qualaroo for yogasmoga.com  -->
 <?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
 if($serverType == 'production')
 {
     ?>
-<script type="text/javascript">
-  var _kiq = _kiq || [];
-  (function(){
-    setTimeout(function(){
-    var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
-    s.async = true; s.src = '//s3.amazonaws.com/ki.js/17463/aYr.js'; f.parentNode.insertBefore(s, f);
-    }, 1);
-  })();
+    <script type="text/javascript">
+        var _kiq = _kiq || [];
+        (function(){
+            setTimeout(function(){
+                var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+                s.async = true; s.src = '//s3.amazonaws.com/ki.js/17463/aYr.js'; f.parentNode.insertBefore(s, f);
+            }, 1);
+        })();
 
-             
-</script>
-    <?php   }  ?>
-    <!--  END Qualaroo for yogasmoga.com  -->
+
+    </script>
+<?php   }  ?>
+<!--  END Qualaroo for yogasmoga.com  -->
 <?php
-    //echo "ehllo = ".Mage::getSingleton('core/session')->getisfirsttime();
-    //Mage::getSingleton('core/session')->setmyVariable('myValue');
-    //echo Mage::getSingleton('core/session')->getmyVariable();
+//echo "ehllo = ".Mage::getSingleton('core/session')->getisfirsttime();
+//Mage::getSingleton('core/session')->setmyVariable('myValue');
+//echo Mage::getSingleton('core/session')->getmyVariable();
 ?>
 
 <!-- sign-up pop up for first time user  -->
@@ -65,18 +65,18 @@ if($serverType == 'production')
         jQuery.ajax({
             url : url,
             type : 'POST',
-           // data : {'firstname':fname,'lastname':lname,'email':email_id,'password':pwd,'confirmation':cpassword,'is_subscribed':is_subscribed},
+            // data : {'firstname':fname,'lastname':lname,'email':email_id,'password':pwd,'confirmation':cpassword,'is_subscribed':is_subscribed},
 
             success : function(data){
-                 data = eval('('+data + ')');
+                data = eval('('+data + ')');
                 var status = data.status;
                 //status = "error";// stop signup popup
                 if(status == "success")
                 {
                     $("#signup").dialog( "open" );
                     $(".header-container").on("click",".topmenulinks li a,.logo a",function() {
-                    var navHref = $(this).attr("href");
-                    window.location = navHref;
+                        var navHref = $(this).attr("href");
+                        window.location = navHref;
                     });
                     $("#signup").on( "dialogclose", function( event, ui ) {
 
@@ -93,222 +93,224 @@ if($serverType == 'production')
 
 </script>
 
-        <!-- call signup popup  -->
-        <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/popups/popup_signup.phtml')->toHtml(); ?>
-        <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/popups/popup_signing.phtml')->toHtml(); ?>
-        <script type="application/javascript">
+<!-- call signup popup  -->
+<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/popups/popup_signup.phtml')->toHtml(); ?>
+<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/popups/popup_signing.phtml')->toHtml(); ?>
+<script type="application/javascript">
 
-            jQuery(document).ready(function($){               
+    jQuery(document).ready(function($){
 
-                $(window).resize(function(event) {
-                    var pW1 = ($(document).width() - $(".firstdialog").width())/2;
-                    var pH1 = ($(window).height() - $(".firstdialog").height())/2;
-                    $(".firstdialog").css({left:pW1,top:pH1+10});
-                });
-                setTimeout(function() {
-                    $(".ui-widget-overlay").css({height:$(document).height()});
-                }, 3000);
+        $(window).resize(function(event) {
+            var pW1 = ($(document).width() - $(".firstdialog").width())/2;
+            var pH1 = ($(window).height() - $(".firstdialog").height())/2;
+            $(".firstdialog").css({left:pW1,top:pH1+10});
+        });
+        setTimeout(function() {
+            $(".ui-widget-overlay").css({height:$(document).height()});
+        }, 3000);
 
-            });
+    });
 
-        </script>
-        <script type="application/javascript">
-            jQuery(document).ready(function($){
-                $("#signup-button").click(function(event){
-                    $("#err-msg").text("");
-                    var fname = $.trim($("#pfirstname").val());
-                    var lname = $.trim($("#plastname").val());
-                    var email_id = $.trim($("#pemail_address").val());
-                    var pwd = $.trim($("#p_password").val());
-                    if(fname == "" || fname == "First Name")
-                    {
-                        event.preventDefault();
-                        $("#err-msg").css("visibility","visible");
-                        $("#err-msg").text("All fields are required.");
-                        // $("#pfirstname").focus();
-                        return;
-                    }
-                    if(lname == "" || lname == "Last Name")
-                    {
-                        event.preventDefault();
-                        $("#err-msg").css("visibility","visible");
-                        $("#err-msg").text("All fields are required.");
-                        // $("#plastname").focus();
-                        return;
-                    }
-                    if(email_id == "" || email_id == "Email Address")
-                    {
-                        event.preventDefault();
-                        $("#err-msg").css("visibility","visible");
-                        $("#err-msg").text("All fields are required.");
-                        // $("#pemail_address").focus();
-                        return;
-                    }
-                    if(email_id != "")
-                    {
-                        if(!validateEmail($("#pemail_address").val()))
+</script>
+<script type="application/javascript">
+    jQuery(document).ready(function($){
+        $("#signup-button").click(function(event){
+            $("#err-msg").text("");
+            var fname = $.trim($("#pfirstname").val());
+            var lname = $.trim($("#plastname").val());
+            var email_id = $.trim($("#pemail_address").val());
+            var pwd = $.trim($("#p_password").val());
+            if(fname == "" || fname == "First Name")
+            {
+                event.preventDefault();
+                $("#err-msg").css("visibility","visible");
+                $("#err-msg").text("All fields are required.");
+                // $("#pfirstname").focus();
+                return;
+            }
+            if(lname == "" || lname == "Last Name")
+            {
+                event.preventDefault();
+                $("#err-msg").css("visibility","visible");
+                $("#err-msg").text("All fields are required.");
+                // $("#plastname").focus();
+                return;
+            }
+            if(email_id == "" || email_id == "Email Address")
+            {
+                event.preventDefault();
+                $("#err-msg").css("visibility","visible");
+                $("#err-msg").text("All fields are required.");
+                // $("#pemail_address").focus();
+                return;
+            }
+            if(email_id != "")
+            {
+                if(!validateEmail($("#pemail_address").val()))
+                {
+                    event.preventDefault();
+                    $("#err-msg").css("visibility","visible");
+                    $("#err-msg").text("Enter valid email address.");
+                    // $("#pemail_address").focus();
+                    return;
+                }
+            }
+            if(pwd == "" || pwd == "Select a password")
+            {
+                event.preventDefault();
+                $("#err-msg").css("visibility","visible");
+                $("#err-msg").text("All fields are required.");
+                // $("#p_password").focus();
+                return;
+            }
+            var str = $("#p_password").val();
+
+            if(str.length < 6 )
+            {
+                event.preventDefault();
+                $("#err-msg").css("visibility","visible");
+                $("#err-msg").text("Password requires 6 or more characters.");
+                // $("#p_password").focus();
+                return;
+            }
+
+            if(window.location.href.indexOf('https://') >= 0)
+                _usesecureurl = true;
+            else
+                _usesecureurl = false;
+            var url = homeUrl + 'mycatalog/myproduct/registercustomer';
+            var imgurl = homeUrl;
+            if(_usesecureurl){
+                url = securehomeUrl + 'mycatalog/myproduct/registercustomer';
+                imgurl = securehomeUrl;
+            }
+
+            // var pfirstname = $("#pfirstname").val();
+            // var plastname = $("#plastname").val();
+            // var pemail_address = $("#pemail_address").val();
+            // var password = $("#p_password").val();
+            var cpassword = pwd;
+            var is_subscribed = $("#is_subscribed").val();
+            if(_checksinghupformsubmit == false)
+            {
+
+                _checksinghupformsubmit = true;
+                jQuery.ajax({
+                    url : url,
+                    type : 'POST',
+                    data : {'firstname':fname,'lastname':lname,'email':email_id,'password':pwd,'confirmation':cpassword,'is_subscribed':is_subscribed},
+                    beforeSend: function() {
+                        $("#signup-button").css("background-image","url("+imgurl+"skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png)");
+                    },
+                    success : function(data){
+                        _checksinghupformsubmit  = false;
+                        // console.log(data);
+                        data = eval('('+data + ')');
+                        var status = data.status;
+                        var errors = data.errors;
+                        var name = data.fname;
+                        if(status == "success")
                         {
-                            event.preventDefault();
-                            $("#err-msg").css("visibility","visible");
-                            $("#err-msg").text("Enter valid email address.");
-                            // $("#pemail_address").focus();
-                            return;
-                        }
-                    }
-                    if(pwd == "" || pwd == "Select a password")
-                    {
-                        event.preventDefault();
-                        $("#err-msg").css("visibility","visible");
-                        $("#err-msg").text("All fields are required.");
-                        // $("#p_password").focus();
-                        return;
-                    }
-                    var str = $("#p_password").val();
+                            //event tracking for signup popup registration success
+                            <?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
+                                    if($serverType == 'production') {
+                             ?>_gaq.push(['_trackEvent', 'account open popup', 'Sign Up']);
+                            <?php } ?>
 
-                    if(str.length < 6 )
-                    {
-                        event.preventDefault();
-                        $("#err-msg").css("visibility","visible");
-                        $("#err-msg").text("Password requires 6 or more characters.");
-                        // $("#p_password").focus();
-                        return;
-                    }
+                            // $( "#signup" ).dialog("close");
+                            $("#sign_up_box").hide();
+                            $("#thank_you_box").show();
+                            _islogedinuser = true;
+                            $("#signin").html("SIGN OUT").attr({href:homeUrl+'customer/account/logout/',id:"sign-out"});
+                            if(name != '')
+                                $("#welcome-name").html("Hi "+name);
 
-                    if(window.location.href.indexOf('https://') >= 0)
-                        _usesecureurl = true;
-                    else
-                        _usesecureurl = false;
-                    var url = homeUrl + 'mycatalog/myproduct/registercustomer';
-                    var imgurl = homeUrl;
-                    if(_usesecureurl){
-                        url = securehomeUrl + 'mycatalog/myproduct/registercustomer';
-                        imgurl = securehomeUrl;
-                    }
-
-                    // var pfirstname = $("#pfirstname").val();
-                    // var plastname = $("#plastname").val();
-                    // var pemail_address = $("#pemail_address").val();
-                    // var password = $("#p_password").val();
-                    var cpassword = pwd;
-                    var is_subscribed = $("#is_subscribed").val();
-                    if(_checksinghupformsubmit == false)
-                    {
-
-                        _checksinghupformsubmit = true;
-                        jQuery.ajax({
-                            url : url,
-                            type : 'POST',
-                            data : {'firstname':fname,'lastname':lname,'email':email_id,'password':pwd,'confirmation':cpassword,'is_subscribed':is_subscribed},
-                            beforeSend: function() {
-                                $("#signup-button").css("background-image","url("+imgurl+"skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png)");
-                            },
-                            success : function(data){
-                                _checksinghupformsubmit  = false;
-                                // console.log(data);
-                                data = eval('('+data + ')');
-                                var status = data.status;
-                                var errors = data.errors;
-                                var name = data.fname;
-                                if(status == "success")
-                                {
-                                    //event tracking for signup popup registration success
-                                    <?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
-                                            if($serverType == 'production') {
-                                     ?>_gaq.push(['_trackEvent', 'account open popup', 'Sign Up']);
-                                    <?php } ?>
-
-                                    // $( "#signup" ).dialog("close");
-                                    $("#sign_up_box").hide();
-                                    $("#thank_you_box").show();
-                                    _islogedinuser = true;
-                                    $("#signin").html("SIGN OUT").attr({href:homeUrl+'customer/account/logout/',id:"sign-out"});
-                                    if(name != '')
-                                    $("#welcome-name").html("Hi "+name);
-
-                                    $( "#signup" ).dialog({
-                                        close : function( event, ui ) {
-                                            <?php
-                                             $currentUrl = Mage::helper('core/url')->getCurrentUrl();
-                                               if(strpos($currentUrl,'checkout/cart') !== false) {
-                                                  ?>window.location.reload(); <?php
+                            $( "#signup" ).dialog({
+                                close : function( event, ui ) {
+                                    <?php
+                                     $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+                                       if(strpos($currentUrl,'checkout/cart') !== false) {
+                                          ?>window.location.reload(); <?php
                                             }
                                             if(strpos($currentUrl,'customer/account/login') !== false) {
                                                ?>window.location.reload(); <?php
                                             }
                                           ?>
-                                        }
-                                    });
-
                                 }
-                                else{
+                            });
 
-                                    $("#signup-button").css("background-image","url("+imgurl+"skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png)");
-                                    $("#err-msg").css("visibility","visible");
-                                    $("#err-msg").text(errors);
+                        }
+                        else{
 
-                                }
-                            }
-                        });
+                            $("#signup-button").css("background-image","url("+imgurl+"skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png)");
+                            $("#err-msg").css("visibility","visible");
+                            $("#err-msg").text(errors);
+
+                        }
                     }
-                    event.preventDefault();
                 });
-            });
-        </script>
+            }
+            event.preventDefault();
+        });
+    });
+</script>
 <?php
 $currentUrl = $this->helper('core/url')->getCurrentUrl();
 $checkoutpage= $this->getUrl().'checkout/onepage';
 $successpage= $this->getUrl().'checkout/onepage/success';
 
 if($currentUrl != $checkoutpage){
-?>
-<!--Start of Zopim Live Chat Script-->
-<script type="text/javascript">
-window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
-d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
-_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
-$.src='//v2.zopim.com/?2Fg0V06nbC3ddKB1tNUN3VPXPE7wA7eV';z.t=+new Date;$.
-type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+    ?>
+    <!--Start of Zopim Live Chat Script-->
+    <script type="text/javascript">
+        window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+            d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+            _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+            $.src='//v2.zopim.com/?2Fg0V06nbC3ddKB1tNUN3VPXPE7wA7eV';z.t=+new Date;$.
+                type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 
-jQuery(document).ready(function($){
-    $zopim(function() {
-        $zopim.livechat.setOnStatus(bubble);
-    });
-});
-function bubble(status){
-   // jQuery('.online-status-icon').attr('src','<?php echo $this->getSkinUrl('images/footer/offline.png') ?>');
-    jQuery('.chat-status').empty().html('<img alt="Offline" src="<?php echo $this->getSkinUrl('images/footer/offline.png') ?>" class="online-status-icon"> Offline now');    
-  //  jQuery('.online > span').css('background-color','#999');
-    jQuery('.online').empty().html('<span style="background-color: #999;"></span> Offline now');    
-    if(status =='online')
-    {
-       //// jQuery('.online-status-icon').attr('src','<?php echo $this->getSkinUrl('images/footer/online.png') ?>');
-        jQuery('.chat-status').empty().html('<img alt="Online" src="<?php echo $this->getSkinUrl('images/footer/online.png') ?>" class="online-status-icon"> Online now');    
-        ////jQuery('.online > span').css('background-color','#00A14B');
-        jQuery('.online').empty().html('<span style="background-color: #00a14b;"></span> Online now');    
-        
-       // jQuery('.chat-status').text('online now');    
-    }
-}
-</script>
-<!--End of Zopim Live Chat Script-->
-<script type="text/javascript">
-    // jQuery(document).ready(function($){
-    //     // for macOS
-    //     if(navigator.userAgent.indexOf('Mac') > 0) {
-    //         $('body').addClass('mac-os');
-    //     }
+        jQuery(document).ready(function($){
+            $zopim(function() {
+                $zopim.livechat.setOnStatus(bubble);
+                $zopim.livechat.button.setPosition('bl');
+                $zopim.livechat.window.setPosition('bl');
+            });
+        });
+        function bubble(status){
+            // jQuery('.online-status-icon').attr('src','<?php echo $this->getSkinUrl('images/footer/offline.png') ?>');
+            jQuery('.chat-status').empty().html('<img alt="Offline" src="<?php echo $this->getSkinUrl('images/footer/offline.png') ?>" class="online-status-icon"> Offline now');
+            //  jQuery('.online > span').css('background-color','#999');
+            jQuery('.online').empty().html('<span style="background-color: #999;"></span> Offline now');
+            if(status =='online')
+            {
+                //// jQuery('.online-status-icon').attr('src','<?php echo $this->getSkinUrl('images/footer/online.png') ?>');
+                jQuery('.chat-status').empty().html('<img alt="Online" src="<?php echo $this->getSkinUrl('images/footer/online.png') ?>" class="online-status-icon"> Online now');
+                ////jQuery('.online > span').css('background-color','#00A14B');
+                jQuery('.online').empty().html('<span style="background-color: #00a14b;"></span> Online now');
 
-    //     // for chrome only
-    //     if(navigator.userAgent.indexOf('Chrome') > 0) {
-    //         $('body').addClass('chrome');
-    //     }
+                // jQuery('.chat-status').text('online now');
+            }
+        }
+    </script>
+    <!--End of Zopim Live Chat Script-->
+    <script type="text/javascript">
+        // jQuery(document).ready(function($){
+        //     // for macOS
+        //     if(navigator.userAgent.indexOf('Mac') > 0) {
+        //         $('body').addClass('mac-os');
+        //     }
 
-    //     // for safari only
-    //     if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
-    //         $('body').addClass('safari');
-    //     }
-    // });
-</script>
+        //     // for chrome only
+        //     if(navigator.userAgent.indexOf('Chrome') > 0) {
+        //         $('body').addClass('chrome');
+        //     }
+
+        //     // for safari only
+        //     if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+        //         $('body').addClass('safari');
+        //     }
+        // });
+    </script>
 <?php
 }
 ?>
@@ -319,38 +321,38 @@ function bubble(status){
 <div class="header-container">
     <div id="globalheader" class="header
     <?php
-        if ($this->getIsHomePage())
+    if ($this->getIsHomePage())
+    {
+        Mage::getSingleton('core/session')->setisfirsttime('No');
+        $isfirsttime = Mage::getSingleton('core/session')->getisfirsttime();
+        //echo $isfirsttime."  sdfsd";
+        if(strlen($isfirsttime) > 0)
         {
-            Mage::getSingleton('core/session')->setisfirsttime('No');
-            $isfirsttime = Mage::getSingleton('core/session')->getisfirsttime();
-            //echo $isfirsttime."  sdfsd"; 
-            if(strlen($isfirsttime) > 0)
-            {
-                echo " top0";
-            }
-            else
-            {
-                Mage::getSingleton('core/session')->setisfirsttime('No');
-            }   
+            echo " top0";
         }
         else
-            echo " top0";
+        {
+            Mage::getSingleton('core/session')->setisfirsttime('No');
+        }
+    }
+    else
+        echo " top0";
     ?>">
         <?php //if ($this->getIsHomePage()):?>
         <?php if (true):?>
-        <!-- <div class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img class="logo" src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></div> -->
+            <!-- <div class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img class="logo" src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></div> -->
         <?php else:?>
-        <!-- <div class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a class="logo" href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></div> -->
+            <!-- <div class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a class="logo" href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></div> -->
         <?php endif?>
-        
+
         <div class="f-left header-left">
             <div class="logo posRel">
                 <a class="logo" href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>">
                     <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
                 </a>
-            </div>            
+            </div>
             <ul class="f-left main-menu ctag-menu">
-            <li id="stepCheck">3 Step Checkout <span><span class="f-left">Free and fast shipping to US and Canada</span>
+                <li id="stepCheck">3 Step Checkout <span><span class="f-left">Free and fast shipping to US and Canada</span>
                 <span class="f-left" style="margin: 0 0 0 10px">
                     <img alt="YOGASMOGA - United States" src="<?php echo $this->getSkinUrl('images/USflag-new.png') ?>" style="height:16px;" />
                     <img alt="YOGASMOGA - Canada" src="<?php echo $this->getSkinUrl('images/canada-flag-new.png') ?>" style="height:16px;"/>
@@ -376,7 +378,7 @@ function bubble(status){
                         //echo "<li><a class='menu-heading posRel' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
                         else
                             echo "<li><a class ='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
-                            //echo "<li><a class='menu-heading posRel' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
+                        //echo "<li><a class='menu-heading posRel' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
                         // show sub categories second level
 
 //                        echo '<ul class="sub-menu"><li><ul><li><a href="">What\'s new!</a></li><li><a href="">Shop the colors!</a></li><li><a href="">Top sellers</a></li>
@@ -391,7 +393,7 @@ function bubble(status){
 
                             if($child2->getIsActive() && $subsubcategory->getIncludeInMenu()) {
 
-                                 $subsubcategories = $subsubcategory->getChildrenCategories();
+                                $subsubcategories = $subsubcategory->getChildrenCategories();
 
                                 if($subsubcategory->getChildrenCount() == 0){
                                     $firstcolumn .= "<li><a href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a></li>";
@@ -443,41 +445,41 @@ function bubble(status){
                     }
 
                 }
-    /*            foreach (Mage::helper('catalog/category')->getStoreCategories() as $child1) {
-                    if ($child1->getIsActive()) {
-                        //show Main parent categories first level
-                        if($child1->getId() == $currentcategoryid)
-                            echo "<li><a class='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
-                        else
-                            echo "<li><a class ='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
-                        // show sub categories second level
-                        echo '<ul class="sub-menu"><li><ul><li><a href="">What\'s new!</a></li><li><a href="">Shop the colors!</a></li><li><a href="">Top sellers</a></li>
-                           </ul></li>';
-                                $subcategory = Mage::getModel('catalog/category')->load($child1->getId());
-                                $subcategories = $subcategory->getChildrenCategories();
-                                foreach ($subcategories as $child2)
-                                {
-                                    if($child2->getIsActive()) {
-                                    echo "<li><a href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a><ul>";
-                                         // show sub categories third level
-                                                $subsubcategory = Mage::getModel('catalog/category')->load($child2->getId());
-                                                $subsubcategories = $subsubcategory->getChildrenCategories();
-                                                foreach ($subsubcategories as $child3)
-                                                {
-                                                    if($child3->getIsActive()) {
-                                                        echo "<li><a href=\"".$child3->getUrl()."\">" . $child3->getName();
-                                                        echo "</a></li>";
-                                                    }
+                /*            foreach (Mage::helper('catalog/category')->getStoreCategories() as $child1) {
+                                if ($child1->getIsActive()) {
+                                    //show Main parent categories first level
+                                    if($child1->getId() == $currentcategoryid)
+                                        echo "<li><a class='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+                                    else
+                                        echo "<li><a class ='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
+                                    // show sub categories second level
+                                    echo '<ul class="sub-menu"><li><ul><li><a href="">What\'s new!</a></li><li><a href="">Shop the colors!</a></li><li><a href="">Top sellers</a></li>
+                                       </ul></li>';
+                                            $subcategory = Mage::getModel('catalog/category')->load($child1->getId());
+                                            $subcategories = $subcategory->getChildrenCategories();
+                                            foreach ($subcategories as $child2)
+                                            {
+                                                if($child2->getIsActive()) {
+                                                echo "<li><a href=\"".$child2->getUrl()."\"> " . $child2->getName()."</a><ul>";
+                                                     // show sub categories third level
+                                                            $subsubcategory = Mage::getModel('catalog/category')->load($child2->getId());
+                                                            $subsubcategories = $subsubcategory->getChildrenCategories();
+                                                            foreach ($subsubcategories as $child3)
+                                                            {
+                                                                if($child3->getIsActive()) {
+                                                                    echo "<li><a href=\"".$child3->getUrl()."\">" . $child3->getName();
+                                                                    echo "</a></li>";
+                                                                }
+                                                            }
+
+                                                echo "</ul></li>";
                                                 }
+                                            }
 
                                     echo "</ul></li>";
-                                    }
                                 }
 
-                        echo "</ul></li>";
-                    }
-
-                }*/
+                            }*/
                 echo "</ul>";
                 ?>
 
@@ -512,7 +514,7 @@ function bubble(status){
                     </li>
                     <li><?php
 
-                                $islogedinuser = false;
+                        $islogedinuser = false;
                         if (Mage::getSingleton('customer/session')->isLoggedIn()) {
 
                             $islogedinuser = true;
@@ -523,7 +525,7 @@ function bubble(status){
                             </script>
 
                         <?php
-                            }
+                        }
                         ?>
                         <a id="welcome-name" href="<?php if($islogedinuser) echo $this->getBaseUrl()."customer/account/index"; else echo "javascript:void(0);";  ?>"><?php if($islogedinuser)echo "Hi ".$firstname;else echo "My Account";  ?></a>
                         <ul class="sub-menu l-align my-acnt" style="left: -64px;">
@@ -538,9 +540,9 @@ function bubble(status){
                     <li class="checkoutshow" style="display:none;"><span>|</span><a class="checkout-link-top" href="<?php echo $this->getBaseUrl();?>checkout/onepage">Checkout</a></li>
                 </ul>
             </div>
-            <div class="right-bottom-block">                
+            <div class="right-bottom-block">
                 <div class="in-bl">
-                    <ul class="main-menu main-menu2">                                          
+                    <ul class="main-menu main-menu2">
                         <li><a href="<?php echo $this->getBaseUrl();?>our-story" class="main-heading">ys story</a>
                             <ul class="sub-menu l-align cms-header-link" style="left:-69px;">
                                 <li><a href="<?php echo $this->getBaseUrl();?>our-story">Our Story</a></li>
@@ -556,11 +558,11 @@ function bubble(status){
                             <ul class="sub-menu l-align cms-header-link" style="left:-73px;">
                                 <li><a href="<?php echo $this->getBaseUrl();?>ys-fabric-tech">ys fabric tech</a></li>
                                 <li><a href="<?php echo $this->getBaseUrl();?>ys-color-tech">ys color tech</a></li>
-                                <li><a href="<?php echo $this->getBaseUrl();?>design-elements">ys design elements</a></li>                                                               
+                                <li><a href="<?php echo $this->getBaseUrl();?>design-elements">ys design elements</a></li>
                             </ul>
                         </li>
                         <li><a href="<?php echo $this->getBaseUrl();?>smogi-bucks" class="main-heading">Smogi Bucks</a>
-                            <ul class="sub-menu mlink l-align" style="left:-57px;">                                
+                            <ul class="sub-menu mlink l-align" style="left:-57px;">
                                 <li><a href="<?php echo $this->getBaseUrl();?>smogi-bucks">what is smogi bucks</a></li>
                                 <li><a href="<?php echo $this->getBaseUrl();?>smogi-bucks#get-smogi-bucks">how can i get them</a></li>
                                 <li><a href="<?php echo $this->getBaseUrl();?>smogi-bucks#smogi-bucks-balance">smogi bucks balance</a></li>
@@ -569,13 +571,13 @@ function bubble(status){
                         <li class="rangoli"><a href="<?php echo $this->getBaseUrl();?>rangoli" class="rangoliRd" id="rangoli-head">Rangoli</a></li>
                     </ul>
                 </div>
-                <?php echo $this->getChildHtml('topSearch') ?>    
-                          
-            </div>             
-                                            
+                <?php echo $this->getChildHtml('topSearch') ?>
+
+            </div>
+
         </div>
-               
-        
+
+
         <div class="quick-access">
             <?php //echo $this->getChildHtml('topSearch') ?>
             <!-- <p class="welcome-msg"><?php echo $this->getWelcome() ?> <?php echo $this->getAdditionalHtml() ?></p> -->
@@ -590,34 +592,34 @@ function bubble(status){
 </div>
 <div id="bodycompensator"
     <?php if ($this->getIsHomePage() && strlen($isfirsttime) == 0)
-        {
-            ?>
-                style="display:none;"
-            <?php    
-        }
+    {
+        ?>
+        style="display:none;"
+    <?php
+    }
     ?>
-></div>
+    ></div>
 <?php //echo $this->getChildHtml('topMenu') ?>
 
 
 <!-- toCheckFirstCustomerOrderforGOYS -->
 <?php $orders = Mage::getModel('sales/order')->getCollection()
     ->addAttributeToFilter('customer_id', Mage::getSingleton('customer/session')->getCustomer()->getId());
-    foreach ($orders as $order) {
-        $total = $order->getGrandTotal();
-        $sum+= $total;
+foreach ($orders as $order) {
+    $total = $order->getGrandTotal();
+    $sum+= $total;
 
-    }
+}
 
-    $getGOYSFirstUser = count($orders);
-    //echo Mage::getSingleton('customer/session')->getCustomer()->getId();
-    //echo $getGOYSFirstUser;die("Testing");
+$getGOYSFirstUser = count($orders);
+//echo Mage::getSingleton('customer/session')->getCustomer()->getId();
+//echo $getGOYSFirstUser;die("Testing");
 
-    if($getGOYSFirstUser == 0){
-        ?>
-        <script type="text/javascript">
-            _getGOYSFirstUser = 1;
-        </script>
-        <?php
-    }
+if($getGOYSFirstUser == 0){
+    ?>
+    <script type="text/javascript">
+        _getGOYSFirstUser = 1;
+    </script>
+<?php
+}
 ?>
