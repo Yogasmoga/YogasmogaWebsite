@@ -80,7 +80,14 @@ jQuery(document).ready(function($){
     var colorattributeid = '';
     var sizeattributeid = '';
     jQuery(".addbracelet").live("click",function(){
-        jQuery(this).html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
+
+/*********** updated code ********/
+        //jQuery(this).html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
+
+        jQuery(".addbracelet").parent().append("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='margin-left:15px'/>");
+        jQuery(".addbracelet").hide();
+/*********** updated code ********/
+
         pid = (jQuery(this).parent("span").parent("li").attr("productid")).trim();
         colorattributeid = (jQuery(this).parent("span").parent("li").attr("colorattributeid")).trim();
         sizeattributeid =  (jQuery(this).parent("span").parent("li").attr("sizeattributeid")).trim();
@@ -94,6 +101,12 @@ jQuery(document).ready(function($){
         var deleteproductid = (jQuery(this).parent("li").attr("id")).trim();
         var productcartqty = jQuery(this).prev("span").find("span.quantity").attr("cartqty")
         jQuery(this).parent("li").html("<img style='margin:20px 0;' src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
+
+/************ updated code **************/
+    jQuery(".addedItem").find("a.close").hide();
+/************ updated code **************/
+
+
         deleteproduct(deleteproductid,productcartqty);
     });
 
@@ -412,11 +425,12 @@ function giftcart() {
     else showerror('Invalid gift of YS code.');
 }
 function showShoppingBagHtml()
-{    
+{
     if(window.location.href.indexOf('https://') >= 0)
         _usesecureurl = true;
     else
         _usesecureurl = false;
+
     var url = homeUrl + 'mynewtheme/shoppingbag/showshoppingbaghtml';
     var checkouturl = homeUrl + 'checkout/onepage';
     checkouturl = securehomeUrl + 'checkout/onepage';
@@ -644,8 +658,6 @@ function showerror(msg){
 }
 function addbracelettobag(pid,colorattributeid,sizeattributeid )
 {
-    //alert(_productid);
-
     if((jQuery(".qtyselector").find('option:selected').val() * 1) > 0)
     {
         var braceletorderqty = '';
@@ -653,7 +665,11 @@ function addbracelettobag(pid,colorattributeid,sizeattributeid )
         braceletorderqty = jQuery(".qtyselector").find('option:selected').val();
         var color = jQuery("#cmbcolor").val();
         var size = jQuery("#cmbsize").val();//alert(_productid);
-        var addurl = homeUrl + 'mynewtheme/shoppingbag/add?product=' + pid + '&qty=' + braceletorderqty + '&super_attribute[' + colorattributeid + ']=' + color;
+
+/******** code modified by ys ********/
+var addurl = homeUrl + 'mynewtheme/shoppingbag/add?product=' + pid + '&qty=1&super_attribute[' + colorattributeid + ']=' + color;
+        //var addurl = homeUrl + 'mynewtheme/shoppingbag/add?product=' + pid + '&qty=' + braceletorderqty + '&super_attribute[' + colorattributeid + ']=' + color;
+
         if(sizeattributeid)
             addurl = addurl + '&super_attribute[' + sizeattributeid + ']=' + size;
         //var targetUrl = homeUrl + 'mycatalog/myproduct/setNamaskarError/qty/' + braceletorderqty;
@@ -670,6 +686,10 @@ function addbracelettobag(pid,colorattributeid,sizeattributeid )
                     jQuery(".shopping-cart").html(result.html);
                     jQuery(".cartitemcount").html(result.count);
 
+/***************** code update for bracelet **************************/
+                    jQuery(".addbracelet").show();
+                    jQuery(".addedItem").find("a.close").show();
+/***************** code update for bracelet **************************/
                 }
             /*    else
                 {
@@ -689,6 +709,7 @@ function addbracelettobag(pid,colorattributeid,sizeattributeid )
     }
 }
 
+/************************** updated code ***************************/
 function deleteproduct(deletedproducid,productcartqty)
 {
     if(deletedproducid >0)
@@ -704,7 +725,9 @@ function deleteproduct(deletedproducid,productcartqty)
                 if(result.status == 'success')
                 {
                     _showShoppingbagLoader = false;
+
                     showShoppingBagHtml();
+
                     jQuery(".cartitemcount").html(result.count);
                     if(result.count < 1 )  jQuery(".checkoutshow").hide();
 
