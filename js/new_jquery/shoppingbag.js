@@ -679,7 +679,7 @@ function addbracelettobag(pid, colorattributeid, sizeattributeid) {
                 else {
                     jQuery(".addbracelet").show();
                     jQuery(".namaskarloader").hide();
-                    alert("Out of stock");
+                    alert("This item is out of stock.");
                 }
                 /*    else
                  {
