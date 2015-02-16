@@ -83,7 +83,7 @@ jQuery(document).ready(function ($) {
         /*********** updated code ********/
             //jQuery(this).html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' />");
 
-        jQuery(".addbracelet").parent().append("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='margin-left:15px'/>");
+        jQuery(".namaskarloader").show();
         jQuery(".addbracelet").hide();
         /*********** updated code ********/
 
@@ -448,7 +448,6 @@ function showShoppingBagHtml() {
     // end check for paypal final review page
     // ys update : setTimeout(function () {
 
-
         jQuery.ajax({
             url: url,
             type: 'POST',
@@ -462,6 +461,7 @@ function showShoppingBagHtml() {
                 jQuery(".cartitemcount").html(data.count);
 
 /************ added by ys team ************/
+                jQuery("#addtobagloader").hide();
                 if(firstTime==false)
                     jQuery(".open-cart").trigger("click");
                 else
@@ -673,7 +673,13 @@ function addbracelettobag(pid, colorattributeid, sizeattributeid) {
                     /***************** code update for bracelet **************************/
                     jQuery(".addbracelet").show();
                     jQuery(".addedItem").find("a.close").show();
+                    jQuery(".namaskarloader").hide();
                     /***************** code update for bracelet **************************/
+                }
+                else {
+                    jQuery(".addbracelet").show();
+                    jQuery(".namaskarloader").hide();
+                    alert("Out of stock");
                 }
                 /*    else
                  {

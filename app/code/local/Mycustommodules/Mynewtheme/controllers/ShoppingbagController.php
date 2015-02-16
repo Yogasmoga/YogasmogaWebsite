@@ -2142,7 +2142,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 */
 /************** code update, US team do not want to show quantity ****************************/
 
-                $html .= '<div class="clear-fix"></div><button class="addbracelet"><span>Add to bag</span></button></span>
+                $html .= '<div class="clear-fix"></div><button class="addbracelet"><span>Add to bag</span></button></span><img src="/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif" style="margin-left:15px;display:none" class="namaskarloader"/>
                                 </li>';
 
 

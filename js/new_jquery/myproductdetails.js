@@ -748,7 +748,7 @@ function addtocart() {
         data: {},
         success: function (result) {
             result = eval('(' + result + ')');
-            jQuery("#addtobagloader").hide();
+            //jQuery("#addtobagloader").hide();
             _addingtocart = false;
             if (result.status == 'success') {
                 if (_productdisplaymode == "popup") {
