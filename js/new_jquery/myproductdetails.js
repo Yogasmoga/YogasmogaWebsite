@@ -737,12 +737,18 @@ function addtocart() {
     }
     // for do not call old shopping bag html in new theme
     addurl = addurl + '&showhtml=0';
+
+/************** added by ys team **************/
+    jQuery("#addtobagloader").show();
+    //jQuery("<div id='addtobagloader'><img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' /></div>").insertAfter(jQuery(this));
+
     jQuery.ajax({
         type: 'POST',
         url: addurl,
         data: {},
         success: function (result) {
             result = eval('(' + result + ')');
+            jQuery("#addtobagloader").hide();
             _addingtocart = false;
             if (result.status == 'success') {
                 if (_productdisplaymode == "popup") {
@@ -754,6 +760,10 @@ function addtocart() {
                 jQuery("span.cartitemcount").html(result.count);
 
                 jQuery("div#myminicart").html(result.html);
+
+/******* added by ys team ********/
+                showShoppingBagHtml();
+/******* added by ys team ********/
 
                 jQuery("div#myminicart").slideDown('slow', function () {
                     setTimeout(function () {
@@ -790,6 +800,8 @@ function addtocart() {
 
 
 }
+
+
 function setImageContheightPDP() {
     var pdpimagecontH = jQuery("table.tdbigimagecontainer img").height();
     jQuery("table.productimagecontainer").parent(".upper-container").css("min-height", pdpimagecontH + 70);
