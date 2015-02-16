@@ -786,6 +786,7 @@ function addtocart() {
                 //                });
             }
             else {
+                jQuery("#addtobagloader").hide();
                 alert('This item is out of stock.');
             }
             //
