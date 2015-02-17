@@ -521,10 +521,7 @@ function showShoppingBagHtmlOpen() {
 
             /************ added by ys team ************/
             jQuery("#addtobagloader").hide();
-            if(firstTime==false)
-                jQuery(".open-cart").trigger("click");
-            else
-                firstTime = false;
+            jQuery(".open-cart").trigger("click");
             /************ added by ys team ************/
 
             if (data.countdiscount > 1)
