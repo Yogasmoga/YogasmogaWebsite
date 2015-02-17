@@ -762,7 +762,7 @@ function addtocart() {
                 jQuery("div#myminicart").html(result.html);
 
 /******* added by ys team ********/
-                showShoppingBagHtml();
+                showShoppingBagHtmlOpen();          // copy of existing method, show shopping bag on adding product
 /******* added by ys team ********/
 
                 jQuery("div#myminicart").slideDown('slow', function () {
