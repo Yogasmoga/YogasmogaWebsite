@@ -126,22 +126,19 @@
                                         //print_r($positions);die;
                                         $bannerTxt = 'white';
                                     }
-                                    if($urlKey == 'mens')
+                                    if($urlKey == 'men')
                                     {
                                         $categoryId = $categoryIds['whatsnew_mens'];
                                         $bannerTxt = 'white';
                                     }
 
                                     $shopthecolorCategory = Mage::getModel('catalog/category')->load($categoryId);
-                                    $shopthecolor_imgUrl = $shopthecolorCategory->getImageUrl();
-                                    $shopthecolor_alt = $shopthecolorCategory->getDescription();
-                                  $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
-
-
+                                    $shopthecolor_imgUrl = $shopthecolorCategory -> getImageUrl();
+                                    $productCollection = $shopthecolorCategory->getProductCollection()->addAttributeToFilter('type_id', 'simple')->addAttributeToSelect('*');
                                 ?>
                                 <!-- bannerContainer -->
                                 <div class="bannerFluid">
-                                    <img title="<?php echo $shopthecolor_alt; ?>" alt="<?php echo $shopthecolor_alt; ?>" src="<?php echo $shopthecolor_imgUrl; ?>">
+                                    <img title="Top Sellers" alt="Top Sellers" src="<?php echo $shopthecolor_imgUrl; ?>">
                                     <div class="bnrtxt">
                                         <h1 class="white<?php //echo $bannerTxt ?>">WHAT'S NEW</h1>
                                     </div>
@@ -233,10 +230,10 @@
               </ul>";
 
     }
-    if($urlKey == "mens"){
+    if($urlKey == "men"){
         $goys .= "<ul class='subnav'>
 
-                <li><a href=".$this->getUrl()."mens/gift-sets-for-150/>Gift Sets for $150</a></li>
+                <li><a href=".$this->getUrl()."men/gift-sets-for-150/>Gift Sets for $150</a></li>
                 <li><a href=".$this->getUrl()."gift_of_ys/>Gift Card</a></li>
               </ul>";
     }
