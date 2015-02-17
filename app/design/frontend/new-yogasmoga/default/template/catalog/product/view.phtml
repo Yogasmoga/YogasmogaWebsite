@@ -122,7 +122,6 @@
 //    $breadcrumb .= '&nbsp;/&nbsp;<a href="' . Mage::getModel("catalog/category")->load(Mage::getModel('catalog/layer')->getCurrentCategory()->getId())->getUrl() . '#productgrid">ALL PRODUCTS</a>&nbsp;/';
 
 
-$rewardPointsEarned = 0.1;
 $price = $_product->getSpecialPrice();
 if ($price == "")
     $price = $_product->getPrice();
@@ -133,6 +132,7 @@ if (floor($price) == $price)
 $productPrice = "$" . $price;
 
 // get the string:   earn 5 smogi bucks with this purchase.
+$rewardPointsEarned = 0.1;
 $rewardPoints = Mage::helper('rewardpoints/data')->getProductPointsText($_product, false, false);
 $rewardPoints = strip_tags($rewardPoints);          // remove php and html tags
 
@@ -186,7 +186,7 @@ foreach ($_childProducts as $_childProduct) {
 
     $childProductName = $_childProduct->getName();          // ex. U & Me Bra - Carbon 6-2
     $pos = strrpos($childProductName, '-');                 // find position of last -
-    $nameWithColor = substr($childProductName, 0, $pos);  // remove last -
+    $nameWithColor = substr($childProductName, 0, $pos);    // remove last -
     $pos = strrpos($nameWithColor, '-');
     $colorName = trim(substr($nameWithColor, $pos + 1));       // get color name =>  Carbon
 
@@ -1057,6 +1057,7 @@ if ($_product->getAttributeText('canzoomimage') == "yes") {
          imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>"
          downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>">
     </div>
+    <div id='addtobagloader' style="display: none"><img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' /></div>
     <!-- addToBagBtn -->
 
     <!-- outOfStockBtn -->

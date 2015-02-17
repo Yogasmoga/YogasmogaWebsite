@@ -38,6 +38,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         foreach ($session->getQuote()->getAllItems() as $item)
         {
             $temparray = array();
+
             if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
             {
                 if($this->searchcart($miniitems, $item->getSku()) == false)
@@ -79,7 +80,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         $temparray['name'] = substr($temparray['name'], 0, 19)."...";
                     $temparray['quantity'] = $item->getQty();
                     $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
-                    $temparray['imageurl'] = $this->getMiniImage($item->getProductId());
+                    $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), '');
                     $temparray['imageurl'] = "_".Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 100)->setQuality(100);
                     $temparray['producturl'] = $_product->getProductUrl();
                     $temparray['itemid'] = $item->getItemId();
@@ -98,7 +99,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     $temparray['name'] = substr($temparray['name'], 0, 19)."...";
                 $temparray['quantity'] = $item->getQty();
                 $temparray['price'] = "$".number_format((float)($item->getQty() * $item->getBaseCalculationPrice()), 2, '.', '');//  round($item->getQty() * $item->getBaseCalculationPrice(), 2);
-                $temparray['imageurl'] = $this->getMiniImage($item->getProductId());
+                $temparray['imageurl'] = $this->getMiniImage($item->getProductId(), '');
                 $temparray['imageurl'] = "_".Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 100)->setQuality(100);
                 $temparray['producturl'] = $_product->getProductUrl();
                 $temparray['itemid'] = $item->getItemId();
@@ -469,7 +470,6 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
                 <?php $html .= '<select id="cmbcolor">';
-
                 foreach($productcolorinfo as $key=>$colorinfo)
                 {
 
@@ -506,9 +506,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
 
-
-                $html .= '<select class="qtyselector">';
-
+/************** code update, US team do not want to show quantity ****************************/
+/*                $html .= '<select class="qtyselector">';
                 for($i = 1; $i < 11; $i++)
                 {
 
@@ -516,8 +515,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
                 }
 
-                $html .= '</select>
-                                </li>';
+                $html .= '</select>';  */
+/************** code update, US team do not want to show quantity ****************************/
+
+                $html .= '</li>';
 
 
 
@@ -538,6 +539,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         echo $html;
         //echo json_encode(array("html" => $html));
     }
+
     protected function _getCart()
     {
         return Mage::getSingleton('checkout/cart');
@@ -555,6 +557,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         }
         return false;
     }
+
     public function showshoppingbaghtmlAction()
     {
         $html = $this->createshoppingbaghtml();
@@ -564,9 +567,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
         echo json_encode(array("status" => "success","html" => $html,"count" => $this->getcartcount(),"countdiscount" => $countDiscountType,"discounttypeerror" => $discounttypeerror));
-    
-
     }
+
     public function fastshowshoppingbaghtmlAction()
     {
         $html = $this->fastcreateshoppingbaghtml();
@@ -576,6 +578,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         echo json_encode(array("status" => "success","html" => $html,"count" => $totalitems));
 
     }
+
     public function shoppingbagtotalsAction()
     {
         // refresh cart total
@@ -949,6 +952,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
     }
+
     public  function updateDiscount()
     {
         $html = '';
@@ -1053,6 +1057,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
     {
         return Mage::getSingleton('checkout/session');
     }
+
     public function addAction()
     {
         $cart   = $this->_getCart();
@@ -1181,6 +1186,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $html = '';
         $jshtml = '';
         $itemcount = $this->getcartcount();
+
         if($itemcount < 1)
         {
             $html = '
@@ -1200,8 +1206,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $_helper = Mage::helper('catalog/output');
         $minidetails = array();
         $miniitems = array();
-        $mageFilename = 'app/Mage.php';
-        require_once $mageFilename;
+
+        require_once 'app/Mage.php';
         umask(0);
         Mage::app();
         Mage::getSingleton('core/session', array('name'=>'frontend'));
@@ -1450,6 +1456,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
         $checkisactive = '';
 
+/************* check for smogi bucks ******************/
         $getsmogipointscurrentlyuserd = $this->getPointsCurrentlyUsed();
         if($getsmogipointscurrentlyuserd > 0)
         {
@@ -1461,6 +1468,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         </li>';
             $checksmogiapplied = true;
         }
+/************* check for smogi bucks ******************/
         // all conditions for apply coupon code (promotion code)
 
         // for 75 $ auto apply
@@ -1469,6 +1477,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             {
             $checkgiftsapply = true;
             }
+
+/************* check for coupon code ******************/
         $promotioncode = Mage::getModel('smogiexpirationnotifier/applyremovediscount')->getCouponCode();
         if($promotioncode == '' && !$checksmogiapplied && !$checkgiftsapply)
         {
@@ -1529,6 +1539,12 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
         }
+
+/************* check for coupon code ******************/
+
+
+/************* check for shipping code ******************/
+
         // all conditions for apply Gift of YS
         if(Mage::getSingleton('giftcards/session')->getActive() == "1" && Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()))
         {
@@ -1552,12 +1568,12 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $shippingcode = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingMethod();
         if($shippingcode == "")
             $shippingPrice =  "FREE";
-        else
-            if($this->getShippingCost($shippingcode) == 0)
+        else {
+            if ($this->getShippingCost($shippingcode) == 0)
                 $shippingPrice = "FREE";
             else
-                $shippingPrice =  "$".number_format((float)($this->getShippingCost($shippingcode)), 2, '.', '');
-
+                $shippingPrice = "$" . number_format((float)($this->getShippingCost($shippingcode)), 2, '.', '');
+        }
 
 
         if($checksmogiapplied == '1' && $showedpoints > 0) $usesmogi="<p class='c-align'>You can't use other codes with SMOGI Bucks.</p>";
@@ -1575,10 +1591,17 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
         $html .='     </li>';
+
+/************* check for shipping code ******************/
+
 //        if($tax > 0)
 //            $html .= '<li>
 //                        <span class="f-left">Tax: </span>
 //                            <span class="f-right capstxt">'."$".number_format((float)($tax), 2, '.', '').'</span></li>';
+
+
+/********************* logic for smogi bucks / gift cards text boxes *********************/
+
         $html .= '  </ul>
                     <!-- listItems -->
                     '.$usesmogi.'
@@ -1708,19 +1731,26 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $html .='                </form>
 
 
-                    
-
                     </div>
                     <div class="clear-fix"></div>
                     <!-- addItem Input -->
                 </div>
                 <!-- productOption -->
+
                 <!-- stripGry -->
                 <div class="strip-gry">Free and fast shipping to US and Canada</div>
+
                 <!-- stripGry -->
                 <!-- productadded -->
                 <div class="addedItem">
                     <ul class="similarProdList">';
+
+/********************* logic for smogi bucks / gift cards text boxes *********************/
+
+
+
+/********************* now showing all cart items *********************/
+
         foreach($minidetails['items'] as $item)
         {
 
@@ -1770,7 +1800,13 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
             $html .='</li>';
         }
+
+
+/************** code update, show namaskaar bracelet in cart whether it is present or not ********************/
+        // commenting the logic below
         // show bracelet if it is not in cart else do not show
+/*
+
         $namaskarbracelet = array();
         $productId = Mage::getModel('core/variable')->loadByCode('namaskar_bracelet_id')->getValue('plain');
         $quote = Mage::getSingleton('checkout/session')->getQuote();
@@ -1781,6 +1817,9 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 break;
             }
         }
+*/
+/************** code update, show namaskaar bracelet in cart whether it is present or not ********************/
+        $foundInCart = false;           // now $foundInCart is of no use since we will always show bracelet
         if(!$foundInCart)
         {
             // check for instorck and pre-ordered
@@ -1803,6 +1842,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
             }
             // end check for in stock
+
+/******************* appending namaskaar bracelet selection option at the bottom of cart *****************************/
 
             if($doNotShowBracelet)
             {
@@ -1976,59 +2017,40 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     }
                 }
 
-                $currentcolorcount = 0;
+                $currentColorCount = 0;
                 foreach($productcolorinfo as $key=>$val)
                 {
 
-                    $jshtml .= ' _productcolorinfo['.$currentcolorcount.'] = new Object();';
-                    $jshtml .= ' _productcolorinfo['.$currentcolorcount.'].color = '.$key.';';
-                    $jshtml .= ' _productcolorinfo['.$currentcolorcount.'].hex = new Array();';
+                    $jshtml .= ' _productcolorinfo['.$currentColorCount.'] = new Object();';
+                    $jshtml .= ' _productcolorinfo['.$currentColorCount.'].color = '.$key.';';
+                    $jshtml .= ' _productcolorinfo['.$currentColorCount.'].hex = new Array();';
 
                     for($i = 0; $i < count($val['hex']); $i++)
-                    {
+                        $jshtml .= '_productcolorinfo['.$currentColorCount.'].hex['.$i.'] = '. $val['hex'][$i].';';
 
-                        $jshtml .= '_productcolorinfo['.$currentcolorcount.'].hex['.$i.'] = '. $val['hex'][$i].';';
 
-                    }
-
-                    $jshtml .= '_productcolorinfo['.$currentcolorcount.'].sizes = new Array();';
+                    $jshtml .= '_productcolorinfo['.$currentColorCount.'].sizes = new Array();';
 
                     for($i = 0; $i < count($val['sizes']); $i++)
-                    {
+                        $jshtml .= '_productcolorinfo['.$currentColorCount.'].sizes['.$i.'] = '.$val['sizes'][$i].';';
 
-                        $jshtml .= '_productcolorinfo['.$currentcolorcount.'].sizes['.$i.'] = '.$val['sizes'][$i].';';
-
-                    }
-
-                    $jshtml .= '_productcolorinfo['.$currentcolorcount.'].zoomimages = new Array();';
+                    $jshtml .= '_productcolorinfo['.$currentColorCount.'].zoomimages = new Array();';
 
                     for($i = 0; $i < count($val['images']['zoom']); $i++)
-                    {
+                        $jshtml .= '_productcolorinfo['.$currentColorCount.'].zoomimages['.$i.'] = '.substr($val['images']['zoom'][$i], 1).';';
 
-                        $jshtml .= '_productcolorinfo['.$currentcolorcount.'].zoomimages['.$i.'] = '.substr($val['images']['zoom'][$i], 1).';';
-
-                    }
-
-                    $jshtml .= '_productcolorinfo['.$currentcolorcount.'].smallimages = new Array();';
+                    $jshtml .= '_productcolorinfo['.$currentColorCount.'].smallimages = new Array();';
 
                     for($i = 0; $i < count($val['images']['small']); $i++)
-                    {
+                        $jshtml .= '_productcolorinfo['.$currentColorCount.'].smallimages['.$i.'] = '. substr($val['images']['small'][$i], 1).';';
 
-                        $jshtml .= '_productcolorinfo['.$currentcolorcount.'].smallimages['.$i.'] = '. substr($val['images']['small'][$i], 1).';';
-
-                    }
-
-                    $jshtml .= '_productcolorinfo['.$currentcolorcount.'].bigimages = new Array();';
+                    $jshtml .= '_productcolorinfo['.$currentColorCount.'].bigimages = new Array();';
 
                     for($i = 0; $i < count($val['images']['big']); $i++)
-                    {
-
-                        $jshtml .= '_productcolorinfo['.$currentcolorcount.'].bigimages['. $i.'] = '. substr($val['images']['big'][$i], 1).';';
-
-                    }
+                        $jshtml .= '_productcolorinfo['.$currentColorCount.'].bigimages['. $i.'] = '. substr($val['images']['big'][$i], 1).';';
 
 
-                    $currentcolorcount++;
+                    $currentColorCount++;
                 }
 
                 //_productdisplaymode = 'popup';
@@ -2045,12 +2067,17 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                 }
 
 
-                $html .= '<li class= "namaskarinfo" colorattributeid = "'.$colorattributeid.'" sizeattributeid = "'.$sizeattributeid.'" productid =" '.$productid.'">
-                            <span class="c-align"><img src="'.Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 100).'" width="" height="" alt="'.$productname. '" /></span>
+                $html .= '<li class= "namaskarinfo" colorattributeid = "'.$colorattributeid.'" sizeattributeid = "'.$sizeattributeid.'" productid =" '.$productid.'">';
+
+                $html .= '<span class="c-align">';
+
+                $html .= '<img src="'.Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 100).'" width="" height="" alt="'.$productname. '" />';
+
+                $html .= '</span>
                             <span>
                                     <strong>HELP THE NAMASKÁR<br' . ' />FOUNDATION</strong>
                                     <span class="">Add this bracelet<br' . ' />to your order</span>
-                            
+
                             ';
                 ?>
 
@@ -2060,8 +2087,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
                 foreach($productcolorinfo as $key=>$colorinfo)
                 {
+                    $colorQuantity = (int)$colorinfo['productqty'];
 
-                    $html .= '<option productqty="'.$colorinfo['productqty'].'" checkinstock="'.$checkinstock['checkinstock'].'" checkbackorder="'.$checkbackorder['checkbackorder'].'" value="'. $colorinfo['value'].'">'. $key.'</option>';
+                    if($colorQuantity>0)
+                        $html .= '<option productqty="'.$colorinfo['productqty'].'" checkinstock="'.$checkinstock['checkinstock'].'" checkbackorder="'.$checkbackorder['checkbackorder'].'" value="'. $colorinfo['value'].'">'. $key.'</option>';
 
                 }
 
@@ -2094,23 +2123,33 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
 
+/************** code update, US team do not want to show quantity ****************************/
+/*                $html .= '<span style="width: 47px; float:right;"><select class="qtyselector">';
 
-                $html .= '<span style="width: 47px; float:right;"><select class="qtyselector">';
+                // namaskaar quantity code
+                $sku = "BRACELET-Pink/Purple";
+                $_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
+                $quantity = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty();
 
-                for($i = 1; $i < 11; $i++)
+                //for($i = 1; $i < 11; $i++)
+                for($i = 1; $i <= $quantity; $i++)
                 {
 
                     $html .=  '<option value="'.$i.'">'. $i.'</option>';
 
                 }
+                $html .= '</select>';
+*/
+/************** code update, US team do not want to show quantity ****************************/
 
-                $html .= '</select></span><div class="clear-fix"></div><button class="addbracelet"><span>Add to bag</span></button></span>
+                $html .= '<div class="clear-fix"></div><button class="addbracelet"><span>Add to bag</span></button></span><img src="/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif" style="margin-left:15px;display:none" class="namaskarloader"/>
                                 </li>';
 
 
 
 
             }
+
         }
 
         // end to show braclet
@@ -2126,6 +2165,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         //echo $html;
         //echo json_encode(array("html" => $html));
     }
+
     protected function fastcreateshoppingbaghtml()
     {
         // refresh cart total
@@ -2272,6 +2312,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         //echo time().'<br>';
         return $html;
     }
+
     protected function countDiscountType()
     {
         $allow = 0;
@@ -2283,6 +2324,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             $allow++;
         return $allow;
     }
+
     protected function getCustomerPoints($customerId) {
 
         if ($this->points_current){
@@ -2431,8 +2473,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         return false;
     }
 
+    // this method returns the
     function getMiniImage($productid, $color)
     {
+        $_product = Mage::getModel('catalog/product')->load($productid);
         $_gallery = Mage::getModel('catalog/product')->load($productid)->getMediaGalleryImages();
         foreach($_gallery as $_image)
         {
