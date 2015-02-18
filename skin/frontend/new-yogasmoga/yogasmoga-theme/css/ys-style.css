@@ -441,7 +441,7 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 .sub-head.current > a{color: #CC0033;}
 
 .productCont{min-height: 380px; display: inline-block; margin: 0 8px 30px; float: left; width: 181px;}
-.productCont .caption{display: block; font: 11px/16px gothambold; margin: 19px auto auto; width: 85%; text-transform: uppercase;}
+.productCont .caption{display: block; font: 11px/16px gothambold; margin: 19px auto auto; width: 90%; text-transform: uppercase;}
 .productCont .caption span{display: block;font-family: gothambook;}
 .productCont .prod-img{width: 100%; height: 271px; margin: auto; text-align: center;background: url("../images/new-loader.gif") no-repeat center center transparent; overflow: hidden;}
 .prd-image{width: auto; height: auto; -webkit-width: 100%; -webkit-height: 271px;}
