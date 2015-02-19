@@ -4,30 +4,23 @@
     Mage::app();
 
 //    // Set path to CSV file
-//    $csvFile = 'tounsubscribe.csv';
-//
-//    $emails = array();
-//
-//    $file_handle = fopen($csvFile, 'r');
-//    $firstLine = true;
-//    $count = 0;
-//    while (!feof($file_handle)) {
-//        $ar_line = fgetcsv($file_handle, 1024);
-//        $email = $ar_line[0];
-//        $emails[$email] = $email;
-//        $count++;
-//    }
-//    fclose($file_handle);
-//
-//    echo "<h3>Subscribers to unsubscribe = " . $count . "</h3><br/>";
+    $csvFile = 'tounsubscribe.csv';
 
     $emails = array();
 
-    $emails[] = "brahmdev.sharma@yogasmoga.com";
-    $emails[] = "anuradha.scriet@yahoo.com";
-    $emails[] = "ashutosh.pandey@yogasmoga.com";
+    $file_handle = fopen($csvFile, 'r');
+    $firstLine = true;
+    $count = 0;
+    while (!feof($file_handle)) {
+        $ar_line = fgetcsv($file_handle, 1024);
+        $email = $ar_line[0];
+        $emails[$email] = $email;
+        $count++;
+    }
+    fclose($file_handle);
 
-    if(count($emails)>3) die();
+    echo "<h3>Subscribers to unsubscribe = " . $count . "</h3><br/>";
+
 
     $count = 0;
     $countNotFound = 0;
