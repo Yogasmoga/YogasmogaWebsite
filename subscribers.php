@@ -3,7 +3,7 @@
 
     Mage::app();
 
-    // Set path to CSV file
+//    // Set path to CSV file
     $csvFile = 'tounsubscribe.csv';
 
     $emails = array();
@@ -21,24 +21,23 @@
 
     echo "<h3>Subscribers to unsubscribe = " . $count . "</h3><br/>";
 
+
     $count = 0;
     $countNotFound = 0;
     if($emails && is_array($emails) && count($emails)>0) {
 
         foreach ($emails as $email) {
 
-            $customer = Mage::getModel("customer/customer");
+            $subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($email);
 
-            $customer->setWebsiteId(Mage::app()->getWebsite()->getId());
-            $customer->loadByEmail($email);
-
-            if(strlen($customer->getId())===0){
-                ++$countNotFound;
-                echo "<span style='color:red'>Customer not found with email</span> : <span style='color:blue'>$email</span><br/><br/>";
-            }
-            else if ($customer) {
-                echo ++$count . ". $email <br/>";
-                echo "Customer found: id = " . $customer->getId() . "<br/><br/>";
+            if($subscriber){
+                $subscriber->setStatus(Mage_Newsletter_Model_Subscriber::STATUS_UNSUBSCRIBED);
+                try {
+                    $subscriber->save();
+                    echo ++$count . ". $email unsubscribed <br/>";
+                } catch (Exception $e) {
+                    throw new Exception($e->getMessage());
+                }
             }
             else {
                 echo "No email found : " . $email;
@@ -46,7 +45,7 @@
         }
 
         if($countNotFound>0){
-            echo "<h2>Customers not found in database with given emails = " . $countNotFound . "</h2>";
+            echo "<h2>Subscribers not found in database with given emails = " . $countNotFound . "</h2>";
         }
     }
 
