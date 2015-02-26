@@ -94,6 +94,13 @@
               <layout_handle>bundle</layout_handle>
           </newbundle>
         <!-- add more layouts here -->
+          <!-- Additional sizes layouts here start -->
+          <additional_size translate="label">
+              <label>Additional Sizes</label>
+              <template>page/additional.phtml</template>
+              <layout_handle>additional</layout_handle>
+          </additional_size>
+          <!-- Additional sizes layouts here end -->
       </layouts>
     </page>
   </global>
