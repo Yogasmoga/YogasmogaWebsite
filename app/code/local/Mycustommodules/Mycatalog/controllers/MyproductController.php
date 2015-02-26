@@ -4233,9 +4233,11 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
             $customerData = $customerForm->extractData($this->getRequest());
 
-            if ($this->getRequest()->getParam('is_subscribed', false)) {
-                $customer->setIsSubscribed(1);
-            }
+/*********** code update by ys india team, no update on subscribed status now ******************/
+//            if ($this->getRequest()->getParam('is_subscribed', false)) {
+//                $customer->setIsSubscribed(1);
+//            }
+/*********** code update by ys india team, no update on subscribed status now ******************/
 
             /**
              * Initialize customer group id
