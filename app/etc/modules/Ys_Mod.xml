@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Ys_Mod>
-            <active>true</active>
+            <active>false</active>
             <codePool>local</codePool>
         </Ys_Mod>
     </modules>
