@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<config>
-    <modules>
-        <Ys_Mod>
-            <active>false</active>
-            <codePool>local</codePool>
-        </Ys_Mod>
-    </modules>
-</config>
