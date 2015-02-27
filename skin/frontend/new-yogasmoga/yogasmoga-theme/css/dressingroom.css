@@ -271,7 +271,7 @@ div.totalcountregion
 .bannerFluid img{ width:100%;}
 .bannerFluid .bnrtxt{ width:100%;margin:auto; height:100%; position:absolute; z-index:9999;color:#fff;top:0;
     left:0;right:0;}
-.bannerFluid .bnrtxt .white .bold{ margin-top:20px; font-weight:bold; font-family: gothamMedium !important;; font-size:30px;}
+.bannerFluid .bnrtxt .white .bold{ margin-top:20px; font-family: gothamMedium !important;; font-size:50px; line-height:53px;}
 .bannerFluid .bnrtxt .number{width:100%;}
 .bannerFluid .bnrtxt .number p{float:left;
     font-family: AvantGardeGothicITCW01X;
@@ -289,6 +289,14 @@ div.totalcountregion
     letter-spacing: 0;
     line-height: 58px !important;
     text-transform: uppercase;
+    margin-left:6%;
 }
 .bannerFluid .bnrtxt .bottom-text{position:absolute;bottom:20px; left:0;right:0;margin:auto;}
 .bannerFluid .bnrtxt .text-align-middle .light{font-family: AvantGardeGothicITCW01X;font-size:25px;}
+.bannerFluid .bnrtxt .text-align-middle .light span {
+    color: #fff;
+    font-family: "AvantGardeGothicITCW01X";
+    font-size: 40px;
+    line-height: 43px;
+    margin: 0;
+}
