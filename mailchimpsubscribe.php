@@ -69,7 +69,6 @@ if ($correct) {
     $i = 0;
     foreach ($batch as $single) {
 
-
         ++$i;
 
         $email = $single["EMAIL"];
@@ -77,7 +76,7 @@ if ($correct) {
         $lname = $single["LNAME"];
         $state = $single["STATE"];
         $country = $single["COUNTRY"];
-print_r($single);
+
         $result = $mailChimp->call('lists/member-info', array(
             'id' => $list_id,
             'emails' => array( 0 => array('email' => $email) )
@@ -87,17 +86,17 @@ print_r($single);
             echo $result["data"][0]["email"] . " is " . $result["data"][0]["status"] . ", not changing values<br/>";
         }
         else{
-//            $result = $mailChimp->call('lists/subscribe', array(
-//                'id' => $list_id,
-//                'email' => array('email' => $email),
-//                'merge_vars' => array('FNAME' => $fname, 'LNAME' => $lname, 'STATE' => $state, 'COUNTRY' => $country),
-//                'double_optin' => false,
-//                'update_existing' => true,
-//                'replace_interests' => false,
-//                'send_welcome' => false,
-//            ));
-//
-//            print_r($result);
+            $result = $mailChimp->call('lists/subscribe', array(
+                'id' => $list_id,
+                'email' => array('email' => $email),
+                'merge_vars' => array('FNAME' => $fname, 'LNAME' => $lname, 'STATE' => $state, 'COUNTRY' => $country),
+                'double_optin' => false,
+                'update_existing' => true,
+                'replace_interests' => false,
+                'send_welcome' => false,
+            ));
+
+            print_r($result);
         }
 
         echo "<br/><br/>";
