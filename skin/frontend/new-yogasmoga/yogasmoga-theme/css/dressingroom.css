@@ -268,9 +268,8 @@ div.totalcountregion
 }
 
 /*=============================Additional banner============================*/
-.bannerFluid img{ width:100%;}
 .bannerFluid .bnrtxt{ width:100%;margin:auto; height:100%; position:absolute; z-index:9999;color:#fff;top:0;
-    left:0;right:0;}
+    left:0;right:0;overflow: hidden;}
 .bannerFluid .bnrtxt .white .bold{ margin-top:20px; font-family: gothamMedium !important;; font-size:50px; line-height:53px;}
 .bannerFluid .bnrtxt .number{width:100%;}
 .bannerFluid .bnrtxt .number p{float:left;
@@ -283,7 +282,7 @@ div.totalcountregion
 }
 .bannerFluid .bnrtxt .number p span{
     display: block;
-    font-family: gothamMedium !important;
+    font-family: AvantGardeGothicITCW01X !important;
     font-size: 25px !important;
     font-weight: 700;
     letter-spacing: 0;
