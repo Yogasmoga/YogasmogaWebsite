@@ -85,6 +85,9 @@ if ($correct) {
         if(isset($result["data"][0]["status"]) && $result["data"][0]["status"]=="unsubscribed"){
             echo $result["data"][0]["email"] . " is " . $result["data"][0]["status"] . ", not changing values<br/>";
         }
+        else if(isset($result["data"][0]["status"]) && $result["data"][0]["status"]=="subscribed"){
+            echo $result["data"][0]["email"] . " is " . $result["data"][0]["status"] . ", not changing values<br/>";
+        }
         else{
             $result = $mailChimp->call('lists/subscribe', array(
                 'id' => $list_id,

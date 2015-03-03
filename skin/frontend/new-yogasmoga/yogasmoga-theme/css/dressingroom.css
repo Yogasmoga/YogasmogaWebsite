@@ -270,7 +270,7 @@ div.totalcountregion
 /*=============================Additional banner============================*/
 .bannerFluid .bnrtxt{ width:100%;margin:auto; height:100%; position:absolute; z-index:9999;color:#fff;top:0;
     left:0;right:0;overflow: hidden;}
-.bannerFluid .bnrtxt .white .bold{ margin-top:20px; font-family: gothamMedium !important;; font-size:50px; line-height:53px;}
+.bannerFluid .bnrtxt .white .bold{ margin-top:86px; font-family: AvantGardeGothicITCW01B !important;; font-size:50px; line-height:49px;}
 .bannerFluid .bnrtxt .number{width:100%;}
 .bannerFluid .bnrtxt .number p{float:left;
     font-family: AvantGardeGothicITCW01X;
@@ -282,8 +282,8 @@ div.totalcountregion
 }
 .bannerFluid .bnrtxt .number p span{
     display: block;
-    font-family: AvantGardeGothicITCW01X !important;
-    font-size: 25px !important;
+    font-family: gothambook !important;
+    font-size: 14px !important;
     font-weight: 700;
     letter-spacing: 0;
     line-height: 58px !important;
@@ -295,7 +295,7 @@ div.totalcountregion
 .bannerFluid .bnrtxt .text-align-middle .light span {
     color: #fff;
     font-family: "AvantGardeGothicITCW01X";
-    font-size: 40px;
-    line-height: 43px;
+    font-size: 47px;
+    line-height: 49px;
     margin: 0;
 }

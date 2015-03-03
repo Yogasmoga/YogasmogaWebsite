@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<config>
+
+    <!-- ******************* modules section ******************** -->
+
+    <modules>
+        <Ysindia_Mailchimp>
+            <version>0.1.0</version>
+        </Ysindia_Mailchimp>
+    </modules>
+
+    <!-- ******************* global section ******************** -->
+
+    <global>
+
+        <helpers>
+            <mailchimp>
+                <class>Ysindia_Mailchimp_Helper</class>
+            </mailchimp>
+        </helpers>
+
+        <blocks>
+            <mailchimp>
+                <class>Ysindia_Mailchimp_Block</class>
+            </mailchimp>
+        </blocks>
+
+        <models>
+            <mailchimp>
+                <class>Ysindia_Mailchimp_Model</class>
+            </mailchimp>
+        </models>
+
+    </global>
+
+    <crontab>
+        <jobs>
+            <ysindia_mailchimp>
+                <schedule>
+                    <cron_expr>0 */3 * * *</cron_expr>        <!-- run sync() from Model/Observer.php every 3rd hour every day-->
+                </schedule>
+                <run>
+                    <model>mailchimp/observer::sync</model>
+                </run>
+            </ysindia_mailchimp>
+        </jobs>
+    </crontab>
+</config>
