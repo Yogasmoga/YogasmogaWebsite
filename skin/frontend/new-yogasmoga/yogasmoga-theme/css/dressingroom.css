@@ -299,3 +299,9 @@ div.totalcountregion
     line-height: 49px;
     margin: 0;
 }
+
+/**************** women banner page update, zeal in color ***************/
+.banner-txt3{width: 87%;}
+h1.white{text-align: right!important;}
+.banner-txt3 p{text-align: right;padding-right: 6%!important;
+}
