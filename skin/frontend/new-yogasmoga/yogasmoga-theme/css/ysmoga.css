@@ -2311,7 +2311,14 @@ div.new-arrivals-block{
 
 
 
-
+/* ******************************* */
+.twistnturn{
+    float: none; text-align: center; margin-top:22% !important
+}
+.twistnturn .bold {
+    font-size: 60px !important;
+    font-family: AvantGardeGothicITCW01M !important;
+}
 
 
 
@@ -2380,6 +2387,12 @@ div.new-arrivals-block{
     #bucket1_slider .over-the-slide a{
         line-height: 45px;
     }
-
+    .twistnturn{
+        float: none; text-align: center; margin-top:25% !important;
+    }
+    .over-the-slide .twistnturn .bold {
+        font-size: 70px !important;
+        font-family: AvantGardeGothicITCW01M !important;
+    }
     /* ******************************************************* **/
 }
