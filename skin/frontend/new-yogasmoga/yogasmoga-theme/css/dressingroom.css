@@ -305,3 +305,41 @@ div.totalcountregion
 h1.white{text-align: right!important;}
 .banner-txt3 p{text-align: right;padding-right: 6%!important;
 }
+/***************mens image update***/
+#bucket1_slider .over-the-slide {
+    box-sizing: border-box;
+    height: 100%;
+    left: 0;
+    padding: 80px 77px !important;
+    position: absolute;
+    top: 23%;
+    width: 100%;
+}
+
+#bucket1_slider .text-align-middle {
+    text-align: center;
+}
+#bucket1_slider  p.bold {
+    font-family: "ITCAvantGardeProMd";
+    font-size: 60px;
+    line-height: 53px;
+    margin: 0;
+}
+#bucket1_slider p.light {
+    color: #fff;
+    font-family: "AvantGardeGothicITCW01X";
+    font-size: 58px;
+    margin: 0;
+}
+
+#bucket1_slider .learn-more {
+    border-bottom: 1px solid #c03;
+    color: #fff;
+    font: 11px/19px gothambook;
+    margin: 55px 0 0!important;
+    padding: 0 0 3px;
+    display:inline-block;
+    text-align:center;
+    width:15%;
+}
+#bucket1_slider .shop-men{ text-align:center;}
