@@ -87,7 +87,7 @@
 <div id="pagecontainer">
 <!-- sliderBanner -->
 
-    <div class="flexslider" id="bucket1_slider">
+    <div class="flexslider home-slider" id="bucket1_slider">
         <ul class="slides">
 
             <!-- **************************TWIST 'N TURN***************** -->
@@ -103,26 +103,36 @@
 
                     </div>
                 </div>
-
+                <div id="playBtn">
+                    <div class="sl-desc-handle">
+                        <img src="<?php echo $this->getSkinUrl('images/homepage/slider-desc-handle.png') ?>"
+                             alt="Description handle"/>
+                    </div>
+                    <div class="slide-desc" style="">Whatever your game is, this yoga crop instantly transforms you into a stunning vision of curves and strength. Featuring Aurum Helix Fabric Tech, the polyester fibers are resistant to dye thus creating the unique contrast weave of the Run Jump 'n Twist Crop.
+                    </div>
+                </div>
             </li>
             <!-- ************************GO DEEPER SLIDE********************************** -->
+            <!-- GO DEEPER SLIDE********** -->
             <li>
-                <div class="bucket-slide">
-                    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/image2.jpg' ?>" />
-                    <div class="over-the-slide go-deeper" >
-                        <div style="float: left; padding-left:60px !important">
-                            <p class="bold">GO DEEPER</p>
-                            <p class="text-align-middle">
-                                <br/>
-                                <a class="learn-more" href="/mens">SHOP MEN</a>
-                            </p>
-                        </div>
+                <div class="bucket-slide home-slider-men">
+                    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/YS-HomepageSlide-Monsoon.jpg' ?>" />
+                    <div class="monsoon-tank">
+                        <div class="over-the-slide go-deeper" style="top:32%!important;padding:80px 106px !important;" >
+                            <div style="float: right; text-align:center;">
+                                <p style="color:#fff;" class="bold">RAIN OR SHINE</p>
+                                <p style="color:#fff;" class="light">THE MONSOON TANK</p>
+                                <p class="text-align-middle">
 
+                                    <a style="color:#fff!important;" class="learn-more shop-mens1" href="/mens">Shop Men</a>
+                                </p>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 
             </li>
-
             <!-- **************************OUR HEARTS ARE OPEN slide***************** -->
 <!--            <li>-->
 <!--                <div class="bucket-slide">-->
@@ -183,7 +193,6 @@
 
                     </div>
                 </div>
-
             </li>
     <!-- **************************WE SEWEAT THE DETAILS****************************** -->
                 <li>
