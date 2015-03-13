@@ -2425,3 +2425,6 @@ div.new-arrivals-block{
     font-family: gothambook !important;
     text-transform: capitalize !important;
 }
+a.learn-more{
+    line-height: 1 !important;
+}
