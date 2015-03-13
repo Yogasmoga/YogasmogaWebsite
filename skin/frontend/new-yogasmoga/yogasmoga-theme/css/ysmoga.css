@@ -2423,7 +2423,7 @@ div.new-arrivals-block{
 }
 .learn-more.white.gotham-book {
     font-family: gothambook !important;
-    text-transform: capitalize !important;
+    text-transform: none !important;
 }
 a.learn-more{
     line-height: 1 !important;
