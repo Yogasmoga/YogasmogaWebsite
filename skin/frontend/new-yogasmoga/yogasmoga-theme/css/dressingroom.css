@@ -306,15 +306,15 @@ h1.white{text-align: right!important;}
 .banner-txt3 p{text-align: right;padding-right: 6%!important;
 }
 /***************mens image update***/
-#bucket1_slider .over-the-slide {
-    box-sizing: border-box;
-    height: 100%;
-    left: 0;
-    padding: 80px 77px !important;
-    position: absolute;
-    top: 23%;
-    width: 100%;
-}
+/*#bucket1_slider .over-the-slide {*/
+    /*box-sizing: border-box;*/
+    /*height: 100%;*/
+    /*left: 0;*/
+    /*padding: 80px 77px !important;*/
+    /*position: absolute;*/
+    /*top: 23%;*/
+    /*width: 100%;*/
+/*}*/
 
 #bucket1_slider .text-align-middle {
     text-align: center;
@@ -340,7 +340,7 @@ h1.white{text-align: right!important;}
     padding: 0 0 3px;
     display:inline-block;
     text-align:center;
-    width:15%;
+    /*width:15%;*/
 }
 #bucket1_slider .shop-men{ text-align:center;}
 

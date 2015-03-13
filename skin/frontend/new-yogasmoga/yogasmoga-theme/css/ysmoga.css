@@ -2403,10 +2403,10 @@ div.new-arrivals-block{
 /*================Mens landing Page===============*/
 .bucket-slide.mens-slider > div#monsoon {
     background: none repeat scroll 0 0 #000 !important;
-    bottom: 80%;
+    bottom: 69%;
     position: absolute;
-    width: 50%;
     text-align: center;
+    width: 57%;
 }
 #monsoon p.link {
     text-align: center;
