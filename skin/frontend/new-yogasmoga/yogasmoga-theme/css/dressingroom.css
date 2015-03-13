@@ -345,26 +345,12 @@ h1.white{text-align: right!important;}
 #bucket1_slider .shop-men{ text-align:center;}
 
 /*================Home Page===============*/
-.monsoon-tank p.light,.monsoon-tank p.bold{color:#fff!important;}
-.monsoon-tank .text-align-middle a.learn-more.shop-mens1{display: inline-block!important;
-    width: 17%;
+.home-slider-men .monsoon-tank p.light,.monsoon-tank p.bold{color:#fff!important;}
+.home-slider-men .monsoon-tank .text-align-middle a.learn-more{display: inline-block!important;
     text-transform:capitalize!important;
     padding-bottom:0!important;
     color: #fff!important;
     margin-top:46px!important;
 }
-.bucket-slide .monsoon-tank .over-the-slide {top:32%!important;padding:80px 106px !important;}
+.home-slider-men .monsoon-tank .over-the-slide {top:32%!important;padding:80px 106px !important;}
 
-
-/*================Mens landing Page===============*/
-.bucket-slide .monsoon .over-the-slide h3.bold{text-align:center!important;float:left!important;}
-.bucket-slide .monsoon .over-the-slide p.light sup {
-    display: inline-block;
-    font-size: 8px;
-    line-height: 2;
-    vertical-align: text-top;
-    text-align: left!important;
-    text-indent: -12px;
-    width: 6px;
-}
-.bucket-slide .monsoon .over-the-slide{top:20%!important;}

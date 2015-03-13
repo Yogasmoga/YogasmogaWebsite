@@ -2396,3 +2396,32 @@ div.new-arrivals-block{
     }
     /* ******************************************************* **/
 }
+
+
+
+
+/*================Mens landing Page===============*/
+.bucket-slide.mens-slider > div#monsoon {
+    background: none repeat scroll 0 0 #000 !important;
+    bottom: 80%;
+    position: absolute;
+    width: 50%;
+    text-align: center;
+}
+#monsoon p.link {
+    text-align: center;
+}
+.link .learn-more.white {
+    width: auto !important;
+}
+#monsoon sup {
+    display: inline-block;
+    font-size: 20px;
+    line-height: 20px ;
+    margin-top: -20px;
+    vertical-align: top;
+}
+.learn-more.white.gotham-book {
+    font-family: gothambook !important;
+    text-transform: capitalize !important;
+}
