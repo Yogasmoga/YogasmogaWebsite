@@ -268,11 +268,11 @@ div.totalcountregion
 }
 
 /*=============================Additional banner============================*/
-.bannerFluid .bnrtxt{ width:100%;margin:auto; height:100%; position:absolute; z-index:9999;color:#fff;top:0;
+.bannerFluid .newbanner{ width:100%;margin:auto; height:100%; position:absolute; z-index:9999;color:#fff;top:0;
     left:0;right:0;overflow: hidden;}
-.bannerFluid .bnrtxt .white .bold{ margin-top:86px; font-family: AvantGardeGothicITCW01B !important;; font-size:50px; line-height:49px;}
-.bannerFluid .bnrtxt .number{width:100%;}
-.bannerFluid .bnrtxt .number p{float:left;
+.bannerFluid .newbanner .white .bold{ margin-top:86px; font-family: AvantGardeGothicITCW01B !important;; font-size:50px; line-height:49px;}
+.bannerFluid .newbanner .number{width:100%;}
+.bannerFluid .newbanner .number p{float:left;
     font-family: AvantGardeGothicITCW01X;
     font-size: 285px;
     letter-spacing: -30px;
@@ -280,7 +280,7 @@ div.totalcountregion
     width: 27%;
     text-align:center!important;
 }
-.bannerFluid .bnrtxt .number p span{
+.bannerFluid .newbanner .number p span{
     display: block;
     font-family: gothambook !important;
     font-size: 14px !important;
@@ -290,9 +290,9 @@ div.totalcountregion
     text-transform: uppercase;
     margin-left:6%;
 }
-.bannerFluid .bnrtxt .bottom-text{position:absolute;bottom:20px; left:0;right:0;margin:auto;}
-.bannerFluid .bnrtxt .text-align-middle .light{font-family: AvantGardeGothicITCW01X;font-size:25px;}
-.bannerFluid .bnrtxt .text-align-middle .light span {
+.bannerFluid .newbanner .bottom-text{position:absolute;bottom:20px; left:0;right:0;margin:auto;}
+.bannerFluid .newbanner .text-align-middle .light{font-family: AvantGardeGothicITCW01X;font-size:25px;}
+.bannerFluid .newbanner .text-align-middle .light span {
     color: #fff;
     font-family: "AvantGardeGothicITCW01X";
     font-size: 47px;
