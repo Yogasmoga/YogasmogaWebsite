@@ -298,3 +298,6 @@ ExpiresByType text/css "access 1 month"
 ExpiresByType application/javascript "access plus 1 year"
 
 </IfModule>
+
+
+Redirect 302 /mens /men
