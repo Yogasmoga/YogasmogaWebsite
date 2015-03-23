@@ -963,7 +963,7 @@ if ($_product->getAttributeText('canzoomimage') == "yes") {
                     ?>
                     <td>
                         <div class="sizediv" value="<?php echo $size['value']; ?>"
-                             size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?></div>
+                             size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?><img src="<?php echo $this->getSkinUrl('/images/out-of-stock.png');?>"/></div>
                     </td>
                     <?php
                     }
