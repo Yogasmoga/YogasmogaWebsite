@@ -2429,3 +2429,15 @@ div.new-arrivals-block{
 a.learn-more{
     line-height: 1 !important;
 }
+
+/****************** out of stock css ****************/
+.sizediv{ position: relative; }
+
+.sizediv img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: none;
+}

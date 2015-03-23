@@ -560,8 +560,11 @@ function changeColor(clr) {
         jQuery("div#sizecontainer div[size='" + size + "']").attr("qty", qty);
         jQuery("div#sizecontainer div[size='" + size + "']").attr("price", price);
         jQuery("div#sizecontainer div[size='" + size + "']").attr("rewardpoints", rewardpoints);
-        if (instock == 0)
+
+        if (instock == 0) {
             jQuery("div#sizecontainer div[size='" + size + "']").addClass('outofstock');
+            jQuery("div#sizecontainer div[size='" + size + "']").find('img').show();
+        }
         else
             jQuery("div#sizecontainer div[size='" + size + "']").removeClass('outofstock');
         if (canbackorder)
