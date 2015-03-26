@@ -3165,6 +3165,9 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 $varDir = $baseDir.DS.'recurringreports'.DS.'inventory';
                 $timeOfImport = $fileName;
                 $importReadyDir = $varDir.DS.$timeOfImport.'.xls';
+
+                echo "Downloading file : " . $importReadyDir . "<br/>";
+
                 if(!file_exists($importReadyDir))
                 {
                     echo 'File is not exists for this date';
