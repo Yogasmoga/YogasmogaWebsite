@@ -318,8 +318,17 @@ if($currentUrl != $checkoutpage){
 <?php //} ?>
 
 <div class="pageoverlay"></div>
-<div class="header-container">
-    <div id="globalheader" class="header
+<?php
+$style = "";
+if(!$this->getIsHomePage()){
+    $style = "style='height:90px !important'";
+    ?>
+<?php } ?>
+<div class="header-container" <?php echo $style;?>>
+<?php if(!$this->getIsHomePage()){ ?>
+<div><img src='<?php echo Mage::getBaseUrl("media") . "wysiwyg/new-design-images/category_banner/03-25_GWP_Banner.jpg";?>' style="width:100%;"/></div>
+<?php } ?>
+<div id="globalheader" class="header
     <?php
     if ($this->getIsHomePage())
     {
