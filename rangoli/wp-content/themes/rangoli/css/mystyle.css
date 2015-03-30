@@ -1,0 +1,119 @@
+
+.login-box .wrapper {
+    width: 100%;
+    float: left;
+    padding: 34px 0;
+}
+.login-box {
+    background: none repeat scroll 0 0 #f3f3f5;
+    height: 376px;
+    left: 50%;
+    margin-left: -375px;
+    margin-top: -228px;
+    position: absolute;
+    top: 50%;
+    width: 750px;
+}
+.login-box .left-shift {
+    float: left;
+    width: 50% !important;
+}
+.login-box  .right-shift {
+    float: right;
+}
+
+.login-box  .sign-in, .sign-up {
+    width: 316px;
+}
+
+.sign-in h2, .sign-up h2 {
+    font-size: 14px;
+    margin: 0 0 30px;
+    text-transform: uppercase;
+}
+
+.sign-up {
+    border-right: 1px solid #c6c6c6;
+    padding: 0 29px;
+}
+
+.sign-in {
+    padding: 0 29px;
+}
+
+.align {
+    text-align: center;
+}
+
+.form-1 table input, #form-2 table input {
+    border: 0 none !important;
+    font: 12px Gotham-Book !important;
+    padding: 9px 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-1 table td, #form-2 table td {
+    padding-bottom: 10px;
+}
+
+caption, th, td {
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+}
+
+table {
+    border: 0 none;
+    border-spacing: 0;
+    empty-cells: show;
+    font-size: 100%;
+}
+
+#sign-up-button {
+    background: url(../images/grey-button.jpg) left top no-repeat;
+    background-size: 100% 100%;
+    border: none;
+    height: 39px;
+    width: 315px;
+}
+
+#sign-in-button {
+    background: url(../images/green-button.jpg) left top no-repeat;
+    background-size: 100% 100%;
+    border: none;
+    height: 39px;
+    width: 315px;
+}
+
+.forgot {
+    border-bottom: 1px solid #c03;
+    color: #555;
+    display: inline-block;
+    font-family: Gotham-Book;
+    font-size: 11px;
+    line-height: 18px;
+    margin: 22px 0 20px;
+    padding: 0;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+table.inputtable td.label, table.gfredeem td.label, table#redeem td.label, input {
+    color: #555 !important;
+}
+
+
+
+.login-box .close_signin_popup {
+    position: absolute;
+    right: -124px;
+    top: -57px;
+    background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-elements/close-sharepopup.png") no-repeat scroll center bottom / contain  rgba(0, 0, 0, 0) !important;
+    cursor: pointer;
+    float: right;
+    height: 49px;
+    margin-right: 100px;
+    margin-top: 33px;
+    width: 55px;
+}

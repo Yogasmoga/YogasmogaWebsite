@@ -1,0 +1,329 @@
+.wp_page{
+    opacity: 1 !important;
+}
+.overlay-text {
+    color: #fff;
+    cursor: pointer;
+    height: 100%;
+    padding-top: 50px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+.double-width .overlay-text{
+    color:#555;
+}
+.double-width .overlay-text .post_category{
+    border-color: #555;
+    color:#555;
+}
+.second .one-three .overlay-text p{
+    opacity: 0;
+}
+.double-width .overlay-text .post_title{
+    color: #555;
+}
+.one-three, .two-three{
+    position: relative;
+    background-size: 100% 100%;
+}
+
+.one-three{
+    width:33.33%;
+    min-width:341.33333333333px;
+    min-height:227.555555px;
+}
+.two-three{
+    width:66.66%;
+    min-width:682.6666666666667px;
+    min-height:455.1111110666667px;
+}
+.left{
+    float:left;
+}
+.one-three {
+    overflow: hidden;
+}
+.right{
+    float: right;
+}
+.one-three img, .two-three img{
+    width:100%;
+    height:100%;
+    float: left;
+}
+.rangoli_logo {
+    margin: -30px 0 0;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    top: 40%;
+    width: 100%;
+    z-index: 5;
+}
+.login_signup {
+    position: absolute;
+    text-align: center;
+    bottom:70px;
+    width: 100%;
+    z-index: 5;
+}
+.huge_it_slideshow_image_2,
+.huge_it_slideshow_image_wrap_2,
+.huge_it_slideshow_image_container_2{
+    width:100% !important;
+    height:100% !important;
+}
+.huge_it_slideshow_title_text_2 {
+    border-bottom: 1px solid #fff !important;
+    font-family: ITCAvantGardeStd-Md;
+    font-weight: normal !important;
+    margin-top: 45px !important;
+    padding: 4px !important;
+    text-transform: uppercase;
+}
+.huge_it_slideshow_description_text_2{
+    bottom:unset !important;
+    padding: 0 !important;
+    font-size:20px !important;
+    top:65% !important;
+}
+.huge_it_slider_2 .huge_it_slideshow_title_text_2,
+.huge_it_slider_2 .huge_it_slideshow_title_text_2,
+.huge_it_slider_2 .huge_it_slideshow_description_text_2{
+    background: transparent !important;
+}
+.fts-jal-fb-group-display a,.fts-jal-fb-group-display a:hover{
+    color:#fff;
+}
+.fts-jal-fb-group-display, .fts-jal-fb-group-display div, .fts-jal-fb-group-display img {
+    margin: 0 !important;
+    float: left;
+    padding: 0 !important;
+}
+.fts-twitter-image{
+    display:none;
+}
+.fts-jal-fb-message {
+    box-sizing: border-box;
+    position: absolute;
+    top: 32%;
+    width: 100% !important;
+    word-wrap: break-word;
+    line-height: 1.2;
+    left: 0;
+    padding: 20px !important;
+}
+.fts-fb-caption{
+    display: none;
+}
+
+.tweeter-info .bold {
+    top: 67%;
+    display: block;
+    font-family: freight-text-pro;
+    font-size: 19px;
+    font-weight: 400;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+.black {
+    border-top: 1px solid #fff;
+    padding: 2px 63px;
+    text-transform: uppercase;
+}
+.fts-jal-fb-message {
+    color: #fff;
+    font-family: freight-text-pro;
+    font-size: 24px;
+    font-style: italic;
+}
+.fts-jal-fb-group-display,.fts-jal-fb-group-display div{
+    float: left;
+    width:100%;
+}
+.fts-jal-fb-group-display .overlay-text {
+    padding: 5% !important;
+    text-align: center;
+}
+.tweeter-info .right {
+    color: #fff;
+    float: none;
+    font-family: freight-text-pro;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 300;
+    height: 100%;
+    line-height: 1.3;
+    opacity: 0;
+    overflow: hidden;
+    padding: 17% 20px 20px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+}
+.fts-twitter-text {
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 25%;
+    width: 100%;
+    font-size: 24px;
+    padding: 20px;
+    word-wrap: break-word;
+    color:#fff;
+    box-sizing: border-box;
+    font-family:freight-text-pro;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.2;
+}
+.twitter_author {
+    border-top: 1px solid #fff;
+    bottom: 30%;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 20px;
+    left: 0;
+    margin: 0 25%;
+    padding: 7px;
+    position: absolute;
+    text-align: center;
+    width: 50%;
+}
+.twitter-icon {
+    bottom: 20px;
+    left: 50%;
+    margin-left: -25px;
+    position: absolute;
+}
+.twitter-icon > img {
+    width: 50px;
+}
+.twitter_author a{
+    font-family:freight-text-pro;
+    font-weight: 400;
+    color:#fff;
+}
+.instagram_post {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.fts-instagram-wrapper .date ,.instagram-image-likes,.instagram-image-comments{
+    display: none;
+}
+.fts-slicker-instagram,.fts-slicker-instagram div,.fts-slicker-instagram img{
+    padding: 0 !important;
+    margin: 0 !important;
+    float: left;
+    width: 100%  !important;
+}
+
+.one-three.invite-friends .overlay-text,.one-three.get_app .overlay-text {
+    /*padding: 0 !important;*/
+}
+.one-three.invite-friends .overlay-text > div:first-child {
+    bottom: 0;
+    height: 62%;
+    position: absolute;
+    width: 100%;
+}
+.one-three.right.get_app .overlay-text > div:first-child{
+    height: 74%; position: absolute; bottom: 0; width: 100%
+}
+
+.flexslider {
+    background: none repeat scroll 0 0 #fff;
+    border: medium none;
+    border-radius: 0px;
+    margin: 0px;
+    position: relative;
+    overflow: hidden;
+    clear:both;
+}
+.flexslider #signup_signin_btn {
+    border: 1px solid #fff;
+    bottom: 30px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: freight-text-pro;
+    font-size: 18px;
+    left: 50%;
+    margin-left: -70px;
+    padding: 2px 8px;
+    position: absolute;
+    text-align: center;
+    width: 140px;
+    z-index: 5;
+}
+.over-the-slide {
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: -webkit-linear-gradient(to top, rgba(85, 85, 85, 0.7), transparent, transparent) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -o-linear-gradient(to top, rgba(85, 85, 85, 0.7), transparent, transparent) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -moz-linear-gradient(to top, rgba(85, 85, 85, 0.7), transparent, transparent) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: linear-gradient(to top, rgba(85, 85, 85, 0.7), transparent, transparent ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.over-the-slide .post_category{
+    margin: 0 auto 10px;
+}
+.over-the-slide .post_text {
+    color: #fff;
+    font-family: freight-text-pro;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0 auto;
+    width: 70%;
+    line-height: 1.1;
+    margin-bottom: 8px;
+}
+.over-the-slide .post_author{
+    color:#fff;
+    font-size: 15px;
+    font-family: freight-text-pro;
+    font-style: italic;
+    font-weight: 300;
+}
+.over-the-slide .post_category {
+    font-family: freight-text-pro;
+    font-size: 17px;
+    font-weight: 400;
+    padding: 8px;
+}
+.over-the-slide .post_author span{
+    font-family: freight-text-pro;
+    font-weight: 500;
+    font-style: normal;
+    text-transform: capitalize;
+}
+.first, .second, .third, .fourth , .fifth {
+    clear: both;
+    opacity: 0;
+}
+.flex-direction-nav {
+    display: none;
+}
+.flexslider .slides img{
+    height: auto;
+}
+.fts-jal-fb-message {
+    width: 90% !important;
+    left: 5%;
+}
+.two-three .post_title {
+    font: 30px/35px ITCAvantGardeStd-Bk !important;
+}
+.two-three.double-width .post_category > a {
+    color: #555 !important;
+    transition-duration: 500ms;
+}

@@ -1,0 +1,51 @@
+@media screen and (min-width:1280px){
+    .freighttextbook {
+        font-size: 22px;
+    }
+    .bold .light{
+        font-size: 50px;
+        line-height: 63px;
+    }
+    .post_title {
+        font: 18px/20px ITCAvantGardeStd-Bk;
+    }
+    .overlay-text{
+        padding-top: 10%;
+    }
+    .over-the-slide .post_text {
+        font-size: 24px;
+    }
+    .over-the-slide .post_author{
+        font-size: 17px;
+    }
+}
+
+
+@media screen and (min-width:1369px){
+    .freighttextbook{
+        font-size:25px;
+    }
+    .bold .light{
+        font-size: 40px;
+        line-height: 55px;
+    }
+    .post_title {
+        font: 25px/30px ITCAvantGardeStd-Bk ;
+    }
+
+}
+@media screen and (min-width:1600px){
+    .freighttextbook{
+        font-size:30px;
+    }
+    .bold .light{
+        font-size: 50px;
+        line-height: 63px;
+    }
+    .post_title {
+        font: 30px/35px ITCAvantGardeStd-Bk ;
+    }
+    .one-three .post_title {
+        font: 35pt/40pt ITCAvantGardeStd-Bk;
+    }
+}

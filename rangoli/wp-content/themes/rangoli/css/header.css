@@ -1,0 +1,497 @@
+
+body {
+    color: #2f2f2f;
+    font: 12px/1.55 Gotham-Book, Arial, Helvetica, sans-serif !important;
+    text-align: center;
+}
+
+.wrapper {
+    margin: 0 auto;
+    min-width: 100%;
+}
+
+.page {
+    background: none repeat scroll 0 0 #fff;
+    display: block;
+    min-width: 1007px;
+    position: relative;
+    z-index: 2;
+}
+
+.header-container {
+    background-color: #fff;
+    height: 69px;
+    min-width: 1007px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    z-index: 9999;
+}
+
+.header {
+    padding: 0 10px 0 13px;
+}
+
+.header-top {
+    padding: 0 40px 0 13px;
+}
+
+.header-left {
+    float: left;
+}
+
+.header .logo {
+    margin: 6px 14px 0 0;
+}
+
+ul.navigation-bar > li {
+    cursor: pointer;
+    display: inline-block;
+    height: 69px;
+    padding: 0 12px;
+    text-transform: uppercase;
+    vertical-align: top;
+}
+
+.header-right, .f-right {
+    float: right !important;
+}
+
+.r-align {
+    text-align: right;
+}
+
+.free-shipping > span span {
+    margin: 0 0 0 10px;
+}
+
+.free-shipping img {
+    margin: -2px 0 0 1px;
+    height: 16px;
+}
+
+ul.shipping-menu {
+    font-size: 0;
+    margin: 8px 0 6px;
+    padding: 0;
+}
+
+ul.shipping-menu > li {
+    color: #555;
+    display: inline-block;
+    font: 11px/19px Gotham-Book;
+    padding: 0;
+    position: relative;
+}
+
+ul.shipping-menu > li.free-shipping {
+    display: inline-block;
+    font: italic 10px Gotham-Book;
+    margin: 0 20px 0 0;
+}
+
+.shipping-menu li > span {
+    padding: 0 13px 0 10px;
+}
+
+.clearer:after, .header-container:after, .header-container .top-container:after, .header:after, .header .quick-access:after, #nav:after, .main:after, .footer:after, .footer-container .bottom-container:after, .col-main:after, .col2-set:after, .col3-set:after, .col3-layout .product-options-bottom .price-box:after, .col4-set:after, .search-autocomplete li:after, .block .block-content:after, .block .actions:after, .block li.item:after, .block-poll li:after, .block-layered-nav .currently li:after, .page-title:after, .products-grid:after, .products-list li.item:after, .box-account .box-head:after, .dashboard .box .box-title:after, .box-reviews li.item:after, .box-tags li.item:after, .pager:after, .sorter:after, .ratings:after, .add-to-box:after, .add-to-cart:after, .product-essential:after, .product-collateral:after, .product-view .product-img-box .more-views ul:after, .product-view .box-tags .form-add:after, .product-view .product-shop .short-description:after, .product-view .box-description:after, .product-options .options-list li:after, .product-options-bottom:after, .product-review:after, .cart:after, .cart-collaterals:after, .cart .crosssell li.item:after, .opc .step-title:after, .checkout-progress:after, .multiple-checkout .place-order:after, .group-select li:after, .form-list li:after, .form-list .field:after, .buttons-set:after, .page-print .print-head:after, .advanced-search-summary:after, .gift-messages-form .item:after, .send-friend .form-list li p:after {
+    clear: both;
+    content: ".";
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+
+.shipping-menu li a {
+    text-decoration: none;
+    color: #555;
+}
+
+.right-bottom-block {
+    float: right;
+}
+
+.in-bl {
+    display: inline-block !important;
+}
+
+.search-bar {
+    border: 1px solid #999;
+    box-sizing: border-box;
+    width: 172px;
+}
+
+#search_input {
+    border: medium none;
+    font-family: gothamlight;
+    font-size: 11px;
+    height: 24px;
+    width: 145px;
+}
+
+input.watermark {
+    color: gray;
+}
+
+table.inputtable td.label, table.gfredeem td.label, table#redeem td.label, input {
+    color: #555 !important;
+}
+
+#search-btn {
+    background: url("../images/search-icon.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    cursor: pointer;
+    font-size: 0;
+    height: 17px;
+    width: 16px;
+}
+
+ul.main-nav2 {
+    margin-left: 0;
+    margin-right: 5px;
+}
+
+ul.main-nav2 > li {
+    box-sizing: border-box;
+    height: 33px;
+    margin-top: 1px;
+    padding: 0 10px;
+    position: relative;
+}
+
+ul.main-nav > li {
+    cursor: pointer;
+    display: inline-block;
+    height: 69px;
+    padding: 0 12px;
+    text-transform: uppercase;
+    vertical-align: top;
+}
+
+
+
+ul.main-nav2 a.main-heading {
+    display: block;
+    height: 32px;
+}
+
+ul.main-nav li a, ul.shipping-menu > li > ul.sub-menu li a {
+    color: #555;
+    font: 11px/23px Gotham-Bold;
+}
+
+.shopping-cart {
+    background: none repeat scroll 0 0 #eeefef;
+    color: #555;
+    display: none;
+    font: 12px Gotham-Book;
+    overflow: auto;
+    position: fixed;
+    right: 0;
+    text-transform: capitalize;
+    width: 400px;
+    z-index: 1;
+}
+
+.capstxt {
+    text-transform: uppercase;
+}
+
+.cont-full {
+    background: none repeat scroll 0 0 #eeefef;
+    padding: 20px 20px 0;
+}
+
+.continuelink.grn {
+    background: none repeat scroll 0 0 #5ec52f;
+    color: #fff;
+}
+
+.continuelink {
+    background: none repeat scroll 0 0 #999;
+    color: #fff;
+    display: inline-block;
+    float: left;
+    font: 11px/19px gothammedium;
+    margin: 0 10px 0 0;
+    padding: 10px 5px;
+    text-transform: uppercase;
+    width: 45%;
+}
+
+.cont-full .continuelink:nth-child(2) {
+    margin: 0;
+}
+
+
+
+.empty-cart {
+    display: inline-block;
+    font: 12px Gotham-Book;
+    margin: 30px auto;
+    text-transform: uppercase;
+}
+
+
+
+ul.main-nav li ul.sub-menu {
+    background: none repeat scroll 0 0 #f1f1f2;
+    display: none;
+    left: 0;
+    line-height: 21px;
+    margin: 0;
+    padding: 6px 20px;
+    position: absolute;
+    text-align: left;
+}
+
+
+
+ul.main-nav li ul.sub-menu > li:first-child {
+    border: medium none;
+    padding: 0;
+}
+
+ul.main-nav li ul.sub-menu > li {
+    border-left: 1px solid #f8f8f8;
+    display: inline-block;
+    min-height: 120px;
+    min-width: 160px;
+    padding: 0 0 0 15px;
+    vertical-align: top;
+}
+
+ul.main-nav li a.menu-heading {
+    display: inline-block;
+    padding: 37px 0 9px;
+    vertical-align: middle;
+}
+
+ul.main-nav li a, ul.shipping-menu > li > ul.sub-menu li a {
+    color: #555;
+    font: 11px/23px Gotham-Bold;
+}
+
+ul.main-nav > li {
+    cursor: pointer;
+    display: inline-block;
+    height: 69px;
+    padding: 0 12px;
+    text-transform: uppercase;
+    vertical-align: top;
+}
+
+ul.main-nav > li.smenu, ul.main-nav > li.active, ul.main-nav > li:hover, ul.main-nav2 > li.active {
+    background: url("../images/menu_arrow.png") no-repeat scroll center bottom / 17px 14px rgba(0, 0, 0, 0);
+}
+
+.inner-links1 {
+    display: block !important;
+}
+
+.inner-links2 {
+    display: block !important;
+}
+
+.menu-ovr li a {
+    padding: 0 !important;
+}
+
+ul.main-nav > li {
+    cursor: pointer;
+    display: inline-block;
+    height: 69px;
+    padding: 0 12px;
+    text-transform: uppercase;
+    vertical-align: top;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.side-logo {
+    float: left;
+    padding: 10px 0 0 10px;
+    width: 33%;
+}
+
+.logo {
+    float: left;
+}
+
+.first-list > li {
+    box-sizing: border-box;
+    float: left;
+    list-style: outside none none;
+    margin-bottom: 10px;
+    min-height: 133px;
+    text-align: left;
+    vertical-align: top;
+    width: 33.33%;
+}
+.first-list > li a {
+    color: #555;
+    font-size: 11px;
+}
+
+.first-list > li a:hover, div.copy-privacy-likes ul li a:hover {
+    color: #c03;
+}
+
+.privacy ul {
+    text-align: left;
+}
+
+.privacy li, .privacy li a {
+    color: #555;
+    display: inline-block;
+    font-size: 12px;
+    vertical-align: top;
+    text-align: left;
+}
+
+.topmenulinks li a {
+    font-family: gothamlight, Gotham-Book;
+    font-size: 11px;
+}
+
+.bold-heading {
+    font-family: Gotham-Bold ;
+    color: #000;
+}
+
+.chat-status {
+    font-style: italic;
+}
+
+li.menu-heading:hover > .sub-menu {
+    display: block;
+}
+
+ul.main-nav2 > li:hover > ul.sub-menu {
+    display: block;
+}
+
+ul.main-nav li ul.sub-menu > li:first-child {
+    border: medium none;
+    padding: 0;
+}
+
+ul.main-nav2 li ul.sub-menu > li {
+    border: medium none;
+    min-height: 100%;
+    padding: 0;
+}
+
+ul.main-nav2 li ul.sub-menu li a {
+    font-family: Gotham-Book;
+}
+
+ul.main-nav2 > li {
+    box-sizing: border-box;
+    height: 33px;
+    margin-top: 1px;
+    padding: 0 10px;
+    position: relative;
+}
+
+ul.main-nav li ul.sub-menu > li > ul a, ul.main-nav2 li ul.sub-menu > li > ul:first-child a, ul.shipping-menu > li > ul.sub-menu li a {
+    font-family: Gotham-Book;
+}
+
+ul.main-nav li ul.sub-menu > li > ul:first-child a {
+    font-family: Gotham-Bold;
+}
+
+.sub-menu a:hover {
+    color: #c03 !important;
+}
+
+a#rangoli-head {
+    background-image: url("../images/rangoli-arrow.jpg");
+    background-repeat: no-repeat;
+    display: block;
+    margin-top: -1px;
+    padding: 1px 0 1px 15px;
+    background-position: 0 5px;
+}
+.rangoliGrn {
+    background-position: left -58px;
+    color: #3c9136 !important;
+    display: block;
+}
+
+
+ul.tr-menu > li {
+    color: #555;
+    display: inline-block;
+    font: 11px/19px Gotham-Book;
+    padding: 0;
+    position: relative;
+}
+
+ul.tr-menu > li > ul.sub-menu {
+    display: none;
+    padding: 0;
+    position: absolute;
+    text-align: left;
+    text-transform: uppercase;
+    width: 200px;
+    z-index: 9;
+}
+
+ul.tr-menu > li > ul.sub-menu li.blank {
+    background: url("../images/menu_arrow.png") no-repeat scroll center bottom / 17px 14px #f1f1f2;
+    height: 26px;
+}
+
+ul.tr-menu > li > ul.sub-menu li {
+    background: none repeat scroll 0 0 #f1f1f2;
+    padding: 0 15px;
+}
+
+ul.tr-menu > li:hover > ul.sub-menu {
+    display: block;
+}
+
+.shipping-menu li a:hover {
+    color: #d90d3d;
+    text-decoration: none;
+}
+
+.shipping-menu li > span:hover {
+    color: #d90d3d;
+    cursor: pointer;
+}
+ul.main-nav > li.rangoli{background-image:none!important;}
+
+
+.header-container {
+    left: 0;
+    min-width: 1024px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.footer-right.span8 {
+    padding: 10px 0;
+}
+.footer.row {
+    min-width: 1024px;
+    width: 100%;
+}

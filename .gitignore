@@ -2,7 +2,7 @@
 ## Eclipse
 #################
 nbproject
-media
+/media
 *.pydevproject
 .project
 .metadata
