@@ -84,7 +84,7 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
             $readConnection = $resource->getConnection('core_read');
 
             $results = $readConnection->fetchAll($query);
-echo "count = " . count($results);
+
             if ($results && count($results) == 1) {
                 $user_id = $results[0]["id"];
 
@@ -98,7 +98,7 @@ echo "count = " . count($results);
                     $query = "insert into rangoli_usermeta(user_id, meta_key, meta_value) values($user_id, 'description','$description')";
                     $result = $writeConnection->query($query);
                 }
-echo "description updated";
+
                 $filepath = Mage::getBaseDir() . "/rangoli/rangoli_profile_images/";
                 $savepath = Mage::getBaseUrl() . "/rangoli/rangoli_profile_images/";
 
