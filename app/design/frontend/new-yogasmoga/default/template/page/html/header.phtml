@@ -321,12 +321,12 @@ if($currentUrl != $checkoutpage){
 <?php
 $style = "";
 if(!$this->getIsHomePage()){
-    $style = "style='height:90px !important'";
+    $style = "style='height:94px !important'";
     ?>
 <?php } ?>
 <div class="header-container" <?php echo $style;?>>
 <?php if(!$this->getIsHomePage()){ ?>
-<div><img src='<?php echo Mage::getBaseUrl("media") . "wysiwyg/new-design-images/category_banner/Category_Banner.jpg";?>' style="width:100%;"/></div>
+<div style="width:100%; height:25px;"><img src='<?php echo Mage::getBaseUrl("media") . "wysiwyg/new-design-images/category_banner/Category_Banner.jpg";?>' style="width:100%; height: 100%"/></div>
 <?php } ?>
 <div id="globalheader" class="header
     <?php

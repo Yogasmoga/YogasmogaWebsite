@@ -4299,6 +4299,13 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $response['success_message'] = 'Account confirmation is required. Please, check your email for the confirmation link. To resend the confirmation email please <a href="'.Mage::helper('customer')->getEmailConfirmationUrl($customer->getEmail()).'">click here</a>.';
                         $response['status'] = "success";
                         $response['fname'] = $this->getRequest()->getPost('firstname')  ;
+
+                        /************* code update by ys india team ****************/
+                        $response['first_name'] =  $customer->getFirstname();
+                        $response['last_name'] =  $customer->getLastname();
+                        $response['customer_id'] =  $customer->getId();
+                        /************* code update by ys india team ****************/
+
                         echo json_encode($response);
                         //$session->addSuccess($this->__('Account confirmation is required. Please, check your email for the confirmation link. To resend the confirmation email please <a href="%s">click here</a>.', Mage::helper('customer')->getEmailConfirmationUrl($customer->getEmail())));
                         //$this->_redirectSuccess(Mage::getUrl('*/*/index', array('_secure'=>true)));
@@ -4310,7 +4317,13 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $response['success_message'] = "Registered Successfully";
                         $response['status'] = "success";
                         $response['fname'] = $this->getRequest()->getPost('firstname') ;
-						
+
+                        /************* code update by ys india team ****************/
+                        $response['first_name'] =  $customer->getFirstname();
+                        $response['last_name'] =  $customer->getLastname();
+                        $response['customer_id'] =  $customer->getId();
+                        /************* code update by ys india team ****************/
+
 						$write = Mage::getSingleton('core/resource')->getConnection('core_write');
                         $write->query("insert into signup_popup_user values(null,'".$customer->getId()."',now())");
 						
@@ -4381,7 +4394,13 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                      //   Mage::getModel('smogiexpirationnotifier/applyremovediscount')->applycouponcode(1,null);
                     $response['fname'] =  $session->getCustomer()->getFirstname();
                     //Retrieve smogi balance
-                                         
+
+                    /************* code update by ys india team ****************/
+                    $response['first_name'] =  $session->getCustomer()->getFirstname();
+                    $response['last_name'] =  $session->getCustomer()->getLastname();
+                    $response['customer_id'] =  $session->getCustomer()->getId();
+                    /************* code update by ys india team ****************/
+
                     $smogiBalance = Mage::getModel('smogiexpirationnotifier/applyremovediscount')->getCustomerPoints();
                    
                     $response['smogi'] = $smogiBalance;

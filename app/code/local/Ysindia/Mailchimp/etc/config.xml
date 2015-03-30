@@ -32,17 +32,4 @@
         </models>
 
     </global>
-
-    <crontab>
-        <jobs>
-            <ysindia_mailchimp>
-                <schedule>
-                    <cron_expr>0 */3 * * *</cron_expr>        <!-- run sync() from Model/Observer.php every 3rd hour every day-->
-                </schedule>
-                <run>
-                    <model>mailchimp/observer::sync</model>
-                </run>
-            </ysindia_mailchimp>
-        </jobs>
-    </crontab>
 </config>

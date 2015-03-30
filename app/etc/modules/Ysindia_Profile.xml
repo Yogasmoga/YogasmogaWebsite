@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <Ysindia_Mailchimp>
-            <active>false</active>
+        <Ysindia_Profile>
+            <active>true</active>
             <codePool>local</codePool>
-        </Ysindia_Mailchimp>
+        </Ysindia_Profile>
     </modules>
 </config>

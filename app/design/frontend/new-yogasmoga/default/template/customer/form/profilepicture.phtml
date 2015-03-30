@@ -1,0 +1,130 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<script type="text/javascript">
+
+    jQuery(function(){
+        jQuery("#btnupload").click(uploadData);
+    });
+
+    function uploadData(){
+
+        jQuery(".messageupdate").html("Updating, please wait");
+        jQuery("#frmpicture").submit();
+    }
+
+    function startUpdating(){
+
+        jQuery("#ifr").load(function (result) {
+
+            jQuery(".messageupdate").html("Profile updated successfully");
+
+            var image_data = jQuery(this).contents().find("body").html();
+
+            jQuery(".messageupdate").html(image_data);
+
+            jQuery("input[type='file']").val("");
+
+            setTimeout(function () {
+                jQuery(".messageupdate").html("&nbsp;");
+            }, 5000);
+        });
+
+        return true;
+    }
+</script>
+
+<div class="pg-heading">
+      <h2>UPDATE PROFILE PICTURE</h2>
+    </div>
+<div class="edit-info">
+
+<form id="frmpicture" action="<?php echo $this->getUrl('profile/manage/saveimage') ?>" target="ifr" method="post" enctype="multipart/form-data" onsubmit="startUpdating()">
+    <?php echo $this->getBlockHtml('formkey')?>
+
+    <table class="inputtable" style="min-width:500px">
+        <tr>
+            <td class="inputholder" style="width:150px">
+                Banner Picture
+            </td>
+            <td>
+                <input type="file" id="banner_pic" name="banner_pic" value="" />
+            </td>
+        </tr>
+    </table>
+
+    <br/>
+
+    <table class="inputtable" style="min-width:500px">
+        <tr>
+            <td style="width:150px">
+                Profile Picture
+            </td>
+            <td>
+                <input type="file" id="profile_pic" name="profile_pic" value="" />
+            </td>
+        </tr>
+    </table>
+    <br/>
+    <table class="inputtable" style="min-width:500px">
+        <tr>
+            <td style="width:150px">
+                Description
+            </td>
+            <td>
+                <textarea name="description" style="width:100%;" rows="6"><?php echo Mage::helper('profile')->getProfileDescription();?></textarea>
+            </td>
+        </tr>
+    </table>
+    <br/>
+    <table class="inputtable" style="min-width:500px">
+        <tr>
+            <td style="width:150px">
+                &nbsp;
+            </td>
+            <td>
+                <input type="button" value=" Update " id="btnupload"/>
+            </td>
+        </tr>
+    </table>
+    <br/>
+    <table class="inputtable" style="min-width:500px">
+        <tr>
+            <td style="width:150px">
+                &nbsp;
+            </td>
+            <td class="messageupdate">
+                &nbsp;
+            </td>
+        </tr>
+    </table>
+
+
+    <div class="clear-fix"></div>
+
+</form>
+    <iframe name="ifr" id="ifr" style="visibility: hidden;height:1px;width:1px"></iframe>
+</div>
