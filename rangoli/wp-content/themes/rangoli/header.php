@@ -11,6 +11,8 @@
     <?php
         $root = get_site_url();
         $root = str_replace("/rangoli","/",$root);
+
+        $template_directory = bloginfo('template_directory');
     ?>
     <script>
 
@@ -29,41 +31,41 @@
     <?php
       //  the_block('head');
     ?>
-    <script src="<?php bloginfo('template_directory')?>/js/jquery.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/jquery.flexslider.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/ajaxify.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/zeroClipboard.js" ></script>
-    <script data-pace-options='{ "ajax": true }'  src="<?php bloginfo('template_directory')?>/js/pace.min.js" ></script>
+    <script src="<?php echo $template_directory;?>/js/jquery.js" ></script>
+    <script src="<?php echo $template_directory;?>/js/jquery.flexslider.js" ></script>
+    <script src="<?php echo $template_directory;?>/js/ajaxify.js" ></script>
+    <script src="<?php echo $template_directory;?>/js/zeroClipboard.js" ></script>
+    <script data-pace-options='{ "ajax": true }'  src="<?php echo $template_directory;?>/js/pace.min.js" ></script>
 
 
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url')  ?>" />
-    <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/custom.css" />
-    <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/flexslider.css" />
-    <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/animation.css" />
-    <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/header.css" />
-    <link rel="stylesheet" href="<?php bloginfo('template_directory')  ?>/css/mystyle.css" />
-    <link rel='stylesheet' href="<?php bloginfo('template_directory'); ?>/css/homepage.css" />
-    <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/rangoli.css" />
-    <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/jquery.raty.css" />
-    <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/pace.css" />
-    <link rel='stylesheet' href="<?php bloginfo('template_directory'); ?>/css/media.css" />
+    <link rel="stylesheet" href="<?php echo $template_directory;  ?>/css/custom.css" />
+    <link rel="stylesheet" href="<?php echo $template_directory;  ?>/css/flexslider.css" />
+    <link rel="stylesheet" href="<?php echo $template_directory;  ?>/css/animation.css" />
+    <link rel="stylesheet" href="<?php echo $template_directory;  ?>/css/header.css" />
+    <link rel="stylesheet" href="<?php echo $template_directory;  ?>/css/mystyle.css" />
+    <link rel='stylesheet' href="<?php echo $template_directory; ?>/css/homepage.css" />
+    <link rel="stylesheet" href="<?php echo $template_directory;  ?>/css/rangoli.css" />
+    <link rel="stylesheet" href="<?php echo $template_directory;  ?>/css/jquery.raty.css" />
+    <link rel="stylesheet" href="<?php echo $template_directory;  ?>/css/pace.css" />
+    <link rel='stylesheet' href="<?php echo $template_directory; ?>/css/media.css" />
 
 
     <?php
         if(is_front_page()){
     ?>
 
-    <script src="<?php bloginfo('template_directory')?>/js/jquery.flexslider.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/homepage.js" ></script>
+    <script src="<?php echo $template_directory;?>/js/jquery.flexslider.js" ></script>
+    <script src="<?php echo $template_directory;?>/js/homepage.js" ></script>
 
     <?php
     }
     ?>
-    <script src="<?php bloginfo('template_directory')?>/js/custom.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/smogi.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/rangoli.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/magento_signin.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/jquery.raty.js" ></script>
+    <script src="<?php echo $template_directory;?>/js/custom.js" ></script>
+    <script src="<?php echo $template_directory;?>/js/smogi.js" ></script>
+    <script src="<?php echo $template_directory;?>/js/rangoli.js" ></script>
+    <script src="<?php echo $template_directory;?>/js/magento_signin.js" ></script>
+    <script src="<?php echo $template_directory;?>/js/jquery.raty.js" ></script>
 
 </head>
 <body>
@@ -278,7 +280,7 @@ $display_name = $current_user->display_name;
 
 <div class="menu-box user-color-shade" style="background:rgba(85,85,85,0.85)">
     <div class="menu-content white">
-        <img src="<?php bloginfo('template_directory') ?>/images/close.png" class="right close-menu-btn" />
+        <img src="<?php echo $template_directory; ?>/images/close.png" class="right close-menu-btn" />
 
         <ul class="profile-links">
             <li><div id="user_info">
@@ -333,7 +335,7 @@ $display_name = $current_user->display_name;
                         }
                     ?>
                 </div></li>
-            <li><a class="home_link" href="<?php echo get_home_url() ?>/"><img src="<?php bloginfo('template_directory')?>/images/home.png" /> </a> </li>
+            <li><a class="home_link" href="<?php echo get_home_url() ?>/"><img src="<?php echo $template_directory;?>/images/home.png" /> </a> </li>
         </ul>
         <?php
             wp_nav_menu( array( 'theme_location' => 'menu1', 'container_class' => 'category-menu' ) );
