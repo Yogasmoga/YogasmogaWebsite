@@ -544,7 +544,12 @@ if(!$this->getIsHomePage()){
                             <li class="blank"></li>
                             <li style="padding-top: 16px;"><a href="<?php echo $this->getBaseUrl()."sales/order/history"; ?>">track order</a></li>
                             <li><a href="<?php echo $this->getBaseUrl()."customer/account/index"; ?>">account settings</a></li>
-                            <li class="last"><a id="signin" href="<?php if($islogedinuser)echo $this->getBaseUrl()."customer/account/logout/";else echo "javascript:void(0);";  ?>"><?php if($islogedinuser)echo "Sign Out";else echo "Sign In";  ?></a></li>
+<!--                            <li class="last"><a id="signin" href="--><?php //if($islogedinuser)echo $this->getBaseUrl()."customer/account/logout/";else echo "javascript:void(0);";  ?><!--">--><?php //if($islogedinuser)echo "Sign Out";else echo "Sign In";  ?><!--</a></li>-->
+
+                            <!-- **************** code update by ys team ********************
+                            <li class="last"><a id="signin" href="<?php if($islogedinuser)echo $this->getBaseUrl()."customer/account/logout/";else echo "javascript:void(0);";  ?>" onclick=""><?php if($islogedinuser)echo "Sign Out";else echo "Sign In";  ?></a></li>
+-->
+                            <li class="last login_logout_link"></li>
                         </ul>
                         <span>|</span>
                     </li>
