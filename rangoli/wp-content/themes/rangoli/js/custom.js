@@ -15,13 +15,13 @@ var date = new Date();
 var s = date.getSeconds();
 
 $(document).ready(function () {
-    if (window.location.href.indexOf('https://') >= 0)
-        _usesecureurl = true;
-    else
-        _usesecureurl = false;
+    //if (window.location.href.indexOf('https://') >= 0)
+    //    _usesecureurl = true;
+    //else
+    //    _usesecureurl = false;
     var url = homeUrl + 'mycatalog/myproduct/checkforsignuppopup';
-    if (_usesecureurl)
-        url = securehomeUrl + 'mycatalog/myproduct/checkforsignuppopup';
+    //if (_usesecureurl)
+    //    url = securehomeUrl + 'mycatalog/myproduct/checkforsignuppopup';
     jQuery.ajax({
         url: url,
         type: 'POST',
