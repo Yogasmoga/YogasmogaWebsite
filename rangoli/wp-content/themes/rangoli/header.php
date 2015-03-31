@@ -12,7 +12,7 @@
         $root = get_site_url();
         $root = str_replace("/rangoli","/",$root);
 
-        $template_directory = bloginfo('template_directory');
+        $template_directory = get_bloginfo( 'template_directory', 'display' );
     ?>
     <script>
 
