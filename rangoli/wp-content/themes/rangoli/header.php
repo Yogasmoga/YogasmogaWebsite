@@ -13,6 +13,12 @@
         $root = str_replace("/rangoli","/",$root);
 
         $template_directory = get_bloginfo( 'template_directory', 'display' );
+
+        if(is_ssl()) {
+//            $template_directory = str_replace('http://', 'https://', strtolower($template_directory));
+            $url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+            header("location: ".$url);
+        }
     ?>
     <script>
 
