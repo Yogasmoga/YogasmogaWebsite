@@ -16,23 +16,14 @@
 
         var  homeUrl="<?php echo $root ?>";
         var today_date="<?php echo date("j.m.y", time()) ?>";
-//
-//        (function(d) {
-//            var config = {
-//                    kitId: 'xta6sbe',
-//                    scriptTimeout: 3000
-//                },
-//                h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-//        })(document);
 
         (function(d) {
             var config = {
-                    kitId: 'hhs7njj',
+                    kitId: 'xta6sbe',
                     scriptTimeout: 3000
                 },
                 h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
         })(document);
-
     </script>
 
     <?php
@@ -98,7 +89,7 @@
                             <ul><li><a href="/women/tops/bras">Bras</a></li>
                                 <li><a href="/women/tops/tanks">Tanks</a></li>
                                 <li><a href="/women/tops/tees">TEES</a></li>
-                                <li><a href="/women/tops/tanks/sweaters">SWEATERS</a></li>
+                                <li><a href="/women/tops/sweaters">SWEATERS</a></li>
                                 <li><a href="/women/tops/jackets">Jackets</a></li>
                             </ul>
                         </li>
