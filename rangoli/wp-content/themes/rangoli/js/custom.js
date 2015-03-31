@@ -209,13 +209,13 @@ function createCustomerAccount_from_popup() {
             else {
                 var cpassword = pwd;
                 //var is_subscribed = jQuery("#in_touch").val();
-                if (window.location.href.indexOf('https://') >= 0)
-                    _usesecureurl = true;
-                else
-                    _usesecureurl = false;
+                //if (window.location.href.indexOf('https://') >= 0)
+                //    _usesecureurl = true;
+                //else
+                //    _usesecureurl = false;
                 var url = homeUrl + 'mycatalog/myproduct/registercustomer';
-                if (_usesecureurl)
-                    url = securehomeUrl + 'mycatalog/myproduct/registercustomer';
+                //if (_usesecureurl)
+                //    url = securehomeUrl + 'mycatalog/myproduct/registercustomer';
 
                 jQuery.ajax({
                     url: url,
@@ -298,13 +298,13 @@ function createCustomerAccount() {
     //alert(pwd);
     var cpassword = pwd;
     //var is_subscribed = jQuery("#in_touch").val();
-    if (window.location.href.indexOf('https://') >= 0)
-        _usesecureurl = true;
-    else
-        _usesecureurl = false;
+    //if (window.location.href.indexOf('https://') >= 0)
+    //    _usesecureurl = true;
+    //else
+    //    _usesecureurl = false;
     var url = homeUrl + 'mycatalog/myproduct/registercustomer';
-    if (_usesecureurl)
-        url = securehomeUrl + 'mycatalog/myproduct/registercustomer';
+    //if (_usesecureurl)
+    //    url = securehomeUrl + 'mycatalog/myproduct/registercustomer';
 
     jQuery.ajax({
         url: url,
@@ -378,13 +378,13 @@ function loginCustomer() {
 
     var email_id = jQuery.trim(jQuery("#si_email").val());
     var pwd = jQuery.trim(jQuery("#si_password").val());
-    if (window.location.href.indexOf('https://') >= 0)
-        _usesecureurl = true;
-    else
-        _usesecureurl = false;
+    //if (window.location.href.indexOf('https://') >= 0)
+    //    _usesecureurl = true;
+    //else
+    //    _usesecureurl = false;
     var url = homeUrl + 'mycatalog/myproduct/logincustomer';
-    if (_usesecureurl)
-        url = securehomeUrl + 'mycatalog/myproduct/logincustomer';
+    //if (_usesecureurl)
+    //    url = securehomeUrl + 'mycatalog/myproduct/logincustomer';
 
     jQuery.ajax({
 
