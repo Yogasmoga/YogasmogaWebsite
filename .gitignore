@@ -2,7 +2,8 @@
 ## Eclipse
 #################
 nbproject
-media
+/media
+rangoli_profile_images
 *.pydevproject
 .project
 .metadata

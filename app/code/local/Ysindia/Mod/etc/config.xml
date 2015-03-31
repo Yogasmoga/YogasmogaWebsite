@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config>
+
+    <!-- ******************* modules section ******************** -->
+
+    <modules>
+        <Ysindia_Mod>
+            <version>0.1.0</version>
+        </Ysindia_Mod>
+    </modules>
+
+    <!-- ******************* global section ******************** -->
+
+    <frontend>
+        <routers>
+            <mod>
+                <use>standard</use>
+                <args>
+                    <module>Ysindia_Mod</module>
+                    <frontName>ys</frontName>
+                </args>
+            </mod>
+        </routers>
+    </frontend>
+    <!-- ******************* admin section ******************** -->
+
+</config>
