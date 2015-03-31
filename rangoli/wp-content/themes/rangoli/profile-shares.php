@@ -75,6 +75,8 @@
                                     }
                                     echo '<div class="overlay-text" onclick="window.location=\''.get_the_permalink().'\'">';
 
+                                            $author = get_user_profile($post->post_author);
+                                            $author_color = $author->color_shade;
                                             if (has_post_video()) {
 
                                             ?>
