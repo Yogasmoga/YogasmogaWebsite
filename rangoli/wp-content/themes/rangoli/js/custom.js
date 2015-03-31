@@ -1337,3 +1337,13 @@ function history_pop(){
         window.location = document.location;
     });
 }*/
+
+$(document).ready(function(){
+    $.ajax({
+        url:root +"ys/session/getcartcount",
+        success : function(response){
+            $("#cart span").html(response);
+        }
+    })
+
+});
