@@ -1,7 +1,7 @@
 <?php
 require 'app/Mage.php';
 
-
+exit();
 $app = Mage::app('');
 $myfile = fopen("mailchimp_list.txt", "r") or die("Unable to open file!");
 $apikey_listid = trim(fgets($myfile));

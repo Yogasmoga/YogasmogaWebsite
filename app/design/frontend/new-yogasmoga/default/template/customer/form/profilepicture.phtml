@@ -62,7 +62,17 @@
     </div>
 <div class="edit-info">
 
-<form id="frmpicture" action="<?php echo $this->getUrl('profile/manage/saveimage') ?>" target="ifr" method="post" enctype="multipart/form-data" onsubmit="startUpdating()">
+    <?php
+    $save_url = $this->getUrl('profile/manage/saveimage', array('_secure' => true));
+//
+//    $current_url = Mage::helper('core/url')->getCurrentUrl();
+//
+//    if(strpos($current_url, 'https')>-1)
+//        if(strpos($save_url, 'https')==-1)
+//            $save_url = str_replace('http', 'https', $save_url);
+    ?>
+
+    <form id="frmpicture" action="<?php echo $save_url;?>" target="ifr" method="post" enctype="multipart/form-data" onsubmit="startUpdating()">
     <?php echo $this->getBlockHtml('formkey')?>
 
     <table class="inputtable" style="min-width:500px">
