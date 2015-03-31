@@ -10,5 +10,5 @@ define('CONSUMER_SECRET','TKt8zuEdBXCDa7euGhbXUxdPUmF6og4XC79Xrd1aVHSUx8GAeW');
 define('ACCESS_TOKEN','315003413-okgplYaH5GVt2BPeoztvqe8gX9L5wgkbVwMpAsDv');
 define('ACCESS_TOKEN_SECRET','nwnhZpwfFwLpp0EQJOfCdOpL0Rq8qTKsyi9JAzrYgveXI');
 define('REFERRAL_URL', "http://yogasmoga.com/profile/manage/referralurl");
-define('OAUTH_CALLBACK', "http://yogasmoga.com/rangoli/wp-content/themes/rangoli/twt_callback.php");
+define('OAUTH_CALLBACK', "https://yogasmoga.com/rangoli/wp-content/themes/rangoli/twt_callback.php");
 ?>

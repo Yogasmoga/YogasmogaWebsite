@@ -21,7 +21,8 @@ unset($_SESSION['oauth_token_secret']);
 if (200 == $connection->http_code) {
 $_SESSION['status'] = 'verified';
 //    header('Location: ./twt_connect.php');
-    header('Location: http://yogasmoga.com/rangoli/twitterinvite');
+//    header('Location: https://yogasmoga.com/rangoli/twitterinvite');
+    header('Location: ./twitterinvite');
 } else {
 header('Location: ./twt_clearsessions.php');
 }
