@@ -105,9 +105,7 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                 $banner_found = false;
                 $profile_found = false;
 
-                if(isset($_FILES['banner_pic'])) {
-                    $name_banner = $_FILES['banner_pic']['name']; // filename to get file's extension
-                    $size_banner = $_FILES['banner_pic']['size'];
+                if(isset($_POST['banner_filename'])) {
                     $banner_found = true;
                 }
 
@@ -122,7 +120,7 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
 
                 if ($banner_found) {
 
-                    $extension_banner = pathinfo($name_banner, PATHINFO_EXTENSION);
+                    $extension_banner = pathinfo($_POST['banner_filename'], PATHINFO_EXTENSION);
 
                     if (in_array($extension_banner, $file_formats)) { // check it if it's a valid format or not
 
