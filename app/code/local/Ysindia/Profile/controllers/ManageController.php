@@ -146,7 +146,7 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                             $banner_result = true;
 
                             //$banner_pic = $savepath . $imagename_banner;
-                            $banner_pic = $savepath . "thumb_" . $_POST['profile_filename'];
+                            $banner_pic = $savepath . "thumb_" . $_POST['banner_filename'];
 
                             if ($banner_result) {
                                 $ar_messages[] = array('message' => 'Banner uploaded');
