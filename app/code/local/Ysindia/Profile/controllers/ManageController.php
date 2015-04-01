@@ -249,10 +249,44 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
 
         $picture_type = $_POST['picture_type'];
 
-        if($picture_type=="banner")
-            $filepath = Mage::getBaseDir() . "/rangoli/rangoli_profile_images/";
-        else
-            $filepath = Mage::getBaseDir() . "/rangoli/rangoli_profile_images/temp/";
+        $filepath = Mage::getBaseDir() . "/rangoli/rangoli_profile_images/temp/";
+
+        if (isset($_FILES['pic'])) {
+
+            $name = $_FILES['pic']['name']; // filename to get file's extension
+            $size = $_FILES['pic']['size'];
+
+            if (strlen($name)) {
+                $extension = substr($name, strrpos($name, '.') + 1);
+                if (in_array($extension, $file_formats)) { // check it if it's a valid format or not
+                    if ($size < (2048 * 1024)) { // check it if it's bigger than 2 mb or no
+                        $imagename = md5(uniqid() . time()) . "." . $extension;
+                        $tmp = $_FILES['pic']['tmp_name'];
+                        if (move_uploaded_file($tmp, $filepath . $imagename)) {
+                            echo $imagename;
+                        } else {
+                            echo "Could not move the file";
+                        }
+                    } else {
+                        echo "Your image size is bigger than 2MB";
+                    }
+                } else {
+                    echo "Invalid file format";
+                }
+            } else {
+                echo "Please select image!";
+            }
+            exit();
+        }
+    }
+
+    public function uploadbannerimageAction(){
+
+        $file_formats = array("jpg", "jpeg", "png", "gif", "bmp");
+
+        $picture_type = $_POST['picture_type'];
+
+        $filepath = Mage::getBaseDir() . "/rangoli/rangoli_profile_images/";
 
         if (isset($_FILES['pic'])) {
 

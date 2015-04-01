@@ -228,6 +228,7 @@
 
 $save_url = $this->getUrl('profile/manage/saveimage', array('_secure' => true));
 $upload_url = $this->getUrl('profile/manage/uploadimage', array('_secure' => true));
+$banner_upload_url = $this->getUrl('profile/manage/uploadbannerimage', array('_secure' => true));
 $upload_path = Mage::getBaseUrl() . 'rangoli/rangoli_profile_images/temp/';
 
 $thumb_width = "150";
@@ -384,7 +385,7 @@ $thumb_height = "150";
     <h2>UPDATE PROFILE PICTURE</h2>
 </div>
 
-<form class="banneruploadform" method="post" enctype="multipart/form-data" action="<?php echo $upload_url; ?>"
+<form class="banneruploadform" method="post" enctype="multipart/form-data" action="<?php echo $banner_upload_url; ?>"
       name="photo" target="ifb">
     <input type="hidden" name="picture_type" value="banner"/>
     <table class="inputtable" style="min-width:500px">
