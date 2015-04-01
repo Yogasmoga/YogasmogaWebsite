@@ -225,14 +225,14 @@
 <?php
 //the_block('footer');
 ?>
-<div class="footer row" style="padding-top: 90px">
-    <div class="side-logo span4">
+<div class="footer row">
+    <div class="side-logo">
         <a class="logo" href="/" style="padding-left:5px">
             <img src="<?php bloginfo('template_directory')  ?>/images/ys_logo.png" alt="logo_footer" />
         </a>
         <div class="clear-fix"></div>
     </div>
-    <div class="footer-right span8">
+    <div class="footer-right">
         <div class="first-list">
             <li>
                 <ul>
