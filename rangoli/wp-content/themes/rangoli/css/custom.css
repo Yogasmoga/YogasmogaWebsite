@@ -26,13 +26,13 @@
 }
 .signin-block, .your-color-block {
     border-radius: 50%;
-    height: 510px;
+    height: 456px;
     left: 50%;
-    margin-left: -255px;
-    margin-top: -289px;
+    margin-left: -228px;
+    margin-top: -264px;
     position: absolute;
     top: 50%;
-    width: 510px;
+    width: 456px;
 }
 .your-color-block{
     display: none;
@@ -50,8 +50,17 @@
     width: 0;
 }
 #signin_popup .form {
-    margin: 290px auto 0;
-    width: 252px;
+    display: block;
+    left: 252px;
+    margin: 46px auto 0;
+    width: 250px;
+}
+.form-text {
+    display: block;
+    left: 15%;
+    margin: 0 auto;
+    top: 14%;
+    width: 74%;
 }
 #signin_popup .form input{
     float: left;
@@ -73,12 +82,12 @@
 }
 .close_signin_popup {
     background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/pop-close.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
     float: right;
     height: 42px;
-    margin-right: 100px;
-    margin-top: 33px;
+    margin-right: 82px;
+    margin-top: 14px;
     width: 41px;
-    cursor:pointer;
 }
 /* *******************GRID***************************** */
 body,div ,p,input, textarea{

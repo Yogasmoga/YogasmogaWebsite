@@ -24,117 +24,469 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<script type="text/javascript">
+<!--<script type="text/javascript">-->
+<!---->
+<!--    jQuery(function(){-->
+<!--        jQuery("#btnupload").click(uploadData);-->
+<!--    });-->
+<!---->
+<!--    function uploadData(){-->
+<!---->
+<!--        jQuery(".messageupdate").html("Updating, please wait");-->
+<!--        jQuery("#frmpicture").submit();-->
+<!--    }-->
+<!---->
+<!--    function startUpdating(){-->
+<!---->
+<!--        jQuery("#ifr").load(function (result) {-->
+<!---->
+<!--            jQuery(".messageupdate").html("Profile updated successfully");-->
+<!---->
+<!--            var image_data = jQuery(this).contents().find("body").html();-->
+<!---->
+<!--            jQuery(".messageupdate").html(image_data);-->
+<!---->
+<!--            jQuery("input[type='file']").val("");-->
+<!---->
+<!--            setTimeout(function () {-->
+<!--                jQuery(".messageupdate").html("&nbsp;");-->
+<!--            }, 5000);-->
+<!--        });-->
+<!---->
+<!--        return true;-->
+<!--    }-->
+<!--</script>-->
 
-    jQuery(function(){
-        jQuery("#btnupload").click(uploadData);
-    });
+<style type="text/css">
+    /*
+     * imgAreaSelect default style
+     */
 
-    function uploadData(){
-
-        jQuery(".messageupdate").html("Updating, please wait");
-        jQuery("#frmpicture").submit();
+    .imgareaselect-border1 {
+        background: url(border-v.gif) repeat-y left top;
     }
 
-    function startUpdating(){
+    .imgareaselect-border2 {
+        background: url(border-h.gif) repeat-x left top;
+    }
 
-        jQuery("#ifr").load(function (result) {
+    .imgareaselect-border3 {
+        background: url(border-v.gif) repeat-y right top;
+    }
 
-            jQuery(".messageupdate").html("Profile updated successfully");
+    .imgareaselect-border4 {
+        background: url(border-h.gif) repeat-x left bottom;
+    }
 
-            var image_data = jQuery(this).contents().find("body").html();
+    .imgareaselect-border1, .imgareaselect-border2,
+    .imgareaselect-border3, .imgareaselect-border4 {
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+    }
 
-            jQuery(".messageupdate").html(image_data);
+    .imgareaselect-handle {
+        background-color: #fff;
+        border: solid 1px #000;
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+    }
 
-            jQuery("input[type='file']").val("");
+    .imgareaselect-outer {
+        background-color: #000;
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+    }
 
-            setTimeout(function () {
-                jQuery(".messageupdate").html("&nbsp;");
-            }, 5000);
+    .imgareaselect-selection {
+    }
+
+    .container {
+        margin: 0 auto;
+        padding: 60px 0 0 0;
+        width: 700px;
+    }
+
+    .crop_box {
+        width: 700px;
+        height: 400px;
+        border-radius: 4px;
+        border: 1px solid #b6b6b6;
+        background-color: #e7e7e7;
+    }
+
+    .crop_set_upload {
+        width: 650px;
+        padding: 20px 0 0 0;
+    }
+
+    .crop_upload_label {
+        float: left;
+        width: 120px;
+        padding: 20px 0 0 20px;
+        font-family: verdana, arial;
+        font-weight: bold;
+        font-size: 12px;
+        color: #000;
+    }
+
+    .crop_select_image {
+        float: left;
+        width: 150px;
+        padding: 12px 0 0 0px;
+    }
+
+    .hide_broswe {
+        opacity: 0;
+        -moz-opacity: 0;
+        filter: alpha(opacity:0);
+        width: 120px;
+        padding: 5px;
+        cursor: pointer;
+    }
+
+    .file_browser {
+        width: 126px;
+        height: 32px;
+        background: url("../images/crop_select_image.png") no-repeat;
+        float: left;
+    }
+
+    .upload_button {
+        background: url("../images/crop_upload_image.png") no-repeat;
+        width: 113px;
+        height: 32px;
+        text-indent: -1000px;
+        border: 0px;
+        cursor: pointer;
+    }
+
+    .crop_set_preview {
+        float: left;
+        width: 690px;
+        padding: 20px 0 0 0;
+    }
+
+    .crop_preview_left {
+        float: left;
+        width: 430px;
+    }
+
+    .crop_preview_right {
+        font-family: verdana, arial;
+        font-weight: bold;
+        font-size: 11px;
+        color: #000;
+        float: left;
+        width: 170px;
+        padding: 0 0 0 20px;
+    }
+
+    .crop_preview_box_big {
+        width: 400px;
+        height: 250px;
+    }
+
+    .crop_preview_box_big img {
+        max-width: 400px;
+        max-height: 300px;
+        border: 1px solid #b6b6b6;
+    }
+
+    .crop_preview_box_small {
+        width: 150px;
+        height: 150px;
+        border: 1px solid #b6b6b6;
+        background-color: #f7f7f7;
+        /*margin: 10px 0 0 0 ;*/
+    }
+
+    .crop_preview_submit {
+        width: 160px;
+        margin: 90px 0 0 0;
+        text-align: center;
+    }
+
+    .submit_button {
+        background: url("crop_upload_submit.png") no-repeat;
+        width: 80px;
+        height: 32px;
+        text-indent: -1000px;
+        border: 0px;
+        cursor: pointer;
+    }
+
+    .spuploadimage, .spuploadbannerimage {
+        display: none;
+    }
+
+    #preview_table {
+        display: none;
+    }
+</style>
+
+<?php
+
+$save_url = $this->getUrl('profile/manage/saveimage', array('_secure' => true));
+$upload_url = $this->getUrl('profile/manage/uploadimage', array('_secure' => true));
+$upload_path = Mage::getBaseUrl() . 'rangoli/rangoli_profile_images/temp/';
+
+$thumb_width = "150";
+$thumb_height = "150";
+
+?>
+
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(); ?>js/upload_profile/jquery.form.js"></script>
+<script type="text/javascript"
+        src="<?php echo Mage::getBaseUrl(); ?>js/upload_profile/jquery.imgareaselect.js"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+
+        jQuery("#banner_pic").change(function () {
+            var file = jQuery(this).val();
+
+            if (file.length > 0) {
+                jQuery(".spuploadbannerimage").show();
+                jQuery(".spuploadbannerimage").html("Uploading, please wait");
+                jQuery(".banneruploadform").submit();
+            }
         });
 
-        return true;
+        jQuery("#profile_pic").change(function () {
+            var file = jQuery(this).val();
+
+            if (file.length > 0) {
+                jQuery(".spuploadimage").show();
+                jQuery(".spuploadimage").html("Uploading, please wait");
+                jQuery(".profileuploadform").submit();
+            }
+        });
+
+        jQuery("#ifb").load(function () {
+            var result = jQuery("#ifb").contents().find("body").html();
+
+            jQuery(".spuploadbannerimage").html("");
+
+            showBannerResponse(result);
+        });
+
+        jQuery("#ifr").load(function () {
+            var result = jQuery("#ifr").contents().find("body").html();
+
+            jQuery(".messageupdate").html("");
+
+            showResponse(result);
+        });
+
+        jQuery("#ifr2").load(function () {
+            var result = jQuery("#ifr2").contents().find("body").html();
+
+            jQuery(".spuploadimage").hide();
+            jQuery(".spuploadimage").html("&nbsp;");
+
+            jQuery(".spuploadbannerimage").hide();
+            jQuery(".spuploadbannerimage").html("&nbsp;");
+
+            jQuery("#banner_pic").val("");
+            jQuery("#profile_pic").val("");
+
+            jQuery(".messageupdate").html(result);
+        });
+
+        jQuery("#imagefile").val("");
+    });
+
+    function saveProfile() {
+        jQuery(".messageupdate").html("Updating, please wait");
+    }
+
+    function showBannerResponse(responseText) {
+
+        if (responseText.indexOf('.') > 0) {
+            jQuery('#bannerthumbviewimage').html('<img src="<?php echo $upload_path; ?>' + responseText + '"   style="position: relative; width:100%; margin-bottom:20px;" alt="Thumbnail Preview" />');
+
+            jQuery("#banner_preview_table").show();
+        } else {
+            jQuery('#thumbviewimage').html(responseText);
+            jQuery('#viewimage').html(responseText);
+        }
+    }
+
+    function showResponse(responseText) {
+
+        if (responseText.indexOf('.') > 0) {
+            jQuery('#thumbviewimage').html('<img src="<?php echo $upload_path; ?>' + responseText + '"   style="position: relative;" alt="Thumbnail Preview" />');
+            jQuery('#viewimage').html('<img class="preview" alt="" src="<?php echo $upload_path; ?>' + responseText + '"   id="thumbnail" />');
+            jQuery('#profile_filename').val(responseText);
+            jQuery('#thumbnail').imgAreaSelect({aspectRatio: '1:1', handles: true, onSelectChange: preview});
+
+            jQuery("#preview_table").show();
+
+            jQuery(".spuploadimage").html("Choose an area on the image");
+        } else {
+            jQuery('#thumbviewimage').html(responseText);
+            jQuery('#viewimage').html(responseText);
+        }
     }
 </script>
 
+<script type="text/javascript">
+    function preview(img, selection) {
+        var scaleX =
+        <?php echo $thumb_width;?> /
+        selection.width;
+        var scaleY =
+        <?php echo $thumb_height;?> /
+        selection.height;
+
+        jQuery('#thumbviewimage > img').css({
+            width: Math.round(scaleX * img.width) + 'px',
+            height: Math.round(scaleY * img.height) + 'px',
+            marginLeft: '-' + Math.round(scaleX * selection.x1) + 'px',
+            marginTop: '-' + Math.round(scaleY * selection.y1) + 'px'
+        });
+
+        var x1 = Math.round((img.naturalWidth / img.width) * selection.x1);
+        var y1 = Math.round((img.naturalHeight / img.height) * selection.y1);
+        var x2 = Math.round(x1 + selection.width);
+        var y2 = Math.round(y1 + selection.height);
+
+        jQuery('#x1').val(x1);
+        jQuery('#y1').val(y1);
+        jQuery('#x2').val(x2);
+        jQuery('#y2').val(y2);
+
+        jQuery('#w').val(Math.round((img.naturalWidth / img.width) * selection.width));
+        jQuery('#h').val(Math.round((img.naturalHeight / img.height) * selection.height));
+
+    }
+
+    jQuery(document).ready(function () {
+        jQuery('#save_thumb').click(function () {
+            var x1 = jQuery('#x1').val();
+            var y1 = jQuery('#y1').val();
+            var x2 = jQuery('#x2').val();
+            var y2 = jQuery('#y2').val();
+            var w = jQuery('#w').val();
+            var h = jQuery('#h').val();
+            if (x1 == "" || y1 == "" || x2 == "" || y2 == "" || w == "" || h == "") {
+                alert("Please Make a Selection First");
+                return false;
+            } else {
+                return true;
+            }
+        });
+    });
+</script>
+
 <div class="pg-heading">
-      <h2>UPDATE PROFILE PICTURE</h2>
-    </div>
-<div class="edit-info">
+    <h2>UPDATE PROFILE PICTURE</h2>
+</div>
 
-    <?php
-    $save_url = $this->getUrl('profile/manage/saveimage', array('_secure' => true));
-//
-//    $current_url = Mage::helper('core/url')->getCurrentUrl();
-//
-//    if(strpos($current_url, 'https')>-1)
-//        if(strpos($save_url, 'https')==-1)
-//            $save_url = str_replace('http', 'https', $save_url);
-    ?>
-
-    <form id="frmpicture" action="<?php echo $save_url;?>" target="ifr" method="post" enctype="multipart/form-data" onsubmit="startUpdating()">
-    <?php echo $this->getBlockHtml('formkey')?>
-
+<form class="banneruploadform" method="post" enctype="multipart/form-data" action="<?php echo $upload_url; ?>"
+      name="photo" target="ifb">
+    <input type="hidden" name="picture_type" value="banner"/>
     <table class="inputtable" style="min-width:500px">
         <tr>
-            <td class="inputholder" style="width:150px">
-                Banner Picture
-            </td>
             <td>
-                <input type="file" id="banner_pic" name="banner_pic" value="" />
-            </td>
-        </tr>
-    </table>
+                <div style="margin-bottom: 10px">Banner Picture</div>
 
-    <br/>
-
-    <table class="inputtable" style="min-width:500px">
-        <tr>
-            <td style="width:150px">
-                Profile Picture
-            </td>
-            <td>
-                <input type="file" id="profile_pic" name="profile_pic" value="" />
+                <input type="file" name="pic" id="banner_pic" value=""/>
             </td>
         </tr>
     </table>
     <br/>
+</form>
+<iframe id="ifb" name="ifb" style="width:1px;height:1px;visibility:hidden"></iframe>
+
+<span class="spuploadbannerimage">&nbsp;</span>
+<div style="width:500px;" id="bannerthumbviewimage">
+    &nbsp;
+</div>
+
+<form class="profileuploadform" method="post" enctype="multipart/form-data" action="<?php echo $upload_url; ?>" name="photo"
+      target="ifr">
+    <input type="hidden" name="picture_type" value="profile"/>
+
     <table class="inputtable" style="min-width:500px">
         <tr>
-            <td style="width:150px">
-                Description
-            </td>
             <td>
-                <textarea name="description" style="width:100%;" rows="6"><?php echo Mage::helper('profile')->getProfileDescription();?></textarea>
+                <div style="margin-bottom: 10px">Profile Picture</div>
+
+                <input type="file" name="pic" id="profile_pic" value=""/>
+            </td>
+        </tr>
+    </table>
+    <br/>
+</form>
+<iframe id="ifr" name="ifr" style="width:1px;height:1px;visibility:hidden"></iframe>
+
+<form method="post" enctype="multipart/form-data" action="<?php echo $save_url; ?>" name="photo"
+      target="ifr2" onsubmit="saveProfile()">
+
+    <br/>
+    <span class="spuploadimage">&nbsp;</span>
+    <table class="inputtable" style="min-width:500px" id="preview_table">
+        <tr>
+            <td colspan="2">
+                <div class="crop_set_preview">
+                    <div class="crop_preview_left">
+                        <div class="crop_preview_box_big" id='viewimage'>
+
+                        </div>
+                    </div>
+                    <div class="crop_preview_right">
+                        <div class="crop_preview_box_small" id='thumbviewimage'
+                             style="position:relative; overflow:hidden;"></div>
+                        <div style="text-align: center">Preview</div>
+
+                        <form name="thumbnail" action="<?php echo $save_url; ?>" method="post" target="ifr2">
+                            <?php echo $this->getBlockHtml('formkey') ?>
+                            <input type="hidden" name="x1" value="" id="x1"/>
+                            <input type="hidden" name="y1" value="" id="y1"/>
+                            <input type="hidden" name="x2" value="" id="x2"/>
+                            <input type="hidden" name="y2" value="" id="y2"/>
+                            <input type="hidden" name="w" value="" id="w"/>
+                            <input type="hidden" name="h" value="" id="h"/>
+                            <input type="hidden" name="wr" value="" id="wr"/>
+
+                            <input type="hidden" name="profile_filename" value="" id="profile_filename"/>
+                            <input type="hidden" name="banner_filename" value="" id="banner_filename"/>
+                            <!--                        <div class="crop_preview_submit"><input type="submit" name="upload_thumbnail" value="Save Thumbnail" id="save_thumb" class="submit_button" /> </div>-->
+                        </form>
+                        <iframe id="ifr2" name="ifr2" style="width:1px;height:1px;visibility:hidden"></iframe>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <table class="inputtable" style="min-width:500px; margin-top: 20px;">
+        <tr>
+            <td style="width:150px">
+                <div style="margin-bottom: 10px">Description</div>
+
+                <textarea name="description" style="width:100%;"
+                          rows="6"><?php echo Mage::helper('profile')->getProfileDescription(); ?></textarea>
             </td>
         </tr>
     </table>
     <br/>
     <table class="inputtable" style="min-width:500px">
         <tr>
-            <td style="width:150px">
-                &nbsp;
-            </td>
             <td>
-                <input type="button" value=" Update " id="btnupload"/>
+                <input type="submit" value=" Update Profile " id="btnupload"/>
             </td>
         </tr>
     </table>
     <br/>
     <table class="inputtable" style="min-width:500px">
         <tr>
-            <td style="width:150px">
-                &nbsp;
-            </td>
             <td class="messageupdate">
                 &nbsp;
             </td>
         </tr>
     </table>
-
-
-    <div class="clear-fix"></div>
-
 </form>
-    <iframe name="ifr" id="ifr" style="visibility: hidden;height:1px;width:1px"></iframe>
-</div>
+<iframe id="ifr2" name="ifr2" style="width:1px;height:1px;visibility:hidden"></iframe>

@@ -1,5 +1,4 @@
-
-body {
+.header-container ,.footer-container {
     color: #2f2f2f;
     font: 12px/1.55 Gotham-Book, Arial, Helvetica, sans-serif !important;
     text-align: center;
@@ -13,7 +12,7 @@ body {
 .page {
     background: none repeat scroll 0 0 #fff;
     display: block;
-    min-width: 1007px;
+    min-width: 1024px;
     position: relative;
     z-index: 2;
 }
@@ -21,11 +20,10 @@ body {
 .header-container {
     background-color: #fff;
     height: 69px;
-    min-width: 1007px;
+    min-width: 1024px;
     position: fixed;
     top: 0;
     width: 100%;
-
     z-index: 9999;
 }
 
@@ -215,7 +213,7 @@ ul.main-nav li a, ul.shipping-menu > li > ul.sub-menu li a {
     color: #fff;
     display: inline-block;
     float: left;
-    font: 11px/19px gothammedium;
+    font: 11px/19px Gotham-Medium;
     margin: 0 10px 0 0;
     padding: 10px 5px;
     text-transform: uppercase;

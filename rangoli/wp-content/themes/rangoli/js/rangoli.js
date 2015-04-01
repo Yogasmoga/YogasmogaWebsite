@@ -192,8 +192,9 @@
         _setUp: function () {
             var l = this;
             l.$slider = s('<div id="colors" />'), l.$sliderList = s('<ul id="color-list" />'), s.each(l.json, function (i, e) {
-                var a = '<li class="color" data-color="#' + i + '" data-bg="' + e.bg + '"><div class="primary">';
-                a += l._getAnimData(e.animation, e.shades), a += '<span style="background-color: #' + i + ';">&nbsp;</span></div></li>', l.$sliderList.append(s(a))
+                var color = i.split("_").pop();
+                var a = '<li class="color" data-color="#' + color + '" data-bg="' + e.bg + '"><div class="primary">';
+                a += l._getAnimData(e.animation, e.shades), a += '<span style="background-color: #' + color + ';">&nbsp;</span></div></li>', l.$sliderList.append(s(a))
             }), l.$slider.append(l.$sliderList).appendTo(l.elm), l.slength = l.$sliderList.children("li").length, l.current = 0, l._setDimentions(), l._initSlider()
         },
         _initSlider: function () {
@@ -273,7 +274,6 @@
 var firstTime = false;
 var $activity, game;
 jQuery(document).ready(function ($) {
-
     var $gameContainer = $('<div id="color-game"/>');
     $('body').append($gameContainer);
 
@@ -316,14 +316,14 @@ function get_bulls_eye() {
             $activity = data;
         }, 'json').done(function () {
             //setTimeout(function () {
-                //Pace.ignoreURLs(get_bulls_eye());
-                if (game.isInActive()) {
-                    game.updateJson($activity);
-                    //get_bulls_eye();
-                }
-                else {
-                    //get_bulls_eye();
-                }
+            //Pace.ignoreURLs(get_bulls_eye());
+            if (game.isInActive()) {
+                game.updateJson($activity);
+                //get_bulls_eye();
+            }
+            else {
+                //get_bulls_eye();
+            }
             //}, 30000);
         });
     });
