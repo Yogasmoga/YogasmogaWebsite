@@ -129,8 +129,6 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
 
                             $thumb_width = "150";
 
-                            $large_image_location = $filepath.'temp/'.$_POST['banner_filename'];
-
                             //$banner_result = move_uploaded_file($tmp_banner, $filepath . $imagename_banner);
                             $banner_result = true;
 
@@ -152,12 +150,6 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                                 } else {
                                     $query = "insert into rangoli_usermeta(user_id, meta_key, meta_value) values($user_id, 'author_profile_picture','$banner_pic')";
                                     $result = $writeConnection->query($query);
-                                }
-
-                                try{
-                                    unlink($large_image_location);
-                                }
-                                catch(Exception $e){
                                 }
 
                             } else {
@@ -255,7 +247,12 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
 
         $file_formats = array("jpg", "jpeg", "png", "gif", "bmp");
 
-        $filepath = Mage::getBaseDir() . "/rangoli/rangoli_profile_images/temp/";
+        $picture_type = $_POST['picture_type'];
+
+        if($picture_type=="banner")
+            $filepath = Mage::getBaseDir() . "/rangoli/rangoli_profile_images/";
+        else
+            $filepath = Mage::getBaseDir() . "/rangoli/rangoli_profile_images/temp/";
 
         if (isset($_FILES['pic'])) {
 
