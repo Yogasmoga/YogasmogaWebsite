@@ -125,15 +125,28 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                     $extension_banner = pathinfo($name_banner, PATHINFO_EXTENSION);
 
                     if (in_array($extension_banner, $file_formats)) { // check it if it's a valid format or not
-                        if ($size_banner < (2048 * 1024)) { // check it if it's bigger than 2 mb or no
 
-                            $imagename_banner = md5(uniqid() . time()) . "." . $extension_banner;
-                            $tmp_banner = $_FILES['banner_pic']['tmp_name'];
+//                            $imagename_banner = md5(uniqid() . time()) . "." . $extension_banner;
+//                            $tmp_banner = $_FILES['banner_pic']['tmp_name'];
+
+                            $thumb_width = "150";
+
+                            $large_image_location = $filepath.'temp/'.$_POST['banner_filename'];
+                            $thumb_image_location = $filepath."thumb_".$_POST['banner_filename'];
+
+                            $x1 = $_POST["x1"];
+                            $y1 = $_POST["y1"];
+                            $w = $_POST["w"];
+                            $h = $_POST["h"];
+
+                            $scale = $thumb_width/$w;
+                            $cropped = resizeThumbnailImage($thumb_image_location, $large_image_location,$w,$h,$x1,$y1,$scale);
 
                             //$banner_result = move_uploaded_file($tmp_banner, $filepath . $imagename_banner);
                             $banner_result = true;
 
-                            $banner_pic = $savepath . $imagename_banner;
+                            //$banner_pic = $savepath . $imagename_banner;
+                            $banner_pic = $savepath . "thumb_" . $_POST['profile_filename'];
 
                             if ($banner_result) {
                                 $ar_messages[] = array('message' => 'Banner uploaded');
@@ -152,16 +165,17 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                                     $result = $writeConnection->query($query);
                                 }
 
+                                try{
+                                    unlink($large_image_location);
+                                }
+                                catch(Exception $e){
+                                }
+
                             } else {
                                 $ar_messages[] = array('message' => 'There was some error in uploading the banner');
 
                                 $error = true;
                             }
-                        } else {
-                            $ar_messages[] = array('message' => 'Banner picture greater than 2 mb');
-
-                            $error = true;
-                        }
                     } else {
                         $ar_messages[] = array('message' => 'Invalid banner picture, not an image');
 
@@ -198,7 +212,7 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                         $profile_result = true;
 
                         //$profile_pic = $savepath . $imagename_profile;
-                        $profile_pic = $savepath . $_POST['profile_filename'];
+                        $profile_pic = $savepath . "thumb_" . $_POST['profile_filename'];
 
                         if ($profile_result) {
                             $ar_messages[] = array('message' => 'Profile uploaded');
@@ -250,7 +264,7 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
 
     public function uploadimageAction(){
 
-        $file_formats = array("jpg", "png", "gif", "bmp");
+        $file_formats = array("jpg", "jpeg", "png", "gif", "bmp");
 
         $filepath = Mage::getBaseDir() . "/rangoli/rangoli_profile_images/temp/";
 
