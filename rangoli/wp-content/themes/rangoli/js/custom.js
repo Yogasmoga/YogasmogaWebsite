@@ -553,7 +553,7 @@ function count_interests(){
     var count = getSelectedInterestCount();
     //alert(count);
     if(count >=3){
-        $(".next-confirmation-page").text("NEXT");
+        $(".next-confirmation-page").text("Next");
     }else{
         $(".next-confirmation-page").text("Choose 3+");
     }
