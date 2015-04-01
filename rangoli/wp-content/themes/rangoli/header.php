@@ -54,7 +54,7 @@
     <link rel="stylesheet" href="<?php echo $template_directory;  ?>/css/rangoli.css" />
     <link rel="stylesheet" href="<?php echo $template_directory;  ?>/css/jquery.raty.css" />
     <link rel="stylesheet" href="<?php echo $template_directory;  ?>/css/pace.css" />
-    <link rel='stylesheet' href="<?php echo $template_directory; ?>/css/media.css" />
+<!--    <link rel='stylesheet' href="--><?php //echo $template_directory; ?><!--/css/media.css" />-->
 
 
     <?php
