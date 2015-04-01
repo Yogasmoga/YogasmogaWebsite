@@ -115,7 +115,7 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                     $profile_found = true;
                 }
 
-                $file_formats = array("jpg", "png", "gif", "bmp");
+                $file_formats = array("jpg", "jpeg", "png", "gif", "bmp");
 
                 $ar_messages = array();
                 $error = false;
