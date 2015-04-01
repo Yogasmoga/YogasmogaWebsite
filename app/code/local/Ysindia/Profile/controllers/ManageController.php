@@ -130,21 +130,12 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                             $thumb_width = "150";
 
                             $large_image_location = $filepath.'temp/'.$_POST['banner_filename'];
-                            $thumb_image_location = $filepath."thumb_".$_POST['banner_filename'];
-
-                            $x1 = $_POST["x1"];
-                            $y1 = $_POST["y1"];
-                            $w = $_POST["w"];
-                            $h = $_POST["h"];
-
-                            $scale = $thumb_width/$w;
-                            $cropped = resizeThumbnailImage($thumb_image_location, $large_image_location,$w,$h,$x1,$y1,$scale);
 
                             //$banner_result = move_uploaded_file($tmp_banner, $filepath . $imagename_banner);
                             $banner_result = true;
 
                             //$banner_pic = $savepath . $imagename_banner;
-                            $banner_pic = $savepath . "thumb_" . $_POST['banner_filename'];
+                            $banner_pic = $savepath . $_POST['banner_filename'];
 
                             if ($banner_result) {
                                 $ar_messages[] = array('message' => 'Banner uploaded');
