@@ -62,17 +62,14 @@
     top: 14%;
     width: 74%;
 }
-#signin_popup .form input {
+#signin_popup .form input{
     float: left;
-    width: 100%;
-    color: #FFF !important;
+    width: 100% ;
+    color: #fff !important;
+    margin-bottom: 5px;
+    border: none;
     border-bottom: 1px solid #fff;
-    border-image: none;
-    background: none repeat scroll 0% 0% transparent;
-    font-size: 13px;
-    line-height: 1.2;
-    font-family: ITCAvantGardeStd-Bk;
-    margin-bottom: 10px;
+    background: transparent;
 }
 #signup {
     background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
