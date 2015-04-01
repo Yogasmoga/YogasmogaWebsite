@@ -83,8 +83,14 @@
 
 <div id="signin_popup">
 
-    <div class="signin-block" style="background: url('<?php echo get_site_url(); ?>/wp-content/themes/rangoli/images/signup.png') no-repeat; background-size:100%; ">
+    <div class="signin-block" style="background: rgba(197, 4, 52, 0.95)">
+        <?php
+            $root = get_site_url();
+            $root = str_replace("/rangoli","/",$root);
+        ?>
+
         <div class="close_signin_popup" ></div>
+        <img src="<?php echo $root;  ?>/skin/frontend/new-yogasmoga/yogasmoga-theme/images/sign_up_text.png" class="form-text" />
         <div class="form">
             <form id="sign-up-form">
             <input name="" data-watermark="First Name" id="p_fname"/>
@@ -110,6 +116,7 @@
                 <h2 class="align">New to YOGASMOGA</h2>
 
                 <form method="post" action="" id="sign-up-form" class="form-1">
+
                     <table width="100%" cellspacing="0" cellpadding="0">
                         <tbody>
                         <tr>

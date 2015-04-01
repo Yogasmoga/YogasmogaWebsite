@@ -5,7 +5,7 @@ if (!is_user_logged_in()) {
 } else {
     $user = wp_get_current_user();
 }
-;
+
 get_header();
 ?>
     <link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/css/rangoli.css"/>
@@ -106,7 +106,8 @@ get_header();
 
             //  /////////////////////////////////////////////////////////// //
 
-
+            $get_wp_user_registration_date  ;
+            $get_magento_user_registration_date  ;
             $user_id = get_current_user_id();
             $user_info = get_userdata($user_id);
             $rangoli_user = get_user_profile_from_magento($user_id);
@@ -212,37 +213,37 @@ get_header();
         //};
 
         var colors = {
-            "FF6500": {
+            "color_FF6500": {
                 "shades": [ "ff7a00",  "ff9c45", "f07400",  "ff5e00", "ff4900", "ff9d00"],
                 "animation": "flower",
                 "bg": "6e3bbe"
             }, /* orange */
-            "fe0000": {
+            "color_fe0000": {
                 "shades": ["ff2f53","ff3838" ,"810000" , "b40000", "cc0033", "ff0000"],
                 "animation": "circh",
                 "bg": "01abff"
             }, /*red*/
-            "6f3cbf": {
+            "color_6f3cbf": {
                 "shades": [ "7767c8",   "6f3bbe", "802780", "801f63", "5e1567", "440076"],
                 "animation": "donut",
                 "bg": "009e01"
             },
-            "01abff": {
+            "color_01abff": {
                 "shades": ["2400ff","007eff" ,"86e2ff" , "00ceff", "000075", "004fff"],
                 "animation": "hexa",
                 "bg": "404042"
             },
-            "009e01": {
+            "color_009e01": {
                 "shades": ["a0e900",  "006500", "009e34","008700", "86d979", "4eb800"],
                 "animation": "pie",
                 "bg": "fec700"
             },
-            "414143": {
+            "color_414143": {
                 "shades": ["a6a8ab","d0d2d3" ,"f1f1f2" , "231f20", "58595b", "808184"],
                 "animation": "circv",
                 "bg": "fe5e00"
             },
-            "fee600": {
+            "color_fee600": {
                 "shades": ["ffbd00", "FFFF3D","ffe600" , "ffd700" , "ffdf53", "f0da4f"],
                 "animation": "triangle",
                 "bg": "fe0000"
