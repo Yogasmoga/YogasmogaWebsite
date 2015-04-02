@@ -1,0 +1,620 @@
+/*
+Theme Name: Rangoli
+Author: YOGASMOGA
+Author URI: http://yogasmoga.com/
+*/
+.body-compensator{
+    height:70px;
+}
+div{
+    box-sizing: border-box;
+}
+.twenty, .sixty{
+    float:left;
+    box-sizing: border-box;
+}
+.twenty{
+    width: 20%;
+    padding: 10px;
+}
+.sixty{
+    width:60%;
+    padding: 10px 0;
+}
+.text > a {
+    color: #c03;
+}
+#user_info p:first-child a {
+    display: block;
+    width: 40px;
+}
+.selected span {
+    color: #444 !important;
+    display: block;
+    float: left;
+    font-size: 12px;
+    letter-spacing: 1px;
+    line-height: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+}
+.back_to_parent {
+    border-bottom: 1px solid #555;
+    color: #555;
+    display: block;
+    font-family: freight-text-pro;
+    font-size: 11px;
+    left: 50%;
+    letter-spacing: 1px;
+    margin-left: -200px;
+    padding: 7px;
+    position: absolute;
+    top: 0;
+    width: 400px;
+    z-index: 1;
+}
+.menu-content.white a, .menu-content.white a:hover {
+    color: #fff;
+}
+.huge_it_slideshow_description_text_2{
+    font-family: "freight-text-pro",sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.3;
+}
+.huge_it_slideshow_description_text_2 i{
+    font-family: "freight-text-pro",sans-serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size:15px;
+}
+.huge_it_slideshow_description_text_2 span{
+    font-family: "freight-text-pro",sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size:15px;
+}
+
+.bold {
+    font-family: ITCAvantGardeStd-Md;
+}
+.light {
+    font: 32px/43px ITCAvantGardeStd-XLt;
+}
+.freighttextbook {
+    font-family: "freight-text-pro",serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.3;
+    font-size: 20px;
+}
+.post_title {
+    font: 35px/40px ITCAvantGardeStd-Bk;
+}
+.post_subtitle {
+    color: #fff;
+    float: none;
+    font: 20px FreightTextBook;
+    margin: 0 auto;
+    width: 70%;
+}
+.menu-box .menu-content ul {
+    font-family: ITCAvantGardeStd-Md;
+}
+.banner-text .top p {
+    font-family: FreightTextBook;
+}
+.post_category {
+    font-family: "freight-text-pro",sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.3;
+}
+.post_link {
+    bottom: 30px;
+    font-family: "freight-text-pro",serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.3;
+}
+.bullzai{
+    display:none;
+}
+
+.overlay-text .post_category {
+    font-family: "freight-text-pro" !important;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 11px;
+}
+
+.comment-form-comment textarea {
+    float: left;
+    font-family: GraphikRegular;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    resize: none;
+}
+.form-submit .submit {
+    background: none repeat scroll 0 0 transparent;
+    font-family: sans-serif;
+    font-size: 12pt !important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.3;
+}
+#post_comments_listing .span8 {
+    font: 14px ITCAvantGardeStd-Bk;
+}
+.author_post .post_title {
+    font-family: ITCAvantGardeStd-Bk;
+    padding: 0;
+}
+.post_below_text .post_title{
+    font-family: ITCAvantGardeStd-Bk;
+}
+#color {
+    height: 0;
+    left: 50%;
+    margin-left: -66px;
+    position: absolute;
+    top: 20px;
+    width: 0;
+}
+#welcome_popup .user-color {
+    height: 130px;
+    position: relative;
+}
+.author_role {
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    font-family: freight-text-pro;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin: 15px auto;
+    padding: 5px 0;
+    text-transform: uppercase;
+    width: 60%;
+}
+/* ************************FILTER************************** */
+.filter-wrapper {
+    height: 30px;
+    margin: 0 auto;
+    position: relative;
+    width: 400px;
+}
+.filter {
+    border-bottom: 1px solid #555;
+    box-sizing: border-box;
+    font-family: freight-text-pro;
+    font-size: 12px;
+    margin: 0 auto;
+    padding: 7px 15px;
+    width: 400px;
+}
+.filter-container {
+    margin: 0 auto;
+    position: absolute;
+    width: 100%;
+    z-index: 6;
+    float: left;
+}
+.filter .down-arrow-grey {
+    background: url("images/down-arrow.png") no-repeat scroll right center rgba(0, 0, 0, 0);
+    cursor: pointer;
+    display: block;
+    height: 21px;
+    letter-spacing: 1px;
+}
+.down-arrow-grey-white {
+    background: url("images/down-arrow-white.png") no-repeat scroll right center rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+    display: block;
+    padding: 7px 0;
+}
+.filter-container li ul {
+    display: none;
+}
+.filter-container ul li p span.activeli{
+border-bottom:none;
+    transition-duration: 300ms;
+}
+span.radio {
+    border: 1px solid #fff;
+    border-radius: 50%;
+    float: right;
+    height: 7px;
+    margin: 8px;
+    width: 7px;
+}
+.filter-container a.active span{
+    background: #fff;
+}
+.filter-container p {
+    background: none repeat scroll 0 0 #555;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-family: freight-text-pro;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 40px;
+    padding: 0 15px;
+    text-align: left;
+}
+.filter-container ul li:last-child p span {
+    border-bottom: none;
+}
+.filter-container{
+    display: none;
+    cursor: pointer;
+}
+
+.filter-container ul li p span{
+    border-bottom: 1px solid #fff;
+    transition-duration: 300ms;
+    text-transform: uppercase;
+}
+/*.author_posts.row {*/
+    /*padding: 0 10px;*/
+/*}*/
+.filter-container li ul li {
+    background: none repeat scroll 0 0 rgba(85, 85, 85, 0.9);
+    box-sizing: border-box;
+    display: block;
+    font-family: freight-text-pro;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 40px;
+    padding: 0 15px;
+    text-align: left;
+    text-transform: uppercase;
+}
+.filter-container a {
+    border-bottom: 1px solid #fff;
+    color: #999;
+    display: block;
+    padding: 7px 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.filter-container li ul li:last-child a {
+    border: medium none;
+}
+iframe {
+    height: 100%;
+    width: 100%;
+}
+.play_video {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.like-btn svg path {
+    fill: transparent;
+    transition-duration: 500ms;
+}
+.like-btn svg:hover path {
+    fill: #fff;
+    transition-duration: 300ms;
+}
+a:focus{
+    outline:none;
+}
+.left-side {
+    color: #999;
+    float: left;
+    font-family: GraphikRegular;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 16px;
+    margin-top: 10px;
+    position: relative !important;
+    text-align: left;
+}
+.color-page{
+
+}
+
+.profile-image img{
+    width: 100%;
+}
+.confirmation-page {
+    position: relative;
+    color:#000;
+    display:none;
+}
+.confirmation-page span,.confirmation-page h1{
+    color:#000;
+}
+.welcome_user {
+    font-family: ITCAvantGardeStd-Md;
+    font-size: 33px;
+    font-weight: 400;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.confirmed_interests{
+    text-align: center;
+    width: 900px;
+    margin:0 auto;
+    color: #444;
+    font-family: freight-text-pro;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.user_charm_display.row {
+    margin-top: 35px;
+}
+.confirmed_interests .row.align-center p:first-child {
+    font-family: freight-text-pro;
+    font-size: 20px;
+    line-height: 25px;
+}
+.interests-selector .text {
+    font-family: GraphikRegular;
+    font-size: 14px;
+    line-height: 18px;
+    margin: 0 auto 15px;
+    padding: 0;
+    width: 600px;
+    height: 360px;
+}
+.confirmed_interests li {
+    box-sizing: border-box;
+    display: inline-block;
+    height: 170px;
+    overflow: hidden;
+    padding: 10px;
+    text-align: center;
+    width: 100px;
+}
+.row.align-center.one {
+    margin-top: 35px;
+}
+.row.one.align-center > p:nth-child(2) {
+    font-family: GraphikRegular;
+    color: #444;
+}
+.row.one.align-center > p:nth-child(2) span {
+    font-family: freight-text-pro;
+    color: #444;
+}
+.confirmed_interests li a:first-child {
+    border-radius: 50%;
+    color: #555;
+    display: block;
+    font-family: freight-text-pro;
+    font-size: 13px;
+    height: 125px;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    text-transform: uppercase;
+    width: 125px;
+}
+/*.user-interest,.user-interest img {*/
+    /*border: medium none;*/
+    /*border-radius: 50%;*/
+    /*height: 80px;*/
+    /*width: 80px;*/
+    /*display: block;*/
+    /*margin: 0 auto;*/
+    /*float:none;*/
+/*}*/
+ul.selected {
+    margin: 0 auto;
+    width: 800px;
+}
+ul.selected li{
+    margin: 0 auto;
+}
+.invite_friend {
+    border-top: 1px solid #555;
+    margin: 0 auto;
+    padding: 25px;
+    width: 600px;
+}
+.invite_friend > p:nth-child(2) {
+    color: #444;
+    font-family: freight-text-pro;
+    font-size: 20px;
+    line-height: 22px;
+}
+.invite_friend > p:nth-child(3) {
+    color: #444;
+    font-family: GraphikRegular;
+    font-size: 14px;
+    line-height: 25px;
+    margin-bottom: 45px;
+}
+.link {
+    font-size: 20px;
+}
+.user_link p:nth-child(1) {
+    color: #000;
+    font-family: GraphikMedium;
+    font-size: 14px;
+    font-weight: 500;
+}
+.user_link p:last-child {
+    font-family: GraphikRegular;
+    font-size: 14px;
+    font-weight: 500;
+    color:#000;
+}
+.user_link span {
+    color: #999;
+    cursor: pointer;
+    display: block;
+    font-family: GraphikRegular;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    margin-bottom: 30px;
+}
+.user_link p.link {
+    border: medium none;
+}
+.user_link {
+    margin-bottom: 25px;
+}
+.invite_friend li {
+    background: none repeat scroll 0 0 #f2f2f2;
+    border-radius: 50%;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    height: 80px;
+    line-height: 80px;
+    margin: 0 10px;
+    padding: 10px;
+    width: 80px;
+}
+.invite_friend img {
+    padding: 7px;
+    width: auto;
+}
+.spanV {
+    float: left;
+    height: 100%;
+    left: 25%;
+    min-height: 400px;
+    position: absolute;
+}
+/*.profile-img-small{*/
+    /*width: 40px !important;*/
+/*}*/
+.event_author_name {
+    border-bottom: 1px solid #555;
+    font-family: Freight-text-pro;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-top: 50px;
+    padding: 7px;
+    text-align: center;
+}
+.author_event {
+    border-bottom: 1px solid #999;
+    font-family: GraphikRegular;
+    padding: 20px;
+    text-align: center;
+}
+.event_time {
+    color: #999;
+    font-size: 13px;
+}
+.event_location {
+    font-family: freight-text-pro;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+}
+.event_day, .event_title {
+    font-family: ITCAvantGardeStd-bk;
+    font-size: 15px;
+    line-height: 18px;
+    text-transform: uppercase;
+}
+
+
+.img_in_circle{
+    cursor: pointer;
+}
+.smogiBucks {
+    font-family: GraphikRegular;
+    font-size: 10px;
+    line-height: 15px;
+}
+.smogi_image img {
+    border-radius: 50%;
+    height: 125px;
+    position: relative;
+    width: 125px;
+}
+.comments.row {
+    margin-top: 16px;
+}
+.user-interest > img {
+    border-radius: 0;
+    height: auto;
+    margin-left: -125px;
+    position: relative;
+    width: 250px;
+}
+.interests-selector .user-interest:hover > img {
+    margin: 0;
+    transition-duration: 0s;
+}
+.user-interest.remove > img {
+    margin: 0;
+}
+/*.sixty img {
+    float: left;
+    height: auto;
+    width: 100%;
+    padding: 10px 0;
+}*/
+.chat-status {
+    font-style: italic;
+}
+#sign-up-form .err-msg {
+    box-sizing: border-box;
+    clear: both;
+    color: #fff;
+    font-family: ITCAvantGardeStd-Bk;
+    font-size: 12px;
+    margin: 0 auto;
+    min-height: 37px;
+    padding: 0 0 0 4px;
+    text-align: center;
+    width: 153px;
+}
+.sign-up.left-shift .err-msg {
+    bottom: unset !important;
+    color: #222 !important;
+    position: absolute;
+    text-align: left !important;
+}
+input:focus{
+    outline:none;
+}
+.spanV.span6 {
+    padding: 0;
+}
+.spanV.span6 .post_title {
+    font-size: 30px;
+    line-height: 35px;
+}
+.spanV .author {
+     font-family: freight-text-pro;
+     font-size: 14px;
+     font-style: italic;
+     font-weight: 300;
+ }
+
+.post_content > a {
+    color: #999 !important;
+}
+.row.interests > span {
+    font-family: freight-text-pro;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+.white{
+    color: #fff !important;
+}
+.page-heading.align-center {
+    font-size: 33px;
+    line-height: 1;
+    text-transform: uppercase;
+    color:#444;
+}
