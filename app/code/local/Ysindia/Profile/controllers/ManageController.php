@@ -316,7 +316,7 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
 //            exit();
 //        }
 //    }
-//}
+}
 
 function resizeThumbnailImage($thumb_image_name, $image, $width, $height, $start_width, $start_height, $scale){
     list($imagewidth, $imageheight, $imageType) = getimagesize($image);
