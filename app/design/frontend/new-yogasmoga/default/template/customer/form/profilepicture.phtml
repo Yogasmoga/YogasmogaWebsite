@@ -229,7 +229,9 @@
 $save_url = $this->getUrl('profile/manage/saveimage', array('_secure' => true));
 $upload_url = $this->getUrl('profile/manage/uploadimage', array('_secure' => true));
 $banner_upload_url = $this->getUrl('profile/manage/uploadbannerimage', array('_secure' => true));
+
 $upload_path = Mage::getBaseUrl() . 'rangoli/rangoli_profile_images/temp/';
+$banner_upload_path = Mage::getBaseUrl() . 'rangoli/rangoli_profile_images/temp/';
 
 $thumb_width = "150";
 $thumb_height = "150";
@@ -304,7 +306,7 @@ $thumb_height = "150";
     function showBannerResponse(responseText) {
 
         if (responseText.indexOf('.') > 0) {
-            jQuery('#bannerthumbviewimage').html('<img src="<?php echo $upload_path; ?>' + responseText + '"   style="position: relative; width:100%; margin-bottom:20px;" alt="Thumbnail Preview" />');
+            jQuery('#bannerthumbviewimage').html('<img src="<?php echo $banner_upload_path; ?>' + responseText + '"   style="position: relative; width:100%; margin-bottom:20px;" alt="Thumbnail Preview" />');
 
             jQuery('#banner_filename').val(responseText);
             jQuery("#banner_preview_table").show();
