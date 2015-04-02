@@ -308,7 +308,7 @@
 
                         </ul>
                     </li>
-                    <br/>
+                    <li>&nbsp;</li>
                     <li><a class="bold-heading" href="javascript:void(0);">SHARE WITH YOUR FRIENDS</a></li>
                 </ul>
             </li>
