@@ -16,13 +16,13 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'yogasmoga');
+define('DB_NAME', 'staging');
 
 /** MySQL database username */
-define('DB_USER', 'yogasmoga');
+define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'Yoga$moga');
+define('DB_PASSWORD', '');
 
 /** MySQL hostname */
 define('DB_HOST', 'yogasmoga2.ctfwon1h9dxc.us-east-1.rds.amazonaws.com');
