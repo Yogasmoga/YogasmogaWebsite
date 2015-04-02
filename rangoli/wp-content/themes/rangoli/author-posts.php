@@ -67,12 +67,18 @@
 
 
             echo '</div>';
+            echo '<div class="likeandshare">
+                                    <div class="like-btn">';
+            // get_template_part('heartsvg');
+            wpfp_link();
             echo '</div>';
 
-            echo '<div class="likeandshare">
-                        <div class="like-btn">';
-                        wpfp_link();
-            echo '</div>';
+            echo '<div class="share-arrow">';
+//            get_template_part('sharearrow');
+            echo '</div>
+
+                            </div>';
+
 
             ?>
 

@@ -8,6 +8,7 @@ session_start();
 if(!is_user_logged_in()){
     wp_redirect(get_site_url());
 }
+
 get_header();
 require('twitteroauth/twitteroauth.php');
 require('twt_config.php');

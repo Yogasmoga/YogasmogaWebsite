@@ -171,7 +171,7 @@
 
     #liked_reads .flex-direction-nav .flex-prev {
         background: url("<?php  echo get_site_url() ?>/wp-content/themes/rangoli/images/arrows-slider.png") repeat scroll 0 0 / 50px auto rgba(0, 0, 0, 0);
-        height: 17px;
+        height: 25px;
         background-position: left;
         left: 0;
         width: 25px;
@@ -182,7 +182,7 @@
 
     #liked_reads .flex-direction-nav .flex-next {
         background: url("<?php  echo get_site_url() ?>/wp-content/themes/rangoli/images/arrows-slider.png") repeat scroll 0 0 / 50px auto rgba(0, 0, 0, 0);
-        height: 17px;
+        height: 25px;
         right: 0;
         background-position: right;
         width: 25px;

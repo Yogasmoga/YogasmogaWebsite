@@ -22,8 +22,7 @@ get_header();
                 <h1 class="page-heading align-center">Choose Your Color</h1>
             </div>
             <div id="color-slider">
-                <div class="arrow-next"> <span class="arrow"></span> </div>
-                <div class="arrow-prev"> <span class="arrow"></span> </div>
+
             </div>
         </div>
         <div class="interest-page">
@@ -253,28 +252,16 @@ get_header();
 
 
 
-function get_height(){
-    $("#color-slider .arrow-next").height($(window).height()-70);
-    $("#color-slider .arrow-prev").height($(window).height()-70);
-}
-        $(window).resize(function(){
-            get_height();
-        })
+
         jQuery(document).ready(function ($) {
-            count_interests()
+            count_interests();
             var rangoli = new $.Rangoli($("#color-slider"), colors);
             rangoli.initColorSlider();
-            get_height();
-            $("#color-slider .arrow-next .arrow").click(function(){
-                $("#colors .next span").click();
-//                alert();
+            $("svg .shade").mouseenter(function () {
+                $(this).closest('.shades').find('svg.bgsvg path.heart').css({
+                    fill: 'none'
+                });
             });
-            $("#color-slider .arrow-prev .arrow").click(function(){
-                $("#colors .prev span").click();
-//                alert();
-            });
-
-
             $("li.active .primary").click(function () {
                 $(this).parent().addClass("animate");
             });

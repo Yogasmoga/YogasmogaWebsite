@@ -33,13 +33,8 @@ $(document).ready(function () {
                 $(".your-color-block").hide();
                 $(".login-box").hide();
                 $(window).load(function(){
-                    $("your-color-block").hide();
-                    $("login-box").hide();
-
-                    $("signin_popup").fadeIn();
+                    $("#signin_popup").fadeIn();
                     $(".signin-block").fadeIn();
-
-
                 });
             }
         }
@@ -612,7 +607,6 @@ $(window).resize(function () {
     //
     //$(".one-three").height(tile_height);
     //$(".two-three").height(tile_height * 2);
-
     $(".fixed-container").css("min-height",wh/2);
 
     //$(".wp_page_banner").height(wh-50);
@@ -897,7 +891,7 @@ function init() {
     //    ww = 1024;
     //}
     //$(".wh").css('min-height', wh);
-    $(".fixed-container").css("min-height",wh/2);
+    //$(".fixed-container").css("min-height",wh/2);
     //var one_three = $(".one-three").width();
     //var tile_height = one_three * 0.75;
     ////$(".wp_page").css('min-width', ww);

@@ -1,5 +1,8 @@
 <?php get_header();
 
+//$banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
+
+
 ?>
 <div class="wp_page row">
 
