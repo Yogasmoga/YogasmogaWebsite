@@ -1,7 +1,7 @@
 
 body, .header-container, .footer-container{
     color: #2f2f2f;
-    font: 12px/1.55 Gotham-Book, Arial, Helvetica, sans-serif !important;
+    font: 12px/1.55 gothambook, Arial, Helvetica, sans-serif !important;
     text-align: center;
 }
 
@@ -42,8 +42,25 @@ body, .header-container, .footer-container{
 }
 
 .header .logo {
-    margin: 6px 14px 0 0;
+    margin: 6px 7px 0 0;
 }
+/*.header .logo {*/
+    /*position: fixed;*/
+    /*top: 6px;*/
+/*}*/
+
+/*ul.main-nav > li.menu-heading{position: fixed;*/
+/*padding-left: 253px;*/
+/*top: 0*/
+/*}*/
+/*ul.main-menu li ul.sub-menu > li {*/
+    /*border-left: 1px solid #f8f8f8;*/
+    /*display: inline-block;*/
+    /*min-height: 120px;*/
+    /*min-width: 160px;*/
+    /*padding: 0 0 0 15px;*/
+    /*vertical-align: top;*/
+/*}*/
 
 ul.navigation-bar > li {
     cursor: pointer;
@@ -68,7 +85,7 @@ ul.navigation-bar > li {
 
 .free-shipping img {
    height: 16px;
-    margin: -2px 0 0 1px;
+    margin: -1px 0 0 1px;
     padding: 0;
     vertical-align: top;	
 }
@@ -82,14 +99,14 @@ ul.shipping-menu {
 ul.shipping-menu > li {
     color: #555;
     display: inline-block;
-    font: 11px/19px Gotham-Book;
+    font: 11px/19px gothambook;
     padding: 0;
     position: relative;
 }
 
 ul.shipping-menu > li.free-shipping {
     display: inline-block;
-    font: italic 10px Gotham-Book;
+    font: italic 10px gothambook;
     margin: 0 35px 0 0;
 }
 
@@ -100,16 +117,10 @@ ul.shipping-menu > li.free-shipping {
 .free-shipping > span {
     padding: 2px 0 0;
 }
-.clearer:after, .header-container:after, .header-container .top-container:after, .header:after, .header .quick-access:after, #nav:after, .main:after, .footer:after, .footer-container .bottom-container:after, .col-main:after, .col2-set:after, .col3-set:after, .col3-layout .product-options-bottom .price-box:after, .col4-set:after, .search-autocomplete li:after, .block .block-content:after, .block .actions:after, .block li.item:after, .block-poll li:after, .block-layered-nav .currently li:after, .page-title:after, .products-grid:after, .products-list li.item:after, .box-account .box-head:after, .dashboard .box .box-title:after, .box-reviews li.item:after, .box-tags li.item:after, .pager:after, .sorter:after, .ratings:after, .add-to-box:after, .add-to-cart:after, .product-essential:after, .product-collateral:after, .product-view .product-img-box .more-views ul:after, .product-view .box-tags .form-add:after, .product-view .product-shop .short-description:after, .product-view .box-description:after, .product-options .options-list li:after, .product-options-bottom:after, .product-review:after, .cart:after, .cart-collaterals:after, .cart .crosssell li.item:after, .opc .step-title:after, .checkout-progress:after, .multiple-checkout .place-order:after, .group-select li:after, .form-list li:after, .form-list .field:after, .buttons-set:after, .page-print .print-head:after, .advanced-search-summary:after, .gift-messages-form .item:after, .send-friend .form-list li p:after {
-    clear: both;
-    content: ".";
-    display: block;
-    font-size: 0;
-    height: 0;
-    line-height: 0;
-    overflow: hidden;
-}
 
+.logo.menu-heading.menu-heading1 > img {
+    margin-top: 5px;
+}
 .shipping-menu li a {
     text-decoration: none;
     color: #555;
@@ -131,7 +142,7 @@ ul.shipping-menu > li.free-shipping {
 
 #search_input {
     border: medium none;
-    font-family: Gotham-Book;
+    font-family: gothambook;
     font-size: 11px;
     height: 24px;
     width: 145px;
@@ -188,14 +199,14 @@ ul.main-menu2 a.main-heading, x:-moz-any-link {
 }
 ul.main-nav li a, ul.shipping-menu > li > ul.sub-menu li a {
     color: #555;
-    font: 11px/23px Gotham-Bold;
+    font: 11px/23px gothambold;
 }
 
 .shopping-cart {
     background: none repeat scroll 0 0 #eeefef;
     color: #555;
     display: none;
-    font: 12px Gotham-Book;
+    font: 12px gothambook;
     overflow: auto;
     position: fixed;
     right: 0;
@@ -238,7 +249,7 @@ ul.main-nav li a, ul.shipping-menu > li > ul.sub-menu li a {
 
 .empty-cart {
     display: inline-block;
-    font: 12px Gotham-Book;
+    font: 12px gothambook;
     margin: 30px auto;
     text-transform: uppercase;
 }
@@ -280,7 +291,7 @@ ul.main-nav li a.menu-heading {
 
 ul.main-nav li a, ul.shipping-menu > li > ul.sub-menu li a {
     color: #555;
-    font: 11px/23px Gotham-Bold;
+    font: 11px/23px gothambold;
 }
 
 ul.main-nav > li.menu-heading{
@@ -331,9 +342,11 @@ ul {
     width: 33%;
 }
 
+/*
 .logo {
     float: left;
 }
+*/
 
 .first-list > li {
     box-sizing: border-box;
@@ -364,16 +377,16 @@ ul {
     font-size: 12px;
     vertical-align: top;
     text-align: left;
-    font:12px/1.55 Gotham-book,Arial,Helvetica,sans-serif;
+    font:11px/1.55 gothambook,Arial,Helvetica,sans-serif;
 }
 
 .topmenulinks li a {
-    font-family: gothamlight, Gotham-Book;
+    font-family: gothamlight, gothambook;
     font-size: 11px;
 }
 
 .bold-heading {
-    font-family: Gotham-Bold ;
+    font-family: gothambold ;
     color: #000;
 }
 
@@ -401,7 +414,7 @@ ul.main-nav2 li ul.sub-menu > li {
 }
 
 ul.main-nav2 li ul.sub-menu li a {
-    font-family: Gotham-Book;
+    font-family: gothambook;
 }
 
 ul.main-nav2 > li {
@@ -413,11 +426,11 @@ ul.main-nav2 > li {
 }
 
 ul.main-nav li ul.sub-menu > li > ul a, ul.main-nav2 li ul.sub-menu > li > ul:first-child a, ul.shipping-menu > li > ul.sub-menu li a {
-    font-family: Gotham-Book;
+    font-family: gothambook;
 }
 
 ul.main-nav li ul.sub-menu > li > ul:first-child a {
-    font-family: Gotham-Bold;
+    font-family: gothambold;
 }
 
 .sub-menu a:hover {
@@ -442,7 +455,7 @@ a#rangoli-head {
 ul.tr-menu > li {
     color: #555;
     display: inline-block;
-    font: 11px/19px Gotham-Book;
+    font: 11px/19px gothambook;
     padding: 0;
     position: relative;
 }
@@ -504,20 +517,40 @@ ul.main-nav > li.rangoli{background-image:none!important;}
 
 /*      ***************  footer CSS **********************    */
 
-
 .footer .first-list li {
-    font-family: Gotham-Book;
+    font-family: gothambook;
     color: #555;
 
     font-size: 11px;
     line-height: 1.7;
 }
-.footer li a.bold-heading {
+.footer li .bold-heading {
     color: #555;
-    font-family: Gotham-Bold;
+    font-family: gothambold;
+    font-size: 11px;
+}
+.first-list.contact-us li.bold-heading{font-size: 11px;}
+.footer .footer-right{
+    float: right;
+    width: 66.6667%;
+    margin: 27px 0 0;
 }
 
-.footer .footer-right{float: right;
-    width: 66.6667%;
-    margin: 27px 0 0;}
-
+.first-list.contact-us li {
+    font-size: 12px;
+    line-height: 1.55;
+}
+.privacy li {
+    font-size: 11px;
+}
+.footer ul.social-icons li {
+    display: inline-block;
+    margin: 0 3px;
+}
+.footer .logo > img {
+    position: absolute;
+    left: 15px;
+}
+.footer .social-icons {
+    margin-top: 2px;
+}

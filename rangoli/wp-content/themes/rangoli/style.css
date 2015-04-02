@@ -574,9 +574,9 @@ ul.selected li{
     font-size: 12px;
     margin: 0 auto;
     min-height: 37px;
-    padding: 2px;
+    padding: 0 0 0 4px;
     text-align: center;
-    width: 150px;
+    width: 153px;
 }
 .sign-up.left-shift .err-msg {
     bottom: unset !important;

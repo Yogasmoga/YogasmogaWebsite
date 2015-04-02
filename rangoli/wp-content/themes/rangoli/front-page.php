@@ -35,7 +35,7 @@ if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_
 //    echo "<p class='post_text'>" . get_the_excerpt() . "</p>";
 //    echo "<p class='post_author' style='text-transform: none'>by <span>" . get_the_author() . "</span></p>";
 
-
+    echo "</div>";
     if (has_post_video()) {
 
         $authors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=" . $post->post_author);
@@ -55,7 +55,7 @@ if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_
     }
 
 
-    echo "</div>";
+
 
     if (has_post_video()) {
         echo "<div class='play_video'>";
@@ -99,7 +99,11 @@ get_template_part("content");
                     <?php
                     $post = get_post(523);
                     ?>
-                    <?php echo get_the_post_thumbnail($post->ID, "thumb") ?>
+                    <?php echo get_the_post_thumbnail($post->ID,"thumb");
+                    if(!has_post_thumbnail($post->ID)){
+                    echo '<img src="'.get_site_url().'/wp-content/themes/rangoli/images/no-background.png" style="width:100%;float:left;"/>';
+                    }
+                    ?>
 
                     <div onclick="ajax_load_pages('<?php echo get_permalink($post->ID) ?>')" class="overlay-text">
                     <p class="post_category"><?php echo category($post->ID); ?></p>
@@ -149,6 +153,7 @@ get_template_part("content");
                 <div class="flexslider">
                     <ul class="slides" style="background:#6D3ABB;">
                         <li>
+
                         <?php
 echo get_template_part("hashtweets");
 ?>
@@ -169,7 +174,11 @@ echo get_template_part("latest_rangoli_instagram");
      <?php
             $post = get_post(433);
             ?>
-            <?php echo get_the_post_thumbnail($post->ID, "thumb") ?>
+            <?php echo get_the_post_thumbnail($post->ID,"thumb");
+            if(!has_post_thumbnail($post->ID)){
+                echo '<img src="'.get_site_url().'/wp-content/themes/rangoli/images/no-background.png" style="width:100%;float:left;"/>';
+            }
+            ?>
 
             <div onclick="ajax_load_pages('<?php echo get_permalink($post->ID) ?>')" class="overlay-text">
             <p class="post_category"><?php echo category($post->ID); ?></p>

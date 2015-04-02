@@ -1,11 +1,14 @@
 <section class="second">
     <div class="row">
-        <div style="background: none repeat scroll 0% 0% rgb(172, 132, 54); height: 299.778px;"
-             class="one-three right get_app">
+        <div style="background: none repeat scroll 0% 0% rgb(172, 132, 54);" class="one-three right get_app">
             <?php
             $post = get_post(261);
             ?>
-            <?php echo get_the_post_thumbnail($post->ID,"thumb") ?>
+            <?php echo get_the_post_thumbnail($post->ID,"thumb");
+            if(!has_post_thumbnail($post->ID)){
+                echo '<img src="'.get_site_url().'/wp-content/themes/rangoli/images/no-background.png" style="width:100%;float:left;"/>';
+            }
+            ?>
 
             <div onclick="ajax_load_pages('<?php echo get_permalink($post->ID) ?>')" class="overlay-text">
                 <p class="post_category"><?php echo category($post->ID); ?></p>
@@ -21,7 +24,9 @@
         </div>
 
 
-        <div class="one-three right invite-friends user-color-shade">
+        <div class="one-three right invite-friends user-color-shade" style="background: #555;">
+            <img src="<?php bloginfo('template_directory')?>/images/no-background.png" style="width:100%;float:left;"/>
+
             <div class="overlay-text">
                 <div>
                     <p class="post_title">Invite <br>Friends</p>
@@ -34,7 +39,11 @@
             <?php
             $post = get_post(355);
             ?>
-            <?php echo get_the_post_thumbnail($post->ID,"thumb") ?>
+            <?php echo get_the_post_thumbnail($post->ID,"thumb");
+            if(!has_post_thumbnail($post->ID)){
+                echo '<img src="'.get_site_url().'/wp-content/themes/rangoli/images/no-background.png" style="width:100%;float:left;"/>';
+            }
+            ?>
 
             <div onclick="ajax_load_pages('<?php echo get_permalink($post->ID) ?>')" class="overlay-text">
                 <p class="post_category"><?php echo category($post->ID); ?></p>
@@ -59,7 +68,11 @@
             <?php
             $post = get_post(232);
             ?>
-            <?php echo get_the_post_thumbnail($post->ID,"thumb") ?>
+            <?php echo get_the_post_thumbnail($post->ID,"thumb");
+            if(!has_post_thumbnail($post->ID)){
+                echo '<img src="'.get_site_url().'/wp-content/themes/rangoli/images/no-background.png" style="width:100%;float:left;"/>';
+            }
+            ?>
 
             <div onclick="ajax_load_pages('<?php echo get_permalink($post->ID) ?>')" class="overlay-text">
 
@@ -96,8 +109,13 @@
             <?php
             $author_banner_url = get_the_author_meta("author_profile_picture", $author_id);
             if ($author_banner_url) {
-                echo "<img src='$author_banner_url' />";
+                echo '<div style="background:url(\''.$author_banner_url.'\'); background-size: cover; background-position: center center; float:left; width:100%;">';
+                ?>
+                <img src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/no-background.png" style="float: left; width: 100%" />
+                <?php
+                echo "</div>";
             }
+
             ?>
             <div onclick="ajax_load_pages('<?php echo get_author_posts_url($author_id); ?>')" class="overlay-text">
                 <p class="post_category">SMOGI</p>
@@ -117,7 +135,11 @@
             <?php
             $post = get_post(370);
             ?>
-            <?php echo get_the_post_thumbnail($post->ID,"thumb") ?>
+            <?php echo get_the_post_thumbnail($post->ID,"thumb");
+            if(!has_post_thumbnail($post->ID)){
+                echo '<img src="'.get_site_url().'/wp-content/themes/rangoli/images/no-background.png" style="width:100%;float:left;"/>';
+            }
+            ?>
 
             <div onclick="ajax_load_pages('<?php echo get_permalink($post->ID) ?>')" class="overlay-text">
                 <p class="post_category"><?php echo category($post->ID); ?></p>
@@ -162,7 +184,11 @@
             <?php
             $author_banner_url = get_the_author_meta("author_profile_picture", $author_id);
             if ($author_banner_url) {
-                echo "<img src='$author_banner_url' />";
+                echo '<div style="background:url(\''.$author_banner_url.'\'); background-size: cover; background-position: center center; float:left; width:100%;">';
+                    ?>
+                    <img src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/no-background.png" style="float: left; width: 100%" />
+                <?php
+                echo "</div>";
             }
             ?>
             <div onclick="ajax_load_pages('<?php echo get_author_posts_url($author_id); ?>')" class="overlay-text">
@@ -182,7 +208,11 @@
             <?php
             $post = get_post(330);
             ?>
-            <?php echo get_the_post_thumbnail($post->ID,"thumb") ?>
+            <?php echo get_the_post_thumbnail($post->ID,"thumb");
+            if(!has_post_thumbnail($post->ID)){
+                echo '<img src="'.get_site_url().'/wp-content/themes/rangoli/images/no-background.png" style="width:100%;float:left;"/>';
+            }
+            ?>
 
             <div onclick="ajax_load_pages('<?php echo get_permalink($post->ID) ?>')" class="overlay-text">
                 <p class="post_category"><?php echo category($post->ID); ?></p>
@@ -215,7 +245,11 @@
             <?php
             $post = get_post(506);
             ?>
-            <?php echo get_the_post_thumbnail($post->ID,"thumb") ?>
+            <?php echo get_the_post_thumbnail($post->ID,"thumb");
+            if(!has_post_thumbnail($post->ID)){
+                echo '<img src="'.get_site_url().'/wp-content/themes/rangoli/images/no-background.png" style="width:100%;float:left;"/>';
+            }
+            ?>
 
             <div onclick="ajax_load_pages('<?php echo get_permalink($post->ID) ?>')" class="overlay-text">
                 <p class="post_category"><?php echo category($post->ID); ?></p>

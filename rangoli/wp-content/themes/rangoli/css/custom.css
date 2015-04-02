@@ -16,23 +16,51 @@
 }
 #signin_popup {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+    display: none;
     height: 100%;
     left: 0;
     position: fixed;
     top: 70px;
     width: 100%;
-    z-index: 999;
+    z-index: 999999;
     display: none;
 }
-.signin-block, .your-color-block {
+.signin-block {
     border-radius: 50%;
-    height: 456px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+    height: 464px;
     left: 50%;
-    margin-left: -228px;
-    margin-top: -264px;
+    margin-left: -232px;
     position: absolute;
-    top: 50%;
-    width: 456px;
+    top: 8%;
+    width: 464px;
+    display: none;
+}
+.your-color-block{
+    border-radius: 50%;
+    height: 508px;
+    left: 50%;
+    margin-left: -254px;
+    position: absolute;
+    top: 8%;
+    width: 508px;
+    display: none;
+}
+.your-color-block .close_signin_popup {
+    margin-right: 100px;
+    margin-top: 35px;
+}
+.signin-block #sign-up-form .err-msg {
+    box-sizing: border-box;
+    clear: both;
+    color: #fff;
+    font-family: ITCAvantGardeStd-Bk;
+    font-size: 12px;
+    margin: 0 auto;
+    min-height: 37px;
+    padding: 0 0 0 8px;
+    text-align: center;
+    width: 150px;
 }
 .your-color-block{
     display: none;
@@ -60,13 +88,13 @@
     left: 15%;
     margin: 0 auto;
     top: 14%;
-    width: 74%;
+    width: 355px;
 }
 #signin_popup .form input{
     float: left;
     width: 100% ;
     color: #fff !important;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     border: none;
     border-bottom: 1px solid #fff;
     background: transparent;
@@ -315,7 +343,6 @@ img{
 }
 .footer .social-icons > li {
     display: inline-block;
-    padding:0 3px;
 }
 .profile-links {
     padding-top: 30px !important;
@@ -590,7 +617,7 @@ img{
     background: transparent;
     /*transition-duration: 500ms;*/
 }
-.author_post:hover .play-video path{
+.author_post .overlay-text:hover .play-video path{
     fill:#fff;
     /*transition-duration: 500ms;*/
 }
@@ -1751,3 +1778,7 @@ button.next-confirmation-page {
     font-size: 19px;
     line-height: 25px;
 }
+.span4.twt {
+    padding: 0;
+}
+
