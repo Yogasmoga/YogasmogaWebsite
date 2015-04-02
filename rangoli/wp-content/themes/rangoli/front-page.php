@@ -34,8 +34,6 @@ if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_
 //    echo "<p class='post_category'>" . get_the_title() . "</p>";
 //    echo "<p class='post_text'>" . get_the_excerpt() . "</p>";
 //    echo "<p class='post_author' style='text-transform: none'>by <span>" . get_the_author() . "</span></p>";
-
-    echo "</div>";
     if (has_post_video()) {
 
         $authors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=" . $post->post_author);
@@ -54,6 +52,8 @@ if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_
     <?php
     }
 
+
+    echo "</div>";
 
 
 

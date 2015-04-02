@@ -33,8 +33,13 @@ $(document).ready(function () {
                 $(".your-color-block").hide();
                 $(".login-box").hide();
                 $(window).load(function(){
-                    $("#signin_popup").fadeIn();
+                    $("your-color-block").hide();
+                    $("login-box").hide();
+
+                    $("signin_popup").fadeIn();
                     $(".signin-block").fadeIn();
+
+
                 });
             }
         }
@@ -607,6 +612,7 @@ $(window).resize(function () {
     //
     //$(".one-three").height(tile_height);
     //$(".two-three").height(tile_height * 2);
+
     $(".fixed-container").css("min-height",wh/2);
 
     //$(".wp_page_banner").height(wh-50);
@@ -719,7 +725,7 @@ function getloggedinuser() {
                 //wplogout();
             }
             $(".one-three .overlay-text").hover(function () {
-                $(this).css({'background': 'rgba(' + color + ',0.5)', 'transition-duration': '500ms'})
+                $(this).css({'background-color': 'rgba(' + color + ',0.5)', 'transition-duration': '500ms'})
             }, function () {
                 $(this).css({
                     'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
@@ -730,7 +736,7 @@ function getloggedinuser() {
                 });
             });
             $(".two-three .overlay-text").hover(function () {
-                $(this).css({'background': 'rgba(' + color + ',0.5)', 'transition-duration': '500ms'})
+                $(this).css({'background-color': 'rgba(' + color + ',0.5)', 'transition-duration': '500ms'})
                 $(this).find("p").css({'color': '#fff', 'transition-duration': '500ms'})
                 $(this).find(".post_category").css({"border-color": "#fff", 'transition-duration': '500ms'})
             }, function () {
@@ -753,7 +759,7 @@ function getloggedinuser() {
 }
 
 function fillcolor() {
-    $(".user-color-shade").css({'background': 'rgba(' + color + ',0.9)'});
+    $(".user-color-shade").css({'background-color': 'rgba(' + color + ',0.9)'});
     $(".color-game polygon:nth-child(2)").css("fill", user_color_shade);
     $(".color-game polygon").css("stroke", user_color_shade);
     $(".menu-btn rect").css("fill", user_color_shade);
@@ -862,7 +868,7 @@ function ajax_load_pages(link) {
             document.title = newTitle;
 
 
-            $(".user-color-shade").css({'background': 'rgba(' + color + ',0.9)'});
+            $(".user-color-shade").css({'background-color': 'rgba(' + color + ',0.9)'});
             $(".color-game polygon:nth-child(2)").css("fill", user_color_shade);
             $(".color-game polygon").css("stroke", user_color_shade);
             $(".menu-btn rect").css("fill", user_color_shade);
@@ -891,7 +897,7 @@ function init() {
     //    ww = 1024;
     //}
     //$(".wh").css('min-height', wh);
-    //$(".fixed-container").css("min-height",wh/2);
+    $(".fixed-container").css("min-height",wh/2);
     //var one_three = $(".one-three").width();
     //var tile_height = one_three * 0.75;
     ////$(".wp_page").css('min-width', ww);
@@ -1023,7 +1029,7 @@ function init() {
             user_color_shade = '#555555';
         }
         var color = hexToRgb(user_color_shade);
-        $(".author_post:hover .overlay-text").css({'background': 'rgba(' + color + ',0.5)'});
+        $(".author_post:hover .overlay-text").css({'background-color': 'rgba(' + color + ',0.5)'});
     }, function () {
         $(".author_post .overlay-text").css({
             'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',

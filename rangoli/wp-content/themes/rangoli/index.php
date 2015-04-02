@@ -226,7 +226,7 @@ $author_color="555555";
             $author = get_user_profile($post->post_author);
             $author_color=$author->color_shade;
             echo '<div class="span4">
-                    <div class="author_post" style="background: #' .$author_color, '" onclick="ajax_load_pages(\'' . get_the_permalink() . '?cat=' . $current_category . '\')" >';
+                    <div class="author_post" style="background: #' .$author_color, '" >';
 
             echo get_the_post_thumbnail(get_the_ID(), "thumb", array("style" => "width:100%;float:left; background: $author_color"));
             if (!has_post_thumbnail()) {
@@ -236,7 +236,7 @@ $author_color="555555";
             <?php
             }
 
-            echo '<div class="overlay-text">';
+            echo '<div class="overlay-text" onclick="ajax_load_pages(\'' . get_the_permalink() . '?cat=' . $current_category . '\')" >';
 
             if (has_post_video()) {
                 $post = get_post(get_the_ID());
