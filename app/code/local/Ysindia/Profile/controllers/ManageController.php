@@ -109,7 +109,7 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
 //                    $banner_found = true;
 //                }
 
-                if(isset($_POST['profile_filename'])) {
+                if(isset($_POST['profile_filename']) && strlen(trim($_POST['profile_filename']))>4) {
                     $profile_found = true;
                 }
 
