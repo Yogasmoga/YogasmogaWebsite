@@ -264,6 +264,7 @@ $thumb_height = "150";
             if (file.length > 0) {
                 jQuery(".spuploadimage").show();
                 jQuery(".spuploadimage").html("Uploading, please wait");
+
                 jQuery(".profileuploadform").submit();
             }
         });
@@ -334,8 +335,9 @@ $thumb_height = "150";
 
             jQuery(".spuploadimage").html("Choose an area on the image");
         } else {
+            jQuery("#preview_table").hide();
             jQuery('#thumbviewimage').html(responseText);
-            jQuery('#viewimage').html(responseText);
+            jQuery('.spuploadimage').html(responseText);
         }
     }
 </script>
