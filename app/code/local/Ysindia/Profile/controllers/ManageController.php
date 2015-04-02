@@ -228,16 +228,13 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                     ;//$ar_messages[] = array('message' => 'Profile picture not provided');
                 }
 
-                if ($ar_messages && count($ar_messages) > 0) {
-
-                    if($error) {
-                        foreach ($ar_messages as $message) {
-                            echo $message['message'] . "<br/>";
-                        }
+                if($error) {
+                    foreach ($ar_messages as $message) {
+                        echo $message['message'] . "<br/>";
                     }
-                    else
-                        echo "Profile updated successfully";
                 }
+                else
+                    echo "Profile updated successfully";
             }
         }
     }
