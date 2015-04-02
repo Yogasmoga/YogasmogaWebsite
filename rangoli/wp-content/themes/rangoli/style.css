@@ -567,13 +567,16 @@ ul.selected li{
     font-style: italic;
 }
 #sign-up-form .err-msg {
-    bottom: 58px;
     box-sizing: border-box;
+    clear: both;
     color: #fff;
-    padding: 2px;
-    position: absolute;
+    font-family: ITCAvantGardeStd-Bk;
+    font-size: 12px;
+    margin: 0 auto;
+    min-height: 37px;
+    padding: 0 0 0 4px;
     text-align: center;
-    width: 50%;
+    width: 153px;
 }
 .sign-up.left-shift .err-msg {
     bottom: unset !important;

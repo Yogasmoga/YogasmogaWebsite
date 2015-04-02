@@ -102,12 +102,12 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                 $filepath = Mage::getBaseDir() . "/rangoli/rangoli_profile_images/";
                 $savepath = Mage::getBaseUrl() . "/rangoli/rangoli_profile_images/";
 
-                $banner_found = false;
+//                $banner_found = false;
                 $profile_found = false;
 
-                if(isset($_POST['banner_filename'])) {
-                    $banner_found = true;
-                }
+//                if(isset($_POST['banner_filename'])) {
+//                    $banner_found = true;
+//                }
 
                 if(isset($_POST['profile_filename'])) {
                     $profile_found = true;
@@ -118,54 +118,54 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                 $ar_messages = array();
                 $error = false;
 
-                if ($banner_found) {
-
-                    $extension_banner = pathinfo($_POST['banner_filename'], PATHINFO_EXTENSION);
-
-                    if (in_array($extension_banner, $file_formats)) { // check it if it's a valid format or not
-
-//                            $imagename_banner = md5(uniqid() . time()) . "." . $extension_banner;
-//                            $tmp_banner = $_FILES['banner_pic']['tmp_name'];
-
-                            $thumb_width = "150";
-
-                            //$banner_result = move_uploaded_file($tmp_banner, $filepath . $imagename_banner);
-                            $banner_result = true;
-
-                            //$banner_pic = $savepath . $imagename_banner;
-                            $banner_pic = $savepath . $_POST['banner_filename'];
-
-                            if ($banner_result) {
-                                $ar_messages[] = array('message' => 'Banner uploaded');
-
-                                $writeConnection = $resource->getConnection('core_write');
-
-                                $query = "SELECT user_id FROM rangoli_usermeta where user_id=$user_id and meta_key='author_profile_picture'";
-
-                                $results = $readConnection->fetchAll($query);
-
-                                if ($results && count($results) > 0) {
-                                    $query = "update rangoli_usermeta set meta_value='$banner_pic' where user_id=$user_id and meta_key='author_profile_picture'";
-                                    $result = $writeConnection->query($query);
-                                } else {
-                                    $query = "insert into rangoli_usermeta(user_id, meta_key, meta_value) values($user_id, 'author_profile_picture','$banner_pic')";
-                                    $result = $writeConnection->query($query);
-                                }
-
-                            } else {
-                                $ar_messages[] = array('message' => 'There was some error in uploading the banner');
-
-                                $error = true;
-                            }
-                    } else {
-                        $ar_messages[] = array('message' => 'Invalid banner picture, not an image');
-
-                        $error = true;
-                    }
-                }
-                else {
-                    ;//$ar_messages[] = array('message' => 'Banner picture not provided');
-                }
+//                if ($banner_found) {
+//
+//                    $extension_banner = pathinfo($_POST['banner_filename'], PATHINFO_EXTENSION);
+//
+//                    if (in_array($extension_banner, $file_formats)) { // check it if it's a valid format or not
+//
+////                            $imagename_banner = md5(uniqid() . time()) . "." . $extension_banner;
+////                            $tmp_banner = $_FILES['banner_pic']['tmp_name'];
+//
+//                            $thumb_width = "150";
+//
+//                            //$banner_result = move_uploaded_file($tmp_banner, $filepath . $imagename_banner);
+//                            $banner_result = true;
+//
+//                            //$banner_pic = $savepath . $imagename_banner;
+//                            $banner_pic = $savepath . $_POST['banner_filename'];
+//
+//                            if ($banner_result) {
+//                                $ar_messages[] = array('message' => 'Banner uploaded');
+//
+//                                $writeConnection = $resource->getConnection('core_write');
+//
+//                                $query = "SELECT user_id FROM rangoli_usermeta where user_id=$user_id and meta_key='author_profile_picture'";
+//
+//                                $results = $readConnection->fetchAll($query);
+//
+//                                if ($results && count($results) > 0) {
+//                                    $query = "update rangoli_usermeta set meta_value='$banner_pic' where user_id=$user_id and meta_key='author_profile_picture'";
+//                                    $result = $writeConnection->query($query);
+//                                } else {
+//                                    $query = "insert into rangoli_usermeta(user_id, meta_key, meta_value) values($user_id, 'author_profile_picture','$banner_pic')";
+//                                    $result = $writeConnection->query($query);
+//                                }
+//
+//                            } else {
+//                                $ar_messages[] = array('message' => 'There was some error in uploading the banner');
+//
+//                                $error = true;
+//                            }
+//                    } else {
+//                        $ar_messages[] = array('message' => 'Invalid banner picture, not an image');
+//
+//                        $error = true;
+//                    }
+//                }
+//                else {
+//                    ;//$ar_messages[] = array('message' => 'Banner picture not provided');
+//                }
 
                 if ($profile_found) {
 
@@ -280,43 +280,43 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
         }
     }
 
-    public function uploadbannerimageAction(){
-
-        $file_formats = array("jpg", "jpeg", "png", "gif", "bmp");
-
-        $picture_type = $_POST['picture_type'];
-
-        $filepath = Mage::getBaseDir() . "/rangoli/rangoli_profile_images/";
-
-        if (isset($_FILES['pic'])) {
-
-            $name = $_FILES['pic']['name']; // filename to get file's extension
-            $size = $_FILES['pic']['size'];
-
-            if (strlen($name)) {
-                $extension = substr($name, strrpos($name, '.') + 1);
-                if (in_array($extension, $file_formats)) { // check it if it's a valid format or not
-                    if ($size < (2048 * 1024)) { // check it if it's bigger than 2 mb or no
-                        $imagename = md5(uniqid() . time()) . "." . $extension;
-                        $tmp = $_FILES['pic']['tmp_name'];
-                        if (move_uploaded_file($tmp, $filepath . $imagename)) {
-                            echo $imagename;
-                        } else {
-                            echo "Could not move the file";
-                        }
-                    } else {
-                        echo "Your image size is bigger than 2MB";
-                    }
-                } else {
-                    echo "Invalid file format";
-                }
-            } else {
-                echo "Please select image!";
-            }
-            exit();
-        }
-    }
-}
+//    public function uploadbannerimageAction(){
+//
+//        $file_formats = array("jpg", "jpeg", "png", "gif", "bmp");
+//
+//        $picture_type = $_POST['picture_type'];
+//
+//        $filepath = Mage::getBaseDir() . "/rangoli/rangoli_profile_images/";
+//
+//        if (isset($_FILES['pic'])) {
+//
+//            $name = $_FILES['pic']['name']; // filename to get file's extension
+//            $size = $_FILES['pic']['size'];
+//
+//            if (strlen($name)) {
+//                $extension = substr($name, strrpos($name, '.') + 1);
+//                if (in_array($extension, $file_formats)) { // check it if it's a valid format or not
+//                    if ($size < (2048 * 1024)) { // check it if it's bigger than 2 mb or no
+//                        $imagename = md5(uniqid() . time()) . "." . $extension;
+//                        $tmp = $_FILES['pic']['tmp_name'];
+//                        if (move_uploaded_file($tmp, $filepath . $imagename)) {
+//                            echo $imagename;
+//                        } else {
+//                            echo "Could not move the file";
+//                        }
+//                    } else {
+//                        echo "Your image size is bigger than 2MB";
+//                    }
+//                } else {
+//                    echo "Invalid file format";
+//                }
+//            } else {
+//                echo "Please select image!";
+//            }
+//            exit();
+//        }
+//    }
+//}
 
 function resizeThumbnailImage($thumb_image_name, $image, $width, $height, $start_width, $start_height, $scale){
     list($imagewidth, $imageheight, $imageType) = getimagesize($image);

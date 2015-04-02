@@ -90,7 +90,7 @@
         ?>
 
         <div class="close_signin_popup" ></div>
-        <img src="<?php echo $root;  ?>/skin/frontend/new-yogasmoga/yogasmoga-theme/images/sign_up_text.png" class="form-text" />
+        <img alt="FEEL THE SMOGI LOVE. Sign up and get $25 SMOGI bucks toward your first order." src="<?php echo $root;  ?>skin/frontend/new-yogasmoga/yogasmoga-theme/images/sign_up_text.png" class="form-text" />
         <div class="form">
             <form id="sign-up-form">
             <input name="" data-watermark="First Name" id="p_fname"/>
@@ -225,14 +225,14 @@
 <?php
 //the_block('footer');
 ?>
-<div class="footer row" style="padding-top: 90px">
-    <div class="side-logo span4">
+<div class="footer row">
+    <div class="side-logo">
         <a class="logo" href="/" style="padding-left:5px">
             <img src="<?php bloginfo('template_directory')  ?>/images/ys_logo.png" alt="logo_footer" />
         </a>
         <div class="clear-fix"></div>
     </div>
-    <div class="footer-right span8">
+    <div class="footer-right">
         <div class="first-list">
             <li>
                 <ul>
@@ -259,7 +259,7 @@
                 </ul>
             </li>
         </div>
-        <div class="first-list">
+        <div class="first-list contact-us">
             <li>
                 <ul>
                     <li><a class="bold-heading" href="mailto:hello@yogasmoga.com">CONTACT US</a></li>

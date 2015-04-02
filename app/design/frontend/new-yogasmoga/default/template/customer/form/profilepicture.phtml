@@ -228,10 +228,10 @@
 
 $save_url = $this->getUrl('profile/manage/saveimage', array('_secure' => true));
 $upload_url = $this->getUrl('profile/manage/uploadimage', array('_secure' => true));
-$banner_upload_url = $this->getUrl('profile/manage/uploadbannerimage', array('_secure' => true));
+//$banner_upload_url = $this->getUrl('profile/manage/uploadbannerimage', array('_secure' => true));
 
 $upload_path = Mage::getBaseUrl() . 'rangoli/rangoli_profile_images/temp/';
-$banner_upload_path = Mage::getBaseUrl() . 'rangoli/rangoli_profile_images/temp/';
+//$banner_upload_path = Mage::getBaseUrl() . 'rangoli/rangoli_profile_images/temp/';
 
 $thumb_width = "150";
 $thumb_height = "150";
@@ -245,15 +245,15 @@ $thumb_height = "150";
 <script type="text/javascript">
     jQuery(document).ready(function () {
 
-        jQuery("#banner_pic").change(function () {
-            var file = jQuery(this).val();
-
-            if (file.length > 0) {
-                jQuery(".spuploadbannerimage").show();
-                jQuery(".spuploadbannerimage").html("Uploading, please wait");
-                jQuery(".banneruploadform").submit();
-            }
-        });
+//        jQuery("#banner_pic").change(function () {
+//            var file = jQuery(this).val();
+//
+//            if (file.length > 0) {
+//                jQuery(".spuploadbannerimage").show();
+//                jQuery(".spuploadbannerimage").html("Uploading, please wait");
+//                jQuery(".banneruploadform").submit();
+//            }
+//        });
 
         jQuery("#profile_pic").change(function () {
             var file = jQuery(this).val();
@@ -265,13 +265,13 @@ $thumb_height = "150";
             }
         });
 
-        jQuery("#ifb").load(function () {
-            var result = jQuery("#ifb").contents().find("body").html();
-
-            jQuery(".spuploadbannerimage").html("");
-
-            showBannerResponse(result);
-        });
+//        jQuery("#ifb").load(function () {
+//            var result = jQuery("#ifb").contents().find("body").html();
+//
+//            jQuery(".spuploadbannerimage").html("");
+//
+//            showBannerResponse(result);
+//        });
 
         jQuery("#ifr").load(function () {
             var result = jQuery("#ifr").contents().find("body").html();
@@ -287,10 +287,10 @@ $thumb_height = "150";
             jQuery(".spuploadimage").hide();
             jQuery(".spuploadimage").html("&nbsp;");
 
-            jQuery(".spuploadbannerimage").hide();
-            jQuery(".spuploadbannerimage").html("&nbsp;");
-
-            jQuery("#banner_pic").val("");
+//            jQuery(".spuploadbannerimage").hide();
+//            jQuery(".spuploadbannerimage").html("&nbsp;");
+//
+//            jQuery("#banner_pic").val("");
             jQuery("#profile_pic").val("");
 
             jQuery(".messageupdate").html(result);
@@ -303,18 +303,18 @@ $thumb_height = "150";
         jQuery(".messageupdate").html("Updating, please wait");
     }
 
-    function showBannerResponse(responseText) {
-
-        if (responseText.indexOf('.') > 0) {
-            jQuery('#bannerthumbviewimage').html('<img src="<?php echo $banner_upload_path; ?>' + responseText + '"   style="position: relative; width:100%; margin-bottom:20px;" alt="Thumbnail Preview" />');
-
-            jQuery('#banner_filename').val(responseText);
-            jQuery("#banner_preview_table").show();
-        } else {
-            jQuery('#thumbviewimage').html(responseText);
-            jQuery('#viewimage').html(responseText);
-        }
-    }
+//    function showBannerResponse(responseText) {
+//
+//        if (responseText.indexOf('.') > 0) {
+//            jQuery('#bannerthumbviewimage').html('<img src="<?php //echo $banner_upload_path; ?>//' + responseText + '"   style="position: relative; width:100%; margin-bottom:20px;" alt="Thumbnail Preview" />');
+//
+//            jQuery('#banner_filename').val(responseText);
+//            jQuery("#banner_preview_table").show();
+//        } else {
+//            jQuery('#thumbviewimage').html(responseText);
+//            jQuery('#viewimage').html(responseText);
+//        }
+//    }
 
     function showResponse(responseText) {
 
@@ -387,26 +387,26 @@ $thumb_height = "150";
     <h2>UPDATE PROFILE PICTURE</h2>
 </div>
 
-<form class="banneruploadform" method="post" enctype="multipart/form-data" action="<?php echo $banner_upload_url; ?>"
-      name="photo" target="ifb">
-    <input type="hidden" name="picture_type" value="banner"/>
-    <table class="inputtable" style="min-width:500px">
-        <tr>
-            <td>
-                <div style="margin-bottom: 10px">Banner Picture</div>
-
-                <input type="file" name="pic" id="banner_pic" value=""/>
-            </td>
-        </tr>
-    </table>
-    <br/>
-</form>
-<iframe id="ifb" name="ifb" style="width:1px;height:1px;visibility:hidden"></iframe>
-
-<span class="spuploadbannerimage">&nbsp;</span>
-<div style="width:500px;" id="bannerthumbviewimage">
-    &nbsp;
-</div>
+<!--<form class="banneruploadform" method="post" enctype="multipart/form-data" action="--><?php //echo $banner_upload_url; ?><!--"-->
+<!--      name="photo" target="ifb">-->
+<!--    <input type="hidden" name="picture_type" value="banner"/>-->
+<!--    <table class="inputtable" style="min-width:500px">-->
+<!--        <tr>-->
+<!--            <td>-->
+<!--                <div style="margin-bottom: 10px">Banner Picture</div>-->
+<!---->
+<!--                <input type="file" name="pic" id="banner_pic" value=""/>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </table>-->
+<!--    <br/>-->
+<!--</form>-->
+<!--<iframe id="ifb" name="ifb" style="width:1px;height:1px;visibility:hidden"></iframe>-->
+<!---->
+<!--<span class="spuploadbannerimage">&nbsp;</span>-->
+<!--<div style="width:500px;" id="bannerthumbviewimage">-->
+<!--    &nbsp;-->
+<!--</div>-->
 
 <form class="profileuploadform" method="post" enctype="multipart/form-data" action="<?php echo $upload_url; ?>" name="photo"
       target="ifr">

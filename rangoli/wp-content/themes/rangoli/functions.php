@@ -384,7 +384,7 @@ function get_user_interests($id)
 function get_cart_count(){
     $root = get_site_url();
     $root = str_replace("/rangoli", "/", $root);
-    $count=file_get_contents($root ."/ys/session/getcartcount");
+    $count=file_get_contents($root ."ys/session/getcartcount");
     return $count;
 }
 function get_user_smogi_bucks($id)
@@ -398,13 +398,33 @@ function get_user_smogi_bucks($id)
     if ($magento_user) {
         $magento_id = $magento_user->user_id;
         if (isset($magento_id)) {
-            $smogi_balance = json_decode(file_get_contents($root . "ys/session/customertotalsmogibucks/id/" . $magento_id));
-        if ($smogi_balance) {
+//            $smogi_balance = json_decode(file_get_contents($root . "ys/session/customertotalsmogibucks/id/" . $magento_id));
+            global $wpdb;
+            $query = "SELECT points_current,points_spent FROM rewardpoints_account where customer_id=$magento_id";
+            $points = $wpdb->get_results($query);
+
+            if ($points && count($points) > 0) {
+
+                foreach ($points as $point) {
+
+                    $smogi_bucks = 0;
+                    foreach ($points as $point) {
+
+                        $point_data = get_object_vars($point);
+
+                        $smogi_bucks += intval($point_data["points_current"]);
+                        $smogi_bucks += intval($point_data["points_spent"]);
+                    }
+                }
+            } else
+                $smogi_bucks = "0";
+
+            if ($smogi_bucks) {
             if(is_array($roles) && count($roles)>0) {
                 $role = $roles[0];
                 if($role != "store"){
                     reset($magento_user);
-                    return $smogi_balance;
+                    return $smogi_bucks;
                 }
                 else
                     return 0;

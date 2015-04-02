@@ -27,7 +27,11 @@ foreach ($json->data as $data) {
 
 
 ?>
-<div class="row one-three" style=" background: url('<?php echo $imageUrl; ?>') no-repeat; background-position: center center; background-size: cover; width:100% !important;" ></div>
+<div class="row one-three" style="background: url('<?php echo $imageUrl; ?>') no-repeat; background-position: center center; background-size: cover; width:100% !important;" >
+    <?php
+    echo '<img src="'.get_site_url().'/wp-content/themes/rangoli/images/no-background.png" style="width:100%;float:left;"/>';
+    ?>
+</div>
 <div  class="overlay-text" style="background: rgba(0,0,0,0.2)" onclick="window.open('http://instagram.com/yogasmoga','_blank')">
     <a class="twitter-icon"  href="javascript:void(0);"><img src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/ig-w.png" /></a>
 </div>
