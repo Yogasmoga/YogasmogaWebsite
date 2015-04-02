@@ -44,6 +44,23 @@ body, .header-container, .footer-container{
 .header .logo {
     margin: 6px 7px 0 0;
 }
+/*.header .logo {*/
+    /*position: fixed;*/
+    /*top: 6px;*/
+/*}*/
+
+/*ul.main-nav > li.menu-heading{position: fixed;*/
+/*padding-left: 253px;*/
+/*top: 0*/
+/*}*/
+/*ul.main-menu li ul.sub-menu > li {*/
+    /*border-left: 1px solid #f8f8f8;*/
+    /*display: inline-block;*/
+    /*min-height: 120px;*/
+    /*min-width: 160px;*/
+    /*padding: 0 0 0 15px;*/
+    /*vertical-align: top;*/
+/*}*/
 
 ul.navigation-bar > li {
     cursor: pointer;
@@ -68,7 +85,7 @@ ul.navigation-bar > li {
 
 .free-shipping img {
    height: 16px;
-    margin: -2px 0 0 1px;
+    margin: -1px 0 0 1px;
     padding: 0;
     vertical-align: top;	
 }
@@ -100,16 +117,10 @@ ul.shipping-menu > li.free-shipping {
 .free-shipping > span {
     padding: 2px 0 0;
 }
-.clearer:after, .header-container:after, .header-container .top-container:after, .header:after, .header .quick-access:after, #nav:after, .main:after, .footer:after, .footer-container .bottom-container:after, .col-main:after, .col2-set:after, .col3-set:after, .col3-layout .product-options-bottom .price-box:after, .col4-set:after, .search-autocomplete li:after, .block .block-content:after, .block .actions:after, .block li.item:after, .block-poll li:after, .block-layered-nav .currently li:after, .page-title:after, .products-grid:after, .products-list li.item:after, .box-account .box-head:after, .dashboard .box .box-title:after, .box-reviews li.item:after, .box-tags li.item:after, .pager:after, .sorter:after, .ratings:after, .add-to-box:after, .add-to-cart:after, .product-essential:after, .product-collateral:after, .product-view .product-img-box .more-views ul:after, .product-view .box-tags .form-add:after, .product-view .product-shop .short-description:after, .product-view .box-description:after, .product-options .options-list li:after, .product-options-bottom:after, .product-review:after, .cart:after, .cart-collaterals:after, .cart .crosssell li.item:after, .opc .step-title:after, .checkout-progress:after, .multiple-checkout .place-order:after, .group-select li:after, .form-list li:after, .form-list .field:after, .buttons-set:after, .page-print .print-head:after, .advanced-search-summary:after, .gift-messages-form .item:after, .send-friend .form-list li p:after {
-    clear: both;
-    content: ".";
-    display: block;
-    font-size: 0;
-    height: 0;
-    line-height: 0;
-    overflow: hidden;
-}
 
+.logo.menu-heading.menu-heading1 > img {
+    margin-top: 5px;
+}
 .shipping-menu li a {
     text-decoration: none;
     color: #555;
@@ -331,9 +342,11 @@ ul {
     width: 33%;
 }
 
+/*
 .logo {
     float: left;
 }
+*/
 
 .first-list > li {
     box-sizing: border-box;
@@ -533,4 +546,11 @@ ul.main-nav > li.rangoli{background-image:none!important;}
 .footer ul.social-icons li {
     display: inline-block;
     margin: 0 3px;
+}
+.footer .logo > img {
+    position: absolute;
+    left: 15px;
+}
+.footer .social-icons {
+    margin-top: 2px;
 }

@@ -8,7 +8,7 @@ $(window).load(function () {
     $('.flexslider').flexslider({
         start: function () {
 
-            $(".flex-active-slide .over-the-slide").addClass("fadeInUp").addClass("animated");
+            $(".flex-active-slide .play-video").addClass("fadeInUp").addClass("animated");
             $(" .over-the-slide").css("opacity", 1);
         }
     });

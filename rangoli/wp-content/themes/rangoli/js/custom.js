@@ -19,7 +19,6 @@ $(document).ready(function () {
     //    _usesecureurl = true;
     //else
     //    _usesecureurl = false;
-
     var url = homeUrl + 'mycatalog/myproduct/checkforsignuppopup';
     //if (_usesecureurl)
     //    url = securehomeUrl + 'mycatalog/myproduct/checkforsignuppopup';
@@ -32,10 +31,11 @@ $(document).ready(function () {
             //status = "error";         // stop signup popup
             if (status == "success") {
                 $(".your-color-block").hide();
-                $("#signin_popup").fadeIn();
                 $(".login-box").hide();
-                $(".signin-block").fadeIn();
-
+                $(window).load(function(){
+                    $("#signin_popup").fadeIn();
+                    $(".signin-block").fadeIn();
+                });
             }
         }
     });
@@ -210,13 +210,13 @@ function createCustomerAccount_from_popup() {
             else {
                 var cpassword = pwd;
                 //var is_subscribed = jQuery("#in_touch").val();
-                //if (window.location.href.indexOf('https://') >= 0)
-                //    _usesecureurl = true;
-                //else
-                //    _usesecureurl = false;
+                if (window.location.href.indexOf('https://') >= 0)
+                    _usesecureurl = true;
+                else
+                    _usesecureurl = false;
                 var url = homeUrl + 'mycatalog/myproduct/registercustomer';
-                //if (_usesecureurl)
-                //    url = securehomeUrl + 'mycatalog/myproduct/registercustomer';
+                if (_usesecureurl)
+                    url = securehomeUrl + 'mycatalog/myproduct/registercustomer';
 
                 jQuery.ajax({
                     url: url,
@@ -231,8 +231,9 @@ function createCustomerAccount_from_popup() {
                     },
                     beforeSend: function () {
                         jQuery("#sign-up-form .err-msg").html("");
-                        jQuery("#sign-up-form .loader").show();
-                        jQuery("#signup").hide();
+                        //jQuery("#sign-up-form .loader").show();
+                        jQuery("#signup").css("background-image","url('"+root+"skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png')");
+                        alert(root+"skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png");
                     },
                     success: function (data) {
 
@@ -264,7 +265,7 @@ function createCustomerAccount_from_popup() {
                             }
                         }
                         else {
-                            jQuery("#sign-up-form .loader").hide();
+                            //jQuery("#sign-up-form .loader").hide();
                             jQuery("#signup").show();
                             jQuery("#sign-up-form .err-msg").html(data.errors).css("visibility", "visible");
                         }
@@ -299,13 +300,13 @@ function createCustomerAccount() {
     //alert(pwd);
     var cpassword = pwd;
     //var is_subscribed = jQuery("#in_touch").val();
-    //if (window.location.href.indexOf('https://') >= 0)
-    //    _usesecureurl = true;
-    //else
-    //    _usesecureurl = false;
+    if (window.location.href.indexOf('https://') >= 0)
+        _usesecureurl = true;
+    else
+        _usesecureurl = false;
     var url = homeUrl + 'mycatalog/myproduct/registercustomer';
-    //if (_usesecureurl)
-    //    url = securehomeUrl + 'mycatalog/myproduct/registercustomer';
+    if (_usesecureurl)
+        url = securehomeUrl + 'mycatalog/myproduct/registercustomer';
 
     jQuery.ajax({
         url: url,
@@ -554,7 +555,7 @@ function count_interests(){
     var count = getSelectedInterestCount();
     //alert(count);
     if(count >=3){
-        $(".next-confirmation-page").text("NEXT");
+        $(".next-confirmation-page").text("Next");
     }else{
         $(".next-confirmation-page").text("Choose 3+");
     }
@@ -599,13 +600,13 @@ $(document).ready(function () {
 $(window).resize(function () {
     var wh = $(window).height();
     var ww = $(window).width();
-    $(".wh").css('min-height', wh);
-    var one_three = ww / 3;
-    var tile_height = one_three * 0.75;
-    //$(".wp_page").css('min-width', ww);
-
-    $(".one-three").height(tile_height);
-    $(".two-three").height(tile_height * 2);
+    //$(".wh").css('min-height', wh);
+    //var one_three = ww / 3;
+    //var tile_height = one_three * 0.75;
+    ////$(".wp_page").css('min-width', ww);
+    //
+    //$(".one-three").height(tile_height);
+    //$(".two-three").height(tile_height * 2);
     $(".fixed-container").css("min-height",wh/2);
 
     //$(".wp_page_banner").height(wh-50);
@@ -774,7 +775,7 @@ $(document).ready(function () {
         'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
         'transition-duration': '100ms'
     });
-})
+});
 
 
 function ajax_load_pages(link) {
@@ -886,16 +887,16 @@ function init() {
 
     var wh = $(window).height();
     var ww = $(window).width();
-    if (ww < 1024) {
-        ww = 1024;
-    }
-    $(".wh").css('min-height', wh);
-    $(".fixed-container").css("min-height",wh/2);
-    var one_three = $(".one-three").width();
-    var tile_height = one_three * 0.75;
-    //$(".wp_page").css('min-width', ww);
-    $(".one-three").height(tile_height);
-    $(".two-three").height(tile_height * 2);
+    //if (ww < 1024) {
+    //    ww = 1024;
+    //}
+    //$(".wh").css('min-height', wh);
+    //$(".fixed-container").css("min-height",wh/2);
+    //var one_three = $(".one-three").width();
+    //var tile_height = one_three * 0.75;
+    ////$(".wp_page").css('min-width', ww);
+    //$(".one-three").height(tile_height);
+    //$(".two-three").height(tile_height * 2);
     $(".wp_page_banner").height(wh - 70);
 
     $(".post_category a").each(function () {
@@ -1339,6 +1340,9 @@ function history_pop(){
     });
 }*/
 
+
+
+
 $(document).ready(function(){
     $.ajax({
         url:root +"ys/session/getcartcount",
@@ -1348,3 +1352,4 @@ $(document).ready(function(){
     })
 
 });
+

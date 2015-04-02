@@ -23,8 +23,9 @@
     top: 70px;
     width: 100%;
     z-index: 999999;
+    display: none;
 }
-.signin-block, .your-color-block {
+.signin-block {
     border-radius: 50%;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
     height: 464px;
@@ -33,6 +34,21 @@
     position: absolute;
     top: 8%;
     width: 464px;
+    display: none;
+}
+.your-color-block{
+    border-radius: 50%;
+    height: 508px;
+    left: 50%;
+    margin-left: -254px;
+    position: absolute;
+    top: 8%;
+    width: 508px;
+    display: none;
+}
+.your-color-block .close_signin_popup {
+    margin-right: 100px;
+    margin-top: 35px;
 }
 .signin-block #sign-up-form .err-msg {
     box-sizing: border-box;
@@ -327,7 +343,6 @@ img{
 }
 .footer .social-icons > li {
     display: inline-block;
-    padding:0 3px;
 }
 .profile-links {
     padding-top: 30px !important;
@@ -1766,3 +1781,4 @@ button.next-confirmation-page {
 .span4.twt {
     padding: 0;
 }
+
