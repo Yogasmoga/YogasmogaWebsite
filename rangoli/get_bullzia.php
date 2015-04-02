@@ -191,6 +191,7 @@ if ($data) {
 
     $data_unique_color = array();
 
+    $data_count = 0;
     foreach ($data as $single) {
 
         if (!isDuplicateColor($data_unique_color, $single['color'])) {
@@ -294,6 +295,11 @@ if ($data) {
                 'postAuther' => $single['postAuther'],
                 'postAutherUrl' => $postAuthorUrl
             );
+
+            $data_count++;
+
+            if($data_count>=7)
+                break;
         }
     }
 
