@@ -243,6 +243,9 @@ $thumb_height = "150";
         src="<?php echo Mage::getBaseUrl(); ?>js/upload_profile/jquery.imgareaselect.js"></script>
 
 <script type="text/javascript">
+
+    var imgArea;
+
     jQuery(document).ready(function () {
 
 //        jQuery("#banner_pic").change(function () {
@@ -294,6 +297,9 @@ $thumb_height = "150";
             jQuery("#profile_pic").val("");
 
             jQuery(".messageupdate").html(result);
+
+            imgArea.setOptions({ hide: true });
+            imgArea.update();
         });
 
         jQuery("#imagefile").val("");
@@ -303,18 +309,18 @@ $thumb_height = "150";
         jQuery(".messageupdate").html("Updating, please wait");
     }
 
-//    function showBannerResponse(responseText) {
-//
-//        if (responseText.indexOf('.') > 0) {
-//            jQuery('#bannerthumbviewimage').html('<img src="<?php //echo $banner_upload_path; ?>//' + responseText + '"   style="position: relative; width:100%; margin-bottom:20px;" alt="Thumbnail Preview" />');
-//
-//            jQuery('#banner_filename').val(responseText);
-//            jQuery("#banner_preview_table").show();
-//        } else {
-//            jQuery('#thumbviewimage').html(responseText);
-//            jQuery('#viewimage').html(responseText);
-//        }
-//    }
+    //    function showBannerResponse(responseText) {
+    //
+    //        if (responseText.indexOf('.') > 0) {
+    //            jQuery('#bannerthumbviewimage').html('<img src="<?php //echo $banner_upload_path; ?>//' + responseText + '"   style="position: relative; width:100%; margin-bottom:20px;" alt="Thumbnail Preview" />');
+    //
+    //            jQuery('#banner_filename').val(responseText);
+    //            jQuery("#banner_preview_table").show();
+    //        } else {
+    //            jQuery('#thumbviewimage').html(responseText);
+    //            jQuery('#viewimage').html(responseText);
+    //        }
+    //    }
 
     function showResponse(responseText) {
 
@@ -322,7 +328,7 @@ $thumb_height = "150";
             jQuery('#thumbviewimage').html('<img src="<?php echo $upload_path; ?>' + responseText + '"   style="position: relative;" alt="Thumbnail Preview" />');
             jQuery('#viewimage').html('<img class="preview" alt="" src="<?php echo $upload_path; ?>' + responseText + '"   id="thumbnail" />');
             jQuery('#profile_filename').val(responseText);
-            jQuery('#thumbnail').imgAreaSelect({aspectRatio: '1:1', handles: true, onSelectChange: preview});
+            imgArea = jQuery('#thumbnail').imgAreaSelect({aspectRatio: '1:1', handles: true, instance: true, onSelectChange: preview});
 
             jQuery("#preview_table").show();
 
