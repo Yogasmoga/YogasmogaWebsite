@@ -18,6 +18,7 @@ class Ysindia_Mod_SessionController extends Mage_Core_Controller_Front_Action
                 'first_name' => $customer->getFirstname(),
                 'middle_name' => $customer->getMiddlename(),
                 'last_name' => $customer->getLastname(),
+                'create_date' => date('Y-m-d', $customer->getCreatedAtTimestamp())
             );
         } else {
             $ar = array('message' => 'notlogged');

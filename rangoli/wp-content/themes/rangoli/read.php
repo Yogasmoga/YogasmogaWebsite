@@ -11,7 +11,7 @@ get_header();
 $filter_category_name = "read";
 // checking if request is opened for first time
 
-
+echo "[1.]<br/>";
 ?>
     <div class="wp_page span12" style="margin-top: 10px; text-align: center;">
         <?php
@@ -23,6 +23,7 @@ $filter_category_name = "read";
         <div class="post_listing">
             <div id="posts">
                 <?php
+                echo "[2.]<br/>";
                 ob_flush();
                 global $the_query;
                 $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -35,6 +36,7 @@ $filter_category_name = "read";
 //                echo $page;
                 $the_query = new WP_Query($args);
                 echo '<div class="author_posts row">';
+                echo "[3.]<br/>";
                 if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_post();
                     $post = get_post();
                     $wpauthors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=" . $post->post_author);
@@ -55,7 +57,7 @@ $filter_category_name = "read";
                     } else {
                         $filter_query = true;
                     }
-
+                    echo "[4.]<br/>";
 //            $filter_length=();
                     if ($filter_query) {
 //                        if(true){
@@ -94,7 +96,7 @@ $filter_category_name = "read";
 //                            get_template_part('sharearrow');
                             echo '</div></div>';
                             echo '</div>';
-
+                            echo "[5.]<br/>";
                             ?>
                             <div class="post_date read">
                                 <p><?php echo date('m.j.y', strtotime($post->post_date)); ?></p>
@@ -124,5 +126,6 @@ $filter_category_name = "read";
 
 
 <?php
+echo "[6.]<br/>";
 get_footer();
 ?>
