@@ -33,8 +33,13 @@ $(document).ready(function () {
                 $(".your-color-block").hide();
                 $(".login-box").hide();
                 $(window).load(function(){
-                    $("#signin_popup").fadeIn();
+                    $("your-color-block").hide();
+                    $("login-box").hide();
+
+                    $("signin_popup").fadeIn();
                     $(".signin-block").fadeIn();
+
+
                 });
             }
         }
@@ -75,7 +80,7 @@ function submit_comment() {
             //serialize and store form data in a variable
             var formdata = commentform.serialize();
             //Add a status message
-            statusdiv.html('<p>Processing...</p>');
+            statusdiv.html('<p><img src="/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif" style="width:16px;" /></p>');
             //Extract action URL from commentform
             var formurl = commentform.attr('action');
             //Post Form with data
@@ -607,6 +612,7 @@ $(window).resize(function () {
     //
     //$(".one-three").height(tile_height);
     //$(".two-three").height(tile_height * 2);
+
     $(".fixed-container").css("min-height",wh/2);
 
     //$(".wp_page_banner").height(wh-50);
@@ -783,6 +789,7 @@ function ajax_load_pages(link) {
     //$(".fixed-container").load(link + ' #fixed_container');
     $page = $(document).find(".fixed-container > div");
     $page.removeAttr("class");
+    $(".close-menu-btn").click();
     $.ajax({
         url: link,
         success: function (response) {
@@ -808,7 +815,6 @@ function ajax_load_pages(link) {
                 ajax_load_pages(link);
             });
             raty_init();
-
             $(document).find(".one-three .overlay-text").css({
                 'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
                 'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
@@ -846,6 +852,11 @@ function ajax_load_pages(link) {
                 $(document).find(".wp_page_banner .play-video").remove();
             });
 
+            $(window).load(function(){
+                animate_tiles();
+            });
+
+
             $(document).find(".homepage_page_banner .play-video").unbind("click");
             $(document).find(".homepage_page_banner .play-video").click(function () {
                 $(document).find(".homepage_page_banner .play-video").hide();
@@ -858,7 +869,7 @@ function ajax_load_pages(link) {
             });
 
             $(".single_post.span4").addClass("fadeInUp").addClass("animated");
-            window.history.pushState({path: link}, null, link);
+            window.history.pushState({ myTag: true }, null, link);
             document.title = newTitle;
 
 
@@ -870,7 +881,7 @@ function ajax_load_pages(link) {
             $(".smogi .like.subscribed path").css("fill", user_color_shade).css("stroke", user_color_shade);
 
         }
-    })
+    });
 
     $(".close-menu-btn").click();
 
@@ -887,16 +898,7 @@ function init() {
 
     var wh = $(window).height();
     var ww = $(window).width();
-    //if (ww < 1024) {
-    //    ww = 1024;
-    //}
-    //$(".wh").css('min-height', wh);
-    //$(".fixed-container").css("min-height",wh/2);
-    //var one_three = $(".one-three").width();
-    //var tile_height = one_three * 0.75;
-    ////$(".wp_page").css('min-width', ww);
-    //$(".one-three").height(tile_height);
-    //$(".two-three").height(tile_height * 2);
+    $(".fixed-container").css("min-height",wh/2);
     $(".wp_page_banner").height(wh - 70);
 
     $(".post_category a").each(function () {
@@ -949,11 +951,7 @@ function init() {
         $("body").css("overflow", "hidden");
         $(".smogi").addClass("fadeInUp").addClass("animated");
         $(".menu-btn").css("opacity", 1);
-        $(".menu-box").animate({
-            'margin-left': '-400px'
-        }, 300, 'easeInQuart', function () {
-            $(".menu-btn").css("opacity", 1);
-        });
+        $(".close-menu-btn").click();
     });
     $(".smogi-content").height(wh - 230);
 
@@ -967,11 +965,7 @@ function init() {
         $(".smogi").addClass("fadeInUp").addClass("animated");
         $("#stores").hide();
 
-        $(".menu-box").animate({
-            'margin-left': '-400px'
-        }, 500, 'easeOutCirc', function () {
-            $(".menu-btn").css("opacity", 1);
-        });
+        $(".close-menu-btn").click();
     });
 
     $(".post_category a").each(function () {
@@ -1059,11 +1053,38 @@ function filter() {
         var link = $(this).attr("href");
         $(".filter-container a").removeClass("active");
         $(this).addClass("active");
-        $(".post_listing").load(link + " #posts", function () {
-            $(".liked_reads").flexslider();
-            $(".liked_watchs").flexslider();
-            $(".liked_learns").flexslider();
-            //alert($(".post_listing").html());
+
+        $.ajax({
+            url: link,
+
+            success: function (data) {
+
+                $newData = $(data).find("#posts");
+                //alert($newData.html());
+                $newData.find(".single_post").addClass("fadeInUp").addClass("animated")
+                $(".post_listing").html($newData.html());
+
+
+                init();
+
+                $(".author_post .overlay-text").css({
+                    'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    'transition-duration': '100ms'
+                });
+                $(".liked_reads").flexslider();
+                $(".liked_watchs").flexslider();
+                $(".liked_learns").flexslider();
+
+                if($newData.find(".single_post").length==""){
+
+                    $(".post_listing").html("<br/><br/><br/><p class='align-center' style='font-family: ITCAvantGardeStd-Bk; font-size:20px'>No post found !</p>");
+                }
+
+
+            }
         });
         $(".filter-container").slideUp();
     });
@@ -1156,11 +1177,11 @@ $(document).ready(function () {
 
     $(".invite-friends").click(function () {
         if (logged_in != null && logged_in != '' && logged_in != undefined) {
+        $(".close-menu-btn").click();
         $("#smogis").hide();
         $("#connect").hide();
         $("#stores").hide();
         $("#popup").fadeIn();
-        $(".close-menu-btn").click();
         $("body").css("overflow", "hidden");
         $("#invite_friend").show();
         $(".invite_friend li").hover(function () {
@@ -1318,6 +1339,16 @@ function infinity_scroll(){
 
 
                             init();
+
+                            $(".author_post .overlay-text").css({
+                                'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                                'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                                'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                                'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                                'transition-duration': '100ms'
+                            });
+
+
                         }
                     });
                 }
@@ -1351,5 +1382,34 @@ $(document).ready(function(){
         }
     })
 
+
+
+    $(".post_content a img").each(function(){
+       $(this).parent().removeAttr("href");
+    });
+
+
 });
+//
+//$(window).on("navigate", function (event, data) {
+//    var direction = data.state.direction;
+//    if (direction == 'back') {
+//
+//    }
+//    if (direction == 'forward') {
+//        // do something else
+//    }
+//});
+
+//
+//$(window).load(function(){
+//    window.onpopstate = function(event) {
+//            //alert(window.location + ' ' + document.location.href + ' ')
+//        if (!e.originalEvent.state.myTag) return;
+//
+//            var link = document.location.href;
+//            window.location = link;
+//
+//    };
+//});
 

@@ -11,6 +11,7 @@ get_header();
 $filter_category_name = "read";
 // checking if request is opened for first time
 
+
 ?>
     <div class="wp_page span12" style="margin-top: 10px; text-align: center;">
         <?php
@@ -54,6 +55,7 @@ $filter_category_name = "read";
                     } else {
                         $filter_query = true;
                     }
+
 //            $filter_length=();
                     if ($filter_query) {
 //                        if(true){
@@ -92,6 +94,7 @@ $filter_category_name = "read";
 //                            get_template_part('sharearrow');
                             echo '</div></div>';
                             echo '</div>';
+
                             ?>
                             <div class="post_date read">
                                 <p><?php echo date('m.j.y', strtotime($post->post_date)); ?></p>

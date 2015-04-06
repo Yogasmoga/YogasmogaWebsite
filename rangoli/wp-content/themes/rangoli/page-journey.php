@@ -22,7 +22,8 @@ get_header();
                 <h1 class="page-heading align-center">Choose Your Color</h1>
             </div>
             <div id="color-slider">
-
+                <div class="arrow-next"> <span class="arrow"></span> </div>
+                <div class="arrow-prev"> <span class="arrow"></span> </div>
             </div>
         </div>
         <div class="interest-page">
@@ -126,6 +127,22 @@ get_header();
             else{
                 $welcome_message = "WELCOME ".strtoupper($user_info->display_name).",";
                 $smogiBucks_message = "You have 25 SMOGI Bucks just for signing up.</p><p>(Learn how to earn more <span>SMOGI BUCKS</span>)</p>";
+                $magento_user = json_decode(file_get_contents($root . 'ys/session/loggedcustomer'));
+                if ($magento_user) {
+                    $create_date_mg = $magento_user->create_date;
+                    $current_user_id = get_current_user_id();
+                    $current_user = get_userdata($current_user_id);
+                    $create_date_wp = $current_user->user_registered;
+                    $create_date_wp = date('Y-m-d',$create_date_wp);
+                    $smogi_bucks = get_user_smogi_bucks($current_user_id);
+
+                    if(strtotime($create_date_mg) > strtotime($create_date_wp)){
+                        $smogiBucks_message = "You have $smogi_bucks SMOGI Bucks.</p><p>(Learn how to earn more <span>SMOGI BUCKS</span>)</p>";
+                    }
+
+                }
+
+
                 $interest_message = 'Thanks for being a part of RANGOLI! We are very excited that you are joining this color journey.
                         If you want to change your color, you can do that <a href="/rangoli/journey">here</a>.
                         Evolving interests? Change those <a href="/rangoli/journey"> here</a>.
@@ -252,16 +269,28 @@ get_header();
 
 
 
-
+function get_height(){
+    $("#color-slider .arrow-next").height($(window).height()-70);
+    $("#color-slider .arrow-prev").height($(window).height()-70);
+}
+        $(window).resize(function(){
+            get_height();
+        })
         jQuery(document).ready(function ($) {
-            count_interests();
+            count_interests()
             var rangoli = new $.Rangoli($("#color-slider"), colors);
             rangoli.initColorSlider();
-            $("svg .shade").mouseenter(function () {
-                $(this).closest('.shades').find('svg.bgsvg path.heart').css({
-                    fill: 'none'
-                });
+            get_height();
+            $("#color-slider .arrow-next .arrow").click(function(){
+                $("#colors .next span").click();
+//                alert();
             });
+            $("#color-slider .arrow-prev .arrow").click(function(){
+                $("#colors .prev span").click();
+//                alert();
+            });
+
+
             $("li.active .primary").click(function () {
                 $(this).parent().addClass("animate");
             });

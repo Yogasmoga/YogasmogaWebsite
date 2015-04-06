@@ -19,9 +19,16 @@ $filter_category_name = "learn";
         <div class="post_listing">
             <div id="posts">
                 <?php
+                ob_flush();
+                global $the_query;
+                global $page;
+                $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
+//                $i = 1;
                 $args = array(
                     'category_name' => 'learn',
-                    'order' => 'DESC');
+                    'order' => 'DESC',
+                    'post_type' => 'post',
+                    'paged' => $page);
                 $the_query = new WP_Query($args);
                 $i=0;
                 echo '<div class="author_posts row">';

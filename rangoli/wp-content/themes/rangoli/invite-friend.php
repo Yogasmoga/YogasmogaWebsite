@@ -2,7 +2,7 @@
 <p class="smogi_title">INVITE FRIENDS</p>
 
 <div class="smogi-content">
-    <div class="row" style="padding: 50px"></div>
+    <div class="row" style="padding: 35px"></div>
 
     <p class="invite"> Your Invite Link</p>
 

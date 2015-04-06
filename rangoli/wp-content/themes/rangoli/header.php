@@ -1,29 +1,28 @@
+<?php
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+?>
 <!DOCTYPE HTML>
 <head>
-    <title><?php bloginfo('title'); if(!is_home() && !is_author()){ echo ' | '.get_the_title();}  if ( is_author() ) {
+    <title><?php bloginfo('title'); if(!is_home() && !is_author() && !is_404()){ echo ' | '.get_the_title();}  if ( is_author() ) {
             $author_obj = $wp_query->get_queried_object();
             echo ' | '.strtoupper($author_obj->display_name);
-        }?></title>
+        } if(is_404()){ echo ' | 404 Page not found'; }?></title>
     <meta property="og:title" content="Rangoli" />
     <meta property="og:description" content="Rangoli - A Blog based on health and wellness." />
     <meta property="description" content="Rangoli - A Blog based on health and wellness." />
 
     <?php
-        $root = get_site_url();
-        $root = str_replace("/rangoli","/",$root);
+    $root = get_site_url();
+    $root = str_replace("/rangoli","/",$root);
     ?>
     <script>
 
         var  homeUrl="<?php echo $root ?>";
         var today_date="<?php echo date("j.m.y", time()) ?>";
-//
-//        (function(d) {
-//            var config = {
-//                    kitId: 'xta6sbe',
-//                    scriptTimeout: 3000
-//                },
-//                h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-//        })(document);
+
+        // staging //
 
         (function(d) {
             var config = {
@@ -33,10 +32,21 @@
                 h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
         })(document);
 
+
+        //  feature //
+
+        //        (function(d) {
+        //            var config = {
+        //                    kitId: 'zom2eny',
+        //                    scriptTimeout: 3000
+        //                },
+        //                h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+        //        })(document);
+
     </script>
 
     <?php
-      //  the_block('head');
+    //  the_block('head');
     ?>
     <script src="<?php bloginfo('template_directory')?>/js/jquery.js" ></script>
     <script src="<?php bloginfo('template_directory')?>/js/jquery.flexslider.js" ></script>
@@ -55,15 +65,15 @@
     <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/rangoli.css" />
     <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/jquery.raty.css" />
     <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/pace.css" />
-<!--    <link rel='stylesheet' href="--><?php //bloginfo('template_directory'); ?><!--/css/media.css" />-->
+    <!--    <link rel='stylesheet' href="--><?php //bloginfo('template_directory'); ?><!--/css/media.css" />-->
 
 
     <?php
-        if(is_front_page()){
-    ?>
+    if(is_front_page()){
+        ?>
 
-    <script src="<?php bloginfo('template_directory')?>/js/jquery.flexslider.js" ></script>
-    <script src="<?php bloginfo('template_directory')?>/js/homepage.js" ></script>
+        <script src="<?php bloginfo('template_directory')?>/js/jquery.flexslider.js" ></script>
+        <script src="<?php bloginfo('template_directory')?>/js/homepage.js" ></script>
 
     <?php
     }
@@ -107,7 +117,7 @@
                                 <li><a href="/women/bottoms/pants">Pants</a></li>
                                 <li><a href="/women/bottoms/leggings">Leggings</a></li>
                                 <li><a href="/women/bottoms/crops">Crops</a></li>
-<!--                                <li><a href="/women/bottoms/shorts">Shorts</a></li>-->
+                                <!--                                <li><a href="/women/bottoms/shorts">Shorts</a></li>-->
                             </ul>
                         </li>
                         <li><a href="/women/accessories"> Accessories </a>
@@ -127,7 +137,7 @@
                         <li>
                             <ul>
                                 <li><a href="/mens/what-s-new"> What's New</a></li>
-<!--                                <li><a href="/mens/top-sellers"> Top Sellers</a></li>-->
+                                <!--                                <li><a href="/mens/top-sellers"> Top Sellers</a></li>-->
                             </ul>
                         </li>
 
@@ -263,35 +273,35 @@ $display_name = $current_user->display_name;
 <div class="wp_page" id="page">
     <div class="menu-btn">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-              x="0px" y="0px" width="30px" height="40px" viewBox="0 -4 30 60" enable-background="new 0 -4 30 60" xml:space="preserve">
+             x="0px" y="0px" width="30px" height="40px" viewBox="0 -4 30 60" enable-background="new 0 -4 30 60" xml:space="preserve">
         <defs>
         </defs>
-        <rect fill="#555" width="30" height="5"/>
-        <rect y="11" fill="#555" width="30" height="5"/>
-        <rect y="22" fill="#555" width="30" height="5"/>
+            <rect fill="#555" width="30" height="5"/>
+            <rect y="11" fill="#555" width="30" height="5"/>
+            <rect y="22" fill="#555" width="30" height="5"/>
         </svg>
     </div>
 
     <div class="color-game">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-        x="0px" y="0px" width="30px" height="40px" viewBox="-0.339 -1 30 60" enable-background="new -0.339 -1 30 60" xml:space="preserve">
+             x="0px" y="0px" width="30px" height="40px" viewBox="-0.339 -1 30 60" enable-background="new -0.339 -1 30 60" xml:space="preserve">
         <defs>
         </defs>
-        <polygon fill=" #555" stroke=" #555" stroke-width="2" stroke-miterlimit="10" points="1.661,1 28.112,1 14.887,27.01 "/>
-        <polygon fill="none" stroke=" #555" stroke-width="2" stroke-miterlimit="10" points="1.661,30 14.887,54.98 27.661,30 "/>
+            <polygon fill=" #555" stroke=" #555" stroke-width="2" stroke-miterlimit="10" points="1.661,1 28.112,1 14.887,27.01 "/>
+            <polygon fill="none" stroke=" #555" stroke-width="2" stroke-miterlimit="10" points="1.661,30 14.887,54.98 27.661,30 "/>
         </svg>
     </div>
     <div class="bullzai">
         <img src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/bullzai.png" />
     </div>
 
-<div class="menu-box user-color-shade" style="background:rgba(85,85,85,0.85)">
-    <div class="menu-content white">
-        <img src="<?php bloginfo('template_directory') ?>/images/close.png" class="right close-menu-btn" />
+    <div class="menu-box user-color-shade" style="background:rgba(85,85,85,0.85)">
+        <div class="menu-content white">
+            <img src="<?php bloginfo('template_directory') ?>/images/close.png" class="right close-menu-btn" />
 
-        <ul class="profile-links">
-            <li><div id="user_info">
-                    <?php
+            <ul class="profile-links">
+                <li><div id="user_info">
+                        <?php
                         if(is_user_logged_in()) {
                             $current_wp_user = get_current_user_id();
                             if ($current_wp_user != 0) {
@@ -313,7 +323,7 @@ $display_name = $current_user->display_name;
                                 $main_color=strtoupper($main_color);
 
                                 $profileUrl = get_site_url()."/profile/?user_id=".$user_id;
-                                if ($user_info->roles[0] == "smogi" || $user_info->roles[0] == "store" || $user_info->roles[0] == "administrator") {
+                                if ($user_info->roles[0] == "smogi" || $user_info->roles[0] == "store") {
                                     $profileUrl = get_author_posts_url($user_id);
                                 }
 
@@ -340,29 +350,29 @@ $display_name = $current_user->display_name;
 
                             }
                         }
-                    ?>
-                </div></li>
-            <li><a class="home_link" href="<?php echo get_home_url() ?>/"><img src="<?php bloginfo('template_directory')?>/images/home.png" /> </a> </li>
-        </ul>
-        <?php
+                        ?>
+                    </div></li>
+                <li><a class="home_link" href="<?php echo get_home_url() ?>/"><img src="<?php bloginfo('template_directory')?>/images/home.png" /> </a> </li>
+            </ul>
+            <?php
             wp_nav_menu( array( 'theme_location' => 'menu1', 'container_class' => 'category-menu' ) );
             wp_nav_menu( array( 'theme_location' => 'menu2', 'container_class' => 'category-menu' ) );
-        ?>
-        <ul class="shop-yogasmoga">
-            <li>
-                <a href="/"><img class="right" src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/ys-store.png" /></a>
+            ?>
+            <ul class="shop-yogasmoga">
+                <li>
+                    <a href="/"><img class="right" src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/ys-store.png" /></a>
 
-            </li>
-        </ul>
-        <ul class="about-rangoli">
-            <li style="padding-right: 5px">
-                <a href="<?php echo get_site_url() ?>/about"><img class="right" src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/about.png" /> </a>
+                </li>
+            </ul>
+            <ul class="about-rangoli">
+                <li style="padding-right: 5px">
+                    <a href="<?php echo get_site_url() ?>/about"><img class="right" src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/about.png" /> </a>
 
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
     <div class="fixed-container" id="fixed_container">
         <div>
-        <!-- START OF WP CODE  -->
+            <!-- START OF WP CODE  -->
 

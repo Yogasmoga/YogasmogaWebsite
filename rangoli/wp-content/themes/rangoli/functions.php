@@ -417,6 +417,7 @@ function get_user_smogi_bucks($id)
                     }
                 }
             } else
+
                 $smogi_bucks = "0";
 
             if ($smogi_bucks) {
