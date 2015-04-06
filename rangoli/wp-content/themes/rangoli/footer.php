@@ -106,7 +106,21 @@
 
     <div class="your-color-block" style="background: url('<?php echo get_site_url(); ?>/wp-content/themes/rangoli/images/random-color.png') no-repeat; background-size:100%; background-position: 4px -2px; ">
         <div class="close_signin_popup" ></div>
-        <div class="color-traingle" style="border-bottom: 74px solid #555555; border-left: 47px solid transparent; border-right: 47px solid transparent;"></div>
+        <div class="color-traingle">
+            <?php
+                 if(is_user_logged_in()){
+                     $userID = get_current_user_id();
+                     $userInfo = get_userdata($userID);
+                     $user_level = get_user_level($userID);
+                     $userProfile = get_user_profile($userID);
+                     $main_color = $userProfile->color_main;
+
+            ?>
+                    <span class='charmBig charmBig<?php echo $user_level;?> Charmsbigcolor_<?php echo $main_color; ?>'></span>
+            <?php
+                }
+            ?>
+        </div>
         <a class="change-color" href="<?php echo get_site_url()?>/journey" ><img src="<?php echo get_site_url(); ?>/wp-content/themes/rangoli/images/change-color.png" /></a>
     </div>
     <div class="login-box">

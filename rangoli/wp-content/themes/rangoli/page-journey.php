@@ -124,9 +124,13 @@ get_header();
                 $color_message = "<p style='margin-top:35px;'>Your color is</p>";
             }
             else{
+                $root = get_site_url();
+                $root = str_replace("/rangoli","/",$root);
                 $welcome_message = "WELCOME ".strtoupper($user_info->display_name).",";
                 $smogiBucks_message = "You have 25 SMOGI Bucks just for signing up.</p><p>(Learn how to earn more <span>SMOGI BUCKS</span>)</p>";
-                $magento_user = json_decode(file_get_contents($root . 'ys/session/loggedcustomer'));
+
+                $magento_user = json_decode(file_get_contents($root . 'ys/session/getcustomerbyemail/email/' . $user_info->user_login));
+
                 if ($magento_user) {
                     $create_date_mg = $magento_user->create_date;
                     $current_user_id = get_current_user_id();
@@ -160,7 +164,13 @@ get_header();
                 </div>
                 <div class="user_charm_display row" style="height: 120px; position: relative;">
                     <div class='row align-center'>
-                        <span class='user-color-charm'></span>
+                        <?php
+
+                            $user_level = get_user_level($user_id);
+//                            $user_profile = get_user_profile($user_id);
+//                            $main_color = $user_profile->color_main;
+                        ?>
+                        <span class='charmBig charmBig<?php echo $user_level;?>'></span>
                     </div>
                 </div>
                 <div class="interests-selector" style="padding-top: 30px">
@@ -338,15 +348,7 @@ function get_height(){
                                     $('.interest-page').slideUp();
                                     $(".confirmation-page").slideDown();
                                     copytoClipboard();
-                                    $(".user-color-charm").css({
-                                        'border-top': '80px solid' + user_color_shade,
-                                        'border-left': '45px solid transparent',
-                                        'border-right': '45px solid transparent',
-                                        'border-bottom': '0px solid transparent',
-                                        'position': 'absolute',
-                                        'left': '50%',
-                                        'margin-left': '-45px'
-                                    });
+                                    $(".charmBig").addClass("Charmsbigcolor_"+selectedColor.toUpperCase());
                                     $(".confirmation-page").css("min-height", $(window).height());
                                     $(".invite_friend").find("li").hover(function () {
                                         $(this).css({

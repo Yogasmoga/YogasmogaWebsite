@@ -109,6 +109,7 @@
     overflow: hidden;
     position: relative;
     width: 100%;
+    /*min-width: 1024px !important;*/
 }
 
 #color-slider ul {
@@ -808,6 +809,45 @@ svg#flower path:hover {
     background-repeat: no-repeat;
 }
 
+
+.Charmsbigcolor_009E01 {
+    background-image: url(../images/Charmsbig6.png);
+}
+
+/*green*/
+.Charmsbigcolor_FE0000 {
+    background-image: url(../images/Charmsbig3.png);
+}
+
+/*red*/
+.Charmsbigcolor_FF6500 {
+    background-image: url(../images/Charmsbig2.png);
+}
+
+/*orange*/
+.Charmsbigcolor_01ABFF {
+    background-image: url(../images/Charmsbig5.png);
+}
+
+/*blue*/
+.Charmsbigcolor_6F3CBF {
+    background-image: url(../images/Charmsbig4.png);
+}
+
+/*voilet*/
+.Charmsbigcolor_414143 {
+    background-image: url(../images/Charmsbig7.png);
+}
+
+/*grey*/
+.Charmsbigcolor_FEE600 {
+    background-image: url(../images/Charmsbig1.png);
+}
+
+/*yellow*/
+
+
+
 .charm.level_1 {
     background-position: 0 50%;
 }
@@ -836,11 +876,56 @@ svg#flower path:hover {
     background-position: -288px 50%;
 }
 
+
+
+.charmBiglevel_1 {
+    background-position: 0 50%;
+}
+
+.charmBiglevel_2 {
+    background-position: -103px 50%;
+}
+
+.charmBiglevel_3 {
+    background-position: -206px 50%;
+}
+
+.charmBiglevel_4 {
+    background-position: -311px 50%;
+}
+
+.charmBiglevel_5 {
+    background-position: -417px 50%;
+}
+
+.charmBiglevel_6 {
+    background-position: -523px 50%;
+}
+
+.charmBiglevel_7 {
+    background-position: -628px 50%;
+}
+
 .charm {
     background-repeat: no-repeat;
     display: inline-block;
     float: none;
     height: 40px;
     width: 40px;
+}
+
+.charmBig {
+    display: block;
+    float: none;
+    height: 100px;
+    margin: 0 auto;
+    width: 100px;
+}
+
+
+.your-color-block .charmBig {
+    transform: rotate(180deg);
+    margin-left: -3px;
+    margin-top: -5px;
 }
 

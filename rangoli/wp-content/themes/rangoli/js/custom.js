@@ -183,14 +183,16 @@ $(document).ready(function () {
     $("#sign-in-button").click(function () {
         loginCustomer();
     });
-    $(".login_logout_link").click(function () {
-        if ($(this).children("a").text() == "Sign In") {
-            $(".signin-block").hide();
-            $(".your-color-block").hide();
-            $("#signin_popup").fadeIn();
-            $(".login-box").fadeIn();
-        }
-    })
+    $(window).load(function(){
+        $(".login_logout_link").click(function () {
+            if ($(this).children("a").text() == "Sign In") {
+                $(".signin-block").hide();
+                $(".your-color-block").hide();
+                $("#signin_popup").fadeIn();
+                $(".login-box").fadeIn();
+            }
+        })
+    });
 });
 
 
@@ -851,9 +853,9 @@ function ajax_load_pages(link) {
                 $(document).find(".wp_page_banner .play-video").remove();
             });
 
-            //$(window).load(function(){
-            //animate_tiles();
-            //});
+            $(window).load(function(){
+            animate_tiles();
+            });
 
 
             $(document).find(".homepage_page_banner .play-video").unbind("click");
