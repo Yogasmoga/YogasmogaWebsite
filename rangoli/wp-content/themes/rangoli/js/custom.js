@@ -238,7 +238,7 @@ function createCustomerAccount_from_popup() {
                         jQuery("#sign-up-form .err-msg").html("");
                         //jQuery("#sign-up-form .loader").show();
                         jQuery("#signup").css("background-image","url('"+root+"skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png')");
-                        alert(root+"skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png");
+                        //alert(root+"skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png");
                     },
                     success: function (data) {
 
