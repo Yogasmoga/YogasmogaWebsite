@@ -36,8 +36,8 @@ $(document).ready(function () {
                     $("your-color-block").hide();
                     $("login-box").hide();
 
-                    $("signin_popup").fadeIn();
-                    $(".signin-block").fadeIn();
+                    $(".signin_popup").fadeIn();
+                    $("#signin-block").fadeIn();
 
 
                 });
