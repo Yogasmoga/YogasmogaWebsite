@@ -22,8 +22,7 @@ get_header();
                 <h1 class="page-heading align-center">Choose Your Color</h1>
             </div>
             <div id="color-slider">
-                <div class="arrow-next"> <span class="arrow"></span> </div>
-                <div class="arrow-prev"> <span class="arrow"></span> </div>
+
             </div>
         </div>
         <div class="interest-page">
@@ -270,8 +269,8 @@ get_header();
 
 
 function get_height(){
-    $("#color-slider .arrow-next").height($(window).height()-70);
-    $("#color-slider .arrow-prev").height($(window).height()-70);
+    $("#color-slider .arrow-next").height("100%");
+    $("#color-slider .arrow-prev").height("100%");
 }
         $(window).resize(function(){
             get_height();

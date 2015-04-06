@@ -350,57 +350,58 @@ $author_color="555555";
 
 
 </div></div></div>
-
+<!---->
 <?php
-if($count>0){
-    echo '<script>
-        $(window).load(function(){
-           animate_tiles();
-        });
-        function animate_tiles(){
-        ';
-        for ($i=0; $i<$count; $i++) {
-            if ($i % 3 == 0)
-                echo '
-                       $(document).find(".section' . $i . '").unbind();
-                       ';
-        }
-         for ($i=0; $i<$count; $i++){
-            if ($i % 3 == 0 )
-               echo '
-                    var offset_section'.$i.' = $(document).find(".section'.$i.'").offset().top;
-                    var content_offset_section'.$i.' = offset_section'.$i.' - $(window).scrollTop();
-                    if (content_offset_section'.$i.'  <= $(window).height() - 100) {
-                        $(document).find(".section'.$i.'").css({"opacity":1});
-                        $(document).find(".section'.$i.'").addClass("fadeInUp").addClass("animated");
-                    }';
-            }
-            for ($i=0; $i<$count; $i++){
-                if ($i % 3 == 0 )
-                echo '
-                    $(window).scroll(function(){
-                        var content_offset_section'.$i.' = offset_section'.$i.' - $(window).scrollTop();
-                        if (content_offset_section'.$i.'  <= $(window).height() - 100) {
-                                $(document).find(".section'.$i.'").css({"opacity":1});
-                            $(document).find(".section'.$i.'").addClass("fadeInUp").addClass("animated");
-                        }
-                    });';
-            }
-        echo '}
-    </script>
-    ';
-    echo '<style>';
-    for ($i=0; $i<$count; $i++) {
-        if ($i % 3 == 0){
-            echo '
-            .section'.$i.'{
-                opacity:0;
-                clear:both;
-            }
-            ';
-        }
-    }
-    echo '</style>';
-}
+//if($count>0){
+//    echo '<script>
+//        $(window).load(function(){
+//           animate_tiles();
+//        });
+//        function animate_tiles(){
+//        ';
+//        for ($i=0; $i<$count; $i++) {
+//            if ($i % 3 == 0)
+//                echo '
+//                       $(document).find(".section' . $i . '").unbind();
+//                       ';
+//        }
+//         for ($i=0; $i<$count; $i++){
+//            if ($i % 3 == 0 )
+//               echo '
+//                    var offset_section'.$i.' = $(document).find(".section'.$i.'").offset().top;
+//                    var content_offset_section'.$i.' = offset_section'.$i.' - $(window).scrollTop();
+//                    if (content_offset_section'.$i.'  <= $(window).height() - 100) {
+//                        $(document).find(".section'.$i.'").css({"opacity":1});
+//                        $(document).find(".section'.$i.'").addClass("fadeInUp").addClass("animated");
+//                    }';
+//            }
+//            for ($i=0; $i<$count; $i++){
+//                if ($i % 3 == 0 )
+//                echo '
+//                    $(window).scroll(function(){
+//                        var content_offset_section'.$i.' = offset_section'.$i.' - $(window).scrollTop();
+//                        if (content_offset_section'.$i.'  <= $(window).height() - 100) {
+//                                $(document).find(".section'.$i.'").css({"opacity":1});
+//                            $(document).find(".section'.$i.'").addClass("fadeInUp").addClass("animated");
+//                        }
+//                    });';
+//            }
+//        echo '}
+//    </script>
+//    ';
+//    echo '<style>';
+//    for ($i=0; $i<$count; $i++) {
+//        if ($i % 3 == 0){
+//            echo '
+//            .section'.$i.'{
+//                opacity:0;
+//                clear:both;
+//            }
+//            ';
+//        }
+//    }
+//    echo '</style>';
+
+//}
 get_footer();
 ?>

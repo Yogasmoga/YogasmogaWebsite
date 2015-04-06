@@ -93,7 +93,7 @@ function submit_comment() {
                 success: function (data, textStatus) {
                     if (data == "success" || textStatus == "success") {
                         if ($("#comment").val() == "") {
-                            statusdiv.html('<p class="ajax-success" >Blank comment are not allowed !</p>');
+                            statusdiv.html('<p class="ajax-success" >Blank comment is not allowed !</p>');
                             get_bulls_eye();
                         }
                         else {
@@ -237,7 +237,7 @@ function createCustomerAccount_from_popup() {
                         jQuery("#sign-up-form .err-msg").html("");
                         //jQuery("#sign-up-form .loader").show();
                         jQuery("#signup").css("background-image","url('"+root+"skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png')");
-                        //alert(root+"skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png");
+                        alert(root+"skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png");
                     },
                     success: function (data) {
 
@@ -851,9 +851,9 @@ function ajax_load_pages(link) {
                 $(document).find(".wp_page_banner .play-video").remove();
             });
 
-            $(window).load(function(){
-                animate_tiles();
-            });
+            //$(window).load(function(){
+            //animate_tiles();
+            //});
 
 
             $(document).find(".homepage_page_banner .play-video").unbind("click");
@@ -868,7 +868,7 @@ function ajax_load_pages(link) {
             });
 
             $(".single_post.span4").addClass("fadeInUp").addClass("animated");
-            window.history.pushState({ myTag: true }, null, link);
+            window.history.pushState({path: link}, null, link);
             document.title = newTitle;
 
 
@@ -1132,35 +1132,35 @@ $(document).ready(function () {
     $("a[rel='connect']").click(function (e) {
         e.preventDefault();
         $/*("#invite_friend").hide();
-        $("#smogis").hide();
-        $("#stores").hide();
-        $("#popup").fadeIn();
-        $("#connect").show();
+         $("#smogis").hide();
+         $("#stores").hide();
+         $("#popup").fadeIn();
+         $("#connect").show();
 
-        $(".menu-box").animate({
-            'margin-left': '-400px'
-        }, 500, 'easeOutCirc', function () {
-            $(".menu-btn").css("opacity", 1);
-        });*/
+         $(".menu-box").animate({
+         'margin-left': '-400px'
+         }, 500, 'easeOutCirc', function () {
+         $(".menu-btn").css("opacity", 1);
+         });*/
         if (logged_in != null && logged_in != '' && logged_in != undefined) {
-        $("#smogis").hide();
-        $("#connect").hide();
-        $("#stores").hide();
-        $("#popup").fadeIn();
-        $(".close-menu-btn").click();
-        $("body").css("overflow", "hidden");
-        $("#invite_friend").show();
-        $(".invite_friend li").hover(function () {
-            $(this).css({
-                "background": user_color_shade,
-                "transition-duration": "500ms"
+            $("#smogis").hide();
+            $("#connect").hide();
+            $("#stores").hide();
+            $("#popup").fadeIn();
+            $(".close-menu-btn").click();
+            $("body").css("overflow", "hidden");
+            $("#invite_friend").show();
+            $(".invite_friend li").hover(function () {
+                $(this).css({
+                    "background": user_color_shade,
+                    "transition-duration": "500ms"
+                });
+            }, function () {
+                $(this).css({
+                    "background": "#f2f2f2",
+                    "transition-duration": "500ms"
+                });
             });
-        }, function () {
-            $(this).css({
-                "background": "#f2f2f2",
-                "transition-duration": "500ms"
-            });
-        });
         }
         else {
             $("#signin_popup").fadeIn();
@@ -1176,24 +1176,24 @@ $(document).ready(function () {
 
     $(".invite-friends").click(function () {
         if (logged_in != null && logged_in != '' && logged_in != undefined) {
-        $(".close-menu-btn").click();
-        $("#smogis").hide();
-        $("#connect").hide();
-        $("#stores").hide();
-        $("#popup").fadeIn();
-        $("body").css("overflow", "hidden");
-        $("#invite_friend").show();
-        $(".invite_friend li").hover(function () {
-            $(this).css({
-                "background": user_color_shade,
-                "transition-duration": "500ms"
+            $(".close-menu-btn").click();
+            $("#smogis").hide();
+            $("#connect").hide();
+            $("#stores").hide();
+            $("#popup").fadeIn();
+            $("body").css("overflow", "hidden");
+            $("#invite_friend").show();
+            $(".invite_friend li").hover(function () {
+                $(this).css({
+                    "background": user_color_shade,
+                    "transition-duration": "500ms"
+                });
+            }, function () {
+                $(this).css({
+                    "background": "#f2f2f2",
+                    "transition-duration": "500ms"
+                });
             });
-        }, function () {
-            $(this).css({
-                "background": "#f2f2f2",
-                "transition-duration": "500ms"
-            });
-        });
         }
         else {
             $("#signin_popup").fadeIn();
@@ -1359,16 +1359,16 @@ function infinity_scroll(){
 
 /*
 
-$(document).ready(function(){
-    history_pop();
-});
+ $(document).ready(function(){
+ history_pop();
+ });
 
 
-function history_pop(){
-    $(window).bind('popstate', function(event){
-        window.location = document.location;
-    });
-}*/
+ function history_pop(){
+ $(window).bind('popstate', function(event){
+ window.location = document.location;
+ });
+ }*/
 
 
 
@@ -1384,12 +1384,13 @@ $(document).ready(function(){
 
 
     $(".post_content a img").each(function(){
-       $(this).parent().removeAttr("href");
+        $(this).parent().removeAttr("href");
     });
 
 
 });
-//
+
+
 //$(window).on("navigate", function (event, data) {
 //    var direction = data.state.direction;
 //    if (direction == 'back') {
@@ -1400,7 +1401,7 @@ $(document).ready(function(){
 //    }
 //});
 
-//
+
 //$(window).load(function(){
 //    window.onpopstate = function(event) {
 //            //alert(window.location + ' ' + document.location.href + ' ')
