@@ -12,7 +12,8 @@
 		$wpauthors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=".$user_id);
 		if(count($wpauthors)>0)
 		$wp_author=$wpauthors[0];
-		$avatar = get_the_author_meta('author_profile_picture', $user_id);
+		//$avatar = get_the_author_meta('author_profile_picture', $user_id);
+        $avatar = '';
 		?>
 	</div>
 	<div class="wp_page_banner row" style="height:600px; background: url('<?php echo $avatar; ?>') <?php echo '#'.$wp_author->color_shade; ?>">
