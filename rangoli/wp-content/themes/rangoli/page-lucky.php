@@ -33,14 +33,15 @@ if (count($feeds) > 0) {
             $interests = strtoupper(implode(" ", $interests));
 
 
-
+        $comments = get_comments(array('post_id' => $post->ID, "order" => "DESC"));
+        if($comments){
         ?>
         <div class="row lucky_me" style="background:#<?php echo $color_shade; ?> ; height: 500px; ">
             <div class="span3">
                 <div class="row">
                     <!-- ----------- -->
                     <?php
-                    $comments = get_comments(array('post_id' => $post->ID, "order" => "DESC"));
+
                     $x = 0;
                     foreach ($comments as $comment) {
                         $profileUrl_ar = get_user_meta( $comment->user_id,"cupp_upload_meta");
@@ -209,6 +210,7 @@ if (count($feeds) > 0) {
         </div>
 
     <?php
+        }
     }
 }
 
