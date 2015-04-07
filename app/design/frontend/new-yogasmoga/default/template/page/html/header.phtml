@@ -93,6 +93,10 @@ if($serverType == 'production')
 
 </script>
 
+<style type="text/css">
+    #pagecontainer{margin-top:25px !important;}
+</style>
+
 <!-- call signup popup  -->
 <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/popups/popup_signup.phtml')->toHtml(); ?>
 <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/popups/popup_signing.phtml')->toHtml(); ?>
@@ -323,6 +327,10 @@ $style = "";
 if(!$this->getIsHomePage()){
     $style = "style='top:25px !important'";
     ?>
+    <style type="text/css">
+        #pagecontainer{margin-top:25px !important;}
+    </style>
+
 <?php } ?>
 <div class="header-container" <?php echo $style;?>>
 <?php if(!$this->getIsHomePage()){ ?>
