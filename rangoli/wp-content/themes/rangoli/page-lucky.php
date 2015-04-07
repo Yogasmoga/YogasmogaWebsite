@@ -33,7 +33,7 @@ if (count($feeds) > 0) {
             $interests = strtoupper(implode(" ", $interests));
 
 
-        $comments = get_comments(array('post_id' => $post->ID, "order" => "DESC"));
+        $comments = get_approved_comments($post->ID);
         if($comments){
         ?>
         <div class="row lucky_me" style="background:#<?php echo $color_shade; ?> ; height: 500px; ">
@@ -44,11 +44,14 @@ if (count($feeds) > 0) {
 
                     $x = 0;
                     foreach ($comments as $comment) {
-                        $profileUrl_ar = get_user_meta( $comment->user_id,"cupp_upload_meta");
+                        $profileUrl_ar = '';
                         if ($profileUrl_ar)
                             $profileUrl = $profileUrl_ar[0];
-                        else
+
+                        if($profileUrl==''){
                             $profileUrl = get_site_url() . "/wp-content/themes/rangoli/images/default.jpg";
+                        }
+
                         $commentDate = $comment->comment_date;
                         ?>
                         <div class="span12">
@@ -147,9 +150,12 @@ if (count($feeds) > 0) {
 //                                    echo $author_id. "***********";
                                     $img = get_user_meta($author_id,"cupp_upload_meta");
 //                                    print_r($img);
-                                    $imgUrl = get_site_url() . "/wp-content/themes/rangoli/images/default.jpg";
+                                    $imgUrl='';
                                     if (is_array($img) && count($img)>0) {
                                         $imgUrl = $img[0];
+                                    }
+                                    if($imgUrl==''){
+                                        $imgUrl = get_site_url() . "/wp-content/themes/rangoli/images/default.jpg";
                                     }
                                     ?>
                                     <img class="profile-img-small" src="<?php echo $imgUrl; ?>">
