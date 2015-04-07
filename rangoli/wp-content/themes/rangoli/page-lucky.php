@@ -59,7 +59,7 @@ if (count($feeds) > 0) {
                             </div>
                             <div class="details">
                                 <p class="post_date">
-                                    <?php echo date('m.j.y', strtotime($commentDate)); ?></p>
+                                    <?php echo date('m.d.y', strtotime($commentDate)); ?></p>
 
                                 <p class="comment">
                                     <?php $comment_content = $comment->comment_content;
@@ -177,7 +177,7 @@ if (count($feeds) > 0) {
                             $post_titles = $wpdb->get_results("SELECT post_title, ID, post_date FROM rangoli_posts WHERE post_author=$author_id and post_type='post' and post_status='publish'");
                             $recent_post = end($post_titles);
                             ?>
-                            <p class="post_date"><?php echo date('m.j.y', strtotime($recent_post->post_date)); ?></p>
+                            <p class="post_date"><?php echo date('m.d.y', strtotime($recent_post->post_date)); ?></p>
 
                             <p><a class="post_author ajax-load"
                                   href="<?php echo get_author_posts_url($author_id); ?>"><?php echo $author->display_name ?></a>
@@ -202,7 +202,7 @@ if (count($feeds) > 0) {
             <?php } ?>
                 <p class="post_date">
                     <?php
-                    echo date('m.j.y', strtotime($date));
+                    echo date('m.d.y', strtotime($date));
                     ?>
                 </p>
             </div>

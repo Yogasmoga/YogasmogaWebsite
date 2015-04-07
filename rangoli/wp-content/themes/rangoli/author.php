@@ -90,7 +90,7 @@
 						foreach($activity as $data){
 							if($data->type == "post"){
 								echo "<div class='author_recent_activity' >";
-								echo "<p class='post_date'>".date("m.j.y",strtotime($data->date))."</p>";
+								echo "<p class='post_date'>".date("m.d.y",strtotime($data->date))."</p>";
 								$name=$curauth->display_name;
 								$name=ucwords($curauth->display_name);
 								echo $name.'  <span style="font-style: italic">says</span> <br/> checkout my new post "';
@@ -111,7 +111,7 @@
 							}
 							if($data->type == "like"){
 								echo "<div class='author_recent_activity' >";
-								echo "<p class='post_date'>".date("m.j.y",strtotime($data->date))."</p>";
+								echo "<p class='post_date'>".date("m.d.y",strtotime($data->date))."</p>";
 								$name=$curauth->display_name;
 								$name=ucwords($curauth->display_name);
 								echo $name.' <span style="font-style: italic">saved</span> <br/> "';
@@ -131,7 +131,7 @@
 							}
 							if($data->type == "comment"){
 								echo "<div class='author_recent_activity' >";
-								echo "<p class='post_date'>".date("m.j.y",strtotime($data->date))."</p>";
+								echo "<p class='post_date'>".date("m.d.y",strtotime($data->date))."</p>";
 								$name=$curauth->display_name;
 								$name=ucwords($curauth->display_name);
 								echo $name.' <span style="font-style: italic"> commented on</span> <br/> "';

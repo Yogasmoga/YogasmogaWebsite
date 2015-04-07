@@ -328,7 +328,7 @@ $author_color="555555";
                     echo "<div class='post_date right'>";
 
                     $date=$post->post_date;
-                    echo date("m.j.y",strtotime($date))."</div>";
+                    echo date("m.d.y",strtotime($date))."</div>";
              }
     echo "</div>";
 

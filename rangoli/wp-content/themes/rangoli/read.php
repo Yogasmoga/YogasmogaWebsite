@@ -97,7 +97,7 @@ $filter_category_name = "read";
 
                             ?>
                             <div class="post_date read">
-                                <p><?php echo date('m.j.y', strtotime($post->post_date)); ?></p>
+                                <p><?php echo date('m.d.y', strtotime($post->post_date)); ?></p>
                             </div>
                         </div>
 

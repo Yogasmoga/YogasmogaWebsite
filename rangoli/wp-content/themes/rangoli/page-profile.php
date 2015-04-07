@@ -80,7 +80,7 @@
 						foreach($activity as $data){
 							if($data->type == "post"){
 								echo "<div class='author_recent_activity' >";
-								echo "<p class='post_date'>".date("m.j.y",strtotime($data->date))."</p>";
+								echo "<p class='post_date'>".date("m.d.y",strtotime($data->date))."</p>";
 								$name=$user_info->display_name;
 								$name=ucwords($user_info->display_name);
 								echo $name.' says <br/> checkout my new post "';
@@ -101,7 +101,7 @@
 							}
 							if($data->type == "like"){
 								echo "<div class='author_recent_activity' >";
-								echo "<p class='post_date'>".date("m.j.y",strtotime($data->date))."</p>";
+								echo "<p class='post_date'>".date("m.d.y",strtotime($data->date))."</p>";
 								$name=$user_info->display_name;
 								$name=ucwords($user_info->display_name);
 								echo $name.' saved <br/> "';
@@ -121,7 +121,7 @@
 							}
 							if($data->type == "comment"){
 								echo "<div class='author_recent_activity' >";
-								echo "<p class='post_date'>".date("m.j.y",strtotime($data->date))."</p>";
+								echo "<p class='post_date'>".date("m.d.y",strtotime($data->date))."</p>";
 								$name=$user_info->display_name;
 								$name=ucwords($user_info->display_name);
 								echo $name.' commented on <br/> "';

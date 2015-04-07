@@ -59,7 +59,7 @@
                     <p class='comment'><?php echo nl2br($comment->comment_content); ?></p>
                 </div>
                 <div class='span1'>
-                    <p class='comment_time'><?php echo date('m.j.y', strtotime($comment->comment_date)); ?></p>
+                    <p class='comment_time'><?php echo date('m.d.y', strtotime($comment->comment_date)); ?></p>
                 </div>
 
             </div>

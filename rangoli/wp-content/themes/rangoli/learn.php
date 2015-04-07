@@ -135,7 +135,7 @@ $filter_category_name = "learn";
                                     post_id="<?php echo $post->ID; ?>">
                                </div>
                                <div class="post_date right">
-                                   <p><?php echo date('m.j.y', strtotime($post->post_date)); ?></p>
+                                   <p><?php echo date('m.d.y', strtotime($post->post_date)); ?></p>
                                </div>
                            </div>
                        <?php
