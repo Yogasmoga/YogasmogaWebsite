@@ -25,6 +25,9 @@
     z-index: 999999;
     display: none;
 }
+.login-box{
+    display:none;
+}
 .signin-block {
     border-radius: 50%;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);

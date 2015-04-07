@@ -32,10 +32,10 @@ $(document).ready(function () {
             if (status == "success") {
                 $(".your-color-block").hide();
                 $(".login-box").hide();
-                $(window).load(function(){
-                    $("your-color-block").hide();
-                    $("login-box").hide();
+                $("your-color-block").hide();
+                $("login-box").hide();
 
+                $(window).load(function(){
                     $(".signin-block").fadeIn();
                     $("#signin_popup").fadeIn();
 
@@ -129,14 +129,12 @@ $(document).ready(function () {
     $(".login_magento").keydown(function(e){
         if(e.keyCode==13){
             $("#sign-in-button").click();
-            //alert("sign in");
         }
     });
 
     $(".register_new").keydown(function(e){
         if(e.keyCode==13){
             $("#sign-up-button").click();
-            //alert("sign up");
         }
     });
     $("input[rel='password']").focus(function () {
@@ -457,23 +455,6 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
 
             if (result != undefined && result.message != undefined && result.message == "success") {
                 console.log("******* cannot login to Rangoli");
-                //$("#signin_popup").fadeOut();
-                ////window.location=homeUrl+"rangoli";
-                //jQuery("#sign-in-form .form-loader").html("");
-                //jQuery("#sign-in-button").parent().show();
-                //
-                //jQuery(".login_logout_link").html("<span style='cursor:pointer; margin-left:0;padding-left:0' onclick='wplogout()'>SIGN OUT</span>");
-                //
-                //jQuery("#sign-in-form .form-loader").html("");
-                //jQuery("#signing_popup").fadeIn();
-                //_islogedinuser = true;
-                //if (name != '') {
-                //    jQuery("#welcome-name").html("Hi " + name).attr("href", homeUrl + 'customer/account/');
-                //}
-                //
-                //jQuery(".before-login").hide();
-                //jQuery(".after-login").show();
-                //jQuery(".after-login li.smogi-balance a span").html(somgiBal);
                 location.reload(true);
             }
         }
@@ -488,7 +469,6 @@ function wplogout() {
         data: 'logout=1',
         dataType: 'json',
         success: function (result) {
-//alert(result.message == "alreadyloggedout");
             if (result.message == "loggedout") {
                 var url = root + "customer/account/logout/";
 
@@ -542,7 +522,6 @@ function checkIsUserLogged() {
 
                     jQuery("#welcome-name").html("Hi " + first_name).attr("href", homeUrl + 'customer/account/');
                     jQuery(".login_logout_link").html("<span style='cursor:pointer; margin-left:0;padding-left:0' onclick='wplogout()'>SIGN OUT</span>");
-                    //doWordpressLogin(email,name, first_name,last_name,customer_id);
 
                 }
             }
@@ -631,7 +610,6 @@ $(window).load(function () {
 $(window).resize(function () {
     var wh = $(window).height();
     $(".wp_page_banner").height(wh - 70);
-    //$(".wp_page_banner").css({"background":"cover"});
 });
 
 /* ////////////////////////////////////GET CUSTOMER COLOR////////////////////////////// */
@@ -699,7 +677,6 @@ function getloggedinuser() {
                             success: function (result) {
                                 $(".signin-block").hide();
                                 $(".login-box").hide();
-                                $(".your-color-block .color-traingle").css("border-bottom", "74px solid" + user_color_shade);
                                 $(".your-color-block").fadeIn();
                                 fillcolor();
                             }
@@ -891,7 +868,7 @@ function ajax_load_pages(link) {
 function play() {
     var player = $(document).find(".featured_video_plus").find("iframe");
     var src = player.attr("src");
-    src = src.replace("autoplay=0", "autoplay=1&yt:crop=16:9");
+    src = src.replace("autoplay=0", "autoplay=1");
     player.attr("src", src);
 }
 
@@ -987,7 +964,6 @@ function init() {
         $(this).remove();
     });
     $(".homepage_page_banner .play-video").click(function () {
-        //alert();
         $(".play_video").fadeIn();
         $(".rangoli_logo").remove();
         $("#signup_signin_btn").remove();

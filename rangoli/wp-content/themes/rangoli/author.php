@@ -29,9 +29,13 @@
 		$main_color=strtoupper($main_color);
 
 		echo " <div class='overlay-text'>
-			<div class='align-bottom'>
-			<span class='charm color_$main_color $level'></span>
-			<p class='author_role'>".$role."</p>";
+			<div class='align-bottom'>";
+		if($role != "STORE"){
+			echo "<span class='charm color_$main_color $level'></span>";
+
+		}
+						echo "<p class='author_role'>".$role."</p>";
+
 
 		$title=get_the_title();
 		echo "<p class='post_title'>".$curauth->display_name."</p>";
