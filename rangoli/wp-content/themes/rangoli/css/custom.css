@@ -75,10 +75,10 @@
     text-align: center;
 }
 .color-traingle {
-    height: 0;
+    height: 66px;
     margin-left: 210px;
     margin-top: 250px;
-    width: 0;
+    width: 11px;
 }
 #signin_popup .form {
     display: block;
