@@ -1378,16 +1378,20 @@ $(document).ready(function(){
 //        // do something else
 //    }
 //});
+$(window).load(function(){
+    setTimeout( function() {
+        window.onpopstate = function (event) {
+            var link = document.location.href;
+            window.location = link;
+            change_url = false;
+        };
+    },500);
+});
 
 
-//$(window).load(function(){
-//    window.onpopstate = function(event) {
-//            //alert(window.location + ' ' + document.location.href + ' ')
-//        if (!e.originalEvent.state.myTag) return;
 //
-//            var link = document.location.href;
-//            window.location = link;
-//
-//    };
-//});
-
+//var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
+//var is_explorer = navigator.userAgent.indexOf('MSIE') > -1;
+//var is_firefox = navigator.userAgent.indexOf('Firefox') > -1;
+//var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+//var is_opera = navigator.userAgent.toLowerCase().indexOf("op") > -1;

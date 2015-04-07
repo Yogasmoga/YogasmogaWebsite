@@ -12,8 +12,7 @@
 		$wpauthors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=".$user_id);
 		if(count($wpauthors)>0)
 		$wp_author=$wpauthors[0];
-		//$avatar = get_the_author_meta('author_profile_picture', $user_id);
-        $avatar = '';
+		$avatar = get_the_author_meta('author_profile_picture', $user_id);
 		?>
 	</div>
 	<div class="wp_page_banner row" style="height:600px; background: url('<?php echo $avatar; ?>') <?php echo '#'.$wp_author->color_shade; ?>">
@@ -81,7 +80,7 @@
 						foreach($activity as $data){
 							if($data->type == "post"){
 								echo "<div class='author_recent_activity' >";
-								echo "<p class='post_date'>".date("j.m.y",strtotime($data->date))."</p>";
+								echo "<p class='post_date'>".date("m.j.y",strtotime($data->date))."</p>";
 								$name=$user_info->display_name;
 								$name=ucwords($user_info->display_name);
 								echo $name.' says <br/> checkout my new post "';
@@ -102,7 +101,7 @@
 							}
 							if($data->type == "like"){
 								echo "<div class='author_recent_activity' >";
-								echo "<p class='post_date'>".date("j.m.y",strtotime($data->date))."</p>";
+								echo "<p class='post_date'>".date("m.j.y",strtotime($data->date))."</p>";
 								$name=$user_info->display_name;
 								$name=ucwords($user_info->display_name);
 								echo $name.' saved <br/> "';
@@ -122,7 +121,7 @@
 							}
 							if($data->type == "comment"){
 								echo "<div class='author_recent_activity' >";
-								echo "<p class='post_date'>".date("j.m.y",strtotime($data->date))."</p>";
+								echo "<p class='post_date'>".date("m.j.y",strtotime($data->date))."</p>";
 								$name=$user_info->display_name;
 								$name=ucwords($user_info->display_name);
 								echo $name.' commented on <br/> "';
