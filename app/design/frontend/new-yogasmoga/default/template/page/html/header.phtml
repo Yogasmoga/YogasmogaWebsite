@@ -323,6 +323,10 @@ $style = "";
 if(!$this->getIsHomePage()){
     $style = "style='top:25px !important'";
     ?>
+    <style type="text/css">
+        #pagecontainer{margin-top:25px !important;}
+    </style>
+
 <?php } ?>
 <div class="header-container" <?php echo $style;?>>
 <?php if(!$this->getIsHomePage()){ ?>
