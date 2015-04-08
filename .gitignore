@@ -18,6 +18,8 @@ local.properties
 .settings/
 .loadpath
 errors/local.xml
+/app/etc/local.xml
+/rangoli/wp-config.php
 
 # External tool builders
 .externalToolBuilders/
