@@ -178,8 +178,12 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
 
                         $thumb_width = "150";
 
-                        $large_image_location = $filepath.'temp/'.$_POST['profile_filename'];
-                        $thumb_image_location = $filepath."thumb_".$_POST['profile_filename'];
+                        $profile_image_name = $_POST['profile_filename'];
+
+                        $large_image_location = $filepath.'temp/' . $profile_image_name;
+                        $thumb_image_location = $filepath."thumb_" . $profile_image_name;
+
+                        Mage::log("[$large_image_location , $thumb_image_location]");
 
                         $x1 = $_POST["x1"];
                         $y1 = $_POST["y1"];
@@ -193,7 +197,7 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                         $profile_result = true;
 
                         //$profile_pic = $savepath . $imagename_profile;
-                        $profile_pic = $savepath . "thumb_" . $_POST['profile_filename'];
+                        $profile_pic = $savepath . "thumb_" . $profile_image_name;
 
                         if ($profile_result) {
                             $ar_messages[] = array('message' => 'Profile uploaded');
@@ -219,13 +223,13 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                             }
 
                         } else {
-                            $ar_messages[] = array('message' => 'There was an error in uploading profile picture');
+                            $ar_messages[] = array('message' => 'Error: There was an error in uploading profile picture');
 
                             $error = true;
                         }
 
                     } else {
-                        $ar_messages[] = array('message' => 'Invalid profile picture, not an image');
+                        $ar_messages[] = array('message' => 'Error: Invalid profile picture, not an image');
 
                         $error = true;
                     }
@@ -240,7 +244,7 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                     }
                 }
                 else
-                    echo "Profile updated successfully";
+                    echo $profile_pic;
             }
         }
     }
