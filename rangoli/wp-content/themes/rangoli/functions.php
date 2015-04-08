@@ -271,8 +271,10 @@ function filter($cat)
                     <ul>
                         <?php
                         $authors = get_users("role=smogi");
+                        $stores = get_users("role=store");
+                        $authors = array_merge($authors, $stores);
                         foreach ($authors as $author) {
-                            $author_name = $author->display_name;
+                            //$author_name = $author->display_name;
                             $author_name = str_replace(" ", "%20", $author->display_name);
                             echo "<li><a href='?author=" . $author_name . "'>" . $author->display_name . "<span class='radio'></span></a></li>";
                         }
@@ -417,6 +419,7 @@ function get_user_smogi_bucks($id)
                     }
                 }
             } else
+
                 $smogi_bucks = "0";
 
             if ($smogi_bucks) {

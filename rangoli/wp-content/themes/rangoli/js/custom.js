@@ -32,9 +32,13 @@ $(document).ready(function () {
             if (status == "success") {
                 $(".your-color-block").hide();
                 $(".login-box").hide();
+                $("your-color-block").hide();
+                $("login-box").hide();
+
                 $(window).load(function(){
-                    $("#signin_popup").fadeIn();
                     $(".signin-block").fadeIn();
+                    $("#signin_popup").fadeIn();
+
                 });
             }
         }
@@ -75,7 +79,7 @@ function submit_comment() {
             //serialize and store form data in a variable
             var formdata = commentform.serialize();
             //Add a status message
-            statusdiv.html('<p>Processing...</p>');
+            statusdiv.html('<p><img src="/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif" style="width:16px;" /></p>');
             //Extract action URL from commentform
             var formurl = commentform.attr('action');
             //Post Form with data
@@ -89,7 +93,7 @@ function submit_comment() {
                 success: function (data, textStatus) {
                     if (data == "success" || textStatus == "success") {
                         if ($("#comment").val() == "") {
-                            statusdiv.html('<p class="ajax-success" >Blank comment are not allowed !</p>');
+                            statusdiv.html('<p class="ajax-success" >Blank comment is not allowed !</p>');
                             get_bulls_eye();
                         }
                         else {
@@ -125,14 +129,12 @@ $(document).ready(function () {
     $(".login_magento").keydown(function(e){
         if(e.keyCode==13){
             $("#sign-in-button").click();
-            //alert("sign in");
         }
     });
 
     $(".register_new").keydown(function(e){
         if(e.keyCode==13){
             $("#sign-up-button").click();
-            //alert("sign up");
         }
     });
     $("input[rel='password']").focus(function () {
@@ -179,14 +181,16 @@ $(document).ready(function () {
     $("#sign-in-button").click(function () {
         loginCustomer();
     });
-    $(".login_logout_link").click(function () {
-        if ($(this).children("a").text() == "Sign In") {
-            $(".signin-block").hide();
-            $(".your-color-block").hide();
-            $("#signin_popup").fadeIn();
-            $(".login-box").fadeIn();
-        }
-    })
+    $(window).load(function(){
+        $(".login_logout_link").click(function () {
+            if ($(this).children("a").text() == "Sign In") {
+                $(".signin-block").hide();
+                $(".your-color-block").hide();
+                $("#signin_popup").fadeIn();
+                $(".login-box").fadeIn();
+            }
+        })
+    });
 });
 
 
@@ -451,23 +455,6 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
 
             if (result != undefined && result.message != undefined && result.message == "success") {
                 console.log("******* cannot login to Rangoli");
-                //$("#signin_popup").fadeOut();
-                ////window.location=homeUrl+"rangoli";
-                //jQuery("#sign-in-form .form-loader").html("");
-                //jQuery("#sign-in-button").parent().show();
-                //
-                //jQuery(".login_logout_link").html("<span style='cursor:pointer; margin-left:0;padding-left:0' onclick='wplogout()'>SIGN OUT</span>");
-                //
-                //jQuery("#sign-in-form .form-loader").html("");
-                //jQuery("#signing_popup").fadeIn();
-                //_islogedinuser = true;
-                //if (name != '') {
-                //    jQuery("#welcome-name").html("Hi " + name).attr("href", homeUrl + 'customer/account/');
-                //}
-                //
-                //jQuery(".before-login").hide();
-                //jQuery(".after-login").show();
-                //jQuery(".after-login li.smogi-balance a span").html(somgiBal);
                 location.reload(true);
             }
         }
@@ -482,7 +469,6 @@ function wplogout() {
         data: 'logout=1',
         dataType: 'json',
         success: function (result) {
-//alert(result.message == "alreadyloggedout");
             if (result.message == "loggedout") {
                 var url = root + "customer/account/logout/";
 
@@ -536,7 +522,6 @@ function checkIsUserLogged() {
 
                     jQuery("#welcome-name").html("Hi " + first_name).attr("href", homeUrl + 'customer/account/');
                     jQuery(".login_logout_link").html("<span style='cursor:pointer; margin-left:0;padding-left:0' onclick='wplogout()'>SIGN OUT</span>");
-                    //doWordpressLogin(email,name, first_name,last_name,customer_id);
 
                 }
             }
@@ -607,6 +592,7 @@ $(window).resize(function () {
     //
     //$(".one-three").height(tile_height);
     //$(".two-three").height(tile_height * 2);
+
     $(".fixed-container").css("min-height",wh/2);
 
     //$(".wp_page_banner").height(wh-50);
@@ -624,7 +610,6 @@ $(window).load(function () {
 $(window).resize(function () {
     var wh = $(window).height();
     $(".wp_page_banner").height(wh - 70);
-    //$(".wp_page_banner").css({"background":"cover"});
 });
 
 /* ////////////////////////////////////GET CUSTOMER COLOR////////////////////////////// */
@@ -692,7 +677,6 @@ function getloggedinuser() {
                             success: function (result) {
                                 $(".signin-block").hide();
                                 $(".login-box").hide();
-                                $(".your-color-block .color-traingle").css("border-bottom", "74px solid" + user_color_shade);
                                 $(".your-color-block").fadeIn();
                                 fillcolor();
                             }
@@ -783,6 +767,7 @@ function ajax_load_pages(link) {
     //$(".fixed-container").load(link + ' #fixed_container');
     $page = $(document).find(".fixed-container > div");
     $page.removeAttr("class");
+    $(".close-menu-btn").click();
     $.ajax({
         url: link,
         success: function (response) {
@@ -808,7 +793,6 @@ function ajax_load_pages(link) {
                 ajax_load_pages(link);
             });
             raty_init();
-
             $(document).find(".one-three .overlay-text").css({
                 'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
                 'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
@@ -846,6 +830,11 @@ function ajax_load_pages(link) {
                 $(document).find(".wp_page_banner .play-video").remove();
             });
 
+            $(window).load(function(){
+            animate_tiles();
+            });
+
+
             $(document).find(".homepage_page_banner .play-video").unbind("click");
             $(document).find(".homepage_page_banner .play-video").click(function () {
                 $(document).find(".homepage_page_banner .play-video").hide();
@@ -870,7 +859,7 @@ function ajax_load_pages(link) {
             $(".smogi .like.subscribed path").css("fill", user_color_shade).css("stroke", user_color_shade);
 
         }
-    })
+    });
 
     $(".close-menu-btn").click();
 
@@ -879,7 +868,7 @@ function ajax_load_pages(link) {
 function play() {
     var player = $(document).find(".featured_video_plus").find("iframe");
     var src = player.attr("src");
-    src = src.replace("autoplay=0", "autoplay=1&yt:crop=16:9");
+    src = src.replace("autoplay=0", "autoplay=1");
     player.attr("src", src);
 }
 
@@ -887,16 +876,7 @@ function init() {
 
     var wh = $(window).height();
     var ww = $(window).width();
-    //if (ww < 1024) {
-    //    ww = 1024;
-    //}
-    //$(".wh").css('min-height', wh);
-    //$(".fixed-container").css("min-height",wh/2);
-    //var one_three = $(".one-three").width();
-    //var tile_height = one_three * 0.75;
-    ////$(".wp_page").css('min-width', ww);
-    //$(".one-three").height(tile_height);
-    //$(".two-three").height(tile_height * 2);
+    $(".fixed-container").css("min-height",wh/2);
     $(".wp_page_banner").height(wh - 70);
 
     $(".post_category a").each(function () {
@@ -949,11 +929,7 @@ function init() {
         $("body").css("overflow", "hidden");
         $(".smogi").addClass("fadeInUp").addClass("animated");
         $(".menu-btn").css("opacity", 1);
-        $(".menu-box").animate({
-            'margin-left': '-400px'
-        }, 300, 'easeInQuart', function () {
-            $(".menu-btn").css("opacity", 1);
-        });
+        $(".close-menu-btn").click();
     });
     $(".smogi-content").height(wh - 230);
 
@@ -967,11 +943,7 @@ function init() {
         $(".smogi").addClass("fadeInUp").addClass("animated");
         $("#stores").hide();
 
-        $(".menu-box").animate({
-            'margin-left': '-400px'
-        }, 500, 'easeOutCirc', function () {
-            $(".menu-btn").css("opacity", 1);
-        });
+        $(".close-menu-btn").click();
     });
 
     $(".post_category a").each(function () {
@@ -992,7 +964,6 @@ function init() {
         $(this).remove();
     });
     $(".homepage_page_banner .play-video").click(function () {
-        //alert();
         $(".play_video").fadeIn();
         $(".rangoli_logo").remove();
         $("#signup_signin_btn").remove();
@@ -1059,11 +1030,38 @@ function filter() {
         var link = $(this).attr("href");
         $(".filter-container a").removeClass("active");
         $(this).addClass("active");
-        $(".post_listing").load(link + " #posts", function () {
-            $(".liked_reads").flexslider();
-            $(".liked_watchs").flexslider();
-            $(".liked_learns").flexslider();
-            //alert($(".post_listing").html());
+
+        $.ajax({
+            url: link,
+
+            success: function (data) {
+
+                $newData = $(data).find("#posts");
+                //alert($newData.html());
+                $newData.find(".single_post").addClass("fadeInUp").addClass("animated")
+                $(".post_listing").html($newData.html());
+
+
+                init();
+
+                $(".author_post .overlay-text").css({
+                    'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    'transition-duration': '100ms'
+                });
+                $(".liked_reads").flexslider();
+                $(".liked_watchs").flexslider();
+                $(".liked_learns").flexslider();
+
+                if($newData.find(".single_post").length==""){
+
+                    $(".post_listing").html("<br/><br/><br/><p class='align-center' style='font-family: ITCAvantGardeStd-Bk; font-size:20px'>No post found !</p>");
+                }
+
+
+            }
         });
         $(".filter-container").slideUp();
     });
@@ -1112,35 +1110,35 @@ $(document).ready(function () {
     $("a[rel='connect']").click(function (e) {
         e.preventDefault();
         $/*("#invite_friend").hide();
-        $("#smogis").hide();
-        $("#stores").hide();
-        $("#popup").fadeIn();
-        $("#connect").show();
+         $("#smogis").hide();
+         $("#stores").hide();
+         $("#popup").fadeIn();
+         $("#connect").show();
 
-        $(".menu-box").animate({
-            'margin-left': '-400px'
-        }, 500, 'easeOutCirc', function () {
-            $(".menu-btn").css("opacity", 1);
-        });*/
+         $(".menu-box").animate({
+         'margin-left': '-400px'
+         }, 500, 'easeOutCirc', function () {
+         $(".menu-btn").css("opacity", 1);
+         });*/
         if (logged_in != null && logged_in != '' && logged_in != undefined) {
-        $("#smogis").hide();
-        $("#connect").hide();
-        $("#stores").hide();
-        $("#popup").fadeIn();
-        $(".close-menu-btn").click();
-        $("body").css("overflow", "hidden");
-        $("#invite_friend").show();
-        $(".invite_friend li").hover(function () {
-            $(this).css({
-                "background": user_color_shade,
-                "transition-duration": "500ms"
+            $("#smogis").hide();
+            $("#connect").hide();
+            $("#stores").hide();
+            $("#popup").fadeIn();
+            $(".close-menu-btn").click();
+            $("body").css("overflow", "hidden");
+            $("#invite_friend").show();
+            $(".invite_friend li").hover(function () {
+                $(this).css({
+                    "background": user_color_shade,
+                    "transition-duration": "500ms"
+                });
+            }, function () {
+                $(this).css({
+                    "background": "#f2f2f2",
+                    "transition-duration": "500ms"
+                });
             });
-        }, function () {
-            $(this).css({
-                "background": "#f2f2f2",
-                "transition-duration": "500ms"
-            });
-        });
         }
         else {
             $("#signin_popup").fadeIn();
@@ -1156,24 +1154,24 @@ $(document).ready(function () {
 
     $(".invite-friends").click(function () {
         if (logged_in != null && logged_in != '' && logged_in != undefined) {
-        $("#smogis").hide();
-        $("#connect").hide();
-        $("#stores").hide();
-        $("#popup").fadeIn();
-        $(".close-menu-btn").click();
-        $("body").css("overflow", "hidden");
-        $("#invite_friend").show();
-        $(".invite_friend li").hover(function () {
-            $(this).css({
-                "background": user_color_shade,
-                "transition-duration": "500ms"
+            $(".close-menu-btn").click();
+            $("#smogis").hide();
+            $("#connect").hide();
+            $("#stores").hide();
+            $("#popup").fadeIn();
+            $("body").css("overflow", "hidden");
+            $("#invite_friend").show();
+            $(".invite_friend li").hover(function () {
+                $(this).css({
+                    "background": user_color_shade,
+                    "transition-duration": "500ms"
+                });
+            }, function () {
+                $(this).css({
+                    "background": "#f2f2f2",
+                    "transition-duration": "500ms"
+                });
             });
-        }, function () {
-            $(this).css({
-                "background": "#f2f2f2",
-                "transition-duration": "500ms"
-            });
-        });
         }
         else {
             $("#signin_popup").fadeIn();
@@ -1318,6 +1316,16 @@ function infinity_scroll(){
 
 
                             init();
+
+                            $(".author_post .overlay-text").css({
+                                'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                                'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                                'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                                'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                                'transition-duration': '100ms'
+                            });
+
+
                         }
                     });
                 }
@@ -1329,16 +1337,16 @@ function infinity_scroll(){
 
 /*
 
-$(document).ready(function(){
-    history_pop();
-});
+ $(document).ready(function(){
+ history_pop();
+ });
 
 
-function history_pop(){
-    $(window).bind('popstate', function(event){
-        window.location = document.location;
-    });
-}*/
+ function history_pop(){
+ $(window).bind('popstate', function(event){
+ window.location = document.location;
+ });
+ }*/
 
 
 
@@ -1351,5 +1359,41 @@ $(document).ready(function(){
         }
     })
 
+
+
+    $(".post_content a img").each(function(){
+        $(this).parent().removeAttr("href");
+    });
+
+
 });
 
+
+//$(window).on("navigate", function (event, data) {
+//    var direction = data.state.direction;
+//    if (direction == 'back') {
+//
+//    }
+//    if (direction == 'forward') {
+//        // do something else
+//    }
+//});
+
+// ajax back logic
+//$(window).load(function(){
+//    setTimeout( function() {
+//        window.onpopstate = function (event) {
+//            var link = document.location.href;
+//            window.location = link;
+//            change_url = false;
+//        };
+//    },500);
+//});
+
+
+//
+//var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
+//var is_explorer = navigator.userAgent.indexOf('MSIE') > -1;
+//var is_firefox = navigator.userAgent.indexOf('Firefox') > -1;
+//var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+//var is_opera = navigator.userAgent.toLowerCase().indexOf("op") > -1;

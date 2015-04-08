@@ -18,17 +18,26 @@ echo filter($cat);
     <div class="post_listing">
         <div id="posts">
             <?php
-$post = get_post(get_the_ID());
-$authors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=" . $post->post_author);
-$author_color = '#' . $authors[0]->color_shade;
-$args = array(
-    'category_name' => 'look',
-    'order' => 'DESC');
-$the_query = new WP_Query($args);
+            ob_flush();
+            global $the_query;
+            global $page;
+            $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+            $args = array(
+                'category_name' => 'look',
+                'order' => 'DESC',
+                'post_type' => 'post',
+                'paged' => $page);
+            $the_query = new WP_Query($args);
+//                echo $page;
+            $post = get_post(get_the_ID());
+            $authors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=" . $post->post_author);
+            $author_color = '#' . $authors[0]->color_shade;
+
+
 echo '<div class="author_posts row">';
             $i=0;
 if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_post();
-
 
     if (isset($_REQUEST['topic'])) {
         $filter_category_name = $_REQUEST['topic'];
@@ -98,7 +107,7 @@ if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_
 
             ?>
             <div class="post_date right">
-                <p><?php echo date('m.j.y', strtotime($post->post_date)); ?></p>
+                <p><?php echo date('m.d.y', strtotime($post->post_date)); ?></p>
             </div>
         </div>
 

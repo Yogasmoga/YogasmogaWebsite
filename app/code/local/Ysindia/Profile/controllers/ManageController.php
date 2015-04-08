@@ -99,8 +99,8 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                     $result = $writeConnection->query($query);
                 }
 
-                $filepath = Mage::getBaseDir() . "/rangoli/rangoli_profile_images/";
-                $savepath = Mage::getBaseUrl() . "/rangoli/rangoli_profile_images/";
+                $filepath = Mage::getBaseDir() . "rangoli/rangoli_profile_images/";
+                $savepath = Mage::getBaseUrl() . "rangoli/rangoli_profile_images/";
 
 //                $banner_found = false;
                 $profile_found = false;
@@ -210,6 +210,12 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                             } else {
                                 $query = "insert into rangoli_usermeta(user_id, meta_key, meta_value) values($user_id, 'cupp_upload_meta','$profile_pic')";
                                 $result = $writeConnection->query($query);
+                            }
+
+                            try{
+                                unlink($large_image_location);
+                            }
+                            catch(Exception $ex){
                             }
 
                         } else {

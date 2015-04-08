@@ -191,7 +191,7 @@
         },
         _setUp: function () {
             var l = this;
-            l.$slider = s('<div id="colors" />'), l.$sliderList = s('<ul id="color-list" />'), s.each(l.json, function (i, e) {
+            l.$slider = s('<div id="colors"><div class="arrow-next"><span class="arrow"></span></div><div class="arrow-prev"><span class="arrow"></span></div>'), l.$sliderList = s('<ul id="color-list" />'), s.each(l.json, function (i, e) {
                 var color = i.split("_").pop();
                 var a = '<li class="color" data-color="#' + color + '" data-bg="' + e.bg + '"><div class="primary">';
                 a += l._getAnimData(e.animation, e.shades), a += '<span style="background-color: #' + color + ';">&nbsp;</span></div></li>', l.$sliderList.append(s(a))

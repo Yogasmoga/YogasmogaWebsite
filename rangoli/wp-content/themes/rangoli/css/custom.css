@@ -25,6 +25,9 @@
     z-index: 999999;
     display: none;
 }
+.login-box{
+    display:none;
+}
 .signin-block {
     border-radius: 50%;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
@@ -32,7 +35,7 @@
     left: 50%;
     margin-left: -232px;
     position: absolute;
-    top: 8%;
+    top: 10%;
     width: 464px;
     display: none;
 }
@@ -60,7 +63,7 @@
     min-height: 37px;
     padding: 0 0 0 8px;
     text-align: center;
-    width: 150px;
+    width: 176px;
 }
 .your-color-block{
     display: none;
@@ -72,10 +75,10 @@
     text-align: center;
 }
 .color-traingle {
-    height: 0;
+    height: 66px;
     margin-left: 210px;
     margin-top: 250px;
-    width: 0;
+    width: 11px;
 }
 #signin_popup .form {
     display: block;
@@ -87,8 +90,8 @@
     display: block;
     left: 15%;
     margin: 0 auto;
-    top: 14%;
-    width: 355px;
+    padding-top: 1%;
+    width: 350px;
 }
 #signin_popup .form input{
     float: left;
@@ -98,12 +101,15 @@
     border: none;
     border-bottom: 1px solid #fff;
     background: transparent;
+    font-size: 13px !important;
+    font-family: ITCAvantGardeStd-Bk;
+    line-height: 1.2 !important;
 }
 #signup {
     background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
     border: medium none !important;
     height: 39px !important;
-    margin-left: 62px;
+    margin-left: 56px;
     margin-top: 15px;
     width: 135px !important;
     cursor:pointer;
@@ -1782,3 +1788,71 @@ button.next-confirmation-page {
     padding: 0;
 }
 
+
+/*
+.shadow{
+    background: none !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    transition-duration: 0s !important;
+}
+
+.prev span:hover .shadow {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.1) !important;
+}
+.next span:hover .shadow {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.1) !important;
+}*/
+/*
+
+.next span .shadow{
+    background-image: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/homepage/next-slide.png");
+    background-repeat: no-repeat;
+    background-position: 20% center ;
+    transition-duration: 0s !important;
+}
+.prev span .shadow{
+    background: url('/skin/frontend/new-yogasmoga/yogasmoga-theme/images/homepage/previous-slide.png') no-repeat;
+    background-position: 80% center;
+    transition-duration: 0s !important;
+}*/
+
+
+.arrow-prev {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    top: 0px;
+    width: 80px;
+    z-index: 5;
+}
+.arrow-next{
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    top: 0px;
+    width: 80px;
+    z-index: 5;
+}
+.arrow-prev span {
+    background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/homepage/previous-slide.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 60px;
+    left: 20px;
+    margin-top: -30px;
+    position: absolute;
+    top: 50%;
+    width: 60px;
+}
+.arrow-next span {
+    background-image: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/homepage/next-slide.png");
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 50%;
+    margin-top:-30px;
+    right:20px;
+    cursor: pointer;
+}

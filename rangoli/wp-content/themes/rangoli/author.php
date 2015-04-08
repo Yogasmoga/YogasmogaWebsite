@@ -1,8 +1,5 @@
 <?php get_header();
 
-//$banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
-
-
 ?>
 <div class="wp_page row">
 
@@ -32,9 +29,13 @@
 		$main_color=strtoupper($main_color);
 
 		echo " <div class='overlay-text'>
-			<div class='align-bottom'>
-			<span class='charm color_$main_color $level'></span>
-			<p class='author_role'>".$role."</p>";
+			<div class='align-bottom'>";
+		if($role != "STORE"){
+			echo "<span class='charm color_$main_color $level'></span>";
+
+		}
+						echo "<p class='author_role'>".$role."</p>";
+
 
 		$title=get_the_title();
 		echo "<p class='post_title'>".$curauth->display_name."</p>";
@@ -89,7 +90,7 @@
 						foreach($activity as $data){
 							if($data->type == "post"){
 								echo "<div class='author_recent_activity' >";
-								echo "<p class='post_date'>".date("j.m.y",strtotime($data->date))."</p>";
+								echo "<p class='post_date'>".date("m.d.y",strtotime($data->date))."</p>";
 								$name=$curauth->display_name;
 								$name=ucwords($curauth->display_name);
 								echo $name.'  <span style="font-style: italic">says</span> <br/> checkout my new post "';
@@ -110,7 +111,7 @@
 							}
 							if($data->type == "like"){
 								echo "<div class='author_recent_activity' >";
-								echo "<p class='post_date'>".date("j.m.y",strtotime($data->date))."</p>";
+								echo "<p class='post_date'>".date("m.d.y",strtotime($data->date))."</p>";
 								$name=$curauth->display_name;
 								$name=ucwords($curauth->display_name);
 								echo $name.' <span style="font-style: italic">saved</span> <br/> "';
@@ -130,7 +131,7 @@
 							}
 							if($data->type == "comment"){
 								echo "<div class='author_recent_activity' >";
-								echo "<p class='post_date'>".date("j.m.y",strtotime($data->date))."</p>";
+								echo "<p class='post_date'>".date("m.d.y",strtotime($data->date))."</p>";
 								$name=$curauth->display_name;
 								$name=ucwords($curauth->display_name);
 								echo $name.' <span style="font-style: italic"> commented on</span> <br/> "';

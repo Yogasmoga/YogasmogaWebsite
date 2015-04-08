@@ -27,7 +27,7 @@ $(window).load(function () {
 });
 
 
-function animation(){
+function animation() {
     var content_offset_first = offset_first.top - $(window).scrollTop();
     var content_offset_second = offset_second.top - $(window).scrollTop();
     var content_offset_third = offset_third.top - $(window).scrollTop();
@@ -52,13 +52,13 @@ function animation(){
         }, 2000);
         $(".second .one-three").addClass("fadeInUp").addClass("animated");
 
-        setTimeout(function(){
+        setTimeout(function () {
             $(".second .one-three .overlay-text p").animate({
-                "opacity":1
-            },4000);
+                "opacity": 1
+            }, 4000);
             $(".second .one-three .overlay-text p").addClass("fadeInUpLittle").addClass("animated");
 
-        },300)
+        }, 300)
 
     }
     //else{
@@ -74,13 +74,13 @@ function animation(){
 
         $(".third .one-three").addClass("fadeInUp").addClass("animated");
         $(".third .two-three").addClass("fadeInUp").addClass("animated");
-        setTimeout(function(){
+        setTimeout(function () {
             $(".third .one-three .overlay-text p").animate({
-                "opacity":1
-            },8000);
+                "opacity": 1
+            }, 8000);
             $(".third .one-three .overlay-text p").addClass("fadeInUpLittle").addClass("animated");
             $(".third .two-three .overlay-text p").addClass("fadeInUp").addClass("animated");
-        },600)
+        }, 600)
     }
     //else{
     //    $(".third").animate("opacity",0);
@@ -90,19 +90,19 @@ function animation(){
     //    $(".fourth .two-three .overlay-text p").removeClass("fadeInUpLittle").removeClass("animated");
     //}
 
-    if (content_offset_fourth <= ($(window).height() - 200) ) {
+    if (content_offset_fourth <= ($(window).height() - 200)) {
 
-            $(".fourth").animate({
-                "opacity": 1
-            }, 2000);
-            $(".fourth .one-three").addClass("fadeInUp").addClass("animated");
-        setTimeout(function(){
+        $(".fourth").animate({
+            "opacity": 1
+        }, 2000);
+        $(".fourth .one-three").addClass("fadeInUp").addClass("animated");
+        setTimeout(function () {
             $(".fourth .one-three .overlay-text p").animate({
-                "opacity":1
-            },4000);
+                "opacity": 1
+            }, 4000);
             $(".fourth .one-three .overlay-text p").addClass("fadeInUp").addClass("animated");
 
-        },300)
+        }, 300)
     }
     //else{
     //
@@ -114,23 +114,23 @@ function animation(){
     //
     //}
 
-    if (content_offset_fifth <= ($(window).height() - 200) ) {
+    if (content_offset_fifth <= ($(window).height() - 200)) {
 
         $(".fifth").animate({
             "opacity": 1
         }, 2000);
         $(".fifth .one-three").addClass("fadeInUp").addClass("animated");
-        setTimeout(function(){
+        setTimeout(function () {
             $(".fifth .one-three .overlay-text .fts-jal-fb-message").animate({
-                "opacity":1
-            },4000);
+                "opacity": 1
+            }, 4000);
             $(".fifth .one-three .overlay-text .fts-jal-fb-message").addClass("fadeInUpLittle").addClass("animated");
             $(".fifth .one-three .right").animate({
-                "opacity":1
-            },4000);
+                "opacity": 1
+            }, 4000);
             $(".fifth .one-three .right").addClass("fadeInUpLittle").addClass("animated");
 
-        },300)
+        }, 300)
     }
     //else{
     //
@@ -143,3 +143,4 @@ function animation(){
     //
     //}
 }
+

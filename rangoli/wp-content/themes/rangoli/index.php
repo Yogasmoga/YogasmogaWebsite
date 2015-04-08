@@ -211,20 +211,51 @@ $author_color="555555";
         <?php
 
 
-        echo '<div class="author_posts row posts_grid" style="clear:both;">';
+        echo '<div class="author_posts row index posts_grid" style="clear:both;">';
 
                 if($current_category == "POST"){
                     $current_category = "READ, LEARN, WATCH";
                 }
 
                 $current_category = strtolower($current_category);
-        $the_query = new WP_Query('category_name=' . $current_category);
+
+        $args = array(
+            'category_name' => $current_category,
+            'order' => 'DESC',
+            'post_type' => 'post',
+        //            'paged' => $page
+            'posts_per_page'=>30
+        );
+        //                echo $page;
+        $the_query = new WP_Query($args);
+        $count = 0;
+        if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_post();
+            $count++;
+        endwhile;
+        endif;
+
+//echo $count;
+
+        wp_reset_query();
+
+        ob_flush();
+        global $the_query;
+        $args = array(
+            'category_name' => $current_category,
+            'order' => 'DESC',
+            'post_type' => 'post',
+            'posts_per_page'=>30
+        );
+        $the_query = new WP_Query($args);
         $i = 0;
         if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_post();
-            $i++;
+//            $i++;
             $post=get_post();
             $author = get_user_profile($post->post_author);
             $author_color=$author->color_shade;
+            if($i==0){
+                echo '<div class="row section'.$i.'">';
+            }
             echo '<div class="span4">
                     <div class="author_post" style="background: #' .$author_color, '" >';
 
@@ -297,14 +328,19 @@ $author_color="555555";
                     echo "<div class='post_date right'>";
 
                     $date=$post->post_date;
-                    echo date("m.j.y",strtotime($date))."</div>";
+                    echo date("m.d.y",strtotime($date))."</div>";
              }
     echo "</div>";
 
-            if ($i % 3 == 0) {
-                echo '<div style = "clear:both;"></div>';
+            $i++;
+            if ($i % 3 == 0 && $i<$count) {
+                echo '</div><div class="row section'.$i.'">';
             }
+        if($i>=$count){
+            echo "</div>";
+        }
         endwhile;
+            rangoli_paging_nav($the_query, $page);
         endif;
         wp_reset_query();
 
@@ -314,8 +350,58 @@ $author_color="555555";
 
 
 </div></div></div>
-
+<!---->
 <?php
+//if($count>0){
+//    echo '<script>
+//        $(window).load(function(){
+//           animate_tiles();
+//        });
+//        function animate_tiles(){
+//        ';
+//        for ($i=0; $i<$count; $i++) {
+//            if ($i % 3 == 0)
+//                echo '
+//                       $(document).find(".section' . $i . '").unbind();
+//                       ';
+//        }
+//         for ($i=0; $i<$count; $i++){
+//            if ($i % 3 == 0 )
+//               echo '
+//                    var offset_section'.$i.' = $(document).find(".section'.$i.'").offset().top;
+//                    var content_offset_section'.$i.' = offset_section'.$i.' - $(window).scrollTop();
+//                    if (content_offset_section'.$i.'  <= $(window).height() - 100) {
+//                        $(document).find(".section'.$i.'").css({"opacity":1});
+//                        $(document).find(".section'.$i.'").addClass("fadeInUp").addClass("animated");
+//                    }';
+//            }
+//            for ($i=0; $i<$count; $i++){
+//                if ($i % 3 == 0 )
+//                echo '
+//                    $(window).scroll(function(){
+//                        var content_offset_section'.$i.' = offset_section'.$i.' - $(window).scrollTop();
+//                        if (content_offset_section'.$i.'  <= $(window).height() - 100) {
+//                                $(document).find(".section'.$i.'").css({"opacity":1});
+//                            $(document).find(".section'.$i.'").addClass("fadeInUp").addClass("animated");
+//                        }
+//                    });';
+//            }
+//        echo '}
+//    </script>
+//    ';
+//    echo '<style>';
+//    for ($i=0; $i<$count; $i++) {
+//        if ($i % 3 == 0){
+//            echo '
+//            .section'.$i.'{
+//                opacity:0;
+//                clear:both;
+//            }
+//            ';
+//        }
+//    }
+//    echo '</style>';
 
+//}
 get_footer();
 ?>
