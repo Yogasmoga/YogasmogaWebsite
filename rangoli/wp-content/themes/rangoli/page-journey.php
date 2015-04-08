@@ -308,6 +308,7 @@ function get_height(){
                 var color = $(this).closest('li.color').attr('data-color');
                 color = color.replace("#", "");
                 selectedColor = color;
+//                fillcolor();
 
                 var charm_class = $("#profile_charm").attr("class");
 //                alert("charm_class: "+charm_class);

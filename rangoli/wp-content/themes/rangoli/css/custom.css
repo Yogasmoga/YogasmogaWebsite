@@ -106,7 +106,7 @@
     line-height: 1.2 !important;
 }
 #signup {
-    background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+    background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     border: medium none !important;
     height: 39px !important;
     margin-left: 56px;

@@ -1,6 +1,6 @@
 var count = 0;
 var status = "old";
-var user_color_shade;
+
 var logged_in;
 var logged_in_id;
 var user_email;
@@ -63,6 +63,7 @@ $(document).ready(function () {
 
 $('document').ready(function () {
     submit_comment();
+    jQuery("#signup").css("background","url('"+root+"/skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png')");
 });
 
 function submit_comment() {
@@ -213,14 +214,7 @@ function createCustomerAccount_from_popup() {
             }
             else {
                 var cpassword = pwd;
-                //var is_subscribed = jQuery("#in_touch").val();
-                if (window.location.href.indexOf('https://') >= 0)
-                    _usesecureurl = true;
-                else
-                    _usesecureurl = false;
                 var url = homeUrl + 'mycatalog/myproduct/registercustomer';
-                if (_usesecureurl)
-                    url = securehomeUrl + 'mycatalog/myproduct/registercustomer';
 
                 jQuery.ajax({
                     url: url,
@@ -235,28 +229,28 @@ function createCustomerAccount_from_popup() {
                     },
                     beforeSend: function () {
                         jQuery("#sign-up-form .err-msg").html("");
-                        //jQuery("#sign-up-form .loader").show();
-                        jQuery("#signup").css("background-image","url('"+root+"skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png')");
-                        alert(root+"skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png");
+                        jQuery("#signup").css("background-image","url("+root+"/skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png)");
+                        //alert(root+"skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png");
                     },
                     success: function (data) {
 
                         data = eval('(' + data + ')');
                         var status = data.status;
-                        var name = data.fname;
-
-                        var first_name = data.first_name;
-                        var last_name = data.last_name;
-                        var customer_id = data.customer_id;
-
                         if (status == "success") {
+                            var name = data.fname;
+
+                            var first_name = data.first_name;
+                            var last_name = data.last_name;
+                            var customer_id = data.customer_id;
+
+
                             /**************** code added by ys team *****************/
                             createRangoliUser(email_id, pwd, first_name, last_name, customer_id);
                             /**************** code added by ys team *****************/
 
                                 // console.log(data.status);
-                            jQuery("#signin-block").fadeOut();
-                            //window.location=homeUrl+"rangoli";
+                            jQuery(".signin-block").fadeOut();
+  //                          window.location=homeUrl+"rangoli";
 
                             _islogedinuser = true;
                             jQuery("#signin").html("SIGN OUT").attr({
@@ -270,7 +264,7 @@ function createCustomerAccount_from_popup() {
                         }
                         else {
                             //jQuery("#sign-up-form .loader").hide();
-                            jQuery("#signup").show();
+                            jQuery("#signup").css("background","url('"+root+"/skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png')");
                             jQuery("#sign-up-form .err-msg").html(data.errors).css("visibility", "visible");
                         }
                     }
@@ -301,16 +295,10 @@ function createCustomerAccount() {
     var email_id = jQuery.trim(jQuery("#signup_email").val());
 
     var pwd = jQuery.trim(jQuery("#s_password").val());
-    //alert(pwd);
+
     var cpassword = pwd;
-    //var is_subscribed = jQuery("#in_touch").val();
-    if (window.location.href.indexOf('https://') >= 0)
-        _usesecureurl = true;
-    else
-        _usesecureurl = false;
+
     var url = homeUrl + 'mycatalog/myproduct/registercustomer';
-    if (_usesecureurl)
-        url = securehomeUrl + 'mycatalog/myproduct/registercustomer';
 
     jQuery.ajax({
         url: url,
@@ -605,11 +593,15 @@ $(window).load(function () {
         $(".rangoli_logo").addClass("fadeInDown").addClass("animated");
     });
     var wh = $(window).height();
-    $(".wp_page_banner").height(wh - 70);
+    var ww = $(window).width();
+//    $(".wp_page_banner").height(ww*0.5625);
+    $(".wp_page_banner").height(wh-70);
 })
 $(window).resize(function () {
     var wh = $(window).height();
-    $(".wp_page_banner").height(wh - 70);
+    var ww = $(window).width();
+    //$(".wp_page_banner").height(ww*0.5625);
+    $(".wp_page_banner").height(wh-70);
 });
 
 /* ////////////////////////////////////GET CUSTOMER COLOR////////////////////////////// */
@@ -877,7 +869,8 @@ function init() {
     var wh = $(window).height();
     var ww = $(window).width();
     $(".fixed-container").css("min-height",wh/2);
-    $(".wp_page_banner").height(wh - 70);
+    //$(".wp_page_banner").height(ww*0.5625);
+    $(".wp_page_banner").height(wh-70);
 
     $(".post_category a").each(function () {
 
@@ -1368,18 +1361,6 @@ $(document).ready(function(){
 
 });
 
-
-//$(window).on("navigate", function (event, data) {
-//    var direction = data.state.direction;
-//    if (direction == 'back') {
-//
-//    }
-//    if (direction == 'forward') {
-//        // do something else
-//    }
-//});
-
-// ajax back logic
 //$(window).load(function(){
 //    setTimeout( function() {
 //        window.onpopstate = function (event) {
@@ -1389,11 +1370,3 @@ $(document).ready(function(){
 //        };
 //    },500);
 //});
-
-
-//
-//var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
-//var is_explorer = navigator.userAgent.indexOf('MSIE') > -1;
-//var is_firefox = navigator.userAgent.indexOf('Firefox') > -1;
-//var is_safari = navigator.userAgent.indexOf("Safari") > -1;
-//var is_opera = navigator.userAgent.toLowerCase().indexOf("op") > -1;

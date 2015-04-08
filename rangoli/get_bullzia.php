@@ -287,7 +287,7 @@ if ($data) {
                 'interests' => $all_interests,
                 'smogiBucks' => $smogi_bucks,
                 'postTitle' => $single['postTitle'],
-                'date' => date("m.j.y",strtotime($single['date'])),
+                'date' => date("m.d.y",strtotime($single['date'])),
                 'level' =>$level,
                 'url'=> $url,
                 'postId'=>$single["postId"],

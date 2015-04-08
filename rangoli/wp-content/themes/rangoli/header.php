@@ -23,7 +23,7 @@ if(is_ssl()) {
     $root = str_replace("/rangoli","/",$root);
     ?>
     <script>
-
+        var user_color_shade;
         var  homeUrl="<?php echo $root ?>";
         var today_date="<?php echo date("j.m.y", time()) ?>";
 
