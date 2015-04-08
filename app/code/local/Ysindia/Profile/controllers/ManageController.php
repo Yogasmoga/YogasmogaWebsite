@@ -99,7 +99,7 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                     $result = $writeConnection->query($query);
                 }
 
-                $filepath = Mage::getBaseDir() . "rangoli/rangoli_profile_images/";
+                $filepath = Mage::getBaseDir() . "/rangoli/rangoli_profile_images/";
                 $savepath = Mage::getBaseUrl() . "rangoli/rangoli_profile_images/";
 
 //                $banner_found = false;
@@ -180,8 +180,8 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
 
                         $profile_image_name = $_POST['profile_filename'];
 
-                        $large_image_location = $filepath.'temp/' . $profile_image_name;
-                        $thumb_image_location = $filepath."thumb_" . $profile_image_name;
+                        $large_image_location = $filepath . 'temp/' . $profile_image_name;
+                        $thumb_image_location = $filepath . "thumb_" . $profile_image_name;
 
                         Mage::log("[$large_image_location , $thumb_image_location]");
 
