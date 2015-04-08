@@ -297,7 +297,12 @@ $thumb_height = "150";
 //            jQuery("#banner_pic").val("");
             jQuery("#profile_pic").val("");
 
-            jQuery(".messageupdate").html(result);
+            if(result.indexOf("Error")>-1)
+                jQuery(".messageupdate").html(result);
+            else {
+                jQuery(".messageupdate").html("Profile updated successfully");
+                jQuery(".profile_pic_image").attr("src", result);
+            }
 
             imgArea.setOptions({ hide: true });
             imgArea.update();
@@ -393,6 +398,10 @@ $thumb_height = "150";
 
 <div class="pg-heading">
     <h2>UPDATE PROFILE PICTURE</h2>
+</div>
+
+<div>
+    <img src="<?php echo Mage::helper('profile')->getProfilePicture(); ?>" class="profile_pic_image" style="border-radius: 50%; margin-bottom: 30px;"/>
 </div>
 
 <!--<form class="banneruploadform" method="post" enctype="multipart/form-data" action="--><?php //echo $banner_upload_url; ?><!--"-->

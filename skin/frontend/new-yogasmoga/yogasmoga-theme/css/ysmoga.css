@@ -819,6 +819,9 @@ ul.tr-menu > li.free-shipping {
         width: 45%;
     }
     #productdetails .fitDetail .video-box a[name="sizechart"]{display: block;}
+    .easy_tank{
+        font-size: 48px !important;
+    }
 }
 
 @media only screen and (max-width : 1599px) {
