@@ -1,7 +1,12 @@
-var root='http://yogasmoga.com/';
+var root;
 
 /**************** logout logic added by ys team *****************/
 jQuery(document).ready(function($){
+
+    if(window.location.href.indexOf('https://') >= 0)
+        root='https://yogasmoga.com/';
+    else
+        root='http://yogasmoga.com/';
 
     checkIsUserLogged();
 
