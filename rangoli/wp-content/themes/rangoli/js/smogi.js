@@ -28,7 +28,7 @@ jQuery(document).ready(function () {
                         "stroke": "#fff"
                     })
                 }
-                $(".user-color-shade").css({'background': 'rgba(' + color + ',0.9)'});
+                //$(".user-color-shade").css({'background': 'rgba(' + color + ',0.9)'});
             }
             else {
                 //jQuery("#signing_popup").dialog( "open" );
@@ -58,9 +58,11 @@ function subscribe_author(author_id, subscriber_id, obj) {
                 jQuery(obj).removeClass("unsubscribed");
                 jQuery(obj).addClass("subscribed");
                 jQuery(".subscribed").find("path").css({
-                    "fill": color_shade, "stroke": color_shade,
+                    "fill": user_color_shade, "stroke": user_color_shade,
                     "transition-duration": "500ms"
                 });
+                var color = hexToRgb("#"+user_color_shade);
+                $("#popup").css('background', 'rgba(' + color + ',0.5)')
 //                jQuery(obj).bind('click',unsubscribe_author(author_id,subscriber_id, obj));
             }
 
@@ -79,6 +81,9 @@ function unsubscribe_author(author_id, subscriber_id, obj) {
                 jQuery(obj).addClass("unsubscribed");
                 //jQuery(".unsubscribed").find("path").css({"fill":"transparent", "stroke":"#ffffff"});
                 // jQuery(obj).bind('click',subscribe_author(author_id,subscriber_id, obj));
+
+                var color = hexToRgb("#"+user_color_shade);
+                $("#popup").css('background', 'rgba(' + color + ',0.5)')
             }
 
         }
