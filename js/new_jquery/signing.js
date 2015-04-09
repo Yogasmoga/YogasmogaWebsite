@@ -531,13 +531,16 @@ function loginCustomer() {
             data = eval('(' + data + ')');
             var status = data.status;
             var error = data.error;
-            var name = data.fname;
-            var somgiBal = data.smogi;
-            var first_name = data.first_name;
-            var last_name = data.last_name;
-            var customer_id = data.customer_id;
 
             if (status == "success") {
+                var name = data.fname;
+                var somgiBal = data.smogi;
+                var first_name = data.first_name;
+                var last_name = data.last_name;
+                var customer_id = data.customer_id;
+
+                jQuery(".login_logout_link").html("<span style='cursor:pointer; margin-left:0;padding-left:0' onclick='wplogout()'>SIGN OUT</span>");
+
                 /************** code update by ys team ******************/
                     //doWordpressLogin(email_id, pwd, name);
                 doWordpressLogin(email_id, pwd, first_name, last_name, customer_id);
@@ -550,8 +553,6 @@ function loginCustomer() {
                 //    href: homeUrl + 'customer/account/logout/',
                 //    id: "sign-out"
                 //});
-
-                jQuery(".login_logout_link").html("<span style='cursor:pointer; margin-left:0;padding-left:0' onclick='wplogout()'>SIGN OUT</span>");
 
                 jQuery(".signin-loader").html("");
                 jQuery("#signing_popup").dialog("close");

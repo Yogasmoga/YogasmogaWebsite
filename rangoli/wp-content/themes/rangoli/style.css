@@ -24,10 +24,12 @@ div{
 .text > a {
     color: #c03;
 }
-#user_info p:first-child a {
+#user_info p a {
     display: block;
-    width: 40px;
+    width: 100%;
+    cursor: pointer;
 }
+
 .selected span {
     color: #444 !important;
     display: block;
@@ -54,8 +56,11 @@ div{
     width: 400px;
     z-index: 1;
 }
-.menu-content.white a, .menu-content.white a:hover {
+.menu-content.white a {
     color: #fff;
+}
+.menu-content.white a:hover {
+    color: #999;
 }
 .huge_it_slideshow_description_text_2{
     font-family: "freight-text-pro",sans-serif;
@@ -95,7 +100,7 @@ div{
 .post_subtitle {
     color: #fff;
     float: none;
-    font: 20px FreightTextBook;
+    font: 20px/35px freight-text-pro;
     margin: 0 auto;
     width: 70%;
 }

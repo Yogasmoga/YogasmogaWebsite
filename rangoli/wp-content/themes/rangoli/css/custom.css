@@ -1,6 +1,5 @@
 @import "fonts.css";
 
-
 .signinDialog .sign-up-block, .signinDialog .sign-in-block{
     width:50%;
 }
@@ -65,6 +64,58 @@
     text-align: center;
     width: 176px;
 }
+a:hover{
+    color: #999;
+    transition-duration: 200ms;
+}
+a{
+    transition-duration: 200ms;
+}
+.home_link svg path {
+    fill: none;
+    stroke: #fff;
+}
+.home_link:hover svg path{
+    fill: none;
+    stroke:#999;
+    transition-duration: 200ms;
+}
+
+
+.about-rangoli a:nth-child(1) {
+    opacity: 1;
+    transition-duration: 200ms;
+}
+.about-rangoli a:nth-child(2) {
+    opacity: 0;
+    transition-duration: 200ms;
+}
+.about-rangoli:hover a:nth-child(1) {
+    opacity: 0;
+    transition-duration: 200ms;
+}
+.about-rangoli:hover a:nth-child(2) {
+    opacity: 1;
+    transition-duration: 200ms;
+}
+.shop-yogasmoga a:nth-child(2) {
+    opacity: 0;
+    transition-duration: 200ms;
+}
+.shop-yogasmoga a:nth-child(1) {
+    opacity: 1;
+    transition-duration: 200ms;
+}
+.shop-yogasmoga:hover a:nth-child(2) {
+    opacity: 1;
+    transition-duration: 200ms;
+}
+.shop-yogasmoga:hover a:nth-child(1) {
+    opacity: 0;
+    transition-duration: 200ms;
+}
+
+
 .your-color-block{
     display: none;
 }
@@ -195,7 +246,7 @@ img{
 }
 .bold {
     font-size: 33px;
-    line-height:35px;
+    line-height:37px;
 }
 
 
@@ -226,10 +277,11 @@ img{
     background: transparent;
 }
 .overlay-text {
-    background: -webkit-linear-gradient(to top, rgba(0, 0,0 , 0.7), transparent) repeat scroll 0 0 rgba(0, 0, 0, 0);
-    background: -o-linear-gradient(to top, rgba(0, 0,0 , 0.7), transparent) repeat scroll 0 0 rgba(0, 0, 0, 0);
-    background: -moz-linear-gradient(to top, rgba(0, 0,0 , 0.7), transparent) repeat scroll 0 0 rgba(0, 0, 0, 0);
-    background: linear-gradient(to top, rgba(0, 0,0 , 0.7), transparent) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: rgba(0,0,0,0.25);
+    /*background: -webkit-linear-gradient(to top, rgba(0, 0,0 , 0.7), transparent) repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+    /*background: -o-linear-gradient(to top, rgba(0, 0,0 , 0.7), transparent) repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+    /*background: -moz-linear-gradient(to top, rgba(0, 0,0 , 0.7), transparent) repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+    /*background: linear-gradient(to top, rgba(0, 0,0 , 0.7), transparent) repeat scroll 0 0 rgba(0, 0, 0, 0);*/
     color: #fff;
     cursor: pointer;
     height: 100%;
@@ -1520,17 +1572,25 @@ p.invite {
     font-family: freight-text-pro;
     font-size: 16px;
 }
-.twitter-friends .align-center > input[type="button"] ,.next-confirmation-page{
-    background: none;
+.twitter-friends .align-center > input[type="button"], .next-confirmation-page {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     border: 1px solid #555;
     color: #555 !important;
-    transition-duration: 100ms
-box-sizing: border-box;
     cursor: pointer;
     font-family: freight-text-pro;
     font-size: 18px;
-    padding: 2px 8px;
+    line-height: 42px;
+    padding: 0 50px;
     text-align: center;
+    transition-duration: 200ms;
+}
+.twitter-friends .align-center > input[type="button"]:focus, .next-confirmation-page:focus {
+    outline:none;
+}
+.twitter-friends .align-center > input[type="button"]:hover, .next-confirmation-page:hover {
+    background: #555;
+    color: #fff !important;
+    transition-duration: 200ms;
 }
 /*.twitter-friends .align-center > input[type="button"]:hover,.next-confirmation-page:hover {
     background: #555;
@@ -1676,21 +1736,21 @@ button.next-confirmation-page {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     border: 1px solid #555;
     color: #555;
-    display: block;
+    display: inline-block;
     font-family: freight-text-pro;
     font-size: 17px;
-    height: 30px;
-    line-height: 30px;
+    height: 42px;
+    line-height: 42px;
     margin: 0 auto;
-    transition-duration: 100ms;
-    width: 181px;
+    padding: 0 50px;
+    transition-duration: 200ms;
+    width: auto;
 }
-/*.continue_to_rangoli:hover{*/
-/*background: #555;*/
-/*color: #fff !important;;*/
-/*transition-duration: 100ms;*/
-/*}*/
-
+.continue_to_rangoli:hover {
+    background: #555;
+    color: #fff;
+    transition-duration: 200ms;
+}
 .description.about a{
     color: #999;
 }
@@ -1837,22 +1897,22 @@ button.next-confirmation-page {
     z-index: 5;
 }
 .arrow-prev span {
-    background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/homepage/previous-slide.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-elements/prev.png");
     cursor: pointer;
-    height: 60px;
+    height: 30px;
     left: 20px;
-    margin-top: -30px;
+    margin-top: -15px;
     position: absolute;
     top: 50%;
-    width: 60px;
+    width: 30px;
 }
 .arrow-next span {
-    background-image: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/homepage/next-slide.png");
+    background-image: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-elements/next.png");
     position: absolute;
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     top: 50%;
-    margin-top:-30px;
+    margin-top:-15px;
     right:20px;
     cursor: pointer;
 }

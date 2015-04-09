@@ -881,25 +881,25 @@ function init() {
     $(".wp_page_banner").css("min-height", wh - 70);
     $(".smogi-list").height(wh - 100);
 
-    $(".menu-btn").click(function () {
-        $(".menu-box").animate({
-            'margin-left': 0,
-            'opacity': 1
-        }, 500, "easeOutCirc");
-        $(this).animate({"opacity": 0}, 500);
-        $("#smogis").hide();
-        $("#connect").hide();
-        $("#stores").hide();
-        $("#popup").fadeOut();
-        $("body").css("overflow", "auto");
-        $("#invite_friend").hide();
-    });
-    $(".close-menu-btn").click(function () {
-        $(".menu-box").animate({
-            'margin-left': '-400px'
-        }, 500, "easeOutCirc");
-        $(".menu-btn").animate({"opacity": 1}, 500);
-    });
+    //$(".menu-btn").click(function () {
+    //    $(".menu-box").animate({
+    //        'margin-left': 0,
+    //        'opacity': 1
+    //    }, 500, "easeOutCirc");
+    //    $(this).animate({"opacity": 0}, 500);
+    //    $("#smogis").hide();
+    //    $("#connect").hide();
+    //    $("#stores").hide();
+    //    $("#popup").fadeOut();
+    //    $("body").css("overflow", "auto");
+    //    $("#invite_friend").hide();
+    //});
+    //$(".close-menu-btn").click(function () {
+    //    $(".menu-box").animate({
+    //        'margin-left': '-400px'
+    //    }, 500, "easeOutCirc");
+    //    $(".menu-btn").animate({"opacity": 1}, 500);
+    //});
     $(".close-popup").click(function () {
         $(".smogi").removeClass("fadeInUp").removeClass("animated");
         $("body").css("overflow", "auto");
@@ -1060,6 +1060,26 @@ function filter() {
 
 $(document).ready(function () {
     raty_init();
+
+    $(".menu-btn").click(function () {
+        $(".menu-box").animate({
+            'margin-left': 0,
+            'opacity': 1
+        }, 500, "easeOutCirc");
+        $(this).animate({"opacity": 0}, 500);
+        $("#smogis").hide();
+        $("#connect").hide();
+        $("#stores").hide();
+        $("#popup").fadeOut();
+        $("body").css("overflow", "auto");
+        $("#invite_friend").hide();
+    });
+    $(".close-menu-btn").click(function () {
+        $(".menu-box").animate({
+            'margin-left': '-400px'
+        }, 500, "easeOutCirc");
+        $(".menu-btn").animate({"opacity": 1}, 500);
+    });
 
 });
 function raty_init() {
@@ -1363,7 +1383,6 @@ $(window).load(function(){
         window.onpopstate = function (event) {
             var link = document.location.href;
             window.location = link;
-            change_url = false;
         };
     },500);
     animate_tiles();
