@@ -254,7 +254,7 @@ $author_color="555555";
             $author = get_user_profile($post->post_author);
             $author_color=$author->color_shade;
             if($i==0){
-                echo '<div class="row section'.$i.'">';
+                echo '<div class="row section_animate">';
             }
             echo '<div class="span4">
                     <div class="author_post" style="background: #' .$author_color, '" >';
@@ -334,7 +334,7 @@ $author_color="555555";
 
             $i++;
             if ($i % 3 == 0 && $i<$count) {
-                echo '</div><div class="row section'.$i.'">';
+                echo '</div><div class="row section_animate">';
             }
         if($i>=$count){
             echo "</div>";
@@ -352,7 +352,7 @@ $author_color="555555";
 </div></div></div>
 <!---->
 <?php
-//if($count>0){
+if($count>0){
 //    echo '<script>
 //        $(window).load(function(){
 //           animate_tiles();
@@ -389,19 +389,15 @@ $author_color="555555";
 //        echo '}
 //    </script>
 //    ';
-//    echo '<style>';
-//    for ($i=0; $i<$count; $i++) {
-//        if ($i % 3 == 0){
-//            echo '
-//            .section'.$i.'{
-//                opacity:0;
-//                clear:both;
-//            }
-//            ';
-//        }
-//    }
-//    echo '</style>';
-
-//}
+    echo '<style>';
+    echo '
+            .section_animate{
+                opacity:0;
+                clear:both;
+            }
+            ';
+    echo '</style>';
+//
+}
 get_footer();
 ?>
