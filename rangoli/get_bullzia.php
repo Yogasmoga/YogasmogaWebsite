@@ -266,15 +266,18 @@ if ($data) {
             $user_roles = $author->roles;
             $postAuthorUrl = get_site_url()."/profile/?user_id=".$author_id;
 
+            $level = get_user_level($single['userId']);
+            $level = str_replace("level_","",$level);
+
             if(is_array($user_roles) && count($user_roles)>0){
                 $role = $user_roles[0];
                 if($role == "smogi" || $role == "store"){
                     $postAuthorUrl = get_site_url()."/author/".$author->user_nicename;
                 }
-            }
 
-            $level = get_user_level($single['userId']);
-            $level = str_replace("level_","",$level);
+                if($role=="store")
+                    $level = "hide";
+            }
 
             $data_unique_color[] = array(
                 'userId' => $single['userId'],

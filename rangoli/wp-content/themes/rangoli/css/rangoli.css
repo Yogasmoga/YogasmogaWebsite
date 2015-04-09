@@ -922,6 +922,9 @@ svg#flower path:hover {
     width: 100px;
 }
 
+.uinfo .act-user .uact a:hover, .uname a:hover{
+    color : #999;
+}
 
 .your-color-block .charmBig {
     transform: rotate(180deg);

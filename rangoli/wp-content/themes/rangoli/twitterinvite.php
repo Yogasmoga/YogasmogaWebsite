@@ -235,11 +235,17 @@ $text = "Join me on RANGOLI and let's paint the town red together. Discover more
         .CTA-buttons a {
             border: 1px solid #444;
             color: #444;
-            display: block;
-            line-height: 35px;
-            margin: 0 auto;
-            width: 317px;
-            margin-top: 30px;
+            display: inline-block;
+            line-height: 42px;
+            margin: 30px auto 0;
+            padding: 0 50px;
+            width: auto;
+            transition-duration: 200ms;
+        }
+        .CTA-buttons a:hover {
+            background: #444;
+            color: #fff;
+            transition-duration: 200ms;
         }
     </style>
 <?php

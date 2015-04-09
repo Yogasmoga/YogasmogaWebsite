@@ -329,3 +329,18 @@
     color: #555 !important;
     transition-duration: 500ms;
 }
+.one-three .overlay-text .post_category a,.two-three .overlay-text .post_category a{
+    font-size: 11px;
+    line-height: 0;
+}
+.one-three .overlay-text .post_category ,.two-three .overlay-text .post_category {
+    font-size: 11px;
+    padding: 0 0 10px 0 !important;
+    margin-bottom: 25px !important;
+}
+.one-three .overlay-text .post_category{
+    width : 60% !important;
+}
+.two-three .overlay-text .post_category {
+     width : 40% !important;
+}

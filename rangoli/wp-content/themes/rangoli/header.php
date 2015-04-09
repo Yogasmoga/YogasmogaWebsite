@@ -322,16 +322,15 @@ $display_name = $current_user->display_name;
 
 
                                 if ($imgURL == "") {
-                                    echo '<p><a href="'.$profileUrl.'" ><img   class="profile-img-small" src="' . get_site_url() . '/wp-content/themes/rangoli/images/default.jpg" /></a>';
+                                    echo '<p><a style="width: 40px" href="'.$profileUrl.'" ><img   class="profile-img-small" src="' . get_site_url() . '/wp-content/themes/rangoli/images/default.jpg" /></a>';
 
                                     echo '<span id="profile_charm"  class="charm color_'.$main_color.' '.$level.'"></span></p>';
 
                                 } else {
-                                    echo "<p><a href='$profileUrl' ><img src='$imgURL' class='profile-img-small' /></a>";
-
+                                    echo "<p><a style='width: 40px' href='$profileUrl' ><img src='$imgURL' class='profile-img-small' /></a>";
                                     echo '<span  id="profile_charm"    class="charm color_'.$main_color.' '.$level.'"></span></p>';
                                 }
-                                echo "<p class='user_name'>$user_info->display_name</p>";
+                                echo "<p class='user_name'><a  href='$profileUrl' >$user_info->display_name</a></p>";
 
                                 if ($user_info->roles[0] == "smogi" || $user_info->roles[0] == "store" || $user_info->roles[0] == "administrator") {
                                     echo "<p><a href='" . get_site_url() . "/wp-admin/post-new.php'>POST</a></p>";
@@ -342,23 +341,40 @@ $display_name = $current_user->display_name;
 
                             }
                         }
+                        else{
+                            ?>
+
+                            <p><a onclick="$('.login_logout_link').click();">Sign In / Sign Up</a></p>
+                        <?php
+                        }
                         ?>
                     </div></li>
-                <li><a class="home_link" href="<?php echo get_home_url() ?>/"><img src="<?php bloginfo('template_directory')?>/images/home.png" /> </a> </li>
+                <li><a class="home_link" href="<?php echo get_home_url() ?>/">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  x="0px" y="0px" width="34px" height="30px" viewBox="-0.5 -0.293 34 30" enable-background="new -0.5 -0.293 34 30" xml:space="preserve">
+                    <defs>
+                    </defs>
+                            <path fill="none" stroke="#000000" stroke-miterlimit="10" d="M23.539,12.227v14.886H0.5V12.227l11.52-11.52L23.539,12.227z   M15.06,18.72h-6.08v8.393h6.08V18.72z"/>
+                    </svg>
+
+                        <!--                    <img src="--><?php //bloginfo('template_directory')?><!--/images/home.png" /> -->
+
+                    </a> </li>
             </ul>
             <?php
             wp_nav_menu( array( 'theme_location' => 'menu1', 'container_class' => 'category-menu' ) );
             wp_nav_menu( array( 'theme_location' => 'menu2', 'container_class' => 'category-menu' ) );
             ?>
             <ul class="shop-yogasmoga">
-                <li>
+                <li style="position: relative">
                     <a href="/"><img class="right" src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/ys-store.png" /></a>
+                    <a href="/" style="position: absolute; top:0 ; left:0; "><img class="right" src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/ys_store_hover.png" /></a>
 
                 </li>
             </ul>
             <ul class="about-rangoli">
-                <li style="padding-right: 5px">
+                <li style="padding-right: 5px; position: relative">
                     <a href="<?php echo get_site_url() ?>/about"><img class="right" src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/about.png" /> </a>
+                    <a href="<?php echo get_site_url() ?>/about"  style="position: absolute; top:0 ; left:0; "><img class="right" src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/ys_rangoli_hover.png" /> </a>
 
                 </li>
             </ul>
@@ -367,4 +383,3 @@ $display_name = $current_user->display_name;
     <div class="fixed-container" id="fixed_container">
         <div>
             <!-- START OF WP CODE  -->
-
