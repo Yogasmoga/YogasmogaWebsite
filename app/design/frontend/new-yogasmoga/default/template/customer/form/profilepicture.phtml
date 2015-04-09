@@ -245,6 +245,8 @@ $thumb_height = "150";
 <script type="text/javascript">
 
     var imgArea;
+    var updateButtonClicked = false;
+    var pictureUploaded = false;
 
     jQuery(document).ready(function () {
 
@@ -278,34 +280,44 @@ $thumb_height = "150";
 //        });
 
         jQuery("#ifr").load(function () {
-            var result = jQuery("#ifr").contents().find("body").html();
 
-            jQuery(".messageupdate").html("");
+            if(pictureUploaded) {
 
-            showResponse(result);
+                var result = jQuery("#ifr").contents().find("body").html();
+
+                jQuery(".messageupdate").html("");
+
+                showResponse(result);
+            }
         });
 
         jQuery("#ifr2").load(function () {
-            var result = jQuery("#ifr2").contents().find("body").html();
 
-            jQuery(".spuploadimage").hide();
-            jQuery(".spuploadimage").html("&nbsp;");
+            if(updateButtonClicked) {
 
-//            jQuery(".spuploadbannerimage").hide();
-//            jQuery(".spuploadbannerimage").html("&nbsp;");
-//
-//            jQuery("#banner_pic").val("");
-            jQuery("#profile_pic").val("");
+                updateButtonClicked = false;
 
-            if(result.indexOf("Error")>-1)
-                jQuery(".messageupdate").html(result);
-            else {
-                jQuery(".messageupdate").html("Profile updated successfully");
-                jQuery(".profile_pic_image").attr("src", result);
+                var result = jQuery("#ifr2").contents().find("body").html();
+
+                jQuery(".spuploadimage").hide();
+                jQuery(".spuploadimage").html("&nbsp;");
+
+                //            jQuery(".spuploadbannerimage").hide();
+                //            jQuery(".spuploadbannerimage").html("&nbsp;");
+                //
+                //            jQuery("#banner_pic").val("");
+                jQuery("#profile_pic").val("");
+
+                if (result.indexOf("Error") > -1)
+                    jQuery(".messageupdate").html(result);
+                else {
+                    jQuery(".messageupdate").html("Profile updated successfully");
+                    jQuery(".profile_pic_image").attr("src", result);
+                }
+
+                imgArea.setOptions({hide: true});
+                imgArea.update();
             }
-
-            imgArea.setOptions({ hide: true });
-            imgArea.update();
         });
 
         jQuery("#imagefile").val("");
