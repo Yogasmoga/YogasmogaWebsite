@@ -594,14 +594,12 @@ $(window).load(function () {
     });
     var wh = $(window).height();
     var ww = $(window).width();
-//    $(".wp_page_banner").height(ww*0.5625);
     $(".wp_page_banner").height(wh-70);
 })
 $(window).resize(function () {
     var wh = $(window).height();
     var ww = $(window).width();
-    //$(".wp_page_banner").height(ww*0.5625);
-    $(".wp_page_banner").height(wh-70);
+    $(".wp_page_banner").height(wh-70);;
 });
 
 /* ////////////////////////////////////GET CUSTOMER COLOR////////////////////////////// */
@@ -822,9 +820,9 @@ function ajax_load_pages(link) {
                 $(document).find(".wp_page_banner .play-video").remove();
             });
 
-            $(window).load(function(){
-            animate_tiles();
-            });
+            //$(window).load(function(){
+            //animate_tiles();
+            //});
 
 
             $(document).find(".homepage_page_banner .play-video").unbind("click");
@@ -869,8 +867,7 @@ function init() {
     var wh = $(window).height();
     var ww = $(window).width();
     $(".fixed-container").css("min-height",wh/2);
-    //$(".wp_page_banner").height(ww*0.5625);
-    $(".wp_page_banner").height(wh-70);
+    $(".wp_page_banner").height(wh-70);;
 
     $(".post_category a").each(function () {
 
@@ -1361,12 +1358,39 @@ $(document).ready(function(){
 
 });
 
-//$(window).load(function(){
-//    setTimeout( function() {
-//        window.onpopstate = function (event) {
-//            var link = document.location.href;
-//            window.location = link;
-//            change_url = false;
-//        };
-//    },500);
-//});
+$(window).load(function(){
+    setTimeout( function() {
+        window.onpopstate = function (event) {
+            var link = document.location.href;
+            window.location = link;
+        };
+    },500);
+    animate_tiles();
+
+});
+
+var winH = $(window).height();
+function animate_tiles(){
+    $(".section_animate").each(function(){
+        //var element = $(this);
+        var top = $(this).offset().top;
+        var scrollTop = $(window).scrollTop();
+        console.log("[" + (scrollTop - $(this).offset().top) + " , " + (winH - 100) + "]");
+        if (($(this).offset().top -  scrollTop) <= (winH - 100)) {
+            $(this).removeClass("section_animate");
+            $(this).addClass("fadeInUp").addClass("animated");
+        }
+    });
+}
+
+$(window).scroll(function(){
+    var scrollTop = $(window).scrollTop();
+    $(document).find(".section_animate").each(function() {
+        console.log(scrollTop + " , " + $(this).offset().top);
+        console.log("[" + (scrollTop - $(this).offset().top) + " , " + (winH - 100) + "]");
+        if (($(this).offset().top -  scrollTop) <= (winH - 100)) {
+            $(this).removeClass("section_animate");
+            $(this).addClass("fadeInUp").addClass("animated");
+        }
+    });
+});
