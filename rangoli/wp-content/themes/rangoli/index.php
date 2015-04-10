@@ -206,7 +206,7 @@ $author_color="555555";
                         </a>
                     </li>
                     <li>
-                        <a target="_blank" rel="<?php echo $post->ID; ?>" user="<?php echo get_current_user_id();  ?>" href="mailto:?subject= Let's paint the town red, together &amp;body=Check out this post <?php echo $b_pl; ?> ">
+                        <a target="_blank" rel="<?php echo $post->ID; ?>" user="<?php echo get_current_user_id();  ?>" href="mailto:?subject= RANGOLI : Let's paint the town red, together &amp;body=Check out this post <?php echo $b_pl; ?> ">
                             <img src="/rangoli/wp-content/themes/rangoli/images/mail.png">
                             <img src="/rangoli/wp-content/themes/rangoli/images/mail_hover.png">
                         </a>

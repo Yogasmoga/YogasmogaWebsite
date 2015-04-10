@@ -194,7 +194,7 @@
     width: 50%;
 }
 .twitter-icon {
-    bottom: 20px;
+    bottom: 30px;
     left: 50%;
     margin-left: -25px;
     position: absolute;
@@ -248,19 +248,17 @@
 }
 .flexslider #signup_signin_btn {
     border: 1px solid #fff;
-    bottom: 30px;
     box-sizing: border-box;
     color: #fff;
     cursor: pointer;
+    display: inline-block;
     font-family: freight-text-pro;
     font-size: 18px;
     left: 50%;
-    margin-left: -70px;
-    padding: 2px 8px;
-    position: absolute;
+    line-height: 42px;
+    margin: 0 auto 30px;
+    padding: 0 50px;
     text-align: center;
-    width: 140px;
-    z-index: 5;
 }
 .over-the-slide {
     opacity: 0;

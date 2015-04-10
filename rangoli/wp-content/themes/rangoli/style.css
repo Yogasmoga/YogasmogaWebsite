@@ -85,13 +85,13 @@ div{
     font-family: ITCAvantGardeStd-Md;
 }
 .light {
-    font: 32px/43px ITCAvantGardeStd-XLt;
+    font: 33px/37px ITCAvantGardeStd-XLt;
 }
 .freighttextbook {
     font-family: "freight-text-pro",serif;
     font-style: normal;
     font-weight: 400;
-    line-height: 1.3;
+    line-height: 25px;
     font-size: 20px;
 }
 .post_title {
