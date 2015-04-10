@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ysindia_Customer>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Ysindia_Customer>
+    </modules>
+</config>

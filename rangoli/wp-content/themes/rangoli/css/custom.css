@@ -1926,22 +1926,24 @@ button.next-confirmation-page {
     z-index: 5;
 }
 .arrow-prev span {
-    background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-elements/prev.png");
+    background: url("/rangoli/wp-content/themes/rangoli/images/color_left.png");
     cursor: pointer;
-    height: 30px;
+    width: 30px;
+    height: 100px;
     left: 20px;
-    margin-top: -15px;
+    margin-top: -50px;
     position: absolute;
     top: 50%;
-    width: 30px;
+    width: 60px;
 }
 .arrow-next span {
-    background-image: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-elements/next.png");
+    background-image: url("/rangoli/wp-content/themes/rangoli/images/color_right.png");
     position: absolute;
-    width: 30px;
-    height: 30px;
-    top: 50%;
-    margin-top:-15px;
     right:20px;
     cursor: pointer;
+    height: 100px;
+    margin-top: -50px;
+    position: absolute;
+    top: 50%;
+    width: 75px;
 }
