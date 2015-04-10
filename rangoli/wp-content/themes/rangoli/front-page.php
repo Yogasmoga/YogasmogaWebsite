@@ -79,11 +79,11 @@ endif;
             <div class="pad3 grey align-center">
                 <p class="bold"> DISCOVER, SHARE, ENJOY</p>
 
-                <p class="light"><span>OUR INNOVATIVE & INTERACTIVE COMMUNITY SPACE</span></p>
+                <p class="light"><span>OUR COMMUNITY IN COLOR</span></p>
 
-                <p class="freighttextbook">At YOGASMOGA we know that people have a love affair with color. <br/>
-                    They romance color, they feel it—it speaks to them and they deeply desire it.<br/>
-                    This deep connection that people have with color is a key driver of Rangoli.</p>
+                <p class="freighttextbook">At YOGASMOGA, we recognize the important role color has in shaping our world. <br/>
+                    Color gives meaning and dimension – we use it to express the connections we make and express who we are. <br/>
+                    Our relationship with color defines RANGOLI: a journey of content, conversation and connection.</p>
             </div>
         </section>
 

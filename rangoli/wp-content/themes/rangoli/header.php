@@ -1,15 +1,16 @@
 <?php
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Cache-Control: post-check=0, pre-check=0", false);
-header("Pragma: no-cache");
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache");
 
-if(is_ssl()) {
-    $url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-    header("location: ".$url);
-}
+    if(is_ssl()) {
+        $url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        header("location: ".$url);
+    }
 ?>
 <!DOCTYPE HTML>
 <head>
+    <link rel="shortcut icon"   href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico" />
     <title><?php bloginfo('title'); if(!is_home() && !is_author() && !is_404()){ echo ' | '.get_the_title();}  if ( is_author() ) {
             $author_obj = $wp_query->get_queried_object();
             echo ' | '.strtoupper($author_obj->display_name);
@@ -19,8 +20,8 @@ if(is_ssl()) {
     <meta property="description" content="Rangoli - A Blog based on health and wellness." />
 
     <?php
-    $root = get_site_url();
-    $root = str_replace("/rangoli","/",$root);
+        $root = get_site_url();
+        $root = str_replace("/rangoli","/",$root);
     ?>
     <script>
         var user_color_shade;
@@ -38,7 +39,7 @@ if(is_ssl()) {
     </script>
 
     <?php
-    //  the_block('head');
+      //  the_block('head');
     ?>
     <script src="<?php bloginfo('template_directory')?>/js/jquery.js" ></script>
     <script src="<?php bloginfo('template_directory')?>/js/jquery.flexslider.js" ></script>
@@ -57,15 +58,15 @@ if(is_ssl()) {
     <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/rangoli.css" />
     <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/jquery.raty.css" />
     <link rel="stylesheet" href="<?php  bloginfo("template_directory")  ?>/css/pace.css" />
-    <!--    <link rel='stylesheet' href="--><?php //bloginfo('template_directory'); ?><!--/css/media.css" />-->
+<!--    <link rel='stylesheet' href="--><?php //bloginfo('template_directory'); ?><!--/css/media.css" />-->
 
 
     <?php
-    if(is_front_page()){
-        ?>
+        if(is_front_page()){
+    ?>
 
-        <script src="<?php bloginfo('template_directory')?>/js/jquery.flexslider.js" ></script>
-        <script src="<?php bloginfo('template_directory')?>/js/homepage.js" ></script>
+    <script src="<?php bloginfo('template_directory')?>/js/jquery.flexslider.js" ></script>
+    <script src="<?php bloginfo('template_directory')?>/js/homepage.js" ></script>
 
     <?php
     }
@@ -109,7 +110,7 @@ if(is_ssl()) {
                                 <li><a href="/women/bottoms/pants">Pants</a></li>
                                 <li><a href="/women/bottoms/leggings">Leggings</a></li>
                                 <li><a href="/women/bottoms/crops">Crops</a></li>
-                                <!--                                <li><a href="/women/bottoms/shorts">Shorts</a></li>-->
+<!--                                <li><a href="/women/bottoms/shorts">Shorts</a></li>-->
                             </ul>
                         </li>
                         <li><a href="/women/accessories"> Accessories </a>
@@ -129,7 +130,7 @@ if(is_ssl()) {
                         <li>
                             <ul>
                                 <li><a href="/mens/what-s-new"> What's New</a></li>
-                                <!--                                <li><a href="/mens/top-sellers"> Top Sellers</a></li>-->
+<!--                                <li><a href="/mens/top-sellers"> Top Sellers</a></li>-->
                             </ul>
                         </li>
 
@@ -265,35 +266,35 @@ $display_name = $current_user->display_name;
 <div class="wp_page" id="page">
     <div class="menu-btn">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-             x="0px" y="0px" width="30px" height="40px" viewBox="0 -4 30 60" enable-background="new 0 -4 30 60" xml:space="preserve">
+              x="0px" y="0px" width="30px" height="40px" viewBox="0 -4 30 60" enable-background="new 0 -4 30 60" xml:space="preserve">
         <defs>
         </defs>
-            <rect fill="#555" width="30" height="5"/>
-            <rect y="11" fill="#555" width="30" height="5"/>
-            <rect y="22" fill="#555" width="30" height="5"/>
+        <rect fill="#555" width="30" height="5"/>
+        <rect y="11" fill="#555" width="30" height="5"/>
+        <rect y="22" fill="#555" width="30" height="5"/>
         </svg>
     </div>
 
     <div class="color-game">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-             x="0px" y="0px" width="30px" height="40px" viewBox="-0.339 -1 30 60" enable-background="new -0.339 -1 30 60" xml:space="preserve">
+        x="0px" y="0px" width="30px" height="40px" viewBox="-0.339 -1 30 60" enable-background="new -0.339 -1 30 60" xml:space="preserve">
         <defs>
         </defs>
-            <polygon fill=" #555" stroke=" #555" stroke-width="2" stroke-miterlimit="10" points="1.661,1 28.112,1 14.887,27.01 "/>
-            <polygon fill="none" stroke=" #555" stroke-width="2" stroke-miterlimit="10" points="1.661,30 14.887,54.98 27.661,30 "/>
+        <polygon fill=" #555" stroke=" #555" stroke-width="2" stroke-miterlimit="10" points="1.661,1 28.112,1 14.887,27.01 "/>
+        <polygon fill="none" stroke=" #555" stroke-width="2" stroke-miterlimit="10" points="1.661,30 14.887,54.98 27.661,30 "/>
         </svg>
     </div>
     <div class="bullzai">
         <img src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/bullzai.png" />
     </div>
 
-    <div class="menu-box user-color-shade" style="background:rgba(85,85,85,0.85)">
-        <div class="menu-content white">
-            <img src="<?php bloginfo('template_directory') ?>/images/close.png" class="right close-menu-btn" />
+<div class="menu-box user-color-shade" style="background:rgba(85,85,85,0.85)">
+    <div class="menu-content white">
+        <img src="<?php bloginfo('template_directory') ?>/images/close.png" class="right close-menu-btn" />
 
-            <ul class="profile-links">
-                <li><div id="user_info">
-                        <?php
+        <ul class="profile-links">
+            <li><div id="user_info">
+                    <?php
                         if(is_user_logged_in()) {
                             $current_wp_user = get_current_user_id();
                             if ($current_wp_user != 0) {
@@ -341,45 +342,45 @@ $display_name = $current_user->display_name;
 
                             }
                         }
-                        else{
-                            ?>
-
-                            <p><a onclick="$('.login_logout_link').click();">Sign In / Sign Up</a></p>
-                        <?php
-                        }
+                    else{
                         ?>
-                    </div></li>
-                <li><a class="home_link" href="<?php echo get_home_url() ?>/">
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  x="0px" y="0px" width="34px" height="30px" viewBox="-0.5 -0.293 34 30" enable-background="new -0.5 -0.293 34 30" xml:space="preserve">
+
+                    <p><a onclick="$('.login_logout_link').click();">Sign In / Sign Up</a></p>
+                    <?php
+                    }
+                    ?>
+                </div></li>
+            <li><a class="home_link" href="<?php echo get_home_url() ?>/">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  x="0px" y="0px" width="34px" height="30px" viewBox="-0.5 -0.293 34 30" enable-background="new -0.5 -0.293 34 30" xml:space="preserve">
                     <defs>
                     </defs>
-                            <path fill="none" stroke="#000000" stroke-miterlimit="10" d="M23.539,12.227v14.886H0.5V12.227l11.52-11.52L23.539,12.227z   M15.06,18.72h-6.08v8.393h6.08V18.72z"/>
+                    <path fill="none" stroke="#000000" stroke-miterlimit="10" d="M23.539,12.227v14.886H0.5V12.227l11.52-11.52L23.539,12.227z   M15.06,18.72h-6.08v8.393h6.08V18.72z"/>
                     </svg>
 
-                        <!--                    <img src="--><?php //bloginfo('template_directory')?><!--/images/home.png" /> -->
+<!--                    <img src="--><?php //bloginfo('template_directory')?><!--/images/home.png" /> -->
 
-                    </a> </li>
-            </ul>
-            <?php
+                </a> </li>
+        </ul>
+        <?php
             wp_nav_menu( array( 'theme_location' => 'menu1', 'container_class' => 'category-menu' ) );
             wp_nav_menu( array( 'theme_location' => 'menu2', 'container_class' => 'category-menu' ) );
-            ?>
-            <ul class="shop-yogasmoga">
-                <li style="position: relative">
-                    <a href="/"><img class="right" src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/ys-store.png" /></a>
-                    <a href="/" style="position: absolute; top:0 ; left:0; "><img class="right" src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/ys_store_hover.png" /></a>
+        ?>
+        <ul class="shop-yogasmoga">
+            <li style="position: relative">
+                <a href="/"><img class="right" src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/ys-store.png" /></a>
+                <a href="/" style="position: absolute; top:0 ; left:0; "><img class="right" src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/ys_store_hover.png" /></a>
 
-                </li>
-            </ul>
-            <ul class="about-rangoli">
-                <li style="padding-right: 5px; position: relative">
-                    <a href="<?php echo get_site_url() ?>/about"><img class="right" src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/about.png" /> </a>
-                    <a href="<?php echo get_site_url() ?>/about"  style="position: absolute; top:0 ; left:0; "><img class="right" src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/ys_rangoli_hover.png" /> </a>
+            </li>
+        </ul>
+        <ul class="about-rangoli">
+            <li style="padding-right: 5px; position: relative">
+                <a href="<?php echo get_site_url() ?>/about"><img class="right" src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/about.png" /> </a>
+                <a href="<?php echo get_site_url() ?>/about"  style="position: absolute; top:0 ; left:0; "><img class="right" src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/ys_rangoli_hover.png" /> </a>
 
-                </li>
-            </ul>
-        </div>
+            </li>
+        </ul>
     </div>
+</div>
     <div class="fixed-container" id="fixed_container">
         <div>
-            <!-- START OF WP CODE  -->
+        <!-- START OF WP CODE  -->

@@ -257,7 +257,7 @@ get_header();
             "color_01abff": {
                 "shades": ["2400ff","007eff" ,"86e2ff" , "00ceff", "000075", "004fff"],
                 "animation": "hexa",
-                "bg": "404042"
+                "bg": "999999"
             },
             "color_009e01": {
                 "shades": ["a0e900",  "006500", "009e34","008700", "86d979", "4eb800"],
