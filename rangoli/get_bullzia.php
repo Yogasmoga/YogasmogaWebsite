@@ -246,20 +246,11 @@ if ($data) {
                 $smogi_bucks = $smogi_bucks." SMOGI Bucks";
             }
 
+
+
             $userInfo = get_userdata($single['userId']);
             $roles = $userInfo->roles;
             $url = get_site_url()."/profile/?user_id=".$single['userId'];
-            if($roles){
-                $role = $roles[0];
-                if(isset($role) && ($role == "smogi" || $role == "store")){
-                    $url = get_author_posts_url($single['userId']);
-                }
-
-                if($role && $role == "store"){
-                    $smogi_bucks = "";
-                }
-            }
-
             $post = get_post($single['postId']);
             $author_id = $post->post_author;
             $author = get_userdata($author_id);
@@ -268,24 +259,30 @@ if ($data) {
 
             $level = get_user_level($single['userId']);
             $level = str_replace("level_","",$level);
-
-            if(is_array($user_roles) && count($user_roles)>0){
-                $role = $user_roles[0];
-                if($role == "smogi" || $role == "store"){
+            if($roles){
+                $role = $roles[0];
+                if(isset($role) && ($role == "smogi" || $role == "store")){
+                    $url = get_author_posts_url($single['userId']);
                     $postAuthorUrl = get_site_url()."/author/".$author->user_nicename;
                 }
 
-                if($role=="store")
+                if($role && $role == "store"){
+                    $smogi_bucks = "";
                     $level = "hide";
+                }
             }
 
+            $profileImage = $single['profileImage'];
+            if($profileImage==''){
+                $profileImage = get_site_url() . '/wp-content/themes/rangoli/images/default.jpg';
+            }
             $data_unique_color[] = array(
                 'userId' => $single['userId'],
                 'type' => $single['type'],
                 'color' => $single['color'],
                 'shade' => $single['shade'],
                 'name' => $single['name'],
-                'profileImage' => $single['profileImage'],
+                'profileImage' => $profileImage,
                 'place' => $single['place'],
                 'interests' => $all_interests,
                 'smogiBucks' => $smogi_bucks,
