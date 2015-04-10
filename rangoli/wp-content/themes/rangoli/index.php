@@ -187,10 +187,30 @@ $author_color="555555";
                         $post_link = get_permalink($post->ID);
                         $b_pl = get_bitly_url($post_link);
                     ?>
-                    <li><a target="_blank" rel="<?php echo $post->ID; ?>" user="<?php echo get_current_user_id();  ?>" href="https://www.facebook.com/sharer/sharer.php?app_id=909386705751971&u=<?php echo $b_pl; ?>"><img src="/rangoli/wp-content/themes/rangoli/images/fb.png"> </a></li>
-                    <li><a target="_blank" rel="<?php echo $post->ID; ?>" user="<?php echo get_current_user_id();  ?>" href="http://twitter.com/intent/tweet?text=<?php echo $post->post_title;  ?>&url=<?php echo $b_pl; ?>"><img src="/rangoli/wp-content/themes/rangoli/images/tw.png"></a></li>
-                    <li><a target="_blank" rel="<?php echo $post->ID; ?>" user="<?php echo get_current_user_id();  ?>" href="https://pinterest.com/pin/create/button/?url=<?php echo $b_pl; ?>&media=<?php echo $banner_img_url[0]; ?> "><img src="/rangoli/wp-content/themes/rangoli/images/pin.png"></a></li>
-                    <li><a target="_blank" rel="<?php echo $post->ID; ?>" user="<?php echo get_current_user_id();  ?>" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this post <?php echo $b_pl; ?> "><img src="/rangoli/wp-content/themes/rangoli/images/mail.png"></a></li>
+                    <li>
+                        <a target="_blank" rel="<?php echo $post->ID; ?>" user="<?php echo get_current_user_id();  ?>" href="https://www.facebook.com/sharer/sharer.php?app_id=909386705751971&u=<?php echo $b_pl; ?>">
+                            <img src="/rangoli/wp-content/themes/rangoli/images/fb.png">
+                            <img src="/rangoli/wp-content/themes/rangoli/images/fb_hover.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="<?php echo $post->ID; ?>" user="<?php echo get_current_user_id();  ?>" href="http://twitter.com/intent/tweet?text=<?php echo $post->post_title;  ?>&url=<?php echo $b_pl; ?>">
+                            <img src="/rangoli/wp-content/themes/rangoli/images/tw.png">
+                            <img src="/rangoli/wp-content/themes/rangoli/images/tw_hover.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="<?php echo $post->ID; ?>" user="<?php echo get_current_user_id();  ?>" href="https://pinterest.com/pin/create/button/?url=<?php echo $b_pl; ?>&media=<?php echo $banner_img_url[0]; ?> ">
+                            <img src="/rangoli/wp-content/themes/rangoli/images/pin.png">
+                            <img src="/rangoli/wp-content/themes/rangoli/images/pin_hover.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="<?php echo $post->ID; ?>" user="<?php echo get_current_user_id();  ?>" href="mailto:?subject= Let's paint the town red, together &amp;body=Check out this post <?php echo $b_pl; ?> ">
+                            <img src="/rangoli/wp-content/themes/rangoli/images/mail.png">
+                            <img src="/rangoli/wp-content/themes/rangoli/images/mail_hover.png">
+                        </a>
+                    </li>
                 </ul>
             </div>
 

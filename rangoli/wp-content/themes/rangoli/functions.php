@@ -258,7 +258,7 @@ function tags_filter()
 }
 
 
-function filter($cat)
+function filter($cat="all")
 {
     ?>
     <div class="filter-wrapper">
@@ -272,11 +272,29 @@ function filter($cat)
                         <?php
                         $authors = get_users("role=smogi");
                         $stores = get_users("role=store");
-                        $authors = array_merge($authors, $stores);
+                        $contributors = get_users("role=contributor");
+                        $authors = array_merge($authors, $stores,$contributors);
+
                         foreach ($authors as $author) {
-                            //$author_name = $author->display_name;
-                            $author_name = str_replace(" ", "%20", $author->display_name);
-                            echo "<li><a href='?author=" . $author_name . "'>" . $author->display_name . "<span class='radio'></span></a></li>";
+                            if(is_page("read")){
+                                $cat = "read";
+                            }
+                            if(is_page("look")){
+                                $cat = "look";
+                            }
+                            if(is_page("learn")){
+                                $cat = "learn";
+                            }
+                            if($cat){
+                                $catID = get_cat_ID($cat);
+                                $userposts = get_posts("cat=$catID&showposts=-1&author=".$author->ID);
+                                $count=count($userposts);
+                                if ($count) {
+                                    $author_name = str_replace(" ", "%20", $author->display_name);
+                                    echo "<li><a href='?author=" . $author_name . "'>" . $author->display_name . "<span class='radio'></span></a></li>";
+                                }
+                            }
+
                         }
                         ?>
                     </ul>
