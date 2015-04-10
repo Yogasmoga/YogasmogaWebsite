@@ -1968,5 +1968,5 @@ button.next-confirmation-page {
     width: 75px;
 }
 .level_hide{
-    display:none;
+    display:none !important;
 }
