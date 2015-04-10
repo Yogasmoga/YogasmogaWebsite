@@ -148,7 +148,7 @@ get_header();
 
                 $interest_message = 'Thanks for being a part of RANGOLI! We are very excited that you are joining this color journey.
                         If you want to change your color, you can do that <a href="/rangoli/journey">here</a>.
-                        Evolving interests? Change those <a href="/rangoli/journey"> here</a>.
+                        Evolving interests? Change those <a style="cursor:pointer;" onclick="change_interest();"> here</a>.
                         Looking to take your RANGOLI to the next level? <a href="/smogi-bucks">Learn how</a>';
                 $color_message="";
             }
@@ -278,10 +278,14 @@ get_header();
 
 
 
-function get_height(){
-    $("#color-slider .arrow-next").height("100%");
-    $("#color-slider .arrow-prev").height("100%");
-}
+        function change_interest(){
+            $(".confirmation-page").slideUp();
+            $(".interest-page").show();
+        }
+        function get_height(){
+            $("#color-slider .arrow-next").height("100%");
+            $("#color-slider .arrow-prev").height("100%");
+        }
         $(window).resize(function(){
             get_height();
         })

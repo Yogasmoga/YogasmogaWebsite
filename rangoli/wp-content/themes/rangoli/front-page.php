@@ -11,9 +11,11 @@ get_header();
             </div>
             <?php if (!is_user_logged_in()) {
     ?>
+<div style="position: absolute; bottom: 0px; width: 100%; left:0; dislay: block; z-index: 5; text-align: center;">
     <div id="signup_signin_btn">
         Sign in / Sign up
     </div>
+</div>
 <?php
 }
 ?>

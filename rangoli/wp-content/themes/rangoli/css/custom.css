@@ -1360,8 +1360,22 @@ video{
     height: 98px;
     margin: 20px auto 0;
     width: 98px;
+    position: relative;
 }
-
+.author_recent_activity .img_in_circle span {
+    border-radius: 50%;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    transition-duration: 200ms;
+}
+.author_recent_activity .img_in_circle:hover span {
+    opacity: 1;
+    transition-duration: 200ms;
+}
 .overlay-text .charm {
     margin: 0 !important;
 }
@@ -1507,8 +1521,11 @@ p.invite {
     margin-top: -5px;
     position: absolute;
 }
-.sharing_icons a{
+.sharing_icons a {
+    display: block;
+    height: 27px;
     position: relative;
+    width: 27px;
 }
 .sharing_icons a img:nth-child(1){
     opacity: 1;
@@ -1520,7 +1537,7 @@ p.invite {
 }
 .sharing_icons a img:nth-child(2){
     position: absolute;
-    top: -14px;
+    top: 0px;
     left: 0;
     opacity: 0;
     transition-duration: 200ms;
@@ -1531,6 +1548,9 @@ p.invite {
 }
 .sharing_icons img {
     height: auto;
+    left: 0;
+    position: absolute;
+    top: 0;
     width: 27px;
 }
 .post_share, .single_post_like {
@@ -1946,4 +1966,7 @@ button.next-confirmation-page {
     position: absolute;
     top: 50%;
     width: 75px;
+}
+.level_hide{
+    display:none;
 }

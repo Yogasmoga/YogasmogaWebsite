@@ -22,7 +22,7 @@ body, .header-container, .footer-container{
     background-color: #fff;
     height: 69px;
     min-width: 1007px;
-    position: fixed;
+    position: fixed !important;
     top: 0;
     width: 100%;
 

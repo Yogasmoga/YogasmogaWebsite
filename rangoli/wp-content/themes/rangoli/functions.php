@@ -270,26 +270,27 @@ function filter($cat="all")
                 <li><p class="user-color-shade"><span class="down-arrow-grey-white">Author</span></p>
                     <ul>
                         <?php
+                        if(is_page("read")){
+                            $cat = "read";
+                        }
+                        if(is_page("look")){
+                            $cat = "look";
+                        }
+                        if(is_page("learn")){
+                            $cat = "learn";
+                        }
                         $authors = get_users("role=smogi");
                         $stores = get_users("role=store");
                         $contributors = get_users("role=contributor");
                         $authors = array_merge($authors, $stores,$contributors);
 
                         foreach ($authors as $author) {
-                            if(is_page("read")){
-                                $cat = "read";
-                            }
-                            if(is_page("look")){
-                                $cat = "look";
-                            }
-                            if(is_page("learn")){
-                                $cat = "learn";
-                            }
+
                             if($cat){
                                 $catID = get_cat_ID($cat);
                                 $userposts = get_posts("cat=$catID&showposts=-1&author=".$author->ID);
                                 $count=count($userposts);
-                                if ($count) {
+                                if ($count>0) {
                                     $author_name = str_replace(" ", "%20", $author->display_name);
                                     echo "<li><a href='?author=" . $author_name . "'>" . $author->display_name . "<span class='radio'></span></a></li>";
                                 }
@@ -303,11 +304,30 @@ function filter($cat="all")
                     <ul>
                         <?php
                         $categories = get_categories("exclude=read,look,learn,all");
-                        foreach ($categories as $category)
-                            if ($category->slug != "all" && $category->slug != "read" && $category->slug != "look" && $category->slug != "learn") {
-                                echo "<li><a href='?topic=" . $category->slug . "'>" . $category->slug . " <span class='radio'></span></a></li>";
 
-                            }
+
+                                        $catID = get_cat_ID($cat);
+                                        $userposts = null;
+                                        $userposts = get_posts("cat=$catID");
+                                        $count=count($userposts);
+                                        if($count>0) {
+                                            foreach ($userposts as $userpost) {
+
+                                                    foreach ($categories as $category) {
+                                                        if ($category) {
+                                                            if ($category->slug != "all" && $category->slug != "read" && $category->slug != "look" && $category->slug != "learn") {
+                                                               
+                                                                if (has_category($category->slug,$userpost)) {
+                                                                    echo "<li><a href='?topic=" . $category->slug . "'>" . $category->slug . " <span class='radio'></span></a></li>";
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+
+
+                                            }
+                                        }
+
 
 
                         ?>
