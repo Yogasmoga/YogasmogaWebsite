@@ -82,8 +82,12 @@ get_header();
                                 if (function_exists('z_taxonomy_image_url'))
                                     echo "<li>
                                         <a  class='user-interest " . $class . "' href='" . $url . "'>
-                                            <img src='" . z_taxonomy_image_url($category->term_id, null, 'medium') . "' />
-                                        </a>";
+                                            <img src='" . z_taxonomy_image_url($category->term_id, null, 'medium') . "' />";
+                                            $image = get_option( 'taxonomy_image_' . $category->term_id );
+                                            if($image && $image!="")
+                                                echo "<img src='".$image."' />";
+                                    echo "</a>";
+
 
                               ?>
                                 <?php
