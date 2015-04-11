@@ -168,7 +168,8 @@
 
     .crop_preview_left {
         float: left;
-        width: 430px;
+        max-width: 400px;
+        margin-right: 50px;
     }
 
     .crop_preview_right {
@@ -182,14 +183,16 @@
     }
 
     .crop_preview_box_big {
-        width: 400px;
-        height: 250px;
+        max-width: 400px;
+        max-height: 300px;
+        overflow: hidden;
     }
 
     .crop_preview_box_big img {
         max-width: 400px;
         max-height: 300px;
         border: 1px solid #b6b6b6;
+        overflow: hidden;
     }
 
     .crop_preview_box_small {
@@ -221,6 +224,15 @@
 
     #preview_table {
         display: none;
+    }
+
+    #thumbviewimage img{
+        width: auto;
+        height: 150px;
+    }
+
+    #thumbviewimage {
+        height: auto;
     }
 </style>
 
@@ -343,6 +355,13 @@ $thumb_height = "150";
     //    }
 
     function showResponse(responseText) {
+
+        pictureUploaded = false;
+
+        if(imgArea != undefined) {
+            imgArea.setOptions({hide: true});
+            imgArea.update();
+        }
 
         if (responseText.indexOf('.') > 0) {
             jQuery('#thumbviewimage').html('<img src="<?php echo $upload_path; ?>' + responseText + '"   style="position: relative;" alt="Thumbnail Preview" />');
