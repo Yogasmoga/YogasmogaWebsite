@@ -709,7 +709,7 @@ function getloggedinuser() {
                 //wplogout();
             }
             $(".one-three .overlay-text").hover(function () {
-                $(this).css({'background-color': 'rgba(' + color + ',0.5)', 'transition-duration': '500ms'})
+                $(this).css({'background-color': 'rgba(' + color + ',0.5)', 'transition-duration': '500ms'});
                 //$(this).css({'background': user_color_shade, 'transition-duration': '500ms'})
             }, function () {
                 $(this).css({
@@ -724,7 +724,7 @@ function getloggedinuser() {
             $(".two-three .overlay-text").hover(function () {
                 $(this).css({'background-color': 'rgba(' + color + ',0.5)', 'transition-duration': '500ms'});
                 //$(this).css({'background': user_color_shade, 'transition-duration': '500ms'});
-                $(this).find("p").css({'color': '#fff', 'transition-duration': '500ms'})
+                $(this).find("p").css({'color': '#fff', 'transition-duration': '500ms'});
                 $(this).find(".post_category").css({"border-color": "#fff", 'transition-duration': '500ms'})
             }, function () {
                 $(this).css({
@@ -747,7 +747,8 @@ function getloggedinuser() {
 }
 
 function fillcolor() {
-    $(".user-color-shade").css({'background-color': 'rgba(' + color + ',0.9)'});
+    //$(".user-color-shade").css({'background-color': 'rgba(' + color + ',0.9)'});
+    $(".user-color-shade").css({'background-color': 'rgba(' + color + ',0.5)', 'transition-duration': '500ms'});
     $(".color-game polygon:nth-child(2)").css("fill", user_color_shade);
     $(".color-game polygon").css("stroke", user_color_shade);
     $(".menu-btn rect").css("fill", user_color_shade);
@@ -961,7 +962,7 @@ function init() {
             user_color_shade = '#555555';
         }
         var color = hexToRgb(user_color_shade);
-        $(".author_post:hover .overlay-text").css({'background': 'rgba('+color+',0.5)'});
+        $(".author_post:hover .overlay-text").css({'background-color': 'rgba('+color+',0.5)','transition-duration':"500ms"});
     }, function () {
         $(".author_post .overlay-text").css({
             //'background':'rgba(0,0,0,0.25)',
