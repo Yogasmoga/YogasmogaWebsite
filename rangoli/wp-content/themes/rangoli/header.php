@@ -80,8 +80,19 @@
 </head>
 <body>
 
+<?php
+$style= "";
+if(!is_user_logged_in()){
+    $style= "margin-top:25px;";
+?>
+<div class="banner">
+    SIGN UP & GET $25 SMOGI BUCKS
+</div>
+<?php
 
-<div class="header-container">
+}
+?>
+<div class="header-container" style="<?php echo $style; ?>">
     <div class="header">
         <div class="header-left">
             <div class="header-left logo">
@@ -241,7 +252,7 @@
 
 
 </div>
-<div class="body-compensator"></div>
+<div class="body-compensator"  style="<?php echo $style; ?>"></div>
 <?php
 $current_user = wp_get_current_user();
 $user_id = $current_user->ID;
@@ -264,7 +275,7 @@ $display_name = $current_user->display_name;
 
 
 <div class="wp_page" id="page">
-    <div class="menu-btn">
+    <div class="menu-btn" style="<?php echo $style; ?>">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
               x="0px" y="0px" width="30px" height="40px" viewBox="0 -4 30 60" enable-background="new 0 -4 30 60" xml:space="preserve">
         <defs>
@@ -275,7 +286,7 @@ $display_name = $current_user->display_name;
         </svg>
     </div>
 
-    <div class="color-game">
+    <div class="color-game" style="<?php echo $style; ?>">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         x="0px" y="0px" width="30px" height="40px" viewBox="-0.339 -1 30 60" enable-background="new -0.339 -1 30 60" xml:space="preserve">
         <defs>
@@ -284,11 +295,11 @@ $display_name = $current_user->display_name;
         <polygon fill="none" stroke=" #555" stroke-width="2" stroke-miterlimit="10" points="1.661,30 14.887,54.98 27.661,30 "/>
         </svg>
     </div>
-    <div class="bullzai">
+    <div class="bullzai"  style="<?php echo $style; ?>">
         <img src="<?php echo get_site_url() ?>/wp-content/themes/rangoli/images/bullzai.png" />
     </div>
 
-<div class="menu-box user-color-shade" style="background:rgba(85,85,85,0.85)">
+<div class="menu-box user-color-shade" style="background:rgba(85,85,85,0.85); <?php echo $style; ?>">
     <div class="menu-content white">
         <img src="<?php bloginfo('template_directory') ?>/images/close.png" class="right close-menu-btn" />
 

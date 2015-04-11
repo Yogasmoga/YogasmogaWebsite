@@ -12,8 +12,8 @@ get_header();
 
     <div class="wp_page row" style="margin-top: 50px; text-align: center;">
         <?php
-$cat = "look, learn, read";
-echo filter($cat);
+
+echo liked_filter();
 ?>
         <h1 class="align-center page-heading">LIKED</h1>
 

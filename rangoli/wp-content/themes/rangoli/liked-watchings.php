@@ -21,7 +21,7 @@
 
                     if (isset($_REQUEST['topic'])) {
                         $filter_category_name = $_REQUEST['topic'];
-                        $filter_query = has_category($filter_category_name);
+                        $filter_query = has_category($filter_category_name, $post);
                     } else if (isset($_REQUEST['author'])) {
                         $filter_author_name = $_REQUEST['author'];
                         $filter_query = (get_the_author_meta('display_name', $post->post_author) == $filter_author_name);
@@ -65,7 +65,30 @@
 
 
                 foreach ($user_favs as $user_fav) {
+
+
                     $post = get_post($user_fav);
+
+
+                    if (isset($_REQUEST['topic'])) {
+                        $filter_category_name = $_REQUEST['topic'];
+                        $filter_query = has_category($filter_category_name, $post);
+                    } else if (isset($_REQUEST['author'])) {
+                        $filter_author_name = $_REQUEST['author'];
+                        $filter_query = (get_the_author_meta('display_name', $post->post_author) == $filter_author_name);
+                    } else if (isset($_REQUEST['length'])) {
+                        $filter_author_name = $_REQUEST['length'];
+                        $post_length = get_post_meta(get_the_ID(), "wpcf-length");
+                        $filter_query = ($post_length == $_REQUEST['length']);
+                    }
+                    else {
+                        $filter_query = true;
+                    }
+
+
+
+
+
                     $wpauthors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=" . $post->post_author);
                     $wp_author = $wpauthors[0];
                     if ($post->post_type == "post" && !empty($user_fav)) {
