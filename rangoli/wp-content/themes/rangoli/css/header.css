@@ -669,12 +669,11 @@ area{
     text-align: center;
 }
 #ap_signup {
-    background: url("http://yogarangoli.com.local//skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-    border: medium none !important;
-    height: 39px;
-    margin-top: 20px;
-    width: 135px !important;
-    display: block;
-    margin: 15px auto 0 ;
-    cursor: pointer;
+  background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+  border: medium none !important;
+  cursor: pointer;
+  display: block;
+  height: 39px;
+  margin: 15px auto 0;
+  width: 135px !important;
 }
