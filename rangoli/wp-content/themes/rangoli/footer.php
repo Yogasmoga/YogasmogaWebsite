@@ -353,7 +353,50 @@
 
     </div>
 </div>
+<!-- ///////////////////////////////  Bullseye Random popup //////////////////////////////////// -->
+<div class="bullseye_popup_container">
+    <div class="bullseye_popup" >
+    </div>
+    <div class="center_popup">
+        <section class="random_popup_container">
+            <div id="card">
+                <figure class="front">
+                    <img src="" usemap="#open_popup"/>
+                    <map name="open_popup">
+                        <area shape="circle" coords="233,233,60" onclick="flip();">
+                    </map>
+                </figure>
+                <figure class="back">
+                    <!-- --------------------------------------SIGNUP POPUP---------------------------- -->
+                    <div id="ap_signin_popup">
 
+                        <div class="signin-block" style="background: rgba(197, 4, 52, 1)">
+                            <?php
+                            $root = get_site_url();
+                            $root = str_replace("/rangoli","/",$root);
+                            ?>
+
+                            <div class="close" ></div>
+                            <img alt="FEEL THE SMOGI LOVE. Sign up and get $25 SMOGI bucks toward your first order." src="<?php echo $root;  ?>skin/frontend/new-yogasmoga/yogasmoga-theme/images/sign_up_text.png" class="form-text" />
+                            <div class="form">
+                                <form id="ap_sign-up-form">
+                                    <input name="" data-watermark="First Name" id="ap_fname"/>
+                                    <input data-watermark="Last Name" id="ap_lname" />
+                                    <input data-watermark="Email Address" id="ap_signup_email" />
+                                    <input data-watermark="Select a password" rel="password" id="ap_s_password" />
+                                    <img class="loader" src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px; display:none;' />
+                                    <input id="ap_signup" type="button" value=""  />
+                                    <div class="err-msg"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                        <!-- ------------------------------------------------------------------------------------ -->
+                </figure>
+            </div>
+        </section>
+    </div>
+</div>
 
 
 

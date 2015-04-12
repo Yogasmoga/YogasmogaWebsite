@@ -290,7 +290,13 @@ jQuery(document).ready(function ($) {
             game.initGame();
             $(".bullzai").fadeIn();
             $('.bullzai').click(function () {
-                game.showGame();
+
+                if(click_count<5 && logged_in==false){
+                    open_bulls_popup();
+                }
+                else{
+                    game.showGame();
+                }
             });
             firstTime = true;
             //setTimeout(function () {

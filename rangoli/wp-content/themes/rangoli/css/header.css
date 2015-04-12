@@ -553,3 +553,128 @@ ul.main-nav > li.rangoli{background-image:none!important;}
 .footer .social-icons {
     margin-top: 2px;
 }
+
+
+
+/******************************Bullseye Random popup *****************************/
+.random_popup_container {
+    height: 470px;
+    perspective: 800px;
+    position: relative;
+    width: 470px;
+}
+#card {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 500ms;
+}
+#card figure {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    margin:0;
+}
+#card .back {
+    transform: rotateY( 180deg );
+}
+#card.flipped {
+    transform: rotateY( 180deg );
+}
+area{
+    cursor: pointer;
+}
+.bullseye_popup {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 69px;
+    width: 100%;
+    display: none;
+}
+.center_popup {
+    height: 470px;
+    left: 50%;
+    margin:-195px -235px;
+    position: absolute;
+    top: 50%;
+    width: 470px;
+    display: none;
+}
+.bullseye_popup_container {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    display: none;
+}
+
+#ap_signin_popup .signin-block {
+    border-radius: 50%;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+    display: block;
+    height: 470px;
+    left: 50%;
+    margin-left: -234px;
+    margin-top: -1px;
+    position: absolute;
+    top: 0;
+    width: 470px;
+}
+#ap_signin_popup .form-text {
+    display: block;
+    left: 15%;
+    margin: 0 auto;
+    padding-top: 1%;
+    width: 350px;
+}
+#ap_signin_popup .form {
+    display: block;
+    left: 252px;
+    margin: 46px auto 0;
+    width: 250px;
+}
+#ap_sign-up-form > input {
+    background-color:transparent;
+    border: medium none;
+    color: #fff !important;
+    font: 13px/1.2px ITCAvantGardeStd-Bk;
+    width: 100%;
+    border-bottom: 1px solid #fff;
+    margin-bottom: 10px;
+}
+#ap_signin_popup .close {
+    background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/pop-close.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    float: right;
+    height: 42px;
+    margin-right: 82px;
+    margin-top: 14px;
+    width: 41px;
+}
+#ap_signin_popup .err-msg {
+    color: #fff;
+    padding: 0 37px;
+    word-wrap: break-word;
+    display: block;
+    float: none;
+    height: 20px;
+    width: 100%;
+    text-align: center;
+}
+#ap_signup {
+    background: url("http://yogarangoli.com.local//skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none !important;
+    height: 39px;
+    margin-top: 20px;
+    width: 135px !important;
+    display: block;
+    margin: 15px auto 0 ;
+    cursor: pointer;
+}
