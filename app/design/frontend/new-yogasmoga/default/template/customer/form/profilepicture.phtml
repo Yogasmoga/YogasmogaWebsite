@@ -228,11 +228,11 @@
 
     #thumbviewimage img{
         width: auto;
-        height: 150px;
+        height: 100%;
     }
 
     #thumbviewimage {
-        height: auto;
+        height: 150px;
     }
 </style>
 
@@ -323,9 +323,14 @@ $thumb_height = "150";
 
                 if (result.indexOf("Error") > -1)
                     jQuery(".messageupdate").html(result);
+                else if(result.indexOf("updated")>-1) {
+                    jQuery(".messageupdate").html("Profile updated successfully");
+                    jQuery("#preview_table").hide();
+                }
                 else {
                     jQuery(".messageupdate").html("Profile updated successfully");
                     jQuery(".profile_pic_image").attr("src", result);
+                    jQuery("#preview_table").hide();
                 }
 
                 imgArea.setOptions({hide: true});
@@ -367,18 +372,36 @@ $thumb_height = "150";
             jQuery('#thumbviewimage').html('<img src="<?php echo $upload_path; ?>' + responseText + '"   style="position: relative;" alt="Thumbnail Preview" />');
             jQuery('#viewimage').html('<img class="preview" alt="" src="<?php echo $upload_path; ?>' + responseText + '"   id="thumbnail" />');
             jQuery('#profile_filename').val(responseText);
-            imgArea = jQuery('#thumbnail').imgAreaSelect({aspectRatio: '1:1', handles: true, instance: true, onSelectChange: preview});
 
-            var w = jQuery("#viewimage").find("img").width();
-            var h = jQuery("#viewimage").find("img").height();
+            selection = {
+                x1: 0,
+                y1: 0,
+                x2: 150,
+                y2: 150
+            };
 
-            imgArea.setSelection(0, 0, 3*w/4, 3*w/4, true);
-            imgArea.setOptions({ show: true });
-            imgArea.update();
+            selection.height = selection.y2 - selection.y1;
+            selection.width = selection.x2 - selection.x1;
+
+            imgArea = jQuery('#thumbnail').imgAreaSelect({
+                aspectRatio: '1:1',
+                handles: true,
+                instance: true,
+                onSelectChange: preview,
+                onInit: preview,
+                handles: true,
+                resizable:true,
+                show:true,
+                x1: selection.x1,
+                y1: selection.y1,
+                x2: selection.x2,
+                y2: selection.y2
+            });
 
             jQuery("#preview_table").show();
 
             jQuery(".spuploadimage").html("Choose an area on the image");
+
         } else {
             jQuery("#preview_table").hide();
             jQuery('#thumbviewimage').html(responseText);
@@ -472,9 +495,9 @@ $thumb_height = "150";
     <table class="inputtable" style="min-width:500px">
         <tr>
             <td>
-                <div style="margin-bottom: 10px">Profile Picture</div>
+                <div style="margin-bottom: 10px; font-family:gothambook; font-size: 11px;  color: #444">Profile Picture</div>
 
-                <input type="file" name="pic" id="profile_pic" value=""/>
+                <input type="file" name="pic" id="profile_pic" value="" style="font-family:gothambook; font-size: 11px; color: #444"/>
             </td>
         </tr>
     </table>
@@ -486,7 +509,7 @@ $thumb_height = "150";
       target="ifr2" onsubmit="saveProfile()">
 
     <br/>
-    <span class="spuploadimage">&nbsp;</span>
+    <span class="spuploadimage" style="font-family:gothambook; font-size: 11px; color: #444">&nbsp;</span>
     <table class="inputtable" style="min-width:500px" id="preview_table">
         <tr>
             <td colspan="2">
@@ -499,7 +522,7 @@ $thumb_height = "150";
                     <div class="crop_preview_right">
                         <div class="crop_preview_box_small" id='thumbviewimage'
                              style="position:relative; overflow:hidden;"></div>
-                        <div style="text-align: center">Preview</div>
+                        <div style="text-align: center; font-family:gothambook; font-size: 11px;">Preview</div>
 
                         <form name="thumbnail" action="<?php echo $save_url; ?>" method="post" target="ifr2">
                             <?php echo $this->getBlockHtml('formkey') ?>
@@ -512,7 +535,7 @@ $thumb_height = "150";
                             <input type="hidden" name="wr" value="" id="wr"/>
 
                             <input type="hidden" name="profile_filename" value="" id="profile_filename"/>
-                            <input type="hidden" name="banner_filename" value="" id="banner_filename"/>
+<!--                            <input type="hidden" name="banner_filename" value="" id="banner_filename"/>-->
                             <!--                        <div class="crop_preview_submit"><input type="submit" name="upload_thumbnail" value="Save Thumbnail" id="save_thumb" class="submit_button" /> </div>-->
                         </form>
                         <iframe id="ifr2" name="ifr2" style="width:1px;height:1px;visibility:hidden"></iframe>
@@ -526,9 +549,9 @@ $thumb_height = "150";
     <table class="inputtable" style="min-width:500px; margin-top: 20px;">
         <tr>
             <td style="width:150px">
-                <div style="margin-bottom: 10px">Description</div>
+                <div style="margin-bottom: 10px; font-family: gothambook; font-size:11px; color: #444">Description</div>
 
-                <textarea name="description" style="width:100%;"
+                <textarea name="description" style="width:100%; font-family:gothambook; font-size: 11px; border: solid 1px #444"
                           rows="6"><?php echo Mage::helper('profile')->getProfileDescription(); ?></textarea>
             </td>
         </tr>
@@ -537,14 +560,14 @@ $thumb_height = "150";
     <table class="inputtable" style="min-width:500px">
         <tr>
             <td>
-                <input type="submit" value=" Update Profile " id="btnupload"/>
+                <input type="submit" value=" Update Profile " id="btnupload" class="btnuploadpicture"/>
             </td>
         </tr>
     </table>
     <br/>
     <table class="inputtable" style="min-width:500px">
         <tr>
-            <td class="messageupdate">
+            <td class="messageupdate" style="color: #CC0054">
                 &nbsp;
             </td>
         </tr>

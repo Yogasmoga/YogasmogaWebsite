@@ -392,3 +392,25 @@ h1.white{text-align: right!important;}
     text-transform: uppercase;
     width: 500px;
 }
+
+/* edit profile page */
+
+.btnuploadpicture {
+    border: 1px solid #444;
+    font-family: gothambook;
+    font-size: 13px;
+    line-height: 42px;
+    padding: 0 50px;
+    background: transparent;
+    transition-duration:200ms;
+}
+.btnuploadpicture:hover {
+    border: 1px solid #444;
+    font-family: gothambook;
+    font-size: 13px;
+    line-height: 42px;
+    padding: 0 50px;
+    color: #fff !important;
+    transition-duration:200ms;
+    background: #444;
+}
