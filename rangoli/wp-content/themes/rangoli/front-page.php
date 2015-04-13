@@ -11,7 +11,7 @@ get_header();
             </div>
             <?php if (!is_user_logged_in()) {
     ?>
-<div style="position: absolute; bottom: 0px; width: 100%; left:0; dislay: block; z-index: 5; text-align: center;">
+<div class="home_signup">
     <div id="signup_signin_btn">
         Sign in / Sign up
     </div>
@@ -27,16 +27,14 @@ $args = array(
 $the_query = new WP_Query($args);
 if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_post();
     $post = get_post();
-    echo " <li>";
-    echo get_the_post_thumbnail();
+    $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
     ?>
+    <li style="background:url('<?php echo $banner_img_url[0] ?>') no-repeat; background-size: cover ;">
+
     <!--onclick='ajax_load_pages("<?php /*$url = get_post_meta($post->ID,"wpcf-posturl");  if($url){echo $url[0];} */ ?>")'-->
     <div class='over-the-slide homepage_page_banner' >
 <?php
-//    echo "<p class='post_category'>" . get_the_title() . "</p>";
-//    echo "<p class='post_text'>" . get_the_excerpt() . "</p>";
-//    echo "<p class='post_author' style='text-transform: none'>by <span>" . get_the_author() . "</span></p>";
-    if (has_post_video()) {
+   if (has_post_video()) {
 
         $authors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=" . $post->post_author);
         $author_color = '#' . $authors[0]->color_shade;

@@ -59,10 +59,10 @@
     font-family: ITCAvantGardeStd-Bk;
     font-size: 12px;
     margin: 0 auto;
-    min-height: 37px;
+    min-height: 18px;
     padding: 0 0 0 8px;
     text-align: center;
-    width: 176px;
+    width: 294px;
 }
 a:hover{
     color: #999;
@@ -134,8 +134,8 @@ a{
 #signin_popup .form {
     display: block;
     left: 252px;
-    margin: 46px auto 0;
-    width: 250px;
+    margin: 170px auto 0;
+    width: 295px;
 }
 .form-text {
     display: block;
@@ -145,24 +145,26 @@ a{
     width: 350px;
 }
 #signin_popup .form input{
-    float: left;
+    float: none;
     width: 100% ;
     color: #fff !important;
-    margin-bottom: 10px;
+    margin-bottom: 18px;
     border: none;
-    border-bottom: 1px solid #fff;
+    border-bottom: 2px solid #ffa5a5;
     background: transparent;
-    font-size: 13px !important;
+    font-size: 13.06px !important;
     font-family: ITCAvantGardeStd-Bk;
     line-height: 1.2 !important;
+    height:20px;
+    letter-spacing: 1px;
 }
 #signup {
-    background: url("/skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: #ff4d4d !important;
     border: medium none !important;
-    height: 39px !important;
-    margin-left: 56px;
-    margin-top: 15px;
-    width: 135px !important;
+    height: 42px !important;
+    display: block;
+    margin: 20px auto 0 !important;
+    width: 184px !important;
     cursor:pointer;
 }
 .close_signin_popup {
@@ -277,11 +279,11 @@ img{
     background: transparent;
 }
 .overlay-text {
-    /*background: rgba(0,0,0,0.25);*/
-    background: -webkit-linear-gradient(to top, rgba(0, 0,0 , 0.7), transparent) repeat scroll 0 0 rgba(0, 0, 0, 0);
-    background: -o-linear-gradient(to top, rgba(0, 0,0 , 0.7), transparent) repeat scroll 0 0 rgba(0, 0, 0, 0);
-    background: -moz-linear-gradient(to top, rgba(0, 0,0 , 0.7), transparent) repeat scroll 0 0 rgba(0, 0, 0, 0);
-    background: linear-gradient(to top, rgba(0, 0,0 , 0.7), transparent) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: rgba(0,0,0,0.25);
+    /*background: -webkit-linear-gradient(to top, rgba(0, 0,0 , 0.7), transparent) repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+    /*background: -o-linear-gradient(to top, rgba(0, 0,0 , 0.7), transparent) repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+    /*background: -moz-linear-gradient(to top, rgba(0, 0,0 , 0.7), transparent) repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+    /*background: linear-gradient(to top, rgba(0, 0,0 , 0.7), transparent) repeat scroll 0 0 rgba(0, 0, 0, 0);*/
     color: #fff;
     cursor: pointer;
     height: 100%;
@@ -748,7 +750,7 @@ img{
 .author_post .post_title {
     font-size: 18px;
     letter-spacing: 1px;
-    line-height: 17px;
+    line-height: 19px;
 }
 .author_post .post_author {
     color: #fff;
@@ -773,8 +775,7 @@ img{
     position: absolute;
     text-align: left;
     width: 100%;
-    padding:20px;
-
+    padding:15px;
 }
 .row.container.author_info {
     padding: 20px;
@@ -1071,7 +1072,7 @@ video{
     line-height: 1;
     margin: 9px 0;
     text-align: center;
-    line-height: 20px;
+    line-height: 19px;
 }
 .first_post .post_below_text .post_author {
     color: #fff;
@@ -1985,4 +1986,8 @@ button.next-confirmation-page {
     left:0;
     min-width:1024px;
     width:100%;
+    cursor: pointer;
+}
+.back div {
+    display: block !important;
 }

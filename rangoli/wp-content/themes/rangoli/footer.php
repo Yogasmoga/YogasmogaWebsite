@@ -69,28 +69,15 @@
 
 </div>
 
-<div id="welcome_popup">
-
-        <div class="popup" style="background:#CE0D3D">
-            <span class="close-popup"></span>
-            <div class="content">
-
-            </div>
-        </div>
-
-</div>
-
-
 <div id="signin_popup">
+    <?php
+    $root = get_site_url();
+    $root = str_replace("/rangoli","/",$root);
+    ?>
 
-    <div class="signin-block" style="background: rgba(197, 4, 52, 0.95)">
-        <?php
-            $root = get_site_url();
-            $root = str_replace("/rangoli","/",$root);
-        ?>
+    <div class="signin-block" style="background: url('<?php echo get_site_url()."/wp-content/themes/rangoli/images/red_popup.png" ?>') no-repeat;">
 
         <div class="close_signin_popup" ></div>
-        <img alt="FEEL THE SMOGI LOVE. Sign up and get $25 SMOGI bucks toward your first order." src="<?php echo $root;  ?>skin/frontend/new-yogasmoga/yogasmoga-theme/images/sign_up_text.png" class="form-text" />
         <div class="form">
             <form id="sign-up-form">
             <input name="" data-watermark="First Name" id="p_fname"/>
@@ -98,9 +85,12 @@
             <input data-watermark="Email Address" id="p_signup_email" />
             <input data-watermark="Select a password" rel="password" id="p_s_password" />
                 <img class="loader" src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px; display:none;' />
-            <input id="signup" type="button" value=""  />
+            <input id="signup" type="button" value="Sign up"  />
                 <div class="err-msg"></div>
             </form>
+            <div class="align-center" style=" color:#ff9f9f; font-size: 13px; letter-spacing: 1px; font-family: ITCAvantGardeStd-Bk">
+                Already signed up?<br/><a style="cursor: pointer;" onclick="$('.login_logout_link').click();">Sign in</a> here
+            </div>
         </div>
     </div>
 
@@ -370,14 +360,9 @@
                     <!-- --------------------------------------SIGNUP POPUP---------------------------- -->
                     <div id="ap_signin_popup">
 
-                        <div class="signin-block" style="background: rgba(197, 4, 52, 1)">
-                            <?php
-                            $root = get_site_url();
-                            $root = str_replace("/rangoli","/",$root);
-                            ?>
+                        <div class="signin-block" style="background: url('<?php echo get_site_url()."/wp-content/themes/rangoli/images/red_popup.png" ?>') no-repeat;">
 
                             <div class="close" ></div>
-                            <img alt="FEEL THE SMOGI LOVE. Sign up and get $25 SMOGI bucks toward your first order." src="<?php echo $root;  ?>skin/frontend/new-yogasmoga/yogasmoga-theme/images/sign_up_text.png" class="form-text" />
                             <div class="form">
                                 <form id="ap_sign-up-form">
                                     <input name="" data-watermark="First Name" id="ap_fname"/>
@@ -385,12 +370,14 @@
                                     <input data-watermark="Email Address" id="ap_signup_email" />
                                     <input data-watermark="Select a password" rel="password" id="ap_s_password" />
                                     <img class="loader" src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px; display:none;' />
-                                    <input id="ap_signup" type="button" value=""  />
+                                    <input id="ap_signup" type="button" value="Sign up"  />
                                     <div class="err-msg"></div>
                                 </form>
+                                <div class="align-center" style=" color:#ff9f9f; font-size: 13px; letter-spacing: 1px; font-family: ITCAvantGardeStd-Bk">
+                                    Already signed up?<br/><a style="cursor: pointer;" onclick="$('.login_logout_link').click();">Sign in</a> here
+                                </div>
                             </div>
                         </div>
-                    </div>
                         <!-- ------------------------------------------------------------------------------------ -->
                 </figure>
             </div>

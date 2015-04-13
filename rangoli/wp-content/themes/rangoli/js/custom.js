@@ -1,5 +1,6 @@
 var count = 0;
 var status = "old";
+var is_red_popup_open = false;
 var wh = $(window).height();
 var logged_in=false;
 var logged_in_id;
@@ -16,20 +17,15 @@ var s = date.getSeconds();
 var playing_video = false;
 
 $(document).ready(function () {
-    //if (window.location.href.indexOf('https://') >= 0)
-    //    _usesecureurl = true;
-    //else
-    //    _usesecureurl = false;
-    var url = homeUrl + 'mycatalog/myproduct/checkforsignuppopup';
-    //if (_usesecureurl)
-    //    url = securehomeUrl + 'mycatalog/myproduct/checkforsignuppopup';
+    /*var url = homeUrl + 'mycatalog/myproduct/checkforsignuppopup';
+
     jQuery.ajax({
         url: url,
         type: 'POST',
         success: function (data) {
             data = eval('(' + data + ')');
             var status = data.status;
-            //status = "error";         // stop signup popup
+
             if (status == "success") {
                 $(".your-color-block").hide();
                 $(".login-box").hide();
@@ -43,7 +39,7 @@ $(document).ready(function () {
                 });
             }
         }
-    });
+    });*/
 
     $(".menu-heading1").hover(function () {
         $(".first-list").addClass("inner-links1");
@@ -61,6 +57,30 @@ $(document).ready(function () {
 
 });
 
+$(window).load(function(){
+    if(logged_in==false) {
+        $.ajax({
+            url: root+'rangoli/checkfornewcustomer.php',
+            dataType: 'json',
+            success: function(response){
+                var  customer = response.customer;
+                var  bullseye = response.bullseye;
+                if(customer == "new"){
+                    $(".your-color-block").fadeOut();
+                    $(".login-box").fadeOut();
+                    $("#signin_popup").fadeIn();
+                    $(".signin-block").fadeIn();
+                }
+                if(bullseye =="open"){
+                    setTimeout(function(){
+                        open_bulls_popup();
+                    },30000);
+                }
+            }
+        });
+    }
+
+});
 
 $('document').ready(function () {
     submit_comment();
@@ -230,7 +250,7 @@ function createCustomerAccount_from_popup() {
                     },
                     beforeSend: function () {
                         jQuery("#sign-up-form .err-msg").html("");
-                        jQuery("#signup").css("background-image","url("+root+"/skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png)");
+                        jQuery("#signup").val("Signing up...");
                         //alert(root+"skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png");
                     },
                     success: function (data) {
@@ -265,7 +285,7 @@ function createCustomerAccount_from_popup() {
                         }
                         else {
                             //jQuery("#sign-up-form .loader").hide();
-                            jQuery("#signup").css("background","url('"+root+"/skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png')");
+                            jQuery("#signup").css("Sign up");
                             jQuery("#sign-up-form .err-msg").html(data.errors).css("visibility", "visible");
                         }
                     }
@@ -326,7 +346,7 @@ function createCustomerAccount() {
             var first_name = data.first_name;
             var last_name = data.last_name;
             var customer_id = data.customer_id;
-
+            jQuery("#sign-up-form .err-msg").html("");
             if (status == "success") {
                 /**************** code added by ys team *****************/
                 createRangoliUser(email_id, pwd, first_name, last_name, customer_id);
@@ -534,9 +554,26 @@ function count_interests(){
         $(".next-confirmation-page").text("Choose 3+");
     }
 }
-
+function get_cookie(Name) {
+    var search = Name + "="
+    var returnvalue = "";
+    if (document.cookie.length > 0) {
+        offset = document.cookie.indexOf(search)
+        // if cookie exists
+        if (offset != -1) {
+            offset += search.length
+            // set index of beginning of value
+            end = document.cookie.indexOf(";", offset);
+            // set index of end of cookie value
+            if (end == -1) end = document.cookie.length;
+            returnvalue=unescape(document.cookie.substring(offset, end))
+        }
+    }
+    return returnvalue;
+}
 $(document).ready(function () {
     init();
+    $(".slides li").height(wh-90);
     $("#signup_signin_btn").click(function () {
         $(".login_logout_link").click();
     });
@@ -709,30 +746,30 @@ function getloggedinuser() {
                 //wplogout();
             }
             $(".one-three .overlay-text").hover(function () {
-                $(this).css({'background-color': 'rgba(' + color + ',0.5)', 'transition-duration': '500ms'});
-                //$(this).css({'background': user_color_shade, 'transition-duration': '500ms'})
+                //$(this).css({'background-color': 'rgba(' + color + ',0.5)', 'transition-duration': '500ms'});
+                $(this).css({'background-color': user_color_shade, 'transition-duration': '500ms'})
             }, function () {
                 $(this).css({
-                    //'background':'rgba(0,0,0,0.25)',
-                    'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                    'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                    'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                    'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    'background':'rgba(0,0,0,0.25)',
+                    //'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    //'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    //'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    //'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
                     'transition-duration': '100ms'
                 });
             });
             $(".two-three .overlay-text").hover(function () {
-                $(this).css({'background-color': 'rgba(' + color + ',0.5)', 'transition-duration': '500ms'});
-                //$(this).css({'background': user_color_shade, 'transition-duration': '500ms'});
+                //$(this).css({'background-color': 'rgba(' + color + ',0.5)', 'transition-duration': '500ms'});
+                $(this).css({'background-color': user_color_shade, 'transition-duration': '500ms'});
                 $(this).find("p").css({'color': '#fff', 'transition-duration': '500ms'});
                 $(this).find(".post_category").css({"border-color": "#fff", 'transition-duration': '500ms'})
             }, function () {
                 $(this).css({
-                    //'background':'rgba(0,0,0,0.25)',
-                    'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                    'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                    'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                    'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    'background':'rgba(0,0,0,0.25)',
+                    //'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    //'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    //'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    //'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
                     'transition-duration': '100ms'
                 })
                 $(this).find("p").css({'color': '#555', 'transition-duration': '500ms'})
@@ -768,11 +805,11 @@ $(document).ready(function () {
         ajax_load_pages($(this).attr('href'));
     });
     $(".author_post .overlay-text").css({
-        //'background':'rgba(0,0,0,0.25)',
-        'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-        'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-        'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-        'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+        'background':'rgba(0,0,0,0.25)',
+        //'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+        //'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+        //'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+        //'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
         'transition-duration': '100ms'
     });
 });
@@ -784,10 +821,10 @@ function ajax_load_pages(link) {
     $page = $(document).find(".fixed-container > div");
     $page.removeAttr("class");
     $(".close-menu-btn").click();
-    if (click_count<5 &&logged_in==false) {
-        open_bulls_popup();
+    //if (click_count<5 &&logged_in==false) {
+    //    open_bulls_popup();
     //alert(logged_in)
-    }
+    //}
     $.ajax({
         url: link,
         success: function (response) {
@@ -814,27 +851,27 @@ function ajax_load_pages(link) {
             });
             raty_init();
             $(document).find(".one-three .overlay-text").css({
-                //'background':'rgba(0,0,0,0.25)',
-                'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                'background':'rgba(0,0,0,0.25)',
+                //'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                //'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                //'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                //'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
                 'transition-duration': '100ms'
             });
             $(document).find(".two-three .overlay-text").css({
-                //'background':'rgba(0,0,0,0.25)',
-                'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                'background':'rgba(0,0,0,0.25)',
+                //'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                //'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                //'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                //'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
                 'transition-duration': '100ms'
             });
             $(document).find(".author_post .overlay-text").css({
-                //'background':'rgba(0,0,0,0.25)',
-                'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                'background':'rgba(0,0,0,0.25)',
+                //'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                //'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                //'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                //'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
                 'transition-duration': '100ms'
             });
 
@@ -875,6 +912,7 @@ function ajax_load_pages(link) {
 
 
             $(".user-color-shade").css({'background-color': 'rgba(' + color + ',0.9)'});
+            //$(".user-color-shade").css({'background-color': user_color_shade});
             $(".color-game polygon:nth-child(2)").css("fill", user_color_shade);
             $(".color-game polygon").css("stroke", user_color_shade);
             $(".menu-btn rect").css("fill", user_color_shade);
@@ -895,6 +933,7 @@ function play() {
     var ww=$(window).width();
     playing_video = true;
     $(".wp_page_banner").height(ww*0.5625);
+    $(".slides li").height(ww*0.5625);
 }
 
 function init() {
@@ -965,14 +1004,15 @@ function init() {
             user_color_shade = '#555555';
         }
         var color = hexToRgb(user_color_shade);
-        $(".author_post:hover .overlay-text").css({'background-color': 'rgba('+color+',0.5)','transition-duration':"500ms"});
+        //$(".author_post:hover .overlay-text").css({'background-color': 'rgba('+color+',0.5)','transition-duration':"500ms"});
+            $(".author_post:hover .overlay-text").css({'background-color': user_color_shade});
     }, function () {
         $(".author_post .overlay-text").css({
-            //'background':'rgba(0,0,0,0.25)',
-            'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-            'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-            'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-            'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+            'background':'rgba(0,0,0,0.25)',
+            //'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+            //'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+            //'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+            //'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
             'transition-duration': '100ms'
         });
     });
@@ -1018,11 +1058,11 @@ function filter() {
                 init();
 
                 $(".author_post .overlay-text").css({
-                    //'background':'rgba(0,0,0,0.25)',
-                    'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                    'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                    'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                    'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    'background':'rgba(0,0,0,0.25)',
+                    //'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    //'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    //'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                    //'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
                     'transition-duration': '100ms'
                 });
                 $(".liked_reads").flexslider();
@@ -1056,7 +1096,7 @@ $(document).ready(function () {
         $("#connect").hide();
         $("#stores").hide();
         $("#popup").fadeOut();
-        $("body").css("overflow", "auto");
+        //$("body").css("overflow", "auto");
         $("#invite_friend").hide();
     });
     $(".close-menu-btn").click(function () {
@@ -1067,7 +1107,7 @@ $(document).ready(function () {
     });
     $(".close-popup").click(function () {
         $(".smogi").removeClass("fadeInUp").removeClass("animated");
-        $("body").css("overflow", "auto");
+        //$("body").css("overflow", "auto");
         $("#popup").fadeOut();
         $("#stores").hide();
         $("#smogis").hide();
@@ -1081,7 +1121,7 @@ $(document).ready(function () {
         $("#stores").show();
         $("#smogis").hide();
         $("#invite_friend").hide();
-        $("body").css("overflow", "hidden");
+        //$("body").css("overflow", "hidden");
         $(".smogi").addClass("fadeInUp").addClass("animated");
         $(".menu-btn").css("opacity", 1);
         $(".close-menu-btn").click();
@@ -1094,7 +1134,7 @@ $(document).ready(function () {
         $("#connect").hide();
         $("#popup").fadeIn();
         $("#smogis").show();
-        $("body").css("overflow", "hidden");
+        //$("body").css("overflow", "hidden");
         $("#invite_friend").hide();
         $(".smogi").addClass("fadeInUp").addClass("animated");
         $("#stores").hide();
@@ -1140,27 +1180,18 @@ function raty_init() {
 }
 
 $(document).ready(function () {
+    $(".invite_signup").click(function(){
+        $("a[rel='connect']").click();
+    });
     $("a[rel='connect']").click(function (e) {
         e.preventDefault();
-        $/*("#invite_friend").hide();
-         $("#smogis").hide();
-         $("#stores").hide();
-         $("#popup").fadeIn();
-         $("#connect").show();
-
-         $(".menu-box").animate({
-         'margin-left': '-400px'
-         }, 500, 'easeOutCirc', function () {
-         $(".menu-btn").css("opacity", 1);
-         });*/
         if (logged_in != null && logged_in != '' && logged_in != undefined) {
             $("#smogis").hide();
             $("#connect").hide();
             $("#stores").hide();
             $("#popup").fadeIn();
+            $("#invite_friend").fadeIn();
             $(".close-menu-btn").click();
-            $("body").css("overflow", "hidden");
-            $("#invite_friend").show();
             $(".invite_friend li").hover(function () {
                 $(this).css({
                     "background": user_color_shade,
@@ -1192,8 +1223,8 @@ $(document).ready(function () {
             $("#connect").hide();
             $("#stores").hide();
             $("#popup").fadeIn();
-            $("body").css("overflow", "hidden");
-            $("#invite_friend").show();
+            //$("body").css("overflow", "hidden");
+            $("#invite_friend").fadeIn();
             $(".invite_friend li").hover(function () {
                 $(this).css({
                     "background": user_color_shade,
@@ -1317,11 +1348,11 @@ function infinity_scroll(){
                             init();
 
                             $(".author_post .overlay-text").css({
-                                //'background':'rgba(0,0,0,0.25)',
-                                'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                                'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                                'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
-                                'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                                'background':'rgba(0,0,0,0.25)',
+                                //'background': '-webkit-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                                //'background': '-o-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                                //'background': '-moz-linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
+                                //'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)',
                                 'transition-duration': '100ms'
                             });
 
@@ -1433,14 +1464,12 @@ function randomize_images(){
     $(".front img").attr("src",root+"rangoli/wp-content/themes/rangoli/images/bullseye_0"+rand_no+".png");
 }
 function open_bulls_popup(){
-    if(click_count<5 && is_bullseye_popup_open==false) {
-        $("#card").removeClass("flipped");
-        $(".bullseye_popup").fadeIn();
-        $(".center_popup").fadeIn();
-        $(".bullseye_popup_container").fadeIn();
-        click_count++;
-        is_bullseye_popup_open = true;
-    }
+    $(".signin-block").fadeOut();
+    $("#signin_popup").fadeOut();
+    $("#card").removeClass("flipped");
+    $(".bullseye_popup").fadeIn();
+    $(".center_popup").fadeIn();
+    $(".bullseye_popup_container").fadeIn();
 }
 
 
@@ -1479,7 +1508,7 @@ function createCustomerAccount_from_animated_popup() {
                     },
                     beforeSend: function () {
                         jQuery("#ap_sign-up-form .err-msg").html("");
-                        jQuery("#ap_signup").css("background-image","url("+root+"/skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png)");
+                        jQuery("#ap_signup").val("Signing up...");
                         //alert(root+"skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png");
                     },
                     success: function (data) {
@@ -1514,7 +1543,7 @@ function createCustomerAccount_from_animated_popup() {
                         }
                         else {
                             //jQuery("#sign-up-form .loader").hide();
-                            jQuery("#ap_signup").css("background","url('"+root+"/skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png')");
+                            jQuery("#ap_signup").val("Sign up");
                             jQuery("#ap_sign-up-form .err-msg").html(data.errors).css("visibility", "visible");
                         }
                     }
@@ -1534,4 +1563,14 @@ function createCustomerAccount_from_animated_popup() {
         $(".err-msg").html(error);
     }
 
+}
+
+
+
+
+function open_red_popup(){
+    $(".your-color-block").fadeOut();
+    $(".login-box").fadeOut();
+    $("#signin_popup").fadeIn();
+    $(".signin-block").fadeIn();
 }

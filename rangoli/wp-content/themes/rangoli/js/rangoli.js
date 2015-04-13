@@ -291,7 +291,7 @@ jQuery(document).ready(function ($) {
             $(".bullzai").fadeIn();
             $('.bullzai').click(function () {
 
-                if(click_count<5 && logged_in==false){
+                if(logged_in==false){
                     open_bulls_popup();
                 }
                 else{
@@ -299,17 +299,6 @@ jQuery(document).ready(function ($) {
                 }
             });
             firstTime = true;
-            //setTimeout(function () {
-            //
-            //    if (game.isInActive()) {
-            //        game.updateJson($activity);
-            //        get_bulls_eye();
-            //    }
-            //    else {
-            //        get_bulls_eye();
-            //    }
-            //}, 30000);
-
         });
     });
 });
