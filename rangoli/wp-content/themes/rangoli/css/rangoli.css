@@ -614,7 +614,7 @@ svg#flower path:hover {
     height: 55px;
     position: absolute;
     right: 0;
-    top: 0;
+    top: 13px;
     width: 70px;
     cursor: pointer;
 }

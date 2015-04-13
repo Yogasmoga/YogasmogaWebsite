@@ -1675,7 +1675,8 @@ button.next-confirmation-page {
     width: 80px;
 }
 .selected .user-interest > img {
-    width: 160px;
+    height: 80px;
+    width: 80px;
 }
 .post_content  a {
     color: #999 !important;

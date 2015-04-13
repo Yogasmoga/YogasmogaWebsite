@@ -3,7 +3,10 @@ session_start();
 require_once('twitteroauth/twitteroauth.php');
 require_once('twt_config.php');
 
-    $link = file_get_contents(REFERRAL_URL);
+    //$link = file_get_contents(REFERRAL_URL);
+
+    $link = $_REQUEST['l'];
+
     $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET);
 
     $request_token = $connection->getRequestToken(OAUTH_CALLBACK);

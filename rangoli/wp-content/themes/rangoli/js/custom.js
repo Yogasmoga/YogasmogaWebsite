@@ -1,7 +1,7 @@
 var count = 0;
 var status = "old";
 var wh = $(window).height();
-var logged_in;
+var logged_in=false;
 var logged_in_id;
 var user_email;
 var current_user_img_url;
@@ -748,7 +748,7 @@ function getloggedinuser() {
 
 function fillcolor() {
     //$(".user-color-shade").css({'background-color': 'rgba(' + color + ',0.9)'});
-    $(".user-color-shade").css({'background-color': 'rgba(' + color + ',0.5)', 'transition-duration': '500ms'});
+    $(".user-color-shade").css({'background-color': 'rgba(' + color + ',0.9)', 'transition-duration': '500ms'});
     $(".color-game polygon:nth-child(2)").css("fill", user_color_shade);
     $(".color-game polygon").css("stroke", user_color_shade);
     $(".menu-btn rect").css("fill", user_color_shade);
@@ -784,6 +784,10 @@ function ajax_load_pages(link) {
     $page = $(document).find(".fixed-container > div");
     $page.removeAttr("class");
     $(".close-menu-btn").click();
+    if (click_count<5 &&logged_in==false) {
+        open_bulls_popup();
+    //alert(logged_in)
+    }
     $.ajax({
         url: link,
         success: function (response) {
@@ -879,7 +883,6 @@ function ajax_load_pages(link) {
 
         }
     });
-
     $(".close-menu-btn").click();
 
 
@@ -1047,8 +1050,8 @@ $(document).ready(function () {
         $(".menu-box").animate({
             'margin-left': 0,
             'opacity': 1
-        }, 500, "easeOutCirc");
-        $(this).animate({"opacity": 0}, 500);
+        }, 200, "easeOutCirc");
+        $(this).animate({"opacity": 0}, 200);
         $("#smogis").hide();
         $("#connect").hide();
         $("#stores").hide();
@@ -1059,8 +1062,8 @@ $(document).ready(function () {
     $(".close-menu-btn").click(function () {
         $(".menu-box").animate({
             'margin-left': '-400px'
-        }, 500, "easeOutCirc");
-        $(".menu-btn").animate({"opacity": 1}, 500);
+        }, 200, "easeOutCirc");
+        $(".menu-btn").animate({"opacity": 1}, 200);
     });
     $(".close-popup").click(function () {
         $(".smogi").removeClass("fadeInUp").removeClass("animated");
@@ -1401,3 +1404,134 @@ $(window).scroll(function(){
 });
 
 
+
+/******************** BUlls eye random popup **********************/
+var click_count=0;
+var is_bullseye_popup_open = false;
+function flip(){
+    $("#card").toggleClass("flipped");
+    if($("#card").hasClass("flipped"));
+    setTimeout(randomize_images,200);
+}
+$(document).ready(function(){
+    randomize_images();
+    $(".close").click(function(){
+        $(".bullseye_popup").fadeOut();
+        $(".center_popup").fadeOut();
+        $(".bullseye_popup_container").fadeOut();
+        is_bullseye_popup_open = false;
+    });
+    $(".bullseye_popup").click(function(){
+        $(".close").click();
+    });
+    $("#ap_signup").click(function(){
+        createCustomerAccount_from_animated_popup();
+    });
+});
+function randomize_images(){
+    var rand_no = Math.floor((Math.random() * 6) + 1);
+    $(".front img").attr("src",root+"rangoli/wp-content/themes/rangoli/images/bullseye_0"+rand_no+".png");
+}
+function open_bulls_popup(){
+    if(click_count<5 && is_bullseye_popup_open==false) {
+        $("#card").removeClass("flipped");
+        $(".bullseye_popup").fadeIn();
+        $(".center_popup").fadeIn();
+        $(".bullseye_popup_container").fadeIn();
+        click_count++;
+        is_bullseye_popup_open = true;
+    }
+}
+
+
+
+
+function createCustomerAccount_from_animated_popup() {
+    var error = "";
+    var fname = jQuery.trim(jQuery("#ap_fname").val());
+    var lname = jQuery.trim(jQuery("#ap_lname").val());
+    var email_id = jQuery.trim(jQuery("#ap_signup_email").val());
+    var pwd = jQuery.trim(jQuery("#ap_s_password").val());
+
+    if (fname!="First Name" && lname!="Last Name" && email_id!="Email Address" && fname.length > 0 && lname.length > 0 && email_id.length > 0) {
+        function IsEmail(email) {
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            return regex.test(email);
+        }
+        if(IsEmail(email_id)){
+            if (pwd!="Select a password" && pwd.length < 6 ) {
+                error = "Password should be atleast 6 characters.";
+            }
+            else {
+                var cpassword = pwd;
+                var url = homeUrl + 'mycatalog/myproduct/registercustomer';
+
+                jQuery.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        'firstname': fname,
+                        'lastname': lname,
+                        'email': email_id,
+                        'password': pwd,
+                        'confirmation': cpassword,
+                        'is_subscribed': "on"
+                    },
+                    beforeSend: function () {
+                        jQuery("#ap_sign-up-form .err-msg").html("");
+                        jQuery("#ap_signup").css("background-image","url("+root+"/skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png)");
+                        //alert(root+"skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png");
+                    },
+                    success: function (data) {
+
+                        data = eval('(' + data + ')');
+                        var status = data.status;
+                        if (status == "success") {
+                            var name = data.fname;
+
+                            var first_name = data.first_name;
+                            var last_name = data.last_name;
+                            var customer_id = data.customer_id;
+
+
+                            /**************** code added by ys team *****************/
+                            createRangoliUser(email_id, pwd, first_name, last_name, customer_id);
+                            /**************** code added by ys team *****************/
+
+                                // console.log(data.status);
+                            jQuery(".bullseye_popup_container").fadeOut();
+                            //                          window.location=homeUrl+"rangoli";
+
+                            _islogedinuser = true;
+                            jQuery("#signin").html("SIGN OUT").attr({
+                                href: homeUrl + 'customer/account/logout/',
+                                id: "sign-out"
+                            });
+
+                            if (name != '') {
+                                jQuery("#welcome-name").html("Hi " + name).attr("href", homeUrl + 'customer/account/');
+                            }
+                        }
+                        else {
+                            //jQuery("#sign-up-form .loader").hide();
+                            jQuery("#ap_signup").css("background","url('"+root+"/skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png')");
+                            jQuery("#ap_sign-up-form .err-msg").html(data.errors).css("visibility", "visible");
+                        }
+                    }
+                });
+
+            }
+        }
+        else{
+            error = "Enter valid email address.";
+        }
+
+    }
+    else {
+        error = "All fields are required.";
+    }
+    if(error!=""){
+        $(".err-msg").html(error);
+    }
+
+}
