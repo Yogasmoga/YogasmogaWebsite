@@ -109,7 +109,9 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
 //                    $banner_found = true;
 //                }
 
-                if(isset($_POST['profile_filename']) && strlen(trim($_POST['profile_filename']))>4) {
+                $profile_filename = $_POST['profile_filename'];
+
+                if(isset($profile_filename) && strlen(trim($profile_filename))>4) {
                     $profile_found = true;
                 }
 
@@ -243,8 +245,10 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                         echo $message['message'] . "<br/>";
                     }
                 }
-                else
+                else if($profile_found)
                     echo $profile_pic;
+                else
+                    echo "updated";
             }
         }
     }
