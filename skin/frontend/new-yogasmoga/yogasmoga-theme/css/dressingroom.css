@@ -354,3 +354,41 @@ h1.white{text-align: right!important;}
 }
 .home-slider-men .monsoon-tank .over-the-slide {top:32%!important;padding:80px 106px !important;}
 
+/*  bottom page banners */
+
+.mens_bottom{
+    right: 0 !important;
+    color: #555;
+    float: left;
+    font: 36px/40px itcavantgardepromd;
+    margin: 0;
+    position: absolute;
+    text-align: left;
+    text-transform: uppercase;
+    top: 13%;
+    width: 500px;
+}
+.women_bottom{
+    right: 0 !important;
+    color: #555;
+    float: left;
+    font: 36px/40px itcavantgardepromd;
+    margin: 0;
+    position: absolute;
+    text-align: left;
+    text-transform: uppercase;
+    top: 13%;
+    width: 500px;
+}
+.men_whats_new{
+    top: 34%;
+    left: 8%;
+    color: #555;
+    float: left;
+    font: 36px/40px itcavantgardepromd;
+    margin: 0;
+    position: absolute;
+    text-align: left;
+    text-transform: uppercase;
+    width: 500px;
+}
