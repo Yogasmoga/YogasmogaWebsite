@@ -5,7 +5,7 @@ get_header();
 
 
         <!--- Flex slider--------- -->
-        <div class="flexslider">
+        <div class="flexslider homepage_slider">
             <div class="rangoli_logo">
                 <img src="<?php bloginfo('template_directory') ?>/images/logo.png"/>
             </div>

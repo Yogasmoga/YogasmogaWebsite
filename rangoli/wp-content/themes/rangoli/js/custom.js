@@ -573,7 +573,7 @@ function get_cookie(Name) {
 }
 $(document).ready(function () {
     init();
-    $(".slides li").height(wh-90);
+    $(".homepage_slider .slides li").height(wh-70);
     $("#signup_signin_btn").click(function () {
         $(".login_logout_link").click();
     });
@@ -933,7 +933,7 @@ function play() {
     var ww=$(window).width();
     playing_video = true;
     $(".wp_page_banner").height(ww*0.5625);
-    $(".slides li").height(ww*0.5625);
+    $(".homepage_slider .slides li").height(ww*0.5625);
 }
 
 function init() {
