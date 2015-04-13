@@ -369,6 +369,13 @@ $thumb_height = "150";
             jQuery('#profile_filename').val(responseText);
             imgArea = jQuery('#thumbnail').imgAreaSelect({aspectRatio: '1:1', handles: true, instance: true, onSelectChange: preview});
 
+            var w = jQuery("#viewimage").find("img").width();
+            var h = jQuery("#viewimage").find("img").height();
+
+            imgArea.setSelection(0, 0, 3*w/4, 3*w/4, true);
+            imgArea.setOptions({ show: true });
+            imgArea.update();
+
             jQuery("#preview_table").show();
 
             jQuery(".spuploadimage").html("Choose an area on the image");
