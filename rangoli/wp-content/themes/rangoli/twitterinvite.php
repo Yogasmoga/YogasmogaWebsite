@@ -90,8 +90,6 @@ $settings = array(
 
 $url = "https://api.twitter.com/1.1/followers/list.json";
 
-echo "Rangoli link = " . $_SESSION['referrer_link'];
-
 $requestMethod = "GET";
 $getfield = '?screen_name=' . $content->screen_name . '&count=200';
 
