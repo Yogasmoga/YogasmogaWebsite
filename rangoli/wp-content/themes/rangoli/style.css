@@ -85,7 +85,13 @@ div{
     font-family: ITCAvantGardeStd-Md;
 }
 .light {
-    font: 33px/37px ITCAvantGardeStd-XLt;
+    font: 29px/36px ITCAvantGardeStd-XLt;
+    letter-spacing: 1px;
+}
+.bold > span {
+    font: 24px/36px freight-text-pro;
+    font-weight: 400;
+    font-style: italic;
 }
 .freighttextbook {
     font-family: "freight-text-pro",serif;

@@ -37,10 +37,6 @@ function animation() {
     if (content_offset_first <= $(window).height() - 200) {
         $(".first").addClass("fadeInUp").addClass("animated");
     }
-    else{
-        $(".first").removeClass("fadeInUp").removeClass("animated");
-
-    }
     if (content_offset_second <= $(window).height() - 200) {
         $(".second").animate({
             "opacity": 1
