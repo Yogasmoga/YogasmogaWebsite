@@ -27,10 +27,13 @@ $args = array(
 $the_query = new WP_Query($args);
 if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_post();
     $post = get_post();
-    $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
+    $banner_img_url="";
+//    $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
     ?>
     <li style="background:url('<?php echo $banner_img_url[0] ?>') no-repeat; background-size: cover ;">
-
+    <?php
+        echo get_the_post_thumbnail();
+    ?>
     <!--onclick='ajax_load_pages("<?php /*$url = get_post_meta($post->ID,"wpcf-posturl");  if($url){echo $url[0];} */ ?>")'-->
     <div class='over-the-slide homepage_page_banner' >
 <?php

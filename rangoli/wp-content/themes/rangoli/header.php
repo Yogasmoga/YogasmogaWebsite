@@ -16,8 +16,8 @@
             echo ' | '.strtoupper($author_obj->display_name);
         } if(is_404()){ echo ' | 404 Page not found'; }?></title>
     <meta property="og:title" content="Rangoli" />
-    <meta property="og:description" content="Rangoli - A Blog based on health and wellness." />
-    <meta property="description" content="Rangoli - A Blog based on health and wellness." />
+    <meta property="og:description" content="Rangoli - YOGASMOGA Comunity." />
+    <meta property="description" content="Rangoli - YOGASMOGA Comunity." />
 
     <?php
         $root = get_site_url();
@@ -84,8 +84,13 @@
 $style= "";
 if(!is_user_logged_in()){
     $style= "margin-top:25px;";
+    echo "<style>
+        .pace .pace-progress {
+            top:95px;
+        }
+    </style>";
 ?>
-<div class="banner">
+<div class="banner" onclick="open_red_popup()">
     SIGN UP & GET $25 SMOGI BUCKS
 </div>
 <?php
