@@ -31,6 +31,14 @@
                     </tr>
 
                     <tr>
+                        <?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
+                        <?php if ($_gender->isEnabled()): ?>
+                            <td style="width:63px;float:left"><label>Male</label> <input class="radio" type="radio" name="gender" value="1"  style="width:20px" checked/></td>
+                            <td  style="width:110px;float:left"><label>Female</label> <input class="radio" type="radio" name="gender" value="2" style="width:20px"/> </td>
+                        <?php endif ?>
+                    </tr>
+
+                    <tr>
                         <td class="intouchCheckbox">&nbsp;</td>
 <!--                        <td class="intouchCheckbox"><input class="f-left" style="width:auto; margin-top: 3px; margin-right: 3px;" type="checkbox" name="in_touch" id="in_touch" class="checkbox" checked="checked">-->
 <!--                            <label class="lh-normal checkboxDyn" style="width:auto;" for="in_touch">-->
