@@ -246,6 +246,19 @@
     overflow: hidden;
     clear:both;
 }
+.flexslider .home_signup{
+    position: absolute;
+    left:0;
+    width: 100%;
+    display: block;
+    z-index: 5;
+    text-align: center;
+    top:60%;
+}
+.invite_signup{
+    opacity: 0;
+    float:right;
+}
 .flexslider #signup_signin_btn {
     border: 1px solid #fff;
     box-sizing: border-box;
@@ -259,6 +272,7 @@
     margin: 0 auto 30px;
     padding: 0 50px;
     text-align: center;
+    transition-duration: 500ms;
 }
 .over-the-slide {
     opacity: 0;

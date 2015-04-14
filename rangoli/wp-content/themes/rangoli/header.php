@@ -16,8 +16,8 @@
             echo ' | '.strtoupper($author_obj->display_name);
         } if(is_404()){ echo ' | 404 Page not found'; }?></title>
     <meta property="og:title" content="Rangoli" />
-    <meta property="og:description" content="Rangoli - A Blog based on health and wellness." />
-    <meta property="description" content="Rangoli - A Blog based on health and wellness." />
+    <meta property="og:description" content="Rangoli - YOGASMOGA Comunity." />
+    <meta property="description" content="Rangoli - YOGASMOGA Comunity." />
 
     <?php
         $root = get_site_url();
@@ -81,12 +81,18 @@
 <body>
 <!-- BEGIN GOOGLE ANALYTICS CODEs -->
 <!-- Google Tag Manager --><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PGF5K4" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PGF5K4');</script><!-- End Google Tag Manager --><script type="text/javascript">//<![CDATA[var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-37432636-1']);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://':'http://')+'stats.g.doubleclick.net/dc.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();//]]></script><!-- END GOOGLE ANALYTICS CODE -->
+
 <?php
 $style= "";
 if(!is_user_logged_in()){
     $style= "margin-top:25px;";
+    echo "<style>
+        .pace .pace-progress {
+            top:95px;
+        }
+    </style>";
 ?>
-<div class="banner">
+<div class="banner" onclick="open_red_popup()">
     SIGN UP & GET $25 SMOGI BUCKS
 </div>
 <?php

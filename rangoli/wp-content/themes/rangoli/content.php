@@ -23,17 +23,18 @@
 
         </div>
 
-
-        <div class="one-three right invite-friends user-color-shade" style="background: #555;">
+        <?php if(!is_user_logged_in()) {
+            ?>
+            <div class="right invite_signup"   style = " position:relative; width:33.33%;cursor:pointer; background:url('<?php bloginfo('template_directory')?>/images/box_n.png') no-repeat; background-size: cover;" >
+           <?php  }
+           else {
+           ?>
+            <div class="right invite_signup" style = " position:relative; width:33.33%; cursor:pointer;  background:url('<?php bloginfo('template_directory')?>/images/box_a.png') no-repeat; background-size: cover;" >
+            <?php  } ?>
             <img src="<?php bloginfo('template_directory')?>/images/no-background.png" style="width:100%;float:left;"/>
-
-            <div class="overlay-text">
-                <div>
-                    <p class="post_title">Invite <br>Friends</p>
-                </div>
-            </div>
+<!--            <div class="overlay-text">-->
+<!--            </div>-->
         </div>
-
 
         <div class="one-three left">
             <?php
@@ -102,7 +103,8 @@
 
         <div class="one-three left">
             <?php
-            $author_id = 69;        // Bee Bosnak
+//            $author_id = 71;
+            $author_id = 69;
             $author = get_userdata($author_id);
             ?>
 

@@ -40,7 +40,7 @@ function animation() {
         //    "opacity": 1
         //}, 2000);
         $(".first").addClass("fadeInUp").addClass("animated");
-
+        $(".invite_signup").addClass("fadeInUp").addClass("animated");
     }
     //else{
     //    $(".first").removeClass("fadeInUp").removeClass("animated");
