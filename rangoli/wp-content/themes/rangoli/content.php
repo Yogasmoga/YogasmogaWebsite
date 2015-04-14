@@ -102,7 +102,7 @@
 
         <div class="one-three left">
             <?php
-            $author_id = 71;
+            $author_id = 69;
             $author = get_userdata($author_id);
             ?>
 
