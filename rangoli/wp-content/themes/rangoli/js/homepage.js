@@ -35,39 +35,24 @@ function animation() {
     var content_offset_fifth = offset_fifth.top - $(window).scrollTop();
 
     if (content_offset_first <= $(window).height() - 200) {
-
-        //$(".first").animate({
-        //    "opacity": 1
-        //}, 2000);
         $(".first").addClass("fadeInUp").addClass("animated");
-        $(".invite_signup").addClass("fadeInUp").addClass("animated");
     }
-    //else{
-    //    $(".first").removeClass("fadeInUp").removeClass("animated");
-    //}
     if (content_offset_second <= $(window).height() - 200) {
-        //alert("second");
         $(".second").animate({
             "opacity": 1
         }, 2000);
         $(".second .one-three").addClass("fadeInUp").addClass("animated");
-
+        $(".second .invite_signup").addClass("fadeInUp").addClass("animated");
         setTimeout(function () {
             $(".second .one-three .overlay-text p").animate({
                 "opacity": 1
             }, 4000);
             $(".second .one-three .overlay-text p").addClass("fadeInUpLittle").addClass("animated");
 
-        }, 300)
+        }, 300);
 
     }
-    //else{
-    //    $(".second").css("opacity",0);
-    //    $(".second .one-three").removeClass("fadeInUp").removeClass("animated");
-    //    $(".second .one-three .overlay-text p").removeClass("fadeInUpLittle").removeClass("animated");
-    //}
     if (content_offset_third <= $(window).height() - 200) {
-        //alert("third");
         $(".third").animate({
             "opacity": 1
         }, 2000);
@@ -82,13 +67,6 @@ function animation() {
             $(".third .two-three .overlay-text p").addClass("fadeInUp").addClass("animated");
         }, 600)
     }
-    //else{
-    //    $(".third").animate("opacity",0);
-    //    $(".third .one-three").removeClass("fadeInUp").removeClass("animated");
-    //    $(".third .two-three").removeClass("fadeInUp").removeClass("animated");
-    //    $(".fourth .one-three .overlay-text p").removeClass("fadeInUpLittle").removeClass("animated");
-    //    $(".fourth .two-three .overlay-text p").removeClass("fadeInUpLittle").removeClass("animated");
-    //}
 
     if (content_offset_fourth <= ($(window).height() - 200)) {
 

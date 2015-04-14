@@ -435,14 +435,11 @@ ul.main-nav li ul.sub-menu > li > ul:first-child a {
 .sub-menu a:hover {
     color: #c03 !important;
 }
-
 a#rangoli-head {
-    background-image: url("../images/rangoli-arrow.jpg");
-    background-repeat: no-repeat;
+    background: url("/rangoli/wp-content/themes/rangoli/images/rangoli_triangles.gif") no-repeat scroll 0 5px / 8px auto rgba(0, 0, 0, 0);
     display: block;
     margin-top: -1px;
     padding: 1px 0 1px 15px;
-    background-position: 0 5px;
 }
 .rangoliGrn {
     background-position: left -58px;

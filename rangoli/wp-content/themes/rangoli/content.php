@@ -1,40 +1,6 @@
 <section class="second">
     <div class="row">
-        <div style="background: none repeat scroll 0% 0% rgb(172, 132, 54);" class="one-three right get_app">
-            <?php
-            $post = get_post(261);
-            ?>
-            <?php echo get_the_post_thumbnail($post->ID,"thumb");
-            if(!has_post_thumbnail($post->ID)){
-                echo '<img src="'.get_site_url().'/wp-content/themes/rangoli/images/no-background.png" style="width:100%;float:left;"/>';
-            }
-            ?>
 
-            <div onclick="ajax_load_pages('<?php echo get_permalink($post->ID) ?>')" class="overlay-text">
-                <p class="post_category"><?php echo category($post->ID); ?></p>
-
-                <p class="post_title"><?php echo $post->post_title; ?></p>
-
-
-
-            </div>
-            <p class="post_link"><a  class="ajax-load" href="<?php echo get_site_url(); ?>/read">Read More</a></p>
-
-
-        </div>
-
-        <?php if(!is_user_logged_in()) {
-            ?>
-            <div class="right invite_signup"   style = " position:relative; width:33.33%;cursor:pointer; background:url('<?php bloginfo('template_directory')?>/images/box_n.png') no-repeat; background-size: cover;" >
-           <?php  }
-           else {
-           ?>
-            <div class="right invite_signup" style = " position:relative; width:33.33%; cursor:pointer;  background:url('<?php bloginfo('template_directory')?>/images/box_a.png') no-repeat; background-size: cover;" >
-            <?php  } ?>
-            <img src="<?php bloginfo('template_directory')?>/images/no-background.png" style="width:100%;float:left;"/>
-<!--            <div class="overlay-text">-->
-<!--            </div>-->
-        </div>
 
         <div class="one-three left">
             <?php
@@ -57,6 +23,44 @@
             </div>
             <p class="post_link"><a class="ajax-load"  href="<?php echo get_site_url(); ?>/read">Read More</a></p>
         </div>
+
+
+        <?php if(!is_user_logged_in()) {
+            ?>
+            <div class="left invite_signup"   style = " position:relative; width:33.33%;cursor:pointer; background:url('<?php bloginfo('template_directory')?>/images/box_n.png') no-repeat; background-size: cover;" >
+           <?php  }
+           else {
+           ?>
+            <div class="left invite_signup" style = " position:relative; width:33.33%; cursor:pointer;  background:url('<?php bloginfo('template_directory')?>/images/box_a.png') no-repeat; background-size: cover;" >
+            <?php  } ?>
+            <img src="<?php bloginfo('template_directory')?>/images/no-background.png" style="width:100%;float:left;"/>
+<!--            <div class="overlay-text">-->
+<!--            </div>-->
+        </div>
+                <div style="background: none repeat scroll 0% 0% rgb(172, 132, 54);" class="one-three left get_app">
+                    <?php
+                    $post = get_post(261);
+                    ?>
+                    <?php echo get_the_post_thumbnail($post->ID,"thumb");
+                    if(!has_post_thumbnail($post->ID)){
+                        echo '<img src="'.get_site_url().'/wp-content/themes/rangoli/images/no-background.png" style="width:100%;float:left;"/>';
+                    }
+                    ?>
+
+                    <div onclick="ajax_load_pages('<?php echo get_permalink($post->ID) ?>')" class="overlay-text">
+                        <p class="post_category"><?php echo category($post->ID); ?></p>
+
+                        <p class="post_title"><?php echo $post->post_title; ?></p>
+
+
+
+                    </div>
+                    <p class="post_link"><a  class="ajax-load" href="<?php echo get_site_url(); ?>/read">Read More</a></p>
+
+
+                </div>
+
+
 
     </div>
 </section>

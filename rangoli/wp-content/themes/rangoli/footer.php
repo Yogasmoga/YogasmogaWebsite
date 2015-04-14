@@ -374,7 +374,7 @@
                                     <div class="err-msg"></div>
                                 </form>
                                 <div class="align-center" style=" color:#ff9f9f; font-size: 13px; letter-spacing: 1px; font-family: ITCAvantGardeStd-Bk">
-                                    Already signed up?<br/><a style="cursor: pointer;" onclick="$('.close').click(); $('.login_logout_link').click();">Sign in</a> here
+                                    Already signed up?<br/><a style="cursor: pointer;" onclick="$('.close').click(); $('.login_logout_link').click();">Sign in here</a>
                                 </div>
                             </div>
 

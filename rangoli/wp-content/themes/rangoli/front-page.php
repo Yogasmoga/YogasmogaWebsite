@@ -80,13 +80,10 @@ endif;
 
         <section class="first">
             <div class="pad3 grey align-center">
-                <p class="bold"> DISCOVER, SHARE, ENJOY</p>
+                <p class="bold"> RANGOLI <span>—The YOGASMOGA Community</span></p>
 
-                <p class="light"><span>OUR COMMUNITY IN COLOR</span></p>
+                <p class="light"><span>CULTURE, CONVERSATION, CONNECTION</span></p>
 
-                <p class="freighttextbook">At YOGASMOGA, we recognize the important role color has in shaping our world. <br/>
-                    Color gives meaning and dimension – we use it to express the connections we make and express who we are. <br/>
-                    Our relationship with color defines RANGOLI: a journey of content, conversation and connection.</p>
             </div>
         </section>
 
