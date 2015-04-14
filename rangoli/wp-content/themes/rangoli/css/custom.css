@@ -948,15 +948,16 @@ img{
     transition-duration: 500ms;
 }
 .single_post_like .wpfp-span path {
-    stroke: #0a0a0a;
+    stroke: #999;
     stroke-width: 2;
+    fill:#999;
     transition-duration: 200ms;
 }
 .single_post_like:hover .wpfp-span path {
-    stroke: #999;
+    stroke: #666;
     stroke-width: 2;
     transition-duration: 200ms;
-    fill:#999;
+    fill:#666;
 }
 .single_post_like .wpfp-span svg{
     height: 15px !important;

@@ -12,15 +12,6 @@
 <head>
     <link rel="shortcut icon"   href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico" />
     <?php
-       /* if(!is_author() && !is_404()){
-            echo get_the_title()." | Rangoli: The YOGASMOGA Community";
-        }
-        if ( is_author() ) {
-            $author_obj = $wp_query->get_queried_object();
-            echo strtoupper($author_obj->display_name)." | Rangoli: The YOGASMOGA Community";
-        }
-*/
-
     if(is_home()){
         ?>
             <title>Rangoli: The YOGASMOGA Community</title>
@@ -61,28 +52,19 @@
         <meta property="description" content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community." />
     <?php
     }
-    else{
-       ?>
-        <title><?php echo get_the_title(); ?> | Rangoli: The YOGASMOGA Community</title>
-        <meta property="og:title" content="<?php echo get_the_title(); ?> | Rangoli: The YOGASMOGA Community" />
-        <meta property="og:description" content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community." />
-        <meta property="description" content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community." />
-        <meta property="og:image" content="<?php $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); echo $banner_img_url[0]; ?>" />
-    <?php
-    }
     if(is_author()){
         $author_obj = $wp_query->get_queried_object();
         $author_name = strtoupper($author_obj->display_name);
        ?>
         <title><?php echo $author_name ?> | Rangoli: The YOGASMOGA Community</title>
         <?php
-            if($author_name =="YOGASMOGA BRENTWOOD") {
-                ?>
-                <meta property="og:title" content="YOGASMOGA Brentwood | Rangoli: The YOGASMOGA Community"/>
-                <meta property="og:description" content="Centrally located on the corner of San Vicente Boulevard and Montana Avenue in Brentwood, Los Angeles. We chose this space for its accessibility and neighborhood vibe. Our bright and sunny Brentwood store is wrapped in floor-to-ceiling windows that fill the space with natural light and warm, welcoming energy."/>
-                <meta property="description" content="Centrally located on the corner of San Vicente Boulevard and Montana Avenue in Brentwood, Los Angeles. We chose this space for its accessibility and neighborhood vibe. Our bright and sunny Brentwood store is wrapped in floor-to-ceiling windows that fill the space with natural light and warm, welcoming energy."/>
-            <?php
-            }
+        if($author_name =="YOGASMOGA BRENTWOOD") {
+            ?>
+            <meta property="og:title" content="YOGASMOGA Brentwood | Rangoli: The YOGASMOGA Community"/>
+            <meta property="og:description" content="Centrally located on the corner of San Vicente Boulevard and Montana Avenue in Brentwood, Los Angeles. We chose this space for its accessibility and neighborhood vibe. Our bright and sunny Brentwood store is wrapped in floor-to-ceiling windows that fill the space with natural light and warm, welcoming energy."/>
+            <meta property="description" content="Centrally located on the corner of San Vicente Boulevard and Montana Avenue in Brentwood, Los Angeles. We chose this space for its accessibility and neighborhood vibe. Our bright and sunny Brentwood store is wrapped in floor-to-ceiling windows that fill the space with natural light and warm, welcoming energy."/>
+        <?php
+        }
         if($author_name =="YOGASMOGA TOWNHOUSE") {
             ?>
             <meta property="og:title" content="YOGASMOGA Townhouse | Rangoli: The YOGASMOGA Community"/>
@@ -97,6 +79,22 @@
             <meta property="description" content="We are YOGASMOGA. Designed in NYC. Made in USA. We make things for life, one breath at a time."/>
         <?php
         }
+    }
+    if(is_page("about")){
+        ?><title>About Rangoli | Rangoli: The YOGASMOGA Community</title>
+        <meta property="og:title" content="About Rangoli | Rangoli: The YOGASMOGA Community" />
+        <meta property="og:description" content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind." />
+        <meta property="description" content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind." />
+    <?php
+    }
+    else{
+        ?>
+        <title><?php echo get_the_title(); ?> | Rangoli: The YOGASMOGA Community</title>
+        <meta property="og:title" content="<?php echo get_the_title(); ?> | Rangoli: The YOGASMOGA Community" />
+        <meta property="og:description" content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community." />
+        <meta property="description" content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community." />
+        <meta property="og:image" content="<?php $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); echo $banner_img_url[0]; ?>" />
+    <?php
     }
     ?>
 
