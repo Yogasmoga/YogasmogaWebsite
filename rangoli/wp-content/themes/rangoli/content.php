@@ -32,8 +32,8 @@
             <div class="right invite_signup" style = " position:relative; width:33.33%; cursor:pointer;  background:url('<?php bloginfo('template_directory')?>/images/box_a.png') no-repeat; background-size: cover;" >
             <?php  } ?>
             <img src="<?php bloginfo('template_directory')?>/images/no-background.png" style="width:100%;float:left;"/>
-            <div class="overlay-text">
-            </div>
+<!--            <div class="overlay-text">-->
+<!--            </div>-->
         </div>
 
         <div class="one-three left">
@@ -103,7 +103,8 @@
 
         <div class="one-three left">
             <?php
-            $author_id = 71;
+//            $author_id = 71;
+            $author_id = 69;
             $author = get_userdata($author_id);
             ?>
 

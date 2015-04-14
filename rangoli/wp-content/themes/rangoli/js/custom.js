@@ -573,7 +573,10 @@ function get_cookie(Name) {
 }
 $(document).ready(function () {
     init();
-    $(".homepage_slider .slides li").height(wh-70);
+    if(logged_in==false)
+        $(".homepage_slider .home_signup").css("top",wh-157);
+    else
+        $(".homepage_slider .home_signup").css("top",wh-112);
     $("#signup_signin_btn").click(function () {
         $(".login_logout_link").click();
     });
@@ -1443,7 +1446,17 @@ function flip(){
     $("#card").toggleClass("flipped");
     if($("#card").hasClass("flipped"));
     setTimeout(randomize_images,200);
-}
+};
+//$(function(){
+//    // $(".card").flip();
+//
+//    $("#card").flip({
+//        axis: "y", // y or x
+//        reverse: false, // true and false
+//        trigger: "click", // click or hover
+//        speed: 500
+//    });
+//});
 $(document).ready(function(){
     randomize_images();
     $(".close").click(function(){
@@ -1452,9 +1465,9 @@ $(document).ready(function(){
         $(".bullseye_popup_container").fadeOut();
         is_bullseye_popup_open = false;
     });
-    $(".bullseye_popup").click(function(){
-        $(".close").click();
-    });
+    //$(".bullseye_popup").click(function(){
+    //    $(".close").click();
+    //});
     $("#ap_signup").click(function(){
         createCustomerAccount_from_animated_popup();
     });

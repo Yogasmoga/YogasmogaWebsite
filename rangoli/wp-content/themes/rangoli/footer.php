@@ -350,19 +350,19 @@
     <div class="center_popup">
         <section class="random_popup_container">
             <div id="card">
-                <figure class="front">
-                    <img src="" usemap="#open_popup"/>
+                <div class="front">
+                    <img src="" usemap="#open_popup" />
                     <map name="open_popup">
-                        <area shape="circle" coords="233,233,60" onclick="flip();">
+                        <area shape="circle" coords="235,235,235" onclick="flip()">
                     </map>
-                </figure>
-                <figure class="back">
+                </div>
+                <div class="back">
                     <!-- --------------------------------------SIGNUP POPUP---------------------------- -->
                     <div id="ap_signin_popup">
 
                         <div class="signin-block" style="background: url('<?php echo get_site_url()."/wp-content/themes/rangoli/images/red_popup.png" ?>') no-repeat;">
-
                             <div class="close" ></div>
+
                             <div class="form">
                                 <form id="ap_sign-up-form">
                                     <input name="" data-watermark="First Name" id="ap_fname"/>
@@ -374,12 +374,13 @@
                                     <div class="err-msg"></div>
                                 </form>
                                 <div class="align-center" style=" color:#ff9f9f; font-size: 13px; letter-spacing: 1px; font-family: ITCAvantGardeStd-Bk">
-                                    Already signed up?<br/><a style="cursor: pointer;" onclick="$('.login_logout_link').click();">Sign in</a> here
+                                    Already signed up?<br/><a style="cursor: pointer;" onclick="$('.close').click(); $('.login_logout_link').click();">Sign in</a> here
                                 </div>
                             </div>
+
                         </div>
                         <!-- ------------------------------------------------------------------------------------ -->
-                </figure>
+                </div>
             </div>
         </section>
     </div>

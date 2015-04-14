@@ -564,10 +564,11 @@ ul.main-nav > li.rangoli{background-image:none!important;}
     width: 470px;
 }
 #card {
-    width: 100%;
-    height: 100%;
+    width: 470px;
+    height: 470px;
     position: absolute;
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     transition: transform 500ms;
 }
 #card figure {
@@ -576,13 +577,35 @@ ul.main-nav > li.rangoli{background-image:none!important;}
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     margin:0;
 }
 #card .back {
-    transform: rotateY( 180deg );
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 50%;
+    height: 470px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    width: 470px;
+}
+.center_popup{
+    z-index: 555;
+}
+#card .front{
+    border-radius: 50%;
+    width: 470px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    height:470px;
 }
 #card.flipped {
     transform: rotateY( 180deg );
+    -webkit-transform: rotateY( 180deg );
+    transition-duration: 500ms;
 }
 area{
     cursor: pointer;
