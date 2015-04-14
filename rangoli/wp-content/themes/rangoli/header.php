@@ -11,13 +11,91 @@
 <!DOCTYPE HTML>
 <head>
     <link rel="shortcut icon"   href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico" />
-    <title><?php bloginfo('title'); if(!is_home() && !is_author() && !is_404()){ echo ' | '.get_the_title();}  if ( is_author() ) {
+    <?php
+       /* if(!is_author() && !is_404()){
+            echo get_the_title()." | Rangoli: The YOGASMOGA Community";
+        }
+        if ( is_author() ) {
             $author_obj = $wp_query->get_queried_object();
-            echo ' | '.strtoupper($author_obj->display_name);
-        } if(is_404()){ echo ' | 404 Page not found'; }?></title>
-    <meta property="og:title" content="Rangoli" />
-    <meta property="og:description" content="Rangoli - YOGASMOGA Comunity." />
-    <meta property="description" content="Rangoli - YOGASMOGA Comunity." />
+            echo strtoupper($author_obj->display_name)." | Rangoli: The YOGASMOGA Community";
+        }
+*/
+
+    if(is_home()){
+        ?>
+            <title>Rangoli: The YOGASMOGA Community</title>
+            <meta property="og:title" content="Rangoli: The YOGASMOGA Community" />
+            <meta property="og:description" content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community." />
+            <meta property="description" content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community." />
+        <?php
+    }
+    if(is_page("read")){
+        ?>
+        <title>Read | Rangoli: The YOGASMOGA Community</title>
+        <meta property="og:title" content="Look | Rangoli: The YOGASMOGA Community" />
+        <meta property="og:description" content="Our READ section features a curated selection of health & wellness related articles, op-eds, editorial, recipes, biographies, interviews and more. Your brain will love you for it. Rangoli: The YOGASMOGA Community." />
+        <meta property="description" content="Our READ section features a curated selection of health & wellness related articles, op-eds, editorial, recipes, biographies, interviews and more. Your brain will love you for it. Rangoli: The YOGASMOGA Community." />
+        <?php
+        }
+    if(is_page("look")){
+        ?>
+        <title>Look | Rangoli: The YOGASMOGA Community</title>
+        <meta property="og:title" content="Look | Rangoli: The YOGASMOGA Community" />
+        <meta property="og:description" content="Discover our Look section and browse through photography, slideshows, and more awe-inspiring imagery that revolve around health & wellness. Pictures are worth 1000 words and our Look section will give you plenty to talk about. Rangoli: The YOGASMOGA Community." />
+        <meta property="description" content="Discover our Look section and browse through photography, slideshows, and more awe-inspiring imagery that revolve around health & wellness. Pictures are worth 1000 words and our Look section will give you plenty to talk about. Rangoli: The YOGASMOGA Community." />
+        <?php
+        }
+    if(is_page("learn")){
+        ?>
+        <title>Learn | Rangoli: The YOGASMOGA Community</title>
+        <meta property="og:title" content="Learn | Rangoli: The YOGASMOGA Community" />
+        <meta property="og:description" content="Learn how to hit that yoga pose with video tutorials from our beloved SMOGIs. Whether you’re a beginner or a seasoned yogi, our SMOGIs will guide you step-by-step with each pose, adjustment, inhale and exhale. Rangoli: The YOGASMOGA Community." />
+        <meta property="description" content="Learn how to hit that yoga pose with video tutorials from our beloved SMOGIs. Whether you’re a beginner or a seasoned yogi, our SMOGIs will guide you step-by-step with each pose, adjustment, inhale and exhale. Rangoli: The YOGASMOGA Community." />
+        <?php
+        }
+    if(is_404()){
+       ?>
+        <title>404 | Rangoli: The YOGASMOGA Community</title>
+        <meta property="og:title" content="404 | Rangoli: The YOGASMOGA Community" />
+        <meta property="og:description" content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community." />
+        <meta property="description" content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community." />
+    <?php
+    }
+    if(is_author()){
+        if(isset($_GET['author_name'])) {
+            $author_name = $_GET['author_name'];
+        }
+       ?>
+        <title><?php echo $author_name ?> | Rangoli: The YOGASMOGA Community</title>
+        <?php
+            if($author_name =="YOGASMOGA BRENTWOOD") {
+                ?>
+                <meta property="og:title" content="YOGASMOGA Brentwood | Rangoli: The YOGASMOGA Community"/>
+                <meta property="og:description"
+                      content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community."/>
+                <meta property="description"
+                      content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community."/>
+            <?php
+            }
+        if($author_name =="YOGASMOGA TOWNHOUSE") {
+            ?>
+            <meta property="og:title" content="YOGASMOGA Townhouse | Rangoli: The YOGASMOGA Community"/>
+            <meta property="og:description" content="We chose this two-story townhouse on Greenwich Avenue as our first store for its strong feel of community. The exposed brick walls create a cozy atmosphere and neutral palate for our bright collections. We are currently renovating the upstairs space for yoga classes and other wellness events."/>
+            <meta property="description" content="We chose this two-story townhouse on Greenwich Avenue as our first store for its strong feel of community. The exposed brick walls create a cozy atmosphere and neutral palate for our bright collections. We are currently renovating the upstairs space for yoga classes and other wellness events."/>
+        <?php
+        }
+        if($author_name =="YOGASMOGA HQ") {
+            ?>
+            <meta property="og:title" content="YOGASMOGA HQ | Rangoli: The YOGASMOGA Community"/>
+            <meta property="og:description"
+                  content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community."/>
+            <meta property="description"
+                  content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community."/>
+        <?php
+        }
+    }
+    ?>
+
 
     <?php
         $root = get_site_url();
@@ -293,7 +371,7 @@ $display_name = $current_user->display_name;
         </svg>
     </div>
 
-    <div class="color-game" style="<?php echo $style; ?>">
+    <div class="color-game" onclick="window.location='<?php echo get_site_url(); ?>'" style="<?php echo $style; ?>; cursor:pointer;">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         x="0px" y="0px" width="30px" height="40px" viewBox="-0.339 -1 30 60" enable-background="new -0.339 -1 30 60" xml:space="preserve">
         <defs>
