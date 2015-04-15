@@ -85,11 +85,11 @@ get_header();
 </div>
 <div class="about-section row last-section">
     <p>When you sign up for RANGOLI, you get a RANGOLI in your favorite color.<br/>
-        As spend and share, your RANGOLI charm becomes more complex and colorful. </p>
+        As you spend and share, your RANGOLI charm becomes more complex and colorful. </p>
     <img src="<?php echo get_site_url(); ?>/wp-content/themes/rangoli/images/charms.png" />
     <p>
-        PS— Points on RANGOLI are equal to SMOGI Bucks… share with your friends<br/>
-        and earn SMOGI Bucks to redeem on YOGASMOGA.com. Learn more about <a href="/smogi-bucks">SMOGI Bucks</a>.
+        PS— Invite your friends and earn SMOGI Bucks to redeem on YOGASMOGA.com.<br/>
+        Learn more about <a href="/smogi-bucks">SMOGI Bucks</a>.
     </p>
 </div>
 <?php
