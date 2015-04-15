@@ -582,17 +582,6 @@ $(document).ready(function () {
             success: function (response) {
 
                 current_obj.attr("href", response);
-                //if (cls == "user-interest add") {
-                //    current_obj.removeClass("add");
-                //    current_obj.addClass("remove");
-                //    //alert(user_color_shade);
-                //    current_obj.find("path").css("fill", user_color_shade).css("stroke", user_color_shade);
-                //}
-                //else {
-                //    current_obj.removeClass("remove");
-                //    current_obj.addClass("add");
-                //    current_obj.find("path").css("fill", "transparent").css("stroke", "#fff");
-                //}
 
                 count_interests();
             }
@@ -802,11 +791,9 @@ function ajax_load_pages(link) {
     $.ajax({
         url: link,
         success: function (response) {
-            var newTitle = $(response).filter('title').text();
-            //var newMetaDesc = $(response).find('meta[property="og:description"]').attr('content');
-            //$('head').find('meta[property="og:description"]').attr('content',newMetaDesc);
-            //$("head").append(newMetaDesc);
+            var newTitle = $(response).filter('title').html();
             $page.html("");
+
             var newData = $(response).find("#fixed_container").html();
             //alert(newData);
             $(window).scrollTop(0);
@@ -981,7 +968,7 @@ function init() {
         }
         var color = hexToRgb(user_color_shade);
         //$(".author_post:hover .overlay-text").css({'background-color': 'rgba('+color+',0.5)','transition-duration':"500ms"});
-            $(".author_post:hover .overlay-text").css({'background-color': user_color_shade});
+            $(".author_post:hover .overlay-text").css({'background-color': user_color_shade,'transition-duration':'500ms'});
     }, function () {
         $(".author_post .overlay-text").css({
             'background':'rgba(0,0,0,0.25)',

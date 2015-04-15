@@ -1,0 +1,88 @@
+/*
+Theme Name: Rangoli Mobile
+Author: YOGASMOGA
+Author URI: http://yogasmoga.com/
+*/
+@import "css/fonts.css";
+body{
+    margin:0;
+    padding: 0;
+    background: url('images/background.jpg') no-repeat;
+    background-size: cover;
+    color:#fff;
+}
+img, a,a:focus, img:focus, button, button:focus{
+    border:none;
+    outline:none;
+}
+div,p{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.wrapper{
+    background: rgba(64,64,65,0.93);
+    position: fixed;
+    top:0;
+    left: 0;
+    bottom:0 ;
+    right:0;
+    z-index: -1;
+}
+.container {
+    margin: 0 auto;
+    max-width: 300px;
+    position: relative;
+    width: 100%;
+}
+.row{
+    width:100%;
+    clear:both;
+}
+.right{
+    float:right;
+}
+inout, input:focus{
+    outline: none;
+}
+.close.right {
+    margin-right: -15px;
+    margin-top: 10px;
+}
+.registration_form input[type='text'],.registration_form input[type='password']{
+    width:100%;
+    background: none;
+    border:none;
+    border-bottom: 1px solid #fff;
+    color:#fff;
+    margin-bottom: 25px;
+    height:30px;
+    font:13px/24px ITCAvantGardeStd-Bk;
+    letter-spacing: 1px;
+}
+
+.registration_form button{
+    width:100%;
+    background: url('images/submit.png') no-repeat;
+    background-size: cover;
+    height:60px;
+    border:none;
+    margin-top: 20px;
+}
+.registration_form .err-msg{
+    margin-top: 20px;
+    font: 11px/15px ITCAvantGardeStd-Bk;
+    letter-spacing: 1px;
+    text-align: center;
+}
+.row.confirmation_message {
+    color: #ae8637;
+    display: none;
+    font: 24px/26px ITCAvantGardeStd-Bk;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: 82px;
+    width: 100%;
+}

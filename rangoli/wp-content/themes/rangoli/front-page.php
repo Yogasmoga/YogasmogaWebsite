@@ -80,7 +80,7 @@ endif;
 
         <section class="first">
             <div class="pad3 grey align-center">
-                <p class="bold"> RANGOLI <span>—The YOGASMOGA Community</span></p>
+                <p class="bold"> RANGOLI<span>—The YOGASMOGA Community</span></p>
 
                 <p class="light"><span>CULTURE, CONVERSATION, CONNECTION</span></p>
 
@@ -97,7 +97,7 @@ get_template_part("content");
         <div class="row">
             <div class="one-three left facebook"  style="background: #2D9630;">
                     <?php
-                    $post = get_post(523);
+                    $post = get_post(814);
                     ?>
                     <?php echo get_the_post_thumbnail($post->ID,"thumb");
                     if(!has_post_thumbnail($post->ID)){
@@ -172,7 +172,7 @@ echo get_template_part("latest_rangoli_instagram");
 
 
      <?php
-            $post = get_post(433);
+            $post = get_post(319);
             ?>
             <?php echo get_the_post_thumbnail($post->ID,"thumb");
             if(!has_post_thumbnail($post->ID)){
