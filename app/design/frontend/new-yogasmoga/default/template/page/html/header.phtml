@@ -27,6 +27,18 @@
  * @var Mage_Page_Block_Html_Header $this
  */
 ?>
+<style>
+    a#rangoli-head1{
+        background-image: url("/rangoli/wp-content/themes/rangoli/images/rangoli_triangles.gif") !important;
+        background-repeat: no-repeat;
+        padding: 1px 0 1px 15px;
+        display: block;
+        margin-top: -1px;
+        background-position:0px 5px;
+        color: #555 !important;
+    }
+</style>
+
 <!-- Paste this code right after the <body> tag on every page of your site. -->
 <!-- Qualaroo for yogasmoga.com  -->
 <?php $serverType = Mage::getModel('core/variable')->loadByCode('server_type')->getValue('plain');
@@ -598,7 +610,7 @@ $style = "";
                                 <li><a href="<?php echo $this->getBaseUrl();?>smogi-bucks#smogi-bucks-balance">smogi bucks balance</a></li>
                             </ul>
                         </li>
-<!--                        <li class="rangoli"><a href="--><?php //echo $this->getBaseUrl();?><!--rangoli" class="rangoliRd" id="rangoli-head">Rangoli</a></li>--><!-- code update by ys team, hiding rangoli -->
+                        <li class="rangoli"><a href="<?php echo $this->getBaseUrl();?>rangoli" class="rangoliRd" id="rangoli-head1">Rangoli</a></li><!-- code update by ys team, hiding rangoli -->
                     </ul>
                 </div>
                 <?php echo $this->getChildHtml('topSearch') ?>
