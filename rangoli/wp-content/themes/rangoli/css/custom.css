@@ -1992,3 +1992,37 @@ button.next-confirmation-page {
 .back div {
     display: block !important;
 }
+.user_banner .post_category {
+    border-color: #444;
+    width: 317px;
+    padding: 0;
+}
+.user_banner .post_title {
+    border-color: #444;
+    color: #444;
+
+}
+.user_banner .overlay-text{
+    background: none;
+    cursor: default;
+}
+.user_banner {
+    height: 180px;
+    position: relative;
+    margin-bottom: 50px;
+}
+.about_author .edit {
+    bottom: 2px;
+    position: absolute;
+    right: 0;
+}
+.user_picture {
+    border-radius: 50%;
+    display: block;
+    height: 100px;
+    margin: 0 auto 20px;
+    width: 100px;
+}
+.about_author{
+    position: relative;
+}

@@ -12,11 +12,11 @@
 		$wpauthors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=".$user_id);
 		if(count($wpauthors)>0)
 		$wp_author=$wpauthors[0];
-		//$avatar = get_the_author_meta('author_profile_picture', $user_id);
-        $avatar = '';
+//		$avatar = get_the_author_meta('author_profile_picture', $user_id);
+		$avatar = "";
 		?>
 	</div>
-	<div class="wp_page_banner row" style="height:600px; background: url('<?php echo $avatar; ?>') <?php echo '#'.$wp_author->color_shade; ?>">
+	<div class="user_banner row">
 		<?php
 		$user_profile=get_user_profile($user_id);
 		$main_color=$user_profile->color_main;
@@ -37,9 +37,31 @@
 
 	<div class="row container">
 		<div class="span3">
-			<p class="about_author">ABOUT</p>
-			<div class="description about">
+			<p class="about_author">ABOUT
 				<?php
+				if(is_user_logged_in()){
+				$current_user_id  = get_current_user_id();
+					if($current_user_id == $user_id){
+						?>
+							<a class="edit" href="/profile/manage" ><img src="/rangoli/wp-content/themes/rangoli/images/edit_profile.png" /> </a>
+						<?php
+					}
+				}
+				?>
+				</p>
+			<div class="description about">
+
+				<?php
+				$profile_url = get_user_meta($user_id,"cupp_upload_meta");
+
+				if(is_array($profile_url) && count($profile_url)) {
+
+					echo "<div class='row'><img class='user_picture' src='" . $profile_url[0] . "' /></div>";
+				}
+				else{
+					echo "<div class='row'><img class='user_picture' src='/rangoli/wp-content/themes/rangoli/images/default.jpg' /></div>";
+				}
+
 				if($user_info->description) {
 					echo $user_info->description;
 				}

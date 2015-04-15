@@ -39,7 +39,7 @@
         </div>
                 <div style="background: none repeat scroll 0% 0% rgb(172, 132, 54);" class="one-three left get_app">
                     <?php
-                    $post = get_post(261);
+                    $post = get_post(496);
                     ?>
                     <?php echo get_the_post_thumbnail($post->ID,"thumb");
                     if(!has_post_thumbnail($post->ID)){
@@ -139,7 +139,7 @@
 
         <div class="one-three left">
             <?php
-            $post = get_post(370);
+            $post = get_post(832);
             ?>
             <?php echo get_the_post_thumbnail($post->ID,"thumb");
             if(!has_post_thumbnail($post->ID)){
@@ -212,7 +212,7 @@
 
         <div class="one-three left">
             <?php
-            $post = get_post(330);
+            $post = get_post(523);
             ?>
             <?php echo get_the_post_thumbnail($post->ID,"thumb");
             if(!has_post_thumbnail($post->ID)){
@@ -249,7 +249,7 @@
         <div class="one-three left">
 
             <?php
-            $post = get_post(506);
+            $post = get_post(850);
             ?>
             <?php echo get_the_post_thumbnail($post->ID,"thumb");
             if(!has_post_thumbnail($post->ID)){
