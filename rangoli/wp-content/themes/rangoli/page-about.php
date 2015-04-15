@@ -72,15 +72,15 @@ get_header();
 <div class="row no-padding">
     <div class="span4 img-stretch">
         <img src="<?php echo get_site_url(); ?>/wp-content/themes/rangoli/images/read.jpg" />
-         <p class="post_link"><a href="">Read More</a></p>
+         <p class="post_link"><a href="/rangoli/read">Read More</a></p>
     </div>
     <div class="span4 img-stretch">
         <img src="<?php echo get_site_url(); ?>/wp-content/themes/rangoli/images/look.jpg" />
-        <p class="post_link"><a href="">Look More</a></p>
+        <p class="post_link"><a href="/rangoli/look">Look More</a></p>
     </div>
     <div class="span4 img-stretch">
         <img src="<?php echo get_site_url(); ?>/wp-content/themes/rangoli/images/learn.jpg" />
-        <p class="post_link"><a href="">Learn More</a></p>
+        <p class="post_link"><a href="/rangoli/learn">Learn More</a></p>
     </div>
 </div>
 <div class="about-section row last-section">
@@ -89,7 +89,7 @@ get_header();
     <img src="<?php echo get_site_url(); ?>/wp-content/themes/rangoli/images/charms.png" />
     <p>
         PS— Points on RANGOLI are equal to SMOGI Bucks… share with your friends<br/>
-        and earn SMOGI Bucks to redeem on YOGASMOGA.com. Learn more about <a href="">SMOGI Bucks</a>.
+        and earn SMOGI Bucks to redeem on YOGASMOGA.com. Learn more about <a href="/smogi-bucks">SMOGI Bucks</a>.
     </p>
 </div>
 <?php
