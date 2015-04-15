@@ -8,11 +8,8 @@ $user=$users[0];
 $author_color=$user->color_shade;
 }
 $author_color="555555";
-//if(isset($_GET['cat']))
-//$current_category=$_GET['cat'];
-//
-//    if(isset($cat)){
-    $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
+
+$banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
 
     ?>
 
@@ -206,7 +203,7 @@ $author_color="555555";
                         </a>
                     </li>
                     <li>
-                        <a target="_blank" rel="<?php echo $post->ID; ?>" user="<?php echo get_current_user_id();  ?>" href="mailto:?subject= RANGOLI : Let's paint the town red, together &amp;body=Check out this post <?php echo $b_pl; ?> ">
+                        <a target="_blank" rel="<?php echo $post->ID; ?>" user="<?php echo get_current_user_id();  ?>" href="mailto:?subject= RANGOLI—The YOGASMOGA Community &amp;body=Check out this post <?php echo $b_pl; ?> ">
                             <img src="/rangoli/wp-content/themes/rangoli/images/mail.png">
                             <img src="/rangoli/wp-content/themes/rangoli/images/mail_hover.png">
                         </a>
@@ -420,4 +417,4 @@ if($count>0){
 //
 }
 get_footer();
-?>
+//?>

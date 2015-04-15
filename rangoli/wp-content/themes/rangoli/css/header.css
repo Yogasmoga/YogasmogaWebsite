@@ -582,9 +582,9 @@ ul.main-nav > li.rangoli{background-image:none!important;}
     -webkit-backface-visibility: hidden;
     border-radius: 50%;
     height: 470px;
-    left: 0;
+    left: 2px;
     position: absolute;
-    top: 0;
+    top: 1px;
     transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg);
     width: 470px;
