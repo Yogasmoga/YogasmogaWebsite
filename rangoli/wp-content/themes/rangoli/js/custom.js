@@ -1072,8 +1072,8 @@ $(document).ready(function () {
         $(".smogi").removeClass("fadeInUp").removeClass("animated");
         //$("body").css("overflow", "auto");
         $("#popup").fadeOut();
-        $("#stores").hide();
-        $("#smogis").hide();
+        $("#stores").fadeOut();
+        $("#smogis").fadeOut();
 
     });
 
