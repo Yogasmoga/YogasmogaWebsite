@@ -1,7 +1,13 @@
 </div>
 </div>
+<?php
+$style= "";
+if(!is_user_logged_in()) {
+    $style = "margin-top:25px;";
+}
+?>
 <!-- ------------------------------------------------- -->
-<div id="popup" class="user-color-shade">
+<div id="popup" class="user-color-shade" style="<?php echo $style; ?>">
 
     <img src="<?php bloginfo('template_directory') ?>/images/close.png" class="right close-popup" />
     <div id="stores">
@@ -89,7 +95,7 @@
                 <div class="err-msg"></div>
             </form>
             <div class="align-center" style=" color:#ff9f9f; font-size: 13px; letter-spacing: 1px; font-family: ITCAvantGardeStd-Bk">
-                Already signed up?<br/><a style="cursor: pointer;" onclick="$('.login_logout_link').click();">Sign in</a> here
+                Already signed up?<br/><a style="cursor: pointer;" onclick="$('.login_logout_link').click();">Sign in here</a>
             </div>
         </div>
     </div>

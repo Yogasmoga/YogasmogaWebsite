@@ -223,20 +223,20 @@
             <div onclick="ajax_load_pages('<?php echo get_permalink($post->ID) ?>')" class="overlay-text">
                 <p class="post_category"><?php echo category($post->ID); ?></p>
 
-<!--                <p class="post_title">--><?php //echo $post->post_title; ?><!--</p>-->
+                <p class="post_title"><?php echo $post->post_title; ?></p>
 
-                <div class="play-video">
-                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px"
-                         viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                        <defs>
-                        </defs>
-                        <path fill="<?php $author = get_user_profile($post->post_author);
-                        echo '#' . $author->color_shade; ?>"
-                              d="M32,0C14.327,0,0,14.327,0,32c0,17.674,14.327,32,32,32s32-14.326,32-32  C64,14.327,49.673,0,32,0z M22.321,49.106V14.894L51.951,32L22.321,49.106z"/>
-
-                        </svg>
-                </div>
+<!--                <div class="play-video">-->
+<!--                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"-->
+<!--                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px"-->
+<!--                         viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">-->
+<!--                        <defs>-->
+<!--                        </defs>-->
+<!--                        <path fill="--><?php //$author = get_user_profile($post->post_author);
+//                        echo '#' . $author->color_shade; ?><!--"-->
+<!--                              d="M32,0C14.327,0,0,14.327,0,32c0,17.674,14.327,32,32,32s32-14.326,32-32  C64,14.327,49.673,0,32,0z M22.321,49.106V14.894L51.951,32L22.321,49.106z"/>-->
+<!---->
+<!--                        </svg>-->
+<!--                </div>-->
 
 
 

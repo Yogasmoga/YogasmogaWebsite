@@ -607,7 +607,7 @@ $(window).load(function () {
     $(".wp_page").animate({
         'opacity': '1'
     }, 300, function () {
-        $(".rangoli_logo").addClass("fadeInDown").addClass("animated");
+        $(".flexslider .rangoli_logo").addClass("fadeInDown").addClass("animated");
     });
     var wh = $(window).height();
     var ww = $(window).width();
