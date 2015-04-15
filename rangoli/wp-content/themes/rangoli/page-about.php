@@ -2,7 +2,7 @@
 get_header();
 ?>
 
-<div class="row about_banner">
+<div class="row about_banner" style="min-height: 600px;">
     <img src="<?php echo get_site_url(); ?>/wp-content/themes/rangoli/images/about_1.jpg" />
     <div class="overflow-text">
         <div class="rangoli_logo">
@@ -66,7 +66,7 @@ get_header();
                 </p>
 
         </div>
-        <p class="post_link" style="color:#fff">Choose Your Color</p>
+        <p class="post_link" style="color:#fff"><a href="/rangoli">Choose Your Color</a></p>
     </div>
 </div>
 <div class="row no-padding">
