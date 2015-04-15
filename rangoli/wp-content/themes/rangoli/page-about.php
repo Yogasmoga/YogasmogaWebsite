@@ -66,7 +66,7 @@ get_header();
                 </p>
 
         </div>
-        <p class="post_link">Choose Your Color</p>
+        <p class="post_link" style="color:#fff">Choose Your Color</p>
     </div>
 </div>
 <div class="row no-padding">
