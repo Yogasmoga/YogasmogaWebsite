@@ -315,7 +315,7 @@ function filter()
                                     foreach ($categories as $category) {
                                         if ($category) {
                                             if ($category->slug != "all" && $category->slug != "read" && $category->slug != "look" && $category->slug != "learn") {
-                                                echo "<br/> " . $category->cat_name . " , " . $userpost->ID . " [ " . has_category($category, $userpost) . " ]";
+                                                
                                                 if (has_category($category,$userpost)) {
                                                     //echo "<br/>post = " . $userpost->ID . " , added = " . $category->cat_name;
                                                    $cats[] = $category->cat_name;
