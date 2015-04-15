@@ -315,10 +315,10 @@ function filter()
                                     foreach ($categories as $category) {
                                         if ($category) {
                                             if ($category->slug != "all" && $category->slug != "read" && $category->slug != "look" && $category->slug != "learn") {
-                                                
-                                                if (has_category($category,$userpost)) {
-                                                    //echo "<br/>post = " . $userpost->ID . " , added = " . $category->cat_name;
-                                                   $cats[] = $category->cat_name;
+                                                if($userpost->post_status == "publish") {
+                                                    if (has_category($category, $userpost)) {
+                                                        $cats[] = $category->cat_name;
+                                                    }
                                                 }
                                             }
                                         }
