@@ -54,10 +54,10 @@ if(Mage::getSingleton('customer/session')->isLoggedIn())
         <!--<li><a href="<?php //echo Mage::getUrl('',array('_secure'=>true)); ?>profile/manage/index">Profile Picture</a></li>
         <li><a href="<?php //echo Mage::getUrl('',array('_secure'=>true)); ?>profile/manage/view">Profile View</a></li>-->
     </ul>
-<!--    <ul class="sub-nav">-->
-<!--        <li><a href="--><?php //echo Mage::getUrl('',array('_secure'=>true)); ?><!--rangoli" style="color:#F37879">Rangoli</a></li>-->
-<!--        <li><a href="--><?php //echo Mage::getUrl('',array('_secure'=>true)); ?><!--profile/manage/index">&emsp;Edit Profile</a></li>-->
-<!--        <li><a href="--><?php //echo Mage::getUrl('',array('_secure'=>true)); ?><!--rangoli/profile/?user_id=--><?php //echo $wp_id ?><!--">&emsp;Profile View</a></li>-->
-<!--        <li><a href="--><?php //echo Mage::getUrl('',array('_secure'=>true)); ?><!--rangoli/journey">&emsp;Edit Color</a></li>-->
-<!--    </ul>-->
+    <ul class="sub-nav">
+        <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>rangoli" style="color:#F37879">Rangoli</a></li>
+        <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>profile/manage/index">&emsp;Edit Profile</a></li>
+        <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>rangoli/profile/?user_id=<?php echo $wp_id ?>">&emsp;Profile View</a></li>
+        <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>rangoli/journey">&emsp;Edit Color</a></li>
+    </ul>
 </div>
