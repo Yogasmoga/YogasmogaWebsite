@@ -88,11 +88,16 @@
     <?php
     }
     else{
+        $post = get_the_post();
+        if($post) {
+            $post_content = $post->post_content;
+            $description = substr($post_content,0,155);
+        }
         ?>
         <title><?php echo get_the_title(); ?> | Rangoli: The YOGASMOGA Community</title>
         <meta property="og:title" content="<?php echo get_the_title(); ?> | Rangoli: The YOGASMOGA Community" />
-        <meta property="og:description" content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community." />
-        <meta property="description" content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community." />
+        <meta property="og:description" content="<?php echo $description; ?>" />
+        <meta property="description" content="<?php echo $description; ?>" />
         <meta property="og:image" content="<?php $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); echo $banner_img_url[0]; ?>" />
     <?php
     }
@@ -107,6 +112,7 @@
         var user_color_shade;
         var  homeUrl="<?php echo $root ?>";
         var today_date="<?php echo date("j.m.y", time()) ?>";
+
 
         (function(d) {
             var config = {
@@ -197,7 +203,7 @@ if(!is_user_logged_in()){
                             <ul><li><a href="/women/tops/bras">Bras</a></li>
                                 <li><a href="/women/tops/tanks">Tanks</a></li>
                                 <li><a href="/women/tops/tees">TEES</a></li>
-                                <li><a href="/women/tops/sweaters">SWEATERS</a></li>
+                                <li><a href="/women/tops/tops/sweaters">SWEATERS</a></li>
                                 <li><a href="/women/tops/jackets">Jackets</a></li>
                             </ul>
                         </li>
