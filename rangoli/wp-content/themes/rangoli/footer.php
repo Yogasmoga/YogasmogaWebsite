@@ -358,7 +358,7 @@ if(!is_user_logged_in()) {
             <div id="card">
                 <div class="front">
                     <img src="" usemap="#open_popup" />
-                    <a  style="cursor:pointer; border-radius: 50%; position: absolute; top:0; left:0; right:0; bottom:0;" onclick="flip();"></a>
+<!--                    <a  style="cursor:pointer; border-radius: 50%; position: absolute; top:0; left:0; right:0; bottom:0;" onclick="flip();"></a>-->
                     <map name="open_popup">
                         <area shape="circle" coords="235,235,235" onclick="flip()">
                     </map>
