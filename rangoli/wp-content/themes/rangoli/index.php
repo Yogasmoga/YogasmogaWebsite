@@ -203,7 +203,7 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
                         </a>
                     </li>
                     <li>
-                        <a target="_blank" rel="<?php echo $post->ID; ?>" user="<?php echo get_current_user_id();  ?>" href="mailto:?subject= RANGOLI—The YOGASMOGA Community &amp;body=Check out this post <?php echo $b_pl; ?> ">
+                        <a target="_blank" rel="<?php echo $post->ID; ?>" user="<?php echo get_current_user_id();  ?>" href="mailto:?subject= RANGOLI—The YOGASMOGA Community &amp;body=Check out <?php echo $post->post_title; ?> on Rangoli <?php echo $b_pl; ?> ">
                             <img src="/rangoli/wp-content/themes/rangoli/images/mail.png">
                             <img src="/rangoli/wp-content/themes/rangoli/images/mail_hover.png">
                         </a>
