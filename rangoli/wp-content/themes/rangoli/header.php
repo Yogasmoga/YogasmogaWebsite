@@ -88,9 +88,11 @@
     <?php
     }
     else{
-        $post = get_the_post();
+        $post = get_post();
+        $post_content = "";
+        $description="";
         if($post) {
-            $post_content = $post->post_content;
+            $post_content = strip_tags($post->post_content);
             $description = substr($post_content,0,155);
         }
         ?>
@@ -112,7 +114,6 @@
         var user_color_shade;
         var  homeUrl="<?php echo $root ?>";
         var today_date="<?php echo date("j.m.y", time()) ?>";
-
 
         (function(d) {
             var config = {
