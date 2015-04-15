@@ -648,3 +648,132 @@ input:focus{
 .wp_page_banner .overlay-text .post_category{
     margin-bottom: 10px !important;
 }
+
+.about_banner{
+    position: relative;
+}
+.row.about_banner > img {
+    float: left;
+    width: 100%;
+}.logo-box {
+     display: block;
+     margin: 0 auto;
+     width: 315px;
+     padding: 15px;
+     border-bottom: 1px solid #fff;
+ }
+.banner_bottom {
+    color: #fff;
+    font-size: 33px;
+    position: absolute;
+    text-align: center;
+    top: 52%;
+    width: 100%;
+    z-index: 0;
+}
+.banner_bottom p:nth-child(1){
+    font:33px/37px ITCAvantGardeStd-Md;
+}
+.banner_bottom p:nth-child(2){
+    font:33px/37px ITCAvantGardeStd-XLt;
+}
+.about_section {
+    float: left;
+    position: relative;
+    width: 100%;
+}
+.sixty_six{
+    float: left;
+    width: 66.66%;
+}
+.sixty_six img{
+    width:100%;
+    float: left;
+}
+.thirty_three{
+    float: left;
+    width: 33.333%;
+}
+.thirty_three img{
+    width:100%;
+    float: left;
+}
+.golden {
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color:#fff;
+    padding: 25px;
+    background: #ae8637;
+}
+.golden2 {
+    background: #ae8637;
+    height: 50%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    color:#fff;
+    padding: 25px;
+}
+.thirty_three.golden2 {
+    box-sizing: border-box;
+    font: 30px/35px ItCAvantGardeStd-Bk;
+    padding: 9.5% 25px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.ITC-book {
+    color: #fff;
+    font: 30px/35px ITCAvantGardeStd-Bk;
+    margin-bottom: 20px;
+}
+.freight-book{
+    font:20px/25px freight-text-pro;
+}
+.no-padding,.no-padding > div{
+    padding:0;
+    position: relative;
+}
+.img-stretch img{
+    width: 100%;
+    float:left;
+}
+.last-section{
+    padding: 35px;
+}
+.last-section p:nth-child(1){
+    font: 20px/25px freight-text-pro;
+    text-align: center;
+}
+.last-section p:nth-child(3){
+    font: 14px/18px GraphikRegular;
+    text-align: center;
+}
+.last-section a{
+    color: #999;
+}
+.last-section img:nth-child(2){
+    display: block;
+    margin: 0 auto;
+}
+.rang {
+    font: italic 400 42px/45px freight-text-pro;
+    position: absolute;
+    top: 40%;
+    width: 100%;
+}
+.rang > span {
+    font: 33px/45px ITCAvantGardeStd-Bk;
+}
+.overlay-text.about_us_page {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.overlay-text.about_us_page:hover .play_video {
+    fill:#fff;
+    stroke:#fff;
+    transition-duration: 200ms;
+}
+.overlay-text.about_us_page .play_video {
+    transition-duration: 200ms;
+}

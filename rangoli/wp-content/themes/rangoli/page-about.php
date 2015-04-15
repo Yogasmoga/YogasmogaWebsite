@@ -21,12 +21,20 @@ get_header();
 <div class="about_section">
     <div class="sixty_six" style="position: relative;">
         <img src="<?php echo get_site_url(); ?>/wp-content/themes/rangoli/images/about_3.jpg" />
-        <div class="overlay-text">
+        <?php
+        $post = get_post(395);
+        $permalink = get_the_permalink($post->ID);
+        $author_id = $post->post_author;
+        $rangoli_profile = get_user_profile($author_id);
+        $color = "#".$rangoli_profile->color_shade;
+        ?>
+        <div class="overlay-text about_us_page" onclick="window.location='<?php echo $permalink; ?>'" >
             <div video="http://youtu.be/MTMcDpqMePY" class="play-video">
-                <svg xml:space="preserve" enable-background="new -0.317 0.093 55 55" viewBox="-0.317 0.093 55 55" height="56px" width="56px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
                     <defs>
                     </defs>
-                    <path d="M54.389,27.195c0,15.019-12.175,27.193-27.194,27.193C12.175,54.389,0,42.214,0,27.195  C0,12.175,12.175,0,27.195,0C42.214,0,54.389,12.175,54.389,27.195z M18.683,15.027v22.824l24.398-11.412L18.683,15.027z" fill="#000075"/>
+                    <path fill="<?php echo $color; ?>"
+                          opacity="0.9" enable-background="new" d="M32,0C14.327,0,0,14.327,0,32c0,17.674,14.327,32,32,32s32-14.326,32-32  C64,14.327,49.673,0,32,0z M22.321,49.106V14.894L51.951,32L22.321,49.106z"/>
                     </svg>
             </div>
         </div>
@@ -58,21 +66,21 @@ get_header();
                 </p>
 
         </div>
-        <p class="post_link"><a href="">Choose Your Color</a></p>
+        <p class="post_link">Choose Your Color</p>
     </div>
 </div>
 <div class="row no-padding">
     <div class="span4 img-stretch">
         <img src="<?php echo get_site_url(); ?>/wp-content/themes/rangoli/images/read.jpg" />
-         <p class="post_link"><a href="">Read More</a></p>
+         <p class="post_link"><a href="/rangoli/read">Read More</a></p>
     </div>
     <div class="span4 img-stretch">
         <img src="<?php echo get_site_url(); ?>/wp-content/themes/rangoli/images/look.jpg" />
-        <p class="post_link"><a href="">Look More</a></p>
+        <p class="post_link"><a href="/rangoli/look">Look More</a></p>
     </div>
     <div class="span4 img-stretch">
         <img src="<?php echo get_site_url(); ?>/wp-content/themes/rangoli/images/learn.jpg" />
-        <p class="post_link"><a href="">Learn More</a></p>
+        <p class="post_link"><a href="/rangoli/learn">Learn More</a></p>
     </div>
 </div>
 <div class="about-section row last-section">
@@ -81,7 +89,7 @@ get_header();
     <img src="<?php echo get_site_url(); ?>/wp-content/themes/rangoli/images/charms.png" />
     <p>
         PS— Points on RANGOLI are equal to SMOGI Bucks… share with your friends<br/>
-        and earn SMOGI Bucks to redeem on YOGASMOGA.com. Learn more about <a href="">SMOGI Bucks</a>.
+        and earn SMOGI Bucks to redeem on YOGASMOGA.com. Learn more about <a href="/smogi-bucks">SMOGI Bucks</a>.
     </p>
 </div>
 <?php

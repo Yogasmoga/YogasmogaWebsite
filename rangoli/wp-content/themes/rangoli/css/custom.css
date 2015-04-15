@@ -244,7 +244,7 @@ img{
     color:#fff;
 }
 .grey{
-    color:#444;
+    color:#555;
 }
 .bold {
     font-size: 33px;
@@ -1342,7 +1342,7 @@ video{
     margin-right: -20px;
     overflow: auto;
     padding: 0 30px;
-    width: 769px;
+    width: 779px;
 }
 .smogi-list.row {
     overflow: hidden;
@@ -1756,7 +1756,7 @@ button.next-confirmation-page {
 }
 #stores .span4.smogi {
     float: left;
-    width: 349px;
+    width: 350px;
 }
 #stores .span4.smogi:nth-child(even){
     padding-right: 100px;
