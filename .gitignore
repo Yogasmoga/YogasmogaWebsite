@@ -18,6 +18,7 @@ local.properties
 .settings/
 .loadpath
 errors/local.xml
+sitemap.xml
 
 # External tool builders
 .externalToolBuilders/
