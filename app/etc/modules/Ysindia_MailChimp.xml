@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <Ysindia_Mailchimp>
+        <Ysindia_MailChimp>
             <active>false</active>
             <codePool>local</codePool>
         </Ysindia_Mailchimp>
