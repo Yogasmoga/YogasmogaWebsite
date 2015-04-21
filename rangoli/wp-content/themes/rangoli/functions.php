@@ -1,10 +1,11 @@
 <?php
 
-
-
 add_theme_support('post-thumbnails');
 add_image_size('banner', '1024', '600', true);
 add_image_size('thumb', '700', '525', true);
+add_image_size('mobile_slider', '600', '750', true);
+add_image_size('mobile_posts', '500', '375', true);
+add_image_size('mobile_posts_half', '500', '500', true);
 
 function themeblvd_disable_admin_bar()
 {
@@ -91,7 +92,10 @@ function register_my_menus()
         array(
             'menu1' => __('Category_pages Menu'),
             'menu2' => __('YS Menu'),
-            'menu3' => __('Menu3')
+            'menu3' => __('Menu3'),
+            'menu1_mobile' => __('Category_pages_Menu_mobile'),
+            'menu2_mobile' => __('YS_Menu_mobile'),
+            'menu3_mobile' => __('Menu3_mobile')
         )
     );
 }
