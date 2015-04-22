@@ -23,7 +23,7 @@
     else if(is_page("read")){
         ?>
         <title>Read | Rangoli: The YOGASMOGA Community</title>
-        <meta property="og:title" content="Look | Rangoli: The YOGASMOGA Community" />
+        <meta property="og:title" content="Read | Rangoli: The YOGASMOGA Community" />
         <meta property="og:description" content="Our READ section features a curated selection of health & wellness related articles, op-eds, editorial, recipes, biographies, interviews and more. Your brain will love you for it. Rangoli: The YOGASMOGA Community." />
         <meta property="description" content="Our READ section features a curated selection of health & wellness related articles, op-eds, editorial, recipes, biographies, interviews and more. Your brain will love you for it. Rangoli: The YOGASMOGA Community." />
         <?php
@@ -65,14 +65,14 @@
             <meta property="description" content="Centrally located on the corner of San Vicente Boulevard and Montana Avenue in Brentwood, Los Angeles. We chose this space for its accessibility and neighborhood vibe. Our bright and sunny Brentwood store is wrapped in floor-to-ceiling windows that fill the space with natural light and warm, welcoming energy."/>
         <?php
         }
-        if($author_name =="YOGASMOGA TOWNHOUSE") {
+        else if($author_name =="YOGASMOGA TOWNHOUSE") {
             ?>
             <meta property="og:title" content="YOGASMOGA Townhouse | Rangoli: The YOGASMOGA Community"/>
             <meta property="og:description" content="We chose this two-story townhouse on Greenwich Avenue as our first store for its strong feel of community. The exposed brick walls create a cozy atmosphere and neutral palate for our bright collections. We are currently renovating the upstairs space for yoga classes and other wellness events."/>
             <meta property="description" content="We chose this two-story townhouse on Greenwich Avenue as our first store for its strong feel of community. The exposed brick walls create a cozy atmosphere and neutral palate for our bright collections. We are currently renovating the upstairs space for yoga classes and other wellness events."/>
         <?php
         }
-        if($author_name =="YOGASMOGA HQ") {
+        else if($author_name =="YOGASMOGA HQ") {
             ?>
             <meta property="og:title" content="YOGASMOGA HQ | Rangoli: The YOGASMOGA Community"/>
             <meta property="og:description" content="We are YOGASMOGA. Designed in NYC. Made in USA. We make things for life, one breath at a time."/>
