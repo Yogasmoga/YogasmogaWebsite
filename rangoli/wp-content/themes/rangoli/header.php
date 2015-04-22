@@ -20,7 +20,7 @@
             <meta property="description" content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community." />
         <?php
     }
-    if(is_page("read")){
+    else if(is_page("read")){
         ?>
         <title>Read | Rangoli: The YOGASMOGA Community</title>
         <meta property="og:title" content="Look | Rangoli: The YOGASMOGA Community" />
@@ -28,7 +28,7 @@
         <meta property="description" content="Our READ section features a curated selection of health & wellness related articles, op-eds, editorial, recipes, biographies, interviews and more. Your brain will love you for it. Rangoli: The YOGASMOGA Community." />
         <?php
         }
-    if(is_page("look")){
+    else if(is_page("look")){
         ?>
         <title>Look | Rangoli: The YOGASMOGA Community</title>
         <meta property="og:title" content="Look | Rangoli: The YOGASMOGA Community" />
@@ -36,7 +36,7 @@
         <meta property="description" content="Discover our Look section and browse through photography, slideshows, and more awe-inspiring imagery that revolve around health & wellness. Pictures are worth 1000 words and our Look section will give you plenty to talk about. Rangoli: The YOGASMOGA Community." />
         <?php
         }
-    if(is_page("learn")){
+    else if(is_page("learn")){
         ?>
         <title>Learn | Rangoli: The YOGASMOGA Community</title>
         <meta property="og:title" content="Learn | Rangoli: The YOGASMOGA Community" />
@@ -44,7 +44,7 @@
         <meta property="description" content="Learn how to hit that yoga pose with video tutorials from our beloved SMOGIs. Whether you’re a beginner or a seasoned yogi, our SMOGIs will guide you step-by-step with each pose, adjustment, inhale and exhale. Rangoli: The YOGASMOGA Community." />
         <?php
         }
-    if(is_404()){
+    else if(is_404()){
        ?>
         <title>404 | Rangoli: The YOGASMOGA Community</title>
         <meta property="og:title" content="404 | Rangoli: The YOGASMOGA Community" />
@@ -52,7 +52,7 @@
         <meta property="description" content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind. Join The YOGASMOGA Community." />
     <?php
     }
-    if(is_author()){
+    else if(is_author()){
         $author_obj = $wp_query->get_queried_object();
         $author_name = strtoupper($author_obj->display_name);
        ?>
@@ -80,7 +80,7 @@
         <?php
         }
     }
-    if(is_page("about")){
+    else if(is_page("about")){
         ?><title>About Rangoli | Rangoli: The YOGASMOGA Community</title>
         <meta property="og:title" content="About Rangoli | Rangoli: The YOGASMOGA Community" />
         <meta property="og:description" content="Rangoli: A journey of culture, conversation, and connection. Read, look, and learn as you discover ideas about health & wellness that keep the essence of yoga in mind." />
