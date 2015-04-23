@@ -101,6 +101,13 @@
               <layout_handle>additional</layout_handle>
           </additional_size>
           <!-- Additional sizes layouts here end -->
+
+          <vivacity translate="label">
+              <label>Vivacity</label>
+              <template>page/vivacity.phtml</template>
+              <layout_handle>vivacity</layout_handle>
+          </vivacity>
+
       </layouts>
     </page>
   </global>

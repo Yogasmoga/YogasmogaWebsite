@@ -1,0 +1,359 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+    <?php echo $this->getChildHtml('head') ?>
+</head>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<?php echo $this->getChildHtml('after_body_start') ?>
+<script type="text/javascript">
+
+    jQuery(document).ready(function() {
+
+        jQuery('.see_more a').click(function (e) {
+            e.preventDefault();
+            var obj = jQuery(this).parents().eq(7);
+            obj.find('.flex-next').click();
+            return false;
+        });
+
+    });
+</script>
+<div class="wrapper">
+<?php echo $this->getChildHtml('global_notices') ?>
+<div class="shopping-cart">
+
+</div>
+<div class="page">
+<?php echo $this->getChildHtml('header') ?>
+<div id="pagecontainer" class="accountbg">
+
+<!-- header page intro slide -->
+<div class="flexslider page_header">
+    <ul class="slides">
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/Vivacity/0423-Viva-VivaPage-Final_01.jpg' ?>" />
+
+                <div style="position: absolute; top: 47px; text-align: center;
+							left:0 ; right:0;" >
+                    <div class="bold gold" >VIVA <span>LA</span> CITY</div>
+                    <div class="light">BY THE CITY&mdash;FOR THE CITY</div>
+                </div>
+                <div  style="position: absolute; bottom: 27px; text-align: center;
+							left:0 ; right:0;">
+                    <div class="freight">
+                        /vi&acute;vasede/ noun (<span>especially in a woman</span>)<br/>
+                        The quality of being attractively lively & animated
+                    </div>
+                </div>
+
+            </div>
+        </li>
+    </ul>
+</div>
+
+
+<!-- legging slide -->
+<div class="flexslider">
+    <ul class="slides">
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/Vivacity/0423-Viva-VivaPage-Final_02.jpg' ?>" />
+                <div class="over-the-slide">
+                    <div class="">
+                        <div class="bold">
+                            VIVACITY <span>LEGGING</span>
+                        </div>
+                        <div class="see_more"><a href="">SEE MORE</a> </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </li>
+
+        <!-- **************************TWIST 'N TURN***************** -->
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/Vivacity/slide2.jpg' ?>" />
+                <div class="over-the-slide">
+
+                    <div class="bold_small">VIVACITY LEGGING</div>
+                    <div class="light_small">Olivine</div>
+                    <div class="shop"><a href="/women/bottoms/leggings/vivacity-legging?color=215">SHOP</a></div>
+
+
+                </div>
+            </div>
+
+        </li>
+
+
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/Vivacity/slide3.jpg' ?>" />
+                <div class="over-the-slide">
+
+                    <div class="bold_small">VIVACITY LEGGING</div>
+                    <div class="light_small">Grey Caviar</div>
+                    <div class="shop"><a href="/women/bottoms/leggings/vivacity-legging?color=107">SHOP</a></div>
+
+                </div>
+            </div>
+
+        </li>
+
+
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/Vivacity/slide4.jpg' ?>" />
+                <div class="over-the-slide">
+                    <div class="bold_small">VIVACITY LEGGING</div>
+                    <div class="light_small">Carbon 6</div>
+                    <div class="shop"><a href="/women/bottoms/leggings/vivacity-legging?color=76">SHOP</a></div>
+
+                </div>
+            </div>
+
+        </li>
+
+    </ul>
+</div>
+
+
+<!-- crop slide -->
+<div class="flexslider">
+    <ul class="slides">
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/Vivacity/0423-Viva-VivaPage-Final_03.jpg' ?>" />
+                <div class="over-the-slide">
+                    <div class="bold">
+                        VIVACITY CROP <span>CROP</span>
+                    </div>
+                    <div class="see_more"><a href="#">SEE MORE</a> </div>
+                </div>
+            </div>
+
+        </li>
+
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/Vivacity/crop_slide2.jpg' ?>" />
+                <div class="over-the-slide">
+                    <div class="bold_small">VIVACITY CROP</div>
+                    <div class="light_small">Olivine</div>
+                    <div class="shop"><a href="/women/bottoms/crops/vivacity-crop?color=215">SHOP</a></div>
+                </div>
+            </div>
+
+        </li>
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/Vivacity/crop_slide3.jpg' ?>" />
+                <div class="over-the-slide">
+                    <div class="bold_small">VIVACITY CROP</div>
+                    <div class="light_small">Grey caviar</div>
+                    <div class="shop"><a href="/women/bottoms/crops/vivacity-crop?color=107">SHOP</a></div>
+                </div>
+            </div>
+
+        </li>
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/Vivacity/crop_slide4.jpg' ?>" />
+                <div class="over-the-slide">
+                    <div class="bold_small">VIVACITY CROP</div>
+                    <div class="light_small">Carbon 6</div>
+                    <div class="shop"><a href="/women/bottoms/crops/vivacity-crop?color=76">SHOP</a></div>
+                </div>
+            </div>
+
+        </li>
+
+
+    </ul>
+</div>
+
+
+<!-- sleeve slide -->
+<div class="flexslider" >
+    <ul class="slides">
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/Vivacity/0423-Viva-VivaPage-Final_04.jpg' ?>" />
+                <div class="over-the-slide">
+                    <div class="bold">
+                        VIVACITY <br/> <span>LONG SLEEVE TEE</span>
+                    </div>
+                    <div class="see_more"><a href="#">SEE MORE</a> </div>
+                </div>
+            </div>
+
+        </li>
+
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/Vivacity/viva_sleeve_slide2.jpg' ?>" />
+                <div class="over-the-slide">
+                    <div class="bold_small">VIVACITY LONG SLEEVE TEE</div>
+                    <div class="light_small">Andaman Green</div>
+                    <div class="shop"><a href="/women/tops/tees/vivacity-long-sleeve?color=216">SHOP</a></div>
+                </div>
+            </div>
+
+        </li>
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/Vivacity/viva_sleeve_slide3.jpg' ?>" />
+                <div class="over-the-slide">
+                    <div class="bold_small">VIVACITY LONG SLEEVE TEE</div>
+                    <div class="light_small">Everest Avalanche</div>
+                    <div class="shop"><a href="/women/tops/tees/vivacity-long-sleeve?color=106">SHOP</a></div>
+                </div>
+            </div>
+
+        </li>
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/Vivacity/viva_sleeve_slide4.jpg' ?>" />
+                <div class="over-the-slide">
+                    <div class="bold_small">VIVACITY LONG SLEEVE TEE</div>
+                    <div class="light_small">Rudhira</div>
+                    <div class="shop"><a href="/women/tops/tees/vivacity-long-sleeve?color=214">SHOP</a></div>
+                </div>
+            </div>
+
+        </li>
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/Vivacity/viva_sleeve_slide5.jpg' ?>" />
+                <div class="over-the-slide">
+                    <div class="bold_small">VIVACITY LONG SLEEVE TEE</div>
+                    <div class="light_small">Carbon 6</div>
+                    <div class="shop"><a href="/women/tops/tees/vivacity-long-sleeve?color=76">SHOP</a></div>
+                </div>
+            </div>
+
+        </li>
+
+
+    </ul>
+</div>
+
+
+<!-- tee slide -->
+<div class="flexslider" >
+    <ul class="slides">
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/Vivacity/0423-Viva-VivaPage-Final_05.jpg' ?>" />
+                <div class="over-the-slide">
+                    <div class="bold">
+                        VIVACITY <br/><span>SHORT SLEEVE TEE</span>
+                    </div>
+                    <div class="see_more"><a href="#">SEE MORE</a> </div>
+                </div>
+            </div>
+
+        </li>
+
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/Vivacity/tee_slide2.jpg' ?>" />
+                <div class="over-the-slide">
+                    <div class="bold_small">VIVACITY SHORT SLEEVE TEE</div>
+                    <div class="light_small">Andaman Green</div>
+                    <div class="shop"><a href="/women/tops/tees/vivacity-short-sleeve-tee?color=216">SHOP</a></div>
+                </div>
+            </div>
+
+        </li>
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/Vivacity/tee_slide3.jpg' ?>" />
+                <div class="over-the-slide">
+                    <div class="bold_small">VIVACITY SHORT SLEEVE TEE</div>
+                    <div class="light_small">Everest Avalanche</div>
+                    <div class="shop"><a href="/women/tops/tees/vivacity-short-sleeve-tee?color=106">SHOP</a></div>
+                </div>
+            </div>
+
+        </li>
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/Vivacity/tee_slide4.jpg' ?>" />
+                <div class="over-the-slide">
+                    <div class="bold_small">VIVACITY SHORT SLEEVE TEE</div>
+                    <div class="light_small">Rudhira</div>
+                    <div class="shop"><a href="/women/tops/tees/vivacity-short-sleeve-tee?color=214">SHOP</a></div>
+                </div>
+            </div>
+
+        </li>
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/Vivacity/tee_slide5.jpg' ?>" />
+                <div class="over-the-slide">
+                    <div class="bold_small">VIVACITY SHORT SLEEVE TEE</div>
+                    <div class="light_small">Olivine</div>
+                    <div class="shop"><a href="/women/tops/tees/vivacity-short-sleeve-tee?color=215">SHOP</a></div>
+                </div>
+            </div>
+
+        </li>
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/Vivacity/tee_slide6.jpg' ?>" />
+                <div class="over-the-slide">
+                    <div class="bold_small">VIVACITY SHORT SLEEVE TEE</div>
+                    <div class="light_small">Carbon 6</div>
+                    <div class="shop"><a href="">SHOP</a></div>
+                </div>
+            </div>
+
+        </li>
+
+    </ul>
+</div>
+
+
+
+<?php echo $this->getChildHtml('footer') ?>
+<?php echo $this->getChildHtml('before_body_end') ?>
+</div>
+</div>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>
