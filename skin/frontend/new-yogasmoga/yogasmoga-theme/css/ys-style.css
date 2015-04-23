@@ -968,12 +968,12 @@ span.country {
     .figCap span{font-size: 11px;}
     .pc-right{float: none !important; margin:0 !important;}
 
-    .avant_demi_bold{
-        font:40px/40px AvantGardeGothicITCW01D;
-    }
-    .avant_extra_light{
-        font:40px/40px AvantGardeGothicITCW01X;
-    }
+    /*.avant_demi_bold{*/
+        /*font:30px/40px AvantGardeGothicITCW01D;*/
+    /*}*/
+    /*.avant_extra_light{*/
+        /*font:40px/40px AvantGardeGothicITCW01X;*/
+    /*}*/
 }
 .contWom p{display: none;}
 .contWom p.block-link{display: block;}
@@ -2037,10 +2037,10 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 
     /* avant fonts */
     .avant_demi_bold{
-        font:40px/40px AvantGardeGothicITCW01D;
+        font:40px/43px AvantGardeGothicITCW01D;
     }
     .avant_extra_light{
-        font:40px/40px AvantGardeGothicITCW01X;
+        font:40px/43px AvantGardeGothicITCW01X;
     }
 }
 
@@ -2080,10 +2080,10 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .presstxt p{font-size: 19px !important; line-height: 23px !important;}
 
     .avant_demi_bold{
-        font:46px/46px AvantGardeGothicITCW01D;
+        font:40px/43px AvantGardeGothicITCW01D;
     }
     .avant_extra_light{
-        font:46px/46px AvantGardeGothicITCW01X;
+        font:40px/43px AvantGardeGothicITCW01X;
     }
 }
 
@@ -2123,10 +2123,10 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 
     /* avant fonts */
     .avant_demi_bold{
-        font:55px/55px AvantGardeGothicITCW01D;
+        font:45px/48px AvantGardeGothicITCW01D;
     }
     .avant_extra_light{
-        font:55px/55px AvantGardeGothicITCW01X;
+        font:45px/48px AvantGardeGothicITCW01X;
     }
 }
 
@@ -2158,10 +2158,10 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 
     /* avant fonts */
     .avant_demi_bold{
-        font:70px/70px AvantGardeGothicITCW01D;
+        font:50px/53px AvantGardeGothicITCW01D;
     }
     .avant_extra_light{
-        font:70px/70px AvantGardeGothicITCW01X;
+        font:50px/53px AvantGardeGothicITCW01X;
     }
 }
 
