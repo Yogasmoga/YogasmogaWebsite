@@ -292,12 +292,6 @@
         </reference>
     </whatsnew>
 
-    <vivacity>
-        <reference name="head">
-            <action method="addCss"><stylesheet>css/vivacity.css</stylesheet></action>
-        </reference>
-    </vivacity>
-
     <newbundle>
         <reference name="head">
             <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
