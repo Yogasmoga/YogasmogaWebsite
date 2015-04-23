@@ -970,13 +970,14 @@ span.country {
     .figCap span{font-size: 11px;}
     .pc-right{float: none !important; margin:0 !important;}
 
-
+/*
     .avant_demi_bold{
         font:40px/40px AvantGardeGothicITCW01D;
     }
     .avant_extra_light{
         font:40px/40px AvantGardeGothicITCW01X;
     }
+*/
 }
 .contWom p{display: none;}
 .contWom p.block-link{display: block;}
@@ -2041,10 +2042,10 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 
     /* avant fonts */
     .avant_demi_bold{
-        font:48px/48px AvantGardeGothicITCW01D;
+        font:40px/43px AvantGardeGothicITCW01D;
     }
     .avant_extra_light{
-        font:48px/48px AvantGardeGothicITCW01X;
+        font:40px/43px AvantGardeGothicITCW01X;
     }
 
 }
@@ -2086,10 +2087,10 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 
 
     .avant_demi_bold{
-        font:56px/56px AvantGardeGothicITCW01D;
+        font:40px/43px AvantGardeGothicITCW01D;
     }
     .avant_extra_light{
-        font:56px/56px AvantGardeGothicITCW01X;
+        font:40px/43px AvantGardeGothicITCW01X;
     }
 
 }
@@ -2131,10 +2132,10 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 
     /* avant fonts */
     .avant_demi_bold{
-        font:64px/64px AvantGardeGothicITCW01D;
+        font:45px/48px AvantGardeGothicITCW01D;
     }
     .avant_extra_light{
-        font:64px/64px AvantGardeGothicITCW01X;
+        font:45px/48px AvantGardeGothicITCW01X;
     }
 
 }
@@ -2168,10 +2169,10 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 
     /* avant fonts */
     .avant_demi_bold{
-        font:80px/80px AvantGardeGothicITCW01D;
+        font:50px/53px AvantGardeGothicITCW01D;
     }
     .avant_extra_light{
-        font:80px/80px AvantGardeGothicITCW01X;
+        font:50px/53px AvantGardeGothicITCW01X;
     }
 
 }
