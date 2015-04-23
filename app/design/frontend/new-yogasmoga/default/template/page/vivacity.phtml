@@ -48,7 +48,7 @@
 
         jQuery('.see_more a').click(function (e) {
             e.preventDefault();
-            var obj = jQuery(this).parents().eq(7);
+            var obj = jQuery(this).closest('.flexslider');
             obj.find('.flex-next').click();
             return false;
         });
