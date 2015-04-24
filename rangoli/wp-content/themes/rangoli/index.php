@@ -151,11 +151,11 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
                         $current_category = "READ";
                         $curr_cat = "READING";
                     }
-                    elseif(has_category("learn",$post->ID)){
+                    else if(has_category("learn",$post->ID)){
                         $current_category = "LEARN";
                         $curr_cat = "LEARNING";
                     }
-                    elseif(has_category("look",$post->ID)){
+                    else if(has_category("look",$post->ID)){
                         $current_category = "LOOK";
                         $curr_cat = "LOOKING";
                     }
@@ -185,7 +185,7 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
                         $b_pl = get_bitly_url($post_link);
                     ?>
                     <li>
-                        <a target="_blank" rel="<?php echo $post->ID; ?>" user="<?php echo get_current_user_id();  ?>" href="https://www.facebook.com/sharer/sharer.php?app_id=909386705751971&u=<?php echo $b_pl; ?>">
+                        <a target="_blank" rel="<?php echo $post->ID; ?>" user="<?php echo get_current_user_id();  ?>" href="https://www.facebook.com/sharer/sharer.php?app_id=853109404769569&u=<?php echo $b_pl; ?>">
                             <img src="/rangoli/wp-content/themes/rangoli/images/fb.png">
                             <img src="/rangoli/wp-content/themes/rangoli/images/fb_hover.png">
                         </a>
