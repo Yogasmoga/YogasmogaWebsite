@@ -80,9 +80,9 @@ endif;
 
         <section class="first">
             <div class="pad3 grey align-center">
-                <p class="bold"> RANGOLI<span>—The YOGASMOGA Community</span></p>
+                <h1 class="bold"> RANGOLI<span>—The YOGASMOGA Community</span></h1>
 
-                <p class="light"><span>CULTURE, CONVERSATION, CONNECTION</span></p>
+                <h2 class="light"><span>CULTURE, CONVERSATION, CONNECTION</span></h2>
 
             </div>
         </section>
