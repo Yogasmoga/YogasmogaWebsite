@@ -695,6 +695,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                 <th>Qty PreOrdered</th>
                 <th>SKU</th>
                 <th>Name</th>
+                <th>Email</th>
                 <th>Color</th>
                 <th>Size</th>
                 <th>Is Accessory?</th>
@@ -779,6 +780,12 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 //                            }
                         }
 
+                        $orderNumber = $row['orderno'];
+                        $order = Mage::getModel('sales/order')->load($orderNumber, 'increment_id');
+                        $customerId = $order->getCustomerId();
+                        $customer = Mage::getModel('customer/customer')->load($customerId);
+                        $email = $customer->getEmail();
+
                         $payment = $row['paymentMethod'];
                         $name = html_entity_decode($name);
                         $color = $_product->getAttributeText('color');
@@ -790,6 +797,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         //$outputtemp1 .= "<td>".round($row1['shipped'], 2)."</td>";
                         $outputtemp1 .= "<td>".$row1['sku']."</td>";
                         $outputtemp1 .= "<td>".$name."</td>";
+                        $outputtemp1 .= "<td>".$email."</td>";
                         $outputtemp1 .= "<td>".$color."</td>";
                         $outputtemp1 .= "<td>".$_product->getAttributeText('size')."</td>";
                         if(array_search(8, $productCats) !== false){
