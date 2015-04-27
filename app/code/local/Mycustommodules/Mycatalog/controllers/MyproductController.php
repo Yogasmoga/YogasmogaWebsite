@@ -784,7 +784,7 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $customerId = $order->getCustomerId();
                         $customer = Mage::getModel('customer/customer')->load($customerId);
                         $email = $customer->getEmail();
-                        
+
                         $payment = $row['paymentMethod'];
                         $name = html_entity_decode($name);
                         $color = $_product->getAttributeText('color');

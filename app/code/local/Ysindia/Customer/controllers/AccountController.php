@@ -2,16 +2,16 @@
 include_once("Mage/Customer/controllers/AccountController.php");
 class Ysindia_Customer_AccountController extends Mage_Customer_AccountController
 {
-	public function editPostAction()
-	{
-	
-	 if (!$this->_validateFormKey()) {
+    public function editPostAction()
+    {
+
+        if (!$this->_validateFormKey()) {
             return $this->_redirect('*/*/edit');
         }
 
         if ($this->getRequest()->isPost()) {
-		/*echo '<pre/>';
-		print_r($this->getRequest()->getPost());die;*/
+            /*echo '<pre/>';
+            print_r($this->getRequest()->getPost());die;*/
             /** @var $customer Mage_Customer_Model_Customer */
             $customer = $this->_getSession()->getCustomer();
 
@@ -81,9 +81,18 @@ class Ysindia_Customer_AccountController extends Mage_Customer_AccountController
                 $this->_getSession()->setCustomer($customer)
                     ->addSuccess($this->__('The account information has been saved.'));
 
+                $root = Mage::getBaseUrl();
+
+                $customer_id = $customer->getId();
+
+                $result = file_get_contents($root . 'rangoli/wp_update_user_password.php?customer_id=' . $customer_id . '&password=' . $newPass);
+
+                Mage::log('result = ' . $result, null, '');
+
                 $this->_redirect('customer/account');
                 return;
             } catch (Mage_Core_Exception $e) {
+                print_r($e);
                 $this->_getSession()->setCustomerFormData($this->getRequest()->getPost())
                     ->addError($e->getMessage());
             } catch (Exception $e) {
@@ -93,9 +102,9 @@ class Ysindia_Customer_AccountController extends Mage_Customer_AccountController
         }
 
         $this->_redirect('*/*/edit');
-		Mage::log('AccountController overriden: ', null,'AccountController.log',true); 
-	//return parent::editPostAction();
-	
-	}
-	
+        Mage::log('AccountController overriden: ', null,'AccountController.log',true);
+        //return parent::editPostAction();
+
+    }
+
 }
