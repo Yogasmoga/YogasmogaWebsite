@@ -1,0 +1,251 @@
+
+
+
+.sign-up-container{
+    clear: both;
+    display: inline-block;
+    float: left;
+    font-size: 0;
+    width: 100%;
+}
+
+.sign-up-container .block-container, .block-container-2, .block-container-3 {
+    float: left;
+    font-size: 0;
+    height: auto;
+    position: relative;
+    width: 100%;
+}
+.sign-up-container .banner {
+    background: none repeat scroll 0 0 #fafafa;
+    position: relative;
+    width: 100%;
+    z-index: 9999;
+}
+
+.sign-up-container .Category-banner {
+    min-width: 960px;
+    width: 100%;
+}
+.sign-up-container .img-responsive {
+    width: 100%;
+    height: auto;
+}
+
+.sign-up-container .bottom-divider {
+    border-bottom: 1px solid #999;
+    margin: 50px 3.90625% 0;
+    clear: both;
+    float: left;
+    width: 92.1875%;
+}
+
+.sign-up-container .banner-text{
+box-sizing: border-box;
+    height: 100%;
+    left: 0;
+    padding: 80px 77px !important;
+    position: absolute;
+    top: 0;
+    width: 100%;
+	}
+	.sign-up-container .avant_demi_bold {
+    font: 40px/43px AvantGardeGothicITCW01D;
+}
+.sign-up-container .learn-more{
+ border-bottom: 1px solid hsl(345, 100%, 40%);
+    color: hsl(0, 0%, 100%);
+    display: inline-block;
+    font: 11px/19px gothambook;
+    margin: 55px 0 0 !important;
+    padding: 0 0 3px;
+    text-align: center;
+}
+.sign-up-container .instructor{
+ float: left;
+    padding-left: 0;
+    position: relative;
+    width: 70%;
+	}
+	.sign-up-container .smogi-para p{
+	font-family:ITCAvantGardeProBk;
+	font-size:28px;
+	line-height:36px;
+	color:#555555;	
+	text-align:left;
+	}
+.sign-up-container	.custom-radio{
+	    cursor: pointer;
+    height: 17px;
+    opacity: 0;
+    vertical-align: text-bottom;
+    width: 22px;
+	}
+	.sign-up-container .smogi-para{   margin-bottom: 5%;
+    padding: 7% 0 0 6%;
+		}
+
+	.sign-up-container .information{  background:  #eeeeee;
+    position: absolute;
+    right: 0;
+	 
+	 height:100%;
+    top: 0;
+    width: 30%;}
+	.sign-up-container .top-heading span{
+	font-family:ITCAvantGardeProBk;
+	color:#555555;
+	font-size:28px;
+	line-height:39px;
+	
+	}
+	.sign-up-container .top-heading{
+	    padding-left: 50px;
+    text-align: left;
+	}
+	.sign-up-container .sign-up-blocks{  padding: 18% 0 0;
+  width: 100%;
+  }
+.sign-up-container .content-inside{
+  padding: 0 56px;
+}
+	.sign-up-container input[type="text"], .sign-up-container input[type="email"], .sign-up-container input[type="number"], .sign-up-container input[type="date"], .sign-up-container input.input-text, .sign-up-container input[type="password"] {
+  
+    background: none repeat scroll 0 0 #fff;
+    border-image: none;
+    border-style: none none solid;
+	border:none;
+    border-width: medium medium 1px;
+    color: #333;
+    display: block;
+    font-size: 14px;
+    line-height: normal;
+    padding: 17px 6px;
+    text-transform:none;
+    width: 100%;
+}
+.sign-up-container .content-inside .list1 li{margin:15px 0;}
+.sign-up-container .content-inside li .btn{background: #545454;
+border: 1px solid #666;
+color: #fff;
+cursor: pointer;
+float: right;
+font-family: gotham-b,arial;
+font-size: 13px;
+font-weight: normal;
+height: 50px;
+letter-spacing: 0.05em;
+line-height: 1;
+font-family:ITCAvantGardeProBk;
+margin: 17px 0;
+padding: 10px 30px;
+text-decoration: none;
+text-transform: uppercase;
+width: 100%;}
+.sign-up-container .list1 .top-heading{padding-left:0;}
+.sign-up-container .list1 .top-heading span{ display: inline-block;
+    margin-top: 41px;}
+.sign-up-container .txt-area{
+width: 100%;
+	height: 234px;
+	border: none;
+	text-transform:uppercase;
+	font-size:14px;
+	 color: #333;
+	padding: 5px;
+	font-family: Tahoma, sans-serif;
+	background-image: url(bg.gif);
+	background-position: bottom right;
+	background-repeat: no-repeat;}
+.sign-up-container	.gender-box label ,.radio-right{   color: #333;
+    float: left;
+    font-size: 14px;
+    padding: 2px 0;
+    text-transform: uppercase;
+    width: 100%;}
+	.sign-up-container .gender-box{     clear: both;
+    float: left;
+    margin: 3% 0;
+  
+    text-align: left;
+    width: 100%;}
+	.sign-up-container .radio-right div span{padding-left: 19%;}
+	.sign-up-container .radio-right div{float:left;width:50%;position:relative;}
+	.sign-up-container .radio-right div label{   background: none repeat scroll 0 0 hsl(0, 0%, 100%);
+    border: 2px solid hsl(0, 0%, 100%);
+    border-radius: 17px;
+    height: 14px;
+    left: 0;
+    position: absolute;
+    width: 19px;}
+	.sign-up-container .list-box{   float: left;
+    min-height: 349px;
+    position: relative;
+    width: 33.33%;}
+	.sign-up-container .list-box p{     bottom: 16px;
+    color: hsl(0, 0%, 100%);
+    font-family: ITCAvantGardeProBk;
+    font-size: 21px;
+    left: 0;
+    line-height: 25px;
+    position: absolute;
+    text-transform: uppercase;}
+	.sign-up-container .list-box span{ display: inline-block;
+    height: 200px;
+    margin: 27px 0;
+    width: 200px;}
+	.sign-up-container .lb1-text{font-size:42px;line-height:46px;color:#555555;font-family:ITCAvantGardeProBk;}
+	.sign-up-container .lucky-smogi{float:left;
+	width:100%;
+	}
+	.sign-up-container .lucky-smogi .list-box:first-child .lb1-text{
+	    color: #555555;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 29%;
+	}
+	.sign-up-container .lucky-smogi .list-box:first-child{
+	  background: none repeat scroll 0 0 #eeeeee;
+    float: left;
+    min-height: 348px;
+   
+	}
+	.sign-up-container .bgff6b08{
+	background:#ff6b08;
+	}
+	.sign-up-container .bgfb7dc4{
+	background:#fb7dc4;
+	}
+	.sign-up-container .bgb1093c{
+	background:#b1093c;
+	}
+	.sign-up-container .bg8139ee{
+	background:#8139ee;
+	}
+	.sign-up-container .bg1bbcf8{
+	background:#1bbcf8;
+	}
+	.sign-up-container .bottom-info li{font-size:16px;
+	line-height:19px;
+	}
+	.sign-up-container .bottom-info li span{
+	font-weight:bold;
+	}
+	.sign-up-container .bottom-info li:first-child{list-style: outside none none;
+	  margin-left: -13px;
+    margin-bottom: 27px;}
+	.sign-up-container .bottom-info{  box-sizing: border-box;
+    float: left;
+    padding: 55px 57px;
+    width: 100%;}
+	
+	.sign-up-container .bottom-info ul{text-align:left;float:left;width:100%;}
+	
+	.sign-up-container .radio-right div label.current{background:hsl(0, 0%, 33%)!important;}
+	.sign-up-container .banner-text .over-banner{
+	  left: 0;
+    position: absolute;
+    right: 0;
+    top: 46%;
+	}

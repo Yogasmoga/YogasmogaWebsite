@@ -108,6 +108,14 @@
               <layout_handle>vivacity</layout_handle>
           </vivacity>
 
+          <!-- Nominate layouts here start -->
+          <nominate translate="label">
+              <label>Nominate</label>
+              <template>page/nominate.phtml</template>
+              <layout_handle>nominate</layout_handle>
+          </nominate>
+          <!-- Nominate layouts here end -->
+
       </layouts>
     </page>
   </global>
