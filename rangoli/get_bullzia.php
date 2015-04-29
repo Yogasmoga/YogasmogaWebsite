@@ -1,4 +1,5 @@
 <?php
+
 require("wp-load.php");
 
 function compareDates($firstDate, $secondDate)
@@ -269,6 +270,19 @@ if ($data) {
             $level = get_user_level($single['userId']);
             $level = str_replace("level_","",$level);
 
+
+//            $user_profiles = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=" . $single['userId']);
+
+
+                $user_profile = get_user_profile($single['userId']);
+                $user_display_name = $user_profile->user_display_name;
+
+                if ($user_display_name == null) {
+                    $user_display_name = $single['name'];
+                }
+
+
+
             if(is_array($user_roles) && count($user_roles)>0){
                 $role = $user_roles[0];
                 if($role == "smogi" || $role == "store"){
@@ -284,7 +298,7 @@ if ($data) {
                 'type' => $single['type'],
                 'color' => $single['color'],
                 'shade' => $single['shade'],
-                'name' => $single['name'],
+                'name' => $user_display_name,
                 'profileImage' => $single['profileImage'],
                 'place' => $single['place'],
                 'interests' => $all_interests,
