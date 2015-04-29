@@ -7,7 +7,7 @@ $name = $_REQUEST['name'];
 $customer_id = $_REQUEST['customer_id'];
 
 if(isset($name)) {
-    $users = $wpdb->get_results("select user_display_name, customer_id from rangoli_user_profiles where user_display_name='" . $name . "'");
+    $users = $wpdb->get_results("select user_display_name, customer_id from rangoli_user_profiles where user_display_name='" . trim($name) . "'");
 
     if(isset($users) && count($users)>0) {
 
