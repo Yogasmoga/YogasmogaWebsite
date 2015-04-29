@@ -60,15 +60,23 @@ if (count($feeds) > 0) {
                                     <img class="profile-img-small" rel="<?php echo $comment->user_id; ?>"
                                          src="<?php echo $profileUrl ?>">
                                 </a>
+
                             </div>
                             <div class="details">
                                 <p class="post_date">
                                     <?php echo date('m.d.y', strtotime($commentDate)); ?></p>
-
+                                <?php
+                                $profile = get_user_profile($comment->user_id);
+                                $name = $profile->user_display_name;
+                                if($name==null){
+                                    $name = $comment->comment_author;
+                                }
+                                $name = ucwords($name);
+                                ?>
                                 <p class="comment">
                                     <?php $comment_content = $comment->comment_content;
                                     $comment_content = substr($comment->comment_content, 0, 15);
-                                    echo $comment->comment_author . " <span class='font-italic'>says " . $comment_content . "...</span> ";
+                                    echo $name . " <span class='font-italic'>says " . $comment_content . "...</span> ";
                                     ?></p>
                             </div>
                         </div>

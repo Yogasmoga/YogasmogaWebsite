@@ -14,6 +14,9 @@
     }
 
     $user_favs = $post_ids;
+    $profile = get_user_profile($user_id);
+    $name = $profile->user_display_name;
+    if($name==null)
     $name=$user_info->display_name;
     $name=strtoupper($name);
     ?>

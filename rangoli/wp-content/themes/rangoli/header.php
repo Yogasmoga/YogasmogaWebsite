@@ -357,7 +357,12 @@ if ($imgURL == ""){
     $imgURL=get_site_url() . '/wp-content/themes/rangoli/images/default.jpg';
 }
 $current_user = wp_get_current_user();
-$display_name = $current_user->display_name;
+//$display_name = $current_user->display_name;
+
+$profile = get_user_profile($user_id);
+$display_name = $profile->user_display_name;
+if($display_name==null)
+    $display_name = $current_user->display_name;
 
 ?>
 <span rel="logged-in-user" style="display: none;"><?php echo $display_name ?></span>
@@ -434,7 +439,7 @@ $display_name = $current_user->display_name;
                                     echo "<p><a style='width: 40px' href='$profileUrl' ><img src='$imgURL' class='profile-img-small' /></a>";
                                     echo '<span  id="profile_charm"    class="charm color_'.$main_color.' '.$level.'"></span></p>';
                                 }
-                                echo "<p class='user_name'><a  href='$profileUrl' >$user_info->display_name</a></p>";
+                                echo "<p class='user_name'><a  href='$profileUrl' >$display_name</a></p>";
 
                                 if ($user_info->roles[0] == "smogi" || $user_info->roles[0] == "store" || $user_info->roles[0] == "administrator") {
                                     echo "<p><a href='" . get_site_url() . "/wp-admin/post-new.php'>POST</a></p>";

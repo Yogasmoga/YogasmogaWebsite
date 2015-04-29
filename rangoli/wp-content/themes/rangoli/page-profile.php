@@ -29,7 +29,12 @@
 			<p class='post_category'>&nbsp;</p>";
 
 		$title=get_the_title();
-		echo "<p class='post_title'>".$user_info->display_name."</p>";
+		$profile = get_user_profile($user_id);
+			$name = $profile->user_display_name;
+		if($name==null)
+			$name = $user_info->display_name;
+		$name = ucwords($name);
+		echo "<p class='post_title'>".$name."</p>";
 
 		echo "</div></div>";
 		?>
@@ -104,8 +109,7 @@
 							if($data->type == "post"){
 								echo "<div class='author_recent_activity' >";
 								echo "<p class='post_date'>".date("m.d.y",strtotime($data->date))."</p>";
-								$name=$user_info->display_name;
-								$name=ucwords($user_info->display_name);
+
 								echo $name.' says <br/> checkout my new post "';
 									echo "<a href='".get_the_permalink($data->article_id)."'>".$data->content."</a>";
 								echo '"';
@@ -125,8 +129,7 @@
 							if($data->type == "like"){
 								echo "<div class='author_recent_activity' >";
 								echo "<p class='post_date'>".date("m.d.y",strtotime($data->date))."</p>";
-								$name=$user_info->display_name;
-								$name=ucwords($user_info->display_name);
+
 								echo $name.' saved <br/> "';
 								echo "<a href='".get_the_permalink($data->article_id)."'>".$data->content."</a>";
 								echo '"';
@@ -145,8 +148,7 @@
 							if($data->type == "comment"){
 								echo "<div class='author_recent_activity' >";
 								echo "<p class='post_date'>".date("m.d.y",strtotime($data->date))."</p>";
-								$name=$user_info->display_name;
-								$name=ucwords($user_info->display_name);
+
 								echo $name.' commented on <br/> "';
 								echo "<a href='".get_the_permalink($data->article_id)."'>".$data->content."</a>";
 								echo '"';

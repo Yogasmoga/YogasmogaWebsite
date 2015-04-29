@@ -61,5 +61,34 @@ class Ysindia_Profile_Helper_Data extends Mage_Core_Helper_Abstract{
         else
             return null;
     }
+
+    public function getDisplayName(){
+
+        if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+
+            $customer = Mage::getSingleton('customer/session')->getCustomer();
+
+            $customer_id = $customer->getId();
+
+            $query = "SELECT user_display_name from rangoli_user_profiles where customer_id=$customer_id";
+
+            $resource = Mage::getSingleton('core/resource');
+            $readConnection = $resource->getConnection('core_read');
+
+            $results = $readConnection->fetchAll($query);
+
+            $displayName = '';
+
+            if ($results && count($results) == 1) {
+
+                if(isset($results[0]["user_display_name"]))
+                    $displayName = $results[0]["user_display_name"];
+            }
+
+            return $displayName;
+        }
+        else
+            return '';
+    }
 }
 ?>

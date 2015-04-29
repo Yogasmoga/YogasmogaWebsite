@@ -777,3 +777,32 @@ input:focus{
 .overlay-text.about_us_page .play_video {
     transition-duration: 200ms;
 }
+input.change_username {
+    border: medium none;
+    border-bottom: 1px solid #444;
+    color: #444;
+    font: 20px/42px freight-text-pro;
+    margin-right: 10px;
+    padding: 0 10px;
+    width: 300px;
+}
+#update_username {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #444;
+    color: #555;
+    font: 20px/42px freight-text-pro;
+    padding: 0 50px;
+    cursor: pointer;
+}
+.feed-box .img-level span {
+    margin: -3px 0 0 5px;
+}
+.username_update_msg {
+    display: block;
+    font: 15px/25px freight-text-pro;
+    margin: 0 auto;
+    text-align: left;
+    width: 478px;
+}
+
+

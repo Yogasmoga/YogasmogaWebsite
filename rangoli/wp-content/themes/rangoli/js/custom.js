@@ -15,7 +15,7 @@ var current_date = today_date;
 var date = new Date();
 var s = date.getSeconds();
 var playing_video = false;
-
+var is_login_box_open = false;
 $(document).ready(function () {
 
     $(".menu-heading1").hover(function () {
@@ -47,10 +47,13 @@ $(window).load(function(){
                     $(".login-box").fadeOut();
                     $("#signin_popup").fadeIn();
                     $(".signin-block").fadeIn();
+                    is_login_box_open = false
                 }
                 if(bullseye =="open"){
                     setTimeout(function(){
-                        open_bulls_popup();
+                        if(is_login_box_open == false) {
+                            open_bulls_popup();
+                        }
                     },30000);
                 }
             }
@@ -118,6 +121,7 @@ function submit_comment() {
             $("#signin_popup").fadeIn();
             $(".signin-block").hide();
             $(".login-box").fadeIn();
+            is_login_box_open = true;
 
         }
         return false;
@@ -136,6 +140,7 @@ $(document).ready(function () {
             $("#sign-up-button").click();
         }
     });
+
     $("input[rel='password']").focus(function () {
         $(this).attr("type", "password");
     });
@@ -187,6 +192,7 @@ $(document).ready(function () {
                 $(".your-color-block").hide();
                 $("#signin_popup").fadeIn();
                 $(".login-box").fadeIn();
+                is_login_box_open = true;
             }
         })
     });
@@ -331,6 +337,7 @@ function createCustomerAccount() {
 
                     // console.log(data.status);
                 jQuery(".login-box").fadeOut();
+                is_login_box_open = false;
                 //window.location=homeUrl+"rangoli";
 
                 _islogedinuser = true;
@@ -440,7 +447,7 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
         success: function (result) {
 
             if (result != undefined && result.message != undefined && result.message == "success") {
-                console.log("******* cannot login to Rangoli");
+                //console.log("******* cannot login to Rangoli");
                 location.reload(true);
             }
         }
@@ -592,6 +599,7 @@ $(document).ready(function () {
 $(window).resize(function () {
     var wh = $(window).height();
     var ww = $(window).width();
+
     if(logged_in==false)
         $(".homepage_slider .home_signup").css("top",wh-157);
     else {
@@ -961,6 +969,7 @@ function init() {
         $("#signin_popup").fadeIn();
         $(".signin-block").hide();
         $(".login-box").fadeIn();
+        is_login_box_open = true;
     });
     $(".author_post .overlay-text").hover(function () {
         if (user_color_shade == '') {
@@ -1130,6 +1139,7 @@ function raty_init() {
                 $("#signin_popup").fadeIn();
                 $(".signin-block").hide();
                 $(".login-box").fadeIn();
+                is_login_box_open = true;
             }
         }
     });
@@ -1171,6 +1181,7 @@ $(document).ready(function () {
             $("#signin_popup").fadeIn();
             $(".signin-block").hide();
             $(".login-box").fadeIn();
+            is_login_box_open = true;
         }
     });
     $(".link").load(root + "profile/manage/referralurl");
@@ -1204,6 +1215,7 @@ $(document).ready(function () {
             $("#signin_popup").fadeIn();
             $(".signin-block").hide();
             $(".login-box").fadeIn();
+            is_login_box_open = true;
         }
     });
 
@@ -1530,7 +1542,39 @@ function createCustomerAccount_from_animated_popup() {
 
 function open_red_popup(){
     $(".your-color-block").fadeOut();
+    is_login_box_open = false;
     $(".login-box").fadeOut();
     $("#signin_popup").fadeIn();
     $(".signin-block").fadeIn();
 }
+
+
+
+
+
+$(document).ready(function(){
+    $("#update_username").click(function(){
+        var text = $("input.change_username");
+        var username = text.val();
+        var user_id = text.attr("user_id");
+
+        if(username!=undefined && username!="Choose your user name"){
+            $.ajax({
+                url : root + "rangoli/update_user_name.php",
+                data : {"username":username,"user_id":user_id},
+                success: function(response){
+                    if(response=="updated"){
+                        $(".confirmation-page h1").html("HI "+username.toUpperCase());
+                        $(".username_update_msg").html("Username has been updated.");
+                    }
+                    else if(response == "exists"){
+                        $(".username_update_msg").html("Sorry! username already taken.");
+                    }
+                    else {
+                        $(".username_update_msg").html("An error occured during the process.");
+                    }
+                }
+            });
+        }
+    });
+});

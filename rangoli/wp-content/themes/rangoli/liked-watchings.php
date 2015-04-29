@@ -5,7 +5,15 @@
 
         $user_info = get_userdata($user_id);
         $user_favs = wpfp_get_users_favorites($user_info->user_login);
-        $name = $user_info->display_name;
+
+
+        $profile = get_user_profile($user_id);
+        $name = $profile->user_display_name;
+        if($name==null){
+            $name = $user_info->display_name;
+        }
+
+
         $name = strtoupper($name);
         $filter_category_name = "look";
         ?>
