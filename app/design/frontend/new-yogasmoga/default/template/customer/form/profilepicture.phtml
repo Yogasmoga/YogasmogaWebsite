@@ -475,6 +475,11 @@ $thumb_height = "150";
 
         var name = jQuery("input[name='username']").val();
 
+        if(name.length==0){
+            jQuery(".messageupdate").html("Please choose a user name");
+            return;
+        }
+
         jQuery.ajax({
             url: '<?php echo $display_check_url; ?>',
             type: 'GET',
