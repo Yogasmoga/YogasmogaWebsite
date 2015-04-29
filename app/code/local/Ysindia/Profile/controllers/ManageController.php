@@ -89,7 +89,7 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                 $user_id = $results[0]["id"];
 
                 $description = $_REQUEST['description'];
-                $user_display_name = $_REQUEST['name'];
+                $user_display_name = $_REQUEST['username'];
 
                 $writeConnection = $resource->getConnection('core_write');
                 if ($results && count($results) > 0) {

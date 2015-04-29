@@ -249,6 +249,9 @@ $display_check_url = Mage::getBaseUrl() . 'rangoli/check_duplicate_display_name.
 $thumb_width = "150";
 $thumb_height = "150";
 
+$customerData = Mage::getSingleton('customer/session')->getCustomer();
+$logged_customer_id = $customerData->getId();
+
 ?>
 
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS, true); ?>upload_profile/jquery.form.js"></script>
@@ -471,6 +474,8 @@ $thumb_height = "150";
         jQuery(".btnuploadpicture").click(checkDuplicateDisplayName);
     });
 
+    var logged_customer_id = '<?php echo $logged_customer_id;?>';
+
     function checkDuplicateDisplayName(){
 
         var name = jQuery("input[name='username']").val();
@@ -483,7 +488,7 @@ $thumb_height = "150";
         jQuery.ajax({
             url: '<?php echo $display_check_url; ?>',
             type: 'GET',
-            data: 'name=' + name,
+            data: 'name=' + name + '&customer_id=' + logged_customer_id,
             success: function(result){
 
                 if(result.indexOf('exists')>-1)

@@ -4,12 +4,23 @@ require("wp-load.php");
 global $wpdb;
 
 $name = $_REQUEST['name'];
+$customer_id = $_REQUEST['customer_id'];
 
 if(isset($name)) {
-    $users = $wpdb->get_results("select user_display_name from rangoli_user_profiles where user_display_name='" . $name . "'");
+    $users = $wpdb->get_results("select user_display_name, customer_id from rangoli_user_profiles where user_display_name='" . $name . "'");
 
-    if(is_array($users) && count($users)>0)
-        echo "exists";
+    if(isset($users) && count($users)>0) {
+
+        $data = get_object_vars($users[0]);
+
+        $user_display_name = $data['user_display_name'];
+        $record_customer_id = $data['customer_id'];
+
+        if($customer_id==$record_customer_id)
+            echo "same";
+        else
+            echo "exists";
+    }
     else
         echo "available";
 }
