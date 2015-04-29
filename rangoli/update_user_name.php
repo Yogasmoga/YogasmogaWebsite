@@ -3,8 +3,8 @@ require("wp-load.php");
 
 global $wpdb;
 
-$user_id = $_REQUEST['user_id'];
-$username = $_REQUEST['username'];
+$user_id = mysql_real_escape_string($_REQUEST['user_id']);
+$username = mysql_real_escape_string($_REQUEST['username']);
                // add , remove
 
 if(isset($username) && isset($user_id)) {
