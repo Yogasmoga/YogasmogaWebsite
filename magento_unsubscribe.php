@@ -1,5 +1,7 @@
 <?php
-$email = $_REQUEST['data[email]'];
+
+$data = $_REQUEST['data'];
+$email = $data['email'];
 
 require 'app/Mage.php';
 
