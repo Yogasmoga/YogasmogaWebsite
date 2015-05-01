@@ -1,5 +1,5 @@
-var root='http://staging.yogasmoga.com/';
-//var root='http://ysstaging.com.local/';
+//var root='http://staging.yogasmoga.com/';
+var root='http://ysstaging.com.local/';
 
 /**************** logout logic added by ys team *****************/
 jQuery(document).ready(function($){
