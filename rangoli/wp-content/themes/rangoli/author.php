@@ -23,6 +23,10 @@
 		else if($curauth->roles[0]=="store"){
 			$role = "STORE";
 		}
+        else{
+            wp_redirect(get_site_url());
+        }
+
 		$user_profile=get_user_profile($user_id);
 		$main_color=$user_profile->color_main;
 		$level = get_user_level($user_id);
