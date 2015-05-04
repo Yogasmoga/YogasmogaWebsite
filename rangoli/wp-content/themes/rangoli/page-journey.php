@@ -4,6 +4,8 @@ if (!is_user_logged_in()) {
     exit;
 } else {
     $user = wp_get_current_user();
+
+
 }
 
 get_header();
@@ -121,8 +123,13 @@ get_header();
             $visited = is_journey_first_time();
             $user_id = get_current_user_id();
             $user_info = get_userdata($user_id);
+            $profile_rangoli = get_user_profile($user_id);
+            $name = $profile_rangoli->user_display_name;
+            if($name==null){
+                $name = $user_info->display_name;
+            }
             if($visited){
-                $welcome_message = "HI ".strtoupper($user_info->display_name).",";
+                $welcome_message = "HI ".strtoupper($name).",";
                 $smogiBucks_message = "Your profile has been updated.";
                 $interest_message = "Your interests are";
                 $color_message = "<p style='margin-top:35px;'>Your color is</p>";
@@ -130,7 +137,7 @@ get_header();
             else{
                 $root = get_site_url();
                 $root = str_replace("/rangoli","/",$root);
-                $welcome_message = "WELCOME ".strtoupper($user_info->display_name).",";
+                $welcome_message = "WELCOME ".strtoupper($name).",";
                 $smogiBucks_message = "You have 25 SMOGI Bucks just for signing up.</p><p>(Learn how to earn more <span>SMOGI BUCKS</span>)</p>";
 
                 $magento_user = json_decode(file_get_contents($root . 'ys/session/getcustomerbyemail/email/' . $user_info->user_login));
@@ -184,6 +191,17 @@ get_header();
                     <div class="confirmed_interests">
                         <ul class="selected" style="text-align:center">
                         </ul>
+                    </div>
+                    <div class="">
+                        <?php
+                        $profile = get_user_profile($user_id);
+                        $var_user_display_name = $profile->user_display_name;
+                        if($var_user_display_name==null){ ?>
+                        <input class="change_username"
+                               type="text" data-watermark="Choose your user name" user_id="<?php echo $user_id; ?>"/>
+                        <button id="update_username">Submit</button>
+                        <p class="username_update_msg"></p>
+                        <?php } ?>
                     </div>
                     <?php
                         if(!$visited) {

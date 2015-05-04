@@ -231,12 +231,22 @@ if ($data) {
             else
                 $image_url = get_site_url() . '/wp-content/themes/rangoli/images/default.jpg';
 
+
+            $user_profile = get_user_profile($single['userId']);
+            $user_display_name = $user_profile->user_display_name;
+
+            if ($user_display_name == null) {
+                $user_display_name = $single['name'];
+            }
+
+
+
             $data_unique_color[] = array(
                 'userId' => $single['userId'],
                 'type' => $single['type'],
                 'color' => $single['color'],
                 'shade' => $single['shade'],
-                'name' => $single['name'],
+                'name' => $user_display_name,
                 'profileImage' => $image_url,
                 'place' => $single['place'],
                 'interests' => $all_interests,

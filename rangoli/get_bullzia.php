@@ -1,4 +1,5 @@
 <?php
+
 require("wp-load.php");
 
 function compareDates($firstDate, $secondDate)
@@ -246,11 +247,20 @@ if ($data) {
                 $smogi_bucks = $smogi_bucks." SMOGI Bucks";
             }
 
-
-
             $userInfo = get_userdata($single['userId']);
             $roles = $userInfo->roles;
             $url = get_site_url()."/profile/?user_id=".$single['userId'];
+            if($roles){
+                $role = $roles[0];
+                if(isset($role) && ($role == "smogi" || $role == "store")){
+                    $url = get_author_posts_url($single['userId']);
+                }
+
+                if($role && $role == "store"){
+                    $smogi_bucks = "";
+                }
+            }
+
             $post = get_post($single['postId']);
             $author_id = $post->post_author;
             $author = get_userdata($author_id);
@@ -259,30 +269,37 @@ if ($data) {
 
             $level = get_user_level($single['userId']);
             $level = str_replace("level_","",$level);
-            if($roles){
-                $role = $roles[0];
-                if(isset($role) && ($role == "smogi" || $role == "store")){
-                    $url = get_author_posts_url($single['userId']);
+
+
+//            $user_profiles = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=" . $single['userId']);
+
+
+                $user_profile = get_user_profile($single['userId']);
+                $user_display_name = $user_profile->user_display_name;
+
+                if ($user_display_name == null) {
+                    $user_display_name = $single['name'];
+                }
+
+
+
+            if(is_array($user_roles) && count($user_roles)>0){
+                $role = $user_roles[0];
+                if($role == "smogi" || $role == "store"){
                     $postAuthorUrl = get_site_url()."/author/".$author->user_nicename;
                 }
 
-                if($role && $role == "store"){
-                    $smogi_bucks = "";
+                if($role=="store")
                     $level = "hide";
-                }
             }
 
-            $profileImage = $single['profileImage'];
-            if($profileImage==''){
-                $profileImage = get_site_url() . '/wp-content/themes/rangoli/images/default.jpg';
-            }
             $data_unique_color[] = array(
                 'userId' => $single['userId'],
                 'type' => $single['type'],
                 'color' => $single['color'],
                 'shade' => $single['shade'],
-                'name' => $single['name'],
-                'profileImage' => $profileImage,
+                'name' => $user_display_name,
+                'profileImage' => $single['profileImage'],
                 'place' => $single['place'],
                 'interests' => $all_interests,
                 'smogiBucks' => $smogi_bucks,

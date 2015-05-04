@@ -243,10 +243,14 @@ $upload_url = $this->getUrl('profile/manage/uploadimage', array('_secure' => tru
 //$banner_upload_url = $this->getUrl('profile/manage/uploadbannerimage', array('_secure' => true));
 
 $upload_path = Mage::getBaseUrl() . 'rangoli/rangoli_profile_images/temp/';
+$display_check_url = Mage::getBaseUrl() . 'rangoli/check_duplicate_display_name.php?s=' . (round(microtime(true) * 1000));
 //$banner_upload_path = Mage::getBaseUrl() . 'rangoli/rangoli_profile_images/temp/';
 
 $thumb_width = "150";
 $thumb_height = "150";
+
+$customerData = Mage::getSingleton('customer/session')->getCustomer();
+$logged_customer_id = $customerData->getId();
 
 ?>
 
@@ -459,6 +463,43 @@ $thumb_height = "150";
     });
 </script>
 
+<style>
+    span.edit_usename {
+        border-bottom: 1px solid #D50033;
+        padding: 1px;
+    }
+</style>
+<script>
+    jQuery(document).ready(function(){
+        jQuery(".btnuploadpicture").click(checkDuplicateDisplayName);
+    });
+
+    var logged_customer_id = '<?php echo $logged_customer_id;?>';
+
+    function checkDuplicateDisplayName(){
+
+        var name = jQuery("input[name='username']").val();
+
+        if(name.length==0){
+            jQuery(".messageupdate").html("Please choose a user name");
+            return;
+        }
+
+        jQuery.ajax({
+            url: '<?php echo $display_check_url; ?>',
+            type: 'GET',
+            data: 'name=' + name + '&customer_id=' + logged_customer_id,
+            success: function(result){
+
+                if(result.indexOf('exists')>-1)
+                    jQuery(".messageupdate").html("This user name has already been taken");
+                else
+                    jQuery("#frmsaveprofile").submit();
+            }
+        });
+    }
+</script>
+
 <div class="pg-heading">
     <h2>UPDATE PROFILE PICTURE</h2>
 </div>
@@ -506,9 +547,8 @@ $thumb_height = "150";
 <iframe id="ifr" name="ifr" style="width:1px;height:1px;visibility:hidden"></iframe>
 
 <form method="post" enctype="multipart/form-data" action="<?php echo $save_url; ?>" name="photo"
-      target="ifr2" onsubmit="saveProfile()">
+      target="ifr2" onsubmit="saveProfile()" id="frmsaveprofile">
 
-    <br/>
     <span class="spuploadimage" style="font-family:gothambook; font-size: 11px; color: #444">&nbsp;</span>
     <table class="inputtable" style="min-width:500px" id="preview_table">
         <tr>
@@ -535,7 +575,7 @@ $thumb_height = "150";
                             <input type="hidden" name="wr" value="" id="wr"/>
 
                             <input type="hidden" name="profile_filename" value="" id="profile_filename"/>
-                            <!--                            <input type="hidden" name="banner_filename" value="" id="banner_filename"/>-->
+<!--                            <input type="hidden" name="banner_filename" value="" id="banner_filename"/>-->
                             <!--                        <div class="crop_preview_submit"><input type="submit" name="upload_thumbnail" value="Save Thumbnail" id="save_thumb" class="submit_button" /> </div>-->
                         </form>
                         <iframe id="ifr2" name="ifr2" style="width:1px;height:1px;visibility:hidden"></iframe>
@@ -545,6 +585,22 @@ $thumb_height = "150";
             </td>
         </tr>
     </table>
+
+    <table class="inputtable" style="min-width:500px; margin-top: 30px;">
+        <tr>
+            <td>
+                <div style=" font-family:gothambook; font-size: 11px;  color: #444"><span style="margin-right: 10px">User Name</span>
+                    <input type="text" name="username"  value="<?php echo Mage::helper('profile')->getDisplayName(); ?>" style="border:none;width:150px; border-bottom:1px solid #444; padding:0 10px; font-family:gothambook; font-size: 11px; color: #444"/>
+<!--                    <span class="edit_usename" >Edit</span>-->
+
+                </div>
+
+
+            </td>
+        </tr>
+    </table>
+
+    <br/>
 
     <table class="inputtable" style="min-width:500px; margin-top: 20px;">
         <tr>
@@ -560,7 +616,7 @@ $thumb_height = "150";
     <table class="inputtable" style="min-width:500px">
         <tr>
             <td>
-                <input type="submit" value=" Update Profile " id="btnupload" class="btnuploadpicture"/>
+                <input type="button" value=" Update Profile " id="btnupload" class="btnuploadpicture"/>
             </td>
         </tr>
     </table>

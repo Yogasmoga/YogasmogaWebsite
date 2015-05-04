@@ -54,7 +54,14 @@
                 <?php } ?>
 
                 <div class='span9'>
-                    <p class='comment_author'><?php echo get_the_author_meta('display_name', $user_id); ?></p>
+                    <p class='comment_author'><?php
+                        $commenter =get_the_author_meta('display_name', $user_id);
+                        $user_profile = get_user_profile($user_id);
+                        $user_display_name = $user_profile->user_display_name;
+                        if($user_display_name!=null){
+                            $commenter = $user_display_name;
+                        }
+                        echo $commenter ?></p>
 
                     <p class='comment'><?php echo nl2br($comment->comment_content); ?></p>
                 </div>
