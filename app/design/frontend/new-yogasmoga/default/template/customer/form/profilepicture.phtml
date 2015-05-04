@@ -243,7 +243,9 @@ $upload_url = $this->getUrl('profile/manage/uploadimage', array('_secure' => tru
 //$banner_upload_url = $this->getUrl('profile/manage/uploadbannerimage', array('_secure' => true));
 
 $upload_path = Mage::getBaseUrl() . 'rangoli/rangoli_profile_images/temp/';
-$display_check_url = Mage::getBaseUrl() . 'rangoli/check_duplicate_display_name.php?s=' . (round(microtime(true) * 1000));
+$display_check_url = $this->getUrl('rangoli/check_duplicate_display_name.php?s=' . (round(microtime(true) * 1000)), array('_secure' => true));
+
+//$display_check_url = Mage::getBaseUrl() . 'rangoli/check_duplicate_display_name.php?s=' . (round(microtime(true) * 1000));
 //$banner_upload_path = Mage::getBaseUrl() . 'rangoli/rangoli_profile_images/temp/';
 
 $thumb_width = "150";
