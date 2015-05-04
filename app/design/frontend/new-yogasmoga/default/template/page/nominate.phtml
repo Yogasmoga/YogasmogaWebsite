@@ -41,8 +41,8 @@
     <div class="shopping-cart">
 
     </div>
-	<?php echo $this->getChildHtml('content') ?>
-	<?php echo $this->getChildHtml('global_messages') ?>
+<!--	--><?php //echo $this->getChildHtml('content') ?>
+<!--	--><?php //echo $this->getChildHtml('global_messages') ?>
     <div class="page">
 
         <?php echo $this->getChildHtml('header') ?>
@@ -51,7 +51,8 @@
 		<div class="sign-up-container">
 		<div class="block-container">
 			<div class="Category-banner">
-               <div class="banner"><img class="img-responsive" src="<?php echo $this->getSkinUrl('images/ys-contest_01.jpg') ?>" alt="banner">
+               <div class="banner">
+                   <img class="img-responsive" src="<?php echo Mage::getBaseUrl('media').'wysiwyg/homepage/ys_contest_01.jpg' ?>" alt="banner"/>
 
                    						
 							<div class="banner-text">
@@ -120,14 +121,14 @@
 					<li><input  type="email" id="email"  class="input-text required-entry validate-email" placeholder="john@gmail.com" name="your_email"/></li>
 					<li><div class="gender-box"><label>GENDER</label>
 						<div class="radio-right">
-							<div>
-								<label class=""><input type="radio" class="custom-radio" value="male" name="your_gender" checked/></label>
-								<span>MALE</span>
-							</div>
-						   <div>   
+						   <div>
 								<label class=""><input type="radio" class="custom-radio"  value="female" name="your_gender"/></label>	  
 							    <span>FEMALE</span>
 							</div>
+                            <div>
+                                <label class=""><input type="radio" class="custom-radio" value="male" name="your_gender" checked/></label>
+                                <span>MALE</span>
+                            </div>
 						</div>
 					</div>
 					</li>
