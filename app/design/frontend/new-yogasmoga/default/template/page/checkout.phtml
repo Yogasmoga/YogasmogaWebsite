@@ -50,7 +50,24 @@ if(Mage::getSingleton('customer/session')->isLoggedIn())
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
 <head>
     <script src="<?php echo $this->getJsUrl('new_jquery/jquery-1.8.2.min.js')?>"></script>
-    <script src="<?php echo $this->getJsUrl('new_jquery/affiliate_cj_udo.js')?>"></script>
+    <script type="text/javascript">
+    var MasterTmsUdo = {
+
+    'CJ' : {
+
+    'CID' : '1533679',
+    'TYPE' : '378331',
+    'DISCOUNT' : '',
+    'OID' : 'SAMPLE_OID',
+    'CURRENCY' : 'USD',
+    'COUPON' : '',
+    'FIRECJ' : 'true',
+
+    PRODUCTLIST : []
+
+    }
+    };
+    </script>
     <script src="<?php echo $this->getJsUrl('new_jquery/affiliate_cj.js')?>"></script>
     <script type="text/javascript">jQuery.noConflict();</script>
 
