@@ -9,9 +9,9 @@
  -->
 <config>
     <modules>
-        <Ysindia_NominateInstructor>
+        <Ysindia_Nominateinstructor>
             <active>true</active>
             <codePool>local</codePool>
-        </Ysindia_NominateInstructor>
+        </Ysindia_Nominateinstructor>
     </modules>
 </config> 

@@ -1,5 +1,5 @@
 <?php
-class Ysindia_NominateInstructor_ManageController extends Mage_Core_Controller_Front_Action
+class Ysindia_Nominateinstructor_ManageController extends Mage_Core_Controller_Front_Action
 {
     public function indexAction()
     {
@@ -22,8 +22,15 @@ class Ysindia_NominateInstructor_ManageController extends Mage_Core_Controller_F
                     ->save();
 					
 					Mage::getSingleton('core/session')->addSuccess('Item was successfully saved');
-					//$this->_redirect('*/*/');
+					$this->_redirect('*/*/thanks',array('_secure'=>true));
+					return;
 					
-				echo 'Thankyou!';	
+					
+	}
+	public function thanksAction()
+	{
+		$this->loadLayout();
+		$this->renderLayout();
+		
 	}
 }

@@ -1,6 +1,6 @@
 <?php
 
-class Ysindia_NominateInstructor_Model_NominateInstructor extends Mage_Core_Model_Abstract
+class Ysindia_Nominateinstructor_Model_Nominateinstructor extends Mage_Core_Model_Abstract
 {
     public function _construct()
     {

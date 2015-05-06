@@ -1,6 +1,6 @@
 <?php
 
-class Ysindia_NominateInstructor_Block_Adminhtml_NominateInstructor_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget_Form
+class Ysindia_Nominateinstructor_Block_Adminhtml_Nominateinstructor_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget_Form
 {
   protected function _prepareForm()
   {

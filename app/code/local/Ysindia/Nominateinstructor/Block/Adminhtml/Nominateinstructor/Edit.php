@@ -1,6 +1,6 @@
 <?php
 
-class Ysindia_NominateInstructor_Block_Adminhtml_NominateInstructor_Edit extends Mage_Adminhtml_Block_Widget_Form_Container
+class Ysindia_Nominateinstructor_Block_Adminhtml_Nominateinstructor_Edit extends Mage_Adminhtml_Block_Widget_Form_Container
 {
     public function __construct()
     {

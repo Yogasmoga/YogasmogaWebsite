@@ -1,6 +1,6 @@
 <?php
 
-class Ysindia_NominateInstructor_Adminhtml_NominateInstructorController extends Mage_Adminhtml_Controller_action
+class Ysindia_Nominateinstructor_Adminhtml_NominateinstructorController extends Mage_Adminhtml_Controller_action
 {
 
 	protected function _initAction() {

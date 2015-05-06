@@ -1,5 +1,5 @@
 <?php
-class Ysindia_NominateInstructor_Block_NominateInstructor extends Mage_Core_Block_Template
+class Ysindia_Nominateinstructor_Block_Nominateinstructor extends Mage_Core_Block_Template
 {
 	public function _prepareLayout()
     {

@@ -7,16 +7,16 @@
  -->
 <config>
     <modules>
-        <Ysindia_NominateInstructor>
+        <Ysindia_Nominateinstructor>
             <version>0.1.0</version>
-        </Ysindia_NominateInstructor>
+        </Ysindia_Nominateinstructor>
     </modules>
     <frontend>
         <routers>
             <nominateinstructor>
                 <use>standard</use>
                 <args>
-                    <module>Ysindia_NominateInstructor</module>
+                    <module>Ysindia_Nominateinstructor</module>
                     <frontName>nominateinstructor</frontName>
                 </args>
             </nominateinstructor>
@@ -34,7 +34,7 @@
 			<nominateinstructor>
 				<use>admin</use>
 				<args>
-					<module>Ysindia_NominateInstructor</module>
+					<module>Ysindia_Nominateinstructor</module>
 					<frontName>nominateinstructor</frontName>
 				</args>
 			</nominateinstructor>
@@ -61,10 +61,10 @@
 				</all>
 				<admin>
 					<children>
-						<Ysindia_NominateInstructor>
+						<Ysindia_Nominateinstructor>
 							<title>NominateInstructor Module</title>
 							<sort_order>10</sort_order>
-						</Ysindia_NominateInstructor>
+						</Ysindia_Nominateinstructor>
 					</children>
 				</admin>
 			</resources>
@@ -80,11 +80,11 @@
     <global>
         <models>
             <nominateinstructor>
-                <class>Ysindia_NominateInstructor_Model</class>
+                <class>Ysindia_Nominateinstructor_Model</class>
                 <resourceModel>nominateinstructor_mysql4</resourceModel>
             </nominateinstructor>
             <nominateinstructor_mysql4>
-                <class>Ysindia_NominateInstructor_Model_Mysql4</class>
+                <class>Ysindia_Nominateinstructor_Model_Mysql4</class>
                 <entities>
                     <nominateinstructor>
                         <table>nominateinstructor</table>
@@ -95,7 +95,7 @@
         <resources>
             <nominateinstructor_setup>
                 <setup>
-                    <module>Ysindia_NominateInstructor</module>
+                    <module>Ysindia_Nominateinstructor</module>
                 </setup>
                 <connection>
                     <use>core_setup</use>
@@ -114,12 +114,12 @@
         </resources>
         <blocks>
             <nominateinstructor>
-                <class>Ysindia_NominateInstructor_Block</class>
+                <class>Ysindia_Nominateinstructor_Block</class>
             </nominateinstructor>
         </blocks>
         <helpers>
             <nominateinstructor>
-                <class>Ysindia_NominateInstructor_Helper</class>
+                <class>Ysindia_Nominateinstructor_Helper</class>
             </nominateinstructor>
         </helpers>
     </global>

@@ -1,6 +1,6 @@
 <?php
 
-class Ysindia_NominateInstructor_Block_Adminhtml_NominateInstructor_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tabs
+class Ysindia_Nominateinstructor_Block_Adminhtml_Nominateinstructor_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tabs
 {
 
   public function __construct()

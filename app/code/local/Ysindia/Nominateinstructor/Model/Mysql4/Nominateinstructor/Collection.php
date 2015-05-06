@@ -1,6 +1,6 @@
 <?php
 
-class Ysindia_NominateInstructor_Model_Mysql4_NominateInstructor_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract
+class Ysindia_Nominateinstructor_Model_Mysql4_Nominateinstructor_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract
 {
     public function _construct()
     {
