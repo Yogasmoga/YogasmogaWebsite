@@ -30,192 +30,269 @@
  */
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>"
+      lang="<?php echo $this->getLang() ?>">
 <head>
-<?php echo $this->getChildHtml('head') ?>
+    <?php echo $this->getChildHtml('head') ?>
 </head>
-<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<body<?php echo $this->getBodyClass() ? ' class="' . $this->getBodyClass() . '"' : '' ?>>
 <?php echo $this->getChildHtml('after_body_start') ?>
 <div class="wrapper">
     <?php echo $this->getChildHtml('global_notices') ?>
     <div class="shopping-cart">
 
     </div>
-<!--	--><?php //echo $this->getChildHtml('content') ?>
-<!--	--><?php //echo $this->getChildHtml('global_messages') ?>
+    <?php //echo $this->getChildHtml('content') ?>
+    <?php //echo $this->getChildHtml('global_messages') ?>
     <div class="page">
 
         <?php echo $this->getChildHtml('header') ?>
         <div id="pagecontainer" class="accountbg">
-			
-		<div class="sign-up-container">
-		<div class="block-container">
-			<div class="Category-banner">
-               <div class="banner">
-                   <img class="img-responsive" src="<?php echo Mage::getBaseUrl('media').'wysiwyg/homepage/ys_contest_01.jpg' ?>" alt="banner"/>
 
-                   						
-							<div class="banner-text">
-            <div class="over-banner">
-                <div style="color:#fff;" class="avant_demi_bold">SMOGIS WE ADMIRE</div>
-                <div style="color: rgb(251, 208, 8); font-size: 32px; line-height: 36px; font-family: AvantGardeGothicITCW01B;" class="avant_extra_light">CONTEST</div>
-                <div style="font-family: itcavantgardeprobk; font-size: 28px; line-height: 36px; color: rgb(255, 255, 255); margin-top: 9% ! important;">We want to meet the yoga instructor that moves you <br>They could be featured in our next “SMOGIs We Admire” Series</div>
-                
-            </div>
 
-        </div>
-							
-							
-                </div>
-				</div>
-            </div>
+            <div class="sign-up-container">
+                <div class="block-container">
+                    <div class="Category-banner">
+                        <div class="banner">
+                            <img class="img-responsive"
+                                 src="<?php echo Mage::getBaseUrl('media') . 'wysiwyg/homepage/ys_contest_01.jpg' ?>"
+                                 alt="banner">
 
-            <div class="clearfix"></div>
-            <div class="block-container-2 ">
-              <div class="instructor">
-			  <div class="smogi-para">
-			  <p>We all encounter instructors who challenge and inspire us.<BR>To show our deep appreciation, we want to recognize<BR>the teachers that paint our world with color. </br></br>
-				Nominate a yoga instructor that has inspired the way<BR>you think, breathe, and practice. Share why they deserve<BR>to be recognized and they will have a chance to be <BR>featured in our next “SMOGIs We Admire” series.
-</br></br>
-				 We will choose a winner on May 14th,  11:59PM PST</p>
-			</div>
-			 <div class="clearfix"></div>
-			<div class="lucky-smogi">
-			<div class="list-box hotel">
-			<div class="lb1-text">ONE LUCKY</br><b>SMOGI</b></br>WILL ENJOY</div>
-			</div>
-			<div class="list-box hotel bgff6b08">
-			<span><img class="img-responsive" src="<?php echo $this->getSkinUrl('images/hotel2.png')?>" alt="banner"></span>
-			<p>Two night’s stay </br>at a NEW YORK hotel</p>
-			</div>
-			<div class="list-box hotel bgfb7dc4">
-			<span><img class="img-responsive" src="<?php echo $this->getSkinUrl('images/dinner.png')?>" alt="banner"></span>
-			<p>Dinner  With</br> the YOGASMOGA team</p>
-			</div>
-			<div class="list-box hotel bgb1093c">
-			<span><img class="img-responsive" src="<?php echo $this->getSkinUrl('images/email.png')?>" alt="banner"></span>
-			<p>Feature in YOGASMOGA’s </br> “SMOGIS We Admire” </br>E-mail Series</p>
-			</div>
-			<div class="list-box hotel bg8139ee">
-			<span><img class="img-responsive" src="<?php echo $this->getSkinUrl('images/photoshoot.png')?>" alt="banner"></span>
-			<p>photoshoot with </br>OUR photographer,</br> Michel Andreo</p>
-			</div>
-			<div class="list-box hotel bg1bbcf8">
-			<span><img class="img-responsive" src="<?php echo $this->getSkinUrl('images/plane.png')?>" alt="banner"></span>
-			<p>Airfare to </br>New York City</br> (Up to $750)</p>
-			</div>
-			</div>
-			
-			  </div>
-			  <div class="information">
-			  <div class="sign-up-blocks">
-        <div class="top-heading">
-        <span >Your information</span>
-        </div>
-        <div class="clear-fix"></div>
-        <form  id="frm_data" method="post">
-			<div class="content-inside">
-				<ul class="list1">
-					<li><input  type="text"   class="input- required-entry" placeholder="First Name" name="your_first_name"/></li>
-					<li><input  type="text" class="input-text required-entry" placeholder="Last Name"  name="your_last_name"/></li>
-					<li><input  type="email" id="email"  class="input-text required-entry validate-email" placeholder="john@gmail.com" name="your_email"/></li>
-					<li><div class="gender-box"><label>GENDER</label>
-						<div class="radio-right">
-						   <div>
-								<label class=""><input type="radio" class="custom-radio"  value="female" name="your_gender"/></label>	  
-							    <span>FEMALE</span>
-							</div>
-                            <div>
-                                <label class=""><input type="radio" class="custom-radio" value="male" name="your_gender" checked/></label>
-                                <span>MALE</span>
+                            <div class="banner-text">
+                                <div class="over-banner">
+                                    <div style="color:#fff;" class="avant_demi_bold">SMOGIS WE ADMIRE</div>
+                                    <div
+                                        style="color: rgb(251, 208, 8); font-size: 32px; line-height: 36px; font-family: AvantGardeGothicITCW01B;"
+                                        class="avant_extra_light">CONTEST
+                                    </div>
+                                    <div
+                                        style="font-family: itcavantgardeprobk; font-size: 28px; line-height: 36px; color: rgb(255, 255, 255); margin-top: 3% ! important;">
+                                        We want to meet the yoga instructor that moves you <br>They could be featured in
+                                        our next “SMOGIs We Admire” Series
+                                    </div>
+
+                                </div>
+
                             </div>
-						</div>
-					</div>
-					</li>
-					<li class="top-heading"><span >Your Yoga Instructor</span></li>
-					<li><input  type="text" placeholder="First Name" class="input-text required-entry"  name="instructor_first_name"/></li>
-					<li><input  type="text" placeholder="Last Name"  class="input-text required-entry"  name="instructor_last_name"/></li>
-					<li><input  type="email" class="input-text required-entry validate-email"  placeholder="john@gmail.com" name="instructor_email"/></li>
-					<li><textarea class="txt-area" name="content" rows="4" placeholder="TELL US HOW YOUR INSTRUCTOR&#13;&#10; HAS MOVED YOU..." cols="50"></textarea>
-					</li>
-					<li><span class="btn" id="send_some">SEND SOME <b>SMOGI</b> LOVE</span></li>
-					<li id="processing" style="display:none"><img src="<?php echo $this->getSkinUrl('images/processing.gif')?>"/></li>
-					<li><span id="result_data" style="font-size:20px;display:block "></span></li>
-				</ul>
-			</div>
-		</form>
-<script>
-	jQuery(function(){
-		jQuery("#send_some").click(function(){
-			var frm = jQuery("#frm_data").serialize();
-			var Yfn = jQuery("input[name='your_first_name']").val();
-			var Yln = jQuery("input[name='your_last_name']").val();
-			var Yemail = jQuery("input[name='your_email']").val();
-			var Ifn = jQuery("input[name='instructor_first_name']").val();
-			var Iln = jQuery("input[name='instructor_last_name']").val();
-			var Iemail = jQuery("input[name='instructor_email']").val();
-			if(Yfn=='' || Yln=='' || Yemail == '' || Ifn=='' || Iln=='' || Iemail == ''){
-			jQuery('#result_data').html('Please fill all field');
-			}
-			else
-				{
-				//alert('<?php echo $this->getUrl('nominateinstructor/manage/index',array('_secure'=> true))?>');
-				jQuery('#processing').show();
-					jQuery.ajax({
-						url: '<?php echo $this->getUrl('nominateinstructor/manage/index', array('_secure'=> true))?>',
-						data: frm,
-						type: 'POST',						
-						success: function(result){
-							if(result){
-								jQuery('#result_data').html(result);
-								jQuery('#processing').hide();
-							}
-						}
-					});
-				
-				}
-		});
-	});
-	
-</script>
-        </div>
-			  </div>
-			  
-			  
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+                <div class="block-container-2 ">
+                    <div class="instructor">
+                        <div class="smogi-para">
+                            <p>We all encounter instructors who challenge and inspire us.<BR>To show our deep
+                                appreciation, we want to recognize<BR>the teachers that paint our world with
+                                color. </br></br>
+                                Nominate a yoga instructor that has inspired the way<BR>you think, breathe, and
+                                practice. Share why they deserve<BR>to be recognized and they will have a chance to be
+                                <BR>featured in our next “SMOGIs We Admire” series.
+                                </br></br>
+                                We will choose a winner on May 14th, 11:59PM PST</p>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="lucky-smogi">
+                            <div class="list-box hotel">
+                                <div class="lb1-text">ONE LUCKY</br><b>SMOGI</b></br>WILL ENJOY</div>
+                            </div>
+                            <div class="list-box hotel bgff6b08">
+                                <span><img class="img-responsive"
+                                           src="<?php echo $this->getSkinUrl('images/hotel2.png') ?>"
+                                           alt="banner"></span>
+
+                                <p>Two night’s stay </br>at a NEW YORK hotel</p>
+                            </div>
+                            <div class="list-box hotel bgfb7dc4">
+                                <span><img class="img-responsive"
+                                           src="<?php echo $this->getSkinUrl('images/dinner.png') ?>"
+                                           alt="banner"></span>
+
+                                <p>Dinner With</br> the YOGASMOGA team</p>
+                            </div>
+                            <div class="list-box hotel bgb1093c">
+                                <span><img class="img-responsive"
+                                           src="<?php echo $this->getSkinUrl('images/email.png') ?>"
+                                           alt="banner"></span>
+
+                                <p>Feature in YOGASMOGA’s </br> “SMOGIS We Admire” </br>E-mail Series</p>
+                            </div>
+                            <div class="list-box hotel bg8139ee">
+                                <span><img class="img-responsive"
+                                           src="<?php echo $this->getSkinUrl('images/photoshoot.png') ?>" alt="banner"></span>
+
+                                <p>photoshoot with </br>OUR photographer,</br> Michel Andreo</p>
+                            </div>
+                            <div class="list-box hotel bg1bbcf8">
+                                <span><img class="img-responsive"
+                                           src="<?php echo $this->getSkinUrl('images/plane.png') ?>"
+                                           alt="banner"></span>
+
+                                <p>Airfare to </br>New York City</br> (Up to $750)</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="information">
+                        <div class="sign-up-blocks">
+                            <div class="top-heading">
+                                <span>Your information</span>
+                            </div>
+                            <div class="clear-fix"></div>
+                            <form id="frm_data" action="<?php echo $this->getUrl('nominateinstructor/manage',array('_secure'=> true))?>" method="post">
+                                <div class="content-inside">
+                                    <ul class="list1">
+                                        <li><input type="text" class="input- required-entry" placeholder="FIRST NAME"
+                                                   name="your_first_name"/></li>
+                                        <li><input type="text" class="input-text required-entry" placeholder="LAST NAME"
+                                                   name="your_last_name"/></li>
+                                        <li><input type="email" id="email"
+                                                   class="input-text required-entry validate-email"
+                                                   placeholder="EMAIL" name="your_email"/></li>
+                                        <li>
+                                            <div class="gender-box"><label class="gender">GENDER</label>
+
+                                                <div class="radio-right">
+                                                    
+													<div>
+                                                        <label class="">
+														<input type="radio" class="custom-radio" value="female" name="your_gender"  checked/></label>
+                                                        <span>FEMALE</span>
+                                                    </div>
+													<div>
+                                                        <label class="">
+														<input type="radio" class="custom-radio" value="male" name="your_gender"/></label>
+                                                        <span>MALE</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="top-heading"><span>Your Yoga Instructor</span></li>
+                                        <li><input type="text" placeholder="FIRST NAME"
+                                                   class="input-text required-entry" name="instructor_first_name"/></li>
+                                        <li><input type="text" placeholder="LAST NAME" class="input-text required-entry"
+                                                   name="instructor_last_name"/></li>
+                                        <li><input type="email" class="input-text required-entry validate-email"
+                                                   placeholder="EMAIL" name="instructor_email"/></li>
+                                        <li><textarea class="txt-area" name="content" rows="4"
+                                                      placeholder="TELL US HOW YOUR INSTRUCTOR&#13;&#10; HAS MOVED YOU"
+                                                      cols="50"></textarea>
+                                        </li>
+                                        <li><button class="btn" id="send_some" type="submit">SEND SOME <b>SMOGI</b> LOVE</button></li>
+                                        <!--<li id="processing" style="display:none"><img
+                                                src="<?php echo $this->getSkinUrl('images/processing.gif') ?>"/></li>
+                                        <li><span id="result_data" style="font-size:20px;display:block "></span></li>-->
+                                    </ul>
+                                </div>
+                            </form>
+							<script type="text/javascript">
+							//<![CDATA[
+								var contactForm = new VarienForm('frm_data', true);
+							//]]>
+							</script>
+                            <script>
+							/*
+                                jQuery(function () {
+                                    jQuery("#send_some").click(function () {
+                                        var frm = jQuery("#frm_data").serialize();
+                                        var Yfn = jQuery("input[name='your_first_name']").val();
+                                        var Yln = jQuery("input[name='your_last_name']").val();
+                                        var Yemail = jQuery("input[name='your_email']").val();
+                                        var Ifn = jQuery("input[name='instructor_first_name']").val();
+                                        var Iln = jQuery("input[name='instructor_last_name']").val();
+                                        var Iemail = jQuery("input[name='instructor_email']").val();
+                                        if (Yfn == '' || Yln == '' || Yemail == '' || Ifn == '' || Iln == '' || Iemail == '') {
+                                            jQuery('#result_data').html('Please fill all field');
+                                        }
+                                        else {
+                                            //alert('<?php echo $this->getUrl('nominateinstructor/manage/index',array('_secure'=> true))?>');
+                                            jQuery('#processing').show();
+                                            jQuery.ajax({
+                                                url: '<?php echo $this->getUrl('nominateinstructor/manage', array('_secure'=> true))?>',
+                                                data: frm,
+                                                type: 'POST',
+                                                success: function (result) {
+                                                    if (result) {
+                                                        jQuery('#result_data').html(result);
+                                                        jQuery('#processing').hide();
+                                                    }
+                                                }
+                                            });
+
+                                        }
+                                    });
+                                });
+								*/
+                            </script>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="clearfix"></div>
+                <div class="block-container-3">
+                    <div class="bottom-info">
+                        <ul>
+                            <li><span>Fine Print</span></br>No Purchase Necessary to Enter or Win. A purchase or Payment
+                                will not increase your chances of winning.
+                            </li>
+                            <li><span>Eligibility:</span>Must be 18 and over and reside in U.S. or Canada. Must be a
+                                certified Yoga Instructor.
+                            </li>
+                            <li><span>Winner Selection:</span>Winner will be chosen by The YOGASMOGA team from a pool of
+                                entrants.
+                            </li>
+                            <li><span>How to Enter:</span>Entrants who are eligibale visit [yogasmoga.com link] during
+                                the Promotion Period and enter using the instructions provided on the contest
+                                application.
+                            </li>
+                            <li><span>Use of Information:</span> When you enter your email address and the address of
+                                the nominated instructor, you give us permission to send you promotional emails and
+                                publish your comment(s) in other places (i.e. on our Facebook page, RANGOLI, and/or
+                                YOGASMOGA).
+                            </li>
+                            <li><span> Contest Schedule:</span> The dates of the contest are in the contest application.
+                            </li>
+                            <li><span> Prizes:</span> Limit (1) prize during promotion period. Another winner will be
+                                chosen (with 24 hours to respond) until a winner responds and accepts his or her prize.
+                                <BR>Winners will receive the gifts as stated in the contest appliation durin the contest
+                                period. Travel up to the stated dollar amount will be paid for by YOGASMOGA. Upon being
+                                selected as a winner,<br> the winner will be notified by email and be asked for their
+                                mailing address.
+                            </li>
+                            <li><span> Winner Notification:</span> The winner's name will be published in a dedicated
+                                email to the YOGASMOGA email database and/or appear on our social profiles along with a
+                                series of photos produced at the photoshoot.
+                            </li>
+                            <li><span> Photos: </span> All collateral produced during the prize photo shoot is property
+                                of YOGASMOGA and must be cited as such when published by the winner digitally and
+                                physically.
+                            </li>
+                            <li><span> Questions: </span> Questions should be directed to the Marketing Team at
+                                YOGASMOGA.
+                            </li>
+                            <li><span> Email: </span> hello@yogasmoga.com - This page last updated. [May 5th, 2015]</li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="bottom-divider"></div>
             </div>
-    <div class="clearfix"></div>
-        <div class="block-container-3">
-            <div class="bottom-info">
-			<ul>
-		   <li><span>Fine Print</span></br>No Purchase Necessary to Enter or Win. A purchase or Payment will not increase your chances of winning.</li>
-		   <li><span>Eligibility:</span>Must be 18 and over and reside in U.S. or Canada. Must be a certified Yoga Instructor.</li>
-		   <li><span>Winner Selection:</span>Winner will be chosen by The YOGASMOGA team from a pool of entrants.</li>
-			<li><span>How to Enter:</span>Entrants who are eligibale visit [yogasmoga.com link] during the Promotion Period and enter using the instructions provided on the contest application.</li>
-			<li><span>Use of Information:</span> When you enter your email address and the address of the nominated instructor, you give us permission to send you promotional emails and publish your comment(s) in other places (i.e. on our Facebook page, RANGOLI, and/or YOGASMOGA).   </li>
-			<li><span> Contest Schedule:</span> The dates of the contest are in the contest application.</li>
-			<li><span> Prizes:</span> Limit (1) prize during promotion period. Another winner will be chosen (with 24 hours to respond) until a winner responds and accepts his or her prize. <BR>Winners will receive the gifts as stated in the contest appliation durin the contest period. Travel up to the stated dollar amount will be paid for by YOGASMOGA. Upon being selected as a winner,<br> the winner will be notified by email and be asked for their mailing address.</li>
-			<li><span> Winner Notification:</span> The winner's name will be published in a dedicated email to the YOGASMOGA email database and/or appear on our social profiles along with a series of photos produced at the photoshoot.</li>
-			<li><span> Photos: </span>  All collateral produced during the prize photo shoot is property of YOGASMOGA and must be cited as such when published by the winner digitally and physically.</li>
-			<li><span> Questions: </span>  Questions should be directed to the Marketing Team at YOGASMOGA.</li>
-			<li><span> Email: </span>  hello@yogasmoga.com - This page last updated. [May 1st, 2015]  </li>
-			</ul>
-			   
-			   </div>
-            </div>
-            <div class="bottom-divider"></div>
+
+            <script>
+                jQuery(document).ready(function ($) {
+                    $(".custom-radio:checked").parent().addClass("current");
+                    $(".custom-radio").click(function () {
+                        $(".custom-radio").parent().removeClass("current");
+                        $(this).parent().addClass("current");
+                    });
+                });
+                var contactForm = new VarienForm('frm_data', true);
+            </script>
         </div>
-			
-<script>
-jQuery(document).ready(function($) {
-	$(".custom-radio:checked").parent().addClass("current");
-	$(".custom-radio").click(function(){
-		$(".custom-radio").parent().removeClass("current");
-		$(this).parent().addClass("current");
-	});
-});
-var contactForm = new VarienForm('frm_data', true);
-</script>	
-		</div>
         <?php echo $this->getChildHtml('footer') ?>
         <?php echo $this->getChildHtml('before_body_end') ?>
     </div>

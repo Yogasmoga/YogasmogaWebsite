@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<layout>
+	<default>
+	</default>
+	<nominateinstructor_manage_thanks>
+		<remove name="header"/>
+		<remove name="footer"/>
+		<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+		</reference>
+		<reference name="head">
+			<action method="addItem"><type>skin_css</type><name>css/nominate.css</name></action>
+		</reference>
+		<reference name="content">
+			<block type="nominateinstructor/nominateinstructor" name="thanks" template="nominateinstructor/thanks.phtml"/>
+		</reference>
+	</nominateinstructor_manage_thanks>
+	
+</layout>

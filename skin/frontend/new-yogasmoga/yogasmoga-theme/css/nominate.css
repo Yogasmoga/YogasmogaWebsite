@@ -1,4 +1,4 @@
-.sign-up-container{
+.sign-up-container {
     clear: both;
     display: inline-block;
     float: left;
@@ -13,6 +13,7 @@
     position: relative;
     width: 100%;
 }
+
 .sign-up-container .banner {
     background: none repeat scroll 0 0 #fafafa;
     position: relative;
@@ -24,6 +25,7 @@
     min-width: 960px;
     width: 100%;
 }
+
 .sign-up-container .img-responsive {
     width: 100%;
     height: auto;
@@ -37,20 +39,22 @@
     width: 92.1875%;
 }
 
-.sign-up-container .banner-text{
-box-sizing: border-box;
+.sign-up-container .banner-text {
+    box-sizing: border-box;
     height: 100%;
     left: 0;
     padding: 80px 77px !important;
     position: absolute;
     top: 0;
     width: 100%;
-	}
-	.sign-up-container .avant_demi_bold {
+}
+
+.sign-up-container .avant_demi_bold {
     font: 60px/53px AvantGardeGothicITCW01D;
 }
-.sign-up-container .learn-more{
- border-bottom: 1px solid hsl(345, 100%, 40%);
+
+.sign-up-container .learn-more {
+    border-bottom: 1px solid hsl(345, 100%, 40%);
     color: hsl(0, 0%, 100%);
     display: inline-block;
     font: 11px/19px gothambook;
@@ -58,292 +62,453 @@ box-sizing: border-box;
     padding: 0 0 3px;
     text-align: center;
 }
-.sign-up-container .instructor{
- float: left;
+
+.sign-up-container .instructor {
+    float: left;
     padding-left: 0;
     position: relative;
     width: 65.1875%;
-	}
-	.sign-up-container .smogi-para p{
-	font-family:ITCAvantGardeProBk;
-	font-size:28px;
-	line-height:36px;
-	color:#555555;	
-	text-align:left;
-	}
-.sign-up-container	.custom-radio{
-	    cursor: pointer;
+}
+
+.sign-up-container .smogi-para p {
+    font-family: ITCAvantGardeProBk;
+    font-size: 25px;
+    line-height: 33px;
+    color: #555555;
+    text-align: left;
+}
+
+.sign-up-container .custom-radio {
+    cursor: pointer;
     height: 17px;
     opacity: 0;
     vertical-align: text-bottom;
     width: 22px;
-	}
-	.sign-up-container .smogi-para{     box-sizing: border-box;
-    margin-bottom: 5%;
-    padding: 7% 10% 6%;
-    width: 100%;
-		}
+}
 
-	.sign-up-container .information{  background:  #eeeeee;
+.sign-up-container .smogi-para {
+    box-sizing: border-box;
+   
+    padding: 10%;
+    width: 100%;
+}
+.gender-box .gender{font-size:14px!important;}
+
+.sign-up-container .information {
+    background: #eeeeee;
     position: absolute;
     right: 0;
-	 
-	 height:100%;
+    padding-top: 4.9%;
+    box-sizing: border-box;
+    height: 100%;
     top: 0;
-    width: 34.8125%;}
-	.sign-up-container .top-heading span{
-	color: hsl(0, 0%, 33%);
+    width: 34.8125%;
+}
+
+.sign-up-container .top-heading span {
+    color: hsl(0, 0%, 33%);
     font-family: ITCAvantGardeProBk;
     font-size: 28px;
     line-height: 39px;
     padding-left: 4px;
-	
-	}
-	.sign-up-container .top-heading{
-	    padding-left: 50px;
-    text-align: left;
-	}
-	.sign-up-container .sign-up-blocks{  padding: 10% 0 0;
-  width: 100%;
-  }
-.sign-up-container .content-inside{
-  padding: 0 56px;
+
 }
-	.sign-up-container input[type="text"], .sign-up-container input[type="email"], .sign-up-container input[type="number"], .sign-up-container input[type="date"], .sign-up-container input.input-text, .sign-up-container input[type="password"] {
-  
-   background: none repeat scroll 0 0 hsl(0, 0%, 100%);
+
+.sign-up-container .top-heading {
+    padding-left: 50px;
+    text-align: left;
+}
+
+.sign-up-container .sign-up-blocks {
+    width: 100%;
+}
+
+.sign-up-container .content-inside {
+    padding: 0 56px;
+}
+
+.sign-up-container input[type="text"], .sign-up-container input[type="email"], .sign-up-container input[type="number"], .sign-up-container input[type="date"], .sign-up-container input.input-text, .sign-up-container input[type="password"] {
+
+    background: none repeat scroll 0 0 hsl(0, 0%, 100%);
     border: medium none !important;
     box-sizing: border-box;
     color: hsl(0, 0%, 20%);
     display: block;
     font-size: 14px;
     line-height: normal;
-    padding: 17px 6px 17px 21px;
+    padding: 5% 6px 5% 21px;
     text-transform: none;
     width: 100%;
 }
-.sign-up-container .content-inside .list1 li{margin:15px 0;list-style:none;}
-.sign-up-container .content-inside li .btn{background: #545454;
-border: 1px solid #666;
-color: #fff;
-cursor: pointer;
-float: right;
-font-family: gotham-b,arial;
-font-size: 13px;
-font-weight: normal;
-height: 50px;
-letter-spacing: 0.05em;
-line-height: 1;
-font-family:ITCAvantGardeProBk;
-margin: 17px 0;
-  
-padding: 10px 30px;
-text-decoration: none;
-//text-transform: uppercase;
-width: 100%;}
-.sign-up-container .list1 .top-heading{padding-left:0;}
-.sign-up-container .list1 .top-heading span{ display: inline-block;
-    margin-top: 41px;}
-.sign-up-container .txt-area{
-width: 100%;
-	height: 230px;
-	border: none;
-	//text-transform:uppercase;
-	resize: none;
-	padding:17px 6px 17px 21px!important;
-	font-size:14px;
-	 color: #333;
-	padding: 5px;
-	font-family: Tahoma, sans-serif;
-	background-image: url(bg.gif);
-	box-sizing:border-box;
-	background-position: bottom right;
-	background-repeat: no-repeat;}
-.sign-up-container	.gender-box label ,.radio-right{   color: #333;
+
+.sign-up-container .content-inside .list1 li {
+    margin: 15px 0;
+    list-style: none;
+}
+
+.sign-up-container .content-inside li .btn {
+    background: #545454;
+    border: 1px solid #666;
+    color: #fff;
+    cursor: pointer;
+    float: right;
+    font-family: gotham-b, arial;
+    font-size: 13px;
+    font-weight: normal;
+    height: 50px;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    font-family: ITCAvantGardeProBk;
+    margin: 17px 0;
+
+    padding: 10px 30px;
+    text-decoration: none;
+/ / text-transform : uppercase;
+    width: 100%;
+}
+
+.sign-up-container .list1 .top-heading {
+    padding-left: 0;
+}
+
+.sign-up-container .list1 .top-heading span {
+    display: inline-block;
+    margin-top: 41px;
+}
+
+.sign-up-container .txt-area {
+    width: 100%;
+    height: 230px;
+    border: none;
+/ / text-transform : uppercase;
+    resize: none;
+    padding: 17px 6px 17px 21px !important;
+    font-size: 14px;
+    color: #333;
+    padding: 5px;
+    font-family: Tahoma, sans-serif;
+    background-image: url(bg.gif);
+    box-sizing: border-box;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+}
+
+.sign-up-container .gender-box label, .radio-right {
+    color: #333;
     float: left;
     font-size: 14px;
     padding: 2px 0;
     text-transform: uppercase;
-    width: 100%;}
-	.sign-up-container .gender-box{     clear: both;
+    width: 100%;
+}
+
+.sign-up-container .gender-box {
+    clear: both;
     float: left;
-    margin: 3% 0;
-  
+    padding: 0 21px;
     text-align: left;
-    width: 100%;}
-	.sign-up-container .radio-right div span{padding-left: 22%;}
-	.sign-up-container .radio-right div{float:left;width:50%;position:relative;}
-	.sign-up-container .radio-right div label{   background: none repeat scroll 0 0 hsl(0, 0%, 100%);
+    width: 100%;
+}
+
+.sign-up-container .radio-right div span {
+    padding-left: 22%;
+}
+
+.sign-up-container .radio-right div {
+    float: left;
+    width: 50%;
+    position: relative;
+}
+
+.sign-up-container .radio-right div label {
+    background: none repeat scroll 0 0 hsl(0, 0%, 100%);
     border: 2px solid hsl(0, 0%, 100%);
     border-radius: 17px;
     height: 14px;
     left: 0;
     position: absolute;
-    width: 19px;}
-	.sign-up-container .list-box{   float: left;
-   
+    width: 19px;
+}
+
+.sign-up-container .list-box {
+    float: left;
+
     position: relative;
-    width: 33.33%;}
-	.sign-up-container .list-box p{     bottom: 25px;
+    width: 33.33%;
+}
+
+.sign-up-container .list-box p {
+    bottom: 25px;
     color: hsl(0, 0%, 100%);
     font-family: ITCAvantGardeProBk;
     font-size: 21px;
     left: 0;
     line-height: 25px;
-      margin-bottom: 25px;
+    margin-bottom: 25px;
     right: 0;
     text-align: -moz-center;
-    text-transform: uppercase;}
-	
-	.list-box.hotel.first {
+    text-transform: uppercase;
+}
+
+.list-box.hotel.first {
     padding: 9.9% 0;
 }
-	.sign-up-container .list-box span{  display: inline-block;
+
+.sign-up-container .list-box span {
+    display: inline-block;
     height: auto;
     margin: 27px 0;
-    width: 57%;}
-	.sign-up-container .lb1-text{color: hsl(0, 0%, 33%);
+    width: 57%;
+}
+
+.sign-up-container .lb1-text {
+    color: hsl(0, 0%, 33%);
     font-family: ITCAvantGardeProBk;
     font-size: 42px;
-    line-height: 46px;}
-	.sign-up-container .lucky-smogi{float:left;
-	width:100%;
-	background:none repeat scroll 0 0 hsl(0, 0%, 93%);
-	}
-	.sign-up-container .lucky-smogi .list-box:first-child .lb1-text{
-	    color: #555555;
+    line-height: 46px;
+}
+
+.sign-up-container .lucky-smogi {
+    float: left;
+    width: 100%;
+    background: none repeat scroll 0 0 hsl(0, 0%, 93%);
+}
+
+.sign-up-container .lucky-smogi .list-box:first-child .lb1-text {
+    color: #555555;
     left: 0;
     position: absolute;
     right: 0;
     top: 29%;
-	}
-	
-	.sign-up-container .lucky-smogi .list-box:first-child .lb1-text b{
-	font-family:ITCAvantGardeProMd;
-	
-	}
-	.sign-up-container .lucky-smogi .list-box:first-child{
-	  background: none repeat scroll 0 0 #eeeeee;
+}
+
+.sign-up-container .lucky-smogi .list-box:first-child .lb1-text b {
+    font-family: ITCAvantGardeProMd;
+
+}
+
+.sign-up-container .lucky-smogi .list-box:first-child {
+    background: none repeat scroll 0 0 #eeeeee;
     float: left;
-     padding: 14% 0;
-   
-	}
-	.sign-up-container .bgff6b08{
-	background:#ff6b08;
-	}
-	.sign-up-container .bgfb7dc4{
-	background:#fb7dc4;
-	}
-	.sign-up-container .bgb1093c{
-	background:#b1093c;
-	}
-	.sign-up-container .bg8139ee{
-	background:#8139ee;
-	}
-	.sign-up-container .bg1bbcf8{
-	background:#1bbcf8;
-	}
-	.sign-up-container .bottom-info li{   color: hsl(0, 0%, 33%);
+    padding: 14% 0;
+
+}
+
+.sign-up-container .bgff6b08 {
+    background: #ff6b08;
+}
+
+.sign-up-container .bgfb7dc4 {
+    background: #fb7dc4;
+}
+
+.sign-up-container .bgb1093c {
+    background: #b1093c;
+}
+
+.sign-up-container .bg8139ee {
+    background: #8139ee;
+}
+
+.sign-up-container .bg1bbcf8 {
+    background: #1bbcf8;
+}
+
+.sign-up-container .bottom-info li {
+    color: hsl(0, 0%, 33%);
     font-family: GraphikRegular;
-    font-size: 16.39px;
-    line-height: 19px;
-	}
-	.sign-up-container .bottom-info li span{
-	font-weight:bold;
-	}
-	.sign-up-container .bottom-info li:first-child{list-style: outside none none;
-	  margin-left: -13px;
-    margin-bottom: 27px;}
-	.sign-up-container .bottom-info{  box-sizing: border-box;
+    font-size: 14.39px;
+    line-height: 17px;
+   
+}
+
+.sign-up-container .bottom-info li span {
+    font-weight: bold;
+}
+
+.sign-up-container .bottom-info li:first-child {
+    list-style: outside none none;
+    margin-left: -13px;
+    margin-bottom: 27px;
+}
+
+.sign-up-container .bottom-info {
+    box-sizing: border-box;
     float: left;
     padding: 55px 53px;
-    width: 100%;}
-	
-	.sign-up-container .bottom-info ul{text-align:left;float:left;width:100%;}
-	
-	.sign-up-container .radio-right div label.current{background:hsl(0, 0%, 33%)!important;}
-	.sign-up-container .banner-text .over-banner{
-	  left: 0;
+    width: 100%;
+}
+
+.sign-up-container .bottom-info ul {
+    text-align: left;
+    float: left;
+    width: 100%;
+	list-style-type:disc;
+}
+
+.sign-up-container .radio-right div label.current {
+    background: hsl(0, 0%, 33%) !important;
+}
+
+.sign-up-container .banner-text .over-banner {
+    left: 0;
     position: absolute;
     right: 0;
     top: 46%;
-	}
-@media screen and (max-width: 1200px){
-.sign-up-container .smogi-para p{   font-size: 19px;
-    line-height: 27px;}
-	.sign-up-container .lb1-text{ font-size: 38px;
-    line-height: 40px;}
-	.sign-up-container .list-box p{
-	font-size:15px;
-	line-height:20px;
-	}
-	.sign-up-container .top-heading span{
-	  font-size: 21px;
-    line-height: 31px;
+}
+
+@media screen and (max-width: 1200px) {
+    .sign-up-container .smogi-para p {
+        font-size: 19px;
+        line-height: 27px;
+    }
+
+    .sign-up-container .lb1-text {
+        font-size: 38px;
+        line-height: 40px;
+    }
+
+    .sign-up-container .list-box p {
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    .sign-up-container .top-heading span {
+        font-size: 21px;
+        line-height: 31px;
+
+    }
 
 }
 
-}
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
-.sign-up-container .smogi-para p{   font-size: 19px;
-    line-height: 27px;}
-	.sign-up-container .lb1-text{ font-size: 38px;
-    line-height: 40px;}
-	.sign-up-container .list-box p{
-	font-size:15px;
-	line-height:20px;
-	}
-	.sign-up-container .txt-area{height:176px;}
-	.sign-up-container .top-heading span{
-	  font-size: 21px;
-    line-height: 31px;
-}
-	
-.sign-up-container .lb1-text {
-    font-size: 34px;
-    line-height: 36px;
-}
+    .sign-up-container .smogi-para p {
+        font-size: 19px;
+        line-height: 27px;
+    }
+
+    .sign-up-container .lb1-text {
+        font-size: 38px;
+        line-height: 40px;
+    }
+
+    .sign-up-container .list-box p {
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    .sign-up-container .txt-area {
+        height: 176px;
+    }
+
+    .sign-up-container .top-heading span {
+        font-size: 21px;
+        line-height: 31px;
+    }
+
+    .sign-up-container .lb1-text {
+        font-size: 34px;
+        line-height: 36px;
+    }
 
 }
 
-	@media screen and (min-width: 1401px) and (max-width: 1599px){
-	.sign-up-container .smogi-para p{  font-size: 26px;
-    line-height: 34px;}
-	.sign-up-container .list-box p{
-	font-size:19px;
-	line-height:23px;
-	
-	}
+@media screen and (min-width: 1401px) and (max-width: 1599px) {
+    .sign-up-container .smogi-para p {
+        font-size: 26px;
+        line-height: 34px;
+    }
 
-	.sign-up-container .txt-area{height:176px;}
-	.sign-up-container .lb1-text{ font-size: 40px;
-    line-height: 44px;}
-	.sign-up-container .top-heading span{
-	   font-size: 26px;
-    line-height: 37px;
-	}
-	}
-	@media screen and (min-width: 1600px){
-	
-	}
+    .sign-up-container .list-box p {
+        font-size: 19px;
+        line-height: 23px;
 
-.sign-up-container  span.btn{
-	color: #fff!important;
-	padding: 18px 0 30px 0!important;
-	display: block;
-	height: 0!important;
-	}
+    }
 
+    .sign-up-container .txt-area {
+        height: 176px;
+    }
+
+    .sign-up-container .lb1-text {
+        font-size: 40px;
+        line-height: 44px;
+    }
+
+    .sign-up-container .top-heading span {
+        font-size: 26px;
+        line-height: 37px;
+    }
+}
+.sign-up-container  .radio-right{padding-top:12px}
+@media screen and (min-width: 1600px) {
+
+}
+
+.sign-up-container span.btn {
+    color: #fff !important;
+    padding: 18px 0 30px 0 !important;
+    display: block;
+    height: 0 !important;
+}
 
 ::-webkit-input-placeholder {
-   color: #ccc;
+    color: #000;
 }
-:-moz-placeholder { /* Firefox 18- */
-   color: #ccc;  
+
+:-moz-placeholder {
+    /* Firefox 18- */
+    color: #000;
 }
-::-moz-placeholder {  /* Firefox 19+ */
-   color: #ccc;  
+
+::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #000;
 }
-:-ms-input-placeholder {  
-   color: #ccc; 
+
+:-ms-input-placeholder {
+    color: #000;
 }
+
+.thankew-container{
+    clear: both;
+    display: inline-block;
+    float: left;
+    font-size: 0;
+    width: 100%;
+}
+.thankew-container .thanks-banner{
+  background:#e3fffe;
+  border: 0 none;
+  margin: 0;
+  position: relative;
+
+}
+.thanks{background:#e3fffe}
+.thankew-container .thanks-banner .avant_demi_bold {
+    font: 40px/43px AvantGardeGothicITCW01D;
+}
+.thankew-container .thanks-banner .over-banner{
+right: 0px; top: 60%; left: 0px; position: absolute;
+}
+.thankew-container .thanks-banner  .visit{
+	 display: block!important;
+    margin: 80px 0!important;
+    padding-right: 10px!important;
+	}
+	.thankew-container .thanks-banner  .img-responsive{width:100%;
+	height:auto;
+	}
+	
+.thankew-container .thanks-banner .over-banner ul{
+float: left;
+    width: 100%;
+	}
+	.thankew-container .thanks-banner  .over-banner li{
+	display:inline-block;
+	margin:0 5px;
+	padding-right:10px;
+	}
+.sign-up-container .validation-advice{ background:none; text-align:left;}
+.sign-up-container .validation-failed{ background:#fff!important;}	
+
+
