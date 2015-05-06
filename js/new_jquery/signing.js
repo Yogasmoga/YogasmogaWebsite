@@ -4,11 +4,20 @@ var root='http://staging.yogasmoga.com/';
 /**************** logout logic added by ys team *****************/
 jQuery(document).ready(function($){
 
+
+    jQuery(".gender_p span").click(function(){
+        jQuery(".gender_p span").removeClass("selected");
+        jQuery(this).addClass("selected");
+    });
+
+
     checkIsUserLogged();
 
     $("#sign-up-form").submit(function(event){
         var formid = "#sign-up-form";
+
         var status = popupGetSigningCreateaccountFormFieldsvalue(formid);
+
         if(status != "error")
             createCustomerAccount();
         event.preventDefault();
@@ -731,4 +740,18 @@ function checkIsUserLogged() {
         }
     });
 }
+
+
+function if_gender_is_selected(){
+    if(jQuery(".gender_p span").hasClass("selected")){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+
 /**************** logout logic added by ys team *****************/
+
+

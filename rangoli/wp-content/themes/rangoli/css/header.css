@@ -657,7 +657,7 @@ area{
 #ap_signin_popup .form {
     display: block;
     left: 252px;
-    margin: 170px auto 0;
+    margin: 160px auto 0;
     width: 295px;
 }
 #ap_sign-up-form > input {
@@ -694,6 +694,7 @@ area{
     padding: 0 0 0 8px;
     text-align: center;
     width: 294px;
+    color:#fff !important;
 }
 #ap_signup {
     background: #ff4d4d !important;

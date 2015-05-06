@@ -294,18 +294,69 @@ div.copy-privacy-likes ul li img{height: 30px;}
 
 /****First Time Pop Up Home page****/
 /*.firstdialog{z-index: 10003 !important;}*/
-.firstdialog { border: none; position: fixed; padding: 0 !important; background: transparent url("/skin/frontend/yogasmoga/yogasmoga-theme/images/popup_bg_circle.png") 50% top repeat-x ; background-size: cover ; }
+.firstdialog { border: none; position: fixed; padding: 0 !important; background: transparent url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/signup_popup_red.png") 50% top repeat-x ; background-size: cover ; }
 .firstdialog .ui-widget-header { border:none; background: none; font-weight: bold; }
 .firstdialog .ui-dialog-titlebar-close{right: 7.3em ; top: 100% ; width: auto ; height: auto ; z-index: 500;}
 .firstdialog .ui-state-hover{border: none ; background: none ; padding: 1px !important;}
 .firstdialog .ui-icon-closethick{background:url("/skin/frontend/yogasmoga/yogasmoga-theme/images/pop-close.png") no-repeat ; width: 41px; height: 42px; background-position: 0 0;}
-#popup-register{font-family: ITCAvantGardeProBk; font-size: 13px;color: #fff;position: absolute; bottom: 14%; left: 25%;}
-#popup-register td{border: 0; border-bottom: 1px solid #ffffff; margin-bottom: 5px;}
-#popup-register td input{width:100%; border: none; background: transparent;color: #fff !important;font-family: ITCAvantGardeProBk;}
+#popup-register{font-family: ITCAvantGardeProBk; font-size: 13px;color: #fff;position: absolute; bottom: 0; left: 18%; width: 64%;}
+#popup-register td{border: 0; border-bottom: 1px solid #ffffff; margin-bottom: 10px;}
+#popup-register tr{height: 12px;}
+#popup-register td input{width:100%; border: none; background: transparent;color: #fff !important;letter-spacing:1px; font: 14px/22px ITCAvantGardeProBk;}
 #popup-register td label{ padding-right: 10px;}
 #popup-register .errortext{font-family: ITCAvantGardeProBk; font-size: 11px; color: #fff; height: 13px; vertical-align: top !important; min-height: 13px; border: none;}
 #popup-register .errortext div{display: none;}
 #popup-register input[type="submit"]{margin-top: 25px; cursor: pointer;}
+
+.gender_tr .gender_radio {
+     margin: 0 0 0px 10px ;
+     top: 4px;
+     border-color: #fff;
+     cursor:pointer;
+     float:right;
+    transition-duration: 200ms;
+}
+.gender_p span.gender_radio input{
+    cursor: pointer;
+}
+.gender_p span.gender_radio.selected {
+    border-color: #656565;
+    background: #656565;
+    color:#fff;
+    cursor:pointer;
+    transition-duration: 200ms;
+}
+.gender_tr .gender_p {
+    font: 14px/30px ITCAvantGardeProBk;
+    margin-top: 10px;
+    position: relative;
+    letter-spacing: 1px;
+}
+.gender_tr {
+    border: medium none !important;
+}
+button#signup-button {
+    background: none repeat scroll 0 0 #ff4d4d;
+    border: medium none;
+    height: 40px;
+    width: 165px;
+    margin: 0 !important;
+    color:#fff;
+    font: 14px/40px  ITCAvantGardeProBk;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+.link_red_popup a{
+    color:#fff;
+    letter-spacing: 1px;
+    transition-duration: 200ms;
+}
+.link_red_popup a:hover{
+    color: #ff4d4d;
+    transition-duration: 200ms;
+}
+
+
 #map-fabrics table td img{width: 100%;}
 #map-fabrics table td{position: relative;}
 .fab_text {position: absolute; top:10%; width: 100%; text-align: center; font-family: ITCAvantGardeProBk; font-size: 30px; color: #555}
@@ -895,8 +946,10 @@ span.country {
 
 .cntn-scroll{position: absolute;}
 .seventy-five{width:72% !important; margin-right:0 !important; }
-
 @media only screen and (max-width : 1024px) {
+
+
+
 
     .coloumn-list li span {
         font-size: 16px !important;
@@ -967,13 +1020,6 @@ span.country {
     .contWom h4{font-size: 13px !important;}
     .figCap span{font-size: 11px;}
     .pc-right{float: none !important; margin:0 !important;}
-
-    /*.avant_demi_bold{*/
-        /*font:30px/40px AvantGardeGothicITCW01D;*/
-    /*}*/
-    /*.avant_extra_light{*/
-        /*font:40px/40px AvantGardeGothicITCW01X;*/
-    /*}*/
 }
 .contWom p{display: none;}
 .contWom p.block-link{display: block;}
@@ -1168,7 +1214,7 @@ body.customer-address-index .myaccountdashboard .customeraddress td .subsectionh
 .pager .amount strong{font-weight: normal; font-family: gothambook; font-size: 12px; letter-spacing: normal;}
 #my-orders-table tbody td span.nobr a{color: #555 !important; border-bottom: 1px solid #d90d3d; padding-bottom: 3px; text-transform: uppercase;}
 #edit-accountinfo table tr:first-child,#address-form table tr:first-child,tr.orig_password{background: #fff; height: 34px;}
-#edit-accountinfo table tr:first-child td,tr.orig_password td{padding:0 8px; border: none; height: 34px; line-height: 34px;}
+#edit-accountinfo table tr:first-child td,tr.orig_password td{padding:0px; border: none; /*height: 34px;*/ line-height: 34px;}
 #address-form table tr:first-child td{padding:8px; border: none;}
 #edit-accountinfo table tr:first-child td label,#edit-accountinfo table tr:first-child td input,#address-form table tr:first-child td label{font-size: 11px;}
 .pager .limiter select{margin-right: 6px; margin-left: 8px; width: 59px; height: 30px; padding-left: 16px;}
@@ -1927,9 +1973,9 @@ ul.new-arrivals a.quick-view{display: none;}
 /*.wl-cs-right-block .top-right-block{background:url(../images/women/andman-green-featured-image-new.jpg) no-repeat; background-size: 100% 100%;}*/
 /*.wl-left-block .bottom-left-block{background: url(../images/women/featured-image.jpg) no-repeat; background-size: 100% 100%;}*/
 
-.wl-cs-right-block .top-right-block{background:url(../images/women/grey.jpg) no-repeat; background-size: 100% 100%;}
+.wl-cs-right-block .top-right-block{background:url(../images/women/cloth-look.jpg) no-repeat; background-size: 100% 100%;}
 
-.wl-left-block .bottom-left-block{background: url(../images/women/tickle-back.jpg) no-repeat; background-size: 100% 100%;}
+.wl-left-block .bottom-left-block{background: url(../images/women/featured-image-new.jpg) no-repeat; background-size: 100% 100%;}
 
 
 div.cms-side-nav{display: none;}
@@ -2034,14 +2080,6 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 17px !important; line-height: 35px !important;}
     .cntntheading, .gridCMSPages .coloumn-list li span{font-size: 24px !important; line-height: 29px !important;}
     .presstxt p{font-size: 17px !important; line-height: 19px !important;}
-
-    /* avant fonts */
-    .avant_demi_bold{
-        font:40px/43px AvantGardeGothicITCW01D;
-    }
-    .avant_extra_light{
-        font:38px/43px AvantGardeGothicITCW01X;
-    }
 }
 
 @media screen and (min-width: 1201px) and (max-width: 1400px) {
@@ -2078,13 +2116,6 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 19px !important; line-height: 39px !important;}
     .cntntheading, .gridCMSPages .coloumn-list li span{font-size: 28px !important; line-height: 33px !important;}
     .presstxt p{font-size: 19px !important; line-height: 23px !important;}
-
-    .avant_demi_bold{
-        font:40px/43px AvantGardeGothicITCW01D;
-    }
-    .avant_extra_light{
-        font:38px/43px AvantGardeGothicITCW01X;
-    }
 }
 
 
@@ -2120,14 +2151,6 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 22px !important; line-height: 45px !important;}
     .cntntheading, .gridCMSPages .coloumn-list li span{font-size: 32px !important; line-height: 37px !important;}
     .presstxt p{font-size: 22px !important; line-height: 29px !important;}
-
-    /* avant fonts */
-    .avant_demi_bold{
-        font:45px/48px AvantGardeGothicITCW01D;
-    }
-    .avant_extra_light{
-        font:43px/48px AvantGardeGothicITCW01X;
-    }
 }
 
 @media screen and (min-width: 1600px) {
@@ -2155,14 +2178,6 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 24px !important; line-height: 50px !important;}
     .cntntheading, .gridCMSPages .coloumn-list li span{font-size: 36px !important; line-height: 41px !important;}
     .presstxt p{font-size: 24px !important; line-height: 34px !important;}
-
-    /* avant fonts */
-    .avant_demi_bold{
-        font:50px/53px AvantGardeGothicITCW01D;
-    }
-    .avant_extra_light{
-        font:48px/53px AvantGardeGothicITCW01X;
-    }
 }
 
 .selectedlength div{display: inline-block; border: 1px solid #A9A9A9; text-align: center; cursor: pointer; padding: 2px 8px; margin: 0 7px 0 0; font-size:11px; font-family:gothambook;}
@@ -2325,11 +2340,27 @@ td.checkShippingBox input[type="checkbox"]:checked + label, td.checkBillingBox i
     background: url("../images/new-elements/checkbox1.jpg") no-repeat left -32px;
 }
 
-.signinDialog table tr.orig_password{background: none;}
+/*.signinDialog table tr.orig_password{background: none;}
 .signinDialog table tr.orig_password td{padding-left: 0; padding-right: 0; padding-bottom: 9px !important;}
-.signinDialog table tr.orig_password td input{margin-top: -4px;}
-#sign-in-form tr.orig_password{height: 33px !important;}
-.signinDialog #sign-in-form tr.orig_password td{height: 33px; line-height: 33px; padding-bottom: 0px !important;}
+.signinDialog table tr.orig_password td input{margin-top: -4px;}*/
+
+.signinDialog table tr.orig_password{background: none;}
+.signinDialog table tr.orig_password td{border: 0 none;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+    border: medium none;
+    line-height: unset !important;
+    /*padding: 0 0 4px !important;*/
+}
+#edit-accountinfo table tr:first-child, #address-form table tr:first-child, tr.orig_password{
+    background: none !important;
+    padding: 10px !important;
+}
+
+/*.signinDialog table tr.orig_password td input{margin-top: -4px;}*/
+
+
+/*#sign-in-form tr.orig_password{height: 33px !important;}
+.signinDialog #sign-in-form tr.orig_password td{height: 33px; line-height: 33px; padding-bottom: 0px !important;}*/
 ul.featureList li{position: relative;}
 ul.featureList li img.vid-pl-btn {width: auto; position: absolute; width: 40%; max-width: 91px; display: none;}
 ul.featureList li.last-df img.vid-pl-btn{display: block;}
@@ -2607,4 +2638,3 @@ table.smallimagecontiner td.selectedimage{
 .combo-sale h3{font: 20px/29px gothamBook; text-decoration: underline; padding-left: 25px; text-align: left;}
 .bundlePop img#closelightbox { padding: 0; right: 5px !important; top: 3px !important;  width: auto !important;}
 .cs-addPrd{visibility:hidden; height:0;}
-

@@ -170,6 +170,7 @@ $(document).ready(function () {
     });
     $(".close_signin_popup").click(function () {
         $("#signin_popup").fadeOut();
+        $(".gender_p span").removeClass("selected");
     })
 });
 
@@ -194,6 +195,7 @@ $(document).ready(function () {
                 $(".login-box").fadeIn();
                 is_login_box_open = true;
             }
+            $(".bullseye_popup_container").fadeOut();
         })
     });
 });
@@ -215,6 +217,9 @@ function createCustomerAccount_from_popup() {
         if(IsEmail(email_id)){
             if (pwd!="Select a password" && pwd.length < 6 ) {
                 error = "Password should be atleast 6 characters.";
+            }
+            else if(!if_gender_is_selected()){
+                error = "Please select a Gender.";
             }
             else {
                 var cpassword = pwd;
@@ -303,58 +308,79 @@ function createCustomerAccount() {
     var cpassword = pwd;
 
     var url = homeUrl + 'mycatalog/myproduct/registercustomer';
+    if (fname != "First Name" && lname != "Last Name" && pwd != undefined &&email_id != "" && email_id!="Email"&& pwd != undefined && pwd != "" && pwd!="Password") {
+        if( !isValidEmailAddress(email_id)){
 
-    jQuery.ajax({
-        url: url,
-        type: 'POST',
-        data: {
-            'firstname': fname,
-            'lastname': lname,
-            'email': email_id,
-            'password': pwd,
-            'confirmation': cpassword,
-            'is_subscribed': "on"
-        },
-        beforeSend: function () {
-            jQuery("#sign-up-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
-            jQuery("#sign-up-button").parent().hide();
-            jQuery("#sign-up-form .form-loader").show();
-        },
-        success: function (data) {
-
-            data = eval('(' + data + ')');
-            var status = data.status;
-            var name = data.fname;
-
-            var first_name = data.first_name;
-            var last_name = data.last_name;
-            var customer_id = data.customer_id;
-            jQuery("#sign-up-form .err-msg").html("");
-            if (status == "success") {
-                /**************** code added by ys team *****************/
-                createRangoliUser(email_id, pwd, first_name, last_name, customer_id);
-                /**************** code added by ys team *****************/
-
-                    // console.log(data.status);
-                jQuery(".login-box").fadeOut();
-                is_login_box_open = false;
-                //window.location=homeUrl+"rangoli";
-
-                _islogedinuser = true;
-                jQuery("#signin").html("SIGN OUT").attr({href: homeUrl + 'customer/account/logout/', id: "sign-out"});
-
-                if (name != '') {
-                    jQuery("#welcome-name").html("Hi " + name).attr("href", homeUrl + 'customer/account/');
-                }
-            }
-            else {
-                jQuery("#sign-up-button").parent().show();
-                jQuery("#sign-up-form .form-loader").hide();
-                jQuery("#sign-up-form .err-msg").html(data.errors).css("visibility", "visible");
-            }
+            jQuery(".err-msg.signup_err").html("Enter valid email address.").css("visibility", "visible");
         }
-    });
+        else if(!if_gender_is_selected()){
+            jQuery(".err-msg.signup_err").html("Please select Gender.").css("visibility", "visible");
+        }
+        else {
+            jQuery.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    'firstname': fname,
+                    'lastname': lname,
+                    'email': email_id,
+                    'password': pwd,
+                    'confirmation': cpassword,
+                    'is_subscribed': "on"
+                },
+                beforeSend: function () {
+                    jQuery("#sign-up-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
+                    jQuery("#sign-up-button").parent().hide();
+                    jQuery(".err-msg.signup_err").html("");
+                    jQuery("#sign-up-form .form-loader").show();
+                },
+                success: function (data) {
+                    alert(data.errors);
+                    data = eval('(' + data + ')');
+                    var status = data.status;
+                    var name = data.fname;
+
+                    var first_name = data.first_name;
+                    var last_name = data.last_name;
+                    var customer_id = data.customer_id;
+                    jQuery("#sign-up-form .err-msg").html("");
+                    if (status == "success") {
+                        /**************** code added by ys team *****************/
+                        createRangoliUser(email_id, pwd, first_name, last_name, customer_id);
+                        /**************** code added by ys team *****************/
+
+                            // console.log(data.status);
+                        jQuery(".login-box").fadeOut();
+                        is_login_box_open = false;
+                        //window.location=homeUrl+"rangoli";
+
+                        _islogedinuser = true;
+                        jQuery("#signin").html("SIGN OUT").attr({
+                            href: homeUrl + 'customer/account/logout/',
+                            id: "sign-out"
+                        });
+
+                        if (name != '') {
+                            jQuery("#welcome-name").html("Hi " + name).attr("href", homeUrl + 'customer/account/');
+                        }
+                    }
+                    else {
+                        jQuery("#sign-up-button").parent().show();
+                        jQuery("#sign-up-form .form-loader").hide();
+                        jQuery(".err-msg.signup_err").html(data.errors).css("visibility", "visible");
+
+                    }
+                }
+            });
+        }
+    }
+    else{
+        jQuery(".err-msg.signup_err").html("All fields are required.").css("visibility", "visible");
+    }
 }
+
+
+
 
 function createRangoliUser(email, password, first_name, last_name, customer_id) {
 
@@ -384,55 +410,75 @@ function loginCustomer() {
     var url = homeUrl + 'mycatalog/myproduct/logincustomer';
     //if (_usesecureurl)
     //    url = securehomeUrl + 'mycatalog/myproduct/logincustomer';
-
-    jQuery.ajax({
-
-        url: url,
-        type: 'POST',
-        data: {'email': email_id, 'pwd': pwd},
-        beforeSend: function () {
-            jQuery(".err-msg").html("");
-            jQuery("#sign-in-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
-            jQuery("#sign-in-button").parent().hide();
-            jQuery("#sign-in-form .form-loader").show();
-        },
-        success: function (data) {
-
-            data = eval('(' + data + ')');
-            var status = data.status;
-            var error = data.error;
-            var name = data.fname;
-            var somgiBal = data.smogi;
-            var first_name = data.first_name;
-            var last_name = data.last_name;
-            var customer_id = data.customer_id;
-            //var pwd = data.password;
-
-            if (status == "success") {
-                /************** code update by ys team ******************/
-                doWordpressLogin(email_id, pwd, first_name, last_name, customer_id);
-                /************** code update by ys team ******************/
-
-            }
-            else {
-
-                jQuery("#sign-in-form .form-loader").html("");
-                jQuery("#sign-in-button").parent().show();
-
-                //if (_smogiPageLogin) {
-                //    jQuery("#sb-sign-in-form .err-msg").html(data.errors).css("visibility", "visible");
-                //    jQuery(".signin-loader").html("");
-                //} else
-                {
-                    jQuery("#sign-in-form .err-msg").html(data.errors).css("visibility", "visible");
-                    jQuery(".signin-loader").html("");
-                    jQuery("#sign-in-button").parent().show();
-                    jQuery("#sign-in-form .form-loader").hide();
-                }
-            }
+    if (email_id != undefined && email_id != "" && email_id!="Email" && pwd != undefined && pwd != "" && pwd!="Password") {
+        if( !isValidEmailAddress(email_id)){
+            jQuery("#sign-in-form .form-loader").html("");
+            jQuery("#sign-in-button").parent().show();
+            jQuery("#sign-in-form .err-msg").html("Enter valid email address.   ").css("visibility", "visible");
+            jQuery(".signin-loader").html("");
+            jQuery("#sign-in-button").parent().show();
+            jQuery("#sign-in-form .form-loader").hide();
         }
+        else {
+            jQuery.ajax({
 
-    });
+                url: url,
+                type: 'POST',
+                data: {'email': email_id, 'pwd': pwd},
+                beforeSend: function () {
+                    jQuery(".err-msg").html("");
+                    jQuery("#sign-in-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
+                    jQuery("#sign-in-button").parent().hide();
+                    jQuery("#sign-in-form .form-loader").show();
+                },
+                success: function (data) {
+
+                    data = eval('(' + data + ')');
+                    var status = data.status;
+                    var error = data.error;
+                    var name = data.fname;
+                    var somgiBal = data.smogi;
+                    var first_name = data.first_name;
+                    var last_name = data.last_name;
+                    var customer_id = data.customer_id;
+                    //var pwd = data.password;
+
+                    if (status == "success") {
+                        /************** code update by ys team ******************/
+                        doWordpressLogin(email_id, pwd, first_name, last_name, customer_id);
+                        /************** code update by ys team ******************/
+
+                    }
+                    else {
+
+                        jQuery("#sign-in-form .form-loader").html("");
+                        jQuery("#sign-in-button").parent().show();
+
+                        //if (_smogiPageLogin) {
+                        //    jQuery("#sb-sign-in-form .err-msg").html(data.errors).css("visibility", "visible");
+                        //    jQuery(".signin-loader").html("");
+                        //} else
+                        {
+                            jQuery("#sign-in-form .err-msg").html(data.errors).css("visibility", "visible");
+                            jQuery(".signin-loader").html("");
+                            jQuery("#sign-in-button").parent().show();
+                            jQuery("#sign-in-form .form-loader").hide();
+                        }
+                    }
+                }
+
+            });
+        }
+    }
+    else{
+        jQuery("#sign-in-form .form-loader").html("");
+        jQuery("#sign-in-button").parent().show();
+        jQuery("#sign-in-form .err-msg").html("Enter valid email address.").css("visibility", "visible");
+        jQuery(".signin-loader").html("");
+        jQuery("#sign-in-button").parent().show();
+        jQuery("#sign-in-form .form-loader").hide();
+
+    }
 }
 
 
@@ -1424,6 +1470,7 @@ $(document).ready(function(){
     $(".close").click(function(){
         $(".bullseye_popup").fadeOut();
         $(".center_popup").fadeOut();
+        $(".gender_p span").removeClass("selected");
         $(".bullseye_popup_container").fadeOut();
         is_bullseye_popup_open = false;
     });
@@ -1462,6 +1509,9 @@ function createCustomerAccount_from_animated_popup() {
         if(IsEmail(email_id)){
             if (pwd!="Select a password" && pwd.length < 6 ) {
                 error = "Password should be atleast 6 characters.";
+            }
+            else if(!if_gender_is_selected()){
+                error = "Please select a Gender.";
             }
             else {
                 var cpassword = pwd;
@@ -1553,6 +1603,14 @@ function open_red_popup(){
 
 
 $(document).ready(function(){
+
+    $(".gender_p span").click(function(){
+        $(".gender_p span").removeClass("selected");
+        $(this).addClass("selected");
+    });
+
+
+
     $("#update_username").click(function(){
         var text = $("input.change_username");
         var username = text.val();
@@ -1578,3 +1636,20 @@ $(document).ready(function(){
         }
     });
 });
+
+
+
+function isValidEmailAddress(emailAddress) {
+    var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
+    return pattern.test(emailAddress);
+};
+
+
+function if_gender_is_selected(){
+    if($(".gender_p span").hasClass("selected")){
+        return true;
+    }
+    else{
+        return false;
+    }
+}

@@ -90,6 +90,7 @@ if(!is_user_logged_in()) {
             <input data-watermark="Last Name" id="p_lname" />
             <input data-watermark="Email Address" id="p_signup_email" />
             <input data-watermark="Select a password" rel="password" id="p_s_password" />
+                <p class="gender_p gender_popup">Select Gender <span><input type="radio" name="gender" value="2" />M</span>  <span><input type="radio" name="gender" value="1" />F</span> </p>
                 <img class="loader" src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px; display:none;' />
             <input id="signup" type="button" value="Sign up"  />
                 <div class="err-msg"></div>
@@ -156,7 +157,7 @@ if(!is_user_logged_in()) {
                         </tr>
 
                         <tr>
-                            <td >&nbsp;</td>
+                            <td ><p class="gender_p">Select Gender <span><input type="radio" name="gender" value="1"/>M</span> <span><input type="radio" name="gender" value="1"/>F</span></p></td>
 
                         </tr>
                         <tr>
@@ -167,9 +168,8 @@ if(!is_user_logged_in()) {
                         </tr>
                         <tr>
                             <td style="padding: 0px;">
-                                <p class="err-msg"
-                                   style="min-height:15px;  margin: 0 auto; font-size: 12px; visibility:hidden">All fields
-                                    are required.</p>
+                                <p class="err-msg signup_err" style="min-height: 15px; margin: 0px auto; visibility: hidden;font: 12px ITCAvantGardeStd-Bk !important;line-height: 15px !important;">
+                                    All fields are required.</p>
                             </td>
                         </tr>
                         </tbody>
@@ -196,8 +196,8 @@ if(!is_user_logged_in()) {
 
                         <tr>
                             <td>
-                                <a href="/customer/account/forgotpassword" class="forgot">Forgot Your
-                                    Password?</a>
+                                <a href="/customer/account/forgotpassword" class="forgot">Forgot your
+                                    password?</a>
                             </td>
                         </tr>
                         <tr>
@@ -209,7 +209,7 @@ if(!is_user_logged_in()) {
                         <tr>
                             <td style="padding: 0px;">
                                 <p class="err-msg"
-                                   style="min-height:15px; margin: 0 auto; font-size: 12px; visibility:hidden">All fields
+                                   style="min-height: 15px; margin: 0px auto; visibility: hidden;font: 12px ITCAvantGardeStd-Bk !important;line-height: 15px !important;">All fields
                                     are required.</p>
                             </td>
                         </tr>
@@ -222,16 +222,6 @@ if(!is_user_logged_in()) {
     </div>
 </div>
 
-
-<!--<div class="video-popup">-->
-<!--    <div class="close">-->
-<!---->
-<!--    </div>-->
-<!--    <video src="" controls autoplay>-->
-<!---->
-<!--    </video>-->
-<!---->
-<!--</div>-->
 <?php
 //the_block('footer');
 ?>
@@ -376,6 +366,7 @@ if(!is_user_logged_in()) {
                                     <input data-watermark="Last Name" id="ap_lname" />
                                     <input data-watermark="Email Address" id="ap_signup_email" />
                                     <input data-watermark="Select a password" rel="password" id="ap_s_password" />
+                                    <p class="gender_p gender_popup">Select Gender <span><input type="radio" name="gender" value="2" />M</span>  <span><input type="radio" name="gender" value="1" />F</span> </p>
                                     <img class="loader" src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px; display:none;' />
                                     <input id="ap_signup" type="button" value="Sign up"  />
                                     <div class="err-msg"></div>

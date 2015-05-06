@@ -29,32 +29,29 @@
                             <input type="password" autocomplete="off" maxlength="30"  class="o_password requiredfield" name="s_password" id="s_password">
                         </td>                    
                     </tr>
-
                     <tr>
-                        <?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
-                        <?php if ($_gender->isEnabled()): ?>
-                            <td style="width:63px;float:left"><label>Male</label> <input class="radio" type="radio" name="gender" value="1"  style="width:20px" checked/></td>
-                            <td  style="width:110px;float:left"><label>Female</label> <input class="radio" type="radio" name="gender" value="2" style="width:20px"/> </td>
-                        <?php endif ?>
+                        <td>
+                            <p class="gender_p"> Select Gender  <span class="gender_radio"><input type="radio" value="2" name="gender" />M</span>  <span class="gender_radio"><input type="radio" value="1" name="gender" />F</span> </p>
+                        </td>
                     </tr>
 
-                    <tr>
-                        <td class="intouchCheckbox">&nbsp;</td>
-<!--                        <td class="intouchCheckbox"><input class="f-left" style="width:auto; margin-top: 3px; margin-right: 3px;" type="checkbox" name="in_touch" id="in_touch" class="checkbox" checked="checked">-->
+<!--                    <tr>-->
+<!--                        <td class="intouchCheckbox">&nbsp;</td>-->
+                        <!--                        <td class="intouchCheckbox"><input class="f-left" style="width:auto; margin-top: 3px; margin-right: 3px;" type="checkbox" name="in_touch" id="in_touch" class="checkbox" checked="checked">-->
 <!--                            <label class="lh-normal checkboxDyn" style="width:auto;" for="in_touch">-->
 <!--                                -->
 <!--                            Let's stay in touch!</label>           -->
 <!--                        </td>                    -->
-                    </tr>
+<!--                    </tr>-->
                     <tr>
                         <td class="no-padding">
-                            <input type="submit" id="sign-up-button" value="" style="background-image: url(<?php echo $this->getUrl()?>skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-elements/signup-grey.jpg); width:315px; height:39px; background-size:100% 100%; border:none;">
+                            <input type="submit" id="sign-up-button" value="" style="background-image: url(<?php echo $this->getUrl()?>skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-elements/signUp_btn.png); width:315px; height:39px; background-size:100% 100%; border:none;">
                         </td>
                         <td align="center" class="form-loader no-padding c-align"></td>
                     </tr>
                     <tr>
                         <td style="padding: 0px;">
-                            <p style="min-height:15px;  margin: 0 auto; font-size: 12px; visibility:hidden" class="err-msg">All fields are required.</p>
+                            <p style="min-height: 15px; margin: 0px auto;  visibility: hidden;font: 12px ITCAvantGardeProBk !important;line-height: 40px !important;" class="err-msg">All fields are required.</p>
                         </td>
                     </tr>
                 </table>            
@@ -86,13 +83,13 @@
                     </tr>
                     <tr>
                         <td class="no-padding">
-                            <input type="submit" id="sign-in-button" value=""  style="background-image: url(<?php echo $this->getUrl()?>skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-elements/pop-signin-btn.jpg); width:315px; height:39px; background-size:100% 100%; border:none;">
+                            <input type="submit" id="sign-in-button" value=""  style="background-image: url(<?php echo $this->getUrl()?>skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-elements/signIn_btn.png); width:315px; height:39px; background-size:100% 100%; border:none;">
                         </td>
                         <td align="center" class="form-loader no-padding c-align"></td>                    
                     </tr>                
                     <tr>
                         <td style="padding: 0px;">
-                            <p style="min-height:15px; margin: 0 auto; font-size: 12px; visibility:hidden" class="err-msg">All fields are required.</p>
+                            <p style="min-height: 15px; margin: 0px auto;  visibility: hidden;font: 12px ITCAvantGardeProBk !important;line-height: 40px !important;" class="err-msg">All fields are required.</p>
                         </td>               
                     </tr>
                     <tr>

@@ -607,9 +607,12 @@ ul.selected li{
 }
 .sign-up.left-shift .err-msg {
     bottom: unset !important;
-    color: #222 !important;
+    /*color: #222 !important;*/
     position: absolute;
     text-align: left !important;
+}
+.input[type='button']{
+    cursor:pointer;
 }
 input:focus{
     outline:none;

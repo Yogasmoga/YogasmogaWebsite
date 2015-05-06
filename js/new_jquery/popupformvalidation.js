@@ -108,6 +108,14 @@ function popupformvalidation(fname,lname,email_id,pwd,formid)
         // jQuery("#p_password").focus();
         return "error";
     }
+
+    if(!if_gender_is_selected()){
+        jQuery(formid).find(".err-msg").css("visibility","visible");
+        jQuery(formid).find(".err-msg").text("Please select gender");
+        return "error";
+    }
+
+
     var str = pwd;
 
     if(str.length < 6 )

@@ -127,6 +127,12 @@ if($serverType == 'production')
 </script>
 <script type="application/javascript">
     jQuery(document).ready(function($){
+
+
+        $(".gender_p span").click(function(){
+            $("#err-msg").html("");
+        });
+
         $("#signup-button").click(function(event){
             $("#err-msg").text("");
             var fname = $.trim($("#pfirstname").val());
@@ -176,6 +182,14 @@ if($serverType == 'production')
                 // $("#p_password").focus();
                 return;
             }
+
+            if(!$(".gender_p span").hasClass("selected")){
+                event.preventDefault();
+                $("#err-msg").css("visibility","visible");
+                $("#err-msg").text("Please select gender");
+                return false;
+            }
+
             var str = $("#p_password").val();
 
             if(str.length < 6 )
