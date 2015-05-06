@@ -2111,6 +2111,14 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .bx-wrapper .bx-controls-direction a{width: 21px !important; height: 23px !important; background-size: 100% 100%;}
 
 
+    .avant_demi_bold{
+        font:40px/43px AvantGardeGothicITCW01D;
+    }
+    .avant_extra_light{
+        font:38px/43px AvantGardeGothicITCW01X;
+    }
+
+
     /* cmsheading */
     .gridCMSPages h4, .gridCMSPages h1, .gridBlockContent h3, .pressHead, .rSldrHeading, .rSldrHeading h1{font-size: 40px !important; line-height: 43px !important;}
     .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 19px !important; line-height: 39px !important;}
@@ -2145,6 +2153,12 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .contentSlider h3 > .aurum{font-size: 45px; line-height: 48px;}
     .bx-wrapper .bx-controls-direction a{width: 25px !important; height: 27px !important; background-size: 100% 100%;}
 
+    .avant_demi_bold{
+                font:40px/43px AvantGardeGothicITCW01D;
+            }
+    .avant_extra_light{
+                 font:38px/43px AvantGardeGothicITCW01X;
+             }
 
     /* cmsheading */
     .gridCMSPages h4, .gridCMSPages h1, .gridBlockContent h3, .pressHead, .rSldrHeading, .rSldrHeading h1{font-size: 45px !important; line-height: 48px !important;}
@@ -2172,7 +2186,12 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .contentSlider h3 > .aurum{font-size: 50px; line-height: 53px;}
     .header{ padding:0 60px 0 30px;}
 
-
+    .avant_demi_bold{
+                font:50px/53px AvantGardeGothicITCW01D;
+            }
+    .avant_extra_light{
+                 font:48px/53px AvantGardeGothicITCW01X;
+             }
     /* cmsheading */
     .gridCMSPages h4, .gridCMSPages h1, .gridBlockContent h3, .pressHead, .rSldrHeading, .rSldrHeading h1{font-size: 50px !important; line-height: 53px !important;}
     .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 24px !important; line-height: 50px !important;}
