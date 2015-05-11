@@ -2512,3 +2512,10 @@ a.learn-more {
         top: 0;
         display: none;
 }
+
+.avant_demi_bold{
+    font:40px/43px AvantGardeGothicITCW01D;
+}
+.avant_extra_light{
+    font:38px/43px AvantGardeGothicITCW01X;
+}
