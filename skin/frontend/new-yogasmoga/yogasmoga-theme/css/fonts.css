@@ -9,6 +9,18 @@
 	font-style:		normal;
 }
 
+
+@font-face {
+    font-family: 'FreightText-LightItalic';
+    src:        url('../fonts/FreightText-LightItalic.eot?#iefix') format('embedded-opentype'),
+                url('../fonts/FreightText-LightItalic.otf')  format('opentype'),
+                url('../fonts/FreightText-LightItalic.woff') format('woff'),
+                url('../fonts/FreightText-LightItalic.ttf')  format('truetype'),
+                url('../fonts/FreightText-LightItalic.svg#FreightText-LightItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 @font-face
 {
     font-family: ITCAvantGardeProBk;

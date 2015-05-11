@@ -169,7 +169,16 @@ ul.site-map > li{
     height: 37px;
     line-height: 37px;
 }
+.large-text sup{
 
+    font-size: 23px;
+    height: auto;
+    line-height: 0;
+    padding: 0;
+    vertical-align: top;
+    line-height: 28px;
+    font-family: AvantGardeGothicITCW01X;
+}
 .learn-more {
     border-bottom: 1px solid #c03;
     color: #fff;
@@ -257,7 +266,7 @@ ul.site-map > li{
 }
 
 .multicolorcont{
-    background: url("../images/new-elements/mcolorbg2.jpg") no-repeat center center transparent;
+    background: url("../images/homepage/color-world.jpg") no-repeat center center transparent;
     background-size: 100% 100%;
 }
 
@@ -300,7 +309,7 @@ ul.site-map > li{
     color: #fff;
     text-align: center;
     width: 100%;  
-    text-transform: uppercase;    
+/*    text-transform: uppercase; */
     vertical-align: middle;
     position: absolute;
 }
@@ -2145,13 +2154,13 @@ div.new-arrivals-block{
     background: #5a0a5f;
 }
 .bottom-right-block.purple{
-    background: #5a0a5f;
+    background: #8871ac;
 }
 .top-left-block.brown-green{
     background: #787e6a;
 }
 .top-left-block.dark-red {
-    background: #871621;
+    background: #ff4e22;
 }
 
 /*////////////////////////////////////////*/

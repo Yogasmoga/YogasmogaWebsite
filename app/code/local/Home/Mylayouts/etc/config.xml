@@ -108,6 +108,12 @@
               <layout_handle>vivacity</layout_handle>
           </vivacity>
 
+          <rangoli_collection translate="label">
+              <label>Rangoli Collection</label>
+              <template>page/rangoli_collection.phtml</template>
+              <layout_handle>rangoli_collection</layout_handle>
+          </rangoli_collection>
+
           <!-- Nominate layouts here start -->
           <nominate translate="label">
               <label>Nominate</label>

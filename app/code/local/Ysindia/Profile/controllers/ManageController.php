@@ -257,7 +257,6 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
         }
     }
 
-
     public function uploadimageAction(){
 
         $file_formats = array("jpg", "jpeg", "png", "gif", "bmp");

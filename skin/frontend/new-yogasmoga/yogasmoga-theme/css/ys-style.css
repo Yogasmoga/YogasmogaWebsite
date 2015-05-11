@@ -1965,6 +1965,7 @@ ul.new-arrivals a.quick-view{display: none;}
 
 .bottom-b-heading{border-bottom: 1px solid #fff; /*padding:0 100px 8px 100px; padding: 0 170px 11px; */ padding: 0 0 10px; width: 292px;}
 .shopnow-btn:hover{color: #fff;}
+
 /*.bottom-left-block,.top-right-block{cursor:pointer;}*/
 .html-video-popup{position: fixed; width: 50%; display: none; top: 100px; z-index: 10099;}
 /*
@@ -1973,9 +1974,9 @@ ul.new-arrivals a.quick-view{display: none;}
 /*.wl-cs-right-block .top-right-block{background:url(../images/women/andman-green-featured-image-new.jpg) no-repeat; background-size: 100% 100%;}*/
 /*.wl-left-block .bottom-left-block{background: url(../images/women/featured-image.jpg) no-repeat; background-size: 100% 100%;}*/
 
-.wl-cs-right-block .top-right-block{background:url(../images/women/cloth-look.jpg) no-repeat; background-size: 100% 100%;}
+.wl-cs-right-block .top-right-block{background:url(../images/women/rangoli-lotus-right.jpg) no-repeat; background-size: 100% 100%;}
 
-.wl-left-block .bottom-left-block{background: url(../images/women/featured-image-new.jpg) no-repeat; background-size: 100% 100%;}
+.wl-left-block .bottom-left-block{background: url(../images/women/sneak-n-peak-left.jpg) no-repeat; background-size: 100% 100%;}
 
 
 div.cms-side-nav{display: none;}
