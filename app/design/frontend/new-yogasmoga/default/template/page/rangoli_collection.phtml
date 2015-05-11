@@ -1,31 +1,5 @@
 <?php
 /**
- * Magento
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License (AFL 3.0)
- * that is bundled with this package in the file LICENSE_AFL.txt.
- * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/afl-3.0.php
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade Magento to newer
- * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
- *
- * @category    design
- * @package     base_default
- * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- */
-?>
-<?php
-/**
  * Template for Mage_Page_Block_Html
  */
 ?>
@@ -46,7 +20,7 @@
 
 //        jQuery('.flexslider:eq(1)').find('li a').css('background-color', '#ccc');
 
-        jQuery('.see_more a').click(function (e) {
+        jQuery('.next-slide').click(function (e) {
             e.preventDefault();
             var obj = jQuery(this).closest('.flexslider');
             obj.find('.flex-next').click();
@@ -69,19 +43,18 @@
     <ul class="slides">
         <li>
             <div class="bucket-slide">
-                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/0423-Viva-VivaPage-Final_01.jpg' ?>" />
+               <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_color_bound.jpg' ?>" />
 
                 <div style="position: absolute; top: 47px; text-align: center;
 							left:0 ; right:0;" >
-                    <div class="bold gold" >VIVA <span>LA</span> CITY</div>
-                    <div class="light">BY THE CITY&mdash;FOR THE CITY</div>
+                    <div class="rangoli_bold" >Rangoli</div>
+
+                    <div class="rangoli_light">Color bound</div>
                 </div>
                 <div  style="position: absolute; bottom: 27px; text-align: center;
 							left:0 ; right:0;">
-                    <div class="freight">
-                        /vi&acute;vasede/ noun (<span>especially in a woman</span>)<br/>
-                        The quality of being attractively lively & animated
-                    </div>
+                    <div class="rangoli_tagline">Rang<span>= Color  / Oli = That mixes/belongs to (Color)</span> <br/>
+                        Individually hand-printed collection. Limited edition.</div>
                 </div>
 
             </div>
@@ -90,18 +63,68 @@
 </div>
 
 
-<!-- legging slide -->
+<!-- RAngoli Lotus slides -->
 <div class="flexslider">
     <ul class="slides">
         <li>
             <div class="bucket-slide">
-                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/0423-Viva-VivaPage-Final_02.jpg' ?>" />
-                <div class="over-the-slide">
-                    <div class="">
-                        <div class="bold">
-                            VIVACITY <span>LEGGING</span>
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lotus_intro.jpg' ?>" />
+                <div class="over-the-slide next-slide">
+                    <div>
+                        <div class="rangoli_slide_text">
+			            	RANGOLI <span>Lotus</span>
                         </div>
-                        <div class="see_more"><a href="">SEE MORE</a> </div>
+                    </div>
+                </div>
+            </div>
+
+        </li>
+
+
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lotus_slide2.jpg' ?>" />
+                <div class="over-the-slide"  onclick="window.location='/women/bottoms/shorts/rangoli-sweet-n-short?color=102'">
+                    <div>
+                        <div class="rangoli_slide_text">
+                            RANGOLI <span>Lotus</span>
+                        </div>
+                    <div class="shop">Sweet 'N Short<span>&mdash;Blue</span></div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </li>
+
+
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lotus_slide3.jpg' ?>" />
+                <div class="over-the-slide" onclick="window.location='/women/tops/tanks/rangoli-my-racer-back?color=273'">
+                    <div>
+                        <div class="rangoli_slide_text">
+                            RANGOLI <span>Lotus</span>
+                        </div>
+                        <div class="shop">My racer back<span>&mdash;Turquoise</span></div>
+                </div>
+
+                </div>
+            </div>
+
+        </li>
+
+
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lotus_slide4.jpg' ?>" />
+                <div class="over-the-slide" onclick="window.location='/women/tops/tanks/rangoli-twistie-tank?color=96'">
+                    <div>
+                        <div class="rangoli_slide_text">
+                            RANGOLI <span>Lotus</span>
+                        </div>
+                    <div class="shop">Twistie Tank<span>&mdash;Purpule</span></div>
                     </div>
 
                 </div>
@@ -109,251 +132,131 @@
 
         </li>
 
-        <!-- **************************TWIST 'N TURN***************** -->
         <li>
             <div class="bucket-slide">
-                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/slide2.jpg' ?>" />
-                <div class="over-the-slide">
-
-                    <div class="bold_small">VIVACITY LEGGING</div>
-                    <div class="light_small">Olivine</div>
-                    <div class="shop"><a href="/women/bottoms/leggings/vivacity-legging?color=215">SHOP</a></div>
-
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lotus_slide5.jpg' ?>" />
+                <div class="over-the-slide" onclick="window.location='/women/tops/bras/rangoli-sneak-n-peek-bra?color=96'">
+                    <div>
+                        <div class="rangoli_slide_text">
+                            RANGOLI <span>Lotus</span>
+                        </div>
+                    <div class="shop">Sneek 'N Peak Bra<span>&mdash;Purple</span></div>
+                    </div>
 
                 </div>
             </div>
 
         </li>
 
-
         <li>
             <div class="bucket-slide">
-                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/slide3.jpg' ?>" />
-                <div class="over-the-slide">
-
-                    <div class="bold_small">VIVACITY LEGGING</div>
-                    <div class="light_small">Grey Caviar</div>
-                    <div class="shop"><a href="/women/bottoms/leggings/vivacity-legging?color=107">SHOP</a></div>
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lotus_slide6.jpg' ?>" />
+                <div class="over-the-slide" onclick="window.location='/women/bottoms/leggings/rangoli-tippy-toe-legging?color=275'">
+                    <div>
+                        <div class="rangoli_slide_text">
+                            RANGOLI <span>Lotus</span>
+                        </div>
+                    <div class="shop">Tippy toe legging<span>&mdash;Grey</span></div>
+                    </div>
 
                 </div>
             </div>
 
         </li>
-
-
-        <li>
-            <div class="bucket-slide">
-                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/slide4.jpg' ?>" />
-                <div class="over-the-slide">
-                    <div class="bold_small">VIVACITY LEGGING</div>
-                    <div class="light_small">Carbon 6</div>
-                    <div class="shop"><a href="/women/bottoms/leggings/vivacity-legging?color=76">SHOP</a></div>
-
-                </div>
-            </div>
-
-        </li>
-
     </ul>
 </div>
 
 
-<!-- crop slide -->
+<!-- Rangoli lilly slides -->
 <div class="flexslider">
     <ul class="slides">
         <li>
             <div class="bucket-slide">
-                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/0423-Viva-VivaPage-Final_03.jpg' ?>" />
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lilly.jpg' ?>" />
+                <div class="over-the-slide next-slide">
+                    <div>
+                        <div class="rangoli_slide_text">
+                            RANGOLI <span>Lilly</span>
+                        </div>
+                </div>
+            </div>
+
+        </li>
+
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lilly_slide2.jpg' ?>" />
+                <div class="over-the-slide" onclick="window.location='/women/tops/tanks/rangoli-my-racer-back?color=274'">
+                    <div>
+                        <div class="rangoli_slide_text">
+                            RANGOLI <span>Lilly</span>
+                        </div>
+                    <div class="shop">My racer back<span>&mdash;Yellow</span></div>
+                </div>
+            </div>
+
+        </li>
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lilly_slide3.jpg' ?>" />
+                <div class="over-the-slide" onclick="window.location='/women/bottoms/crops/rangoli-run-jump-n-play-crop?color=275'">
+                    <div>
+                        <div class="rangoli_slide_text">
+                            RANGOLI <span>Lilly</span>
+                        </div>
+                    <div class="shop">Run jump play crop<span>&mdash;Grey</span></div>
+                </div>
+            </div>
+
+        </li>
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lilly_slide4.jpg' ?>" />
                 <div class="over-the-slide">
-                    <div class="bold">
-                        VIVACITY <span>CROP</span>
+                    <div>
+                        <div class="rangoli_slide_text">
+                            RANGOLI <span>Lilly</span>
+                        </div>
+                    <!-- <div class="shop"><a href="/women/bottoms/crops/vivacity-crop?color=76">SHOP</a></div> -->
                     </div>
-                    <div class="see_more"><a href="">SEE MORE</a> </div>
                 </div>
             </div>
 
         </li>
+
 
         <li>
             <div class="bucket-slide">
-                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/crop_slide2.jpg' ?>" />
-                <div class="over-the-slide">
-                    <div class="bold_small">VIVACITY CROP</div>
-                    <div class="light_small">Olivine</div>
-                    <div class="shop"><a href="/women/bottoms/crops/vivacity-crop?color=215">SHOP</a></div>
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lilly_slide5.jpg' ?>" />
+                <div class="over-the-slide" onclick="window.location='/women/tops/tanks/rangoli-my-racer-back?color=97'">
+                    <div>
+                        <div class="rangoli_slide_text">
+            				RANGOLI <span>Lilly</span>
+                        </div>
+                        <div class="shop">My Racer back<span>&mdash;White</span></div>
+                    </div>
                 </div>
             </div>
 
         </li>
+
+
+
         <li>
             <div class="bucket-slide">
-                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/crop_slide3.jpg' ?>" />
-                <div class="over-the-slide">
-                    <div class="bold_small">VIVACITY CROP</div>
-                    <div class="light_small">Grey Caviar</div>
-                    <div class="shop"><a href="/women/bottoms/crops/vivacity-crop?color=107">SHOP</a></div>
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lilly_slide6.jpg' ?>" />
+                <div class="over-the-slide" onclick="window.location='/women/tops/bras/rangoli-sneak-n-peek-bra?color=275'">
+                    <div>
+                        <div class="rangoli_slide_text">
+				            RANGOLI <span>Lilly</span>
+                        </div>
+                    <div class="shop">Sneak 'N Peak bra<span>&mdash;Grey</span></div>
                 </div>
             </div>
 
         </li>
-        <li>
-            <div class="bucket-slide">
-                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/crop_slide4.jpg' ?>" />
-                <div class="over-the-slide">
-                    <div class="bold_small">VIVACITY CROP</div>
-                    <div class="light_small">Carbon 6</div>
-                    <div class="shop"><a href="/women/bottoms/crops/vivacity-crop?color=76">SHOP</a></div>
-                </div>
-            </div>
-
-        </li>
-
-
     </ul>
 </div>
-
-
-<!-- sleeve slide -->
-<div class="flexslider" >
-    <ul class="slides">
-        <li>
-            <div class="bucket-slide">
-                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/0423-Viva-VivaPage-Final_04.jpg' ?>" />
-                <div class="over-the-slide">
-                    <div class="bold">
-                        VIVACITY <br/> <span>LONG SLEEVE TEE</span>
-                    </div>
-                    <div class="see_more"><a href="">SEE MORE</a> </div>
-                </div>
-            </div>
-
-        </li>
-
-        <li>
-            <div class="bucket-slide">
-                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/viva_sleeve_slide2.jpg' ?>" />
-                <div class="over-the-slide">
-                    <div class="bold_small">VIVACITY LONG SLEEVE TEE</div>
-                    <div class="light_small">Andaman Green</div>
-                    <div class="shop"><a href="/women/tops/tees/vivacity-long-sleeve?color=261">SHOP</a></div>
-                </div>
-            </div>
-
-        </li>
-        <li>
-            <div class="bucket-slide">
-                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/viva_sleeve_slide3.jpg' ?>" />
-                <div class="over-the-slide">
-                    <div class="bold_small">VIVACITY LONG SLEEVE TEE</div>
-                    <div class="light_small">Everest Avalanche</div>
-                    <div class="shop"><a href="/women/tops/tees/vivacity-long-sleeve?color=106">SHOP</a></div>
-                </div>
-            </div>
-
-        </li>
-        <li>
-            <div class="bucket-slide">
-                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/viva_sleeve_slide4.jpg' ?>" />
-                <div class="over-the-slide">
-                    <div class="bold_small">VIVACITY LONG SLEEVE TEE</div>
-                    <div class="light_small">Rudhira</div>
-                    <div class="shop"><a href="/women/tops/tees/vivacity-long-sleeve?color=214">SHOP</a></div>
-                </div>
-            </div>
-
-        </li>
-        <li>
-            <div class="bucket-slide">
-                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/viva_sleeve_slide5.jpg' ?>" />
-                <div class="over-the-slide">
-                    <div class="bold_small">VIVACITY LONG SLEEVE TEE</div>
-                    <div class="light_small">Carbon 6</div>
-                    <div class="shop"><a href="/women/tops/tees/vivacity-long-sleeve?color=76">SHOP</a></div>
-                </div>
-            </div>
-
-        </li>
-
-
-    </ul>
-</div>
-
-
-<!-- tee slide -->
-<div class="flexslider" >
-    <ul class="slides">
-        <li>
-            <div class="bucket-slide">
-                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/0423-Viva-VivaPage-Final_05.jpg' ?>" />
-                <div class="over-the-slide">
-                    <div class="bold">
-                        VIVACITY <br/><span>SHORT SLEEVE TEE</span>
-                    </div>
-                    <div class="see_more"><a href="">SEE MORE</a> </div>
-                </div>
-            </div>
-
-        </li>
-
-        <li>
-            <div class="bucket-slide">
-                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/tee_slide2.jpg' ?>" />
-                <div class="over-the-slide">
-                    <div class="bold_small">VIVACITY SHORT SLEEVE TEE</div>
-                    <div class="light_small">Andaman Green</div>
-                    <div class="shop"><a href="/women/tops/tees/vivacity-short-sleeve-tee?color=216">SHOP</a></div>
-                </div>
-            </div>
-
-        </li>
-        <li>
-            <div class="bucket-slide">
-                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/tee_slide3.jpg' ?>" />
-                <div class="over-the-slide">
-                    <div class="bold_small">VIVACITY SHORT SLEEVE TEE</div>
-                    <div class="light_small">Everest Avalanche</div>
-                    <div class="shop"><a href="/women/tops/tees/vivacity-short-sleeve-tee?color=106">SHOP</a></div>
-                </div>
-            </div>
-
-        </li>
-        <li>
-            <div class="bucket-slide">
-                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/tee_slide4.jpg' ?>" />
-                <div class="over-the-slide">
-                    <div class="bold_small">VIVACITY SHORT SLEEVE TEE</div>
-                    <div class="light_small">Rudhira</div>
-                    <div class="shop"><a href="/women/tops/tees/vivacity-short-sleeve-tee?color=214">SHOP</a></div>
-                </div>
-            </div>
-
-        </li>
-        <li>
-            <div class="bucket-slide">
-                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/tee_slide5.jpg' ?>" />
-                <div class="over-the-slide">
-                    <div class="bold_small">VIVACITY SHORT SLEEVE TEE</div>
-                    <div class="light_small">Olivine</div>
-                    <div class="shop"><a href="/women/tops/tees/vivacity-short-sleeve-tee?color=215">SHOP</a></div>
-                </div>
-            </div>
-
-        </li>
-        <li>
-            <div class="bucket-slide">
-                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/vivacity/tee_slide6.jpg' ?>" />
-                <div class="over-the-slide">
-                    <div class="bold_small">VIVACITY SHORT SLEEVE TEE</div>
-                    <div class="light_small">Carbon 6</div>
-                    <div class="shop"><a href="/women/tops/tees/vivacity-short-sleeve-tee?color=76">SHOP</a></div>
-                </div>
-            </div>
-
-        </li>
-
-    </ul>
-</div>
-
 
 
 <?php echo $this->getChildHtml('footer') ?>
