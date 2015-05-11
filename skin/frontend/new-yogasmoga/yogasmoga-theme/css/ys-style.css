@@ -898,6 +898,13 @@ span.country {
 @media only screen and (max-width : 1024px) {
 
 
+    .avant_demi_bold{
+        font:40px/43px AvantGardeGothicITCW01D;
+    }
+    .avant_extra_light{
+        font:38px/43px AvantGardeGothicITCW01X;
+    }
+
 
 
     .coloumn-list li span {
@@ -970,14 +977,14 @@ span.country {
     .figCap span{font-size: 11px;}
     .pc-right{float: none !important; margin:0 !important;}
 
-/*
+
     .avant_demi_bold{
         font:40px/40px AvantGardeGothicITCW01D;
     }
     .avant_extra_light{
         font:40px/40px AvantGardeGothicITCW01X;
     }
-*/
+
 }
 .contWom p{display: none;}
 .contWom p.block-link{display: block;}
@@ -1931,9 +1938,9 @@ ul.new-arrivals a.quick-view{display: none;}
 /*.wl-cs-right-block .top-right-block{background:url(../images/women/andman-green-featured-image-new.jpg) no-repeat; background-size: 100% 100%;}*/
 /*.wl-left-block .bottom-left-block{background: url(../images/women/featured-image.jpg) no-repeat; background-size: 100% 100%;}*/
 
-.wl-cs-right-block .top-right-block{background:url(../images/women/grey.jpg) no-repeat; background-size: 100% 100%;}
+.wl-cs-right-block .top-right-block{background:url(../images/women/rangoli-lotus-right.jpg) no-repeat; background-size: 100% 100%;}
 
-.wl-left-block .bottom-left-block{background: url(../images/women/tickle-back.jpg) no-repeat; background-size: 100% 100%;}
+.wl-left-block .bottom-left-block{background: url(../images/women/sneak-n-peak-left.jpg) no-repeat; background-size: 100% 100%;}
 
 
 div.cms-side-nav{display: none;}

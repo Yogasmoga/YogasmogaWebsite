@@ -102,6 +102,12 @@
           </additional_size>
           <!-- Additional sizes layouts here end -->
 
+          <rangoli_collection translate="label">
+              <label>Rangoli Collection</label>
+              <template>page/rangoli_collection.phtml</template>
+              <layout_handle>rangoli_collection</layout_handle>
+          </rangoli_collection>
+
           <vivacity translate="label">
               <label>Vivacity</label>
               <template>page/vivacity.phtml</template>

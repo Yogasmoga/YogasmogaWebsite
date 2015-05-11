@@ -1,0 +1,268 @@
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+    <?php echo $this->getChildHtml('head') ?>
+</head>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<?php echo $this->getChildHtml('after_body_start') ?>
+<script type="text/javascript">
+
+    jQuery(document).ready(function() {
+
+        jQuery('.flexslider').flexslider({
+            slideshow: false
+        });
+
+//        jQuery('.flexslider:eq(1)').find('li a').css('background-color', '#ccc');
+
+        jQuery('.next-slide').click(function (e) {
+            e.preventDefault();
+            var obj = jQuery(this).closest('.flexslider');
+            obj.find('.flex-next').click();
+            return false;
+        });
+
+    });
+</script>
+<div class="wrapper">
+<?php echo $this->getChildHtml('global_notices') ?>
+<div class="shopping-cart">
+
+</div>
+<div class="page">
+<?php echo $this->getChildHtml('header') ?>
+<div id="pagecontainer" class="accountbg">
+
+<!-- header page intro slide -->
+<div class="flexslider page_header">
+    <ul class="slides">
+        <li>
+            <div class="bucket-slide">
+               <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_color_bound.jpg' ?>" />
+
+                <div style="position: absolute; top: 47px; text-align: center;
+							left:0 ; right:0;" >
+                    <div class="rangoli_bold" >Rangoli</div>
+
+                    <div class="rangoli_light">Color bound</div>
+                </div>
+                <div  style="position: absolute; bottom: 27px; text-align: center;
+							left:0 ; right:0;">
+                    <div class="rangoli_tagline">Rang<span>= Color  / Oli = That mixes/belongs to (Color)</span> <br/>
+                        Individually hand-printed collection. Limited edition.</div>
+                </div>
+
+            </div>
+        </li>
+    </ul>
+</div>
+
+
+<!-- RAngoli Lotus slides -->
+<div class="flexslider">
+    <ul class="slides">
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lotus_intro.jpg' ?>" />
+                <div class="over-the-slide next-slide">
+                    <div>
+                        <div class="rangoli_slide_text">
+			            	RANGOLI <span>Lotus</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </li>
+
+
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lotus_slide2.jpg' ?>" />
+                <div class="over-the-slide"  onclick="window.location='/women/bottoms/shorts/rangoli-sweet-n-short?color=102'">
+                    <div>
+                        <div class="rangoli_slide_text">
+                            RANGOLI <span>Lotus</span>
+                        </div>
+                    <div class="shop">Sweet &prime;N Short<span>&mdash;Blue</span></div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </li>
+
+
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lotus_slide3.jpg' ?>" />
+                <div class="over-the-slide" onclick="window.location='/women/tops/tanks/rangoli-my-racer-back?color=273'">
+                    <div>
+                        <div class="rangoli_slide_text">
+                            RANGOLI <span>Lotus</span>
+                        </div>
+                        <div class="shop">My racer back<span>&mdash;Turquoise</span></div>
+                </div>
+
+                </div>
+            </div>
+
+        </li>
+
+
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lotus_slide4.jpg' ?>" />
+                <div class="over-the-slide" onclick="window.location='/women/tops/tanks/rangoli-twistie-tank?color=96'">
+                    <div>
+                        <div class="rangoli_slide_text">
+                            RANGOLI <span>Lotus</span>
+                        </div>
+                    <div class="shop">Twistie Tank<span>&mdash;Purple</span></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </li>
+
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lotus_slide5.jpg' ?>" />
+                <div class="over-the-slide" onclick="window.location='/women/tops/bras/rangoli-sneak-n-peek-bra?color=96'">
+                    <div>
+                        <div class="rangoli_slide_text">
+                            RANGOLI <span>Lotus</span>
+                        </div>
+                    <div class="shop">Sneek &prime;N Peek Bra<span>&mdash;Purple</span></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </li>
+
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lotus_slide6.jpg' ?>" />
+                <div class="over-the-slide" onclick="window.location='/women/bottoms/leggings/rangoli-tippy-toe-legging?color=275'">
+                    <div>
+                        <div class="rangoli_slide_text">
+                            RANGOLI <span>Lotus</span>
+                        </div>
+                    <div class="shop">Tippy toe legging<span>&mdash;Grey</span></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </li>
+    </ul>
+</div>
+
+
+<!-- Rangoli lilly slides -->
+<div class="flexslider">
+    <ul class="slides">
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lilly.jpg' ?>" />
+                <div class="over-the-slide next-slide">
+                    <div>
+                        <div class="rangoli_slide_text">
+                            RANGOLI <span>Lily</span>
+                        </div>
+                </div>
+            </div>
+
+        </li>
+
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lilly_slide2.jpg' ?>" />
+                <div class="over-the-slide" onclick="window.location='/women/tops/tanks/rangoli-my-racer-back?color=275'">
+                    <div>
+                        <div class="rangoli_slide_text">
+                            RANGOLI <span>Lily</span>
+                        </div>
+                    <div class="shop">My racer back<span>&mdash;Yellow</span></div>
+                </div>
+            </div>
+
+        </li>
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lilly_slide3.jpg' ?>" />
+                <div class="over-the-slide" onclick="window.location='/women/bottoms/crops/rangoli-run-jump-n-play-crop?color=275'">
+                    <div>
+                        <div class="rangoli_slide_text">
+                            RANGOLI <span>Lily</span>
+                        </div>
+                    <div class="shop">Run jump &prime;N play crop<span>&mdash;Grey</span></div>
+                </div>
+            </div>
+
+        </li>
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lilly_slide4.jpg' ?>" />
+                <div class="over-the-slide">
+                    <div>
+                        <div class="rangoli_slide_text">
+                            RANGOLI <span>Lily</span>
+                        </div>
+                    <!-- <div class="shop"><a href="/women/bottoms/crops/vivacity-crop?color=76">SHOP</a></div> -->
+                    </div>
+                </div>
+            </div>
+
+        </li>
+
+
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lilly_slide5.jpg' ?>" />
+                <div class="over-the-slide" onclick="window.location='/women/tops/tanks/rangoli-my-racer-back?color=97'">
+                    <div>
+                        <div class="rangoli_slide_text">
+            				RANGOLI <span>Lily</span>
+                        </div>
+                        <div class="shop">My Racer back<span>&mdash;White</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </li>
+
+
+
+        <li>
+            <div class="bucket-slide">
+                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/rangoli_collection/rangoli_lilly_slide6.jpg' ?>" />
+                <div class="over-the-slide" onclick="window.location='/women/tops/bras/rangoli-sneak-n-peek-bra?color=275'">
+                    <div>
+                        <div class="rangoli_slide_text">
+				            RANGOLI <span>Lily</span>
+                        </div>
+                    <div class="shop">Sneak &prime;N Peek bra<span>&mdash;Grey</span></div>
+                </div>
+            </div>
+
+        </li>
+    </ul>
+</div>
+
+
+<?php echo $this->getChildHtml('footer') ?>
+<?php echo $this->getChildHtml('before_body_end') ?>
+</div>
+</div>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>
