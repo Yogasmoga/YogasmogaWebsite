@@ -9,6 +9,18 @@
 	font-style:		normal;
 }
 
+
+@font-face {
+    font-family: 'FreightText-LightItalic';
+    src:        url('../fonts/FreightText-LightItalic.eot?#iefix') format('embedded-opentype'),
+                url('../fonts/FreightText-LightItalic.otf')  format('opentype'),
+                url('../fonts/FreightText-LightItalic.woff') format('woff'),
+                url('../fonts/FreightText-LightItalic.ttf')  format('truetype'),
+                url('../fonts/FreightText-LightItalic.svg#FreightText-LightItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 @font-face
 {
     font-family: ITCAvantGardeProBk;
@@ -264,4 +276,32 @@ src:url("../fonts/968b5bd4-722a-4632-aeac-7b4b32775ac9.eot?#iefix") format("eot"
 font-family:"ITCAvantGardeGothW04-Bo 1122878";
 src:url("../fonts/daa5c000-4e87-40e9-9689-eec7fd2a19e1.eot?#iefix");
 src:url("../fonts/daa5c000-4e87-40e9-9689-eec7fd2a19e1.eot?#iefix") format("eot"),url("../fonts/e58aa4f4-3fa9-4138-9cc9-712e1955902c.woff") format("woff"),url("../fonts/b335d0cc-8594-4212-a73a-eb2a55d2b008.ttf") format("truetype"),url("../fonts/3fec63b6-5c06-495d-8bad-0555b665ab8e.svg#3fec63b6-5c06-495d-8bad-0555b665ab8e") format("svg");
+}
+
+@font-face {
+    font-family: 'GraphikRegular';
+    src: url('../fonts/Graphik-Regular.eot') format('embedded-opentype');
+    src: url('../fonts/Graphik-Regular.svg') format('svg');
+    src: url('../fonts/Graphik-Regular.ttf') format('truetype');
+    src: url('../fonts/Graphik-Regular.woff') format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GraphikMedium';
+    src: url('../fonts/Graphik-Medium.eot') format('embedded-opentype');
+    src: url('../fonts/Graphik-Medium.svg') format('svg');
+    src: url('../fonts/Graphik-Medium.ttf') format('truetype');
+    src: url('../fonts/Graphik-Medium.woff') format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Graphik-Semibold';
+    src: url('../fonts/Graphik-Semibold.eot') format('embedded-opentype');
+    src: url('../fonts/Graphik-Semibold.svg') format('svg');
+    src: url('../fonts/Graphik-Semibold.ttf') format('truetype');
+    src: url('../fonts/Graphik-Semibold.woff') format("woff");
+    font-weight: normal;
+    font-style: normal;
 }

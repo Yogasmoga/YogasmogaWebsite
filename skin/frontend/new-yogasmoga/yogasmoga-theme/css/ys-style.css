@@ -403,15 +403,15 @@ a.readtxt{ text-transform: uppercase; color: #cc0033; text-decoration: underline
 
 .bannerFluid .bnrtxt h1, .bnr {
     color: #555;
-    float: left;
+    /*    float: left;  */
     font: 36px/40px itcavantgardepromd;
     margin: 0;
-    left: 8%;
-    top: 13%;
+    /*    left: 8%; */
+    top: 40%;
     position: absolute;
-    text-align: left;
+    text-align: center;
     text-transform: uppercase;
-    width: 500px;
+    width: 100%; /* 500px; */
 }
 
 .bnrtxt > span {
