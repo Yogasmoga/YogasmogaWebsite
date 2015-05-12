@@ -239,7 +239,7 @@ function createCustomerAccount_from_popup() {
                     beforeSend: function () {
                         jQuery("#sign-up-form .err-msg").html("");
                         jQuery("#signup").val("Signing up...");
-                        //alert(root+"skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png");
+
                     },
                     success: function (data) {
 
@@ -335,7 +335,7 @@ function createCustomerAccount() {
                     jQuery("#sign-up-form .form-loader").show();
                 },
                 success: function (data) {
-                    alert(data.errors);
+
                     data = eval('(' + data + ')');
                     var status = data.status;
                     var name = data.fname;
@@ -540,7 +540,7 @@ function checkIsUserLogged() {
         type: 'GET',
         dataType: 'json',
         success: function (result) {
-            //alert(result.message);
+
             if (result.message != null && result.message != undefined) {
 
                 if (result.message == "notlogged") {
@@ -577,7 +577,7 @@ function getSelectedInterestCount(){
 }
 function count_interests(){
     var count = getSelectedInterestCount();
-    //alert(count);
+
     if(count >=3){
         $(".next-confirmation-page").text("Next");
     }else{
@@ -620,7 +620,7 @@ $(document).ready(function () {
         if (cls == "user-interest add") {
             current_obj.removeClass("add");
             current_obj.addClass("remove");
-            //alert(user_color_shade);
+
             current_obj.find("path").css("fill", user_color_shade).css("stroke", user_color_shade);
         }
         else {
@@ -628,7 +628,7 @@ $(document).ready(function () {
             current_obj.addClass("add");
             current_obj.find("path").css("fill", "transparent").css("stroke", "#fff");
         }
-        //alert("class : "+cls);
+
         $.ajax({
             url: link + '&s=' + new Date().getSeconds(),
             type: 'GET',
@@ -849,7 +849,7 @@ function ajax_load_pages(link) {
             $page.html("");
 
             var newData = $(response).find("#fixed_container").html();
-            //alert(newData);
+
             $(window).scrollTop(0);
             $page.html(newData).addClass("fadeIn").addClass("animated");
             get_bulls_eye();
@@ -1068,7 +1068,7 @@ function filter() {
             success: function (data) {
 
                 $newData = $(data).find("#posts");
-                //alert($newData.html());
+
                 $newData.find(".single_post").addClass("fadeInUp").addClass("animated")
                 $(".post_listing").html($newData.html());
 
@@ -1296,7 +1296,6 @@ function save_shares() {
             var time = new Date();
             var sec = time.getSeconds();
 
-            //alert(root + "/rangoli/save_shares.php");
             $.ajax({
                 url: root + "/rangoli/save_shares.php",
                 data: "post_id=" + post_id + "&user_id=" + user_id + "&s=" + sec,
@@ -1355,7 +1354,7 @@ function infinity_scroll(){
                 if($(document).find("a.next").length>0) {
                     var link = $(document).find("a.next").attr("href");
                     $(document).find(".navigation.paging-navigation").remove();
-                    //alert(link);
+
                     $.ajax({
                         url: link,
                         success: function (data) {
@@ -1531,7 +1530,7 @@ function createCustomerAccount_from_animated_popup() {
                     beforeSend: function () {
                         jQuery("#ap_sign-up-form .err-msg").html("");
                         jQuery("#ap_signup").val("Signing up...");
-                        //alert(root+"skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png");
+
                     },
                     success: function (data) {
 
@@ -1639,10 +1638,10 @@ $(document).ready(function(){
 
 
 
-function isValidEmailAddress(emailAddress) {
-    var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
-    return pattern.test(emailAddress);
-};
+function isValidEmailAddress(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
 
 
 function if_gender_is_selected(){
