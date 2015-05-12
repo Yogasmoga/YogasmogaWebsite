@@ -950,6 +950,13 @@ span.country {
 
 
 
+    .avant_demi_bold{
+        font:40px/43px AvantGardeGothicITCW01D;
+    }
+    .avant_extra_light{
+        font:38px/43px AvantGardeGothicITCW01X;
+    }
+
 
     .coloumn-list li span {
         font-size: 16px !important;
@@ -2056,6 +2063,14 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
         font-size: 13px;
     }
     .contWom h4{font-size: 15px !important;}
+
+
+    .avant_demi_bold{
+        font:40px/43px AvantGardeGothicITCW01D;
+    }
+    .avant_extra_light{
+        font:38px/43px AvantGardeGothicITCW01X;
+    }
 
     /**new**/
     .contentSlider h2{font-size: 11px; line-height: 35px;}
