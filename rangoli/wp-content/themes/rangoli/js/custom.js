@@ -54,7 +54,7 @@ $(window).load(function(){
                         if(is_login_box_open == false) {
                             open_bulls_popup();
                         }
-                    },30000);
+                    },120000);
                 }
             }
         });
@@ -915,6 +915,7 @@ function ajax_load_pages(link) {
             //animate_tiles();
             //});
 
+/*
 
             $(document).find(".homepage_page_banner .play-video").unbind("click");
             $(document).find(".homepage_page_banner .play-video").click(function () {
@@ -926,6 +927,7 @@ function ajax_load_pages(link) {
                 $(document).find("#signup_signin_btn").remove();
                 $(document).find(".homepage_page_banner .play-video").remove();
             });
+*/
 
             $(".single_post.span4").addClass("fadeInUp").addClass("animated");
             window.history.pushState({path: link}, null, link);
@@ -994,6 +996,8 @@ function init() {
 
         $(this).remove();
     });
+
+    /*
     $(".homepage_page_banner .play-video").click(function () {
         $(".play_video").fadeIn();
         $(".rangoli_logo").remove();
@@ -1002,6 +1006,7 @@ function init() {
 
         $(this).remove();
     });
+    */
     $('.video-popup .close').click(function () {
         $('.video-popup').fadeOut();
         $('.video-popup video').fadeOut();
