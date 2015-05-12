@@ -208,6 +208,7 @@ function createCustomerAccount_from_popup() {
     var lname = jQuery.trim(jQuery("#p_lname").val());
     var email_id = jQuery.trim(jQuery("#p_signup_email").val());
     var pwd = jQuery.trim(jQuery("#p_s_password").val());
+    var gender = jQuery.trim(jQuery(".gender_p.gender_popup span.selected input").val());
 
     if (fname!="First Name" && lname!="Last Name" && email_id!="Email Address" && fname.length > 0 && lname.length > 0 && email_id.length > 0) {
         function IsEmail(email) {
@@ -234,7 +235,8 @@ function createCustomerAccount_from_popup() {
                         'email': email_id,
                         'password': pwd,
                         'confirmation': cpassword,
-                        'is_subscribed': "on"
+                        'is_subscribed': "on",
+                        'gender' : gender
                     },
                     beforeSend: function () {
                         jQuery("#sign-up-form .err-msg").html("");
@@ -306,6 +308,7 @@ function createCustomerAccount() {
     var pwd = jQuery.trim(jQuery("#s_password").val());
 
     var cpassword = pwd;
+    var gender = $(".gender_p span.selected input").val();
 
     var url = homeUrl + 'mycatalog/myproduct/registercustomer';
     if (fname != "First Name" && lname != "Last Name" && pwd != undefined &&email_id != "" && email_id!="Email"&& pwd != undefined && pwd != "" && pwd!="Password") {
@@ -326,7 +329,8 @@ function createCustomerAccount() {
                     'email': email_id,
                     'password': pwd,
                     'confirmation': cpassword,
-                    'is_subscribed': "on"
+                    'is_subscribed': "on",
+                    'gender':gender
                 },
                 beforeSend: function () {
                     jQuery("#sign-up-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
@@ -1513,6 +1517,7 @@ function createCustomerAccount_from_animated_popup() {
                 error = "Please select a Gender.";
             }
             else {
+                var gender = jQuery.trim(jQuery(".gender_p.gender_popup span.selected input").val());
                 var cpassword = pwd;
                 var url = homeUrl + 'mycatalog/myproduct/registercustomer';
 
@@ -1525,7 +1530,8 @@ function createCustomerAccount_from_animated_popup() {
                         'email': email_id,
                         'password': pwd,
                         'confirmation': cpassword,
-                        'is_subscribed': "on"
+                        'is_subscribed': "on",
+                        'gender' : gender
                     },
                     beforeSend: function () {
                         jQuery("#ap_sign-up-form .err-msg").html("");

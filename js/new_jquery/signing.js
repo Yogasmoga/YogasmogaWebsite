@@ -53,6 +53,12 @@ jQuery(document).ready(function($){
             errMsgCont.css("visibility","hidden");
         }
     });
+
+    $(".ui-dialog .ui-dialog-titlebar-close span").click(function(){
+        jQuery(".gender_radio").removeClass("selected");
+    });
+
+
 });
 
 /*
@@ -349,7 +355,7 @@ function  createCustomerAccount()
     var lname = jQuery.trim(jQuery("#lname").val());
     var email_id = jQuery.trim(jQuery("#signup_email").val());
     var pwd = jQuery.trim(jQuery("#s_password").val());
-    var gender = jQuery.trim(jQuery("input[name='gender']:checked").val());
+    var gender = jQuery.trim(jQuery(".gender_radio.selected input").val());
 
     var cpassword = pwd;
     var is_subscribed = jQuery("#in_touch").val();
@@ -460,6 +466,7 @@ function  createCustomerAccount()
                     close: function( event, ui ) {
                         if(_redirectFromSingingPopup != null)
                             window.location.assign(_redirectFromSingingPopup);
+
                     }
                 });
 
@@ -739,6 +746,14 @@ function checkIsUserLogged() {
             }
         }
     });
+
+
+
+
+
+
+
+
 }
 
 

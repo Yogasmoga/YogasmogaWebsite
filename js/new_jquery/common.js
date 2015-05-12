@@ -401,7 +401,10 @@ sizeChartPop();
                 effect: "fade",
                 duration: 500
             },
-            open: function( event, ui ) {                
+            open: function( event, ui ) {
+
+                jQuery(".gender_radio").removeClass("selected");
+
                 $(".ui-widget-overlay").css("z-index","100");
                 if($("#signup").dialog( "isOpen" ) == true ){
                     $("#signup").dialog( "close" );

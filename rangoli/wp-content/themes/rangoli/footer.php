@@ -90,7 +90,7 @@ if(!is_user_logged_in()) {
             <input data-watermark="Last Name" id="p_lname" />
             <input data-watermark="Email Address" id="p_signup_email" />
             <input data-watermark="Select a password" rel="password" id="p_s_password" />
-                <p class="gender_p gender_popup">Select Gender <span><input type="radio" name="gender" value="2" />M</span>  <span><input type="radio" name="gender" value="1" />F</span> </p>
+                <p class="gender_p gender_popup">Select Gender <span><input type="radio" name="gender" value="1" />M</span>  <span><input type="radio" name="gender" value="2" />F</span> </p>
                 <img class="loader" src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px; display:none;' />
             <input id="signup" type="button" value="Sign up"  />
                 <div class="err-msg"></div>
@@ -157,7 +157,7 @@ if(!is_user_logged_in()) {
                         </tr>
 
                         <tr>
-                            <td ><p class="gender_p">Select Gender <span><input type="radio" name="gender" value="1"/>M</span> <span><input type="radio" name="gender" value="1"/>F</span></p></td>
+                            <td ><p class="gender_p">Select Gender <span><input type="radio" name="gender" value="1"/>M</span> <span><input type="radio" name="gender" value="2"/>F</span></p></td>
 
                         </tr>
                         <tr>
@@ -366,7 +366,7 @@ if(!is_user_logged_in()) {
                                     <input data-watermark="Last Name" id="ap_lname" />
                                     <input data-watermark="Email Address" id="ap_signup_email" />
                                     <input data-watermark="Select a password" rel="password" id="ap_s_password" />
-                                    <p class="gender_p gender_popup">Select Gender <span><input type="radio" name="gender" value="2" />M</span>  <span><input type="radio" name="gender" value="1" />F</span> </p>
+                                    <p class="gender_p gender_popup">Select Gender <span><input type="radio" name="gender" value="1" />M</span>  <span><input type="radio" name="gender" value="2" />F</span> </p>
                                     <img class="loader" src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px; display:none;' />
                                     <input id="ap_signup" type="button" value="Sign up"  />
                                     <div class="err-msg"></div>
