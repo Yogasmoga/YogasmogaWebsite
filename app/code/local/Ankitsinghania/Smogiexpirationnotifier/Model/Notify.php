@@ -23,21 +23,59 @@ class Ankitsinghania_Smogiexpirationnotifier_Model_Notify extends Mage_Core_Mode
             $bucks_expiration_date_string = date('F jS, Y', strtotime($bucks_expiration_date." - 1 day"));
             foreach($customerlist as $customer)
             {
-                $notification_log = Mage::getModel('smogiexpirationnotifier/notify');
-                $notification_log->setCustomer_id($customer['customer_id']);
-                $notification_log->setCustomer_email($customer['customer_email']);
-                $notification_log->setCustomer_name($customer['customer_name']);
-                $notification_log->setBucks_expiring($customer['bucks_expiring']);
-                $notification_log->setBucks_expiration_date($bucks_expiration_date);
-                $notification_log->setNotify_date($notify_date);
-                if($serverType == 'production')
-				    $notification_log->setEmail_status($this->sendemail($customer['customer_name'], $customer['customer_email'], $customer['bucks_expiring'], $notification_period, $bucks_expiration_date_string));
-                else
-                    //$notification_log->setEmail_status($this->sendemail($customer['customer_name'], "ankit@mobikasa.com", $customer['bucks_expiring'], $notification_period, $bucks_expiration_date_string));  
-                    $notification_log->setEmail_status(0);
-                $notification_log->setNotification_period($notification_period);
-                $notification_log->save();
+                $email = $customer['customer_email'];
+
+                if(!$this->isUnsubscribedFromMailchimp($email)) {
+
+                    $notification_log = Mage::getModel('smogiexpirationnotifier/notify');
+                    $notification_log->setCustomer_id($customer['customer_id']);
+                    $notification_log->setCustomer_email($customer['customer_email']);
+                    $notification_log->setCustomer_name($customer['customer_name']);
+                    $notification_log->setBucks_expiring($customer['bucks_expiring']);
+                    $notification_log->setBucks_expiration_date($bucks_expiration_date);
+                    $notification_log->setNotify_date($notify_date);
+                    if ($serverType == 'production')
+                        $notification_log->setEmail_status($this->sendemail($customer['customer_name'], $customer['customer_email'], $customer['bucks_expiring'], $notification_period, $bucks_expiration_date_string));
+                    else
+                        //$notification_log->setEmail_status($this->sendemail($customer['customer_name'], "ankit@mobikasa.com", $customer['bucks_expiring'], $notification_period, $bucks_expiration_date_string));
+                        $notification_log->setEmail_status(0);
+                    $notification_log->setNotification_period($notification_period);
+                    $notification_log->save();
+                }
             }
+        }
+    }
+
+    function isUnsubscribedFromMailchimp($email){
+
+        $root = Mage::getBaseDir();
+
+        $myfile = fopen($root . "/mailchimp_list.txt", "r") or die("Unable to open file!");
+        $apikey_listid = trim(fgets($myfile));
+        fclose($myfile);
+
+        $ar = explode(",", $apikey_listid);
+
+        $api_key = trim($ar[0]);
+        $list_id = trim($ar[1]);
+
+        include($root . "/mailchimpapi/Drewm/MailChimp.php");
+
+        $mailChimp = new Drewm\MailChimp($api_key);
+
+        $result = $mailChimp->call('lists/member-info', array(
+            'id' => $list_id,
+            'emails' => array( 0 => array('email' => $email) )
+        ));
+
+        if(isset($result["data"][0]["status"]) && $result["data"][0]["status"]=="unsubscribed"){
+            return true;
+        }
+        else if(isset($result["data"][0]["status"]) && $result["data"][0]["status"]=="subscribed"){
+            return false;
+        }
+        else{
+            return true;
         }
     }
     
