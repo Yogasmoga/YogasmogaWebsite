@@ -22,6 +22,7 @@ jQuery(document).ready(function($){
         if(status != "error") {
 
             if (!if_gender_is_selected()) {
+
                 event.preventDefault();
                 jQuery(formid).find(".err-msg").css("visibility", "visible");
                 jQuery(formid).find(".err-msg").text("Please select gender");
@@ -29,6 +30,8 @@ jQuery(document).ready(function($){
             }
             else
                 createCustomerAccount();
+
+            event.preventDefault();
         }
         event.preventDefault();
     });
@@ -747,5 +750,14 @@ function checkIsUserLogged() {
             }
         }
     });
+}
+
+function if_gender_is_selected(){
+    if(jQuery(".gender_p span").hasClass("selected")){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 /**************** logout logic added by ys team *****************/
