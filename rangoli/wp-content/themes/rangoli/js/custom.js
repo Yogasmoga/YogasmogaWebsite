@@ -316,6 +316,9 @@ function createCustomerAccount() {
 
             jQuery(".err-msg.signup_err").html("Enter valid email address.").css("visibility", "visible");
         }
+        else if(pwd.length<6){
+            jQuery(".err-msg.signup_err").html("Password requires 6 or more characters.").css("visibility", "visible");
+        }
         else if(!if_gender_is_selected()){
             jQuery(".err-msg.signup_err").html("Please select Gender.").css("visibility", "visible");
         }

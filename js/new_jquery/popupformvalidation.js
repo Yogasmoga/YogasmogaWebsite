@@ -118,4 +118,6 @@ function popupformvalidation(fname,lname,email_id,pwd,formid)
         // jQuery("#p_password").focus();
         return "error";
     }
+    else
+        return "correct";
 }

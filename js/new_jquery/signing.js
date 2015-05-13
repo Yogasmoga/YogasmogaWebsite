@@ -18,10 +18,20 @@ jQuery(document).ready(function($){
     $("#sign-up-form").submit(function(event){
         var formid = "#sign-up-form";
         var status = popupGetSigningCreateaccountFormFieldsvalue(formid);
-        if(status != "error")
-            createCustomerAccount();
-        event.preventDefault();
 
+        if(status != "error") {
+
+            if (!if_gender_is_selected()) {
+                event.preventDefault();
+                jQuery(formid).find(".err-msg").css("visibility", "visible");
+                jQuery(formid).find(".err-msg").text("Please select gender");
+                return;
+            }
+            else
+                createCustomerAccount();
+
+            event.preventDefault();
+        }
     });
     $("#sign-up-form").on("click","#sign-up-button", function(){
         var errMsgCont = $("#sign-up-form").find("p.err-msg");
