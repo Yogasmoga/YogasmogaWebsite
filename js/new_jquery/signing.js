@@ -10,7 +10,6 @@ jQuery(document).ready(function($){
         jQuery(this).addClass("selected");
     });
 
-
     checkIsUserLogged();
 
     $("#sign-up-form").submit(function(event){
