@@ -95,6 +95,8 @@ foreach($items as $item)
     $productqty = $item->getQty();
     $productPrice = $item->getBaseCalculationPrice();
 
+    $productsku = str_replace('.', '-', $productsku);
+
     echo "MasterTmsUdo.CJ.PRODUCTLIST.push({'ITEM' : '$productsku', 'AMT' : '$productPrice',  'QTY' : '$productqty' });";
 }
 ?>

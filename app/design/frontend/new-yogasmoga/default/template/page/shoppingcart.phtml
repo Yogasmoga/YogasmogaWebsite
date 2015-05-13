@@ -32,6 +32,63 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
 <head>
+    <script src="<?php echo $this->getJsUrl('new_jquery/jquery-1.8.2.min.js')?>"></script>
+    <script type="text/javascript">
+        var MasterTmsUdo = {
+
+            'CJ' : {
+
+                'CID' : '1533679',
+                'TYPE' : '378331',
+                'DISCOUNT' : '',
+                'OID' : 'SAMPLE_OID',
+                'CURRENCY' : 'USD',
+                'COUPON' : '',
+                'FIRECJ' : 'true',
+
+                PRODUCTLIST : []
+
+            }
+        };
+    </script>
+    <script type="text/javascript">/*DO NOT ALTER *** YOGASMOGA*/(function(e){var t="1861",n=document,r,i,s={http:"http://cdn.mplxtms.com/s/MasterTMS.min.js",https:"https://secure-cdn.mplxtms.com/s/MasterTMS.min.js"},o=s[/\w+/.exec(window.location.protocol)[0]];i=n.createElement("script"),i.type="text/javascript",i.async=!0,i.src=o+"#"+t,r=n.getElementsByTagName("script")[0],r.parentNode.insertBefore(i,r),i.readyState?i.onreadystatechange=function(){if(i.readyState==="loaded"||i.readyState==="complete")i.onreadystatechange=null}:i.onload=function(){try{e()}catch(t){}}})(function(){});</script>
+    <script type="text/javascript">jQuery.noConflict();</script>
+
+    <!-- ************* read order information and its items ************** -->
+
+    <script type="text/javascript">
+
+        <?php
+    $quote = Mage::getSingleton('checkout/session')->getQuote();
+
+    $items = $quote->getAllVisibleItems();
+
+    $coupon_code = $quote->getCouponCode();
+
+    if(isset($coupon_code) && strlen($coupon_code)>0)
+        echo "MasterTmsUdo.CJ.COUPON='$coupon_code';";
+    else
+        echo "MasterTmsUdo.CJ.COUPON='';";
+
+    foreach($items as $item)
+    {
+        $productid = $item->getProductId();
+        $productsku = $item->getSku();
+        $productname = $item->getName();
+        $productqty = $item->getQty();
+        $productPrice = $item->getBaseCalculationPrice();
+
+        $productsku = str_replace('.', '-', $productsku);
+
+        echo "MasterTmsUdo.CJ.PRODUCTLIST.push({'ITEM' : '$productsku', 'AMT' : '$productPrice',  'QTY' : '$productqty' });";
+    }
+    ?>
+    </script>
+    <!-- ************* read order information and its items ************** -->
+    <script type="text/javascript">
+        /*DO NOT ALTER *** YOGASMOGA*/(function(e){var t="1861",n=document,r,i,s={http:"http://cdn.mplxtms.com/s/MasterTMS.min.js",https:"https://secure-cdn.mplxtms.com/s/MasterTMS.min.js"},o=s[/\w+/.exec(window.location.protocol)[0]];i=n.createElement("script"),i.type="text/javascript",i.async=!0,i.src=o+"#"+t,r=n.getElementsByTagName("script")[0],r.parentNode.insertBefore(i,r),i.readyState?i.onreadystatechange=function(){if(i.readyState==="loaded"||i.readyState==="complete")i.onreadystatechange=null}:i.onload=function(){try{e()}catch(t){}}})(function(){});
+    </script>
+
 <?php echo $this->getChildHtml('head') ?>
 </head>
 <body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
