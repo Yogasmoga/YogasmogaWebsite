@@ -175,6 +175,7 @@ if($serverType == 'production')
                 // $("#p_password").focus();
                 return;
             }
+
             var str = $("#p_password").val();
 
             if(str.length < 6 )
@@ -183,6 +184,12 @@ if($serverType == 'production')
                 $("#err-msg").css("visibility","visible");
                 $("#err-msg").text("Password requires 6 or more characters.");
                 // $("#p_password").focus();
+                return;
+            }
+
+            if(!if_gender_is_selected()){
+                $("#err-msg").css("visibility","visible");
+                $("#err-msg").text("Please select a Gender.");
                 return;
             }
 

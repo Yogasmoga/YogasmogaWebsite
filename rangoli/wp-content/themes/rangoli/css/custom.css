@@ -55,7 +55,7 @@
 .signin-block #sign-up-form .err-msg {
     box-sizing: border-box;
     clear: both;
-    color: #fff;
+    color: #fff !important;
     font-family: ITCAvantGardeStd-Bk;
     font-size: 12px;
     margin: 0 auto;

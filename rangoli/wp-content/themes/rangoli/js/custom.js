@@ -216,8 +216,8 @@ function createCustomerAccount_from_popup() {
             return regex.test(email);
         }
         if(IsEmail(email_id)){
-            if (pwd!="Select a password" && pwd.length < 6 ) {
-                error = "Password should be atleast 6 characters.";
+            if (pwd=="Select a password" || pwd.length < 6 ) {
+                error = "Password requires 6 or more characters.";
             }
             else if(!if_gender_is_selected()){
                 error = "Please select a Gender.";
@@ -315,6 +315,9 @@ function createCustomerAccount() {
         if( !isValidEmailAddress(email_id)){
 
             jQuery(".err-msg.signup_err").html("Enter valid email address.").css("visibility", "visible");
+        }
+        else if(pwd=="Select a password"){
+            jQuery(".err-msg.signup_err").html("All fields are required.").css("visibility", "visible");
         }
         else if(pwd.length<6){
             jQuery(".err-msg.signup_err").html("Password requires 6 or more characters.").css("visibility", "visible");
@@ -417,7 +420,10 @@ function loginCustomer() {
     var url = homeUrl + 'mycatalog/myproduct/logincustomer';
     //if (_usesecureurl)
     //    url = securehomeUrl + 'mycatalog/myproduct/logincustomer';
+    jQuery("#sign-in-form .err-msg").html("").css("visibility", "visible");
+
     if (email_id != undefined && email_id != "" && email_id!="Email" && pwd != undefined && pwd != "" && pwd!="Password") {
+
         if( !isValidEmailAddress(email_id)){
             jQuery("#sign-in-form .form-loader").html("");
             jQuery("#sign-in-button").parent().show();
@@ -425,6 +431,9 @@ function loginCustomer() {
             jQuery(".signin-loader").html("");
             jQuery("#sign-in-button").parent().show();
             jQuery("#sign-in-form .form-loader").hide();
+        }
+        else if(pwd.length<6){
+            jQuery("#sign-in-form .err-msg").html("Password requires 6 or more characters.").css("visibility", "visible");
         }
         else {
             jQuery.ajax({
@@ -480,7 +489,7 @@ function loginCustomer() {
     else{
         jQuery("#sign-in-form .form-loader").html("");
         jQuery("#sign-in-button").parent().show();
-        jQuery("#sign-in-form .err-msg").html("Enter valid email address.").css("visibility", "visible");
+        jQuery("#sign-in-form .err-msg").html("All fields are required.").css("visibility", "visible");
         jQuery(".signin-loader").html("");
         jQuery("#sign-in-button").parent().show();
         jQuery("#sign-in-form .form-loader").hide();
@@ -1489,6 +1498,7 @@ function randomize_images(){
     $(".front img").attr("src",root+"rangoli/wp-content/themes/rangoli/images/bullseye_0"+rand_no+".png");
 }
 function open_bulls_popup(){
+    $(".err-msg").html("");
     $(".signin-block").fadeOut();
     $("#signin_popup").fadeOut();
     $("#card").removeClass("flipped");
@@ -1507,14 +1517,14 @@ function createCustomerAccount_from_animated_popup() {
     var email_id = jQuery.trim(jQuery("#ap_signup_email").val());
     var pwd = jQuery.trim(jQuery("#ap_s_password").val());
 
-    if (fname!="First Name" && lname!="Last Name" && email_id!="Email Address" && fname.length > 0 && lname.length > 0 && email_id.length > 0) {
+    if (fname!="First Name" && lname!="Last Name" && email_id!="Email" && fname.length > 0 && lname.length > 0 && email_id.length > 0 && pwd.length>0 && pwd!="Select a password") {
         function IsEmail(email) {
             var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
             return regex.test(email);
         }
         if(IsEmail(email_id)){
-            if (pwd!="Select a password" && pwd.length < 6 ) {
-                error = "Password should be atleast 6 characters.";
+            if (pwd=="Select a password" || pwd.length < 6 ) {
+                error = "Password requires 6 or more characters.";
             }
             else if(!if_gender_is_selected()){
                 error = "Please select a Gender.";
