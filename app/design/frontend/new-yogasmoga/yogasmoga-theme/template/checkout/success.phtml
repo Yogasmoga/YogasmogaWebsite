@@ -432,3 +432,36 @@ receiving an email soon with your shipment tracking number.</p>
 </ul>
 <?php endif;?>  
 </div>
+<script type="text/javascript">
+    MasterTmsUdo.CJ.OID = "<?php echo $this->getOrderId();?>";
+</script>
+<script type="text/javascript">
+
+    <?php
+$quote = Mage::getSingleton('checkout/session')->getQuote();
+
+$order_id = $this->getOrderid();
+$order = Mage::getModel("sales/order")->load($order_id);
+$items = $order->getAllItems();
+
+$coupon_code = $quote->getCouponCode();
+
+if(isset($coupon_code) && strlen($coupon_code)>0)
+    echo "MasterTmsUdo.CJ.COUPON='$coupon_code';";
+else
+    echo "MasterTmsUdo.CJ.COUPON='';";
+
+foreach($items as $item)
+{
+    $productid = $item->getProductId();
+    $productsku = $item->getSku();
+    $productname = $item->getName();
+    $productqty = $item->getQtyOrdered();
+    $productPrice = $item->getPrice();
+
+    $productsku = str_replace('.', '-', $productsku);
+
+    echo "MasterTmsUdo.CJ.PRODUCTLIST.push({'ITEM' : '$productsku', 'AMT' : '$productPrice',  'QTY' : '$productqty' });";
+}
+?>
+</script>
