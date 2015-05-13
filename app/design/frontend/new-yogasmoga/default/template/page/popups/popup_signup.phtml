@@ -1,8 +1,8 @@
 <div id="signup" style="display: none;">
     <div id="sign_up_box">
-        <img nopin="nopin" style="width:70%; margin-top: 8%;" src="<?php echo $this->getSkinUrl('images/sign_up_text.png') ?>" alt="FEEL THE SMOGI LOVE. Sign up and get $25 SMOGI bucks toward your first order." />
-        <form action="" method="post" id="popup-register" style="display: block; margin-top: 46px;bottom:5%">
-            <table width="250" cellspacing="0" padding="0" align="center">
+<!--        <img nopin="nopin" style="width:50%; margin-top: 8%;" src="--><?php //echo $this->getSkinUrl('images/red_popup_text.png') ?><!--" alt="FEEL THE SMOGI LOVE. Sign up and get $25 SMOGI bucks toward your first order." />-->
+        <form action="" method="post" id="popup-register" style="display: block; ">
+            <table width="100%" cellspacing="0" padding="0" align="center">
                 <tr>
                     <td class="inputholder">
                         <input type="text" id="pfirstname" name="pfirstname" class="watermark" watermark="First Name" value="" maxlength="30" class="requiredfield no-bg">
@@ -32,29 +32,36 @@
                         <input type="password" autocomplete="off" maxlength="30" class="requiredfield o_password" name="password" id="p_password" defaulterrormsg="Password is required">
                     </td>
                 </tr>
-                <input style="display: none;" type="password" class="requiredfield" name="confirmation" id="confirmation" defaulterrormsg="Password is required">
-                <input style="display: none;" id="is_subscribed" class="checkbox" type="checkbox" checked="checked" value="1" name="is_subscribed">
+                <tr>
+                    <td class="gender_tr">
+                        <p class="gender_p">Select Gender <span class="gender_radio"><input type="radio" value="1" name="gender"/>M</span> <span class="gender_radio"><input type="radio" value="2" name="gender"/>F</span></p>
+                    </td>
+                </tr>
+                <tr height="5"></tr>
+                <input style="display: none;" type="password" class="requiredfield" name="confirmation" id="confirmation" defaulterrormsg="Password is required"/>
+                <input style="display: none;" id="is_subscribed" class="checkbox" type="checkbox" checked="checked" value="1" name="is_subscribed"/>
 
             </table>
 
-            <input type="submit" id="signup-button" value=""  style="background-image: url(<?php echo $this->getUrl()?>skin/frontend/yogasmoga/yogasmoga-theme/images/sign-up-btn.png); width:135px; height:39px; border:none;">
-            <img style="width:0px;height:0px" id="signing-up" src="<?php echo $this->getUrl()?>skin/frontend/yogasmoga/yogasmoga-theme/images/signing_up.png" alt="Signing Up"/>
-            <p id="err-msg" style="min-height:15px;min-height: 37px; width: 150px;  margin: 0 auto; font-size: 12px; visibility:hidden">All fields are required.</p>
+            <button type="submit" id="signup-button">Sign up</button>
+            <p style="margin: 0px auto; font-size: 12px; visibility: hidden; min-height: 20px; width: 236px;" id="err-msg">All fields are required.</p>
+
+            <p class="link_red_popup"><a href="">Already Signed up? <br/>Sign in here</a> </p>
 
         </form>
     </div>
     <div id="thank_you_box" style="display:none;">
-        <img nopin="nopin" style="width:60%; margin-top: 18%;" src="<?php echo $this->getSkinUrl('images/thank_you_text.png') ?>" alt="THANK YOU! Your SMOGI Bucks are waiting to be used at Checkout." />
-        <table width="60%" ceelspacing="0" cellpadding="0" style="margin:12% auto 0;">
+        <img nopin="nopin" style="width:46%; padding-top: 12%; margin-top: 6%; padding-left:6%; padding-right: 6%;   background: #f00;" src="<?php echo $this->getSkinUrl('images/thank_you_text.png') ?>" alt="THANK YOU! Your SMOGI Bucks are waiting to be used at Checkout." />
+        <table width="78%" cellspacing="0" cellpadding="0" style="margin:12% auto !important;">
             <tr>
-                <td style="text-align:left;">
-                    <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>women">
-                        <img src="<?php echo $this->getSkinUrl('images/shop_women.png') ?>" alt="SHOP WOMEN" style="width:85%; margin:0 auto !important;" />
+                <td style="text-align:left;padding-right: 15px">
+                    <a style="background:#FF4D4D; color: #fff;  width: 170px;  margin:  0 auto;   text-align: center; height:42px; display:block; line-height:42px; font-family:AVANTGARDEGOTHICITCW01B;" href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>women">
+                        SHOP WOMEN
                     </a>
                 </td>
-                <td  style="text-align:right;">
-                    <a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>mens">
-                        <img src="<?php echo $this->getSkinUrl('images/shop_men.png') ?>" alt="SHOP MEN" style="width:85%; margin:0 auto !important;" />
+                <td  style="text-align:right;padding-left: 15px">
+                    <a style="background:#FF4D4D; color: #fff;  width: 170px;  margin:  0 auto;   text-align: center; height:42px; display:block; line-height:42px; font-family:AVANTGARDEGOTHICITCW01B;" href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>mens">
+                        SHOP MEN
                     </a>
                 </td>
             </tr>

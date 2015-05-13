@@ -169,7 +169,16 @@ ul.site-map > li{
     height: 37px;
     line-height: 37px;
 }
+.large-text sup{
 
+    font-size: 23px;
+    height: auto;
+    line-height: 0;
+    padding: 0;
+    vertical-align: top;
+    line-height: 28px;
+    font-family: AvantGardeGothicITCW01X;
+}
 .learn-more {
     border-bottom: 1px solid #c03;
     color: #fff;
@@ -300,7 +309,7 @@ ul.site-map > li{
     color: #fff;
     text-align: center;
     width: 100%;  
-    text-transform: uppercase;    
+/*    text-transform: uppercase; */
     vertical-align: middle;
     position: absolute;
 }
@@ -443,12 +452,6 @@ max-width: 90px;
 
     .headD{
         font: 24px/29px itcavantgardeprobk;
-    }
-    .avant_demi_bold{
-        font:40px/43px AvantGardeGothicITCW01D;
-    }
-    .avant_extra_light{
-        font:38px/43px AvantGardeGothicITCW01X;
     }
 }
 
@@ -722,12 +725,21 @@ ul.tr-menu > li.free-shipping {
     padding: 0 29px;
     width: 316px;
 }
-
+/*
 .signinDialog .form-heading {
     text-transform: uppercase;
     font-size: 14px;
     margin: 0 0 30px;
 }
+*/
+
+.signinDialog .form-heading {
+    text-transform: uppercase;
+    font: 16px ITCAvantGardeProMd;
+    margin: 0 0 30px;
+}
+
+
 
 .signinDialog.ui-corner-all, 
 .signinDialog .ui-corner-bottom, 
@@ -750,18 +762,19 @@ ul.tr-menu > li.free-shipping {
     border-bottom: 1px solid #c03;
     color: #555;
     display: inline-block;
-    font-family: gothambook;
-    font-size: 11px;
+    /*font-family: gothambook;*/
+    /*font-size: 11px;*/
     margin: 22px 0 20px;
     padding: 0 0 0px;
     text-decoration: none;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     line-height:18px;
+    font:14px ITCAvantGardeProBk;
 }
 
 .signinDialog #sign-up-form table td, 
 .signinDialog #sign-in-form table td{
-    padding-bottom: 10px;
+    padding-bottom: 15px;
 }
 
 .intouchCheckbox input[type="checkbox"] {
@@ -785,6 +798,40 @@ ul.tr-menu > li.free-shipping {
     font-family: gothambook;
     font-size: 11px !important;
 }
+.gender_p {
+    font: 12px ITCAvantGardeProBk;
+    position: relative;
+}
+
+.gender_p span {
+    border: 1px solid #656565;
+    border-radius: 50%;
+    float: right;
+    height: 30px;
+    margin-left: 10px;
+    margin-top: -4px;
+    position: relative;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+    transition-duration: 200ms;
+    cursor: pointer;
+}
+.gender_tr .gender_p span.selected {
+    border-color: #fff !important;
+    background: #fff !important;
+    color:#f00 !important;
+    transition-duration: 200ms;
+}
+.gender_p span input {
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    opacity: 0;
+    cursor: pointer;
+}
 
 .sharingDialog{
     width: 376px !important;
@@ -801,11 +848,27 @@ ul.tr-menu > li.free-shipping {
 #sign-up-form table td, #sign-in-form table td, #invite-friend-form table td {
     padding-bottom: 10px;
 }
-
+/*
 #sign-up-form table input, #sign-in-form table input, #invite-friend-form table input,#sb-sign-in-form table input {
     border: 0 none !important;
     font: 12px gothambook !important;
     padding: 10px !important;
+}*/
+
+#sign-up-form table input, #sign-in-form table input, #invite-friend-form table input,#sb-sign-in-form table input {
+    border: 0 none;
+    border-bottom: 1px solid #656565;
+    font: 12px ITCAvantGardeProBk !important;
+    padding: 2px 0 !important;
+    letter-spacing: 1px;
+    background: none;
+}
+#edit-accountinfo table tr:first-child, #address-form table tr:first-child, tr.orig_password{
+    height: auto !important;
+}
+.sign-in-block.f-right  tr.orig_password td{
+    padding: 0 !important;
+    height: auto !important;
 }
 
 .smogi-love-msg {
@@ -2402,36 +2465,52 @@ div.new-arrivals-block{
     }
     /* ******************************************************* **/
 }
-
-
-
-
-/*================Mens landing Page===============*/
+/* ///////////////////////////////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////////////////////////////*/
 .bucket-slide.mens-slider > div#monsoon {
-    background: none repeat scroll 0 0 #000 !important;
-    bottom: 69%;
-    position: absolute;
-    text-align: center;
-    width: 57%;
+        background: none repeat scroll 0 0 #000 !important;
+        bottom: 69%;
+        position: absolute;
+        text-align: center;
+        width: 57%;
 }
+
 #monsoon p.link {
-    text-align: center;
+         text-align: center;
 }
+
 .link .learn-more.white {
-    width: auto !important;
+        width: auto !important;
 }
+
 #monsoon sup {
-    display: inline-block;
-    font-size: 20px;
-    line-height: 20px ;
-    margin-top: -20px;
-    vertical-align: top;
+        display: inline-block;
+        font-size: 20px;
+        line-height: 20px;
+        margin-top:20px;
+        vertical-align: top;
 }
+
 .learn-more.white.gotham-book {
-    font-family: gothambook !important;
-    text-transform: none !important;
+        font-family: gothambook !important;
+        text-transform: none !important;
 }
-a.learn-more{
-    line-height: 1 !important;
+
+a.learn-more {
+       line-height: 1 !important;
+}
+
+/****************** out of stock css ****************/
+.sizediv {
+        position: relative;
+}
+
+.sizediv img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        display: none;
 }
 

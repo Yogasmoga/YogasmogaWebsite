@@ -24,9 +24,15 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<style>
+ul.messages{display:block;}
+ul.messages .error-msg li span{font-size:12px;text-transform:capitalize;}
+</style>
 <div class="pg-heading">
-      <h2>Edit Account Info</h2>      
+      <h2>Edit Account Info</h2>
+	  
     </div>
+	
 <div class="edit-info">
 <form action="<?php echo $this->getUrl('customer/account/editPost') ?>" method="post" id="edit-accountinfo">  
     <?php echo $this->getBlockHtml('formkey')?>
@@ -38,16 +44,29 @@
                 <input type="text" name="email" id="email" value="<?php echo $this->htmlEscape($this->getCustomer()->getEmail()) ?>" class="requiredfield watermark" watermark="Email" defaulterrormsg="Email Address is required" />
             </td>
         </tr>
+		
         <tr>
             <td class="errortext" colspan="2">
                 <div>Email Address is required</div>
             </td>
         </tr>
+		  
     </table>
-    <table class="inputtable">
+		 <div style="width:100%;padding-bottom:10px;">
+			<?php  $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
+        <?php if ($_gender->isEnabled()): ?>
+            
+			<div style="float:left; width:40%"><?php echo $_gender->setGender($this->getCustomer()->getGender())->toHtml() ?></div>
+			<div class="change-password-label" style="float:left;padding-right:15px;">Change password</div>
+			<div><input type="checkbox" name="change_password" id="change_password" value="1" onclick="setPasswordForm(this.checked)" title="<?php echo $this->__('Change Password') ?>"<?php if($this->getCustomer()->getChangePassword()==1): ?> checked="checked" <?php endif; ?> class="checkbox" /></div>
+        <?php endif  ?>
+		 </div>
+    
+    <div id="passwordchangeoptions1" style="display:none;">
+		<table class="inputtable">
             <tr class="fake_password">
                 <td class="inputholder">
-                    <input type="text" autocomplete="off" maxlength="30" class="watermark f_password" watermark="Current Password" class="requiredfield" name="password" defaulterrormsg="Password is required">
+                    <input type="text" autocomplete="off" maxlength="30" class="watermark f_password" watermark="Current Password" class="requiredfield" name="current_password" defaulterrormsg="Password is required">
                 </td>
             </tr>
             <tr class="orig_password">
@@ -61,19 +80,7 @@
                     <div>Current password is required</div>
                 </td>
             </tr>
-        </table>
-        <div class="change-password-label">Change password</div>
-    <table id="changepasswordoptionholder">
-        <tr>
-            <td>
-                <input type="checkbox" name="change_password" id="change_password" value="1" <?php if($this->getCustomer()->getChangePassword()==1): ?> checked="checked"<?php endif; ?> class="checkbox" />            
-            </td>
-            <td style="padding-top : 2px;">
-                <label for="change_password"><?php echo $this->__('Change Password') ?></label>    
-            </td>
-        </tr>
     </table>
-    <div id="passwordchangeoptions">
         
         <table class="inputtable f-left">
             <tr class="fake_password">
@@ -96,7 +103,7 @@
         <table class="inputtable f-right">
             <tr class="fake_password">
                 <td class="inputholder">
-                    <input type="text" autocomplete="off" maxlength="30" class="watermark f_password" watermark="Confirm Password" class="requiredfield" name="password" defaulterrormsg="Password is required">
+                    <input type="text" autocomplete="off" maxlength="30" class="watermark f_password" watermark="Confirm Password" class="requiredfield" name="confirmation" defaulterrormsg="Password is required">
                 </td>
             </tr>
             <tr class="orig_password">
@@ -117,8 +124,8 @@
     <div class="pref-options" style="margin-top: 20px;">
         <div class="email-pref">
             &nbsp;
-<!-- code update by ys india team , no checkbox required -->
-<!--            <input type="checkbox" id="latest-news" value="" /> <label for="latest-news">Our latest news and products</label>   -->
+<!-- code update by ys india team, checkbox not required now -->
+<!--            &nbsp;<input type="checkbox" id="latest-news" value="" /> <label for="latest-news">Our latest news and products</label>   -->
         </div>
         <div class="email-pref no-display">
             <input type="checkbox" id="account-settings" value="" /> <label for="account-settings">Account settings updates</label>
@@ -126,6 +133,7 @@
         <div class="email-pref no-display">
             <input type="checkbox" id="order-status" value="" /> <label for="order-status">Order status</label>
         </div>
+		<div style="float:left;position:absolute;top:-7px;right:173px;"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
         <button style="position:absolute; right:0; bottom:-10px;" type="submit" class="savebtn spbutton custombtn" imageurl="<?php echo $this->getSkinUrl('images/edit_add_btn.png'); ?>" downimageurl="<?php echo $this->getSkinUrl("images/edit_add_btn.png"); ?>"></button>
     </div>
     
@@ -133,6 +141,21 @@
     <div class="clear-fix"></div>
     <?php /*<div class="loginerrormsg errormsg"><?php echo strip_tags($this->getMessagesBlock()->getGroupedHtml()); ?></div> */ ?>
 </form>
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('edit-accountinfo', true);
+    function setPasswordForm(arg){
+        if(arg){
+			jQuery('#passwordchangeoptions1').show();
+        }else{
+			jQuery('#passwordchangeoptions1').hide();
+        }
+    }
+    <?php if($this->getCustomer()->getChangePassword()): ?>
+        setPasswordForm(true);
+    <?php endif; ?>
+//]]>
+</script>
 </div>
 <?php /*
 <div class="backlink">

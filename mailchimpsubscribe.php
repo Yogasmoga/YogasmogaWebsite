@@ -24,6 +24,7 @@ if ($correct) {
         ->addAttributeToSelect('entity_id')
         ->addAttributeToSelect('firstname')
         ->addAttributeToSelect('lastname')
+        ->addAttributeToSelect('gender')
         ->addAttributeToSelect('email')
         ->addAttributeToFilter('created_at', array('gteq' => $date_to_look_start . ' 00:00:01'))
         ->addAttributeToFilter('created_at', array('lteq' => $date_to_look_end . ' 23:59:59'));
@@ -59,7 +60,8 @@ if ($correct) {
             'FNAME' => $row['firstname'],
             'LNAME' => $row['lastname'],
             'STATE' => $state,
-            'COUNTRY' => $country
+            'COUNTRY' => $country,
+            'GENDER' => $row['gender']
         );
     }
 
@@ -77,6 +79,7 @@ if ($correct) {
         $lname = $single["LNAME"];
         $state = $single["STATE"];
         $country = $single["COUNTRY"];
+        $gender = $single["GENDER"];
 
         $result = $mailChimp->call('lists/member-info', array(
             'id' => $list_id,
@@ -93,7 +96,7 @@ if ($correct) {
             $result = $mailChimp->call('lists/subscribe', array(
                 'id' => $list_id,
                 'email' => array('email' => $email),
-                'merge_vars' => array('FNAME' => $fname, 'LNAME' => $lname, 'STATE' => $state, 'COUNTRY' => $country),
+                'merge_vars' => array('FNAME' => $fname, 'LNAME' => $lname, 'STATE' => $state, 'COUNTRY' => $country, 'GENDER' => $gender),
                 'double_optin' => false,
                 'update_existing' => true,
                 'replace_interests' => false,

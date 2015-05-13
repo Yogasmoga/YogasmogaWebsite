@@ -30,6 +30,9 @@
     font-size: 14px;
     margin: 0 0 30px;
     text-transform: uppercase;
+    font-family: ITCAvantGardeStd-Md;
+    font-weight: normal;
+    color: #58595B;
 }
 
 .sign-up {
@@ -46,11 +49,15 @@
 }
 
 .form-1 table input, #form-2 table input {
-    border: 0 none !important;
-    font: 12px Gotham-Book !important;
-    padding: 9px 12px;
-    width: 100%;
+    border: none;
     box-sizing: border-box;
+    font: 12px ITCAvantGardeStd-Bk;
+    padding: 8px 0 2px;
+    width: 100%;
+    border-bottom: 1px solid #58595B;
+    color: #58595B;
+    background: none;
+    letter-spacing: 1px;
 }
 
 .form-1 table td, #form-2 table td {
@@ -71,7 +78,7 @@ table {
 }
 
 #sign-up-button {
-    background: url(../images/grey-button.jpg) left top no-repeat;
+    background: url(../images/signUp_btn.png) left top no-repeat;
     background-size: 100% 100%;
     border: none;
     height: 39px;
@@ -79,30 +86,32 @@ table {
 }
 
 #sign-in-button {
-    background: url(../images/green-button.jpg) left top no-repeat;
+    background: url(../images/signIn_btn.png) left top no-repeat;
     background-size: 100% 100%;
     border: none;
     height: 39px;
     width: 315px;
 }
-
 .forgot {
     border-bottom: 1px solid #c03;
-    color: #555;
+    color: #58595B;
     display: inline-block;
-    font-family: Gotham-Book;
-    font-size: 11px;
+    font-family: ITCAvantGardeStd-Bk;
+    font-size: 12px;
+    letter-spacing: 1px;
     line-height: 18px;
     margin: 22px 0 20px;
     padding: 0;
     text-decoration: none;
-    text-transform: uppercase;
+    text-transform: none;
 }
-
 table.inputtable td.label, table.gfredeem td.label, table#redeem td.label, input {
-    color: #555 !important;
+    color: #58595B !important;
 }
-
+.err-msg,.err-msg.signup_err{
+    color:#d90d3d !important;
+    width:auto !important;
+}
 
 
 .login-box .close_signin_popup {

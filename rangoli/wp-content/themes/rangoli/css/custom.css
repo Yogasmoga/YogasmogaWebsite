@@ -2026,3 +2026,52 @@ button.next-confirmation-page {
 .about_author{
     position: relative;
 }
+.gender_p {
+    font: 12px ITCAvantGardeStd-Bk;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    position: relative;
+    margin-top:10px;
+    color: #58595B;
+}
+.gender_p.gender_popup {
+    color: #fff;
+    text-align: left;
+    margin-top: 2px;
+}
+.gender_p.gender_popup span{
+    border-color:#fff;
+    transition-duration: 200ms;
+}
+.gender_p.gender_popup span.selected{
+    border-color:#fff;
+    background: #fff;
+    color: #FF0000;
+    transition-duration: 200ms;
+}
+.gender_p span.selected{
+    border-color:#58595B;
+    background: #58595B;
+    color: #FFF;
+    transition-duration: 200ms;
+}
+.gender_p span {
+    position: relative;
+    float: right;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #58595B;
+    top: -7px;
+    margin-left: 10px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+.gender_p span input{
+    position: absolute;
+    top: 8px;
+    left:1px;
+    opacity: 0;
+    cursor: pointer;
+}

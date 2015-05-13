@@ -3,6 +3,11 @@ var root;
 /**************** logout logic added by ys team *****************/
 jQuery(document).ready(function($){
 
+    jQuery(".gender_p span").click(function(){
+        jQuery(".gender_p span").removeClass("selected");
+        jQuery(this).addClass("selected");
+    });
+
     if(window.location.href.indexOf('https://') >= 0)
         root='https://yogasmoga.com/';
     else
@@ -344,6 +349,8 @@ function  createCustomerAccount()
     var lname = jQuery.trim(jQuery("#lname").val());
     var email_id = jQuery.trim(jQuery("#signup_email").val());
     var pwd = jQuery.trim(jQuery("#s_password").val());
+    var gender = jQuery.trim(jQuery(".gender_radio.selected input").val());
+
     var cpassword = pwd;
     var is_subscribed = jQuery("#in_touch").val();
     if(window.location.href.indexOf('https://') >= 0)
@@ -362,7 +369,7 @@ function  createCustomerAccount()
     jQuery.ajax({
         url     :   url,
         type    :   'POST',
-        data    :   {'firstname':fname,'lastname':lname,'email':email_id,'password':pwd,'confirmation':cpassword,'is_subscribed':is_subscribed},
+        data    :   {'firstname':fname,'lastname':lname,'email':email_id,'password':pwd,'confirmation':cpassword,'is_subscribed':is_subscribed, 'gender': gender},
         beforeSend: function() {
             jQuery("#sign-up-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
             jQuery("#sign-up-button").parent().hide();
