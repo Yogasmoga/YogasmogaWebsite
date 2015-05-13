@@ -29,9 +29,8 @@ jQuery(document).ready(function($){
             }
             else
                 createCustomerAccount();
-
-            event.preventDefault();
         }
+        event.preventDefault();
     });
     $("#sign-up-form").on("click","#sign-up-button", function(){
         var errMsgCont = $("#sign-up-form").find("p.err-msg");
