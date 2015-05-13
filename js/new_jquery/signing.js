@@ -18,8 +18,17 @@ jQuery(document).ready(function($){
 
         var status = popupGetSigningCreateaccountFormFieldsvalue(formid);
 
-        if(status != "error")
-            createCustomerAccount();
+        if(status != "error") {
+
+            if(!if_gender_is_selected()){
+                event.preventDefault();
+                jQuery(formid).find(".err-msg").css("visibility","visible");
+                jQuery(formid).find(".err-msg").text("Please select gender");
+                return;
+            }
+            else
+                createCustomerAccount();
+        }
         event.preventDefault();
 
     });
