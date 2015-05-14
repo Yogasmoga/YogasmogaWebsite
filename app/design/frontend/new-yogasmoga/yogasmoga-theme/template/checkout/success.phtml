@@ -441,7 +441,8 @@ receiving an email soon with your shipment tracking number.</p>
 $quote = Mage::getSingleton('checkout/session')->getQuote();
 
 $order_id = $this->getOrderid();
-$order = Mage::getModel("sales/order")->load($order_id);
+//$order = Mage::getModel("sales/order")->load($order_id);
+$order = Mage::getModel("sales/order")->loadByIncrementId($order_id);
 $items = $order->getAllItems();
 
 $coupon_code = $quote->getCouponCode();
