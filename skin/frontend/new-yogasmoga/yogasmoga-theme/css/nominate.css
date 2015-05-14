@@ -87,7 +87,7 @@
     padding: 10% 0 10% 10%;
     width: 100%;
 }
-.gender-box .gender{font-size:14px!important;}
+.gender-box label.gender{font-size:14px  ;}
 
 .sign-up-container .information {
     background: #eeeeee;
@@ -188,6 +188,7 @@
     font-size: 14px;
     padding: 2px 0;
     text-transform: uppercase;
+    font-family: AvantGardeGothicITCW01B !important;
     width: 100%;
 }
 
@@ -216,7 +217,9 @@
     height: 14px;
     left: 0;
     position: absolute;
-    width: 19px;
+    width: 14px;
+    padding: 0;
+    margin-top:5px;
 }
 
 .sign-up-container .list-box {
@@ -421,7 +424,9 @@ float: left;
     color: rgb(255, 255, 255);
     margin-top: 3% ! important;
 }
-
+.gender-box .gender{
+    font:14px AvantGardeGothicITCW01B;
+}
 .sign-up-container  .radio-right{padding-top:12px}
 
 .avant_extra_light{
@@ -446,6 +451,13 @@ float: left;
     .sign-up-container .smogi-para p ,.sign-up-container .banner_text_nominate{
         font-size: 17px;
         line-height: 22px;
+    }
+    .sign-up-container .gender-box label, .radio-right,.gender-box .gender{
+        font-size: 17px;
+    }
+    .sign-up-container .radio-right div label{
+        width: 17px;
+        height: 17px;
     }
     .sign-up-container .top-heading span {
         font-size: 17px;
@@ -489,6 +501,13 @@ float: left;
          line-height: 24px;
 
     }
+    .sign-up-container .radio-right div label{
+        width: 18px;
+        height: 18px;
+    }
+    .sign-up-container .gender-box label, .radio-right,.gender-box .gender{
+        font-size: 18px;
+    }
     .avant_extra_light {
         font-size: 20px;
         line-height: 23px;
@@ -529,6 +548,13 @@ float: left;
         line-height: 32px;
 
     }
+    .sign-up-container .radio-right div label{
+        width: 23px;
+        height: 23px;
+    }
+    .sign-up-container .gender-box label, .radio-right{
+        font-size: 23px;
+    }
     .avant_extra_light {
         font-size: 26px;
         line-height: 29px;
@@ -558,7 +584,9 @@ float: left;
         padding: 4%;
         font-size: 18px;
     }
-
+    .gender-box .gender,.sign-up-container .gender-box label, .radio-right{
+         font-size: 23px;
+     }
 
 }
 
@@ -568,7 +596,13 @@ float: left;
         line-height: 36px;
     }
 
-
+    .sign-up-container .gender-box label, .radio-right, .gender-box .gender{
+        font-size: 28px;
+    }
+    .sign-up-container .radio-right div label{
+        width: 28px;
+        height: 28px;
+    }
     .sign-up-container .top-heading span {
         font-size: 28px;
         line-height: 39px;
@@ -615,7 +649,13 @@ float: left;
         line-height: 40px;
     }
 
-
+    .sign-up-container .gender-box label, .radio-right, .gender-box .gender{
+        font-size: 29px ;
+    }
+    .sign-up-container .radio-right div label{
+        width: 29px;
+        height: 29px;
+    }
     .sign-up-container .top-heading span {
         font-size: 29px;
         line-height: 40px;

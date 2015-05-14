@@ -55,7 +55,7 @@
 .signin-block #sign-up-form .err-msg {
     box-sizing: border-box;
     clear: both;
-    color: #fff !important;
+    color: #fff;
     font-family: ITCAvantGardeStd-Bk;
     font-size: 12px;
     margin: 0 auto;
@@ -2074,4 +2074,21 @@ button.next-confirmation-page {
     left:1px;
     opacity: 0;
     cursor: pointer;
+}
+.post_excerpt_slider {
+    color: #fff;
+    font: 24px/27px freight-text-pro;
+    left: 0;
+    padding: 0 15%;
+    position: absolute;
+    text-align: center;
+    top: 57%;
+    width: 100%;
+}
+.slider_post_author {
+    font: 500 13px/16px freight-text-pro;
+    margin-top:15px;
+}
+.slider_post_author span{
+    font: italic 200 13px/16px freight-text-pro;
 }

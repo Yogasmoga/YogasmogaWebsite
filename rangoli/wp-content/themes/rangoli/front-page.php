@@ -11,70 +11,79 @@ get_header();
             </div>
             <?php if (!is_user_logged_in()) {
     ?>
-<div class="home_signup">
-    <div id="signup_signin_btn">
-        Sign in / Sign up
-    </div>
-</div>
+<!--<div class="home_signup">-->
+<!--    <div id="signup_signin_btn">-->
+<!--        Sign in / Sign up-->
+<!--    </div>-->
+<!--</div>-->
 <?php
 }
 ?>
-<ul class="slides">
-<?php
-$args = array(
-    "post_type" => "slider",
-);
-$the_query = new WP_Query($args);
-if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_post();
-    $post = get_post();
-    $banner_img_url="";
-//    $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
-    ?>
-    <li style="background:url('<?php echo $banner_img_url[0] ?>') no-repeat; background-size: cover ;">
-    <?php
-        echo get_the_post_thumbnail();
-    ?>
-    <!--onclick='ajax_load_pages("<?php /*$url = get_post_meta($post->ID,"wpcf-posturl");  if($url){echo $url[0];} */ ?>")'-->
-    <div class='over-the-slide homepage_page_banner' >
-<?php
-   if (has_post_video()) {
+            <ul class="slides">
+                <?php
+                $args = array(
+                    "post_type" => "slider",
+                );
+                $the_query = new WP_Query($args);
+                if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_post();
+                $post = get_post();
+                $banner_img_url="";
+                //    $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
 
-        $authors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=" . $post->post_author);
-        $author_color = '#' . $authors[0]->color_shade;
-        ?>
-        <div class="play-video" video="<?php echo get_the_post_video_url($post->ID); ?>">
-            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px"
-                 viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">                    <defs>
-                </defs>
-                <path fill="<?php echo $author_color; ?>"
-                      opacity="0.9" enable-background="new"
-                      d="M32,0C14.327,0,0,14.327,0,32c0,17.674,14.327,32,32,32s32-14.326,32-32  C64,14.327,49.673,0,32,0z M22.321,49.106V14.894L51.951,32L22.321,49.106z"/>
+                $authors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=" . $post->post_author);
+                $author_color = '#' . $authors[0]->color_shade;
+                $author = get_userdata($post->post_author);
+                $name = $author->display_name;
+                if($name){
+                    $name = "<span>by</span> ".$name;
+                }
+
+                ?>
+                <li style="background: <?php echo $author_color; ?>">
+                    <?php
+                    echo get_the_post_thumbnail();
+                    ?>
+
+                    <div class='over-the-slide homepage_page_banner' onclick='ajax_load_pages("<?php $url = get_post_meta($post->ID,"wpcf-posturl");  if($url){echo $url[0];}  ?>")' >
+                        <?php
+                        if (has_post_video()) {
+                            ?>
+                            <div class="play-video" video="<?php echo get_the_post_video_url($post->ID); ?>">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px"
+                                     viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">                    <defs>
+                                    </defs>
+                                    <path fill="<?php echo $author_color; ?>"
+                                          opacity="0.9" enable-background="new"
+                                          d="M32,0C14.327,0,0,14.327,0,32c0,17.674,14.327,32,32,32s32-14.326,32-32  C64,14.327,49.673,0,32,0z M22.321,49.106V14.894L51.951,32L22.321,49.106z"/>
                     </svg>
-        </div>
-    <?php
-    }
+                            </div>
+                        <?php
+                        }
+                        echo "<div class='post_excerpt_slider'> $post->post_excerpt
+    <p class='slider_post_author'>$name</p>
+
+    </div>";
+
+                        echo "</div>";
 
 
-    echo "</div>";
+                        /*
+                            if (has_post_video()) {
+                                echo "<div class='play_video'>";
+                                the_post_video();
+                                echo "</div> ";
+                            }
+                        */
 
+                        echo "</li>";
 
-
-    if (has_post_video()) {
-        echo "<div class='play_video'>";
-//            echo "<iframe height='100%' width='100%' src='".get_the_post_video_url($post->ID)."'></iframe>";
-        the_post_video();
-        echo "</div> ";
-    }
-
-
-    echo "</li>";
-
-endwhile;
-endif;
-?>
+                        endwhile;
+                        endif;
+                        ?>
 
             </ul>
+
 
         </div>
 
