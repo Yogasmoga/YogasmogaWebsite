@@ -25,7 +25,7 @@ jQuery(document).ready(function($){
 
                 event.preventDefault();
                 jQuery(formid).find(".err-msg").css("visibility", "visible");
-                jQuery(formid).find(".err-msg").text("Please select gender");
+                jQuery(formid).find(".err-msg").text("Please select a Gender.");
                 return;
             }
             else

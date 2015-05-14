@@ -1522,6 +1522,7 @@ function createCustomerAccount_from_animated_popup() {
             var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
             return regex.test(email);
         }
+
         if(IsEmail(email_id)){
             if (pwd=="Select a password" || pwd.length < 6 ) {
                 error = "Password requires 6 or more characters.";

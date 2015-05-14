@@ -188,6 +188,7 @@ if($serverType == 'production')
             }
 
             if(!if_gender_is_selected()){
+                event.preventDefault();
                 $("#err-msg").css("visibility","visible");
                 $("#err-msg").text("Please select a Gender.");
                 return;
