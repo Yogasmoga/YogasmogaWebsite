@@ -60,7 +60,9 @@
     $order = Mage::getModel("sales/order")->loadByIncrementId($order_id);
     $items = $order->getAllItems();
 
-    $coupon_code = $quote->getCouponCode();
+$orderDetails = $order->getData();
+
+$coupon_code = $orderDetails['coupon_code'];
 
     if(isset($coupon_code) && strlen($coupon_code)>0)
         echo "MasterTmsUdo.CJ.COUPON='$coupon_code';";
