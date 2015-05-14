@@ -54,7 +54,7 @@ $(window).load(function(){
                         if(is_login_box_open == false) {
                             open_bulls_popup();
                         }
-                    },30000);
+                    },120000);
                 }
             }
         });
@@ -323,7 +323,7 @@ function createCustomerAccount() {
             jQuery(".err-msg.signup_err").html("Password requires 6 or more characters.").css("visibility", "visible");
         }
         else if(!if_gender_is_selected()){
-            jQuery(".err-msg.signup_err").html("Please select Gender.").css("visibility", "visible");
+            jQuery(".err-msg.signup_err").html("Please select a Gender.").css("visibility", "visible");
         }
         else {
             jQuery.ajax({
