@@ -27,10 +27,11 @@ class Ysindia_Nominateinstructor_Block_Adminhtml_Nominateinstructor_Grid extends
           'index'     => 'nominateinstructor_id',
       ));
 
-      $this->addColumn('your_last_name', array(
-          'header'    => Mage::helper('nominateinstructor')->__('Surname'),
+      $this->addColumn('your_name', array(
+          'header'    => Mage::helper('nominateinstructor')->__('Name'),
           'align'     =>'left',
-          'index'     => 'your_last_name',
+          'index'     => 'your_name',
+		  'renderer'	=> new Ysindia_Nominateinstructor_Block_Adminhtml_Renderer_CustomerName()
       ));
 	  $this->addColumn('your_email', array(
           'header'    => Mage::helper('nominateinstructor')->__('Email'),
@@ -38,16 +39,23 @@ class Ysindia_Nominateinstructor_Block_Adminhtml_Nominateinstructor_Grid extends
           'index'     => 'your_email',
       ));
 	  
-	  $this->addColumn('instructor_last_name', array(
-          'header'    => Mage::helper('nominateinstructor')->__('Instructor Surname'),
+	  $this->addColumn('name', array(
+          'header'    => Mage::helper('nominateinstructor')->__('Instructor Name'),
           'align'     =>'left',
-          'index'     => 'instructor_last_name',
+          'index'     => 'name',
+		  'renderer'	=> new Ysindia_Nominateinstructor_Block_Adminhtml_Renderer_InstructorName()
+		  
       ));
 	  
 		$this->addColumn('instructor_email', array(
           'header'    => Mage::helper('nominateinstructor')->__('Instructor Email'),
           'align'     =>'left',
           'index'     => 'instructor_email',
+      ));
+	  $this->addColumn('created_time', array(
+          'header'    => Mage::helper('nominateinstructor')->__('Created Time'),
+          'align'     =>'left',
+          'index'     => 'created_time',
       ));
 	  /*
       $this->addColumn('content', array(

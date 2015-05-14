@@ -11,11 +11,11 @@ get_header();
             </div>
             <?php if (!is_user_logged_in()) {
     ?>
-<div class="home_signup">
+<!--<div class="home_signup">
     <div id="signup_signin_btn">
         Sign in / Sign up
     </div>
-</div>
+</div>-->
 <?php
 }
 ?>
