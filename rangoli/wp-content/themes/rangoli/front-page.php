@@ -117,7 +117,7 @@ get_template_part("content");
                     <div onclick="ajax_load_pages('<?php echo get_permalink($post->ID) ?>')" class="overlay-text">
                     <p class="post_category"><?php echo category($post->ID); ?></p>
 
-                    <p class="post_title"><?php echo $post->post_title; ?></p>
+
                     <?php
                     if (has_post_video()) {
                     ?>
@@ -135,12 +135,17 @@ get_template_part("content");
                     </div>
                     <?php
                     }
+                    else{
+                        ?>
+                        <p class="post_title"><?php echo $post->post_title; ?></p>
+                        <?php
+                    }
                     ?>
 
 
 
                     </div>
-                    <p class="post_link"><a  class="ajax-load"  class="ajax-load"  href="<?php echo get_site_url(); ?>/look">Look More</a></p>
+                    <p class="post_link"><a  class="ajax-load"  class="ajax-load"  href="<?php echo get_site_url(); ?>/read">Read More</a></p>
 
 
 
@@ -192,7 +197,7 @@ echo get_template_part("latest_rangoli_instagram");
             <div onclick="ajax_load_pages('<?php echo get_permalink($post->ID) ?>')" class="overlay-text">
             <p class="post_category"><?php echo category($post->ID); ?></p>
 
-            <p class="post_title"><?php echo $post->post_title; ?></p>
+
             <?php
             if (has_post_video()) {
             ?>
@@ -210,12 +215,17 @@ echo get_template_part("latest_rangoli_instagram");
             </div>
             <?php
             }
+            else{
+                ?>
+                <p class="post_title"><?php echo $post->post_title; ?></p>
+                <?php
+            }
             ?>
 
 
 
             </div>
-            <p class="post_link"><a  class="ajax-load"  class="ajax-load"  href="<?php echo get_site_url(); ?>/look">Look More</a></p>
+            <p class="post_link"><a  class="ajax-load"  class="ajax-load"  href="<?php echo get_site_url(); ?>/learn">Learn More</a></p>
 
 
 

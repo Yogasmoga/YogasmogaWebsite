@@ -41,7 +41,8 @@
                 <div style="background: none repeat scroll 0% 0% rgb(172, 132, 54);" class="one-three left get_app">
                     <?php
                     /////////////BLOCK 3////////////
-                    $post = get_post(1507);
+//                    $post = get_post(1507);
+                    $post = get_post(1169);
                     ?>
                     <?php echo get_the_post_thumbnail($post->ID,"thumb");
                     if(!has_post_thumbnail($post->ID)){
@@ -57,7 +58,7 @@
 
 
                     </div>
-                    <p class="post_link"><a  class="ajax-load" href="<?php echo get_site_url(); ?>/read">Read More</a></p>
+                    <p class="post_link"><a  class="ajax-load" href="<?php echo get_site_url(); ?>/look">Look More</a></p>
 
 
                 </div>
@@ -85,7 +86,7 @@
             <div onclick="ajax_load_pages('<?php echo get_permalink($post->ID) ?>')" class="overlay-text">
 
                 <p class="post_category"><?php echo category($post->ID); ?></p>
-
+            <?php if(has_post_video($post->ID)){ ?>
                 <div class="play-video">
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px"
@@ -98,13 +99,14 @@
 
                         </svg>
                 </div>
+                <?php } ?>
                 <p class="post_title"><?php echo $post->post_title; ?></p>
 
 
 
 
             </div>
-            <p class="post_link"><a class="ajax-load"  href="<?php echo get_site_url(); ?>/learn">Learn More</a></p>
+            <p class="post_link"><a class="ajax-load"  href="<?php echo get_site_url(); ?>/read">Read More</a></p>
         </div>
 
 
@@ -230,26 +232,27 @@
             <div onclick="ajax_load_pages('<?php echo get_permalink($post->ID) ?>')" class="overlay-text">
                 <p class="post_category"><?php echo category($post->ID); ?></p>
 
+
+                <?php if(has_post_video($post->ID)){?>
+                <div class="play-video">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px"
+                         viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                        <defs>
+                        </defs>
+                        <path fill="<?php $author = get_user_profile($post->post_author);
+                        echo '#' . $author->color_shade; ?>"
+                              d="M32,0C14.327,0,0,14.327,0,32c0,17.674,14.327,32,32,32s32-14.326,32-32  C64,14.327,49.673,0,32,0z M22.321,49.106V14.894L51.951,32L22.321,49.106z"/>
+
+                        </svg>
+                </div>
+                <?php } else { ?>
                 <p class="post_title"><?php echo $post->post_title; ?></p>
-
-<!--                <div class="play-video">-->
-<!--                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"-->
-<!--                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px"-->
-<!--                         viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">-->
-<!--                        <defs>-->
-<!--                        </defs>-->
-<!--                        <path fill="--><?php //$author = get_user_profile($post->post_author);
-//                        echo '#' . $author->color_shade; ?><!--"-->
-<!--                              d="M32,0C14.327,0,0,14.327,0,32c0,17.674,14.327,32,32,32s32-14.326,32-32  C64,14.327,49.673,0,32,0z M22.321,49.106V14.894L51.951,32L22.321,49.106z"/>-->
-<!---->
-<!--                        </svg>-->
-<!--                </div>-->
-
-
+                <?php } ?>
 
 
             </div>
-            <p class="post_link"><a class="ajax-load"  class="ajax-load" href="<?php echo get_site_url(); ?>/look">Look More</a></p>
+            <p class="post_link"><a class="ajax-load"  class="ajax-load" href="<?php echo get_site_url(); ?>/read">Read More</a></p>
         </div>
 
 
@@ -268,7 +271,7 @@
             <div onclick="ajax_load_pages('<?php echo get_permalink($post->ID) ?>')" class="overlay-text">
                 <p class="post_category"><?php echo category($post->ID); ?></p>
 
-                <p class="post_title"><?php echo $post->post_title; ?></p>
+
                 <?php
                 if(has_post_video()) {
                     ?>
@@ -286,12 +289,17 @@
                     </div>
                 <?php
                 }
+                else{
+                    ?>
+                    <p class="post_title"><?php echo $post->post_title; ?></p>
+                <?php
+                }
                 ?>
 
 
 
             </div>
-            <p class="post_link"><a  class="ajax-load"  class="ajax-load"  href="<?php echo get_site_url(); ?>/look">Look More</a></p>
+            <p class="post_link"><a  class="ajax-load"  class="ajax-load"  href="<?php echo get_site_url(); ?>/read">Read More</a></p>
 
         </div>
     </div>
