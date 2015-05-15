@@ -36,9 +36,10 @@
         $order_id = Mage::getSingleton('checkout/session')->getLastRealOrderId();
 
         $order = Mage::getModel("sales/order")->loadByIncrementId($order_id);
-        $items = $order->getVisibleItems();
+        $items = $order->getAllVisibleItems();
+//    $items = $order->getAllItems();
 
-        $orderDetails = $order->getData();
+    $orderDetails = $order->getData();
 
         $coupon_code = $orderDetails['coupon_code'];
 
