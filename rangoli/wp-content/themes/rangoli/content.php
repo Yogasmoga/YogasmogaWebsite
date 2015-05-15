@@ -41,7 +41,7 @@
                 <div style="background: none repeat scroll 0% 0% rgb(172, 132, 54);" class="one-three left get_app">
                     <?php
                     /////////////BLOCK 3////////////
-                    $post = get_post(1302);
+                    $post = get_post(1507);
                     ?>
                     <?php echo get_the_post_thumbnail($post->ID,"thumb");
                     if(!has_post_thumbnail($post->ID)){
@@ -74,7 +74,7 @@
 
             <?php
             /////////////BLOCK 4////////////
-            $post = get_post(232);
+            $post = get_post(1302);
             ?>
             <?php echo get_the_post_thumbnail($post->ID,"thumb");
             if(!has_post_thumbnail($post->ID)){
@@ -257,7 +257,7 @@
 
             <?php
             /////////////BLOCK 9////////////
-            $post = get_post(4128);
+            $post = get_post(1428);
             ?>
             <?php echo get_the_post_thumbnail($post->ID,"thumb");
             if(!has_post_thumbnail($post->ID)){
