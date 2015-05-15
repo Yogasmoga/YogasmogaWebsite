@@ -214,6 +214,8 @@ if(!is_user_logged_in()){
                                 <li><a href="/women/what-s-new"> What's New</a></li>
                                 <li><a href="/women/one-too-many"> One 2 Many</a></li>
                                 <li><a href="/women/additional-sizes"> ADDITIONAL SIZES</a></li>
+                                <li><a href="/women/vivacity-collection"> VIVACITY COLLECTION</a></li>
+                                <li><a href="/women/rangoli-collection"> RANGOLI COLLECTION</a></li>
                             </ul>
                         </li>
                         <li><a href="/women/tops"> Tops</a>

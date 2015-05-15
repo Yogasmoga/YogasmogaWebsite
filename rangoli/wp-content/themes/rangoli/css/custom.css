@@ -2086,9 +2086,18 @@ button.next-confirmation-page {
     width: 100%;
 }
 .slider_post_author {
-    font: 500 13px/16px freight-text-pro;
+    font: 500 20px/26px freight-text-pro;
     margin-top:15px;
 }
 .slider_post_author span{
-    font: italic 200 13px/16px freight-text-pro;
+    font: italic 200 20px/26px freight-text-pro;
+}
+.slider_post_title {
+    border-bottom: 1px solid #fff;
+    display: block;
+    font: 30px/35px ITCAvantGardeStd-Bk;
+    margin: 0 auto 15px;
+    text-transform: uppercase;
+    width: 40%;
+    letter-spacing: 1px;
 }
