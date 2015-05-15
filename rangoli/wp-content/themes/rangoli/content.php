@@ -3,8 +3,8 @@
 
 
         <div class="one-three left">
-            <?php
-            $post = get_post(355);
+            <?php /////////////BLOCK 1////////
+            $post = get_post(1447);
             ?>
             <?php echo get_the_post_thumbnail($post->ID,"thumb");
             if(!has_post_thumbnail($post->ID)){
@@ -26,6 +26,7 @@
 
 
         <?php if(!is_user_logged_in()) {
+        /////////////BLOCK 2////////////
             ?>
             <div class="left invite_signup"   style = " position:relative; width:33.33%;cursor:pointer; background:url('<?php bloginfo('template_directory')?>/images/box_n.png') no-repeat; background-size: cover;" >
            <?php  }
@@ -39,7 +40,8 @@
         </div>
                 <div style="background: none repeat scroll 0% 0% rgb(172, 132, 54);" class="one-three left get_app">
                     <?php
-                    $post = get_post(496);
+                    /////////////BLOCK 3////////////
+                    $post = get_post(1302);
                     ?>
                     <?php echo get_the_post_thumbnail($post->ID,"thumb");
                     if(!has_post_thumbnail($post->ID)){
@@ -71,6 +73,7 @@
         <div class="two-three left double-width">
 
             <?php
+            /////////////BLOCK 4////////////
             $post = get_post(232);
             ?>
             <?php echo get_the_post_thumbnail($post->ID,"thumb");
@@ -107,8 +110,9 @@
 
         <div class="one-three left">
             <?php
+            /////////////BLOCK 5////////////
 //            $author_id = 71;
-            $author_id = 69;
+            $author_id = 70;
             $author = get_userdata($author_id);
             ?>
 
@@ -139,7 +143,8 @@
 
         <div class="one-three left">
             <?php
-            $post = get_post(832);
+            /////////////BLOCK 6////////////
+            $post = get_post(1453);
             ?>
             <?php echo get_the_post_thumbnail($post->ID,"thumb");
             if(!has_post_thumbnail($post->ID)){
@@ -183,7 +188,8 @@
     <div class="row">
         <div class="one-three left">
             <?php
-            $author_id = 81;
+            /////////////BLOCK 7////////////
+            $author_id = 82;
             $author = get_userdata($author_id);
             ?>
 
@@ -212,7 +218,8 @@
 
         <div class="one-three left">
             <?php
-            $post = get_post(523);
+            /////////////BLOCK 8////////////
+            $post = get_post(953);
             ?>
             <?php echo get_the_post_thumbnail($post->ID,"thumb");
             if(!has_post_thumbnail($post->ID)){
@@ -249,7 +256,8 @@
         <div class="one-three left">
 
             <?php
-            $post = get_post(850);
+            /////////////BLOCK 9////////////
+            $post = get_post(4128);
             ?>
             <?php echo get_the_post_thumbnail($post->ID,"thumb");
             if(!has_post_thumbnail($post->ID)){
