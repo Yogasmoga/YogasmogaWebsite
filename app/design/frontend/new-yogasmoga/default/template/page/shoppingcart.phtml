@@ -34,7 +34,20 @@
 <head>
     <?php
         $order_id = Mage::getSingleton('checkout/session')->getLastRealOrderId();
+
+        $order = Mage::getModel("sales/order")->loadByIncrementId($order_id);
+        $items = $order->getVisibleItems();
+
+        $orderDetails = $order->getData();
+
+        $coupon_code = $orderDetails['coupon_code'];
+
+        if(isset($coupon_code) && strlen($coupon_code)>0)
+            ;
+        else
+            $coupon_code = '';
     ?>
+
     <script src="<?php echo $this->getJsUrl('new_jquery/jquery-1.8.2.min.js')?>"></script>
     <script type="text/javascript">
         var MasterTmsUdo = {
@@ -46,7 +59,7 @@
                 'DISCOUNT' : '',
                 'OID' : '<?php echo $order_id;?>',
                 'CURRENCY' : 'USD',
-                'COUPON' : '',
+                'COUPON' : '<?php echo $coupon_code;?>',
                 'FIRECJ' : 'true',
 
                 PRODUCTLIST : []
@@ -57,17 +70,6 @@
     <script type="text/javascript">
 
     <?php
-    $order = Mage::getModel("sales/order")->loadByIncrementId($order_id);
-    $items = $order->getAllItems();
-
-$orderDetails = $order->getData();
-
-$coupon_code = $orderDetails['coupon_code'];
-
-    if(isset($coupon_code) && strlen($coupon_code)>0)
-        echo "MasterTmsUdo.CJ.COUPON='$coupon_code';";
-    else
-        echo "MasterTmsUdo.CJ.COUPON='';";
 
     foreach($items as $item)
     {
@@ -79,7 +81,7 @@ $coupon_code = $orderDetails['coupon_code'];
 
         $productsku = str_replace('.', '-', $productsku);
 
-        echo "MasterTmsUdo.CJ.PRODUCTLIST.push({'ITEM' : '$productsku', 'AMT' : '$productPrice',  'QTY' : '$productqty' });";
+        echo "MasterTmsUdo.CJ.PRODUCTLIST.push({'ITEM' : '$productsku', 'AMT' : '$productPrice',  'QTY' : '" . intval($productqty) . "' });";
     }
     ?>
     </script>

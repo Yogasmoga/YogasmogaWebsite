@@ -87,7 +87,7 @@
     padding: 10% 0 10% 10%;
     width: 100%;
 }
-.gender-box label.gender{font-size:14px  ;}
+.gender-box label.gender{font-size:18px  ;}
 
 .sign-up-container .information {
     background: #eeeeee;
@@ -129,7 +129,7 @@
     box-sizing: border-box;
     color: hsl(0, 0%, 20%);
     display: block;
-    font-size: 12px;
+    font-size: 13px;
     line-height: normal;
     padding: 5%;
     text-transform: none;
@@ -175,7 +175,7 @@
     height: 230px;
     border: none;
     resize: none;
-    font-size: 12px;
+    font-size: 13px;
     color: #333;
     padding: 5%;
     font-family: AvantGardeGothicITCW01B;
@@ -185,7 +185,7 @@
 .sign-up-container .gender-box label, .radio-right {
     color: #333;
     float: left;
-    font-size: 14px;
+    font-size: 18px;
     padding: 2px 0;
     text-transform: uppercase;
     font-family: AvantGardeGothicITCW01B !important;
@@ -214,10 +214,10 @@
     background: none repeat scroll 0 0 hsl(0, 0%, 100%);
     border: 2px solid hsl(0, 0%, 100%);
     border-radius: 17px;
-    height: 14px;
+    height: 18px;
     left: 0;
     position: absolute;
-    width: 14px;
+    width: 18px;
     padding: 0;
     margin-top:5px;
 }
@@ -336,7 +336,7 @@
     text-align: left;
     float: left;
     width: 100%;
-	list-style-type:disc;
+    list-style-type:disc;
 }
 
 .sign-up-container .radio-right div label.current {
@@ -384,10 +384,10 @@
     width: 100%;
 }
 .thankew-container .thanks-banner{
-  background:#e3fffe;
-  border: 0 none;
-  margin: 0;
-  position: relative;
+    background:#e3fffe;
+    border: 0 none;
+    margin: 0;
+    position: relative;
 
 }
 .thanks{background:#e3fffe}
@@ -395,26 +395,26 @@
     font: 40px/43px AvantGardeGothicITCW01D;
 }
 .thankew-container .thanks-banner .over-banner{
-right: 0px; top: 60%; left: 0px; position: absolute;
+    right: 0px; top: 60%; left: 0px; position: absolute;
 }
 .thankew-container .thanks-banner  .visit{
-	 display: block!important;
+    display: block!important;
     margin: 80px 0!important;
     padding-right: 10px!important;
-	}
-	.thankew-container .thanks-banner  .img-responsive{width:100%;
-	height:auto;
-	}
+}
+.thankew-container .thanks-banner  .img-responsive{width:100%;
+    height:auto;
+}
 
 .thankew-container .thanks-banner .over-banner ul{
-float: left;
+    float: left;
     width: 100%;
-	}
-	.thankew-container .thanks-banner  .over-banner li{
-	display:inline-block;
-	margin:0 5px;
-	padding-right:10px;
-	}
+}
+.thankew-container .thanks-banner  .over-banner li{
+    display:inline-block;
+    margin:0 5px;
+    padding-right:10px;
+}
 .sign-up-container .validation-advice{ background:none; text-align:left;}
 .sign-up-container .validation-failed{ background:#fff!important;}
 
@@ -425,7 +425,7 @@ float: left;
     margin-top: 3% ! important;
 }
 .gender-box .gender{
-    font:14px AvantGardeGothicITCW01B;
+    font:18px AvantGardeGothicITCW01B;
 }
 .sign-up-container  .radio-right{padding-top:12px}
 
@@ -453,12 +453,12 @@ float: left;
         line-height: 22px;
     }
     .sign-up-container .gender-box label, .radio-right,.gender-box .gender{
-        font-size: 17px;
+        /*font-size: 17px;*/
     }
-    .sign-up-container .radio-right div label{
-        width: 17px;
-        height: 17px;
-    }
+    /*.sign-up-container .radio-right div label{*/
+    /*width: 17px;*/
+    /*height: 17px;*/
+    /*}*/
     .sign-up-container .top-heading span {
         font-size: 17px;
         line-height: 24px;
@@ -487,6 +487,7 @@ float: left;
     }
     .sign-up-container input[type="text"], .sign-up-container input[type="email"], .sign-up-container input[type="number"], .sign-up-container input[type="date"], .sign-up-container input.input-text, .sign-up-container input[type="password"]{
         padding: 3%;
+        font-size: 13px;
     }
 }
 
@@ -497,16 +498,16 @@ float: left;
     }
 
     .sign-up-container .top-heading span {
-         font-size: 18px;
-         line-height: 24px;
+        font-size: 18px;
+        line-height: 24px;
 
     }
-    .sign-up-container .radio-right div label{
-        width: 18px;
-        height: 18px;
-    }
+    /*.sign-up-container .radio-right div label{*/
+    /*width: 18px;*/
+    /*height: 18px;*/
+    /*}*/
     .sign-up-container .gender-box label, .radio-right,.gender-box .gender{
-        font-size: 18px;
+        /*font-size: 18px;*/
     }
     .avant_extra_light {
         font-size: 20px;
@@ -529,12 +530,12 @@ float: left;
     .sign-up-container .txt-area {
         height:210px;
         padding: 3%;
-        font-size: 14px;
-        line-height: 16px;
+        /*font-size: 14px;*/
+        /*line-height: 16px;*/
     }
     .sign-up-container input[type="text"], .sign-up-container input[type="email"], .sign-up-container input[type="number"], .sign-up-container input[type="date"], .sign-up-container input.input-text, .sign-up-container input[type="password"]{
         padding: 3%;
-        font-size: 14px;
+        /*font-size: 14px;*/
     }
 
 }
@@ -548,12 +549,12 @@ float: left;
         line-height: 32px;
 
     }
-    .sign-up-container .radio-right div label{
-        width: 23px;
-        height: 23px;
-    }
+    /*.sign-up-container .radio-right div label{*/
+    /*width: 23px;*/
+    /*height: 23px;*/
+    /*}*/
     .sign-up-container .gender-box label, .radio-right{
-        font-size: 23px;
+        /*font-size: 23px;*/
     }
     .avant_extra_light {
         font-size: 26px;
@@ -577,16 +578,16 @@ float: left;
     .sign-up-container .txt-area {
         height:218px;
         padding: 4%;
-        font-size: 18px;
-        line-height: 21px;
+        /*font-size: 18px;*/
+        /*line-height: 21px;*/
     }
     .sign-up-container input[type="text"], .sign-up-container input[type="email"], .sign-up-container input[type="number"], .sign-up-container input[type="date"], .sign-up-container input.input-text, .sign-up-container input[type="password"]{
         padding: 4%;
-        font-size: 18px;
+        /*font-size: 18px;*/
     }
     .gender-box .gender,.sign-up-container .gender-box label, .radio-right{
-         font-size: 23px;
-     }
+        /*font-size: 23px;*/
+    }
 
 }
 
@@ -597,12 +598,12 @@ float: left;
     }
 
     .sign-up-container .gender-box label, .radio-right, .gender-box .gender{
-        font-size: 28px;
+        /*font-size: 28px;*/
     }
-    .sign-up-container .radio-right div label{
-        width: 28px;
-        height: 28px;
-    }
+    /*.sign-up-container .radio-right div label{*/
+    /*width: 28px;*/
+    /*height: 28px;*/
+    /*}*/
     .sign-up-container .top-heading span {
         font-size: 28px;
         line-height: 39px;
@@ -632,12 +633,12 @@ float: left;
     .sign-up-container .txt-area {
         height:225px;
         padding: 4%;
-        font-size: 23px;
-        line-height: 25px;
+        /*font-size: 23px;*/
+        /*line-height: 25px;*/
     }
     .sign-up-container input[type="text"], .sign-up-container input[type="email"], .sign-up-container input[type="number"], .sign-up-container input[type="date"], .sign-up-container input.input-text, .sign-up-container input[type="password"]{
         padding: 4%;
-        font-size: 23px;
+        /*font-size: 23px;*/
     }
 
 
@@ -650,12 +651,12 @@ float: left;
     }
 
     .sign-up-container .gender-box label, .radio-right, .gender-box .gender{
-        font-size: 29px ;
+        /*font-size: 29px ;*/
     }
-    .sign-up-container .radio-right div label{
-        width: 29px;
-        height: 29px;
-    }
+    /*.sign-up-container .radio-right div label{*/
+    /*width: 29px;*/
+    /*height: 29px;*/
+    /*}*/
     .sign-up-container .top-heading span {
         font-size: 29px;
         line-height: 40px;
@@ -681,12 +682,12 @@ float: left;
     .sign-up-container .txt-area {
         height:234px;
         padding: 5%;
-        font-size: 25px;
-        line-height: 28px;
+        /*font-size: 25px;*/
+        /*line-height: 28px;*/
     }
     .sign-up-container input[type="text"], .sign-up-container input[type="email"], .sign-up-container input[type="number"], .sign-up-container input[type="date"], .sign-up-container input.input-text, .sign-up-container input[type="password"]{
         padding: 5%;
-        font-size: 25px;
+        /*font-size: 25px;*/
     }
 
 
