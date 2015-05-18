@@ -66,6 +66,7 @@ function searchTweets($hash_tag)
                         <span class="twitter_author"><a target="_blank"
                                                         href='http://twitter.com/yogasmoga'>YOGASMOGA</a></span>
                     <?php
+                        break;
                     }
                     ?>
                     <a class="twitter-icon" href="javascript:void(0);"><img
