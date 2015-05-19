@@ -1772,6 +1772,7 @@ textarea{resize:none;}
 #zoomedfbdtl{display: none !important;}
 .zoom-prd-det .prdname{padding-bottom: 0 !important; }
 td#zoomedproductimage img#zoomedimage1{margin-top: 34px;}
+table.inputtable td.inputholder{background: #fff; padding:0 10px !important;}
 table.inputtable td.inputholder input[type='text'], table.inputtable td.inputholder input[type='password'], table.gfredeem td input[type='text'], table#redeem td input[type='text'],label{font-size: 12px !important; font-family: gothambook; font-style: normal;}
 #referafriend-container{margin-left: 270px !important; width: auto !important; padding-right: 20%; max-width: 100% !important;}
 
