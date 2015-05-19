@@ -1221,7 +1221,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             if(Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() == "configurable")
             {
                 $productselectedoption = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
-                $productselectedoptioncount = count($productselectedoption['options']);
+                $productselectedoptioncount = isset($productselectedoption['options']) ? count($productselectedoption['options']) : 0;
 
                 if($this->searchcartnew($miniitems, $item->getSku(),$productselectedoptioncount) == false  )
                 {// echo $item->getSku().'--';
@@ -1265,7 +1265,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         $temparray['size'] = $_product->getAttributeText('size');
                     if($this->issuperattribute($product, "length"))
                         $temparray['length'] = $_product->getAttributeText('length');
-                    if(count($productselectedoption['options'])>0)
+                    if(isset($productselectedoption['options']) && count($productselectedoption['options'])>0)
                     {
                         $temparray['optionlabel'] = $productselectedoption['options'][0]['label'];
                         $temparray['optionvalue'] = $productselectedoption['options'][0]['value'];
@@ -1576,10 +1576,10 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         }
 
 
-        if($checksmogiapplied == '1' && $showedpoints > 0) $usesmogi="<p class='c-align'>You can't use other codes with SMOGI Bucks.</p>";
+        if($checksmogiapplied == '1' && (isset($showedpoints) && $showedpoints > 0)) $usesmogi="<p class='c-align'>You can't use other codes with SMOGI Bucks.</p>";
         else if($checkpromoapplied == '1' || $checkgiftapplied == '1') $usesmogi='';
-        else if($checksmogiapplied != '1' && $showedpoints > 0) $usesmogi='';
-        else if($checksmogiapplied != '1' && $showedpoints > 0) $usesmogi='<p class="c-align">Use your SMOGI Bucks for this purchase</p>';
+        else if($checksmogiapplied != '1' && (isset($showedpoints) && $showedpoints > 0)) $usesmogi='';
+        else if($checksmogiapplied != '1' && (isset($showedpoints) && $showedpoints > 0)) $usesmogi='<p class="c-align">Use your SMOGI Bucks for this purchase</p>';
         $usesmogi = '';
         $html .=  '<li>';
         if($shippingPrice == "FREE")
@@ -1760,7 +1760,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                     <span class="quantity dnone" cartqty='.$item['quantity'].'>qty '.$item['quantity'].'</span>
                     <span class="pname">'.$item['name'].'</span>';
 
-            if($item['insale'] == 'Yes')
+            if(isset($item['insale']) && $item['insale'] == 'Yes')
             {
                 $html .='<span class="amnt" style="color : #c03;">'.$item['price'].'</span>
                             <span class="insale"  > was '.$item['confPrice'].'</span>';
@@ -1770,14 +1770,14 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
             }
 
             $html .='<span class="clr">'.$item['color'].'</span>';
-            if($item['size'] !='') $html .='<span class="size">size '.$item['size'].'</span>';
-            if($item['length'] !='') $html .='<span class="size">'.$item['length'].'</span>';
-            if($item['optionlabel'] != '')
+            if(isset($item['size']) && $item['size'] !='') $html .='<span class="size">size '.$item['size'].'</span>';
+            if(isset($item['length']) && $item['length'] !='') $html .='<span class="size">'.$item['length'].'</span>';
+            if(isset($item['optionlabel']) && $item['optionlabel'] != '')
             {
                 $html .='<span class="size">'.$item['optionlabel'].'</span>';
                 //$html .='<span class="clr">'.$item['optionvalue'].'</span>';
             }
-            if($item['insale'] == 'Yes')
+            if(isset($item['insale']) && $item['insale'] == 'Yes')
             {
                 $html .='<span class="size" style="color: #c03;">This Item is Final Sale. Cannot be exchanged or returned.</span>';
             }
@@ -2356,6 +2356,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $items = $cartHelper->getCart()->getItems();
         $itemids = array();
         $count = 0;
+        $cattotal = 0;
 
         foreach ($items as $item) {
             array_push($itemids, $item->getProductId());
@@ -2392,7 +2393,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
                         //if($categoryid[$id]['category_id'] == 8)
                         //if($categoryid[$id]['name'] == 'Accessories')
                     {
-                        $cattotal = $cattotal + $itemstotal;break;
+                        $cattotal = $cattotal + $itemstotal;
+                        break;
                     }
                 }
             }

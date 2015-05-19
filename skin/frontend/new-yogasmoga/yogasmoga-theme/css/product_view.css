@@ -608,7 +608,8 @@ table.productimagecontainer table.tdbigimagecontainer td
 
 table.productimagecontainer table.tdbigimagecontainer td img{
     /*width: 100%;*/
-    width: 72%;
+    /*width: 72%;*/
+    width: auto;
 }
 
 table.productimagecontainer td.tddivider

@@ -257,7 +257,7 @@
 
             <?php
             /////////////BLOCK 9////////////
-            $post = get_post(4128);
+            $post = get_post(1428);
             ?>
             <?php echo get_the_post_thumbnail($post->ID,"thumb");
             if(!has_post_thumbnail($post->ID)){
