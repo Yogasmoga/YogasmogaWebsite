@@ -85,7 +85,10 @@ class Ysindia_Customer_AccountController extends Mage_Customer_AccountController
 
                 $customer_id = $customer->getId();
 
-                $result = file_get_contents($root . 'rangoli/wp_update_user_password.php?customer_id=' . $customer_id . '&password=' . $newPass);
+                $path = $root . 'rangoli/wp_update_user_password.php?customer_id=' . $customer_id . '&password=' . $newPass;
+
+                Mage::log("rangoli update password url = " . $path);
+                $result = file_get_contents($path);
 
                 Mage::log('result = ' . $result, null, '');
 

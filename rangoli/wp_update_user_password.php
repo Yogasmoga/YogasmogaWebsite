@@ -9,11 +9,13 @@
     if(isset($row) && count($row)>0){
 
         $data = get_object_vars($row[0]);
+
         $user_id = $data['user_id'];
 
         $hash = wp_hash_password( $password );
 
-        wp_set_password($password, $user_id);
+        $wpdb->update($wpdb->users, array('user_pass' => $hash), array('ID' => $user_id) );
+        //wp_set_password($password, $user_id);
 
         echo 'done';
     }
