@@ -273,56 +273,53 @@
 }(jQuery, window);
 var firstTime = false;
 var $activity, game;
+jQuery(document).ready(function ($) {
+    var $gameContainer = $('<div id="color-game"/>');
+    $('body').append($gameContainer);
 
+    /* ***** UPDATE JSON ***** */
+    //game.isInActive(); // Check if game is hidden or not, returns true/false;
+    //game.updateJson(new_json_object); // Update game data; will work only if game is inactive;
+    var d = new Date();
+    var s = d.getSeconds();
+    Pace.ignore(function () {
+        $.get(homeUrl + 'rangoli/get_bullzia.php?s=' + s, function (data) {
+            $activity = data;
+        }, 'json').done(function () {
+            game = new $.Rangoli($("#color-game"), $activity);
+            game.initGame();
+            $(".bullzai").fadeIn();
+            $('.bullzai').click(function () {
 
+                if(logged_in==false){
+                    open_bulls_popup();
+                }
+                else{
+                    game.showGame();
+                }
+            });
+            firstTime = true;
+        });
+    });
+});
 
-//jQuery(document).ready(function ($) {
-//    var $gameContainer = $('<div id="color-game"/>');
-//    $('body').append($gameContainer);
-//
-//    /* ***** UPDATE JSON ***** */
-//    //game.isInActive(); // Check if game is hidden or not, returns true/false;
-//    //game.updateJson(new_json_object); // Update game data; will work only if game is inactive;
-//    var d = new Date();
-//    var s = d.getSeconds();
-//    Pace.ignore(function () {
-//        $.get(homeUrl + 'rangoli/get_bullzia.php?s=' + s, function (data) {
-//            $activity = data;
-//        }, 'json').done(function () {
-//            game = new $.Rangoli($("#color-game"), $activity);
-//            game.initGame();
-//            $(".bullzai").fadeIn();
-//            $('.bullzai').click(function () {
-//
-//                if(logged_in==false){
-//                    open_bulls_popup();
-//                }
-//                else{
-//                    game.showGame();
-//                }
-//            });
-//            firstTime = true;
-//        });
-//    });
-//});
-//
-//function get_bulls_eye() {
-//    var d = new Date();
-//    var s = d.getSeconds();
-//    Pace.ignore(function () {
-//        $.get(homeUrl + 'rangoli/get_bullzia.php?s=' + s, function (data) {
-//            $activity = data;
-//        }, 'json').done(function () {
-//            //setTimeout(function () {
-//            //Pace.ignoreURLs(get_bulls_eye());
-//            if (game.isInActive()) {
-//                game.updateJson($activity);
-//                //get_bulls_eye();
-//            }
-//            else {
-//                //get_bulls_eye();
-//            }
-//            //}, 30000);
-//        });
-//    });
-//}
+function get_bulls_eye() {
+    var d = new Date();
+    var s = d.getSeconds();
+    Pace.ignore(function () {
+        $.get(homeUrl + 'rangoli/get_bullzia.php?s=' + s, function (data) {
+            $activity = data;
+        }, 'json').done(function () {
+            //setTimeout(function () {
+            //Pace.ignoreURLs(get_bulls_eye());
+            if (game.isInActive()) {
+                game.updateJson($activity);
+                //get_bulls_eye();
+            }
+            else {
+                //get_bulls_eye();
+            }
+            //}, 30000);
+        });
+    });
+}
