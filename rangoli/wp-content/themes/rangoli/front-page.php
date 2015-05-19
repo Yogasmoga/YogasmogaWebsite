@@ -169,12 +169,12 @@ get_template_part("content");
                         <li>
 
                         <?php
-echo get_template_part("hashtweets");
+//echo get_template_part("hashtweets");
 ?>
                         </li>
                         <li>
                         <?php
-echo get_template_part("latest_rangoli_instagram");
+//echo get_template_part("latest_rangoli_instagram");
 ?>
                         </li>
                     </ul>

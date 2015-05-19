@@ -2101,3 +2101,14 @@ button.next-confirmation-page {
     width: 40%;
     letter-spacing: 1px;
 }
+
+.post_content li {
+    float: none;
+    list-style: initial;
+    list-style-position: inside;
+    margin: initial;
+    padding: initial;
+}
+.post_content > ul {
+    margin: 1em;
+}
