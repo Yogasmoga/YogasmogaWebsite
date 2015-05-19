@@ -14,8 +14,9 @@
 
         $hash = wp_hash_password( $password );
 
-        $wpdb->update($wpdb->users, array('user_pass' => $hash), array('ID' => $user_id) );
-        //wp_set_password($password, $user_id);
+        $result = $wpdb->query(
+            "update rangoli_users SET user_pass='$hash' WHERE ID = $user_id"
+        );
 
         echo 'done';
     }
