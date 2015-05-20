@@ -664,6 +664,7 @@ $style = "";
 <!-- toCheckFirstCustomerOrderforGOYS -->
 <?php $orders = Mage::getModel('sales/order')->getCollection()
     ->addAttributeToFilter('customer_id', Mage::getSingleton('customer/session')->getCustomer()->getId());
+$sum = 0;
 foreach ($orders as $order) {
     $total = $order->getGrandTotal();
     $sum+= $total;
