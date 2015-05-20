@@ -372,7 +372,7 @@
     text-shadow:none;
 }
 .homepage_slider  .flex-direction-nav .flex-prev{
-    background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/homepage/previous-slide.png") no-repeat scroll center bottom / 100% 100% rgba(0, 0, 0, 0);
+    background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/homepage/previous-slide.png") no-repeat scroll center bottom / auto auto rgba(0, 0, 0, 0);
 }
 .homepage_slider  .flex-direction-nav .flex-next{
     background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/homepage/next-slide.png") no-repeat scroll center bottom / auto auto rgba(0, 0, 0, 0);
