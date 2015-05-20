@@ -8,18 +8,52 @@ class Ysindia_Nominateinstructor_Block_Adminhtml_Nominateinstructor_Edit_Tab_For
       $this->setForm($form);
       $fieldset = $form->addFieldset('nominateinstructor_form', array('legend'=>Mage::helper('nominateinstructor')->__('Item information')));
      
-      $fieldset->addField('title', 'text', array(
-          'label'     => Mage::helper('nominateinstructor')->__('Title'),
+      $fieldset->addField('your_first_name', 'text', array(
+          'label'     => Mage::helper('nominateinstructor')->__('First Name'),
           'class'     => 'required-entry',
           'required'  => true,
-          'name'      => 'title',
+          'name'      => 'your_first_name',
       ));
 
-      $fieldset->addField('filename', 'file', array(
+      /*$fieldset->addField('filename', 'file', array(
           'label'     => Mage::helper('nominateinstructor')->__('File'),
           'required'  => false,
           'name'      => 'filename',
-	  ));
+	  ));*/
+	  
+	  $fieldset->addField('your_last_name', 'text', array(
+          'label'     => Mage::helper('nominateinstructor')->__('Last Name'),
+          'class'     => 'required-entry',
+          'required'  => true,
+          'name'      => 'your_last_name',
+      ));
+	  $fieldset->addField('your_email', 'text', array(
+          'label'     => Mage::helper('nominateinstructor')->__('Email'),
+          'class'     => 'required-entry',
+          'required'  => true,
+          'name'      => 'your_email',
+      ));
+	  
+	  $fieldset->addField('instructor_first_name', 'text', array(
+          'label'     => Mage::helper('nominateinstructor')->__('Instructer First Name'),
+          'class'     => 'required-entry',
+          'required'  => true,
+          'name'      => 'instructor_first_name',
+      ));
+	  $fieldset->addField('instructor_last_name', 'text', array(
+          'label'     => Mage::helper('nominateinstructor')->__('Instructer Last Name'),
+          'class'     => 'required-entry',
+          'required'  => true,
+          'name'      => 'instructor_last_name',
+      ));
+	  $fieldset->addField('instructor_email', 'text', array(
+          'label'     => Mage::helper('nominateinstructor')->__('Instructer Email'),
+          'class'     => 'required-entry',
+          'required'  => true,
+          'name'      => 'instructor_email',
+      ));
+	  
+	  
 		
       $fieldset->addField('status', 'select', array(
           'label'     => Mage::helper('nominateinstructor')->__('Status'),
@@ -41,7 +75,7 @@ class Ysindia_Nominateinstructor_Block_Adminhtml_Nominateinstructor_Edit_Tab_For
           'name'      => 'content',
           'label'     => Mage::helper('nominateinstructor')->__('Content'),
           'title'     => Mage::helper('nominateinstructor')->__('Content'),
-          'style'     => 'width:700px; height:500px;',
+          'style'     => 'width:700px; height:300px;',
           'wysiwyg'   => false,
           'required'  => true,
       ));
