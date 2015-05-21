@@ -390,6 +390,7 @@
     height: 8px;
     text-indent: -9999px;
     width: 8px;
+    background: #fff;
 }
 .homepage_slider .flex-control-paging li a.flex-active {
     background: #CC0033;
