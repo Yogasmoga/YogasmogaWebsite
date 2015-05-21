@@ -142,10 +142,10 @@ html[xmlns] .flexslider .slides {
   text-align: right;
 }
 .flexslider .flex-direction-nav .flex-prev{
-  opacity: 1;
+  opacity: 0;
 }
 .flexslider .flex-direction-nav .flex-next {
-  opacity: 1;
+  opacity: 0;
   right: 10px;
 }
 

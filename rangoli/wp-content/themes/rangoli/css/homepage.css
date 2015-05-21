@@ -354,10 +354,10 @@
     left:0;
 }
 .flex-direction-nav > li:last-child a {
-    height: 112px;
+    height: 100%;
     position: absolute;
-    top: 50%;
-    margin-top:-56px;
+    top: 0;
+    margin-top:0px;
     width: 70px;
     z-index: 555;
     color:transparent;
@@ -371,11 +371,14 @@
     text-indent: -999px;
     text-shadow:none;
 }
+.homepage_slider:hover .flex-direction-nav a{
+    opacity: 1;
+}
 .homepage_slider  .flex-direction-nav .flex-prev{
-    background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/homepage/previous-slide.png") no-repeat scroll center bottom / auto auto rgba(0, 0, 0, 0);
+    background: rgba(0, 0, 0, 0) url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/homepage/previous-slide.png") no-repeat scroll center center;
 }
 .homepage_slider  .flex-direction-nav .flex-next{
-    background: url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/homepage/next-slide.png") no-repeat scroll center bottom / auto auto rgba(0, 0, 0, 0);
+    background:rgba(0, 0, 0, 0) url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/homepage/next-slide.png") no-repeat scroll center center;
 }
 .homepage_slider .flex-control-nav.flex-control-paging {
     bottom: 10px;
