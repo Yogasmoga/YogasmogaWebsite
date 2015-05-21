@@ -56,6 +56,7 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
 
     protected function _prepareCollection()
     {
+/*
        // $collection = Mage::getResourceModel($this->_getCollectionClass());
 		$collection = Mage::getResourceModel($this->_getCollectionClass())
 			->join(
@@ -72,6 +73,12 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
         $collection->getSelect()->group('entity_id');
 		$this->setCollection($collection);
         return parent::_prepareCollection();
+*/
+
+        $collection = Mage::getResourceModel($this->_getCollectionClass());
+        $this->setCollection($collection);
+        return parent::_prepareCollection();
+
     }
 	
 
