@@ -15,8 +15,11 @@ $list_id = trim($ar[1]);
 $correct = isset($api_key) && isset($list_id) && (strlen($list_id) > 0) && (strlen($api_key) > 0);
 
 if ($correct) {
+//    $date_to_look_start = date('Y-m-d', strtotime('-7 day', strtotime(date('Y-m-d'))));
+//    $date_to_look_end = date('Y-m-d', strtotime('-9 day', strtotime(date('Y-m-d'))));
+
     $date_to_look_start = date('Y-m-d', strtotime('-7 day', strtotime(date('Y-m-d'))));
-    $date_to_look_start = date('Y-m-d', strtotime('-9 day', strtotime(date('Y-m-d'))));
+    $date_to_look_end = date('Y-m-d');
 
     echo $date_to_look_start . " , " . $date_to_look_end . "<br/><br/>";
 
