@@ -443,8 +443,10 @@ function showShoppingBagHtml() {
 
     if (_showShoppingbagLoader)
         jQuery(".shopping-cart").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='margin:80% auto auto;' />");
-    if (!check4reviewpage)
-        jQuery.ajax({url: checkouturl});
+/********* ys team update, commented these lines ************/
+    //if (!check4reviewpage)
+    //    jQuery.ajax({url: checkouturl});
+/********* ys team update ************/
     // end check for paypal final review page
     // ys update : setTimeout(function () {
 
