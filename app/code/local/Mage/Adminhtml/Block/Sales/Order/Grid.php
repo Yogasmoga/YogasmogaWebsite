@@ -73,9 +73,23 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
 		$this->setCollection($collection);
         return parent::_prepareCollection();*/
 
-        $collection = Mage::getResourceModel($this->_getCollectionClass());
+//        $collection = Mage::getResourceModel($this->_getCollectionClass());
+//        $this->setCollection($collection);
+//        return parent::_prepareCollection();
+
+        $collection = Mage::getResourceModel($this->_getCollectionClass())
+            ->join(
+                'sales/order_item',
+                '`sales/order_item`.order_id=`main_table`.entity_id',
+                array(
+                    'qty_backordered'  => new Zend_Db_Expr('group_concat(`sales/order_item`.qty_backordered SEPARATOR ",")'),
+                )
+            );
+
+        $collection->getSelect()->group('main_table.entity_id');
         $this->setCollection($collection);
         return parent::_prepareCollection();
+
     }
 	
 
