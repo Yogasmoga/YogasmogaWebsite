@@ -41,6 +41,11 @@
 
     $orderDetails = $order->getData();
 
+    if (isset($orderDetails['discount_amount']))
+        $discount = abs($orderDetails['discount_amount']);
+    else
+        $discount = 0;
+
     if (isset($orderDetails['coupon_code'])) {
         $coupon_code = $orderDetails['coupon_code'];
 
@@ -57,10 +62,9 @@
         var MasterTmsUdo = {
 
             'CJ': {
-
                 'CID': '1533679',
                 'TYPE': '378331',
-                'DISCOUNT': '',
+                'DISCOUNT': '<?php echo $discount;?>',
                 'OID': '<?php echo $order_id;?>',
                 'CURRENCY': 'USD',
                 'COUPON': '<?php echo $coupon_code;?>',
