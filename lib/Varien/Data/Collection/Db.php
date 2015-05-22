@@ -234,7 +234,7 @@ class Varien_Data_Collection_Db extends Varien_Data_Collection
      */
     public function getSelectCountSql()
     {
-        /*$this->_renderFilters();
+        $this->_renderFilters();
 
         $countSelect = clone $this->getSelect();
         $countSelect->reset(Zend_Db_Select::ORDER);
@@ -244,24 +244,6 @@ class Varien_Data_Collection_Db extends Varien_Data_Collection
 
         $countSelect->columns('COUNT(*)');
 
-        return $countSelect;*/
-
-        $this->_renderFilters();
-
-        $countSelect = clone $this->getSelect();
-        $countSelect->reset(Zend_Db_Select::ORDER);
-        $countSelect->reset(Zend_Db_Select::LIMIT_COUNT);
-        $countSelect->reset(Zend_Db_Select::LIMIT_OFFSET);
-        $countSelect->reset(Zend_Db_Select::COLUMNS);
-
-        if(count($this->getSelect()->getPart(Zend_Db_Select::GROUP)) > 0) {
-            $countSelect->reset(Zend_Db_Select::GROUP);
-            $countSelect->distinct(true);
-            $group = $this->getSelect()->getPart(Zend_Db_Select::GROUP);
-            $countSelect->columns("COUNT(DISTINCT ".implode(", ", $group).")");
-        } else {
-            $countSelect->columns('COUNT(*)');
-        }
         return $countSelect;
     }
 
