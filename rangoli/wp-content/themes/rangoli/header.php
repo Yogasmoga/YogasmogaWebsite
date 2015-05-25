@@ -222,7 +222,7 @@ if(!is_user_logged_in()){
                     <ul class="sub-menu menu-ovr ">
                         <li>
                             <ul>
-                                <li><a href="/women/what-s-new"> What's New</a></li>
+                                <li><a href="/women/whats-new"> What's New</a></li>
                                 <li><a href="/women/one-too-many"> One 2 Many</a></li>
                                 <li><a href="/women/additional-sizes"> ADDITIONAL SIZES</a></li>
                                 <li><a href="/women/vivacity-collection"> VIVACITY COLLECTION</a></li>
@@ -261,7 +261,7 @@ if(!is_user_logged_in()){
                     <ul class="sub-menu menu-ovr second-list">
                         <li>
                             <ul>
-                                <li><a href="/men/what-s-new"> What's New</a></li>
+                                <li><a href="/men/whats-new"> What's New</a></li>
 <!--                                <li><a href="/men/top-sellers"> Top Sellers</a></li>-->
                             </ul>
                         </li>
