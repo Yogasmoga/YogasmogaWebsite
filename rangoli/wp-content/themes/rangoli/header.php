@@ -239,10 +239,10 @@ if(!is_user_logged_in()){
                         </li>
                         <li><a href="/women/bottoms"> Bottoms</a>
                             <ul>
-                                <li><a href="/women/bottoms/pants">Pants</a></li>
-                                <li><a href="/women/bottoms/leggings">Leggings</a></li>
+                                <li><a href="/women/bottoms/shorts">Shorts</a></li>
                                 <li><a href="/women/bottoms/crops">Crops</a></li>
-<!--                                <li><a href="/women/bottoms/shorts">Shorts</a></li>-->
+                                <li><a href="/women/bottoms/leggings">Leggings</a></li>
+                                <li><a href="/women/bottoms/pants">Pants</a></li>
                             </ul>
                         </li>
                         <li><a href="/women/accessories"> Accessories </a>
