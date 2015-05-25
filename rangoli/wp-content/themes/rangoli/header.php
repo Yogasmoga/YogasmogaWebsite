@@ -195,7 +195,7 @@ if(!is_user_logged_in()){
                     <ul class="sub-menu menu-ovr ">
                         <li>
                             <ul>
-                                <li><a href="/women/what-s-new"> What's New</a></li>
+                                <li><a href="/women/whats-new"> What's New</a></li>
                                 <li><a href="/women/one-too-many"> One 2 Many</a></li>
                                 <li><a href="/women/additional-sizes"> ADDITIONAL SIZES</a></li>
                                 <li><a href="/women/vivacity-collection"> VIVACITY COLLECTION</a></li>
@@ -212,10 +212,10 @@ if(!is_user_logged_in()){
                         </li>
                         <li><a href="/women/bottoms"> Bottoms</a>
                             <ul>
-                                <li><a href="/women/bottoms/pants">Pants</a></li>
-                                <li><a href="/women/bottoms/leggings">Leggings</a></li>
+                                <li><a href="/women/bottoms/shorts">Shorts</a></li>
                                 <li><a href="/women/bottoms/crops">Crops</a></li>
-<!--                                <li><a href="/women/bottoms/shorts">Shorts</a></li>-->
+                                <li><a href="/women/bottoms/leggings">Leggings</a></li>
+                                <li><a href="/women/bottoms/pants">Pants</a></li>
                             </ul>
                         </li>
                         <li><a href="/women/accessories"> Accessories </a>
@@ -234,7 +234,7 @@ if(!is_user_logged_in()){
                     <ul class="sub-menu menu-ovr second-list">
                         <li>
                             <ul>
-                                <li><a href="/mens/what-s-new"> What's New</a></li>
+                                <li><a href="/mens/whats-new"> What's New</a></li>
 <!--                                <li><a href="/mens/top-sellers"> Top Sellers</a></li>-->
                             </ul>
                         </li>
