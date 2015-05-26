@@ -90,10 +90,10 @@ if ($correct) {
         ));
 
         if(isset($result["data"][0]["status"]) && $result["data"][0]["status"]=="unsubscribed"){
-            echo $result["data"][0]["email"] . " is " . $result["data"][0]["status"] . ", not changing values<br/>";
+            ;//echo $result["data"][0]["email"] . " is " . $result["data"][0]["status"] . ", not changing values<br/>";
         }
         else if(isset($result["data"][0]["status"]) && $result["data"][0]["status"]=="subscribed"){
-            echo $result["data"][0]["email"] . " is " . $result["data"][0]["status"] . ", not changing values<br/>";
+            ;//echo $result["data"][0]["email"] . " is " . $result["data"][0]["status"] . ", not changing values<br/>";
         }
         else{
             $result = $mailChimp->call('lists/subscribe', array(
@@ -106,12 +106,10 @@ if ($correct) {
                 'send_welcome' => false,
             ));
 
-            print_r($result);
+            echo $email . "\n";
         }
-
-        echo "<br/><br/>";
     }
 
-    Mage::log("Mailchimp Synchronize Task Completed at : " . date("Y-m-d h:i:s"));
+    echo "\nMailchimp Synchronize Task Completed at : " . date("Y-m-d h:i:s");
 }
 ?>
