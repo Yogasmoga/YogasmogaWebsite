@@ -106,7 +106,7 @@ get_template_part("content");
         <div class="row">
             <div class="one-three left facebook"  style="background: #2D9630;">
                     <?php
-                    $post = get_post(1362);         // block 10
+                    $post = get_post(1904);         // block 10
                     ?>
                     <?php echo get_the_post_thumbnail($post->ID,"thumb");
                     if(!has_post_thumbnail($post->ID)){
@@ -145,7 +145,7 @@ get_template_part("content");
 
 
                     </div>
-                    <p class="post_link"><a  class="ajax-load"  class="ajax-load"  href="<?php echo get_site_url(); ?>/read">Read More</a></p>
+                    <p class="post_link"><a  class="ajax-load"  class="ajax-load"  href="<?php echo get_site_url(); ?>/Learn">Learn More</a></p>
 
 
 
@@ -186,7 +186,7 @@ echo get_template_part("latest_rangoli_instagram");
 
 
      <?php
-            $post = get_post(330);      // block 12
+            $post = get_post(1901);      // block 12
             ?>
             <?php echo get_the_post_thumbnail($post->ID,"thumb");
             if(!has_post_thumbnail($post->ID)){
@@ -225,7 +225,7 @@ echo get_template_part("latest_rangoli_instagram");
 
 
             </div>
-            <p class="post_link"><a  class="ajax-load"  class="ajax-load"  href="<?php echo get_site_url(); ?>/learn">Learn More</a></p>
+            <p class="post_link"><a  class="ajax-load"  class="ajax-load"  href="<?php echo get_site_url(); ?>/read">Read More</a></p>
 
 
 

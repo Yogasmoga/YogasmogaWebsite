@@ -21,7 +21,7 @@ if ($correct) {
     $date_to_look_start = date('Y-m-d', strtotime('-7 day', strtotime(date('Y-m-d'))));
     $date_to_look_end = date('Y-m-d');
 
-    echo $date_to_look_start . " , " . $date_to_look_end . "<br/><br/>";
+    echo $date_to_look_start . " , " . $date_to_look_end . "\n\n";
 
     $collection = Mage::getModel('customer/customer')->getCollection()
         ->addAttributeToSelect('entity_id')
