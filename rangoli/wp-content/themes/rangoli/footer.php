@@ -327,11 +327,11 @@ if(!is_user_logged_in()) {
                 </li>
                 <li>&nbsp;</li>
                 <li ><a target="_blank" href="https://twitter.com/intent/follow?original_referer=YOGASMOGA.COM%2Fblog%2Fxmlrpc.php&region=follow_link&screen_name=yogasmoga&tw_p=followbutton&variant=2.0">
-                        <img src="http://d1iorz83055o8x.cloudfront.net/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/64x20xtwtr-sml.jpg.pagespeed.ic.bz-wWsqdpc.jpg">
+                        <img src="http://cdn.yogasmoga.com/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/twtr-sml.jpg">
                     </a>
                 </li>
                 <li>&nbsp;</li>
-                <li ><img src="http://d1iorz83055o8x.cloudfront.net/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/50x20xpaypal-sml.jpg.pagespeed.ic.BUgdB7cQsT.jpg" style="height:20px; width:50px;"></li>
+                <li ><img src="http://cdn.yogasmoga.com/skin/frontend/new-yogasmoga/yogasmoga-theme/images/footer/paypal-sml.jpg" style="height:20px; width:50px;"></li>
 
 
             </ul>
