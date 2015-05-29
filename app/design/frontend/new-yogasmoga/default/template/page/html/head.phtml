@@ -24,6 +24,23 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<?php if(strpos(Mage::helper('core/url')->getCurrentUrl(),"customer/account/login") !== FALSE)
+{
+    ?>
+    <title>My Account | Yoga Pants &amp; Yoga Gear for Sweaty Workouts | YOGASMOGA</title>
+    <meta name="description" content="YOGASMOGA makes the best performance workout clothes for yoga, spin, run, pilates & athletic activities. Advanced Sweat Wicking + Antimicrobial Fabrics." />
+    <meta name="keywords" content="Yoga, Yoga Clothes, Yoga Clothing, Yoga Apparel, Yoga Gear, Yoga Accessories, Athletic Apparel,  Women's Athletic Clothing, Men's Athletic Clothing, Women's Yoga Clothing, Men's Yoga Clothing, Clothes for Yoga, Yoga Pants, Sexy Yoga pants, Running Clothes, Spin Clothes, Dance Clothes" />
+<?php
+}
+else
+{
+    ?>
+    <title><?php echo $this->getTitle() ?></title>
+    <meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />
+    <meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />
+<?php
+}
+?>
 <script>(function() {
         var _fbq = window._fbq || (window._fbq = []);
         if (!_fbq.loaded) {
@@ -52,23 +69,6 @@ if($serverType == 'production')
     </noscript>
 <?php } ?>
 <meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
-<?php if(strpos(Mage::helper('core/url')->getCurrentUrl(),"customer/account/login") !== FALSE)
-    {
-        ?>
-        <title>My Account | Yoga Pants &amp; Yoga Gear for Sweaty Workouts | YOGASMOGA</title>
-        <meta name="description" content="YOGASMOGA makes the best performance workout clothes for yoga, spin, run, pilates & athletic activities. Advanced Sweat Wicking + Antimicrobial Fabrics." />
-        <meta name="keywords" content="Yoga, Yoga Clothes, Yoga Clothing, Yoga Apparel, Yoga Gear, Yoga Accessories, Athletic Apparel,  Women's Athletic Clothing, Men's Athletic Clothing, Women's Yoga Clothing, Men's Yoga Clothing, Clothes for Yoga, Yoga Pants, Sexy Yoga pants, Running Clothes, Spin Clothes, Dance Clothes" />
-        <?php
-    }
-    else
-    {
-        ?>
-            <title><?php echo $this->getTitle() ?></title>
-            <meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />
-            <meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />        
-        <?php
-    }
- ?>
 <meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
 <link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
 <link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
