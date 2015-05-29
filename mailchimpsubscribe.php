@@ -84,6 +84,14 @@ if ($correct) {
         $country = $single["COUNTRY"];
         $gender = $single["GENDER"];
 
+        if(isset($gender) && strlen(trim($gender))>0){
+
+            if($gender==1)
+                $gender = "MALE";
+            else
+                $gender = "FEMALE";
+        }
+
         $result = $mailChimp->call('lists/member-info', array(
             'id' => $list_id,
             'emails' => array( 0 => array('email' => $email) )
@@ -106,7 +114,7 @@ if ($correct) {
                 'send_welcome' => false,
             ));
 
-            echo $email . "\n";
+            echo $email . " , $gender \n";
         }
     }
 
