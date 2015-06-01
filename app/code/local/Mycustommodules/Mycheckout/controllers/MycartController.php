@@ -273,13 +273,6 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
     
     public function getminicarthtml()
     {
-        $homeUrl = $this->getBaseUrl();
-        $isSecure = Mage::app()->getStore()->isCurrentlySecure();
-        if($isSecure) {
-            $homeUrl = $this->getUrl('', array('_secure' => true));
-        }
-
-
         //$output .= "SKU = ".Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() . "<br>";
 //        $output .= "SKU = ".$item->getSku() . "<br>";
 //        $output .= "Namw = ".$item->getName() . "<br>";
@@ -391,10 +384,10 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         //$minidetails['totalitems'] = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
         $minidetails['totalitems'] = $this->getcartcount();
         //$minidetails['cartlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/cart";
-        $minidetails['cartlink'] = $homeUrl . "checkout/cart";
+        $minidetails['cartlink'] = Mage::getUrl('/', array('_secure'=>true)) . "checkout/cart";
         $minidetails['subtotal'] = "$".number_format((float)$subtotal, 2, '.','');// round(Mage::getModel('checkout/cart')->getQuote()->getGrandTotal(), 2);
         //$minidetails['checkoutlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/onepage";
-        $minidetails['checkoutlink'] =  $homeUrl . "checkout/onepage";
+        $minidetails['checkoutlink'] =  Mage::getUrl('/', array('_secure'=>true)) . "checkout/onepage";
         
         //echo "<pre>";
 //        print_r($minidetails);
