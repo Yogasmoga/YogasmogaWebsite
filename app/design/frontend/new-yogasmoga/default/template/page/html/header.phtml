@@ -288,7 +288,7 @@ if($serverType == 'production')
 <?php
 $currentUrl = $this->helper('core/url')->getCurrentUrl();
 $checkoutpage= Mage::getUrl('/', array('_secure'=>true)).'checkout/onepage';
-$successpage= $this->getUrl().'checkout/onepage/success';
+$successpage= Mage::getUrl('/', array('_secure'=>true)).'checkout/onepage/success';
 
 if($currentUrl != $checkoutpage){
     ?>
@@ -308,14 +308,14 @@ if($currentUrl != $checkoutpage){
             });
         });
         function bubble(status){
-            // jQuery('.online-status-icon').attr('src','<?php echo $this->getSkinUrl('images/footer/offline.png') ?>');
-            jQuery('.chat-status').empty().html('<img alt="Offline" src="<?php echo $this->getSkinUrl('images/footer/offline.png') ?>" class="online-status-icon"> Offline now');
+            // jQuery('.online-status-icon').attr('src','<?php echo $this->getSkinUrl('images/footer/offline.png', array('_secure'=>true)); ?>');
+            jQuery('.chat-status').empty().html('<img alt="Offline" src="<?php echo $this->getSkinUrl('images/footer/offline.png', array('_secure'=>true)); ?>" class="online-status-icon"> Offline now');
             //  jQuery('.online > span').css('background-color','#999');
             jQuery('.online').empty().html('<span style="background-color: #999;"></span> Offline now');
             if(status =='online')
             {
                 //// jQuery('.online-status-icon').attr('src','<?php echo $this->getSkinUrl('images/footer/online.png') ?>');
-                jQuery('.chat-status').empty().html('<img alt="Online" src="<?php echo $this->getSkinUrl('images/footer/online.png') ?>" class="online-status-icon"> Online now');
+                jQuery('.chat-status').empty().html('<img alt="Online" src="<?php echo $this->getSkinUrl('images/footer/online.png', array('_secure'=>true)); ?>" class="online-status-icon"> Online now');
                 ////jQuery('.online > span').css('background-color','#00A14B');
                 jQuery('.online').empty().html('<span style="background-color: #00a14b;"></span> Online now');
 
@@ -401,9 +401,9 @@ $style = "";
             <ul class="f-left main-menu ctag-menu">
                 <li id="stepCheck">3 Step Checkout <span><span class="f-left">Free and fast shipping to US and Canada</span>
                 <span class="f-left" style="margin: 0 0 0 10px">
-                    <img alt="YOGASMOGA - United States" src="<?php echo $this->getSkinUrl('images/USflag-new.png') ?>" style="height:16px;" />
-                    <img alt="YOGASMOGA - Canada" src="<?php echo $this->getSkinUrl('images/canada-flag-new.png') ?>" style="height:16px;"/>
-                    <img alt="YOGASMOGA - Global" src="<?php echo $this->getSkinUrl('images/globe.png') ?>" style="height:16px;"/>
+                    <img alt="YOGASMOGA - United States" src="<?php echo $this->getSkinUrl('images/USflag-new.png', array('_secure'=>true)); ?>" style="height:16px;" />
+                    <img alt="YOGASMOGA - Canada" src="<?php echo $this->getSkinUrl('images/canada-flag-new.png', array('_secure'=>true)); ?>" style="height:16px;"/>
+                    <img alt="YOGASMOGA - Global" src="<?php echo $this->getSkinUrl('images/globe.png', array('_secure'=>true)); ?>" style="height:16px;"/>
                 </span>
                 <div class="clear-fix"></div>
             </span></li>
@@ -422,10 +422,10 @@ $style = "";
                         //show Main parent categories first level
                         if($child1->getId() == $currentcategoryid)
                             echo "<li><a class='menu-heading ' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
-                        //echo "<li><a class='menu-heading posRel' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
+                        //echo "<li><a class='menu-heading posRel' href='".Mage::getUrl('/', array('_secure'=>true))."women_landing'>".$child1->getName()."</a>";
                         else
                             echo "<li><a class ='menu-heading' href='".Mage::getModel("catalog/category")->load($child1->getId())->getUrl()."'>".$child1->getName()."</a>";
-                        //echo "<li><a class='menu-heading posRel' href='".$this->getBaseUrl()."women_landing'>".$child1->getName()."</a>";
+                        //echo "<li><a class='menu-heading posRel' href='".Mage::getUrl('/', array('_secure'=>true))."women_landing'>".$child1->getName()."</a>";
                         // show sub categories second level
 
 //                        echo '<ul class="sub-menu"><li><ul><li><a href="">What\'s new!</a></li><li><a href="">Shop the colors!</a></li><li><a href="">Top sellers</a></li>
@@ -541,21 +541,21 @@ $style = "";
                     <li class="free-shipping">
                         <span>Free shipping to US and Canada
                             <span>
-                                <img src="<?php echo $this->getSkinUrl('images/USAflag.png') ?>" alt="YogaSmoga - United States" style="height:16px;" />
-                                <img src="<?php echo $this->getSkinUrl('images/canada-flag.png') ?>" alt="YogaSmoga - Canada" style="height:16px;"/>
-                                <img src="<?php echo $this->getSkinUrl('images/globe-flag.png') ?>" alt="YogaSmoga - Global" style="height:16px;" />  
+                                <img src="<?php echo $this->getSkinUrl('images/USAflag.png', array('_secure'=>true)); ?>" alt="YogaSmoga - United States" style="height:16px;" />
+                                <img src="<?php echo $this->getSkinUrl('images/canada-flag.png', array('_secure'=>true)); ?>" alt="YogaSmoga - Canada" style="height:16px;"/>
+                                <img src="<?php echo $this->getSkinUrl('images/globe-flag.png', array('_secure'=>true)); ?>" alt="YogaSmoga - Global" style="height:16px;" />
                             </span>
                         </span>
                     </li>
                     <li data-blockid = "help-new">
-                        <a href="<?php echo $this->getBaseUrl();?>help#faq">Help</a>
+                        <a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>help#faq">Help</a>
                         <ul class="sub-menu l-align cms-header-link" style="left: -87px;">
                             <li class="blank"></li>
-                            <li style="padding-top: 16px;" data-blockid = "faq"><a href="<?php echo $this->getBaseUrl();?>help#faq">FAQ</a></li>
-                            <li data-blockid = "shipping-returns"><a href="<?php echo $this->getBaseUrl();?>help#shipping-returns">Shipping and Returns</a></li>
-                            <li data-blockid = "size-chart"><a href="<?php echo $this->getBaseUrl();?>help#size-chart">Size Chart</a></li>
-                            <li data-blockid = "product-care"><a href="<?php echo $this->getBaseUrl();?>help#product-care">Product Care</a></li>
-                            <li data-blockid = "email-us" class="last"><a href="<?php echo $this->getBaseUrl();?>help#email-us">Email Us</a></li>
+                            <li style="padding-top: 16px;" data-blockid = "faq"><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>help#faq">FAQ</a></li>
+                            <li data-blockid = "shipping-returns"><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>help#shipping-returns">Shipping and Returns</a></li>
+                            <li data-blockid = "size-chart"><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>help#size-chart">Size Chart</a></li>
+                            <li data-blockid = "product-care"><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>help#product-care">Product Care</a></li>
+                            <li data-blockid = "email-us" class="last"><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>help#email-us">Email Us</a></li>
                         </ul>
                         <span>|</span>
                     </li>
@@ -574,15 +574,15 @@ $style = "";
                         <?php
                         }
                         ?>
-                        <a id="welcome-name" href="<?php if($islogedinuser) echo $this->getBaseUrl()."customer/account/index"; else echo "javascript:void(0);";  ?>"><?php if($islogedinuser)echo "Hi ".$firstname;else echo "My Account";  ?></a>
+                        <a id="welcome-name" href="<?php if($islogedinuser) echo Mage::getUrl('/', array('_secure'=>true))."customer/account/index"; else echo "javascript:void(0);";  ?>"><?php if($islogedinuser)echo "Hi ".$firstname;else echo "My Account";  ?></a>
                         <ul class="sub-menu l-align my-acnt" style="left: -64px;">
                             <li class="blank"></li>
-                            <li style="padding-top: 16px;"><a href="<?php echo $this->getBaseUrl()."sales/order/history"; ?>">track order</a></li>
-                            <li><a href="<?php echo $this->getBaseUrl()."customer/account/index"; ?>">account settings</a></li>
-<!--                            <li class="last"><a id="signin" href="--><?php //if($islogedinuser)echo $this->getBaseUrl()."customer/account/logout/";else echo "javascript:void(0);";  ?><!--">--><?php //if($islogedinuser)echo "Sign Out";else echo "Sign In";  ?><!--</a></li>-->
+                            <li style="padding-top: 16px;"><a href="<?php echo Mage::getUrl('/', array('_secure'=>true))."sales/order/history"; ?>">track order</a></li>
+                            <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true))."customer/account/index"; ?>">account settings</a></li>
+<!--                            <li class="last"><a id="signin" href="--><?php //if($islogedinuser)echo Mage::getUrl('/', array('_secure'=>true))."customer/account/logout/";else echo "javascript:void(0);";  ?><!--">--><?php //if($islogedinuser)echo "Sign Out";else echo "Sign In";  ?><!--</a></li>-->
 
                             <!-- **************** code update by ys team ********************
-                            <li class="last"><a id="signin" href="<?php if($islogedinuser)echo $this->getBaseUrl()."customer/account/logout/";else echo "javascript:void(0);";  ?>" onclick=""><?php if($islogedinuser)echo "Sign Out";else echo "Sign In";  ?></a></li>
+                            <li class="last"><a id="signin" href="<?php if($islogedinuser)echo Mage::getUrl('/', array('_secure'=>true))."customer/account/logout/";else echo "javascript:void(0);";  ?>" onclick=""><?php if($islogedinuser)echo "Sign Out";else echo "Sign In";  ?></a></li>
 -->
                             <li class="last login_logout_link"></li>
                         </ul>
@@ -595,33 +595,33 @@ $style = "";
             <div class="right-bottom-block">
                 <div class="in-bl">
                     <ul class="main-menu main-menu2">
-                        <li><a href="<?php echo $this->getBaseUrl();?>our-story" class="main-heading">ys story</a>
+                        <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>our-story" class="main-heading">ys story</a>
                             <ul class="sub-menu l-align cms-header-link" style="left:-69px;">
-                                <li><a href="<?php echo $this->getBaseUrl();?>our-story">Our Story</a></li>
-                                <li><a href="<?php echo $this->getBaseUrl();?>our-core-values">Our core values</a></li>
-                                <li><a href="<?php echo $this->getBaseUrl();?>our-ethics">Our ethics</a></li>
-                                <li><a href="<?php echo $this->getBaseUrl();?>our-stores">Our Stores</a></li>
-                                <li><a href="<?php echo $this->getBaseUrl();?>made-in-usa">Made in usa</a></li>
-                                <li><a href="<?php echo $this->getBaseUrl();?>principles-of-yoga">Principles of yoga</a></li>
-                                <li><a href="<?php echo $this->getBaseUrl();?>namaskar">Namaskár Foundation</a></li>
-                                <li><a href="<?php echo $this->getBaseUrl();?>press">Press</a></li>
+                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>our-story">Our Story</a></li>
+                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>our-core-values">Our core values</a></li>
+                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>our-ethics">Our ethics</a></li>
+                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>our-stores">Our Stores</a></li>
+                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>made-in-usa">Made in usa</a></li>
+                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>principles-of-yoga">Principles of yoga</a></li>
+                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>namaskar">Namaskár Foundation</a></li>
+                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>press">Press</a></li>
                             </ul>
                         </li>
-                        <li><a href="<?php echo $this->getBaseUrl();?>ys-fabric-tech" class="main-heading">ys tech</a>
+                        <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>ys-fabric-tech" class="main-heading">ys tech</a>
                             <ul class="sub-menu l-align cms-header-link" style="left:-73px;">
-                                <li><a href="<?php echo $this->getBaseUrl();?>ys-fabric-tech">ys fabric tech</a></li>
-                                <li><a href="<?php echo $this->getBaseUrl();?>ys-color-tech">ys color tech</a></li>
-                                <li><a href="<?php echo $this->getBaseUrl();?>design-elements">ys design elements</a></li>
+                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>ys-fabric-tech">ys fabric tech</a></li>
+                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>ys-color-tech">ys color tech</a></li>
+                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>design-elements">ys design elements</a></li>
                             </ul>
                         </li>
-                        <li><a href="<?php echo $this->getBaseUrl();?>smogi-bucks" class="main-heading">Smogi Bucks</a>
+                        <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>smogi-bucks" class="main-heading">Smogi Bucks</a>
                             <ul class="sub-menu mlink l-align" style="left:-57px;">
-                                <li><a href="<?php echo $this->getBaseUrl();?>smogi-bucks">what is smogi bucks</a></li>
-                                <li><a href="<?php echo $this->getBaseUrl();?>smogi-bucks#get-smogi-bucks">how can i get them</a></li>
-                                <li><a href="<?php echo $this->getBaseUrl();?>smogi-bucks#smogi-bucks-balance">smogi bucks balance</a></li>
+                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>smogi-bucks">what is smogi bucks</a></li>
+                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>smogi-bucks#get-smogi-bucks">how can i get them</a></li>
+                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>smogi-bucks#smogi-bucks-balance">smogi bucks balance</a></li>
                             </ul>
                         </li>
-                        <li class="rangoli"><a href="<?php echo $this->getBaseUrl();?>rangoli" class="rangoliRd" id="rangoli-head1">Rangoli</a></li><!-- code update by ys team, hiding rangoli -->
+                        <li class="rangoli"><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>rangoli" class="rangoliRd" id="rangoli-head1">Rangoli</a></li><!-- code update by ys team, hiding rangoli -->
                     </ul>
                 </div>
                 <?php echo $this->getChildHtml('topSearch') ?>
