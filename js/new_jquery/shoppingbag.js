@@ -293,7 +293,6 @@ function inputFocus() {
             }
         }
     });
-
 }
 // Show/Hide Shopping Cart Container
 /*function openShoppingCart(){
@@ -428,11 +427,10 @@ function showShoppingBagHtml() {
     if (_usesecureurl) {
         url = securehomeUrl + 'mynewtheme/shoppingbag/showshoppingbaghtml';
         checkouturl = securehomeUrl + 'checkout/onepage';
+        console.log("going secure shopping bag");
     }
 
-    console.log(window.location.href);
-    console.log(url);
-    console.log(checkouturl);
+    console.log("shopping bag 1 " + checkouturl);
 
     // check if user click on sign in from drop down menu
 //    alert(_isClickSigninMenu);
@@ -448,8 +446,10 @@ function showShoppingBagHtml() {
 
     if (_showShoppingbagLoader)
         jQuery(".shopping-cart").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='margin:80% auto auto;' />");
-    if (!check4reviewpage)
+    if (!check4reviewpage) {
+        console.log("calling check4review = " + checkouturl);
         jQuery.ajax({url: checkouturl});
+    }
     // end check for paypal final review page
     // ys update : setTimeout(function () {
 
@@ -492,13 +492,18 @@ function showShoppingBagHtmlOpen() {
     if (_usesecureurl) {
         url = securehomeUrl + 'mynewtheme/shoppingbag/showshoppingbaghtml';
         checkouturl = securehomeUrl + 'checkout/onepage';
+        console.log("going secure open");
     }
+    console.log("shopping bag open " + checkouturl);
     // check if user click on sign in from drop down menu
 //    alert(_isClickSigninMenu);
     if (_isClickSigninMenu == true) {
         _showShoppingbagLoader = true;
         _isClickSigninMenu = false;
     }
+
+    console.log("open = " + checkouturl);
+
     // check for paypal final review page
     var check4reviewpage = false;
     var curUrl = document.URL;
@@ -566,10 +571,10 @@ function fastShowShoppingBagHtml() {
         if (_isEmptyShoppingBag)
             url = homeUrl + 'mynewtheme/shoppingbag/showshoppingbaghtml';
         checkouturl = securehomeUrl + 'checkout/onepage';
+        console.log("going secure fast");
     }
 
-    console.log(">> " + checkouturl);
-
+    console.log("shopping bag fast " + checkouturl);
     // check if user click on sign in from drop down menu
 //    alert(_isClickSigninMenu);
     if (_isClickSigninMenu == true) {
@@ -622,6 +627,7 @@ function fastShowShoppingBagHtml() {
         }, 500);
 
 }
+
 function shoppingBagTotals() {
     if (window.location.href.indexOf('https://') >= 0)
         _usesecureurl = true;
@@ -633,7 +639,10 @@ function shoppingBagTotals() {
     if (_usesecureurl) {
         url = securehomeUrl + 'mynewtheme/shoppingbag/shoppingbagtotals';
         checkouturl = securehomeUrl + 'checkout/onepage';
+        console.log("going secure totals");
     }
+
+    console.log("shopping bag totals " + checkouturl);
     // check if user click on sign in from drop down menu
 
     if (_isClickSigninMenu == true) {
