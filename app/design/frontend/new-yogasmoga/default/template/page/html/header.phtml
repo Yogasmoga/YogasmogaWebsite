@@ -292,12 +292,11 @@ $skinUrl = $this->getSkinUrl('');
 $currentUrl = Mage::helper('core/url')->getCurrentUrl();
 
 $homeUrl = Mage::helper('core/url')->getHomeUrl();
-if(strpos(strtolower($currentUrl), "https")>=0) {
+if(strpos(strtolower($currentUrl), "https://")>=0) {
     $homeUrl = Mage::getUrl('/', array('_secure' => true));
     $skinUrl = $this->getSkinUrl('', array('_secure' => true));
 }
 
-Mage::log("current url = " . $currentUrl . " , home = " . $homeUrl . " , skin = " . $skinUrl, null);
 $checkoutpage= $homeUrl.'checkout/onepage';
 $successpage= $homeUrl.'checkout/onepage/success';
 
