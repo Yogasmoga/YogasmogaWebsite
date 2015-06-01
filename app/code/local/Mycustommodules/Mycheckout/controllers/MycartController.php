@@ -386,7 +386,8 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         //$minidetails['cartlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/cart";
         $minidetails['cartlink'] = Mage::getUrl('checkout/cart', array('_secure'=>true));
         $minidetails['subtotal'] = "$".number_format((float)$subtotal, 2, '.','');// round(Mage::getModel('checkout/cart')->getQuote()->getGrandTotal(), 2);
-        $minidetails['checkoutlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/onepage";
+        //$minidetails['checkoutlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/onepage";
+        $minidetails['checkoutlink'] = Mage::getUrl('checkout/onepage', array('_secure'=>true));
         
         //echo "<pre>";
 //        print_r($minidetails);

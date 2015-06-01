@@ -127,7 +127,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $minidetails['cartlink'] = Mage::getUrl('checkout/cart', array('_secure'=>true));
         $minidetails['subtotal'] = "$".number_format((float)$subtotal, 2, '.','');// round(Mage::getModel('checkout/cart')->getQuote()->getGrandTotal(), 2);
         $minidetails['grandtotal'] = "$".number_format((float)$grandtotal, 2, '.','');
-        $minidetails['checkoutlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/onepage";
+        //$minidetails['checkoutlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/onepage";
+        $minidetails['checkoutlink'] = Mage::getUrl('checkout/onepage', array('_secure'=>true));
 
 
         $html = '<div class="shopping-cart">
@@ -652,7 +653,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $checkgiftapplied = false;
         $customerId = Mage::getModel('customer/session')->getCustomerId();
         if($customerId) {
-            $continuelink=Mage::getUrl('/', array('_secure'=>true)).'checkout/onepage';
+            $continuelink = Mage::getUrl('checkout/onepage', array('_secure'=>true));
             $getcustomerpoints = $this->getCustomerPoints($customerId);
             $getsmogipointscurrentlyuserd = $this->getPointsCurrentlyUsed();
             $showedpoints = $getcustomerpoints - $getsmogipointscurrentlyuserd;
@@ -1389,7 +1390,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $minidetails['cartlink'] = Mage::getUrl('checkout/cart', array('_secure'=>true));
         $minidetails['subtotal'] = "$".number_format((float)$subtotal, 2, '.','');// round(Mage::getModel('checkout/cart')->getQuote()->getGrandTotal(), 2);
         $minidetails['grandtotal'] = "$".number_format((float)$grandtotal, 2, '.','');
-        $minidetails['checkoutlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/onepage";
+        //$minidetails['checkoutlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/onepage";
+        $minidetails['checkoutlink'] = Mage::getUrl('checkout/onepage', array('_secure'=>true));
 
         $stritem = 'item';
         if($this->getcartcount() > 1)
@@ -1402,7 +1404,8 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $checkgiftapplied = false;
         $customerId = Mage::getModel('customer/session')->getCustomerId();
         if($customerId) {
-            $continuelink=Mage::getBaseUrl().'checkout/onepage';
+            //$continuelink=Mage::getBaseUrl().'checkout/onepage';
+            $continuelink = Mage::getUrl('checkout/onepage', array('_secure'=>true));
             $getcustomerpoints = $this->getCustomerPoints($customerId);
             $getsmogipointscurrentlyuserd = $this->getPointsCurrentlyUsed();
             $showedpoints = $getcustomerpoints - $getsmogipointscurrentlyuserd;
