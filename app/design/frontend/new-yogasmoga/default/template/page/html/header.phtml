@@ -286,9 +286,18 @@ if($serverType == 'production')
     });
 </script>
 <?php
+
+$skinUrl = $this->getSkinUrl('');
+$homeUrl = $this->getBaseUrl();
+$isSecure = Mage::app()->getStore()->isCurrentlySecure();
+if($isSecure) {
+    $skinUrl = $this->getSkinUrl('', array('_secure' => true));
+    $homeUrl = $this->getUrl('', array('_secure' => true));
+}
+
 $currentUrl = $this->helper('core/url')->getCurrentUrl();
-$checkoutpage= Mage::getUrl('/', array('_secure'=>true)).'checkout/onepage';
-$successpage= Mage::getUrl('/', array('_secure'=>true)).'checkout/onepage/success';
+$checkoutpage= $homeUrl.'checkout/onepage';
+$successpage= $homeUrl.'checkout/onepage/success';
 
 if($currentUrl != $checkoutpage){
     ?>
@@ -541,21 +550,21 @@ $style = "";
                     <li class="free-shipping">
                         <span>Free shipping to US and Canada
                             <span>
-                                <img src="<?php echo $this->getSkinUrl('images/USAflag.png', array('_secure'=>true)); ?>" alt="YogaSmoga - United States" style="height:16px;" />
-                                <img src="<?php echo $this->getSkinUrl('images/canada-flag.png', array('_secure'=>true)); ?>" alt="YogaSmoga - Canada" style="height:16px;"/>
-                                <img src="<?php echo $this->getSkinUrl('images/globe-flag.png', array('_secure'=>true)); ?>" alt="YogaSmoga - Global" style="height:16px;" />
+                                <img src="<?php echo $skinUrl . 'images/USAflag.png'; ?>" alt="YogaSmoga - United States" style="height:16px;" />
+                                <img src="<?php echo $skinUrl . 'images/canada-flag.png'; ?>" alt="YogaSmoga - Canada" style="height:16px;"/>
+                                <img src="<?php echo $skinUrl . 'images/globe-flag.png'; ?>" alt="YogaSmoga - Global" style="height:16px;" />
                             </span>
                         </span>
                     </li>
                     <li data-blockid = "help-new">
-                        <a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>help#faq">Help</a>
+                        <a href="<?php echo Mage::getUrl('/', array('_secure' => true));?>help#faq">Help</a>
                         <ul class="sub-menu l-align cms-header-link" style="left: -87px;">
                             <li class="blank"></li>
-                            <li style="padding-top: 16px;" data-blockid = "faq"><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>help#faq">FAQ</a></li>
-                            <li data-blockid = "shipping-returns"><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>help#shipping-returns">Shipping and Returns</a></li>
-                            <li data-blockid = "size-chart"><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>help#size-chart">Size Chart</a></li>
-                            <li data-blockid = "product-care"><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>help#product-care">Product Care</a></li>
-                            <li data-blockid = "email-us" class="last"><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>help#email-us">Email Us</a></li>
+                            <li style="padding-top: 16px;" data-blockid = "faq"><a href="<?php echo $homeUrl;?>help#faq">FAQ</a></li>
+                            <li data-blockid = "shipping-returns"><a href="<?php echo $homeUrl;?>help#shipping-returns">Shipping and Returns</a></li>
+                            <li data-blockid = "size-chart"><a href="<?php echo $homeUrl;?>help#size-chart">Size Chart</a></li>
+                            <li data-blockid = "product-care"><a href="<?php echo $homeUrl;?>help#product-care">Product Care</a></li>
+                            <li data-blockid = "email-us" class="last"><a href="<?php echo $homeUrl;?>help#email-us">Email Us</a></li>
                         </ul>
                         <span>|</span>
                     </li>
@@ -595,33 +604,33 @@ $style = "";
             <div class="right-bottom-block">
                 <div class="in-bl">
                     <ul class="main-menu main-menu2">
-                        <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>our-story" class="main-heading">ys story</a>
+                        <li><a href="<?php echo $homeUrl;?>our-story" class="main-heading">ys story</a>
                             <ul class="sub-menu l-align cms-header-link" style="left:-69px;">
-                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>our-story">Our Story</a></li>
-                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>our-core-values">Our core values</a></li>
-                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>our-ethics">Our ethics</a></li>
-                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>our-stores">Our Stores</a></li>
-                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>made-in-usa">Made in usa</a></li>
-                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>principles-of-yoga">Principles of yoga</a></li>
-                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>namaskar">Namaskár Foundation</a></li>
-                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>press">Press</a></li>
+                                <li><a href="<?php echo $homeUrl;?>our-story">Our Story</a></li>
+                                <li><a href="<?php echo $homeUrl;?>our-core-values">Our core values</a></li>
+                                <li><a href="<?php echo $homeUrl;?>our-ethics">Our ethics</a></li>
+                                <li><a href="<?php echo $homeUrl;?>our-stores">Our Stores</a></li>
+                                <li><a href="<?php echo $homeUrl;?>made-in-usa">Made in usa</a></li>
+                                <li><a href="<?php echo $homeUrl;?>principles-of-yoga">Principles of yoga</a></li>
+                                <li><a href="<?php echo $homeUrl;?>namaskar">Namaskár Foundation</a></li>
+                                <li><a href="<?php echo $homeUrl;?>press">Press</a></li>
                             </ul>
                         </li>
-                        <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>ys-fabric-tech" class="main-heading">ys tech</a>
+                        <li><a href="<?php echo $homeUrl;?>ys-fabric-tech" class="main-heading">ys tech</a>
                             <ul class="sub-menu l-align cms-header-link" style="left:-73px;">
-                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>ys-fabric-tech">ys fabric tech</a></li>
-                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>ys-color-tech">ys color tech</a></li>
-                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>design-elements">ys design elements</a></li>
+                                <li><a href="<?php echo $homeUrl;?>ys-fabric-tech">ys fabric tech</a></li>
+                                <li><a href="<?php echo $homeUrl;?>ys-color-tech">ys color tech</a></li>
+                                <li><a href="<?php echo $homeUrl;?>design-elements">ys design elements</a></li>
                             </ul>
                         </li>
-                        <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>smogi-bucks" class="main-heading">Smogi Bucks</a>
+                        <li><a href="<?php echo $homeUrl;?>smogi-bucks" class="main-heading">Smogi Bucks</a>
                             <ul class="sub-menu mlink l-align" style="left:-57px;">
-                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>smogi-bucks">what is smogi bucks</a></li>
-                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>smogi-bucks#get-smogi-bucks">how can i get them</a></li>
-                                <li><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>smogi-bucks#smogi-bucks-balance">smogi bucks balance</a></li>
+                                <li><a href="<?php echo $homeUrl;?>smogi-bucks">what is smogi bucks</a></li>
+                                <li><a href="<?php echo $homeUrl;?>smogi-bucks#get-smogi-bucks">how can i get them</a></li>
+                                <li><a href="<?php echo $homeUrl;?>smogi-bucks#smogi-bucks-balance">smogi bucks balance</a></li>
                             </ul>
                         </li>
-                        <li class="rangoli"><a href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>rangoli" class="rangoliRd" id="rangoli-head1">Rangoli</a></li><!-- code update by ys team, hiding rangoli -->
+                        <li class="rangoli"><a href="<?php echo $homeUrl;?>rangoli" class="rangoliRd" id="rangoli-head1">Rangoli</a></li><!-- code update by ys team, hiding rangoli -->
                     </ul>
                 </div>
                 <?php echo $this->getChildHtml('topSearch') ?>
