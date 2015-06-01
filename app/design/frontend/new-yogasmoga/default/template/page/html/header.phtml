@@ -288,14 +288,16 @@ if($serverType == 'production')
 <?php
 
 $skinUrl = $this->getSkinUrl('');
-$homeUrl = $this->getBaseUrl();
-$isSecure = Mage::app()->getStore()->isCurrentlySecure();
-if($isSecure) {
+
+$currentUrl = Mage::helper('core/url')->getCurrentUrl();
+
+$homeUrl = Mage::helper('core/url')->getHomeUrl();
+if(strpos(strtolower($currentUrl), "https")>=0) {
+    $homeUrl = Mage::getUrl('/', array('_secure' => true));
     $skinUrl = $this->getSkinUrl('', array('_secure' => true));
-    $homeUrl = $this->getUrl('', array('_secure' => true));
 }
 
-$currentUrl = $this->helper('core/url')->getCurrentUrl();
+Mage::log("current url = " . $currentUrl . " , home = " . $homeUrl . " , skin = " . $skinUrl, null);
 $checkoutpage= $homeUrl.'checkout/onepage';
 $successpage= $homeUrl.'checkout/onepage/success';
 

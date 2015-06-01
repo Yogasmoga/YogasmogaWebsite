@@ -486,7 +486,7 @@ function showShoppingBagHtmlOpen() {
 
     var url = homeUrl + 'mynewtheme/shoppingbag/showshoppingbaghtml';
     var checkouturl = homeUrl + 'checkout/onepage';
-    checkouturl = securehomeUrl + 'checkout/onepage';
+    //checkouturl = securehomeUrl + 'checkout/onepage';
     if (_usesecureurl) {
         url = securehomeUrl + 'mynewtheme/shoppingbag/showshoppingbaghtml';
         checkouturl = securehomeUrl + 'checkout/onepage';
