@@ -287,7 +287,7 @@ if($serverType == 'production')
 </script>
 <?php
 $currentUrl = $this->helper('core/url')->getCurrentUrl();
-$checkoutpage= $this->getUrl().'checkout/onepage';
+$checkoutpage= Mage::getUrl('/', array('_secure'=>true)).'checkout/onepage';
 $successpage= $this->getUrl().'checkout/onepage/success';
 
 if($currentUrl != $checkoutpage){
