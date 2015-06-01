@@ -4,7 +4,6 @@ jQuery(document).ready(function ($) {
 
     $("body").on("click", ".shopping-cart label[for='giftCardShop']", function () {
         if (jQuery(".giftcardcheckbox").attr("disabled") == "disabled") {
-            console.log("dasDSFSF");
             jQuery('#giftcartcode').next('span').click();
         }
     });
@@ -62,7 +61,6 @@ jQuery(document).ready(function ($) {
     $(document).on("click", "#continuecheckout", function (e) {
         if (!_islogedinuser) {
             e.preventDefault();
-            //   console.log('Test-'+_islogedinuser);
             _isClickSigninMenu = true;
             $("#signing_popup").dialog("open");
         }
@@ -70,7 +68,6 @@ jQuery(document).ready(function ($) {
     // }
 //    $(document).live("click","#continuecheckout",function(e){
 //        e.prevenDefault();
-//        alert('22');
 //    });
 
 
@@ -194,7 +191,6 @@ jQuery(document).ready(function ($) {
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if (keycode == 13) {
             count = occurrences($('#giftcartcode').val(), '-');
-            // console.log(count);
             // if($('#giftcartcode').val().indexOf('-') == -1 )
             if (count < 2) {
                 promocodecart();
@@ -308,7 +304,6 @@ function inputFocus() {
  jQuery(".pageoverlay").css("min-height", bodyHght).css("width", jQuery(window).width()).animate({ left: -shoppingWdth }).show();
  jQuery(".header-container").animate({ left: -shoppingWdth });
  jQuery("body").addClass("hdnHgt");
- // alert(bodyHght);
  return false;
  });
  }*/
@@ -346,7 +341,7 @@ function openShoppingCart() {
     var shoppingWdth = jQuery(".shopping-cart").width();
     var bodyHght = jQuery("body").height();// for shopping (undo)
     var windowHght = jQuery(window).height();
-    //console.log(windowHght+"manish");
+
     jQuery(".shopping-cart").css({
         "height": windowHght,
         "display": 'block',
@@ -356,7 +351,6 @@ function openShoppingCart() {
     jQuery(".pageoverlay").css("min-height", bodyHght).css("width", jQuery(window).width()).animate({left: -shoppingWdth}).show();
     jQuery(".header-container").animate({left: -shoppingWdth});
     jQuery("body, html").addClass("hdnHgt");
-// alert(bodyHght);
     return false;
 }
 function smogicart() {
@@ -427,17 +421,14 @@ function showShoppingBagHtml() {
     if (_usesecureurl) {
         url = securehomeUrl + 'mynewtheme/shoppingbag/showshoppingbaghtml';
         checkouturl = securehomeUrl + 'checkout/onepage';
-        console.log("going secure shopping bag");
     }
 
-    console.log("shopping bag 1 " + checkouturl);
-
     // check if user click on sign in from drop down menu
-//    alert(_isClickSigninMenu);
     if (_isClickSigninMenu == true) {
         _showShoppingbagLoader = true;
         _isClickSigninMenu = false;
     }
+
     // check for paypal final review page
     var check4reviewpage = false;
     var curUrl = document.URL;
@@ -446,10 +437,13 @@ function showShoppingBagHtml() {
 
     if (_showShoppingbagLoader)
         jQuery(".shopping-cart").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='margin:80% auto auto;' />");
-    if (!check4reviewpage) {
-        console.log("calling check4review = " + checkouturl);
-        jQuery.ajax({url: checkouturl});
-    }
+
+/*************** code update by ys india team (commented) ***************/
+    //if (!check4reviewpage) {
+    //    jQuery.ajax({url: checkouturl});
+    //}
+/*************** code update by ys india team ***************/
+
     // end check for paypal final review page
     // ys update : setTimeout(function () {
 
@@ -460,8 +454,7 @@ function showShoppingBagHtml() {
             cache: false,
             success: function (data) {
                 data = eval('(' + data + ')');
-                //console.log(data.html);
-                // alert(data.html);
+
                 jQuery(".shopping-cart").html(data.html);
                 jQuery(".cartitemcount").html(data.count);
 
@@ -472,9 +465,6 @@ function showShoppingBagHtml() {
                 if (data.countdiscount > 1)
                     showerror(data.discounttypeerror);
                 outofstockDisable();
-//                    ////alert(jQuery(".contfull2").outerHeight());
-//                    jQuery(".bagerrormsg").height(jQuery(".contfull2").outerHeight());
-//                    jQuery(".bagerrormsg").width(jQuery(".contfull2").outerWidth());
             }
         });
     //}, 500);
@@ -492,17 +482,13 @@ function showShoppingBagHtmlOpen() {
     if (_usesecureurl) {
         url = securehomeUrl + 'mynewtheme/shoppingbag/showshoppingbaghtml';
         checkouturl = securehomeUrl + 'checkout/onepage';
-        console.log("going secure open");
     }
-    console.log("shopping bag open " + checkouturl);
+
     // check if user click on sign in from drop down menu
-//    alert(_isClickSigninMenu);
     if (_isClickSigninMenu == true) {
         _showShoppingbagLoader = true;
         _isClickSigninMenu = false;
     }
-
-    console.log("open = " + checkouturl);
 
     // check for paypal final review page
     var check4reviewpage = false;
@@ -524,8 +510,7 @@ function showShoppingBagHtmlOpen() {
         cache: false,
         success: function (data) {
             data = eval('(' + data + ')');
-            //console.log(data.html);
-            // alert(data.html);
+
             jQuery(".shopping-cart").html(data.html);
             jQuery(".cartitemcount").html(data.count);
 
@@ -537,12 +522,8 @@ function showShoppingBagHtmlOpen() {
             if (data.countdiscount > 1)
                 showerror(data.discounttypeerror);
             outofstockDisable();
-//                    ////alert(jQuery(".contfull2").outerHeight());
-//                    jQuery(".bagerrormsg").height(jQuery(".contfull2").outerHeight());
-//                    jQuery(".bagerrormsg").width(jQuery(".contfull2").outerWidth());
         }
     });
-    //}, 500);
 }
 
 function fastShowShoppingBagHtml() {
@@ -571,12 +552,9 @@ function fastShowShoppingBagHtml() {
         if (_isEmptyShoppingBag)
             url = homeUrl + 'mynewtheme/shoppingbag/showshoppingbaghtml';
         checkouturl = securehomeUrl + 'checkout/onepage';
-        console.log("going secure fast");
     }
 
-    console.log("shopping bag fast " + checkouturl);
     // check if user click on sign in from drop down menu
-//    alert(_isClickSigninMenu);
     if (_isClickSigninMenu == true) {
         _showShoppingbagLoader = true;
         _isClickSigninMenu = false;
@@ -607,8 +585,6 @@ function fastShowShoppingBagHtml() {
                     jQuery(".open-cart").trigger("click");
                     jQuery("#addtobagloader").hide();
 
-                    //console.log(data.html);
-                    // alert(data.html);
                     if (_isEmptyShoppingBag)
                         jQuery(".shopping-cart").html(data.html);
                     else
@@ -619,9 +595,6 @@ function fastShowShoppingBagHtml() {
                     if (data.countdiscount > 1)
                         showerror(data.discounttypeerror);
                     outofstockDisable();
-//                    ////alert(jQuery(".contfull2").outerHeight());
-//                    jQuery(".bagerrormsg").height(jQuery(".contfull2").outerHeight());
-//                    jQuery(".bagerrormsg").width(jQuery(".contfull2").outerWidth());
                 }
             });
         }, 500);
@@ -639,12 +612,9 @@ function shoppingBagTotals() {
     if (_usesecureurl) {
         url = securehomeUrl + 'mynewtheme/shoppingbag/shoppingbagtotals';
         checkouturl = securehomeUrl + 'checkout/onepage';
-        console.log("going secure totals");
     }
 
-    console.log("shopping bag totals " + checkouturl);
     // check if user click on sign in from drop down menu
-
     if (_isClickSigninMenu == true) {
         _showShoppingbagLoader = true;
         _isClickSigninMenu = false;
@@ -723,7 +693,7 @@ function addbracelettobag(pid, colorattributeid, sizeattributeid) {
         _addingtocart = true;
         braceletorderqty = jQuery(".qtyselector").find('option:selected').val();
         var color = jQuery("#cmbcolor").val();
-        var size = jQuery("#cmbsize").val();//alert(_productid);
+        var size = jQuery("#cmbsize").val();
 
         /******** code modified by ys, bracelet quantity is requested to be 1 only ********/
         var addurl = homeUrl + 'mynewtheme/shoppingbag/add?product=' + pid + '&qty=1&super_attribute[' + colorattributeid + ']=' + color;
@@ -812,8 +782,6 @@ function applysmogibucks() {
     var appliedvalue = jQuery(".smogi span.f-right").attr("usedpoints");
     if (smogivalue == '') {
         smogivalue = availablesmogi;
-        //alert(availablesmogi);
-        // alert(smogivalue);
     }
     else if (isNaN(smogivalue) && smogivalue != '') {
         jQuery('#smogi').next('span').addClass("applysmogi").empty().append("+");
@@ -825,7 +793,7 @@ function applysmogibucks() {
     if (availablesmogi) {
         availablesmogi = (jQuery("#smogi").attr("available")).trim();
     }
-    ///////////alert(smogivalue+ '<=' +availablesmogi);
+
     if (parseInt(smogivalue) <= parseInt(availablesmogi)) {
         if (appliedvalue) {
             appliedvalue = parseInt(appliedvalue);
