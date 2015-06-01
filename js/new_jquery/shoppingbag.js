@@ -430,7 +430,7 @@ function showShoppingBagHtml() {
         checkouturl = securehomeUrl + 'checkout/onepage';
     }
 
-    console.log(window.locatoin.href);
+    console.log(window.location.href);
     console.log(url);
     console.log(checkouturl);
 
