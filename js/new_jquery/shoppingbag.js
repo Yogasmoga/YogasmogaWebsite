@@ -557,7 +557,7 @@ function fastShowShoppingBagHtml() {
 
 
     var checkouturl = homeUrl + 'checkout/onepage';
-    checkouturl = securehomeUrl + 'checkout/onepage';
+    //checkouturl = securehomeUrl + 'checkout/onepage';
     if (_usesecureurl) {
         url = securehomeUrl + 'mynewtheme/shoppingbag/fastshowshoppingbaghtml';
         // for check empty shopping bag
@@ -565,6 +565,9 @@ function fastShowShoppingBagHtml() {
             url = homeUrl + 'mynewtheme/shoppingbag/showshoppingbaghtml';
         checkouturl = securehomeUrl + 'checkout/onepage';
     }
+
+    console.log(">> " + checkouturl);
+
     // check if user click on sign in from drop down menu
 //    alert(_isClickSigninMenu);
     if (_isClickSigninMenu == true) {
@@ -624,7 +627,7 @@ function shoppingBagTotals() {
         _usesecureurl = false;
     var url = homeUrl + 'mynewtheme/shoppingbag/shoppingbagtotals';
     var checkouturl = homeUrl + 'checkout/onepage';
-    checkouturl = securehomeUrl + 'checkout/onepage';
+    //checkouturl = securehomeUrl + 'checkout/onepage';
     if (_usesecureurl) {
         url = securehomeUrl + 'mynewtheme/shoppingbag/shoppingbagtotals';
         checkouturl = securehomeUrl + 'checkout/onepage';
