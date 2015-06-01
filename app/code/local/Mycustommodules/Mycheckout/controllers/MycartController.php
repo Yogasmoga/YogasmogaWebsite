@@ -384,10 +384,10 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         //$minidetails['totalitems'] = Mage::getModel('checkout/cart')->getQuote()->getItemsCount();
         $minidetails['totalitems'] = $this->getcartcount();
         //$minidetails['cartlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/cart";
-        $minidetails['cartlink'] = Mage::getUrl('checkout/cart', array('_secure'=>true));
+        $minidetails['cartlink'] = Mage::getUrl('/', array('_secure'=>true)) . "checkout/cart";
         $minidetails['subtotal'] = "$".number_format((float)$subtotal, 2, '.','');// round(Mage::getModel('checkout/cart')->getQuote()->getGrandTotal(), 2);
         //$minidetails['checkoutlink'] = Mage::helper('core/url')->getHomeUrl()."checkout/onepage";
-        $minidetails['checkoutlink'] = Mage::getUrl('checkout/onepage', array('_secure'=>true));
+        $minidetails['checkoutlink'] =  Mage::getUrl('/', array('_secure'=>true)) . "checkout/onepage";
         
         //echo "<pre>";
 //        print_r($minidetails);
@@ -413,7 +413,7 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
             $productcount++;
         }
         //$output .= "<div class='bottomlinks'><a href='".$minidetails['cartlink']."'><div class='gotoshoppingbag spbutton' imageurl='".$this->getSkinUrl('images/go_to_shopping_bag_01off.png')."' downimageurl='".$this->getSkinUrl('images/go_to_shopping_bag_01on.png')."'></div></a> <div class='subtotal'> <table> <tr> <td class='anchor'> SUBTOTAL </td> <td class='totalprice'> ".$minidetails['subtotal']." </td> </tr> </table> </div> <a href='".$minidetails['checkoutlink']."'> <div class='minicheckout spbutton' imageurl='".$this->getSkinUrl('images/checkout_off.png')."' downimageurl='".$this->getSkinUrl('images/checkout_on.png')."'></div></a></div>";
-        $output .= "<div class='bottomlinks'><div class='subtotal'> <table> <tr> <td class='anchor'> SUBTOTAL </td> <td class='totalprice'> ".$minidetails['subtotal']." </td> </tr> </table> </div> <a href='".$minidetails['cartlink']."'> <div class='minicheckout spbutton' imageurl='".$this->getSkinUrl('images/checkout_off.png')."' downimageurl='".$this->getSkinUrl('images/checkout_on.png')."'></div></a></div>";
+        $output .= "<div class='bottomlinks'><div class='subtotal'> <table> <tr> <td class='anchor'> SUBTOTAL </td> <td class='totalprice'> ".$minidetails['subtotal']." </td> </tr> </table> </div> <a href='".$minidetails['cartlink']."'> <div class='minicheckout spbutton' imageurl='".$this->getSkinUrl('images/checkout_off.png', array("_secure" => true))."' downimageurl='".$this->getSkinUrl('images/checkout_on.png', array("_secure" => true))."'></div></a></div>";
         return $output;
     }
     
@@ -421,7 +421,6 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
     {
         $output = $this->getminicarthtml();
         echo json_encode(array("html" => $output, "count" => $this->getcartcount()));
-        //echo json_encode(array("count" => $this->getcartcount()));
     }
     
     function getShippingCost($code)
