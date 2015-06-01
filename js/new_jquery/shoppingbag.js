@@ -431,9 +431,6 @@ function showShoppingBagHtml() {
         checkouturl = securehomeUrl + 'checkout/onepage';
     }
 
-    console.log("Secure url = " + _usesecureurl);
-    console.log("checkout url = " + checkouturl);
-
     // check if user click on sign in from drop down menu
 //    alert(_isClickSigninMenu);
     if (_isClickSigninMenu == true) {

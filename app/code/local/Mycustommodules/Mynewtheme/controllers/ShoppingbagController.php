@@ -651,7 +651,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         $checkgiftapplied = false;
         $customerId = Mage::getModel('customer/session')->getCustomerId();
         if($customerId) {
-            $continuelink=Mage::getBaseUrl().'checkout/onepage';
+            $continuelink=Mage::getUrl('/', array('_secure'=>true)).'checkout/onepage';
             $getcustomerpoints = $this->getCustomerPoints($customerId);
             $getsmogipointscurrentlyuserd = $this->getPointsCurrentlyUsed();
             $showedpoints = $getcustomerpoints - $getsmogipointscurrentlyuserd;
