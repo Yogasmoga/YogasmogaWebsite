@@ -292,7 +292,9 @@ $skinUrl = $this->getSkinUrl('');
 $currentUrl = Mage::helper('core/url')->getCurrentUrl();
 
 $homeUrl = Mage::helper('core/url')->getHomeUrl();
-if(strpos(strtolower($currentUrl), "https://")!==0) {
+if(strstr(strtolower($currentUrl), 'https://')===false)
+;
+else{
     $homeUrl = Mage::getUrl('/', array('_secure' => true));
     $skinUrl = $this->getSkinUrl('', array('_secure' => true));
 }
