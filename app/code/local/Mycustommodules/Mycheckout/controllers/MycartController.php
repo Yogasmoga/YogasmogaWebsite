@@ -276,8 +276,11 @@ class Mycustommodules_Mycheckout_MycartController extends Mage_Core_Controller_F
         $currentUrl = Mage::helper('core/url')->getCurrentUrl();
 
         $homeUrl = Mage::helper('core/url')->getHomeUrl();
-        if(strpos(strtolower($currentUrl), "https")>=0)
-            $homeUrl = Mage::getUrl('/', array('_secure'=>true));
+        if(strstr(strtolower($currentUrl), 'https://')===false)
+            ;
+        else {
+            $homeUrl = Mage::getUrl('/', array('_secure' => true));
+        }
 
         //$output .= "SKU = ".Mage::getModel('catalog/product')->load($item->getProductId())->getTypeID() . "<br>";
 //        $output .= "SKU = ".$item->getSku() . "<br>";
