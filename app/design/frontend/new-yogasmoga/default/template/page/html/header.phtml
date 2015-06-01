@@ -559,7 +559,7 @@ $style = "";
                         </span>
                     </li>
                     <li data-blockid = "help-new">
-                        <a href="<?php echo Mage::getUrl('/', array('_secure' => true));?>help#faq">Help</a>
+                        <a href="<?php echo $homeUrl;?>help#faq">Help</a>
                         <ul class="sub-menu l-align cms-header-link" style="left: -87px;">
                             <li class="blank"></li>
                             <li style="padding-top: 16px;" data-blockid = "faq"><a href="<?php echo $homeUrl;?>help#faq">FAQ</a></li>
@@ -600,7 +600,7 @@ $style = "";
                         <span>|</span>
                     </li>
                     <li><a href="javascript:void(0);" class="open-cart">Shopping Bag (<span class="cartitemcount"><?php echo $itemcount; ?></span>)</a></li>
-                    <li class="checkoutshow" style="display:none;"><span>|</span><a class="checkout-link-top" href="<?php echo Mage::getUrl('/', array('_secure'=>true));?>checkout/onepage">Checkout</a></li>
+                    <li class="checkoutshow" style="display:none;"><span>|</span><a class="checkout-link-top" href="<?php echo $homeUrl;?>checkout/onepage">Checkout</a></li>
                 </ul>
             </div>
             <div class="right-bottom-block">
