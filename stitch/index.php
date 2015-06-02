@@ -106,6 +106,10 @@ ksort($all_products);
     </thead>
     <tbody>
     <?php
+
+    $total_all_inventories = 0;
+    $total_all_price = 0;
+
     foreach($all_products as $product_name => $data){
 
         echo "<tr><td colspan='10' style='border-bottom:solid 1px #ccc; padding-bottom:5px;'><b>$product_name</b></td></tr>";
@@ -215,11 +219,18 @@ ksort($all_products);
         echo "<td colspan='2' style='padding-top:20px; font-weight:bold; color:#cc1c3a'>$total_inventories</td>";
         echo "</tr>";
 
+        $total_all_inventories += $total_products;
+        $total_all_price += $total_inventories;
+
         unset($ar_sizes);
 
         echo "</tr>";
         echo "<tr><td colspan='10' style='line-height: 30px;'>&nbsp;</td></tr>";
     }
+
+    $total_all_price = number_format($total_all_price);
+    $total_all_inventories = number_format($total_all_inventories);
+
     ?>
     </tbody>
 </table>
@@ -234,6 +245,22 @@ ksort($all_products);
         ?>
     </select>
     <input type="button" id="search" value="Go to product" style="padding: 5px; margin-right: 20px;"/>
+
+    <div style="float:left; padding-left: 20px;">
+        <table style="width:400px;">
+            <tr>
+                <td style="width:150px;">Total Inventory</td>
+                <td>=</td>
+                <td style="width:200px;"><?php echo $total_all_inventories;?></td>
+            </tr>
+            <tr>
+                <td style="width:150px;">Total Cost</td>
+                <td>=</td>
+                <td style="width:200px;">$ <?php echo $total_all_price;?></td>
+            </tr>
+        </table>
+    </div>
+    <div class="clear"></div>
 </div>
 
 <script type="text/javascript">
