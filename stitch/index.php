@@ -1,3 +1,9 @@
+<html>
+<head>
+    <script type="text/javascript" src="../js/new_jquery/jquery-1.8.2.min.js"></script>
+</head>
+<body>
+
 <?php
 include 'PHPExcel-1.8/Classes/PHPExcel/IOFactory.php';
 
@@ -18,6 +24,7 @@ $sheet = $objPHPExcel->getSheet(0);
 $highestRow = $sheet->getHighestRow();
 $highestColumn = $sheet->getHighestColumn();
 
+$product_names = array();
 $all_products = array();
 
 //  Loop through each row of the worksheet in turn
@@ -70,13 +77,15 @@ for ($row = 2; $row <= $highestRow; $row++) {
             $height = $ar_within_parenthesis[2];
     }
 
+    $product_names[] = $actual_name;
+
     $all_products[$actual_name][] = array(
         'name' => $actual_name,
         'color' => $color,
         'size' => $size,
         'height' => $height,
         'sku' => $sku,
-        'unit_price' => $unit_price,
+        'unit_price' => round($unit_price,2),
         'total_stock' => $total_stock,
         'brentwood_stock' => $brentwood_stock,
         'fallriver_stock' => $fallriver_stock,
@@ -86,9 +95,11 @@ for ($row = 2; $row <= $highestRow; $row++) {
     );
 }
 
+$product_names = array_unique($product_names);
+
 ksort($all_products);
 ?>
-
+<div style="padding-top: 100px;">
 <table style="width:100%; margin:auto; padding: 20px; border-collapse: collapse;">
     <thead>
 
@@ -212,3 +223,48 @@ ksort($all_products);
     ?>
     </tbody>
 </table>
+</div>
+
+<div style="position: fixed; top:0; left:0; padding: 20px 0; border-bottom: solid 1px #ccc; width: 100%; background: white; text-align: right">
+    <select id="products" style="display: inline; padding: 5px;">
+        <?php
+            foreach($product_names as $product){
+                echo "<option>$product</option>";
+            }
+        ?>
+    </select>
+    <input type="button" id="search" value="Go to product" style="padding: 5px; margin-right: 20px;"/>
+</div>
+
+<script type="text/javascript">
+    jQuery(function(){
+        jQuery("#search").click(function(){
+            var product = jQuery("#products").val();
+
+           doSearch(product);
+       });
+    });
+
+    function doSearch(text) {
+        if (window.find && window.getSelection) {
+            document.designMode = "on";
+            var sel = window.getSelection();
+            sel.collapse(document.body, 0);
+
+            while (window.find(text)) {
+                document.execCommand("HiliteColor", false, "yellow");
+                sel.collapseToEnd();
+            }
+            document.designMode = "off";
+        } else if (document.body.createTextRange) {
+            var textRange = document.body.createTextRange();
+            while (textRange.findText(text)) {
+                textRange.execCommand("BackColor", false, "yellow");
+                textRange.collapse(false);
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
