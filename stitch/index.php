@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../js/new_jquery/jquery-1.8.2.min.js"></script>
     <title>Stitch All Inventory Report</title>
 </head>
-<body>
+<body style="font-size: 13px; font-family: arial, helvetica, sans-serif">
 
 <?php
 
@@ -123,8 +123,8 @@ $product_names = array_unique($product_names);
 
 ksort($all_products);
 ?>
-<div id="divdata" style="padding-top: 100px;">
-<table style="width:100%; margin:auto; padding: 20px; border-collapse: collapse;">
+<div id="divdata" style="padding-top: 155px;">
+<table style="width:100%; margin:auto; padding: 20px; border-collapse: collapse;font-size: 13px; font-family: arial, helvetica, sans-serif">
     <thead>
 
     </thead>
