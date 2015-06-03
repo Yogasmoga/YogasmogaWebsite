@@ -89,7 +89,7 @@ for ($row = 2; $row <= $highestRow; $row++) {
 
     if(strpos($within_parenthesis, ",")===false) {
         $color = $within_parenthesis;
-        $size = '';
+        $size = '-';
         $height = '';
     }
     else{
@@ -119,7 +119,7 @@ for ($row = 2; $row <= $highestRow; $row++) {
     );
 }
 
-$product_names = array_unique($product_names);
+    $product_names = array_unique($product_names);
 
 ksort($all_products);
 ?>
