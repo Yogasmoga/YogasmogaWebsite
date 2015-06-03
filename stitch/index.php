@@ -179,11 +179,11 @@ ksort($all_products);
 
         echo "<td style='padding:5px;'>Color</td>";
         foreach($ar_sizes as $size){
-            echo "<td style='padding:5px; text-align: center'>Size " . $size . "</td>";
+            echo "<td style='padding:5px; text-align: left'>Size " . $size . "</td>";
         }
-        echo "<td style='padding:5px; text-align: center'>Total</td>";
-        echo "<td style='padding:5px; text-align: center'>Unit Price</td>";
-        echo "<td style='padding:5px; text-align: center'>Net Total</td>";
+        echo "<td style='padding:5px; text-align: left'>Total</td>";
+        echo "<td style='padding:5px; text-align: left'>Unit Price</td>";
+        echo "<td style='padding:5px; text-align: left'>Net Total</td>";
         echo "</tr>";
         /***************** printing size header *********************/
 
@@ -212,9 +212,9 @@ ksort($all_products);
             if(count($ar_size_stock)>0) {
                 foreach ($ar_size_stock as $size => $stock) {
                     if(intval($stock)==0)
-                        echo "<td style='text-align: center; background-color: #ccc'>$stock</td>";
+                        echo "<td style='text-align: left; background-color: #ccc'>$stock</td>";
                     else
-                        echo "<td style='text-align: center'>$stock</td>";
+                        echo "<td style='text-align: left'>$stock</td>";
                     ++$x;
                 }
             }
@@ -222,13 +222,13 @@ ksort($all_products);
             // fill td's if there are not enough size available for this product
             if($x>0)
                 for($i=$x;$i<count($ar_sizes);$i++)
-                    echo "<td style='text-align: center'>&nbsp;</td>";
+                    echo "<td style='text-align: left'>&nbsp;</td>";
 
             if(isset($color_data[0]['unit_price'])) {
-                echo "<td style='text-align: center'>$total</td>";
+                echo "<td style='text-align: left'>$total</td>";
                 $unit_price = $color_data[0]['unit_price'];
-                echo "<td style='text-align: center'>$unit_price</td>";
-                echo "<td style='text-align: center'>" . $total * $unit_price . "</td>";
+                echo "<td style='text-align: left'>$ " . round($unit_price,2) . "</td>";
+                echo "<td style='text-align: left'>$ " . round($total * $unit_price,2) . "</td>";
 
                 $total_inventories += $total * $unit_price;
             }
@@ -240,7 +240,7 @@ ksort($all_products);
         echo "<td colspan='2' style='padding-top:20px; font-weight:bold; color:2f70cc'>$total_products</td>";
         echo "</tr>";
         echo "<tr><td style='padding-top:10px; font-weight:bold; color:#cc1c3a'>Total price of all inventories</td>";
-        echo "<td colspan='2' style='padding-top:20px; font-weight:bold; color:#cc1c3a'>$total_inventories</td>";
+        echo "<td colspan='2' style='padding-top:20px; font-weight:bold; color:#cc1c3a'>$ " . number_format(round($total_inventories,2)) . "</td>";
         echo "</tr>";
 
         $total_all_inventories += $total_products;
