@@ -8,6 +8,16 @@
         $filter_display = "display:block";
     else
         $upload_display = "display:block";
+
+    $stores = array('all', 'brentwood', 'fallriver', 'magento', 'greenwich');
+
+    $store = 'all';
+    if(isset($_GET['store'])) {
+        $store = strtolower($_GET['store']);
+
+        if (!in_array($store, $stores))
+            $store = 'total';
+    }
 ?>
 
 <html>
@@ -51,7 +61,7 @@ for ($row = 2; $row <= $highestRow; $row++) {
     $sku = $rowData[0][1];
     $name = $rowData[0][2];
     $unit_price = $rowData[0][4];
-    $total_stock = $rowData[0][9];
+    $all_stock = $rowData[0][9];
     $brentwood_stock = $rowData[0][15];
     $fallriver_stock = $rowData[0][12];
     $magento_stock = $rowData[0][18];
@@ -100,7 +110,7 @@ for ($row = 2; $row <= $highestRow; $row++) {
         'height' => $height,
         'sku' => $sku,
         'unit_price' => round($unit_price,2),
-        'total_stock' => $total_stock,
+        'all_stock' => $all_stock,
         'brentwood_stock' => $brentwood_stock,
         'fallriver_stock' => $fallriver_stock,
         'magento_stock' => $magento_stock,
@@ -137,7 +147,7 @@ ksort($all_products);
                 $ar_color_size[$ar['color'] . '-' . $ar['height']][] = array(
                     'color' => $ar['color'] . '-' . $ar['height'],
                     'size' => $ar['size'],
-                    'stock' => $ar['total_stock'],
+                    'stock' => $ar[$store . '_stock'],
                     'unit_price' => $ar['unit_price']
                 );
             }
@@ -145,7 +155,7 @@ ksort($all_products);
                 $ar_color_size[$ar['color']][] = array(
                     'color' => $ar['color'],
                     'size' => $ar['size'],
-                    'stock' => $ar['total_stock'],
+                    'stock' => $ar[$store . '_stock'],
                     'unit_price' => $ar['unit_price']
                 );
             }
@@ -261,6 +271,14 @@ ksort($all_products);
 </div>
 
 <div id="divfilter" style="position: fixed; top:0; left:0; padding: 20px 0; border-bottom: solid 1px #ccc; width: 100%; background: white; text-align: right;<?php echo $filter_display;?>">
+    <form action="index.php" method="get" id="frmfilter">
+    <select name="store" style="padding: 5px;">
+        <option value="all">All</option>
+        <option value="brentwood">Brentwood</option>
+        <option value="fallriver">Fall river</option>
+        <option value="greenwich">Greenwich</option>
+        <option value="magento">Magento</option>
+    </select>
     <select id="products" style="display: inline; padding: 5px;">
         <?php
             foreach($product_names as $product){
@@ -270,9 +288,15 @@ ksort($all_products);
     </select>
     <input type="button" id="search" value="Go to product" style="padding: 5px; margin-right: 5px;"/>
     <input type="button" style="padding:5px; margin-right: 20px;" id="showupload" value="Upload File"/>
+    </form>
 
     <div style="float:left; padding-left: 20px;">
         <table style="width:400px;">
+            <tr>
+                <td style="width:150px;">Data for</td>
+                <td>=</td>
+                <td style="width:200px; color: red"><?php echo strtoupper($store);?></td>
+            </tr>
             <tr>
                 <td style="width:150px;">Total Inventory</td>
                 <td>=</td>
@@ -301,6 +325,12 @@ ksort($all_products);
             jQuery("#divdata").hide();
             jQuery("#divfilter").hide();
         });
+
+        jQuery("select[name='store']").change(function(){
+            jQuery("#frmfilter").submit();
+        });
+
+        jQuery("select[name='store']").val("<?php echo $store;?>");
     });
 
     function uploadNow(){
