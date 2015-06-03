@@ -1,13 +1,27 @@
+<?php
+    $inputFileName = 'stitch.xls';
+
+    $upload_display = "display:none";
+    $filter_display = "display:none";
+
+    if(file_exists($inputFileName))
+        $filter_display = "display:block";
+    else
+        $upload_display = "display:block";
+?>
+
 <html>
 <head>
     <script type="text/javascript" src="../js/new_jquery/jquery-1.8.2.min.js"></script>
+    <title>Stitch All Inventory Report</title>
 </head>
 <body>
 
 <?php
-include 'PHPExcel-1.8/Classes/PHPExcel/IOFactory.php';
 
-$inputFileName = 'stitch.xlsx';
+if(file_exists($inputFileName)){
+
+include 'PHPExcel-1.8/Classes/PHPExcel/IOFactory.php';
 
 //  Read your Excel workbook
 try {
@@ -34,25 +48,25 @@ for ($row = 2; $row <= $highestRow; $row++) {
     $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row,
         NULL, TRUE, FALSE);
 
-//    $sku = $rowData[0][1];
-//    $name = $rowData[0][2];
-//    $unit_price = $rowData[0][4];
-//    $total_stock = $rowData[0][9];
-//    $brentwood_stock = $rowData[0][15];
-//    $fallriver_stock = $rowData[0][12];
-//    $magento_stock = $rowData[0][18];
-//    $greenwich_stock = $rowData[0][21];
-//    $magento_price = $rowData[0][30];
+    $sku = $rowData[0][1];
+    $name = $rowData[0][2];
+    $unit_price = $rowData[0][4];
+    $total_stock = $rowData[0][9];
+    $brentwood_stock = $rowData[0][15];
+    $fallriver_stock = $rowData[0][12];
+    $magento_stock = $rowData[0][18];
+    $greenwich_stock = $rowData[0][21];
+    $magento_price = $rowData[0][30];
 
-    $sku = $rowData[0][0];
-    $name = $rowData[0][1];
-    $unit_price = $rowData[0][2];
-    $total_stock = $rowData[0][3];
-    $brentwood_stock = $rowData[0][4];
-    $fallriver_stock = $rowData[0][5];
-    $magento_stock = $rowData[0][6];
-    $greenwich_stock = $rowData[0][7];
-    $magento_price = $rowData[0][8];
+//    $sku = $rowData[0][0];
+//    $name = $rowData[0][1];
+//    $unit_price = $rowData[0][2];
+//    $total_stock = $rowData[0][3];
+//    $brentwood_stock = $rowData[0][4];
+//    $fallriver_stock = $rowData[0][5];
+//    $magento_stock = $rowData[0][6];
+//    $greenwich_stock = $rowData[0][7];
+//    $magento_price = $rowData[0][8];
 
     if(strpos($name, '(')===false)
         continue;
@@ -99,7 +113,7 @@ $product_names = array_unique($product_names);
 
 ksort($all_products);
 ?>
-<div style="padding-top: 100px;">
+<div id="divdata" style="padding-top: 100px;">
 <table style="width:100%; margin:auto; padding: 20px; border-collapse: collapse;">
     <thead>
 
@@ -236,7 +250,17 @@ ksort($all_products);
 </table>
 </div>
 
-<div style="position: fixed; top:0; left:0; padding: 20px 0; border-bottom: solid 1px #ccc; width: 100%; background: white; text-align: right">
+<?php } ?>
+
+<div id="divupload" style="position: fixed; top:0; left:0; padding: 20px 0; border-bottom: solid 1px #ccc; width: 100%; background: white; text-align: right;<?php echo $upload_display;?>">
+    <form target="ifr" method="post" enctype="multipart/form-data" action="upload.php" onsubmit="return uploadNow()">
+        Browse file <input type="file" name="file"/> <input type="submit" id="upload" value="Upload stitch excel" style="padding: 5px; margin-right: 20px;"/>
+    </form>
+    <iframe id="ifr" name="ifr" style="visibility: hidden;width:1px;height:1px;"></iframe>
+    <span id="uploadmessage" style="margin-right: 20px;"></span>
+</div>
+
+<div id="divfilter" style="position: fixed; top:0; left:0; padding: 20px 0; border-bottom: solid 1px #ccc; width: 100%; background: white; text-align: right;<?php echo $filter_display;?>">
     <select id="products" style="display: inline; padding: 5px;">
         <?php
             foreach($product_names as $product){
@@ -244,7 +268,8 @@ ksort($all_products);
             }
         ?>
     </select>
-    <input type="button" id="search" value="Go to product" style="padding: 5px; margin-right: 20px;"/>
+    <input type="button" id="search" value="Go to product" style="padding: 5px; margin-right: 5px;"/>
+    <input type="button" style="padding:5px; margin-right: 20px;" id="showupload" value="Upload File"/>
 
     <div style="float:left; padding-left: 20px;">
         <table style="width:400px;">
@@ -270,7 +295,32 @@ ksort($all_products);
 
            doSearch(product);
        });
+
+        jQuery("#showupload").click(function(){
+            jQuery("#divupload").show();
+            jQuery("#divdata").hide();
+            jQuery("#divfilter").hide();
+        });
     });
+
+    function uploadNow(){
+        jQuery("#ifr").load(function(){
+            jQuery("#uploadmessage").html("");
+
+            var result = jQuery("#ifr").contents().find("body").html();
+
+            if(result.indexOf('success')>-1)
+                window.location.replace('index.php');
+            else if(result.indexOf('large')>-1)
+                jQuery("#uploadmessage").html("File was too large");
+            else if(result.indexOf('error')>-1)
+                jQuery("#uploadmessage").html("There was an error in file upload");
+        });
+
+        jQuery("#uploadmessage").html("Uploading...");
+
+        return true;
+    }
 
     function doSearch(text) {
         if (window.find && window.getSelection) {
