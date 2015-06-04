@@ -54,7 +54,7 @@ class Ysindia_Profile_Helper_Data extends Mage_Core_Helper_Abstract{
             if ($results && count($results) == 1)
                 $profile_picture = $results[0]["meta_value"];
             else
-                $profile_picture = Mage::getBaseUrl() . "rangoli/wp-content/themes/rangoli/images/default.jpg";
+                $profile_picture = Mage::getUrl("rangoli/wp-content/themes/rangoli/images/default.jpg", array('_secure' => true));
 
             return $profile_picture;
         }
