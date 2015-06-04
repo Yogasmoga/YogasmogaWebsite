@@ -51,8 +51,19 @@ class Ysindia_Profile_Helper_Data extends Mage_Core_Helper_Abstract{
 
             $results = $readConnection->fetchAll($query);
 
-            if ($results && count($results) == 1)
+            if ($results && count($results) == 1) {
                 $profile_picture = $results[0]["meta_value"];
+
+                if(isset($profile_picture)) {
+
+                    $profile_picture = strtolower($profile_picture);
+
+                    if (strpos($profile_picture, "http://") === false)
+                        ;
+                    else
+                        $profile_picture = str_replace("http://", "https://", $profile_picture);
+                }
+            }
             else
                 $profile_picture = Mage::getUrl("rangoli/wp-content/themes/rangoli/images/default.jpg", array('_secure' => true));
 
