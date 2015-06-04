@@ -93,7 +93,7 @@ if(!is_user_logged_in()) {
                 <p class="gender_p gender_popup">Select Gender <span><input type="radio" name="gender" value="1" />M</span>  <span><input type="radio" name="gender" value="2" />F</span> </p>
                 <img class="loader" src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px; display:none;' />
             <input id="signup" type="button" value="Sign up"  />
-                <div class="err-msg"></div>
+                <div class="err-msg" style="color:#fff"></div>
             </form>
             <div class="align-center" style=" color:#ff9f9f; font-size: 13px; letter-spacing: 1px; font-family: ITCAvantGardeStd-Bk">
                 Already signed up?<br/><a style="cursor: pointer;" onclick="$('.login_logout_link').click();">Sign in here</a>
