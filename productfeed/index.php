@@ -1,5 +1,7 @@
 <?php
     ini_set('max_execution_time', 300); //300 seconds = 5 minutes
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
 
     require '../app/Mage.php';
     Mage::app();
