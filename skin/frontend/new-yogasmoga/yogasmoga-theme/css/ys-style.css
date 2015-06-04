@@ -347,12 +347,13 @@ button#signup-button {
     cursor: pointer;
 }
 .link_red_popup a{
-    color:#fff;
+    color:#ff9f9f;
     letter-spacing: 1px;
     transition-duration: 200ms;
+    cursor: pointer;
 }
 .link_red_popup a:hover{
-    color: #ff4d4d;
+    color: #999;
     transition-duration: 200ms;
 }
 
