@@ -62,10 +62,7 @@
                 }
             }
 
-            $description = str_replace("\n", '', $description);
-            $description = str_replace(PHP_EOL, '', $description);
-
-            $data = $name . ',' . $keywords . ',' . $description . ',' . $sku . ',' . $buy_url . ',' . $available . ',' . $image_url . ',' . $price . ',' . $upc . ',' . $advertise_category . "\n";
+            $data = "$name|$keywords|$description|$sku|$buy_url|$available|$image_url|$price|$upc|$advertise_category\n";
 
             fwrite($fileOut, $data);
         }
@@ -73,7 +70,7 @@
 
     fclose($fileOut);
 
-    $root = "ysstaging.com.local";
+    $root = "staging.yogasmoga.com";
     $file_url = "http://$root/productfeed/result.txt";
     header('Content-Type: application/octet-stream');
     header("Content-Transfer-Encoding: Binary");
