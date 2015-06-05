@@ -36,7 +36,10 @@
 
         $product = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
 
-        if(isset($product) || !$product->getId()) {
+        if(!isset($product) || !is_object($product) || !$product->getId()) {
+			echo "Bad product = $name ( $sku ) <br/>";
+		}
+		else{
 
             $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')
                 ->getParentIdsByChild($product->getId());
