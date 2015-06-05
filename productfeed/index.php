@@ -70,5 +70,5 @@
 
     fclose($fileOut);
 
-	header('location:download.php');
+	echo "<br/><br/>Product feed ready, <a href='download.php'>click here</a> to download";
 ?>
