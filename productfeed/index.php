@@ -1,5 +1,7 @@
 <?php
     ini_set('max_execution_time', 300); //300 seconds = 5 minutes
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
 
     require '../app/Mage.php';
     Mage::app();
@@ -34,7 +36,10 @@
 
         $product = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
 
-        if(isset($product) || !$product->getId()) {
+        if(!isset($product) || !is_object($product) || !$product->getId()) {
+			echo "Bad product = $name ( $sku ) <br/>";
+		}
+		else{
 
             $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')
                 ->getParentIdsByChild($product->getId());
@@ -57,10 +62,7 @@
                 }
             }
 
-            $description = str_replace("\n", '', $description);
-            $description = str_replace(PHP_EOL, '', $description);
-
-            $data = $name . ',' . $keywords . ',' . $description . ',' . $sku . ',' . $buy_url . ',' . $available . ',' . $image_url . ',' . $price . ',' . $upc . ',' . $advertise_category . "\n";
+            $data = "$name|$keywords|$description|$sku|$buy_url|$available|$image_url|$price|$upc|$advertise_category\n";
 
             fwrite($fileOut, $data);
         }
@@ -68,10 +70,5 @@
 
     fclose($fileOut);
 
-    $root = "ysstaging.com.local";
-    $file_url = "http://$root/productfeed/result.txt";
-    header('Content-Type: application/octet-stream');
-    header("Content-Transfer-Encoding: Binary");
-    header("Content-disposition: attachment; filename=\"" . basename($file_url) . "\"");
-    readfile($file_url);
+	echo "<br/><br/>Product feed ready, <a href='download.php'>click here</a> to download";
 ?>
