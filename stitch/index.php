@@ -136,7 +136,7 @@ ksort($all_products);
 
     foreach($all_products as $product_name => $data){
 
-        echo "<tr><td colspan='10' style='border-bottom:solid 1px #ccc; padding-bottom:5px;'><b>$product_name</b></td></tr>";
+        echo "<tr><td colspan='10' style='padding-bottom:5px;'><b>$product_name</b></td></tr>";
         echo "<tr>";
 
         $ar_color_size = array();
@@ -183,7 +183,7 @@ ksort($all_products);
         }
         echo "<td style='padding:5px; text-align: left'>Total</td>";
         echo "<td style='padding:5px; text-align: left'>Cost Price</td>";
-        echo "<td style='padding:5px; text-align: left'>Total Cost Price</td>";
+        echo "<td style='padding:5px; text-align: left;min-width: 100px;'>Total Cost Price</td>";
         echo "</tr>";
         /***************** printing size header *********************/
 
