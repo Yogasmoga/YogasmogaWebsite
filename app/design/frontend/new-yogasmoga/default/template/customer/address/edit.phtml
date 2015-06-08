@@ -31,6 +31,15 @@
  * @see Mage_Customer_Block_Address_Edit
  */
 ?>
+    <style>
+        table.inputtable td.inputholder {
+            background: #fff;
+            padding: 10px !important;
+        }
+        #region_id{width:242px;}
+        #country{width:275px!important;}
+
+    </style>
 <script type="text/javascript">
     var StateCollection = <?php echo $this->helper('directory')->getRegionJson() ?>;
     console.log(StateCollection);
