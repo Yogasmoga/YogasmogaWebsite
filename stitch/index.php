@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../js/new_jquery/jquery-1.8.2.min.js"></script>
     <title>Stitch All Inventory Report</title>
 </head>
-<body style="font-size: 13px; font-family: arial, helvetica, sans-serif">
+<body style="font-size: 12px; font-family: arial, helvetica, sans-serif">
 
 <?php
 
@@ -124,7 +124,7 @@ for ($row = 2; $row <= $highestRow; $row++) {
 ksort($all_products);
 ?>
 <div id="divdata" style="padding-top: 155px;">
-<table style="width:100%; margin:auto; padding: 20px; border-collapse: collapse;font-size: 13px; font-family: arial, helvetica, sans-serif">
+<table style="width:100%; margin:auto; padding: 20px; border-collapse: collapse;font-size: 12px; font-family: arial, helvetica, sans-serif">
     <thead>
 
     </thead>
@@ -177,9 +177,9 @@ ksort($all_products);
 
         echo "<tr style='background: #2c62a5; color: #fff'>";
 
-        echo "<td style='padding:5px;'>Color</td>";
+        echo "<td style='padding:5px; min-width: 200px;'>Color</td>";
         foreach($ar_sizes as $size){
-            echo "<td style='padding:5px; text-align: left; min-width: 65px;'>Size " . $size . "</td>";
+            echo "<td style='padding:5px; text-align: left; min-width: 55px;'>Size " . $size . "</td>";
         }
         echo "<td style='padding:5px; text-align: left'>Total</td>";
         echo "<td style='padding:5px; text-align: left'>Cost Price</td>";
