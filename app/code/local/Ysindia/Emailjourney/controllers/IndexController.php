@@ -77,6 +77,8 @@ class Ysindia_Emailjourney_IndexController extends Mage_Core_Controller_Front_Ac
             $datediff = $now - $your_date;
             $days = floor($datediff / (60 * 60 * 24));
 
+            if($days>5) continue;       // pick templates 0-5
+            
             $resource = Mage::getSingleton('core/resource');
             $readConnection = $resource->getConnection('core_read');
 
