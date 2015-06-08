@@ -229,7 +229,7 @@ ksort($all_products);
                 $unit_price = $color_data[0]['unit_price'];
                 echo "<td style='text-align: left'>$ " . round($unit_price,2) . "</td>";
                 $net_total = $total * $unit_price;
-                echo "<td style='text-align: left'>$ > " . round($net_total,2) . "</td>";
+                echo "<td style='text-align: left'>$ " . number_format($net_total, 2, '.', ''). "</td>";
 
                 $total_inventories += $total * $unit_price;
             }
