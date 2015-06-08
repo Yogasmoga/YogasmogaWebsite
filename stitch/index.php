@@ -132,6 +132,7 @@ ksort($all_products);
     <?php
 
     $total_all_inventories = 0;
+    $total_inventories_cost = 0;
     $total_all_price = 0;
 
     foreach($all_products as $product_name => $data){
@@ -189,6 +190,12 @@ ksort($all_products);
 
         $total_products = 0;
         $total_inventories = 0;
+        $ar_sub_total = array();
+        $ar_sub_total_cost_price = array();
+        $ar_sub_total_stock_sum = array();
+        $sum_of_total = 0;
+        $sum_of_inventories = 0;
+
         foreach($ar_color_size as $color_name_value => $color_data ){
 
             echo "<tr>";
@@ -196,26 +203,35 @@ ksort($all_products);
 
             $ar_size_stock = array();
 
-            $total = 0;
+            $total_product_stock = 0;
             foreach($color_data as $color_size) {
                 if(isset($color_size['size']) && strlen(trim($color_size['size']))>0) {
                     $ar_size_stock[$color_size['size']] = $color_size['stock'];
-                    $total += $color_size['stock'];
+                    $total_product_stock += $color_size['stock'];
                 }
             }
 
-            $total_products += $total;
+            $total_products += $total_product_stock;
 
             ksort($ar_size_stock);
 
             $x = 0;
             if(count($ar_size_stock)>0) {
+                $sub_total_stock_sum = 0;
                 foreach ($ar_size_stock as $size => $stock) {
                     if(intval($stock)==0)
                         echo "<td style='text-align: left; background-color: #ccc'>$stock</td>";
                     else
                         echo "<td style='text-align: left'>$stock</td>";
                     ++$x;
+
+                    if($size==="-")
+                        $size = "none";
+
+                    if(!isset($ar_sub_total_stock_sum[$size]))
+                        $ar_sub_total_stock_sum[$size] = 0;
+
+                    $ar_sub_total_stock_sum[$size] += $stock;
                 }
             }
 
@@ -224,28 +240,48 @@ ksort($all_products);
                 for($i=$x;$i<count($ar_sizes);$i++)
                     echo "<td style='text-align: left'>&nbsp;</td>";
 
+            $sum_of_total = 0;
+            $sum_of_inventories = 0;
             if(isset($color_data[0]['unit_price'])) {
-                echo "<td style='text-align: left'>$total</td>";
+                echo "<td style='text-align: left'>$total_product_stock</td>";
                 $unit_price = $color_data[0]['unit_price'];
                 echo "<td style='text-align: left'>$ " . round($unit_price,2) . "</td>";
-                $net_total = $total * $unit_price;
+                $net_total = $total_product_stock * $unit_price;
                 echo "<td style='text-align: left'>$ " . number_format($net_total, 2, '.', ''). "</td>";
 
-                $total_inventories += $total * $unit_price;
+                $total_inventories_cost += $net_total;
+
+                $sum_of_total += $net_total;
+                $sum_of_inventories += $total_product_stock;
             }
+
+            //$ar_sub_total_cost_price[] = $net_total;
 
             echo "</tr>";
         }
+
+        echo "<tr><td style='padding-top:20px; font-weight:bold; color:#2f70cc'>Sub Total</td>";
+        foreach($ar_sub_total_stock_sum as $size => $size_total)
+            echo "<td style='text-align: left; padding-top:20px'>" . $size_total . "</td>";
+
+        for($i=count($ar_sub_total_stock_sum);$i<count($ar_sizes);$i++)
+            echo "<td style='text-align: left; padding-top:20px'>&nbsp;</td>";
+
+        echo "<td style='text-align: left; padding-top:20px'>$total_products</td>";
+        echo "<td style='text-align: left; padding-top:20px'>&nbsp;</td>";
+        echo "<td style='text-align: left; padding-top:20px'>$ " . number_format($total_inventories_cost, 2, '.', ''). "</td>";
+
+        echo "</tr>";
 
         echo "<tr><td style='padding-top:20px; font-weight:bold; color:#2f70cc'>Total units: \"Style name\" </td>";
         echo "<td colspan='2' style='padding-top:20px; font-weight:bold; color:2f70cc'>$ " . round($total_products,2) . "</td>";
         echo "</tr>";
         echo "<tr><td style='padding-top:10px; font-weight:bold; color:#cc1c3a'>Total Cost Price: \"Style name\"</td>";
-        echo "<td colspan='2' style='padding-top:10px; font-weight:bold; color:#cc1c3a'>$ " . number_format(round($total_inventories,2)) . "</td>";
+        echo "<td colspan='2' style='padding-top:10px; font-weight:bold; color:#cc1c3a'>$ " . number_format(round($total_inventories_cost,2)) . "</td>";
         echo "</tr>";
 
         $total_all_inventories += $total_products;
-        $total_all_price += $total_inventories;
+        $total_all_price += $total_inventories_cost;
 
         unset($ar_sizes);
 
@@ -306,7 +342,7 @@ ksort($all_products);
             <tr>
                 <td style="width:200px;">Total Cost of Inventory</td>
                 <td>=</td>
-                <td style="width:200px;">$ <?php echo round($total_all_price,2);?></td>
+                <td style="width:200px;">$ <?php echo $total_all_price;?></td>
             </tr>
         </table>
     </div>
