@@ -182,8 +182,8 @@ ksort($all_products);
             echo "<td style='padding:5px; text-align: left'>Size " . $size . "</td>";
         }
         echo "<td style='padding:5px; text-align: left'>Total</td>";
-        echo "<td style='padding:5px; text-align: left'>Unit Price</td>";
-        echo "<td style='padding:5px; text-align: left'>Net Total</td>";
+        echo "<td style='padding:5px; text-align: left'>Cost Price</td>";
+        echo "<td style='padding:5px; text-align: left'>Total Cost Price</td>";
         echo "</tr>";
         /***************** printing size header *********************/
 
@@ -236,10 +236,10 @@ ksort($all_products);
             echo "</tr>";
         }
 
-        echo "<tr><td style='padding-top:20px; font-weight:bold; color:#2f70cc'>Total inventory of all colors and sizes</td>";
+        echo "<tr><td style='padding-top:20px; font-weight:bold; color:#2f70cc'>Total units: \"Style name\" </td>";
         echo "<td colspan='2' style='padding-top:20px; font-weight:bold; color:2f70cc'>$total_products</td>";
         echo "</tr>";
-        echo "<tr><td style='padding-top:10px; font-weight:bold; color:#cc1c3a'>Total price of all inventories</td>";
+        echo "<tr><td style='padding-top:10px; font-weight:bold; color:#cc1c3a'>Total Cost Price: \"Style name\"</td>";
         echo "<td colspan='2' style='padding-top:20px; font-weight:bold; color:#cc1c3a'>$ " . number_format(round($total_inventories,2)) . "</td>";
         echo "</tr>";
 
@@ -298,14 +298,14 @@ ksort($all_products);
                 <td style="width:200px; color: red"><?php echo strtoupper($store);?></td>
             </tr>
             <tr>
-                <td style="width:150px;">Total Inventory</td>
+                <td style="width:150px;">Total Inventory (Units)</td>
                 <td>=</td>
                 <td style="width:200px;"><?php echo $total_all_inventories;?></td>
             </tr>
             <tr>
-                <td style="width:150px;">Total Cost</td>
+                <td style="width:150px;">Total Cost of Inventory</td>
                 <td>=</td>
-                <td style="width:200px;">$ <?php echo $total_all_price;?></td>
+                <td style="width:200px;">$ <?php echo round($total_all_price,2);?></td>
             </tr>
         </table>
     </div>
