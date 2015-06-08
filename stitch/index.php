@@ -240,7 +240,7 @@ ksort($all_products);
         echo "<td colspan='2' style='padding-top:20px; font-weight:bold; color:2f70cc'>$total_products</td>";
         echo "</tr>";
         echo "<tr><td style='padding-top:10px; font-weight:bold; color:#cc1c3a'>Total Cost Price: \"Style name\"</td>";
-        echo "<td colspan='2' style='padding-top:20px; font-weight:bold; color:#cc1c3a'>$ " . number_format(round($total_inventories,2)) . "</td>";
+        echo "<td colspan='2' style='padding-top:10px; font-weight:bold; color:#cc1c3a'>$ " . number_format(round($total_inventories,2)) . "</td>";
         echo "</tr>";
 
         $total_all_inventories += $total_products;
@@ -291,19 +291,19 @@ ksort($all_products);
     </form>
 
     <div style="float:left; padding-left: 20px;">
-        <table style="width:400px;">
+        <table style="width:600px;">
             <tr>
-                <td style="width:150px;">Data for</td>
+                <td style="width:200px;">Data for</td>
                 <td>=</td>
                 <td style="width:200px; color: red"><?php echo strtoupper($store);?></td>
             </tr>
             <tr>
-                <td style="width:150px;">Total Inventory (Units)</td>
+                <td style="width:200px;">Total Inventory (Units)</td>
                 <td>=</td>
                 <td style="width:200px;"><?php echo $total_all_inventories;?></td>
             </tr>
             <tr>
-                <td style="width:150px;">Total Cost of Inventory</td>
+                <td style="width:200px;">Total Cost of Inventory</td>
                 <td>=</td>
                 <td style="width:200px;">$ <?php echo round($total_all_price,2);?></td>
             </tr>
