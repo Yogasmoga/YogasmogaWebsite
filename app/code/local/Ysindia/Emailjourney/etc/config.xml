@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Ysindia_Emailjourney>
+            <version>0.0.1</version>
+        </Ysindia_Emailjourney>
+    </modules>
+    
+	<frontend>
+		<routers>
+			<journey>
+					<use>standard</use>
+					<args>
+						<module>Ysindia_Emailjourney</module>
+						<frontName>journey</frontName>
+					</args>
+			</journey>
+		</routers>
+		<layout>
+            <updates>
+                <journey>
+                    <file>journey.xml</file>
+                </journey>
+            </updates>
+        </layout>
+	</frontend>
+	
+	
+    <global>
+		<helpers>
+			<journey>
+				<class>Ysindia_Emailjourney_Helper</class>
+			</journey>
+		</helpers>
+        <models>
+        
+            <journey>
+				<class>Ysindia_Emailjourney_Model</class>
+				<resourceModel>journey_mysql4</resourceModel>		
+            </journey>
+            
+            <journey_mysql4>
+                <class>Ysindia_Emailjourney_Model_Mysql4</class>
+                <entities>
+                    <journey>
+                        <table>email_journey</table>
+                    </journey>
+                </entities>                
+            </journey_mysql4>
+            
+        </models>
+        
+        <resources>
+            <journey_setup>
+                <setup>
+                    <module>Ysindia_Emailjourney</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </journey_setup>
+            
+            <journey_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </journey_read>            
+            
+            <journey_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </journey_write>                
+		</resources>        
+        
+	</global>    
+</config>
