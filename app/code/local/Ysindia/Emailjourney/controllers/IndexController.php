@@ -6,7 +6,7 @@ class Ysindia_Emailjourney_IndexController extends Mage_Core_Controller_Front_Ac
     {
         $templates = array(29,30,31,32,33,34);
 
-        $date_to_look_start = date('Y-m-d', strtotime('-7 day', strtotime(date('Y-m-d'))));
+        $date_to_look_start = date('Y-m-d', strtotime('-6 day', strtotime(date('Y-m-d'))));
         $date_to_look_end = date('Y-m-d');
         $storeId = Mage::app()->getStore()->getStoreId();
         echo $date_to_look_start . " , " . $date_to_look_end . "<br/><br/>";
@@ -78,7 +78,7 @@ class Ysindia_Emailjourney_IndexController extends Mage_Core_Controller_Front_Ac
             $days = floor($datediff / (60 * 60 * 24));
 
             if($days>5) continue;       // pick templates 0-5
-            
+
             $resource = Mage::getSingleton('core/resource');
             $readConnection = $resource->getConnection('core_read');
 
