@@ -54,7 +54,7 @@ $(window).load(function(){
                         if(is_login_box_open == false) {
                             open_bulls_popup();
                         }
-                    },120000);
+                    },60000);
                 }
             }
         });
