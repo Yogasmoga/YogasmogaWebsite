@@ -137,6 +137,8 @@ ksort($all_products);
 
     foreach($all_products as $product_name => $data){
 
+        $styleName = $product_name;
+
         echo "<tr><td colspan='10' style='padding-bottom:5px;'><b>$product_name</b></td></tr>";
         echo "<tr>";
 
@@ -273,11 +275,11 @@ ksort($all_products);
 
         echo "</tr>";
 
-        echo "<tr><td style='padding-top:20px; font-weight:bold; color:#2f70cc'>Total units: \"Style name\" </td>";
-        echo "<td colspan='2' style='padding-top:20px; font-weight:bold; color:2f70cc'>$ " . round($total_products,2) . "</td>";
+        echo "<tr><td style='padding-top:20px; font-weight:bold; color:#2f70cc; font-weight: bold'>Total units: \"$styleName\" </td>";
+        echo "<td colspan='2' style='padding-top:20px; font-weight:bold; color:2f70cc; font-weight: bold'>$ " . round($total_products,2) . "</td>";
         echo "</tr>";
-        echo "<tr><td style='padding-top:10px; font-weight:bold; color:#cc1c3a'>Total Cost Price: \"Style name\"</td>";
-        echo "<td colspan='2' style='padding-top:10px; font-weight:bold; color:#cc1c3a'>$ " . number_format(round($total_inventories_cost,2)) . "</td>";
+        echo "<tr><td style='padding-top:10px; font-weight:bold; color:#cc1c3a; font-weight: bold'>Total Cost Price: \"$styleName\"</td>";
+        echo "<td colspan='2' style='padding-top:10px; font-weight:bold; color:#cc1c3a; font-weight: bold'>$ " . number_format(round($total_inventories_cost,2)) . "</td>";
         echo "</tr>";
 
         $total_all_inventories += $total_products;
