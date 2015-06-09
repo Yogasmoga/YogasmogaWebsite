@@ -1,5 +1,5 @@
 <?php
-$root = "staging.yogasmoga.com";
+$root = "admin.yogasmoga.com";
 $file_url = "http://$root/productfeed/result.txt";
 header('Content-Type: application/octet-stream');
 header("Content-Transfer-Encoding: Binary");
