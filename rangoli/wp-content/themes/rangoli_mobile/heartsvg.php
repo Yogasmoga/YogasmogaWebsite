@@ -1,0 +1,10 @@
+<?php
+/*<svg version="1.1" id="svg3542" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:output_extension="org.inkscape.output.svg.inkscape" sodipodi:docname="coeur.svg" sodipodi:docbase="/home/gilles/HOME/abc/2009/com communication" inkscape:version="0.45.1" sodipodi:version="0.32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="22px" viewBox="2.893 3.721 37.519 33.791" enable-background="new 2.893 3.721 37.519 33.791" xml:space="preserve">
+<sodipodi:namedview id="base" showguides="true" inkscape:cy="619.78528" inkscape:cx="441.609" inkscape:zoom="0.53987663" borderopacity="1.0" bordercolor="#666666" pagecolor="#ffffff" inkscape:window-y="25" inkscape:window-x="0" inkscape:window-height="975" inkscape:window-width="1680" inkscape:guide-bbox="true" inkscape:current-layer="layer1" inkscape:document-units="px" inkscape:pageshadow="2" inkscape:pageopacity="0.0">
+</sodipodi:namedview>
+    <g id="layer1" inkscape:label="Calque 1" inkscape:groupmode="layer">
+        <path id="path2361" sodipodi:nodetypes="cccsccc" fill="none" stroke="#fff" stroke-width="1" stroke-linejoin="round" d="   M14.273,5.623C4.805,5.452-3.957,20.26,21.57,35.612c0.028-0.05,0.135-0.05,0.163,0C48.084,19.764,37.899,4.5,28.114,5.688   c-3.814,0.463-5.614,2.58-6.462,4.401c-0.848-1.821-2.648-3.938-6.462-4.401C14.884,5.65,14.579,5.628,14.273,5.623z"/>
+    </g>
+</svg>*/
+?>
+<svg version="1.1" style="width:22px;"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36.6 36.3" enable-background="new 0 0 36.6 36.3" xml:space="preserve" style="height: auto;"> <path fill="none" stroke="#fff" stroke-miterlimit="1" d="M18.2,35.5l16.2-21c1-1.5,1.6-3.2,1.6-5.2c0-4.9-4-8.9-8.9-8.9  s-8.9,4-8.9,8.9c0-4.9-4-8.9-8.9-8.9s-8.9,4-8.9,8.9c0,1.9,0.6,3.7,1.6,5.2L18.2,35.5z"/> </svg>
