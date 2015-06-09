@@ -264,14 +264,14 @@ ksort($all_products);
 
         echo "<tr><td style='padding-top:20px; font-weight:bold; color:#2f70cc'>Sub Total</td>";
         foreach($ar_sub_total_stock_sum as $size => $size_total)
-            echo "<td style='text-align: left; padding-top:20px'>" . $size_total . "</td>";
+            echo "<td style='text-align: left; padding-top:20px; font-weight: bold'>" . $size_total . "</td>";
 
         for($i=count($ar_sub_total_stock_sum);$i<count($ar_sizes);$i++)
-            echo "<td style='text-align: left; padding-top:20px'>&nbsp;</td>";
+            echo "<td style='text-align: left; padding-top:20px; font-weight: bold'>&nbsp;</td>";
 
-        echo "<td style='text-align: left; padding-top:20px'>$total_products</td>";
+        echo "<td style='text-align: left; padding-top:20px; font-weight: bold'>$total_products</td>";
         echo "<td style='text-align: left; padding-top:20px'>&nbsp;</td>";
-        echo "<td style='text-align: left; padding-top:20px'>$ " . number_format($total_inventories_cost, 2, '.', ''). "</td>";
+        echo "<td style='text-align: left; padding-top:20px; font-weight: bold'>$ " . number_format($total_inventories_cost, 2, '.', ''). "</td>";
 
         echo "</tr>";
 
