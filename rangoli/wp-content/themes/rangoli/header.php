@@ -235,6 +235,7 @@ if(!is_user_logged_in()){
                                 <li><a href="/women/tops/tees">TEES</a></li>
                                 <li><a href="/women/tops/tops/sweaters">SWEATERS</a></li>
                                 <li><a href="/women/tops/jackets">Jackets</a></li>
+                                <li><a href="/women/tops/rangoli">Rangoli</a></li>
                             </ul>
                         </li>
                         <li><a href="/women/bottoms"> Bottoms</a>
@@ -243,6 +244,7 @@ if(!is_user_logged_in()){
                                 <li><a href="/women/bottoms/crops">Crops</a></li>
                                 <li><a href="/women/bottoms/leggings">Leggings</a></li>
                                 <li><a href="/women/bottoms/pants">Pants</a></li>
+                                <li><a href="/women/bottoms/rangoli">Rangoli</a></li>
                             </ul>
                         </li>
                         <li><a href="/women/accessories"> Accessories </a>

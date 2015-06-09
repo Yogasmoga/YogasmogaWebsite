@@ -10,8 +10,9 @@
     $fileOut = fopen("result.txt","w");
 
     fwrite($fileOut, "&CID=4521127\n");
+    fwrite($fileOut, "&SUBID=171706\n");
     fwrite($fileOut, "&PROCESSTYPE=UPDATE\n");
-    fwrite($fileOut, "&&AID=12186878\n");
+    fwrite($fileOut, "&AID=12186878\n");
     fwrite($fileOut, "&PARAMETERS=NAME|KEYWORDS|DESCRIPTION|SKU|BUYURL|AVAILABLE|IMAGEURL|PRICE|UPC|ADVERTISERCATEGORY\n");
 
     $count = 0;
@@ -27,12 +28,14 @@
         $name = $ar[1];
         $price = $ar[2];
         $description = trim($ar[3]);
-        $available = $ar[4]===1 ? 'YES':'NO';
+        $available = $ar[4]==="1" ? 'YES':'NO';
         $keyword = '';
         $buy_url = '';
         $image_url = '';
         $upc = $sku;
         $advertise_category = 'yoga apparel';
+
+        $description = trim(preg_replace('/\s+/', ' ', $description));
 
         $product = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
 
