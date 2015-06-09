@@ -820,3 +820,6 @@ input:focus{
 .about_section_1.overlay-text > img {
     width: 40%;
 }
+.gender.selected{
+    background: #AE8536;
+}
