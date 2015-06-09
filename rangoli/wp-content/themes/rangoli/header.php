@@ -233,7 +233,7 @@ if(!is_user_logged_in()){
                             <ul><li><a href="/women/tops/bras">Bras</a></li>
                                 <li><a href="/women/tops/tanks">Tanks</a></li>
                                 <li><a href="/women/tops/tees">TEES</a></li>
-                                <li><a href="/women/tops/tops/sweaters">SWEATERS</a></li>
+                                <li><a href="/women/tops/sweaters">SWEATERS</a></li>
                                 <li><a href="/women/tops/jackets">Jackets</a></li>
                                 <li><a href="/women/tops/rangoli">Rangoli</a></li>
                             </ul>
