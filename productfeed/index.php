@@ -32,7 +32,6 @@
         $keyword = '';
         $buy_url = '';
         $image_url = '';
-        $upc = $sku;
         $advertise_category = 'yoga apparel';
 
         $description = trim(preg_replace('/\s+/', ' ', $description));
@@ -64,6 +63,9 @@
                     break;
                 }
             }
+
+            $sku = str_replace('.', '-', $sku);
+            $upc = $sku;
 
             $data = "$name|$keywords|$description|$sku|$buy_url|$available|$image_url|$price|$upc|$advertise_category\n";
 
