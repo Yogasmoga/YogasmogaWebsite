@@ -262,7 +262,7 @@ ksort($all_products);
             echo "</tr>";
         }
 
-        echo "<tr><td style='padding-top:20px; font-weight:bold; color:#2f70cc'>Sub Total</td>";
+        echo "<tr><td style='padding-top:20px; font-weight:bold; color:#2f70cc; width: 250px;'>Sub Total</td>";
         foreach($ar_sub_total_stock_sum as $size => $size_total)
             echo "<td style='text-align: left; padding-top:20px; font-weight: bold'>" . $size_total . "</td>";
 
@@ -275,10 +275,10 @@ ksort($all_products);
 
         echo "</tr>";
 
-        echo "<tr><td style='padding-top:20px; font-weight:bold; color:#2f70cc; font-weight: bold'>Total units: \"$styleName\" </td>";
+        echo "<tr><td style='padding-top:20px; font-weight:bold; color:#2f70cc; font-weight: bold; width: 250px;'>Total units: \"$styleName\" </td>";
         echo "<td colspan='2' style='padding-top:20px; font-weight:bold; color:2f70cc; font-weight: bold'>$ " . round($total_products,2) . "</td>";
         echo "</tr>";
-        echo "<tr><td style='padding-top:10px; font-weight:bold; color:#cc1c3a; font-weight: bold'>Total Cost Price: \"$styleName\"</td>";
+        echo "<tr><td style='padding-top:10px; font-weight:bold; color:#cc1c3a; font-weight: bold; width: 250px;'>Total Cost Price: \"$styleName\"</td>";
         echo "<td colspan='2' style='padding-top:10px; font-weight:bold; color:#cc1c3a; font-weight: bold'>$ " . number_format(round($total_inventories_cost,2)) . "</td>";
         echo "</tr>";
 
