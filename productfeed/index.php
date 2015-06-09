@@ -34,8 +34,9 @@
         $image_url = '';
         $upc = $sku;
         $advertise_category = 'yoga apparel';
-echo "$ar[4] , $available <br/>";
-        if($count>10) break;
+
+        $description = trim(preg_replace('/\s+/', ' ', $description));
+
         $product = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
 
         if(!isset($product) || !is_object($product) || !$product->getId()) {
