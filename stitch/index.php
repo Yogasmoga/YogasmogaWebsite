@@ -89,13 +89,13 @@ for ($row = 2; $row <= $highestRow; $row++) {
 
     if(strpos($within_parenthesis, ",")===false) {
         $color = $within_parenthesis;
-        $size = '-';
+        $size = 'One Size';
         $height = '';
     }
     else{
         $ar_within_parenthesis = explode(",", $within_parenthesis);
         $color = $ar_within_parenthesis[0];
-        $size = $ar_within_parenthesis[1];
+        $size = "Size " . $ar_within_parenthesis[1];
 
         if(count($ar_within_parenthesis)==3)
             $height = $ar_within_parenthesis[2];
@@ -182,7 +182,7 @@ ksort($all_products);
 
         echo "<td style='padding:5px; min-width: 200px;'>Color</td>";
         foreach($ar_sizes as $size){
-            echo "<td style='padding:5px; text-align: left; min-width: 55px;'>Size " . $size . "</td>";
+            echo "<td style='padding:5px; text-align: left; min-width: 55px;'>" . $size . "</td>";
         }
         echo "<td style='padding:5px; text-align: left'>Total</td>";
         echo "<td style='padding:5px; text-align: left'>Cost Price</td>";
@@ -227,9 +227,6 @@ ksort($all_products);
                         echo "<td style='text-align: left'>$stock</td>";
                     ++$x;
 
-                    if($size==="-")
-                        $size = "none";
-
                     if(!isset($ar_sub_total_stock_sum[$size]))
                         $ar_sub_total_stock_sum[$size] = 0;
 
@@ -247,7 +244,7 @@ ksort($all_products);
             if(isset($color_data[0]['unit_price'])) {
                 echo "<td style='text-align: left'>$total_product_stock</td>";
                 $unit_price = $color_data[0]['unit_price'];
-                echo "<td style='text-align: left'>$ " . round($unit_price,2) . "</td>";
+                echo "<td style='text-align: left'>$ " . number_format($unit_price,2, '.', '') . "</td>";
                 $net_total = $total_product_stock * $unit_price;
                 echo "<td style='text-align: left'>$ " . number_format($net_total, 2, '.', ''). "</td>";
 

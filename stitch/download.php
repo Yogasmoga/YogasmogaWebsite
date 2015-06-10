@@ -87,12 +87,12 @@ if (file_exists($inputFileName)) {
 
         if (strpos($within_parenthesis, ",") === false) {
             $color = $within_parenthesis;
-            $size = '-';
+            $size = 'One Size';
             $height = '';
         } else {
             $ar_within_parenthesis = explode(",", $within_parenthesis);
             $color = $ar_within_parenthesis[0];
-            $size = $ar_within_parenthesis[1];
+            $size = "Size " . $ar_within_parenthesis[1];
 
             if (count($ar_within_parenthesis) == 3)
                 $height = $ar_within_parenthesis[2];
@@ -190,7 +190,7 @@ if (file_exists($inputFileName)) {
         );
         foreach ($ar_sizes as $size) {
             ++$colNumber;
-            $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, 'Size ' . $size);
+            $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $size);
             $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->applyFromArray(
                 array(
                     "font" => array(
@@ -289,9 +289,6 @@ if (file_exists($inputFileName)) {
 
                     ++$x;
 
-                    if ($size === "-")
-                        $size = "none";
-
                     if (!isset($ar_sub_total_stock_sum[$size]))
                         $ar_sub_total_stock_sum[$size] = 0;
 
@@ -316,7 +313,7 @@ if (file_exists($inputFileName)) {
                 $unit_price = $color_data[0]['unit_price'];
 
                 ++$colNumber;
-                $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, '$ ' . round($unit_price, 2));
+                $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, '$ ' . number_format($unit_price, 2, '.', ''));
                 $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 
                 $net_total = $total_product_stock * $unit_price;
@@ -424,6 +421,62 @@ if (file_exists($inputFileName)) {
 
     $total_all_price = number_format($total_all_price);
     $total_all_inventories = number_format($total_all_inventories);
+
+/**************** showing total inventories ******************/
+    $colNumber = 65;
+    ++$rowCount;
+    ++$rowCount;
+    $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, "Total Inventory (Units)");
+    $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->applyFromArray(
+        array(
+            "font" => array(
+                "bold" => true,
+                'color' => array('rgb' => '2f70cc')
+            )
+        )
+    );
+    $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+
+    ++$colNumber;
+    $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $total_all_inventories);
+    $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->applyFromArray(
+        array(
+            "font" => array(
+                "bold" => true,
+                'color' => array('rgb' => 'cc1c3a')
+            )
+        )
+    );
+    $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+
+/**************** showing total inventories ******************/
+    $colNumber = 65;
+    ++$rowCount;
+    ++$rowCount;
+    $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, "Total Cost of Inventory");
+    $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->applyFromArray(
+        array(
+            "font" => array(
+                "bold" => true,
+                'color' => array('rgb' => '2f70cc')
+            )
+        )
+    );
+    $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+
+    ++$colNumber;
+    $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $total_all_price);
+    $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->applyFromArray(
+        array(
+            "font" => array(
+                "bold" => true,
+                'color' => array('rgb' => 'cc1c3a')
+            )
+        )
+    );
+    $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+
+
     ob_end_clean();
 
     header('Content-Type: application/vnd.ms-excel');
