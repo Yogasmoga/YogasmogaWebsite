@@ -982,12 +982,12 @@ $(window).load(function(){
 
 function copytoClipboard(){
     var link =$(".link").html();
-    alert(link);
+    //alert(link);
     $(".copy_link").attr("data-clipboard-text",link);
     var client = new ZeroClipboard($(".copy_link"));
 
     client.on( "ready", function( readyEvent ) {
-        alert("done");
+        //alert("done");
         client.on( "aftercopy", function( event ) {
 
         } );

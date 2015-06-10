@@ -52,7 +52,7 @@ div,p{
     line-height: 60px;
 }
 .header-container > img {
-    padding-top: 22px;
+    padding-top: 1px;
 }
 .menu_btn {
     background: #555;
@@ -66,7 +66,7 @@ div,p{
 }
 .menu_btn > img, .cart > img {
     display: block;
-    margin: 12px auto 0;
+    margin: 1px auto 0;
 }
 .cart {
     background: url("images/cart.png") no-repeat scroll center center rgba(0, 0, 0, 0);

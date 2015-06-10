@@ -132,7 +132,6 @@
     background-size: 60px auto;
     float: left;
     height: 60px;
-    transition-duration: 200ms;
     width: 20%;
 }
 .sharing_box span > a {
