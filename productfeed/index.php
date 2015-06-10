@@ -13,7 +13,7 @@
     fwrite($fileOut, "&SUBID=171706\n");
     fwrite($fileOut, "&PROCESSTYPE=UPDATE\n");
     fwrite($fileOut, "&AID=12186878\n");
-    fwrite($fileOut, "&PARAMETERS=NAME|KEYWORDS|DESCRIPTION|SKU|BUYURL|AVAILABLE|IMAGEURL|PRICE|UPC|ADVERTISERCATEGORY\n");
+    fwrite($fileOut, "&PARAMETERS=NAME|KEYWORDS|DESCRIPTION|SKU|BUYURL|AVAILABLE|IMAGEURL|PRICE|UPC|ADVERTISERCATEGORY|MERCHANDISETYPE\n");
 
     $count = 0;
 
@@ -33,6 +33,7 @@
         $buy_url = '';
         $image_url = '';
         $advertise_category = 'yoga apparel';
+        $merchandiseType = '';
 
         $description = trim(preg_replace('/\s+/', ' ', $description));
 
@@ -51,6 +52,16 @@
 
             $configurableProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
 
+            $categoryIds = Mage::getResourceModel('catalog/product')->getCategoryIds($configurableProduct);
+            if(isset($categoryIds) && is_array($categoryIds) && count($categoryIds)>0){
+                foreach($categoryIds as $id){
+                    if($id==43) {
+                        $merchandiseType = "Non-commissionable Items";
+                        break;
+                    }
+                }
+            }
+
             $buy_url = $configurableProduct->getUrlInStore();
             $keywords = $configurableProduct->getMetaKeyword();
 
@@ -67,7 +78,7 @@
             $sku = str_replace('.', '-', $sku);
             $upc = $sku;
 
-            $data = "$name|$keywords|$description|$sku|$buy_url|$available|$image_url|$price|$upc|$advertise_category\n";
+            $data = "$name|$keywords|$description|$sku|$buy_url|$available|$image_url|$price|$upc|$advertise_category|$merchandiseType\n";
 
             fwrite($fileOut, $data);
         }
