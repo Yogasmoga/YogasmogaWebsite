@@ -276,7 +276,7 @@ ksort($all_products);
         echo "</tr>";
 
         echo "<tr><td style='padding-top:20px; font-weight:bold; color:#2f70cc; font-weight: bold' colspan='2'>Total units: \"$styleName\" </td>";
-        echo "<td colspan='2' style='padding-top:20px; font-weight:bold; color:2f70cc; font-weight: bold'>$ " . round($total_products,2) . "</td>";
+        echo "<td colspan='2' style='padding-top:20px; font-weight:bold; color:2f70cc; font-weight: bold'>" . round($total_products,2) . "</td>";
         echo "</tr>";
         echo "<tr><td style='padding-top:10px; font-weight:bold; color:#cc1c3a; font-weight: bold' colspan='2'>Total Cost Price: \"$styleName\"</td>";
         echo "<td colspan='2' style='padding-top:10px; font-weight:bold; color:#cc1c3a; font-weight: bold'>$ " . number_format(round($total_inventories_cost,2)) . "</td>";
@@ -284,6 +284,8 @@ ksort($all_products);
 
         $total_all_inventories += $total_products;
         $total_all_price += $total_inventories_cost;
+
+        $total_inventories_cost = 0;
 
         unset($ar_sizes);
 
@@ -328,6 +330,8 @@ ksort($all_products);
     <input type="button" id="search" value="Go to product" style="padding: 5px; margin-right: 5px;"/>
     <input type="button" style="padding:5px; margin-right: 20px;" id="showupload" value="Upload File"/>
     </form>
+    <br/>
+    <a id="exceldownload" href="download.php?store=<?php echo $store;?>" style="margin-right:20px;">Download Excel</a>
 
     <div style="float:left; padding-left: 20px;">
         <table style="width:600px;">
