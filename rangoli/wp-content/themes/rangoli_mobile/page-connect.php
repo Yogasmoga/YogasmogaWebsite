@@ -6,7 +6,7 @@ get_header();
           Your invite link
     </div>
     <div class="invite_link">
-    <p class="user-color-shade"><i class="link"></i> <span>Copy link</span></p>
+    <p class="user-color-shade"><i class="link"></i> <span class="copy_link" data-clipboard-text="">Copy link</span></p>
     </div>
 
     <div style="text-align: center; padding-bottom: 25px;">
