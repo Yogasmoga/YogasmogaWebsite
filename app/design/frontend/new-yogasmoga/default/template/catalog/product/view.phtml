@@ -31,6 +31,18 @@
  * @see Mage_Review_Block_Product_View
  */
 ?>
+<?php
+/*********************** hidden page logic ********************/
+$forNormal = true;
+if($this->getRequest()->getParam('hidden')){
+    $hidden = $this->getRequest()->getParam('hidden');
+
+    if($hidden=="true")
+        $forNormal = false;
+}
+/*********************** hidden page logic ********************/
+?>
+
 <div class="namaskar-overlay1">&nbsp;</div>
 <script type="text/javascript">
     jQuery(window).load(function () {
@@ -104,6 +116,7 @@
         }
     }
 /******************************* bread crumb logic ******************************/
+
 
     if ($this->getRequest()->getParam('color')) {
 ?>
@@ -189,6 +202,17 @@ foreach ($_childProducts as $_childProduct) {
     $nameWithColor = substr($childProductName, 0, $pos);    // remove last -
     $pos = strrpos($nameWithColor, '-');
     $colorName = trim(substr($nameWithColor, $pos + 1));       // get color name =>  Carbon
+
+    if($forNormal) {
+        $forHidden = $_childProduct->getAttributeText('for_hidden_page');
+        if (isset($forHidden) && strtolower($forHidden) == "yes")
+            continue;
+    }
+    else{
+        $forHidden = $_childProduct->getAttributeText('for_hidden_page');
+        if (isset($forHidden) && strtolower($forHidden) == "no")
+            continue;
+    }
 
     $sku = $_childProduct->getSku();
     $childProductBySku = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
