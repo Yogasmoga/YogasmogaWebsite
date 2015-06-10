@@ -127,6 +127,21 @@ if (file_exists($inputFileName)) {
     $total_all_price = 0;
 
     $rowCount = 0;
+
+    ++$rowCount;
+    $objTpl->getActiveSheet()->setCellValue('A' . $rowCount, "Store = " . $store);
+    $objTpl->getActiveSheet()->getStyle('A' . $rowCount)->applyFromArray(
+        array(
+            "font" => array(
+                "bold" => true,
+                'color' => array('rgb' => 'cc1c3a')
+            )
+        )
+    );
+
+    ++$rowCount;
+    ++$rowCount;
+
     foreach ($all_products as $product_name => $data) {
 
         $styleName = $product_name;
@@ -476,6 +491,10 @@ if (file_exists($inputFileName)) {
     );
     $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 
+    foreach(range('A','K') as $columnID) {
+        $objTpl->getActiveSheet()->getColumnDimension($columnID)
+            ->setAutoSize(true);
+    }
 
     ob_end_clean();
 
