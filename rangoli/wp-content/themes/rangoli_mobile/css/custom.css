@@ -247,7 +247,7 @@ li{
 .filter-container > ul > li {
     background: rgba(85, 85, 85, 0.9);
     list-style: none;
-    cursor: pointer;
+    
 }
 .filter-container > ul > li > p {
     padding: 0 15px 1px;
@@ -429,7 +429,7 @@ li{
     transform: rotate(90deg);
     -webkit-transform: rotate(90deg);
     width: 60px;
-    cursor: pointer;
+    
     z-index:5;
 }
 .charm {
@@ -676,7 +676,7 @@ input.change_username {
     position: absolute;
     right: 15px;
     width: 20px;
-    cursor: pointer;
+    
 }
 input:focus{
     outline: none;
@@ -745,7 +745,7 @@ input:focus{
     background: none repeat scroll 0 0 #ae8637;
     bottom: 0;
     color: #fff;
-    cursor: pointer;
+    
     font: 12px ITCAvantGardeStd-Md;
     padding: 15px;
     position: absolute;

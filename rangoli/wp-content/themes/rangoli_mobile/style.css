@@ -62,7 +62,7 @@ div,p{
     top: 0;
     width: 60px;
     text-align: center;
-    cursor: pointer;
+    
 }
 .menu_btn > img, .cart > img {
     display: block;
@@ -110,7 +110,7 @@ div,p{
     display: none;
 }
 .play-video {
-    cursor: pointer;
+    
     left: 50%;
     margin-left: -26px;
     margin-top: -26px;
@@ -142,7 +142,7 @@ div,p{
     width: 50%;
     color:#fff;
     float:left;
-    cursor: pointer;
+    
 }
 .signup-signin-block span:nth-child(2) {
     display: block;
@@ -152,7 +152,7 @@ div,p{
     background: #ae8637;
     color:#fff;
     float:left;
-    cursor: pointer;
+    
 }
 .menu-box {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
@@ -210,7 +210,7 @@ div,p{
     right: 0;
     top: 60px;
     width: 60px;
-    cursor: pointer;
+    
     float:right;
 }
 .main_btn img {
@@ -231,7 +231,7 @@ div,p{
     text-transform: uppercase;
 }
 .menu_arrow {
-    cursor: pointer;
+    
     position: absolute;
     right: 0px;
 }
@@ -250,7 +250,7 @@ div,p{
 }
 .menu_arrow{
     float: right;
-    cursor: pointer;
+    
 }
 .menu_arrow > img {
     padding: 15px 15px 15px 0;
@@ -326,7 +326,7 @@ div,p{
     right: 0;
     top: 0;
     background: rgba(0,0,0,0.25);
-    cursor: pointer;
+    
 }
 .yogasmoga_menu_links{
     display: none;
@@ -434,14 +434,14 @@ div,p{
     top:0;
     height:58px;
     background: #ae8637;
-    cursor: pointer;
+    
 }
 .copyright{
     line-height: 58px; font-size:12px; font-family: Arial; padding-left: 10px; color:#555555;
 }
 .close_post {
     background: url("images/close.png") no-repeat scroll center center rgba(85, 85, 85, 0.9);
-    cursor: pointer;
+    
     display: none;
     float: right;
     height: 44px;
@@ -457,7 +457,7 @@ div,p{
 }
 .share_post, .share_post_index{
     background: url("images/share_post.png") no-repeat scroll center center rgba(85, 85, 85, 0.9);
-    cursor: pointer;
+    
     display: none;
     border-top:1px solid #fff;
     float: right;
@@ -545,7 +545,7 @@ textarea {
 }
 .show_more_comments {
     color: #999;
-    cursor: pointer;
+    
     float: left;
     font: 11px/22px GraphikRegular;
     padding-bottom: 20px;
@@ -586,7 +586,7 @@ textarea {
     transition-duration: 200ms;
 }
 .open-filter{
-    cursor: pointer;
+    
 }
 .post_comments {
     display: none;
@@ -617,13 +617,13 @@ textarea {
     height: 100%;
     margin: 0 auto;
     position: relative;
-    cursor: pointer;
+    
     transition-duration: 500ms;
 }
 
 .circle div, .circle div svg{
     bottom: 0;
-    cursor: pointer;
+    
     left: 0;
     position: absolute;
     right: 0;
@@ -705,7 +705,7 @@ textarea {
     top: 50%;
     display: none;
     width: 50%;
-    cursor: pointer;
+    
 }
 .game_message .discard {
     right: 0;
@@ -716,7 +716,7 @@ textarea {
     display: none;
     top: 50%;
     width: 50%;
-    cursor: pointer;
+    
 }
 
 /* ***************INTERESTS******************/
@@ -730,7 +730,7 @@ textarea {
     padding-left: 60px;
     position: relative;
     width: 100%;
-    cursor: pointer;
+    
 }
 .interest_listing li > span {
     height: 60px;
@@ -1002,7 +1002,7 @@ textarea {
 .popup button {
     background: none repeat scroll 0 0 #ae8637;
     color: #fff;
-    cursor: pointer;
+    
     font: 15px/15px ITCAvantGardeStd-Bk;
     height: 60px;
     margin-bottom: 100px;
@@ -1016,7 +1016,7 @@ textarea {
     display: none;
 }
 .open_signin {
-    cursor: pointer;
+    
     font: 13px/58px GraphikRegular !important;
 }
 .close_login_popup,.close_signup_popup ,.close_after_signup_popup{
@@ -1026,7 +1026,7 @@ textarea {
     right: 0px;
     top: 0px;
     width: 60px;
-    cursor: pointer;
+    
 }
 .smogi_bucks_banner img {
     width: 100%;
@@ -1050,7 +1050,7 @@ textarea {
     text-align: left;
     width: 100%;
     top: 0;
-    cursor: pointer;
+    
     opacity: 0;
 }
 span.gender {
