@@ -196,7 +196,7 @@ if(is_ssl()) {
             <img src="<?php echo $home; ?>/wp-content/themes/rangoli_mobile/images/rangoli_logo.png" />
         </div>
 
-        <img src="<?php echo $home; ?>/wp-content/themes/rangoli_mobile/images/yogasmoga_logo.png" />
+        <a href="/"><img src="<?php echo $home; ?>/wp-content/themes/rangoli_mobile/images/yogasmoga_logo.png" /></a>
 
         <span class="cart"></span>
     </div>
@@ -264,8 +264,80 @@ if(is_ssl()) {
                     </div>
                     <div class="yogasmoga_menu_links">
                         <ul>
-                            <li><a href="">Men</a> </li>
-                            <li><a href="">Women</a> </li>
+                            <li class="ys_main_category">
+                                <p><a href="/women">Women</a>
+                                <span class="menu_arrow"> <img src="<?php echo $home; ?>/wp-content/themes/rangoli_mobile/images/arrow.png" /></span>
+                                </p>
+                                <ul class="ys_sub_menu">
+                                    <li><a href="">Tops</a>
+                                        <ul>
+                                            <li><a href="/women/tops/bras">Bras</a></li>
+                                            <li><a href="/women/tops/tanks">Tanks</a></li>
+                                            <li><a href="/women/tops/tees">Tees</a></li>
+                                            <li><a href="/women/tops/sweaters">Sweaters</a></li>
+                                            <li><a href="/women/tops/jackets">Jackets</a></li>
+                                            <li><a href="/women/tops/rangoli">Rangoli</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="">Bottoms</a>
+                                        <ul>
+                                            <li><a href="/women/bottoms/shorts">Shorts</a></li>
+                                            <li><a href="/women/bottoms/crops">Crops</a></li>
+                                            <li><a href="/women/bottoms/leggings">Leggings</a></li>
+                                            <li><a href="/women/bottoms/pants">Pants</a></li>
+                                            <li><a href="/women/bottoms/rangoli">Rangoli</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="">Accessories</a>
+                                        <ul>
+                                            <li><a href="/women/accessories/head-bands">Head Bands</a></li>
+                                            <li><a href="/women/accessories/yoga-mats">Yoga Mats</a></li>
+                                            <li><a href="/women/accessories/yoga-towels">Yoga Towels</a></li>
+                                            <li><a href="/women/accessories/yoga-flops">Yoga Flops</a></li>
+                                            <li><a href="/women/accessories/namaskar-bracelets">NAMASKÀR Bracelets</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="">What's New</a></li>
+                                    <li><a href="">One 2 Many</a></li>
+                                    <li><a href="">Addtional Sizes</a></li>
+                                    <li><a href="">Vivacity collection</a></li>
+                                    <li><a href="">Rangoli collection</a></li>
+                                </ul>
+                            </li>
+                            <li class="ys_main_category">
+                                <p><a href="/men">Men</a>
+                                <span class="menu_arrow"> <img src="<?php echo $home; ?>/wp-content/themes/rangoli_mobile/images/arrow.png" /></span>
+                                </p>
+                                <ul class="ys_sub_menu">
+                                    <li><a href="">Tops</a>
+                                        <ul>
+                                            <li><a href="/men/tops/tees" >Tees</a></li>
+                                            <li><a href="/men/tops/tanks">Tanks</a></li>
+                                            <li> <a href="/men/tops/jackets">Jackets</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="">Bottoms</a>
+                                        <ul>
+                                            <li><a href="/men/bottoms/shorts" >Shorts</a></li>
+                                            <li><a href="/men/bottoms/pants">Pants</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="">Accessories</a>
+                                        <ul>
+                                            <li><a href="/men/accessories/yoga-mats">Yoga Mats</a></li>
+                                            <li><a href="/men/accessories/yoga-towels">Yoga Towels</a></li>
+                                            <li><a href="/men/accessories/namaskar-bracelets">NAMASKÀR Bracelets</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="">What's New</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="ys_single_link"><a href="">YS Story</a></li>
+                            <li class="ys_single_link"><a href="">YS Tech</a></li>
+                            <li class="ys_single_link"><a href=""><span class="smogi_bucks_icon"></span>SMOGI Bucks</a></li>
+                            <li class="ys_single_link"><a href=""><span class="contact_icon"></span>Contact</a></li>
+
 
                         </ul>
                     </div>
