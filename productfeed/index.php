@@ -50,12 +50,12 @@
             if (!isset($parentIds) || count($parentIds) == 0)
                 continue;
 
-            $configurableProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
+            //$configurableProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
 
-            $categoryIds = Mage::getResourceModel('catalog/product')->getCategoryIds($configurableProduct);
+            $categoryIds = Mage::getResourceModel('catalog/product')->getCategoryIds($product);
             if(isset($categoryIds) && is_array($categoryIds) && count($categoryIds)>0){
                 foreach($categoryIds as $id){
-                    if($id==43) {
+                    if($id==43 || $id==8 || $id==12) {
                         $merchandiseType = "Non-commissionable Items";
                         break;
                     }
