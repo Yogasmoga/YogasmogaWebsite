@@ -36,7 +36,7 @@ if(!is_user_logged_in()  && is_home()) {
             <input type="text" data-watermark="Email" name="email" />
             <input type="text" data-watermark="Password" rel="password" name="password" />
             <p class="forgot_y_p"><a href="">Forgot your password?</a></p>
-            <p class="forgot_y_p open_signup"><a href="javascript:void(0);">I don't have a account here?</a></p>
+            <p class="forgot_y_p open_signup"><a href="javascript:void(0);">I don't have an account here?</a></p>
             <p class="small err_msg" style="text-align: left;"></p>
             <button class="login_customer">
                 <img src="<?php echo $media ?>/accept.png" />
@@ -62,7 +62,7 @@ if(!is_user_logged_in()  && is_home()) {
                                               </span>
             </p>
 
-            <p class="forgot_y_p open_signin"><a href="javascript:void(0);">Already a SMOGI?</a></p>
+            <p class="forgot_y_p open_signin"><a href="javascript:void(0);">Already a SMOGI? Sign in here</a></p>
             <p class="small err_msg" style="text-align: left"></p>
             <button class="create_account">
                 <img src="<?php echo $media ?>/accept.png" />

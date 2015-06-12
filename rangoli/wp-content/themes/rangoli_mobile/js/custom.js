@@ -126,7 +126,6 @@ $(document).ready(function () {
         $(this).hide();
         var more_comments = $(this).closest(".post_comments_listing").find(".more_comments");
         more_comments.slideDown();
-
     });
     $(".play-video").click(function(){
         play($(this));
@@ -170,14 +169,13 @@ $(document).ready(function () {
 
     get_cart();
 
-
 });
 
 function get_random_color(){
     var colors = ["ff9e00","86d95b","18b3d8","ff8cff","7759ac"];
     return colors[Math.floor(Math.random() * colors.length)];
-
 }
+
 function init_menu(){
     $(".menu_btn").click(function(){
        $(".menu-box").fadeIn();

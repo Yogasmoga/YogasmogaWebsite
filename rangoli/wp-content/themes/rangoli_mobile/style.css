@@ -259,7 +259,7 @@ div,p{
     left: 0;
     opacity: 0.2;
     position: absolute;
-    top: 0;
+    top: 60px;
     width: 60px;
     transition-duration: 200ms;
 }
@@ -294,7 +294,7 @@ div,p{
     float: left;
     left: 0;
     position: fixed;
-    top: 0;
+    top: 60px;
     width: 60px;
     z-index: -1;
 }
@@ -337,6 +337,13 @@ div,p{
     padding-left: 70px;
     position: relative;
 }
+.ys_sub_menu{
+    display: none;
+}
+.ys_sub_menu li {
+    padding: 0;
+}
+
 .sign-signup li a{
     color: #fff;
     text-decoration: none;
@@ -373,6 +380,42 @@ div,p{
     position: relative;
     width: 110%;
 }
+.ys_main_category p> a {
+    font: 25px freight-text-pro;
+}
+.ys_sub_menu li a {
+    font: 15px ITCAvantGardeStd-Bk;
+    color: #999 !important;
+}
+
+.ys_sub_menu > li > p>a ,.ys_sub_menu > li>a {
+    font: 15px ITCAvantGardeStd-Demi;
+    color: #fff !important;
+    text-transform: uppercase !important;
+}
+.ys_single_link > a {
+    color: #fff;
+    font: 15px ITCAvantGardeStd-Bk;
+}
+.ys_single_link  span {
+    height: 60px;
+    left: 0;
+    opacity: 0.2;
+    position: absolute;
+    width: 60px;
+    transition-duration: 200ms;
+}
+.ys_single_link:hover span{
+    opacity: 1;
+    transition-duration: 200ms;
+}
+.smogi_bucks_icon{
+    background: url('images/smogi-icon.png') no-repeat;
+}
+.contact_icon{
+    background: url("images/contact-icon.png") no-repeat;
+}
+
 .page_heading {
     background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
     box-shadow: -7px -12px 21px 0;
@@ -626,6 +669,7 @@ textarea {
     right: 0;
     top: 0;
     transform: scale(0.5);
+    -webkit-transform: scale(0.5);
     transition-duration: 500ms;
 }
 .circle  span {
@@ -639,6 +683,7 @@ textarea {
 }
 .circle.active span {
     transform: scale(0);
+    -webkit-transform: scale(0);
     transition-duration: 500ms;
 }
 .circle.active div svg {
