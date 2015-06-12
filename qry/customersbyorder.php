@@ -26,29 +26,28 @@ if(isset($_REQUEST['from_date'])) {
         ))
         ->addFieldToFilter('grand_total', array("$sign" => $amount));
 
-    $fp = fopen('customers.txt', 'w');
+    header('Content-Type: text/csv; charset=utf-8');
+    header('Content-Disposition: attachment; filename=customers.csv');
 
-    fwrite($fp, "Start Date = " . $from_date);
-    fwrite($fp, PHP_EOL);
-    fwrite($fp, PHP_EOL);
-    fwrite($fp, "End Date = " . $from_date);
-    fwrite($fp, PHP_EOL);
-    fwrite($fp, PHP_EOL);
-    fwrite($fp, "Amount $signValue " . $amount);
-    fwrite($fp, PHP_EOL);
-    fwrite($fp, PHP_EOL);
+    $fp = fopen('php://output', 'w');
+
+    fputcsv($fp, array("Start Date = " . $from_date));
+    fputcsv($fp, array(''));
+    fputcsv($fp, array("End Date = " . $from_date));
+    fputcsv($fp, array(''));
+    fputcsv($fp, array("Amount $signValue " . $amount));
+
+    fputcsv($fp, array(''));
+    fputcsv($fp, array(''));
 
     foreach ($orders as $order) {
         $email = $order->getCustomerEmail();
-        fwrite($fp, $email . "\n");
-        fwrite($fp, PHP_EOL);
+        fputcsv($fp, array($email));
     }
 
     fclose($fp);
 
-    header('Content-Type: text/csv; charset=utf-8');
-    header('Content-Disposition: attachment; filename=customers.txt');
-    readfile('customers.txt');
+    //readfile('customers.txt');
     exit;
 }
 else{
