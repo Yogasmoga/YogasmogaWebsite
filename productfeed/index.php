@@ -52,10 +52,10 @@ while(! feof($fileIn))
 
         $configurableProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
 
-        $categoryIds = Mage::getResourceModel('catalog/product')->getCategoryIds($configurableProduct);
+        $categoryIds = $product->getCategoryIds();
         if(isset($categoryIds) && is_array($categoryIds) && count($categoryIds)>0){
             foreach($categoryIds as $id){
-                if($id==43 || $id==44) {
+                if($id==43 || $id==12 || $id==8) {
                     $merchandiseType = "Non-commissionable Items";
                     break;
                 }
