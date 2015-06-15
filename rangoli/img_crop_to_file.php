@@ -3,7 +3,7 @@
 *	!!! THIS IS JUST AN EXAMPLE !!!, PLEASE USE ImageMagick or some other quality image processing libraries
 */
 
-require_once("wp-load.php");
+//include_once("wp-load.php");
 
 $imgUrl = $_POST['imgUrl'];
 // original sizes
