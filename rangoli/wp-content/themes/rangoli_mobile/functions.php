@@ -7,10 +7,12 @@ add_image_size('mobile_slider', '600', '750', true);
 add_image_size('mobile_posts', '500', '375', true);
 add_image_size('mobile_posts_half', '500', '500', true);
 
-function add_url_rewrite() {
+function add_url_rewrite()
+{
     add_rewrite_rule('^([0-9]+)/?', 'index.php/profile/?user_id=$matches[1]', 'top');
 }
-add_action( 'init', 'add_url_rewrite' );
+
+add_action('init', 'add_url_rewrite');
 
 function themeblvd_disable_admin_bar()
 {
@@ -216,16 +218,15 @@ function get_user_smogi_bucks($id)
 
             if ($points && count($points) > 0) {
 
+
+                $smogi_bucks = 0;
                 foreach ($points as $point) {
 
-                    $smogi_bucks = 0;
-                    foreach ($points as $point) {
+                    $point_data = get_object_vars($point);
 
-                        $point_data = get_object_vars($point);
+                    $smogi_bucks += intval($point_data["points_current"]);
+                    $smogi_bucks += intval($point_data["points_spent"]);
 
-                        $smogi_bucks += intval($point_data["points_current"]);
-                        $smogi_bucks += intval($point_data["points_spent"]);
-                    }
                 }
             } else
 
@@ -234,13 +235,13 @@ function get_user_smogi_bucks($id)
             if ($smogi_bucks) {
                 if (is_array($roles) && count($roles) > 0) {
                     $role = $roles[0];
-                    if ($role != "store") {
+                    if ($role == "store") {
                         reset($magento_user);
-                        return $smogi_bucks;
-                    } else
                         return 0;
+                    } else
+                        return $smogi_bucks;
                 } else
-                    return 0;
+                    return $smogi_bucks;
             } else return 0;
 
         } else return 0;
@@ -742,11 +743,15 @@ function get_author_liked_posts($author_id)
 
                                 ?>
                                 <div class="play-video" video="<?php echo get_the_post_video_url($post->ID); ?>">
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px"
+                                         height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64"
+                                         xml:space="preserve">
                                             <defs>
                                             </defs>
                                         <path fill="<?php echo $color; ?>"
-                                              opacity="0.9" enable-background="new" d="M32,0C14.327,0,0,14.327,0,32c0,17.674,14.327,32,32,32s32-14.326,32-32  C64,14.327,49.673,0,32,0z M22.321,49.106V14.894L51.951,32L22.321,49.106z"/>
+                                              opacity="0.9" enable-background="new"
+                                              d="M32,0C14.327,0,0,14.327,0,32c0,17.674,14.327,32,32,32s32-14.326,32-32  C64,14.327,49.673,0,32,0z M22.321,49.106V14.894L51.951,32L22.321,49.106z"/>
                                             </svg>
                                 </div>
                             <?php
@@ -840,7 +845,9 @@ function filter()
     <div class="filter-wrapper">
         <div class="filter-container">
             <ul>
-                <li><p class="user-color-shade"><span class="down-arrow-grey-white">Author</span><i><img src="<?php echo get_site_url().'/wp-content/themes/rangoli_mobile/images/arrow.png' ?>" /></i></p>
+                <li><p class="user-color-shade"><span class="down-arrow-grey-white">Author</span><i><img
+                                src="<?php echo get_site_url() . '/wp-content/themes/rangoli_mobile/images/arrow.png' ?>"/></i>
+                    </p>
                     <ul>
                         <?php
                         if (is_page("read")) {
@@ -874,7 +881,9 @@ function filter()
                         ?>
                     </ul>
                 </li>
-                <li><p class="user-color-shade"><span class="down-arrow-grey-white">Topic</span><i><img src="<?php echo get_site_url().'/wp-content/themes/rangoli_mobile/images/arrow.png' ?>" /></i></p>
+                <li><p class="user-color-shade"><span class="down-arrow-grey-white">Topic</span><i><img
+                                src="<?php echo get_site_url() . '/wp-content/themes/rangoli_mobile/images/arrow.png' ?>"/></i>
+                    </p>
                     <ul>
                         <?php
                         $categories = get_categories("exclude=read,look,learn,all");
@@ -912,7 +921,8 @@ function filter()
                 if ($cat != "learn") {
 
                     ?>
-                    <li><p class="user-color-shade"><span class="down-arrow-grey-white">Length</span><i><img src="<?php echo get_site_url().'/wp-content/themes/rangoli_mobile/images/arrow.png' ?>" /></i>
+                    <li><p class="user-color-shade"><span class="down-arrow-grey-white">Length</span><i><img
+                                    src="<?php echo get_site_url() . '/wp-content/themes/rangoli_mobile/images/arrow.png' ?>"/></i>
                         </p>
                         <ul>
 
@@ -1022,74 +1032,75 @@ function get_user_feeds($user_id)
     if ($user_favs) {
         ?>
 
-    <div class="flexslider shared_posts">
-        <ul class="slides">
-            <?php
-        foreach ($user_favs as $user_fav) {
-            $post = get_post($user_fav);
+        <div class="flexslider shared_posts">
+            <ul class="slides">
+                <?php
+                foreach ($user_favs as $user_fav) {
+                    $post = get_post($user_fav);
 
-            $wp_author = get_user_profile($post->post_author);
-            if ($post->post_type == "post" && !empty($user_fav)) {
-                ?>
-                <li>
-                    <div class="single_post">
-                        <div class="author_post_read_author"
-                             style="background: #<?php echo $wp_author->color_shade; ?>">
+                    $wp_author = get_user_profile($post->post_author);
+                    if ($post->post_type == "post" && !empty($user_fav)) {
+                        ?>
+                        <li>
+                            <div class="single_post">
+                                <div class="author_post_read_author"
+                                     style="background: #<?php echo $wp_author->color_shade; ?>">
 
-                            <?php echo get_the_post_thumbnail($post->ID, 'mobile_posts');
-                            if (!has_post_thumbnail($post->ID, 'thumb')) {
-                                ?>
-                                <img
-                                    src="<?php bloginfo('template_directory') ?>/images/no-background_posts.png"
-                                    style="width:100%;float:left;"/>
-                            <?php
-                            }
-                            ?>
-                            <div class="overlay-text" onclick="window.location='<?php echo get_the_permalink(); ?> '">
-                                <?php
-                                $author = get_user_profile($post->post_author);
-                                $author_color = $author->color_shade;
-                                if (has_post_video($post->ID)) {
+                                    <?php echo get_the_post_thumbnail($post->ID, 'mobile_posts');
+                                    if (!has_post_thumbnail($post->ID, 'thumb')) {
+                                        ?>
+                                        <img
+                                            src="<?php bloginfo('template_directory') ?>/images/no-background_posts.png"
+                                            style="width:100%;float:left;"/>
+                                    <?php
+                                    }
                                     ?>
-                                    <div class="play-video"
-                                         video="<?php echo get_the_post_video_url($post->ID); ?>">
-                                        <svg version="1.1" id="Layer_1"
-                                             xmlns="http://www.w3.org/2000/svg"
-                                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                             width="64px" height="64px" viewBox="0 0 64 64"
-                                             enable-background="new 0 0 64 64" xml:space="preserve">
+                                    <div class="overlay-text"
+                                         onclick="window.location='<?php echo get_the_permalink(); ?> '">
+                                        <?php
+                                        $author = get_user_profile($post->post_author);
+                                        $author_color = $author->color_shade;
+                                        if (has_post_video($post->ID)) {
+                                            ?>
+                                            <div class="play-video"
+                                                 video="<?php echo get_the_post_video_url($post->ID); ?>">
+                                                <svg version="1.1" id="Layer_1"
+                                                     xmlns="http://www.w3.org/2000/svg"
+                                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                     width="64px" height="64px" viewBox="0 0 64 64"
+                                                     enable-background="new 0 0 64 64" xml:space="preserve">
                                                                 <defs>
                                                                 </defs>
-                                            <path fill="<?php echo "#" . $author_color; ?>"
-                                                  opacity="0.9" enable-background="new"
-                                                  d="M32,0C14.327,0,0,14.327,0,32c0,17.674,14.327,32,32,32s32-14.326,32-32  C64,14.327,49.673,0,32,0z M22.321,49.106V14.894L51.951,32L22.321,49.106z"/>
+                                                    <path fill="<?php echo "#" . $author_color; ?>"
+                                                          opacity="0.9" enable-background="new"
+                                                          d="M32,0C14.327,0,0,14.327,0,32c0,17.674,14.327,32,32,32s32-14.326,32-32  C64,14.327,49.673,0,32,0z M22.321,49.106V14.894L51.951,32L22.321,49.106z"/>
                                                                 </svg>
+                                            </div>
+                                        <?php
+                                        }
+                                        $categories = get_post_categories($post->ID);
+                                        $post = get_post();
+                                        ?>
+                                        <div class="align_bottom">
+                                            <?php
+                                            echo '<p class="post_category">' . $categories . "</p>";
+                                            echo "<p class='post_title'>" . get_the_title() . "</p>";
+                                            echo "<p class='post_author'>by <span>" . get_the_author_meta('display_name', $post->post_author) . "</span></p>";
+                                            ?>
+                                        </div>
                                     </div>
-                                <?php
-                                }
-                                $categories = get_post_categories($post->ID);
-                                $post = get_post();
-                                ?>
-                                <div class="align_bottom">
-                                    <?php
-                                    echo '<p class="post_category">' . $categories . "</p>";
-                                    echo "<p class='post_title'>" . get_the_title() . "</p>";
-                                    echo "<p class='post_author'>by <span>" . get_the_author_meta('display_name', $post->post_author) . "</span></p>";
-                                    ?>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </li>
-            <?php
-            }
-        }
-        ?>
+                        </li>
+                    <?php
+                    }
+                }
+                ?>
 
 
-                        </ul>
-                    </div>
-                <?php
+            </ul>
+        </div>
+    <?php
     }
 
 
@@ -1102,8 +1113,8 @@ function get_user_liked_posts($author_id)
     $author_profile = get_user_profile($author_id);
 
     $name = $author_profile->user_display_name;
-    if($name==null)
-    $name = strtoupper($author_data->display_name);
+    if ($name == null)
+        $name = strtoupper($author_data->display_name);
 
 
     $color = '#' . $author_profile->color_shade;
@@ -1112,74 +1123,74 @@ function get_user_liked_posts($author_id)
     <div class="flexslider liked_posts">
         <ul class="slides">
         <?php
-            $user_favs = wpfp_get_users_favorites($author_data->user_login);
+    $user_favs = wpfp_get_users_favorites($author_data->user_login);
 
-            if(is_array($user_favs) && count($user_favs)>0) {
-                foreach ($user_favs as $post_id) {
+    if (is_array($user_favs) && count($user_favs) > 0) {
+        foreach ($user_favs as $post_id) {
 
-                    if (isset($post_id) && !empty($post_id)) {
+            if (isset($post_id) && !empty($post_id)) {
 
-                        $post = get_post($post_id);
-                        $post_author = get_userdata($post->post_author);
+                $post = get_post($post_id);
+                $post_author = get_userdata($post->post_author);
+                ?>
+                <li>
+                    <div class="author_post_read_author" style="background:<?php echo $color; ?>">
+                        <?php
+                        echo get_the_post_thumbnail($post->ID, "mobile_posts");
+                        if (!has_post_thumbnail($post_id)) {
+
+                            ?>
+                            <img
+                                src="<?php bloginfo('template_directory') ?>/images/no-background_posts.png"
+                                style="width:100%;float:left;"/>
+                        <?php
+                        }
                         ?>
-                        <li>
-                            <div class="author_post_read_author" style="background:<?php echo $color; ?>">
-                                <?php
-                                echo get_the_post_thumbnail($post->ID, "mobile_posts");
-                                if (!has_post_thumbnail($post_id)) {
+                        <div class="overlay-text"
+                             onclick="window.location='<?php echo get_permalink(); ?>'">
+                            <?php
+                            if (has_post_video()) {
 
-                                    ?>
-                                    <img
-                                        src="<?php bloginfo('template_directory') ?>/images/no-background_posts.png"
-                                        style="width:100%;float:left;"/>
-                                <?php
-                                }
                                 ?>
-                                <div class="overlay-text"
-                                     onclick="window.location='<?php echo get_permalink(); ?>'">
-                                    <?php
-                                    if (has_post_video()) {
-
-                                        ?>
-                                        <div class="play-video"
-                                             video="<?php echo get_the_post_video_url($post->ID); ?>">
-                                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px"
-                                                 height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64"
-                                                 xml:space="preserve">
+                                <div class="play-video"
+                                     video="<?php echo get_the_post_video_url($post->ID); ?>">
+                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px"
+                                         height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64"
+                                         xml:space="preserve">
                                             <defs>
                                             </defs>
-                                                <path fill="<?php echo $color; ?>"
-                                                      opacity="0.9" enable-background="new"
-                                                      d="M32,0C14.327,0,0,14.327,0,32c0,17.674,14.327,32,32,32s32-14.326,32-32  C64,14.327,49.673,0,32,0z M22.321,49.106V14.894L51.951,32L22.321,49.106z"/>
+                                        <path fill="<?php echo $color; ?>"
+                                              opacity="0.9" enable-background="new"
+                                              d="M32,0C14.327,0,0,14.327,0,32c0,17.674,14.327,32,32,32s32-14.326,32-32  C64,14.327,49.673,0,32,0z M22.321,49.106V14.894L51.951,32L22.321,49.106z"/>
                                             </svg>
-                                        </div>
-                                    <?php
-                                    }
-
-                                    ?>
-                                    <div class="align_bottom">
-                                        <div class="post_category"><?php echo get_post_categories(); ?></div>
-                                        <div class="post_title"><?php echo $post->post_title; ?></div>
-                                        <div class="post_author">with
-                                            <span><?php echo $post_author->display_name; ?></span></div>
-                                    </div>
-                                    <?php
-                                    $post_author_image_urls = get_user_meta($post->post_author, 'cupp_upload_meta');
-                                    $post_author_image_url = $post_author_image_urls[0];
-                                    if ($post_author_image_url == "") {
-                                        $post_author_image_url = get_site_url() . "/wp-content/themes/rangoli_mobile/images/default.jpg";
-                                    }
-                                    ?>
-                                    <div class="author_picture"
-                                         style="background: url('<?php echo $post_author_image_url; ?>') no-repeat; background-position: center center; background-size: cover"></div>
                                 </div>
+                            <?php
+                            }
+
+                            ?>
+                            <div class="align_bottom">
+                                <div class="post_category"><?php echo get_post_categories(); ?></div>
+                                <div class="post_title"><?php echo $post->post_title; ?></div>
+                                <div class="post_author">with
+                                    <span><?php echo $post_author->display_name; ?></span></div>
                             </div>
-                        </li>
-                    <?php
-                    }
-                }
+                            <?php
+                            $post_author_image_urls = get_user_meta($post->post_author, 'cupp_upload_meta');
+                            $post_author_image_url = $post_author_image_urls[0];
+                            if ($post_author_image_url == "") {
+                                $post_author_image_url = get_site_url() . "/wp-content/themes/rangoli_mobile/images/default.jpg";
+                            }
+                            ?>
+                            <div class="author_picture"
+                                 style="background: url('<?php echo $post_author_image_url; ?>') no-repeat; background-position: center center; background-size: cover"></div>
+                        </div>
+                    </div>
+                </li>
+            <?php
             }
+        }
+    }
 
     ?>
         </ul>
@@ -1187,13 +1198,18 @@ function get_user_liked_posts($author_id)
 <?php
 }
 
-function user_id_exists($user){
+function user_id_exists($user)
+{
 
     global $wpdb;
 
     $arr = $wpdb->get_results("SELECT * FROM rangoli_users WHERE ID = '$user'");
     $count = count($arr);
-    if($count == 1){ return true; }else{ return false; }
+    if ($count == 1) {
+        return true;
+    } else {
+        return false;
+    }
 
 }
 
