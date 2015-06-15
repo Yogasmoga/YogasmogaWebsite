@@ -12,9 +12,9 @@ if ($blogusers) {
         $user_id = $user->ID;
         $location =$user_id;
         $size = 'thumbnail';
-//        $imgURLs = get_user_meta($user_id,'wpcf-mobile-profileimage');
-//        $imgURL = $imgURLs[0];
-        $imgURL = get_the_author_meta('author_profile_picture', $user_id);
+        $imgURLs = get_user_meta($user_id,'wpcf-mobile-banner');
+        $imgURL = $imgURLs[0];
+//        $imgURL = get_the_author_meta('author_profile_picture', $user_id);
 
         ?>
 
