@@ -6,6 +6,7 @@ $upload_display = "display:none";
 $filter_display = "display:none";
 
 $stores = array('all', 'brentwood', 'fallriver', 'magento', 'greenwich');
+$ar_sizes = array('One', 'S', 'M', 'L', 'XL', 'XXL', '2', '4', '6', '8', '10', '12', '14', '16', '18');
 
 $store = 'all';
 if (isset($_GET['store'])) {
@@ -87,12 +88,12 @@ if (file_exists($inputFileName)) {
 
         if (strpos($within_parenthesis, ",") === false) {
             $color = $within_parenthesis;
-            $size = 'One Size';
+            $size = 'One';
             $height = '';
         } else {
             $ar_within_parenthesis = explode(",", $within_parenthesis);
             $color = $ar_within_parenthesis[0];
-            $size = "Size " . $ar_within_parenthesis[1];
+            $size = $ar_within_parenthesis[1];
 
             if (count($ar_within_parenthesis) == 3)
                 $height = $ar_within_parenthesis[2];
@@ -158,14 +159,14 @@ if (file_exists($inputFileName)) {
             if (strlen(trim($ar['height'])) > 0) {
                 $ar_color_size[$ar['color'] . '-' . $ar['height']][] = array(
                     'color' => $ar['color'] . '-' . $ar['height'],
-                    'size' => $ar['size'],
+                    'size' => trim($ar['size']),
                     'stock' => $ar[$store . '_stock'],
                     'unit_price' => $ar['unit_price']
                 );
             } else {
                 $ar_color_size[$ar['color']][] = array(
                     'color' => $ar['color'],
-                    'size' => $ar['size'],
+                    'size' => trim($ar['size']),
                     'stock' => $ar[$store . '_stock'],
                     'unit_price' => $ar['unit_price']
                 );
@@ -173,18 +174,6 @@ if (file_exists($inputFileName)) {
         }
 
         /***************** printing size header *********************/
-        $ar_sizes = array();
-        // finding sizes
-        foreach ($ar_color_size as $color_name_value => $color_data) {
-            foreach ($color_data as $color_size) {
-
-                if (strlen(trim($color_size['size'])) > 0)
-                    $ar_sizes[] = $color_size['size'];
-            }
-        }
-
-        $ar_sizes = array_unique($ar_sizes);
-        asort($ar_sizes);
 
         ++$rowCount;
         $objTpl->getActiveSheet()->setCellValue('A' . $rowCount, $product_name);
@@ -220,7 +209,7 @@ if (file_exists($inputFileName)) {
             );
         }
         ++$colNumber;
-        $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, 'Total');
+        $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, 'Total Units');
         $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->applyFromArray(
             array(
                 "font" => array(
@@ -295,19 +284,36 @@ if (file_exists($inputFileName)) {
             ksort($ar_size_stock);
 
             $x = 0;
-            if (count($ar_size_stock) > 0) {
+            if(count($ar_size_stock)>0) {
                 $sub_total_stock_sum = 0;
-                foreach ($ar_size_stock as $size => $stock) {
-                    ++$colNumber;
-                    $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $stock);
-                    $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+                foreach ($ar_sizes as $size) {
 
+                    if(isset($ar_size_stock[$size])) {
+
+                        $stock = $ar_size_stock[$size];
+                        if (intval($stock) == 0) {
+                            ++$colNumber;
+                            $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $stock);
+                            $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+                        } else {
+                            ++$colNumber;
+                            $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $stock);
+                            $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+                        }
+
+                        if (!isset($ar_sub_total_stock_sum[$size]))
+                            $ar_sub_total_stock_sum[$size] = 0;
+
+                        $ar_sub_total_stock_sum[$size] += $stock;
+                    }
+                    else{
+                        if (!isset($ar_sub_total_stock_sum[$size]))
+                            $ar_sub_total_stock_sum[$size] = 0;
+
+                        $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, 0);
+                        $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+                    }
                     ++$x;
-
-                    if (!isset($ar_sub_total_stock_sum[$size]))
-                        $ar_sub_total_stock_sum[$size] = 0;
-
-                    $ar_sub_total_stock_sum[$size] += $stock;
                 }
             }
 
@@ -428,8 +434,6 @@ if (file_exists($inputFileName)) {
         $total_all_price += $total_inventories_cost;
 
         $total_inventories_cost = 0;
-
-        unset($ar_sizes);
 
         ++$rowCount;
     }
