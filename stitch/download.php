@@ -310,6 +310,7 @@ if (file_exists($inputFileName)) {
                         if (!isset($ar_sub_total_stock_sum[$size]))
                             $ar_sub_total_stock_sum[$size] = 0;
 
+                        ++$colNumber;
                         $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, 0);
                         $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
                     }
@@ -434,8 +435,6 @@ if (file_exists($inputFileName)) {
         $total_all_price += $total_inventories_cost;
 
         $total_inventories_cost = 0;
-
-        unset($ar_sizes);
 
         ++$rowCount;
     }
