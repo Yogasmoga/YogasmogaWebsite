@@ -10,6 +10,7 @@
         $upload_display = "display:block";
 
     $stores = array('all', 'brentwood', 'fallriver', 'magento', 'greenwich');
+    $ar_sizes = array('One', 'S', 'M', 'L', 'XL', 'XXL', '2', '4', '6', '8', '10', '12', '14', '16', '18');
 
     $store = 'all';
     if(isset($_GET['store'])) {
@@ -89,13 +90,13 @@ for ($row = 2; $row <= $highestRow; $row++) {
 
     if(strpos($within_parenthesis, ",")===false) {
         $color = $within_parenthesis;
-        $size = 'One Size';
+        $size = 'One';
         $height = '';
     }
     else{
         $ar_within_parenthesis = explode(",", $within_parenthesis);
         $color = $ar_within_parenthesis[0];
-        $size = "Size " . $ar_within_parenthesis[1];
+        $size = $ar_within_parenthesis[1];
 
         if(count($ar_within_parenthesis)==3)
             $height = $ar_within_parenthesis[2];
@@ -134,7 +135,7 @@ ksort($all_products);
     $total_all_inventories = 0;
     $total_inventories_cost = 0;
     $total_all_price = 0;
-
+    $productCount = 0;
     foreach($all_products as $product_name => $data){
 
         $styleName = $product_name;
@@ -149,7 +150,7 @@ ksort($all_products);
             if(strlen(trim($ar['height']))>0){
                 $ar_color_size[$ar['color'] . '-' . $ar['height']][] = array(
                     'color' => $ar['color'] . '-' . $ar['height'],
-                    'size' => $ar['size'],
+                    'size' => trim($ar['size']),
                     'stock' => $ar[$store . '_stock'],
                     'unit_price' => $ar['unit_price']
                 );
@@ -157,7 +158,7 @@ ksort($all_products);
             else {
                 $ar_color_size[$ar['color']][] = array(
                     'color' => $ar['color'],
-                    'size' => $ar['size'],
+                    'size' => trim($ar['size']),
                     'stock' => $ar[$store . '_stock'],
                     'unit_price' => $ar['unit_price']
                 );
@@ -165,26 +166,14 @@ ksort($all_products);
         }
 
         /***************** printing size header *********************/
-        $ar_sizes = array();
-        // finding sizes
-        foreach($ar_color_size as $color_name_value => $color_data ){
-            foreach($color_data as $color_size) {
-
-                if(strlen(trim($color_size['size']))>0)
-                    $ar_sizes[] = $color_size['size'];
-            }
-        }
-
-        $ar_sizes = array_unique($ar_sizes);
-        asort($ar_sizes);
 
         echo "<tr style='background: #2c62a5; color: #fff'>";
 
         echo "<td style='padding:5px; min-width: 200px;'>Color</td>";
         foreach($ar_sizes as $size){
-            echo "<td style='padding:5px; text-align: left; min-width: 55px;'>" . $size . "</td>";
+            echo "<td style='padding:5px 0; text-align: left; min-width: 45px;'>" . $size . "</td>";
         }
-        echo "<td style='padding:5px; text-align: left'>Total</td>";
+        echo "<td style='padding:5px; text-align: left'>Total Units</td>";
         echo "<td style='padding:5px; text-align: left'>Cost Price</td>";
         echo "<td style='padding:5px; text-align: left;min-width: 100px;'>Total Cost Price</td>";
         echo "</tr>";
@@ -208,7 +197,7 @@ ksort($all_products);
             $total_product_stock = 0;
             foreach($color_data as $color_size) {
                 if(isset($color_size['size']) && strlen(trim($color_size['size']))>0) {
-                    $ar_size_stock[$color_size['size']] = $color_size['stock'];
+                    $ar_size_stock[(string)$color_size['size']] = $color_size['stock'];
                     $total_product_stock += $color_size['stock'];
                 }
             }
@@ -220,17 +209,28 @@ ksort($all_products);
             $x = 0;
             if(count($ar_size_stock)>0) {
                 $sub_total_stock_sum = 0;
-                foreach ($ar_size_stock as $size => $stock) {
-                    if(intval($stock)==0)
-                        echo "<td style='text-align: left; background-color: #ccc'>$stock</td>";
-                    else
-                        echo "<td style='text-align: left'>$stock</td>";
+                foreach ($ar_sizes as $size) {
+
+                    if(isset($ar_size_stock[$size])) {
+
+                        $stock = $ar_size_stock[$size];
+
+                        if (intval($stock) == 0)
+                            echo "<td style='text-align: left; background-color: #ccc'>$stock</td>";
+                        else
+                            echo "<td style='text-align: left'>$stock</td>";
+
+                        if (!isset($ar_sub_total_stock_sum[$size]))
+                            $ar_sub_total_stock_sum[$size] = 0;
+
+                        $ar_sub_total_stock_sum[$size] += $stock;
+                    }
+                    else {
+                        echo "<td style='text-align: left; background-color: #ccc'>0</td>";
+                        if (!isset($ar_sub_total_stock_sum[$size]))
+                            $ar_sub_total_stock_sum[$size] = 0;
+                    }
                     ++$x;
-
-                    if(!isset($ar_sub_total_stock_sum[$size]))
-                        $ar_sub_total_stock_sum[$size] = 0;
-
-                    $ar_sub_total_stock_sum[$size] += $stock;
                 }
             }
 
@@ -283,8 +283,6 @@ ksort($all_products);
         $total_all_price += $total_inventories_cost;
 
         $total_inventories_cost = 0;
-
-        unset($ar_sizes);
 
         echo "</tr>";
         echo "<tr><td colspan='10' style='line-height: 30px;'>&nbsp;</td></tr>";
