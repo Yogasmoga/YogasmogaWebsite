@@ -24,6 +24,8 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('vivacity_popup')->toHtml(); ?>
     <!-- call invite popup  -->
 <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/popups/popup_invite.phtml')->toHtml(); ?>
 <!-- <div class="footer-container"> -->
@@ -194,9 +196,3 @@ var google_remarketing_only = true;
 </script>
                 
     <?php } ?>
-
-
-
-
-
-    

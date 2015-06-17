@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <vivacity_adminhtml_vivacity_index>
+        <reference name="content">
+            <block type="vivacity/adminhtml_vivacity" name="vivacity" />
+        </reference>
+    </vivacity_adminhtml_vivacity_index>
+</layout>

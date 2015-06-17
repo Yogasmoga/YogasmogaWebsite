@@ -43,14 +43,14 @@
     <adminhtml>
 		<menu>
 			<nominateinstructor module="nominateinstructor">
-				<title>NominateInstructor</title>
+				<title>Custom</title>
 				<sort_order>71</sort_order>               
 				<children>
-					<items module="nominateinstructor">
-						<title>Manage Instructor</title>
+					<nominate module="nominateinstructor">
+						<title>Nominate Instructor</title>
 						<sort_order>0</sort_order>
 						<action>nominateinstructor/adminhtml_nominateinstructor</action>
-					</items>
+					</nominate>
 				</children>
 			</nominateinstructor>
 		</menu>

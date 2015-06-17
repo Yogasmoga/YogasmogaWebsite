@@ -67,6 +67,11 @@ jQuery(document).ready(function ($) {
             $("#signing_popup").dialog("open");
         }
     });
+
+    $(document).on("click", "#continuecheckout", function(e){
+       vivacityPromotion(e);
+    });
+
     // }
 //    $(document).live("click","#continuecheckout",function(e){
 //        e.prevenDefault();
@@ -1086,4 +1091,44 @@ function outofstockDisable() {
             jQuery("#continuelink").css("background", "#5ec52f");
         }
     });
+}
+
+function vivacityPromotion(e){
+    if (_islogedinuser) {
+        var vivacity = jQuery(".vivacity").attr("rel");
+
+        if (vivacity == 'yes') {
+            e.preventDefault();
+
+            jQuery('.vivacity-popup').show();
+
+
+            jQuery(".top-sizes ul li").click(function () {
+                jQuery(this).siblings().removeClass("selected-vivacity-size");
+                jQuery(this).addClass("selected-vivacity-size");
+            });
+            jQuery(".vivacity-popup .vivacity-continue-anchor").click(function () {
+
+                var size = jQuery(".vivacity-popup .top-sizes ul li.selected-vivacity-size").text();
+
+                if (size != undefined && size.length > 0) {
+                    jQuery(".error-msg").html("");
+                    jQuery.ajax({
+                        url: homeUrl + 'vivacity/index/save',
+                        type: 'POST',
+                        data: 'size=' + size,
+                        success: function (data) {
+
+                            location.href = homeUrl + "checkout/onepage";
+                        }
+                    });
+
+                }
+                else {
+                    //alert("Please select size.");
+                    jQuery(".error-msg").html("Please select a size.");
+                }
+            });
+        }
+    }
 }
