@@ -1,5 +1,6 @@
 <!-- productGridView -->
 <?php
+/*********************** hidden page logic ********************/
 $forNormal = true;
 $hiddenUrl = "";
 if($this->getRequest()->getParam('hidden')){
@@ -10,6 +11,7 @@ if($this->getRequest()->getParam('hidden')){
         $hiddenUrl = "&hidden=true";
     }
 }
+/*********************** hidden page logic ********************/
 ?>
 
 <div class="gridProdCubix">
@@ -410,14 +412,6 @@ foreach ($configurableProductArr as $key => $val) {
     <?php
     }
 }
-
-
-//print_r($configurableProductSort);
-// print_r($configurableProductSort2);
-//print_r($clrinfo);
-//print_r($configurableProductArr);
-//print_r($configurableProductArrKey);die;
-
 
 ?>
 
