@@ -1750,7 +1750,7 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
 /********************* now showing all cart items *********************/
-        $vivacityConfigurableIds = array(2566,1990,1846,1843);
+        $vivacityConfigurableIds = array(2599,1990,1846,1843);
         $vivacityFound = false;
 
         foreach($minidetails['items'] as $item)
