@@ -68,6 +68,10 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    $(document).on("click", ".vivacity-popup", function(e){
+        jQuery('.vivacity-popup').hide();
+    });
+
     $(document).on("click", "#continuecheckout", function(e){
        vivacityPromotion(e);
     });
@@ -1100,8 +1104,20 @@ function vivacityPromotion(e){
         if (vivacity == 'yes') {
             e.preventDefault();
 
-            jQuery('.vivacity-popup').show();
+            var leftNav = jQuery(".leftnav");
+            if (leftNav.is(":visible")) {
+                var offset = leftNav.parent().offset().top - 58;
+                $(window).scrollTop(offset);
+            }
+            $(".pageoverlay").hide();
+            jQuery(".shopping-cart").css("z-index", "1");
+            $(".page").animate({left: '0'}).css("");
+            $(".header-container").animate({left: "0"});
+            $("body, html").removeClass("hdnHgt");
+            jQuery(".side-menu-bar,.account-nav").removeClass("scrolltopend");
+            $(window).scrollTop("79px");
 
+            jQuery('.vivacity-popup').show();
 
             jQuery(".top-sizes ul li").click(function () {
                 jQuery(this).siblings().removeClass("selected-vivacity-size");
