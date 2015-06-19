@@ -1755,9 +1755,17 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
 
 
 /********************* now showing all cart items *********************/
+        $vivacityConfigurableIds = array(2566,1990,1846,1843);
+        $vivacityFound = false;
 
         foreach($minidetails['items'] as $item)
         {
+            foreach($vivacityConfigurableIds as $vivacityId){
+                if($item['pid']==$vivacityId){
+                    $vivacityFound = true;
+                    break;
+                }
+            }
 
             $html .='<li id="'.$item['itemid'].'" availableqty="'.$item['pavailableqty'].'" backorder="'.$item['preorder'].'" instock="'.$item['instock'].'">
                 <a href="'.$item['producturl'].'"><span class="wdth100"><img alt="'.$item['name'].'" src="'.substr($item['imageurl'], 1).'" ></span></a>
@@ -2158,10 +2166,12 @@ class Mycustommodules_Mynewtheme_ShoppingbagController extends Mage_Core_Control
         }
 
         // end to show braclet
-        $html .= '</ul>
-                                    </div>
-                                    <!-- productadded -->
-                                    ';
+        if($vivacityFound)
+            $vivacityStr = '<span style="display:none;" class="vivacity" rel="yes"></span>';
+        else
+            $vivacityStr = '<span  style="display:none;" class="vivacity" rel="no"></span>';
+
+        $html .= '</ul>' . $vivacityStr . '</div>';
 
 
         return $html;
