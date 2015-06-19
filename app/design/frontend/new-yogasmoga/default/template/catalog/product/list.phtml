@@ -1,4 +1,18 @@
 <!-- productGridView -->
+<?php
+/*********************** hidden page logic ********************/
+$forNormal = true;
+$hiddenUrl = "";
+if($this->getRequest()->getParam('hidden')){
+    $hidden = $this->getRequest()->getParam('hidden');
+
+    if($hidden=="true") {
+        $forNormal = false;
+        $hiddenUrl = "&hidden=true";
+    }
+}
+/*********************** hidden page logic ********************/
+?>
 
 <div class="gridProdCubix">
 <!-- leftNavGrid -->
@@ -60,6 +74,20 @@ foreach ($category as $products){
 
 
     $simpleProduct= Mage::getModel('catalog/product')->load($products->getId());
+
+    /*********************** hidden page logic ********************/
+    if($forNormal) {
+        $forHidden = $simpleProduct->getAttributeText('for_hidden_page');
+        if (isset($forHidden) && strtolower($forHidden) == "yes")
+            continue;
+    }
+    else{
+        $forHidden = $simpleProduct->getAttributeText('for_hidden_page');
+        if (isset($forHidden) && strtolower($forHidden) == "no")
+            continue;
+    }
+    /*********************** hidden page logic ********************/
+
     $insalevalue = $simpleProduct->getAttributeText('insale');
     /*if($insalevalue == 'Yes')
         die('found');*/
@@ -382,7 +410,7 @@ foreach($configurableProductArr as $key => $val){
                     }
                     ?>
                 </a>
-                <a class="clickable" href="<?php echo $confProduct->getProductUrl().'?color='.$childProduct['color'];?>"></a>
+                <a class="clickable" href="<?php echo $confProduct->getProductUrl().'?color='.$childProduct['color'];?><?php echo $hiddenUrl;?>"></a>
                 <?php ?>
                 <!--<img class="prd-image" src="<?php    echo $this->helper('catalog/image')->init($confProduct, 'thumbnail',$imageArr[$childProduct])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(221, 330)->setQuality(91); ?>" />-->
             </div>
@@ -398,7 +426,7 @@ foreach($configurableProductArr as $key => $val){
 
             <?php }else{
             ?>
-                    <a href="<?php echo $confProduct->getProductUrl().'?color='.$childProduct['color'];?>"> <?php echo $clrinfo[$childProduct['color']]?></a><span>$<?php  echo  round($confProduct->getPrice(),2);?></span>
+                    <a href="<?php echo $confProduct->getProductUrl().'?color='.$childProduct['color'];?><?php echo $hiddenUrl;?>"> <?php echo $clrinfo[$childProduct['color']]?></a><span>$<?php  echo  round($confProduct->getPrice(),2);?></span>
             <?php    }
         ?>
             </div>

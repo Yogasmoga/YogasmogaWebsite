@@ -31,6 +31,18 @@
  * @see Mage_Review_Block_Product_View
  */
 ?>
+<?php
+/*********************** hidden page logic ********************/
+$forNormal = true;
+if($this->getRequest()->getParam('hidden')){
+    $hidden = $this->getRequest()->getParam('hidden');
+
+    if($hidden=="true")
+        $forNormal = false;
+}
+/*********************** hidden page logic ********************/
+?>
+
 <div class="namaskar-overlay1">&nbsp;</div>
 <script type="text/javascript">
     jQuery(window).load(function () {
