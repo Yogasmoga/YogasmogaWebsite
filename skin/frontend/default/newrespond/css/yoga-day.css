@@ -1,0 +1,77 @@
+.mobile-yoga-day-container {
+    clear: both;
+    display: inline-block;
+    float: left;
+    font-size: 0;
+    width: 100%;
+}
+
+.mobile-yoga-day-container .yoga-day-banner {
+    float: left;
+    font-size: 0;
+    height: auto;
+    position: relative;
+    width: 100%;
+}
+
+.mobile-yoga-day-container .img-responsive {
+    width: 100%;
+    height: auto;
+}
+
+.mobile-yoga-day-container .ys-heading {
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    font: 40px/43px AvantGardeGothicITCW01D;
+}
+
+.mobile-yoga-day-container .ys-over-text {
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 245px;
+}
+
+.mobile-yoga-day-container .yoga-day-banner .heading-text {
+    display: inline-block;
+    width: 20%;
+}
+
+.mobile-yoga-day-container .yoga-day-content p {
+    color: hsl(0, 0%, 33%);
+    font: 12px/19px gothambook;
+    margin: 0 0 21px;
+    text-align: center;
+}
+
+.mobile-yoga-day-container .yoga-day-content .get-10 {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 70px;
+    line-height: 60px;
+}
+
+.mobile-yoga-day-container .yoga-day-content .get-10, .mobile-yoga-day-container .yoga-day-content .get-10 span {
+    font-size: 31px;
+    line-height: 60px;
+}
+
+.mobile-yoga-day-container .yoga-day-content {
+    padding: 40px 12px;
+}
+
+.mobile-yoga-day-container .yoga-day-content .namaskar-rangoli a {
+    display: inline-block;
+}
+
+.mobile-yoga-day-container .yoga-day-content .namaskar-rangoli .namaskar-bottom {
+    margin-right: 7%;
+    width: 36%;
+}
+
+.mobile-yoga-day-container .yoga-day-content .namaskar-rangoli .rangoli-bottom {
+    width: 23%;
+}
+
+.yoga-day-container { display: none; }

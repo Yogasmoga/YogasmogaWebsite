@@ -81,3 +81,5 @@ font-size:50px;line-height:40px;
    
 }
 .yoga-day-container .yoga-day-content .namaskar-rangoli .rangoli-bottom  img{padding-top:10px;}
+
+.mobile-yoga-day-container{ display: none; }
