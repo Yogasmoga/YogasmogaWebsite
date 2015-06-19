@@ -24,7 +24,14 @@
     color: #fff;
     width: 100%;
     text-align: center;
-    font: 40px/43px AvantGardeGothicITCW01D;
+   
+}
+.yoga-day-container .ys-heading .avant_extra_light{
+	display: inline-block;
+font-size: 35px;
+line-height: 49px;
+vertical-align: bottom;
+
 }
 
 .yoga-day-container .ys-over-text {
@@ -35,8 +42,9 @@
 }
 
 .yoga-day-container .yoga-day-banner .heading-text {
-    display: inline-block;
-    width: 20%;
+     display: inline-block;
+  line-height: 31px;
+  width: 278px;
 }
 
 .yoga-day-container .yoga-day-content p {
@@ -53,7 +61,7 @@
 	line-height:60px;
 }
 .yoga-day-container .yoga-day-content .get-10,.yoga-day-container .yoga-day-content .get-10 span{
-font-size:70px;line-height:60px;
+font-size:50px;line-height:40px;
 }
 
 .yoga-day-container .yoga-day-content {
@@ -66,9 +74,10 @@ font-size:70px;line-height:60px;
 
 .yoga-day-container .yoga-day-content .namaskar-rangoli .namaskar-bottom {
     margin-right: 13%;
-    width: 20%;
+   
 }
 
 .yoga-day-container .yoga-day-content .namaskar-rangoli .rangoli-bottom {
-    width: 13%;
+   
 }
+.yoga-day-container .yoga-day-content .namaskar-rangoli .rangoli-bottom  img{padding-top:10px;}
