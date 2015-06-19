@@ -202,6 +202,17 @@ foreach ($_childProducts as $_childProduct) {
     $pos = strrpos($nameWithColor, '-');
     $colorName = trim(substr($nameWithColor, $pos + 1));       // get color name =>  Carbon
 
+    if($forNormal) {
+        $forHidden = $_childProduct->getAttributeText('for_hidden_page');
+        if (isset($forHidden) && strtolower($forHidden) == "yes")
+            continue;
+    }
+    else{
+        $forHidden = $_childProduct->getAttributeText('for_hidden_page');
+        if (isset($forHidden) && strtolower($forHidden) == "no")
+            continue;
+    }
+
     $sku = $_childProduct->getSku();
     $childProductBySku = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
 
