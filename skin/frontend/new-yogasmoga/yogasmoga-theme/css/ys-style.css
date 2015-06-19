@@ -2065,6 +2065,8 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     }
     .contWom h4{font-size: 15px !important;}
 
+    .vivacity-custom1{font-size: 21px; line-height: 23px;}
+    .vivacity-custom2{font: 10px/11px itcavantgardeprobk;}
 
     .avant_demi_bold{
         font:40px/43px AvantGardeGothicITCW01D;
@@ -2109,6 +2111,9 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
 
     .contWom h4{font-size: 17px !important;}
 
+    .vivacity-custom1{font-size: 20px; line-height: 22px;}
+    .vivacity-custom2{font: 12px/14px itcavantgardeprobk;}
+
     /**new**/
     .contentSlider h2{font-size: 12px; line-height: 45px;}
     .block-content h4.main-img-text span,
@@ -2151,6 +2156,9 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     p.block-head {
         font-size: 17px;
     }
+
+    .vivacity-custom1{font-size: 28px; line-height: 32px;}
+    .vivacity-custom2{font: 16px/18px itcavantgardeprobk;}
 
     /**new**/
     .contentSlider h2{font-size: 12px; line-height: 45px;}
