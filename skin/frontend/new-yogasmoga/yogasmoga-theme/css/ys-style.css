@@ -2222,6 +2222,17 @@ span.close-share{position: absolute; right: -24px; top: -24px; cursor: pointer;}
     .avant_extra_light{
                  font:48px/53px AvantGardeGothicITCW01X;
              }
+
+
+    .yoga-day-container .yoga-day-banner .heading-text {
+        display: inline-block;
+        line-height: 39px!important;
+        width: auto!important;
+    }
+    .yoga-day-container .yoga-day-content .get-10,.yoga-day-container .yoga-day-content .get-10 span{
+        font-size:60px!important;line-height:50px!important;
+    }
+
     /* cmsheading */
     .gridCMSPages h4, .gridCMSPages h1, .gridBlockContent h3, .pressHead, .rSldrHeading, .rSldrHeading h1{font-size: 50px !important; line-height: 53px !important;}
     .gridCMSPages h4 .smallHead, .gridBlockContent h3 span, .rSldrForm .formheading{font-size: 24px !important; line-height: 50px !important;}
