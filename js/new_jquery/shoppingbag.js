@@ -1107,24 +1107,25 @@ function vivacityPromotion(e){
             var leftNav = jQuery(".leftnav");
             if (leftNav.is(":visible")) {
                 var offset = leftNav.parent().offset().top - 58;
-                $(window).scrollTop(offset);
+                jQuery(window).scrollTop(offset);
             }
-            $(".pageoverlay").hide();
+            jQuery(".pageoverlay").hide();
             jQuery(".shopping-cart").css("z-index", "1");
-            $(".page").animate({left: '0'}).css("");
-            $(".header-container").animate({left: "0"});
-            $("body, html").removeClass("hdnHgt");
+            jQuery(".page").animate({left: '0'}).css("");
+            jQuery(".header-container").animate({left: "0"});
+            jQuery("body, html").removeClass("hdnHgt");
             jQuery(".side-menu-bar,.account-nav").removeClass("scrolltopend");
-            $(window).scrollTop("79px");
+            jQuery(window).scrollTop("79px");
 
             jQuery('.vivacity-popup').show();
 
-            jQuery(".top-sizes ul li").click(function () {
+            jQuery(".top-sizes ul li").click(function (ee) {
+                ee.stopPropagation();
                 jQuery(this).siblings().removeClass("selected-vivacity-size");
                 jQuery(this).addClass("selected-vivacity-size");
             });
-            jQuery(".vivacity-popup .vivacity-continue-anchor").click(function () {
-
+            jQuery(".vivacity-popup .vivacity-continue-anchor").click(function (ee) {
+                ee.stopPropagation();
                 var size = jQuery(".vivacity-popup .top-sizes ul li.selected-vivacity-size").text();
 
                 if (size != undefined && size.length > 0) {
