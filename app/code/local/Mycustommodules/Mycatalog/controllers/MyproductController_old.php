@@ -4336,7 +4336,6 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
                         $write->query("insert into signup_popup_user values(null,'".$customer->getId()."',now())");
 						
                         echo json_encode($response);
-						  //$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($response));
                         //$url = $this->_welcomeCustomer($customer);
                         //$this->_redirectSuccess($url);
                         return;
