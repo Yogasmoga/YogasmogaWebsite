@@ -1,0 +1,164 @@
+<div id="dullDiv"></div>
+<ul id="loginPopupDiv" class="popup">
+    <li>
+        <div class="login-form">
+
+            <div id="ajaxlogin_close_icon" onclick="AjaxLoginForm.hideLoginContainer()">&nbsp;</div>
+
+            <div class="top-heading">
+                <div class="join-smogi"><span class="join">ALREADY A SMOGI</span><span class="gold-text"> <br>SIGN IN HERE</span>
+                </div>
+            </div>
+            <form id="ajaxlogin_form" class="login_form" action="" method="post">
+                <ul class="form-list" class="popup_login">
+                    <li class="form_field_left">
+                        <div class="input-box">
+                            <!-- 		<input type="text" autocomplete="off" placeholder="Email" class="input-text required-entry validate-email" value="" id="login:email" name="login[username]" title="<?php echo $this->__('Email Address') ?>"> -->
+                            <input type="text" name="email" data-watermark="Email" class="input-text">
+                        </div>
+                    </li>
+                    <li class="form_field_left" id="ajaxlogin_form_pwd">
+                        <div class="input-box">
+                            <!-- 	<input type="password" autocomplete="off" placeholder="Password" class="input-text required-entry validate-password" value="" id="login:password" name="login[password]" title="<?php echo $this->__('Password') ?>" /> -->
+                            <input type="password" name="password" rel="password" class="watermark_password_orignal input-text"  />
+                            <input type="text"  value="Password" 	class="watermark_password input-text" />
+<!--
+                            <input type="password" name="password" rel="password" data-watermark="Password"
+                                   class="input-text">-->
+                        </div>
+                    </li>
+                    <li class="buttons ajaxlogin_actions">
+                        <a id="ajaxlogin_forgot_pwd_link" class="ajaxlogin_actions"
+                           href="javascript:AjaxLoginForm.showForgotPwdForm('ajaxlogin_form_pwd', 'ajaxlogin_is_forgot_pwd')"><?php echo $this->__('Forgot your Password?') ?></a>
+
+                        <p class="new_customer"><a onclick="jQuery('#menu_signup').click();AjaxLoginForm.hideLoginContainer();">I don't have an account
+                                here?</a></p>
+                        <!-- 	<div id="ajaxlogin_form_message"></div> -->
+                        <p style="text-align: left;" id="err_msg"></p>
+
+
+                        <button id="ajaxlogin_button_send" name="ajaxlogin_button_send"
+                                title="<?php echo $this->__('Login') ?>" class="button ajaxlogin_button login_customer"
+                                type="button">
+                               
+									<span class="tick-mark">
+										<img src="<?php echo $this->getSkinUrl("images/tick-mark.jpg") ?>"/>
+									</span>
+                        </button>
+
+                    </li>
+                    <li class="buttons ajaxlogin_forgot_pwd_actions" style="display:none;">
+					 <p style="text-align: left;" id="err_pass"></p>
+<input class="button ajaxlogin_button ajaxlogin_forgot_pwd_actions forgot_password" type="submit" value="<?php echo $this->__("Forgot Password") ?>">
+
+                        <!-- <button id="ajaxlogin_button_forgot_pwd" name="ajaxlogin_button_forgot_pwd"
+                                title="<?php echo $this->__("Forgot Password") ?>"
+                                class="button ajaxlogin_button ajaxlogin_forgot_pwd_actions forgot_password" type="button"
+                                onclick="AjaxLoginForm.submit(this)">
+                            <span><span><?php echo $this->__("Forgot Password") ?></span></span>
+                        						</button> -->
+                        
+						<a id="ajaxlogin_link" class="ajaxlogin_forgot_pwd_actions"
+                           href="javascript:AjaxLoginForm.showLoginForm('ajaxlogin_form_pwd', 'ajaxlogin_is_forgot_pwd')" style="padding-top: 15px;"><?php echo $this->__('Login here') ?></a>
+
+                    </li>
+                </ul>
+                <input type="hidden" name="ajaxlogin_is_forgot_pwd" id="ajaxlogin_is_forgot_pwd" value="0"/>
+            </form>
+        </div>
+    </li>
+</ul>
+
+<script type="text/javascript">
+    init_watermark();
+    var AjaxLoginForm = new VarienForm("ajaxlogin_form");
+
+    jQuery(document).ready(function () {
+        init_watermark();
+        jQuery(".login_customer").click(function (e) {
+            e.preventDefault();
+            loginCustomer();
+        });
+		jQuery(".forgot_password").click(function (e) {
+            e.preventDefault();
+            forgotCustomer();
+        });
+		
+
+
+    });
+
+    AjaxLoginLoader = "<div class='ajax_login_loader'>&nbsp;</div>";
+    AjaxLoginForm.insertLoader = function (element) {
+        // show ajax image
+        //element.insert({"after":AjaxLoginLoader});
+    }
+
+    AjaxLoginForm.hideLoader = function () {
+        $$(".ajax_login_loader").each(function (elem) {
+            elem.remove();
+        });
+    }
+
+    AjaxLoginForm.showForgotPwdForm = function (pwdFieldId, forgotPwdFlagFieldId) {
+        $(pwdFieldId).toggle("blind");
+        $(forgotPwdFlagFieldId).value = 1;
+
+        $$("li.ajaxlogin_forgot_pwd_actions").each(function (elem) {
+            elem.toggle("blind");
+        });
+
+        $$("li.ajaxlogin_actions").each(function (elem) {
+            elem.toggle("blind");
+        });
+    }
+
+    AjaxLoginForm.showLoginForm = function (pwdFieldId, forgotPwdFlagFieldId) {
+        $(pwdFieldId).toggle("blind");
+        $(forgotPwdFlagFieldId).value = 0;
+
+        $$("li.ajaxlogin_actions").each(function (elem) {
+            elem.toggle("blind");
+        });
+
+        $$("li.ajaxlogin_forgot_pwd_actions").each(function (elem) {
+            elem.toggle("blind");
+        });
+    }
+    AjaxLoginForm.hideLoginContainer = function () {
+
+        $$('ul.popup').each(function (containerEl) {
+            containerEl.style.display = "none";
+            document.getElementById("dullDiv").style.display = "none";
+        });
+    }
+
+    AjaxLoginForm.hideResponseMessage = function () {
+        $('ajaxlogin_form_message').toggle("blind");
+        setTimeout("$('ajaxlogin_form_message').innerHTML = '';", 3000);
+    }
+    $$('ul.popup').each(function (containerEl) {
+        containerEl.style.display = "none";
+    });
+
+    function openLogin() {
+        init_watermark();
+        jQuery(".buttons.ajaxlogin_forgot_pwd_actions").hide();
+        jQuery(".buttons.ajaxlogin_actions").show();
+        jQuery("#ajaxlogin_form_pwd").show();
+        jQuery("#err_msg").html("");
+        document.getElementById("menu_container").style.display = "none";
+        document.getElementById("cross-btn").style.display = "none";
+        document.getElementById("dullDiv").style.display = "block";
+        setDivPosition('loginPopupDiv');
+    }
+    function setDivPosition(divId) {  // USED TO SET POSITION OF DIV
+        var DivShowed = document.getElementById(divId);
+        var scrollTop = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop
+        var myHeight = window.innerHeight ? window.innerHeight : (document.documentElement.clientHeight ? document.documentElement.clientHeight : (document.body.clientHeight ? document.body.clientHeight : 0))
+        var clientWid = document.documentElement.clientWidth ? document.documentElement.clientWidth : document.body.clientWidth;
+        //DivShowed.style.left = ((clientWid-DivShowed.offsetWidth)/2)+'px';
+        //DivShowed.style.top = ((parseInt(myHeight) - DivShowed.offsetHeight)/2)+'px';
+        document.getElementById(divId).style.display = "block";
+    }
+</script>

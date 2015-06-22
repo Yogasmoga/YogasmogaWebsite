@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * Respond
+ * http://respondtheme.com
+ *
+ * Copyright 2012, Nourdine Ben Chakroun
+ * http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+-->
+<layout>
+
+      <default>
+		
+		<!-- Remove blocks globally -->
+		<!-- <remove name="top.links"/> -->
+		        
+		<!-- Remove callouts globally -->
+        <remove name="right.permanent.callout" />
+        <remove name="left.permanent.callout" />
+        <remove name="paypal.partner.right.logo" />
+
+       <reference name="head">
+			<action method="addJs"><script>mobile/jquery-1.7.2.min.js</script></action>
+			<action method="addJs"><script>new_jquery/globalheader.js</script></action>
+			 <action method="addJs"><script>new_jquery/globalvariables.js</script></action>
+			 <action method="addJs"><script>new_jquery/mywatermark.js</script></action>
+			 <action method="addJs"><script>new_jquery/mobilemyproductdetails.js</script></action>
+			  <action method="addCss"><stylesheet>css/iphone-new.css</stylesheet></action>
+			  <action method="addCss"><stylesheet>css/filter.css</stylesheet></action>
+			 <!--
+			<action method="addJs"><script>mobile/jquerycustom.js</script></action>
+			<action method="addJs"><script>mobile/mywatermark.js</script></action>
+			<action method="addJs"><script>mobile/globalvariables.js</script></action>
+            <action method="addJs"><script>mobile/jquery.fancybox-1.0.0.js</script></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.mobile-1.1.0.min.js</name></action> -->
+			<!--
+			<action method="addItem"><type>skin_js</type><name>js/respond.min.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/select-menu.js</name></action>
+		-->
+		</reference>
+		
+
+     </default>
+   <catalog_product_view>
+      <reference name="head">
+       <action method="addItem"><type>skin_js</type><name>js/review/jquery.rating.js</name></action>
+	   <action method="addItem"><type>skin_js</type><name>js/review/es_stars.js</name></action>
+	   <action method="addCss"><stylesheet>css/jquery.rating.css</stylesheet></action>
+       <action method="addCss"><stylesheet>css/product_view.css</stylesheet></action>
+       <!--
+	   <action method="addJs"><script>new_jquery/myproduct_view.js</script></action>
+        <action method="addJs"><script>new_jquery/myproductdetails.js</script></action>
+        <action method="addJs"><script>new_jquery/myproductimageswitcher.js</script></action>
+        <action method="addJs"><script>new_jquery/parallaxeffect.js</script></action>
+        <action method="addJs"><script>new_jquery/jquery.smoothZoom.min.js</script></action> 
+		-->
+      </reference>
+    </catalog_product_view>
+	<customer_account>
+    <reference name="head">
+        <action method="addCss"><stylesheet>css/myaccount.css</stylesheet></action>
+        <action method="addItem"><type>js</type><name>new_jquery/myaccount.js</name></action>
+    </reference>
+</customer_account>
+
+<customer_account_create>
+    <reference name="head">
+        <action method="addCss"><stylesheet>css/myaccount.css</stylesheet></action>
+        <action method="addItem"><type>js</type><name>new_jquery/myaccount.js</name></action>
+    </reference>
+</customer_account_create>
+
+<customer_account_forgotpassword>
+    <reference name="head">
+        <action method="addCss"><stylesheet>css/myaccount.css</stylesheet></action>
+        <action method="addItem"><type>js</type><name>new_jquery/myaccount.js</name></action>
+    </reference>
+</customer_account_forgotpassword>
+
+<customer_account_login>
+    <reference name="head">
+        <action method="addCss"><stylesheet>css/myaccount.css</stylesheet></action>
+        <action method="addItem"><type>js</type><name>new_jquery/myaccount.js</name></action>
+    </reference>
+</customer_account_login>
+
+<customer_account_resetpassword>
+    <reference name="head">
+        <action method="addCss"><stylesheet>css/myaccount.css</stylesheet></action>
+        <action method="addItem"><type>js</type><name>new_jquery/myaccount.js</name></action>
+    </reference>
+</customer_account_resetpassword>
+
+ <rewardpoints_index_referral>
+ <reference name="head">
+      <action method="addItem"><type>js</type><name>mobile/zeroClipboard.js</name></action>
+    </reference>
+</rewardpoints_index_referral>
+
+ <default>
+		<reference name="head">
+			 <action method="addJs"><script>mobile/jquery.flexslider.js</script></action>
+			 <action method="addJs"><script>mobile/custom.js</script></action>
+			 <action method="addJs"><script>mobile/menu.js</script></action>
+			 <action method="addJs"><script>mobile/filter.js</script></action>
+			 <action method="addJs"><script>mobile/registrationpopup.js</script></action>
+			<action method="addCss"><stylesheet>css/flexslider.css</stylesheet></action>
+
+	    </reference>
+		 
+	</default>
+
+
+</layout>

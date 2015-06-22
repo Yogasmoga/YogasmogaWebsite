@@ -123,7 +123,7 @@
 
             if($i==2){
                 ?>
-                    <div class="homepage_post half user-color-shade">
+                    <div class="homepage_post half  <?php if($logged_in){echo 'user-color-shade-trans';} ?>" style="background: #555">
                         <img src="<?php echo $home; ?>/wp-content/themes/rangoli_mobile/images/no-background.png" />
                         <div class="overlay-text ">
                             <div class="text-center"> Invite<br/> friends</div>

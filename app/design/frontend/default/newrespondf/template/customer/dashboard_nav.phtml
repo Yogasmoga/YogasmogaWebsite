@@ -1,0 +1,83 @@
+<?php  $currentUrl = Mage::helper('core/url')->getCurrentUrl();?>
+<script type="text/javascript">
+    jQuery(function(){
+        var currenturl = "<?php echo $currentUrl; ?>";
+        var s1 = "<?php echo $currentUrl; ?>";
+        var editBilling = homeUrl + 'customer/address/edit/id/1/';
+        var editShipping = homeUrl + 'customer/address/edit/id/2/';
+        var viewOrder = homeUrl + 'sales/order/view/order_id/';
+        console.log(s1);
+        jQuery("ul.sub-nav li").each(function(){
+            var s2 = jQuery(this).find("a").attr("href");
+            if(s1 == s2)
+            {
+                jQuery(this).addClass("current");
+            }
+            else if(s1 == editBilling || s1 == editShipping || s1 == viewOrder){
+                jQuery(".sub-nav li:nth-child(1)").addClass("current");
+            }
+        });
+    });
+
+</script>
+
+<?php
+if(Mage::getSingleton('customer/session')->isLoggedIn())
+{
+    $customer = Mage::getSingleton('customer/session')->getCustomer();
+    $customer_id = $customer->getId();
+
+    $resource = Mage::getSingleton('core/resource');
+    $readConnection = $resource->getConnection('core_read');
+
+    $query = "select user_id from rangoli_user_profiles where customer_id=$customer_id";
+
+    $row = $readConnection->fetchAll($query);
+
+    if ($row) {
+        $wp_user_id = $row[0];
+        $wp_id=$wp_user_id['user_id'];
+    }
+}
+?>
+
+<div class="my-account-block">
+			<div class="sign-in-box">
+                <?php   
+		if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+		$store_id = Mage::app()->getStore()->getId();
+		$customerId = Mage::getModel('customer/session')->getCustomerId();
+		if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+			$reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+			echo $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
+			//Mage::helper('core')->currency($reward_flat_model->collectPointsCurrent($customerId, $store_id)+0);
+		}        
+		
+		$reward_model = Mage::getModel('rewardpoints/stats');
+		//echo "$".number_format((float)($reward_model->getPointsCurrent($customerId, $store_id)+0), 2, '.','');
+		//echo $reward_model->getPointsCurrent($customerId, $store_id)+0;                    
+		 echo '<a href="javascript:void(0)"><span class="reward_points"><b>$</b>'.($reward_model->getPointsCurrent($customerId, $store_id)+0).'</span></a>';
+		} else { ?>
+     <a href="javascript:openLogin()"><span class="cuslogin">Sign In</span></a>
+	 <?php } ?>
+  
+                  <h1>MY ACCOUNT</h1>
+				  <div class="arrow-tag"><img class="" src="<?php echo $this->getSkinUrl('images/black-arrw.png')?>" alt="arrow"></div>
+              </div>
+			  
+<div style="display:none;" class="account-nav l-align">
+    <ul class="sub-nav">
+        <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/account/index">Dashboard</a></li>
+        <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>sales/order/history">Track Orders</a></li>
+        <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>wishlist">Wish List</a></li>
+        <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/giftcards/balance">Redeem YS Gift Card</a></li>
+<!--        <li><a href="--><?php //echo Mage::getUrl('',array('_secure'=>true)); ?><!--customer/account/edit">Edit Account Info</a></li>-->
+        <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>payment-methods">Payment Methods</a></li>
+        <li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>customer/address">Address Book</a></li>
+		<li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>rewardpoints/index/referral/">Share with Friends</a></li>
+		<li><a href="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>checkout/onepage">Shopping Bag</a></li>
+        
+ </ul>
+    
+</div>
+</div>

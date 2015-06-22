@@ -86,7 +86,7 @@ if(!is_writable(dirname($output_filename))){
 
 	$saved_file = get_site_url()."/	".$output_filename.$type;
 	$user_id = get_current_user_id();
-/*
+
 	$count = $wpdb->get_results("select * from rangoli_usermeta where user_id=".$user_id." and meta_key='cupp_upload_meta'");
 
 	if(is_array($count) && count($count)>0){
@@ -103,7 +103,7 @@ if(!is_writable(dirname($output_filename))){
 			$status = "inserted";
 		}
 	}
-*/
+
 	$response = Array(
 	    "status" => 'success',
 	    "url" => $saved_file,

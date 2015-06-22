@@ -53,7 +53,9 @@ $imgURL = get_the_author_meta('author_profile_picture', $user_id);
                             $user_id="not-logged";
                             $current_user_id = "visitor";
                         }
-                        echo '<div class="' . $class . ' row like user-color-shade" author="' . $user_id . '" user="' . $current_user_id . '">';
+                        echo '<div class="' . $class . ' row like';
+                        if($logged_in){echo 'user-color-shade-trans';}
+                        echo '" author="' . $user_id . '" user="' . $current_user_id . '">';
                         get_template_part("heartsvg");
                         echo "<p>".get_subscribers_count($user_id)."</p>";
                         echo '</div>';

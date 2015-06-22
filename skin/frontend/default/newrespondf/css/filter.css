@@ -1,0 +1,284 @@
+.category-block .sign-in-box {
+    background: none repeat scroll 0 0 #fff;
+    box-sizing: border-box;
+    height: 44px;
+    margin: 0;
+    position: fixed;
+    top: 44px;
+    width: 100%;
+    z-index: 2;
+}
+
+
+
+.clear{clear:both}
+.toggle_dropdown {
+    height: 44px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition-duration: 200ms;
+    width: 44px;
+}
+.toggle_dropdown.active {
+    transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    transition-duration: 200ms;
+}
+.dropdown_content {
+    bottom: 0;
+    display: none;
+    overflow-y: scroll;
+    padding-right: 20%;
+    position: fixed;
+    top: 88px;
+    width: 120%;
+    z-index: 6;
+}
+.filter {
+    background: none repeat scroll 0 0 #ededed;
+    float: left;
+    width: 100%;
+}
+.filter > p {
+    font: 15px freighttextbook;
+    text-transform: uppercase;
+    margin: 20px 0;
+    letter-spacing: 1px;
+    position: relative;
+}
+.filter > p > span.active {
+    background: url("/skin/frontend/default/newrespondf/images/close_filter.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+}
+.filter > p > span {
+    background: url("/skin/frontend/default/newrespondf/images/open_filter.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    height: 15px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 58px;
+}
+.filter_content{
+    padding: 0 5px;
+    display: none;
+}
+.filter_content  p {
+    font: 15px ITCAvantGardeStd-Bk;
+    padding: 0 5px 5px 10px;
+    text-align: left;
+    margin: 0;
+}
+.swatches-container {
+    float: left;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.swatches-container > div {
+    border: 5px solid transparent;
+    box-sizing: initial;
+    float: left;
+    height: 40px;
+    position: relative;
+    width: 40px;
+}
+.swatch_left {
+    float: left;
+    height: 0;
+    width: 0;
+    border-top: 20px solid transparent !important;
+    border-right: 20px solid transparent !important;
+}
+.swatch_right {
+    border-bottom: 20px solid transparent !important;
+    border-left: 20px solid transparent !important;
+    height: 0;
+    position: absolute;
+    right: 0;
+    width: 0;
+}
+.swatch_checked,.out_of_stock {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-repeat:no-repeat ;
+    background-position: center center;
+}
+.swatches-container label {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.swatches-container input[type="checkbox"] {
+    visibility: hidden;
+}
+.swatch_checked{
+    display: none;
+}
+.swatch_checked.selected{
+    display: block;
+}
+.size {
+    background: none repeat scroll 0 0 #fff;
+    border: 5px solid #ededed;
+    box-sizing: initial;
+    float: left;
+    height: 40px;
+    width: 40px;
+    position: relative;
+    font: 15px/40px ITCAvantGardeStd-Bk;
+}
+.size.selected {
+    background: #656565;
+    color: #fff;
+}
+.size.not_available {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.size.not_available > label {
+    background: url("/skin/frontend/default/newrespondf/images/not_available.png") no-repeat scroll 100% 100% / 100% 100% rgba(0, 0, 0, 0);
+    border: 1px solid #656565;
+}
+.size input[type="checkbox"]{
+    opacity: 0;
+}
+.size label{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right:0;
+    bottom:0;
+}
+.texture {
+    border: 5px solid #ededed;
+    font: 15px/40px ITCAvantGardeStd-Bk;
+    float: left;
+    height: 50px;
+    width: 50%;
+    background: #fff;
+    position: relative;
+}
+.texture.selected{
+    color:#fff;
+    background: #656565;
+}
+.texture.not_available{
+    background: none;
+}
+.texture label{
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+}
+.texture label input[type="checkbox"]{
+    opacity: 0;
+}
+.texture.not_available label{
+    background: url("/skin/frontend/default/newrespondf/images/not_available.png") no-repeat scroll 100% 100% / 100% 100% rgba(0, 0, 0, 0);
+    border:1px solid #656565;
+}
+.filter_bottom {
+    margin-top: 20px;
+    padding: 0 5px 15px;
+}
+.filter_bottom > p:first-child {
+    border-top: 1px solid #656565;
+    padding: 15px 0 0;
+}
+.filter_bottom > p{
+    padding: 15px 0 0;
+}
+.switch {
+    background: none;
+    border-radius: 50%;
+    float: right;
+    height: 15px;
+    border:1px solid #555;
+    width: 15px;
+}
+.switch.selected {
+    background: #555;
+    border-radius: 50%;
+    border:1px solid #555;
+    float: right;
+    height: 15px;
+    width: 15px;
+}
+/* ////////////////////////YS MENU ///////////*/
+
+.dropdown_links {
+    background: rgba(255,255,255,0.95);
+    float: left;
+    height: 100%;
+    overflow-y: scroll;
+    padding-right: 20%;
+    position: relative;
+    text-align: left;
+    width: 120%;
+}
+
+.dropdown_links li:first-child ul li {
+    font: 15px/58px  ITCAvantGardeStd-Bk;
+}
+.dropdown_links li ul li:hover,.dropdown_links li:first-child ul li.selected{
+    background: #AD8536;
+}
+.dropdown_links a{
+    color:#656565;
+}
+.dropdown_links > ul > li {
+    font: 21px/44px freighttextbook;
+    letter-spacing: 1px;
+    position: relative;
+}
+.dropdown_links > ul > li >ul >li{
+    font:14px/44px ITCAvantGardeStd-Bk;
+}
+.dropdown_links > ul > li > a, .dropdown_links > ul > li > ul li a {
+    padding: 0 12px;
+}
+.dropdown_links span {
+    border-left: 1px solid #555;
+    line-height: 34px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 5px;
+    width: 44px;
+}
+.dropdown_links .border-line {
+    border-bottom: 1px solid rgba(85, 85, 85, 1);
+    display: block;
+    height: 0;
+    left: 12px;
+    position: absolute;
+    right: 12px;
+    top: 100%;
+    width: auto;
+}
+.dropdown_links > ul > li > ul {
+    display: none;
+}
+.dropdown_links span img {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transition-duration: 200ms;
+}
+.dropdown_links span.active img {
+    transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    transition-duration: 200ms;
+}
+.menu-item:hover span{
+    opacity: 1;
+}
+.has_no_childs {
+    font: 14px/44px Avantgarde-demi;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}

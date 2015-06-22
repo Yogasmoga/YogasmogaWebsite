@@ -11,9 +11,9 @@ get_header();
             $user_id = $user->ID;
 
             $size = 'thumbnail';
-            $imgURLs = get_user_meta($user_id,'wpcf-mobile-banner');
-            $imgURL = $imgURLs[0];
-//            $imgURL = get_the_author_meta('author_profile_picture', $user_id);
+//            $imgURLs = get_user_meta($user_id,'wpcf-mobile-banner');
+//            $imgURL = $imgURLs[0];
+            $imgURL = get_the_author_meta('author_profile_picture', $user_id);
             ?>
 
             <div class="smogi">
@@ -33,7 +33,7 @@ get_header();
                         echo $user_profession; ?></p>
                         </div>
                     </div>
-                    <div class="close_post user-color-shade-trans"></div>
+                    <div class="close_post  <?php if($logged_in){echo 'user-color-shade-trans';} ?>"></div>
 <!--                    <div class="share_post user-color-shade-trans"></div>-->
 
                         <?php
@@ -61,8 +61,10 @@ get_header();
                             $user_id="not-logged";
                             $current_user_id = "visitor";
                         }
-                        echo '<div class="' . $class . ' row like user-color-shade" author="' . $user_id . '" user="' . $current_user_id . '">';
-                        get_template_part("heartsvg");
+                        echo '<div class="' . $class . ' row like ';
+                        if($logged_in){echo 'user-color-shade-trans';}
+                        echo '" author="' . $user_id . '" user="' . $current_user_id . '">';
+                        echo get_template_part("heartsvg");
                         echo "<p>".get_subscribers_count($user->ID)."</p>";
                         echo '</div>';
 

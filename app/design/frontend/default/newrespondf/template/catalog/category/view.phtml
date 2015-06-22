@@ -1,0 +1,202 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_iphone
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Category view template
+ *
+ * @see Mage_Catalog_Block_Category_View
+ */
+?>
+<div class="category-block">
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+  <div class="sign-in-box">
+	<?php   
+		if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+		$store_id = Mage::app()->getStore()->getId();
+		$customerId = Mage::getModel('customer/session')->getCustomerId();
+		if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+			$reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+			echo $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
+			//Mage::helper('core')->currency($reward_flat_model->collectPointsCurrent($customerId, $store_id)+0);
+		}        
+		
+		$reward_model = Mage::getModel('rewardpoints/stats');
+		//echo "$".number_format((float)($reward_model->getPointsCurrent($customerId, $store_id)+0), 2, '.','');
+		//echo $reward_model->getPointsCurrent($customerId, $store_id)+0;                    
+		 echo '<a href="javascript:void(0)"><span class="rewards_points"><b>$</b>'.($reward_model->getPointsCurrent($customerId, $store_id)+0).'</span></a>';
+		} else { ?>
+     <a href="javascript:void(0)" onclick="openLogin()"><span class="cuslogin">Sign In</span></a>
+	 <?php } ?>
+	  <h1><?php echo $this->htmlEscape($this->getCurrentCategory()->getName()) ?></h1>
+	  <div class="toggle_dropdown"><img src="<?php echo $this->getSkinUrl("images/black-arrw.png") ?>" /></div>
+  </div>
+       <?php
+        $_category = Mage::registry('current_category');
+        $currentCategoryId= $_category->getId();
+		$cat = Mage::getModel('catalog/category')->load($currentCategoryId);
+		//echo $mode  = $cat->getDisplayMode();
+		$page  = $cat->getLandingPage();
+		?>
+   <div class="dropdown_content">
+  <?php  if(empty($page) && $page !='11'){ ?>
+        <div class="filter" style="display:none;">
+            <p>Filter <span></span></p>
+            <div class="filter_content">
+                <form name="filter" method="get" >
+
+                    <p>Color</p>
+                    <div class="swatches-container">
+                        <div class="swatch"><span class="swatch_left" style="border:20px solid #FF7380;"></span>
+                             <span class="swatch_right" style="border:20px solid #000;"></span>
+                             <span class="swatch_checked" style="background:url('<?php echo $this->getSkinUrl("images/tick.png");?>')no-repeat scroll center center"></span>
+                            <!--    <span class="out_of_stock" style="background: url('<?php echo $this->getSkinUrl("images/out_of_stock.png") ?>')no-repeat scroll center center"></span> -->
+                            <label for="checkbox_1"><input type="checkbox" id="checkbox_1" name="color[]" value="green" ></label>
+                        </div>
+                        <div class="swatch"><span class="swatch_left" style="border:20px solid #FF7380;"></span>
+                            <span class="swatch_right" style="border:20px solid #000;"></span>
+                            <span class="swatch_checked" style="background:url('<?php echo $this->getSkinUrl("images/tick.png");?>')no-repeat scroll center center"></span>
+                            <span class="out_of_stock" style="background: url('<?php echo $this->getSkinUrl("images/out_of_stock.png") ?>')no-repeat scroll center center"></span>
+                            <label for="checkbox_2"><input type="checkbox" id="checkbox_2" name="color[]" value="blue" ></label>
+                        </div>
+                        <div class="swatch"><span class="swatch_left" style="border:20px solid #FF7380;"></span>
+                            <span class="swatch_right" style="border:20px solid #000;"></span>
+                            <span class="swatch_checked" style="background:url('<?php echo $this->getSkinUrl("images/tick.png");?>')no-repeat scroll center center"></span>
+                         <!--   <span class="out_of_stock" style="background: url('<?php echo $this->getSkinUrl("images/out_of_stock.png") ?>')no-repeat scroll center center"></span> -->
+                            <label for="checkbox_3"><input type="checkbox" id="checkbox_3" name="color[]" value="red" ></label>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <p>Size</p>
+                    <div class="sizes_container">
+                        <div class="size">2 <label for="size_1"><input type="checkbox" id="size_1" name="size[]" value="2" /></label>  </div>
+                        <div class="size">4 <label for="size_2"><input type="checkbox" id="size_2" name="size[]" value="4" /></label>  </div>
+                        <div class="size not_available">6 <label for="size_3"><input type="checkbox" id="size_3" name="size[]" value="6" /></label>  </div>
+                    </div>
+
+                    <div class="clear"></div>
+                    <p>Texture</p>
+                    <div class="texture_container">
+                        <div class="texture">SOLID<label for="texture_1"><input type="checkbox" id="texture_1" name="texture[]" value="solid" /></label>  </div>
+                        <div class="texture">Twist<label for="texture_2"><input type="checkbox" id="texture_2" name="texture[]" value="twist" /></label>  </div>
+                        <div class="texture not_available">MOSAIC <label for="texture_3"><input type="checkbox" id="texture_3" name="texture[]" value="mosaic" /></label>  </div>
+                        <div class="texture">STRIPES <label for="texture_3"><input type="checkbox" id="texture_3" name="texture[]" value="stripes" /></label>  </div>
+                    </div>
+
+                    <div class="clear"></div>
+                    <div class="filter_bottom">
+                        <p>APPLY ALL <span class="switch"></span></p>
+                        <p>CLEAR ALL <span class="switch"></span></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+		<?php } ?>
+        <div class="dropdown_links">
+
+			<?php 
+			//get the url like this:    =>http://yogasmoga.com/women/top
+			$currentUrl = Mage::helper('core/url')->getCurrentUrl(); 
+
+			$categoryName = explode('/', $currentUrl);  // break the url
+			$urlKey = $categoryName[3];     // get the top category name
+            $_category = Mage::getModel('catalog/category')->loadByAttribute('url_key', $urlKey);
+            //echo 'id= '. $_category->getId().' name= '.$_category->getName();
+			$parentCategoryId  = $_category->getId();
+            //$parentCategoryId = Mage::registry('current_category')->getId();
+			$cat = Mage::getModel('catalog/category')->load($parentCategoryId);
+			$subcats = $cat->getChildren();
+
+			?>
+			<ul>
+			    <?php 
+				if(isset($parentCategoryId) && $parentCategoryId =='3') { $whtsmaincatid ='16'; } else { $whtsmaincatid ='19'; }
+				$whatscatid = Mage::getModel('catalog/category')->load($whtsmaincatid); ?>
+                <li><a title="What's New" class="has_no_childs" href="<?php echo $whatscatid->getUrl(); ?>"><?php echo $whatscatid->getName(); ?></a>
+				<ul></ul><span class="border-line"></span>
+				</li>
+				 <?php 
+					foreach(explode(',',$subcats) as $subCatid)
+					{
+					  $_category = Mage::getModel('catalog/category')->load($subCatid);
+					  if($_category->getIsActive()) { ?>
+						<li style="<?php if($_category->getId() =='16' || $_category->getId() =='19') { echo 'display:none';} ?>">
+
+						<?php 
+						$sub_cat = Mage::getModel('catalog/category')->load($_category->getId());
+						$sub_subcats = $sub_cat->getChildren();
+						$_subcategories = $sub_cat->getChildrenCategories();
+						if (count($_subcategories) > 0): ?>
+                <a href="<?php echo $_category->getURL() ?>" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
+					    <span><img src="<?php echo $this->getSkinUrl("images/black-arrw.png") ?>"></span>
+
+						<?php else: ?>
+					<a href="<?php echo $_category->getURL() ?>" class="has_no_childs" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
+						<?php endif ?>
+						<?php
+						echo '<ul>';
+						foreach($_subcategories as $_sub_category)
+						{
+							
+							 // $_sub_category = Mage::getModel('catalog/category')->load($sub_subCatid);
+							  if($_sub_category->getIsActive()) {
+			echo '<li class="sub_cat"><a href="'.$_sub_category->getURL().'" title="'.$_sub_category->getName().'">'.$_sub_category->getName().'</a></li>';
+								  $sub_sub_cat = Mage::getModel('catalog/category')->load($sub_subCatid);
+								  $sub_sub_subcats = $sub_sub_cat->getChildren();
+								  $_subsubcategories = $_sub_category->getChildrenCategories();
+								  foreach($_subsubcategories as $_sub_sub_category)
+								  {
+									//$_sub_sub_category = Mage::getModel('catalog/category')->load($sub_sub_subCatid);
+									if($_sub_sub_category->getIsActive()) {
+										echo '<li class="sub_cat"><a href="'.$_sub_sub_category->getURL().'" title="'.$_sub_sub_category->getName().'" category">'.$_sub_sub_category->getName().'</a></li>';
+									}
+								  }
+							   }
+							 
+						 }
+						 echo '</ul>';
+
+						 echo '<span class="border-line"></span></li>';
+					  }
+					}
+					 
+					?>
+
+            </ul>
+        </div>
+    </div>
+ <div class="clearfix"></div>
+  <?php echo $this->getProductListHtml() ?>
+ </div>
+
+
+<!--<div style="padding: 24px; float: left; width: 100%;"></div>
+<div class="block-nav">
+    <a href="/women/"> <span class="bgae8637">women</span></a>
+
+    <a href="/men/"> <span class="bg444444">men</span></a>
+</div>-->

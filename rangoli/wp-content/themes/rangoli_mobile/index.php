@@ -50,7 +50,7 @@ if($post->post_type!="post" && $post->post_status!="publish" ){
         ?>
         <div class="author_picture" style="background: url('<?php echo $post_author_image_url; ?>') no-repeat; background-position: center center; background-size: cover"></div>
     </div>
-    <div class="share_post_index user-color-shade-trans" style="display: block; margin-top: 0px; border: none;"></div>
+    <div class="share_post_index  <?php if($logged_in){echo 'user-color-shade-trans';} ?>" style="display: block; margin-top: 0px; border: none;"></div>
 </div>
 <div class="post_content" style="display: block;">
 
@@ -106,7 +106,7 @@ if($post->post_type!="post" && $post->post_status!="publish" ){
                 $post_link = get_permalink($post->ID);
                 $b_pl = get_bitly_url($post_link);
                 ?>
-    <div class="sharing_box user-color-shade-trans" >
+    <div class="sharing_box  <?php if($logged_in){echo 'user-color-shade-trans';} ?>" >
                     <span class="facebook"><a target="_blank" user="<?php echo get_current_user_id(); ?>"
                                               href="https://www.facebook.com/sharer/sharer.php?app_id=909386705751971&u=<?php echo $b_pl; ?>"></a> </span>
                     <span class="twitter"><a target="_blank" rel="<?php echo $post->ID; ?>"

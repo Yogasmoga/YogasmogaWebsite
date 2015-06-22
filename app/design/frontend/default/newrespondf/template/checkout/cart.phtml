@@ -1,0 +1,619 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_modern
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Shopping cart template
+ *
+ * @see Mage_Checkout_Block_Cart
+ */
+?>
+<?php
+$currentUrl = Mage::helper('core/url')->getCurrentUrl();
+$carturl = Mage::helper('checkout/cart')->getCartUrl();
+$checkouturl = Mage::helper('checkout/url')->getCheckoutUrl();
+if($currentUrl == $carturl) {
+echo'<script>window.location="'.$checkouturl.'"</script>';
+}
+
+//Mage::app()->getFrontController()->getResponse()->setRedirect('checkout/onepage');
+
+if(!function_exists('getsmogipoints'))
+{
+    function getsmogipoints() {
+
+        $customerId = Mage::getModel('customer/session')->getCustomerId();
+        $store_id = Mage::app()->getStore()->getId();
+
+        /*
+            if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+                $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+                return $reward_flat_model->collectPointsCurrent($customerId, $store_id);
+            }
+          */
+
+        //$reward_model = Mage::getModel('rewardpoints/stats');
+        //return $reward_model->getPointsCurrent($customerId, $store_id);
+
+        return Mage::getModel('rewardpoints/stats')->getPointsCurrent($customerId, $store_id);
+    }
+}
+
+if(!function_exists('activategiftcard'))
+{
+    function activategiftcard()
+    {
+        //make giftcard active
+        //if(!Mage::getSingleton('core/session')->getGiftCardActivated())
+//            {
+        if(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()) > 0)
+        {
+            if(Mage::getSingleton('giftcards/session')->getActive() == "0" || Mage::getSingleton('giftcards/session')->getActive() == "")
+            {
+                Mage::getSingleton('core/session')->setGiftCardActivated('true');
+                Mage::getSingleton('giftcards/session')->setActive('1');
+                Mage::getSingleton('checkout/cart')->getQuote()->getShippingAddress()->setCollectShippingRates(true);
+                Mage::getSingleton('checkout/cart')->getQuote()->collectTotals()->save();
+                Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
+            }
+        }
+        //}
+
+        //deactivate smogi bucks
+        Mage::getSingleton('rewardpoints/session')->setProductChecked(0);
+        Mage::helper('rewardpoints/event')->setCreditPoints(0);
+        Mage::helper('checkout/cart')->getCart()->getQuote()
+            ->setRewardpointsQuantity(NULL)
+            ->setRewardpointsDescription(NULL)
+            ->setBaseRewardpoints(NULL)
+            ->setRewardpoints(NULL)
+            ->save();
+    }
+}
+
+if(!function_exists('activatesmogibucks'))
+{
+    function activatesmogibucks()
+    {
+        //activate smogi bucks
+
+        $session = Mage::getSingleton('core/session');
+        $points_value = getsmogipoints();
+        if (Mage::getStoreConfig('rewardpoints/default/max_point_used_order', Mage::app()->getStore()->getId())){
+            if ((int)Mage::getStoreConfig('rewardpoints/default/max_point_used_order', Mage::app()->getStore()->getId()) < $points_value){
+                $points_max = (int)Mage::getStoreConfig('rewardpoints/default/max_point_used_order', Mage::app()->getStore()->getId());
+                $session->addError($this->__('You tried to use %s loyalty points, but you can use a maximum of %s points per shopping cart.', $points_value, $points_max));
+                $points_value = $points_max;
+            }
+        }
+        $quote_id = Mage::helper('checkout/cart')->getCart()->getQuote()->getId();
+
+        Mage::getSingleton('rewardpoints/session')->setProductChecked(0);
+        Mage::getSingleton('rewardpoints/session')->setShippingChecked(0);
+
+        Mage::helper('rewardpoints/event')->setCreditPoints($points_value);
+
+
+        Mage::helper('checkout/cart')->getCart()->getQuote()
+            ->setRewardpointsQuantity($points_value)
+            ->save();
+
+        //deactivate gift card
+
+        Mage::getSingleton('giftcards/session')->setActive('0');
+        try {
+            Mage::getSingleton('checkout/cart')->getQuote()->getShippingAddress()->setCollectShippingRates(true);
+            Mage::getSingleton('checkout/cart')->getQuote()->collectTotals()->save();
+        } catch (Exception $e) {
+            //$this->_getSession()->addError($e->getMessage());
+        }
+    }
+}
+//custom auto smogi bucks apply
+//$isAutoAppliedDiscount = false ;
+//echo Mage::getSingleton('core/session')->getAutoAppliedDiscount();
+//echo  Mage::getSingleton('core/session')->getsmogiApplied();die('ttt');
+//Mage::getSingleton('core/session')->setAutoAppliedDiscount($isAutoAppliedDiscount);
+
+if(!function_exists('getPointsCurrentlyUsed'))
+{
+    function getPointsCurrentlyUsed() {
+        $creditpointsentered = Mage::helper('rewardpoints/event')->getCreditPoints();
+        $grandTotal = Mage::helper('checkout/cart')->getQuote()->getSubtotal();
+        //print_r($grandTotal);
+        $resource = Mage::getSingleton('core/resource');
+        $readConnection = $resource->getConnection('core_read');
+        $cartHelper = Mage::helper('checkout/cart');
+        $items = $cartHelper->getCart()->getItems();
+        $itemids = array();
+        $count = 0;
+
+        foreach ($items as $item) {
+            array_push($itemids, $item->getProductId());
+        }
+
+        foreach ($items as $item) {
+            if($item->getPrice() > 0)
+            {
+                $itemId = $item->getProductId();
+                $itemstotal = $item->getRowTotal();
+
+                if($item->getProductType() == "configurable")
+                {$query1 = "Select category_id, name from catalog_category_product, catalog_category_flat_store_1 where catalog_category_product.product_id IN (".$itemId.",".$itemids[$count + 1].") and catalog_category_flat_store_1.entity_id = catalog_category_product.category_id";
+
+                }
+                else
+                    $query1 = "Select category_id, name from catalog_category_product, catalog_category_flat_store_1 where catalog_category_product.product_id = ".$itemId." and catalog_category_flat_store_1.entity_id = catalog_category_product.category_id";
+                $categoryid = $readConnection->fetchAll($query1);
+                $excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories')->getValue('plain');
+                $excludecats = explode(",", $excludecats);
+
+                for($id=0;$id<count($categoryid);$id++)
+                {
+                    $flag = false;
+                    for($i = 0; $i < count($excludecats); $i++)
+                    {
+                        if($categoryid[$id]['category_id'] == $excludecats[$i])
+                        {
+                            $flag = true;
+                            break;
+                        }
+                    }
+                    if($flag)
+                        //if($categoryid[$id]['category_id'] == 8)
+                        //if($categoryid[$id]['name'] == 'Accessories')
+                    {
+                        $cattotal = $cattotal + $itemstotal;
+                        break;
+                    }
+                }
+            }
+            $count++;
+        }
+
+        $grandTotal = $grandTotal - $cattotal;
+
+        if ($creditpointsentered > $grandTotal)
+        {
+            //Mage::getSingleton('core/session')->setCreditPointsApplied($grandTotal);
+            return $grandTotal;
+        }
+        else
+        {
+            return $creditpointsentered;
+        }
+
+    }
+}
+
+// show popup on cart for smogi alert
+if(Mage::getSingleton('customer/session')->isLoggedIn())
+{
+    if((Mage::getSingleton('core/session')->getAutoAppliedDiscount()== null)||(Mage::getSingleton('core/session')->getAutoAppliedDiscount()==2 ))
+    {
+
+        if((Mage::getSingleton('core/session')->getAutoAppliedDiscount()!= null)&&(Mage::getSingleton('core/session')->getAutoAppliedDiscount()>1))
+        {/*
+            $points_currently_used = getPointsCurrentlyUsed();
+            ?>
+            <div id="smogi-notify" style="display:none;font-size: 17px; color:#000000;height:210px;border: 3px solid #F5A13B; text-align:center;"><img style="height: :50px;width:165px;margin-top:22px;" alt ="Yogasmoga" src="<?php echo $this->getSkinUrl().'images/logo_smogi.png';?>" /><p style="width:auto;margin-top:30px;margin-left:10px;margin-right: 10px; text-align:center;"><?php echo '$'.$points_currently_used ;?> SMOGI Bucks have been applied towards your order.</p></div>
+            <style type="text/css">
+                .fancybox-skin{
+                    border-radius: 3px;
+                }
+                .fancybox-wrap{
+                    border-radius: 3px;
+                }
+                .fancybox-close{
+                    width: 40px;
+                    height: 38px;
+                    background: url("<?php echo $this->getSkinUrl().'images/cross_red1.png';?>");
+                    background-repeat: no-repeat;
+                }
+            </style>
+            <script type="text/javascript">
+
+                jQuery(document).ready(function($){
+                    setTimeout(function(){
+                        $("#smogi-notify").fancybox({
+                            'width'  : 600,
+                            'height' : 600,
+                            'transitionIn'	:	'elastic',
+                            'transitionOut'	:	'elastic',
+                            'speedIn'		:	600,
+                            'speedOut'		:	200,
+                            'overlayShow'	:	false
+
+                        });
+
+
+                        //$(".fancybox-wrap").css("width","431px");
+                        $("#smogi-notify").css("font-size","17px");
+                        $(".fancybox-item ").css("width","40px");
+                        $(".fancybox-item").css("height","38px");
+
+                        $("#smogi-notify").fancybox().trigger('click');
+                    },500);
+
+
+                });
+
+            </script>
+            <?php
+            Mage::getSingleton('core/session')->setAutoAppliedDiscount(1);
+            */
+        }
+        $smogiBalance = getsmogipoints();
+        if(($smogiBalance > 0)&&(Mage::getSingleton('core/session')->getsmogiApplied() == 0))
+        {
+            //activatesmogibucks();
+
+            $isAutoAppliedDiscount = 1 ;
+            Mage::getSingleton('core/session')->setAutoAppliedDiscount($isAutoAppliedDiscount);
+            Mage::getSingleton('core/session')->setsmogiApplied(1);
+            if(Mage::getSingleton('core/session')->getAutoAppliedDiscount() == 1)
+            {
+                Mage::getSingleton('core/session')->setAutoAppliedDiscount(2);
+                Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
+
+            }
+
+
+        }
+
+        /* apply Gift of YS automatically
+        else
+        {
+            if(Mage::getSingleton('core/session')->getsmogiApplied() == 0)
+            {
+                if(Mage::helper('customer')->isLoggedIn())
+                {
+                    if(!Mage::getSingleton('core/session')->getGiftCardActivated())
+                    {
+                        if(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()) > 0)
+                        {
+                            if(Mage::getSingleton('giftcards/session')->getActive() == "0" || Mage::getSingleton('giftcards/session')->getActive() == "")
+                            {
+                                Mage::getSingleton('core/session')->setGiftCardActivated('true');
+                                Mage::getSingleton('giftcards/session')->setActive('1');
+                                Mage::getSingleton('checkout/cart')->getQuote()->getShippingAddress()->setCollectShippingRates(true);
+                                Mage::getSingleton('checkout/cart')->getQuote()->collectTotals()->save();
+                                Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
+                            }
+                        }
+                    }
+                }
+            }
+            $isAutoAppliedDiscount = 1 ;
+            Mage::getSingleton('core/session')->setAutoAppliedDiscount($isAutoAppliedDiscount);
+            Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
+        }
+        */
+    }
+}
+
+// comment code for popup
+/*    if(Mage::getSingleton('customer/session')->isLoggedIn())
+    {
+        if(!(Mage::getSingleton('core/session')->getAutoAppliedDiscount()))
+        {
+            $smogiBalance = getsmogipoints();
+            if(($smogiBalance > 0)&&(Mage::getSingleton('core/session')->getsmogiApplied() == 0))
+            {
+                activatesmogibucks();
+                $isAutoAppliedDiscount = 1 ;
+                Mage::getSingleton('core/session')->setAutoAppliedDiscount($isAutoAppliedDiscount);
+                Mage::getSingleton('core/session')->setsmogiApplied(1);
+                Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
+            }
+*/
+            /* apply Gift of YS automatically
+            else
+            {
+                if(Mage::getSingleton('core/session')->getsmogiApplied() == 0)
+                {
+                    if(Mage::helper('customer')->isLoggedIn())
+                    {
+                        if(!Mage::getSingleton('core/session')->getGiftCardActivated())
+                        {
+                            if(Mage::helper('giftcards')->getCustomerBalance(Mage::getSingleton('customer/session')->getCustomer()->getId()) > 0)
+                            {
+                                if(Mage::getSingleton('giftcards/session')->getActive() == "0" || Mage::getSingleton('giftcards/session')->getActive() == "")
+                                {
+                                    Mage::getSingleton('core/session')->setGiftCardActivated('true');
+                                    Mage::getSingleton('giftcards/session')->setActive('1');
+                                    Mage::getSingleton('checkout/cart')->getQuote()->getShippingAddress()->setCollectShippingRates(true);
+                                    Mage::getSingleton('checkout/cart')->getQuote()->collectTotals()->save();
+                                    Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
+                                }
+                            }
+                        }
+                    }
+                }
+                $isAutoAppliedDiscount = 1 ;
+                Mage::getSingleton('core/session')->setAutoAppliedDiscount($isAutoAppliedDiscount);
+                Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
+            }
+            */
+/*        }
+    }
+*/
+// end -- // comment code for popup
+//end--custom auto smogi bucks apply
+?>
+<ol id="checkoutSteps" class="one-page-checkout">
+<li class="section" id="opc-cart">
+       <div class="head">
+           <div class="checkout_title">
+			
+			<?php   
+			        if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+                    $store_id = Mage::app()->getStore()->getId();
+                    $customerId = Mage::getModel('customer/session')->getCustomerId();
+                    if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+                        $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+                        echo $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
+                        //Mage::helper('core')->currency($reward_flat_model->collectPointsCurrent($customerId, $store_id)+0);
+                    }        
+                    
+                    $reward_model = Mage::getModel('rewardpoints/stats');
+                    //echo "$".number_format((float)($reward_model->getPointsCurrent($customerId, $store_id)+0), 2, '.','');
+                   echo '<span class="step-count">'."$".($reward_model->getPointsCurrent($customerId, $store_id)+0).'</span>';                    
+                 //echo '<span class="step-count">'. round(Mage::helper('core')->currency($reward_model->getPointsCurrent($customerId, $store_id)+0)).'</span>';
+
+					}
+                 ?>
+			 &nbsp;Shopping Bag
+			<span id="shopping_arrow" class="arrow-tag is-active"<?php //if(Mage::getSingleton('customer/session')->isLoggedIn()) { echo 'arrow-tag'; } else { echo 'arrow-tag is-active' ;};?>>
+			<img alt="arrow" src="<?php echo $this->getSkinUrl('images/black-arrw.png') ;?>" class="">
+			</span>
+			<div class="clear"></div>
+          </div>
+	    </div>
+        <div style="display:<?php if(Mage::getSingleton('customer/session')->isLoggedIn()) { echo 'none'; } else { echo 'block' ;};?>" class="box a-item" id="checkout-step-cart">
+<?php echo $this->getChildHtml('form_before') ?>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <?php /* if(!$this->hasError()): ?>
+        <ul class="checkout-types">
+        <?php foreach ($this->getMethods('methods') as $method): ?>
+            <?php $methodHtml = $this->getMethodHtml($method); ?>
+            <?php if ($methodHtml): ?>
+            <li><?php echo $methodHtml; ?></li>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        </ul>
+    <?php endif; */ ?>
+    <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
+        <fieldset>
+            <table id="shopping-cart-table" class="data-table cart-table">
+				<thead>
+					<tr>
+						<th class="a-center"><?php echo $this->__('ITEMS') ?></th>
+						<th class="a-right"><?php
+				$subTotal = Mage::getModel('checkout/cart')->getQuote()->getSubtotal();
+				echo $formattedPrice = Mage::helper('core')->currency($subTotal, true, false);
+				?>
+				</th>
+					</tr>
+				</thead>
+                <tfoot>
+                    <!-- <tr>
+                        <td colspan="2" class="">
+                            <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update'); ?>" class="button btn-update"><?php //echo $this->__('Update'); ?></button>
+                           
+                        </td>
+                    </tr> -->
+                </tfoot>
+                <tbody>
+                <?php foreach($this->getItems() as $_item): ?>
+                    <?php echo $this->getItemHtml($_item) ?>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+        </fieldset>
+    </form>
+    <?php
+
+ //echo Mage::getSingleton('core/session')->getAutoAppliedDiscount();
+   $promotioncode = Mage::getModel('smogiexpirationnotifier/applyremovediscount')->getCouponCode();
+    if($promotioncode)
+    {
+        $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals(); //Total object
+        if(isset($totals['discount']) && $totals['discount']->getValue())
+        {
+            $promotioncode = true;
+           
+        }
+
+     }
+        if($promotioncode == 1)
+        {
+    ?>
+       <div class="cart-collaterals" id="for-discount-check" discount = "yes">
+        <?php }else{ ?>
+        <div class="cart-collaterals">
+            <?php } ?>
+            <div class="collat-wrap">
+			<?php
+			$message = Mage::getSingleton('core/session')->getMessages(true);
+             //echo "<pre>";
+			//print_r($message->getlastAddedMessage());
+			$is_msg = $message->getlastAddedMessage();
+
+		    if(isset($is_msg)) {
+				 $currentmsg = $message->getlastAddedMessage()->getCode();
+		    ?>
+
+			    <ul class="messages">
+					<li class="error-msg">
+						<ul>
+							<li><?php echo $currentmsg; ?></li>
+						</ul>
+					</li>
+				</ul>
+				<?php Mage::getSingleton('core/session')->unsMessages(); ?>
+				<?php  } ?>
+            	<?php  echo $this->getChildHtml('giftcards') ?>
+                <?php  echo $this->getChildHtml('coupon') ?>
+			
+                <?php // if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
+                <div class="totals">
+                    <?php echo $this->getChildHtml('totals'); ?>
+                    <?php if(!$this->hasError()){ ?>
+					<?php $customerlogin = Mage::getSingleton('customer/session')->isLoggedIn() ?>
+					 
+					<?php if($customerlogin): ?>
+					<button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Continue'); ?>" class="button btn-update"><?php //echo $this->__('Update'); ?></button>
+					<?php else: ?>
+					 <button type="submit" name="update_cart_action" onclick="openLogin()" value="update_qty" title="<?php echo $this->__('Continue'); ?>" class="button btn-update"><?php //echo $this->__('Update'); ?></button>
+					<?php endif ?>
+                   
+                    <?php } else {
+                        ?>
+                   <button type="button" title="<?php echo $this->__('Proceed to Checkout') ?>" class="button btn-proceed-checkout btn-checkout-disable"><span><span><?php echo $this->__('Continue Checkout') ?></span></span></button>
+				  <div id="outofstock" class="errortext"><?php echo html_entity_decode(strip_tags(Mage::getSingleton('core/session')->getGlobalMessage())); ?></div>
+                 
+                        <script type="text/javascript">
+                            $j(document).ready(function(){
+                                $j("p.item-msg.error:contains('* Some of the products are currently out of stock')").hide();
+                            });
+                        </script>
+						<?php }  ?>
+                </div>
+            </div>
+			
+    </div>
+</div>
+</li>
+</ol>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+
+        var promo = jQuery("#for-discount-check").attr("discount");
+		var smogi = jQuery("#for-smogi-check").attr("discount");
+		var giftcard = jQuery("#for-giftcard-check").attr("discount");
+
+            if(promo == 'yes')
+            {
+                console.log('re');
+                jQuery("#gf1").prop('disabled', true);
+                jQuery("#gf2").prop('disabled', true);
+                jQuery("#gf3").prop('disabled', true);
+                jQuery("#giftcard_use").prop('disabled', true);
+                jQuery("#giftcard_code").prop('disabled', true);
+				jQuery("#coupon_code").prop('disabled', true);
+				jQuery(".apply_smogi_bucks").prop('disabled', true);
+				jQuery("#points_to_be_used").prop('disabled', true);
+            }
+
+			 if(smogi == 'yes')
+            {
+                //console.log('re');
+                //jQuery("#gf1").prop('disabled', true);
+                //jQuery("#gf2").prop('disabled', true);
+                //jQuery("#gf3").prop('disabled', true);
+				jQuery("#points_to_be_used").prop('disabled', true);
+                jQuery("#giftcard_use").prop('disabled', true);
+				
+				jQuery("#coupon_code").prop('disabled', true);
+				jQuery(".apply_coupon").prop('disabled', true);
+				
+			 }
+
+			  if(giftcard == 'yes')
+            {
+                //console.log('re');
+                //jQuery("#gf1").prop('disabled', true);
+                //jQuery("#gf2").prop('disabled', true);
+                //jQuery("#gf3").prop('disabled', true);
+				jQuery("#points_to_be_used").prop('disabled', true);
+                jQuery("#coupon_code").prop('disabled', true);
+				jQuery(".apply_coupon").prop('disabled', true);
+				jQuery(".apply_smogi_bucks").prop('disabled', true);
+				
+				
+			 }
+
+
+
+        });
+    </script>
+    
+     <?php if(Mage::getSingleton('customer/session')->isLoggedIn()) { ?>
+
+	 <script type="text/javascript">
+        jQuery(document).ready(function(){
+
+
+		 jQuery(".apply_smogi_bucks").click(function(){
+
+		var be_used = jQuery("#points_to_be_used").val();
+		if (be_used == '') {
+			jQuery("#error_msg_smogi").html("Please fill SMOGI Bucks Value");
+			jQuery("#points_to_be_used").focus();
+			return false ;
+			
+			}
+		  
+		  });
+
+		   jQuery(".apply_promo_code_div .btn-update").click(function(){
+
+		   var apply_promo_be_used = jQuery("#coupon_code").val();
+		   //alert(apply_promo_be_used);
+		   if (apply_promo_be_used == '') {
+			jQuery("#error_msg_coupon").html("Please fill Promo Code Value");
+			jQuery("#coupon_code").focus();
+			return false ;
+			
+			}
+		  
+		  });
+
+
+            jQuery("#checkout-step-cart").show();
+            jQuery("#opc-billing").removeClass("active");
+            jQuery("#checkout-step-billing").hide();
+
+			jQuery("#shopping-cart-totals-table + button").click(function(){
+                jQuery("#checkout-step-cart").hide();
+                jQuery("#opc-billing").addClass("active");
+                jQuery("#checkout-step-billing").show();
+				jQuery("#shopping_arrow").removeClass("is-active");
+                var offset =  jQuery("#opc-billing").offset().top;
+                jQuery(window).scrollTop(offset-120);
+            });
+            jQuery("#shopping_arrow").click(function(){
+                jQuery("#checkout-step-billing").hide();
+                jQuery("#opc-billing").removeClass("active");
+            });
+
+
+      });
+    </script>
+
+	<?php } ?>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<config>
+	<tabs>
+	<bluethink translate="label" module="loadregistration">
+	<label>Bluethink Extensions</label>
+	<sort_order>100</sort_order>
+	</bluethink>
+	</tabs>
+	<sections>
+	<bluethink translate="label" module="loadregistration">
+	<label>Cookies based registration</label>
+	<tab>bluethink</tab>
+	<sort_order>1000</sort_order>
+	<show_in_default>1</show_in_default>
+	<show_in_website>1</show_in_website>
+	<show_in_store>1</show_in_store>
+  <groups>
+                <bluethink_group translate="label" module="loadregistration">
+                    <label>Bluethink cookies based registration setting</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                 <fields>
+					  
+                         
+		 <bluethink_select translate="label">
+				<label>Enable/Disable </label>
+				<comment>Select Yes/No values</comment>
+				<frontend_type>select</frontend_type>
+				<sort_order>90</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+			</bluethink_select> 
+
+			<logo translate="label comment">
+				<label>Logo/ Popup image</label>
+				<comment>Allowed file types: jpeg, gif, png.</comment>
+				<frontend_type>image</frontend_type>
+				<backend_model>adminhtml/system_config_backend_image</backend_model>
+				<upload_dir config="system/filesystem/media" scope_info="1">theme</upload_dir>
+				<base_url type="media" scope_info="1">theme</base_url>
+				<sort_order>1</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+			</logo>
+
+
+
+             </fields>
+                </bluethink_group>
+            </groups>         
+	</bluethink>
+	</sections>
+	</config>

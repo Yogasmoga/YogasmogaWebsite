@@ -1,0 +1,150 @@
+#dullDiv {
+    background: none repeat scroll 0 0 #000000;
+    border: 0.0625em solid #114EAB;
+    display: none;
+    height: 100%;
+    left: 0;
+    opacity: 0.4;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+li.main_li {
+    background: none !important;
+    border: none !important;
+}
+
+li.main_li ul li {
+    background: none !important;
+    border: none !important;
+}
+
+li.main_li a {
+    padding-bottom: 10px;
+}
+
+ul.popup {
+    position: fixed;
+    z-index: 25;
+    display: none;
+    width: 100%;
+    padding: 90px 30px 30px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    background-color: rgba(85, 85, 85, 0.95);
+}
+
+ul.popup li, div.login-form {
+    float: left;
+    width: 100%;
+}
+
+li.main_li:hover > ul {
+    display: block;
+}
+
+#ajaxlogin_form {
+}
+
+#ajaxlogin_form ul.form-list {
+}
+
+#ajaxlogin_form ul.form-list li {
+    float: left;
+    display: block;
+    width: 100%;
+    border: none;
+    background: none;
+    clear: both;
+}
+
+#ajaxlogin_form ul.form-list li a.ajaxlogin_forgot_pwd_actions, #ajaxlogin_form ul.form-list li a.ajaxlogin_actions {
+    color: #fff;
+    float: left;
+    font: 15px ITCAvantGardeStd-Bk;
+    letter-spacing: 1px;
+    margin-right: 5px;
+    opacity: 0.6;
+}
+
+#ajaxlogin_form ul.form-list li.buttons {
+    float: left;
+}
+
+#loginPopupDiv .join-smogi {
+    color: #fff;
+    font-family: ITCAvantGardeStd-Bk;
+    font-size: 24px;
+    line-height: 26px;
+    margin: 23px 0px 26px 0;
+}
+
+#loginPopupDiv .join-smogi .gold-text {
+    color: #ae8637;
+}
+
+#loginPopupDiv #ajaxlogin_form ul.form-list div.input-box {
+    margin-bottom: 15px;
+}
+
+#ajaxlogin_button_send {
+    margin-top: 80px;
+}
+
+#ajaxlogin_form ul.form-list div.input-box {
+    width: 100%;
+}
+
+#ajaxlogin_form ul.form-list div.input-box .validation-advice {
+    text-align: left;
+    color: hsl(40, 52%, 45%) !important;
+    font-size: 11px;
+}
+
+#ajaxlogin_form ul.form-list div.input-box input.input-text {
+    width: 100%;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+}
+
+.ajax_login_loader {
+    background: url(../images/loader.gif) no-repeat center center transparent;
+    float: left;
+    height: 22px;
+    width: 16px;
+}
+
+#ajaxlogin_close_icon {
+    background: url("../images/cross1.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 44px;
+    position: fixed;
+    right: 0;
+    top: 44px;
+    width: 44px;
+}
+
+#ajaxlogin_close_icon:hover {
+}
+
+#ajaxlogin_form_message {
+    text-align: left;
+}
+
+.ajaxlogin_button {
+    background: none repeat scroll 0 0 #ad8536;
+    border: medium none;
+    cursor: pointer;
+    float: none;
+    height: 58px;
+    width: 100%;
+    font: 15px/58px ITCAvantGardeStd-Bk;
+    color: #fff;
+}

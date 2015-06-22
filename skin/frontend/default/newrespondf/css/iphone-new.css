@@ -1,0 +1,1013 @@
+/* ---------------------------------ys-story------------------------- */
+.ys-story-page, .our-story-page {
+    margin-top: 58px;
+    overflow: hidden;
+
+}
+
+.ys-smogi-page {
+    margin-top: 58px;
+    overflow: hidden;
+    padding-bottom: 290px;
+}
+
+.ys-tech-page .ys-tech-block .detail-part, .ys-story-page .ys-story-block .detail-part, .our-story-page .our-story-block .detail-part {
+    background: #fff;
+    padding: 21px 0;
+    position: fixed;
+    top: 58px;
+    width: 100%;
+    z-index: 9;
+    left: 0;
+}
+
+.ys-tech-page .ys-tech-block .detail-part span, .our-story-page .our-story-block .detail-part span, .ys-story-page .ys-story-block .detail-part span {
+    background: hsl(0, 0%, 93%) none repeat scroll 0 0;
+    color: hsl(0, 0%, 27%);
+    font-family: ITCAvantGardeStd-Bk !important;
+    font-size: 18px !important;
+    height: 57px;
+    left: 0;
+    line-height: 15.5px;
+    padding-top: 22px;
+    position: absolute;
+    top: 0;
+    width: 58px;
+}
+
+.ys-tech-page .ys-tech-block .detail-part span b, .ys-story-page .ys-story-block .detail-part span b, .our-story-page .our-story-block .detail-part span b {
+    font-size: 13px;
+    font-weight: 100;
+    line-height: 15px;
+    vertical-align: top;
+}
+
+.ys-tech-page .ys-tech-block .detail-part h1, .our-story-page .our-story-block .detail-part h1, .ys-story-page .ys-story-block .detail-part h1 {
+    color: hsl(0, 0%, 27%);
+    font-family: ITCAvantGardeStd-Bk;
+    font-size: 24px;
+    line-height: 15px;
+    text-transform: uppercase;
+}
+
+.category-block .category-box {
+    font-size: 0;
+    position: relative;
+    line-height: 0;
+}
+
+.story-box {
+    font-size: 0;
+    position: relative;
+}
+
+.story-box span {
+    bottom: 4px;
+    color: #fff;
+    font-family: freighttextbook;
+    font-size: 18px;
+    left: 0;
+    line-height: 22px;
+    position: absolute;
+    bottom: 15px;
+    right: 0;
+    text-transform: capitalize;
+}
+
+/****** june-1*******/
+
+.story-box span.ovr-text {
+    font-family: ITCAvantGardeStd-Bk;
+    font-size: 30px;
+    left: 0;
+    line-height: 39.5px;
+    position: absolute;
+    top: 45%;
+}
+
+.custom-block .our-breath {
+    padding: 32px 12px;
+    text-align: left;
+}
+
+/*** june **/
+.custom-block .our-breath .title {
+    display: block;
+    font-family: ITCAvantGardeStd-Bk;
+    font-size: 22px;
+    color: #444444;
+    line-height: 27px;
+    padding-bottom: 0;
+}
+
+.custom-block .our-breath .below-txt {
+    display: inline-block;
+    font-family: freighttextbook;
+    font-size: 18px;
+    color: #444444;
+    line-height: 35px;
+}
+
+.custom-block.our-breath {
+    font-size: 22px;
+    line-height: 28px;
+    font-family: freighttextbook;
+    color: #444444;
+}
+
+.custom-block .story-box1 {
+    text-align: left;
+}
+
+.custom-block .story-box1 span {
+    left: 12px;
+}
+
+.custom-block .story-box1 span.ovr-text {
+    bottom: 34px;
+    font-size: 22px;
+    left: 12px;
+    line-height: 27px;
+    top: auto;
+}
+
+.detail-part .arrow-tag, .sign-in-box .arrow-tag {
+    cursor: pointer;
+    display: inline-block;
+    height: 44px;
+    padding: 15px 19px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform-origin: 0 0 0;
+    transition-duration: 1s;
+}
+
+.detail-part .arrow-tag img, .sign-in-box .arrow-tag img {
+    float: right;
+    margin: 9px 0;
+    transition-duration: 200ms;
+}
+
+.is-active .arrow-tag img {
+    transform: rotateZ(-180deg);
+    transition-duration: 200ms;
+}
+
+.account-nav {
+    background-color: rgba(255,255,255,0.95);
+    float: left;
+    left: 0;
+    padding: 0 12px;
+    position: fixed;
+    width: 100%;
+    z-index: 9;
+    top: 88px;
+}
+
+.account-nav .sub-nav {
+    width: 100%;
+    list-style: none;
+}
+
+.account-nav .sub-nav li {
+    border-bottom: 1px solid #555;
+    text-align: left;
+}
+
+.account-nav .sub-nav li:last-child {
+    border: none;
+}
+
+.account-nav .sub-nav li a {
+    color: #656565;
+    display: inline-block;
+    font-family: freighttextbook;
+    font-size: 21px;
+    line-height: 44px;
+    text-decoration: none;
+    width: 100%;
+}
+
+.ys-tech-block .story-box span {
+    font-size: 18px;
+    line-height: 22px;
+}
+
+/*--------------------------------ystech---------------*/
+
+.discover-fabric .outer-part .inner-part1, .discover-fabric .outer-part .inner-part2 {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/****june***/
+.discover-fabric .outer-part .inner-part1 div {
+    padding-right: 2px;
+}
+
+.discover-fabric .outer-part .inner-part2 div {
+    padding-left: 2px;
+}
+
+.discover-fabric .outer-part p {
+    font-size: 12px;
+    line-height: 15px;
+    color: #444444;
+    font-family: AvantGarde-Demi;
+    min-height: 78px;
+    padding: 20px 0;
+}
+
+.discover-fabric .outer-part p span {
+    font-family: ITCAvantGardeStd-Bk;
+}
+
+.our-febrics span {
+    font-family: ITCAvantGardeStd-Bk;
+    font-size: 22px;
+    line-height: 27px;
+    color: #444444;
+    padding-bottom: 20px;
+	position:static;
+    display: inline-block;
+}
+
+.custom-block .our-febrics p {
+    font-size: 22px;
+    line-height: 28px;
+    font-family: freighttextbook;
+    color: #444444;
+    padding-right: 16px;
+}
+
+.custom-block .our-febrics {
+    padding-left: 12px;
+    padding-top: 20px;
+    padding-bottom: 35px;
+    text-align: left;
+}
+
+.aurum li {
+    font-size: 22px;
+    line-height: 58px;
+    color: #ae8637;
+    border-top: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.aurum .inner-aurum {
+    list-style: outside none none;
+    padding: 0 12px;
+    position: relative;
+    text-align: left;
+    width: 100%;
+}
+
+.aurum li {
+    position: relative;
+}
+
+.aurum li div {
+    position: absolute;
+    right: 8px;
+    top: 0;
+}
+
+.aurum {
+    margin-top: 43px;
+}
+
+.aurum li ul p {
+    font-size: 22px;
+    line-height: 28px;
+    font-family: freighttextbook;
+    color: #444444;
+    margin: 13px 0;
+}
+
+.aurum li ul span img {
+    width: 18%;
+    height: auto;
+}
+
+/*--------------------------------ystech ends---------------*/
+/*---------------------------------ys-story-end-------------------------*/
+
+/*********************smogi pages start *******************/
+.smogi-content {
+    font-size: 22px;
+    line-height: 28px;
+    font-family: freighttextbook;
+    text-align: left;
+    clear: both;
+    position: relative;
+}
+
+.smogi-content .read-more {
+    font-size: 12px;
+    line-height: 22px;
+    font-family: ITCAvantGardeStd-Md;
+    color: #AD8536;
+    float: right;
+    padding: 5px 12px;
+    text-decoration: none;
+    position: absolute;
+    bottom: -24px;
+    right: 0;
+}
+
+.smogi-content p {
+    padding: 20px 12px 0;
+    line-height: 28px;
+}
+
+.ys-tech-block .story-box.smogi-box span {
+    font-size: 30px;
+    line-height: 35px;
+    top: 40%;
+}
+
+.discover-fabric.smogi-febric .inner-part1 div, .discover-fabric.smogi-febric .inner-part2 div {
+    background: #AD8536;
+    color: hsl(0, 0%, 100%);
+    font-size: 15px;
+    position: relative;
+
+    font-family: AvantGarde-Demi;
+    line-height: 20px;
+}
+
+/***june***/
+.discover-fabric.smogi-febric .inner-part1 div span, .discover-fabric.smogi-febric .inner-part2 div span {
+    left: 0;
+}
+
+/**june**/
+
+.earn-buck .top-heading {
+    float: left;
+    font-family: AvantGarde-Demi;
+    font-size: 15px;
+    line-height: 58px;
+    padding-left: 12px;
+    color: #545454;
+}
+
+.exception p {
+    color: #545454 !important;
+    font-size: 13px;
+    line-height: 17px;
+    font-family: ITCAvantGardeStd-Bk;
+    padding-bottom: 28px;
+}
+.smogi-content > img.img-responsive {
+    margin-top: 15px;
+}
+.bg545454 {
+    background: #545454 !important;
+}
+.bgbeb197{
+    background: rgba(190, 177, 151, 0.15);
+    padding: 15px 12px !important;
+    float: left;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.earn-buck .new-user ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.earn-buck .new-user ul li {
+    float: left;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.earn-buck .new-user ul li label {
+    width: 100%;
+    float: left;
+    font-size: 13px;
+    font-family: GraphikRegular;
+    color: #656565;
+}
+
+.earn-buck .new-user ul li input {
+    border: 1px solid #e1e1e1;
+    padding: 10px;
+    border-radius: 5px;
+    float: left;
+    height: 44px;
+    width: 100%;
+}
+
+.earn-buck .smogi-form {
+    padding: 0 12px;
+}
+
+.smogi-form .btn {
+    background: #42AC00;
+
+    color: hsl(0, 0%, 40%);
+    cursor: pointer;
+    float: right;
+    font-family: gotham-b, arial;
+    font-size: 13px;
+    font-weight: normal;
+    height: 58px;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    margin: 17px 0;
+    padding: 10px 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    border: none;
+}
+
+.smogi-form .tick-mark {
+    display: inline-block;
+    height: 29px;
+    width: 39px;
+}
+
+.discover-fabric.smogi-febric .earn-more {
+    clear: both;
+    float: left;
+    padding-top: 60px;
+    width: 100%;
+}
+
+.ys-tech-block {
+    padding-top: 58px;
+}
+
+.discover-fabric.smogi-febric {
+    bottom: 0;
+
+    left: 0;
+    position: fixed;
+    width: 100%;
+}
+
+.bg434343 {
+    background: #434343 !important;
+}
+
+/************* inner pages *************/
+.story-box .inside-content {
+    width: 100%;
+    clear: both;
+    float: left;
+}
+
+.textContainer {
+    text-align: left;
+    position: relative;
+    padding-bottom: 20px!important;
+
+}
+
+.textContainer span {
+    bottom: 28%;
+    color: hsl(0, 0%, 100%);
+    font-family: freighttextbook;
+    font-size: 16px;
+    color: #434343;
+    line-height: 35px;
+    position: static;
+    text-align: left;
+    display: block;
+    padding-left: 12px;
+    text-transform: capitalize;
+}
+
+/******* june ************/
+.textContainer a {
+    text-decoration: none;
+}
+
+.pg-heading {
+    margin-top: 20px;
+}
+
+.pg-heading h2 {
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 15px;
+    color: #545454;
+    font-family: ITCAvantGardeStd-Bk;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.redeem-giftcard td.inputholder {
+    width: 33.33%;
+}
+
+.redeem-giftcard td.inputholder input {
+    width: 100%;
+}
+
+.pg-tagline {
+    clear: both;
+    display: inline-block;
+}
+
+#giftofys .btn-addtoaccount, #cardbalanceform .btn-check {
+    background: hsl(97, 100%, 34%) none repeat scroll 0 0;
+    border: medium none;
+    color: hsl(0, 0%, 100%);
+    height: 58px;
+    width: 100%;
+    margin: 28px 0;
+    font:16px ITCAvantGardeStd-Bk;
+    letter-spacing: 1px;
+}
+
+#cardbalanceform .btn-check {
+    margin: 28px 0;
+}
+
+#Redeemcard p {
+    font: 13px GraphikRegular;
+    margin-bottom: 20px;
+    padding: 0;
+    text-align: left;
+}
+
+.twocolumn533 input {
+    width: 100%;
+}
+
+#createcardform .twocolumn533 .inputtable {
+    width: 100% !important;
+}
+
+#createcardform .twocolumn533 {
+    width: 100%;
+}
+
+/************************************************* my-account ends *******************************/
+#createcardform td.label {
+    display: none;
+}
+
+.billing-add, .shipping-add, .payment-metthod-cont {
+    background: hsl(0, 0%, 94%) none repeat scroll 0 0;
+    box-sizing: border-box;
+    min-height: 235px;
+    padding: 20px 30px;
+    position: relative;
+    width: 100%;
+    clear: both;
+    margin: 14px 0;
+}
+
+.billing-add, .shipping-add, .payment-metthod-cont {
+    background: hsl(0, 0%, 94%) none repeat scroll 0 0;
+    box-sizing: border-box;
+    min-height: 235px;
+    padding: 20px 30px;
+    position: relative;
+    width: 100%;
+    clear: both;
+    margin: 14px 0;
+}
+
+.addtional-add {
+    background: hsl(0, 0%, 94%) none repeat scroll 0 0;
+    box-sizing: border-box;
+    margin-top: 3.1%;
+    width: 100%;
+    clear: both;
+    margin: 14px 0;
+    padding: 20px 30px;
+}
+
+.f-right div span {
+    display: block;
+}
+
+.bg434343 {
+    background: #434343 !important;
+}
+
+/************* inner pages *************/
+.story-box .inside-content {
+    width: 100%;
+    clear: both;
+    float: left;
+}
+
+
+
+.textContainer span {
+    bottom: 28%;
+    color: hsl(0, 0%, 100%);
+    font-family: freighttextbook;
+    font-size: 16px;
+    color: #434343;
+    line-height: 35px;
+    position: static;
+    text-align: left;
+    display: block;
+    padding-left: 12px;
+    text-transform: capitalize;
+	
+}
+
+.textContainer a {
+    text-decoration: none;
+}
+
+.textContainer span.ovr-text {
+    font-family: ITCAvantGardeStd-Bk;
+    font-size: 22px;
+    line-height: 27px;
+    position: static;
+    padding: 20px 12px 0;
+    color: #434343;
+    display: block;
+    text-align: left;
+
+}
+
+.our-breath p {
+    color: #444444;
+    font: 22px/28px freighttextbook;
+	margin:20px 0 0!important;
+	 float: left;
+}
+
+.txt-cnt {
+    clear: both;
+    position: relative;
+    width: 100%;
+}
+
+.story-box {
+    overflow: hidden;
+    position: relative;
+}
+
+.pressBlock {
+    min-height: 251px;
+
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.pressBlock a {
+    text-decoration: none;
+}
+
+.pressBlock .textContainer {
+    text-align: center;
+}
+
+.presstxt {
+    margin: 25px 0 0;
+}
+
+.presstxt p {
+    font: 17px/19px ITCAvantGardeStd-Bk;
+}
+
+.pressHead {
+    font: 36px/40px ITCAvantGardeStd-Md;
+    padding-top: 35px;
+}
+
+.presstxt span {
+    color: hsl(0, 0%, 100%);
+    display: inline-block;
+
+    text-align: center;
+}
+
+.pressBlock a .textContainer > div {
+    color: #fff;
+
+}
+
+.pressBlock a .textContainer {
+    padding: 35px 0
+}
+
+.story-box > .close-icn {
+    background: url("/skin/frontend/default/newrespondf/images/cross1.png") repeat scroll 0 0 #555;
+    display: none;
+    height: 44px;
+    left: initial;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 44px;
+    z-index: 1;
+}
+
+/*********************************************************2-june ********************************/
+/*************** 1-june **************/
+.buck-balance-title span {
+    font-size: 18px;
+    line-height: 44px;
+    color: #AD8536;
+    font-family: freighttextbook;
+    float: left;
+    padding-left:60px;
+	position:relative;
+}
+
+.buck-balance-title {
+    padding: 0 12px;
+    line-height: 44px;
+    position: relative;
+    width: 100%;
+    float: left;
+}
+
+.buck-balance-title img {
+    float: left;
+    padding: 4px 0;
+}
+
+.buck-balance-title span:first-child {
+    float: left;
+}
+
+.buck-balance-title .arrow-tag {
+    cursor: pointer;
+    display: inline-block;
+    height: 44px;
+    padding: 15px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform-origin: 0 0 0;
+    transition-duration: 1s;
+}
+
+.buck-balance-title .close-icn {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.buck-balance-title .close-icn img{
+    padding: 0;
+}
+
+#link1content {
+    margin-bottom: 18px;
+    position: relative;
+}
+#link1content .close-icn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 5;
+}
+
+.upper-aurum .inner-aurum li {
+    position: relative;
+    color: #AD8536;
+    text-align: left;
+    width: 100%;
+}
+
+.inner-aurum li .febric-icn {
+    display: inline-block;
+    float: left;
+    font-size: 0;
+    height: 24px;
+    line-height: 0;
+    padding-right: 11px;
+    padding-top: 18px;
+    position: static;
+}
+
+.inner-aurum li .innr-txt {
+    font-family: freighttextbook;
+    font-size: 17px;
+    line-height: 25px;
+    color: #AD8536;
+    text-transform: capitalize;
+	position:static;
+}
+
+.upper-aurum li ul p {
+    font-size: 15px;
+    line-height: 22px;
+	font-family: GraphikRegular;
+}
+
+.upper-aurum li:first-child {
+    border: none;
+}
+
+.upper-aurum {
+    margin: 0;
+}
+
+.our-breath .address-bar {
+    font-size: 15px;
+    line-height: 22px;
+    color: #434343;
+    font-family: GraphikRegular;
+}
+
+.our-stores .textContainer span.ovr-text {
+    bottom: 0;
+    left: 12px;
+    text-align: left;
+    top: auto;
+}
+
+.our-stores .textContainer span.ovr-text .freight-txt {
+    font-size: 18px;
+    line-height: 23px;
+    position: static;
+}
+
+.new-slider .flex-control-nav {
+    bottom: initial !important;
+    cursor: pointer;
+    margin-top: -40px !important;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    z-index: 9999;
+}
+.new-slider .flex-control-nav .flex-active{
+    background: #ae8536;
+}
+
+.new-slider .flex-control-nav li {
+    display: inline-block;
+    margin: 0 8px;
+}
+
+.new-slider .flex-control-nav a:hover, .new-slider .flex-control-nav a.active {
+    background: hsl(40, 52%, 45%) none repeat scroll 0 0;
+}
+
+.new-slider .flex-control-nav a {
+    background: hsl(0, 0%, 100%) none repeat scroll 0 0;
+    border-radius: 15px;
+    bottom: 0;
+    color: hsl(0, 0%, 100%);
+    height: 8px;
+    position: absolute;
+    text-indent: -999px;
+    width: 8px;
+}
+
+table.redeem-giftcard {
+    border-collapse: collapse;
+    float: left;
+    width: 100%;
+}
+
+.errortext > div {
+    font: 12px GraphikRegular;
+    margin-top: 5px;
+    text-align: left;
+    display: none;
+}
+.gfredeem .inputholder:nth-child(1) {
+    padding-right: 5px;
+}
+.gfredeem .inputholder:nth-child(2) {
+    padding:0 5px;
+}
+.gfredeem .inputholder:nth-child(3) {
+    padding-left: 5px;
+}
+form#cardbalanceform table.redeem-giftcard{
+    margin-top: 20px !important;
+}
+
+#createcardform .sub-title {
+    color: #444 !important;
+    margin-bottom: 15px;
+    text-align: left;
+}
+#createcardform > table {
+    border-collapse: collapse;
+    width: 100%;
+}
+#createcardform > table .inputtable{
+    width:100% !important;
+}
+#createcardform > table .inputtable .inputholder input{
+    width:100%;
+}
+#createcardform > table .inputtable .inputholder input{
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+}
+.goy-form textarea{
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    height:150px !important;
+    resize: none;
+    margin-bottom: 20px;
+    border-radius: 0%;
+}
+.goy-form .button-set{
+    margin:0;
+    padding: 0;
+}
+.goy-form .button.btn-reset {
+    background: #999999;
+    border: medium none;
+    color: #fff;
+    float: left;
+    font:16px/58px ITCAvantGardeStd-Bk;
+    margin-right: 2%;
+    width: 48%;
+    text-transform: uppercase;
+}
+.goy-form .button.btn-addtobag {
+    background: none repeat scroll 0 0 #42ac00;
+    border: medium none;
+    color: #fff;
+    float: left;
+    font:16px/58px ITCAvantGardeStd-Bk;
+    margin-left: 2%;
+    width: 48%;
+    text-transform: uppercase;
+}
+.txt-cnt {
+    line-height: 0;
+}
+.border-line-bk{border-top:1px solid #999999;width:100%;}
+.gradient {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+/*******************************************5-june******************/
+.inside-content .our-breath{padding:30px 12px;text-align: left;}
+.inside-content .title{ font:22px/27px ITCAvantGardeStd-Bk;color:#434343;}
+.our-breath .below-txt{   color: #434343;    font: 18px/22px freighttextbook;    padding: 18px 0 0;}
+.textContainer span{text-transform:none;}
+.textContainer  .ovr-text + span{font: 22px/28px freighttextbook; margin: 14px 0 0;
+    padding: 0 12px; }
+.textContainer .yoga-part {
+  padding-left: 57px !important;
+  position: relative !important;
+}
+    .ovr-text  .body-icon { background: url("/skin/frontend/default/newrespondf/images/body-sprite.png") 0 0 no-repeat;position:absolute;left:0;top:0;width:50px;height:50px;}
+	.ovr-text.yoga-part span {
+  background: hsla(0, 0%, 0%, 0) url("/skin/frontend/default/newrespondf/images/body-sprite.png") no-repeat scroll 0 0 / auto 100%;
+  height: 40px;
+  left: 4px;
+  padding: 0 !important;
+  position: absolute;
+  top: 26px;
+  width: 50px;
+}
+.ovr-text.yoga-part .relaxed{ background-position: -231px 0;
+    top: 19px;}
+.ovr-text.yoga-part .exercise{background-position: -127px 0;
+    top: 22px;}
+.ovr-text.yoga-part .consious{background-position: 0 -2px;
+    top: 19px;}
+.ovr-text.yoga-part .diet{  background-position: -69px 2px;
+    top: 19px;}
+.ovr-text.yoga-part .positive{background-position:-294px 0;}
+.ovr-text.yoga-part .meditation{background-position:-186px 0;}
+	.ovr-text .freight-txt{padding-left:0!important;}
+	.buck-balance-title  .smogi-icn{ background: url("/skin/frontend/default/newrespondf/images/smogi-sprite.png") -120px 6px no-repeat;height: 58px;    left: 0;    position: absolute;    top: 0px;
+	
+    width: 40px;}
+	.buck-balance-title  .smogi-icn.active{background-position: 10px 6px;}
+	.buck-balance-title .balance-icn.smogi-icn{background-position:-224px 15px;}
+	.buck-balance-title .balance-icn.smogi-icn.active{background-position:-338px 15px;}
+	.add-bracelet-bag{background:#42AC00;font:16px/18px ITCAvantGardeStd-Bk;color:#fff;width:100%;height:58px;border:none!important;}
+/*******************************************5-june ends*************/
+#tab8 .textContainer {
+    padding-bottom: 0 !important;
+}
+/*****************************************17-june***********************/
+#account_content{padding:0 12px;}
+#account_content .generic-box {float: left;text-align: left;clear:none;width: 50%;}
+#account_content  .generic-box  address {color: #444;font: 13px/18px GraphikRegular;margin-bottom: 25px;}
+#account_content  .generic-box .col-1 h4{color: #444;font: 12px Avantgarde-demi;text-transform: uppercase;margin-bottom: 25px;}
+#account_content  .generic-box  address span {width: 100%;}
+#account_content .in-page{float: left;margin-bottom: 25px;  padding: 0 5px 5px; width: 100%;}
+#account_content #my-orders-table{border-collapse: collapse;margin-top: 10px;}

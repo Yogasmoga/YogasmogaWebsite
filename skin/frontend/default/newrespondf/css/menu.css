@@ -1,0 +1,60 @@
+/* 	Left Nav */
+
+.left-nav-top{display:none;margin-top:20px;background:url(../images/leftnav_top.jpg) no-repeat;width:290px;height:6px;margin:0 auto;margin-top:20px;}
+.left-nav {width:100%;margin:0 auto;}
+.left-nav .head{padding: 9px;text-align: left;}
+.left-nav .head h2{font-weight:normal;margin-bottom: 0px;line-height: 1.5em;font-size:1.3em; color:#6d6d6d; text-transform:none; background: url(../images/arrow_headers.gif) no-repeat top left;padding-left: 26px;}
+
+/************** ALL LEVELS  *************/ /* Style consistent throughout all nav levels */
+#left-nav a {font-size:12px;color:#ffffff !important;}
+#left-nav  li {position:relative; text-align:left; }
+#left-nav  li.over { z-index:999; }
+#left-nav  a,
+#left-nav  a:hover { display:block; white-space:nowrap;text-decoration:none;}
+#left-nav  span { display:block; cursor:pointer; white-space:nowrap; background:url(../images/nav_arrow.png) no-repeat scroll 96% center transparent;}
+#left-nav  span:hover { display:block; cursor:pointer; white-space:nowrap; background:url(../images/nav_arrow.png) no-repeat scroll 96% center transparent;}
+#left-nav  li ul span {white-space:normal; }
+
+/************ 0 LEVEL  ***************/
+#left-nav  li.category {padding:0 0 0 10px;}
+#left-nav  li.head { 
+	height: 40px;
+    line-height: 40px;
+	background:url(../images/nav_bg.gif) repeat-x;
+}
+#left-nav  li.active,
+#left-nav li.active a{color:#ffffff;}
+#left-nav li a { padding:0; color:#ffffff;font-size:16px;font-weight:bold;}
+#left-nav li a:hover , #left-nav li.active a {color:#ffffff;}
+#left-nav ul li.active1 a, #left-nav ul ul li.active2 a{background:none;color:#ffffff;font-family:arial;font-weight:bold;width:100%;text-decoration:underline;}
+#left-nav  li.over a,
+#left-nav  a:hover { color:#2e2e2e; }
+#left-nav  li.active {color:#ffffff;font-weight:bold;}
+
+/************ 1ST LEVEL ************/
+#left-nav  ul li span{line-height: 1.3em;}
+#left-nav  ul li, #left-nav  ul li.active, #left-nav  ul li.over{float:none; border:none; line-height:15px;padding:5px 0;text-transform:none;border-bottom:1px solid #e0e0e0;}
+#left-nav  ul li.last{border-bottom:1px solid #e0e0e0;}
+#left-nav  ul li ul li.last{border-bottom:0 none;}
+#left-nav  ul li ul li{background:0 none;}
+#left-nav  ul li.last { padding-bottom:0; }
+#left-nav  ul li.active { margin:0; border:0; background:none; }
+#left-nav  ul a,
+#left-nav  ul a:hover { float:none; padding:0; /*background:none;*/ }
+
+/************ 2ND LEVEL ************/
+#left-nav ul { left:0;top:0;padding: 0 10px;} /* subcategorías */
+
+/* Show menu */
+#left-nav  ul li a {line-height:30px;padding-left:10px;color:#333 !important; font-size:12px !important;}
+#left-nav  ul li a:hover {line-height:30px;padding-left:10px;color:#606060 !important;}
+#left-nav  ul li a.empty, #left-nav li.active a.empty, #left-nav li a.empty:hover { background:url(../images/nav_arrow_2.png) no-repeat scroll right center transparent;
+height:20px;
+padding:0;
+position:absolute;
+right:10px;
+top:5px;
+width:20px}
+#left-nav  ul ul{padding:0;}
+#left-nav  ul ul li a, #left-nav  ul ul li a:hover {padding-left:30px;color:#333333 !important}
+#left-nav  ul li ul {padding:0px;}

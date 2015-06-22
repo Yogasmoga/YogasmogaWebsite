@@ -1,0 +1,136 @@
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+    <?php echo $this->getChildHtml('head') ?>
+</head>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<?php echo $this->getChildHtml('after_body_start') ?>
+<script type="text/javascript">
+
+    jQuery(document).ready(function() {
+
+        jQuery('.flexslider').flexslider({
+            slideshow: false
+        });
+
+//        jQuery('.flexslider:eq(1)').find('li a').css('background-color', '#ccc');
+
+        jQuery('.next-slide').click(function (e) {
+            e.preventDefault();
+            var obj = jQuery(this).closest('.flexslider');
+            obj.find('.flex-next').click();
+            return false;
+        });
+
+    });
+</script>
+<div class="wrapper">
+<div class="page">
+<?php echo $this->getChildHtml('header') ?>
+    <div class="category-block">
+        <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+        <div class="sign-in-box">
+            <?php
+            if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+                $store_id = Mage::app()->getStore()->getId();
+                $customerId = Mage::getModel('customer/session')->getCustomerId();
+                if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)) {
+                    $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+                    echo $reward_flat_model->collectPointsCurrent($customerId, $store_id) + 0;
+                    //Mage::helper('core')->currency($reward_flat_model->collectPointsCurrent($customerId, $store_id)+0);
+                }
+
+                $reward_model = Mage::getModel('rewardpoints/stats');
+                //echo "$".number_format((float)($reward_model->getPointsCurrent($customerId, $store_id)+0), 2, '.','');
+                //echo $reward_model->getPointsCurrent($customerId, $store_id)+0;
+                echo '<a href="javascript:void(0)"><span class="rewards_points"><b>$</b>' . ($reward_model->getPointsCurrent($customerId, $store_id) + 0) . '</span></a>';
+            } else { ?>
+                <a href="javascript:void(0)" onclick="openLogin()"><span class="cuslogin">Sign In</span></a>
+            <?php } ?>
+            <h1>RANGOLI</h1>
+
+            <!--        <div class="toggle_dropdown"><img src="-->
+            <?php //echo $this->getSkinUrl("images/black-arrw.png") ?><!--"/></div>-->
+        </div>
+    </div>
+<div class="flexslider">
+    <ul class="slides">
+        <li>
+            <img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli_collection_1.jpg");?>" />
+        </li>
+    </ul>
+</div>
+
+
+<!-- RAngoli Lotus slides -->
+<div class="flexslider">
+    <ul class="slides">
+        <li class="next-slide">
+            <img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli_lotus.jpg");?>" />
+        </li>
+        <li>
+            <a href="/women/bottoms/rangoli/rangoli-sweet-n-short?color=102"><img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lotus-short-n-sweet-blue.jpg");?>" /></a>
+        </li>
+        <li>
+            <a href="/women/tops/rangoli/rangoli-my-racer-back?color=273"><img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lotus-my-racer-back-turquoise.jpg");?>" /></a>
+        </li>
+        <li>
+            <a href="/women/tops/rangoli/rangoli-twistie-tank?color=96"><img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lotus-my-twistie-tank-purple.jpg");?>" /></a>
+        </li>
+        <li>
+            <a href="/women/tops/rangoli/rangoli-sneak-n-peek-bra?color=96"><img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lotus-sneak-n-peak-bra-purple.jpg");?>" /></a>
+        </li>
+        <li>
+            <a href="/women/bottoms/rangoli/rangoli-tippy-toe-legging?color=275"><img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lotus-tippy-toe-legging-grey.jpg");?>" /></a>
+        </li>
+    </ul>
+</div>
+
+
+<!-- Rangoli lilly slides -->
+<div class="flexslider">
+    <ul class="slides">
+        <li class="next-slide">
+            <img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli_lily.jpg");?>" />
+        </li>
+        <li>
+            <a href="/women/tops/rangoli/rangoli-my-racer-back?color=275"><img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lilly-my-racer-back-yellow.jpg");?>" /></a>
+        </li>
+        <li>
+            <a href="/women/tops/rangoli/rangoli-my-racer-back?color=97"><img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lilly-my-racer-back-white.jpg");?>" /></a>
+        </li>
+        <li>
+            <a href="/women/bottoms/rangoli/rangoli-run-jump-n-play-crop?color=275"><img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lilly-run-jump-play-crop-grey.jpg");?>" /></a>
+        </li>
+        <li>
+            <a href="/women/tops/rangoli/rangoli-sneak-n-peek-bra?color=275"><img src="<?php echo $this->getSkinUrl("images/rangoli_collection/rangoli-lilly-sneak-n-peek-bra-grey.jpg");?>" /></a>
+        </li>
+    </ul>
+</div>
+
+
+<?php echo $this->getChildHtml('footer') ?>
+<?php echo $this->getChildHtml('before_body_end') ?>
+</div>
+
+<?php echo $this->getAbsoluteFooter() ?>
+<style>
+    .wrapper {
+        padding-top: 80px;
+    }
+    .flexslider {
+        margin-bottom: 0px !important;
+        min-height: 100px !important;
+    }
+    .category-block .sign-in-box{
+        z-index: 6 !important;
+    }
+</style>
+</body>
+</html>
+

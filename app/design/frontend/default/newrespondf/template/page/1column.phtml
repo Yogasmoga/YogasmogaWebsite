@@ -1,0 +1,188 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_iphone
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <?php echo $this->getChildHtml('head') ?>
+</head>
+<body bgcolor="#FFFFFF" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" <?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?> onload="setTimeout(scrollTo, 0, 0, 1)">
+ <div class="wrapper">
+   <div class="page">
+<?php echo $this->getChildHtml('after_body_start') ?>
+<?php echo $this->getChildHtml('global_notices') ?>
+<div class="header-container">
+<div class="header">
+    <?php echo $this->getChildHtml('header') ?>
+</div>
+</div>
+<div class="clearfix"></div>
+
+      <?php 	
+	   $currentUrl = Mage::helper('core/url')->getCurrentUrl(); //http://yogasmoga.com/women/top
+		$categoryName = explode('/', $currentUrl);
+		 $urlKey = trim($categoryName[3]); 
+	     ?>
+    <?php if(Mage::getSingleton('cms/page')->getIdentifier() != 'home'  && Mage::app()->getFrontController()->getRequest()->getRouteName() == 'cms') : ?>
+		<?php if($urlKey != 'payment-methods'){ ?>
+		
+		 <div class="sign-in-box">
+				<?php if (! Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+			<a class="" title="" href="javascript:;" onClick="openLogin()"><span class="sign_In"><?php echo $this->__('Sign In') ?></span></a>
+			<?php else: ?>
+			 <?php   
+				$store_id = Mage::app()->getStore()->getId();
+				$customerId = Mage::getModel('customer/session')->getCustomerId();
+				if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+					$reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+					echo $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
+					//Mage::helper('core')->currency($reward_flat_model->collectPointsCurrent($customerId, $store_id)+0);
+				}        
+				
+				$reward_model = Mage::getModel('rewardpoints/stats');
+                echo '<a href="javascript:void(0)"><span class="reward_points"><b>$</b>'.($reward_model->getPointsCurrent($customerId, $store_id)+0).'</span></a>';
+				 ?>
+
+			<?php endif; ?>
+			<h1 id="pagetitle"><?php echo $this->getContentHeading(); ?></h1>
+			<div class="arrow-icon"><img class="" src="<?php echo $this->getSkinUrl('images/black-arrw.png');?>" alt="arrow"></div>
+			
+	      </div>
+		  <?php } ?>
+          <?php endif; ?>
+
+		<div class="main-container">
+		<?php //echo $this->getChildHtml('breadcrumbs') ?>
+			<div id="main" class="col-main">
+				<div class="custom-block">	
+					<?php 
+						$titleValue = "";
+						if($urlKey == 'our-story'){
+							$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-our-story');
+							$titleValue = $title->getTitle();
+							echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile-our-story')->toHtml();
+						} 
+						else if($urlKey == 'ys-fabric-tech'){ 
+								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-ys-fabric-tech');
+								$titleValue = $title->getTitle();								
+								echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile-ys-fabric-tech')->toHtml();
+						}		
+						else if($urlKey == 'smogi-bucks'){
+								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-smogi-bucks');
+								$titleValue = $title->getTitle();								
+								echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile-smogi-bucks')->toHtml();
+						}
+						else if($urlKey == 'our-stores'){
+							$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-our-stores');
+							$titleValue = $title->getTitle();
+							echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile-our-stores')->toHtml();
+						}
+						else if($urlKey == 'ys-color-tech'){
+								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-ys-color-tech');
+								$titleValue = $title->getTitle();
+								echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile-ys-color-tech')->toHtml();
+						}
+						else if($urlKey == 'our-core-values'){
+								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-our-core-values');
+								$titleValue = $title->getTitle();
+								echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile-our-core-values')->toHtml();
+						}
+						else if($urlKey == 'namaskar'){
+								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-namaskar');
+								$titleValue = $title->getTitle();
+								echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile-namaskar')->toHtml();
+						}
+						else if($urlKey == 'made-in-usa'){
+								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-made-in-usa');
+								$titleValue = $title->getTitle();
+								echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile-made-in-usa')->toHtml();
+						}
+						else if($urlKey == 'our-edge'){
+								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-our-edge');
+								$titleValue = $title->getTitle();
+								echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile-our-edge')->toHtml();
+						}
+						else if($urlKey == 'our-ethics'){
+								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-our-ethics');
+								$titleValue = $title->getTitle();
+								echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile-our-ethics')->toHtml();
+						}
+						else if($urlKey == 'press'){
+								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-press');
+								$titleValue = $title->getTitle();
+								echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile-press')->toHtml();
+						}
+						else if($urlKey == 'design-elements'){
+								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-design-elements');
+								$titleValue = $title->getTitle();
+								echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile-design-elements')->toHtml();
+						}
+						else if($urlKey == 'principles-of-yoga'){
+								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-principles-of-yoga');
+								$titleValue = $title->getTitle();
+								echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile-principles-of-yoga')->toHtml();
+						}
+
+						else if($urlKey == 'payment-methods'){
+								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-payment-methods');
+								$titleValue = $title->getTitle();
+								echo $this->getLayout()->createBlock('cms/block')->setBlockId('mobile-payment-methods')->toHtml();
+						}
+						else{
+							echo $this->getChildHtml('content');
+						}
+					?>
+					<?php
+						if(strlen($titleValue)>0){
+					?>
+					<script type="text/javascript">
+						jQuery("h1#pagetitle").html("<?php echo $titleValue;?>");
+					</script>
+					<?php
+						}
+					?>
+				</div>
+			</div>
+		</div>
+
+		
+		
+<div class="footer-container">
+    <div class="footer">
+        <?php echo $this->getChildHtml('footer') ?>
+    </div>
+</div>
+<?php echo $this->getChildHtml('before_body_end') ?>
+<?php echo $this->getAbsoluteFooter() ?>
+  </div>
+</div>
+</body>
+</html>

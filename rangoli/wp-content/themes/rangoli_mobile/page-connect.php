@@ -5,12 +5,12 @@ get_header();
     <div class="row link_heading">
           Your invite link
     </div>
-    <div class="invite_link">
+    <div class="invite_link" style="background: #555; height:58px;">
     <p class="user-color-shade"><i class="link"></i> <span class="copy_link" data-clipboard-text="">Copy link</span></p>
     </div>
 
     <div style="text-align: center; padding-bottom: 25px;">
-        <p style="font:15px/58px GraphikRegular">Invite friends to join Rangoli</p>
+        <p style="font:15px/58px GraphikRegular;">Invite friends to join Rangoli</p>
            <a class="email_invite"></a>
            <a class="twitter_invite"></a>
     </div>

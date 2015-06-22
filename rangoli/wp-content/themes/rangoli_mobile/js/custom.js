@@ -25,7 +25,7 @@ $(document).ready(function () {
         slideshow: false
     });
     init_menu();
-    init_watermark();
+    //init_watermark();
     $("a.no_load").click(function(e){
         e.preventDefault();
     });
@@ -53,11 +53,11 @@ $(document).ready(function () {
         share_post.show();
         var scroll_top = content.offset().top - $(window).scrollTop();
 
-        $(window).scrollTop(content.offset().top-118);
+        $(window).scrollTop(content.offset().top-88);
 
-        if(scroll_top<120){
-            close_post.css({"top":"118px","position":"fixed"});
-            share_post.css({"top":"162px","position":"fixed"});
+        if(scroll_top<88){
+            close_post.css({"top":"88px","position":"fixed"});
+            share_post.css({"top":"132px","position":"fixed"});
         }
         $(window).scroll(function(){
             $(document).find(".close_post").hide();
@@ -68,9 +68,9 @@ $(document).ready(function () {
             share_post.show();
             var scroll_top = content.offset().top - $(window).scrollTop();
 
-            if(scroll_top<120){
-                close_post.css({"top":"118px","position":"fixed"});
-                share_post.css({"top":"162px","position":"fixed"});
+            if(scroll_top<88){
+                close_post.css({"top":"88px","position":"fixed"});
+                share_post.css({"top":"132px","position":"fixed"});
             }
             else{
                 close_post.css({"top":"0px","position":"absolute"});
@@ -98,7 +98,13 @@ $(document).ready(function () {
         $(".play-video").show();
         $(".overlay-text").show();
         $(".author_posts").slideUp();
-        $(window).scrollTop(top_position+118);
+        $(".author_picture").show();
+        $(window).scroll(function(){
+            $(".sharing_box").fadeOut();
+            $(".signup-signin-block").fadeIn();
+        });
+
+        $(window).scrollTop(top_position+88);
         var src = $(".video_playing").attr("src");
         if(src) {
             src = src.replace("autoplay=1", "autoplay=0");
@@ -139,13 +145,19 @@ $(document).ready(function () {
             $(this).find("span").css({"border-bottom":"none","transition-duration":"300ms"});
         }
         else{
-            if(!$(this).parent().is(":last-child"))
+            if(!$(this).parent().is(":last-child"));
             $(this).find("span").css({"border-bottom":"1px solid #fff","transition-duration":"300ms"});
         }
     });
     $(".filter-container ul li").click(function(){
+        $(".filter-container ul li").not($(this)).removeClass("active");
+        $(".filter-container ul li p").not($(this)).find("span").css({"border-bottom":"1px solid #fff","transition-duration":"300ms"});
         $(this).toggleClass("active");
-    })
+        if($(this).is(":last-child")){
+            $(this).find("span").css({"border-bottom":"1px solid #fff","transition-duration":"300ms"});
+        }
+
+    });
 
     $(".sharing_box .unknown").click(function(){
         var comment_box = $(this).parent().parent().find(".post_comments");
@@ -188,7 +200,14 @@ function init_menu(){
         $(this).parent().next().slideToggle(200);
     });
 
-
+    $(".forgot_y_p").click(function(){
+        $(".login_form").hide();
+        $(".forgot_password_form").show();
+    });
+    $(".forgot_y_p.open_signin").click(function(){
+        $(".login_form").show();
+        $(".forgot_password_form").hide();
+    });
 
 }
 
@@ -209,7 +228,7 @@ function getloggedinuser() {
 
                 //get_magento_cstomerID(user_email);
 
-                if (user_color_shade != "#555555") {
+                if(user_color_shade != "#FFFFFF") {
 
                     if (status == "new") {
                         $(".signin_popup").fadeOut();
@@ -241,8 +260,8 @@ function getloggedinuser() {
                 }
             }
             else {
-                user_color_shade = "#555555";
-                color = "85,85,85";
+                user_color_shade = "#FFFFFF";
+                color = "255,255,255";
 
             }
 
@@ -255,7 +274,7 @@ function getloggedinuser() {
 
 
 function init_watermark(){
-
+    $("input[rel='password']").val("");
     $("input[rel='password']").focus(function () {
         $(this).attr("type", "password");
     });
@@ -301,7 +320,7 @@ function bindHeartLink(obj) {
 
 
 function submit_comment(textarea) {
-
+    $("#submit").html("Submitting...");
     current_user_img_url = $(".current_user_img_url").html();
     logged_in = $("span[rel='logged-in-user']").html();
     post_id = $("span[rel='post_id']").html();
@@ -335,7 +354,8 @@ function submit_comment(textarea) {
                         }
                         else {
                             var img_div = '<div class="row">';
-                            img_div = img_div + '<div class="profile-img-small" style="background:' + " url('" + current_user_img_url + "'); background-size:100%;" + '"></div>';
+                            current_user_img_url = $("#current_user_img_url").html();
+                            img_div = img_div + '<div class="profile-img-small"><img src="'+current_user_img_url+'" /></div>';
                             var comment = '<div class="span12"><p class="comment_author">' + logged_in + '</p><p class="comment">' + (textarea.val()).replace("\n", "<br/>") + '</p> </div>';
                             var date = '<div class="span12"><p class="comment_time">' + current_date + '</p></div></div>';
                             statusdiv.html('<p class="ajax-success" ><!--Thanks for your comment. We appreciate your response.--></p>');
@@ -354,6 +374,7 @@ function submit_comment(textarea) {
             statusdiv.html('<p>You must be logged in to share a comment...</p>');
             $("textarea").val("");
         }
+    $("#submit").html("Submit");
         return false;
 }
 
@@ -371,6 +392,8 @@ function play(obj) {
         var overlay = parent.find(".overlay-text");
         overlay.click();
         overlay.hide();
+        var author_img = parent.find(".author_picture");
+        author_img.hide();
         var src = player.attr("src");
         src = src.replace("autoplay=0", "autoplay=1");
         player.attr("src", src);
@@ -410,7 +433,8 @@ function get_cart(){
             if(response>0)
             {
                 $("span.cart").html(response);
-                $("span.cart").css("background", "url('" + root + "/rangoli/wp-content/themes/rangoli_mobile/images/cart_full.png') no-repeat center center");
+                $(".shopping_cart svg rect").css("fill","#fff");
+                $(".shopping_cart svg path").css("fill","#fff");
             }
         }
     })
@@ -471,6 +495,9 @@ $(document).ready(function(){
         $(".after_signup_popup").fadeOut();
         $(".signin_popup").fadeIn();
         $(".popup").fadeIn();
+        clearForm();
+        $(".login_form").show();
+        $(".forgot_password_form").hide();
         $(".close_menu").click();
     });
     $(".open_signup").click(function(){
@@ -478,10 +505,19 @@ $(document).ready(function(){
         $(".after_signup_popup").fadeOut();
         $(".signup_popup").fadeIn();
         $(".popup").fadeIn();
+        clearForm();
         $(".close_menu").click();
     });
 });
 
+function clearForm(){
+    $("p.small.err_msg").html("");
+    $("input[name='fame']").val("");
+    $("input[name='lname']").val("");
+    $("input[name='email']").val("");
+    $("input[name='password']").val("");
+    init_watermark();
+}
 
 
 

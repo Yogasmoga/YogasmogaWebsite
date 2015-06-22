@@ -12,9 +12,9 @@ if ($blogusers) {
         $user_id = $user->ID;
         $location =$user_id;
         $size = 'thumbnail';
-        $imgURLs = get_user_meta($user_id,'wpcf-mobile-banner');
-        $imgURL = $imgURLs[0];
-//        $imgURL = get_the_author_meta('author_profile_picture', $user_id);
+//        $imgURLs = get_user_meta($user_id,'wpcf-mobile-banner');
+//        $imgURL = $imgURLs[0];
+        $imgURL = get_the_author_meta('author_profile_picture', $user_id);
 
         ?>
 
@@ -34,7 +34,7 @@ if ($blogusers) {
                 echo $user_profession; ?></p>
                         </div>
                 </div>
-                    <div class="close_post user-color-shade-trans"></div>
+                    <div class="close_post  <?php if($logged_in){echo 'user-color-shade-trans';} ?>"></div>
 <!--                    <div class="share_post user-color-shade-trans"></div>-->
 
 
@@ -65,7 +65,9 @@ if ($blogusers) {
                         $user_id="not-logged";
                         $current_user_id = "visitor";
                     }
-                    echo '<div class="' . $class . ' row like user-color-shade" author="' . $user_id . '" user="' . $current_user_id . '">';
+                    echo '<div class="' . $class . ' row like ';
+                    if($logged_in){echo 'user-color-shade-trans';}
+                    echo '" author="' . $user_id . '" user="' . $current_user_id . '">';
                     get_template_part("heartsvg");
                     echo "<p>".get_subscribers_count($user->ID)."</p>";
                     echo '</div>';

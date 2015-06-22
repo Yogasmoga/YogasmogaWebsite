@@ -1,0 +1,230 @@
+<?php if(!Mage::getSingleton('customer/session')->isLoggedIn()){
+	$title=Mage::getStoreConfig('bluethink/bluethink_group/bluethink_input',Mage::app()->getStore());
+	$flag=Mage::getStoreConfig('bluethink/bluethink_group/bluethink_select',Mage::app()->getStore());
+		$contents=Mage::getStoreConfig('bluethink/bluethink_group/bluethink_textarea',Mage::app()->getStore());
+ $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
+    $pass = '';                           //password is a string
+    $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+    for ($i = 0; $i <8; $i++) {
+        $n = mt_rand(0, $alphaLength);    
+        $pass = $pass.$alphabet[$n];      //append a random character
+    }
+	//echo $fldddag;
+
+if($flag){?>
+
+<div id="popForm" style = "display:none">
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('popup/css/popup.css');?>"/>
+<div class="popup_container sign-up-block sign_in_modal" id="transparent_bg">
+	<div style="width:100%;" class="overlay-inner-bg" id="content">
+		<a href="javascript:void(0)" onclick="closeSignup()" class="cross_popup">  </a>
+		
+			
+	<div class="left_block left_block_new">
+	<div class="scroll">
+		<div class="top-heading">
+        <h2><span class="join">JOIN</span><span class="y-text"><img alt="yogasmoga" src="<?php echo $this->getSkinUrl('images/y-text.png') ?>" class="responsive"></span><span class="gold-text"> <br>&amp; GET $25 <br> SMOGI BUCKS</span></h2>
+        </div>
+	<div class="sign_signup_form">
+	<form rel="signupBox" action="" method="post" id="signup-form" name="myFrom">
+		<input type="hidden" value="" name="csrf_token">					
+		<span style="color:#990000; font-size:14px;"></span>
+		<div class="error" id="error_msg"></div>
+	<ul class="list1">
+		
+		<li>
+		<div class="form_field_left">
+			<input type="text" autocomplete="off" id="firstname" maxlength="35" name="firstname" value="" placeholder="First Name" class="required-entry">
+			<span id="firstname" class="error_msg"></span>
+		<div style="display:none" class="validation-advice" id="fnameError">Please use letters only (a-z or A-Z) in this field.</div>
+		</div>
+		
+		<div class="clearfix"></div>
+		</li>
+		<li>
+		<div class="form_field_left">
+			<input type="text" autocomplete="off" id="lastname" maxlength="35" name="lastname" value="" placeholder="Last Name" class="required-entry">
+			<span id="lastname" class="error_msg"></span>
+		<div style="display:none" class="validation-advice" id="lnameError">Please use letters only (a-z or A-Z) in this field.</div>
+		</div>
+		</li>
+		
+		<li>  
+			<input type="text" autocomplete="off" maxlength="100" id="email" name="email" value="" placeholder="Email"  class="required-entry validate-email">
+			<div style="display:none" class="validation-advice" id="emailError">Please enter a valid email address.</div>
+				<span id="email" class="errormsz_email"></span>
+		</li>
+
+		<li>
+
+		<div class="form_field_left">
+			<div class="field">
+                     <div class="input-box">
+                            <input type="password" name="password" id="password" placeholder="<?php echo $this->__('Choose Password') ?>" class="input-text required-entry validate-password" />
+                        </div>
+           </div>
+			
+		
+		</div>
+		<div class="clearfix"></div>
+		</li>
+
+
+        <li>
+         <div class="form_field_left">
+			<div class="field">
+                       <div class="input-box">
+                            <input type="password" name="confirmation" placeholder="<?php echo $this->__('Confirm Password') ?>" id="confirmation" class="input-text required-entry validate-cpassword" />
+                        </div>
+            </div>
+		</div>
+		<div class="clearfix"></div>
+		
+		</li>
+          
+		<li class="gender-link">
+		      <span> <label>Select Gender</label></span>
+				  <div class="f-right">
+				 
+                  <?php
+					$options = Mage::getResourceSingleton('customer/customer')->getAttribute('gender')->getSource()->getAllOptions();
+					$value = '1';
+					$_last = count($options);
+				   // $_index = 0;
+				  ?>
+				  
+			<?php foreach ($options as $option):?>
+			<?php if($option['value'] != ''): ?>
+		    <div>
+		 <label class="f<?php echo $option['value'] ?>">
+         <input class="custom-radio radio" type="radio" title="<?php echo $option['label'] ?>"
+		value="<?php echo $option['value'] ?>" name="gender"
+				<?php if ($option['value'] == $value) echo ' checked="checked"' ?>>
+			  </label>
+				<span> <?php echo $option['label'] ?> </span>
+				</div>
+					<?php endif; ?>
+
+					<?php //$_index++; ?>
+				<?php endforeach;?>
+				
+				</div>
+				
+				
+		</li>
+
+		<li>
+		<input style="display: none;" id="is_subscribed" class="checkbox" type="checkbox" checked="checked" value="1" name="is_subscribed">
+         <input type="hidden" autocomplete="off" maxlength="30" id="isAjax" name="isAjax" value="1">
+
+			<!-- msz alredy email exist -->
+				<span id ="alertMsz" class="errormsz_email"></span>
+			<!-- end -->
+			<div id="Ajaxloader" style="display:none">
+<!--				<img src="--><?php //echo $this->getSkinUrl('popup/images/loader.gif')?><!--"/>-->
+			</div>
+
+			<!--<input type="submit" value="Save" name="register" class="grey-btn" id="formSubmit">-->
+			<button type="submit" class="btn" title="sign-up" name="sign-up" id=""><span class="tick-mark"><img alt="yogasmoga" src="<?php echo $this->getSkinUrl('images/tick-mark.jpg') ?>" class="responsive"></span></button>
+
+			<p class="already_signed_up" >Already signed up? Sign in here</p>
+		</li>
+	</ul>
+</form>
+</div></div>
+	<div class="clearfix"></div>
+
+			</div>
+		</div>
+	</div>
+</div> 
+
+<script type="text/javascript">
+jQuery.noConflict();
+var customForm = new VarienForm('signup-form');
+</script>
+
+<script type="text/javascript">
+jQuery.noConflict();
+function closeSignup(){
+jQuery('#popForm').hide();
+}
+jQuery(document).ready(function() {
+ jQuery(".custom-radio:checked").parent().addClass("current");
+ jQuery(".custom-radio").click(function(){
+  jQuery(".custom-radio").parent().removeClass("current");
+  jQuery(this).parent().addClass("current");
+ });
+});
+</script>
+
+<?php
+$name = 'popupcookies';     
+$value = 'yes'; 
+// $getCookies = "";    
+$getCookies = Mage::getModel('core/cookie')->get($name);
+//$getCookies = "";  
+if($getCookies==""){
+
+?>
+<script>
+jQuery.noConflict();
+jQuery(document).ready(function() {
+jQuery("#popForm").show();
+
+});
+</script>
+<?php
+Mage::getModel('core/cookie')->set($name, $value);
+}
+?>
+
+<script>
+jQuery.noConflict();
+jQuery('#signup-form').submit(function(e){
+e.preventDefault();
+if (customForm.validator && customForm.validator.validate()){
+jQuery("#Ajaxloader").show();
+
+jQuery.ajax({
+//jQuery("#signup-form" ).serialize() ;
+
+type: "POST",
+url: "<?php echo Mage::getUrl('mycatalog/myproduct/registercustomer'); ?>", // hit action
+data : jQuery("#signup-form" ).serializeArray(),
+dataType: 'json',
+//cache: false,
+success : function(data){
+console.log(data);
+// alert(data.status);
+//var data = jQuery.parseJSON(msg);
+//jQuery('#alertMsz').html(data.msg);
+//data=eval('('+data+')');
+var status=data.status;
+if(status=="success"){
+	jQuery("#Ajaxloader").hide();
+    window.location = '<?php echo Mage::getBaseUrl(); ?>';
+}
+else if(data.msg=='Email already exists'){
+	jQuery("#Ajaxloader").hide();
+jQuery('.already').html('Email Id already exist');
+return false;
+}
+
+else{
+jQuery('.already').html('Cannot Create Account');
+return false;
+
+}
+
+}
+
+
+});
+}               
+
+});
+</script>
+<?php  
+}
+}?>

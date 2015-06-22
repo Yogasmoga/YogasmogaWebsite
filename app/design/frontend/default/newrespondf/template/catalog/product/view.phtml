@@ -1,0 +1,1574 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<div class="namaskar-overlay1">&nbsp;</div>
+<script type="text/javascript">
+    jQuery(window).load(function () {
+       // setImageContheightPDP();
+        jQuery('body').css('overflow', 'auto');
+        jQuery('.namaskar-overlay1').fadeOut('slow');
+        jQuery("body").on("click", ".vid-popup-overlay", function () {
+            var dfVid = document.getElementById("df-vid");
+            var measureVid = document.getElementById("measure-vid");
+            if (jQuery(".html-des-vid-popup").is(":visible")) {
+                dfVid.pause();
+            }
+            if (jQuery(".html-fit-vid-popup").is(":visible")) {
+                measureVid.pause();
+            }
+
+        });
+        window.onkeyup = function (event) {
+            if (event.keyCode == 27) {
+                jQuery(".vid-popup-overlay").trigger("click");
+            }
+        }
+    })
+</script>
+<img style="display:none;" src="<?php echo $this->getSkinUrl('images/loader.gif'); ?>"/>
+
+<?php
+    $_helper = $this->helper('catalog/output');
+    $_product = $this->getProduct();
+    $_product = Mage::getModel('catalog/product')->load($_product->getId());
+
+    $productName = $_product->getName();
+    $productId = intval($_product->getId());
+
+    $isRewardAble = false;
+
+    $storeId = Mage::app()->getStore()->getStoreId();
+
+    $resourceModel = Mage::getResourceModel('catalog/product');
+
+    $howDoesItFitBlockId = $resourceModel->getAttributeRawValue($_product->getId(), 'how_does_it_fit', $storeId);
+    $sizeChartBlockId = 'mobile_'.$resourceModel->getAttributeRawValue($_product->getId(), 'size_chart', $storeId);
+    $fabricStoryBlockId = $resourceModel->getAttributeRawValue($_product->getId(), 'fabric_story', $storeId);
+    $designFeatureVideoName = $_product->getDesignFeatureVideo();
+
+    $categoryIds = $_product->getCategoryIds();
+    $currentCategoryId = '';
+
+/******************************* bread crumb logic ******************************/
+
+    $urlString = Mage::helper('core/url')->getCurrentUrl();         // the url we see in browser   ex.   http://ysrangoli.com.local/mens/bottoms/shorts
+    $url = Mage::getSingleton('core/url')->parseUrl($urlString);
+
+    $path = $url->getPath();    // this part of url =>    /mens/bottoms/shorts
+
+    $urlPath = explode("/", substr($path, 1));
+
+    $breadCrumbs = '<a href="' . Mage::helper('core/url')->getHomeUrl() . '">Home</a>';
+
+    if (count($urlPath) == 1)
+        $breadCrumbs .= '&nbsp;/&nbsp;<a href="' . Mage::getUrl() . $urlPath[0] . '">' . $urlPath[0] . '</a>';
+    else if (count($urlPath) > 1) {
+        $j = 0;
+        $previousUrl = '';
+        for ($i = 0; $i < count($urlPath) - 1; $i++) {
+            if (isset($urlPath[$i - 1])) {
+                $previousUrl = $previousUrl . $urlPath[$i - 1] . '/';
+            }
+
+            $breadCrumbs .= '&nbsp;/&nbsp;<a href="' . Mage::getUrl() . $previousUrl . $urlPath[$i] . '">' . $urlPath[$i] . '</a>';
+        }
+    }
+/******************************* bread crumb logic ******************************/
+
+    if ($this->getRequest()->getParam('color')) {
+?>
+
+    <script type="text/javascript">
+        var _defaultprcolor = '<?php echo $this->getRequest()->getParam('color'); ?>';
+    </script>
+
+<?php
+    }
+
+$price = $_product->getSpecialPrice();
+if ($price == "")
+    $price = $_product->getPrice();
+$price = round($price, 2);
+if (floor($price) == $price)
+    $price = floor($price);
+
+$productPrice = "$" . $price;
+
+// get the string:   earn 5 smogi bucks with this purchase.
+$rewardPointsEarned = 0.1;
+$rewardPoints = Mage::helper('rewardpoints/data')->getProductPointsText($_product, false, false);
+$rewardPoints = strip_tags($rewardPoints);          // remove php and html tags
+
+// extract 5 from the string 'earn 5 smogi bucks with this purchase'
+$productRewardPoints = trim(substr($rewardPoints, strpos($rewardPoints, "earn") + strlen("earn"), strpos($rewardPoints, "smogi") - 3 - strlen("smogi") - strpos($rewardPoints, "earn") + strlen("earn")));
+
+$_childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
+$_gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+$configurableAttributeCollection = $_product->getTypeInstance()->getConfigurableAttributes();
+
+$arProductColorInfo = array();
+$isSizeAvailable = false;
+$lengthAvailable = 0;
+
+/****************** check Include Bra option *********************/
+$optionType = null;
+$optionAvailable = 0;
+$arProductAllOptions = array();
+
+foreach ($_product->getOptions() as $options) {
+    $optionType = $options->getType(); // get option type
+
+    $optionValues = $options->getValues();
+    $optionAvailable = count($optionValues);
+
+    foreach ($optionValues as $optVal)
+        array_push($arProductAllOptions, $optVal->getData());
+}
+/****************** finish checking Include Bra option *********************/
+
+foreach ($configurableAttributeCollection as $attribute) {
+    if ($attribute->getProductAttribute()->getAttributeCode() == "size") {
+        $isSizeAvailable = true;
+        break;
+    }
+}
+
+foreach ($configurableAttributeCollection as $attribute) {
+    if ($attribute->getProductAttribute()->getAttributeCode() == "length") {
+        $lengthAvailable = 1;
+        break;
+    }
+}
+
+$arFabricArray = array();
+$arBraCupInsertArray = array();
+
+foreach ($_childProducts as $_childProduct) {
+
+    $colorAttributeValue = $_childProduct->getAttributeText('color');
+
+    $childProductName = $_childProduct->getName();          // ex. U & Me Bra - Carbon 6-2
+    $pos = strrpos($childProductName, '-');                 // find position of last -
+    $nameWithColor = substr($childProductName, 0, $pos);    // remove last -
+    $pos = strrpos($nameWithColor, '-');
+    $colorName = trim(substr($nameWithColor, $pos + 1));       // get color name =>  Carbon
+
+    $sku = $_childProduct->getSku();
+    $childProductBySku = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
+
+/********** logic for showing 'Bra Cup Insert' only for a particular child color *******************/
+    $braCupInsert = '';
+    if (!isset($arBraCupInsertArray[$colorName])) {
+        $braCupInsert = $childProductBySku->getAttributeText('remove_bracup_insert');
+
+        $arBraCupInsertArray[$colorName] = $braCupInsert;
+    }
+/********** logic for showing 'Bra Cup Insert' only for a particular child color *******************/
+
+    if (strpos($colorAttributeValue, "|") !== FALSE) {
+        $hexCodes = substr($colorAttributeValue, strpos($colorAttributeValue, "|") + 1);
+        $hexCodes = explode(",", $hexCodes);
+        $colorAttributeValue = substr($colorAttributeValue, 0, strpos($colorAttributeValue, "|"));
+
+        if (!isset($arProductColorInfo[$colorAttributeValue]))
+            $arProductColorInfo[$colorAttributeValue] = array();
+
+        $arProductColorInfo[$colorAttributeValue]['hex'] = $hexCodes;
+        $arProductColorInfo[$colorAttributeValue]['value'] = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProduct->getId(), 'color', $storeId);
+
+        $tempFabricStoryBlockId = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProduct->getId(), 'fabric_story', $storeId);
+        if (isset($tempFabricStoryBlockId) && strlen($tempFabricStoryBlockId) > 0) {
+            $fabric_changed = true;
+
+            $colorNameLowercase = strtolower($colorName);
+
+            if (!isset($arFabricArray[$colorNameLowercase]))
+                $arFabricArray[$colorNameLowercase] = $tempFabricStoryBlockId;
+        }
+    }
+
+/*********************** check if product is in sale or not **********************/
+    if (!isset($arProductColorInfo[$colorAttributeValue]["insale"])) {
+        $inSaleValue = $_childProduct->getAttributeText('insale');
+        if ($inSaleValue == 'Yes')
+            $arProductColorInfo[$colorAttributeValue]["insale"] = $inSaleValue;
+    }
+/*********************** check if product is in sale or not **********************/
+
+/*********************** child price and reward points **********************/
+    $price = $_childProduct->getSpecialPrice();
+    if ($price == "")
+        $price = $_childProduct->getPrice();
+    $price = round($price, 2);
+    if (floor($price) == $price)
+        $price = floor($price);
+
+    $rewardPoints = Mage::helper('rewardpoints/data')->getProductPointsText($_childProduct, false, false);
+    $rewardPoints = strip_tags($rewardPoints);
+
+    $rewardPoints = trim(substr($rewardPoints, strpos($rewardPoints, "earn") + strlen("earn"), strpos($rewardPoints, "smogi") - 3 - strlen("smogi") - strpos($rewardPoints, "earn") + strlen("earn")));
+    if ($rewardPoints > 0)
+        $isRewardAble = true;
+/*********************** child price and reward points **********************/
+
+    // for Length attribute if available
+    if ($lengthAvailable) {
+        if (!isset($arProductColorInfo[$colorAttributeValue]["sizes"]))
+            $arProductColorInfo[$colorAttributeValue]["sizes"] = array($_childProduct->getAttributeText('size'));
+        else {
+            if (!in_array($_childProduct->getAttributeText('size'), $arProductColorInfo[$colorAttributeValue]["sizes"]))
+                array_push($arProductColorInfo[$colorAttributeValue]["sizes"], $_childProduct->getAttributeText('size'));
+        }
+
+        $temp1 = $_childProduct->getAttributeText('length') . "|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getQty() . "|" . $price . "|" . $rewardPoints;
+        $temp1 .= "|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getIsInStock();
+        $backOrderCheck = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getBackorders();
+        $temp1 .= "|" . $backOrderCheck;
+
+        if (!isset($arProductColorInfo[$colorAttributeValue]["length"])) {
+            $arProductColorInfo[$colorAttributeValue]["length"][$_childProduct->getAttributeText('size')] = array($temp1);
+            foreach ($_gallery as $_image) {
+
+                $imageLabelData = json_decode(trim($_image->getLabel()), true);
+                if ($imageLabelData == NULL || strcasecmp($imageLabelData['type'], "product image") != 0)
+                    continue;
+                if ($imageLabelData['color'] == Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProduct->getId(), 'color', Mage::app()->getStore()->getStoreId())) //if(str_replace("*", "", $_image->getLabel()) == $temp)
+                {
+                    $alt = "";
+                    if (isset($imageLabelData['alt']))
+                        $alt = $imageLabelData['alt'];
+
+                    try {
+                        if ($alt == "") {
+                            $abcclr = $_childProduct->getAttributeText('color');
+                            if (strpos($abcclr, "|") !== false)
+                                $abcclr = substr($abcclr, 0, strpos($abcclr, "|"));
+                            $alt = $productName . " - " . $abcclr;
+                        }
+                    } catch (Exception $e) {
+                        //echo $e->getMessage();
+                        Mage::logException($e);
+                    }
+                    //echo $alt;
+                    //echo $imageurl;
+                    $smallImageUrl = "_" . $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90) . "|" . $alt;
+          
+		   $imageUrl = "_" . $this->helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(640) . "|" . $alt;
+                    $zoomImageUrl = "_" . $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->setQuality(90) . "|" . $alt;
+
+                    $imagePath = substr($zoomImageUrl, 1);
+                    $dirImg = Mage::getBaseDir() . str_replace("/", DS, strstr($imagePath, '/media'));
+                    if (file_exists($dirImg)) {
+                        $imageObj = new Varien_Image($dirImg);
+                        $width = $imageObj->getOriginalWidth();
+                        $height = $imageObj->getOriginalHeight();
+                        //echo $dirImg." - ".$width." x ".$height."<br/>";
+                        $zoomImageUrl .= "|" . $width . "|" . $height;
+                    }
+                    //else {
+                    //                        echo "File doesn't exist.";
+                    //                    }
+
+                    //if(count($productcolorinfo[$temp]["images"]) == 0)
+                    if (!isset($arProductColorInfo[$colorAttributeValue]["images"])) {
+                        $arProductColorInfo[$colorAttributeValue]["images"] = array();
+                        $arProductColorInfo[$colorAttributeValue]["images"]["small"] = array($smallImageUrl);
+                        $arProductColorInfo[$colorAttributeValue]["images"]["zoom"] = array($zoomImageUrl);
+                        $arProductColorInfo[$colorAttributeValue]["images"]["big"] = array($imageUrl);
+                        //echo "creating"."<br/>";
+                    } else
+                        if (count($arProductColorInfo[$colorAttributeValue]["images"]["small"]) < 4) {
+                            array_push($arProductColorInfo[$colorAttributeValue]["images"]["big"], $imageUrl);
+                            array_push($arProductColorInfo[$colorAttributeValue]["images"]["small"], $smallImageUrl);
+                            //echo "pushing"."<br/>";
+                            array_push($arProductColorInfo[$colorAttributeValue]["images"]["zoom"], $zoomImageUrl);
+                        }
+                }
+            }
+        } else {
+            if (isset($arProductColorInfo[$colorAttributeValue]["length"][$_childProduct->getAttributeText('size')]))
+                array_push($arProductColorInfo[$colorAttributeValue]["length"][$_childProduct->getAttributeText('size')], $temp1);
+            else
+                $arProductColorInfo[$colorAttributeValue]["length"][$_childProduct->getAttributeText('size')] = array($temp1);
+        }
+
+    } else {
+        if ($isSizeAvailable)
+            $temp1 = $_childProduct->getAttributeText('size') . "|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getQty() . "|" . $price . "|" . $rewardPoints;
+        else
+            $temp1 = "2|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getQty() . "|" . $price . "|" . $rewardPoints;
+        $temp1 .= "|" . Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getIsInStock();
+
+        $backOrderCheck = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childProduct)->getBackorders();
+        $temp1 .= "|" . $backOrderCheck;
+        if (isset($arProductColorInfo[$colorAttributeValue]["sizes"])) {
+            array_push($arProductColorInfo[$colorAttributeValue]["sizes"], $temp1);
+        } else {
+            $arProductColorInfo[$colorAttributeValue]["sizes"] = array($temp1);
+            if (!isset($arProductColorInfo[$colorAttributeValue]["sizes"]))
+                echo "not set";
+
+            foreach ($_gallery as $_image) {
+                $imageLabelData = json_decode(trim($_image->getLabel()), true);
+                if ($imageLabelData == NULL || strcasecmp($imageLabelData['type'], "product image") != 0)
+                    continue;
+                if ($imageLabelData['color'] == Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProduct->getId(), 'color', $storeId))
+                {
+                    $alt = '';
+                    if (isset($imageLabelData['alt']))
+                        $alt = $imageLabelData['alt'];
+
+                    try {
+                        if ($alt == "") {
+                            $abcclr = $_childProduct->getAttributeText('color');
+                            if (strpos($abcclr, "|") !== false)
+                                $abcclr = substr($abcclr, 0, strpos($abcclr, "|"));
+                            $alt = $productName . " - " . $abcclr;
+                        }
+                    } catch (Exception $e) {
+                        Mage::logException($e);
+                    }
+
+                    $imageHelper = $this->helper('catalog/image');
+					$imageHelperm = $this->helper('adaptiveResize/image');
+
+                    $smallImageUrl = "_" . $imageHelper->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(138, 180)->setQuality(90) . "|" . $alt;
+                    
+					
+					$imageUrl = "_" . $imageHelperm->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(640) . "|" . $alt;
+                    $zoomImageUrl = "_" . $imageHelper->init($_product, 'thumbnail', $_image->getFile())->setQuality(90) . "|" . $alt;
+
+                    $imagePath = substr($zoomImageUrl, 1);
+                    $dirImg = Mage::getBaseDir() . str_replace("/", DS, strstr($imagePath, '/media'));
+                    if (file_exists($dirImg)) {
+                        $imageObj = new Varien_Image($dirImg);
+                        $width = $imageObj->getOriginalWidth();
+                        $height = $imageObj->getOriginalHeight();
+
+                        $zoomImageUrl .= "|" . $width . "|" . $height;
+                    }
+
+                    if (!isset($arProductColorInfo[$colorAttributeValue]["images"])) {
+                        $arProductColorInfo[$colorAttributeValue]["images"] = array();
+                        $arProductColorInfo[$colorAttributeValue]["images"]["small"] = array($smallImageUrl);
+                        $arProductColorInfo[$colorAttributeValue]["images"]["zoom"] = array($zoomImageUrl);
+                        $arProductColorInfo[$colorAttributeValue]["images"]["big"] = array($imageUrl);
+                    } else {
+                        if (count($arProductColorInfo[$colorAttributeValue]["images"]["small"]) < 4) {
+                            array_push($arProductColorInfo[$colorAttributeValue]["images"]["big"], $imageUrl);
+                            array_push($arProductColorInfo[$colorAttributeValue]["images"]["small"], $smallImageUrl);
+                            array_push($arProductColorInfo[$colorAttributeValue]["images"]["zoom"], $zoomImageUrl);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+$tempProductColorInfo = array();
+$attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); //here, "color" is the attribute_code
+$allOptions = $attribute->getSource()->getAllOptions(true, true);
+foreach ($allOptions as $instance) {
+    if (array_key_exists($instance['label'], $arProductColorInfo)) {
+        $tempProductColorInfo[$instance['label']] = $arProductColorInfo[$instance['label']];
+
+    }
+}
+$arProductColorInfo = $tempProductColorInfo;
+
+
+$arProductAllSizes = array();
+
+$attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'size'); //here, "color" is the attribute_code
+$allOptions = $attribute->getSource()->getAllOptions(true, true);
+foreach ($allOptions as $instance) {
+    if ($instance['label'] != "")
+        array_push($arProductAllSizes, array("label" => $instance['label'], "value" => $instance['value']));
+}
+
+//for length attribute
+$arProductAllLength = array();
+if ($lengthAvailable) {
+    $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'length'); //here, "color" is the attribute_code
+    $allOptions = $attribute->getSource()->getAllOptions(true, true);
+    foreach ($allOptions as $instance) {
+        if ($instance['label'] != "")
+            array_push($arProductAllLength, array("label" => $instance['label'], "value" => $instance['value']));
+    }
+}
+
+?>
+
+  <div class="detail-page">
+    <div class="clearfix"></div>
+     <div class="detail-block">
+         <div class="sign-in-box">
+            <!-- <a href="#"> <span class=""><b>$</b>25</span></a> -->
+			<?php   
+		if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+		$store_id = Mage::app()->getStore()->getId();
+		$customerId = Mage::getModel('customer/session')->getCustomerId();
+		if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+			$reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+			echo $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
+			//Mage::helper('core')->currency($reward_flat_model->collectPointsCurrent($customerId, $store_id)+0);
+		}        
+		
+		$reward_model = Mage::getModel('rewardpoints/stats');
+		//echo "$".number_format((float)($reward_model->getPointsCurrent($customerId, $store_id)+0), 2, '.','');
+		//echo $reward_model->getPointsCurrent($customerId, $store_id)+0;                    
+		 echo '<a href="javascript:void(0)"><span class="reward_points"><b>$</b>'.($reward_model->getPointsCurrent($customerId, $store_id)+0).'</span></a>';
+		} else { ?>
+     <a href="javascript:void(0)" onclick="openLogin()"><span class="cuslogin">Sign In</span></a>
+	 <?php } ?>
+			 <?php $_helper = $this->helper('catalog/output');?>
+             <?php $_category_detail=Mage::registry('current_category');?>
+             <h1><?php if(isset($_category_detail)) { echo $_category_detail->getName(); }?></h1>
+          </div>
+
+
+		  <script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        selectmenulink('<?php echo $categoryurl; ?>');
+    });
+    _islengthavailable = <?php echo $lengthAvailable;?>;
+    _isoptionavailable = <?php echo $optionAvailable;?>;
+    _productcolorinfo = new Array();
+    _cnfrewardpoint = '<?php echo $productRewardPoints; ?>';
+    <?php
+    $configurableAttributeCollection=$_product->getTypeInstance()->getConfigurableAttributes();
+    foreach($configurableAttributeCollection as $attribute){
+        //echo "Attr-Code:".$attribute->getProductAttribute()->getAttributeCode()."<br/>";
+//        echo "Attr-Label:".$attribute->getProductAttribute()->getFrontend()->getLabel()."<br/>";
+//        echo "Attr-Id:".$attribute->getProductAttribute()->getId()."<br/>";
+        ?>
+    _productid = '<?php echo $productId; ?>';
+    <?php
+    if($attribute->getProductAttribute()->getAttributeCode() == "color")
+    {
+        ?>
+    _colorattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
+    <?php
+}
+if($attribute->getProductAttribute()->getAttributeCode() == "size")
+{
+    ?>
+    _sizeattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
+    <?php
+}
+if($attribute->getProductAttribute()->getAttributeCode() == "length")
+{
+    ?>
+    _lengthattributeid = '<?php echo $attribute->getProductAttribute()->getId(); ?>';
+    <?php
+}
+}
+
+$currentColorCount = 0;
+foreach($arProductColorInfo as $key=>$val)
+{
+?>
+    _productcolorinfo[<?php echo $currentColorCount; ?>] = new Object();
+    _productcolorinfo[<?php echo $currentColorCount; ?>].color = '<?php echo $key; ?>';
+
+    // check for in sale
+    <?php
+        if(isset($val['insale']))
+        {
+    ?>
+    _productcolorinfo[<?php echo $currentColorCount; ?>].insale = '<?php echo $val['insale']; ?>';
+    <?php } ?>
+    // end check for in sale
+
+    _productcolorinfo[<?php echo $currentColorCount; ?>].hex = new Array();
+    <?php
+        for($i = 0; $i < count($val['hex']); $i++)
+        {
+            ?>
+    _productcolorinfo[<?php echo $currentColorCount; ?>].hex[<?php echo $i; ?>] = '<?php echo $val['hex'][$i]; ?>';
+    <?php
+}
+
+    if(!$lengthAvailable)
+    {
+    ?>
+    _productcolorinfo[<?php echo $currentColorCount; ?>].sizes = new Array();
+    <?php
+        for($i = 0; $i < count($val['sizes']); $i++)
+        {
+            ?>
+    _productcolorinfo[<?php echo $currentColorCount; ?>].sizes[<?php echo $i; ?>] = '<?php echo $val['sizes'][$i]; ?>';
+    <?php
+    }
+
+}
+// code for size and length attribute  only in case of length attribute available
+if($lengthAvailable)
+{
+?>
+    _productcolorinfo[<?php echo $currentColorCount; ?>].sizes = new Array();
+    <?php
+        for($i = 0; $i < count($val['sizes']); $i++)
+        {
+            ?>
+    _productcolorinfo[<?php echo $currentColorCount; ?>].sizes[<?php echo $i; ?>] = '<?php echo $val['sizes'][$i]; ?>';
+    <?php
+    }
+?>
+    _productcolorinfo['<?php echo $currentColorCount; ?>'].lengths = new Array();
+    <?php
+
+        foreach($val['length'] as $key => $value)
+        {
+            for($j = 0; $j < count($value); $j++)
+            {
+                if($j == 0)
+                {
+                    ?>
+    _productcolorinfo[<?php echo $currentColorCount; ?>].lengths['<?php echo $key; ?>'] = new Array();
+    <?php
+}
+?>
+
+    _productcolorinfo[<?php echo $currentColorCount; ?>].lengths['<?php echo $key; ?>'][<?php echo $j; ?>] = '<?php echo $val['length'][$key][$j]; ?>';
+    <?php
+    }
+}
+
+}
+?>
+    _productcolorinfo[<?php echo $currentColorCount; ?>].zoomimages = new Array();
+    <?php
+        for($i = 0; $i < count($val['images']['zoom']); $i++)
+        {
+            $abc = explode("|", $val['images']['zoom'][$i]);
+            ?>
+    //console.log('<?php echo $abc[0]; ?>');
+    _productcolorinfo[<?php echo $currentColorCount; ?>].zoomimages[<?php echo $i; ?>] = new Array();
+    _productcolorinfo[<?php echo $currentColorCount; ?>].zoomimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
+    _productcolorinfo[<?php echo $currentColorCount; ?>].zoomimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
+    <?php
+}
+?>
+    _productcolorinfo[<?php echo $currentColorCount; ?>].smallimages = new Array();
+    <?php
+        for($i = 0; $i < count($val['images']['small']); $i++)
+        {
+            $abc = explode("|", $val['images']['small'][$i]);
+            ?>
+    _productcolorinfo[<?php echo $currentColorCount; ?>].smallimages[<?php echo $i; ?>] = new Array();
+    _productcolorinfo[<?php echo $currentColorCount; ?>].smallimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
+    _productcolorinfo[<?php echo $currentColorCount; ?>].smallimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
+    <?php
+}
+?>
+    _productcolorinfo[<?php echo $currentColorCount; ?>].bigimages = new Array();
+    <?php
+        for($i = 0; $i < count($val['images']['big']); $i++)
+        {
+            $abc = explode("|", $val['images']['big'][$i]);
+            ?>
+    _productcolorinfo[<?php echo $currentColorCount; ?>].bigimages[<?php echo $i; ?>] = new Array();
+    _productcolorinfo[<?php echo $currentColorCount; ?>].bigimages[<?php echo $i; ?>][0] = "<?php echo substr($abc[0], 1); ?>";
+    _productcolorinfo[<?php echo $currentColorCount; ?>].bigimages[<?php echo $i; ?>][1] = "<?php echo $abc[1]; ?>";
+    <?php
+}
+?>
+    <?php
+    $currentColorCount++;
+}
+?>
+
+</script>
+
+<?php
+if (!$isSizeAvailable) {
+    ?>
+    <script type="text/javascript">
+        _sizesuperattribute = false;
+    </script>
+<?php
+}
+?>
+           <div class="clearfix"></div>
+           <div class="detail-box">
+			    
+				<!-- ImageGallery -->
+				<div class="productimagecontainer">
+						<ul>
+							<li>
+								<div class="thumb-imgs">
+									<div class="flexslider">
+										<!-- <div class="flexslider"> -->
+											<!-- <table class="smallimagecontiner" width="100%"> 
+												<tr></tr>
+											</table>-->
+										<!-- </div> -->
+									</div>
+                                </div>
+							</li>
+							<!-- <li>
+								<div class="show-prodImg">
+									<div class="tdbigimagecontainer">
+										<div class="flexslider">
+										</div>
+									</div>
+								</div>
+							</li> -->
+
+						</ul>
+					</div>
+				
+				<!-- ImageGallery -->
+                 <!-- <div class="flexslider">
+                 					  <ul class="slides">
+                 						  <li><img class="img-responsive" src="<?php echo $this->getSkinUrl('images/detail-img1.jpg'); ?>" alt="koura"/></li>
+                 						  <li><img class="img-responsive" src="<?php echo $this->getSkinUrl('images/detail-img1.jpg'); ?>" alt="vivacity-crop"/></li>
+                 						  <li><img class="img-responsive" src="<?php echo $this->getSkinUrl('images/detail-img1.jpg'); ?>" alt="koura"/></li>
+                 						  <li><img class="img-responsive" src="<?php echo $this->getSkinUrl('images/detail-img1.jpg'); ?>" alt="koura"/></li>
+                 					  </ul>
+                 				  </div> -->
+				 
+              </div>
+			  <!-- DetailsinGreyArea -->
+		 <table class="productdetailtable normalproductdetail">
+			<tr>
+			<td>
+			  <div class="prd-info">
+			   <div class="prd-detail">
+			   <a href="javascript:void(0)"><?php echo html_entity_decode($productName); ?></a>
+			   <div class="blck-head-sml">
+					<table class="selectedcolor" cellspacing="0" cellpadding="0">
+						<tr>
+							<td class="selectedcolortext"></td>
+						</tr>
+					</table>
+				</div>
+			 
+			  
+			  <p><span class="productcost amount "><?php echo $productPrice; ?></span>
+			  <span class="was-amount no-display" style="text-transform: lowercase;"><?php echo 'was ' . $productPrice; ?></span></p>
+			   </div>
+			    <div class="social-detail">
+				<span></span>
+                    <?php
+                    $current_url = $this->helper('core/url')->getCurrentUrl();;
+                    ?>
+				<ul>
+                 <li><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $current_url;?>"> <img width="11" height="19" border="0" src="<?php echo $this->getSkinUrl('images/fb-social.png'); ?>" alt=""></a></li>
+
+                 <li><a  class="share_on_pinterest" target="_blank"  href=""> <img width="19" height="19" border="0" src="<?php echo $this->getSkinUrl('images/pin-social.png'); ?>" alt=""></a></li>
+
+                 <!-- <li><a target="_blank"  href="http://instagram.com/yogasmoga"> <img width="17" height="18" border="0" src="<?php echo $this->getSkinUrl('images/insta-social.png'); ?>" alt="Instagram"></a></li> -->
+
+                 <li><a target="_blank"  href="https://twitter.com/home?status=<?php echo $current_url;?>"> <img width="20" height="17" border="0" src="<?php echo $this->getSkinUrl('images/twitr-social.png');?>" alt="Pinterest"></a></li>
+
+                </ul>
+			   </div>
+			   </div>
+			
+			<!-- selectColor -->
+		
+			<div class="color-box">
+				<div class="blck-head-sml"><span>Choose color</span></div>
+				
+				<div id="colorcontainer">
+					<?php
+					$primarycolorcode = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'primarycolorcode', Mage::app()->getStore()->getStoreId());
+					$first = true;
+					//print_r($productcolorinfo);
+					$colorCount = 0;
+					for ($incr = 0; $incr < 2; $incr++) {
+						foreach ($arProductColorInfo as $key => $colorInfo) {
+							if ($incr == 0) {
+								if ($colorInfo['value'] != $primarycolorcode)
+									continue;
+							} else {
+								if ($colorInfo['value'] == $primarycolorcode)
+									continue;
+							}
+							$colorCount++;
+							?>
+							<div>
+							<span></span>
+								<table color="<?php echo $key; ?>" value="<?php echo $colorInfo['value']; ?>">
+									<tr>
+										<?php
+										//echo '<pre>'; print_r($colorinfo); echo count($colorinfo['hex']); die('test');
+										foreach ($colorInfo['hex'] as $hex) {
+											if (count($colorInfo['hex']) == 1) {
+
+												?>
+												<td style="border-color: transparent !important; background-color: <?php echo $hex ?>;">
+													<div></div>
+												</td>
+											<?php
+											} else {
+												?>
+												<td style="border-color: <?php echo $hex ?>;">
+													<div></div>
+												</td>
+											<?php
+											}
+										}
+										?>
+									</tr>
+									<tr>
+										<td colspan="<?php echo count($colorInfo['hex']); ?>" <?php if ($first) {
+											echo "class='tdselectedcolor'";
+											$first = false;
+										} ?>>
+
+										</td>
+									</tr>
+								</table>
+							</div>
+							<?php
+							//if(($colorcount % 5) == 0)
+							//echo "<br/>";
+						}
+					}
+
+					?>
+				</div>
+			<div class="clearfix"></div>
+			</div>
+			<!-- selectColor -->
+
+			<!-- selectSize -->
+			
+			<div class="selectedsize" <?php if (!$isSizeAvailable) {
+				echo "style='display:none;'";
+			} ?>>
+				<div class="box-seprtr">
+					<div class="blck-head-sml"><span>Choose size</span>
+						 <?php if ($sizeChartBlockId != "") { ?>
+			               <a id="sizechart"><span class="chart-txt">Size Chart</span></a>
+			             <?php } ?>
+					</div>
+					<div class="size-list" id="sizecontainer" <?php if (!$isSizeAvailable) {
+						echo "style='display:none;'";
+					} ?>>
+						<table>
+							<tr>
+								<?php
+								$sizecount = 0;
+								foreach ($arProductAllSizes as $size)
+								{
+								//if($sizecount % 6 == 0 && $sizecount > 0)
+								if (strpos($size['label'], "T") !== false & $sizecount == 0)
+								{
+								$sizecount++;
+								?>
+							</tr>
+							<tr>
+								<?php
+								}
+								?>
+								<td>
+<!--                                    out-of-stock.png-->
+									<div class="sizediv" value="<?php echo $size['value']; ?>"
+										 size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?><img src="<?php echo $this->getSkinUrl('images/not_available.png');?>"/></div>
+								</td>
+								<?php
+								}
+								?>
+							</tr>
+						</table>
+					</div>
+
+					<?php if ($optionAvailable===0) {
+						$includeoption = "style='display:none'";
+					} ?>
+                </div>
+			</div>
+			<div class="clearfix"></div>
+              <div id="includeoption" <?php echo $includeoption; ?> class="includeoptionmain">
+						<span>Include a bra cup?</span>
+						<div class="include_option">
+						<?php
+						foreach ($arProductAllOptions as $options) {
+							?>
+							<div value="<?php echo $options['default_price']; ?>" title="<?php echo $options['default_title']; ?>"
+								 optionid="<?php echo $options['option_id']; ?>"
+								 optiontypeid="<?php echo $options['option_type_id']; ?>" class="<?php if($options['default_title'] =='N'){ echo 'selected';} ?>"><?php echo $options['default_title']; ?>
+							</div>
+						<?php
+						}
+						?>
+						</div>
+
+			</div>
+			<div class="clearfix"></div>
+			<!-- selectSize -->
+			<!-- select length -->
+			<div class="selectedlength" <?php if (!$lengthAvailable) {
+				echo "style='display:none;'";
+			} ?>>
+				<span class="blck-head-sml">Select a length?</span>
+				<?php
+				foreach ($arProductAllLength as $length) {
+					?>
+					<div value="<?php echo $length['value']; ?>"
+						 lengthtype="<?php echo $length['label']; ?>"><?php echo $length['label']; ?><span></span></div>
+				<?php
+				}
+				?>
+			</div>
+			<!-- select length -->
+
+
+			<!-- fittable -->
+			<div class="box-seprtr dnone">
+				<div class="blck-head-sml"><span class="qty">Step 3:</span>
+					Qty
+					<?php if ($howDoesItFitBlockId != "") { ?>
+						<table class="fittable">
+							<tr>
+								<td class="howdoesitfitlink">
+									<div style="position: relative;">
+										<p class="block-link" style="margin: 2px 0 0 0; float: right;"><a id="how-does-it-fit"
+																										  href="javascript:void(0);">How
+												does it fit?</a></p>
+										
+									</div>
+								</td>
+							</tr>
+						</table>
+					<?php } ?>
+				</div>
+				<div class="sizeselector">
+					<select class="qtyselector">
+						<?php
+						for ($i = 1; $i < 21; $i++) {
+							?>
+							<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+						<?php
+						}
+						?>
+					</select>
+				</div>
+			</div>
+			<!-- fittable -->
+
+			<!-- addToBag -->
+			  <div class="clearfix"></div>
+          <div class="box-seprtr last">
+				
+				<!-- addToBagBtn -->
+			
+                
+				 <?php
+                $_in_wishlist = false;
+                foreach (Mage::helper('wishlist')->getWishlistItemCollection() as $_wishlist_item) {
+                    if ($productId == $_wishlist_item->getProduct()->getId()) {
+                        $_in_wishlist = true;
+                        break;
+                    }
+					
+                }
+
+                    if (($customerId = Mage::getSingleton('customer/session')->getCustomerId()) && ($_in_wishlist)) {
+					foreach (Mage::helper('wishlist')->getWishlistItemCollection() as $_wishlist_item) {
+                    $wishid = $_wishlist_item->getWishlistItemId();
+                    }
+                    ?>
+                    <a class="btn wish" href="<?php echo Mage::helper('core/url')->getHomeUrl()."wishlist/index/removemobile/item/".$wishid; ?>"><img class="" src="<?php echo $this->getSkinUrl('images/added_to_wishlist.png'); ?>" width="28px" height="28px" alt=""/></a>
+                <?php
+                } else {
+                    ?>
+                     <?php $customer = Mage::getSingleton('customer/session')->getCustomer(); ?>
+
+					<a class="btn wish <?php if(!Mage::getSingleton('customer/session')->isLoggedIn()) { echo 'not_login';} ?>" id="<?php echo $productId; ?>"
+                      href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>wishlist/index/addmobile/product/<?php echo $productId; ?>/">
+					<img class="" src="<?php echo $this->getSkinUrl('images/heart.png'); ?>" width="28px" height="28px" alt=""/></a>
+                <?php } ?>
+
+              <a id="outofstockitem" class="out_of_stock_item" href="javascript:void(0)">OUT OF STOCK</a>
+<!--                   imageurl="--><?php ///*echo $this->getSkinUrl('images/catalog/product/out_of_stock.png'); */?><!--" -->
+<!--                   downimageurl="--><?php //echo $this->getSkinUrl('images/catalog/product/out_of_stock.png');?><!--"-->
+
+
+                <div id="orderitem" class="addtobag spbutton"
+                     imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>"
+                     downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>">ADD TO BAG</div>
+
+                <!-- outOfStockBtn -->
+
+				<!-- preOrderItemBtn -->
+				<div id="preorderitem" class="preorderitem spbutton"
+					 imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>"
+					 downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>">PRE-ORDER ITEM
+				</div>
+				<!-- preOrderItemBtn -->
+
+				<!-- producterrorcontainer -->
+				<div class="producterrorcontainer">
+					<div class="errormsg"></div>
+					
+				</div>
+				<!-- producterrorcontainer -->
+
+				
+			</div>
+			<!-- addToBag -->
+			</td>
+			</tr>
+			</table>
+			
+			<!-- DetailsinGreyArea -->
+
+			</div>
+             <div class="smogibuckcount" <?php if (!$isRewardAble) { echo "style='visibility:hidden'"; } ?>>
+                <div class="earnbucks">
+        <p class="earnsmogibuckstext"><img src="/skin/frontend/default/newrespondf/images/coins.png" /> Earn <?php echo $productRewardPoints; ?> Smogi Bucks with this purchase</p>
+                 </div>
+              </div>
+			  <div class="clearfix"></div>
+			  <div class="free-shiping">
+			  <p>Free and fast shipping to US and Canada</p>
+			  </div>
+			   <div class="clearfix"></div>
+			   <div class="description-block">
+			   <ul class="first-list">
+			   <li class="detail-view"><a href="#">PRODUCT DESCRIPTION</a>
+			   <span class="arrow-tag"><img alt="arrow" src="<?php echo $this->getSkinUrl('images/black-arrw.png'); ?>" class=""></span>	
+				<div style="display:none;" class="inner-content">
+				<!-- description -->
+				<?php //if (strlen($_product->getDescription()) < 300) { ?>
+					<div class="shortdesc"><?php echo $_product->getDescription(); ?> </div>
+				<?php /**
+				} else {
+					$str = $_product->getDescription();
+					$firststr = substr($str, 0, 300);
+					$secondstr = substr($str, 300, strlen($str));
+
+					?>
+					<div class="shortdesc"><span><?php echo $firststr; ?></span>
+					<span class="sec-desc"><?php echo $secondstr; ?></span><span class="dot">...</span>
+                    <p class="readmore" style="margin: 0; cursor:pointer;">
+					<span id="more">Read more</span><span id="less"class="dnone">Read less</span>
+					</p></div>
+				<?php } **/ ?>
+				<!-- description -->
+				
+				</div>
+			   </li>
+
+			   <?php
+				$newdfimages = array();
+				$ftimage = "";
+				$ftimagespcl = "";
+				$ftimagesmall = "";
+				foreach ($_gallery as $_image) {
+					$imageLabelData = json_decode(trim($_image->getLabel()), true);
+					if ($imageLabelData == NULL) {
+						//echo $_image->getLabel();
+						continue;
+					}
+					if (strcasecmp($imageLabelData['type'], "new design feature image") == 0 && isset($imageLabelData['position'])) {
+						$newdfimages[$imageLabelData['position']]["url"] = "_" . $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
+						if (isset($imageLabelData['caption']))
+							$newdfimages[$imageLabelData['position']]["caption"] = $imageLabelData['caption'];
+						else
+							$newdfimages[$imageLabelData['position']]["caption"] = "";
+						continue;
+					}
+				}
+				ksort($newdfimages);
+				//                echo '<pre>';print_r($newdfimages);die;
+				?>
+				<?php if ($designFeatureVideoName != '' || count($newdfimages) > 1) {
+					?>
+			 <li class="detail-view design-feature"><a href="#">DESIGN FEATURES</a>
+			   <span class="arrow-tag"><img alt="arrow" src="<?php echo $this->getSkinUrl('images/black-arrw.png'); ?>" class=""></span>
+			   
+				<!-- heading -->
+					<?php
+					if ($designFeatureVideoName != '') {
+						?>
+						<!--  <div class="video-design-block">
+
+							<video style="width:358px;" controls>
+								<source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . "design_features_video/" . $_product->getDesignFeatureVideo(); ?>" type="video/mp4">
+
+							</video>
+						</div> -->
+					<?php } ?>
+
+
+					<ul style="display:none;" class="inner-content">
+				
+						<?php
+						$i = 0;
+						foreach ($newdfimages as $ndfimg) {
+							$i++;
+							?>
+					<li class="<?php if ($i == 2 && $designFeatureVideoName != '') { echo 'last-df'; }
+							if ($i == 4 && $designFeatureVideoName == '') echo ' df-no-vid'; ?>">
+				<div class="inner-feature">
+                    <?php if ($i==4 && $designFeatureVideoName != ''): ?>
+				<img nopin="nopin" class="vid-pl-btn" src="<?php echo $this->getSkinUrl('images/vid-icon-img.png'); ?>">
+				<?php endif; ?>
+                    
+				<img nopin="nopin" class="img-responsive" width="178" height="178" border="0"  src="<?php echo substr($ndfimg["url"], 1); ?>">
+				<span><?php echo $ndfimg["caption"]; ?></span>
+			     </div>
+							</li>
+							<?php if ($i == 2) { ?> 
+							<span class="clear-fix"></span>
+
+						<?php
+						}
+						   }
+						?>
+						<span class="clear-fix"></span>
+
+					</ul>
+				</li>
+				<?php } ?>
+				<!-- featuresList -->
+                <?php 
+                   if(Mage::registry('current_category')){
+						$category_id =  Mage::registry('current_category')->getId();
+					 } else{
+						$categories = $_product->getCategoryCollection()
+										  ->addAttributeToSelect('name');
+						foreach($categories as $category) {
+							$category_id = $category->getId();
+						}
+					 }
+
+					 if($category_id == '8' ||  $category_id == '46' || $category_id == '29'|| $category_id == '30'|| $category_id == '31'|| $category_id == '32'|| $category_id == '33'|| $category_id == '12'|| $category_id == '38'|| $category_id == '39'|| $category_id == '40'|| $category_id == '50') { } else {
+                     
+
+				 ?>
+			    <li class="detail-view complete-look"><a href="#">COMPLETE THE LOOK</a>
+				<span class="arrow-tag"><img alt="arrow" src="<?php echo $this->getSkinUrl('images/black-arrw.png'); ?>" class=""></span>
+				<ul style="display:none;" class="inner-content">
+				<li>
+                   <!-- completeLook -->
+				<!-- heading -->
+				<?php //echo $this->getChildHtml('upsell_products');
+				$upsell_product = $_product->getUpSellProductCollection()->addAttributeToSort('position', Varien_Db_Select::SQL_ASC)->addStoreFilter();
+				$count = count($upsell_product);
+				if ($count > 1) {
+					$write = Mage::getSingleton('core/resource')->getConnection('core_read');
+					$readresult = $write->query("SELECT eaov.value AS 'Attribute', eaov.option_id AS 'Value' FROM eav_attribute ea, eav_attribute_option eao, eav_attribute_option_value eaov WHERE ea.attribute_id = eao.attribute_id AND eao.option_id = eaov.option_id AND eaov.store_id = 0 AND ea.attribute_code='color'");
+					while ($row = $readresult->fetch()) {
+						$clrinfo[$row['Value']] = $row['Attribute'];
+					}
+					?>
+
+					<?php
+					//check if record is empty or not
+					$upsellsimplecount = 0;
+					foreach ($upsell_product as $upsell) {
+						if ($upsellsimplecount == 2) break;
+						$product = Mage::getModel('catalog/product')->load($upsell->getId());
+						$productType = $product->getTypeID();
+						if ($productType == 'simple') {
+
+							$parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($upsell->getId());
+							if (isset($parentIds[0])) {
+								$parentproduct = Mage::getModel('catalog/product')->load($parentIds[0]);
+								//print_r($parentproduct);die;
+								$_gallery = Mage::getModel('catalog/product')->load($parentproduct->getId())->getMediaGalleryImages();
+								foreach ($_gallery as $_image) {
+									$imageLabelData = json_decode(trim($_image->getLabel()), true);
+									if ($imageLabelData == NULL) {
+										//echo $_image->getLabel();
+										continue;
+									}
+
+
+									if (strcasecmp($imageLabelData['type'], "product image") == 0 && $imageLabelData['color'] == $product->getColor()) {
+										$upsellsimplecount++;
+										// $ftimage = $this->helper('catalog/image')->init($parentproduct, 'thumbnail', $_image->getFile());
+										$completelookimg = $this->helper('adaptiveResize/image')->init($parentproduct, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(320);
+										?>
+
+										<?php
+										break;
+									}
+
+
+								}
+								//if ($upsellsimplecount == 1) {
+									?>
+									
+								  
+								<?php //} ?>
+								
+								<div class="inner-feature">
+									<a href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>">
+                                     <img class="img-responsive" alt="<?php echo $parentproduct->getName() ?>"
+											   src="<?php echo $completelookimg; ?>"></a>
+											  <div class="caption">
+												<span class="prd_title"><a href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>">
+                                     <?php echo $parentproduct->getName() ?></a></span>
+												
+												 <p>
+												<span class="prd-color"><span><?php echo $clrinfo[$product->getColor()] ?></span></span>
+												<span class="prd-price">$<?php echo number_format((float)($parentproduct->getPrice()), 2, '.', '');?></span>
+												</p>
+											</div>
+									 
+							  </div>
+								
+							<?php
+							}
+							?>
+
+						<?php
+						}
+					}
+					//if ($upsellsimplecount > 1) {
+						?>
+						
+					<?php //} ?>
+				<?php
+				}
+				?>
+
+                 </li>
+
+				<!-- completeLook -->
+		        </ul>
+			   </li>
+			   <?php } ?>
+			   <?php if ($fabricStoryBlockId != '') {  ?>
+			     <li class="detail-view"><a href="#">FABRIC TECHNOLOGY</a>
+			   <span class="arrow-tag"><img alt="arrow" src="<?php echo $this->getSkinUrl('images/black-arrw.png'); ?>" class=""></span>	
+				<ul style="display:none;" class="inner-content">
+				<li>
+				<div class="fabric-tech">
+				<!-- fabricDetails  fabric story-->
+					<?php
+						echo "<div class='mainfabric' rel='main'>";
+						echo $this->getLayout()->createBlock('cms/block')->setBlockId($fabricStoryBlockId)->toHtml();
+						echo "</div>";
+                        echo "<div class='changefabric'>";
+						if ($fabric_changed) {
+
+							foreach ($arFabricArray as $key => $value) {
+								echo "<div class='fabric_story_block' rel='$key'>";
+								echo $this->getLayout()->createBlock('cms/block')->setBlockId($value)->toHtml();
+								echo "</div>";
+							}
+						}
+                       echo "</div>";
+					?>
+
+					<!-- fabricDetails -->
+				</div>
+				</li>
+				</ul>
+			   </li>
+			   <?php } ?>
+
+			  <?php   if($category_id == '8' ||  $category_id == '46' || $category_id == '29'|| $category_id == '30'|| $category_id == '31'|| $category_id == '32'|| $category_id == '33'|| $category_id == '12'|| $category_id == '38'|| $category_id == '39'|| $category_id == '40'|| $category_id == '50') { } else { ?>
+			      <li class="detail-view"><a href="#">FIT</a>
+			   <span class="arrow-tag"><img alt="arrow" src="<?php echo $this->getSkinUrl('images/black-arrw.png'); ?>" class=""></span>	
+				<div style="display:none;" class="inner-content">
+				
+				 <!-- featuresList -->
+					<?php
+					$howToMeasureVidio = $_product->getHowToMeasureVideo();
+					$howToMeasureVidio = Mage::getResourceModel('catalog/product')->getAttributeRawValue($_product->getId(), 'how_to_measure_video', Mage::app()->getStore()->getStoreId());
+					if ($sizeChartBlockId != '' || $howToMeasureVidio != '') {
+						?>
+						
+						<div class="fitDetail font11">
+							<div class="video-box f-left">
+								<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($howDoesItFitBlockId)->toHtml(); ?>
+								<!--<ul>
+									<li>Body hugging/form fitting</li>
+									<li>High hip length</li>
+									<li>Perfect racer back for movement</li>
+								</ul>-->
+
+								<div class="vlink-cont" style="margin-left:16px;">
+									<p class="block-link" style="margin-top: 15px;"><a href="javascript:void(0)" class="com-a-prd-links">Watch how to
+											measure</a></p>
+								</div>
+								<!-- <div class="sm-size-chart">
+									<a class="size-res"></a>
+									<?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizeChartBlockId)->toHtml(); ?>
+								</div> -->
+							</div>
+							<?php
+
+							if ($howToMeasureVidio != '') {
+								?>
+								<div class="video-block f-right">
+									<img nopin="nopin" src="<?php echo $this->getSkinUrl('images/how-to-measure-thumbnail.jpg'); ?>"/>
+									</video>
+
+                               </div>
+							<?php } ?>
+							<div class="clear-fix"></div>
+							<div class="lg-size-chart">
+								<a class="size-res-org" name="sizechart"></a>
+								<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($sizeChartBlockId)->toHtml(); ?>
+							</div>
+
+						</div>
+					<?php } ?>
+
+					<!-- featureDesign -->
+
+				</div>
+			   </li>
+			   <?php } ?>
+			      <li class="detail-view" style="display: none;"><a href="#">REVIEW</a>
+			   <span class="arrow-tag"><img alt="arrow" src="<?php echo $this->getSkinUrl('images/black-arrw.png'); ?>" class=""></span>	
+				<ul style="display:none;" class="inner-content">
+				<li><?php echo $this->getChildHtml('review_form') ?>
+				<?php echo $this->getChildHtml('product_review') ?>
+				</li>
+				</ul>
+			   </li>
+			  </ul>
+			   
+			   </div>
+          
+           </div>
+     </div>
+
+	 
+<!--Container for the video Popup-->
+<?php
+if ($designFeatureVideoName != '') {
+    ?>
+    <div class="html-vid-pop html-des-vid-popup">
+        <span class="close_video_popup"></span>
+        <video id="df-vid" style="width:100%;" controls>
+            <source
+                src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . "design_features_video/" . $_product->getDesignFeatureVideo(); ?>"
+                type="video/mp4">
+        </video>
+    </div>
+<?php } ?>
+<?php
+if ($howToMeasureVidio != '') {
+    ?>
+    <div class="html-vid-pop html-fit-vid-popup">
+        <span class="close_video_popup"></span>
+        <video id="measure-vid" style="width:100%;" controls>
+            <source
+                src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . "how_to_measure_video/" . $_product->getHowToMeasureVideo(); ?>"
+                type="video/mp4">
+        </video>
+    </div>
+     
+<?php } ?>
+    <div class="size_chart_popup">
+        <span class="close_size_cart"></span>
+        <div class="chart_container"></div>
+     </div>
+<?php
+if ($designFeatureVideoName != '' || $howToMeasureVidio != '') {
+    ?>
+    <div class="vid-popup-overlay"></div>
+<?php } ?>
+</div>
+<!-- ProductPage -->
+<?php
+$productmodel = Mage::getResourceModel('catalog/product');
+$productId = $_product->getId();
+$currentstoreid = Mage::app()->getStore()->getStoreId();
+$dfimages = array();
+$ftimage = "";
+$ftimagespcl = "";
+$ftimagesmall = "";
+foreach ($_gallery as $_image) {
+    $imageLabelData = json_decode(trim($_image->getLabel()), true);
+
+    if ($imageLabelData == NULL)
+        continue;
+
+
+    if (strcasecmp($imageLabelData['type'], "fabric image big") == 0) //if($_image->getLabel() == "Fabric_Technology_Image")
+    {
+        $ftimage = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
+        $ftimagespcl = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(800, 800)->setQuality(90);
+    ?>
+        <script type="text/javascript">
+            _fabrictechnologyimagespcl = '<?php echo $ftimagespcl; ?>';
+        </script>
+        <?php
+        continue;
+    }
+    if (strcasecmp($imageLabelData['type'], "fabric image small") == 0) //if($_image->getLabel() == "Fabric_Technology_Image_Small")
+    {
+        $ftimagesmall = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
+        continue;
+    }
+
+
+    if (strcasecmp($imageLabelData['type'], "design feature image") != 0 || !isset($imageLabelData['position']))
+        continue;
+
+    $dfimages[$imageLabelData['position']]["url"] = "_" . $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
+    if (isset($imageLabelData['caption']))
+        $dfimages[$imageLabelData['position']]["caption"] = $imageLabelData['caption'];
+    else
+        $dfimages[$imageLabelData['position']]["caption"] = "";
+}
+
+?>
+<?php
+if ($ftimage != "" && $ftimagesmall != "") {
+    $widthsmall = "";
+    $widthbig = "";
+    $heightbig = "";
+    $heightsmall = "";
+    $imagePath = $ftimage;
+    $dirImg = Mage::getBaseDir() . str_replace("/", DS, strstr($imagePath, '/media'));
+    if (file_exists($dirImg)) {
+        $imageObj = new Varien_Image($dirImg);
+        $width = $imageObj->getOriginalWidth();
+        $height = $imageObj->getOriginalHeight();
+        //echo $dirImg." - ".$width." x ".$height."<br/>";
+        $ftimage .= "|" . $width . "|" . $height;
+        $widthbig = $width;
+        $heightbig = $height;
+    }
+    $imagePath = $ftimagesmall;
+    $dirImg = Mage::getBaseDir() . str_replace("/", DS, strstr($imagePath, '/media'));
+    if (file_exists($dirImg)) {
+        $imageObj = new Varien_Image($dirImg);
+        $width = $imageObj->getOriginalWidth();
+        $height = $imageObj->getOriginalHeight();
+        //echo $dirImg." - ".$width." x ".$height."<br/>";
+        //$ftimage .= "|".$width."|".$height;
+        $widthsmall = $width;
+        $heightsmall = $height;
+    }
+    ?>
+    <script type="text/javascript">
+        _fabrictechnologyimage = '<?php echo $ftimage ?>';
+    </script>
+   
+<?php
+}
+?>
+
+<?php //echo $this->getChildHtml('upsell_products') ?>
+
+
+<!-- onZoomProductImage -->
+<div style="display:none;">
+    <div id="zoompopup">
+        <table class="productzoomtable">
+            <tr>
+                <td colspan="2">
+                    <table class="productdetailtable zoomproductdetail" style="position:relative;">
+                        <tr>
+                            <td>
+                                <div class="zoom-prd-det" style="margin: 40px 20px; width: auto;">
+                                    <div class="prdname in-bl vert-bottom">
+                                        <div class="productname"><?php echo html_entity_decode($productName); ?></div>
+                                        <span class="productcost amount no-display"><?php echo $productPrice; ?></span>
+
+                                    </div>
+                                    <div class="box-seprtr last in-bl vert-bottom">
+                                        <div class="blck-head-sml no-display"><span>Step 1:</span> choose your color
+                                        </div>
+                                        <div class="blck-head-sml">
+                                            <table class="selectedcolor">
+                                                <tr>
+                                                    <td>COLOR:</td>
+                                                    <td class="selectedcolortext"></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                        <div id="colorcontainer">
+                                            <?php
+                                            $first = true;
+                                            $colorCount = 0;
+                                            //print_r($productcolorinfo);
+                                            foreach ($arProductColorInfo as $key => $colorInfo) {
+                                                $colorCount++;
+                                                ?>
+                                                <div>
+                                                    <table color="<?php echo $key; ?>"
+                                                           value="<?php echo $colorInfo['value']; ?>">
+                                                        <tr>
+                                                            <?php
+                                                            //echo '<pre>'; print_r($colorinfo); echo count($colorinfo['hex']); die('test');
+                                                            foreach ($colorInfo['hex'] as $hex) {
+                                                                if (count($colorInfo['hex']) == 1) {
+
+                                                                    ?>
+                                                                    <td style="border-color: transparent !important; background-color: <?php echo $hex ?>;">
+                                                                        <div></div>
+                                                                    </td>
+                                                                <?php
+                                                                } else {
+                                                                    ?>
+                                                                    <td style="border-color: <?php echo $hex ?>;">
+                                                                        <div></div>
+                                                                    </td>
+                                                                <?php
+                                                                }
+                                                            }
+                                                            ?>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="<?php echo count($colorInfo['hex']); ?>" <?php if ($first) {
+                                                                echo "class='tdselectedcolor'";
+                                                                $first = false;
+                                                            } ?>>
+
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <?php
+                                                //if(($colorcount % 5) == 0)
+                                                //echo "<br/>";
+                                            }
+                                            ?>
+                                        </div>
+                                        <div style="clear:both;"></div>
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+                                <img id="closelightbox"
+                                     src="<?php echo $this->getSkinUrl('images/catalog/product/close-prd-zoom.png'); ?>"/>
+
+                                <div id="zoomoptions">
+                                    <img id="zoomout"
+                                         src="<?php echo $this->getSkinUrl('images/catalog/product/zoom-out.png'); ?>"/>
+                                    <img id="zoomin"
+                                         src="<?php echo $this->getSkinUrl('images/catalog/product/zoom-in.png'); ?>"/>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="zoomproductoptions">
+                    <table class="productdetailtable zoomproductdetail">
+                        <tr>
+                            <td>
+                                <div class="zoom-thumb-imgs">
+                                    <table class="zoomsmallimagecontainer" style="margin-left:40px;">
+                                        <tr>
+                                            <td><img src="" style="margin: 0 0 25px; max-width: 100%;"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="" style="margin: 0 0 25px; max-width: 100%;"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="" style="margin: 0 0 25px; max-width: 100%;"/></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <a href="javascript:void(0);" id="fbzoomtrigger" style="">Fabric Image</a>
+
+                                <div id="zoomedfbdtl"></div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td id="zoomedproductimage"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- onZoomProductImage -->
+<script type="text/javascript">
+    _isOnProductDetailPage = true;
+    bra_cup_insert_count = parseInt("<?php echo $optionAvailable; ?>");
+
+//    window.onload = initFabric;
+
+    <?php
+        if(isset($arBraCupInsertArray) && count($arBraCupInsertArray)>0){
+            foreach($arBraCupInsertArray as $key=>$value){
+                echo "bra_cup_insert_color_array.push(\"" . trim($key) . "\");";
+                echo "bra_cup_insert_value_array.push(\"" . trim($value) . "\");";
+            }
+        }
+    ?>
+
+//    function initFabric() {
+//        jQuery(".selectedcolor").load(changeFabric);
+//    }
+</script>
+ <script type="text/javascript">
+	  $j(window).load(function(){
+		$j('.flexslider').flexslider({
+		animation: "slide",
+		controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        after: function(){
+			
+			$j("div.social-detail span").html(($j("div.flexslider ul.slides li.flex-active-slide").index() + 1) + " / " + $j("div.flexslider ul.slides li").length);
+		}
+	  });
+	 // var active = $j("li a .flex-active");
+	  var total = $j("div.flexslider ul.slides li").length;
+	  //var test = ("1 / " + $j("div.flexslider ul.slides li").length);
+	  //var abc = $j("div.flexslider ul.slides li.flex-active-slide").index() + 1) + " / " + $j("div.flexslider ul.slides li").length;
+	  //alert(abc);
+	  
+	  $j("div.social-detail span").html("1 / " + $j("div.flexslider ul.slides li").length);
+
+
+//          $('.flexslider').flexslider({
+//              animation: "slide"
+//          });
+//		//var index = $('li:has(.flex-active)').index('.flex-control-nav li')+1;
+//		var total = $('.flex-control-nav li').length;
+//		$('.social-detail span').after('<div class="total-slides"> &nbsp; Of '+total+'</div>')	;
+//		//alert(index +'/'+total);
+		var selectedImgSrc = $j(".selectedimage img").attr("src");
+		var location = document.location;
+		var href = "https://pinterest.com/pin/create/button/?url="+location+"&media="+selectedImgSrc;
+		$j(".share_on_pinterest").attr("href",href);
+
+
+      });
+      </script>

@@ -12,6 +12,14 @@ body{
     font-size: 20px;
     overflow-x:hidden ;
 }
+input,textarea,button{
+    border-radius:0;
+    -webkit-border-radius:0;
+    -webkit-appearance: none;
+}
+input {
+    -webkit-appearance: none;
+}
 ::selection {
     background: none !important; /* WebKit/Blink Browsers */
 }
@@ -42,41 +50,45 @@ div,p{
     z-index: 10;
 }
 .header-container {
-    height: 60px;
+    background: none repeat scroll 0 0 #ae8637;
+    height: 44px;
+    line-height: 44px;
     overflow: hidden;
+    padding-left: 44px;
+    padding-right: 44px;
     position: relative;
-    background: #ae8637;
-    padding-left: 60px;
-    padding-right: 60px;
     text-align: center;
-    line-height: 60px;
 }
 .header-container > img {
     padding-top: 1px;
 }
 .menu_btn {
-    background: #555;
-    height: 60px;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 44px;
     left: 0;
     position: absolute;
-    top: 0;
-    width: 60px;
     text-align: center;
-    
+    top: 0;
+    width: 44px;
 }
 .menu_btn > img, .cart > img {
     display: block;
     margin: 1px auto 0;
 }
+.rangoli_menu .main_btn, .yogasmoga-menu .main_btn {
+    height: 44px !important;
+    line-height: 44px !important;
+    padding: 0 15px;
+}
 .cart {
-    background: url("images/cart.png") no-repeat scroll center center rgba(0, 0, 0, 0);
-    height: 60px;
+    background: none;
+    color: #ae8637;
+    font: 12px/49px GraphikRegular;
+    height: 44px;
     position: absolute;
     right: 0;
     top: 0;
-    width: 60px;
-    font: 12px/64px GraphikRegular;
-    color: #ae8637;
+    width: 44px;
 }
 .play_video, .featured_video_plus.responsive, iframe {
     bottom: 0;
@@ -128,8 +140,8 @@ div,p{
 .signup-signin-block {
     background: none repeat scroll 0 0 #555;
     bottom: 0;
-    font: 18px/15px ITCAvantGardeStd-Bk;
-    height: 58px;
+    font: 14px/44px ITCAvantGardeStd-Bk;
+    height: 44px;
     left: 0;
     position: fixed;
     width: 100%;
@@ -137,16 +149,16 @@ div,p{
 }
 .signup-signin-block span:nth-child(1) {
     display: block;
-    line-height: 58px;
+    line-height: 44px;
     text-align: center;
     width: 50%;
     color:#fff;
     float:left;
-    
+    font-size:14px !important;
 }
 .signup-signin-block span:nth-child(2) {
     display: block;
-    line-height: 58px;
+    line-height: 44px;
     text-align: center;
     width: 50%;
     background: #ae8637;
@@ -155,21 +167,21 @@ div,p{
     
 }
 .menu-box {
-    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.4);
     bottom: 0;
+    display: none;
     left: 0;
-    padding-right: 60px;
+    padding-right: 44px;
     position: fixed;
     right: 0;
-    top: 60px;
-    display: none;
+    top: 44px;
     z-index: 15;
 }
 
 .menu-box .menu_list {
-    background: none repeat scroll 0 0 rgba(85, 85, 85, 0.9);
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.95);
     height: 100%;
-    position: relative;
+    /*position: relative;*/
     width: 100%;
     float:left;
     overflow: hidden;
@@ -181,8 +193,8 @@ div,p{
     padding: 0;
 }
 .menu li {
-    height: 58px;
-    line-height: 58px;
+    height: 44px;
+    line-height: 44px;
     list-style: outside none none;
     padding-left: 70px;
     position: relative;
@@ -190,56 +202,57 @@ div,p{
 .menu li a{
     color:#fff;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 21px;
     font-family: "freight-text-pro";
     letter-spacing: 0.5px;
 }
+.not-logged-in-menu .menu li a{
+    color:#555;
+}
 .category-menu_mobile .menu a {
-    font-size: 15px;
+    font-size: 14px;
     letter-spacing: 1px;
     font-family: "ITCAvantGardeStd-Bk";
 }
 .close_menu {
-    background: url('images/close.png') no-repeat scroll 100% 100% rgba(85, 85, 85, 0.9);
-    background-position: center;
-    height: 60px;
+    background: url("images/close.png") no-repeat scroll center center rgba(85, 85, 85, 0.9);
+    float: right;
+    height: 44px;
     position: fixed;
     right: 0;
-    top: 60px;
-    width: 60px;
-    
-    float:right;
+    top: 44px;
+    width: 44px;
 }
 .main_btn img {
     padding:  0 4px;
 }
 .user_menu .main_btn {
-    line-height: 60px;
+    height: 44px;
+    line-height: 44px;
     padding-left: 70px;
 }
 .main_btn{
     position: relative;
 }
 .user_menu a {
-    line-height: 60px;
     color: #fff;
-    font:15px/60px ITCAvantGardeStd-Bk;
+    font:15px/44px ITCAvantGardeStd-Bk;
     text-decoration: none;
     text-transform: uppercase;
 }
 .menu_arrow {
-    
+    padding: 7px 15px;
     position: absolute;
-    right: 0px;
+    right: 0;
 }
 .profile_picture {
     border-radius: 50%;
-    height: 60px;
-    left: 0px;
+    height: 44px;
+    left: 0;
     overflow: hidden;
+    padding: 6px 10px;
     position: absolute;
     width: 60px;
-    padding: 10px;
 }
 .profile_picture img{
     width: 100%;
@@ -250,43 +263,46 @@ div,p{
     
 }
 .menu_arrow > img {
-    padding: 15px 15px 15px 0;
+    padding: 0;
     transition-duration: 200ms;
 }
 .menu li span {
-    background: url("images/icons_hover.png") no-repeat scroll 0 0 / 58px auto rgba(0, 0, 0, 0);
-    height: 58px;
+    background: url("images/icons_hover.png") no-repeat scroll 0 0 / 44px auto rgba(0, 0, 0, 0);
+    height: 44px;
     left: 0;
-    opacity: 0.2;
+    opacity: 1;
     position: absolute;
-    top: 60px;
-    width: 60px;
+    top: 0px;
+    width: 44px;
     transition-duration: 200ms;
+}
+.not-logged-in-menu .menu li span{
+    background: url("images/icons_before-login.png") no-repeat scroll 0 0 / 44px auto rgba(0, 0, 0, 0);
 }
 .menu li:hover span{
     opacity: 1;
     transition-duration: 200ms;
 }
 .read span {
-    background-position: 0 -16px !important;
+    background-position: 7px -12px !important;
 }
 .look span{
-    background-position: 0 -73px !important;
+    background-position: 7px -56px !important;
 }
 .learn span{
-    background-position: 0 -134px !important;
+    background-position: 7px -100px !important;
 }
 .smogi span{
-    background-position: 0 -193px !important;
+    background-position: 7px -145px !important;
 }
 .store span{
-    background-position: 0 -250px !important;
+    background-position: 7px -187px !important;
 }
 .connect span{
-    background-position: 0 -308px !important;
+    background-position: 7px -231px !important;
 }
 .about span{
-    background-position: 0 -368px !important;
+    background-position: 7px -277px !important;
 }
 .side_left {
     background: none repeat scroll 0 0 #555;
@@ -305,13 +321,13 @@ div,p{
     display: none;
 }
 .user_menu_links span {
-    height: 60px;
+    height: 44px;
     left: 0;
     position: absolute;
     width: 60px;
 }
 .menu_arrow.active > img {
-    padding: 15px 0 15px 15px;
+    padding: 0;
     transform: rotateZ(-180deg);
     -webkit-transform: rotateZ(-180deg);
     transition-duration: 200ms;
@@ -333,7 +349,7 @@ div,p{
     padding: 0;
 }
 .menu-container li {
-    line-height: 58px;
+    line-height: 44px;
     padding-left: 70px;
     position: relative;
 }
@@ -343,23 +359,23 @@ div,p{
 .ys_sub_menu li {
     padding: 0;
 }
-
 .sign-signup li a{
     color: #fff;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 14px;
     letter-spacing: 1px;
     font-family: "ITCAvantGardeStd-Bk";
 }
 .sign-signup li span {
-    background: url("images/signup_icon.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-    height: 58px;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 44px;
     left: 0;
+    opacity: 1;
     position: absolute;
+    text-align: center;
     top: 0;
-    width: 60px;
     transition-duration: 200ms;
-    opacity: 0.2;
+    width: 58px;
 }
 .sign-signup li:hover span {
     opacity: 1;
@@ -369,9 +385,15 @@ div,p{
     color: #fff;
     text-decoration: none;
 }
+.not-logged-in-menu .yogasmoga_menu_links ul li a{
+    color:#555;
+}
 .line {
-    border-bottom: 2px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.6);
     margin: 0 15px;
+}
+.not-logged-in-menu .line{
+    border-bottom: 1px solid rgba(85, 85, 85, 0.6);
 }
 .menu-container {
     height: 100%;
@@ -381,57 +403,47 @@ div,p{
     width: 110%;
 }
 .ys_main_category p> a {
-    font: 25px freight-text-pro;
+    font: 21px freight-text-pro;
 }
 .ys_sub_menu li a {
-    font: 15px ITCAvantGardeStd-Bk;
+    font: 14px ITCAvantGardeStd-Bk;
     color: #999 !important;
 }
 
 .ys_sub_menu > li > p>a ,.ys_sub_menu > li>a {
-    font: 15px ITCAvantGardeStd-Demi;
+    font: 14px ITCAvantGardeStd-Demi;
     color: #fff !important;
     text-transform: uppercase !important;
 }
 .ys_single_link > a {
     color: #fff;
-    font: 15px ITCAvantGardeStd-Bk;
+    font: 14px ITCAvantGardeStd-Bk;
 }
-.ys_single_link  span {
-    height: 60px;
+.ys_single_link span {
+    height: 44px;
     left: 0;
-    opacity: 0.2;
-    position: absolute;
-    width: 60px;
-    transition-duration: 200ms;
-}
-.ys_single_link:hover span{
     opacity: 1;
+    position: absolute;
     transition-duration: 200ms;
+    width: 60px;
+    text-align: center;
 }
-.smogi_bucks_icon{
-    background: url('images/smogi-icon.png') no-repeat;
-}
-.contact_icon{
-    background: url("images/contact-icon.png") no-repeat;
-}
-
 .page_heading {
-    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.95);
     box-shadow: -7px -12px 21px 0;
     font-family: ITCAvantGardeStd-Bk;
-    font-size: 24px;
-    height: 58px;
-    line-height: 58px;
+    font-size: 21px;
+    height: 44px;
+    line-height: 44px;
     position: fixed;
-    top: 60px;
+    top: 44px;
     width: 100%;
     z-index: 8;
 }
 .page_name {
     float: none;
     font-size: inherit !important;
-    line-height: 58px;
+    line-height: 44px;
     position: initial !important;
 }
 .page_heading > div {
@@ -439,14 +451,21 @@ div,p{
     text-align: center;
 }
 .page_heading > div > span {
-    font-size: 18px;
+    font-size: 14px;
     left: 15px;
-    line-height: 58px;
+    line-height: 44px;
     position: absolute;
 }
+.shopping_cart {
+    height: 44px;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
 .smogi_bucks i {
-    font: 12px/55px ITCAvantGardeStd-Bk;
-    padding-bottom: 4px;
+    font: 10px/44px ITCAvantGardeStd-Bk;
+    letter-spacing: 1px;
+    padding-bottom: 5px;
     vertical-align: middle;
 }
 .newsletter > input {
@@ -466,6 +485,7 @@ div,p{
     float: left;
     width: 100%;
     height: 58px;
+    display: none;
 }
 .newsletter > button {
     position: absolute;
@@ -477,7 +497,7 @@ div,p{
     
 }
 .copyright{
-    line-height: 58px; font-size:12px; font-family: Arial; padding-left: 10px; color:#555555;
+    line-height: 44px; font-size:12px; font-family: Arial; padding-left: 10px; color:#555555;
 }
 .close_post {
     background: url("images/close.png") no-repeat scroll center center rgba(85, 85, 85, 0.9);
@@ -519,6 +539,10 @@ textarea {
     margin-bottom: 10px;
     font:18px/22px freight-text-pro;
 }
+.profile-img-small img {
+    border-radius: 50%;
+    border: none;
+}
 .submit{
     height: 45px;
     border:none;
@@ -527,6 +551,7 @@ textarea {
     width: 50%;
     background: #555;
     color:#fff;
+    border-radius: 0px;
     font:16px/15px ITCAvantGardeStd-Bk;
     text-transform: uppercase;
 }
@@ -605,16 +630,17 @@ textarea {
     font: 12px/22px GraphikRegular;
 }
 .smogi_bucks {
-    background: none repeat scroll 0 0 #f2f2f2;
+    background: none ;
     left: 0 !important;
     text-align: center;
-    width: 60px;
+    width: 44px;
+    height: 44px;
 }
 .open-filter {
     background: url("images/open-filter.png") no-repeat scroll center center rgba(0, 0, 0, 0);
-    height: 60px;
+    height: 44px;
     left: initial !important;
-    right: 16px;
+    right: 7px;
     width: 30px;
     z-index: 2;
     top:0;
@@ -723,9 +749,10 @@ textarea {
     background: none repeat scroll 0 0 #fff;
     height: 100%;
     left: 0;
+    margin-top: -60px;
     position: fixed;
     right: 0;
-    top: 58px;
+    top: 88px;
     z-index: 3;
 }
 .game_message > p {
@@ -961,7 +988,7 @@ textarea {
     opacity: 1;
 }
 .buttons {
-    bottom: 0;
+    bottom: -2px;
     float: left;
     left: 0;
     position: fixed;
@@ -996,7 +1023,7 @@ textarea {
     color: #fff;
     font: 24px/30px ITCAvantGardeStd-Bk;
     left: 0;
-    padding: 60px 25px 0;
+    padding: 88px 25px 0;
     position: fixed;
     right: 0;
     text-align: center;
@@ -1047,9 +1074,15 @@ textarea {
     
     font: 15px/15px ITCAvantGardeStd-Bk;
     height: 60px;
-    margin-bottom: 100px;
-    margin-top: 82px;
+    margin-bottom: 0px;
+    margin-top: 50px;
     width: 100%;
+}
+.login_form button{
+    margin-bottom: 50px;
+}
+.forgot_password_form {
+    display: none;
 }
 .signup_popup button{
     margin-top: 10px;
@@ -1058,17 +1091,15 @@ textarea {
     display: none;
 }
 .open_signin {
-    
-    font: 13px/58px GraphikRegular !important;
+    font: 13px/44px GraphikRegular !important;
 }
-.close_login_popup,.close_signup_popup ,.close_after_signup_popup{
+.close_login_popup, .close_signup_popup, .close_after_signup_popup {
     background: url("images/discard.png") no-repeat scroll center center rgba(0, 0, 0, 0);
-    height: 60px;
+    height: 44px;
     position: fixed;
-    right: 0px;
-    top: 0px;
-    width: 60px;
-    
+    right: 0;
+    top: 44px;
+    width: 44px;
 }
 .smogi_bucks_banner img {
     width: 100%;
@@ -1110,32 +1141,36 @@ span.gender {
 .rangoli_o {
     background: url("images/rangoli_o.png") no-repeat scroll center center rgba(0, 0, 0, 0);
     color: transparent;
-    background-size: auto ;
+    background-size: auto;
+    width: 22px;
+    height: 20px;
+    display: inline-block;
+}
+p.small.err_msg {
+    color: #AE8536;
 }
 .signup_popup{
     display: none;
 }
 .my_account > span {
     background: url('images/user-dashboard-icons.png') no-repeat;
+    background-position:  7px 2px;
 }
 .my_likes > span {
     background: url('images/user-dashboard-icons.png') no-repeat;
-    background-position: 0 -55px;
+    background-position: 7px -40px;
 }
 .signout > span {
     background: url('images/user-dashboard-icons.png') no-repeat;
-    background-position: 0 -109px;
+    background-position: 7px -79px;
 }
 .user_menu_links li a{
     text-transform: capitalize !important;
 }
 .user_menu_links li span{
-    opacity: 0.2;
-    transition-duration: 200ms;
-}
-.user_menu_links li:hover span{
     opacity: 1;
     transition-duration: 200ms;
+    background-size:44px auto ;
 }
 
 /*  * ** * ** * ** */
@@ -1175,4 +1210,17 @@ span.gender {
 }
 .link{
     font-style: normal;
+}
+.post_content > ul {
+    padding: 0;
+}
+.post_content li {
+    list-style: initial;
+    margin-left: 20px;
+}
+.sign-signup .open_signin, .sign-signup .open_signup {
+    display: inline;
+    float: none;
+    font-size: 14px !important;
+    position: relative;
 }

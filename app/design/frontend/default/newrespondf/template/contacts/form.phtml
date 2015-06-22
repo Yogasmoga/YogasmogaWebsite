@@ -1,0 +1,164 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_iphone
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="category-block">
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <div class="sign-in-box">
+        <?php
+        if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+            $store_id = Mage::app()->getStore()->getId();
+            $customerId = Mage::getModel('customer/session')->getCustomerId();
+            if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)) {
+                $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+                echo $reward_flat_model->collectPointsCurrent($customerId, $store_id) + 0;
+                //Mage::helper('core')->currency($reward_flat_model->collectPointsCurrent($customerId, $store_id)+0);
+            }
+
+            $reward_model = Mage::getModel('rewardpoints/stats');
+            //echo "$".number_format((float)($reward_model->getPointsCurrent($customerId, $store_id)+0), 2, '.','');
+            //echo $reward_model->getPointsCurrent($customerId, $store_id)+0;
+            echo '<a href="javascript:void(0)"><span class="rewards_points"><b>$</b>' . ($reward_model->getPointsCurrent($customerId, $store_id) + 0) . '</span></a>';
+        } else { ?>
+            <a href="javascript:void(0)" onclick="openLogin()"><span class="cuslogin">Sign In</span></a>
+        <?php } ?>
+        <h1>CONTACT</h1>
+
+        <!--        <div class="toggle_dropdown"><img src="-->
+        <?php //echo $this->getSkinUrl("images/black-arrw.png") ?><!--"/></div>-->
+    </div>
+</div>
+<div style="padding: 35px">
+    <div class="contact">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             x="0px"
+             y="0px"
+             width="42.452px" height="33.459px" viewBox="0 0 42.452 33.459" enable-background="new 0 0 42.452 33.459"
+             xml:space="preserve">
+            <path fill="none" stroke="#A2853F" stroke-miterlimit="10" d="M30.834,21.974l0.776,0.014h8.841v-6.071
+            c0-3.761-8.252-6.81-18.434-6.81c-10.181,0-18.434,3.049-18.434,6.81v6.019h9.58l0.061-4.395c0-2.217,3.938-4.014,8.793-4.014
+            c4.856,0,8.793,1.797,8.793,4.014L30.834,21.974z"/>
+        </svg>
+        <div>CONTACT US</div>
+
+        <div class="contact_details">
+            <p><a href="tel:8889909642">888-990-YOGA(9642)</a></p>
+
+            <p><a href="mailto:hello@yogasmoga.com">hello@yogasmoga.com</a></p>
+        </div>
+    </div>
+    <div class="contact">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             width="42.452px" height="33.459px" viewBox="0 0 42.452 33.459" enable-background="new 0 0 42.452 33.459" xml:space="preserve">
+            <path fill="none" stroke="#A2853F" stroke-miterlimit="10" d="M15.172,22.897c1.933,0.758,4.264,1.141,6.772,1.141
+            c6.69,0,12.114-2.716,12.114-8.046c0-5.33-5.424-8.046-12.114-8.046S9.831,10.662,9.831,15.991c0,2.118,0.856,3.823,2.309,5.109
+            l-3.747,4.414L15.172,22.897z"/>
+        </svg>
+        <div>CHAT WITH US</div>
+
+        <div class="contact_details">
+            <p class="chat-status"><span class="bubble"></span> Online Now</p>
+        </div>
+    </div>
+    <div class="contact email">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             width="42.452px" height="33.459px" viewBox="0 0 42.452 33.459" enable-background="new 0 0 42.452 33.459" xml:space="preserve">
+<g>
+    <g>
+        <polyline fill="none" stroke="#A2853F" stroke-miterlimit="10" points="33.51,8.063 21.225,18.822 8.941,8.063 		"/>
+        <rect x="8.941" y="8.063" fill="none" stroke="#A2853F" stroke-miterlimit="10" width="24.569" height="17.334"/>
+    </g>
+</g>
+</svg>
+
+        <div>EMAIL US</div>
+
+        <div class="contact_details">
+            <p>Any unanswered questions.<br/>comments or suggestions?</p>
+        </div>
+    </div>
+</div>
+<style>
+    .contact > div:nth-child(2) {
+        color: #ae8536;
+        font: 15px ITCAvantGardeStd-Bk;
+        margin-bottom: 10px;
+    }
+    .contact_details a {
+        font: 13px/19px ITCAvantGardeStd-Bk;
+    }
+    .contact_details {
+        border-bottom: 1px solid #bfbfbf;
+        margin-bottom: 15px;
+        padding-bottom: 20px;
+    }
+    .email .contact_details {
+        border-bottom:none;
+        margin-bottom: 0px;
+        padding-bottom: 20px;
+    }
+    .contact_details > p {
+        font: 13px/19px ITCAvantGardeStd-Bk;
+    }
+    .offline {
+        background: none repeat scroll 0 0 #999;
+        border-radius: 50%;
+        display: inline-block;
+        height: 10px;
+        width: 10px;
+    }
+    .online {
+        background: none repeat scroll 0 0 #12C254;
+        border-radius: 50%;
+        display: inline-block;
+        height: 10px;
+        width: 10px;
+    }
+</style>
+<script type="text/javascript">
+    window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+        d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+        _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+        $.src='//v2.zopim.com/?2Fg0V06nbC3ddKB1tNUN3VPXPE7wA7eV';z.t=+new Date;$.
+            type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+
+    jQuery(document).ready(function($){
+        $zopim(function() {
+            $zopim.livechat.setOnStatus(bubble);
+            $zopim.livechat.button.setPosition('bl');
+            $zopim.livechat.window.setPosition('bl');
+        });
+        jQuery('.chat-status').click(function(){
+            $zopim.livechat.window.show();
+        });
+    });
+    function bubble(status){
+        jQuery('.chat-status').empty().html('<span class="offline"></span> Offline now');
+        if(status =='online')
+        {
+            jQuery('.chat-status').empty().html('<span class="online"></span> Online now');
+        }
+    }
+</script>

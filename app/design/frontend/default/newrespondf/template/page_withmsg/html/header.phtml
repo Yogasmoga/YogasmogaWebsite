@@ -1,0 +1,105 @@
+ <div class="nav is-fixed" role="navigation">
+
+	  <button class="nav-toggle">
+		  <div class="icon-menu"><img class="responsive" src="<?php echo $this->getSkinUrl('images/logo.jpg') ?>" alt="logo"/></div>
+	  </button>
+
+	  <div class="ys-text">
+		<a href="<?php echo $this->getUrl('') ?>">
+        <img class="responsive" src="<?php echo $this->getSkinUrl('images/logo.png') ?>" alt="yogasmoga"/></a>
+	  </div>
+
+	  <div class="shoping-cart" onclick="window.location='<?php echo $this->getUrl('checkout/cart'); ?>'">
+		<img class="responsive" src="<?php echo $this->getSkinUrl('images/bag.png') ?>" alt="yogasmoga"/>
+		 <?php
+		$cartTotal = $this->helper('checkout/cart')->getQuote()->getGrandTotal();
+		$cartItemsCount = Mage::helper('checkout/cart')->getCart()->getItemsCount();
+		$cartSuffix = ($cartItemsCount != 1) ? 's' : '';
+
+		echo '<span><a class="cartgo" href="'.$this->getUrl('checkout/onepage').'">'.
+				  $this->__('%s', $cartItemsCount, $cartSuffix).
+				  '</a></span>';
+		?>
+	  </div>
+     <div class="upper-nav">
+	           <button class="cross-btn" id="cross-btn" style="display: none;">
+				  <img class="responsive" src="<?php echo $this->getSkinUrl('images/cross1.png') ?>" alt="logo"/>
+			  </button>
+	  <div class="nav-container" id="menu_container">
+             
+		              <div class="left-strip"></div>
+							<ul class="nav-menu menu">
+                              <li class="menu-item sign-up">
+							  
+								 <span class="key"><img class="responsive" src="<?php echo $this->getSkinUrl('images/key1.png') ?>" alt="logo"/></span>
+								 <?php if (! Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+								
+								 <span class="sign-text">
+								 <a  href="javascript:void(0)" onClick="openLogin()"><span><?php echo $this->__('Sign In&nbsp;') ?> /</span></a>
+                            <a href="javascript:void(0)" class="menu-link" id="menu_signup"><?php echo $this->__('Sign Up') ?></span></a></span>
+								<?php else: ?>
+                                 <span class="sign-text">
+								<a href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>"><span><?php echo $this->__('Sign Out') ?></span></a>
+								<?php endif; ?>
+								</span>
+								<span class="border-line"></span>	
+							  </li>
+                              <li class="menu-item has-dropdown main-heading"><a href="#" class="menu-link m-link "><img class="responsive" src="<?php echo $this->getSkinUrl('images/ys-text.png') ?>" alt="yogasmoga"/></a>
+								<span class="arrow-tag"><img class="responsive" src="<?php echo $this->getSkinUrl('images/arrow-down.png') ?>" alt="arrow"/></span>
+								  <span class="text-logo"><img class="responsive" src="<?php echo $this->getSkinUrl('images/text-logo.png') ?>" alt="arrow"/></span>
+                                
+							  <?php $_helper = Mage::helper('catalog/category') ?>
+								<?php $_categories = $_helper->getStoreCategories() ?>
+								<?php $currentCategory = Mage::registry('current_category') ?>
+								<?php if (count($_categories) > 0): ?>
+								<ul class="nav-dropdown menu">
+                                 <?php foreach($_categories as $_category): ?>
+										<li class="menu-item has-dropdown c-text ">
+										<span class="arrow-tag"><img class="responsive" src="<?php echo $this->getSkinUrl('images/arrow-down.png') ?>" alt="arrow"/></span>
+												<a class="menu-link main-txt" href="<?php echo $_helper->getCategoryUrl($_category) ?>">
+													<?php echo $_category->getName() ?>
+												</a>
+												<?php //if ($currentCategory && $currentCategory->getId() == $_category->getId()): ?>
+													<?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
+													<?php $_subcategories = $_category->getChildrenCategories() ?>
+													<?php if (count($_subcategories) > 0): ?>
+														<ul class="nav-dropdown menu">
+															<?php foreach($_subcategories as $_subcategory): ?>
+																<li class="menu-item">
+																	<a class="menu-link" href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">
+																		<?php echo $_subcategory->getName() ?>
+																	</a>
+																</li>
+															<?php endforeach; ?>
+														</ul>
+													<?php endif; ?>
+												<?php //endif; ?>
+											</li>
+										<?php endforeach; ?>
+                                      <?php endif; ?>
+								
+                                  </ul>
+                              </li>
+                              <li class="menu-item"><a href="<?php echo $this->getBaseUrl();?>our-story" class="menu-link sub-title">YS story</a></li>
+                              <li class="menu-item"><a href="<?php echo $this->getBaseUrl();?>ys-fabric-tech" class="menu-link sub-title">YS tech</a></li>
+                             
+                              <li class="menu-item smogi-icon"><a href="#" class="menu-link sub-title">SMOGI Bucks</a>
+							  <span><img class="responsive" src="<?php echo $this->getSkinUrl('images/smogi-icon.png') ?>" alt="arrow"></span>
+							  </li>
+                             
+							    <li style="position:relative;" class="menu-item"><a href="#" class="menu-link sub-title">Contact</a>
+							    <span class="contact-icon"><img class="responsive" src="<?php echo $this->getSkinUrl('images/contact-icon.png') ?>" alt="arrow"/></span>
+							   </li>
+                              <li class="menu-item has-dropdown rangoli-link">
+								 <span class="rangoli-icon"><img class="responsive" src="<?php echo $this->getSkinUrl('images/rangoli-icon.png') ?>" alt="arrow"/></span>
+								<span class="border-line"></span>
+								<span class="white-img" style="display:inline-block;">
+                                 <a href="#" class="menu-link m-link "><img class="responsive" src="<?php echo $this->getSkinUrl('images/rangoli-text.png') ?>" alt="yogasmoga"/></a>
+								 </span>
+								<span class="border-line"></span>
+								 </li>
+                          </ul>
+		
+	  </div>
+</div>
+  </div>

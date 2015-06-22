@@ -990,10 +990,16 @@ function get_subscribers_count($author_id)
 {
     global $wpdb;
     $query = "SELECT count(*) FROM rangoli_wpsa_subscribe_author where author_id=$author_id and status='active'";
+
     $rows = $wpdb->get_results($query);
 
-    $count = get_object_vars($rows[0]);
-    return $count['count(*)'];
+    if(is_array($rows) && count($rows)>0) {
+        $count = (array)$rows[0];
+        return $count['count(*)'];
+    }
+    else{
+        return 0;
+    }
 }
 
 
@@ -1182,9 +1188,9 @@ function get_user_liked_posts($author_id)
                                 $post_author_image_url = get_site_url() . "/wp-content/themes/rangoli_mobile/images/default.jpg";
                             }
                             ?>
-                            <div class="author_picture"
-                                 style="background: url('<?php echo $post_author_image_url; ?>') no-repeat; background-position: center center; background-size: cover"></div>
                         </div>
+                        <div class="author_picture"
+                             style="background: url('<?php echo $post_author_image_url; ?>') no-repeat; background-position: center center; background-size: cover"></div>
                     </div>
                 </li>
             <?php
