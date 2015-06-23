@@ -192,12 +192,12 @@
                 </fieldset>
             </li>
             <?php if ($this->canShip()): ?>
-                <li class="control ship-btn">
+                <li class="control ship-btn" style="float: left; width: 100%;">
 
                     <input type="radio" class="custom-r" name="billing[use_for_shipping]" id="billing:use_for_shipping_yes" value="1"<?php if ($this->isUseBillingAddressForShipping()) {?> checked="checked"<?php }?> title="<?php echo  $this->__('Ship to this address') ?>" onclick="$('shipping:same_as_billing').checked = true;" class="radio" />
                     <span class="custom-rd"></span>
                     <label for="billing:use_for_shipping_yes"><?php echo  $this->__('Ship to this address') ?></label></li>
-                <li class="control ship-btn">
+                <li class="control ship-btn"  style="float: left; width: 100%;">
 
                     <input type="radio" class="custom-r" name="billing[use_for_shipping]" id="billing:use_for_shipping_no" value="0"<?php if (!$this->isUseBillingAddressForShipping()) {?> checked="checked"<?php }?> title="<?php echo $this->__('Ship to different address') ?>" onclick="$('shipping:same_as_billing').checked = false;" class="radio" />
                     <span class="custom-rd"></span>
