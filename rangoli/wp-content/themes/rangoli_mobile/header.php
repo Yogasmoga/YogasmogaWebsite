@@ -14,7 +14,7 @@ $logged_in = is_user_logged_in();
 <html>
 <head>
     <?php
-    $home = "/rangoli/";
+    $home = get_site_url();
     $root = str_replace("/rangoli","/",$home);
     $media = $home. "/wp-content/themes/rangoli_mobile/images/";
     ?>
@@ -139,10 +139,10 @@ $logged_in = is_user_logged_in();
     <script type="text/javascript">
 
     <?php
-    echo "var homeUrl = '".$root."';
+    echo "var homeUrl = '/';
     ";
     echo "var logged_in_id =0;";
-    echo "var root = '".$root."';
+    echo "var root = '/';
     ";
     if(is_user_logged_in()){
     $userId = get_current_user_id();
