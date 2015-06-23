@@ -44,6 +44,7 @@ $(document).ready(function () {
         if(content.next().css("display")!="block") {
             content.next().slideDown();
         }
+
         $(".author_post_read .close_post").hide();
         var close_post = content.find(".close_post");
         close_post.show();

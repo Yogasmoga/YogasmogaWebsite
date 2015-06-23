@@ -139,10 +139,10 @@ $logged_in = is_user_logged_in();
     <script type="text/javascript">
 
     <?php
-    echo "var homeUrl = '/';
+    echo "var homeUrl = '".$root."';
     ";
     echo "var logged_in_id =0;";
-    echo "var root = '/';
+    echo "var root = '".$root."';
     ";
     if(is_user_logged_in()){
     $userId = get_current_user_id();
