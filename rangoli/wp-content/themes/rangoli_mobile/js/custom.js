@@ -447,6 +447,7 @@ function fillcolor(){
 }
 
 $(window).load(function(){
+    alert(root);
     if(logged_in==false) {
         $.ajax({
             url: root+'rangoli/checkfornewcustomer.php',
@@ -471,6 +472,7 @@ $(window).load(function(){
 
 
 $(document).ready(function(){
+    alert(root);
     getloggedinuser();
     $(".close_login_popup").click(function(){
         $(".signin_popup").fadeOut();
