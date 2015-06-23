@@ -12,7 +12,7 @@
 require( dirname(__FILE__) . '/wp-load.php' );
 
 // Redirect to https login if forced to use SSL
-if ( force_ssl_admin() && ! is_ssl() ) {
+/*if ( force_ssl_admin() && ! is_ssl() ) {
 	if ( 0 === strpos($_SERVER['REQUEST_URI'], 'http') ) {
 		wp_redirect( set_url_scheme( $_SERVER['REQUEST_URI'], 'https' ) );
 		exit();
@@ -20,7 +20,7 @@ if ( force_ssl_admin() && ! is_ssl() ) {
 		wp_redirect( 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
 		exit();
 	}
-}
+}*/
 
 /**
  * Output the login page header.
