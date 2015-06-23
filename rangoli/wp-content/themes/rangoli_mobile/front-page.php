@@ -92,7 +92,7 @@ if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_
             else
                 echo "<img src='" . $home . "/wp-content/themes/rangoli_mobile/images/no-background_posts.png' />";
         } ?>
-        <div class="overlay-text">
+        <div class="overlay-text" onclick="window.location='<?php echo $target_url; ?>'">
 
             <div class="post_category">
                 <?php echo $interest_name; ?>
