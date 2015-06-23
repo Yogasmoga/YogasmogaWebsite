@@ -12,7 +12,7 @@ $size = 'thumbnail';
 $imgURL = get_the_author_meta('author_profile_picture', $user_id);
 ?>
 
-                <div class="smogi" style="margin-top: 58px;">
+                <div class="smogi">
                     <div class="author_post_read_author">
                         <?php
                         if ($imgURL == "") {

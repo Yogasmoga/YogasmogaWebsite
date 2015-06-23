@@ -3701,7 +3701,28 @@ function force_ssl_login( $force = null ) {
  * @return bool True if forced, false if not forced.
  */
 function force_ssl_admin( $force = null ) {
-	static $forced = false;
+	static
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	$forced = false;
 
 	if ( !is_null( $force ) ) {
 		$old_forced = $forced;

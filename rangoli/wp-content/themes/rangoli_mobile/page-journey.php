@@ -1,8 +1,9 @@
 <?php
-get_header();
 if(!is_user_logged_in()){
     wp_redirect(get_site_url());
 }
+get_header();
+
 
 $home = get_site_url();
 $media = $home . "/wp-content/themes/rangoli_mobile/images/";

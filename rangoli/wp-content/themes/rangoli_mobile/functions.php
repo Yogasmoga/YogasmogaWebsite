@@ -845,7 +845,7 @@ function filter()
     <div class="filter-wrapper">
         <div class="filter-container">
             <ul>
-                <li><p class="user-color-shade"><span class="down-arrow-grey-white">Author</span><i><img
+                <li><p <?php if(!is_user_logged_in()){echo "style='background:rgba(85,85,85,0.95);'";} else { echo "class='user-color-shade'";} ?>><span class="down-arrow-grey-white">Author</span><i><img
                                 src="<?php echo get_site_url() . '/wp-content/themes/rangoli_mobile/images/arrow.png' ?>"/></i>
                     </p>
                     <ul>
@@ -881,7 +881,7 @@ function filter()
                         ?>
                     </ul>
                 </li>
-                <li><p class="user-color-shade"><span class="down-arrow-grey-white">Topic</span><i><img
+                <li><p <?php if(!is_user_logged_in()){echo "style='background:rgba(85,85,85,0.95);'";} else { echo "class='user-color-shade'";} ?>><span class="down-arrow-grey-white">Topic</span><i><img
                                 src="<?php echo get_site_url() . '/wp-content/themes/rangoli_mobile/images/arrow.png' ?>"/></i>
                     </p>
                     <ul>
@@ -921,7 +921,7 @@ function filter()
                 if ($cat != "learn") {
 
                     ?>
-                    <li><p class="user-color-shade"><span class="down-arrow-grey-white">Length</span><i><img
+                    <li><p <?php if(!is_user_logged_in()){echo "style='background:rgba(85,85,85,0.95);'";} else { echo "class='user-color-shade'";} ?>><span class="down-arrow-grey-white">Length</span><i><img
                                     src="<?php echo get_site_url() . '/wp-content/themes/rangoli_mobile/images/arrow.png' ?>"/></i>
                         </p>
                         <ul>
