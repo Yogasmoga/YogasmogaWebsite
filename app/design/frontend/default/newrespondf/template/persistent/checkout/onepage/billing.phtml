@@ -25,6 +25,7 @@
  */
 /** @var Mage_Checkout_Block_Onepage_Billing $this */
 ?>
+
 <form id="co-billing-form" action="">
     <fieldset>
         <ul class="form-list">
@@ -106,7 +107,7 @@
                         <li class="fields">
                             <div class="field">
                                 <label for="billing:postcode" class="required"><em>*</em><?php echo $this->__('Zip Code') ?></label>
-                                <div class="input-box">
+                                <div class="input-box" style="float: left; width:100%;">
                                     <input type="text" title="<?php echo $this->__('Zip Code') ?>" name="billing[postcode]" id="billing:postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" class="input-text validate-number validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" />
                                 </div>
                             </div>
@@ -233,10 +234,3 @@
     }
     //]]>
 </script>
-
-<style>
-    .field,.input-box{
-        float:left;
-        width: 100%;
-    }
-</style>
