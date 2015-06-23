@@ -1,9 +1,8 @@
 input,textarea,button{
     border-radius:0;
     -webkit-border-radius:0;
-    -webkit-appearance: none;
 }
-input {
+input[type="password"],input[type="text"],textarea,button {
     -webkit-appearance: none;
 }
 a,button{
