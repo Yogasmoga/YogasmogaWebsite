@@ -44,7 +44,6 @@ $(document).ready(function () {
         if(content.next().css("display")!="block") {
             content.next().slideDown();
         }
-
         $(".author_post_read .close_post").hide();
         var close_post = content.find(".close_post");
         close_post.show();
@@ -280,7 +279,7 @@ function init_watermark(){
         $(this).attr("type", "password");
     });
     $("input[rel='password']").blur(function () {
-        if ($(this).val().length == 0 || ($(this).val()).toLowerCase()=="password")
+        if ($(this).val().length == 0)
             $(this).attr("type", "text");
         else {
             $(this).attr("type", "password");
@@ -458,7 +457,6 @@ $(window).load(function(){
                 if(customer == "new"){
                     $(".signin_popup").fadeOut();
                     $(".after_signup_popup").fadeOut();
-                    clearForm();
                     $(".signup_popup").fadeIn();
                     $(".popup").fadeIn();
                     is_login_box_open = false
@@ -919,7 +917,7 @@ function raty_init() {
 $(document).ready(function(){
     animate_charms();
     save_shares();
-    invite_friend();
+
     $("#update_username").click(function(){
         var text = $("input.change_username");
         var username = text.val();
@@ -1032,15 +1030,20 @@ function copytoClipboard(){
 
 }
 
-
-function invite_friend(){
-    $(".invite-friend").click(function(e){
-        e.preventDefault();
-        if(logged_in_id == 0){
-            $(".open_signin").click();
-        }
-        else{
-            window.location = "/rangoli/connect";
+$(document).ready(function(){
+    $(window).swipe( {
+        swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+            if(direction=="up"){
+                $(".header").fadeIn();
+                $(".page_heading").fadeIn();
+            }
+            if(direction=="down"){
+                $(".header").fadeOut();
+                $(".page_heading").fadeOut();
+            }
         }
     });
-}
+});
+
+
+
