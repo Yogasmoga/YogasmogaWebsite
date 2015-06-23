@@ -14,7 +14,7 @@ $logged_in = is_user_logged_in();
 <html>
 <head>
     <?php
-    $home = get_site_url();
+    $home = "/rangoli/";
     $root = str_replace("/rangoli","/",$home);
     $media = $home. "/wp-content/themes/rangoli_mobile/images/";
     ?>

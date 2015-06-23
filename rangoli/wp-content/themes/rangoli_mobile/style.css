@@ -1224,3 +1224,16 @@ p.small.err_msg {
     font-size: 14px !important;
     position: relative;
 }
+.flex-control-nav {
+  bottom: 5px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: 2;
+}
+.flex-control-nav a {
+  background: #fff;
+}
+.flex-control-nav a.flex-active {
+  background: #A58639;
+}

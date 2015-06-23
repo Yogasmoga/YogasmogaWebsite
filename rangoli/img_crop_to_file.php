@@ -51,7 +51,7 @@ switch(strtolower($what['mime']))
     default: die('image type not supported');
 }
 
-$save_dir = get_site_url()."/wp-content/themes/rangoli_mobile/";
+$save_dir = "/rangoli/wp-content/themes/rangoli_mobile/";
 //Check write Access to Directory
 
 if(!is_writable(dirname($output_filename))){
@@ -84,7 +84,7 @@ if(!is_writable(dirname($output_filename))){
 	//imagepng($final_image, $output_filename.$type, $png_quality);
 	imagejpeg($final_image, $output_filename.$type, $jpeg_quality);
 
-	$saved_file = get_site_url()."/	".$output_filename.$type;
+	$saved_file = "/rangoli/wp-content/themes/rangoli_mobile/".$output_filename.$type;
 	$user_id = get_current_user_id();
 
 	$count = $wpdb->get_results("select * from rangoli_usermeta where user_id=".$user_id." and meta_key='cupp_upload_meta'");
