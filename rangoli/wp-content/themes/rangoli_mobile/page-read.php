@@ -32,7 +32,7 @@ $filter_category_name = "read";
         } else if (isset($_REQUEST['length'])) {
             $filter_author_name = $_REQUEST['length'];
             $post_length = get_post_meta(get_the_ID(), "wpcf-length");
-            $filter_query = ($post_length == $_REQUEST['length']);
+            $filter_query = ($post_length[0] == $_REQUEST['length']);
         } else {
             $filter_query = true;
         }

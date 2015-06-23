@@ -1034,7 +1034,8 @@ function copytoClipboard(){
 
 
 function invite_friend(){
-    $(".invite-friend").click(function(){
+    $(".invite-friend").click(function(e){
+        e.preventDefault();
         if(logged_in_id == 0){
             $(".open_signin").click();
         }
