@@ -600,8 +600,9 @@ li{
 .msg {
     color: #999;
     font: 13px/23px GraphikRegular;
-    margin-bottom: 40px;
     letter-spacing: normal;
+    margin-bottom: 40px;
+    text-transform: initial;
 }
 .your_color div {
     display: block;

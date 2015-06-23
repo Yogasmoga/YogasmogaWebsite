@@ -25,7 +25,7 @@ $(document).ready(function () {
         slideshow: false
     });
     init_menu();
-    init_watermark();
+    //init_watermark();
     $("a.no_load").click(function(e){
         e.preventDefault();
     });
@@ -280,7 +280,7 @@ function init_watermark(){
         $(this).attr("type", "password");
     });
     $("input[rel='password']").blur(function () {
-        if ($(this).val().length == 0)
+        if ($(this).val().length == 0 || ($(this).val()).toLowerCase()=="password")
             $(this).attr("type", "text");
         else {
             $(this).attr("type", "password");
@@ -458,6 +458,7 @@ $(window).load(function(){
                 if(customer == "new"){
                     $(".signin_popup").fadeOut();
                     $(".after_signup_popup").fadeOut();
+                    clearForm();
                     $(".signup_popup").fadeIn();
                     $(".popup").fadeIn();
                     is_login_box_open = false
@@ -918,7 +919,7 @@ function raty_init() {
 $(document).ready(function(){
     animate_charms();
     save_shares();
-
+    invite_friend();
     $("#update_username").click(function(){
         var text = $("input.change_username");
         var username = text.val();
@@ -1031,3 +1032,14 @@ function copytoClipboard(){
 
 }
 
+
+function invite_friend(){
+    $(".invite-friend").click(function(){
+        if(logged_in_id == 0){
+            $(".open_signin").click();
+        }
+        else{
+            window.location = "/rangoli/connect";
+        }
+    });
+}

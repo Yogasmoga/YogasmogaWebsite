@@ -81,6 +81,7 @@ if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_
     $target_urls = get_post_meta($post->ID, 'wpcf-target-url');
     if (is_array($target_urls) && count($target_urls) > 0)
         $target_url = $target_urls[0];
+
     if ($post->post_title != "Invite friends") {
         ?>
     <div class="homepage_post <?php echo $class ?>">
@@ -91,7 +92,7 @@ if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_
             else
                 echo "<img src='" . $home . "/wp-content/themes/rangoli_mobile/images/no-background_posts.png' />";
         } ?>
-        <div class="overlay-text" onclick="window.location='<?php echo $target_url; ?>'">
+        <div class="overlay-text invite-friend">
 
             <div class="post_category">
                 <?php echo $interest_name; ?>

@@ -385,8 +385,8 @@ div,p{
     color: #fff;
     text-decoration: none;
 }
-.not-logged-in-menu .yogasmoga_menu_links ul li a{
-    color:#555;
+.not-logged-in-menu .yogasmoga_menu_links ul li a {
+    color: #555 !important;
 }
 .line {
     border-bottom: 1px solid rgba(255,255,255,0.6);

@@ -113,16 +113,16 @@ $media = $home . "/wp-content/themes/rangoli_mobile/images/";
 
         if($visited){
             $welcome_message = strtoupper($name);
-            $smogiBucks_message = "You have <br/><span class='user-color-shade-text smogi_bucks_journey'>$smogi_bucks</span><br/> SMOGI Bucks</p><p class='msg'>Learn how to earn more <span>SMOGI BUCKS</span>";
+            $smogiBucks_message = "<p>You have <br/><span class='user-color-shade-text smogi_bucks_journey'>$smogi_bucks</span><br/> SMOGI Bucks</p><p class='msg'>Learn how to earn more <span>SMOGI BUCKS</span></p>";
             $interest_message = "YOUR INTERESTS";
             $color_message="YOUR COLOR";
         }
         else{
-
             $root = get_site_url();
             $root = str_replace("/rangoli","/",$root);
             $welcome_message = strtoupper($name);
-            $smogiBucks_message = "You have <br/><span class='user-color-shade-text smogi_bucks_journey'>$smogi_bucks</span><br/> SMOGI Bucks<br> just for signing up.</p><p class='msg'>Learn how to earn more <span>SMOGI BUCKS</span></p>";
+            $smogiBucks_message = "<p>You have <br/><span class='user-color-shade-text smogi_bucks_journey'>$smogi_bucks</span><br/> SMOGI Bucks<br /> just for signing up.</p>
+            <p class='msg'>Learn how to earn more <span>SMOGI BUCKS</span></p>";
 
             $magento_user = json_decode(file_get_contents($root . 'ys/session/getcustomerbyemail/email/' . $user_info->user_login));
 

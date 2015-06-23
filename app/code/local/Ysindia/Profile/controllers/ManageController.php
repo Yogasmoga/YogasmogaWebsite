@@ -22,20 +22,22 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
         }
     }
 
-    public function referralurlAction(){
+    public function referralurlAction()
+    {
         $userId = Mage::getSingleton('customer/session')->getCustomer()->getId();
 
         echo $this->bit_ly_short_url(Mage::getUrl('rewardpoints/index/goReferral') . "referrer/" . $userId);
     }
 
-    function bit_ly_short_url($url, $format='txt') {
+    function bit_ly_short_url($url, $format = 'txt')
+    {
         $login = "yogasmogarangoli";
         $appkey = "R_0f1d1bc2a82f472eaa33ef817e8d5548";
-        $bitly_api = 'http://api.bit.ly/v3/shorten?login='.$login.'&apiKey='.$appkey.'&uri='.urlencode($url).'&format='.$format;
+        $bitly_api = 'http://api.bit.ly/v3/shorten?login=' . $login . '&apiKey=' . $appkey . '&uri=' . urlencode($url) . '&format=' . $format;
         $ch = curl_init();
-        curl_setopt($ch,CURLOPT_URL,$bitly_api);
-        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-        curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,5);
+        curl_setopt($ch, CURLOPT_URL, $bitly_api);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
         $data = curl_exec($ch);
         curl_close($ch);
         return $data;
@@ -115,7 +117,7 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
 
                 $profile_filename = $_POST['profile_filename'];
 
-                if(isset($profile_filename) && strlen(trim($profile_filename))>4) {
+                if (isset($profile_filename) && strlen(trim($profile_filename)) > 4) {
                     $profile_found = true;
                 }
 
@@ -196,8 +198,8 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                         $w = $_POST["w"];
                         $h = $_POST["h"];
 
-                        $scale = $thumb_width/$w;
-                        $cropped = resizeThumbnailImage($thumb_image_location, $large_image_location,$w,$h,$x1,$y1,$scale);
+                        $scale = $thumb_width / $w;
+                        $cropped = resizeThumbnailImage($thumb_image_location, $large_image_location, $w, $h, $x1, $y1, $scale);
 
 //                            $profile_result = move_uploaded_file($tmp_profile, $filepath . $imagename_profile);
                         $profile_result = true;
@@ -222,10 +224,9 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                                 $result = $writeConnection->query($query);
                             }
 
-                            try{
+                            try {
                                 unlink($large_image_location);
-                            }
-                            catch(Exception $ex){
+                            } catch (Exception $ex) {
                             }
 
                         } else {
@@ -239,17 +240,15 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
 
                         $error = true;
                     }
-                }
-                else {
+                } else {
 
                 }
 
-                if($error) {
+                if ($error) {
                     foreach ($ar_messages as $message) {
                         echo $message['message'] . "<br/>";
                     }
-                }
-                else if($profile_found)
+                } else if ($profile_found)
                     echo $profile_pic;
                 else
                     echo "updated";
@@ -257,7 +256,8 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
         }
     }
 
-    public function uploadimageAction(){
+    public function uploadimageAction()
+    {
 
         $file_formats = array("jpg", "jpeg", "png", "gif", "bmp");
 
@@ -332,43 +332,82 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
 //    }
 }
 
-function resizeThumbnailImage($thumb_image_name, $image, $width, $height, $start_width, $start_height, $scale){
+function resizeThumbnailImage($thumb_image_name, $image, $width, $height, $start_width, $start_height, $scale)
+{
     list($imagewidth, $imageheight, $imageType) = getimagesize($image);
     $imageType = image_type_to_mime_type($imageType);
 
     $newImageWidth = ceil($width * $scale);
     $newImageHeight = ceil($height * $scale);
-    $newImage = imagecreatetruecolor($newImageWidth,$newImageHeight);
-    switch($imageType) {
+    $newImage = imagecreatetruecolor($newImageWidth, $newImageHeight);
+    switch ($imageType) {
         case "image/gif":
-            $source=imagecreatefromgif($image);
+            $source = imagecreatefromgif($image);
             break;
         case "image/pjpeg":
         case "image/jpeg":
         case "image/jpg":
-            $source=imagecreatefromjpeg($image);
+            $source = imagecreatefromjpeg($image);
             break;
         case "image/png":
         case "image/x-png":
-            $source=imagecreatefrompng($image);
+            $source = imagecreatefrompng($image);
             break;
     }
-    imagecopyresampled($newImage,$source,0,0,$start_width,$start_height,$newImageWidth,$newImageHeight,$width,$height);
-    switch($imageType) {
+    imagecopyresampled($newImage, $source, 0, 0, $start_width, $start_height, $newImageWidth, $newImageHeight, $width, $height);
+    switch ($imageType) {
         case "image/gif":
-            imagegif($newImage,$thumb_image_name);
+            imagegif($newImage, $thumb_image_name);
             break;
         case "image/pjpeg":
         case "image/jpeg":
         case "image/jpg":
-            imagejpeg($newImage,$thumb_image_name,100);
+            imagejpeg($newImage, $thumb_image_name, 100);
             break;
         case "image/png":
         case "image/x-png":
-            imagepng($newImage,$thumb_image_name);
+            imagepng($newImage, $thumb_image_name);
             break;
     }
     chmod($thumb_image_name, 0777);
     return $thumb_image_name;
 }
+
+
+function sendPasswordAction()
+{
+    $email = (string)$this->getRequest()->getPost('email');
+    if ($email) {
+        if (!Zend_Validate::is($email, 'EmailAddress')) {
+            echo "Invalid email!";
+            return;
+        }
+
+        /* @var $customer Mage_Customer_Model_Customer */
+        $customer = Mage::getModel('customer/customer')
+            ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
+            ->loadByEmail($email);
+
+        if ($customer->getId()) {
+            try {
+                $newResetPasswordLinkToken = Mage::helper('customer')->generateResetPasswordLinkToken();
+                $customer->changeResetPasswordLinkToken($newResetPasswordLinkToken);
+                $customer->sendPasswordResetConfirmationEmail();
+            } catch (Exception $exception) {
+                echo "Cannot send link!";
+                return;
+            }
+            echo "Password reset link sent!";
+        } else {
+            echo "Invalid email!";
+        }
+
+        return;
+    } else {
+        echo "Invalid email!";
+        return;
+    }
+}
+
+
 ?>
