@@ -1029,21 +1029,3 @@ function copytoClipboard(){
 
 
 }
-
-$(document).ready(function(){
-    $(window).swipe( {
-        swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-            if(direction=="up"){
-                $(".header").fadeIn();
-                $(".page_heading").fadeIn();
-            }
-            if(direction=="down"){
-                $(".header").fadeOut();
-                $(".page_heading").fadeOut();
-            }
-        }
-    });
-});
-
-
-
