@@ -3910,7 +3910,7 @@ ul.checkout-cont > li {
     float: left;
     background: #fff;
     padding-bottom: 12px;
-    border-bottom: 2px solid #dfdfdf;
+    /*border-bottom: 1px solid #dfdfdf;*/
 }
 
 .detail-page .description-block .first-list .inner-content li.last-df + li {
@@ -3926,7 +3926,7 @@ ul.checkout-cont > li {
 
 .detail-page .description-block .first-list li a {
     font-size: 12px;
-    line-height: 58px;
+    line-height: 44px;
     font-family: AvantGarde-Demi !important;
     color: #444444;
     text-decoration: none;
@@ -4127,8 +4127,8 @@ ul.checkout-cont > li {
 .detail-page .description-block .arrow-tag {
     display: inline-block;
     float: right;
-    height: 58px;
-    padding: 15px;
+    height: 44px;
+    padding: 9px;
     position: absolute;
     right: 0;
     transform-origin: 0 0 0;
@@ -4998,12 +4998,12 @@ table.productdetailtable div#colorcontainer div table {
 }
 
 .close_video_popup, .close_size_cart {
-    background: url("/skin/frontend/default/newrespondf/images/cross1.png") no-repeat scroll center center #555;
-    height: 58px;
+    background: #555 url("/skin/frontend/default/newrespondf/images/cross1.png") no-repeat scroll center center / 22px 22px;
+    height: 44px;
     position: fixed;
     right: 0;
     top: 0;
-    width: 58px;
+    width: 44px;
 }
 
 .wishlist-link {
@@ -5011,7 +5011,7 @@ table.productdetailtable div#colorcontainer div table {
 }
 
 .size_chart_popup {
-    background: none repeat scroll 0 0 rgba(85, 85, 85, 0.95);
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.95);
     bottom: 0;
     display: none;
     left: 0;
@@ -5024,7 +5024,7 @@ table.productdetailtable div#colorcontainer div table {
 
 .chart_container table {
     box-sizing: border-box;
-    color: #fff;
+    color: #666;
     font: 14px/24px ITCAvantGardeStd-Bk;
     left: 0;
     position: fixed;
