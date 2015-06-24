@@ -87,9 +87,21 @@
             $productqty = $item->getQtyOrdered();
             $productPrice = $item->getPrice();
 
+            $cProduct = Mage::getModel('catalog/product')->load($productid);
+            $configurablePrice = $cProduct->getPrice();
+
+            if($productPrice!=$configurablePrice){
+                $sale = 'y';
+                $salePrice = $productPrice;
+            }
+            else{
+                $sale = 'n';
+                $salePrice = '';
+            }
+
             $productsku = str_replace('.', '-', $productsku);
 
-            echo "MasterTmsUdo.CJ.PRODUCTLIST.push({'ITEM' : '$productsku', 'AMT' : '$productPrice',  'QTY' : '" . intval($productqty) . "' });";
+            echo "MasterTmsUdo.CJ.PRODUCTLIST.push({'ITEM' : '$productsku', 'AMT' : '$configurablePrice',  'QTY' : '" . intval($productqty) . "', 'sale' : '$sale', 'salePrice' : '$salePrice'  });";
         }
         ?>
     </script>
