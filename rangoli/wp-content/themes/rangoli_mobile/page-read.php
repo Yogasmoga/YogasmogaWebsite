@@ -65,8 +65,32 @@ $filter_category_name = "read";
 
                 </div>
                 <div onclick="window.location='<?php echo get_author_posts_url($post->post_author) ?>'" class="author_picture" style="background: url('<?php echo $post_author_image_url; ?>') no-repeat; background-position: center center; background-size: cover"></div>
-                <div class="close_post <?php if($logged_in){echo 'user-color-shade-trans';} ?>"></div>
-                <div class="share_post <?php if($logged_in){echo 'user-color-shade-trans';} ?>"></div>
+                <div class="close_post <?php if($logged_in){echo 'user-color-shade-trans';} ?>">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+                        <g>
+                            <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="16.508" y1="15.751" x2="30.975" y2="30.218"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="30.975" y1="15.751" x2="16.508" y2="30.218"/>
+                        </g>
+</svg>
+
+                </div>
+                <div class="share_post <?php if($logged_in){echo 'user-color-shade-trans';} ?>">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+<g>
+    <g>
+        <g>
+            <polygon fill="none" stroke="#FFFFFF" stroke-miterlimit="10" points="20.624,15.692 23.742,10.293 26.859,15.692 			"/>
+            <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="23.742" y1="15.93" x2="23.742" y2="22.984"/>
+        </g>
+    </g>
+    <polyline fill="none" stroke="#FFFFFF" stroke-miterlimit="10" points="28.443,17.962 31.698,17.962 31.698,33.037 15.302,32.991
+		15.302,17.962 18.678,17.962 	"/>
+</g>
+</svg>
+
+                </div>
             </div>
             <div class="post_content">
                 <?php echo apply_filters('the_content', $post->post_content);

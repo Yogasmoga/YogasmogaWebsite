@@ -500,8 +500,7 @@ div,p{
     line-height: 44px; font-size:12px; font-family: Arial; padding-left: 10px; color:#555555;
 }
 .close_post {
-    background: url("images/close.png") no-repeat scroll center center rgba(85, 85, 85, 0.9);
-    
+    background:  rgba(85, 85, 85, 0.9);
     display: none;
     float: right;
     height: 44px;
@@ -516,7 +515,7 @@ div,p{
     height: auto;
 }
 .share_post, .share_post_index{
-    background: url("images/share_post.png") no-repeat scroll center center rgba(85, 85, 85, 0.9);
+    background: rgba(85, 85, 85, 0.9);
     
     display: none;
     border-top:1px solid #fff;

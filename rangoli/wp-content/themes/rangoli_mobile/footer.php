@@ -21,7 +21,7 @@ if(!is_user_logged_in()) {
 <?php
 if(!is_user_logged_in()  && is_home()) {
     ?>
-    <div style="padding: 29px; float: left; width: 100%;"></div>
+    <div style="padding: 22px; float: left; width: 100%;"></div>
 <?php
 }
 ?>
