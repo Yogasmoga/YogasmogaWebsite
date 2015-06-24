@@ -1,17 +1,17 @@
 jQuery.noConflict();
 
-var root='http://feature.yogasmoga.com/';
+var root='http://staging.yogasmoga.com/';
 //var root='http://ysstaging.com.local/';
 
 /**************** logout logic added by ys team *****************/
 jQuery(document).ready(function(jQuery){
 
     checkIsUserLogged();
-  
- /***login form for smogi buck page***/
-/******************Smogi Bucks Login For Mobile Page Start **********/	
+
+    /***login form for smogi buck page***/
+    /******************Smogi Bucks Login For Mobile Page Start **********/
     jQuery("#sb-sign-in-form").submit(function(event){
-		
+
         var status = checkSmogiLoginForm();
         if(status != "error")
             loginSmogiPage();
@@ -27,8 +27,8 @@ jQuery(document).ready(function(jQuery){
 
 function loginSmogiPage() {
 
-	var email_id = jQuery.trim(jQuery("#sb_email").val());
-	var pwd = jQuery.trim(jQuery("#sb_password").val());
+    var email_id = jQuery.trim(jQuery("#sb_email").val());
+    var pwd = jQuery.trim(jQuery("#sb_password").val());
 
     if (window.location.href.indexOf('https://') >= 0)
         _usesecureurl = true;
@@ -44,9 +44,9 @@ function loginSmogiPage() {
         type: 'POST',
         data: {'email': email_id, 'pwd': pwd},
         beforeSend: function () {
-                jQuery("#sb-sign-in-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
-                jQuery("#sb-sign-in-button").parent().hide();
-                jQuery("#sb-sign-in-form .form-loader").show();
+            jQuery("#sb-sign-in-form .form-loader").html("<img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' style='width:16px;' />");
+            jQuery("#sb-sign-in-button").parent().hide();
+            jQuery("#sb-sign-in-form .form-loader").show();
         },
         success: function (data) {
 
@@ -68,11 +68,11 @@ function loginSmogiPage() {
 
             }
             else {
-                    _smogiPageLogin = false;
-                    jQuery("#sb-sign-in-form .err-msg").html(data.errors).css("visibility", "visible");
-                    jQuery(".signin-loader").html("");
-                    jQuery("#sb-sign-in-button").parent().show();
-                    jQuery("#sb-sign-in-form .form-loader").hide();
+                _smogiPageLogin = false;
+                jQuery("#sb-sign-in-form .err-msg").html(data.errors).css("visibility", "visible");
+                jQuery(".signin-loader").html("");
+                jQuery("#sb-sign-in-button").parent().show();
+                jQuery("#sb-sign-in-form .form-loader").hide();
             }
         }
 
@@ -80,33 +80,33 @@ function loginSmogiPage() {
 }
 
 function checkSmogiLoginForm(){
-		
-	var email_id = jQuery.trim(jQuery("#sb_email").val());
-	var pwd = jQuery.trim(jQuery("#sb_password").val());
-	jQuery("#smogi_message").html('');
-	if(email_id.length==0){
-		jQuery("#smogi_message").html('Please enter email.');
-		return "error";
-		
-	}
-	
-	
-	if(!validateSmogiEmail(email_id)){
-	
 
-	jQuery("#smogi_message").html('Please enter valid email.');
-		return "error";
-	}
-	
-	if(pwd.length<6){
-	jQuery("#smogi_message").html('Please enter min six charachter.');
-		return error;
-	}
-		
-	return "correct";
+    var email_id = jQuery.trim(jQuery("#sb_email").val());
+    var pwd = jQuery.trim(jQuery("#sb_password").val());
+    jQuery("#smogi_message").html('');
+    if(email_id.length==0){
+        jQuery("#smogi_message").html('Please enter email.');
+        return "error";
+
+    }
+
+
+    if(!validateSmogiEmail(email_id)){
+
+
+        jQuery("#smogi_message").html('Please enter valid email.');
+        return "error";
+    }
+
+    if(pwd.length<6){
+        jQuery("#smogi_message").html('Please enter min six charachter.');
+        return error;
+    }
+
+    return "correct";
 }
 
-function validateSmogiEmail(email) { 
+function validateSmogiEmail(email) {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 }
@@ -150,10 +150,10 @@ function createCustomerAccount() {
     var pwd = jQuery.trim(jQuery(".singup_form input[name='password']").val());
     var cpassword = pwd;
     var url = homeUrl + 'mycatalog/myproduct/registercustomer';
-	var button_html = jQuery(".create_account").html();
+    var button_html = jQuery(".create_account").html();
     var gender_link = jQuery(".gender-link");
-	var gender = jQuery(".f-right .current input").val();
-      //alert(gender);
+    var gender = jQuery(".f-right .current input").val();
+    //alert(gender);
     if(fname=="" || fname=="First Name"){
         jQuery("#error_msg").html("Please fill in your first name");
     }
@@ -188,7 +188,7 @@ function createCustomerAccount() {
                 'password': pwd,
                 'confirmation': cpassword,
                 'is_subscribed': "on",
-				 'gender' : gender,
+                'gender' : gender,
             },
             beforeSend: function () {
                 jQuery(".create_account").html("signing up...");
@@ -233,7 +233,7 @@ function createRangoliUser(email, password, first_name, last_name, customer_id) 
         data: data,
         type: 'POST',
         success: function (r) {
-           // getloggedinuser();
+            // getloggedinuser();
         }
     });
 }
@@ -241,25 +241,25 @@ function createRangoliUser(email, password, first_name, last_name, customer_id) 
 
 
 /**************** ys team functions *****************/
-function forgotCustomer() { 
- var email_id = jQuery.trim(jQuery(".login_form input[name='email']").val());
- 
-  if(email_id=="" || email_id=="Email"){
-        jQuery('#err_pass').html('Email Field is required');
-		//alert(email_id);
-		return false;
-    }
-	else {
-		
-		jQuery("form").submit();
-		return true; }
+function forgotCustomer() {
+    var email_id = jQuery.trim(jQuery(".login_form input[name='email']").val());
 
- }
+    if(email_id=="" || email_id=="Email"){
+        jQuery('#err_pass').html('Email Field is required');
+        //alert(email_id);
+        return false;
+    }
+    else {
+
+        jQuery("form").submit();
+        return true; }
+
+}
 
 
 function loginCustomer() {
 
-	
+
     var email_id = jQuery.trim(jQuery(".login_form input[name='email']").val());
     var pwd = jQuery.trim(jQuery(".login_form input[name='password']").val());
     var url = homeUrl + 'mycatalog/myproduct/logincustomer';
@@ -324,9 +324,9 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
         data: 'user_login=' + email + '&password=' + password + '&first_name=' + first_name + '&last_name=' + last_name + '&customer_id=' + customer_id,
         dataType: 'json',
         success: function (result) {
-		//alert(result.message + " , " + (result.message=="success"));
+            //alert(result.message + " , " + (result.message=="success"));
             if (result != undefined && result.message != undefined && result.message == "success") {
-			//alert('hi');
+                //alert('hi');
                 //console.log("******* cannot login to Rangoli");
                 location.reload(true);
             }
@@ -386,16 +386,16 @@ function checkIsUserLogged() {
                 }
                 else if (result.message == "logged") {
 
-					//alert('ravi123');
-					
-					jQuery(".smogi-form").hide();
+                    //alert('ravi123');
+
+                    jQuery(".smogi-form").hide();
 
                     var name = result.first_name;
 
                     jQuery("#welcome-name").html("Hi " + name).attr("href", homeUrl + 'customer/account/');
                     jQuery(".login_logout_link").html("<span style='cursor:pointer; margin-left:0;padding-left:0' onclick='wplogout()'>SIGN OUT</span>");
 
-					
+
                     //jQuery("#signin").unbind('click');
                     //jQuery("#signin").html("SIGN OUT").attr({href:'javascript:void(0)',id:"sign-out", onclick: 'wplogout()'});
                     //jQuery("#welcome-name").html("Hi "+name).attr("href",homeUrl+'customer/account/');
