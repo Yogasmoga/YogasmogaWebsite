@@ -349,7 +349,7 @@ div {
 }
 
 .nav-menu > .menu-item:last-child {
-    border-bottom: 1px solid #bbb;
+    /*border-bottom: 1px solid #bbb;*/
 }
 
 /* Darker background color on hover, and when toggled */
@@ -5738,14 +5738,14 @@ p.required {
     background: url("../images/tick.png") no-repeat scroll center center #43ad00;
     border: medium none;
     color: transparent;
-    height: 58px;
+    height: 44px;
     width: 100%;
 }
 .tick2 {
     background: url("../images/tick.png") no-repeat scroll center center #AE8536;
     border: medium none;
     color: transparent;
-    height: 58px;
+    height: 44px;
     width: 100%;
 }
 #form-validate .buttons-set {
@@ -5904,7 +5904,7 @@ h2.legend {
 
 button.btn-invite.button {
     background: #42ac00;
-    font: 16px/58px ITCAvantGardeStd-Bk;
+    font: 16px/44px ITCAvantGardeStd-Bk;
     border: none;
     color: #fff;
     width: 100%;

@@ -251,9 +251,9 @@
 
 .aurum li {
     font-size: 22px;
-    line-height: 58px;
+    line-height: 44px;
     color: #ae8637;
-    border-top: 2px solid rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .aurum .inner-aurum {
@@ -789,7 +789,7 @@
     height: 24px;
     line-height: 0;
     padding-right: 11px;
-    padding-top: 18px;
+    padding-top: 10px;
     position: static;
 }
 
