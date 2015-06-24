@@ -1085,11 +1085,11 @@ function forgot_password(email){
     }
     else if(isValidEmailAddress(email)) {
         $.ajax({
-            url: root + '/ajaxlogin/index/forgotPasswordPost',
+            url: root + '/ajaxlogin/index/forgotPasswordPost/',
+            data: 'email=' + email,
             type: 'POST',
-            dataType: 'json',
             success: function (result) {
-                alert(result);
+                $(".forgot_password_form .small.err_msg").html(".Your reset password link has been sent to your email Id.")
             }
         });
     }
