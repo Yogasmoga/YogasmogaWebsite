@@ -642,7 +642,7 @@ input.change_username {
     right: 0;
     top: 0;
     width: 120px;
-    z-index: 36;
+    z-index: 1;
 }
 .ch_username_block {
     position: relative;
