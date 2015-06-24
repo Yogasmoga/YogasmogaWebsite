@@ -143,8 +143,8 @@ li.main_li:hover > ul {
     border: medium none;
     cursor: pointer;
     float: none;
-    height: 58px;
+    height: 44px;
     width: 100%;
-    font: 15px/58px ITCAvantGardeStd-Bk;
+    font: 14px/44px ITCAvantGardeStd-Bk;
     color: #fff;
 }

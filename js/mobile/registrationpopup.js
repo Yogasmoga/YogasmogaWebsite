@@ -246,7 +246,11 @@ function forgotCustomer() {
 
     if(email_id=="" || email_id=="Email"){
         jQuery('#err_pass').html('Email Field is required');
-        //alert(email_id);
+        //alert(email_id);err_pass
+        return false;
+    }
+    else if(!isValidEmailAddress(email_id)){
+        jQuery('#err_pass').html('Email id is not valid.');
         return false;
     }
     else {

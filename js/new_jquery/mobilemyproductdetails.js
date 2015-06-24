@@ -897,7 +897,7 @@ jQuery(document).ready(function($){
                    var img;
                    //alert(response);
                    btn.attr("href", response);
-                   var index = response.search("add");
+                   var index = response.search("addmobile");
                    if (index > 0) {
                        img = "<img width='28px' height='28px' src='/skin/frontend/default/newrespondf/images/heart.png'>";
                        btn.html(img);

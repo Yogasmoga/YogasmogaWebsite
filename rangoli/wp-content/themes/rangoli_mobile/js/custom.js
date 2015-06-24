@@ -25,7 +25,7 @@ $(document).ready(function () {
         slideshow: false
     });
     init_menu();
-    //init_watermark();
+    init_watermark();
     $("a.no_load").click(function(e){
         e.preventDefault();
     });
