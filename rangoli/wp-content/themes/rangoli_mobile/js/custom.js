@@ -179,6 +179,11 @@ $(document).ready(function () {
         $('html, body').animate({ scrollTop: 0 },200,"easeInCirc");
     });
 
+    $("#forgot_password").click(function(){
+        var email = $(".forgot_password_form input[name='email']").val();
+        forgot_password(email);
+    });
+
     get_cart();
 
 });
@@ -1072,3 +1077,23 @@ $(window).on('scrolldelta', function (e) {
     }
 
 });
+
+
+function forgot_password(email){
+    if(email==""){
+        $(".forgot_password_form .small.err_msg").html("Please enster your Email id.");
+    }
+    else if(isValidEmailAddress(email)) {
+        $.ajax({
+            url: root + '/ajaxlogin/index/forgotPasswordPost',
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+                alert(result);
+            }
+        });
+    }
+    else{
+        $(".forgot_password_form .small.err_msg").html("Email id is not valid.");
+    }
+}
