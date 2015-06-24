@@ -345,12 +345,11 @@ input, textarea, select {
     background: none repeat scroll 0 0 #ae8637;
     border: 1px solid #666;
     color: #666;
-    
     float: right;
     font-family: gotham-b, arial;
     font-size: 13px;
     font-weight: normal;
-    height: 47px;
+    height: 44px;
     letter-spacing: 0.05em;
     line-height: 1;
     margin: 17px 0;

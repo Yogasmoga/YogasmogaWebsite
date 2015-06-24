@@ -61,7 +61,7 @@ if(!is_user_logged_in()  && is_home()) {
             <input type="text" data-watermark="First Name" name="fname" />
             <input type="text" data-watermark="Last Name" name="lname" />
             <input type="text" data-watermark="Email" name="email" />
-            <input type="text" data-watermark="Select a password" rel="password" name="password" />
+            <input type="text" data-watermark="Select a password"  name="password" rel="password"/>
             <p class="gender_p">Select a Gender
                                               <span class="gender">
                                                     M<input type="radio" name="gender" value="1" title="male"/>

@@ -1071,9 +1071,8 @@ textarea {
 .popup button {
     background: none repeat scroll 0 0 #ae8637;
     color: #fff;
-    
-    font: 15px/15px ITCAvantGardeStd-Bk;
-    height: 60px;
+    font: 14px/44px ITCAvantGardeStd-Bk;
+    height: 44px;
     margin-bottom: 0px;
     margin-top: 50px;
     width: 100%;
