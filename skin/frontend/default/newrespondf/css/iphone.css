@@ -1692,9 +1692,8 @@ button.checkout-link span {
 button.place-order, .col2-set .registered-users .buttons-set #send2 {
     background: #ae8637;
     border: 0 none;
-
     position: relative;
-    height: 57px;
+    height: 44px;
     width: 100%;
 }
 
@@ -1703,15 +1702,14 @@ button.place-order, .col2-set .registered-users .buttons-set #send2 {
 }
 
 button.place-order::before, #shopping-cart-table .button::before, #shopping-cart-totals-table + .button::before, .col2-set .registered-users .buttons-set #send2::before {
-    background: url(../images/tick.png) top center no-repeat;
-
+    background: rgba(0, 0, 0, 0) url("/skin/frontend/default/newrespondf/images/tick.png") no-repeat scroll center top;
     content: "";
     height: 26px;
     left: 0;
     margin: 0 auto;
     position: absolute;
     right: 0;
-    top: 15px;
+    top: 9px;
     width: 34px;
 }
 
@@ -2458,13 +2456,13 @@ tr.td-noborder td {
 
 #checkout-step-cart {
     display: block;
-    padding-bottom: 57px;
+    padding-bottom: 44px;
     position: relative;
 }
 
 #shopping-cart-totals-table + .button, #shopping-cart-table .button {
     border: medium none;
-    height: 57px;
+    height: 44px;
     left: 0;
     position: absolute;
     background: #43ad00;
@@ -2553,7 +2551,7 @@ tr.td-noborder td {
     background: url("../images/tick.png") no-repeat scroll center center #43ad00;
     border: medium none;
     color: transparent;
-    height: 58px;
+    height: 44px;
     width: 100%;
 }
 
@@ -3054,12 +3052,12 @@ h4.legend {
 .one-page-checkout .section .checkout_title {
     color: #444444;
     font-family: ITCAvantGardeStd-Bk;
-    font-size: 24px;
+    font-size: 21px;
     background: #fff;
     box-shadow: 0 -3px 1px rgba(0, 0, 0, 0.03) inset;
     position: relative;
     font-weight: normal;
-    line-height: 58px;
+    line-height: 44px;
     text-transform: uppercase;
 }
 
@@ -3098,12 +3096,12 @@ h4.legend {
 .one-page-checkout .section .step-count {
     color: #fff;
     background: #43ad00;
-    font-size: 18px;
-    line-height: 58px;
+    font-size: 16px;
+    line-height: 44px;
     font-family: ITCAvantGardeStd-Bk;
-    width: 58px;
+    width: 44px;
     float: left;
-    height: 58px;
+    height: 44px;
     display: inline-block;
     position: absolute;
     left: 0;

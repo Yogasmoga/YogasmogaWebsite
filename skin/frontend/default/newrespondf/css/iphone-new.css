@@ -524,10 +524,10 @@
     background: hsl(97, 100%, 34%) none repeat scroll 0 0;
     border: medium none;
     color: hsl(0, 0%, 100%);
-    height: 58px;
+    height: 44px;
     width: 100%;
     margin: 28px 0;
-    font:16px ITCAvantGardeStd-Bk;
+    font:14px ITCAvantGardeStd-Bk;
     letter-spacing: 1px;
 }
 
@@ -934,7 +934,7 @@ form#cardbalanceform table.redeem-giftcard{
     border: medium none;
     color: #fff;
     float: left;
-    font:16px/58px ITCAvantGardeStd-Bk;
+    font:14px/44px ITCAvantGardeStd-Bk;
     margin-right: 2%;
     width: 48%;
     text-transform: uppercase;
@@ -944,7 +944,7 @@ form#cardbalanceform table.redeem-giftcard{
     border: medium none;
     color: #fff;
     float: left;
-    font:16px/58px ITCAvantGardeStd-Bk;
+    font:14px/44px ITCAvantGardeStd-Bk;
     margin-left: 2%;
     width: 48%;
     text-transform: uppercase;
