@@ -1,4 +1,18 @@
 <?php
+
+    function hasDifferentSizes($originalSizes, $productSizes){
+
+        foreach($productSizes as $productSize){
+
+            $found = in_array($productSize, $originalSizes);
+
+            if(!$found)
+                return true;
+        }
+
+        return false;
+    }
+
     $inputFileName = 'stitch.xls';
 
     $upload_display = "display:none";
@@ -119,7 +133,7 @@ for ($row = 2; $row <= $highestRow; $row++) {
         'magento_price' => $magento_price
     );
 }
-
+print_r($all_products['YOGAFLOPS By Rider']);
     $product_names = array_unique($product_names);
 
 ksort($all_products);
@@ -144,6 +158,15 @@ ksort($all_products);
         echo "<tr>";
 
         $ar_color_size = array();
+        $ar_color_sizes_name = array();
+
+        // read all sizes of this product
+        foreach($data as $ar)
+            $ar_color_sizes_name[] = trim($ar['size']);
+
+        $ar_color_sizes_name = array_unique($ar_color_sizes_name);
+        sort($ar_color_sizes_name);
+        $hasDifferentSize = hasDifferentSizes($ar_sizes, $ar_color_sizes_name);
 
         foreach($data as $ar){
 
@@ -170,8 +193,16 @@ ksort($all_products);
         echo "<tr style='background: #2c62a5; color: #fff'>";
 
         echo "<td style='padding:5px; min-width: 200px;'>Color</td>";
-        foreach($ar_sizes as $size){
-            echo "<td style='padding:5px 0; text-align: left; min-width: 45px;'>" . $size . "</td>";
+
+        if($hasDifferentSize){
+            foreach ($ar_color_sizes_name as $size) {
+                echo "<td style='padding:5px 0; text-align: left; min-width: 45px;'>" . $size . "</td>";
+            }
+        }
+        else {
+            foreach ($ar_sizes as $size) {
+                echo "<td style='padding:5px 0; text-align: left; min-width: 45px;'>" . $size . "</td>";
+            }
         }
         echo "<td style='padding:5px; text-align: left'>Total Units</td>";
         echo "<td style='padding:5px; text-align: left'>Cost Price</td>";
@@ -187,82 +218,156 @@ ksort($all_products);
         $sum_of_total = 0;
         $sum_of_inventories = 0;
 
-        foreach($ar_color_size as $color_name_value => $color_data ){
+        if($hasDifferentSize){
+            foreach ($ar_color_size as $color_name_value => $color_data) {
 
-            echo "<tr>";
-            echo "<td style='margin-top: 10px;'>" . $color_name_value . "</td>";
+                echo "<tr>";
+                echo "<td style='margin-top: 10px;'>" . $color_name_value . "</td>";
 
-            $ar_size_stock = array();
+                $ar_size_stock = array();
 
-            $total_product_stock = 0;
-            foreach($color_data as $color_size) {
-                if(isset($color_size['size']) && strlen(trim($color_size['size']))>0) {
-                    $ar_size_stock[(string)$color_size['size']] = $color_size['stock'];
-                    $total_product_stock += $color_size['stock'];
-                }
-            }
-
-            $total_products += $total_product_stock;
-
-            ksort($ar_size_stock);
-
-            $x = 0;
-            if(count($ar_size_stock)>0) {
-                $sub_total_stock_sum = 0;
-                foreach ($ar_sizes as $size) {
-
-                    if(isset($ar_size_stock[$size])) {
-
-                        $stock = $ar_size_stock[$size];
-
-                        if (intval($stock) == 0)
-                            echo "<td style='text-align: left; background-color: #ccc'>$stock</td>";
-                        else
-                            echo "<td style='text-align: left'>$stock</td>";
-
-                        if (!isset($ar_sub_total_stock_sum[$size]))
-                            $ar_sub_total_stock_sum[$size] = 0;
-
-                        $ar_sub_total_stock_sum[$size] += $stock;
+                $total_product_stock = 0;
+                foreach ($color_data as $color_size) {
+                    if (isset($color_size['size']) && strlen(trim($color_size['size'])) > 0) {
+                        $ar_size_stock[(string)$color_size['size']] = $color_size['stock'];
+                        $total_product_stock += $color_size['stock'];
                     }
-                    else {
-                        echo "<td style='text-align: left; background-color: #ccc'>0</td>";
-                        if (!isset($ar_sub_total_stock_sum[$size]))
-                            $ar_sub_total_stock_sum[$size] = 0;
-                    }
-                    ++$x;
                 }
+
+                $total_products += $total_product_stock;
+
+                ksort($ar_size_stock);
+
+                $x = 0;
+                if (count($ar_size_stock) > 0) {
+                    $sub_total_stock_sum = 0;
+                    foreach ($ar_color_sizes_name as $size) {
+
+                        if (isset($ar_size_stock[$size])) {
+
+                            $stock = $ar_size_stock[$size];
+
+                            if (intval($stock) == 0)
+                                echo "<td style='text-align: left; background-color: #ccc'>$stock</td>";
+                            else
+                                echo "<td style='text-align: left'>$stock</td>";
+
+                            if (!isset($ar_sub_total_stock_sum[$size]))
+                                $ar_sub_total_stock_sum[$size] = 0;
+
+                            $ar_sub_total_stock_sum[$size] += $stock;
+                        } else {
+                            echo "<td style='text-align: left; background-color: #ccc'>0</td>";
+                            if (!isset($ar_sub_total_stock_sum[$size]))
+                                $ar_sub_total_stock_sum[$size] = 0;
+                        }
+                        ++$x;
+                    }
+                }
+
+//                // fill td's if there are not enough size available for this product
+//                if ($x > 0)
+//                    for ($i = $x; $i < count($ar_sizes); $i++)
+//                        echo "<td style='text-align: left'>&nbsp;</td>";
+
+                $sum_of_total = 0;
+                $sum_of_inventories = 0;
+                if (isset($color_data[0]['unit_price'])) {
+                    echo "<td style='text-align: left'>$total_product_stock</td>";
+                    $unit_price = $color_data[0]['unit_price'];
+                    echo "<td style='text-align: left'>$ " . number_format($unit_price, 2, '.', '') . "</td>";
+                    $net_total = $total_product_stock * $unit_price;
+                    echo "<td style='text-align: left'>$ " . number_format($net_total, 2, '.', '') . "</td>";
+
+                    $total_inventories_cost += $net_total;
+
+                    $sum_of_total += $net_total;
+                    $sum_of_inventories += $total_product_stock;
+                }
+
+                //$ar_sub_total_cost_price[] = $net_total;
+
+                echo "</tr>";
             }
+        }
+        else {
+            foreach ($ar_color_size as $color_name_value => $color_data) {
 
-            // fill td's if there are not enough size available for this product
-            if($x>0)
-                for($i=$x;$i<count($ar_sizes);$i++)
-                    echo "<td style='text-align: left'>&nbsp;</td>";
+                echo "<tr>";
+                echo "<td style='margin-top: 10px;'>" . $color_name_value . "</td>";
 
-            $sum_of_total = 0;
-            $sum_of_inventories = 0;
-            if(isset($color_data[0]['unit_price'])) {
-                echo "<td style='text-align: left'>$total_product_stock</td>";
-                $unit_price = $color_data[0]['unit_price'];
-                echo "<td style='text-align: left'>$ " . number_format($unit_price,2, '.', '') . "</td>";
-                $net_total = $total_product_stock * $unit_price;
-                echo "<td style='text-align: left'>$ " . number_format($net_total, 2, '.', ''). "</td>";
+                $ar_size_stock = array();
 
-                $total_inventories_cost += $net_total;
+                $total_product_stock = 0;
+                foreach ($color_data as $color_size) {
+                    if (isset($color_size['size']) && strlen(trim($color_size['size'])) > 0) {
+                        $ar_size_stock[(string)$color_size['size']] = $color_size['stock'];
+                        $total_product_stock += $color_size['stock'];
+                    }
+                }
 
-                $sum_of_total += $net_total;
-                $sum_of_inventories += $total_product_stock;
+                $total_products += $total_product_stock;
+
+                ksort($ar_size_stock);
+
+                $x = 0;
+                if (count($ar_size_stock) > 0) {
+                    $sub_total_stock_sum = 0;
+                    foreach ($ar_sizes as $size) {
+
+                        if (isset($ar_size_stock[$size])) {
+
+                            $stock = $ar_size_stock[$size];
+
+                            if (intval($stock) == 0)
+                                echo "<td style='text-align: left; background-color: #ccc'>$stock</td>";
+                            else
+                                echo "<td style='text-align: left'>$stock</td>";
+
+                            if (!isset($ar_sub_total_stock_sum[$size]))
+                                $ar_sub_total_stock_sum[$size] = 0;
+
+                            $ar_sub_total_stock_sum[$size] += $stock;
+                        } else {
+                            echo "<td style='text-align: left; background-color: #ccc'>0</td>";
+                            if (!isset($ar_sub_total_stock_sum[$size]))
+                                $ar_sub_total_stock_sum[$size] = 0;
+                        }
+                        ++$x;
+                    }
+                }
+
+                // fill td's if there are not enough size available for this product
+                if ($x > 0)
+                    for ($i = $x; $i < count($ar_sizes); $i++)
+                        echo "<td style='text-align: left'>&nbsp;</td>";
+
+                $sum_of_total = 0;
+                $sum_of_inventories = 0;
+                if (isset($color_data[0]['unit_price'])) {
+                    echo "<td style='text-align: left'>$total_product_stock</td>";
+                    $unit_price = $color_data[0]['unit_price'];
+                    echo "<td style='text-align: left'>$ " . number_format($unit_price, 2, '.', '') . "</td>";
+                    $net_total = $total_product_stock * $unit_price;
+                    echo "<td style='text-align: left'>$ " . number_format($net_total, 2, '.', '') . "</td>";
+
+                    $total_inventories_cost += $net_total;
+
+                    $sum_of_total += $net_total;
+                    $sum_of_inventories += $total_product_stock;
+                }
+
+                //$ar_sub_total_cost_price[] = $net_total;
+
+                echo "</tr>";
             }
-
-            //$ar_sub_total_cost_price[] = $net_total;
-
-            echo "</tr>";
         }
 
         echo "<tr><td style='padding-top:20px; font-weight:bold; color:#2f70cc; width: 250px;'>Sub Total</td>";
         foreach($ar_sub_total_stock_sum as $size => $size_total)
             echo "<td style='text-align: left; padding-top:20px; font-weight: bold'>" . $size_total . "</td>";
 
+        if(!$hasDifferentSize)
         for($i=count($ar_sub_total_stock_sum);$i<count($ar_sizes);$i++)
             echo "<td style='text-align: left; padding-top:20px; font-weight: bold'>&nbsp;</td>";
 
