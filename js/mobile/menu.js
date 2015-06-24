@@ -10,6 +10,11 @@ $j(function () {
         $jthis.toggleClass('is-active');
         navContainer.toggleClass('is-visible');
         html.toggleClass('nav-open');
+        jQuery(".dropdown_content").slideUp();
+        jQuery(".toggle_dropdown").removeClass("active");
+        jQuery(".account-nav.l-align.ys_static_page_dropdown").slideUp()
+        jQuery(".sign-in-box .arrow-icon").removeClass("active");
+
     });
 
     // Nav dropdown toggle
@@ -278,3 +283,47 @@ jQuery(window).resize(function(){
 
 });
 
+
+jQuery.event.special.scrolldelta = {
+    delegateType: "scroll",
+    bindType: "scroll",
+    handle: function (event) {
+        var handleObj = event.handleObj;
+        var targetData = jQuery.data(event.target);
+        var ret = null;
+        var elem = event.target;
+        var isDoc = elem === document;
+        var oldTop = targetData.top || 0;
+        var oldLeft = targetData.left || 0;
+        targetData.top = isDoc ? elem.documentElement.scrollTop + elem.body.scrollTop : elem.scrollTop;
+        targetData.left = isDoc ? elem.documentElement.scrollLeft + elem.body.scrollLeft : elem.scrollLeft;
+        event.scrollTopDelta = targetData.top - oldTop;
+        event.scrollTop = targetData.top;
+        event.scrollLeftDelta = targetData.left - oldLeft;
+        event.scrollLeft = targetData.left;
+        event.type = handleObj.origType;
+        ret = handleObj.handler.apply(this, arguments);
+        event.type = handleObj.type;
+        return ret;
+    }
+};
+
+// bind to custom 'scrolldelta' event
+jQuery(window).on('scrolldelta', function (e) {
+    var top = e.scrollTop;
+    var topDelta = e.scrollTopDelta;
+    var left = e.scrollLeft;
+    var leftDelta = e.scrollLeftDelta;
+    // do stuff with the above info; for now just display it to user
+    var feedbackText = 'scrollTop: ' + top.toString() + 'px (' + (topDelta >= 0 ? '+' : '') + topDelta.toString() + 'px), scrollLeft: ' + left.toString() + 'px (' + (leftDelta >= 0 ? '+' : '') + leftDelta.toString() + 'px)';
+    console.log(feedbackText);
+    if(topDelta > 30){
+        jQuery(".header").fadeOut();
+        jQuery(".sign-in-box").fadeOut();
+    }
+    else if(topDelta < 0){
+        jQuery(".header").fadeIn();
+        jQuery(".sign-in-box").fadeIn();
+    }
+
+});

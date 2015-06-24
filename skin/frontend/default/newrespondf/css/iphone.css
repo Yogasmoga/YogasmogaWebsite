@@ -3642,7 +3642,7 @@ ul.checkout-cont > li {
 }
 #menu_container.nav-container {
     background: none repeat scroll 0 0 rgba(255, 255, 255, 0.95);
-    box-shadow: 0 0 144px rgba(0, 0, 0, 0.4);
+    box-shadow: 47px 44px 0 rgba(0, 0, 0, 0.2);
     color: #555 !important;
 }
 #menu_container.nav-container a {
