@@ -455,10 +455,7 @@ $(window).load(function(){
                 var  customer = response.customer;
                 var  bullseye = response.bullseye;
                 if(customer == "new"){
-                    $(".signin_popup").fadeOut();
-                    $(".after_signup_popup").fadeOut();
-                    $(".signup_popup").fadeIn();
-                    $(".popup").fadeIn();
+                    $(".open_signup").click();
                     is_login_box_open = false
                 }
 

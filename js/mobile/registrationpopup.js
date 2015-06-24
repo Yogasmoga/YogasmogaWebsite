@@ -1,6 +1,6 @@
 jQuery.noConflict();
 
-var root='http://staging.yogasmoga.com/';
+//var root='http://staging.yogasmoga.com/';
 //var root='http://ysstaging.com.local/';
 
 /**************** logout logic added by ys team *****************/
@@ -342,19 +342,19 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
 function wplogout() {
 
     jQuery.ajax({
-        url: root + 'rangoli/mage_wp_login.php',
+        url: homeUrl + 'rangoli/mage_wp_login.php',
         type: 'POST',
         data: 'logout=1',
         dataType: 'json',
         success: function (result) {
 
             if (result.message == "loggedout") {
-                var url = root + "customer/account/logout/";
+                var url = homeUrl + "customer/account/logout/";
 
                 window.location.replace(url);
             }
             else if (result.message == "alreadyloggedout") {
-                var url = root + "customer/account/logout/";
+                var url = homeUrl + "customer/account/logout/";
 
                 window.location.replace(url);
             }
@@ -365,7 +365,7 @@ function wplogout() {
 function wplogoutonly() {
 
     jQuery.ajax({
-        url: root + 'rangoli/mage_wp_login.php',
+        url: homeUrl + 'rangoli/mage_wp_login.php',
         type: 'POST',
         data: 'logout=1',
         dataType: 'json',
@@ -377,7 +377,7 @@ function wplogoutonly() {
 function checkIsUserLogged() {
 
     jQuery.ajax({
-        url: root + 'ys/session/loggedcustomer',
+        url: homeUrl + 'ys/session/loggedcustomer',
         type: 'GET',
         dataType: 'json',
         success: function (result) {
