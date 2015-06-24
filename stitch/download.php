@@ -219,22 +219,20 @@ if (file_exists($inputFileName)) {
         if($hasDifferentSize){
             foreach ($ar_color_sizes_name as $size) {
 
-                foreach ($ar_sizes as $size) {
-                    ++$colNumber;
-                    $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $size);
-                    $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->applyFromArray(
-                        array(
-                            "font" => array(
-                                "bold" => true,
-                                'color' => array('rgb' => 'FFFFFF')
-                            ),
-                            'fill' => array(
-                                'type' => PHPExcel_Style_Fill::FILL_SOLID,
-                                'color' => array('rgb' => '2c62a5')
-                            )
+                ++$colNumber;
+                $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $size);
+                $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->applyFromArray(
+                    array(
+                        "font" => array(
+                            "bold" => true,
+                            'color' => array('rgb' => 'FFFFFF')
+                        ),
+                        'fill' => array(
+                            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                            'color' => array('rgb' => '2c62a5')
                         )
-                    );
-                }
+                    )
+                );
             }
         }
         else {
