@@ -32,7 +32,7 @@
     if(Mage::helper('customer')->isLoggedIn())
     {
         ?>
-            <form id="discount-coupon-form" action="<?php echo $this->getUrl('checkout/cart/couponPost') ?>" method="post">
+            <form id="discount-coupon-form" action="<?php echo $this->getUrl('checkout/cart/couponPost',array('_secure'=>true)) ?>" method="post">
                 <div class="discount">
                    <!-- <h6><?php //echo $this->__('PROMOTION CODE') ?></h6>-->
                     <div class="discount-form">
@@ -87,7 +87,7 @@
     }
     else
     {
-        ?><form id="discount-coupon-form" action="<?php echo $this->getUrl('checkout/cart/couponPost') ?>" method="post" onsubmit="return(false)">
+        ?><form id="discount-coupon-form" action="<?php echo $this->getUrl('checkout/cart/couponPost',array('_secure'=>true)) ?>" method="post" onsubmit="return(false)">
             <div class="discount">
                   <div class="discount-form">
                  
@@ -104,7 +104,7 @@
 <div id="error_msg_coupon" class="error_coupon"></div>
 <?php return; ?>
 
-<form id="discount-coupon-form" action="<?php echo $this->getUrl('checkout/cart/couponPost') ?>" method="post">
+<form id="discount-coupon-form" action="<?php echo $this->getUrl('checkout/cart/couponPost',array('_secure'=>true)) ?>" method="post">
     <div class="discount">
         <h6><?php echo $this->__('Discount Codes') ?></h6>
         <div class="discount-form">
