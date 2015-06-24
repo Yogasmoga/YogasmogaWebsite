@@ -266,7 +266,8 @@ ul.site-map > li{
 }
 
 .multicolorcont{
-    background: url("../images/homepage/color-world.jpg") no-repeat center center transparent;
+/*    background: url("../images/homepage/color-world.jpg") no-repeat center center transparent; */
+    background: #f2542f;
     background-size: 100% 100%;
 }
 
