@@ -1,5 +1,19 @@
 <?php
 ob_start();
+
+function hasDifferentSizes($originalSizes, $productSizes){
+
+    foreach($productSizes as $productSize){
+
+        $found = in_array($productSize, $originalSizes);
+
+        if(!$found)
+            return true;
+    }
+
+    return false;
+}
+
 $inputFileName = 'stitch.xls';
 
 $upload_display = "display:none";
@@ -153,6 +167,15 @@ if (file_exists($inputFileName)) {
         $objTpl->getActiveSheet()->getStyle("A" . $rowCount . ":F" . $rowCount)->applyFromArray(array("font" => array( "bold" => true)));
 
         $ar_color_size = array();
+        $ar_color_sizes_name = array();
+
+        // read all sizes of this product
+        foreach($data as $ar)
+            $ar_color_sizes_name[] = trim($ar['size']);
+
+        $ar_color_sizes_name = array_unique($ar_color_sizes_name);
+        sort($ar_color_sizes_name);
+        $hasDifferentSize = hasDifferentSizes($ar_sizes, $ar_color_sizes_name);
 
         foreach ($data as $ar) {
 
@@ -192,21 +215,47 @@ if (file_exists($inputFileName)) {
                 )
             )
         );
-        foreach ($ar_sizes as $size) {
-            ++$colNumber;
-            $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $size);
-            $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->applyFromArray(
-                array(
-                    "font" => array(
-                        "bold" => true,
-                        'color' => array('rgb' => 'FFFFFF')
-                    ),
-                    'fill' => array(
-                        'type' => PHPExcel_Style_Fill::FILL_SOLID,
-                        'color' => array('rgb' => '2c62a5')
+
+        if($hasDifferentSize){
+            foreach ($ar_color_sizes_name as $size) {
+
+                foreach ($ar_sizes as $size) {
+                    ++$colNumber;
+                    $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $size);
+                    $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->applyFromArray(
+                        array(
+                            "font" => array(
+                                "bold" => true,
+                                'color' => array('rgb' => 'FFFFFF')
+                            ),
+                            'fill' => array(
+                                'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                                'color' => array('rgb' => '2c62a5')
+                            )
+                        )
+                    );
+                }
+            }
+        }
+        else {
+
+            foreach ($ar_sizes as $size) {
+                ++$colNumber;
+                $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $size);
+                $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->applyFromArray(
+                    array(
+                        "font" => array(
+                            "bold" => true,
+                            'color' => array('rgb' => 'FFFFFF')
+                        ),
+                        'fill' => array(
+                            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                            'color' => array('rgb' => '2c62a5')
+                        )
                     )
-                )
-            );
+                );
+            }
+
         }
         ++$colNumber;
         $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, 'Total Units');
@@ -262,94 +311,186 @@ if (file_exists($inputFileName)) {
         $sum_of_total = 0;
         $sum_of_inventories = 0;
 
-        foreach ($ar_color_size as $color_name_value => $color_data) {
+        if($hasDifferentSize){
+            foreach ($ar_color_size as $color_name_value => $color_data) {
 
-            ++$rowCount;
+                ++$rowCount;
 
-            $colNumber = 65;
-            $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $color_name_value);
+                $colNumber = 65;
+                $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $color_name_value);
 
-            $ar_size_stock = array();
+                $ar_size_stock = array();
 
-            $total_product_stock = 0;
-            foreach ($color_data as $color_size) {
-                if (isset($color_size['size']) && strlen(trim($color_size['size'])) > 0) {
-                    $ar_size_stock[$color_size['size']] = $color_size['stock'];
-                    $total_product_stock += $color_size['stock'];
+                $total_product_stock = 0;
+                foreach ($color_data as $color_size) {
+                    if (isset($color_size['size']) && strlen(trim($color_size['size'])) > 0) {
+                        $ar_size_stock[$color_size['size']] = $color_size['stock'];
+                        $total_product_stock += $color_size['stock'];
+                    }
                 }
-            }
 
-            $total_products += $total_product_stock;
+                $total_products += $total_product_stock;
 
-            ksort($ar_size_stock);
+                ksort($ar_size_stock);
 
-            $x = 0;
-            if(count($ar_size_stock)>0) {
-                $sub_total_stock_sum = 0;
-                foreach ($ar_sizes as $size) {
+                $x = 0;
+                if(count($ar_size_stock)>0) {
+                    $sub_total_stock_sum = 0;
+                    foreach ($ar_color_sizes_name as $size) {
 
-                    if(isset($ar_size_stock[$size])) {
+                        if(isset($ar_size_stock[$size])) {
 
-                        $stock = $ar_size_stock[$size];
-                        if (intval($stock) == 0) {
+                            $stock = $ar_size_stock[$size];
+                            if (intval($stock) == 0) {
+                                ++$colNumber;
+                                $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $stock);
+                                $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+                            } else {
+                                ++$colNumber;
+                                $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $stock);
+                                $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+                            }
+
+                            if (!isset($ar_sub_total_stock_sum[$size]))
+                                $ar_sub_total_stock_sum[$size] = 0;
+
+                            $ar_sub_total_stock_sum[$size] += $stock;
+                        }
+                        else{
+                            if (!isset($ar_sub_total_stock_sum[$size]))
+                                $ar_sub_total_stock_sum[$size] = 0;
+
                             ++$colNumber;
-                            $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $stock);
-                            $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-                        } else {
-                            ++$colNumber;
-                            $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $stock);
+                            $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, 0);
                             $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
                         }
-
-                        if (!isset($ar_sub_total_stock_sum[$size]))
-                            $ar_sub_total_stock_sum[$size] = 0;
-
-                        $ar_sub_total_stock_sum[$size] += $stock;
+                        ++$x;
                     }
-                    else{
-                        if (!isset($ar_sub_total_stock_sum[$size]))
-                            $ar_sub_total_stock_sum[$size] = 0;
+                }
 
+                // fill td's if there are not enough size available for this product
+                if ($x > 0)
+                    for ($i = $x; $i < count($ar_sizes); $i++) {
                         ++$colNumber;
-                        $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, 0);
-                        $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+                        $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, '');
                     }
-                    ++$x;
-                }
-            }
 
-            // fill td's if there are not enough size available for this product
-            if ($x > 0)
-                for ($i = $x; $i < count($ar_sizes); $i++) {
+                $sum_of_total = 0;
+                $sum_of_inventories = 0;
+                if (isset($color_data[0]['unit_price'])) {
                     ++$colNumber;
-                    $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, '');
+                    $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $total_product_stock);
+                    $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+
+                    $unit_price = $color_data[0]['unit_price'];
+
+                    ++$colNumber;
+                    $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, '$ ' . number_format($unit_price, 2, '.', ''));
+                    $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+
+                    $net_total = $total_product_stock * $unit_price;
+                    ++$colNumber;
+                    $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, '$ ' . number_format($net_total, 2, '.', ''));
+                    $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+
+                    $total_inventories_cost += $net_total;
+
+                    $sum_of_total += $net_total;
+                    $sum_of_inventories += $total_product_stock;
                 }
 
-            $sum_of_total = 0;
-            $sum_of_inventories = 0;
-            if (isset($color_data[0]['unit_price'])) {
-                ++$colNumber;
-                $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $total_product_stock);
-                $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-
-                $unit_price = $color_data[0]['unit_price'];
-
-                ++$colNumber;
-                $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, '$ ' . number_format($unit_price, 2, '.', ''));
-                $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-
-                $net_total = $total_product_stock * $unit_price;
-                ++$colNumber;
-                $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, '$ ' . number_format($net_total, 2, '.', ''));
-                $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-
-                $total_inventories_cost += $net_total;
-
-                $sum_of_total += $net_total;
-                $sum_of_inventories += $total_product_stock;
+                //$ar_sub_total_cost_price[] = $net_total;
             }
+        }
+        else {
+            foreach ($ar_color_size as $color_name_value => $color_data) {
 
-            //$ar_sub_total_cost_price[] = $net_total;
+                ++$rowCount;
+
+                $colNumber = 65;
+                $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $color_name_value);
+
+                $ar_size_stock = array();
+
+                $total_product_stock = 0;
+                foreach ($color_data as $color_size) {
+                    if (isset($color_size['size']) && strlen(trim($color_size['size'])) > 0) {
+                        $ar_size_stock[$color_size['size']] = $color_size['stock'];
+                        $total_product_stock += $color_size['stock'];
+                    }
+                }
+
+                $total_products += $total_product_stock;
+
+                ksort($ar_size_stock);
+
+                $x = 0;
+                if (count($ar_size_stock) > 0) {
+                    $sub_total_stock_sum = 0;
+                    foreach ($ar_sizes as $size) {
+
+                        if (isset($ar_size_stock[$size])) {
+
+                            $stock = $ar_size_stock[$size];
+                            if (intval($stock) == 0) {
+                                ++$colNumber;
+                                $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $stock);
+                                $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+                            } else {
+                                ++$colNumber;
+                                $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $stock);
+                                $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+                            }
+
+                            if (!isset($ar_sub_total_stock_sum[$size]))
+                                $ar_sub_total_stock_sum[$size] = 0;
+
+                            $ar_sub_total_stock_sum[$size] += $stock;
+                        } else {
+                            if (!isset($ar_sub_total_stock_sum[$size]))
+                                $ar_sub_total_stock_sum[$size] = 0;
+
+                            ++$colNumber;
+                            $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, 0);
+                            $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+                        }
+                        ++$x;
+                    }
+                }
+
+                // fill td's if there are not enough size available for this product
+                if ($x > 0)
+                    for ($i = $x; $i < count($ar_sizes); $i++) {
+                        ++$colNumber;
+                        $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, '');
+                    }
+
+                $sum_of_total = 0;
+                $sum_of_inventories = 0;
+                if (isset($color_data[0]['unit_price'])) {
+                    ++$colNumber;
+                    $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, $total_product_stock);
+                    $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+
+                    $unit_price = $color_data[0]['unit_price'];
+
+                    ++$colNumber;
+                    $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, '$ ' . number_format($unit_price, 2, '.', ''));
+                    $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+
+                    $net_total = $total_product_stock * $unit_price;
+                    ++$colNumber;
+                    $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, '$ ' . number_format($net_total, 2, '.', ''));
+                    $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+
+                    $total_inventories_cost += $net_total;
+
+                    $sum_of_total += $net_total;
+                    $sum_of_inventories += $total_product_stock;
+                }
+
+                //$ar_sub_total_cost_price[] = $net_total;
+            }
         }
 
         ++$rowCount;
@@ -373,6 +514,7 @@ if (file_exists($inputFileName)) {
             $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
         }
 
+        if(!$hasDifferentSize)
         for ($i = count($ar_sub_total_stock_sum); $i < count($ar_sizes); $i++) {
             ++$colNumber;
             $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, '');
