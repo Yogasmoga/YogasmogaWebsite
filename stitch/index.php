@@ -133,7 +133,7 @@ for ($row = 2; $row <= $highestRow; $row++) {
         'magento_price' => $magento_price
     );
 }
-print_r($all_products['YOGAFLOPS By Rider']);
+
     $product_names = array_unique($product_names);
 
 ksort($all_products);
