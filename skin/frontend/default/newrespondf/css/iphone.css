@@ -6206,3 +6206,6 @@ button#send2 {
 #billing-new-address-form .customer-name div:first-child {
     margin-bottom: 10px;
 }
+.col-1.col-ship > span {
+    margin-left: 5px;
+}
