@@ -319,12 +319,12 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
                 }
                 echo "Password reset link sent!";
             } else {
-                echo "Invalid email!";
+                echo "Email is invalid.";
             }
 
             return;
         } else {
-            echo "Invalid email!";
+            echo "Email is invalid.";
             return;
         }
     }

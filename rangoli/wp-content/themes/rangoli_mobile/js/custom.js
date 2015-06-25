@@ -196,6 +196,7 @@ function get_random_color(){
 function init_menu(){
     $(".menu_btn").click(function(){
        $(".menu-box").fadeIn();
+       $(".close_menu").fadeIn();
     });
     $(".close_menu").click(function(){
         $(".menu-box").fadeOut();
@@ -1087,12 +1088,9 @@ function forgot_password(email){
     }
     else if(isValidEmailAddress(email)) {
         $.ajax({
-            url: root + '/ajaxlogin/index/forgotPasswordPost/',
-            data: 'email=' + email,
-            type: 'POST',
+            url: root + '/profile/manage/sendpassword?email='+email,
             success: function (result) {
-                console.log(result);
-                $(".forgot_password_form .small.err_msg").html(".Your reset password link has been sent to your email Id.")
+                $(".forgot_password_form .small.err_msg").html(result);
             }
         });
     }
