@@ -294,6 +294,42 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
         }
     }
 
+    public function sendpasswordAction()
+    {
+        $email = (string)$this->getRequest()->getParam('email');
+        if ($email) {
+            if (!Zend_Validate::is($email, 'EmailAddress')) {
+                echo "Invalid email!";
+                return;
+            }
+
+            /* @var $customer Mage_Customer_Model_Customer */
+            $customer = Mage::getModel('customer/customer')
+                ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
+                ->loadByEmail($email);
+
+            if ($customer->getId()) {
+                try {
+                    $newResetPasswordLinkToken = Mage::helper('customer')->generateResetPasswordLinkToken();
+                    $customer->changeResetPasswordLinkToken($newResetPasswordLinkToken);
+                    $customer->sendPasswordResetConfirmationEmail();
+                } catch (Exception $exception) {
+                    echo "Cannot send link!";
+                    return;
+                }
+                echo "Password reset link sent!";
+            } else {
+                echo "Invalid email!";
+            }
+
+            return;
+        } else {
+            echo "Invalid email!";
+            return;
+        }
+    }
+
+
 //    public function uploadbannerimageAction(){
 //
 //        $file_formats = array("jpg", "jpeg", "png", "gif", "bmp");
@@ -372,42 +408,4 @@ function resizeThumbnailImage($thumb_image_name, $image, $width, $height, $start
     chmod($thumb_image_name, 0777);
     return $thumb_image_name;
 }
-
-
-function sendPasswordAction()
-{
-    $email = (string)$this->getRequest()->getPost('email');
-    if ($email) {
-        if (!Zend_Validate::is($email, 'EmailAddress')) {
-            echo "Invalid email!";
-            return;
-        }
-
-        /* @var $customer Mage_Customer_Model_Customer */
-        $customer = Mage::getModel('customer/customer')
-            ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
-            ->loadByEmail($email);
-
-        if ($customer->getId()) {
-            try {
-                $newResetPasswordLinkToken = Mage::helper('customer')->generateResetPasswordLinkToken();
-                $customer->changeResetPasswordLinkToken($newResetPasswordLinkToken);
-                $customer->sendPasswordResetConfirmationEmail();
-            } catch (Exception $exception) {
-                echo "Cannot send link!";
-                return;
-            }
-            echo "Password reset link sent!";
-        } else {
-            echo "Invalid email!";
-        }
-
-        return;
-    } else {
-        echo "Invalid email!";
-        return;
-    }
-}
-
-
 ?>
