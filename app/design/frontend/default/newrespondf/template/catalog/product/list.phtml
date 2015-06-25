@@ -2,7 +2,7 @@
 
 /***************** code to get parent category url *****************/
 $currentUrlForParent = Mage::helper('core/url')->getCurrentUrl();
-echo "current url = " . $currentUrlForParent;
+
 $currentUrlForParent = strtolower($currentUrlForParent);
 
 $categoryNamesForParent = explode('/', $currentUrlForParent);  // break the url
