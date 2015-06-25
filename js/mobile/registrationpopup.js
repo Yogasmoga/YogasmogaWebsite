@@ -196,9 +196,6 @@ function createCustomerAccount() {
                 jQuery(".err_msg").html("");
             },
             success: function (data) {
-
-                //alert(data);
-
                 data = eval('(' + data + ')');
                 var status = data.status;
                 var name = data.fname;
@@ -209,15 +206,13 @@ function createCustomerAccount() {
                 jQuery("#sign-up-form .err-msg").html("");
                 if (status == "success") {
                     createRangoliUser(email_id, pwd, first_name, last_name, customer_id);
-                    window.location = homeUrl ;
+                    window.location = location.reload(true) ;
                 }
                 else {
                     jQuery("#error_msg").html("Email already exists.");
                     jQuery(".create_account").html(button_html);
 
                     return false;
-
-                    //jQuery(".err_msg").html(data.errors);
                 }
             }
         });
@@ -257,7 +252,7 @@ function forgotCustomer() {
     }
     else {
         jQuery.ajax({
-            url: root + '/profile/manage/sendpassword?email='+email_id,
+            url: homeUrl + '/profile/manage/sendpassword?email='+email_id,
             success: function (result) {
                 jQuery('#err_pass').html(result);
             }
