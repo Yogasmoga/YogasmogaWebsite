@@ -318,15 +318,15 @@ jQuery(window).on('scrolldelta', function (e) {
     var feedbackText = 'scrollTop: ' + top.toString() + 'px (' + (topDelta >= 0 ? '+' : '') + topDelta.toString() + 'px), scrollLeft: ' + left.toString() + 'px (' + (leftDelta >= 0 ? '+' : '') + leftDelta.toString() + 'px)';
     console.log(feedbackText);
     if(topDelta > 30){
-        jQuery(".header").fadeOut();
-        jQuery(".sign-in-box").fadeOut('fast');
+        jQuery(".nav.is-fixed").fadeOut();
+        jQuery(".sign-in-box").fadeOut();
         jQuery(".dropdown_content").fadeOut();
         jQuery(".toggle_dropdown").removeClass("active");
         jQuery(".account-nav.l-align.ys_static_page_dropdown").fadeOut()
         jQuery(".sign-in-box .arrow-icon").removeClass("active");
     }
     else if(topDelta < 0){
-        jQuery(".header").fadeIn('fast');
+        jQuery(".nav.is_fixed").fadeIn();
         jQuery(".sign-in-box").fadeIn();
     }
 

@@ -1083,6 +1083,7 @@ $(window).on('scrolldelta', function (e) {
 
 
 function forgot_password(email){
+    $(".forgot_password_form .small.err_msg").html("");
     if(email==""){
         $(".forgot_password_form .small.err_msg").html("Please enter your Email id.");
     }

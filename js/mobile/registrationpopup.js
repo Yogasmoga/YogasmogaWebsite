@@ -242,6 +242,7 @@ function createRangoliUser(email, password, first_name, last_name, customer_id) 
 
 /**************** ys team functions *****************/
 function forgotCustomer() {
+    jQuery('#err_pass').html("");
     var email_id = jQuery.trim(jQuery(".login_form input[name='email']").val());
 
     if(email_id=="" || email_id=="Email"){
@@ -254,9 +255,14 @@ function forgotCustomer() {
         return false;
     }
     else {
-
-        jQuery("form").submit();
-        return true; }
+        jQuery.ajax({
+            url: root + '/profile/manage/sendpassword?email='+email_id,
+            success: function (result) {
+                jQuery('#err_pass').html(result);
+            }
+        });
+        //jQuery("form").submit();
+        return false; }
 
 }
 
