@@ -6191,3 +6191,6 @@ button#send2 {
 .include_option.selected .selected[title="Y"] {
     background: #3ba50f none repeat scroll 0 0;
 }
+.product-box {
+    position: relative;
+}
