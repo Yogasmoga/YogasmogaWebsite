@@ -5059,6 +5059,7 @@ table.redeem-giftcard {
 }
 
 p.apply_promo_label {
+    margin-bottom: 20px;
     position: relative;
     text-align: left;
 }
