@@ -386,6 +386,15 @@ function wplogoutonly() {
 
 function checkIsUserLogged() {
 
+    if (window.location.href.indexOf('https://') >= 0)
+        _usesecureurl = true;
+    else
+        _usesecureurl = false;
+    var url = homeUrl + 'ys/session/loggedcustomer';
+    if (_usesecureurl) {
+        url = securehomeUrl + 'ys/session/loggedcustomer';
+        homeUrl = securehomeUrl;
+    }
     jQuery.ajax({
         url: homeUrl + 'ys/session/loggedcustomer',
         type: 'GET',

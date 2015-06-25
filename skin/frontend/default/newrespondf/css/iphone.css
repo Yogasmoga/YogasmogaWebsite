@@ -6188,3 +6188,6 @@ button#send2 {
     width: 44px !important;
     z-index: 0 !important;
 }
+.include_option.selected .selected[title="Y"] {
+    background: #3ba50f none repeat scroll 0 0;
+}
