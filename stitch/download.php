@@ -367,11 +367,11 @@ if (file_exists($inputFileName)) {
                 }
 
                 // fill td's if there are not enough size available for this product
-                if ($x > 0)
-                    for ($i = $x; $i < count($ar_sizes); $i++) {
-                        ++$colNumber;
-                        $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, '');
-                    }
+//                if ($x > 0)
+//                    for ($i = $x; $i < count($ar_sizes); $i++) {
+//                        ++$colNumber;
+//                        $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, '');
+//                    }
 
                 $sum_of_total = 0;
                 $sum_of_inventories = 0;
@@ -512,10 +512,11 @@ if (file_exists($inputFileName)) {
             $objTpl->getActiveSheet()->getStyle(chr($colNumber) . $rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
         }
 
-        if(!$hasDifferentSize)
-        for ($i = count($ar_sub_total_stock_sum); $i < count($ar_sizes); $i++) {
-            ++$colNumber;
-            $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, '');
+        if(!$hasDifferentSize) {
+            for ($i = count($ar_sub_total_stock_sum); $i < count($ar_sizes); $i++) {
+                ++$colNumber;
+                $objTpl->getActiveSheet()->setCellValue(chr($colNumber) . $rowCount, '');
+            }
         }
 
         ++$colNumber;
