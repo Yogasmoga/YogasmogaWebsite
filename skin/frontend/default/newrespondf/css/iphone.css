@@ -6178,3 +6178,13 @@ button#send2 {
     padding: 5px 0 !important;
     text-align: left;
 }
+.go_to_parent {
+    background: #555 none repeat scroll 0 0 !important;
+    display: block;
+    height: 44px !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 0 !important;
+    width: 44px !important;
+    z-index: 0 !important;
+}
