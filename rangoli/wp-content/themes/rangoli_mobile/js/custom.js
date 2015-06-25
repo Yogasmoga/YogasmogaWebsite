@@ -1034,6 +1034,7 @@ function copytoClipboard(){
 }
 
 
+/*
 
 jQuery.event.special.scrolldelta = {
     delegateType: "scroll",
@@ -1080,6 +1081,7 @@ $(window).on('scrolldelta', function (e) {
     }
 
 });
+*/
 
 
 function forgot_password(email){
