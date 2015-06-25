@@ -2350,7 +2350,7 @@ tr.td-noborder td {
     font-family: GraphikRegular;
     font-size: 12px;
     line-height: 28px;
-    margin-top: 18px;
+    margin-top: 0px; /* 18px */
     letter-spacing: 1px;
     text-transform: capitalize;
 }
@@ -6193,4 +6193,16 @@ button#send2 {
 }
 .product-box {
     position: relative;
+}
+#shipping-new-address-form li {
+    float: left;
+    width: 100%;
+}
+#billing-new-address-form li {
+    float: left;
+    padding: 0;
+    width: 100%;
+}
+#billing-new-address-form .customer-name div:first-child {
+    margin-bottom: 10px;
 }
