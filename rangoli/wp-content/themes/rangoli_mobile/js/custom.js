@@ -1070,6 +1070,8 @@ $(window).on('scrolldelta', function (e) {
     if(topDelta > 30){
         $(".header").fadeOut();
         $(".page_heading").fadeOut();
+        $(".menu-box").fadeOut();
+        $(".close_menu").fadeOut();
     }
     else if(topDelta < 0){
         $(".header").fadeIn();
@@ -1081,15 +1083,16 @@ $(window).on('scrolldelta', function (e) {
 
 function forgot_password(email){
     if(email==""){
-        $(".forgot_password_form .small.err_msg").html("Please enster your Email id.");
+        $(".forgot_password_form .small.err_msg").html("Please enter your Email id.");
     }
     else if(isValidEmailAddress(email)) {
         $.ajax({
-            url: root + '/ajaxlogin/index/forgotPasswordPost',
+            url: root + '/ajaxlogin/index/forgotPasswordPost/',
+            data: 'email=' + email,
             type: 'POST',
-            dataType: 'json',
             success: function (result) {
-                alert(result);
+                console.log(result);
+                $(".forgot_password_form .small.err_msg").html(".Your reset password link has been sent to your email Id.")
             }
         });
     }

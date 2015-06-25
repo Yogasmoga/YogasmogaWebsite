@@ -58,9 +58,9 @@ class GSD_AjaxLogin_IndexController extends Mage_Core_Controller_Front_Action
 	
 	public function forgotPasswordPostAction()
     {
-        // $email = $this->getRequest()->getPost('email');
-		$login = $this->getRequest()->getPost('login');
-		$email = $login['username'];
+        $email = $this->getRequest()->getPost('email');
+//		$login = $this->getRequest()->getPost('login');
+//		$email = $login['username'];
 		$result['is_forgot_pwd'] = true;
         if ($email) {
             if (!Zend_Validate::is($email, 'EmailAddress')) {
