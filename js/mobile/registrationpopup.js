@@ -269,11 +269,19 @@ function forgotCustomer() {
 
 
 function loginCustomer() {
-
+    if (window.location.href.indexOf('https://') >= 0)
+        _usesecureurl = true;
+    else
+        _usesecureurl = false;
+    var url = homeUrl + 'mycatalog/myproduct/logincustomer';
+    if (_usesecureurl) {
+        url = securehomeUrl + 'mycatalog/myproduct/logincustomer';
+        homeUrl = securehomeUrl;
+    }
 
     var email_id = jQuery.trim(jQuery(".login_form input[name='email']").val());
     var pwd = jQuery.trim(jQuery(".login_form input[name='password']").val());
-    var url = homeUrl + 'mycatalog/myproduct/logincustomer';
+    //var url = homeUrl + 'mycatalog/myproduct/logincustomer';
     var button_html = jQuery(".login_customer").html();
 
     if(email_id=="" || email_id=="Email"){

@@ -47,7 +47,6 @@ if (isset($page) && $page == '11') {
                         <span class="over-text"><?php echo $_category->getName(); ?></span>
                     <?php } ?>
                 </a>
-                <a href="<?php echo $goBackUrl; ?>" >back</a>
             </div>
             <div class="clearfix"></div>
 
@@ -74,6 +73,8 @@ if (isset($page) && $page == '11') {
                     <span class="over-text"><?php echo $cat->getName(); ?></span>
                 <?php } ?>
             </a>
+
+            <a class="go_to_parent" href="<?php echo $goBackUrl; ?>" >back</a>
         </div>
     <?php } ?>
     <div class="product-grid">
