@@ -206,7 +206,7 @@ function createCustomerAccount() {
                 jQuery("#sign-up-form .err-msg").html("");
                 if (status == "success") {
                     createRangoliUser(email_id, pwd, first_name, last_name, customer_id);
-                    window.location = location.reload(true) ;
+                    location.reload(true) ;
                 }
                 else {
                     jQuery("#error_msg").html("Email already exists.");
