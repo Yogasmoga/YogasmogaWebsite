@@ -29,6 +29,24 @@
  * Template for Mage_Page_Block_Html
  */
 ?>
+<?php
+/***************** code to get parent category url *****************/
+$currentUrlForParent = Mage::helper('core/url')->getCurrentUrl();
+
+$currentUrlForParent = strtolower($currentUrlForParent);
+
+$categoryNamesForParent = explode('/', $currentUrlForParent);  // break the url
+
+if (isset($categoryNamesForParent) && count($categoryNamesForParent) > 4) {
+    $parentUrlKey = $categoryNamesForParent[count($categoryNamesForParent) - 2];
+    $parentCategory = Mage::getModel('catalog/category')->loadByAttribute('url_key', $parentUrlKey);
+    $goBackUrl = $parentCategory->getUrl();
+} else {
+    $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];            // 0 => http: or https: , 1 is empty,  2 => yogasmoga.com
+}
+
+/***************** code to get parent category url *****************/
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -222,7 +240,16 @@
 	<span class="over-text"><?php echo $cat->getName(); ?></span>
 	<?php  } ?>
 	</a>
-</div>
+     <a class="go_to_parent" href="<?php echo $goBackUrl; ?>" >
+         <svg xml:space="preserve" enable-background="new 0 0 44 44" viewBox="0 0 44 44" height="44px" width="44px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+                        <g>
+                            <line y2="30.218" x2="30.975" y1="15.751" x1="16.508" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+                            <line y2="30.218" x2="16.508" y1="15.751" x1="30.975" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+                        </g>
+</svg>
+     </a>
+
+ </div>
 
 			
 <div class="product-grid">
