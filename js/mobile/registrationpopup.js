@@ -35,9 +35,10 @@ function loginSmogiPage() {
     else
         _usesecureurl = false;
     var url = homeUrl + 'mycatalog/myproduct/logincustomer';
-    if (_usesecureurl)
+    if (_usesecureurl) {
         url = securehomeUrl + 'mycatalog/myproduct/logincustomer';
-
+        homeUrl = securehomeUrl;
+    }
     jQuery.ajax({
 
         url: url,
