@@ -11,11 +11,11 @@ get_header();
             </div>
             <?php if (!is_user_logged_in()) {
     ?>
-<!--<div class="home_signup">
-    <div id="signup_signin_btn">
-        Sign in / Sign up
-    </div>
-</div>-->
+<!--<div class="home_signup">-->
+<!--    <div id="signup_signin_btn">-->
+<!--        Sign in / Sign up-->
+<!--    </div>-->
+<!--</div>-->
 <?php
 }
 ?>
@@ -106,7 +106,7 @@ get_template_part("content");
         <div class="row">
             <div class="one-three left facebook"  style="background: #2D9630;">
                     <?php
-                    $post = get_post(1362);          // block 10
+                    $post = get_post(1904);         // block 10
                     ?>
                     <?php echo get_the_post_thumbnail($post->ID,"thumb");
                     if(!has_post_thumbnail($post->ID)){
@@ -117,7 +117,7 @@ get_template_part("content");
                     <div onclick="ajax_load_pages('<?php echo get_permalink($post->ID) ?>')" class="overlay-text">
                     <p class="post_category"><?php echo category($post->ID); ?></p>
 
-                    <p class="post_title"><?php echo $post->post_title; ?></p>
+
                     <?php
                     if (has_post_video()) {
                     ?>
@@ -135,12 +135,17 @@ get_template_part("content");
                     </div>
                     <?php
                     }
+                    else{
+                        ?>
+                        <p class="post_title"><?php echo $post->post_title; ?></p>
+                        <?php
+                    }
                     ?>
 
 
 
                     </div>
-                    <p class="post_link"><a  class="ajax-load"  class="ajax-load"  href="<?php echo get_site_url(); ?>/look">Look More</a></p>
+                    <p class="post_link"><a  class="ajax-load"  class="ajax-load"  href="<?php echo get_site_url(); ?>/Learn">Learn More</a></p>
 
 
 
@@ -181,7 +186,7 @@ echo get_template_part("latest_rangoli_instagram");
 
 
      <?php
-            $post = get_post(330);          // block 12
+            $post = get_post(1901);      // block 12
             ?>
             <?php echo get_the_post_thumbnail($post->ID,"thumb");
             if(!has_post_thumbnail($post->ID)){
@@ -192,7 +197,7 @@ echo get_template_part("latest_rangoli_instagram");
             <div onclick="ajax_load_pages('<?php echo get_permalink($post->ID) ?>')" class="overlay-text">
             <p class="post_category"><?php echo category($post->ID); ?></p>
 
-            <p class="post_title"><?php echo $post->post_title; ?></p>
+
             <?php
             if (has_post_video()) {
             ?>
@@ -210,12 +215,17 @@ echo get_template_part("latest_rangoli_instagram");
             </div>
             <?php
             }
+            else{
+                ?>
+                <p class="post_title"><?php echo $post->post_title; ?></p>
+                <?php
+            }
             ?>
 
 
 
             </div>
-            <p class="post_link"><a  class="ajax-load"  class="ajax-load"  href="<?php echo get_site_url(); ?>/look">Look More</a></p>
+            <p class="post_link"><a  class="ajax-load"  class="ajax-load"  href="<?php echo get_site_url(); ?>/read">Read More</a></p>
 
 
 
