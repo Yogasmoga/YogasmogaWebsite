@@ -6198,3 +6198,11 @@ button#send2 {
     float: left;
     width: 100%;
 }
+#billing-new-address-form li {
+    float: left;
+    padding: 0;
+    width: 100%;
+}
+#billing-new-address-form .customer-name div:first-child {
+    margin-bottom: 10px;
+}
