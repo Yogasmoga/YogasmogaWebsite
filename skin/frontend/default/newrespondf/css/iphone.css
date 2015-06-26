@@ -2489,6 +2489,7 @@ tr.td-noborder td {
     min-height: 125px;
     padding-left: 85px;
     position: relative;
+    width:100%;
 }
 
 #shopping-cart-table .btn-remove {
@@ -6209,4 +6210,10 @@ button#send2 {
 }
 .col-1.col-ship > span {
     margin-left: 5px;
+}
+.bracup {
+    bottom: 0;
+    left: 130px;
+    line-height: 30px;
+    position: absolute;
 }
