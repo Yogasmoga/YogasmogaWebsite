@@ -68,6 +68,8 @@ jQuery(document).ready(function ($) {
         }
     });
 
+/***************************** vivacity popup disabled
+
     $(document).on("click", ".vivacity-popup", function(e){
         jQuery('.vivacity-popup').hide();
     });
@@ -75,6 +77,7 @@ jQuery(document).ready(function ($) {
     $(document).on("click", "#continuecheckout", function(e){
        vivacityPromotion(e);
     });
+*/
 
     // }
 //    $(document).live("click","#continuecheckout",function(e){
@@ -1097,6 +1100,7 @@ function outofstockDisable() {
     });
 }
 
+/***************** vivacity popup disabled
 function vivacityPromotion(e){
     if (_islogedinuser) {
         var vivacity = jQuery(".vivacity").attr("rel");
@@ -1149,3 +1153,4 @@ function vivacityPromotion(e){
         }
     }
 }
+*/

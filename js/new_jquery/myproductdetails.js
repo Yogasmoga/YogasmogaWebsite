@@ -728,6 +728,8 @@ function addtocart() {
         addurl = addurl + '&super_attribute[' + _lengthattributeid + ']=' + length;
 
     if (_isoptionavailable && _braSelected) {
+//        addurl = addurl + '&options[1]=1';
+
         addurl = addurl + '&options[' + _braOptionID + ']=' + _braOptionTypeID;
         console.log(_braOptionTypeID + "---" + _braOptionID);
     }
