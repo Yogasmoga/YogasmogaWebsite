@@ -616,24 +616,24 @@ function changeColor(clr) {
         }
         smallimagehtml = smallimagehtml + "</ul>";
         //jQuery("div.productimagecontainer").hide();
-		//alert('test');
-		jQuery('.flexslider').removeData("flexslider");
+        //alert('test');
+        jQuery('.flexslider').removeData("flexslider");
         jQuery("div.flexslider").html(smallimagehtml);
-		 //jQuery('.flexslider').flexslider();
-		 jQuery('.flexslider').flexslider({
-          animation: "fade",  // slide or fade
-          controlsContainer: ".flexslider", // the container that holds the flexslider
-             before: function(){
-                 var no_slides = jQuery(".flexslider .slides li").length;
-                 jQuery(".social-detail span").html("1 of "+no_slides);
-             },
-             after: function(slider){
-                 var no_slides = jQuery(".flexslider .slides li").length;
-                 var slide_no = slider.currentSlide + 1;
-                 jQuery(".social-detail span").html(slide_no+" of "+no_slides);
-             }
+        //jQuery('.flexslider').flexslider();
+        jQuery('.flexslider').flexslider({
+            animation: "fade",  // slide or fade
+            controlsContainer: ".flexslider", // the container that holds the flexslider
+            before: function(){
+                var no_slides = jQuery(".flexslider .slides li").length;
+                jQuery(".social-detail span").html("1 of "+no_slides);
+            },
+            after: function(slider){
+                var no_slides = jQuery(".flexslider .slides li").length;
+                var slide_no = slider.currentSlide + 1;
+                jQuery(".social-detail span").html(slide_no+" of "+no_slides);
+            }
 
-           });
+        });
         if (jQuery(document).find("div.flexslider li").length > 0) {
             if (jQuery("div.tdbigimagecontainer img").length > 0) {
                 setTimeout(function () {
@@ -651,10 +651,10 @@ function changeColor(clr) {
             _curshareimgurl = jQuery("div.flexslider li:first").attr("bigimageurl");
         }
         jQuery("div.flexslider li:first").addClass("selectedimage");
-      
-		jQuery("div.productimagecontainer").fadeIn('fast');
-		
-		
+
+        jQuery("div.productimagecontainer").fadeIn('fast');
+
+
 
     }
     //if(jQuery("div#sizecontainer td:not(.disabled) div:not(.dvselectedsize)").length == 1)
@@ -691,7 +691,7 @@ function changeColor(clr) {
         //console.log(firstSizePrice+"oooooo");
         amount.html("$" + firstSizePrice);
     }
-	
+
 
     //end insale
 }
@@ -743,9 +743,9 @@ function addtocart() {
 
     var addurl = homeUrl + 'mycheckout/mycart/addmobile?product=' + _productid + '&qty=' + _productorderqty + '&super_attribute[' + _colorattributeid + ']=' + color;
 
-   // alert(addurl);
-	//ravi
-	if (_sizesuperattribute)
+    // alert(addurl);
+    //ravi
+    if (_sizesuperattribute)
         addurl = addurl + '&super_attribute[' + _sizeattributeid + ']=' + size;
 
     if (_islengthavailable)
@@ -765,8 +765,8 @@ function addtocart() {
     // for do not call old shopping bag html in new theme
     addurl = addurl + '&showhtml=0';
 
-/************** added by ys team **************/
-    //jQuery("#addtobagloader").show();
+    /************** added by ys team **************/
+        //jQuery("#addtobagloader").show();
     jQuery("#orderitem").html("ADDING...");
     //jQuery("<div id='addtobagloader'><img src='/skin/frontend/new-yogasmoga/yogasmoga-theme/images/new-loader.gif' /></div>").insertAfter(jQuery(this));
 
@@ -789,20 +789,20 @@ function addtocart() {
                 jQuery(".shoping-cart svg rect").css("fill","#fff");
                 jQuery(".shoping-cart .cartgo").html(result.count);
                 jQuery("#orderitem").html("ADD TO BAG");
-				//jQuery("a.cartgo").slideUp('slow');
+                //jQuery("a.cartgo").slideUp('slow');
 
                 //jQuery("div#myminicart").html(result.html);
 
-/******* added by ys team ********/
-               // showShoppingBagHtmlOpen();          // copy of existing method, show shopping bag on adding product
-/******* added by ys team ********/
+                /******* added by ys team ********/
+                // showShoppingBagHtmlOpen();          // copy of existing method, show shopping bag on adding product
+                /******* added by ys team ********/
 
-               /* jQuery("div#myminicart").slideDown('slow', function () {
-                    setTimeout(function () {
-                        jQuery("div#myminicart").slideUp('slow');
-                    }, 4000);
-                });
-				*/
+                /* jQuery("div#myminicart").slideDown('slow', function () {
+                 setTimeout(function () {
+                 jQuery("div#myminicart").slideUp('slow');
+                 }, 4000);
+                 });
+                 */
                 //jQuery("a.top-link-cart").fadeOut(500, function(){
                 //                    jQuery("span.cartitemcount").html(result.count);
                 //                    jQuery("a.top-link-cart").fadeIn(500);
@@ -861,7 +861,8 @@ function insertBraOption() {
     jQuery("body").on("click", "#includeoption div", function () {
         var braValue = parseInt(jQuery("#includeoption div:nth-child(1)").attr("value"));
         jQuery(this).addClass("selected").siblings().removeClass("selected");
-        if (jQuery(this).text() == "Y" || jQuery(this).text() == "y") {
+        var textvalue = jQuery.trim(jQuery(this).text());
+        if (textvalue == "Y" || textvalue == "y") {
             if (_braSelected == 0) {
                 var productCost = jQuery(".productcost").text().split("$");
                 var productCostV = parseInt(productCost[1]) + braValue;
@@ -872,7 +873,7 @@ function insertBraOption() {
                 _braOptionID = jQuery(this).attr("optionid");
             }
         }
-        if (jQuery(this).text() == "N" || jQuery(this).text() == "n") {
+        if (textvalue == "N" || textvalue == "n") {
             if (_braSelected == 1) {
                 _braSelected = 0;
                 var productCost = jQuery(".productcost").text().split("$");
@@ -885,32 +886,32 @@ function insertBraOption() {
 }
 
 jQuery(document).ready(function($){
-   $(".btn.wish").click(function(e){
-       var btn = $(this);
-       e.preventDefault();
-       if(!$(this).hasClass("not_login")) {
-           var href = $(this).attr('href');
-           $.ajax({
-               url: href,
-               type: 'POST',
-               success: function (response) {
-                   var img;
-                   //alert(response);
-                   btn.attr("href", response);
-                   var index = response.search("addmobile");
-                   if (index > 0) {
-                       img = "<img width='28px' height='28px' src='/skin/frontend/default/newrespondf/images/heart.png'>";
-                       btn.html(img);
-                   }
-                   else {
-                       img = "<img width='28px' height='28px' src='/skin/frontend/default/newrespondf/images/added_to_wishlist.png'>";
-                       btn.html(img);
-                   }
-               }
-           });
-       }
-       else{
-           openLogin();
-       }
-   })
+    $(".btn.wish").click(function(e){
+        var btn = $(this);
+        e.preventDefault();
+        if(!$(this).hasClass("not_login")) {
+            var href = $(this).attr('href');
+            $.ajax({
+                url: href,
+                type: 'POST',
+                success: function (response) {
+                    var img;
+                    //alert(response);
+                    btn.attr("href", response);
+                    var index = response.search("addmobile");
+                    if (index > 0) {
+                        img = "<img width='28px' height='28px' src='/skin/frontend/default/newrespondf/images/heart.png'>";
+                        btn.html(img);
+                    }
+                    else {
+                        img = "<img width='28px' height='28px' src='/skin/frontend/default/newrespondf/images/added_to_wishlist.png'>";
+                        btn.html(img);
+                    }
+                }
+            });
+        }
+        else{
+            openLogin();
+        }
+    })
 });
