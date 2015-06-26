@@ -68,10 +68,12 @@ $quoteId = Mage::getModel('sales/order')->loadByIncrementId($this->getOrderId())
 $quote = Mage::getModel('sales/quote')->load($quoteId);
 $method = $quote->getCheckoutMethod(true);
 
+/************* vivacity promotion disabled
 $orderId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
 $size = Mage::getSingleton('core/session')->getSize();
 if(isset($size) && isset($orderId))
     Mage::helper('vivacity')->saveData($orderId,$size);
+*/
 
 if($serverType == 'production')
 {
