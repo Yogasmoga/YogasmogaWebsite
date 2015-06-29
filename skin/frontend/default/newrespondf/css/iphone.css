@@ -6219,6 +6219,55 @@ button#send2 {
     line-height: 30px;
     position: absolute;
 }
-.has_slider .flex-direction-nav {
+.flex-direction-nav {
+    display: block !important;
+    height: 20px;
+    left: 0;
+    margin-top: -10px;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+}
+.flex-direction-nav a {
+    background: rgba(0, 0, 0, 0) url("/skin/frontend/default/newrespondf/images/arrows_slider.png") no-repeat;
+    color: transparent !important;
+    cursor: pointer;
     display: block;
+    height: 20px;
+    opacity: 1;
+    overflow: hidden;
+    position: absolute;
+    text-decoration: none;
+    text-shadow: none;
+    top: 50%;
+    transition: all 0.3s ease-in-out 0s;
+    width: 30px;
+    z-index: 1;
+}
+.flex-direction-nav a {
+    background: rgba(0, 0, 0, 0) url("/skin/frontend/default/newrespondf/images/arrows_slider.png") no-repeat scroll 0 0 / auto 100%;
+    color: transparent !important;
+    cursor: pointer;
+    display: block;
+    height: 20px;
+    opacity: 1;
+    overflow: hidden;
+    position: absolute;
+    text-decoration: none;
+    text-indent: 999px;
+    text-shadow: none;
+    top: 50%;
+    transition: all 0.3s ease-in-out 0s;
+    width: 15px;
+    z-index: 1;
+    opacity: 1 !important;
+}
+.flex-direction-nav a.flex-prev {
+    background-position: 0 0;
+}
+.flex-direction-nav .flex-next {
+    background-position: 100% 0;
+    opacity: 1;
+    right: 10px;
 }

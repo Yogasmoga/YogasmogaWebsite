@@ -98,6 +98,7 @@
     color: #444444;
     line-height: 24px;
     padding-bottom: 0;
+    letter-spacing: 1px;
 }
 
 .custom-block .our-breath .below-txt {
@@ -471,7 +472,7 @@
 .textContainer {
     text-align: left;
     position: relative;
-    padding-bottom: 20px!important;
+    /*padding-bottom: 20px!important;*/
 
 }
 
