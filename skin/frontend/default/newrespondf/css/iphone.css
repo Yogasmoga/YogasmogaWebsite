@@ -3988,7 +3988,9 @@ ul.checkout-cont > li {
     color: #ae8637;
     font-family: ITCAvantGardeStd-Bk;
 }
-
+.detail-page .description-block .first-list .detail-view .inner-content .fabric-tech .fabDetail ul {
+    padding: 0;
+}
 /*.detail-page .description-block .first-list .detail-view .inner-content .fabric-tech .fabDetail h2 sup {
     vertical-align: text-top;
     font-size: 18px;
