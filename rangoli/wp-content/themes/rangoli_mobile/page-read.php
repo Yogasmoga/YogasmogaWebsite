@@ -65,7 +65,7 @@ $filter_category_name = "read";
 
                 </div>
                 <div onclick="window.location='<?php echo get_author_posts_url($post->post_author) ?>'" class="author_picture" style="background: url('<?php echo $post_author_image_url; ?>') no-repeat; background-position: center center; background-size: cover"></div>
-                <div class="close_post_index <?php if($logged_in){echo 'user-color-shade-trans';} ?>">
+                <div class="close_post<?php if($logged_in){echo 'user-color-shade-trans';} ?>">
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
                         <g>
