@@ -1,5 +1,6 @@
 <?php
 get_header();
+$logged_in = get_site_url();
 ?>
 
 <div class="smogi-content">

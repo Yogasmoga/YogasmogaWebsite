@@ -1,6 +1,6 @@
 <?php
 get_header();
-
+$logged_in = get_site_url();
 $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
 $user_id=$curauth->ID;
 $user_info=get_userdata($user_id);

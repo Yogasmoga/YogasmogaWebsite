@@ -489,12 +489,11 @@ $logged_in = is_user_logged_in();
                                              width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
 <g>
     <g>
-        <rect x="20.317" y="19.312" fill="none" stroke="#666666" stroke-miterlimit="10" width="3.385" height="12.872"/>
-        <circle fill="none" stroke="#666666" stroke-miterlimit="10" cx="22.01" cy="13.819" r="2.355"/>
+        <rect x="20.317" y="19.312" fill="none" stroke="<?php if(!$logged_in) { echo '#666666';}else{echo '#FFFFFF';} ?>" stroke-miterlimit="10" width="3.385" height="12.872"/>
+        <circle fill="none" stroke="<?php if(!$logged_in) { echo '#666666';}else{echo '#FFFFFF';} ?>" stroke-miterlimit="10" cx="22.01" cy="13.819" r="2.355"/>
     </g>
 </g>
 </svg>
-
 
 
                                     </span>Contact</a></li>
