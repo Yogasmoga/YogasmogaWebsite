@@ -6217,3 +6217,6 @@ button#send2 {
     line-height: 30px;
     position: absolute;
 }
+.has_slider .flex-direction-nav {
+    display: block;
+}

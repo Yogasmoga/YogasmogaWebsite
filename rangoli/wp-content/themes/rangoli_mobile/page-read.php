@@ -1,6 +1,7 @@
 <?php
 get_header();
 $filter_category_name = "read";
+$logged_in = is_user_logged_in();
 ?>
 <?php
     $home = get_site_url();

@@ -1,5 +1,6 @@
 <?php
 get_header();
+$logged_in = is_user_logged_in();
 ?>
 <?php
 $home = get_site_url();
