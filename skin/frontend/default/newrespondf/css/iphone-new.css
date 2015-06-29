@@ -94,9 +94,9 @@
 .custom-block .our-breath .title {
     display: block;
     font-family: ITCAvantGardeStd-Bk;
-    font-size: 22px;
+    font-size: 21px;
     color: #444444;
-    line-height: 27px;
+    line-height: 24px;
     padding-bottom: 0;
 }
 
@@ -105,7 +105,8 @@
     font-family: freighttextbook;
     font-size: 18px;
     color: #444444;
-    line-height: 35px;
+    line-height: 29px;
+    letter-spacing: 1px;
 }
 
 .custom-block.our-breath {
@@ -226,8 +227,8 @@
 
 .our-febrics span {
     font-family: ITCAvantGardeStd-Bk;
-    font-size: 22px;
-    line-height: 27px;
+    font-size: 21px;
+    line-height: 24px;
     color: #444444;
     padding-bottom: 20px;
 	position:static;
@@ -629,7 +630,7 @@
 
 .textContainer span.ovr-text {
     font-family: ITCAvantGardeStd-Bk;
-    font-size: 22px;
+    font-size: 21px;
     line-height: 27px;
     position: static;
     padding: 20px 12px 0;
@@ -641,7 +642,7 @@
 
 .our-breath p {
     color: #444444;
-    font: 22px/28px freighttextbook;
+    font: 21px/28px freighttextbook;
 	margin:20px 0 0!important;
 	 float: left;
 }
@@ -844,6 +845,7 @@
     top: 50%;
     width: 100%;
     z-index: 9999;
+    display: none;
 }
 .new-slider .flex-control-nav .flex-active{
     background: #ae8536;

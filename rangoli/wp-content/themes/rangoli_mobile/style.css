@@ -215,7 +215,7 @@ div,p{
     font-family: "ITCAvantGardeStd-Bk";
 }
 .close_menu {
-    background: url("images/close.png") no-repeat scroll center center rgba(85, 85, 85, 0.9);
+    background: rgba(85, 85, 85, 0.9);
     float: right;
     height: 44px;
     position: fixed;
@@ -499,7 +499,7 @@ div,p{
 .copyright{
     line-height: 44px; font-size:12px; font-family: Arial; padding-left: 10px; color:#555555;
 }
-.close_post {
+.close_post ,.close_post_index{
     background:  rgba(85, 85, 85, 0.9);
     display: none;
     float: right;
@@ -509,6 +509,11 @@ div,p{
     top: 0px;
     width: 44px;
     z-index: 5;
+}
+.close_post_index{
+    display: block;
+    position: fixed;
+    top:88px;
 }
 .author_post_read a > img {
     width: 100%;

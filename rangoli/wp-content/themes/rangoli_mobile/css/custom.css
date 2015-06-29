@@ -712,10 +712,10 @@ input:focus{
     z-index: 8;
     display: none;
 }
-.share_post_index{
-    position:fixed;
-    top:118px;
-    right:0;
+.share_post_index {
+    position: fixed;
+    right: 0;
+    top: 132px;
 }
 
 

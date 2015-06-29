@@ -249,7 +249,16 @@ $logged_in = is_user_logged_in();
 </div>
 <!-- RANGOLI YS MENU -->
     <div class="menu-box <?php if(!$logged_in) {echo 'not-logged-in-menu';} ?>" >
-        <span class="close_menu"></span>
+        <span class="close_menu">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+<g>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="12.517" y1="12.517" x2="31.482" y2="31.483"/>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="31.482" y1="12.517" x2="12.517" y2="31.483"/>
+</g>
+</svg>
+
+        </span>
         <div class="menu_list user-color-shade-trans">
 <!--            <div class="side_left"></div>-->
             <div class="menu-container">
