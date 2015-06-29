@@ -273,7 +273,7 @@ function get_currrent_user_smogi_bucks($id)
 
                     $smogi_bucks += intval($point_data["points_current"]);
 //                    $smogi_bucks += intval($point_data["points_spent"]);
-
+                    break;
                 }
             } else
 
