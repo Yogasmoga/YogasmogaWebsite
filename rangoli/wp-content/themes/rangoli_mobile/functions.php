@@ -259,9 +259,9 @@ function get_currrent_user_smogi_bucks($id)
         $magento_id = $magento_user->user_id;
         if (isset($magento_id)) {
 //            $smogi_balance = json_decode(file_get_contents($root . "ys/session/customertotalsmogibucks/id/" . $magento_id));
-            global $wpdb;
-            $query = "SELECT points_current,points_spent FROM rewardpoints_account where customer_id=$magento_id";
-            $points = $wpdb->get_results($query);
+//            global $wpdb;
+//            $query = "SELECT points_current,points_spent FROM rewardpoints_account where customer_id=$magento_id";
+            /*$points = $wpdb->get_results($query);
 
             if ($points && count($points) > 0) {
 
@@ -277,7 +277,16 @@ function get_currrent_user_smogi_bucks($id)
                 }
             } else
 
-                $smogi_bucks = "0";
+                $smogi_bucks = "0";*/
+
+            $smogi_json = file_get_contents($root."ys/session/customersmogibucks?id=".$magento_id);
+            if($smogi_json){
+                $smogi_bucks_obj = json_decode($smogi_json);
+                $smogi_bucks = $smogi_bucks_obj->smogi_bucks;
+            }
+            else{
+                $smogi_bucks = 0;
+            }
 
             if ($smogi_bucks) {
                 if (is_array($roles) && count($roles) > 0) {
