@@ -29,7 +29,14 @@ if(!is_user_logged_in()  && is_home()) {
 <!-- ------popups---- -->
 <div class="popup">
     <div class="signin_popup">
-        <span class="close_login_popup"></span>
+        <span class="close_login_popup"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                             width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+<g>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="12.517" y1="12.517" x2="31.482" y2="31.483"/>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="31.482" y1="12.517" x2="12.517" y2="31.483"/>
+</g>
+</svg>
+</span>
         <p>ALREADY A SMOGI</p>
         <p class="gold">SIGN IN HERE</p>
 
@@ -53,7 +60,13 @@ if(!is_user_logged_in()  && is_home()) {
         </div>
     </div>
     <div class="signup_popup">
-        <span class="close_signup_popup"></span>
+        <span class="close_signup_popup"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                              width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+<g>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="12.517" y1="12.517" x2="31.482" y2="31.483"/>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="31.482" y1="12.517" x2="12.517" y2="31.483"/>
+</g>
+</svg></span>
         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
              width="172.684px" height="25px" viewBox="0 0 172.684 25" enable-background="new 0 0 172.684 25" xml:space="preserve">
 <g>
@@ -111,7 +124,13 @@ if(!is_user_logged_in()  && is_home()) {
         </div>
     </div>
     <div class="after_signup_popup">
-        <span class="close_after_signup_popup"></span>
+        <span class="close_after_signup_popup"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+                <g>
+                    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="12.517" y1="12.517" x2="31.482" y2="31.483"/>
+                    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="31.482" y1="12.517" x2="12.517" y2="31.483"/>
+                </g>
+                </svg></span>
         <p>THANK YOU</p>
         <p>FOR SIGNING UP</p>
         <p class="smogi_bucks_banner"><img src="<?php echo $media?>/25smogi_bucks.png" /></p>

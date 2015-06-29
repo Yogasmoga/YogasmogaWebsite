@@ -122,16 +122,13 @@ li.main_li:hover > ul {
 }
 
 #ajaxlogin_close_icon {
-    background: url("../images/cross1.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    /*background: rgba(0, 0, 0, 0);*/
     cursor: pointer;
     height: 44px;
     position: fixed;
     right: 0;
     top: 44px;
     width: 44px;
-}
-
-#ajaxlogin_close_icon:hover {
 }
 
 #ajaxlogin_form_message {

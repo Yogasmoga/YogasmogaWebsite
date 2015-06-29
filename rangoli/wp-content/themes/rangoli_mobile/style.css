@@ -1097,7 +1097,7 @@ textarea {
     font: 13px/44px GraphikRegular !important;
 }
 .close_login_popup, .close_signup_popup, .close_after_signup_popup {
-    background: url("images/discard.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    background: rgba(0, 0, 0, 0);
     height: 44px;
     position: fixed;
     right: 0;

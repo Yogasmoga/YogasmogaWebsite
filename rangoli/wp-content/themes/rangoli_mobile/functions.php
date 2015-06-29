@@ -3,7 +3,7 @@
 add_theme_support('post-thumbnails');
 add_image_size('banner', '1024', '600', true);
 add_image_size('thumb', '700', '525', true);
-add_image_size('mobile_slider', '600', '750', true);
+add_image_size('mobile_slider', '640', '640', true);
 add_image_size('mobile_posts', '500', '375', true);
 add_image_size('mobile_posts_half', '500', '500', true);
 
