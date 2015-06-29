@@ -485,14 +485,16 @@ $logged_in = is_user_logged_in();
                                     </span>SMOGI Bucks</a></li>
                             <li class="ys_single_link"><a href="/contacts">
                                     <span class="contact_icon">
-                                        <svg xml:space="preserve" enable-background="new 0 0 44 44" viewBox="0 0 44 44" height="44px" width="44px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                             width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
 <g>
     <g>
-        <rect height="12.872" width="3.387" fill="<?php if(!$logged_in) { echo '#666666';}else{echo '#FFFFFF';} ?>" y="19.489" x="19.807"/>
-        <circle r="2.355" cy="13.995" cx="21.5" fill="<?php if(!$logged_in) { echo '#666666';}else{echo '#FFFFFF';} ?>"/>
+        <rect x="20.317" y="19.312" fill="none" stroke="#666666" stroke-miterlimit="10" width="3.385" height="12.872"/>
+        <circle fill="none" stroke="#666666" stroke-miterlimit="10" cx="22.01" cy="13.819" r="2.355"/>
     </g>
 </g>
 </svg>
+
 
 
                                     </span>Contact</a></li>
