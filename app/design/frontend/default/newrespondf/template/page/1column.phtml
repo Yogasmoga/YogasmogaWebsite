@@ -61,14 +61,26 @@
 			 <?php   
 				$store_id = Mage::app()->getStore()->getId();
 				$customerId = Mage::getModel('customer/session')->getCustomerId();
-				if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+				/*if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
 					$reward_flat_model = Mage::getModel('rewardpoints/flatstats');
 					echo $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
 					//Mage::helper('core')->currency($reward_flat_model->collectPointsCurrent($customerId, $store_id)+0);
 				}        
-				
+
 				$reward_model = Mage::getModel('rewardpoints/stats');
-                echo '<a href="javascript:void(0)"><span class="reward_points"><b>$</b>'.($reward_model->getPointsCurrent($customerId, $store_id)+0).'</span></a>';
+				*/
+
+
+					if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)) {
+						$reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+						$points = $reward_flat_model->collectPointsCurrent($customerId, $store_id);
+					} else {
+						$reward_model = Mage::getModel('rewardpoints/stats');
+						$points = $reward_model->getPointsCurrent($customerId, $store_id);
+					}
+
+//					echo '<a href="javascript:void(0)"><span class="reward_points"><b>$</b>'.($reward_model->getPointsCurrent($customerId, $store_id)+0).'</span></a>';
+					echo '<a href="javascript:void(0)"><span class="reward_points"><b>$</b>'.$points.'</span></a>';
 				 ?>
 
 			<?php endif; ?>
