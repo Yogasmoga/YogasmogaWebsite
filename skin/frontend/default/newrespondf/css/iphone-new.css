@@ -846,7 +846,7 @@
     top: 50%;
     width: 100%;
     z-index: 9999;
-    display: none;
+    display: none !important;
 }
 .new-slider .flex-control-nav .flex-active{
     background: #ae8536;

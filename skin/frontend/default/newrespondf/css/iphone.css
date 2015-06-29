@@ -4146,7 +4146,7 @@ ul.checkout-cont > li {
 }
 
 .detail-page .flex-control-nav a.active {
-    display: block !important;
+    /*display: block !important;*/
 }
 
 .detail-page .total-slides {
@@ -5944,6 +5944,7 @@ button.btn-invite.button {
 
 .flex-control-nav {
     /*display: none*/
+    display: none !important;
 }
 
 .insale-price {
@@ -6219,12 +6220,14 @@ button#send2 {
     line-height: 30px;
     position: absolute;
 }
+
 .flex-direction-nav {
     height: 30px !important;
     margin-top: -15px !important;
     position: absolute !important;
     top: 50% !important;
     width: 100% !important;
+    display: block !important;
 }
 .flex-direction-nav a {
     background: rgba(0, 0, 0, 0) url("/skin/frontend/default/newrespondf/images/arrows_slider.png") no-repeat scroll 0 0 / auto 100%;
@@ -6249,4 +6252,7 @@ button#send2 {
     background-position: 100% 0;
     opacity: 1;
     right: 10px;
+}
+.flex-control-nav{
+    display: none !important;
 }
