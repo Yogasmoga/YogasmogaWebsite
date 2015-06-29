@@ -617,7 +617,7 @@ $logged_in = is_user_logged_in();
         <?php if(!$logged_in){ ?>
         <span class="open_signin">Sign In</span>
         <?php } else { ?>
-            <span class="smogi_bucks"><?php $user_id = get_current_user_id(); echo "<i>$</i>".get_user_smogi_bucks($user_id);  ?> </span>
+            <span class="smogi_bucks"><?php $user_id = get_current_user_id(); echo "<i>$</i>".get_currrent_user_smogi_bucks($user_id);  ?> </span>
         <?php } ?>
         <span class="page_name">
             <?php

@@ -247,6 +247,53 @@ function get_user_smogi_bucks($id)
         } else return 0;
     } else return 0;
 }
+function get_currrent_user_smogi_bucks($id)
+{
+    $user_info = get_userdata($id);
+    $roles = $user_info->roles;
+
+    $root = get_site_url();
+    $root = str_replace("/rangoli", "/", $root);
+    $magento_user = json_decode(file_get_contents($root . 'ys/session/getcustomerbyemail/email/' . $user_info->user_login));
+    if ($magento_user) {
+        $magento_id = $magento_user->user_id;
+        if (isset($magento_id)) {
+//            $smogi_balance = json_decode(file_get_contents($root . "ys/session/customertotalsmogibucks/id/" . $magento_id));
+            global $wpdb;
+            $query = "SELECT points_current,points_spent FROM rewardpoints_account where customer_id=$magento_id";
+            $points = $wpdb->get_results($query);
+
+            if ($points && count($points) > 0) {
+
+
+                $smogi_bucks = 0;
+                foreach ($points as $point) {
+
+                    $point_data = get_object_vars($point);
+
+                    $smogi_bucks += intval($point_data["points_current"]);
+//                    $smogi_bucks += intval($point_data["points_spent"]);
+
+                }
+            } else
+
+                $smogi_bucks = "0";
+
+            if ($smogi_bucks) {
+                if (is_array($roles) && count($roles) > 0) {
+                    $role = $roles[0];
+                    if ($role == "store") {
+                        reset($magento_user);
+                        return 0;
+                    } else
+                        return $smogi_bucks;
+                } else
+                    return $smogi_bucks;
+            } else return 0;
+
+        } else return 0;
+    } else return 0;
+}
 
 function get_user_profile_from_magento($id)
 {
