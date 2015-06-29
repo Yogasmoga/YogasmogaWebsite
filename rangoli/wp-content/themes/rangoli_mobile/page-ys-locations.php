@@ -34,7 +34,15 @@ if ($blogusers) {
                 echo $user_profession; ?></p>
                         </div>
                 </div>
-                    <div class="close_post  <?php if($logged_in){echo 'user-color-shade-trans';} ?>"></div>
+<div class="close_post <?php if($logged_in){echo 'user-color-shade-trans';} ?>">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+                        <g>
+                            <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="16.508" y1="15.751" x2="30.975" y2="30.218"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="30.975" y1="15.751" x2="16.508" y2="30.218"/>
+                        </g>
+</svg>
+            </div>
 <!--                    <div class="share_post user-color-shade-trans"></div>-->
 
 
