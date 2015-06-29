@@ -99,7 +99,7 @@ if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_
             </div>
             <?php
         if (!has_post_video($post->ID)) {
-//            if ($class == "full")
+            if ($class == "full")
                 echo '<div class="post_title"><a class="no_load" href="' . get_the_permalink($post->ID) . '">' . $post->post_title . '</a></div>';
         } else {
             $author = get_user_profile($post->post_author);
