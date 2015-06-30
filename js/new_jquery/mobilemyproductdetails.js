@@ -85,6 +85,14 @@ jQuery(document).ready(function ($) {
         $(this).addClass("selected");
         $(this).siblings().removeClass("selected");
     });
+    $(".selectedlength div:visible").live("touchstart", function () {
+        $('.errormsg').empty().hide();
+        jQuery("#orderitem").removeClass('bagdisabled');
+        jQuery("#orderitem").addClass('spbutton');
+        changelengthtype($(this));
+        $(this).addClass("selected");
+        $(this).siblings().removeClass("selected");
+    });
 
     InitializeProductQty();
     $("div.sizeselector select.qtyselector").live("change", function () {
