@@ -157,7 +157,7 @@
 }
 
 .account-nav {
-    background-color: rgba(255,255,255,0.95);
+    background-color: rgba(255, 255, 255, 0.95);
     float: left;
     left: 0;
     padding: 0 12px;
@@ -232,7 +232,7 @@
     line-height: 24px;
     color: #444444;
     padding-bottom: 20px;
-	position:static;
+    position: static;
     display: inline-block;
 }
 
@@ -363,13 +363,16 @@
     font-family: ITCAvantGardeStd-Bk;
     padding-bottom: 28px;
 }
+
 .smogi-content > img.img-responsive {
     margin-top: 15px;
 }
+
 .bg545454 {
     background: #545454 !important;
 }
-.bgbeb197{
+
+.bgbeb197 {
     background: rgba(190, 177, 151, 0.15);
     padding: 15px 12px !important;
     float: left;
@@ -529,7 +532,7 @@
     height: 44px;
     width: 100%;
     margin: 28px 0;
-    font:14px ITCAvantGardeStd-Bk;
+    font: 14px ITCAvantGardeStd-Bk;
     letter-spacing: 1px;
 }
 
@@ -608,8 +611,6 @@
     float: left;
 }
 
-
-
 .textContainer span {
     bottom: 28%;
     color: hsl(0, 0%, 100%);
@@ -622,7 +623,7 @@
     display: block;
     padding-left: 12px;
     text-transform: capitalize;
-	
+
 }
 
 .textContainer a {
@@ -644,8 +645,8 @@
 .our-breath p {
     color: #444444;
     font: 21px/28px freighttextbook;
-	margin:20px 0 0!important;
-	 float: left;
+    margin: 20px 0 0 !important;
+    float: left;
 }
 
 .txt-cnt {
@@ -724,8 +725,8 @@
     color: #AD8536;
     font-family: freighttextbook;
     float: left;
-    padding-left:60px;
-	position:relative;
+    padding-left: 60px;
+    position: relative;
 }
 
 .buck-balance-title {
@@ -762,7 +763,8 @@
     right: 0;
     top: 0;
 }
-.buck-balance-title .close-icn img{
+
+.buck-balance-title .close-icn img {
     padding: 0;
 }
 
@@ -770,6 +772,7 @@
     margin-bottom: 18px;
     position: relative;
 }
+
 #link1content .close-icn {
     position: absolute;
     right: 0;
@@ -801,13 +804,13 @@
     line-height: 25px;
     color: #AD8536;
     text-transform: capitalize;
-	position:static;
+    position: static;
 }
 
 .upper-aurum li ul p {
     font-size: 15px;
     line-height: 22px;
-	font-family: GraphikRegular;
+    font-family: GraphikRegular;
 }
 
 .upper-aurum li:first-child {
@@ -848,7 +851,8 @@
     z-index: 9999;
     display: none !important;
 }
-.new-slider .flex-control-nav .flex-active{
+
+.new-slider .flex-control-nav .flex-active {
     background: #ae8536;
 }
 
@@ -884,16 +888,20 @@ table.redeem-giftcard {
     text-align: left;
     display: none;
 }
+
 .gfredeem .inputholder:nth-child(1) {
     padding-right: 5px;
 }
+
 .gfredeem .inputholder:nth-child(2) {
-    padding:0 5px;
+    padding: 0 5px;
 }
+
 .gfredeem .inputholder:nth-child(3) {
     padding-left: 5px;
 }
-form#cardbalanceform table.redeem-giftcard{
+
+form#cardbalanceform table.redeem-giftcard {
     margin-top: 20px !important;
 }
 
@@ -902,60 +910,74 @@ form#cardbalanceform table.redeem-giftcard{
     margin-bottom: 15px;
     text-align: left;
 }
+
 #createcardform > table {
     border-collapse: collapse;
     width: 100%;
 }
-#createcardform > table .inputtable{
-    width:100% !important;
+
+#createcardform > table .inputtable {
+    width: 100% !important;
 }
-#createcardform > table .inputtable .inputholder input{
-    width:100%;
+
+#createcardform > table .inputtable .inputholder input {
+    width: 100%;
 }
-#createcardform > table .inputtable .inputholder input{
+
+#createcardform > table .inputtable .inputholder input {
     box-sizing: border-box;
     margin-bottom: 10px;
     padding: 10px;
     width: 100%;
 }
-.goy-form textarea{
+
+.goy-form textarea {
     box-sizing: border-box;
     margin-bottom: 10px;
     padding: 10px;
     width: 100%;
-    height:150px !important;
+    height: 150px !important;
     resize: none;
     margin-bottom: 20px;
     border-radius: 0%;
 }
-.goy-form .button-set{
-    margin:0;
+
+.goy-form .button-set {
+    margin: 0;
     padding: 0;
 }
+
 .goy-form .button.btn-reset {
     background: #999999;
     border: medium none;
     color: #fff;
     float: left;
-    font:14px/44px ITCAvantGardeStd-Bk;
+    font: 14px/44px ITCAvantGardeStd-Bk;
     margin-right: 2%;
     width: 48%;
     text-transform: uppercase;
 }
+
 .goy-form .button.btn-addtobag {
     background: none repeat scroll 0 0 #42ac00;
     border: medium none;
     color: #fff;
     float: left;
-    font:14px/44px ITCAvantGardeStd-Bk;
+    font: 14px/44px ITCAvantGardeStd-Bk;
     margin-left: 2%;
     width: 48%;
     text-transform: uppercase;
 }
+
 .txt-cnt {
     line-height: 0;
 }
-.border-line-bk{border-top:1px solid #999999;width:100%;}
+
+.border-line-bk {
+    border-top: 1px solid #999999;
+    width: 100%;
+}
+
 .gradient {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)) repeat scroll 0 0 rgba(0, 0, 0, 0);
     position: absolute;
@@ -964,54 +986,163 @@ form#cardbalanceform table.redeem-giftcard{
     right: 0;
     bottom: 0;
 }
+
 /*******************************************5-june******************/
-.inside-content .our-breath{padding:30px 12px;text-align: left;}
-.inside-content .title{ font:22px/27px ITCAvantGardeStd-Bk;color:#434343;}
-.our-breath .below-txt{   color: #434343;    font: 18px/22px freighttextbook;    padding: 18px 0 0;}
-.textContainer span{text-transform:none;}
-.textContainer  .ovr-text + span{font: 22px/28px freighttextbook; margin: 14px 0 0;
-    padding: 0 12px; }
+.inside-content .our-breath {
+    padding: 30px 12px;
+    text-align: left;
+}
+
+.inside-content .title {
+    font: 22px/27px ITCAvantGardeStd-Bk;
+    color: #434343;
+}
+
+.our-breath .below-txt {
+    color: #434343;
+    font: 18px/22px freighttextbook;
+    padding: 18px 0 0;
+}
+
+.textContainer span {
+    text-transform: none;
+}
+
+.textContainer .ovr-text + span {
+    font: 22px/28px freighttextbook;
+    margin: 14px 0 0;
+    padding: 0 12px;
+}
+
 .textContainer .yoga-part {
-  padding-left: 57px !important;
-  position: relative !important;
+    padding-left: 57px !important;
+    position: relative !important;
 }
-    .ovr-text  .body-icon { background: url("/skin/frontend/default/newrespondf/images/body-sprite.png") 0 0 no-repeat;position:absolute;left:0;top:0;width:50px;height:50px;}
-	.ovr-text.yoga-part span {
-  background: hsla(0, 0%, 0%, 0) url("/skin/frontend/default/newrespondf/images/body-sprite.png") no-repeat scroll 0 0 / auto 100%;
-  height: 40px;
-  left: 4px;
-  padding: 0 !important;
-  position: absolute;
-  top: 26px;
-  width: 50px;
+
+.ovr-text .body-icon {
+    background: url("/skin/frontend/default/newrespondf/images/body-sprite.png") 0 0 no-repeat;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
 }
-.ovr-text.yoga-part .relaxed{ background-position: -231px 0;
-    top: 19px;}
-.ovr-text.yoga-part .exercise{background-position: -127px 0;
-    top: 22px;}
-.ovr-text.yoga-part .consious{background-position: 0 -2px;
-    top: 19px;}
-.ovr-text.yoga-part .diet{  background-position: -69px 2px;
-    top: 19px;}
-.ovr-text.yoga-part .positive{background-position:-294px 0;}
-.ovr-text.yoga-part .meditation{background-position:-186px 0;}
-	.ovr-text .freight-txt{padding-left:0!important;}
-	.buck-balance-title  .smogi-icn{ background: url("/skin/frontend/default/newrespondf/images/smogi-sprite.png") -120px 6px no-repeat;height: 58px;    left: 0;    position: absolute;    top: 0px;
-	
-    width: 40px;}
-	.buck-balance-title  .smogi-icn.active{background-position: 10px 6px;}
-	.buck-balance-title .balance-icn.smogi-icn{background-position:-224px 15px;}
-	.buck-balance-title .balance-icn.smogi-icn.active{background-position:-338px 15px;}
-	.add-bracelet-bag{background:#42AC00;font:16px/18px ITCAvantGardeStd-Bk;color:#fff;width:100%;height:58px;border:none!important;}
+
+.ovr-text.yoga-part span {
+    background: hsla(0, 0%, 0%, 0) url("/skin/frontend/default/newrespondf/images/body-sprite.png") no-repeat scroll 0 0 / auto 100%;
+    height: 40px;
+    left: 4px;
+    padding: 0 !important;
+    position: absolute;
+    top: 26px;
+    width: 50px;
+}
+
+.ovr-text.yoga-part .relaxed {
+    background-position: -231px 0;
+    top: 19px;
+}
+
+.ovr-text.yoga-part .exercise {
+    background-position: -127px 0;
+    top: 22px;
+}
+
+.ovr-text.yoga-part .consious {
+    background-position: 0 -2px;
+    top: 19px;
+}
+
+.ovr-text.yoga-part .diet {
+    background-position: -69px 2px;
+    top: 19px;
+}
+
+.ovr-text.yoga-part .positive {
+    background-position: -294px 0;
+}
+
+.ovr-text.yoga-part .meditation {
+    background-position: -186px 0;
+}
+
+.ovr-text .freight-txt {
+    padding-left: 0 !important;
+}
+
+.buck-balance-title .smogi-icn {
+    background: url("/skin/frontend/default/newrespondf/images/smogi-sprite.png") -120px 6px no-repeat;
+    height: 58px;
+    left: 0;
+    position: absolute;
+    top: 0px;
+
+    width: 40px;
+}
+
+.buck-balance-title .smogi-icn.active {
+    background-position: 10px 6px;
+}
+
+.buck-balance-title .balance-icn.smogi-icn {
+    background-position: -224px 15px;
+}
+
+.buck-balance-title .balance-icn.smogi-icn.active {
+    background-position: -338px 15px;
+}
+
+.add-bracelet-bag {
+    background: #42AC00;
+    font: 16px/18px ITCAvantGardeStd-Bk;
+    color: #fff;
+    width: 100%;
+    height: 58px;
+    border: none !important;
+}
+
 /*******************************************5-june ends*************/
 #tab8 .textContainer {
     padding-bottom: 0 !important;
 }
+
 /*****************************************17-june***********************/
-#account_content{padding:0 12px;}
-#account_content .generic-box {float: left;text-align: left;clear:none;width: 50%;}
-#account_content  .generic-box  address {color: #444;font: 13px/18px GraphikRegular;margin-bottom: 25px;}
-#account_content  .generic-box .col-1 h4{color: #444;font: 12px Avantgarde-demi;text-transform: uppercase;margin-bottom: 25px;}
-#account_content  .generic-box  address span {width: 100%;}
-#account_content .in-page{float: left;margin-bottom: 25px;  padding: 0 5px 5px; width: 100%;}
-#account_content #my-orders-table{border-collapse: collapse;margin-top: 10px;}
+#account_content {
+    padding: 0 12px;
+}
+
+#account_content .generic-box {
+    float: left;
+    text-align: left;
+    clear: none;
+    width: 50%;
+}
+
+#account_content .generic-box address {
+    color: #444;
+    font: 13px/18px GraphikRegular;
+    margin-bottom: 25px;
+}
+
+#account_content .generic-box .col-1 h4 {
+    color: #444;
+    font: 12px Avantgarde-demi;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+#account_content .generic-box address span {
+    width: 100%;
+}
+
+#account_content .in-page {
+    float: left;
+    margin-bottom: 25px;
+    padding: 0 5px 5px;
+    width: 100%;
+}
+
+#account_content #my-orders-table {
+    border-collapse: collapse;
+    margin-top: 10px;
+}

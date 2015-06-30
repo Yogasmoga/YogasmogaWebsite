@@ -1,16 +1,20 @@
-input,textarea,button{
-    border-radius:0;
-    -webkit-border-radius:0;
+input, textarea, button {
+    border-radius: 0;
+    -webkit-border-radius: 0;
 }
-input[type="password"],input[type="text"],textarea,button {
+
+input[type="password"], input[type="text"], textarea, button {
     -webkit-appearance: none;
 }
-a,button{
-    outline:none;
+
+a, button {
+    outline: none;
 }
-a:hover,button:hover,a:focus,button:focus{
-    outline:none;
+
+a:hover, button:hover, a:focus, button:focus {
+    outline: none;
 }
+
 ul, ol, li, dl, dt, dd, fieldset {
     margin: 0;
     padding: 0;
@@ -374,12 +378,14 @@ div {
     position: relative;
 
 }
+
 .yogasmoga_li > a:first-child {
     line-height: 44px;
     margin-left: -55px;
     overflow: hidden;
     padding: 5px 0 0 !important;
 }
+
 /* 1. Parent menu links inlined so you can toggle the dropdown */
 
 .has-dropdown > .menu-link {
@@ -435,17 +441,21 @@ div {
 .arrow-tag img {
     transition-duration: 200ms;
 }
+
 .has-dropdown .arrow-tag img {
     transition-duration: 200ms;
 }
+
 .selected_method .arrow-tag > img {
     transform: rotate(0deg) !important;
     -webkit-transform: rotate(0deg) !important;
 }
+
 .selected_method .arrow-tag.flip > img {
     transform: rotate(-180deg) !important;
     -webkit-transform: rotate(-180deg) !important;
 }
+
 .text-logo {
     display: inline-block;
     height: 12px;
@@ -631,7 +641,7 @@ button::-moz-focus-inner {
 }
 
 .c-text .arrow-tag::before {
-    border-left: 1px solid rgba(85,85,85,0.9);
+    border-left: 1px solid rgba(85, 85, 85, 0.9);
     content: "";
     top: 9px;
     height: 36px;
@@ -656,9 +666,11 @@ button::-moz-focus-inner {
 .smogi-icon span:hover {
     opacity: 1;
 }
-li{
+
+li {
     position: relative;
 }
+
 .border-line {
     border-bottom: 1px solid rgba(85, 85, 85, 0.6);
     bottom: 0;
@@ -666,9 +678,11 @@ li{
     display: block;
     width: 100%;
 }
+
 .username.menu-item.has-dropdown {
     padding: 0 12px;
 }
+
 .sub-cat {
     text-transform: uppercase !important;
     color: #fff !important;
@@ -739,7 +753,7 @@ li{
     top: 0px;
     width: auto;
     font: 13px GraphikRegular;
-    height:44px;
+    height: 44px;
 }
 
 .shoping-cart span {
@@ -762,6 +776,7 @@ li{
     text-decoration: none;
     width: 31px;
 }
+
 .clearfix:after, .clearfix {
     clear: both;
     content: ".";
@@ -784,6 +799,7 @@ li{
     width: 100%;
     z-index: 9;
 }
+
 .sign-in-box span.sign_In, .sign-in-box span.cuslogin {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     color: #444444;
@@ -1088,10 +1104,12 @@ ul {
     transition-duration: 1s;
     width: 41px;
 }
+
 .menu-link.m-link.rangoli_li_a {
     margin-left: -49px;
     padding: 0;
 }
+
 .has-dropdown > .arrow-tag img {
     width: auto;
 }
@@ -1795,12 +1813,14 @@ button.place-order::before, #shopping-cart-table .button::before, #shopping-cart
     line-height: 32px;
     text-align: left;
 }
+
 .apply_promo_login > span {
     color: #ae8536;
     float: right;
     font: 20px ITCAvantGardeStd-Bk;
     margin-right: 8px;
 }
+
 .col_right_options .item_option_color span {
     font-family: ITCAvantGardeStd-Bk;
     font-size: 13px;
@@ -2207,14 +2227,17 @@ ul.breadcrumbs {
     padding: 10px 0px;
     border-bottom: 1px solid #ccc;
 }
+
 h5.title {
     font: 13px GraphikRegular;
     text-align: left;
 }
+
 dl.item-options {
     font: 11px GraphikRegular;
     text-align: left;
 }
+
 .shopping-cart tfoot td {
     padding: 5px 3px;
 }
@@ -2489,7 +2512,7 @@ tr.td-noborder td {
     min-height: 125px;
     padding-left: 85px;
     position: relative;
-    width:100%;
+    width: 100%;
 }
 
 #shopping-cart-table .btn-remove {
@@ -2558,8 +2581,8 @@ tr.td-noborder td {
 }
 
 #checkout-review-table tr td:first-child {
-  text-align: left !important;
-  width: 79%;
+    text-align: left !important;
+    width: 79%;
 }
 
 #shipping-buttons-container, #shipping-method-buttons-container {
@@ -2862,15 +2885,18 @@ h4.legend {
     font-family: Times New Roman;
     font-size: 20px;
 }
+
 .button.btn-update.apply_smogi_bucks {
     font: 12px/40px ItCAvantGardeStd-Bk !important;
     margin-right: 0 !important;
 }
+
 #error_msg_smogi {
     color: #f00;
     margin-bottom: 19px;
     text-align: left;
 }
+
 #error_msg_coupon {
     color: #f00;
     float: left;
@@ -2878,6 +2904,7 @@ h4.legend {
     margin-top: -11px;
     text-align: left;
 }
+
 .discount-form .buttons-set .button, #discountFormPoints2 .buttons-set .button {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     border: medium none;
@@ -3274,17 +3301,17 @@ h4.legend {
 }
 
 #checkout-review-table tr.cart-info .col_right_options {
-  float: left;
-  text-align: left;
-  width: 50%;
+    float: left;
+    text-align: left;
+    width: 50%;
 }
 
 #checkout-review-table tr.cart-info .col_right_options h3.product-name {
-  color: #444444;
-  font-family: AvantGarde-Demi;
-  font-size: 12px;
-  font-weight: normal;
-  line-height: 15px;
+    color: #444444;
+    font-family: AvantGarde-Demi;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 15px;
 }
 
 .col_right_options .product-name {
@@ -3640,11 +3667,13 @@ ul.checkout-cont > li {
     width: 100%;
     padding-top: 88px;
 }
+
 #menu_container.nav-container {
     background: none repeat scroll 0 0 rgba(255, 255, 255, 0.95);
     box-shadow: 47px 44px 0 rgba(0, 0, 0, 0.2);
     color: #555 !important;
 }
+
 #menu_container.nav-container a {
     color: #555 !important;
 }
@@ -3892,6 +3921,7 @@ ul.checkout-cont > li {
     padding-left: 62px;
     text-align: left;
 }
+
 .detail-page .description-block .first-list li.detail-view {
     list-style: none;
     border-top: 1px solid #dfdfdf;
@@ -3900,7 +3930,8 @@ ul.checkout-cont > li {
     float: left;
     width: 100%;
 }
-.description-block ul{
+
+.description-block ul {
     float: left;
     width: 100%;
     padding: 0 12px;
@@ -3988,9 +4019,11 @@ ul.checkout-cont > li {
     color: #ae8637;
     font-family: ITCAvantGardeStd-Bk;
 }
+
 .detail-page .description-block .first-list .detail-view .inner-content .fabric-tech .fabDetail ul {
     padding: 0;
 }
+
 /*.detail-page .description-block .first-list .detail-view .inner-content .fabric-tech .fabDetail h2 sup {
     vertical-align: text-top;
     font-size: 18px;
@@ -4641,7 +4674,7 @@ table.productdetailtable div#colorcontainer div table {
 }
 
 .my-account-block .account-nav {
-    background-color: rgba(255,255,255,0.95);
+    background-color: rgba(255, 255, 255, 0.95);
     float: left;
     left: 0;
     padding: 0 12px;
@@ -4941,6 +4974,7 @@ table.productdetailtable div#colorcontainer div table {
     letter-spacing: 1px;
     vertical-align: top;
 }
+
 .category-block .sign-in-box span b {
     font: 10px/44px ITCAvantGardeStd-Bk !important;
     letter-spacing: 1px;
@@ -4984,9 +5018,11 @@ table.productdetailtable div#colorcontainer div table {
 .profile_img img {
     width: 100%;
 }
+
 .rangoli_menu .c-text_small a {
     font: 14px/44px ITCAvantGardeStd-Bk !important;
 }
+
 .already_signed_up {
     color: #fff;
     float: left;
@@ -5094,6 +5130,7 @@ p.apply_promo_label > span {
     float: left;
     width: 100%;
 }
+
 #coupon_code.input-text.required-entry {
     border: 1px solid #999;
     border-radius: 0;
@@ -5462,10 +5499,12 @@ p.required {
 .customer-name {
     text-align: left;
 }
+
 .new_customer {
     float: left;
     width: 100%;
 }
+
 .customer-name label {
     float: left;
     font: 12px GraphikRegular;
@@ -5744,6 +5783,7 @@ p.required {
     height: 44px;
     width: 100%;
 }
+
 .tick2 {
     background: url("../images/tick.png") no-repeat scroll center center #AE8536;
     border: medium none;
@@ -5751,6 +5791,7 @@ p.required {
     height: 44px;
     width: 100%;
 }
+
 #form-validate .buttons-set {
     padding: 12px;
 }
@@ -5956,28 +5997,35 @@ p.design-paragraph {
     color: #434343;
     padding: 0 12px;
 }
+
 .our-febrics > p > span {
     font: 18px Freighttextbook;
     padding: 0;
 }
+
 .custom-block {
-  /*  padding-top: 116px;*/
+    /*  padding-top: 116px;*/
 }
+
 #giftcardActive .input-box {
     font: 13px GraphikRegular;
     text-align: left;
 }
+
 button#send2 {
     border-radius: 0 !important;
 }
+
 .act_sub_head {
     color: #999;
     font: 13px GraphikRegular;
     margin-top: 15px;
 }
-.act_sub_head span{
+
+.act_sub_head span {
     color: #AE8536;
 }
+
 .register_form .input-box {
     float: left;
     padding: 0 0 25px;
@@ -5989,47 +6037,57 @@ button#send2 {
     padding-left: 59px !important;
     position: relative;
 }
-.rangoli_menu li a span{
+
+.rangoli_menu li a span {
     background: url('/skin/frontend/default/newrespondf/images/icons_hover.png') no-repeat;
-    width:43px;
-    height:44px;
-    top:0;
-    left:3px;
+    width: 43px;
+    height: 44px;
+    top: 0;
+    left: 3px;
     background-size: 44px auto !important;
     position: absolute;
 }
-.rangoli_menu li a span.read{
+
+.rangoli_menu li a span.read {
     background-position: -9px -14px !important;
 }
-.rangoli_menu li a span.look{
+
+.rangoli_menu li a span.look {
     background-position: -9px -57px !important;
 }
-.rangoli_menu li a span.learn{
+
+.rangoli_menu li a span.learn {
     background-position: -9px -102px !important;
 }
-.rangoli_menu li a span.smogis{
+
+.rangoli_menu li a span.smogis {
     background-position: -9px -147px !important;
 }
-.rangoli_menu li a span.locations{
+
+.rangoli_menu li a span.locations {
     background-position: -9px -189px !important;
 }
-.rangoli_menu li a span.connect{
+
+.rangoli_menu li a span.connect {
     background-position: -9px -234px !important;
 }
-.rangoli_menu li a span.about{
+
+.rangoli_menu li a span.about {
     background-position: -9px -279px !important;
 }
-
 
 #singup_form.singup_form input {
     font-size: 15px !important;
 }
+
 #loginPopupDiv input {
     font: 15px ITCAvantGardeStd-Bk !important;
 }
+
 #ajaxlogin_button_send span img {
     margin-top: 8px;
 }
+
 .new_customer > a {
     color: #fff;
     float: left;
@@ -6038,27 +6096,29 @@ button#send2 {
     opacity: 0.6;
 }
 
-
-
 .customer_gender_selection {
     padding-top: 10px;
     float: left;
     width: 100%;
 }
+
 .customer_gender_selection > div {
     float: right;
     width: 40px;
     margin-left: 20px;
 }
+
 .customer_gender_selection > div > label {
     float: right;
     width: auto;
 }
+
 .customer_gender_selection > label {
     line-height: 40px !important;
     width: auto !important;
 }
-.customer_gender_selection .f1.gender1 ,.customer_gender_selection .f2.gender2 {
+
+.customer_gender_selection .f1.gender1, .customer_gender_selection .f2.gender2 {
     background: none repeat scroll 0 0 #999;
     border-radius: 50%;
     color: #fff;
@@ -6066,6 +6126,7 @@ button#send2 {
     position: relative;
     width: 40px;
 }
+
 .customer_gender_selection .f1.gender1::before {
     content: "M";
     font: 15px/40px ITCAvantGardeStd-Bk;
@@ -6073,6 +6134,7 @@ button#send2 {
     padding-left: 13px;
     text-align: center;
 }
+
 .customer_gender_selection .f2.gender2::before {
     content: "F";
     font: 15px/40px ITCAvantGardeStd-Bk;
@@ -6080,10 +6142,12 @@ button#send2 {
     color: #fff;
     text-align: center;
 }
+
 .customer_gender_selection span {
     display: none;
 }
-.customer_gender_selection .f1.gender1.selected, .customer_gender_selection .f2.gender2.selected{
+
+.customer_gender_selection .f1.gender1.selected, .customer_gender_selection .f2.gender2.selected {
     background: #AE8536;
 }
 
@@ -6092,6 +6156,7 @@ button#send2 {
     font: 15px/22px ITCAvantGardeStd-Bk;
     text-align: left;
 }
+
 .error-page {
     padding: 25px 12px;
 }
@@ -6103,6 +6168,7 @@ button#send2 {
     position: absolute;
     right: 23px;
 }
+
 .remove_smogi.apply_smogi_bucks {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     border: medium none;
@@ -6111,6 +6177,7 @@ button#send2 {
     font: 12px ITCAvantGardeStd-Bk;
     margin-top: 17px;
 }
+
 .button.btn-update.validation-passed[value="Remove Points"] {
     float: right;
     font: 12px ITCAvantGardeStd-Bk;
@@ -6118,34 +6185,44 @@ button#send2 {
     margin-top: -3px;
     text-transform: uppercase;
 }
+
 .button.btn-update[value="Remove Points"] {
     float: right;
     font: 12px ITCAvantGardeStd-Bk;
     margin: 0;
     text-transform: uppercase;
-}.checkout-cart-index .main-container {
-     padding: 0;
- }
+}
+
+.checkout-cart-index .main-container {
+    padding: 0;
+}
+
 #no_shipping_method {
     padding: 10px 0;
 }
+
 .buttons.ajaxlogin_forgot_pwd_actions > p {
     color: #ae8536;
     margin-bottom: 10px;
 }
+
 #shopping-cart-totals-table .reward-point td:nth-child(2) {
     width: 70px !important;
 }
-.colors_list{
+
+.colors_list {
     display: none;
 }
+
 .colors_list li {
     color: #fff;
     font: 16px/44px ITCAvantGardeStd-Bk;
 }
-.see_our_colors{
+
+.see_our_colors {
     padding: 0 12px;
 }
+
 .see_our_colors p {
     border-top: 1px solid #bfbfbf;
     color: #666;
@@ -6153,6 +6230,7 @@ button#send2 {
     text-align: left;
     position: relative;
 }
+
 .see_our_colors span {
     color: #ae8536 !important;
     font: 20px/30px ITCAvantGardeStd-Bk !important;
@@ -6164,6 +6242,7 @@ button#send2 {
     top: 0;
     width: 14px;
 }
+
 .see_our_colors span.active {
     color: #ae8536;
     font: 20px/30px ITCAvantGardeStd-Bk;
@@ -6172,10 +6251,12 @@ button#send2 {
     right: 0;
     top: 0;
 }
+
 .see_our_colors span.active::before {
     content: "—";
     font: 13px/30px ITCAvantGardeStd-Bk;
 }
+
 .collat-wrap .error-msg {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
     color: #f00;
@@ -6183,6 +6264,7 @@ button#send2 {
     padding: 5px 0 !important;
     text-align: left;
 }
+
 .go_to_parent {
     background: #555 none repeat scroll 0 0 !important;
     display: block;
@@ -6193,27 +6275,34 @@ button#send2 {
     width: 44px !important;
     z-index: 0 !important;
 }
+
 .include_option.selected .selected[title="Y"] {
     background: #3ba50f none repeat scroll 0 0;
 }
+
 .product-box {
     position: relative;
 }
+
 #shipping-new-address-form li {
     float: left;
     width: 100%;
 }
+
 #billing-new-address-form li {
     float: left;
     padding: 0;
     width: 100%;
 }
+
 #billing-new-address-form .customer-name div:first-child {
     margin-bottom: 10px;
 }
+
 .col-1.col-ship > span {
     margin-left: 5px;
 }
+
 .bracup {
     bottom: 0;
     left: 130px;
@@ -6229,6 +6318,7 @@ button#send2 {
     width: 100% !important;
     display: block !important;
 }
+
 .flex-direction-nav a {
     background: rgba(0, 0, 0, 0) url("/skin/frontend/default/newrespondf/images/arrows_slider.png") no-repeat scroll 0 0 / auto 100%;
     color: transparent !important;
@@ -6245,14 +6335,17 @@ button#send2 {
     z-index: 1;
     opacity: 1 !important;
 }
+
 .flex-direction-nav a.flex-prev {
     background-position: 0 0;
 }
+
 .flex-direction-nav .flex-next {
     background-position: 100% 0;
     opacity: 1;
     right: 10px;
 }
-.flex-control-nav{
+
+.flex-control-nav {
     display: none !important;
 }
