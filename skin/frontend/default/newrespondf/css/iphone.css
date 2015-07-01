@@ -6334,6 +6334,7 @@ button#send2 {
     width: 15px;
     z-index: 1;
     opacity: 1 !important;
+    margin: 0 !important;
 }
 
 .flex-direction-nav a.flex-prev {
