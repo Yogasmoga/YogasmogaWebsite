@@ -13,7 +13,8 @@
         <meta property="og:image"
               content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/homepage/video/youtube_fbthumb03.png"/>
         <meta property="og:title" content="YOGASMOGA | Did You Take a Breath Today?"/>
-        <meta property="og:description" content="YOGASMOGA makes technical performance clothes for women & men for yoga, running, spin, workouts, and more. Free shipping to US and Canada."/>
+        <meta property="og:description"
+              content="YOGASMOGA makes technical performance clothes for women & men for yoga, running, spin, workouts, and more. Free shipping to US and Canada."/>
     <?php
     } else {
         ?>
@@ -24,7 +25,8 @@
         <meta property="og:image"
               content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>wysiwyg/Yogasmoga_op.jpeg"/>
         <meta property="og:title" content="YOGASMOGA"/>
-        <meta property="og:description" content="YOGASMOGA makes technical performance apparel for women & men for yoga, running, spin, workouts, and more. Free shipping to US and Canada."/>
+        <meta property="og:description"
+              content="YOGASMOGA makes technical performance apparel for women & men for yoga, running, spin, workouts, and more. Free shipping to US and Canada."/>
     <?php
     }
     ?>
@@ -50,8 +52,8 @@
         jQuery(window).load(function () {
 
             jQuery(".slider_li").css('cursor', 'pointer');
-            jQuery(".slider_li").click(function(){
-                if(jQuery(this).attr("moveto")!=undefined) {
+            jQuery(".slider_li").click(function () {
+                if (jQuery(this).attr("moveto") != undefined) {
                     var redirectWindow = window.open(jQuery(this).attr('rel'), '_blank');
                     redirectWindow.location;
                 }
@@ -99,52 +101,66 @@
 <div id="pagecontainer">
 <!-- sliderBanner -->
 
-    <div class="flexslider home-slider" id="bucket1_slider">
+<div class="flexslider home-slider" id="bucket1_slider">
     <ul class="slides">
 
-        <li class="slider_li" rel="/women/bottoms/leggings" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
-            <img draggable="false" src="<?php echo Mage::getUrl('/', array('_secure'=>true));?>media/wysiwyg/new-design-images/homepage/homepage-womens-july.jpg"/>
+        <li class="slider_li" rel="/women/bottoms/leggings"
+            style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
+            <img draggable="false"
+                 src="<?php echo Mage::getUrl('/', array('_secure' => true)); ?>media/wysiwyg/new-design-images/homepage/homepage-womens-july-new.jpg"/>
         </li>
 
-        <li class="slider_li" rel="/men" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
-            <img draggable="false" src="<?php echo Mage::getUrl('/', array('_secure'=>true));?>media/wysiwyg/new-design-images/homepage/homepage-mens-july.jpg"/>
+        <li class="slider_li" rel="/men"
+            style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
+            <img draggable="false"
+                 src="<?php echo Mage::getUrl('/', array('_secure' => true)); ?>media/wysiwyg/new-design-images/homepage/homepage-mens-july-new.jpg"/>
         </li>
 
-        <li class="slider_li" rel="/made-in-usa" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
-            <img draggable="false" src="<?php echo Mage::getUrl('/', array('_secure'=>true));?>media/wysiwyg/new-design-images/homepage/homepage-made-in-usa-july.jpg"/>
+        <li class="slider_li" rel="/made-in-usa"
+            style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
+            <img draggable="false"
+                 src="<?php echo Mage::getUrl('/', array('_secure' => true)); ?>media/wysiwyg/new-design-images/homepage/homepage-made-in-usa-july-new.jpg"/>
         </li>
 
         <!--  our mantra--->
 
-        <li class="slider_li" rel="/our-core-values" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
-            <img draggable="false" src="<?php echo Mage::getUrl('/', array('_secure'=>true));?>media/wysiwyg/new-design-images/homepage/our-mantra-of-innovation-july.jpg"/>
+        <li class="slider_li" rel="/our-core-values"
+            style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
+            <img draggable="false"
+                 src="<?php echo Mage::getUrl('/', array('_secure' => true)); ?>media/wysiwyg/new-design-images/homepage/our-mantra-of-innovation-july-new.jpg"/>
         </li>
 
         <!--  sweet the detail--->
-        <li class="slider_li" rel="/design-elements" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
-            <img draggable="false" src="<?php echo Mage::getUrl('/', array('_secure'=>true));?>media/wysiwyg/new-design-images/homepage/we-sweat-the-details-july.jpg"/>
+        <li class="slider_li" rel="/design-elements"
+            style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
+            <img draggable="false"
+                 src="<?php echo Mage::getUrl('/', array('_secure' => true)); ?>media/wysiwyg/new-design-images/homepage/we-sweat-the-details-july-new.jpg"/>
         </li>
 
         <!--  no photoshop--->
-        <li class="slider_li" rel="/our-ethics" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
-            <img draggable="false" src="<?php echo Mage::getUrl('/', array('_secure'=>true));?>media/wysiwyg/new-design-images/homepage/no-photoshop-july.jpg"/>
+        <li class="slider_li" rel="/our-ethics"
+            style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
+            <img draggable="false"
+                 src="<?php echo Mage::getUrl('/', array('_secure' => true)); ?>media/wysiwyg/new-design-images/homepage/no-photoshop-july-new.jpg"/>
         </li>
 
         <!--namaskar slide--->
-        <li class="slider_li" rel="/namaskar" style="width: auto; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
-            <img draggable="false" src="<?php echo Mage::getUrl('/', array('_secure'=>true));?>media/wysiwyg/new-design-images/homepage/namaskar-july.jpg"/>
+        <li class="slider_li" rel="/namaskar"
+            style="width: auto; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
+            <img draggable="false"
+                 src="<?php echo Mage::getUrl('/', array('_secure' => true)); ?>media/wysiwyg/new-design-images/homepage/namaskar-july-new.jpg"/>
         </li>
 
     </ul>
-    </div>
+</div>
 <!-- sliderBanner -->
 
 <!-- signup new -->
 
 <div class="share-strip">
-   <div class="sign-up-new">
+    <div class="sign-up-new">
         <a href="javascript:void(0)">Sign up</a><span>& WE’LL SURPRISE YOU</span>
-   </div>
+    </div>
 </div>
 <!-- signup new -->
 <div class="clear-fix"></div>
@@ -160,19 +176,23 @@
 
 
                 <li>
-                    <img class="img-responsive" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/homepage/ys-fabric-tech.jpg' ?>" title="Fabric Tech. Zari Mesh"
+                    <img class="img-responsive"
+                         src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/homepage/ys-fabric-tech.jpg' ?>"
+                         title="Fabric Tech. Zari Mesh"
                          alt="Fabric Tech. Zari Mesh"/>
 
                     <div class="contentSlider sliderContent" style="top:38.919552%;">
                         <div>
                             <h3 class="small-text">ys fabric tech</h3>
 
-                           <!-- <h3 style="color: #fff!important;" class="large-text">AURUM® <br>
-                                SAME GREAT TECH</h3>-->
+                            <!-- <h3 style="color: #fff!important;" class="large-text">AURUM® <br>
+                                 SAME GREAT TECH</h3>-->
                             <p class="large-text">AURUM<sup>TM</sup> <br>
                                 mini stripe</p>
-<!--                            <p class="large-text" style="margin-top: -10px;"><span>COLOR INFUSED</span></p>-->
-                            <a href="/women/bottoms/crops/zelos-crop?color=254" class="shopnow-btn" style="margin-top:2.240325865580448065173116089613%; background: none !important;">SHOP NOW <span style="color:#ff0000"> &gt;</span></a>
+                            <!--                            <p class="large-text" style="margin-top: -10px;"><span>COLOR INFUSED</span></p>-->
+                            <a href="/women/bottoms/crops/zelos-crop?color=254" class="shopnow-btn"
+                               style="margin-top:2.240325865580448065173116089613%; background: none !important;">SHOP
+                                NOW <span style="color:#ff0000"> &gt;</span></a>
                         </div>
                     </div>
                 </li>
@@ -187,9 +207,13 @@
     <div class="grid35" id="grid1-right">
         <!-- partOne -->
         <div class="compressBox">
-            <div style="top:27.894308943089430894308943089431%;font-family:FreightText-LightItalic;text-transform:none;" class="ctext">
+            <div style="top:27.894308943089430894308943089431%;font-family:FreightText-LightItalic;text-transform:none;"
+                 class="ctext">
                 Consider the clothes<br>you wear.
-                <span style="margin-top: 7px; border: none !important;"><a href="/women/rangoli-collection" class="learn-more" style="border: none !important">LEARN MORE <span style="color:#ff0000"> &gt;</span></a></span>
+                <span style="margin-top: 7px; border: none !important;"><a href="/women/rangoli-collection"
+                                                                           class="learn-more"
+                                                                           style="border: none !important">LEARN MORE
+                        <span style="color:#ff0000"> &gt;</span></a></span>
             </div>
 
         </div>
@@ -231,8 +255,11 @@
         <!-- partOne -->
         <div class="multicolorcont">
             <div class="ctext" style="top: 38%;font-family:FreightText-LightItalic;text-transform:none;">
-                Color your world&mdash;  <br>Colors that don’t bleed.
-                <span style="margin-top: 2.1910569105691056910569105691057%; border: none !important;"><a class="learn-more white" href="/women/rangoli-collection" style="background: none !important;border:none;">LEARN MORE <span style="color:#ff0000"> &gt;</span></a></span>
+                Color your world&mdash; <br>Colors that don’t bleed.
+                <span style="margin-top: 2.1910569105691056910569105691057%; border: none !important;"><a
+                        class="learn-more white" href="/women/rangoli-collection"
+                        style="background: none !important;border:none;">LEARN MORE <span
+                            style="color:#ff0000"> &gt;</span></a></span>
             </div>
         </div>
         <!-- partOne -->
@@ -272,8 +299,9 @@
 
 
                 <li>
-                    <!--<img class="img-responsive" src="<?php /*echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/right-1.jpg'*/?>" alt="Mens Sunday Tee" />-->
-                   <img class="img-responsive" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/homepage/ys-color-tech.jpg' ?>"
+                    <!--<img class="img-responsive" src="<?php /*echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/new-design-images/right-1.jpg'*/ ?>" alt="Mens Sunday Tee" />-->
+                    <img class="img-responsive"
+                         src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'wysiwyg/new-design-images/homepage/ys-color-tech.jpg' ?>"
                          alt="long sleeve tee Rudhira"/>
 
                     <div class="contentSlider" style="top:36.659877800407331975560081466395%">
@@ -281,7 +309,9 @@
                             <p class="small-text">YS COLOR TECH</p>
 
                             <p class="large-text"> VERMELHO<br></p>
-                            <a href="/women/tops/bras/u-me-bra?color=269" class="shopnow-btn" style="margin-top:1.0366598778004073319755600814664%;background: none !important;">SHOP NOW <span style="color:#ff0000"> &gt;</span></a>
+                            <a href="/women/tops/bras/u-me-bra?color=269" class="shopnow-btn"
+                               style="margin-top:1.0366598778004073319755600814664%;background: none !important;">SHOP
+                                NOW <span style="color:#ff0000"> &gt;</span></a>
                         </div>
                     </div>
                 </li>
@@ -368,7 +398,8 @@
                     <p class="small-text" style="margin-bottom:3.1549898167006109979633401221996%;">GIVING IS A CORE
                         VALUE</p>
 
-                    <p class="large-text" style="margin-bottom:4.5329938900203665987780040733198%;">NAMASKÁR FOUNDATION<br/>
+                    <p class="large-text" style="margin-bottom:4.5329938900203665987780040733198%;">NAMASKÁR
+                        FOUNDATION<br/>
                         <span>WE HAVE CREATED THE NAMASKÁR FOUNDATION BECAUSE WE CARE.</span></p>
                     <a href="/namaskar" class="learn-more">LEARN MORE</a>
                 </div>
