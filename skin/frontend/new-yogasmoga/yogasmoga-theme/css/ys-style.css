@@ -1860,7 +1860,7 @@ button.button.btn-addtoaccount{margin: 0 !important;}
     position: absolute;
     right: 40px;
     text-transform: initial;
-    top: 19px;
+    top: 69px;
 }
 .choose-file-cont #file_upload{
     height: auto !important;
@@ -2590,7 +2590,7 @@ table.smallimagecontiner td.selectedimage{
 }
 .share-strip,.new-arrivals-block{opacity: 0;}
 .cat-slide .flex-direction-nav{display: none;}
-.namaskar-overlay1{top:69px;}
+.namaskar-overlay1{top:94px;}
 
 .productCont .prod-img img:nth-child(1){
     visibility: visible;
