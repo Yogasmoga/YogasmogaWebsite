@@ -30,6 +30,8 @@ if (isset($_REQUEST['from_date'])) {
 
     fputcsv($fp, array('Date range: ' . $from_date . ' - ' . $to_date));
 
+    fputcsv($fp, array(''));
+
     $emails = array();
     foreach ($orders as $order) {
 
@@ -51,10 +53,14 @@ if (isset($_REQUEST['from_date'])) {
     ?>
 
     <html>
+    <head>
+        <script type="text/javascript" src="../js/new_jquery/jquery-1.8.2.min.js"></script>
+        <title>Download customer that purchased products</title>
+    </head>
     <body>
     <form method="post" action="customersbyproducts.php">
 
-        <h3>Download customers</h3>
+        <h3>Download customers who purchased product within specified date</h3>
 
         <table style="width:500px;" border="0">
             <tr>
@@ -69,7 +75,7 @@ if (isset($_REQUEST['from_date'])) {
                 <td>
                     <select name="product">
                         <?php foreach ($products as $product): ?>
-                            <option value="<?php echo $product->getId(); ?>"><?php echo $product->getName(); ?></option>
+                            <option value="<?php echo $product->getId(); ?>"><?php echo trim($product->getName()); ?></option>
                         <?php endforeach; ?>
                     </select>
                 </td>
@@ -94,8 +100,11 @@ if (isset($_REQUEST['from_date'])) {
 
     <script type="text/javascript">
         jQuery(document).ready(function(){
+            var text = jQuery("select[name='product']").children(':selected').text();
+            jQuery("input[name='product_name']").val(text);
+
             jQuery("select[name='product']").change(function(){
-                var text = jQuery(this).text();
+                text = jQuery(this).children(':selected').text();
 
                 jQuery("input[name='product_name']").val(text);
             });
