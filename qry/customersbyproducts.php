@@ -26,9 +26,9 @@ if (isset($_REQUEST['from_date'])) {
 
     $fp = fopen('php://output', 'w');
 
-    fputcsv($fp, array('Customer emails who purchased ' . $productName));
+    fputcsv($fp, array('Customer emails who purchased: ' . $productName));
 
-    fputcsv($fp, array('Date range: ' . $from_date . ' - ' . $to_date));
+    fputcsv($fp, array('Date range: ' . $from_date . ' to ' . $to_date));
 
     fputcsv($fp, array(''));
 
