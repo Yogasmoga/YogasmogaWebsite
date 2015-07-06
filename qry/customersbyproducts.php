@@ -41,6 +41,7 @@ if (isset($_REQUEST['from_date'])) {
         foreach ($items as $item) {
             if ($item->getProductId() == $product_id) {
 
+/*
                 if(in_array($email, $emails))
                     ;
                 else {
@@ -50,6 +51,8 @@ if (isset($_REQUEST['from_date'])) {
 
                     fputcsv($fp, array('email' => $email));
                 }
+*/
+                fputcsv($fp, array('email' => $email));
             }
         }
     }
