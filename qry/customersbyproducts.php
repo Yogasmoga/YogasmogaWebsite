@@ -52,6 +52,7 @@ if (isset($_REQUEST['from_date'])) {
                     fputcsv($fp, array('email' => $email));
                 }
 */
+                $email = $order->getCustomerEmail();
                 fputcsv($fp, array('email' => $email));
             }
         }
