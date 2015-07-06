@@ -40,8 +40,16 @@ if (isset($_REQUEST['from_date'])) {
         $items = $orderProduct->getAllVisibleItems();
         foreach ($items as $item) {
             if ($item->getProductId() == $product_id) {
-                $email = $order->getCustomerEmail();
-                fputcsv($fp, array('email' => $email));
+
+                if(in_array($email, $emails))
+                    ;
+                else {
+                    $email = $order->getCustomerEmail();
+
+                    $emails[] = $email;
+
+                    fputcsv($fp, array('email' => $email));
+                }
             }
         }
     }

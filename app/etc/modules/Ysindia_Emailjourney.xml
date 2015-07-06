@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   Ysindia
+ * @package    Ysindia_Emailjourney
+ */
+ -->
+<config>
+    <modules>
+        <Ysindia_Emailjourney>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Ysindia_Emailjourney>
+    </modules>
+</config> 
