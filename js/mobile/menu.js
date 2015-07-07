@@ -14,7 +14,6 @@ $j(function () {
         jQuery(".toggle_dropdown").removeClass("active");
         jQuery(".account-nav.l-align.ys_static_page_dropdown").slideUp()
         jQuery(".sign-in-box .arrow-icon").removeClass("active");
-
     });
 
     // Nav dropdown toggle
@@ -114,10 +113,13 @@ $j(document).ready(function () {
         $j("#linkwrapper li a[rel='link2content']").click();
 
     });
+
+    $j(".arrow-tag.sub_menu_icons").click(function(){
+        $j(this).next().slideToggle();
+    });
     $j(".inner-part2").click(function () {
         $j("#linkwrapper li a[rel='link3content']").click();
     });
-
 
 });
 

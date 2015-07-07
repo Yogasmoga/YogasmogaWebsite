@@ -223,10 +223,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a.main-txt {
-    color: #fff !important;
-    font-family: freighttextbook !important;
-    font-size: 21px !important;
-    line-height: 44px !important;
+    font-family: Avantgarde-Demi !important;
+    font-size: 14px !important;
+    line-height: 50px !important;
 }
 
 body {
@@ -412,7 +411,7 @@ div {
 }
 
 .sub-title {
-    color: #fff !important;
+    /*color: #fff !important;*/
 }
 
 .nav-menu > li.rangoli-link::before {
@@ -592,7 +591,7 @@ button::-moz-focus-inner {
 }
 
 .sign-up a {
-    color: #fff !important;
+    /*color: #fff !important;*/
     display: inline-block;
     font-family: ITCAvantGardeStd-Bk;
     font-size: 14px;
@@ -639,7 +638,15 @@ button::-moz-focus-inner {
     width: 44px;
     z-index: 999;
 }
-
+.menu-item.tech_icon > span,.menu-item.story_icon > span,.menu-item.usa_icon > span {
+    display: block;
+    height: 44px;
+    left: 12px;
+    position: absolute;
+    width: 44px;
+    z-index: 1;
+}
+/*
 .c-text .arrow-tag::before {
     border-left: 1px solid rgba(85, 85, 85, 0.9);
     content: "";
@@ -648,6 +655,7 @@ button::-moz-focus-inner {
     left: 0;
     position: absolute;
 }
+*/
 
 .white-img .menu-link.m-link img.responsive {
     width: 94px;
@@ -690,7 +698,7 @@ li {
 
 .sign-up .key {
     height: 44px;
-    left: 12px;
+    left: 8px;
     opacity: 1;
     position: absolute;
     top: 0;
@@ -724,7 +732,14 @@ li {
 }
 
 .nav-menu > li.rangoli-link {
-    padding: 0 15px 88px;
+    padding: 0 15px ;
+}
+.menu-item.additional_links {
+    padding-bottom: 64px;
+}
+.menu-item.additional_links li {
+    font: 14px/44px ITCAvantGardeStd-Bk;
+    letter-spacing: 1px;
 }
 
 .rangoli-link .white-img {
@@ -759,7 +774,7 @@ li {
 .shoping-cart span {
 
     font-size: 11px;
-    line-height: 58px;
+    line-height: 44px;
     position: fixed;
     right: 15px;
     top: 0;
@@ -1095,13 +1110,13 @@ ul {
 .has-dropdown > .arrow-tag {
     display: inline-block;
     float: right;
-    line-height: 51px;
+    height: 44px;
     position: absolute;
     right: 7px;
     text-align: center;
-    top: 0;
+    top: 4px;
     transform-origin: 0 0 0;
-    transition-duration: 1s;
+    transition-duration: 200ms;
     width: 41px;
 }
 
@@ -1109,9 +1124,30 @@ ul {
     margin-left: -49px;
     padding: 0;
 }
-
+.has-dropdown > .arrow-tag.is-active svg line:nth-child(3) {
+    stroke: transparent;
+    transition-duration: 200ms;
+}
 .has-dropdown > .arrow-tag img {
     width: auto;
+}
+.sub_menu_links {
+    background: #eee none repeat scroll 0 0;
+    display: none;
+    margin-left: -66px;
+    padding-left: 66px;
+    transition-duration: 200ms;
+}
+.arrow-tag.sub_menu_icons {
+    position: absolute;
+    right: 4px;
+    transition-duration: 200ms;
+    top: 0;
+}
+
+.arrow-tag.sub_menu_icons.is-active svg line:nth-child(3) {
+    stroke: transparent;
+    transition-duration: 200ms;
 }
 
 /**************************************************************sign-up page*************************************************/
@@ -3675,7 +3711,7 @@ ul.checkout-cont > li {
 }
 
 #menu_container.nav-container a {
-    color: #555 !important;
+    color: #555;
 }
 
 /****************************************** detail page ******************************************/
@@ -4982,10 +5018,14 @@ table.productdetailtable div#colorcontainer div table {
 }
 
 .nav-dropdown.menu > .menu-item > a {
-    color: #fff;
     font-family: Avantgarde-Demi;
+    letter-spacing: 1px;
 }
-
+.menu-link.main-txt {
+    color: #ad8536 !important;
+    font-size: 14px;
+    text-transform: uppercase;
+}
 .menu-item.has-dropdown.main-heading span.text-logo {
     opacity: 0.2;
     transition-duration: 200ms;
@@ -5356,7 +5396,7 @@ p.required {
 }
 
 #Redeemcard .sub-title {
-    color: #444 !important;
+    /*color: #444 !important;*/
     font: 12px Avantgarde-demi;
     margin-bottom: 15px;
     margin-top: 44px;
@@ -6039,14 +6079,29 @@ button#send2 {
 }
 
 .rangoli_menu li a span {
-    background: url('/skin/frontend/default/newrespondf/images/icons_hover.png') no-repeat;
-    width: 43px;
+    /*background: url('/skin/frontend/default/newrespondf/images/icons_hover.png') no-repeat;*/
+    width: 44px;
     height: 44px;
     top: 0;
-    left: 3px;
-    background-size: 44px auto !important;
+    left: 0px;
+    /*background-size: 44px auto !important;*/
     position: absolute;
 }
+.menu-item.has-dropdown.c-text_small.r_grey_text a {
+    color: #545454 !important;
+}
+.rangoli_menu .menu-item.has-dropdown.c-text > span svg,.rangoli_menu .menu-item.has-dropdown.c-text_small > span svg {
+    height: 44px;
+    width: 44px;
+}
+.rangoli_menu .menu-item.has-dropdown.c-text > span,.rangoli_menu .menu-item.has-dropdown.c-text_small > span {
+    height: 44px;
+    width: 44px;
+    position: absolute;
+    left: -5px;
+    top: 0;
+}
+/*
 
 .rangoli_menu li a span.read {
     background-position: -9px -14px !important;
@@ -6075,6 +6130,7 @@ button#send2 {
 .rangoli_menu li a span.about {
     background-position: -9px -279px !important;
 }
+*/
 
 #singup_form.singup_form input {
     font-size: 15px !important;
