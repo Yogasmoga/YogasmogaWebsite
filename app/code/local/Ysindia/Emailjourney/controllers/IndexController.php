@@ -59,11 +59,8 @@ class Ysindia_Emailjourney_IndexController extends Mage_Core_Controller_Front_Ac
             );
         }
 
-        //=================================================
-
-        echo "Store email = " . Mage::getStoreConfig('trans_email/ident_general/email', $storeId) . "<br/><br/>";
-
-        echo "Store name = " . Mage::getStoreConfig('trans_email/ident_general/name', $storeId) . "<br/><br/>";
+        $resource = Mage::getSingleton('core/resource');
+        $readConnection = $resource->getConnection('core_read');
 
         foreach ($customers as $customer) {
 
@@ -72,47 +69,55 @@ class Ysindia_Emailjourney_IndexController extends Mage_Core_Controller_Front_Ac
             $customerName = $customer['FNAME'] . ' ' . $customer['LNAME'];
             $createDate = $customer['CREATE_DATE'];
 
-            $now = time();
-            $your_date = strtotime($createDate);
-            $datediff = $now - $your_date;
-            $days = floor($datediff / (60 * 60 * 24));
+            $unsubscribe_link = Mage::getUrl('journey/unsubscribe/index/id/' . $customerId);
 
-            if($days>5) continue;       // pick templates 0-5
+            $query = "SELECT id FROM unsubscribed_customers where customer_id=$customerId";
+            $row = $readConnection->fetchAll($query);
 
-            $resource = Mage::getSingleton('core/resource');
-            $readConnection = $resource->getConnection('core_read');
+            if ($row) {
+                ; // already unsubscribed
+            } else {
 
-            $query = "SELECT id from email_journey where customer_id=$customerId and email_number=$days";
+                $now = time();
+                $your_date = strtotime($createDate);
+                $datediff = $now - $your_date;
+                $days = floor($datediff / (60 * 60 * 24));
 
-            $rows = $readConnection->fetchAll($query);
+                $days = $days < 0 ? 0 : $days;
 
-            if ($rows && count($rows) > 0) {
-                continue;
+                if ($days > 5) continue;       // pick templates 0-5
+
+                $resource = Mage::getSingleton('core/resource');
+                $readConnection = $resource->getConnection('core_read');
+
+                $query = "SELECT id from email_journey where customer_id=$customerId and email_number=$days";
+
+                $rows = $readConnection->fetchAll($query);
+
+                if ($rows && count($rows) > 0) {
+                    continue;
+                }
+
+                $templateId = $templates[$days];
+
+                $emailTemplate = Mage::getModel('core/email_template')->load($templateId);
+                $emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/email', $storeId));
+                $emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', $storeId));
+
+                $vars = array('unsubscribe_link' => $unsubscribe_link);
+
+                $processed = $emailTemplate->getProcessedTemplate($vars);
+
+                $emailTemplate->send($customerEmail, $customerName, $vars);
+
+                $model = Mage::getModel('journey/journey');
+                $model->setCustomerId($customerId);
+                $model->setEmailNumber($days);
+                $model->setTemplateId($templateId);
+                $model->setCurrentDate(date('Y-m-d h:i:s'));
+                $model->save();
             }
-
-            $templateId = $templates[$days];
-
-            $emailTemplate = Mage::getModel('core/email_template')->load($templateId);
-            $emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/email', $storeId));
-            $emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', $storeId));
-
-            $vars = array();
-
-            $processed = $emailTemplate->getProcessedTemplate($vars);
-
-            $emailTemplate->send($customerEmail, $customerName, $vars);
-
-            $model = Mage::getModel('journey/journey');
-            $model->setCustomerId($customerId);
-            $model->setEmailNumber($days);
-            $model->setTemplateId($templateId);
-            $model->setCurrentDate(date('Y-m-d h:i:s'));
-            $model->save();
-
-
         }
-
     }
 }
-
 ?>
