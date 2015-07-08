@@ -411,7 +411,7 @@ div {
 }
 
 .sub-title {
-    /*color: #fff !important;*/
+    letter-spacing: 1px;
 }
 
 .nav-menu > li.rangoli-link::before {
@@ -3714,7 +3714,7 @@ ul.checkout-cont > li {
 
 #menu_container.nav-container a {
     color: #555;
-    padding-left: 70px;
+    padding-left: 76px;
 }
 
 /****************************************** detail page ******************************************/
@@ -5399,7 +5399,6 @@ p.required {
 }
 
 #Redeemcard .sub-title {
-    /*color: #444 !important;*/
     font: 12px Avantgarde-demi;
     margin-bottom: 15px;
     margin-top: 44px;
