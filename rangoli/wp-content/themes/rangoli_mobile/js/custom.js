@@ -266,7 +266,7 @@ function getloggedinuser() {
 
                 //get_magento_cstomerID(user_email);
 
-                if(user_color_shade != "#FFFFFF") {
+                if(user_color_shade != "#555555") {
 
                     if (status == "new") {
                         $(".signin_popup").fadeOut();
@@ -298,8 +298,8 @@ function getloggedinuser() {
                 }
             }
             else {
-                user_color_shade = "#FFFFFF";
-                color = "255,255,255";
+                user_color_shade = "#555555";
+                color = "85,85,85";
 
             }
 
@@ -481,7 +481,6 @@ function get_cart(){
 function fillcolor(){
     $(".user-color-shade").css("background-color",user_color_shade);
     $(".user-color-shade-trans").css("background-color","rgba("+hexToRgb(user_color_shade)+",0.95"+")");
-    $(".user-color-shade-text").css("color",user_color_shade);
 }
 
 $(window).load(function(){
