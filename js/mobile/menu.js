@@ -40,7 +40,7 @@ $j(document).ready(function () {
     });
 
     $j(".menu-item .arrow-tag").click(function () {
-        $j(this).parent().children(".menu-item .nav-dropdown").slideToggle();
+        //$j(this).parent().children(".menu-item .nav-dropdown").slideToggle();
     });
 
     $j("#menu_signup").click(function () {
@@ -114,9 +114,7 @@ $j(document).ready(function () {
 
     });
 
-    $j(".arrow-tag.sub_menu_icons").click(function(){
-        $j(this).next().slideToggle();
-    });
+
     $j(".inner-part2").click(function () {
         $j("#linkwrapper li a[rel='link3content']").click();
     });
@@ -131,7 +129,28 @@ jQuery(document).ready(function($){
         openLogin();
         closeSignup();
     });
-
+    /* **************YS MENU ACCORDIAN**************** */
+        $(".level1>li>span.arrow-tag").click(function(){
+            $(".level1>li>span.arrow-tag").not($(this)).removeClass("is-active");
+            var child = $(this).parent().children("ul");
+            $(".level1 li ul").not(child).slideUp();
+            $(".level2 li>span.arrow-tag").removeClass("is-active");
+            child.slideToggle();
+        });
+        $(".level2>li>span.arrow-tag").click(function(){
+            $(".level2>li>span.arrow-tag").not($(this)).removeClass("is-active");
+            var child = $(this).parent().children("ul");
+            $(".level2 li ul").not(child).slideUp();
+            $(".level3 li>span.arrow-tag").not($(this)).removeClass("is-active");
+            child.slideToggle();
+        });
+        $(".level3>li>span.arrow-tag").click(function(){
+            $(".level3>li>span.arrow-tag").not($(this)).removeClass("is-active");
+            var child = $(this).parent().children("ul");
+            $(".level3 li ul").not(child).slideUp();
+            child.slideToggle();
+        });
+    /* *********************************************** */
 
     $("#sizechart").click(function(){
         var size_chart = $(".lg-size-chart").html();
@@ -144,7 +163,6 @@ jQuery(document).ready(function($){
     $(".video-block.f-right > img").click(function(){
         $(".html-vid-pop.html-fit-vid-popup").fadeIn();
     });
-
     $(".close_video_popup").click(function(){
         $(".html-vid-pop").fadeOut();
     });

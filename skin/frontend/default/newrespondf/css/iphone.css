@@ -380,7 +380,7 @@ div {
 
 .yogasmoga_li > a:first-child {
     line-height: 44px;
-    margin-left: -55px;
+    margin-left: 10px;
     overflow: hidden;
     padding: 5px 0 0 !important;
 }
@@ -515,7 +515,7 @@ div {
 }
 
 .nav-menu > .menu-item {
-    padding-left: 64px;
+    /*padding-left: 64px;*/
     text-align: left;
 }
 
@@ -743,7 +743,7 @@ li {
 }
 
 .rangoli-link .white-img {
-    padding-left: 43px;
+    padding-left: 0;
 }
 
 .cross-btn {
@@ -1114,16 +1114,18 @@ ul {
     position: absolute;
     right: 7px;
     text-align: center;
-    top: 4px;
+    top: 2px;
     transform-origin: 0 0 0;
     transition-duration: 200ms;
     width: 41px;
 }
-
 .menu-link.m-link.rangoli_li_a {
-    margin-left: -49px;
-    padding: 0;
+    display: inline-block;
+    line-height: 44px;
+    margin-left: -4px;
+    padding: 0 !important;
 }
+
 .has-dropdown > .arrow-tag.is-active svg line:nth-child(3) {
     stroke: transparent;
     transition-duration: 200ms;
@@ -3712,6 +3714,7 @@ ul.checkout-cont > li {
 
 #menu_container.nav-container a {
     color: #555;
+    padding-left: 70px;
 }
 
 /****************************************** detail page ******************************************/

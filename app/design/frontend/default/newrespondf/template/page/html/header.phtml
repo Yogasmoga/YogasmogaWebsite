@@ -73,7 +73,7 @@
         </button>
         <div class="nav-container" id="menu_container">
 
-            <ul class="nav-menu menu">
+            <ul class="nav-menu menu  level1">
                 <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
                     <li class="menu-item sign-up">
 
@@ -110,12 +110,17 @@
 							<span class="arrow-tag toggle-ys-menu">
 <!--								<img alt="V" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png')?><!--" class="responsive">-->
 								<svg width="44px" height="44px">
-                                    <use xlink:href="#plus_icon" x="0" y="0" width="44px" height="44px"/>
+                                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
+                                          y2="109.657"/>
+                                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
+                                          y1="21.39" x2="30.374" y2="21.39"/>
+                                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
+                                          y1="13.39" x2="22.374" y2="29.39"/>
                                 </svg>
 								</span>
 
                         </span>
-                        <ul class="nav-dropdown menu">
+                        <ul class="nav-dropdown menu  level2">
                             <li class="menu-item">
                                 <a href="<?php echo Mage::getUrl('customer/account'); ?>"
                                    class="menu-link"><?php echo $this->__('My Account') ?></span></a>
@@ -139,7 +144,12 @@
 								<span class="arrow-tag toggle-ys-menu is-active">
 <!--									<img class="responsive" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png') ?><!--" alt=""/>-->
 									<svg width="44px" height="44px">
-                                        <use xlink:href="#plus_icon" x="0" y="0" width="44px" height="44px"/>
+                                        <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
+                                              y2="109.657"/>
+                                        <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
+                                              y1="21.39" x2="30.374" y2="21.39"/>
+                                        <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
+                                              y1="13.39" x2="22.374" y2="29.39"/>
                                     </svg>
 								</span>
 
@@ -148,9 +158,9 @@
                     <?php $_categories = $_helper->getStoreCategories() ?>
                     <?php $currentCategory = Mage::registry('current_category') ?>
                     <?php if (count($_categories) > 0): ?>
-                    <ul class="nav-dropdown menu" style="display: block;">
+                    <ul class="nav-dropdown menu level2" style="display: block;">
                         <?php foreach ($_categories as $_category): ?>
-                            <li class="menu-item has-dropdown c-text ">
+                            <li class="menu-item has-dropdown c-text">
 										<span class="arrow-tag toggle-ys-menu">
 <!--											<img class="responsive" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png') ?><!--" alt=""/>-->
 											<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -173,7 +183,7 @@
                                 <?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
                                 <?php $_subcategories = $_category->getChildrenCategories() ?>
                                 <?php if (count($_subcategories) > 0): ?>
-                                    <ul class="nav-dropdown menu">
+                                    <ul class="nav-dropdown menu level3">
                                         <?php foreach ($_subcategories as $_subcategory): ?>
                                             <li class="menu-item">
                                                 <a class="menu-link sub_cat"
@@ -186,8 +196,12 @@
                                                 <?php if (count($_subsubcategories) > 0): ?>
                                                     <span class="arrow-tag sub_menu_icons">
 																<svg width="44px" height="44px">
-                                                                    <use xlink:href="#plus_icon" x="0" y="0"
-                                                                         width="44px" height="44px"/>
+                                                                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
+                                                                          y2="109.657"/>
+                                                                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
+                                                                          y1="21.39" x2="30.374" y2="21.39"/>
+                                                                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
+                                                                          y1="13.39" x2="22.374" y2="29.39"/>
                                                                 </svg>
 
 																	</span>
@@ -296,7 +310,12 @@
                     <span class="border-line"></span>
 								  <span class="arrow-tag toggle-ys-menu">
                                       <svg width="44px" height="44px">
-                                          <use xlink:href="#plus_icon" x="0" y="0" width="44px" height="44px"/>
+                                          <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
+                                                y2="109.657"/>
+                                          <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
+                                                y1="21.39" x2="30.374" y2="21.39"/>
+                                          <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
+                                                y1="13.39" x2="22.374" y2="29.39"/>
                                       </svg>
 <!--									  <img alt="" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png'); ?><!--" class="responsive">-->
 
@@ -309,7 +328,8 @@
                                      <!--	<img class="responsive" src="-->
                                      <?php //echo $this->getSkinUrl('images/rangoli-text.png') ?><!--" alt=""/>-->
 
-                                     <span><svg>
+                                     <span><svg  width="168.676px"
+                                                 height="45.014px">
                                              <use xlink:href="#rangoli_logo" x="0" y="0" width="168.676px"
                                                   height="45.014px"/>
                                          </svg></span>
