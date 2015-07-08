@@ -136,6 +136,7 @@ jQuery(document).ready(function($){
             $(".level1 li ul").not(child).hide();
             $(".level2 li>span.arrow-tag").removeClass("is-active");
             child.toggle();
+            $(".menu-item.additional_links ul").show();
         });
         $(".level2>li>span.arrow-tag").click(function(){
             $(".level2>li>span.arrow-tag").not($(this)).removeClass("is-active");

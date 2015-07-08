@@ -3711,12 +3711,21 @@ ul.checkout-cont > li {
     box-shadow: 47px 44px 0 rgba(0, 0, 0, 0.2);
     color: #555 !important;
 }
-
+.username a {
+    margin: 0 !important;
+    padding-left: 63px !important;
+}
 #menu_container.nav-container a {
     color: #555;
     padding-left: 76px;
 }
-
+.smogi-icon a, .story_icon a, .tech_icon a,.contact_icon_li a {
+    font-family: ITCAvantGardeStd-Bk !important;
+}
+.username .profile_img{
+    background: url('/skin/frontend/default/newrespondf/images/profile.png');
+    background-size: 100% 100%;
+}
 /****************************************** detail page ******************************************/
 /*
 .detail-page .detail-block .detail-part{ margin-top: 58px;

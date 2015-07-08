@@ -232,6 +232,8 @@ function init_menu(){
             $(".rangoli_menu .level2").toggle();
         }
 
+        $(".user_menu .main_btn .menu_arrow").removeClass("active");
+        $(".user_menu_links").hide();
     });
     $(".level2>ul>li>p>.menu_arrow").click(function(){
         $(".level3 li ul").hide();
@@ -239,12 +241,27 @@ function init_menu(){
         var child = $(this).closest(".level2").find(".level3");
         $(".level3").not(child).hide();
         child.toggle();
+        $(".user_menu .main_btn .menu_arrow").removeClass("active");
+        $(".user_menu_links").hide();
     });
     $(".level3>li>.menu_arrow").click(function(){
         $(".level3 .menu_arrow").not($(this)).removeClass("active");
         var child = $(this).next();
         $(".level3 li ul").not(child).hide();
         $(this).next().toggle();
+        $(".user_menu .main_btn .menu_arrow").removeClass("active");
+        $(".user_menu_links").hide();
+    });
+
+    $(".user_menu .main_btn .menu_arrow").click(function(){
+        $(".user_menu_links").toggle();
+        $(".rangoli_menu .menu_arrow").removeClass("active");
+        $(".yogasmoga-menu .menu_arrow").removeClass("active");
+        $(".yogasmoga-menu .level2").hide();
+        $(".yogasmoga-menu .level2 .level3").hide();
+        $(".yogasmoga-menu .level2 .menu_arrow").removeClass("active");
+        $(".yogasmoga-menu .level2 .level3 .menu_arrow").removeClass("active");
+        $(".rangoli_menu .level2").hide();
     });
 
 }
