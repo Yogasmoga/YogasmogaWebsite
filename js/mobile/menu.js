@@ -133,22 +133,22 @@ jQuery(document).ready(function($){
         $(".level1>li>span.arrow-tag").click(function(){
             $(".level1>li>span.arrow-tag").not($(this)).removeClass("is-active");
             var child = $(this).parent().children("ul");
-            $(".level1 li ul").not(child).slideUp();
+            $(".level1 li ul").not(child).hide();
             $(".level2 li>span.arrow-tag").removeClass("is-active");
-            child.slideToggle();
+            child.toggle();
         });
         $(".level2>li>span.arrow-tag").click(function(){
             $(".level2>li>span.arrow-tag").not($(this)).removeClass("is-active");
             var child = $(this).parent().children("ul");
-            $(".level2 li ul").not(child).slideUp();
+            $(".level2 li ul").not(child).hide();
             $(".level3 li>span.arrow-tag").not($(this)).removeClass("is-active");
-            child.slideToggle();
+            child.toggle();
         });
         $(".level3>li>span.arrow-tag").click(function(){
             $(".level3>li>span.arrow-tag").not($(this)).removeClass("is-active");
             var child = $(this).parent().children("ul");
-            $(".level3 li ul").not(child).slideUp();
-            child.slideToggle();
+            $(".level3 li ul").not(child).hide();
+            child.toggle();
         });
     /* *********************************************** */
 
