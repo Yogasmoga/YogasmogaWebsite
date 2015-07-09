@@ -91,51 +91,12 @@
 
 
         <symbol id="contact">
-            <g id="XMLID_35_">
-                <polyline id="XMLID_37_" class="st0" points="-155,197.7 -168.1,204 -161.8,190.9 	"/>
-                <circle id="XMLID_36_" class="st0" cx="-156.6" cy="192.5" r="5.5"/>
+            <g id="XMLID_4_">
+                <rect id="XMLID_6_" x="20.1" y="59.3" class="st0" width="3.9" height="14.7"/>
+                <circle id="XMLID_5_" class="st0" cx="22" cy="53" r="2.7"/>
             </g>
-            <g id="XMLID_32_">
-                <rect id="XMLID_34_" x="20.1" y="20.1" class="st0" width="3.9" height="14.7"/>
-                <circle id="XMLID_33_" class="st0" cx="22" cy="13.8" r="2.7"/>
-            </g>
-            <g id="XMLID_25_">
-                <line id="XMLID_31_" class="st0" x1="-150.6" y1="106.8" x2="-146.2" y2="114.3"/>
-                <line id="XMLID_30_" class="st0" x1="-158.1" y1="114.4" x2="-153.6" y2="106.6"/>
-                <line id="XMLID_29_" class="st0" x1="-147.7" y1="117" x2="-156.5" y2="117"/>
-                <circle id="XMLID_28_" class="st0" cx="-152.1" cy="104.1" r="3"/>
-                <circle id="XMLID_27_" class="st0" cx="-144.7" cy="117" r="3"/>
-                <path id="XMLID_26_" class="st0"
-                      d="M-156.5,117c0,1.7-1.4,3-3,3s-3-1.4-3-3s1.4-3,3-3S-156.5,115.3-156.5,117"/>
-            </g>
-            <g id="XMLID_18_">
-                <circle id="XMLID_24_" class="st0" cx="222.3" cy="67.8" r="6.6"/>
-                <circle id="XMLID_23_" class="st0" cx="218.5" cy="70" r="6.6"/>
-                <circle id="XMLID_22_" class="st0" cx="218.5" cy="74.4" r="6.6"/>
-                <circle id="XMLID_21_" class="st0" cx="222.3" cy="76.6" r="6.6"/>
-                <circle id="XMLID_20_" class="st0" cx="226.2" cy="74.4" r="6.6"/>
-                <circle id="XMLID_19_" class="st0" cx="226.2" cy="70" r="6.6"/>
-            </g>
-            <g id="XMLID_15_">
-                <path id="XMLID_17_" class="st0"
-                      d="M-147.1,37c0,0-4.5,0.1-7.3-2.7s-2.7-7.3-2.7-7.3s4.5-0.1,7.3,2.7S-147.1,37-147.1,37z"/>
-                <path id="XMLID_16_" class="st0"
-                      d="M-147.1,37c0,0,4.5,0.1,7.3-2.7s2.7-7.3,2.7-7.3s-4.5-0.1-7.3,2.7S-147.1,37-147.1,37z"/>
-            </g>
-            <line id="XMLID_14_" class="st0" x1="-147.1" y1="37" x2="-147.1" y2="44"/>
-            <g id="XMLID_3_">
-                <g id="XMLID_5_">
-                    <line id="XMLID_12_" class="st0" x1="-211.6" y1="-75.5" x2="-185.5" y2="-75.5"/>
-                    <line id="XMLID_11_" class="st0" x1="-211.6" y1="-80.8" x2="-185.5" y2="-80.8"/>
-                    <line id="XMLID_10_" class="st0" x1="-211.6" y1="-78.2" x2="-185.5" y2="-78.2"/>
-                    <line id="XMLID_9_" class="st0" x1="-201.2" y1="-83.5" x2="-185.5" y2="-83.5"/>
-                    <line id="XMLID_8_" class="st0" x1="-201.2" y1="-86.2" x2="-185.5" y2="-86.2"/>
-                    <line id="XMLID_7_" class="st0" x1="-201.2" y1="-88.8" x2="-185.5" y2="-88.8"/>
-                    <line id="XMLID_6_" class="st0" x1="-201.2" y1="-91.5" x2="-185.5" y2="-91.5"/>
-                </g>
-                <polygon id="XMLID_4_" class="st0" points="-207.6,-85.6 -210.1,-83.7 -209.1,-86.7 -211.6,-88.5 -208.5,-88.5 -207.6,-91.5
-		-206.6,-88.5 -203.5,-88.5 -206,-86.7 -205,-83.7 	"/>
-            </g>
+            <path id="XMLID_3_" class="st0" d="M28.4,26.9l0.6,0h6.5v-4.4c0-2.7-6-5-13.5-5c-7.4,0-13.5,2.2-13.5,5v4.4h7l0-3.2
+	c0-1.6,2.9-2.9,6.4-2.9s6.4,1.3,6.4,2.9L28.4,26.9z"/>
         </symbol>
 
 
@@ -735,6 +696,16 @@
 		V14.604z" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
             </g>
         </symbol>
+
+        <symbol id="help">
+            <g id="XMLID_4_">
+                <rect id="XMLID_6_" x="19.8" y="19.1" class="st0" width="3.9" height="14.7"/>
+                <circle id="XMLID_5_" class="st0" cx="21.8" cy="12.8" r="2.7"/>
+            </g>
+            <path id="XMLID_3_" class="st0" d="M-70.9,26.7l0.6,0h6.5v-4.4c0-2.7-6-5-13.5-5c-7.4,0-13.5,2.2-13.5,5v4.4h7l0-3.2
+	c0-1.6,2.9-2.9,6.4-2.9s6.4,1.3,6.4,2.9L-70.9,26.7z"/>
+        </symbol>
+
 
     </defs>
 </svg>

@@ -551,6 +551,12 @@ $logged_in = is_user_logged_in();
                                             <use xlink:href="#contact"></use>
                                         </svg>
                                     </span>Contact</a></li>
+                            <li class="ys_single_link"><a href="/help">
+                            <span class="contact_icon">
+                                <svg width="44px" height="44px">
+                                    <use xlink:href="#help"></use>
+                                </svg>
+                            </span>Help</a></li>
 
 
                         </ul>
@@ -671,7 +677,16 @@ $logged_in = is_user_logged_in();
             echo $page;
             ?></span>
             <?php if (is_page("read") || is_page("look") || is_page("learn")) { ?>
-                <span class="open-filter"></span>
+                <span class="open-filter">
+                    <svg width="44px" height="44px">
+                        <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
+                                                                                y2="109.657"/>
+                        <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
+                              y1="21.39" x2="30.374" y2="21.39"/>
+                        <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
+                              y1="13.39" x2="22.374" y2="29.39"/>
+                    </svg>
+                </span>
                 <span class="close-filter"></span>
             <?php } ?>
         </div>

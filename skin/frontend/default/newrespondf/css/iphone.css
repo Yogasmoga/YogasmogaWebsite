@@ -6336,11 +6336,11 @@ button#send2 {
     background: #555 none repeat scroll 0 0 !important;
     display: block;
     height: 44px !important;
-    position: absolute !important;
+    position: fixed !important;
     right: 0 !important;
-    top: 0 !important;
+    top: 88px;
     width: 44px !important;
-    z-index: 0 !important;
+    z-index: 11 !important;
 }
 
 .include_option.selected .selected[title="Y"] {

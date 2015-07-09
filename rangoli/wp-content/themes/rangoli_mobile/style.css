@@ -477,7 +477,14 @@ div,p{
     line-height: 44px;
     position: initial !important;
 }
-.page_heading > div {
+.page_heading > div:first-child {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    text-align: center;
+    z-index: 1;
+    background: #fff;
+}
+.page_heading > div{
     position: relative;
     text-align: center;
 }
@@ -672,22 +679,16 @@ textarea {
     height: 44px;
 }
 .open-filter {
-    background: url("images/open-filter.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    /*background: url("images/open-filter.png") no-repeat scroll center center rgba(0, 0, 0, 0);*/
     height: 44px;
     left: initial !important;
-    right: 7px;
-    width: 30px;
+    right: 0px;
+    width: 44px;
     z-index: 2;
     top:0;
-    transition-duration: 200ms;
 }
-.open-filter.active{
-    transform: rotate(-180deg);
-    -webkit-transform: rotate(-180deg);
-    transition-duration: 200ms;
-}
-.open-filter{
-    
+.open-filter.active svg line:nth-child(3) {
+    stroke: none;
 }
 .post_comments {
     display: none;
