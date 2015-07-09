@@ -65,7 +65,7 @@
 ?>
 <tr style="border-top:1px solid #666666;border-bottom:1px solid #666666;">
     <td style="border-top:1px solid #666666;border-bottom:1px solid #666666;">
-        <?php echo $rowText; ?>
+        <span style="font-weight:bold;"><?php echo $rowText; ?></span>
         <?php $addInfoBlock = $this->getProductAdditionalInformationBlock(); ?>
         <?php if ($addInfoBlock) :?>
             <?php echo $addInfoBlock->setItem($_item)->toHtml(); ?>
@@ -80,7 +80,7 @@
             }
         ?>
     </td>
-    <td style="border-top:1px solid #666666;border-bottom:1px solid #666666;"><?php echo $_item->getQtyOrdered()*1; ?></td>
+    <td style="border-top:1px solid #666666;border-bottom:1px solid #666666;"><?php echo $_item->getQtyOrdered()*1; ?>x</td>
     <td style="text-align:right;border-top:1px solid #666666;border-bottom:1px solid #666666;">
         <?php if ($this->helper('tax')->displaySalesPriceExclTax($_order->getStore()) || $this->helper('tax')->displaySalesBothPrices($_order->getStore())): ?>
             <?php if ($this->helper('tax')->displaySalesBothPrices($_order->getStore())): ?>
