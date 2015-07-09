@@ -104,6 +104,22 @@ else if (count($urlPath) > 1) {
     }
 }
 /******************************* bread crumb logic ******************************/
+/***************** code to get parent category url *****************/
+$currentUrlForParent = Mage::helper('core/url')->getCurrentUrl();
+
+$currentUrlForParent = strtolower($currentUrlForParent);
+
+$categoryNamesForParent = explode('/', $currentUrlForParent);  // break the url
+
+if (isset($categoryNamesForParent) && count($categoryNamesForParent) > 4) {
+    $parentUrlKey = $categoryNamesForParent[count($categoryNamesForParent) - 2];
+    $parentCategory = Mage::getModel('catalog/category')->loadByAttribute('url_key', $parentUrlKey);
+    $goBackUrl = $parentCategory->getUrl();
+} else {
+    $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];            // 0 => http: or https: , 1 is empty,  2 => yogasmoga.com
+}
+
+/***************** code to get parent category url *****************/
 
 if ($this->getRequest()->getParam('color')) {
     ?>
@@ -454,7 +470,7 @@ if ($lengthAvailable) {
             <?php } ?>
             <?php $_helper = $this->helper('catalog/output');?>
             <?php $_category_detail=Mage::registry('current_category');?>
-            <h1><?php if(isset($_category_detail)) { echo $_category_detail->getName(); }?></h1>
+            <h1><?php if(isset($_category_detail)) { echo "<a href='$goBackUrl'>".$_category_detail->getName()."</a>"; }?></h1>
         </div>
 
 
@@ -626,7 +642,14 @@ if ($lengthAvailable) {
         ?>
         <div class="clearfix"></div>
         <div class="detail-box">
-
+            <a class="go_to_parent" href="<?php echo $goBackUrl; ?>" >
+                <svg xml:space="preserve" enable-background="new 0 0 44 44" viewBox="0 0 44 44" height="44px" width="44px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+                        <g>
+                            <line y2="30.218" x2="30.975" y1="15.751" x1="16.508" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+                            <line y2="30.218" x2="16.508" y1="15.751" x1="30.975" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+                        </g>
+</svg>
+            </a>
             <!-- ImageGallery -->
             <div class="productimagecontainer">
                 <ul>

@@ -141,21 +141,11 @@ $(document).ready(function () {
         $(".filter-container ul li").not($(this).parent()).find("ul").slideUp();
         $(this).next().slideToggle();
         $(this).find("span").toggleClass("active");
-        if($(this).find("span").hasClass("active") ){
-            $(this).find("span").css({"border-bottom":"none","transition-duration":"300ms"});
-        }
-        else{
-            if(!$(this).parent().is(":last-child"));
-            $(this).find("span").css({"border-bottom":"1px solid #fff","transition-duration":"300ms"});
-        }
     });
     $(".filter-container ul li").click(function(){
         $(".filter-container ul li").not($(this)).removeClass("active");
         $(".filter-container ul li p").not($(this)).find("span").css({"border-bottom":"1px solid #fff","transition-duration":"300ms"});
         $(this).toggleClass("active");
-        if($(this).is(":last-child")){
-            $(this).find("span").css({"border-bottom":"1px solid #fff","transition-duration":"300ms"});
-        }
 
     });
 
@@ -171,6 +161,10 @@ $(document).ready(function () {
         $(".filter-wrapper").slideToggle();
         $(".filter-container").slideToggle();
         $(this).toggleClass("active");
+        if($(this).hasClass("active")){
+            $(".filter-container li").removeClass("active");
+            $(".filter-container ul ul").hide();
+        }
     });
 
     $(".random").css("color","#"+get_random_color());

@@ -901,8 +901,16 @@ function filter()
     <div class="filter-wrapper">
         <div class="filter-container">
             <ul>
-                <li><p <?php if(!is_user_logged_in()){echo "style='background:rgba(85,85,85,0.95);'";} else { echo "class='user-color-shade'";} ?>><span class="down-arrow-grey-white">Author</span><i><img
-                                src="<?php echo get_site_url() . '/wp-content/themes/rangoli_mobile/images/arrow.png' ?>"/></i>
+                <li><p>
+                        <span class="down-arrow-grey-white">Author</span>
+                        <i><svg width="44px" height="44px">
+                                <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
+                                      y2="109.657"/>
+                                <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
+                                      y1="21.39" x2="30.374" y2="21.39"/>
+                                <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
+                                      y1="13.39" x2="22.374" y2="29.39"/>
+                            </svg></i>
                     </p>
                     <ul>
                         <?php
@@ -937,8 +945,15 @@ function filter()
                         ?>
                     </ul>
                 </li>
-                <li><p <?php if(!is_user_logged_in()){echo "style='background:rgba(85,85,85,0.95);'";} else { echo "class='user-color-shade'";} ?>><span class="down-arrow-grey-white">Topic</span><i><img
-                                src="<?php echo get_site_url() . '/wp-content/themes/rangoli_mobile/images/arrow.png' ?>"/></i>
+                <li><p><span class="down-arrow-grey-white">Topic</span>
+                        <i><svg width="44px" height="44px">
+                                <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
+                                      y2="109.657"/>
+                                <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
+                                      y1="21.39" x2="30.374" y2="21.39"/>
+                                <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
+                                      y1="13.39" x2="22.374" y2="29.39"/>
+                            </svg></i>
                     </p>
                     <ul>
                         <?php
@@ -977,8 +992,15 @@ function filter()
                 if ($cat != "learn") {
 
                     ?>
-                    <li><p <?php if(!is_user_logged_in()){echo "style='background:rgba(85,85,85,0.95);'";} else { echo "class='user-color-shade'";} ?>><span class="down-arrow-grey-white">Length</span><i><img
-                                    src="<?php echo get_site_url() . '/wp-content/themes/rangoli_mobile/images/arrow.png' ?>"/></i>
+                    <li><p><span class="down-arrow-grey-white">Length</span>
+                            <i><svg width="44px" height="44px">
+                                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
+                                          y2="109.657"/>
+                                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
+                                          y1="21.39" x2="30.374" y2="21.39"/>
+                                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
+                                          y1="13.39" x2="22.374" y2="29.39"/>
+                                </svg></i>
                         </p>
                         <ul>
 
