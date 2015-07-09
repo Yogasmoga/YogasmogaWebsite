@@ -27,13 +27,13 @@
 <?php $_order = $this->getOrder() ?>
 <?php if ($_order): ?>
 <table cellspacing="0" cellpadding="0" border="0" width="650" style="border:0;">
-    <thead>
-        <tr>
-            <th align="left" bgcolor="#fff" style="font-size:12px; text-transform:uppercase; padding:5px 0px"><?php echo $this->__('Item') ?></th>
-            <th align="center" bgcolor="#fff" style="font-size:12px; text-transform:uppercase; padding:5px 0px"><?php echo $this->__('Qty') ?></th>
-            <th align="right" bgcolor="#fff" style="font-size:12px; text-transform:uppercase; padding:5px 0px"><?php echo $this->__('Price') ?></th>
-        </tr>
-    </thead>
+<!--    <thead>-->
+<!--        <tr>-->
+<!--            <th align="left" bgcolor="#fff" style="font-size:12px; text-transform:uppercase; padding:5px 0px">--><?php //echo $this->__('Item') ?><!--</th>-->
+<!--            <th align="center" bgcolor="#fff" style="font-size:12px; text-transform:uppercase; padding:5px 0px">--><?php //echo $this->__('Qty') ?><!--</th>-->
+<!--            <th align="right" bgcolor="#fff" style="font-size:12px; text-transform:uppercase; padding:5px 0px">--><?php //echo $this->__('Price') ?><!--</th>-->
+<!--        </tr>-->
+<!--    </thead>-->
 
     <?php $i=0; foreach ($_order->getAllItems() as $_item): ?>
     <?php if($_item->getParentItem()) continue; else $i++; ?>

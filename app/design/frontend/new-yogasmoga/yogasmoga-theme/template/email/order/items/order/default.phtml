@@ -31,6 +31,7 @@
     $productName = html_entity_decode($this->htmlEscape($_item->getName()));
     $color = '';
     $size = '';
+    $sku = $_item->getSku();
 
     if($this->getItemOptions()) {
 
