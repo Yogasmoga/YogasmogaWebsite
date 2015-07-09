@@ -78,7 +78,16 @@ div,p{
 .rangoli_menu .main_btn, .yogasmoga-menu .main_btn {
     height: 44px !important;
     line-height: 44px !important;
-    padding: 0 15px;
+    padding: 0 7px;
+}
+.rangoli_menu .main_btn > a {
+    display: inline-block;
+    height: 44px;
+}
+.yogasmoga-menu .main_btn > a {
+    display: inline-block;
+    height: 44px;
+    padding: 0 2px;
 }
 .cart {
     background: none;
@@ -200,19 +209,22 @@ div,p{
     position: relative;
 }
 .menu li a{
-    color:#fff;
+    color:#A28636;
+    text-transform: uppercase;
     text-decoration: none;
-    font-size: 21px;
-    font-family: "freight-text-pro";
-    letter-spacing: 0.5px;
-}
-.not-logged-in-menu .menu li a{
-    color:#555;
+    font-size: 14px;
+    font-family: ITCAvantGardeStd-Demi;
+    letter-spacing: 1px;
 }
 .category-menu_mobile .menu a {
     font-size: 14px;
     letter-spacing: 1px;
     font-family: "ITCAvantGardeStd-Bk";
+    color:#555;
+    letter-spacing: 1px;
+}
+.menu_arrow.active>svg>line:nth-child(3) {
+    stroke: none;
 }
 .close_menu {
     background: rgba(85, 85, 85, 0.9);
@@ -235,15 +247,16 @@ div,p{
     position: relative;
 }
 .user_menu a {
-    color: #fff;
+    color: #555;
     font:15px/44px ITCAvantGardeStd-Bk;
     text-decoration: none;
     text-transform: uppercase;
 }
 .menu_arrow {
-    padding: 7px 15px;
+    padding: 0;
     position: absolute;
-    right: 0;
+    right: 2px;
+    height: 44px;
 }
 .profile_picture {
     border-radius: 50%;
@@ -277,32 +290,35 @@ div,p{
     transition-duration: 200ms;
 }
 .not-logged-in-menu .menu li span{
-    background: url("images/icons_before-login.png") no-repeat scroll 0 0 / 44px auto rgba(0, 0, 0, 0);
+    /*background: url("images/icons_before-login.png") no-repeat scroll 0 0 / 44px auto rgba(0, 0, 0, 0);*/
 }
 .menu li:hover span{
     opacity: 1;
     transition-duration: 200ms;
 }
 .read span {
-    background-position: 7px -12px !important;
+    background-position: 7px -2px !important;
 }
 .look span{
-    background-position: 7px -56px !important;
+    background-position: 7px -45px !important;
 }
 .learn span{
-    background-position: 7px -100px !important;
+    background-position: 7px -91px !important;
 }
 .smogi span{
-    background-position: 7px -145px !important;
+    background-position: 7px -178px !important;
+}
+.love span{
+    background-position: 7px -133px !important;
 }
 .store span{
-    background-position: 7px -187px !important;
+    background-position: 7px -222px !important;
 }
 .connect span{
-    background-position: 7px -231px !important;
+    background-position: 7px -266px !important;
 }
 .about span{
-    background-position: 7px -277px !important;
+    background-position: 7px -309px !important;
 }
 .side_left {
     background: none repeat scroll 0 0 #555;
@@ -350,8 +366,11 @@ div,p{
 }
 .menu-container li {
     line-height: 44px;
-    padding-left: 70px;
+    padding-left: 71px;
     position: relative;
+}
+.sign-signup > li {
+    padding-left: 74px !important;
 }
 .ys_sub_menu{
     display: none;
@@ -382,14 +401,15 @@ div,p{
     transition-duration: 200ms;
 }
 .yogasmoga_menu_links ul li a{
-    color: #fff;
-    text-decoration: none;
+    color: #A28636;
+    text-decoration:none;
+    text-transform: uppercase;
 }
 .not-logged-in-menu .yogasmoga_menu_links ul li a {
     color: #555 !important;
 }
 .line {
-    border-bottom: 1px solid rgba(255,255,255,0.6);
+    border-bottom: 1px solid rgba(85,85,85,0.6);
     margin: 0 15px;
 }
 .not-logged-in-menu .line{
@@ -403,21 +423,32 @@ div,p{
     width: 110%;
 }
 .ys_main_category p> a {
-    font: 21px freight-text-pro;
+    font: 14px ITCAvantGardeStd-Demi;
 }
 .ys_sub_menu li a {
     font: 14px ITCAvantGardeStd-Bk;
-    color: #999 !important;
+    color: #555 !important;
 }
-
+.ys_sub_menu ul {
+    display: none;
+    background: #eeeeee none repeat scroll 0 0;
+    margin-left: -70px !important;
+    padding-left: 70px !important;
+}
 .ys_sub_menu > li > p>a ,.ys_sub_menu > li>a {
     font: 14px ITCAvantGardeStd-Demi;
-    color: #fff !important;
+    color: #555 !important;
     text-transform: uppercase !important;
 }
 .ys_single_link > a {
-    color: #fff;
+    color: #555 !important;
     font: 14px ITCAvantGardeStd-Bk;
+}
+.additional_links a {
+    color: #555;
+    font: 14px/44px ITCAvantGardeStd-Bk;
+    letter-spacing: 1px;
+    text-decoration: none;
 }
 .ys_single_link span {
     height: 44px;

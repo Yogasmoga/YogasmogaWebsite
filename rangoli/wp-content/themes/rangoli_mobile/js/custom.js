@@ -203,7 +203,6 @@ function init_menu(){
     });
     $("span.menu_arrow").click(function(){
         $(this).toggleClass("active");
-        $(this).parent().next().slideToggle(200);
     });
 
     $(".forgot_y_p").click(function(){
@@ -213,6 +212,56 @@ function init_menu(){
     $(".forgot_y_p.open_signin").click(function(){
         $(".login_form").show();
         $(".forgot_password_form").hide();
+    });
+
+    $(".level1>div>.menu_arrow").click(function(){
+        $(".level1 .menu_arrow").not($(this)).removeClass("active");
+
+        var ys_menu = $(this).closest(".level1").hasClass("yogasmoga-menu");
+        //alert(ys_menu);
+        if(ys_menu){
+            //$(".level2 li ul").toggle();
+            $(".rangoli_menu .level2").hide();
+            $(".yogasmoga-menu .level2").toggle();
+        }
+        else{
+            $(".yogasmoga-menu .level2").hide();
+            $(".yogasmoga-menu .level2 .level3").hide();
+            $(".yogasmoga-menu .level2 .menu_arrow").removeClass("active");
+            $(".yogasmoga-menu .level2 .level3 .menu_arrow").removeClass("active");
+            $(".rangoli_menu .level2").toggle();
+        }
+
+        $(".user_menu .main_btn .menu_arrow").removeClass("active");
+        $(".user_menu_links").hide();
+    });
+    $(".level2>ul>li>p>.menu_arrow").click(function(){
+        $(".level3 li ul").hide();
+        $(".level2 .menu_arrow").not($(this)).removeClass("active");
+        var child = $(this).closest(".level2").find(".level3");
+        $(".level3").not(child).hide();
+        child.toggle();
+        $(".user_menu .main_btn .menu_arrow").removeClass("active");
+        $(".user_menu_links").hide();
+    });
+    $(".level3>li>.menu_arrow").click(function(){
+        $(".level3 .menu_arrow").not($(this)).removeClass("active");
+        var child = $(this).next();
+        $(".level3 li ul").not(child).hide();
+        $(this).next().toggle();
+        $(".user_menu .main_btn .menu_arrow").removeClass("active");
+        $(".user_menu_links").hide();
+    });
+
+    $(".user_menu .main_btn .menu_arrow").click(function(){
+        $(".user_menu_links").toggle();
+        $(".rangoli_menu .menu_arrow").removeClass("active");
+        $(".yogasmoga-menu .menu_arrow").removeClass("active");
+        $(".yogasmoga-menu .level2").hide();
+        $(".yogasmoga-menu .level2 .level3").hide();
+        $(".yogasmoga-menu .level2 .menu_arrow").removeClass("active");
+        $(".yogasmoga-menu .level2 .level3 .menu_arrow").removeClass("active");
+        $(".rangoli_menu .level2").hide();
     });
 
 }
@@ -234,7 +283,7 @@ function getloggedinuser() {
 
                 //get_magento_cstomerID(user_email);
 
-                if(user_color_shade != "#FFFFFF") {
+                if(user_color_shade != "#555555") {
 
                     if (status == "new") {
                         $(".signin_popup").fadeOut();
@@ -266,8 +315,8 @@ function getloggedinuser() {
                 }
             }
             else {
-                user_color_shade = "#FFFFFF";
-                color = "255,255,255";
+                user_color_shade = "#555555";
+                color = "85,85,85";
 
             }
 
@@ -449,7 +498,6 @@ function get_cart(){
 function fillcolor(){
     $(".user-color-shade").css("background-color",user_color_shade);
     $(".user-color-shade-trans").css("background-color","rgba("+hexToRgb(user_color_shade)+",0.95"+")");
-    $(".user-color-shade-text").css("color",user_color_shade);
 }
 
 $(window).load(function(){
