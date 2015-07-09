@@ -62,8 +62,8 @@
     else
         $rowText = $productName;
 ?>
-<tr>
-    <td>
+<tr style="border-top:1px solid #666666;border-bottom:1px solid #666666;">
+    <td style="border-top:1px solid #666666;border-bottom:1px solid #666666;">
         <?php echo $rowText; ?>
         <?php $addInfoBlock = $this->getProductAdditionalInformationBlock(); ?>
         <?php if ($addInfoBlock) :?>
@@ -79,8 +79,8 @@
             }
         ?>
     </td>
-    <td><?php echo $_item->getQtyOrdered()*1; ?></td>
-    <td>
+    <td style="border-top:1px solid #666666;border-bottom:1px solid #666666;"><?php echo $_item->getQtyOrdered()*1; ?></td>
+    <td style="text-align:right;border-top:1px solid #666666;border-bottom:1px solid #666666;">
         <?php if ($this->helper('tax')->displaySalesPriceExclTax($_order->getStore()) || $this->helper('tax')->displaySalesBothPrices($_order->getStore())): ?>
             <?php if ($this->helper('tax')->displaySalesBothPrices($_order->getStore())): ?>
                 <span class="label"><?php echo Mage::helper('tax')->__('Excl. Tax'); ?>:</span>
@@ -157,8 +157,8 @@
         <?php endif; ?>
     </td>
 </tr>
-<tr>
-    <td colspan="3">
+<tr style="border-bottom:1px solid #666666;">
+    <td colspan="3" style="border-bottom:1px solid #666666;">
         <?php echo strtoupper($sku); ?>
     </td>
 </tr>
