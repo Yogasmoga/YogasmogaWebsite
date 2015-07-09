@@ -644,8 +644,8 @@
 
 .our-breath p {
     color: #444444;
-    font: 21px/28px freighttextbook;
-    margin: 20px 0 0 !important;
+    font: 22px/28px freighttextbook;
+    /*margin: 20px 0 0 !important;*/
     float: left;
 }
 
@@ -994,14 +994,14 @@ form#cardbalanceform table.redeem-giftcard {
 }
 
 .inside-content .title {
-    font: 22px/27px ITCAvantGardeStd-Bk;
-    color: #434343;
+    font: 21px/27px ITCAvantGardeStd-Bk !important;
+    color: #434343 !important;
 }
 
 .our-breath .below-txt {
     color: #434343;
-    font: 18px/22px freighttextbook;
-    padding: 18px 0 0;
+    font: 18px/50px freighttextbook;
+    /*padding: 18px 0 0;*/
 }
 
 .textContainer span {
