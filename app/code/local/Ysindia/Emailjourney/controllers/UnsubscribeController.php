@@ -23,7 +23,7 @@ class Ysindia_Emailjourney_UnsubscribeController extends Mage_Core_Controller_Fr
 
                 if ($row) {
 ?>
-                    <div style="font:30px/36px ITCAvantGardeProBk;color:#555555;width:100%;height:381px;text-align:center;  padding-top: 90px;  box-sizing: border-box;"
+                    <div style="font:30px/36px ITCAvantGardeProBk;color:#555555;width:100%;text-align:center;  padding-top: 90px; margin-top: 69px;  box-sizing: border-box;"
                          class="unsubscribe-page">
                         You are already unsubscribed.<br/>However, you can always contact us<br/>at
                         <a href="mailto:hello@yogasmoga.com" style="color:#666;text-decoration:none">hello@yogasmoga.com</a> to be included<br/>back into our mailing list. <br/><br/>
@@ -43,7 +43,7 @@ class Ysindia_Emailjourney_UnsubscribeController extends Mage_Core_Controller_Fr
 
                     $result = $writeConnection->query($query);
 ?>
-                    <div style="font:30px/36px ITCAvantGardeProBk;color:#555555;width:100%;height:381px;text-align:center;  padding: 90px 0;  box-sizing: border-box;"
+                    <div style="font:30px/36px ITCAvantGardeProBk;color:#555555;width:100%;text-align:center;  padding-top: 90px; margin-top: 69px;  box-sizing: border-box;"
                          class="unsubscribe-page">
                         We're sad to see one of our SMOGIs leave us.<br/>However, you can always contact us<br/>at
                         <a href="mailto:hello@yogasmoga.com" style="color:#666;text-decoration:none">hello@yogasmoga.com</a> to be included<br/>back into our mailing list. <br/><br/>
