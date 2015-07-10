@@ -1011,6 +1011,14 @@ $(document).ready(function(){
         window.open(root + "rangoli/wp-content/themes/rangoli_mobile/twt_redirect.php?l=" + shareUrl);
     });
 
+    $(".invite-friend").click(function(){
+       if(logged_in_id>0){
+           window.location= root+"/rangoli/connect/";
+       }
+        else{
+           $(".open_signin").click();
+       }
+    });
 });
 
 function animate_charms(){
