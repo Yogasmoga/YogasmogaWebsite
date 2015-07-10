@@ -12,6 +12,8 @@ class Ysindia_Emailjourney_UnsubscribeController extends Mage_Core_Controller_Fr
 
             if (isset($customer)) {
 
+                $this->loadLayout();
+
                 $resource = Mage::getSingleton('core/resource');
 
                 $readConnection = $resource->getConnection('core_read');
@@ -20,7 +22,18 @@ class Ysindia_Emailjourney_UnsubscribeController extends Mage_Core_Controller_Fr
                 $row = $readConnection->fetchAll($query);
 
                 if ($row) {
-                    echo "<h2>You are already unsubscribed</h2>";
+                    ?>
+                    <div style="font:30px/36px ITCAvantGardeProBk;color:#555555;width:100%;text-align:center; margin-top: 69px;  padding-top: 90px;  box-sizing: border-box;"
+                         class="unsubscribe-page">
+                        You are already unsubscribed.<br/>However, you can always contact us<br/>at
+                        <a href="mailto:hello@yogasmoga.com" style="color:#666;text-decoration:none">hello@yogasmoga.com</a> to be included<br/>back into our mailing list. <br/><br/>
+
+                        Have a breezy day.
+
+
+                    </div>
+
+                <?php
                 } else {
                     $writeConnection = $resource->getConnection('core_write');
 
@@ -29,11 +42,23 @@ class Ysindia_Emailjourney_UnsubscribeController extends Mage_Core_Controller_Fr
                     $query = "insert into unsubscribed_customers(customer_id, email, created_at) values($customerId, '" . $customer->getEmail() . "','$created_at')";
 
                     $result = $writeConnection->query($query);
+                    ?>
+                    <div style="font:30px/36px ITCAvantGardeProBk;color:#555555;width:100%;height:381px;text-align:center;  padding-top: 90px;  box-sizing: border-box;"
+                         class="unsubscribe-page">
+                        We're sad to see one of our SMOGIs leave us.<br/>However, you can always contact us<br/>at
+                        <a href="mailto:hello@yogasmoga.com" style="color:#666;text-decoration:none">hello@yogasmoga.com</a> to be included<br/>back into our mailing list. <br/><br/>
 
-                    echo "<h2>We are sad to see you go</h2>";
-                    echo "<h4>You will not receive any more emails from us</h4>";
+                        Have a breezy day.
+
+
+                    </div>
+                <?php
                 }
+
+                $this->renderLayout();
             }
+            else
+                return $this->_redirect('/');
         }
         else
             return $this->_redirect('/');

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout>
+	<default>
+	</default>
+	<journey_unsubscribe_index>
+		<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+		</reference>
+	</journey_unsubscribe_index>
+</layout>
