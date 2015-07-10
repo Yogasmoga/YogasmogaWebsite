@@ -29,10 +29,17 @@
  */
 ?>
 <?php foreach ($this->getTotals() as $_code => $_total): ?>
-    <?php if ($_total->getBlockName()): ?>
+    <?php if ($_total->getBlockName()){ ?>
         <?php echo $this->getChildHtml($_total->getBlockName(), false); ?>  <!-- tax value coming from here -->
-    <?php else:?>
-    <tr class="<?php echo $_code?>">
+    <?php
+        }else{
+            if(strpos($_total->getLabel(),"Total Amount") !== false){
+                echo "<tr style='border-top:1px solid #666666;border-bottom:1px solid #666666;'>";
+            }
+            else{
+                echo "<tr class='<?php echo $_code?>'>";
+            }
+    ?>
         <td <?php echo $this->getLabelProperties()?> colspan="2">
             <?php if ($_total->getStrong()):?>
             <strong><?php echo $this->escapeHtml($_total->getLabel());?></strong>
@@ -89,5 +96,5 @@
             <?php endif?>
         </td>
     </tr>
-    <?php endif?>
+    <?php } ?>
 <?php endforeach?>
