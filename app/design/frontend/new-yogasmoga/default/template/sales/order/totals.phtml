@@ -75,7 +75,7 @@
                 }
                 else
                 {
-                    echo $this->escapeHtml($_total->getLabel()) . " **";
+                    echo $this->escapeHtml($_total->getLabel());
                 }
             ?>
             <?php //echo $this->escapeHtml($_total->getLabel());?>
@@ -86,7 +86,7 @@
             <strong><?php echo $this->formatValue($_total) ?></strong>
             <?php else:?>
             <?php echo $this->formatValue($_total) ?>
-            <?php endif?>  ^^
+            <?php endif?>
         </td>
     </tr>
     <?php endif?>
