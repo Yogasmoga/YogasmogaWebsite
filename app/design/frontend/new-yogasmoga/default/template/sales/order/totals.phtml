@@ -33,6 +33,7 @@
         <?php echo $this->getChildHtml($_total->getBlockName(), false); ?>  <!-- tax value coming from here -->
     <?php
         }else{
+        echo "*** " . $_total->getLabel();
             if(strpos($_total->getLabel(),"Total Amount") !== false){
                 echo "<tr style='border-top:1px solid #666666;border-bottom:1px solid #666666;'>";
             }
