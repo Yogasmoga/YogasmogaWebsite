@@ -28,9 +28,6 @@
  * @see Mage_Sales_Block_Order_Totals
  */
 ?>
-<?php
-    print_r($this->getTotals());
-?>
 <?php foreach ($this->getTotals() as $_code => $_total): ?>
     <?php if ($_total->getBlockName()): ?>
         <?php echo $this->getChildHtml($_total->getBlockName(), false); ?>
@@ -78,7 +75,7 @@
                 }
                 else
                 {
-                    echo $this->escapeHtml($_total->getLabel());
+                    echo $this->escapeHtml($_total->getLabel()) . " **";
                 }
             ?>
             <?php //echo $this->escapeHtml($_total->getLabel());?>
@@ -89,7 +86,7 @@
             <strong><?php echo $this->formatValue($_total) ?></strong>
             <?php else:?>
             <?php echo $this->formatValue($_total) ?>
-            <?php endif?>
+            <?php endif?>  ^^
         </td>
     </tr>
     <?php endif?>
