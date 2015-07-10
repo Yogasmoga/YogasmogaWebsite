@@ -236,13 +236,14 @@ jQuery(document).ready(function($){
         $(this).parent().find(".smogi-icn").removeClass("active");
         $(this).closest(".buck-balance-title").next().slideUp();
     });
-    $(".ys_static_page_dropdown li a").click(function(e){
+    $(".ys_static_page_dropdown li a,.static_page li a").click(function(e){
         e.preventDefault();
         $(".arrow-icon").click();
         $(".story-box .close-icn").click();
         var heading = $(this).attr("data-heading");
         var obj_id = $(this).attr("rel");
         var obj =$("#" + obj_id);
+        var type = window.location.hash.substr(1);
         if(obj.length>0) {
             var top = obj.offset().top;
             top = top - 88;
@@ -250,7 +251,10 @@ jQuery(document).ready(function($){
                 scrollTop: top
             }, 200);
             $("#" + obj_id + " .txt-cnt").click();
-            $(".sign-in-box h1").html(heading);
+            $(".sign-in-box h1").html(heading)
+            $(".help_page").hide();
+            $(".help_page#"+obj_id).show();
+
         }
         else{
             window.location = $(this).attr("href");
@@ -306,3 +310,35 @@ jQuery(window).resize(function(){
 
 });
 
+
+
+jQuery(document).ready(function($){
+   $(".help_page>ul>li>p,.help_page li>.toggle").click(function(){
+       $(this).parent().toggleClass("active");
+       $(this).parent().find(".answer_content").slideToggle(200);
+       $(".help_page>ul>li>.answer_content").not($(this).parent().find(".answer_content")).slideUp(200);
+       $(this).parent().find(".toggle").toggleClass("active");
+   });
+    /*$(".static_page li a").click(function(e){
+        e.preventDefault();
+        alert();
+        $(".arrow-icon").click();
+        var heading = $(this).attr("data-heading");
+        var obj_id = $(this).attr("rel");
+        var obj =$("#" + obj_id);
+        if(obj.length>0) {
+            var top = obj.offset().top;
+            top = top - 88;
+            $("html,body").animate({
+                scrollTop: top
+            }, 200);
+            $("#" + obj_id + " .txt-cnt").click();
+            $(".sign-in-box h1").html(heading);
+        }
+        else{
+            window.location = $(this).attr("href");
+        }
+    });*/
+
+
+});

@@ -59,7 +59,16 @@
 <h1><?php echo $this->getContentHeading(); ?></h1>
 <?php //if($route == 'cms' && $pageidentifier != 'home'):?>
 <?php if(Mage::getSingleton('cms/page')->getIdentifier() != 'home'  && Mage::app()->getFrontController()->getRequest()->getRouteName() == 'cms') : ?>
-<div class="arrow-icon"><img class="" src="<?php echo $this->getSkinUrl('images/black-arrw.png');?>" alt="arrow"></div>
+<div class="arrow-icon">
+    <svg width="44px" height="44px">
+        <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
+              y2="109.657"/>
+        <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
+              y1="21.39" x2="30.374" y2="21.39"/>
+        <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
+              y1="13.39" x2="22.374" y2="29.39"/>
+    </svg>
+</div>
 <?php endif; ?>
 	  
   </div>
