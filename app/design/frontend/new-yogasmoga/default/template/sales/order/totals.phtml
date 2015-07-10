@@ -42,6 +42,7 @@
             $totalRow = false;
             if(strpos($_total->getLabel(),"Total Amount") !== false){
                 $style="style='border-top:1px solid #666666;border-bottom:1px solid #666666; padding:3px 9px' align='right'";
+                $style_payment="style='border-top:1px solid #666666;border-bottom:1px solid #666666; padding:3px 9px;text-align:left' align='left'";
                 $totalRow = true;
             }
             else{
@@ -53,7 +54,7 @@
             <?php if($totalRow && strlen($paymentMethod)>0){ ?>
 
 <!--        <td <?php //echo $this->getLabelProperties()?> colspan="2">-->
-            <td <?php echo $style;?>><span style="font-weight:bold;">Payment Method:</span><?php echo $paymentMethod;?> </td>
+            <td <?php echo $style_payment;?>><span style="font-weight:bold;">Payment Method: </span><?php echo $paymentMethod;?> </td>
             <td <?php echo $style;?>>
 
             <?php }else{ ?>
