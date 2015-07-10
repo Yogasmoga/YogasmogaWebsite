@@ -5076,6 +5076,7 @@ table.productdetailtable div#colorcontainer div table {
 
 .rangoli_menu .c-text_small a {
     font: 14px/44px ITCAvantGardeStd-Bk !important;
+    text-transform: capitalize;
 }
 
 .already_signed_up {

@@ -60,9 +60,7 @@ if($post->post_type=="post" && $post->post_status=="publish" ) {
             $cat_link = $home;
         }
         ?>
-        <div class="close_post_index <?php if ($logged_in) {
-            echo 'user-color-shade-trans';
-        } ?>" onclick="window.location='<?php echo $cat_link; ?>'">
+        <div class="close_post_index user-color-shade-trans" onclick="window.location='<?php echo $cat_link; ?>'">
             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                  width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
@@ -75,9 +73,7 @@ if($post->post_type=="post" && $post->post_status=="publish" ) {
     </svg>
 
         </div>
-        <div class="share_post_index  <?php if ($logged_in) {
-            echo 'user-color-shade-trans';
-        } ?>" style="display: block;">
+        <div class="share_post_index user-color-shade-trans" style="display: block;">
             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                  width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
@@ -85,7 +81,7 @@ if($post->post_type=="post" && $post->post_status=="publish" ) {
     <g>
         <g>
             <polygon fill="none" stroke="#FFFFFF" stroke-miterlimit="10"
-                     points="20.624,15.692 23.742,10.293 26.859,15.692 			"/>
+                     points="20.624,15.692 23.742,10.293 26.859,15.692"/>
             <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="23.742" y1="15.93" x2="23.742" y2="22.984"/>
         </g>
     </g>
@@ -150,9 +146,7 @@ if($post->post_type=="post" && $post->post_status=="publish" ) {
         $b_pl = get_bitly_url($post_link);
         ?>
 
-        <div class="sharing_box  <?php if ($logged_in) {
-            echo 'user-color-shade-trans';
-        } ?>">
+        <div class="sharing_box user-color-shade-trans">
                     <span class="facebook"><a target="_blank" user="<?php echo get_current_user_id(); ?>"
                                               href="https://www.facebook.com/sharer/sharer.php?app_id=909386705751971&u=<?php echo $b_pl; ?>">
 
