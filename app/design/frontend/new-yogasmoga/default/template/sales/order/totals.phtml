@@ -41,7 +41,7 @@
             }
     ?>
         <tr class='<?php echo $_code;?>'>
-<!--        <td --><?php //echo $this->getLabelProperties()?><!-- colspan="2">-->
+<!--        <td <?php //echo $this->getLabelProperties()?> colspan="2">-->
             <td <?php echo $style;?> colspan="2">
             <?php if ($_total->getStrong()):?>
             <strong><?php echo $this->escapeHtml($_total->getLabel());?></strong>
@@ -90,7 +90,8 @@
             <?php //echo $this->escapeHtml($_total->getLabel());?>
             <?php endif?>
         </td>
-        <td <?php echo $this->getValueProperties()?>>
+<!--        <td <?php //echo $this->getValueProperties()?> -->
+            <td <?php echo $style;?>>
             <?php if ($_total->getStrong()):?>
             <strong><?php echo $this->formatValue($_total) ?></strong>
             <?php else:?>
