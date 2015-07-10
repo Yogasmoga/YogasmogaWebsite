@@ -844,12 +844,14 @@ li {
 }
 
 .sign-in-box h1 {
-    color: #444444;
-    font-size: 21px;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+    color: #444;
     font-family: ITCAvantGardeStd-Bk;
+    font-size: 19px;
+    font-weight: normal;
+    letter-spacing: 1px;
     line-height: 44px;
     text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 .flexslider {
@@ -5049,9 +5051,10 @@ table.productdetailtable div#colorcontainer div table {
 }
 
 .arrow-icon {
+    height: 44px;
     line-height: 44px;
     position: absolute;
-    right: 15px;
+    right: 0;
     top: 0;
     transition-duration: 200ms;
 }
@@ -5133,10 +5136,8 @@ table.productdetailtable div#colorcontainer div table {
     -webkit-transform: rotate(0deg);
 }
 
-.arrow-icon.active img {
-    transition-duration: 200ms;
-    transform: rotate(-180deg);
-    -webkit-transform: rotate(-180deg);
+.arrow-icon.active svg line:nth-child(3) {
+    stroke: none;
 }
 
 #shopping-cart-table {
@@ -6416,4 +6417,78 @@ button#send2 {
 
 .flex-control-nav {
     display: none !important;
+}
+.help_page > ul{
+    padding: 0 12px;
+}
+.help_page > ul > li {
+    text-align: left;
+    padding: 13px 0;
+    border-bottom: 1px solid #eee;
+}
+.help_page > p {
+    background: #eee none repeat scroll 0 0;
+    font: 14px/44px AvantGarde-Demi;
+    height: 44px;
+    text-align: left;
+    padding: 0 12px;
+    color: #666;
+}
+.help_page > ul > li>p{
+    font:12px/18px AvantGarde-Demi;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.help_page .toggle {
+    position: absolute;
+    right: 2px;
+    top: 16px;
+}
+.help_page .toggle img {
+    transition-duration: 200ms;
+}
+.help_page .toggle.active img {
+    transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+}
+.help_page ul li > p > span {
+    display: inline;
+}
+.help_page ul li.active > p > span {
+    display: none;
+}
+.help_page .answer_content {
+    display: none;
+}
+.help_page .answer_content>div,.help_page .answer_content>div p{
+    font: 15px/22px GraphikRegular;
+    padding: 10px 0 0;
+}
+.help_page .answer_content > span {
+    font: 12px/18px AvantGarde-Demi;
+}
+.help_page .privacy {
+    color: #666;
+    font: 12px/22px GraphikRegular;
+    letter-spacing: 1px;
+    padding: 20px 12px 0px;
+}
+.help_page .privacy p{
+    border-bottom: 1px solid #ebebeb;
+    padding-bottom: 20px;
+}.help_page .terms_condition {
+    color: #666;
+    font: 12px/22px GraphikRegular;
+    letter-spacing: 1px;
+    padding: 20px 12px 0px;
+}
+.help_page .terms_condition p{
+    border-bottom: 1px solid #ebebeb;
+    padding-bottom: 20px;
+}
+
+.help_page .terms_condition p:first-child{
+    font: 17px/30px ITCAvantGardeStd-Bk;
+    border: none;
+    padding: 0;
 }

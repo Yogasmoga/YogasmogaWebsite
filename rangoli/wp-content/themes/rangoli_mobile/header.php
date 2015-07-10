@@ -359,7 +359,7 @@ $logged_in = is_user_logged_in();
                     <div class="yogasmoga_menu_links level2">
                         <ul>
                             <li class="ys_main_category">
-                                <p><a href="/women">Women</a>
+                                <p><a href="/women">WOMEN</a>
                                 <span class="menu_arrow">
 
                             <svg width="44px" height="44px">
@@ -375,7 +375,7 @@ $logged_in = is_user_logged_in();
                                 </p>
 
                                 <ul class="ys_sub_menu level3">
-                                    <li><a href="">Tops</a>
+                                    <li><a href="">TOPS</a>
                                         <span class="menu_arrow">
                                             <svg width="44px" height="44px">
                                                 <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657"
@@ -397,7 +397,7 @@ $logged_in = is_user_logged_in();
                                         </ul>
                                     </li>
 
-                                    <li><a href="">Bottoms</a>
+                                    <li><a href="">BOTTOMS</a>
                                         <span class="menu_arrow">
                                             <svg width="44px" height="44px">
                                                 <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657"
@@ -418,7 +418,7 @@ $logged_in = is_user_logged_in();
                                         </ul>
                                     </li>
 
-                                    <li><a href="">Accessories</a>
+                                    <li><a href="">ACCESSORIES</a>
                                         <span class="menu_arrow">
                                             <svg width="44px" height="44px">
                                                 <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657"
@@ -440,10 +440,10 @@ $logged_in = is_user_logged_in();
                                         </ul>
                                     </li>
                                     <li><a href="/women/whats-new">What's New</a></li>
-                                    <li><a href="/women/one-too-many">One 2 Many</a></li>
-                                    <li><a href="/women/additional-sizes">Addtional Sizes</a></li>
-                                    <li><a href="/women/vivacity-collection">Vivacity collection</a></li>
-                                    <li><a href="/women/rangoli-collection">Rangoli collection</a></li>
+                                    <li><a href="/women/one-too-many">ONE 2 MANY</a></li>
+                                    <li><a href="/women/additional-sizes">ADDITIONAL SIZES</a></li>
+                                    <li><a href="/women/vivacity-collection">VIVACITY COLLECTION</a></li>
+                                    <li><a href="/women/rangoli-collection">RANGOLI COLLECTION</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -451,7 +451,7 @@ $logged_in = is_user_logged_in();
                     <div class="yogasmoga_menu_links level2">
                         <ul>
                             <li class="ys_main_category">
-                                <p><a href="/men">Men</a>
+                                <p><a href="/men">MEN</a>
                                 <span class="menu_arrow">
                                     <svg width="44px" height="44px">
                                         <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657"
@@ -465,7 +465,7 @@ $logged_in = is_user_logged_in();
                                 </span>
                                 </p>
                                 <ul class="ys_sub_menu level3">
-                                    <li><a href="">Tops</a>
+                                    <li><a href="">TOPS</a>
                                         <span class="menu_arrow">
                                             <svg width="44px" height="44px">
                                                 <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657"
@@ -483,7 +483,7 @@ $logged_in = is_user_logged_in();
                                             <li><a href="/men/tops/jackets">Jackets</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="">Bottoms</a>
+                                    <li><a href="">BOTTOMS</a>
                                         <span class="menu_arrow">
                                             <svg width="44px" height="44px">
                                                 <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657"
@@ -500,7 +500,7 @@ $logged_in = is_user_logged_in();
                                             <li><a href="/men/bottoms/pants">Pants</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="">Accessories</a>
+                                    <li><a href="">ACCESSORIES</a>
                                         <span class="menu_arrow">
                                             <svg width="44px" height="44px">
                                                 <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657"
@@ -519,7 +519,7 @@ $logged_in = is_user_logged_in();
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="/whats-new">What's New</a></li>
+                                    <li><a href="/whats-new">WHAT'S NEW</a></li>
                                 </ul>
                             </li>
 

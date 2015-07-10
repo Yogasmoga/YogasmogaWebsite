@@ -174,8 +174,9 @@
 }
 
 .account-nav .sub-nav li {
-    border-bottom: 1px solid #555;
+    /*border-bottom: 1px solid #555;*/
     text-align: left;
+    letter-spacing: 1px;
 }
 
 .account-nav .sub-nav li:last-child {
@@ -185,8 +186,8 @@
 .account-nav .sub-nav li a {
     color: #656565;
     display: inline-block;
-    font-family: freighttextbook;
-    font-size: 21px;
+    font-family: Avantgarde-demi;
+    font-size: 14px;
     line-height: 44px;
     text-decoration: none;
     width: 100%;

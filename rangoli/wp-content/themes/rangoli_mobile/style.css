@@ -222,6 +222,7 @@ div,p{
     font-family: "ITCAvantGardeStd-Bk";
     color:#555;
     letter-spacing: 1px;
+    text-transform: capitalize;
 }
 .menu_arrow.active>svg>line:nth-child(3) {
     stroke: none;
@@ -403,7 +404,7 @@ div,p{
 .yogasmoga_menu_links ul li a{
     color: #A28636;
     text-decoration:none;
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 .not-logged-in-menu .yogasmoga_menu_links ul li a {
     color: #555 !important;
@@ -483,6 +484,7 @@ div,p{
     text-align: center;
     z-index: 1;
     background: #fff;
+    height:44px;
 }
 .page_heading > div{
     position: relative;
