@@ -75,7 +75,9 @@ class Ysindia_Emailjourney_IndexController extends Mage_Core_Controller_Front_Ac
             $customerName = $customer['FNAME'] . ' ' . $customer['LNAME'];
             $createDate = $customer['CREATE_DATE'];
 
-            $unsubscribe_link = Mage::getUrl('journey/unsubscribe/index/id/' . $customerId);
+            $token = date('Ymdhis');
+
+            $unsubscribe_link = Mage::getUrl('journey/unsubscribe/index/id/' . $token);
 
             $query = "SELECT id FROM unsubscribed_customers where customer_id=$customerId";
             $row = $readConnection->fetchAll($query);
@@ -119,6 +121,7 @@ class Ysindia_Emailjourney_IndexController extends Mage_Core_Controller_Front_Ac
                 $model->setCustomerId($customerId);
                 $model->setEmailNumber($days);
                 $model->setTemplateId($templateId);
+                $model->setToken($token);
                 $model->setCurrentDate(date('Y-m-d h:i:s'));
                 $model->save();
             }
