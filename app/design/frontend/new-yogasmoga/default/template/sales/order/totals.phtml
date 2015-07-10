@@ -33,15 +33,16 @@
         <?php echo $this->getChildHtml($_total->getBlockName(), false); ?>  <!-- tax value coming from here -->
     <?php
         }else{
-        echo "*** " . $_total->getLabel();
             if(strpos($_total->getLabel(),"Total Amount") !== false){
-                echo "<tr style='border-top:1px solid #666666;border-bottom:1px solid #666666;'>";
+                $style="style='border-top:1px solid #666666;border-bottom:1px solid #666666; padding:3px 9px' align='right'";
             }
             else{
-                echo "<tr class='<?php echo $_code?>'>";
+                $style="style='padding:3px 9px' align='right'";
             }
     ?>
-        <td <?php echo $this->getLabelProperties()?> colspan="2">
+        <tr class='<?php echo $_code;?>'>
+<!--        <td --><?php //echo $this->getLabelProperties()?><!-- colspan="2">-->
+            <td <?php echo $style;?> colspan="2">
             <?php if ($_total->getStrong()):?>
             <strong><?php echo $this->escapeHtml($_total->getLabel());?></strong>
             <?php else:?>
