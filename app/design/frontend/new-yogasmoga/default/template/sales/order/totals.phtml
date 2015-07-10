@@ -28,21 +28,38 @@
  * @see Mage_Sales_Block_Order_Totals
  */
 ?>
+<?php
+    if($this->getOrder()->getPayment())
+        $paymentMethod = $this->getOrder()->getPayment()->getMethod();
+    else
+        $paymentMethod = '';
+?>
 <?php foreach ($this->getTotals() as $_code => $_total): ?>
     <?php if ($_total->getBlockName()){ ?>
         <?php echo $this->getChildHtml($_total->getBlockName(), false); ?>  <!-- tax value coming from here -->
     <?php
         }else{
+            $totalRow = false;
             if(strpos($_total->getLabel(),"Total Amount") !== false){
                 $style="style='border-top:1px solid #666666;border-bottom:1px solid #666666; padding:3px 9px' align='right'";
+                $totalRow = true;
             }
             else{
                 $style="style='padding:3px 9px' align='right'";
             }
     ?>
         <tr class='<?php echo $_code;?>'>
+
+            <?php if($totalRow && strlen($paymentMethod)>0){ ?>
+
 <!--        <td <?php //echo $this->getLabelProperties()?> colspan="2">-->
+            <td <?php echo $style;?>><span style="font-weight:bold;">Payment Method:</span><?php echo $paymentMethod;?> </td>
+            <td <?php echo $style;?>>
+
+            <?php }else{ ?>
             <td <?php echo $style;?> colspan="2">
+            <?php } ?>
+
             <?php if ($_total->getStrong()):?>
             <strong><?php echo $this->escapeHtml($_total->getLabel());?></strong>
             <?php else:?>
