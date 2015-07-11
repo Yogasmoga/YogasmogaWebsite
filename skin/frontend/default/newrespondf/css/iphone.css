@@ -5400,7 +5400,9 @@ p.required {
     padding-bottom: 15px;
     width: 100%;
 }
-
+.header-container > a {
+    display: inline-block;
+}
 .dashboard-container {
     padding: 12px;
 }
