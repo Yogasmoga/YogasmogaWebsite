@@ -544,9 +544,9 @@ div,p{
     display: none;
     float: right;
     height: 44px;
-    position: absolute;
+    position: fixed;
     right: 0;
-    top: 0px;
+    top: 88px;
     width: 44px;
     z-index: 5;
 }
@@ -561,14 +561,13 @@ div,p{
 }
 .share_post, .share_post_index{
     background: rgba(85, 85, 85, 0.9);
-    
     display: none;
     border-top:1px solid #fff;
     float: right;
     height: 44px;
-    position: absolute;
+    position: fixed;
     right: 0;
-    top: 44px;
+    top: 132px;
     width: 44px;
     z-index: 5;
 }

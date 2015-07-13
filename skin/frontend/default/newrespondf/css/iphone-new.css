@@ -712,9 +712,9 @@
     display: none;
     height: 44px;
     left: initial;
-    position: absolute;
+    position: fixed;
     right: 0;
-    top: 0;
+    top: 88px;
     width: 44px;
     z-index: 1;
 }
