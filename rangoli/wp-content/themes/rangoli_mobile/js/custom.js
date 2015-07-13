@@ -51,6 +51,7 @@ $(document).ready(function () {
         $("#back_to_top").fadeOut();
         var share_post = content.find(".share_post");
         share_post.show();
+/*
         var scroll_top = content.offset().top - $(window).scrollTop();
 
         $(window).scrollTop(content.offset().top-88);
@@ -59,6 +60,7 @@ $(document).ready(function () {
             close_post.css({"top":"88px","position":"fixed"});
             share_post.css({"top":"132px","position":"fixed"});
         }
+*/
         $(window).scroll(function(){
             $(document).find(".close_post").hide();
             $(document).find(".share_post").hide();
@@ -66,7 +68,7 @@ $(document).ready(function () {
             close_post.show();
             var share_post = content.find(".share_post");
             share_post.show();
-            var scroll_top = content.offset().top - $(window).scrollTop();
+            /*var scroll_top = content.offset().top - $(window).scrollTop();
 
             if(scroll_top<88){
                 close_post.css({"top":"88px","position":"fixed"});
@@ -75,7 +77,7 @@ $(document).ready(function () {
             else{
                 close_post.css({"top":"0px","position":"absolute"});
                 share_post.css({"top":"44px","position":"absolute"});
-            }
+            }*/
         });
         $(".comment-form-comment textarea").attr("placeholder","Share your comments");
     });
