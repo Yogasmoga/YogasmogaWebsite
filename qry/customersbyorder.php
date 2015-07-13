@@ -55,6 +55,9 @@ else{
 
 <html>
     <body>
+
+        <br/><a href="index.php">Home</a><br/><br/>
+
         <form method="post" action="customersbyorder.php">
 
             <h3>Download customers</h3>

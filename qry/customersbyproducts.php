@@ -67,6 +67,9 @@ if (isset($_REQUEST['from_date'])) {
         <title>Download customer that purchased products</title>
     </head>
     <body>
+
+    <br/><a href="index.php">Home</a><br/><br/>
+
     <form method="post" action="customersbyproducts.php">
 
         <h3>Download customers who purchased product within specified date</h3>
@@ -104,8 +107,6 @@ if (isset($_REQUEST['from_date'])) {
         </table>
         <input type="hidden" name="product_name"/>
     </form>
-    </body>
-    </html>
 
     <script type="text/javascript">
         jQuery(document).ready(function(){
@@ -119,5 +120,8 @@ if (isset($_REQUEST['from_date'])) {
             });
         });
     </script>
+
+    </body>
+    </html>
 
 <?php } ?>
