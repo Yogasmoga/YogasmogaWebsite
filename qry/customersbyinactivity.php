@@ -5,9 +5,10 @@ umask(0);
 
 if (isset($_REQUEST['date'])) {
 
-    $date = $_REQUEST['date'];
+    $date = date('Y-m-d', strtotime($_REQUEST['date']));
+    $registered_date = date('Y-m-d', strtotime($_REQUEST['date']));
 
-    $sql = "SELECT e.email AS email, MAX(o.created_at) AS last_order_date FROM customer_entity AS e LEFT JOIN sales_flat_order AS o ON o.customer_id = e.entity_id WHERE (e.entity_type_id = '1') GROUP BY e.entity_id HAVING (last_order_date < '$date') OR (last_order_date IS NULL)";
+    $sql = "SELECT e.email AS email, MAX(o.created_at) AS last_order_date FROM customer_entity AS e LEFT JOIN sales_flat_order AS o ON o.customer_id = e.entity_id WHERE (e.entity_type_id = '1' and e.created_at >='$registered_date') GROUP BY e.entity_id HAVING (last_order_date < '$date') OR (last_order_date IS NULL)";
 
     $resource = Mage::getSingleton('core/resource');
     $readConnection = $resource->getConnection('core_read');
@@ -57,6 +58,10 @@ if (isset($_REQUEST['date'])) {
             <tr>
                 <td style="width:150px;">Since</td>
                 <td><input type="date" name="date"/></td>
+            </tr>
+            <tr>
+                <td style="width:150px;">Registered after</td>
+                <td><input type="date" name="register_date"/></td>
             </tr>
 
             <tr>
