@@ -1,20 +1,4 @@
 jQuery(document).ready(function($){
-
-   $(".swatch").click(function(){
-      $(this).find("span.swatch_checked").toggleClass("selected");
-      alert($(this).find("span.swatch_checked").attr("class"));
-   });
-   $(".size").click(function(){
-      $(this).toggleClass("selected");
-   });
-   $(".texture").click(function(){
-      $(this).toggleClass("selected");
-   });
-
-
-
-
-
    /* /////////////////// YS MENU ////////////////////// */
    $(".toggle_dropdown").click(function(){
       $(this).toggleClass("active");
@@ -35,7 +19,9 @@ jQuery(document).ready(function($){
       $("form[name='filter']").reset();
    });
    $(".dropdown_links > ul>li>span").click(function(){
+      $(".dropdown_links > ul>li>span").not($(this)).removeClass("active");
       $(this).toggleClass("active");
+      $(".dropdown_links > ul>li>ul").not($(this).next()).slideUp();
       $(this).next().slideToggle();
    });
 });
