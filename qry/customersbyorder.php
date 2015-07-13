@@ -33,7 +33,7 @@ if(isset($_REQUEST['from_date'])) {
 
     fputcsv($fp, array("Start Date = " . $from_date));
     fputcsv($fp, array(''));
-    fputcsv($fp, array("End Date = " . $from_date));
+    fputcsv($fp, array("End Date = " . $to_date));
     fputcsv($fp, array(''));
     fputcsv($fp, array("Amount $signValue " . $amount));
 
