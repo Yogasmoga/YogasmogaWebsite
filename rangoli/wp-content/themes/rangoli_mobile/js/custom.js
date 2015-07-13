@@ -144,7 +144,7 @@ $(document).ready(function () {
     });
     $(".filter-container ul li").click(function(){
         $(".filter-container ul li").not($(this)).removeClass("active");
-        $(".filter-container ul li p").not($(this)).find("span").css({"border-bottom":"1px solid #fff","transition-duration":"300ms"});
+        //$(".filter-container ul li p").not($(this)).find("span").css({"border-bottom":"1px solid #fff","transition-duration":"300ms"});
         $(this).toggleClass("active");
 
     });
@@ -1011,6 +1011,14 @@ $(document).ready(function(){
         window.open(root + "rangoli/wp-content/themes/rangoli_mobile/twt_redirect.php?l=" + shareUrl);
     });
 
+    $(".invite-friend").click(function(){
+       if(logged_in_id>0){
+           window.location= root+"/rangoli/connect/";
+       }
+        else{
+           $(".open_signin").click();
+       }
+    });
 });
 
 function animate_charms(){

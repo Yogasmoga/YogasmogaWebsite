@@ -240,6 +240,9 @@
 .dropdown_links > ul > li > a, .dropdown_links > ul > li > ul li a {
     padding: 0 12px;
 }
+.dropdown_links > ul > li > ul li a {
+    text-transform: capitalize;
+}
 .dropdown_links span {
     /*border-left: 1px solid #555;*/
     line-height: 44px;

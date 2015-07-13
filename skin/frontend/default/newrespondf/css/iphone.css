@@ -5076,6 +5076,7 @@ table.productdetailtable div#colorcontainer div table {
 
 .rangoli_menu .c-text_small a {
     font: 14px/44px ITCAvantGardeStd-Bk !important;
+    text-transform: capitalize;
 }
 
 .already_signed_up {
@@ -5399,7 +5400,9 @@ p.required {
     padding-bottom: 15px;
     width: 100%;
 }
-
+.header-container > a {
+    display: inline-block;
+}
 .dashboard-container {
     padding: 12px;
 }
@@ -6491,4 +6494,22 @@ button#send2 {
     font: 17px/30px ITCAvantGardeStd-Bk;
     border: none;
     padding: 0;
+}
+.size-chart table{
+    border-collapse: collapse;
+    font: 12px/30px ITCAvantGardeStd-Bk;
+}
+.size-chart table tr{
+    border-bottom: 1px solid #ebebeb;
+    letter-spacing: 1px;
+}
+.size-chart table tr:last-child{
+    border-bottom: none;
+}
+.size-chart table th{
+    border-collapse: collapse;
+    font-family: Avantgarde-demi;
+}
+video{
+    background: #555;
 }

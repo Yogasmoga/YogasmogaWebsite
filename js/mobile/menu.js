@@ -314,31 +314,11 @@ jQuery(window).resize(function(){
 
 jQuery(document).ready(function($){
    $(".help_page>ul>li>p,.help_page li>.toggle").click(function(){
+       $(".help_page li>.toggle").not($(this).parent().find(".toggle")).removeClass("active");
+       $(".help_page>ul>li>p,.help_page li").not($(this).parent()).removeClass("active");
        $(this).parent().toggleClass("active");
        $(this).parent().find(".answer_content").slideToggle(200);
        $(".help_page>ul>li>.answer_content").not($(this).parent().find(".answer_content")).slideUp(200);
        $(this).parent().find(".toggle").toggleClass("active");
    });
-    /*$(".static_page li a").click(function(e){
-        e.preventDefault();
-        alert();
-        $(".arrow-icon").click();
-        var heading = $(this).attr("data-heading");
-        var obj_id = $(this).attr("rel");
-        var obj =$("#" + obj_id);
-        if(obj.length>0) {
-            var top = obj.offset().top;
-            top = top - 88;
-            $("html,body").animate({
-                scrollTop: top
-            }, 200);
-            $("#" + obj_id + " .txt-cnt").click();
-            $(".sign-in-box h1").html(heading);
-        }
-        else{
-            window.location = $(this).attr("href");
-        }
-    });*/
-
-
 });
