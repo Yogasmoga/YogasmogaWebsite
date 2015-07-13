@@ -116,6 +116,7 @@ function validateSmogiEmail(email) {
 
 function init_watermark(){
     jQuery(".watermark_password_orignal").hide();
+    jQuery(".watermark_password").show();
     jQuery(".watermark_password").focus(function () {
         jQuery(this).hide();
         jQuery(".watermark_password_orignal").show();
