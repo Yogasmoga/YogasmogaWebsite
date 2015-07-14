@@ -321,4 +321,5 @@ jQuery(document).ready(function($){
        $(".help_page>ul>li>.answer_content").not($(this).parent().find(".answer_content")).slideUp(200);
        $(this).parent().find(".toggle").toggleClass("active");
    });
+    $(".level2 >li:first-child .toggle-ys-menu").click();
 });
