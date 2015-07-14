@@ -86,7 +86,7 @@ if(!is_writable(dirname($output_filename))){
 	$count = $wpdb->get_results("select * from rangoli_usermeta where user_id=".$user_id." and meta_key='cupp_upload_meta'");
 
 	if(is_array($count) && count($count)>0){
-		$result = $wpdb->query("update rangoli_usermeta set  meta_value = '$saved_file' where user_id=$user_id");
+		$result = $wpdb->query("update rangoli_usermeta set  meta_value = '$saved_file' where user_id=$user_id and meta_key='cupp_upload_meta'");
 		if($result){
 			$status = "updated";
 		}
