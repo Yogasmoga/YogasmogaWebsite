@@ -269,7 +269,7 @@ input, textarea, select {
     padding: 0 30px;
     position: fixed;
     width: 100%;
-    margin-top: 8px;
+    margin-top: 0px;
 }
 
 .popup_container.sign_in_modal .overlay-inner-bg .reg_msg {
@@ -327,7 +327,7 @@ input, textarea, select {
     margin-left: 0;
     position: fixed;
     right: 0;
-    top: 44px;
+    top: 0px;
     width: 44px;
     z-index: 1;
 }
@@ -388,7 +388,7 @@ input, textarea, select {
 }
 .left_block.left_block_new .top-heading {
     float: left;
-    margin-bottom: 10px !important;
+    margin-bottom: 0 !important;
     margin-top: 0 !important;
     width: 100%;
     text-align: center;

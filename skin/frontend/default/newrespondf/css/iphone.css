@@ -272,7 +272,9 @@ div {
     z-index: 15;
     background-color: #af8839;
 }
-
+.nav .ys-text:hover{
+    background: #846721;
+}
 /************************************************header-container**************************/
 .header-container {
     z-index: 20;
@@ -380,10 +382,10 @@ div {
 }
 
 .yogasmoga_li > a:first-child {
-    line-height: 44px;
-    margin-left: 10px;
+    line-height: 50px;
+    height:44px;
     overflow: hidden;
-    padding: 5px 0 0 !important;
+    padding: 5px 0 0 10px !important;
 }
 
 /* 1. Parent menu links inlined so you can toggle the dropdown */
@@ -557,7 +559,9 @@ div {
     height: 44px;
     width: 44px;
 }
-
+.icon-menu:hover{
+    background: #846721;
+}
 .content .wrapper {
     padding: 1rem 0;
 }
@@ -731,9 +735,14 @@ li {
 .sign-text {
     padding-left: 61px;
 }
-
+.sign-text a {
+    display: inline !important;
+}
+.sign-text a:hover {
+    background: none !important;
+}
 .nav-menu > li.rangoli-link {
-    padding: 0 15px ;
+    padding: 0 ;
 }
 .menu-item.additional_links {
     padding-bottom: 64px;
@@ -756,6 +765,9 @@ li {
     right: 0;
     top: 44px;
     width: 44px;
+}
+.cross-btn:hover{
+    background: #373737;
 }
 
 .cross-btn img {
@@ -981,6 +993,13 @@ ul {
 .bg444444 {
     background: #444444;
 }
+.bgae8637:hover {
+    background: #846721;
+}
+
+.bg444444:hover {
+    background: #373737;
+}
 
 .block-invite {
     overflow: hidden;
@@ -1126,8 +1145,8 @@ ul {
 .menu-link.m-link.rangoli_li_a {
     display: inline-block;
     line-height: 44px;
-    margin-left: -4px;
-    padding: 0 !important;
+    margin-left: 0px;
+    padding-left: 7px !important;
 }
 
 .has-dropdown > .arrow-tag.is-active svg line:nth-child(3) {
@@ -5022,13 +5041,13 @@ table.productdetailtable div#colorcontainer div table {
 }
 
 .reward_points b {
-    font: 10px/44px ITCAvantGardeStd-Bk;
+    font: 10px/50px ITCAvantGardeStd-Bk;
     letter-spacing: 1px;
     vertical-align: top;
 }
 
 .category-block .sign-in-box span b {
-    font: 10px/44px ITCAvantGardeStd-Bk !important;
+    font: 10px/50px ITCAvantGardeStd-Bk !important;
     letter-spacing: 1px;
     vertical-align: top;
 }
@@ -5052,6 +5071,15 @@ table.productdetailtable div#colorcontainer div table {
     transition-duration: 200ms;
 }
 
+.menu-item a {
+    height: 50px;
+    width: 100%;
+    line-height: 50px;
+    display: block;
+}
+.menu-item a:hover{
+    background: #f2f2f2;
+}
 .arrow-icon {
     height: 44px;
     line-height: 44px;
@@ -6091,7 +6119,7 @@ button#send2 {
 
 /* Rangoli Icon */
 .rangoli_menu li a {
-    padding-left: 59px !important;
+    padding-left: 71px !important;
     position: relative;
 }
 
@@ -6115,7 +6143,7 @@ button#send2 {
     height: 44px;
     width: 44px;
     position: absolute;
-    left: -5px;
+    left: 7px;
     top: 0;
 }
 /*
@@ -6348,7 +6376,9 @@ button#send2 {
     width: 44px !important;
     z-index: 11 !important;
 }
-
+.go_to_parent:hover{
+    background: #373737;
+}
 .include_option.selected .selected[title="Y"] {
     background: #3ba50f none repeat scroll 0 0;
 }

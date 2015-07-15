@@ -76,7 +76,7 @@
             <ul class="nav-menu menu  level1">
                 <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
                     <li class="menu-item sign-up">
-
+                    <i></i>
 				<span class="key">
 <!--					<img class="responsive" src="--><?php //echo $this->getSkinUrl('images/key1.png') ?><!--" alt=""/>-->
                 <svg xml:space="preserve" enable-background="new 164.167 0 44 44" viewBox="164.167 0 44 44"
@@ -161,7 +161,8 @@
                     <ul class="nav-dropdown menu level2" style="display: block;">
                         <?php foreach ($_categories as $_category): ?>
                             <li class="menu-item has-dropdown c-text">
-										<span class="arrow-tag toggle-ys-menu">
+							<i></i>
+													<span class="arrow-tag toggle-ys-menu">
 <!--											<img class="responsive" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png') ?><!--" alt=""/>-->
 											<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                                                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -186,6 +187,7 @@
                                     <ul class="nav-dropdown menu level3">
                                         <?php foreach ($_subcategories as $_subcategory): ?>
                                             <li class="menu-item">
+                                                <i></i>
                                                 <a class="menu-link sub_cat"
                                                    href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">
                                                     <?php echo $_subcategory->getName() ?></a>
@@ -359,22 +361,22 @@
 
                     <ul class="nav-dropdown menu rangoli_menu">
                         <li class="menu-item has-dropdown c-text ">
+                            <a href="/rangoli/read/" class="menu-link main-txt">Read</a>
                             <span><svg>
                                     <use xlink:href="#read" x="0" y="0" width="44px" height="44px"/>
                                 </svg></span>
-                            <a href="/rangoli/read/" class="menu-link main-txt">Read</a>
                         </li>
                         <li class="menu-item has-dropdown c-text ">
+                            <a href="/rangoli/look/" class="menu-link main-txt">Look</a>
                             <span><svg>
                                     <use xlink:href="#look" x="0" y="0" width="44px" height="44px"/>
                                 </svg></span>
-                            <a href="/rangoli/look/" class="menu-link main-txt">Look</a>
                         </li>
                         <li class="menu-item has-dropdown c-text ">
+                            <a href="/rangoli/learn/" class="menu-link main-txt">Learn</a>
                             <span><svg>
                                     <use xlink:href="#learn" x="0" y="0" width="44px" height="44px"/>
                                 </svg></span>
-                            <a href="/rangoli/learn/" class="menu-link main-txt">Learn</a>
                         </li>
                         <!--<li class="menu-item has-dropdown c-text ">
                             <span><svg>
@@ -383,29 +385,29 @@
                             <a href="/rangoli/iloveyogasmoga/" class="menu-link main-txt">Love,YOGASMOGA</a>
                         </li>-->
                         <li class="menu-item has-dropdown c-text_small r_grey_text">
+                            <a href="/rangoli/smogis/" class="menu-link main-txt">SMOGIs</a>
                             <span><svg>
                                     <use xlink:href="#smogis" x="0" y="0" width="44px" height="44px"/>
                                 </svg></span>
-                            <a href="/rangoli/smogis/" class="menu-link main-txt">SMOGIs</a>
                         </li>
                         <li class="menu-item has-dropdown c-text_small r_grey_text">
+                            <a href="/rangoli/ys-locations/" class="menu-link main-txt">YS
+                                Locations</a>
                             <span><svg>
                                     <use xlink:href="#locations" x="0" y="0" width="44px" height="44px"/>
                                 </svg></span>
-                            <a href="/rangoli/ys-locations/" class="menu-link main-txt">YS
-                                Locations</a>
                         </li>
                         <li class="menu-item has-dropdown c-text_small r_grey_text">
+                            <a href="/rangoli/connect/" class="menu-link main-txt">Connect</a>
                             <span><svg>
                                     <use xlink:href="#connect" x="0" y="0" width="44px" height="44px"/>
                                 </svg></span>
-                            <a href="/rangoli/connect/" class="menu-link main-txt">Connect</a>
                         </li>
                         <li class="menu-item has-dropdown c-text_small r_grey_text">
+                            <a href="/rangoli/about/" class="menu-link main-txt">About</a>
                             <span><svg>
                                     <use xlink:href="#about" x="0" y="0" width="44px" height="44px"/>
                                 </svg></span>
-                            <a href="/rangoli/about/" class="menu-link main-txt">About</a>
                         </li>
 
                     </ul>

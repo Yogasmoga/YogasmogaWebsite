@@ -475,7 +475,7 @@ div,p{
 .page_name {
     float: none;
     font-size: inherit !important;
-    line-height: 44px;
+    line-height: 50px;
     position: initial !important;
 }
 .page_heading > div:first-child {
@@ -493,7 +493,7 @@ div,p{
 .page_heading > div > span {
     font-size: 14px;
     left: 15px;
-    line-height: 52px;
+    line-height: 50px;
     position: absolute;
 }
 .shopping_cart {

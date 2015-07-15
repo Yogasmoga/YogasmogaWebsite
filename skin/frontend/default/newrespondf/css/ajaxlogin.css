@@ -30,7 +30,7 @@ ul.popup {
     z-index: 25;
     display: none;
     width: 100%;
-    padding: 30px 30px 30px;
+    padding: 25px 30px 30px;
     top: 0;
     bottom: 0;
     right: 0;
@@ -127,8 +127,11 @@ li.main_li:hover > ul {
     height: 44px;
     position: fixed;
     right: 0;
-    top: 44px;
+    top: 0px;
     width: 44px;
+}
+#ajaxlogin_close_icon:hover{
+    background: #373737;
 }
 
 #ajaxlogin_form_message {
@@ -142,6 +145,6 @@ li.main_li:hover > ul {
     float: none;
     height: 44px;
     width: 100%;
-    font: 14px/44px ITCAvantGardeStd-Bk;
+    font: 14px/50px ITCAvantGardeStd-Bk;
     color: #fff;
 }
