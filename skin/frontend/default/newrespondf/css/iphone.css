@@ -809,7 +809,7 @@ li {
     box-shadow: 0 0 9px rgba(0, 0, 0, 0.2);
     height: 44px;
     left: 0;
-    line-height: 44px;
+    line-height: 50px;
     position: fixed;
     top: 44px;
     width: 100%;
@@ -822,7 +822,7 @@ li {
     font-family: GraphikRegular;
     font-size: 13px;
     left: 0;
-    line-height: 44px;
+    line-height: 50px;
     padding-left: 8px;
     position: fixed;
     text-align: center;
@@ -836,7 +836,7 @@ li {
     font-family: ITCAvantGardeStd-Bk;
     font-size: 15px;
     left: 0;
-    line-height: 44px;
+    line-height: 50px;
     position: fixed;
     text-align: center;
     text-transform: capitalize;
@@ -851,7 +851,7 @@ li {
     font-size: 19px;
     font-weight: normal;
     letter-spacing: 1px;
-    line-height: 48px;
+    line-height: 50px;
     text-transform: uppercase;
     vertical-align: middle;
 }
@@ -4873,7 +4873,7 @@ table.productdetailtable div#colorcontainer div table {
 }
 
 .category-block .sign-in-box span.rewards_points {
-    font: 15px/44px ITCAvantGardeStd-Bk;
+    font: 15px/50px ITCAvantGardeStd-Bk;
     height: 44px;
     left: 0;
     padding: 0;
@@ -4901,7 +4901,7 @@ table.productdetailtable div#colorcontainer div table {
     font-family: ITCAvantGardeStd-Bk;
     font-size: 13px;
     left: 0;
-    line-height: 44px;
+    line-height: 50px;
     position: fixed;
     text-align: center;
     text-transform: capitalize;

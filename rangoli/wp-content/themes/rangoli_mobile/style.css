@@ -493,7 +493,7 @@ div,p{
 .page_heading > div > span {
     font-size: 14px;
     left: 15px;
-    line-height: 44px;
+    line-height: 52px;
     position: absolute;
 }
 .shopping_cart {
@@ -595,7 +595,7 @@ textarea {
     background: #555;
     color:#fff;
     border-radius: 0px;
-    font:16px/15px ITCAvantGardeStd-Bk;
+    font:16px/50px ITCAvantGardeStd-Bk;
     text-transform: uppercase;
 }
 .rate_btn{
@@ -606,9 +606,9 @@ textarea {
     width: 50%;
     background: #555;
     color:#fff;
-    font:16px/15px ITCAvantGardeStd-Bk;
+    font:16px/50px ITCAvantGardeStd-Bk;
     text-transform: uppercase;
-    line-height: 45px;
+    line-height: 50px;
     text-align: center;
     position: relative;
 }
@@ -1127,7 +1127,7 @@ textarea {
     display: none;
 }
 .open_signin {
-    font: 13px/44px GraphikRegular !important;
+    font: 13px/48px GraphikRegular !important;
 }
 .close_login_popup, .close_signup_popup, .close_after_signup_popup {
     background: rgba(0, 0, 0, 0);
