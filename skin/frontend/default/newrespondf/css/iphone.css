@@ -851,8 +851,9 @@ li {
     font-size: 19px;
     font-weight: normal;
     letter-spacing: 1px;
-    line-height: 44px;
+    line-height: 45px;
     text-transform: uppercase;
+    vertical-align: middle;
 }
 
 .flexslider {
