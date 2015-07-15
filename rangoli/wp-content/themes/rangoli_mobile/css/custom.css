@@ -109,7 +109,7 @@
     width: 100%;
 }
 .post_content a{
-    color:#999;
+    color:#A28636;
     text-decoration: none;
 }
 .post_content img{
@@ -262,7 +262,7 @@ li{
     list-style: none;
 }
 .filter-container > ul > li {
-    background: #fff;
+    background: rgba(255,255,255,0.95);
     list-style: none;
     letter-spacing: 1px;
     
@@ -302,7 +302,7 @@ li{
     font: 14px/44px ITCAvantGardeStd-Demi;
 }
 .filter-container ul ul {
-    padding: 0 15px;
+    padding: 0 0px;
     background: #eee;
 }
 .radio {
@@ -326,7 +326,16 @@ li{
 }
 .filter-container ul ul { /* inner links */
     display: none;
+    padding: 0 0px;
+}
+.filter-container > ul > li > p:hover{
+    background: #EEEEEE;
+}
+.filter-container ul ul a{
     padding: 0 12px;
+}
+.filter-container ul ul a:hover{
+    background: #EEEEEE;
 }
 .filter-container ul > li p span {
     /*border-bottom: 1px solid #fff;*/

@@ -160,7 +160,7 @@
     background-color: rgba(255, 255, 255, 0.95);
     float: left;
     left: 0;
-    padding: 0 12px;
+    padding: 0;
     position: fixed;
     width: 100%;
     z-index: 9;
@@ -181,19 +181,29 @@
 
 .account-nav .sub-nav li:last-child {
     border: none;
+    padding-bottom: 22px;
 }
-
+li.menu-item.contact_icon_li:last-child {
+    padding-bottom: 22px;
+}
+li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
+    padding-bottom: 22px;
+}
 .account-nav .sub-nav li a {
     color: #656565;
-    display: inline-block;
+    display: block;
     font-family: Avantgarde-demi;
     font-size: 14px;
-    line-height: 44px;
+    line-height: 50px;
+    height: 44px;
     text-decoration: none;
     text-transform: uppercase;
     width: 100%;
+    padding: 0 12px;
 }
-
+.account-nav .sub-nav li a:hover{
+    background: #EEEEEE;
+}
 .ys-tech-block .story-box span {
     font-size: 18px;
     line-height: 22px;
