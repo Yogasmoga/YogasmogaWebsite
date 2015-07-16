@@ -4493,7 +4493,9 @@ table.productdetailtable div#colorcontainer div table {
 .includeoptionmain .include_option > div.selected {
     background: #c2c3c4;
 }
-
+.includeoptionmain .include_option > div:first-child.selected{
+    background: #3ba50f !important;
+}
 /*****************************14-may-customer-account-login*****************/
 .account-login {
     margin-top: 72px;
