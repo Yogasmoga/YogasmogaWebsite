@@ -86,15 +86,18 @@ div,p{
     display: block;
     line-height: 50px;
     width: 100%;
-
+    padding-left: 8px;
 }
 .yogasmoga-menu .main_btn > a {
     display: inline-block;
     height: 44px;
-    padding: 0 2px;
+    padding: 0 2px 0 11px;
     line-height: 50px;
     width: 100%;
     display: block;
+}
+.yogasmoga-menu .main_btn > a:hover,.rangoli_menu .main_btn > a:hover{
+    background: #EEE;
 }
 .cart {
     background: none;
@@ -225,6 +228,9 @@ div,p{
     display: block;
     line-height: 50px;
     padding-left: 71px;
+}
+.menu li a:hover{
+    background: #EEE;
 }
 .category-menu_mobile .menu a {
     font-size: 14px;
@@ -400,7 +406,7 @@ div,p{
 .sign-signup li span {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 44px;
-    left: 0;
+    left: 4px;
     opacity: 1;
     position: absolute;
     text-align: center;
@@ -478,6 +484,8 @@ div,p{
     transition-duration: 200ms;
     width: 60px;
     text-align: center;
+    z-index: 1;
+    top: 0;
 }
 .page_heading {
     background: none repeat scroll 0 0 rgba(255, 255, 255, 0.95);
@@ -1079,7 +1087,7 @@ textarea {
     color: #fff;
     font: 24px/30px ITCAvantGardeStd-Bk;
     left: 0;
-    padding: 88px 25px 0;
+    padding: 48px 25px 0;
     position: fixed;
     right: 0;
     text-align: center;
@@ -1103,7 +1111,7 @@ textarea {
 }
 .gold{
     color:#ae8637;
-    margin-bottom:50px;
+    margin-bottom: 15px;
 }
 .popup input {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
@@ -1113,7 +1121,7 @@ textarea {
     letter-spacing: 1px;
     width: 100%;
     border-bottom: 1px solid #fff;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 .forgot_y_p{
     text-align: left;
@@ -1153,7 +1161,7 @@ textarea {
     height: 44px;
     position: fixed;
     right: 0;
-    top: 44px;
+    top: 0;
     width: 44px;
 }
 .smogi_bucks_banner img {
