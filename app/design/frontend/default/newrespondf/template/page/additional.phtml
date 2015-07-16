@@ -186,7 +186,7 @@ if (isset($categoryNamesForParent) && count($categoryNamesForParent) > 4) {
 				if(isset($parentCategoryId) && $parentCategoryId =='3') { $whtsmaincatid ='16'; } else { $whtsmaincatid ='19'; }
 				$whatscatid = Mage::getModel('catalog/category')->load($whtsmaincatid); ?>
                 <li><a title="What's New" class="has_no_childs" href="<?php echo $whatscatid->getUrl(); ?>"><?php echo $whatscatid->getName(); ?></a>
-				<ul></ul><span class="border-line"></span>
+				<ul></ul>
 				</li>
 				 <?php 
 					foreach(explode(',',$subcats) as $subCatid)
@@ -201,7 +201,14 @@ if (isset($categoryNamesForParent) && count($categoryNamesForParent) > 4) {
 						$_subcategories = $sub_cat->getChildrenCategories();
 						if (count($_subcategories) > 0): ?>
                 <a href="<?php echo $_category->getURL() ?>" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
-					    <span><img src="<?php echo $this->getSkinUrl("images/arrow-down.png") ?>"></span>
+					    <span>
+<!--							<img src="--><?php //echo $this->getSkinUrl("images/arrow-down.png") ?><!--">-->
+						<svg width="44px" height="44px">
+							<line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374" y2="109.657"></line>
+							<line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374" y1="21.39" x2="30.374" y2="21.39"></line>
+							<line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374" y1="13.39" x2="22.374" y2="29.39"></line>
+						</svg>
+						</span>
 
 						<?php else: ?>
 					<a href="<?php echo $_category->getURL() ?>" class="has_no_childs" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
