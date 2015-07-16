@@ -62,7 +62,14 @@ if(Mage::getSingleton('customer/session')->isLoggedIn())
 	 <?php } ?>
   
                   <h1>MY ACCOUNT</h1>
-				  <div class="arrow-tag"><img class="" src="<?php echo $this->getSkinUrl('images/black-arrw.png')?>" alt="arrow"></div>
+				  <div class="arrow-tag">
+<!--                      <img class="" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png')?><!--" alt="arrow">-->
+                      <svg height="44px" width="44px">
+                          <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+                          <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+                          <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+                      </svg>
+                  </div>
               </div>
 			  
 <div style="display:none;" class="account-nav l-align">

@@ -137,23 +137,24 @@
     cursor: pointer;
     display: inline-block;
     height: 44px;
-    padding: 15px 19px;
+    padding: 0;
     position: absolute;
     right: 0;
     top: 0;
     transform-origin: 0 0 0;
     transition-duration: 1s;
 }
-
+.detail-part .arrow-tag.is-active svg line:nth-child(3), .sign-in-box .arrow-tag.is-active svg line:nth-child(3) {
+    stroke: none;
+}
 .detail-part .arrow-tag img, .sign-in-box .arrow-tag img {
     float: right;
     margin: 9px 0;
     transition-duration: 200ms;
 }
 
-.is-active .arrow-tag img {
-    transform: rotateZ(-180deg);
-    transition-duration: 200ms;
+.is-active .arrow-tag svg line:nth-child(3) {
+    stroke: none;
 }
 
 .account-nav {
@@ -1120,7 +1121,7 @@ form#cardbalanceform table.redeem-giftcard {
 
 /*****************************************17-june***********************/
 #account_content {
-    padding: 0 12px;
+    /*padding: 0 12px;*/
 }
 
 #account_content .generic-box {
