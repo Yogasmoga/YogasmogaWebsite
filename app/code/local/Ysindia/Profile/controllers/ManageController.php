@@ -28,6 +28,41 @@ class Ysindia_Profile_ManageController extends Mage_Core_Controller_Front_Action
         echo $this->bit_ly_short_url(Mage::getUrl('rewardpoints/index/goReferral') . "referrer/" . $userId);
     }
 
+    public function sendpasswordAction()
+    {
+        $email = (string)$this->getRequest()->getParam('email');
+        if ($email) {
+            if (!Zend_Validate::is($email, 'EmailAddress')) {
+                echo "Invalid email!";
+                return;
+            }
+
+            /* @var $customer Mage_Customer_Model_Customer */
+            $customer = Mage::getModel('customer/customer')
+                ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
+                ->loadByEmail($email);
+
+            if ($customer->getId()) {
+                try {
+                    $newResetPasswordLinkToken = Mage::helper('customer')->generateResetPasswordLinkToken();
+                    $customer->changeResetPasswordLinkToken($newResetPasswordLinkToken);
+                    $customer->sendPasswordResetConfirmationEmail();
+                } catch (Exception $exception) {
+                    echo "Cannot send link!";
+                    return;
+                }
+                echo "Password reset link sent!";
+            } else {
+                echo "Email is invalid.";
+            }
+
+            return;
+        } else {
+            echo "Email is invalid.";
+            return;
+        }
+    }
+
     function bit_ly_short_url($url, $format='txt') {
         $login = "yogasmogarangoli";
         $appkey = "R_0f1d1bc2a82f472eaa33ef817e8d5548";
