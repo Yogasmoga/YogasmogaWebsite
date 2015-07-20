@@ -115,6 +115,15 @@ a.forgot-link:hover
     height : 25px;
 }
 
+.submitbtnpassword
+{
+    background-image : url('../images/submit-btn.png') !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    width : 125px;
+    height : 25px;
+}
+
 .createaccbtn
 {
     background-image : url('/skin/frontend/yogasmoga/yogasmoga-theme/images/customer/create_account_button_off.png');
