@@ -20,22 +20,22 @@ $home = get_site_url();
             ?>
             <div class='over-the-slide homepage_page_banner' onclick="window.location='<?php echo get_permalink() ?>'">
                 <?php
-                if (has_post_video()) {
+          /*      if (has_post_video()) {
                     $authors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=" . $post->post_author);
                     $author_color = '#' . $authors[0]->color_shade;
-                    ?>
-                    <div class="play-video" video="<?php echo get_the_post_video_url($post->ID); ?>">
+                    */?><!--
+                    <div class="play-video" video="<?php /*echo get_the_post_video_url($post->ID); */?>">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px"
                              viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">                    <defs>
                             </defs>
-                            <path fill="<?php echo $author_color; ?>"
+                            <path fill="<?php /*echo $author_color; */?>"
                                   opacity="0.9" enable-background="new"
                                   d="M32,0C14.327,0,0,14.327,0,32c0,17.674,14.327,32,32,32s32-14.326,32-32  C64,14.327,49.673,0,32,0z M22.321,49.106V14.894L51.951,32L22.321,49.106z"/>
                     </svg>
                     </div>
-                <?php
-                }
+                --><?php
+/*                }*/
                 $slide = get_post();
                 $post_author = get_userdata($slide->post_author);
                 $display_name = $post_author->display_name;
@@ -158,39 +158,6 @@ if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_
 endwhile;
 endif;
 ?>
-<style>
-    .slide_post_text{
-        position: absolute;
-        top: 57%;
-        left:0
-        right:0;
-    }
-    .slider_post_name {
-        color: #fff;
-        font: 22px/25px ITCAvantGardeStd-Bk;
-        left: 12px;
-        padding-bottom: 10px;
-        right: 12px;
-        text-align: center;
-        text-transform: uppercase;
-        top: 50%;
-    }
-    .border-line {
-        border-top: 1px solid #fff;
-        margin: 0 auto;
-        top: 50%;
-        width: 60%;
-    }
-    .slider_post_author {
-        color: #fff;
-        font: 20px/25px freight-text-pro;
-        text-align: center;
-    }
-    .slider_post_author span{
-        font: 300 20px/25px freight-text-pro;
-    }
-    
-</style>
 <?php
 
 get_footer();
