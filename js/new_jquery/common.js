@@ -416,7 +416,7 @@ sizeChartPop();
                 }                  
                 $("#sign-up-form input#fname").blur();
                 $("#sign-up-form #s_password,#sign-in-form #si_password").blur();
-                $(".ui-widget-overlay").css({top:94});
+                $(".ui-widget-overlay").css({top:69});
                 $(window).trigger("resize");
                 var pW = ($(document).width() - $(this).parent().width())/2;
                 var pH = ($(window).height() - $(this).parent().height())/2;
