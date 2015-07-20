@@ -23,7 +23,7 @@
     else
         $upload_display = "display:block";
 
-    $stores = array('all', 'brentwood', 'fallriver', 'magento', 'greenwich');
+    $stores = array('all', 'beverley_hills', 'brentwood', 'fallriver', 'magento', 'greenwich');
     $ar_sizes = array('One', 'S', 'M', 'L', 'XL', 'XXL', '2', '4', '6', '8', '10', '12', '14', '16', '18');
 
     $store = 'all';
@@ -31,7 +31,7 @@
         $store = strtolower($_GET['store']);
 
         if (!in_array($store, $stores))
-            $store = 'total';
+            $store = 'all';
     }
 ?>
 
@@ -81,6 +81,7 @@ for ($row = 2; $row <= $highestRow; $row++) {
     $fallriver_stock = $rowData[0][12];
     $magento_stock = $rowData[0][18];
     $greenwich_stock = $rowData[0][21];
+    $beverley_hills_stock = $rowData[0][24];
     $magento_price = $rowData[0][30];
 
 //    $sku = $rowData[0][0];
@@ -114,6 +115,8 @@ for ($row = 2; $row <= $highestRow; $row++) {
 
         if(count($ar_within_parenthesis)==3)
             $height = $ar_within_parenthesis[2];
+        else
+            $height = '';
     }
 
     $product_names[] = $actual_name;
@@ -130,6 +133,7 @@ for ($row = 2; $row <= $highestRow; $row++) {
         'fallriver_stock' => $fallriver_stock,
         'magento_stock' => $magento_stock,
         'greenwich_stock' => $greenwich_stock,
+        'beverley_hills_stock' => $beverley_hills_stock,
         'magento_price' => $magento_price
     );
 }
@@ -415,6 +419,7 @@ ksort($all_products);
     <form action="index.php" method="get" id="frmfilter">
     <select name="store" style="padding: 5px;">
         <option value="all">All</option>
+        <option value="beverley_hills">Beverley Hills</option>
         <option value="brentwood">Brentwood</option>
         <option value="fallriver">Fall river</option>
         <option value="greenwich">Greenwich</option>
