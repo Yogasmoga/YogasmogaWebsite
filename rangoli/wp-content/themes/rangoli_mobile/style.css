@@ -1331,9 +1331,9 @@ p.small.err_msg {
 }
 .slide_post_text{
     position: absolute;
-    top: 37%;
-    left:0
-right:0;
+    top: 31%;
+    left:30px;
+    right: 30px;
 }
 .slider_post_name {
     color: #fff;
