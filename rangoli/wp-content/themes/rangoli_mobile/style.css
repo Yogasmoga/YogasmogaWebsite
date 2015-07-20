@@ -131,14 +131,38 @@ div,p{
     position: absolute;
     top: 0;
     width: 100%;
+    background: rgba(0,0,0,0.2);
 }
 .flexslider .slides img {
     display: block;
     height: auto;
     width: 100%;
 }
+
 .flex-direction-nav {
-    display: none;
+    display: block !important;
+    height: 30px !important;
+    margin-top: -12px !important;
+    position: absolute !important;
+    top: 50% !important;
+    width: 100% !important;
+    z-index: 2;
+}
+.flex-direction-nav .flex-next {
+    background-position: 100% 0 !important;
+    opacity: 1 !important;
+    right: 10px !important;
+}
+.flex-direction-nav .flex-prev {
+    opacity: 1 !important;
+    left: 10px !important;
+    background-position: 0 0 !important;
+}
+.flex-direction-nav a {
+    width: 15px;
+    color: transparent;
+    text-shadow: none;
+    background: rgba(0, 0, 0, 0) url("images/arrows_slider.png") no-repeat scroll 0 0 !important;
 }
 .play-video {
     
@@ -471,11 +495,11 @@ div,p{
     font: 14px ITCAvantGardeStd-Bk;
 }
 .additional_links a {
-    padding-left: 71px;
     color: #555;
     font: 14px/44px ITCAvantGardeStd-Bk;
     letter-spacing: 1px;
     text-decoration: none;
+    padding-left: 71px;
 }
 .ys_single_link span {
     height: 44px;
@@ -1297,10 +1321,42 @@ p.small.err_msg {
   text-align: center;
   width: 100%;
   z-index: 2;
+    display: none;
 }
 .flex-control-nav a {
   background: #fff;
 }
 .flex-control-nav a.flex-active {
   background: #A58639;
+}
+.slide_post_text{
+    position: absolute;
+    top: 37%;
+    left:0
+right:0;
+}
+.slider_post_name {
+    color: #fff;
+    font: 22px/25px ITCAvantGardeStd-Bk;
+    left: 12px;
+    padding-bottom: 10px;
+    right: 12px;
+    text-align: center;
+    text-transform: uppercase;
+    top: 50%;
+}
+.border-line {
+    border-top: 1px solid #fff;
+    margin: 0 auto;
+    top: 50%;
+    width: 60%;
+}
+.slider_post_author {
+    color: #fff;
+    font: 20px/25px freight-text-pro;
+    text-align: center;
+}
+.slider_post_author span{
+    font: 300 20px/25px freight-text-pro;
+    font-style: italic;
 }
