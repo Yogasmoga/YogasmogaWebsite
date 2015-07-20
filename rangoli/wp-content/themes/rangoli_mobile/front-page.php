@@ -36,6 +36,16 @@ $home = get_site_url();
                     </div>
                 <?php
                 }
+                $slide = get_post();
+                $post_author = get_userdata($slide->post_author);
+                $display_name = $post_author->display_name;
+
+                echo "<div class='slide_post_text'>";
+                echo "<p class='slider_post_name'>".get_the_title()."</p>";
+                echo "<div class='border-line'></div>";
+                echo "<p class='slider_post_author'><span>by</span> ".$display_name."</p>";
+                echo "</div>";
+
                 echo "</div>";
                 if (has_post_video()) {
                     echo "<div class='play_video'>";
@@ -147,7 +157,42 @@ if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_
     $i++;
 endwhile;
 endif;
+?>
+<style>
+    .slide_post_text{
+        position: absolute;
+        top: 57%;
+        left:0
+        right:0;
+    }
+    .slider_post_name {
+        color: #fff;
+        font: 22px/25px ITCAvantGardeStd-Bk;
+        left: 12px;
+        padding-bottom: 10px;
+        right: 12px;
+        text-align: center;
+        text-transform: uppercase;
+        top: 50%;
+    }
+    .border-line {
+        border-top: 1px solid #fff;
+        margin: 0 auto;
+        top: 50%;
+        width: 60%;
+    }
+    .slider_post_author {
+        color: #fff;
+        font: 20px/25px freight-text-pro;
+        text-align: center;
+    }
+    .slider_post_author span{
+        font: 300 20px/25px freight-text-pro;
+        font-style: italic;
+    }
 
+</style>
+<?php
 
 get_footer();
 
