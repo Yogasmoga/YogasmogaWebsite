@@ -1,0 +1,771 @@
+
+.custombtn
+{
+    border : none;
+    outline : none;
+    border-width : 0px;
+    border-color : transparent;
+}
+
+.loginbtn
+{
+    background-image : url('../images/customer/login_off.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width : 119px;
+    height : 29px;
+    margin-right : 25px;
+}
+
+.createaccountbtn
+{
+    background-image : url('../images/customer/create_account_button_off.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width : 185px;
+    height : 29px;
+    margin-top : 47px;
+}
+
+.sectionheader
+{
+    font-family: gothambook;
+    font-size : 18px;
+	color:#000;
+    margin-bottom : 26px;
+    text-transform: uppercase;
+}
+
+.myaccountdashboard .sectionheader
+{
+    margin-bottom : 14px;
+}
+.my-account .sectionheader
+{
+    margin-bottom : 14px;
+}
+.my-account .sectionheader a.link{font-size:14px; color:#d90d3d; text-decoration:underline;}
+
+.logintable .sectionheader {
+    margin-bottom: 0px;
+}
+
+.fbloginbtn
+{
+    background-image : url('../images/customer/facebook_button_off.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width : 202px;
+    height : 29px;
+    margin-top : 35px;
+}
+
+.twloginbtn
+{
+    background-image : url('../images/customer/twitter_off.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width : 203px;
+    height : 29px;
+    margin-top : 33px;
+}
+
+.logintable
+{
+    margin-left : auto;
+    margin-right : auto;
+}
+
+.logintable p
+{
+    margin : 0;
+    font-size:13px;
+    font-family:gothamlight;
+}
+
+a.forgot-link
+{
+    font-family:HelvLightRegular;
+    font-size:11px;
+    text-decoration: underline;
+    color : #9B9B9B;
+}
+
+a.forgot-link:hover
+{
+    color : #D90D3D;
+}
+
+#sociallogin_button
+{
+    display : none;
+}
+
+.loginerrormsg
+{
+    min-height : 20px;
+}
+
+.submitbtn
+{
+    background-image : url('../images/customer/submit_off.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width : 125px;
+    height : 25px;
+}
+
+.createaccbtn
+{
+    background-image : url('/skin/frontend/yogasmoga/yogasmoga-theme/images/customer/create_account_button_off.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width : 185px;
+    height : 29px;
+}
+
+.myheader
+{
+    margin-bottom : 45px;
+}
+
+.backlink
+{
+    position : absolute;
+    top : 70px;
+    left : 20px;
+}
+
+.backlink a {
+	font-family:gothamlight;
+	font-size:11px;
+	}
+#register-form table.inputtable,#register-form div.errormsg 
+{
+    width : 236px;
+}
+#register-form input[type='submit']
+{
+    margin-top : 25px;
+}
+
+#login-form table.inputtable, #login-form div.errormsg
+{
+    width : 236px;
+}
+
+#login-form table.buttonholder
+{
+    
+}
+
+#forgot-password-form table.inputtable
+{
+    width : 533px;
+}
+
+#forgot-password-form .submitbtn
+{
+    margin-top : 18px;
+}
+
+#forgot-password-form .sectionheader
+{
+    margin-bottom : 0px;
+}
+#forgot-password-form p
+{
+    margin-bottom : 25px;
+    font-family:gothamlight;
+    font-size:11px;
+}
+.accountbg
+{
+    /*background-image : url('../images/background/myaccount_bg.jpg');*/
+    background-size : cover;
+    background-position: center top;
+    background-repeat: repeat-y;
+	overflow-x:hidden;
+}
+.subsectionheader
+{
+    text-transform:uppercase;
+    font-family:gothambook;
+    font-size : 11px;
+    margin-bottom : 15px;
+    
+}
+.myaccountdashboard
+{
+    width : 625px;
+    margin-left : auto;
+    margin-right : auto;
+}
+.myaccountdashboard td.tdsectionheaderlink
+{
+    padding-top : 6px;
+}
+
+.myaccountdashboard td.tdsubsectionheaderlink
+{
+}
+
+.myaccountdashboard td.column2cell
+{
+    padding-left : 80px;
+}
+
+.myaccountdashboard tr.customerinfo>td
+{
+    padding-top : 20px;
+    width: 300px;
+}
+
+.myaccountdashboard div.addressbookheader
+{
+    margin-top : 45px;
+}
+
+.myaccountdashboard a
+{
+    color : #666;
+    text-decoration: underline;
+    font-family: gothambook;
+    font-size: 11px;
+    /*letter-spacing : 0.4pt;*/
+	text-transform:uppercase;
+    line-height: 21px;
+    margin: 0;
+    display: inline-flex;
+}
+
+.myaccountdashboard a:hover
+{
+    color : #D90D3D;
+}
+.savebtn
+{
+    /*background-image : url('../images/customer/save_button_off.png');*/
+    background-image : url('../images/edit_add_btn.png');    
+    width : 145px;
+    height : 38px;
+}
+#edit-accountinfo table.inputtable
+{
+    width : 533px;
+}
+/*#passwordchangeoptions
+{
+    display : none;
+}*/
+#changepasswordoptionholder
+{
+    font-family:helveticaoblique;
+    font-size:11px;
+    color:#343434;
+    margin-bottom : 23px;
+}
+input.checkbox
+{
+    margin-right : 5px;
+}
+#address-form table.inputtable
+{
+    width : 533px;
+}
+#address-form table.twocolumn533 table.inputtable, #checkout-shipping-form table.twocolumn533 table.inputtable
+{
+    width : 237px;
+}
+#region_id
+{
+    width : 115px;
+}
+#checkout-login-form table.inputtable, #checkout-login-form table.buttonholder
+{
+    width : 236px;
+}
+#checkout-login-form .loginbtn
+{
+    background-image : url('../images/checkout/login_off.png');
+    width : 105px;
+    height : 29px;
+    margin : 0;
+}
+#checkout-login-form a.forgot-link
+{
+    font-size : 10px;
+}
+#checkout-guest-continue, #checkout-shipping-continue, #checkout-shippingmethod-continue, #checkout-payment-continue
+{
+    background-image : url('../images/checkout/continue_off.png');
+    width : 147px;
+    height : 29px;
+    margin-top : 40px;
+}
+#checkout-shipping-form table.inputtable
+{
+    width : 533px;
+}
+#shipping\:country_id
+{
+    width : 155px;
+}
+#shipping\:region_id
+{
+    width : 116px;
+}
+div.shippingfootnote span.shippingnote
+{
+    font-weight : bold;
+}
+
+
+.customeraddress td  {
+	font-family:gothamlight;
+	font-size:11px;
+}
+
+.giftcard-balance {
+  font-family: gotham-l;
+  font-size: 11px;
+  font-weight: normal;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  padding: 0 0 35px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 960px;
+}
+#giftcardformmyaccount table.inputtable
+{
+    width : 350px;
+}
+button.button.btn-redeem span{
+    padding:0; 
+    width:93px; 
+    text-indent:-999em; 
+    height:29px; 
+    margin:0; 
+    background:url(../images/redeem_off.png) 0 0 no-repeat; 
+    border:0;
+}
+button.button.btn-addtoaccount span{
+    padding:0; 
+    /*width:185px; */
+    /*text-indent:-999em; */
+    height:auto; 
+    margin:0; 
+    /*background:url(../images/add-to-acnt.jpg) 0 0 no-repeat; */
+    border:0;
+    margin-top: 10px;
+}
+button.button.btn-addtoaccount span img,button.button.btn-check span img{width: 100%;}
+button.button.btn-check span{
+    padding:0; 
+    /*width:150px; */
+    /*text-indent:-999em; */
+    height:auto; 
+    margin:0; 
+    /*background:url(../images/check-ys-balance.jpg) 0 0 no-repeat; */
+    border:0;
+    margin-top: 10px;
+}
+button.button.btn-addtoaccount:active span{
+    /*background:url(../images/add_to_account_on.png) 0 0 no-repeat;*/
+}
+button.button.btn-redeem:active span{
+    background:url(../images/redeem_on.png) 0 0 no-repeat;
+}
+button.button.btn-check:active span{
+    /*background:url(../images/check_on.png) 0 0 no-repeat;*/
+}
+button.button.btn-redeem, button.button.btn-addtoaccount
+{
+    margin-left : 15px;
+    margin-top : -7px;
+}
+button.button.btn-check
+{
+    margin-left : 15px;
+    margin-top : -7px;
+}
+ul.sub-nav li {
+  /*background: url("../images/subsep.png") no-repeat scroll 100% 50% transparent;*/
+  /*display: inline;*/  
+  /*height: 24px;*/
+  margin: 0;
+  /*padding: 0 28px 0 10px;*/
+  /**New**/
+  display: block;
+  line-height: normal;
+}
+ul.sub-nav li a:hover,ul.sub-nav li.current a{color: #c03;}
+ul.sub-nav li a span.arr{visibility: hidden;}
+ul.sub-nav li.current a span.arr{visibility: visible;}
+ul.sub-nav li:last-child,
+ul.sub-nav li.last {background:none; padding-right:10px;}
+ul.sub-nav a{display:inline;}
+.referfriend-subheading
+{
+    margin-bottom : 45px;
+}
+.referfriend-subheading h2
+{
+    font-family : gothambook;
+    font-size : 19px;
+}
+.referfriend-subheading h2 span
+{
+    color : #D90D3D;
+}
+.referfriend-subheading p
+{
+    text-align: center !important;
+    font-family : gothamlight;
+    font-size : 11px;
+    letter-spacing: 0.2pt;
+}
+.referfriend-subheader
+{
+    font-family : gothambook;
+    font-size : 16px;
+    color : black;   
+    text-align: left;
+}
+#referafriend-container
+{
+    width : 775px;
+    margin-right : auto;
+    margin-left : auto;
+}
+table#referrallink
+{
+    /*margin-top : 15px;
+    margin-bottom : 70px;*/
+    margin: 0 !important;
+}
+table#referrallink td.share a
+{
+    width : 20px;
+    height : 20px;
+    margin-right : 11px;
+    display : block;
+    float : left;
+}
+table#referrallink td
+{
+    vertical-align: bottom;
+    display: block;
+}
+table#referrallink td.share a#twrefer
+{
+    background-image: url('../images/footer/tw-icon.png');
+}
+table#referrallink td.share a#twrefer:hover
+{
+    background-image: url('../images/footer/tw-icon-ovr.png');
+}
+table#referrallink td.share a#fbrefer
+{
+    /*background-image: url('../images/navigation/facebook.png');*/
+    background-image: url('../images/footer/fb-icon.png');
+}
+table#referrallink td.share a#fbrefer:hover
+{
+    background-image: url('../images/footer/fb-icon-ovr.png');
+}
+table#referrallink td.share a#mlrefer
+{
+    background-image: url('../images/footer/email-ref.jpg');
+    background-size: cover;
+}
+table#referrallink td.share a#mlrefer:hover
+{
+    background-image: url('../images/footer/email-ref-ovr.jpg');*/
+}
+table#referrallink td.share
+{
+    padding-right : 7px;
+}
+table#referrallink td.link
+{
+    width : 517px;
+    min-width : 517px;
+    max-width : 517px;
+    border-bottom : 1px solid black;
+    text-transform : uppercase;
+}
+table#referrallink td.link input
+{
+    width : 100%;
+    border : none;
+    background: none;
+}
+div.copy
+{
+    background-image : url('../images/copy_off.png');
+    width : 93px;
+    height : 29px;
+    margin-left : 18px;
+    display:none; 
+}
+table.referfriend-invitehead
+{
+    width: 100%;
+}
+table.referfriend-invitehead td
+{
+    vertical-align: middle;
+}
+table.referfriend-invitehead td.potential
+{
+    font-family : helvetica;
+    color : #666;
+    font-size : 11px;
+    letter-spacing: 0.4pt;
+    text-align: right;
+    padding-right: 45px;
+}
+table.referfriend-invitehead td.potential span
+{
+    font-family : gothamlight;
+    font-size : 11px;
+    background-image : url('../images/bkg_divider1.gif');
+    background-repeat: repeat-x;
+    background-position: bottom;
+    padding : 0 5px;
+    color : black;
+    margin-bottom : -5px;
+    display : inline-block;
+}
+div#referafriend-container p
+{
+    font-family : gothambook;
+    font-size : 11px;
+    letter-spacing: 0.2pt;
+    color : #666;
+    text-align: left;
+    display: block !important;
+}
+table.referfriendforms
+{
+    margin-top : 10px;    
+}
+table.referfriendforms th
+{
+    font-family : gothamlight;
+    font-size : 11px;
+    letter-spacing : 0.4pt;
+    color : #666;
+}
+table.referfriendforms td.name table.inputtable
+{
+    width : 217px;
+}
+table.referfriendforms td.email table.inputtable
+{
+    width : 383px;
+}
+table.referfriendforms td.remove img, table.referfriendforms td.success img
+{
+    margin-top : 9px;
+    margin-left : 20px;
+}
+table.referfriendforms td.processing img
+{
+    margin : 5px 0 0;
+}
+table.referfriendforms td.btninvited, table.referfriendforms td.success,table.referfriendforms td.processing 
+{
+    display : none;
+}
+table.referfriendforms td.remove img, table.referfriendforms td.success img 
+{
+    cursor: pointer;
+}
+table.referfriendforms td table.inputtable
+{
+    margin-right : 20px;
+}
+/*table.referfriendforms td table.inputtable input[type='text']
+{
+    margin-top : 10px;
+}*/
+div.invite
+{
+    background-image : url('../images/invite-frnds.png');
+    width : 93px;
+    height : 29px;
+}
+div.invited
+{
+    background-image : url('../images/invited-frnd.png');
+    width: 107px;
+    height: 31px;
+    /*margin-top: 10px;*/
+    background-size: contain;
+}
+div#addanotherreferral
+{
+    width : 120px;
+    border-bottom : 1px solid #D90D3D;
+    white-space: nowrap;
+    cursor : pointer;
+    margin-bottom : 70px;
+}
+div#addanotherreferral p
+{
+    margin : 0;
+}
+tr#template
+{
+    display : none;
+}
+table.referredfriendslist
+{
+    margin-top : 20px;    
+}
+table.referredfriendslist th
+{
+    color: #666666;
+    font-family: gothamlight;
+    font-size: 11px;
+    letter-spacing: 0.4pt;
+    padding-bottom : 15px;
+}
+table.referredfriendslist th.email
+{
+    padding-left : 20px;
+}
+table.referredfriendslist th sup
+{
+    font-size: 8px;
+}
+table.referredfriendslist td
+{
+    font-family: gothamlight;
+    font-size: 11px;
+    letter-spacing: 0.4pt;
+    color : #2F2F2F;
+}
+table.referredfriendslist td.name,table.referredfriendslist td.email 
+{
+    
+}
+table.referredfriendslist td.name div
+{
+    width : 217px;
+    min-width : 217px;
+    max-width : 217px;
+    overflow: hidden;
+    border-bottom: 1px solid black;
+    white-space: nowrap;
+    text-transform: capitalize;
+}
+table.referredfriendslist td.email div
+{
+    width : 383px;
+    min-width : 383px;
+    max-width : 383px;
+    overflow: hidden;
+    border-bottom: 1px solid black;
+    margin-left : 20px;
+    text-transform: uppercase;
+    margin-bottom : 20px;
+}
+table.referredfriendslist td.status
+{
+    text-align: center;
+    padding-bottom : 10px;
+    vertical-align: middle;
+}
+table.myaccount-redeem-giftcard
+{
+    margin-top: 30px;
+}
+form#createcardform table.twocolumn533 table.inputtable
+{
+    width : 373px;
+}
+form#form-validate-resetpassword table.inputtable
+{
+    width : 100%;
+}
+form#form-validate-resetpassword input[type='submit']
+{
+    float : right;
+}
+form#form-validate-resetpassword div.errormsg
+{
+    text-align: right;
+}
+form#referfriend table.inputtable
+{
+    width : 275px;
+    padding-top : 5px;
+}
+form#referfriend td.result
+{
+    display : none;
+}
+form#cardbalanceform table.redeem-giftcard
+{
+    margin-top : 30px;
+}
+.goy-banner {
+    display: block;
+    padding: 30px 0 10px;
+    text-align: center;
+}
+.givegoys
+{
+    background-image : url('../images/give_a gift_of_YS_off.png');
+    background-repeat : no-repeat;
+    width : 185px;
+    height: 29px;
+    float : right;
+    margin-right : 188px;
+}
+.addtoaccount
+{
+    background-image : url('../images/add_to_account_off.png');
+    background-repeat : no-repeat;
+    width : 137px;
+    height: 29px;
+}
+table.checkndredeem
+{
+    margin : 50px 0;
+    width : 1000px;
+}
+div.goy-image-div
+{
+    margin : 0 auto;
+    width : 710px;
+    text-align: center;
+}
+div.goy-image-div img.shareit
+{
+    margin : 35px 0;
+}
+div.goy-image-div table
+{
+    margin-left : 66px;
+    margin-top : 50px;
+}
+div.givegift
+{
+    width : 156px;
+    height : 29px;
+    background-image: url('../images/give_gift_off.png');
+    background-repeat: no-repeat;
+    margin-left : 15px;
+}
+/***New CSS for the design**/
+table#referrallink td.share,table#referrallink td.link{display: block; text-align: left; width: 100%; max-width: 100%; min-width: 100%; margin-bottom: 10px; padding: 0; }
+table#referrallink td.share a{float: none; display: inline-block;}
+table#referrallink{width: 100%;}
+table#referrallink td.share a#fbrefer{width: 11px; height: 21px;}
+table#referrallink td.share a#twrefer{width: 25px; height: 21px;}
+table#referrallink td.share a#mlrefer{width: 28px; height: 18px;}

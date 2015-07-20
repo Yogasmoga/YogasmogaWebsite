@@ -134,4 +134,107 @@ class Mycustommodules_Mynewtheme_AddtowishlistController extends Mage_Core_Contr
         echo json_encode($response);
         return;
     }
+
+	/**
+     * Adding new item
+     */
+    public function addmobileAction()
+    {
+        $wishlist = $this->_getWishlist();
+        if (!$wishlist) {
+            return $this->norouteAction();
+        }
+
+        $session = Mage::getSingleton('customer/session');
+
+        $productId = (int) $this->getRequest()->getParam('product');
+        if (!$productId) {
+            $this->_redirect('*/');
+            return;
+        }
+
+        $product = Mage::getModel('catalog/product')->load($productId);
+        if (!$product->getId() || !$product->isVisibleInCatalog()) {
+            $session->addError($this->__('Cannot specify product.'));
+            $this->_redirect('*/');
+            return;
+        }
+
+        try {
+            $requestParams = $this->getRequest()->getParams();
+            if ($session->getBeforeWishlistRequest()) {
+                $requestParams = $session->getBeforeWishlistRequest();
+                $session->unsBeforeWishlistRequest();
+            }
+            $buyRequest = new Varien_Object($requestParams);
+
+            $result = $wishlist->addNewItem($product, $buyRequest);
+            if (is_string($result)) {
+                Mage::throwException($result);
+            }
+            //$wishlist->save();
+
+            Mage::dispatchEvent(
+                'wishlist_add_product',
+                array(
+                    'wishlist'  => $wishlist,
+                    'product'   => $product,
+                    'item'      => $result
+                )
+            );
+		         foreach (Mage::helper('wishlist')->getWishlistItemCollection() as $_wishlist_item) {
+                  $wishid = $_wishlist_item->getWishlistItemId();
+                    }
+			echo Mage::helper('core/url')->getHomeUrl()."mynewtheme/addtowishlist/removemobile/item/".$wishid;
+			
+
+		//echo json_encode(array("status" => "success","wishlist" => $mincarthtml , "count" => $this->getcartcount()));
+
+           
+        }
+        catch (Mage_Core_Exception $e) {
+            $session->addError($this->__('An error occurred while adding item to wishlist: %s', $e->getMessage()));
+        }
+        catch (Exception $e) {
+            $session->addError($this->__('An error occurred while adding item to wishlist.'));
+        }
+
+        //$this->_redirect('*', array('wishlist_id' => $wishlist->getId()));
+    }
+
+	 /**
+     * Remove bobile item 
+     */
+    public function removemobileAction()
+    {
+        $id = (int) $this->getRequest()->getParam('item');
+        $item = Mage::getModel('wishlist/item')->load($id);
+        if (!$item->getId()) {
+            return $this->norouteAction();
+        }
+        $wishlist = $this->_getWishlist($item->getWishlistId());
+        if (!$wishlist) {
+            return $this->norouteAction();
+        }
+        try {
+            $item->delete();
+            $wishlist->save();
+
+		$productId = $item->getProductId();
+		echo Mage::helper('core/url')->getHomeUrl()."mynewtheme/addtowishlist/addmobile/product/".$productId;
+		//exit;
+        } catch (Mage_Core_Exception $e) {
+            Mage::getSingleton('customer/session')->addError(
+                $this->__('An error occurred while deleting the item from wishlist: %s', $e->getMessage())
+            );
+        } catch(Exception $e) {
+            Mage::getSingleton('customer/session')->addError(
+                $this->__('An error occurred while deleting the item from wishlist.')
+            );
+        }
+
+        Mage::helper('wishlist')->calculate();
+
+       // $this->_redirectReferer(Mage::getUrl('*/*'));
+    }
 }

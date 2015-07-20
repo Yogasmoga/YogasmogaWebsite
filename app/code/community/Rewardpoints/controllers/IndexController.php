@@ -156,8 +156,48 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
     }
 
     public function quotationAction(){
+		 $response = array(
+            "status" => "error",
+            "error"  => "",
+            "success_message" => ""
+        );
+        //check do not apply smogi bucks for only accesories in cart
+		   $miniitems = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
+        if(isset($miniitems))
+        {
+            $excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories')->getValue('plain');
+            $excludecats = explode(",", $excludecats);
+            $flag = 0;
+            foreach($miniitems as $mitem)
+            {
+                $mitemProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $mitem['sku']);
+                $cids = $mitemProduct->getCategoryIds();
+				//echo "<pre>";
+                //print_r($excludecats);
+                $flag = 0;
+                foreach($excludecats as $key=>$val)
+                {
+                   if (in_array($val, $cids)) { 
+				   $flag = 1;
+				   }
+				  
+                }
+                if($flag == 0)break;          
+            }
+            if($flag == 1)
+            {
+              
+			   Mage::getSingleton("core/session")->addError("SMOGI Bucks cannot be used Toward Accessories / ONE 2 MANY Items"); 
+			   //$response['error'] = "SMOGI Bucks cannot be used Toward Accessories / ONE 2 MANY Items";
+              //  echo json_encode($response);
+               $refererUrl = $this->_getRefererUrl();
+            } 
+        }
+        
         $session = Mage::getSingleton('core/session');
         $points_value = $this->getRequest()->getPost('points_to_be_used');
+		//echo $flag ;
+		//exit;
 		Mage::getSingleton('core/session')->setCPmsg($points_value);
 		
         if (Mage::getStoreConfig('rewardpoints/default/max_point_used_order', Mage::app()->getStore()->getId())){
@@ -171,10 +211,7 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
 
         Mage::getSingleton('rewardpoints/session')->setProductChecked(0);
         Mage::getSingleton('rewardpoints/session')->setShippingChecked(0);
-        
         Mage::helper('rewardpoints/event')->setCreditPoints($points_value);
-        
-        
         Mage::helper('checkout/cart')->getCart()->getQuote()
                 ->setRewardpointsQuantity($points_value)
                 ->save();
@@ -186,11 +223,9 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
         $myValue=Mage::getSingleton('core/session')->getSmogiValue();
         if($myValue == 'smogi-promotions')
         {
-            $refererUrl = $refererUrl.'#smogi-promotions';
+            $refererUrl = $refererUrl;
         }
-        else{
-            $refererUrl = $refererUrl.'#promotions';
-        }
+        
         $this->getResponse()->setRedirect($refererUrl);
     }
 

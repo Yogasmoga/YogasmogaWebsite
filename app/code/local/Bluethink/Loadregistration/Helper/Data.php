@@ -1,0 +1,6 @@
+<?php
+
+class Bluethink_Loadregistration_Helper_Data extends Mage_Core_Helper_Abstract
+{
+  
+}

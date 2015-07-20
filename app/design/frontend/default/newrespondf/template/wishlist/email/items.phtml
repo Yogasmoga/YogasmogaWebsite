@@ -1,0 +1,50 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/* @var $this Mage_Wishlist_Block_Share_Email_Items */
+?>
+<?php $l = $this->getWishlistItemsCount() ?>
+<div style="display:block; text-align:center;">
+<table cellspacing="0" cellpadding="0" border="0" width="100%" style="margin:0 auto; text-align:left;">
+    <tr>
+		<td colspan="2" style="border-bottom:1px solid #666;"><p style="color:#666; font-size:12px; line-height:1; margin:0 0 5px; text-transform:uppercase;">Item #/ Description</p></td>
+	</tr>
+    <?php $i = 0; foreach ($this->getWishlistItems() as $item): $i++ ?>
+        <?php /* @var $item Mage_Wishlist_Model_Item */ ?>
+        <?php /* @var $_product Mage_Catalog_Model_Product */ ?>
+        <?php $_product = $item->getProduct(); ?>
+        <tr style="border-bottom:1px solid #f2f2f2;"><td  style="padding:30px 0px; width:100px;">
+            <a href="<?php echo $this->getProductUrl($_product) ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(100,150); ?>" style="border:1px solid #ccc;" width="100"  alt="" /></a>
+		</td>
+		<td style="padding:5px 15px;">
+            <p style="color:#666; font-size:12px; line-height:1; margin:0 0 5px; text-transform:uppercase;"><a href="<?php echo $this->getProductUrl($_product) ?>" style="color:#666; text-decoration:none;"><strong><?php echo $this->escapeHtml($_product->getName()) ?></strong></a></p>
+            <?php if($this->hasDescription($item)): ?> <p style="color:#666; font-size:12px; line-height:1; margin:0 0 5px;"><?php echo $this->__('Comment') ?>:<br /><?php echo $this->getEscapedDescription($item) ?></p><?php endif; ?>
+             <p style="color:#666; font-size:12px; line-height:1; margin:0px; text-transform:uppercase;"><a href="<?php echo $this->getProductUrl($_product) ?>" style="color:#d90d3d;"><?php echo $this->__('View Product') ?></a> <small>
+            <?php if ($_product->getIsSalable()): ?>/</small> <a href="<?php echo $this->getAddToCartUrl($_product) ?>" style="color:#d90d3d;"><strong><?php echo $this->__('Add to Cart') ?></strong></a><?php endif;?>
+            </p></td>
+           </tr>
+    <?php endforeach ?>
+</table>
+</div>

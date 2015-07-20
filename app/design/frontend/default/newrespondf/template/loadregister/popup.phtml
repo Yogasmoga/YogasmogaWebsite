@@ -1,0 +1,248 @@
+<?php if(!Mage::getSingleton('customer/session')->isLoggedIn()){
+	$title=Mage::getStoreConfig('bluethink/bluethink_group/bluethink_input',Mage::app()->getStore());
+	$flag=Mage::getStoreConfig('bluethink/bluethink_group/bluethink_select',Mage::app()->getStore());
+		$contents=Mage::getStoreConfig('bluethink/bluethink_group/bluethink_textarea',Mage::app()->getStore());
+ $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
+    $pass = '';                           //password is a string
+    $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+    for ($i = 0; $i <8; $i++) {
+        $n = mt_rand(0, $alphaLength);    
+        $pass = $pass.$alphabet[$n];      //append a random character
+    }
+	//echo $fldddag;
+
+if($flag){?>
+
+<div id="popForm" style = "display:none">
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('popup/css/popup.css');?>"/>
+<div class="popup_container sign-up-block sign_in_modal" id="transparent_bg">
+	<div style="width:100%;" class="overlay-inner-bg" id="content">
+		<a href="javascript:void(0)" onclick="closeSignup()" class="cross_popup"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+																					  width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+                <g>
+					<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="12.517" y1="12.517" x2="31.482" y2="31.483"/>
+					<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="31.482" y1="12.517" x2="12.517" y2="31.483"/>
+				</g>
+                </svg></a>
+		
+			
+	<div class="left_block left_block_new">
+	<div class="scroll">
+		<div class="top-heading">
+			<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+				 width="234.613px" height="85px" viewBox="0 0 234.613 85" enable-background="new 0 0 234.613 85" xml:space="preserve">
+<g>
+	<text transform="matrix(1 0 0 1 3.8242 25.4092)" fill="#FFFFFF" font-family="'ITCAvantGardeStd-Bk'" font-size="24">JOIN</text>
+</g>
+				<g>
+					<text transform="matrix(1 0 0 1 55.5581 51.3672)"><tspan x="0" y="0" fill="#A2853F" font-family="'ITCAvantGardeStd-Bk'" font-size="24">&amp; GET $25 </tspan><tspan x="-23.808" y="26" fill="#A2853F" font-family="'ITCAvantGardeStd-Bk'" font-size="24">SMOGI BUCKS</tspan></text>
+				</g>
+				<g>
+					<text transform="matrix(1 0 0 1 3.3594 24.0918)" fill="#FFFFFF" font-family="'ITCAvantGardeStd-Bk'" font-size="24">JOIN</text>
+				</g>
+				<g>
+					<path fill="#FFFFFF" d="M132.386,11.729l1.989,6.185h-3.907L132.386,11.729z M130.636,6.332l-7.024,17.741h4.914l0.815-2.564h6.208
+		l0.84,2.564h4.962l-6.808-17.741H130.636z"/>
+					<g>
+						<path fill="#FFFFFF" d="M144.387,19.13c0.288,2.958,2.441,3.573,3.545,3.573c1.848,0,3.554-1.413,3.554-3.386
+			c0-2.489-2.14-3.033-4.183-3.717c-1.453-0.422-4.546-1.333-4.546-4.682c-0.047-3.156,2.578-4.905,5.278-4.905
+			c2.205,0,4.76,1.23,5.039,4.585h-1.966c-0.209-1.144-0.786-2.895-3.153-2.895c-1.77,0-3.226,1.207-3.226,3.038
+			c-0.017,2.163,1.714,2.698,4.404,3.592c1.675,0.653,4.326,1.594,4.326,4.856c0,2.893-2.178,5.203-5.497,5.203
+			c-2.967,0-5.43-1.869-5.549-5.264H144.387z"/>
+						<polygon fill="#FFFFFF" points="155.867,24.073 155.867,6.334 158.645,6.334 165.23,21.215 171.768,6.334 174.54,6.334
+			174.54,24.073 172.678,24.073 172.722,8.29 165.84,24.073 164.576,24.073 157.678,8.29 157.728,24.073 		"/>
+						<path fill="#FFFFFF" d="M216.089,24.073h-2.142l7.41-17.739h1.916l7.34,17.739h-2.157l-2.058-4.982h-8.262L216.089,24.073z
+			 M222.24,8.569l-3.52,8.894h7.079L222.24,8.569z"/>
+						<path fill="#FFFFFF" d="M124.164,13.981h-8.832v3.618h3.607c-0.241,0.864-0.742,1.585-1.462,2.062
+			c-0.72,0.504-1.657,0.791-2.782,0.791c-2.229,0-4.866-1.606-4.866-5.32c0-3.499,2.614-5.154,4.844-5.154
+			c1.247,0,2.226,0.456,2.973,1.101c0.382,0.359,0.694,0.768,0.935,1.2h5.083c-0.983-3.428-4.628-6.281-8.871-6.281
+			c-5.227,0-9.494,3.836-9.494,9.134c0,5.106,4.054,9.3,9.421,9.3c2.926,0,6.903-1.46,8.63-5.37
+			C124.118,17.339,124.262,15.251,124.164,13.981"/>
+						<path fill="#FFFFFF" d="M207.087,15.714v1.632h5.649c-0.287,1.393-1.144,2.719-2.393,3.696c-1.232,0.967-2.874,1.611-4.75,1.611
+			c-3.884,0-7.289-2.956-7.289-7.472c0-4.447,3.4-7.417,7.279-7.417c1.566,0,2.968,0.458,4.125,1.249
+			c0.754,0.502,1.421,1.153,1.979,1.918h2.262c-1.402-2.897-4.741-4.915-8.326-4.915c-5.13,0-9.303,3.851-9.303,9.164
+			c0,5.248,4.103,9.221,9.276,9.221c3.584,0,7.115-1.944,8.664-5.257c0.526-1.118,0.752-2.4,0.785-3.431H207.087z"/>
+						<polygon fill="#FFFFFF" points="86.849,6.411 82.302,6.411 77.957,13.904 73.672,6.411 69.01,6.411 75.668,18.045 75.668,24.073
+			80.201,24.073 80.201,17.876 		"/>
+						<path fill="#FFFFFF" d="M185.507,6.012c-4.888,0-9.351,3.595-9.351,9.394v0.023c0,4.558,3.741,8.993,9.326,8.993
+			c5.516,0,9.399-4.266,9.399-9.206C194.882,10.278,190.974,6.012,185.507,6.012 M186.821,20.252l-1.324,2.285l-1.333-2.327
+			c-2.188-0.648-3.473-2.785-3.473-5.043v-0.021c0-2.493,1.7-5.182,4.841-5.182c3.261,0,4.815,2.949,4.815,5.252
+			C190.348,17.177,189.195,19.612,186.821,20.252"/>
+						<path fill="#FFFFFF" d="M94.465,6.012c-4.89,0-9.352,3.595-9.352,9.394v0.023c0,4.558,3.743,8.993,9.329,8.993
+			c5.516,0,9.397-4.266,9.397-9.206C103.839,10.278,99.932,6.012,94.465,6.012 M95.781,20.252l-1.324,2.285l-1.333-2.327
+			c-2.19-0.648-3.478-2.785-3.478-5.043v-0.021c0-2.493,1.704-5.182,4.843-5.182c3.261,0,4.819,2.949,4.819,5.252
+			C99.308,17.177,98.15,19.612,95.781,20.252"/>
+					</g>
+				</g>
+</svg>
+
+		</div>
+	<div class="sign_signup_form">
+	<form rel="signupBox" action="" method="post" class="singup_form" id="singup_form" name="myFrom">
+		<input type="hidden" value="" name="csrf_token">					
+		<span style="color:#990000; font-size:14px;"></span>
+		
+	<ul class="list1">
+		
+		<li>
+		<div class="form_field_left">
+			<input type="text" name="fname" data-watermark="First Name">
+		</div>
+
+		<div class="clearfix"></div>
+		</li>
+		<li>
+		<div class="form_field_left">
+			<input type="text" name="lname" data-watermark="Last Name">
+		</div>
+		</li>
+
+		<li>
+			<input type="text" name="email" data-watermark="Email">
+		</li>
+
+		<li>
+
+		<div class="form_field_left">
+			<div class="field">
+                  <div class="input-box">
+					  <input type="password" name="password" rel="password" class="watermark_password_orignal"  />
+				  <input type="text"  value="Choose Password" 	class="watermark_password" />
+				</div>
+           </div>
+			
+		
+		</div>
+		<div class="clearfix"></div>
+		</li>
+
+
+       <!--  <li>
+         <div class="form_field_left">
+        			<div class="field">
+                       <div class="input-box">
+                            <input type="password" name="confirmation" placeholder="<?php echo $this->__('Confirm Password') ?>" id="confirmation" class="input-text required-entry validate-cpassword" />
+                        </div>
+            </div>
+        		</div>
+        		<div class="clearfix"></div>
+        		
+        		</li> -->
+          
+		<li class="gender-link">
+		      <span> <label>Select Gender</label></span>
+				  <div class="f-right">
+				 
+                  <?php
+					$options = Mage::getResourceSingleton('customer/customer')->getAttribute('gender')->getSource()->getAllOptions();
+					$value = '1';
+					$_last = count($options);
+				   // $_index = 0;
+				  ?>
+				  
+			<?php foreach ($options as $option):?>
+			<?php if($option['value'] != ''): ?>
+		    <div>
+		 <label class="f<?php echo $option['value'] ?>">
+         <input class="custom-radio radio" type="radio" title="<?php echo $option['label'] ?>"
+		value="<?php echo $option['value'] ?>" name="gender"
+				<?php if ($option['value'] == $value) echo 'checked="checked"' ?>>
+			  </label>
+				<span> <?php echo $option['label'] ?> </span>
+				</div>
+					<?php endif; ?>
+					<?php //$_index++; ?>
+				<?php endforeach;?>
+				
+				</div>
+				
+				
+		</li>
+
+		<li>
+		<input style="display: none;" id="is_subscribed" class="checkbox" type="checkbox" checked="checked" value="1" name="is_subscribed">
+         <input type="hidden" autocomplete="off" maxlength="30" id="isAjax" name="isAjax" value="1">
+
+			<!-- msz alredy email exist -->
+			<div class="error" id="error_msg"></div>
+				<p style="text-align: left" class="err_msg"></p>
+			<!-- end -->
+			
+			<button  type="button" name="sign-up" id="create_account" class="create_account btn"><span class="tick-mark"><img alt="yogasmoga" src="<?php echo $this->getSkinUrl('images/tick-mark.jpg') ?>" class="responsive"></span></button>
+
+			<p class="already_signed_up" >Already signed up? Sign in here</p>
+		</li>
+	</ul>
+</form>
+</div></div>
+	<div class="clearfix"></div>
+
+			</div>
+		</div>
+	</div>
+</div> 
+
+<script type="text/javascript">
+jQuery.noConflict();
+var customForm = new VarienForm('singup_form');
+</script>
+
+<script type="text/javascript">
+jQuery.noConflict();
+function closeSignup(){
+jQuery('#popForm').hide();
+}
+jQuery(document).ready(function() {
+// jQuery(".custom-radio:checked").parent().addClass("current");
+ jQuery(".custom-radio").click(function(){
+  jQuery(".custom-radio").parent().removeClass("current");
+  jQuery(this).parent().addClass("current");
+ });
+});
+</script>
+
+<?php
+$name = 'popupcookies';     
+$value = 'yes'; 
+// $getCookies = "";    
+$getCookies = Mage::getModel('core/cookie')->get($name);
+//$getCookies = "";  
+if($getCookies==""){
+
+?>
+<script>
+jQuery.noConflict();
+jQuery(document).ready(function() {
+jQuery("#popForm").show();
+
+});
+</script>
+<?php
+Mage::getModel('core/cookie')->set($name, $value);
+}
+?>
+
+<script>
+jQuery.noConflict();
+jQuery(document).ready(function () {
+init_watermark();
+jQuery("#create_account").click(function (e) {
+	e.preventDefault();
+if (customForm.validator && customForm.validator.validate()){
+	createCustomerAccount();
+}
+    });
+
+
+});
+
+
+//jQuery.noConflict();
+//jQuery('#signup-form').submit(function(e){
+
+
+//});
+</script>
+<?php  
+}
+}?>

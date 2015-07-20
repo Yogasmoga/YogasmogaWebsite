@@ -69,7 +69,7 @@
                     
                     $reward_model = Mage::getModel('rewardpoints/stats');
                     //echo "$".number_format((float)($reward_model->getPointsCurrent($customerId, $store_id)+0), 2, '.','');
-                    echo $reward_model->getPointsCurrent($customerId, $store_id)+0;                    
+                    echo $reward_model->getPointsCurrent($customerId, $store_id)+0;
                     //Mage::helper('core')->currency($reward_model->getPointsCurrent($customerId, $store_id)+0);
                  ?>
             </span><br />

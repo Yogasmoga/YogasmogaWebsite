@@ -91,7 +91,7 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
             if (($this->getRequest()->getActionName() == 'add') && !$this->getRequest()->getParam('in_cart')) {
                 $this->_getSession()->setContinueShoppingUrl($this->_getRefererUrl());
             }
-            $this->_redirect('checkout/cart');
+            $this->_redirect('checkout/onepage');
         }
         return $this;
     }
@@ -229,7 +229,7 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
             if ($url) {
                 $this->getResponse()->setRedirect($url);
             } else {
-                $this->_redirectReferer(Mage::helper('checkout/cart')->getCartUrl());
+                $this->_redirectReferer(Mage::helper('checkout/url')->getCheckoutUrl());
             }
         } catch (Exception $e) {
             $this->_getSession()->addException($e, $this->__('Cannot add the item to shopping cart.'));
@@ -284,7 +284,7 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
 
         if (!$quoteItem) {
             $this->_getSession()->addError($this->__('Quote item is not found.'));
-            $this->_redirect('checkout/cart');
+            $this->_redirect('checkout/onepage');
             return;
         }
 
@@ -369,7 +369,7 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
             if ($url) {
                 $this->getResponse()->setRedirect($url);
             } else {
-                $this->_redirectReferer(Mage::helper('checkout/cart')->getCartUrl());
+                $this->_redirectReferer(Mage::helper('checkout/url')->getCheckoutUrl());
             }
         } catch (Exception $e) {
             $this->_getSession()->addException($e, $this->__('Cannot update the item.'));
@@ -458,7 +458,7 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
         if ($id) {
             try {
                 $this->_getCart()->removeItem($id)
-                  ->save();
+                    ->save();
             } catch (Exception $e) {
                 $this->_getSession()->addError($this->__('Cannot remove the item.'));
                 Mage::logException($e);
@@ -501,9 +501,9 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
     /**
      * Initialize coupon
      */
-     
-     /**
-        Magehack : adding a constant string to the error messages so that it can be determined if the error message is for the discount coupon code.
+
+    /**
+    Magehack : adding a constant string to the error messages so that it can be determined if the error message is for the discount coupon code.
      */
     public function couponPostAction()
     {
@@ -534,34 +534,49 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
 
             if (strlen($couponCode)) {
                 if ($couponCode == $this->_getQuote()->getCouponCode()) {
-                    $this->_getSession()->addSuccess(
-                        $this->__('Coupon code "%s" was applied.', Mage::helper('core')->htmlEscape($couponCode))
-                    );
+                    // Mage::getSingleton("core/session")->addSuccess(
+                    //   $this->__('Coupon code "%s" was applied.', Mage::helper('core')->htmlEscape($couponCode))
+                    //  );
                 }
                 else {
-                    $this->_getSession()->addError(
-                        $this->__('cpnerror-msgCoupon code "%s" is not valid.', Mage::helper('core')->htmlEscape($couponCode))
-                    );
+                    Mage::getSingleton("core/session")->addError("Promo code is not valid");
                 }
             } else {
-                $this->_getSession()->addSuccess($this->__('Coupon code was canceled.'));
+                Mage::getSingleton("core/session")->addSuccess($this->__('Promo code has been removed successfully'));
             }
 
         } catch (Mage_Core_Exception $e) {
-            $this->_getSession()->addError("cpnerror-msg".$e->getMessage());
+            Mage::getSingleton("core/session")->addError("cpnerror-msg".$e->getMessage());
         } catch (Exception $e) {
-            $this->_getSession()->addError($this->__('cpnerror-msgCannot apply the coupon code.'));
+            Mage::getSingleton("core/session")->addError($this->__('Cannot apply the Promo code.'));
             Mage::logException($e);
         }
         $refererUrl = $this->_getRefererUrl();
-        if (empty($refererUrl)) {
-            $refererUrl = empty($defaultUrl) ? Mage::getBaseUrl() : $defaultUrl;
-        }
+
+        //if (empty($refererUrl)) {
+        // $refererUrl = empty($defaultUrl) ? Mage::getBaseUrl() : $defaultUrl;
+        //}
+        //$message = Mage::getSingleton("core/session")->getMessages('true');
+        //$message = Mage::app()->getLayout()->getMessagesBlock()->setMessages(Mage::getSingleton('core/session')->getMessages(true));
+        //echo "<pre>";
+        /////print_r($message);
+        //exit;
+        //Mage::register('message', Mage::helper('yourmodule')->__('the error message');
+        //$layout = $this->getLayout();
+        //$update = $layout->getUpdate();
+        //$update->load('ajax_msg_handle'); //loading your custom handle, defined in your module's layout .xml file
+        //$layout->generateXml();
+        //$layout->generateBlocks();
+        //$output = $layout->getOutput();
+
+        //echo $this->getResponse()->setBody(Mage::helper('core')->jsonEncode(array('error' => $output)));
+
+        //exit;
 
         $myValue= Mage::getSingleton('core/session')->getPromotioncodeValue();
         if($myValue == 'promotion-code')
         {
-           $refererUrl = $refererUrl.'#promotion-code';
+            $refererUrl = $refererUrl.'#promotion-code';
         }
         else{
             $refererUrl = $refererUrl.'#promotions';

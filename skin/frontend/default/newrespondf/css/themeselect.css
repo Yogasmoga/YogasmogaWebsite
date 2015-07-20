@@ -1,0 +1,358 @@
+									/* CSS for multi theme - update 12/24/2010 */
+/* CSS iphone theme 1 */
+.iphone-1 .shop-access{
+	background: url(../images/shopaccess1.gif) repeat-x scroll left top transparent;
+    float: left;
+    height: 33px;
+    overflow: hidden;
+    width: 100%;
+}
+.iphone-1 .footer-container{
+	background: url(../images/footer_ip1.gif) repeat-x scroll 0 0 transparent;
+    color: #FFFFFF;
+    padding: 5px;
+}
+.iphone-1 #left-nav li.head{
+	background: url(../images/li_head.gif) repeat-x scroll 0 0 transparent;
+    height: 40px;
+    line-height: 40px;
+}
+.iphone-1 #left-nav span{
+	background: url(../images/nav_arrow_ip1.png) no-repeat scroll 96% center transparent;
+    cursor: pointer;
+    display: block;
+    white-space: nowrap;
+}
+.iphone-1 #left-nav  span:hover{
+	background: url(../images/nav_arrow_ip1.png) no-repeat scroll 96% center transparent;
+    cursor: pointer;
+    display: block;
+    white-space: nowrap;
+}
+.iphone-1 #left-nav ul li a.empty, .iphone-1 #left-nav li.active a.empty, .iphone-1 #left-nav li a.empty:hover{
+	background: url(../images/nav_arrow_2_ip1.png) no-repeat scroll right center transparent;
+    height: 20px;
+    padding: 0;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    width: 20px;
+}
+.iphone-1 .search-form-cont{
+	background: none repeat scroll 0 0 #E0E0E0;
+    padding: 0 10px;
+}
+.iphone-1 .search-md{
+	background: url(../images/search-md-ip1.gif) repeat-x scroll right top transparent;
+    height: 35px;
+}
+.iphone-1 .search-st{
+	background: url(../images/search-st-ip1.gif) no-repeat scroll left top transparent;
+}
+.iphone-1 .search-end{
+	background: url(../images/search-end-ip1.gif) no-repeat scroll right top transparent;
+}
+.iphone-1 button.search-go{background:transparent url(../images/search-go-but-ip1.gif) top left no-repeat; float:left;width:20px; height:20px;display:block;  }
+
+.iphone-1 .search-close{background: url(../images/search-close-but-ip1.png) no-repeat scroll left top transparent;width:20px; height:20px; display:block; float:right;}
+.iphone-1 .category-head h2, .iphone-1 .page-head h3{color: #FAAC05}
+.iphone-1 .c-list li h5 a{color: #FAAC05;}
+.iphone-1 .one-page-checkout .active h3{color: #FAAC05}
+.iphone-1 .one-page-checkout .active .step-count{
+	background: none repeat scroll 0 0 #FAAC05;
+    border: 1px solid #FAAC05
+}
+.iphone-1 .product-info-box h3{color: #FAAC05}
+.iphone-1 .form-button, .iphone-1 .form-button-alt{
+	background:url(../images/button_bg_ip1.gif) repeat-x scroll left top transparent;
+}
+.iphone-1 button.checkout-link{background:transparent url(../images/btn_proceed_to_checkout_ip1.gif) top center no-repeat; }
+.iphone-1 button.place-order{background:transparent url(../images/btn_place_order_ip1.gif) top center no-repeat; }
+
+/* ***************************************** CSS iphone theme 2 */
+
+.iphone-2 .shop-access{
+	background: url(../images/shopaccess2.gif) repeat-x scroll 0 0 transparent;
+    float: left;
+    height: 33px;
+    overflow: hidden;
+    width: 100%;
+}
+.iphone-2 .footer-container{
+	background: url(../images/footer_ip2.gif) repeat-x scroll 0 0 transparent;
+    color: #FFFFFF;
+    padding: 5px;
+}
+.iphone-2 #left-nav span{
+	background: url(../images/nav_arrow_ip2.png) no-repeat scroll 96% center transparent;
+    cursor: pointer;
+    display: block;
+    white-space: nowrap;
+}
+.iphone-2 #left-nav  span:hover{
+	background: url(../images/nav_arrow_ip2.png) no-repeat scroll 96% center transparent;
+    cursor: pointer;
+    display: block;
+    white-space: nowrap;
+}
+.iphone-2 #left-nav ul li a.empty, .iphone-2 #left-nav li.active a.empty, .iphone-2 #left-nav li a.empty:hover{
+	background: url(../images/nav_arrow_2_ip2.png) no-repeat scroll right center transparent;
+    height: 20px;
+    padding: 0;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    width: 20px;
+}
+.iphone-2 #left-nav li.head{
+	background: none repeat scroll 0 0 #2C2825;
+    border-bottom: 1px dotted #E2E2E2;
+    height: 40px;
+    line-height: 40px;
+}
+.iphone-2 .search-form-cont{
+	background: url(../images/search_formbg_ip2.gif) repeat-x scroll 0 0 transparent;
+    padding: 0 10px;
+}
+.iphone-2 .search-md{
+	background: url(../images/search-md-ip2.png) repeat-x scroll right top transparent;
+    height: 35px;
+}
+.iphone-2 .search-st{
+	background: url(../images/search-st-ip2.png) no-repeat scroll left top transparent;
+}
+.iphone-2 .search-end{
+	background: url(../images/search-end-ip2.png) no-repeat scroll right top transparent;
+}
+.iphone-2 button.search-go{background:transparent url(../images/search-go-but-ip2.gif) top left no-repeat; float:left;width:20px; height:20px; display:block;  }
+.iphone-2 .search-close{background: url(../images/search-close-but-ip2.png) no-repeat scroll left top transparent;width:20px; height:20px; display:block; float:right; }
+.iphone-2 .category-head h2, .iphone-2 .page-head h3{color: #0080B5;}
+.iphone-2 .c-list li h5 a{color: #0080B5;}
+.iphone-2 .one-page-checkout .active h3{color: #0080B5}
+.iphone-2 .one-page-checkout .active .step-count{
+	background: none repeat scroll 0 0 #0080B5;
+    border: 1px solid #0173A2
+}
+.iphone-2 .product-info-box h3{color: #0080B5}
+.iphone-2 .form-button, .iphone-2 .form-button-alt{
+	background:url(../images/button_bg_ip2.gif) repeat-x scroll left top transparent;
+}
+.iphone-2 button.checkout-link{background:transparent url(../images/btn_proceed_to_checkout_ip2.gif) top center no-repeat; }
+.iphone-2 button.place-order{background:transparent url(../images/btn_place_order_ip2.gif) top center no-repeat; }
+
+/* ***************************************** CSS iphone theme 3 */
+
+.iphone-3 .shop-access{
+	background: url(../images/shopaccess3.gif) repeat-x scroll 0 0 transparent;
+    float: left;
+    height: 33px;
+    overflow: hidden;
+    width: 100%;
+}
+.iphone-3 .footer-container{
+	background: url(../images/footer_ip3.gif) repeat-x scroll 0 0 transparent;
+    color: #FFFFFF;
+    padding: 5px;
+}
+.iphone-3 #left-nav span{
+	background: url(../images/nav_arrow_ip3.png) no-repeat scroll 96% center transparent;
+    cursor: pointer;
+    display: block;
+    white-space: nowrap;
+}
+.iphone-3 #left-nav  span:hover{
+	background: url(../images/nav_arrow_ip3.png) no-repeat scroll 96% center transparent;
+    cursor: pointer;
+    display: block;
+    white-space: nowrap;
+}
+.iphone-3 #left-nav ul li a.empty, .iphone-3 #left-nav li.active a.empty, .iphone-3 #left-nav li a.empty:hover{
+	background: url(../images/nav_arrow_2_ip3.png) no-repeat scroll right center transparent;
+    height: 20px;
+    padding: 0;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    width: 20px;
+}
+.iphone-3 #left-nav li.head{
+	background: none repeat scroll 0 0 #39373A;
+    border-bottom: 1px dotted #E2E2E2;
+    height: 40px;
+    line-height: 40px;
+}
+.iphone-3 .search-form-cont{
+	background: url(../images/search_formbg_ip3.gif) repeat-x scroll 0 0 transparent;
+    padding: 0 10px;
+}
+.iphone-3 .search-md{
+	background: url(../images/search-md-ip3.png) repeat-x scroll right top transparent;
+    height: 35px;
+}
+.iphone-3 .search-st{
+	background: url(../images/search-st-ip3.png) no-repeat scroll left top transparent;
+}
+.iphone-3 .search-end{
+	background: url(../images/search-end-ip3.png) no-repeat scroll right top transparent;
+}
+.iphone-3 button.search-go{background:transparent url(../images/search-go-but-ip3.gif) top left no-repeat; float:left;width:20px; height:20px; display:block;  }
+.iphone-3 .search-close{background: url(../images/search-close-but-ip3.png) no-repeat scroll left top transparent;width:20px; height:20px; display:block; float:right; }
+.iphone-3 .category-head h2, .iphone-3 .page-head h3{color: #B71F23;}
+.iphone-3 .c-list li h5 a{color: #B71F23;}
+.iphone-3 .one-page-checkout .active h3{color: #B71F23}
+.iphone-3 .one-page-checkout .active .step-count{
+	background: none repeat scroll 0 0 #B71F23;
+    border: 1px solid #a20e12
+}
+.iphone-3 .product-info-box h3{color: #B71F23}
+.iphone-3 .form-button, .iphone-3 .form-button-alt{
+	background:#39373A;
+}
+.iphone-3 button.checkout-link{background:transparent url(../images/btn_proceed_to_checkout_ip3.gif) top center no-repeat; }
+.iphone-3 button.place-order{background:transparent url(../images/btn_place_order_ip3.gif) top center no-repeat; }
+
+
+/* ***************************************** CSS iphone theme 4 */
+
+.iphone-4 .shop-access{
+	background: #4B961F;
+    float: left;
+    height: 33px;
+    overflow: hidden;
+    width: 100%;
+}
+.iphone-4 .footer-container{
+	background:#4B961F;
+    color: #FFFFFF;
+    padding: 5px;
+}
+.iphone-4 #left-nav span{
+	background: url(../images/nav_arrow_ip4.png) no-repeat scroll 96% center transparent;
+    cursor: pointer;
+    display: block;
+    white-space: nowrap;
+}
+.iphone-4 #left-nav  span:hover{
+	background: url(../images/nav_arrow_ip4.png) no-repeat scroll 96% center transparent;
+    cursor: pointer;
+    display: block;
+    white-space: nowrap;
+}
+.iphone-4 #left-nav ul li a.empty, .iphone-4 #left-nav li.active a.empty, .iphone-4 #left-nav li a.empty:hover{
+	background: url(../images/nav_arrow_2_ip4.png) no-repeat scroll right center transparent;
+    height: 20px;
+    padding: 0;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    width: 20px;
+}
+.iphone-4 #left-nav li.head{
+	background: none repeat scroll 0 0 #2C2825;
+    border-bottom: 1px dotted #E2E2E2;
+    height: 40px;
+    line-height: 40px;
+}
+.iphone-4 .search-form-cont{
+	background:#4B961F;
+    padding: 0 10px;
+}
+.iphone-4 .search-md{
+	background: url(../images/search-md-ip4.png) repeat-x scroll right top transparent;
+    height: 35px;
+}
+.iphone-4 .search-st{
+	background: url(../images/search-st-ip4.png) no-repeat scroll left top transparent;
+}
+.iphone-4 .search-end{
+	background: url(../images/search-end-ip4.png) no-repeat scroll right top transparent;
+}
+.iphone-4 button.search-go{background:transparent url(../images/search-go-but-ip4.gif) top left no-repeat; float:left;width:20px; height:20px; display:block;  }
+.iphone-4 .search-close{background: url(../images/search-close-but-ip4.png) no-repeat scroll left top transparent;width:20px; height:20px; display:block; float:right; }
+.iphone-4 .category-head h2, .iphone-4 .page-head h3{color: #4B961F;}
+.iphone-4 .c-list li h5 a{color: #4B961F;}
+.iphone-4 .one-page-checkout .active h3{color: #4B961F}
+.iphone-4 .one-page-checkout .active .step-count{
+	background: none repeat scroll 0 0 #4B961F;
+    border: 1px solid #33740d
+}
+.iphone-4 .product-info-box h3{color: #4B961F}
+.iphone-4 .form-button, .iphone-4 .form-button-alt{
+	background:#2C2825;
+}
+.iphone-4 button.checkout-link{background:transparent url(../images/btn_proceed_to_checkout_ip4.gif) top center no-repeat; }
+.iphone-4 button.place-order{background:transparent url(../images/btn_place_order_ip4.gif) top center no-repeat; }
+
+
+/* ***************************************** CSS iphone theme 5 */
+
+.iphone-5 .shop-access{
+	background: #F85E00;
+    float: left;
+    height: 33px;
+    overflow: hidden;
+    width: 100%;
+}
+.iphone-5 .footer-container{
+	background:#F85E00;
+    color: #FFFFFF;
+    padding: 5px;
+}
+.iphone-5 #left-nav span{
+	background: url(../images/nav_arrow_ip5.png) no-repeat scroll 96% center transparent;
+    cursor: pointer;
+    display: block;
+    white-space: nowrap;
+}
+.iphone-5 #left-nav  span:hover{
+	background: url(../images/nav_arrow_ip5.png) no-repeat scroll 96% center transparent;
+    cursor: pointer;
+    display: block;
+    white-space: nowrap;
+}
+.iphone-5 #left-nav ul li a.empty, .iphone-5 #left-nav li.active a.empty, .iphone-5 #left-nav li a.empty:hover{
+	background: url(../images/nav_arrow_2_ip5.png) no-repeat scroll right center transparent;
+    height: 20px;
+    padding: 0;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    width: 20px;
+}
+.iphone-5 #left-nav li.head{
+	background: none repeat scroll 0 0 #E2E2E2;
+    border-bottom: 1px solid #AAAAAA;
+    height: 40px;
+    line-height: 40px;
+}
+.iphone-5 #left-nav a{color: #333333 !important;}
+.iphone-5 .search-form-cont{
+	background:#F85E00;
+    padding: 0 10px;
+}
+.iphone-5 .search-md{
+	background: url(../images/search-md-ip5.png) repeat-x scroll right top transparent;
+    height: 35px;
+}
+.iphone-5 .search-st{
+	background: url(../images/search-st-ip5.png) no-repeat scroll left top transparent;
+}
+.iphone-5 .search-end{
+	background: url(../images/search-end-ip5.png) no-repeat scroll right top transparent;
+}
+.iphone-5 button.search-go{background:transparent url(../images/search-go-but-ip5.gif) top left no-repeat; float:left;width:20px; height:20px; display:block;  }
+.iphone-5 .search-close{background: url(../images/search-close-but-ip5.png) no-repeat scroll left top transparent;width:20px; height:20px; display:block; float:right; }
+.iphone-5 .category-head h2, .iphone-5 .page-head h3{color: #F85E00;}
+.iphone-5 .c-list li h5 a{color: #F85E00;}
+.iphone-5 .one-page-checkout .active h3{color:#F85E00}
+.iphone-5 .one-page-checkout .active .step-count{
+	background: none repeat scroll 0 0 #F85E00;
+    border: 1px solid #CD5003
+}
+.iphone-4 .product-info-box h3{color: #F85E00}
+.iphone-5 .form-button, .iphone-5 .form-button-alt{
+	background:#E2E2E2;
+	color: #333333;
+}
+.iphone-5 button.checkout-link{background:transparent url(../images/btn_proceed_to_checkout_ip5.gif) top center no-repeat; }
+.iphone-5 button.place-order{background:transparent url(../images/btn_place_order_ip5.gif) top center no-repeat; }

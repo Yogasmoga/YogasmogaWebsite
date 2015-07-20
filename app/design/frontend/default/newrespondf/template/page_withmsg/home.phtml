@@ -1,0 +1,174 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_iphone
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <?php echo $this->getChildHtml('head') ?>
+</head>
+<body bgcolor="#FFFFFF" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" <?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?> onload="setTimeout(scrollTo, 0, 0, 1)">
+ <div class="wrapper">
+   <div class="page">
+<?php echo $this->getChildHtml('after_body_start') ?>
+<?php echo $this->getChildHtml('global_notices') ?>
+<div class="header-container">
+<div class="header">
+    <?php echo $this->getChildHtml('header') ?>
+</div>
+</div>
+<div class="clearfix"></div>
+<div class="main-container">
+    <div class="middle col-1-layout">
+        <?php echo $this->getChildHtml('breadcrumbs') ?>
+		 <div class="sign-in-box">
+			<?php if (! Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+			<a class="" title="" href="javascript:;" onClick="openLogin()"><span><?php echo $this->__('Sign In') ?></span></a>
+			<?php else: ?>
+			<a href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>"><span><?php echo $this->__('Sign Out') ?></span></a>
+			<?php endif; ?>
+		 
+               <h1>welcome</h1>
+              </div>
+			  <?php echo $this->getChildHtml('content') ?>
+              <div class="flexslider">
+                  <ul class="slides">
+                      <li><img class="img-responsive" src="<?php echo $this->getSkinUrl('images/slide1.jpg') ?>" alt="koura"/>
+  
+                          <div class="slide-content">
+                              <div>
+                                 <p> SNEC MATTIS </br> PURUS AUCTOR UT</p>
+                              </div>
+                          </div>
+                      </li>
+                      <li><img class="img-responsive" src="<?php echo $this->getSkinUrl('images/slide1.jpg') ?>" alt="vivacity-crop"/>
+  
+                          <div class="slide-content ">
+                              <div>
+                                  SNEC MATTIS </br> PURUS AUCTOR UT
+                              </div>
+                          </div>
+                      </li>
+                      <li><img class="img-responsive" src="<?php echo $this->getSkinUrl('images/slide1.jpg') ?>" alt="koura"/>
+  
+                          <div class="slide-content ">
+                              <div>
+                                  SNEC MATTIS </br> PURUS AUCTOR UT
+                              </div>
+                          </div>
+                      </li>
+                      <li><img class="img-responsive" src="<?php echo $this->getSkinUrl('images/slide1.jpg') ?>" alt="koura"/>
+  
+                          <div class="slide-content ">
+                              <div>
+                                  SNEC MATTIS </br> PURUS AUCTOR UT
+                              </div>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+              <div class="clearfix"></div>
+              <div class="block-nav">
+                 <a href="<?php echo $this->getUrl('women'); ?>"> <span class="bgae8637">women</span></a>
+                 
+                 <a href="<?php echo $this->getUrl('mens'); ?>"> <span class="bg444444">men</span></a>
+              </div>
+              <div class="clearfix"></div>
+              <div class="made-in-usa">
+                  <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/made-in-usa.jpg') ?>" alt="made in usa"/>
+                  <a href="#"><span>learn more</span></a>
+              </div>
+              <div class="clearfix"></div>
+              <div class="namaskar">
+                  <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/namaskar.jpg') ?>" alt="namaskar"/>
+                  <a href="#"><span>learn more</span></a>
+              </div>
+              <div class="clearfix"></div>
+              <div class="block-invite">
+                  <div class="visit-us">
+                      <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/visit-block.jpg') ?>" alt="visit us"/>
+  
+                      <div>
+                          <span class="loc ">LOCATIONS</span>
+  
+                          <p>LOREM </br>
+                              IPSUM LOREM</p>
+                         <a href="#"> <span class="visit-us">visit us</span></a>
+                      </div>
+                  </div>
+                  <div class="invite-friend">
+                      <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/invite-bg.jpg') ?>" alt="invite friend"/>
+  
+                      <p><a href="#">invite </br> friends</a></p>
+                  </div>
+              </div>
+              <div class="clearfix"></div>
+              <div class="social">
+                  <ul>
+                      <li><a href="http://www.facebook.com/YOGASMOGA" target="_blank"><img class="responsive"
+                                                                                           alt="Facebook"
+                                                                                           src="<?php echo $this->getSkinUrl('images/fb.jpg') ?>"></a>
+                      </li>
+                      <li><a href="http://www.Instagram.com/YOGASMOGA" target="_blank"><img class="responsive"
+                                                                                            alt="insta-gram"
+                                                                                            src="<?php echo $this->getSkinUrl('images/insta.jpg') ?>"></a>
+                      </li>
+                      <li><a href="http://www.twitter.com/YOGASMOGA" target="_blank"><img class="responsive" alt="twitter"
+                                                                                          src="<?php echo $this->getSkinUrl('images/twitr.jpg') ?>"></a>
+                      </li>
+  
+  
+                  </ul>
+              </div>
+              <div class="clearfix"></div>
+            
+              <div class="bottom-content">
+			   <?php //echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/subscribe.phtml')->toHtml(); ?>
+                  <span>Sign up & We'll surprise you</span>
+  
+                          <div class="tick-btn">
+                      <button class="check">
+                          <img class="responsive" src="<?php echo $this->getSkinUrl('images/tick.png') ?>" alt="logo"/>
+                      </button>
+                  </div>
+              </div>
+    </div>
+</div>
+<div class="footer-container">
+    <div class="footer">
+        <?php echo $this->getChildHtml('footer') ?>
+    </div>
+</div>
+<?php echo $this->getChildHtml('before_body_end') ?>
+<?php echo $this->getAbsoluteFooter() ?>
+  </div>
+</div>
+</body>
+</html>

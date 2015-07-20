@@ -1,0 +1,428 @@
+<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/html/icons_lib.phtml')->toHtml(); ?>
+<div class="nav is-fixed" role="navigation">
+
+	  <span class="nav-toggle">
+		  <div class="icon-menu">
+              <svg width="44px" height="43.993px">
+                  <use xlink:href="#ys_menu_icon"></use>
+              </svg>
+
+          </div>
+	  </span>
+
+    <div class="ys-text">
+        <a href="<?php echo $this->getUrl('') ?>">
+            <!--        <img  src="-->
+            <?php //echo $this->getSkinUrl('images/yogasmoga_logo.png') ?><!--" alt="yogasmoga"/>-->
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="154px" height="44px" viewBox="0 0 154 44" enable-background="new 0 0 154 44"
+                 xml:space="preserve">
+            <use xlink:href="#yogasmoga_logo_white"></use>
+</svg>
+
+
+        </a>
+    </div>
+
+    <?php
+    $cartTotal = $this->helper('checkout/cart')->getQuote()->getGrandTotal();
+    $cartItemsCount = Mage::helper('checkout/cart')->getCart()->getItemsCount();
+    $cartItemsQuantity = Mage::helper('checkout/cart')->getCart()->getItemsQty();
+    ?>
+
+
+    <?php if ($cartItemsQuantity > '0') { ?>
+        <div class="shoping-cart" onclick="window.location='<?php echo $this->getUrl('checkout/onepage'); ?>'">
+            <svg xml:space="preserve" enable-background="new 0 0 44 44" viewBox="0 0 44 44" height="44px" width="44px"
+                 y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
+                 id="Layer_1" version="1.1">
+    <use xlink:href="#shopping_cart"></use>
+</svg>
+            <span><a href="<?php echo $this->getUrl('checkout/onepage'); ?>"
+                     class="cartgo"><?php echo $cartItemsQuantity; ?></a></span>
+        </div>
+    <?php } else { ?>
+        <div class="shoping-cart" onclick="window.location='<?php echo $this->getUrl('checkout/onepage'); ?>'">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+<g>
+    <rect x="13.873" y="14.691" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="17.461" height="19.208"/>
+    <path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M27.777,14.604h-2.619v-3.648c0-0.237-0.2-0.437-0.437-0.437h-4.236
+		c-0.236,0-0.437,0.2-0.437,0.437v3.648h-2.619v-3.648c0-1.685,1.371-3.056,3.056-3.056h4.236c1.685,0,3.056,1.371,3.056,3.056
+		V14.604z"/>
+</g>
+</svg>
+
+            <span><a href="javascript:void(0)" class="cartgo"></a></span>
+        </div>
+    <?php } ?>
+
+    <div class="upper-nav">
+        <button class="cross-btn" id="cross-btn" style="display: none;">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+<g>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="12.517" y1="12.517" x2="31.482" y2="31.483"/>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="31.482" y1="12.517" x2="12.517" y2="31.483"/>
+</g>
+</svg>
+
+        </button>
+        <div class="nav-container" id="menu_container">
+
+            <ul class="nav-menu menu  level1">
+                <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+                    <li class="menu-item sign-up">
+                    <i></i>
+				<span class="key">
+<!--					<img class="responsive" src="--><?php //echo $this->getSkinUrl('images/key1.png') ?><!--" alt=""/>-->
+                <svg xml:space="preserve" enable-background="new 164.167 0 44 44" viewBox="164.167 0 44 44"
+                     height="44px" width="44px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink"
+                     xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+                    <path d="M189.256,16.171c0-2.083-1.689-3.771-3.771-3.771
+			c-2.084,0-3.771,1.689-3.771,3.771c0,1.615,1.02,2.981,2.445,3.52L182.627,30h5.715l-1.533-10.309
+			C188.237,19.153,189.256,17.786,189.256,16.171z" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+                </svg>
+
+				</span>
+					<span class="sign-text">
+						<a href="javascript:void(0)"
+                           onClick="openLogin()"><span><?php echo $this->__('Sign In&nbsp;') ?> /</span></a>
+                        <a href="javascript:void(0)" class="menu-link"
+                           id="menu_signup"><?php echo $this->__('Sign Up') ?></span></a>
+                        </span>
+
+                        <span class="border-line"></span>
+                    </li>
+                <?php else: ?>
+                    <?php $customer = Mage::getSingleton('customer/session')->getCustomer();
+                    $customerData = Mage::getModel('customer/customer')->load($customer->getId())->getData(); ?>
+
+                    <li class="username menu-item has-dropdown">
+					   <span class="profile_img">
+<!--						   <img src="/rangoli/wp-content/themes/rangoli/images/default.jpg" alt=""/>-->
+	                    </span>
+                        <a class="menu-link m-link "
+                           href="javascript:void(0)">Hi <?php echo $customerData['firstname']; ?></a>
+							<span class="arrow-tag toggle-ys-menu">
+<!--								<img alt="V" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png')?><!--" class="responsive">-->
+								<svg width="44px" height="44px">
+                                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
+                                          y2="109.657"/>
+                                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
+                                          y1="21.39" x2="30.374" y2="21.39"/>
+                                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
+                                          y1="13.39" x2="22.374" y2="29.39"/>
+                                </svg>
+								</span>
+
+                        </span>
+                        <ul class="nav-dropdown menu  level2">
+                            <li class="menu-item">
+                                <a href="<?php echo Mage::getUrl('customer/account'); ?>"
+                                   class="menu-link"><?php echo $this->__('My Account') ?></span></a>
+                            </li>
+                            <li class="menu-item">
+                                <a class="menu-link"
+                                   href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>"><?php echo $this->__('Sign Out&nbsp;') ?></a>
+                            </li>
+                        </ul>
+                        <span class="border-line"></span>
+                    </li>
+
+
+                <?php endif; ?>
+                <li class="menu-item has-dropdown main-heading yogasmoga_li">
+                    <a href="<?php echo $this->getUrl('') ?>" class="menu-link m-link ">
+                        <svg width="227.831px" height="46.423px">
+                            <use xlink:href="#yogasmoga_logo"></use>
+                        </svg>
+                    </a>
+								<span class="arrow-tag toggle-ys-menu is-active">
+<!--									<img class="responsive" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png') ?><!--" alt=""/>-->
+									<svg width="44px" height="44px">
+                                        <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
+                                              y2="109.657"/>
+                                        <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
+                                              y1="21.39" x2="30.374" y2="21.39"/>
+                                        <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
+                                              y1="13.39" x2="22.374" y2="29.39"/>
+                                    </svg>
+								</span>
+
+
+                    <?php $_helper = Mage::helper('catalog/category') ?>
+                    <?php $_categories = $_helper->getStoreCategories() ?>
+                    <?php $currentCategory = Mage::registry('current_category') ?>
+                    <?php if (count($_categories) > 0): ?>
+                    <ul class="nav-dropdown menu level2" style="display: block;">
+                        <?php foreach ($_categories as $_category): ?>
+                            <li class="menu-item has-dropdown c-text">
+							<i></i>
+													<span class="arrow-tag toggle-ys-menu">
+<!--											<img class="responsive" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png') ?><!--" alt=""/>-->
+											<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                 width="44px" height="44px" viewBox="0 0 44 44"
+                                                 enable-background="new 0 0 44 44" xml:space="preserve">
+<line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374" y2="109.657"/>
+                                                <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
+                                                      y1="21.39" x2="30.374" y2="21.39"/>
+                                                <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
+                                                      y1="13.39" x2="22.374" y2="29.39"/>
+</svg>
+								</span>
+
+                                </span>
+                                <a class="menu-link main-txt" href="<?php echo $_helper->getCategoryUrl($_category) ?>">
+                                    <?php echo $_category->getName() ?>
+                                </a>
+                                <?php //if ($currentCategory && $currentCategory->getId() == $_category->getId()): ?>
+                                <?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
+                                <?php $_subcategories = $_category->getChildrenCategories() ?>
+                                <?php if (count($_subcategories) > 0): ?>
+                                    <ul class="nav-dropdown menu level3">
+                                        <?php foreach ($_subcategories as $_subcategory): ?>
+                                            <li class="menu-item">
+                                                <i></i>
+                                                <a class="menu-link sub_cat"
+                                                   href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">
+                                                    <?php echo $_subcategory->getName() ?></a>
+
+
+                                                <?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
+                                                <?php $_subsubcategories = $_subcategory->getChildrenCategories() ?>
+                                                <?php if (count($_subsubcategories) > 0): ?>
+                                                    <span class="arrow-tag sub_menu_icons">
+																<svg width="44px" height="44px">
+                                                                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
+                                                                          y2="109.657"/>
+                                                                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
+                                                                          y1="21.39" x2="30.374" y2="21.39"/>
+                                                                    <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
+                                                                          y1="13.39" x2="22.374" y2="29.39"/>
+                                                                </svg>
+
+																	</span>
+                                                    <ul class="sub_menu_links">
+                                                        <?php foreach ($_subsubcategories as $_subsubcategory): ?>
+                                                            <li class="menu-item">
+                                                                <a class="menu-link"
+                                                                   href="<?php echo $_helper->getCategoryUrl($_subsubcategory) ?>">
+                                                                    <?php echo $_subsubcategory->getName() ?></a>
+                                                            </li>
+                                                        <?php endforeach; ?>
+                                                    </ul>
+                                                <?php endif; ?>
+
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php endif; ?>
+                                <?php //endif; ?>
+                            </li>
+                        <?php endforeach; ?>
+                        <?php endif; ?>
+                        <li class="menu-item story_icon">
+								  <span>
+									  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                           viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;"
+                                           xml:space="preserve">
+<style type="text/css">
+    .st0 {
+        fill: none;
+        stroke: #CCCCCC;
+        stroke-miterlimit: 10;
+    }
+</style>
+                                          <use xlink:href="#ys_story"></use>
+</svg>
+								  </span>
+                            <a href="<?php echo $this->getBaseUrl(); ?>our-story" class="menu-link sub-title">YS story</a></li>
+                        <li class="menu-item tech_icon">
+								  <span>
+									  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                           viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;"
+                                           xml:space="preserve">
+<style type="text/css">
+    .st0 {
+        fill: none;
+        stroke: #CCCCCC;
+        stroke-miterlimit: 10;
+    }
+</style>
+                                          <use xlink:href="#ys_tech"></use>
+</svg>
+
+								  </span>
+                            <a href="<?php echo $this->getBaseUrl(); ?>ys-fabric-tech" class="menu-link sub-title">YS tech</a>
+                        </li>
+
+                        <li class="menu-item smogi-icon">
+                            <a href="<?php echo $this->getBaseUrl(); ?>smogi-bucks" class="menu-link sub-title">SMOGI Bucks</a>
+							  <span>
+<!--								  <img class="responsive" src="--><?php //echo $this->getSkinUrl('images/smogi-icon.png') ?><!--" alt="">-->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+     y="0px"
+     viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve">
+<style type="text/css">
+    .st0 {
+        fill: none;
+        stroke: #CCCCCC;
+        stroke-miterlimit: 10;
+    }
+</style>
+    <use xlink:href="#smogi_bucks"></use>
+</svg>
+							  </span>
+                        </li>
+
+                        <li style="position:relative;" class="menu-item contact_icon_li"><a href="<?php echo $this->getBaseUrl(); ?>contacts/" class="menu-link sub-title">Contact</a>
+							    <span class="contact-icon">
+								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                     viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve">
+<style type="text/css">
+    .st0 {
+        fill: none;
+        stroke: #CCCCCC;
+        stroke-miterlimit: 10;
+    }
+</style>
+                                    <use xlink:href="#contact"></use>
+</svg>
+
+
+								</span>
+
+                        </li>
+
+
+                        <li style="position:relative;" class="menu-item contact_icon_li"><a href="<?php echo $this->getBaseUrl(); ?>help/" class="menu-link sub-title">Help</a>
+							    <span class="contact-icon">
+								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                     viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve">
+
+
+            <style type="text/css">
+                .st0{fill:none;stroke:#CCCCCC;stroke-miterlimit:10;}
+            </style>
+                                    <use xlink:href="#help"></use>
+</svg>
+
+
+								</span>
+
+                        </li>
+
+
+                    </ul><span class="border-line"></span>
+                </li>
+                <!--							  <li class="menu-item"><a href="-->
+                <?php //echo $this->getBaseUrl();?><!--our-story" class="menu-link sub-title">YS For USA</a></li>-->
+                <li class="menu-item has-dropdown rangoli-link main-heading">
+                    <!--								 <span class="rangoli-icon" style="opacity: 1"><img class="responsive" src="-->
+                    <?php //echo $this->getSkinUrl('images/rangoli-icon.png') ?><!--" alt=""/></span>-->
+
+								  <span class="arrow-tag toggle-ys-menu">
+                                      <svg width="44px" height="44px">
+                                          <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
+                                                y2="109.657"/>
+                                          <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
+                                                y1="21.39" x2="30.374" y2="21.39"/>
+                                          <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
+                                                y1="13.39" x2="22.374" y2="29.39"/>
+                                      </svg>
+<!--									  <img alt="" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png'); ?><!--" class="responsive">-->
+
+								</span>
+
+                    </span>
+								<span class="white-img rangoli_text_a" style="display:block; height: 44px">
+                                 <a href="<?php echo $this->getUrl('rangoli') ?>"
+                                    class="menu-link m-link  rangoli_li_a">
+                                     <!--	<img class="responsive" src="-->
+                                     <?php //echo $this->getSkinUrl('images/rangoli-text.png') ?><!--" alt=""/>-->
+
+                                     <span><svg  width="168.676px"
+                                                 height="45.014px">
+                                             <use xlink:href="#rangoli_logo" x="0" y="0" width="168.676px"
+                                                  height="45.014px"/>
+                                         </svg></span>
+
+                                 </a>
+								 </span>
+
+                    <ul class="nav-dropdown menu rangoli_menu">
+                        <li class="menu-item has-dropdown c-text ">
+                            <a href="/rangoli/read/" class="menu-link main-txt">Read</a>
+                            <span><svg>
+                                    <use xlink:href="#read" x="0" y="0" width="44px" height="44px"/>
+                                </svg></span>
+                        </li>
+                        <li class="menu-item has-dropdown c-text ">
+                            <a href="/rangoli/look/" class="menu-link main-txt">Look</a>
+                            <span><svg>
+                                    <use xlink:href="#look" x="0" y="0" width="44px" height="44px"/>
+                                </svg></span>
+                        </li>
+                        <li class="menu-item has-dropdown c-text ">
+                            <a href="/rangoli/learn/" class="menu-link main-txt">Learn</a>
+                            <span><svg>
+                                    <use xlink:href="#learn" x="0" y="0" width="44px" height="44px"/>
+                                </svg></span>
+                        </li>
+                        <!--<li class="menu-item has-dropdown c-text ">
+                            <span><svg>
+                                    <use xlink:href="#love" x="0" y="0" width="44px" height="44px"/>
+                                </svg></span>
+                            <a href="/rangoli/iloveyogasmoga/" class="menu-link main-txt">Love,YOGASMOGA</a>
+                        </li>-->
+                        <li class="menu-item has-dropdown c-text_small r_grey_text">
+                            <a href="/rangoli/smogis/" class="menu-link main-txt">SMOGIs</a>
+                            <span><svg>
+                                    <use xlink:href="#smogis" x="0" y="0" width="44px" height="44px"/>
+                                </svg></span>
+                        </li>
+                        <li class="menu-item has-dropdown c-text_small r_grey_text">
+                            <a href="/rangoli/ys-locations/" class="menu-link main-txt">YS
+                                Locations</a>
+                            <span><svg>
+                                    <use xlink:href="#locations" x="0" y="0" width="44px" height="44px"/>
+                                </svg></span>
+                        </li>
+                        <li class="menu-item has-dropdown c-text_small r_grey_text">
+                            <a href="/rangoli/connect/" class="menu-link main-txt">Connect</a>
+                            <span><svg>
+                                    <use xlink:href="#connect" x="0" y="0" width="44px" height="44px"/>
+                                </svg></span>
+                        </li>
+                        <li class="menu-item has-dropdown c-text_small r_grey_text">
+                            <a href="/rangoli/about/" class="menu-link main-txt">About</a>
+                            <span><svg>
+                                    <use xlink:href="#about" x="0" y="0" width="44px" height="44px"/>
+                                </svg></span>
+                        </li>
+
+                    </ul>
+                    <span class="border-line"></span>
+                </li>
+
+                    <li class="menu-item additional_links">
+                        <ul>
+                            <li><a href="javascript:void(0);">&copy; 2015 YOGASMOGA</a></li>
+                            <li><a href="<?php echo $this->getBaseUrl(); ?>privacy-policy/">Privacy Policy</a></li>
+                            <li><a href="<?php echo $this->getBaseUrl(); ?>terms-and-conditions/">Terms &amp; Conditions</a></li>
+                        </ul>
+                    </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
