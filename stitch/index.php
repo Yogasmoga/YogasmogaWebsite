@@ -90,6 +90,7 @@ for ($row = 2; $row <= $highestRow; $row++) {
     $magento_stock = $rowData[0][18+$available];
     $greenwich_stock = $rowData[0][21+$available];
     $beverley_hills_stock = $rowData[0][24+$available];
+    $magento_fallriver = $fallriver_stock + $magento_stock;
     $magento_price = $rowData[0][30];
 
 //    $sku = $rowData[0][0];
@@ -140,6 +141,7 @@ for ($row = 2; $row <= $highestRow; $row++) {
         'brentwood_stock' => $brentwood_stock,
         'fallriver_stock' => $fallriver_stock,
         'magento_stock' => $magento_stock,
+        'magentofallriver_stock' => $magento_fallriver,
         'greenwich_stock' => $greenwich_stock,
         'beverley_hills_stock' => $beverley_hills_stock,
         'magento_price' => $magento_price
@@ -432,6 +434,7 @@ ksort($all_products);
         <option value="fallriver">Fall river</option>
         <option value="greenwich">Greenwich</option>
         <option value="magento">Magento</option>
+        <option value="magentofallriver">Magento+Fallriver</option>
     </select>
         <select name="available" style="padding: 5px;">
             <option value="0">Stock</option>

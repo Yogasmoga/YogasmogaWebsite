@@ -89,6 +89,7 @@ if (file_exists($inputFileName)) {
         $magento_stock = $rowData[0][18+$available];
         $greenwich_stock = $rowData[0][21+$available];
         $beverley_hills_stock = $rowData[0][24+$available];
+        $magento_fallriver = $fallriver_stock + $magento_stock;
         $magento_price = $rowData[0][30];
 
 //    $sku = $rowData[0][0];
@@ -137,6 +138,7 @@ if (file_exists($inputFileName)) {
             'brentwood_stock' => $brentwood_stock,
             'fallriver_stock' => $fallriver_stock,
             'magento_stock' => $magento_stock,
+            'magentofallriver_stock' => $magento_fallriver,
             'greenwich_stock' => $greenwich_stock,
             'magento_price' => $magento_price
         );

@@ -80,7 +80,7 @@ if(!is_writable(dirname($output_filename))){
 	//imagepng($final_image, $output_filename.$type, $png_quality);
 	imagejpeg($final_image, $output_filename.$type, $jpeg_quality);
 
-	$saved_file = get_site_url()."/	".$output_filename.$type;
+	$saved_file = get_site_url()."/".$output_filename.$type;
 	$user_id = get_current_user_id();
 
 	$count = $wpdb->get_results("select * from rangoli_usermeta where user_id=".$user_id." and meta_key='cupp_upload_meta'");
