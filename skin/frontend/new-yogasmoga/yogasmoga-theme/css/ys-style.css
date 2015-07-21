@@ -1862,7 +1862,8 @@ button.button.btn-addtoaccount{margin: 0 !important;}
     position: absolute;
     right: 40px;
     text-transform: initial;
-    top: 45px;
+    /* top: 45px; */  /* without banner */
+    top: 69px;
 }
 .choose-file-cont #file_upload{
     height: auto !important;
