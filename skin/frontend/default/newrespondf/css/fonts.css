@@ -1,5 +1,11 @@
 
 @font-face {
+    font-family: 'AvantGarde-Demi';
+    src: url('../fonts/AvantGarde-Demi.eot') format('embedded-opentype'), url('../fonts/avantgarde-demi.otf') format('opentype'), url('../fonts/AvantGarde-Demi.ttf')  format('truetype'), url('../fonts/AvantGarde-Demi.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
     font-family: 'GraphikRegular';
     src: url('../fonts/Graphik-Regular.eot') format('embedded-opentype');
     src: url('../fonts/Graphik-Regular.svg') format('svg');
@@ -167,11 +173,5 @@
     font-style:		normal;
 }
 
-@font-face {
-  font-family: 'AvantGarde-Demi';
-  src: url('../fonts/AvantGarde-Demi.eot') format('embedded-opentype'), url('../fonts/avantgarde-demi.otf') format('opentype'), url('../fonts/AvantGarde-Demi.ttf')  format('truetype'), url('../fonts/AvantGarde-Demi.svg') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
 /************* may 1 *******************/
 

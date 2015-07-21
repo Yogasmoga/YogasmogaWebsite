@@ -1329,12 +1329,14 @@ p.small.err_msg {
 .flex-control-nav a.flex-active {
   background: #A58639;
 }
+
 .slide_post_text{
     position: absolute;
     top: 31%;
     left:30px;
     right: 30px;
 }
+
 .slider_post_name {
     color: #fff;
     font: 22px/25px ITCAvantGardeStd-Bk;
