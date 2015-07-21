@@ -29,6 +29,15 @@ if (isset($_GET['store'])) {
     if (!in_array($store, $stores))
         $store = 'total';
 }
+
+$available = 0;         // don't pick stock - available from excel, 1 means pick available
+if(isset($_GET['available'])) {
+    $available = intval(strtolower($_GET['available']));
+
+    if($available!=0 || $available!=1)
+        $available = 0;
+}
+
 ?>
 
 <?php
@@ -75,11 +84,11 @@ if (file_exists($inputFileName)) {
         $name = $rowData[0][2];
         $unit_price = $rowData[0][4];
         $all_stock = $rowData[0][9];
-        $brentwood_stock = $rowData[0][15];
-        $fallriver_stock = $rowData[0][12];
-        $magento_stock = $rowData[0][18];
-        $greenwich_stock = $rowData[0][21];
-        $beverley_hills_stock = $rowData[0][24];
+        $brentwood_stock = $rowData[0][15+$available];
+        $fallriver_stock = $rowData[0][12+$available];
+        $magento_stock = $rowData[0][18+$available];
+        $greenwich_stock = $rowData[0][21+$available];
+        $beverley_hills_stock = $rowData[0][24+$available];
         $magento_price = $rowData[0][30];
 
 //    $sku = $rowData[0][0];
