@@ -2589,7 +2589,9 @@ table.smallimagecontiner td.selectedimage{
 }
 .share-strip,.new-arrivals-block{opacity: 0;}
 .cat-slide .flex-direction-nav{display: none;}
-.namaskar-overlay1{top:69px;}
+
+/*.namaskar-overlay1{top:69px;}*/  /* without banner */
+.namaskar-overlay1{top:94px;}
 
 .productCont .prod-img img:nth-child(1){
     visibility: visible;
