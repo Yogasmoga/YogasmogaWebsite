@@ -54,10 +54,10 @@
         $reward_model = Mage::getModel('rewardpoints/stats');
         //echo "customer".$customerId;
         //echo "$".number_format((float)($reward_model->getPointsCurrent($customerId, $store_id)+0), 2, '.','');
-        $points = ($reward_model->getPointsCurrent($customerId, $store_id)+0);
+        //$points = ($reward_model->getPointsCurrent($customerId, $store_id)+0);
         //Mage::helper('core')->currency($reward_model->getPointsCurrent($customerId, $store_id)+0);
 
-//       echo '<a href="javascript:void(0)"><span class="reward_points"><b>$</b>'.($reward_model->getPointsCurrent($customerId, $store_id)+0).'</span></a>';
+       echo '<a href="javascript:void(0)"><span class="reward_points"><b>$</b>'.($reward_model->getPointsCurrent($customerId, $store_id)+0).'</span></a>';
 	 ?>
 
 <?php endif; ?>

@@ -156,7 +156,7 @@
 	</script> -->
     <?php else: ?>
     <form action="<?php echo $this->getUrl('rewardpoints/index/removequotation/').'#smogi-promotions' ?>" method="post" name="discountFormPoints2" id="discountFormPoints2">
-        <fieldset>
+        <fieldset style="float:left;">
             
             <?php echo $this->getIllustrationImage()?>
             <div  style="display:none;" class="rewards_point_cart"><?php echo $this->__("This shopping cart is worth %s loyalty point(s).", $pts);?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($pts);?></div>
