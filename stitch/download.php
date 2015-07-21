@@ -19,7 +19,7 @@ $inputFileName = 'stitch.xls';
 $upload_display = "display:none";
 $filter_display = "display:none";
 
-$stores = array('all', 'beverley_hills', 'brentwood', 'fallriver', 'magento', 'greenwich');
+$stores = array('all', 'beverley_hills', 'brentwood', 'fallriver', 'magento', 'greenwich', 'magentofallriver');
 $ar_sizes = array('One', 'S', 'M', 'L', 'XL', 'XXL', '2', '4', '6', '8', '10', '12', '14', '16', '18');
 
 $store = 'all';
