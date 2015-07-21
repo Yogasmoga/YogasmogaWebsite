@@ -6549,3 +6549,8 @@ button#send2 {
 video{
     background: #555;
 }
+
+.form-list > li#billing-new-address-form {
+    float: left;
+    width: 100%;
+}

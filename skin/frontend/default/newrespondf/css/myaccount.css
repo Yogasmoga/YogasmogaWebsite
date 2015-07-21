@@ -108,7 +108,8 @@ a.forgot-link:hover
 
 .submitbtn
 {
-    background-image : url('../images/customer/submit_off.png');
+    /*background-image : url('../images/customer/submit_off.png');*/
+    background-image : url('../images/submit-btn.png');
     background-repeat: no-repeat;
     background-position: center;
     width : 125px;
