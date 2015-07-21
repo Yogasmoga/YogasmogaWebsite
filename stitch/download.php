@@ -19,7 +19,7 @@ $inputFileName = 'stitch.xls';
 $upload_display = "display:none";
 $filter_display = "display:none";
 
-$stores = array('all', 'brentwood', 'fallriver', 'magento', 'greenwich');
+$stores = array('all', 'beverley_hills', 'brentwood', 'fallriver', 'magento', 'greenwich');
 $ar_sizes = array('One', 'S', 'M', 'L', 'XL', 'XXL', '2', '4', '6', '8', '10', '12', '14', '16', '18');
 
 $store = 'all';
@@ -29,6 +29,15 @@ if (isset($_GET['store'])) {
     if (!in_array($store, $stores))
         $store = 'total';
 }
+
+$available = 0;         // don't pick stock - available from excel, 1 means pick available
+if(isset($_GET['available'])) {
+    $available = intval(strtolower($_GET['available']));
+
+    if($available!=0 || $available!=1)
+        $available = 0;
+}
+
 ?>
 
 <?php
@@ -75,10 +84,11 @@ if (file_exists($inputFileName)) {
         $name = $rowData[0][2];
         $unit_price = $rowData[0][4];
         $all_stock = $rowData[0][9];
-        $brentwood_stock = $rowData[0][15];
-        $fallriver_stock = $rowData[0][12];
-        $magento_stock = $rowData[0][18];
-        $greenwich_stock = $rowData[0][21];
+        $brentwood_stock = $rowData[0][15+$available];
+        $fallriver_stock = $rowData[0][12+$available];
+        $magento_stock = $rowData[0][18+$available];
+        $greenwich_stock = $rowData[0][21+$available];
+        $beverley_hills_stock = $rowData[0][24+$available];
         $magento_price = $rowData[0][30];
 
 //    $sku = $rowData[0][0];
@@ -123,6 +133,7 @@ if (file_exists($inputFileName)) {
             'sku' => $sku,
             'unit_price' => round($unit_price, 2),
             'all_stock' => $all_stock,
+            'beverley_hills_stock' => $beverley_hills_stock,
             'brentwood_stock' => $brentwood_stock,
             'fallriver_stock' => $fallriver_stock,
             'magento_stock' => $magento_stock,
@@ -644,8 +655,10 @@ if (file_exists($inputFileName)) {
 
     ob_end_clean();
 
+    $filename = $store . "_formatted.xls";
+
     header('Content-Type: application/vnd.ms-excel');
-    header("Content-disposition: attachment; filename=\"formatted.xls\"");
+    header("Content-disposition: attachment; filename=\"$filename\"");
     header('Cache-Control: max-age=0');
 
     $objWriter = PHPExcel_IOFactory::createWriter($objTpl, 'Excel5');  //downloadable file is in Excel 2003 format (.xls)

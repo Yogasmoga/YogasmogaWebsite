@@ -23,7 +23,7 @@
     else
         $upload_display = "display:block";
 
-    $stores = array('all', 'brentwood', 'fallriver', 'magento', 'greenwich');
+    $stores = array('all', 'beverley_hills', 'brentwood', 'fallriver', 'magento', 'greenwich');
     $ar_sizes = array('One', 'S', 'M', 'L', 'XL', 'XXL', '2', '4', '6', '8', '10', '12', '14', '16', '18');
 
     $store = 'all';
@@ -31,7 +31,15 @@
         $store = strtolower($_GET['store']);
 
         if (!in_array($store, $stores))
-            $store = 'total';
+            $store = 'all';
+    }
+
+    $available = 0;         // don't pick stock - available from excel, 1 means pick available
+    if(isset($_GET['available'])) {
+        $available = intval(strtolower($_GET['available']));
+
+        if($available!=0 || $available!=1)
+            $available = 0;
     }
 ?>
 
@@ -77,10 +85,11 @@ for ($row = 2; $row <= $highestRow; $row++) {
     $name = $rowData[0][2];
     $unit_price = $rowData[0][4];
     $all_stock = $rowData[0][9];
-    $brentwood_stock = $rowData[0][15];
-    $fallriver_stock = $rowData[0][12];
-    $magento_stock = $rowData[0][18];
-    $greenwich_stock = $rowData[0][21];
+    $brentwood_stock = $rowData[0][15+$available];
+    $fallriver_stock = $rowData[0][12+$available];
+    $magento_stock = $rowData[0][18+$available];
+    $greenwich_stock = $rowData[0][21+$available];
+    $beverley_hills_stock = $rowData[0][24+$available];
     $magento_price = $rowData[0][30];
 
 //    $sku = $rowData[0][0];
@@ -114,6 +123,8 @@ for ($row = 2; $row <= $highestRow; $row++) {
 
         if(count($ar_within_parenthesis)==3)
             $height = $ar_within_parenthesis[2];
+        else
+            $height = '';
     }
 
     $product_names[] = $actual_name;
@@ -130,6 +141,7 @@ for ($row = 2; $row <= $highestRow; $row++) {
         'fallriver_stock' => $fallriver_stock,
         'magento_stock' => $magento_stock,
         'greenwich_stock' => $greenwich_stock,
+        'beverley_hills_stock' => $beverley_hills_stock,
         'magento_price' => $magento_price
     );
 }
@@ -415,11 +427,16 @@ ksort($all_products);
     <form action="index.php" method="get" id="frmfilter">
     <select name="store" style="padding: 5px;">
         <option value="all">All</option>
+        <option value="beverley_hills">Beverley Hills</option>
         <option value="brentwood">Brentwood</option>
         <option value="fallriver">Fall river</option>
         <option value="greenwich">Greenwich</option>
         <option value="magento">Magento</option>
     </select>
+        <select name="available" style="padding: 5px;">
+            <option value="0">Stock</option>
+            <option value="1">Available Stock</option>
+        </select>
     <select id="products" style="display: inline; padding: 5px;">
         <?php
             foreach($product_names as $product){
@@ -431,7 +448,7 @@ ksort($all_products);
     <input type="button" style="padding:5px; margin-right: 20px;" id="showupload" value="Upload File"/>
     </form>
     <br/>
-    <a id="exceldownload" href="download.php?store=<?php echo $store;?>" style="margin-right:20px;">Download Excel</a>
+    <a id="exceldownload" href="download.php?available=$available&store=<?php echo $store;?>" style="margin-right:20px;">Download Excel</a>
 
     <div style="float:left; padding-left: 20px;">
         <table style="width:600px;">
