@@ -77,6 +77,7 @@ $post = get_post();
         .page_heading h1 span{
             font: 35px/50px freight-text-pro;
             font-weight: 300;
+            font-style: italic;
         }
         .page_heading p{
             font:400 20px/35px freight-text-pro;
