@@ -5189,6 +5189,7 @@ p.apply_promo_label {
     margin-bottom: 20px;
     position: relative;
     text-align: left;
+    clear: both;
 }
 
 p.apply_promo_label > span {
