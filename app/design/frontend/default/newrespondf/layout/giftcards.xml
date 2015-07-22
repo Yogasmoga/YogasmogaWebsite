@@ -26,7 +26,13 @@
 				<name>mobile/myaccount.js</name>
             </action>
         </reference>
-		
+        <reference name="head">
+            <action method="addItem">
+                <type>js</type>
+                <name>mobile/myvalidation.js</name>
+            </action>
+        </reference>
+
         <reference name="content">
             <block type="giftcards/balance" name="card_balance" template="webtex/giftcards/balance.phtml"/>
             <block type="giftcards/purchased" name="card_purchased" template="webtex/giftcards/purchased.phtml"/>

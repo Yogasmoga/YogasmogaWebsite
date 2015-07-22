@@ -741,7 +741,6 @@ function createcard()
         data : jQuery("#createcardform").serialize(),
         success : function(result){
 		
-			alert(result.status);
             result = eval('(' + result + ')');
             _addingtocart = false;
             if(result.status == 'success')
