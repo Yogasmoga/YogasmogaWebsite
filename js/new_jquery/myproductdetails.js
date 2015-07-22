@@ -18,22 +18,17 @@ jQuery(document).ready(function ($) {
     $(document).keydown(function (e) {
         var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
         if (key == 37) {  ///left key
-            // console.log ('left');
             if ($(".selected").prev('div').length) {
                 $(".selected").removeClass('selected').prev('div').addClass('selected');
                 changeColor($(".selected > table").attr("color"));
             }
         }
-        //  else if (e.keyCode==38) { console.log ('up');}
         else if (key == 39) {  ///right key
-            // console.log ('right');
             if ($(".selected").next('div').length) {
                 $(".selected").removeClass('selected').next('div').addClass('selected');
                 changeColor($(".selected > table").attr("color"));
             }
         }
-        //else if (e.keyCode==40) {console.log ('down');}
-
     });
     $("table.normalproductdetail div#colorcontainer table").live("click", function () {
         currentColorObject = $(this);
@@ -87,8 +82,6 @@ jQuery(document).ready(function ($) {
 
     InitializeProductQty();
     $("div.sizeselector select.qtyselector").live("change", function () {
-        //alert("triggered");
-        //console.log('triggered');
         $('.errormsg').empty().hide();
         jQuery("#orderitem").removeClass('bagdisabled');
         jQuery("#orderitem").addClass('spbutton');
@@ -157,12 +150,9 @@ jQuery(document).ready(function ($) {
     $("#preorderhelp").live('click', function () {
         //if(_productdisplaymode == 'page')
 //        {
-//            //console.log($("#preorderitem").position().top);
-////            console.log($("div#preorderinfo").height());
 //            var tp = $("#preorderitem").position().top - $("div#preorderinfo").height() - 10;
 //            if(tp <80)
 //                tp = 80;
-//            //console.log(tp);
 //            $("div#preorderinfo").css('top', tp + 'px');
 //        }
         $("div#preorderinfo").fadeIn('normal');
@@ -194,7 +184,6 @@ function InitializeProductQty() {
 
 function changelengthtype(sz) {
 
-    //console.log('changing size');
     jQuery("div.selectedlength div").removeClass("selected");
     sz.addClass("selected");
 
@@ -240,7 +229,6 @@ function changelengthtype(sz) {
     //var rewardpoints = Math.floor((price * 1) * _rewardpointsearned);
 //    jQuery("div.smogibuckcount td").html(rewardpoints);
     _rewardpoints = sz.attr("rewardpoints") * 1;
-    //console.log(jQuery("select.qtyselector").val());
     if ((jQuery("select.qtyselector").val() * 1) > 0)
         jQuery("div.smogibuckcount td").html(_rewardpoints * (jQuery("select.qtyselector").val() * 1));
     else
@@ -284,7 +272,6 @@ function changeBraCupInsert(current_color) {
     for (var i = 0; i < bra_cup_insert_color_array.length; i++) {
         var color = bra_cup_insert_color_array[i];
         var value = bra_cup_insert_value_array[i];
-        console.log(color.toLowerCase() + " , " + current_color.toLowerCase() + " , " + (color.toLowerCase() == current_color.toLowerCase()));
         if (color.toLowerCase() == current_color.toLowerCase()) {
             if (value.toLowerCase() == "yes") {
                 jQuery("#includeoption").hide();
@@ -310,10 +297,7 @@ function changeproductsize(sz) {
         sz.addClass("dvselectedsize");
         var colorName = jQuery("#colorcontainer div.selected table").attr("color");
         var colorindex = searchproductcolorinfoarrray(colorName);
-        // console.log(colorindex);
         var sizeVal = sz.attr("size");
-        //console.log(colorindex +"---"+sizeVal);
-        // console.log(_productcolorinfo[colorindex]);
         jQuery(".selectedlength div").hide();
         for (i = 0; i < _productcolorinfo[colorindex].lengths[sizeVal].length; i++) {
             var lengthtemp = _productcolorinfo[colorindex].lengths[sizeVal][i].split("|");
@@ -369,13 +353,10 @@ function changeproductsize(sz) {
 //        return;
         }
         else {
-            console.log('1');
             jQuery("#outofstockitem").hide();
             var qty = sz.attr("qty") * 1;
             var orderqty = _productorderqty;
-            console.log(qty + "---" + orderqty);
             if ((qty - orderqty) >= 0) {
-                console.log('2');
                 jQuery("#orderitem").show();
                 jQuery("#preorderitem").hide();
                 jQuery("#preorderhelp").hide();
@@ -383,14 +364,12 @@ function changeproductsize(sz) {
             }
             else {
                 if (sz.hasClass("canbackorder")) {
-                    console.log('3');
                     jQuery("#orderitem").hide();
                     jQuery("#preorderitem").show();
                     jQuery("#preorderhelp").show();
                     jQuery("#outofstockitem").hide();
                 }
                 else {
-                    console.log('4');
                     jQuery("#orderitem").hide();
                     jQuery("#preorderitem").hide();
                     jQuery("#preorderhelp").hide();
@@ -407,7 +386,6 @@ function changeproductsize(sz) {
         //var rewardpoints = Math.floor((price * 1) * _rewardpointsearned);
 //    jQuery("div.smogibuckcount td").html(rewardpoints);
         _rewardpoints = sz.attr("rewardpoints") * 1;
-        //console.log(jQuery("select.qtyselector").val());
         if ((jQuery("select.qtyselector").val() * 1) > 0)
             jQuery("div.smogibuckcount td").html(_rewardpoints * (jQuery("select.qtyselector").val() * 1));
         else
@@ -555,7 +533,6 @@ function changeColor(clr) {
         //var size = _productcolorinfo[colorindex].sizes[i].substr(0, _productcolorinfo[colorindex].sizes[i].indexOf('|'));
 //        var qty = _productcolorinfo[colorindex].sizes[i].substr(_productcolorinfo[colorindex].sizes[i].indexOf('|') + 1, _productcolorinfo[colorindex].sizes[i].indexOf('|') + 1);
 //        var price = _productcolorinfo[colorindex].sizes[i].substr(_productcolorinfo[colorindex].sizes[i].indexOf('|', _productcolorinfo[colorindex].sizes[i].indexOf('|') + 1) + 1);
-        //console.log(qty);
         jQuery("div#sizecontainer div[size='" + size + "']").parent().removeClass("disabled");
         jQuery("div#sizecontainer div[size='" + size + "']").attr("qty", qty);
         jQuery("div#sizecontainer div[size='" + size + "']").attr("price", price);
@@ -565,8 +542,11 @@ function changeColor(clr) {
             jQuery("div#sizecontainer div[size='" + size + "']").addClass('outofstock');
             jQuery("div#sizecontainer div[size='" + size + "']").find('img').show();
         }
-        else
+        else {
             jQuery("div#sizecontainer div[size='" + size + "']").removeClass('outofstock');
+            jQuery("div#sizecontainer div[size='" + size + "']").find('img').hide();
+        }
+
         if (canbackorder)
             jQuery("div#sizecontainer div[size='" + size + "']").addClass('canbackorder');
         else
@@ -577,7 +557,6 @@ function changeColor(clr) {
     jQuery("#preorderhelp").hide();
     jQuery("#outofstockitem").hide();
     var smallimagehtml = '';
-    console.log(_productdisplaymode);
 
     if (_productdisplaymode == 'popup') {
         for (i = 0; i < _productcolorinfo[colorindex].smallimages.length; i++) {
@@ -597,9 +576,7 @@ function changeColor(clr) {
         jQuery("td#tdpopupproductbigimage, td#tdpopupproductsmallimages").fadeIn('fast');
 
 
-        //console.log(clr);
         var clrvalue = jQuery("table.productdetailtable div#colorcontainer table[color='" + clr + "']").attr("value");
-        //console.log(clrvalue);
         var href = jQuery("table.productdetailpopupbottomlinks div.viewfulldetails a").attr("href");
         if (href.indexOf('?') > 0)
             href = href.substr(0, href.indexOf('?'));
@@ -656,9 +633,9 @@ function changeColor(clr) {
         firstSize = jQuery("div#sizecontainer td:not(.disabled)").first().find("div");
         firstSizePrice = firstSize.attr("price");
     }
-    console.log(amount + "--" + firstSize.html() + "--" + firstSizePrice);
+
     if (_productcolorinfo[colorindex].insale == 'Yes') {
-        firstSize.trigger("click");//console.log(firstSizePrice+"mmmmm");
+        firstSize.trigger("click");
         amount.html("$" + firstSizePrice);
         amount.addClass("insale-price");
         jQuery(".box-seprtr").find("p.insale").removeClass("dnone");
@@ -666,7 +643,6 @@ function changeColor(clr) {
 
     } else {
 
-        //console.log(firstSizePrice+"oooooo");
         amount.html("$" + firstSizePrice);
     }
 
@@ -731,7 +707,6 @@ function addtocart() {
 //        addurl = addurl + '&options[1]=1';
 
         addurl = addurl + '&options[' + _braOptionID + ']=' + _braOptionTypeID;
-        console.log(_braOptionTypeID + "---" + _braOptionID);
     }
 
     //if(_isBundleOptionAvailable && ){
@@ -837,7 +812,7 @@ function insertBraOption() {
             if (_braSelected == 0) {
                 var productCost = jQuery(".productcost").text().split("$");
                 var productCostV = parseInt(productCost[1]) + braValue;
-                console.log(productCost[1]);
+
                 jQuery(".productcost").text("$" + productCostV);
                 _braSelected = 1;
                 _braOptionTypeID = jQuery(this).attr("optiontypeid");
