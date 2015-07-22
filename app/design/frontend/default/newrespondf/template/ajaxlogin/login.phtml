@@ -88,7 +88,9 @@
             e.preventDefault();
             loginCustomer();
         });
-		jQuery(".forgot_password").click(function (e) {
+
+        jQuery('.forgot_password').unbind('click');
+        jQuery(".forgot_password").click(function (e) {
             e.preventDefault();
             forgotCustomer();
         });
