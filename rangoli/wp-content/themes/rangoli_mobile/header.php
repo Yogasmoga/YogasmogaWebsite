@@ -172,9 +172,10 @@ $logged_in = is_user_logged_in();
             echo "var user_color_shade='#555555';";
             }
             ?>
+
             (function (d) {
                 var config = {
-                        kitId: 'hhs7njj',
+                        kitId: 'xta6sbe',
                         scriptTimeout: 3000
                     },
                     h = d.documentElement, t = setTimeout(function () {
