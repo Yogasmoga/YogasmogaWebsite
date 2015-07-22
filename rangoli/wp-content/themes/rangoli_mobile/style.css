@@ -91,7 +91,7 @@ div,p{
 .yogasmoga-menu .main_btn > a {
     display: inline-block;
     height: 44px;
-    padding: 0 2px 0 11px;
+    padding: 2px 0 0 8px;
     line-height: 50px;
     width: 100%;
     display: block;
@@ -291,6 +291,7 @@ div,p{
     color: #555;
     font:15px/44px ITCAvantGardeStd-Bk;
     text-decoration: none;
+    margin-left: 2px;
     text-transform: uppercase;
 }
 .menu_arrow {
@@ -390,6 +391,9 @@ div,p{
     -webkit-transform: rotateZ(-180deg);
     transition-duration: 200ms;
 }
+.yogasmoga_menu_links.level2 ,.category-menu_mobile{
+    padding-bottom: 22px;
+}
 .overlay-text {
     bottom: 0;
     left: 0;
@@ -452,7 +456,7 @@ div,p{
     line-height: 50px;
     height: 44px;
 }
-.yogasmoga_menu_links ul li a:hover{
+.yogasmoga_menu_links ul li a:hover,.additional_links li:hover{
     background: #EEEEEE;
 }
 .not-logged-in-menu .yogasmoga_menu_links ul li a {
@@ -523,6 +527,7 @@ div,p{
     top: 44px;
     width: 100%;
     z-index: 8;
+    color: #444;
 }
 .page_name {
     float: none;
@@ -1188,6 +1193,9 @@ textarea {
     right: 0;
     top: 0;
     width: 44px;
+}
+.close_login_popup:hover, .close_signup_popup:hover, .close_after_signup_popup:hover {
+    background: #373737;
 }
 .smogi_bucks_banner img {
     width: 100%;

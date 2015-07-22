@@ -248,7 +248,7 @@ input, textarea, select {
 }
 
 .popup_container.sign_in_modal .overlay-inner-bg .left_block ul li {
-    margin-bottom: 13px;
+    margin-bottom: 7px;
 }
 
 .popup_container.sign_in_modal .overlay-inner-bg .left_block ul li label {
@@ -331,7 +331,9 @@ input, textarea, select {
     width: 44px;
     z-index: 1;
 }
-
+#content > .cross_popup:hover {
+    background: #373737;
+}
 .reg_msg_new {
 
     color: gray;

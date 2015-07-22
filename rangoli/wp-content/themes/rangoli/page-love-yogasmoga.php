@@ -44,7 +44,6 @@ $args = array(
             display: block;
             margin: 0 auto 20px;
             box-sizing: border-box;
-
         }
         .insta_post img{
             width: 100%;

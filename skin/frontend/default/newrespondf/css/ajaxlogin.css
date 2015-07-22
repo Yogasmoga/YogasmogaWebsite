@@ -86,6 +86,8 @@ li.main_li:hover > ul {
 
 #loginPopupDiv .join-smogi .gold-text {
     color: #ae8637;
+    display: block;
+    margin-top: 5px;
 }
 
 #loginPopupDiv #ajaxlogin_form ul.form-list div.input-box {
@@ -93,7 +95,7 @@ li.main_li:hover > ul {
 }
 
 #ajaxlogin_button_send {
-    margin-top: 80px;
+    margin-top: 20px;
 }
 
 #ajaxlogin_form ul.form-list div.input-box {
@@ -147,4 +149,7 @@ li.main_li:hover > ul {
     width: 100%;
     font: 14px/50px ITCAvantGardeStd-Bk;
     color: #fff;
+}
+#ajaxlogin_form .input-text {
+    padding: 3px 0;
 }
