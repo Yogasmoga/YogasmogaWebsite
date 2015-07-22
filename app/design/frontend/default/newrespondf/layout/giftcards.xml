@@ -29,7 +29,7 @@
         <reference name="head">
             <action method="addItem">
                 <type>js</type>
-                <name>mobile/myvalidation.js</name>
+                <name>mobile/myvalidations.js</name>
             </action>
         </reference>
 
