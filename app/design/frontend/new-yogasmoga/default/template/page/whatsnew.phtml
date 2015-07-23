@@ -313,7 +313,7 @@
                                                         </div>
                                                         <div class="caption">
                                                             <div class="caption">
-                                                                <a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl();?>"><?php echo $confProduct->getName().'<br/>';?> <?php echo $clrinfo[$simpleproductarr['color']]?></a><span>$<?php  echo  round($confProduct->getPrice(),2);?></span>
+                                                                <a href="<?php echo $confProduct->setCategoryId($categoryId)->getProductUrl().'?color='.$simpleproductarr['color'];?>"><?php echo $confProduct->getName().'<br/>';?> <?php echo $clrinfo[$simpleproductarr['color']]?></a><span>$<?php  echo  round($confProduct->getPrice(),2);?></span>
                                                             </div>
                                                         </div>
                                                     </div>
