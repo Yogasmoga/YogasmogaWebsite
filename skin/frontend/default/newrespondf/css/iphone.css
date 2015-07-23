@@ -385,7 +385,7 @@ div {
     line-height: 50px;
     height:44px;
     overflow: hidden;
-    padding: 5px 0 0 10px !important;
+    padding: 5px 0 0 0px !important;
 }
 
 /* 1. Parent menu links inlined so you can toggle the dropdown */
@@ -3741,7 +3741,7 @@ ul.checkout-cont > li {
 }
 #menu_container.nav-container a {
     color: #555;
-    padding-left: 76px;
+    padding-left: 71px;
 }
 .smogi-icon a, .story_icon a, .tech_icon a,.contact_icon_li a {
     font-family: ITCAvantGardeStd-Bk !important;
@@ -4222,29 +4222,20 @@ ul.checkout-cont > li {
     margin-right: 1%;
 }
 
-.detail-page .description-block .arrow-tag img {
-    transition-duration: 200ms;
-    float: right;
-    margin: 9px 0;
-}
-
-.detail-page .description-block li.is-active > .arrow-tag img {
-    transform: rotateZ(-180deg);
-    transition-duration: 200ms;
+.detail-page .description-block li.is-active > .arrow-tag svg line:nth-child(3) {
+    stroke: none;
 }
 
 .detail-page .description-block .arrow-tag {
-    display: inline-block;
-    float: right;
+    display: block;
     height: 44px;
-    padding: 9px;
     position: absolute;
-    right: 0;
-    transform-origin: 0 0 0;
-    transition-duration: 1s;
-    width: 100%;
+    right: -11px;
+    top: 0;
 }
-
+.detail-page .description-block .arrow-tag.is-active svg line:nth-child(3) {
+    stroke: none;
+}
 .detail-page .flex-control-nav a {
     font-size: 15px;
     display: none;
@@ -4493,7 +4484,9 @@ table.productdetailtable div#colorcontainer div table {
 .includeoptionmain .include_option > div.selected {
     background: #c2c3c4;
 }
-
+.includeoptionmain .include_option > div:first-child.selected{
+    background: #3ba50f !important;
+}
 /*****************************14-may-customer-account-login*****************/
 .account-login {
     margin-top: 72px;
@@ -4706,6 +4699,7 @@ table.productdetailtable div#colorcontainer div table {
     position: fixed;
     top: 44px;
     width: 100%;
+    color: #444;
 }
 
 .my-account-block .account-nav .sub-nav {
@@ -5117,10 +5111,10 @@ table.productdetailtable div#colorcontainer div table {
     color: #fff;
     float: left;
     font: 15px ITCAvantGardeStd-Bk;
-    margin-bottom: 50px;
+    margin-bottom: 0;
+    margin-top: -9px;
     opacity: 0.6;
     text-align: left;
-
 }
 
 .menu-link.sub_cat {
@@ -5189,7 +5183,6 @@ p.apply_promo_label {
     margin-bottom: 20px;
     position: relative;
     text-align: left;
-    clear: both;
 }
 
 p.apply_promo_label > span {
@@ -6481,15 +6474,11 @@ button#send2 {
 }
 .help_page .toggle {
     position: absolute;
-    right: 2px;
-    top: 16px;
+    right: -11px;
+    top: 0px;
 }
-.help_page .toggle img {
-    transition-duration: 200ms;
-}
-.help_page .toggle.active img {
-    transform: rotate(-180deg);
-    -webkit-transform: rotate(-180deg);
+.help_page .toggle.active svg line:nth-child(3) {
+    stroke: none;
 }
 .help_page ul li > p > span {
     display: inline;
@@ -6550,7 +6539,6 @@ button#send2 {
 video{
     background: #555;
 }
-
 .form-list > li#billing-new-address-form {
     float: left;
     width: 100%;

@@ -278,7 +278,6 @@ jQuery(window).load(function(){
     var newSliderImg = jQuery(".new-slider li img").height();
     jQuery(".has_slider .new-slider .flex-control-nav").show();
     jQuery(".has_slider .new-slider .flex-control-nav").css("top",newSliderImg);
-
     jQuery(".productimagecontainer .flexslider").css("height",height);
     jQuery(".productimagecontainer ").css("height",height);
     var ww = jQuery(window).width();
@@ -289,7 +288,6 @@ jQuery(window).load(function(){
     else{
         jQuery("video").css("top","0%");
     }
-
 });
 jQuery(window).resize(function(){
     var height = jQuery(".productimagecontainer .flexslider img").height();
@@ -322,4 +320,9 @@ jQuery(document).ready(function($){
        $(this).parent().find(".toggle").toggleClass("active");
    });
     $(".level2 >li:first-child .toggle-ys-menu").click();
+
+
+    $(".sign-in-box h1").click(function(){
+        $(this).parent().find(".toggle_dropdown").click();
+    })
 });

@@ -172,10 +172,9 @@ $logged_in = is_user_logged_in();
             echo "var user_color_shade='#555555';";
             }
             ?>
-
             (function (d) {
                 var config = {
-                        kitId: 'xta6sbe',
+                        kitId: 'hhs7njj',
                         scriptTimeout: 3000
                     },
                     h = d.documentElement, t = setTimeout(function () {
@@ -296,12 +295,12 @@ $logged_in = is_user_logged_in();
                         $userObj = get_user_profile($user_id);
                         $name = $userObj->user_display_name;
                         if ($name == null) {
-                            $name = $user->display_name;
+                            $name = $user->first_name;
                         }
                         ?>
                         <div class="main_btn">
                             <span class="profile_picture"><img src="<?php echo $profile_pic; ?>"/></span>
-                            <a href="<?php echo $home; ?>/profile?user_id=<?php echo $user_id; ?>">
+                            <a href="<?php echo $home; ?>/profile?user_id=<?php echo $user_id; ?>"> Hi
                                 <?php echo $name; ?>
                             </a>
                         <span class="menu_arrow">
