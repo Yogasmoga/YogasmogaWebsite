@@ -5036,6 +5036,7 @@ table.productdetailtable div#colorcontainer div table {
     font: 15px ITCAvantGardeStd-Bk !important;
     color: #fff !important;
     opacity: 0.6 !important;
+    letter-spacing: 1px;
 }
 
 .reward_points b {
@@ -5115,6 +5116,7 @@ table.productdetailtable div#colorcontainer div table {
     margin-top: -15px;
     opacity: 0.6;
     text-align: left;
+    letter-spacing: 1px;
 }
 
 .menu-link.sub_cat {
@@ -6193,6 +6195,7 @@ button#send2 {
     font: 15px ITCAvantGardeStd-Bk;
     margin-top: 15px;
     opacity: 0.6;
+    letter-spacing: 1px;
 }
 
 .customer_gender_selection {

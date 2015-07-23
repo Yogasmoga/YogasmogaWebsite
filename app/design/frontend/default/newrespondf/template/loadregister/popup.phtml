@@ -107,7 +107,7 @@ if($flag){?>
 			<div class="field">
                   <div class="input-box">
 					  <input type="password" name="password" rel="password" class="watermark_password_orignal"  />
-				  <input type="text"  value="Select a Password" 	class="watermark_password" />
+				  <input type="text"  value="Choose Password" 	class="watermark_password" />
 				</div>
            </div>
 			
@@ -169,7 +169,15 @@ if($flag){?>
 			<!-- end -->
 			<p class="already_signed_up" >Already signed up? Sign in here</p>
 			<div class="error" id="error_msg"></div>
-			<button  type="button" name="sign-up" id="create_account" class="create_account btn"><span class="tick-mark"><img alt="yogasmoga" src="<?php echo $this->getSkinUrl('images/tick-mark.jpg') ?>" class="responsive"></span></button>
+			<button  type="button" name="sign-up" id="create_account" class="create_account btn">
+				<span class="tick-mark">
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve">
+						<style type="text/css">
+							.st0{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+						</style>
+						<polyline class="st0" points="5.9,25.6 14.6,34.3 39.1,9.8 "/>
+					</svg>
+				</span></button>
 
 
 		</li>
@@ -191,14 +199,19 @@ var customForm = new VarienForm('singup_form');
 <script type="text/javascript">
 jQuery.noConflict();
 function closeSignup(){
+	jQuery(".sign-up-block .btn").removeClass("active");
+	jQuery("#error_msg").html("");
+	jQuery("input[type='radio']").prop("checked",false);
 jQuery('#popForm').hide();
+
 }
 jQuery(document).ready(function() {
 // jQuery(".custom-radio:checked").parent().addClass("current");
- jQuery(".custom-radio").click(function(){
-  jQuery(".custom-radio").parent().removeClass("current");
-  jQuery(this).parent().addClass("current");
- });
+	jQuery(".custom-radio").click(function(){
+		jQuery(".custom-radio").parent().removeClass("current");
+		jQuery(this).parent().addClass("current");
+		isinputvalid();
+	});
 });
 </script>
 

@@ -266,7 +266,7 @@ input, textarea, select {
     height: 100%;
     left: 0;
     overflow: hidden;
-    padding: 0 30px;
+    padding: 0 27px;
     position: fixed;
     width: 100%;
     margin-top: 0px;
@@ -345,7 +345,7 @@ input, textarea, select {
 }
 
 .sign-up-block .btn {
-    background: none repeat scroll 0 0 #ae8637;
+    background: none repeat scroll 0 0 #999;
     border: 1px solid #666;
     color: #666;
     float: right;
@@ -361,7 +361,9 @@ input, textarea, select {
     /*text-transform: uppercase;*/
     width: 100%;
 }
-
+.sign-up-block .btn.active {
+    background: #ae8637;
+}
 .sign-up-block .tick-mark {
     display: inline-block;
     height: 37px;
@@ -374,20 +376,23 @@ input, textarea, select {
 }
 
 .sign_signup_form .error, .sign_signup_form .validation-advice {
-    color: #ae8637 !important;
+    color: #FF6600 !important;
     float: none;
     font: 13px ItCAvantGardeStd-Bk;
     margin-top: 7px;
     position: absolute;
     text-transform: none;
+    letter-spacing: 1px;
 }
 .buttons.ajaxlogin_actions > p#err_msg {
-    color: #ae8635;
+    color: #ff6600;
     float: left;
     font: 13px ITCAvantGardeStd-Bk;
     margin-top: 60px;
     position: absolute;
+    letter-spacing: 1px;
 }
+
 .left_block.left_block_new .top-heading {
     float: left;
     margin-bottom: 0 !important;

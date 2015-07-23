@@ -8,6 +8,10 @@ jQuery(document).ready(function(jQuery){
 
     checkIsUserLogged();
 
+    jQuery(".sign_signup_form input").on("keyup",function(){
+        isinputvalid();
+    });
+
     /***login form for smogi buck page***/
     /******************Smogi Bucks Login For Mobile Page Start **********/
     jQuery("#sb-sign-in-form").submit(function(event){
@@ -144,6 +148,43 @@ function isValidEmailAddress(emailAddress) {
     var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
     return pattern.test(emailAddress);
 };
+
+function isinputvalid(){
+    var fname = jQuery.trim(jQuery(".singup_form input[name='fname']").val());
+    var lname = jQuery.trim(jQuery(".singup_form input[name='lname']").val());
+    var email_id = jQuery.trim(jQuery(".singup_form input[name='email']").val());
+    var pwd = jQuery.trim(jQuery(".singup_form input[name='password']").val());
+    var gender_link = jQuery(".gender-link");
+    var gender = jQuery(".f-right .current input").val();
+    jQuery(".sign-up-block .btn").removeClass("active");
+    if(fname=="" || fname=="First Name"){
+        jQuery("#error_msg").html("Please fill in your first name");
+    }
+    else if(lname=="" || lname=="Last Name"){
+        jQuery("#error_msg").html("Please fill in your Last Name");
+    }
+    else if(email_id=="" || email_id=="Email"){
+        jQuery("#error_msg").html("Please fill in your Email ID");
+    }
+    else if(!isValidEmailAddress(email_id)){
+        jQuery("#error_msg").html("Please enter a valid Email ID");
+    }
+    else if(pwd==""){
+        jQuery("#error_msg").html("Please choose a password");
+    }
+    else if(pwd.length<6){
+        jQuery("#error_msg").html("Password should be of 6 or more.");
+    }
+    else if(!gender_link.find(".f1").hasClass("current") && !gender_link.find(".f2").hasClass("current")){
+        jQuery("#error_msg").html("Select Gender");
+    }
+    else{
+        jQuery("#error_msg").html("");
+        jQuery(".sign-up-block .btn").addClass("active");
+    }
+}
+
+
 
 function createCustomerAccount() {
     var fname = jQuery.trim(jQuery(".singup_form input[name='fname']").val());

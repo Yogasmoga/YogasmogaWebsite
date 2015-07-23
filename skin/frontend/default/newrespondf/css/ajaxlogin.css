@@ -93,7 +93,13 @@ li.main_li:hover > ul {
 #loginPopupDiv #ajaxlogin_form ul.form-list div.input-box {
     margin-bottom: 15px;
 }
-
+#ajaxlogin_button_send .tick-mark {
+    display: block;
+    float: none;
+    height: 34px;
+    margin: 0 auto;
+    width: 34px;
+}
 #ajaxlogin_button_send {
     margin-top: 28px !important;
 }
@@ -141,7 +147,7 @@ li.main_li:hover > ul {
 }
 
 .ajaxlogin_button {
-    background: none repeat scroll 0 0 #ad8536;
+    background: none repeat scroll 0 0 #999;
     border: medium none;
     cursor: pointer;
     float: left;
@@ -150,6 +156,9 @@ li.main_li:hover > ul {
     font: 14px/50px ITCAvantGardeStd-Bk;
     color: #fff;
     margin-top: 34px !important;
+}
+.ajaxlogin_button.active {
+    background: #ad8536;
 }
 #ajaxlogin_form .input-text {
     padding: 3px 0;
