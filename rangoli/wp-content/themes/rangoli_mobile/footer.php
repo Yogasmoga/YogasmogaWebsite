@@ -104,7 +104,7 @@ if(!is_user_logged_in()  && is_home()) {
             <input type="text" data-watermark="Last Name" name="lname" />
             <input type="text" data-watermark="Email" name="email" />
             <input type="text" data-watermark="Select a password"  name="password" rel="password"/>
-            <p class="gender_p">Select a Gender
+            <p class="gender_p">Select Gender
                                               <span class="gender">
                                                     M<input type="radio" name="gender" value="1" title="male"/>
                                               </span>
@@ -114,11 +114,13 @@ if(!is_user_logged_in()  && is_home()) {
             </p>
 
 
+
+            <p class="forgot_y_p open_signin"><a href="javascript:void(0);">Already signed up? Sign in here</a></p>
             <p class="small err_msg" style="text-align: left"></p>
             <button class="create_account">
                 <img src="<?php echo $media ?>/accept.png" />
             </button>
-            <p class="forgot_y_p open_signin"><a href="javascript:void(0);">Already a SMOGI? Sign in here</a></p>
+
         </div>
     </div>
     <div class="after_signup_popup">

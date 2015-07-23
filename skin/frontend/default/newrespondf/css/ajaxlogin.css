@@ -95,7 +95,7 @@ li.main_li:hover > ul {
 }
 
 #ajaxlogin_button_send {
-    margin-top: 20px;
+    margin-top: 28px !important;
 }
 
 #ajaxlogin_form ul.form-list div.input-box {
@@ -144,11 +144,12 @@ li.main_li:hover > ul {
     background: none repeat scroll 0 0 #ad8536;
     border: medium none;
     cursor: pointer;
-    float: none;
+    float: left;
     height: 44px;
     width: 100%;
     font: 14px/50px ITCAvantGardeStd-Bk;
     color: #fff;
+    margin-top: 34px !important;
 }
 #ajaxlogin_form .input-text {
     padding: 3px 0;

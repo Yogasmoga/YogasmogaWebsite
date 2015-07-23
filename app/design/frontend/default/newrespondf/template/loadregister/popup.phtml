@@ -107,7 +107,7 @@ if($flag){?>
 			<div class="field">
                   <div class="input-box">
 					  <input type="password" name="password" rel="password" class="watermark_password_orignal"  />
-				  <input type="text"  value="Choose Password" 	class="watermark_password" />
+				  <input type="text"  value="Select a Password" 	class="watermark_password" />
 				</div>
            </div>
 			
@@ -164,10 +164,11 @@ if($flag){?>
          <input type="hidden" autocomplete="off" maxlength="30" id="isAjax" name="isAjax" value="1">
 
 			<!-- msz alredy email exist -->
-			<div class="error" id="error_msg"></div>
-				<p style="text-align: left" class="err_msg"></p>
+
+<!--				<p style="text-align: left" class="err_msg"></p>-->
 			<!-- end -->
 			<p class="already_signed_up" >Already signed up? Sign in here</p>
+			<div class="error" id="error_msg"></div>
 			<button  type="button" name="sign-up" id="create_account" class="create_account btn"><span class="tick-mark"><img alt="yogasmoga" src="<?php echo $this->getSkinUrl('images/tick-mark.jpg') ?>" class="responsive"></span></button>
 
 

@@ -377,7 +377,7 @@ input, textarea, select {
     color: #ae8637 !important;
     float: none;
     font: 13px ItCAvantGardeStd-Bk;
-    margin-top: -16px;
+    margin-top: 7px;
     position: absolute;
     text-transform: none;
 }
@@ -385,7 +385,7 @@ input, textarea, select {
     color: #ae8635;
     float: left;
     font: 13px ITCAvantGardeStd-Bk;
-    margin-top: 65px;
+    margin-top: 60px;
     position: absolute;
 }
 .left_block.left_block_new .top-heading {
