@@ -88,13 +88,12 @@
                 e.preventDefault();
                 loginCustomer();
             });
+
+            jQuery('.login_customer').unbind('click');
             jQuery(".forgot_password").click(function (e) {
                 e.preventDefault();
                 forgotCustomer();
             });
-
-
-
         });
 
         AjaxLoginLoader = "<div class='ajax_login_loader'>&nbsp;</div>";
