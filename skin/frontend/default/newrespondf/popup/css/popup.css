@@ -373,6 +373,7 @@ input, textarea, select {
     text-transform: capitalize !important;
 }
 
+
 .sign_signup_form .error, .sign_signup_form .validation-advice {
     color: #ae8637 !important;
     float: none;
