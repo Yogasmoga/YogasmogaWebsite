@@ -288,10 +288,12 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 
 .aurum li div {
     position: absolute;
-    right: 8px;
+    right: -11px;
     top: 0;
 }
-
+.aurum li div.arrow-tag.is-active svg line:nth-child(3) {
+    stroke: none;
+}
 .aurum {
     margin-top: 43px;
 }
