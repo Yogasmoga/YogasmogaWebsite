@@ -92,6 +92,8 @@ $j(document).ready(function () {
     $j("#linkwrapper li a").click(function (e) {
         e.preventDefault();
         var obj_id = $j(this).attr("rel");
+        $j("#linkwrapper li a").not($j(this)).removeClass("active_link");
+        $j(this).addClass("active_link");
         if (obj_id == "link2content") {
             $j("#buck-balance-blk1").click();
         }
@@ -238,6 +240,8 @@ jQuery(document).ready(function($){
     });
     $(".ys_static_page_dropdown li a,.static_page li a").click(function(e){
         e.preventDefault();
+        $(".ys_static_page_dropdown li a,.static_page li a").not($(this)).removeClass("active_link");
+        $(this).addClass("active_link");
         $(".arrow-icon").click();
         $(".story-box .close-icn").click();
         var heading = $(this).attr("data-heading");

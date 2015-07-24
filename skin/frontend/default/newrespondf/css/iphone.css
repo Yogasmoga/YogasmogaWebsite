@@ -6546,3 +6546,9 @@ video{
     float: left;
     width: 100%;
 }
+.flexslider.new-slider .slides li>a {
+    box-sizing: border-box;
+    float: left;
+    padding: 0 10px 10px;
+    width: 100%;
+}

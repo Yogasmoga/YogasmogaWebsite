@@ -202,6 +202,9 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     width: 100%;
     padding: 0 12px;
 }
+.account-nav .sub-nav li a.active_link {
+    color: #ae8637;
+}
 .account-nav .sub-nav li a:hover{
     background: #EEEEEE;
 }
@@ -719,7 +722,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 }
 
 .story-box > .close-icn {
-    background: url("/skin/frontend/default/newrespondf/images/cross1.png") repeat scroll 0 0 #555;
+    background: #555;
     display: none;
     height: 44px;
     left: initial;
@@ -728,6 +731,8 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     top: 88px;
     width: 44px;
     z-index: 1;
+    padding: 5px;
+    opacity: 0.95;
 }
 
 /*********************************************************2-june ********************************/
