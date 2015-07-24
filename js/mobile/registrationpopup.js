@@ -11,7 +11,12 @@ jQuery(document).ready(function(jQuery){
     jQuery(".sign_signup_form input").on("keyup",function(){
         isinputvalid();
     });
-
+    jQuery("#ajaxlogin_form input").on("click keyup",function(){
+        isloginvalid();
+    });
+    jQuery("#ajaxlogin_close_icon").click(function(){
+        jQuery("#ajaxlogin_button_send").removeClass("active");
+    });
     /***login form for smogi buck page***/
     /******************Smogi Bucks Login For Mobile Page Start **********/
     jQuery("#sb-sign-in-form").submit(function(event){
@@ -304,7 +309,29 @@ function forgotCustomer() {
 
 }
 
-
+function isloginvalid(){
+    var email_id = jQuery.trim(jQuery(".login_form input[name='email']").val());
+    var pwd = jQuery.trim(jQuery(".login_form input[name='password']").val());
+    //var url = homeUrl + 'mycatalog/myproduct/logincustomer';
+    var button_html = jQuery(".login_customer").html();
+    jQuery("#ajaxlogin_button_send").removeClass("active");
+    if(email_id=="" || email_id=="Email"){
+        jQuery("#err_msg").html("Please fill in your Email ID");
+    }
+    else if(!isValidEmailAddress(email_id)){
+        jQuery("#err_msg").html("Please enter a valid Email ID");
+    }
+    else if(pwd==""){
+        jQuery("#err_msg").html("Please enter your password.");
+    }
+    else if( pwd.length<6 && pwd.length>0){
+        jQuery("#err_msg").html("Password should be of 6 or more.");
+    }
+    else{
+        jQuery("#err_msg").html("");
+        jQuery("#ajaxlogin_button_send").addClass("active");
+    }
+}
 function loginCustomer() {
     if (window.location.href.indexOf('https://') >= 0)
         _usesecureurl = true;

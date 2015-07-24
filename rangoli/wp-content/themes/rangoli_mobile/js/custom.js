@@ -35,6 +35,7 @@ $(document).ready(function () {
     $(".gender").click(function(){
         $(".gender").removeClass("selected");
         $(this).addClass("selected");
+        isRegistrationInfoValid();
     });
     $(".cart").click(function(){window.location=root+"checkout/onepage/";})
     $(".author_post_read > .overlay-text").click(function() {
@@ -522,10 +523,12 @@ $(document).ready(function(){
     $(".close_login_popup").click(function(){
         $(".signin_popup").fadeOut();
         $(".signup_popup").fadeOut();
+        $(".login_customer").removeClass("active");
         $(".after_signup_popup").fadeOut();
         $(".popup").fadeOut();
     });
     $(".close_signup_popup").click(function(){
+        $(".create_account").removeClass("active");
         $(".signin_popup").fadeOut();
         $(".signup_popup").fadeOut();
         $(".after_signup_popup").fadeOut();
@@ -1153,3 +1156,78 @@ function forgot_password(email){
         $(".forgot_password_form .small.err_msg").html("Email id is not valid.");
     }
 }
+
+
+
+
+function isRegistrationInfoValid(){
+
+    var fname = jQuery.trim(jQuery(".singup_form input[name='fname']").val());
+    var lname = jQuery.trim(jQuery(".singup_form input[name='lname']").val());
+    var email_id = jQuery.trim(jQuery(".singup_form input[name='email']").val());
+    var pwd = jQuery.trim(jQuery(".singup_form input[name='password']").val());
+    var cpassword = pwd;
+    var gender = $.trim($(".gender.selected input").val());
+    var gender_selected = false;
+    $(".gender").each(function(){
+        if($(this).hasClass("selected")){
+            gender_selected = true;
+        }
+    });
+    $(".create_account").removeClass("active");
+    if(fname=="" || fname=="First Name"){
+        $(".singup_form .err_msg").html("Please fill your first name");
+    }
+    else if(lname=="" || lname=="Last Name"){
+        $(".singup_form .err_msg").html("Please fill your last name");
+    }
+    else if(email_id=="" || email_id=="Email"){
+        $(".singup_form .err_msg").html("Please fill your email id");
+    }
+    else if(!isValidEmailAddress(email_id)){
+        $(".singup_form .err_msg").html("Please enter a valid email id");
+    }
+    else if(pwd=="" || pwd=="Select a password"){
+        $(".singup_form .err_msg").html("Please choose a password");
+    }
+    else if(pwd.length<6){
+        $(".singup_form .err_msg").html("Password must be of 6 or more characters");
+    }
+    else if(gender_selected == false){
+        $(".singup_form .err_msg").html("Select Gender");
+    }
+    else{
+        $(".singup_form .err_msg").html("");
+        $(".create_account").addClass("active");
+    }
+}
+
+function isLoginInfoValid() {
+
+    var email_id = jQuery.trim(jQuery(".login_form input[name='email']").val());
+    var pwd = jQuery.trim(jQuery(".login_form input[name='password']").val());
+    var url = homeUrl + 'mycatalog/myproduct/logincustomer';
+    var button_html = jQuery(".login_customer").html();
+    $(".login_customer").removeClass("active");
+    if(email_id=="" || email_id=="Email"){
+        $(".err_msg").html("Please fill your email id");
+    }
+    else if(pwd == "" || pwd=="Password"){
+        $(".err_msg").html("Please fill your password");
+    }
+    else if(pwd.length>0 && pwd.length<6){
+        $(".err_msg").html("Password must be 6 or more characters.");
+    }
+    else{
+        $(".err_msg").html("");
+        $(".login_customer").addClass("active");
+    }
+}
+$(document).ready(function(){
+    $(".singup_form input").on("keyup",function(){
+        isRegistrationInfoValid();
+    });
+    $(".signin_popup input").on("keyup",function(){
+        isLoginInfoValid();
+    });
+});

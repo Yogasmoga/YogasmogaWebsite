@@ -1170,7 +1170,7 @@ textarea {
     text-align: left;
 }
 .popup button {
-    background: #ae8637 none repeat scroll 0 0;
+    background: #999 none repeat scroll 0 0;
     color: #fff;
     font: 14px/44px ITCAvantGardeStd-Bk;
     height: 44px;
@@ -1178,8 +1178,14 @@ textarea {
     margin-top: 15px !important;
     width: 100%;
 }
+.popup button.active {
+    background: #ae8637;
+}
 .login_form button{
     margin-bottom: 50px;
+}
+.login_customer.active {
+    background: #ae8539 none repeat scroll 0 0;
 }
 .forgot_password_form {
     display: none;
@@ -1253,7 +1259,7 @@ span.gender {
     display: inline-block;
 }
 p.small.err_msg {
-    color: #ae8536;
+    color: #FF6600;
     font-size: 13px;
     margin-top: -11px;
     position: absolute;
