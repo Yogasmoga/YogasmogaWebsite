@@ -61,6 +61,8 @@ while(! feof($fileIn))
                 }
             }
         }
+        else
+            continue;
 
         $buy_url = $configurableProduct->getUrlInStore();
         $keywords = $configurableProduct->getMetaKeyword();

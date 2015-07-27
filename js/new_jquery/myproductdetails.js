@@ -551,6 +551,7 @@ function changeColor(clr) {
             jQuery("div#sizecontainer div[size='" + size + "']").addClass('canbackorder');
         else
             jQuery("div#sizecontainer div[size='" + size + "']").removeClass('canbackorder');
+
     }
     jQuery("#orderitem").show();
     jQuery("#preorderitem").hide();
