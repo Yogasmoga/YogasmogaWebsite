@@ -385,7 +385,7 @@ div {
     line-height: 50px;
     height:44px;
     overflow: hidden;
-    padding: 5px 0 0 0px !important;
+    padding: 5px 0 0 9px !important;
 }
 
 /* 1. Parent menu links inlined so you can toggle the dropdown */
@@ -3973,9 +3973,9 @@ ul.checkout-cont > li {
 .detail-page .box-seprtr.last {
     bottom: 0;
     left: 0;
-    position: fixed;
+    padding: 0 12px;
     width: 100%;
-    z-index: 10;
+    z-index: 0;
 }
 
 .detail-page .cart-option .add span {
@@ -3986,11 +3986,13 @@ ul.checkout-cont > li {
 }
 
 .detail-page .free-shiping p {
-    color: #ae8637;
+    color: #666;
     font-family: GraphikRegular;
     font-size: 13px;
-    line-height: 58px;
-    padding-left: 62px;
+    line-height: 22px;
+    margin-bottom: 15px;
+    padding-left: 49px;
+    padding-top: 17px;
     text-align: left;
 }
 
@@ -4006,7 +4008,7 @@ ul.checkout-cont > li {
 .description-block ul {
     float: left;
     width: 100%;
-    padding: 0 12px;
+    padding: 10px 12px 44px;
 }
 
 .detail-page .description-block .first-list .inner-content {
@@ -4035,8 +4037,11 @@ ul.checkout-cont > li {
     font-family: AvantGarde-Demi !important;
     color: #444444;
     text-decoration: none;
+    display: block;
 }
-
+.detail-page .description-block .first-list li a:hover{
+    background: #f2f2f2;
+}
 .detail-page .description-block .first-list .design-feature .inner-content .inner-feature {
     position: relative;
 }
@@ -4203,13 +4208,12 @@ ul.checkout-cont > li {
 }
 
 /**************************************** 6-may ends *******************/
-.detail-page li.detail-view {
-    /*margin: 0 14px;*/
+.detail-page .description-block li.detail-view:nth-last-child(2) {
+    border-bottom: 1px solid #dfdfdf;
 }
 
 .detail-page .description-block {
     float: left;
-    padding-bottom: 58px;
     width: 100%;
 }
 
@@ -4485,7 +4489,7 @@ table.productdetailtable div#colorcontainer div table {
     background: #c2c3c4;
 }
 .includeoptionmain .include_option > div:first-child.selected{
-    background: #3ba50f !important;
+    background: #66CC00 !important;
 }
 /*****************************14-may-customer-account-login*****************/
 .account-login {
@@ -6084,8 +6088,8 @@ p.design-paragraph {
 }
 
 .our-febrics > p > span {
-    font: 18px Freighttextbook;
-    padding: 0;
+    font: 300 italic 22px/28px Freighttextbook !important;
+    padding: 15px 0 !important;
 }
 
 .custom-block {
@@ -6368,7 +6372,7 @@ button#send2 {
 }
 
 .go_to_parent {
-    background: #555 none repeat scroll 0 0 !important;
+    background: #666 none repeat scroll 0 0 !important;
     display: block;
     height: 44px !important;
     position: fixed !important;
@@ -6376,6 +6380,7 @@ button#send2 {
     top: 88px;
     width: 44px !important;
     z-index: 11 !important;
+    opacity: 0.95;
 }
 .go_to_parent:hover{
     background: #373737;
@@ -6551,4 +6556,67 @@ video{
     float: left;
     padding: 0 10px 10px;
     width: 100%;
+}
+.product_add_conf_popup {
+    background: rgba(255, 255, 255, 0.95) none repeat scroll 0 0;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 44px;
+    width: 100%;
+    z-index: 100;
+    display: none;
+    padding-bottom: 44px;
+}
+.table {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+.table-row {
+    display: table-row;
+}
+.table-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+.table-cell .bag {
+    position: relative;
+    margin-bottom: 20px;
+}
+.table-cell .qty {
+    bottom: 0;
+    color: #ae8637;
+    left: 0;
+    line-height: 58px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 100%;
+}
+.cart_addition_msg {
+    color: #AE8637;
+    font: 15px/20px ITCAvantGardeStd-Bk;
+}
+.cart_addition_msg span{
+    font-family: Avantgarde-demi;
+    text-transform: uppercase;
+}
+.checkout_btn {
+    background: #00b600 none repeat scroll 0 0;
+    color: #fff;
+    display: inline-block;
+    line-height: 44px;
+    margin-top: 30px;
+    width: 166px;
+}
+.close_cart_addition_popup {
+    background: #666 none repeat scroll 0 0;
+    height: 44px;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    top: 44px;
+    width: 44px;
 }

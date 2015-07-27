@@ -91,7 +91,7 @@ div,p{
 .yogasmoga-menu .main_btn > a {
     display: inline-block;
     height: 44px;
-    padding: 2px 0 0 8px;
+    padding: 2px 0 0 11px;
     line-height: 50px;
     width: 100%;
     display: block;
@@ -1200,7 +1200,7 @@ textarea {
     font: 13px/50px GraphikRegular !important;
 }
 .close_login_popup, .close_signup_popup, .close_after_signup_popup {
-    background: rgba(0, 0, 0, 0);
+    background: #666;
     height: 44px;
     position: fixed;
     right: 0;

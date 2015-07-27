@@ -57,6 +57,7 @@ $j(document).ready(function () {
         $j(this).parent().children(".detail-view .inner-content").slideToggle();
         //$j(this).toggleClass("is-active");
     });
+    $j(".description-block .detail-view a").click(function(e){e.preventDefault();$(this).next().click();});
 
     $j("#opc-cart .arrow-tag").click(function () {
         $j("#checkout-step-cart").slideToggle();

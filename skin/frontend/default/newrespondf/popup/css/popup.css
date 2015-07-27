@@ -322,7 +322,7 @@ input, textarea, select {
 }
 
 #content > .cross_popup {
-    /*background: url("../../images/cross1.png") no-repeat scroll center center rgba(0, 0, 0, 0);*/
+    background: #666;
     height: 44px;
     margin-left: 0;
     position: fixed;

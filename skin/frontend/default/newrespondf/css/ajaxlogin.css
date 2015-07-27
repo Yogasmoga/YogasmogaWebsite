@@ -130,7 +130,7 @@ li.main_li:hover > ul {
 }
 
 #ajaxlogin_close_icon {
-    /*background: rgba(0, 0, 0, 0);*/
+    background: #666;
     cursor: pointer;
     height: 44px;
     position: fixed;

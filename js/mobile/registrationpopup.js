@@ -11,7 +11,7 @@ jQuery(document).ready(function(jQuery){
     jQuery(".sign_signup_form input").on("keyup",function(){
         isinputvalid();
     });
-    jQuery("#ajaxlogin_form input").on("click keyup",function(){
+    jQuery("#ajaxlogin_form input").on("keyup",function(){
         isloginvalid();
     });
     jQuery("#ajaxlogin_close_icon").click(function(){

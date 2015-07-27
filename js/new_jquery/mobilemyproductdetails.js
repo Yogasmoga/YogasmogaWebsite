@@ -798,7 +798,13 @@ function addtocart() {
                 jQuery(".shoping-cart .cartgo").html(result.count);
                 jQuery("#orderitem").html("ADD TO BAG");
                 //jQuery("a.cartgo").slideUp('slow');
-
+                var qty = jQuery(".cartgo").html();
+                var product_name = jQuery(".prd-info .prd-detail>a").html();
+                var selected_color = jQuery(".selectedcolor td.selectedcolortext").html();
+                jQuery(".product_add_conf_popup .qty").html(qty);
+                jQuery(".product_add_conf_popup .product_name_added").html(product_name);
+                jQuery(".product_add_conf_popup .color_selected").html(selected_color);
+                jQuery(".product_add_conf_popup").fadeIn();
                 //jQuery("div#myminicart").html(result.html);
 
                 /******* added by ys team ********/
@@ -868,10 +874,11 @@ function insertBraOption() {
     jQuery("body").find("#includeoption div:nth-child(2)").trigger("click");
     jQuery("body").on("click", "#includeoption div", function () {
         var braValue = parseInt(jQuery("#includeoption div:nth-child(1)").attr("value"));
-        jQuery(this).toggleClass("selected").siblings().toggleClass("selected");
+        jQuery(this).children().toggleClass("selected");
+        /*jQuery(this).siblings().toggleClass("selected");*/
         var textvalue = jQuery.trim(jQuery(this).text());
         if (textvalue == "Y" || textvalue == "y") {
-            if (_braSelected == 0) {
+            if (_braSelected == 0) {0
                 var productCost = jQuery(".productcost").text().split("$");
                 var productCostV = parseInt(productCost[1]) + braValue;
                 console.log(productCost[1]);
@@ -894,6 +901,18 @@ function insertBraOption() {
 }
 
 jQuery(document).ready(function($){
+    $("table.productdetailtable div#sizecontainer table td div").click(function(){
+        $("#orderitem").removeClass("active");
+        $("#preorderitem").removeClass("active");
+        if($("#orderitem").css("display")!="none")
+            $("#orderitem").addClass("active");
+        if($("#preorderitem").css("display")!="none")
+            $("#preorderitem").addClass("active");
+
+    });
+    $(".close_cart_addition_popup").click(function(){
+        $(".product_add_conf_popup").fadeOut();
+    });
     $(".btn.wish").click(function(e){
         var btn = $(this);
         e.preventDefault();
@@ -908,12 +927,10 @@ jQuery(document).ready(function($){
                     btn.attr("href", response);
                     var index = response.search("addmobile");
                     if (index > 0) {
-                        img = "<img width='28px' height='28px' src='/skin/frontend/default/newrespondf/images/heart.png'>";
-                        btn.html(img);
+                        btn.find("svg path").css("fill","none");
                     }
                     else {
-                        img = "<img width='28px' height='28px' src='/skin/frontend/default/newrespondf/images/added_to_wishlist.png'>";
-                        btn.html(img);
+                        btn.find("svg path").css("fill","#AE8637");
                     }
                 }
             });
