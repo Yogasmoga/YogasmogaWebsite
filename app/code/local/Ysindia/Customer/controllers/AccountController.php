@@ -142,4 +142,53 @@ class Ysindia_Customer_AccountController extends Mage_Customer_AccountController
             echo "No email";
         }
     }
+
+    public function resetPasswordPostAction()
+    {
+        $resetPasswordLinkToken = (string) $this->getRequest()->getQuery('token');
+        $customerId = (int) $this->getRequest()->getQuery('id');
+        $password = (string) $this->getRequest()->getPost('password');
+        $passwordConfirmation = (string) $this->getRequest()->getPost('confirmation');
+
+        try {
+            $this->_validateResetPasswordLinkToken($customerId, $resetPasswordLinkToken);
+        } catch (Exception $exception) {
+            echo 'Your password reset link has expired.';
+            return;
+        }
+
+        $errorMessages = array();
+        if (iconv_strlen($password) <= 0) {
+            array_push($errorMessages, Mage::helper('customer')->__('New password field cannot be empty.'));
+        }
+        /** @var $customer Mage_Customer_Model_Customer */
+        $customer = Mage::getModel('customer/customer')->load($customerId);
+
+        $customer->setPassword($password);
+        $customer->setConfirmation($passwordConfirmation);
+        $validationErrorMessages = $customer->validate();
+        if (is_array($validationErrorMessages)) {
+            $errorMessages = array_merge($errorMessages, $validationErrorMessages);
+        }
+
+        if (!empty($errorMessages)) {
+            $this->_getSession()->setCustomerFormData($this->getRequest()->getPost());
+            foreach ($errorMessages as $errorMessage) {
+                echo $errorMessage . "<br/>";
+            }
+            return;
+        }
+
+        try {
+            // Empty current reset password token i.e. invalidate it
+            $customer->setRpToken(null);
+            $customer->setRpTokenCreatedAt(null);
+            $customer->setConfirmation(null);
+            $customer->save();
+            echo 'Your password has been updated.';
+
+        } catch (Exception $exception) {
+            echo 'Cannot save a new password.';
+        }
+    }
 }
