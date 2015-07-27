@@ -107,4 +107,39 @@ class Ysindia_Customer_AccountController extends Mage_Customer_AccountController
 
     }
 
+    public function forgotPasswordPostAction()
+    {
+        $email = (string) $this->getRequest()->getPost('email');
+        if ($email) {
+            if (!Zend_Validate::is($email, 'EmailAddress')) {
+                $this->_getSession()->setForgottenEmail($email);
+                echo 'Invalid email address.';
+                return;
+            }
+
+            /** @var $customer Mage_Customer_Model_Customer */
+            $customer = Mage::getModel('customer/customer')
+                ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
+                ->loadByEmail($email);
+
+            if ($customer->getId()) {
+                try {
+                    $newResetPasswordLinkToken = Mage::helper('customer')->generateResetPasswordLinkToken();
+                    $customer->changeResetPasswordLinkToken($newResetPasswordLinkToken);
+                    $customer->sendPasswordResetConfirmationEmail();
+
+                    echo "Sent";
+                } catch (Exception $exception) {
+                    echo "Error sending email";
+                }
+            }
+            else
+            {
+                echo "Email does not exist.";
+            }
+
+        } else {
+            echo "No email";
+        }
+    }
 }
