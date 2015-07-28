@@ -24,17 +24,18 @@ if(isset($_REQUEST['from_date'])) {
     fputcsv($fp, array(''));
 
     fputcsv($fp, array(''));
+    fputcsv($fp, array('S.No.', 'Customer Id', 'Email', 'Joined On'));
     fputcsv($fp, array(''));
 
+    $i = 0;
     foreach ($rows as $row) {
         $email = $row['email'];
         $customerId = $row['customer_id'];
-        fputcsv($fp, array($customerId, $email, $date));
+        fputcsv($fp, array(++$i, $customerId, $email, $date));
     }
 
     fclose($fp);
 
-    //readfile('customers.txt');
     exit;
 }
 else{
