@@ -434,7 +434,9 @@
     jQuery(document).ready(function($){
         var child = "cat_<?php echo  Mage::getModel('catalog/layer')->getCurrentCategory()->getId();?>";
         var parent = $("a[rel='"+child+"']").attr("data");
-        $("a[rel='"+parent+"']").parent().find(".arrow-tag").click();
+        if(parent != undefined) {
+            $("a[rel='" + parent + "']").parent().find(".arrow-tag").click();
+        }
         $("a[rel='"+child+"']").parent().find(".arrow-tag").click();
 
     });
