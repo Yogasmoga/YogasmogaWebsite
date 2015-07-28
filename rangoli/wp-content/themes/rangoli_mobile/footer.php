@@ -16,7 +16,7 @@ if(!is_user_logged_in()) {
 }
 ?>
 <div class="row">
-    <p class="copyright">&copy;2015 YOGASMOGA. All Rights Reserved.</p>
+    <p class="copyright">&copy; 2015 YOGASMOGA. All Rights Reserved.</p>
 </div>
 <?php
 if(!is_user_logged_in()  && is_home()) {

@@ -820,11 +820,13 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     display: inline-block;
     float: left;
     font-size: 0;
-    height: 24px;
-    line-height: 0;
-    padding-right: 11px;
-    padding-top: 10px;
+    height: 44px;
+    line-height: 44px;
     position: static;
+    width: 44px;
+}
+.inner-aurum li .febric-icn img {
+    vertical-align: middle;
 }
 
 .inner-aurum li .innr-txt {

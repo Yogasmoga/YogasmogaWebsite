@@ -18,28 +18,19 @@ $post = get_post();
     <div class="insta_weak_posts">
         <?php // find images attached to this post / page.
         $images =& get_children( 'post_parent='. $post->ID .'&orderby=menu_order&order=ASC&post_type=attachment&post_mime_type=image&numbersposts=-1' );
-
+        $i=0;
         foreach ( (array) $images as $attachment_id => $attachment ) {
 
-            if($i==0){
+            if($i==0 || $i==14 || $i==23 || $i==37){
                 $class= "large left $i";
             }
-            elseif($i%18==0){
-                $class= "left $i";
-            }
-            elseif($i%9==0 && $i%2==0){
-                $class = "left large $i";
-            }
-            elseif($i%14==0){
-                $class = "left large $i";
-            }
-            elseif($i%9==0){
-                $class= "right large $i";
+            else if($i==9 || $i==32){
+                $class= "large right $i";
             }
             else{
                 $class="left $i";
             }
-
+            $i++;
             ?>
 
 
@@ -47,7 +38,7 @@ $post = get_post();
 
             <?php
              echo "<img src='".wp_get_attachment_url( $attachment_id )."' />";
-            $i++;?>
+            ?>
 
             </div>
         <?php	}
@@ -121,6 +112,7 @@ $post = get_post();
             margin: -270px 0 0 -320px;
             position: fixed;
             top: 50%;
+            width: 640px;
             box-shadow: 0 0 20px rgba(0,0,0,0.3);
         }
         .go_to_parent > p {
