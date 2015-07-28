@@ -53,7 +53,7 @@ else{
             <table style="width:500px;" border="0">
                 <tr>
                     <td style="width:150px;">Date</td>
-                    <td><input type="text" name="from_date"/> (mm/dd/yyyy)</td>
+                    <td><input type="date" name="date"/> Ex. 5/17/2015</td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="Get Records"/> </td>
