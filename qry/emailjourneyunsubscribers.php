@@ -26,14 +26,14 @@ if(isset($_REQUEST['date'])) {
     fputcsv($fp, array(''));
 
     fputcsv($fp, array(''));
-    fputcsv($fp, array('S.No.', 'Customer Id', 'Email', 'Joined On'));
+    fputcsv($fp, array('S.No.', 'Customer Id', 'Email'));
     fputcsv($fp, array(''));
 
     $i = 0;
     foreach ($rows as $row) {
         $email = $row['email'];
         $customerId = $row['customer_id'];
-        fputcsv($fp, array(++$i, $customerId, $email, $date));
+        fputcsv($fp, array(++$i, $customerId, $email));
     }
 
     fclose($fp);
