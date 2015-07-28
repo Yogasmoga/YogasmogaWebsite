@@ -8,10 +8,12 @@ if(isset($_REQUEST['date'])) {
 
     $date = $_REQUEST['date'];
 
+    $date = date("Y-m-d", strtotime($date));
+
     $resource = Mage::getSingleton('core/resource');
     $readConnection = $resource->getConnection('core_read');
 
-    $query = 'select * from unsubscribed_customers';
+    $query = "select * from unsubscribed_customers where created_at='$date'";
 
     $rows = $readConnection->fetchAll($query);
 
