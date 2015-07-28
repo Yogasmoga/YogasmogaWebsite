@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_REQUEST['from_date'])) {
+if(isset($_REQUEST['date'])) {
 
     require_once '../app/Mage.php';
     Mage::app();
