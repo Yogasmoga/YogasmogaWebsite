@@ -112,6 +112,7 @@ $post = get_post();
             margin: -270px 0 0 -320px;
             position: fixed;
             top: 50%;
+            width: 640px;
             box-shadow: 0 0 20px rgba(0,0,0,0.3);
         }
         .go_to_parent > p {
