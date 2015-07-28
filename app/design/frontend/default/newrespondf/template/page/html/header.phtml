@@ -175,7 +175,7 @@
 								</span>
 
                                 </span>
-                                <a class="menu-link main-txt" href="<?php echo $_helper->getCategoryUrl($_category) ?>">
+                                <a class="menu-link main-txt" rel="cat_<?php echo $_category->getId();?>" href="<?php echo $_helper->getCategoryUrl($_category) ?>">
                                     <?php echo $_category->getName() ?>
                                 </a>
                                 <?php //if ($currentCategory && $currentCategory->getId() == $_category->getId()): ?>
@@ -186,7 +186,7 @@
                                         <?php foreach ($_subcategories as $_subcategory): ?>
                                             <li class="menu-item">
                                                 <i></i>
-                                                <a class="menu-link sub_cat"
+                                                <a class="menu-link sub_cat" rel="cat_<?php echo $_subcategory->getId();?>" data="cat_<?php echo $_category->getId(); ?>"
                                                    href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">
                                                     <?php echo $_subcategory->getName() ?></a>
 
@@ -208,7 +208,7 @@
                                                     <ul class="sub_menu_links">
                                                         <?php foreach ($_subsubcategories as $_subsubcategory): ?>
                                                             <li class="menu-item">
-                                                                <a class="menu-link"
+                                                                <a class="menu-link"  rel="cat_<?php echo $_subcategory->getId() . '_' . $_subsubcategory->getId();?>"
                                                                    href="<?php echo $_helper->getCategoryUrl($_subsubcategory) ?>">
                                                                     <?php echo $_subsubcategory->getName() ?></a>
                                                             </li>
@@ -424,3 +424,20 @@
         </div>
     </div>
 </div>
+<!--<span class="current_page_menu_id" rel="cat_<?php /*echo  Mage::getModel('catalog/layer')->getCurrentCategory()->getId();*/?>" style="display:none">&nbsp;</span>
+
+
+-->
+
+
+<script>
+    jQuery(document).ready(function($){
+        var child = "cat_<?php echo  Mage::getModel('catalog/layer')->getCurrentCategory()->getId();?>";
+        if($("a[rel='"+child+"']").hasAttribute("data")) {
+             var parent = $("a[rel='"+child+"']").attr("data");
+            $("a[rel='" + parent + "']").parent().find(".arrow-tag").click();
+        }
+        $("a[rel='"+child+"']").parent().find(".arrow-tag").click();
+
+    });
+</script>
