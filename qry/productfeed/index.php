@@ -3,7 +3,7 @@
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
 
-    require '../app/Mage.php';
+    require '../../app/Mage.php';
     Mage::app();
 
     $fileIn = fopen("products.csv","r");
