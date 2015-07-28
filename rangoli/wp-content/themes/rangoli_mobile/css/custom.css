@@ -809,6 +809,7 @@ input:focus{
     position: absolute;
     width: 100%;
     font-size: 18px;
+    font-weight: 400;
 }
 .about_section_3 span {
     font: 16px ITCAvantGardeStd-Bk;
@@ -826,7 +827,7 @@ input:focus{
 .about_section_4 {
     font: 18px freight-text-pro;
     text-align: center;
-    color: #434343;
+    color: #555;
     padding: 15px;
     float: left;
     width: 100%;
