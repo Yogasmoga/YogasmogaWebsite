@@ -390,7 +390,7 @@ foreach ($configurableProductArr as $key => $val) {
                 if ($showInSaleProduct && $childProduct['insale'] == 'Yes') {
                     ?>
                     <a
-                        href="<?php echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?>"> <?php echo $clrinfo[$childProduct['color']] ?></a>
+                        href="<?php echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?><?php echo $hiddenUrl;?>">"> <?php echo $clrinfo[$childProduct['color']] ?></a>
                     <span style="color:#c03;"> $<?php echo round($childProduct['price'], 2); ?></span>
                     <span>was $<?php echo round($confProduct->getPrice(), 2); ?></span>
 
