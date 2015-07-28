@@ -18,7 +18,7 @@ $post = get_post();
     <div class="insta_weak_posts">
         <?php // find images attached to this post / page.
         $images =& get_children( 'post_parent='. $post->ID .'&orderby=menu_order&order=ASC&post_type=attachment&post_mime_type=image&numbersposts=-1' );
-
+        $i=0;
         foreach ( (array) $images as $attachment_id => $attachment ) {
 
             if($i==0 || $i=14 || $i=23 || $i=37){
@@ -30,7 +30,7 @@ $post = get_post();
             else{
                 $class="left $i";
             }
-
+            $i++;
             ?>
 
 
@@ -38,7 +38,7 @@ $post = get_post();
 
             <?php
              echo "<img src='".wp_get_attachment_url( $attachment_id )."' />";
-            $i++;?>
+            ?>
 
             </div>
         <?php	}
