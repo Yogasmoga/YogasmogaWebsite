@@ -21,10 +21,10 @@ $post = get_post();
         $i=0;
         foreach ( (array) $images as $attachment_id => $attachment ) {
 
-            if($i==0 || $i=14 || $i=23 || $i=37){
+            if($i==0 || $i==14 || $i==23 || $i==37){
                 $class= "large left $i";
             }
-            else if($i=9 || $i=32){
+            else if($i==9 || $i==32){
                 $class= "large right $i";
             }
             else{
