@@ -210,7 +210,7 @@ foreach ($_childProducts as $_childProduct) {
     }
     else{
         $forHidden = $_childProduct->getAttributeText('hidden_product');
-        if (isset($forHidden) && strtolower($forHidden) == "no")
+        if (isset($forHidden) && (strtolower($forHidden) == "no" || strlen(trim($forHidden))==0))
             continue;
     }
 
