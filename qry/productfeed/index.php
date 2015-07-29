@@ -3,7 +3,7 @@ ini_set('max_execution_time', 300); //300 seconds = 5 minutes
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-require '../app/Mage.php';
+require '../../app/Mage.php';
 Mage::app();
 
 $fileIn = fopen("products.csv","r");
@@ -53,6 +53,10 @@ while(! feof($fileIn))
         $configurableProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
 
         $categoryIds = $product->getCategoryIds();
+
+        if(strpos($name,"U & Me Bra-Buffalo Blue")>-1)
+            echo $name . " | " . implode($categoryIds, ',') . "<br/>";
+
         if(isset($categoryIds) && is_array($categoryIds) && count($categoryIds)>0){
             foreach($categoryIds as $id){
                 if($id==43 || $id==12 || $id==8) {
