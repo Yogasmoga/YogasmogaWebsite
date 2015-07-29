@@ -82,7 +82,7 @@ foreach ($category as $products) {
     }
     else{
         $forHidden = $simpleProduct->getAttributeText('hidden_product');
-        if (isset($forHidden) && strtolower($forHidden) == "no")
+        if (isset($forHidden) && (strtolower($forHidden) == "no" || strlen(trim($forHidden))==0))
             continue;
     }
 
