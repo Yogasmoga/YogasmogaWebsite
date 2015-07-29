@@ -187,6 +187,8 @@ jQuery(document).ready(function($){
 
     $(".story-box .txt-cnt").click(function(){
         $(this).next().show();
+        $(".story-box .txt-cnt .bottom-text").show();
+        $(this).find(".bottom-text").hide();
         $(".story-box .txt-cnt").next().removeClass("has_slider");
         $(this).next().addClass("has_slider");
         $(".story-box .inside-content").not($(this).next()).hide();

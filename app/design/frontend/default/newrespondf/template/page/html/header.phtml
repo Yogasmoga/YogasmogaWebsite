@@ -159,25 +159,25 @@
                     <ul class="nav-dropdown menu level2" style="display: block;">
                         <?php foreach ($_categories as $_category): ?>
                             <li class="menu-item has-dropdown c-text">
-							<i></i>
-													<span class="arrow-tag toggle-ys-menu">
-<!--											<img class="responsive" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png') ?><!--" alt=""/>-->
-											<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                 width="44px" height="44px" viewBox="0 0 44 44"
-                                                 enable-background="new 0 0 44 44" xml:space="preserve">
-<line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374" y2="109.657"/>
-                                                <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
-                                                      y1="21.39" x2="30.374" y2="21.39"/>
-                                                <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
-                                                      y1="13.39" x2="22.374" y2="29.39"/>
-</svg>
-								</span>
+                            <i></i>
 
-                                </span>
                                 <a class="menu-link main-txt" rel="cat_<?php echo $_category->getId();?>" href="<?php echo $_helper->getCategoryUrl($_category) ?>">
                                     <?php echo $_category->getName() ?>
                                 </a>
+                                        <span class="arrow-tag toggle-ys-menu">
+                                        <!--											<img class="responsive" src="--><?php //echo $this->getSkinUrl('images/black-arrw.png') ?><!--" alt=""/>-->
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                             width="44px" height="44px" viewBox="0 0 44 44"
+                                             enable-background="new 0 0 44 44" xml:space="preserve">
+                                        <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374" y2="109.657"/>
+                                            <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
+                                                  y1="21.39" x2="30.374" y2="21.39"/>
+                                            <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
+                                                  y1="13.39" x2="22.374" y2="29.39"/>
+                                        </svg>
+                                        </span>
+
                                 <?php //if ($currentCategory && $currentCategory->getId() == $_category->getId()): ?>
                                 <?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
                                 <?php $_subcategories = $_category->getChildrenCategories() ?>
@@ -424,20 +424,17 @@
         </div>
     </div>
 </div>
-<!--<span class="current_page_menu_id" rel="cat_<?php /*echo  Mage::getModel('catalog/layer')->getCurrentCategory()->getId();*/?>" style="display:none">&nbsp;</span>
-
-
--->
-
 
 <script>
     jQuery(document).ready(function($){
         var child = "cat_<?php echo  Mage::getModel('catalog/layer')->getCurrentCategory()->getId();?>";
-        if($("a[rel='"+child+"']").hasAttribute("data")) {
+
+        if($("a[rel='"+child+"']").attr("data")!==undefined) {
              var parent = $("a[rel='"+child+"']").attr("data");
-            $("a[rel='" + parent + "']").parent().find(".arrow-tag").click();
+            $("a[rel='" + parent + "']").next().click();
         }
-        $("a[rel='"+child+"']").parent().find(".arrow-tag").click();
+
+        $("a[rel='"+child+"']").next().click();
 
     });
 </script>
