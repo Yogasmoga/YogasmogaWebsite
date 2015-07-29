@@ -204,12 +204,12 @@ foreach ($_childProducts as $_childProduct) {
     $colorName = trim(substr($nameWithColor, $pos + 1));       // get color name =>  Carbon
 
     if($forNormal) {
-        $forHidden = $_childProduct->getAttributeText('for_hidden_page');
+        $forHidden = $_childProduct->getAttributeText('hidden_product');
         if (isset($forHidden) && strtolower($forHidden) == "yes")
             continue;
     }
     else{
-        $forHidden = $_childProduct->getAttributeText('for_hidden_page');
+        $forHidden = $_childProduct->getAttributeText('hidden_product');
         if (isset($forHidden) && strtolower($forHidden) == "no")
             continue;
     }

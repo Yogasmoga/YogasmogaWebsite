@@ -76,7 +76,7 @@ foreach ($category as $products) {
     $simpleProduct = Mage::getModel('catalog/product')->load($products->getId());
 
     if($forNormal) {
-        $forHidden = $simpleProduct->getAttributeText('for_hidden_page');
+        $forHidden = $simpleProduct->getAttributeText('hidden_product');
         if (isset($forHidden) && strtolower($forHidden) == "yes")
             continue;
     }
