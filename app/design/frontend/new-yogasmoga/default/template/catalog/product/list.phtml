@@ -81,7 +81,7 @@ foreach ($category as $products) {
             continue;
     }
     else{
-        $forHidden = $simpleProduct->getAttributeText('for_hidden_page');
+        $forHidden = $simpleProduct->getAttributeText('hidden_product');
         if (isset($forHidden) && strtolower($forHidden) == "no")
             continue;
     }
