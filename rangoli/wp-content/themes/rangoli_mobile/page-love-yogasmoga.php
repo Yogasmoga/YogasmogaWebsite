@@ -150,7 +150,7 @@ $args = array(
             font: 12px/17px graphik-semibold;
             letter-spacing: 0.5px;
             text-transform: lowercase;
-            margin-top: 15px;
+            margin-top: 10px;
         }
         .insta_post_excerpt {
             font: 12px/17px GraphikRegular;
