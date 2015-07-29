@@ -202,6 +202,7 @@ jQuery(document).ready(function($){
     $(".story-box .close-icn").click(function(){
         $(this).fadeOut();
         $(this).next().next().hide();
+        $(".story-box .txt-cnt .bottom-text").show();
     });
     $("p.apply_promo_label > span").click(function(){
         $("#error_msg_coupon").html("");
