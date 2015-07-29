@@ -123,6 +123,12 @@ get_header();
             max-width: 100%;
             width: auto;
         }
+        .row{
+            float: none !important;
+            margin: 0 auto;
+            max-width: 640px;
+            width: 100%;
+        }
     </style>
 
     <script>

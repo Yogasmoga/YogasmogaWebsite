@@ -29,8 +29,8 @@ $args = array(
         <div class="overlay-text"></div>
         <div class="insta_post_summary">
             <p class="insta_post_name"><?php echo get_the_title(); ?></p>
-            <!--<p class="insta_post_author">@<?php /*$meta = get_post_meta($post->ID, 'wpcf-instagram-author');  echo $meta[0];  */?></p>
-                        <p class="insta_post_excerpt"><?php /*/*echo get_the_excerpt(); */?></p>-->
+            <p class="insta_post_author">@<?php $meta = get_post_meta($post->ID, 'wpcf-instagram-author');  echo $meta[0];  ?></p>
+            <p class="insta_post_excerpt"><?php echo get_the_excerpt(); ?></p>
         </div>
 
 
@@ -140,6 +140,22 @@ $args = array(
             max-width: 100%;
             width: auto;
         }
+        .row{
+            float: none !important;
+            margin: 0 auto;
+            max-width: 640px;
+            width: 100%;
+        }
+        .insta_post_author {
+            font: 12px/17px graphik-semibold;
+            letter-spacing: 0.5px;
+            text-transform: lowercase;
+            margin-top: 15px;
+        }
+        .insta_post_excerpt {
+            font: 12px/17px GraphikRegular;
+            margin-bottom: 0;
+        }
     </style>
 
     <script>
@@ -158,7 +174,6 @@ $args = array(
             })
         })
     </script>
-
 <?php
 get_footer();
 ?>

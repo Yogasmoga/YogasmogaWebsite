@@ -4,7 +4,7 @@ $post = get_post();
 ?>
 
 <div class="go_to_parent">
-    <p>BACK TO LOVE, YOGASMOGA</p>
+    <p><a href="<?php echo get_site_url()."/love-yogasmoga/" ?>">BACK TO LOVE, YOGASMOGA</a></p>
 </div>
 
 <div class="page_heading">
@@ -124,6 +124,9 @@ $post = get_post();
             padding: 15px 0;
             text-align: center;
             width: 314px;
+        }
+        .go_to_parent a {
+            color: #555;
         }
     </style>
 
