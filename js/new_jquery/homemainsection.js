@@ -1,6 +1,6 @@
 jQuery(document).ready(function($){
     // sliderHeight();
-    $(window).load(function(){
+    //$(document).ready(function(){
         $('.flexslider').flexslider({
             controlNav: true,
             slideshowSpeed: 5000,
@@ -17,10 +17,10 @@ jQuery(document).ready(function($){
             }
         });
         $('#playBtn').fadeIn(500, function(){$('.flexslider').css('background','#fff')});
-        $('.page-overlay').fadeOut(500, function(){$('.page-overlay').remove();});
+        //$('.page-overlay').fadeOut(500, function(){$('.page-overlay').remove();});
         $('body').css({overflow:'auto', marginRight:0});
-        positionfloatingimages();
-    });
+        //positionfloatingimages();
+    //});
     fixmainimage();
     
     $(window).resize(function($) {
@@ -80,9 +80,6 @@ function positionfloatingimages()
             {
                 jQuery("div#Welcome ul.slides>li.slide21127 img.girl1").hide().removeClass("fltimage");
                 jQuery("div#Welcome ul.slides>li.slide21127 img.girl2").show().addClass("fltimage");
-                
-                //jQuery("div#Welcome ul.slides>li.slide21127 img.girl1").hide();
-                //jQuery("div#Welcome ul.slides>li.slide21127 img.girl2").addClass("fltimage");
                 jQuery("div#Welcome ul.slides>li.slide21127 img.giftysimg").removeClass("barimg");
                 jQuery("div#Welcome ul.slides>li.slide21127 div.startingnov13.blackfriday").addClass("barimg");
             }
@@ -90,8 +87,6 @@ function positionfloatingimages()
             {
                 jQuery("div#Welcome ul.slides>li.slide21127 img.girl1").show().addClass("fltimage");
                 jQuery("div#Welcome ul.slides>li.slide21127 img.girl2").hide().removeClass("fltimage");
-                //jQuery("div#Welcome ul.slides>li.slide21127 img.girl1").show();
-                //jQuery("div#Welcome ul.slides>li.slide21127 img.girl2").removeClass("fltimage").css('left','auto');
                 jQuery("div#Welcome ul.slides>li.slide21127 img.giftysimg").addClass("barimg");
                 jQuery("div#Welcome ul.slides>li.slide21127 div.startingnov13.blackfriday").removeClass("barimg");
             }
