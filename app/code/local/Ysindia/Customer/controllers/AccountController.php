@@ -85,7 +85,9 @@ class Ysindia_Customer_AccountController extends Mage_Customer_AccountController
 
                 $customer_id = $customer->getId();
 
-                $result = file_get_contents($root . 'rangoli/wp_update_user_password.php?customer_id=' . $customer_id . '&password=' . $newPass);
+                $path = $root . 'rangoli/wp_update_user_password.php?customer_id=' . $customer_id . '&password=' . $newPass;
+
+                file_get_contents($path);
 
                 $this->_redirect('customer/account');
                 return;
@@ -105,4 +107,88 @@ class Ysindia_Customer_AccountController extends Mage_Customer_AccountController
 
     }
 
+    public function forgotPasswordPostAction()
+    {
+        $email = (string) $this->getRequest()->getPost('email');
+        if ($email) {
+            if (!Zend_Validate::is($email, 'EmailAddress')) {
+                $this->_getSession()->setForgottenEmail($email);
+                echo 'Invalid email address.';
+                return;
+            }
+
+            /** @var $customer Mage_Customer_Model_Customer */
+            $customer = Mage::getModel('customer/customer')
+                ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
+                ->loadByEmail($email);
+
+            if ($customer->getId()) {
+                try {
+                    $newResetPasswordLinkToken = Mage::helper('customer')->generateResetPasswordLinkToken();
+                    $customer->changeResetPasswordLinkToken($newResetPasswordLinkToken);
+                    $customer->sendPasswordResetConfirmationEmail();
+
+                    echo "Sent";
+                } catch (Exception $exception) {
+                    echo "Error sending email";
+                }
+            }
+            else
+            {
+                echo "Email does not exist.";
+            }
+
+        } else {
+            echo "No email";
+        }
+    }
+
+    public function resetPasswordPostAction()
+    {
+        $resetPasswordLinkToken = (string) $this->getRequest()->getQuery('token');
+        $customerId = (int) $this->getRequest()->getQuery('id');
+        $password = (string) $this->getRequest()->getPost('password');
+        $passwordConfirmation = (string) $this->getRequest()->getPost('confirmation');
+
+        try {
+            $this->_validateResetPasswordLinkToken($customerId, $resetPasswordLinkToken);
+        } catch (Exception $exception) {
+            echo 'Your password reset link has expired.';
+            return;
+        }
+
+        $errorMessages = array();
+        if (iconv_strlen($password) <= 0) {
+            array_push($errorMessages, Mage::helper('customer')->__('New password field cannot be empty.'));
+        }
+        /** @var $customer Mage_Customer_Model_Customer */
+        $customer = Mage::getModel('customer/customer')->load($customerId);
+
+        $customer->setPassword($password);
+        $customer->setConfirmation($passwordConfirmation);
+        $validationErrorMessages = $customer->validate();
+        if (is_array($validationErrorMessages)) {
+            $errorMessages = array_merge($errorMessages, $validationErrorMessages);
+        }
+
+        if (!empty($errorMessages)) {
+            $this->_getSession()->setCustomerFormData($this->getRequest()->getPost());
+            foreach ($errorMessages as $errorMessage) {
+                echo $errorMessage . "<br/>";
+            }
+            return;
+        }
+
+        try {
+            // Empty current reset password token i.e. invalidate it
+            $customer->setRpToken(null);
+            $customer->setRpTokenCreatedAt(null);
+            $customer->setConfirmation(null);
+            $customer->save();
+            echo 'Your password has been updated.';
+
+        } catch (Exception $exception) {
+            echo 'Cannot save a new password.';
+        }
+    }
 }

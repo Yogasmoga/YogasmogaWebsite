@@ -77,13 +77,13 @@ foreach ($category as $products){
 
     /*********************** hidden page logic ********************/
     if($forNormal) {
-        $forHidden = $simpleProduct->getAttributeText('for_hidden_page');
+        $forHidden = $simpleProduct->getAttributeText('hidden_product');
         if (isset($forHidden) && strtolower($forHidden) == "yes")
             continue;
     }
     else{
-        $forHidden = $simpleProduct->getAttributeText('for_hidden_page');
-        if (isset($forHidden) && strtolower($forHidden) == "no")
+        $forHidden = $simpleProduct->getAttributeText('hidden_product');
+        if (isset($forHidden) && (strtolower($forHidden) == "no" || strlen(trim($forHidden))==0))
             continue;
     }
     /*********************** hidden page logic ********************/
