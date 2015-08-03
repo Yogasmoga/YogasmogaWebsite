@@ -80,12 +80,14 @@
         setTimeout(function(){setfullscreenheight(); jQuery(window).trigger("resize");},5);
         var bannerImg = document.getElementById("bannerimg").complete;
         if(bannerImg){
-            jQuery(".share-strip, .new-arrivals-block").animate({opacity:1},100);
+//            jQuery(".share-strip, .new-arrivals-block").animate({opacity:1},100);
         }
         jQuery('body').css('overflow','auto');
-        jQuery('.namaskar-overlay1').fadeOut('slow');
+//        jQuery('.namaskar-overlay1').fadeOut('slow');
     });
     jQuery(document).ready(function(){
+        jQuery('.namaskar-overlay1').fadeOut('slow');
+        jQuery(".share-strip, .new-arrivals-block").animate({opacity:1},100);
        setTimeout(function(){
             jQuery("div.page-overlayy").remove();
             jQuery("body").css('overflow','auto');
