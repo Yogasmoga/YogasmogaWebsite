@@ -111,7 +111,7 @@ if ($posts && count($posts) > 0) {
 }
 
 $query = "select rc.user_id as user_id, comment_content, comment_date, color_main, color_shade, profile_url, comment_post_id, customer_id, comment_author from rangoli_comments as rc, rangoli_user_profiles as rup
-          where rc.user_id=rup.user_id and NOT rc.comment_approved in ('trash','post-trashed')
+          where rc.user_id>0 && rc.user_id=rup.user_id and NOT rc.comment_approved in ('trash','post-trashed')
           order by comment_date desc limit 0,100";
 
 $comments = $wpdb->get_results($query);
