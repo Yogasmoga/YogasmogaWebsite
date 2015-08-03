@@ -1,6 +1,6 @@
 var _refercount = 1;
-jQuery(window).load(function($){    
-    featuredSec(); 
+jQuery(window).load(function($){
+    featuredSec();
     colorStorySec();
     featLiHeightAd(); 
     browserTest();
@@ -13,6 +13,9 @@ jQuery(window).load(function($){
     // jQuery("body").animate({opacity:1},100);     
 });
 jQuery(document).ready(function($){
+
+    featuredSec();
+    colorStorySec();
     // get smogi value in footer
     if(fnIsAppleMobile()){
         var i = 1;
