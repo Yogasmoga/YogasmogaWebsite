@@ -7,7 +7,7 @@ require '../../app/Mage.php';
 Mage::app();
 
 $fileIn = fopen("products.csv", "r");
-$fileOut = fopen("result.txt", "w");
+$fileOut = fopen(Mage::getBaseDir() . "/var/productfeed/result.txt", "w");
 
 fwrite($fileOut, "&CID=4521127\n");
 fwrite($fileOut, "&SUBID=171706\n");
