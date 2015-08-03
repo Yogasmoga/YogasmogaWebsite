@@ -362,6 +362,44 @@ function filter()
 <?php
 }
 
+/* code update by Ashutosh */
+function getUserLevel($customer_id){
+
+    $root = get_site_url();
+    $root = str_replace("/rangoli", "/", $root);
+
+    $smogi_balance = json_decode(file_get_contents($root . "ys/session/customertotalsmogibucks/id/" . $customer_id));
+
+    if ($smogi_balance) {
+        if ($smogi_balance <= 50) {
+            $level = "level_1";
+        }
+        if ($smogi_balance <= 100 && $smogi_balance > 50) {
+            $level = "level_2";
+        }
+        if ($smogi_balance <= 150 && $smogi_balance > 100) {
+            $level = "level_3";
+        }
+        if ($smogi_balance <= 200 && $smogi_balance > 150) {
+            $level = "level_4";
+        }
+        if ($smogi_balance <= 250 && $smogi_balance > 200) {
+            $level = "level_5";
+        }
+        if ($smogi_balance <= 300 && $smogi_balance > 250) {
+            $level = "level_6";
+        }
+        if ($smogi_balance > 300) {
+            $level = "level_7";
+        }
+
+        return $level;
+
+    } else {
+        return "hide";
+    }
+
+}
 
 function get_user_level($user_id)
 {
