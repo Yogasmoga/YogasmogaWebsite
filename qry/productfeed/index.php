@@ -1,48 +1,52 @@
 <?php
-    ini_set('max_execution_time', 300); //300 seconds = 5 minutes
-	error_reporting(E_ALL);
-	ini_set('display_errors', 1);
+ini_set('max_execution_time', 300); //300 seconds = 5 minutes
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-    require '../../app/Mage.php';
-    Mage::app();
+require '../../app/Mage.php';
+Mage::app();
 
-    $fileIn = fopen("products.csv","r");
-    $fileOut = fopen("result.txt","w");
+$fileIn = fopen("products.csv", "r");
+$fileOut = fopen("result.txt", "w");
 
-    fwrite($fileOut, "&CID=4521127\n");
-    fwrite($fileOut, "&SUBID=171706\n");
-    fwrite($fileOut, "&PROCESSTYPE=UPDATE\n");
-    fwrite($fileOut, "&AID=12186878\n");
-    fwrite($fileOut, "&PARAMETERS=NAME|KEYWORDS|DESCRIPTION|SKU|BUYURL|AVAILABLE|IMAGEURL|PRICE|UPC|ADVERTISERCATEGORY|MERCHANDISETYPE\n");
+fwrite($fileOut, "&CID=4521127\n");
+fwrite($fileOut, "&SUBID=171706\n");
+fwrite($fileOut, "&PROCESSTYPE=UPDATE\n");
+fwrite($fileOut, "&AID=12186878\n");
+fwrite($fileOut, "&PARAMETERS=NAME|KEYWORDS|DESCRIPTION|SKU|BUYURL|AVAILABLE|IMAGEURL|PRICE|UPC|ADVERTISERCATEGORY|MERCHANDISETYPE\n");
 
-    $count = 0;
+$count = 0;
 
-    while(! feof($fileIn))
-    {
+while (!feof($fileIn)) {
 
-        $ar = fgetcsv($fileIn);
-        if(++$count==1)
-            continue;
+    $ar = fgetcsv($fileIn);
+    if (++$count == 1)
+        continue;
 
-        $sku = $ar[0];
-        $name = $ar[1];
-        $price = $ar[2];
-        $description = trim($ar[3]);
-        $available = $ar[4]==="1" ? 'YES':'NO';
-        $keyword = '';
-        $buy_url = '';
-        $image_url = '';
-        $advertise_category = 'yoga apparel';
-        $merchandiseType = '';
+    $sku = $ar[0];
+    $name = $ar[1];
+    $price = $ar[2];
+    $description = trim($ar[3]);
+    $available = $ar[4] === "1" ? 'YES' : 'NO';
+    $keyword = '';
+    $buy_url = '';
+    $image_url = '';
+    $advertise_category = 'yoga apparel';
+    $merchandiseType = '';
 
-        $description = trim(preg_replace('/\s+/', ' ', $description));
+    $description = trim(preg_replace('/\s+/', ' ', $description));
 
-        $product = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
+    $product = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
 
-        if(!isset($product) || !is_object($product) || !$product->getId()) {
-			echo "Bad product = $name ( $sku ) <br/>";
-		}
-		else{
+
+    if (!isset($product) || !is_object($product) || !$product->getId()) {
+        echo "Bad product = $name ( $sku ) <br/>";
+    } else {
+        if ($product->getTypeId() == 'simple') {
+
+            $forHidden = $product->getAttributeText('hidden_product');
+            if (isset($forHidden) && strtolower($forHidden) == "yes")
+                continue;
 
             $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')
                 ->getParentIdsByChild($product->getId());
@@ -52,17 +56,20 @@
 
             $configurableProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
 
-            $categoryIds = Mage::getResourceModel('catalog/product')->getCategoryIds($product);
-            if(isset($categoryIds) && is_array($categoryIds) && count($categoryIds)>0){
-                foreach($categoryIds as $id){
-                    if($id==43 || $id==8 || $id==12) {
+            $categoryIds = $product->getCategoryIds();
+
+            if (isset($categoryIds) && is_array($categoryIds) && count($categoryIds) > 0) {
+                foreach ($categoryIds as $id) {
+
+                    if (intval($id) === 43 || intval($id) === 12 || intval($id) === 8) {
                         $merchandiseType = "Non-commissionable Items";
                         break;
                     }
                 }
-            }
-            else
+            } else
                 continue;
+
+            unset($categoryIds);
 
             $buy_url = $configurableProduct->getUrlInStore();
             $keywords = $configurableProduct->getMetaKeyword();
@@ -85,8 +92,9 @@
             fwrite($fileOut, $data);
         }
     }
+}
 
-    fclose($fileOut);
+fclose($fileOut);
 
-	echo "<br/><br/>Product feed ready, <a href='download.php'>click here</a> to download";
+echo "<br/><br/>Product feed ready, <a href='download.php'>click here</a> to download";
 ?>
