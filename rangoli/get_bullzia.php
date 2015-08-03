@@ -71,7 +71,7 @@ if ($posts && count($posts) > 0) {
         $user_id = $post_data['post_author'];
         $ar_image_url = get_user_meta($post_data['post_author'], 'cupp_upload_meta');
 
-        if (is_array($ar_image_url) && count($ar_image_url)>0)
+        if (is_array($ar_image_url) && count($ar_image_url)>0 && strlen(trim($ar_image_url[0]))>0)
             $image_url = $ar_image_url[0];
         else
             $image_url = get_site_url() . '/wp-content/themes/rangoli/images/default.jpg';
@@ -153,7 +153,7 @@ if ($comments && count($comments) > 0) {
             else
                 $place = $address[0];
 
-            if ($ar_image_url && is_array($ar_image_url) && count($ar_image_url) > 0)
+            if ($ar_image_url && is_array($ar_image_url) && count($ar_image_url) > 0 && strlen(trim($ar_image_url[0]))>0)
                 $image_url = $ar_image_url[0];
             else
                 $image_url = get_site_url() . '/wp-content/themes/rangoli/images/default.jpg';
