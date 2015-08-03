@@ -82,8 +82,9 @@ if ($posts && count($posts) > 0) {
         else
             $place = $address[0];
 
-        $level = get_user_level($user_id);
-//        echo $level;
+        //$level = get_user_level($user_id);
+        $level = getUserData($post_data['customer_id']);
+
         $ar_data = array(
             'userId' => $post_data['post_author'],
             'type' => 'post',
@@ -157,7 +158,8 @@ if ($comments && count($comments) > 0) {
             else
                 $image_url = get_site_url() . '/wp-content/themes/rangoli/images/default.jpg';
 
-            $level = get_user_level($comment_data['user_id']);
+            //$level = get_user_level($comment_data['user_id']);
+            $level = getUserLevel($comment_data['customer_id']);
 
             $ar_data = array(
                 'userId' => $comment_data['user_id'],
