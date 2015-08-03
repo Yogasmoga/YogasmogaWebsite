@@ -1,4 +1,5 @@
-    	jQuery(window).load(function($){
+//jQuery(window).load(function($){
+jQuery(document).ready(function($){
 	homeContent();
 	homeContent1();
 	compressBoxHeight();

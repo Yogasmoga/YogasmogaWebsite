@@ -1,6 +1,6 @@
 jQuery(document).ready(function($){
     // sliderHeight();
-    $(window).load(function(){
+    //$(window).load(function(){
         $('.flexslider').flexslider({
             controlNav: true,
             slideshowSpeed: 5000,
@@ -19,8 +19,8 @@ jQuery(document).ready(function($){
         $('#playBtn').fadeIn(500, function(){$('.flexslider').css('background','#fff')});
         $('.page-overlay').fadeOut(500, function(){$('.page-overlay').remove();});
         $('body').css({overflow:'auto', marginRight:0});
-        positionfloatingimages();
-    });
+        //positionfloatingimages();
+    //});
     fixmainimage();
     
     $(window).resize(function($) {
