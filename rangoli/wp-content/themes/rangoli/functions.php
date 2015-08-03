@@ -402,6 +402,30 @@ function getUserLevel($customer_id){
 
 }
 
+function getUserLevelFromSmogiBucks($smogi_balance)
+{
+    if ($smogi_balance) {
+        if ($smogi_balance <= 50) {
+            $level = "level_1";
+        } else if ($smogi_balance <= 100) {
+            $level = "level_2";
+        } else if ($smogi_balance <= 150) {
+            $level = "level_3";
+        } else if ($smogi_balance <= 200) {
+            $level = "level_4";
+        } else if ($smogi_balance <= 250) {
+            $level = "level_5";
+        } else if ($smogi_balance <= 300) {
+            $level = "level_6";
+        } else {
+            $level = "level_7";
+        }
+
+        return $level;
+    }
+    else
+        return "hide";
+}
 
 function get_user_level($user_id)
 {

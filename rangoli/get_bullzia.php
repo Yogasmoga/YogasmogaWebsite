@@ -83,7 +83,7 @@ if ($posts && count($posts) > 0) {
             $place = $address[0];
 
         //$level = get_user_level($user_id);
-        $level = getUserLevel($post_data['customer_id']);
+        //$level = getUserLevel($post_data['customer_id']);
 
         $ar_data = array(
             'userId' => $post_data['post_author'],
@@ -92,7 +92,7 @@ if ($posts && count($posts) > 0) {
             'shade' => $post_data['color_shade'],
             'name' => $post_data['display_name'],
             'profileImage' => $image_url,
-            'level' => $level,
+//            'level' => $level,
             'place' => $place,
             'date' => $post_data['post_date'],
             'postTitle' => $post_data['post_title'],
@@ -159,7 +159,7 @@ if ($comments && count($comments) > 0) {
                 $image_url = get_site_url() . '/wp-content/themes/rangoli/images/default.jpg';
 
             //$level = get_user_level($comment_data['user_id']);
-            $level = getUserLevel($comment_data['customer_id']);
+            //$level = getUserLevel($comment_data['customer_id']);
 
             $ar_data = array(
                 'userId' => $comment_data['user_id'],
@@ -168,7 +168,7 @@ if ($comments && count($comments) > 0) {
                 'shade' => $comment_data['color_shade'],
                 'name' => $comment_data['comment_author'],
                 'profileImage' => $image_url,
-                'level' => $level,
+//                'level' => $level,
                 'place' => $place,
                 'date' => $comment_data['comment_date'],
                 'postTitle' => get_the_title($comment_data['comment_post_id']),
@@ -269,7 +269,8 @@ if ($data) {
             $user_roles = $author->roles;
             $postAuthorUrl = get_site_url()."/profile/?user_id=".$author_id;
 
-            $level = get_user_level($single['userId']);
+            //$level = get_user_level($single['userId']);
+            $level = getUserLevelFromSmogiBucks($smogi_bucks);
             $level = str_replace("level_","",$level);
 
 
