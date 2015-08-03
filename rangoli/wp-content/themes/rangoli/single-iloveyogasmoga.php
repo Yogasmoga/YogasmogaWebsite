@@ -19,22 +19,26 @@ $post = get_post();
         <?php // find images attached to this post / page.
         $images =& get_children( 'post_parent='. $post->ID .'&orderby=menu_order&order=ASC&post_type=attachment&post_mime_type=image&numbersposts=-1' );
         $i=0;
+        $style = "";
         foreach ( (array) $images as $attachment_id => $attachment ) {
 
             if($i==0 || $i==14 || $i==23 || $i==37){
                 $class= "large left $i";
+                $style = "style='clear:left'";
             }
             else if($i==9 || $i==32){
                 $class= "large right $i";
+                $style = "";
             }
             else{
                 $class="left $i";
+                $style = "";
             }
             $i++;
             ?>
 
 
-            <div class="insta_post_content <?php echo $class ?>">
+            <div class="insta_post_content <?php echo $class ?>" <?php echo $style ?>>
 
             <?php
              echo "<img src='".wp_get_attachment_url( $attachment_id )."' />";
