@@ -83,7 +83,7 @@ if ($posts && count($posts) > 0) {
             $place = $address[0];
 
         //$level = get_user_level($user_id);
-        $level = getUserData($post_data['customer_id']);
+        $level = getUserLevel($post_data['customer_id']);
 
         $ar_data = array(
             'userId' => $post_data['post_author'],
