@@ -248,7 +248,7 @@ if(!is_user_logged_in()) {
                     <li><a href="/our-story">YS STORY</a></li>
                     <li><a href="/ys-fabric-tech">YS TECH</a></li>
                     <li><a href="/smogi-bucks">SMOGI BUCKS</a></li>
-                    <li><a href="/namaskar">NAMASK√ÅR FOUNDATION</a></li>
+                    <li><a href="/namaskar">NAMASK√?R FOUNDATION</a></li>
                 </ul>
             </li>
             <li>
@@ -319,7 +319,7 @@ if(!is_user_logged_in()) {
                 <li> | </li>
                 <li><a href="/privacy-policy/">Privacy Policy</a></li>
                 <li> | </li>
-                <li><a href="/terms-of-use-and-conditions/">Terms &amp; Conditions</a></li>
+                <li><a href="/terms-and-conditions/">Terms &amp; Conditions</a></li>
                 <li>&nbsp;</li>
                 <li>&nbsp;</li>
                 <li >
