@@ -13,6 +13,7 @@ jQuery(window).load(function($){
     // jQuery("body").animate({opacity:1},100);     
 });
 jQuery(document).ready(function($){
+    jQuery(".wl-feat-prd,.wl-color-story-prd").animate({opacity:1},100);
     // get smogi value in footer
     if(fnIsAppleMobile()){
         var i = 1;
