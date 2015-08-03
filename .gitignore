@@ -21,7 +21,7 @@ local.properties
 errors/local.xml
 /app/etc/local.xml
 /rangoli/wp-config.php
-
+/.htaccess
 # External tool builders
 .externalToolBuilders/
 
