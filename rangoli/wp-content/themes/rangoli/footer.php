@@ -248,7 +248,7 @@ if(!is_user_logged_in()) {
                     <li><a href="/our-story">YS STORY</a></li>
                     <li><a href="/ys-fabric-tech">YS TECH</a></li>
                     <li><a href="/smogi-bucks">SMOGI BUCKS</a></li>
-                    <li><a href="/namaskar">NAMASKÃ?R FOUNDATION</a></li>
+                    <li><a href="/namaskar">NAMASK&Aacute;R FOUNDATION</a></li>
                 </ul>
             </li>
             <li>
