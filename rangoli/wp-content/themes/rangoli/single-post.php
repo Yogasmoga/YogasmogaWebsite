@@ -15,16 +15,12 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
 
     <div class="wp_page_banner" style="background: url('<?php echo $banner_img_url[0]; ?>') no-repeat; background-size: cover; <?php echo '#'.$author_color; ?>">
         <?php
-            if (isset($current_category)){
-                $curr_cat=strtoupper($current_category);
-                if($current_category=="read"){
-                    echo "<a class='back_to_parent' href='".get_site_url()."/read'>BACK TO $curr_cat</a>";
-                }if($current_category=="look"){
-                    echo "<a class='back_to_parent' href='".get_site_url()."/look'>BACK TO $curr_cat</a>";
-                }if($current_category=="learn"){
-                    echo "<a class='back_to_parent' href='".get_site_url()."/learn'>BACK TO $curr_cat</a>";
-                }
-            }
+            if(has_category("read"))
+                    echo "<a class='back_to_parent' href='".get_site_url()."/read'>BACK TO READ</a>";
+            else if(has_category("look"))
+                    echo "<a class='back_to_parent' href='".get_site_url()."/look'>BACK TO LOOK</a>";
+            else if(has_category("read"))
+                    echo "<a class='back_to_parent' href='".get_site_url()."/learn'>BACK TO LEARN</a>";
         ?>
         <?php
         $categories = get_the_category_list(" ");
@@ -370,42 +366,6 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
 <!---->
 <?php
 if($count>0){
-//    echo '<script>
-//        $(window).load(function(){
-//           animate_tiles();
-//        });
-//        function animate_tiles(){
-//        ';
-//        for ($i=0; $i<$count; $i++) {
-//            if ($i % 3 == 0)
-//                echo '
-//                       $(document).find(".section' . $i . '").unbind();
-//                       ';
-//        }
-//         for ($i=0; $i<$count; $i++){
-//            if ($i % 3 == 0 )
-//               echo '
-//                    var offset_section'.$i.' = $(document).find(".section'.$i.'").offset().top;
-//                    var content_offset_section'.$i.' = offset_section'.$i.' - $(window).scrollTop();
-//                    if (content_offset_section'.$i.'  <= $(window).height() - 100) {
-//                        $(document).find(".section'.$i.'").css({"opacity":1});
-//                        $(document).find(".section'.$i.'").addClass("fadeInUp").addClass("animated");
-//                    }';
-//            }
-//            for ($i=0; $i<$count; $i++){
-//                if ($i % 3 == 0 )
-//                echo '
-//                    $(window).scroll(function(){
-//                        var content_offset_section'.$i.' = offset_section'.$i.' - $(window).scrollTop();
-//                        if (content_offset_section'.$i.'  <= $(window).height() - 100) {
-//                                $(document).find(".section'.$i.'").css({"opacity":1});
-//                            $(document).find(".section'.$i.'").addClass("fadeInUp").addClass("animated");
-//                        }
-//                    });';
-//            }
-//        echo '}
-//    </script>
-//    ';
     echo '<style>';
     echo '
             .section_animate{
