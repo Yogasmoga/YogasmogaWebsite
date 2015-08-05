@@ -151,6 +151,18 @@ if (isset($page) && $page == '11') {
 
 
         $simpleProduct = Mage::getModel('catalog/product')->load($products->getId());
+
+        if($forNormal) {
+            $forHidden = $simpleProduct->getAttributeText('hidden_product');
+            if (isset($forHidden) && strtolower($forHidden) == "yes")
+                continue;
+        }
+        else{
+            $forHidden = $simpleProduct->getAttributeText('hidden_product');
+            if (isset($forHidden) && (strtolower($forHidden) == "no" || strlen(trim($forHidden))==0))
+                continue;
+        }
+
         $insalevalue = $simpleProduct->getAttributeText('insale');
         /*if($insalevalue == 'Yes')
             die('found');*/
