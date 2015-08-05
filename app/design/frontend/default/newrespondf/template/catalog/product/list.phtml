@@ -449,7 +449,7 @@ if (isset($page) && $page == '11') {
             ?>
             <div class="productCont">
                 <div class="prod-img">
-                    <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?>">
+                    <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?><?php echo $hiddenUrl;?>">
                         <?php
                         foreach ($imageArr[$childProduct['color']] as $img) {
                             ?>
@@ -463,7 +463,7 @@ if (isset($page) && $page == '11') {
                         ?>
                     </a>
                     <a class="clickable"
-                       href="<?php echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?>"></a>
+                       href="<?php echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?><?php echo $hiddenUrl;?>"></a>
                     <?php ?>
                     <!--<img class="prd-image" src="<?php echo $this->helper('catalog/image')->init($confProduct, 'thumbnail', $imageArr[$childProduct])->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(221, 330)->setQuality(91); ?>" />-->
                 </div>
@@ -472,7 +472,7 @@ if (isset($page) && $page == '11') {
                     <?php
                     if ($showInSaleProduct && $childProduct['insale'] == 'Yes') {
                         ?> <a
-                            href="<?php echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?>"> <?php echo $clrinfo[$childProduct['color']] ?></a>
+                            href="<?php echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?><?php echo $hiddenUrl;?>"> <?php echo $clrinfo[$childProduct['color']] ?></a>
                         <span style="color:#c03;"> $<?php echo round($childProduct['price'], 2); ?></span>
                         <p><span class="prd-price"
                                  style="text-transform: lowercase;">was $<?php echo round($confProduct->getPrice(), 2); ?></span>
@@ -482,7 +482,7 @@ if (isset($page) && $page == '11') {
                     <?php
                     } else {
                         ?>
-                        <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?>"><?php echo $confProduct->getName(); ?></a>
+                        <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?><?php echo $hiddenUrl;?>"><?php echo $confProduct->getName(); ?></a>
                         <p>
                             <span class="prd-color"><?php echo $clrinfo[$childProduct['color']]; ?></span>
                             <span class="prd-price">$<?php echo round($confProduct->getPrice(), 2); ?></span></p>
