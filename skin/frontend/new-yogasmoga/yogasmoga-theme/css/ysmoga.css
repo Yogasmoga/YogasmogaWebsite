@@ -138,6 +138,7 @@ ul.site-map > li{
     height: auto;
     display: inline-block;
     overflow:hidden;
+    position: relative;
 }
 
 .grid65{
@@ -149,6 +150,7 @@ ul.site-map > li{
     width: 33.366434955312810327706057596822%;
     /*float: right;*/
     position: absolute;
+    height: 100%;
 }
 
 /** misc-class/id **/

@@ -1,7 +1,7 @@
 jQuery(document).ready(function($){
 	homeContent();
 	homeContent1();
-	compressBoxHeight();
+	//compressBoxHeight();
 	colorBoxHeight();
 	factorypart();
 	namaskarpart();
@@ -21,7 +21,7 @@ jQuery(document).ready(function($){
 	$(window).resize(function(){			
 		homeContent();
 		homeContent1();
-		compressBoxHeightRes();
+		//compressBoxHeightRes();
 		colorBoxHeight();
 		factorypartRes();
 		namaskarpartRes();	
@@ -48,13 +48,16 @@ function sliderHomeBx(){
 		speed: 1250
 	});	
 };
-
+/*
 function compressBoxHeight(){	
 	setTimeout(function(){
 	    compressBoxHeightRes();
     },500);
-};
-function compressBoxHeightRes(){
+
+
+
+};*/
+/*function compressBoxHeightRes(){
 		var conWid = jQuery(".cubix").width();
 		var bigSide = jQuery(".cubix .grid65").width();
 		jQuery(".cubix .grid35").css({"width": conWid - bigSide,"position":"absolute"});		
@@ -66,7 +69,7 @@ function compressBoxHeightRes(){
 	    // jQuery("div.text").html("fabricpar---" + gd1 + "----" + gd2 + "---" + "---" + gdHeight );	       
 	    jQuery(".ysfabricpart .iconspartone").css("height", gdHeight);
 	    // jQuery(".ysfabricpart").animate({"opacity":1});	 	    	       	    
-}
+}*/
 function colorBoxHeight(){
 	setTimeout(function(){
 	   colorBoxHeightRes();

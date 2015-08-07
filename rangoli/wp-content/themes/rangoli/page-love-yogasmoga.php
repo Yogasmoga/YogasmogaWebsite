@@ -29,8 +29,8 @@ get_header();
                         <div class="author_post read"
                              style="background: <?php echo '#' . $wpauthors[0]->color_shade; ?>">
 
-                            <?php echo get_the_post_thumbnail($post->ID, 'thumb', array('style' => 'width:100%; float:left;height:auto;'));
-                            if (!has_post_thumbnail($post->ID, 'thumb', array('onclick' => '"' . get_the_permalink() . '?cat=read"'))) {
+                            <?php echo get_the_post_thumbnail($post->ID, 'insta_posts', array('style' => 'width:100%; float:left;height:auto;'));
+                            if (!has_post_thumbnail($post->ID, 'insta_posts', array('onclick' => '"' . get_the_permalink() . '"'))) {
 
                                 ?>
                                 <img src="<?php bloginfo('template_directory') ?>/images/no-background.png"
