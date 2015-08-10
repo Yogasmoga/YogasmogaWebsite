@@ -32,7 +32,15 @@
 <?php if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; $i++ ?>
     <li id="opc-<?php echo $_stepId ?>" class="section <?php echo !empty($_stepInfo['allow'])?'allow':'' ?> <?php echo !empty($_stepInfo['complete'])?'saved':'' ?>">
         <div class="head">
-            <div class="checkout_title"><span class="step-count"><?php echo $i ?></span> &nbsp;<?php echo $_stepInfo['label'] ?></div><span class="arrow-tag"><img class="" src="<?php echo $this->getSkinUrl('images/black-arrw.png') ;?>" alt="arrow"></span>
+            <div class="checkout_title"><span class="step-count"><?php echo $i ?></span> &nbsp;<?php echo $_stepInfo['label'] ?></div>
+            <span class="arrow-tag">
+                <svg height="44px" width="44px">
+                    <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+                    <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+                    <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+                </svg>
+                <img class="" src="<?php echo $this->getSkinUrl('images/black-arrw.png') ;?>" alt="arrow">
+            </span>
 			<!-- <a href="#"><?php //echo $this->__('Edit') ?></a>-->
             <div class="clear"></div>
         </div>

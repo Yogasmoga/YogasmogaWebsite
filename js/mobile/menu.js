@@ -332,5 +332,14 @@ jQuery(document).ready(function($){
 
     $(".sign-in-box h1").click(function(){
         $(this).parent().find(".toggle_dropdown").click();
-    })
+    });
+/*
+    $(".checkout-onepage-index .head").each(function(){
+        $(this).click(function(){
+            $(".checkout-onepage-index .head").not($(this)) .next().hide();
+            $(this).next().slideDown();
+        })
+    });
+*/
+
 });

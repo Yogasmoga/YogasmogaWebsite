@@ -1,56 +1,36 @@
-<?php
-/**
- * Magento
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License (AFL 3.0)
- * that is bundled with this package in the file LICENSE_AFL.txt.
- * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/afl-3.0.php
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade Magento to newer
- * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
- *
- * @category    design
- * @package     base_default
- * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- */
-?>
-<script type="text/javascript">
-        jQuery(document).find('.selected_method').find(".arrow-tag").click(function () {
-            jQuery(document).find('.options_methods').slideToggle();
-            jQuery(this).toggleClass("flip");
-        });
-        jQuery('.options_methods .method').click(function(){
-           jQuery('.selected_method > span:first-child').html(jQuery(this).html());
-           jQuery(document).find('.options_methods').slideToggle();
-            jQuery(this).removeClass("flip");
-        });
-        jQuery("#shipping-method-buttons-container").click(function(){
+<script>
+    jQuery("label.shipping_method_radio").click(function(){
+        jQuery(this).addClass("active");
+        jQuery("label.shipping_method_radio").not(jQuery(this)).removeClass("active");
+    });
 
-            if(!jQuery(".selected_method input[type='radio']").is(":checked")){
-                jQuery("#no_shipping_method").html("Please specify shipping method.");
-            }
-        });
-        jQuery(".options_methods").click(function(){
-            jQuery(".selected_method .arrow-tag").removeClass("flip");
-        })
+    var checkedFound = false;
+    jQuery("label.shipping_method_radio").each(function(){
+
+        if(jQuery(this).find("input[type='radio']").prop("checked")==true){
+            jQuery(this).click();
+            checkedFound=true;
+        }
+    });
+    if(!checkedFound){
+        jQuery("label.shipping_method_radio:first-child").click();
+    }
+
+/*    jQuery("#shipping-method-buttons-container button").click(function(){
+        alert();
+        if(!jQuery("label.shipping_method_radio").hasClass("active")){
+            jQuery("#shippingmethoderrormsg").html("Please select a shipping method.");
+            alert("error");
+            return false;
+        }
+        else{
+            alert("worked");
+            jQuery("#shippingmethoderrormsg").html("");
+        }
+    })*/
 </script>
-<p id="no_shipping_method"></p>
 <form id="co-shippingmethod-form" action="">
-<p class="selected_method"><span>---Select Shipping Method--- </span>
-    <span class="arrow-tag"><img alt="arrow" src="/skin/frontend/default/newrespondf/images/black-arrw.png" class=""></span>
-</p>
-    <div class="options_methods">
-<?php /** @var $this Mage_Checkout_Block_Onepage_Shipping_Method_Available */ ?>
+
 <?php $_shippingRateGroups = $this->getShippingRates(); ?>
 <?php if (!$_shippingRateGroups): ?>
     <p><?php echo $this->__('Sorry, no quotes are available for this order at this time.') ?></p>
@@ -67,7 +47,9 @@
                                 <span>
                                     <?php if ($_sole) : ?>
                                         <span class="no-display"><input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>" checked="checked" /></span>
-                                        <input name="shipping_method_dummy" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>" checked="checked" class="radio"/>
+                                        <label class="shipping_method_radio">
+                                            <input name="shipping_method_dummy" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>" checked="checked" class="radio"/>
+                                        </label>
                                     <?php else: ?>
                                         <input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>"<?php //if($_rate->getCode()===$this->getAddressShippingMethod()) echo ' checked="checked"' ?> class="radio"/>
                                     <?php endif; ?> 
@@ -113,7 +95,6 @@
 <div class="cleaner"></div>
 <div id="shippingmethoderrormsg" class="loginerrormsg errormsg"></div>
 <?php endif; ?>
-    </div>
 </form>
 <?php return; ?>
 
@@ -192,6 +173,7 @@
             }
        });
     });
+
 //]]>
 </script>
 <?php endif; ?>

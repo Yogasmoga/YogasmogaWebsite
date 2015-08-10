@@ -378,6 +378,7 @@ div,p{
 }
 .user_menu_links{
     display: none;
+    text-transform: uppercase;
 }
 .user_menu_links span {
     height: 44px;
@@ -391,8 +392,8 @@ div,p{
     -webkit-transform: rotateZ(-180deg);
     transition-duration: 200ms;
 }
-.yogasmoga_menu_links.level2 ,.category-menu_mobile{
-    padding-bottom: 22px;
+.ys_single_link:last-child,.signout {
+    padding-bottom: 15px;
 }
 .overlay-text {
     bottom: 0;
