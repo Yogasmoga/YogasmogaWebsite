@@ -263,8 +263,8 @@ ul.site-map > li{
     width: 100%;
     display: block;
     vertical-align: middle;
-    height: 50%;
-    position: relative;
+    height: 50% !important;
+    position: absolute;
 }
 
 .multicolorcont{
@@ -276,13 +276,18 @@ ul.site-map > li{
 .factorythread{
     background: url("../images/new-elements/facthread.jpg") no-repeat center center transparent;
     background-size: 100% 100%;
+    /*height:100%;*/
 }
 
 .usamap{
     background: url("../images/new-elements/usamap.jpg") no-repeat center center transparent;
     background-size: 100% 100%;
+    top:50%;
 }
-
+.iconsparttwo{
+    height: 50% !important;
+    top:50%;
+}
 .supportnamaskar{
     background: url("../images/new-elements/namaskarband.jpg") no-repeat center center #fff;
     display: block;
@@ -329,6 +334,8 @@ ul.site-map > li{
     -moz-box-sizing: border-box; 
     -ms-box-sizing: border-box; 
     box-sizing: border-box;
+    position: absolute;
+    top:50%;
 }
 
 .iconspartone .row {
