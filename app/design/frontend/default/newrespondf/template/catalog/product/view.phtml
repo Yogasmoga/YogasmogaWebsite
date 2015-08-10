@@ -120,15 +120,19 @@ else if (count($urlPath) > 1) {
 $currentUrlForParent = Mage::helper('core/url')->getCurrentUrl();
 
 $currentUrlForParent = strtolower($currentUrlForParent);
-
 $categoryNamesForParent = explode('/', $currentUrlForParent);  // break the url
 
 if (isset($categoryNamesForParent) && count($categoryNamesForParent) > 4) {
-    $parentUrlKey = $categoryNamesForParent[count($categoryNamesForParent) - 2];
-    $parentCategory = Mage::getModel('catalog/category')->loadByAttribute('url_key', $parentUrlKey);
-    $goBackUrl = $parentCategory->getUrl();
+
+    $lastSlashPosition = strrpos($currentUrlForParent, '/', 0);
+    $goBackUrl = substr($currentUrlForParent, 0, $lastSlashPosition);
+
+//    $parentUrlKey = $categoryNamesForParent[count($categoryNamesForParent) - 2];
+//    echo "<br/>********* $parentUrlKey ****************";
+//    $parentCategory = Mage::getModel('catalog/category')->loadByAttribute('url_key', $parentUrlKey);
+//    $goBackUrl = $parentCategory->getUrl();
 } else {
-    $goBackUrl = $categoryNamesForParent[0] . '//' . $categoryNamesForParent[2];            // 0 => http: or https: , 1 is empty,  2 => yogasmoga.com
+    $goBackUrl = $categoryNamesForParent[0] . '/' . $categoryNamesForParent[2];            // 0 => http: or https: , 1 is empty,  2 => yogasmoga.com
 }
 
 /***************** code to get parent category url *****************/
