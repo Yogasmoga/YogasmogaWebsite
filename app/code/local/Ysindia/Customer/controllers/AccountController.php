@@ -185,6 +185,33 @@ class Ysindia_Customer_AccountController extends Mage_Customer_AccountController
             $customer->setRpTokenCreatedAt(null);
             $customer->setConfirmation(null);
             $customer->save();
+
+/**************************** email sending ********************/
+            $storeId = Mage::app()->getStore()->getStoreId();
+
+            $templateId = 10;
+            $customerEmail = $customer->getEmail();
+            $customerName = $customer->getName();
+
+            $emailTemplate = Mage::getModel('core/email_template')->load($templateId);
+            $senderName = Mage::getStoreConfig('trans_email/ident_general/name',$storeId);
+            $senderEmail = Mage::getStoreConfig('trans_email/ident_general/email',$storeId);
+
+            $emailTemplateVariables = array('name' => $customerName,'email' => $customerEmail);
+            $processedTemplate = $emailTemplate->getProcessedTemplate($emailTemplateVariables);
+
+            $mail = Mage::getModel('core/email')
+                ->setToName($senderName)
+                ->setToEmail($customerEmail)
+                ->setBody($processedTemplate)
+                ->setSubject('Subject: Password Confirmation')
+                ->setFromEmail($senderEmail)
+                ->setFromName($senderName)
+                ->setType('html');
+
+            $mail->send();
+/**************************** email sending ********************/
+
             echo 'Your password has been updated.';
 
         } catch (Exception $exception) {
