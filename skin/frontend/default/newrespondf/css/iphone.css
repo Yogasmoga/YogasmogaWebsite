@@ -2464,7 +2464,9 @@ tr.td-noborder td {
 .product-options-bottom {
     margin: 0 0 5px;
 }
-
+.j2t-cart-points-image{
+    display: none;
+}
 /********************** Messages  */
 #billing-new-address-form .fields label, #billing-new-address-form .wide label, #shipping-new-address-form .form-list label {
     color: #444444;
