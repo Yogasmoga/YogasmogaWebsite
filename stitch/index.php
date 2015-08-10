@@ -112,10 +112,10 @@ for ($row = 2; $row <= $highestRow; $row++) {
     $actual_name = trim(substr($name, 0, $parenthesis_start_position));
     $within_parenthesis = trim(substr($name, $parenthesis_start_position + 1, $parenthesis_end_position - $parenthesis_start_position - 1));
 
+    $height = '';
     if(strpos($within_parenthesis, ",")===false) {
         $color = $within_parenthesis;
         $size = 'One';
-        $height = '';
     }
     else{
         $ar_within_parenthesis = explode(",", $within_parenthesis);
@@ -124,8 +124,6 @@ for ($row = 2; $row <= $highestRow; $row++) {
 
         if(count($ar_within_parenthesis)==3)
             $height = $ar_within_parenthesis[2];
-        else
-            $height = '';
     }
 
     $product_names[] = $actual_name;
@@ -392,7 +390,7 @@ ksort($all_products);
         echo "</tr>";
 
         echo "<tr><td style='padding-top:20px; font-weight:bold; color:#2f70cc; font-weight: bold' colspan='2'>Total units: \"$styleName\" </td>";
-        echo "<td colspan='2' style='padding-top:20px; font-weight:bold; color:2f70cc; font-weight: bold'>" . round($total_products,2) . "</td>";
+        echo "<td colspan='2' style='padding-top:20px; font-weight:bold; color:#2f70cc; font-weight: bold'>" . round($total_products,2) . "</td>";
         echo "</tr>";
         echo "<tr><td style='padding-top:10px; font-weight:bold; color:#cc1c3a; font-weight: bold' colspan='2'>Total Cost Price: \"$styleName\"</td>";
         echo "<td colspan='2' style='padding-top:10px; font-weight:bold; color:#cc1c3a; font-weight: bold'>$ " . number_format(round($total_inventories_cost,2)) . "</td>";
