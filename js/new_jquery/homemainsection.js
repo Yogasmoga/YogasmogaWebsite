@@ -22,6 +22,9 @@ jQuery(document).ready(function($){
             }
         });
     });
+    $(".gridfull img").load(function(){
+        $(this).css("visibility","visible");
+    });
     $('#playBtn').fadeIn(500, function(){$('.flexslider').css('background','#fff')});
     //$('.page-overlay').fadeOut(500, function(){$('.page-overlay').remove();});
     $('body').css({overflow:'auto', marginRight:0});
