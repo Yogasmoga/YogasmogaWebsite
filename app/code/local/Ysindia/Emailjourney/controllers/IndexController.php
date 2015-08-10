@@ -88,19 +88,19 @@ class Ysindia_Emailjourney_IndexController extends Mage_Core_Controller_Front_Ac
                 if ($days < 7 || $days > 42) continue;       // pick 6 templates 7 days, max 49 days (one for initial email)
 
                 $emailNumber = intval($days/7)-1;           // $days = 7, 7/7 = 1 (first template is at 0)
+                $templateId = $templates[$emailNumber];
 
                 $resource = Mage::getSingleton('core/resource');
                 $readConnection = $resource->getConnection('core_read');
 
-                $query = "SELECT id from email_journey where customer_id=$customerId and email_number=$emailNumber";
+                //$query = "SELECT id from email_journey where customer_id=$customerId and email_number=$emailNumber";
+                $query = "SELECT id from email_journey where customer_id=$customerId and template_id=$templateId";
 
                 $rows = $readConnection->fetchAll($query);
 
                 if ($rows && count($rows) > 0) {
                     continue;
                 }
-
-                $templateId = $templates[$emailNumber];
 
                 $emailTemplate = Mage::getModel('core/email_template')->load($templateId);
                 $emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_general/email', $storeId));
