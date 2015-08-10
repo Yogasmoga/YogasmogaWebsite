@@ -141,6 +141,7 @@ ul.site-map > li{
     display: inline-block;
     overflow:hidden;
     position: relative;
+    min-width: 490px;
 }
 
 .grid65{
