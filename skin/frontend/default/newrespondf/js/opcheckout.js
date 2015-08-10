@@ -91,6 +91,7 @@ Checkout.prototype = {
 
     gotoSection: function(section)
     {
+        showCompletedSections(section);
         section = $('opc-'+section);
         section.addClassName('allow');
         this.accordion.openSection(section);
@@ -106,7 +107,7 @@ Checkout.prototype = {
             alert();
             jQuery('p.selected_method > span:first-child').html(jQuery(this).html());
         });
-        
+
         if ($('login:guest') && $('login:guest').checked) {
             this.method = 'guest';
             var request = new Ajax.Request(
@@ -873,3 +874,24 @@ Review.prototype = {
     isSuccess: false
 };
 
+function showCompletedSections(section){
+    jQuery(".one-page-checkout li").each(function(){
+        jQuery(this).prevAll().addClass("completed");
+        jQuery(this).nextAll().removeClass("completed");
+        jQuery(this).prevAll().addClass("editable");
+        jQuery(this).nextAll().removeClass("editable");
+        jQuery(this).removeClass("completed");
+        jQuery(this).addClass("editable");
+    });
+    if(section=="payment"){
+        jQuery("#p_method_stripe").click();
+    }
+    jQuery("#shopping_arrow").click(function(){
+        jQuery(this).prevAll().addClass("completed");
+        jQuery(this).nextAll().removeClass("completed");
+        jQuery(this).prevAll().addClass("editable");
+        jQuery(this).nextAll().removeClass("editable");
+        jQuery(this).removeClass("completed");
+        jQuery(this).addClass("editable");
+    });
+}

@@ -163,25 +163,25 @@ function isinputvalid(){
     var gender = jQuery(".f-right .current input").val();
     jQuery(".sign-up-block .btn").removeClass("active");
     if(fname=="" || fname=="First Name"){
-        jQuery("#error_msg").html("Please fill in your first name");
+        jQuery(".sign-up-block .btn").removeClass("active");
     }
     else if(lname=="" || lname=="Last Name"){
-        jQuery("#error_msg").html("Please fill in your Last Name");
+        jQuery(".sign-up-block .btn").removeClass("active");
     }
     else if(email_id=="" || email_id=="Email"){
-        jQuery("#error_msg").html("Please fill in your Email ID");
+        jQuery(".sign-up-block .btn").removeClass("active");
     }
     else if(!isValidEmailAddress(email_id)){
-        jQuery("#error_msg").html("Please enter a valid Email ID");
+        jQuery(".sign-up-block .btn").removeClass("active");
     }
     else if(pwd==""){
-        jQuery("#error_msg").html("Please choose a password");
+        jQuery(".sign-up-block .btn").removeClass("active");
     }
     else if(pwd.length<6){
-        jQuery("#error_msg").html("Password should be of 6 or more.");
+        jQuery(".sign-up-block .btn").removeClass("active");
     }
     else if(!gender_link.find(".f1").hasClass("current") && !gender_link.find(".f2").hasClass("current")){
-        jQuery("#error_msg").html("Select Gender");
+        jQuery(".sign-up-block .btn").removeClass("active");
     }
     else{
         jQuery("#error_msg").html("");
@@ -316,16 +316,13 @@ function isloginvalid(){
     var button_html = jQuery(".login_customer").html();
     jQuery("#ajaxlogin_button_send").removeClass("active");
     if(email_id=="" || email_id=="Email"){
-        jQuery("#err_msg").html("Please fill in your Email ID");
+        jQuery("#ajaxlogin_button_send").removeClass("active");
     }
     else if(!isValidEmailAddress(email_id)){
-        jQuery("#err_msg").html("Please enter a valid Email ID");
+        jQuery("#ajaxlogin_button_send").removeClass("active");
     }
     else if(pwd==""){
-        jQuery("#err_msg").html("Please enter your password.");
-    }
-    else if( pwd.length<6 && pwd.length>0){
-        jQuery("#err_msg").html("Password should be of 6 or more.");
+        jQuery("#ajaxlogin_button_send").removeClass("active");
     }
     else{
         jQuery("#err_msg").html("");

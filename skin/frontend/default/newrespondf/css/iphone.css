@@ -1,4 +1,6 @@
-﻿
+﻿body{
+    color: #555;
+}
 input, textarea, button {
     border-radius: 0;
     -webkit-border-radius: 0;
@@ -1812,7 +1814,23 @@ button.place-order::before, #shopping-cart-table .button::before, #shopping-cart
     top: 9px;
     width: 34px;
 }
-
+button[name="update_cart_action_checkout"]::before {
+    background: none !important;
+}
+.section .head + div {
+    border-bottom: 1px solid #999 !important;
+}
+button[name="update_cart_action_checkout"]{
+    background: #00B800 !important;
+    height: 26px;
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    bottom:0px;
+    width: 34px;
+    color: #fff;
+}
 #shopping-cart-table .item-options {
     background: none repeat scroll 0 0 #eeeeee;
     clear: both;
@@ -2561,18 +2579,18 @@ tr.td-noborder td {
 
 #checkout-step-cart {
     display: block;
-    padding-bottom: 44px;
+    padding-bottom: 64px;
     position: relative;
 }
 
 #shopping-cart-totals-table + .button, #shopping-cart-table .button {
-    border: medium none;
-    height: 44px;
+    height: 64px;
     left: 0;
     position: absolute;
-    background: #43ad00;
-    color: #43ad00;
+    /*background: #43ad00;*/
+    /*color: #43ad00;*/
     width: 100%;
+    border: 10px solid #fff;
 }
 
 #shopping-cart-table .col_left_img {
@@ -2617,13 +2635,26 @@ tr.td-noborder td {
 }
 
 .checkout-onepage-index #billing-buttons-container .button, #shipping-buttons-container .form-button, #shipping-method-buttons-container .form-button, #payment-buttons-container .form-button {
-    bottom: 0;
+    bottom: 10px;
     left: 0;
     margin: 0;
     position: absolute;
     width: 100%;
+    border: 10px solid #fff;
+    height: 64px;
 }
-
+label.shipping_method_radio {
+    display: inline-block;
+    width: 20px;
+    background: rgb(242, 242, 242);
+    height: 20px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 30px;
+}
+label.shipping_method_radio > input[type="radio"] {
+    opacity: 0;
+}
 #checkout-step-payment {
     position: relative;
     padding-bottom: 60px;
@@ -2653,12 +2684,15 @@ tr.td-noborder td {
     width: 100%;
 }
 
-#billing-buttons-container .button, #shipping-buttons-container .form-button, #shipping-method-buttons-container .form-button, #payment-buttons-container .form-button {
+#billing-buttons-container .button, #shipping-buttons-container .form-button, #shipping-method-buttons-container .form-button, #payment-buttons-container .form-button
+{
     background: url("../images/tick.png") no-repeat scroll center center #43ad00;
     border: medium none;
     color: transparent;
-    height: 44px;
+    height: 54px;
     width: 100%;
+    border:10px solid #fff;
+    border-bottom: none;
 }
 
 #checkout-review-table tr td:first-child {
@@ -2703,7 +2737,7 @@ tr.td-noborder td {
 }
 
 .addr-book .custom-r:checked + span, #co-billing-form li.ship-btn input.custom-r:checked + span {
-    background: #b4b5a8 !important;
+    background: #AE8637 !important;
 }
 
 #checkout-step-shipping .custom-check label {
@@ -2870,8 +2904,8 @@ h4.legend {
 }
 
 #shopping-cart-totals-table {
-    border-bottom: 1px solid;
-    border-top: 1px solid;
+    border-bottom: 1px solid #555;
+    border-top: 1px solid #555;
     color: #555;
     font: 13px ITCAvantGardeStd-Bk;
     letter-spacing: 1px;
@@ -2885,10 +2919,9 @@ h4.legend {
 }
 
 #discount-coupon-form .discount-form .buttons-set p {
-    color: #444444;
+    color: #555;
     float: left;
-    font: 12px GraphikRegular;
-    line-height: 40px;
+    font: 12px/40px ITCAvantGardeStd-Bk;
     position: relative;
     text-align: left;
 }
@@ -2926,8 +2959,8 @@ h4.legend {
 }
 
 #discountFormPoints2 #points_to_be_used {
-    background: none;
-    border: 1px solid #999;
+    background: #ededed;
+    border: none;
     border-radius: 0;
 }
 
@@ -2989,16 +3022,16 @@ h4.legend {
 .discount-form .buttons-set .button, #discountFormPoints2 .buttons-set .button {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     border: medium none;
-    color: #ae8637;
+    color: #00B800;
     float: right;
-    font: 20px ITCAvantGardeStd-Bk;
+    font: 12px/44px AvantGarde-Demi !important;
     margin-right: 8px;
     margin-top: 9px;
 }
 
 #discountFormPoints2 p {
     float: left;
-    font: 14px/20px GraphikRegular;
+    font: 12px/20px ITCAvantGardeStd-Bk;
     margin-bottom: 14px;
     margin-top: 14px;
     text-align: left;
@@ -3050,7 +3083,7 @@ h4.legend {
     color: #444 !important;
     border-radius: 3px;
     padding: 0 4px;
-    font: 12px GraphikRegular !important;
+    font: 12px ITCAvantGardeStd-Bk !important;
     letter-spacing: 1px;
 }
 
@@ -3128,13 +3161,12 @@ h4.legend {
 .one-page-checkout .section .head .arrow-tag {
     display: block;
     position: absolute;
-    right: 9px;
-    top: 7px;
+    right: 0px;
+    top: 0px;
 }
 
-.one-page-checkout .section .head .is-active > .arrow-tag img {
-    transform: rotateZ(-180deg);
-    transition-duration: 200ms;
+#shopping_arrow.is-active.arrow-tag svg line:nth-child(3) {
+    stroke: none;
 }
 
 .one-page-checkout .section .head .arrow-tag img {
@@ -3143,11 +3175,13 @@ h4.legend {
     transition-duration: 200ms;
 }
 
-.one-page-checkout .active .head .arrow-tag img {
-    /* transform: rotateZ(-180deg); */
-    transition-duration: 200ms;
+.one-page-checkout  .head .arrow-tag img {
+    opacity: 0;
+    position: absolute;
+    right: 12px;
+    top: 9px;
+    z-index: 1;
 }
-
 .one-page-checkout .group-select {
     margin-top: 0;
     border: 0;
@@ -3162,13 +3196,22 @@ h4.legend {
 .one-page-checkout .section .checkout_title {
     color: #444444;
     font-family: ITCAvantGardeStd-Bk;
-    font-size: 21px;
+    font-size: 19px;
     background: #fff;
     box-shadow: 0 -3px 1px rgba(0, 0, 0, 0.03) inset;
     position: relative;
     font-weight: normal;
     line-height: 44px;
     text-transform: uppercase;
+    border-bottom: 1px solid #999;
+}
+.section.allow.completed .step-count {
+    background: #00b800 none repeat scroll 0 0;
+    color: #fff;
+}
+#menu-mobile-menu-2 li:last-child {
+    height: 59px;
+    padding-bottom: 15px;
 }
 
 #billing-new-address-form ul li:nth-child(5) .field:first-child, #co-shipping-form ul li:nth-child(6) {
@@ -3186,7 +3229,7 @@ h4.legend {
 }
 
 #checkoutSteps #opc-cart .is-active .step-count, .one-page-checkout .active .step-count {
-    background: #d1d1d1;
+    background: #eee;
 }
 
 #checkout-shipping-method-load {
@@ -3200,12 +3243,12 @@ h4.legend {
 }
 
 .one-page-checkout .active .step-count {
-    background: #d1d1d1 !important;
+    background: #eee !important;
 }
 
 .one-page-checkout .section .step-count {
-    color: #fff;
-    background: #43ad00;
+    color: #555;
+    background: #EEE;
     font-size: 16px;
     line-height: 44px;
     font-family: ITCAvantGardeStd-Bk;
@@ -3215,7 +3258,6 @@ h4.legend {
     display: inline-block;
     position: absolute;
     left: 0;
-    box-shadow: 0 -3px 1px rgba(0, 0, 0, 0.03) inset;
 }
 
 .one-page-checkout h3 {
@@ -3335,12 +3377,13 @@ h4.legend {
 }
 
 .one-page-checkout li {
-    zoom: 1;
     vertical-align: top;
 }
-
+.one-page-checkout li.active.is_done  .arrow-tagsvg line:nth-child(3){
+    stroke: none;
+}
 .one-page-checkout .box {
-    zoom: 1;
+    font: 12px ITCAvantGardeStd-Bk;
 }
 
 .checkout-progress {
@@ -5236,7 +5279,7 @@ p.apply_promo_label {
 }
 
 p.apply_promo_label > span {
-    color: #af8839;
+    color: #00B800;
     font: 21px ITCAvantGardeStd-Bk;
     margin-top: -8px;
     position: absolute;
@@ -5252,9 +5295,9 @@ p.apply_promo_label > span {
 #points_error .button.btn-update {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     border: medium none;
-    color: #af8839;
+    color: #00B800;
     float: right;
-    font: 12px/47px ITCAvantGardeStd-Bk;
+    font: 12px/44px AvantGarde-Demi !important;
 }
 
 .apply_promo_code_div {
@@ -5264,10 +5307,11 @@ p.apply_promo_label > span {
 }
 
 #coupon_code.input-text.required-entry {
-    border: 1px solid #999;
+    border: none;
     border-radius: 0;
     height: 40px;
     min-width: 249px;
+    background: #ededed;
     width: 78% !important;
 }
 
@@ -5290,12 +5334,12 @@ p.required {
 }
 
 #checkout-shipping-method-load label, #checkout-shipping-method-load label strong {
-    font: 12px GraphikRegular;
+    font: 12px ITCAvantGardeStd-Bk;
 }
 
 .shippingdescription {
     color: #999;
-    font: 12px GraphikRegular;
+    font: 12px ITCAvantGardeStd-Bk;
     display: none;
 }
 
@@ -6103,12 +6147,33 @@ button.btn-invite.button {
     font: 24px ITCAvantGardeStd-Bk !important;
     text-transform: uppercase;
 }
-
+.section.allow.active .step-count{
+    color: #555 !important;
+}
 .control.ship-btn > label {
     float: none;
     width: auto;
+    margin-left: 30px;
 }
-
+.section.allow.active .head svg line:nth-child(3){
+    stroke: none;
+}
+label.shipping_method_radio.active{
+    background: #AE8539;
+}
+button.place-order::before{
+    background: none !important;
+}
+button.place-order {
+    color: #fff;
+    font: 16px ITCAvantGardeStd-Bk;
+    border:10px solid #fff;
+    height:64px;
+    text-transform: uppercase;
+}
+button.place-order span{
+    display: block;
+}
 .col2-alt-set .col-2 {
     float: left;
 }
@@ -6318,7 +6383,7 @@ button#send2 {
 }
 
 .apply_smogi_label > span {
-    color: #af8839;
+    color: #00B800;
     font: 21px/58px ITCAvantGardeStd-Bk;
     margin-top: -17px;
     position: absolute;
@@ -6328,9 +6393,9 @@ button#send2 {
 .remove_smogi.apply_smogi_bucks {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     border: medium none;
-    color: #ae8536;
+    color: #00B800;
     float: right;
-    font: 12px ITCAvantGardeStd-Bk;
+    font: 12px AvantGarde-Demi !important;
     margin-top: 17px;
 }
 
