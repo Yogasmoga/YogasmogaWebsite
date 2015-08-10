@@ -6393,9 +6393,9 @@ button#send2 {
 .remove_smogi.apply_smogi_bucks {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     border: medium none;
-    color: #ae8536;
+    color: #00B800;
     float: right;
-    font: 12px ITCAvantGardeStd-Bk;
+    font: 12px AvantGarde-Demi !important;
     margin-top: 17px;
 }
 

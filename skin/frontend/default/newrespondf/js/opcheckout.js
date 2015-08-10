@@ -886,4 +886,12 @@ function showCompletedSections(section){
     if(section=="payment"){
         jQuery("#p_method_stripe").click();
     }
+    jQuery("#shopping_arrow").click(function(){
+        jQuery(this).prevAll().addClass("completed");
+        jQuery(this).nextAll().removeClass("completed");
+        jQuery(this).prevAll().addClass("editable");
+        jQuery(this).nextAll().removeClass("editable");
+        jQuery(this).removeClass("completed");
+        jQuery(this).addClass("editable");
+    });
 }
