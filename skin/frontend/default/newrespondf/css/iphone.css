@@ -6181,6 +6181,7 @@ button.place-order span{
 .control.addr-book > label {
     float: none;
     width: auto;
+    margin-left: 30px;
 }
 
 .flex-control-nav {
