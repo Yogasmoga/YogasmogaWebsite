@@ -12,9 +12,10 @@
             checkedFound=true;
         }
     });
-    if(!checkedFound){
-        jQuery("label.shipping_method_radio:first-child").click();
+    if(checkedFound==false){
+        jQuery("label.shipping_method_radio:first-child").
     }
+
 
 </script>
 <form id="co-shippingmethod-form" action="">
@@ -39,8 +40,10 @@
                                             <input name="shipping_method_dummy" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>" checked="checked" class="radio"/>
                                         </label>
                                     <?php else: ?>
+                                        <label class="shipping_method_radio">
                                         <input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>"<?php //if($_rate->getCode()===$this->getAddressShippingMethod()) echo ' checked="checked"' ?> class="radio"/>
-                                    <?php endif; ?> 
+                                        </label>
+                                    <?php endif; ?>
                                 </span>
                                 <span>
                                     <label for="s_method_<?php echo $_rate->getCode() ?>"><strong><?php echo $this->escapeHtml($_rate->getMethodTitle()) ?></strong>
@@ -61,7 +64,7 @@
 //                                        ->load('revolvingmessage_loggedin');
 //                            echo    Mage::app()->getLayout()->createBlock('cms/block')->setBlockId('revolvingmessage_loggedin')->toHtml();
 //                            echo $block->getContent();
-//                            echo $temp; 
+//                            echo $temp;
                             if($temp != "")
                             {
                                 ?>
