@@ -111,10 +111,10 @@ if (file_exists($inputFileName)) {
         $actual_name = trim(substr($name, 0, $parenthesis_start_position));
         $within_parenthesis = trim(substr($name, $parenthesis_start_position + 1, $parenthesis_end_position - $parenthesis_start_position - 1));
 
+        $height = '';
         if (strpos($within_parenthesis, ",") === false) {
             $color = $within_parenthesis;
             $size = 'One';
-            $height = '';
         } else {
             $ar_within_parenthesis = explode(",", $within_parenthesis);
             $color = $ar_within_parenthesis[0];
