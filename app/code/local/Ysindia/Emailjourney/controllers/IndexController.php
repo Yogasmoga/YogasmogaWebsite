@@ -4,7 +4,7 @@ class Ysindia_Emailjourney_IndexController extends Mage_Core_Controller_Front_Ac
 {
     public function indexAction()
     {
-        $templates = array(29,30,31,32,33,34);
+        $templates = array(31,32,33,34.35,36);
 
         $date_to_look_start = date('Y-m-d', strtotime('-40 day', strtotime(date('Y-m-d'))));
         $date_to_look_end = date('Y-m-d');
