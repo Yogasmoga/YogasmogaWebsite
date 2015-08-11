@@ -123,7 +123,6 @@ class Ysindia_Emailjourney_IndexController extends Mage_Core_Controller_Front_Ac
                 $model->setCurrentDate(date('Y-m-d h:i:s'));
 
                 $model->save();
-                return;
             }
         }
     }
