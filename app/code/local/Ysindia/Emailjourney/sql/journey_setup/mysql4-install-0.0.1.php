@@ -18,6 +18,7 @@ CREATE TABLE {$this->getTable($baseTableName)} (
   `customer_id` int(11) DEFAULT NULL,
   `email_number` int(11) DEFAULT NULL,
   `template_id` int(11) DEFAULT NULL,
+  `token_value` varchar(255) DEFAULT NULL,
   `current_date` DATETIME DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;

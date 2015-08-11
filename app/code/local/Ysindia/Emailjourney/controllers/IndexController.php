@@ -6,13 +6,10 @@ class Ysindia_Emailjourney_IndexController extends Mage_Core_Controller_Front_Ac
     {
         $templates = array(29,30,31,32,33,34);
 
-        $date_to_look_start = date('Y-m-d', strtotime('-46 day', strtotime(date('Y-m-d'))));
+        $date_to_look_start = date('Y-m-d', strtotime('-40 day', strtotime(date('Y-m-d'))));
         $date_to_look_end = date('Y-m-d');
         $storeId = Mage::app()->getStore()->getStoreId();
         echo $date_to_look_start . " , " . $date_to_look_end . "<br/><br/>";
-
-        $resource = Mage::getSingleton('core/resource');
-        $readConnection = $resource->getConnection('core_read');
 
         $collection = Mage::getModel('customer/customer')->getCollection()
             ->addAttributeToSelect('entity_id')
@@ -62,11 +59,8 @@ class Ysindia_Emailjourney_IndexController extends Mage_Core_Controller_Front_Ac
             );
         }
 
-        //=================================================
-
-        echo "Store email = " . Mage::getStoreConfig('trans_email/ident_general/email', $storeId) . "<br/><br/>";
-
-        echo "Store name = " . Mage::getStoreConfig('trans_email/ident_general/name', $storeId) . "<br/><br/>";
+        $resource = Mage::getSingleton('core/resource');
+        $readConnection = $resource->getConnection('core_read');
 
         foreach ($customers as $customer) {
 
@@ -80,26 +74,29 @@ class Ysindia_Emailjourney_IndexController extends Mage_Core_Controller_Front_Ac
             $unsubscribe_link = Mage::getUrl('journey/unsubscribe/index/id/' . $token);
 
             $query = "SELECT id FROM unsubscribed_customers where customer_id=$customerId";
+            echo "<br/>$query";
             $row = $readConnection->fetchAll($query);
 
             if ($row) {
-                ; //unsubscribed
-            }
-            else {
+                ; // already unsubscribed
+            } else {
 
                 $now = time();
                 $your_date = strtotime($createDate);
                 $datediff = $now - $your_date;
                 $days = floor($datediff / (60 * 60 * 24));
 
-                if ($days > 5) continue;       // pick templates 0-5
+                $days = $days < 0 ? 0 : $days;
 
-                $templateId = $templates[$days];
+                if ($days < 7 || $days > 49) continue;       // pick 6 templates 7 days, max 49 days (one for initial email)
+
+                $emailNumber = intval($days/7)-1;           // $days = 7, 7/7 = 1 (first template is at 0)
+                $templateId = $templates[$emailNumber];
 
                 $resource = Mage::getSingleton('core/resource');
                 $readConnection = $resource->getConnection('core_read');
 
-                //$query = "SELECT id from email_journey where customer_id=$customerId and email_number=$days";
+                //$query = "SELECT id from email_journey where customer_id=$customerId and email_number=$emailNumber";
                 $query = "SELECT id from email_journey where customer_id=$customerId and template_id=$templateId";
 
                 $rows = $readConnection->fetchAll($query);
@@ -113,22 +110,22 @@ class Ysindia_Emailjourney_IndexController extends Mage_Core_Controller_Front_Ac
                 $emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_general/name', $storeId));
 
                 $vars = array('unsubscribe_link' => $unsubscribe_link);
-                continue;
+
                 //$processed = $emailTemplate->getProcessedTemplate($vars);
 
-                //$emailTemplate->send($customerEmail, $customerName, $vars);
+                $emailTemplate->send($customerEmail, $customerName, $vars);
 
                 $model = Mage::getModel('journey/journey');
                 $model->setCustomerId($customerId);
                 $model->setEmailNumber($days);
                 $model->setTemplateId($templateId);
-                $model->setToken($token);
+                $model->setTokenValue($token);
                 $model->setCurrentDate(date('Y-m-d h:i:s'));
+
                 $model->save();
+                return;
             }
         }
-
     }
 }
-
 ?>
