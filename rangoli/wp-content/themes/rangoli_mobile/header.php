@@ -375,7 +375,7 @@ $logged_in = is_user_logged_in();
                                 </p>
 
                                 <ul class="ys_sub_menu level3">
-                                    <li><a href="">TOPS</a>
+                                    <li><a href="/women/tops">TOPS</a>
                                         <span class="menu_arrow">
                                             <svg width="44px" height="44px">
                                                 <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657"
@@ -397,7 +397,7 @@ $logged_in = is_user_logged_in();
                                         </ul>
                                     </li>
 
-                                    <li><a href="">BOTTOMS</a>
+                                    <li><a href="/women/bottoms">BOTTOMS</a>
                                         <span class="menu_arrow">
                                             <svg width="44px" height="44px">
                                                 <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657"
@@ -418,7 +418,7 @@ $logged_in = is_user_logged_in();
                                         </ul>
                                     </li>
 
-                                    <li><a href="">ACCESSORIES</a>
+                                    <li><a href="/women/accessories">ACCESSORIES</a>
                                         <span class="menu_arrow">
                                             <svg width="44px" height="44px">
                                                 <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657"
@@ -465,7 +465,7 @@ $logged_in = is_user_logged_in();
                                 </span>
                                 </p>
                                 <ul class="ys_sub_menu level3">
-                                    <li><a href="">TOPS</a>
+                                    <li><a href="/men/tops">TOPS</a>
                                         <span class="menu_arrow">
                                             <svg width="44px" height="44px">
                                                 <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657"
@@ -483,7 +483,7 @@ $logged_in = is_user_logged_in();
                                             <li><a href="/men/tops/jackets">Jackets</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="">BOTTOMS</a>
+                                    <li><a href="/men/bottoms">BOTTOMS</a>
                                         <span class="menu_arrow">
                                             <svg width="44px" height="44px">
                                                 <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657"
@@ -500,7 +500,7 @@ $logged_in = is_user_logged_in();
                                             <li><a href="/men/bottoms/pants">Pants</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="">ACCESSORIES</a>
+                                    <li><a href="/men/accessories">ACCESSORIES</a>
                                         <span class="menu_arrow">
                                             <svg width="44px" height="44px">
                                                 <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657"
