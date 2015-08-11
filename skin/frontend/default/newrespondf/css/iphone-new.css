@@ -95,14 +95,14 @@
     display: block;
     font-family: ITCAvantGardeStd-Bk;
     font-size: 21px;
-    color: #444444;
+    color: #555555;
     line-height: 24px;
     padding-bottom: 0;
     letter-spacing: 0.5px;
 }
 
 .custom-block .our-breath .below-txt {
-    color: #444;
+    color: #555555;
     display: inline-block;
     font-family: freighttextbook;
     font-size: 22px;
@@ -116,7 +116,7 @@
     font-size: 22px;
     line-height: 28px;
     font-family: freighttextbook;
-    color: #444444;
+    color: #555555;
 }
 
 .custom-block .story-box1 {
@@ -174,6 +174,7 @@
 .account-nav .sub-nav {
     width: 100%;
     list-style: none;
+    padding: 15px 0;
 }
 
 .account-nav .sub-nav li {
@@ -184,7 +185,6 @@
 
 .account-nav .sub-nav li:last-child {
     border: none;
-    padding-bottom: 15px;
 }
 li.menu-item.contact_icon_li:last-child {
     padding-bottom: 15px;
@@ -234,7 +234,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 .discover-fabric .outer-part p {
     font-size: 12px;
     line-height: 15px;
-    color: #444444;
+    color: #555555;
     font-family: AvantGarde-Demi;
     min-height: 78px;
     padding: 20px 0;
@@ -252,7 +252,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     padding: 0 12px;
 }
 .our-febrics span {
-    color: #444;
+    color: #555555;
     display: inline-block;
     font-family: ITCAvantGardeStd-Bk;
     font-size: 21px;
@@ -265,7 +265,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     font-size: 22px;
     line-height: 28px;
     font-family: freighttextbook;
-    color: #444444;
+    color: #555555;
     padding-right: 16px;
 }
 
@@ -311,7 +311,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     font-size: 22px;
     line-height: 28px;
     font-family: freighttextbook;
-    color: #444444;
+    color: #555;
     margin: 13px 0;
 }
 
@@ -670,7 +670,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 }
 
 .our-breath p {
-    color: #444444;
+    color: #555555;
     font: 22px/28px freighttextbook;
     /*margin: 20px 0 0 !important;*/
     float: left;
@@ -733,7 +733,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 }
 
 .story-box > .close-icn {
-    background: #666;
+    background: #555555;
     display: none;
     height: 44px;
     left: initial;
@@ -937,7 +937,7 @@ form#cardbalanceform table.redeem-giftcard {
 }
 
 #createcardform .sub-title {
-    color: #444 !important;
+    color: #555555 !important;
     margin-bottom: 15px;
     text-align: left;
 }
@@ -1150,13 +1150,13 @@ form#cardbalanceform table.redeem-giftcard {
 }
 
 #account_content .generic-box address {
-    color: #444;
+    color: #555555;
     font: 13px/18px GraphikRegular;
     margin-bottom: 25px;
 }
 
 #account_content .generic-box .col-1 h4 {
-    color: #444;
+    color: #555555;
     font: 12px Avantgarde-demi;
     text-transform: uppercase;
     margin-bottom: 25px;
@@ -1176,4 +1176,13 @@ form#cardbalanceform table.redeem-giftcard {
 #account_content #my-orders-table {
     border-collapse: collapse;
     margin-top: 10px;
+}
+.dropdown_links > ul {
+    height: 100%;
+    overflow: auto;
+    padding: 15px 0;
+    width: 120%;
+}
+.dropdown_links > ul li:last-child a {
+    color : #AE8637 !important;
 }

@@ -161,14 +161,13 @@
 						if (count($_subcategories) > 0): ?>
                 <a href="<?php echo $_category->getURL() ?>" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
 					    <span>
-		  <svg width="44px" height="44px">
-			  <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="272.374" y1="109.657" x2="288.374"
-					y2="109.657"/>
-			  <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="14.374"
-					y1="21.39" x2="30.374" y2="21.39"/>
-			  <line fill="none" stroke="#666666" stroke-miterlimit="10" x1="22.374"
-					y1="13.39" x2="22.374" y2="29.39"/>
-		  </svg>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+<g>
+	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="12.517" y1="12.517" x2="31.482" y2="31.483"/>
+	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="31.482" y1="12.517" x2="12.517" y2="31.483"/>
+</g>
+</svg>
+
 						</span>
 
 						<?php else: ?>
@@ -200,7 +199,17 @@
 //						 echo '<span class="border-line"></span></li>';
 					  }
 					}
-					 
+						$urlString = Mage::helper('core/url')->getCurrentUrl();
+						$path = Mage::getSingleton('core/url')->parseUrl($urlString)->getPath();
+						$urlPath = explode("/", $path);
+						$women = Mage::getModel('catalog/category')->load(3);
+						$men = Mage::getModel('catalog/category')->load(5);
+						if(strtolower($urlPath[1])==strtolower('men')){
+							echo  '<li  class="sub_cat gold_link"><a href="'.$women->getUrl().'">'.$women->getName().'</a></li>';
+						}
+						if(strtolower($urlPath[1])==strtolower('women')){
+							echo  '<li  class="sub_cat gold_link"><a href="'.$men->getUrl().'">'.$men->getName().'</a></li>';
+						}
 					?>
 
             </ul>

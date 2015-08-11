@@ -323,9 +323,9 @@ div,p{
     transition-duration: 200ms;
 }
 .menu li span {
-    background: url("images/icons_hover.png") no-repeat scroll 0 0 / 44px auto rgba(0, 0, 0, 0);
+    /*background: url("images/icons_hover.png") no-repeat scroll 0 0 / 44px auto rgba(0, 0, 0, 0);*/
     height: 44px;
-    left: 0;
+    left: 8px;
     opacity: 1;
     position: absolute;
     top: 0px;
@@ -378,7 +378,6 @@ div,p{
 }
 .user_menu_links{
     display: none;
-    text-transform: uppercase;
 }
 .user_menu_links span {
     height: 44px;
@@ -528,7 +527,7 @@ div,p{
     top: 44px;
     width: 100%;
     z-index: 8;
-    color: #444;
+    color: #555;
 }
 .page_name {
     float: none;
@@ -687,11 +686,11 @@ textarea {
 }
 .comment_author {
     font: 500 18px/22px freight-text-pro;
-    color:#444;
+    color:#555;
 }
 .comment{
     font: 400 15px/22px freight-text-pro;
-    color:#444;
+    color:#555;
     margin-top: 20px;
 }
 .comment_time {
@@ -717,7 +716,7 @@ textarea {
     padding-bottom: 20px;
 }
 .comments_heading{
-    color: #444;
+    color: #555;
     float: left;
     font: 15px/15px ITCAvantGardeStd-Bk;
     text-align: center;
@@ -1201,7 +1200,7 @@ textarea {
     font: 13px/50px GraphikRegular !important;
 }
 .close_login_popup, .close_signup_popup, .close_after_signup_popup {
-    background: #666;
+    background: #555;
     height: 44px;
     position: fixed;
     right: 0;
@@ -1281,7 +1280,7 @@ p.small.err_msg {
     background-position: 7px -79px;
 }
 .user_menu_links li a {
-    text-transform: capitalize !important;
+    text-transform: uppercase !important;
     display: block;
     padding-left: 71px;
     width: 100%;

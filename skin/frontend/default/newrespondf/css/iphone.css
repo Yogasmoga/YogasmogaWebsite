@@ -323,7 +323,7 @@ div {
 
 .nav-menu {
 
-    padding-bottom: 18%;
+    /*padding-bottom: 18%;*/
 }
 
 .left-strip {
@@ -846,7 +846,7 @@ li {
 
 .sign-in-box span.sign_In, .sign-in-box span.cuslogin {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
-    color: #444444;
+    color: #555555;
     font-family: GraphikRegular;
     font-size: 13px;
     left: 0;
@@ -860,7 +860,7 @@ li {
 }
 
 .sign-in-box span.reward_points {
-    color: #444444;
+    color: #555555;
     font-family: ITCAvantGardeStd-Bk;
     font-size: 15px;
     left: 0;
@@ -943,7 +943,7 @@ ul {
     font-size: 24px;
     font-family: ITCAvantGardeStd-Bk;
     line-height: 30px;
-    color: #444444;
+    color: #555555;
 }
 
 .slides li > div {
@@ -1008,7 +1008,7 @@ ul {
 }
 
 .bg444444 {
-    background: #444444;
+    background: #555555;
 }
 
 .bgae8637:hover {
@@ -1268,15 +1268,15 @@ ul {
 }
 
 .sign-up-block .list1 li label {
-    color: #666;
+    color: #555555;
     font-weight: bold;
     text-transform: uppercase;
 }
 
 .sign-up-block .btn {
     background: #ae8637;
-    border: 1px solid #666;
-    color: #666;
+    border: 1px solid #555555;
+    color: #555555;
     float: right;
     font-family: gotham-b;
     font-size: 13px;
@@ -1406,7 +1406,7 @@ ul {
     position: relative;}
 */
 .category-block .sign-in-box span {
-    color: #444444;
+    color: #555555;
     font-family: GraphikRegular;
     font-size: 13px;
     left: 8px;
@@ -1418,7 +1418,7 @@ ul {
 
 /*.category-block .sign-in-box h1 {
 
-  color: #444444;
+  color: #555555;
   font-family: ITCAvantGardeStd-Bk;
   font-size: 24px;
   line-height: 58px;
@@ -1466,7 +1466,7 @@ ul {
 /*.category-block .sign-in-box span {*/
 /*background: #eeeeee;*/
 /*
-color: #444444;
+color: #555555;
 font-family: ITCAvantGardeStd-Bk !important;
 font-size: 18px !important;
 height: 57px;
@@ -1486,7 +1486,7 @@ width: 58px;*/
 }*/
 /**********************************************************************product-page***********************************************/
 /*.category-block .sign-in-box  {
-   color: #444444;
+   color: #555555;
     font-family: ITCAvantGardeStd-Bk;
     font-size: 14px;
     left: 0;
@@ -1527,7 +1527,7 @@ width: 58px;*/
 
 /*.category-block .sign-in-box span {
   background: none repeat scroll 0 0 #eeeeee;
-  color: #444444;
+  color: #555555;
   font-family: ITCAvantGardeStd-Bk !important;
   font-size: 18px !important;
   height: 57px;
@@ -1578,7 +1578,7 @@ width: 58px;*/
 
 .product-grid li .caption a {
     display: block;
-    color: #444444;
+    color: #555555;
     font-size: 12px;
     text-decoration: none;
     line-height: 15px;
@@ -2206,7 +2206,7 @@ ul.breadcrumbs {
 }
 
 .pager {
-    color: #444;
+    color: #555555;
     margin: 10px 0;
     width: 100%;
 }
@@ -2469,7 +2469,7 @@ tr.td-noborder td {
 }
 /********************** Messages  */
 #billing-new-address-form .fields label, #billing-new-address-form .wide label, #shipping-new-address-form .form-list label {
-    color: #444444;
+    color: #555555;
     float: left;
     font-family: GraphikRegular;
     font-size: 12px;
@@ -2572,7 +2572,7 @@ tr.td-noborder td {
 }
 
 #co-billing-form li.ship-btn label, #billing:save_in_address_book + label {
-    color: #444444;
+    color: #555555;
     font-family: GraphikRegular;
     font-size: 12px;
     line-height: 28px;
@@ -2625,7 +2625,7 @@ tr.td-noborder td {
 }
 
 #shopping-cart-table .product-name a {
-    color: #444;
+    color: #555555;
     font-family: AvantGarde-Demi;
     font-size: 12px;
     font-weight: normal;
@@ -2732,11 +2732,11 @@ label.shipping_method_radio > input[type="radio"] {
 }
 
 .col2-alt-set .col-ship input[type="checkbox"]:checked + span {
-    background: #b4b5a8 !important;
+    background: #AE8637 !important;
 }
 
 .addr-book .custom-r:checked + span, #checkout-step-shipping .custom-check input.chk-box:checked + span {
-    background: #b4b5a8 !important;
+    background: #AE8637 !important;
 }
 
 .addr-book .custom-r:checked + span, #co-billing-form li.ship-btn input.custom-r:checked + span {
@@ -2746,7 +2746,7 @@ label.shipping_method_radio > input[type="radio"] {
 #checkout-step-shipping .custom-check label {
     font-family: GraphikRegular;
     font-size: 12px;
-    color: #444444;
+    color: #555555;
     padding-left: 10px;
     line-height: 28px;
     padding-left: 14px;
@@ -3083,7 +3083,7 @@ h4.legend {
 
 .one-page-checkout input, textarea, select {
     height: 40px !important;
-    color: #444 !important;
+    color: #555555 !important;
     border-radius: 3px;
     padding: 0 4px;
     font: 12px ITCAvantGardeStd-Bk !important;
@@ -3091,11 +3091,11 @@ h4.legend {
 }
 
 .validate-select select {
-    color: #444;
+    color: #555555;
 }
 
 .one-page-checkout .head a {
-    color: #444444;
+    color: #555555;
     display: block;
     float: right;
     font-family: AvantGarde-Demi;
@@ -3197,7 +3197,7 @@ h4.legend {
 }
 
 .one-page-checkout .section .checkout_title {
-    color: #444444;
+    color: #555555;
     font-family: ITCAvantGardeStd-Bk;
     font-size: 19px;
     background: #fff;
@@ -3434,7 +3434,7 @@ h4.legend {
 }
 
 #checkout-review-table tr.cart-info .col_right_options h3.product-name {
-    color: #444444;
+    color: #555555;
     font-family: AvantGarde-Demi;
     font-size: 12px;
     font-weight: normal;
@@ -3685,7 +3685,7 @@ h4.legend {
 }
 
 .productCont .caption a {
-    color: #444444;
+    color: #555555;
     display: block;
     font-family: Avantgarde-demi;
     font-size: 12px;
@@ -3904,7 +3904,7 @@ ul.checkout-cont > li {
     line-height: 15px;
     font-family: AvantGarde-Demi !important;
     text-decoration: none;
-    color: #444444;
+    color: #555555;
     text-transform: uppercase;
 
 }
@@ -3917,7 +3917,7 @@ ul.checkout-cont > li {
 }
 
 .detail-page p.color-detail span, .detail-page span.prize, .productcost.amount {
-    color: #444444;
+    color: #555555;
     font-family: ITCAvantGardeStd-Bk;
     font-size: 12px;
     line-height: 15px;
@@ -3996,7 +3996,7 @@ ul.checkout-cont > li {
 }
 
 .detail-page .size-list div {
-    border: 1px solid #666668 !important;
+    border: 1px solid #555555 !important;
     position: relative;
 }
 
@@ -4060,7 +4060,7 @@ ul.checkout-cont > li {
 }
 
 .detail-page .free-shiping p {
-    color: #666;
+    color: #555555;
     font-family: GraphikRegular;
     font-size: 13px;
     line-height: 22px;
@@ -4109,7 +4109,7 @@ ul.checkout-cont > li {
     font-size: 12px;
     line-height: 44px;
     font-family: AvantGarde-Demi !important;
-    color: #444444;
+    color: #555555;
     text-decoration: none;
     display: block;
 }
@@ -4183,7 +4183,7 @@ ul.checkout-cont > li {
 }*/
 
 .detail-page .description-block .first-list .detail-view .inner-content .fabric-tech .fabDetail p {
-    color: #444444;
+    color: #555555;
     font-family: GraphikRegular;
     display: block;
     font-size: 15px;
@@ -4201,7 +4201,7 @@ ul.checkout-cont > li {
 }
 
 .detail-page .description-block .first-list .detail-view .inner-content .fabric-tech .fabDetail li {
-    color: #444444;
+    color: #555555;
     display: block;
     float: left;
     font-family: ITCAvantGardeStd-Bk;
@@ -4348,7 +4348,7 @@ ul.checkout-cont > li {
     font-size: 13px;
     line-height: 22px;
     font-family: 'GraphikRegular';
-    color: #444444;
+    color: #555555;
 }
 
 .detail-page .inner-feature {
@@ -4533,7 +4533,7 @@ ul.checkout-cont > li {
     font-family: ITCAvantGardeStd-Bk;
     font-size: 12px;
     line-height: 15px;
-    color: #444444;
+    color: #555555;
 }
 
 table.productdetailtable div#colorcontainer div table {
@@ -4633,7 +4633,7 @@ table.productdetailtable div#colorcontainer div table {
     font-family: GraphikRegular;
     font-size: 13px;
     line-height: 1;
-    color: #444;
+    color: #555555;
 }
 
 #form-validate .fieldset {
@@ -4658,7 +4658,7 @@ table.productdetailtable div#colorcontainer div table {
 }
 
 .account-create .fieldset .input-box input[type="password"] {
-    color: #444 !important;
+    color: #555555 !important;
 }
 
 .account-create {
@@ -4783,7 +4783,7 @@ table.productdetailtable div#colorcontainer div table {
     position: fixed;
     top: 44px;
     width: 100%;
-    color: #444;
+    color: #555555;
 }
 
 .my-account-block .account-nav .sub-nav {
@@ -4877,7 +4877,7 @@ table.productdetailtable div#colorcontainer div table {
 .dashboard-index .pg-content .account-login #login-form .registered-users .form-list .input-box .input-text {
     border-radius: 5px;
     height: 47px;
-    color: #444444 !important;
+    color: #555555 !important;
     padding: 0 12px;
 }
 
@@ -4912,13 +4912,13 @@ table.productdetailtable div#colorcontainer div table {
     border-radius: 7px;
     display: inline-block;
     float: right;
-    border: 1px solid #444;
+    border: 1px solid #555555;
     height: 14px;
     width: 14px;
 }
 
 .selectedlength div.selected span {
-    background: #444 none repeat scroll 0 0 !important;
+    background: #555555 none repeat scroll 0 0 !important;
 }
 
 .messages {
@@ -5051,7 +5051,7 @@ table.productdetailtable div#colorcontainer div table {
     font-size: 24px;
     font-family: ITCAvantGardeStd-Bk;
     line-height: 30px;
-    color: #444444;
+    color: #555555;
 }
 
 .slides li > div {
@@ -5244,7 +5244,7 @@ table.productdetailtable div#colorcontainer div table {
 
 .chart_container table {
     box-sizing: border-box;
-    color: #666;
+    color: #555555;
     font: 14px/24px ITCAvantGardeStd-Bk;
     left: 0;
     position: fixed;
@@ -5563,7 +5563,7 @@ p.required {
 }
 
 .video-box .com-a-prd-links {
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid #555555;
 }
 
 .my-account .dashboard-container {
@@ -5585,7 +5585,7 @@ p.required {
 }
 
 #Chkbal .sub-title {
-    color: #444 !important;
+    color: #555555 !important;
     font: 12px AvantGarde-demi;
     margin-bottom: 10px;
     text-align: left;
@@ -5649,7 +5649,7 @@ p.required {
 
 #wishlist-table tr td:last-child .item-options {
     background: none repeat scroll 0 0 #ededed;
-    color: #444;
+    color: #555555;
     float: right;
     font: 13px/40px ITCAvantGardeStd-Bk;
     height: 40px;
@@ -5820,14 +5820,14 @@ p.required {
 }
 
 .addresses-list .item h3 {
-    color: #444;
+    color: #555555;
     font: 12px Avantgarde-demi;
     text-transform: uppercase;
     margin-bottom: 25px;
 }
 
 .addresses-list .item address {
-    color: #444;
+    color: #555555;
     font: 13px/18px GraphikRegular;
     margin-bottom: 25px;
 }
@@ -5848,7 +5848,7 @@ p.required {
 }
 
 .col-2.addresses-additional {
-    color: #444;
+    color: #555555;
     float: left;
     font: 13px GraphikRegular;
     text-align: left;
@@ -6450,7 +6450,7 @@ button#send2 {
 
 .see_our_colors p {
     border-top: 1px solid #bfbfbf;
-    color: #666;
+    color: #555555;
     font: 12px/30px ITCAvantGardeStd-Bk;
     text-align: left;
     position: relative;
@@ -6491,7 +6491,7 @@ button#send2 {
 }
 
 .go_to_parent {
-    background: #666 none repeat scroll 0 0 !important;
+    background: #555555 none repeat scroll 0 0 !important;
     display: block;
     height: 44px !important;
     position: fixed !important;
@@ -6597,7 +6597,7 @@ button#send2 {
     height: 44px;
     text-align: left;
     padding: 0 12px;
-    color: #666;
+    color: #555555;
 }
 
 .help_page > ul > li > p {
@@ -6638,7 +6638,7 @@ button#send2 {
 }
 
 .help_page .privacy {
-    color: #666;
+    color: #555555;
     font: 12px/22px GraphikRegular;
     letter-spacing: 1px;
     padding: 20px 12px 0px;
@@ -6650,7 +6650,7 @@ button#send2 {
 }
 
 .help_page .terms_condition {
-    color: #666;
+    color: #555555;
     font: 12px/22px GraphikRegular;
     letter-spacing: 1px;
     padding: 20px 12px 0px;
@@ -6766,7 +6766,7 @@ video {
 }
 
 .close_cart_addition_popup {
-    background: #666 none repeat scroll 0 0;
+    background: #555555 none repeat scroll 0 0;
     height: 44px;
     position: fixed;
     right: 0;
