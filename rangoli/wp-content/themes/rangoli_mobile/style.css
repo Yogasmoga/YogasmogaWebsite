@@ -323,9 +323,9 @@ div,p{
     transition-duration: 200ms;
 }
 .menu li span {
-    background: url("images/icons_hover.png") no-repeat scroll 0 0 / 44px auto rgba(0, 0, 0, 0);
+    /*background: url("images/icons_hover.png") no-repeat scroll 0 0 / 44px auto rgba(0, 0, 0, 0);*/
     height: 44px;
-    left: 0;
+    left: 8px;
     opacity: 1;
     position: absolute;
     top: 0px;

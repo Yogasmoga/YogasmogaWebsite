@@ -584,8 +584,8 @@ $logged_in = is_user_logged_in();
                             </svg>
                         </span>
                     </div>
-                    <li style="padding: 0;">
-                    <ul class="rangoli_menu_links level2">
+                    <li>
+                    <ul class="rangoli_menu_links level2"  style="padding-bottom: 15px;">
                         <?php
                         wp_nav_menu(array('theme_location' => 'menu1_mobile', 'container_class' => 'category-menu'));
                         wp_nav_menu(array('theme_location' => 'menu2_mobile', 'container_class' => 'category-menu_mobile'));
