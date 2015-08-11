@@ -1176,25 +1176,25 @@ function isRegistrationInfoValid(){
     });
     $(".create_account").removeClass("active");
     if(fname=="" || fname=="First Name"){
-        $(".singup_form .err_msg").html("Please fill your first name");
+        $(".create_account").removeClass("active");
     }
     else if(lname=="" || lname=="Last Name"){
-        $(".singup_form .err_msg").html("Please fill your last name");
+        $(".create_account").removeClass("active");
     }
     else if(email_id=="" || email_id=="Email"){
-        $(".singup_form .err_msg").html("Please fill your email id");
+        $(".create_account").removeClass("active");
     }
     else if(!isValidEmailAddress(email_id)){
-        $(".singup_form .err_msg").html("Please enter a valid email id");
+        $(".create_account").removeClass("active");
     }
     else if(pwd=="" || pwd=="Select a password"){
-        $(".singup_form .err_msg").html("Please choose a password");
+        $(".create_account").removeClass("active");
     }
     else if(pwd.length<6){
-        $(".singup_form .err_msg").html("Password must be of 6 or more characters");
+        $(".create_account").removeClass("active");
     }
     else if(gender_selected == false){
-        $(".singup_form .err_msg").html("Select Gender");
+        $(".create_account").removeClass("active");
     }
     else{
         $(".singup_form .err_msg").html("");
@@ -1210,13 +1210,10 @@ function isLoginInfoValid() {
     var button_html = jQuery(".login_customer").html();
     $(".login_customer").removeClass("active");
     if(email_id=="" || email_id=="Email"){
-        $(".err_msg").html("Please fill your email id");
+        $(".login_customer").removeClass("active");
     }
     else if(pwd == "" || pwd=="Password"){
-        $(".err_msg").html("Please fill your password");
-    }
-    else if(pwd.length>0 && pwd.length<6){
-        $(".err_msg").html("Password must be 6 or more characters.");
+        $(".login_customer").removeClass("active");
     }
     else{
         $(".err_msg").html("");
