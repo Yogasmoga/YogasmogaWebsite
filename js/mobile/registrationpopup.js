@@ -383,7 +383,7 @@ function loginCustomer() {
                 }
                 else {
 
-                    jQuery(".login_customer").html('<span class="tick-mark"><img src="/skin/frontend/default/newrespondf/images/tick-mark.jpg"></span>');
+                    jQuery(".login_customer").html('<span class="tick-mark"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve"><style type="text/css">.st0{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}</style><polyline class="st0" points="5.9,25.6 14.6,34.3 39.1,9.8 "/></svg></span>');
                     //alert(data.errors);
                     //jQuery("#err_msg").html(data.errors);
                     jQuery('#err_msg').html('Invalid Email or Password');
