@@ -2653,6 +2653,7 @@ label.shipping_method_radio {
     border-radius: 50%;
     float: left;
     margin-right: 30px;
+    margin-top: 10px;
 }
 label.shipping_method_radio > input[type="radio"] {
     opacity: 0;
@@ -5336,7 +5337,7 @@ p.required {
 }
 
 #checkout-shipping-method-load label, #checkout-shipping-method-load label strong {
-    font: 12px ITCAvantGardeStd-Bk;
+    font: 12px/44px ITCAvantGardeStd-Bk;
 }
 
 .shippingdescription {
