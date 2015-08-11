@@ -6,10 +6,9 @@ class Ysindia_Emailjourney_IndexController extends Mage_Core_Controller_Front_Ac
     {
         $templates = array(29,30,31,32,33,34);
 
-        $date_to_look_start = date('Y-m-d', strtotime('-40 day', strtotime(date('Y-m-d'))));
+        $date_to_look_start = date('Y-m-d', strtotime('-43 day', strtotime(date('Y-m-d'))));
         $date_to_look_end = date('Y-m-d');
         $storeId = Mage::app()->getStore()->getStoreId();
-        echo $date_to_look_start . " , " . $date_to_look_end . "<br/><br/>";
 
         $collection = Mage::getModel('customer/customer')->getCollection()
             ->addAttributeToSelect('entity_id')
@@ -69,7 +68,9 @@ class Ysindia_Emailjourney_IndexController extends Mage_Core_Controller_Front_Ac
             $customerName = $customer['FNAME'] . ' ' . $customer['LNAME'];
             $createDate = $customer['CREATE_DATE'];
 
-            $unsubscribe_link = Mage::getUrl('journey/unsubscribe/index/id/' . $customerId);
+            $token = uniqid();
+
+            $unsubscribe_link = Mage::getUrl('journey/unsubscribe/index/id/' . $token);
 
             $query = "SELECT id FROM unsubscribed_customers where customer_id=$customerId";
             $row = $readConnection->fetchAll($query);
@@ -116,6 +117,7 @@ class Ysindia_Emailjourney_IndexController extends Mage_Core_Controller_Front_Ac
                 $model->setCustomerId($customerId);
                 $model->setEmailNumber($days);
                 $model->setTemplateId($templateId);
+                $model->setTokenValue($token);
                 $model->setCurrentDate(date('Y-m-d h:i:s'));
                 $model->save();
             }
