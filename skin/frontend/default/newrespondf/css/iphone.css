@@ -2732,11 +2732,11 @@ label.shipping_method_radio > input[type="radio"] {
 }
 
 .col2-alt-set .col-ship input[type="checkbox"]:checked + span {
-    background: #b4b5a8 !important;
+    background: #AE8637 !important;
 }
 
 .addr-book .custom-r:checked + span, #checkout-step-shipping .custom-check input.chk-box:checked + span {
-    background: #b4b5a8 !important;
+    background: #AE8637 !important;
 }
 
 .addr-book .custom-r:checked + span, #co-billing-form li.ship-btn input.custom-r:checked + span {
