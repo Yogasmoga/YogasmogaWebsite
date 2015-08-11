@@ -69,7 +69,7 @@ class Ysindia_Emailjourney_IndexController extends Mage_Core_Controller_Front_Ac
             $customerName = $customer['FNAME'] . ' ' . $customer['LNAME'];
             $createDate = $customer['CREATE_DATE'];
 
-            $token = date('Ymdhis');
+            $token = uniqid();
 
             $unsubscribe_link = Mage::getUrl('journey/unsubscribe/index/id/' . $token);
 

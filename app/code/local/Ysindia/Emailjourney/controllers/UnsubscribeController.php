@@ -10,7 +10,7 @@ class Ysindia_Emailjourney_UnsubscribeController extends Mage_Core_Controller_Fr
 
             $resource = Mage::getSingleton('core/resource');
             $readConnection = $resource->getConnection('core_read');
-            $query = "SELECT customer_id FROM email_journey where token='$token'";
+            $query = "SELECT customer_id FROM email_journey where token_value='$token'";
 
             $rows = $readConnection->fetchAll($query);
 
