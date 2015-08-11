@@ -6780,3 +6780,7 @@ video {
 .menu-item.has-dropdown.main-heading.yogasmoga_li{
     line-height: 0;
 }
+.menu-item.has-dropdown.c-text_small.r_grey_text.invite-friend{
+    float: none;
+    width: 100% !important;
+}
