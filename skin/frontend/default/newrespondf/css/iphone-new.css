@@ -1178,5 +1178,11 @@ form#cardbalanceform table.redeem-giftcard {
     margin-top: 10px;
 }
 .dropdown_links > ul {
+    height: 100%;
+    overflow: auto;
     padding: 15px 0;
+    width: 120%;
+}
+.dropdown_links > ul li:last-child a {
+    color : #AE8637 !important;
 }
