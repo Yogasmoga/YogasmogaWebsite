@@ -1015,8 +1015,8 @@ $(document).ready(function(){
         var shareUrl = $(document).find(".link").html();
         window.open(root + "rangoli/wp-content/themes/rangoli_mobile/twt_redirect.php?l=" + shareUrl);
     });
-
-    $(".invite-friend").click(function(){
+    $(".invite-friend a").click(function(e){
+        e.preventDefault();
        if(logged_in_id>0){
            window.location= root+"/rangoli/connect/";
        }

@@ -342,4 +342,9 @@ jQuery(document).ready(function($){
     });
 */
 
+
+    $(".invite-friend a").click(function(e){
+        e.preventDefault();
+        openLogin();
+    });
 });
