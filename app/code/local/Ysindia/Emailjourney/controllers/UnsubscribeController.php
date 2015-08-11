@@ -16,7 +16,7 @@ class Ysindia_Emailjourney_UnsubscribeController extends Mage_Core_Controller_Fr
 
             if (isset($rows)) {
 
-                $customerId = $rows[0][1];
+                $customerId = $rows[0]['customer_id'];
 
                 $customer = Mage::getModel('customer/customer')->load($customerId);
 
@@ -49,7 +49,7 @@ class Ysindia_Emailjourney_UnsubscribeController extends Mage_Core_Controller_Fr
                         $created_at = date('Y-m-d h:i:s');
 
                         $query = "insert into unsubscribed_customers(customer_id, email, created_at) values($customerId, '" . $customer->getEmail() . "','$created_at')";
-
+echo "<br/>[$query]<br/>";
                         $result = $writeConnection->query($query);
                         ?>
                         <div
