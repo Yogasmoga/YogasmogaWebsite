@@ -199,7 +199,17 @@
 //						 echo '<span class="border-line"></span></li>';
 					  }
 					}
-					 
+						$urlString = Mage::helper('core/url')->getCurrentUrl();
+						$path = Mage::getSingleton('core/url')->parseUrl($urlString)->getPath();
+						$urlPath = explode("/", $path);
+						$women = Mage::getModel('catalog/category')->load(3);
+						$men = Mage::getModel('catalog/category')->load(5);
+						if(strtolower($urlPath[1])==strtolower('men')){
+							echo  '<li  class="sub_cat gold_link"><a href="'.$women->getUrl().'">'.$women->getName().'</a></li>';
+						}
+						if(strtolower($urlPath[1])==strtolower('women')){
+							echo  '<li  class="sub_cat gold_link"><a href="'.$men->getUrl().'">'.$men->getName().'</a></li>';
+						}
 					?>
 
             </ul>
