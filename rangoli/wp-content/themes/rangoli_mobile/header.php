@@ -519,7 +519,7 @@ $logged_in = is_user_logged_in();
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="/whats-new">WHAT'S NEW</a></li>
+                                    <li><a href="/men/whats-new">WHAT'S NEW</a></li>
                                 </ul>
                             </li>
 
