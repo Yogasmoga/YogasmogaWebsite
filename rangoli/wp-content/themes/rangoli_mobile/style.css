@@ -378,7 +378,6 @@ div,p{
 }
 .user_menu_links{
     display: none;
-    text-transform: uppercase;
 }
 .user_menu_links span {
     height: 44px;
@@ -1281,7 +1280,7 @@ p.small.err_msg {
     background-position: 7px -79px;
 }
 .user_menu_links li a {
-    text-transform: capitalize !important;
+    text-transform: uppercase !important;
     display: block;
     padding-left: 71px;
     width: 100%;
