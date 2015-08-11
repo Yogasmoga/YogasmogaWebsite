@@ -527,7 +527,7 @@ div,p{
     top: 44px;
     width: 100%;
     z-index: 8;
-    color: #444;
+    color: #555;
 }
 .page_name {
     float: none;
@@ -686,11 +686,11 @@ textarea {
 }
 .comment_author {
     font: 500 18px/22px freight-text-pro;
-    color:#444;
+    color:#555;
 }
 .comment{
     font: 400 15px/22px freight-text-pro;
-    color:#444;
+    color:#555;
     margin-top: 20px;
 }
 .comment_time {
@@ -716,7 +716,7 @@ textarea {
     padding-bottom: 20px;
 }
 .comments_heading{
-    color: #444;
+    color: #555;
     float: left;
     font: 15px/15px ITCAvantGardeStd-Bk;
     text-align: center;
@@ -1200,7 +1200,7 @@ textarea {
     font: 13px/50px GraphikRegular !important;
 }
 .close_login_popup, .close_signup_popup, .close_after_signup_popup {
-    background: #666;
+    background: #555;
     height: 44px;
     position: fixed;
     right: 0;
