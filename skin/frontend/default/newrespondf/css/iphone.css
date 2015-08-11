@@ -389,7 +389,7 @@ div {
     line-height: 50px;
     height: 44px;
     overflow: hidden;
-    padding: 5px 0 0 9px !important;
+    padding: 0 0 0 9px !important;
 }
 
 /* 1. Parent menu links inlined so you can toggle the dropdown */
@@ -6773,4 +6773,10 @@ video {
     text-align: center;
     top: 44px;
     width: 44px;
+}
+.username .nav-dropdown.menu.level2 {
+    padding-bottom: 15px;
+}
+.menu-item.has-dropdown.main-heading.yogasmoga_li{
+    line-height: 0;
 }
