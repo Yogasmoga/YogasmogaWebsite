@@ -38,6 +38,7 @@ jQuery(document).ready(function($){
         
         //positionDiscoverSection();
         // sliderHeight();
+        $(".gridfull").css('min-height',$(window).width()*0.48);
     });
     
     setTimeout(function(){ fixmainimage();}, 100);
