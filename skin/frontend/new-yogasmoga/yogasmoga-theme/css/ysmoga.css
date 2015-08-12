@@ -10,6 +10,10 @@
 #bucket1_slider .slides li,.cubix{
     background: rgba(174, 133, 54, 0.5);
 }
+.cubix {
+    float: left;
+    width: 100%;
+}
 .right-top-block.r-align > span span > img{
     margin-left: 3px;
 }
