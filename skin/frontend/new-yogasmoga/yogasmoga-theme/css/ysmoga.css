@@ -7,8 +7,12 @@
 .right-top-block.r-align > span span{
     margin-left: 10px;
 }
-#bucket1_slider .slides li , .gridfull{
+#bucket1_slider .slides li,.cubix{
     background: rgba(174, 133, 54, 0.5);
+}
+.cubix {
+    float: left;
+    width: 100%;
 }
 .right-top-block.r-align > span span > img{
     margin-left: 3px;
@@ -334,7 +338,7 @@ ul.site-map > li{
 
 .iconspartone{
     background: #fff;
-    height: 50%;
+    height: 50% !important;
     padding: 8.5% 14.7% 0;
     -webkit-box-sizing: border-box; 
     -moz-box-sizing: border-box; 
@@ -342,7 +346,7 @@ ul.site-map > li{
     box-sizing: border-box;
     position: absolute;
     top:50%;
-    width:%;
+    width: 100%;
 }
 
 .iconspartone .row {
