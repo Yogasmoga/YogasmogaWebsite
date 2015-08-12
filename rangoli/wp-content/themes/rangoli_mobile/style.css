@@ -70,6 +70,7 @@ div,p{
     text-align: center;
     top: 0;
     width: 44px;
+    z-index: 5;
 }
 .menu_btn > img, .cart > img {
     display: block;
@@ -1388,4 +1389,19 @@ p.small.err_msg {
 .slider_post_author span{
     font: 300 20px/25px freight-text-pro;
     font-style: italic;
+}
+
+.header-container a{
+    display: inline-block;
+    height: 44px;
+    width: 100%;
+    position: fixed;
+    left:0;
+    top:0;
+}
+.header-container a:hover,.menu_btn:hover {
+    background: #846721;
+}
+.sign-signup li {
+    height: 44px;
 }

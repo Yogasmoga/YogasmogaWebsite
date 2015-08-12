@@ -278,8 +278,8 @@ $logged_in = is_user_logged_in();
     </g>
 </g>
 </svg>
-                            </span><span class="open_signin">Sign in</span> / <span
-                                    class="open_signup">Sign up</span></a>
+                            </span><span class="open_signin">Sign In</span> / <span
+                                    class="open_signup">Sign Up</span></a>
                         </li>
                     </ul>
                 <?php } else { ?>
