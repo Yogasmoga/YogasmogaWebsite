@@ -1,6 +1,6 @@
 jQuery(document).ready(function($){
     // sliderHeight();
-    //$(".gridfull").css('min-height',$(window).width()*0.48);
+    $(".gridfull").css('min-height',$(window).width()*0.48);
     $(".flexslider li").css({"display":"none"});
     $(".flexslider li:first-child").css({"opacity":1, "display":"block"});
 
