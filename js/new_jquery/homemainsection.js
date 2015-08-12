@@ -23,6 +23,10 @@ jQuery(document).ready(function($){
         });
     });
 
+    $(".gridfull .sliderImg img").load(function(){
+        $(this).closest(".gridfull").css("opacity",1);
+    });
+
     $('#playBtn').fadeIn(500, function(){$('.flexslider').css('background','#fff')});
     //$('.page-overlay').fadeOut(500, function(){$('.page-overlay').remove();});
     $('body').css({overflow:'auto', marginRight:0});

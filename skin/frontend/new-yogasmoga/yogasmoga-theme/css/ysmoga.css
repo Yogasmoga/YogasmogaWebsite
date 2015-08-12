@@ -15,7 +15,9 @@
 .right-bottom-block{
     float: right;
 }
-
+.gridfull{
+    opacity: 0;
+}
 a#rangoli-head{
     background-image: url("../images/rangoli-icon.png");
     background-repeat: no-repeat;
