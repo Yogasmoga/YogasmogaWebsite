@@ -6427,9 +6427,11 @@ button#send2 {
 }
 
 .buttons.ajaxlogin_forgot_pwd_actions > p {
-    color: #ff6600;
-    margin-bottom: 5px;
+    color: #f60;
+    font-family: ITCAvantGardeStd-Bk;
     font-size: 13px;
+    margin-top: -13px;
+    position: absolute;
 }
 
 #shopping-cart-totals-table .reward-point td:nth-child(2) {

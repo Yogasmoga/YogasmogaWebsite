@@ -619,22 +619,22 @@ function createCustomerAccount() {
     });
 
     if(fname=="" || fname=="First Name"){
-        $(".singup_form .err_msg").html("Please fill your first name");
+        $(".singup_form .err_msg").html("Please fill in your first name");
     }
     else if(lname=="" || lname=="Last Name"){
-        $(".singup_form .err_msg").html("Please fill your last name");
+        $(".singup_form .err_msg").html("Please fill in your last name");
     }
     else if(email_id=="" || email_id=="Email"){
-        $(".singup_form .err_msg").html("Please fill your email id");
+        $(".singup_form .err_msg").html("Please fill in your Email Id");
     }
     else if(!isValidEmailAddress(email_id)){
-        $(".singup_form .err_msg").html("Please enter a valid email id");
+        $(".singup_form .err_msg").html("Please enter a valid Email Id");
     }
     else if(pwd=="" || pwd=="Select a password"){
         $(".singup_form .err_msg").html("Please choose a password");
     }
     else if(pwd.length<6){
-        $(".singup_form .err_msg").html("Password must be of 6 or more characters");
+        $(".singup_form .err_msg").html("Password should be of 6 or more characters");
     }
     else if(gender_selected == false){
         $(".singup_form .err_msg").html("Select Gender");
@@ -703,7 +703,7 @@ function loginCustomer() {
     var button_html = jQuery(".login_customer").html();
 
     if(email_id=="" || email_id=="Email"){
-        $(".err_msg").html("Please fill your email id");
+        $(".err_msg").html("Please fill in your email id");
     }
     else {
         jQuery.ajax({

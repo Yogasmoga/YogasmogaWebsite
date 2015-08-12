@@ -48,7 +48,12 @@ if(!is_user_logged_in()  && is_home()) {
             <p class="forgot_y_p open_signup"><a href="javascript:void(0);">I don't have an account here?</a></p>
             <p class="small err_msg" style="text-align: left;"></p>
             <button class="login_customer">
-                <img src="<?php echo $media ?>/accept.png" />
+                <svg width="44px" height="44px" xml:space="preserve" style="enable-background:new 0 0 44 44;" viewBox="0 0 44 44" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+                                            <style type="text/css">
+                                                .st0{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+                                            </style>
+                    <polyline points="5.9,25.6 14.6,34.3 39.1,9.8 " class="st0"/>
+                                        </svg>
             </button>
         </div>
         <div class="forgot_password_form">
@@ -123,7 +128,12 @@ if(!is_user_logged_in()  && is_home()) {
             <p class="forgot_y_p open_signin"><a href="javascript:void(0);">Already signed up? Sign in here</a></p>
             <p class="small err_msg" style="text-align: left"></p>
             <button class="create_account">
-                <img src="<?php echo $media ?>/accept.png" />
+                <svg xml:space="preserve" style="enable-background:new 0 0 44 44;" viewBox="0 0 44 44" y="0px" x="0px" width="44px" height="44px">
+                                            <style type="text/css">
+                                                .st0{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+                                            </style>
+                    <polyline points="5.9,25.6 14.6,34.3 39.1,9.8 " class="st0"/>
+                                        </svg>
             </button>
 
         </div>

@@ -366,8 +366,8 @@ input, textarea, select {
 }
 .sign-up-block .tick-mark {
     display: inline-block;
-    height: 37px;
-    width: 31px;
+    height: 44px;
+    width: 44px;
 }
 
 .gender-link label {

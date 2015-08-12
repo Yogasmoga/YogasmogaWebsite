@@ -96,9 +96,9 @@ li.main_li:hover > ul {
 #ajaxlogin_button_send .tick-mark {
     display: block;
     float: none;
-    height: 34px;
+    height: 44px;
     margin: 0 auto;
-    width: 34px;
+    width: 44px;
 }
 #ajaxlogin_button_send {
     margin-top: 28px !important;
@@ -155,7 +155,7 @@ li.main_li:hover > ul {
     width: 100%;
     font: 14px/50px ITCAvantGardeStd-Bk;
     color: #fff;
-    margin-top: 34px !important;
+    margin-top: 7px !important;
 }
 .ajaxlogin_button.active {
     background: #ad8536;

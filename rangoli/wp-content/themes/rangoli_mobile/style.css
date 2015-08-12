@@ -1200,14 +1200,14 @@ textarea {
     font: 13px/50px GraphikRegular !important;
 }
 .close_login_popup, .close_signup_popup, .close_after_signup_popup {
-    background: #555;
+    background: #666;
     height: 44px;
     position: fixed;
     right: 0;
     top: 0;
     width: 44px;
 }
-.close_login_popup:hover, .close_signup_popup:hover, .close_after_signup_popup:hover {
+.close_login_popup:hover, .close_signup_popup:hover,.close_menu:hover, .close_after_signup_popup:hover {
     background: #373737;
 }
 .smogi_bucks_banner img {
