@@ -338,7 +338,7 @@ ul.site-map > li{
 
 .iconspartone{
     background: #fff;
-    height: 50%;
+    height: 50% !important;
     padding: 8.5% 14.7% 0;
     -webkit-box-sizing: border-box; 
     -moz-box-sizing: border-box; 
