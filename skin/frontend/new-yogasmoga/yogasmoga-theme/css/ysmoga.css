@@ -4,9 +4,6 @@
     float: left;
     font: italic 10px/15px gothambook;
 }
-.gridfull img{
-    visibility: hidden;
- }
 .right-top-block.r-align > span span{
     margin-left: 10px;
 }

@@ -5,7 +5,7 @@ jQuery.noConflict();
 
 /**************** logout logic added by ys team *****************/
 jQuery(document).ready(function(jQuery){
-
+    forgot_password();
     checkIsUserLogged();
 
     jQuery(".sign_signup_form input").on("keyup",function(){
@@ -289,12 +289,12 @@ function forgotCustomer() {
     var email_id = jQuery.trim(jQuery(".login_form input[name='email']").val());
 
     if(email_id=="" || email_id=="Email"){
-        jQuery('#err_pass').html('Email Field is required');
+        jQuery('#err_pass').html('Please fill your email id');
         //alert(email_id);err_pass
         return false;
     }
     else if(!isValidEmailAddress(email_id)){
-        jQuery('#err_pass').html('Email id is not valid.');
+        jQuery('#err_pass').html('Please fill your email id');
         return false;
     }
     else {
@@ -346,10 +346,10 @@ function loginCustomer() {
     var button_html = jQuery(".login_customer").html();
 
     if(email_id=="" || email_id=="Email"){
-        jQuery("#err_msg").html("Please fill in your Email ID");
+        jQuery("#err_msg").html("Please fill in your email id");
     }
     else if(!isValidEmailAddress(email_id)){
-        jQuery("#err_msg").html("Please enter a valid Email ID");
+        jQuery("#err_msg").html("Invalid Email or Password");
     }
     else if(pwd=="" || pwd=="Last Name"){
         jQuery("#err_msg").html("Please enter your password.");
@@ -498,3 +498,13 @@ function checkIsUserLogged() {
 
 /**************** ys team functions *****************/
 
+function forgot_password(){
+    jQuery(".forgot_password_form > input").keyup(function(){
+        if(jQuery(this).val()!=="" && jQuery(this).val()!=="Email"){
+            jQuery("#forgot_password").addClass("active");
+        }
+        else{
+            jQuery("#forgot_password").removeClass("active");
+        }
+    });
+}
