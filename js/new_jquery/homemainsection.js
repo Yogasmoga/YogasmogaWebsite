@@ -22,9 +22,11 @@ jQuery(document).ready(function($){
             }
         });
     });
-    $(".gridfull img").load(function(){
-        $(this).css("visibility","visible");
+
+    $(".gridfull .sliderImg img").load(function(){
+        $(this).closest(".gridfull").css("opacity",1);
     });
+
     $('#playBtn').fadeIn(500, function(){$('.flexslider').css('background','#fff')});
     //$('.page-overlay').fadeOut(500, function(){$('.page-overlay').remove();});
     $('body').css({overflow:'auto', marginRight:0});
@@ -32,6 +34,7 @@ jQuery(document).ready(function($){
     fixmainimage();
     
     $(window).resize(function($) {
+        jQuery(".gridfull").css('min-height',jQuery(window).width()*0.48);
         fixmainimage();
         //alert("resized");
         // positionfloatingimages();

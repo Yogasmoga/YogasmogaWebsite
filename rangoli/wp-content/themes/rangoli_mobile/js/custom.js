@@ -1158,7 +1158,16 @@ function forgot_password(email){
 }
 
 
-
+function check_forgot_password(){
+    $(".forgot_password_form > input").keyup(function(){
+        if($(this).val()!=="" && $(this).val()!=="Email"){
+            $("#forgot_password").addClass("active");
+        }
+        else{
+            $("#forgot_password").removeClass("active");
+        }
+    });
+}
 
 function isRegistrationInfoValid(){
 
@@ -1227,4 +1236,5 @@ $(document).ready(function(){
     $(".signin_popup input").on("keyup",function(){
         isLoginInfoValid();
     });
+    check_forgot_password();
 });

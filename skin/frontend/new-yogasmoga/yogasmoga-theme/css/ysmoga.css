@@ -4,13 +4,12 @@
     float: left;
     font: italic 10px/15px gothambook;
 }
-.gridfull img{
-    visibility: hidden;
- }
 .right-top-block.r-align > span span{
     margin-left: 10px;
 }
-
+#bucket1_slider .slides li , .gridfull{
+    background: rgba(174, 133, 54, 0.5);
+}
 .right-top-block.r-align > span span > img{
     margin-left: 3px;
 }
@@ -18,7 +17,9 @@
 .right-bottom-block{
     float: right;
 }
-
+.gridfull{
+    opacity: 0;
+}
 a#rangoli-head{
     background-image: url("../images/rangoli-icon.png");
     background-repeat: no-repeat;
@@ -263,7 +264,7 @@ ul.site-map > li{
     background: url("../images/new-elements/goldbg.png") no-repeat center center #ae8637;
     background-size: 100% 100%;
     width: 100%;
-    display: block;
+    display: table;
     vertical-align: middle;
     height: 50% !important;
     position: absolute;
@@ -308,10 +309,11 @@ ul.site-map > li{
 }
 
 .supportnamaskar .ctext {
-        margin: 0;        
-        position: absolute;
-        bottom: 5.6910569105691056910569105691057%;
-        /*height: 70px;*/
+    bottom: 5.69106% !important;
+    display: block !important;
+    height: auto !important;
+    margin: 0;
+    position: absolute !important;
 }
 
 .ctext{
@@ -321,7 +323,9 @@ ul.site-map > li{
     width: 100%;  
 /*    text-transform: uppercase; */
     vertical-align: middle;
-    position: absolute;
+    height: 100%;
+    /*position: absolute;*/
+    display: table-cell;
 }
 
 .ctext > span {
@@ -338,6 +342,7 @@ ul.site-map > li{
     box-sizing: border-box;
     position: absolute;
     top:50%;
+    width:%;
 }
 
 .iconspartone .row {

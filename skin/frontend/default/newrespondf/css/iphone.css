@@ -6427,8 +6427,9 @@ button#send2 {
 }
 
 .buttons.ajaxlogin_forgot_pwd_actions > p {
-    color: #ae8536;
-    margin-bottom: 10px;
+    color: #ff6600;
+    margin-bottom: 5px;
+    font-size: 13px;
 }
 
 #shopping-cart-totals-table .reward-point td:nth-child(2) {
@@ -6779,4 +6780,8 @@ video {
 }
 .menu-item.has-dropdown.main-heading.yogasmoga_li{
     line-height: 0;
+}
+.menu-item.has-dropdown.c-text_small.r_grey_text.invite-friend{
+    float: none;
+    width: 100% !important;
 }
