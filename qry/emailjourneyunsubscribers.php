@@ -1,0 +1,68 @@
+<?php
+
+if(isset($_REQUEST['date'])) {
+
+    require_once '../app/Mage.php';
+    Mage::app();
+    umask(0);
+
+    $date = $_REQUEST['date'];
+
+    $date = date("Y-m-d", strtotime($date));
+
+    $resource = Mage::getSingleton('core/resource');
+    $readConnection = $resource->getConnection('core_read');
+
+    $query = "select * from unsubscribed_customers where date(created_at)='$date'";
+
+    $rows = $readConnection->fetchAll($query);
+
+    header('Content-Type: text/csv; charset=utf-8');
+    header('Content-Disposition: attachment; filename=unsubscribed.csv');
+
+    $fp = fopen('php://output', 'w');
+
+    fputcsv($fp, array("Customers unsubscribed on " . $date));
+    fputcsv($fp, array(''));
+
+    fputcsv($fp, array(''));
+    fputcsv($fp, array('S.No.', 'Customer Id', 'Email'));
+    fputcsv($fp, array(''));
+
+    $i = 0;
+    foreach ($rows as $row) {
+        $email = $row['email'];
+        $customerId = $row['customer_id'];
+        fputcsv($fp, array(++$i, $customerId, $email));
+    }
+
+    fclose($fp);
+
+    exit;
+}
+else{
+?>
+
+<html>
+    <body>
+
+        <br/><a href="index.php">Home</a><br/><br/>
+
+        <form method="post" action="emailjourneyunsubscribers.php">
+
+            <h3>Download customers</h3>
+
+            <table style="width:500px;" border="0">
+                <tr>
+                    <td style="width:150px;">Date</td>
+                    <td><input type="date" name="date"/> Ex. 5/17/2015</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="Get Records"/> </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
+
+<?php } ?>
