@@ -33,7 +33,7 @@
 ?>
 <div class="category-block">
   <div class="sign-in-box">
-	<?php   
+	<?php
 		if(Mage::getSingleton('customer/session')->isLoggedIn()) {
 		$store_id = Mage::app()->getStore()->getId();
 		$customerId = Mage::getModel('customer/session')->getCustomerId();
@@ -41,11 +41,11 @@
 			$reward_flat_model = Mage::getModel('rewardpoints/flatstats');
 			echo $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
 			//Mage::helper('core')->currency($reward_flat_model->collectPointsCurrent($customerId, $store_id)+0);
-		}        
-		
+		}
+
 		$reward_model = Mage::getModel('rewardpoints/stats');
 		//echo "$".number_format((float)($reward_model->getPointsCurrent($customerId, $store_id)+0), 2, '.','');
-		//echo $reward_model->getPointsCurrent($customerId, $store_id)+0;                    
+		//echo $reward_model->getPointsCurrent($customerId, $store_id)+0;
 		 echo '<a href="javascript:void(0)"><span class="rewards_points"><b>$</b>'.($reward_model->getPointsCurrent($customerId, $store_id)+0).'</span></a>';
 		} else { ?>
      <a href="javascript:void(0)" onclick="openLogin()"><span class="cuslogin">Sign In</span></a>
@@ -126,9 +126,9 @@
 		<?php } ?>
         <div class="dropdown_links">
 
-			<?php 
+			<?php
 			//get the url like this:    =>http://yogasmoga.com/women/top
-			$currentUrl = Mage::helper('core/url')->getCurrentUrl(); 
+			$currentUrl = Mage::helper('core/url')->getCurrentUrl();
 
 			$categoryName = explode('/', $currentUrl);  // break the url
 			$urlKey = $categoryName[3];     // get the top category name
@@ -141,20 +141,20 @@
 
 			?>
 			<ul>
-			    <?php 
+			    <?php
 				if(isset($parentCategoryId) && $parentCategoryId =='3') { $whtsmaincatid ='16'; } else { $whtsmaincatid ='19'; }
 				$whatscatid = Mage::getModel('catalog/category')->load($whtsmaincatid); ?>
                 <li><a title="What's New" class="has_no_childs" href="<?php echo $whatscatid->getUrl(); ?>"><?php echo $whatscatid->getName(); ?></a>
 <!--				<ul></ul><span class="border-line"></span>-->
 				</li>
-				 <?php 
+				 <?php
 					foreach(explode(',',$subcats) as $subCatid)
 					{
 					  $_category = Mage::getModel('catalog/category')->load($subCatid);
 					  if($_category->getIsActive()) { ?>
 						<li style="<?php if($_category->getId() =='16' || $_category->getId() =='19') { echo 'display:none';} ?>">
 
-						<?php 
+						<?php
 						$sub_cat = Mage::getModel('catalog/category')->load($_category->getId());
 						$sub_subcats = $sub_cat->getChildren();
 						$_subcategories = $sub_cat->getChildrenCategories();
@@ -177,7 +177,7 @@
 						echo '<ul>';
 						foreach($_subcategories as $_sub_category)
 						{
-							
+
 							 // $_sub_category = Mage::getModel('catalog/category')->load($sub_subCatid);
 							  if($_sub_category->getIsActive()) {
 			echo '<li class="sub_cat"><a href="'.$_sub_category->getURL().'" title="'.$_sub_category->getName().'">'.$_sub_category->getName().'</a></li>';
@@ -192,7 +192,7 @@
 									}
 								  }
 							   }
-							 
+
 						 }
 						 echo '</ul>';
 
