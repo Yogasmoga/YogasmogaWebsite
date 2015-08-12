@@ -260,7 +260,7 @@ ul.site-map > li{
     background: url("../images/new-elements/goldbg.png") no-repeat center center #ae8637;
     background-size: 100% 100%;
     width: 100%;
-    display: block;
+    display: table;
     vertical-align: middle;
     height: 50% !important;
     position: absolute;
@@ -305,10 +305,11 @@ ul.site-map > li{
 }
 
 .supportnamaskar .ctext {
-        margin: 0;        
-        position: absolute;
-        bottom: 5.6910569105691056910569105691057%;
-        /*height: 70px;*/
+    bottom: 5.69106% !important;
+    display: block !important;
+    height: auto !important;
+    margin: 0;
+    position: absolute !important;
 }
 
 .ctext{
@@ -318,7 +319,9 @@ ul.site-map > li{
     width: 100%;  
 /*    text-transform: uppercase; */
     vertical-align: middle;
-    position: absolute;
+    height: 100%;
+    /*position: absolute;*/
+    display: table-cell;
 }
 
 .ctext > span {
@@ -335,6 +338,7 @@ ul.site-map > li{
     box-sizing: border-box;
     position: absolute;
     top:50%;
+    width:%;
 }
 
 .iconspartone .row {
