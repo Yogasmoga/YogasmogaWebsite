@@ -1,5 +1,5 @@
 <?php
-require_once 'app/Mage.php';
+require_once '../app/Mage.php';
 Mage::app();
 umask(0);
 
