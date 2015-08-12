@@ -7,7 +7,9 @@
 .right-top-block.r-align > span span{
     margin-left: 10px;
 }
-
+#bucket1_slider .slides li , .gridfull{
+    background: rgba(174, 133, 54, 0.5);
+}
 .right-top-block.r-align > span span > img{
     margin-left: 3px;
 }
