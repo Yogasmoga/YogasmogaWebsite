@@ -15,11 +15,11 @@ fputcsv($output, array('Sku', 'Name', 'Quantity'));
 foreach ($products as $product) {
     $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($product->getId());
     if ($parentIds[0] == null) {
-        $stock = Mage::getModel('cataloginventory/stock_item')->load($product->getId());
+        $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($product);
         $rows = array(
             'Sku' => $product->getSku(),
             'Name' => $product->getName(),
-            'Quantity' => $stock->getQty()
+            'Quantity' => (int)$stock->getQty()
         );
         fputcsv($output, $rows);
     }
