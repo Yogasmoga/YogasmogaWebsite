@@ -22,9 +22,7 @@ jQuery(document).ready(function($){
             }
         });
     });
-    //$(".gridfull img").load(function(){
-    //    $(this).css("visibility","visible");
-    //});
+
     $('#playBtn').fadeIn(500, function(){$('.flexslider').css('background','#fff')});
     //$('.page-overlay').fadeOut(500, function(){$('.page-overlay').remove();});
     $('body').css({overflow:'auto', marginRight:0});
@@ -32,13 +30,13 @@ jQuery(document).ready(function($){
     fixmainimage();
     
     $(window).resize(function($) {
+        jQuery(".gridfull").css('min-height',jQuery(window).width()*0.48);
         fixmainimage();
         //alert("resized");
         // positionfloatingimages();
         
         //positionDiscoverSection();
         // sliderHeight();
-        $(".gridfull").css('min-height',$(window).width()*0.48);
     });
     
     setTimeout(function(){ fixmainimage();}, 100);
