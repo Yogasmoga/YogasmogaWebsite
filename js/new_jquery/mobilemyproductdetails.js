@@ -901,18 +901,24 @@ function insertBraOption() {
 }
 
 jQuery(document).ready(function($){
+    if($(".selectedsize").css("display")=="none"){
+        $(".detail-page .box-seprtr.last").css("margin-top","25px");
+        $("#orderitem").addClass("active");
+        $("#preorderitem").addClass("active");
+    }
     $("table.productdetailtable div#sizecontainer table td div").click(function(){
-        $("#orderitem").removeClass("active");
-        $("#preorderitem").removeClass("active");
-        if($("#orderitem").css("display")!="none")
-            $("#orderitem").addClass("active");
-        if($("#preorderitem").css("display")!="none")
-            $("#preorderitem").addClass("active");
-
+        $("#orderitem").addClass("active");
+        $("#preorderitem").addClass("active");
     });
     $("#colorcontainer div").click(function(){
-        $("#orderitem").removeClass("active");
-        $("#preorderitem").removeClass("active");
+        if($(".selectedsize").css("display")!="none"){
+            $("#orderitem").removeClass("active");
+            $("#preorderitem").removeClass("active");
+        }
+        else{
+            $("#orderitem").addClass("active");
+            $("#preorderitem").addClass("active");
+        }
     });
     $(".close_cart_addition_popup").click(function(){
         $(".product_add_conf_popup").fadeOut();

@@ -530,16 +530,17 @@ table.productdetailtable div.addtobag.bagdisabled{
 table.productdetailtable button.cbtn{margin-top:20px;}
 
 table.productdetailtable div.preorderitem {
-    background: none repeat scroll 0 0 #CCC;
+    background: #ccc none repeat scroll 0 0;
     color: #fff;
     cursor: pointer;
     display: none;
+    float: left;
     font: 14px/44px ITCAvantGardeStd-Bk;
     height: 44px;
-    position: fixed;
-    right: 0;
+    position: relative;
     width: 50%;
 }
+
 table.productdetailtable div.preorderitem.active{
     background: #00B900;
 }
