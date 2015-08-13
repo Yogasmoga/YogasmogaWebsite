@@ -434,7 +434,7 @@ $logged_in = is_user_logged_in();
                                             <li><a href="/women/accessories/yoga-mats">Yoga Mats</a></li>
                                             <li><a href="/women/accessories/yoga-towels">Yoga Towels</a></li>
                                             <li><a href="/women/accessories/yoga-flops">Yoga Flops</a></li>
-                                            <li><a href="/women/accessories/namaskar-bracelets">NAMASKÀR Bracelets</a>
+                                            <li><a href="/women/accessories/namaskar-bracelets">Namask&aacute;r Bracelets</a>
                                             </li>
                                         </ul>
                                     </li>
