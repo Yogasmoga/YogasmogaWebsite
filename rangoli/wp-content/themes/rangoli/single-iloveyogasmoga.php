@@ -89,10 +89,18 @@ $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ),
             <div class="span4 insta_post">
 
                 <?php
-                echo "<img src='".wp_get_attachment_url( $attachment_id )."' />";
+                $url =wp_get_attachment_url( $attachment_id );
+                echo "<img src='".$url."' />";
                 ?>
                 <div class="insta_user">
-                    @insta_username
+                    <?php
+                    $array = explode("/",$url);
+                    $lastElement = count($array) - 1;
+                    $ImageName = $array[$lastElement];
+                    $extractNameArray = explode("@@@",$ImageName);
+                    echo $extractNameArray[0];
+
+                    ?>
                 </div>
             </div>
         <?php	}
