@@ -1,94 +1,86 @@
 <?php
 get_header();
 ?>
-    <div class="page_heading">
-        <h1><span>Love,</span> YOGASMOGA</h1>
-        <p>View our SMOGIs looking their best in this week's Instagram posts.<br/>
-            Because no one wears it better than you</p>
-    </div>
-<?php
-ob_flush();
-global $the_query;
-$page = (get_query_var('paged')) ? get_query_var('paged') : 1;
-$i = 0;
-$args = array(
-    'post_type' => 'iloveyogasmoga',
-    'paged' => $page);
-    $the_query = new WP_Query($args);
-?>
-    <div class="fixed_images_container">
-        <?php
-        if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_post();
+<div class="wp_page span12" style="margin-top: 10px; text-align: center;">
+    <h1 class="page-heading">LOVE</h1>
 
-            ?>
-
-    <?php
-    $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
-
-    ?>
-
-    <div class="insta_post" onclick="ajax_load_pages('<?php echo get_permalink(); ?>')">
-        <?php echo get_the_post_thumbnail(); ?>
-    </div>
-    <div class="insta_post_summary">
-        <p class="insta_post_name"><?php echo get_the_title(); ?></p>
-    <p class="insta_post_author">@<?php $meta = get_post_meta($post->ID, 'wpcf-instagram-author');  echo $meta[0];  ?></p>
-        <p class="insta_post_excerpt"><?php echo get_the_excerpt(); ?></p>
-    </div>
+    <div class="post_listing">
+        <div id="posts">
             <?php
-        endwhile;
-        endif;
-        ?>
+            ob_flush();
+            global $the_query;
+            $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
+            $i = 1;
+            $args = array(
+                'order' => 'DESC',
+                'post_type' => 'iloveyogasmoga',
+                'paged' => $page);
+            //                echo $page;
+            $the_query = new WP_Query($args);
+            echo '<div class="author_posts row">';
+            if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_post();
+                $post = get_post();
+                $wpauthors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=" . $post->post_author);
+                $wp_author = $wpauthors[0];
+
+                    ?>
+
+                    <div class="single_post span4">
+                        <div class="author_post read"
+                             style="background: <?php echo '#' . $wpauthors[0]->color_shade; ?>">
+
+                            <?php echo get_the_post_thumbnail($post->ID, 'insta_posts', array('style' => 'width:100%; float:left;height:auto;'));
+                            if (!has_post_thumbnail($post->ID, 'insta_posts', array('onclick' => '"' . get_the_permalink() . '"'))) {
+
+                                ?>
+                                <img src="<?php bloginfo('template_directory') ?>/images/no-background.png"
+                                     style="width:100%;float:left;"/>
+                                <?php
+                            }
+                            ?>
+                            <div class="overlay-text" onclick="ajax_load_pages('<?php echo get_the_permalink(); ?>')">
+                            <?php
+                            $categories = category();
+                            $post = get_post();
+                            echo '<div class="align-bottom">';
+                            echo '<p class="post_category">' . $categories . "</p>";
+                            echo "<p class='post_title'>LOVE, YOGASMOGA</p>";
+                            echo "<p class='post_author'><span>" . get_the_title() .  "</span></p>";
+                            echo '</div>';
+                            ?>
+                        </div>
+                        <?php
+                        echo '<div class="likeandshare"><div class="like-btn">';
+                        // get_template_part('heartsvg');
+                        wpfp_link();
+                        echo '</div>';
+
+                        echo '<div class="share-arrow">';
+                        //                            get_template_part('sharearrow');
+                        echo '</div></div>';
+                        echo '</div>';
+
+                        ?>
+                        <div class="post_date read">
+                            <p><?php echo date('m.d.y', strtotime($post->post_date)); ?></p>
+                        </div>
+                    </div>
+
+                    <?php
+          endwhile;
+                rangoli_paging_nav($the_query, $page);
+//                    wp_paginate($query);
+
+            endif;
+
+            wp_reset_query();
+            echo "</div>";
+            ?>
+        </div>
     </div>
-    <style>
-        .insta_post{
-            width:480px;
-            display: block;
-            margin: 0 auto 20px;
-            box-sizing: border-box;
-        }
-        .insta_post img{
-            width: 100%;
-            height: auto;;
-        }
-        .page_heading{
-             padding: 50px 0;
-             text-align: center;
-             color: #666;
-        }
-        .page_heading h1{
-            font: normal 30px/35px ITCAvantGardeStd-Bk;
-        }
-        .insta_post_author {
-            color: #333;
-            font: 12px/17px Graphik-SemiBold;
-            letter-spacing: 0.5px;
-            margin-top: 20px;
-        }
-        .insta_post_excerpt {
-            color: #333;
-            font: 12px/17px GraphikRegular;
-            margin-bottom: 30px;
-        }
-        .insta_post_summary{
-            text-align: center;
-        }
-        .page_heading h1 span{
-            font: 35px/50px freight-text-pro;
-            font-weight: 300;
-            font-style: italic;
-        }
-        .page_heading p {
-            font: 400 12px/17px GraphikRegular;
-            margin-top: 40px;
-        }
-        .insta_post_name {
-            font: 20px/35px freight-text-pro;
-            text-align: center;
-            text-transform: capitalize;
-            color: #656565;
-        }
-    </style>
+</div>
+
+
 <?php
 get_footer();
 ?>
