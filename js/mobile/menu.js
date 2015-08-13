@@ -198,6 +198,10 @@ jQuery(document).ready(function($){
         $(this).parent().find(".close-icn").fadeIn();
         $(".flexslider").resize();
         $(".flexslider .slides").css("margin-left",0);
+        var height = jQuery(".productimagecontainer .flexslider li img").height();
+        var newSliderImg = jQuery(".new-slider li img").height();
+        jQuery(this).find(".new-slider .flex-direction-nav").show().css("top",newSliderImg+" !important");
+        alert();
     });
     $(".story-box .close-icn").click(function(){
         $(this).fadeOut();
@@ -282,12 +286,6 @@ jQuery(document).ready(function($){
 
 
 jQuery(window).load(function(){
-    var height = jQuery(".productimagecontainer .flexslider li img").height();
-    var newSliderImg = jQuery(".new-slider li img").height();
-    //jQuery(".has_slider .new-slider .flex-control-nav").show();
-    jQuery(".has_slider .new-slider .flex-direction-nav").show();
-    jQuery(".has_slider .new-slider .flex-direction-nav").css("top",newSliderImg+" !important");
-    alert();
     jQuery(".productimagecontainer .flexslider").css("height",height);
     jQuery(".productimagecontainer ").css("height",height);
     var ww = jQuery(window).width();
