@@ -201,7 +201,7 @@ jQuery(document).ready(function($){
 
         var parent = $(this).closest(".story-box");
         var img_height = parent.find(".slides li:first-child img").height();
-        parent.find(".flex-direction-nav").show().css("top",(img_height/2));
+        parent.find(".flex-direction-nav").show().css("top",(img_height/2)-25);
 
 
     });
