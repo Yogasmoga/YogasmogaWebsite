@@ -201,7 +201,7 @@ jQuery(document).ready(function($){
 
         var parent = $(this).closest(".story-box");
         var img_height = parent.find(".slides li:first-child img").height();
-        parent.find(".flex-direction-nav").show().css("top",(img_height/2)-25);
+        parent.find(".flex-direction-nav").show().css("top",(img_height/2)-10);
 
 
     });
@@ -356,6 +356,7 @@ jQuery(document).ready(function($){
         jQuery("#ajaxlogin_button_send").removeClass("active");
         jQuery("#create_account").removeClass("active");
     });
+
 
 
     $(".invite-friend a").click(function(e){
