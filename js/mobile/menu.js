@@ -285,7 +285,8 @@ jQuery(window).load(function(){
     var height = jQuery(".productimagecontainer .flexslider li img").height();
     var newSliderImg = jQuery(".new-slider li img").height();
     jQuery(".has_slider .new-slider .flex-control-nav").show();
-    jQuery(".has_slider .new-slider .flex-control-nav").css("top",newSliderImg);
+    jQuery(".has_slider .new-slider .flex-direction-nav").show();
+    jQuery(".has_slider .new-slider .flex-direction-nav").css("top",newSliderImg);
     jQuery(".productimagecontainer .flexslider").css("height",height);
     jQuery(".productimagecontainer ").css("height",height);
     var ww = jQuery(window).width();
