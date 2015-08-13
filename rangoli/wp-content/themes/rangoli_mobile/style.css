@@ -1405,3 +1405,6 @@ p.small.err_msg {
 .sign-signup li {
     height: 44px;
 }
+.rangoli_menu_links li svg path,.rangoli_menu_links li svg polyline,.rangoli_menu_links li svg circle,.rangoli_menu_links li svg polygon,.rangoli_menu_links li svg line {
+    stroke: #CCC;
+}

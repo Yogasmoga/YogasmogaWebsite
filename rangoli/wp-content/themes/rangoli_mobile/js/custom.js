@@ -1237,4 +1237,9 @@ $(document).ready(function(){
         isLoginInfoValid();
     });
     check_forgot_password();
+
+    $(".close_login_popup ,.close_signup_popup,.forgot_y_p, .forgot_y_p.open_signup ,.forgot_y_p.open_signin").click(function(){
+        $(".popup button").removeClass("active");
+        $(".err_msg").html("");
+    });
 });

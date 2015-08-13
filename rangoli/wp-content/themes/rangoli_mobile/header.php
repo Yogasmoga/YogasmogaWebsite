@@ -278,8 +278,7 @@ $logged_in = is_user_logged_in();
     </g>
 </g>
 </svg>
-                            </span><span class="open_signin">Sign In</span> / <span
-                                    class="open_signup">Sign Up</span></a>
+                            </span><span class="open_signin">Sign In</span>&nbsp; / <span class="open_signup">Sign Up</span></a>
                         </li>
                     </ul>
                 <?php } else { ?>
@@ -526,36 +525,180 @@ $logged_in = is_user_logged_in();
                             <li class="ys_single_link"><a href="/our-story">YS Story</a>
                                 <span class="ys_story">
 
-                                        <svg width="44px" height="44px">
-                                            <use xlink:href="#ys_story"></use>
+                                        <svg width="44px" height="44px" viewBox="0 0 44 44" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+
+                                                <!--                                          <use xlink:href="#ys_story"></use>-->
+                                                <g id="XMLID_35_">
+                                                    <polyline points="29.4,160.3 16.3,166.6 22.6,153.5 	" class="st0" id="XMLID_37_"/>
+                                                    <circle r="5.5" cy="155.1" cx="27.8" class="st0" id="XMLID_36_"/>
+                                                </g>
+                                                <g id="XMLID_32_">
+                                                    <rect height="14.7" width="3.9" class="st0" y="238.4" x="22.9" id="XMLID_34_"/>
+                                                    <circle r="2.7" cy="232.1" cx="24.8" class="st0" id="XMLID_33_"/>
+                                                </g>
+                                                <g id="XMLID_25_">
+                                                    <line y2="117" x2="30.7" y1="109.5" x1="26.4" class="st0" id="XMLID_31_"/>
+                                                    <line y2="109.3" x2="23.3" y1="117.1" x1="18.8" class="st0" id="XMLID_30_"/>
+                                                    <line y2="119.7" x2="20.4" y1="119.7" x1="29.2" class="st0" id="XMLID_29_"/>
+                                                    <circle r="3" cy="106.8" cx="24.8" class="st0" id="XMLID_28_"/>
+                                                    <circle r="3" cy="119.7" cx="32.2" class="st0" id="XMLID_27_"/>
+                                                    <path d="M20.4,119.7c0,1.7-1.4,3-3,3c-1.7,0-3-1.4-3-3s1.4-3,3-3C19,116.6,20.4,118,20.4,119.7" class="st0" id="XMLID_26_"/>
+                                                </g>
+                                                <g id="XMLID_18_">
+                                                    <circle r="6.6" cy="195.5" cx="24.8" class="st0" id="XMLID_24_"/>
+                                                    <circle r="6.6" cy="197.7" cx="21" class="st0" id="XMLID_23_"/>
+                                                    <circle r="6.6" cy="202.1" cx="21" class="st0" id="XMLID_22_"/>
+                                                    <circle r="6.6" cy="204.3" cx="24.8" class="st0" id="XMLID_21_"/>
+                                                    <circle r="6.6" cy="202.1" cx="28.6" class="st0" id="XMLID_20_"/>
+                                                    <circle r="6.6" cy="197.7" cx="28.6" class="st0" id="XMLID_19_"/>
+                                                </g>
+                                                <g id="XMLID_15_">
+                                                    <path d="M23.3,23.5c0,0-4.5,0.1-7.3-2.7s-2.7-7.3-2.7-7.3s4.5-0.1,7.3,2.7S23.3,23.5,23.3,23.5z" class="st0" id="XMLID_17_"/>
+                                                    <path d="M23.3,23.5c0,0,4.5,0.1,7.3-2.7s2.7-7.3,2.7-7.3s-4.5-0.1-7.3,2.7S23.3,23.5,23.3,23.5z" class="st0" id="XMLID_16_"/>
+                                                </g>
+                                                <line y2="30.5" x2="23.3" y1="23.5" x1="23.3" class="st0" id="XMLID_14_"/>
+                                                <g id="XMLID_3_">
+                                                    <g id="XMLID_5_">
+                                                        <line y2="-75.5" x2="-185.5" y1="-75.5" x1="-211.6" class="st0" id="XMLID_12_"/>
+                                                        <line y2="-80.8" x2="-185.5" y1="-80.8" x1="-211.6" class="st0" id="XMLID_11_"/>
+                                                        <line y2="-78.2" x2="-185.5" y1="-78.2" x1="-211.6" class="st0" id="XMLID_10_"/>
+                                                        <line y2="-83.5" x2="-185.5" y1="-83.5" x1="-201.2" class="st0" id="XMLID_9_"/>
+                                                        <line y2="-86.2" x2="-185.5" y1="-86.2" x1="-201.2" class="st0" id="XMLID_8_"/>
+                                                        <line y2="-88.8" x2="-185.5" y1="-88.8" x1="-201.2" class="st0" id="XMLID_7_"/>
+                                                        <line y2="-91.5" x2="-185.5" y1="-91.5" x1="-201.2" class="st0" id="XMLID_6_"/>
+                                                    </g>
+                                                    <polygon points="-207.6,-85.6 -210.1,-83.7 -209.1,-86.7 -211.6,-88.5 -208.5,-88.5 -207.6,-91.5
+		-206.6,-88.5 -203.5,-88.5 -206,-86.7 -205,-83.7 	" class="st0" id="XMLID_4_"/>
+                                                </g>
                                         </svg>
                                 </span>
                             </li>
                             <li class="ys_single_link"><a href="/ys-fabric-tech">YS Tech</a>
                                 <span class="tech_icon">
-                                        <svg width="44px" height="44px">
-                                            <use xlink:href="#ys_tech"></use>
-                                        </svg>
+                                        <svg xml:space="preserve" width="44px" height="44px" style="enable-background:new 0 0 44 44;" viewBox="0 0 44 44" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+
+                                            <!--                                          <use xlink:href="#ys_tech"></use>-->
+                                            <g id="XMLID_35_">
+                                                <polyline points="29.4,160.3 16.3,166.6 22.6,153.5 	" class="st0" id="XMLID_37_"/>
+                                                <circle r="5.5" cy="155.1" cx="27.8" class="st0" id="XMLID_36_"/>
+                                            </g>
+                                            <g id="XMLID_32_">
+                                                <rect height="14.7" width="3.9" class="st0" y="238.4" x="22.9" id="XMLID_34_"/>
+                                                <circle r="2.7" cy="232.1" cx="24.8" class="st0" id="XMLID_33_"/>
+                                            </g>
+                                            <g id="XMLID_25_">
+                                                <line y2="25.8" x2="28" y1="18.3" x1="23.7" class="st0" id="XMLID_31_"/>
+                                                <line y2="18.1" x2="20.6" y1="25.9" x1="16.1" class="st0" id="XMLID_30_"/>
+                                                <line y2="28.5" x2="17.7" y1="28.5" x1="26.5" class="st0" id="XMLID_29_"/>
+                                                <circle r="3" cy="15.5" cx="22.1" class="st0" id="XMLID_28_"/>
+                                                <circle r="3" cy="28.5" cx="29.5" class="st0" id="XMLID_27_"/>
+                                                <path d="M17.7,28.5c0,1.7-1.4,3-3,3s-3-1.4-3-3c0-1.7,1.4-3,3-3S17.7,26.8,17.7,28.5" class="st0" id="XMLID_26_"/>
+                                            </g>
+                                            <g id="XMLID_18_">
+                                                <circle r="6.6" cy="195.5" cx="24.8" class="st0" id="XMLID_24_"/>
+                                                <circle r="6.6" cy="197.7" cx="21" class="st0" id="XMLID_23_"/>
+                                                <circle r="6.6" cy="202.1" cx="21" class="st0" id="XMLID_22_"/>
+                                                <circle r="6.6" cy="204.3" cx="24.8" class="st0" id="XMLID_21_"/>
+                                                <circle r="6.6" cy="202.1" cx="28.6" class="st0" id="XMLID_20_"/>
+                                                <circle r="6.6" cy="197.7" cx="28.6" class="st0" id="XMLID_19_"/>
+                                            </g>
+                                            <g id="XMLID_15_">
+                                                <path d="M-147.1,37c0,0-4.5,0.1-7.3-2.7s-2.7-7.3-2.7-7.3s4.5-0.1,7.3,2.7S-147.1,37-147.1,37z" class="st0" id="XMLID_17_"/>
+                                                <path d="M-147.1,37c0,0,4.5,0.1,7.3-2.7s2.7-7.3,2.7-7.3s-4.5-0.1-7.3,2.7S-147.1,37-147.1,37z" class="st0" id="XMLID_16_"/>
+                                            </g>
+                                            <line y2="44" x2="-147.1" y1="37" x1="-147.1" class="st0" id="XMLID_14_"/>
+                                            <g id="XMLID_3_">
+                                                <g id="XMLID_5_">
+                                                    <line y2="-75.5" x2="-185.5" y1="-75.5" x1="-211.6" class="st0" id="XMLID_12_"/>
+                                                    <line y2="-80.8" x2="-185.5" y1="-80.8" x1="-211.6" class="st0" id="XMLID_11_"/>
+                                                    <line y2="-78.2" x2="-185.5" y1="-78.2" x1="-211.6" class="st0" id="XMLID_10_"/>
+                                                    <line y2="-83.5" x2="-185.5" y1="-83.5" x1="-201.2" class="st0" id="XMLID_9_"/>
+                                                    <line y2="-86.2" x2="-185.5" y1="-86.2" x1="-201.2" class="st0" id="XMLID_8_"/>
+                                                    <line y2="-88.8" x2="-185.5" y1="-88.8" x1="-201.2" class="st0" id="XMLID_7_"/>
+                                                    <line y2="-91.5" x2="-185.5" y1="-91.5" x1="-201.2" class="st0" id="XMLID_6_"/>
+                                                </g>
+                                                <polygon points="-207.6,-85.6 -210.1,-83.7 -209.1,-86.7 -211.6,-88.5 -208.5,-88.5 -207.6,-91.5
+		-206.6,-88.5 -203.5,-88.5 -206,-86.7 -205,-83.7 	" class="st0" id="XMLID_4_"/>
+                                            </g>
+</svg>
                                 </span>
                             </li>
                             <li class="ys_single_link"><a href="/smogi-bucks">
                                     <span class="smogi_bucks_icon">
 
-                                        <svg width="44px" height="44px">
-                                            <use xlink:href="#smogi_bucks"></use>
-                                        </svg>
+                                        <svg xml:space="preserve" width="44px" height="44px" style="enable-background:new 0 0 44 44;" viewBox="0 0 44 44" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+
+                                            <!--    <use xlink:href="#smogi_bucks"></use>-->
+                                            <g id="XMLID_35_">
+                                                <polyline points="-155,197.7 -168.1,204 -161.8,190.9 	" class="st0" id="XMLID_37_"/>
+                                                <circle r="5.5" cy="192.5" cx="-156.6" class="st0" id="XMLID_36_"/>
+                                            </g>
+                                            <g id="XMLID_32_">
+                                                <rect height="14.7" width="3.9" class="st0" y="238.4" x="22.9" id="XMLID_34_"/>
+                                                <circle r="2.7" cy="232.1" cx="24.8" class="st0" id="XMLID_33_"/>
+                                            </g>
+                                            <g id="XMLID_25_">
+                                                <line y2="114.3" x2="-146.2" y1="106.8" x1="-150.6" class="st0" id="XMLID_31_"/>
+                                                <line y2="106.6" x2="-153.6" y1="114.4" x1="-158.1" class="st0" id="XMLID_30_"/>
+                                                <line y2="117" x2="-156.5" y1="117" x1="-147.7" class="st0" id="XMLID_29_"/>
+                                                <circle r="3" cy="104.1" cx="-152.1" class="st0" id="XMLID_28_"/>
+                                                <circle r="3" cy="117" cx="-144.7" class="st0" id="XMLID_27_"/>
+                                                <path d="M-156.5,117c0,1.7-1.4,3-3,3s-3-1.4-3-3s1.4-3,3-3S-156.5,115.3-156.5,117" class="st0" id="XMLID_26_"/>
+                                            </g>
+                                            <g id="XMLID_18_">
+                                                <circle r="6.6" cy="17.6" cx="22" class="st0" id="XMLID_24_"/>
+                                                <circle r="6.6" cy="19.8" cx="18.2" class="st0" id="XMLID_23_"/>
+                                                <circle r="6.6" cy="24.2" cx="18.2" class="st0" id="XMLID_22_"/>
+                                                <circle r="6.6" cy="26.4" cx="22" class="st0" id="XMLID_21_"/>
+                                                <circle r="6.6" cy="24.2" cx="25.8" class="st0" id="XMLID_20_"/>
+                                                <circle r="6.6" cy="19.8" cx="25.8" class="st0" id="XMLID_19_"/>
+                                            </g>
+                                            <g id="XMLID_15_">
+                                                <path d="M-147.1,37c0,0-4.5,0.1-7.3-2.7s-2.7-7.3-2.7-7.3s4.5-0.1,7.3,2.7S-147.1,37-147.1,37z" class="st0" id="XMLID_17_"/>
+                                                <path d="M-147.1,37c0,0,4.5,0.1,7.3-2.7s2.7-7.3,2.7-7.3s-4.5-0.1-7.3,2.7S-147.1,37-147.1,37z" class="st0" id="XMLID_16_"/>
+                                            </g>
+                                            <line y2="44" x2="-147.1" y1="37" x1="-147.1" class="st0" id="XMLID_14_"/>
+                                            <g id="XMLID_3_">
+                                                <g id="XMLID_5_">
+                                                    <line y2="-75.5" x2="-185.5" y1="-75.5" x1="-211.6" class="st0" id="XMLID_12_"/>
+                                                    <line y2="-80.8" x2="-185.5" y1="-80.8" x1="-211.6" class="st0" id="XMLID_11_"/>
+                                                    <line y2="-78.2" x2="-185.5" y1="-78.2" x1="-211.6" class="st0" id="XMLID_10_"/>
+                                                    <line y2="-83.5" x2="-185.5" y1="-83.5" x1="-201.2" class="st0" id="XMLID_9_"/>
+                                                    <line y2="-86.2" x2="-185.5" y1="-86.2" x1="-201.2" class="st0" id="XMLID_8_"/>
+                                                    <line y2="-88.8" x2="-185.5" y1="-88.8" x1="-201.2" class="st0" id="XMLID_7_"/>
+                                                    <line y2="-91.5" x2="-185.5" y1="-91.5" x1="-201.2" class="st0" id="XMLID_6_"/>
+                                                </g>
+                                                <polygon points="-207.6,-85.6 -210.1,-83.7 -209.1,-86.7 -211.6,-88.5 -208.5,-88.5 -207.6,-91.5
+		-206.6,-88.5 -203.5,-88.5 -206,-86.7 -205,-83.7 	" class="st0" id="XMLID_4_"/>
+                                            </g>
+</svg>
                                     </span>SMOGI Bucks</a></li>
                             <li class="ys_single_link"><a href="/contacts">
                                     <span class="contact_icon">
-                                        <svg width="44px" height="44px">
-                                            <use xlink:href="#contact"></use>
-                                        </svg>
+                                        <svg width="44px" height="44px" xml:space="preserve" style="enable-background:new 0 0 44 44;" viewBox="0 0 44 44" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+
+                                            <!--                                    <use xlink:href="#contact"></use>-->
+                                            <g id="XMLID_4_">
+                                                <rect height="14.7" width="3.9" class="st0" y="59.3" x="20.1" id="XMLID_6_"/>
+                                                <circle r="2.7" cy="53" cx="22" class="st0" id="XMLID_5_"/>
+                                            </g>
+                                            <path d="M28.4,26.9l0.6,0h6.5v-4.4c0-2.7-6-5-13.5-5c-7.4,0-13.5,2.2-13.5,5v4.4h7l0-3.2
+	c0-1.6,2.9-2.9,6.4-2.9s6.4,1.3,6.4,2.9L28.4,26.9z" class="st0" id="XMLID_3_"/>
+</svg>
                                     </span>Contact</a></li>
                             <li class="ys_single_link"><a href="/help">
                             <span class="contact_icon">
-                                <svg width="44px" height="44px">
-                                    <use xlink:href="#help"></use>
-                                </svg>
+                                <svg width="44px" height="44px" xml:space="preserve" style="enable-background:new 0 0 44 44;" viewBox="0 0 44 44" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+
+
+                                    <!--                                    <use xlink:href="#help"></use>-->
+                                    <g id="XMLID_4_">
+                                        <rect height="14.7" width="3.9" class="st0" y="19.1" x="19.8" id="XMLID_6_"/>
+                                        <circle r="2.7" cy="12.8" cx="21.8" class="st0" id="XMLID_5_"/>
+                                    </g>
+                                    <path d="M-70.9,26.7l0.6,0h6.5v-4.4c0-2.7-6-5-13.5-5c-7.4,0-13.5,2.2-13.5,5v4.4h7l0-3.2
+	c0-1.6,2.9-2.9,6.4-2.9s6.4,1.3,6.4,2.9L-70.9,26.7z" class="st0" id="XMLID_3_"/>
+</svg>
                             </span>Help</a></li>
 
 
@@ -710,3 +853,8 @@ if (!is_user_logged_in() && is_home()) {
 <?php
 }
 ?>
+<style>
+    .st0{
+        stroke : #CCC !important;
+    }
+</style>

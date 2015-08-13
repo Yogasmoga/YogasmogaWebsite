@@ -342,6 +342,15 @@ jQuery(document).ready(function($){
     });
 */
 
+    $(".cross_popup ,  #ajaxlogin_close_icon,.already_signed_up,.new_customer, #ajaxlogin_forgot_pwd_link ,#ajaxlogin_link").click(function(){
+        $("#err_msg").html("");
+        $("#error_msg").html("");
+        $("#err_pass").html("");
+        jQuery(".ajaxlogin_forgot_pwd_actions").removeClass("active");
+        jQuery("#ajaxlogin_button_send").removeClass("active");
+        jQuery("#create_account").removeClass("active");
+    });
+
 
     $(".invite-friend a").click(function(e){
         e.preventDefault();

@@ -161,31 +161,31 @@ function isinputvalid(){
     var pwd = jQuery.trim(jQuery(".singup_form input[name='password']").val());
     var gender_link = jQuery(".gender-link");
     var gender = jQuery(".f-right .current input").val();
-    jQuery(".sign-up-block .btn").removeClass("active");
+    //jQuery("create_account").removeClass("active");
     if(fname=="" || fname=="First Name"){
-        jQuery(".sign-up-block .btn").removeClass("active");
+        jQuery("#create_account").removeClass("active");
     }
     else if(lname=="" || lname=="Last Name"){
-        jQuery(".sign-up-block .btn").removeClass("active");
+        jQuery("#create_account").removeClass("active");
     }
     else if(email_id=="" || email_id=="Email"){
-        jQuery(".sign-up-block .btn").removeClass("active");
+        jQuery("#create_account").removeClass("active");
     }
-    else if(!isValidEmailAddress(email_id)){
-        jQuery(".sign-up-block .btn").removeClass("active");
-    }
+    /*else if(!isValidEmailAddress(email_id)){
+        jQuery("#create_account").removeClass("active");
+    }*/
     else if(pwd==""){
-        jQuery(".sign-up-block .btn").removeClass("active");
+        jQuery("#create_account").removeClass("active");
     }
-    else if(pwd.length<6){
-        jQuery(".sign-up-block .btn").removeClass("active");
-    }
+    /*else if(pwd.length<6){
+        jQuery("#create_account").removeClass("active");
+    }*/
     else if(!gender_link.find(".f1").hasClass("current") && !gender_link.find(".f2").hasClass("current")){
-        jQuery(".sign-up-block .btn").removeClass("active");
+        jQuery("#create_account").removeClass("active");
     }
     else{
         jQuery("#error_msg").html("");
-        jQuery(".sign-up-block .btn").addClass("active");
+        jQuery("#create_account").addClass("active");
     }
 }
 
@@ -218,7 +218,7 @@ function createCustomerAccount() {
         jQuery("#error_msg").html("Please choose a password");
     }
     else if(pwd.length<6){
-        jQuery("#error_msg").html("Password should be of 6 or more.");
+        jQuery("#error_msg").html("Password should be of 6 or more characters.");
     }
 
     else if(!gender_link.find(".f1").hasClass("current") && !gender_link.find(".f2").hasClass("current")){
@@ -318,9 +318,9 @@ function isloginvalid(){
     if(email_id=="" || email_id=="Email"){
         jQuery("#ajaxlogin_button_send").removeClass("active");
     }
-    else if(!isValidEmailAddress(email_id)){
+    /*else if(!isValidEmailAddress(email_id)){
         jQuery("#ajaxlogin_button_send").removeClass("active");
-    }
+    }*/
     else if(pwd==""){
         jQuery("#ajaxlogin_button_send").removeClass("active");
     }
@@ -499,12 +499,12 @@ function checkIsUserLogged() {
 /**************** ys team functions *****************/
 
 function forgot_password(){
-    jQuery(".forgot_password_form > input").keyup(function(){
+    jQuery(".form_field_left  input").keyup(function(){
         if(jQuery(this).val()!=="" && jQuery(this).val()!=="Email"){
-            jQuery("#forgot_password").addClass("active");
+            jQuery(".ajaxlogin_forgot_pwd_actions").addClass("active");
         }
         else{
-            jQuery("#forgot_password").removeClass("active");
+            jQuery(".ajaxlogin_forgot_pwd_actions").removeClass("active");
         }
     });
 }
