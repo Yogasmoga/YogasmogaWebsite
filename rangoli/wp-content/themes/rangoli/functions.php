@@ -5,6 +5,7 @@ add_image_size('banner', '1024', '600', true);
 add_image_size('thumb', '700', '525', true);
 add_image_size('mobile_slider', '600', '750', true);
 add_image_size('mobile_posts', '500', '375', true);
+add_image_size('insta_posts', '640', '480', true);
 add_image_size('mobile_posts_half', '500', '500', true);
 
 function themeblvd_disable_admin_bar()
@@ -362,7 +363,6 @@ function filter()
 <?php
 }
 
-
 /* code update by Ashutosh */
 function getUserLevel($customer_id){
 
@@ -400,31 +400,6 @@ function getUserLevel($customer_id){
         return "hide";
     }
 
-}
-
-function getUserLevelFromSmogiBucks($smogi_balance)
-{
-    if ($smogi_balance) {
-        if ($smogi_balance <= 50) {
-            $level = "level_1";
-        } else if ($smogi_balance <= 100) {
-            $level = "level_2";
-        } else if ($smogi_balance <= 150) {
-            $level = "level_3";
-        } else if ($smogi_balance <= 200) {
-            $level = "level_4";
-        } else if ($smogi_balance <= 250) {
-            $level = "level_5";
-        } else if ($smogi_balance <= 300) {
-            $level = "level_6";
-        } else {
-            $level = "level_7";
-        }
-
-        return $level;
-    }
-    else
-        return "hide";
 }
 
 function get_user_level($user_id)
