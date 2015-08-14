@@ -1408,3 +1408,6 @@ p.small.err_msg {
 .rangoli_menu_links li svg path,.rangoli_menu_links li svg polyline,.rangoli_menu_links li svg circle,.rangoli_menu_links li svg polygon,.rangoli_menu_links li svg line {
     stroke: #CCC;
 }
+.additional_links {
+    padding: 15px 0;
+}

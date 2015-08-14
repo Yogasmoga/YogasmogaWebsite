@@ -759,7 +759,7 @@ li {
 }
 
 .menu-item.additional_links {
-    padding: 11px 0;
+    padding: 15px 0;
 }
 
 .menu-item.additional_links li {
@@ -4560,7 +4560,7 @@ table.productdetailtable div#colorcontainer div table {
 }
 
 .inner-aurum li:last-child {
-    border-bottom: 2px solid #bfbfbf;
+    border-bottom: 1px solid #bfbfbf;
 }
 
 .includeoptionmain .include_option > div.selected {
