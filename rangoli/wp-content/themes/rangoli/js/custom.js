@@ -31,6 +31,9 @@ $(document).ready(function () {
         $(".second-list").removeClass("inner-links2");
     });
 
+    var TileWidth = $(".author_post.read").width();
+    var TileHeight = TileWidth * 0.75;
+    $(".author_post.read").height(TileHeight);
 
 });
 
@@ -670,7 +673,10 @@ $(window).resize(function () {
 
     $(".fixed-container").css("min-height",wh/2);
 
-    //$(".wp_page_banner").height(wh-50);
+
+    var TileWidth = $(".author_post.read").width();
+    var TileHeight = TileWidth * 0.75;
+    $(".author_post.read").height(TileHeight);
 });
 
 $(window).load(function () {
