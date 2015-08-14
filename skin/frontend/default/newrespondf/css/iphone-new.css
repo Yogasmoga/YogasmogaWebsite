@@ -1181,6 +1181,6 @@ form#cardbalanceform table.redeem-giftcard {
     padding: 15px 0;
     width: 120%;
 }
-.dropdown_links > ul li:last-child a {
+.dropdown_links > ul > li:last-child a {
     color : #AE8637 !important;
 }

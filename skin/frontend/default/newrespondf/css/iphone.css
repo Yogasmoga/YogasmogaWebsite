@@ -1914,7 +1914,7 @@ button[name="update_cart_action_checkout"]{
 }
 
 .apply_promo_login > span {
-    color: #ae8536;
+    color: #00B800;
     float: right;
     font: 20px ITCAvantGardeStd-Bk;
     margin-right: 8px;
@@ -6785,4 +6785,8 @@ video {
 }
 .see_our_colors .arrow-tag.narrow.is-active svg line:nth-child(3){
     stroke: none;
+}
+#discountFormPoints2 .buttons-set span span.beforeSignIn {
+    display: block;
+    font: 21px ITCAvantGardeStd-Bk;
 }

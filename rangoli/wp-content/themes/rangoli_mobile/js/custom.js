@@ -703,7 +703,7 @@ function loginCustomer() {
     var button_html = jQuery(".login_customer").html();
 
     if(email_id=="" || email_id=="Email"){
-        $(".err_msg").html("Please fill in your email id");
+        $(".err_msg").html("Please fill your email id");
     }
     else {
         jQuery.ajax({
