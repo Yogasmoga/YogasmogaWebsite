@@ -31,10 +31,13 @@ $(document).ready(function () {
         $(".second-list").removeClass("inner-links2");
     });
 
+    $(".author_post.read img").css("opacity",0);
     var TileWidth = $(".author_post.read").width();
     var TileHeight = TileWidth * 0.75;
     $(".author_post.read").height(TileHeight);
-
+    $(".author_post.read img").load(function(){
+        $(this).fadeIn();
+    });
 });
 
 $(window).load(function(){
