@@ -35,8 +35,12 @@ $(document).ready(function () {
     var TileWidth = $(".author_post.read").width();
     var TileHeight = TileWidth * 0.75;
     $(".author_post.read").height(TileHeight);
-    $(".author_post.read img").load(function(){
-        $(this).fadeIn();
+    $(".author_post.read img").each(function(){
+        $(this).load(function() {
+            $(this).animate({
+                "opacity": 1
+            }, 200);
+        });
     });
 });
 
