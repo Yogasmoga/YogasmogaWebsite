@@ -1,5 +1,5 @@
 ﻿body{
-    color: #555;
+    color: #555 !important;
 }
 input, textarea, button {
     border-radius: 0;
