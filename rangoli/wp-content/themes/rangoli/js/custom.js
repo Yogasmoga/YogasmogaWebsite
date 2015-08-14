@@ -1676,10 +1676,11 @@ function if_gender_is_selected(){
 }
 
 function adjustTileHeightAndLoad(){
-    var TileWidth = $(".author_post.read").width();
+    var TileWidth = $(document).find(".author_post.read").width();
     var TileHeight = TileWidth * 0.75;
-    $(".author_post.read").height(TileHeight);
-    $(".author_post.read img").each(function(){
+    $(document).find(".author_post.read").height(TileHeight);
+    $(document).find(".author_post.read img").unbind("each,load");
+    $(ocument).find(".author_post.read img").each(function(){
         $(this).load(function() {
             $(this).animate({
                 "opacity": 1
