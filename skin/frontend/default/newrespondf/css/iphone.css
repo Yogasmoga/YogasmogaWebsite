@@ -1431,16 +1431,20 @@ ul {
 }
 
 .category-block .category-box span {
-    bottom: 4px;
+    bottom: 15px;
     color: #fff;
     font-family: freighttextbook;
     font-size: 16px;
     left: 0;
-    line-height: 35px;
+    letter-spacing: 1px;
+    line-height: 16px;
     position: absolute;
     right: 0;
     text-transform: capitalize;
-
+}
+.category-block .category-box span::after{
+    content: ">";
+    color: #FF6C00;
 }
 
 .category-block .category-box span.over-text, .category-block .category-box span.over-text span {

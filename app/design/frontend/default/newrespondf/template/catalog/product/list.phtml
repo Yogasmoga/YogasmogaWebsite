@@ -57,8 +57,8 @@ if (isset($page) && $page == '11') {
                         echo Mage::getBaseUrl('media') . 'catalog/category/' . $_category->getThumbnail();
                     } else {
                         echo $this->getSkinUrl('popup/images/no_image.jpg');
-                    } ?>" width="360" height="270" alt=""/>
-                    <!-- <span>What's New</span> -->
+                    } ?>" alt=""/>
+                     <span>What's New </span>
                     <?php if (!$_category->getThumbnail()) { ?>
                         <span class="over-text"><?php echo $_category->getName(); ?></span>
                     <?php } ?>
@@ -93,10 +93,12 @@ if (isset($page) && $page == '11') {
         </div>
     <?php } ?>
     <a class="go_to_parent" href="<?php echo $goBackUrl; ?>" >
-        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
 <g>
-    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="12.517" y1="12.517" x2="31.482" y2="31.483"/>
-    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="31.482" y1="12.517" x2="12.517" y2="31.483"/>
+    <rect fill="#555555" width="44" height="44"/>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="14" y1="14" x2="30" y2="30"/>
+    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="30" y1="14" x2="14" y2="30"/>
 </g>
 </svg>
 
