@@ -6,6 +6,11 @@ jQuery(document).ready(function($){
 
     $(window).load(function(){
 
+        var startSlideNumber = 0;
+
+        if(jQuery(".home-slider")!=undefined && jQuery('.home-slider').length>0)
+            startSlideNumber = 1;
+
         $(".flexslider li").css({"display":"block"});
         $('.flexslider').flexslider({
             controlNav: true,
@@ -13,7 +18,7 @@ jQuery(document).ready(function($){
             animationSpeed:1250,
             easing:"linear",
             directionNav: true,
-            startAt: 2,
+            startAt: startSlideNumber,
             start: function(slider) {
                 //fixFlexisliderImage();
               },
