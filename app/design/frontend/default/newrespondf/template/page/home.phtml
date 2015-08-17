@@ -78,19 +78,18 @@
   
                           <p>LOREM </br>
                               IPSUM LOREM</p> -->
-                         <a href="#"> <span class="visit-us">visit our stores</span></a>
+<!--                         <a href="#"> <span class="visit-us">visit our stores</span></a>-->
                       <!-- </div> -->
                   </div>
                   <div class="invite-friend">
-                      <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/invite-bg.jpg') ?>" alt="invite friend"/>
-  
-                      <p>
-					  <?php if(Mage::getSingleton('customer/session')->isLoggedIn()) { ?>
-					  <a href="<?php echo $this->getUrl('rewardpoints/index/referral') ;?>">invite </br> friends</a>
+                      <?php if(Mage::getSingleton('customer/session')->isLoggedIn()) { ?>
+					  <a href="<?php echo $this->getUrl('rewardpoints/index/referral') ;?>">
 					  <?php } else { ?>
-					  <a onclick="openLogin()" href="javascript:void(0)">invite </br> friends</a>
+					  <a onclick="openLogin()" href="javascript:void(0)">
 					  <?php } ?>
-					  </p>
+                          <img class="img-responsive" src="<?php echo $this->getSkinUrl('images/invite-bg.jpg') ?>" alt="invite friend"/>
+                      </a>
+
                   </div>
               </div>
               <div class="clearfix"></div>

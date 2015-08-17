@@ -57,8 +57,8 @@ if (isset($page) && $page == '11') {
                         echo Mage::getBaseUrl('media') . 'catalog/category/' . $_category->getThumbnail();
                     } else {
                         echo $this->getSkinUrl('popup/images/no_image.jpg');
-                    } ?>" width="360" height="270" alt=""/>
-                    <!-- <span>What's New</span> -->
+                    } ?>" alt=""/>
+                     <span>What's New </span>
                     <?php if (!$_category->getThumbnail()) { ?>
                         <span class="over-text"><?php echo $_category->getName(); ?></span>
                     <?php } ?>
