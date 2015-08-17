@@ -13,6 +13,7 @@ jQuery(document).ready(function($){
             animationSpeed:1250,
             easing:"linear",
             directionNav: true,
+            startAt: 2,
             start: function(slider) {
                 //fixFlexisliderImage();
               },
