@@ -94,7 +94,7 @@
         <?php endif; ?>
     </td>
     <td><?php echo $this->htmlEscape(Mage::helper('core/string')->splitInjection($this->getSku())) ?></td>
-    <td class="a-right">
+    <td class="a-left">
         <?php if ($this->helper('tax')->displaySalesBothPrices() || $this->helper('tax')->displaySalesPriceExclTax()): ?>
             <span class="price-excl-tax">
                 <?php if ($this->helper('tax')->displaySalesBothPrices()): ?>
@@ -210,7 +210,7 @@
             </span>
         <?php endif; ?>
     </td>
-    <td class="a-right">
+    <td class="a-left">
         <span class="nobr">
                 <?php if ($this->getItem()->getQtyOrdered() > 0): ?>
             <?php echo $this->__('Ordered'); ?>: <strong><?php echo $this->getItem()->getQtyOrdered()*1 ?></strong><br />
