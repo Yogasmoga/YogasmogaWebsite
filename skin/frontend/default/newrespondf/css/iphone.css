@@ -6794,3 +6794,25 @@ video {
     display: block;
     font: 21px ITCAvantGardeStd-Bk;
 }
+.fabric_detail_mobile p {
+    font: 14px/20px GraphikRegular;
+}
+.fabric_detail_mobile > ul {
+    padding: 0;
+}
+.fabric_detail_mobile > ul > li {
+    border-top: 1px solid #999;
+    height: 44px;
+    position: relative;
+}
+.fabric_detail_mobile > ul > li .fab-icon{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.fabric_detail_mobile > ul > li span{
+    position: absolute;
+    top: 0;
+    left: initial;
+    right: 0;
+}

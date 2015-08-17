@@ -357,7 +357,9 @@ jQuery(document).ready(function($){
         jQuery("#create_account").removeClass("active");
     });
 
-
+    $("#pagetitle").click(function(){
+        $(this).closest(".sign-in-box").find(".arrow-icon").click();
+    })
 
     $(".invite-friend a").click(function(e){
         e.preventDefault();
