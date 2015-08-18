@@ -617,7 +617,7 @@
     <div class="help_page" id="email-us">
         <p>EMAIL US</p>
         <div style="padding: 20px 12px; font:15px/22px GraphikRegular;"> For any queries related any product, their sizes etc.. Please feel free to contact us at
-            <a href="mailto:hello@yogasmoga.com">hello@yogasmoga.com</a></div>
+            <a href="mailto:hello@yogasmoga.com" style="color: #AD8536;">hello@yogasmoga.com</a></div>
     </div>
 
     <!-- END OF PAGE ACCORDION -->
@@ -633,4 +633,9 @@
         $(".help_page").hide();
         $(".help_page#" + type).show();
     });
+    jQuery(document).ready(function($){
+        $(".sign-in-box h1").click(function(){
+            $(this).next().click();
+        })
+    })
 </script>

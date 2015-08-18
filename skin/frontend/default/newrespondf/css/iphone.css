@@ -6583,19 +6583,20 @@ button#send2 {
     padding: 0 12px;
 }
 
+.help_page > ul > li:last-child {
+    border-bottom: 1px solid #999;
+}
 .help_page > ul > li {
     text-align: left;
-    padding: 13px 0;
-    border-bottom: 1px solid #eee;
+    padding: 14px 0;
+    border-top: 1px solid #999;
 }
 
 .help_page > p {
-    background: #eee none repeat scroll 0 0;
-    font: 14px/44px AvantGarde-Demi;
-    height: 44px;
-    text-align: left;
-    padding: 0 12px;
-    color: #555555;
+    color: #555;
+    font: 19px/74px ITCAvantGardeStd-Bk;
+    padding: 0 14px;
+    text-align: center;
 }
 
 .help_page > ul > li > p {
@@ -6627,51 +6628,66 @@ button#send2 {
 }
 
 .help_page .answer_content > div, .help_page .answer_content > div p {
-    font: 15px/22px GraphikRegular;
+    font: 14px/20px GraphikRegular;
     padding: 10px 0 0;
 }
-
+.help_page .answer_content > div p:first-child{
+    padding: 10px 0 0px !important;
+}
+.help_page .answer_content > div p:last-child{
+    padding: 0px 0 17px !important;
+}
+.answer_content a{
+    color: #AD8536;
+}
 .help_page .answer_content > span {
     font: 12px/18px AvantGarde-Demi;
 }
 
 .help_page .privacy {
-    color: #555555;
-    font: 12px/22px GraphikRegular;
+    color: #555;
+    font: 14px/20px graphikregular;
     letter-spacing: 1px;
-    padding: 20px 12px 0px;
+    padding: 30px 14px 0;
+    text-align: left;
 }
 
 .help_page .privacy p {
-    border-bottom: 1px solid #ebebeb;
-    padding-bottom: 20px;
+    /*border-bottom: 1px solid #999;*/
+    font: 14px/20px graphikregular;
+    padding-bottom: 30px;
+    letter-spacing: normal;
 }
 
 .help_page .terms_condition {
     color: #555555;
     font: 12px/22px GraphikRegular;
     letter-spacing: 1px;
-    padding: 20px 12px 0px;
+    padding: 30px 14px 0px;
 }
 
 .help_page .terms_condition p {
-    border-bottom: 1px solid #ebebeb;
-    padding-bottom: 20px;
+    padding-bottom: 25px;
+    text-align: left;
+    font: 14px/20px GraphikRegular;
+    letter-spacing: normal;
 }
 
-.help_page .terms_condition p:first-child {
-    font: 17px/30px ITCAvantGardeStd-Bk;
-    border: none;
-    padding: 0;
+.help_page .terms_condition p:last-child {
+    /*border-bottom: 1px solid #999;*/
+    padding-bottom: 30px;
 }
 
+.help_page .terms_condition p a{
+    color: #AD8536;
+}
 .size-chart table {
     border-collapse: collapse;
     font: 12px/30px ITCAvantGardeStd-Bk;
 }
 
 .size-chart table tr {
-    border-bottom: 1px solid #ebebeb;
+    border-bottom: 1px solid #999;
     letter-spacing: 1px;
 }
 
