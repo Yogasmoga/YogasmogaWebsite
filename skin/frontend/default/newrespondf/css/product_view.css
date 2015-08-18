@@ -150,7 +150,7 @@ table.productdetailtable table.selectedcolor td:first-child
 
 table.productdetailtable div#colorcontainer {
     float: left;
-    margin-top: 5px;
+    /*margin-top: 5px;*/
     width: 100%;
 }
 /*
@@ -165,7 +165,7 @@ table.productdetailtable div#colorcontainer > div {
 table.productdetailtable div#colorcontainer > div {
  float: left;
     height: 40px;
-    margin: 3px 6px 0 0;
+    margin: 14px 14px 0 0;
     padding: 0;
     width: 40px;
 	 border: 1px solid transparent;
@@ -283,13 +283,14 @@ table.productdetailtable table.selectedsize td.sizechartlink a
 
 table.productdetailtable div#sizecontainer
 {
-    
+    padding-top: 0;
+    margin-bottom: 0;
 }
 
 table.productdetailtable div#sizecontainer table td
 {
     float: left;
-    margin-bottom: 10px;
+    /*margin-bottom: 10px;*/
 }
 
 table.productdetailtable div#sizecontainer table td.disabled
@@ -309,7 +310,7 @@ table.productdetailtable div#sizecontainer table td div {
     font-family: ITCAvantGardeStd-Bk;
     font-size: 15px;
     line-height: 40px;
-    margin: 0 7px 0 0;
+    margin: 14px 14px 0 0;
     text-align: center;
 }
 
@@ -445,13 +446,17 @@ video {
     /*border-top: 1px solid #ededed;*/
     color: #666;
     float: left;
-    font: 13px/19px ITCAvantGardeStd-Bk;
+    font: 12px/18px GraphikRegular;
     padding-left: 50px;
     padding-top: 20px;
     position: relative;
     text-align: left;
     width: 100%;
     margin-top: 10px;
+}
+
+.smogibuckcount .earnsmogibuckstext{
+    margin-top: 20px;
 }
 .earnbucks {
     float: left;

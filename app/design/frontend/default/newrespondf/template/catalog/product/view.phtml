@@ -1156,11 +1156,19 @@ if ($lengthAvailable) {
                             <li class="<?php if ($i == 2 && $designFeatureVideoName != '') { echo 'last-df'; }
                             if ($i == 4 && $designFeatureVideoName == '') echo ' df-no-vid'; ?>">
                                 <div class="inner-feature">
+                                    <div style="position: relative">
                                     <?php if ($i==4 && $designFeatureVideoName != ''): ?>
-                                        <img nopin="nopin" class="vid-pl-btn" src="<?php echo $this->getSkinUrl('images/vid-icon-img.png'); ?>">
+
+<!--                                        <img nopin="nopin" class="vid-pl-btn" src="--><?php //echo $this->getSkinUrl('images/vid-icon-img.png'); ?><!--">-->
+                                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                width="56px" height="56px" viewBox="0 0 56 56" enable-background="new 0 0 56 56" xml:space="preserve">
+                                                <path opacity="0.7" fill="#FFFFFF" d="M28,0.105c-15.464,0-28,12.536-28,28c0,15.464,12.536,28,28,28c15.465,0,28-12.536,28-28
+                                                C56,12.641,43.465,0.105,28,0.105z M21.049,39.233V16.977l19.275,11.128L21.049,39.233z"/>
+                                                </svg>
                                     <?php endif; ?>
 
                                     <img nopin="nopin" class="img-responsive" width="178" height="178" border="0"  src="<?php echo substr($ndfimg["url"], 1); ?>">
+                                    </div>
                                     <span><?php echo $ndfimg["caption"]; ?></span>
                                 </div>
                             </li>

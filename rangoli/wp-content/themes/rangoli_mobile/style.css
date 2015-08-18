@@ -247,7 +247,7 @@ div,p{
     color: #A28636;
     text-transform: uppercase;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 12px;
     font-family: ITCAvantGardeStd-Demi;
     letter-spacing: 1px;
     display: block;
@@ -258,7 +258,7 @@ div,p{
     background: #EEE;
 }
 .category-menu_mobile .menu a {
-    font-size: 14px;
+    font-size: 12px;
     letter-spacing: 1px;
     font-family: "ITCAvantGardeStd-Bk";
     color:#555;
@@ -290,7 +290,7 @@ div,p{
 }
 .user_menu a {
     color: #555;
-    font:15px/44px ITCAvantGardeStd-Bk;
+    font:12px/44px ITCAvantGardeStd-Bk;
     text-decoration: none;
     margin-left: 2px;
     text-transform: uppercase;
@@ -303,17 +303,19 @@ div,p{
     top: 0;
 }
 .profile_picture {
-    border-radius: 50%;
     height: 44px;
-    left: 0;
-    overflow: hidden;
-    padding: 6px 10px;
+    left: 21px;
+    padding: 0;
     position: absolute;
-    width: 60px;
+    top: 5px;
+    width: 44px;
 }
 .profile_picture img{
-    width: 100%;
+    width: 24px;
     border-radius: 50%;
+    height: 24px;
+    padding: 0;
+
 }
 .menu_arrow{
     float: right;
@@ -417,7 +419,11 @@ div,p{
     position: relative;
 }
 .sign-signup > li {
-    padding-left: 74px !important;
+    padding-left: 71px !important;
+    font-family: "ITCAvantGardeStd-Bk" !important;
+}
+.sign-signup > li a span{
+    font-family: "ITCAvantGardeStd-Bk" !important;
 }
 .ys_sub_menu{
     display: none;
@@ -478,10 +484,10 @@ div,p{
     width: 110%;
 }
 .ys_main_category p> a {
-    font: 14px ITCAvantGardeStd-Demi;
+    font: 12px ITCAvantGardeStd-Demi;
 }
 .ys_sub_menu li a {
-    font: 14px ITCAvantGardeStd-Bk;
+    font: 12px ITCAvantGardeStd-Bk;
     color: #555 !important;
 }
 .ys_sub_menu ul {
@@ -491,17 +497,17 @@ div,p{
     padding-left: 70px !important;
 }
 .ys_sub_menu > li > p>a ,.ys_sub_menu > li>a {
-    font: 14px ITCAvantGardeStd-Demi;
+    font: 12px ITCAvantGardeStd-Demi;
     color: #555 !important;
     text-transform: uppercase !important;
 }
 .ys_single_link > a {
     color: #555 !important;
-    font: 14px ITCAvantGardeStd-Bk;
+    font: 12px ITCAvantGardeStd-Bk;
 }
 .additional_links a {
     color: #555;
-    font: 14px/44px ITCAvantGardeStd-Bk;
+    font: 12px/44px ITCAvantGardeStd-Bk;
     letter-spacing: 1px;
     text-decoration: none;
     padding-left: 71px;
@@ -521,7 +527,7 @@ div,p{
     background: none repeat scroll 0 0 rgba(255, 255, 255, 0.95);
     box-shadow: -7px -12px 21px 0;
     font-family: ITCAvantGardeStd-Bk;
-    font-size: 21px;
+    font-size: 19px;
     height: 44px;
     line-height: 44px;
     position: fixed;
@@ -1340,7 +1346,7 @@ p.small.err_msg {
 .sign-signup .open_signin, .sign-signup .open_signup {
     display: inline;
     float: none;
-    font-size: 14px !important;
+    font-size: 12px !important;
     position: relative;
 }
 .flex-control-nav {

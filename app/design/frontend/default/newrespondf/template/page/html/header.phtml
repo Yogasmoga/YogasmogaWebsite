@@ -70,8 +70,9 @@
         <button class="cross-btn" id="cross-btn" style="display: none;">
             <svg xml:space="preserve" enable-background="new 0 0 44 44" viewBox="0 0 44 44" height="44px" width="44px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
 <g>
-    <line y2="31.483" x2="31.482" y1="12.517" x1="12.517" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
-    <line y2="31.483" x2="12.517" y1="12.517" x1="31.482" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+    <rect height="44" width="44" fill="#555555"/>
+    <line y2="30" x2="30" y1="14" x1="14" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+    <line y2="30" x2="14" y1="14" x1="30" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
 </g>
 </svg>
 
@@ -128,11 +129,13 @@
                         <ul class="nav-dropdown menu  level2">
                             <li class="menu-item">
                                 <a href="<?php echo Mage::getUrl('customer/account'); ?>"
-                                   class="menu-link"><?php echo $this->__('My Account') ?></span></a>
+                                   class="menu-link"><?php echo $this->__('My Account') ?><span></span></a>
                             </li>
                             <li class="menu-item">
                                 <a class="menu-link"
-                                   href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>"><?php echo $this->__('Sign Out&nbsp;') ?></a>
+                                   href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>"><?php echo $this->__('Sign Out&nbsp;') ?>
+                                    <span></span>
+                                </a>
                             </li>
                         </ul>
                         <span class="border-line"></span>
