@@ -2543,6 +2543,7 @@ tr.td-noborder td {
     /*background: #43ad00;*/
     /*color: #43ad00;*/
     width: 100%;
+    font: 16px ITCAvantGardeStd-Bk;
     border: 10px solid #fff;
 }
 
@@ -2604,7 +2605,7 @@ label.shipping_method_radio {
     border-radius: 50%;
     float: left;
     margin-right: 30px;
-    margin-top: 10px;
+    margin-top: 2px;
 }
 label.shipping_method_radio > input[type="radio"] {
     opacity: 0;
@@ -2961,7 +2962,7 @@ h4.legend {
 
 #error_msg_smogi {
     color: #f00;
-    margin-bottom: 19px;
+    font: 12px/44px GraphikRegular;
     text-align: left;
 }
 
@@ -4649,7 +4650,7 @@ table.productdetailtable div#colorcontainer div table {
 }
 
 .customer-account-forgotpassword #form-validate .form-list li label {
-    font-size: 13px;
+    font-size: 12px;
     line-height: 31px;
 }
 
@@ -5315,9 +5316,11 @@ p.required {
 }
 
 #checkout-shipping-method-load label, #checkout-shipping-method-load label strong {
-    font: 12px/44px ITCAvantGardeStd-Bk;
+    font: 12px/18px ITCAvantGardeStd-Bk;
 }
-
+#checkout-shipping-method-load .method label{
+    display: block;
+}
 .shippingdescription {
     color: #999;
     font: 12px ITCAvantGardeStd-Bk;
@@ -5464,7 +5467,7 @@ p.required {
 }
 
 .form-list li label {
-    font: 12px GraphikRegular;
+    font: 12px/18px GraphikRegular;
 }
 
 .validation-advice {
@@ -6857,3 +6860,8 @@ video {
 .selected_cart_products .item_option_color,.selected_cart_products .bracup,.selected_cart_products .item-options{
     font: 12px/18px GraphikRegular;
 }
+/*#billing-address-select{
+    background: #ccc;
+    border: none !important;
+    padding: 5px 10px;
+}*/
