@@ -2239,7 +2239,7 @@ ul.breadcrumbs {
 }
 
 .data-table td {
-    padding: 8px 0;
+    padding: 14px 0;
     position: relative;
     vertical-align: top;
 }
@@ -2537,14 +2537,14 @@ tr.td-noborder td {
 }
 
 #shopping-cart-totals-table + .button, #shopping-cart-table .button {
-    height: 64px;
+    height: 72px;
     left: 0;
     position: absolute;
     /*background: #43ad00;*/
     /*color: #43ad00;*/
     width: 100%;
     font: 16px ITCAvantGardeStd-Bk;
-    border: 10px solid #fff;
+    border: 14px solid #fff;
 }
 
 #shopping-cart-table .col_left_img {
@@ -2589,13 +2589,13 @@ tr.td-noborder td {
 }
 
 .checkout-onepage-index #billing-buttons-container .button, #shipping-buttons-container .form-button, #shipping-method-buttons-container .form-button, #payment-buttons-container .form-button {
-    bottom: 10px;
+    bottom: 14px;
     left: 0;
     margin: 0;
     position: absolute;
     width: 100%;
-    border: 10px solid #fff;
-    height: 64px;
+    border: 14px solid #fff;
+    height: 76px;
 }
 label.shipping_method_radio {
     display: inline-block;
@@ -2644,9 +2644,9 @@ label.shipping_method_radio > input[type="radio"] {
     background: url("../images/tick.png") no-repeat scroll center center #43ad00;
     border: medium none;
     color: transparent;
-    height: 54px;
+    height: 62px;
     width: 100%;
-    border:10px solid #fff;
+    border:14px solid #fff;
     border-bottom: none;
 }
 
@@ -3363,9 +3363,15 @@ h4.legend {
 
 .cost-title {
     border-bottom: 1px solid #bfbfbf;
-    height: 43px;
+    height: 36px;
     text-align: left;
     position: relative;
+}
+.cost-title th {
+    font: 12px AvantGarde-Demi;
+    letter-spacing: 1px;
+    padding-top: 4px;
+    vertical-align: top;
 }
 
 #checkout-review-table {
@@ -3378,20 +3384,25 @@ h4.legend {
 
 #checkout-review-table tr.cart-info .col_left_img {
     float: left;
+    height: 102px;
+    overflow: hidden;
+    width: 102px;
 }
 
 #checkout-review-table tr.cart-info .col_right_options {
     float: left;
     text-align: left;
     width: 50%;
+    padding: 0 14px;
 }
-
+#checkout-review-table tr td.seperator-line{
+    padding: 0;
+}
 #checkout-review-table tr.cart-info .col_right_options h3.product-name {
-    color: #555555;
-    font-family: AvantGarde-Demi;
-    font-size: 12px;
-    font-weight: normal;
-    line-height: 15px;
+    color: #555;
+    font: 12px/18px AvantGarde-Demi;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .col_right_options .product-name {
@@ -3433,8 +3444,8 @@ h4.legend {
 
 #checkout-review-table-wrapper {
     float: left;
-    margin-top: 12px;
-    padding: 0 12px;
+    margin-top: 0px;
+    padding: 14px;
     width: 100%;
 }
 
@@ -5353,7 +5364,7 @@ p.required {
     float: left;
     height: auto;
     margin-right: 15px;
-    width: 80px;
+    width: 100%;
 }
 
 #checkout-review-table .price {

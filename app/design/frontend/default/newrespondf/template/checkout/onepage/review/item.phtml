@@ -111,7 +111,7 @@
             <h3 class="product-name"><?php echo html_entity_decode($this->escapeHtml($this->getProductName())) ?></h3>
 
             <?php if ($_options = $this->getOptionList()):?>
-                <div class="item-options">
+                <div class="item-options">Color:
                     <?php foreach ($_options as $_option) : ?>
                     <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
 					<?php if($this->htmlEscape($_option['label']) != 'Color'){ ?>
