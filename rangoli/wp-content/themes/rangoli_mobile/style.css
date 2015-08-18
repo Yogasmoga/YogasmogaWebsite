@@ -292,8 +292,12 @@ div,p{
     color: #555;
     font:12px/44px ITCAvantGardeStd-Bk;
     text-decoration: none;
-    margin-left: 2px;
+    margin-left: 0px;
     text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.menu-box a:hover {
+    background: #f2f2f2;
 }
 .menu_arrow {
     padding: 0;
@@ -309,6 +313,9 @@ div,p{
     position: absolute;
     top: 5px;
     width: 44px;
+}
+.user_menu .main_btn>a:hover{
+    background: none;
 }
 .profile_picture img{
     width: 24px;
@@ -454,7 +461,7 @@ div,p{
     transition-duration: 200ms;
 }
 .yogasmoga_menu_links ul li a{
-    color: #A28636;
+    color: #ad8536 ;
     text-decoration:none;
     text-transform: capitalize;
     padding: 0  0 0 71px;
@@ -462,6 +469,7 @@ div,p{
     width: 100%;
     line-height: 50px;
     height: 44px;
+    letter-spacing: 1px;
 }
 .yogasmoga_menu_links ul li a:hover,.additional_links li:hover{
     background: #EEEEEE;
@@ -1287,10 +1295,11 @@ p.small.err_msg {
     background-position: 7px -79px;
 }
 .user_menu_links li a {
-    text-transform: uppercase !important;
+    text-transform: capitalize !important;
     display: block;
     padding-left: 71px;
     width: 100%;
+    letter-spacing: 1px;
 }
 .user_menu_links li span{
     opacity: 1;
