@@ -1795,7 +1795,7 @@ button.checkout-link span {
 }
 
 button.place-order, .col2-set .registered-users .buttons-set #send2 {
-    background: #ae8637;
+    background: #00B900;
     border: 0 none;
     position: relative;
     height: 44px;
@@ -3182,6 +3182,7 @@ h4.legend {
 
 #co-shipping-form p:first-child {
     margin: 25px 0;
+    font: 12px/18px GraphikRegular;
 }
 
 #checkoutSteps #opc-cart .is-active .step-count, .one-page-checkout .active .step-count {
@@ -4983,7 +4984,7 @@ table.productdetailtable div#colorcontainer div table {
 .username.menu-item.has-dropdown ul li a {
     color: #fff;
     font: 12px/44px ITCAvantGardeStd-Bk;
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 
 .sign-in-box span.cuslogin {
@@ -5463,6 +5464,7 @@ p.required {
 
 .span6 p {
     font: 12px/18px Avantgarde-demi;
+    letter-spacing: 1px;
 }
 #checkout-review-submit .caddress {
     font: 12px/18px GraphikRegular;
@@ -6881,3 +6883,10 @@ video {
     border: none !important;
     padding: 5px 10px;
 }*/
+
+#checkout-review-table.data-table td {
+    padding: 20px 0 0;
+}
+.cart-info td {
+    padding: 14px 0 !important;
+}
