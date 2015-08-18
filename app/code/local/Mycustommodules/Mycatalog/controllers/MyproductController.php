@@ -1178,6 +1178,11 @@ ORDER BY CONCAT((SELECT VALUE FROM customer_entity_varchar WHERE entity_id=rr.re
 
         foreach($_childproducts as $_childproduct)
         {
+
+            $forHidden = $_childproduct->getAttributeText('hidden_product');
+            if (isset($forHidden) && strtolower($forHidden) == "yes")
+                continue;
+
             //echo Mage::getModel('cataloginventory/stock_item')->loadByProduct($_childproduct)->getQty();
             $temp = $_childproduct->getAttributeText('color');
             if(strpos($temp,"|") !== FALSE)

@@ -11,8 +11,8 @@ jQuery(document).ready(function($){
     });
 
 
-        
-    // $(document).bind('keydown',function(e){ 
+
+    // $(document).bind('keydown',function(e){
     //     if (e.which==37 || e.which==39) {
     //         e.preventDefault();
     //         if (e.which==37) {
@@ -57,10 +57,10 @@ function showQuickViewPopup(productid, e)
         url = securehomeUrl + 'mycatalog/myproduct/details';
 
     if(_quickViewObjectPage[productid]){
-       
+
         //alert(_quickViewObjectPage[productid]);
         jQuery("#productdetailpopup").html(_quickViewObjectPage[productid]);
-        insertBraOption();    
+        insertBraOption();
 //        jQuery("#productdetailpopup #colorcontainer > div:first-child > table").trigger('click');
         jQuery("#colorcontainer > div table[value=" + firstClickColor + "]").trigger("click");
 
@@ -90,26 +90,26 @@ function showQuickViewPopup(productid, e)
              var PrevID = jQuery('.quick-prev').attr('id');
              if(typeof(PrevID) != 'undefined'){
             if (e.keyCode == 37) {
-                //jQuery(".quick-prev").trigger('click');               
-                 jQuery(".quick-prev").trigger('click')(function(){         
-                    showQuickViewPopup(PrevID); 
+                //jQuery(".quick-prev").trigger('click');
+                 jQuery(".quick-prev").trigger('click')(function(){
+                    showQuickViewPopup(PrevID);
                   });
-                
+
                 }
-                
+
             }
-            
+
              var NextID = jQuery('.quick-next').attr('id');
              if(typeof(NextID) != 'undefined'){
-            if (e.keyCode == 39) {                      
-                 //jQuery(".quick-next").trigger('click');              
-                  jQuery(".quick-next").trigger('click')(function(){                                  
+            if (e.keyCode == 39) {
+                 //jQuery(".quick-next").trigger('click');
+                  jQuery(".quick-next").trigger('click')(function(){
                      showQuickViewPopup(NextID);
                   });
-                
+
                  }
-                
-                
+
+
             }
         });
     }
@@ -122,10 +122,10 @@ function showQuickViewPopup(productid, e)
         type : 'POST',
         url : url,
         data : {'id': id},
-        success : function(data){          
-            
+        success : function(data){
+
             _quickViewObjectPage[productid] = data;
-            
+
             jQuery("#productdetailpopup").html(data);
             insertBraOption();
 //            jQuery("#productdetailpopup #colorcontainer > div:first-child > table").trigger('click');
@@ -149,36 +149,36 @@ function showQuickViewPopup(productid, e)
             }
 
             jQuery(".quick-next").click(function(){
-                                             
+
                 showQuickViewPopup(jQuery(this).attr('id'));
             });
             jQuery(".quick-prev").click(function(){
                 showQuickViewPopup(jQuery(this).attr('id'));
             });
-            
+
             jQuery(document).keydown(function(e){
                 //e.preventDefault();
                  var PrevID = jQuery('.quick-prev').attr('id');
                  if(typeof(PrevID) != 'undefined'){
-                if (e.keyCode == 37) {                  
+                if (e.keyCode == 37) {
                     //jQuery(".quick-prev").trigger('click');
-                    jQuery(".quick-prev").trigger('click')(function(){                  
-                    showQuickViewPopup(PrevID); 
-                     });                
-                                    
-                    }   
-                    
+                    jQuery(".quick-prev").trigger('click')(function(){
+                    showQuickViewPopup(PrevID);
+                     });
+
+                    }
+
                 }
-                var NextID = jQuery('.quick-next').attr('id');             
+                var NextID = jQuery('.quick-next').attr('id');
                 if(typeof(NextID)  != 'undefined'){
                 if (e.keyCode == 39) {
                     //jQuery(".quick-next").trigger('click');
-                    jQuery(".quick-next").trigger('click')(function(){                  
-                     showQuickViewPopup(NextID);                                             
+                    jQuery(".quick-next").trigger('click')(function(){
+                     showQuickViewPopup(NextID);
                       // showQuickViewPopup(jQuery(this).attr('id'));
                       });
-                    
-                                     
+
+
                 }
                 }
             });
@@ -187,8 +187,8 @@ function showQuickViewPopup(productid, e)
     });
 
     }
-    
-    
-    
+
+
+
 
 }
