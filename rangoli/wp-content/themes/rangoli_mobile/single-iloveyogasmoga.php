@@ -50,7 +50,8 @@ get_header();
             <div class="insta_post_content">
 
                 <?php
-                echo "<img src='".wp_get_attachment_url( $attachment_id )."' />";
+                $url =wp_get_attachment_url( $attachment_id );
+                echo "<img src='".$url."' />";
                 $i++;?>
 
             </div>
@@ -86,7 +87,6 @@ wp_reset_query();
     }
     .insta_post_content {
         float: left;
-        padding: 0 0 14px;
         width: 100%;
     }
     .insta_post_content img {
@@ -114,7 +114,9 @@ wp_reset_query();
         width: auto;
     }
     .insta_user{
-        font: 12px/25px GraphikRegular;
+        font: 12px/35px GraphikRegular;
+        float: left;
+        width: 100%;
         color: #999;
         letter-spacing: 1px;
     }
