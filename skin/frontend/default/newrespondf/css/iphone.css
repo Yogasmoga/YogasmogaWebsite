@@ -1872,11 +1872,8 @@ button[name="update_cart_action_checkout"]{
 }
 
 .col_right_options .item_option_color span {
-    font-family: ITCAvantGardeStd-Bk;
-    font-size: 13px;
-    font-weight: normal;
+    font: 12px/18px GraphikRegular;
     display: inline-block;
-    line-height: 11px;
 }
 
 button.place-order span {
