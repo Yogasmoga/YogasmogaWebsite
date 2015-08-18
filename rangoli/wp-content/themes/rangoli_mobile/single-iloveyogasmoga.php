@@ -87,7 +87,6 @@ wp_reset_query();
     }
     .insta_post_content {
         float: left;
-        padding: 0 0 14px;
         width: 100%;
     }
     .insta_post_content img {
@@ -115,7 +114,9 @@ wp_reset_query();
         width: auto;
     }
     .insta_user{
-        font: 12px/25px GraphikRegular;
+        font: 12px/35px GraphikRegular;
+        float: left;
+        width: 100%;
         color: #999;
         letter-spacing: 1px;
     }
