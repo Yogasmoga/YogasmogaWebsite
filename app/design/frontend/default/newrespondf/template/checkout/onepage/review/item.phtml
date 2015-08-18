@@ -41,7 +41,7 @@
                 //if(strpos($_image->getLabel(), $color) === false)
     //            //if(strpos($_image->getLabel(),"*") === false)
     //                continue;
-                return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100, 150)->setQuality(100);
+                return "_".Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(320, 320)->setQuality(100);
             }
             return "";
         }   
@@ -103,7 +103,7 @@
          <?php if ($this->hasProductUrl()):?>
             <?php //echo $colorlabel; ?>
             <a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><?php endif;?>
-			<img src="<?php echo getImage($_item->getProductId(),$colorlabel); ?>" width="100" height="150" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" />
+			<img src="<?php echo getImage($_item->getProductId(),$colorlabel); ?>" width="320" height="320" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" />
 			<?php if ($this->hasProductUrl()):?></a><?php endif;?>
 
           </div>
