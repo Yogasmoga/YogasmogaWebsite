@@ -3423,9 +3423,9 @@ h4.legend {
 }
 
 #checkout-review-table tr.cart-info .col_right_options .item-options span {
+    font-family: GraphikRegular;
     font-size: 12px;
-    line-height: 16px;
-    font-family: ITCAvantGardeStd-Bk;
+    line-height: 18px;
 }
 
 #checkout-step-shipping_method {
@@ -5455,17 +5455,22 @@ p.required {
 .span6 {
     box-sizing: border-box;
     float: left;
-    padding: 12px;
-    width: 50%;
+    padding: 14px;
+    width: 100%;
     text-align: left;
-    font: 12px GraphikRegular;
+    font: 12px/18px GraphikRegular;
 }
 
 .span6 p {
-    font: 12px Avantgarde-demi;
-    margin-bottom: 28px;
+    font: 12px/18px Avantgarde-demi;
 }
-
+#checkout-review-submit .caddress {
+    font: 12px/18px GraphikRegular;
+}
+#checkout-review-submit .caddress span {
+    font: 12px/18px GraphikRegular;
+    display: block;
+}
 .page-title h1 {
     font: 24px ITCavantGardestd-bk;
     text-transform: uppercase;
