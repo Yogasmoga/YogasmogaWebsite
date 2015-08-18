@@ -6881,6 +6881,10 @@ video {
     overflow: hidden;
     top:0;
 }
+.selected_cart_products .span2 .col_left_img img{
+    width: 100%;
+    height: auto;
+}
 .selected_cart_products .product-name > a {
     font: 12px/18px AvantGarde-demi;
     letter-spacing: 1px;
