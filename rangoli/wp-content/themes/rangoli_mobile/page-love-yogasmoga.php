@@ -59,7 +59,8 @@ if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_
             <div class="insta_post_content">
 
                 <?php
-                echo "<img src='".wp_get_attachment_url( $attachment_id )."' />";
+                $url =wp_get_attachment_url( $attachment_id );
+                echo "<img src='".$url."' />";
                 $i++;?>
                 <div class="insta_user">
                     <?php
