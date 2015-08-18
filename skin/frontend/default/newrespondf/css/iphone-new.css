@@ -529,10 +529,10 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 }
 
 .pg-heading h2 {
-    font-size: 24px;
+    font-size: 19px;
     font-weight: normal;
-    line-height: 15px;
     color: #545454;
+    font-weight: normal;
     font-family: ITCAvantGardeStd-Bk;
     text-transform: uppercase;
     display: inline-block;
@@ -591,25 +591,18 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 }
 
 .billing-add, .shipping-add, .payment-metthod-cont {
-    background: hsl(0, 0%, 94%) none repeat scroll 0 0;
     box-sizing: border-box;
-    min-height: 235px;
-    padding: 20px 30px;
     position: relative;
     width: 100%;
     clear: both;
-    margin: 14px 0;
+    margin: 14px 0 0;
 }
 
 .billing-add, .shipping-add, .payment-metthod-cont {
-    background: hsl(0, 0%, 94%) none repeat scroll 0 0;
     box-sizing: border-box;
-    min-height: 235px;
-    padding: 20px 30px;
     position: relative;
     width: 100%;
     clear: both;
-    margin: 14px 0;
 }
 
 .addtional-add {

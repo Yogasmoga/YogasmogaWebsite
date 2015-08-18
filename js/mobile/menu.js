@@ -361,6 +361,10 @@ jQuery(document).ready(function($){
         $(this).closest(".sign-in-box").find(".arrow-icon").click();
     })
 
+    $(".detail-page .description-block .first-list .design-feature .inner-content .inner-feature svg").click(function(){
+        $(".html-vid-pop.html-des-vid-popup").fadeIn();
+    });
+
     $(".invite-friend a").click(function(e){
         e.preventDefault();
         openLogin();

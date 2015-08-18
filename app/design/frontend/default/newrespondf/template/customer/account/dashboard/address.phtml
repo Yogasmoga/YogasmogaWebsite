@@ -26,7 +26,7 @@
 ?>
 <script type="text/javascript">
 jQuery(function(){
-       equaliseHeight();
+//       equaliseHeight();
        jQuery(window).resize(function(){
         // equaliseHeight();
        });
@@ -49,19 +49,16 @@ function equaliseHeight(){
 <div class="dashboard-container">
     <div class="address-info">
         
-        <div class="shipping-add f-right add-box" style="padding-right: 12px;">
-            <div style="margin-bottom:20px;"><!-- <span class="add-heading">Default Shipping Address <a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a></span> -->
+        <div class="shipping-add f-right add-box">
+            <!-- <span class="add-heading">Default Shipping Address <a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a></span> -->
             <?php echo '<span class="add-heading">Shipping Address</span>' ?>
             <?php echo $this->getPrimaryShippingAddressHtml(); ?>
-            </div>
-            <?php echo '<a style="position: absolute; right: 25px; top: -20px;" href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a>' ?>
+            <?php echo '<a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a>' ?>
         </div> 
-		<div class="billing-add f-left add-box" style="padding-right: 12px;">
-            <div style="margin-bottom:20px;"><!-- <span class="add-heading">Default Billing Address <a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a></span> -->
+		<div class="billing-add f-left add-box">
             <?php echo '<span class="add-heading">Billing Address</span>' ?>
            <?php echo $this->getPrimaryBillingAddressHtml(); ?>
-           </div>
-           <?php echo '<a style="position: absolute; right: 25px; top: -20px;" href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a>'?>
+           <?php echo '<a href="'.$this->getPrimaryBillingAddressEditUrl().'" class="addressLink">Edit</a>'?>
         </div>
         <div class="clear-fix"></div>      
     </div>

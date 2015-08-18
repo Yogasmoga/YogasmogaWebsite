@@ -1330,7 +1330,6 @@ ul {
 .f-right div {
     float: left;
     position: relative;
-    width: 50%;
 }
 
 .gender-link .f-right div {
@@ -5534,20 +5533,19 @@ p.required {
 }
 
 .smogi-info-box {
-    font: 17px/21px ITCAvantGardeStd-Bk;
+    font: 19px ITCAvantGardeStd-Bk;
 }
 
 .smogi-counting .smogi-count {
-    color: #ff5e00;
+    color: #ad8536;
     float: left;
     font: 28px ITCAvantGardeStd-Bk;
     margin: 10px 0;
     width: 100%;
 }
-
 .smogi-info-box > a {
     border-bottom: 1px solid #999;
-    color: #999;
+    color: #AD8536;
     float: left;
     font: 13px/23px GraphikRegular;
     margin-top: 8px;
@@ -5745,10 +5743,8 @@ p.required {
 
 .smogi-info-box > p:nth-child(1) {
     float: left;
-    margin-bottom: -3px;
-    margin-top: 40px;
+    margin-top: 30px;
     width: 100%;
-    text-transform: uppercase;
 }
 
 .shipping-add.f-right.add-box {
@@ -5757,7 +5753,7 @@ p.required {
     float: left !important;
     padding: 0;
     text-align: left;
-    width: 50%;
+    margin-top: 22px;
     height: auto !important;
 }
 
@@ -5768,7 +5764,6 @@ p.required {
     text-align: left;
     float: left !important;
     padding: 0;
-    width: 50%;
     height: auto !important;
     min-height: 0 !important;
 }
@@ -5780,16 +5775,18 @@ p.required {
 
 .shipping-add.add-box span, .billing-add.add-box span {
     float: left;
+    font:12px/18px GraphikRegular;
     width: 100% !important;
 }
 
 .shipping-add.add-box .add-heading, .billing-add.add-box .add-heading {
-    font: 12px Avantgarde-demi;
-    margin-bottom: 10px;
+    font: 12px/18px Avantgarde-demi;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .shipping-add.add-box .caddress, .billing-add.add-box .caddress {
-    font: 13px/18px GraphikRegular;
+    font: 12px/18px GraphikRegular;
     letter-spacing: 1px;
 }
 
@@ -5806,7 +5803,7 @@ p.required {
 }
 
 .billing-add .addressLink, .shipping-add .addressLink {
-    color: #999;
+    color: #AD8536;
     display: block;
     float: left;
     font: 13px GraphikRegular;
@@ -6048,16 +6045,17 @@ h2.legend {
 .your_email > label, .your_password > label {
     font: 12px AvantGarde-Demi;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .your_email a, .your_password a {
-    color: #999;
+    color: #AD8536;
     float: right;
 }
 
 .your_email p, .your_password p {
     border-bottom: 1px solid #999;
-    padding: 10px 0 20px;
+    padding: 5px 0 20px;
     margin: 0;
 }
 
@@ -6846,4 +6844,7 @@ video {
     margin: -28px 0 0 -28px;
     position: absolute;
     top: 50%;
+}
+.selectedsize {
+    padding-top: 15px;
 }
