@@ -1847,37 +1847,6 @@ button[name="update_cart_action_checkout"]{
     width: 42px;
 }
 
-.item_option_color .fcol {
-    width: 0;
-    height: 0;
-    left: 1px;
-    position: absolute;
-
-    border-top: 20px solid transparent;
-    border-right: 82px solid transparent;
-}
-
-.item_option_color .scol {
-    width: 0;
-    height: 0;
-    position: absolute;
-    border-bottom: 20px solid transparent;
-    border-left: 82px solid transparent;
-
-    right: 0;
-
-}
-
-.item_option_color .over-txt {
-    color: hsl(0, 0%, 100%);
-    height: 42px;
-    left: 0;
-    margin: 0 auto;
-    position: absolute;
-    right: 0;
-    top: 12px;
-    width: 144px;
-}
 
 #shopping-cart-table .item_remove {
     float: right;
@@ -1890,27 +1859,6 @@ button[name="update_cart_action_checkout"]{
     line-height: 46px;
     font-weight: normal;
 }
-
-.col_right_options .item_option_color {
-    height: 40px;
-    position: absolute;
-    top: 50px;
-    width: 164px;
-}
-
-.col_right_options .qty-wrap {
-    float: left;
-    font-family: ITCAvantGardeStd-Bk;
-    font-size: 12px;
-    line-height: 1;
-    margin-right: 11px;
-    padding-top: 14px;
-    position: absolute;
-    text-align: left;
-    top: 85px;
-    width: 100px;
-}
-
 .apply_promo_login {
     line-height: 32px;
     text-align: left;
@@ -2898,7 +2846,7 @@ h4.legend {
 .one-page-checkout .box, .one-page-checkout .box-no-padding {
 
     border-top: 0;
-    padding: 0 12px;
+    padding: 0 14px;
 
 }
 
@@ -3033,6 +2981,7 @@ h4.legend {
     font: 12px/44px AvantGarde-Demi !important;
     margin-right: 8px;
     margin-top: 9px;
+    letter-spacing: 1px;
 }
 
 #discountFormPoints2 p {
@@ -5328,6 +5277,7 @@ p.apply_promo_label > span {
     border: medium none;
     color: #00B800;
     float: right;
+    letter-spacing: 1px;
     font: 12px/44px AvantGarde-Demi !important;
 }
 
@@ -6428,6 +6378,7 @@ button#send2 {
     float: right;
     font: 12px AvantGarde-Demi !important;
     margin-top: 17px;
+    letter-spacing: 1px;
 }
 
 .button.btn-update.validation-passed[value="Remove Points"] {
@@ -6847,4 +6798,62 @@ video {
 }
 .selectedsize {
     padding-top: 15px;
+}
+.row,.span2,.span1,.product_details_checkout,.col_left_img{
+    float: left;
+    text-align: left;
+    box-sizing: border-box;
+    position: relative;
+}
+.row{
+    width: 100%;
+}
+.no_of_cart_items{
+    float: left;
+}
+.cart_total{
+    float: right;
+}
+.product_details_checkout{
+    padding: 0 14px;
+}
+.selected_cart_products{
+    padding: 14px 60px 14px 0;
+    border-top: 1px solid #999;
+}
+.selected_cart_products:last-child{
+    border-bottom: 1px solid #999;
+}
+.selected_cart_products .span2{
+    padding-left: 102px;
+    min-height: 102px;
+    width:100%;
+}
+.selected_cart_products .span1{
+    position: absolute;
+    right: 0px;
+    width: 60px;
+    top:14px;
+    text-align: right;
+}
+.selected_cart_products .span2 .col_left_img{
+    position: absolute;
+    left:0;
+    width: 102px;
+    height: 102px;
+    overflow: hidden;
+    top:0;
+}
+.selected_cart_products .product-name > a {
+    font: 12px/18px AvantGarde-demi;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.no_of_cart_items,.cart_total{
+    font: 12px/18px AvantGarde-demi;
+    margin: 24px 0;
+    letter-spacing: 1px;
+}
+.selected_cart_products .item_option_color,.selected_cart_products .bracup,.selected_cart_products .item-options{
+    font: 12px/18px GraphikRegular;
 }

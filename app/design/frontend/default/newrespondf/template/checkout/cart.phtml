@@ -413,31 +413,20 @@ else
     <?php endif; */ ?>
                 <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
                     <fieldset>
-                        <table id="shopping-cart-table" class="data-table cart-table">
-                            <thead>
-                            <tr>
-                                <th class="a-center"><?php echo $this->__('ITEMS') ?></th>
-                                <th class="a-right"><?php
+                        <div id="shopping-cart-table" class="data-table cart-table">
+
+                                <div class="no_of_cart_items"><?php echo $this->__('2 ITEMS') ?></div>
+                                <div class="cart_total"><?php
                                     $subTotal = Mage::getModel('checkout/cart')->getQuote()->getSubtotal();
                                     echo $formattedPrice = Mage::helper('core')->currency($subTotal, true, false);
                                     ?>
-                                </th>
-                            </tr>
-                            </thead>
-                            <tfoot>
-                            <!-- <tr>
-                        <td colspan="2" class="">
-                            <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update'); ?>" class="button btn-update"><?php //echo $this->__('Update'); ?></button>
-                           
-                        </td>
-                    </tr> -->
-                            </tfoot>
-                            <tbody>
-                            <?php foreach($this->getItems() as $_item): ?>
+                                </div>
+                        </div>
+
+                        <?php foreach($this->getItems() as $_item): ?>
                                 <?php echo $this->getItemHtml($_item) ?>
                             <?php endforeach ?>
-                            </tbody>
-                        </table>
+
                     </fieldset>
                 </form>
                 <?php
