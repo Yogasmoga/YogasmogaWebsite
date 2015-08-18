@@ -58,7 +58,7 @@ if (isset($page) && $page == '11') {
                     } else {
                         echo $this->getSkinUrl('popup/images/no_image.jpg');
                     } ?>" alt=""/>
-                     <span>What's New </span>
+                     <span><?php echo $_category->getMobileDescription(); ?></span>
                     <?php if (!$_category->getThumbnail()) { ?>
                         <span class="over-text"><?php echo $_category->getName(); ?></span>
                     <?php } ?>
