@@ -3,161 +3,141 @@ get_header();
 ?>
 <?php
     $post = get_post();
+    $logged_in = is_user_logged_in();
 ?>
-    <div class="fixed_images_container">
-        <?php
-            $banner_img_url=wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
+<?php
+    $home = get_site_url();
+    $post = get_post();
+    $post_author = get_userdata($post->post_author);
+    $author = get_user_profile($post->post_author);
+    $color = '#'.$author->color_shade;
+
+    ?>
+
+    <div class="author_post_read" style="background: <?php echo $color; ?>">
+        <?php echo get_the_post_thumbnail($post->ID, "mobile_posts");
+        if (!has_post_thumbnail()) {
+            echo '<img src="' . $home . '/wp-content/themes/rangoli_mobile/images/no-background_posts.png" />';
+        }
         ?>
+        <div class="overlay-text">
 
-            <div class="author_post_read insta_post">
-                <a href="<?php echo get_permalink($post->ID) ?>">
-                <?php echo get_the_post_thumbnail(); ?>
-                </a>
-                <div class="overlay-text"></div>
+            <div class="align_bottom">
+                <div class="post_category"><?php echo get_post_categories(); ?></div>
+                <div class="post_title">LOVE, YOGASMOGA</div>
+                <div class="post_author"><span><?php echo $post->post_title; ?></span></div>
+            </div>
+        </div>
+        <div class="close_post_index <?php if($logged_in){echo 'user-color-shade-trans';} ?>"  onclick='window.location="/rangoli/love-yogasmoga";'>
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+                <g>
+                    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="16.508" y1="15.751" x2="30.975" y2="30.218"/>
+                    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="30.975" y1="15.751" x2="16.508" y2="30.218"/>
+                </g>
+                </svg>
+        </div>
 
-                    <div class="insta_post_summary">
-                        <p class="insta_post_name"><?php echo get_the_title(); ?></p>
-                        <p class="insta_post_author">@<?php $meta = get_post_meta($post->ID, 'wpcf-instagram-author');  echo $meta[0];  ?></p>
-                        <p class="insta_post_excerpt"><?php echo get_the_excerpt(); ?></p>
-                    </div>
+    </div>
+    <div class="post_content" style="display: block">
+        <?php
+        $images =& get_children( 'post_parent='. $post->ID .'&orderby=menu_order&order=ASC&post_type=attachment&post_mime_type=image&numbersposts=-1' );
+
+        foreach ( (array) $images as $attachment_id => $attachment ) {
+            ?>
 
 
-                <div class="close_post_index    user-color-shade-trans"  style="display: block;">
-                    <svg xml:space="preserve" enable-background="new 0 0 44 44" viewBox="0 0 44 44" height="44px" width="44px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
-            <g>
-                <line y2="30.218" x2="30.975" y1="15.751" x1="16.508" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
-                <line y2="30.218" x2="16.508" y1="15.751" x1="30.975" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
-            </g>
-            </svg>
-                </div>
+            <div class="insta_post_content">
 
+                <?php
+                echo "<img src='".wp_get_attachment_url( $attachment_id )."' />";
+                $i++;?>
 
             </div>
-
-
-
-            <div class="insta_weak_posts post_content row" style="display: block;">
-                <?php // find images attached to this post / page.
-                $images =& get_children( 'post_parent='. $post->ID .'&orderby=menu_order&order=ASC&post_type=attachment&post_mime_type=image&numbersposts=-1' );
-
-                foreach ( (array) $images as $attachment_id => $attachment ) {
-                    ?>
-
-
-                    <div class="insta_post_content">
-
-                        <?php
-                        echo "<img src='".wp_get_attachment_url( $attachment_id )."' />";
-                        $i++;?>
-
-                    </div>
-                <?php	}
+            <div class="insta_user">
+                <?php
+                $array = explode("/",$url);
+                $lastElement = count($array) - 1;
+                $ImageName = $array[$lastElement];
+                $extractNameArray = explode("@@@",$ImageName);
+                echo $extractNameArray[0];
 
                 ?>
-
             </div>
+        <?php	}
 
+        ?>
 
-
-  </div>
-    <div class="insta_popup">
-        <img src="" class="insta_post_image" />
     </div>
 
-    <style>
-        .insta_post.author_post_read{
-            margin-bottom: 2px;
-        }
-        .insta_post.author_post_read .overlay-text{
-            background: none;
-        }
-        .insta_weak_posts.post_content{
-            padding: 0;
-        }
-        .insta_post_content{
-            float:left;
-            width:50%;
-            box-sizing: border-box;
-            padding: 2px;
-        }
-        .insta_post_summary {
-            color: #656565;
-            font: 20px/35px freight-text-pro;
-            padding: 8px;
-            text-align: center;
-            text-transform: capitalize;
-        }
-        .insta_post_content:nth-child(odd){
-            padding-left: 0px;
-        }
-        .insta_post_content:nth-child(even){
-            padding-right: 0px;
-        }
-        .insta_post_content img {
-            float: left;
-            height: auto;
-            width: 100%;
-        }
-        .fixed_images_container {
-            float: none;
-            margin: 0 auto;
-            width: 100%;
-            max-width: 640px;
-        }
-        .insta_popup {
-            bottom: 0;
-            left: 0;
-            position: fixed;
-            right: 0;
-            top: 0;
-            display: none;
-            padding: 120px 10px 0;
-            text-align: center;
-            z-index: 10;
-        }
-        .insta_post_image {
-            border: medium none;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            height: auto;
-            max-height: 75%;
-            max-width: 100%;
-            width: auto;
-        }
-        .row{
-            float: none !important;
-            margin: 0 auto;
-            max-width: 640px;
-            width: 100%;
-        }
-        .insta_post_author {
-            font: 12px/17px graphik-semibold;
-            letter-spacing: 0.5px;
-            text-transform: lowercase;
-            margin-top: 10px;
-        }
-        .insta_post_excerpt {
-            font: 12px/17px GraphikRegular;
-            margin-bottom: 0;
-        }
-    </style>
+    <?php
+wp_reset_query();
+?>
+<div class="insta_popup">
+    <img src="" class="insta_post_image" />
+</div>
 
-    <script>
-        $(".page_name").html("LOVE, YOGASMOGA");
-        $(document).ready(function(){
-            $(".insta_post_content").each(function(){
-                var image = $(this).find("img");
-                var image_src = image.attr("src");
-                image.click(function(){
-                    $(".insta_popup").fadeIn();
-                    $(".insta_popup img").attr("src",image_src);
-                });
+<style>
+    .insta_post.author_post_read .overlay-text{
+        background: none;
+    }
+    .post_content {
+        padding: 14px !important;
+    }
+    .insta_post_content {
+        float: left;
+        padding: 0 0 14px;
+        width: 100%;
+    }
+    .insta_post_content img {
+        float: left;
+        height: auto;
+        width: 100%;
+    }
+    .insta_popup {
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        display: none;
+        padding: 120px 10px 0;
+        text-align: center;
+        z-index: 10;
+    }
+    .insta_post_image {
+        border: medium none;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        height: auto;
+        max-height: 75%;
+        max-width: 100%;
+        width: auto;
+    }
+    .insta_user{
+        font: 12px/25px GraphikRegular;
+        color: #999;
+        letter-spacing: 1px;
+    }
+</style>
+
+<script>
+    $(".page_name").html("LOVE, YOGASMOGA");
+    $(document).ready(function(){
+        $(".insta_post_content").each(function(){
+            var image = $(this).find("img");
+            var image_src = image.attr("src");
+            image.click(function(){
+                $(".insta_popup").fadeIn();
+                $(".insta_popup img").attr("src",image_src);
             });
-            $(".insta_popup").click(function(){
-                $(this).fadeOut();
-            })
+        });
+        $(".insta_popup").click(function(){
+            $(this).fadeOut();
         })
-    </script>
+    })
+</script>
 
 <?php
 get_footer();
 ?>
+
