@@ -205,6 +205,24 @@ jQuery(document).ready(function($){
 
 
     });
+    $(".page_block .block_thumbnail").click(function(){
+        $(this).next().show();
+        $(".page_block .block_thumbnail .overlay-text .text").show();
+        $(this).find(".overlay-text .text").hide();
+        $(".page_block .block_thumbnail").next().removeClass("has_slider");
+        $(this).next().addClass("has_slider");
+        $(".page_block .block_content").not($(this).next()).hide();
+        var top = $(this).offset().top;
+        $(window).scrollTop(top-88);
+        $(".page_block").find(".close-icn").hide();
+        $(this).parent().find(".close-icn").fadeIn();
+        $(".flexslider").resize();
+        $(".flexslider .slides").css("margin-left",0);
+
+        var parent = $(this).closest(".page_block");
+        parent.find(".flex-direction-nav").show();
+
+    });
     $(".story-box .close-icn").click(function(){
         $(this).fadeOut();
         $(this).next().next().hide();
@@ -276,7 +294,7 @@ jQuery(document).ready(function($){
     });
 
     $(".see_our_colors").click(function(){
-        $(".colors_list").slideToggle();
+        $(".colors_list").toggle();
         $(this).find("span").toggleClass("active");
     });
     $(".customer_gender_selection > div > label").click(function(){

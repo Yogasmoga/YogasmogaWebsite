@@ -122,6 +122,29 @@
 
 }
 
+@font-face {
+    font-family: 'freighttextbookitalic';
+    src: url('../fonts/FreightText-BookItalic.eot');
+    src: url('../fonts/FreightText-BookItalic.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/FreightText-BookItalic.woff') format('woff'),
+         url('../fonts/FreightText-BookItalic.ttf') format('truetype'),
+         url('../fonts/FreightText-BookItalic.svg#freighttextbook') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'freighttextmedium';
+    src: url('../fonts/FreightText-Medium.eot');
+    src: url('../fonts/FreightText-Medium.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/FreightText-Medium.woff') format('woff'),
+         url('../fonts/FreightText-Medium.ttf') format('truetype'),
+         url('../fonts/FreightText-Medium.svg#freighttextbook') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 
 
 

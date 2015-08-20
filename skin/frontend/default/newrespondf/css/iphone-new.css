@@ -666,8 +666,11 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     font: 22px/28px freighttextbook;
     /*margin: 20px 0 0 !important;*/
     float: left;
+    margin: 20px 0 0;
 }
-
+.our-breath p:last-child {
+    margin-bottom: 20px;
+}
 .txt-cnt {
     clear: both;
     position: relative;
@@ -803,6 +806,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     position: relative;
     color: #AD8536;
     text-align: left;
+    float: left;
     width: 100%;
 }
 
@@ -812,9 +816,12 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     font-size: 0;
     height: 44px;
     line-height: 44px;
+    margin-left: -5px;
+    margin-right: 10px;
     position: static;
     width: 44px;
 }
+
 .inner-aurum li .febric-icn img {
     vertical-align: middle;
 }
@@ -1010,8 +1017,10 @@ form#cardbalanceform table.redeem-giftcard {
 
 /*******************************************5-june******************/
 .inside-content .our-breath {
-    padding: 30px 12px;
+    padding: 5px 14px;
     text-align: left;
+    float: left;
+    width: 100%;
 }
 
 .inside-content .title {

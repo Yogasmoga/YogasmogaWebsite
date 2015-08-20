@@ -759,7 +759,7 @@ li {
 }
 
 .menu-item.additional_links {
-    padding: 15px 0;
+    padding: 15px 0 55px;
 }
 
 .menu-item.additional_links li {
@@ -1888,6 +1888,7 @@ button.place-order span {
 }
 
 .mini-newsletter .subscribe-content {
+
     padding: 5px 5px 30px;
     overflow: hidden;
     text-align: center;
@@ -6441,6 +6442,8 @@ button#send2 {
 .colors_list li {
     color: #fff;
     font: 16px/44px ITCAvantGardeStd-Bk;
+    float: left;
+    width: 100%;
 }
 
 .see_our_colors {
@@ -6539,9 +6542,9 @@ button#send2 {
     left: 0;
     margin: 0 !important;
     position: absolute;
-    top: 20%;
+    top: 50%;
     width: 100%;
-    z-index: 1;
+    z-index: 2;
 }
 
 .flex-direction-nav a {
@@ -6564,12 +6567,13 @@ button#send2 {
 
 .flex-direction-nav a.flex-prev {
     background-position: 0 0;
+    left: 0px;
 }
 
 .flex-direction-nav .flex-next {
     background-position: 100% 0;
     opacity: 1;
-    right: 10px;
+    right: 0px;
 }
 
 .flex-control-nav {
