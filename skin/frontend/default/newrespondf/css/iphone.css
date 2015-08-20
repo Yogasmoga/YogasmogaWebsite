@@ -6442,6 +6442,8 @@ button#send2 {
 .colors_list li {
     color: #fff;
     font: 16px/44px ITCAvantGardeStd-Bk;
+    float: left;
+    width: 100%;
 }
 
 .see_our_colors {

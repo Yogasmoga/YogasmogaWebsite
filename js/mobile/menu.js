@@ -220,8 +220,7 @@ jQuery(document).ready(function($){
         $(".flexslider .slides").css("margin-left",0);
 
         var parent = $(this).closest(".page_block");
-        var img_height = parent.find(".slides li:first-child img").height();
-        parent.find(".flex-direction-nav").show().css("top",(img_height/2)-10);
+        parent.find(".flex-direction-nav").show();
 
     });
     $(".story-box .close-icn").click(function(){
@@ -295,7 +294,7 @@ jQuery(document).ready(function($){
     });
 
     $(".see_our_colors").click(function(){
-        $(".colors_list").slideToggle();
+        $(".colors_list").toggle();
         $(this).find("span").toggleClass("active");
     });
     $(".customer_gender_selection > div > label").click(function(){
