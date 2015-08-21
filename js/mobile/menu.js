@@ -382,6 +382,11 @@ jQuery(document).ready(function($){
         $(".html-vid-pop.html-des-vid-popup").fadeIn();
     });
 
+    $(".fabric_detail_mobile ul li > p:first-child").click(function(){
+        $(".fabric_detail_mobile ul li > p:first-child").removeClass("active");
+        $(this).addClass("active");
+    });
+
     $(".invite-friend a").click(function(e){
         e.preventDefault();
         openLogin();

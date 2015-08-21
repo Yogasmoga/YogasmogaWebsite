@@ -4076,7 +4076,7 @@ ul.checkout-cont > li {
 
 .detail-page .description-block .first-list li.detail-view {
     list-style: none;
-    border-top: 1px solid #dfdfdf;
+    border-top: 1px solid #999;
     text-align: left;
     list-style: none;
     float: left;
@@ -4086,7 +4086,11 @@ ul.checkout-cont > li {
 .description-block ul {
     float: left;
     width: 100%;
-    padding: 10px 12px 44px;
+    padding: 10px 14px 35px;
+}
+
+.description-block ul > li > ul {
+    padding: 0 0 0 14px;
 }
 
 .detail-page .description-block .first-list .inner-content {
@@ -4277,20 +4281,28 @@ ul.checkout-cont > li {
 }
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-box ul {
-    margin-left: 13px;
+    /*margin-left: 13px;*/
 }
 
 .detail-page .description-block .first-list .detail-view .fitDetail .vlink-cont {
-    margin-left: 5px !important;
+    float: left;
+    height: 44px;
+    margin-left: 0 !important;
+    width: 100%;
+}
+
+.vlink-cont .block-link {
+    margin: 0 !important;
 }
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-box li {
     list-style: disc;
+    font: 14px/18px GraphikRegular;
 }
 
 /**************************************** 6-may ends *******************/
 .detail-page .description-block li.detail-view:nth-last-child(2) {
-    border-bottom: 1px solid #dfdfdf;
+    border-bottom: 1px solid #999;
 }
 
 .detail-page .description-block {
@@ -6868,6 +6880,10 @@ video {
     font: 14px/20px GraphikRegular;
 }
 
+.fabric_detail_mobile h2{
+    font: normal 19px/26px ITCAvantGardeStd-Bk;
+    color: #AD8536;
+}
 .fabric_detail_mobile > ul {
     float: left;
     margin-top: 30px;
@@ -7025,24 +7041,25 @@ video {
     display: block;
 }
 
-.fabric_detail_mobile ul li > p:first-child:hover{
+.fabric_detail_mobile ul li > p:first-child:hover {
     background: #f2f2f2;
 }
 
-.fabric_detail_mobile ul li > p:first-child.active svg line:nth-child(3){
+.fabric_detail_mobile ul li > p:first-child.active svg line:nth-child(3) {
     stroke: none;
 }
 
 .fabric_detail_mobile ul li > p:first-child.active + p {
     display: block;
 }
+
 .fabric_detail_mobile ul li > p:first-child .fab-icon {
     height: 44px;
     left: -5px;
     position: absolute;
 }
 
-.detail-page .fabric-tech ul >li{
+.detail-page .fabric-tech ul > li {
     margin: 0 !important;
 }
 
@@ -7055,4 +7072,14 @@ video {
     margin: 19px 0 30px;
     width: 100% !important;
     display: none;
+}
+
+.fabric_detail_mobile p:first-child span:last-child {
+    height: 44px;
+    right: -11px;
+}
+
+.fitDetail .video-box.f-left > ul {
+    padding-bottom: 14px;
+    padding-top: 0;
 }
