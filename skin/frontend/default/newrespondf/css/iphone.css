@@ -7020,7 +7020,9 @@ video {
 
 .fabric_detail_mobile ul li > p:first-child {
     line-height: 44px;
+    margin: 0;
     padding-left: 44px;
+    display: block;
 }
 
 .fabric_detail_mobile ul li > p:first-child:hover{
@@ -7049,4 +7051,5 @@ video {
     float: left !important;
     margin: 19px 0 30px;
     width: 100% !important;
+    display: none;
 }
