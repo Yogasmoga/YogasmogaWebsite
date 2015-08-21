@@ -6437,6 +6437,10 @@ button#send2 {
 
 .colors_list {
     display: none;
+    float: left;
+    padding: 0 14px 35px;
+    margin-top: -35px;
+    width: 100%;
 }
 
 .colors_list li {
@@ -6446,8 +6450,12 @@ button#send2 {
     width: 100%;
 }
 
+.inner-aurum .first-li {
+    padding: 4px 0 15px;
+}
+
 .see_our_colors {
-    padding: 0 12px;
+    padding: 0 12px 35px;
 }
 
 .see_our_colors p {
