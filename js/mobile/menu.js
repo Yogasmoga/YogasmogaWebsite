@@ -203,7 +203,6 @@ jQuery(document).ready(function($){
         var img_height = parent.find(".slides li:first-child img").height();
         parent.find(".flex-direction-nav").show().css("top",(img_height/2)-10);
 
-
     });
     $(".page_block .block_thumbnail").click(function(){
         $(this).next().show();
