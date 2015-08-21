@@ -263,7 +263,23 @@ foreach ($_options as $_option) {
     <div class="span1">
 
         <?php endif; ?>
-
+        <div class="item_remove">
+            <a href="<?php echo $this->getDeleteUrl()?>" title="<?php echo $this->__('Remove item')?>" class="btn-remove btn-remove2">
+<!--                --><?php //echo $this->__('Remove item')?>
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     viewBox="0 0 40 40" style="enable-background:new 0 0 40 40;" xml:space="preserve">
+<style type="text/css">
+    .st0{fill:none;stroke:#999999;stroke-miterlimit:10;}
+</style>
+                    <g>
+                        <g id="XMLID_24_">
+                            <line id="XMLID_26_" class="st0" x1="14" y1="14" x2="26" y2="26"/>
+                            <line id="XMLID_25_" class="st0" x1="26" y1="14" x2="14" y2="26"/>
+                        </g>
+                    </g>
+</svg>
+            </a>
+        </div>
         <div class="price-box">
 
             <div class="cart-price-box"<?php //if ($this->getQty() == 1) echo ' style="display:none;"' ?>
@@ -502,4 +518,4 @@ foreach ($_options as $_option) {
 
         </td>
     </div>
-</div>
+    </div>
