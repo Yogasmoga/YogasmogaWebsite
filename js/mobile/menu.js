@@ -384,7 +384,9 @@ jQuery(document).ready(function($){
 
     $(".fabric_detail_mobile ul li > p:first-child").click(function(){
         $(".fabric_detail_mobile ul li > p:first-child").removeClass("active");
+        $(".fabric_detail_mobile ul li > p:first-child + p").hide();
         $(this).addClass("active");
+        $(this).next().slideToggle();
     });
 
     $(".invite-friend a").click(function(e){
