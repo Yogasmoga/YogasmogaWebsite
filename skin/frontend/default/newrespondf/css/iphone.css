@@ -4409,9 +4409,10 @@ ul.checkout-cont > li {
 }
 
 .detail-page .fabric-tech ul li {
-    display: inline-block;
-    list-style: none;
-    margin-left: 20px;
+    display: block;
+    float: left;
+    margin: 0;
+    width: 100%;
 }
 
 .detail-page .fabric-tech ul li:first-child {
@@ -6868,12 +6869,14 @@ video {
 }
 
 .fabric_detail_mobile > ul {
+    float: left;
+    margin-top: 30px;
     padding: 0;
+    width: 100%;
 }
 
 .fabric_detail_mobile > ul > li {
     border-top: 1px solid #999;
-    height: 44px;
     position: relative;
 }
 
@@ -7013,4 +7016,37 @@ video {
     bottom: 14px;
     position: absolute;
     right: 0;
+}
+
+.fabric_detail_mobile ul li > p:first-child {
+    line-height: 44px;
+    padding-left: 44px;
+}
+
+.fabric_detail_mobile ul li > p:first-child:hover{
+    background: #f2f2f2;
+}
+
+.fabric_detail_mobile ul li > p:first-child.active svg line:nth-child(3){
+    stroke: none;
+}
+
+.fabric_detail_mobile ul li > p:first-child .fab-icon {
+    height: 44px;
+    left: -5px;
+    position: absolute;
+}
+
+.detail-page .fabric-tech ul >li{
+    margin: 0 !important;
+}
+
+.fabric_detail_mobile > p {
+    margin: 25px 0 0;
+}
+
+.fabric_detail_mobile ul > li > p {
+    float: left !important;
+    margin: 19px 0 30px;
+    width: 100% !important;
 }
