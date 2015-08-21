@@ -16,4 +16,31 @@
 			</customer>
 		</routers>
     </frontend>
+	<global>
+		<models>
+			<Ysindia_Customer>
+				<class>Ysindia_Customer_Model</class>
+			</Ysindia_Customer>
+		</models>
+		<events>
+			<sales_quote_add_item>
+				<observers>
+					<ysindia_customer_model_observer>
+						<type>singleton</type>
+						<class>Ysindia_Customer_Model_Observer</class>
+						<method>itemAdded</method>
+					</ysindia_customer_model_observer>
+				</observers>
+			</sales_quote_add_item>
+			<sales_quote_remove_item>
+				<observers>
+					<ysindia_customer_model_observer>
+						<type>singleton</type>
+						<class>Ysindia_Customer_Model_Observer</class>
+						<method>itemRemoved</method>
+					</ysindia_customer_model_observer>
+				</observers>
+			</sales_quote_remove_item>
+		</events>
+	</global>
 </config>
