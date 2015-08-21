@@ -186,10 +186,12 @@ class Ysindia_Customer_Model_Observer
             // since bottom is found, now adjust price of tops
             if ($bottomFound) {
 
-                $topWithLowestPrice->setCustomPrice(0);
-                $topWithLowestPrice->setOriginalCustomPrice(0);
+                if(isset($topWithLowestPrice)) {
+                    $topWithLowestPrice->setCustomPrice(0);
+                    $topWithLowestPrice->setOriginalCustomPrice(0);
 
-                $topWithLowestPrice->save();
+                    $topWithLowestPrice->save();
+                }
 
                 Mage::log("Lowest top updated = " . $topWithLowestPrice->getName(), null, 'observer.log');
             } else {
