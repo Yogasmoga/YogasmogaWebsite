@@ -4094,7 +4094,7 @@ ul.checkout-cont > li {
     width: 100%;
     float: left;
     background: #fff;
-    padding: 14px 0 30px;
+    padding: 14px 0 0px;
     /*border-bottom: 1px solid #dfdfdf;*/
 }
 
@@ -7033,6 +7033,9 @@ video {
     stroke: none;
 }
 
+.fabric_detail_mobile ul li > p:first-child.active + p {
+    display: block;
+}
 .fabric_detail_mobile ul li > p:first-child .fab-icon {
     height: 44px;
     left: -5px;
