@@ -161,7 +161,7 @@ if(!is_user_logged_in()  && is_home()) {
 
 </div>
 
-<div id="back_to_top" class="<?php if($logged_in){echo 'user-color-shade';} ?>">
+<div id="back_to_top" class="<?php if($logged_in){echo 'user-color-shade';} ?>" style="bottom: <?php if($logged_in){echo "0";} else {echo "44px";} ?>">
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
 <g>
