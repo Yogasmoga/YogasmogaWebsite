@@ -3433,7 +3433,7 @@ h4.legend {
 }
 
 .col_right_options .product-name {
-
+    text-align: center;
 }
 #checkout-shipping-method-load span:nth-child(2) label{
     display: block;
