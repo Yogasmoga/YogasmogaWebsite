@@ -68,6 +68,27 @@ $columns = $this->getColumns();
             <div class="col_right_options">
                 <div class="product-name">
                     <a href="<?php echo $_product->getProductUrl(); ?>"><?php echo html_entity_decode(Mage::helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name')); ?></a>
+					
+					<span style="display:block"><?php 
+					
+					$resource = Mage::getSingleton('core/resource');  
+					$read = $resource->getConnection('catalog_read');  
+					$imageJson = json_decode($_product->getImageLabel());
+					$imageJson = get_object_vars($imageJson);
+					
+					
+					if(isset($imageJson['color'])){
+						$colorCode = $imageJson['color'];
+						$result = $read->fetchAll('SELECT value FROM eav_attribute_option_value  where option_id =' .$colorCode .' limit 1');
+						foreach($result as $color){
+						echo $color['value'];
+						
+						}
+						
+					}
+					?>
+					
+					</span>
                 </div>
                 <?php if ($_options): ?>
 
