@@ -272,6 +272,7 @@ jQuery(document).ready(function($){
         $(".arrow-icon").click();
         $(".story-box .close-icn").click();
         var heading = $(this).attr("data-heading");
+        alert(heading);
         var obj_id = $(this).attr("rel");
         var obj =$("#" + obj_id);
         var type = window.location.hash.substr(1);
@@ -281,14 +282,14 @@ jQuery(document).ready(function($){
             $("html,body").animate({
                 scrollTop: top
             }, 200);
-            $("#" + obj_id + " .txt-cnt").click();
+            $("#" + obj_id + " .block_thumbnail").click();
             $(".sign-in-box h1").html(heading)
             $(".help_page").hide();
             $(".help_page#"+obj_id).show();
 
         }
         else{
-            window.location = $(this).attr("href");
+            //window.location = $(this).attr("href");
         }
     });
 
@@ -376,7 +377,7 @@ jQuery(document).ready(function($){
 
     $("#pagetitle").click(function(){
         $(this).closest(".sign-in-box").find(".arrow-icon").click();
-    })
+    });
 
     $(".detail-page .description-block .first-list .design-feature .inner-content .inner-feature svg").click(function(){
         $(".html-vid-pop.html-des-vid-popup").fadeIn();
@@ -393,4 +394,8 @@ jQuery(document).ready(function($){
         e.preventDefault();
         openLogin();
     });
+    $("#shopping_arrow").click(function(){
+       $(".section").removeClass("active");
+    });
+
 });

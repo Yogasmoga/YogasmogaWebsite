@@ -2616,7 +2616,7 @@ label.shipping_method_radio {
     border-radius: 50%;
     float: left;
     margin-right: 30px;
-    margin-top: 2px;
+    margin-top: -3px;
 }
 
 label.shipping_method_radio > input[type="radio"] {
@@ -3133,7 +3133,7 @@ h4.legend {
     top: 0px;
 }
 
-#shopping_arrow.is-active.arrow-tag svg line:nth-child(3) {
+#shopping_arrow.is-active.arrow-tag svg line {
     stroke: none;
 }
 
@@ -3429,7 +3429,11 @@ h4.legend {
 }
 
 .col_right_options .product-name {
-    text-align: center;
+
+}
+#checkout-shipping-method-load span:nth-child(2) label{
+    display: block;
+    height: 44px;
 }
 
 .btn-update_qty {
@@ -3779,6 +3783,7 @@ ul.checkout-cont > li {
 
 .main-container {
     width: 100%;
+    padding-top: 88px;
 }
 
 #menu_container.nav-container {
@@ -6214,7 +6219,7 @@ button.btn-invite.button {
     margin-left: 30px;
 }
 
-.section.allow.active .head svg line:nth-child(3) {
+.section.allow.active .head svg line {
     stroke: none;
 }
 
@@ -7134,4 +7139,8 @@ video {
 }
 #checkout-review-submit div.complete {
     border: medium none !important;
+}
+#checkout-step-review{
+    float: left;
+    width: 100%;
 }
