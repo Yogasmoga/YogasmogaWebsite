@@ -3046,10 +3046,10 @@ h4.legend {
     clear: both;
 }
 
-.one-page-checkout input, textarea, select {
+.one-page-checkout input,.one-page-checkout  textarea,.one-page-checkout  select {
     height: 40px !important;
     color: #555555 !important;
-    border-radius: 3px;
+    border-radius: 0;
     padding: 0 4px;
     font: 12px ITCAvantGardeStd-Bk !important;
     letter-spacing: 1px;
@@ -3173,6 +3173,7 @@ h4.legend {
     line-height: 44px;
     text-transform: uppercase;
     border-bottom: 1px solid #999;
+    letter-spacing: 1px;
 }
 
 .section.allow.completed .step-count {
@@ -3421,6 +3422,7 @@ h4.legend {
 
 #checkout-review-table tr.cart-info .col_right_options h3.product-name {
     color: #555;
+    text-align: left;
     font: 12px/18px AvantGarde-Demi;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -3777,7 +3779,6 @@ ul.checkout-cont > li {
 
 .main-container {
     width: 100%;
-    padding-top: 88px;
 }
 
 #menu_container.nav-container {
@@ -4739,20 +4740,21 @@ table.productdetailtable div#colorcontainer div table {
 }
 
 #checkout-payment-method-load dt {
-    background: #55b519;
-    border-radius: 5px;
+    background: #00B900;
+    border-radius: 0;
     float: left;
     overflow: hidden;
-    height: 43px;
-    margin: 12px 2% 0 0;
+    height: 48px;
+    margin: 12px 0 0 0;
     position: relative;
-    width: 48%;
+    width: 50%;
+    border:2px solid #fff;
 }
 
 #checkout-payment-method-load dt label {
     color: #fff;
-    font-family: graphikregular;
-    font-size: 12px;
+    font-family: ITCAvantGardeStd-Bk;
+    font-size: 14px;
     left: 0;
     position: absolute;
     right: 0;
@@ -5471,7 +5473,7 @@ p.required {
 }
 
 #checkout-payment-method-load .paypal_logo {
-    background: none !important;
+    background: #EEE !important;
 }
 
 #checkout-payment-method-load .paypal_logo label {
@@ -5483,13 +5485,8 @@ p.required {
 }
 
 .paypal_logo img {
-    bottom: 0;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 100%;
+    width: auto;
+    vertical-align: middle;
 }
 
 .v-fix:last-child {
@@ -6606,12 +6603,6 @@ button#send2 {
     margin-left: 5px;
 }
 
-.bracup {
-    bottom: 0;
-    left: 130px;
-    line-height: 30px;
-    position: absolute;
-}
 
 .flex-direction-nav {
     height: 20px;
@@ -6724,6 +6715,7 @@ button#send2 {
 
 .help_page .answer_content > span {
     font: 12px/18px AvantGarde-Demi;
+    letter-spacing: 1px;
 }
 
 .help_page .privacy {
@@ -6962,8 +6954,12 @@ video {
 }
 
 .selected_cart_products {
-    padding: 14px 60px 14px 0;
+    padding: 14px 30px 14px 0;
     border-top: 1px solid #999;
+}
+
+.selected_cart_products .col_right_options .product-name{
+    text-align: left;
 }
 
 .selected_cart_products:last-child {
@@ -7007,7 +7003,7 @@ video {
 
 .no_of_cart_items, .cart_total {
     font: 12px/18px AvantGarde-demi;
-    margin: 24px 0;
+    margin: 18px 0;
     letter-spacing: 1px;
 }
 
@@ -7129,4 +7125,13 @@ video {
 }
 #shopping-cart-totals-table .reward-point .price{
     color: #FF6600;
+}
+#checkout-review-submit .complete.head {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    font: 12px/18px AvantGarde-Demi;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+#checkout-review-submit div.complete {
+    border: medium none !important;
 }
