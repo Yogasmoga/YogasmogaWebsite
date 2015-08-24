@@ -3433,7 +3433,7 @@ h4.legend {
 }
 
 .col_right_options .product-name {
-
+    text-align: center;
 }
 #checkout-shipping-method-load span:nth-child(2) label{
     display: block;
@@ -5262,11 +5262,11 @@ table.productdetailtable div#colorcontainer div table {
 }
 
 .close_video_popup, .close_size_cart {
-    background: #555 url("/skin/frontend/default/newrespondf/images/cross1.png") no-repeat scroll center center / 22px 22px;
+    background: #555;
     height: 44px;
     position: fixed;
     right: 0;
-    top: 0;
+    top: 88px;
     width: 44px;
 }
 
