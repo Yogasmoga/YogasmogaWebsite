@@ -6619,7 +6619,7 @@ button#send2 {
 .flex-direction-nav {
     height: 20px;
     left: 0;
-    margin: 0 !important;
+    margin: -10px 0 0 !important;
     position: absolute;
     top: 50%;
     width: 100%;

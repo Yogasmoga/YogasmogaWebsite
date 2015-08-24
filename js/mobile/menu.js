@@ -210,7 +210,8 @@ jQuery(document).ready(function($){
         $(this).find(".overlay-text .text").hide();
         $(".page_block .block_thumbnail").next().removeClass("has_slider");
         $(this).next().addClass("has_slider");
-        $(".page_block .block_content").not($(this).next()).hide();
+        $(".page_block .block_content").hide();
+        $(this).parent().find(".block_content").show();
         var top = $(this).offset().top;
         $(window).scrollTop(top-88);
         $(".page_block").find(".close-icn").hide();
