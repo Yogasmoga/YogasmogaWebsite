@@ -270,7 +270,7 @@ jQuery(document).ready(function($){
         $(".ys_static_page_dropdown li a,.static_page li a").not($(this)).removeClass("active_link");
         $(this).addClass("active_link");
         $(".arrow-icon").click();
-        $(".story-box .close-icn").click();
+        //$(".story-box .close-icn").click();
         var heading = $(this).attr("data-heading");
         var obj_id = $(this).attr("rel");
         var obj =$("#" + obj_id);
@@ -282,6 +282,7 @@ jQuery(document).ready(function($){
                 scrollTop: top
             }, 200);
             $("#" + obj_id + " .block_thumbnail").click();
+            $("#" + obj_id + " .txt-cnt").click();
             $(".sign-in-box h1").html(heading)
             $(".help_page").hide();
             $(".help_page#"+obj_id).show();
