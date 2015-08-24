@@ -2443,7 +2443,7 @@ tr.td-noborder td {
 }
 
 #shipping-new-address-form .form-list li .col2-alt-set .col-2 label {
-    margin: 9px 23px;
+    margin: 7px 23px;
     padding: 0;
 }
 
@@ -2616,8 +2616,7 @@ label.shipping_method_radio {
     height: 20px;
     border-radius: 50%;
     float: left;
-    margin-right: 30px;
-    margin-top: -3px;
+    margin-top: 0;
 }
 
 label.shipping_method_radio > input[type="radio"] {
@@ -2634,9 +2633,8 @@ label.shipping_method_radio > input[type="radio"] {
     border-radius: 21px;
     height: 24px;
     left: -2px;
-
     position: absolute;
-    top: 12px;
+    top: 5px;
     width: 24px;
 }
 
@@ -3140,8 +3138,12 @@ h4.legend {
 
 .one-page-checkout .section .head .arrow-tag img {
     float: right;
-    margin: 9px 0;
+    height: 44px;
+    margin: 0;
+    right: 0 !important;
+    top: 0 !important;
     transition-duration: 200ms;
+    width: 44px;
 }
 
 .one-page-checkout .head .arrow-tag img {
@@ -3198,7 +3200,7 @@ h4.legend {
 }
 
 #co-shipping-form p:first-child {
-    margin: 35px 0 25px;
+    margin: 25px 0 20px;
     font: 12px/18px GraphikRegular;
 }
 
@@ -3337,8 +3339,9 @@ h4.legend {
 
 .one-page-checkout .button-set {
     margin-top: 0;
-    padding-top: 0;
+    padding: 0;
     float: left;
+    line-height: 0;
 }
 
 .one-page-checkout ul.super-product-attributes {
@@ -3435,6 +3438,7 @@ h4.legend {
 #checkout-shipping-method-load span:nth-child(2) label{
     display: block;
     height: 44px;
+    padding-left: 50px;
 }
 
 .btn-update_qty {
@@ -3457,7 +3461,7 @@ h4.legend {
 }
 
 #checkout-step-shipping_method {
-    padding-bottom: 27px;
+    padding-bottom: 15px;
     position: relative;
 }
 
@@ -3646,12 +3650,13 @@ h4.legend {
     min-height: 80px;
 }
 
-.gridWrap .productCont:nth-child(2n+1) {
-    padding-right: 2px;
-}
 
 .gridWrap .productCont:nth-child(2n) {
-    padding-left: 2px;
+    border-left: 2px solid #fff;
+}
+.gridWrap .productCont:nth-child(2n+1) {
+    border-right: 2px solid #fff;
+    clear:left;
 }
 
 .productCont img {
@@ -4751,7 +4756,7 @@ table.productdetailtable div#colorcontainer div table {
     float: left;
     overflow: hidden;
     height: 48px;
-    margin: 12px 0 0 0;
+    margin: 25px 0 0 0;
     position: relative;
     width: 50%;
     border:2px solid #fff;
@@ -5320,7 +5325,7 @@ table.redeem-giftcard {
 }
 
 p.apply_promo_label {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     position: relative;
     text-align: left;
 }
@@ -5539,7 +5544,7 @@ p.required {
 }
 
 .form-list li label {
-    font: 12px/18px GraphikRegular;
+    font: 12px/18px graphikregular;
 }
 
 .validation-advice {
@@ -6218,6 +6223,7 @@ button.btn-invite.button {
     float: none;
     width: auto;
     margin-left: 30px;
+    padding-top: 18px;
 }
 
 .section.allow.active .head svg line {
@@ -7144,4 +7150,22 @@ video {
 #checkout-step-review{
     float: left;
     width: 100%;
+}
+#co-billing-form .form-list li{
+    padding: 0;
+    height: 44px;
+    vertical-align: middle;
+}
+#co-billing-form .input-box{
+    margin-bottom: 5px;
+}
+#opc-shipping button,#payment-buttons-container button{
+    bottom: 14px !important;
+}
+
+#shipping-please-wait{
+    height: 0 !important;
+    overflow: hidden;
+    padding: 0;
+    width: 0 !important;
 }
