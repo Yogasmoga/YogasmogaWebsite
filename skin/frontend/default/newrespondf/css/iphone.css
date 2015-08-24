@@ -7127,3 +7127,6 @@ video {
 .wishlist-items .span5:nth-child(2n+1) {
     clear: left;
 }
+#shopping-cart-totals-table .reward-point .price{
+    color: #FF6600;
+}
