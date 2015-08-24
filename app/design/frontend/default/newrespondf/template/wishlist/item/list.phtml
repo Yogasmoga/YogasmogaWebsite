@@ -59,8 +59,11 @@ $columns = $this->getColumns();
 
             <div class="col_left_img">
                 <a class="product-image" title="" href="<?php echo $_product->getProductUrl(); ?>">
-                    <img width="100" height="150"
-                         src="<?php echo Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100); ?>"/></a>
+                    
+					 <img alt="<?php echo $_product->getName() ?>" width="320" height="320" alt="" src="<?php echo $this->helper('adaptiveResize/image')->init($_product, 'thumbnail')->setCropPosition('top')->adaptiveResize(320,320); ?>"/></a>
+					
+					<!--<img width="100" height="150"
+                         src="<?php //echo Mage::helper('catalog/image')->init($_product, 'image')->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100); ?>"/></a>-->
             </div>
             <div class="col_right_options">
                 <div class="product-name">
