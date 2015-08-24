@@ -3427,7 +3427,7 @@ h4.legend {
 }
 
 .col_right_options .product-name {
-    text-align: left;
+    text-align: center;
 }
 
 .btn-update_qty {
@@ -4806,17 +4806,19 @@ table.productdetailtable div#colorcontainer div table {
     position: fixed;
     top: 44px;
     width: 100%;
-    z-index: 5;
+    z-index: 999;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
 .my-account-block .sign-in-box {
-    box-shadow: 0 -3px 1px rgba(0, 0, 0, 0.03) inset;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     height: 44px !important;
     left: 0;
     padding: 0;
     position: fixed;
     top: 44px;
     width: 100%;
+    z-index: 23;
     color: #555555;
 }
 
@@ -5665,9 +5667,14 @@ p.required {
 }
 
 #wishlist-table .col_left_img {
-    position: absolute;
-    top: 15px;
-    width: 80px;
+    width: 100%;
+}
+
+#wishlist-table .span5:nth-child(odd) .col_left_img {
+    border-right: 2px solid #fff;
+}
+#wishlist-table .span5:nth-child(even) .col_left_img {
+    border-left: 2px solid #fff;
 }
 
 #wishlist-table .col_left_img img {
@@ -5676,17 +5683,18 @@ p.required {
 }
 
 #wishlist-table .col_right_options {
-    height: 152px;
-    padding-left: 90px;
-    padding-top: 15px;
+    padding: 8px 2px 0;
+    float: left;
+    width: 100%;
 }
 
 .my-wishlist {
-    padding: 12px;
+    padding: 12px 0;
 }
 
 #wishlist-table .product-name > a {
     font: 12px AvantGarde-demi;
+    letter-spacing: 1px;
 }
 
 #wishlist-table tr td:last-child {
@@ -7092,4 +7100,30 @@ video {
 .fitDetail .video-box.f-left > ul {
     padding-bottom: 14px;
     padding-top: 0;
+}
+
+
+
+.wishlist-items .span5 {
+    float: left;
+    width: 50%;
+}
+
+.wishlist-items .span5 .price-box{
+    float: left;
+    width: 100%;
+    font: 12px/18px ITCAvantGardeStd-Bk;
+    text-align: center;
+}
+.wishlist-items .span5  p{
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 14px;
+}
+.wishlist-items .span5  p a{
+    color: #AD8536;
+}
+.wishlist-items .span5:nth-child(2n+1) {
+    clear: left;
 }
