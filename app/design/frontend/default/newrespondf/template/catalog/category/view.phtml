@@ -159,21 +159,44 @@
 						$sub_subcats = $sub_cat->getChildren();
 						$_subcategories = $sub_cat->getChildrenCategories();
 						if (count($_subcategories) > 0): ?>
-                <a href="<?php echo $_category->getURL() ?>" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
-					    <span>
-<svg height="44px" width="44px">
-	<line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
-	<line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
-	<line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
-</svg>
-
+						<?php $currentCategoryId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
+						
+						$activeFound = false;
+						if($currentCategoryId == $_category->getId()){
+							$activeFound = true;
+						?>
+						
+						<a href="<?php echo $_category->getURL() ?>" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
+					    <span class="active">
+							<svg height="44px" width="44px">
+								<line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+								<line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+								<line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+							</svg>
 						</span>
-
-						<?php else: ?>
+						<?php }
+						else{ ?>
+						
+						<a href="<?php echo $_category->getURL() ?>" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
+					    <span>
+							<svg height="44px" width="44px">
+								<line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+								<line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+								<line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+							</svg>
+						</span>
+						
+						
+						<?php }?>
+						
+					<?php else: ?>
 					<a href="<?php echo $_category->getURL() ?>" class="has_no_childs" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
 						<?php endif ?>
 						<?php
-						echo '<ul>';
+						if($activeFound)
+							echo '<ul style="display:block">';
+						else
+							echo '<ul>';
 						foreach($_subcategories as $_sub_category)
 						{
 
