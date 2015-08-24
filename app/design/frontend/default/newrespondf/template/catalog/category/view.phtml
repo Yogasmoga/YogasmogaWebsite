@@ -193,10 +193,10 @@
 					<a href="<?php echo $_category->getURL() ?>" class="has_no_childs" title= "<?php echo  $_category->getName() ; ?>"><?php echo  $_category->getName() ?></a>
 						<?php endif ?>
 						<?php
-						if($activeFound)
-							echo '<ul style="display:block">';
-						else
-							echo '<ul>';
+						if($activeFound){
+							echo '<ul style="display:block">';}
+						else{
+							echo '<ul>';}
 						foreach($_subcategories as $_sub_category)
 						{
 
