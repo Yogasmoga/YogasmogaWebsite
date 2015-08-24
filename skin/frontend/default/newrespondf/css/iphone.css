@@ -4193,9 +4193,10 @@ ul.checkout-cont > li {
 
 .detail-page .description-block .first-list .detail-view .inner-content .fabric-tech .fabDetail h2 {
     font-size: 22px;
-    line-height: 58px;
+    margin-bottom: 20px;
     color: #ae8637;
     font-family: ITCAvantGardeStd-Bk;
+    font-weight: normal;
 }
 
 .detail-page .description-block .first-list .detail-view .inner-content .fabric-tech .fabDetail ul {
