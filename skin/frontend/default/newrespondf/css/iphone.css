@@ -272,7 +272,7 @@ div {
     left: 0;
     height: 44px;
     width: 100%;
-    z-index: 15;
+    z-index: 9999;
     background-color: #af8839;
 }
 
@@ -842,7 +842,7 @@ li {
     position: fixed;
     top: 44px;
     width: 100%;
-    z-index: 9;
+    z-index: 99;
 }
 
 .sign-in-box span.sign_In, .sign-in-box span.cuslogin {
@@ -4833,7 +4833,7 @@ table.productdetailtable div#colorcontainer div table {
     color: #656565;
     display: block;
     font-family: Avantgarde-Demi;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 50px;
     height: 44px;
     width: 100%;
@@ -6658,7 +6658,7 @@ button#send2 {
 
 .help_page > ul > li {
     text-align: left;
-    padding: 14px 0;
+    padding: 12px 0;
     border-top: 1px solid #999;
 }
 

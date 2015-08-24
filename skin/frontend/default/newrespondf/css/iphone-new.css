@@ -196,13 +196,13 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     color: #656565;
     display: block;
     font-family: Avantgarde-demi;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 50px;
     height: 44px;
     text-decoration: none;
     text-transform: uppercase;
     width: 100%;
-    padding: 0 15px;
+    padding: 0 14px;
 }
 .account-nav .sub-nav li a.active_link {
     color: #ae8637;
