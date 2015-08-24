@@ -272,7 +272,6 @@ jQuery(document).ready(function($){
         $(".arrow-icon").click();
         $(".story-box .close-icn").click();
         var heading = $(this).attr("data-heading");
-        alert(heading);
         var obj_id = $(this).attr("rel");
         var obj =$("#" + obj_id);
         var type = window.location.hash.substr(1);
