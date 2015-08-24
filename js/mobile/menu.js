@@ -269,8 +269,10 @@ jQuery(document).ready(function($){
         e.preventDefault();
         $(".ys_static_page_dropdown li a,.static_page li a").not($(this)).removeClass("active_link");
         $(this).addClass("active_link");
-        $(".arrow-icon").click();
-        //$(".story-box .close-icn").click();
+        $(".arrow-icon").removeClass("active");
+        $(".account-nav.l-align.ys_static_page_dropdown").slideUp();
+        $(".story-box .close-icn").click();
+        $(".page_block .block_thumbnail .close-icn").click();
         var heading = $(this).attr("data-heading");
         var obj_id = $(this).attr("rel");
         var obj =$("#" + obj_id);
