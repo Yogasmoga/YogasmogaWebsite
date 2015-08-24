@@ -446,7 +446,7 @@ li{
 }
 #back_to_top {
     background: #555;
-    bottom: 44px;
+    bottom: 0px;
     height: 44px;
     position: fixed;
     right: 0;
