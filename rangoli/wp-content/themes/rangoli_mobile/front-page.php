@@ -17,8 +17,9 @@ $home = get_site_url();
         <li>
             <?php
             echo get_the_post_thumbnail($post->ID, mobile_slider);
+            $url = get_post_meta($post->ID,"wpcf-posturl");
             ?>
-            <div class='over-the-slide homepage_page_banner' onclick="window.location='<?php echo get_post_meta($post->ID,"wpcf-posturl"); ?>'">
+            <div class='over-the-slide homepage_page_banner' onclick="window.location='<?php echo $url[0]; ?>'">
                 <?php
           /*      if (has_post_video()) {
                     $authors = $wpdb->get_results("SELECT * FROM rangoli_user_profiles WHERE user_id=" . $post->post_author);
