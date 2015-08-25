@@ -1287,7 +1287,7 @@ ul {
     letter-spacing: 0.05em;
     line-height: 1;
     padding: 0 !important;
-    margin: 17px 0;
+    margin: 32px 0;
     text-decoration: none;
     text-transform: capitalize;
     width: 100%;
@@ -4190,7 +4190,6 @@ ul.checkout-cont > li {
 
 .detail-page .description-block .complete-look .caption {
     margin: 0;
-    min-height: 80px;
 }
 
 .detail-page .description-block .first-list .detail-view .inner-content .fabric-tech .newbg {
@@ -7074,10 +7073,12 @@ video {
 }
 
 .fabric_detail_mobile ul li > p:first-child {
-    line-height: 44px;
-    margin: 0;
-    padding-left: 44px;
+    color: #ad8536;
     display: block;
+    font: 12px/50px AvantGarde-Demi;
+    letter-spacing: 1px;
+    margin: 0;
+    padding-left: 36px;
 }
 
 .fabric_detail_mobile ul li > p:first-child:hover {
@@ -7094,8 +7095,9 @@ video {
 
 .fabric_detail_mobile ul li > p:first-child .fab-icon {
     height: 44px;
-    left: -5px;
+    left: -6px;
     position: absolute;
+    width: 44px;
 }
 
 .detail-page .fabric-tech ul > li {
@@ -7190,4 +7192,7 @@ video {
 }
 .description-block .inner-content div.fitDetail table{
     margin-top: 25px;
+}
+#ajaxlogin_button_send .st0, #create_account .st0{
+    stroke: #fff !important;
 }

@@ -1426,3 +1426,6 @@ p.small.err_msg {
 .additional_links {
     padding: 15px 0;
 }
+.popup .st0 {
+    stroke: #fff !important;
+}
