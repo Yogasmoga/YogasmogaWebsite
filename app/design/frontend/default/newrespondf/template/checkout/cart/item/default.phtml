@@ -50,7 +50,8 @@ if (!function_exists('getMiniImage')) {
             //if(strpos($_image->getLabel(), $color) === false)
             //            //if(strpos($_image->getLabel(),"*") === false)
             //                continue;
-            return "_" . Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(320, 320)->setQuality(100);
+            return "_" . Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(320);
+			//return "_" . Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(320, 320)->setQuality(100);
         }
         return "";
     }
