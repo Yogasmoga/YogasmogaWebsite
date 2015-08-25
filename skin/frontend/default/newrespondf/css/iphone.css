@@ -4261,6 +4261,7 @@ ul.checkout-cont > li {
     padding: 3px 6px;
     font-family: ITCAvantGardeStd-Bk;
     font-size: 12px;
+    height: 30px;
     letter-spacing: 1px;
 }
 
@@ -5301,14 +5302,15 @@ table.productdetailtable div#colorcontainer div table {
 .chart_container table {
     box-sizing: border-box;
     color: #555555;
-    font: 14px/24px ITCAvantGardeStd-Bk;
+    font: 12px/30px graphikregular;
     left: 0;
     position: fixed;
     top: 40%;
 }
 
-.chart_container table tr td {
-    border-bottom: 1px solid #fff;
+.chart_container table tr:first-child td {
+    font: 12px AvantGarde-Demi;
+    letter-spacing: 1px;
 }
 
 .arrow-icon img {
@@ -6676,13 +6678,13 @@ button#send2 {
 
 .help_page > ul > li {
     text-align: left;
-    padding: 12px 0;
+    padding: 13px 0;
     border-top: 1px solid #999;
 }
 
 .help_page > p {
     color: #555;
-    font: 19px/74px ITCAvantGardeStd-Bk;
+    font: 19px/69px ITCAvantGardeStd-Bk;
     padding: 0 14px;
     text-align: center;
 }
@@ -6735,6 +6737,7 @@ button#send2 {
 .help_page .answer_content > span {
     font: 12px/18px AvantGarde-Demi;
     letter-spacing: 1px;
+    padding-left: 15px;
 }
 
 .help_page .privacy {
@@ -7178,8 +7181,10 @@ video {
 }
 .description-block .inner-content div:last-child {
     margin-bottom: 30px;
-    margin-top: 25px;
 }
 .description-block .inner-content div.fitDetail {
     margin-bottom: 0;
+}
+.description-block .inner-content div.fitDetail table{
+    margin-top: 25px;
 }
