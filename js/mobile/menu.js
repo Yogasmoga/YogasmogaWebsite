@@ -304,7 +304,7 @@ jQuery(document).ready(function($){
 
         }
         else{
-            //window.location = $(this).attr("href");
+            window.location = $(this).attr("href");
         }
     });
 
