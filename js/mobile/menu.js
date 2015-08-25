@@ -414,7 +414,6 @@ jQuery(document).ready(function($){
     });
 
     $(".sign-in-box h1").click(function(){
-        alert();
         $(this).next().click();
     })
 });
