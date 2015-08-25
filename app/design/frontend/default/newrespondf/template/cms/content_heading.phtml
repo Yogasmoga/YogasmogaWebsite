@@ -89,7 +89,7 @@
 		$reward_model = Mage::getModel('rewardpoints/stats');
 		//echo "$".number_format((float)($reward_model->getPointsCurrent($customerId, $store_id)+0), 2, '.','');
 		//echo $reward_model->getPointsCurrent($customerId, $store_id)+0;
-		 echo '<a href="javascript:void(0)"><span class="rewards_points"><b>$</b>'.($reward_model->getPointsCurrent($customerId, $store_id)+0).'</span></a>';
+		 echo '<a  rel="'.$customerId.'" href="javascript:void(0)"><span class="rewards_points"><b>$</b>'.($reward_model->getPointsCurrent($customerId, $store_id)+0).'</span></a>';
 		} else { ?>
      <a href="javascript:void(0)" onclick="openLogin()"><span class="sign_In">Sign In</span></a>
 	 <?php } ?>
