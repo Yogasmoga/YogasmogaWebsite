@@ -1111,7 +1111,7 @@ if ($lengthAvailable) {
                 }
                 if (strcasecmp($imageLabelData['type'], "new design feature image") == 0 && isset($imageLabelData['position'])) {
                     //$newdfimages[$imageLabelData['position']]["url"] = "_" . $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
-					
+					$newdfimages[$imageLabelData['position']]["url"] = "_" .(string) Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(320);
 					
                     if (isset($imageLabelData['caption']))
                         $newdfimages[$imageLabelData['position']]["caption"] = $imageLabelData['caption'];
