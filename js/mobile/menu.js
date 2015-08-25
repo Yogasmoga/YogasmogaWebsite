@@ -403,8 +403,5 @@ jQuery(document).ready(function($){
        $(".section").removeClass("active");
     });
 
-    $(".sign-in-box h1").click(function(){
-        $(".sign-in-box .arrow-icon").click();
-    });
 
 });

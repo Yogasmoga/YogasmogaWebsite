@@ -3,7 +3,7 @@
         <ul class="sub-nav">
             <li><a href="/our-story" data-heading="YS STORY" rel="our_story">Our Story</a></li>
             <li><a href="/our-core-values" data-heading="YS CORE VALUES" rel="our_core_values">Our Core Values</a></li>
-            <li><a href="/our-ethics" data-heading="YS ETHICS" rel="our_core_ethics">Our Core Ethics</a></li>
+            <li><a href="/our-ethics" data-heading="YS ETHICS" rel="our_core_ethics">Our Ethics</a></li>
 
             <li><a href="/our-stores" data-heading="YS STORES" rel="our_stores">Our Stores</a></li>
             <li><a href="/made-in-usa" data-heading="MADE IN USA" rel="made_in_usa">Made in USA</a></li>
@@ -191,6 +191,10 @@
         $(".page_block .block_thumbnail").append(closebtnHtml);
         $(".page_block .block_thumbnail .close-icn").bind("click", function (e) {
             window.location.href = 'http://yogasmoga.com';
+        });
+
+        $(".sign-in-box h1").click(function(){
+            $(".sign-in-box .arrow-icon").click();
         });
 
     });
