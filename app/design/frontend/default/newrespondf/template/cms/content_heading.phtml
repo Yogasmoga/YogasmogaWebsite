@@ -79,7 +79,7 @@
 	<?php
 		if(Mage::getSingleton('customer/session')->isLoggedIn()) {
 		$store_id = Mage::app()->getStore()->getId();
-		$customerId = Mage::getModel('customer/session')->getCustomerId();
+		$customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
 		if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
 			$reward_flat_model = Mage::getModel('rewardpoints/flatstats');
 			echo $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
