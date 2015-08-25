@@ -3956,11 +3956,17 @@ ul.checkout-cont > li {
     padding-right: 0px;
 }
 
-.detail-page .color-list div, .detail-page .size-list div {
+.detail-page .color-list div {
     float: left;
     height: 40px;
-    margin-left: 15px;
+    margin-left: 14px;
     width: 40px;
+}
+.detail-page .size-list div {
+    float: left;
+    height: 39px;
+    margin-left: 14px;
+    width: 39px;
 }
 
 .detail-page .bgffffff {
@@ -4278,7 +4284,7 @@ ul.checkout-cont > li {
 .detail-page .description-block .first-list .detail-view .fitDetail td:first-child, .tble td:first-child {
     padding: 4px 0;
     width: 29.934782608695652173913043478261%;
-    font-family: ITCAvantGardeStd-Bk;
+    font-family: graphikregular;
     font-size: 12px;
 }
 
@@ -7169,4 +7175,11 @@ video {
     overflow: hidden;
     padding: 0;
     width: 0 !important;
+}
+.description-block .inner-content div:last-child {
+    margin-bottom: 30px;
+    margin-top: 25px;
+}
+.description-block .inner-content div.fitDetail {
+    margin-bottom: 0;
 }

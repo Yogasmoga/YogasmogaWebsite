@@ -1423,7 +1423,15 @@ if ($lengthAvailable) {
 if ($designFeatureVideoName != '') {
     ?>
     <div class="html-vid-pop html-des-vid-popup">
-        <span class="close_video_popup"></span>
+        <span class="close_video_popup">
+            <svg xml:space="preserve" enable-background="new 0 0 44 44" viewBox="0 0 44 44" height="44px" width="44px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+<g>
+    <rect height="44" width="44" fill="#555555"/>
+    <line y2="30" x2="30" y1="14" x1="14" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+    <line y2="30" x2="14" y1="14" x1="30" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+</g>
+</svg>
+        </span>
         <video id="df-vid" style="width:100%;" controls>
             <source
                 src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . "design_features_video/" . $_product->getDesignFeatureVideo(); ?>"
@@ -1435,7 +1443,15 @@ if ($designFeatureVideoName != '') {
 if ($howToMeasureVidio != '') {
     ?>
     <div class="html-vid-pop html-fit-vid-popup">
-        <span class="close_video_popup"></span>
+        <span class="close_video_popup">
+            <svg xml:space="preserve" enable-background="new 0 0 44 44" viewBox="0 0 44 44" height="44px" width="44px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+<g>
+    <rect height="44" width="44" fill="#555555"/>
+    <line y2="30" x2="30" y1="14" x1="14" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+    <line y2="30" x2="14" y1="14" x1="30" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
+</g>
+</svg>
+        </span>
         <video id="measure-vid" style="width:100%;" controls>
             <source
                 src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . "how_to_measure_video/" . $_product->getHowToMeasureVideo(); ?>"
