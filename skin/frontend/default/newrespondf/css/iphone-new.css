@@ -283,7 +283,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 
 .aurum .inner-aurum {
     list-style: outside none none;
-    padding: 0 14px;
+    padding: 0 14px 35px;
     position: relative;
     text-align: left;
     width: 100%;
@@ -1017,7 +1017,7 @@ form#cardbalanceform table.redeem-giftcard {
 
 /*******************************************5-june******************/
 .inside-content .our-breath {
-    padding: 15px 14px;
+    padding: 10px 14px 5px;
     text-align: left;
     float: left;
     width: 100%;

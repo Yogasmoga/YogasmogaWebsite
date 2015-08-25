@@ -6540,9 +6540,8 @@ button#send2 {
     padding: 4px 0 15px;
 }
 
-.see_our_colors {
-    padding: 0 12px 35px;
-}
+
+
 
 .see_our_colors p {
     border-top: 1px solid #bfbfbf;
@@ -6897,6 +6896,11 @@ video {
 .menu-item.has-dropdown.c-text_small.r_grey_text.invite-friend {
     float: none;
     width: 100% !important;
+}
+.see_our_colors{
+    margin-top: -35px;
+    padding: 0 12px;
+    margin-bottom: 35px;
 }
 
 .see_our_colors .arrow-tag.narrow.is-active svg line:nth-child(3) {
