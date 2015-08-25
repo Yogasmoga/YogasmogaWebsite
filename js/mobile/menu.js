@@ -192,6 +192,7 @@ jQuery(document).ready(function($){
         $(".story-box .txt-cnt").next().removeClass("has_slider");
         $(this).next().addClass("has_slider");
         $(".story-box .inside-content").not($(this).next()).hide();
+        $(".page_block .block_content").hide();
         var top = $(this).offset().top;
         $(window).scrollTop(top-88);
         $(".story-box").find(".close-icn").hide();
@@ -212,6 +213,7 @@ jQuery(document).ready(function($){
         $(this).next().addClass("has_slider");
         $(".page_block .block_content").hide();
         $(this).parent().find(".block_content").show();
+        $(".story-box .inside-content").hide();
         var top = $(this).offset().top;
         $(window).scrollTop(top-88);
         $(".page_block").find(".close-icn").hide();
