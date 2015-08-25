@@ -33,12 +33,6 @@
 ?>
 <div class="category-block">
   <div class="sign-in-box">
-	
-	
-	
-	
-	
-	
 	<?php
 		if(Mage::getSingleton('customer/session')->isLoggedIn()) {
 		$store_id = Mage::app()->getStore()->getId();
@@ -56,24 +50,6 @@
 		} else { ?>
      <a href="javascript:void(0)" onclick="openLogin()"><span class="cuslogin">Sign In</span></a>
 	 <?php } ?>
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
 	  <h1><?php echo $this->htmlEscape($this->getCurrentCategory()->getName()) ?></h1>
 	  <div class="toggle_dropdown">
 		  <svg width="44px" height="44px">
