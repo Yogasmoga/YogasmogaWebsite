@@ -7196,3 +7196,6 @@ video {
 #ajaxlogin_button_send .st0, #create_account .st0{
     stroke: #fff !important;
 }
+div[rel="yogas_principles"] .block_content p:first-child{
+    margin-top: 16px;
+}
