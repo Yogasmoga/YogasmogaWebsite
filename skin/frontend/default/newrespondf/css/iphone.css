@@ -7260,3 +7260,6 @@ video {
 div[rel="yogas_principles"] .block_content p:first-child {
     margin-top: 16px;
 }
+label[for="stripe_expiration"] {
+    margin-top: 12px;
+}
