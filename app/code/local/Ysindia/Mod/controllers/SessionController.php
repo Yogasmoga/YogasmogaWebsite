@@ -121,6 +121,25 @@ class Ysindia_Mod_SessionController extends Mage_Core_Controller_Front_Action
         echo json_encode($ar);
     }
 
+    public function loggedcustomersmogibucksAction()
+    {
+        $customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
+
+        $store_id = Mage::app()->getStore()->getId();
+
+        if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)) {
+            $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+            $points = $reward_flat_model->collectPointsCurrent($customerId, $store_id);
+        } else {
+            $reward_model = Mage::getModel('rewardpoints/stats');
+            $points = $reward_model->getPointsCurrent($customerId, $store_id);
+        }
+
+        $ar = array('customer_id' => $customerId, 'smogi_bucks' => $points);
+
+        echo json_encode($ar);
+    }
+
     public function getrangoliprofilebyidAction()
     {
         $customerId = $this->getRequest()->getParam('id');
