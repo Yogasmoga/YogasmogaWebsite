@@ -369,9 +369,9 @@ jQuery(document).ready(function($){
     $(".level2 >li:first-child .toggle-ys-menu").click();
 
 
-    $(".sign-in-box h1").click(function(){
+    /*$(".sign-in-box h1").click(function(){
         $(this).parent().find(".toggle_dropdown").click();
-    });
+    });*/
 /*
     $(".checkout-onepage-index .head").each(function(){
         $(this).click(function(){
