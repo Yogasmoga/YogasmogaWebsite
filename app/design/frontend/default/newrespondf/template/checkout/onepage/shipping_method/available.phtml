@@ -30,11 +30,12 @@
                 <?php if ($_rate->getErrorMessage()): ?>
                     <p class="shipping_method_errormsg"><?php echo $this->escapeHtml($_rate->getErrorMessage()) ?></p>
                 <?php else: ?>
+                   <?php $firstTime = true; ?>
                     <div class="method">
                         <p>
                                 <span>
                                     <?php if ($_sole) : ?>
-                                        <span class="no-display"><input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>" checked="checked" /></span>
+                                        <span class="no-display"><input name="shipping_method" type="radio" <?php if($firstTime){echo "checked";} $firstTime = false; ?> value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>" checked="checked" /></span>
                                         <label class="shipping_method_radio">
                                             <input name="shipping_method_dummy" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>" checked="checked" class="radio"/>
                                         </label>
