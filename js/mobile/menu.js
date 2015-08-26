@@ -399,9 +399,9 @@ jQuery(document).ready(function($){
     });
 
     $(".fabric_detail_mobile ul li > p:first-child").click(function(){
-        $(".fabric_detail_mobile ul li > p:first-child").removeClass("active");
-        $(".fabric_detail_mobile ul li > p:first-child + p").hide();
-        $(this).addClass("active");
+        $(".fabric_detail_mobile ul li > p:first-child").not($(this)).removeClass("active");
+        $(this).toggleClass("active");
+        $(".fabric_detail_mobile ul li > p:first-child +p").not($(this).next()).slideUp();
         $(this).next().slideToggle();
     });
 
@@ -415,5 +415,10 @@ jQuery(document).ready(function($){
 
     $(".sign-in-box h1").click(function(){
         $(this).next().click();
-    })
+    });
+
+    $(".one-page-checkout .section .head").click(function(){
+       //$(this).find(".arrow-tag").click();
+    });
+
 });

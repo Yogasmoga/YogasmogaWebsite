@@ -1820,7 +1820,19 @@ button.place-order::before, #shopping-cart-table .button::before, #shopping-cart
     top: 9px;
     width: 34px;
 }
-
+#shopping-cart-totals-table + .button.btn-update::before {
+    background-image: none;
+    content: "PROCEED TO CHECKOUT";
+    font: 16px/44px ITCAvantGardeStd-Bk;
+    height: 72px;
+    letter-spacing: 1px;
+    top: 0;
+    width: 100%;
+}
+#shopping-cart-totals-table + .button.btn-update {
+    background: #00b900 none repeat scroll 0 0 !important;
+    color: #fff;
+}
 button[name="update_cart_action_checkout"]::before {
     background: none !important;
 }
@@ -1867,14 +1879,14 @@ button[name="update_cart_action_checkout"] {
 }
 
 .apply_promo_login {
-    line-height: 32px;
+    line-height: 30px;
     text-align: left;
 }
 
 .apply_promo_login > span {
     color: #00B800;
     float: right;
-    font: 20px ITCAvantGardeStd-Bk;
+    font: 21px ITCAvantGardeStd-Bk;
     margin-right: 8px;
 }
 
@@ -2539,7 +2551,7 @@ tr.td-noborder td {
 
 #checkout-step-cart {
     display: block;
-    padding-bottom: 64px;
+    padding-bottom: 72px;
     position: relative;
 }
 
@@ -2552,6 +2564,7 @@ tr.td-noborder td {
     width: 100%;
     font: 16px ITCAvantGardeStd-Bk;
     border: 14px solid #fff;
+    letter-spacing: 1px;
 }
 
 #shopping-cart-table .col_left_img {
@@ -2605,7 +2618,7 @@ tr.td-noborder td {
     height: 76px;
 }
 
-#shipping-method-buttons-container button{
+#shipping-method-buttons-container button {
     bottom: 14px !important;
 }
 
@@ -2870,12 +2883,10 @@ h4.legend {
 }
 
 #shopping-cart-totals-table {
-    border-bottom: 1px solid #555;
-    border-top: 1px solid #555;
+    border-top: 1px solid #999;
     color: #555;
-    font: 13px ITCAvantGardeStd-Bk;
-    letter-spacing: 1px;
-    margin: 20px 0;
+    font: 12px/18px graphikregular;
+    margin: 0 0 11px;
     width: 100%;
 }
 
@@ -2916,7 +2927,7 @@ h4.legend {
 #discount-coupon-form .discount-form .input-text, #discountFormPoints2 #points_to_be_used {
     float: left;
     height: 40px !important;
-    margin: 10px 0;
+    margin: 25px 0 0;
     min-width: 249px;
     text-align: left;
     width: 78%;
@@ -2973,15 +2984,16 @@ h4.legend {
 
 #error_msg_smogi {
     color: #f00;
-    font: 12px/44px GraphikRegular;
+    font: 12px/18px GraphikRegular;
     text-align: left;
+    margin-top: 15px;
 }
 
 #error_msg_coupon {
     color: #f00;
     float: left;
-    margin-bottom: 15px;
-    margin-top: -11px;
+    margin-bottom: 20px;
+    margin-top: -2px;
     text-align: left;
 }
 
@@ -2991,15 +3003,15 @@ h4.legend {
     color: #00B800;
     float: right;
     font: 12px/44px AvantGarde-Demi !important;
-    margin-right: 8px;
-    margin-top: 9px;
+    margin-right: 7px;
+    margin-top: 25px;
     letter-spacing: 1px;
 }
 
 #discountFormPoints2 p {
     float: left;
-    font: 12px/20px ITCAvantGardeStd-Bk;
-    margin-bottom: 14px;
+    font: 12px/30px ITCAvantGardeStd-Bk;
+    margin-bottom: 0px;
     margin-top: 14px;
     text-align: left;
     width: 70%;
@@ -3030,22 +3042,28 @@ h4.legend {
 .checkout-cart-index #main, .checkout-onepage-index #main {
     padding-top: 44px;
 }
-
-#shopping-cart-totals-table tr td:first-child {
+#shopping-cart-totals-table tbody tr:first-child td {padding-top: 20px !important;}
+#shopping-cart-totals-table tfoot tr:last-child td {padding-bottom: 0 !important;}
+#shopping-cart-totals-table tr td {
+    box-sizing: border-box;
     display: inline-block;
     float: left;
-    font-size: 11px;
-    font-weight: bold;
-    line-height: 28px;
+    font-size: 12px;
+    padding: 7px 0;
     text-align: left !important;
-    text-transform: capitalize;
 }
-
+#shopping-cart-totals-table tr td:first-child {
+    width: 70%;
+}
+#shopping-cart-totals-table tr td:last-child {
+    text-align: right !important;
+    width: 30%;
+}
 #stripe-change-payment-form {
     clear: both;
 }
 
-.one-page-checkout input,.one-page-checkout  textarea,.one-page-checkout  select {
+.one-page-checkout input, .one-page-checkout textarea, .one-page-checkout select {
     height: 40px !important;
     color: #555555 !important;
     border-radius: 0;
@@ -3435,7 +3453,8 @@ h4.legend {
 .col_right_options .product-name {
     text-align: center;
 }
-#checkout-shipping-method-load span:nth-child(2) label{
+
+#checkout-shipping-method-load span:nth-child(2) label {
     display: block;
     height: 44px;
     padding-left: 50px;
@@ -3650,13 +3669,13 @@ h4.legend {
     min-height: 80px;
 }
 
-
 .gridWrap .productCont:nth-child(2n) {
     border-left: 2px solid #fff;
 }
+
 .gridWrap .productCont:nth-child(2n+1) {
     border-right: 2px solid #fff;
-    clear:left;
+    clear: left;
 }
 
 .productCont img {
@@ -3962,6 +3981,7 @@ ul.checkout-cont > li {
     margin-left: 14px;
     width: 40px;
 }
+
 .detail-page .size-list div {
     float: left;
     height: 40px;
@@ -4011,7 +4031,7 @@ ul.checkout-cont > li {
 }
 
 .detail-page .includeoptionmain {
-    margin-bottom: 19px;
+    /*margin-bottom: 19px;*/
 }
 
 .detail-page .color-box span, .detail-page .selectedsize span, .detail-page .chart-txt {
@@ -4076,6 +4096,7 @@ ul.checkout-cont > li {
     padding: 0 12px;
     width: 100%;
     z-index: 0;
+    margin-top: 19px;
 }
 
 .detail-page .cart-option .add span {
@@ -4173,12 +4194,15 @@ ul.checkout-cont > li {
     line-height: 20px;
     padding: 21px 2px 25px;
 }
+
 .detail-page .description-block .inner-feature > a {
     line-height: 0 !important;
 }
+
 .design-feature .inner-feature {
     margin-bottom: 0 !important;
 }
+
 .design-feature .inner-content li:last-child {
     margin-bottom: 30px !important;
 }
@@ -4254,7 +4278,7 @@ ul.checkout-cont > li {
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-block {
     width: 100%;
-    margin: 15px 0;
+    margin: 10px 0;
 }
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-block img {
@@ -4280,7 +4304,7 @@ ul.checkout-cont > li {
 .detail-page .description-block .first-list .detail-view .fitDetail tr:first-child td {
     /* border-bottom: 1px solid #999; */
     border-top: 1px solid #999;
-    padding: 4px 6px ;
+    padding: 4px 6px;
     font-family: AvantGarde-Demi;
     font-size: 12px;
     letter-spacing: 1px;
@@ -4297,11 +4321,13 @@ ul.checkout-cont > li {
     font-size: 12px;
 }
 
-.chart-table tr:last-child td{
+/*.chart-table tr:last-child td {
     border-bottom: none !important;
-}
-
-.detail-page .description-block .first-list .detail-view .fitDetail td {
+}*/
+.fit.inner-content .lg-size-chart{
+    margin-bottom: 0 !important;
+}.detail-page .description-block .first-list .detail-view .fitDetail td
+ {
     /*border-right: 1px solid #CCC;*/
     font-size: 12px;
     text-transform: uppercase;
@@ -4310,7 +4336,9 @@ ul.checkout-cont > li {
     line-height: 19px;
     width: 11.801242236024844720496894409938%;
 }
-
+.detail-page .description-block .first-list .detail-view .fitDetail tr:last-child td{
+    border-bottom: none !important;
+}
 .detail-page .description-block .first-list .detail-view .fitDetail .video-box {
     font-family: GraphikRegular;
     font-size: 12px;
@@ -4327,6 +4355,7 @@ ul.checkout-cont > li {
     height: 44px;
     margin-left: 0 !important;
     width: 100%;
+    display: none;
 }
 
 .vlink-cont .block-link {
@@ -4335,7 +4364,10 @@ ul.checkout-cont > li {
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-box li {
     list-style: disc;
-    font: 14px/18px GraphikRegular;
+    font: 14px/20px GraphikRegular;
+}
+.fit.inner-content {
+    padding-top: 9px !important;
 }
 
 /**************************************** 6-may ends *******************/
@@ -4775,7 +4807,7 @@ table.productdetailtable div#colorcontainer div table {
     margin: 25px 0 0 0;
     position: relative;
     width: 50%;
-    border:2px solid #fff;
+    border: 2px solid #fff;
 }
 
 #checkout-payment-method-load dt label {
@@ -4836,7 +4868,7 @@ table.productdetailtable div#colorcontainer div table {
     top: 44px;
     width: 100%;
     z-index: 999;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .my-account-block .sign-in-box {
@@ -4968,7 +5000,7 @@ table.productdetailtable div#colorcontainer div table {
 }
 
 .selectedlength div {
-    font: 15px ITCAvantGardeStd-Bk;
+    font: 14px ITCAvantGardeStd-Bk;
     margin-bottom: 20px;
 }
 
@@ -5342,7 +5374,9 @@ table.redeem-giftcard {
 }
 
 p.apply_promo_label {
-    margin-bottom: 15px;
+    /*margin-bottom: 14px;*/
+    margin-top: -10px;
+    line-height: 30px;
     position: relative;
     text-align: left;
 }
@@ -5350,7 +5384,7 @@ p.apply_promo_label {
 p.apply_promo_label > span {
     color: #00B800;
     font: 21px ITCAvantGardeStd-Bk;
-    margin-top: -8px;
+    margin-top: 0px;
     position: absolute;
     right: 9px;
 }
@@ -5359,15 +5393,17 @@ p.apply_promo_label > span {
     float: left;
     margin-bottom: 20px;
     width: 78%;
+    margin-top: 15px;
 }
 
 #points_error .button.btn-update {
-    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: medium none;
-    color: #00B800;
+    color: #00b800;
     float: right;
-    letter-spacing: 1px;
     font: 12px/44px AvantGarde-Demi !important;
+    letter-spacing: 1px;
+    margin-top: 15px;
 }
 
 .apply_promo_code_div {
@@ -5698,6 +5734,7 @@ p.required {
 #wishlist-table .span5:nth-child(odd) .col_left_img {
     border-right: 2px solid #fff;
 }
+
 #wishlist-table .span5:nth-child(even) .col_left_img {
     border-left: 2px solid #fff;
 }
@@ -6490,7 +6527,7 @@ button#send2 {
     color: #00B800;
     float: right;
     font: 12px AvantGarde-Demi !important;
-    margin-top: 17px;
+    margin-top: 20px;
     letter-spacing: 1px;
 }
 
@@ -6525,10 +6562,6 @@ button#send2 {
     position: absolute;
 }
 
-#shopping-cart-totals-table .reward-point td:nth-child(2) {
-    width: 70px !important;
-}
-
 .colors_list {
     display: none;
     float: left;
@@ -6547,9 +6580,6 @@ button#send2 {
 .inner-aurum .first-li {
     padding: 4px 0 15px;
 }
-
-
-
 
 .see_our_colors p {
     border-top: 1px solid #bfbfbf;
@@ -6630,7 +6660,6 @@ button#send2 {
 .col-1.col-ship > span {
     margin-left: 5px;
 }
-
 
 .flex-direction-nav {
     height: 20px;
@@ -6904,7 +6933,8 @@ video {
     float: none;
     width: 100% !important;
 }
-.see_our_colors{
+
+.see_our_colors {
     margin-top: -35px;
     padding: 0 12px;
     margin-bottom: 35px;
@@ -6923,10 +6953,11 @@ video {
     font: 14px/20px GraphikRegular;
 }
 
-.fabric_detail_mobile h2{
+.fabric_detail_mobile h2 {
     font: normal 19px/26px ITCAvantGardeStd-Bk;
     color: #AD8536;
 }
+
 .fabric_detail_mobile > ul {
     float: left;
     margin-top: 30px;
@@ -6991,7 +7022,7 @@ video {
     border-top: 1px solid #999;
 }
 
-.selected_cart_products .col_right_options .product-name{
+.selected_cart_products .col_right_options .product-name {
     text-align: left;
 }
 
@@ -7088,8 +7119,15 @@ video {
     letter-spacing: 1px;
     margin: 0;
     padding-left: 36px;
+    height: 44px;
 }
 
+.fabric-technology.inner-content {
+    padding-top: 6px !important;
+}
+.fabric-technology.inner-content .fabric_detail_mobile h2 + p {
+    margin-top: 15px;
+}
 .fabric_detail_mobile ul li > p:first-child:hover {
     background: #f2f2f2;
 }
@@ -7097,6 +7135,7 @@ video {
 .fabric_detail_mobile ul li > p:first-child.active svg line:nth-child(3) {
     stroke: none;
 }
+
 /*
 .fabric_detail_mobile ul li > p:first-child.active + p {
     display: block;
@@ -7134,77 +7173,90 @@ video {
     padding-top: 0;
 }
 
-
-
 .wishlist-items .span5 {
     float: left;
     width: 50%;
 }
 
-.wishlist-items .span5 .price-box{
+.wishlist-items .span5 .price-box {
     float: left;
     width: 100%;
     font: 12px/18px ITCAvantGardeStd-Bk;
     text-align: center;
 }
-.wishlist-items .span5  p{
+
+.wishlist-items .span5 p {
     float: left;
     width: 100%;
     text-align: center;
     margin-bottom: 14px;
 }
-.wishlist-items .span5  p a{
+
+.wishlist-items .span5 p a {
     color: #AD8536;
 }
+
 .wishlist-items .span5:nth-child(2n+1) {
     clear: left;
 }
-#shopping-cart-totals-table .reward-point .price{
+
+#shopping-cart-totals-table .reward-point .price {
     color: #FF6600;
 }
+
 #checkout-review-submit .complete.head {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     font: 12px/18px AvantGarde-Demi;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
+
 #checkout-review-submit div.complete {
     border: medium none !important;
 }
-#checkout-step-review{
+
+#checkout-step-review {
     float: left;
     width: 100%;
 }
-#co-billing-form .form-list li{
+
+#co-billing-form .form-list li {
     padding: 0;
-    height: 44px;
+    /*height: 44px;*/
     vertical-align: middle;
 }
-#co-billing-form .input-box{
+
+#co-billing-form .input-box {
     margin-bottom: 5px;
 }
-#opc-shipping button,#payment-buttons-container button{
+
+#opc-shipping button, #payment-buttons-container button {
     bottom: 14px !important;
 }
 
-#shipping-please-wait{
+#shipping-please-wait {
     height: 0 !important;
     overflow: hidden;
     padding: 0;
     width: 0 !important;
 }
+
 .description-block .inner-content div:last-child {
     margin-bottom: 30px;
 }
+
 .description-block .inner-content div.fitDetail {
     margin-bottom: 0;
 }
-.description-block .inner-content div.fitDetail table{
-    margin-top: 25px;
+
+.description-block .inner-content div.fitDetail table {
+    margin-top: 15px;
 }
-#ajaxlogin_button_send .st0, #create_account .st0{
+
+#ajaxlogin_button_send .st0, #create_account .st0 {
     stroke: #fff !important;
 }
-div[rel="yogas_principles"] .block_content p:first-child{
+
+div[rel="yogas_principles"] .block_content p:first-child {
     margin-top: 16px;
 }
