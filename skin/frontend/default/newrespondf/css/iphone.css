@@ -2886,7 +2886,7 @@ h4.legend {
     border-top: 1px solid #999;
     color: #555;
     font: 12px/18px graphikregular;
-    margin: 20px 0;
+    margin: 0 0 11px;
     width: 100%;
 }
 
@@ -3010,7 +3010,7 @@ h4.legend {
 #discountFormPoints2 p {
     float: left;
     font: 12px/30px ITCAvantGardeStd-Bk;
-    margin-bottom: 4px;
+    margin-bottom: 0px;
     margin-top: 14px;
     text-align: left;
     width: 70%;
@@ -3041,14 +3041,14 @@ h4.legend {
 .checkout-cart-index #main, .checkout-onepage-index #main {
     padding-top: 44px;
 }
-#shopping-cart-totals-table tbody tr:first-child td {padding-top: 25px !important;}
+#shopping-cart-totals-table tbody tr:first-child td {padding-top: 20px !important;}
 #shopping-cart-totals-table tfoot tr:last-child td {padding-bottom: 0 !important;}
 #shopping-cart-totals-table tr td {
     box-sizing: border-box;
     display: inline-block;
     float: left;
     font-size: 12px;
-    padding: 12px 0;
+    padding: 7px 0;
     text-align: left !important;
 }
 #shopping-cart-totals-table tr td:first-child {

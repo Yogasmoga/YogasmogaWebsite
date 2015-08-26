@@ -415,5 +415,10 @@ jQuery(document).ready(function($){
 
     $(".sign-in-box h1").click(function(){
         $(this).next().click();
-    })
+    });
+
+    $(".one-page-checkout .section .head").click(function(){
+       //$(this).find(".arrow-tag").click();
+    });
+
 });
