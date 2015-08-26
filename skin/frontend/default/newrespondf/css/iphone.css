@@ -7266,3 +7266,9 @@ label[for="stripe_expiration"] {
 #shopping-cart-totals-table tbody tr:first-child td{
     font-weight: bold;
 }
+.discount-form > form#giftcardActive {
+    float: left;
+    margin-bottom: -15px;
+    margin-top: 15px;
+    width: 100%;
+}
