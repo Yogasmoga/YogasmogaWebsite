@@ -4030,7 +4030,7 @@ ul.checkout-cont > li {
 }
 
 .detail-page .includeoptionmain {
-    margin-bottom: 19px;
+    /*margin-bottom: 19px;*/
 }
 
 .detail-page .color-box span, .detail-page .selectedsize span, .detail-page .chart-txt {
@@ -4095,6 +4095,7 @@ ul.checkout-cont > li {
     padding: 0 12px;
     width: 100%;
     z-index: 0;
+    margin-top: 19px;
 }
 
 .detail-page .cart-option .add span {
