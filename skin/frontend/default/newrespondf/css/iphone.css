@@ -3753,7 +3753,7 @@ h4.legend {
 .caption {
     /*height: 90px;*/
     margin: 0;
-    padding: 2px;
+    padding: 20px 0 0;
 }
 
 .first-confname1 .title {
@@ -4163,22 +4163,31 @@ ul.checkout-cont > li {
 }
 
 .detail-page .description-block .first-list .design-feature .inner-content li {
-    margin: 15px 0;
+    margin: 0;
 }
 
 .detail-page .description-block .first-list .design-feature .inner-content li .inner-feature span {
     font-family: GraphikRegular;
     display: block;
-    font-size: 12px;
-    line-height: 18px;
-    padding: 15px 3px;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 21px 2px 25px;
+}
+.detail-page .description-block .inner-feature > a {
+    line-height: 0 !important;
+}
+.design-feature .inner-feature {
+    margin-bottom: 0 !important;
+}
+.design-feature .inner-content li:last-child {
+    margin-bottom: 30px !important;
 }
 
 .detail-page .description-block .first-list .detail-view .shortdesc {
     font-family: GraphikRegular;
     display: block;
-    font-size: 15px;
-    line-height: 22px;
+    font-size: 14px;
+    line-height: 20px;
 }
 
 .detail-page .description-block .complete-look .caption .prd_title a {

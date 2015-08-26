@@ -325,7 +325,7 @@ table.productdetailtable div#sizecontainer table td div {
 
 table.productdetailtable div#sizecontainer table td div.dvselectedsize {
     background: #00B900;
-    border-color: #00B900;
+    border-color: #00B900 !important;
     color: #fff;
 }
 
