@@ -7088,6 +7088,7 @@ video {
     letter-spacing: 1px;
     margin: 0;
     padding-left: 36px;
+    height: 44px;
 }
 
 .fabric_detail_mobile ul li > p:first-child:hover {

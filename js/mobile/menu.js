@@ -401,7 +401,7 @@ jQuery(document).ready(function($){
     $(".fabric_detail_mobile ul li > p:first-child").click(function(){
         $(".fabric_detail_mobile ul li > p:first-child").not($(this)).removeClass("active");
         $(this).toggleClass("active");
-        $(".fabric_detail_mobile ul li > p:first-child +p").slideUp();
+        $(".fabric_detail_mobile ul li > p:first-child +p").not($(this).next()).slideUp();
         $(this).next().slideToggle();
     });
 
