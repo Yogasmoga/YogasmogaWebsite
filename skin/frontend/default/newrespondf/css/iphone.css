@@ -2605,7 +2605,7 @@ tr.td-noborder td {
     height: 76px;
 }
 
-#shipping-method-buttons-container button{
+#shipping-method-buttons-container button {
     bottom: 14px !important;
 }
 
@@ -3045,7 +3045,7 @@ h4.legend {
     clear: both;
 }
 
-.one-page-checkout input,.one-page-checkout  textarea,.one-page-checkout  select {
+.one-page-checkout input, .one-page-checkout textarea, .one-page-checkout select {
     height: 40px !important;
     color: #555555 !important;
     border-radius: 0;
@@ -3435,7 +3435,8 @@ h4.legend {
 .col_right_options .product-name {
     text-align: center;
 }
-#checkout-shipping-method-load span:nth-child(2) label{
+
+#checkout-shipping-method-load span:nth-child(2) label {
     display: block;
     height: 44px;
     padding-left: 50px;
@@ -3650,13 +3651,13 @@ h4.legend {
     min-height: 80px;
 }
 
-
 .gridWrap .productCont:nth-child(2n) {
     border-left: 2px solid #fff;
 }
+
 .gridWrap .productCont:nth-child(2n+1) {
     border-right: 2px solid #fff;
-    clear:left;
+    clear: left;
 }
 
 .productCont img {
@@ -3962,6 +3963,7 @@ ul.checkout-cont > li {
     margin-left: 14px;
     width: 40px;
 }
+
 .detail-page .size-list div {
     float: left;
     height: 40px;
@@ -4173,12 +4175,15 @@ ul.checkout-cont > li {
     line-height: 20px;
     padding: 21px 2px 25px;
 }
+
 .detail-page .description-block .inner-feature > a {
     line-height: 0 !important;
 }
+
 .design-feature .inner-feature {
     margin-bottom: 0 !important;
 }
+
 .design-feature .inner-content li:last-child {
     margin-bottom: 30px !important;
 }
@@ -4280,7 +4285,7 @@ ul.checkout-cont > li {
 .detail-page .description-block .first-list .detail-view .fitDetail tr:first-child td {
     /* border-bottom: 1px solid #999; */
     border-top: 1px solid #999;
-    padding: 4px 6px ;
+    padding: 4px 6px;
     font-family: AvantGarde-Demi;
     font-size: 12px;
     letter-spacing: 1px;
@@ -4297,7 +4302,7 @@ ul.checkout-cont > li {
     font-size: 12px;
 }
 
-.chart-table tr:last-child td{
+.chart-table tr:last-child td {
     border-bottom: none !important;
 }
 
@@ -4335,7 +4340,7 @@ ul.checkout-cont > li {
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-box li {
     list-style: disc;
-    font: 14px/18px GraphikRegular;
+    font: 14px/20px GraphikRegular;
 }
 
 /**************************************** 6-may ends *******************/
@@ -4775,7 +4780,7 @@ table.productdetailtable div#colorcontainer div table {
     margin: 25px 0 0 0;
     position: relative;
     width: 50%;
-    border:2px solid #fff;
+    border: 2px solid #fff;
 }
 
 #checkout-payment-method-load dt label {
@@ -4836,7 +4841,7 @@ table.productdetailtable div#colorcontainer div table {
     top: 44px;
     width: 100%;
     z-index: 999;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .my-account-block .sign-in-box {
@@ -5698,6 +5703,7 @@ p.required {
 #wishlist-table .span5:nth-child(odd) .col_left_img {
     border-right: 2px solid #fff;
 }
+
 #wishlist-table .span5:nth-child(even) .col_left_img {
     border-left: 2px solid #fff;
 }
@@ -6548,9 +6554,6 @@ button#send2 {
     padding: 4px 0 15px;
 }
 
-
-
-
 .see_our_colors p {
     border-top: 1px solid #bfbfbf;
     color: #555555;
@@ -6630,7 +6633,6 @@ button#send2 {
 .col-1.col-ship > span {
     margin-left: 5px;
 }
-
 
 .flex-direction-nav {
     height: 20px;
@@ -6904,7 +6906,8 @@ video {
     float: none;
     width: 100% !important;
 }
-.see_our_colors{
+
+.see_our_colors {
     margin-top: -35px;
     padding: 0 12px;
     margin-bottom: 35px;
@@ -6923,10 +6926,11 @@ video {
     font: 14px/20px GraphikRegular;
 }
 
-.fabric_detail_mobile h2{
+.fabric_detail_mobile h2 {
     font: normal 19px/26px ITCAvantGardeStd-Bk;
     color: #AD8536;
 }
+
 .fabric_detail_mobile > ul {
     float: left;
     margin-top: 30px;
@@ -6991,7 +6995,7 @@ video {
     border-top: 1px solid #999;
 }
 
-.selected_cart_products .col_right_options .product-name{
+.selected_cart_products .col_right_options .product-name {
     text-align: left;
 }
 
@@ -7091,6 +7095,12 @@ video {
     height: 44px;
 }
 
+.fabric-technology.inner-content {
+    padding-top: 6px !important;
+}
+.fabric-technology.inner-content .fabric_detail_mobile h2 + p {
+    margin-top: 15px;
+}
 .fabric_detail_mobile ul li > p:first-child:hover {
     background: #f2f2f2;
 }
@@ -7098,6 +7108,7 @@ video {
 .fabric_detail_mobile ul li > p:first-child.active svg line:nth-child(3) {
     stroke: none;
 }
+
 /*
 .fabric_detail_mobile ul li > p:first-child.active + p {
     display: block;
@@ -7135,77 +7146,90 @@ video {
     padding-top: 0;
 }
 
-
-
 .wishlist-items .span5 {
     float: left;
     width: 50%;
 }
 
-.wishlist-items .span5 .price-box{
+.wishlist-items .span5 .price-box {
     float: left;
     width: 100%;
     font: 12px/18px ITCAvantGardeStd-Bk;
     text-align: center;
 }
-.wishlist-items .span5  p{
+
+.wishlist-items .span5 p {
     float: left;
     width: 100%;
     text-align: center;
     margin-bottom: 14px;
 }
-.wishlist-items .span5  p a{
+
+.wishlist-items .span5 p a {
     color: #AD8536;
 }
+
 .wishlist-items .span5:nth-child(2n+1) {
     clear: left;
 }
-#shopping-cart-totals-table .reward-point .price{
+
+#shopping-cart-totals-table .reward-point .price {
     color: #FF6600;
 }
+
 #checkout-review-submit .complete.head {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     font: 12px/18px AvantGarde-Demi;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
+
 #checkout-review-submit div.complete {
     border: medium none !important;
 }
-#checkout-step-review{
+
+#checkout-step-review {
     float: left;
     width: 100%;
 }
-#co-billing-form .form-list li{
+
+#co-billing-form .form-list li {
     padding: 0;
     height: 44px;
     vertical-align: middle;
 }
-#co-billing-form .input-box{
+
+#co-billing-form .input-box {
     margin-bottom: 5px;
 }
-#opc-shipping button,#payment-buttons-container button{
+
+#opc-shipping button, #payment-buttons-container button {
     bottom: 14px !important;
 }
 
-#shipping-please-wait{
+#shipping-please-wait {
     height: 0 !important;
     overflow: hidden;
     padding: 0;
     width: 0 !important;
 }
+
 .description-block .inner-content div:last-child {
     margin-bottom: 30px;
 }
+
 .description-block .inner-content div.fitDetail {
     margin-bottom: 0;
 }
-.description-block .inner-content div.fitDetail table{
+
+.description-block .inner-content div.fitDetail table {
     margin-top: 25px;
 }
-#ajaxlogin_button_send .st0, #create_account .st0{
+
+#ajaxlogin_button_send .st0, #create_account .st0 {
     stroke: #fff !important;
 }
-div[rel="yogas_principles"] .block_content p:first-child{
+
+div[rel="yogas_principles"] .block_content p:first-child {
     margin-top: 16px;
 }

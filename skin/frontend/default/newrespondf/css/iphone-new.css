@@ -146,9 +146,11 @@
     transform-origin: 0 0 0;
     transition-duration: 1s;
 }
+
 .detail-part .arrow-tag.is-active svg line:nth-child(3), .sign-in-box .arrow-tag.is-active svg line:nth-child(3) {
     stroke: none;
 }
+
 .detail-part .arrow-tag img, .sign-in-box .arrow-tag img {
     float: right;
     margin: 9px 0;
@@ -185,12 +187,15 @@
 .account-nav .sub-nav li:last-child {
     border: none;
 }
+
 li.menu-item.contact_icon_li:last-child {
     padding-bottom: 15px;
 }
+
 li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     padding-bottom: 15px;
 }
+
 .account-nav .sub-nav li a {
     color: #656565;
     display: block;
@@ -203,12 +208,15 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     width: 100%;
     padding: 0 14px;
 }
+
 .account-nav .sub-nav li a.active_link {
     color: #ae8637;
 }
-.account-nav .sub-nav li a:hover{
+
+.account-nav .sub-nav li a:hover {
     background: #EEEEEE;
 }
+
 .ys-tech-block .story-box span {
     font-size: 18px;
     line-height: 22px;
@@ -242,14 +250,17 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 .discover-fabric .outer-part p span {
     font-family: ITCAvantGardeStd-Bk;
 }
+
 .earnsmogibuckstext > span {
     left: 0;
     position: absolute;
     top: 3px;
 }
+
 .free-shiping {
     padding: 0 12px;
 }
+
 .our-febrics span {
     color: #555555;
     display: inline-block;
@@ -259,6 +270,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     padding-bottom: 0;
     position: static;
 }
+
 .custom-block .our-febrics p {
     font-size: 22px;
     line-height: 28px;
@@ -299,9 +311,11 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     right: -11px;
     top: 0;
 }
+
 .aurum li div.arrow-tag.is-active svg line:nth-child(3) {
     stroke: none;
 }
+
 .aurum {
     margin-top: 43px;
 }
@@ -668,9 +682,11 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     float: left;
     margin: 20px 0 0;
 }
+
 .our-breath p:last-child {
     margin-bottom: 20px;
 }
+
 .txt-cnt {
     clear: both;
     position: relative;
@@ -1176,12 +1192,14 @@ form#cardbalanceform table.redeem-giftcard {
     border-collapse: collapse;
     margin-top: 10px;
 }
+
 .dropdown_links > ul {
     height: 100%;
     overflow: auto;
     padding: 15px 0;
     width: 120%;
 }
+
 .dropdown_links > ul > li:last-child a {
-    color : #AE8637 !important;
+    color: #AE8637 !important;
 }
