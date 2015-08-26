@@ -7263,3 +7263,6 @@ div[rel="yogas_principles"] .block_content p:first-child {
 label[for="stripe_expiration"] {
     margin-top: 12px;
 }
+#shopping-cart-totals-table tbody tr:first-child td{
+    font-weight: bold;
+}
