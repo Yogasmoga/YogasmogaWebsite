@@ -2927,7 +2927,7 @@ h4.legend {
 #discount-coupon-form .discount-form .input-text, #discountFormPoints2 #points_to_be_used {
     float: left;
     height: 40px !important;
-    margin: 10px 0;
+    margin: 25px 0 0;
     min-width: 249px;
     text-align: left;
     width: 78%;
@@ -2984,15 +2984,16 @@ h4.legend {
 
 #error_msg_smogi {
     color: #f00;
-    font: 12px/44px GraphikRegular;
+    font: 12px/18px GraphikRegular;
     text-align: left;
+    margin-top: 15px;
 }
 
 #error_msg_coupon {
     color: #f00;
     float: left;
-    margin-bottom: 15px;
-    margin-top: -11px;
+    margin-bottom: 20px;
+    margin-top: -2px;
     text-align: left;
 }
 
@@ -3003,7 +3004,7 @@ h4.legend {
     float: right;
     font: 12px/44px AvantGarde-Demi !important;
     margin-right: 7px;
-    margin-top: 9px;
+    margin-top: 25px;
     letter-spacing: 1px;
 }
 
@@ -5373,8 +5374,8 @@ table.redeem-giftcard {
 }
 
 p.apply_promo_label {
-    margin-bottom: 14px;
-    margin-top: 4px;
+    /*margin-bottom: 14px;*/
+    margin-top: -10px;
     line-height: 30px;
     position: relative;
     text-align: left;
@@ -5392,15 +5393,17 @@ p.apply_promo_label > span {
     float: left;
     margin-bottom: 20px;
     width: 78%;
+    margin-top: 15px;
 }
 
 #points_error .button.btn-update {
-    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: medium none;
-    color: #00B800;
+    color: #00b800;
     float: right;
-    letter-spacing: 1px;
     font: 12px/44px AvantGarde-Demi !important;
+    letter-spacing: 1px;
+    margin-top: 15px;
 }
 
 .apply_promo_code_div {
@@ -6524,7 +6527,7 @@ button#send2 {
     color: #00B800;
     float: right;
     font: 12px AvantGarde-Demi !important;
-    margin-top: 17px;
+    margin-top: 20px;
     letter-spacing: 1px;
 }
 
