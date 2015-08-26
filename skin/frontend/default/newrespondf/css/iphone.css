@@ -3964,9 +3964,9 @@ ul.checkout-cont > li {
 }
 .detail-page .size-list div {
     float: left;
-    height: 39px;
+    height: 40px;
     margin-left: 14px;
-    width: 39px;
+    width: 40px;
 }
 
 .detail-page .bgffffff {
@@ -4022,7 +4022,7 @@ ul.checkout-cont > li {
 }
 
 .detail-page .size-list div {
-    border: 1px solid #555555 !important;
+    border: 1px solid #999 !important;
     position: relative;
 }
 
