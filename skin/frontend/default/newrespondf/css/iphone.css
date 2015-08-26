@@ -1820,7 +1820,19 @@ button.place-order::before, #shopping-cart-table .button::before, #shopping-cart
     top: 9px;
     width: 34px;
 }
-
+#shopping-cart-totals-table + .button.btn-update::before {
+    background-image: none;
+    content: "PROCEED TO CHECKOUT";
+    font: 16px/44px ITCAvantGardeStd-Bk;
+    height: 72px;
+    letter-spacing: 1px;
+    top: 0;
+    width: 100%;
+}
+#shopping-cart-totals-table + .button.btn-update {
+    background: #00b900 none repeat scroll 0 0 !important;
+    color: #fff;
+}
 button[name="update_cart_action_checkout"]::before {
     background: none !important;
 }
@@ -1867,14 +1879,14 @@ button[name="update_cart_action_checkout"] {
 }
 
 .apply_promo_login {
-    line-height: 32px;
+    line-height: 30px;
     text-align: left;
 }
 
 .apply_promo_login > span {
     color: #00B800;
     float: right;
-    font: 20px ITCAvantGardeStd-Bk;
+    font: 21px ITCAvantGardeStd-Bk;
     margin-right: 8px;
 }
 
@@ -2539,7 +2551,7 @@ tr.td-noborder td {
 
 #checkout-step-cart {
     display: block;
-    padding-bottom: 64px;
+    padding-bottom: 72px;
     position: relative;
 }
 
@@ -2552,6 +2564,7 @@ tr.td-noborder td {
     width: 100%;
     font: 16px ITCAvantGardeStd-Bk;
     border: 14px solid #fff;
+    letter-spacing: 1px;
 }
 
 #shopping-cart-table .col_left_img {
@@ -2870,11 +2883,9 @@ h4.legend {
 }
 
 #shopping-cart-totals-table {
-    border-bottom: 1px solid #555;
-    border-top: 1px solid #555;
+    border-top: 1px solid #999;
     color: #555;
-    font: 13px ITCAvantGardeStd-Bk;
-    letter-spacing: 1px;
+    font: 12px/18px graphikregular;
     margin: 20px 0;
     width: 100%;
 }
@@ -2991,15 +3002,15 @@ h4.legend {
     color: #00B800;
     float: right;
     font: 12px/44px AvantGarde-Demi !important;
-    margin-right: 8px;
+    margin-right: 7px;
     margin-top: 9px;
     letter-spacing: 1px;
 }
 
 #discountFormPoints2 p {
     float: left;
-    font: 12px/20px ITCAvantGardeStd-Bk;
-    margin-bottom: 14px;
+    font: 12px/30px ITCAvantGardeStd-Bk;
+    margin-bottom: 4px;
     margin-top: 14px;
     text-align: left;
     width: 70%;
@@ -3030,17 +3041,23 @@ h4.legend {
 .checkout-cart-index #main, .checkout-onepage-index #main {
     padding-top: 44px;
 }
-
-#shopping-cart-totals-table tr td:first-child {
+#shopping-cart-totals-table tbody tr:first-child td {padding-top: 25px !important;}
+#shopping-cart-totals-table tfoot tr:last-child td {padding-bottom: 0 !important;}
+#shopping-cart-totals-table tr td {
+    box-sizing: border-box;
     display: inline-block;
     float: left;
-    font-size: 11px;
-    font-weight: bold;
-    line-height: 28px;
+    font-size: 12px;
+    padding: 12px 0;
     text-align: left !important;
-    text-transform: capitalize;
 }
-
+#shopping-cart-totals-table tr td:first-child {
+    width: 70%;
+}
+#shopping-cart-totals-table tr td:last-child {
+    text-align: right !important;
+    width: 30%;
+}
 #stripe-change-payment-form {
     clear: both;
 }
@@ -4979,7 +4996,7 @@ table.productdetailtable div#colorcontainer div table {
 }
 
 .selectedlength div {
-    font: 15px ITCAvantGardeStd-Bk;
+    font: 14px ITCAvantGardeStd-Bk;
     margin-bottom: 20px;
 }
 
@@ -5353,7 +5370,9 @@ table.redeem-giftcard {
 }
 
 p.apply_promo_label {
-    margin-bottom: 15px;
+    margin-bottom: 14px;
+    margin-top: 4px;
+    line-height: 30px;
     position: relative;
     text-align: left;
 }
@@ -5361,7 +5380,7 @@ p.apply_promo_label {
 p.apply_promo_label > span {
     color: #00B800;
     font: 21px ITCAvantGardeStd-Bk;
-    margin-top: -8px;
+    margin-top: 0px;
     position: absolute;
     right: 9px;
 }
@@ -6535,10 +6554,6 @@ button#send2 {
     font-size: 13px;
     margin-top: -13px;
     position: absolute;
-}
-
-#shopping-cart-totals-table .reward-point td:nth-child(2) {
-    width: 70px !important;
 }
 
 .colors_list {
