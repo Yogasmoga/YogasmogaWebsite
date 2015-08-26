@@ -4259,7 +4259,7 @@ ul.checkout-cont > li {
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-block {
     width: 100%;
-    margin: 15px 0;
+    margin: 10px 0;
 }
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-block img {
@@ -4302,10 +4302,12 @@ ul.checkout-cont > li {
     font-size: 12px;
 }
 
-.chart-table tr:last-child td {
+/*.chart-table tr:last-child td {
     border-bottom: none !important;
+}*/
+.fit.inner-content .lg-size-chart{
+    margin-bottom: 0 !important;
 }
-
 .detail-page .description-block .first-list .detail-view .fitDetail td {
     /*border-right: 1px solid #CCC;*/
     font-size: 12px;
@@ -4332,6 +4334,7 @@ ul.checkout-cont > li {
     height: 44px;
     margin-left: 0 !important;
     width: 100%;
+    display: none;
 }
 
 .vlink-cont .block-link {
@@ -4342,10 +4345,13 @@ ul.checkout-cont > li {
     list-style: disc;
     font: 14px/20px GraphikRegular;
 }
+.fit.inner-content {
+    padding-top: 9px !important;
+}
 
 /**************************************** 6-may ends *******************/
 .detail-page .description-block li.detail-view:nth-last-child(2) {
-    border-bottom: 1px solid #999;
+    /*border-bottom: 1px solid #999;*/
 }
 
 .detail-page .description-block {
@@ -7223,7 +7229,7 @@ video {
 }
 
 .description-block .inner-content div.fitDetail table {
-    margin-top: 25px;
+    margin-top: 15px;
 }
 
 #ajaxlogin_button_send .st0, #create_account .st0 {
