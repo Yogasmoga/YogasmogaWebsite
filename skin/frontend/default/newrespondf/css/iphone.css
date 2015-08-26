@@ -2665,7 +2665,7 @@ label.shipping_method_radio > input[type="radio"] {
 }
 
 #billing-buttons-container .button, #shipping-buttons-container .form-button, #shipping-method-buttons-container .form-button, #payment-buttons-container .form-button {
-    background: url("../images/tick.png") no-repeat scroll center center #43ad00;
+    background: url("../images/tick.png") no-repeat scroll center center #00B900;
     border: medium none;
     color: transparent;
     height: 62px;
