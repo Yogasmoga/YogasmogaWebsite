@@ -4325,8 +4325,8 @@ ul.checkout-cont > li {
 }*/
 .fit.inner-content .lg-size-chart{
     margin-bottom: 0 !important;
-}
-.detail-page .description-block .first-list .detail-view .fitDetail td {
+}.detail-page .description-block .first-list .detail-view .fitDetail td
+ {
     /*border-right: 1px solid #CCC;*/
     font-size: 12px;
     text-transform: uppercase;
@@ -4335,7 +4335,9 @@ ul.checkout-cont > li {
     line-height: 19px;
     width: 11.801242236024844720496894409938%;
 }
-
+.detail-page .description-block .first-list .detail-view .fitDetail tr:last-child td{
+    border-bottom: none !important;
+}
 .detail-page .description-block .first-list .detail-view .fitDetail .video-box {
     font-family: GraphikRegular;
     font-size: 12px;
@@ -4369,7 +4371,7 @@ ul.checkout-cont > li {
 
 /**************************************** 6-may ends *******************/
 .detail-page .description-block li.detail-view:nth-last-child(2) {
-    /*border-bottom: 1px solid #999;*/
+    border-bottom: 1px solid #999;
 }
 
 .detail-page .description-block {
