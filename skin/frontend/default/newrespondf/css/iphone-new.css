@@ -170,6 +170,7 @@
     width: 100%;
     z-index: 9;
     top: 88px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 
 .account-nav .sub-nav {

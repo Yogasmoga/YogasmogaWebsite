@@ -3968,8 +3968,12 @@ ul.checkout-cont > li {
     color: #555555;
     font-family: ITCAvantGardeStd-Bk;
     font-size: 12px;
-    line-height: 15px;
+    line-height: 18px;
     text-decoration: none;
+}
+
+.was-amount {
+    font: 12px/18px ITCAvantGardeStd-Bk;
 }
 
 .detail-page .social-detail ul {
@@ -4291,7 +4295,7 @@ ul.checkout-cont > li {
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-block {
     width: 100%;
-    margin: 10px 0;
+    margin: 12px 0;
 }
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-block img {
@@ -4302,10 +4306,8 @@ ul.checkout-cont > li {
 
 .detail-page .description-block .first-list .detail-view .fitDetail tr:first-child td, .tble tr:first-child td {
     border-bottom: 1px solid #999;
-    border-top: 1px solid #999;
-    padding: 3px 6px;
-    font-family: graphikregular;
-    font-weight: bold;
+    padding: 0px 6px;
+    font-family: graphik-semibold;
     font-size: 12px;
     height: 30px;
     letter-spacing: 1px;
@@ -4317,9 +4319,8 @@ ul.checkout-cont > li {
 
 .detail-page .description-block .first-list .detail-view .fitDetail tr:first-child td {
     /* border-bottom: 1px solid #999; */
-    border-top: 1px solid #999;
-    padding: 4px 6px;
-    font-family: AvantGarde-Demi;
+    padding: 0px 6px;
+    font-family: graphik-semibold;
     font-size: 12px;
     letter-spacing: 1px;
 }
@@ -4644,7 +4645,7 @@ ul.checkout-cont > li {
 .selectedcolor td {
     font-family: ITCAvantGardeStd-Bk;
     font-size: 12px;
-    line-height: 15px;
+    line-height: 18px;
     color: #555555;
 }
 
@@ -5367,7 +5368,7 @@ table.productdetailtable div#colorcontainer div table {
 }
 
 .chart_container table tr:first-child td {
-    font: 12px AvantGarde-Demi;
+    font: 12px graphik-semibold;
     letter-spacing: 1px;
 }
 
@@ -6779,7 +6780,11 @@ button#send2 {
 
 .help_page .answer_content > div, .help_page .answer_content > div p {
     font: 14px/20px GraphikRegular;
-    padding: 10px 0 0;
+    padding: 12px 0 0;
+}
+
+.answer_content .size-chart {
+    margin-top: 10px;
 }
 
 .help_page .answer_content > div p:first-child {
@@ -6853,8 +6858,8 @@ button#send2 {
 
 .size-chart table th {
     border-collapse: collapse;
-    font-family: graphikregular;
-    font-weight: bold;
+    font-family: graphik-semibold;
+    font-weight: normal;
 }
 
 video {
@@ -7280,7 +7285,7 @@ video {
 }
 
 .description-block .inner-content div.fitDetail table {
-    margin-top: 15px;
+    margin-top: 11px;
 }
 
 #ajaxlogin_button_send .st0, #create_account .st0 {
