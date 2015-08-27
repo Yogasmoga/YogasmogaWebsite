@@ -418,7 +418,7 @@ else
                                 <div class="no_of_cart_items"><?php echo Mage::helper('checkout/cart')->getCart()->getItemsCount(); echo $this->__(' ITEMS') ?></div>
                                 <div class="cart_total"><?php
                                     $subTotal = Mage::getModel('checkout/cart')->getQuote()->getSubtotal();
-                                    echo $formattedPrice = Mage::helper('core')->currency($subTotal, true, false);
+                                    echo (int)$formattedPrice = Mage::helper('core')->currency($subTotal, true, false);
                                     ?>
                                 </div>
                         </div>
