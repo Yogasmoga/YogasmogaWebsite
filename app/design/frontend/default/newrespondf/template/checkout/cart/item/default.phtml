@@ -420,7 +420,7 @@ foreach ($_options as $_option) {
                             <?php else: ?>
                                 <?php
                                     $formattedPrice = $this->helper('checkout')->formatPrice($_item->getRowTotal());
-                                    echo "$". (int)substr($formattedPrice, 1,strlen($formattedPrice));
+                                    echo "$". substr($formattedPrice, 1,strlen($formattedPrice));
                                 ?>
                             <?php endif; ?>
                         <?php endif; ?>
