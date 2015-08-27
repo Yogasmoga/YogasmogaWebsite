@@ -1824,7 +1824,7 @@ button.place-order::before, #shopping-cart-table .button::before, #shopping-cart
 #shopping-cart-totals-table + .button.btn-update::before {
     background-image: none;
     content: "PROCEED TO CHECKOUT";
-    font: 14px/44px ITCAvantGardeStd-Bk;
+    font: 14px/50px ITCAvantGardeStd-Bk;
     height: 72px;
     letter-spacing: 1px;
     top: 0;
@@ -2566,7 +2566,7 @@ tr.td-noborder td {
     /*background: #43ad00;*/
     /*color: #43ad00;*/
     width: 100%;
-    font: 14px ITCAvantGardeStd-Bk;
+    font: 14px/50px ITCAvantGardeStd-Bk;
     border: 14px solid #fff;
     letter-spacing: 1px;
 }
@@ -6269,7 +6269,7 @@ h2.legend {
 
 button.btn-invite.button {
     background: #42ac00;
-    font: 14px/44px ITCAvantGardeStd-Bk;
+    font: 14px/50px ITCAvantGardeStd-Bk;
     border: none;
     color: #fff;
     width: 100%;
@@ -6945,7 +6945,7 @@ video {
     background: #00b600 none repeat scroll 0 0;
     color: #fff;
     display: inline-block;
-    font: 14px/44px ITCAvantGardeStd-Bk;
+    font: 14px/50px ITCAvantGardeStd-Bk;
     margin-top: 30px;
     width: 166px;
 }
@@ -7101,10 +7101,6 @@ video {
 .selected_cart_products .product-name > a {
     font: 12px/18px AvantGarde-demi;
     text-transform: uppercase;
-}
-
-.no_of_cart_items {
-    letter-spacing: 1px;
 }
 
 .no_of_cart_items, .cart_total {
