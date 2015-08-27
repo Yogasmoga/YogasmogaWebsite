@@ -71,7 +71,7 @@ class Zend_Currency
         'script'    => null,
         'format'    => null,
         'display'   => self::NO_SYMBOL,
-        'precision' => 0,
+        'precision' => 2,
         'name'      => null,
         'currency'  => null,
         'symbol'    => null,
