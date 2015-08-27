@@ -7273,3 +7273,6 @@ label[for="stripe_expiration"] {
     margin-top: 15px;
     width: 100%;
 }
+.flex-direction-nav {
+    display: block !important;
+}
