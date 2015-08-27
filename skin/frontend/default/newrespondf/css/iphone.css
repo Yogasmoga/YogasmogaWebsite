@@ -7317,7 +7317,7 @@ label[for="stripe_expiration"] {
 
 .btn.wish svg path {
     fill: #fff;
-    stroke: #fff !important;
+    stroke: #fff;
 }
 
 .slide_related_content > div[rel="design-block-1"] {
