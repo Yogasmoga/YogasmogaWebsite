@@ -3463,7 +3463,6 @@ h4.legend {
     color: #555;
     text-align: left;
     font: 12px/18px AvantGarde-Demi;
-    letter-spacing: 1px;
     text-transform: uppercase;
 }
 
@@ -3488,6 +3487,7 @@ h4.legend {
 
 #checkout-review-table tr.cart-info .col_right_options .item-options {
     float: left;
+    font-family: graphikregular;
 }
 
 #checkout-review-table tr.cart-info .col_right_options .item-options span {
@@ -5372,7 +5372,7 @@ table.productdetailtable div#colorcontainer div table {
 }
 
 .chart_container table tr:first-child td {
-    font: 12px graphik-semibold;
+    font: 12px/30px graphik-semibold;
     letter-spacing: 1px;
 }
 
@@ -5496,7 +5496,7 @@ p.required {
 }
 
 .cart-price .price {
-    font: 12px ITCAvantGardeStd-Bk;
+    font: 12px graphikregular;
 }
 
 #checkout-review-table tr.cart-info .col_left_img img {
