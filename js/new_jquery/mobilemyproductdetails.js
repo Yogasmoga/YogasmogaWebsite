@@ -938,7 +938,8 @@ jQuery(document).ready(function($){
                         btn.find("svg path").css({"fill":"#fff","stroke":"#FFF"});
                     }
                     else {
-                        btn.find("svg path").css({"fill":"#AE8637","stroke": "#AE8637"});
+                        btn.find("svg path").css("fill","#AE8637");
+                        btn.find("svg path").css("stroke", "#AE8637");
                     }
                 }
             });
