@@ -194,7 +194,7 @@ class Mage_Directory_Model_Currency extends Mage_Core_Model_Abstract
      */
     public function format($price, $options=array(), $includeContainer = true, $addBrackets = false)
     {
-        return $this->formatPrecision($price, 0, $options, $includeContainer, $addBrackets);
+        return $this->formatPrecision($price, 2, $options, $includeContainer, $addBrackets);
     }
 
     /**
@@ -210,7 +210,8 @@ class Mage_Directory_Model_Currency extends Mage_Core_Model_Abstract
     public function formatPrecision($price, $precision, $options=array(), $includeContainer = true, $addBrackets = false)
     {
         if (!isset($options['precision'])) {
-            $options['precision'] = $precision;
+            //$options['precision'] = $precision;
+			$options['precision'] = 0;
         }
         if ($includeContainer) {
             return '<span class="price">' . ($addBrackets ? '[' : '') . $this->formatTxt($price, $options) . ($addBrackets ? ']' : '') . '</span>';
