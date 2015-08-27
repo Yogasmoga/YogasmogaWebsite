@@ -369,9 +369,9 @@ jQuery(document).ready(function($){
     $(".level2 >li:first-child .toggle-ys-menu").click();
 
 
-    $(".sign-in-box h1").click(function(){
+    /*$(".sign-in-box h1").click(function(){
         $(this).parent().find(".toggle_dropdown").click();
-    });
+    });*/
 /*
     $(".checkout-onepage-index .head").each(function(){
         $(this).click(function(){
@@ -411,6 +411,16 @@ jQuery(document).ready(function($){
     });
     $("#shopping_arrow").click(function(){
        $(".section").removeClass("active");
+        $("#opc-billing .head + div").hide();
+        $("#opc-shipping .head + div").hide();
+        $("#opc-shipping_method .head + div").hide();
+        $("#opc-payment .head + div").hide();
+        $("#opc-review .head + div").hide();
+        $("#opc-billing").removeClass("completed");
+        $("#opc-shipping").removeClass("completed");
+        $("#opc-shipping_method").removeClass("completed");
+        $("#opc-payment").removeClass("completed");
+        $("#opc-review").removeClass("completed");
     });
 
     $(".sign-in-box h1").click(function(){

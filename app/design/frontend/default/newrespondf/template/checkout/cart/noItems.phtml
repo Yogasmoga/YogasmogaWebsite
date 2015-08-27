@@ -30,15 +30,69 @@
 //    });
 </script>
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/cart.css'); ?>" media="all" />
-<div class="cart">
+<!--<div class="cart">
 <div class="page-title">
-    <h1><?php echo $this->__('Shopping Bag') ?></h1>
+    <h1><?php /*echo $this->__('Shopping Bag') */?></h1>
 </div>
 <div class="cart-empty">
-    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-    <?php echo $this->getChildHtml('checkout_cart_empty_widget'); ?>
-    <p style="margin-bottom: 10px;"><?php echo $this->__('You have no items in your shopping bag.') ?></p>
-    <div onclick="window.location='<?php echo Mage::helper('core/url')->getHomeUrl() ?>';" class="button btncontinue"?><span>Continue Shopping<span></div>
-    <?php echo $this->getChildHtml('shopping.cart.table.after'); ?>
+    <?php /*echo $this->getMessagesBlock()->getGroupedHtml() */?>
+    <?php /*echo $this->getChildHtml('checkout_cart_empty_widget'); */?>
+    <p style="margin-bottom: 10px;"><?php /*echo $this->__('You have no items in your shopping bag.') */?></p>
+    <div onclick="window.location='<?php /*echo Mage::helper('core/url')->getHomeUrl() */?>';" class="button btncontinue"?><span>Continue Shopping<span></div>
+    <?php /*echo $this->getChildHtml('shopping.cart.table.after'); */?>
 </div>
+</div>-->
+<ol class="one-page-checkout" id="checkoutSteps">
+    <li id="opc-cart" class="section">
+        <div class="head">
+            <div class="checkout_title" style="border-bottom: medium none; box-shadow: 0px 0px 5px;">
+                <span class="step-count rewards_points"></span>
+                &nbsp;Shopping Bag
+			<span class="arrow-tag is-active" id="shopping_arrow">
+                <!-- <img alt="arrow" src="--><!--" class="">-->
+                <svg height="44px" width="44px">
+                    <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+                    <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+                    <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+                </svg>
+			</span>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div id="checkout-step-cart" class="box a-item"  style="padding-bottom: 0;display: block;">
+            <form method="post" action="http://staging.yogasmoga.com/checkout/cart/updatePost/">
+                <fieldset>
+                    <div class="data-table cart-table" id="shopping-cart-table">
+
+                        <div class="no_of_cart_items">0 ITEMS</div>
+                        <div class="cart_total">$0.00</div>
+                    </div>
+
+                </fieldset>
+            </form>
+
+        </div>
+    </li>
+</ol>
+<div class="empty-cart-checkout">
+    <p style="margin-top: 25px; font: 12px graphikregular; color: #555; ">You have no items in your shopping bag.</p>
+    <button style="background: rgb(0, 185, 0) none repeat scroll 0% 0%; height: 44px; width: 100%; border: medium none; margin-top: 25px; font: 14px ITCAvantGardeStd-Bk; color: rgb(255, 255, 255); letter-spacing: 1px;" onclick="window.location='/'">
+        CONTINUE SHOPPING
+    </button>
 </div>
+
+<script type="text/javascript">
+    jQuery.ajax({
+        url: "<?php echo Mage::getBaseUrl();?>ys/session/loggedcustomersmogibucks/id/" + "<?php echo $customerId;?>?s=" + new Date().getUTCMilliseconds(),
+        type: 'get',
+        dataType: 'json',
+        success: function(result){
+            jQuery(".rewards_points").html("<b>$</b>" + result.smogi_bucks);
+         }
+    });
+</script>
+<style>
+    .step-count.rewards_points b{
+        font-weight: normal;
+    }
+</style>

@@ -2665,7 +2665,7 @@ label.shipping_method_radio > input[type="radio"] {
 }
 
 #billing-buttons-container .button, #shipping-buttons-container .form-button, #shipping-method-buttons-container .form-button, #payment-buttons-container .form-button {
-    background: url("../images/tick.png") no-repeat scroll center center #43ad00;
+    background: url("../images/tick.png") no-repeat scroll center center #00B900;
     border: medium none;
     color: transparent;
     height: 62px;
@@ -3002,9 +3002,9 @@ h4.legend {
     border: medium none;
     color: #00B800;
     float: right;
-    font: 12px/44px AvantGarde-Demi !important;
+    font: 12px/18px AvantGarde-Demi !important;
     margin-right: 7px;
-    margin-top: 25px;
+    margin-top: 15px;
     letter-spacing: 1px;
 }
 
@@ -4109,8 +4109,8 @@ ul.checkout-cont > li {
 .detail-page .free-shiping p {
     color: #555555;
     font-family: GraphikRegular;
-    font-size: 12px;
-    line-height: 19px;
+    font-size: 14px;
+    line-height: 20px;
     margin-bottom: 25px;
     padding-left: 49px;
     padding-top: 17px;
@@ -7259,4 +7259,16 @@ video {
 
 div[rel="yogas_principles"] .block_content p:first-child {
     margin-top: 16px;
+}
+label[for="stripe_expiration"] {
+    margin-top: 12px;
+}
+#shopping-cart-totals-table tbody tr:first-child td{
+    font-weight: bold;
+}
+.discount-form > form#giftcardActive {
+    float: left;
+    margin-bottom: -15px;
+    margin-top: 15px;
+    width: 100%;
 }

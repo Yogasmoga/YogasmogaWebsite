@@ -415,7 +415,7 @@ else
                     <fieldset>
                         <div id="shopping-cart-table" class="data-table cart-table">
 
-                                <div class="no_of_cart_items"><?php echo $this->__('2 ITEMS') ?></div>
+                                <div class="no_of_cart_items"><?php echo Mage::helper('checkout/cart')->getCart()->getItemsCount(); echo $this->__(' ITEMS') ?></div>
                                 <div class="cart_total"><?php
                                     $subTotal = Mage::getModel('checkout/cart')->getQuote()->getSubtotal();
                                     echo $formattedPrice = Mage::helper('core')->currency($subTotal, true, false);
