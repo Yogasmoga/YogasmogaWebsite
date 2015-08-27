@@ -4047,7 +4047,7 @@ ul.checkout-cont > li {
 
 .detail-page .color-box, .selectedsize, .detail-page .includeoptionmain {
     float: left;
-    padding: 11px 14px;
+    padding: 0 14px 11px;
     width: 100%;
 }
 
