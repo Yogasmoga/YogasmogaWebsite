@@ -4187,10 +4187,6 @@ ul.checkout-cont > li {
     letter-spacing: 1px;
 }
 
-.detail-page .description-block .first-list li a:hover {
-    background: #f2f2f2;
-}
-
 .detail-page .description-block .first-list .design-feature .inner-content .inner-feature {
     position: relative;
 }
