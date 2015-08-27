@@ -7151,7 +7151,7 @@ video {
     font: 12px/50px AvantGarde-Demi;
     letter-spacing: 1px;
     margin: 0;
-    padding-left: 36px;
+    padding-left: 50px;
     height: 44px;
 }
 
@@ -7178,7 +7178,7 @@ video {
 
 .fabric_detail_mobile ul li > p:first-child .fab-icon {
     height: 44px;
-    left: -6px;
+    left: -1px;
     position: absolute;
     width: 44px;
 }
