@@ -677,8 +677,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 
 .our-breath p {
     color: #555555;
-    font: 22px/28px freighttextbook;
-    /*margin: 20px 0 0 !important;*/
+    font: 18px/1.65em freighttextbook;
     float: left;
     margin: 20px 0 0;
 }
