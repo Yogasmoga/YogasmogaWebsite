@@ -932,15 +932,13 @@ jQuery(document).ready(function($){
                 url: href,
                 type: 'POST',
                 success: function (response) {
-                    var img;
-                    //alert(response);
                     btn.attr("href", response);
                     var index = response.search("addmobile");
                     if (index > 0) {
-                        btn.find("svg path").css("fill","none");
+                        btn.find("svg path").css({"fill":"none", "stroke": "#FFF  !important"});
                     }
                     else {
-                        btn.find("svg path").css("fill","#AE8637");
+                        btn.find("svg path").css({"fill":"#AE8637", "stroke": "#AE8637 !important"});
                     }
                 }
             });

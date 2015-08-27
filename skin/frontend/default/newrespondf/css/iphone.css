@@ -1820,19 +1820,22 @@ button.place-order::before, #shopping-cart-table .button::before, #shopping-cart
     top: 9px;
     width: 34px;
 }
+
 #shopping-cart-totals-table + .button.btn-update::before {
     background-image: none;
     content: "PROCEED TO CHECKOUT";
-    font: 16px/44px ITCAvantGardeStd-Bk;
+    font: 14px/44px ITCAvantGardeStd-Bk;
     height: 72px;
     letter-spacing: 1px;
     top: 0;
     width: 100%;
 }
+
 #shopping-cart-totals-table + .button.btn-update {
     background: #00b900 none repeat scroll 0 0 !important;
     color: #fff;
 }
+
 button[name="update_cart_action_checkout"]::before {
     background: none !important;
 }
@@ -1872,7 +1875,7 @@ button[name="update_cart_action_checkout"] {
 }
 
 #shopping-cart-table .cart-price .price {
-    font-family: ITCAvantGardeStd-Bk;
+    font-family: graphikregular;
     font-size: 13px;
     line-height: 46px;
     font-weight: normal;
@@ -2562,7 +2565,7 @@ tr.td-noborder td {
     /*background: #43ad00;*/
     /*color: #43ad00;*/
     width: 100%;
-    font: 16px ITCAvantGardeStd-Bk;
+    font: 14px ITCAvantGardeStd-Bk;
     border: 14px solid #fff;
     letter-spacing: 1px;
 }
@@ -3010,7 +3013,7 @@ h4.legend {
 
 #discountFormPoints2 p {
     float: left;
-    font: 12px/30px ITCAvantGardeStd-Bk;
+    font: 12px/30px graphikregular;
     margin-bottom: 0px;
     margin-top: 14px;
     text-align: left;
@@ -3042,8 +3045,15 @@ h4.legend {
 .checkout-cart-index #main, .checkout-onepage-index #main {
     padding-top: 44px;
 }
-#shopping-cart-totals-table tbody tr:first-child td {padding-top: 20px !important;}
-#shopping-cart-totals-table tfoot tr:last-child td {padding-bottom: 0 !important;}
+
+#shopping-cart-totals-table tbody tr:first-child td {
+    padding-top: 20px !important;
+}
+
+#shopping-cart-totals-table tfoot tr:last-child td {
+    padding-bottom: 0 !important;
+}
+
 #shopping-cart-totals-table tr td {
     box-sizing: border-box;
     display: inline-block;
@@ -3052,13 +3062,16 @@ h4.legend {
     padding: 7px 0;
     text-align: left !important;
 }
+
 #shopping-cart-totals-table tr td:first-child {
     width: 70%;
 }
+
 #shopping-cart-totals-table tr td:last-child {
     text-align: right !important;
     width: 30%;
 }
+
 #stripe-change-payment-form {
     clear: both;
 }
@@ -4291,7 +4304,8 @@ ul.checkout-cont > li {
     border-bottom: 1px solid #999;
     border-top: 1px solid #999;
     padding: 3px 6px;
-    font-family: ITCAvantGardeStd-Bk;
+    font-family: graphikregular;
+    font-weight: bold;
     font-size: 12px;
     height: 30px;
     letter-spacing: 1px;
@@ -4324,10 +4338,11 @@ ul.checkout-cont > li {
 /*.chart-table tr:last-child td {
     border-bottom: none !important;
 }*/
-.fit.inner-content .lg-size-chart{
+.fit.inner-content .lg-size-chart {
     margin-bottom: 0 !important;
-}.detail-page .description-block .first-list .detail-view .fitDetail td
- {
+}
+
+.detail-page .description-block .first-list .detail-view .fitDetail td {
     /*border-right: 1px solid #CCC;*/
     font-size: 12px;
     text-transform: uppercase;
@@ -4336,9 +4351,11 @@ ul.checkout-cont > li {
     line-height: 19px;
     width: 11.801242236024844720496894409938%;
 }
-.detail-page .description-block .first-list .detail-view .fitDetail tr:last-child td{
+
+.detail-page .description-block .first-list .detail-view .fitDetail tr:last-child td {
     border-bottom: none !important;
 }
+
 .detail-page .description-block .first-list .detail-view .fitDetail .video-box {
     font-family: GraphikRegular;
     font-size: 12px;
@@ -4366,6 +4383,7 @@ ul.checkout-cont > li {
     list-style: disc;
     font: 14px/20px GraphikRegular;
 }
+
 .fit.inner-content {
     padding-top: 9px !important;
 }
@@ -5379,6 +5397,7 @@ p.apply_promo_label {
     line-height: 30px;
     position: relative;
     text-align: left;
+    font-family: graphikregular;
 }
 
 p.apply_promo_label > span {
@@ -6248,7 +6267,7 @@ h2.legend {
 
 button.btn-invite.button {
     background: #42ac00;
-    font: 16px/44px ITCAvantGardeStd-Bk;
+    font: 14px/44px ITCAvantGardeStd-Bk;
     border: none;
     color: #fff;
     width: 100%;
@@ -6294,7 +6313,7 @@ button.place-order::before {
 
 button.place-order {
     color: #fff;
-    font: 16px ITCAvantGardeStd-Bk;
+    font: 14px ITCAvantGardeStd-Bk;
     border: 10px solid #fff;
     height: 64px;
     text-transform: uppercase;
@@ -6565,8 +6584,8 @@ button#send2 {
 .colors_list {
     display: none;
     float: left;
-    padding: 0 ;
-    margin-top: 0 px;
+    padding: 0;
+    margin-top: 0px;
     width: 100%;
 }
 
@@ -6578,7 +6597,11 @@ button#send2 {
 }
 
 .inner-aurum .first-li {
-    padding: 4px 0 15px;
+    padding: 0 0 14px;
+}
+
+.first-li > li {
+    padding: 0 0 10px;
 }
 
 .see_our_colors p {
@@ -7062,14 +7085,17 @@ video {
 
 .selected_cart_products .product-name > a {
     font: 12px/18px AvantGarde-demi;
-    letter-spacing: 1px;
     text-transform: uppercase;
 }
 
-.no_of_cart_items, .cart_total {
-    font: 12px/18px AvantGarde-demi;
-    margin: 18px 0;
+.no_of_cart_items {
     letter-spacing: 1px;
+}
+
+.no_of_cart_items, .cart_total {
+    font: 12px/18px graphikregular;
+    margin: 18px 0;
+    font-weight: bold;
 }
 
 .selected_cart_products .item_option_color, .selected_cart_products .bracup, .selected_cart_products .item-options {
@@ -7126,9 +7152,11 @@ video {
 .fabric-technology.inner-content {
     padding-top: 6px !important;
 }
+
 .fabric-technology.inner-content .fabric_detail_mobile h2 + p {
     margin-top: 15px;
 }
+
 .fabric_detail_mobile ul li > p:first-child:hover {
     background: #f2f2f2;
 }
@@ -7261,18 +7289,26 @@ video {
 div[rel="yogas_principles"] .block_content p:first-child {
     margin-top: 16px;
 }
+
 label[for="stripe_expiration"] {
     margin-top: 12px;
 }
-#shopping-cart-totals-table tbody tr:first-child td{
+
+#shopping-cart-totals-table tbody tr:first-child td {
     font-weight: bold;
 }
+
 .discount-form > form#giftcardActive {
     float: left;
     margin-bottom: -15px;
     margin-top: 15px;
     width: 100%;
 }
+
 .flex-direction-nav {
     display: block !important;
+}
+
+.btn.wish .st0 {
+    stroke: #fff !important;
 }
