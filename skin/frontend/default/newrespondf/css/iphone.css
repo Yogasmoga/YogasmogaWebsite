@@ -7172,9 +7172,6 @@ video {
     margin-top: 15px;
 }
 
-.fabric_detail_mobile ul li > p:first-child:hover {
-    background: #f2f2f2;
-}
 
 .fabric_detail_mobile ul li > p:first-child.active svg line:nth-child(3) {
     stroke: none;
