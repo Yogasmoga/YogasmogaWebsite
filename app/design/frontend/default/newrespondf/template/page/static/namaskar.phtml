@@ -23,7 +23,7 @@
 
 
 
-<div class="page_block" rel="namaskar_foundation">
+<div class="page_block" id="namaskar_foundation">
     <div class="block_thumbnail">
         <img src="<?php echo $this->getSkinUrl('images/namaskar-block.jpg'); ?>" class="img-responsive"/>
 
@@ -31,7 +31,7 @@
 <!--            <p class="text">Learn More</p>-->
         </div>
     </div>
-    <div  class="block_content" style="padding-top: 30px;padding-bottom: 0; display:block;">
+    <div class="block_content" style="padding-top: 30px;">
         <p class="title">
             GIVING IS A CORE VALUE <br/>OF YOGASMOGA
         </p>
@@ -49,9 +49,9 @@
             Joining hands to make a change.
         </p>
         <img src="<?php echo $this->getSkinUrl('images/namaskar1.jpg'); ?>" class="img-responsive"
-             style="margin: 5px 0"/>
+            />
 
-        <p class="title" style="margin-top: 20px">
+        <p class="title">
             THE NAMASK&Aacute;R <br/>FOUNDATION
         </p>
 
@@ -69,7 +69,9 @@
             donated to the NAMASK&Aacute;R Foundation.
         </p>
         <img src="<?php echo $this->getSkinUrl('images/namaskar2-progressive.jpg'); ?>" class="img-responsive"/>
-        <button onclick="window.location='/women/accessories/namaskar-bracelets/namaskar-bracelet'" class="add_bracelet">ADD BRACELET TO BAG</button>
+        <button onclick="window.location='/women/accessories/namaskar-bracelets/namaskar-bracelet'"
+                class="add_bracelet">ADD BRACELET TO BAG
+        </button>
         <p class="title">
             THE NAMASK&Aacute;R <br/>FOUNDATION
         </p>
@@ -81,8 +83,7 @@
         <p>
             The Namask&aacute;r Foundation focuses its energies on three equally important causes.
         </p>
-    </div>
-    <div class="block_content has_slider" style="padding-top: 10px;display:block;">
+        <p style="padding: 15px; margin: 0"></p>
         <div class="flexslider">
             <div class="slides">
                 <li>
@@ -114,7 +115,7 @@
                     that they deserve.
                 </p>
                 <img src="<?php echo $this->getSkinUrl('images/namaskar6.jpg'); ?>" class="img-responsive"
-                     style="margin-bottom: 25px"/>
+                    />
 
                 <p class="title">
                     NAMASK&Aacute;R&mdash;The Meaning
@@ -137,8 +138,7 @@
                 <p>
                     We join our hands together to recognize each other's soul, aiming to connect and honor each other.
                 </p>
-                <img src="<?php echo $this->getSkinUrl('images/namaskar-block-3.jpg'); ?>" class="img-responsive"
-                     style="margin-bottom: 25px"/>
+                <img src="<?php echo $this->getSkinUrl('images/namaskar-block-3.jpg'); ?>" class="img-responsive"/>
 
                 <p class="title">
                     SUPPORT NAMASK&Aacute;R
@@ -192,8 +192,6 @@
 
 
 
-
-
 <style>
     .page_block, .slide_related_content {
         float: left;
@@ -235,20 +233,20 @@
     .slide_related_content > div {
         display: none;
         float: left;
-        padding: 25px 0 20px;
+        padding: 30px 0 20px;
         width: 100%;
         text-align: left;
     }
 
     .block_content p {
-        font: 22px/28px freighttextbook;
+        font: 18px/1.65em freighttextbook;
         letter-spacing: normal;
-        margin: 20px 0;
+        margin: 20px 0 0;
     }
 
     .slide_related_content > div address {
-        font: 22px/28px freighttextbook;
-        margin: 25px 0 20px;
+        font: 18px/1.65em freighttextbook;
+        margin: 20px 0 20px;
     }
 
     .slide_related_content > div p.store_hours {
@@ -260,17 +258,17 @@
     }
 
     .block_content p.title {
-        font: 24px/26px ITCAvantGardeStd-Bk;
+        font: 19px/21px ITCAvantGardeStd-Bk;
         margin: 0;
     }
 
     .block_content p.sub-title {
-        font: 24px/28px freighttextbookitalic;
+        font: 20px/21px freighttextbookitalic;
         margin: 0;
     }
 
     .block_content p.sub-title-namaskar {
-        font: 24px/28px freighttextbookitalic;
+        font: 20px/21px freighttextbookitalic;
     }
 
     .slide_related_content div:first-child {
@@ -281,7 +279,7 @@
         background: #00b900;
         border: none;
         color: #fff;
-        font: 16px ITCAvantGardeStd-Bk;
+        font: 14px ITCAvantGardeStd-Bk;
         height: 44px;
         margin: 10px 0 25px;
         letter-spacing: 1px;
@@ -305,7 +303,14 @@
         display: none;
         z-index: 5;
     }
-	.flex-direction-nav{display:block;}
+
+    .block_content img {
+        margin: 30px 0;
+    }
+
+    .flexslider img {
+        margin: 0 !important;
+    }
 </style>
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
