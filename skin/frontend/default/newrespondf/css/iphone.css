@@ -3403,7 +3403,7 @@ h4.legend {
 }
 
 .cost-title {
-    border-bottom: 1px solid #bfbfbf;
+    border-bottom: 1px solid #999;
     height: 36px;
     text-align: left;
     position: relative;
@@ -3421,7 +3421,7 @@ h4.legend {
 }
 
 #checkout-review-table tr.cart-info {
-    border-bottom: 1px solid #bfbfbf;
+    border-bottom: 1px solid #999;
 }
 
 #checkout-review-table tr.cart-info .col_left_img {
@@ -4654,7 +4654,7 @@ table.productdetailtable div#colorcontainer div table {
 }
 
 .inner-aurum li:last-child {
-    border-bottom: 1px solid #bfbfbf;
+    border-bottom: 1px solid #999;
 }
 
 .includeoptionmain .include_option > div.selected {
@@ -5036,7 +5036,7 @@ table.productdetailtable div#colorcontainer div table {
 
 /**************************************account-create page ends**********************************************/
 .checkout-onepage-index #shopping-cart-table tr {
-    border-bottom: 1px solid #bfbfbf;
+    border-bottom: 1px solid #999;
 }
 
 .checkout-onepage-index #shopping-cart-table {
@@ -6565,8 +6565,8 @@ button#send2 {
 .colors_list {
     display: none;
     float: left;
-    padding: 0 14px 35px;
-    margin-top: -35px;
+    padding: 0 ;
+    margin-top: 0 px;
     width: 100%;
 }
 
@@ -6582,7 +6582,8 @@ button#send2 {
 }
 
 .see_our_colors p {
-    border-top: 1px solid #bfbfbf;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
     color: #555555;
     font: 12px/30px ITCAvantGardeStd-Bk;
     text-align: left;

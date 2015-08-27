@@ -309,8 +309,8 @@ jQuery(document).ready(function($){
     });
 
     $(".see_our_colors").click(function(){
-        $(".colors_list").toggle();
-        $(this).find("span").toggleClass("active");
+        //$(".colors_list").toggle();
+        //$(this).find("span").toggleClass("active");
     });
     $(".customer_gender_selection > div > label").click(function(){
         $(".customer_gender_selection > div > label").removeClass("selected");
