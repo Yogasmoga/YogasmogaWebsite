@@ -6744,7 +6744,7 @@ button#send2 {
 
 .help_page > p {
     color: #555;
-    font: 19px/69px ITCAvantGardeStd-Bk;
+    font: 19px/79px ITCAvantGardeStd-Bk;
     padding: 0 14px;
     text-align: center;
 }
@@ -6839,7 +6839,7 @@ button#send2 {
 
 .size-chart table {
     border-collapse: collapse;
-    font: 12px/30px ITCAvantGardeStd-Bk;
+    font: 12px/30px graphikregular;
 }
 
 .size-chart table tr {
@@ -6853,7 +6853,8 @@ button#send2 {
 
 .size-chart table th {
     border-collapse: collapse;
-    font-family: Avantgarde-demi;
+    font-family: graphikregular;
+    font-weight: bold;
 }
 
 video {
@@ -7311,4 +7312,7 @@ label[for="stripe_expiration"] {
 
 .btn.wish .st0 {
     stroke: #fff !important;
+}
+.slide_related_content > div[rel="design-block-1"] {
+    padding-top: 15px;
 }
