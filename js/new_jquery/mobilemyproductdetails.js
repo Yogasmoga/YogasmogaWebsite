@@ -935,12 +935,10 @@ jQuery(document).ready(function($){
                     btn.attr("href", response);
                     var index = response.search("addmobile");
                     if (index > 0) {
-                        btn.find("svg path").css({"fill":"#fff"});
-                        btn.find("svg path").attr("stroke", "#FFF ");
+                        btn.find("svg path").css({"fill":"#fff","stroke":"#FFF"});
                     }
                     else {
-                        btn.find("svg path").css({"fill":"#AE8637"});
-                        btn.find("svg path").attr("stroke", "#AE8637");
+                        btn.find("svg path").css({"fill":"#AE8637","stroke": "#AE8637"});
                     }
                 }
             });
