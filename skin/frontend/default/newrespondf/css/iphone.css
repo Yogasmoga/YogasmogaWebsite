@@ -6719,6 +6719,7 @@ button#send2 {
     margin: 0 !important;
 }
 
+
 .flex-direction-nav a.flex-prev {
     background-position: 0 0;
     left: 0px;
@@ -6729,6 +6730,13 @@ button#send2 {
     opacity: 1;
     right: 0px;
 }
+.thumb-imgs .flexslider .flex-next {
+    background: rgba(0, 0, 0, 0) url("/skin/frontend/default/newrespondf/images/dark_arrows_slider.png") no-repeat scroll 100% 0 / auto 100%;
+}
+.thumb-imgs .flexslider .flex-prev {
+    background: rgba(0, 0, 0, 0) url("/skin/frontend/default/newrespondf/images/dark_arrows_slider.png") no-repeat scroll 0 0 / auto 100%;
+}
+
 
 .flex-control-nav {
     display: none !important;
