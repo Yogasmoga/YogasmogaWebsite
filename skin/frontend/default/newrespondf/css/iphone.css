@@ -6919,7 +6919,7 @@ video {
 
 .cart_addition_msg {
     color: #AE8637;
-    font: 15px/20px ITCAvantGardeStd-Bk;
+    font: 14px/20px ITCAvantGardeStd-Bk;
 }
 
 .cart_addition_msg span {
@@ -6931,7 +6931,7 @@ video {
     background: #00b600 none repeat scroll 0 0;
     color: #fff;
     display: inline-block;
-    line-height: 44px;
+    font: 14px/44px ITCAvantGardeStd-Bk;
     margin-top: 30px;
     width: 166px;
 }
@@ -7310,9 +7310,11 @@ label[for="stripe_expiration"] {
     display: block !important;
 }
 
-.btn.wish .st0 {
+.btn.wish svg path {
+    fill: #fff;
     stroke: #fff !important;
 }
+
 .slide_related_content > div[rel="design-block-1"] {
     padding-top: 15px;
 }
