@@ -5582,8 +5582,9 @@ p.required {
     margin-top: 20px;
 }
 
+/*#checkout-review-table tfoot tr:first-child td {font-family: Graphik-SemiBold;}*/
 #checkout-review-table td {
-    font: 12px graphikregualr;
+    font: 12px graphikregular;
 }
 
 .span6 {
@@ -7304,9 +7305,6 @@ label[for="stripe_expiration"] {
     margin-top: 12px;
 }
 
-#shopping-cart-totals-table tbody tr:first-child td {
-    font-weight: bold;
-}
 
 .discount-form > form#giftcardActive {
     float: left;
