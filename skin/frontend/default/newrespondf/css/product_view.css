@@ -492,7 +492,7 @@ table.productdetailtable div.out_of_stock_item {
     background: none repeat scroll 0 0 #999;
     bottom: 0;
     color: #fff;
-    font: 14px/44px ITCAvantGardeStd-Bk;
+    font: 14px/50px ITCAvantGardeStd-Bk;
     /*position: fixed;*/
     right: 0;
     text-align: center;
@@ -504,7 +504,7 @@ table.productdetailtable div.addtobag {
     background-color: #CCC;
     color: #fff;
     cursor: pointer;
-    font: 14px/44px ITCAvantGardeStd-Bk;
+    font: 14px/50px ITCAvantGardeStd-Bk;
     height: 44px;
     margin: 0;
     padding: 0;
@@ -530,7 +530,7 @@ table.productdetailtable div.preorderitem {
     cursor: pointer;
     display: none;
     float: left;
-    font: 14px/44px ITCAvantGardeStd-Bk;
+    font: 14px/50px ITCAvantGardeStd-Bk;
     height: 44px;
     position: relative;
     width: 50%;

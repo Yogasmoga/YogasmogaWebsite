@@ -1824,7 +1824,7 @@ button.place-order::before, #shopping-cart-table .button::before, #shopping-cart
 #shopping-cart-totals-table + .button.btn-update::before {
     background-image: none;
     content: "PROCEED TO CHECKOUT";
-    font: 14px/44px ITCAvantGardeStd-Bk;
+    font: 14px/50px ITCAvantGardeStd-Bk;
     height: 72px;
     letter-spacing: 1px;
     top: 0;
@@ -2566,7 +2566,7 @@ tr.td-noborder td {
     /*background: #43ad00;*/
     /*color: #43ad00;*/
     width: 100%;
-    font: 14px ITCAvantGardeStd-Bk;
+    font: 14px/50px ITCAvantGardeStd-Bk;
     border: 14px solid #fff;
     letter-spacing: 1px;
 }
@@ -4185,10 +4185,6 @@ ul.checkout-cont > li {
     text-decoration: none;
     display: block;
     letter-spacing: 1px;
-}
-
-.detail-page .description-block .first-list li a:hover {
-    background: #f2f2f2;
 }
 
 .detail-page .description-block .first-list .design-feature .inner-content .inner-feature {
@@ -6273,7 +6269,7 @@ h2.legend {
 
 button.btn-invite.button {
     background: #42ac00;
-    font: 14px/44px ITCAvantGardeStd-Bk;
+    font: 14px/50px ITCAvantGardeStd-Bk;
     border: none;
     color: #fff;
     width: 100%;
@@ -6719,6 +6715,7 @@ button#send2 {
     margin: 0 !important;
 }
 
+
 .flex-direction-nav a.flex-prev {
     background-position: 0 0;
     left: 0px;
@@ -6729,6 +6726,13 @@ button#send2 {
     opacity: 1;
     right: 0px;
 }
+.thumb-imgs .flexslider .flex-next {
+    background: rgba(0, 0, 0, 0) url("/skin/frontend/default/newrespondf/images/dark_arrows_slider.png") no-repeat scroll 100% 0 / auto 100%;
+}
+.thumb-imgs .flexslider .flex-prev {
+    background: rgba(0, 0, 0, 0) url("/skin/frontend/default/newrespondf/images/dark_arrows_slider.png") no-repeat scroll 0 0 / auto 100%;
+}
+
 
 .flex-control-nav {
     display: none !important;
@@ -6941,7 +6945,7 @@ video {
     background: #00b600 none repeat scroll 0 0;
     color: #fff;
     display: inline-block;
-    font: 14px/44px ITCAvantGardeStd-Bk;
+    font: 14px/50px ITCAvantGardeStd-Bk;
     margin-top: 30px;
     width: 166px;
 }
@@ -7099,10 +7103,6 @@ video {
     text-transform: uppercase;
 }
 
-.no_of_cart_items {
-    letter-spacing: 1px;
-}
-
 .no_of_cart_items, .cart_total {
     font: 12px/18px graphikregular;
     margin: 18px 0;
@@ -7168,9 +7168,6 @@ video {
     margin-top: 15px;
 }
 
-.fabric_detail_mobile ul li > p:first-child:hover {
-    background: #f2f2f2;
-}
 
 .fabric_detail_mobile ul li > p:first-child.active svg line:nth-child(3) {
     stroke: none;
