@@ -51,7 +51,20 @@
         <?php echo $this->getTotal()->getTitle() ?>
     </td>
     <td style="<?php echo $this->getStyle() ?>" class="a-right">
-        <?php echo $this->helper('checkout')->formatPrice($this->getTotal()->getValue()) ?>
+        <?php
+//            echo $this->helper('checkout')->formatPrice($this->getTotal()->getValue());
+            $price = $this->helper('checkout')->formatPrice($this->getTotal()->getValue());
+            if(strpos($price, "<span")>-1){
+                $price = str_replace('<span class="price">', "", $price);
+                $price = str_replace("</span>", "", $price);
+                $price = str_replace("$", "", $price);
+                echo "$". intval(trim($price));
+            }
+            else{
+                $price = str_replace("$", "", $price);
+                echo "$". intval(trim($price));
+            }
+        ?>
     </td>
 </tr>
 <?php endif;?>
