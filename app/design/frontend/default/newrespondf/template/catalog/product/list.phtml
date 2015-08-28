@@ -481,14 +481,15 @@ if (isset($page) && $page == '11') {
                                 <a href="<?php echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?><?php echo $hiddenUrl; ?>">
                                     <?php echo $confProduct->getName() ?>
                                 </a>
-                                <span class="prd-color"><?php echo $clrinfo[$childProduct['color']] ?></span>
-                                <span style="color:#ff5f00;"> $<?php echo round($childProduct['price'], 2); ?></span>
 
 
                                 <!--                        <a-->
                                 <!--                            href="--><?php //echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?><!----><?php //echo $hiddenUrl;?><!--"> --><?php //echo $clrinfo[$childProduct['color']] ?><!--</a>-->
                                 <!--                        <span style="color:#ff5f00;"> $--><?php //echo round($childProduct['price'], 2); ?><!--</span>-->
-                                <p><span class="prd-price"
+                                <p>
+                                    <span class="prd-color"><?php echo $clrinfo[$childProduct['color']] ?></span>
+                                    <span class="prd-price" style="color:#ff5f00;"> $<?php echo round($childProduct['price'], 2); ?></span>
+                                    <span class="prd-price"
                                          style="text-transform: lowercase;">was $<?php echo round($confProduct->getPrice(), 2); ?></span>
                                 </p>
 
