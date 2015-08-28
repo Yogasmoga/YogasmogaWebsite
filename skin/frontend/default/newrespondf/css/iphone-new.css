@@ -361,8 +361,7 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 }
 
 .smogi-content p {
-    padding: 20px 12px 0;
-    line-height: 28px;
+    line-height: 1.65em;
 }
 
 .ys-tech-block .story-box.smogi-box span {
