@@ -951,7 +951,7 @@ class Mage_Core_Model_Store extends Mage_Core_Model_Abstract
      * @param   bool $includeContainer
      * @return  string
      */
-    public function formatPrice($price, $includeContainer = true)
+    public function formatPrice($price, $includeContainer = false)
     {
         if ($this->getCurrentCurrency()) {
 		    return $this->getCurrentCurrency()->format($price, array('precision' => 0), $includeContainer);
