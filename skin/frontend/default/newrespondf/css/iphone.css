@@ -2528,7 +2528,13 @@ tr.td-noborder td {
 }
 
 #co-billing-form {
-    padding: 25px 0 20px;
+    padding: 35px 0 20px;
+}
+
+#co-billing-form input,
+#co-billing-form select,
+#co-billing-form textarea {
+    font-family: graphikregular !important;
 }
 
 #co-billing-form li.wide label {
@@ -3086,10 +3092,21 @@ h4.legend {
     color: #555555 !important;
     border-radius: 0;
     padding: 0 4px;
-    font: 12px ITCAvantGardeStd-Bk !important;
+    font: 12px graphikregular !important;
     letter-spacing: 1px;
 }
-
+label[for="shipping:firstname"]{
+    margin-top: 10px !important;
+}
+label[for="shipping:lastname"]{
+    margin-top: 7px !important;
+}
+label[for="shipping:street1"]{
+    margin-top: 2px !important;
+}
+label[for="shipping:street1"]{
+    margin-top: 2px !important;
+}
 .validate-select select {
     color: #555555;
 }
@@ -3103,6 +3120,9 @@ h4.legend {
     line-height: 29px;
     text-transform: uppercase;
 }
+#stripe-change-payment-form li {
+    padding: 0 !important;
+}
 
 /* Hide Edit button in step header */
 #stripe-change-payment-form label {
@@ -3111,6 +3131,10 @@ h4.legend {
     font-size: 12px;
     line-height: 28px;
     text-align: left;
+    margin-top: 15px;
+}
+#stripe-change-payment-form label[for="stripe_cc_cid"] {
+    margin-top: 15px !important;
 }
 
 .one-page-checkout h3 {
@@ -3182,6 +3206,7 @@ h4.legend {
     transition-duration: 200ms;
     width: 44px;
 }
+
 .one-page-checkout .head .arrow-tag img {
     opacity: 0;
     position: absolute;
@@ -3189,9 +3214,11 @@ h4.legend {
     top: 9px;
     z-index: 1;
 }
-.one-page-checkout .section .head .arrow-tag#shopping_arrow{
+
+.one-page-checkout .section .head .arrow-tag#shopping_arrow {
     visibility: visible;
 }
+
 .one-page-checkout .group-select {
     margin-top: 0;
     border: 0;
@@ -3238,7 +3265,7 @@ h4.legend {
 }
 
 #co-shipping-form p:first-child {
-    margin: 25px 0 20px;
+    margin: 35px 0 20px;
     font: 12px/18px GraphikRegular;
 }
 
@@ -3500,7 +3527,7 @@ h4.legend {
 }
 
 #checkout-step-shipping_method {
-    padding-bottom: 15px;
+    padding-bottom: 5px;
     position: relative;
 }
 
@@ -4827,7 +4854,7 @@ table.productdetailtable div#colorcontainer div table {
     float: left;
     overflow: hidden;
     height: 48px;
-    margin: 25px 0 0 0;
+    margin: 35px 0 0 0;
     position: relative;
     width: 50%;
     border: 2px solid #fff;
@@ -5485,7 +5512,7 @@ p.required {
 }
 
 #billing-new-address-form .input-box input, .form_field_left input {
-    font: 12px ITCAvantGardeStd-Bk !important;
+    font: 12px graphikregular !important;
 }
 
 .edit-line a {
@@ -5576,8 +5603,12 @@ p.required {
 }
 
 .paypal_logo img {
-    width: auto;
+    left: 50%;
+    margin-left: -50px;
+    position: absolute;
+    top: 0;
     vertical-align: middle;
+    width: auto;
 }
 
 .v-fix:last-child {
@@ -6327,6 +6358,7 @@ button.place-order {
     height: 64px;
     text-transform: uppercase;
 }
+
 button.place-order span {
     line-height: 50px;
     display: block;
@@ -6688,6 +6720,14 @@ button#send2 {
 
 #billing-new-address-form .customer-name div:first-child {
     margin-bottom: 10px;
+}
+
+#billing-new-address-form .name-lastname div {
+    margin: 0 0 -5px;
+}
+
+#checkout-step-billing .name-firstname label {
+    margin-top: 10px !important;
 }
 
 .col-1.col-ship > span {
@@ -7122,7 +7162,7 @@ video {
 }
 
 .selected_cart_products .product-name > a {
-    font: 12px/18px AvantGarde-demi;
+    font: 12px/15px AvantGarde-demi;
     text-transform: uppercase;
 }
 
@@ -7343,6 +7383,28 @@ label[for="stripe_expiration"] {
 .slide_related_content > div[rel="design-block-1"] {
     padding-top: 15px;
 }
+
 .one-page-checkout .section.completed .head .arrow-tag {
     visibility: visible;
+}
+#shipping-new-address-form li label[for="shipping:city"], #shipping-new-address-form li label[for="shipping:region"]{
+    margin-top: 8px;
+}
+#shipping-new-address-form li label[for="shipping:postcode"],#shipping-new-address-form li label[for="shipping:country_id"],
+#shipping-new-address-form li label[for="shipping:telephone"]{
+    margin-top: 6px;
+}
+#checkout-payment-method-load label[for="p_method_stripe"] {
+    bottom: 0;
+    color: #fff;
+    font: 14px/50px ITCAvantGardeStd-Bk;
+    left: 0;
+    letter-spacing: 1px;
+    position: absolute;
+    right: 0;
+    text-transform: uppercase;
+    top: 0;
+}
+#stripe-update-payment-holder {
+    margin-bottom: 6px;
 }

@@ -66,7 +66,7 @@
         <li>
             <div class="col2-alt-set"><div class="col-1"> 
 
-                <label for="shipping:street1" style="margin-top: 0"><?php echo $this->__('Address Line 1') ?> </label>
+                <label for="shipping:street1" ><?php echo $this->__('Address Line 1') ?> </label>
             </div><div class="col-2">
 			
                 <input type="text" title="<?php echo $this->__('Street Address') ?>" name="shipping[street][1]" id="shipping:street1" value="<?php echo $this->htmlEscape($this->getAddress()->getStreet(1)) ?>" class="required-entry input-text" onchange="shipping.setSameAsBilling(false);" />
@@ -74,7 +74,7 @@
         </li>
         <li>
             <div class="col2-alt-set"><div class="col-1">
-              <label for="shipping:street1" style="margin-top: 0"><?php echo $this->__('Address Line 2') ?></label>
+              <label for="shipping:street1" style="margin-top: 5px !important;"><?php echo $this->__('Address Line 2') ?></label>
             </div><div class="col-2">
                 <input type="text" title="<?php echo $this->__('Street Address 2') ?>" name="shipping[street][2]" id="shipping:street2" value="<?php echo $this->htmlEscape($this->getAddress()->getStreet(2)) ?>" class="input-text" onchange="shipping.setSameAsBilling(false);"/>
             </div></div><div class="clear"></div>
@@ -130,7 +130,7 @@
 			<div class="clear"></div>
         </li>
         <?php if ($this->isCustomerLoggedIn() && $this->customerHasAddresses()):?>
-        <li>
+        <li style="margin-bottom: -15px">
             <div class="col2-alt-set"><div class="col-1 col-ship">
                 <input type="checkbox" name="shipping[save_in_address_book]" value="1" title="<?php echo $this->__('Save in address book') ?>" id="shipping:save_in_address_book" onchange="shipping.setSameAsBilling(false);"<?php if ($this->getAddress()->getSaveInAddressBook()):?> checked="checked"<?php endif;?> />
 				<span></span>
@@ -143,7 +143,7 @@
         <?php endif;?>
     </ul>
 </fieldset>
-<p class="custom-check" style="margin:0 5px 20px">
+<p class="custom-check" style="margin:10px 5px 20px">
 
 <input class="chk-box" type="checkbox" name="shipping[same_as_billing]" id="shipping:same_as_billing" value="1" <?php if($this->getAddress()->getSameAsBilling()): ?>checked="checked"<?php endif ?> onclick="shipping.setSameAsBilling(this.checked)" /> <span></span>&nbsp;<label for="shipping:same_as_billing" style="padding: 10px 30px"><?php echo $this->__('Use Billing Address') ?></label>
 
