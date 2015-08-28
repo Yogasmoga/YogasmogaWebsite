@@ -3169,7 +3169,7 @@ h4.legend {
     top: 0px;
 }
 
-#shopping_arrow.is-active.arrow-tag svg line {
+#shopping_arrow.is-active.arrow-tag svg line:nth-child(3) {
     stroke: none;
 }
 
@@ -3182,7 +3182,6 @@ h4.legend {
     transition-duration: 200ms;
     width: 44px;
 }
-
 .one-page-checkout .head .arrow-tag img {
     opacity: 0;
     position: absolute;
@@ -3190,7 +3189,9 @@ h4.legend {
     top: 9px;
     z-index: 1;
 }
-
+.one-page-checkout .section .head .arrow-tag#shopping_arrow{
+    visibility: visible;
+}
 .one-page-checkout .group-select {
     margin-top: 0;
     border: 0;
@@ -3713,7 +3714,7 @@ h4.legend {
 
 .productCont .caption {
     float: left;
-    font: 11px/16px gothambold;
+    font: 12px/18px graphikregular;
     padding: 8px 0 0;
     text-transform: uppercase;
     width: 100%;
@@ -3955,7 +3956,7 @@ ul.checkout-cont > li {
 }
 
 .detail-page .prd-detail a {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 15px;
     font-family: AvantGarde-Demi !important;
     text-decoration: none;
@@ -3974,13 +3975,13 @@ ul.checkout-cont > li {
 .detail-page p.color-detail span, .detail-page span.prize, .productcost.amount {
     color: #555555;
     font-family: ITCAvantGardeStd-Bk;
-    font-size: 12px;
-    line-height: 18px;
+    font-size: 14px;
+    line-height: 20px;
     text-decoration: none;
 }
 
 .was-amount {
-    font: 12px/18px ITCAvantGardeStd-Bk;
+    font: 14px/20px ITCAvantGardeStd-Bk;
 }
 
 .detail-page .social-detail ul {
@@ -4646,8 +4647,8 @@ ul.checkout-cont > li {
 /*********************12-may************/
 .selectedcolor td {
     font-family: ITCAvantGardeStd-Bk;
-    font-size: 12px;
-    line-height: 18px;
+    font-size: 14px;
+    line-height: 20px;
     color: #555555;
 }
 
@@ -4831,11 +4832,14 @@ table.productdetailtable div#colorcontainer div table {
     border: 2px solid #fff;
 }
 
-#checkout-payment-method-load dt label {
+button.place-order {
     color: #fff;
     font-family: ITCAvantGardeStd-Bk;
     font-size: 14px;
+    line-height: 50px !important;
     left: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     position: absolute;
     right: 0;
     top: 13px;
@@ -6317,13 +6321,13 @@ button.place-order::before {
 
 button.place-order {
     color: #fff;
-    font: 14px ITCAvantGardeStd-Bk;
+    font: 14px/50px ITCAvantGardeStd-Bk;
     border: 10px solid #fff;
     height: 64px;
     text-transform: uppercase;
 }
-
 button.place-order span {
+    line-height: 50px;
     display: block;
 }
 
@@ -6343,7 +6347,7 @@ button.place-order span {
 }
 
 .insale-price {
-    color: #cc0033 !important;
+    color: #ff5f00 !important;
 }
 
 p.design-paragraph {
@@ -7003,11 +7007,18 @@ video {
     font: normal 19px/19px ITCAvantGardeStd-Bk;
     color: #AD8536;
 }
+
 .fabric_detail_mobile > h2 sup {
     font-size: 12px;
     position: relative;
-    top:0px;
+    top: 0px;
 }
+
+.fabric-technology.inner-content .fabric_detail_mobile h2 + p > sup {
+    position: relative;
+    top: 3px;
+}
+
 .fabric_detail_mobile > ul {
     float: left;
     margin-top: 30px;
@@ -7330,4 +7341,7 @@ label[for="stripe_expiration"] {
 
 .slide_related_content > div[rel="design-block-1"] {
     padding-top: 15px;
+}
+.one-page-checkout .section.completed .head .arrow-tag {
+    visibility: visible;
 }

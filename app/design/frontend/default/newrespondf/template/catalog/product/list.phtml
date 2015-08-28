@@ -334,7 +334,7 @@ if (isset($page) && $page == '11') {
                         <div class="caption">
                             <a href="<?php echo $confProduct->getProductUrl(); ?><?php echo $hiddenUrl;?>"><?php echo $confProduct->getName() . '<br/>'; ?> <?php echo $clrinfo[$simpleproductarr['color']] ?></a>
 
-                            <span style="color:#c03;"> $<?php echo round($simpleproductarr['price'], 2); ?></span>
+                            <span style="color:#ff5f00;"> $<?php echo round($simpleproductarr['price'], 2); ?></span>
 
                             <p><span class="prd-price">$<?php echo round($confProduct->getPrice(), 2); ?></span></p>
                         </div>
@@ -477,7 +477,7 @@ if (isset($page) && $page == '11') {
                     if ($showInSaleProduct && $childProduct['insale'] == 'Yes') {
                         ?> <a
                             href="<?php echo $confProduct->getProductUrl() . '?color=' . $childProduct['color']; ?><?php echo $hiddenUrl;?>"> <?php echo $clrinfo[$childProduct['color']] ?></a>
-                        <span style="color:#c03;"> $<?php echo round($childProduct['price'], 2); ?></span>
+                        <span style="color:#ff5f00;"> $<?php echo round($childProduct['price'], 2); ?></span>
                         <p><span class="prd-price"
                                  style="text-transform: lowercase;">was $<?php echo round($confProduct->getPrice(), 2); ?></span>
                         </p>
