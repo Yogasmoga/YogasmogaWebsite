@@ -431,4 +431,5 @@ jQuery(document).ready(function($){
        //$(this).find(".arrow-tag").click();
     });
     $(".inner-aurum li .innr-txt").click(function(){$(this).next().click();})
+    $(".see_our_colors > p").click(function(){$(this).next().click();})
 });

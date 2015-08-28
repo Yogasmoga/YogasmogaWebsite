@@ -3936,6 +3936,7 @@ ul.checkout-cont > li {
 
 .detail-page .prd-detail {
     float: left;
+    line-height: 15px !important;
     width: 50%;
 }
 
@@ -4184,7 +4185,6 @@ ul.checkout-cont > li {
     color: #555555;
     text-decoration: none;
     display: block;
-    letter-spacing: 1px;
 }
 
 .detail-page .description-block .first-list .design-feature .inner-content .inner-feature {
