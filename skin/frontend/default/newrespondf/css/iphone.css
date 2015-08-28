@@ -5625,7 +5625,7 @@ table#checkout-review-table tfoot td .price{
 .span6 {
     box-sizing: border-box;
     float: left;
-    padding: 4px 14px;
+    padding: 4px 14px 16px;
     width: 100%;
     text-align: left;
     font: 12px/18px GraphikRegular;
