@@ -5625,7 +5625,7 @@ table#checkout-review-table tfoot td .price{
 .span6 {
     box-sizing: border-box;
     float: left;
-    padding: 9px 14px;
+    padding: 4px 14px;
     width: 100%;
     text-align: left;
     font: 12px/18px GraphikRegular;
@@ -7386,9 +7386,6 @@ label[for="stripe_expiration"] {
     padding-top: 15px;
 }
 
-.one-page-checkout .section.completed .head .arrow-tag {
-    visibility: visible;
-}
 #shipping-new-address-form li label[for="shipping:city"], #shipping-new-address-form li label[for="shipping:region"]{
     margin-top: 8px;
 }
@@ -7399,7 +7396,7 @@ label[for="stripe_expiration"] {
 #checkout-payment-method-load label[for="p_method_stripe"] {
     bottom: 0;
     color: #fff;
-    font: 14px/50px ITCAvantGardeStd-Bk;
+    font: 13px/50px ITCAvantGardeStd-Bk;
     left: 0;
     letter-spacing: 1px;
     position: absolute;
@@ -7418,10 +7415,16 @@ label[for="stripe_expiration"] {
 }
 #checkout-review-load .cost-title th {
     font: 12px AvantGarde-Demi;
-    padding: 8px 0 20px;
+    padding: 6px 0 20px;
     vertical-align: top;
 }
 #checkout-review-table tfoot tr:last-child td {
     border-bottom: 1px solid #999;
     padding-bottom: 20px;
+}
+table#checkout-review-table tfoot tr.reward-point  td .price{
+    color: #f60;
+}
+.section.allow.completed .arrow-tag {
+    visibility: visible;
 }
