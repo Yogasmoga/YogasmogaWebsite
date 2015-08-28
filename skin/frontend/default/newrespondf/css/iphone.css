@@ -4337,6 +4337,7 @@ ul.checkout-cont > li {
     width: 29.934782608695652173913043478261%;
     font-family: graphikregular;
     font-size: 12px;
+    height: 30px !important;
 }
 
 /*.chart-table tr:last-child td {
@@ -7308,7 +7309,7 @@ video {
 }
 
 .description-block .inner-content div.fitDetail table {
-    margin-top: 11px;
+    margin-top: 6px;
 }
 
 #ajaxlogin_button_send .st0, #create_account .st0 {
