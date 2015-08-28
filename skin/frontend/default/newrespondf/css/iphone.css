@@ -2678,7 +2678,7 @@ label.shipping_method_radio > input[type="radio"] {
     background: url("../images/tick.png") no-repeat scroll center center #00B900;
     border: medium none;
     color: transparent;
-    height: 62px;
+    height: 61px;
     width: 100%;
     border: 14px solid #fff;
     border-bottom: none;
@@ -3458,7 +3458,6 @@ label[for="shipping:street1"]{
 
 .cost-title th {
     font: 12px AvantGarde-Demi;
-    letter-spacing: 1px;
     padding-top: 4px;
     vertical-align: top;
 }
@@ -3492,7 +3491,7 @@ label[for="shipping:street1"]{
 #checkout-review-table tr.cart-info .col_right_options h3.product-name {
     color: #555;
     text-align: left;
-    font: 12px/18px AvantGarde-Demi;
+    font: 12px/15px AvantGarde-Demi;
     text-transform: uppercase;
 }
 
@@ -5538,9 +5537,11 @@ p.required {
 
 #checkout-review-table .price {
     position: absolute;
-    right: 12px;
+    right: 0;
 }
-
+table#checkout-review-table tfoot td .price{
+    right: -3px;
+}
 .options_methods {
     border: 1px solid #999;
     display: none;
@@ -5624,7 +5625,7 @@ p.required {
 .span6 {
     box-sizing: border-box;
     float: left;
-    padding: 14px;
+    padding: 4px 14px 16px;
     width: 100%;
     text-align: left;
     font: 12px/18px GraphikRegular;
@@ -7000,6 +7001,7 @@ video {
     font: 14px/50px ITCAvantGardeStd-Bk;
     margin-top: 30px;
     width: 166px;
+    height:44px;
 }
 
 .close_cart_addition_popup {
@@ -7384,9 +7386,6 @@ label[for="stripe_expiration"] {
     padding-top: 15px;
 }
 
-.one-page-checkout .section.completed .head .arrow-tag {
-    visibility: visible;
-}
 #shipping-new-address-form li label[for="shipping:city"], #shipping-new-address-form li label[for="shipping:region"]{
     margin-top: 8px;
 }
@@ -7397,7 +7396,7 @@ label[for="stripe_expiration"] {
 #checkout-payment-method-load label[for="p_method_stripe"] {
     bottom: 0;
     color: #fff;
-    font: 14px/50px ITCAvantGardeStd-Bk;
+    font: 13px/50px ITCAvantGardeStd-Bk;
     left: 0;
     letter-spacing: 1px;
     position: absolute;
@@ -7407,4 +7406,25 @@ label[for="stripe_expiration"] {
 }
 #stripe-update-payment-holder {
     margin-bottom: 6px;
+}
+#checkout-review-submit button.place-order {
+    position: relative !important;
+    bottom: 0 !important;
+    height: 72px !important;
+    top: initial !important;
+}
+#checkout-review-load .cost-title th {
+    font: 12px AvantGarde-Demi;
+    padding: 6px 0 20px;
+    vertical-align: top;
+}
+#checkout-review-table tfoot tr:last-child td {
+    border-bottom: 1px solid #999;
+    padding-bottom: 20px;
+}
+table#checkout-review-table tfoot tr.reward-point  td .price{
+    color: #f60;
+}
+.section.allow.completed .arrow-tag {
+    visibility: visible;
 }

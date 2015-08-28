@@ -493,7 +493,7 @@ table.productdetailtable div.out_of_stock_item {
     bottom: 0;
     color: #fff;
     font: 14px/50px ITCAvantGardeStd-Bk;
-    /*position: fixed;*/
+    height: 44px;
     right: 0;
     text-align: center;
     width: 50%;
