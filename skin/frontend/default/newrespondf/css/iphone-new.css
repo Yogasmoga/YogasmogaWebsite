@@ -339,8 +339,8 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
 
 /*********************smogi pages start *******************/
 .smogi-content {
-    font-size: 22px;
-    line-height: 28px;
+    font-size: 18px;
+    line-height: 1.65em;
     font-family: freighttextbook;
     text-align: left;
     clear: both;

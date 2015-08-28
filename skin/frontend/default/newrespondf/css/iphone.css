@@ -6796,13 +6796,14 @@ button#send2 {
     margin-top: 10px;
 }
 
+.help_page .answer_content > div p:last-child {
+    padding-top: 20px;
+    padding-bottom: 17px !important;
+}
 .help_page .answer_content > div p:first-child {
-    padding: 10px 0 0px !important;
+    padding-top: 10px;
 }
 
-.help_page .answer_content > div p:last-child {
-    padding: 0px 0 17px !important;
-}
 
 .answer_content a {
     color: #AD8536;
