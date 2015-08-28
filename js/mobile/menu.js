@@ -430,5 +430,5 @@ jQuery(document).ready(function($){
     $(".one-page-checkout .section .head").click(function(){
        //$(this).find(".arrow-tag").click();
     });
-
+    $(".inner-aurum li .innr-txt").click(function(){$(this).next().click();})
 });
