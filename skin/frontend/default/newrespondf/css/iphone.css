@@ -90,23 +90,23 @@ input.validation-failed, textarea.validation-failed, select.validation-failed {
 /********************** Main */
 body {
     margin: 0;
-    font: 13px/18px GraphikRegular;
+    font: 14px/20px GraphikRegular;
 }
 
 a {
 
     display: inline;
-    color: #333333;
+    color: #555;
     text-decoration: inherit;
 }
 
 a[disabled="true"] {
-    color: #c1cee2;
+    color: #999;
     text-shadow: none;
 }
 
 table {
-    font-family: Helvetica;
+    font-family: graphikregular;
     font-size: 11px;
 }
 
