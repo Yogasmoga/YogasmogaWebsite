@@ -3011,9 +3011,11 @@ h4.legend {
     margin-top: 35px;
     letter-spacing: 1px;
 }
-.discount-form .buttons-set .button, #discountFormPoints2 .buttons-set .button[rel="not-logged"]{
+
+.discount-form .buttons-set .button, #discountFormPoints2 .buttons-set .button[rel="not-logged"] {
     margin-top: 15px;
 }
+
 #discountFormPoints2 p {
     float: left;
     font: 12px/30px graphikregular;
@@ -6715,7 +6717,6 @@ button#send2 {
     margin: 0 !important;
 }
 
-
 .flex-direction-nav a.flex-prev {
     background-position: 0 0;
     left: 0px;
@@ -6726,13 +6727,14 @@ button#send2 {
     opacity: 1;
     right: 0px;
 }
+
 .thumb-imgs .flexslider .flex-next {
     background: rgba(0, 0, 0, 0) url("/skin/frontend/default/newrespondf/images/dark_arrows_slider.png") no-repeat scroll 100% 0 / auto 100%;
 }
+
 .thumb-imgs .flexslider .flex-prev {
     background: rgba(0, 0, 0, 0) url("/skin/frontend/default/newrespondf/images/dark_arrows_slider.png") no-repeat scroll 0 0 / auto 100%;
 }
-
 
 .flex-control-nav {
     display: none !important;
@@ -6757,6 +6759,10 @@ button#send2 {
     font: 19px ITCAvantGardeStd-Bk;
     padding: 30px 14px;
     text-align: center;
+}
+
+.help_page table tr:last-child td {
+    border-bottom: 1px solid #999;
 }
 
 .help_page > ul > li > p {
@@ -6800,10 +6806,10 @@ button#send2 {
     padding-top: 20px;
     padding-bottom: 17px !important;
 }
+
 .help_page .answer_content > div p:first-child {
     padding-top: 10px;
 }
-
 
 .answer_content a {
     color: #AD8536;
@@ -6994,10 +7000,14 @@ video {
 }
 
 .fabric_detail_mobile h2 {
-    font: normal 19px/26px ITCAvantGardeStd-Bk;
+    font: normal 19px/19px ITCAvantGardeStd-Bk;
     color: #AD8536;
 }
-
+.fabric_detail_mobile > h2 sup {
+    font-size: 12px;
+    position: relative;
+    top:0px;
+}
 .fabric_detail_mobile > ul {
     float: left;
     margin-top: 30px;
@@ -7162,13 +7172,12 @@ video {
 }
 
 .fabric-technology.inner-content {
-    padding-top: 6px !important;
+    padding-top: 0 !important;
 }
 
 .fabric-technology.inner-content .fabric_detail_mobile h2 + p {
     margin-top: 15px;
 }
-
 
 .fabric_detail_mobile ul li > p:first-child.active svg line:nth-child(3) {
     stroke: none;
@@ -7302,7 +7311,6 @@ div[rel="yogas_principles"] .block_content p:first-child {
 label[for="stripe_expiration"] {
     margin-top: 12px;
 }
-
 
 .discount-form > form#giftcardActive {
     float: left;
