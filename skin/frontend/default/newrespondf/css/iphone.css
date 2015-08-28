@@ -2678,7 +2678,7 @@ label.shipping_method_radio > input[type="radio"] {
     background: url("../images/tick.png") no-repeat scroll center center #00B900;
     border: medium none;
     color: transparent;
-    height: 62px;
+    height: 61px;
     width: 100%;
     border: 14px solid #fff;
     border-bottom: none;
@@ -7000,6 +7000,7 @@ video {
     font: 14px/50px ITCAvantGardeStd-Bk;
     margin-top: 30px;
     width: 166px;
+    height:44px;
 }
 
 .close_cart_addition_popup {
@@ -7407,4 +7408,10 @@ label[for="stripe_expiration"] {
 }
 #stripe-update-payment-holder {
     margin-bottom: 6px;
+}
+#checkout-review-submit button.place-order {
+    position: relative !important;
+    bottom: 0 !important;
+    height: 72px !important;
+    top: initial !important;
 }
