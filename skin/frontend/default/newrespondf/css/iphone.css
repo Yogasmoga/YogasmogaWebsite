@@ -3458,7 +3458,6 @@ label[for="shipping:street1"]{
 
 .cost-title th {
     font: 12px AvantGarde-Demi;
-    letter-spacing: 1px;
     padding-top: 4px;
     vertical-align: top;
 }
@@ -3492,7 +3491,7 @@ label[for="shipping:street1"]{
 #checkout-review-table tr.cart-info .col_right_options h3.product-name {
     color: #555;
     text-align: left;
-    font: 12px/18px AvantGarde-Demi;
+    font: 12px/15px AvantGarde-Demi;
     text-transform: uppercase;
 }
 
@@ -5538,9 +5537,11 @@ p.required {
 
 #checkout-review-table .price {
     position: absolute;
-    right: 12px;
+    right: 0;
 }
-
+table#checkout-review-table tfoot td .price{
+    right: -3px;
+}
 .options_methods {
     border: 1px solid #999;
     display: none;
@@ -7414,4 +7415,9 @@ label[for="stripe_expiration"] {
     bottom: 0 !important;
     height: 72px !important;
     top: initial !important;
+}
+#checkout-review-load .cost-title th {
+    font: 12px AvantGarde-Demi;
+    padding: 8px 0 20px;
+    vertical-align: top;
 }
