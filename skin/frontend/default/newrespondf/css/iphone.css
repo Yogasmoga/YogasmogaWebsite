@@ -5625,7 +5625,7 @@ table#checkout-review-table tfoot td .price{
 .span6 {
     box-sizing: border-box;
     float: left;
-    padding: 14px;
+    padding: 9px 14px;
     width: 100%;
     text-align: left;
     font: 12px/18px GraphikRegular;
@@ -7420,4 +7420,8 @@ label[for="stripe_expiration"] {
     font: 12px AvantGarde-Demi;
     padding: 8px 0 20px;
     vertical-align: top;
+}
+#checkout-review-table tfoot tr:last-child td {
+    border-bottom: 1px solid #999;
+    padding-bottom: 20px;
 }
