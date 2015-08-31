@@ -999,6 +999,8 @@ form#cardbalanceform table.redeem-giftcard {
     margin-right: 2%;
     width: 48%;
     text-transform: uppercase;
+    height: 44px;
+    margin-bottom: 14px;
 }
 
 .goy-form .button.btn-addtobag {
@@ -1010,6 +1012,8 @@ form#cardbalanceform table.redeem-giftcard {
     margin-left: 2%;
     width: 48%;
     text-transform: uppercase;
+    height: 44px;
+    margin-bottom: 14px;
 }
 
 .txt-cnt {

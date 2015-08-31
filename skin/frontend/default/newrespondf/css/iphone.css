@@ -2627,7 +2627,7 @@ tr.td-noborder td {
     position: absolute;
     width: 100%;
     border: 14px solid #fff;
-    height: 76px;
+    height: 72px;
 }
 
 #shipping-method-buttons-container button {
@@ -2680,7 +2680,7 @@ label.shipping_method_radio > input[type="radio"] {
     background: url("../images/tick.png") no-repeat scroll center center #00B900;
     border: medium none;
     color: transparent;
-    height: 61px;
+    height: 58px;
     width: 100%;
     border: 14px solid #fff;
     border-bottom: none;
@@ -5652,7 +5652,7 @@ table#checkout-review-table tfoot td .price{
 .page-title h1 {
     font: 24px ITCavantGardestd-bk;
     text-transform: uppercase;
-    margin-top: 20px;
+    margin-top: 30px;
     padding: 0 12px;
 }
 
@@ -6318,6 +6318,8 @@ button.btn-invite.button {
     width: 100%;
     float: left;
     text-transform: uppercase;
+    height: 44px;
+    letter-spacing: 1px;
 }
 
 .remove_link {
@@ -6362,6 +6364,7 @@ button.place-order {
     border: 10px solid #fff;
     height: 64px;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 button.place-order span {
@@ -7009,6 +7012,7 @@ video {
     margin-top: 30px;
     width: 166px;
     height:44px;
+    letter-spacing: 1px;
 }
 
 .close_cart_addition_popup {
@@ -7417,7 +7421,7 @@ label[for="stripe_expiration"] {
 #checkout-review-submit button.place-order {
     position: relative !important;
     bottom: 0 !important;
-    height: 72px !important;
+    height: 64px !important;
     top: initial !important;
 }
 #checkout-review-load .cost-title th {
