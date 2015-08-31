@@ -258,7 +258,7 @@ foreach ($_options as $_option) {
 					<div class="messages">
 						<p>
 							<?php foreach ($messages as $message): ?>
-								<p class="item-msg <?php echo $message['type'] ?>">* <?php echo $this->escapeHtml($message['text']) ?></p>
+								<p class="item-msg <?php echo $message['type'] ?>"><?php echo $this->escapeHtml($message['text']) ?></p>
 							<?php endforeach; ?>
 						</p>
 					</div>
