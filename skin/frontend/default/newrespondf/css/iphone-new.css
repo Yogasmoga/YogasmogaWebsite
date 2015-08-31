@@ -831,8 +831,8 @@ li.menu-item.has-dropdown.c-text_small.r_grey_text:last-child {
     font-size: 0;
     height: 44px;
     line-height: 44px;
-    margin-left: -5px;
-    margin-right: 10px;
+    margin-left: -10px;
+    margin-right: 0;
     position: static;
     width: 44px;
 }

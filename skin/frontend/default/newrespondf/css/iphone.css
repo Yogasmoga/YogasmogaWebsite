@@ -4217,6 +4217,7 @@ ul.checkout-cont > li {
     color: #555555;
     text-decoration: none;
     display: block;
+    letter-spacing: 1px;
 }
 
 .detail-page .description-block .first-list .design-feature .inner-content .inner-feature {
@@ -6642,7 +6643,9 @@ button#send2 {
 }
 
 .inner-aurum .first-li {
-    padding: 0 0 14px;
+    padding: 0;
+    float: left;
+    width: 100%;
 }
 
 .first-li > li {
@@ -6805,8 +6808,9 @@ button#send2 {
 
 .help_page > p {
     color: #555;
-    font: 19px ITCAvantGardeStd-Bk;
-    padding: 30px 14px;
+    font: 19px/50px ITCAvantGardeStd-Bk;
+    height: 44px;
+    padding: 0;
     text-align: center;
 }
 
@@ -7225,7 +7229,7 @@ video {
     letter-spacing: 1px;
     margin: 0;
     padding-left: 50px;
-    height: 44px;
+    height: 34px;
 }
 
 .fabric-technology.inner-content {
@@ -7233,7 +7237,7 @@ video {
 }
 
 .fabric-technology.inner-content .fabric_detail_mobile h2 + p {
-    margin-top: 15px;
+    margin-top: 32px;
 }
 
 .fabric_detail_mobile ul li > p:first-child.active svg line:nth-child(3) {
@@ -7247,7 +7251,7 @@ video {
 
 .fabric_detail_mobile ul li > p:first-child .fab-icon {
     height: 44px;
-    left: -1px;
+    left: -10px;
     position: absolute;
     width: 44px;
 }
