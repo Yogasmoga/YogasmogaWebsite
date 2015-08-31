@@ -22,6 +22,7 @@
 				<class>Ysindia_Customer_Model</class>
 			</Ysindia_Customer>
 		</models>
+<!--
 		<events>
 			<sales_quote_add_item>
 				<observers>
@@ -42,5 +43,6 @@
 				</observers>
 			</sales_quote_remove_item>
 		</events>
+-->
 	</global>
 </config>
