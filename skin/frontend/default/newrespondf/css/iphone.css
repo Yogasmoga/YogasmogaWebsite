@@ -2494,7 +2494,9 @@ tr.td-noborder td {
 }
 
 .error, .validation-advice {
-    color: #df280a;
+    color: #ff5f00;
+    font: 12px/18px GraphikRegular;
+    /*color: #df280a;*/
     /*display: none;*/
 }
 
