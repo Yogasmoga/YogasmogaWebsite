@@ -597,7 +597,8 @@ class Mage_CatalogInventory_Model_Stock_Item extends Mage_Core_Model_Abstract
             return $result;  **/
 
 			if (!$this->checkQty($summaryQty) || !$this->checkQty($qty)) {
-        $message = Mage::helper('cataloginventory')->__('The requested quantity is not available.', $this->getProductName());
+        //$message = Mage::helper('cataloginventory')->__('The requested quantity is not available.', $this->getProductName());
+		$message = Mage::helper('cataloginventory')->__('This item is out of stock.', $this->getProductName());
         $result->setHasError(false)
 		->setOrigQty($this->getQty())
 		->setMessage($message)
