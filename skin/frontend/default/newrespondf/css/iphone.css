@@ -3494,7 +3494,7 @@ label[for="shipping:street1"]{
 #checkout-review-table tr.cart-info .col_right_options h3.product-name {
     color: #555;
     text-align: left;
-    font: 12px/15px AvantGarde-Demi;
+    font: 12px/18px AvantGarde-Demi;
     text-transform: uppercase;
 }
 
@@ -5816,7 +5816,7 @@ table#checkout-review-table tfoot td .price{
 }
 
 #wishlist-table .product-name > a {
-    font: 12px/15px AvantGarde-demi;
+    font: 12px/18px AvantGarde-demi;
     text-transform: uppercase;
 }
 
@@ -7172,7 +7172,7 @@ video {
 }
 
 .selected_cart_products .product-name > a {
-    font: 12px/15px AvantGarde-demi;
+    font: 12px/18px AvantGarde-demi;
     text-transform: uppercase;
 }
 
