@@ -3093,7 +3093,7 @@ h4.legend {
     border-radius: 0;
     padding: 0 4px;
     font: 12px graphikregular !important;
-    letter-spacing: 1px;
+/*    letter-spacing: 1px;  */
 }
 label[for="shipping:firstname"]{
     margin-top: 10px !important;
