@@ -2534,3 +2534,144 @@ a.learn-more {
         display: none;
 }
 
+/* ************MEN AND WOMEN PAGE CORRECTIONS CSS************ */
+.wl-feat-prd.women-section,
+.wl-feat-prd.men-section {
+    box-sizing: border-box;
+    padding-left: 33.33%;
+    position: relative;
+}
+.wl-feat-prd.women-section .wl-left-block.f-left,
+.wl-feat-prd.men-section .wl-left-block.f-left {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 33.33%;
+}
+.wl-feat-prd.women-section .wl-right-block.f-right,
+.wl-feat-prd.men-section .wl-right-block.f-right{
+    position: relative;
+    width: 100%;
+}
+.wl-feat-prd.women-section .wl-left-block.f-left .top-left-block.dark-red {
+    display: table;
+    height: 50%;
+    width: 100%;
+    position: static;
+}
+.wl-feat-prd.men-section .top-left-block {
+    display: table;
+    height: 50%;
+    position: static;
+    width: 100%;
+}
+.wl-feat-prd.women-section .wl-left-block.f-left .bottom-left-block {
+    display: table;
+    height: 50%;
+    width: 100%;
+    position: static;
+}
+.wl-feat-prd.men-section .bottom-left-block.mens-left-blockbg {
+    display: table;
+    height: 50%;
+    position: static;
+    width: 100%;
+}
+.wl-feat-prd.women-section .wl-left-block.f-left .top-left-block.dark-red .block-content,
+.wl-feat-prd.men-section .top-left-block .block-content{
+    display: table-cell;
+    height: 100%;
+    position: static;
+    vertical-align: middle;
+    width: 100%;
+}
+.wl-feat-prd.women-section .wl-right-block.f-right .block-content,
+.wl-feat-prd.men-section .wl-right-block.f-right .block-content{
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top:0 !important;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.wl-feat-prd.women-section .wl-right-block.f-right .block-content .text-content-table,
+.wl-feat-prd.men-section .wl-right-block.f-right .block-content .text-content-table {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+.wl-feat-prd.women-section .wl-right-block.f-right .block-content .text-content,
+.wl-feat-prd.men-section .wl-right-block.f-right .block-content .text-content {
+    display: table-cell;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    vertical-align: middle;
+}
+.wl-color-story-prd.women-section,
+.wl-color-story-prd.men-section {
+    padding-right: 33.33%;
+    position: relative;
+    box-sizing: border-box;
+}
+.wl-color-story-prd.women-section .wl-cs-right-block.f-right,
+.wl-color-story-prd.men-section .wl-cs-right-block.f-right{
+    position: absolute;
+    right: 0;
+    top:0;
+    width: 33.33%;
+}
+.wl-color-story-prd.women-section .wl-cs-left-block.f-left,
+.wl-color-story-prd.men-section .wl-cs-left-block.f-left{
+    width: 100%;
+    position: relative;
+}
+.wl-color-story-prd.women-section .wl-cs-left-block.f-left .block-content,
+.wl-color-story-prd.men-section .wl-cs-left-block.f-left .block-content{
+    width: 100%;
+    height: 100%;
+    top:0 !important;
+    left:0;
+    position: absolute;
+}
+.wl-color-story-prd.women-section .wl-cs-left-block.f-left .block-content .text-content-table,
+.wl-color-story-prd.men-section .wl-cs-left-block.f-left .block-content .text-content-table{
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+.wl-color-story-prd.women-section .wl-cs-left-block.f-left .block-content .text-content,
+.wl-color-story-prd.men-section .wl-cs-left-block.f-left .block-content .text-content{
+    display: table-cell;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    vertical-align: middle;
+}
+.wl-color-story-prd.men-section .wl-cs-right-block.f-right .top-right-block.iconspartone#iconspartone{
+    position: relative;
+    display: block;
+    height: 50%;
+    top: 0;
+}
+.wl-color-story-prd.men-section .wl-cs-right-block.f-right .bottom-right-block {
+    display: block;
+    height: 50%;
+    position: static;
+    width: 100%;
+}
+.wl-color-story-prd.men-section .wl-cs-right-block.f-right .bottom-right-block .block-content {
+    display: table;
+    height: 100%;
+    position: static;
+    width: 100%;
+}
+.wl-color-story-prd.men-section .wl-cs-right-block.f-right .bottom-right-block .block-content .text-content{
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
