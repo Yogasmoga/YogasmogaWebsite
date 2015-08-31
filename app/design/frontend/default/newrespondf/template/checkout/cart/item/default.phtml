@@ -106,17 +106,18 @@ foreach ($_options as $_option) {
 
 <?php //echo $_item->getProductId()."hel" ?>
 
-<?php if ($messages): ?>
+
+<div class="row selected_cart_products">
+	<?php if ($messages): ?>
     <div class="messages">
         <p>
             <?php foreach ($messages as $message): ?>
-
-        <p class="item-msg <?php echo $message['type'] ?>">* <?php echo $this->escapeHtml($message['text']) ?></p>
-        <?php endforeach; ?>
+				<p class="item-msg <?php echo $message['type'] ?>">* <?php echo $this->escapeHtml($message['text']) ?></p>
+			<?php endforeach; ?>
         </p>
     </div>
 <?php endif; ?>
-<div class="row selected_cart_products">
+
     <div class="span2">
 
         <div class="col_left_img">
