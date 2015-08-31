@@ -108,15 +108,7 @@ foreach ($_options as $_option) {
 
 
 <div class="row selected_cart_products">
-	<?php if ($messages): ?>
-    <div class="messages">
-        <p>
-            <?php foreach ($messages as $message): ?>
-				<p class="item-msg <?php echo $message['type'] ?>">* <?php echo $this->escapeHtml($message['text']) ?></p>
-			<?php endforeach; ?>
-        </p>
-    </div>
-<?php endif; ?>
+	
 
     <div class="span2">
 
@@ -260,6 +252,22 @@ foreach ($_options as $_option) {
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
+				<!--out of stock message start-->
+				
+				<?php if ($messages): ?>
+					<div class="messages">
+						<p>
+							<?php foreach ($messages as $message): ?>
+								<p class="item-msg <?php echo $message['type'] ?>">* <?php echo $this->escapeHtml($message['text']) ?></p>
+							<?php endforeach; ?>
+						</p>
+					</div>
+				<?php endif; ?>
+				
+				<!--out of stock message end-->
+				
+				
+				
         </div>
     </div>
     <div class="span1">
