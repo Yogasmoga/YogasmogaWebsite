@@ -5816,8 +5816,8 @@ table#checkout-review-table tfoot td .price{
 }
 
 #wishlist-table .product-name > a {
-    font: 12px AvantGarde-demi;
-    letter-spacing: 1px;
+    font: 12px/15px AvantGarde-demi;
+    text-transform: uppercase;
 }
 
 #wishlist-table tr td:last-child {
