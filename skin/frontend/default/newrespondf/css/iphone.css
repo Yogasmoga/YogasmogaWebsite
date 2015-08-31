@@ -7435,3 +7435,9 @@ table#checkout-review-table tfoot tr.reward-point  td .price{
 .section.allow.completed .arrow-tag {
     visibility: visible;
 }
+.rewards_points b {
+    font-weight: normal;
+}
+#payment_form_paypal_express li {
+    height: 56px;
+}
