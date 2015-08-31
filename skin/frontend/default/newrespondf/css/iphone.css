@@ -4191,12 +4191,9 @@ ul.checkout-cont > li {
 }
 
 .detail-page .description-block .first-list .inner-content {
-    list-style: none !important;
-    width: 100%;
-    float: left;
-    background: #fff;
-    padding: 14px 0 0px;
-    /*border-bottom: 1px solid #dfdfdf;*/
+    background: #fff none repeat scroll 0 0;
+    list-style: outside none none !important;
+    padding: 8px 0 0 !important;
 }
 
 .detail-page .description-block .first-list .inner-content li.last-df + li {
@@ -4328,7 +4325,7 @@ ul.checkout-cont > li {
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-block {
     width: 100%;
-    margin: 12px 0;
+    margin: 13px 0;
 }
 
 .detail-page .description-block .first-list .detail-view .fitDetail .video-block img {
@@ -7241,7 +7238,7 @@ video {
 }
 
 .fabric-technology.inner-content .fabric_detail_mobile h2 + p {
-    margin-top: 32px;
+    margin-top: 17px;
 }
 
 .fabric_detail_mobile ul li > p:first-child.active svg line:nth-child(3) {
@@ -7362,7 +7359,7 @@ video {
 }
 
 .description-block .inner-content div.fitDetail table {
-    margin-top: 6px;
+    margin-top: 8px;
 }
 
 #ajaxlogin_button_send .st0, #create_account .st0 {
