@@ -35,9 +35,14 @@
 $currentUrl = Mage::helper('core/url')->getCurrentUrl();
 $carturl = Mage::helper('checkout/cart')->getCartUrl();
 $checkouturl = Mage::helper('checkout/url')->getCheckoutUrl();
+
+/************* this code is causing reloading of page again and again **********************/
+/*
 if($currentUrl == $carturl) {
     echo'<script>window.location="'.$checkouturl.'"</script>';
 }
+*/
+/************* this code is causing reloading of page again and again **********************/
 
 //Mage::app()->getFrontController()->getResponse()->setRedirect('checkout/onepage');
 
