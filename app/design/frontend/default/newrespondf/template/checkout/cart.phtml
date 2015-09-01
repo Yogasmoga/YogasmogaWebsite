@@ -405,7 +405,7 @@ else
             </div>
             <div style="display:<?php if(Mage::getSingleton('customer/session')->isLoggedIn()) { echo 'none'; } else { echo 'block' ;};?>" class="box a-item" id="checkout-step-cart">
                 <?php echo $this->getChildHtml('form_before') ?>
-                <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+                <?php //echo $this->getMessagesBlock()->getGroupedHtml() ?>
                 <?php /* if(!$this->hasError()): ?>
         <ul class="checkout-types">
         <?php foreach ($this->getMethods('methods') as $method): ?>
