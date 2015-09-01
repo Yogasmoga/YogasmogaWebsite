@@ -7451,3 +7451,8 @@ table#checkout-review-table tfoot tr.reward-point  td .price{
 .collat-wrap {
     margin-top: 25px;
 }
+
+#shopping-cart-totals-table tr td strong {
+    font-family: Graphik-SemiBold;
+    font-weight: normal;
+}
