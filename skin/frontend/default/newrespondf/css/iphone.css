@@ -7455,3 +7455,11 @@ table#checkout-review-table tfoot tr.reward-point  td .price{
     font-family: Graphik-SemiBold;
     font-weight: normal;
 }
+.keep_shopping_btn {
+    background: #cbcbcb none repeat scroll 0 0;
+    color: #fff;
+    display: inline-block;
+    font: 14px/50px ITCAvantGardeStd-Bk;
+    height: 44px;
+    width: 166px;
+}
