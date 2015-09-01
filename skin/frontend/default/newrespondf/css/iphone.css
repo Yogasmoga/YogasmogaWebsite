@@ -7183,9 +7183,8 @@ video {
 }
 
 .no_of_cart_items, .cart_total {
-    font: 12px/18px graphikregular;
+    font: 12px/18px Graphik-SemiBold;
     margin: 18px 0;
-    font-weight: bold;
 }
 
 .selected_cart_products .item_option_color, .selected_cart_products .bracup, .selected_cart_products .item-options {
