@@ -5394,16 +5394,22 @@ button.place-order {
 
 .chart_container table {
     box-sizing: border-box;
-    color: #555555;
+    color: #555;
     font: 12px/30px graphikregular;
     left: 0;
+    padding: 14px !important;
     position: fixed;
+    right: 14px;
     top: 40%;
+    width: 100% !important;
 }
 
 .chart_container table tr:first-child td {
     font: 12px/30px graphik-semibold;
     letter-spacing: 1px;
+}
+.chart_container table tr td{
+    border-bottom: 1px solid #999;
 }
 
 .arrow-icon img {
