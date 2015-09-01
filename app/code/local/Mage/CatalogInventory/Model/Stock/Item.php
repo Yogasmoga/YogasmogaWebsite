@@ -579,8 +579,9 @@ class Mage_CatalogInventory_Model_Stock_Item extends Mage_Core_Model_Abstract
 
         if (!$this->getIsInStock()) {
             $result->setHasError(true)
-                ->setMessage(Mage::helper('cataloginventory')->__('This product is currently out of stock.'))
-                ->setQuoteMessage(Mage::helper('cataloginventory')->__('Some of the products are currently out of stock'))
+                //->setMessage(Mage::helper('cataloginventory')->__('This product is currently out of stock.'))
+				->setMessage(Mage::helper('cataloginventory')->__('This item is out of stock.'))
+                //->setQuoteMessage(Mage::helper('cataloginventory')->__('Some of the products are currently out of stock'))
                 ->setQuoteMessageIndex('stock');
             $result->setItemUseOldQty(true);
             return $result;
