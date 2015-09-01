@@ -7078,7 +7078,7 @@ video {
 
 .fabric_detail_mobile > ul {
     float: left;
-    margin-top: 30px;
+    margin-top: 27px;
     padding: 0;
     width: 100%;
 }
@@ -7273,7 +7273,7 @@ video {
 
 .fabric_detail_mobile ul > li > p {
     float: left !important;
-    margin: 19px 0 27px;
+    margin: 19px 0 30px;
     width: 100% !important;
     display: none;
 }
