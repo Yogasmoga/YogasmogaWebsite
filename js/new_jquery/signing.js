@@ -681,9 +681,10 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
         data: 'user_login=' + email + '&password=' + password + '&first_name=' + first_name + '&last_name=' + last_name + '&customer_id=' + customer_id,
         dataType: 'json',
         success: function (result) {
-
+            showShoppingBagHtml();
             if (result != undefined && result.message != undefined && result.message == "loginerror") {
                 console.log("******* cannot login to wordpress");
+
                 return;
             }
         }
