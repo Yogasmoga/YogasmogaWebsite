@@ -432,4 +432,20 @@ jQuery(document).ready(function($){
     });
     $(".inner-aurum li .innr-txt").click(function(){$(this).next().click();})
     $(".see_our_colors > p").click(function(){$(this).next().click();})
+
+    var placeholder_smogi = $("#points_to_be_used").attr("placeholder");
+    var placeholder_coupon = $("#coupon_code").attr("placeholder");
+
+    $("#points_to_be_used").focus(function(){
+        $(this).attr("placeholder","");
+    });
+    $("#points_to_be_used").blur(function(){
+        $(this).attr("placeholder",placeholder_smogi);
+    });
+    $("#coupon_code").focus(function(){
+        $(this).attr("placeholder","");
+    });
+    $("#coupon_code").blur(function(){
+        $(this).attr("placeholder",placeholder_coupon);
+    });
 });
