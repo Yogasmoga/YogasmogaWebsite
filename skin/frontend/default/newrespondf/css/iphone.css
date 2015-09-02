@@ -6735,6 +6735,10 @@ button#send2 {
     position: relative;
 }
 
+.catalog-category-view .product-box{
+    line-height: 0;
+}
+
 #shipping-new-address-form li {
     float: left;
     width: 100%;
