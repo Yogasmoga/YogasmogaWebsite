@@ -34,10 +34,10 @@
 <?php
 /*********************** hidden page logic ********************/
 $forNormal = true;
-if($this->getRequest()->getParam('hidden')){
+if ($this->getRequest()->getParam('hidden')) {
     $hidden = $this->getRequest()->getParam('hidden');
 
-    if($hidden=="true")
+    if ($hidden == "true")
         $forNormal = false;
 }
 /*********************** hidden page logic ********************/
@@ -84,7 +84,7 @@ $storeId = Mage::app()->getStore()->getStoreId();
 $resourceModel = Mage::getResourceModel('catalog/product');
 
 $howDoesItFitBlockId = $resourceModel->getAttributeRawValue($_product->getId(), 'how_does_it_fit', $storeId);
-$sizeChartBlockId = 'mobile_'.$resourceModel->getAttributeRawValue($_product->getId(), 'size_chart', $storeId);
+$sizeChartBlockId = 'mobile_' . $resourceModel->getAttributeRawValue($_product->getId(), 'size_chart', $storeId);
 $fabricStoryBlockId = $resourceModel->getAttributeRawValue($_product->getId(), 'fabric_story', $storeId);
 $designFeatureVideoName = $_product->getDesignFeatureVideo();
 
@@ -144,7 +144,7 @@ if ($this->getRequest()->getParam('color')) {
         var _defaultprcolor = '<?php echo $this->getRequest()->getParam('color'); ?>';
     </script>
 
-<?php
+    <?php
 }
 
 $price = $_product->getSpecialPrice();
@@ -215,14 +215,13 @@ foreach ($_childProducts as $_childProduct) {
     $pos = strrpos($nameWithColor, '-');
     $colorName = trim(substr($nameWithColor, $pos + 1));       // get color name =>  Carbon
 
-    if($forNormal) {
+    if ($forNormal) {
         $forHidden = $_childProduct->getAttributeText('hidden_product');
         if (isset($forHidden) && strtolower($forHidden) == "yes")
             continue;
-    }
-    else{
+    } else {
         $forHidden = $_childProduct->getAttributeText('hidden_product');
-        if (isset($forHidden) && (strtolower($forHidden) == "no" || strlen(trim($forHidden))==0))
+        if (isset($forHidden) && (strtolower($forHidden) == "no" || strlen(trim($forHidden)) == 0))
             continue;
     }
 
@@ -385,8 +384,7 @@ foreach ($_childProducts as $_childProduct) {
                 $imageLabelData = json_decode(trim($_image->getLabel()), true);
                 if ($imageLabelData == NULL || strcasecmp($imageLabelData['type'], "product image") != 0)
                     continue;
-                if ($imageLabelData['color'] == Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProduct->getId(), 'color', $storeId))
-                {
+                if ($imageLabelData['color'] == Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProduct->getId(), 'color', $storeId)) {
                     $alt = '';
                     if (isset($imageLabelData['alt']))
                         $alt = $imageLabelData['alt'];
@@ -479,25 +477,27 @@ if ($lengthAvailable) {
         <div class="sign-in-box">
             <!-- <a href="#"> <span class=""><b>$</b>25</span></a> -->
             <?php
-            if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+            if (Mage::getSingleton('customer/session')->isLoggedIn()) {
                 $store_id = Mage::app()->getStore()->getId();
                 $customerId = Mage::getModel('customer/session')->getCustomerId();
-                if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+                if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)) {
                     $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
-                    echo $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
+                    echo $reward_flat_model->collectPointsCurrent($customerId, $store_id) + 0;
                     //Mage::helper('core')->currency($reward_flat_model->collectPointsCurrent($customerId, $store_id)+0);
                 }
 
                 $reward_model = Mage::getModel('rewardpoints/stats');
                 //echo "$".number_format((float)($reward_model->getPointsCurrent($customerId, $store_id)+0), 2, '.','');
                 //echo $reward_model->getPointsCurrent($customerId, $store_id)+0;
-                echo '<a href="javascript:void(0)"><span class="reward_points"><b>$</b>'.($reward_model->getPointsCurrent($customerId, $store_id)+0).'</span></a>';
+                echo '<a href="javascript:void(0)"><span class="reward_points"><b>$</b>' . ($reward_model->getPointsCurrent($customerId, $store_id) + 0) . '</span></a>';
             } else { ?>
                 <a href="javascript:void(0)" onclick="openLogin()"><span class="cuslogin">Sign In</span></a>
             <?php } ?>
-            <?php $_helper = $this->helper('catalog/output');?>
-            <?php $_category_detail=Mage::registry('current_category');?>
-            <h1><?php if(isset($_category_detail)) { echo "<a href='$goBackUrl'>".$_category_detail->getName()."</a>"; }?></h1>
+            <?php $_helper = $this->helper('catalog/output'); ?>
+            <?php $_category_detail = Mage::registry('current_category'); ?>
+            <h1><?php if (isset($_category_detail)) {
+                    echo "<a href='$goBackUrl'>" . $_category_detail->getName() . "</a>";
+                } ?></h1>
         </div>
 
 
@@ -664,14 +664,16 @@ if ($lengthAvailable) {
             <script type="text/javascript">
                 _sizesuperattribute = false;
             </script>
-        <?php
+            <?php
         }
         ?>
         <div class="clearfix"></div>
         <div class="detail-box">
-            <a class="go_to_parent" href="<?php echo $goBackUrl; ?>" >
-                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                     width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+            <a class="go_to_parent" href="<?php echo $goBackUrl; ?>">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44"
+                     xml:space="preserve">
 <g>
     <rect fill="#555555" width="44" height="44"/>
     <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="14" y1="14" x2="30" y2="30"/>
@@ -724,6 +726,7 @@ if ($lengthAvailable) {
                     <div class="prd-info">
                         <div class="prd-detail">
                             <a href="javascript:void(0)"><?php echo html_entity_decode($productName); ?></a>
+
                             <div class="blck-head-sml">
                                 <table class="selectedcolor" cellspacing="0" cellpadding="0">
                                     <tr>
@@ -734,21 +737,48 @@ if ($lengthAvailable) {
 
 
                             <p><span class="productcost amount "><?php echo $productPrice; ?></span>
-                                <span class="was-amount no-display" style="text-transform: lowercase;"><?php echo 'was ' . $productPrice; ?></span></p>
+                                <span class="was-amount no-display"
+                                      style="text-transform: lowercase;"><?php echo 'was ' . $productPrice; ?></span>
+                            </p>
                         </div>
                         <div class="social-detail">
                             <span></span>
                             <?php
                             $current_url = $this->helper('core/url')->getCurrentUrl();;
                             ?>
-                            <ul>
-                                <li><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $current_url;?>"> <img width="11" height="19" border="0" src="<?php echo $this->getSkinUrl('images/fb-social.png'); ?>" alt=""></a></li>
+                            <ul class="sharing-icons">
+                                <li><a target="_blank"
+                                       href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $current_url; ?>">
+                                        <svg width="19px" height="19px" viewBox="0 0 19 19">
+                                            <path id="XMLID_3_" fill="#CCC" stroke="none" d="M14.4,11l0.4-3.4h-3.4V5.4c0-1,0.3-1.7,1.7-1.7l1.8,0V0.7c-0.3,0-1.4-0.1-2.6-0.1
+                                            C9.7,0.5,8,2.1,8,5.1v2.5H5V11h3v8.8h3.5V11H14.4z"/>
+                                        </svg>
+                                    </a>
+                                </li>
 
-                                <li><a  class="share_on_pinterest" target="_blank"  href=""> <img width="19" height="19" border="0" src="<?php echo $this->getSkinUrl('images/pin-social.png'); ?>" alt=""></a></li>
+                                <li><a class="share_on_pinterest" target="_blank" href="">
+                                        <svg viewBox="0 0 20 23" height="22px" width="22px">
+                                            <path d="M9.9,1.1c-5.4,0-9.7,4.3-9.7,9.7c0,4,2.4,7.4,5.8,8.9c0-0.7,0-1.5,0.2-2.2
+                                            c0.2-0.8,1.2-5.3,1.2-5.3s-0.3-0.6-0.3-1.5c0-1.4,0.8-2.5,1.9-2.5c0.9,0,1.3,0.7,1.3,1.5c0,0.9-0.6,2.2-0.9,3.4
+                                            c-0.2,1,0.5,1.9,1.5,1.9c1.8,0,3.1-2.4,3.1-5.2C14,7.6,12.6,6,10,6C7,6,5.2,8.2,5.2,10.7c0,0.8,0.2,1.4,0.6,1.9
+                                            C6,12.8,6,12.9,6,13.1c0,0.2-0.2,0.6-0.2,0.8c-0.1,0.2-0.3,0.3-0.5,0.2c-1.4-0.6-2-2-2-3.7c0-2.8,2.3-6.1,6.9-6.1
+                                            c3.7,0,6.1,2.7,6.1,5.6c0,3.8-2.1,6.7-5.2,6.7c-1,0-2-0.6-2.4-1.2c0,0-0.6,2.2-0.7,2.7c-0.2,0.7-0.6,1.5-1,2.1
+                                            c0.9,0.3,1.8,0.4,2.8,0.4c5.4,0,9.7-4.3,9.7-9.7C19.6,5.4,15.2,1.1,9.9,1.1" fill="#CCC" stroke="none" id="XMLID_1_"/>
+                                        </svg>
+                                    </a></li>
 
                                 <!-- <li><a target="_blank"  href="http://instagram.com/yogasmoga"> <img width="17" height="18" border="0" src="<?php echo $this->getSkinUrl('images/insta-social.png'); ?>" alt="Instagram"></a></li> -->
 
-                                <li><a target="_blank"  href="https://twitter.com/home?status=<?php echo $current_url;?>"> <img width="20" height="17" border="0" src="<?php echo $this->getSkinUrl('images/twitr-social.png');?>" alt="Pinterest"></a></li>
+                                <li><a target="_blank"
+                                       href="https://twitter.com/home?status=<?php echo $current_url; ?>">
+                                        <svg viewBox="0 0 22.3 19.5" height="21px" width="21px">
+                                            <path d="M21.9,3.9c-0.8,0.3-1.6,0.6-2.5,0.7C20.3,4,21,3.2,21.4,2.2c-0.8,0.5-1.8,0.9-2.7,1
+                                            c-0.8-0.8-1.9-1.4-3.1-1.4c-2.4,0-4.3,1.9-4.3,4.3c0,0.3,0,0.7,0.1,1C7.7,7,4.5,5.2,2.4,2.6C2.1,3.3,1.8,4,1.8,4.8
+                                            c0,1.5,0.8,2.8,1.9,3.6C3,8.4,2.4,8.2,1.8,7.8v0.1c0,2.1,1.5,3.8,3.5,4.2c-0.4,0.1-0.7,0.2-1.1,0.2c-0.3,0-0.5,0-0.8-0.1
+                                            c0.5,1.7,2.1,3,4,3C5.9,16.3,4,17,2,17c-0.3,0-0.7,0-1-0.1c1.9,1.2,4.2,1.9,6.6,1.9c7.9,0,12.2-6.6,12.2-12.2c0-0.2,0-0.4,0-0.6
+                                            C20.6,5.5,21.4,4.7,21.9,3.9" stroke="none" fill="#CCC" id="XMLID_2_"/>
+                                        </svg>
+                                    </a></li>
 
                             </ul>
                         </div>
@@ -789,13 +819,13 @@ if ($lengthAvailable) {
                                                         <td style="border-color: transparent !important; background-color: <?php echo $hex ?>;">
                                                             <div></div>
                                                         </td>
-                                                    <?php
+                                                        <?php
                                                     } else {
                                                         ?>
                                                         <td style="border-color: <?php echo $hex ?>;">
                                                             <div></div>
                                                         </td>
-                                                    <?php
+                                                        <?php
                                                     }
                                                 }
                                                 ?>
@@ -855,7 +885,9 @@ if ($lengthAvailable) {
                                         <td>
                                             <!--                                    out-of-stock.png-->
                                             <div class="sizediv" value="<?php echo $size['value']; ?>"
-                                                 size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?><img src="<?php echo $this->getSkinUrl('images/not_available.png');?>"/></div>
+                                                 size="<?php echo $size['label']; ?>"><?php echo $size['label']; ?><img
+                                                    src="<?php echo $this->getSkinUrl('images/not_available.png'); ?>"/>
+                                            </div>
                                         </td>
                                         <?php
                                         }
@@ -864,7 +896,7 @@ if ($lengthAvailable) {
                                 </table>
                             </div>
 
-                            <?php if ($optionAvailable===0) {
+                            <?php if ($optionAvailable === 0) {
                                 $includeoption = "style='display:none'";
                             } ?>
                         </div>
@@ -872,15 +904,20 @@ if ($lengthAvailable) {
                     <div class="clearfix"></div>
                     <div id="includeoption" <?php echo $includeoption; ?> class="includeoptionmain">
                         <span>Include a bra cup?</span>
+
                         <div class="include_option">
                             <?php
                             foreach ($arProductAllOptions as $options) {
                                 ?>
-                                <div value="<?php echo $options['default_price']; ?>" title="<?php echo $options['default_title']; ?>"
+                                <div value="<?php echo $options['default_price']; ?>"
+                                     title="<?php echo $options['default_title']; ?>"
                                      optionid="<?php echo $options['option_id']; ?>"
-                                     optiontypeid="<?php echo $options['option_type_id']; ?>" class="<?php if($options['default_title'] =='N'){ echo 'selected';} ?>"><?php echo $options['default_title']; ?>
+                                     optiontypeid="<?php echo $options['option_type_id']; ?>"
+                                     class="<?php if ($options['default_title'] == 'N') {
+                                         echo 'selected';
+                                     } ?>"><?php echo $options['default_title']; ?>
                                 </div>
-                            <?php
+                                <?php
                             }
                             ?>
                         </div>
@@ -897,8 +934,9 @@ if ($lengthAvailable) {
                         foreach ($arProductAllLength as $length) {
                             ?>
                             <div value="<?php echo $length['value']; ?>"
-                                 lengthtype="<?php echo $length['label']; ?>" style="clear:both;"><?php echo $length['label']; ?><span></span></div>
-                        <?php
+                                 lengthtype="<?php echo $length['label']; ?>"
+                                 style="clear:both;"><?php echo $length['label']; ?><span></span></div>
+                            <?php
                         }
                         ?>
                     </div>
@@ -914,8 +952,9 @@ if ($lengthAvailable) {
                                     <tr>
                                         <td class="howdoesitfitlink">
                                             <div style="position: relative;">
-                                                <p class="block-link" style="margin: 2px 0 0 0; float: right;"><a id="how-does-it-fit"
-                                                                                                                  href="javascript:void(0);">How
+                                                <p class="block-link" style="margin: 2px 0 0 0; float: right;"><a
+                                                        id="how-does-it-fit"
+                                                        href="javascript:void(0);">How
                                                         does it fit?</a></p>
 
                                             </div>
@@ -930,7 +969,7 @@ if ($lengthAvailable) {
                                 for ($i = 1; $i < 21; $i++) {
                                     ?>
                                     <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                <?php
+                                    <?php
                                 }
                                 ?>
                             </select>
@@ -958,28 +997,39 @@ if ($lengthAvailable) {
                                 $wishid = $_wishlist_item->getWishlistItemId();
                             }
                             ?>
-                            <a class="btn wish" href="<?php echo Mage::getUrl('',array('_secure'=>false))."mynewtheme/addtowishlist/removemobile/item/".$wishid; ?>">
-<!--                                <img class="" src="--><?php //echo $this->getSkinUrl('images/added_to_wishlist.png'); ?><!--" width="28px" height="28px" alt=""/>-->
-                                <svg height="44px" width="44px" xml:space="preserve" style="enable-background:new 0 0 44 44;" viewBox="0 0 44 44" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+                            <a class="btn wish"
+                               href="<?php echo Mage::getUrl('', array('_secure' => false)) . "mynewtheme/addtowishlist/removemobile/item/" . $wishid; ?>">
+                                <!--                                <img class="" src="-->
+                                <?php //echo $this->getSkinUrl('images/added_to_wishlist.png'); ?><!--" width="28px" height="28px" alt=""/>-->
+                                <svg height="44px" width="44px" xml:space="preserve"
+                                     style="enable-background:new 0 0 44 44;" viewBox="0 0 44 44" y="0px" x="0px"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
+                                     id="Layer_1" version="1.1">
 
                                     <path d="M21.9,35.4L34,19.8c0.8-1.1,1.2-2.4,1.2-3.8c0-3.7-3-6.6-6.6-6.6c-3.7,0-6.6,3-6.6,6.6c0-3.7-3-6.6-6.6-6.6
-                                c-3.7,0-6.6,3-6.6,6.6c0,1.4,0.5,2.7,1.2,3.8L21.9,35.4z" style="fill: rgb(174, 134, 55);"/>
+                                c-3.7,0-6.6,3-6.6,6.6c0,1.4,0.5,2.7,1.2,3.8L21.9,35.4z"
+                                          style="fill: rgb(174, 134, 55);"/>
                                 </svg>
 
                             </a>
-                        <?php
+                            <?php
                         } else {
                             ?>
                             <?php $customer = Mage::getSingleton('customer/session')->getCustomer(); ?>
 
-                            <a class="btn wish <?php if(!Mage::getSingleton('customer/session')->isLoggedIn()) { echo 'not_login';} ?>" id="<?php echo $productId; ?>"
-                               href="<?php echo Mage::getUrl('',array('_secure'=>false)); ?>mynewtheme/addtowishlist/addmobile/product/<?php echo $productId; ?>/">
+                            <a class="btn wish <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
+                                echo 'not_login';
+                            } ?>" id="<?php echo $productId; ?>"
+                               href="<?php echo Mage::getUrl('', array('_secure' => false)); ?>mynewtheme/addtowishlist/addmobile/product/<?php echo $productId; ?>/">
 
-<!--                                <img class="" src="--><?php //echo $this->getSkinUrl('images/heart.png'); ?><!--" width="28px" height="28px" alt=""/>-->
+                                <!--                                <img class="" src="-->
+                                <?php //echo $this->getSkinUrl('images/heart.png'); ?><!--" width="28px" height="28px" alt=""/>-->
 
-                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve" width="44px" height="44px">
-                                <path  d="M21.9,35.4L34,19.8c0.8-1.1,1.2-2.4,1.2-3.8c0-3.7-3-6.6-6.6-6.6c-3.7,0-6.6,3-6.6,6.6c0-3.7-3-6.6-6.6-6.6
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                     viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve"
+                                     width="44px" height="44px">
+                                <path d="M21.9,35.4L34,19.8c0.8-1.1,1.2-2.4,1.2-3.8c0-3.7-3-6.6-6.6-6.6c-3.7,0-6.6,3-6.6,6.6c0-3.7-3-6.6-6.6-6.6
                                 c-3.7,0-6.6,3-6.6,6.6c0,1.4,0.5,2.7,1.2,3.8L21.9,35.4z"/>
                                 </svg>
 
@@ -987,20 +1037,25 @@ if ($lengthAvailable) {
                         <?php } ?>
 
                         <a id="outofstockitem" class="out_of_stock_item" href="javascript:void(0)">OUT OF STOCK</a>
-                        <!--                   imageurl="--><?php ///*echo $this->getSkinUrl('images/catalog/product/out_of_stock.png'); */?><!--" -->
-                        <!--                   downimageurl="--><?php //echo $this->getSkinUrl('images/catalog/product/out_of_stock.png');?><!--"-->
+                        <!--                   imageurl="-->
+                        <?php ///*echo $this->getSkinUrl('images/catalog/product/out_of_stock.png'); */?><!--" -->
+                        <!--                   downimageurl="-->
+                        <?php //echo $this->getSkinUrl('images/catalog/product/out_of_stock.png');?><!--"-->
 
 
                         <div id="orderitem" class="addtobag spbutton"
                              imageurl="<?php echo $this->getSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>"
-                             downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>">ADD TO BAG</div>
+                             downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/add-to-bag-on.png'); ?>">
+                            ADD TO BAG
+                        </div>
 
                         <!-- outOfStockBtn -->
 
                         <!-- preOrderItemBtn -->
                         <div id="preorderitem" class="preorderitem spbutton"
                              imageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>"
-                             downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>">PRE-ORDER ITEM
+                             downimageurl="<?php echo $this->getSkinUrl('images/catalog/product/pre-order-now-on.png'); ?>">
+                            PRE-ORDER ITEM
                         </div>
                         <!-- preOrderItemBtn -->
 
@@ -1021,44 +1076,63 @@ if ($lengthAvailable) {
         <!-- DetailsinGreyArea -->
 
     </div>
-    <div class="smogibuckcount" <?php if (!$isRewardAble) { echo "style='display:none'"; } ?>>
+    <div class="smogibuckcount" <?php if (!$isRewardAble) {
+        echo "style='display:none'";
+    } ?>>
         <div class="earnbucks">
             <p class="earnsmogibuckstext">
                 <span>
-                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                         viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve" width="44px" height="44px">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve" width="44px"
+                         height="44px">
 <style type="text/css">
-    .st0{fill:none;stroke:#AE8637;stroke-miterlimit:10;}
+    .st0 {
+        fill: none;
+        stroke: #AE8637;
+        stroke-miterlimit: 10;
+    }
 </style>
                         <g>
                             <g>
                                 <circle class="st0" cx="17" cy="27.8" r="7"/>
-                                <path class="st0" d="M15.1,21.1c0.3-1.1,0.9-2.2,1.8-3.1c2.7-2.7,7.1-2.7,9.8,0c2.7,2.7,2.7,7.1,0,9.8c-0.9,0.9-2,1.5-3.2,1.8"/>
-                                <path class="st0" d="M20,16.2c0.3-1.1,0.9-2.2,1.8-3.1c2.7-2.7,7.1-2.7,9.8,0c2.7,2.7,2.7,7.1,0,9.8c-0.9,0.9-2,1.5-3.2,1.8"/>
+                                <path class="st0"
+                                      d="M15.1,21.1c0.3-1.1,0.9-2.2,1.8-3.1c2.7-2.7,7.1-2.7,9.8,0c2.7,2.7,2.7,7.1,0,9.8c-0.9,0.9-2,1.5-3.2,1.8"/>
+                                <path class="st0"
+                                      d="M20,16.2c0.3-1.1,0.9-2.2,1.8-3.1c2.7-2.7,7.1-2.7,9.8,0c2.7,2.7,2.7,7.1,0,9.8c-0.9,0.9-2,1.5-3.2,1.8"/>
                             </g>
                         </g>
 </svg>
                 </span>
-                Earn <?php echo $productRewardPoints; ?> Smogi Bucks with this purchase</p>
+                Earn <?php echo $productRewardPoints; ?> Smogi Bucks with this purchase
+            </p>
         </div>
     </div>
     <div class="clearfix"></div>
     <div class="free-shiping">
         <p class="earnsmogibuckstext"><span>
-                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                     viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve" width="44px" height="44px">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve" width="44px"
+                     height="44px">
 <style type="text/css">
-    .st0{fill:none;stroke:#AE8637;stroke-miterlimit:10;}
+    .st0 {
+        fill: none;
+        stroke: #AE8637;
+        stroke-miterlimit: 10;
+    }
 </style>
                     <g id="XMLID_1_">
-                        <polyline id="XMLID_4_" class="st0" points="10.4,25.8 5.4,22.4 38.7,13.5 20.4,32.7 14,28.3 	"/>
+                        <polyline id="XMLID_4_" class="st0"
+                                  points="10.4,25.8 5.4,22.4 38.7,13.5 20.4,32.7 14,28.3 	"/>
                         <polyline id="XMLID_3_" class="st0" points="16.6,30 14.1,31.9 10.4,25.8 38.7,13.5 	"/>
                         <polyline id="XMLID_2_" class="st0" points="14.1,31.9 14,28.3 38.7,13.5 	"/>
                     </g>
 </svg>
             </span>
 
-            Free and fast shipping to US and Canada</p>
+            Free and fast shipping to US and Canada
+        </p>
     </div>
     <div class="clearfix"></div>
     <div class="description-block">
@@ -1066,28 +1140,32 @@ if ($lengthAvailable) {
             <li class="detail-view"><a href="#">PRODUCT DESCRIPTION</a>
                 <span class="arrow-tag">
                     <svg height="44px" width="44px">
-                        <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
-                        <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
-                        <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+                        <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10"
+                              stroke="#666666" fill="none"/>
+                        <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666"
+                              fill="none"/>
+                        <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666"
+                              fill="none"/>
                     </svg>
                 </span>
+
                 <div style="display:none;" class="inner-content">
                     <!-- description -->
                     <?php //if (strlen($_product->getDescription()) < 300) { ?>
                     <div class="shortdesc"><?php echo $_product->getDescription(); ?> </div>
                     <?php /**
-                    } else {
-                    $str = $_product->getDescription();
-                    $firststr = substr($str, 0, 300);
-                    $secondstr = substr($str, 300, strlen($str));
-
-                    ?>
-                    <div class="shortdesc"><span><?php echo $firststr; ?></span>
-                    <span class="sec-desc"><?php echo $secondstr; ?></span><span class="dot">...</span>
-                    <p class="readmore" style="margin: 0; cursor:pointer;">
-                    <span id="more">Read more</span><span id="less"class="dnone">Read less</span>
-                    </p></div>
-                    <?php } **/ ?>
+                     * } else {
+                     * $str = $_product->getDescription();
+                     * $firststr = substr($str, 0, 300);
+                     * $secondstr = substr($str, 300, strlen($str));
+                     *
+                     * ?>
+                     * <div class="shortdesc"><span><?php echo $firststr; ?></span>
+                     * <span class="sec-desc"><?php echo $secondstr; ?></span><span class="dot">...</span>
+                     * <p class="readmore" style="margin: 0; cursor:pointer;">
+                     * <span id="more">Read more</span><span id="less"class="dnone">Read less</span>
+                     * </p></div>
+                     * <?php } **/ ?>
                     <!-- description -->
 
                 </div>
@@ -1106,8 +1184,8 @@ if ($lengthAvailable) {
                 }
                 if (strcasecmp($imageLabelData['type'], "new design feature image") == 0 && isset($imageLabelData['position'])) {
                     //$newdfimages[$imageLabelData['position']]["url"] = "_" . $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile());
-					$newdfimages[$imageLabelData['position']]["url"] = "_" .(string) Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(320);
-					
+                    $newdfimages[$imageLabelData['position']]["url"] = "_" . (string)Mage::helper('adaptiveResize/image')->init($_product, 'thumbnail', $_image->getFile())->setCropPosition('top')->adaptiveResize(320);
+
                     if (isset($imageLabelData['caption']))
                         $newdfimages[$imageLabelData['position']]["caption"] = $imageLabelData['caption'];
                     else
@@ -1123,9 +1201,12 @@ if ($lengthAvailable) {
                 <li class="detail-view design-feature"><a href="#">DESIGN FEATURES</a>
                     <span class="arrow-tag">
                     <svg height="44px" width="44px">
-                        <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
-                        <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
-                        <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+                        <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10"
+                              stroke="#666666" fill="none"/>
+                        <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666"
+                              fill="none"/>
+                        <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666"
+                              fill="none"/>
                     </svg>
                 </span>
 
@@ -1150,21 +1231,26 @@ if ($lengthAvailable) {
                         foreach ($newdfimages as $ndfimg) {
                             $i++;
                             ?>
-                            <li class="<?php if ($i == 2 && $designFeatureVideoName != '') { echo 'last-df'; }
+                            <li class="<?php if ($i == 2 && $designFeatureVideoName != '') {
+                                echo 'last-df';
+                            }
                             if ($i == 4 && $designFeatureVideoName == '') echo ' df-no-vid'; ?>">
                                 <div class="inner-feature">
                                     <div style="position: relative">
-                                    <?php if ($i==4 && $designFeatureVideoName != ''): ?>
+                                        <?php if ($i == 4 && $designFeatureVideoName != ''): ?>
 
-<!--                                        <img nopin="nopin" class="vid-pl-btn" src="--><?php //echo $this->getSkinUrl('images/vid-icon-img.png'); ?><!--">-->
-                                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                width="56px" height="56px" viewBox="0 0 56 56" enable-background="new 0 0 56 56" xml:space="preserve">
+                                            <!--                                        <img nopin="nopin" class="vid-pl-btn" src="--><?php //echo $this->getSkinUrl('images/vid-icon-img.png'); ?><!--">-->
+                                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                 width="56px" height="56px" viewBox="0 0 56 56"
+                                                 enable-background="new 0 0 56 56" xml:space="preserve">
                                                 <path opacity="0.7" fill="#FFFFFF" d="M28,0.105c-15.464,0-28,12.536-28,28c0,15.464,12.536,28,28,28c15.465,0,28-12.536,28-28
                                                 C56,12.641,43.465,0.105,28,0.105z M21.049,39.233V16.977l19.275,11.128L21.049,39.233z"/>
                                                 </svg>
-                                    <?php endif; ?>
+                                        <?php endif; ?>
 
-                                    <img nopin="nopin" class="img-responsive" width="178" height="178" border="0"  src="<?php echo substr($ndfimg["url"], 1); ?>">
+                                        <img nopin="nopin" class="img-responsive" width="178" height="178" border="0"
+                                             src="<?php echo substr($ndfimg["url"], 1); ?>">
                                     </div>
                                     <span><?php echo $ndfimg["caption"]; ?></span>
                                 </div>
@@ -1172,7 +1258,7 @@ if ($lengthAvailable) {
                             <?php if ($i == 2) { ?>
                                 <span class="clear-fix"></span>
 
-                            <?php
+                                <?php
                             }
                         }
                         ?>
@@ -1183,26 +1269,30 @@ if ($lengthAvailable) {
             <?php } ?>
             <!-- featuresList -->
             <?php
-            if(Mage::registry('current_category')){
-                $category_id =  Mage::registry('current_category')->getId();
-            } else{
+            if (Mage::registry('current_category')) {
+                $category_id = Mage::registry('current_category')->getId();
+            } else {
                 $categories = $_product->getCategoryCollection()
                     ->addAttributeToSelect('name');
-                foreach($categories as $category) {
+                foreach ($categories as $category) {
                     $category_id = $category->getId();
                 }
             }
 
-            if($category_id == '8' ||  $category_id == '46' || $category_id == '29'|| $category_id == '30'|| $category_id == '31'|| $category_id == '32'|| $category_id == '33'|| $category_id == '12'|| $category_id == '38'|| $category_id == '39'|| $category_id == '40'|| $category_id == '50') { } else {
+            if ($category_id == '8' || $category_id == '46' || $category_id == '29' || $category_id == '30' || $category_id == '31' || $category_id == '32' || $category_id == '33' || $category_id == '12' || $category_id == '38' || $category_id == '39' || $category_id == '40' || $category_id == '50') {
+            } else {
 
 
                 ?>
                 <li class="detail-view complete-look"><a href="#">COMPLETE THE LOOK</a>
                     <span class="arrow-tag">
                     <svg height="44px" width="44px">
-                        <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
-                        <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
-                        <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+                        <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10"
+                              stroke="#666666" fill="none"/>
+                        <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666"
+                              fill="none"/>
+                        <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666"
+                              fill="none"/>
                     </svg>
                 </span>
                     <ul style="display:none;" class="inner-content">
@@ -1262,33 +1352,38 @@ if ($lengthAvailable) {
 
                                             <div class="inner-feature">
                                                 <a href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>">
-                                                    <img class="img-responsive" alt="<?php echo $parentproduct->getName() ?>"
+                                                    <img class="img-responsive"
+                                                         alt="<?php echo $parentproduct->getName() ?>"
                                                          src="<?php echo $completelookimg; ?>"></a>
+
                                                 <div class="caption">
-												<span class="prd_title"><a href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>">
+												<span class="prd_title"><a
+                                                        href="<?php echo Mage::getBaseUrl() . $parentproduct->getUrlPath() . '?color=' . $product->getColor(); ?>">
                                                         <?php echo $parentproduct->getName() ?></a></span>
 
                                                     <p>
-                                                        <span class="prd-color"><span><?php echo $clrinfo[$product->getColor()] ?></span></span>
-                                                        <!-- <span class="prd-price">$<?php echo number_format((float)($parentproduct->getPrice()), 2, '.', '');?></span> -->
-                                                        <span class="prd-price"><?php echo Mage::helper('core')->currency($parentproduct->getPrice(),true,false); ?></span>
+                                                        <span
+                                                            class="prd-color"><span><?php echo $clrinfo[$product->getColor()] ?></span></span>
+                                                        <!-- <span class="prd-price">$<?php echo number_format((float)($parentproduct->getPrice()), 2, '.', ''); ?></span> -->
+                                                        <span
+                                                            class="prd-price"><?php echo Mage::helper('core')->currency($parentproduct->getPrice(), true, false); ?></span>
                                                     </p>
                                                 </div>
 
                                             </div>
 
-                                        <?php
+                                            <?php
                                         }
                                         ?>
 
-                                    <?php
+                                        <?php
                                     }
                                 }
                                 //if ($upsellsimplecount > 1) {
                                 ?>
 
                                 <?php //} ?>
-                            <?php
+                                <?php
                             }
                             ?>
 
@@ -1298,13 +1393,16 @@ if ($lengthAvailable) {
                     </ul>
                 </li>
             <?php } ?>
-            <?php if ($fabricStoryBlockId != '') {  ?>
+            <?php if ($fabricStoryBlockId != '') { ?>
                 <li class="detail-view"><a href="#">FABRIC TECHNOLOGY</a>
                     <span class="arrow-tag">
                     <svg height="44px" width="44px">
-                        <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
-                        <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
-                        <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+                        <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10"
+                              stroke="#666666" fill="none"/>
+                        <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666"
+                              fill="none"/>
+                        <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666"
+                              fill="none"/>
                     </svg>
                 </span>
                     <ul style="display:none;" class="fabric-technology inner-content">
@@ -1313,14 +1411,14 @@ if ($lengthAvailable) {
                                 <!-- fabricDetails  fabric story-->
                                 <?php
                                 echo "<div class='mainfabric' rel='main'>";
-                                echo $this->getLayout()->createBlock('cms/block')->setBlockId($fabricStoryBlockId.'_mobile')->toHtml();
+                                echo $this->getLayout()->createBlock('cms/block')->setBlockId($fabricStoryBlockId . '_mobile')->toHtml();
                                 echo "</div>";
                                 echo "<div class='changefabric'>";
                                 if ($fabric_changed) {
 
                                     foreach ($arFabricArray as $key => $value) {
                                         echo "<div class='fabric_story_block' rel='$key'>";
-                                        echo $this->getLayout()->createBlock('cms/block')->setBlockId($value.'_mobile')->toHtml();
+                                        echo $this->getLayout()->createBlock('cms/block')->setBlockId($value . '_mobile')->toHtml();
                                         echo "</div>";
                                     }
                                 }
@@ -1334,15 +1432,20 @@ if ($lengthAvailable) {
                 </li>
             <?php } ?>
 
-            <?php   if($category_id == '8' ||  $category_id == '46' || $category_id == '29'|| $category_id == '30'|| $category_id == '31'|| $category_id == '32'|| $category_id == '33'|| $category_id == '12'|| $category_id == '38'|| $category_id == '39'|| $category_id == '40'|| $category_id == '50') { } else { ?>
+            <?php if ($category_id == '8' || $category_id == '46' || $category_id == '29' || $category_id == '30' || $category_id == '31' || $category_id == '32' || $category_id == '33' || $category_id == '12' || $category_id == '38' || $category_id == '39' || $category_id == '40' || $category_id == '50') {
+            } else { ?>
                 <li class="detail-view"><a href="#">FIT</a>
                     <span class="arrow-tag">
                     <svg height="44px" width="44px">
-                        <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
-                        <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
-                        <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+                        <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10"
+                              stroke="#666666" fill="none"/>
+                        <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666"
+                              fill="none"/>
+                        <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666"
+                              fill="none"/>
                     </svg>
                 </span>
+
                     <div style="display:none;" class="fit inner-content">
 
                         <!-- featuresList -->
@@ -1362,7 +1465,9 @@ if ($lengthAvailable) {
                                     </ul>-->
 
                                     <div class="vlink-cont" style="margin-left:16px;">
-                                        <p class="block-link" style="margin-top: 15px;"><a href="javascript:void(0)" class="com-a-prd-links">Watch how to
+                                        <p class="block-link" style="margin-top: 15px;"><a href="javascript:void(0)"
+                                                                                           class="com-a-prd-links">Watch
+                                                how to
                                                 measure</a></p>
                                     </div>
                                     <!-- <div class="sm-size-chart">
@@ -1375,7 +1480,8 @@ if ($lengthAvailable) {
                                 if ($howToMeasureVidio != '') {
                                     ?>
                                     <div class="video-block f-right">
-                                        <img nopin="nopin" src="<?php echo $this->getSkinUrl('images/how-to-measure-thumbnail.jpg'); ?>"/>
+                                        <img nopin="nopin"
+                                             src="<?php echo $this->getSkinUrl('images/how-to-measure-thumbnail.jpg'); ?>"/>
                                         </video>
 
                                     </div>
@@ -1397,9 +1503,12 @@ if ($lengthAvailable) {
             <li class="detail-view" style="display: none;"><a href="#">REVIEW</a>
                 <span class="arrow-tag">
                     <svg height="44px" width="44px">
-                        <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
-                        <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
-                        <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666" fill="none"/>
+                        <line y2="109.657" x2="288.374" y1="109.657" x1="272.374" stroke-miterlimit="10"
+                              stroke="#666666" fill="none"/>
+                        <line y2="21.39" x2="30.374" y1="21.39" x1="14.374" stroke-miterlimit="10" stroke="#666666"
+                              fill="none"/>
+                        <line y2="29.39" x2="22.374" y1="13.39" x1="22.374" stroke-miterlimit="10" stroke="#666666"
+                              fill="none"/>
                     </svg>
                 </span>
                 <ul style="display:none;" class="inner-content">
@@ -1422,7 +1531,9 @@ if ($designFeatureVideoName != '') {
     ?>
     <div class="html-vid-pop html-des-vid-popup">
         <span class="close_video_popup">
-            <svg xml:space="preserve" enable-background="new 0 0 44 44" viewBox="0 0 44 44" height="44px" width="44px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+            <svg xml:space="preserve" enable-background="new 0 0 44 44" viewBox="0 0 44 44" height="44px" width="44px"
+                 y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
+                 id="Layer_1" version="1.1">
 <g>
     <rect height="44" width="44" fill="#555555"/>
     <line y2="30" x2="30" y1="14" x1="14" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
@@ -1442,7 +1553,9 @@ if ($howToMeasureVidio != '') {
     ?>
     <div class="html-vid-pop html-fit-vid-popup">
         <span class="close_video_popup">
-            <svg xml:space="preserve" enable-background="new 0 0 44 44" viewBox="0 0 44 44" height="44px" width="44px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+            <svg xml:space="preserve" enable-background="new 0 0 44 44" viewBox="0 0 44 44" height="44px" width="44px"
+                 y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
+                 id="Layer_1" version="1.1">
 <g>
     <rect height="44" width="44" fill="#555555"/>
     <line y2="30" x2="30" y1="14" x1="14" stroke-miterlimit="10" stroke="#FFFFFF" fill="none"/>
@@ -1460,7 +1573,9 @@ if ($howToMeasureVidio != '') {
 <?php } ?>
 <div class="size_chart_popup">
     <span class="close_size_cart">
-        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             x="0px" y="0px" width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44"
+             xml:space="preserve">
 <g>
     <rect fill="#555555" width="44" height="44"/>
     <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="14" y1="14" x2="30" y2="30"/>
@@ -1468,7 +1583,12 @@ if ($howToMeasureVidio != '') {
 </g>
 </svg>
     </span>
-    <div class="chart_container"><div class="size-table-container"><div class="size-table-cell"></div></div></div>
+
+    <div class="chart_container">
+        <div class="size-table-container">
+            <div class="size-table-cell"></div>
+        </div>
+    </div>
 </div>
 <?php
 if ($designFeatureVideoName != '' || $howToMeasureVidio != '') {
@@ -1554,7 +1674,7 @@ if ($ftimage != "" && $ftimagesmall != "") {
         _fabrictechnologyimage = '<?php echo $ftimage ?>';
     </script>
 
-<?php
+    <?php
 }
 ?>
 
@@ -1609,13 +1729,13 @@ if ($ftimage != "" && $ftimagesmall != "") {
                                                                     <td style="border-color: transparent !important; background-color: <?php echo $hex ?>;">
                                                                         <div></div>
                                                                     </td>
-                                                                <?php
+                                                                    <?php
                                                                 } else {
                                                                     ?>
                                                                     <td style="border-color: <?php echo $hex ?>;">
                                                                         <div></div>
                                                                     </td>
-                                                                <?php
+                                                                    <?php
                                                                 }
                                                             }
                                                             ?>
@@ -1685,39 +1805,50 @@ if ($ftimage != "" && $ftimagesmall != "") {
     </div>
 </div>
 <div class="product_add_conf_popup">
-<div class="table">
-    <div class="table-row">
-        <div class="close_cart_addition_popup">
-            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
+    <div class="table">
+        <div class="table-row">
+            <div class="close_cart_addition_popup">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="44px" height="44px"
+                     viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
                 <g>
-                    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="16.508" y1="15.751" x2="30.975" y2="30.218"/>
-                    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="30.975" y1="15.751" x2="16.508" y2="30.218"/>
+                    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="16.508" y1="15.751" x2="30.975"
+                          y2="30.218"/>
+                    <line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="30.975" y1="15.751" x2="16.508"
+                          y2="30.218"/>
                 </g>
             </svg>
-        </div>
-        <div class="table-cell">
+            </div>
+            <div class="table-cell">
                 <div class="bag">
-                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve" width="44px" height="44px">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve" width="44px"
+                         height="44px">
                 <style type="text/css">
-                .st0{fill:none;stroke:#AE8637 !important;stroke-miterlimit:10;}
+                    .st0 {
+                        fill: none;
+                        stroke: #AE8637 !important;
+                        stroke-miterlimit: 10;
+                    }
                 </style>
-                <g>
-                <rect x="8.5" y="12.6" class="st0" width="27" height="29.7"/>
-                <path class="st0" d="M30,12.5H26V6.8c0-0.4-0.3-0.7-0.7-0.7h-6.6c-0.4,0-0.7,0.3-0.7,0.7v5.6H14V6.8c0-2.6,2.1-4.7,4.7-4.7h6.6
+                        <g>
+                            <rect x="8.5" y="12.6" class="st0" width="27" height="29.7"/>
+                            <path class="st0" d="M30,12.5H26V6.8c0-0.4-0.3-0.7-0.7-0.7h-6.6c-0.4,0-0.7,0.3-0.7,0.7v5.6H14V6.8c0-2.6,2.1-4.7,4.7-4.7h6.6
                 c2.6,0,4.7,2.1,4.7,4.7V12.5z"/>
-                </g>
+                        </g>
                 </svg>
                     <div class="qty">1</div>
                 </div>
-            <p class="cart_addition_msg">
-            This item has been added to your bag.
-            </p>
-            <a href="javascript:void(0);" onclick="jQuery('.close_cart_addition_popup').click();" class="keep_shopping_btn">KEEP SHOPPING</a>
-            <a href="/checkout/onepage" class="checkout_btn">CHECK OUT</a>
+                <p class="cart_addition_msg">
+                    This item has been added to your bag.
+                </p>
+                <a href="javascript:void(0);" onclick="jQuery('.close_cart_addition_popup').click();"
+                   class="keep_shopping_btn">KEEP SHOPPING</a>
+                <a href="/checkout/onepage" class="checkout_btn">CHECK OUT</a>
+            </div>
         </div>
     </div>
-</div>
 </div>
 <!-- onZoomProductImage -->
 <script type="text/javascript">
@@ -1740,13 +1871,13 @@ if ($ftimage != "" && $ftimagesmall != "") {
     //    }
 </script>
 <script type="text/javascript">
-    $j(window).load(function(){
+    $j(window).load(function () {
         $j('.flexslider').flexslider({
             animation: "slide",
             controlNav: false,
             animationLoop: false,
             slideshow: false,
-            after: function(){
+            after: function () {
 
                 $j("div.social-detail span").html(($j("div.flexslider ul.slides li.flex-active-slide").index() + 1) + " / " + $j("div.flexslider ul.slides li").length);
             }
@@ -1769,8 +1900,8 @@ if ($ftimage != "" && $ftimagesmall != "") {
 //		//alert(index +'/'+total);
         var selectedImgSrc = $j(".selectedimage img").attr("src");
         var location = document.location;
-        var href = "https://pinterest.com/pin/create/button/?url="+location+"&media="+selectedImgSrc;
-        $j(".share_on_pinterest").attr("href",href);
+        var href = "https://pinterest.com/pin/create/button/?url=" + location + "&media=" + selectedImgSrc;
+        $j(".share_on_pinterest").attr("href", href);
 
 
     });

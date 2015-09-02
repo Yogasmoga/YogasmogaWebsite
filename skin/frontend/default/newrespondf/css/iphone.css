@@ -4015,10 +4015,13 @@ ul.checkout-cont > li {
 
 .detail-page .social-detail ul {
     clear: both;
-    padding-top: 10px;
+    /*padding-top: 10px;*/
     float: right;
 }
-
+.detail-page .social-detail ul.sharing-icons svg path{
+    fill: #ccc !important;
+    stroke: #ccc !important;
+}
 .detail-page .social-detail ul li {
     float: left;
     padding-right: 10px;
