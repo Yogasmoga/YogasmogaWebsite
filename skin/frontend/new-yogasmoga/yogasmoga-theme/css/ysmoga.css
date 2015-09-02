@@ -2677,3 +2677,18 @@ a.learn-more {
     height: 100%;
     vertical-align: middle;
 }
+.wl-color-story-prd.women-section .block-content {
+    height: 100%;
+    top: 0 !important;
+}
+.wl-color-story-prd.women-section .block-content .text-content-table {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+.wl-color-story-prd.women-section .block-content .text-content-table .text-content {
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle;
+    width: 100%;
+}
