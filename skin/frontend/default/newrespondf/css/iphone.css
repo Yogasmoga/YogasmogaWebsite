@@ -1445,7 +1445,7 @@ ul {
 }
 
 .category-block .category-box span::after {
-    content: ">";
+    content: " >";
     color: #FF6C00;
 }
 
@@ -5399,6 +5399,7 @@ button.place-order {
     font: 12px/30px graphikregular;
     padding: 14px !important;
     width: 100% !important;
+    text-align: left;
 }
 .size-table-cell {
     display: table-cell;
@@ -7477,4 +7478,8 @@ table#checkout-review-table tfoot tr.reward-point  td .price{
     height: 44px;
     width: 150px;
     letter-spacing: 1px;
+}
+#checkout-review-table tfoot tr td strong {
+    font-family: graphik-semibold;
+    font-weight: normal;
 }
