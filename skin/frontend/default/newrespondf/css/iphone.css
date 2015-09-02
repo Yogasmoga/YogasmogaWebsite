@@ -6739,7 +6739,7 @@ button#send2 {
     position: relative;
 }
 
-.catalog-category-view .product-box{
+.catalog-category-view .product-box a{
     line-height: 0;
 }
 
