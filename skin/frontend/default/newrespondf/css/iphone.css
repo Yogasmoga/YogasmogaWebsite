@@ -6841,6 +6841,7 @@ button#send2 {
     height: 44px;
     padding: 0;
     text-align: center;
+    letter-spacing: 1px;
 }
 
 .help_page table tr:last-child td {
