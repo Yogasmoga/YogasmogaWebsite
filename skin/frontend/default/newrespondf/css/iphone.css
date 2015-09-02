@@ -5368,6 +5368,7 @@ button.place-order {
     right: 0;
     top: 88px;
     width: 44px;
+    z-index: 1;
 }
 
 .wishlist-link {
@@ -5396,14 +5397,27 @@ button.place-order {
     box-sizing: border-box;
     color: #555;
     font: 12px/30px graphikregular;
-    left: 0;
     padding: 14px !important;
-    position: fixed;
-    right: 14px;
-    top: 40%;
     width: 100% !important;
 }
-
+.size-table-cell {
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle;
+    width: 100%;
+}
+.size-table-container {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+.chart_container {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
 .chart_container table tr:first-child td {
     font: 12px/30px graphik-semibold;
     letter-spacing: 1px;

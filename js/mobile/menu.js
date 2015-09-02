@@ -159,7 +159,7 @@ jQuery(document).ready(function($){
     $("#sizechart").click(function(){
         var size_chart = $(".lg-size-chart").html();
         $(".size_chart_popup").fadeIn();
-        $(".size_chart_popup .chart_container").html(size_chart);
+        $(".size_chart_popup .chart_container .size-table-cell").html(size_chart);
     });
     $(".close_size_cart").click(function(){
         $(".size_chart_popup").fadeOut();
