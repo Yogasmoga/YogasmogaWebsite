@@ -74,24 +74,29 @@
     <?php
     }
 ?>
-<script type="text/javascript">
-    jQuery(window).load(function(){
-        jQuery("div.showloading").removeClass('showloading');
-        setTimeout(function(){setfullscreenheight(); jQuery(window).trigger("resize");},5);
-        var bannerImg = document.getElementById("bannerimg").complete;
-        if(bannerImg){
-            jQuery(".share-strip, .new-arrivals-block").animate({opacity:1},100);
-        }
-        jQuery('body').css('overflow','auto');
-        jQuery('.namaskar-overlay1').fadeOut('slow');
-    });
-    jQuery(document).ready(function(){
-       setTimeout(function(){
-            jQuery("div.page-overlayy").remove();
-            jQuery("body").css('overflow','auto');
-       }, 500); 
-    });    
-</script> 
+    <script type="text/javascript">
+        jQuery(window).load(function () {
+            jQuery("div.showloading").removeClass('showloading');
+            setTimeout(function () {
+                setfullscreenheight();
+                jQuery(window).trigger("resize");
+            }, 5);
+            var bannerImg = document.getElementById("bannerimg").complete;
+            if (bannerImg) {
+//            jQuery(".share-strip, .new-arrivals-block").animate({opacity:1},100);
+            }
+            jQuery('body').css('overflow', 'auto');
+//        jQuery('.namaskar-overlay1').fadeOut('slow');
+        });
+        jQuery(document).ready(function () {
+            jQuery('.namaskar-overlay1').fadeOut('slow');
+            jQuery(".share-strip, .new-arrivals-block").animate({opacity: 1}, 100);
+            setTimeout(function () {
+                jQuery("div.page-overlayy").remove();
+                jQuery("body").css('overflow', 'auto');
+            }, 500);
+        });
+    </script>
 <div class="namaskar-overlay1">&nbsp;</div>
 </head>
 <body class="<?php echo $this->getBodyClass()? $this->getBodyClass() : '' ?>" style="margin-right:17px;overflow:hidden;">
@@ -305,7 +310,7 @@ $featurecategoryId = $categoryIds['feature_product'];
 $featurecategory = Mage::getSingleton('catalog/category')->load($featurecategoryId);
 $featurecategoryUrl = Mage::getBaseUrl().$featurecategory->getUrlPath();
 ?>
-<div class="wl-feat-prd">
+<div class="wl-feat-prd men-section">
     <section class="wl-left-block f-left">
         <div class="top-left-block">
             <div class="block-content">
@@ -324,9 +329,14 @@ $featurecategoryUrl = Mage::getBaseUrl().$featurecategory->getUrlPath();
        <!-- <img src="<?php echo $this->getSkinUrl('images/women/feat-prd-main-img2.jpg') ?>" alt="" /> -->
         <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) ?>wysiwyg/new-design-images/mens-page/ys-mens-feature-product-image.jpg" alt=""/>
         <div class="block-content contentSlider">
-            <span class="b-heading bottom-b-heading">FEATURED PRODUCT</span>
+            <div class="text-content-table">
+                <div class="text-content">
+
+                <span class="b-heading bottom-b-heading">FEATURED PRODUCT</span>
             <h3 class="white">THE SUNDAY TEE</h3>
             <a href="<?php echo $this->getBaseUrl().'men/tops/tees/sunday-tee?color=262';?>" class="shopnow-btn">SHOP NOW</a>
+                    </div>
+                </div>
         </div>
     </section>
     <div class="clear-fix"></div>
@@ -339,14 +349,19 @@ $colorstorycategoryId = $categoryIds['color_story'];
 $colorstorycategory = Mage::getSingleton('catalog/category')->load($colorstorycategoryId);
 $colorstorycategoryUrl = Mage::getBaseUrl().$colorstorycategory->getUrlPath();
 ?>
-<div class="wl-color-story-prd">
+<div class="wl-color-story-prd men-section">
     <section class="wl-cs-left-block f-left">
         <!-- <img src="<?php echo $this->getSkinUrl('images/women/cs-main-img2.jpg') ?>" alt="" /> -->
         <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) ?>wysiwyg/new-design-images/mens-page/4-7_YS-Mens-Landing-Page_02.jpg" alt="" />
         <div class="block-content">
-            <span class="b-heading bottom-b-heading">FEATURED FABRIC</span>
+            <div class="text-content-table">
+                <div class="text-content">
+
+                <span class="b-heading bottom-b-heading">FEATURED FABRIC</span>
             <h4 class="main-img-text">KOURA 24</h4>
             <a href="<?php echo $this->getBaseUrl().'men/tops/tees/goa-tee?color=220';?>" class="shopnow-btn">shop now</a>
+                </div>
+                </div>
         </div>
     </section>
     <section class="wl-cs-right-block f-right">
@@ -379,11 +394,14 @@ $colorstorycategoryUrl = Mage::getBaseUrl().$colorstorycategory->getUrlPath();
         <!-- partTwo -->
         <div class="bottom-right-block" style="background: #1661de !important">
             <div class="block-content">
-                <h4 class="cursive-text white">KOURA 24<br/>
+                    <div class="text-content">
+
+                    <h4 class="cursive-text white">KOURA 24<br/>
                     is a durable, high performance<br/>
                     fabric that is soft and light enough<br/>
                     to feel like you have nothing on.</h4>
                 <span class="b-heading top-grey-b-heading white">ROSE APOSTOLAKOS, DESIGNER</span>
+                    </div>
             </div>
         </div>
     </section>

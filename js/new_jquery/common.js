@@ -1,18 +1,20 @@
 var _refercount = 1;
-jQuery(window).load(function($){    
-    featuredSec(); 
-    colorStorySec();
+jQuery(window).load(function($){
+    //featuredSec();
+    //colorStorySec();
     featLiHeightAd(); 
-    browserTest();
+    //browserTest();
     setFeatureVideoWidth();    
     var featLiH = jQuery(".featureList span.ftrFig img.df-img").first().height();
     jQuery(".featureList span.ftrFig").css("height", featLiH);   
     playBtnPos();
-    sizeChartScroll();   
+    sizeChartScroll();
 
     // jQuery("body").animate({opacity:1},100);     
 });
 jQuery(document).ready(function($){
+    featuredSec();
+    colorStorySec();
     // get smogi value in footer
     if(fnIsAppleMobile()){
         var i = 1;
@@ -416,8 +418,10 @@ sizeChartPop();
                 }                  
                 $("#sign-up-form input#fname").blur();
                 $("#sign-up-form #s_password,#sign-in-form #si_password").blur();
-                $(".ui-widget-overlay").css({top:69});        /* without banner */
+
                 //$(".ui-widget-overlay").css({top:94});
+                $(".ui-widget-overlay").css({top:69});
+
                 $(window).trigger("resize");
                 var pW = ($(document).width() - $(this).parent().width())/2;
                 var pH = ($(window).height() - $(this).parent().height())/2;
@@ -538,14 +542,17 @@ function madeinusa(){
 //     jQuery(".header-container").css("left", fCount); // }
 
 function featuredSec(){
-    var rbW = jQuery('.wl-right-block').width();
-    var conWdth = jQuery(".wl-feat-prd").width();
-    jQuery('.wl-left-block').css({"width": conWdth - rbW});     
-    var fs_right = jQuery('.wl-right-block').height();
-    jQuery(".wl-left-block").css("height", fs_right);
-    var fs_left = jQuery(".wl-left-block").height();       
-    var bIsAppleMobile = fnIsAppleMobile();  
-    var isSafari = browserTest();    
+    //var rbW = jQuery('.wl-right-block').width();
+    //var rbW = jQuery('.wl-right-block').width();
+    //var conWdth = jQuery(".wl-feat-prd").width();
+    //jQuery('.wl-left-block').css({"width": conWdth - rbW});
+    //var fs_right = jQuery('.wl-right-block').height();
+    //jQuery(".wl-left-block").css("height", fs_right);
+    //var fs_left = jQuery(".wl-left-block").height();
+
+
+    //var bIsAppleMobile = fnIsAppleMobile();
+    /*var isSafari = browserTest();
     if(!bIsAppleMobile){ 
         jQuery(".wl-left-block .bottom-left-block,.wl-left-block .top-left-block").css("height", fs_right/2);
         if(isSafari){
@@ -559,7 +566,7 @@ function featuredSec(){
             var fs_left_top = jQuery(".wl-left-block .top-left-block").height();
             var fs_left_bot_H = fs_left - fs_left_top;
             jQuery(".wl-left-block .bottom-left-block").css("height", fs_left_bot_H);
-    } 
+    } */
     // lft_vid_img.css("margin-top", (lft_vid - lft_vid_img_height)/2.07);           
         var posContent = setTimeout(function(){
             // jQuery(window).resize();
@@ -576,14 +583,15 @@ function featuredSec(){
 }
 
  function colorStorySec(){
-    var lbW = jQuery('.wl-cs-left-block').width();
-    var conWdth = jQuery(".wl-color-story-prd").width();
-    jQuery('.wl-cs-right-block').css({"width": conWdth - lbW});    
-    var cs_left = jQuery('.wl-cs-left-block').height();
-    jQuery(".wl-cs-right-block").css("height", cs_left);
-    var cs_right = jQuery(".wl-cs-right-block").height();
-    // console.log(cs_right + "----" + cs_left);    
-    var bIsAppleMobile = fnIsAppleMobile();  
+    //var lbW = jQuery('.wl-cs-left-block').width();
+    //var conWdth = jQuery(".wl-color-story-prd").width();
+    //jQuery('.wl-cs-right-block').css({"width": conWdth - lbW});
+    //var cs_left = jQuery('.wl-cs-left-block').height();
+    //jQuery(".wl-cs-right-block").css("height", cs_left);
+    //var cs_right = jQuery(".wl-cs-right-block").height();
+
+    // console.log(cs_right + "----" + cs_left);
+    /*var bIsAppleMobile = fnIsAppleMobile();
     var isSafari = browserTest();
     if(!bIsAppleMobile){
         jQuery(".wl-cs-right-block .top-right-block,.wl-cs-right-block .bottom-right-block").css("height", cs_right/2);
@@ -607,7 +615,7 @@ function featuredSec(){
             var cs_right_bot_H = cs_right - cs_right_top;    
             jQuery(".wl-cs-right-block .bottom-right-block").css("height", cs_right_bot_H);
         }        
-    }
+    }*/
     // rgt_vid_img.css("margin-top", (rgt_vid - rgt_vid_img_height)/2.07);
 
     jQuery(".wl-feat-prd .block-content").each(function(){
@@ -654,7 +662,7 @@ function fnIsAppleMobile()
     return false;
 } // End Function fnIsAppleMobile
 
-function browserTest(){ 
+function browserTest(){
    return jQuery.browser.safari;
 }
 
