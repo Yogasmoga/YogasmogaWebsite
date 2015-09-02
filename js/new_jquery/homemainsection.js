@@ -11,7 +11,7 @@ jQuery(document).ready(function($){
         if(jQuery(".home-slider")!=undefined && jQuery('.home-slider').length>0)
             startSlideNumber = 1;
 
-        $(".flexslider li").css({"display":"block"});
+        $(".flexslider .slides li").css({"display":"block"});
         $('.flexslider').flexslider({
             controlNav: true,
             slideshowSpeed: 5000,
