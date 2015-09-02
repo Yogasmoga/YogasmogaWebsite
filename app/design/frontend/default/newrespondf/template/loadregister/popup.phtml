@@ -248,25 +248,46 @@
         </script>
 
         <?php
-        $name = 'popupcookies';
-        $value = 'yes';
-
-        $cookieValue = Mage::getModel('core/cookie')->get($name);
-
-        if (!isset($cookieValue) || $cookieValue!="yes") {
-
-            ?>
-            <script>
-                jQuery.noConflict();
-                jQuery(document).ready(function () {
-                    jQuery("#popForm").show();
-
-                });
-            </script>
-            <?php
-        }
-        Mage::getModel('core/cookie')->set($name, $value);
+//        $name = 'popupcookies';
+//        $value = 'yes';
+//
+//        $cookieValue = Mage::getModel('core/cookie')->get($name);
+//
+//        if (!isset($cookieValue) || $cookieValue!="yes") {
+//
+//            ?>
+<!--            <script>-->
+<!--                jQuery.noConflict();-->
+<!--                jQuery(document).ready(function () {-->
+<!--                    jQuery("#popForm").show();-->
+<!---->
+<!--                });-->
+<!--            </script>-->
+<!--            --><?php
+//        }
+//        Mage::getModel('core/cookie')->set($name, $value);
         ?>
+
+        <script>
+            jQuery.noConflict();
+            jQuery(document).ready(function () {
+
+                var url = homeUrl + 'mycatalog/myproduct/checkforsignuppopup';
+                alert(url);
+
+                jQuery.ajax({
+                    url: url,
+                    type: 'get',
+                    dataType: 'json',
+                    success: function(result){
+
+                        if(result!=undefined && result.status!=undefined && result.status=="success"){
+                            jQuery("#popForm").show();
+                        }
+                    }
+                });
+            });
+        </script>
 
         <script>
             jQuery.noConflict();
