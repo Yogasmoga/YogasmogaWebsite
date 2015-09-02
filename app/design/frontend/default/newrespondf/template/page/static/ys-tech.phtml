@@ -897,7 +897,7 @@
         <!-- page block end -------------------------------------------------------------------------------------------->
 
 
-        <div class="page_block" id="tab3" rel="yogas_principles">
+        <div class="page_block" id="tab3" rel="design_elements">
             <div class="block_thumbnail">
                 <img src="<?php echo $this->getSkinUrl('images/febric-design-progressive.jpg'); ?>"
                      class="img-responsive"/>
@@ -1079,15 +1079,15 @@
         }
 
         .txt-cnt .bottom-text {
-            bottom: 4px;
             color: #fff;
             font-family: freighttextbook;
-            font-size: 18px;
+            font-size: 16px;
             left: 0;
-            line-height: 22px;
+            line-height: 20px;
             position: absolute;
-            bottom: 15px;
+            bottom: 20px;
             right: 0;
+            letter-spacing: 1px;
             text-transform: capitalize;
         }
 
@@ -1112,10 +1112,11 @@
         .overlay-text {
             bottom: 20px;
             color: #fff;
-            font: 18px freighttextbook;
+            font: 16px freighttextbook;
             left: 0;
             position: absolute;
             width: 100%;
+            letter-spacing: 1px;
         }
 
         .overlay-text .text::after {
@@ -1210,6 +1211,9 @@
             width: 44px;
             display: none;
             z-index: 5;
+        }
+        div[rel="design_elements"] .block_content p:first-child {
+            margin-top: 15px;
         }
 
     </style>
