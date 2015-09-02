@@ -677,6 +677,8 @@ function doWordpressLogin(email, password, first_name, last_name, customer_id) {
         dataType: 'json',
         success: function (result) {
 
+            showShoppingBagHtml();
+
             if (result != undefined && result.message != undefined && result.message == "loginerror") {
                 console.log("******* cannot login to wordpress");
                 return;
