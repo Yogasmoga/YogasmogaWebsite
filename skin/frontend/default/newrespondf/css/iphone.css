@@ -3963,7 +3963,7 @@ ul.checkout-cont > li {
     float: left;
     width: 100%;
 
-    padding: 18px 15px;
+    padding: 18px 14px;
 }
 
 .detail-page .prd-detail {
@@ -3996,9 +3996,9 @@ ul.checkout-cont > li {
 
 .detail-page .social-detail span, .detail-page .includeoptionmain span {
     font-family: GraphikRegular;
-    font-size: 12px;
+    font-size: 14px;
     float: right;
-    line-height: 18px;
+    line-height: 20px;
 }
 
 .detail-page p.color-detail span, .detail-page span.prize, .productcost.amount {
@@ -4024,8 +4024,9 @@ ul.checkout-cont > li {
 }
 .detail-page .social-detail ul li {
     float: left;
-    padding-right: 10px;
-    list-style: none;
+    list-style: outside none none;
+    padding-left: 8px;
+    padding-top: 20px;
 }
 
 .detail-page .social-detail ul li:last-child {
