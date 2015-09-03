@@ -7500,3 +7500,7 @@ table#checkout-review-table tfoot tr.reward-point  td .price{
 #co-shipping-form > fieldset#shipping-new-address-form:first-child label[for="shipping:firstname"] {
     margin-top: 25px !important;
 }
+#discountFormPoints2 .buttons-set .button[rel="not-logged"] {
+    height: 40px;
+    margin-top: 0;
+}
