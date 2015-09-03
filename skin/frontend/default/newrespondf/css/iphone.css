@@ -7405,8 +7405,7 @@ label[for="stripe_expiration"] {
 
 .discount-form > form#giftcardActive {
     float: left;
-    margin-bottom: -15px;
-    margin-top: 15px;
+    margin: 0;
     width: 100%;
 }
 
