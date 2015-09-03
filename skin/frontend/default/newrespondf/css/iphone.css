@@ -7419,7 +7419,7 @@ label[for="stripe_expiration"] {
     stroke: #fff;
 }
 
-.slide_related_content > div[rel="design-block-1"] {
+.page_block[rel="design_elements"] .slide_related_content > div {
     padding-top: 15px;
 }
 
