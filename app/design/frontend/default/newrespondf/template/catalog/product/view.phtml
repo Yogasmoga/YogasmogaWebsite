@@ -1091,10 +1091,21 @@ if ($lengthAvailable) {
         <!-- DetailsinGreyArea -->
 
     </div>
+	 <?php 	
+	   $currentUrl = Mage::helper('core/url')->getCurrentUrl(); //http://yogasmoga.com/women/one-too-many
+		$categoryName = explode('/', $currentUrl);
+		 $urlKey = trim($categoryName[4]); 
+	     $oneTomany = false;
+		 if($urlKey==strtolower('one-too-many')){
+		 $oneTomany = true;
+		 }
+		 ?>
     <div class="smogibuckcount" <?php if (!$isRewardAble) {
         echo "style='display:none'";
-    } ?>>
-        <div class="earnbucks">
+    } ?> >
+        <div class="earnbucks" <?php if($oneTomany==true){echo 'style="display:none;"';}?>>
+		
+    
             <p class="earnsmogibuckstext">
                 <span>
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
