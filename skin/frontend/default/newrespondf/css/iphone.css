@@ -7498,3 +7498,6 @@ table#checkout-review-table tfoot tr.reward-point  td .price{
 #co-billing-form > fieldset > ul li#billing-new-address-form:first-child ul > li label[for="billing:firstname"] {
     margin: 0 !important;
 }
+#co-shipping-form > fieldset#shipping-new-address-form:first-child label[for="shipping:firstname"] {
+    margin-top: 35px !important;
+}
