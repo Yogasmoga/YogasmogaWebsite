@@ -79,13 +79,19 @@ class Ysindia_Customer_Model_Observer
 
                     if(isset($topItemIdToUpdate) && $topItemIdToUpdate>0) {
 
+                        Mage::log('Item to update found ' . $topItemIdToUpdate, null, 'observer.log');
+
                         foreach ($cartItems as $item) {
 
-                            if ($item->getid() == $topItemIdToUpdate) {
+                            if ($item->getId() == $topItemIdToUpdate) {
+
+                                Mage::log('Item to update found ' . $topItemIdToUpdate, null, 'observer.log');
+
                                 $item->setCustomPrice(0);
                                 $item->setOriginalCustomPrice(0);
                                 $item->getProduct()->setIsSuperMode(true);
-                            } else {
+                            }
+                            else {
                                 $product = Mage::getModel('catalog/product')->load($item->getProductId());
 
                                 if(isset($product)) {
