@@ -7499,5 +7499,5 @@ table#checkout-review-table tfoot tr.reward-point  td .price{
     margin: 0 !important;
 }
 #co-shipping-form > fieldset#shipping-new-address-form:first-child label[for="shipping:firstname"] {
-    margin-top: 35px !important;
+    margin-top: 25px !important;
 }
