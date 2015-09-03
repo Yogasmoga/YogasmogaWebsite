@@ -2,205 +2,111 @@
 
 class Ysindia_Customer_Model_Observer
 {
-
-    public function itemAdded($observer)
-    {
-        $item = $observer->getEvent()->getQuoteItem();
+    public function checkCart(Varien_Event_Observer $observer){
 
         $womenBottomCategoryId = 7;
 
         $womenTopCategoryId = 6;
 
-        $product = Mage::getModel('catalog/product')->load($item->getProductId());
+        $cart = $observer->getCart();
 
-        $categoryIds = $product->getCategoryIds();
+        if(isset($cart)) {
+            Mage::log('Cart is set', null, 'observer.log');
 
-        if (isset($categoryIds) && count($categoryIds) >= 2) {
-
-            if (in_array($womenTopCategoryId, $categoryIds)) {              // a top is added
-
-                $cartItems = Mage::getSingleton('checkout/cart')->getQuote()->getAllItems();
-
-                if (isset($cartItems) && count($cartItems) > 0) {
-
-                    $bottomFound = false;
-
-                    $topWithLowestPrice = null;
-                    $topWithLowestPriceProduct = null;
-
-                    // check if there is any bottom in cart
-                    foreach ($cartItems as $cartItem) {
-
-                        $cartProduct = Mage::getModel('catalog/product')->load($cartItem->getProductId());
-
-                        $cartProductCategoryIds = $cartProduct->getCategoryIds();
-
-                        if (in_array($womenBottomCategoryId, $cartProductCategoryIds))        // cart have bottom
-                            $bottomFound = true;
-                        else if (in_array($womenTopCategoryId, $categoryIds)) {
-
-                            if ($topWithLowestPrice == null) {
-
-                                if($cartItem->getPrice()>0) {
-                                    $topWithLowestPrice = $cartItem;
-                                    $topWithLowestPriceProduct = $cartProduct;
-                                }
-                            } else {
-                                if ($cartProduct->getPrice() < $topWithLowestPriceProduct->getPrice()) {
-                                    $topWithLowestPrice = $cartItem;
-                                    $topWithLowestPriceProduct = $cartProduct;
-
-                                    $cartItem->setCustomPrice($cartProduct->getPrice());
-                                    $cartItem->setOriginalCustomPrice($cartProduct->getPrice());
-                                    $cartItem->save();
-                                }
-                            }
-                        }
-                    }
-
-                    // since bottom is found, now adjust price of tops
-                    if ($bottomFound) {
-
-                        if(isset($topWithLowestPrice)) {
-                            $topWithLowestPrice->setCustomPrice(0);
-                            $topWithLowestPrice->setOriginalCustomPrice(0);
-
-                            $topWithLowestPrice->save();
-
-                            Mage::log("Lowest top updated = " . $topWithLowestPrice->getName(), null, 'observer.log');
-                        }
-                    } else {
-                        foreach ($cartItems as $cartItem) {
-                            $cartProduct = Mage::getModel('catalog/product')->load($cartItem->getProductId());
-
-                            $cartItem->setCustomPrice($cartProduct->getPrice());
-                            $cartItem->setOriginalCustomPrice($cartProduct->getPrice());
-                            $cartItem->save();
-                        }
-                    }
-                }
-            }
-            else if (in_array($womenBottomCategoryId, $categoryIds)) {              // a top is added
-
-                $cartItems = Mage::getSingleton('checkout/cart')->getQuote()->getAllItems();
-
-                if (isset($cartItems) && count($cartItems) > 0) {
-
-                    $topWithLowestPrice = null;
-                    $topWithLowestPriceProduct = null;
-
-                    // check if there is any bottom in cart
-                    foreach ($cartItems as $cartItem) {
-
-                        $cartProduct = Mage::getModel('catalog/product')->load($cartItem->getProductId());
-
-                        $cartProductCategoryIds = $cartProduct->getCategoryIds();
-
-                        if (in_array($womenBottomCategoryId, $cartProductCategoryIds))        // cart have bottom
-                            $bottomFound = true;
-                        else if (in_array($womenTopCategoryId, $categoryIds)) {
-
-                            if ($topWithLowestPrice == null) {
-                                $topWithLowestPrice = $cartItem;
-                                $topWithLowestPriceProduct = $cartProduct;
-                            } else {
-                                if ($cartProduct->getPrice() < $topWithLowestPriceProduct->getPrice()) {
-                                    $topWithLowestPrice = $cartItem;
-                                    $topWithLowestPriceProduct = $cartProduct;
-
-                                    $cartItem->setCustomPrice($cartProduct->getPrice());
-                                    $cartItem->setOriginalCustomPrice($cartProduct->getPrice());
-                                    $cartItem->save();
-                                }
-                            }
-                        }
-                    }
-
-                    // since bottom is found, now adjust price of tops
-                    if ($bottomFound) {
-
-                        if(isset($topWithLowestPrice)) {
-                            $topWithLowestPrice->setCustomPrice(0);
-                            $topWithLowestPrice->setOriginalCustomPrice(0);
-
-                            $topWithLowestPrice->save();
-
-                            Mage::log("Lowest top updated = " . $topWithLowestPrice->getName(), null, 'observer.log');
-                        }
-                    } else {
-                        foreach ($cartItems as $cartItem) {
-                            $cartProduct = Mage::getModel('catalog/product')->load($cartItem->getProductId());
-
-                            $cartItem->setCustomPrice($cartProduct->getPrice());
-                            $cartItem->setOriginalCustomPrice($cartProduct->getPrice());
-                            $cartItem->save();
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    public function itemRemoved($observer)
-    {
-        $womenBottomCategoryId = 7;
-
-        $womenTopCategoryId = 6;
-
-        $cartItems = Mage::getSingleton('checkout/cart')->getQuote()->getAllItems();
-
-        if (isset($cartItems) && count($cartItems) > 0) {
-
+            $tops = array();
+            $topFound = false;
             $bottomFound = false;
+            $topItemIdToUpdate = 0;
 
-            $topWithLowestPrice = null;
-            $topWithLowestPriceProduct = null;
+            $quote = $cart->getQuote();
 
-            // check if there is any bottom in cart
-            foreach ($cartItems as $cartItem) {
+            $cartItems = $quote->getAllVisibleItems();
 
-                $cartProduct = Mage::getModel('catalog/product')->load($cartItem->getProductId());
+            foreach ($cartItems as $item) { /* @var $item Mage_Sales_Model_Quote_Item */
 
-                $cartProductCategoryIds = $cartProduct->getCategoryIds();
+                $product = Mage::getModel('catalog/product')->load($item->getProductId());
 
-                if (in_array($womenBottomCategoryId, $cartProductCategoryIds))        // cart have bottom
-                    $bottomFound = true;
-                else if (in_array($womenTopCategoryId, $cartProductCategoryIds)) {
+                if (isset($product) && $product->isConfigurable()) {
 
-                    if ($topWithLowestPrice == null) {
-                        $topWithLowestPrice = $cartItem;
-                        $topWithLowestPriceProduct = $cartProduct;
-                    } else {
-                        if ($cartProduct->getPrice() < $topWithLowestPriceProduct->getPrice()) {
-                            $topWithLowestPrice = $cartItem;
-                            $topWithLowestPriceProduct = $cartProduct;
+                    $product = Mage::getModel('catalog/product')->load($item->getProductId());
 
-                            $cartItem->setCustomPrice($cartProduct->getPrice());
-                            $cartItem->setOriginalCustomPrice($cartProduct->getPrice());
-                            $cartItem->save();
+                    $categoryIds = $product->getCategoryIds();
+
+                    if (isset($categoryIds) && count($categoryIds) >= 2) {
+
+                        if (in_array($womenBottomCategoryId, $categoryIds)) {              // a bottom is found
+                            $bottomFound = true;
+                            Mage::log('Bottom found set', null, 'observer.log');
+                        }
+                        else if (in_array($womenTopCategoryId, $categoryIds)) {
+                            $tops[] = array('product' => $product, 'item' => $item);                       // save all tops
+                            $topFound = true;
+                            Mage::log('Top found', null, 'observer.log');
                         }
                     }
                 }
             }
 
-            // since bottom is found, now adjust price of tops
-            if ($bottomFound) {
+            if($bottomFound){
 
-                if(isset($topWithLowestPrice)) {
-                    $topWithLowestPrice->setCustomPrice(0);
-                    $topWithLowestPrice->setOriginalCustomPrice(0);
+                if($topFound){
 
-                    $topWithLowestPrice->save();
+                    Mage::log('Total tops = ' . count($tops), null, 'observer.log');
+
+                    $first = true;
+                    $topProduct = null;
+                    foreach($tops as $top){
+
+                        if($first){
+                            $first = false;
+                            $topItemIdToUpdate = $top['item']->getId();
+                            $topProduct = $top['product'];
+
+                            Mage::log('First top initialized as smallest with price = ' . $topProduct->getPrice(), null, 'observer.log');
+                        }
+                        else{
+
+                            Mage::log('Comparing ' . ($top['product']->getPrice() . ' , ' . $topProduct->getPrice()), null, 'observer.log');
+
+                            if(isset($top['product']) && isset($topProduct) && ($top['product']->getPrice()<$topProduct->getPrice())){
+                                $topItemIdToUpdate = $top['item']->getId();
+                                $topProduct = $top['product'];
+
+                                Mage::log('New top found with smaller price', null, 'observer.log');
+                            }
+                        }
+                    }
+
+                    if(isset($topItemIdToUpdate) && $topItemIdToUpdate>0) {
+
+                        foreach ($cartItems as $item) {
+
+                            if ($item->getid() == $topItemIdToUpdate) {
+                                $item->setCustomPrice(0);
+                                $item->setOriginalCustomPrice(0);
+                                $item->getProduct()->setIsSuperMode(true);
+                            } else {
+                                $product = Mage::getModel('catalog/product')->load($item->getProductId());
+
+                                if(isset($product)) {
+                                    $item->setCustomPrice($product->getPrice());
+                                    $item->setOriginalCustomPrice($product->getPrice());
+                                    $item->getProduct()->setIsSuperMode(true);
+                                }
+                            }
+                        }
+                    }
                 }
+            }
+            else{
+                foreach ($cartItems as $item) {
+                    $product = Mage::getModel('catalog/product')->load($item->getProductId());
 
-                Mage::log("Lowest top updated = " . $topWithLowestPrice->getName(), null, 'observer.log');
-            } else {
-                foreach ($cartItems as $cartItem) {
-                    $cartProduct = Mage::getModel('catalog/product')->load($cartItem->getProductId());
-
-                    $cartItem->setCustomPrice($cartProduct->getPrice());
-                    $cartItem->setOriginalCustomPrice($cartProduct->getPrice());
-                    $cartItem->save();
+                    if(isset($product)) {
+                        $item->setCustomPrice($product->getPrice());
+                        $item->setOriginalCustomPrice($product->getPrice());
+                        $item->getProduct()->setIsSuperMode(true);
+                    }
                 }
             }
         }
