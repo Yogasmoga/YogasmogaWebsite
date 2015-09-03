@@ -7495,3 +7495,6 @@ table#checkout-review-table tfoot tr.reward-point  td .price{
 .help_page .privacy a {
     color: #ae8637;
 }
+#co-billing-form > fieldset > ul li#billing-new-address-form:first-child ul > li label[for="billing:firstname"] {
+    margin: 0 !important;
+}
