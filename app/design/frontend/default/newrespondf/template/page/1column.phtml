@@ -101,76 +101,8 @@
 		<?php //echo $this->getChildHtml('breadcrumbs') ?>
 			<div id="main" class="col-main">
 				<div class="custom-block">	
-					<?php 
-						$titleValue = "";
-						if($urlKey == 'our-story'){
-							$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-our-story');
-							$titleValue = $title->getTitle();
-						}
-						else if($urlKey == 'ys-fabric-tech'){ 
-								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-ys-fabric-tech');
-								$titleValue = $title->getTitle();								
-						}
-						else if($urlKey == 'smogi-bucks'){
-								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-smogi-bucks');
-								$titleValue = $title->getTitle();								
-						}
-						else if($urlKey == 'our-stores'){
-							$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-our-stores');
-							$titleValue = $title->getTitle();
-						}
-						else if($urlKey == 'ys-color-tech'){
-								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-ys-color-tech');
-								$titleValue = $title->getTitle();
-						}
-						else if($urlKey == 'our-core-values'){
-								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-our-core-values');
-								$titleValue = $title->getTitle();
-						}
-						else if($urlKey == 'namaskar'){
-								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-namaskar');
-								$titleValue = $title->getTitle();
-						}
-						else if($urlKey == 'made-in-usa'){
-								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-made-in-usa');
-								$titleValue = $title->getTitle();
-						}
-						else if($urlKey == 'our-edge'){
-								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-our-edge');
-								$titleValue = $title->getTitle();
-						}
-						else if($urlKey == 'our-ethics'){
-								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-our-ethics');
-								$titleValue = $title->getTitle();
-						}
-						else if($urlKey == 'press'){
-								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-press');
-								$titleValue = $title->getTitle();
-						}
-						else if($urlKey == 'design-elements'){
-								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-design-elements');
-								$titleValue = $title->getTitle();
-						}
-						else if($urlKey == 'principles-of-yoga'){
-								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-principles-of-yoga');
-								$titleValue = $title->getTitle();
-						}
-						else if($urlKey == 'payment-methods'){
-								$title = Mage::getmodel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('mobile-payment-methods');
-								$titleValue = $title->getTitle();
-						}
-
-						echo $this->getChildHtml('content');						
-					?>
-					<?php
-						if(strlen($titleValue)>0){
-					?>
-					<script type="text/javascript">
-						jQuery("h1#pagetitle").html("<?php echo $titleValue;?>");
-					</script>
-					<?php
-						}
-					?>
+					<?php echo $this->getChildHtml('content');?>
+					
 				</div>
 			</div>
 		</div>
