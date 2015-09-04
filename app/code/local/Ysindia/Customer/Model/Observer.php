@@ -25,7 +25,7 @@ class Ysindia_Customer_Model_Observer
             foreach ($cartItems as $item) { /* @var $item Mage_Sales_Model_Quote_Item */
 
                 $product = Mage::getModel('catalog/product')->load($item->getProductId());
-
+                Mage::log('Checking product with id = ' . $product->getId(), null, 'observer.log');
                 if (isset($product) && $product->isConfigurable()) {
 
                     $product = Mage::getModel('catalog/product')->load($item->getProductId());
@@ -39,6 +39,7 @@ class Ysindia_Customer_Model_Observer
                             Mage::log('Bottom found set', null, 'observer.log');
                         }
                         else if (in_array($womenTopCategoryId, $categoryIds)) {
+                            Mage::log('Stored item with id = ' . $item->getProductId(), null, 'observer.log');
                             $tops[] = array('product' => $product, 'item' => $item);                       // save all tops
                             $topFound = true;
                             Mage::log('Top found', null, 'observer.log');
@@ -59,7 +60,7 @@ class Ysindia_Customer_Model_Observer
 
                         if($first){
                             $first = false;
-                            $topItemIdToUpdate = $top['item']->getId();
+                            $topItemIdToUpdate = $top['item']->getProductId();
                             $topProduct = $top['product'];
 
                             Mage::log('First top initialized as smallest with price = ' . $topProduct->getPrice(), null, 'observer.log');
@@ -69,7 +70,7 @@ class Ysindia_Customer_Model_Observer
                             Mage::log('Comparing ' . ($top['product']->getPrice() . ' , ' . $topProduct->getPrice()), null, 'observer.log');
 
                             if(isset($top['product']) && isset($topProduct) && ($top['product']->getPrice()<$topProduct->getPrice())){
-                                $topItemIdToUpdate = $top['item']->getId();
+                                $topItemIdToUpdate = $top['item']->getProductId();
                                 $topProduct = $top['product'];
 
                                 Mage::log('New top found with smaller price', null, 'observer.log');
@@ -77,13 +78,13 @@ class Ysindia_Customer_Model_Observer
                         }
                     }
 
-                    if(isset($topItemIdToUpdate) && $topItemIdToUpdate>0) {
+                    if(isset($topItemIdToUpdate)) {
 
                         Mage::log('Item to update found ' . $topItemIdToUpdate, null, 'observer.log');
 
                         foreach ($cartItems as $item) {
 
-                            if ($item->getId() == $topItemIdToUpdate) {
+                            if ($item->getProductId() == $topItemIdToUpdate) {
 
                                 Mage::log('Item to update found ' . $topItemIdToUpdate, null, 'observer.log');
 
