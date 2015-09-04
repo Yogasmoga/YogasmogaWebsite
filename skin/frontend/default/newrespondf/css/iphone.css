@@ -3241,10 +3241,11 @@ label[for="shipping:street1"]{
     box-shadow: 0 -3px 1px rgba(0, 0, 0, 0.03) inset;
     position: relative;
     font-weight: normal;
-    line-height: 44px;
+    line-height: 50px;
     text-transform: uppercase;
     border-bottom: 1px solid #999;
     letter-spacing: 1px;
+    height: 45px;
 }
 
 .section.allow.completed .step-count {
