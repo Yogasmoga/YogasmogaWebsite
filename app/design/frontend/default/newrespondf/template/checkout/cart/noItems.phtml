@@ -88,7 +88,11 @@
         dataType: 'json',
         success: function(result){
             jQuery(".rewards_points").html("<b>$</b>" + result.smogi_bucks);
-         }
+        },
+        error: function(){
+            jQuery(".one-page-checkout .section .step-count").hide();
+        }
+
     });
 </script>
 <style>
