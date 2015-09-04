@@ -845,3 +845,12 @@ input:focus{
 .gender.selected{
     background: #AE8536;
 }
+.category_block {
+    float: left;
+    width: 25%;
+}
+.homepagegrid .align_bottom {
+    text-align: center;
+    padding: 0 14px 35px;
+    width: 100%;
+}
