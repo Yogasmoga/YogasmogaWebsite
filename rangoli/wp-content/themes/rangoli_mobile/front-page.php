@@ -195,6 +195,7 @@ $home = get_site_url();
         </div>
 
 <?php
+    break;
     endwhile;
     endif;
 
@@ -253,6 +254,7 @@ $home = get_site_url();
         </div>
 
         <?php
+        break;
     endwhile;
     endif;
 
@@ -310,6 +312,7 @@ $home = get_site_url();
         </div>
 
         <?php
+        break;
     endwhile;
     endif;
 
@@ -350,6 +353,7 @@ $home = get_site_url();
         </div>
 
         <?php
+        break;
     endwhile;
     endif;
 
