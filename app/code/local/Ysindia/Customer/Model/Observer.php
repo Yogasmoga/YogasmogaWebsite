@@ -5,7 +5,7 @@ class Ysindia_Customer_Model_Observer
     public function checkCart(Varien_Event_Observer $observer){
 
         $womenBottomCategoryId = 7;
-        $oneToManyWomenCategory = 43;
+        $oneToManyWomenCategory = 52;
         $womenTopCategoryId = 6;
 
         $cart = $observer->getCart();
@@ -24,6 +24,7 @@ class Ysindia_Customer_Model_Observer
             foreach ($cartItems as $item) { /* @var $item Mage_Sales_Model_Quote_Item */
 
                 $product = Mage::getModel('catalog/product')->load($item->getProductId());
+
                 if (isset($product) && $product->isConfigurable()) {
 
                     $product = Mage::getModel('catalog/product')->load($item->getProductId());
@@ -32,18 +33,28 @@ class Ysindia_Customer_Model_Observer
 
                     if (isset($categoryIds) && count($categoryIds) >= 2) {
 
-                        Mage::log('checking one2many (' . implode('-', $categoryIds) . ') *' . in_array($womenBottomCategoryId, $categoryIds) . '*,*' . !in_array($oneToManyWomenCategory, $categoryIds) . '*', null, 'observer.log');
+//                        Mage::log('checking one2many (' . implode('-', $categoryIds) . ') *' . in_array($womenBottomCategoryId, $categoryIds) . '*,*' . !in_array($oneToManyWomenCategory, $categoryIds) . '*', null, 'observer.log');
 
 //                        if (in_array($womenBottomCategoryId, $categoryIds) && !in_array($oneToManyWomenCategory, $categoryIds)) {              // a bottom is found
                         if (in_array($womenBottomCategoryId, $categoryIds)) {              // a bottom is found                            $bottomFound = true;
                             Mage::log('Bottom found', null, 'observer.log');
-                            $bottomFound = true;
+
+                            if(!$bottomFound){
+
+                                $simpleProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $item->getSku());
+
+                                $simpleCategoryIds = $simpleProduct->getCategoryIds();
+
+                                if(!in_array($oneToManyWomenCategory, $simpleCategoryIds)){
+                                    $bottomFound = true;
+                                }
+                            }
                         }
                         else if (in_array($womenTopCategoryId, $categoryIds)) {
 //                            Mage::log('Stored item with id = ' . $item->getProductId(), null, 'observer.log');
                             $tops[] = array('product' => $product, 'item' => $item);                       // save all tops
                             $topFound = true;
-                            Mage::log('Top found', null, 'observer.log');
+//                            Mage::log('Top found', null, 'observer.log');
                         }
                     }
                 }
@@ -52,8 +63,6 @@ class Ysindia_Customer_Model_Observer
             if($bottomFound){
 
                 if($topFound) {
-
-//                    Mage::log('Total tops = ' . count($tops), null, 'observer.log');
 
                     $first = true;
                     $topProduct = null;
@@ -86,23 +95,34 @@ class Ysindia_Customer_Model_Observer
 
                             if ($product->isConfigurable()) {
 
-                                $product = Mage::getModel('catalog/product')->loadByAttribute('sku', $item->getSku());
+                                $productBySku = Mage::getModel('catalog/product')->loadByAttribute('sku', $item->getSku());
 
 //                                Mage::log('** ' . $product->isConfigurable() . ', *' . $product->getSku() . ' ,  ' . $topItemIdToUpdate . '*' . ($product->getSku() === $topItemIdToUpdate) . ']', null, 'observer.log');
 
-                                if ($product->getSku() === $topItemIdToUpdate) {
+                                if(isset($productBySku)) {
+
+                                    if ($productBySku->getSku() === $topItemIdToUpdate) {
 
 //                                    Mage::log('Updating now ' . $topItemIdToUpdate, null, 'observer.log');
 
-                                    $item->setCustomPrice(0);
-                                    $item->setOriginalCustomPrice(0);
-                                    $item->getProduct()->setIsSuperMode(true);
-                                } else {
-
-                                    if (isset($product)) {
-                                        $item->setCustomPrice($product->getPrice());
-                                        $item->setOriginalCustomPrice($product->getPrice());
+                                        $item->setCustomPrice(0);
+                                        $item->setOriginalCustomPrice(0);
                                         $item->getProduct()->setIsSuperMode(true);
+                                    } else {
+
+                                        $categoryIds = $productBySku->getCategoryIds();
+
+                                        if (in_array($oneToManyWomenCategory, $categoryIds)) {
+                                            $item->setCustomPrice($productBySku->getPrice());
+                                            $item->setOriginalCustomPrice($productBySku->getPrice());
+                                            $item->getProduct()->setIsSuperMode(true);
+                                        }
+                                        else{
+                                            $item->setCustomPrice($product->getPrice());
+                                            $item->setOriginalCustomPrice($product->getPrice());
+                                            $item->getProduct()->setIsSuperMode(true);
+                                        }
+
                                     }
                                 }
                             }
@@ -112,12 +132,25 @@ class Ysindia_Customer_Model_Observer
             }
             else{
                 foreach ($cartItems as $item) {
+
                     $product = Mage::getModel('catalog/product')->load($item->getProductId());
 
-                    if(isset($product)) {
-                        $item->setCustomPrice($product->getPrice());
-                        $item->setOriginalCustomPrice($product->getPrice());
-                        $item->getProduct()->setIsSuperMode(true);
+                    if(isset($product) && $product->isConfigurable()) {
+
+                        $productBySku = Mage::getModel('catalog/product')->loadByAttribute('sku', $item->getSku());
+
+                        $categoryIds = $productBySku->getCategoryIds();
+
+                        if (in_array($oneToManyWomenCategory, $categoryIds)) {
+                            $item->setCustomPrice($productBySku->getPrice());
+                            $item->setOriginalCustomPrice($productBySku->getPrice());
+                            $item->getProduct()->setIsSuperMode(true);
+                        }
+                        else{
+                            $item->setCustomPrice($product->getPrice());
+                            $item->setOriginalCustomPrice($product->getPrice());
+                            $item->getProduct()->setIsSuperMode(true);
+                        }
                     }
                 }
             }
