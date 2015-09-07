@@ -1429,3 +1429,10 @@ p.small.err_msg {
 .popup .st0 {
     stroke: #fff !important;
 }
+.row{
+    width: 100%;
+    float: left;
+}
+.lh0{
+    line-height: 0;
+}

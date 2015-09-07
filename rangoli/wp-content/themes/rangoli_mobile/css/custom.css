@@ -24,13 +24,14 @@
 .author_post_read .align_bottom {
     bottom: 0;
     left: 0;
-    padding: 15px 70px 15px 15px;
+    padding: 15px 70px 14px 15px;
     position: absolute;
+    width: 100%;
 }
 .author_post_read .align_bottom .post_category {
     color: #fff;
-    font:14px / 23px freight-text-pro;
-    margin-bottom: 15px;
+    font:12px freight-text-pro;
+    margin-bottom: 23px;
 }
 .author_post_read .align_bottom .post_category a{
     color: #fff;
@@ -43,7 +44,8 @@
 }
 .author_post_read .align_bottom .post_author {
     color: #fff;
-    font:18px / 23px freight-text-pro;
+    font:16px / 23px freight-text-pro;
+    letter-spacing: 1px;
     font-style: italic;
 }
 .author_post_read .align_bottom .post_author span {
@@ -51,6 +53,7 @@
     font:18px / 23px freight-text-pro;
     font-style: normal;
     text-transform: capitalize;
+    letter-spacing: normal;
 }
 
 .author_post_read_author > img {
@@ -93,7 +96,7 @@
 
 
 .author_picture {
-    bottom: 15px;
+    bottom: 18px;
     height: 50px;
     position: absolute;
     right: 10px;
@@ -104,7 +107,7 @@
     color: #555555;
     display: none;
     float: left;
-    font: 22px/28px freight-text-pro;
+    font: 18px/1.65em freight-text-pro;
     padding: 25px 20px;
     width: 100%;
 }
@@ -844,4 +847,13 @@ input:focus{
 }
 .gender.selected{
     background: #AE8536;
+}
+.category_block {
+    float: left;
+    width: 25%;
+}
+.homepagegrid .align_bottom {
+    text-align: center;
+    padding: 0 14px 35px;
+    width: 100%;
 }
