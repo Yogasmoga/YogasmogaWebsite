@@ -29,7 +29,8 @@ class Ysindia_Customer_Model_Observer
 
                     $categoryIds = $product->getCategoryIds();
 
-                    if (isset($categoryIds) && count($categoryIds) >= 2) {
+//                    if (isset($categoryIds) && count($categoryIds) >= 2) {
+                    if (isset($categoryIds) && count($categoryIds) > 0) {
 
                         if (in_array($womenBottomCategoryId, $categoryIds)) {              // a bottom is found                            $bottomFound = true;
 
@@ -88,10 +89,10 @@ class Ysindia_Customer_Model_Observer
                                 $topProductPrice = $topProductBySkuTemp->getPrice();
                             /***************** check if product is from one to many, then read simple product price ********************/
 
-                            Mage::log($productBySkuTemp->getSku() .  ' = ' . count($categoriesItemProduct), null, 'observer.log');
-                            Mage::log($topProductBySkuTemp->getSku() .  ' = ' . count($categoriesTopProduct), null, 'observer.log');
+//                            Mage::log($productBySkuTemp->getSku() .  ' = ' . count($categoriesItemProduct), null, 'observer.log');
+//                            Mage::log($topProductBySkuTemp->getSku() .  ' = ' . count($categoriesTopProduct), null, 'observer.log');
 
-                            Mage::log($productBySkuTemp->getSku() .  ' <item> = ' . $itemProductPrice . ' , ' . $topProductBySkuTemp->getSku()  . ' <top> = ' . $topProductPrice, null, 'observer.log');
+//                            Mage::log($productBySkuTemp->getSku() .  ' <item> = ' . $itemProductPrice . ' , ' . $topProductBySkuTemp->getSku()  . ' <top> = ' . $topProductPrice, null, 'observer.log');
 
                             if (isset($top['product']) && isset($topProduct) && ($itemProductPrice < $topProductPrice)) {
                                 $topItemIdToUpdate = $top['item']->getSku();
