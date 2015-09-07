@@ -27,17 +27,12 @@ class Ysindia_Customer_Model_Observer
 
                 if (isset($product) && $product->isConfigurable()) {
 
-                    $product = Mage::getModel('catalog/product')->load($item->getProductId());
-
                     $categoryIds = $product->getCategoryIds();
 
-                    if (isset($categoryIds) && count($categoryIds) >= 2) {
+//                    if (isset($categoryIds) && count($categoryIds) >= 2) {
+                    if (isset($categoryIds) && count($categoryIds) > 0) {
 
-//                        Mage::log('checking one2many (' . implode('-', $categoryIds) . ') *' . in_array($womenBottomCategoryId, $categoryIds) . '*,*' . !in_array($oneToManyWomenCategory, $categoryIds) . '*', null, 'observer.log');
-
-//                        if (in_array($womenBottomCategoryId, $categoryIds) && !in_array($oneToManyWomenCategory, $categoryIds)) {              // a bottom is found
                         if (in_array($womenBottomCategoryId, $categoryIds)) {              // a bottom is found                            $bottomFound = true;
-                            Mage::log('Bottom found', null, 'observer.log');
 
                             if(!$bottomFound){
 
@@ -51,10 +46,9 @@ class Ysindia_Customer_Model_Observer
                             }
                         }
                         else if (in_array($womenTopCategoryId, $categoryIds)) {
-//                            Mage::log('Stored item with id = ' . $item->getProductId(), null, 'observer.log');
+
                             $tops[] = array('product' => $product, 'item' => $item);                       // save all tops
                             $topFound = true;
-//                            Mage::log('Top found', null, 'observer.log');
                         }
                     }
                 }
@@ -73,19 +67,40 @@ class Ysindia_Customer_Model_Observer
                             $topItemIdToUpdate = $top['item']->getSku();
                             $topProduct = $top['product'];
 
-//                            Mage::log('First top initialized as smallest with price = ' . $topProduct->getPrice(), null, 'observer.log');
                         } else {
 
-                            if (isset($top['product']) && isset($topProduct) && ($top['product']->getPrice() < $topProduct->getPrice())) {
+                            $item = $top['item'];
+                            $itemProduct = $top['product'];
+
+                            $productBySkuTemp = Mage::getModel('catalog/product')->loadByAttribute('sku', $item->getSku());
+                            $topProductBySkuTemp = Mage::getModel('catalog/product')->loadByAttribute('sku', $topItemIdToUpdate);
+
+                            $categoriesItemProduct = $productBySkuTemp->getCategoryIds();
+                            $categoriesTopProduct = $topProductBySkuTemp->getCategoryIds();
+
+                            $itemProductPrice = $itemProduct->getPrice();
+                            $topProductPrice = $topProduct->getPrice();
+
+                            /***************** check if product is from one to many, then read simple product price ********************/
+                            if (in_array($oneToManyWomenCategory, $categoriesItemProduct))
+                                $itemProductPrice = $productBySkuTemp->getPrice();
+
+                            if (in_array($oneToManyWomenCategory, $categoriesTopProduct))
+                                $topProductPrice = $topProductBySkuTemp->getPrice();
+                            /***************** check if product is from one to many, then read simple product price ********************/
+
+//                            Mage::log($productBySkuTemp->getSku() .  ' = ' . count($categoriesItemProduct), null, 'observer.log');
+//                            Mage::log($topProductBySkuTemp->getSku() .  ' = ' . count($categoriesTopProduct), null, 'observer.log');
+
+//                            Mage::log($productBySkuTemp->getSku() .  ' <item> = ' . $itemProductPrice . ' , ' . $topProductBySkuTemp->getSku()  . ' <top> = ' . $topProductPrice, null, 'observer.log');
+
+                            if (isset($top['product']) && isset($topProduct) && ($itemProductPrice < $topProductPrice)) {
                                 $topItemIdToUpdate = $top['item']->getSku();
                                 $topProduct = $top['product'];
-
-//                                Mage::log('New top found with smaller price', null, 'observer.log');
                             }
+
                         }
                     }
-
-//                    Mage::log('Item to update found ' . $topItemIdToUpdate . '(' . isset($topItemIdToUpdate) . ')', null, 'observer.log');
 
                     if (isset($topItemIdToUpdate)) {
 
@@ -97,13 +112,9 @@ class Ysindia_Customer_Model_Observer
 
                                 $productBySku = Mage::getModel('catalog/product')->loadByAttribute('sku', $item->getSku());
 
-//                                Mage::log('** ' . $product->isConfigurable() . ', *' . $product->getSku() . ' ,  ' . $topItemIdToUpdate . '*' . ($product->getSku() === $topItemIdToUpdate) . ']', null, 'observer.log');
-
                                 if(isset($productBySku)) {
 
                                     if ($productBySku->getSku() === $topItemIdToUpdate) {
-
-//                                    Mage::log('Updating now ' . $topItemIdToUpdate, null, 'observer.log');
 
                                         $item->setCustomPrice(0);
                                         $item->setOriginalCustomPrice(0);
