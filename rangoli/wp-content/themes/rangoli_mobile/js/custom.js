@@ -1264,7 +1264,7 @@ function get_youtube_video_length() {
                     //var output = getResults(data.items[0]);
                     var duration = data.items[0].contentDetails.duration;
                     duration = convert_time(duration);
-                    $(".video_time").html(duration);
+                    $(this).closest(".author_post_read").find(".video_time").html(duration);
                 }
             }
 
