@@ -254,6 +254,7 @@ input, textarea, select {
 .popup_container.sign_in_modal .overlay-inner-bg .left_block ul li label {
     color: #808185;
     margin-bottom: 3px;
+    line-height: 25px;
 }
 
 .popup_container.sign_in_modal .overlay-inner-bg .left_block .no_account {
