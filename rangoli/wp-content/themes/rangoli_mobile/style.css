@@ -165,10 +165,9 @@ div,p{
     background: rgba(0, 0, 0, 0) url("images/arrows_slider.png") no-repeat scroll 0 0 !important;
 }
 .play-video {
-    
     left: 50%;
-    margin-left: -26px;
-    margin-top: -26px;
+    margin-left: -32px;
+    margin-top: -32px;
     position: absolute;
     top: 50%;
     z-index: 3;
