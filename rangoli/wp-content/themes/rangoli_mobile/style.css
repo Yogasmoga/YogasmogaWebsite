@@ -735,7 +735,7 @@ textarea {
     border-bottom: 1px solid #999;
     color: #555;
     float: left;
-    font: 18px/18px freight-text-pro;
+    font: 800 18px/18px freight-text-pro;
     margin: 40px 0 20px;
     padding-bottom: 10px;
     text-align: left;
@@ -1374,10 +1374,10 @@ p.small.err_msg {
   background: #A58639;
 }
 
-.slide_post_text{
+.slide_post_text {
+    bottom: 38px;
+    left: 30px;
     position: absolute;
-    top: 31%;
-    left:30px;
     right: 30px;
 }
 

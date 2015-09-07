@@ -261,7 +261,7 @@
     position: absolute;
     right: 0;
     text-align: center;
-    top: 0;
+    bottom: 0;
     width: 44px;
 }
 .row.like p {
@@ -269,7 +269,7 @@
     position: absolute;
     right: 0;
     text-align: center;
-    top: 44px;
+    top: -23px;
     width: 44px;
 }
 .filter-container ul {
@@ -477,11 +477,12 @@ li{
 }
 .charm {
     background-repeat: no-repeat;
-    height: 44px;
+    background-size: auto 34px;
+    bottom: 74px;
+    height: 29px;
     position: absolute;
-    right: 1px;
-    top: 60px;
-    width: 44px;
+    right: 7px;
+    width: 29px;
 }
 .charm.color_009E01 {
     background-image: url(../images/charms6.png);
@@ -898,4 +899,22 @@ input:focus{
     line-height: 0;
     margin-bottom: 15px;
     margin-top: 12px;
+}
+.no-comment {
+    font: 400 12px/18px GraphikRegular;
+    margin-bottom: 20px;
+}
+.get_the_look > p {
+    font: 800 18px freight-text-pro;
+    letter-spacing: 0;
+}
+.video_time {
+    bottom: 0;
+    color: #fff;
+    font: 12px/30px GraphikRegular;
+    height: 30px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    width: 58px;
 }

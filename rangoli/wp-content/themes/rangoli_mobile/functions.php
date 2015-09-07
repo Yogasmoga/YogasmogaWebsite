@@ -440,6 +440,7 @@ function get_post_comments($post_id)
     $comments = get_comments(array('post_id' => $post->ID, "order" => "DESC"));
 
     $count = count($comments);
+    if($count>0){
     $i = 0;
     $print = 0;
     if ($count > 3):
@@ -513,9 +514,13 @@ function get_post_comments($post_id)
 
             $i++;
         }
-    endforeach;
-    if ($hasMore) {
-        echo "</div>";
+        endforeach;
+        if ($hasMore) {
+            echo "</div>";
+        }
+    }
+    else{
+        echo "<p class='no-comment'>Be the first to comment</p>";
     }
 
     ?>
@@ -1045,7 +1050,7 @@ function get_the_look($post)
         ?>
         <div class="row">
             <div class="get_the_look">
-                <p><?php echo $name; ?>'s wearing:</p>
+                <p><?php echo $name; ?>&rsquo;s wearing:</p>
 
                 <div class="span6">
                     <a href="<?php echo implode("", $left_product_url) ?>">
