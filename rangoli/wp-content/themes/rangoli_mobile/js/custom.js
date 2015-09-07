@@ -1242,6 +1242,7 @@ $(document).ready(function () {
 
 function get_youtube_video_length() {
     $(".play-video").each(function(){
+        var play_video = $(this);
         var video_id;
         var video_url = $(this).attr("video");
         var array = video_url.split("http://youtu.be/");
@@ -1264,7 +1265,7 @@ function get_youtube_video_length() {
                     //var output = getResults(data.items[0]);
                     var duration = data.items[0].contentDetails.duration;
                     duration = convert_time(duration);
-                    $(this).closest(".author_post_read").find(".video_time").html(duration);
+                    play_video.closest(".author_post_read").find(".video_time").html(duration);
                 }
             }
 
