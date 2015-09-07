@@ -282,7 +282,7 @@ if(Mage::getSingleton('customer/session')->isLoggedIn())
             if(Mage::getSingleton('core/session')->getAutoAppliedDiscount() == 1)
             {
                 Mage::getSingleton('core/session')->setAutoAppliedDiscount(2);
-                Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
+              //  Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
 
             }
 
