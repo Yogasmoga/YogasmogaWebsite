@@ -485,9 +485,23 @@ else
                                     <?php $customerlogin = Mage::getSingleton('customer/session')->isLoggedIn() ?>
 
                                     <?php if($customerlogin): ?>
-                                    <button type="submit" name="update_cart_action_checkout" value="update_qty" title="<?php echo $this->__('Continue'); ?>" class="button btn-update">
-                                        
+                                    
+									<?php $url = Mage::app()->getRequest()->getControllerName(); 
+									if($url ==strtolower('cart')){
+									?>
+										<a name="update_cart_action_checkout" value="update_qty" title="<?php echo $this->__('Continue'); ?>" class="button btn-update" href="<?php echo Mage::helper('checkout/url')->getCheckoutUrl(); ?>">
+                                        <?php echo $this->__('PROCEED TO CHECKOUT'); ?></a>
+										
+									<?php } else{?>
+										<button type="submit" name="update_cart_action_checkout" value="update_qty" title="<?php echo $this->__('Continue'); ?>" class="button btn-update">
                                         <?php echo $this->__('PROCEED TO CHECKOUT'); ?></button>
+										<?php }?>
+									
+									
+									
+									<!--<button type="submit" name="update_cart_action_checkout" value="update_qty" title="<?php //echo $this->__('Continue'); ?>" class="button btn-update">
+                                        <?php //echo $this->__('PROCEED TO CHECKOUT'); ?></button>-->
+										
                                 <?php else: ?>
                                     <button type="submit" name="update_cart_action" rel="not-logged" onclick="openLogin()" value="update_qty" title="<?php echo $this->__('Continue'); ?>" class="button btn-update"><?php //echo $this->__('Update'); ?></button>
                                 <?php endif ?>
