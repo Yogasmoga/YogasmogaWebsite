@@ -210,7 +210,7 @@ if($post->post_type=="post" && $post->post_status=="publish" ) {
 
 
         <div class="post_comments" style="display: block;">
-            <p class="comments_heading">COMMENTS</p>
+            <p class="comments_heading">Comments</p>
             <?php echo get_post_comments($post->ID); ?>
 
         </div>

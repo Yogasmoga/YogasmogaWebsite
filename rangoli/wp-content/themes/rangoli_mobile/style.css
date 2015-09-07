@@ -643,7 +643,7 @@ div,p{
     z-index: 5;
 }
 textarea {
-    border: 1px solid #e9e9e9;
+    border: 1px solid #999;
     resize: none;
     width: 100%;
     height:152px;
@@ -732,7 +732,7 @@ textarea {
     padding-bottom: 20px;
 }
 .comments_heading {
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid #999;
     color: #555;
     float: left;
     font: 18px/18px freight-text-pro;

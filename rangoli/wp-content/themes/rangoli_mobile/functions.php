@@ -497,7 +497,10 @@ function get_post_comments($post_id)
                             $name = get_the_author_meta('display_name', $user_id);
                         }
                         echo $name; ?></p>
-
+                        <?php
+//                            $comment_rating = get_user_post_comment_rating($comment->ID,$user_id, "comment");
+                         ?>
+<!--                    <div class="rating" rel="--><?php //echo $comment_rating; ?><!--"></div>-->
                     <p class='comment'><?php echo nl2br($comment->comment_content); ?></p>
                 </div>
                 <div class='span12'>
@@ -1297,3 +1300,18 @@ function user_id_exists($user)
 
 }
 
+function get_user_post_comment_rating($subject_id,$user_id, $subject_type)
+{
+    global $wpdb;
+    $query = "select avg(rating_value) as rating_value from rangoli_ratings where subject_id=$subject_id and user_id=$user_id and subject_type='$subject_type'";
+
+    $rating = $wpdb->get_results($query);
+
+    if ($rating && count($rating) > 0) {
+
+        $post_rating = get_object_vars($rating[0]);
+        return $post_rating['rating_value'];
+    } else {
+        return 0;
+    }
+}

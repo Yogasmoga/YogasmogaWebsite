@@ -16,6 +16,7 @@ var s = date.getSeconds();
 var playing_video = false;
 var is_login_box_open = false;
 var message;
+var current_rated_value = 0;
 
 $(document).ready(function () {
     current_date = $(".current_date").html()
@@ -399,6 +400,7 @@ function submit_comment(textarea) {
                     statusdiv.html('<p class="ajax-error" >You might have left one of the fields blank, or be posting too quickly</p>');
                 },
                 success: function (data, textStatus) {
+
                     if (data == "success" || textStatus == "success") {
                         if (commentform.find("textarea").val() == "") {
                             statusdiv.html('<p class="ajax-success" >Blank comment is not allowed !</p>');
@@ -408,11 +410,15 @@ function submit_comment(textarea) {
                             var img_div = '<div class="row">';
                             current_user_img_url = $("#current_user_img_url").html();
                             img_div = img_div + '<div class="profile-img-small"><img src="'+current_user_img_url+'" /></div>';
-                            var comment = '<div class="span12"><p class="comment_author">' + logged_in + '</p><p class="comment">' + (textarea.val()).replace("\n", "<br/>") + '</p> </div>';
+                            var rating = '';
+                            //var rating = '<div class="comment_rating" rel="'+current_rated_value+'"></div>';
+                            var comment = '<div class="span12"><p class="comment_author">' + logged_in + '</p>'+  rating +'<p class="comment">' + (textarea.val()).replace("\n", "<br/>") + '</p> </div>';
                             var date = '<div class="span12"><p class="comment_time">' + current_date + '</p></div></div>';
                             statusdiv.html('<p class="ajax-success" ><!--Thanks for your comment. We appreciate your response.--></p>');
                             $(".post_comments_listing").prepend(img_div + comment + date);
                         }
+                        var obj = $(".comment_rating");
+                            obj.raty({score: obj.attr("rel"), path: root + "rangoli/wp-content/themes/rangoli/images", readOnly: true});
                         textarea.val('');
                     } else {
                         statusdiv.html('<p class="ajax-error" >Please wait a while before posting your next comment</p>');
@@ -939,6 +945,7 @@ function raty_init() {
                         type: 'GET',
                         data: 'rating_value=' + score + '&subject_type=post&subject_id=' + subject_id,
                         success: function (result) {
+                            current_rated_value = score;
                         }
 
                     });
@@ -1242,4 +1249,5 @@ $(document).ready(function(){
         $(".popup button").removeClass("active");
         $(".err_msg").html("");
     });
+
 });

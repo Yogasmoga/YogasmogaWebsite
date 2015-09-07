@@ -163,7 +163,7 @@ $logged_in = is_user_logged_in();
                     <?php wpfp_link(); ?>
                 </div>
                 <div class="post_comments">
-                    <p class="comments_heading">COMMENTS</p>
+                    <p class="comments_heading">Comments</p>
                     <?php echo get_post_comments($post->ID); ?>
 
                 </div>
