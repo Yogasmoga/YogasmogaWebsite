@@ -108,12 +108,28 @@
     display: none;
     float: left;
     font: 18px/1.65em freight-text-pro;
-    padding: 25px 20px;
+    padding: 25px 14px 30px;
     width: 100%;
 }
 .post_content a{
-    color:#A28636;
+    color:#AE8736;
     text-decoration: none;
+}
+.post_content .span6 a {
+    color: #555;
+    float: left;
+    text-transform: uppercase;
+    width: 100%;
+}
+.post_content .span6 a span{
+    color: #555;
+    font: 12px/15px ITCAvantGardeStd-Demi;
+    text-transform: uppercase;
+}
+.post_content .span6 a img{
+    float: left;
+    width: 100%;
+    height: auto;
 }
 .post_content img{
     width:100%;
@@ -256,16 +272,17 @@
     top: 44px;
     width: 44px;
 }
-.filter-container  ul {
+.filter-container ul {
+    background: rgba(255, 255, 255, 0.95) none repeat scroll 0 0;
     margin: 0;
-    padding: 0;
+    padding: 15px 0;
     text-align: left;
 }
 li{
     list-style: none;
 }
 .filter-container > ul > li {
-    background: rgba(255,255,255,0.95);
+    /*background: rgba(255,255,255,0.95);*/
     list-style: none;
     letter-spacing: 1px;
     
@@ -289,11 +306,12 @@ li{
 }
 .filter-container a {
     color: #555;
-    font: 14px/44px ITCAvantGardeStd-Bk;
+    font: 12px/50px ITCAvantGardeStd-Bk;
     text-decoration: none;
     text-transform: uppercase;
     display: block;
     position: relative;
+    height: 44px;
 }
 
 /*.filter-container ul li ul li:last-child a {
@@ -302,7 +320,8 @@ li{
 
 .filter-container .down-arrow-grey-white {
     color: #555;
-    font: 14px/44px ITCAvantGardeStd-Demi;
+    font: 12px/50px ITCAvantGardeStd-Demi;
+    height: 44px;
 }
 .filter-container ul ul {
     padding: 0 0px;
@@ -314,7 +333,7 @@ li{
     height: 10px;
     margin-top: 17px;
     position: absolute;
-    right: 6px;
+    right: 17px;
     width: 10px;
 }
 .filter-wrapper {
@@ -518,12 +537,19 @@ li{
     padding-left: 0;
 }
 .get_the_look {
-    margin-top: 25px;
+    margin-top: 45px;
 }
 .span6 {
     float: left;
-    padding: 15px 5px;
+    padding-top: 15px;
+    padding-bottom: 0;
     width: 50%;
+}
+.get_the_look .span6:nth-child(odd) {
+    padding-left: 2px;
+}
+.get_the_look .span6:nth-child(even) {
+    padding-right: 2px;
 }
 .comments_no {
     color: #999;
@@ -856,4 +882,10 @@ input:focus{
     text-align: center;
     padding: 0 14px 35px;
     width: 100%;
+}
+.rating {
+    width: 101px;
+}
+.basic_learn_page_info > p {
+    font: 12px/18px GraphikRegular;
 }
