@@ -7518,5 +7518,6 @@ table#checkout-review-table tfoot tr.reward-point  td .price{
     width: 100%;
 }
 .chart-table tr td:first-child {
-    width: 29.9348% !important;
+    padding-right: 6px;
+    width: 31% !important;
 }
