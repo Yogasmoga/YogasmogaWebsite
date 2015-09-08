@@ -242,11 +242,12 @@
     height: auto;
     width: 100%;
 }
-.author-link{
+.author-link {
     color: #fff;
     font: 22px/25px ITCAvantGardeStd-Bk;
+    letter-spacing: 1px;
     text-decoration: none;
-    text-transform: capitalize;
+    text-transform: uppercase;
 }
 .author_profession {
     color: #fff;

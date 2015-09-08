@@ -629,7 +629,7 @@ function get_author_shared_posts($author_id)
                             <div class="align_bottom">
                                 <div class="post_category"><?php echo get_post_categories(); ?></div>
                                 <div class="post_title"><?php echo $post->post_title; ?></div>
-                                <div class="post_author">with
+                                <div class="post_author">by
                                     <span><?php echo $post_author->display_name; ?></span></div>
                             </div>
                             <?php
@@ -825,7 +825,7 @@ function get_author_liked_posts($author_id)
                             <div class="align_bottom">
                                 <div class="post_category"><?php echo get_post_categories(); ?></div>
                                 <div class="post_title"><?php echo $post->post_title; ?></div>
-                                <div class="post_author">with
+                                <div class="post_author">by
                                     <span><?php echo $post_author->display_name; ?></span></div>
                             </div>
                             <?php
@@ -1264,7 +1264,7 @@ function get_user_liked_posts($author_id)
                             <div class="align_bottom">
                                 <div class="post_category"><?php echo get_post_categories(); ?></div>
                                 <div class="post_title"><?php echo $post->post_title; ?></div>
-                                <div class="post_author">with
+                                <div class="post_author">by
                                     <span><?php echo $post_author->display_name; ?></span></div>
                             </div>
                             <?php
