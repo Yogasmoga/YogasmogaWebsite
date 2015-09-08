@@ -1302,7 +1302,7 @@ td.popupproductdetail table.smogibucks td div.smogibuckcount {
     height: 100%;
     left: 0;
     top: 0;
-    display: none;
+    display: none !important;
 }
 
 #colorcontainer table {

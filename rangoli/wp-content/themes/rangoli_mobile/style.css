@@ -147,6 +147,7 @@ div,p{
     top: 50% !important;
     width: 100% !important;
     z-index: 2;
+    left: 0;
 }
 .flex-direction-nav .flex-next {
     background-position: 100% 0 !important;

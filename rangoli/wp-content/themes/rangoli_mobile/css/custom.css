@@ -422,12 +422,9 @@ li{
     background: rgba(255, 255, 255, 0.9) none repeat scroll 0 0;
     color: #555555;
     display: block;
-    font-family: ITCAvantGardeStd-Md;
-    font-size: 12px;
-    height: 44px;
+    font:18px/18px freight-text-pro;
+    padding: 20px 0;
     letter-spacing: 1px;
-    line-height: 50px;
-    margin-bottom: -44px;
     position: relative;
     text-align: center;
     width: 100%;
@@ -589,7 +586,7 @@ li{
 }
 .author_event {
     color: #fff;
-    padding: 75px 15px  15px  15px;
+    padding: 36px 14px  18px  14px;
     text-align: center;
 }
 .event_time {
@@ -921,4 +918,14 @@ input:focus{
     right: 0;
     text-align: center;
     width: 58px;
+}
+.flexslider.shared_posts {
+    padding: 0 14px 14px;
+}
+.author_events .flexslider {
+    padding: 0 14px 14px;
+}
+.align-center.author_posts_heading > span {
+    font-weight: 800;
+    letter-spacing: normal;
 }

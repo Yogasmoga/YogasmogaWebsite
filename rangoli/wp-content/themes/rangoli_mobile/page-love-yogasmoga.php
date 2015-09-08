@@ -35,7 +35,17 @@ if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_
                     <div class="post_category"><?php echo get_post_categories(); ?></div>
                     <div class="post_title">LOVE, YOGASMOGA</div>
                     <div class="post_author"><span><?php echo $post->post_title; ?></span></div>
+                    <?php
+                    $post_author_image_urls = get_user_meta($post->post_author, 'cupp_upload_meta');
+                    $post_author_image_url = $post_author_image_urls[0];
+                    if ($post_author_image_url == "") {
+                        $post_author_image_url = $home . "/wp-content/themes/rangoli_mobile/images/default.jpg";
+                    }
+                    ?>
                 </div>
+                <div class="author_picture"
+                     style="background: url('<?php echo $post_author_image_url; ?>') no-repeat;
+                         background-position: center center; background-size: cover;"></div>
             </div>
             <div class="close_post <?php if($logged_in){echo 'user-color-shade-trans';} ?>">
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

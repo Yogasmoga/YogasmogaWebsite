@@ -7506,3 +7506,14 @@ table#checkout-review-table tfoot tr.reward-point  td .price{
     height: 50px;
     margin-top: -12px;
 }
+.sizediv.outofstock > img {
+    display: inline !important;
+}
+.sizediv img {
+    display: none !important;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
