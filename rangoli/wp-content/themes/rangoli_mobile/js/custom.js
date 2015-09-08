@@ -105,6 +105,7 @@ $(document).ready(function () {
         $(".overlay-text").show();
         $(".author_posts").slideUp();
         $(".author_picture").show();
+        $(".video_time").show();
         $(window).scroll(function () {
             $(".sharing_box").fadeOut();
             $(".signup-signin-block").fadeIn();
@@ -450,6 +451,7 @@ function play(obj) {
         player.fadeIn();
         parent.find(".play_video").fadeIn();
         parent.find(".featured_video_plus").fadeIn();
+        parent.find(".video_time").fadeOut();
         obj.hide();
         var overlay = parent.find(".overlay-text");
         overlay.click();
