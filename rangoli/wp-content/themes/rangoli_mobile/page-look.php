@@ -87,7 +87,10 @@ if ($the_query->have_posts()):while ($the_query->have_posts()): $the_query->the_
                 ?>
             </div>
             <div class="author_picture"
-                 style="background: url('<?php echo $post_author_image_url; ?>') no-repeat; background-position: center center; background-size: cover"></div>
+                 style="background: url('<?php echo $post_author_image_url; ?>') no-repeat;
+                     background-position: center center; background-size: cover;
+                 <?php if(has_post_video()){echo "bottom: 48px;";} ?>"></div>
+            <?php if(has_post_video()){echo "<div class='video_time' style='background: $author_color;'></div>";} ?>
             <div class="close_post <?php if($logged_in){echo 'user-color-shade-trans';} ?>">
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                      width="44px" height="44px" viewBox="0 0 44 44" enable-background="new 0 0 44 44" xml:space="preserve">
