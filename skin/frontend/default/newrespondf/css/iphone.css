@@ -2530,7 +2530,7 @@ tr.td-noborder td {
 }
 
 #co-billing-form {
-    padding: 35px 0 20px;
+    padding: 20px 0 20px;
 }
 
 #co-billing-form input,
@@ -3269,7 +3269,7 @@ label[for="shipping:street1"]{
 }
 
 #co-shipping-form p:first-child {
-    margin: 35px 0 20px;
+    margin: 20px 0;
     font: 12px/18px GraphikRegular;
 }
 
