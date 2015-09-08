@@ -5,7 +5,6 @@ class Ysindia_Customer_Model_Observer
     public function checkCart(Varien_Event_Observer $observer){
 
         $womenBottomCategoryId = 7;
-        $oneToManyWomenCategory = 52;
         $womenTopCategoryId = 6;
 
         $cart = $observer->getCart();
@@ -21,7 +20,8 @@ class Ysindia_Customer_Model_Observer
 
             $cartItems = $quote->getAllVisibleItems();
 
-            foreach ($cartItems as $item) { /* @var $item Mage_Sales_Model_Quote_Item */
+            foreach ($cartItems as $item) {
+                /* @var $item Mage_Sales_Model_Quote_Item */
 
                 $product = Mage::getModel('catalog/product')->load($item->getProductId());
 
@@ -29,21 +29,13 @@ class Ysindia_Customer_Model_Observer
 
                     $categoryIds = $product->getCategoryIds();
 
-//                    if (isset($categoryIds) && count($categoryIds) >= 2) {
+                    Mage::log($product->getSku() . " = " .  implode(',', $categoryIds), null, 'observer.log');
+
                     if (isset($categoryIds) && count($categoryIds) > 0) {
 
                         if (in_array($womenBottomCategoryId, $categoryIds)) {              // a bottom is found                            $bottomFound = true;
 
-                            if(!$bottomFound){
-
-                                $simpleProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $item->getSku());
-
-                                $simpleCategoryIds = $simpleProduct->getCategoryIds();
-
-                                if(!in_array($oneToManyWomenCategory, $simpleCategoryIds)){
-                                    $bottomFound = true;
-                                }
-                            }
+                            $bottomFound = true;
                         }
                         else if (in_array($womenTopCategoryId, $categoryIds)) {
 
@@ -53,6 +45,8 @@ class Ysindia_Customer_Model_Observer
                     }
                 }
             }
+
+            Mage::log("[$topFound] [$bottomFound]", null, 'observer.log');
 
             if($bottomFound){
 
@@ -69,32 +63,12 @@ class Ysindia_Customer_Model_Observer
 
                         } else {
 
-                            $item = $top['item'];
-                            $itemProduct = $top['product'];
-
-                            $productBySkuTemp = Mage::getModel('catalog/product')->loadByAttribute('sku', $item->getSku());
-                            $topProductBySkuTemp = Mage::getModel('catalog/product')->loadByAttribute('sku', $topItemIdToUpdate);
-
-                            $categoriesItemProduct = $productBySkuTemp->getCategoryIds();
-                            $categoriesTopProduct = $topProductBySkuTemp->getCategoryIds();
-
-                            $itemProductPrice = $itemProduct->getPrice();
+                            $itemProductPrice = $top['product']->getPrice();
                             $topProductPrice = $topProduct->getPrice();
 
-                            /***************** check if product is from one to many, then read simple product price ********************/
-                            if (in_array($oneToManyWomenCategory, $categoriesItemProduct))
-                                $itemProductPrice = $productBySkuTemp->getPrice();
+                            Mage::log("[$itemProductPrice] [$topProductPrice]", null, 'observer.log');
 
-                            if (in_array($oneToManyWomenCategory, $categoriesTopProduct))
-                                $topProductPrice = $topProductBySkuTemp->getPrice();
-                            /***************** check if product is from one to many, then read simple product price ********************/
-
-//                            Mage::log($productBySkuTemp->getSku() .  ' = ' . count($categoriesItemProduct), null, 'observer.log');
-//                            Mage::log($topProductBySkuTemp->getSku() .  ' = ' . count($categoriesTopProduct), null, 'observer.log');
-
-//                            Mage::log($productBySkuTemp->getSku() .  ' <item> = ' . $itemProductPrice . ' , ' . $topProductBySkuTemp->getSku()  . ' <top> = ' . $topProductPrice, null, 'observer.log');
-
-                            if (isset($top['product']) && isset($topProduct) && ($itemProductPrice < $topProductPrice)) {
+                            if ($itemProductPrice < $topProductPrice) {
                                 $topItemIdToUpdate = $top['item']->getSku();
                                 $topProduct = $top['product'];
                             }
@@ -102,39 +76,27 @@ class Ysindia_Customer_Model_Observer
                         }
                     }
 
+                    Mage::log("Item to update [$topItemIdToUpdate]", null, 'observer.log');
+
                     if (isset($topItemIdToUpdate)) {
 
                         foreach ($cartItems as $item) {
 
                             $product = Mage::getModel('catalog/product')->load($item->getProductId());
 
-                            if ($product->isConfigurable()) {
+                            if (isset($product) && $product->isConfigurable()) {
 
-                                $productBySku = Mage::getModel('catalog/product')->loadByAttribute('sku', $item->getSku());
+                                Mage::log($item->getSku() . " | " . $topItemIdToUpdate, null, 'observer.log');
 
-                                if(isset($productBySku)) {
-
-                                    if ($productBySku->getSku() === $topItemIdToUpdate) {
-
-                                        $item->setCustomPrice(0);
-                                        $item->setOriginalCustomPrice(0);
-                                        $item->getProduct()->setIsSuperMode(true);
-                                    } else {
-
-                                        $categoryIds = $productBySku->getCategoryIds();
-
-                                        if (in_array($oneToManyWomenCategory, $categoryIds)) {
-                                            $item->setCustomPrice($productBySku->getPrice());
-                                            $item->setOriginalCustomPrice($productBySku->getPrice());
-                                            $item->getProduct()->setIsSuperMode(true);
-                                        }
-                                        else{
-                                            $item->setCustomPrice($product->getPrice());
-                                            $item->setOriginalCustomPrice($product->getPrice());
-                                            $item->getProduct()->setIsSuperMode(true);
-                                        }
-
-                                    }
+                                if ($item->getSku() === $topItemIdToUpdate) {
+                                    $item->setCustomPrice(0);
+                                    $item->setOriginalCustomPrice(0);
+                                    $item->getProduct()->setIsSuperMode(true);
+                                }
+                                else {
+                                    $item->setCustomPrice($product->getPrice());
+                                    $item->setOriginalCustomPrice($product->getPrice());
+                                    $item->getProduct()->setIsSuperMode(true);
                                 }
                             }
                         }
@@ -148,20 +110,9 @@ class Ysindia_Customer_Model_Observer
 
                     if(isset($product) && $product->isConfigurable()) {
 
-                        $productBySku = Mage::getModel('catalog/product')->loadByAttribute('sku', $item->getSku());
-
-                        $categoryIds = $productBySku->getCategoryIds();
-
-                        if (in_array($oneToManyWomenCategory, $categoryIds)) {
-                            $item->setCustomPrice($productBySku->getPrice());
-                            $item->setOriginalCustomPrice($productBySku->getPrice());
-                            $item->getProduct()->setIsSuperMode(true);
-                        }
-                        else{
-                            $item->setCustomPrice($product->getPrice());
-                            $item->setOriginalCustomPrice($product->getPrice());
-                            $item->getProduct()->setIsSuperMode(true);
-                        }
+                        $item->setCustomPrice($product->getPrice());
+                        $item->setOriginalCustomPrice($product->getPrice());
+                        $item->getProduct()->setIsSuperMode(true);
                     }
                 }
             }
