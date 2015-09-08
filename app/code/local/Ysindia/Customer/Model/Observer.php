@@ -5,7 +5,8 @@ class Ysindia_Customer_Model_Observer
     public function checkCart(Varien_Event_Observer $observer){
 
         $womenBottomCategoryId = 7;
-        $womenBottomRangoliCategoryId = 66;
+        $womenTopRangoliCategoryId = 67;
+        $womenBottomRangoliCategoryId = 68;
         $womenTopCategoryId = 6;
 
         $cart = $observer->getCart();
@@ -38,7 +39,7 @@ class Ysindia_Customer_Model_Observer
 
                             $bottomFound = true;
                         }
-                        else if (in_array($womenTopCategoryId, $categoryIds)) {
+                        else if (in_array($womenTopCategoryId, $categoryIds) || in_array($womenTopRangoliCategoryId, $categoryIds)) {
 
                             $tops[] = array('product' => $product, 'item' => $item);                       // save all tops
                             $topFound = true;
@@ -67,7 +68,7 @@ class Ysindia_Customer_Model_Observer
                             $itemProductPrice = $top['product']->getPrice();
                             $topProductPrice = $topProduct->getPrice();
 
-//                            Mage::log("[$itemProductPrice] [$topProductPrice]", null, 'observer.log');
+                            Mage::log("[$itemProductPrice] [$topProductPrice]", null, 'observer.log');
 
                             if ($itemProductPrice < $topProductPrice) {
                                 $topItemIdToUpdate = $top['item']->getSku();
