@@ -5,7 +5,8 @@ class Ysindia_Customer_Model_Observer
     public function checkCart(Varien_Event_Observer $observer){
 
         $womenBottomCategoryId = 7;
-        $womenBottomRangliCategoryId = 6;
+        $womenBottomRangoliCategoryId = 68;
+        $womenTopRangoliCategoryId = 67;
         $womenTopCategoryId = 6;
 
         $cart = $observer->getCart();
@@ -34,11 +35,11 @@ class Ysindia_Customer_Model_Observer
 
                     if (isset($categoryIds) && count($categoryIds) > 0) {
 
-                        if (in_array($womenBottomCategoryId, $categoryIds) || in_array($womenBottomRangliCategoryId, $categoryIds)) {              // a bottom is found                            $bottomFound = true;
+                        if (in_array($womenBottomCategoryId, $categoryIds) || in_array($womenBottomRangoliCategoryId, $categoryIds)) {              // a bottom is found                            $bottomFound = true;
 
                             $bottomFound = true;
                         }
-                        else if (in_array($womenTopCategoryId, $categoryIds)) {
+                        else if (in_array($womenTopCategoryId, $categoryIds) || in_array($womenTopRangoliCategoryId, $categoryIds)) {
 
                             $tops[] = array('product' => $product, 'item' => $item);                       // save all tops
                             $topFound = true;
