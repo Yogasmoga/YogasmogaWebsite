@@ -1243,17 +1243,17 @@ $(document).ready(function () {
 
 
 function get_youtube_video_length() {
-    $(".play-video").each(function(){
+    $(".play-video").each(function () {
         var play_video = $(this);
         var video_id;
         var video_url = $(this).attr("video");
         var array = video_url.split("http://youtu.be/");
         var url = array[1];
         var video_id_array = url.split("https://youtu.be/");
-        if(video_id_array.length>1){
+        if (video_id_array.length > 1) {
             video_id = video_id_array[1];
         }
-        else{
+        else {
             video_id = video_id_array[0];
         }
         var api_key = 'AIzaSyCHdzjqJtpNd9Ls8F8PWbqWcZ9ZPHnHPgc';
@@ -1310,5 +1310,16 @@ function convert_time(duration) {
     var h = Math.floor(duration / 3600);
     var m = Math.floor(duration % 3600 / 60);
     var s = Math.floor(duration % 3600 % 60);
-    return ((h > 0 ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (s < 10 ? "0" : "") + s);
+    if (h < 10) {
+        if(h>0)
+        h = "0" + h + ":";
+        else h="";
+    }
+    if (m < 10) {
+        m = "0" + m;
+    }
+    if (s < 10) {
+        s = "0" + s;
+    }
+    return (h + m + ":" + s);
 }
