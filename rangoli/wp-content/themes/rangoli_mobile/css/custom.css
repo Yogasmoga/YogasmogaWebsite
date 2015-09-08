@@ -249,7 +249,7 @@
     text-decoration: none;
     text-transform: uppercase;
 }
-}
+
 .author_profession {
     color: #fff;
     font: 18px/23px freight-text-pro;
@@ -539,6 +539,7 @@ li{
     float: left;
     margin-bottom: 25px;
     padding-left: 0;
+    padding-top: 0 !important;
 }
 .get_the_look {
     margin-top: 45px;
