@@ -5,8 +5,8 @@ class Ysindia_Customer_Model_Observer
     public function checkCart(Varien_Event_Observer $observer){
 
         $womenBottomCategoryId = 7;
-        $womenBottomRangoliCategoryId = 68;
-        $womenTopRangoliCategoryId = 67;
+        $womenBottomRangoliCategoryId = 70;
+        $womenTopRangoliCategoryId = 69;
         $womenTopCategoryId = 6;
 
         $cart = $observer->getCart();
