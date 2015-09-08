@@ -46,7 +46,10 @@ if($post->post_type=="post" && $post->post_status=="publish" ) {
             }
             ?>
             <div class="author_picture"
-                 style="background: url('<?php echo $post_author_image_url; ?>') no-repeat; background-position: center center; background-size: cover"></div>
+                 style="background: url('<?php echo $post_author_image_url; ?>') no-repeat;
+                     background-position: center center; background-size: cover;
+                 <?php if(has_post_video()){echo "bottom: 48px;";} ?>"></div>
+            <?php if(has_post_video()){echo "<div class='video_time' style='background: $author_color;'></div>";} ?>
         </div>
         <?php
         $home = get_site_url();
