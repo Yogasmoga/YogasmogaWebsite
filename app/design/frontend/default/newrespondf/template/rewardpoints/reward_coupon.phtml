@@ -62,7 +62,7 @@
        <form action="<?php echo $this->getUrl('rewardpoints/index/quotation/').'#smogi-promotions' ?>" method="post" name="discountFormPoints2" id="discountFormPoints2">
         <fieldset style="clear: both;">
           <?php echo $this->getIllustrationImage()?>
-            
+            <span id="bucks" style="display:none;" rel="<?php echo $point_details['customer_points']?>"></span>
             <div class="rewards_point_cart" style="display:none;"><?php echo $this->__("This shopping cart is worth %s loyalty point(s).", $pts);?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($pts);?></div>
             <?php //if ($point_details['points_money'] > $point_details['customer_points']):?>
             <?php if ($point_details['min_use'] > $point_details['customer_points']):?>

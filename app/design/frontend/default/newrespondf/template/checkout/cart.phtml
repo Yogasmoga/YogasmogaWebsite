@@ -595,7 +595,7 @@ else
 
                 }
             }
-
+/*
             jQuery(".apply_smogi_bucks").click(function(){
 
                 var be_used = jQuery("#points_to_be_used").val();
@@ -611,6 +611,25 @@ else
                 }
 
             });
+*/
+
+jQuery(".apply_smogi_bucks").click(function(){
+
+                var be_used = jQuery("#points_to_be_used").val();
+
+                var availableUserSmogiBucks = jQuery("span#bucks").attr("rel");
+                
+                if (be_used == '') {
+
+                    jQuery("#points_to_be_used").val(availableUserSmogiBucks);
+                    
+//                    jQuery("#error_msg_smogi").html("Please fill SMOGI Bucks Value");
+//                    jQuery("#points_to_be_used").focus();
+//                    return false ;
+
+                }
+
+            });			
 
             jQuery(".apply_promo_code_div .btn-update").click(function(){
 
