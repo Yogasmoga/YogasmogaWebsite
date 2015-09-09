@@ -163,6 +163,7 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
         );
         //check do not apply smogi bucks for only accesories in cart
 		   $miniitems = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
+		   
         if(isset($miniitems))
         {
             $excludecats = Mage::getModel('core/variable')->loadByCode('nosmogicategories')->getValue('plain');
@@ -187,17 +188,24 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
 			
 			// promotion check
 			if($flag==0){
-			
+		
 				foreach($miniitems as $mitem)
-				{				
-					$price = $mitem['price'];
-					if(intval($price)==0){
-						Mage::getSingleton("core/session")->addError("SMOGI Bucks cannot be used on promotions"); 
-						$refererUrl = $this->_getRefererUrl();
-						$this->getResponse()->setRedirect($refererUrl);
-						return;
+				{	
+		
+				 	$price = $mitem['price'];
+							
+					if(is_null($mitem['parent_item_id'])){
+	
+						if(intval($price)==0){
+
+							Mage::getSingleton("core/session")->addError("SMOGI Bucks cannot be used on promotions"); 
+							$refererUrl = $this->_getRefererUrl();
+							$this->getResponse()->setRedirect($refererUrl);
+							return;
+						}
 					}
 				}
+			
 			}
 			
             if($flag == 1)

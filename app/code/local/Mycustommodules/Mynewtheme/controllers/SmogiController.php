@@ -126,14 +126,14 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
 						$price = substr($price, 1,strlen($price)-1);
 						if(intval($price)==0){
 						
-							$response['error'] = "SMOGI Bucks cannot be used for Promotion1";
+							$response['error'] = "SMOGI Bucks cannot be used for Promotion";
 							echo json_encode($response);
 							return;
 						}
 					}
 					else{
 						if(intval($price)==0){
-							$response['error'] = "SMOGI Bucks cannot be used for Promotion2";
+							$response['error'] = "SMOGI Bucks cannot be used for Promotion";
 							echo json_encode($response);
 							return;
 						}
@@ -143,7 +143,7 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
 			
             if($flag == 1)
             {
-                $response['error'] = "SMOGI Bucks cannot be used Toward Accessories / ONE 2 MANY Items3";
+                $response['error'] = "SMOGI Bucks cannot be used Toward Accessories / ONE 2 MANY Items";
                 echo json_encode($response);
                 return;
             }
