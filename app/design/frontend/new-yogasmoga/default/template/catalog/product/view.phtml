@@ -1206,7 +1206,7 @@ if ($_product->getAttributeText('canzoomimage') == "yes") {
 <!-- completeLook -->
 <!-- heading -->
 <?php //echo $this->getChildHtml('upsell_products');
-$upsell_product = $_product->getUpSellProductCollection()->addAttributeToSort('position', Varien_Db_Select::SQL_ASC)->addStoreFilter();
+$upsell_product = $_product->getUpSellProductCollection()->addAttributeToFilter('status',array('eq'=> 1))->addAttributeToSort('position', Varien_Db_Select::SQL_ASC)->addStoreFilter();
 $count = count($upsell_product);
 if ($count > 1) {
     $write = Mage::getSingleton('core/resource')->getConnection('core_read');
