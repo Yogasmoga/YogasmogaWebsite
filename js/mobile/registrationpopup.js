@@ -218,7 +218,7 @@ function createCustomerAccount() {
         jQuery("#error_msg").html("Please choose a password");
     }
     else if(pwd.length<6){
-        jQuery("#error_msg").html("Password should be of 6 or more characters.");
+        jQuery("#error_msg").html("Password should be of 6 characters.");
     }
 
     else if(!gender_link.find(".f1").hasClass("current") && !gender_link.find(".f2").hasClass("current")){

@@ -639,7 +639,7 @@ function createCustomerAccount() {
         $(".singup_form .err_msg").html("Please choose a password");
     }
     else if (pwd.length < 6) {
-        $(".singup_form .err_msg").html("Password should be of 6 or more characters");
+        $(".singup_form .err_msg").html("Password should be of 6 characters");
     }
     else if (gender_selected == false) {
         $(".singup_form .err_msg").html("Select Gender");
