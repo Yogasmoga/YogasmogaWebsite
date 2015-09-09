@@ -184,6 +184,22 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
                 }
                 if($flag == 0)break;          
             }
+			
+			// promotion check
+			if($flag==0){
+			
+				foreach($miniitems as $mitem)
+				{				
+					$price = $mitem['price'];
+					if(intval($price)==0){
+						Mage::getSingleton("core/session")->addError("SMOGI Bucks cannot be used on promotions"); 
+						$refererUrl = $this->_getRefererUrl();
+						$this->getResponse()->setRedirect($refererUrl);
+						return;
+					}
+				}
+			}
+			
             if($flag == 1)
             {
               
