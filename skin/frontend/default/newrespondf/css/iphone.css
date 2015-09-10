@@ -2675,7 +2675,7 @@ label.shipping_method_radio > input[type="radio"] {
     background: #eee none repeat scroll 0 0;
     border-radius: 21px;
     height: 20px;
-    left: -2px;
+    left: 1px;
     position: absolute;
     top: 23px;
     width: 20px;
@@ -7603,7 +7603,7 @@ label[for="shipping:same_as_billing"],
 
 #billing_save_address {
     letter-spacing: 1px;
-    margin: 0 0 -10px;
+    margin: 10px 0 -10px;
 }
 
 #shipping_billing_address label {
