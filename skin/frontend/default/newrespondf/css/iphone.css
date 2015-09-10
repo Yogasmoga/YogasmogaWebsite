@@ -6,7 +6,9 @@ input, textarea, button {
     border-radius: 0;
     -webkit-border-radius: 0;
 }
-
+input, textarea, select{
+    padding: 0 10px !important;
+}
 input[type="password"], input[type="text"], textarea, button {
     -webkit-appearance: none;
 }
@@ -2550,6 +2552,7 @@ tr.td-noborder td {
 }
 
 #co-billing-form li.ship-btn {
+    padding: 5px 0 0 !important;
     position: relative;
 }
 
@@ -2654,13 +2657,13 @@ label.shipping_method_radio > input[type="radio"] {
 }
 
 #co-billing-form li.ship-btn .custom-rd, .addr-book .custom-rd {
-    background: #eeeeee;
+    background: #eee none repeat scroll 0 0;
     border-radius: 21px;
-    height: 24px;
+    height: 20px;
     left: -2px;
     position: absolute;
-    top: 5px;
-    width: 24px;
+    top: 14px;
+    width: 20px;
 }
 
 .addr-book {
@@ -7524,4 +7527,10 @@ table#checkout-review-table tfoot tr.reward-point  td .price{
 }
 .chart-table tr td {
     width: 20% !important;
+}
+label[for="billing:use_for_shipping_yes"],
+label[for="billing:use_for_shipping_no"],
+label[for="shipping:same_as_billing"],
+#checkout-step-shipping .custom-check{
+    letter-spacing: 1px;
 }
