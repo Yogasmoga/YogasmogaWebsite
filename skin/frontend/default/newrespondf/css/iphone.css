@@ -3039,7 +3039,7 @@ h4.legend {
     letter-spacing: 1px;
     position: absolute;
     right: 0;
-    top: 4px;
+    top: 0;
 }
 
 .discount-form .buttons-set .button, #discountFormPoints2 .buttons-set .button[rel="not-logged"] {
@@ -7642,5 +7642,9 @@ label[for="shipping:same_as_billing"],
 }
 
 .apply_smogi_code_div{
+    position: relative;
+}
+
+#promotion-code {
     position: relative;
 }
