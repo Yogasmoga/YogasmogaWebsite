@@ -7633,3 +7633,9 @@ label[for="shipping:same_as_billing"],
 #checkout-payment-method-load label {
     font-family: GraphikRegular;
 }
+
+#checkout-payment-method-load label[for="p_method_free"] {
+    float: left;
+    margin-top: -44px;
+    width: 100%;
+}
