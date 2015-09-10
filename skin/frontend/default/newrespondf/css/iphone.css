@@ -5462,11 +5462,13 @@ p.apply_promo_label {
 }
 
 p.apply_promo_label > span {
-    color: #00B800;
+    color: #00b800;
     font: 21px ITCAvantGardeStd-Bk;
-    margin-top: 0px;
+    margin-top: 0;
     position: absolute;
-    right: 9px;
+    right: 0;
+    text-align: right;
+    width: 24px;
 }
 
 #coupon_code {
@@ -6605,11 +6607,13 @@ button#send2 {
 }
 
 .apply_smogi_label > span {
-    color: #00B800;
+    color: #00b800;
     font: 21px/58px ITCAvantGardeStd-Bk;
     margin-top: -17px;
     position: absolute;
-    right: 23px;
+    right: 14px;
+    text-align: right;
+    width: 44px;
 }
 
 .remove_smogi.apply_smogi_bucks {
@@ -7234,13 +7238,9 @@ video {
 .btn-remove.btn-remove2 {
     height: 44px;
     position: absolute;
-    right: 0;
+    right: -15px;
     top: 0;
     width: 44px;
-}
-
-.btn-remove.btn-remove2:hover {
-    background: #f2f2f2;
 }
 
 .btn-remove.btn-remove2 svg line {
@@ -7473,7 +7473,7 @@ table#checkout-review-table tfoot tr.reward-point  td .price{
     height: 56px;
 }
 .collat-wrap {
-    margin-top: 25px;
+    margin-top: 15px;
 }
 
 #shopping-cart-totals-table tr td strong {
