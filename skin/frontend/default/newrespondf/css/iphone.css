@@ -7611,12 +7611,12 @@ label[for="shipping:same_as_billing"],
 }
 
 #shipping_billing_address {
-    margin: 16px 3px !important;
+    margin: 17px 3px !important;
 }
 
 #shipping_save_address {
     margin-bottom: -18px;
-    margin-top: 3px;
+    margin-top: 11px;
 }
 
 #shipping_billing_address > span {
