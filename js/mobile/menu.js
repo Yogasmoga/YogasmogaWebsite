@@ -243,13 +243,13 @@ jQuery(document).ready(function($){
     $("p.apply_promo_label > span").click(function(){
         $("#error_msg_coupon").html("");
         $(".apply_promo_code_div").show();
-        $(this).parent().remove();
+        $(".apply_smogi_code_div").hide();
     });
 
     $("p.apply_smogi_label > span").click(function(){
         $("#error_msg_smogi").html("");
         $(".apply_smogi_code_div").show();
-        $(this).parent().remove();
+        $(".apply_promo_code_div").hide();
     });
 
     $(".arrow-tag.narrow").click(function(){

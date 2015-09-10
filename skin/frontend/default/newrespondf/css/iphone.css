@@ -8,7 +8,13 @@ input, textarea, button {
 }
 
 input, textarea, select {
-    padding: 0 10px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+#ajaxlogin_form input, #singup_form input{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
 input[type="password"], input[type="text"], textarea, button {
@@ -2463,7 +2469,7 @@ tr.td-noborder td {
 }
 
 #shipping-new-address-form .form-list li .col2-alt-set .col-2 label {
-    margin: 7px 23px;
+    margin: 7px 15px;
     padding: 0;
 }
 
@@ -2718,12 +2724,12 @@ label.shipping_method_radio > input[type="radio"] {
 #checkout-step-shipping .custom-check span, .col2-alt-set .col-ship span {
     background: #eeeeee;
     border-radius: 12px;
-    height: 24px;
+    height: 20px;
     left: -3px;
 
     position: absolute;
-    top: 7px;
-    width: 24px;
+    top: 9px;
+    width: 20px;
 }
 
 #checkout-step-shipping .custom-check .chk-box, .col2-alt-set .col-ship input[type="checkbox"] {
@@ -2952,10 +2958,10 @@ h4.legend {
 #discount-coupon-form .discount-form .input-text, #discountFormPoints2 #points_to_be_used {
     float: left;
     height: 40px !important;
-    /*margin: 25px 0 0;*/
+    margin-bottom: 5px;
     min-width: 249px;
     text-align: left;
-    width: 78%;
+    width: 100%;
     background: #ededed;
     border: none;
 }
@@ -3024,14 +3030,15 @@ h4.legend {
 }
 
 .discount-form .buttons-set .button, #discountFormPoints2 .buttons-set .button {
-    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: #fff none repeat scroll 0 0;
     border: medium none;
-    color: #00B800;
+    color: #00b800;
     float: right;
     font: 12px/18px AvantGarde-Demi !important;
-    margin-right: 7px;
-    margin-top: 12px;
     letter-spacing: 1px;
+    margin-left: 6px;
+    margin-top: 6px;
+    position: absolute;
 }
 
 .discount-form .buttons-set .button, #discountFormPoints2 .buttons-set .button[rel="not-logged"] {
@@ -5502,18 +5509,19 @@ p.apply_promo_label > span {
 #coupon_code {
     float: left;
     margin-bottom: 18px;
-    width: 78%;
+    width: 100%;
     margin-top: 4px;
 }
 
 #points_error .button.btn-update {
-    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    background: #fff none repeat scroll 0 0;
     border: medium none;
     color: #00b800;
-    float: right;
-    font: 12px/44px AvantGarde-Demi !important;
+    font: 12px AvantGarde-Demi !important;
     letter-spacing: 1px;
-    margin-top: 2px;
+    margin-left: -39px;
+    margin-top: -25px;
+    position: absolute;
 }
 
 .apply_promo_code_div {
@@ -5528,7 +5536,7 @@ p.apply_promo_label > span {
     height: 40px;
     min-width: 249px;
     background: #ededed;
-    width: 78% !important;
+    width: 100% !important;
 }
 
 .control.ship-btn > label {
@@ -7247,7 +7255,7 @@ video {
     margin: 18px 0;
 }
 
-.selected_cart_products .item_option_color, .selected_cart_products .bracup, .selected_cart_products .item-options {
+.selected_cart_products .bracup {
     font: 12px/18px GraphikRegular;
 }
 
@@ -7546,7 +7554,7 @@ table#checkout-review-table tfoot tr.reward-point td .price {
 }
 
 #co-shipping-form > fieldset#shipping-new-address-form:first-child label[for="shipping:firstname"] {
-    margin-top: 25px !important;
+    margin-top: 15px !important;
 }
 
 #discountFormPoints2 .buttons-set .button[rel="not-logged"] {
