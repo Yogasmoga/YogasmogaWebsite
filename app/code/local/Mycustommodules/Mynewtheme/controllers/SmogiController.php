@@ -95,7 +95,9 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
             $flag = 0;
             foreach($miniitems as $mitem)
             {
-                //$mitemProduct = Mage::getModel('catalog/product')->load($mitem['pid']);
+				
+				
+				//$mitemProduct = Mage::getModel('catalog/product')->load($mitem['pid']);
                 $mitemProduct = Mage::getModel('catalog/product')->loadByAttribute('sku', $mitem['sku']);
                 $cids = $mitemProduct->getCategoryIds();
                 //print_r($cids);
@@ -114,6 +116,31 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
                 //echo $flag;
             }
             //echo $foundOnlyNoSmogiProduct;
+
+			//check promotion
+			if($flag==0){
+				foreach($miniitems as $mitem)
+				{
+					$price = $mitem['price'];
+					if(substr($price,0,1)=='$'){
+						$price = substr($price, 1,strlen($price)-1);
+						if(intval($price)==0){
+						
+							$response['error'] = "SMOGI Bucks cannot be used for Promotion";
+							echo json_encode($response);
+							return;
+						}
+					}
+					else{
+						if(intval($price)==0){
+							$response['error'] = "SMOGI Bucks cannot be used for Promotion";
+							echo json_encode($response);
+							return;
+						}
+					}	
+				}
+			}				
+			
             if($flag == 1)
             {
                 $response['error'] = "SMOGI Bucks cannot be used Toward Accessories / ONE 2 MANY Items";
