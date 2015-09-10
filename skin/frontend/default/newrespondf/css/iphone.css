@@ -5052,28 +5052,28 @@ button.place-order {
 .selectedlength .blck-head-sml {
     clear: both;
     float: left;
-    font: 12px GraphikRegular;
+    font: 14px GraphikRegular;
     width: 100%;
     margin-bottom: 20px;
 }
 
 .selectedlength div {
-    font: 14px ITCAvantGardeStd-Bk;
+    font: 14px GraphikRegular;
     margin-bottom: 20px;
 }
 
 .selectedlength div span {
-    background: #fff none repeat scroll 0 0;
+    background: #f2f2f2 none repeat scroll 0 0;
     border-radius: 7px;
     display: inline-block;
     float: right;
-    border: 1px solid #555555;
+    /*border: 1px solid #555555;*/
     height: 14px;
     width: 14px;
 }
 
 .selectedlength div.selected span {
-    background: #555555 none repeat scroll 0 0 !important;
+    background: #ae8637 !important;
 }
 
 .messages {
