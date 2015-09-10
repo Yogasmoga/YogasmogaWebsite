@@ -12,7 +12,7 @@ input, textarea, select {
     padding-right: 10px !important;
 }
 
-#ajaxlogin_form input, #singup_form input{
+#ajaxlogin_form input, #singup_form input {
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
@@ -2505,9 +2505,8 @@ tr.td-noborder td {
 
 .error, .validation-advice {
     color: #ff5f00;
-    font: 12px/18px GraphikRegular;
-    /*color: #df280a;*/
-    /*display: none;*/
+    font: 12px/30px GraphikRegular;
+    margin-bottom: -9px;
 }
 
 .notice {
@@ -3307,12 +3306,12 @@ label[for="shipping:street1"] {
 
 #checkout-shipping-method-load {
     font-size: 12px;
-    padding: 10px;
+    padding: 28px 0 0 !important;
     text-align: left;
 }
 
 #co-shipping-form p {
-    padding: 0px 0;
+    padding: 0 0;
 }
 
 .one-page-checkout .active .step-count {
@@ -3534,7 +3533,7 @@ label[for="shipping:street1"] {
 #checkout-shipping-method-load span:nth-child(2) label {
     display: block;
     height: 44px;
-    padding-left: 50px;
+    padding-left: 40px;
 }
 
 .btn-update_qty {
@@ -3558,7 +3557,7 @@ label[for="shipping:street1"] {
 }
 
 #checkout-step-shipping_method {
-    padding-bottom: 5px;
+    padding-bottom: 17px;
     position: relative;
 }
 
@@ -4889,7 +4888,7 @@ table.productdetailtable div#colorcontainer div table {
     float: left;
     overflow: hidden;
     height: 48px;
-    margin: 35px 0 0 0;
+    margin: 30px 0 0 0;
     position: relative;
     width: 50%;
     border: 2px solid #fff;
@@ -7485,7 +7484,7 @@ label[for="stripe_expiration"] {
 }
 
 #stripe-update-payment-holder {
-    margin-bottom: 6px;
+    /*margin-bottom: 6px;*/
 }
 
 #checkout-review-submit button.place-order {
@@ -7591,4 +7590,30 @@ label[for="shipping:same_as_billing"],
 #checkout-step-shipping .custom-check,
 #checkout-step-shipping input, #checkout-step-shipping textarea {
     letter-spacing: 1px;
+}
+
+#billing_save_address {
+    letter-spacing: 1px;
+    margin: 0 0 -10px;
+}
+
+#shipping_billing_address label {
+    padding: 0 18px !important;
+}
+
+#shipping_billing_address {
+    margin: 16px 3px !important;
+}
+
+#shipping_save_address {
+    margin-bottom: -18px;
+    margin-top: 3px;
+}
+
+#shipping_billing_address > span {
+    left: -1px !important;
+}
+
+#payment_form_stripe li:last-child {
+    padding: 0;
 }
