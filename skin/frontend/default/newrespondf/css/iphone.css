@@ -1904,7 +1904,7 @@ button[name="update_cart_action_checkout"] {
     margin-right: 8px;
 }
 
-.col_right_options .item_option_color span {
+.col_right_options .item_option_color {
     font: 12px/18px GraphikRegular;
     display: inline-block;
 }
@@ -2929,7 +2929,8 @@ h4.legend {
 #discount-coupon-form .discount-form .buttons-set p {
     color: #555;
     float: left;
-    font: 12px/40px ITCAvantGardeStd-Bk;
+    font: 12px ITCAvantGardeStd-Bk;
+    margin-bottom: 23px;
     position: relative;
     text-align: left;
 }
@@ -3458,7 +3459,7 @@ label[for="shipping:street1"] {
 }
 
 .one-page-checkout .box {
-    font: 12px ITCAvantGardeStd-Bk;
+    font: 12px/18px ITCAvantGardeStd-Bk;
 }
 
 .checkout-progress {
@@ -7255,7 +7256,7 @@ video {
     margin: 18px 0;
 }
 
-.selected_cart_products .item-options {
+.product_details_checkout .bracup, .selected_cart_products .item-options {
     font: 12px/18px GraphikRegular;
 }
 
