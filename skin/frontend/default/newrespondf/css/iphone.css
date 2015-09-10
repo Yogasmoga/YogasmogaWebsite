@@ -1901,7 +1901,7 @@ button[name="update_cart_action_checkout"] {
     color: #00B800;
     float: right;
     font: 21px ITCAvantGardeStd-Bk;
-    margin-right: 8px;
+    margin-right: -1px;
 }
 
 .col_right_options .item_option_color {
@@ -2469,7 +2469,7 @@ tr.td-noborder td {
 }
 
 #shipping-new-address-form .form-list li .col2-alt-set .col-2 label {
-    margin: 7px 15px;
+    margin: 7px 17px;
     padding: 0;
 }
 
@@ -2659,7 +2659,7 @@ label.shipping_method_radio {
     height: 20px;
     border-radius: 50%;
     float: left;
-    margin-top: 0;
+    margin-top: -3px;
 }
 
 label.shipping_method_radio > input[type="radio"] {
@@ -3034,10 +3034,10 @@ h4.legend {
     border: medium none;
     color: #00b800;
     float: right;
-    font: 12px/18px AvantGarde-Demi !important;
+    font: 12px/25px AvantGarde-Demi !important;
     letter-spacing: 1px;
-    margin-left: 6px;
-    margin-top: 6px;
+    margin-left: 5px;
+    margin-top: 5px;
     position: absolute;
 }
 
@@ -3533,7 +3533,7 @@ label[for="shipping:street1"] {
 #checkout-shipping-method-load span:nth-child(2) label {
     display: block;
     height: 44px;
-    padding-left: 40px;
+    padding-left: 48px;
 }
 
 .btn-update_qty {
@@ -5522,10 +5522,12 @@ p.apply_promo_label > span {
     border: medium none;
     color: #00b800;
     font: 12px AvantGarde-Demi !important;
+    height: 25px;
     letter-spacing: 1px;
-    margin-left: -39px;
-    margin-top: -25px;
+    margin-left: -44px;
+    margin-top: -30px;
     position: absolute;
+    width: 50px;
 }
 
 .apply_promo_code_div {
@@ -5562,7 +5564,7 @@ p.required {
 }
 
 #checkout-shipping-method-load label, #checkout-shipping-method-load label strong {
-    font: 12px/18px ITCAvantGardeStd-Bk;
+    font: 12px/18px GraphikRegular;
 }
 
 #checkout-shipping-method-load .method label {
@@ -7562,8 +7564,9 @@ table#checkout-review-table tfoot tr.reward-point td .price {
 }
 
 #discountFormPoints2 .buttons-set .button[rel="not-logged"] {
-    height: 50px;
-    margin-top: -12px;
+    margin: 0;
+    position: absolute;
+    right: 12px;
 }
 
 .sizediv.outofstock > img {
@@ -7602,7 +7605,7 @@ label[for="shipping:same_as_billing"],
 }
 
 #shipping_billing_address label {
-    padding: 0 18px !important;
+    padding: 0 25px !important;
 }
 
 #shipping_billing_address {
@@ -7620,4 +7623,8 @@ label[for="shipping:same_as_billing"],
 
 #payment_form_stripe li:last-child {
     padding: 0;
+}
+
+#checkout-shipping-method-load .method:nth-child(3) {
+    margin-bottom: -15px;
 }
