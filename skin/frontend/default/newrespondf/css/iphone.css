@@ -2552,8 +2552,16 @@ tr.td-noborder td {
 }
 
 #co-billing-form li.ship-btn {
-    padding: 5px 0 0 !important;
+    padding: 15px 0 0 !important;
     position: relative;
+}
+
+#co-billing-form .form-list li:last-child {
+    padding-top: 5px !important;
+}
+
+#co-billing-form .form-list li:last-child span{
+    top: 14px !important;
 }
 
 #co-billing-form li.ship-btn label, #billing:save_in_address_book + label {
@@ -2662,7 +2670,7 @@ label.shipping_method_radio > input[type="radio"] {
     height: 20px;
     left: -2px;
     position: absolute;
-    top: 14px;
+    top: 23px;
     width: 20px;
 }
 
@@ -6371,7 +6379,7 @@ button.btn-invite.button {
 .control.ship-btn > label {
     float: none;
     width: auto;
-    margin-left: 30px;
+    margin-left: 20px;
     padding-top: 18px;
 }
 
