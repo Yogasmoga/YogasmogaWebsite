@@ -2997,8 +2997,8 @@ h4.legend {
 #error_msg_smogi {
     color: #ff5f00;
     font: 12px/18px GraphikRegular;
+    margin: 4px 0 10px;
     text-align: left;
-    margin: 15px 0;
 }
 
 #error_msg_coupon {
@@ -5473,9 +5473,9 @@ p.apply_promo_label > span {
 
 #coupon_code {
     float: left;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     width: 78%;
-    margin-top: 15px;
+    margin-top: 4px;
 }
 
 #points_error .button.btn-update {
@@ -5485,7 +5485,7 @@ p.apply_promo_label > span {
     float: right;
     font: 12px/44px AvantGarde-Demi !important;
     letter-spacing: 1px;
-    margin-top: 15px;
+    margin-top: 2px;
 }
 
 .apply_promo_code_div {
