@@ -4909,7 +4909,11 @@ button.place-order {
 
 /*************************************************************thanks-page*****************************************/
 .thanks-page .thanks-block {
-    background: #ad873f;
+    background: #ae8537 none repeat scroll 0 0;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
 }
 
 .thanks-page .thanks-block p {
@@ -4925,22 +4929,22 @@ button.place-order {
     width: 100%;
 }
 
-.thanks-page .thanks-block p span {
-    display: inline-block;
-    margin-bottom: 35px;
-}
 
 .thanks-page .thanks-block p .shop-tag a {
+    background: #00b900 none repeat scroll 0 0;
     color: hsl(0, 0%, 100%);
-    font-family: freighttextbook;
-    font-size: 14px;
-    line-height: 35px;
+    display: block;
+    font: 16px/50px ITCAvantGardeStd-Bk;
+    height: 44px;
+    letter-spacing: 1px;
     text-decoration: none;
+    text-transform: uppercase;
 }
 
 .thanks-page .thanks-block p .shop-tag {
     display: block;
-    margin-top: 40px;
+    margin-top: 15px;
+    padding: 0 14px;
 }
 
 .dashboard-index .error-msg {
