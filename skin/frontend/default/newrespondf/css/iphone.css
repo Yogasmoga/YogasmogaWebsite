@@ -3037,9 +3037,9 @@ h4.legend {
     float: right;
     font: 12px/25px AvantGarde-Demi !important;
     letter-spacing: 1px;
-    margin-left: 5px;
-    margin-top: 5px;
     position: absolute;
+    right: 0;
+    top: 4px;
 }
 
 .discount-form .buttons-set .button, #discountFormPoints2 .buttons-set .button[rel="not-logged"] {
@@ -5535,6 +5535,7 @@ p.apply_promo_label > span {
     display: none;
     float: left;
     width: 100%;
+    position: relative;
 }
 
 #coupon_code.input-text.required-entry {
@@ -7638,4 +7639,8 @@ label[for="shipping:same_as_billing"],
     float: left;
     margin-top: -44px;
     width: 100%;
+}
+
+.apply_smogi_code_div{
+    position: relative;
 }
