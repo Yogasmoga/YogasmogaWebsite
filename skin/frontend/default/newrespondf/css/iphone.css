@@ -5458,6 +5458,7 @@ p.apply_promo_label {
     line-height: 30px;
     position: relative;
     text-align: left;
+    margin-bottom: 3px;
     font-family: graphikregular;
 }
 
@@ -5473,7 +5474,7 @@ p.apply_promo_label > span {
 
 #coupon_code {
     float: left;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
     width: 78%;
     margin-top: 4px;
 }
