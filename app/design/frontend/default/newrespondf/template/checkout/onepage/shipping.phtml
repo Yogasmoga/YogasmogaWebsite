@@ -130,7 +130,7 @@
 			<div class="clear"></div>
         </li>
         <?php if ($this->isCustomerLoggedIn() && $this->customerHasAddresses()):?>
-        <li style="margin-bottom: -15px">
+        <li id="shipping_save_address">
             <div class="col2-alt-set"><div class="col-1 col-ship">
                 <input type="checkbox" name="shipping[save_in_address_book]" value="1" title="<?php echo $this->__('Save in address book') ?>" id="shipping:save_in_address_book" onchange="shipping.setSameAsBilling(false);"<?php if ($this->getAddress()->getSaveInAddressBook()):?> checked="checked"<?php endif;?> />
 				<span></span>
@@ -143,7 +143,7 @@
         <?php endif;?>
     </ul>
 </fieldset>
-<p class="custom-check" style="margin:10px 5px 20px">
+<p class="custom-check" id="shipping_billing_address">
 
 <input class="chk-box" type="checkbox" name="shipping[same_as_billing]" id="shipping:same_as_billing" value="1" <?php if($this->getAddress()->getSameAsBilling()): ?>checked="checked"<?php endif ?> onclick="shipping.setSameAsBilling(this.checked)" /> <span></span>&nbsp;<label for="shipping:same_as_billing" style="padding: 10px 30px"><?php echo $this->__('Use Billing Address') ?></label>
 
