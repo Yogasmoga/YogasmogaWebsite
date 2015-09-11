@@ -2540,7 +2540,7 @@ tr.td-noborder td {
 }
 
 #co-billing-form {
-    padding: 28px 0 20px;
+    padding: 28px 0 13px;
 }
 
 #co-billing-form input,
@@ -2565,7 +2565,7 @@ tr.td-noborder td {
 }
 
 #co-billing-form .form-list li:last-child {
-    padding-top: 5px !important;
+    padding-top: 2px !important;
 }
 
 #co-billing-form .form-list li:last-child span {
@@ -3313,7 +3313,7 @@ label[for="shipping:street1"] {
 
 #checkout-shipping-method-load {
     font-size: 12px;
-    padding: 12px 0 0 !important;
+    padding: 13px 0 0 !important;
     text-align: left;
 }
 
@@ -5576,6 +5576,7 @@ p.required {
 
 #checkout-shipping-method-load label, #checkout-shipping-method-load label strong {
     font: 12px/44px GraphikRegular;
+    margin-bottom: -2px;
 }
 
 #checkout-shipping-method-load .method label {
