@@ -116,7 +116,7 @@
                     <?php foreach ($_options as $_option) : ?>
                     <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
 					<?php if($this->htmlEscape($_option['label']) != 'Color'){ ?>
-                    <span>
+                    <span style="text-transform:capitalize">
 					<?php 
 							$label = $this->escapeHtml($_option['label']);
 							
@@ -134,8 +134,12 @@
                     {
                         echo " ".substr($word,0, strpos($word, "|"));
                     }
-                    else
-                        echo $word;
+                    else{
+						if($word=="Y")
+							echo "Yes";
+						else
+							echo $word;
+					}
                 ?>
                 <?php if (isset($_formatedOptionValue['full_view'])): ?>
                 <div class="truncated_full_value">
