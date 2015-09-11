@@ -5624,7 +5624,7 @@ p.required {
 }
 
 table#checkout-review-table tfoot td .price {
-    right: -3px;
+    right: 0px;
 }
 
 .options_methods {
