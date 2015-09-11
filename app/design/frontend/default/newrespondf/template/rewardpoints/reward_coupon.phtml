@@ -161,7 +161,7 @@
             <?php echo $this->getIllustrationImage()?>
             <div  style="display:none;" class="rewards_point_cart"><?php echo $this->__("This shopping cart is worth %s loyalty point(s).", $pts);?><?php echo Mage::helper('rewardpoints/data')->getEquivalence($pts);?></div>
             <?php if ($points_currently_used > 0):?>
-            <p><?php echo $this->__('You are currently using %d Bucks of your %d SMOGI Bucks available.<span id="double-star" style="display:none;">**</span>', $points_currently_used, $this->getCustomerPoints()); ?></p>
+            <p><?php echo $this->__('%d of %d SMOGI Bucks applied<span id="double-star" style="display:none;">**</span>', $points_currently_used, $this->getCustomerPoints()); ?></p>
             <?php endif;?>
             <div class="buttons-set">
                 <button class="remove_smogi apply_smogi_bucks" type="button" onclick="discountFormPoints2.submit(false)" value="<?php echo $this->__('Remove Points') ?>"><span><span><?php echo $this->__('Remove') ?></span></span></button>
