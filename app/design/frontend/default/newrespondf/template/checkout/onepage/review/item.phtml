@@ -116,7 +116,16 @@
                     <?php foreach ($_options as $_option) : ?>
                     <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
 					<?php if($this->htmlEscape($_option['label']) != 'Color'){ ?>
-                    <span><?php echo $this->escapeHtml($_option['label']) ?></span>
+                    <span>
+					<?php 
+							$label = $this->escapeHtml($_option['label']);
+							
+							if($label=="Size")
+								echo "Size:";
+							else
+								echo $label;
+						?>
+					</span>
 					<?php } ?>
                     <span <?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?>><?php //echo $_formatedOptionValue['value']; ?>
                 <?php 
