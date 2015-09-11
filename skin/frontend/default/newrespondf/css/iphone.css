@@ -2505,7 +2505,7 @@ tr.td-noborder td {
 
 .error, .validation-advice {
     color: #ff5f00;
-    font: 12px/30px GraphikRegular;
+    font: 12px/20px GraphikRegular;
     margin-bottom: -9px;
     margin-top: 10px;
 }
@@ -2569,7 +2569,7 @@ tr.td-noborder td {
 }
 
 #co-billing-form .form-list li:last-child span {
-    top: 14px !important;
+    top: 10px !important;
 }
 
 #co-billing-form li.ship-btn label, #billing:save_in_address_book + label {
@@ -7658,4 +7658,12 @@ label[for="shipping:same_as_billing"],
 
 label[for="billing-address-select"] {
     display: none !important;
+}
+
+#co-billing-form > fieldset > ul >li#billing-new-address-form:first-child {
+    margin-top: -8px;
+}
+
+#co-shipping-form > fieldset#shipping-new-address-form:nth-child(2) {
+    margin-top: 5px;
 }
