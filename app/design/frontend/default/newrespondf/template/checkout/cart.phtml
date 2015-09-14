@@ -31,7 +31,7 @@
  * @see Mage_Checkout_Block_Cart
  */
 ?>
-<style>
+<!--<style>
     #shopping-cart-totals-table{
         border-top: none !important;
         margin-top: -16px !important;
@@ -53,7 +53,7 @@
     #shopping-cart-totals-table + .button, #shopping-cart-table .button{
         text-transform: uppercase;
     }
-</style>
+</style>-->
 <?php
 $currentUrl = Mage::helper('core/url')->getCurrentUrl();
 $carturl = Mage::helper('checkout/cart')->getCartUrl();
@@ -502,8 +502,8 @@ else
                             <?php  echo $this->getChildHtml('coupon') ?>
 
                             <?php // if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
-<!--                            <div class="totals">-->
-                            <div class=""> <?php /* ****Removinf class totals**** */ ?>
+                            <div class="totals">
+<!--                            <div class=""> --><?php ///* ****Removinf class totals**** */ ?>
                                  <?php echo $this->getChildHtml('totals'); ?>
                                 <?php if(!$this->hasError()){ ?>
                                     <?php $customerlogin = Mage::getSingleton('customer/session')->isLoggedIn() ?>
@@ -673,18 +673,18 @@ jQuery(".apply_smogi_bucks").click(function(){
             jQuery("#opc-billing").removeClass("active");
             jQuery("#checkout-step-billing").hide();
 
-            /*jQuery("#shopping-cart-totals-table + button").click(function(){
+            jQuery("#shopping-cart-totals-table + button").click(function(){
                 jQuery("#checkout-step-cart").hide();
                 jQuery("#opc-billing").addClass("active");
                 jQuery("#checkout-step-billing").show();
                 jQuery("#shopping_arrow").removeClass("is-active");
                 var offset =  jQuery("#opc-billing").offset().top;
                 jQuery(window).scrollTop(offset-120);
-            });*/
-            /*jQuery("#shopping_arrow").click(function(){
+            });
+            jQuery("#shopping_arrow").click(function(){
                 jQuery("#checkout-step-billing").hide();
                 jQuery("#opc-billing").removeClass("active");
-            });*/
+            });
 
 
         });
