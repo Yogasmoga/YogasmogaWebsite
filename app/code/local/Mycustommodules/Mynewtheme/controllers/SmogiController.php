@@ -118,6 +118,7 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
             //echo $foundOnlyNoSmogiProduct;
 
 			//check promotion
+/*
 			if($flag==0){
 				foreach($miniitems as $mitem)
 				{
@@ -140,7 +141,7 @@ class Mycustommodules_Mynewtheme_SmogiController extends Mage_Core_Controller_Fr
 					}	
 				}
 			}				
-			
+*/
             if($flag == 1)
             {
                 $response['error'] = "SMOGI Bucks cannot be used Toward Accessories / ONE 2 MANY Items";

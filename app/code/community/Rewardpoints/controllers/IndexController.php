@@ -187,6 +187,7 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
             }
 			
 			// promotion check
+/*
 			if($flag==0){
 		
 				foreach($miniitems as $mitem)
@@ -207,7 +208,7 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
 				}
 			
 			}
-			
+*/
             if($flag == 1)
             {
               
