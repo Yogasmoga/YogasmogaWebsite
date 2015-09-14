@@ -2507,7 +2507,7 @@ tr.td-noborder td {
     color: #ff5f00;
     font: 12px/20px GraphikRegular;
     margin-bottom: -9px;
-    margin-top: 10px;
+    margin-top: 10px !important;
 }
 
 .notice {
