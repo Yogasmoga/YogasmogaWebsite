@@ -7493,7 +7493,7 @@ label[for="stripe_expiration"] {
 #checkout-payment-method-load label[for="p_method_stripe"] {
     bottom: 0;
     color: #fff;
-    font: 12px/50px GraphikRegular;
+    font: 14px/50px GraphikRegular;
     left: 0;
     letter-spacing: 1px;
     position: absolute;
