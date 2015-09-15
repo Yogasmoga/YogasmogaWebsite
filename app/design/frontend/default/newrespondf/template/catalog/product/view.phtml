@@ -1084,27 +1084,15 @@ if ($lengthAvailable) {
         <!-- DetailsinGreyArea -->
 
     </div>
-	 <?php 	
+	 <?php/* 	
 	   $currentUrl = Mage::helper('core/url')->getCurrentUrl(); //http://yogasmoga.com/women/one-too-many
 		$categoryName = explode('/', $currentUrl);
 		 $urlKey = trim($categoryName[4]); 
 	     $oneTomany = false;
 		 if($urlKey==strtolower('one-too-many')){
 		 $oneTomany = true;
-		 }
+		 }*/
 		 ?>
-    <div class="smogibuckcount" <?php if (!$isRewardAble) {
-        echo "style='display:none'";
-    } ?> >
-        <div class="earnbucks" <?php if($oneTomany==true){echo 'style="display:none;"';}?>>
-		
-    
-            <p class="earnsmogibuckstext">
-                <span>
-                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                         viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve" width="44px"
-                         height="44px">
 <style type="text/css">
     .st0 {
         fill: none;
@@ -1112,6 +1100,20 @@ if ($lengthAvailable) {
         stroke-miterlimit: 10;
     }
 </style>
+		 
+    <div class="smogibuckcount" <?php if (!$isRewardAble) {
+        echo "style='display:none'";
+    } ?> >
+        <div class="earnbucks" >
+		
+    
+            <div class="earnsmogibuckstext" style="width:100%">
+                <span style="float:left;display:block;">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve" width="44px"
+                         height="44px">
+
                         <g>
                             <g>
                                 <circle class="st0" cx="17" cy="27.8" r="7"/>
@@ -1121,10 +1123,18 @@ if ($lengthAvailable) {
                                       d="M20,16.2c0.3-1.1,0.9-2.2,1.8-3.1c2.7-2.7,7.1-2.7,9.8,0c2.7,2.7,2.7,7.1,0,9.8c-0.9,0.9-2,1.5-3.2,1.8"/>
                             </g>
                         </g>
-</svg>
+					</svg>
                 </span>
-                Earn <?php echo $productRewardPoints; ?> SMOGI Bucks with this purchase
-            </p>
+                <div style="float:left;">
+				<div style="float:left">Earn</div>
+					<div class="smogibuckcount" style="float:left">
+						<table>
+                        <tr><td style="font-size:14px;line-height:17px;padding:0 2px;"><?php echo $productRewardPoints; ?></td></tr>
+						</table>
+					</div>
+				<div style="float:left">SMOGI Bucks with this purchase</div>
+				</div>
+            </div>
         </div>
     </div>
     <div class="clearfix"></div>
