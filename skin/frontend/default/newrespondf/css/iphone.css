@@ -7493,13 +7493,17 @@ label[for="stripe_expiration"] {
 #checkout-payment-method-load label[for="p_method_stripe"] {
     bottom: 0;
     color: #fff;
-    font: 14px/50px GraphikRegular;
+    font: 14px/50px ITCAvantGardeStd-Bk;
     left: 0;
     letter-spacing: 1px;
     position: absolute;
     right: 0;
     text-transform: uppercase;
     top: 0;
+}
+
+#stripe-change-payment-form input {
+    font: 12px GraphikRegular !important;
 }
 
 #stripe-update-payment-holder {
@@ -7660,7 +7664,7 @@ label[for="billing-address-select"] {
     display: none !important;
 }
 
-#co-billing-form > fieldset > ul >li#billing-new-address-form:first-child {
+#co-billing-form > fieldset > ul > li#billing-new-address-form:first-child {
     margin-top: -8px;
 }
 
