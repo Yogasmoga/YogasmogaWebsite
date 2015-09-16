@@ -7085,8 +7085,8 @@ video {
 }
 
 .cart_addition_msg {
-    color: #AE8637;
-    font: 14px/20px ITCAvantGardeStd-Bk;
+    color: #555;
+    font: 14px/20px GraphikRegular;
 }
 
 .cart_addition_msg span {
