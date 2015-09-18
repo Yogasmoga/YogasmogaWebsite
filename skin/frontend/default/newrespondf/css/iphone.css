@@ -2507,7 +2507,7 @@ tr.td-noborder td {
     color: #ff5f00;
     font: 12px/20px GraphikRegular;
     margin-bottom: -9px;
-    margin-top: 10px;
+    margin-top: 10px !important;
 }
 
 .notice {
@@ -7085,8 +7085,8 @@ video {
 }
 
 .cart_addition_msg {
-    color: #AE8637;
-    font: 14px/20px ITCAvantGardeStd-Bk;
+    color: #555;
+    font: 14px/20px GraphikRegular;
 }
 
 .cart_addition_msg span {
@@ -7493,13 +7493,17 @@ label[for="stripe_expiration"] {
 #checkout-payment-method-load label[for="p_method_stripe"] {
     bottom: 0;
     color: #fff;
-    font: 12px/50px GraphikRegular;
+    font: 14px/50px ITCAvantGardeStd-Bk;
     left: 0;
     letter-spacing: 1px;
     position: absolute;
     right: 0;
     text-transform: uppercase;
     top: 0;
+}
+
+#stripe-change-payment-form input {
+    font: 12px GraphikRegular !important;
 }
 
 #stripe-update-payment-holder {
@@ -7660,7 +7664,7 @@ label[for="billing-address-select"] {
     display: none !important;
 }
 
-#co-billing-form > fieldset > ul >li#billing-new-address-form:first-child {
+#co-billing-form > fieldset > ul > li#billing-new-address-form:first-child {
     margin-top: -8px;
 }
 

@@ -140,7 +140,7 @@ jQuery(document).ready(function ($) {
 
     xyzinterval = null;
     $('.prod-img').hover(function () {
-        $(this).css("background", "none");
+        $(this).css("background", "#f3f3f3");
         var $imgs = $(this).find("img"), current = 0;
 
         var xyzinterval = function () {

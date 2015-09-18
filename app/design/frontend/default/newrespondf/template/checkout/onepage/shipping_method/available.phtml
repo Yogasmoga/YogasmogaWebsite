@@ -48,7 +48,11 @@
                                     <label for="s_method_<?php echo $_rate->getCode() ?>"><strong><?php echo $this->escapeHtml($_rate->getMethodTitle()) ?></strong>
                                         <?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
                                         <?php $_incl = $this->getShippingPrice($_rate->getPrice(), true); ?>
-                                        (<?php echo $_excl; ?>)
+                                        (<?php 
+										$price = trim('<span class="price">$0</span>');
+										if($_excl == $price){echo $this->__('Free');}
+										else{		
+										echo $_excl;} ?>)
                                         <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
                                             (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
                                         <?php endif; ?>

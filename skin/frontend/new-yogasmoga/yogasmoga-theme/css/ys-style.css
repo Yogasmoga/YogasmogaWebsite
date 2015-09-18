@@ -294,7 +294,8 @@ div.copy-privacy-likes ul li img{height: 30px;}
 
 /****First Time Pop Up Home page****/
 /*.firstdialog{z-index: 10003 !important;}*/
-.firstdialog { border: none; position: fixed; padding: 0 !important; background: transparent url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/signup_popup_red.png") 50% top repeat-x ; background-size: cover ; }
+/*.firstdialog { border: none; position: fixed; padding: 0 !important; background: transparent url("/skin/frontend/new-yogasmoga/yogasmoga-theme/images/signup_popup_red.png") 50% top repeat-x ; background-size: cover ; }*/
+.firstdialog { border: none; position: fixed; padding: 0 !important; background: #f00; border-radius: 50%; overflow: visible; }
 .firstdialog .ui-widget-header { border:none; background: none; font-weight: bold; }
 .firstdialog .ui-dialog-titlebar-close{right: 7.3em ; top: 100% ; width: auto ; height: auto ; z-index: 500;}
 .firstdialog .ui-state-hover{border: none ; background: none ; padding: 1px !important;}
@@ -368,8 +369,8 @@ button#signup-button {
 div.sub-fab{display: inline-block; margin: 0 15px; font-size: 28px; width:40%;}
 div.sub-fab img{width: 45% !important; display: block; margin:25px auto 0 auto;}
 .ui-widget-overlay { background: #777777 50% 50% repeat !important; opacity: .5;filter:Alpha(Opacity=50); z-index: 100 !important; position: fixed; }
-.firstdialog{width: 500px !important; height: 500px !important;}
-#signup{height: 455px !important; padding: 0 !important;}
+.firstdialog{width: 480px !important; height: 480px !important; box-shadow: 0 0 15px rgba(0,0,0,0.4);}
+#signup{height: 440px !important; padding: 0 !important;}
 
 /***Fake password hack***/
 #o_password,tr.orig_password{display: none;}
@@ -1862,8 +1863,8 @@ button.button.btn-addtoaccount{margin: 0 !important;}
     position: absolute;
     right: 40px;
     text-transform: initial;
-     top: 45px;   /* without banner */
- /*   top: 69px;*/
+     top: 45px;
+    /*top: 69px;*/  /* with banner */
 }
 .choose-file-cont #file_upload{
     height: auto !important;
@@ -1985,9 +1986,9 @@ ul.new-arrivals a.quick-view{display: none;}
 /*.wl-cs-right-block .top-right-block{background:url(../images/women/andman-green-featured-image-new.jpg) no-repeat; background-size: 100% 100%;}*/
 /*.wl-left-block .bottom-left-block{background: url(../images/women/featured-image.jpg) no-repeat; background-size: 100% 100%;}*/
 
-.wl-cs-right-block .top-right-block{background:url(../images/women/koel-blue-featured-color-side.jpg) no-repeat; background-size: 100% 100%;}
+.wl-cs-right-block .top-right-block{background:url(../images/women/spanish-grey-helix-right.jpg) no-repeat; background-size: 100% 100%;}
 
-.wl-left-block .bottom-left-block{background: url(../images/women/la-jolla-crop-featured-product-side.jpg) no-repeat; background-size: 100% 100%;}
+.wl-left-block .bottom-left-block{background: url(../images/women/the-run-jump-twist-crop-left.jpg) no-repeat; background-size: 100% 100%;}
 
 
 div.cms-side-nav{display: none;}
@@ -2591,8 +2592,8 @@ table.smallimagecontiner td.selectedimage{
 .share-strip,.new-arrivals-block{opacity: 0;}
 .cat-slide .flex-direction-nav{display: none;}
 
-.namaskar-overlay1{top:69px;}  /* without banner */
-/*.namaskar-overlay1{top:94px;}*/
+.namaskar-overlay1{top:69px;}
+/*.namaskar-overlay1{top:94px;} /* with banner */
 
 .productCont .prod-img img:nth-child(1){
     visibility: visible;

@@ -31,6 +31,29 @@
  * @see Mage_Checkout_Block_Cart
  */
 ?>
+<!--<style>
+    #shopping-cart-totals-table{
+        border-top: none !important;
+        margin-top: -16px !important;
+        background: #fff;
+    }
+    #shopping-cart-totals-table .price {
+        position: absolute;
+        right: 14px;
+    }
+    .section .head + div{
+        border-bottom: none !important;
+    }
+    .error{
+        margin-bottom: 0 !important;
+    }
+    button.place-order::before, #shopping-cart-table .button::before, #shopping-cart-totals-table + .button::before, .col2-set .registered-users .buttons-set #send2::before{
+        background: none !important;
+    }
+    #shopping-cart-totals-table + .button, #shopping-cart-table .button{
+        text-transform: uppercase;
+    }
+</style>-->
 <?php
 $currentUrl = Mage::helper('core/url')->getCurrentUrl();
 $carturl = Mage::helper('checkout/cart')->getCartUrl();
@@ -480,7 +503,8 @@ else
 
                             <?php // if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
                             <div class="totals">
-                                <?php echo $this->getChildHtml('totals'); ?>
+<!--                            <div class=""> --><?php ///* ****Removinf class totals**** */ ?>
+                                 <?php echo $this->getChildHtml('totals'); ?>
                                 <?php if(!$this->hasError()){ ?>
                                     <?php $customerlogin = Mage::getSingleton('customer/session')->isLoggedIn() ?>
 
