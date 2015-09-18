@@ -32,10 +32,10 @@ if (isset($_GET['store'])) {
 
 $available = 0;         // don't pick stock - available from excel, 1 means pick available
 if(isset($_GET['available'])) {
-    $available = intval(strtolower($_GET['available']));
+    $available = $_GET['available'];
 
-    if($available!=0 || $available!=1)
-        $available = 0;
+    if($available=="1")
+        $available = 1;
 }
 
 ?>

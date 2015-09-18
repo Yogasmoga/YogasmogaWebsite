@@ -36,10 +36,10 @@
 
     $available = 0;         // don't pick stock - available from excel, 1 means pick available
     if(isset($_GET['available'])) {
-        $available = intval(strtolower($_GET['available']));
+        $available = $_GET['available'];
 
-        if($available!=0 || $available!=1)
-            $available = 0;
+        if($available=="1")
+            $available = 1;
     }
 ?>
 
@@ -491,7 +491,12 @@ ksort($all_products);
             jQuery("#frmfilter").submit();
         });
 
+        jQuery("select[name='available']").change(function(){
+            jQuery("#frmfilter").submit();
+        });
+
         jQuery("select[name='store']").val("<?php echo $store;?>");
+        jQuery("select[name='available']").val("<?php echo $available;?>");
     });
 
     function uploadNow(){
