@@ -494,6 +494,7 @@ ksort($all_products);
         });
 
         jQuery("select[name='store']").val("<?php echo $store;?>");
+        jQuery("select[name='available']").val("<?php echo $available;?>");
     });
 
     function uploadNow(){
