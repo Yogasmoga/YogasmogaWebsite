@@ -36,21 +36,11 @@
 
     $available = 0;         // don't pick stock - available from excel, 1 means pick available
     if(isset($_GET['available'])) {
-        $available = intval(strtolower($_GET['available']));
+        $available = $_GET['available'];
 
-        if($available!=0 || $available!=1)
-            $available = 0;
+        if($available=="1")
+            $available = 1;
     }
-?>
-
-<html>
-<head>
-    <script type="text/javascript" src="../js/new_jquery/jquery-1.8.2.min.js"></script>
-    <title>Stitch All Inventory Report</title>
-</head>
-<body style="font-size: 12px; font-family: arial, helvetica, sans-serif">
-
-<?php
 
 if(file_exists($inputFileName)){
 
@@ -146,10 +136,18 @@ for ($row = 2; $row <= $highestRow; $row++) {
     );
 }
 
-    $product_names = array_unique($product_names);
+$product_names = array_unique($product_names);
 
 ksort($all_products);
 ?>
+
+<html>
+<head>
+    <script type="text/javascript" src="../js/new_jquery/jquery-1.8.2.min.js"></script>
+    <title>Stitch All Inventory Report</title>
+</head>
+<body style="font-size: 12px; font-family: arial, helvetica, sans-serif">
+
 <div id="divdata" style="padding-top: 155px;">
 <table style="width:100%; margin:auto; padding: 20px; border-collapse: collapse;font-size: 12px; font-family: arial, helvetica, sans-serif">
     <thead>
@@ -491,7 +489,12 @@ ksort($all_products);
             jQuery("#frmfilter").submit();
         });
 
+        jQuery("select[name='available']").change(function(){
+            jQuery("#frmfilter").submit();
+        });
+
         jQuery("select[name='store']").val("<?php echo $store;?>");
+        jQuery("select[name='available']").val("<?php echo $available;?>");
     });
 
     function uploadNow(){
