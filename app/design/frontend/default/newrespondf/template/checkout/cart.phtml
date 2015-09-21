@@ -77,7 +77,7 @@ if(!function_exists('activategiftcard'))
                 Mage::getSingleton('giftcards/session')->setActive('1');
                 Mage::getSingleton('checkout/cart')->getQuote()->getShippingAddress()->setCollectShippingRates(true);
                 Mage::getSingleton('checkout/cart')->getQuote()->collectTotals()->save();
-                Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
+                //Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::helper('core/url')->getHomeUrl()."checkout/cart");
             }
         }
         //}
@@ -277,7 +277,7 @@ if(Mage::getSingleton('customer/session')->isLoggedIn())
             if(Mage::getSingleton('core/session')->getAutoAppliedDiscount() == 1)
             {
                 Mage::getSingleton('core/session')->setAutoAppliedDiscount(2);
-                Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
+                //Mage::app()->getFrontController()->getResponse()->setRedirect($this->getUrl('checkout/cart'));
 
             }
 
