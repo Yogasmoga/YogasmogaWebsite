@@ -2,7 +2,7 @@ jQuery(document).ready(function($){
     // sliderHeight();
     $(".gridfull").css('min-height',$(window).width()*0.48);
     $(".flexslider li").css({"display":"none"});
-    $(".flexslider li:first-child").css({"opacity":1, "display":"block"});
+    $(".flexslider li:first-child").css({"opacity":0, "display":"block"});
 
     $(window).load(function(){
 
@@ -70,6 +70,9 @@ jQuery(document).ready(function($){
 function showGridContainer(obj){
     console.log(jQuery(obj).attr('class'));
     jQuery(obj).closest(".gridfull").css("opacity",1);
+}
+function showSlide(obj){
+    jQuery(obj).css("opacity",1);
 }
 
  // function sliderHeight()
