@@ -1,8 +1,11 @@
 jQuery(document).ready(function($){
     // sliderHeight();
+    var sliderHeight = $(window).width() * 0.523;
     $(".gridfull").css('min-height',$(window).width()*0.48);
-    $(".flexslider li").css({"display":"none"});
-    $(".flexslider li:first-child").css({"opacity":0, "display":"block"});
+    $(".flexslider li").css({"display":"none", "height": sliderHeight});
+    $(".flexslider li:first-child").css({"opacity":1, "display":"block"});
+
+    //$(flexslider)
 
     $(window).load(function(){
 
