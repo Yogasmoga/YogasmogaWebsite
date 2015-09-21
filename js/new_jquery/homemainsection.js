@@ -71,9 +71,6 @@ function showGridContainer(obj){
     console.log(jQuery(obj).attr('class'));
     jQuery(obj).closest(".gridfull").css("opacity",1);
 }
-function showSlide(obj){
-    jQuery(obj).css("opacity",1);
-}
 
  // function sliderHeight()
  //    {
