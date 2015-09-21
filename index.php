@@ -53,8 +53,8 @@ if (file_exists($compilerConfig)) {
 $mageFilename = MAGENTO_ROOT . '/app/Mage.php';
 $maintenanceFile = 'maintenance.flag';
 
-echo $ip = $_SERVER['REMOTE_ADDR'];die;
-
+//$ip = $_SERVER['REMOTE_ADDR'];
+//$allowed = array('');
 
 
 if (!file_exists($mageFilename)) {
@@ -66,7 +66,7 @@ if (!file_exists($mageFilename)) {
     exit;
 }
 
-if (file_exists($maintenanceFile)) {
+if (file_exists($maintenanceFile) ) {
     include_once dirname(__FILE__) . '/errors/503.php';
     exit;
 }
