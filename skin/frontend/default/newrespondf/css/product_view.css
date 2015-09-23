@@ -821,8 +821,11 @@ td#tdpopupproductsmallimages {
 }
 
 td#tdpopupproductbigimage {
-    padding-top: 3px;
+    /*padding-top: 3px;*/
     text-align: center;
+}
+td#tdpopupproductbigimage > img{
+    width: 94%;
 }
 
 img#closelightbox {
