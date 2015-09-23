@@ -213,7 +213,7 @@ foreach ($configurableProductArr as $key => $val) {
         }
 
         // if(in_array($colorId,$configurableProductArr[$key]))
-        if ($check) {
+        if ($check && $imgdata['type'] == 'product image') {
 
 //            if (count($imageArr[$colorId]) <= 3) {
 //                if (!array_key_exists($colorId, $imageArr)) {
